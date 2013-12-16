@@ -40,7 +40,7 @@ namespace itg
     public:
         MarineSnow();
         
-        void init(const string& dataPath, unsigned numParticles);
+        void init(const string& dataPath);
         void draw(const ofCamera& cam);
         void generate();
         
@@ -57,12 +57,14 @@ namespace itg
         float& getSizeMinRef() { return sizeMin; }
         float& getSizeMaxRef() { return sizeMax; }
         
+        int& getNumParticlesRef() { return numParticles; }
+        
     private:
         float fogStart, fogEnd;
         float innerFogStart, innerFogEnd;
         float sizeMin, sizeMax;
         float alphaMin, alphaMax;
-        unsigned numParticles;
+        int numParticles;
         ofImage tex;
         ofVboMesh mesh;
         ofShader shader;

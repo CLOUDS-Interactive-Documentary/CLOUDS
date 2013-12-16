@@ -111,7 +111,6 @@ protected:
     
     //  Your Stuff
     //
-    void onWindowResized(ofResizeEventArgs& args);
     ofxUISuperCanvas* createCustomGui(const string& name);
     void addSliders(ofxUISuperCanvas* gui, JellyParams& params);
     

@@ -17,38 +17,43 @@
 </Widget>
 <Widget>
     <Kind>6</Kind>
-    <Name>creatureFogStartEnd (range)</Name>
-    <HighValue>6502.463867188</HighValue>
-    <LowValue>3955.664062500</LowValue>
+    <Name>creatureFogRange</Name>
+    <HighValue>7832.513671875</HighValue>
+    <LowValue>4975.369628906</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
-    <Name>snowFogStartEnd (range)</Name>
-    <HighValue>7586.207031250</HighValue>
-    <LowValue>1921.182617188</LowValue>
+    <Name>snowFogRange</Name>
+    <HighValue>8226.600585938</HighValue>
+    <LowValue>1921.181884766</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
-    <Name>snowInnerStartEnd (range)</Name>
-    <HighValue>715.270751953</HighValue>
-    <LowValue>415.270935059</LowValue>
+    <Name>snowInnerFogRange</Name>
+    <HighValue>400.000000000</HighValue>
+    <LowValue>100.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
-    <Name>snowAlpha (range)</Name>
-    <HighValue>0.671921253</HighValue>
-    <LowValue>0.071921185</LowValue>
+    <Name>snowAlphaRange</Name>
+    <HighValue>0.800000012</HighValue>
+    <LowValue>0.200000003</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
-    <Name>snowSize (range)</Name>
-    <HighValue>270.935943604</HighValue>
-    <LowValue>0.100000001</LowValue>
+    <Name>snowSizeRange</Name>
+    <HighValue>523.152587891</HighValue>
+    <LowValue>123.252708435</LowValue>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numSnowParticles</Name>
+    <Value>100000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>zoneRadius</Name>
-    <Value>500.000000000</Value>
+    <Value>655.172363281</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -63,60 +68,60 @@
 <Widget>
     <Kind>25</Kind>
     <Name>repelStrength</Name>
-    <Value>0.200000003</Value>
+    <Value>0.320197046</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>alignStrength</Name>
-    <Value>0.200000003</Value>
+    <Value>0.310344815</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>attractStrength</Name>
-    <Value>0.200000003</Value>
+    <Value>0.310344815</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxDistFromCentre</Name>
-    <Value>1500.000000000</Value>
+    <Value>2620.689697266</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>numJellyOne</Name>
-    <Value>42</Value>
+    <Value>73</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>numJellyTwo</Name>
-    <Value>42</Value>
+    <Value>66</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>numGreyFish</Name>
-    <Value>146</Value>
+    <Value>66</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>greySizeAverage</Name>
-    <Value>0.585714281</Value>
+    <Value>0.700000048</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>greySizeStdDeviation</Name>
-    <Value>0.201970443</Value>
+    <Value>0.280788183</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>numYellowFish</Name>
-    <Value>127</Value>
+    <Value>69</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>yellowSizeAverage</Name>
-    <Value>0.400000006</Value>
+    <Value>0.557142854</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>yellowSizeStdDeviation</Name>
-    <Value>0.137931034</Value>
+    <Value>0.211822659</Value>
 </Widget>
