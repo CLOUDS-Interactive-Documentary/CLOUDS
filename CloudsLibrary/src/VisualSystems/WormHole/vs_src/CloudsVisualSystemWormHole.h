@@ -117,7 +117,8 @@ protected:
 	ofxUISuperCanvas* shaderGui;
 	ofxUISuperCanvas* displacementGui;
 	ofImage colorSampleImage;
-	
+
+	bool bDoShader;
 	ofShader normalShader;
 	ofShader facingRatio;
 	
@@ -127,10 +128,12 @@ protected:
 	ofShader* currentShader;
 	
 	ofNode meshNode;
+	bool bDrawPoints;
 	ofVboMesh mesh;
 	string modelPath;
 	string currentMeshName;
 	bool bFacetMesh, bSmoothMesh, bMeshHasBeenFaceted, bMeshHasBeenSmoothed;
+	
 	
 	vector<string> meshNames;
 	vector<string> cameraPathNames;
