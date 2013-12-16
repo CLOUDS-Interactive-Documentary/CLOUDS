@@ -19,10 +19,10 @@
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemFireworks::selfSetupGui(){
 	
-	customGui = new ofxUISuperCanvas("CUSTOM", gui);
+	customGui = new ofxUISuperCanvas("FireworBehavior", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
-	customGui->setName("Firewor behavior");
+	customGui->setName("FireworBehavior");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 	customGui->addSlider("particle speed", .01, 3, &speed);
@@ -36,6 +36,13 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	customGui->addSlider("maxFireworkVelocity", 1, 300, &maxFWVel );
 	
 	customGui->addSlider("gravity", -10, 10, &(gravity.y) );
+	customGui->addSpacer();
+	customGui->addToggle("burst", &bBurst);
+	customGui->addToggle("octahedron", &bOctahedron);
+	customGui->addToggle("tetrahedron", &bTetrahedron);
+	customGui->addToggle("dodecagedron", &bDodecagedron);
+	customGui->addSpacer();
+	
 	
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemFireworks::selfGuiEvent);
@@ -164,13 +171,15 @@ void CloudsVisualSystemFireworks::selfSetup()
 	minVel = .75;
 	maxVel = 1.25;
 	
-	maxFWVel = 2.4;
+	maxFWVel = 200;
 	
 	fogDistance = 800;
 	fogAttenuation = 1;
 	fogColor.set(0,1,0,1);
 	
 	bUseCircle = bUseSquare = bUseTriangle = bUseDot = true;
+	
+	bBurst = bOctahedron = bTetrahedron = bDodecagedron = true;
 
 	
 	//setupParticles
@@ -526,7 +535,18 @@ void CloudsVisualSystemFireworks::explodeFireWorkAtRandom()
 	
 	fireWorkExplosionTime = ofGetElapsedTimef();
 	
-	int randFWType = ofRandom(0,6);
+	int randFWType;
+	vector<int> fwIndex;
+	
+	if(bDodecagedron) fwIndex.push_back( 0 );
+	if(bBurst) fwIndex.push_back( 1 );
+	if(bOctahedron) fwIndex.push_back( 2 );
+	if(bTetrahedron) fwIndex.push_back( 3 );
+	
+	if(fwIndex.size() == 0)	randFWType = 4;
+	else randFWType = fwIndex[ min( int(fwIndex.size())-1, (int) ofRandom(0, fwIndex.size() ) ) ];
+
+	
 	switch (randFWType) {
 		case 0:
 			explodeGeometry( dodecagedronPoints, camTarget + offset, camTarget + rocketStart );
@@ -544,12 +564,7 @@ void CloudsVisualSystemFireworks::explodeFireWorkAtRandom()
 			explodeGeometry( tetrahedronPoints, camTarget + offset, camTarget + rocketStart );
 			break;
 			
-		case 4:
-			explodeGeometry( dodecagedronPoints, camTarget + offset, camTarget + rocketStart );
-			break;
-			
 		default:
-			//explodeGeometry( dodecagedronPoints, camTarget + offset, camTarget + rocketStart );
 			explodeFireWork( camTarget + offset );
 			break;
 	}
@@ -756,4 +771,9 @@ float CloudsVisualSystemFireworks::getRandomTextureIndex()
 	else if( !bUseSquare && !bUseTriangle && !bUseCircle && !bUseDot) return 3;
 	
 	return mapIndex[ min( int(mapIndex.size())-1, (int) ofRandom(0, mapIndex.size() ) ) ];
+}
+
+int CloudsVisualSystemFireworks::getRandomFireworkType()
+{
+	return ofRandom(0,6);
 }

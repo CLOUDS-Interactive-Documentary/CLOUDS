@@ -331,6 +331,8 @@ public:
 	
 	ofVbo curvePoints;
 	
+	int getRandomFireworkType();
+	
 protected:
 	
 	
@@ -380,4 +382,5 @@ protected:
 	ofFloatColor fogColor;
 	
 	bool bUseCircle, bUseSquare, bUseTriangle, bUseDot;
+	bool bBurst, bOctahedron, bTetrahedron, bDodecagedron;
 };
