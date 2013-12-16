@@ -291,7 +291,8 @@ public:
 	float fireWorkExplosionTime;
 	
 	//render attributes
-	ofVec4f startColor, endColor;
+	ofFloatColor startColor, endColor;
+	float startColorSaturation, endColorSaturation;
 	
 	ofxUISuperCanvas* fireworksRenderGui;
 	ofxUISuperCanvas* fireworksBehaviorGui;
@@ -330,8 +331,7 @@ public:
 	int rocketCount;
 	
 	ofVbo curvePoints;
-	
-	int getRandomFireworkType();
+
 	
 protected:
 	
@@ -380,6 +380,7 @@ protected:
 	
 	float fogDistance, fogAttenuation;
 	ofFloatColor fogColor;
+	float fogSaturation;
 	
 	bool bUseCircle, bUseSquare, bUseTriangle, bUseDot;
 	bool bBurst, bOctahedron, bTetrahedron, bDodecagedron;

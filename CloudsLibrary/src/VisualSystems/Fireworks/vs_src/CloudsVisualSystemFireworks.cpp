@@ -86,10 +86,11 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	
 	fireworkGui->addLabel("color_birth");
 	fireworkGui->addImageSampler("birth_color_map", &colorSampleImage, (float)colorSampleImage.getWidth()/2, (float)colorSampleImage.getHeight()/2 );
+	fireworkGui->addSlider("birth_saturation", 0, 1, &startColorSaturation );
 	
 	fireworkGui->addLabel("color_death");
 	fireworkGui->addImageSampler("death_color_map", &colorSampleImage, (float)colorSampleImage.getWidth()/2, (float)colorSampleImage.getHeight()/2 );
-	
+	fireworkGui->addSlider("death_saturation", 0, 1, &endColorSaturation );
 	
 	ofAddListener(fireworkGui->newGUIEvent, this, &CloudsVisualSystemFireworks::selfGuiEvent);
 	guis.push_back(fireworkGui);
@@ -104,6 +105,8 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	fireworkFogGui->addSpacer();
 	fireworkFogGui->addLabel("FogColor");
 	fireworkFogGui->addImageSampler("fogColor", &colorSampleImage, 100, 100);
+	fireworkFogGui->addSlider("fogSaturation", 0, 1.1, &fogSaturation);
+	fireworkFogGui->addSpacer();
 	fireworkFogGui->addSlider("FogDistance", 100, 3000, &fogDistance);
 	fireworkFogGui->addSlider("fogAttenuation", 0, 2, &fogAttenuation);
 	
@@ -118,14 +121,12 @@ void CloudsVisualSystemFireworks::selfGuiEvent(ofxUIEventArgs &e){
 	if( e.widget->getName() == "birth_color_map"){
 		
 		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
-		ofFloatColor col =  sampler->getColor();
-		startColor.set( col.r, col.g, col.b, 1. );
+		startColor = sampler->getColor();
 	}
 	else if( e.widget->getName() == "death_color_map"){
 		
 		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
-		ofFloatColor col =  sampler->getColor();
-		endColor.set( col.r, col.g, col.b, 1. );
+		endColor = sampler->getColor();
 	}
 	else if( e.widget->getName() == "fogColor")
 	{
@@ -180,6 +181,8 @@ void CloudsVisualSystemFireworks::selfSetup()
 	bUseCircle = bUseSquare = bUseTriangle = bUseDot = true;
 	
 	bBurst = bOctahedron = bTetrahedron = bDodecagedron = true;
+	
+	startColorSaturation = endColorSaturation = fogSaturation = 1;
 
 	
 	//setupParticles
@@ -411,8 +414,14 @@ void CloudsVisualSystemFireworks::selfDraw()
 	shader.setUniform1f( "particleSize", particleSize);
 	
 	shader.setUniform3f("cameraPosition", camPos.x, camPos.y, camPos.z );
-	shader.setUniform4f("startColor", startColor.x, startColor.y, startColor.z, startColor.w );
-	shader.setUniform4f("endColor", endColor.x, endColor.y, endColor.z, endColor.w );
+	
+	ofFloatColor c0 = startColor;
+	c0.setSaturation( startColorSaturation );
+	
+	ofFloatColor c1 = endColor;
+	c1.setSaturation( endColorSaturation );
+	shader.setUniform4f("startColor", c0.r, c0.g, c0.b, c0.a );
+	shader.setUniform4f("endColor", c1.r, c1.g, c1.b, c1.a );
 	
 	shader.setUniform3f( "gravity", gravity.x, gravity.y, gravity.z );
 	
@@ -430,7 +439,9 @@ void CloudsVisualSystemFireworks::selfDraw()
 	shader.setUniform3f("camearPosition", camPos.x, camPos.y, camPos.z);
 	shader.setUniform1f("fogDistance", fogDistance);
 	shader.setUniform1f("fogAttenuation", fogAttenuation);
-	shader.setUniform4f("fogColor", fogColor.r, fogColor.g, fogColor.b, fogColor.a );
+	ofFloatColor fc = fogColor;
+	fc.setSaturation(fogSaturation);
+	shader.setUniform4f("fogColor", fc.r, fc.g, fc.b, fc.a );
 	
 	vbo.drawElements( GL_POINTS, indexCount );
 	
@@ -535,6 +546,8 @@ void CloudsVisualSystemFireworks::explodeFireWorkAtRandom()
 	
 	fireWorkExplosionTime = ofGetElapsedTimef();
 	
+	
+	//get an active firework type and explode it
 	int randFWType;
 	vector<int> fwIndex;
 	
@@ -546,7 +559,6 @@ void CloudsVisualSystemFireworks::explodeFireWorkAtRandom()
 	if(fwIndex.size() == 0)	randFWType = 4;
 	else randFWType = fwIndex[ min( int(fwIndex.size())-1, (int) ofRandom(0, fwIndex.size() ) ) ];
 
-	
 	switch (randFWType) {
 		case 0:
 			explodeGeometry( dodecagedronPoints, camTarget + offset, camTarget + rocketStart );
@@ -768,12 +780,8 @@ float CloudsVisualSystemFireworks::getRandomTextureIndex()
 	if(bUseCircle) mapIndex.push_back(1);
 	if(bUseSquare) mapIndex.push_back(2);
 	if(bUseDot) mapIndex.push_back(3);
-	else if( !bUseSquare && !bUseTriangle && !bUseCircle && !bUseDot) return 3;
+	
+	if(mapIndex.size() == 0) return 3;
 	
 	return mapIndex[ min( int(mapIndex.size())-1, (int) ofRandom(0, mapIndex.size() ) ) ];
-}
-
-int CloudsVisualSystemFireworks::getRandomFireworkType()
-{
-	return ofRandom(0,6);
 }
