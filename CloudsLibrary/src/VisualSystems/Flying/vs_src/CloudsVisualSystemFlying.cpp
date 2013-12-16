@@ -312,6 +312,14 @@ void CloudsVisualSystemFlying::guiRenderEvent(ofxUIEventArgs &e)
     }
 }
 
+// selfPresetLoaded is called whenever a new preset is triggered
+// it'll be called right before selfBegin() and you may wish to
+// refresh anything that a preset may offset, such as stored colors or particles
+void CloudsVisualSystemFlying::selfPresetLoaded(string presetPath)
+{
+    generate();
+}
+
 void CloudsVisualSystemFlying::selfGuiEvent(ofxUIEventArgs &e)
 {
 	if(e.widget->getName() == "Custom Button"){
@@ -346,13 +354,6 @@ void CloudsVisualSystemFlying::selfSetupGui() {
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
     
-}
-
-// selfPresetLoaded is called whenever a new preset is triggered
-// it'll be called right before selfBegin() and you may wish to
-// refresh anything that a preset may offset, such as stored colors or particles
-void CloudsVisualSystemFlying::selfPresetLoaded(string presetPath){
-	
 }
 
 //do things like ofRotate/ofTranslate here
