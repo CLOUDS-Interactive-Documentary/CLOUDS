@@ -256,7 +256,7 @@ class CloudsVisualSystem {
     void toggleGUIS();
     void toggleGuiAndPosition(ofxUISuperCanvas *g);
     void deleteGUIS();
-    
+    void setColors();
 	void setCurrentCamera( ofCamera& cam );
 	void setCurrentCamera( ofCamera* swappedInCam );
 	virtual ofCamera& getCameraRef();
@@ -291,6 +291,15 @@ class CloudsVisualSystem {
     ofxUISuperCanvas *camGui;
     ofxUISuperCanvas *presetGui;
     ofxUISuperCanvas *tlGui;
+    
+    //UI Colours
+    ofxUIColor cb;
+    ofxUIColor co;
+    ofxUIColor coh;
+    ofxUIColor cf;
+    ofxUIColor cfh;
+    ofxUIColor cp;
+    ofxUIColor cpo;
 	
 	void stackGuiWindows();
 	void drawScene();
