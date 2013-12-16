@@ -93,13 +93,14 @@ void CloudsVisualSystemTwitter::selfSetup()
     bRenderText = false;
     stringWidth = 10;
     font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
-    ofEnableSmoothing();
     initSystem(getVisualSystemDataPath() +"graphs/Spiky2_TwitterOneuser_old.net");
-//    currentMeshFileName = "ALPHA";
+
 }
 
 void CloudsVisualSystemTwitter::selfBegin()
 {
+
+    ofEnableSmoothing();
 
 
 }
@@ -458,7 +459,7 @@ void CloudsVisualSystemTwitter::loadMesh(){
     edgeMesh.clear();
     nodeMesh.clear();
     int  currentIndex =0;
-    
+
     for(int j=0; j<tweeters.size(); j++){
         
         for (int k=0; k<tweeters[j].linksById.size(); k++) {
@@ -492,7 +493,7 @@ void CloudsVisualSystemTwitter::loadMesh(){
                     
                 }
                 else{
-                    //                cout<<"alread a link between "<< tweeters[j].name << " and "<<t.name<<endl;
+                    
                 }
             }
 
@@ -664,6 +665,11 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
     
 }
 
+void CloudsVisualSystemTwitter::updateLabelWithCurrentMeshName(string name){
+    ofxUILabel* l =(ofxUILabel*)clusterGui->getWidget("MESH FILE");
+    l->setLabel(name);
+}
+
 void CloudsVisualSystemTwitter::initSystem(string filePath){
     
     vector<string> strs =ofSplitString(filePath, "_");
@@ -686,8 +692,11 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     else{
         cout<<"poop : " <<strs[strs.size()-1]<<endl;
     }
-
+    xScale = 100;
+    yScale = 100;
+    zScale = 100;
     parseClusterNetwork(filePath);
+    updateLabelWithCurrentMeshName(currentMeshFileName);
     loadMesh();
     std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
     currentDateIndex = dateIndex.size() -1;
@@ -739,8 +748,22 @@ void CloudsVisualSystemTwitter::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemTwitter::selfPresetLoaded(string presetPath)
 {
     ofxUILabel* l =(ofxUILabel*)clusterGui->getWidget("MESH FILE");
-    l->setLabel(currentMeshFileName);
-    cout<<l->getName()<<"preset loaded"<<endl;
+    currentMeshFileName = l->getLabel();
+    
+    
+    string presetMeshPath = getVisualSystemDataPath() + "graphs/" + currentMeshFileName;
+    if(presetMeshPath == currentMeshFilePath){
+        
+        cout<<currentMeshFileName<<" was already loaded "<<endl;
+    }
+    else{
+        cout<<"loading mesh from : "<<presetMeshPath<<endl;
+
+        initSystem(presetMeshPath);     
+        updateLabelWithCurrentMeshName(currentMeshFileName);
+    }
+
+
 }
 
 
@@ -814,6 +837,7 @@ void CloudsVisualSystemTwitter::selfDrawBackground()
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemTwitter::selfEnd()
 {
+
     
 }
 // this is called when you should clear all the memory and delet anything you made in setup
@@ -834,6 +858,16 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
     }
     if(args.key == 'j'){
         cout<<textColor.getHue()<<" , "<<textColor.getSaturation()<<" , "<<textColor.getBrightness()<<endl;
+    }
+    if(args.key == 'l'){
+        ofxUIColor cb = ofxUIColor(128,0,0,180);
+        ofxUIColor co = ofxUIColor(255, 255, 255, 100);
+        ofxUIColor coh = ofxUIColor(255, 255, 255, 200);
+        ofxUIColor cf = ofxUIColor(255, 255, 255, 200);
+        ofxUIColor cfh = ofxUIColor(255, 255, 255, 255);
+        ofxUIColor cp = ofxUIColor(0, 100);
+        ofxUIColor cpo =  ofxUIColor(255, 200);
+        clusterGui->setUIColors( cb, co, coh, cf, cfh, cp, cpo );
     }
     
 }

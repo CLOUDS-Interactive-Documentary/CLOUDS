@@ -97,6 +97,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     map<pair<string, string>, pair<int, int> >lineIndexPairs;
     map<string,int> numberOfMentions;
     int currentDateIndex;
+    void updateLabelWithCurrentMeshName(string name);
     
 
     
@@ -150,9 +151,12 @@ protected:
     
     string currentMeshFilePath;
     string currentMeshFileName;
+    int theme = 0;
     float xScale,yScale, zScale;
     
     bool rotateModel;
+    
+    
     
     
     
