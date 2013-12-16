@@ -92,6 +92,7 @@ void CloudsVisualSystemTwitter::selfSetup()
     bRenderMesh = true;
     bRenderText = false;
     stringWidth = 10;
+    tweetFeedRect = ofRectangle (0, 0,  ofGetWidth()/2, ofGetHeight());
     font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
 
 
@@ -181,11 +182,13 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     twitterFeedGui->copyCanvasStyle(gui);
     twitterFeedGui->setName("TWITTER FEED");
     twitterFeedGui->addSpacer();
+    twitterFeedGui->addToggle("RENDER FEEDS", &bRenderFeed);
+    twitterFeedGui->addSpacer();
     twitterFeedGui->addLabel("FEED RECT");
-    twitterFeedGui->addMinimalSlider("FEED X", 10, 100, &tweetFeedRect.x);
-    twitterFeedGui->addMinimalSlider("FEED Y", 10, 100, &tweetFeedRect.y);
-    twitterFeedGui->addMinimalSlider("FEED WIDTH", 10, 100, &tweetFeedRect.width);
-    twitterFeedGui->addMinimalSlider("FEED HEIGHT", 10, 100, &tweetFeedRect.height);
+    twitterFeedGui->addMinimalSlider("FEED X", 1, ofGetWidth(), &tweetFeedRect.x);
+    twitterFeedGui->addMinimalSlider("FEED Y", 1, ofGetHeight(), &tweetFeedRect.y);
+    twitterFeedGui->addMinimalSlider("FEED WIDTH", 1, ofGetWidth(), &tweetFeedRect.width);
+    twitterFeedGui->addMinimalSlider("FEED HEIGHT", 1, ofGetHeight(), &tweetFeedRect.height);
     
     ofAddListener(twitterFeedGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(twitterFeedGui);
@@ -349,14 +352,16 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
     
     activeTweeters.clear();
+    activeTweets.clear();
     
     for(int i=0; i<tweeters.size(); i++){
         if(tweeters[i].hasTweetOnDate(dateIndex[index])){
             activeTweeters.push_back(&tweeters[i]);
             vector<Tweet> tweetsOnDate = tweeters[i].getTweetsByDate(dateIndex[index]);
-            
+
             for(int k=0; k<tweetsOnDate.size();k ++){
-                
+                activeTweets.push_back(tweetsOnDate[k].tweet);
+
                 for(int l=0; l<tweetsOnDate[k].mentionedUsers.size(); l++){
                     int user = getUserIdByName(tweetsOnDate[k].mentionedUsers[l]);
                     if(user != -1){
@@ -388,11 +393,6 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
             nodeMesh.setColor(tweeters[i].nodeVertexIndex, nodeActiveColor);
         }
     }
-    
-    
-    
-    
-    
 }
 void CloudsVisualSystemTwitter::updateMesh(){
     
@@ -837,6 +837,21 @@ void CloudsVisualSystemTwitter::selfDraw()
     
 }
 
+void CloudsVisualSystemTwitter::drawFeed()
+{
+    int numRects = activeTweets.size()/(int)tweetFeedRect.height;
+    numRects = 10;
+    for(int i =0; i<numRects; i++){
+//        ofSetColor(100, 100, 0);
+        ofRectangle r = ofRectangle(tweetFeedRect.x,tweetFeedRect.y + i*50    ,tweetFeedRect.width,100);
+        ofRect(r);
+        drawText2D(activeTweets[i]h, ofVec2f(tweetFeedRect.x,tweetFeedRect.y + i*50));
+//        cout<<activeTweets[0]->tweet<<endl;
+        
+    }
+    
+}
+
 // draw any debug stuff here
 void CloudsVisualSystemTwitter::selfDrawDebug()
 {
@@ -846,8 +861,13 @@ void CloudsVisualSystemTwitter::selfDrawDebug()
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemTwitter::selfDrawBackground()
 {
-    
-    ofRect(tweetFeedRect);
+    if(bRenderFeed){
+        ofPushStyle();
+        ofNoFill();
+        ofRect(tweetFeedRect);
+        drawFeed();
+        ofPopStyle();
+    }
 }
 
 // this is called when your system is no longer drawing.
@@ -888,6 +908,25 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
     }
     
 }
+void CloudsVisualSystemTwitter:: drawText2D(string text, ofVec2f pos){
+
+    ofPushMatrix();
+    
+//    ofxBillboardBeginSphericalCheat(ofVec3f(pos.x,pos.y,0));
+    
+    ofPushStyle();
+    ofSetColor(textColor);
+    
+//    cout<<"IM HERE"<<endl;
+//    cout<<pos<<endl;
+//    ofTranslate(pos.x,pos.y,0);
+    font.drawString(ofToUpper(text),pos.x,pos.y);
+    ofPopStyle();
+    
+//    ofxBillboardEnd();
+    
+    ofPopMatrix();
+}
 void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
     
     ofPushMatrix();
@@ -900,6 +939,7 @@ void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
     ofScale(0.01,-0.01,0.01);
     ofTranslate(pos.x,pos.y,pos.z);
     font.drawString(ofToUpper(text),0,0);
+
     ofPopStyle();
     
     ofxBillboardEnd();

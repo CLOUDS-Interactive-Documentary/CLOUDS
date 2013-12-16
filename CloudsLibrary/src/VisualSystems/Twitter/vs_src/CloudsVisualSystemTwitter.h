@@ -54,6 +54,9 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     void initSystem(string filePath);
     
+    
+    //twitter feed
+    void drawFeed();
     //i/o stuff
     void loadJSONData(string folderName);
     void addUsersFromMentions();
@@ -77,7 +80,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     ofxJSONElement result;
     ofxFTGLSimpleLayout font;
     ofxFTGLTextAlignment textAlign;
-    bool bRenderText;
+
     float stringWidth;
     float fontSize;
     int minUserMentions;
@@ -88,7 +91,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void reloadMeshColor();
     void updateMeshFromTweets(int index);
     void drawText(string text, ofVec3f pos);
-    bool bRenderMesh;
+    void drawText2D(string text, ofVec2f pos);
 
     //helpers 
     vector<Date> dateIndex;
@@ -98,7 +101,11 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     map<string,int> numberOfMentions;
     int currentDateIndex;
     void updateLabelWithCurrentMeshName(string name);
-    
+
+    // Ma boooooools
+    bool bRenderMesh;
+    bool bRenderText;
+    bool bRenderFeed;
 
     
 protected:
@@ -126,6 +133,7 @@ protected:
     
 
     vector<Tweeter*> activeTweeters;
+    vector<string> activeTweets;
 
     float baseHue,baseSat,baseBri,baseAlpha;
     float tweetHue, tweetSat, tweetBri, tweetAlpha;
