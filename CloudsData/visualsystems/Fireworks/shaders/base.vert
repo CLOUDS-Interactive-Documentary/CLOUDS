@@ -3,7 +3,7 @@ uniform sampler2DRect map;
 uniform vec4 startColor;
 uniform vec4 endColor;
 
-uniform float fogDist = 1000.;
+uniform float fogDistance = 1000.;
 uniform float fogAttenuation = 2.;
 uniform float fogExpo = 2.;
 uniform vec4 fogColor = vec4(0.,0.,0.,1.);
@@ -85,14 +85,14 @@ void main(){
 	
 	//point size
 	float camDelta = length( ecPosition );
-	attenuation = max(0., 1. -  camDelta / 400.);
+	attenuation = pow(max(0., 1. -  camDelta / 500.), 2.);
 	pointSize = max( minPointSize, min( maxPointSize, particleSize * attenuation * (1. - age) ) );
 	gl_PointSize = pointSize;
 	
 	//color
-	color = mix( startColor, endColor, pow(ma, 3.) );// age );
+	color = mix( startColor, endColor, pow(ma, 3.) );
 	
-	color = mix( fogColor, color, pow( (1. - camDelta / fogDist), fogExpo) * fogAttenuation );
+	color = mix( fogColor, color, pow( (1. - camDelta / fogDistance), fogExpo) * fogAttenuation );
 	
 	//rotation
 	float angle = rotationRate * (birthTime + pos.x + pos.y + pos.z);
@@ -102,5 +102,5 @@ void main(){
 	q.w = cos(angle / 2.);
 	
 	//texture index
-	tIndex = mod( birthTime*1., 3.);
+	tIndex = gl_Color.b;// mod( birthTime*1., 4.);
 }
