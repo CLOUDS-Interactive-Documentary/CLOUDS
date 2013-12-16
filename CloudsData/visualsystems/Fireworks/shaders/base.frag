@@ -19,6 +19,8 @@ varying float attenuation;
 varying vec4 q;
 varying float tIndex;
 
+varying float fogAmount;
+
 vec3 rotateVectorByQuaternion( vec3 v, vec4 q ) {
 	
 	vec3 dest = vec3( 0.0 );
@@ -71,5 +73,5 @@ void main(){
 	}
 	
 	//color
-	gl_FragColor = color * depthVal;// * (attenuation * .5 + .5);
+	gl_FragColor = color * depthVal;
 }
