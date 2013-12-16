@@ -126,7 +126,7 @@ protected:
     
     // plants
     vector<string> rulesFiles;
-    vector<float> rulesWeightings;
+    vector<float> rulesWeights;
     ofShader plantsShader;
     unsigned numPlantMeshes;
     float numNearbyPlants;
