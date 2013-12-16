@@ -21,9 +21,7 @@ CloudsVisualSystemSwim::CloudsVisualSystemSwim() : camYRot(0), camSpeed(0), maxC
 // geometry should be loaded here
 void CloudsVisualSystemSwim::selfSetup()
 {
-    ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemSwim::onWindowResized);
-    
-    snow.init(getVisualSystemDataPath(), 100000);
+    snow.init(getVisualSystemDataPath());
     bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
     
@@ -46,6 +44,8 @@ void CloudsVisualSystemSwim::selfBegin()
 void CloudsVisualSystemSwim::selfUpdate()
 {
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
+    
+    if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
     
     // cam
     camYRot += CAM_DAMPING * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20, true) - camYRot);
@@ -84,12 +84,13 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     //rdrGui->addMinimalSlider("creatureFogEnd", 0.f, 10000.f, &Creature::fogEnd);
     
     rdrGui->addMinimalSlider("maxCamSpeed", 0.f, 1500.f, &maxCamSpeed);
-    rdrGui->addRangeSlider("creatureFogStartEnd (range)", 0.f, 10000.f, &Creature::fogStart, &Creature::fogEnd);
     
-    rdrGui->addRangeSlider("snowFogStartEnd (range)", 0.f, 10000.f, &snow.getFogStartRef(), &snow.getFogEndRef());
-    rdrGui->addRangeSlider("snowInnerStartEnd (range)", 0.f, 2000.f, &snow.getInnerFogStartRef(), &snow.getInnerFogEndRef());
-    rdrGui->addRangeSlider("snowAlpha (range)", 0.f, 1.f, &snow.getAlphaMinRef(), &snow.getAlphaMaxRef());
-    rdrGui->addRangeSlider("snowSize (range)", 0.f, 1000.f, &snow.getSizeMinRef(), &snow.getSizeMaxRef());
+    rdrGui->addRangeSlider("creatureFogRange", 0.f, 10000.f, &Creature::fogStart, &Creature::fogEnd);
+    rdrGui->addRangeSlider("snowFogRange", 0.f, 10000.f, &snow.getFogStartRef(), &snow.getFogEndRef());
+    rdrGui->addRangeSlider("snowInnerFogRange", 0.f, 2000.f, &snow.getInnerFogStartRef(), &snow.getInnerFogEndRef());
+    rdrGui->addRangeSlider("snowAlphaRange", 0.f, 1.f, &snow.getAlphaMinRef(), &snow.getAlphaMaxRef());
+    rdrGui->addRangeSlider("snowSizeRange", 0.f, 1000.f, &snow.getSizeMinRef(), &snow.getSizeMaxRef());
+    rdrGui->addIntSlider("numSnowParticles", 1000, 100000, &snow.getNumParticlesRef());
     
     //rdrGui->addMinimalSlider("snowInnerFogStart", 0, 2000.f, &snow.getInnerFogStartRef());
     //rdrGui->addMinimalSlider("snowInnerFogEnd", 0, 2000.f, &snow.getInnerFogEndRef());
@@ -182,11 +183,6 @@ void CloudsVisualSystemSwim::selfPresetLoaded(string presetPath)
 {
     creatures.generate();
     snow.generate();
-}
-
-void CloudsVisualSystemSwim::onWindowResized(ofResizeEventArgs& args)
-{
-    post.init(args.width, args.height, true);
 }
 
 ofxUISuperCanvas* CloudsVisualSystemSwim::createCustomGui(const string& name)

@@ -87,6 +87,7 @@ class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
+	ofShader shader;
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 	ofCamera& getCameraRef(){
@@ -100,23 +101,16 @@ class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
     
     //  Your Stuff
     //
-	ofLight headlight;
-	float corkscrewFactor;
-	float lightDistance;
 	ofVec3f min;
 	ofVec3f max;
 	ofVec3f center;
 	int loadMesh(ofVboByteColor &vbo, string path);
 	int loadMeshPLY(ofVboByteColor &vbo, string path);
-	
-	
+	ofRange fogDistance;
 	ofCamera tunnelCam;
 	ofxUISuperCanvas* customGui;
 	int frameCount;
-	float fogDensity;
 	int numReplications;
-	float replicationOffset;
-	float cameraDistance;
 	float cameraSpeed;
 	vector<NamedVbo> vbos;
 	
@@ -131,7 +125,7 @@ class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
 	
 	ofEasyCam externalCam;
 
-	
+	void reloadShader();
 	void clear();
 	
 };

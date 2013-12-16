@@ -5,7 +5,12 @@ uniform float farClip;
 uniform sampler2D circleMap;
 uniform sampler2D squareMap;
 uniform sampler2D triangleMap;
-uniform sampler2D starMap;
+uniform sampler2D dotMap;
+
+uniform float useCircleMap;
+uniform float useSquareMap;
+uniform float useTriangleMap;
+uniform float useDotMap;
 
 uniform vec2 mapDim;
 
@@ -18,6 +23,8 @@ varying float attenuation;
 
 varying vec4 q;
 varying float tIndex;
+
+varying float fogAmount;
 
 vec3 rotateVectorByQuaternion( vec3 v, vec4 q ) {
 	
@@ -55,21 +62,20 @@ void main(){
 	float depthVal = 1. - pow( linearizeDepth( gl_FragCoord.z ), 2.);
 	
 	//texture sampling
-	int textureIndex = int(floor(tIndex));
 	vec4 texCol;
 	
 	if(pointSize > 2.){
 		
-		if(textureIndex == 0)		texCol = texture2D( triangleMap, rotUV );
-		else if(textureIndex == 1)	texCol = texture2D( circleMap, rotUV );
-		else if(textureIndex == 2)	texCol = texture2D( squareMap, rotUV );
-		else						texCol = texture2D( triangleMap, rotUV );
-		
+		if(tIndex < .5 && useTriangleMap > .5)			texCol = texture2D( triangleMap, rotUV );
+		else if(tIndex < 1.5 && useCircleMap > .5)	texCol = texture2D( circleMap, rotUV );
+		else if(tIndex < 2.5 && useSquareMap > .5)	texCol = texture2D( squareMap, rotUV );
+		else if(tIndex < 3.5 && useDotMap > .5)	texCol = texture2D( dotMap, rotUV );
+		else					texCol = texture2D( dotMap, rotUV );
 		
 		//discard low alphas
 		if(texCol.w < .01)	discard;
 	}
 	
 	//color
-	gl_FragColor = color * depthVal;// * (attenuation * .5 + .5);
+	gl_FragColor = color * depthVal;
 }

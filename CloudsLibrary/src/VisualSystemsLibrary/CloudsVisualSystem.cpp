@@ -1587,7 +1587,7 @@ void CloudsVisualSystem::setupMaterial(string name, ofxMaterial *m)
 //    g->addMinimalSlider("DV", 0.0, 1.0, &m->matDiffuseHSV.b, length, dim)->setShowValue(false);
 //    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
 //    g->addSpacer();
-//    
+	
     g->addLabel("EMISSIVE", OFX_UI_FONT_SMALL);
     g->addMinimalSlider("EH", 0.0, 1.0, &m->matEmissiveHSV.r, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
@@ -2658,7 +2658,7 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 	timeInfo.addTag("timeinfo");
 	timeInfo.pushTag("timeinfo");
 	timeInfo.addValue("indefinite", bTimelineIsIndefinite);
-	timeInfo.addValue("duration", timelineDuration);
+	timeInfo.addValue("duration", timeline->getInOutRange().span() * timeline->getDurationInSeconds());
 	timeInfo.addValue("introDuration", getIntroDuration());
 	timeInfo.addValue("outroDuration", getOutroDuration());
 	timeInfo.popTag();//timeinfo
@@ -3046,7 +3046,9 @@ void CloudsVisualSystem::selfPostDraw(){
             else {
                 ofSetColor(240,240,255, 175);
             }
-            ofCircle(it->second.position.x, it->second.position.y, ofMap(it->second.position.z, 2, -2, 5, 30, true) );
+            ofCircle(it->second.position.x,
+					 it->second.position.y,
+					 ofMap(it->second.position.z, 2, -2, 3, 10, true) );
 //            cout << " z pos " << it->second.position.z << endl;
         }
         ofPopStyle();

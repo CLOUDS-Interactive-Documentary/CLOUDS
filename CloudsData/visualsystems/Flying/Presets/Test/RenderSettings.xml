@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>249.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -11,9 +11,9 @@
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
-    <Name>growDist</Name>
-    <Value>538.916259766</Value>
+    <Kind>2</Kind>
+    <Name>cameraControl</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -26,9 +26,39 @@
     <Value>1848.275878906</Value>
 </Widget>
 <Widget>
-    <Kind>2</Kind>
-    <Name>cameraControl</Name>
-    <Value>1</Value>
+    <Kind>4</Kind>
+    <Name>numNearbyPlants</Name>
+    <Value>178.423645020</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>flower1.xml weighting</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>flower2.xml weighting</Name>
+    <Value>0.231527090</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>tree1.xml weighting</Name>
+    <Value>0.704433501</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>tree2.xml weighting</Name>
+    <Value>0.384236455</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>growDist</Name>
+    <Value>538.916259766</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>camAvoidDist</Name>
+    <Value>500.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

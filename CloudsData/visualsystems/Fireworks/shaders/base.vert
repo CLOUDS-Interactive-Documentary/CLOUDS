@@ -2,6 +2,14 @@
 uniform sampler2DRect map;
 uniform vec4 startColor;
 uniform vec4 endColor;
+
+uniform float fogDistance = 1000.;
+uniform float fogAttenuation = 2.;
+uniform float fogExpo = 2.;
+uniform vec4 fogColor = vec4(0.,0.,0.,1.);
+
+uniform vec3 cameraPosition;
+
 uniform float rotationRate = 1.;
 uniform float nearClip;
 uniform float farClip;
@@ -13,7 +21,6 @@ uniform float frameRate = .016;
 uniform float particleSize = 10.;
 
 uniform vec3 gravity = vec3( 0., -98., 0. );
-uniform vec3 cameraPosition;
 
 uniform float speed = 10.;
 
@@ -37,17 +44,13 @@ float HALF_PI = 1.57079632679;
 float CubicIn( float k ) {
 	return k * k * k;
 }
-	
 float CubicOut( float k ) {
 	return --k * k * k + 1;
 }
-
-
 	
 float QuarticIn(float k) {
 	return k * k * k * k;
 }
-	
 float QuarticOut(float k) {
 	return 1 - ( --k * k * k * k );
 }
@@ -55,7 +58,6 @@ float QuarticOut(float k) {
 float QuinticIn ( float k ) {
 	return k * k * k * k * k;
 }
-	
 float QuinticOut (float k ) {
 	return --k * k * k * k * k + 1;
 }
@@ -70,7 +72,7 @@ void main(){
 	
 	//velocity
 	vec3 vel = gl_Normal.xyz;
-	float ma = QuarticOut( age );
+	float ma = CubicOut( age );
 	vec3 posOffset = vel * ma;
 //	posOffset += gravity * ma;
 	
@@ -82,13 +84,15 @@ void main(){
 	eye = -normalize( ecPosition3 );
 	
 	//point size
-//	float attenuation = 1. - pow( max( 0.,min( 1., (length( ecPosition ) + 300.)/ 10000.)), 2.);//1000. / distance(pos.xyz, cameraPosition);
-	attenuation =  100. / length( ecPosition );
+	float camDelta = length( ecPosition );
+	attenuation = pow(max(0., 1. -  camDelta / 500.), 2.);
 	pointSize = max( minPointSize, min( maxPointSize, particleSize * attenuation * (1. - age) ) );
 	gl_PointSize = pointSize;
 	
 	//color
-	color = mix( startColor, endColor, min(1., max(0., ma * 2. - 1. )) );// age );
+	color = mix( startColor, endColor, pow(ma, 3.) );
+	
+	color = mix( fogColor, color, pow( (1. - camDelta / fogDistance), fogExpo) * fogAttenuation );
 	
 	//rotation
 	float angle = rotationRate * (birthTime + pos.x + pos.y + pos.z);
@@ -98,5 +102,5 @@ void main(){
 	q.w = cos(angle / 2.);
 	
 	//texture index
-	tIndex = mod( birthTime*1., 3.);
+	tIndex = gl_Color.b;// mod( birthTime*1., 4.);
 }

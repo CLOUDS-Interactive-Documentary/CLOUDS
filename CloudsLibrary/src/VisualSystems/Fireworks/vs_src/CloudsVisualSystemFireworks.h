@@ -89,6 +89,7 @@ public:
 		endTime = startTime + span;
 		bClamp = true;
 		bEnded = false;
+		textureIndex = ofRandom(0, 4);
 	};
 	
 	FireworkEmitter(float _span)
@@ -101,7 +102,7 @@ public:
 	};
 	~FireworkEmitter(){};
 	
-	void setup( float _startTime, float _span, ofVec3f _startPos, ofVec3f _endPos )
+	void setup( float _startTime, float _span, ofVec3f _startPos, ofVec3f _endPos, int _textureIndex )
 	{
 		startTime = _startTime;
 		span = _span;
@@ -110,6 +111,8 @@ public:
 		
 		startPos = _startPos;
 		endPos = _endPos;
+		
+		textureIndex = _textureIndex;
 	}
 	
 	void update(float t = ofGetElapsedTimef())
@@ -141,6 +144,8 @@ public:
 		vel = e.vel;
 		origin = e.origin;
 		q = e.q;
+		
+		textureIndex = e.textureIndex;
 	};
 	
 	float startTime, endTime, age, span;
@@ -150,6 +155,8 @@ public:
 	
 	bool bEnded, bStarted;
 	ofxEasingSine ease;
+	
+	int textureIndex;
 };
 
 //TODO: rename this to your own visual system
@@ -242,9 +249,9 @@ public:
 	
 	void updateVbo();
 	void explodeFireWork( ofVec3f origin=ofVec3f(), ofVec3f vel=ofVec3f() );
-	void emitFromPoint( ofVec3f point, ofVec3f dir, float lifespan=ofRandom(1.,3.), float t=ofGetElapsedTimef() );
+	void emitFromPoint( ofVec3f point, ofVec3f dir, float lifespan=ofRandom(1.,3.), float t=ofGetElapsedTimef(), float texIndex=0 );
 	
-	void trailPoint( ofVec3f point, ofVec3f vel = ofVec3f(), int count = 10 );
+	void trailPoint( ofVec3f point, ofVec3f vel = ofVec3f(), int count = 10, float texIndex = 0);
 	
 	//camera
 //	ofEasyCam camera;
@@ -300,6 +307,8 @@ public:
 	void explodeGeometry( vector<ofVec3f>& vertices, ofVec3f offset, ofVec3f rocketStart );
 	void dodecahedronExplostion( ofVec3f offset );
 	
+	float getRandomTextureIndex();
+	
 	ofVec3f nextExplosion;
 	
 	int numSprites;
@@ -328,6 +337,12 @@ protected:
 	ofxUISuperCanvas* camGui;
 	
 	ofxUISuperCanvas* customGui;
+	
+	ofxUISuperCanvas* fireworkGui;
+	
+	ofxUISuperCanvas* fireworkFogGui;
+	
+	
 	bool customToggle;
 	float customFloat1;
 	float customFloat2;
@@ -344,6 +359,7 @@ protected:
 	ofImage triangleImage;
 	ofImage squareImage;
 	ofImage circleImage;
+	ofImage dotImage;
 	
 	float minLifeSpan, maxLifeSpan;
 	ofImage colorSampleImage;
@@ -359,4 +375,9 @@ protected:
 	ofVec3f gravity;
 	
 	float cameraMotionScl;
+	
+	float fogDistance, fogAttenuation;
+	ofFloatColor fogColor;
+	
+	bool bUseCircle, bUseSquare, bUseTriangle, bUseDot;
 };

@@ -105,10 +105,8 @@ void CloudsVisualSystemLaplacianTunnel::selfSetupGui(){
     customGui->copyCanvasProperties(gui);
 	
 	customGui->addIntSlider("num replications", 1, 5, &numReplications);
-	customGui->addSlider("fog density", 0, .3, &fogDensity);
-	customGui->addSlider("light distance", 20, 600, &lightDistance);
-	customGui->addSlider("cam speed", 0, 10, &cameraSpeed);
-	customGui->addSlider("corkscrew factor", 0, .2, &corkscrewFactor);
+//	customGui->addSlider("fog density", 0, .3, &fogDensity);
+	customGui->addSlider("cam speed", 0, 2, &cameraSpeed);
 	customGui->addToggle("draw points", &bDrawPoints);
 	customGui->addToggle("external debug cam", &bUseExternalCamera);
 	customGui->addSlider("max look angle", 0, 90, &maxLookAngle);
@@ -159,7 +157,6 @@ void CloudsVisualSystemLaplacianTunnel::selfSetup(){
 	
 	ofDirectory objs(getVisualSystemDataPath(true) + "Meshes/colored");
 	objs.allowExt("vbo");
-	//objs.allowExt("ply");
 	objs.listDir();
 	
 	clear();
@@ -167,7 +164,6 @@ void CloudsVisualSystemLaplacianTunnel::selfSetup(){
 	min.set(999999);
 	max.set(-99999);
 	center.set(14.000,5.900,-13.950);
-	//center.set(14.000,5.900,13.950);
 	int numFiles = objs.numFiles();
 	vbos.resize( numFiles );
 	for(int i = 0; i < numFiles; i++){
@@ -178,8 +174,10 @@ void CloudsVisualSystemLaplacianTunnel::selfSetup(){
 	}
 	
 	sort(vbos.begin(), vbos.end(), meshsort);
-	cout << max << "  " << min << endl;
 	
+	reloadShader();
+	tunnelCam.setNearClip(.01);
+	tunnelCam.setFov(70);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -205,7 +203,6 @@ void CloudsVisualSystemLaplacianTunnel::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemLaplacianTunnel::selfUpdate(){
-
 	tunnelCam.setPosition( ofVec3f(tunnelCam.getPosition().x,
 								   tunnelCam.getPosition().y + cameraSpeed,
 								   tunnelCam.getPosition().z) );
@@ -224,49 +221,44 @@ void CloudsVisualSystemLaplacianTunnel::selfUpdate(){
 	rx.makeRotate(currentLookAngle.x, 0, 0, -1);
 	ry.makeRotate(currentLookAngle.y, -1, 0, 0);
 	tunnelCam.setOrientation(base * rx * ry);
-	
-	headlight.setPointLight();
-	headlight.setPosition(tunnelCam.getPosition() + ofVec3f(0,lightDistance,0));
-	
+		
 	currentGrowthIndex += (ofGetElapsedTimef() - lastFrameTime) * growthFPS;
 	lastFrameTime = ofGetElapsedTimef();
+}
+
+void CloudsVisualSystemLaplacianTunnel::reloadShader(){
+	shader.load(getVisualSystemDataPath() + "shaders/laplacian");
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemLaplacianTunnel::selfDraw(){
+	
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
+	glFrontFace(GL_CW);
+	
+	glPointSize(2);
 	if(vbos.size() > 0){
+		shader.begin();
 		
-		glPushAttrib(GL_FOG_BIT);
-		ofDisableLighting();
-		glEnable(GL_FOG);
-		glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
-		glFogi(GL_FOG_MODE, GL_EXP);
-		
-		glFogf(GL_FOG_DENSITY, powf(fogDensity,2));
-		
-		ofFloatColor bgColor = ofFloatColor::fromHsb(bgHue, bgSat, bgBri);
-		
-		GLfloat fogColor[4] = {bgColor.r/255.,bgColor.g/255.,bgColor.b/255., 1.0 };
-		glFogfv (GL_FOG_COLOR, fogColor);
-		glEnable(GL_DEPTH_TEST);
-		
-		ofEnableAlphaBlending();
-
-		//headlight.enable();
+		ofFloatColor color = ofFloatColor::fromHsb(bgHue/255., bgSat/255., bgBri/255.);
 		float spread = (max.y - min.y);
+		shader.setUniform1f("minFogDist",spread*2);
+		shader.setUniform1f("maxFogDist", spread*4);
+		shader.setUniform3f("fogColor",color.r,color.g,color.b);
 		float startY = min.y + tunnelCam.getPosition().y - fmod(tunnelCam.getPosition().y, spread);
 		
-		mat->begin();
 		ofSetColor(255);
 		
 		for(int i = 0; i < numReplications; i++){
 			ofPushMatrix();
-			glPointSize(2);
+			
 			float translateAmount = (startY + i*spread);
 			ofTranslate(0,translateAmount,0);
 			ofTranslate(center);
-			//ofRotate(translateAmount*corkscrewFactor,0,1,0);
+
 			ofRotate((i+int(tunnelCam.getPosition().y/spread))*90,0,1,0);
 			ofTranslate(-center);
 			float cameraoffset = tunnelCam.getPosition().y - translateAmount - spread;
@@ -282,7 +274,6 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 			else{
 				index = int( ofMap(cameraoffset, 0, -spread*numReplications, vbos.size()-1, 0.0, true) );
 			}
-			
 			if(bDrawPoints){
 				vbos[index].vbo->draw(GL_POINTS, 0, vbos[index].indexCount);
 			}
@@ -293,12 +284,11 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 			ofPopMatrix();
 		}
 
-		mat->end();
-		//headlight.disable();
-
-		glPopAttrib();
+		shader.end();
 	}
 	
+	glDisable(GL_CULL_FACE);
+
 }
 
 // draw any debug stuff here
@@ -336,7 +326,9 @@ void CloudsVisualSystemLaplacianTunnel::clear(){
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemLaplacianTunnel::selfKeyPressed(ofKeyEventArgs & args){
-	
+	if(args.key == 'R'){
+		reloadShader();
+	}
 }
 void CloudsVisualSystemLaplacianTunnel::selfKeyReleased(ofKeyEventArgs & args){
 	
