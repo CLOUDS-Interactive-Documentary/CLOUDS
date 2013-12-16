@@ -149,6 +149,7 @@ protected:
     ofFloatColor textColorModifier;
     
     string currentMeshFilePath;
+    string currentMeshFileName;
     float xScale,yScale, zScale;
     
     bool rotateModel;

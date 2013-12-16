@@ -89,17 +89,19 @@ void CloudsVisualSystemTwitter::selfSetup()
     yScale = 100;
     zScale = 100;
     rotateModel = false;
-//    initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMen_old.net");
-        initSystem(getVisualSystemDataPath() +"graphs/Spiky2_TwitterOneuser_old.net");
-    font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
     bRenderMesh = true;
     bRenderText = false;
     stringWidth = 10;
+    font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
+    ofEnableSmoothing();
+    initSystem(getVisualSystemDataPath() +"graphs/Spiky2_TwitterOneuser_old.net");
+//    currentMeshFileName = "ALPHA";
 }
 
 void CloudsVisualSystemTwitter::selfBegin()
 {
-    ofEnableSmoothing();
+
+
 }
 
 void CloudsVisualSystemTwitter::selfSetupGui()
@@ -112,6 +114,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	clusterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     clusterGui->addToggle("RENDER MESH", &bRenderMesh);
     clusterGui->addIntSlider("REFRESH RATE", 1, 100, &refreshRate);
+    clusterGui->addLabel("MESH FILE",currentMeshFileName);
     clusterGui->addMinimalSlider("EDGE DECAY", 0.01, 0.9   , &edgeDecayRate);
     clusterGui->addSpacer();
     clusterGui->addMinimalSlider("TWEET HUE", 0.0, 1.0,&tweetModifier.r);
@@ -143,9 +146,9 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addMinimalSlider("NODEA SAT", 0.0, 1.0, &nodeActiveModifier.g);
     clusterGui->addMinimalSlider("NODEA BRI", 0.0, 1.0, &nodeActiveModifier.b);
     clusterGui->addMinimalSlider("NODEA ALPHA", 0.0, 1.0, &nodeActiveModifier.a);
-    clusterGui->addMinimalSlider("X POS", 1, 100, &xScale);
-    clusterGui->addMinimalSlider("Y POS", 1, 100, &yScale);
-    clusterGui->addMinimalSlider("Z POS", 1, 100, &zScale);
+    clusterGui->addMinimalSlider("X POS", 1, 500, &xScale);
+    clusterGui->addMinimalSlider("Y POS", 1, 500, &yScale);
+    clusterGui->addMinimalSlider("Z POS", 1, 500, &zScale);
     clusterGui->addButton("RELOAD MESH", false);
     clusterGui->addSpacer();
     clusterGui->addToggle("ROTATE", &rotateModel);
@@ -168,8 +171,6 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     textGui->addSpacer();
     textGui->addMinimalSlider("STRING WIDTH", 1, 2000, &stringWidth);
     textGui->addMinimalSlider("SET SIZE", 0.1, 100, &fontSize);
-    
-    
     
     ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(textGui);
@@ -666,6 +667,10 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
 void CloudsVisualSystemTwitter::initSystem(string filePath){
     
     vector<string> strs =ofSplitString(filePath, "_");
+    vector<string> strs1 =ofSplitString(filePath, "/");
+    cout<<strs1[strs1.size()-1]<<endl;
+    currentMeshFileName  =  strs1[strs1.size()-1];
+
     
     currentMeshFilePath = filePath;
     clearData();
@@ -733,7 +738,9 @@ void CloudsVisualSystemTwitter::guiRenderEvent(ofxUIEventArgs &e){
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemTwitter::selfPresetLoaded(string presetPath)
 {
-	
+    ofxUILabel* l =(ofxUILabel*)clusterGui->getWidget("MESH FILE");
+    l->setLabel(currentMeshFileName);
+    cout<<l->getName()<<"preset loaded"<<endl;
 }
 
 
