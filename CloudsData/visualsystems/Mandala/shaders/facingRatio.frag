@@ -10,6 +10,6 @@ void main(void)
 
 	gl_FragColor = color;
 	gl_FragColor.xyz *= fr;
-	gl_FragColor.xyz += pow(fr, 128.);
+	gl_FragColor.xyz += pow(fr, 12.);
 }
 

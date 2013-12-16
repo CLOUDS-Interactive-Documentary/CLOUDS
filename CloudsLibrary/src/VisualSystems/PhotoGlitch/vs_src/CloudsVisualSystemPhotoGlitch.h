@@ -11,6 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "ofxTween.h"
 
 class PGCell
 {
@@ -18,6 +19,8 @@ public:
     int idx;
     int row, origRow;
     int col, origCol;
+    ofFloatColor avgColor;
+    ofxTween tweenX, tweenY;
 };
 
 //TODO: rename this to your own visual system
@@ -98,31 +101,58 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
 //		return myCustomCamera;
 //	}
     
-    void shuffle();
-    void reorder();
+    void clear();
+    void generate();
 
+    void shuffle();
+    void sortHue();
+    void sortBri();
+    void reorder();
+    
+    void tweenAll();
+    void tween(int i, int j = -1);
+    
+    static bool sortIdxForHue(int i, int j);
+    static bool sortIdxForBri(int i, int j);
+    static PGCell * cells;
+    
   protected:
     ofxUISuperCanvas * customGui;
     
     int numDivRows;
     int numDivCols;
     int numCells;
-    PGCell * cells;
-        
+    
     int numVerts;
     GLfloat * verts;
     GLfloat * texCoords;
+    GLfloat * colors;
     int numIndices;
     GLuint * indices;
     
     ofImage tex;
     ofVbo vbo;
     
+    ofDirectory imagesDir;
+    int selectedSrcImageIdx;
+    
+    int tweenDuration;
+    int tweenDelay;
+    
     float screenSliceWidth;
     float screenSliceHeight;
     float texSliceWidth;
     float texSliceHeight;
     
+    bool bUseColors;
+    bool bUseTexture;
+    
     bool bShouldShuffle;
+    bool bShouldSortHue;
+    bool bShouldSortBri;
     bool bShouldReorder;
+    
+    bool bDoPerpendicular;
+    
+    bool bShouldGenerate;
 };

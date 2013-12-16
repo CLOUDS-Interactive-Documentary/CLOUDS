@@ -21,7 +21,7 @@ CirclePacker::CirclePacker(float _width, float _height)
     height = _height;
     xcenter = width/2;
     ycenter = height/2;
-    padding = 20;
+    padding = 5;
     damping = 0.01;
     iterations = 1;
 }
@@ -52,8 +52,10 @@ void CirclePacker::pack()
                 float droot = sqrt(d);
                 
                 // proviamo a dare un peso rispetto al centro
-                float cd1 = fast_distance(c1.x, c1.y, xcenter, ycenter);
-                float cd2 = fast_distance(c1.x, c1.y, xcenter, ycenter);
+                float cd1 = ofDistSquared(c1.x, c1.y, xcenter, ycenter);
+                float cd2 = ofDistSquared(c1.x, c1.y, xcenter, ycenter);
+//                float cd1 = fast_distance(c1.x, c1.y, xcenter, ycenter);
+//                float cd2 = fast_distance(c1.x, c1.y, xcenter, ycenter);
                 
                 float total = dx + dy;
                 
@@ -70,17 +72,15 @@ void CirclePacker::pack()
     
     // contraction...
     //
-    /*
-     for (int i = 0; i < circles.size(); i++)
-     {
-     Circle c = (Circle) circles.get(i);
-     float vx = (c.x - xcenter) * damping;
-     float vy = (c.y - ycenter) * damping;
-     c.x -= vx;
-     c.y -= vy;
+
+     for (int i = 0; i < circles.size(); i++) {
+		 Circle& c = circles[i];
+		 float vx = (c.x - xcenter) * damping;
+		 float vy = (c.y - ycenter) * damping;
+		 c.x -= vx;
+		 c.y -= vy;
      }
-     //
-     */
+
 }
 
 void CirclePacker::update() {
@@ -93,18 +93,38 @@ void CirclePacker::update() {
  * Draw all the circles
  */
 
-void CirclePacker::draw()
+void CirclePacker::draw(bool _nasdaq, bool _blanks)
 {
+    if (_blanks == true){
     for (int i = 0; i < circles.size(); i++)
     {
         Circle& c = circles[i];
         if (c.r < 1)
         {
-            cout << "I would erase this one if I knew how" << endl;   // circles.erase(circles.begin() + i);
+          circles.erase(circles.begin() + i);
         }
         else
         {
             c.draw();
         }
+        }
     }
+    
+    if (_nasdaq == true){
+        for (int i = 0; i < circles.size(); i++)
+        {
+            Circle& c = circles[i];
+            if (c.r < 1)
+            {
+                circles.erase(circles.begin() + i);
+            }
+            else
+            {
+                c.drawCompanies();
+            }
+        }
+        
+    }
+    
 }
+

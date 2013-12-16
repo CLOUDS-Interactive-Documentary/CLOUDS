@@ -78,6 +78,17 @@ void CloudsVisualSystemRGBD::selfSetup(){
 
 }
 
+void CloudsVisualSystemRGBD::playTestVideo(){
+	if(ofFile::doesFileExist("TestVideo/Binx_field_of_data_vis.mov")){
+		getRGBDVideoPlayer().setup("TestVideo/Binx_field_of_data_vis.mov",
+								   "TestVideo/Binx_field_of_data_vis.xml" );
+		
+		getRGBDVideoPlayer().swapAndPlay();
+		
+	}
+
+}
+
 void CloudsVisualSystemRGBD::rebuildCaptionFont(){
     if(bUseOculusRift){
         captionFont.loadFont(GetCloudsDataPath() + "font/MateriaPro_Regular.ttf", captionFontSize);
@@ -738,7 +749,7 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 void CloudsVisualSystemRGBD::selfDraw(){
 	
 	ofPushMatrix();
-	
+	hasSpeaker = true;
 	if(drawCloud && hasSpeaker){
 
 //		cout << "RGBD DRAW" << endl;

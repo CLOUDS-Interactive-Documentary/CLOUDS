@@ -359,4 +359,7 @@ protected:
 	ofVec3f gravity;
 	
 	float cameraMotionScl;
+	
+	float fogDistance;
+	ofFloatColor fogColor;
 };

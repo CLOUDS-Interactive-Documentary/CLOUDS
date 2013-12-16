@@ -38,6 +38,10 @@ class CloudsVisualSystemCirclePacking: public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
+    
+    void regenerate();
+    void initializeNasdaq();
+    void initializeBlanks();
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
@@ -86,27 +90,26 @@ class CloudsVisualSystemCirclePacking: public CloudsVisualSystem {
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
-	
-
-    // if you use a custom camera to fly through the scene
-	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
-
-	//
-
   
     CirclePacker pack; 
 
-protected:
-    
-
-
+  protected:
     //  Your Stuff
     //
     
 	ofxUISuperCanvas* customGui;
 	bool customToggle;
-   
+    bool shouldRegenerate;
+    
+    bool NASDAQ;
+    bool BLANKS;
+	
+	ofFloatColor primaryColor;
+	ofFloatColor secondaryColor;
+	bool filled;
+	int numCircles;
+	float heroPercent;
+	ofRange smallSizeRange;
+	ofRange largeSizeRange;
+	
 };
