@@ -122,6 +122,8 @@ protected:
     float pointSize;
     ofxUISuperCanvas* clusterGui;
     ofxUISuperCanvas* textGui;
+    ofxUISuperCanvas* twitterFeedGui;
+    
 
     vector<Tweeter*> activeTweeters;
 
@@ -155,14 +157,7 @@ protected:
     float xScale,yScale, zScale;
     
     bool rotateModel;
-    
-    
-    
-    
-    
-    
-    
-    
+    ofRectangle tweetFeedRect;
     
 	
 };

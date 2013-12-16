@@ -176,6 +176,21 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(textGui);
 	guimap[textGui->getName()] = textGui;
+    
+    twitterFeedGui = new ofxUISuperCanvas("TWITTER FEED",gui);
+    twitterFeedGui->copyCanvasStyle(gui);
+    twitterFeedGui->setName("TWITTER FEED");
+    twitterFeedGui->addSpacer();
+    twitterFeedGui->addLabel("FEED RECT");
+    twitterFeedGui->addMinimalSlider("FEED X", 10, 100, &tweetFeedRect.x);
+    twitterFeedGui->addMinimalSlider("FEED Y", 10, 100, &tweetFeedRect.y);
+    twitterFeedGui->addMinimalSlider("FEED WIDTH", 10, 100, &tweetFeedRect.width);
+    twitterFeedGui->addMinimalSlider("FEED HEIGHT", 10, 100, &tweetFeedRect.height);
+    
+    ofAddListener(twitterFeedGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
+	guis.push_back(twitterFeedGui);
+	guimap[textGui->getName()] = twitterFeedGui;
+
 }
 
 void CloudsVisualSystemTwitter::loadJSONData(string folderName){
@@ -832,6 +847,7 @@ void CloudsVisualSystemTwitter::selfDrawDebug()
 void CloudsVisualSystemTwitter::selfDrawBackground()
 {
     
+    ofRect(tweetFeedRect);
 }
 
 // this is called when your system is no longer drawing.
