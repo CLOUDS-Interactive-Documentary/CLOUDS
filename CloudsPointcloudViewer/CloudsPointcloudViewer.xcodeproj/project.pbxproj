@@ -13,6 +13,8 @@
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
 		609133841652CA6600B523AD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6091337C1652C9C900B523AD /* MainMenu.xib */; };
 		609133871652CB3E00B523AD /* testView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 609133861652CB3E00B523AD /* testView.mm */; };
+		85FCB765185E262200A9740A /* CloudsHUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85FCB763185E262200A9740A /* CloudsHUDLayer.cpp */; };
+		85FCB766185E262200A9740A /* CloudsHUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85FCB763185E262200A9740A /* CloudsHUDLayer.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -338,6 +340,8 @@
 		6091337C1652C9C900B523AD /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		609133851652CB3E00B523AD /* testView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testView.h; sourceTree = "<group>"; };
 		609133861652CB3E00B523AD /* testView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = testView.mm; sourceTree = "<group>"; };
+		85FCB763185E262200A9740A /* CloudsHUDLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDLayer.cpp; sourceTree = "<group>"; };
+		85FCB764185E262200A9740A /* CloudsHUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDLayer.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -867,6 +871,8 @@
 		E703CCCD185CE66100547738 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
+				85FCB763185E262200A9740A /* CloudsHUDLayer.cpp */,
+				85FCB764185E262200A9740A /* CloudsHUDLayer.h */,
 				E703CCCF185CE67700547738 /* CloudsHUDController.h */,
 				E703CCCE185CE67700547738 /* CloudsHUDController.cpp */,
 			);
@@ -1872,6 +1878,7 @@
 				E703CCFE185D0FE600547738 /* svgtiny_gradient.cpp in Sources */,
 				E703CD00185D0FE600547738 /* svgtiny_list.cpp in Sources */,
 				E703CD02185D0FE600547738 /* ofxSvg.cpp in Sources */,
+				85FCB765185E262200A9740A /* CloudsHUDLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1985,6 +1992,7 @@
 				E703CCFF185D0FE600547738 /* svgtiny_gradient.cpp in Sources */,
 				E703CD01185D0FE600547738 /* svgtiny_list.cpp in Sources */,
 				E703CD03185D0FE600547738 /* ofxSvg.cpp in Sources */,
+				85FCB766185E262200A9740A /* CloudsHUDLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -108,7 +108,7 @@ void Circle::drawCompanies()
         float _x =  x- rect.width/2;
         Font.drawString(label, _x, y);
 
-        ofSetColor(0, 255, 0);
+        ofSetColor(100, 230,230);
         checkFontSize("$"+number+" B", x, y+20);
         rect = Font.getStringBoundingBox("$"+number+" B", x, y);
         _x = x-  rect.width/2;

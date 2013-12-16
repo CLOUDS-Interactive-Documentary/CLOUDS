@@ -1,0 +1,4011 @@
+{
+    "Tweets": [
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "somebody found a bug... https://t.co/120dehMnxT  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Gahzi great. thanks. I merged it  ", 
+            "Users": [
+                "@Gahzi"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Gahzi hey, sorry. I totally missed your message. Did you manage to get it working?  ", 
+            "Users": [
+                "@Gahzi"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@nardove hi, yes I know... I am working on some redesigning and hope to have it finished within this weekend...  ", 
+            "Users": [
+                "@nardove"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "awesome deal! http://t.co/AuV3NUnAW4  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#HiDPI", 
+                "#gnome"
+            ], 
+            "Tweet": "#HiDPI is making its way into #gnome http://t.co/l81LndYFVw  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@billautomata ouch! though I plugged mine into usb3 a few times. didn't work, but didn't brick either  ", 
+            "Users": [
+                "@billautomata"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#printondemand"
+            ], 
+            "Tweet": "awesome http://t.co/3xCDp4k68y anybody know if the actual print version is always synced with the repo? #printondemand  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@epochapex absolutely! problem though second photo, second glitch, but not nearly as awesome... the power is fading...  ", 
+            "Users": [
+                "@epochapex"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "new phone, first photo, first glitch, not sure if I should be happy about it or not... http://t.co/rmYuy2IVHp  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#ArtBasel", 
+                "#1"
+            ], 
+            "Tweet": "police at #ArtBasel http://t.co/GkfWt9CrTc rule #1: art @ArtBasel must be sellable & overpriced or will be removed  ", 
+            "Users": [
+                "@ArtBasel"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "new post: http://t.co/pX0RBytl7N  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@HakiBags Hey sorry I missed your tweet. Did you solve your poblem?  ", 
+            "Users": [
+                "@HakiBags"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "phew. finally our new site is online at http://t.co/qyaXOw6NXy hint: use the arrow keys...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#c"
+            ], 
+            "Tweet": "I feel kinda weird searching for \"std find\" and \"std remove\" on google #c++  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @WebUpd8: Download Lightworks Linux Public Beta [Professional Video Editor] http://t.co/UQvu46E7ld  ", 
+            "Users": [
+                "@WebUpd8"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "gnome shell 3.8 is out officially. I like it so far. http://t.co/V2UBWJJrnO  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#belgrade"
+            ], 
+            "Tweet": "I feel kind if degenerate for thinking about videogames when seeing this #belgrade http://t.co/zcqpq2zsBH  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#brigade"
+            ], 
+            "Tweet": "the lightning effects around 1:10 are awesome http://t.co/x2TtFG1rkm #brigade  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#res13"
+            ], 
+            "Tweet": "thank you @resonate_io and everyone who was there #res13  ", 
+            "Users": [
+                "@resonate_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kcimc this is fun.oldest might be this post in cgtalk http://t.co/Ntt0hI6FTH too bad the images are gone. No idea what it was...  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#BlasphemyGenerator"
+            ], 
+            "Tweet": "Crucified Flying Spaghetti Monster on a moped #BlasphemyGenerator http://t.co/SyAnxduQ0h  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Finally made it to resonate. Looking forward to meet you  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@digiboo_media gratulation zum neuen app! aber der link ist irgendwie kaputt?  ", 
+            "Users": [
+                "@digiboo_media"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "wohaa. I want this with #openframeworks http://t.co/SgF2WqsUQJ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "don't buy it. problem solved... http://t.co/Q0oc4ymkOn  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#gtk", 
+                "#theme"
+            ], 
+            "Tweet": "my OS just got a little nicer #gtk #theme http://t.co/nCBs20VeAh  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "now that would be awesome http://t.co/jjLKoqlB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#kinects", 
+                "#OpenNI"
+            ], 
+            "Tweet": "anyone ever worked with multiple #kinects on one computer using #OpenNI?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "morning premiers tomorrow, January 26th, visuals by undef http://t.co/cPxW97x5 http://t.co/in5jnfGa  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "working late http://t.co/o8Su0Wk2  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @openframeworks: interested in working with openFrameworks on raspberry pi? check out this \"getting started\" guide https://t.co/kRY7MZdi  ", 
+            "Users": [
+                "@openframeworks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I just backed CLOUDS Interactive Documentary on @Kickstarter http://t.co/lB8zuvK1  ", 
+            "Users": [
+                "@Kickstarter"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jvcleave @futurestack @zachlieberman I agree. But those templates are not as up to date. Better check https://t.co/7SDgJdhM  ", 
+            "Users": [
+                "@jvcleave", 
+                "@futurestack", 
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @obviousjim: Development of RGBDToolkit depends on the success of our Kickstarter! Please consider spread the holiday cheer our way h ...  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "love it http://t.co/AEkbuVCa  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "will be in Berlin for the next few days  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "good idea http://t.co/eJfqjGKd  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "this is nice http://t.co/vm3r1b1I  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "a classical Git Romney vs Bazaar Obama  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "the algorithmic beauty of plants http://t.co/JtGQaWVj  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@egeoffray no it worked pretty well. But on a desktop PC with 3.2Ghz. occasional graphic glitches but sufficent speed. also usb was fine  ", 
+            "Users": [
+                "@egeoffray"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@egeoffray Did it some time ago. But I think I followed this tutorial (on linux though) http://t.co/AeML6MLS  ", 
+            "Users": [
+                "@egeoffray"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "if anyone uses openframeworks & codelite on linux. I forked projectGeneratorSimple by @zachlieberman https://t.co/7SDgJdhM  ", 
+            "Users": [
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@gabrielstuff @egeoffray were you thinking of wrapping librocket up as well? :)  ", 
+            "Users": [
+                "@gabrielstuff", 
+                "@egeoffray"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@terrycavanagh @smestorp just call ofSetEscapeQuitsApp(false); in setup() to prevent closing an app with the esc key.  ", 
+            "Users": [
+                "@terrycavanagh", 
+                "@smestorp"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks", 
+                "#addon"
+            ], 
+            "Tweet": "ofxLibRocket: a new #openframeworks #addon. Use html & css to organize and layout your of applications https://t.co/NKYs5nPQ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#notgoingback"
+            ], 
+            "Tweet": "ubuntu 12.10 will be released later today. I switched 2 years ago #notgoingback  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kod3000: @zachlieberman love it! xcode is no picnic as well. these types of changes brings ofx closer 2being as friendly 2use as pro ...  ", 
+            "Users": [
+                "@kod3000", 
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @robo_ben: \"the revenge of zombie steve\" now live on @underdoeg's ipad  ", 
+            "Users": [
+                "@robo_ben", 
+                "@underdoeg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "#openframeworks 0072 is out. get it at http://t.co/Fb2FdCWv btw did you hear about the new projectGenerator?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "i like his style... http://t.co/JRW5yAs2  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kod3000 ...jep, talk code and switch to openFrameworks ;)  ", 
+            "Users": [
+                "@kod3000"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kod3000 haha nice. thx, I used to develop processing in eclipse, but it is just too many buttons for beginners...I only use p5 for teaching  ", 
+            "Users": [
+                "@kod3000"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lennyjpg visual communication, Basel...  ", 
+            "Users": [
+                "@lennyjpg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#brainlikeablockofwood"
+            ], 
+            "Tweet": "teaching processing. I admit it: my addiction to auto complete is bigger than I thought. #brainlikeablockofwood  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@CarstenSchwede never tried it with eyefinity. we used fenster with ubuntu 11.04, 3 graphic cards & 8 screens. FPS was ~60  ", 
+            "Users": [
+                "@CarstenSchwede"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "it's always nice to take some time to browse thru http://t.co/jUtRvmwF @ofxaddons  ", 
+            "Users": [
+                "@ofxaddons"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "back and forth and back and forth. the world feels like riding a swing. http://t.co/oxsarsjS  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ludzeller: Looking for a an interesting (Indie) iPad (Kindle / Android) eBook author/designer/publisher/artist to give a workshop at ...  ", 
+            "Users": [
+                "@ludzeller"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "RT @jvcleave: some photos from Dan Wilcox of the #openFrameworks code retreat - missing it already http://t.co/M8Gv6ghX  ", 
+            "Users": [
+                "@jvcleave"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@gnidan Sadly it was only a real short visit. I'm leaving tomorrow. But I'll sure be back someday!  ", 
+            "Users": [
+                "@gnidan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "now let's see if I can get a connection... http://t.co/tfJghD2e  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#NYC"
+            ], 
+            "Tweet": "OpenFrameworks Code Review was great. Thanks to everyone involved. But now it's time to trade the trees for sky scrapers #NYC  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@gnidan No, that's ok. If you look at a road from slightly above, it is actually just distorted 2d  ", 
+            "Users": [
+                "@gnidan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@gnidan Are you and your one eyed, green friend taking turns in hitting the pedals?  ", 
+            "Users": [
+                "@gnidan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "always wanted to stand above all #openFrameworks headers http://t.co/cIE8Zcp5  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kcimc: just printed @openframeworks for code review in pairs. 255 pages total, 31k lines of code. http://t.co/Q3vKchH8  ", 
+            "Users": [
+                "@kcimc", 
+                "@openframeworks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "bonjour US of A  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#wtfcaption"
+            ], 
+            "Tweet": "@lennyjpg headline is ok compared to the photo caption... #wtfcaption  ", 
+            "Users": [
+                "@lennyjpg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#nobrainer"
+            ], 
+            "Tweet": "macho 2012: real men work with dev branches, uggha uggha #nobrainer  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "article in a local newspaper http://t.co/quc6wb32  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "office day http://t.co/koM3qVhM  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#nothingisnew"
+            ], 
+            "Tweet": "the web brought members of small & scattered groups together. now others start to notice and think the internet created them #nothingisnew  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "now this is how you answer a math question http://t.co/3RhxpeH3  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Romney would axe trains, arts, humanities. http://t.co/XPw6oJTU  ", 
+            "Users": [
+                "@golan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "@JoelGethinLewis @zachlieberman You mean ofxNSWindower? That's really nice but mac only. so not really suitable for #openFrameworks IMO  ", 
+            "Users": [
+                "@JoelGethinLewis", 
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@smakhtin_en Don't know if it is easy to do. To have the concept is easy but it's simpler to let the parameters flow instead of caging them  ", 
+            "Users": [
+                "@smakhtin_en"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "why do GUIs recently try to imitate real world objects? I mean we are given the chance to start from scratch here...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "The internet is basically pumping acid house in the background http://t.co/45PTbl8b  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kod3000 Absolutely. I'll tweet again when I'm there. will be in the us from the 4th. maybe we can get a few people together. would be fun  ", 
+            "Users": [
+                "@kod3000"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kod3000 Sounds good! I'm down with anything and don't have anything planed. Where are you based?  ", 
+            "Users": [
+                "@kod3000"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@RossC1 thanks. i did it with @videosynthesis and all files should be on his github account https://t.co/iE2l2vIJ  ", 
+            "Users": [
+                "@RossC1", 
+                "@videosynthesis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I'll be in NYC September 7th to 10th. Anyone around too?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@tob_o hej hej, nicht da mich mit rein ziehen, wenn der @ch_mueller_FUK nie zeit hat ;)  ", 
+            "Users": [
+                "@tob_o", 
+                "@ch_mueller_FUK"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@tob_o zumindest mit einigen ;) aber freu micha uf den n\u00e4chsten termin, wenn er auch viel zu sp\u00e4t ist eigentlich...  ", 
+            "Users": [
+                "@tob_o"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ofxaddons: Just in time! xplatform version of @memotv's timer https://t.co/vpCGwWxD by @underdoeg @obviousjim @juanpablomanson  ", 
+            "Users": [
+                "@ofxaddons", 
+                "@memotv", 
+                "@underdoeg", 
+                "@obviousjim", 
+                "@juanpablomanson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#clock_gettime"
+            ], 
+            "Tweet": "Does anybody know something about precision timing, c and linux? #clock_gettime http://t.co/dox1hbBu  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "enjoy your daily dose of 86.400.000.000.000 nanoseconds  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#multiwindow", 
+                "#glfw"
+            ], 
+            "Tweet": "Let's talk about #openFrameworks #multiwindow #glfw and stuff https://t.co/Gt7OruFp  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "clever old man http://t.co/CwRFfCCK \"..and when people use iPads they end up just using technology to consume things instead of making..\"  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "didn't want to say anthing but this looks like a good review http://t.co/BU2ZSIXX  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#stillgood"
+            ], 
+            "Tweet": "cool idea, boring presentation #stillgood http://t.co/H2xLvNwM  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#nes", 
+                "#properfps"
+            ], 
+            "Tweet": "@robo_ben ready for a step further? run a #nes emulator on the iphone simulator. #properfps  ", 
+            "Users": [
+                "@robo_ben"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@robo_ben sorry, nope, not really...  ", 
+            "Users": [
+                "@robo_ben"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "keep it virtual http://t.co/SEUMWjfB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@deepspeedmedia imagine our grandkids on virtual strolls with their children, pointing & saying: \"your grandgrandfather built this long ago\"  ", 
+            "Users": [
+                "@deepspeedmedia"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "This way even I might enjoy that movie :) $ telnet http://t.co/3wwwoCoQ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@nardove no prob. looking at it right now  ", 
+            "Users": [
+                "@nardove"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "this is looking good. http://t.co/9itlkYy1 anybody ever worked with gamekit before?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@gnidan mmh... coffee :) But yes, sure thing. You'll hear from us.  ", 
+            "Users": [
+                "@gnidan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kimasendorf and the bad news is that you have no flat yet?  ", 
+            "Users": [
+                "@kimasendorf"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @obviousjim: For the German listeners out there: http://t.co/tmB9FmJ4 an interview about Clouds cc @deepspeedmedia  ", 
+            "Users": [
+                "@obviousjim", 
+                "@deepspeedmedia"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@gnidan hey :) no not right now. are working on our new website and a few jobs. summer will be good though. what about you?  ", 
+            "Users": [
+                "@gnidan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I'm a cloudy guy in a video: https://t.co/LanIOEzF really nice work by @obviousjim & @deepspeedmedia  ", 
+            "Users": [
+                "@obviousjim", 
+                "@deepspeedmedia"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "RT @openframeworks: #openFrameworks 0071 is out! Loads of new community contributed examples, features and bugfixes. Grab it here: http: ...  ", 
+            "Users": [
+                "@openframeworks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@paulobarcelos just stumbled upon your ofxOpenSteer fork and it's amazing! Do you mind integrating your progress into the main repo?  ", 
+            "Users": [
+                "@paulobarcelos"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "this weekend in basel http://t.co/0v37RRDk We're going to do a workshop there and have an interactive shop window on display.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "blast from the past. http://t.co/7Chgwd4R the timing is right, almost forgot how to point'n'click after all that point'n'shooting  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @factoryfactory: RT @alex_gaynor Law is just code written in a very free form, error prone, imprecise language. It's basically PHP re ...  ", 
+            "Users": [
+                "@factoryfactory", 
+                "@alex_gaynor"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#oldschoolDivAnimation"
+            ], 
+            "Tweet": "dynamic logo study for the new undef website which is coming soon http://t.co/fIchtKWi #oldschoolDivAnimation  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "well done @github. I like the new icons  ", 
+            "Users": [
+                "@github"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#nice"
+            ], 
+            "Tweet": "governement says today: no acta in switzerland (yet...) #nice  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@gnidan thanks!  ", 
+            "Users": [
+                "@gnidan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#minimal", 
+                "#WIP", 
+                "#javascript"
+            ], 
+            "Tweet": "lightweight jquery slider plugin. https://t.co/LmJYOx6e #minimal #WIP #javascript  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "just released the beta code to our cms built with django. https://t.co/Q5w63pY3  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "quit your day job  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#gimp"
+            ], 
+            "Tweet": "finally #gimp 2.8 is out! http://t.co/PlxfP4Ld. was already using alpha versions and the new single window mode rocks. layers are better too  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "ubuntu 12.04 is out and http://t.co/mT0wQBiO down. this is actually good...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#stillnotperfect"
+            ], 
+            "Tweet": "@lennyjpg The \"problem\" is gtk running on X11. But they're working on a native version using Quartz. http://t.co/6JZacTNo #stillnotperfect  ", 
+            "Users": [
+                "@lennyjpg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lennyjpg Yes, although functionality is the same it just feels better. inkscape on mac is alien technology trying to look like an ipad.  ", 
+            "Users": [
+                "@lennyjpg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lennyjpg on mac?I agree inkscape is not there yet.but compared to linux versions it looks/feels like a bug festival on os x. same with gimp  ", 
+            "Users": [
+                "@lennyjpg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "biggest error newbie programmers make is to think a computer is intelligent  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I got 99 errors but a bug ain't one http://t.co/f7Xc6j8G  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@smakhtin_en Yes, too bad. But there will be other chances and we probably passed in the hallway at some point ;)  ", 
+            "Users": [
+                "@smakhtin_en"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@resonate_io thanks for a great time!  ", 
+            "Users": [
+                "@resonate_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "in belgrade. looks good. there are some houses and streets. i think it is a city i like.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "back again...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@GD3Dapp <3  ", 
+            "Users": [
+                "@GD3Dapp"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#holidays"
+            ], 
+            "Tweet": "unavailable for six weeks, starting tomorrow #holidays  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#citymaker3000"
+            ], 
+            "Tweet": "now this looks really nice. http://t.co/TeBx8sGH #citymaker3000  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "the new http://t.co/8WNngVy0 is out. congrats to anyone involved  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#blender", 
+                "#script", 
+                "#python"
+            ], 
+            "Tweet": "does anybody know an answer to this? http://t.co/A0HFqZIB #blender #script #python  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#speedProject", 
+                "#lala"
+            ], 
+            "Tweet": "RT @d_effekt: just published my contributions for the lala03 dvd on vimeo: http://t.co/z2vqKaeD http://t.co/SmUcB3Jg #speedProject #lala ...  ", 
+            "Users": [
+                "@d_effekt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@peter_bichsel just updated @banshee to the daily build ppa and so far no crashes in over 3 hours. hope...?...  ", 
+            "Users": [
+                "@peter_bichsel", 
+                "@banshee"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kimasendorf mine set the christmas tree on fire  ", 
+            "Users": [
+                "@kimasendorf"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "time will heal all hypes  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "scripting in blender is like using your computer without a mouse  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "nice berlin metro beat http://t.co/0Q6WlaI3  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lennyjpg growr. thanks for the share :)  ", 
+            "Users": [
+                "@lennyjpg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#clip", 
+                "#openframeworks"
+            ], 
+            "Tweet": "new video: http://t.co/yeIjCK4G #clip #openframeworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@openshot thanks for a quick and useful video editor / converter  ", 
+            "Users": [
+                "@openshot"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#ofxGamepad", 
+                "#openframeworks"
+            ], 
+            "Tweet": "added a game pad controlled camera to #ofxGamepad for #openframeworks http://t.co/KcMNNgQf  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "finally commercials I like http://t.co/0OlYcssH  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "illegally downloading a CD I already bought. that's way easier than fixing my cd drive...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "not to self: update blender before tearing hairs out. go sudo add-apt-repository ppa:cheleb/blender-svn  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "why are all genetic algorithms trying to solve problems instead of simply enjoying to breed?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mrdoob No, not just you. I have the same issue on ubuntu 11.10, chromium, flash 11. popup just keeps hanging there...  ", 
+            "Users": [
+                "@mrdoob"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @artur0castro: @jesusgollonet @JGL @videosynthesis . homebrew, macports... you don't know it but what you really want is to develop i ...  ", 
+            "Users": [
+                "@artur0castro", 
+                "@jesusgollonet", 
+                "@JGL", 
+                "@videosynthesis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lennyjpg tripped over a $ sign?  ", 
+            "Users": [
+                "@lennyjpg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "wow! big thank you for http://t.co/sbBS9VQC @atduskgreg @obviousjim  ", 
+            "Users": [
+                "@atduskgreg", 
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#shiftfestival"
+            ], 
+            "Tweet": "#shiftfestival 2011.the exhibition takes too little risk. I only cared about Alexei shulgin's \"386dx\" and monty alon's \"hobo\".great exhibits  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#m0m"
+            ], 
+            "Tweet": "still sitting with #m0m. let's see what's next...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#exponentialgrowth"
+            ], 
+            "Tweet": "Hon, could you pass me those plans about living on mars over there? http://t.co/sI0BE8Ai #exponentialgrowth  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "some things just taste better on their label than they do in your mouth  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@obviousjim thx for ofxQTKitVideoPlayer! was quite a life saver to implement it on location  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@guschilds no prob. I'm glad it worked out!  ", 
+            "Users": [
+                "@guschilds"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "absolutely right! @creativeapps If you are protecting your videos on Vimeo, i.e. no download, you better have a good reason.  ", 
+            "Users": [
+                "@creativeapps"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@guschilds sorry, totally overlooked your question back in March... For what it's worth, it's implemented now. http://t.co/UY109mw4  ", 
+            "Users": [
+                "@guschilds"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lennyjpg nice. IMO everyone should check it out once. if u have a standart machine, it'll work. get the 64bit and pimp it with some themes  ", 
+            "Users": [
+                "@lennyjpg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#github"
+            ], 
+            "Tweet": "hmm... I tried, but don't really like the new design of the navigation on #github. What's up with that shiny 00s plastic :hover?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lennyjpg I can recommend. For programming it def is the best. for anything else it's good enough. skype me if you wanna know more  ", 
+            "Users": [
+                "@lennyjpg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lennyjpg partially, mac on my macbook (only used for leisure time and couch late night coding) and ubuntu on my working station  ", 
+            "Users": [
+                "@lennyjpg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "ubuntu 11.10 is out! now built on gnome 3 http://t.co/VHyCc5O6  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Does anybody know about visual studio, c++ and has a little time to help with ofxFenster? http://t.co/UduEyfCZ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "testing the new twitter client polly. seems to work quite well so far. despite it's beta status. http://t.co/lwqcghtI  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#ofxFenster"
+            ], 
+            "Tweet": "on linux #ofxFenster now supports multiple graphic cards. go ahead and span over 8 screens http://t.co/qW8ox8rh http://t.co/XL1Gdgh8  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "A while ago, I was looking for a way to export gifs in c++. this is all I could ever ask for: http://t.co/immq83CV  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jvcleave thx! I'm (still) on Xcode 3. Possible it's for Obj-C only. I found plugins that only it for Obj-C on version 3 as well...  ", 
+            "Users": [
+                "@jvcleave"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "does XCode really not have something like \"automatically generate function implementation in cpp file from definition in h file\"?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kimasendorf jep, that's what I thought. might integrate into your latest gif researches as well...  ", 
+            "Users": [
+                "@kimasendorf"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#ofxfenster"
+            ], 
+            "Tweet": "#ofxfenster now supports the usage of an ofImage to change the app icon during runtime http://t.co/XL1Gdgh8  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#diaspora"
+            ], 
+            "Tweet": "really interested in #diaspora, tried to test it on my dreamhost server but didn't succeed so far... http://t.co/ATzLMdfS  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@faebser jein. noch nicht released, aber dev code ist hier: http://t.co/cex9P05H  ", 
+            "Users": [
+                "@faebser"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "real time face substitution is freaky & just great http://t.co/YcqfjrKl @artur0castro  ", 
+            "Users": [
+                "@artur0castro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "interesting... sort of open source drop box to host on your own server http://t.co/O5XkxTSQ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#wtf"
+            ], 
+            "Tweet": "Somehow not that big of a surprise. It still kind of has the air of #wtf?! http://t.co/lv9YQcXG  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mazbox yes of course http://t.co/O7PYsPr ;)  ", 
+            "Users": [
+                "@mazbox"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @DaveGorman: Dear Adobe. I only wanted to be able to open pdfs. I had no idea you wanted a relationship. Stop emailing me.  ", 
+            "Users": [
+                "@DaveGorman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "this is a really cool piece of software http://t.co/H9e7uMN  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ReceiptCoder: you can now rate sketches at http://t.co/s5ZwW3Y  ", 
+            "Users": [
+                "@ReceiptCoder"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@gnidan hehe medieval :) but yes, it is actually a more than 3 hours train ride  ", 
+            "Users": [
+                "@gnidan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@gnidan Ha! cool. as soon as I visit the printer again and get bored, I'm going to reprint a riddles book of mazes to pass time :D  ", 
+            "Users": [
+                "@gnidan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@gnidan Mazeday is really cool, does it always have a path thru? http://t.co/rm9rH95  ", 
+            "Users": [
+                "@gnidan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@gnidan best way I know is to use the javascript error console in the browser. Those are all the messages the JS runtime is able to report.  ", 
+            "Users": [
+                "@gnidan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ReceiptCoder: @underdoeg your print: For simplicity's sake is ready! see an image at http://t.co/u4KdkZ0  ", 
+            "Users": [
+                "@ReceiptCoder", 
+                "@underdoeg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "back in action http://t.co/rgJxTX4  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "at last: looking at copy number 6 of @writtenimages which also contains my first published text  ", 
+            "Users": [
+                "@writtenimages"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "someone to me: \"why are you mutilating a beautiful mac with all these stickers?\" - \"probably not to be like you, or so, I dont know...\" o_O  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "bye bye xcode...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "You have the rights to remain calm, seated, silent or just yourself  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kimasendorf Please return loop of bread around vector list falafel, salad, sauce?  ", 
+            "Users": [
+                "@kimasendorf"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @Rich_Oglesby: London Riots - opinion from the streets which understands the situation perfectly, yet sobering http://prsk.nl/qJ8uHs ...  ", 
+            "Users": [
+                "@Rich_Oglesby"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @oOtrinityOo: Puh. Das war knapp. Konnte gerade noch so 3000 Aktien gegen ein Snickers eintauschen.  ", 
+            "Users": [
+                "@oOtrinityOo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@obviousjim hey, how is that ofxTimeline thing coming along? still interested... :)  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "nice list of free books about programming http://t.co/VnzLlub  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#haaNothingToDoWithComputers"
+            ], 
+            "Tweet": "A nerd is someone who's looking for solutions of problems that normal ppl don't even have. #haaNothingToDoWithComputers  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "addon for multiple gamepads with openframeworks http://is.gd/9LbN8P http://is.gd/Z8I6ho  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @artur0castro: Have just uploaded a beta version of the Android port of The Artvertiser http://t.co/nT0dNnD http://t.co/62sThkn  ", 
+            "Users": [
+                "@artur0castro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@factoryfactory haha sweet! Was just on the phone with my hangry dad, had to help with computer troubles. Until he finally ordered a pizza.  ", 
+            "Users": [
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @factoryfactory: hangry = the state of being angry due to hunger.  ", 
+            "Users": [
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jk_keller: Did you know you can see all the Simpsons Realignment videos on one browser-busting page?!? You can: http://t.co/7QP51Ie  ", 
+            "Users": [
+                "@jk_keller"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "RT @golan: #openFrameworks 007 released today! http://t.co/l0CbLR3 congrats @zachlieberman @theowatson @artur0castro and the OF team!  ", 
+            "Users": [
+                "@golan", 
+                "@zachlieberman", 
+                "@theowatson", 
+                "@artur0castro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @d_effekt: muaha! install this screensaver at your local applestore: http://undef.ch/downloads/BSOD.saver.zip (source: http://www.jwz ...  ", 
+            "Users": [
+                "@d_effekt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "GUI to create a new openframeworks project for codelite under linux http://is.gd/RfXaaB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @memotv: done. speed project to install in Apple Stores. http://t.co/lHsQGuu cc @fi5e @kcimc I'm pretty sure it's legal http://t.co/P ...  ", 
+            "Users": [
+                "@memotv", 
+                "@fi5e", 
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @_01010101: From yesterday : glitching monitor at Gare de Lyon / RER D http://flic.kr/p/a3DyZm  ", 
+            "Users": [
+                "@_01010101"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Seems to be a corrupt file in the cache of openframeworks forum. cache/data_f69fe4933602ed5234a00416287a2136-SMF-modSettings.php on line 7  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "figuring out on how to integrate opensteer within openframeworks http://is.gd/Ksbr7z  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @khlrqa: 'If Microsoft ever does applications for Linux, it means I've won' http://t.co/w7KXtpV  ", 
+            "Users": [
+                "@khlrqa"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@obviousjim great, looking forward to it!  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@obviousjim nice! built something similar for a recent project as well. so reusability of this kind of code will definitely come in handy...  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@obviousjim ofxTimeline? never heard of it but really interesting... something out already?  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@peter_bichsel @neuerordner_ch alles ok, bin wieder frei. ich verzells denn mol in \u00e4cht...  ", 
+            "Users": [
+                "@peter_bichsel", 
+                "@neuerordner_ch"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @factoryfactory: my new rule, courtesy of @marcinignac: work for free or for full price. never for cheap.  ", 
+            "Users": [
+                "@factoryfactory", 
+                "@marcinignac"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "ofxFenster 2 on github. Now you can have as many windows as you want... http://t.co/xxhWjRO  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "comments on http://t.co/9TyUkDj really made me scared. Those people complain about cctv made public... Doesn't that make them think? @kcimc  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@factoryfactory nice link! btw, I just listened to nerd radio. happy you talked about the out of proportion paper issue...  ", 
+            "Users": [
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#skateboarding"
+            ], 
+            "Tweet": "RT @roger_pala: spray paint #skateboarding: http://tumblr.com/xxn3csfo29 /via @boleas  ", 
+            "Users": [
+                "@roger_pala", 
+                "@boleas"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#writtenimages", 
+                "#creativecommons"
+            ], 
+            "Tweet": "RT @factoryfactory: Please @webstandardsmag respond to @paolon http://t.co/A2FOxCb #writtenimages #creativecommons  ", 
+            "Users": [
+                "@factoryfactory", 
+                "@webstandardsmag", 
+                "@paolon"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@quasimondo @kimasendorf not really a huge fan of java. but it really does look simple... thanks, might do!  ", 
+            "Users": [
+                "@quasimondo", 
+                "@kimasendorf"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#gif"
+            ], 
+            "Tweet": "@kimasendorf did you ever stumble upon a #gif library for c/c++ that's not as low level as giflib? http://is.gd/BLNe4F  ", 
+            "Users": [
+                "@kimasendorf"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@seb_ly no prob, if I stumble upon some of our code, I'll let you know. lost it somewhere...  ", 
+            "Users": [
+                "@seb_ly"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@seb_ly looks like the roland uses HP-GL as well but calls it RD-GL. http://is.gd/VFvI7W nice device! http://is.gd/flscdu  ", 
+            "Users": [
+                "@seb_ly"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@seb_ly don't remember. But it's actually a cutter we modded to draw. But we also used a HP draftsmaster with HPGL. http://is.gd/oKOwIS  ", 
+            "Users": [
+                "@seb_ly"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@seb_ly No, it's actually pretty easy. The printer uses HP/GL code and a normal serial connection. so you can send coordinates as strings  ", 
+            "Users": [
+                "@seb_ly"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @chrisoshea: Canabalt + Mirror's Edge + Kinect = \"Walk the Line\" student game project http://t.co/D3uq6xO  ", 
+            "Users": [
+                "@chrisoshea"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#writtenimages"
+            ], 
+            "Tweet": "@receiptCoder is running again. @notlion and @gnidan sorry for the underexposed images... #writtenimages http://t.co/waYHmfY  ", 
+            "Users": [
+                "@receiptCoder", 
+                "@notlion", 
+                "@gnidan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#undefprint", 
+                "#whothefuckisalice"
+            ], 
+            "Tweet": "darn... we are having problems with our internet provider. was down for an hour. hope it all goes well #undefprint #whothefuckisalice  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @factoryfactory: @underdoeg @d_effekt look: thermal printer w/arduinos :) http://t.co/fIx6kEW  ", 
+            "Users": [
+                "@factoryfactory", 
+                "@underdoeg", 
+                "@d_effekt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#beprepared", 
+                "#writtenimages"
+            ], 
+            "Tweet": "see the paper where your sketches are going to be printed on soon... http://t.co/waYHmfY #beprepared #writtenimages  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "take a break! maybe go and look at some fishes? :) http://is.gd/PfM9Fm  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@obviousjim @kimasendorf defined a short conclusion I'm happy with :)  ", 
+            "Users": [
+                "@obviousjim", 
+                "@kimasendorf"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kimasendorf I don't think completely opposite. Both are trying to push boundaries. But the context and intention are different.  ", 
+            "Users": [
+                "@kimasendorf"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kcimc I absolutely agree! though they overlap quite frequently I guess. Or I hope so at least for all the computer scientists ;)  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@factoryfactory I'm on ubuntu whenever i can.only gui is the reason i use mercurial. easyMercurial is pretty easy to use http://is.gd/9Su18H  ", 
+            "Users": [
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@factoryfactory q2: what if you're not on a mac ;) still nice though http://is.gd/jhtAzn  ", 
+            "Users": [
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kcimc: if there was a top ten of projects ranked by viewcount divided by development time, receipt racer would be number one  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kcimc I think @theowatson is also really high up in the ranking with interactive puppet bit.ly/kM4ix7  ", 
+            "Users": [
+                "@kcimc", 
+                "@theowatson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "this is great! thanks for wrapping it up in chinese(?). whoever you are. :) http://bit.ly/iDOslk  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @writtenimages: WRITTEN IMAGES EXHIBITION & FEATURE PARTY 1. + 2. JULI 2011 BERLIN http://t.co/yPisYpx bit.ly/l3XPvI http://t.co/aVKJF2I  ", 
+            "Users": [
+                "@writtenimages"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "nice! oldschoool papergaming http://is.gd/FKf7FY http://is.gd/fq5DUR thanks to http://is.gd/hCwk0H  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kcimc I love it! http://is.gd/8Qifei  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @d_effekt: Receipt racer on hackaday: http://t.co/Qjd8K84  ", 
+            "Users": [
+                "@d_effekt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "150K...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @factoryfactory: having worked in the creative industry for a while, i find this hilarious: http://t.co/aEEkln6  ", 
+            "Users": [
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lennyjpg hey thanks!  ", 
+            "Users": [
+                "@lennyjpg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#OFFF2011", 
+                "#Cinder", 
+                "#oF", 
+                "#javascript", 
+                "#webGL", 
+                "#kinect"
+            ], 
+            "Tweet": "RT @creativeapps: #OFFF2011 + CAN 'Workshop Collaborative' - Documentation #Cinder #oF #javascript #webGL #kinect http://j.mp/kZKlcA  ", 
+            "Users": [
+                "@creativeapps"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#receipt", 
+                "#racer"
+            ], 
+            "Tweet": "OMG! we're on engadget.com start page! http://is.gd/ujo6Wp #receipt #racer  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kimasendorf an executable ;)  ", 
+            "Users": [
+                "@kimasendorf"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#ofxFenster"
+            ], 
+            "Tweet": "complete rewrite of #ofxFenster still very early beta but it kinda works... http://is.gd/6RzSm2  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "BOOM!! :) joshua noble + undef: receipt racer http://t.co/VEN2yeU via @designboom  ", 
+            "Users": [
+                "@designboom"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "oh yeah! @writtenimages finally in production. First five books on friday. http://is.gd/7br9fJ  ", 
+            "Users": [
+                "@writtenimages"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#nosir"
+            ], 
+            "Tweet": "congrats to microsoft for Kinect SDK! But only windows 7 support & no redistribution rights so every user has to download seperately #nosir!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "interesting... hardware feedback mouse http://clct.me/gTldv  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@factoryfactory @d_effekt receipt racer hit 10K on vimeo. @creativeapps & all workshop participants! thank you all!  ", 
+            "Users": [
+                "@factoryfactory", 
+                "@d_effekt", 
+                "@creativeapps"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kimasendorf aber nur ganz KNAPP  ", 
+            "Users": [
+                "@kimasendorf"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kimasendorf never just pick one! combine number 2 and 3... ;)  ", 
+            "Users": [
+                "@kimasendorf"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@seb_ly thanks!  ", 
+            "Users": [
+                "@seb_ly"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "now with a proper highscore system, I hope... http://www.undef.ch/receipt-racer  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openframeworks", 
+                "#tutorials", 
+                "#examples"
+            ], 
+            "Tweet": "this is a great collection! straight from new zealand #openframeworks #tutorials #examples http://t.co/fZJeD2b  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kcimc: one of the closest things i've seen to a comprehensive collection of @openframeworks tutorials http://t.co/mNCQGSJ via @joelg ...  ", 
+            "Users": [
+                "@kcimc", 
+                "@openframeworks", 
+                "@joelg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#ubuntu", 
+                "#unity"
+            ], 
+            "Tweet": "switching to #ubuntu #unity. seems like last few updates made it work  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#javascript", 
+                "#highscore", 
+                "#almostasfunasonpaper"
+            ], 
+            "Tweet": "play the receipt racer #javascript game online & beat the #highscore! http://undef.ch/receipt-racer #almostasfunasonpaper ...only almost...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#javascript", 
+                "#html5"
+            ], 
+            "Tweet": "RT @creativeapps: Submit javascript experiments to be featured on Creative Application Network http://ca-n.in/msmhtT #javascript #html5 ...  ", 
+            "Users": [
+                "@creativeapps"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "our glitch.js is featured on http://t.co/c72T7IO Try it out: click on the GLITCH THIS SITE button  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "getting ready to go home again. bye to all the people we had the pleasure of hanging out with  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@factoryfactory that's great! we also talked about a sequel. potential is there! btw: http://t.co/tXVcRI4 & more to come  ", 
+            "Users": [
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#evenmorejustjoking"
+            ], 
+            "Tweet": "@peter_bichsel now I just wish schnapps didn't have as many letters #evenmorejustjoking  ", 
+            "Users": [
+                "@peter_bichsel"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@factoryfactory it went well. we had fun. It was a little messy.but people liked it. too bad you missed the last night. get well soon!  ", 
+            "Users": [
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#OFFF2011"
+            ], 
+            "Tweet": "RT @khlrqa: We'll present the output of the @creativeapps collaborative workshop on 18.30 at the BIS stage #OFFF2011  ", 
+            "Users": [
+                "@khlrqa", 
+                "@creativeapps"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "gray is my favorite four letter word  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#OFFF2011"
+            ], 
+            "Tweet": "getting ready for the last day at #OFFF2011 - there's a rumor going around that we'll be up on some kind of stage for a few minutes o_O  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#undef"
+            ], 
+            "Tweet": "Our new #undef site feature. look out for the GLITCH ME! button & keep on browsing... http://undef.ch  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @writtenimages: until september 15th, the jury will be evaluating the final entries, see them all on our prototype production video h ...  ", 
+            "Users": [
+                "@writtenimages"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "thing that are too beautiful, become boring too fast  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"could you please remove this bug?\" - \"This is no bug, it's a feature\" - \"Oh, could you please remove this 'feature' then?\"  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#arghh"
+            ], 
+            "Tweet": "fighting with IE's less than lousy javascript performance. http://goo.gl/GbUN #arghh  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#closeallwindows"
+            ], 
+            "Tweet": "just found out our neighbour is breeding bees in his backyard. #closeallwindows  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@janwaechter you're living in basel?  ", 
+            "Users": [
+                "@janwaechter"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@janwaechter yeah, we were quite lucky. join us for a little grilling session in the backyard sometime :)  ", 
+            "Users": [
+                "@janwaechter"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "we moved http://goo.gl/g6Ra http://goo.gl/bf7j http://goo.gl/qIDf  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @epaulos: Algorithm to detect sarcasm http://bit.ly/dDrUS4  ", 
+            "Users": [
+                "@epaulos"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#boringApple"
+            ], 
+            "Tweet": "RT @d_effekt: apple have no sense of humor: http://www.undef.ch/iUnlock/ #boringApple  ", 
+            "Users": [
+                "@d_effekt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "ofxMSAInteractiveContainer, modified ofxMSAInteractiveObject, now you can add child objects http://bit.ly/9LLdW8  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@golan yes, it was great to meet you. thanks for the invite  ", 
+            "Users": [
+                "@golan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "ofxFileDialog - file selection dialog addon for #openframeworks http://bit.ly/c5H54s  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hitting geneva tomorrow - on the road with @d_effekt & @lennyjpg, visiting @golan  ", 
+            "Users": [
+                "@d_effekt", 
+                "@lennyjpg", 
+                "@golan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#joystick", 
+                "#openframeworks"
+            ], 
+            "Tweet": "ofxJoypad - an addon for #joystick support in #openframeworks http://bit.ly/bpV2Bw  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "ofxFenster - an addon to draw on a second window for #openframeworks http://bit.ly/akzQ76  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#hyperwerk"
+            ], 
+            "Tweet": "finally a device at #hyperwerk that's working! touchtable first tryout session http://vimeo.com/10440702  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "black'n'white, box'n'lines, http://vimeo.com/10176171  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@writtenimages for all facebookers... I'll keep track of your news in this group: http://bit.ly/c7aalD  ", 
+            "Users": [
+                "@writtenimages"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "some impressions http://vimeo.com/10174851  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @writtenimages: new public list of all applicants: http://bit.ly/biw1ib  ", 
+            "Users": [
+                "@writtenimages"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@writtenimages there you come back from holiday and tadaa you missed d_effekt's next big thing. register now! http://bit.ly/dyz13N  ", 
+            "Users": [
+                "@writtenimages"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#processing", 
+                "#openframeworks"
+            ], 
+            "Tweet": "teaching #processing and missing #openframeworks already...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "party like it's 1999.. rendering meta balls  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "teaching @ arduino workshop...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @lennyjpg: interesting: good programmers are good at cooking too. bad programmers fail at runtime and in the kitchen. at least that's ...  ", 
+            "Users": [
+                "@lennyjpg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [
+                "#OpenCL"
+            ], 
+            "Tweet": "first time #OpenCL http://bit.ly/7iBqXi There is probably some potential in this technology  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hi openCL. You're my new friend  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "is not amused about democracy paired with idiocy in switzerland  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "cowork with @d_effekt http://j.mp/5R78KF  ", 
+            "Users": [
+                "@d_effekt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [
+                "#Processing"
+            ], 
+            "Tweet": "RT @creativeapps: Toxiclibs [#Processing]: Karsten (aka @toxi) posts latest update + new examples | CAN http://j.mp/6LKMgb  ", 
+            "Users": [
+                "@creativeapps", 
+                "@toxi"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @zachlieberman: Openframeworks + Javascript + real time coding = LiveCoding out on PC + MAC ! -> http://code.google.com/p/ofliveco ...  ", 
+            "Users": [
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "is stunned by all these retweets... thx  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "we got a new toy to play around with :) http://tiny.cc/CcyZN  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@d_effekt bonjour fellow undef type  ", 
+            "Users": [
+                "@d_effekt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 10, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "wow, finally internet@home again  ", 
+            "Users": [
+                "@home"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 10, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "playing with infrared. Invisible light... huuu  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 10, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "openFrameworks, openCV, udp & jailbreaked iPhone working together nicely  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 10, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "idiots @ iPhone dev program. I was willing to pay but after a few mails, I'll probably just jailbreak my device...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "doing flash the oldschool way keyframes inside adobe flash cs4, argh my head hurts...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "ipod touch is an ass without jailbreak!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "writing eclipse plugins  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "looking at freeFrame  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "fuck PC, now I use MPC (nope not micro PC)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "testing wordpress & twitter integration...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\u00e0 senones  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 3, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "http://littlekiwi.co.cc/page4/page4.html  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "http://eyeos.info/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "now that's what I call some funny shit. http://tinyurl.com/382wm2 Silence, I'll kill you....  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "yeah. Dynamic jar file loading...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "3 VJs, 7 hours of live visuals. 600 party people. First time cash flow made with processing. I like the new year!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 12, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "teaching a processing workshop and lovin it!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 12, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "avoiding the computer for a while  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 11, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "policeman asking questions about an accident. wtf? leave me alone!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "leisure time  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lennyjpg how true.. More than two days a week wash your brain out. But they still pay better than most freelance jobs. Tricky bastards...  ", 
+            "Users": [
+                "@lennyjpg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "wokring in a office ain't that bad. Today they have free gipfel and red bull. wowow...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 11, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "found freeFrame. This will keep me busy for a while...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 11, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "* and & and point to this and point me that....  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 11, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Yeah finally I got my own server space. Something will be on phwhitfield.com soon. Well maybe not that soon...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 11, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "straight outa office  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 11, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "blender is nice, too  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 11, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I give up. But look who's around the corner. XCode and openFrameworks. And it works!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 11, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "compiling openFrameworks in eclipse... one error eliminated, 20 new ones appear. help....  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 10, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New PSP! But how can I hack this bitch? I even cut a wire and nothing happens... Damned  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 10, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "wow. I never thought a microwave is actually usable. This food is hot.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 10, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "lost in 24 inches  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 10, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lennyjpg we even got coffe cups. whooo...  ", 
+            "Users": [
+                "@lennyjpg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 10, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "sitting in the atelier  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 5, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "looking for the as3 twitter library  ", 
+            "Users": []
+        }
+    ], 
+    "name": "underdoeg.txt"
+}

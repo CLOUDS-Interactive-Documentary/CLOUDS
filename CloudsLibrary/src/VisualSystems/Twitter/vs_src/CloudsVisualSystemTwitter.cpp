@@ -85,11 +85,11 @@ void CloudsVisualSystemTwitter::selfSetup()
     baseModifier.b = 0.90;
     baseAlpha = 0.01;
     
-    xScale = 1;
-    yScale = 1;
-    zScale = 10;
+    xScale = 100;
+    yScale = 100;
+    zScale = 100;
     rotateModel = false;
-    initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMen.net");
+    initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMen_old.net");
     font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
     bRenderMesh = true;
     bRenderText = false;
@@ -165,7 +165,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     textGui->addMinimalSlider("TEXT BRI", 0.0, 1, &textColorModifier.b);
     textGui->addMinimalSlider("TEXT ALPHA", 0.0, 1, &textColorModifier.a);
     textGui->addSpacer();
-    textGui->addMinimalSlider("STRING WIDTH", 1, 1000, &stringWidth);
+    textGui->addMinimalSlider("STRING WIDTH", 1, 2000, &stringWidth);
     textGui->addMinimalSlider("SET SIZE", 0.1, 10, &fontSize);
     
     
@@ -223,7 +223,7 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
                             for(int k=0; k<users.size(); k++){
                                 
                                 if( !ofContains(cur.userLinks, users[k].asString())){
-                                    cout<<cur.name<<" : "<<users[k].asString()<<endl;
+//                                    cout<<cur.name<<" : "<<users[k].asString()<<endl;
                                     t.mentionedUsers.push_back(users[k].asString());
                                     cur.userLinks.push_back(users[k].asString());
                                 }
@@ -461,7 +461,6 @@ void CloudsVisualSystemTwitter::loadMesh(){
         
         for (int k=0; k<tweeters[j].linksById.size(); k++) {
             Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
-//            cout<<tweeters[j].name << " : "<<t.name<<endl;
             if(t.ID != -1){
                 if(lineIndexPairs.find(make_pair(tweeters[j].name, t.name)) == lineIndexPairs.end() &&
                    lineIndexPairs.find(make_pair(t.name,tweeters[j].name)) == lineIndexPairs.end() ){
@@ -622,8 +621,6 @@ Tweeter& CloudsVisualSystemTwitter::getTweeterByID(vector<Tweeter>& tweeters, in
             return tweeters[i];
         }
     }
-    Tweeter t  = Tweeter();
-    return t;
 }
 
 void CloudsVisualSystemTwitter::CompareDates(Date d1,Date d2){
@@ -759,7 +756,7 @@ void CloudsVisualSystemTwitter::selfDraw()
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofSetBackgroundColor(0,0,0);
     glDisable(GL_DEPTH_TEST);
-    ofScale(10, 10);
+//    ofScale(10, 10);
     
     
     if(bRenderMesh){
@@ -827,7 +824,7 @@ void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
     ofPushStyle();
     ofSetColor(textColor);
 
-    ofScale(0.01,-0.01);
+    ofScale(0.01,-0.01,0.01);
     ofTranslate(pos.x,pos.y,pos.z);
     font.drawString(ofToUpper(text),0,0);
     ofPopStyle();
