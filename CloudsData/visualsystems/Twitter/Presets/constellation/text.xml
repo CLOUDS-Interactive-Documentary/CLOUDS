@@ -31,17 +31,12 @@
     <Value>0.100000001</Value>
 </Widget>
 <Widget>
-    <Kind>2</Kind>
-    <Name>BILLBOARD SCREEN</Name>
-    <Value>0</Value>
+    <Kind>25</Kind>
+    <Name>STRING WIDTH</Name>
+    <Value>202.768478394</Value>
 </Widget>
 <Widget>
-    <Kind>2</Kind>
-    <Name>BILLBOARD NODES</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BILLBOARD ORIGIN</Name>
-    <Value>0</Value>
+    <Kind>25</Kind>
+    <Name>SET SIZE</Name>
+    <Value>8.000492096</Value>
 </Widget>

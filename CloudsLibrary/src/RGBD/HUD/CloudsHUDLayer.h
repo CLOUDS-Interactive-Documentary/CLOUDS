@@ -12,12 +12,20 @@
 #include "ofxSvg.h"
 #include "ofxTween.h"
 
+typedef struct {
+	string gid;
+	ofRectangle rect;
+} TextBounds;
+
 class CloudsHUDLayer
 {
   public:
 	
-	CloudsHUDLayer(string svgFilePath);
+	CloudsHUDLayer();
 	
+	void parse(string svgFilePath);
+	
+	vector<TextBounds> textBoxes;
 	ofxSVG svg;
 	
 	void start();

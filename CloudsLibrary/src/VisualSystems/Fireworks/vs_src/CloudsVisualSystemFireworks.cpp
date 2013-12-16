@@ -25,21 +25,14 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	//customGui->addSlider("minLifeSpan", .1, 10, &minLifeSpan);
-	//customGui->addSlider("maxLifeSpan", 1, 10, &maxLifeSpan);
 	customGui->addSlider("particle speed", .01, 3, &speed);
 	customGui->addSlider("particleSize", 1, 20, &particleSize);
 	
-	//customGui->addSlider("minExplosionTime", .1, 2, &minExplosionTime);
-	//customGui->addSlider("maxExplosionTime", .5, 5, &maxExplosionTime);
 	customGui->addSlider("particleSpread", 0, 60., &particleSpread);
 	
 	customGui->addSlider("explosionFrequency", .1, 1, &explosionFrequencey);
 	customGui->addIntSlider("emissonRate", 1, 5, &emissonRate);
 	customGui->addSlider("spawnDistance", 10, 400, &spawnDistance);
-	
-//	customGui->addSlider("minParticleVelocity", 0, 100, &minVel);
-//	customGui->addSlider("maxParticleVelocity", 0, 200, &maxVel );
 	
 	customGui->addSlider("maxFireworkVelocity", 1, 300, &maxFWVel );
 	
@@ -47,12 +40,12 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	
 	customGui->addSlider("camSpeed", -.1, 5, &camSpeed );
 	customGui->addSlider("cameraMotionScale", 0, 1, &cameraMotionScl );
-		
-	customGui->addToggle("Custom Toggle", &customToggle);
 	
-	customGui->addImageSampler("birth color map", &colorSampleImage, (float)colorSampleImage.getWidth()/2, (float)colorSampleImage.getHeight()/2 );
+	customGui->addLabel("color_birth");
+	customGui->addImageSampler("birth_color_map", &colorSampleImage, (float)colorSampleImage.getWidth()/2, (float)colorSampleImage.getHeight()/2 );
 	
-	customGui->addImageSampler("death color map", &colorSampleImage, (float)colorSampleImage.getWidth()/2, (float)colorSampleImage.getHeight()/2 );
+	customGui->addLabel("color_death");
+	customGui->addImageSampler("death_color_map", &colorSampleImage, (float)colorSampleImage.getWidth()/2, (float)colorSampleImage.getHeight()/2 );
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemFireworks::selfGuiEvent);
 	
@@ -67,6 +60,11 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	
 	camGui->addToggle("bAnimateCamera", &bAnimateCamera);
 	
+	camGui->addLabel("FogColor");
+	camGui->addImageSampler("fogColor", &colorSampleImage, 100, 100);
+	camGui->addSlider("FogDistance", 100, 1000, &fogDistance);
+	
+	
 	ofAddListener(camGui->newGUIEvent, this, &CloudsVisualSystemFireworks::selfGuiEvent);
 	guis.push_back(camGui);
 	guimap[camGui->getName()] = camGui;
@@ -74,17 +72,22 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 
 void CloudsVisualSystemFireworks::selfGuiEvent(ofxUIEventArgs &e){
 	
-	if( e.widget->getName() == "birth color map"){
+	if( e.widget->getName() == "birth_color_map"){
 		
 		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
 		ofFloatColor col =  sampler->getColor();
 		startColor.set( col.r, col.g, col.b, 1. );
 	}
-	else if( e.widget->getName() == "death color map"){
+	else if( e.widget->getName() == "death_color_map"){
 		
 		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
 		ofFloatColor col =  sampler->getColor();
 		endColor.set( col.r, col.g, col.b, 1. );
+	}
+	else if( e.widget->getName() == "death_color_map")
+	{
+		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
+		fogColor = sampler->getColor();
 	}
 }
 
@@ -127,10 +130,12 @@ void CloudsVisualSystemFireworks::selfSetup()
 	
 	maxFWVel = 2.4;
 	
+	fogDistance = 800;
+	fogColor.set(0,1,0,1);
 
 	
 	//setupParticles
-	FIREWORKS_NUM_PARTICLES = 100000;
+	FIREWORKS_NUM_PARTICLES = 200000;
 	
 	positions = new ofVec3f[ FIREWORKS_NUM_PARTICLES ];
 	velocities = new ofVec3f[ FIREWORKS_NUM_PARTICLES ];
@@ -260,13 +265,8 @@ void CloudsVisualSystemFireworks::selfUpdate()
 		float noiseValY = ofSignedNoise( ofGetElapsedTimef() * noiseTimeScl ) * noiseOffsetScl;
 		
 		//pan and tilt with mouse
-<<<<<<< HEAD
-		float pan = ofMap(ofGetMouseX() + noiseValX, 0, ofGetWidth(), cameraMotionScl, -cameraMotionScl);
-		float tilt = ofMap(ofGetMouseY() + noiseValY, 0, ofGetHeight(), cameraMotionScl, -cameraMotionScl) * xDamp;
-=======
 		float pan = ofMap(GetCloudsInputX() + noiseValX, 0, ofGetWidth(), cameraMotionScl, -cameraMotionScl);
 		float tilt = ofMap(GetCloudsInputY() + noiseValY, 0, ofGetHeight(), cameraMotionScl, -cameraMotionScl) * xDamp;
->>>>>>> 9e8377236b50420dd592c946f1f1cd91ec332be0
 
 		if(abs(eul.x) < 90) getCameraRef().tilt( tilt );
 		getCameraRef().pan( pan );
@@ -372,19 +372,16 @@ void CloudsVisualSystemFireworks::selfDraw()
 	shader.setUniformTexture("squareMap", squareImage.getTextureReference(), 2 );
 	shader.setUniformTexture("circleMap", circleImage.getTextureReference(), 1 );
 	
+	ofVec3f camPos = getCameraRef().getPosition();
+	shader.setUniform3f("camearPosition", camPos.x, camPos.y, camPos.z);
+	shader.setUniform1f("fogDistance", fogDistance);
+	shader.setUniform4f("fogColor", fogColor.r, fogColor.g, fogColor.b, fogColor.a );
+	
 	vbo.drawElements( GL_POINTS, indexCount );
 	
 	shader.end();
 	
 	ofDisablePointSprites();
-
-	
-//	ofSetColor(255, 0, 0);
-//	for (int i=0; i<emitters.size(); i++) {
-//		ofBox(emitters[i].pos, 3);
-//	}
-//	
-//	ofSetColor(255);
 }
 
 
@@ -674,6 +671,8 @@ void CloudsVisualSystemFireworks::selfExit()
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemFireworks::selfKeyPressed(ofKeyEventArgs & args){
 	if (args.key == 'l') {
+		shader.unload();
+		
 		shader.load(getVisualSystemDataPath() + "shaders/base.vert", getVisualSystemDataPath() + "shaders/base.frag");
 		
 		glowShader.load(getVisualSystemDataPath() + "shaders/post");

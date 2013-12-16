@@ -27,7 +27,6 @@ struct svgtiny_gradient_stop {
 struct svgtiny_parse_state {
 	struct svgtiny_diagram *diagram;
     Poco::XML::Document *document;
-
 	float viewport_width;
 	float viewport_height;
 

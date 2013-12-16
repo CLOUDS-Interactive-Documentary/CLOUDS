@@ -93,18 +93,38 @@ void CirclePacker::update() {
  * Draw all the circles
  */
 
-void CirclePacker::draw()
+void CirclePacker::draw(bool _nasdaq, bool _blanks)
 {
+    if (_blanks == true){
     for (int i = 0; i < circles.size(); i++)
     {
         Circle& c = circles[i];
         if (c.r < 1)
         {
-            cout << "I would erase this one if I knew how" << endl;   // circles.erase(circles.begin() + i);
+          circles.erase(circles.begin() + i);
         }
         else
         {
             c.draw();
         }
+        }
     }
+    
+    if (_nasdaq == true){
+        for (int i = 0; i < circles.size(); i++)
+        {
+            Circle& c = circles[i];
+            if (c.r < 1)
+            {
+                circles.erase(circles.begin() + i);
+            }
+            else
+            {
+                c.drawCompanies();
+            }
+        }
+        
+    }
+    
 }
+

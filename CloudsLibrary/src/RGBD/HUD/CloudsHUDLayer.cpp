@@ -7,19 +7,58 @@
 //
 
 #include "CloudsHUDLayer.h"
+#include "ofxXmlSettings.h"
 
-CloudsHUDLayer::CloudsHUDLayer(string svgFilePath){
+CloudsHUDLayer::CloudsHUDLayer(){
 	startTime = 0;
 	duration = 0;
 	delayTime = 0;
 	percentComplete = ofVec2f(0,0);
 	animating = false;
-	svg.load(svgFilePath);
 	maxUpdateInterval = 1./60.;
 	lastUpdateTime = 0;
 	startPercent.x = .8;
 	startPercent.y = .0;
+}
+
+void CloudsHUDLayer::parse(string svgFilePath){
 	
+	svg.load(svgFilePath);
+	
+	//find text boxes
+	ofxXmlSettings xml;
+	xml.loadFile(svgFilePath);
+	xml.pushTag("svg");
+	int numGTags = xml.getNumTags("g");
+	for(int i = 0; i < numGTags; i++){
+		if(!xml.attributeExists("g","id",i)){
+			continue;
+		}
+		if(xml.attributeExists("g", "display", i) && xml.getAttribute("g", "display", "", i) == "none"){
+			continue;
+		}
+		string id = ofToLower(xml.getAttribute("g", "id", "", i));
+		if(id.find("textbox") != string::npos){
+			cout << "Found Text Box " << id << endl;
+			xml.pushTag("g",i);
+			int numRects = xml.getNumTags("rect");
+			if(numRects == 1){
+				TextBounds tb;
+				tb.gid = id;
+				tb.rect = ofRectangle(xml.getAttribute("rect", "x", 0.),
+									  xml.getAttribute("rect", "y", 0.),
+									  xml.getAttribute("rect", "width", 0.),
+									  xml.getAttribute("rect", "height", 0.));
+				textBoxes.push_back(tb);
+//				cout << "Found rectangle " << tb.rect.x << " " << tb.rect.y << " " << tb.rect.width << " " << tb.rect.height << endl;
+			}
+			else{
+				ofLogError("CloudsHUDLayer::parse") << "Wrong number of rectangles in " << id << endl;
+			}
+			xml.popTag();
+		}
+		
+	}
 }
 
 void CloudsHUDLayer::start(){

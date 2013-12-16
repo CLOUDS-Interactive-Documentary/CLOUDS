@@ -90,6 +90,9 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	}
 	
 	shaderGui->addLabel("Shaders");
+	shaderGui->addToggle("use shader", &bDoShader);
+	shaderGui->addToggle("draw points", &bDrawPoints);
+	
 	shaderGui->addSpacer();
 	shaderGui->addRadio("shaders", shaderNames);
 	shaderGui->addSpacer();
@@ -298,6 +301,8 @@ void CloudsVisualSystemWormHole::selfSetup()
 	cameraPathPosition = 0;
 	speed = .1;
 	lastTime = ofGetElapsedTimef();
+	bDoShader = true;
+	bDrawPoints = false;
 	
 	shininess = 16;
 	bDepthTest = true;
@@ -394,7 +399,7 @@ void CloudsVisualSystemWormHole::selfDraw()
 	bDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
 	
 	//shader binding
-	if (currentShader != NULL)
+	if (bDoShader && currentShader != NULL)
 	{
 		currentShader->begin();
 		currentShader->setUniform1f("time", ofGetElapsedTimef());
@@ -412,12 +417,25 @@ void CloudsVisualSystemWormHole::selfDraw()
 	ofPushMatrix();
 	ofMultMatrix( meshNode.getGlobalTransformMatrix() );
 
-	mesh.draw();
+	if(!bDoShader){
+		mat->begin();
+	}
+	
+	if(bDrawPoints){
+		mesh.drawVertices();
+	}
+	else{
+		mesh.draw();
+	}
+	
+	if(!bDoShader){
+		mat->end();
+	}
 	
 	ofPopMatrix();
 	
 	//unbind shade
-	if (currentShader != NULL)	currentShader->end();
+	if (bDoShader && currentShader != NULL)	currentShader->end();
 	
 	//disable depth testing
 	glDisable(GL_DEPTH_TEST);
@@ -458,7 +476,10 @@ void CloudsVisualSystemWormHole::selfExit()
 	//unload the shaders
 	for (map<string, ofShader*>::iterator it = shaderMap.begin(); it!= shaderMap.end(); it++)
 	{
-		it->second->unload();
+		//JG: fixed memory leak
+		ofShader* shader = it->second;
+		shader->unload();
+		delete shader;
 	}
 	shaderMap.clear();
 	
