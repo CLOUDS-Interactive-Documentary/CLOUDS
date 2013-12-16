@@ -35,7 +35,6 @@ void CloudsHUDLayer::parse(string svgFilePath){
 			continue;
 		}
 		if(xml.attributeExists("g", "display", i) && xml.getAttribute("g", "display", "", i) == "none"){
-			cout << "skipping hidden attribute" << endl;
 			continue;
 		}
 		string id = ofToLower(xml.getAttribute("g", "id", "", i));
