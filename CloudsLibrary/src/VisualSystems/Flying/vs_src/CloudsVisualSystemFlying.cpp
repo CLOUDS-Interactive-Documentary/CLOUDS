@@ -6,7 +6,7 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsInput.h"
 
-const string CloudsVisualSystemFlying::RULES_FILES[] = { "flower1.xml", "tree1.xml", "tree2.xml", "tree3.xml" };
+//const string CloudsVisualSystemFlying::RULES_FILES[] = { "flower1.xml", "tree1.xml", "tree2.xml", "tree3.xml" };
 //const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying2.xml" };
 const float CloudsVisualSystemFlying::CAM_DAMPING = .08f;
 
@@ -16,6 +16,13 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
     cameraControl(true), fogStart(200.f), fogEnd(500.f), growDist(300.f), drawPlantPosns(false), numNearbyPlants(200),
     zSpeed(0), yRot(0), xRot(20), camAvoidDist(500.f)
 {
+    ofDirectory dir;
+    dir.listDir(getVisualSystemDataPath() + "rules");
+    for (unsigned i = 0; i < dir.size(); ++i)
+    {
+        rulesFiles.push_back(dir.getName(i));
+        rulesWeightings.push_back(1.f);
+    }
 }
 
 // selfSetup is called when the visual system is first instantiated
@@ -256,12 +263,17 @@ void CloudsVisualSystemFlying::selfPostDraw()
 void CloudsVisualSystemFlying::selfSetupRenderGui()
 {
     rdrGui->addToggle("regenerate", false);
-    rdrGui->addSlider("growDist", 100.f, 1000.f, &growDist);
-    rdrGui->addSlider("numNearbyPlants", 20, 500, &numNearbyPlants);
+    rdrGui->addToggle("cameraControl", &cameraControl);
     rdrGui->addSlider("fogStart", 100.f, 4000.f, &fogStart);
     rdrGui->addSlider("fogEnd", 100.f, 4000.f, &fogEnd);
+    rdrGui->addLabel("Plants");
+    rdrGui->addSlider("numNearbyPlants", 20, 500, &numNearbyPlants);
+    for (unsigned i = 0; i < rulesFiles.size(); ++i)
+    {
+        rdrGui->addSlider(rulesFiles[i] + " weighting", 0.f, 1.f, &rulesWeightings[i]);
+    }
+    rdrGui->addSlider("growDist", 100.f, 1000.f, &growDist);
     rdrGui->addSlider("camAvoidDist", 0.f, 1000.f, &camAvoidDist);
-    rdrGui->addToggle("cameraControl", &cameraControl);
     rdrGui->addToggle("drawPlantPosns", &drawPlantPosns);
     rdrGui->addLabel("Floor");
     rdrGui->addSlider("noiseFreq", 0.001, 0.01, &noiseFreq);

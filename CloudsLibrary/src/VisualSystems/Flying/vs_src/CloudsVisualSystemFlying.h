@@ -23,8 +23,8 @@ struct Plant
 class CloudsVisualSystemFlying : public CloudsVisualSystem
 {
   public:
-    static const unsigned NUM_RULES_FILES = 4;
-    static const string RULES_FILES[NUM_RULES_FILES];
+    //static const unsigned NUM_RULES_FILES = 4;
+    //static const string RULES_FILES[NUM_RULES_FILES];
     static const float CAM_DAMPING;
     
     CloudsVisualSystemFlying();
@@ -126,6 +126,8 @@ protected:
     float camAvoidDist;
     
     // plants
+    vector<string> rulesFiles;
+    vector<float> rulesWeightings;
     ofShader plantsShader;
     unsigned numPlantMeshes;
     float numNearbyPlants;
