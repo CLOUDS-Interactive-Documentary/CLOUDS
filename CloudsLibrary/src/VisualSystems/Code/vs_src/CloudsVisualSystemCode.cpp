@@ -85,7 +85,8 @@ void CloudsVisualSystemCode::generatePanels(){
 		p.scanSpeed = powf(ofRandom(speedRange.min,speedRange.max),2);
 		panels.push_back(p);		
 	}
-
+	
+	panelsGenerated = true;
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -123,6 +124,9 @@ void CloudsVisualSystemCode::selfPresetLoaded(string presetPath){
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemCode::selfBegin(){
+	if(panelsGenerated){
+		generatePanels();
+	}
 	
 }
 

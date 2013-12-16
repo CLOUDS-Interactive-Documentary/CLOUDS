@@ -114,6 +114,8 @@ protected:
 	int boxSeed;
 	float outlineAlpha;
 	
+	bool panelsGenerated;
+	
 
 
 };
