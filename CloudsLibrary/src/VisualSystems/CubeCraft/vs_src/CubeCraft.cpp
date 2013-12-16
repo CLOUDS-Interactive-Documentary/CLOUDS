@@ -185,8 +185,8 @@ void CubeCraft::selfSetup()
 	specScale = 1.2;
 	
 	//gui
-	string cloudsDataPath = "../../../CloudsData/";
-	colorMap.loadImage(cloudsDataPath + "colors/defaultColorPalette.png");
+
+	colorMap.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png");
 	
 	cout << "Number of boxes == " << (dimX * dimY * dimZ) << endl;
 	

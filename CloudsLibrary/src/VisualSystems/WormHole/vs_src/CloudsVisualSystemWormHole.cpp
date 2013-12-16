@@ -348,8 +348,7 @@ void CloudsVisualSystemWormHole::selfSetup()
 	blendModes["OF_BLENDMODE_SUBTRACT"] = OF_BLENDMODE_SUBTRACT;
 	
 	//gui
-	string cloudsDataPath = "../../../CloudsData/";
-	colorSampleImage.loadImage( cloudsDataPath + "colors/defaultColorPalette.png" );
+	colorSampleImage.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png" );
 	
 }
 

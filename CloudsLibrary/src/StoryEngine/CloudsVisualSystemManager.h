@@ -70,6 +70,7 @@ class CloudsVisualSystemManager {
     map<string, vector<string> > suppressedClips;
 	string getKeywordFilePath();
 
+	void addDefaultPresetForSystem(string systemName);
 	
 	map<string,vector<string> > keywords;
 

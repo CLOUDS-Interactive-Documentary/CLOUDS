@@ -11,6 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "CloudsGlobal.h"
 
 class FireworkRocket;
 class FireworkRocket{
@@ -102,7 +103,7 @@ public:
 	};
 	~FireworkEmitter(){};
 	
-	void setup( float _startTime, float _span, ofVec3f _startPos, ofVec3f _endPos, int _textureIndex )
+	void setup( float _startTime, float _span, ofVec3f _startPos, ofVec3f _endPos, int _textureIndex, int _colorIndex )
 	{
 		startTime = _startTime;
 		span = _span;
@@ -113,6 +114,7 @@ public:
 		endPos = _endPos;
 		
 		textureIndex = _textureIndex;
+		colorIndex = _colorIndex;
 	}
 	
 	void update(float t = ofGetElapsedTimef())
@@ -146,6 +148,7 @@ public:
 		q = e.q;
 		
 		textureIndex = e.textureIndex;
+		colorIndex = e.colorIndex;
 	};
 	
 	float startTime, endTime, age, span;
@@ -157,6 +160,7 @@ public:
 	ofxEasingSine ease;
 	
 	int textureIndex;
+	int colorIndex;
 };
 
 //TODO: rename this to your own visual system
@@ -249,9 +253,9 @@ public:
 	
 	void updateVbo();
 	void explodeFireWork( ofVec3f origin=ofVec3f(), ofVec3f vel=ofVec3f() );
-	void emitFromPoint( ofVec3f point, ofVec3f dir, float lifespan=ofRandom(1.,3.), float t=ofGetElapsedTimef(), float texIndex=0 );
+	void emitFromPoint( ofVec3f point, ofVec3f dir, float lifespan=ofRandom(1.,3.), float t=ofGetElapsedTimef(), float texIndex=0, int colorIndex=0 );
 	
-	void trailPoint( ofVec3f point, ofVec3f vel = ofVec3f(), int count = 10, float texIndex = 0);
+	void trailPoint( ofVec3f point, ofVec3f vel = ofVec3f(), int count = 10, float texIndex = 0, int colorIndex=0);
 	
 	//camera
 //	ofEasyCam camera;
@@ -291,7 +295,8 @@ public:
 	float fireWorkExplosionTime;
 	
 	//render attributes
-	ofVec4f startColor, endColor;
+	ofFloatColor startColor, endColor;
+	float startColorSaturation, endColorSaturation;
 	
 	ofxUISuperCanvas* fireworksRenderGui;
 	ofxUISuperCanvas* fireworksBehaviorGui;
@@ -330,6 +335,7 @@ public:
 	int rocketCount;
 	
 	ofVbo curvePoints;
+
 	
 protected:
 	
@@ -341,6 +347,7 @@ protected:
 	ofxUISuperCanvas* fireworkGui;
 	
 	ofxUISuperCanvas* fireworkFogGui;
+	ofxUISuperCanvas* fireworkColorsGui;
 	
 	
 	bool customToggle;
@@ -378,6 +385,13 @@ protected:
 	
 	float fogDistance, fogAttenuation;
 	ofFloatColor fogColor;
+	float fogSaturation;
 	
 	bool bUseCircle, bUseSquare, bUseTriangle, bUseDot;
+	bool bBurst, bOctahedron, bTetrahedron, bDodecagedron;
+	
+	map<string, ofFloatColor> fwColors;
+	map<string, ofFloatColor> fwDeathColors;
+	map<string, float> fwSaturations;
+	map<string, float> fwDeathSaturations;
 };

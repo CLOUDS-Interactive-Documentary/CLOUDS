@@ -361,8 +361,6 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	
 	bgColor = ofColor::fromHsb(MIN(bgHue,254.), bgSat, bgBri, 255);
 	bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
-//	cout << "color 1 " << int(bgColor.r) << " " << int(bgColor.g) << " " << int(bgColor.b) << endl;
-//	cout << "color 2 " << int(bgColor2.r) << " " << int(bgColor2.g) << " " << int(bgColor2.b) << endl;
 	
 	//Make this happen only when the timeline is modified by the user or when a new track is added.
 	if(!ofGetMousePressed())
@@ -628,8 +626,8 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
         case ' ':
         {
 			timeline->togglePlay();
-            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->setValue(timeline->getIsPlaying());
-            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->triggerSelf();
+//            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->setValue(timeline->getIsPlaying());
+//            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->triggerSelf();
         }
             break;
 			
@@ -961,7 +959,7 @@ void CloudsVisualSystem::setupTimeLineParams()
 	bTimelineIsIndefinite = true;
     bDeleteTimelineTrack = false;
     timelineDuration = 60;
-    bEnableTimeline = false;
+    bEnableTimeline = true;
     bEnableTimelineTrackCreation = false;
 }
 
@@ -1986,6 +1984,7 @@ void CloudsVisualSystem::setTimelineTrackDeletion(bool state)
                 ofAddListener((*it)->newGUIEvent,this,&CloudsVisualSystem::guiAllEvents);
             }
         }
+        bEnableTimeline = true;
     }
     else
     {
@@ -2012,6 +2011,7 @@ void CloudsVisualSystem::setTimelineTrackCreation(bool state)
                 ofAddListener((*it)->newGUIEvent,this,&CloudsVisualSystem::guiAllEvents);
             }
         }
+        bEnableTimeline = true;
     }
     else
     {
