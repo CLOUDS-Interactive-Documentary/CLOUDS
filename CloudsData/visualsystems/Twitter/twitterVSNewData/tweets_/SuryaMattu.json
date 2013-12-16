@@ -1,0 +1,759 @@
+{
+    "Tweets": [
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"You can\u2019t just put a LISP book on top of an x86 chip and hope that the hardware learns lambda calculus by osmosis \"http://t.co/oj8ahh4EGM  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Dooztron @mariuswatz @carolinesinders agreed  ", 
+            "Users": [
+                "@Dooztron", 
+                "@mariuswatz", 
+                "@carolinesinders"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mariuswatz still better than dog tv. thats a channel that actually curates contents for dogs. no joke.  ", 
+            "Users": [
+                "@mariuswatz"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mariuswatz interesting progression from Doomsdayer reality TV clips.  ", 
+            "Users": [
+                "@mariuswatz"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@patriciogv @RezaAli mine too!  ", 
+            "Users": [
+                "@patriciogv", 
+                "@RezaAli"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Apply for Maker Faire India - https://t.co/aVHU5DZvM9  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @acarvin: In today's surveillance environment, journos have to act like CTOs for sources to secure their reporting efforts. - Chris Sogh\u2026  ", 
+            "Users": [
+                "@acarvin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@ra 'If you want to stop picking up rocks off the ground and start thinking about hammers, this class is for you' - I'm sold  ", 
+            "Users": [
+                "@ra"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New human body part discovered. NBD. http://t.co/jHIS3Z8y6g  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @chaykak: \u201cIn Darkmail, users would encrypt messages with private keys kept only on their computers or mobile devices\u201d http://t.co/Nmjgi\u2026  ", 
+            "Users": [
+                "@chaykak"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#phonebloks"
+            ], 
+            "Tweet": "Show the world we want a phone worth keeping! #phonebloks http://t.co/c9AFGajz7Y  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ggreenwald: Official Edward Snowden site for his legal defense fund has just launched http://t.co/nAbYAGBFxT - includes list of revela\u2026  ", 
+            "Users": [
+                "@ggreenwald"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "My post on how to hack and hookup ad RFID card reader with an @arduino Yun. http://t.co/TLIfVXMG1G @luisdaniel12  ", 
+            "Users": [
+                "@arduino", 
+                "@luisdaniel12"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @dphiffer: ICANN, IETF, W3C, Internet Society \u201chave vowed to break their associations with the US gov\u2019t\u201d due to surveillance http://t.co\u2026  ", 
+            "Users": [
+                "@dphiffer"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Small write up on @thepowerclip http://t.co/GuncJIOojH  ", 
+            "Users": [
+                "@thepowerclip"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @History_Pics: Armored Quadricycle c. 1899 http://t.co/9NlKX2DGUx  ", 
+            "Users": [
+                "@History_Pics"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#shitaintright"
+            ], 
+            "Tweet": "Leaving your used sex toys on the street. #shitaintright http://t.co/yZZtocV2gg  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@alexicon3000 no worries. Its good to be able to do some things in excess without any consequences.  ", 
+            "Users": [
+                "@alexicon3000"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "https://t.co/glUwWDOp9h  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"That breaks...who has the final say in your Web experience, and indeed who has ultimate control over your computing device.\"  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@alexicon3000 @obviousjim couldn't find a bluetooth handsfree for it  ", 
+            "Users": [
+                "@alexicon3000", 
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#slyphone"
+            ], 
+            "Tweet": "New #slyphone application : taking selfies while wearing an oculus rift. @obviousjim @alexicon3000 http://t.co/BMMKxLCFu3  ", 
+            "Users": [
+                "@obviousjim", 
+                "@alexicon3000"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @aparrish: when we fail to express the feelings in our heart http://t.co/XkG5oQWDhH  ", 
+            "Users": [
+                "@aparrish"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#nexttopmaker"
+            ], 
+            "Tweet": "RT @benbranham: .@kyedki and the @NYCEDC crew celebrate @thepowerclip as NYC's #nexttopmaker. Congrats to all the finalists. http://t.co/zW\u2026  ", 
+            "Users": [
+                "@benbranham", 
+                "@kyedki", 
+                "@NYCEDC", 
+                "@thepowerclip"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @prisonerjohn: Ouch RT @Huth: Fox news attempts to explain what Github is http://t.co/ldSxvxVNwu  ", 
+            "Users": [
+                "@prisonerjohn", 
+                "@Huth"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kcimc done  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @obviousjim: http://t.co/TuZHzpoA7i - redirects your phone camera so you can take photos without drawing attention.  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @tinysubversions: My latest bot automatically makes animated GIFs from TV shows and posts them to tumblr. I'm starting with The Wire: ht\u2026  ", 
+            "Users": [
+                "@tinysubversions"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @trevorpaglen: \"I _strongly_ recommend against anyone trusting private data to a company w physical ties to the United States.\" http://t\u2026  ", 
+            "Users": [
+                "@trevorpaglen"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"None of this is routine,none of this is necessary. All of its dangerous.\"Bruce Schneier and Miko Hypponen on the NSA.http://t.co/dnhwyE8M2d  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"You can\u2019t have democracy in an evolved information society if information is free.\" Good interview http://t.co/LlwtlLEn51  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Git and the art of coding environment maintenance @obviousjim @deepspeedmedia http://t.co/SForMfzkgz  ", 
+            "Users": [
+                "@obviousjim", 
+                "@deepspeedmedia"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "'Im lining up nostrils clip by clip'. The woes of a new media artist. @obviousjim @deepspeedmedia @alexicon3000  ", 
+            "Users": [
+                "@obviousjim", 
+                "@deepspeedmedia", 
+                "@alexicon3000"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"We\u2019re not going to get through this by pushing buttons on centralized services.\" https://t.co/hQRiTX7lpd via @lawn___mower  ", 
+            "Users": [
+                "@lawn___mower"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "excellent independence day screenshot https://t.co/hM9kYgsvZQ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @deepspeedmedia: Douglas Englebart (1925 - 2013) https://t.co/Bf7iV3H4jY Thanks for the desktop and mouse!  ", 
+            "Users": [
+                "@deepspeedmedia"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Inspiration? http://t.co/rx2qZDllIs @obviousjim @deepspeedmedia  ", 
+            "Users": [
+                "@obviousjim", 
+                "@deepspeedmedia"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "LOL CATZ explained : https://t.co/gi6VmkcUaC  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#overheardatwork", 
+                "#clouds"
+            ], 
+            "Tweet": "RT @microsarah: \"Are you parsing the cluster ID?\" #overheardatwork #clouds @obviousjim @SuryaMattu  ", 
+            "Users": [
+                "@microsarah", 
+                "@obviousjim", 
+                "@SuryaMattu"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Introducing cyborg surya http://t.co/lLUuVSNIgf  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"Should law enforcement in the legitimate pursuit of criminal activity pretend that such data does not exist?\" http://t.co/Dcx1Zhxc6F  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jamiezigelbaum: The first observed evidence of other universes. http://t.co/6qo7hFr3XT  ", 
+            "Users": [
+                "@jamiezigelbaum"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#occupygezi"
+            ], 
+            "Tweet": "RT @dphiffer: I\u2019m stunned at today\u2019s @nytimes https://t.co/3fEqK94bbj #occupygezi  ", 
+            "Users": [
+                "@dphiffer", 
+                "@nytimes"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#OccupyGezi"
+            ], 
+            "Tweet": "RT @karl_ward: RT A live stream from Istanbul - http://t.co/kI0jgvPxIS @YourAnonNews #OccupyGezi  ", 
+            "Users": [
+                "@karl_ward", 
+                "@YourAnonNews"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@tigoe only the superbowl of european soccer. http://t.co/KNUiLShjPf  ", 
+            "Users": [
+                "@tigoe"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @SandersAK: This racist door by @disruptsy was a little confused by my hapa-ness: http://t.co/XD5uF5xilz cc @temiri  ", 
+            "Users": [
+                "@SandersAK", 
+                "@disruptsy", 
+                "@temiri"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I just backed NeoLucida - A Portable Camera Lucida for the 21st Century on @Kickstarter http://t.co/KRaq4OB495  ", 
+            "Users": [
+                "@Kickstarter"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#SocialShirky"
+            ], 
+            "Tweet": "Prevent the conversation from calcifying. Thank you @cshirky #SocialShirky  ", 
+            "Users": [
+                "@cshirky"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "They should be made for the kids who work at the sweatshops. @carolinesinders @milazzo_ma @probablylettuce @karl_ward  ", 
+            "Users": [
+                "@carolinesinders", 
+                "@milazzo_ma", 
+                "@probablylettuce", 
+                "@karl_ward"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#Twitter", 
+                "#Bots"
+            ], 
+            "Tweet": "RT @gilgul: In case you missed this: \"how to become internet famous without ever existing\" #Twitter #Bots http://t.co/GeRiFnYGVk - by @Kevi\u2026  ", 
+            "Users": [
+                "@gilgul", 
+                "@Kevi"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "testing testing  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @agquinn: Inside sources say @Reuters staffer responsible for AP hack.  ", 
+            "Users": [
+                "@agquinn", 
+                "@Reuters"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#nytm"
+            ], 
+            "Tweet": "RT @philg1: A great piece on @thepowerclip from the #nytm demo last night: http://t.co/H4F77YIJ9J  ", 
+            "Users": [
+                "@philg1", 
+                "@thepowerclip"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "We're presenting the Powerclip tonight at NY Tech Meetup. You can catch the live stream at http://t.co/CHziaVjK4U http://t.co/7HTxzt69SD  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @omershapira: So I'm building this with @SuryaMattu for @obviousjim's Video Art class. We're not suggesting this is art. https://t.co ...  ", 
+            "Users": [
+                "@omershapira", 
+                "@SuryaMattu", 
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @cshirky: \"Pushing code became almost as routine as tweeting...GitHub broadened peer production to casual users\" http://t.co/LUiJEKVF ...  ", 
+            "Users": [
+                "@cshirky"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#ringthebell"
+            ], 
+            "Tweet": "At #ringthebell thinking about my promise.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#arthackday"
+            ], 
+            "Tweet": "God is my messenger. #arthackday http://t.co/32RWQZdQ36  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mallikadutt: If we observe 1 minute of silence for all the women dead due to male violence we will stand for centuries. @kamla Bhasi ...  ", 
+            "Users": [
+                "@mallikadutt", 
+                "@kamla"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#dropboxspacerace"
+            ], 
+            "Tweet": "Dropbox is giving away free space to all university students! Check it out: http://t.co/ZsQFCDyQ #dropboxspacerace  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kcimc: love this endless stream of bubbles that say \"pop!\" when you touch them https://t.co/gdT1Yzax from @suryamattu with processin ...  ", 
+            "Users": [
+                "@kcimc", 
+                "@suryamattu"
+            ]
+        }
+    ], 
+    "name": "SuryaMattu.txt"
+}

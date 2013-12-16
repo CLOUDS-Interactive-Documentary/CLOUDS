@@ -5,11 +5,10 @@ void testApp::setup(){
 	
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
-	ofBackground(0);
 	
 	ofToggleFullscreen();
     ofEnableSmoothing();
-	
+	ofBackground(0,0,255);
 //	currentAct = NULL;
 //	rebuildAct = false;
 //	
@@ -99,6 +98,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+//	ofBackground(mouseX);
 
 	hud.draw();
 //    if(currentAct != NULL){
