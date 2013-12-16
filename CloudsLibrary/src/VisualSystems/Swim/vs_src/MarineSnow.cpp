@@ -35,13 +35,14 @@
 namespace itg
 {
     MarineSnow::MarineSnow() :
-        alphaMin(.2f), alphaMax(.8f), innerFogStart(100.f), innerFogEnd(400.f), sizeMin(0.1f), sizeMax(400.f)
+        alphaMin(.2f), alphaMax(.8f), innerFogStart(100.f), innerFogEnd(400.f),
+        sizeMin(0.1f), sizeMax(400.f), numParticles(100000)
     {
     }
     
-    void MarineSnow::init(const string& dataPath, unsigned numParticles)
+    void MarineSnow::init(const string& dataPath)
     {
-        this->numParticles = numParticles;
+        //this->numParticles = numParticles;
         mesh.setMode(OF_PRIMITIVE_POINTS);
         shader.load(dataPath + "shaders/snow");
         ofDisableArbTex();

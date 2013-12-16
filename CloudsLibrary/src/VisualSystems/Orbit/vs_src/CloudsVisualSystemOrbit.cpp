@@ -15,8 +15,6 @@
 // geometry should be loaded here
 void CloudsVisualSystemOrbit::selfSetup()
 {
-    ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemOrbit::onWindowResized);
-    
     drawNormals = false;
     drawInflections = false;
     drawAcc = false;
@@ -56,7 +54,8 @@ void CloudsVisualSystemOrbit::selfSetup()
 //normal update call
 void CloudsVisualSystemOrbit::selfUpdate()
 {
-    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
+    if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
+
     if (multiplePaths && (paths.empty() || ofGetElapsedTimeMillis() - lastPathTime > PATH_INTERVAL))
     {
         paths.push_back(itg::Path(meshRadius));
@@ -230,11 +229,6 @@ void CloudsVisualSystemOrbit::guiRenderEvent(ofxUIEventArgs &e)
         paths.push_back(itg::Path(meshRadius));
         motion = WAVY;
     }
-}
-
-void CloudsVisualSystemOrbit::onWindowResized(ofResizeEventArgs& args)
-{
-    post.init(args.width, args.height, true);
 }
 
 //These methods let us add custom GUI parameters and respond to their events

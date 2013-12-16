@@ -16,8 +16,6 @@ CloudsVisualSystemRulez::CloudsVisualSystemRulez() :
 // geometry should be loaded here
 void CloudsVisualSystemRulez::selfSetup()
 {
-    ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemRulez::onWindowResized);
-    
     ofDirectory dir;
     dir.listDir(getVisualSystemDataPath() + "rules");
     dir.sort();
@@ -81,6 +79,7 @@ void CloudsVisualSystemRulez::selfUpdate()
 {
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
     //rules.step();
+    if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -184,11 +183,6 @@ void CloudsVisualSystemRulez::guiRenderEvent(ofxUIEventArgs &e)
             toggle->setValue(false);
         }
     }
-}
-
-void CloudsVisualSystemRulez::onWindowResized(ofResizeEventArgs& args)
-{
-    post.init(args.width, args.height, true);
 }
 
 void CloudsVisualSystemRulez::selfGuiEvent(ofxUIEventArgs &e)
