@@ -1103,7 +1103,7 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
 
 void CloudsVisualSystem::setColors(){
 
-     cb = ofxUIColor(128,180);
+     cb = ofxUIColor(128,255);
      co = ofxUIColor(255, 255, 255, 100);
      coh = ofxUIColor(255, 255, 255, 200);
      cf = ofxUIColor(255, 255, 255, 200);
@@ -2560,7 +2560,7 @@ void CloudsVisualSystem::loadPresetGUISFromName(string presetName)
 void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 {
     resetTimeline();
-    cb = ofxUIColor(128,180);
+    cb = ofxUIColor(128,255);
     co = ofxUIColor(255, 255, 255, 100);
     coh = ofxUIColor(255, 255, 255, 200);
     cf = ofxUIColor(255, 255, 255, 200);
