@@ -26,6 +26,7 @@ void CloudsVisualSystemCirclePacking::selfSetupGui(){
 
     customGui->addToggle("BlankCircles", &BLANKS);
     customGui->addToggle("Nasdaq", &NASDAQ);
+    customGui->addToggle("Hashtags", &HASHTAGS);
     customGui->addToggle("Regenerate", &shouldRegenerate);
     
 	customGui->addToggle("filled", &filled);
@@ -55,10 +56,21 @@ void CloudsVisualSystemCirclePacking::selfGuiEvent(ofxUIEventArgs &e){
     
     else if (e.widget->getName() == "Nasdaq" && ((ofxUIToggle *)e.widget)->getValue()) {
         NASDAQ = true;
+        BLANKS = false;
+        HASHTAGS = false;
+
     }
     
     else if (e.widget->getName() == "BlankCircles" && ((ofxUIToggle *)e.widget)->getValue()) {
         BLANKS = true;
+        HASHTAGS = false;
+        NASDAQ = false;
+    }
+    
+    else if (e.widget->getName() == "Hashtags" && ((ofxUIToggle *)e.widget)->getValue()) {
+        HASHTAGS = true;
+        NASDAQ = false;
+        BLANKS = false;
     }
 
     else if (e.widget->getName() == "Regenerate" && ((ofxUIToggle *)e.widget)->getValue()) {
@@ -87,7 +99,7 @@ void CloudsVisualSystemCirclePacking::regenerate(){
  
     pack.circles.clear();
     
-    pack = CirclePacker(1.0f*ofGetWidth(),1.0f*ofGetHeight());
+    pack = CirclePacker(1.0f*ofGetWidth(),1.0f*ofGetHeight(), 12);
     
     if (NASDAQ){
         initializeNasdaq();
@@ -95,6 +107,11 @@ void CloudsVisualSystemCirclePacking::regenerate(){
     else if (BLANKS){
         
         initializeBlanks();
+    }
+    
+    else if (HASHTAGS){
+        
+        initializeHashtags();
     }
     
 	pack.pack();
@@ -110,7 +127,7 @@ void CloudsVisualSystemCirclePacking::selfSetup(){
    // Circle::Font.loadFont(getVisualSystemDataPath() + "Verdana14.ttf", 14, true, true, true);
     Circle::Font.loadFont(getVisualSystemDataPath() + "Verdana14.ttf", 14);
 
-	pack = CirclePacker(1.0f*ofGetWidth(),1.0f*ofGetHeight());
+	pack = CirclePacker(1.0f*ofGetWidth(),1.0f*ofGetHeight(), 15);
     
     if (NASDAQ){
         initializeNasdaq();
@@ -118,6 +135,11 @@ void CloudsVisualSystemCirclePacking::selfSetup(){
     else if (BLANKS){
     
         initializeBlanks();
+    }
+    
+    else if (HASHTAGS){
+        
+        initializeHashtags();
     }
 
 	pack.pack();
@@ -174,7 +196,7 @@ void CloudsVisualSystemCirclePacking::selfDrawBackground(){
     
 	ofPushStyle();
 	ofNoFill();
-    pack.draw(NASDAQ, BLANKS);
+    pack.draw(NASDAQ, BLANKS, HASHTAGS);
 	ofPopStyle();
 	
 	//turn the background refresh off
@@ -189,13 +211,13 @@ void CloudsVisualSystemCirclePacking::initializeBlanks(){
 			pack.circles.push_back( Circle(ofRandom(ofGetWidth()),
 										   ofRandom(ofGetHeight()),
 										   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
-												 30, 60.), "blank") );
+												 30, 60.), " ") );
 		}
 		else{
 			pack.circles.push_back( Circle(ofRandom(ofGetWidth()),
 										   ofRandom(ofGetHeight()),
 										   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
-                                                 5, 10), "blank") );
+                                                 5, 10), " ") );
         }
     }
 }
@@ -213,6 +235,23 @@ void CloudsVisualSystemCirclePacking::initializeNasdaq(){
         
         }
     }
+
+void CloudsVisualSystemCirclePacking::initializeHashtags(){
+    
+    
+    string hashtags[10] = { "IMHO", "Jacked-in", "Meatspace", "cyberbully", "datasexual", "Grrrl", "Hater", "Troll", "illiterati",
+    "Infomania"};
+	
+    int size = sizeof(hashtags)/sizeof(hashtags[0]);
+    
+    for(int i = 0; i < 10; i++){
+        pack.circles.push_back( Circle(ofRandom(ofGetWidth()),ofRandom(ofGetHeight()), ofRandom(40,100), hashtags[i]));
+        cout << "word " << i << hashtags[i] << endl;
+        
+    }
+}
+
+
 
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
@@ -235,19 +274,34 @@ void CloudsVisualSystemCirclePacking::selfKeyReleased(ofKeyEventArgs & args){
 }
 
 void CloudsVisualSystemCirclePacking::selfMouseDragged(ofMouseEventArgs& data){
-	
+    
+
 }
 
 void CloudsVisualSystemCirclePacking::selfMouseMoved(ofMouseEventArgs& data){
 	
-}
-
-void CloudsVisualSystemCirclePacking::selfMousePressed(ofMouseEventArgs& data){
-    
+    if (BLANKS){
     pack.circles.push_back( Circle(data.x,
                                    data.y,
                                    ofMap(powf(ofRandomuf(), 5.), 0. ,1.0,
                                          10, 80.), "blank") );
+    }
+}
+
+void CloudsVisualSystemCirclePacking::selfMousePressed(ofMouseEventArgs& data){
+    
+    string hashtags[105] = { "IMHO", "jacked-in", "meatspace", "cyberbully", "datasexual", "Grrrl", "Hater", "Troll",
+        "infomania", "muggle", "Noob", "Bit Bucket", "OBVS", "yolo", "leetspeak", "OMFG", "Twerk", "Tweeps", "Troll",
+        "screenager", "Sexting", "totes", "unfriend", "Cloud Computing", "upcycle", "whatevs", "woot", "lurker", "AFIK", "WYSIWYG", "NSFW", "PONE", "Frag", "Leak", "Meme", "<3", "hashtag", "emojinal", "Zerg Rush", "Trollface", "Doge", "ermahgerd", "Y U NO Guy", "Okay Guy", "F*ck Yea", "DERP","philosoraptor", "Do You Even Lift?","pedobear", "Nyan Cat", "Lulz", "Xzibit Yo", "Grumpy Cat", "awkward penguin", "i know that feel bro", "facepalm", "deal with it", "Fap", "impossibru", "U MAD?", "oh god why", "i see what you did there", "argument invalid", "creeper", "Business Cat", "Swag", "divide by zero", "O RLY?", "technohonks", "googlization", "unlike", "unhate", "filter bubble", "fuckparade", "figwit", "4chan", "all your base", "anonymous", "poke", "ping", "n00b", "flashmob", "hampster dance", "in real life", "flame-war", "WDUWTA", "thx", "ttyl", "rotflol", "p2p", "GAGF", "griefer", "googlish", "l337", "bloggage", "less than three", "warez", "d00d", "intertubes", "btw", "nyfb", "otaku", "netizen", "larping", "hacking into mainframe"} ;
+	
+    int size = sizeof(hashtags)/sizeof(hashtags[0]);
+
+    if (HASHTAGS){
+        pack.circles.push_back( Circle(data.x,
+                                       data.y,
+                                       ofMap(powf(ofRandomuf(), 5.), 0. ,1.0,
+                                             70, 200), hashtags[int(ofRandom(size))]));
+    }
 
 	
 }
