@@ -36,7 +36,7 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	
 	customGui->addSlider("maxFireworkVelocity", 1, 300, &maxFWVel );
 	
-	customGui->addSlider("gravity", -10, 10, &(gravity.y) );
+	customGui->addSlider("gravity", -100, 100, &(gravity.y) );
 	customGui->addSpacer();
 	customGui->addToggle("burst", &bBurst);
 	customGui->addToggle("octahedron", &bOctahedron);
@@ -452,13 +452,14 @@ void CloudsVisualSystemFireworks::selfUpdate()
 	//emitters
 	ofVec3f p0, nScl;
 	float nx, ny, nz;
+	ofVec3f relativeDown = getCameraRef().getUpDir() * gravity.y;
 	for (int i=emitters.size()-1; i>=0; i--)
 	{
 		emitters[i].update( t );
 		
 		if( emitters[i].bStarted )
 		{
-			emitters[i].pos += gravity * emitters[i].span * emitters[i].age * 10;
+			emitters[i].pos += relativeDown * emitters[i].span * CubicIn(emitters[i].age);
 			
 			p0 = emitters[i].pos;
 			nScl = p0 * .01;

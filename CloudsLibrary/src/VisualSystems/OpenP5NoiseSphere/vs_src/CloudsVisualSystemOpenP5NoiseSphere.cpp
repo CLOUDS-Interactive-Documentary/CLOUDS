@@ -24,6 +24,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
+    customGui->addIntSlider("HAIR COUNT", 1000, 20000, &count);
     customGui->addSlider("SPHERE SCALE", 0.0, 75, &sphereSize);
     customGui->addSlider("NOISE SPEED", 0.0, 10.0, &noiseSpeed);
     customGui->addRangeSlider("NOISE SCALE", 0.0, 4.0, &Hair::minNoiseScale, &Hair::maxNoiseScale);
@@ -33,7 +34,6 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
     customGui->addSlider("SPHERE SAT", 0.0f, 1.0f, &sphereColor.g);
     customGui->addSlider("SPHERE BRI", 0.0f, 1.0f, &sphereColor.b);
     customGui->addSlider("SPHERE ALPHA", 0.0f, 1.0f, &sphereColor.a);
-    
     customGui->addSpacer();
     customGui->addRangeSlider("HAIR LENGTH", 0.0, 5.0, &minHairLength, &maxHairLength);
     customGui->addRangeSlider("HAIR LINE WIDTH", 0.1f, 10.0f, &minHairLineWidth, &maxHairLineWidth);
@@ -53,6 +53,23 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
     
+	drawingGui = new ofxUISuperCanvas("POINTS_LINES", gui);
+	drawingGui->copyCanvasStyle(gui);
+	drawingGui->copyCanvasProperties(gui);
+	drawingGui->setName("PointsLines");
+	drawingGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	drawingGui->addToggle("DRAW POINTS", &drawPoints);
+	drawingGui->addSlider("POINT ALPHA", 0, 1.0, &pointAlpha);
+    drawingGui->addSlider("POINT SIZE", 1.0, 3.0, &pointSize);
+	drawingGui->addSpacer();
+	drawingGui->addToggle("DRAW LINES", &drawLines);
+	drawingGui->addSlider("LINE ALPHA", 0, 1.0, &lineAlpha);
+
+	ofAddListener(drawingGui->newGUIEvent, this, &CloudsVisualSystemOpenP5NoiseSphere::selfGuiEvent);
+	guis.push_back(drawingGui);
+	guimap[drawingGui->getName()] = drawingGui;
+
     selfSetupAudioGui();
 }
 
@@ -129,15 +146,16 @@ void CloudsVisualSystemOpenP5NoiseSphere::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
-// selfSetup is called when the visual system is first instantiated
-// This will be called during a "loading" screen, so any big images or
-// geometry should be loaded here
-void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
-{
-    leftBuffer  = NULL;
-    rightBuffer = NULL;
-    bAudioBuffered = false;
-    
+void CloudsVisualSystemOpenP5NoiseSphere::selfSetDefaults(){
+	
+	drawLines = true;
+	drawPoints = false;
+	pointSize = 2.0;
+	lineAlpha = 1.0;
+	pointAlpha = 1.0;
+	
+	count = 10000;
+	
     sphereSize = 75.0f;
     minHairLength = maxHairLength = 1.0f;
     minHairLineWidth = maxHairLineWidth = 0.1f;
@@ -148,31 +166,13 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
     sphereColor = ofFloatColor::gray;
     minBaseColor = maxBaseColor = ofFloatColor::black;
     minTipColor  = maxTipColor  = ofFloatColor::white;
-    
-    soundsDir.listDir(getVisualSystemDataPath() + "sounds" );
-    soundsDir.sort();
-    selectedSoundsIdx = 0;
-    reloadSound();
-    
-    // set up hairball
-	radius = 75;
-    
-    Hair::levelScaleLookUp = new float[(int)radius * 2 + 1];
-    for (int i = 0; i < radius * 2 + 1; i++) {
-        Hair::levelScaleLookUp[i] = 0;
-    }
-    
-	for (int i=0; i<count; i++) {
-		list.push_back( Hair(radius) );
-	}
-    
+	
 	noisePosition = 0;
 	noiseSpeed = 0;
 	noiseScale = 1;
-    
-    scrollY = -radius;
-    scrollSpeed = 0.1f;
-    
+
+	radius = 75;
+	
     levelOffset = 1;
     levelScale = 2;
     levelDecayRate = 0.99f;
@@ -181,8 +181,48 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
     bLevelToNoise = false;
     levelToNoiseScale = 50;
     levelToNoiseRatio = 0.5f;
+	
+    // set up hairball
+	radius = 75;
+	
+    scrollY = -radius;
+    scrollSpeed = 0.1f;
+	
 }
 
+// selfSetup is called when the visual system is first instantiated
+// This will be called during a "loading" screen, so any big images or
+// geometry should be loaded here
+void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
+{
+
+	leftBuffer  = NULL;
+    rightBuffer = NULL;
+    bAudioBuffered = false;
+    
+    soundsDir.listDir(getVisualSystemDataPath() + "sounds" );
+    soundsDir.sort();
+    selectedSoundsIdx = 0;
+    reloadSound();
+    
+    Hair::levelScaleLookUp = new float[(int)radius * 2 + 1];
+    for (int i = 0; i < radius * 2 + 1; i++) {
+        Hair::levelScaleLookUp[i] = 0;
+    }
+    
+	generateNoiseSphere();
+	
+    reloadShader();
+}
+
+void CloudsVisualSystemOpenP5NoiseSphere::generateNoiseSphere(){
+
+	list.clear();
+	for (int i=0; i<count; i++) {
+		list.push_back( Hair(radius) );
+	}
+	
+}
 
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
@@ -207,6 +247,11 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
 {
+	
+	if(list.size() != count){
+		generateNoiseSphere();
+	}
+	
     if (bModeVideo) {
         videoPlayer.update();
         if (videoPlayer.isAudioLoaded()) {
@@ -276,7 +321,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDraw()
 //	glEnable(GL_DEPTH_TEST);
 	ofEnableAlphaBlending();
 
-    float rxp = ((ofGetMouseX()-(ofGetWidth()/2))*0.3);
+    float rxp = ((GetCloudsInputX()-(ofGetWidth()/2))*0.3);
 	float ryp = ((ofGetMouseY()-(ofGetHeight()/2))*0.3);
 	rx = (rx*0.9)+(rxp*0.1);
 	ry = (ry*0.9)+(ryp*0.1);
@@ -294,10 +339,33 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDraw()
 	for (int i = 0; i < count; i++) {
 		list[i].draw(mesh, noisePosition, minHairLength + ofSignedNoise(list[i].luckyNumber) * (maxHairLength - minHairLength), scrollY);
 	}    
-    ofSetLineWidth(ofMap(currLevel, 0, 1, minHairLineWidth, maxHairLineWidth));
-	mesh.setMode(OF_PRIMITIVE_LINES);
-	mesh.draw();
-    
+	
+	if(drawLines){
+		shader.begin();
+		shader.setUniform1f("alphaDamp", lineAlpha);
+		ofSetLineWidth(ofMap(currLevel, 0, 1, minHairLineWidth, maxHairLineWidth));
+		mesh.setMode(OF_PRIMITIVE_LINES);
+		mesh.draw();
+		shader.end();
+
+	}
+	
+	if(drawPoints){
+
+		shader.begin();
+		glPushAttrib(GL_POINT_BIT);
+		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
+		glEnable(GL_POINT_SMOOTH);
+		
+		shader.setUniform1f("alphaDamp", pointAlpha);
+		shader.setUniform1f("pointSize", pointSize);
+		mesh.setMode(OF_PRIMITIVE_POINTS);
+		mesh.draw();
+		shader.end();
+		
+		glPopAttrib();
+	}
+
 	ofPopStyle();
     ofPopMatrix();
 }
@@ -327,13 +395,16 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfExit()
     if (rightBuffer != NULL) delete [] rightBuffer;
     leftBuffer = rightBuffer = NULL;
     
-    delete [] Hair::levelScaleLookUp;    
+    delete [] Hair::levelScaleLookUp;
 }
 
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemOpenP5NoiseSphere::selfKeyPressed(ofKeyEventArgs & args){
-	
+	if(args.key == 'R'){
+		generateNoiseSphere();
+		reloadShader();
+	}
 }
 void CloudsVisualSystemOpenP5NoiseSphere::selfKeyReleased(ofKeyEventArgs & args){
 	
@@ -378,4 +449,8 @@ void CloudsVisualSystemOpenP5NoiseSphere::reloadSound()
         soundPlayer.play();
         soundPlayer.setLoop(true);
     }
+}
+
+void CloudsVisualSystemOpenP5NoiseSphere::reloadShader(){
+	shader.load(getVisualSystemDataPath() + "shaders/noisehair");
 }

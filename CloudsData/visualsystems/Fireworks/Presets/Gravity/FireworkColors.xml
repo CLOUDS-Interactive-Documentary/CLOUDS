@@ -1,0 +1,97 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>FireworkColors</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213</XPosition>
+    <YPosition>160</YPosition>
+</Canvas>
+<Widget>
+    <Kind>28</Kind>
+    <Name>C0_birth_color</Name>
+    <XValue>0.69</XValue>
+    <YValue>0.23</YValue>
+    <RColor>255</RColor>
+    <GColor>82</GColor>
+    <BColor>255</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>C0_birth_saturation</Name>
+    <Value>0.43</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>C1_birth_color</Name>
+    <XValue>0.16</XValue>
+    <YValue>0.48</YValue>
+    <RColor>116</RColor>
+    <GColor>255</GColor>
+    <BColor>255</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>C1_birth_saturation</Name>
+    <Value>0.46</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>C2_birth_color</Name>
+    <XValue>0.68</XValue>
+    <YValue>0.77</YValue>
+    <RColor>255</RColor>
+    <GColor>255</GColor>
+    <BColor>71</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>C2_birth_saturation</Name>
+    <Value>0.38</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>C0_death_color</Name>
+    <XValue>0.87</XValue>
+    <YValue>0.52</YValue>
+    <RColor>255</RColor>
+    <GColor>123</GColor>
+    <BColor>117</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>C0_death_saturation</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>C1_death_color</Name>
+    <XValue>0.67</XValue>
+    <YValue>0.48</YValue>
+    <RColor>169</RColor>
+    <GColor>0</GColor>
+    <BColor>19</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>C1_death_saturation</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>C2_death_color</Name>
+    <XValue>0.65</XValue>
+    <YValue>0.49</YValue>
+    <RColor>148</RColor>
+    <GColor>0</GColor>
+    <BColor>12</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>C2_death_saturation</Name>
+    <Value>1</Value>
+</Widget>

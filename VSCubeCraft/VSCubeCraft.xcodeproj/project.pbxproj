@@ -84,6 +84,8 @@
 		504016E4185D8B090039386C /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 504016E0185D8B090039386C /* CloudsInputMouse.cpp */; };
 		50401700185D8B340039386C /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 504016F8185D8B340039386C /* glm.c */; };
 		50401701185D8B340039386C /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 504016FC185D8B340039386C /* ofxObjLoader.cpp */; };
+		50C3AB801860A59D00627388 /* cubeCraftShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50C3AB7E1860A59D00627388 /* cubeCraftShader.frag */; };
+		50C3AB811860A59D00627388 /* cubeCraftShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50C3AB7F1860A59D00627388 /* cubeCraftShader.vert */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -489,7 +491,7 @@
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
 		504016D2185D8A9F0039386C /* CubeCraft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CubeCraft.cpp; sourceTree = "<group>"; };
 		504016D3185D8A9F0039386C /* CubeCraft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeCraft.h; sourceTree = "<group>"; };
-		504016D6185D8AE00039386C /* voxelShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = voxelShader.frag; sourceTree = "<group>"; };
+		504016D6185D8AE00039386C /* voxelShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = voxelShader.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		504016D7185D8AE00039386C /* voxelShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = voxelShader.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		504016DB185D8B090039386C /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
 		504016DC185D8B090039386C /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
@@ -500,6 +502,8 @@
 		504016F9185D8B340039386C /* glm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glm.h; sourceTree = "<group>"; };
 		504016FC185D8B340039386C /* ofxObjLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxObjLoader.cpp; sourceTree = "<group>"; };
 		504016FD185D8B340039386C /* ofxObjLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxObjLoader.h; sourceTree = "<group>"; };
+		50C3AB7E1860A59D00627388 /* cubeCraftShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cubeCraftShader.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		50C3AB7F1860A59D00627388 /* cubeCraftShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cubeCraftShader.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1153,6 +1157,8 @@
 			children = (
 				504016D6185D8AE00039386C /* voxelShader.frag */,
 				504016D7185D8AE00039386C /* voxelShader.vert */,
+				50C3AB7E1860A59D00627388 /* cubeCraftShader.frag */,
+				50C3AB7F1860A59D00627388 /* cubeCraftShader.vert */,
 			);
 			name = shaders;
 			path = ../CloudsData/visualsystems/CubeCraft/shaders;
@@ -1600,6 +1606,8 @@
 				504016E4185D8B090039386C /* CloudsInputMouse.cpp in Sources */,
 				50401700185D8B340039386C /* glm.c in Sources */,
 				50401701185D8B340039386C /* ofxObjLoader.cpp in Sources */,
+				50C3AB801860A59D00627388 /* cubeCraftShader.frag in Sources */,
+				50C3AB811860A59D00627388 /* cubeCraftShader.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

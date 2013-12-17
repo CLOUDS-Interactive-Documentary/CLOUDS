@@ -19,6 +19,9 @@ void CubeCraft::selfSetupGui()
 	customGui->setName("Cubes");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
+	customGui->addToggle("DrawCubeCraft", &bDrawCubeCraft );
+	customGui->addToggle("DrawVoxels", &bDrawVoxels );
+	
 	customGui->setColorBack(ofFloatColor(0,0,0,.85));
 	customGui->setColorFill(ofFloatColor(1,1,1,.85));
 	customGui->setColorFillHighlight(ofFloatColor(1,1,1,1));
@@ -68,13 +71,13 @@ void CubeCraft::selfSetupGui()
 	
 	meshRenderGui->addSpacer();
 	
-	meshRenderGui->addLabel("edge color");
+//	meshRenderGui->addLabel("edgeColor");
 	meshRenderGui->addImageSampler("edgeColor", &colorMap, 100, 100);
 	
-	meshRenderGui->addLabel("fill color");
+//	meshRenderGui->addLabel("FillColor");
 	meshRenderGui->addImageSampler("fillColor", &colorMap, 100, 100);
 	
-	meshRenderGui->addLabel("spec color");
+//	meshRenderGui->addLabel("specColor");
 	meshRenderGui->addImageSampler("specColor", &colorMap, 100, 100);
 	
 	ofAddListener(meshRenderGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
@@ -95,11 +98,34 @@ void CubeCraft::selfSetupGui()
 	fogGui->addToggle("bUseFog", &bUseFog);
 	fogGui->addSlider("fogDist", 10, 200, &fogDist);//->setColorFill(ofFloatColor(1,1,1,1));
 	fogGui->addSlider("fogExpo", .6, 3., &fogExpo);//->setColorFill(ofFloatColor(1,1,1,1));
-	fogGui->addImageSampler("fogColor", &colorMap, 100, 100);
+												   //	fogGui->addImageSampler("fogColor", &colorMap, 100, 100);
+	fogGui->addSlider("fogHue", 0, 255, &fogHue);
+	fogGui->addSlider("fogSaturation", 0, 255, &fogSaturation);
+	fogGui->addSlider("fogBrightness", 0, 255, &fogBrightness);
 	
 	ofAddListener(fogGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
 	guis.push_back(fogGui);
 	guimap[fogGui->getName()] = fogGui;
+	
+	
+	
+	//mineCraftGui gui
+	mineCraftGui = new ofxUISuperCanvas("MINECRAFT", gui);
+	mineCraftGui->copyCanvasStyle(gui);
+	mineCraftGui->copyCanvasProperties(gui);
+	mineCraftGui->setName("MINECRAFT");
+	mineCraftGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	mineCraftGui->addSlider("groundDrama", 0, 1, &groundDrama );
+	mineCraftGui->addSlider("cloudThreshold", 0, 1, &cloudThreshold );
+	mineCraftGui->addSlider("cloudHeight", 0, 10, &cloudHeight );
+	mineCraftGui->addSlider("cloudThickness", 0, 10, &cloudThickness );
+	mineCraftGui->addSlider("cloudSpeed", -.1, .1, &cloudSpeed )->setIncrement(.001);
+	
+	ofAddListener(mineCraftGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
+	guis.push_back(mineCraftGui);
+	guimap[mineCraftGui->getName()] = mineCraftGui;
+	
 }
 
 void CubeCraft::selfGuiEvent(ofxUIEventArgs &e)
@@ -138,11 +164,26 @@ void CubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 		fogColor.r = col.r;
 		fogColor.g = col.g;
 		fogColor.b = col.b;
+		
+		fogColor.setSaturation(fogSaturation);
+	}
+	else if(name == "fogSaturation" || name == "fogHue" || name == "fogBrightness" )
+	{
+		fogColor = ofColor::fromHsb(MIN(fogHue,254.), fogSaturation, bgBri, 255);
 	}
 	
 	if(name == "dimX" || name == "dimY" || name == "dimZ" )
 	{
 		resizeVoxelGrid();
+	}
+	
+	if(name == "DrawCubeCraft" && e.getToggle()->getValue())
+	{
+		bDrawVoxels = false;
+	}
+	if( name == "DrawVoxels" && e.getToggle()->getValue())
+	{
+		bDrawCubeCraft = false;
 	}
 }
 
@@ -155,9 +196,11 @@ void CubeCraft::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
 
-void CubeCraft::selfSetup()
+void CubeCraft::selfSetDefaults()
 {
 	//defaults
+	bDrawVoxels = bDrawCubeCraft = false;
+	
 	edgeWidth = .1;
 	noiseScale = .075;
 	bFillCubes = true;
@@ -173,9 +216,9 @@ void CubeCraft::selfSetup()
 	fogExpo = 1.;
 	bUseFog = true;
 	
-	dimX = 30;
-	dimY = 10;
-	dimZ = 30;
+	dimX = 2;
+	dimY = 2;
+	dimZ = 2;
 	
 	noiseSpeed = 1.;
 	noiseDirection.set( 0,1,0);
@@ -183,6 +226,13 @@ void CubeCraft::selfSetup()
 	edgeSmoothing = .01;
 	specExpo = 4;
 	specScale = 1.2;
+	
+	
+	//cube craft
+}
+
+void CubeCraft::selfSetup()
+{
 	
 	//gui
 
@@ -193,10 +243,22 @@ void CubeCraft::selfSetup()
 	
 	ofxObjLoader::load( getVisualSystemDataPath() + "models/box.obj", cubeMesh );
 	
-	cubeShader.load( getVisualSystemDataPath() + "shaders/voxelShader");
+	cubeIndexCount = cubeMesh.getIndices().size();
+	cubeVbo.setVertexData( &cubeMesh.getVertices()[0], cubeMesh.getVertices().size(), GL_STATIC_DRAW );
+	cubeVbo.setNormalData( &cubeMesh.getNormals()[0], cubeMesh.getNormals().size(), GL_STATIC_DRAW );
+	cubeVbo.setIndexData( &cubeMesh.getIndices()[0], cubeMesh.getIndices().size(), GL_STATIC_DRAW );
 	
-	//setup the voxels
-	resizeVoxelGrid();
+	loadShaders();
+	
+}
+
+void CubeCraft::loadShaders()
+{
+	voxelShader.unload();
+	voxelShader.load( getVisualSystemDataPath() + "shaders/voxelShader");
+	
+	cubeCraftShader.unload();
+	cubeCraftShader.load( getVisualSystemDataPath() + "shaders/cubeCraftShader" );
 }
 
 void CubeCraft::selfBegin()
@@ -209,18 +271,38 @@ void CubeCraft::selfUpdate()
 {
 	float currentTime = ofGetElapsedTimef();
 //	ofSetWindowTitle( ofToString( ofGetFrameRate() ) );
-	noiseTime += (currentTime - lastTime) * noiseSpeed;
+	float tDelta = currentTime - lastTime;
+	noiseTime += tDelta * noiseSpeed;
 	
 	lastTime = currentTime;
+	
+	cameraOffset += getCameraRef().getLookAtDir() * tDelta * noiseSpeed;
+	
+	ofSetWindowTitle( ofToString( ofGetFrameRate() ) );
 }
 
 
 void CubeCraft::selfDraw()
 {
+	if(bDrawVoxels)
+	{
+		drawVoxelGrid();
+	}
+	
+	else if(bDrawCubeCraft)
+	{
+		drawCubeCraft();
+	}
+}
+
+void CubeCraft::drawVoxelGrid()
+{
 	
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	
 	glEnable( GL_DEPTH_TEST );
+	
+	ofDisableAlphaBlending();
 	
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
@@ -229,47 +311,107 @@ void CubeCraft::selfDraw()
 	ofPushMatrix();
 	ofScale(scale,scale,scale);
 	
-	cubeShader.begin();
-	cubeShader.setUniform1i("scaleCube", bScaleCubes);
-	cubeShader.setUniform1f("cubeScale", cubeScale);
-	cubeShader.setUniform1f("drawCenters", bFillCubes);
-	cubeShader.setUniform1f("noiseCutoff", noiseThreshold);
-	cubeShader.setUniform1f("cameraCutoffDistance", 3);
-	cubeShader.setUniform1f("edgeThreshold", 1. - edgeWidth);
+	voxelShader.begin();
+	voxelShader.setUniform1i("scaleCube", bScaleCubes);
+	voxelShader.setUniform1f("cubeScale", cubeScale);
+	voxelShader.setUniform1f("drawCenters", bFillCubes);
+	voxelShader.setUniform1f("noiseCutoff", noiseThreshold);
+	voxelShader.setUniform1f("cameraCutoffDistance", 3);
+	voxelShader.setUniform1f("edgeThreshold", 1. - edgeWidth);
 	
+	voxelShader.setUniform1f("specExpo", specExpo);
+	voxelShader.setUniform1f("specScale", specScale);
 	
-	cubeShader.setUniform1f("specExpo", specExpo);
-	cubeShader.setUniform1f("specScale", specScale);
+	voxelShader.setUniform4f("fogColor", fogColor.r, fogColor.g, fogColor.g, fogColor.a );
+	voxelShader.setUniform1f("fogDist", fogDist );
+	voxelShader.setUniform1f("fogExpo", fogExpo );
 	
-	cubeShader.setUniform4f("fogColor", fogColor.r, fogColor.g, fogColor.g, fogColor.a );
-	cubeShader.setUniform1f("fogDist", fogDist );
-	cubeShader.setUniform1f("fogExpo", fogExpo );
+	voxelShader.setUniform1f("useFog", bUseFog);
 	
-	cubeShader.setUniform1f("useFog", bUseFog);
+	voxelShader.setUniform1f("edgeSmoothing", edgeSmoothing );
+	voxelShader.setUniform4f("edgeColor", edgeColor.r, edgeColor.g, edgeColor.b, edgeColor.a );
+	voxelShader.setUniform4f("fillColor", fillColor.r, fillColor.g, fillColor.b, fillColor.a );
+	voxelShader.setUniform4f("specularColor", fillColor2.r, fillColor2.g, fillColor2.b, fillColor2.a );
 	
-	cubeShader.setUniform1f("edgeSmoothing", edgeSmoothing );
-	cubeShader.setUniform4f("edgeColor", edgeColor.r, edgeColor.g, edgeColor.b, edgeColor.a );
-	cubeShader.setUniform4f("fillColor", fillColor.r, fillColor.g, fillColor.b, fillColor.a );
-	cubeShader.setUniform4f("specularColor", fillColor2.r, fillColor2.g, fillColor2.b, fillColor2.a );
+	voxelShader.setUniform1f("dimX", dimX );
+	voxelShader.setUniform1f("dimY", dimY );
+	voxelShader.setUniform1f("dimZ", dimZ );
 	
-	cubeShader.setUniform1f("dimX", dimX );
-	cubeShader.setUniform1f("dimY", dimY );
-	cubeShader.setUniform1f("dimZ", dimZ );
-	
-	cubeShader.setUniform1f("noiseScale", noiseScale);
-	cubeShader.setUniform3f("noiseOffset", noiseDirection.x * noiseTime, noiseDirection.y * noiseTime, noiseDirection.z * noiseTime);
-//	cubeShader.setUniform3f("noiseOffset", 0, ofGetElapsedTimef() * .1, 0);
+	voxelShader.setUniform1f("noiseScale", noiseScale);
+	voxelShader.setUniform3f("noiseOffset", noiseDirection.x * noiseTime, noiseDirection.y * noiseTime, noiseDirection.z * noiseTime);
 	
 	ofVec3f cp = getCameraRef().getPosition() / scale;
-	cubeShader.setUniform3f("cameraPos", cp.x, cp.y, cp.z );
+	voxelShader.setUniform3f("cameraPos", cp.x, cp.y, cp.z );
 	
-	cubeVbo.draw(GL_TRIANGLES, 0, cubeIndexCount );
+	voxelVbo.draw(GL_TRIANGLES, 0, voxelIndexCount );
 	
-	cubeShader.end();
+	voxelShader.end();
 	
 	ofPopMatrix();
 	
 	glDisable(GL_CULL_FACE);
+	
+	glPopAttrib();
+}
+
+void CubeCraft::drawCubeCraft()
+{
+	
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	
+	glEnable( GL_DEPTH_TEST );
+	
+	ofDisableAlphaBlending();
+	
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	
+	float scale = 30.;
+	ofPushMatrix();
+	ofScale(scale,scale,scale);
+	
+	cubeCraftShader.begin();
+	cubeCraftShader.setUniform1f("cameraCutoffDistance", 3);
+	
+	cubeCraftShader.setUniform1f("specExpo", specExpo);
+	cubeCraftShader.setUniform1f("specScale", specScale);
+	
+	cubeCraftShader.setUniform4f("fogColor", fogColor.r, fogColor.g, fogColor.b, fogColor.a );
+	cubeCraftShader.setUniform1f("fogDist", fogDist );
+	cubeCraftShader.setUniform1f("fogExpo", fogExpo );
+	
+	cubeCraftShader.setUniform1f("useFog", bUseFog);
+
+	cubeCraftShader.setUniform4f("fillColor", fillColor.r, fillColor.g, fillColor.b, fillColor.a );
+	cubeCraftShader.setUniform4f("specularColor", fillColor2.r, fillColor2.g, fillColor2.b, fillColor2.a );
+	
+	cubeCraftShader.setUniform1f("dimX", dimX );
+	cubeCraftShader.setUniform1f("dimY", dimY );
+	cubeCraftShader.setUniform1f("dimZ", dimZ );
+	cubeCraftShader.setUniform3f("minBound", -.5 * dimX, -.5 * dimY, -.5 * dimZ);
+	cubeCraftShader.setUniform3f("maxBound", .5 * dimX, .5 * dimY, .5 * dimZ);
+	
+	ofVec3f cp = getCameraRef().getPosition() / scale;
+	cubeCraftShader.setUniform3f("cameraPos", cp.x, cp.y, cp.z );
+	
+	cubeCraftShader.setUniform1f("cloudThreshold", cloudThreshold);
+	cubeCraftShader.setUniform1f("cloudHeight", cloudHeight);
+	cubeCraftShader.setUniform1f("cloudThickness", cloudThickness);
+	cubeCraftShader.setUniform1f("groundDrama", groundDrama);
+	
+	ofVec3f cloudVel = noiseDirection * noiseTime * cloudSpeed;
+	cubeCraftShader.setUniform3f("noiseOffset", cloudVel.x, cloudVel.y, cloudVel.z);
+	cubeCraftShader.setUniform3f("cameraOffset", -cameraOffset.x, 0., -cameraOffset.z);
+	
+	voxelVbo.draw(GL_TRIANGLES, 0, voxelIndexCount );
+	
+	cubeCraftShader.end();
+	
+	ofPopMatrix();
+	
+	glDisable(GL_CULL_FACE);
+	
+	glPopAttrib();
 }
 
 void CubeCraft::resizeVoxelGrid()
@@ -312,19 +454,45 @@ void CubeCraft::resizeVoxelGrid()
 		}
 	}
 	
-	cubeVbo.setVertexData( &vertices[0], vertices.size(), GL_STATIC_DRAW);
-	cubeVbo.setNormalData( &normals[0], normals.size(), GL_STATIC_DRAW);
-	cubeVbo.setColorData( &positions[0], positions.size(), GL_STATIC_DRAW);
+	voxelVbo.setVertexData( &vertices[0], vertices.size(), GL_STATIC_DRAW);
+	voxelVbo.setNormalData( &normals[0], normals.size(), GL_STATIC_DRAW);
+	voxelVbo.setColorData( &positions[0], positions.size(), GL_STATIC_DRAW);
 	
-	cubeIndexCount = vertices.size();
+	voxelIndexCount = vertices.size();
 	
 	vertices.clear();
 	normals.clear();
 	positions.clear();
-
-	glPopAttrib();
+	
+//	//resize and fill the ground map
+//	updateGroundMap();
 }
 
+
+//void CubeCraft::updateGroundMap()
+//{
+//	//set groundMap
+//	float noiseScale = .025;
+//	float nVal;
+//	
+//	if(dimX != groundMap.width || dimZ != groundMap.height ){
+//		groundMap.allocate(dimX, dimZ, OF_IMAGE_GRAYSCALE );
+//		groundMap.resize( dimX, dimZ );
+//	}
+//	
+//	for (int i=0; i<dimX; i++)
+//	{
+//		for (int j=0; j<dimZ; j++)
+//		{
+//			nVal = ofNoise( noiseScale * i, noiseScale * j);
+//			nVal += ofNoise( 2. * noiseScale * i, 2. * noiseScale * j) * .5;
+//			nVal += ofNoise( 4. * noiseScale * i, 4. * noiseScale * j) * .25;
+//			groundMap.setColor(i, j, ofFloatColor( nVal ) );
+//		}
+//	}
+//	groundMap.update();
+//	groundMap.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+//}
 
 //do things like ofRotate/ofTranslate here
 //any type of transformation that doesn't have to do with the camera
@@ -344,7 +512,9 @@ void CubeCraft::guiRenderEvent(ofxUIEventArgs &e){
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CubeCraft::selfPresetLoaded(string presetPath){
-	
+
+	//setup the voxels
+	resizeVoxelGrid();
 }
 
 void CubeCraft::selfDrawDebug(){
@@ -361,6 +531,9 @@ void CubeCraft::selfEnd()
 void CubeCraft::selfExit()
 {
 	cubeMesh.clear();
+	
+	voxelVbo.clear();
+	
 	cubeVbo.clear();
 }
 
@@ -368,8 +541,7 @@ void CubeCraft::selfKeyPressed(ofKeyEventArgs & args)
 {
 	if(args.key == 'l' || args.key == 'L' )
 	{
-		cubeShader.unload();
-		cubeShader.load( getVisualSystemDataPath() + "shaders/voxelShader");
+		loadShaders();
 	}
 
 }

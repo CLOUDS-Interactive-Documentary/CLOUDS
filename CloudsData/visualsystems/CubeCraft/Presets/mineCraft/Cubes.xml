@@ -1,0 +1,62 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Cubes</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>1</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DrawCubeCraft</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DrawVoxels</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>dimX</Name>
+    <Value>48</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>dimY</Name>
+    <Value>12</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>dimZ</Name>
+    <Value>47</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseScale</Name>
+    <Value>0.0339138</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseThreshold</Name>
+    <Value>0.0246305</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseSpeed</Name>
+    <Value>-4.6798</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseDirectionX</Name>
+    <Value>0.349754</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseDirectionY</Name>
+    <Value>-0.00522161</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseDirectionZ</Name>
+    <Value>0</Value>
+</Widget>

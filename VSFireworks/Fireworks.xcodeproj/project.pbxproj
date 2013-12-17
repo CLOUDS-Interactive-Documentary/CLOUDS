@@ -501,10 +501,7 @@
 		50618D8F1853A93C00DD8FD8 /* sphereNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sphereNormal.png; sourceTree = "<group>"; };
 		50618D901853A93C00DD8FD8 /* sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprite.png; sourceTree = "<group>"; };
 		50618D911853A93C00DD8FD8 /* square-sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "square-sprite.png"; sourceTree = "<group>"; };
-		50618D921853A93C00DD8FD8 /* square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square.png; sourceTree = "<group>"; };
-		50618D931853A93C00DD8FD8 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		50618D941853A93C00DD8FD8 /* triangle-sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "triangle-sprite.png"; sourceTree = "<group>"; };
-		50618D951853A93C00DD8FD8 /* triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle.png; sourceTree = "<group>"; };
 		50618E6D1853A93C00DD8FD8 /* base.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = base.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		50618E6E1853A93C00DD8FD8 /* base.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = base.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		50618E6F1853A93C00DD8FD8 /* post.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = post.frag; sourceTree = "<group>"; };
@@ -1187,10 +1184,7 @@
 				50618D8F1853A93C00DD8FD8 /* sphereNormal.png */,
 				50618D901853A93C00DD8FD8 /* sprite.png */,
 				50618D911853A93C00DD8FD8 /* square-sprite.png */,
-				50618D921853A93C00DD8FD8 /* square.png */,
-				50618D931853A93C00DD8FD8 /* star.png */,
 				50618D941853A93C00DD8FD8 /* triangle-sprite.png */,
-				50618D951853A93C00DD8FD8 /* triangle.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
