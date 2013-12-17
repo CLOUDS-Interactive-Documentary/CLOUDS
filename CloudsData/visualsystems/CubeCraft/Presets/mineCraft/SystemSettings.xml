@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>SystemSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>425</XPosition>
-    <YPosition>297</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>116</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>

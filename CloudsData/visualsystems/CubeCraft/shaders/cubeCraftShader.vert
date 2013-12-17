@@ -6,6 +6,7 @@ uniform sampler2DRect groundMap;
 uniform vec2 groundMapDim;
 
 uniform vec3 cameraPos;
+uniform float cameraCutoffDistance;
 
 uniform float dimX;
 uniform float dimY;
@@ -27,6 +28,9 @@ varying float isSky = 0.;
 
 varying vec4 groundSample;
 uniform float groundDrama = .75;
+
+uniform float cloudThreshold = .55;
+uniform float cloudHeight = 4.;
 
 
 uniform vec3 noiseOffset;
@@ -131,6 +135,11 @@ void main()
 	
 	camDelta = lengthSqr(cameraPos - boxCenter + cd);
 	
+	if( camDelta < cameraCutoffDistance*cameraCutoffDistance)
+	{
+		doDiscard = 1.;
+	}
+	
 	vec4 v = gl_Vertex;
 	v.xz -= fract(noiseOffset.xz);
 	
@@ -150,10 +159,10 @@ void main()
 		isGround = 1.;
 	}
 	
+	//sky
 	else if(groundVal > 1. - groundThreshold )
 	{
 		float sVal = sampleSkyNoise( boxXZ );
-		float cloudThreshold = .55;
 		if( sVal < cloudThreshold)
 		{
 			doDiscard = 1.;
@@ -162,11 +171,13 @@ void main()
 			
 			isSky = 1.;
 			
-			boxCenter.y += 4.;
+			boxCenter.y += cloudHeight;
 			
 			v.y *= mapLinear( sVal, cloudThreshold, 1., .1, 8.);
 		}
 	}
+	
+	//thin air
 	else{
 		doDiscard = 1.;
 	}

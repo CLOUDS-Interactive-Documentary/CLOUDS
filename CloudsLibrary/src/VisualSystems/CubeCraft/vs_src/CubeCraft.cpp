@@ -109,18 +109,20 @@ void CubeCraft::selfSetupGui()
 	
 	
 	
-//	//heightMap gui
-//	heightMapGui = new ofxUISuperCanvas("HEIGHTMAP", gui);
-//	heightMapGui->copyCanvasStyle(gui);
-//	heightMapGui->copyCanvasProperties(gui);
-//	heightMapGui->setName("HEIGHTMAP");
-//	heightMapGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-//	
-//	heightMapGui->addImage("map", &groundMap, heightMapGui->getRect()->width, heightMapGui->getRect()->width);
-//	
-//	ofAddListener(heightMapGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
-//	guis.push_back(heightMapGui);
-//	guimap[heightMapGui->getName()] = heightMapGui;
+	//mineCraftGui gui
+	mineCraftGui = new ofxUISuperCanvas("MINECRAFT", gui);
+	mineCraftGui->copyCanvasStyle(gui);
+	mineCraftGui->copyCanvasProperties(gui);
+	mineCraftGui->setName("MINECRAFT");
+	mineCraftGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	mineCraftGui->addSlider("groundDrama", 0, 1, &groundDrama );
+	mineCraftGui->addSlider("cloudThreshold", 0, 1, &cloudThreshold );
+	mineCraftGui->addSlider("cloudHeight", 0, 10, &cloudHeight );
+
+	ofAddListener(mineCraftGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
+	guis.push_back(mineCraftGui);
+	guimap[mineCraftGui->getName()] = mineCraftGui;
 	
 }
 
@@ -389,6 +391,10 @@ void CubeCraft::drawCubeCraft()
 	
 	ofVec3f cp = getCameraRef().getPosition() / scale;
 	cubeCraftShader.setUniform3f("cameraPos", cp.x, cp.y, cp.z );
+	
+	cubeCraftShader.setUniform1f("cloudThreshold", cloudThreshold);
+	cubeCraftShader.setUniform1f("cloudHeight", cloudHeight);
+	cubeCraftShader.setUniform1f("groundDrama", groundDrama);
 	
 	cubeCraftShader.setUniform3f("noiseOffset", -cameraOffset.x, 0., -cameraOffset.z);
 	

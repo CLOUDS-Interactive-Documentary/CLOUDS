@@ -125,7 +125,7 @@ protected:
 	ofxUISuperCanvas* cubeGui;
 	ofxUISuperCanvas* fogGui;
 	ofxUISuperCanvas* meshRenderGui;
-	ofxUISuperCanvas* heightMapGui;
+	ofxUISuperCanvas* mineCraftGui;
 	
 	int dimX, dimY, dimZ;
 	int halfDimX, halfDimY, halfDimZ;
@@ -149,6 +149,9 @@ protected:
 	bool bUseFog;
 	
 	bool bDrawVoxels, bDrawCubeCraft;
+	
+	
+	float groundDrama, cloudThreshold, cloudHeight;
 	
 //	ofImage groundMap;
 	ofVec3f cameraOffset;

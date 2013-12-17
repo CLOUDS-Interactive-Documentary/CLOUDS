@@ -17,7 +17,6 @@ uniform float specScale;
 
 uniform float drawCenters;
 uniform float noiseCutoff;
-uniform float cameraCutoffDistance;
 uniform float edgeThreshold;
 
 varying vec3 vertex;
@@ -46,7 +45,6 @@ void main(void)
 {
 	//cull boxes based on noise and camera distance
 	if( doDiscard > .5)	discard;
-	if( camDelta < cameraCutoffDistance*cameraCutoffDistance) discard;
 	
 	//normal rendering
 	vec3 normal = normalize(norm);
