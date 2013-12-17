@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>edgeWidth</Name>
-    <Value>0.118227</Value>
+    <Value>0.137931</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -18,38 +18,38 @@
 <Widget>
     <Kind>2</Kind>
     <Name>ScaleCubes</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cubeScale</Name>
-    <Value>10</Value>
+    <Value>3.89163</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>specExpo</Name>
-    <Value>3.53892</Value>
+    <Value>4.31232</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>specScale</Name>
-    <Value>1.18227</Value>
+    <Value>1.05911</Value>
 </Widget>
 <Widget>
     <Kind>28</Kind>
     <Name>edgeColor</Name>
-    <XValue>0.54</XValue>
-    <YValue>0.51</YValue>
-    <RColor>36</RColor>
-    <GColor>5</GColor>
-    <BColor>0</BColor>
+    <XValue>0.48</XValue>
+    <YValue>0.5</YValue>
+    <RColor>1</RColor>
+    <GColor>20</GColor>
+    <BColor>22</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>
     <Kind>28</Kind>
     <Name>fillColor</Name>
     <XValue>1</XValue>
-    <YValue>0</YValue>
+    <YValue>1</YValue>
     <RColor>255</RColor>
     <GColor>255</GColor>
     <BColor>255</BColor>
@@ -58,10 +58,10 @@
 <Widget>
     <Kind>28</Kind>
     <Name>specColor</Name>
-    <XValue>1</XValue>
-    <YValue>0</YValue>
-    <RColor>255</RColor>
-    <GColor>255</GColor>
-    <BColor>255</BColor>
+    <XValue>0.46</XValue>
+    <YValue>0.5</YValue>
+    <RColor>2</RColor>
+    <GColor>38</GColor>
+    <BColor>41</BColor>
     <AColor>255</AColor>
 </Widget>

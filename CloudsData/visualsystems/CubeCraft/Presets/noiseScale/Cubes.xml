@@ -18,37 +18,37 @@
 <Widget>
     <Kind>44</Kind>
     <Name>dimX</Name>
-    <Value>12</Value>
+    <Value>20</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>dimY</Name>
-    <Value>21</Value>
+    <Value>19</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>dimZ</Name>
-    <Value>10</Value>
+    <Value>18</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseScale</Name>
-    <Value>0.126293</Value>
+    <Value>0.2</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseThreshold</Name>
-    <Value>0.044335</Value>
+    <Value>-0.64532</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseSpeed</Name>
-    <Value>0.0522156</Value>
+    <Value>1.82266</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseDirectionX</Name>
-    <Value>0.938128</Value>
+    <Value>-0.0246305</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -58,5 +58,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noiseDirectionZ</Name>
-    <Value>0</Value>
+    <Value>0.133005</Value>
 </Widget>

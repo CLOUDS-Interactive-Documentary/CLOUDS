@@ -21,6 +21,7 @@ uniform float cameraCutoffDistance;
 uniform float edgeThreshold;
 
 varying vec3 vertex;
+varying vec3 vNormal;
 
 varying float nScl;
 
@@ -30,6 +31,11 @@ varying vec3 ePos;
 varying vec2 uv;
 
 varying float camDelta;
+varying float doDiscard;
+varying float isGround;
+
+varying vec4 groundSample;
+
 
 float mapLinear( float x, float a1, float a2, float b1, float b2 ) {
 	return b1 + ( x - a1 ) * ( b2 - b1 ) / ( a2 - a1 );
@@ -38,38 +44,31 @@ float mapLinear( float x, float a1, float a2, float b1, float b2 ) {
 void main(void)
 {
 	//cull boxes based on noise and camera distance
-	if( nScl < noiseCutoff)	discard;
+	if( doDiscard > .5)	discard;
 	if( camDelta < cameraCutoffDistance*cameraCutoffDistance) discard;
 	
-	vec3 v = abs(vertex) * 2.;
-	float edgeSample = max( v.x * v.y, max( v.y * v.z, v.z * v.x ));
-
-	//edge color
-	if(edgeSample > edgeThreshold)
+	//normal rendering
+	vec3 normal = normalize(norm);
+	float fr = pow( abs(dot( ePos, normal )) * specScale, specExpo);
+	
+	gl_FragColor = mix( groundSample, specularColor, fr);
+	
+	if( isGround > .5)
 	{
-		gl_FragColor = edgeColor;
+		vec4 topColor = vec4( .4, 1., .6, 1.);
+		vec4 sideColor = vec4( .6 ,.2, .1, 1.);
+		if(vNormal.y > .5)
+		{
+			gl_FragColor *= topColor;
+		}
+		else{
+			gl_FragColor *= mix(sideColor, topColor, pow(max( vertex.y*1.5, 0. ), 2.) );
+		}
 	}
 	
-	//fill color
-	else
-	{
-		if(int(drawCenters) == 0)	discard;
-		
-		vec3 normal = normalize(norm);
-		float fr = pow( abs(dot( ePos, normal )) * specScale, specExpo);
-		
-		gl_FragColor = mix( fillColor, specularColor, fr);
-	}
-	
-	//smoothe edges
-	float edgeMix = edgeSample + edgeSmoothing;
-	if( edgeMix > edgeThreshold && edgeSample <= edgeThreshold)
-	{
-		gl_FragColor = mix( gl_FragColor, edgeColor, (edgeMix-edgeThreshold)/edgeSmoothing );
-	}
 	
 	//fog
-	if(useFog > .1)
+	if(useFog > .5)
 	{
 		gl_FragColor = mix( gl_FragColor, fogColor, min(1., pow( 1.25 * camDelta / (fogDist*fogDist), fogExpo) ) );
 	}

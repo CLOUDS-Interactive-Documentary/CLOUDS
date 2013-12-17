@@ -13,7 +13,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>lewitt</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -33,15 +33,5 @@
 <Widget>
     <Kind>2</Kind>
     <Name>NoiseAndScaling</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>noiseFlow</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>noiseScale</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>

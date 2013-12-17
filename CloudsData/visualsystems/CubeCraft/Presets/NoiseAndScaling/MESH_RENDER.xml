@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>edgeWidth</Name>
-    <Value>0.118227</Value>
+    <Value>0.0591133</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -38,29 +38,29 @@
 <Widget>
     <Kind>28</Kind>
     <Name>edgeColor</Name>
-    <XValue>0.54</XValue>
-    <YValue>0.51</YValue>
-    <RColor>36</RColor>
-    <GColor>5</GColor>
-    <BColor>0</BColor>
+    <XValue>0.48</XValue>
+    <YValue>0.48</YValue>
+    <RColor>1</RColor>
+    <GColor>8</GColor>
+    <BColor>31</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>
     <Kind>28</Kind>
     <Name>fillColor</Name>
-    <XValue>1</XValue>
-    <YValue>0</YValue>
+    <XValue>0.74</XValue>
+    <YValue>0.25</YValue>
     <RColor>255</RColor>
-    <GColor>255</GColor>
+    <GColor>98</GColor>
     <BColor>255</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>
     <Kind>28</Kind>
     <Name>specColor</Name>
-    <XValue>1</XValue>
-    <YValue>0</YValue>
-    <RColor>255</RColor>
+    <XValue>0.16</XValue>
+    <YValue>0.55</YValue>
+    <RColor>119</RColor>
     <GColor>255</GColor>
     <BColor>255</BColor>
     <AColor>255</AColor>
