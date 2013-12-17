@@ -336,6 +336,12 @@ public:
 	
 	ofVbo curvePoints;
 
+	float CubicOut( float k ) {
+		return --k * k * k + 1;
+	}
+	float CubicIn( float k ) {
+		return k * k * k;
+	}
 	
 protected:
 	
