@@ -23,6 +23,7 @@ varying float camDelta;
 
 varying float doDiscard = .0;
 varying float isGround = .0;
+varying float isSky = 0.;
 
 varying vec4 groundSample;
 uniform float groundDrama = .75;
@@ -106,6 +107,11 @@ float sampleGroundNoise( vec2 p )
 	return snoise( p * .05 + vec2(300., 127.)) * snoise( p * .025 + vec2(300., 127.)) * .5 + .5;
 }
 
+float sampleSkyNoise( vec2 p )
+{
+	return snoise( p * .1 + vec2(5100., 227.)) * snoise( p * .05 + vec2(300., 127.)) * .5 + .5;
+}
+
 void main()
 {
 	doDiscard = 0.;
@@ -143,12 +149,30 @@ void main()
 	{
 		isGround = 1.;
 	}
+	
+	else if(groundVal > 1. - groundThreshold )
+	{
+		float sVal = sampleSkyNoise( boxXZ );
+		float cloudThreshold = .55;
+		if( sVal < cloudThreshold)
+		{
+			doDiscard = 1.;
+		}
+		else{
+			
+			isSky = 1.;
+			
+			boxCenter.y += 4.;
+			
+			v.y *= mapLinear( sVal, cloudThreshold, 1., .1, 8.);
+		}
+	}
 	else{
 		doDiscard = 1.;
 	}
 	
 	//output the vertex
-	vec4 ecPosition = gl_ModelViewMatrix * (v + gl_Color );
+	vec4 ecPosition = gl_ModelViewMatrix * (v + vec4(boxCenter, 0.) );
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
 	gl_Position = gl_ProjectionMatrix * ecPosition;
 }

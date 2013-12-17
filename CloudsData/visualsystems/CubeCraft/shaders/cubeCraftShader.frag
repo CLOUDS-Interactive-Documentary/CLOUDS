@@ -33,6 +33,7 @@ varying vec2 uv;
 varying float camDelta;
 varying float doDiscard;
 varying float isGround;
+varying float isSky;
 
 varying vec4 groundSample;
 
@@ -66,11 +67,16 @@ void main(void)
 		}
 	}
 	
+	else if( isSky > .5)
+	{
+		gl_FragColor = vec4( vec3(fr * 3.), 1.);
+	}
+	
 	
 	//fog
 	if(useFog > .5)
 	{
-		gl_FragColor =  mix( gl_FragColor, fogColor, min(1., pow( 1.25 * camDelta / (fogDist*fogDist), fogExpo) ) );
+		gl_FragColor = mix( gl_FragColor, fogColor, min(1., pow( 1.25 * camDelta / (fogDist*fogDist), fogExpo) ) );
 	}
 }
 

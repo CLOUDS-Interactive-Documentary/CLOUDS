@@ -390,8 +390,6 @@ void CubeCraft::drawCubeCraft()
 	ofVec3f cp = getCameraRef().getPosition() / scale;
 	cubeCraftShader.setUniform3f("cameraPos", cp.x, cp.y, cp.z );
 	
-	//	cubeCraftShader.setUniform3f("noiseOffset", noiseDirection.x * noiseTime, noiseDirection.y * noiseTime, noiseDirection.z * noiseTime);
-	ofVec3f lad = getCameraRef().getPosition();//getLookAtDir();
 	cubeCraftShader.setUniform3f("noiseOffset", -cameraOffset.x, 0., -cameraOffset.z);
 	
 	voxelVbo.draw(GL_TRIANGLES, 0, voxelIndexCount );
