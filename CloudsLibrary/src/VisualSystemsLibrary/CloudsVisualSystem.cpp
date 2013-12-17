@@ -1102,20 +1102,20 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
     selfGuiEvent(e);
 }
 
-void CloudsVisualSystem::setColors(){
-
-     cb = ofxUIColor(128,255);
-     co = ofxUIColor(255, 255, 255, 100);
-     coh = ofxUIColor(255, 255, 255, 200);
-     cf = ofxUIColor(255, 255, 255, 200);
-     cfh = ofxUIColor(255, 255, 255, 255);
-     cp = ofxUIColor(0, 100);
-     cpo =  ofxUIColor(255, 200);
-    for(int i = 0; i < guis.size(); i++){
-            guis[i]->setUIColors(cb,co,coh,cf,cfh,cp, cpo);
-    }
-
-}
+//void CloudsVisualSystem::setColors(){
+//
+//     cb = ofxUIColor(128,255);
+//     co = ofxUIColor(255, 255, 255, 100);
+//     coh = ofxUIColor(255, 255, 255, 200);
+//     cf = ofxUIColor(255, 255, 255, 200);
+//     cfh = ofxUIColor(255, 255, 255, 255);
+//     cp = ofxUIColor(0, 100);
+//     cpo =  ofxUIColor(255, 200);
+//    for(int i = 0; i < guis.size(); i++){
+//            guis[i]->setUIColors(cb,co,coh,cf,cfh,cp, cpo);
+//    }
+//
+//}
 void CloudsVisualSystem::setupSystemGui()
 {
     sysGui = new ofxUISuperCanvas("SYSTEM", gui);
@@ -2532,7 +2532,8 @@ void CloudsVisualSystem::loadGUIS()
     for(int i = 0; i < guis.size(); i++)
     {
         guis[i]->loadSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
-        setColors();
+		guis[i]->setColorBack(ofColor(255*.2, 255*.9));
+//        setColors();
 //        guis[i]->setTheme(OFX_UI_THEME_ZOOLANDER);
     }
     cam.reset();

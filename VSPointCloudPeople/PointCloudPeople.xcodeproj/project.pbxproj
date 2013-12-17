@@ -659,6 +659,12 @@
 		E7380143183C871A0018AB96 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		E738FFE1183C86F50018AB96 /* PointCloudPeopleOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PointCloudPeopleOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		E771D6A0185FBAA900CFF892 /* rgbdMesh.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbdMesh.frag; sourceTree = "<group>"; };
+		E771D6A1185FBAA900CFF892 /* rgbdMesh.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbdMesh.vert; sourceTree = "<group>"; };
+		E771D6A2185FBAA900CFF892 /* rgbdPoints.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbdPoints.frag; sourceTree = "<group>"; };
+		E771D6A3185FBAA900CFF892 /* rgbdPoints.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbdPoints.vert; sourceTree = "<group>"; };
+		E771D6A5185FE02100CFF892 /* rgbdLines.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbdLines.frag; sourceTree = "<group>"; };
+		E771D6A6185FE02100CFF892 /* rgbdLines.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbdLines.vert; sourceTree = "<group>"; };
 		E7846FB61714899C00705E7A /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
 		E7846FB71714899C00705E7A /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
 		E7846FB81714899C00705E7A /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
@@ -1368,6 +1374,7 @@
 			children = (
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				E771D69F185FBAA900CFF892 /* shaders */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
@@ -1662,6 +1669,20 @@
 			);
 			name = ofxOculusRift;
 			path = ../../../addons/ofxOculusRift;
+			sourceTree = "<group>";
+		};
+		E771D69F185FBAA900CFF892 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E771D6A0185FBAA900CFF892 /* rgbdMesh.frag */,
+				E771D6A1185FBAA900CFF892 /* rgbdMesh.vert */,
+				E771D6A5185FE02100CFF892 /* rgbdLines.frag */,
+				E771D6A6185FE02100CFF892 /* rgbdLines.vert */,
+				E771D6A2185FBAA900CFF892 /* rgbdPoints.frag */,
+				E771D6A3185FBAA900CFF892 /* rgbdPoints.vert */,
+			);
+			name = shaders;
+			path = ../CloudsData/visualsystems/RGBD/shaders;
 			sourceTree = "<group>";
 		};
 		E7846FB41714899C00705E7A /* ofxXmlSettings */ = {

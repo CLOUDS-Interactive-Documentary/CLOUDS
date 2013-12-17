@@ -1,5 +1,6 @@
 #include "testApp.h"
 #include "CloudsRGBDVideoPlayer.h"
+#include "CloudsGlobal.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -8,9 +9,7 @@ void testApp::setup(){
 	rgbd.setup();
 	rgbd.playSystem();
 	
-	
 }
-
 
 //--------------------------------------------------------------
 void testApp::update(){
@@ -29,12 +28,23 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::exit(){
+	rgbd.exit();
 }
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
 	if(key == ' '){
 		rgbd.playTestVideo();
+	}
+	
+	if(key == 'Q'){
+		ofDirectory qtestnodes( GetCloudsDataPath() + "HUD/QuestionNode_set04");
+		qtestnodes.allowExt("png");
+		qtestnodes.listDir();
+		vector<string> testpaths;
+		for(int i = 0; i < qtestnodes.numFiles(); i++)
+			testpaths.push_back(qtestnodes.getPath(i));
+		rgbd.addFakeQuestion(testpaths);
 	}
 }
 
