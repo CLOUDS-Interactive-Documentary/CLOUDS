@@ -221,6 +221,7 @@ void CloudsVisualSystem::setup(){
     setupTimeLineParams();
 	setupTimeline();
     
+	selfSetDefaults();
     selfSetup();
     setupCoreGuis();
     selfSetupGuis();
@@ -742,7 +743,9 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 		case 'L':
 			cameraTrack->lockCameraToTrack = !cameraTrack->lockCameraToTrack;
 			break;
-			
+		case ',':
+			timeline->setCurrentFrame(0);
+			break;
 #ifdef OCULUS_RIFT
 		case '0':
 			oculusRift.reset();
@@ -1228,8 +1231,11 @@ void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
        // bgBri->setPosAndHome(bgBri->getPos());
         for(int i = 0; i < guis.size(); i++)
         {
-            guis[i]->setWidgetColor(OFX_UI_WIDGET_COLOR_BACK, ofColor(bgBri,OFX_UI_COLOR_BACK_ALPHA*REZANATOR_GUI_ALPHA_MULTIPLIER));
-            guis[i]->setColorBack(ofColor(255 - bgBri, OFX_UI_COLOR_BACK_ALPHA*REZANATOR_GUI_ALPHA_MULTIPLIER));
+//            guis[i]->setWidgetColor(OFX_UI_WIDGET_COLOR_BACK, ofColor(bgBri,OFX_UI_COLOR_BACK_ALPHA*REZANATOR_GUI_ALPHA_MULTIPLIER));
+//            guis[i]->setColorBack(ofColor(255 - bgBri, OFX_UI_COLOR_BACK_ALPHA*REZANATOR_GUI_ALPHA_MULTIPLIER));
+//            guis[i]->setWidgetColor(OFX_UI_WIDGET_COLOR_BACK, ofColor(bgBri,255));
+            guis[i]->setColorBack(ofColor(255*.2, 255*.9));
+			
         }
     }
 //    else if(name == "SAT")
@@ -2559,23 +2565,26 @@ void CloudsVisualSystem::loadPresetGUISFromName(string presetName)
 
 void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 {
-    resetTimeline();
-    cb = ofxUIColor(128,255);
-    co = ofxUIColor(255, 255, 255, 100);
-    coh = ofxUIColor(255, 255, 255, 200);
-    cf = ofxUIColor(255, 255, 255, 200);
-    cfh = ofxUIColor(255, 255, 255, 255);
-    cp = ofxUIColor(0, 100);
-    cpo =  ofxUIColor(255, 200);
+    
+	resetTimeline();
+	
+	selfSetDefaults();
+	
+	//custom colors
+//    cb = ofxUIColor(128,255);
+//    co = ofxUIColor(255, 255, 255, 100);
+//    coh = ofxUIColor(255, 255, 255, 200);
+//    cf = ofxUIColor(255, 255, 255, 200);
+//    cfh = ofxUIColor(255, 255, 255, 255);
+//    cp = ofxUIColor(0, 100);
+//    cpo =  ofxUIColor(255, 200);
+	
     for(int i = 0; i < guis.size(); i++) {
 		string presetPathName = presetPath+"/"+guis[i]->getName()+".xml";
         guis[i]->loadSettings(presetPathName);
-
-
-            guis[i]->setUIColors(cb,co,coh,cf,cfh,cp, cpo);
-
-
+//		guis[i]->setUIColors(cb,co,coh,cf,cfh,cp, cpo);
     }
+	
     cam.reset();
 	string easyCamPath = presetPath+"/ofEasyCamSettings";
 	if(ofFile(easyCamPath).exists()){
@@ -2607,20 +2616,12 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	getSharedRenderTarget().begin();
 	ofClear(0,0,0,1.0);
 	getSharedRenderTarget().end();
-	
-//	//hack to fix bg color state leak
-//	bgColor->setHsb(bgHue->getPos(), bgSat->getPos(), bgBri->getPos(), 255);
-//	bgColor2->setHsb(bgHue2->getPos(), bgSat2->getPos(), bgBri2->getPos(), 255);
-	
+		
 	//auto play this preset
 	cameraTrack->lockCameraToTrack = cameraTrack->getKeyframes().size() > 0;
-//	if(cameraTrack->lockCameraToTrack){
-//		timeline->setCurrentTimeMillis(cameraTrack->getKeyframes()[0]->time);
-//	}
-//	else {
-		timeline->setCurrentTimeMillis(0);
-//	}
+	timeline->setCurrentTimeMillis(0);
 	timeline->play();
+	
 	bEnableTimeline = true;
 }
 
@@ -2653,7 +2654,6 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 	timeline->setName("Working");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 
-	
 	ofxXmlSettings timeInfo;
 	timeInfo.addTag("timeinfo");
 	timeInfo.pushTag("timeinfo");
@@ -2958,6 +2958,10 @@ void CloudsVisualSystem::ofLayerGradient(const ofColor& start, const ofColor& en
     glDepthMask(false);
     mesh.draw();
     glDepthMask(true);
+}
+
+void CloudsVisualSystem::selfSetDefaults(){
+	
 }
 
 void CloudsVisualSystem::selfSetup()

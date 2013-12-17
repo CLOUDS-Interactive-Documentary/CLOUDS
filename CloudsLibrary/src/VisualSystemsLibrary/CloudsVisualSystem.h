@@ -67,6 +67,7 @@ class CloudsVisualSystem {
 
 	
 	//SUB CLASSES USE THESE METHODS:
+	virtual void selfSetDefaults();
     virtual void selfSetup();
     virtual void selfSetupGuis();
     

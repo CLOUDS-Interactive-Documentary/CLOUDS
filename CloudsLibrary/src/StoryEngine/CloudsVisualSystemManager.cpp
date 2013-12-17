@@ -62,6 +62,7 @@
 #include "CloudsVisualSystemRipples.h"
 #include "CloudsVisualSystemRulez.h"
 #include "CloudsVisualSystemScrape.h"
+#include "CloudsVisualSystemSatoruhiga.h"
 #include "CloudsVisualSystemSwim.h"
 //#include "CloudsVisualSystemThingsInTheDark.h"
 #include "CloudsVisualSystemTwitter.h"
@@ -151,6 +152,7 @@ struct Mapping {
 	{ "Ripples", &fCreate<CloudsVisualSystemRipples> },
 	{ "Rulez", &fCreate<CloudsVisualSystemRulez> },
 	{ "Scrape", &fCreate<CloudsVisualSystemScrape> },
+	{ "Satoruhiga", &fCreate<CloudsVisualSystemSatoruhiga> },
 	{ "Swim", &fCreate<CloudsVisualSystemSwim> },
 //	{ "ThingsInTheDark", &fCreate<CloudsVisualSystemThingsInTheDark> },
 	{ "Twitter", &fCreate<CloudsVisualSystemTwitter> },

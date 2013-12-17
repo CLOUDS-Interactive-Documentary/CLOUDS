@@ -37,6 +37,7 @@ class CloudsVisualSystemOscillations : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
+	void selfSetupCameraGui();
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
@@ -126,6 +127,7 @@ protected:
     float GridPattern;
     void BuildGrid();
     
+	ofRange clipPlanes;
     //Shader
     float chromaAbbr, lensDistortion;
     //TODO: Change back to just a shader after building
