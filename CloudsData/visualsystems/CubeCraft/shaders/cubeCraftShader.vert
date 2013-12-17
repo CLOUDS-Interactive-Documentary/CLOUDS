@@ -31,9 +31,11 @@ uniform float groundDrama = .75;
 
 uniform float cloudThreshold = .55;
 uniform float cloudHeight = 4.;
+uniform float cloudThickness = 8.;
 
 
 uniform vec3 noiseOffset;
+uniform vec3 cameraOffset;
 
 
 vec3 mod289(vec3 x) {
@@ -113,7 +115,7 @@ float sampleGroundNoise( vec2 p )
 
 float sampleSkyNoise( vec2 p )
 {
-	return snoise( p * .1 + vec2(5100., 227.)) * snoise( p * .05 + vec2(300., 127.)) * .5 + .5;
+	return snoise( p * .1 + vec2(5100.+noiseOffset.x, 227.+noiseOffset.z)) * snoise( p * .05 ) * .5 + .5;
 }
 
 void main()
@@ -128,10 +130,9 @@ void main()
 	vNormal = gl_Normal;
 	norm = gl_NormalMatrix * gl_Normal;
 	
-	vec3 cd = vec3( fract(noiseOffset.x), 0., fract(noiseOffset.z) );
+	vec3 cd = vec3( fract(cameraOffset.x), 0., fract(cameraOffset.z) );
 	
 	vec3 boxCenter = gl_Color.xyz;
-//	boxCenter.xz += floor( noiseOffset.xz );
 	
 	camDelta = lengthSqr(cameraPos - boxCenter + cd);
 	
@@ -141,10 +142,10 @@ void main()
 	}
 	
 	vec4 v = gl_Vertex;
-	v.xz -= fract(noiseOffset.xz);
+	v.xz -= fract(cameraOffset.xz);
 	
 	//ground
-	vec2 boxXZ = boxCenter.xz + floor( noiseOffset.xz );
+	vec2 boxXZ = boxCenter.xz + floor( cameraOffset.xz );
 	
 	float xzNoise = sampleGroundNoise( boxXZ ) * groundDrama;
 	
@@ -173,7 +174,7 @@ void main()
 			
 			boxCenter.y += cloudHeight;
 			
-			v.y *= mapLinear( sVal, cloudThreshold, 1., .1, 8.);
+			v.y *= mapLinear( sVal, cloudThreshold, 1., .1, cloudThickness);
 		}
 	}
 	

@@ -119,7 +119,9 @@ void CubeCraft::selfSetupGui()
 	mineCraftGui->addSlider("groundDrama", 0, 1, &groundDrama );
 	mineCraftGui->addSlider("cloudThreshold", 0, 1, &cloudThreshold );
 	mineCraftGui->addSlider("cloudHeight", 0, 10, &cloudHeight );
-
+	mineCraftGui->addSlider("cloudThickness", 0, 10, &cloudThickness );
+	mineCraftGui->addSlider("cloudSpeed", -.1, .1, &cloudSpeed )->setIncrement(.001);
+	
 	ofAddListener(mineCraftGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
 	guis.push_back(mineCraftGui);
 	guimap[mineCraftGui->getName()] = mineCraftGui;
@@ -394,9 +396,12 @@ void CubeCraft::drawCubeCraft()
 	
 	cubeCraftShader.setUniform1f("cloudThreshold", cloudThreshold);
 	cubeCraftShader.setUniform1f("cloudHeight", cloudHeight);
+	cubeCraftShader.setUniform1f("cloudThickness", cloudThickness);
 	cubeCraftShader.setUniform1f("groundDrama", groundDrama);
 	
-	cubeCraftShader.setUniform3f("noiseOffset", -cameraOffset.x, 0., -cameraOffset.z);
+	ofVec3f cloudVel = noiseDirection * noiseTime * cloudSpeed;
+	cubeCraftShader.setUniform3f("noiseOffset", cloudVel.x, cloudVel.y, cloudVel.z);
+	cubeCraftShader.setUniform3f("cameraOffset", -cameraOffset.x, 0., -cameraOffset.z);
 	
 	voxelVbo.draw(GL_TRIANGLES, 0, voxelIndexCount );
 	

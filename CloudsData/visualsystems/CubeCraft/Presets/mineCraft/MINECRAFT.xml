@@ -2,21 +2,31 @@
     <Kind>42</Kind>
     <Name>MINECRAFT</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>290</XPosition>
-    <YPosition>145</YPosition>
+    <XPosition>425</XPosition>
+    <YPosition>216</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>groundDrama</Name>
-    <Value>0.758621</Value>
+    <Value>0.655172</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudThreshold</Name>
-    <Value>0.576355</Value>
+    <Value>0.571429</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudHeight</Name>
-    <Value>7.14286</Value>
+    <Value>2.75862</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cloudThickness</Name>
+    <Value>5.02463</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cloudSpeed</Name>
+    <Value>0.00962986</Value>
 </Widget>

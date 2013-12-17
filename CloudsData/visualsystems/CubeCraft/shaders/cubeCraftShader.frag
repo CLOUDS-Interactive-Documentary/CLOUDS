@@ -50,7 +50,7 @@ void main(void)
 	vec3 normal = normalize(norm);
 	float fr = pow( abs(dot( ePos, normal )) * specScale, specExpo);
 	
-	gl_FragColor = mix( groundSample, specularColor, fr);
+	gl_FragColor = mix( specularColor, groundSample, fr);
 	
 	if( isGround > .5)
 	{
@@ -67,7 +67,7 @@ void main(void)
 	
 	else if( isSky > .5)
 	{
-		gl_FragColor = vec4( vec3(fr * 3.), 1.);
+		gl_FragColor = fogColor * fr;
 	}
 	
 	
