@@ -1,3 +1,8 @@
+
+#version 120
+#extension GL_ARB_texture_rectangle : enable
+
+
 uniform vec3 noiseOffset;
 uniform vec3 cameraPos;
 

@@ -1,0 +1,22 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>MINECRAFT</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>290</XPosition>
+    <YPosition>145</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>groundDrama</Name>
+    <Value>0.758621</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cloudThreshold</Name>
+    <Value>0.576355</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cloudHeight</Name>
+    <Value>7.14286</Value>
+</Widget>
