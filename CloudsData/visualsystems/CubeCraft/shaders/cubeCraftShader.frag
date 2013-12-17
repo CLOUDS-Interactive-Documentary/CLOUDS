@@ -70,7 +70,7 @@ void main(void)
 	//fog
 	if(useFog > .5)
 	{
-		gl_FragColor = mix( gl_FragColor, fogColor, min(1., pow( 1.25 * camDelta / (fogDist*fogDist), fogExpo) ) );
+		gl_FragColor =  mix( gl_FragColor, fogColor, min(1., pow( 1.25 * camDelta / (fogDist*fogDist), fogExpo) ) );
 	}
 }
 

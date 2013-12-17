@@ -123,7 +123,7 @@ void main()
 	vec3 boxCenter = gl_Color.xyz;
 //	boxCenter.xz += floor( noiseOffset.xz );
 	
-	camDelta = lengthSqr(cameraPos - boxCenter);
+	camDelta = lengthSqr(cameraPos - boxCenter + cd);
 	
 	vec4 v = gl_Vertex;
 	v.xz -= fract(noiseOffset.xz);

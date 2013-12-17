@@ -99,9 +99,9 @@ void CubeCraft::selfSetupGui()
 	fogGui->addSlider("fogDist", 10, 200, &fogDist);//->setColorFill(ofFloatColor(1,1,1,1));
 	fogGui->addSlider("fogExpo", .6, 3., &fogExpo);//->setColorFill(ofFloatColor(1,1,1,1));
 												   //	fogGui->addImageSampler("fogColor", &colorMap, 100, 100);
-	fogGui->addSlider("fogHue", 0, 1, &fogHue);
-	fogGui->addSlider("fogSaturation", 0, 1, &fogSaturation);
-	fogGui->addSlider("fogBrightness", 0, 1, &fogBrightness);
+	fogGui->addSlider("fogHue", 0, 255, &fogHue);
+	fogGui->addSlider("fogSaturation", 0, 255, &fogSaturation);
+	fogGui->addSlider("fogBrightness", 0, 255, &fogBrightness);
 	
 	ofAddListener(fogGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
 	guis.push_back(fogGui);
@@ -165,10 +165,7 @@ void CubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 	}
 	else if(name == "fogSaturation" || name == "fogHue" || name == "fogBrightness" )
 	{
-		cout << "WTF" << endl;
-		fogColor.setHue(fogHue);
-		fogColor.setSaturation(fogSaturation);
-		fogColor.setBrightness(fogBrightness);
+		fogColor = ofColor::fromHsb(MIN(fogHue,254.), fogSaturation, bgBri, 255);
 	}
 	
 	if(name == "dimX" || name == "dimY" || name == "dimZ" )
@@ -375,7 +372,7 @@ void CubeCraft::drawCubeCraft()
 	cubeCraftShader.setUniform1f("specExpo", specExpo);
 	cubeCraftShader.setUniform1f("specScale", specScale);
 	
-	cubeCraftShader.setUniform4f("fogColor", fogColor.r, fogColor.g, fogColor.g, fogColor.a );
+	cubeCraftShader.setUniform4f("fogColor", fogColor.r, fogColor.g, fogColor.b, fogColor.a );
 	cubeCraftShader.setUniform1f("fogDist", fogDist );
 	cubeCraftShader.setUniform1f("fogExpo", fogExpo );
 	
