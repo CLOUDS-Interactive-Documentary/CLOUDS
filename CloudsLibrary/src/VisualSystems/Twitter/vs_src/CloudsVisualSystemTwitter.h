@@ -106,6 +106,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bRenderMesh;
     bool bRenderText;
     bool bRenderFeed;
+    bool bAnimate;
 
     
 protected:
