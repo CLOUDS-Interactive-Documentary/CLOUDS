@@ -168,8 +168,12 @@ protected:
     float noteMin;
     int triggerIndex;
     Generator output;
+	
+	void audioRequested (float * output, int bufferSize, int nChannels);
+	
+	
 //    Generator collisionGen[WAVE_GEN_NUM];
-    DummyApp* dummyApp;
+//    DummyApp* dummyApp;
 };
 
 class DummyApp : public ofBaseApp
