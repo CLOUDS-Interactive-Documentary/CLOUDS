@@ -76,6 +76,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void CompareDates(Date d1,Date d2);
     void loadGraphFromPath(string filePath);
     void clearData();
+    void sortTweetsByDate();
     
     //shader stuff
     void reloadShaders();
@@ -102,6 +103,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     set<pair<int,int> > links;
     map<pair<string, string>, pair<int, int> >lineIndexPairs;
     map<string,int> numberOfMentions;
+    map<string,int> userNameIdMap;
     int currentDateIndex;
     void updateLabelWithCurrentMeshName(string name);
 
@@ -137,8 +139,8 @@ protected:
     ofxUISuperCanvas* twitterFeedGui;
     
     vector<Tweeter*> activeTweeters;
-    vector<string> activeTweets;
-
+    vector<string*> activeTweets;
+    
     void addColorToGui(ofxUISuperCanvas* gui, string prefix, ofFloatColor& col, bool doAlpha = true);
 	
 	float edgeInterpolateExponent;
