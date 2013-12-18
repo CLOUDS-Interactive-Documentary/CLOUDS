@@ -815,9 +815,13 @@ void CloudsVisualSystemTwitter::selfDraw()
     glDisable(GL_DEPTH_TEST);
     
     if(bRenderMesh){
-        glPointSize(1);
+		pointsShader.begin();
         nodeMesh.draw();
+		pointsShader.end();
+		
+		lineShader.begin();
         edgeMesh.draw();
+		lineShader.end();
     }
     
     if(bRenderText){
@@ -884,15 +888,8 @@ void CloudsVisualSystemTwitter::reloadShaders(){
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
-    if(args.key =='k'){
-        std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
-        
-        for(int i =0; i<dateIndex.size(); i++){
-            cout<<dateIndex[i].day<<" : "<<dateIndex[i].month<<" : "<<dateIndex[i].year<<endl;
-        }
-    }
-    else if (args.key == 'r' && ofGetKeyPressed(OF_KEY_SHIFT)){
-            reloadShaders() ;
+	if (args.key == 'R'){
+		reloadShaders() ;
     }
 }
 
