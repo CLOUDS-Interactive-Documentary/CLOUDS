@@ -3,10 +3,11 @@
 //
 
 #include "CloudsVisualSystemLaplacianTunnel.h"
-#include "CloudsRGBDVideoPlayer.h"
+
 
 bool meshsort(NamedVbo a, NamedVbo b){
-	return ofToInt( ofSplitString(a.name,"Tunnel_")[1] ) < ofToInt( ofSplitString(b.name,"Tunnel_")[1] );
+//	return ofToInt( ofSplitString(a.name,"Tunnel_")[1] ) < ofToInt( ofSplitString(b.name,"Tunnel_")[1] );
+	return ofToInt( a.name ) < ofToInt( b.name );
 }
 
 int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVboByteColor &vbo, string path) {
@@ -155,7 +156,7 @@ void CloudsVisualSystemLaplacianTunnel::selfSetup(){
 	growthFPS = 0;
 	currentGrowthIndex = 0;
 	
-	ofDirectory objs(getVisualSystemDataPath(true) + "Meshes/colored");
+	ofDirectory objs(getVisualSystemDataPath(true) + "Meshes/");
 	objs.allowExt("vbo");
 	objs.listDir();
 	
@@ -237,7 +238,7 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_LIGHTING);
-	glFrontFace(GL_CW);
+	glFrontFace(GL_CCW);
 	
 	glPointSize(2);
 	if(vbos.size() > 0){
@@ -245,8 +246,8 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 		
 		ofFloatColor color = ofFloatColor::fromHsb(bgHue/255., bgSat/255., bgBri/255.);
 		float spread = (max.y - min.y);
-		shader.setUniform1f("minFogDist",spread*2);
-		shader.setUniform1f("maxFogDist", spread*4);
+		shader.setUniform1f("minFogDist",spread*(numReplications-1));
+		shader.setUniform1f("maxFogDist", spread*numReplications);
 		shader.setUniform3f("fogColor",color.r,color.g,color.b);
 		float startY = min.y + tunnelCam.getPosition().y - fmod(tunnelCam.getPosition().y, spread);
 		
@@ -259,7 +260,7 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 			ofTranslate(0,translateAmount,0);
 			ofTranslate(center);
 
-			ofRotate((i+int(tunnelCam.getPosition().y/spread))*90,0,1,0);
+			ofRotate((i+int(tunnelCam.getPosition().y/spread))*90,0,-1,0);
 			ofTranslate(-center);
 			float cameraoffset = tunnelCam.getPosition().y - translateAmount - spread;
 			
