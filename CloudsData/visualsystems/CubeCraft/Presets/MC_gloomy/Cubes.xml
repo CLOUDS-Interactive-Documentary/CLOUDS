@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Cubes</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1</XPosition>
     <YPosition>1</YPosition>
 </Canvas>
@@ -43,12 +43,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>speed</Name>
-    <Value>-8.12808</Value>
+    <Value>-4.6798</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseDirectionX</Name>
-    <Value>0.0935961</Value>
+    <Value>0.349754</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

@@ -114,6 +114,7 @@ protected:
 	
 	void drawVoxelGrid();
 	void drawCubeCraft();
+	void updateAllColors();
 	
 	void resizeVoxelGrid();
 	void loadShaders();

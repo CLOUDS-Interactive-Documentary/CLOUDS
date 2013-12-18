@@ -18,22 +18,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>groundDrama</Name>
-    <Value>0.842365</Value>
+    <Value>0.852217</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudThreshold</Name>
-    <Value>0.522168</Value>
+    <Value>0.55665</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudHeight</Name>
-    <Value>6.55172</Value>
+    <Value>7.38916</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudThickness</Name>
-    <Value>1.57635</Value>
+    <Value>5.07389</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

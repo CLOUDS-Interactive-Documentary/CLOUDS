@@ -33,7 +33,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>MC_shadow</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -59,4 +59,9 @@
     <Kind>2</Kind>
     <Name>noiseScale</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>MC_gloomy</Name>
+    <Value>1</Value>
 </Widget>
