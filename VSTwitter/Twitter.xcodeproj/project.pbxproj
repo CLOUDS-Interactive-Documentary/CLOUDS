@@ -916,8 +916,8 @@
 		188B660E18412BBF00E02CC7 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				188B660F18412BBF00E02CC7 /* CloudsVisualSystemTwitter.cpp */,
 				188B661018412BBF00E02CC7 /* CloudsVisualSystemTwitter.h */,
+				188B660F18412BBF00E02CC7 /* CloudsVisualSystemTwitter.cpp */,
 				188B669E184144E700E02CC7 /* Tweeter.h */,
 				188B669D184144E700E02CC7 /* Tweeter.cpp */,
 			);
@@ -1377,10 +1377,10 @@
 		E7846DA31713A48B00705E7A /* data */ = {
 			isa = PBXGroup;
 			children = (
-				18A36F201861207F0032FD7C /* linesShader.frag */,
 				18A36F28186120B40032FD7C /* linesShader.vert */,
-				18A36F29186120B40032FD7C /* pointsShader.frag */,
+				18A36F201861207F0032FD7C /* linesShader.frag */,
 				18A36F231861207F0032FD7C /* pointsShader.vert */,
+				18A36F29186120B40032FD7C /* pointsShader.frag */,
 			);
 			name = data;
 			path = bin/data;
