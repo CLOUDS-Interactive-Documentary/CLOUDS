@@ -1,15 +1,276 @@
 <clouds>
-	<project title="Drawn1">
+	<project>
+	<project title="Drawn">
 			<creator_name>Zach Lieberman</creator_name>
 			<description>In the installation drawn, figures drawn with pen and ink take on a life of their own and interact with their creators. They seem to arise from the sheet of drawing paper and start to move in with the hand motions of the person who drew them.</description>
 			<video_file_name>videos/sample.mp4</video_file_name>
 	</project>
-	<project title="Drawn2">
-			<creator_name>Kyle McDonald</creator_name>
-			<description>Just a test. Delete this one.</description>
-			<videos>
-				<file_name>http://media.w3.org/2010/05/sintel/trailer.mp4</video_file_name>
-			</videos>
+	
+	<project>
+	<project title="Sheep Market">
+			<creator_name>Aaron Koblin</creator_name>
+			<description>TheSheepMarket.com is a collection of 10,000 sheep made by workers on Amazon's Mechanical Turk.
+Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description>
+			<video_file_name></video_file_name>
 	</project>
 
+	<project>
+	<project title="Exquisite Forest">
+			<creator_name>Chris Milk, Aaron Koblin</creator_name>
+			<description>Exquisite Forest is an online collaborative art project that lets users create short animations that build off one another as they explore a specific theme. The result is a collection of branching narratives resembling trees.</description>
+			<video_file_name></video_file_name>
+	</project>
+
+	<project>
+	<project title="Flight Patterns">
+			<creator_name>Aaron Koblin</creator_name>
+			<description>A visualization of airplane traffic over North America during a 24 hour period in August 2010. The different colors are coded to the 573 different types of airplanes that traveled through North America, totaling over 205,000 flights.</description>
+			<video_file_name></video_file_name>
+	</project>
+
+	<project>
+	<project title="Meshu">
+			<creator_name>Rachel Binx, Sha Hwang</creator_name>
+			<description>The idea is to turn locations into objects - the site is a tool for entering in places and creating a unique shape from triangulating those point.</description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="Processing">
+			<creator_name>Casey Reas, Ben Fry</creator_name>
+			<description>An open-source language and environment for learning the fundamentals of electronic art and computer programming.</description>
+			<video_file_name></video_file_name>
+			<video_file_name1></video_file_name1>
+	</project>
+	<project>
+	<project title="Tron (1982)">
+			<creator_name>Graphics by Ken Perlin</creator_name>
+			<description> One of the earliest feature films to reflect the video-game craze of the 1980s. Stars Jeff Bridges as computer programmer Kevin Flynn, who becomes part of the very game that he's programming</description>
+			<video_file_name></video_file_name>
+	</project>
+<project>
+	<project title="Eyewriter">
+			<creator_name>Evan Roth, Chris Sugrue, Zach Lieberman,Theo Watson, James Powderly</creator_name>
+			<description>The EyeWriter is a low-cost eyetracking system originally designed for paralyzed graffiti artist TEMPT1. The EyeWriter system uses inexpensive cameras and open-source computer vision software to that allows a user to draw with eye-movement.</description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="Lumarca">
+			<creator_name>Albert Hwang, Matt Parker, Elliot Woods</creator_name>
+			<description>A projector throws its beam on an array of vertical wires. The result is a floating, glowing 3d object made entirely of light.</description>
+			<video_file_name></video_file_name>
+	</project>
+<project>
+	<project title="Lit Tree">
+			<creator_name>Elliot Woods, Mimi Son</creator_name>
+			<description>The leaves of a tree are used as the voxels in a 3D display for creating volumetric light patterns.</description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="Messa Di Voce">
+			<creator_name>Golan Levin, Joan La Barbara, Jaap Blonk</creator_name>
+			<description>A performance and installation in which the speech, shouts and songs produced by two vocalists are augmented in real-time by custom interactive visualization</description>
+			<video_file_name></video_file_name>
+	</project>
+
+<project>
+	<project title="Listening Post">
+			<creator_name>Mark Hansen, Ben Rubin</creator_name>
+			<description>Listening Post is a 'dynamic portrait' of online communication, displaying uncensored fragments of text sampled in real-time, from public internet chatrooms and bulletin boards.</description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="The Transfiguration">
+			<creator_name>Matt Pyke - Universal Everything</creator_name>
+			<description>An ever-changing organic costume</description>
+			<video_file_name></video_file_name>
+	</project>
+<project>
+	<project title="Open Paths">
+			<creator_name>Brian House, Jer Thorp, Jake Poroway</creator_name>
+			<description>A model for personal engagement with data that lets people track their locations and visualize where they've been.</description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="Good Morning!">
+			<creator_name>Jer Thorp</creator_name>
+			<description>GoodMorning! is a Twitter visualization tool that shows about 11000 'good morning' tweets over a 24 hour period, rendering a sample of tweets around the globe.</description>
+			<video_file_name></video_file_name>
+	</project>
+
+<project>
+	<project title="Kepler Exoplanet Candidates">
+			<creator_name>Jer Thorp</creator_name>
+			<description>(2012)- A visualization of the 1236 exoplanet candidates observed by NASA's Kepler mission. </description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="Cascade">
+			<creator_name>Jer Thorp, Mark Hansen, Jake Poroway</creator_name>
+			<description>Cascade is a tool for analyzing sharing activity on the web, and displaying how information propagates through the social media space.</description>
+			<video_file_name></video_file_name>
+	</project>
+
+<project>
+	<project title="Transparency Grenade">
+			<creator_name>Julian Oliver</creator_name>
+			<description>A digital weapon that lets users leak information from closed meetings by just pulling a pin. The device captures network traffic and audio in a location and anonymously streams it to an external server that mines it for information — including e-mail excerpts, web pages, images and voice. The server then uploads that data to a public website and positions it on a map.</description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="ToxicLibs">
+			<creator_name>Karsten Schmidt</creator_name>
+			<description>Toxiclibs is an independent, modular open source library collection for Java and Processing,</description>
+			<video_file_name></video_file_name>
+	</project>
+
+<project>
+	<project title="Super Mario Clouds">
+			<creator_name>Cory Arcangel</creator_name>
+			<description>An old Mario Brothers cartridge modified to erase everything but the clouds.</description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="Social Turkers">
+			<creator_name>Lauren McCarthy</creator_name>
+			<description>A crowdsourced dating project in which the artist streamed videos of herself on a series of dates for an audience on Amazon Mechanical Turk, and paid them to offer feedback on what she should do, say or ask. 
+</description>
+			<video_file_name></video_file_name>
+	</project>
+
+<project>
+	<project title="Calendar for Shiseido">
+			<creator_name>John Maeda</creator_name>
+			<description>The calendars were made for purely aesthetic reasons and represent no intent to advance the state of the art in digital time management. They were in fact, designed for you to waste time instead of save time. - 2005 </description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="Reactive Books">
+			<creator_name>John Maeda</creator_name>
+			<description>4 books that focus on different aspects of the computer as related to the visual medium. - 1995 </description>
+			<video_file_name></video_file_name>
+	</project>
+
+<project>
+	<project title=Design by Numbers">
+			<creator_name></creator_name>
+			<description>An influential experiment in teaching programming initiated at the MIT Media Lab during the 1990s.=</description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="Nature">
+			<creator_name>John Maeda</creator_name>
+			<description>A series of 7 “motion paintings” inspired by natural phenomena.</description>
+			<video_file_name></video_file_name>
+	</project>
+
+<project>
+	<project title="Energy Flow">
+			<creator_name>Vera Glahn, Marcus Wendt - Field IO</creator_name>
+			<description>A non-linear film experience weaving 10 animated story lines into a filmic dream rush of paintings in motion. Energy Flow explores the complexity of how things are connected in our lives today – the fragile equilibrium between physical, political, and cultural tensions.</description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="Thinking Machine">
+			<creator_name>Martin Wattenberg, Marek Walczak</creator_name>
+			<description>Play chess against an artificial intelligence program, and watch as the computer's thought process is sketched on screen as it plays. A map is created from the traces of literally thousands of possible futures as the program tries to decide its best move.</description>
+			<video_file_name></video_file_name>
+	</project>
+
+<project>
+	<project title="Transfinite">
+			<creator_name>Ryoji Ikeda</creator_name>
+			<description>A large-scale digital installation
+and sonic landscape that explore the concept of infinity, rationality, and the beauty of data. Ikeda's first work in the united states, exhibited at the Park Avenue Armory in NYC. -2011</description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="Cell Cycle">
+			<creator_name>N-E-R-V-O-U-S System</creator_name>
+			<description>A WEBGL design app that lets you create your own 3d-printed jewelry. Play with an interactive physics simulation to form unique cellular designs.</description>
+			<video_file_name></video_file_name>
+	</project>
+
+<project>
+	<project title="Hyphae">
+			<creator_name>N-E-R-V-O-U-S System</creator_name>
+			<description>Hyphae is a collection of 3D printed artifacts constructed of rhizome-like networks, inspired by the vein structures that carry fluids through organisms from the leaves of plants to our own circulatory systems.</description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="Portal">
+			<creator_name>Valve</creator_name>
+			<description>A first-person-puzzle videogame developed for Xbox. The player solves puzzles using a teleportation device called the "the Aperture Science Handheld Portal Device" </description>
+			<video_file_name></video_file_name>
+	</project>
+
+<project>
+	<project title="Funky Forest">
+			<creator_name>Emily Gobeille, Theo Watson</creator_name>
+			<description>An interactive ecosystem where children create trees with their body and then divert the water flowing from the waterfall to the trees to keep them alive. The health of the trees contributes to the overall health of the forest and the types of creatures that inhabit it.</description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="Communion">
+			<creator_name>Matt Pyke, Vera Glahn, Marcus Wendt</creator_name>
+			<description>An array of evolving creatures going through stages of development from simple cellular structures to dancing multi-limbed creatures. </description>
+			<video_file_name></video_file_name>
+	</project>
+
+<project>
+	<project title="Galapagos">
+			<creator_name>Carl Sims</creator_name>
+			<description></description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="Evolved Virtual Creatures">
+			<creator_name>Car Sims</creator_name>
+			<description></description>
+			<video_file_name></video_file_name>
+	</project>
+
+<project>
+	<project title="People Staring at Computers">
+			<creator_name>Kyle McDonald</creator_name>
+			<description>Kyle wrote a simple application that took one picture every minute. If it found a face, it uploaded the photo to a server. He installed the app around NYC over three days, collecting more than a thousand photos. When the 14th street Apple Store discovered the application on their computers, they called the Secret Service. - 2011</description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="Keytweeter">
+			<creator_name>Kyle McDonald</creator_name>
+			<description>A one-year performance for custom keylogger, tweeting every 140 characters I type, ending June 30, 2010. An exploration of the boundary between "information" and "control", ubiquitous status updates, and personal identity.</description>
+			<video_file_name></video_file_name>
+	</project>
+
+<project>
+	<project title="Face OSC">
+			<creator_name>Kyle McDonald</creator_name>
+			<description>FaceOSC is a tool for prototyping face-based interaction. FaceOSC was based on the work of Jason Saragih, a research scientist at CSIRO.</description>
+			<video_file_name></video_file_name>
+	</project>
+<project>
+	<project title="Face Subsitution">
+			<creator_name>Arturo Castro, Kyle McDonald</creator_name>
+			<description>Real time face tracking and substitution experiments including a realization of the Scramble Suit and an interactive installation Faces that picks a new face for you every time you blink. - 2011</description>
+			<video_file_name></video_file_name>
+	</project>
+<project>
+	<project title="FaceShiftOSC">
+			<creator_name>Kyle McDonald</creator_name>
+			<description></description>
+			<video_file_name></video_file_name>
+	</project>
+	<project>
+	<project title="Sniff">
+			<creator_name>Karolina Sobecka, James George</creator_name>
+			<description>Sniff is an interactive projection in a storefront window. A CG dog follows the viewer and dynamically responds to his gestures and changes his behavior based on the state of engagement with the viewer.</description>
+			<video_file_name></video_file_name>
+	</project>
+
+<project>
+	<project title="Aesthetics and Computation Group">
+			<creator_name>Directed by Prof. John Maeda</creator_name>
+			<description>Work by Peter Cho '99, Jared Schiffman '01, Axel Kilian '00, Ben Fry '00, Tom White '98, Elise Co '00, Casey Reas '01, Golan Levin '00</description>
+			<video_file_name></video_file_name>
+	
 </clouds>

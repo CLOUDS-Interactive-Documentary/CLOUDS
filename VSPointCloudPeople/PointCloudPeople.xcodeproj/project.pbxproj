@@ -663,8 +663,8 @@
 		E771D6A1185FBAA900CFF892 /* rgbdMesh.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbdMesh.vert; sourceTree = "<group>"; };
 		E771D6A2185FBAA900CFF892 /* rgbdPoints.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbdPoints.frag; sourceTree = "<group>"; };
 		E771D6A3185FBAA900CFF892 /* rgbdPoints.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbdPoints.vert; sourceTree = "<group>"; };
-		E771D6A5185FE02100CFF892 /* rgbdLines.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbdLines.frag; sourceTree = "<group>"; };
-		E771D6A6185FE02100CFF892 /* rgbdLines.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = rgbdLines.vert; sourceTree = "<group>"; };
+		E771D6A5185FE02100CFF892 /* rgbdLines.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = rgbdLines.frag; sourceTree = "<group>"; };
+		E771D6A6185FE02100CFF892 /* rgbdLines.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = rgbdLines.vert; sourceTree = "<group>"; };
 		E7846FB61714899C00705E7A /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
 		E7846FB71714899C00705E7A /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
 		E7846FB81714899C00705E7A /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
@@ -1676,10 +1676,10 @@
 			children = (
 				E771D6A0185FBAA900CFF892 /* rgbdMesh.frag */,
 				E771D6A1185FBAA900CFF892 /* rgbdMesh.vert */,
-				E771D6A5185FE02100CFF892 /* rgbdLines.frag */,
 				E771D6A6185FE02100CFF892 /* rgbdLines.vert */,
-				E771D6A2185FBAA900CFF892 /* rgbdPoints.frag */,
+				E771D6A5185FE02100CFF892 /* rgbdLines.frag */,
 				E771D6A3185FBAA900CFF892 /* rgbdPoints.vert */,
+				E771D6A2185FBAA900CFF892 /* rgbdPoints.frag */,
 			);
 			name = shaders;
 			path = ../CloudsData/visualsystems/RGBD/shaders;

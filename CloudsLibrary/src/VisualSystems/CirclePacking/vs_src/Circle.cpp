@@ -22,10 +22,10 @@ Circle::Circle(float _x, float _y, float _r, string _label)
     this->r = _r;
     this->label = _label;
     
-
     
     growth = ofRandom(-.05, .05);
     hue = 120 + ofRandom(60);
+    hue2 = ofRandom(255); 
     brightness = 180 + ofRandom(70);
     
 }
@@ -115,6 +115,31 @@ void Circle::drawCompanies()
         Font.drawString("$"+number+" B", _x, y+20);
         ofPopStyle();
     }
-
-    
 }
+    
+void Circle::drawHashtags()
+    {
+        
+        ofPushStyle();
+        color1.setHsb(hue2, 80, brightness);
+        ofSetColor(color1);
+        //ofSetCircleResolution(100);
+        //ofFill();
+        //ofCircle(x, y, r);
+        
+        
+        if (r<100){
+            ofSetColor(255);
+           // checkFontSize(label, x, y);
+           // ofRectangle rect = Font.getStringBoundingBox(label, x, y);
+          //  float _x =  x- rect.width/2;
+            Font.setSize(r/4);
+            Font.drawString(label, x, y);
+       
+        }
+        if (r>100){
+            Font.setSize(25);
+            Font.drawString(label, x, y);
+        }
+          ofPopStyle();
+    }
