@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>MINECRAFT</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>394</XPosition>
-    <YPosition>56</YPosition>
+    <XPosition>718</XPosition>
+    <YPosition>30</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -13,27 +13,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>cloudThreshold</Name>
-    <Value>0.571429</Value>
+    <Value>0.605911</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudHeight</Name>
-    <Value>5.46798</Value>
+    <Value>1.97044</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudThickness</Name>
-    <Value>1.42857</Value>
+    <Value>1.57635</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudSpeed</Name>
-    <Value>0.0428571</Value>
+    <Value>0.00962986</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudShadow</Name>
-    <Value>0.581281</Value>
+    <Value>0.507389</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -73,10 +73,10 @@
 <Widget>
     <Kind>25</Kind>
     <Name>cloudShadowSaturation</Name>
-    <Value>69.0887</Value>
+    <Value>255</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>cloudShadowBrightness</Name>
-    <Value>18.8424</Value>
+    <Value>21.3547</Value>
 </Widget>
