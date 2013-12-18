@@ -105,6 +105,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     map<string,int> numberOfMentions;
     map<string,int> userNameIdMap;
     int currentDateIndex;
+    float dateIndexMin, dateIndexMax;
     void updateLabelWithCurrentMeshName(string name);
 
     // Ma boooooools
@@ -112,6 +113,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bRenderText;
     bool bRenderFeed;
     bool bAnimate;
+    
+    
 
     
 protected:

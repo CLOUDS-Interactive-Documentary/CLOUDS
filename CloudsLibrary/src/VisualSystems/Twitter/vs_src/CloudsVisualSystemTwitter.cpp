@@ -66,6 +66,8 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     meshExpansion = 100;
     pointSize =10;
     
+    dateIndexMin = 0;
+    dateIndexMax = 100;
     
     rotation = 0;
     //    tweetModifier.r = 1.0;
@@ -87,6 +89,8 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     stringWidth = 10;
     tweetFeedRect = ofRectangle (0, 0,  ofGetWidth()/2, ofGetHeight());
     font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
+    ofEnableSmoothing();
+
     
 }
 
@@ -101,15 +105,14 @@ void CloudsVisualSystemTwitter::selfSetup()
      cout<<"created new network"<<endl;
      while(1);
      */
-    
+        initSystem(getVisualSystemDataPath() +"graphs/NotSimple_Twitter4Men_new.net");
     reloadShaders();
     
 }
 
 void CloudsVisualSystemTwitter::selfBegin()
 {
-    ofEnableSmoothing();
-    initSystem(getVisualSystemDataPath() +"graphs/NotSimple_Twitter4Men_new.net");
+    updateLabelWithCurrentMeshName(currentMeshFileName);
 }
 
 void CloudsVisualSystemTwitter::addColorToGui(ofxUISuperCanvas* gui,string prefix,ofFloatColor& col, bool doAlpha){
@@ -133,6 +136,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	clusterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     clusterGui->addToggle("RENDER MESH", &bRenderMesh);
     clusterGui->addIntSlider("REFRESH RATE", 1, 100, &refreshRate);
+    clusterGui->addRangeSlider("DATE RANGE", 1,  (dateIndex.size()), &dateIndexMin, & dateIndexMax);
     clusterGui->addToggle("ROTATE", &rotateModel);
     clusterGui->addMinimalSlider("ROTATION AMT", 0.1, 1, &rotationAmount);
     clusterGui->addLabel("MESH FILE",currentMeshFileName);
@@ -232,6 +236,8 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     ofAddListener(twitterFeedGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(twitterFeedGui);
 	guimap[textGui->getName()] = twitterFeedGui;
+    
+    
     
 }
 
@@ -532,7 +538,7 @@ void CloudsVisualSystemTwitter::addUsersFromMentions(){
         for(int j=0; j<tweeters[i].userLinks.size(); j++){
             
             if(! ofContains(names, tweeters[i].userLinks[j])){
-                numberOfMentions[tweeters[i].userLinks[j]] ++;
+                numberOfMentions[tweeters[i].userLinks[j]]++;
             }
         }
     }
@@ -577,11 +583,6 @@ void CloudsVisualSystemTwitter::createPajekNetwork(string outputFileName){
 
 int CloudsVisualSystemTwitter:: getUserIdByName(string name){
     
-//    for (int i=0; i<tweeters.size(); i++) {
-//        if(tweeters[i].name == name){
-//            return tweeters[i].ID;
-//        }
-//    }
     if(userNameIdMap.find(name) != userNameIdMap.end()){
         return userNameIdMap[name];
     }
@@ -612,8 +613,8 @@ void CloudsVisualSystemTwitter::drawTweetsForDate(int index){
             }
         }
     }
-    
 }
+
 string CloudsVisualSystemTwitter::getDateAsString(Date d){
     string dateString;
     dateString += ofToString(d.day) + " - ";
@@ -661,18 +662,9 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
             rotation = 0;
         }
     }
-    //    baseColor.setHsb(baseModifier.r, baseModifier.g, baseModifier.b);
-    //    baseColor.a = baseAlpha;
-    //    tweetColor.setHsb(tweetModifier.r, tweetModifier.g, tweetModifier.b);
-    //    tweetColor.a = tweetAlpha;
-    //    nodeColor.setHsb(nodeModifier.r, nodeModifier.g, nodeModifier.b,nodeModifier.a);
-    //    nodeActiveColor.setHsb(nodeActiveModifier.r, nodeActiveModifier.g, nodeActiveModifier.b,nodeActiveModifier.a);
-    //    nodeMidpointColor.setHsb(nodeMidpointModifier.r, nodeMidpointModifier.g, nodeMidpointModifier.g,nodeActiveMidpointModifier.a);
-    //    nodeActiveMidpointColor.setHsb(nodeActiveMidpointModifier.r, nodeActiveMidpointModifier.g, nodeActiveMidpointModifier.b,nodeMidpointModifier.a);
-    //    textColor.setHsb(textColorModifier.r, textColorModifier.g, textColorModifier.b,textColorModifier.a);
+
     font.setSize(fontSize);
     font.setLineLength(stringWidth);
-    
     
 }
 
@@ -708,7 +700,6 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     zScale = 100;
     parseClusterNetwork(filePath);
     
-    updateLabelWithCurrentMeshName(currentMeshFileName);
     loadMesh();
     std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
     currentDateIndex = dateIndex.size() -1;
@@ -780,15 +771,10 @@ void CloudsVisualSystemTwitter::selfPresetLoaded(string presetPath)
 //any type of transformation that doesn't have to do with the camera
 void CloudsVisualSystemTwitter::selfSceneTransformation(){
     
-	//TODO: time dependent & make slider
-    //    cout<<ofGetElapsedTimeMillis() % 1000<<endl;
     if(rotateModel){
         
         ofRotateZ(rotation );
         rotation += rotationAmount;
-        
-        
-        
     }
     
 }
@@ -801,10 +787,21 @@ void CloudsVisualSystemTwitter::selfUpdate()
     
 	
     if(ofGetFrameNum() % refreshRate < 1 && bAnimate){
-        currentDateIndex--;
-        if (currentDateIndex <= 0) {
-			currentDateIndex = dateIndex.size() - 1;
+//        currentDateIndex--;
+//        if (currentDateIndex <= 0) {
+//			currentDateIndex = dateIndex.size() - 1;
+//        }
+        
+//        if(currentDateIndex<= dateIndexMin){
+//            currentDateIndex = (int)dateIndexMin;
+//        }
+         if (currentDateIndex >= dateIndexMax){
+            currentDateIndex = (int)dateIndexMin;
         }
+        else{
+            currentDateIndex++;
+        }
+        
         updateMeshFromTweets(currentDateIndex);
         updateMesh();
     }
@@ -931,6 +928,7 @@ void CloudsVisualSystemTwitter::selfDrawBackground()
     
     ofxBillboardBeginSphericalCheat(ofVec3f(0,0,0));
     ofPushStyle();
+    ofScale(0.01,-0.01,0.01);
     ofSetColor(textColor);
     font.drawString(getDateAsString(dateIndex[currentDateIndex]),0,0);
     ofxBillboardEnd();
@@ -962,8 +960,13 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
 	if (args.key == 'R'){
 		reloadShaders();
     }
-    if(args.key == ' '){
-        currentDateIndex = dateIndex.size() - 1;
+    
+    //set in and out points for date range
+    if(args.key == 'i'){
+        dateIndexMin = currentDateIndex;
+    }
+    if(args.key == 'o'){
+        dateIndexMax = currentDateIndex;
     }
 }
 
@@ -978,14 +981,12 @@ void CloudsVisualSystemTwitter::drawText2D(string text, ofVec2f pos){
 void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
 	
     ofxBillboardBeginSphericalCheat(pos);
-    
     ofPushStyle();
     ofSetColor(textColor);
     ofScale(0.01,-0.01,0.01);
     ofTranslate(pos.x,pos.y,pos.z);
     font.drawString(ofToUpper(text),0,0);
-    ofPopStyle();
-    
+    ofPopStyle();    
     ofxBillboardEnd();
     
 }
