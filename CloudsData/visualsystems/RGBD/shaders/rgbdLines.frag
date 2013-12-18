@@ -4,8 +4,8 @@
 uniform sampler2DRect rgbdTexture;
 
 varying float positionValid;
-varying vec4 faceFeatureSample;
-varying vec4 deltaChangeSample; 
+//varying vec4 faceFeatureSample;
+//varying vec4 deltaChangeSample;
 
 //LIGHTING
 varying vec3 eye;
@@ -32,17 +32,18 @@ float calculateLight(){
 	float lambertTerm = dot(N,L) * diffuseAttenuate;
 	return lambertTerm;
 }
-
-float isEye(){
-	return min(min(faceFeatureSample.r, faceFeatureSample.g), faceFeatureSample.b);
-}
-
-float isFace(){
-	return min(faceFeatureSample.r, faceFeatureSample.g);
-}
-
+//
+//float isEye(){
+//	return min(min(faceFeatureSample.r, faceFeatureSample.g), faceFeatureSample.b);
+//}
+//
+//float isFace(){
+//	return min(faceFeatureSample.r, faceFeatureSample.g);
+//}
+//
 float isSkin(){
-	return min(faceFeatureSample.r + faceFeatureSample.g, 1.0);
+	return 0.0;
+//	return min(faceFeatureSample.r + faceFeatureSample.g, 1.0);
 }
 
 float videoBrightness(vec3 c){
@@ -60,11 +61,14 @@ void main(){
         return;
     }
 
-	float attenuate = (baseMultiplier + max(isEye() * eyeMultiplier, isSkin() * skinMultiplier)) * fadeValue * forceFade;
-	if(attenuate < epsilon){
-		discard;
-		return;
-	}
+	//TODO re-add attenuation
+	float attenuate = 1.0;
+//	float attenuate = (baseMultiplier + max(isEye() * eyeMultiplier, isSkin() * skinMultiplier)) * fadeValue * forceFade;
+//	if(attenuate < epsilon){
+//		discard;
+//		return;
+//	}
+
 	
     vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
 	float lum = videoBrightness(col.rgb);
@@ -73,11 +77,12 @@ void main(){
     //gl_FragColor = gl_Color * col * attenuate * calculateLight();
 	
 	//apply lighting based on video luminosity
-	gl_FragColor = gl_Color * col * 
-					attenuate *
+	gl_FragColor = gl_Color * col * attenuate *
 					mix( mix(calculateLight(),1.0,isSkin()), 1.0, pow(lum,2.0) ) *
 					mix(1.0-headPositionAttenuation,headPositionAttenuation, headAttenuateMix) * edgeAttenuate;
 	
+//	gl_FragColor = gl_Color;
+//	gl_FragColor = vec4(1.0);
 	//apply light to just skin
 //	gl_FragColor = gl_Color * col * attenuate * max( calculateLight(), isSkin() );
 	
