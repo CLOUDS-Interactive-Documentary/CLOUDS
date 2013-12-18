@@ -34,12 +34,16 @@ vector<Tweet> Tweeter::getTweetsByDate(Date d){
     return dateTweets;
 }
 
+void Tweeter::indexTweetsByDate(vector<Date> dates){
+
+//    for(int i)
+}
+
 bool Tweeter::hasTweetOnDate(Date d){
     for(int i =0; i< tweets.size(); i++){
         if(tweets[i].tweetDate.day == d.day &&
            tweets[i].tweetDate.month == d.month &&
            tweets[i].tweetDate.year== d.year){
-//      cout<<name <<" has tweets on date "<< d.day<< " , "<<d.month<<" , "<<d.year<<endl;      
             return true;
         }
     }

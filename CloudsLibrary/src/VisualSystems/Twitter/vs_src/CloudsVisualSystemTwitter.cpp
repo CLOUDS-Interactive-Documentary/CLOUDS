@@ -160,11 +160,11 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addButton("RELOAD MESH", false);
     clusterGui->addSpacer();
     clusterGui->addToggle("ROTATE", &rotateModel);
-    
+
 	ofAddListener(clusterGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(clusterGui);
 	guimap[clusterGui->getName()] = clusterGui;
-    
+
     textGui = new ofxUISuperCanvas("TEXT PARAMS", gui);
     textGui->copyCanvasStyle(gui);
 	textGui->copyCanvasProperties(gui);
@@ -195,7 +195,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     twitterFeedGui->addMinimalSlider("FEED Y", 1, ofGetHeight(), &tweetFeedRect.y);
     twitterFeedGui->addMinimalSlider("FEED WIDTH", 1, ofGetWidth(), &tweetFeedRect.width);
     twitterFeedGui->addMinimalSlider("FEED HEIGHT", 1, ofGetHeight(), &tweetFeedRect.height);
-    
+
     ofAddListener(twitterFeedGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(twitterFeedGui);
 	guimap[textGui->getName()] = twitterFeedGui;
@@ -301,8 +301,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
     bool findingEdges = false;;
 	while(!pajekFile.isLastLine()){
 		string line = pajekFile.getNextLine();
-		
-//        cout<<line<<endl;
+        
 		if(line == "" || line.at(0) == '%'){
 			continue;
 		}
@@ -348,7 +347,6 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
                     }
                 }
             }
-
         }
 	}
 }
@@ -503,8 +501,7 @@ void CloudsVisualSystemTwitter::loadMesh(){
                     currentIndex++;
                     
                 }
-                else{
-                    
+                else{   
                 }
             }
 
@@ -880,7 +877,6 @@ void CloudsVisualSystemTwitter::selfExit()
 }
 
 void CloudsVisualSystemTwitter::reloadShaders(){
-
     lineShader.load(getVisualSystemDataPath() + "/shaders/linesShader");
     pointsShader.load(getVisualSystemDataPath() + "/shaders/pointsShader");
 }
@@ -896,7 +892,7 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
         }
     }
     else if (args.key == 'r' && ofGetKeyPressed(OF_KEY_SHIFT)){
-            reloadShaders();
+            reloadShaders() ;
     }
 }
 
@@ -918,7 +914,7 @@ void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
     ofScale(0.01,-0.01,0.01);
     ofTranslate(pos.x,pos.y,pos.z);
     font.drawString(ofToUpper(text),0,0);
-
+ 
     ofPopStyle();
     
     ofxBillboardEnd();
