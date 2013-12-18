@@ -1,10 +1,15 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1</XPosition>
-    <YPosition>287</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>1273</XPosition>
+    <YPosition>213</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>aboveTheClouds</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>bigNoise</Name>
@@ -18,12 +23,22 @@
 <Widget>
     <Kind>2</Kind>
     <Name>MC_cloudShadows</Name>
-    <Value>1</Value>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>MC_infinite</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>MC_shadow</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>MC_shadows</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
