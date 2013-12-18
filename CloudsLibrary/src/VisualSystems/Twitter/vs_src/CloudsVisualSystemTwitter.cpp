@@ -906,6 +906,7 @@ void CloudsVisualSystemTwitter::drawFeed()
         ofRect(r);
         ofPushStyle();
         ofSetColor(textColor);
+//        font.drawString(getDateAsString(dateIndex[currentDateIndex]),0,0);
         ofPopStyle();
     }
 }
@@ -927,6 +928,13 @@ void CloudsVisualSystemTwitter::selfDrawBackground()
         drawFeed();
         ofPopStyle();
     }
+    
+    ofxBillboardBeginSphericalCheat(ofVec3f(0,0,0));
+    ofPushStyle();
+    ofSetColor(textColor);
+    font.drawString(getDateAsString(dateIndex[currentDateIndex]),0,0);
+    ofxBillboardEnd();
+    ofPopStyle();
     
 }
 
@@ -953,6 +961,9 @@ void CloudsVisualSystemTwitter::reloadShaders(){
 void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
 	if (args.key == 'R'){
 		reloadShaders();
+    }
+    if(args.key == ' '){
+        currentDateIndex = dateIndex.size() - 1;
     }
 }
 
