@@ -105,7 +105,7 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	
 	//birth colors
 	int i=0;
-	for (map<string, ofFloatColor>::iterator it = fwColors.begin(); it != fwColors.end(); it++)
+	for (map<string, ofColor>::iterator it = fwColors.begin(); it != fwColors.end(); it++)
 	{
 		
 		ofxUIRectangle* r = fireworkColorsGui->addImageSampler(it->first + "_color", &colorSampleImage, 100, 100)->getRect();
@@ -128,7 +128,7 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	
 	//death colors
 	i=0;
-	for (map<string, ofFloatColor>::iterator it = fwDeathColors.begin(); it != fwDeathColors.end(); it++)
+	for (map<string, ofColor>::iterator it = fwDeathColors.begin(); it != fwDeathColors.end(); it++)
 	{
 		ofxUIRectangle* r = fireworkColorsGui->addImageSampler(it->first + "_color", &colorSampleImage, 100, 100)->getRect();
 		r->setX(20 + i * 120);
@@ -197,40 +197,40 @@ void CloudsVisualSystemFireworks::selfGuiEvent(ofxUIEventArgs &e)
 	
 	else
 	{
-		for (map<string, ofFloatColor>::iterator it = fwColors.begin(); it != fwColors.end(); it++)
+		for (map<string, ofColor>::iterator it = fwColors.begin(); it != fwColors.end(); it++)
 		{
 			if(name == it->first + "_color")
 			{
 				ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
 				it->second = sampler->getColor();
-				it->second.setSaturation( fwSaturations[ it->first ] );
+				it->second.setSaturation( fwSaturations[ it->first ] * 255 );
 				
 				fireworkColorsGui->getWidget( it->first )->setColorFill(it->second);
 				fireworkColorsGui->getWidget( it->first + "_saturation" )->setColorFill(it->second);
 			}
 			if(name == it->first + "_saturation")
 			{
-				it->second.setSaturation( fwSaturations[ it->first ] );
+				it->second.setSaturation( fwSaturations[ it->first ] * 255 );
 				
 				fireworkColorsGui->getWidget( it->first )->setColorFill( it->second );
 				fireworkColorsGui->getWidget( it->first + "_saturation" )->setColorFill(it->second);
 			}
 		}
 		
-		for (map<string, ofFloatColor>::iterator it = fwDeathColors.begin(); it != fwDeathColors.end(); it++)
+		for (map<string, ofColor>::iterator it = fwDeathColors.begin(); it != fwDeathColors.end(); it++)
 		{
 			if(name == it->first + "_color")
 			{
 				ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
 				it->second = sampler->getColor();
-				it->second.setSaturation( fwSaturations[ it->first ] );
+				it->second.setSaturation( fwSaturations[ it->first ] * 255 );
 				
 				fireworkColorsGui->getWidget( it->first )->setColorFill(it->second);
 				fireworkColorsGui->getWidget( it->first + "_saturation" )->setColorFill(it->second);
 			}
 			if(name == it->first + "_saturation")
 			{
-				it->second.setSaturation( fwSaturations[ it->first ] );
+				it->second.setSaturation( fwSaturations[ it->first ] * 255 );
 				
 				fireworkColorsGui->getWidget( it->first )->setColorFill( it->second );
 				fireworkColorsGui->getWidget( it->first + "_saturation" )->setColorFill(it->second);
@@ -520,14 +520,14 @@ void CloudsVisualSystemFireworks::selfDraw()
 	ofEnablePointSprites();
 	
 	vector<ofFloatColor> fireworkColorArray;
-	for (map<string, ofFloatColor>::iterator it=fwColors.begin(); it!=fwColors.end(); it++)
+	for (map<string, ofColor>::iterator it=fwColors.begin(); it!=fwColors.end(); it++)
 	{
-		fireworkColorArray.push_back( it->second );
+		fireworkColorArray.push_back( ofFloatColor(it->second) );
 	}
 	vector<ofFloatColor> fireworkDeathColorArray;
-	for (map<string, ofFloatColor>::iterator it=fwDeathColors.begin(); it!=fwDeathColors.end(); it++)
+	for (map<string, ofColor>::iterator it=fwDeathColors.begin(); it!=fwDeathColors.end(); it++)
 	{
-		fireworkDeathColorArray.push_back( it->second );
+		fireworkDeathColorArray.push_back( ofFloatColor(it->second) );
 	}
 	
 	shader.begin();
@@ -542,10 +542,10 @@ void CloudsVisualSystemFireworks::selfDraw()
 	shader.setUniform3f("cameraPosition", camPos.x, camPos.y, camPos.z );
 	
 	ofFloatColor c0 = startColor;
-	c0.setSaturation( startColorSaturation );
+	c0.setSaturation( startColorSaturation * 255 );
 	
 	ofFloatColor c1 = endColor;
-	c1.setSaturation( endColorSaturation );
+	c1.setSaturation( endColorSaturation * 255 );
 	shader.setUniform4f("startColor", c0.r, c0.g, c0.b, c0.a );
 	shader.setUniform4f("endColor", c1.r, c1.g, c1.b, c1.a );
 	
@@ -650,13 +650,13 @@ void CloudsVisualSystemFireworks::guiRenderEvent(ofxUIEventArgs &e){
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemFireworks::selfPresetLoaded(string presetPath)
 {
-	for (map<string, ofFloatColor>::iterator it = fwColors.begin(); it != fwColors.end(); it++)
+	for (map<string, ofColor>::iterator it = fwColors.begin(); it != fwColors.end(); it++)
 	{			
 		fireworkColorsGui->getWidget( it->first )->setColorFill(it->second);
 		fireworkColorsGui->getWidget( it->first + "_saturation" )->setColorFill(it->second);
 	}
 	
-	for (map<string, ofFloatColor>::iterator it = fwDeathColors.begin(); it != fwDeathColors.end(); it++)
+	for (map<string, ofColor>::iterator it = fwDeathColors.begin(); it != fwDeathColors.end(); it++)
 	{
 		fireworkColorsGui->getWidget( it->first )->setColorFill(it->second);
 		fireworkColorsGui->getWidget( it->first + "_saturation" )->setColorFill(it->second);
