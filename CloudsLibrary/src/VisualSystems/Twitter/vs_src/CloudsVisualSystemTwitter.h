@@ -137,31 +137,28 @@ protected:
     ofxUISuperCanvas* textGui;
     ofxUISuperCanvas* twitterFeedGui;
     
-
     vector<Tweeter*> activeTweeters;
     vector<string> activeTweets;
 
-    float baseHue,baseSat,baseBri,baseAlpha;
-    float tweetHue, tweetSat, tweetBri, tweetAlpha;
+    void addColorToGui(ofxUISuperCanvas* gui, string prefix, ofFloatColor& col, bool doAlpha = true);
+	
+	float edgeInterpolateExponent;
+	ofFloatColor getRGBfromHSV(ofFloatColor hsv);
+	//this is the base color of the lines close to the nodes
+	ofFloatColor lineNodeBaseHSV;
+	//this is the base color of the lines at the midpoint
+	ofFloatColor lineEdgeBaseHSV;
+	
+	//this is the pop color of the lines close to the nodes
+	ofFloatColor lineNodePopHSV;
+	//this is the pop color of the lines at the midpoint
+	ofFloatColor lineEdgePopHSV;
     
-    ofFloatColor baseColor;
-    ofFloatColor baseModifier;
-    
-    ofFloatColor tweetColor;
-    ofFloatColor tweetModifier;
-    
-    ofFloatColor nodeColor;
-    ofFloatColor nodeModifier;
-    
-    ofFloatColor nodeActiveColor;
-    ofFloatColor nodeActiveModifier;
-    
-    ofFloatColor nodeMidpointColor;
-    ofFloatColor nodeMidpointModifier;
-    
-    ofFloatColor nodeActiveMidpointColor;
-    ofFloatColor nodeActiveMidpointModifier;
-    
+	//this is the base color of the node
+	ofFloatColor nodeBaseColorHSV;
+	//this is the pop color of the node
+	ofFloatColor nodePopColorHSV;
+	   
     ofFloatColor textColor;
     ofFloatColor textColorModifier;
     

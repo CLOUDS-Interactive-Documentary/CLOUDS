@@ -16,49 +16,50 @@ bool dateSorter(Date const& lhs, Date const& rhs) {
 }
 
 void CloudsVisualSystemTwitter::selfSetDefaults(){
-    nodeModifier.r = 1.0;
-    nodeModifier.g = 0.65;
-    nodeModifier.b = 0.54;
-    nodeModifier.a = 1.0;
+// fix default colors
+//    nodeModifier.r = 1.0;
+//    nodeModifier.g = 0.65;
+//    nodeModifier.b = 0.54;
+//    nodeModifier.a = 1.0;
+//    
+//    nodeActiveModifier.r = 1.0;
+//    nodeActiveModifier.g = 0.65;
+//    nodeActiveModifier.b = 0.54;
+//    nodeActiveModifier.a = 1.0;
+//    
+//    nodeMidpointModifier.r = 0.0;
+//    nodeMidpointModifier.g = 1.;
+//    nodeMidpointModifier.b = 1.;
+//    nodeMidpointModifier.a = 1.0;
+//    
+//    nodeActiveMidpointModifier.r = 0.5f;
+//    nodeActiveMidpointModifier.g = 0.65;
+//    nodeActiveMidpointModifier.b = 0.54;
+//    nodeActiveMidpointModifier.a = 1.0;
+//    
+//    tweetModifier.r = 1.0;
+//    tweetModifier.g = 0.65;
+//    tweetModifier.b = 0.54;
+//    tweetAlpha = 1.0;
+//    
+//    textColorModifier.r = 0.0;
+//    textColorModifier.g = 1.0;
+//    textColorModifier.b = 1.0;
+//    textColorModifier.a = 1.0;
     
-    nodeActiveModifier.r = 1.0;
-    nodeActiveModifier.g = 0.65;
-    nodeActiveModifier.b = 0.54;
-    nodeActiveModifier.a = 1.0;
+//    nodeColor.setHsb(nodeModifier.r, nodeModifier.g, nodeModifier.b,nodeModifier.a);
+//    nodeActiveColor.setHsb(nodeActiveModifier.r, nodeActiveModifier.g, nodeActiveModifier.b,nodeActiveModifier.a);
+//    nodeMidpointColor.setHsb(nodeMidpointColor.r, nodeMidpointColor.g, nodeMidpointColor.b,nodeMidpointColor.a);
+//    nodeActiveMidpointColor.setHsb(nodeActiveMidpointColor.r, nodeActiveMidpointColor.g, nodeActiveMidpointColor.b,nodeMidpointColor.a);
+//    textColor.setHsb(textColorModifier.r, textColorModifier.g, textColorModifier.b,textColorModifier.a);
     
-    nodeMidpointModifier.r = 0.0;
-    nodeMidpointModifier.g = 1.;
-    nodeMidpointModifier.b = 1.;
-    nodeMidpointModifier.a = 1.0;
-    
-    nodeActiveMidpointModifier.r = 0.5f;
-    nodeActiveMidpointModifier.g = 0.65;
-    nodeActiveMidpointModifier.b = 0.54;
-    nodeActiveMidpointModifier.a = 1.0;
-    
-    tweetModifier.r = 1.0;
-    tweetModifier.g = 0.65;
-    tweetModifier.b = 0.54;
-    tweetAlpha = 1.0;
-    
-    textColorModifier.r = 0.0;
-    textColorModifier.g = 1.0;
-    textColorModifier.b = 1.0;
-    textColorModifier.a = 1.0;
-    
-    nodeColor.setHsb(nodeModifier.r, nodeModifier.g, nodeModifier.b,nodeModifier.a);
-    nodeActiveColor.setHsb(nodeActiveModifier.r, nodeActiveModifier.g, nodeActiveModifier.b,nodeActiveModifier.a);
-    nodeMidpointColor.setHsb(nodeMidpointColor.r, nodeMidpointColor.g, nodeMidpointColor.b,nodeMidpointColor.a);
-    nodeActiveMidpointColor.setHsb(nodeActiveMidpointColor.r, nodeActiveMidpointColor.g, nodeActiveMidpointColor.b,nodeMidpointColor.a);
-    textColor.setHsb(textColorModifier.r, textColorModifier.g, textColorModifier.b,textColorModifier.a);
-    
-    baseModifier.r = 0.62;
-    baseModifier.g = 0.46;
-    baseModifier.b = 0.90;
-    baseAlpha = 0.01;
-    
-    baseColor  = ofFloatColor(0.0,0.0,1.0,0.1);
-    tweetColor = ofFloatColor(1.0,0.0,0.0,1.0);
+//    baseModifier.r = 0.62;
+//    baseModifier.g = 0.46;
+//    baseModifier.b = 0.90;
+//    baseAlpha = 0.01;
+//    
+//    baseColor  = ofFloatColor(0.0,0.0,1.0,0.1);
+//    tweetColor = ofFloatColor(1.0,0.0,0.0,1.0);
     
     refreshRate = 1000;
     edgeDecayRate = 0.8;
@@ -66,15 +67,15 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     pointSize =10;
     
     
-    tweetModifier.r = 1.0;
-    tweetModifier.g = 0.65;
-    tweetModifier.b = 0.54;
-    tweetAlpha = 1.0;
-    
-    baseModifier.r = 0.62;
-    baseModifier.g = 0.46;
-    baseModifier.b = 0.90;
-    baseAlpha = 0.01;
+//    tweetModifier.r = 1.0;
+//    tweetModifier.g = 0.65;
+//    tweetModifier.b = 0.54;
+//    tweetAlpha = 1.0;
+//    
+//    baseModifier.r = 0.62;
+//    baseModifier.g = 0.46;
+//    baseModifier.b = 0.90;
+//    baseAlpha = 0.01;
     
     xScale = 100;
     yScale = 100;
@@ -108,7 +109,16 @@ void CloudsVisualSystemTwitter::selfBegin()
 {
     ofEnableSmoothing();
     initSystem(getVisualSystemDataPath() +"graphs/NotSimple_Twitter4Men_new.net");
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
+}
+
+void CloudsVisualSystemTwitter::addColorToGui(ofxUISuperCanvas* gui,string prefix,ofFloatColor& col, bool doAlpha){
+    gui->addSpacer();
+    gui->addMinimalSlider(prefix + " HUE", 0.0, 1.0, &col.r);
+    gui->addMinimalSlider(prefix + " SAT", 0.0, 1.0, &col.g);
+    gui->addMinimalSlider(prefix + " BRI", 0.0, 1.0, &col.b);
+	if(doAlpha){
+		gui->addMinimalSlider(prefix + " ALPHA", 0.0, 1.0, &col.a);
+	}
 }
 
 void CloudsVisualSystemTwitter::selfSetupGui()
@@ -123,37 +133,58 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addToggle("RENDER MESH", &bRenderMesh);
     clusterGui->addIntSlider("REFRESH RATE", 1, 100, &refreshRate);
     clusterGui->addLabel("MESH FILE",currentMeshFileName);
-    clusterGui->addMinimalSlider("EDGE DECAY", 0.01, 0.9   , &edgeDecayRate);
-    clusterGui->addSpacer();
-    clusterGui->addMinimalSlider("TWEET HUE", 0.0, 1.0,&tweetModifier.r);
-    clusterGui->addMinimalSlider("TWEET SAT", 0.0, 1.0, &tweetModifier.g);
-    clusterGui->addMinimalSlider("TWEET BRI", 0.0, 1.0, &tweetModifier.b);
-    clusterGui->addMinimalSlider("TWEET ALPHA", 0.0, 1.0, &tweetAlpha);
-    clusterGui->addSpacer();
-    clusterGui->addMinimalSlider("BASE HUE", 0.0, 1.0, &baseModifier.r);
-    clusterGui->addMinimalSlider("BASE SAT", 0.0, 1.0, &baseModifier.g);
-    clusterGui->addMinimalSlider("BASE BRI", 0.0, 1.0, &baseModifier.b);
-    clusterGui->addMinimalSlider("BASE ALPHA", 0.0, 1.0, &baseAlpha);
-    clusterGui->addSpacer();
-    clusterGui->addMinimalSlider("NODE M HUE", 0.0, 1.0, &nodeMidpointModifier.r);
-    clusterGui->addMinimalSlider("NODE M SAT", 0.0, 1.0, &nodeMidpointModifier.g);
-    clusterGui->addMinimalSlider("NODE M BRI", 0.0, 1.0, &nodeMidpointModifier.b);
-    clusterGui->addMinimalSlider("NODE M ALPHA", 0.0, 1.0, &nodeMidpointModifier.a);
-    clusterGui->addSpacer();
-    clusterGui->addMinimalSlider("NODE AM HUE", 0.0, 1.0, &nodeActiveMidpointModifier.r);
-    clusterGui->addMinimalSlider("NODE AM SAT", 0.0, 1.0, &nodeActiveMidpointModifier.g);
-    clusterGui->addMinimalSlider("NODE AM BRI", 0.0, 1.0, &nodeActiveMidpointModifier.b);
-    clusterGui->addMinimalSlider("NODE AM ALPHA", 0.0, 1.0, &nodeActiveMidpointModifier.a);
-    clusterGui->addSpacer();
-    clusterGui->addMinimalSlider("NODE HUE", 0.0, 1.0, &nodeModifier.r);
-    clusterGui->addMinimalSlider("NODE SAT", 0.0, 1.0, &nodeModifier.g);
-    clusterGui->addMinimalSlider("NODE BRI", 0.0, 1.0, &nodeModifier.b);
-    clusterGui->addMinimalSlider("NODE ALPHA", 0.0, 1.0, &nodeModifier.a);
-    clusterGui->addSpacer();
-    clusterGui->addMinimalSlider("NODEA HUE", 0.0, 1.0, &nodeActiveModifier.r);
-    clusterGui->addMinimalSlider("NODEA SAT", 0.0, 1.0, &nodeActiveModifier.g);
-    clusterGui->addMinimalSlider("NODEA BRI", 0.0, 1.0, &nodeActiveModifier.b);
-    clusterGui->addMinimalSlider("NODEA ALPHA", 0.0, 1.0, &nodeActiveModifier.a);
+    clusterGui->addMinimalSlider("EDGE DECAY", 0.01, 0.9, &edgeDecayRate);
+	
+	//TWEET POP
+	addColorToGui(clusterGui,"LINE NODE BASE",lineNodeBaseHSV);
+	addColorToGui(clusterGui,"LINE EDGE BASE",lineEdgeBaseHSV);
+	addColorToGui(clusterGui,"LINE NODE POP",lineNodePopHSV);
+	addColorToGui(clusterGui,"LINE EDGE POP",lineEdgePopHSV);
+	clusterGui->addSlider("EDGE COLOR EXPONENT", 1.0, 5., &edgeInterpolateExponent);
+
+	addColorToGui(clusterGui,"NODE BASE",nodeBaseColorHSV);
+	addColorToGui(clusterGui,"NODE POP",nodePopColorHSV);
+
+//	ofFloatColor lineNodeBaseHSV;
+//	//this is the base color of the lines at the midpoint
+//	ofFloatColor lineEdgeBaseHSV;
+//	
+//	//this is the pop color of the lines close to the nodes
+//	ofFloatColor lineNodePopHSV;
+//	//this is the pop color of the lines at the midpoint
+//	ofFloatColor lineEdgePopHSV;
+//    
+//	//this is the base color of the node
+//	ofFloatColor nodeBaseColorHSV;
+//	//this is the pop color of the node
+//	ofFloatColor nodePopColorHSV;
+
+//    clusterGui->addSpacer();
+//    clusterGui->addMinimalSlider("BASE HUE", 0.0, 1.0, &baseModifier.r);
+//    clusterGui->addMinimalSlider("BASE SAT", 0.0, 1.0, &baseModifier.g);
+//    clusterGui->addMinimalSlider("BASE BRI", 0.0, 1.0, &baseModifier.b);
+//    clusterGui->addMinimalSlider("BASE ALPHA", 0.0, 1.0, &baseAlpha);
+//    clusterGui->addSpacer();
+//    clusterGui->addMinimalSlider("NODE M HUE", 0.0, 1.0, &nodeMidpointModifier.r);
+//    clusterGui->addMinimalSlider("NODE M SAT", 0.0, 1.0, &nodeMidpointModifier.g);
+//    clusterGui->addMinimalSlider("NODE M BRI", 0.0, 1.0, &nodeMidpointModifier.b);
+//    clusterGui->addMinimalSlider("NODE M ALPHA", 0.0, 1.0, &nodeMidpointModifier.a);
+//    clusterGui->addSpacer();
+//    clusterGui->addMinimalSlider("NODE AM HUE", 0.0, 1.0, &nodeActiveMidpointModifier.r);
+//    clusterGui->addMinimalSlider("NODE AM SAT", 0.0, 1.0, &nodeActiveMidpointModifier.g);
+//    clusterGui->addMinimalSlider("NODE AM BRI", 0.0, 1.0, &nodeActiveMidpointModifier.b);
+//    clusterGui->addMinimalSlider("NODE AM ALPHA", 0.0, 1.0, &nodeActiveMidpointModifier.a);
+//    clusterGui->addSpacer();
+//    clusterGui->addMinimalSlider("NODE HUE", 0.0, 1.0, &nodeModifier.r);
+//    clusterGui->addMinimalSlider("NODE SAT", 0.0, 1.0, &nodeModifier.g);
+//    clusterGui->addMinimalSlider("NODE BRI", 0.0, 1.0, &nodeModifier.b);
+//    clusterGui->addMinimalSlider("NODE ALPHA", 0.0, 1.0, &nodeModifier.a);
+//    clusterGui->addSpacer();
+//    clusterGui->addMinimalSlider("NODEA HUE", 0.0, 1.0, &nodeActiveModifier.r);
+//    clusterGui->addMinimalSlider("NODEA SAT", 0.0, 1.0, &nodeActiveModifier.g);
+//    clusterGui->addMinimalSlider("NODEA BRI", 0.0, 1.0, &nodeActiveModifier.b);
+//    clusterGui->addMinimalSlider("NODEA ALPHA", 0.0, 1.0, &nodeActiveModifier.a);
+	
     clusterGui->addMinimalSlider("X POS", 1, 500, &xScale);
     clusterGui->addMinimalSlider("Y POS", 1, 500, &yScale);
     clusterGui->addMinimalSlider("Z POS", 1, 500, &zScale);
@@ -372,20 +403,20 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
                             if(lineIndexPairs.find(make_pair(tweeters[i].name, t.name)) != lineIndexPairs.end()){
                                 
                                 pair<int, int> currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
-                                edgeMesh.setColor(currentIndeces.first, tweetColor);
-                                edgeMesh.setColor(currentIndeces.second, tweetColor);
+//                                edgeMesh.setColor(currentIndeces.first, tweetColor);
+//                                edgeMesh.setColor(currentIndeces.second, tweetColor);
                                 int ind = MIN(currentIndeces.first,currentIndeces.second);
                                 ind++;
-                                edgeMesh.setColor(ind, nodeActiveMidpointColor);
+//                                edgeMesh.setColor(ind, nodeActiveMidpointColor);
                             }
                             else if(lineIndexPairs.find(make_pair(t.name,tweeters[i].name)) != lineIndexPairs.end()){
                                 
                                 pair<int, int> currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
-                                edgeMesh.setColor(currentIndeces.first, tweetColor);
-                                edgeMesh.setColor(currentIndeces.second, tweetColor);
+//                                edgeMesh.setColor(currentIndeces.first, tweetColor);
+//                                edgeMesh.setColor(currentIndeces.second, tweetColor);
                                 int ind = MIN(currentIndeces.first,currentIndeces.second);
                                 ind++;
-                                edgeMesh.setColor(ind, nodeActiveMidpointColor);
+//                                edgeMesh.setColor(ind, nodeActiveMidpointColor);
                             }
                             else{
                             }
@@ -394,119 +425,124 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
                 }
 
             }
-            nodeMesh.setColor(tweeters[i].nodeVertexIndex, nodeActiveColor);
+//            nodeMesh.setColor(tweeters[i].nodeVertexIndex, nodeActiveColor);
         }
     }
 }
 void CloudsVisualSystemTwitter::updateMesh(){
     
-    for(int i= 0; i<nodeMesh.getColors().size(); i++){
+//    for(int i= 0; i<nodeMesh.getColors().size(); i++){
         
-        ofFloatColor c = nodeMesh.getColor(i);
-        if(c != nodeColor){
-            float h = ofLerp(c.getHue(), nodeColor.getHue(), edgeDecayRate);
-            float s = ofLerp(c.getSaturation(), nodeColor.getSaturation(), edgeDecayRate);
-            float b = ofLerp(c.getBrightness() , nodeColor.getBrightness(),edgeDecayRate);
-            float a =ofLerp(c.a , nodeColor.a,edgeDecayRate);
-            c.setHsb(h, s, b);
-            c.a = a;
-            nodeMesh.setColor(i, c);
-        }
-        else{
-            nodeMesh.setColor(i, c);
-        }
-    }
-    
-    for(int i= 0; i<edgeMesh.getColors().size(); i++){
-        ofFloatColor c = edgeMesh.getColor(i);
-        
-        if(edgeMesh.getNormal(i).y == 1){
-            if(c != nodeMidpointColor){
-                float h = ofLerp(c.getHue(), nodeMidpointColor.getHue(), edgeDecayRate);
-                float s = ofLerp(c.getSaturation(), nodeMidpointColor.getSaturation(), edgeDecayRate);
-                float b = ofLerp(c.getBrightness() , nodeMidpointColor.getBrightness(),edgeDecayRate);
-                float a =ofLerp(c.a , nodeMidpointColor.a,edgeDecayRate);
-                
-                c.setHsb(h, s, b);
-                c.a = a;
-                edgeMesh.setColor(i,c);
-            }
-            else{
-                edgeMesh.setColor(i,nodeMidpointColor);
-            }
-        }
-        else{
-            if(c != baseColor){
-                
-                float h = ofLerp(c.getHue(), baseColor.getHue(), edgeDecayRate);
-                float s = ofLerp(c.getSaturation(), baseColor.getSaturation(), edgeDecayRate);
-                float b = ofLerp(c.getBrightness() , baseColor.getBrightness(),edgeDecayRate);
-                float a =ofLerp(c.a , baseColor.a,edgeDecayRate);
-                
-                c.setHsb(h, s, b);
-                c.a = a;
-                
-                edgeMesh.setColor(i,c);
-
-            }
-            else{
-                edgeMesh.setColor(i, baseColor);
-            }
-        }
-        
-    }
+//        ofFloatColor c = nodeMesh.getColor(i);
+//        if(c != nodeColor){
+//            float h = ofLerp(c.getHue(), nodeColor.getHue(), edgeDecayRate);
+//            float s = ofLerp(c.getSaturation(), nodeColor.getSaturation(), edgeDecayRate);
+//            float b = ofLerp(c.getBrightness() , nodeColor.getBrightness(),edgeDecayRate);
+//            float a =ofLerp(c.a , nodeColor.a,edgeDecayRate);
+//            c.setHsb(h, s, b);
+//            c.a = a;
+//            nodeMesh.setColor(i, c);
+//        }
+//        else{
+//            nodeMesh.setColor(i, c);
+//        }
+//    }
+//    for(int i= 0; i<edgeMesh.getColors().size(); i++){
+//        ofFloatColor c = edgeMesh.getColor(i);
+//        if(edgeMesh.getNormal(i).y == 1){
+//            if(c != nodeMidpointColor){
+//                float h = ofLerp(c.getHue(), nodeMidpointColor.getHue(), edgeDecayRate);
+//                float s = ofLerp(c.getSaturation(), nodeMidpointColor.getSaturation(), edgeDecayRate);
+//                float b = ofLerp(c.getBrightness() , nodeMidpointColor.getBrightness(),edgeDecayRate);
+//                float a =ofLerp(c.a , nodeMidpointColor.a,edgeDecayRate);
+//                
+//                c.setHsb(h, s, b);
+//                c.a = a;
+//                edgeMesh.setColor(i,c);
+//            }
+//            else{
+//                edgeMesh.setColor(i,nodeMidpointColor);
+//            }
+//        }
+//        else{
+//            if(c != baseColor){
+//                
+//                float h = ofLerp(c.getHue(), baseColor.getHue(), edgeDecayRate);
+//                float s = ofLerp(c.getSaturation(), baseColor.getSaturation(), edgeDecayRate);
+//                float b = ofLerp(c.getBrightness() , baseColor.getBrightness(),edgeDecayRate);
+//                float a =ofLerp(c.a , baseColor.a,edgeDecayRate);
+//                
+//                c.setHsb(h, s, b);
+//                c.a = a;
+//                
+//                edgeMesh.setColor(i,c);
+//
+//            }
+//            else{
+//                edgeMesh.setColor(i, baseColor);
+//            }
+//        }
+//   }
+	
 }
 
 void CloudsVisualSystemTwitter::reloadMeshColor(){
-    for(int i=0; i<edgeMesh.getVertices().size();i++){
-        edgeMesh.setColor(i, baseColor);
-    }
+	
+//    for(int i=0; i<edgeMesh.getVertices().size();i++){
+//        edgeMesh.setColor(i, baseColor);
+//    }
 }
 
 void CloudsVisualSystemTwitter::loadMesh(){
     
     edgeMesh.clear();
     nodeMesh.clear();
+	
     int  currentIndex =0;
 
-    for(int j=0; j<tweeters.size(); j++){
+    for(int j = 0; j < tweeters.size(); j++){
         
-        for (int k=0; k<tweeters[j].linksById.size(); k++) {
-            Tweeter& t  = getTweeterByID(tweeters[j].linksById[k]);
-            if(t.ID != -1){
-                if(lineIndexPairs.find(make_pair(tweeters[j].name, t.name)) == lineIndexPairs.end() &&
-                   lineIndexPairs.find(make_pair(t.name,tweeters[j].name)) == lineIndexPairs.end() ){
-                    edgeMesh.addVertex(tweeters[j].position);
-                    edgeMesh.addNormal(ofVec3f(0,0,0));
-                    edgeMesh.addColor(baseColor);
-                    tweeters[j].edgeVertexIndex = currentIndex;
-                    currentIndex++;
-                    
-                    //adding midpoint
-                    float x = ofLerp(tweeters[j].position.x, t.position.x, 0.5);
-                    float y = ofLerp(tweeters[j].position.y, t.position.y, 0.5);
-                    float z = ofLerp(tweeters[j].position.z, t.position.z, 0.5);
-                    edgeMesh.addVertex(ofVec3f(x,y,z));
-                    edgeMesh.addNormal(ofVec3f(0,1,0));
-                    edgeMesh.addColor(nodeMidpointColor);
-                    currentIndex++;
-                    
-                    edgeMesh.addVertex(t.position);
-                    edgeMesh.addNormal(ofVec3f(0,0,0));
-                    edgeMesh.addColor(baseColor);
-                    t.edgeVertexIndex = currentIndex;
-                    
-                    links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
-                    lineIndexPairs[make_pair(tweeters[j].name, t.name) ] = make_pair(currentIndex-2, currentIndex);
-                    currentIndex++;
-                    
-                }
-                else{   
-                }
-            }
+        for (int k = 0; k < tweeters[j].linksById.size(); k++) {
+            
+			Tweeter& t = getTweeterByID( tweeters[j].linksById[k] );
+            if(t.ID == -1){
+				continue;
+			}
+			
+			if(lineIndexPairs.find(make_pair(tweeters[j].name, t.name)) != lineIndexPairs.end() ||
+			   lineIndexPairs.find(make_pair(t.name,tweeters[j].name)) != lineIndexPairs.end() )
+			{
+				continue;
+			}
 
+			edgeMesh.addVertex(tweeters[j].position);
+			edgeMesh.addNormal(ofVec3f(1,0,0));
+			tweeters[j].edgeVertexIndex = currentIndex;
+			currentIndex++;
+			
+			//adding midpoint
+			ofVec3f midpoint = tweeters[j].position.getInterpolated(t.position, .5);
+			edgeMesh.addVertex(midpoint);
+			edgeMesh.addNormal(ofVec3f(0,0,0));
+			currentIndex++;
+			
+			//adding midpoint
+			edgeMesh.addVertex(midpoint);
+			edgeMesh.addNormal(ofVec3f(0,0,0));
+			currentIndex++;
+			
+			edgeMesh.addVertex(t.position);
+			edgeMesh.addNormal(ofVec3f(1,0,0));
+			t.edgeVertexIndex = currentIndex;
+			
+			links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
+			lineIndexPairs[make_pair(tweeters[j].name, t.name) ] = make_pair(currentIndex-3, currentIndex);
+			
+			currentIndex++;
         }
     }
+	
+	edgeMesh.setUsage(GL_STATIC_DRAW);
     edgeMesh.setMode(OF_PRIMITIVE_LINES);
     
     cout<<"No of vertices in edges "<< edgeMesh.getVertices().size()<<endl;
@@ -515,12 +551,13 @@ void CloudsVisualSystemTwitter::loadMesh(){
         
         nodeMesh.addVertex(tweeters[j].position);
         nodeMesh.addNormal(ofVec3f(0,0,0));
-        nodeMesh.addColor(ofFloatColor(nodeColor));
+//        nodeMesh.addColor(ofFloatColor(nodeColor));
         tweeters[j].nodeVertexIndex = currentIndex;
         currentIndex++;
     }
+	
     cout<<"No of vertices in node "<<  nodeMesh.getVertices().size()<<endl;
-    
+    nodeMesh.setUsage(GL_STATIC_DRAW);
     nodeMesh.setMode(OF_PRIMITIVE_POINTS);
 }
 
@@ -657,19 +694,19 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
         initSystem(currentMeshFilePath);
     }
 	
-    baseColor.setHsb(baseModifier.r, baseModifier.g, baseModifier.b);
-    baseColor.a = baseAlpha;
-    tweetColor.setHsb(tweetModifier.r, tweetModifier.g, tweetModifier.b);
-    tweetColor.a = tweetAlpha;
-    nodeColor.setHsb(nodeModifier.r, nodeModifier.g, nodeModifier.b,nodeModifier.a);
-    nodeActiveColor.setHsb(nodeActiveModifier.r, nodeActiveModifier.g, nodeActiveModifier.b,nodeActiveModifier.a);
-    nodeMidpointColor.setHsb(nodeMidpointModifier.r, nodeMidpointModifier.g, nodeMidpointModifier.g,nodeActiveMidpointModifier.a);
-    nodeActiveMidpointColor.setHsb(nodeActiveMidpointModifier.r, nodeActiveMidpointModifier.g, nodeActiveMidpointModifier.b,nodeMidpointModifier.a);
-    textColor.setHsb(textColorModifier.r, textColorModifier.g, textColorModifier.b,textColorModifier.a);
+//    baseColor.setHsb(baseModifier.r, baseModifier.g, baseModifier.b);
+//    baseColor.a = baseAlpha;
+//    tweetColor.setHsb(tweetModifier.r, tweetModifier.g, tweetModifier.b);
+//    tweetColor.a = tweetAlpha;
+//    nodeColor.setHsb(nodeModifier.r, nodeModifier.g, nodeModifier.b,nodeModifier.a);
+//    nodeActiveColor.setHsb(nodeActiveModifier.r, nodeActiveModifier.g, nodeActiveModifier.b,nodeActiveModifier.a);
+//    nodeMidpointColor.setHsb(nodeMidpointModifier.r, nodeMidpointModifier.g, nodeMidpointModifier.g,nodeActiveMidpointModifier.a);
+//    nodeActiveMidpointColor.setHsb(nodeActiveMidpointModifier.r, nodeActiveMidpointModifier.g, nodeActiveMidpointModifier.b,nodeMidpointModifier.a);
+//    textColor.setHsb(textColorModifier.r, textColorModifier.g, textColorModifier.b,textColorModifier.a);
 	
     font.setSize(fontSize);
     font.setLineLength(stringWidth);
-    reloadMeshColor();
+
     
 }
 
@@ -698,7 +735,7 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
         
     }
     else{
-        cout<<"poop : " <<strs[strs.size()-1]<<endl;
+        cout<<"poopzz : " <<strs[strs.size()-1]<<endl;
     }
     xScale = 100;
     yScale = 100;
@@ -771,10 +808,7 @@ void CloudsVisualSystemTwitter::selfPresetLoaded(string presetPath)
         initSystem(presetMeshPath);     
         updateLabelWithCurrentMeshName(currentMeshFileName);
     }
-
-
 }
-
 
 //do things like ofRotate/ofTranslate here
 //any type of transformation that doesn't have to do with the camera
@@ -792,6 +826,8 @@ void CloudsVisualSystemTwitter::selfSceneTransformation(){
 void CloudsVisualSystemTwitter::selfUpdate()
 {
     
+	//reloadMeshColor();
+	
     if(ofGetFrameNum() % refreshRate < 1 && bAnimate){
         currentDateIndex--;
         if (currentDateIndex <= 0) {
@@ -801,6 +837,13 @@ void CloudsVisualSystemTwitter::selfUpdate()
         updateMesh();
     }
 
+}
+
+ofFloatColor CloudsVisualSystemTwitter::getRGBfromHSV(ofFloatColor hsv){
+	return ofFloatColor::fromHsb(hsv.r,
+								 hsv.g,
+								 hsv.b,
+								 hsv.a);
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -813,13 +856,55 @@ void CloudsVisualSystemTwitter::selfDraw()
 
     ofSetBackgroundColor(0,0,0);
     glDisable(GL_DEPTH_TEST);
-    
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
+
+	ofFloatColor lineNodeBase = getRGBfromHSV(lineNodeBaseHSV);
+	ofFloatColor lineEdgeBase = getRGBfromHSV(lineEdgeBaseHSV);
+	ofFloatColor lineNodePop = getRGBfromHSV(lineNodePopHSV);
+	ofFloatColor lineEdgePop = getRGBfromHSV(lineEdgePopHSV);
+	ofFloatColor nodeBaseColor = getRGBfromHSV(nodeBaseColorHSV);
+	ofFloatColor nodePopColor = getRGBfromHSV(nodePopColorHSV);
+	
     if(bRenderMesh){
 		pointsShader.begin();
+		pointsShader.setUniform4f("nodeBaseColor",
+								  nodeBaseColor.r,
+								  nodeBaseColor.g,
+								  nodeBaseColor.b,
+								  nodeBaseColor.a);
+		pointsShader.setUniform4f("nodePopColor",
+								  nodePopColor.r,
+								  nodePopColor.g,
+								  nodePopColor.b,
+								  nodePopColor.a);
+
         nodeMesh.draw();
 		pointsShader.end();
 		
 		lineShader.begin();
+		lineShader.setUniform4f("lineNodeBase",
+								  lineNodeBase.r,
+								  lineNodeBase.g,
+								  lineNodeBase.b,
+								  lineNodeBase.a);
+		lineShader.setUniform4f("lineEdgeBase",
+								  lineEdgeBase.r,
+								  lineEdgeBase.g,
+								  lineEdgeBase.b,
+								  lineEdgeBase.a);
+		lineShader.setUniform4f("lineNodePop",
+								  lineNodePop.r,
+								  lineNodePop.g,
+								  lineNodePop.b,
+								  lineNodePop.a);
+		lineShader.setUniform4f("lineEdgePop",
+								  lineEdgePop.r,
+								  lineEdgePop.g,
+								  lineEdgePop.b,
+								  lineEdgePop.a);
+		lineShader.setUniform1f("edgeInterpolateExponent",
+								edgeInterpolateExponent);
+		
         edgeMesh.draw();
 		lineShader.end();
     }
