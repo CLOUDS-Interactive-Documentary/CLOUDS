@@ -9,12 +9,6 @@
 /* Begin PBXBuildFile section */
 		181259FB185A371D006EFC47 /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181259F5185A371D006EFC47 /* ofxBillboard.cpp */; };
 		181259FC185A371D006EFC47 /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181259F5185A371D006EFC47 /* ofxBillboard.cpp */; };
-		185CE9CE184AB8D300F43977 /* attenuatelines.frag in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9C6184AB8D300F43977 /* attenuatelines.frag */; };
-		185CE9CF184AB8D300F43977 /* attenuatelines.vert in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9C7184AB8D300F43977 /* attenuatelines.vert */; };
-		185CE9D0184AB8D300F43977 /* cluster.frag in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9C8184AB8D300F43977 /* cluster.frag */; };
-		185CE9D1184AB8D300F43977 /* cluster.vert in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9C9184AB8D300F43977 /* cluster.vert */; };
-		185CE9D2184AB8D300F43977 /* gaussianblur.frag in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9CA184AB8D300F43977 /* gaussianblur.frag */; };
-		185CE9D3184AB8D300F43977 /* gaussianblur.vert in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9CB184AB8D300F43977 /* gaussianblur.vert */; };
 		187353481858C8B200AC5DEA /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187353411858C8B200AC5DEA /* CloudsInput.cpp */; };
 		1873534A1858C8B200AC5DEA /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187353461858C8B200AC5DEA /* CloudsInputMouse.cpp */; };
 		187353CB1858F72A00AC5DEA /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 187353B01858F72900AC5DEA /* libftgl.a */; };
@@ -26,6 +20,10 @@
 		188B668A18412F0C00E02CC7 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 188B667318412F0C00E02CC7 /* json_writer.cpp */; };
 		188B668B18412F0C00E02CC7 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 188B667718412F0C00E02CC7 /* ofxJSONElement.cpp */; };
 		188B669F184144E700E02CC7 /* Tweeter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 188B669D184144E700E02CC7 /* Tweeter.cpp */; };
+		18A36F24186120800032FD7C /* linesShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 18A36F201861207F0032FD7C /* linesShader.frag */; };
+		18A36F27186120800032FD7C /* pointsShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 18A36F231861207F0032FD7C /* pointsShader.vert */; };
+		18A36F2A186120B40032FD7C /* linesShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 18A36F28186120B40032FD7C /* linesShader.vert */; };
+		18A36F2B186120B40032FD7C /* pointsShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 18A36F29186120B40032FD7C /* pointsShader.frag */; };
 		2AAEF500180F12D7005F33D3 /* ofxBox2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF4AC180F12D7005F33D3 /* ofxBox2d.cpp */; };
 		2AAEF501180F12D7005F33D3 /* ofxBox2dBaseShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF4AE180F12D7005F33D3 /* ofxBox2dBaseShape.cpp */; };
 		2AAEF502180F12D7005F33D3 /* ofxBox2dCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF4B0180F12D7005F33D3 /* ofxBox2dCircle.cpp */; };
@@ -339,12 +337,6 @@
 /* Begin PBXFileReference section */
 		181259F5185A371D006EFC47 /* ofxBillboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBillboard.cpp; sourceTree = "<group>"; };
 		181259F6185A371D006EFC47 /* ofxBillboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBillboard.h; sourceTree = "<group>"; };
-		185CE9C6184AB8D300F43977 /* attenuatelines.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.frag; sourceTree = "<group>"; };
-		185CE9C7184AB8D300F43977 /* attenuatelines.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.vert; sourceTree = "<group>"; };
-		185CE9C8184AB8D300F43977 /* cluster.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cluster.frag; sourceTree = "<group>"; };
-		185CE9C9184AB8D300F43977 /* cluster.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cluster.vert; sourceTree = "<group>"; };
-		185CE9CA184AB8D300F43977 /* gaussianblur.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.frag; sourceTree = "<group>"; };
-		185CE9CB184AB8D300F43977 /* gaussianblur.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.vert; sourceTree = "<group>"; };
 		187353411858C8B200AC5DEA /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
 		187353421858C8B200AC5DEA /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
 		187353431858C8B200AC5DEA /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
@@ -403,6 +395,10 @@
 		188B667818412F0C00E02CC7 /* ofxJSONElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSONElement.h; sourceTree = "<group>"; };
 		188B669D184144E700E02CC7 /* Tweeter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tweeter.cpp; sourceTree = "<group>"; };
 		188B669E184144E700E02CC7 /* Tweeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweeter.h; sourceTree = "<group>"; };
+		18A36F201861207F0032FD7C /* linesShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = linesShader.frag; path = ../../../CloudsData/visualsystems/Twitter/shaders/linesShader.frag; sourceTree = "<group>"; };
+		18A36F231861207F0032FD7C /* pointsShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = pointsShader.vert; path = ../../../CloudsData/visualsystems/Twitter/shaders/pointsShader.vert; sourceTree = "<group>"; };
+		18A36F28186120B40032FD7C /* linesShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = linesShader.vert; path = ../../../CloudsData/visualsystems/Twitter/shaders/linesShader.vert; sourceTree = "<group>"; };
+		18A36F29186120B40032FD7C /* pointsShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = pointsShader.frag; path = ../../../CloudsData/visualsystems/Twitter/shaders/pointsShader.frag; sourceTree = "<group>"; };
 		2AAEF4AC180F12D7005F33D3 /* ofxBox2d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBox2d.cpp; sourceTree = "<group>"; };
 		2AAEF4AD180F12D7005F33D3 /* ofxBox2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBox2d.h; sourceTree = "<group>"; };
 		2AAEF4AE180F12D7005F33D3 /* ofxBox2dBaseShape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBox2dBaseShape.cpp; sourceTree = "<group>"; };
@@ -809,20 +805,6 @@
 				181259F6185A371D006EFC47 /* ofxBillboard.h */,
 			);
 			path = src;
-			sourceTree = "<group>";
-		};
-		185CE9C5184AB8D300F43977 /* shaders */ = {
-			isa = PBXGroup;
-			children = (
-				185CE9C6184AB8D300F43977 /* attenuatelines.frag */,
-				185CE9C7184AB8D300F43977 /* attenuatelines.vert */,
-				185CE9C8184AB8D300F43977 /* cluster.frag */,
-				185CE9C9184AB8D300F43977 /* cluster.vert */,
-				185CE9CA184AB8D300F43977 /* gaussianblur.frag */,
-				185CE9CB184AB8D300F43977 /* gaussianblur.vert */,
-			);
-			name = shaders;
-			path = ../../../CloudsLibrary/src/VisualSystems/Twitter/bin/data/shaders;
 			sourceTree = "<group>";
 		};
 		187353401858C8B200AC5DEA /* Input */ = {
@@ -1395,7 +1377,10 @@
 		E7846DA31713A48B00705E7A /* data */ = {
 			isa = PBXGroup;
 			children = (
-				185CE9C5184AB8D300F43977 /* shaders */,
+				18A36F201861207F0032FD7C /* linesShader.frag */,
+				18A36F28186120B40032FD7C /* linesShader.vert */,
+				18A36F29186120B40032FD7C /* pointsShader.frag */,
+				18A36F231861207F0032FD7C /* pointsShader.vert */,
 			);
 			name = data;
 			path = bin/data;
@@ -2131,17 +2116,15 @@
 				188B668A18412F0C00E02CC7 /* json_writer.cpp in Sources */,
 				188B668B18412F0C00E02CC7 /* ofxJSONElement.cpp in Sources */,
 				188B669F184144E700E02CC7 /* Tweeter.cpp in Sources */,
-				185CE9CE184AB8D300F43977 /* attenuatelines.frag in Sources */,
-				185CE9CF184AB8D300F43977 /* attenuatelines.vert in Sources */,
-				185CE9D0184AB8D300F43977 /* cluster.frag in Sources */,
-				185CE9D1184AB8D300F43977 /* cluster.vert in Sources */,
-				185CE9D2184AB8D300F43977 /* gaussianblur.frag in Sources */,
-				185CE9D3184AB8D300F43977 /* gaussianblur.vert in Sources */,
 				187353481858C8B200AC5DEA /* CloudsInput.cpp in Sources */,
 				1873534A1858C8B200AC5DEA /* CloudsInputMouse.cpp in Sources */,
 				187353CF1858F72A00AC5DEA /* ofxFTGLFont.cpp in Sources */,
 				187353D01858F72A00AC5DEA /* ofxFTGLSimpleLayout.cpp in Sources */,
 				181259FB185A371D006EFC47 /* ofxBillboard.cpp in Sources */,
+				18A36F24186120800032FD7C /* linesShader.frag in Sources */,
+				18A36F27186120800032FD7C /* pointsShader.vert in Sources */,
+				18A36F2A186120B40032FD7C /* linesShader.vert in Sources */,
+				18A36F2B186120B40032FD7C /* pointsShader.frag in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

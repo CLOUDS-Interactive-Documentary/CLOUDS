@@ -77,6 +77,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void loadGraphFromPath(string filePath);
     void clearData();
     
+    //shader stuff
+    void reloadShaders();
 
     //text stuff
     ofxJSONElement result;
@@ -127,7 +129,8 @@ protected:
     float edgeDecayRate;
 
     ofImage sprite;
-    ofShader clusterShader;
+    ofShader lineShader;
+    ofShader pointsShader;
     float meshExpansion;
     float pointSize;
     ofxUISuperCanvas* clusterGui;

@@ -16,20 +16,6 @@ bool dateSorter(Date const& lhs, Date const& rhs) {
 }
 
 void CloudsVisualSystemTwitter::selfSetDefaults(){
-	//fill out defaults stuff
-}
-
-void CloudsVisualSystemTwitter::selfSetup()
-{
-/*  Use this to create new network for graphinsight
-
-    //Minimum num of users to add to tweeter links.
-    minUserMentions = 0;
-
-    createNewGraph("twitterNewData0Men.net","tweets_");
-    cout<<"created new network"<<endl;
-    while(1);
-*/
     nodeModifier.r = 1.0;
     nodeModifier.g = 0.65;
     nodeModifier.b = 0.54;
@@ -79,6 +65,7 @@ void CloudsVisualSystemTwitter::selfSetup()
     meshExpansion = 100;
     pointSize =10;
     
+    
     tweetModifier.r = 1.0;
     tweetModifier.g = 0.65;
     tweetModifier.b = 0.54;
@@ -97,8 +84,23 @@ void CloudsVisualSystemTwitter::selfSetup()
     bRenderText = false;
     stringWidth = 10;
     tweetFeedRect = ofRectangle (0, 0,  ofGetWidth()/2, ofGetHeight());
-    font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
+        font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
+    
+}
 
+void CloudsVisualSystemTwitter::selfSetup()
+{
+/*  Use this to create new network for graphinsight
+
+    //Minimum num of users to add to tweeter links.
+    minUserMentions = 0;
+
+    createNewGraph("twitterNewData0Men.net","tweets_");
+    cout<<"created new network"<<endl;
+    while(1);
+*/
+
+    reloadShaders();
 
 }
 
@@ -828,6 +830,7 @@ void CloudsVisualSystemTwitter::selfDraw()
     }
     ofPopMatrix();
     ofPopStyle();
+    
 }
 
 void CloudsVisualSystemTwitter::drawFeed()
@@ -876,6 +879,12 @@ void CloudsVisualSystemTwitter::selfExit()
     
 }
 
+void CloudsVisualSystemTwitter::reloadShaders(){
+
+    lineShader.load(getVisualSystemDataPath() + "/shaders/linesShader");
+    pointsShader.load(getVisualSystemDataPath() + "/shaders/pointsShader");
+}
+
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
@@ -885,6 +894,9 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
         for(int i =0; i<dateIndex.size(); i++){
             cout<<dateIndex[i].day<<" : "<<dateIndex[i].month<<" : "<<dateIndex[i].year<<endl;
         }
+    }
+    else if (args.key == 'r' && ofGetKeyPressed(OF_KEY_SHIFT)){
+            reloadShaders();
     }
 }
 
