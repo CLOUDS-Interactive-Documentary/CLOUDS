@@ -71,13 +71,13 @@ void CubeCraft::selfSetupGui()
 	
 	meshRenderGui->addSpacer();
 	
-//	meshRenderGui->addLabel("edgeColor");
+	meshRenderGui->addLabel("EdgeColor");
 	meshRenderGui->addImageSampler("edgeColor", &colorMap, 100, 100);
 	
-//	meshRenderGui->addLabel("FillColor");
+	meshRenderGui->addLabel("FillColor");
 	meshRenderGui->addImageSampler("fillColor", &colorMap, 100, 100);
 	
-//	meshRenderGui->addLabel("specColor");
+	meshRenderGui->addLabel("SpecColor");
 	meshRenderGui->addImageSampler("specColor", &colorMap, 100, 100);
 	
 	ofAddListener(meshRenderGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
@@ -158,34 +158,19 @@ void CubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 	if(name == "edgeColor")
 	{
 		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
-		ofFloatColor col =  sampler->getColor();
-		edgeColor.r = col.r;
-		edgeColor.g = col.g;
-		edgeColor.b = col.b;
+		edgeColor =  sampler->getColor();
 	}
 	else if(name == "fillColor")
 	{
 		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
-		ofFloatColor col =  sampler->getColor();
-		fillColor.r = col.r;
-		fillColor.g = col.g;
-		fillColor.b = col.b;
+		fillColor = sampler->getColor();
 	}
 	else if(name == "specColor")
 	{
 		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
-		ofFloatColor col =  sampler->getColor();
-		fillColor2.r = col.r;
-		fillColor2.g = col.g;
-		fillColor2.b = col.b;
+		fillColor2 = sampler->getColor();
 	}
 	
-	else if(name == "fogColor")
-	{
-//		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
-//		fogColor =  sampler->getColor();
-//		fogColor.setSaturation(fogSaturation);
-	}
 	else if(name == "fogSaturation" || name == "fogHue" || name == "fogBrightness" )
 	{
 		fogColor.setHue(fogHue);
@@ -393,9 +378,9 @@ void CubeCraft::drawVoxelGrid()
 	fc = edgeColor;
 	voxelShader.setUniform4f("edgeColor", fc.r, fc.g, fc.b, fc.a );
 	fc = fillColor;
-	cubeCraftShader.setUniform4f("fillColor", fc.r, fc.g, fc.b, fc.a );
+	voxelShader.setUniform4f("fillColor", fc.r, fc.g, fc.b, fc.a );
 	fc = fillColor2;
-	cubeCraftShader.setUniform4f("specularColor", fc.r, fc.g, fc.b, fc.a );
+	voxelShader.setUniform4f("specularColor", fc.r, fc.g, fc.b, fc.a );
 	
 	voxelShader.setUniform1f("dimX", dimX );
 	voxelShader.setUniform1f("dimY", dimY );
