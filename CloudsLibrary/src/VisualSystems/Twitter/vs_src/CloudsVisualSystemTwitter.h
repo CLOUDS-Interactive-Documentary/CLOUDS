@@ -166,7 +166,8 @@ protected:
     int theme = 0;
     float xScale,yScale, zScale;
     
-    float rotationRate;
+    int rotationRate;
+    float rotation ;
     float rotationAmount;
     bool rotateModel;
     ofRectangle tweetFeedRect;

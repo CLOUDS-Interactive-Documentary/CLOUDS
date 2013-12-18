@@ -66,8 +66,8 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     meshExpansion = 100;
     pointSize =10;
     
-    rotationRate = 360;
-    
+
+    rotation = 0;
 //    tweetModifier.r = 1.0;
 //    tweetModifier.g = 0.65;
 //    tweetModifier.b = 0.54;
@@ -133,6 +133,8 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	clusterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     clusterGui->addToggle("RENDER MESH", &bRenderMesh);
     clusterGui->addIntSlider("REFRESH RATE", 1, 100, &refreshRate);
+    clusterGui->addToggle("ROTATE", &rotateModel);
+    clusterGui->addMinimalSlider("ROTATION AMT", 0.1, 1, &rotationAmount);
     clusterGui->addLabel("MESH FILE",currentMeshFileName);
     clusterGui->addMinimalSlider("EDGE DECAY", 0.01, 0.9, &edgeDecayRate);
 	
@@ -190,10 +192,8 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addMinimalSlider("Y POS", 1, 500, &yScale);
     clusterGui->addMinimalSlider("Z POS", 1, 500, &zScale);
     clusterGui->addButton("RELOAD MESH", false);
-    clusterGui->addSpacer();
-    clusterGui->addToggle("ROTATE", &rotateModel);
 
-    clusterGui->addMinimalSlider("ROTATION RATE", .01, 1, &rotationRate);
+
 	ofAddListener(clusterGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(clusterGui);
 	guimap[clusterGui->getName()] = clusterGui;
@@ -644,7 +644,12 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
     {
         initSystem(currentMeshFilePath);
     }
-	
+	else if(e.getName() == "ROTATE"){
+        ofxUIToggle* t = (ofxUIToggle*)e.widget;
+        if(! t->getValue()){
+            rotation = 0;
+        }
+    }
 //    baseColor.setHsb(baseModifier.r, baseModifier.g, baseModifier.b);
 //    baseColor.a = baseAlpha;
 //    tweetColor.setHsb(tweetModifier.r, tweetModifier.g, tweetModifier.b);
@@ -766,9 +771,14 @@ void CloudsVisualSystemTwitter::selfPresetLoaded(string presetPath)
 void CloudsVisualSystemTwitter::selfSceneTransformation(){
     
 	//TODO: time dependent & make slider
+//    cout<<ofGetElapsedTimeMillis() % 1000<<endl;
     if(rotateModel){
-        ofRotateZ( (int)rotationAmount);
-//        rotationAmount +=ofGetElapsedRimrotationRate ;
+
+        ofRotateZ(rotation );
+        rotation += rotationAmount;
+        
+        
+
     }
     
 }
@@ -824,7 +834,7 @@ void CloudsVisualSystemTwitter::selfDraw()
 		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
 		glEnable(GL_POINT_SMOOTH);
 		
-		pointsShader.setUniform1f("pointSize", 10.0);
+		pointsShader.setUniform1f("pointSize", ofRandom(6));
 		pointsShader.setUniform4f("nodeBaseColor",
 								  nodeBaseColor.r,
 								  nodeBaseColor.g,
@@ -932,7 +942,7 @@ void CloudsVisualSystemTwitter::reloadShaders(){
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
 	if (args.key == 'R'){
-		reloadShaders() ;
+		reloadShaders();
     }
 }
 
@@ -950,11 +960,9 @@ void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
     
     ofPushStyle();
     ofSetColor(textColor);
-
     ofScale(0.01,-0.01,0.01);
     ofTranslate(pos.x,pos.y,pos.z);
     font.drawString(ofToUpper(text),0,0);
- 
     ofPopStyle();
     
     ofxBillboardEnd();
