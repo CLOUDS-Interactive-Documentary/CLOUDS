@@ -295,7 +295,7 @@ public:
 	float fireWorkExplosionTime;
 	
 	//render attributes
-	ofFloatColor startColor, endColor;
+	ofColor startColor, endColor;
 	float startColorSaturation, endColorSaturation;
 	
 	ofxUISuperCanvas* fireworksRenderGui;
@@ -396,8 +396,8 @@ protected:
 	bool bUseCircle, bUseSquare, bUseTriangle, bUseDot;
 	bool bBurst, bOctahedron, bTetrahedron, bDodecagedron;
 	
-	map<string, ofFloatColor> fwColors;
-	map<string, ofFloatColor> fwDeathColors;
+	map<string, ofColor> fwColors;
+	map<string, ofColor> fwDeathColors;
 	map<string, float> fwSaturations;
 	map<string, float> fwDeathSaturations;
 };
