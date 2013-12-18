@@ -645,11 +645,9 @@ void CloudsVisualSystemFireworks::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
-// selfPresetLoaded is called whenever a new preset is triggered
-// it'll be called right before selfBegin() and you may wish to
-// refresh anything that a preset may offset, such as stored colors or particles
-void CloudsVisualSystemFireworks::selfPresetLoaded(string presetPath)
+void CloudsVisualSystemFireworks::updateColors()
 {
+	
 	for (map<string, ofColor>::iterator it = fwColors.begin(); it != fwColors.end(); it++)
 	{			
 		fireworkColorsGui->getWidget( it->first )->setColorFill(it->second);
@@ -661,6 +659,14 @@ void CloudsVisualSystemFireworks::selfPresetLoaded(string presetPath)
 		fireworkColorsGui->getWidget( it->first )->setColorFill(it->second);
 		fireworkColorsGui->getWidget( it->first + "_saturation" )->setColorFill(it->second);
 	}
+}
+
+// selfPresetLoaded is called whenever a new preset is triggered
+// it'll be called right before selfBegin() and you may wish to
+// refresh anything that a preset may offset, such as stored colors or particles
+void CloudsVisualSystemFireworks::selfPresetLoaded(string presetPath)
+{
+	updateColors();
 }
 
 void CloudsVisualSystemFireworks::explodeFireWorkAtPoint( ofVec3f point, float t )

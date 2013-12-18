@@ -18,7 +18,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>dimX</Name>
-    <Value>150</Value>
+    <Value>203</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>dimZ</Name>
-    <Value>150</Value>
+    <Value>193</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,12 +43,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>speed</Name>
-    <Value>-0.640394</Value>
+    <Value>-1.42857</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseDirectionX</Name>
-    <Value>0.349754</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

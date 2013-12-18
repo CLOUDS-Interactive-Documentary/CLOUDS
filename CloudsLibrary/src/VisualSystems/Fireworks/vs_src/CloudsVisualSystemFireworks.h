@@ -250,6 +250,7 @@ public:
 //		return camera;
 //	}
 	
+	void updateColors();
 	
 	void updateVbo();
 	void explodeFireWork( ofVec3f origin=ofVec3f(), ofVec3f vel=ofVec3f() );

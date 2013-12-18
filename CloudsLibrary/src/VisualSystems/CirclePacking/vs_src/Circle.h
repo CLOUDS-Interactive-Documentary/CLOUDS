@@ -25,6 +25,7 @@ public:
     Circle(float _x, float _y, float _r, string _label);
     void draw();
     void drawCompanies();
+    void drawHashtags();
     
     void checkFontSize(string s, float x, float y);
     
@@ -36,6 +37,7 @@ public:
     float growth;
     ofColor color1;
     float hue;
+    float hue2; 
     float brightness;
     
     float x;

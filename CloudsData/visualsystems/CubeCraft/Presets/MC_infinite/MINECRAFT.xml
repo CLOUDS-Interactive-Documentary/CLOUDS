@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>groundDrama</Name>
-    <Value>0.842365</Value>
+    <Value>0.625616</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,12 +28,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>cloudHeight</Name>
-    <Value>4.53202</Value>
+    <Value>5.96059</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudThickness</Name>
-    <Value>1.57635</Value>
+    <Value>20.4433</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,12 +43,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>cloudShadow</Name>
-    <Value>0.507389</Value>
+    <Value>0.566502</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>groundHue</Name>
-    <Value>106.773</Value>
+    <Value>104.261</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -58,7 +58,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>groundBrightness</Name>
-    <Value>175.862</Value>
+    <Value>213.547</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

@@ -7,6 +7,11 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
+    <Name>aboveTheClouds</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>bigNoise</Name>
     <Value>0</Value>
 </Widget>
@@ -22,8 +27,13 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>MC_shadow</Name>
+    <Name>MC_infinite</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>MC_shadow</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -49,9 +59,4 @@
     <Kind>2</Kind>
     <Name>noiseScale</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MC_infinite</Name>
-    <Value>1</Value>
 </Widget>
