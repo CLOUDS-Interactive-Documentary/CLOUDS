@@ -117,6 +117,7 @@ protected:
 	
 	void resizeVoxelGrid();
 	void loadShaders();
+	void unloadShaders();
 	
 	void updateGroundMap();
 	
@@ -136,15 +137,17 @@ protected:
 	
 	ofShader cubeCraftShader;
 	ofShader voxelShader;
+	ofShader mineCraftGroundShader;
+	ofShader mineCraftCloudsShader;
 	
 	ofVec3f noiseDirection;
-	float noiseTime, lastTime, noiseSpeed;
+	float noiseTime, lastTime, speed;
 	float noiseThreshold, noiseScale, edgeWidth;
 	bool bFillCubes, bScaleCubes;
 	
 	float edgeSmoothing, cubeScale, specExpo, specScale;
 	ofImage colorMap;
-	ofFloatColor edgeColor, fillColor, fillColor2, fogColor;
+	ofColor edgeColor, fillColor, fillColor2, fogColor;
 	float fogDist, fogExpo, fogSaturation, fogHue, fogBrightness;
 	bool bUseFog;
 	
@@ -164,4 +167,8 @@ protected:
 	
 //	ofImage groundMap;
 	ofVec3f cameraOffset;
+	
+	ofFloatColor fc;
+	
+	int mineCraftDimX, mineCraftDimY;
 };

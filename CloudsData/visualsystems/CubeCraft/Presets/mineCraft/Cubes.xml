@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Cubes</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1</XPosition>
     <YPosition>1</YPosition>
 </Canvas>
@@ -18,17 +18,17 @@
 <Widget>
     <Kind>44</Kind>
     <Name>dimX</Name>
-    <Value>48</Value>
+    <Value>150</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>dimY</Name>
-    <Value>12</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>dimZ</Name>
-    <Value>47</Value>
+    <Value>150</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -42,8 +42,8 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>noiseSpeed</Name>
-    <Value>-4.6798</Value>
+    <Name>speed</Name>
+    <Value>-0.640394</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

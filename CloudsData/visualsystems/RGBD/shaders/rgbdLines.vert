@@ -31,8 +31,6 @@ uniform vec2 depthFOV;
 uniform vec4 normalRect;
 
 //GEOMETRY
-uniform float isMeshed;
-uniform vec2  simplify;
 uniform float flowPosition;
 uniform float farClip;
 uniform float nearClip;
@@ -41,15 +39,12 @@ uniform float edgeClip;
 uniform float minDepth;
 uniform float maxDepth;
 
-uniform float triangleContract;
+//distance between each adjoining line so we can tell to cull them
+uniform float lineExtend; //0. = 1. value that extend the lines out to their base positions
 
-uniform int useFaces;
 uniform vec3 headPosition;
 
 //FACE FEATURE
-uniform vec4 faceFeatureRect;
-uniform vec4 deltaChangeRect;
-
 varying float positionValid;
 
 //LIGHT
@@ -62,7 +57,7 @@ varying float diffuseAttenuate;
 
 varying float headPositionAttenuation;
 varying float edgeAttenuate;
-varying float forceFade;
+//varying float forceFade;
 
 const float epsilon = 1e-6;
 
@@ -115,9 +110,13 @@ float map(float value, float inputMin, float inputMax, float outputMin, float ou
 }
 
 //ENCODING:
-//gl_Position (x,y)  -> texture coord (center)
+//gl_Position (x,y)  -> center coordinate (center)
 //gl_TexCoords (x,y) -> offset extend to base position
 //
+
+vec2 flowCoord(vec2 basePosition){
+	return vec2(basePosition.x, + mod(basePosition.y + flowPosition, depthRect.w));
+}
 
 void main(void){
 	
@@ -125,28 +124,28 @@ void main(void){
 	float sideAttenuate   = 0.;
 	// Here we get the position, and account for the vertex position flowing
 	vec2 vertexPos = gl_Vertex.xy;
-
-
 	
-	vec2 samplePos = vec2(vertexPos.x, + mod(vertexPos.y + flowPosition, depthRect.w));
-	samplePos = mix(samplePos, gl_Normal.xy, (triangleContract * isMeshed) ); // don't blend if we aren't discarding
+	vec2 samplePos = flowCoord(vertexPos);
+	vec2 extendedSamplePos = samplePos + gl_Normal.xy*lineExtend;
+	vec2 neighborSamplePos = samplePos - gl_Normal.xy*lineExtend;
+	
 	//edgeAttenuate = 1.0;
 	
-    vec2 depthPos = samplePos + depthRect.xy;
+    vec2 depthPos = extendedSamplePos + depthRect.xy;
     float depth = depthValueFromSample( depthPos );
-		
+	float neighborDepth = depthValueFromSample( neighborSamplePos + depthRect.xy );
+	
 	// Reconstruct the 3D point position
-    vec4 pos = vec4((samplePos.x - depthPP.x) * depth / depthFOV.x,
-                    (samplePos.y - depthPP.y) * depth / depthFOV.y,
+    vec4 pos = vec4((extendedSamplePos.x - depthPP.x) * depth / depthFOV.x,
+                    (extendedSamplePos.y - depthPP.y) * depth / depthFOV.y,
                     depth, 1.0);
     
 	//HEAD POSITION
+	//TODO make variable
 	headPositionAttenuation = map(distance(pos.xyz,headPosition), 400, 50, 0.0, 1.0);
 	
 	//extract the normal and pass it along to the fragment shader
-	
-	vec2 normalPos = mix(samplePos.xy, gl_Normal.xy, isMeshed) + normalRect.xy;
-//    normal = texture2DRect(texture, floor(normalPos) + vec2(.5,.5)).xyz * 2.0 - 1.0;
+	vec2 normalPos   = extendedSamplePos + normalRect.xy;
 	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
 
 	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
@@ -154,26 +153,18 @@ void main(void){
 	vec3 vert = vec3(gl_ModelViewMatrix * pos);
 	eye = normalize(-vert);
 	
-    float neighborA = depthValueFromSample( depthRect.xy + mix(gl_Color.xy*depthRect.zw,gl_Normal.xy,triangleContract) );
-    float neighborB = depthValueFromSample( depthRect.xy + mix(gl_Color.zw*depthRect.zw,gl_Normal.xy,triangleContract) );
+//  float neighborA = depthValueFromSample( depthRect.xy + mix(gl_Color.xy*depthRect.zw,gl_Normal.xy,triangleContract) );
+//  float neighborB = depthValueFromSample( depthRect.xy + mix(gl_Color.zw*depthRect.zw,gl_Normal.xy,triangleContract) );
+//	float neighborA = depthValueFromSample( samplePos )
 	
-	if(isMeshed == 1.0){
-		positionValid = (depth < farClip &&
-						 neighborA < farClip &&
-						 neighborB < farClip &&
-    
-						 depth > nearClip &&
-						 neighborA > nearClip &&
-						 neighborB > nearClip &&
-						 
-						 abs(neighborA - depth) < edgeClip &&
-						 abs(neighborB - depth) < edgeClip
-						) ? 1.0 : 0.0;
-	}
-	else {
-		positionValid = (depth < farClip && depth > nearClip) ? 1.0 : 0.0;
-	}
-	
+	positionValid = (depth < farClip &&
+					 neighborDepth < farClip &&
+					 
+					 depth > nearClip &&
+					 neighborDepth > nearClip &&
+					 
+					 abs(neighborDepth - depth) < edgeClip) ? 1.0 : 0.0;
+
 	
 	edgeAttenuate = (1.0 - max( 0.0, pow( abs(320. - samplePos.x) / 320., 1.5) - sideAttenuate) ) *
 					(1.0 - max( 0.0, pow( samplePos.y / 480., 3.0) + bottomAttenuate ));
@@ -197,7 +188,7 @@ void main(void){
         vec2 uv = (colorFOV * xypp + colorPP) * colorScale;
 
         //gl_TexCoord[0].xy = ((uv-textureSize/2.0) * scale) + textureSize/2.0; 
-		gl_TexCoord[0].xy = clamp(uv,vec2(0.0,0.0), colorRect.zw*colorScale);
+		gl_TexCoord[0].xy = clamp(uv,vec2(0.0,0.0), colorRect.zw * colorScale);
 	}
 	
 	//DIFFUSE LIGHT
@@ -209,24 +200,24 @@ void main(void){
 	
 	diffuseLightDirection = diffuseLightDirectionFull / d;
 	
-	// now that we have the texture coordinate we can sample the face feature and movement map which correlate to the video texture
-	if(useFaces == 1){
-		vec2 faceFeatureScale = faceFeatureRect.zw / colorRect.zw / colorScale;
-		vec2 faceFeaturePos = faceFeatureRect.xy + gl_TexCoord[0].xy * faceFeatureScale;
-		faceFeatureSample = texture2DRect(rgbdTexture, faceFeaturePos);
-		
-		//extract the delta video change
-		vec2 deltaChangeScale = deltaChangeRect.zw / colorRect.zw / colorScale;
-		vec2 deltaChangePos = deltaChangeRect.xy + gl_TexCoord[0].xy * deltaChangeScale;
-		deltaChangeSample = texture2DRect(rgbdTexture, deltaChangePos);
-	}
-	else {
-		faceFeatureSample = vec4(0.);
-		deltaChangeSample = vec4(0.);
-	}
+//	// now that we have the texture coordinate we can sample the face feature and movement map which correlate to the video texture
+//	if(useFaces == 1){
+//		vec2 faceFeatureScale = faceFeatureRect.zw / colorRect.zw / colorScale;
+//		vec2 faceFeaturePos = faceFeatureRect.xy + gl_TexCoord[0].xy * faceFeatureScale;
+//		faceFeatureSample = texture2DRect(rgbdTexture, faceFeaturePos);
+//		
+//		//extract the delta video change
+//		vec2 deltaChangeScale = deltaChangeRect.zw / colorRect.zw / colorScale;
+//		vec2 deltaChangePos = deltaChangeRect.xy + gl_TexCoord[0].xy * deltaChangeScale;
+//		deltaChangeSample = texture2DRect(rgbdTexture, deltaChangePos);
+//	}
+//	else {
+//		faceFeatureSample = vec4(0.);
+//		deltaChangeSample = vec4(0.);
+//	}
 	
-	forceFade = max(isMeshed, 1.0 - triangleContract);
+//	forceFade = max(isMeshed, 1.0 - triangleContract);
 	
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
-    gl_FrontColor = vec4(1.0);
+    gl_FrontColor = gl_Color;
 }

@@ -84,6 +84,10 @@
 		504016E4185D8B090039386C /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 504016E0185D8B090039386C /* CloudsInputMouse.cpp */; };
 		50401700185D8B340039386C /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 504016F8185D8B340039386C /* glm.c */; };
 		50401701185D8B340039386C /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 504016FC185D8B340039386C /* ofxObjLoader.cpp */; };
+		50BA4BB91862155100AC4F48 /* mineCraftGround.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50BA4BB71862155100AC4F48 /* mineCraftGround.frag */; };
+		50BA4BBA1862155100AC4F48 /* mineCraftGround.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50BA4BB81862155100AC4F48 /* mineCraftGround.vert */; };
+		50BA4BC21862247C00AC4F48 /* mineCraftClouds.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50BA4BC01862247C00AC4F48 /* mineCraftClouds.frag */; };
+		50BA4BC31862247C00AC4F48 /* mineCraftClouds.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50BA4BC11862247C00AC4F48 /* mineCraftClouds.vert */; };
 		50C3AB801860A59D00627388 /* cubeCraftShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50C3AB7E1860A59D00627388 /* cubeCraftShader.frag */; };
 		50C3AB811860A59D00627388 /* cubeCraftShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50C3AB7F1860A59D00627388 /* cubeCraftShader.vert */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -502,6 +506,260 @@
 		504016F9185D8B340039386C /* glm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glm.h; sourceTree = "<group>"; };
 		504016FC185D8B340039386C /* ofxObjLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxObjLoader.cpp; sourceTree = "<group>"; };
 		504016FD185D8B340039386C /* ofxObjLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxObjLoader.h; sourceTree = "<group>"; };
+		50BA4BB71862155100AC4F48 /* mineCraftGround.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = mineCraftGround.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		50BA4BB81862155100AC4F48 /* mineCraftGround.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = mineCraftGround.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		50BA4BC01862247C00AC4F48 /* mineCraftClouds.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = mineCraftClouds.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		50BA4BC11862247C00AC4F48 /* mineCraftClouds.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = mineCraftClouds.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		50BA4BC61862370800AC4F48 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		50BA4BC71862370800AC4F48 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		50BA4BC81862370800AC4F48 /* Cubes.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Cubes.xml; sourceTree = "<group>"; };
+		50BA4BC91862370800AC4F48 /* FOG.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FOG.xml; sourceTree = "<group>"; };
+		50BA4BCA1862370800AC4F48 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		50BA4BCB1862370800AC4F48 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4BCC1862370800AC4F48 /* MESH_RENDER.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MESH_RENDER.xml; sourceTree = "<group>"; };
+		50BA4BCD1862370800AC4F48 /* MINECRAFT.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MINECRAFT.xml; sourceTree = "<group>"; };
+		50BA4BCE1862370800AC4F48 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		50BA4BCF1862370800AC4F48 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4BD01862370800AC4F48 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		50BA4BD11862370800AC4F48 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		50BA4BD21862370800AC4F48 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		50BA4BD31862370800AC4F48 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		50BA4BD41862370800AC4F48 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		50BA4BD61862370800AC4F48 /* aboveTheClouds_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = aboveTheClouds_inout.xml; sourceTree = "<group>"; };
+		50BA4BD71862370800AC4F48 /* aboveTheClouds_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = aboveTheClouds_zoomer.xml; sourceTree = "<group>"; };
+		50BA4BD81862370800AC4F48 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		50BA4BD91862370800AC4F48 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		50BA4BDA1862370800AC4F48 /* TimelineSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimelineSettings.xml; sourceTree = "<group>"; };
+		50BA4BDB1862370800AC4F48 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
+		50BA4BDD1862370800AC4F48 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		50BA4BDE1862370800AC4F48 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		50BA4BDF1862370800AC4F48 /* Cubes.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Cubes.xml; sourceTree = "<group>"; };
+		50BA4BE01862370800AC4F48 /* FOG.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FOG.xml; sourceTree = "<group>"; };
+		50BA4BE11862370800AC4F48 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		50BA4BE21862370800AC4F48 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4BE31862370800AC4F48 /* MESH_RENDER.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MESH_RENDER.xml; sourceTree = "<group>"; };
+		50BA4BE41862370800AC4F48 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		50BA4BE51862370800AC4F48 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4BE61862370800AC4F48 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		50BA4BE71862370800AC4F48 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		50BA4BE81862370800AC4F48 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		50BA4BE91862370800AC4F48 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		50BA4BEA1862370800AC4F48 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		50BA4BEC1862370800AC4F48 /* bigNoise_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = bigNoise_inout.xml; sourceTree = "<group>"; };
+		50BA4BED1862370800AC4F48 /* bigNoise_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = bigNoise_zoomer.xml; sourceTree = "<group>"; };
+		50BA4BEE1862370800AC4F48 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		50BA4BEF1862370800AC4F48 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		50BA4BF01862370800AC4F48 /* TimelineSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimelineSettings.xml; sourceTree = "<group>"; };
+		50BA4BF11862370800AC4F48 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
+		50BA4BF31862370800AC4F48 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		50BA4BF41862370800AC4F48 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		50BA4BF51862370800AC4F48 /* Cubes.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Cubes.xml; sourceTree = "<group>"; };
+		50BA4BF61862370800AC4F48 /* FOG.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FOG.xml; sourceTree = "<group>"; };
+		50BA4BF71862370800AC4F48 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		50BA4BF81862370800AC4F48 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4BF91862370800AC4F48 /* MESH_RENDER.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MESH_RENDER.xml; sourceTree = "<group>"; };
+		50BA4BFA1862370800AC4F48 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		50BA4BFB1862370800AC4F48 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4BFC1862370800AC4F48 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		50BA4BFD1862370800AC4F48 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		50BA4BFE1862370800AC4F48 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		50BA4BFF1862370800AC4F48 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		50BA4C001862370800AC4F48 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		50BA4C021862370800AC4F48 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		50BA4C031862370800AC4F48 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		50BA4C041862370800AC4F48 /* lewitt_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lewitt_inout.xml; sourceTree = "<group>"; };
+		50BA4C051862370800AC4F48 /* lewitt_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lewitt_zoomer.xml; sourceTree = "<group>"; };
+		50BA4C061862370800AC4F48 /* TimelineSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimelineSettings.xml; sourceTree = "<group>"; };
+		50BA4C071862370800AC4F48 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
+		50BA4C091862370800AC4F48 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		50BA4C0A1862370800AC4F48 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		50BA4C0B1862370800AC4F48 /* Cubes.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Cubes.xml; sourceTree = "<group>"; };
+		50BA4C0C1862370800AC4F48 /* FOG.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FOG.xml; sourceTree = "<group>"; };
+		50BA4C0D1862370800AC4F48 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		50BA4C0E1862370800AC4F48 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4C0F1862370800AC4F48 /* MESH_RENDER.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MESH_RENDER.xml; sourceTree = "<group>"; };
+		50BA4C101862370800AC4F48 /* MINECRAFT.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MINECRAFT.xml; sourceTree = "<group>"; };
+		50BA4C111862370800AC4F48 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		50BA4C121862370800AC4F48 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4C131862370800AC4F48 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		50BA4C141862370800AC4F48 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		50BA4C151862370800AC4F48 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		50BA4C161862370800AC4F48 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		50BA4C171862370800AC4F48 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		50BA4C191862370800AC4F48 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		50BA4C1A1862370800AC4F48 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		50BA4C1B1862370800AC4F48 /* MC_cloudShadows_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MC_cloudShadows_inout.xml; sourceTree = "<group>"; };
+		50BA4C1C1862370800AC4F48 /* MC_cloudShadows_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MC_cloudShadows_zoomer.xml; sourceTree = "<group>"; };
+		50BA4C1D1862370800AC4F48 /* TimelineSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimelineSettings.xml; sourceTree = "<group>"; };
+		50BA4C1E1862370800AC4F48 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
+		50BA4C201862370800AC4F48 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		50BA4C211862370800AC4F48 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		50BA4C221862370800AC4F48 /* Cubes.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Cubes.xml; sourceTree = "<group>"; };
+		50BA4C231862370800AC4F48 /* FOG.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FOG.xml; sourceTree = "<group>"; };
+		50BA4C241862370800AC4F48 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		50BA4C251862370800AC4F48 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4C261862370800AC4F48 /* MESH_RENDER.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MESH_RENDER.xml; sourceTree = "<group>"; };
+		50BA4C271862370800AC4F48 /* MINECRAFT.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MINECRAFT.xml; sourceTree = "<group>"; };
+		50BA4C281862370800AC4F48 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		50BA4C291862370800AC4F48 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4C2A1862370800AC4F48 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		50BA4C2B1862370800AC4F48 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		50BA4C2C1862370800AC4F48 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		50BA4C2D1862370800AC4F48 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		50BA4C2E1862370800AC4F48 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		50BA4C301862370800AC4F48 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		50BA4C311862370800AC4F48 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		50BA4C321862370800AC4F48 /* MC_infinite_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MC_infinite_inout.xml; sourceTree = "<group>"; };
+		50BA4C331862370800AC4F48 /* MC_infinite_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MC_infinite_zoomer.xml; sourceTree = "<group>"; };
+		50BA4C341862370800AC4F48 /* TimelineSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimelineSettings.xml; sourceTree = "<group>"; };
+		50BA4C351862370800AC4F48 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
+		50BA4C371862370800AC4F48 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		50BA4C381862370800AC4F48 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		50BA4C391862370800AC4F48 /* Cubes.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Cubes.xml; sourceTree = "<group>"; };
+		50BA4C3A1862370800AC4F48 /* FOG.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FOG.xml; sourceTree = "<group>"; };
+		50BA4C3B1862370800AC4F48 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		50BA4C3C1862370800AC4F48 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4C3D1862370800AC4F48 /* MESH_RENDER.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MESH_RENDER.xml; sourceTree = "<group>"; };
+		50BA4C3E1862370800AC4F48 /* MINECRAFT.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MINECRAFT.xml; sourceTree = "<group>"; };
+		50BA4C3F1862370800AC4F48 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		50BA4C401862370800AC4F48 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4C411862370800AC4F48 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		50BA4C421862370800AC4F48 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		50BA4C431862370800AC4F48 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		50BA4C441862370800AC4F48 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		50BA4C451862370800AC4F48 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		50BA4C471862370800AC4F48 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		50BA4C481862370800AC4F48 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		50BA4C491862370800AC4F48 /* MC_shadow_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MC_shadow_inout.xml; sourceTree = "<group>"; };
+		50BA4C4A1862370800AC4F48 /* MC_shadow_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MC_shadow_zoomer.xml; sourceTree = "<group>"; };
+		50BA4C4B1862370800AC4F48 /* TimelineSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimelineSettings.xml; sourceTree = "<group>"; };
+		50BA4C4C1862370800AC4F48 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
+		50BA4C4E1862370800AC4F48 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		50BA4C4F1862370800AC4F48 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		50BA4C501862370800AC4F48 /* Cubes.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Cubes.xml; sourceTree = "<group>"; };
+		50BA4C511862370800AC4F48 /* FOG.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FOG.xml; sourceTree = "<group>"; };
+		50BA4C521862370800AC4F48 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		50BA4C531862370800AC4F48 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4C541862370800AC4F48 /* MESH_RENDER.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MESH_RENDER.xml; sourceTree = "<group>"; };
+		50BA4C551862370800AC4F48 /* MINECRAFT.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MINECRAFT.xml; sourceTree = "<group>"; };
+		50BA4C561862370800AC4F48 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		50BA4C571862370800AC4F48 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4C581862370800AC4F48 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		50BA4C591862370800AC4F48 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		50BA4C5A1862370800AC4F48 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		50BA4C5B1862370800AC4F48 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		50BA4C5C1862370800AC4F48 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		50BA4C5E1862370800AC4F48 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		50BA4C5F1862370800AC4F48 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		50BA4C601862370800AC4F48 /* MC_shadows_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MC_shadows_inout.xml; sourceTree = "<group>"; };
+		50BA4C611862370800AC4F48 /* MC_shadows_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MC_shadows_zoomer.xml; sourceTree = "<group>"; };
+		50BA4C621862370800AC4F48 /* TimelineSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimelineSettings.xml; sourceTree = "<group>"; };
+		50BA4C631862370800AC4F48 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
+		50BA4C651862370800AC4F48 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		50BA4C661862370800AC4F48 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		50BA4C671862370800AC4F48 /* Cubes.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Cubes.xml; sourceTree = "<group>"; };
+		50BA4C681862370800AC4F48 /* FOG.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FOG.xml; sourceTree = "<group>"; };
+		50BA4C691862370800AC4F48 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		50BA4C6A1862370800AC4F48 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4C6B1862370800AC4F48 /* MESH_RENDER.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MESH_RENDER.xml; sourceTree = "<group>"; };
+		50BA4C6C1862370800AC4F48 /* MINECRAFT.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MINECRAFT.xml; sourceTree = "<group>"; };
+		50BA4C6D1862370800AC4F48 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		50BA4C6E1862370800AC4F48 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4C6F1862370800AC4F48 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		50BA4C701862370800AC4F48 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		50BA4C711862370800AC4F48 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		50BA4C721862370800AC4F48 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		50BA4C731862370800AC4F48 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		50BA4C751862370800AC4F48 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		50BA4C761862370800AC4F48 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		50BA4C771862370800AC4F48 /* mineCraft_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mineCraft_inout.xml; sourceTree = "<group>"; };
+		50BA4C781862370800AC4F48 /* mineCraft_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mineCraft_zoomer.xml; sourceTree = "<group>"; };
+		50BA4C791862370800AC4F48 /* TimelineSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimelineSettings.xml; sourceTree = "<group>"; };
+		50BA4C7A1862370800AC4F48 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
+		50BA4C7C1862370800AC4F48 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		50BA4C7D1862370800AC4F48 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		50BA4C7E1862370800AC4F48 /* Cubes.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Cubes.xml; sourceTree = "<group>"; };
+		50BA4C7F1862370800AC4F48 /* FOG.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FOG.xml; sourceTree = "<group>"; };
+		50BA4C801862370800AC4F48 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		50BA4C811862370800AC4F48 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4C821862370800AC4F48 /* MESH_RENDER.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MESH_RENDER.xml; sourceTree = "<group>"; };
+		50BA4C831862370800AC4F48 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		50BA4C841862370800AC4F48 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4C851862370800AC4F48 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		50BA4C861862370800AC4F48 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		50BA4C871862370800AC4F48 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		50BA4C881862370800AC4F48 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		50BA4C891862370800AC4F48 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		50BA4C8B1862370800AC4F48 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		50BA4C8C1862370800AC4F48 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		50BA4C8D1862370800AC4F48 /* NoiseAndScaling_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NoiseAndScaling_inout.xml; sourceTree = "<group>"; };
+		50BA4C8E1862370800AC4F48 /* NoiseAndScaling_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NoiseAndScaling_zoomer.xml; sourceTree = "<group>"; };
+		50BA4C8F1862370800AC4F48 /* TimelineSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimelineSettings.xml; sourceTree = "<group>"; };
+		50BA4C901862370800AC4F48 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
+		50BA4C921862370800AC4F48 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		50BA4C931862370800AC4F48 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		50BA4C941862370800AC4F48 /* Cubes.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Cubes.xml; sourceTree = "<group>"; };
+		50BA4C951862370800AC4F48 /* FOG.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FOG.xml; sourceTree = "<group>"; };
+		50BA4C961862370800AC4F48 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		50BA4C971862370800AC4F48 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4C981862370800AC4F48 /* MESH_RENDER.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MESH_RENDER.xml; sourceTree = "<group>"; };
+		50BA4C991862370800AC4F48 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		50BA4C9A1862370800AC4F48 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4C9B1862370800AC4F48 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		50BA4C9C1862370800AC4F48 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		50BA4C9D1862370800AC4F48 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		50BA4C9E1862370800AC4F48 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		50BA4C9F1862370800AC4F48 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		50BA4CA11862370800AC4F48 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		50BA4CA21862370800AC4F48 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		50BA4CA31862370800AC4F48 /* noiseFlow_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = noiseFlow_inout.xml; sourceTree = "<group>"; };
+		50BA4CA41862370800AC4F48 /* noiseFlow_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = noiseFlow_zoomer.xml; sourceTree = "<group>"; };
+		50BA4CA51862370800AC4F48 /* TimelineSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimelineSettings.xml; sourceTree = "<group>"; };
+		50BA4CA61862370800AC4F48 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
+		50BA4CA81862370800AC4F48 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		50BA4CA91862370800AC4F48 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		50BA4CAA1862370800AC4F48 /* Cubes.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Cubes.xml; sourceTree = "<group>"; };
+		50BA4CAB1862370800AC4F48 /* FOG.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FOG.xml; sourceTree = "<group>"; };
+		50BA4CAC1862370800AC4F48 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		50BA4CAD1862370800AC4F48 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4CAE1862370800AC4F48 /* MESH_RENDER.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MESH_RENDER.xml; sourceTree = "<group>"; };
+		50BA4CAF1862370800AC4F48 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		50BA4CB01862370800AC4F48 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4CB11862370800AC4F48 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		50BA4CB21862370800AC4F48 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		50BA4CB31862370800AC4F48 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		50BA4CB41862370800AC4F48 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		50BA4CB51862370800AC4F48 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		50BA4CB71862370800AC4F48 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		50BA4CB81862370800AC4F48 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		50BA4CB91862370800AC4F48 /* noiseScale_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = noiseScale_inout.xml; sourceTree = "<group>"; };
+		50BA4CBA1862370800AC4F48 /* noiseScale_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = noiseScale_zoomer.xml; sourceTree = "<group>"; };
+		50BA4CBB1862370800AC4F48 /* TimelineSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimelineSettings.xml; sourceTree = "<group>"; };
+		50BA4CBC1862370800AC4F48 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
+		50BA4CBE1862370800AC4F48 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		50BA4CBF1862370800AC4F48 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		50BA4CC01862370800AC4F48 /* Cubes.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Cubes.xml; sourceTree = "<group>"; };
+		50BA4CC11862370800AC4F48 /* FOG.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FOG.xml; sourceTree = "<group>"; };
+		50BA4CC21862370800AC4F48 /* HEIGHTMAP.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = HEIGHTMAP.xml; sourceTree = "<group>"; };
+		50BA4CC31862370800AC4F48 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		50BA4CC41862370800AC4F48 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4CC51862370800AC4F48 /* MESH_RENDER.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MESH_RENDER.xml; sourceTree = "<group>"; };
+		50BA4CC61862370800AC4F48 /* MINECRAFT.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MINECRAFT.xml; sourceTree = "<group>"; };
+		50BA4CC71862370800AC4F48 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		50BA4CC81862370800AC4F48 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		50BA4CC91862370800AC4F48 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		50BA4CCA1862370800AC4F48 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		50BA4CCB1862370800AC4F48 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		50BA4CCC1862370800AC4F48 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		50BA4CCD1862370800AC4F48 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		50BA4CCF1862370800AC4F48 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		50BA4CD01862370800AC4F48 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		50BA4CD11862370800AC4F48 /* Working_CUBECRAFT_trackPositions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Working_CUBECRAFT_trackPositions.xml; sourceTree = "<group>"; };
+		50BA4CD21862370800AC4F48 /* Working_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Working_inout.xml; sourceTree = "<group>"; };
+		50BA4CD31862370800AC4F48 /* Working_Page_One_trackPositions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Working_Page_One_trackPositions.xml; sourceTree = "<group>"; };
+		50BA4CD41862370800AC4F48 /* Working_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Working_zoomer.xml; sourceTree = "<group>"; };
+		50BA4CD51862370800AC4F48 /* TimelineSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimelineSettings.xml; sourceTree = "<group>"; };
+		50BA4CD61862370800AC4F48 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
 		50C3AB7E1860A59D00627388 /* cubeCraftShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cubeCraftShader.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		50C3AB7F1860A59D00627388 /* cubeCraftShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cubeCraftShader.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -1155,6 +1413,10 @@
 		504016D5185D8AE00039386C /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				50BA4BC01862247C00AC4F48 /* mineCraftClouds.frag */,
+				50BA4BC11862247C00AC4F48 /* mineCraftClouds.vert */,
+				50BA4BB71862155100AC4F48 /* mineCraftGround.frag */,
+				50BA4BB81862155100AC4F48 /* mineCraftGround.vert */,
 				504016D6185D8AE00039386C /* voxelShader.frag */,
 				504016D7185D8AE00039386C /* voxelShader.vert */,
 				50C3AB7E1860A59D00627388 /* cubeCraftShader.frag */,
@@ -1210,6 +1472,456 @@
 				504016FD185D8B340039386C /* ofxObjLoader.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		50BA4BC41862370800AC4F48 /* Presets */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4BC51862370800AC4F48 /* aboveTheClouds */,
+				50BA4BDC1862370800AC4F48 /* bigNoise */,
+				50BA4BF21862370800AC4F48 /* lewitt */,
+				50BA4C081862370800AC4F48 /* MC_cloudShadows */,
+				50BA4C1F1862370800AC4F48 /* MC_infinite */,
+				50BA4C361862370800AC4F48 /* MC_shadow */,
+				50BA4C4D1862370800AC4F48 /* MC_shadows */,
+				50BA4C641862370800AC4F48 /* mineCraft */,
+				50BA4C7B1862370800AC4F48 /* NoiseAndScaling */,
+				50BA4C911862370800AC4F48 /* noiseFlow */,
+				50BA4CA71862370800AC4F48 /* noiseScale */,
+				50BA4CBD1862370800AC4F48 /* Working */,
+			);
+			name = Presets;
+			path = ../CloudsData/visualsystems/CubeCraft/Presets;
+			sourceTree = "<group>";
+		};
+		50BA4BC51862370800AC4F48 /* aboveTheClouds */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4BC61862370800AC4F48 /* BgSettings.xml */,
+				50BA4BC71862370800AC4F48 /* CamSettings.xml */,
+				50BA4BC81862370800AC4F48 /* Cubes.xml */,
+				50BA4BC91862370800AC4F48 /* FOG.xml */,
+				50BA4BCA1862370800AC4F48 /* LightSettings.xml */,
+				50BA4BCB1862370800AC4F48 /* MATERIAL 1Settings.xml */,
+				50BA4BCC1862370800AC4F48 /* MESH_RENDER.xml */,
+				50BA4BCD1862370800AC4F48 /* MINECRAFT.xml */,
+				50BA4BCE1862370800AC4F48 /* ofEasyCamSettings */,
+				50BA4BCF1862370800AC4F48 /* POINT LIGHT 1Settings.xml */,
+				50BA4BD01862370800AC4F48 /* Presets.xml */,
+				50BA4BD11862370800AC4F48 /* RenderSettings.xml */,
+				50BA4BD21862370800AC4F48 /* Settings.xml */,
+				50BA4BD31862370800AC4F48 /* SystemSettings.xml */,
+				50BA4BD41862370800AC4F48 /* TimeInfo.xml */,
+				50BA4BD51862370800AC4F48 /* Timeline */,
+				50BA4BDA1862370800AC4F48 /* TimelineSettings.xml */,
+				50BA4BDB1862370800AC4F48 /* UITimelineMappings.xml */,
+			);
+			path = aboveTheClouds;
+			sourceTree = "<group>";
+		};
+		50BA4BD51862370800AC4F48 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4BD61862370800AC4F48 /* aboveTheClouds_inout.xml */,
+				50BA4BD71862370800AC4F48 /* aboveTheClouds_zoomer.xml */,
+				50BA4BD81862370800AC4F48 /* cameraTrack.xml */,
+				50BA4BD91862370800AC4F48 /* IntroOutro.xml */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		50BA4BDC1862370800AC4F48 /* bigNoise */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4BDD1862370800AC4F48 /* BgSettings.xml */,
+				50BA4BDE1862370800AC4F48 /* CamSettings.xml */,
+				50BA4BDF1862370800AC4F48 /* Cubes.xml */,
+				50BA4BE01862370800AC4F48 /* FOG.xml */,
+				50BA4BE11862370800AC4F48 /* LightSettings.xml */,
+				50BA4BE21862370800AC4F48 /* MATERIAL 1Settings.xml */,
+				50BA4BE31862370800AC4F48 /* MESH_RENDER.xml */,
+				50BA4BE41862370800AC4F48 /* ofEasyCamSettings */,
+				50BA4BE51862370800AC4F48 /* POINT LIGHT 1Settings.xml */,
+				50BA4BE61862370800AC4F48 /* Presets.xml */,
+				50BA4BE71862370800AC4F48 /* RenderSettings.xml */,
+				50BA4BE81862370800AC4F48 /* Settings.xml */,
+				50BA4BE91862370800AC4F48 /* SystemSettings.xml */,
+				50BA4BEA1862370800AC4F48 /* TimeInfo.xml */,
+				50BA4BEB1862370800AC4F48 /* Timeline */,
+				50BA4BF01862370800AC4F48 /* TimelineSettings.xml */,
+				50BA4BF11862370800AC4F48 /* UITimelineMappings.xml */,
+			);
+			path = bigNoise;
+			sourceTree = "<group>";
+		};
+		50BA4BEB1862370800AC4F48 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4BEC1862370800AC4F48 /* bigNoise_inout.xml */,
+				50BA4BED1862370800AC4F48 /* bigNoise_zoomer.xml */,
+				50BA4BEE1862370800AC4F48 /* cameraTrack.xml */,
+				50BA4BEF1862370800AC4F48 /* IntroOutro.xml */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		50BA4BF21862370800AC4F48 /* lewitt */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4BF31862370800AC4F48 /* BgSettings.xml */,
+				50BA4BF41862370800AC4F48 /* CamSettings.xml */,
+				50BA4BF51862370800AC4F48 /* Cubes.xml */,
+				50BA4BF61862370800AC4F48 /* FOG.xml */,
+				50BA4BF71862370800AC4F48 /* LightSettings.xml */,
+				50BA4BF81862370800AC4F48 /* MATERIAL 1Settings.xml */,
+				50BA4BF91862370800AC4F48 /* MESH_RENDER.xml */,
+				50BA4BFA1862370800AC4F48 /* ofEasyCamSettings */,
+				50BA4BFB1862370800AC4F48 /* POINT LIGHT 1Settings.xml */,
+				50BA4BFC1862370800AC4F48 /* Presets.xml */,
+				50BA4BFD1862370800AC4F48 /* RenderSettings.xml */,
+				50BA4BFE1862370800AC4F48 /* Settings.xml */,
+				50BA4BFF1862370800AC4F48 /* SystemSettings.xml */,
+				50BA4C001862370800AC4F48 /* TimeInfo.xml */,
+				50BA4C011862370800AC4F48 /* Timeline */,
+				50BA4C061862370800AC4F48 /* TimelineSettings.xml */,
+				50BA4C071862370800AC4F48 /* UITimelineMappings.xml */,
+			);
+			path = lewitt;
+			sourceTree = "<group>";
+		};
+		50BA4C011862370800AC4F48 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4C021862370800AC4F48 /* cameraTrack.xml */,
+				50BA4C031862370800AC4F48 /* IntroOutro.xml */,
+				50BA4C041862370800AC4F48 /* lewitt_inout.xml */,
+				50BA4C051862370800AC4F48 /* lewitt_zoomer.xml */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		50BA4C081862370800AC4F48 /* MC_cloudShadows */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4C091862370800AC4F48 /* BgSettings.xml */,
+				50BA4C0A1862370800AC4F48 /* CamSettings.xml */,
+				50BA4C0B1862370800AC4F48 /* Cubes.xml */,
+				50BA4C0C1862370800AC4F48 /* FOG.xml */,
+				50BA4C0D1862370800AC4F48 /* LightSettings.xml */,
+				50BA4C0E1862370800AC4F48 /* MATERIAL 1Settings.xml */,
+				50BA4C0F1862370800AC4F48 /* MESH_RENDER.xml */,
+				50BA4C101862370800AC4F48 /* MINECRAFT.xml */,
+				50BA4C111862370800AC4F48 /* ofEasyCamSettings */,
+				50BA4C121862370800AC4F48 /* POINT LIGHT 1Settings.xml */,
+				50BA4C131862370800AC4F48 /* Presets.xml */,
+				50BA4C141862370800AC4F48 /* RenderSettings.xml */,
+				50BA4C151862370800AC4F48 /* Settings.xml */,
+				50BA4C161862370800AC4F48 /* SystemSettings.xml */,
+				50BA4C171862370800AC4F48 /* TimeInfo.xml */,
+				50BA4C181862370800AC4F48 /* Timeline */,
+				50BA4C1D1862370800AC4F48 /* TimelineSettings.xml */,
+				50BA4C1E1862370800AC4F48 /* UITimelineMappings.xml */,
+			);
+			path = MC_cloudShadows;
+			sourceTree = "<group>";
+		};
+		50BA4C181862370800AC4F48 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4C191862370800AC4F48 /* cameraTrack.xml */,
+				50BA4C1A1862370800AC4F48 /* IntroOutro.xml */,
+				50BA4C1B1862370800AC4F48 /* MC_cloudShadows_inout.xml */,
+				50BA4C1C1862370800AC4F48 /* MC_cloudShadows_zoomer.xml */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		50BA4C1F1862370800AC4F48 /* MC_infinite */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4C201862370800AC4F48 /* BgSettings.xml */,
+				50BA4C211862370800AC4F48 /* CamSettings.xml */,
+				50BA4C221862370800AC4F48 /* Cubes.xml */,
+				50BA4C231862370800AC4F48 /* FOG.xml */,
+				50BA4C241862370800AC4F48 /* LightSettings.xml */,
+				50BA4C251862370800AC4F48 /* MATERIAL 1Settings.xml */,
+				50BA4C261862370800AC4F48 /* MESH_RENDER.xml */,
+				50BA4C271862370800AC4F48 /* MINECRAFT.xml */,
+				50BA4C281862370800AC4F48 /* ofEasyCamSettings */,
+				50BA4C291862370800AC4F48 /* POINT LIGHT 1Settings.xml */,
+				50BA4C2A1862370800AC4F48 /* Presets.xml */,
+				50BA4C2B1862370800AC4F48 /* RenderSettings.xml */,
+				50BA4C2C1862370800AC4F48 /* Settings.xml */,
+				50BA4C2D1862370800AC4F48 /* SystemSettings.xml */,
+				50BA4C2E1862370800AC4F48 /* TimeInfo.xml */,
+				50BA4C2F1862370800AC4F48 /* Timeline */,
+				50BA4C341862370800AC4F48 /* TimelineSettings.xml */,
+				50BA4C351862370800AC4F48 /* UITimelineMappings.xml */,
+			);
+			path = MC_infinite;
+			sourceTree = "<group>";
+		};
+		50BA4C2F1862370800AC4F48 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4C301862370800AC4F48 /* cameraTrack.xml */,
+				50BA4C311862370800AC4F48 /* IntroOutro.xml */,
+				50BA4C321862370800AC4F48 /* MC_infinite_inout.xml */,
+				50BA4C331862370800AC4F48 /* MC_infinite_zoomer.xml */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		50BA4C361862370800AC4F48 /* MC_shadow */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4C371862370800AC4F48 /* BgSettings.xml */,
+				50BA4C381862370800AC4F48 /* CamSettings.xml */,
+				50BA4C391862370800AC4F48 /* Cubes.xml */,
+				50BA4C3A1862370800AC4F48 /* FOG.xml */,
+				50BA4C3B1862370800AC4F48 /* LightSettings.xml */,
+				50BA4C3C1862370800AC4F48 /* MATERIAL 1Settings.xml */,
+				50BA4C3D1862370800AC4F48 /* MESH_RENDER.xml */,
+				50BA4C3E1862370800AC4F48 /* MINECRAFT.xml */,
+				50BA4C3F1862370800AC4F48 /* ofEasyCamSettings */,
+				50BA4C401862370800AC4F48 /* POINT LIGHT 1Settings.xml */,
+				50BA4C411862370800AC4F48 /* Presets.xml */,
+				50BA4C421862370800AC4F48 /* RenderSettings.xml */,
+				50BA4C431862370800AC4F48 /* Settings.xml */,
+				50BA4C441862370800AC4F48 /* SystemSettings.xml */,
+				50BA4C451862370800AC4F48 /* TimeInfo.xml */,
+				50BA4C461862370800AC4F48 /* Timeline */,
+				50BA4C4B1862370800AC4F48 /* TimelineSettings.xml */,
+				50BA4C4C1862370800AC4F48 /* UITimelineMappings.xml */,
+			);
+			path = MC_shadow;
+			sourceTree = "<group>";
+		};
+		50BA4C461862370800AC4F48 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4C471862370800AC4F48 /* cameraTrack.xml */,
+				50BA4C481862370800AC4F48 /* IntroOutro.xml */,
+				50BA4C491862370800AC4F48 /* MC_shadow_inout.xml */,
+				50BA4C4A1862370800AC4F48 /* MC_shadow_zoomer.xml */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		50BA4C4D1862370800AC4F48 /* MC_shadows */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4C4E1862370800AC4F48 /* BgSettings.xml */,
+				50BA4C4F1862370800AC4F48 /* CamSettings.xml */,
+				50BA4C501862370800AC4F48 /* Cubes.xml */,
+				50BA4C511862370800AC4F48 /* FOG.xml */,
+				50BA4C521862370800AC4F48 /* LightSettings.xml */,
+				50BA4C531862370800AC4F48 /* MATERIAL 1Settings.xml */,
+				50BA4C541862370800AC4F48 /* MESH_RENDER.xml */,
+				50BA4C551862370800AC4F48 /* MINECRAFT.xml */,
+				50BA4C561862370800AC4F48 /* ofEasyCamSettings */,
+				50BA4C571862370800AC4F48 /* POINT LIGHT 1Settings.xml */,
+				50BA4C581862370800AC4F48 /* Presets.xml */,
+				50BA4C591862370800AC4F48 /* RenderSettings.xml */,
+				50BA4C5A1862370800AC4F48 /* Settings.xml */,
+				50BA4C5B1862370800AC4F48 /* SystemSettings.xml */,
+				50BA4C5C1862370800AC4F48 /* TimeInfo.xml */,
+				50BA4C5D1862370800AC4F48 /* Timeline */,
+				50BA4C621862370800AC4F48 /* TimelineSettings.xml */,
+				50BA4C631862370800AC4F48 /* UITimelineMappings.xml */,
+			);
+			path = MC_shadows;
+			sourceTree = "<group>";
+		};
+		50BA4C5D1862370800AC4F48 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4C5E1862370800AC4F48 /* cameraTrack.xml */,
+				50BA4C5F1862370800AC4F48 /* IntroOutro.xml */,
+				50BA4C601862370800AC4F48 /* MC_shadows_inout.xml */,
+				50BA4C611862370800AC4F48 /* MC_shadows_zoomer.xml */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		50BA4C641862370800AC4F48 /* mineCraft */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4C651862370800AC4F48 /* BgSettings.xml */,
+				50BA4C661862370800AC4F48 /* CamSettings.xml */,
+				50BA4C671862370800AC4F48 /* Cubes.xml */,
+				50BA4C681862370800AC4F48 /* FOG.xml */,
+				50BA4C691862370800AC4F48 /* LightSettings.xml */,
+				50BA4C6A1862370800AC4F48 /* MATERIAL 1Settings.xml */,
+				50BA4C6B1862370800AC4F48 /* MESH_RENDER.xml */,
+				50BA4C6C1862370800AC4F48 /* MINECRAFT.xml */,
+				50BA4C6D1862370800AC4F48 /* ofEasyCamSettings */,
+				50BA4C6E1862370800AC4F48 /* POINT LIGHT 1Settings.xml */,
+				50BA4C6F1862370800AC4F48 /* Presets.xml */,
+				50BA4C701862370800AC4F48 /* RenderSettings.xml */,
+				50BA4C711862370800AC4F48 /* Settings.xml */,
+				50BA4C721862370800AC4F48 /* SystemSettings.xml */,
+				50BA4C731862370800AC4F48 /* TimeInfo.xml */,
+				50BA4C741862370800AC4F48 /* Timeline */,
+				50BA4C791862370800AC4F48 /* TimelineSettings.xml */,
+				50BA4C7A1862370800AC4F48 /* UITimelineMappings.xml */,
+			);
+			path = mineCraft;
+			sourceTree = "<group>";
+		};
+		50BA4C741862370800AC4F48 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4C751862370800AC4F48 /* cameraTrack.xml */,
+				50BA4C761862370800AC4F48 /* IntroOutro.xml */,
+				50BA4C771862370800AC4F48 /* mineCraft_inout.xml */,
+				50BA4C781862370800AC4F48 /* mineCraft_zoomer.xml */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		50BA4C7B1862370800AC4F48 /* NoiseAndScaling */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4C7C1862370800AC4F48 /* BgSettings.xml */,
+				50BA4C7D1862370800AC4F48 /* CamSettings.xml */,
+				50BA4C7E1862370800AC4F48 /* Cubes.xml */,
+				50BA4C7F1862370800AC4F48 /* FOG.xml */,
+				50BA4C801862370800AC4F48 /* LightSettings.xml */,
+				50BA4C811862370800AC4F48 /* MATERIAL 1Settings.xml */,
+				50BA4C821862370800AC4F48 /* MESH_RENDER.xml */,
+				50BA4C831862370800AC4F48 /* ofEasyCamSettings */,
+				50BA4C841862370800AC4F48 /* POINT LIGHT 1Settings.xml */,
+				50BA4C851862370800AC4F48 /* Presets.xml */,
+				50BA4C861862370800AC4F48 /* RenderSettings.xml */,
+				50BA4C871862370800AC4F48 /* Settings.xml */,
+				50BA4C881862370800AC4F48 /* SystemSettings.xml */,
+				50BA4C891862370800AC4F48 /* TimeInfo.xml */,
+				50BA4C8A1862370800AC4F48 /* Timeline */,
+				50BA4C8F1862370800AC4F48 /* TimelineSettings.xml */,
+				50BA4C901862370800AC4F48 /* UITimelineMappings.xml */,
+			);
+			path = NoiseAndScaling;
+			sourceTree = "<group>";
+		};
+		50BA4C8A1862370800AC4F48 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4C8B1862370800AC4F48 /* cameraTrack.xml */,
+				50BA4C8C1862370800AC4F48 /* IntroOutro.xml */,
+				50BA4C8D1862370800AC4F48 /* NoiseAndScaling_inout.xml */,
+				50BA4C8E1862370800AC4F48 /* NoiseAndScaling_zoomer.xml */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		50BA4C911862370800AC4F48 /* noiseFlow */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4C921862370800AC4F48 /* BgSettings.xml */,
+				50BA4C931862370800AC4F48 /* CamSettings.xml */,
+				50BA4C941862370800AC4F48 /* Cubes.xml */,
+				50BA4C951862370800AC4F48 /* FOG.xml */,
+				50BA4C961862370800AC4F48 /* LightSettings.xml */,
+				50BA4C971862370800AC4F48 /* MATERIAL 1Settings.xml */,
+				50BA4C981862370800AC4F48 /* MESH_RENDER.xml */,
+				50BA4C991862370800AC4F48 /* ofEasyCamSettings */,
+				50BA4C9A1862370800AC4F48 /* POINT LIGHT 1Settings.xml */,
+				50BA4C9B1862370800AC4F48 /* Presets.xml */,
+				50BA4C9C1862370800AC4F48 /* RenderSettings.xml */,
+				50BA4C9D1862370800AC4F48 /* Settings.xml */,
+				50BA4C9E1862370800AC4F48 /* SystemSettings.xml */,
+				50BA4C9F1862370800AC4F48 /* TimeInfo.xml */,
+				50BA4CA01862370800AC4F48 /* Timeline */,
+				50BA4CA51862370800AC4F48 /* TimelineSettings.xml */,
+				50BA4CA61862370800AC4F48 /* UITimelineMappings.xml */,
+			);
+			path = noiseFlow;
+			sourceTree = "<group>";
+		};
+		50BA4CA01862370800AC4F48 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4CA11862370800AC4F48 /* cameraTrack.xml */,
+				50BA4CA21862370800AC4F48 /* IntroOutro.xml */,
+				50BA4CA31862370800AC4F48 /* noiseFlow_inout.xml */,
+				50BA4CA41862370800AC4F48 /* noiseFlow_zoomer.xml */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		50BA4CA71862370800AC4F48 /* noiseScale */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4CA81862370800AC4F48 /* BgSettings.xml */,
+				50BA4CA91862370800AC4F48 /* CamSettings.xml */,
+				50BA4CAA1862370800AC4F48 /* Cubes.xml */,
+				50BA4CAB1862370800AC4F48 /* FOG.xml */,
+				50BA4CAC1862370800AC4F48 /* LightSettings.xml */,
+				50BA4CAD1862370800AC4F48 /* MATERIAL 1Settings.xml */,
+				50BA4CAE1862370800AC4F48 /* MESH_RENDER.xml */,
+				50BA4CAF1862370800AC4F48 /* ofEasyCamSettings */,
+				50BA4CB01862370800AC4F48 /* POINT LIGHT 1Settings.xml */,
+				50BA4CB11862370800AC4F48 /* Presets.xml */,
+				50BA4CB21862370800AC4F48 /* RenderSettings.xml */,
+				50BA4CB31862370800AC4F48 /* Settings.xml */,
+				50BA4CB41862370800AC4F48 /* SystemSettings.xml */,
+				50BA4CB51862370800AC4F48 /* TimeInfo.xml */,
+				50BA4CB61862370800AC4F48 /* Timeline */,
+				50BA4CBB1862370800AC4F48 /* TimelineSettings.xml */,
+				50BA4CBC1862370800AC4F48 /* UITimelineMappings.xml */,
+			);
+			path = noiseScale;
+			sourceTree = "<group>";
+		};
+		50BA4CB61862370800AC4F48 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4CB71862370800AC4F48 /* cameraTrack.xml */,
+				50BA4CB81862370800AC4F48 /* IntroOutro.xml */,
+				50BA4CB91862370800AC4F48 /* noiseScale_inout.xml */,
+				50BA4CBA1862370800AC4F48 /* noiseScale_zoomer.xml */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		50BA4CBD1862370800AC4F48 /* Working */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4CBE1862370800AC4F48 /* BgSettings.xml */,
+				50BA4CBF1862370800AC4F48 /* CamSettings.xml */,
+				50BA4CC01862370800AC4F48 /* Cubes.xml */,
+				50BA4CC11862370800AC4F48 /* FOG.xml */,
+				50BA4CC21862370800AC4F48 /* HEIGHTMAP.xml */,
+				50BA4CC31862370800AC4F48 /* LightSettings.xml */,
+				50BA4CC41862370800AC4F48 /* MATERIAL 1Settings.xml */,
+				50BA4CC51862370800AC4F48 /* MESH_RENDER.xml */,
+				50BA4CC61862370800AC4F48 /* MINECRAFT.xml */,
+				50BA4CC71862370800AC4F48 /* ofEasyCamSettings */,
+				50BA4CC81862370800AC4F48 /* POINT LIGHT 1Settings.xml */,
+				50BA4CC91862370800AC4F48 /* Presets.xml */,
+				50BA4CCA1862370800AC4F48 /* RenderSettings.xml */,
+				50BA4CCB1862370800AC4F48 /* Settings.xml */,
+				50BA4CCC1862370800AC4F48 /* SystemSettings.xml */,
+				50BA4CCD1862370800AC4F48 /* TimeInfo.xml */,
+				50BA4CCE1862370800AC4F48 /* Timeline */,
+				50BA4CD51862370800AC4F48 /* TimelineSettings.xml */,
+				50BA4CD61862370800AC4F48 /* UITimelineMappings.xml */,
+			);
+			path = Working;
+			sourceTree = "<group>";
+		};
+		50BA4CCE1862370800AC4F48 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				50BA4CCF1862370800AC4F48 /* cameraTrack.xml */,
+				50BA4CD01862370800AC4F48 /* IntroOutro.xml */,
+				50BA4CD11862370800AC4F48 /* Working_CUBECRAFT_trackPositions.xml */,
+				50BA4CD21862370800AC4F48 /* Working_inout.xml */,
+				50BA4CD31862370800AC4F48 /* Working_Page_One_trackPositions.xml */,
+				50BA4CD41862370800AC4F48 /* Working_zoomer.xml */,
+			);
+			path = Timeline;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
@@ -1285,6 +1997,7 @@
 			children = (
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				50BA4BC41862370800AC4F48 /* Presets */,
 				504016D5185D8AE00039386C /* shaders */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
@@ -1608,6 +2321,10 @@
 				50401701185D8B340039386C /* ofxObjLoader.cpp in Sources */,
 				50C3AB801860A59D00627388 /* cubeCraftShader.frag in Sources */,
 				50C3AB811860A59D00627388 /* cubeCraftShader.vert in Sources */,
+				50BA4BB91862155100AC4F48 /* mineCraftGround.frag in Sources */,
+				50BA4BBA1862155100AC4F48 /* mineCraftGround.vert in Sources */,
+				50BA4BC21862247C00AC4F48 /* mineCraftClouds.frag in Sources */,
+				50BA4BC31862247C00AC4F48 /* mineCraftClouds.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

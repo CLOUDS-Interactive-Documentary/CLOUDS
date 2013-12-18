@@ -28,9 +28,9 @@ void CubeCraft::selfSetupGui()
 	
 	customGui->addSpacer();
 	
-	customGui->addIntSlider("dimX", 1, 70, &dimX);
-	customGui->addIntSlider("dimY", 1, 70, &dimY);
-	customGui->addIntSlider("dimZ", 1, 70, &dimZ);
+	customGui->addIntSlider("dimX", 1, 250, &dimX);
+	customGui->addIntSlider("dimY", 1, 40, &dimY);
+	customGui->addIntSlider("dimZ", 1, 250, &dimZ);
 	
 	customGui->addSpacer();
 	
@@ -39,7 +39,7 @@ void CubeCraft::selfSetupGui()
 	
 	customGui->addSpacer();
 	
-	customGui->addSlider("noiseSpeed", -10, 10, &noiseSpeed);
+	customGui->addSlider("speed", -10, 10, &speed);
 	customGui->addSlider("noiseDirectionX", -1, 1, &noiseDirection.x);
 	customGui->addSlider("noiseDirectionY", -1, 1, &noiseDirection.y);
 	customGui->addSlider("noiseDirectionZ", -1, 1, &noiseDirection.z);
@@ -71,13 +71,13 @@ void CubeCraft::selfSetupGui()
 	
 	meshRenderGui->addSpacer();
 	
-//	meshRenderGui->addLabel("edgeColor");
+	meshRenderGui->addLabel("EdgeColor");
 	meshRenderGui->addImageSampler("edgeColor", &colorMap, 100, 100);
 	
-//	meshRenderGui->addLabel("FillColor");
+	meshRenderGui->addLabel("FillColor");
 	meshRenderGui->addImageSampler("fillColor", &colorMap, 100, 100);
 	
-//	meshRenderGui->addLabel("specColor");
+	meshRenderGui->addLabel("SpecColor");
 	meshRenderGui->addImageSampler("specColor", &colorMap, 100, 100);
 	
 	ofAddListener(meshRenderGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
@@ -96,9 +96,11 @@ void CubeCraft::selfSetupGui()
 	fogGui->setColorFillHighlight(ofFloatColor(1,1,1,1));
 	
 	fogGui->addToggle("bUseFog", &bUseFog);
-	fogGui->addSlider("fogDist", 10, 200, &fogDist);//->setColorFill(ofFloatColor(1,1,1,1));
-	fogGui->addSlider("fogExpo", .6, 3., &fogExpo);//->setColorFill(ofFloatColor(1,1,1,1));
-												   //	fogGui->addImageSampler("fogColor", &colorMap, 100, 100);
+	fogGui->addSlider("fogDist", 10, 200, &fogDist);
+	fogGui->addSlider("fogExpo", .6, 3., &fogExpo);
+	
+   //fogGui->addImageSampler("fogColor", &colorMap, 100, 100);
+	
 	fogGui->addSlider("fogHue", 0, 255, &fogHue);
 	fogGui->addSlider("fogSaturation", 0, 255, &fogSaturation);
 	fogGui->addSlider("fogBrightness", 0, 255, &fogBrightness);
@@ -116,10 +118,15 @@ void CubeCraft::selfSetupGui()
 	mineCraftGui->setName("MINECRAFT");
 	mineCraftGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
+	mineCraftGui->addIntSlider("mcDimX", 10, 200, &mineCraftDimX);
+	mineCraftGui->addIntSlider("mcDimY", 10, 200, &mineCraftDimY);
+	
+	mineCraftGui->addSpacer();
+	
 	mineCraftGui->addSlider("groundDrama", 0, 1, &groundDrama );
 	mineCraftGui->addSlider("cloudThreshold", 0, 1, &cloudThreshold );
 	mineCraftGui->addSlider("cloudHeight", 0, 10, &cloudHeight );
-	mineCraftGui->addSlider("cloudThickness", 0, 10, &cloudThickness );
+	mineCraftGui->addSlider("cloudThickness", 0, 50, &cloudThickness );
 	mineCraftGui->addSlider("cloudSpeed", -.1, .1, &cloudSpeed )->setIncrement(.001);
 	mineCraftGui->addSlider("cloudShadow", 0., 1, &cloudShadow );
 	
@@ -151,41 +158,24 @@ void CubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 	if(name == "edgeColor")
 	{
 		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
-		ofFloatColor col =  sampler->getColor();
-		edgeColor.r = col.r;
-		edgeColor.g = col.g;
-		edgeColor.b = col.b;
+		edgeColor =  sampler->getColor();
 	}
 	else if(name == "fillColor")
 	{
 		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
-		ofFloatColor col =  sampler->getColor();
-		fillColor.r = col.r;
-		fillColor.g = col.g;
-		fillColor.b = col.b;
+		fillColor = sampler->getColor();
 	}
 	else if(name == "specColor")
 	{
 		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
-		ofFloatColor col =  sampler->getColor();
-		fillColor2.r = col.r;
-		fillColor2.g = col.g;
-		fillColor2.b = col.b;
+		fillColor2 = sampler->getColor();
 	}
 	
-	else if(name == "fogColor")
-	{
-		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
-		ofFloatColor col =  sampler->getColor();
-		fogColor.r = col.r;
-		fogColor.g = col.g;
-		fogColor.b = col.b;
-		
-		fogColor.setSaturation(fogSaturation);
-	}
 	else if(name == "fogSaturation" || name == "fogHue" || name == "fogBrightness" )
 	{
-		fogColor = ofColor::fromHsb(MIN(fogHue,254.), fogSaturation, bgBri, 255);
+		fogColor.setHue(fogHue);
+		fogColor.setSaturation(fogSaturation);
+		fogColor.setBrightness(fogBrightness);
 	}
 	
 	else if(name == "groundHue" || name == "groundSaturation" || name == "groundBrightness")
@@ -212,16 +202,22 @@ void CubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 	
 	if(name == "dimX" || name == "dimY" || name == "dimZ" )
 	{
+		if(bDrawCubeCraft)
+		{
+			dimY = 1;
+		}
 		resizeVoxelGrid();
 	}
 	
 	if(name == "DrawCubeCraft" && e.getToggle()->getValue())
 	{
 		bDrawVoxels = false;
+		//resizeVoxelGrid();
 	}
 	if( name == "DrawVoxels" && e.getToggle()->getValue())
 	{
 		bDrawCubeCraft = false;
+		//resizeVoxelGrid();
 	}
 }
 
@@ -258,7 +254,7 @@ void CubeCraft::selfSetDefaults()
 	dimY = 2;
 	dimZ = 2;
 	
-	noiseSpeed = 1.;
+	speed = 1.;
 	noiseDirection.set( 0,1,0);
 	
 	edgeSmoothing = .01;
@@ -293,11 +289,20 @@ void CubeCraft::selfSetup()
 
 void CubeCraft::loadShaders()
 {
-	voxelShader.unload();
-	voxelShader.load( getVisualSystemDataPath() + "shaders/voxelShader");
+	unloadShaders();
 	
-	cubeCraftShader.unload();
+	voxelShader.load( getVisualSystemDataPath() + "shaders/voxelShader");
 	cubeCraftShader.load( getVisualSystemDataPath() + "shaders/cubeCraftShader" );
+	mineCraftGroundShader.load( getVisualSystemDataPath() + "shaders/mineCraftGround");
+	mineCraftCloudsShader.load( getVisualSystemDataPath() + "shaders/mineCraftClouds");
+}
+
+void CubeCraft::unloadShaders()
+{
+	voxelShader.unload();
+	cubeCraftShader.unload();
+	mineCraftGroundShader.unload();
+	mineCraftCloudsShader.unload();
 }
 
 void CubeCraft::selfBegin()
@@ -311,11 +316,11 @@ void CubeCraft::selfUpdate()
 	float currentTime = ofGetElapsedTimef();
 //	ofSetWindowTitle( ofToString( ofGetFrameRate() ) );
 	float tDelta = currentTime - lastTime;
-	noiseTime += tDelta * noiseSpeed;
+	noiseTime += tDelta * speed;
 	
 	lastTime = currentTime;
 	
-	cameraOffset += getCameraRef().getLookAtDir() * tDelta * noiseSpeed;
+	cameraOffset += getCameraRef().getLookAtDir() * tDelta * speed;
 	
 	ofSetWindowTitle( ofToString( ofGetFrameRate() ) );
 }
@@ -361,16 +366,21 @@ void CubeCraft::drawVoxelGrid()
 	voxelShader.setUniform1f("specExpo", specExpo);
 	voxelShader.setUniform1f("specScale", specScale);
 	
-	voxelShader.setUniform4f("fogColor", fogColor.r, fogColor.g, fogColor.g, fogColor.a );
+	fc = fogColor;
+	voxelShader.setUniform4f("fogColor", fc.r, fc.g, fc.g, fc.a );
 	voxelShader.setUniform1f("fogDist", fogDist );
 	voxelShader.setUniform1f("fogExpo", fogExpo );
 	
 	voxelShader.setUniform1f("useFog", bUseFog);
 	
 	voxelShader.setUniform1f("edgeSmoothing", edgeSmoothing );
-	voxelShader.setUniform4f("edgeColor", edgeColor.r, edgeColor.g, edgeColor.b, edgeColor.a );
-	voxelShader.setUniform4f("fillColor", fillColor.r, fillColor.g, fillColor.b, fillColor.a );
-	voxelShader.setUniform4f("specularColor", fillColor2.r, fillColor2.g, fillColor2.b, fillColor2.a );
+	
+	fc = edgeColor;
+	voxelShader.setUniform4f("edgeColor", fc.r, fc.g, fc.b, fc.a );
+	fc = fillColor;
+	voxelShader.setUniform4f("fillColor", fc.r, fc.g, fc.b, fc.a );
+	fc = fillColor2;
+	voxelShader.setUniform4f("specularColor", fc.r, fc.g, fc.b, fc.a );
 	
 	voxelShader.setUniform1f("dimX", dimX );
 	voxelShader.setUniform1f("dimY", dimY );
@@ -409,52 +419,101 @@ void CubeCraft::drawCubeCraft()
 	ofPushMatrix();
 	ofScale(scale,scale,scale);
 	
-	cubeCraftShader.begin();
-	cubeCraftShader.setUniform1f("cameraCutoffDistance", 3);
+	mineCraftGroundShader.begin();
 	
-	cubeCraftShader.setUniform1f("specExpo", specExpo);
-	cubeCraftShader.setUniform1f("specScale", specScale);
+	mineCraftGroundShader.begin();
+	mineCraftGroundShader.setUniform1f("cameraCutoffDistance", 3);
 	
-	cubeCraftShader.setUniform4f("fogColor", fogColor.r, fogColor.g, fogColor.b, fogColor.a );
-	cubeCraftShader.setUniform1f("fogDist", fogDist );
-	cubeCraftShader.setUniform1f("fogExpo", fogExpo );
-	
-	cubeCraftShader.setUniform1f("useFog", bUseFog);
+	mineCraftGroundShader.setUniform1f("specExpo", specExpo);
+	mineCraftGroundShader.setUniform1f("specScale", specScale);
 
-	cubeCraftShader.setUniform4f("fillColor", fillColor.r, fillColor.g, fillColor.b, fillColor.a );
-	cubeCraftShader.setUniform4f("specularColor", fillColor2.r, fillColor2.g, fillColor2.b, fillColor2.a );
+	fc = fogColor;
+	mineCraftGroundShader.setUniform4f("fogColor", fc.r, fc.g, fc.b, fc.a );
+	mineCraftGroundShader.setUniform1f("fogDist", fogDist );
+	mineCraftGroundShader.setUniform1f("fogExpo", fogExpo );
+
+	mineCraftGroundShader.setUniform1f("useFog", bUseFog);
 	
-	ofFloatColor c = groundColor;
-	cubeCraftShader.setUniform4f("groundColor", c.r, c.g, c.b, c.a );
-	
-	c = undergroundColor;
-	cubeCraftShader.setUniform4f("undergroundColor", c.r, c.g, c.b, c.a );
-	
-	c = cloudShadowColor;
-	cubeCraftShader.setUniform4f("cloudShadowColor", c.r, c.g, c.b, c.a );
-	
-	cubeCraftShader.setUniform1f("dimX", dimX );
-	cubeCraftShader.setUniform1f("dimY", dimY );
-	cubeCraftShader.setUniform1f("dimZ", dimZ );
-	cubeCraftShader.setUniform3f("minBound", -.5 * dimX, -.5 * dimY, -.5 * dimZ);
-	cubeCraftShader.setUniform3f("maxBound", .5 * dimX, .5 * dimY, .5 * dimZ);
-	
+	fc = fillColor2;
+	mineCraftGroundShader.setUniform4f("specularColor", fc.r, fc.g, fc.b, fc.a );
+
+	fc = groundColor;
+	mineCraftGroundShader.setUniform4f("groundColor", fc.r, fc.g, fc.b, fc.a );
+
+	fc = undergroundColor;
+	mineCraftGroundShader.setUniform4f("undergroundColor", fc.r, fc.g, fc.b, fc.a );
+
+	fc = cloudShadowColor;
+	cubeCraftShader.setUniform4f("cloudShadowColor", fc.r, fc.g, fc.b, fc.a );
+//
+//	cubeCraftShader.setUniform1f("dimX", dimX );
+//	cubeCraftShader.setUniform1f("dimY", dimY );
+//	cubeCraftShader.setUniform1f("dimZ", dimZ );
+//	cubeCraftShader.setUniform3f("minBound", -.5 * dimX, -.5 * dimY, -.5 * dimZ);
+//	cubeCraftShader.setUniform3f("maxBound", .5 * dimX, .5 * dimY, .5 * dimZ);
+//	
 	ofVec3f cp = getCameraRef().getPosition() / scale;
-	cubeCraftShader.setUniform3f("cameraPos", cp.x, cp.y, cp.z );
+	mineCraftGroundShader.setUniform3f("cameraPos", cp.x, cp.y, cp.z );
 	
-	cubeCraftShader.setUniform1f("cloudThreshold", cloudThreshold);
-	cubeCraftShader.setUniform1f("cloudHeight", cloudHeight);
-	cubeCraftShader.setUniform1f("cloudThickness", cloudThickness);
-	cubeCraftShader.setUniform1f("cloudShadow", 1. - cloudShadow);
-	cubeCraftShader.setUniform1f("groundDrama", groundDrama);
-	
+	mineCraftGroundShader.setUniform1f("cloudThreshold", cloudThreshold);
+	mineCraftGroundShader.setUniform1f("cloudShadow", 1. - cloudShadow);
+	mineCraftGroundShader.setUniform1f("groundDrama", groundDrama);
+
 	ofVec3f cloudVel = noiseDirection * noiseTime * cloudSpeed;
-	cubeCraftShader.setUniform3f("noiseOffset", cloudVel.x, cloudVel.y, cloudVel.z);
-	cubeCraftShader.setUniform3f("cameraOffset", -cameraOffset.x, 0., -cameraOffset.z);
+	mineCraftGroundShader.setUniform3f("noiseOffset", cloudVel.x, cloudVel.y, cloudVel.z);
+	mineCraftGroundShader.setUniform3f("cameraOffset", -cameraOffset.x, 0., -cameraOffset.z);
+	
+	mineCraftGroundShader.setUniform3f("cubeScale", 1,1,1 );
+	
+	
+
+	voxelVbo.draw(GL_TRIANGLES, 0, voxelIndexCount );
+
+	mineCraftGroundShader.end();
+	
+	
+	//CLOUDS
+	mineCraftCloudsShader.begin();
+	
+	mineCraftCloudsShader.begin();
+	mineCraftCloudsShader.setUniform1f("cameraCutoffDistance", 3);
+	
+	mineCraftCloudsShader.setUniform1f("specExpo", specExpo);
+	mineCraftCloudsShader.setUniform1f("specScale", specScale);
+	
+	fc = fogColor;
+	mineCraftCloudsShader.setUniform4f("fogColor", fc.r, fc.g, fc.b, fc.a );
+	mineCraftCloudsShader.setUniform1f("fogDist", fogDist );
+	mineCraftCloudsShader.setUniform1f("fogExpo", fogExpo );
+	
+	mineCraftCloudsShader.setUniform1f("useFog", bUseFog);
+	
+	fc = fillColor2;
+	mineCraftCloudsShader.setUniform4f("specularColor", fc.r, fc.g, fc.b, fc.a );
+	
+	fc = groundColor;
+	mineCraftCloudsShader.setUniform4f("groundColor", fc.r, fc.g, fc.b, fc.a );
+	
+	fc = undergroundColor;
+	mineCraftCloudsShader.setUniform4f("undergroundColor", fc.r, fc.g, fc.b, fc.a );
+	
+	
+	mineCraftCloudsShader.setUniform1f("cloudHeight", cloudHeight);
+	mineCraftCloudsShader.setUniform1f("cloudThickness", cloudThickness);
+
+	mineCraftCloudsShader.setUniform3f("cameraPos", cp.x, cp.y, cp.z );
+	
+	mineCraftCloudsShader.setUniform1f("cloudThreshold", cloudThreshold);
+	mineCraftCloudsShader.setUniform1f("cloudShadow", 1. - cloudShadow);
+	mineCraftCloudsShader.setUniform1f("groundDrama", groundDrama);
+	
+	mineCraftCloudsShader.setUniform3f("noiseOffset", cloudVel.x, cloudVel.y, cloudVel.z);
+	mineCraftCloudsShader.setUniform3f("cameraOffset", -cameraOffset.x, 0., -cameraOffset.z);
 	
 	voxelVbo.draw(GL_TRIANGLES, 0, voxelIndexCount );
 	
-	cubeCraftShader.end();
+	mineCraftGroundShader.end();
+	
 	
 	ofPopMatrix();
 	
@@ -584,6 +643,8 @@ void CubeCraft::selfExit()
 	voxelVbo.clear();
 	
 	cubeVbo.clear();
+	
+	unloadShaders();
 }
 
 void CubeCraft::selfKeyPressed(ofKeyEventArgs & args)
