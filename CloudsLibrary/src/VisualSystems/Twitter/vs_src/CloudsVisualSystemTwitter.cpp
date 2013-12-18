@@ -66,6 +66,7 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     meshExpansion = 100;
     pointSize =10;
     
+    rotationRate = 360;
     
 //    tweetModifier.r = 1.0;
 //    tweetModifier.g = 0.65;
@@ -192,6 +193,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addSpacer();
     clusterGui->addToggle("ROTATE", &rotateModel);
 
+    clusterGui->addMinimalSlider("ROTATION RATE", .01, 1, &rotationRate);
 	ofAddListener(clusterGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(clusterGui);
 	guimap[clusterGui->getName()] = clusterGui;
@@ -816,7 +818,8 @@ void CloudsVisualSystemTwitter::selfSceneTransformation(){
     
 	//TODO: time dependent & make slider
     if(rotateModel){
-        ofRotateZ(ofGetFrameNum()%360);
+        ofRotateZ( (int)rotationAmount);
+//        rotationAmount +=ofGetElapsedRimrotationRate ;
     }
     
 }
