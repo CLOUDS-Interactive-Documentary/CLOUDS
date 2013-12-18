@@ -42,7 +42,7 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>noiseSpeed</Name>
+    <Name>speed</Name>
     <Value>0.0522156</Value>
 </Widget>
 <Widget>
