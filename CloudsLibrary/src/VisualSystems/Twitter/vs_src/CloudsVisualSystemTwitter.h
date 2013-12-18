@@ -91,9 +91,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     //draw stuff
     void loadMesh();
-    void updateMesh();
-    void reloadMeshColor();
     void updateMeshFromTweets(int index);
+    void updateMesh();
     void drawText(string text, ofVec3f pos);
     void drawText2D(string text, ofVec2f pos);
 

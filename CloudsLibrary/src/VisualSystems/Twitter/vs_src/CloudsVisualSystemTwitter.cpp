@@ -390,109 +390,59 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
     activeTweets.clear();
     
     for(int i = 0; i < tweeters.size(); i++){
-        if(tweeters[i].hasTweetOnDate(dateIndex[index])){
-            activeTweeters.push_back(&tweeters[i]);
-            vector<Tweet> tweetsOnDate = tweeters[i].getTweetsByDate(dateIndex[index]);
+		//pop their connections
+        if(!tweeters[i].hasTweetOnDate(dateIndex[index])){
+			continue;
+		}
+			
+		activeTweeters.push_back(&tweeters[i]);
+		vector<Tweet> tweetsOnDate = tweeters[i].getTweetsByDate(dateIndex[index]);
+		
+		//pop the active tweeter node
+		nodeMesh.getNormals()[tweeters[i].nodeVertexIndex].y = 1.0;
 
-            for(int k = 0; k < tweetsOnDate.size(); k ++){
-                activeTweets.push_back(tweetsOnDate[k].tweet);
-                if(tweetsOnDate[k].mentionedUsers.size() > 1){
-                    for(int l = 0; l < tweetsOnDate[k].mentionedUsers.size(); l++){
-                        int user = getUserIdByName(tweetsOnDate[k].mentionedUsers[l]);
-                        if(user != -1){
-                            
-                            Tweeter& t = getTweeterByID(user);
-                            if(lineIndexPairs.find(make_pair(tweeters[i].name, t.name)) != lineIndexPairs.end()){
-                                
-                                pair<int, int> currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
-//                                edgeMesh.setColor(currentIndeces.first, tweetColor);
-//                                edgeMesh.setColor(currentIndeces.second, tweetColor);
-                                int ind = MIN(currentIndeces.first,currentIndeces.second);
-                                ind++;
-//                                edgeMesh.setColor(ind, nodeActiveMidpointColor);
-                            }
-                            else if(lineIndexPairs.find(make_pair(t.name,tweeters[i].name)) != lineIndexPairs.end()){
-                                
-                                pair<int, int> currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
-//                                edgeMesh.setColor(currentIndeces.first, tweetColor);
-//                                edgeMesh.setColor(currentIndeces.second, tweetColor);
-                                int ind = MIN(currentIndeces.first,currentIndeces.second);
-                                ind++;
-//                                edgeMesh.setColor(ind, nodeActiveMidpointColor);
-                            }
-                            else{
-                            }
-                        }
-                    }
-                }
-
+		for(int k = 0; k < tweetsOnDate.size(); k ++){
+			activeTweets.push_back(tweetsOnDate[k].tweet);
+//			if(tweetsOnDate[k].mentionedUsers.size() > 1){
+			for(int l = 0; l < tweetsOnDate[k].mentionedUsers.size(); l++){
+				int user = getUserIdByName(tweetsOnDate[k].mentionedUsers[l]);
+				if(user == -1){
+					continue;
+				}
+				
+				Tweeter& t = getTweeterByID(user);
+				//find the nodes
+				pair<int, int> currentIndeces;
+				
+				if(lineIndexPairs.find(make_pair(tweeters[i].name, t.name)) != lineIndexPairs.end()){
+					currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
+				}
+				else if(lineIndexPairs.find(make_pair(t.name,tweeters[i].name)) != lineIndexPairs.end()){
+					pair<int, int> currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
+				}
+				else{
+					//error!!
+					continue;
+				}
+				//set the edges
+				edgeMesh.getNormals()[currentIndeces.first].y = 1.0;
+				edgeMesh.getNormals()[currentIndeces.second].y = 1.0;
+				int ind = MIN(currentIndeces.first,currentIndeces.second) + 1;
+				edgeMesh.getNormals()[ind++].y = 1.0;
+				edgeMesh.getNormals()[ind  ].y = 1.0;
             }
-//            nodeMesh.setColor(tweeters[i].nodeVertexIndex, nodeActiveColor);
         }
     }
 }
-void CloudsVisualSystemTwitter::updateMesh(){
-    
-//    for(int i= 0; i<nodeMesh.getColors().size(); i++){
-        
-//        ofFloatColor c = nodeMesh.getColor(i);
-//        if(c != nodeColor){
-//            float h = ofLerp(c.getHue(), nodeColor.getHue(), edgeDecayRate);
-//            float s = ofLerp(c.getSaturation(), nodeColor.getSaturation(), edgeDecayRate);
-//            float b = ofLerp(c.getBrightness() , nodeColor.getBrightness(),edgeDecayRate);
-//            float a =ofLerp(c.a , nodeColor.a,edgeDecayRate);
-//            c.setHsb(h, s, b);
-//            c.a = a;
-//            nodeMesh.setColor(i, c);
-//        }
-//        else{
-//            nodeMesh.setColor(i, c);
-//        }
-//    }
-//    for(int i= 0; i<edgeMesh.getColors().size(); i++){
-//        ofFloatColor c = edgeMesh.getColor(i);
-//        if(edgeMesh.getNormal(i).y == 1){
-//            if(c != nodeMidpointColor){
-//                float h = ofLerp(c.getHue(), nodeMidpointColor.getHue(), edgeDecayRate);
-//                float s = ofLerp(c.getSaturation(), nodeMidpointColor.getSaturation(), edgeDecayRate);
-//                float b = ofLerp(c.getBrightness() , nodeMidpointColor.getBrightness(),edgeDecayRate);
-//                float a =ofLerp(c.a , nodeMidpointColor.a,edgeDecayRate);
-//                
-//                c.setHsb(h, s, b);
-//                c.a = a;
-//                edgeMesh.setColor(i,c);
-//            }
-//            else{
-//                edgeMesh.setColor(i,nodeMidpointColor);
-//            }
-//        }
-//        else{
-//            if(c != baseColor){
-//                
-//                float h = ofLerp(c.getHue(), baseColor.getHue(), edgeDecayRate);
-//                float s = ofLerp(c.getSaturation(), baseColor.getSaturation(), edgeDecayRate);
-//                float b = ofLerp(c.getBrightness() , baseColor.getBrightness(),edgeDecayRate);
-//                float a =ofLerp(c.a , baseColor.a,edgeDecayRate);
-//                
-//                c.setHsb(h, s, b);
-//                c.a = a;
-//                
-//                edgeMesh.setColor(i,c);
-//
-//            }
-//            else{
-//                edgeMesh.setColor(i, baseColor);
-//            }
-//        }
-//   }
-	
-}
 
-void CloudsVisualSystemTwitter::reloadMeshColor(){
+void CloudsVisualSystemTwitter::updateMesh(){
+	for(int i = 0; i < nodeMesh.getVertices().size(); i++){
+		nodeMesh.getNormals()[i].y *= .95;
+	}
 	
-//    for(int i=0; i<edgeMesh.getVertices().size();i++){
-//        edgeMesh.setColor(i, baseColor);
-//    }
+	for(int i = 0; i < edgeMesh.getVertices().size(); i++){
+		edgeMesh.getNormals()[i].y *= .95;
+	}
 }
 
 void CloudsVisualSystemTwitter::loadMesh(){
@@ -553,7 +503,6 @@ void CloudsVisualSystemTwitter::loadMesh(){
         
         nodeMesh.addVertex(tweeters[j].position);
         nodeMesh.addNormal(ofVec3f(0,0,0));
-//        nodeMesh.addColor(ofFloatColor(nodeColor));
         tweeters[j].nodeVertexIndex = currentIndex;
         currentIndex++;
     }
@@ -749,7 +698,7 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
     currentDateIndex = dateIndex.size() -1;
     updateMeshFromTweets(currentDateIndex);
-    reloadMeshColor();
+    
     
 }
 
@@ -829,7 +778,7 @@ void CloudsVisualSystemTwitter::selfSceneTransformation(){
 void CloudsVisualSystemTwitter::selfUpdate()
 {
     
-	//reloadMeshColor();
+
 	
     if(ofGetFrameNum() % refreshRate < 1 && bAnimate){
         currentDateIndex--;
@@ -870,6 +819,12 @@ void CloudsVisualSystemTwitter::selfDraw()
 	
     if(bRenderMesh){
 		pointsShader.begin();
+		
+		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
+		glEnable(GL_POINT_SMOOTH);
+		
+		pointsShader.setUniform1f("pointSize", 10.0);
 		pointsShader.setUniform4f("nodeBaseColor",
 								  nodeBaseColor.r,
 								  nodeBaseColor.g,
@@ -886,20 +841,20 @@ void CloudsVisualSystemTwitter::selfDraw()
 		
 		lineShader.begin();
 		lineShader.setUniform4f("lineNodeBase",
-								  lineNodeBase.r,
-								  lineNodeBase.g,
-								  lineNodeBase.b,
-								  lineNodeBase.a);
+								lineNodeBase.r,
+								lineNodeBase.g,
+								lineNodeBase.b,
+								lineNodeBase.a);
 		lineShader.setUniform4f("lineEdgeBase",
-								  lineEdgeBase.r,
-								  lineEdgeBase.g,
-								  lineEdgeBase.b,
-								  lineEdgeBase.a);
+								lineEdgeBase.r,
+								lineEdgeBase.g,
+								lineEdgeBase.b,
+								lineEdgeBase.a);
 		lineShader.setUniform4f("lineNodePop",
-								  lineNodePop.r,
-								  lineNodePop.g,
-								  lineNodePop.b,
-								  lineNodePop.a);
+								lineNodePop.r,
+								lineNodePop.g,
+								lineNodePop.b,
+								lineNodePop.a);
 		lineShader.setUniform4f("lineEdgePop",
 								  lineEdgePop.r,
 								  lineEdgePop.g,

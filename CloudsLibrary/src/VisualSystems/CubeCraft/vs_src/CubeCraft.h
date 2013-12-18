@@ -151,7 +151,16 @@ protected:
 	bool bDrawVoxels, bDrawCubeCraft;
 	
 	
-	float groundDrama, cloudThreshold, cloudHeight, cloudSpeed, cloudThickness;
+	float groundDrama, cloudThreshold, cloudHeight, cloudSpeed, cloudThickness, cloudShadow;
+	
+	ofColor groundColor;
+	float groundHue, groundSaturation, groundBrightness;
+	
+	ofColor undergroundColor;
+	float undergroundHue, undergroundSaturation, undergroundBrightness;
+	
+	ofColor cloudShadowColor;
+	float cloudShadowHue, cloudShadowSaturation, cloudShadowBrightness;
 	
 //	ofImage groundMap;
 	ofVec3f cameraOffset;
