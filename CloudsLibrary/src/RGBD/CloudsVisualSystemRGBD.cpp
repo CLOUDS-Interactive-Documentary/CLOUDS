@@ -84,9 +84,9 @@ void CloudsVisualSystemRGBD::selfSetup(){
 }
 
 void CloudsVisualSystemRGBD::playTestVideo(){
-	if(ofFile::doesFileExist("TestVideo/Binx_field_of_data_vis.mov")){
-		getRGBDVideoPlayer().setup("TestVideo/Binx_field_of_data_vis.mov",
-								   "TestVideo/Binx_field_of_data_vis.xml" );
+	if(ofFile::doesFileExist("TestVideo/Elliot_UK_wiremape_description.mov")){
+		getRGBDVideoPlayer().setup("TestVideo/Elliot_UK_wiremape_description.mov",
+								   "TestVideo/Elliot_UK_wiremape_description.xml" );
 		getRGBDVideoPlayer().swapAndPlay();
 	}
 }
@@ -190,56 +190,17 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     meshGui->setName("Mesh");
     meshGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	meshGui->addToggle("Draw Mesh", &drawMesh);
+	meshGui->addSlider("Mesh Alpha", 0., 1.0, &meshAlpha);
 	meshGui->addSlider("X Simplify", 1., 16., &xSimplify);
 	meshGui->addSlider("Y Simplify", 1., 16., &ySimplify);
 	meshGui->addSlider("Random Variance", 0, 10.0, &randomVariance);
+	meshGui->addSlider("Face Min Radius", 0, 300., &meshFaceMinRadius);
+	meshGui->addSlider("Face Falloff", 0, 300., &meshFaceFalloff);
+	float meshFaceFalloff;
 
 	ofAddListener(meshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
 	guis.push_back(meshGui);
 	guimap[meshGui->getName()] = meshGui;
-
-//	meshGui->addToggle("DRAW CLOUD", &drawCloud);
-//	
-//	meshGui->addSlider("CLOUD SCALE", .001,  1.0, &pointcloudScale);
-//	meshGui->addSlider("CLOUD OFFSET",   0, -800, &pointcloudOffsetZ);
-//	
-//	meshGui->addLabel("MESH");
-//	meshGui->addToggle("DRAW MESH", &drawMesh);
-//	meshGui->addSlider("MESH ALPHA", 0, 1.0f, &meshAlpha);
-//	meshGui->addSlider("SKIN MULTIPLIER", 0, 1.0f, &skinMultiplier);
-//	meshGui->addSlider("EYE MULTIPLIER", 0, 1.0f, &eyeMultiplier);
-//	
-//	meshGui->addLabel("POINTS");
-//	meshGui->addToggle("DRAW POINTS", &drawPoints);
-//	meshGui->addSlider("SIZE MAX", 0, 3, &pointSizeMax);
-//	meshGui->addSlider("SIZE MIN", 0, 3, &pointSizeMin);
-//	meshGui->addSpacer();
-//	meshGui->addSlider("P GRID ALPHA", 0, 1.0, &pointGridAlpha);
-//	meshGui->addSlider("P GRID VERT SPACE", 1, 10, &pointVerticalSpace);
-//	meshGui->addSlider("P GRID HORI SPACE", 1, 10, &pointHorizontalSpace);
-//	meshGui->addSpacer();
-//	meshGui->addSlider("NUM RANDOM POINTS", 0, 500000.0f, &numRandomPoints);
-//	meshGui->addSlider("RANDOM ALPHA", 0, 1.0f, &randomPointAlpha);
-//	
-//	meshGui->addLabel("LINES");
-//	meshGui->addToggle("DRAW LINES", &drawScanlines);
-//	meshGui->addSlider("VERT LINE SPACE", .5, 12, &scanlineSimplify.x);
-//	meshGui->addSlider("VERT LINE ALPHA", 0, 1.0, &verticalScanlineAlpha);
-//	meshGui->addSlider("VERT LINE THICKNESS", 0, 2.0, &verticalScanlineThickness);
-//	meshGui->addSpacer();
-//	meshGui->addSlider("HORIZ LINE SPACE", .5, 12, &scanlineSimplify.y);
-//	meshGui->addSlider("HORIZ LINE ALPHA", 0, 1.0, &horizontalScanlineAlpha);
-//	meshGui->addSlider("HORIZ LINE THICKNESS", 0, 2.0, &horizontalScanlineThickness);
-//	
-//	meshGui->addLabel("FLOW");
-//	meshGui->addSlider("CLOUD FLOW", -5, 5, &cloudFlow);
-//	
-//	meshGui->addSlider("LIGHT_OFFSET_Y", -100, 100, &lightOffsetY);
-//	meshGui->addSlider("LIGHT_OFFSET_Z", 0, 100, &lightOffsetZ);
-
-//	ofAddListener(meshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
-//	guis.push_back(meshGui);
-//	guimap[meshGui->getName()] = meshGui;
 	
 	cameraGui = new ofxUISuperCanvas("CAMERA", gui);
 	cameraGui->copyCanvasStyle(gui);
@@ -328,8 +289,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfUpdate(){
 	
-
-		
 	if(numRandomPoints != points.getNumVertices()){
 		generatePoints();
 	}
@@ -591,58 +550,6 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOut(){
 	setCurrentCamera( transitionCam );
 }
 
-
-//--------------------------------------------------------------
-//void CloudsVisualSystemRGBD::generatePointGrid(){
-	
-//	pointGrid.clear();
-//	
-//	pointVerticalSpace = MAX(pointVerticalSpace, 1);
-//	pointHorizontalSpace = MAX(pointHorizontalSpace, 1);
-//	for(float y = 0; y <= 480; y+= pointVerticalSpace){
-//		for(float x = 0; x <= 640; x+= pointHorizontalSpace){
-//			pointGrid.addVertex(ofVec3f(x,y,0));
-//		}
-//	}
-//        ofRange(clip1.start,clip1.end).intersects(ofRange(clip2.start,clip2.end))
-
-    //of
-//	pointGrid.clearIndices();
-//	int x = 0;
-//	int y = 0;
-//	
-//	int gw = ceil(640 / pointHorizontalSpace);
-//	int w = gw*pointHorizontalSpace;
-//	int h = 480;
-//	
-//	for (float ystep = 0; ystep < h-pointVerticalSpace; ystep += pointVerticalSpace){
-//		for (float xstep = 0; xstep < w-pointHorizontalSpace; xstep += pointHorizontalSpace){
-//			ofIndexType a,b,c;
-//			
-//			a = x+y*gw;
-//			b = (x+1)+y*gw;
-//			c = x+(y+1)*gw;
-//			pointGrid.addIndex(a);
-//			pointGrid.addIndex(b);
-//			pointGrid.addIndex(c);
-//            
-//			a = (x+1)+(y+1)*gw;
-//			b = x+(y+1)*gw;
-//			c = (x+1)+(y)*gw;
-//			pointGrid.addIndex(a);
-//			pointGrid.addIndex(b);
-//			pointGrid.addIndex(c);
-//			
-//			x++;
-//		}
-//		
-//		y++;
-//		x = 0;
-//	}
-
-//	pointGrid.setMode(OF_PRIMITIVE_POINTS);
-//}
-
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::generatePoints(){
 	
@@ -701,11 +608,9 @@ void CloudsVisualSystemRGBD::generateLines(){
 
 
 void CloudsVisualSystemRGBD::generateMesh(){
-	
-	
+		
 	if(xSimplify <= 0) xSimplify = 1.0;
 	if(ySimplify <= 0) ySimplify = 1.0;
-		
 
 	int x = 0;
 	int y = 0;
@@ -718,7 +623,8 @@ void CloudsVisualSystemRGBD::generateMesh(){
 	
 	for (float y = 0; y < 480; y += ySimplify){
 		for (float x = 0; x < 640; x += xSimplify){
-			vertices.push_back(ofVec3f(x,y,0));
+			vertices.push_back(ofVec3f(x + ofRandomf()*randomVariance,
+									   y + ofRandomf()*randomVariance,0));
 		}
 	}
 	
@@ -776,55 +682,6 @@ void CloudsVisualSystemRGBD::generateMesh(){
 	}
 	
 	mesh.setMode(OF_PRIMITIVE_TRIANGLES);
-	/*
-	if(percentChanceOfPoint == lastPercentChanceOfPoint ||
-	   triangulationXStep == lastTriangulationXStep ||
-	   triangulationYStep == lastTriangulationYStep)
-	{
-		return;
-	}
-
-	delaunay.reset();
-
-	for(float y = 0; y < 480; y += triangulationYStep){
-		for(float x = 0; x < 640; x += triangulationXStep){
-			if(ofRandomuf() < percentChanceOfPoint){
-				delaunay.addPoint(ofVec2f(x,y));
-			}
-		}
-	}
-	
-	lastPercentChanceOfPoint = percentChanceOfPoint;
-	lastTriangulationXStep = triangulationXStep;
-	lastTriangulationYStep = triangulationYStep;
-
-	delaunay.triangulate();
-	
-	ofMesh& dmesh = delaunay.triangleMesh;
-	triangulation.clear();
-	for(int i = 0; i < dmesh.getNumIndices(); i += 3){
-		
-		ofVec3f& a = dmesh.getVertices()[ dmesh.getIndices()[i  ] ];
-		ofVec3f& b = dmesh.getVertices()[ dmesh.getIndices()[i+1] ];
-		ofVec3f& c = dmesh.getVertices()[ dmesh.getIndices()[i+2] ];
-		
-		ofVec3f center = (a+b+c)/3.0;
-		
-		triangulation.addColor( ofFloatColor(b.x/640., b.y/480., c.x/640., c.y/480.) );
-		triangulation.addNormal(center);
-		triangulation.addVertex(a);
-
-		triangulation.addColor( ofFloatColor(a.x/640., a.y/480., c.x/640., c.y/480.) );
-		triangulation.addNormal(center);
-		triangulation.addVertex(b);
-		
-		triangulation.addColor( ofFloatColor(a.x/640., a.y/480., b.x/640., b.y/480.) );
-		triangulation.addNormal(center);
-		triangulation.addVertex(c);
-	
-	}
-	*/
-	
 	refreshMesh = false;
 }
 
@@ -912,13 +769,17 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
 		
 			meshShader.setUniform1f("triangleExtend", 1.0);
-			
-			ofSetColor(255,255*meshAlpha);
+			meshShader.setUniform1f("headMinRadius", meshFaceMinRadius);
+			meshShader.setUniform1f("headFalloff", meshFaceFalloff);
+			meshShader.setUniform1f("meshAlpha", meshAlpha);
 
 			mesh.draw();
 			
 			meshShader.end();
 		}
+		
+		glDisable(GL_DEPTH_TEST);
+		ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 			
 		if(drawLines){
 			lineShader.begin();
@@ -1243,7 +1104,10 @@ void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "Line Spacing" || e.widget->getName() == "Line Granularity") {
 		refreshLines = true;
 	}
-	else if(e.widget->getName() == "X Simplify" || e.widget->getName() == "Y Simplify"){
+	else if(e.widget->getName() == "X Simplify" ||
+			e.widget->getName() == "Y Simplify" ||
+			e.widget->getName() == "Random Variance")
+	{
 		refreshMesh = true;
 	}
 }
