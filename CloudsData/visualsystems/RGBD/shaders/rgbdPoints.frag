@@ -68,8 +68,7 @@ void main(){
 	/////basic coloring
 	gl_FragColor = gl_Color * col;
 	//////
-	
-	
+		
 	//apply lighting universaly
     //gl_FragColor = gl_Color * col * attenuate * calculateLight();
 	

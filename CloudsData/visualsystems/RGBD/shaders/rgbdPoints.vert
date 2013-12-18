@@ -41,7 +41,6 @@ uniform float maxDepth;
 
 uniform float triangleContract;
 
-uniform int useFaces;
 uniform vec3 headPosition;
 
 //FACE FEATURE

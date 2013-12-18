@@ -32,7 +32,6 @@ uniform vec4 normalRect;
 
 //GEOMETRY
 uniform vec2  simplify;
-uniform float flowPosition;
 uniform float farClip;
 uniform float nearClip;
 uniform float edgeClip;
@@ -42,6 +41,8 @@ uniform float maxDepth;
 
 uniform float triangleExtend;
 uniform vec3 headPosition;
+uniform float headMinRadius;
+uniform float headFalloff;
 
 //FACE FEATURE
 uniform vec4 faceFeatureRect;
@@ -134,7 +135,9 @@ void main(void){
                     depth, 1.0);
     
 	//HEAD POSITION
-	headPositionAttenuation = map(distance(pos.xyz,headPosition), 400, 50, 0.0, 1.0);
+	headPositionAttenuation = map( distance(pos.xyz,headPosition), headMinRadius+headFalloff, headMinRadius, .0, 1.0);
+//	headPositionAttenuation = distance(pos.xyz,headPosition) * .001;
+	
 	
 	//extract the normal and pass it along to the fragment shader
 	vec2 normalPos = samplePosExtended.xy + normalRect.xy;
@@ -145,8 +148,8 @@ void main(void){
 	vec3 vert = vec3(gl_ModelViewMatrix * pos);
 	eye = normalize(-vert);
 	
-    float neighborA = depthValueFromSample( depthRect.xy + samplePos + gl_Color.xy*depthRect.zw*triangleExtend );
-    float neighborB = depthValueFromSample( depthRect.xy + samplePos + gl_Color.zw*depthRect.zw*triangleExtend );
+    float neighborA = depthValueFromSample( depthRect.xy + samplePos + gl_Color.xy * depthRect.zw * triangleExtend );
+    float neighborB = depthValueFromSample( depthRect.xy + samplePos + gl_Color.zw * depthRect.zw * triangleExtend );
 	
 	positionValid = (depth < farClip &&
 					 neighborA < farClip &&
@@ -162,7 +165,7 @@ void main(void){
 	edgeAttenuate = (1.0 - max( 0.0, pow( abs(320. - samplePos.x) / 320., 1.5) - sideAttenuate) ) *
 					(1.0 - max( 0.0, pow( samplePos.y / 480., 3.0) + bottomAttenuate ));
 	
-	edgeAttenuate += (1. - edgeAttenuate) * pow(map(pos.z,maxDepth,minDepth,0.0,1.0),4.);
+	edgeAttenuate += (1.0 - edgeAttenuate) * pow(map(pos.z,maxDepth,minDepth,0.0,1.0),4.);
 
 	//positionValid = 1.0;
 	
@@ -195,5 +198,5 @@ void main(void){
 	//forceFade = max(isMeshed, 1.0 - triangleContract);
 	
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
-    gl_FrontColor = vec4(1.0);
+    gl_FrontColor = gl_Color;
 }
