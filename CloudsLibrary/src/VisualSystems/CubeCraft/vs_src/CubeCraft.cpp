@@ -121,6 +121,22 @@ void CubeCraft::selfSetupGui()
 	mineCraftGui->addSlider("cloudHeight", 0, 10, &cloudHeight );
 	mineCraftGui->addSlider("cloudThickness", 0, 10, &cloudThickness );
 	mineCraftGui->addSlider("cloudSpeed", -.1, .1, &cloudSpeed )->setIncrement(.001);
+	mineCraftGui->addSlider("cloudShadow", 0., 1, &cloudShadow );
+	
+	//colors
+	mineCraftGui->addLabel("GroundHSB");
+	mineCraftGui->addMinimalSlider("groundHue", 0, 255, &groundHue );
+	mineCraftGui->addMinimalSlider("groundSaturation", 0, 255, &groundSaturation );
+	mineCraftGui->addMinimalSlider("groundBrightness", 0, 255, &groundBrightness );
+	mineCraftGui->addLabel("UndergroundHSB");
+	mineCraftGui->addMinimalSlider("undergroundHue", 0, 255, &undergroundHue );
+	mineCraftGui->addMinimalSlider("undergroundSaturation", 0, 255, &undergroundSaturation );
+	mineCraftGui->addMinimalSlider("undergroundBrightness", 0, 255, &undergroundBrightness );
+	mineCraftGui->addLabel("CloudShadowHSB");
+	mineCraftGui->addMinimalSlider("cloudShadowHue", 0, 255, &cloudShadowHue );
+	mineCraftGui->addMinimalSlider("cloudShadowSaturation", 0, 255, &cloudShadowSaturation );
+	mineCraftGui->addMinimalSlider("cloudShadowBrightness", 0, 255, &cloudShadowBrightness );
+
 	
 	ofAddListener(mineCraftGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
 	guis.push_back(mineCraftGui);
@@ -170,6 +186,28 @@ void CubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 	else if(name == "fogSaturation" || name == "fogHue" || name == "fogBrightness" )
 	{
 		fogColor = ofColor::fromHsb(MIN(fogHue,254.), fogSaturation, bgBri, 255);
+	}
+	
+	else if(name == "groundHue" || name == "groundSaturation" || name == "groundBrightness")
+	{
+		groundColor.setHue(groundHue);
+		groundColor.setSaturation(groundSaturation);
+		groundColor.setBrightness(groundBrightness);
+	}
+	
+	else if(name == "cloudShadowHue" || name == "cloudShadowSaturation" || name == "cloudShadowBrightness")
+	{
+		cloudShadowColor.setHue(cloudShadowHue);
+		cloudShadowColor.setSaturation(cloudShadowSaturation);
+		cloudShadowColor.setBrightness(cloudShadowBrightness);
+	}
+	
+	
+	else if(name == "undergroundHue" || name == "undergroundSaturation" || name == "undergroundBrightness")
+	{
+		undergroundColor.setHue(undergroundHue);
+		undergroundColor.setSaturation(undergroundSaturation);
+		undergroundColor.setBrightness(undergroundBrightness);
 	}
 	
 	if(name == "dimX" || name == "dimY" || name == "dimZ" )
@@ -229,6 +267,7 @@ void CubeCraft::selfSetDefaults()
 	
 	
 	//cube craft
+	groundColor.set( .4, 1., .6, 1.);
 }
 
 void CubeCraft::selfSetup()
@@ -385,6 +424,15 @@ void CubeCraft::drawCubeCraft()
 	cubeCraftShader.setUniform4f("fillColor", fillColor.r, fillColor.g, fillColor.b, fillColor.a );
 	cubeCraftShader.setUniform4f("specularColor", fillColor2.r, fillColor2.g, fillColor2.b, fillColor2.a );
 	
+	ofFloatColor c = groundColor;
+	cubeCraftShader.setUniform4f("groundColor", c.r, c.g, c.b, c.a );
+	
+	c = undergroundColor;
+	cubeCraftShader.setUniform4f("undergroundColor", c.r, c.g, c.b, c.a );
+	
+	c = cloudShadowColor;
+	cubeCraftShader.setUniform4f("cloudShadowColor", c.r, c.g, c.b, c.a );
+	
 	cubeCraftShader.setUniform1f("dimX", dimX );
 	cubeCraftShader.setUniform1f("dimY", dimY );
 	cubeCraftShader.setUniform1f("dimZ", dimZ );
@@ -397,6 +445,7 @@ void CubeCraft::drawCubeCraft()
 	cubeCraftShader.setUniform1f("cloudThreshold", cloudThreshold);
 	cubeCraftShader.setUniform1f("cloudHeight", cloudHeight);
 	cubeCraftShader.setUniform1f("cloudThickness", cloudThickness);
+	cubeCraftShader.setUniform1f("cloudShadow", 1. - cloudShadow);
 	cubeCraftShader.setUniform1f("groundDrama", groundDrama);
 	
 	ofVec3f cloudVel = noiseDirection * noiseTime * cloudSpeed;

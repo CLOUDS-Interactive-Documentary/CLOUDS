@@ -28,6 +28,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
+	void selfSetDefaults();
+	
     void selfSetupGui();
     void selfGuiEvent(ofxUIEventArgs &e);
     void selfSetupSystemGui();
@@ -54,6 +56,9 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     void initSystem(string filePath);
     
+    
+    //twitter feed
+    void drawFeed();
     //i/o stuff
     void loadJSONData(string folderName);
     void addUsersFromMentions();
@@ -65,30 +70,31 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     //data stuff
     int getUserIdByName(string name);
     vector<Tweeter> getTweetersForDate(int index);
-    Tweeter& getTweeterByID(vector<Tweeter>& tweeters, int _id );
+    Tweeter& getTweeterByID(int _id );
     string getDateAsString(Date d);
     void drawTweetsForDate(int index);
     void CompareDates(Date d1,Date d2);
     void loadGraphFromPath(string filePath);
     void clearData();
     
+    //shader stuff
+    void reloadShaders();
 
     //text stuff
     ofxJSONElement result;
     ofxFTGLSimpleLayout font;
     ofxFTGLTextAlignment textAlign;
-    bool bRenderText;
+
     float stringWidth;
     float fontSize;
     int minUserMentions;
     
     //draw stuff
     void loadMesh();
-    void updateMesh();
-    void reloadMeshColor();
     void updateMeshFromTweets(int index);
+    void updateMesh();
     void drawText(string text, ofVec3f pos);
-    bool bRenderMesh;
+    void drawText2D(string text, ofVec2f pos);
 
     //helpers 
     vector<Date> dateIndex;
@@ -98,7 +104,12 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     map<string,int> numberOfMentions;
     int currentDateIndex;
     void updateLabelWithCurrentMeshName(string name);
-    
+
+    // Ma boooooools
+    bool bRenderMesh;
+    bool bRenderText;
+    bool bRenderFeed;
+    bool bAnimate;
 
     
 protected:
@@ -117,37 +128,36 @@ protected:
     float edgeDecayRate;
 
     ofImage sprite;
-    ofShader clusterShader;
+    ofShader lineShader;
+    ofShader pointsShader;
     float meshExpansion;
     float pointSize;
     ofxUISuperCanvas* clusterGui;
     ofxUISuperCanvas* textGui;
     ofxUISuperCanvas* twitterFeedGui;
     
-
     vector<Tweeter*> activeTweeters;
+    vector<string> activeTweets;
 
-    float baseHue,baseSat,baseBri,baseAlpha;
-    float tweetHue, tweetSat, tweetBri, tweetAlpha;
+    void addColorToGui(ofxUISuperCanvas* gui, string prefix, ofFloatColor& col, bool doAlpha = true);
+	
+	float edgeInterpolateExponent;
+	ofFloatColor getRGBfromHSV(ofFloatColor hsv);
+	//this is the base color of the lines close to the nodes
+	ofFloatColor lineNodeBaseHSV;
+	//this is the base color of the lines at the midpoint
+	ofFloatColor lineEdgeBaseHSV;
+	
+	//this is the pop color of the lines close to the nodes
+	ofFloatColor lineNodePopHSV;
+	//this is the pop color of the lines at the midpoint
+	ofFloatColor lineEdgePopHSV;
     
-    ofFloatColor baseColor;
-    ofFloatColor baseModifier;
-    
-    ofFloatColor tweetColor;
-    ofFloatColor tweetModifier;
-    
-    ofFloatColor nodeColor;
-    ofFloatColor nodeModifier;
-    
-    ofFloatColor nodeActiveColor;
-    ofFloatColor nodeActiveModifier;
-    
-    ofFloatColor nodeMidpointColor;
-    ofFloatColor nodeMidpointModifier;
-    
-    ofFloatColor nodeActiveMidpointColor;
-    ofFloatColor nodeActiveMidpointModifier;
-    
+	//this is the base color of the node
+	ofFloatColor nodeBaseColorHSV;
+	//this is the pop color of the node
+	ofFloatColor nodePopColorHSV;
+	   
     ofFloatColor textColor;
     ofFloatColor textColorModifier;
     

@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>MINECRAFT</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425</XPosition>
-    <YPosition>216</YPosition>
+    <XPosition>394</XPosition>
+    <YPosition>56</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>groundDrama</Name>
-    <Value>0.655172</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,15 +18,65 @@
 <Widget>
     <Kind>4</Kind>
     <Name>cloudHeight</Name>
-    <Value>2.75862</Value>
+    <Value>5.46798</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudThickness</Name>
-    <Value>5.02463</Value>
+    <Value>1.42857</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudSpeed</Name>
-    <Value>0.00962986</Value>
+    <Value>0.0428571</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cloudShadow</Name>
+    <Value>0.581281</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>groundHue</Name>
+    <Value>106.773</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>groundSaturation</Name>
+    <Value>255</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>groundBrightness</Name>
+    <Value>175.862</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>undergroundHue</Name>
+    <Value>12.5616</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>undergroundSaturation</Name>
+    <Value>185.911</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>undergroundBrightness</Name>
+    <Value>82.9064</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>cloudShadowHue</Name>
+    <Value>130.64</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>cloudShadowSaturation</Name>
+    <Value>69.0887</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>cloudShadowBrightness</Name>
+    <Value>18.8424</Value>
 </Widget>
