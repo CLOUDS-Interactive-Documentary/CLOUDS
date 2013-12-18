@@ -3,9 +3,9 @@
 //
 
 #include "CloudsVisualSystemTwitter.h"
-#include "CloudsRGBDVideoPlayer.h"
+//#include "CloudsRGBDVideoPlayer.h"
 
-#include <Poco/URI.h>
+//#include <Poco/URI.h>
 
 bool dateSorter(Date const& lhs, Date const& rhs) {
     if (lhs.year != rhs.year)
@@ -13,6 +13,10 @@ bool dateSorter(Date const& lhs, Date const& rhs) {
     if (lhs.month != rhs.month)
         return lhs.month < rhs.month;
     return lhs.day < rhs.day;
+}
+
+void CloudsVisualSystemTwitter::selfSetDefaults(){
+	//fill out defaults stuff
 }
 
 void CloudsVisualSystemTwitter::selfSetup()
@@ -317,7 +321,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
             
             int id = ofToInt(components[0]);
             
-            Tweeter& tweeter = getTweeterByID(tweeters, id);
+            Tweeter& tweeter = getTweeterByID(id);
             
 			int numcomp = components.size();
             max = ofVec3f(0,0,0);
@@ -331,7 +335,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 			vector<string> components = ofSplitString(line, " ");
             int id = ofToInt(components[0]);
             //428 4 8 9 11 15 17 18
-            Tweeter& tweeter = getTweeterByID(tweeters, id);
+            Tweeter& tweeter = getTweeterByID(id);
             if(tweeter.ID > 0){
                 for(int i =1; i< components.size()-1; i++){
                     if(tweeter.ID != ofToInt(components[i]) ){
@@ -344,27 +348,27 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
             }
 
         }
-        
 	}
 }
+
 void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
     
     activeTweeters.clear();
     activeTweets.clear();
     
-    for(int i=0; i<tweeters.size(); i++){
+    for(int i = 0; i < tweeters.size(); i++){
         if(tweeters[i].hasTweetOnDate(dateIndex[index])){
             activeTweeters.push_back(&tweeters[i]);
             vector<Tweet> tweetsOnDate = tweeters[i].getTweetsByDate(dateIndex[index]);
 
-            for(int k=0; k<tweetsOnDate.size();k ++){
+            for(int k = 0; k < tweetsOnDate.size(); k ++){
                 activeTweets.push_back(tweetsOnDate[k].tweet);
                 if(tweetsOnDate[k].mentionedUsers.size() > 1){
-                    for(int l=0; l<tweetsOnDate[k].mentionedUsers.size(); l++){
+                    for(int l = 0; l < tweetsOnDate[k].mentionedUsers.size(); l++){
                         int user = getUserIdByName(tweetsOnDate[k].mentionedUsers[l]);
                         if(user != -1){
                             
-                            Tweeter& t  = getTweeterByID(tweeters,user);
+                            Tweeter& t = getTweeterByID(user);
                             if(lineIndexPairs.find(make_pair(tweeters[i].name, t.name)) != lineIndexPairs.end()){
                                 
                                 pair<int, int> currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
@@ -468,7 +472,7 @@ void CloudsVisualSystemTwitter::loadMesh(){
     for(int j=0; j<tweeters.size(); j++){
         
         for (int k=0; k<tweeters[j].linksById.size(); k++) {
-            Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
+            Tweeter& t  = getTweeterByID(tweeters[j].linksById[k]);
             if(t.ID != -1){
                 if(lineIndexPairs.find(make_pair(tweeters[j].name, t.name)) == lineIndexPairs.end() &&
                    lineIndexPairs.find(make_pair(t.name,tweeters[j].name)) == lineIndexPairs.end() ){
@@ -621,8 +625,8 @@ string CloudsVisualSystemTwitter::getDateAsString(Date d){
 }
 
 
-Tweeter& CloudsVisualSystemTwitter::getTweeterByID(vector<Tweeter>& tweeters, int _id ){
-    
+Tweeter& CloudsVisualSystemTwitter::getTweeterByID(int _id ){
+
     for(int i=0; i< tweeters.size(); i++){
         if(tweeters[i].ID == _id){
             return tweeters[i];
@@ -653,16 +657,17 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
     {
         initSystem(currentMeshFilePath);
     }
+	
     baseColor.setHsb(baseModifier.r, baseModifier.g, baseModifier.b);
     baseColor.a = baseAlpha;
     tweetColor.setHsb(tweetModifier.r, tweetModifier.g, tweetModifier.b);
-    tweetColor.a =tweetAlpha;
+    tweetColor.a = tweetAlpha;
     nodeColor.setHsb(nodeModifier.r, nodeModifier.g, nodeModifier.b,nodeModifier.a);
     nodeActiveColor.setHsb(nodeActiveModifier.r, nodeActiveModifier.g, nodeActiveModifier.b,nodeActiveModifier.a);
     nodeMidpointColor.setHsb(nodeMidpointModifier.r, nodeMidpointModifier.g, nodeMidpointModifier.g,nodeActiveMidpointModifier.a);
     nodeActiveMidpointColor.setHsb(nodeActiveMidpointModifier.r, nodeActiveMidpointModifier.g, nodeActiveMidpointModifier.b,nodeMidpointModifier.a);
     textColor.setHsb(textColorModifier.r, textColorModifier.g, textColorModifier.b,textColorModifier.a);
-    
+	
     font.setSize(fontSize);
     font.setLineLength(stringWidth);
     reloadMeshColor();
@@ -776,6 +781,7 @@ void CloudsVisualSystemTwitter::selfPresetLoaded(string presetPath)
 //any type of transformation that doesn't have to do with the camera
 void CloudsVisualSystemTwitter::selfSceneTransformation(){
     
+	//TODO: time dependent & make slider
     if(rotateModel){
         ofRotateZ(ofGetFrameNum()%360);
     }
@@ -787,15 +793,14 @@ void CloudsVisualSystemTwitter::selfSceneTransformation(){
 void CloudsVisualSystemTwitter::selfUpdate()
 {
     
-    if(  ofGetFrameNum() %refreshRate <1 && bAnimate){
+    if(ofGetFrameNum() % refreshRate < 1 && bAnimate){
         currentDateIndex--;
         if (currentDateIndex <= 0) {
-                currentDateIndex = dateIndex.size() - 1;
+			currentDateIndex = dateIndex.size() - 1;
         }
         updateMeshFromTweets(currentDateIndex);
         updateMesh();
     }
-
 
 }
 
@@ -807,7 +812,6 @@ void CloudsVisualSystemTwitter::selfDraw()
     ofPushStyle();
     ofPushMatrix();
 
-
     ofSetBackgroundColor(0,0,0);
     glDisable(GL_DEPTH_TEST);
     
@@ -815,18 +819,15 @@ void CloudsVisualSystemTwitter::selfDraw()
         glPointSize(1);
         nodeMesh.draw();
         edgeMesh.draw();
-        
     }
     
     if(bRenderText){
-        for(int i=0; i<activeTweeters.size(); i++){
+        for(int i = 0; i < activeTweeters.size(); i++){
             drawText(activeTweeters[i]->name,activeTweeters[i]->position);
         }
     }
     ofPopMatrix();
     ofPopStyle();
-
-    
 }
 
 void CloudsVisualSystemTwitter::drawFeed()
@@ -834,13 +835,12 @@ void CloudsVisualSystemTwitter::drawFeed()
     int numRects = activeTweets.size()/(int)tweetFeedRect.height;
     numRects = 10;
     for(int i =0; i<numRects; i++){
-        ofRectangle r = ofRectangle(tweetFeedRect.x,tweetFeedRect.y + i*50    ,tweetFeedRect.width,100);
+        ofRectangle r = ofRectangle(tweetFeedRect.x,tweetFeedRect.y + i*50,tweetFeedRect.width,100);
         ofRect(r);
         ofPushStyle();
         ofSetColor(textColor);
         ofPopStyle();
     }
-    
 }
 
 // draw any debug stuff here
@@ -886,35 +886,18 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
             cout<<dateIndex[i].day<<" : "<<dateIndex[i].month<<" : "<<dateIndex[i].year<<endl;
         }
     }
-    if(args.key == 'j'){
-        ofSetFrameRate(60);
-        
-     //   cout<<textColor.getHue()<<" , "<<textColor.getSaturation()<<" , "<<textColor.getBrightness()<<endl;
-    }
-    if(args.key == 'l'){
-        ofxUIColor cb = ofxUIColor(128,0,0,180);
-        ofxUIColor co = ofxUIColor(255, 255, 255, 100);
-        ofxUIColor coh = ofxUIColor(255, 255, 255, 200);
-        ofxUIColor cf = ofxUIColor(255, 255, 255, 200);
-        ofxUIColor cfh = ofxUIColor(255, 255, 255, 255);
-        ofxUIColor cp = ofxUIColor(0, 100);
-        ofxUIColor cpo =  ofxUIColor(255, 200);
-        clusterGui->setUIColors( cb, co, coh, cf, cfh, cp, cpo );
-    }
-    
 }
-void CloudsVisualSystemTwitter:: drawText2D(string text, ofVec2f pos){
 
-//    ofPushMatrix();
+void CloudsVisualSystemTwitter::drawText2D(string text, ofVec2f pos){
+
     ofPushStyle();
     ofSetColor(textColor);
     font.drawString(ofToUpper(text),pos.x,pos.y);
     ofPopStyle();
 }
-void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
-    
 
-    
+void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
+	
     ofxBillboardBeginSphericalCheat(pos);
     
     ofPushStyle();
@@ -927,7 +910,6 @@ void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
     ofPopStyle();
     
     ofxBillboardEnd();
-    
 
 }
 

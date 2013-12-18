@@ -28,6 +28,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
+	void selfSetDefaults();
+	
     void selfSetupGui();
     void selfGuiEvent(ofxUIEventArgs &e);
     void selfSetupSystemGui();
@@ -68,7 +70,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     //data stuff
     int getUserIdByName(string name);
     vector<Tweeter> getTweetersForDate(int index);
-    Tweeter& getTweeterByID(vector<Tweeter>& tweeters, int _id );
+    Tweeter& getTweeterByID(int _id );
     string getDateAsString(Date d);
     void drawTweetsForDate(int index);
     void CompareDates(Date d1,Date d2);

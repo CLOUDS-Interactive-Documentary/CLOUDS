@@ -936,8 +936,8 @@
 			children = (
 				188B660F18412BBF00E02CC7 /* CloudsVisualSystemTwitter.cpp */,
 				188B661018412BBF00E02CC7 /* CloudsVisualSystemTwitter.h */,
-				188B669D184144E700E02CC7 /* Tweeter.cpp */,
 				188B669E184144E700E02CC7 /* Tweeter.h */,
+				188B669D184144E700E02CC7 /* Tweeter.cpp */,
 			);
 			name = vs_src;
 			path = src/VisualSystems/Twitter/vs_src;
