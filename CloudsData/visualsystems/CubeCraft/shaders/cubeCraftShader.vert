@@ -24,7 +24,7 @@ varying float camDelta;
 
 varying float doDiscard = .0;
 varying float isGround = .0;
-varying float isSky = 0.;
+varying float isCloud = 0.;
 
 varying vec4 groundSample;
 uniform float groundDrama = .75;
@@ -37,6 +37,7 @@ uniform float cloudThickness = 8.;
 uniform vec3 noiseOffset;
 uniform vec3 cameraOffset;
 
+varying float underSky;
 
 vec3 mod289(vec3 x) {
 	return x - floor(x * (1.0 / 289.0)) * 289.0;
@@ -158,6 +159,8 @@ void main()
 	if( abs(groundSample.x - groundVal) < groundThreshold * 1.5)
 	{
 		isGround = 1.;
+		
+		underSky = sampleSkyNoise( boxXZ ) > cloudThreshold ? 1. : 0.;
 	}
 	
 	//sky
@@ -170,7 +173,7 @@ void main()
 		}
 		else{
 			
-			isSky = 1.;
+			isCloud = 1.;
 			
 			boxCenter.y += cloudHeight;
 			

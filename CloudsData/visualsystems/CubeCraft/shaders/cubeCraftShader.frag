@@ -12,6 +12,11 @@ uniform vec4 edgeColor;
 uniform vec4 fillColor;
 uniform vec4 specularColor;
 
+uniform vec4 groundColor = vec4( .4, 1., .6, 1.);
+uniform vec4 undergroundColor = vec4( .6 ,.2, .1, 1.);
+uniform vec4 cloudShadowColor;
+uniform float cloudShadow;
+
 uniform float specExpo;
 uniform float specScale;
 
@@ -32,9 +37,10 @@ varying vec2 uv;
 varying float camDelta;
 varying float doDiscard;
 varying float isGround;
-varying float isSky;
+varying float isCloud;
 
 varying vec4 groundSample;
+varying float underSky;
 
 
 float mapLinear( float x, float a1, float a2, float b1, float b2 ) {
@@ -54,18 +60,20 @@ void main(void)
 	
 	if( isGround > .5)
 	{
-		vec4 topColor = vec4( .4, 1., .6, 1.);
-		vec4 sideColor = vec4( .6 ,.2, .1, 1.);
 		if(vNormal.y > .5)
 		{
-			gl_FragColor *= topColor;
+			gl_FragColor *= groundColor;
 		}
 		else{
-			gl_FragColor *= mix(sideColor, topColor, pow(max( vertex.y*1.5, 0. ), 2.) );
+			gl_FragColor *= mix(undergroundColor, groundColor, pow(max( vertex.y*1.5, 0. ), 2.) );
+		}
+		
+		if(underSky>.5){
+			gl_FragColor = mix( gl_FragColor, cloudShadowColor, cloudShadow);
 		}
 	}
 	
-	else if( isSky > .5)
+	else if( isCloud > .5)
 	{
 		gl_FragColor = fogColor * fr;
 	}
