@@ -78,7 +78,16 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		
 		if(currentVisualSystem != NULL){
 			currentVisualSystem->setup();
-			currentVisualSystem->loadPresetGUISFromName(visualSystems.getPresets()[presetTable.selectedRow].presetName);
+			string presetName = visualSystems.getPresets()[presetTable.selectedRow].presetName;
+			if(presetName == "+New Preset"){
+				currentVisualSystem->loadPresetGUISFromName("");
+			}
+			else if(presetName == "+Current State"){
+				currentVisualSystem->loadPresetGUISFromName("Working");
+			}
+			else {
+				currentVisualSystem->loadPresetGUISFromName(presetName);
+			}
 			currentVisualSystem->playSystem();
 		}
 		else{
@@ -87,8 +96,6 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		
 		shouldPlaySelectedRow = false;	
     }
-	
-    //ofShowCursor();
 }
 
 
@@ -99,7 +106,10 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)exit
 {
-	
+	if(currentVisualSystem != NULL){
+		currentVisualSystem->stopSystem();
+		currentVisualSystem->exit();
+	}	
 }
 
 - (void)keyPressed:(int)key
