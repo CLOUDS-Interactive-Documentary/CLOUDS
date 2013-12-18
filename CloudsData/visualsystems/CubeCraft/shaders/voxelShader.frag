@@ -9,8 +9,8 @@ uniform float fogExpo;
 
 uniform float edgeSmoothing;
 uniform vec4 edgeColor;
-uniform vec4 fillColor;
-uniform vec4 specularColor;
+uniform vec4 fillColor = vec4(0., 1.,1.,1.);
+uniform vec4 specularColor = vec4( 1., 1.,0.,1.);
 
 uniform float specExpo;
 uniform float specScale;

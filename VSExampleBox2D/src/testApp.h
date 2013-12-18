@@ -21,5 +21,7 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 		
-	CloudsVisualSystemExampleBox2D exampleVectorMath;
+	void audioRequested(float * output, int bufferSize, int nChannels);
+	
+	CloudsVisualSystemExampleBox2D exampleBox2D;
 };

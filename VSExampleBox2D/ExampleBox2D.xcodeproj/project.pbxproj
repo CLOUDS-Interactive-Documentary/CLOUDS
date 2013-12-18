@@ -306,6 +306,10 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E71BD17118621FD6002B4B63 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71BD16A18621FD6002B4B63 /* CloudsInput.cpp */; };
+		E71BD17218621FD6002B4B63 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71BD16A18621FD6002B4B63 /* CloudsInput.cpp */; };
+		E71BD17518621FD6002B4B63 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71BD16F18621FD6002B4B63 /* CloudsInputMouse.cpp */; };
+		E71BD17618621FD6002B4B63 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71BD16F18621FD6002B4B63 /* CloudsInputMouse.cpp */; };
 		E72FF12217E688FE0007780D /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */; };
 		E72FF12317E688FE0007780D /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */; };
 		E72FF12417E688FE0007780D /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF11E17E688FE0007780D /* CloudsVisualSystem.cpp */; };
@@ -660,6 +664,11 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E71BD16A18621FD6002B4B63 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
+		E71BD16B18621FD6002B4B63 /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
+		E71BD16C18621FD6002B4B63 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
+		E71BD16F18621FD6002B4B63 /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		E71BD17018621FD6002B4B63 /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
 		E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
 		E72FF11B17E688FE0007780D /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
 		E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
@@ -1387,6 +1396,19 @@
 			name = openFrameworks;
 			sourceTree = "<group>";
 		};
+		E71BD16918621FD6002B4B63 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				E71BD16A18621FD6002B4B63 /* CloudsInput.cpp */,
+				E71BD16B18621FD6002B4B63 /* CloudsInput.h */,
+				E71BD16C18621FD6002B4B63 /* CloudsInputEvents.h */,
+				E71BD16F18621FD6002B4B63 /* CloudsInputMouse.cpp */,
+				E71BD17018621FD6002B4B63 /* CloudsInputMouse.h */,
+			);
+			name = Input;
+			path = src/Input;
+			sourceTree = "<group>";
+		};
 		E72FF11817E688FE0007780D /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
@@ -1908,6 +1930,7 @@
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E71BD16918621FD6002B4B63 /* Input */,
 				2A6C46F0180EFBDF00A8468A /* ExampleBox2D */,
 				E72FF11817E688FE0007780D /* VisualSystemsLibrary */,
 			);
@@ -1961,8 +1984,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "ExampleBox2D" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -2203,6 +2224,8 @@
 				85732CA918307C80002B53D9 /* b2DistanceJoint.cpp in Sources */,
 				85732CAA18307C80002B53D9 /* CloudsVisualSystemExampleBox2D.cpp in Sources */,
 				85732D8218307CE3002B53D9 /* ofxOculusRift.cpp in Sources */,
+				E71BD17218621FD6002B4B63 /* CloudsInput.cpp in Sources */,
+				E71BD17618621FD6002B4B63 /* CloudsInputMouse.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2378,6 +2401,8 @@
 				2A48D63D184075D5007527A2 /* ADSR.cpp in Sources */,
 				2AAEF596180F136F005F33D3 /* b2DistanceJoint.cpp in Sources */,
 				2A6C471E180F03A600A8468A /* CloudsVisualSystemExampleBox2D.cpp in Sources */,
+				E71BD17118621FD6002B4B63 /* CloudsInput.cpp in Sources */,
+				E71BD17518621FD6002B4B63 /* CloudsInputMouse.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -213,8 +213,8 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     synth.setOutputGen(output);
     
 	//JG this is a problem, memo
-    dummyApp = new DummyApp(&synth);
-    ofSoundStreamSetup(2, 0, dummyApp, 44100, 512, 4);
+//    dummyApp = new DummyApp(&synth);
+//    ofSoundStreamSetup(2, 0, dummyApp, 44100, 512, 4);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -248,6 +248,9 @@ void CloudsVisualSystemExampleBox2D::selfBegin()
     if (!bRandomPlatforms) {
         removeRandomPlatform();
     }
+
+	//TODO: add!
+//	ofAddListener(ofEvents().audioRequested, this, &CloudsVisualSystemExampleBox2D::audioRequested);
 }
 
 //do things like ofRotate/ofTranslate here

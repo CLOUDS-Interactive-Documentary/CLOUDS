@@ -38,7 +38,7 @@ void testApp::keyReleased(int key){
 	}
 	
 	if(key == 'Q'){
-		ofDirectory qtestnodes( GetCloudsDataPath() + "HUD/QuestionNode_set04");
+		ofDirectory qtestnodes( GetCloudsDataPath() + "HUD/QuestionNode_set05");
 		qtestnodes.allowExt("png");
 		qtestnodes.listDir();
 		vector<string> testpaths;

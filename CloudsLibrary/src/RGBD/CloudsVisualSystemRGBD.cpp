@@ -68,9 +68,9 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	generatePoints();
 	generateMesh();
 		
-	particulateController.setParticleCount(20000);
-	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-	particulateController.setup();
+//	particulateController.setParticleCount(20000);
+//	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+//	particulateController.setup();
 	
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
@@ -95,9 +95,9 @@ void CloudsVisualSystemRGBD::loadShader(){
 	cout << "loading point shader " << endl;
 	pointShader.load(getVisualSystemDataPath() + "shaders/rgbdPoints");
 	cout << "loading line shader " << endl;
-//	lineShader.load( getVisualSystemDataPath() + "shaders/rgbdLines");
+	lineShader.load( getVisualSystemDataPath() + "shaders/rgbdLines");
 	cout << "loading mesh shader " << endl;
-//	meshShader.load( getVisualSystemDataPath() + "shaders/rgbdMesh");
+	meshShader.load( getVisualSystemDataPath() + "shaders/rgbdMesh");
 //	CloudsQuestion::reloadShader();
 }
 
@@ -354,7 +354,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
 		particulateController.getPoints().color.a = pointColor.w;
 		
-		particulateController.update();
+//		particulateController.update();
 	}
 	
 	updateQuestions();
@@ -646,6 +646,8 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOut(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::generatePoints(){
 	
+	lines.setUsage( GL_STATIC_DRAW);
+	
 	if(numRandomPoints == 0){
 		points.clear();
 	}
@@ -659,13 +661,15 @@ void CloudsVisualSystemRGBD::generatePoints(){
 	}
 	
 	points.setMode(OF_PRIMITIVE_POINTS);
+
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::generateLines(){
-
-	lines.clear();
 	
+	lines.clear();
+	lines.setUsage(GL_STATIC_DRAW);
+
 	if(lineGranularity <= 0) lineGranularity = 1;
 	if(lineSpacing <= 0) lineSpacing = 1;
 	
@@ -673,65 +677,106 @@ void CloudsVisualSystemRGBD::generateLines(){
 	int width = 640;
 	
 	//HORIZONTAL
-	for (float ystep = 0; ystep <= height - lineSpacing; ystep += lineSpacing){
+	for (float ystep = 0; ystep <= height; ystep += lineSpacing){
 		for (float xstep = 0; xstep <= width - lineGranularity; xstep += lineGranularity){
-			
-//			float ystepOffset = ofRandom(-scanlineSimplify.y/4,scanlineSimplify.y/4);
-			
-//			horizontalScanLines.addColor(ofFloatColor(ofRandom(1.)));
 			
 			ofVec3f stepA = ofVec3f(xstep, ystep, 0);
 			ofVec3f stepB = ofVec3f(xstep+lineGranularity, ystep, 0);
-			ofVec3f mid = (stepA + stepB) / 2.0;
+			ofVec3f mid   = stepA.getInterpolated(stepB, .5);
 			
-			lines.addNormal( mid );
-			lines.addColor( ofFloatColor( stepB.x/width,stepB.y/height, stepB.x/width,stepB.y/height) );
-			lines.addVertex( stepA);
+			lines.addNormal( stepA-mid );
+			lines.addVertex( mid );
 			
-			lines.addNormal( mid );
-			lines.addColor( ofFloatColor( stepA.x/width,stepA.y/height, stepA.x/width,stepA.y/height ) );
-			lines.addVertex( stepB);
+			lines.addNormal( stepB-mid );
+			lines.addVertex( mid );
 		}
 	}
-
-	lines.setMode( OF_PRIMITIVE_LINES );
+	
+	
+	
+	lines.setMode(OF_PRIMITIVE_LINES );
 	
 	refreshLines = false;
 }
 
-void CloudsVisualSystemRGBD::speakerChanged(){
-
-	//check speaker vars
-//	this->speakerFirstName = speakerFirstName;
-//	this->speakerLastName = speakerLastName;
-//	this->quoteName = quoteName;
-    
-	// Add an appearance for this speaker.
-    string key = speakerFirstName + " " + speakerLastName;
-    
-    if (appearances.find(key) == appearances.end()) {
-        appearances[key] = 1;
-    }
-    else {
-        appearances[key]++;
-    }
-    
-    cout << "CloudsVisualSystemRGBD::speakerChanged " << speakerFirstName << " " << speakerLastName << ": " << quoteName << " (" << appearances[key] << ")" << endl;
-    
-    if (appearances[key] == 1) {
-        cloudsCaption.font = &captionFont;
-        cloudsCaption.caption = key;
-        cloudsCaption.isEnabled = true;
-        cloudsCaption.begin();
-    }
-    else {
-        cloudsCaption.isEnabled = false;
-    }
-}
 
 void CloudsVisualSystemRGBD::generateMesh(){
 	
-/*
+	
+	if(xSimplify <= 0) xSimplify = 1.0;
+	if(ySimplify <= 0) ySimplify = 1.0;
+		
+
+	int x = 0;
+	int y = 0;
+
+	int gw = ceil(640. / xSimplify);
+	int w = gw*xSimplify;
+	int h = 480.;
+	
+	vector<ofVec3f> vertices;
+	
+	for (float y = 0; y < 480; y += ySimplify){
+		for (float x = 0; x < 640; x += xSimplify){
+			vertices.push_back(ofVec3f(x,y,0));
+		}
+	}
+	
+	vector<int> indeces;
+	for (float ystep = 0; ystep < h-ySimplify; ystep += ySimplify){
+		for (float xstep = 0; xstep < w-xSimplify; xstep += xSimplify){
+			ofIndexType a,b,c;
+			
+			a = x+y*gw;
+			b = (x+1)+y*gw;
+			c = x+(y+1)*gw;
+			indeces.push_back(a);
+			indeces.push_back(b);
+			indeces.push_back(c);
+			
+			a = (x+1)+(y+1)*gw;
+			b = x+(y+1)*gw;
+			c = (x+1)+(y)*gw;
+			indeces.push_back(a);
+			indeces.push_back(b);
+			indeces.push_back(c);
+			
+			x++;
+		}
+		
+		y++;
+		x = 0;
+	}
+	
+	mesh.clear();
+	mesh.setUsage(GL_STATIC_DRAW);
+
+	for(int i = 0; i < indeces.size(); i+=3){
+		
+		ofVec3f& a = vertices[ indeces[i+0] ];
+		ofVec3f& b = vertices[ indeces[i+1] ];
+		ofVec3f& c = vertices[ indeces[i+2] ];
+		ofVec3f mid = (a+b+c)/3.;
+		
+		ofVec3f toA = a-mid;
+		ofVec3f toB = b-mid;
+		ofVec3f toC = c-mid;
+		
+		mesh.addNormal(toA);
+		mesh.addColor(ofFloatColor(toB.x/640.,toB.y/480.,toC.x/640.,toC.y/480.));
+		mesh.addVertex(mid);
+
+		mesh.addNormal(toB);
+		mesh.addColor(ofFloatColor(toA.x/640.,toA.y/480.,toC.x/640.,toC.y/480.));
+		mesh.addVertex(mid);
+		
+		mesh.addNormal(toC);
+		mesh.addColor(ofFloatColor(toA.x/640.,toA.y/480.,toB.x/640.,toB.y/480.));
+		mesh.addVertex(mid);
+	}
+	
+	mesh.setMode(OF_PRIMITIVE_TRIANGLES);
+	/*
 	if(percentChanceOfPoint == lastPercentChanceOfPoint ||
 	   triangulationXStep == lastTriangulationXStep ||
 	   triangulationYStep == lastTriangulationYStep)
@@ -783,6 +828,36 @@ void CloudsVisualSystemRGBD::generateMesh(){
 	refreshMesh = false;
 }
 
+void CloudsVisualSystemRGBD::speakerChanged(){
+	
+	//check speaker vars
+	//	this->speakerFirstName = speakerFirstName;
+	//	this->speakerLastName = speakerLastName;
+	//	this->quoteName = quoteName;
+    
+	// Add an appearance for this speaker.
+    string key = speakerFirstName + " " + speakerLastName;
+    
+    if (appearances.find(key) == appearances.end()) {
+        appearances[key] = 1;
+    }
+    else {
+        appearances[key]++;
+    }
+    
+    cout << "CloudsVisualSystemRGBD::speakerChanged " << speakerFirstName << " " << speakerLastName << ": " << quoteName << " (" << appearances[key] << ")" << endl;
+    
+    if (appearances[key] == 1) {
+        cloudsCaption.font = &captionFont;
+        cloudsCaption.caption = key;
+        cloudsCaption.isEnabled = true;
+        cloudsCaption.begin();
+    }
+    else {
+        cloudsCaption.isEnabled = false;
+    }
+}
+
 void CloudsVisualSystemRGBD::selfDrawBackground(){
 	
 }
@@ -816,11 +891,6 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 
 void CloudsVisualSystemRGBD::selfDraw(){
 	
-//	hasSpeaker = true;
-//	if(drawCloud && hasSpeaker){
-
-//		cout << "RGBD DRAW" << endl;
-		
 	ofPushStyle();
 	ofPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -837,21 +907,27 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		
 		setupRGBDTransforms();
 			
-		if(false && drawMesh){
+		if(drawMesh){
 			meshShader.begin();
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
-			ofSetColor(255,255*meshAlpha);
+		
+			meshShader.setUniform1f("triangleExtend", 1.0);
 			
+			ofSetColor(255,255*meshAlpha);
+
 			mesh.draw();
 			
 			meshShader.end();
 		}
 			
-		if(false && drawLines){
+		if(drawLines){
 			lineShader.begin();
 			getRGBDVideoPlayer().flowPosition = lineFlowPosition;
 			getRGBDVideoPlayer().setupProjectionUniforms(lineShader);
-			ofSetColor(255,255*pointAlpha);
+			
+			lineShader.setUniform1f("lineExtend", 1.0);
+			
+			ofSetColor(255,255*lineAlpha);
 			
 			lines.draw();
 			
@@ -862,6 +938,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			pointShader.begin();
 			getRGBDVideoPlayer().flowPosition = pointFlowPosition;
 			getRGBDVideoPlayer().setupProjectionUniforms(pointShader);
+			
 			ofSetColor(255,255*pointAlpha);
 			
 			points.draw();
@@ -872,7 +949,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	if(drawParticulate){
 		glEnable(GL_DEPTH_TEST);
-		particulateController.draw();
+//		particulateController.draw();
 	}
 	
 	glPopAttrib();
@@ -884,7 +961,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		
 //		cout << "base multiplier " << getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() << endl;
 //		rgbdShader.setUniform1f("fadeValue", 1.0);
-////		rgbdShader.setUniform1f("fadeValue", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+//		rgbdShader.setUniform1f("fadeValue", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
 //		float transitionValue = 1.0 - getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() * visualSystemFadeValue;
 //		ofxEasingCubic cub;
 //		rgbdShader.setUniform1f("triangleContract", ofxTween::map(transitionValue, 0, 1.0, 0, 1.0, true, cub, ofxTween::easeOut));
@@ -1167,7 +1244,7 @@ void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e){
 		refreshLines = true;
 	}
 	else if(e.widget->getName() == "X Simplify" || e.widget->getName() == "Y Simplify"){
-		refreshPointcloud = true;
+		refreshMesh = true;
 	}
 }
 
