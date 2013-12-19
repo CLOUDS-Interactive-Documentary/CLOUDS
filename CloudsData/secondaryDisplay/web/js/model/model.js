@@ -12,6 +12,15 @@ Model = {
 	},
 	addPerson: function(person) {
 		this.people.push(person);
+		// if(debug){
+			console.log("first: " + person.first 
+						+ ", last: " + person.last 
+						+ ", title: " + person.title 
+						+ ", location: " + person.location 
+						+ ", byline: " + person.byline1 
+						+ ", description: " + person.description 
+				);
+		// }
 	},
 	addNode: function(node) {
 		this.nodes.push(node);
@@ -46,6 +55,16 @@ Model = {
 			if(this.people[i].first == id){
 				person = this.people[i];
 			}
+			if(debug){
+				console.log("first: " + this.people[i].first 
+						+ ", last: " + this.people[i].last 
+						+ ", title: " + this.people[i].title 
+						+ ", location: " + this.people[i].location 
+						+ ", byline: " + this.people[i].byline1 
+						+ ", description: " + this.people[i].description 
+				);
+			}
+			
 		}
 		return person;
 	},	
@@ -64,7 +83,13 @@ Model = {
 	setPerson: function (id) {
 		this.currentPerson = this.getPerson(id);
 		if(debug){
-			console.log("current person: " + this.currentPerson.first);
+			console.log("first: " + this.currentPerson.first 
+						+ ", last: " + this.currentPerson.last 
+						+ ", title: " + this.currentPerson.title 
+						+ ", location: " + this.currentPerson.location 
+						+ ", byline: " + this.currentPerson.byline1 
+						+ ", description: " + this.currentPerson.description 
+				);
 		}
 
 	},

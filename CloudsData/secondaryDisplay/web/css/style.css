@@ -17,7 +17,7 @@ body{
 	width:1280px;
 	height:720px;
 }
-
+/*
 .person_info{
 	width:765px;
 	position:fixed;
@@ -31,7 +31,8 @@ body{
 	padding-bottom:15px;
 }
 
-#artist_name, 
+#first, 
+#last,
 #topic{
 	position:relative;
 	padding-left:19px;
@@ -40,7 +41,7 @@ body{
 	font-weight:lighter;
 }
 
-#byline{
+#title{
 	position:relative;
 	padding-left:19px;
 	padding-top:1px;
@@ -48,18 +49,13 @@ body{
 	font-weight:lighter;
 }
 
-#description{
+#byline{
 	padding-left:19px;
 	padding-top:10px;
 	font-size:26px;
 	line-height:32px;
 }
-
-#video{
-	z-index:1;
-}
-
-#info {
+#location {
   position: absolute; 
   z-index: 2147483647;
   top: 600px; 
@@ -68,24 +64,29 @@ body{
   float:left;
   
 }
+*/
 
-#projectex_info{
+#video{
+	z-index:1;
+}
+
+
+.clip_info,
+.project_info{
 	padding-left:20px;
 	width:400px;
 	float:left;
 	overflow:hidden;
 }
 
-#projectex_title{
+.cl_title{
 	float:left;
 	font-size:60px;
 	line-height:60px;
 	z-index: 2147483647;
 	color:#FFF;
-	
 }
-
-#projectex_artist{
+.cl_subtitle{
 	background-color: #FFFFFF;
 /*	padding: 4px;*/
 	float:left;
@@ -93,13 +94,27 @@ body{
 	color:#000;
 }
 
-#projectex_desc{
+.cl_text{
 	padding-left:0px;
 	font-size:24px;
 	line-height:24px;
 	/*position: relative; */
 	float:left;
 	color:#FFF;
+}
+
+
+#projectex_title{
+	
+	
+}
+
+#projectex_artist{
+	
+}
+
+#projectex_desc{
+	
 }
 
 #projectex_content{

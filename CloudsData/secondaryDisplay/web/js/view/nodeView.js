@@ -6,19 +6,21 @@ function NodeView(_parent, _node) {
 	//from (0, 1) range to (-1, 1); then scale.
 	this.x =  (this.node.originalX * 2 - 1) * GraphView.scale;
 	this.y = (this.node.originalY  * 2 - 1) * GraphView.scale;
-	this.z = Math.random() * 40;
+	this.z = Math.random() * 50;
+
 	// this.z = 20;
 	this.neighborViews = new Array();
 	//this.neighborPaths = new Array();
 	this.neighborPaths = new THREE.Object3D();
 	this.selected = false;
 
-	this.color = ColorPalette.getPaletteColor(this.node.originalColor);	
+	this.color = ColorPalette.getPaletteColor(this.node.originalColor);		
 	this.selectedColor = new THREE.Color("red");
 	this.highlightedColor = new THREE.Color("white");
+	this.z = this.color.getHSL().l * 50;
 	
 
-	var mapB = THREE.ImageUtils.loadTexture( "textures/Ball.png" );
+	var mapB = THREE.ImageUtils.loadTexture( "textures/sprite0.png" );
 	mapB.needsUpdate = true;
 	var materialB = new THREE.SpriteMaterial( { map: mapB, color: this.color, scaleByViewport:true, useScreenCoordinates:false } );
 	this.material = materialB.clone();

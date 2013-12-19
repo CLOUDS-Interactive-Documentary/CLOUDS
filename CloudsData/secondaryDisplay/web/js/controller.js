@@ -107,6 +107,17 @@ Controller = {
 			$('#location').html(person.location);
 			$('#byline').html(person.byline1);
 			$('#description').html(person.byline2);
+
+			if(debug){
+				console.log("first: " + person.first 
+						+ ", last: " + person.last 
+						+ ", title: " + person.title 
+						+ ", location: " + person.location 
+						+ ", byline: " + person.byline1 
+						+ ", description: " + person.description 
+				);
+			}
+			
 		}
 		//TopicView.update();
 	},	
@@ -154,14 +165,14 @@ Controller = {
 
 	},	
 	onKeyPress: function(){
+		var dummyMessage;
 		if ( event.keyCode == 32 ) { //space bar
 			// Controller.goToRandomNode();
 			// Controller.goToRandomTopic();
-			// Controller.setMode(Controller.modes.GRAPH);
-			var dummyMessage = {
+			
+			dummyMessage = {
 				clip: {
 					duration: 39.998333,
-					// example: "Drawn1",
 					id: Controller.getRandomNode(),
 					name: "Shantell",
 					question: "How do you sketch with code FAKE?",
@@ -169,13 +180,23 @@ Controller = {
 				}
 
 			}
-			Controller.onStoryChanged(dummyMessage);
 			
 		}
-		if ( event.keyCode == 112 ) { //P key.
+		else if ( event.keyCode == 112 ) { //P key.
 			// Controller.goToRandomProjectExample();
-			// Controller.setMode(Controller.modes.PROJECT_EXAMPLE);
+			dummyMessage = {
+				clip: {
+					duration: 39.998333,
+					id: Controller.getRandomNode(),
+					example: "Drawn1",
+					name: "Zach Lieberman",
+					question: "A fake question",
+					topic: "thinking by doing FAKE TOPIC"
+				}
+
+			}
 		}
+		Controller.onStoryChanged(dummyMessage);
 		
 	},	
 	setMode: function(mode){
@@ -283,6 +304,15 @@ Controller = {
 								$(this).find('byline2').text(),
 								$(this).find('resume').text()
 								);
+			// if(debug){
+				console.log("first: " + person.first 
+							+ ", last: " + person.last 
+							+ ", title: " + person.title 
+							+ ", location: " + person.location 
+							+ ", byline: " + person.byline1 
+							+ ", description: " + person.description 
+					);
+		 	// }	
 			Model.addPerson(person);
 		});
 

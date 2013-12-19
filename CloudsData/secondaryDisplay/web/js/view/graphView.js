@@ -6,7 +6,7 @@ GraphView = {
 	history_length: 7,
 
 	scale: 800,
-	radius: 4,
+	radius: 2,
 
 	time_unit: 1000,
 

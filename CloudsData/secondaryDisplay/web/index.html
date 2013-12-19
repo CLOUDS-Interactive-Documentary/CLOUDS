@@ -61,30 +61,32 @@
 	    gl_FragColor = vec4( glow, 1.0 );
 	}
 	</script>
-	<video id="video" autoplay src="http://sandbox.app-solut.com/blog/OverlayDemo/movies/big_buck_bunny.ogv" />
+	<video id="video"/>
   			<source type="video/mp4">
   			Your browser does not support the video tag.
 	</video>
 
-	<div id="info">		
+		
 		<div id="project_info">
 			<div id="projectex_info">
-				<div id="projectex_title">"DRAWN1"</div>
+				<div id="projectex_title" class='cl_title'></div>
 				<br>
-				<div id="projectex_artist">ZACH LIEBERMAN</div>
+				<div id="projectex_artist" class='cl_subtitle'></div>
 			</div>
-			<div id="projectex_desc">lorem ipsum blah blah blah</div>
+			<div id="projectex_desc" class="cl_text"></div>
 		</div>
-		<div id="clip_overlay">
-			<div id="first">first</div>
-			<div id="last">last</div>
-			<div id="title">title</div>
-			<div id="location">location</div>
-			<div id="byline">bio bio bio bio</div>
-			<div id="question">question question question?</div>
+		<div id='clip_info'>
+			<div class="current_artist_block">
+				<div id="first" class='cl_title'></div>
+				<div id="last" class='cl_title'></div>
+				<div id="title" class='cl_subtitle'></div>
+				<div id="location" class='cl_text'></div>
+				<div id="byline" class='cl_text'></div>
+				<div id="question" class='cl_text'></div>
+			</div>
 		</div>
 			
-	</div>
+	
 	<div id="graph"></div>
 	<div id="topic"></div>
 

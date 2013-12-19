@@ -360,15 +360,16 @@
 			<resume> ... </resume>
 		</person>
 	<person id="Shantell">
-			<first>Shantell</first>
-			<last></last>
-			<title></title>
-			<twitter></twitter>
-			<location></location>
-			<byline1></byline1>
-			<byline2></byline2>
-			<resume> ... </resume>
-		</person>
+                <first>Shantell</first>
+                <last>Martin</last>
+                <title>Artist</title>
+                <twitter></twitter>
+                <location1>London</location1>
+                <location2>Brooklyn</location2>
+                <byline1>Martin uses live-painting and animation software to perform stream-of-consciousness, improvisatory drawings.</byline1>
+                <byline2>She projects on surfaces, drawing to the beat of music, and uses drawing software to repeat patterns, zoom in and out on the canvas, and make the illustrations spin and "dance."  Collaborating with Zach Lieberman, founder of Open Frameworks, introduced her to coding as an art form.</byline2>
+                <resume> ... </resume>
+    </person>
 	<person id="Shiffman">
 			<first>Shiffman</first>
 			<last></last>
