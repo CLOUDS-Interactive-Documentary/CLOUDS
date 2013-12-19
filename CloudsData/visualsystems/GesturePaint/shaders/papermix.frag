@@ -13,11 +13,11 @@ const float epsilon = 1e-6;
 void main()
 {
 //	float flowAmount    = texture2DRect(water_texture, v_texCoord*.25).r*4.;
-//	vec2  flowDirection = texture2DRect(flow_texture, v_texCoord).rg * 2.0 - 1.0;
 	
 	vec4 flowSample = texture2DRect(water_texture, v_texCoord*.25);
-	vec2  flowDirection = -flowSample.rg;
-	float flowAmount    = flowSample.b*4.;
+	vec2 flowDeviation = texture2DRect(flow_texture, v_texCoord).rg * 2.0 - 1.0;
+	vec2 flowDirection = -normalize( flowSample.rg + flowDeviation) ;
+	float flowAmount   = length( flowSample.rg );
 
 //	vec4 sample = texture2DRect(source_texture, v_texCoord + flowDirection*flowAmount);
 //	gl_FragColor.rgb = sample.rgb;

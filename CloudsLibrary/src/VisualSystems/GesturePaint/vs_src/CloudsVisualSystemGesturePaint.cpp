@@ -13,15 +13,32 @@
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemGesturePaint::selfSetupGui(){
 
-	customGui = new ofxUISuperCanvas("CUSTOM", gui);
-	customGui->copyCanvasStyle(gui);
-	customGui->copyCanvasProperties(gui);
-	customGui->setName("Custom");
-	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	waterGui = new ofxUISuperCanvas("WATER", gui);
+	waterGui->copyCanvasStyle(gui);
+	waterGui->copyCanvasProperties(gui);
+	waterGui->setName("Water");
+	waterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemGesturePaint::selfGuiEvent);
-	guis.push_back(customGui);
-	guimap[customGui->getName()] = customGui;
+	waterGui->addSlider("Blur Radius", 0, 5., &blurRadius);
+	waterGui->addSlider("Dry Rate", 0, .5, &dryRate);
+	waterGui->addSlider("Deposite Scale", 1., 256., &depositeScale);
+	waterGui->addToggle("Show Debug Tex", &showWaterDebug);
+	
+	ofAddListener(waterGui->newGUIEvent, this, &CloudsVisualSystemGesturePaint::selfGuiEvent);
+	guis.push_back(waterGui);
+	guimap[waterGui->getName()] = waterGui;
+
+	brushGui = new ofxUISuperCanvas("BRUSH", gui);
+	brushGui->copyCanvasStyle(gui);
+	brushGui->copyCanvasProperties(gui);
+	brushGui->setName("Brush");
+	brushGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	brushGui->addSlider("Brush Size", 1, 256., &brushSize);
+	
+	ofAddListener(brushGui->newGUIEvent, this, &CloudsVisualSystemGesturePaint::selfGuiEvent);
+	guis.push_back(brushGui);
+	guimap[brushGui->getName()] = brushGui;
 }
 
 void CloudsVisualSystemGesturePaint::selfGuiEvent(ofxUIEventArgs &e){
@@ -30,8 +47,6 @@ void CloudsVisualSystemGesturePaint::selfGuiEvent(ofxUIEventArgs &e){
 	}
 }
 
-
-//Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemGesturePaint::selfSetupSystemGui(){
 	
 }
@@ -46,6 +61,19 @@ void CloudsVisualSystemGesturePaint::selfSetupRenderGui(){
 
 void CloudsVisualSystemGesturePaint::guiRenderEvent(ofxUIEventArgs &e){
 	
+}
+
+void CloudsVisualSystemGesturePaint::selfSetDefaults(){
+	blurRadius = 1.;
+	dryRate = .001;
+	showWaterDebug = false;
+	
+	brushInterpolateStep = 4.;
+	
+	currentDepositeScale = 0;
+	depositeScale = 64.;
+	
+	brushSize = 128.;
 }
 
 // selfSetup is called when the visual system is first instantiated
@@ -64,16 +92,15 @@ void CloudsVisualSystemGesturePaint::reloadShader(){
 	vblurShader.load(getVisualSystemDataPath() + "shaders/vblur.vert",
 					 getVisualSystemDataPath() + "shaders/blur.frag");
 
-//	vblurShader.load(getVisualSystemDataPath() + "shaders/blur");
-	brushImage.loadImage(getVisualSystemDataPath() + "images/brush.png");
-	paperImage.loadImage(getVisualSystemDataPath() + "images/paper.jpg");
-	noiseFlowTex.loadImage(getVisualSystemDataPath() + "images/noise.png");
-	
 	cout << "loading paper mix" << endl;
 	paperMixShader.load(getVisualSystemDataPath() + "shaders/papermix");
 	
 	cout << "loading force brush shader" << endl;
 	forceBrushShader.load(getVisualSystemDataPath() + "shaders/forcebrush");
+
+	brushImage.loadImage(getVisualSystemDataPath() + "images/brush.png");
+	paperImage.loadImage(getVisualSystemDataPath() + "images/paper.jpg");
+	noiseFlowTex.loadImage(getVisualSystemDataPath() + "images/noise.png");
 	
 }
 
@@ -135,14 +162,6 @@ void CloudsVisualSystemGesturePaint::reallocateFramebuffers(){
 	paperRect = ofRectangle(0,0,paperImage.getWidth(),paperImage.getHeight());
 	ofRectangle screenRect(0,0,canvassrc.getWidth(),canvassrc.getHeight());
 	paperRect.scaleTo(screenRect, OF_ASPECT_RATIO_KEEP_BY_EXPANDING);
-	
-	//TODO make variable size
-	forceBrushMesh.clear();
-	forceBrushMesh.addVertex(ofVec3f(0,0,0));
-	forceBrushMesh.addVertex(ofVec3f(64,0,0));
-	forceBrushMesh.addVertex(ofVec3f(0,64,0));
-	forceBrushMesh.addVertex(ofVec3f(64,64,0));
-	forceBrushMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 }
 
 void CloudsVisualSystemGesturePaint::meshFromFbo(ofMesh& m, ofFbo& f){
@@ -160,7 +179,24 @@ void CloudsVisualSystemGesturePaint::meshFromFbo(ofMesh& m, ofFbo& f){
 	m.addTexCoord(ofVec2f(f.getWidth(),f.getHeight()));
 	
 	m.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+}
+
+void CloudsVisualSystemGesturePaint::createWaterBrush(){
+	//TODO make variable size
+	forceBrushMesh.clear();
+	forceBrushMesh.addVertex(ofVec3f(0,0,0));
+	forceBrushMesh.addVertex(ofVec3f(depositeScale,0,0));
+	forceBrushMesh.addVertex(ofVec3f(0,depositeScale,0));
+	forceBrushMesh.addVertex(ofVec3f(depositeScale,depositeScale,0));
 	
+	forceBrushMesh.addTexCoord(ofVec2f(-1,-1));
+	forceBrushMesh.addTexCoord(ofVec2f(1,-1));
+	forceBrushMesh.addTexCoord(ofVec2f(-1,1));
+	forceBrushMesh.addTexCoord(ofVec2f(1,1));
+	
+	forceBrushMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+	
+	currentDepositeScale = depositeScale;
 }
 
 //normal update call
@@ -170,6 +206,10 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 	   canvassrc.getHeight() != getSharedRenderTarget().getHeight())
 	{
 		reallocateFramebuffers();
+	}
+	
+	if(currentDepositeScale != depositeScale){
+		createWaterBrush();
 	}
 	
 	glDisable(GL_DEPTH_TEST);
@@ -182,6 +222,9 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 	hblurShader.begin();
 	hblurShader.setUniformTexture("s_texture", watersrc.getTextureReference(), 1);
 	hblurShader.setUniform2f("dimensions", waterdst.getWidth(), waterdst.getHeight());
+	hblurShader.setUniform1f("dryRate", dryRate);
+	hblurShader.setUniform1f("blurRadius", blurRadius);
+	
 	waterMesh.draw();
 	hblurShader.end();
 	waterdst.end();
@@ -195,17 +238,21 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 	vblurShader.begin();
 	vblurShader.setUniformTexture("s_texture", watersrc.getTextureReference(), 1);
 	vblurShader.setUniform2f("dimensions", waterdst.getWidth(), waterdst.getHeight());
+	vblurShader.setUniform1f("dryRate", dryRate);
+	vblurShader.setUniform1f("blurRadius", blurRadius);
+	
 	waterMesh.draw();
 	vblurShader.end();
 	
 	ofEnableAlphaBlending();
 	
 	forceBrushShader.begin();
-	forceBrushShader.setUniform2f("dimensions", 64, 64);
+	forceBrushShader.setUniform1f("radius", 32);
+	ofVec2f centerTranslate = ofVec2f(depositeScale*.5,depositeScale*.5);
 	for(int i = 0; i < depositPoints.size(); i++){
 //		brushImage.draw( depositPoints[i] * .25 );
 		ofPushMatrix();
-		ofTranslate(depositPoints[i]*.25 - ofVec2f(32,32));
+		ofTranslate(depositPoints[i]*.25 - centerTranslate);
 		forceBrushMesh.draw();
 		ofPopMatrix();
 	}
@@ -218,10 +265,14 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 	ofDisableAlphaBlending();
 	ofClear(0, 0, 0, 0);
 	paperMixShader.begin();
-	paperMixShader.setUniformTexture("source_texture", canvassrc.getTextureReference(), 1);
-	paperMixShader.setUniformTexture("water_texture", watersrc.getTextureReference(),  2);
-	paperMixShader.setUniformTexture("flow_texture", noiseFlowTex.getTextureReference(),  3);
-	paperMixShader.setUniform2f("dimensions", canvassrc.getWidth(), canvassrc.getHeight());
+	paperMixShader.setUniformTexture("source_texture",
+									 canvassrc.getTextureReference(), 1);
+	paperMixShader.setUniformTexture("water_texture",
+									 watersrc.getTextureReference(),  2);
+	paperMixShader.setUniformTexture("flow_texture",
+									 noiseFlowTex.getTextureReference(),  3);
+	paperMixShader.setUniform2f("dimensions",
+								canvassrc.getWidth(), canvassrc.getHeight());
 	canvasMesh.draw();
 	paperMixShader.end();
 	
@@ -230,7 +281,10 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 	ofSetRectMode(OF_RECTMODE_CENTER);
 	for(int i = 0; i < depositPoints.size(); i++){
 		ofSetColor(ofColor::fromHsb(fmod(ofGetElapsedTimef()*20, 255.f), 255.0f, 255.0f));
-		brushImage.draw( depositPoints[i] );
+
+		brushImage.draw(depositPoints[i].x,
+						depositPoints[i].y,
+						brushSize,brushSize);
 	}
 	depositPoints.clear();
 	ofPopStyle();
@@ -252,13 +306,14 @@ void CloudsVisualSystemGesturePaint::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemGesturePaint::selfDrawBackground(){
 
-	//ofEnableAlphaBlending();
+
 	glDisable(GL_DEPTH_TEST);
-	//ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 	ofEnableAlphaBlending();
 	paperImage.draw(paperRect);
-	canvassrc.getTextureReference().draw(0,0);	
-	watersrc.getTextureReference().draw(0,0);
+	canvassrc.getTextureReference().draw(0,0);
+	if(showWaterDebug){
+		watersrc.getTextureReference().draw(0,0);
+	}
 	
 }
 // this is called when your system is no longer drawing.
@@ -286,8 +341,63 @@ void CloudsVisualSystemGesturePaint::selfMouseDragged(ofMouseEventArgs& data){
 	
 }
 
+ofVec2f ofHermiteInterpolate(ofVec2f y0, ofVec2f y1, ofVec2f y2, ofVec2f y3, float pct, float tension, float bias){
+	ofVec2f m0,m1;
+	float pct2,pct3;
+	float a0,a1,a2,a3;
+	pct2 = pct * pct;
+	pct3 = pct2 * pct;
+	m0  = (y1-y0)*(1+bias)*(1-tension)/2;
+	m0 += (y2-y1)*(1-bias)*(1-tension)/2;
+	m1  = (y2-y1)*(1+bias)*(1-tension)/2;
+	m1 += (y3-y2)*(1-bias)*(1-tension)/2;
+	a0 =  2*pct3 - 3*pct2 + 1;
+	a1 =  pct3 - 2*pct2 + pct;
+	a2 =  pct3 - pct2;
+	a3 =  -2*pct3 + 3*pct2;
+	return(a0*y1 + a1*m0+a2*m1+a3*y2);
+}
+
 void CloudsVisualSystemGesturePaint::selfMouseMoved(ofMouseEventArgs& data){
-	depositPoints.push_back(ofVec2f(data.x,data.y));
+
+	mouseHistory.push_back(ofVec2f(data.x,data.y));
+	
+	
+	vector<ofVec2f> splineHandles;
+	//make a spline
+	if(mouseHistory.size() == 1){
+		return; //draw next time
+	}
+	if(mouseHistory.size() == 2){
+		splineHandles.push_back(mouseHistory[0]);
+		splineHandles.push_back(mouseHistory[0]);
+		splineHandles.push_back(mouseHistory[1]);
+		splineHandles.push_back(mouseHistory[1]);
+	}
+	else if(mouseHistory.size() == 3){
+		splineHandles.push_back(mouseHistory[0]);
+		splineHandles.push_back(mouseHistory[0]);
+		splineHandles.push_back(mouseHistory[1]);
+		splineHandles.push_back(mouseHistory[2]);
+	}
+	else{
+		for(int i = mouseHistory.size()-4; i < mouseHistory.size(); i++){
+			splineHandles.push_back(mouseHistory[i]);
+		}
+	}
+	
+	for(float a = 0; a < 1.; a+=.1){
+		depositPoints.push_back(ofHermiteInterpolate(splineHandles[0],
+													 splineHandles[1],
+													 splineHandles[2],
+													 splineHandles[3], a, 0, 0));
+	}
+	
+	if(mouseHistory.size() > 4){
+		mouseHistory.erase(mouseHistory.begin());
+	}
+	
+	
 }
 
 void CloudsVisualSystemGesturePaint::selfMousePressed(ofMouseEventArgs& data){

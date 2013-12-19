@@ -2,8 +2,8 @@
 //precision mediump float;
 
 uniform sampler2DRect s_texture;
-uniform sampler2DRect s_paper;
 
+uniform float dryRate;
 varying vec2 v_texCoord;
 varying vec2 v_blurTexCoords[14];
 
@@ -28,11 +28,7 @@ void main()
     gl_FragColor.rgb += texture2DRect(s_texture, v_blurTexCoords[12]).rgb*0.00895781211794;
     gl_FragColor.rgb += texture2DRect(s_texture, v_blurTexCoords[13]).rgb*0.0044299121055113265;
 	
-//	vec4 paperTexture = texture2DRect(s_paper, v_texCoord);
-//	gl_FragColor.rgb -= epsilon*10.;
-	gl_FragColor.rgb = max(gl_FragColor.rgb-.01, vec3(0.)); //make variable
-	
-//	gl_FragColor.rgb = mix(paperTexture.rgb,gl_FragColor.rgb, gl_FragColor.a);
+	gl_FragColor.rgb = gl_FragColor.rgb*(1.0 - dryRate);
 	gl_FragColor.a = 1.;
 	
 }
