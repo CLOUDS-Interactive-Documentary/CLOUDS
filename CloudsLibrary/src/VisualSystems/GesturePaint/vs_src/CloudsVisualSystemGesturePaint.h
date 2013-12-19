@@ -114,6 +114,7 @@ protected:
 	ofShader hblurShader;
 	ofShader paperMixShader;
 	
+	ofImage noiseFlowTex; //procedural
 	ofImage brushImage;
 	ofImage paperImage;
 	ofMesh canvasMesh;

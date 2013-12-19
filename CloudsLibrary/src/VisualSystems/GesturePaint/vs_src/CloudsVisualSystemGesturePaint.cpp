@@ -56,15 +56,20 @@ void CloudsVisualSystemGesturePaint::selfSetup(){
 }
 
 void CloudsVisualSystemGesturePaint::reloadShader(){
+	
+	cout << "loading hblur" << endl;
 	hblurShader.load(getVisualSystemDataPath() + "shaders/hblur.vert",
 					 getVisualSystemDataPath() + "shaders/blur.frag");
+	cout << "loading vblur" << endl;
 	vblurShader.load(getVisualSystemDataPath() + "shaders/vblur.vert",
 					 getVisualSystemDataPath() + "shaders/blur.frag");
-	
+
 //	vblurShader.load(getVisualSystemDataPath() + "shaders/blur");
 	brushImage.loadImage(getVisualSystemDataPath() + "images/brush.png");
 	paperImage.loadImage(getVisualSystemDataPath() + "images/paper.jpg");
+	noiseFlowTex.loadImage(getVisualSystemDataPath() + "images/noise.png");
 	
+	cout << "loading paper mix" << endl;
 	paperMixShader.load(getVisualSystemDataPath() + "shaders/papermix");
 	
 }
@@ -99,10 +104,10 @@ void CloudsVisualSystemGesturePaint::reallocateFramebuffers(){
 	
 	waterdst.allocate(getSharedRenderTarget().getWidth()*.25,
 					  getSharedRenderTarget().getHeight()*.25,
-					  GL_RGBA32F);
+					  GL_RGB32F);
 	watersrc.allocate(getSharedRenderTarget().getWidth()*.25,
 					  getSharedRenderTarget().getHeight()*.25,
-					  GL_RGBA32F);
+					  GL_RGB32F);
 	
 	
 	waterdst.begin();
@@ -158,52 +163,57 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 	
 	glDisable(GL_DEPTH_TEST);
 	ofSetColor(255, 255);
+	
+	waterdst.begin();
+	ofDisableAlphaBlending();
+	ofClear(0, 0, 0, 0);
+	
 	hblurShader.begin();
 	hblurShader.setUniformTexture("s_texture", watersrc.getTextureReference(), 1);
 	hblurShader.setUniform2f("dimensions", waterdst.getWidth(), waterdst.getHeight());
-
-	waterdst.begin();
-	ofDisableAlphaBlending();
-//	ofEnableAlphaBlending();
-	ofClear(0, 0, 0, 0);
 	waterMesh.draw();
-	waterdst.end();
 	hblurShader.end();
+	waterdst.end();
 	
 	swap(watersrc,waterdst);
+	
+	waterdst.begin();
+	ofDisableAlphaBlending();
+	ofClear(0, 0, 0, 0);
 	
 	vblurShader.begin();
 	vblurShader.setUniformTexture("s_texture", watersrc.getTextureReference(), 1);
 	vblurShader.setUniform2f("dimensions", waterdst.getWidth(), waterdst.getHeight());
-	waterdst.begin();
-//	ofEnableAlphaBlending();
-	ofDisableAlphaBlending();
-	ofClear(0, 0, 0, 0);
 	waterMesh.draw();
+	vblurShader.end();
 	
 	ofEnableAlphaBlending();
+	
 	for(int i = 0; i < depositPoints.size(); i++){
-		ofSetColor(ofColor::fromHsb(ofGetElapsedTimef()*20, 255, 255));
-		brushImage.draw( depositPoints[i] ); //TODO: draw smaller
+		brushImage.draw( depositPoints[i] * .25 );
 	}
+	
 	waterdst.end();
-	vblurShader.end();
 	
 	swap(watersrc,waterdst);
 
 	canvasdst.begin();
+//	ofEnableAlphaBlending();
+	ofDisableAlphaBlending();
 	ofClear(0, 0, 0, 0);
-	
-//	paperMixShader.begin();
-//	paperMixShader.setUniformTexture("s_texture", canvassrc.getTextureReference(), 1);
-	canvassrc.getTextureReference().bind();
+	paperMixShader.begin();
+	paperMixShader.setUniformTexture("source_texture", canvassrc.getTextureReference(), 1);
+	paperMixShader.setUniformTexture("water_texture", watersrc.getTextureReference(),  2);
+	paperMixShader.setUniformTexture("flow_texture", noiseFlowTex.getTextureReference(),  3);
+	paperMixShader.setUniform2f("dimensions", canvassrc.getWidth(), canvassrc.getHeight());
+
+//	ofDisableAlphaBlending();
+//	canvassrc.getTextureReference().bind();
 	canvasMesh.draw();
-	canvassrc.getTextureReference().unbind();
-	
-//	paperMixShader.end();
+//	canvassrc.getTextureReference().unbind();
+	paperMixShader.end();
 	
 	ofPushStyle();
-	
 	ofEnableAlphaBlending();
 	for(int i = 0; i < depositPoints.size(); i++){
 		ofSetColor(ofColor::fromHsb(fmod(ofGetElapsedTimef()*20, 255.f), 255.0f, 255.0f));
@@ -233,9 +243,8 @@ void CloudsVisualSystemGesturePaint::selfDrawBackground(){
 	glDisable(GL_DEPTH_TEST);
 	//ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 	ofEnableAlphaBlending();
-	//paperImage.draw(paperRect);
-//	canvassrc.getTextureReference().draw(0,0);
-	
+	paperImage.draw(paperRect);
+	canvassrc.getTextureReference().draw(0,0);	
 	watersrc.getTextureReference().draw(0,0);
 	
 }

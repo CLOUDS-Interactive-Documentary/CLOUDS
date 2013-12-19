@@ -30,7 +30,8 @@ void main()
 	
 //	vec4 paperTexture = texture2DRect(s_paper, v_texCoord);
 //	gl_FragColor.rgb -= epsilon*10.;
-	gl_FragColor.rgb -= .0001;
+	gl_FragColor.rgb = max(gl_FragColor.rgb-.01, vec3(0.)); //make variable
+	
 //	gl_FragColor.rgb = mix(paperTexture.rgb,gl_FragColor.rgb, gl_FragColor.a);
 	gl_FragColor.a = 1.;
 	
