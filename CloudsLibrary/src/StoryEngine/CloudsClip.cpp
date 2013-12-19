@@ -10,7 +10,7 @@
 #include "CloudsGlobal.h"
 #include "CloudsSpeaker.h"
 
-#define FRAME_PADDING 24
+//#define FRAME_PADDING 24
 
 
 
@@ -44,7 +44,7 @@ string CloudsClip::getSpeakerGender(){
 }
 
 float CloudsClip::getDuration(){
-	return (endFrame - startFrame) / 23.976; //TODO: HigaSan was recorded @ 30.0, need to compensate
+	return (endFrame - startFrame) / (is30FPS() ? 29.97 : 23.976); //TODO: HigaSan was recorded @ 30.0, need to compensate
 }
 
 //string CloudsClip::getStartingQuestion(){
@@ -111,12 +111,17 @@ string CloudsClip::getCombinedCalibrationXML(){
 	return getID() + ".xml";
 }
 
+bool CloudsClip::is30FPS(){
+    return person == "Higa";
+}
+
 string CloudsClip::getFFMpegLine(string alternativeVideoPath, string exportFolder){
+
+    float frameRate = is30FPS() ? 29.97 : 23.98;
+	int framePadding = is30FPS() ? 30 : 24;
+    float duration = ((float)( (endFrame-startFrame) + (framePadding*2 - 1) )) / frameRate;
     
-    float frameRate = 23.98;
-    float duration = ((float)( (endFrame-startFrame) + (FRAME_PADDING*2 - 1) )) / frameRate;
-    
-    string dstSound = exportFolder + "/" +  getID()+".wav";
+    string dstSound = exportFolder + "/" +  getID() + ".wav";
     string srcSound;
 	if(alternativeVideoPath != ""){
 		srcSound = alternativeVideoPath + ofFilePath::getFileName(sourceVideoFilePath);
@@ -127,16 +132,21 @@ string CloudsClip::getFFMpegLine(string alternativeVideoPath, string exportFolde
 	
     stringstream pipeline1;
     pipeline1 << "ffmpeg -i \"" << srcSound << "\"";
-    pipeline1 << " -ss " << ofToString((float)(startFrame-FRAME_PADDING+1)/(float)frameRate);
-    pipeline1 << " -t " << ofToString(duration);
+    pipeline1 << " -ss " << ofToString( (float)(startFrame-framePadding+1) / (float)frameRate );
+    pipeline1 << " -t "  << ofToString( duration );
     pipeline1 << " -ac 2 -ar 44100 -vn \"" << dstSound <<"\"";
     
     stringstream pipeline2;
-    pipeline2 << "ffmpeg -start_number " << ofToString(startFrame-FRAME_PADDING+1);
+    pipeline2 << "ffmpeg -start_number " << ofToString(startFrame-framePadding+1);
     pipeline2 << " -f image2 -r " << ofToString(frameRate);
     pipeline2 << " -i \"" << exportFolder << "/" << getCombinedPNGExportFolder() << getID() << "_%05d.png\"";
     pipeline2 << " -i \"" << dstSound << "\" -acodec copy ";
-    pipeline2 << " -codec:v libx264 -pix_fmt yuv420p -b 8000k -r 23.976 \"" << exportFolder << "/" << getCombinedMovieFile() << "\"";
+	if(is30FPS()){
+		pipeline2 << " -codec:v libx264 -pix_fmt yuv420p -b 8000k -r 29.97 \"" << exportFolder << "/" << getCombinedMovieFile() << "\"";
+	}
+	else{
+		pipeline2 << " -codec:v libx264 -pix_fmt yuv420p -b 8000k -r 23.976 \"" << exportFolder << "/" << getCombinedMovieFile() << "\"";
+	}
     
     stringstream pipeline3;
     pipeline3 << "cp \"" << exportFolder << "/" << getCombinedPNGExportFolder() << "_calibration.xml\" ";
