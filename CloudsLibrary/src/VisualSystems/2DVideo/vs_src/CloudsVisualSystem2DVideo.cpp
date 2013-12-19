@@ -49,7 +49,7 @@ void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index){
         player.stop();
     }
                 cout<<getVisualSystemDataPath(true)<< " : "<<movieStrings[index]<<endl;
-    if(player.loadMovie(getVisualSystemDataPath(true)+movieStrings[index])){
+    if(player.loadMovie(getVisualSystemDataPath(true)+"videos/"+ movieStrings[index])){
         player.play();
         bFileLoaded = false;
     }
@@ -81,8 +81,17 @@ void CloudsVisualSystem2DVideo::selfSetup()
     screenRect = ofRectangle(0,0, ofGetWidth(), ofGetHeight());
     videoRect = ofRectangle(0,0, ofGetWidth(), ofGetHeight());
     movieIndex = 0;
-    movieStrings.push_back("traffic_1.mov");
-    movieStrings.push_back("unionsq_1 - Wi-Fi_Crop.mov");
+    movieStrings.push_back("Alice.mov");
+    movieStrings.push_back("D3_AAPL.mov");
+    movieStrings.push_back("D3_Dial.mov");
+    movieStrings.push_back("D3_Radial.mov");
+    movieStrings.push_back("Exoplanets.mp4");
+    movieStrings.push_back("FaceSub_lowSat.mov");
+    movieStrings.push_back("OpenPaths.mov");
+    movieStrings.push_back("PeopleStaring.mp4");
+    movieStrings.push_back("Reas_network1.mov");
+    movieStrings.push_back("Reas_Process13.mov");
+    movieStrings.push_back("zipcode.mov");
     loadMovieAtIndex(movieIndex);
 
 }
@@ -115,7 +124,9 @@ void CloudsVisualSystem2DVideo::selfSceneTransformation(){
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfUpdate()
 {
-    if(! bFileLoaded){
+    //if(! bFileLoaded){
+        screenRect.width = ofGetWidth();
+        screenRect.height = ofGetHeight();
         if(player.getWidth() >0){
             videoRect.x = 0;
             videoRect.y = 0;
@@ -125,7 +136,7 @@ void CloudsVisualSystem2DVideo::selfUpdate()
             videoRect.scaleTo(screenRect);
             bFileLoaded = true;
         }
-    }
+  //  }
     player.update();
 
 }
