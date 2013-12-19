@@ -61,6 +61,7 @@ Raphael.fn.animateViewBox = function animateViewBox( x, y, w, h, duration, easin
                 callback && callback();
             }
 			Controller.stats.update();
+			console.log(Controller.stats.getFPS());
         }, interval );
 }
 

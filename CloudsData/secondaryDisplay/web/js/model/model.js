@@ -1,54 +1,35 @@
 Model = {
-	clips: new Array(),
+	nodes: new Array(),
 	people: new Array(),
 	projects: new Array(),
 	connections: new Array(),
-	previousClip: null,
-	currentClip: null,
-	topic: "",
-	projectExample: "",
+	previousNode: null,
+	currentNode: null,
+	topicChanged: false,
+	topic: '.',
 	addProject: function(project) {
 		this.projects.push(project);
 	},
 	addPerson: function(person) {
 		this.people.push(person);
 	},
-	addClip: function(clip) {
-		this.clips.push(clip);
-		
-		/*
-		var personInClip = null;
-		var found = false;
-		console.log("clip id: " + clip.id);			
+	addNode: function(node) {
+		this.nodes.push(node);
+		/* //CONNECT PEOPLE DATA TO CLIPS
+		var personInNode = null;
+		var found = false;		
 		for (var i=0; i<this.people.length && !found; i++){
-			var n = clip.id.search(this.people[i].first); //TODO: this is a hack while I don't have the new SVG format –people should have an ID (in people.xml), which should be included in the SVG. 
+
 			if(n > 0){
-				personInClip = this.people[i];
+				personInNode = this.people[i];
 				found = true;
 			}
-			
 		}
-		if (personInClip!=null){
-			//console.log("found person: " + personInClip.first);
-			personInClip.addClip(clip);
-			clip.setPerson(personInClip);
-		}
-		else{
-				//console.log("person not found for clip: " + clip.id);
-			}*/
-		
+		if (personInNode!=null) personInNode.addNode(node);
+		*/
 	},
-	addConnection: function(clipA, clipB, original_curve) {
-		this.connections.push(new Connection(clipA, clipB, original_curve));
-	},
-	getPerson: function(id){
-		var person = null;
-		for(var i=0; i <this.people.length && person==null; i++){
-			if(this.people[i].first == id){
-				person = this.people[i];
-			}
-		}
-		return person;
+	addConnection: function(nodeA, nodeB, original_curve) {
+		this.connections.push(new Connection(nodeA, nodeB, original_curve));
 	},
 	getProjectExample: function(project_example_title){
 		var project = null;
@@ -59,42 +40,49 @@ Model = {
 		}
 		return project;
 	},
-	getClip: function(id){
-		var clip = null;
-		for(var i=0; i <this.clips.length && clip==null; i++){
-			if(this.clips[i].id == id){
-				clip = this.clips[i];
+	getPerson: function(id){
+		var person = null;
+		for(var i=0; i <this.people.length && person==null; i++){
+			if(this.people[i].first == id){
+				person = this.people[i];
 			}
 		}
-		return clip;
-	},
-	setPerson: function (id) {
-		this.currentPerson = this.getPerson(id);
-		console.log(this.currentPerson);
-		if(debug){
-			console.log(id);
+		return person;
+	},	
+	getNode: function(id){
+		var node = null;
+		for(var i=0; i <this.nodes.length && node==null; i++){
+			if(this.nodes[i].id == id){
+				node = this.nodes[i];
+			}
 		}
-
-	},
-	setTopic: function(topic){
-		this.topic = topic;
+		return node;
 	},
 	setProjectExample: function(project_example_title){
 		this.projectExample = this.getProjectExample(project_example_title);
 	},
+	setPerson: function (id) {
+		this.currentPerson = this.getPerson(id);
+		if(debug){
+			console.log("current person: " + this.currentPerson.first);
+		}
+
+	},
+	setNode: function (id) {
+		this.previousNode = this.currentNode;
+		this.currentNode = this.getNode(id);
+		if(this.currentNode != null) this.currentNode.markAsVisited();
+		//this.currentNode.markAsVisited();
+		if(debug){
+			console.log("current node: " + this.currentNode.id);
+		}
+	},
+	setTopic: function(topic){
+		this.topic = topic;
+	},	
 	setQuestion: function(question){
 		this.question = question;
-	},
-	setClip: function (id) {
-		this.previousClip = this.currentClip;
-		this.currentClip = this.getClip(id);
-		//this.setPerson(id); //TODO: revisar si el id de los clips era el mismo de las personas
-		//this.currentPerson = this.currentClip.person;
-		if(this.currentClip != null) this.currentClip.markAsVisited();
-		//this.currentClip.markAsVisited();
-		if(debug){
-			console.log("current clip: " + this.currentClip.id);
-		}
 	}
+	
 	
 }

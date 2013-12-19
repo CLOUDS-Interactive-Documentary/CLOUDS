@@ -6,60 +6,93 @@
 	<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" charset="utf-8" />
 	<link href="css/style.css" rel="stylesheet" media="screen"> 
 	<link href="css/fonts.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+
+	  
 	
-	<script type="text/javascript" src="js/lib/jquery.min.js"></script>
-	<script type="text/javascript" src="js/lib/raphael-min.js"></script>
+	<script type="text/javascript" src="js/lib/jquery.min.js"></script>	
+    <script type="text/javascript" src="js/lib/three.js"></script>
+    <script type="text/javascript" src="js/lib/tween.js"></script>
 	<script type="text/javascript" src="js/lib/tinycolor.js"></script>
+	<script type="text/javascript" src="js/lib/OrbitControls.js"></script>
+	<script type="text/javascript" src="js/lib/Detector.js"></script>
+	<script type="text/javascript" src="js/lib/THREEx.Fullscreen.js"></script>
+	<script type="text/javascript" src="js/lib/THREEx.WindowResize.js"></script>
 	<script type="text/javascript" src="js/lib/dat.gui.js"></script>
 	<script type="text/javascript" src="js/lib/stats.js"></script>
 	<script type="text/javascript" src="js/net/sockets.js"></script>
 	<script type="text/javascript" src="js/net/utils.js"></script>		
 	<script type="text/javascript" src="js/model/person.js"></script>
 	<script type="text/javascript" src="js/model/project.js"></script>
-	<script type="text/javascript" src="js/model/clip.js"></script>	
+	<script type="text/javascript" src="js/model/node.js"></script>	
 	<script type="text/javascript" src="js/model/connection.js"></script>
 	<script type="text/javascript" src="js/model/model.js"></script>
-	<script type="text/javascript" src="js/animation/animation.js"></script>
+	
+	<!--<script type="text/javascript" src="js/animation/animation.js"></script>-->
 	<script type="text/javascript" src="js/view/colorPalette.js"></script>
-	<script type="text/javascript" src="js/view/clipView.js"></script>
-	<script type="text/javascript" src="js/view/graphView.js"></script>
-	<script type="text/javascript" src="js/view/personView.js"></script>
-	<script type="text/javascript" src="js/view/projectExampleView.js"></script>
-	<script type="text/javascript" src="js/view/topicView.js"></script>
-	<script type="text/javascript" src="js/net/loader.js"></script>	
+	<script type="text/javascript" src="js/view/nodeView.js"></script>
+	<script type="text/javascript" src="js/three_js_utils/rectangle.js"></script>	
+	<script type="text/javascript" src="js/view/graphView.js"></script>	
+	<script type="text/javascript" src="js/net/loader.js"></script>		
 	<script type="text/javascript" src="js/controller.js"></script>	
 </head>  
 <body>  
-	
-		<video id="video" autoplay src="http://sandbox.app-solut.com/blog/OverlayDemo/movies/big_buck_bunny.ogv" />
-	  			<source type="video/mp4">
-	  			Your browser does not support the video tag.
-		</video>
+	<script id="vertexShader" type="x-shader/x-vertex">
+	uniform vec3 viewVector;
+	uniform float c;
+	uniform float p;
+	varying float intensity;
+	void main() 
+	{
+	    vec3 vNormal = normalize( normalMatrix * normal );
+		vec3 vNormel = normalize( normalMatrix * viewVector );
+		intensity = pow( c - dot(vNormal, vNormel), p );
+		
+	    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+	}
+	</script>
 
-		<div id="info">		
-			<div id="project_info">
-				<div id="projectex_info">
-					<div id="projectex_title">"DRAWN1"</div>
-					<br>
-					<div id="projectex_artist">ZACH LIEBERMAN</div>
-				</div>
-				<div id="projectex_desc">lorem ipsum blah blah blah</div>
+	<!-- fragment shader a.k.a. pixel shader -->
+	<script id="fragmentShader" type="x-shader/x-vertex"> 
+	uniform vec3 glowColor;
+	varying float intensity;
+	void main() 
+	{
+		vec3 glow = glowColor * intensity;
+	    gl_FragColor = vec4( glow, 1.0 );
+	}
+	</script>
+	<video id="video" autoplay src="http://sandbox.app-solut.com/blog/OverlayDemo/movies/big_buck_bunny.ogv" />
+  			<source type="video/mp4">
+  			Your browser does not support the video tag.
+	</video>
+
+	<div id="info">		
+		<div id="project_info">
+			<div id="projectex_info">
+				<div id="projectex_title">"DRAWN1"</div>
+				<br>
+				<div id="projectex_artist">ZACH LIEBERMAN</div>
 			</div>
-			<div id="clip_overlay">
-				<div id="first">first</div>
-				<div id="last">last</div>
-				<div id="title">title</div>
-				<div id="location">location</div>
-				<div id="byline">bio bio bio bio</div>
-				<div id="question">question question question?</div>
-			</div>
-				
+			<div id="projectex_desc">lorem ipsum blah blah blah</div>
 		</div>
-	
-		<div id="graph"></div>
-		<div id="topic"></div>
+		<div id="clip_overlay">
+			<div id="first">first</div>
+			<div id="last">last</div>
+			<div id="title">title</div>
+			<div id="location">location</div>
+			<div id="byline">bio bio bio bio</div>
+			<div id="question">question question question?</div>
+		</div>
+			
+	</div>
+	<div id="graph"></div>
+	<div id="topic"></div>
 
-
+	<script src="fonts/blender_bold.typeface.js"></script>   
+    <script src="fonts/blender_book.typeface.js"></script>   
+    <script src="fonts/blender_medium.typeface.js"></script>   
+    <script src="fonts/blender_strong.typeface.js"></script>   
+    <script src="fonts/blender_thin.typeface.js"></script>    
 	
 </body>  
 </html>  
