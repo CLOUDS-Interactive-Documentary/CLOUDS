@@ -1,0 +1,144 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Histogram</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ALPHA BLENDING</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEPTH TESTING</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BARS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LINES</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>POINTS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SEPARATE FEEDS</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RANDOM</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>AUDIO</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Glitch0_.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Glitch1.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RyochiKurokawa.aif</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Weirdo.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEVEL ADJUST</Name>
+    <Value>5.862069130</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>HUE RANGE</Name>
+    <HighValue>192.192123413</HighValue>
+    <LowValue>150.738922119</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SAT BASE</Name>
+    <Value>185.911331177</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SAT RANGE</Name>
+    <Value>30.147783279</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BRI BASE</Name>
+    <Value>225.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BRI RANGE</Name>
+    <Value>25.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ALPHA</Name>
+    <Value>214.802963257</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>NUM ROWS</Name>
+    <Value>27</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>COLS PER ROW</Name>
+    <Value>71</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ROW SPACER</Name>
+    <Value>104.911331177</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>COL SPACER</Name>
+    <Value>17.241378784</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>COL WIDTH</Name>
+    <Value>100.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>COL HEIGHT</Name>
+    <HighValue>184.729064941</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE WIDTH</Name>
+    <Value>2.489655018</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FOG DENSITY</Name>
+    <Value>0.107881777</Value>
+</Widget>
