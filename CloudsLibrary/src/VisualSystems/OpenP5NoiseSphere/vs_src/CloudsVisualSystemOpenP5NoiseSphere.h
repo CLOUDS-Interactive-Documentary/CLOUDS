@@ -105,6 +105,9 @@ class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
     void selfSetupAudioGui();
     void guiAudioEvent(ofxUIEventArgs &e);
 
+	
+	void selfSetDefaults();
+
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
@@ -156,6 +159,8 @@ class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
 	
 	void reloadSound();
 
+	void reloadShader();
+	
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 //	ofCamera& getCameraRef(){
@@ -165,14 +170,16 @@ class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
 
 protected:
     ofxUISuperCanvas* customGui;
+	ofxUISuperCanvas* drawingGui;
     ofxUISuperCanvas* audioGui;
 	
-    int count = 10000;
+    int count;
 	vector<Hair> list;
 	float radius;
 	float rx = 0;
 	float ry = 0;
 
+	void generateNoiseSphere();
     float noisePosition;
 	float noiseSpeed;
 	float noiseScale;
@@ -193,6 +200,12 @@ protected:
     ofFloatColor minBaseColor, maxBaseColor;
     ofFloatColor minTipColor, maxTipColor;
     
+	bool drawLines;
+	bool drawPoints;
+	float lineAlpha;
+	float pointAlpha;
+	float pointSize;
+	
     float currLevel;
     float levelAdjust;
     
@@ -200,6 +213,7 @@ protected:
     int selectedSoundsIdx;
     bool bModeVideo;
     
+	ofShader shader;
     ofxAVFVideoPlayer videoPlayer;
     ofSoundPlayer soundPlayer;
     

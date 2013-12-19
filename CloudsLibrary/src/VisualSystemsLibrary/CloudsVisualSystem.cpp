@@ -221,6 +221,7 @@ void CloudsVisualSystem::setup(){
     setupTimeLineParams();
 	setupTimeline();
     
+	selfSetDefaults();
     selfSetup();
     setupCoreGuis();
     selfSetupGuis();
@@ -361,8 +362,6 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	
 	bgColor = ofColor::fromHsb(MIN(bgHue,254.), bgSat, bgBri, 255);
 	bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
-//	cout << "color 1 " << int(bgColor.r) << " " << int(bgColor.g) << " " << int(bgColor.b) << endl;
-//	cout << "color 2 " << int(bgColor2.r) << " " << int(bgColor2.g) << " " << int(bgColor2.b) << endl;
 	
 	//Make this happen only when the timeline is modified by the user or when a new track is added.
 	if(!ofGetMousePressed())
@@ -628,8 +627,8 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
         case ' ':
         {
 			timeline->togglePlay();
-            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->setValue(timeline->getIsPlaying());
-            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->triggerSelf();
+//            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->setValue(timeline->getIsPlaying());
+//            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->triggerSelf();
         }
             break;
 			
@@ -744,7 +743,9 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 		case 'L':
 			cameraTrack->lockCameraToTrack = !cameraTrack->lockCameraToTrack;
 			break;
-			
+		case ',':
+			timeline->setCurrentFrame(0);
+			break;
 #ifdef OCULUS_RIFT
 		case '0':
 			oculusRift.reset();
@@ -961,7 +962,7 @@ void CloudsVisualSystem::setupTimeLineParams()
 	bTimelineIsIndefinite = true;
     bDeleteTimelineTrack = false;
     timelineDuration = 60;
-    bEnableTimeline = false;
+    bEnableTimeline = true;
     bEnableTimelineTrackCreation = false;
 }
 
@@ -983,6 +984,7 @@ void CloudsVisualSystem::setupGui()
     gui = new ofxUISuperCanvas(ofToUpper(getSystemName()));
     gui->setName("Settings");
     gui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+
     
     ofxUIFPS *fps = gui->addFPS();
     gui->resetPlacer();
@@ -1003,6 +1005,8 @@ void CloudsVisualSystem::setupGui()
     gui->addSpacer();
     selfSetupGui();
     gui->autoSizeToFitWidgets();
+
+    
     ofAddListener(gui->newGUIEvent,this,&CloudsVisualSystem::guiEvent);
     guis.push_back(gui);
     guimap[gui->getName()] = gui;
@@ -1091,12 +1095,27 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
             else{
                 loadGUIS();
             }
+            
         }
     }
 	
     selfGuiEvent(e);
 }
 
+//void CloudsVisualSystem::setColors(){
+//
+//     cb = ofxUIColor(128,255);
+//     co = ofxUIColor(255, 255, 255, 100);
+//     coh = ofxUIColor(255, 255, 255, 200);
+//     cf = ofxUIColor(255, 255, 255, 200);
+//     cfh = ofxUIColor(255, 255, 255, 255);
+//     cp = ofxUIColor(0, 100);
+//     cpo =  ofxUIColor(255, 200);
+//    for(int i = 0; i < guis.size(); i++){
+//            guis[i]->setUIColors(cb,co,coh,cf,cfh,cp, cpo);
+//    }
+//
+//}
 void CloudsVisualSystem::setupSystemGui()
 {
     sysGui = new ofxUISuperCanvas("SYSTEM", gui);
@@ -1128,7 +1147,6 @@ void CloudsVisualSystem::setupRenderGui()
     rdrGui->setPosition(guis[guis.size()-1]->getRect()->x+guis[guis.size()-1]->getRect()->getWidth()+1, 0);
     rdrGui->setName("RenderSettings");
     rdrGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-    
     rdrGui->addSpacer();
     selfSetupRenderGui();
     
@@ -1213,8 +1231,11 @@ void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
        // bgBri->setPosAndHome(bgBri->getPos());
         for(int i = 0; i < guis.size(); i++)
         {
-            guis[i]->setWidgetColor(OFX_UI_WIDGET_COLOR_BACK, ofColor(bgBri,OFX_UI_COLOR_BACK_ALPHA*REZANATOR_GUI_ALPHA_MULTIPLIER));
-            guis[i]->setColorBack(ofColor(255 - bgBri, OFX_UI_COLOR_BACK_ALPHA*REZANATOR_GUI_ALPHA_MULTIPLIER));
+//            guis[i]->setWidgetColor(OFX_UI_WIDGET_COLOR_BACK, ofColor(bgBri,OFX_UI_COLOR_BACK_ALPHA*REZANATOR_GUI_ALPHA_MULTIPLIER));
+//            guis[i]->setColorBack(ofColor(255 - bgBri, OFX_UI_COLOR_BACK_ALPHA*REZANATOR_GUI_ALPHA_MULTIPLIER));
+//            guis[i]->setWidgetColor(OFX_UI_WIDGET_COLOR_BACK, ofColor(bgBri,255));
+            guis[i]->setColorBack(ofColor(255*.2, 255*.9));
+			
         }
     }
 //    else if(name == "SAT")
@@ -1309,19 +1330,11 @@ void CloudsVisualSystem::guiLightingEvent(ofxUIEventArgs &e)
 			globalAmbientColorRGB.r,
 			globalAmbientColorRGB.g,
 			globalAmbientColorRGB.b,
-			globalAmbientColorRGB.a
+			1.0
 		};
 		
         glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbientColor);
     }
-//    else if(name == "G")
-//    {
-//        glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbientColor);
-//    }
-//    else if(name == "B")
-//    {
-//        glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbientColor);
-//    }
 }
 
 
@@ -1578,7 +1591,7 @@ void CloudsVisualSystem::setupMaterial(string name, ofxMaterial *m)
 //    g->addMinimalSlider("DV", 0.0, 1.0, &m->matDiffuseHSV.b, length, dim)->setShowValue(false);
 //    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
 //    g->addSpacer();
-//    
+	
     g->addLabel("EMISSIVE", OFX_UI_FONT_SMALL);
     g->addMinimalSlider("EH", 0.0, 1.0, &m->matEmissiveHSV.r, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
@@ -1977,6 +1990,7 @@ void CloudsVisualSystem::setTimelineTrackDeletion(bool state)
                 ofAddListener((*it)->newGUIEvent,this,&CloudsVisualSystem::guiAllEvents);
             }
         }
+        bEnableTimeline = true;
     }
     else
     {
@@ -2003,6 +2017,7 @@ void CloudsVisualSystem::setTimelineTrackCreation(bool state)
                 ofAddListener((*it)->newGUIEvent,this,&CloudsVisualSystem::guiAllEvents);
             }
         }
+        bEnableTimeline = true;
     }
     else
     {
@@ -2513,15 +2528,20 @@ void CloudsVisualSystem::lightsEnd()
 
 void CloudsVisualSystem::loadGUIS()
 {
+
     for(int i = 0; i < guis.size(); i++)
     {
         guis[i]->loadSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
+		guis[i]->setColorBack(ofColor(255*.2, 255*.9));
+//        setColors();
+//        guis[i]->setTheme(OFX_UI_THEME_ZOOLANDER);
     }
     cam.reset();
     ofxLoadCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
     resetTimeline();
     loadTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/UITimelineMappings.xml");
     timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
+
 }
 
 void CloudsVisualSystem::saveGUIS()
@@ -2540,17 +2560,32 @@ void CloudsVisualSystem::saveGUIS()
 
 void CloudsVisualSystem::loadPresetGUISFromName(string presetName)
 {
+    
 	loadPresetGUISFromPath(getVisualSystemDataPath()+"Presets/"+ presetName);
 }
 
 void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 {
-    resetTimeline();
+    
+	resetTimeline();
+	
+	selfSetDefaults();
+	
+	//custom colors
+//    cb = ofxUIColor(128,255);
+//    co = ofxUIColor(255, 255, 255, 100);
+//    coh = ofxUIColor(255, 255, 255, 200);
+//    cf = ofxUIColor(255, 255, 255, 200);
+//    cfh = ofxUIColor(255, 255, 255, 255);
+//    cp = ofxUIColor(0, 100);
+//    cpo =  ofxUIColor(255, 200);
 	
     for(int i = 0; i < guis.size(); i++) {
 		string presetPathName = presetPath+"/"+guis[i]->getName()+".xml";
         guis[i]->loadSettings(presetPathName);
+//		guis[i]->setUIColors(cb,co,coh,cf,cfh,cp, cpo);
     }
+	
     cam.reset();
 	string easyCamPath = presetPath+"/ofEasyCamSettings";
 	if(ofFile(easyCamPath).exists()){
@@ -2582,20 +2617,12 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	getSharedRenderTarget().begin();
 	ofClear(0,0,0,1.0);
 	getSharedRenderTarget().end();
-	
-//	//hack to fix bg color state leak
-//	bgColor->setHsb(bgHue->getPos(), bgSat->getPos(), bgBri->getPos(), 255);
-//	bgColor2->setHsb(bgHue2->getPos(), bgSat2->getPos(), bgBri2->getPos(), 255);
-	
+		
 	//auto play this preset
 	cameraTrack->lockCameraToTrack = cameraTrack->getKeyframes().size() > 0;
-//	if(cameraTrack->lockCameraToTrack){
-//		timeline->setCurrentTimeMillis(cameraTrack->getKeyframes()[0]->time);
-//	}
-//	else {
-		timeline->setCurrentTimeMillis(0);
-//	}
+	timeline->setCurrentTimeMillis(0);
 	timeline->play();
+	
 	bEnableTimeline = true;
 }
 
@@ -2628,12 +2655,11 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 	timeline->setName("Working");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 
-	
 	ofxXmlSettings timeInfo;
 	timeInfo.addTag("timeinfo");
 	timeInfo.pushTag("timeinfo");
 	timeInfo.addValue("indefinite", bTimelineIsIndefinite);
-	timeInfo.addValue("duration", timelineDuration);
+	timeInfo.addValue("duration", timeline->getInOutRange().span() * timeline->getDurationInSeconds());
 	timeInfo.addValue("introDuration", getIntroDuration());
 	timeInfo.addValue("outroDuration", getOutroDuration());
 	timeInfo.popTag();//timeinfo
@@ -2935,6 +2961,10 @@ void CloudsVisualSystem::ofLayerGradient(const ofColor& start, const ofColor& en
     glDepthMask(true);
 }
 
+void CloudsVisualSystem::selfSetDefaults(){
+	
+}
+
 void CloudsVisualSystem::selfSetup()
 {
     
@@ -2992,9 +3022,10 @@ void CloudsVisualSystem::selfDrawOverlay(){
 }
 
 void CloudsVisualSystem::selfPostDraw(){
+	
 	glDisable(GL_LIGHTING);
+	
 #ifdef OCULUS_RIFT
-
     oculusRift.draw();
 #else
     //draws to viewport
@@ -3020,15 +3051,16 @@ void CloudsVisualSystem::selfPostDraw(){
             else {
                 ofSetColor(240,240,255, 175);
             }
-            ofCircle(it->second.position.x, it->second.position.y, ofMap(it->second.position.z, 2, -2, 5, 30, true) );
+            ofCircle(it->second.position.x,
+					 it->second.position.y,
+					 ofMap(it->second.position.z, 2, -2, 3, 10, true) );
 //            cout << " z pos " << it->second.position.z << endl;
         }
         ofPopStyle();
         ofPopMatrix();
 
     }
-    ofPopStyle();
-    ofPopMatrix();
+	
 	
 #endif
 
@@ -3099,7 +3131,7 @@ void CloudsVisualSystem::selfInteractionEnded(CloudsInteractionEventArgs& args){
 
 void CloudsVisualSystem::selfSetupGui()
 {
-	
+
 }
 
 void CloudsVisualSystem::selfGuiEvent(ofxUIEventArgs &e)

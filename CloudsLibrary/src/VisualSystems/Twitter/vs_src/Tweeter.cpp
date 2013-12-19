@@ -21,5 +21,38 @@ Tweeter::Tweeter(string _name, int _id){
 }
 
 
+vector<Tweet> Tweeter::getTweetsByDate(Date d){
+    vector<Tweet> dateTweets;
+    for(int i =0; i < tweets.size(); i++){
+        if(tweets[i].tweetDate.day == d.day &&
+           tweets[i].tweetDate.month == d.month &&
+           tweets[i].tweetDate.year== d.year){
+            dateTweets.push_back(tweets[i]);
+        }
+    }
+    
+    return dateTweets;
+}
+
+void Tweeter::indexTweetsByDate(vector<Date> dates){
+
+//    for(int i)
+}
+
+bool Tweeter::hasTweetOnDate(Date d){
+    for(int i =0; i< tweets.size(); i++){
+        if(tweets[i].tweetDate.day == d.day &&
+           tweets[i].tweetDate.month == d.month &&
+           tweets[i].tweetDate.year== d.year){
+            return true;
+        }
+    }
+    
+//    cout<<name <<" has no tweets on date "<< d.day<< " , "<<d.month<<" , "<<d.year<<endl;
+    return false;
+}
+
+
+
 
 

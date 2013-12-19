@@ -45,9 +45,6 @@ void CloudsVisualSystemMandala::selfSetupGui()
 	guis.push_back(surfaceGui);
 	guimap[surfaceGui->getName()] = surfaceGui;
 	
-	
-	
-	
 	clockGui = new ofxUISuperCanvas("Clock", gui);
 	clockGui->copyCanvasStyle(gui);
 	clockGui->copyCanvasProperties(gui);
@@ -56,6 +53,7 @@ void CloudsVisualSystemMandala::selfSetupGui()
 	clockGui->addSpacer();
 	
 	clockGui->addToggle("draw clock", &bDrawClock);
+	clockGui->addToggle("draw tails", &bDrawTails);
 	clockGui->addSlider("spread", .05, .75, &clockSpread)->setIncrement(.001);
 	clockGui->addSlider("clockV", .1, .9, &clockV)->setIncrement(.001);
 	clockGui->addSlider("numCogs", 3., 30., &clockNumCogs)->setIncrement(1);
@@ -193,7 +191,9 @@ void CloudsVisualSystemMandala::selfSetup()
 	numU = 13, numV = 12;
 	radius = 100;
 	
-	bDrawSurface = bDrawClock = bSmoothSurface = false;
+	bDrawClock = bSmoothSurface = false;
+	bDrawSurface = true;
+	bDrawTails = false;
 	
 	
 	noiseTimeScale = .2;
@@ -220,7 +220,7 @@ void CloudsVisualSystemMandala::selfSetup()
 	colorMixScale = 6;
 	
 	//load some images for gui and debug
-	colorMap.loadImage( getVisualSystemDataPath() + "GUI/defaultColorPalette.png" );
+	colorMap.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png" );
 	
 	//load shaders
 	loadShaders();
@@ -349,6 +349,12 @@ void CloudsVisualSystemMandala::setClock( int numCogs, float scale, int octaves,
 		}
 	}
 	
+	tails.resize(surfaceMeshes.size());
+	for (int i=0; i<surfaceMeshes.size(); i++)
+	{
+		tails[i].setup(&surfaceMeshes[i]);
+	}
+	
 	
 	//animation of the noise deformation
 	noiseTimeTicker.begin( surfaceNoiseTime, surfaceNoiseTime, surfaceNoiseTime+noiseTimeScale, 1, 0);
@@ -365,6 +371,8 @@ void CloudsVisualSystemMandala::clearClock()
 	surfacePoints.clear();
 	
 	surfaceMeshes.clear();
+	
+	tails.clear();
 }
 
 SurfacePoint* CloudsVisualSystemMandala::addSurfacePoint( ofxSimpleSurface& s, ofVec2f uv )
@@ -451,6 +459,7 @@ void CloudsVisualSystemMandala::selfUpdate()
 		for(int i=0; i<surfaceMeshes.size(); i++)
 		{
 			surfaceMeshes[i].update();
+			if(bDrawTails)	tails[i].update();
 		}
 	}
 	
@@ -467,18 +476,37 @@ void CloudsVisualSystemMandala::selfDraw()
 
 	
 	ofSetColor(255);
-	normalShader.begin();
 	
-	if(bDrawSurface)	sphereSurface.draw();
+	if(bDrawSurface)
+	{
+		normalShader.begin();
+		
+		sphereSurface.draw();
+		
+		normalShader.end();
+	}
 	
 	ofSetColor(255);
 	
 	if(bDrawClock)
 	{
+		facingRatio.begin();
 		for(int i=0; i<surfaceMeshes.size(); i++)
 		{
 			surfaceMeshes[i].draw();
+			
+			if(bDrawTails)	tails[i].draw();
+			
+			//TODO: opitimize by binding the geometry once
+//			if(surfaceMeshes[i].bDraw && surfaceMeshes[i].m!=NULL)
+//			{
+//				surfaceMeshes[i].transformGL();
+//				surfaceMeshes[i].m->draw();
+//				surfaceMeshes[i].restoreTransformGL();
+//			}
 		}
+		
+		facingRatio.end();
 	}
 	normalShader.end();
 

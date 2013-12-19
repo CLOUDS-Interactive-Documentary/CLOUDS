@@ -32,13 +32,17 @@ public:
     string name;
     int ID;
     ofVec3f position;
+    int nodeVertexIndex;
+    int edgeVertexIndex;
+
     
-    
-    
+    vector<Tweet> getTweetsByDate(Date d);
+    bool hasTweetOnDate(Date d);
+    void indexTweetsByDate(vector<Date> dates);
     vector<Tweet> tweets;
     vector<string> userLinks;
     vector<int> linksById;
-
+    map<Date, vector<Tweet> >tweetsByDateIndex;
 };
 
 #endif /* defined(__Twitter__Tweeter__) */

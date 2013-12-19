@@ -296,4 +296,145 @@ namespace itg
         
         return  sphere;
     }
+    
+    ofMesh Action::cone( float radius, float height, int radiusSegments, int heightSegments, int capSegments, ofPrimitiveMode mode ) {
+        ofMesh mesh;
+        if(mode != OF_PRIMITIVE_TRIANGLE_STRIP && mode != OF_PRIMITIVE_TRIANGLES) {
+            mode = OF_PRIMITIVE_TRIANGLE_STRIP;
+        }
+        mesh.setMode(mode);
+        
+        if(heightSegments < 2) heightSegments = 2;
+        int capSegs = capSegments;
+        if(capSegs < 2) capSegs = 2;
+        
+        
+        float angleIncRadius    = -1.f * ((TWO_PI/((float)radiusSegments-1.f)));
+        float heightInc         = height/((float)heightSegments-1);
+        float halfH             = height*.5f;
+        
+        float newRad;
+        ofVec3f vert;
+        ofVec3f normal;
+        ofVec2f tcoord;
+        ofVec3f up(0,1,0);
+        
+        
+        int vertOffset = 0;
+        
+        float maxTexY = heightSegments-1.f + capSegs-1.f;
+        
+        ofVec3f startVec(0, -halfH-1.f, 0);
+        
+        // cone vertices //
+        for(int iy = 0; iy < heightSegments; iy++) {
+            normal.set(1,0,0);
+            for(int ix = 0; ix < radiusSegments; ix++) {
+                
+                newRad = ofMap((float)iy, 0, heightSegments-1, 0.0, radius);
+                vert.x = cos((float)ix*angleIncRadius) * newRad;
+                vert.y = heightInc*((float)iy) - halfH;
+                vert.z = sin((float)ix*angleIncRadius) * newRad;
+                
+                tcoord.x = (float)ix/((float)radiusSegments-1.f);
+                tcoord.y = (float)iy/((float)maxTexY);
+                
+                mesh.addTexCoord( tcoord );
+                mesh.addVertex( vert );
+                
+                if(iy == 0) {
+                    newRad = 1.f;
+                    vert.x = cos((float)ix*angleIncRadius) * newRad;
+                    vert.y = heightInc*((float)iy) - halfH;
+                    vert.z = sin((float)ix*angleIncRadius) * newRad;
+                }
+                
+                ofVec3f diff = vert-startVec;
+                ofVec3f crossed = up.crossed(vert);
+                normal = crossed.normalized();
+                normal = crossed.getPerpendicular(diff);
+                
+                normal.normalize();
+                
+                mesh.addNormal( normal );
+                //}
+                
+            }
+        }
+        
+        if(mode == OF_PRIMITIVE_TRIANGLES) {
+            for(int y = 0; y < heightSegments-1; y++) {
+                for(int x = 0; x < radiusSegments-1; x++) {
+                    if(y > 0){
+                        // first triangle //
+                        mesh.addIndex( (y)*radiusSegments + x );
+                        mesh.addIndex( (y)*radiusSegments + x+1 );
+                        mesh.addIndex( (y+1)*radiusSegments + x );
+                    }
+                    
+                    // second triangle //
+                    mesh.addIndex( (y)*radiusSegments + x+1 );
+                    mesh.addIndex( (y+1)*radiusSegments + x+1 );
+                    mesh.addIndex( (y+1)*radiusSegments + x );
+                }
+            }
+        } else {
+            for(int y = 0; y < heightSegments-1; y++) {
+                for(int x = 0; x < radiusSegments; x++) {
+                    mesh.addIndex( (y)*radiusSegments + x );
+                    mesh.addIndex( (y+1)*radiusSegments + x );
+                }
+            }
+        }
+        
+        vertOffset = mesh.getNumVertices();
+        float maxTexYNormalized = (heightSegments-1.f) / maxTexY;
+        
+        // add the cap //
+        normal.set(0,1,0);
+        for(int iy = 0; iy < capSegs; iy++) {
+            for(int ix = 0; ix < radiusSegments; ix++) {
+                newRad = ofMap((float)iy, 0, capSegs-1, radius, 0.0);
+                vert.x = cos((float)ix*angleIncRadius) * newRad;
+                vert.z = sin((float)ix*angleIncRadius) * newRad;
+                vert.y = halfH;
+                
+                tcoord.x = (float)ix/((float)radiusSegments-1.f);
+                tcoord.y = ofMap(iy, 0, capSegs-1, maxTexYNormalized, 1.f);
+                
+                mesh.addTexCoord( tcoord );
+                mesh.addVertex( vert );
+                mesh.addNormal( normal );
+            }
+        }
+        
+        if(mode == OF_PRIMITIVE_TRIANGLES) {
+            for(int y = 0; y < capSegs-1; y++) {
+                for(int x = 0; x < radiusSegments-1; x++) {
+                    //if(y > 0) {
+                    // first triangle //
+                    mesh.addIndex( (y)*radiusSegments + x + vertOffset );
+                    mesh.addIndex( (y)*radiusSegments + x+1 + vertOffset);
+                    mesh.addIndex( (y+1)*radiusSegments + x + vertOffset);
+                    //}
+                    
+                    if(y < capSegs-1) {
+                        // second triangle //
+                        mesh.addIndex( (y)*radiusSegments + x+1 + vertOffset);
+                        mesh.addIndex( (y+1)*radiusSegments + x+1 + vertOffset);
+                        mesh.addIndex( (y+1)*radiusSegments + x + vertOffset);
+                    }
+                }
+            }
+        } else {
+            for(int y = 0; y < capSegs-1; y++) {
+                for(int x = 0; x < radiusSegments; x++) {
+                    mesh.addIndex( (y)*radiusSegments + x + vertOffset );
+                    mesh.addIndex( (y+1)*radiusSegments + x + vertOffset);
+                }
+            }
+        }
+        
+        return mesh;
+    }
 }

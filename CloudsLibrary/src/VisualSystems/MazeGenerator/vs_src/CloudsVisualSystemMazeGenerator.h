@@ -99,6 +99,8 @@ class CloudsVisualSystemMazeGenerator : public CloudsVisualSystem {
 protected:
     void setLightOri(ofLight* light, ofVec3f rot);
     
+	void regenerate();
+	
     MazeSettings settings;
     
     Maze* maze[3];

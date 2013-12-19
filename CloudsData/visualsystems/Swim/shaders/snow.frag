@@ -7,10 +7,12 @@
 
 uniform sampler2D tex;
 
+varying float innerFogAmount;
 varying float fogAmount;
 varying vec2 texOffset;
 
 void main()
 {
-	gl_FragColor = gl_Color * (1.0 - fogAmount) * texture2D(tex, texOffset + 0.5 * gl_TexCoord[0].st);
+    if (innerFogAmount == 1.0) discard;
+	gl_FragColor = gl_Color * (1.0 - fogAmount) * texture2D(tex, texOffset + 0.5 * gl_TexCoord[0].st) * vec4(1.0, 1.0, 1.0, 1.0 - innerFogAmount);
 }

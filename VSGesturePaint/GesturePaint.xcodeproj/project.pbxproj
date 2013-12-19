@@ -521,6 +521,12 @@
 		E7132662185913C5004C0B6A /* blur.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = blur.frag; sourceTree = "<group>"; };
 		E713266818594315004C0B6A /* hblur.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = hblur.vert; sourceTree = "<group>"; };
 		E713266918594315004C0B6A /* vblur.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = vblur.vert; sourceTree = "<group>"; };
+		E71326E4185A7F61004C0B6A /* papermix.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = papermix.frag; sourceTree = "<group>"; };
+		E71326E5185A7F61004C0B6A /* papermix.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = papermix.vert; sourceTree = "<group>"; };
+		E732FC801863401900643061 /* forcebrush.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = forcebrush.frag; sourceTree = "<group>"; };
+		E732FC811863401900643061 /* forcebrush.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = forcebrush.vert; sourceTree = "<group>"; };
+		E732FC8418639C5100643061 /* paintbrush.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = paintbrush.frag; sourceTree = "<group>"; };
+		E732FC8518639C5100643061 /* paintbrush.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = paintbrush.vert; sourceTree = "<group>"; };
 		E7380142183C871A0018AB96 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		E7380143183C871A0018AB96 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		E738FFE1183C86F50018AB96 /* GesturePaintOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GesturePaintOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1263,8 +1269,8 @@
 		E71326531858E988004C0B6A /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				E71326541858E988004C0B6A /* CloudsInput.cpp */,
 				E71326551858E988004C0B6A /* CloudsInput.h */,
+				E71326541858E988004C0B6A /* CloudsInput.cpp */,
 				E71326561858E988004C0B6A /* CloudsInputEvents.h */,
 				E71326591858E988004C0B6A /* CloudsInputMouse.cpp */,
 				E713265A1858E988004C0B6A /* CloudsInputMouse.h */,
@@ -1276,6 +1282,12 @@
 		E7132661185913C5004C0B6A /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				E732FC8418639C5100643061 /* paintbrush.frag */,
+				E732FC8518639C5100643061 /* paintbrush.vert */,
+				E732FC801863401900643061 /* forcebrush.frag */,
+				E732FC811863401900643061 /* forcebrush.vert */,
+				E71326E5185A7F61004C0B6A /* papermix.vert */,
+				E71326E4185A7F61004C0B6A /* papermix.frag */,
 				E713266818594315004C0B6A /* hblur.vert */,
 				E713266918594315004C0B6A /* vblur.vert */,
 				E7132662185913C5004C0B6A /* blur.frag */,

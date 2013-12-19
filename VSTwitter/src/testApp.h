@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystemTwitter.h"
-
+#include "ofxBillboard.h"
 class testApp : public ofBaseApp{
   public:
 	void setup();

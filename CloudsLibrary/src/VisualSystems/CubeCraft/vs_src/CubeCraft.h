@@ -11,6 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "CloudsGlobal.h"
 #include "ofxObjLoader.h"
 
 
@@ -41,6 +42,8 @@ public:
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
     void selfSetup();
+	
+	void selfSetDefaults();
 	
 	// selfBegin is called when the system is ready to be shown
 	// this is a good time to prepare for transitions
@@ -92,7 +95,6 @@ public:
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-	void loadFileToGeometry( string loc, vector<ofVec3f>& points );
 	
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -108,18 +110,66 @@ public:
 	
 protected:
 	
-		
+	void loadFileToGeometry( string loc, vector<ofVec3f>& points );
+	
+	void drawVoxelGrid();
+	void drawCubeCraft();
+	void updateAllColors();
+	
+	void resizeVoxelGrid();
+	void loadShaders();
+	void unloadShaders();
+	
+	void updateGroundMap();
+	
 	ofxUISuperCanvas* customGui;
+	
+	ofxUISuperCanvas* cubeGui;
+	ofxUISuperCanvas* fogGui;
+	ofxUISuperCanvas* meshRenderGui;
+	ofxUISuperCanvas* mineCraftGui;
 	
 	int dimX, dimY, dimZ;
 	int halfDimX, halfDimY, halfDimZ;
 	ofMesh cubeMesh;
+	ofVbo voxelVbo;
 	ofVbo cubeVbo;
-	int cubeIndexCount;
-	vector<ofVec3f> samplePositions;
+	int voxelIndexCount, cubeIndexCount;
 	
-	ofShader cubeShader;
+	ofShader cubeCraftShader;
+	ofShader voxelShader;
+	ofShader mineCraftGroundShader;
+	ofShader mineCraftCloudsShader;
 	
+	ofVec3f noiseDirection;
+	float noiseTime, lastTime, speed;
 	float noiseThreshold, noiseScale, edgeWidth;
 	bool bFillCubes, bScaleCubes;
+	
+	float edgeSmoothing, cubeScale, specExpo, specScale;
+	ofImage colorMap;
+	ofColor edgeColor, fillColor, fillColor2, fogColor;
+	float fogDist, fogExpo, fogSaturation, fogHue, fogBrightness;
+	bool bUseFog;
+	
+	bool bDrawVoxels, bDrawCubeCraft;
+	
+	
+	float groundDrama, cloudThreshold, cloudHeight, cloudSpeed, cloudThickness, cloudShadow;
+	
+	ofColor groundColor;
+	float groundHue, groundSaturation, groundBrightness;
+	
+	ofColor undergroundColor;
+	float undergroundHue, undergroundSaturation, undergroundBrightness;
+	
+	ofColor cloudShadowColor;
+	float cloudShadowHue, cloudShadowSaturation, cloudShadowBrightness;
+	
+//	ofImage groundMap;
+	ofVec3f cameraOffset;
+	
+	ofFloatColor fc;
+	
+	int mineCraftDimX, mineCraftDimY;
 };

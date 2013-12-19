@@ -27,7 +27,6 @@ class CloudsSound {
 	void mouseReleased(ofMouseEventArgs & args);
 	
 	void audioRequested(ofAudioEventArgs& args);
-
 	void actBegan(CloudsActEventArgs& args);
 	void actEnded(CloudsActEventArgs& args);
 	void clipBegan(CloudsClipEventArgs& args);

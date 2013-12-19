@@ -1,0 +1,22 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Mesh</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>868</XPosition>
+    <YPosition>52</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FacetMesh</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SmoothMesh</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>example.obj</Name>
+    <Value>1</Value>
+</Widget>

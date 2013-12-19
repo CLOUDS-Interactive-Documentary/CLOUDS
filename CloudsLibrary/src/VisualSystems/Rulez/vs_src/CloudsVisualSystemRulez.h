@@ -107,7 +107,6 @@ class CloudsVisualSystemRulez : public CloudsVisualSystem {
 protected:
     //  Your Stuff
     //
-    void onWindowResized(ofResizeEventArgs& args);
     void generate();
     void saveMesh();
     

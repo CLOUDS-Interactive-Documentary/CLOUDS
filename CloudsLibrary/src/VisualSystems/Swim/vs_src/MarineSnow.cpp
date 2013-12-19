@@ -34,9 +34,15 @@
 
 namespace itg
 {
-    void MarineSnow::init(const string& dataPath, unsigned numParticles)
+    MarineSnow::MarineSnow() :
+        alphaMin(.2f), alphaMax(.8f), innerFogStart(100.f), innerFogEnd(400.f),
+        sizeMin(0.1f), sizeMax(400.f), numParticles(100000)
     {
-        this->numParticles = numParticles;
+    }
+    
+    void MarineSnow::init(const string& dataPath)
+    {
+        //this->numParticles = numParticles;
         mesh.setMode(OF_PRIMITIVE_POINTS);
         shader.load(dataPath + "shaders/snow");
         ofDisableArbTex();
@@ -53,38 +59,14 @@ namespace itg
         mesh.clear();
         for (unsigned i = 0; i < numParticles; ++i)
         {
-            mesh.addVertex(ofVec3f(ofRandom(-800.f, 800.f),
-                                   ofRandom(-800.f, 800.f),
-                                   ofRandom(-Creature::fogEnd, 0)));
+            mesh.addVertex(ofVec3f(ofRandom(-1500.f, 1500.f),
+                                   ofRandom(-1500.f, 1500.f),
+                                   ofRandom(-fogEnd, 0)));
             
-            mesh.addColor(ofFloatColor::fromHsb(ofRandom(0.1f, 0.3f), ofRandom(0.f, 0.8f), 1.f, ofRandom(0.2f, 0.8f)));
+            mesh.addColor(ofFloatColor::fromHsb(ofRandom(0.1f, 0.3f), ofRandom(0.f, 0.8f), 1.f, ofRandom(alphaMin, alphaMax)));
             
             // stick texture offset and size into normal
-            ofVec3f data;
-            switch (rand() % 4)
-            {
-                case 0:
-                    data.x = 0.f;
-                    data.y = 0.f;
-                    break;
-                
-                case 1:
-                    data.x = .5f;
-                    data.y = 0.f;
-                    break;
-                    
-                case 2:
-                    data.x = 0.f;
-                    data.y = .5f;
-                    break;
-                
-                case 3:
-                    data.x = .5f;
-                    data.y = .5f;
-                    break;
-            }
-            data.z = ofRandom(0.1f, 100.f);
-            mesh.addNormal(data);
+            mesh.addNormal(ofVec3f((rand() % 2) * .5f, (rand() % 2) * .5f, ofRandom(sizeMin, sizeMax)));
         }
     }
     
@@ -96,7 +78,10 @@ namespace itg
         glEnable(GL_POINT_SPRITE);
         ofEnableAlphaBlending();
         shader.begin();
-        shader.setUniform1f("fogEnd", Creature::fogEnd);
+        shader.setUniform1f("innerFogStart", innerFogStart);
+        shader.setUniform1f("innerFogEnd", innerFogEnd);
+        shader.setUniform1f("fogStart", fogStart);
+        shader.setUniform1f("fogEnd", fogEnd);
         shader.setUniform1f("nearClip", cam.getNearClip());
         shader.setUniform1f("camZ", cam.getPosition().z);
         shader.setUniformTexture("tex", tex, 1);

@@ -1,5 +1,4 @@
 #include "CloudsVisualSystemCosmic.h"
-//#include "CloudsRGBDVideoPlayer.h"
 
 void CloudsVisualSystemCosmic::setupFloorVbo()
 {

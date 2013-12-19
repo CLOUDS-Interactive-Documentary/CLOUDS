@@ -5,6 +5,7 @@
 #include "CloudsFCPParser.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsVisualSystemRGBD.h"
+#include "CloudsHUDController.h"
 
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
@@ -13,6 +14,7 @@
     
 	
 	CloudsFCPParser parser;
+	CloudsHUDController hud;
 	CloudsVisualSystemRGBD rgbdVisualSystem;
 	
 	CloudsClip currentClip;

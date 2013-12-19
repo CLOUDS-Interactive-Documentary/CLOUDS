@@ -112,9 +112,11 @@ namespace itg
         addModelFish(numGreyFish, fishOneParams);
         addModelFish(numYellowFish, fishTwoParams);
         
+        /*
         addPointFish(numPointOne, huePointOne);
         addPointFish(numPointTwo, huePointTwo);
         addPointFish(numPointThree, huePointThree);
+        */
         
         // NB add jellies last as they are drawn with glDepthMask(GL_FALSE) to make additive blending
         // work so depth isn't stored

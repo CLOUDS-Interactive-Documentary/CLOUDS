@@ -6229,7 +6229,31 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="Xstatic_CloudChamber">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="Xstatic_RisingDust">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Xstatic_StarChurn">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Xstatic_StarNursery1">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -6246,6 +6270,22 @@
     <oculus>0</oculus>
 </system>
 <system name="Xstatic_basic_debug">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Xstatic_fireflies">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Xstatic_snow">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>

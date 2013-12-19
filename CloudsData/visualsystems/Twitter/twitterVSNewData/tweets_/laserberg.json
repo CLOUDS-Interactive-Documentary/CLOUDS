@@ -1,0 +1,848 @@
+{
+    "Tweets": [
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@robotconscience @laserberg @mrdoob great! maybe we oughta start work on ofxThree?  ", 
+            "Users": [
+                "@robotconscience", 
+                "@laserberg", 
+                "@mrdoob"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@aramique speeking of documentation, do you have anything up for hyperfeel?  ", 
+            "Users": [
+                "@aramique"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#threeamigos"
+            ], 
+            "Tweet": "Elsa loves Dusty Bottoms. #threeamigos https://t.co/GQjl7aymgL  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#w"
+            ], 
+            "Tweet": "RT @alteredq: Multiple render targets landed in fresh new stable Chrome 27. Yay! ;) Still no ANGLE support though, not even in Canary ;S #w\u2026  ", 
+            "Users": [
+                "@alteredq"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@robotconscience nobody does it better!  ", 
+            "Users": [
+                "@robotconscience"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jonobr1: Been awesome working and learning from @jessicahische. Happy to show our team\u2019s latest project, The Peanut Gallery: http:// ...  ", 
+            "Users": [
+                "@jonobr1", 
+                "@jessicahische"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @sermad: Ha. Bags of fun with this -> Add titles to a classic silent film clip by just speaking - http://t.co/qLIXEr7SHT via @jonobr1  ", 
+            "Users": [
+                "@sermad", 
+                "@jonobr1"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@davidoreilly yes please  ", 
+            "Users": [
+                "@davidoreilly"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @julian0liver: The best audiovisual work I've seen in quite some time 'Autechre & the Washing Machine' https://t.co/VT570nVGfa vi ...  ", 
+            "Users": [
+                "@julian0liver"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@francisbitonti things are good:) quick question: what are you using to unfold polygons these days? or are you printing everything  ", 
+            "Users": [
+                "@francisbitonti"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@francisbitonti nice work!! http://t.co/n4Cs2N47Ae \u2026 http://t.co/R4gDdGtst2  ", 
+            "Users": [
+                "@francisbitonti"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Elsa looks pretty tough in her Viking helmet. http://t.co/fmuH6kxTcW  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Pinterest just removed this from my account due to nudity: http://t.co/80phJHVdpX  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @vogon: experts say the PS4's GPU is capable of rendering upwards of three mirrored spheres hovering over a checkerboard.  ", 
+            "Users": [
+                "@vogon"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jvcleave really? I hadn't heard that. good news though:)  ", 
+            "Users": [
+                "@jvcleave"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Petition for OpenGL 4.3 on MacOS X http://t.co/gQBco0pc  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "amazing sun photographs: http://t.co/lL0yahLS  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "does anyone else imagine Tracy Jordan rapping when they hear Kool Keith? TOKiMONSTA feat. Kool Keith: http://t.co/7oKzoxwa via  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@eddietree @TokyoDemoFest nice work! http://t.co/L8Ql4BRt  ", 
+            "Users": [
+                "@eddietree", 
+                "@TokyoDemoFest"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jimmyacres Thanks! cheers  ", 
+            "Users": [
+                "@jimmyacres"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@roxlu @jimmyacres looks amazing!  ", 
+            "Users": [
+                "@roxlu", 
+                "@jimmyacres"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@davidoreilly thanks a lot. Now I'm gonna have nightmares.  ", 
+            "Users": [
+                "@davidoreilly"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@davidoreilly have at it.  ", 
+            "Users": [
+                "@davidoreilly"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@francisbitonti I love the bristle chair!  ", 
+            "Users": [
+                "@francisbitonti"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@smallfly pushed it: https://t.co/nlgaYNvE enjoy! keep me posted if you end up playing with it, or see some improvements  ", 
+            "Users": [
+                "@smallfly"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @thegyptianlover: 2013 is \"The Year of the Freak\" ~Egyptian Lover http://t.co/JVDYvkum  ", 
+            "Users": [
+                "@thegyptianlover"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@obviousjim congrats!  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@smallfly haha, I guess that should be next shouldn't it. If I can, I'll clean it up and get it pushed this weekend  ", 
+            "Users": [
+                "@smallfly"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@smallfly My pleasure! it's been on the backburner for quite a while.. @obviousjim provided the motivation to get it out the door:)  ", 
+            "Users": [
+                "@smallfly", 
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@zachlieberman @obviousjim Are you guys using GL_rgba? I've had good results with gl_rgba16f &32f  ", 
+            "Users": [
+                "@zachlieberman", 
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@zachlieberman @obviousjim beautiful!  ", 
+            "Users": [
+                "@zachlieberman", 
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@brunchstorm congrats dude! So happy for you  ", 
+            "Users": [
+                "@brunchstorm"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@obviousjim i've done a little bit, mostly creating nodes that re-tesselate meshes. not too difficult + lots of cool mesh stuff in the API.  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@obviousjim great! Have done much work with maya plugins? Might be nice to have a plugin in the toolkit  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@obviousjim aside from Rockwell jams not too much\u2026 I've been meaning to revisit this sooner or later: https://t.co/ho3xRcnA  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "i just backed CLOUDS Interactive Documentary on @Kickstarter http://t.co/G93sq4B2  ", 
+            "Users": [
+                "@Kickstarter"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @howardtayler: This has made me happy all day: \"Not my problem\" in Polish is \"nie moj cyrk, nie moje malpy.\" Literally \"not my circus ...  ", 
+            "Users": [
+                "@howardtayler"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@brunchstorm please do:) I'm all ears  ", 
+            "Users": [
+                "@brunchstorm"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @subblue: Very inspiring work by Ron Resch: Paper and Stick Film http://t.co/f6h8aP8K via @mariuswatz  ", 
+            "Users": [
+                "@subblue", 
+                "@mariuswatz"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@chrisallick amazing  ", 
+            "Users": [
+                "@chrisallick"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @WFMU: Estate of Miles Davis Suing Squeaky Door in Chicago Parking Garage Over Usage of Miles' Signature Sound: http://t.co/HykHpBJQ  ", 
+            "Users": [
+                "@WFMU"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "London Design Festival 2012: Nendo 'Mimicry Chairs' at V&A - Core77 http://t.co/yDcDPA9g  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wired: Ultra-HD Video of Curiosity Rover\u2019s Landing Is the Best Yet http://t.co/7fesweoP  ", 
+            "Users": [
+                "@wired"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @sermad: Mesmerising. Can't stop looking. RT @__anf: Best music video I have seen in a long while http://t.co/zGNT5poR  ", 
+            "Users": [
+                "@sermad", 
+                "@__anf"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @eddietree: Wonderful motion: http://t.co/n2aKx9SN  ", 
+            "Users": [
+                "@eddietree"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @science: Whale shark learns to suck fish out of holes in fishing nets http://t.co/fGmPcqp8  ", 
+            "Users": [
+                "@science"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@blprnt seiner ausgepr\u00e4gten Super Mario  ", 
+            "Users": [
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @chrisallick: http://t.co/ZjStZ5iI if anything, for the bmx escape double flick off  ", 
+            "Users": [
+                "@chrisallick"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@chrisallick dude that sucks! Let me know if you kneed anything  ", 
+            "Users": [
+                "@chrisallick"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jonobr1 James Narse uses crazy custom brushes almost exclusively. http://t.co/xVyxjtFm  ", 
+            "Users": [
+                "@jonobr1"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Eclipse shadows http://t.co/egy38sD5  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Eclipse = cool shadows http://t.co/esO0BSdc  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@robotconscience @chrisallick how do you get to the ones in the middle?  ", 
+            "Users": [
+                "@robotconscience", 
+                "@chrisallick"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @gloom303: Woah. \"Reset\" has amazing visuals and an intriguing concept. Just ex-demoscene/Futuremark finns? Yes Sir. http://t.co/KvMoEdxX  ", 
+            "Users": [
+                "@gloom303"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mynameisjonah: So apparently I'm the weirdo for making a \"Pan's Labyrinth\" joke when I got lost in the cookware section of Bed, Bath ...  ", 
+            "Users": [
+                "@mynameisjonah"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "You can take tony out of the burbs, but you can't take the burbs out of tony  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @chrisallick: DREAM DO COME TRUE http://t.co/GEipVDIE  ", 
+            "Users": [
+                "@chrisallick"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@chrisallick swag the dog  ", 
+            "Users": [
+                "@chrisallick"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @chrisallick: Mother of god\u2026 http://t.co/BW5oVgas  ", 
+            "Users": [
+                "@chrisallick"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @chrisoshea: 'Invisible' car using LEDS & camera http://t.co/JLNnD73t  ", 
+            "Users": [
+                "@chrisoshea"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kcimc @ycam_jp great! I suppose the same effect works for opposite RGB as well...  ", 
+            "Users": [
+                "@kcimc", 
+                "@ycam_jp"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mrdoob: http://t.co/4EITvgv8 (original: http://t.co/Zzilo6Vp) /via @ReceptorMusic  ", 
+            "Users": [
+                "@mrdoob", 
+                "@ReceptorMusic"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#goddamnpeople", 
+                "#itsnotyourdvr"
+            ], 
+            "Tweet": "@mynameisjonah I love it when people request jokes. If you know the punch line whats the point? #goddamnpeople #itsnotyourdvr  ", 
+            "Users": [
+                "@mynameisjonah"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#hourback"
+            ], 
+            "Tweet": "@mynameisjonah GET IT? #hourback  ", 
+            "Users": [
+                "@mynameisjonah"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#hourback"
+            ], 
+            "Tweet": "RT @mynameisjonah: Listening to Andrew Dice Clay's \"The Day The Laughter Died\" and slowly losing my mind. #hourback  ", 
+            "Users": [
+                "@mynameisjonah"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@factoryfactory ha, thanks!!  ", 
+            "Users": [
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Really nice paper sculpture by christoph BADER http://t.co/9TnWMQc  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Nice drawings. Reminds me of home http://t.co/PLg6Bq1  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#webgl"
+            ], 
+            "Tweet": "RT @memotv: mandelbulb in your browser in realtime? yea baby http://t.co/hTU2QZN #webgl  ", 
+            "Users": [
+                "@memotv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @MikkoH: This video is nuts. Skier Falls off a mountain: http://bit.ly/fc8G95  ", 
+            "Users": [
+                "@MikkoH"
+            ]
+        }
+    ], 
+    "name": "laserberg.txt"
+}

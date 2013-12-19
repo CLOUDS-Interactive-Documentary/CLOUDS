@@ -2,8 +2,23 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	exampleVectorMath.setup();
-	exampleVectorMath.playSystem();
+	
+	int sr = 44100;
+	int nbufs = 2; // you can use more for more processing but latency will suffer
+	int nchans = 2; // stereo
+	int framesize = 512; // sigvs
+//	s_audio_outbuf = (short*)malloc(nchans*framesize*sizeof(short)); // audio buffer (interleaved)
+	
+	// initialize RTcmix
+///	rtcmixmain();
+//	maxmsp_rtsetparams(sr, nchans, framesize, NULL, NULL);
+	
+	// initialize OF audio streaming
+	ofSoundStreamSetup(nchans, 0, sr, framesize, nbufs);
+	
+	ofSoundStreamStart();
+	exampleBox2D.setup();
+	exampleBox2D.playSystem();
 }
 
 //--------------------------------------------------------------
@@ -22,6 +37,18 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::exit(){
+	exampleBox2D.exit();
+}
+
+//--------------------------------------------------------------
+void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
+	
+	ofAudioEventArgs args;
+	args.buffer = output;
+	args.bufferSize = bufferSize;
+	args.nChannels = nChannels;
+	
+	ofNotifyEvent(ofEvents().audioRequested, args, this);
 }
 
 //--------------------------------------------------------------

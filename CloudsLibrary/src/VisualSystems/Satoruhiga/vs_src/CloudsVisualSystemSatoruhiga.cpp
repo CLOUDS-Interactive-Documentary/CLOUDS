@@ -57,6 +57,8 @@ struct Drawer
     
     void operator()(Replecator *repl)
     {
+		ofPushStyle();
+		
         if (repl->parent == NULL) return;
         
         if (repl->idx % 2 == 0) ofNoFill();
@@ -72,6 +74,8 @@ struct Drawer
         ofRotateY(hue * t * rot_x);
         ofRotateX(hue * t * rot_y);
         ofRect(0, 0, width, height);
+		
+		ofPopStyle();
     }
 };
 
@@ -142,17 +146,13 @@ void CloudsVisualSystemSatoruhiga::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemSatoruhiga::selfSetup(){
 	
-		
-	
-//	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
-	
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemSatoruhiga::selfPresetLoaded(string presetPath){
-	
+	regenerate = true;
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -179,8 +179,9 @@ void CloudsVisualSystemSatoruhiga::selfUpdate(){
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemSatoruhiga::selfDraw(){
+	mat->begin();
 	repl.draw(drawer);
-
+	mat->end();
 }
 
 // draw any debug stuff here
@@ -209,7 +210,9 @@ void CloudsVisualSystemSatoruhiga::selfExit(){
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemSatoruhiga::selfKeyPressed(ofKeyEventArgs & args){
-	
+	if(args.key == 'R'){
+		regenerate = true;
+	}
 }
 void CloudsVisualSystemSatoruhiga::selfKeyReleased(ofKeyEventArgs & args){
 	

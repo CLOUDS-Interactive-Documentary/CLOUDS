@@ -35,9 +35,9 @@ void CloudsVisualSystemDataCascade::selfSetup(){
 		
 	regenerate = true;
 	
-	if(ofFile::doesFileExist(getVisualSystemDataPath() + "TestVideo/Casey_tangle.mov")){
-		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + "TestVideo/Casey_tangle.mov",
-								   getVisualSystemDataPath() + "TestVideo/Casey_tangle.xml" );
+	if(ofFile::doesFileExist("TestVideo/Binx_field_of_data_vis.mov")){
+		getRGBDVideoPlayer().setup("TestVideo/Binx_field_of_data_vis.mov",
+								   "TestVideo/Binx_field_of_data_vis.xml" );
 		
 		getRGBDVideoPlayer().swapAndPlay();
 		

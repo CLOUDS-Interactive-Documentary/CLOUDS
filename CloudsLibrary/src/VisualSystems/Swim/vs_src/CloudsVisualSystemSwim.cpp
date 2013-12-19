@@ -12,7 +12,7 @@
 
 const float CloudsVisualSystemSwim::CAM_DAMPING = .08f;
 
-CloudsVisualSystemSwim::CloudsVisualSystemSwim() : yRot(0), zSpeed(0)
+CloudsVisualSystemSwim::CloudsVisualSystemSwim() : camYRot(0), camSpeed(0), maxCamSpeed(600.f)
 {
 }
 
@@ -21,14 +21,12 @@ CloudsVisualSystemSwim::CloudsVisualSystemSwim() : yRot(0), zSpeed(0)
 // geometry should be loaded here
 void CloudsVisualSystemSwim::selfSetup()
 {
-    ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemSwim::onWindowResized);
-    
-    snow.init(getVisualSystemDataPath(), 100000);
+    snow.init(getVisualSystemDataPath());
     bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
     
     post.init(ofGetWidth(), ofGetHeight(), true);
-    post.createPass<FxaaPass>();
+    //post.createPass<FxaaPass>();
     post.createPass<BloomPass>();
 }
 
@@ -47,11 +45,13 @@ void CloudsVisualSystemSwim::selfUpdate()
 {
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
     
+    if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
+    
     // cam
-    yRot += CAM_DAMPING * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20) - yRot);
-    zSpeed += CAM_DAMPING * (ofMap(GetCloudsInputY(), 0, ofGetHeight(), -600.f, 600.f) - zSpeed);
-    getCameraRef().move(0, 0, zSpeed * ofGetLastFrameTime());
-    getCameraRef().setOrientation(ofVec3f(0, yRot, 0.f));
+    camYRot += CAM_DAMPING * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20, true) - camYRot);
+    camSpeed += CAM_DAMPING * (ofMap(GetCloudsInputY(), 0, ofGetHeight(), -maxCamSpeed, 0.f, true) - camSpeed);
+    getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
+    getCameraRef().setOrientation(ofVec3f(0, camYRot, 0.f));
     getCameraRef().setFarClip(Creature::fogEnd);
 
     //bubbles.update();
@@ -80,8 +80,20 @@ void CloudsVisualSystemSwim::selfPostDraw()
 void CloudsVisualSystemSwim::selfSetupRenderGui()
 {    
     rdrGui->addToggle("regenerate", false);
-    rdrGui->addMinimalSlider("creatureFogStart", 0.f, 10000.f, &Creature::fogStart);
-    rdrGui->addMinimalSlider("creatureFogEnd", 0.f, 10000.f, &Creature::fogEnd);
+    //rdrGui->addMinimalSlider("creatureFogStart", 0.f, 10000.f, &Creature::fogStart);
+    //rdrGui->addMinimalSlider("creatureFogEnd", 0.f, 10000.f, &Creature::fogEnd);
+    
+    rdrGui->addMinimalSlider("maxCamSpeed", 0.f, 1500.f, &maxCamSpeed);
+    
+    rdrGui->addRangeSlider("creatureFogRange", 0.f, 10000.f, &Creature::fogStart, &Creature::fogEnd);
+    rdrGui->addRangeSlider("snowFogRange", 0.f, 10000.f, &snow.getFogStartRef(), &snow.getFogEndRef());
+    rdrGui->addRangeSlider("snowInnerFogRange", 0.f, 2000.f, &snow.getInnerFogStartRef(), &snow.getInnerFogEndRef());
+    rdrGui->addRangeSlider("snowAlphaRange", 0.f, 1.f, &snow.getAlphaMinRef(), &snow.getAlphaMaxRef());
+    rdrGui->addRangeSlider("snowSizeRange", 0.f, 1000.f, &snow.getSizeMinRef(), &snow.getSizeMaxRef());
+    rdrGui->addIntSlider("numSnowParticles", 1000, 100000, &snow.getNumParticlesRef());
+    
+    //rdrGui->addMinimalSlider("snowInnerFogStart", 0, 2000.f, &snow.getInnerFogStartRef());
+    //rdrGui->addMinimalSlider("snowInnerFogEnd", 0, 2000.f, &snow.getInnerFogEndRef());
     rdrGui->addLabel("Flocking");
     rdrGui->addSpacer();
     rdrGui->addMinimalSlider("zoneRadius", 50.f, 2000.f, &creatures.zoneRadius);
@@ -92,6 +104,7 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addMinimalSlider("attractStrength", 0.f, 1.f, &creatures.attractStrength);
     rdrGui->addMinimalSlider("maxDistFromCentre", 500.f, 4000.f, &creatures.maxDistFromCentre);
     
+    /*
     rdrGui->addLabel("Points");
     rdrGui->addSpacer();
     rdrGui->addIntSlider("numPointOne", 0, 1000, &creatures.numPointOne);
@@ -100,6 +113,7 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addMinimalSlider("huePointTwo", 0.f, 1.f, &creatures.huePointTwo);
     rdrGui->addIntSlider("numPointThree", 0, 1000, &creatures.numPointThree);
     rdrGui->addMinimalSlider("huePointThree", 0.f, 1.f, &creatures.huePointThree);
+     */
     
     rdrGui->addLabel("Jellies (see other menus)");
     rdrGui->addSpacer();
@@ -169,12 +183,6 @@ void CloudsVisualSystemSwim::selfPresetLoaded(string presetPath)
 {
     creatures.generate();
     snow.generate();
-}
-
-
-void CloudsVisualSystemSwim::onWindowResized(ofResizeEventArgs& args)
-{
-    post.init(args.width, args.height, true);
 }
 
 ofxUISuperCanvas* CloudsVisualSystemSwim::createCustomGui(const string& name)

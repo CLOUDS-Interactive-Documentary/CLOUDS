@@ -13,6 +13,7 @@
 #ifdef AVF_PLAYER
 #include "ofxAVFVideoPlayer.h"
 #endif
+#include "ofRange.h"
 
 class CloudsRGBDVideoPlayer {
 public:
@@ -107,7 +108,13 @@ public:
 	//this describes the change each frame
 	ofRectangle deltaChangeRect;
 	
+	//Skin variables
+	ofFloatColor skinSampleColor;
+	ofVec3f skinWeights;
+	ofRange skinThreshold;
+	
 	string nextCalibrationXML;
+	bool hasSkinSettings;
 	bool useFaces;
 	
 	bool clipPrerolled;
