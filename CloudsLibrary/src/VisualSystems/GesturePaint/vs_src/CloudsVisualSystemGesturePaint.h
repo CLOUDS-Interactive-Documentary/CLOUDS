@@ -112,13 +112,16 @@ protected:
 	void reloadShader();
 	ofShader vblurShader;
 	ofShader hblurShader;
+	ofShader forceBrushShader;
 	ofShader paperMixShader;
 	
-	ofImage noiseFlowTex; //procedural
+	
+	ofImage noiseFlowTex;
 	ofImage brushImage;
 	ofImage paperImage;
 	ofMesh canvasMesh;
 	ofMesh waterMesh;
+	ofMesh forceBrushMesh;
 	ofRectangle paperRect;
 	vector<ofVec2f> depositPoints;
 

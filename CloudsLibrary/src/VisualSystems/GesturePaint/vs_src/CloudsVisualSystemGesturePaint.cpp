@@ -72,6 +72,9 @@ void CloudsVisualSystemGesturePaint::reloadShader(){
 	cout << "loading paper mix" << endl;
 	paperMixShader.load(getVisualSystemDataPath() + "shaders/papermix");
 	
+	cout << "loading force brush shader" << endl;
+	forceBrushShader.load(getVisualSystemDataPath() + "shaders/forcebrush");
+	
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -132,6 +135,14 @@ void CloudsVisualSystemGesturePaint::reallocateFramebuffers(){
 	paperRect = ofRectangle(0,0,paperImage.getWidth(),paperImage.getHeight());
 	ofRectangle screenRect(0,0,canvassrc.getWidth(),canvassrc.getHeight());
 	paperRect.scaleTo(screenRect, OF_ASPECT_RATIO_KEEP_BY_EXPANDING);
+	
+	//TODO make variable size
+	forceBrushMesh.clear();
+	forceBrushMesh.addVertex(ofVec3f(0,0,0));
+	forceBrushMesh.addVertex(ofVec3f(64,0,0));
+	forceBrushMesh.addVertex(ofVec3f(0,64,0));
+	forceBrushMesh.addVertex(ofVec3f(64,64,0));
+	forceBrushMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 }
 
 void CloudsVisualSystemGesturePaint::meshFromFbo(ofMesh& m, ofFbo& f){
@@ -189,16 +200,21 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 	
 	ofEnableAlphaBlending();
 	
+	forceBrushShader.begin();
+	forceBrushShader.setUniform2f("dimensions", 64, 64);
 	for(int i = 0; i < depositPoints.size(); i++){
-		brushImage.draw( depositPoints[i] * .25 );
+//		brushImage.draw( depositPoints[i] * .25 );
+		ofPushMatrix();
+		ofTranslate(depositPoints[i]*.25 - ofVec2f(32,32));
+		forceBrushMesh.draw();
+		ofPopMatrix();
 	}
-	
+	forceBrushShader.end();
 	waterdst.end();
 	
 	swap(watersrc,waterdst);
 
 	canvasdst.begin();
-//	ofEnableAlphaBlending();
 	ofDisableAlphaBlending();
 	ofClear(0, 0, 0, 0);
 	paperMixShader.begin();
@@ -206,15 +222,12 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 	paperMixShader.setUniformTexture("water_texture", watersrc.getTextureReference(),  2);
 	paperMixShader.setUniformTexture("flow_texture", noiseFlowTex.getTextureReference(),  3);
 	paperMixShader.setUniform2f("dimensions", canvassrc.getWidth(), canvassrc.getHeight());
-
-//	ofDisableAlphaBlending();
-//	canvassrc.getTextureReference().bind();
 	canvasMesh.draw();
-//	canvassrc.getTextureReference().unbind();
 	paperMixShader.end();
 	
 	ofPushStyle();
 	ofEnableAlphaBlending();
+	ofSetRectMode(OF_RECTMODE_CENTER);
 	for(int i = 0; i < depositPoints.size(); i++){
 		ofSetColor(ofColor::fromHsb(fmod(ofGetElapsedTimef()*20, 255.f), 255.0f, 255.0f));
 		brushImage.draw( depositPoints[i] );
