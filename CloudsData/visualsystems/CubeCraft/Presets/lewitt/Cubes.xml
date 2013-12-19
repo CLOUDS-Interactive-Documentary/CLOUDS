@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Cubes</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1</XPosition>
-    <YPosition>1</YPosition>
+    <XPosition>376.000000000</XPosition>
+    <YPosition>51.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -33,30 +33,30 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noiseScale</Name>
-    <Value>0.126293</Value>
+    <Value>0.126293004</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseThreshold</Name>
-    <Value>0.044335</Value>
+    <Value>0.044335008</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>speed</Name>
-    <Value>0.0522156</Value>
+    <Value>0.052215576</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseDirectionX</Name>
-    <Value>0.938128</Value>
+    <Value>0.938127995</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseDirectionY</Name>
-    <Value>-0.00522161</Value>
+    <Value>-0.005221605</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseDirectionZ</Name>
-    <Value>0</Value>
+    <Value>0.000000000</Value>
 </Widget>

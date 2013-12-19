@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>MESH_RENDER</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>228.000000000</XPosition>
-    <YPosition>27.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>24.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
