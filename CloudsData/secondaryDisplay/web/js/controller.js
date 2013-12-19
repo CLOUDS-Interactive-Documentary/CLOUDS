@@ -5,12 +5,13 @@ Controller = {
 	dragging: false,
 	modes: {PROJECT_EXAMPLE:0, GRAPH:1},	
 	onDataLoaded: function(peopleData, graphData, projectData){			
-		GraphView.init();	
+		GraphView.init();
 		ProjectExampleView.init();
 		
 		this.mode = Controller.modes.GRAPH,
 		//load data into Model			
-		$(peopleData).find('person').each(Controller.addPerson);		
+		$(peopleData).find('person').each(Controller.addPerson);
+			
 		$(projectData).find('project').each(Controller.addProject);
 		$(graphData).find('#nodes').find('circle').each(Controller.addClip);		
 		$(graphData).find('#edges').find('path').each(Controller.addConnection);
@@ -110,16 +111,17 @@ Controller = {
 		}
 		
 	},
-	onStoryChanged: function(message){
-
+	onStoryChanged: function(message){		
 		if(message.clip){		
-			//console.log(message.clip.example);	
+			console.log(message.clip);	
 			if(message.clip.example){
 				//play example right away
 				Controller.setCurrentProjectExample(message.clip.example);
 				//just update model, don't update view:
 				Model.setClip(message.clip.id); 
+				Model.setPerson(message.clip.name); 
 				Model.setTopic(message.clip.topic);
+				Model.setQuestion(message.clip.question);
 				Controller.setMode(Controller.modes.PROJECT_EXAMPLE);
 
 			}
@@ -127,6 +129,8 @@ Controller = {
 				Controller.setMode(Controller.modes.GRAPH);
 				Controller.setCurrentClip(message.clip.id);
 				Controller.setCurrentTopic(message.clip.topic);
+				console.log(message.clip.question);
+				//TODO: add question.
 
 			}
 		}	
@@ -187,9 +191,8 @@ Controller = {
 	},
 	setCurrentClip: function(id){
 		Model.setClip(id);
-		GraphView.updateCurrentClip();
-		//Model.setPerson(message.clip.name);
-		//PersonView.update();
+		GraphView.updateCurrentClip();	
+		PersonView.update();
 	},
 	setCurrentTopic: function(topic){
 		Model.setTopic(topic);

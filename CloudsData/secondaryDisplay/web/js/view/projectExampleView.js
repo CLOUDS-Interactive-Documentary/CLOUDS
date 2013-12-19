@@ -2,7 +2,7 @@ ProjectExampleView = {
 
 	init:function() {
 	 	$('#video').bind('ended', function(){
- 		Controller.setMode(Controller.modes.GRAPH);
+ 			Controller.setMode(Controller.modes.GRAPH);
 	 	})
 	},
 	update: function(){
@@ -13,7 +13,6 @@ ProjectExampleView = {
 		$('#video').attr("source", project.video_file_name);
 		$('#video').attr("src", project.videoFileName);
 		$('#video').load();
-		
 	},
 	
 }

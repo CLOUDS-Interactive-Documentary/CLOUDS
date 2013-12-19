@@ -20,25 +20,66 @@
 	"buffers":
 	[
 		{
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 2478,
+				"buffer_size": 2682,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "project example protocol",
+			"file": "js/controller.js",
 			"settings":
 			{
-				"buffer_size": 594,
+				"buffer_size": 8141,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/view/graphView.js",
+			"settings":
+			{
+				"buffer_size": 9579,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/model/model.js",
+			"settings":
+			{
+				"buffer_size": 2617,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/view/personView.js",
+			"settings":
+			{
+				"buffer_size": 323,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/view/projectExampleView.js",
+			"settings":
+			{
+				"buffer_size": 483,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/model/clip.js",
+			"settings":
+			{
+				"buffer_size": 495,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/model/person.js",
+			"settings":
+			{
+				"buffer_size": 624,
 				"line_ending": "Unix"
 			}
 		}
@@ -67,6 +108,11 @@
 	},
 	"file_history":
 	[
+		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/CloudsMovieDirectory.txt",
+		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/xml/people.xml",
+		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/js/view/clipView.js",
+		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/js/net/loader.js",
+		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/project example protocol",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/controller.js",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/graphView.js",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/clipView.js",
@@ -116,6 +162,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"onstorychanged",
+			"onStoryChanged",
+			"onstory",
+			"setMode",
+			"onstory",
+			"onkey",
+			"onStoryChan",
+			"onStoryChanged",
 			"goToRandomProjectExample",
 			"projectex",
 			"\n",
@@ -148,48 +202,23 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 2478,
+						"buffer_size": 2682,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1789,
+								1789
 							]
 						],
 						"settings":
@@ -204,11 +233,38 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "project example protocol",
+					"buffer": 1,
+					"file": "js/controller.js",
 					"settings":
 					{
-						"buffer_size": 594,
+						"buffer_size": 8141,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								866,
+								866
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/view/graphView.js",
+					"settings":
+					{
+						"buffer_size": 9579,
 						"regions":
 						{
 						},
@@ -221,7 +277,142 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3525.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/model/model.js",
+					"settings":
+					{
+						"buffer_size": 2617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2388,
+								2388
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/view/personView.js",
+					"settings":
+					{
+						"buffer_size": 323,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								323,
+								323
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "js/view/projectExampleView.js",
+					"settings":
+					{
+						"buffer_size": 483,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								475,
+								475
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "js/model/clip.js",
+					"settings":
+					{
+						"buffer_size": 495,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								416,
+								490
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "js/model/person.js",
+					"settings":
+					{
+						"buffer_size": 624,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -288,6 +479,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 312.0,
+	"side_bar_width": 245.0,
 	"status_bar_visible": true
 }
