@@ -70,6 +70,7 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     dateIndexMax = 100;
     
     rotation = 0;
+    currentTweetFeedIndex = 0;
     //    tweetModifier.r = 1.0;
     //    tweetModifier.g = 0.65;
     //    tweetModifier.b = 0.54;
@@ -151,46 +152,6 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     
 	addColorToGui(clusterGui,"NODE BASE",nodeBaseColorHSV);
 	addColorToGui(clusterGui,"NODE POP",nodePopColorHSV);
-    
-    //	ofFloatColor lineNodeBaseHSV;
-    //	//this is the base color of the lines at the midpoint
-    //	ofFloatColor lineEdgeBaseHSV;
-    //
-    //	//this is the pop color of the lines close to the nodes
-    //	ofFloatColor lineNodePopHSV;
-    //	//this is the pop color of the lines at the midpoint
-    //	ofFloatColor lineEdgePopHSV;
-    //
-    //	//this is the base color of the node
-    //	ofFloatColor nodeBaseColorHSV;
-    //	//this is the pop color of the node
-    //	ofFloatColor nodePopColorHSV;
-    
-    //    clusterGui->addSpacer();
-    //    clusterGui->addMinimalSlider("BASE HUE", 0.0, 1.0, &baseModifier.r);
-    //    clusterGui->addMinimalSlider("BASE SAT", 0.0, 1.0, &baseModifier.g);
-    //    clusterGui->addMinimalSlider("BASE BRI", 0.0, 1.0, &baseModifier.b);
-    //    clusterGui->addMinimalSlider("BASE ALPHA", 0.0, 1.0, &baseAlpha);
-    //    clusterGui->addSpacer();
-    //    clusterGui->addMinimalSlider("NODE M HUE", 0.0, 1.0, &nodeMidpointModifier.r);
-    //    clusterGui->addMinimalSlider("NODE M SAT", 0.0, 1.0, &nodeMidpointModifier.g);
-    //    clusterGui->addMinimalSlider("NODE M BRI", 0.0, 1.0, &nodeMidpointModifier.b);
-    //    clusterGui->addMinimalSlider("NODE M ALPHA", 0.0, 1.0, &nodeMidpointModifier.a);
-    //    clusterGui->addSpacer();
-    //    clusterGui->addMinimalSlider("NODE AM HUE", 0.0, 1.0, &nodeActiveMidpointModifier.r);
-    //    clusterGui->addMinimalSlider("NODE AM SAT", 0.0, 1.0, &nodeActiveMidpointModifier.g);
-    //    clusterGui->addMinimalSlider("NODE AM BRI", 0.0, 1.0, &nodeActiveMidpointModifier.b);
-    //    clusterGui->addMinimalSlider("NODE AM ALPHA", 0.0, 1.0, &nodeActiveMidpointModifier.a);
-    //    clusterGui->addSpacer();
-    //    clusterGui->addMinimalSlider("NODE HUE", 0.0, 1.0, &nodeModifier.r);
-    //    clusterGui->addMinimalSlider("NODE SAT", 0.0, 1.0, &nodeModifier.g);
-    //    clusterGui->addMinimalSlider("NODE BRI", 0.0, 1.0, &nodeModifier.b);
-    //    clusterGui->addMinimalSlider("NODE ALPHA", 0.0, 1.0, &nodeModifier.a);
-    //    clusterGui->addSpacer();
-    //    clusterGui->addMinimalSlider("NODEA HUE", 0.0, 1.0, &nodeActiveModifier.r);
-    //    clusterGui->addMinimalSlider("NODEA SAT", 0.0, 1.0, &nodeActiveModifier.g);
-    //    clusterGui->addMinimalSlider("NODEA BRI", 0.0, 1.0, &nodeActiveModifier.b);
-    //    clusterGui->addMinimalSlider("NODEA ALPHA", 0.0, 1.0, &nodeActiveModifier.a);
 	
     clusterGui->addMinimalSlider("X POS", 1, 500, &xScale);
     clusterGui->addMinimalSlider("Y POS", 1, 500, &yScale);
@@ -232,7 +193,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     twitterFeedGui->addMinimalSlider("FEED Y", 1, ofGetHeight(), &tweetFeedRect.y);
     twitterFeedGui->addMinimalSlider("FEED WIDTH", 1, ofGetWidth(), &tweetFeedRect.width);
     twitterFeedGui->addMinimalSlider("FEED HEIGHT", 1, ofGetHeight(), &tweetFeedRect.height);
-    
+    twitterFeedGui->addIntSlider("NUM TWEETS",1, 10, &numberOfTweets);
     ofAddListener(twitterFeedGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(twitterFeedGui);
 	guimap[textGui->getName()] = twitterFeedGui;
@@ -330,6 +291,46 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
     addUsersFromMentions();
 }
 
+void CloudsVisualSystemTwitter::loadAvatars(){
+    ofFile f = ofFile();
+    
+    ofDirectory dir(getVisualSystemDataPath()+"avatars/");
+    dir.listDir();
+    if(dir.exists()){
+        int size = dir.size();
+        vector<ofFile>files= dir.getFiles();
+        
+        for(int i = 0; i< files.size(); i++){
+            string filePath =getVisualSystemDataPath()+"avatars/"+files[i].getFileName();
+            
+            vector<string> handle = ofSplitString(files[i].getFileName(),".");
+
+            for (int j =0; j<tweeters.size(); j++) {
+//                cout<<tweeters[j].name<<" : "<<handle[0]<<endl;
+                if(tweeters[j].name == "@" +handle[0]){
+                    cout<<"adding avatar for "<<handle[0]<<endl;
+                    ofImage img;
+                    if(img.loadImage(filePath)){
+                        
+                    }
+                    else{
+                        cout<<filePath<<" not loaded "<<endl;
+                    }
+                    avatars[tweeters[j].name] =img;
+                    break;
+                    
+                }
+
+                    
+            }
+            
+            
+
+            
+        }
+    }
+
+}
 
 void CloudsVisualSystemTwitter::clearData(){
     dateIndex.clear();
@@ -400,6 +401,7 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
     
     activeTweeters.clear();
     activeTweets.clear();
+    activeTweetPairs.clear();
     string currentDate = getDateAsString(dateIndex[index]);
     
     for(int i = 0; i < tweeters.size(); i++){
@@ -416,8 +418,8 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
         
 		for(int k = 0; k < tweetsOnDate.size(); k ++){
 			activeTweets.push_back(&tweetsOnDate[k].tweet);
+            activeTweetPairs.push_back(make_pair(&tweeters[i].name, &tweetsOnDate[k].tweet));
             
-            //			if(tweetsOnDate[k].mentionedUsers.size() > 1){
 			for(int l = 0; l < tweetsOnDate[k].mentionedUsers.size(); l++){
 				int user = getUserIdByName(tweetsOnDate[k].mentionedUsers[l]);
 				if(user == -1){
@@ -688,7 +690,7 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
         loadJSONData("tweetsOld");
     }
     else if (strs[strs.size()-1] =="new.net"){
-        cout<<"new data, using tweetsNew folder"<<endl;
+        cout<<"New data, using tweetsNew folder"<<endl;
         loadJSONData("tweetsNew");
         
     }
@@ -698,6 +700,7 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     xScale = 100;
     yScale = 100;
     zScale = 100;
+    loadAvatars();
     parseClusterNetwork(filePath);
     
     loadMesh();
@@ -778,6 +781,7 @@ void CloudsVisualSystemTwitter::selfSceneTransformation(){
     }
     
 }
+
 
 //--------------------------------------------------------------
 //normal update call
@@ -895,17 +899,28 @@ void CloudsVisualSystemTwitter::selfDraw()
 }
 
 void CloudsVisualSystemTwitter::drawFeed()
-{
-    int numRects = activeTweets.size()/(int)tweetFeedRect.height;
-    numRects = 10;
-    for(int i =0; i<numRects; i++){
-        ofRectangle r = ofRectangle(tweetFeedRect.x,tweetFeedRect.y + i*50,tweetFeedRect.width,100);
-        ofRect(r);
-        ofPushStyle();
-        ofSetColor(textColor);
-//        font.drawString(getDateAsString(dateIndex[currentDateIndex]),0,0);
-        ofPopStyle();
+{    
+
+    if(numberOfTweets < activeTweetPairs.size()){
+     //   for (int i=0; i<activeTweetPairs.size() -numberOfTweets; i++) {
+
+            for(int j=0; j<numberOfTweets; j++){
+                ofPushStyle();
+                
+                ofSetColor(textColor);
+                avatars[*activeTweetPairs[currentTweetFeedIndex +j].first].draw(tweetFeedRect.x -50,tweetFeedRect.y +j*50, 50, 50);
+//                font.drawString(*activeTweetPairs[currentTweetFeedIndex+j].second, tweetFeedRect.x,tweetFeedRect.y +j*50 +5 );
+                
+                ofPopStyle();
+            }
+        }
+    currentTweetFeedIndex++;
+    if(activeTweetPairs.size() > 0){
+    currentTweetFeedIndex = currentTweetFeedIndex%activeTweetPairs.size();        
     }
+
+    
+    //}
 }
 
 // draw any debug stuff here
@@ -921,7 +936,6 @@ void CloudsVisualSystemTwitter::selfDrawBackground()
     if(bRenderFeed){
         ofPushStyle();
         ofNoFill();
-        ofRect(tweetFeedRect);
         drawFeed();
         ofPopStyle();
     }

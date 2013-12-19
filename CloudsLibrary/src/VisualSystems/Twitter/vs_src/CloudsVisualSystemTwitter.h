@@ -81,10 +81,16 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     //shader stuff
     void reloadShaders();
 
+    
+    //twitter feed stuff
+    int numberOfTweets;
+    int currentTweetFeedIndex =0;
+    
     //text stuff
     ofxJSONElement result;
     ofxFTGLSimpleLayout font;
     ofxFTGLTextAlignment textAlign;
+    
 
     float stringWidth;
     float fontSize;
@@ -113,7 +119,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bRenderText;
     bool bRenderFeed;
     bool bAnimate;
-    
+    bool rotateModel;
     
 
     
@@ -143,7 +149,11 @@ protected:
     
     vector<Tweeter*> activeTweeters;
     vector<string*> activeTweets;
+    vector<pair<string*, string*> >  activeTweetPairs;
     
+    map<string, ofImage> avatars;
+
+    void loadAvatars();
     void addColorToGui(ofxUISuperCanvas* gui, string prefix, ofFloatColor& col, bool doAlpha = true);
 	
 	float edgeInterpolateExponent;
@@ -174,7 +184,7 @@ protected:
     int rotationRate;
     float rotation ;
     float rotationAmount;
-    bool rotateModel;
+
     ofRectangle tweetFeedRect;
     
 	
