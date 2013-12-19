@@ -69,6 +69,17 @@ protected:
     float       noiseZoom;
     float       noiseSpeed;
     
+    // GraysCott
+    //
+    ofShader grayscottShader;
+    ofFbo    grayscottFbo[2];
+    float    diffU,diffV,k,f;
+    float    grayscottLoops;
+    int      nPingPong;
+    bool     bCleanGrayscott;
+    bool     bGrayscott;
+    float    grayscottFade;
+    
     //  Normals
     //
     ofShader    normalsShader;
