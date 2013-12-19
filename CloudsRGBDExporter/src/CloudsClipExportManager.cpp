@@ -50,7 +50,7 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
     holeFiller.setIterations(3);
     
 	done = false;
-	currentFrame = clip.startFrame - 24; //24 frame handle
+	currentFrame = clip.startFrame - (clip.is30FPS() ? 30 : 24); //24 frame handle
 	
 	rgbdPlayer.setUseTexture(false);
 	
@@ -151,7 +151,7 @@ void CloudsClipExportManager::threadedFunction(){
 	exporter.log = "writing " + currentClip.getID() + " from " + rgbdPlayer.getScene().name + "\n";
 	int lastFrame = currentFrame;
 	bool completedClip = false;
-	while( isThreadRunning() && !completedClip ){ //24 frame handle
+	while( isThreadRunning() && !completedClip ){
 		
 		//cout << "Exporting  " << currentClip.getLinkName() << " : " << currentFrame << endl;
 		
@@ -170,7 +170,7 @@ void CloudsClipExportManager::threadedFunction(){
         	completedClip = true;
         }
         
-		if(currentFrame > currentClip.endFrame + 24){
+		if(currentFrame > currentClip.endFrame + (currentClip.is30FPS() ? 30 : 24) ){
             exporter.log += "Export completed successfully \n";
 			completedClip = true;
 		}

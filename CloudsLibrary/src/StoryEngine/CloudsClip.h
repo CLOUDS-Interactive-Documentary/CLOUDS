@@ -66,7 +66,7 @@ class CloudsClip {
     vector<string> getOverlappingClips();
     bool hasOverlappingClips();
     
-
+	bool is30FPS();
 	float getDuration();
     string getLinkName();
 	string getMetaInfo();
