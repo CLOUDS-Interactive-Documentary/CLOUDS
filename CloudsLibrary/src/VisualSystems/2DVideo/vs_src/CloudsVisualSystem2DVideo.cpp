@@ -108,19 +108,19 @@ void CloudsVisualSystem2DVideo::selfSetup()
     
     movieIndex = 0;
     
-    movieStrings.push_back("traffic_1.mov");
-    movieStrings.push_back("unionsq_1 - Wi-Fi_Crop.mov");
-//    movieStrings.push_back("Alice.mov");
-//    movieStrings.push_back("D3_AAPL.mov");
-//    movieStrings.push_back("D3_Dial.mov");
-//    movieStrings.push_back("D3_Radial.mov");
-//    movieStrings.push_back("Exoplanets.mp4");
-//    movieStrings.push_back("FaceSub_lowSat.mov");
-//    movieStrings.push_back("OpenPaths.mov");
-//    movieStrings.push_back("PeopleStaring.mp4");
-//    movieStrings.push_back("Reas_network1.mov");
-//    movieStrings.push_back("Reas_Process13.mov");
-//    movieStrings.push_back("zipcode.mov");
+//    movieStrings.push_back("traffic_1.mov");
+//    movieStrings.push_back("unionsq_1 - Wi-Fi_Crop.mov");
+    movieStrings.push_back("Alice.mov");
+    movieStrings.push_back("D3_AAPL.mov");
+    movieStrings.push_back("D3_Dial.mov");
+    movieStrings.push_back("D3_Radial.mov");
+    movieStrings.push_back("Exoplanets.mp4");
+    movieStrings.push_back("FaceSub_lowSat.mov");
+    movieStrings.push_back("OpenPaths.mov");
+    movieStrings.push_back("PeopleStaring.mp4");
+    movieStrings.push_back("Reas_network1.mov");
+    movieStrings.push_back("Reas_Process13.mov");
+    movieStrings.push_back("zipcode.mov");
     
     loadMovieAtIndex(movieIndex);
     
