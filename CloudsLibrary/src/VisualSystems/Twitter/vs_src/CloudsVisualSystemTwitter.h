@@ -89,6 +89,10 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     int currentTweetFeedIndex =0;
     float heightOffset;
     float avatarTweetGap;
+    float textHeightOffset;
+    float timeTillNextUpdate;
+    float minTimeGapForNextTweet;
+    float randomRangeMin,randomRangeMax;
     
     //text stuff
     ofxJSONElement result;

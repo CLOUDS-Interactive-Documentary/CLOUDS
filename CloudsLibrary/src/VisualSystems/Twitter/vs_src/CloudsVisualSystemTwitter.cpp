@@ -74,6 +74,12 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     
     avatarTweetGap = 50;
     heightOffset = 50;
+    textHeightOffset = 10;
+    
+    timeTillNextUpdate = 0;
+    minTimeGapForNextTweet =3;
+    randomRangeMin = 1;
+    randomRangeMax = 10;
     //    tweetModifier.r = 1.0;
     //    tweetModifier.g = 0.65;
     //    tweetModifier.b = 0.54;
@@ -197,7 +203,11 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     twitterFeedGui->addMinimalSlider("FEED Y", 1, ofGetHeight(), &tweetFeedRect.y);
     twitterFeedGui->addMinimalSlider("HEIGHT OFFSET", 1, 100, &heightOffset);
     twitterFeedGui->addMinimalSlider("AVATAR TWEET GAP", 1, 100, &avatarTweetGap);
+    twitterFeedGui->addMinimalSlider("TEXT HEIGHT OFFSET", 1, 100, &textHeightOffset);
+    twitterFeedGui->addMinimalSlider("GAP BETWEEN UPDATES", 1, 5, &minTimeGapForNextTweet);
+    twitterFeedGui->addRangeSlider("RANDOM OFFSET RANGE", 1,  10, &randomRangeMin, & randomRangeMax);
     twitterFeedGui->addIntSlider("NUM TWEETS",1, 50, &numberOfTweets);
+
     ofAddListener(twitterFeedGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(twitterFeedGui);
 	guimap[textGui->getName()] = twitterFeedGui;
@@ -840,6 +850,10 @@ void CloudsVisualSystemTwitter::selfSceneTransformation(){
 void CloudsVisualSystemTwitter::selfUpdate()
 {
     
+    if(ofGetElapsedTimef() > timeTillNextUpdate){
+        timeTillNextUpdate = ofGetElapsedTimef()+ minTimeGapForNextTweet + ofRandom(randomRangeMin, randomRangeMax);
+        cout<<"updated selection at time : "<<ofGetElapsedTimef() <<" next update at "<<timeTillNextUpdate<< endl;
+    }
     
 	
     if(ofGetFrameNum() % refreshRate < 1 && bAnimate){
@@ -973,7 +987,7 @@ void CloudsVisualSystemTwitter::drawFeed(){
                 avatars[*currentSelection[i].first].draw(tweetFeedRect.x -avatarTweetGap,tweetFeedRect.y +i*heightOffset, 50, 50);
             }
             
-            font.drawString(ofToUpper(ofToString(*currentSelection[i].second)), tweetFeedRect.x, tweetFeedRect.y +i*heightOffset );
+            font.drawString(ofToUpper(ofToString(*currentSelection[i].second)), tweetFeedRect.x, tweetFeedRect.y +i*heightOffset +textHeightOffset );
             
             ofPopStyle();
         }
@@ -1067,6 +1081,9 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
     }
     if(args.key == 'a'){
         updateCurrentSelection();
+    }
+    if(args.key == 'd'){
+        cout<<ofGetElapsedTimef()<<endl;
     }
 }
 
