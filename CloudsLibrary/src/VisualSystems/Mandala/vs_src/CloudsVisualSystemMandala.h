@@ -92,7 +92,7 @@ public:
 			m = _m;
 			localOffset = _localOffset;
 			
-			points.resize(30);
+			points.resize(15);
 			uv.resize(points.size());
 			colors.resize(points.size());
 			worldPos = getRootPosoition();
@@ -123,7 +123,7 @@ public:
 			
 			points[0] = worldPos;
 			
-			float dynamicSmoothing = smoothing * min(1.f, lastHead.distance(worldPos) / 10.f );
+			float dynamicSmoothing = smoothing * min(1.f, lastHead.distance(worldPos) / 5.f );
 			
 			float msmoothing = 1. - dynamicSmoothing;
 			for(int i=points.size()-1; i>0; i--)
@@ -139,20 +139,8 @@ public:
 	
 	void draw()
 	{
-		worldPos = getRootPosoition();
-//		ofSphere(worldPos, 100);
 		ofSetColor(255, 255, 255);
-		
 		line.draw(GL_LINE_STRIP, 0, points.size());
-//		glDrawArrays(GL_LINE_STRIP, 0, points.size() );
-		
-//		glLineWidth( 5 );
-//		glBegin(GL_LINE_STRIP);
-//		for (int i=0; i<points.size(); i++)
-//		{
-//			glVertex3f(points[i].x, points[i].y, points[i].z);
-//		}
-//		glEnd();
 	}
 	
 	ofVec3f getRootPosoition()
@@ -212,6 +200,10 @@ public:
 		t1 = _t1;
 		t2 = _t2;
 		
+		color.setHue( (.1 * int(ofRandom(0,10)) ) * 255 );
+		color.setSaturation( 200 );
+		color.setBrightness( 255 );
+		
 		if(t1 != NULL && t2 != NULL)
 		{
 			//create out mesh
@@ -242,8 +234,6 @@ public:
 				indices.push_back( i*2 + 1 );
 			}
 			indexCount = indices.size();
-			
-			cout << "index count: " << indexCount  << endl;
 
 			updateNormals();
 			
@@ -298,6 +288,12 @@ public:
 		updateNormals();
 	}
 	
+	void draw()
+	{
+		ofSetColor( color );
+		m.drawElements(GL_TRIANGLES, indexCount );
+	}
+	
 	
 	ofVec3f normalFrom3Points(ofVec3f p0, ofVec3f p1, ofVec3f p2)
 	{
@@ -310,6 +306,8 @@ public:
 	vector<ofVec3f> vertices;
 	vector<ofVec3f> normals;
 	vector<ofIndexType> indices;
+	
+	ofColor color;
 	
 	ofVbo m;
 	ofIndexType indexCount;
@@ -502,7 +500,7 @@ protected:
 	map<string, bool> whatsDrawn;
 	
 	
-	bool bDrawSurface, bSmoothSurface, bDrawTails;
+	bool bDrawSurface, bSmoothSurface, bDrawTails, bDrawSpokes;
 	
 	
 	float lastTime, currentTime;

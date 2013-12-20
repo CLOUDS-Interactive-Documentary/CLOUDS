@@ -8,7 +8,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>draw surface</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -18,15 +18,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noiseScale</Name>
-    <Value>0.01</Value>
+    <Value>0.00797389</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseOffset</Name>
-    <Value>32.5123</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseTimeScale</Name>
-    <Value>0.503212</Value>
+    <Value>2</Value>
 </Widget>

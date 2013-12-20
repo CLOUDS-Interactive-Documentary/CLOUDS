@@ -7,7 +7,7 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>draw clock</Name>
+    <Name>draw cubes</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -16,14 +16,19 @@
     <Value>1</Value>
 </Widget>
 <Widget>
+    <Kind>2</Kind>
+    <Name>bDrawSpokes</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>spread</Name>
-    <Value>0.35</Value>
+    <Value>0.577586</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>clockV</Name>
-    <Value>0.316749</Value>
+    <Value>0.5</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,15 +43,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Octaves</Name>
-    <Value>11.5764</Value>
+    <Value>6.70936</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>OctaveScale</Name>
-    <Value>4.31034</Value>
+    <Value>3.71921</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>MaxSpeed</Name>
-    <Value>0.0526207</Value>
+    <Value>0.0378719</Value>
 </Widget>
