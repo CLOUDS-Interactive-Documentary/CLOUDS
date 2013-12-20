@@ -20,7 +20,7 @@ function NodeView(_parent, _node) {
 	this.z = this.color.getHSL().l * 50;
 	
 
-	var mapB = THREE.ImageUtils.loadTexture( "textures/sprite0.png" );
+	var mapB = THREE.ImageUtils.loadTexture( "textures/ball.png" );
 	mapB.needsUpdate = true;
 	var materialB = new THREE.SpriteMaterial( { map: mapB, color: this.color, scaleByViewport:true, useScreenCoordinates:false } );
 	this.material = materialB.clone();
@@ -78,9 +78,7 @@ NodeView.prototype.select = function(){
 			
 				})
 			.start();
-		
 	}
-	
 
 }
 

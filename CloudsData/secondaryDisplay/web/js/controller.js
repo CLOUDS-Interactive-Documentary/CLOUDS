@@ -140,6 +140,7 @@ Controller = {
 		}
 
 		if(message.clip){		
+			
 			if(message.clip.example){
 				Controller.setMode(Controller.modes.PROJECT_EXAMPLE);
 				//play example right away
@@ -176,22 +177,21 @@ Controller = {
 					id: Controller.getRandomNode(),
 					name: "Shantell",
 					question: "How do you sketch with code FAKE?",
-					topic: "thinking by doing FAKE TOPIC"
+					topic: Controller.getRandomTopic()
 				}
 
 			}
 			
 		}
 		else if ( event.keyCode == 112 ) { //P key.
-			// Controller.goToRandomProjectExample();
 			dummyMessage = {
 				clip: {
 					duration: 39.998333,
 					id: Controller.getRandomNode(),
-					example: "Drawn1",
+					example: Controller.getRandomProjectExample(),
 					name: "Zach Lieberman",
 					question: "A fake question",
-					topic: "thinking by doing FAKE TOPIC"
+					topic: Controller.getRandomTopic()
 				}
 
 			}
@@ -230,7 +230,7 @@ Controller = {
 		return randomNode.id;
 		
 	},	
-	goToRandomTopic: function(){
+	getRandomTopic: function(){
 		var topics = new Array();
 		topics.push("politics");
 		topics.push("confusion");
@@ -244,15 +244,23 @@ Controller = {
 		topics.push("abstraction");
 		
 		var pos = Math.floor(Math.random() * topics.length);
-		this.setCurrentTopic(topics[pos]);
+		return topics[pos];
 	},	
-	goToRandomProjectExample: function(){
-		var projects = new Array();
-		projects.push("Drawn1");
-		projects.push("Drawn2");
+	getRandomProjectExample: function(){
+		var projectTitles = new Array();
+		projectTitles.push("Drawn");
+		projectTitles.push("Flight Patterns");
+		projectTitles.push("Messa Di Voce");
+		projectTitles.push("Listening Post");
+		projectTitles.push("Good Morning!");
+		projectTitles.push("Cascade");
+		projectTitles.push("Transparency Grenade");
+		projectTitles.push("Cell Cycle");
+		projectTitles.push("Communion");
+		projectTitles.push("Aesthetics and Computation Group");
 		
-		var pos = Math.floor(Math.random() * projects.length);
-		this.setCurrentProjectExample(projects[pos]);
+		var pos = Math.floor(Math.random() * projectTitles.length);
+		return projectTitles[pos];
 	},
 	initStats: function() {
 
@@ -304,7 +312,7 @@ Controller = {
 								$(this).find('byline2').text(),
 								$(this).find('resume').text()
 								);
-			// if(debug){
+			if(debug){
 				console.log("first: " + person.first 
 							+ ", last: " + person.last 
 							+ ", title: " + person.title 
@@ -312,7 +320,7 @@ Controller = {
 							+ ", byline: " + person.byline1 
 							+ ", description: " + person.description 
 					);
-		 	// }	
+		 	}	
 			Model.addPerson(person);
 		});
 

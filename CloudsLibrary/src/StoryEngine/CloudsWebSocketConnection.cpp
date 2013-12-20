@@ -105,7 +105,7 @@ void CloudsWebSocketConnection::clipBegan(CloudsClipEventArgs& args){
 			args.chosenClip.getLinkName().c_str(),
 			args.chosenClip.getDuration(),
 			args.currentTopic.c_str(),
-			"Drawn1",
+			args.chosenClip.hasSpecialKeyword("example") ? "Drawn" : "",
 			"How do you sketch with code?");
 //			example.c_str(),
 //			lastQuestionAsked.c_str());
