@@ -19,8 +19,8 @@ void CloudsVisualSystem2DVideo::selfSetupGui()
     playerGui->addSpacer();
     playerGui->addButton("SET IN TIME", false);
     playerGui->addButton("SET OUT TIME", false);
-    playerGui->addSlider("INTIME", 0, player.getDuration(), &inTime);
-    playerGui->addSlider("OUTTIME", 0, player.getDuration(), &outTime);
+    playerGui->addSlider("INTIME", 0, 1000, &inTime);
+    playerGui->addSlider("OUTTIME", 0, 1000, &outTime);
     
 	ofAddListener(playerGui->newGUIEvent, this, &CloudsVisualSystem2DVideo::selfGuiEvent);
 	guis.push_back(playerGui);
@@ -51,6 +51,19 @@ void CloudsVisualSystem2DVideo::selfGuiEvent(ofxUIEventArgs &e)
         }
     }
     
+}
+void CloudsVisualSystem2DVideo::loadMovieAtIndexFromPreset(int index){
+    if(player.isPlaying()){
+        player.stop();
+    }
+    cout<<getVisualSystemDataPath(true)<< " : "<<movieStrings[index]<<endl;
+    if(player.loadMovie(getVisualSystemDataPath(true)+"videos/"+ movieStrings[index])){
+        player.play();
+        bFileLoaded = false;
+    }
+    else{
+        cout<<"couldn't load the movie"<<endl;
+    }
 }
 
 void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index){
@@ -97,17 +110,17 @@ void CloudsVisualSystem2DVideo::selfSetup()
     
     movieStrings.push_back("traffic_1.mov");
     movieStrings.push_back("unionsq_1 - Wi-Fi_Crop.mov");
-    movieStrings.push_back("Alice.mov");
-    movieStrings.push_back("D3_AAPL.mov");
-    movieStrings.push_back("D3_Dial.mov");
-    movieStrings.push_back("D3_Radial.mov");
-    movieStrings.push_back("Exoplanets.mp4");
-    movieStrings.push_back("FaceSub_lowSat.mov");
-    movieStrings.push_back("OpenPaths.mov");
-    movieStrings.push_back("PeopleStaring.mp4");
-    movieStrings.push_back("Reas_network1.mov");
-    movieStrings.push_back("Reas_Process13.mov");
-    movieStrings.push_back("zipcode.mov");
+//    movieStrings.push_back("Alice.mov");
+//    movieStrings.push_back("D3_AAPL.mov");
+//    movieStrings.push_back("D3_Dial.mov");
+//    movieStrings.push_back("D3_Radial.mov");
+//    movieStrings.push_back("Exoplanets.mp4");
+//    movieStrings.push_back("FaceSub_lowSat.mov");
+//    movieStrings.push_back("OpenPaths.mov");
+//    movieStrings.push_back("PeopleStaring.mp4");
+//    movieStrings.push_back("Reas_network1.mov");
+//    movieStrings.push_back("Reas_Process13.mov");
+//    movieStrings.push_back("zipcode.mov");
     
     loadMovieAtIndex(movieIndex);
     
@@ -122,10 +135,13 @@ void CloudsVisualSystem2DVideo::restart()
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfPresetLoaded(string presetPath)
 {
+    
     //LOADING MOVIE
-    ofxUIRadio* r = (ofxUIRadio*)playerGui->getWidget("VIDEO");
+    ofxUIRadio* r = (ofxUIRadio*)playerGui->getWidget("MOVIE FILES");
+    
     
     vector<ofxUIToggle*> t = r->getToggles();
+    
     string movieName;
     for(int j = 0; j < t.size(); j++){
         if(t[j]->getValue()) {
@@ -135,13 +151,14 @@ void CloudsVisualSystem2DVideo::selfPresetLoaded(string presetPath)
 			
 			for(int i = 0; i < movieStrings.size(); i++){
 				if (movieStrings[i] == movieName) {
-					loadMovieAtIndex(i);
+					loadMovieAtIndexFromPreset(i);
 					break;
 				}
 			}
 			break;
         }
     }
+
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -162,13 +179,23 @@ void CloudsVisualSystem2DVideo::selfUpdate()
 {
     screenRect.width = ofGetWidth();
     screenRect.height = ofGetHeight();
+    
     if(player.getWidth() >0){
         videoRect.x = 0;
         videoRect.y = 0;
         videoRect.width = player.getWidth();
         videoRect.height = player.getHeight();
         videoRect.scaleTo(screenRect);
-        bFileLoaded = true;
+    
+    }
+    if (! bFileLoaded) {
+        if(player.getWidth() >0){
+            //this is to set the intime once the video has loaded
+            cout<<"setting player time to : "<<inTime<<endl;
+            player.setTime(inTime);
+            bFileLoaded = true;
+        }
+        
     }
     
     player.update();
