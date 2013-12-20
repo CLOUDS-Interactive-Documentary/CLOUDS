@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"centered",
+				"centeredRect"
+			],
+			[
 				"Proje",
 				"ProjectExampleView"
 			],
@@ -20,77 +24,50 @@
 	"buffers":
 	[
 		{
+			"file": "js/view/graphViewRaphael.js",
+			"settings":
+			{
+				"buffer_size": 9285,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/controller.js",
+			"settings":
+			{
+				"buffer_size": 6239,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "init: function(){\n		//Palettes from reference\n		//HSV\n		//PALLETE 1	\n		//H btw 203.88 and 204\n		//S btw 9.85 and 40.55\n		//V btw 49.8 and 99.61; 99.61 for whiteish; btw 49.41 and 79.61 for darker grays.\n		//this.baseColors.push(tinycolor(\"hsv 203.88, 40.55%, 99.61%\"));\n		//this.baseColors.push(tinycolor(\"hsv 200, 9.52%, 49.41%\"));//gray\n		//this.baseColors.push(tinycolor(\"hsv 204, 9.84%, 99.61%\"));//light gray\n		//this.baseColors.push(tinycolor(\"hsv 204.7, 40.16%, 49.8%\"));\n		//this.baseColors.push(tinycolor(\"hsv 204, 9.85%, 79.61%\"));//med gray\n		\n		\n		for(var i = 0; i < 7; i++){\n			this.baseColors.push(new THREE.Color());\n		}\n		//PALLETE 2 – TURQUOISES \n		//H between 195 and 196\n		//S between 20 and 90.55\n		//V between 90 and 99.61 for color; 29.41 for dark gray.\n		this.baseColors[0].setHSL(195.88/255.0, 20.16/100.0, 99.61/100.0);\n		this.baseColors[1].setHSL(195.65/255.0, 90.55/100.0, 49.8/100.0);\n		this.baseColors[2].setHSL(195.13/255.0, 90.55/100.0, 99.61/100.0);\n		this.baseColors[3].setHSL(195.65/255.0, 90.2/100.0, 80/100.0);\n		// this.baseColors.push(tinycolor(\"hsv 195.88, 20.16%, 99.61%\"));\n		// this.baseColors.push(tinycolor(\"hsv 195.65, 90.55%, 49.8%\"));\n		// this.baseColors.push(tinycolor(\"hsv 195.13, 90.55%, 99.61%\"));\n		// //this.baseColors.push(tinycolor(\"hsv 192, 13.33%, 29.41%\"));//dark gray\n		// this.baseColors.push(tinycolor(\"hsv 195.65, 90.2%, 80%\"));\n\n		//PALETTE 3 - BLUES\n		//H between 210 and 210.7\n		this.baseColors[4].setHSL(210/255.0, 96.45/100.0, 55.29/100.0);\n		this.baseColors[5].setHSL(210.5/255.0, 93.23/100.0, 75.29/100.0);\n		this.baseColors[6].setHSL(210.7/255.0, 72.43/100.0, 95.29/100.0);\n		// this.baseColors.push(tinycolor(\"hsv 210, 96.45%, 55.29%\"));\n		// this.baseColors.push(tinycolor(\"hsv 210.5, 93.23%, 75.29%\"));\n		// this.baseColors.push(tinycolor(\"hsv 210.7, 72.43%, 95.29%\"));\n		// //this.baseColors.push(tinycolor(\"hsv 210.7, 0%, 94.51%\"));//light gray\n		// //this.baseColors.push(tinycolor(\"hsv 210, 03%, 14.51%\"));//dark gray\n		\n		\n	},",
+			"settings":
+			{
+				"buffer_size": 2005,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/view/nodeView.js",
+			"settings":
+			{
+				"buffer_size": 3686,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/model/node.js",
+			"settings":
+			{
+				"buffer_size": 401,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "js/view/graphView.js",
 			"settings":
 			{
-				"buffer_size": 9579,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/model/model.js",
-			"settings":
-			{
-				"buffer_size": 2617,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/view/personView.js",
-			"settings":
-			{
-				"buffer_size": 323,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "function NodeView(_paper, _node) {	\n	this.paper = _paper;	\n	this.node = _node;\n	this.r = 5;\n	this.x =  this.node.originalX;\n	this.y = this.node.originalY;\n	this.neighborViews = new Array();\n	this.neighborPaths = new Array();\n	this.selected = false;\n	this.color = ColorPalette.getPaletteColor(this.node.originalColor);//TODO: convert this.node.originalFill to our palette. \n	\n	this.circle = this.paper.circle(this.x, this.y, this.r)\n						.attr(\"fill\", this.getFill())\n						.attr(\"stroke\", \"none\");\n	this.strokeWeight = 1;\n	this.selected = false;\n}\n\nNodeView.prototype.addNeighbor = function(neighborView){\n	this.neighborViews.push(neighborView);\n	//update model\n}\n\nNodeView.prototype.getFill = function(){\n	return this.color.toHexString();\n}\n\nNodeView.prototype.setFill = function(fill){\n	this.circle.attr(\"fill\", fill);\n}\n\n\nNodeView.prototype.select = function(){\n	this.selected = true;\n	this.circle.attr(\"fill\",tinycolor.lighten(this.getFill(), 80).toHexString());\n	this.currentGlow = this.circle.glow({color: \"#FFFFFF\", width: 10});\n	\n	\n	for(var i = 0; i < this.neighborViews.length; i++){\n		var neighbor = this.neighborViews[i];\n		neighbor.circle.highlight(60);\n		\n		var pathToNeighbor = this.paper.path(\"M\" + this.x + \", \" + this.y + \"L\" + neighbor.x + \",\" + neighbor.y);\n				pathToNeighbor.attr(\"z-index\", -1);\n				pathToNeighbor.attr(\"stroke\", \"#F1F1F1\");\n		pathToNeighbor.glowOnce(0, 0.5, 0.2);\n		\n		this.neighborPaths.push(pathToNeighbor);\n		\n	}\n}\n\nNodeView.prototype.deselect = function(){\n	if(this.selected){\n		if(this.currentGlow){\n			this.currentGlow.remove();\n		}\n	\n		\n		for(var i = 0; i < this.neighborViews.length; i++){\n			var neighbor = this.neighborViews[i];\n			neighbor.circle.animate({ fill: neighbor.getFill() }, GraphView.timeUnit/2, 'linear');\n		}\n		\n		for(var i = 0; i < this.neighborPaths.length; i++){			\n			this.neighborPaths[i].fadeOut(function(){\n				this.remove();\n			});\n		}\n	}\n	this.selected = false;\n	\n}\n/*\nNodeView.prototype.deleteNeighborPaths = function(){\n	for(var i = 0; i < this.neighborPaths.length; i++){\n		this.neighborPaths[i].remove();\n	}\n	this.neighborPaths = [];\n	\n}*/\n\n",
-			"file": "/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/clipViewRaphael.js",
-			"file_size": 2118,
-			"file_write_time": 1387164136000000,
-			"settings":
-			{
-				"buffer_size": 2118,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 2682,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/view/projectExampleView.js",
-			"settings":
-			{
-				"buffer_size": 483,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/model/clip.js",
-			"settings":
-			{
-				"buffer_size": 495,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/model/person.js",
-			"settings":
-			{
-				"buffer_size": 624,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/model/project.js",
-			"settings":
-			{
-				"buffer_size": 208,
+				"buffer_size": 7781,
 				"line_ending": "Unix"
 			}
 		}
@@ -119,34 +96,43 @@
 	},
 	"file_history":
 	[
-		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/js/controller.js",
-		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/index.html",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/colorPalette.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/lib/three.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/clipViewRaphael.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/graphViewRaphael.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/index.html",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/three_js_utils/rectangle.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/controller.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/graphView.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/nodeView.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/model/model.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/model/node.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/flat_shapes.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/personView.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/lib/raphael-min.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/connectionView.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/net/sockets.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/model/person.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/model/connection.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/animation/animation.js",
+		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/clipView.js",
 		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/CloudsMovieDirectory.txt",
 		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/xml/people.xml",
 		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/js/view/clipView.js",
 		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/js/net/loader.js",
 		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/project example protocol",
-		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/controller.js",
-		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/graphView.js",
-		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/clipView.js",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/model/project.js",
-		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/index.html",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/projectExampleView.js",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/css/style.css",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/xml/projects.xml",
-		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/animation/animation.js",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/project example protocol",
-		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/model/model.js",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/xml/people.xml",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/clouds.sublime-project",
 		"/Users/luisaph/Google Drive/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/halo_test.html",
 		"/Users/luisaph/Google Drive/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/graphView.js",
 		"/Users/luisaph/Google Drive/dev/web/projects/campo/campo.sublime-project",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/lib/tween.js",
-		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/graphViewRaphael.js",
-		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/colorPalette.js",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/lib/OrbitControls.js",
-		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/clipViewRaphael.js",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/lib/THREEx.Fullscreen.js",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/lib/THREEx.WindowResize.js",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/lib/Detector.js",
@@ -168,6 +154,7 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js"
 		]
 	},
 	"find_state":
@@ -175,8 +162,25 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"key",
-			"setMode",
+			"tohex",
+			"addNode",
+			"addOriginalColor",
+			"vector",
+			"3d",
+			"addpath",
+			"lookAt",
+			"controls",
+			"lookat",
+			"controls",
+			"zoomAndPanTo",
+			"topicChanged",
+			"prevNodeView",
+			"clip",
+			"Clip",
+			"clip",
+			"clipViews",
+			"ClipView",
+			"clipView",
 			"onstorychanged",
 			"onStoryChanged",
 			"onstory",
@@ -207,6 +211,11 @@
 		"regex": false,
 		"replace_history":
 		[
+			"node",
+			"Node",
+			"node",
+			"nodeViews",
+			"NodeView"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -217,15 +226,15 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "js/view/graphView.js",
+					"file": "js/view/graphViewRaphael.js",
 					"settings":
 					{
-						"buffer_size": 9579,
+						"buffer_size": 9285,
 						"regions":
 						{
 						},
@@ -242,25 +251,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1719.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "js/model/model.js",
+					"file": "js/controller.js",
 					"settings":
 					{
-						"buffer_size": 2617,
+						"buffer_size": 6239,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2071,
-								2117
+								4535,
+								4535
 							]
 						],
 						"settings":
@@ -269,25 +278,24 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 740.0,
+						"translation.y": 1989.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "js/view/personView.js",
 					"settings":
 					{
-						"buffer_size": 323,
+						"buffer_size": 2005,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								323,
-								0
+								612,
+								629
 							]
 						],
 						"settings":
@@ -303,18 +311,18 @@
 				},
 				{
 					"buffer": 3,
-					"file": "/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/clipViewRaphael.js",
+					"file": "js/view/nodeView.js",
 					"settings":
 					{
-						"buffer_size": 2118,
+						"buffer_size": 3686,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2860,
+								2860
 							]
 						],
 						"settings":
@@ -323,31 +331,30 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 807.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "index.html",
+					"file": "js/model/node.js",
 					"settings":
 					{
-						"buffer_size": 2682,
+						"buffer_size": 401,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1478,
-								1626
+								101,
+								135
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -357,18 +364,18 @@
 				},
 				{
 					"buffer": 5,
-					"file": "js/view/projectExampleView.js",
+					"file": "js/view/graphView.js",
 					"settings":
 					{
-						"buffer_size": 483,
+						"buffer_size": 7781,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								483,
-								0
+								1518,
+								1518
 							]
 						],
 						"settings":
@@ -377,87 +384,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "js/model/clip.js",
-					"settings":
-					{
-						"buffer_size": 495,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								416,
-								490
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "js/model/person.js",
-					"settings":
-					{
-						"buffer_size": 624,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "js/model/project.js",
-					"settings":
-					{
-						"buffer_size": 208,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								205,
-								205
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 585.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -498,7 +425,7 @@
 	"menu_visible": true,
 	"replace":
 	{
-		"height": 0.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":

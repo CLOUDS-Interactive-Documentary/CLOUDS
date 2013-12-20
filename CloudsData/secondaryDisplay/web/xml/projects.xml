@@ -2,7 +2,7 @@
 	<project title="Drawn">
 			<creator_name>Zach Lieberman</creator_name>
 			<description>In the installation drawn, figures drawn with pen and ink take on a life of their own and interact with their creators. They seem to arise from the sheet of drawing paper and start to move in with the hand motions of the person who drew them.</description>
-			<video_file_name>videos/sample.mp4</video_file_name>
+			<video_file_name>videos/test.mov</video_file_name>
 	</project>
 	
 	<project title="Sheep Market">
@@ -21,7 +21,7 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 	<project title="Flight Patterns">
 			<creator_name>Aaron Koblin</creator_name>
 			<description>A visualization of airplane traffic over North America during a 24 hour period in August 2010. The different colors are coded to the 573 different types of airplanes that traveled through North America, totaling over 205,000 flights.</description>
-			<video_file_name></video_file_name>
+			<video_file_name>videos/Flight_Patterns.mov</video_file_name>
 	</project>
 
 	<project title="Meshu">
@@ -58,13 +58,13 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 	<project title="Messa Di Voce">
 			<creator_name>Golan Levin, Joan La Barbara, Jaap Blonk</creator_name>
 			<description>A performance and installation in which the speech, shouts and songs produced by two vocalists are augmented in real-time by custom interactive visualization</description>
-			<video_file_name></video_file_name>
+			<video_file_name>videos/GolanLeiberman_1.mov</video_file_name>
 	</project>
 
 <project title="Listening Post">
 			<creator_name>Mark Hansen, Ben Rubin</creator_name>
 			<description>Listening Post is a 'dynamic portrait' of online communication, displaying uncensored fragments of text sampled in real-time, from public internet chatrooms and bulletin boards.</description>
-			<video_file_name></video_file_name>
+			<video_file_name>videos/Listening_Post3.mov</video_file_name>
 	</project>
 	<project title="The Transfiguration">
 			<creator_name>Matt Pyke - Universal Everything</creator_name>
@@ -79,7 +79,7 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 	<project title="Good Morning!">
 			<creator_name>Jer Thorp</creator_name>
 			<description>GoodMorning! is a Twitter visualization tool that shows about 11000 'good morning' tweets over a 24 hour period, rendering a sample of tweets around the globe.</description>
-			<video_file_name></video_file_name>
+			<video_file_name>videos/Good_Morning!.mov</video_file_name>
 	</project>
 
 <project title="Kepler Exoplanet Candidates">
@@ -90,13 +90,13 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 	<project title="Cascade">
 			<creator_name>Jer Thorp, Mark Hansen, Jake Poroway</creator_name>
 			<description>Cascade is a tool for analyzing sharing activity on the web, and displaying how information propagates through the social media space.</description>
-			<video_file_name></video_file_name>
+			<video_file_name>videos/Cascade.mov</video_file_name>
 	</project>
 
 <project title="Transparency Grenade">
 			<creator_name>Julian Oliver</creator_name>
 			<description>A digital weapon that lets users leak information from closed meetings by just pulling a pin. The device captures network traffic and audio in a location and anonymously streams it to an external server that mines it for information — including e-mail excerpts, web pages, images and voice. The server then uploads that data to a public website and positions it on a map.</description>
-			<video_file_name></video_file_name>
+			<video_file_name>videos/TransparencyGrenade.mov</video_file_name>
 	</project>
 	<project title="ToxicLibs">
 			<creator_name>Karsten Schmidt</creator_name>
@@ -158,7 +158,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 	<project title="Cell Cycle">
 			<creator_name>N-E-R-V-O-U-S System</creator_name>
 			<description>A WEBGL design app that lets you create your own 3d-printed jewelry. Play with an interactive physics simulation to form unique cellular designs.</description>
-			<video_file_name></video_file_name>
+			<video_file_name>videos/NervousSystem.mov</video_file_name>
 	</project>
 
 <project title="Hyphae">
@@ -180,7 +180,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 	<project title="Communion">
 			<creator_name>Matt Pyke, Vera Glahn, Marcus Wendt</creator_name>
 			<description>An array of evolving creatures going through stages of development from simple cellular structures to dancing multi-limbed creatures. </description>
-			<video_file_name></video_file_name>
+			<video_file_name>videos/Communion.mov</video_file_name>
 	</project>
 
 <project title="Galapagos">
@@ -230,7 +230,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 	<project title="Aesthetics and Computation Group">
 			<creator_name>Directed by Prof. John Maeda</creator_name>
 			<description>Work by Peter Cho '99, Jared Schiffman '01, Axel Kilian '00, Ben Fry '00, Tom White '98, Elise Co '00, Casey Reas '01, Golan Levin '00</description>
-			<video_file_name></video_file_name>
+			<video_file_name>videos/Aesthetics_and_Computation.mov</video_file_name>
 	</project>
 	
 </clouds>

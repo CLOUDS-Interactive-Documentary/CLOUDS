@@ -12,7 +12,7 @@ Model = {
 	},
 	addPerson: function(person) {
 		this.people.push(person);
-		// if(debug){
+		 if(debug){
 			console.log("first: " + person.first 
 						+ ", last: " + person.last 
 						+ ", title: " + person.title 
@@ -20,7 +20,7 @@ Model = {
 						+ ", byline: " + person.byline1 
 						+ ", description: " + person.description 
 				);
-		// }
+		 }
 	},
 	addNode: function(node) {
 		this.nodes.push(node);

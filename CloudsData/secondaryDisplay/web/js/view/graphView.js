@@ -316,7 +316,7 @@ GraphView = {
 
 		// unshift: add to the beginning of the array.
 		this.traversedPaths.unshift(path);
-		console.log("history length: " + this.history_length );
+		
 			
 		if(this.traversedPaths.length >= this.history_length){
 			var pathToFadeOut = this.traversedPaths.pop();
