@@ -454,7 +454,7 @@ void CloudsVisualSystemMandala::selfUpdate()
 	sphereSurface.update();
 
 	//update clock
-	if(bDrawClock)
+	if(bDrawClock || bDrawTails)
 	{
 		for(int i=0; i<surfaceMeshes.size(); i++)
 		{
@@ -488,27 +488,26 @@ void CloudsVisualSystemMandala::selfDraw()
 	
 	ofSetColor(255);
 	
-	if(bDrawClock)
+	facingRatio.begin();
+	for(int i=0; i<surfaceMeshes.size(); i++)
 	{
-		facingRatio.begin();
-		for(int i=0; i<surfaceMeshes.size(); i++)
-		{
-			surfaceMeshes[i].draw();
-			
-			if(bDrawTails)	tails[i].draw();
-			
-			//TODO: opitimize by binding the geometry once
-//			if(surfaceMeshes[i].bDraw && surfaceMeshes[i].m!=NULL)
-//			{
-//				surfaceMeshes[i].transformGL();
-//				surfaceMeshes[i].m->draw();
-//				surfaceMeshes[i].restoreTransformGL();
-//			}
-		}
+		if(bDrawClock)	surfaceMeshes[i].draw();
 		
-		facingRatio.end();
+//		if(bDrawTails)	tails[i].draw();
 	}
-	normalShader.end();
+	
+	
+	facingRatio.end();
+	
+	
+	glLineWidth(2);
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
+	for(int i=0; i<surfaceMeshes.size(); i++)
+	{
+		if(bDrawTails)	tails[i].draw();
+	}
+	ofDisableAlphaBlending();
+	
 
 	
 	//nested surfaces
