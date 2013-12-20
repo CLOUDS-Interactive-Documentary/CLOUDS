@@ -2813,7 +2813,7 @@
 						<object class="NSButton" id="983833247">
 							<reference key="NSNextResponder" ref="794196034"/>
 							<int key="NSvFlags">289</int>
-							<string key="NSFrame">{{1149, 92}, {153, 32}}</string>
+							<string key="NSFrame">{{1152, 92}, {150, 32}}</string>
 							<reference key="NSSuperview" ref="794196034"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="291723750"/>
@@ -3654,6 +3654,7 @@
 								<int key="NSVisibleItemCount">5</int>
 								<bool key="NSHasVerticalScroller">YES</bool>
 								<bool key="NSUsesDataSource">YES</bool>
+								<bool key="NSCompletes">YES</bool>
 								<nil key="NSDataSource"/>
 								<reference key="NSDelegate" ref="135499874"/>
 								<object class="NSComboTableView" key="NSTableView" id="320558985">
@@ -3763,6 +3764,7 @@
 								<int key="NSVisibleItemCount">5</int>
 								<bool key="NSHasVerticalScroller">YES</bool>
 								<bool key="NSUsesDataSource">YES</bool>
+								<bool key="NSCompletes">YES</bool>
 								<nil key="NSDataSource"/>
 								<reference key="NSDelegate" ref="774642117"/>
 								<object class="NSComboTableView" key="NSTableView" id="29687227">
@@ -3828,7 +3830,7 @@
 						<object class="NSButton" id="947645442">
 							<reference key="NSNextResponder" ref="794196034"/>
 							<int key="NSvFlags">293</int>
-							<string key="NSFrame">{{457, 12}, {128, 32}}</string>
+							<string key="NSFrame">{{466, 10}, {150, 32}}</string>
 							<reference key="NSSuperview" ref="794196034"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="443242459"/>
@@ -3853,7 +3855,7 @@
 						<object class="NSButton" id="199005266">
 							<reference key="NSNextResponder" ref="794196034"/>
 							<int key="NSvFlags">293</int>
-							<string key="NSFrame">{{1157, 12}, {128, 32}}</string>
+							<string key="NSFrame">{{1157, 14}, {140, 32}}</string>
 							<reference key="NSSuperview" ref="794196034"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView"/>
@@ -5009,9 +5011,9 @@
 							<reference ref="374094419"/>
 							<reference ref="135499874"/>
 							<reference ref="443242459"/>
+							<reference ref="774642117"/>
 							<reference ref="947645442"/>
 							<reference ref="199005266"/>
-							<reference ref="774642117"/>
 						</array>
 						<reference key="parent" ref="533426753"/>
 					</object>
