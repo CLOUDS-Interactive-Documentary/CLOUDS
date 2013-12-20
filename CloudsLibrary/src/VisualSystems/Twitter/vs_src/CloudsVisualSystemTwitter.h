@@ -59,6 +59,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     //twitter feed
     void drawFeed();
+    void updateCurrentSelection();
+    
     //i/o stuff
     void loadJSONData(string folderName);
     void addUsersFromMentions();
@@ -82,9 +84,11 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void reloadShaders();
 
     
-    //twitter feed stuff
+    //twitter feed params
     int numberOfTweets;
     int currentTweetFeedIndex =0;
+    float heightOffset;
+    float avatarTweetGap;
     
     //text stuff
     ofxJSONElement result;
@@ -151,6 +155,7 @@ protected:
     vector<Tweeter*> activeTweeters;
     vector<string*> activeTweets;
     vector<pair<string*, string*> >  activeTweetPairs;
+    vector<pair<string*, string*> > currentSelection;
     
     map<string, ofImage> avatars;
 

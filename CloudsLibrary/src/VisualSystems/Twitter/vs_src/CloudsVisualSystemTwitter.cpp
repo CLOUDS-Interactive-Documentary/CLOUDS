@@ -71,6 +71,9 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     
     rotation = 0;
     currentTweetFeedIndex = 0;
+    
+    avatarTweetGap = 50;
+    heightOffset = 50;
     //    tweetModifier.r = 1.0;
     //    tweetModifier.g = 0.65;
     //    tweetModifier.b = 0.54;
@@ -192,8 +195,8 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     twitterFeedGui->addLabel("FEED RECT");
     twitterFeedGui->addMinimalSlider("FEED X", 1, ofGetWidth(), &tweetFeedRect.x);
     twitterFeedGui->addMinimalSlider("FEED Y", 1, ofGetHeight(), &tweetFeedRect.y);
-    twitterFeedGui->addMinimalSlider("FEED WIDTH", 1, ofGetWidth(), &tweetFeedRect.width);
-    twitterFeedGui->addMinimalSlider("FEED HEIGHT", 1, ofGetHeight(), &tweetFeedRect.height);
+    twitterFeedGui->addMinimalSlider("HEIGHT OFFSET", 1, 100, &heightOffset);
+    twitterFeedGui->addMinimalSlider("AVATAR TWEET GAP", 1, 100, &avatarTweetGap);
     twitterFeedGui->addIntSlider("NUM TWEETS",1, 50, &numberOfTweets);
     ofAddListener(twitterFeedGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(twitterFeedGui);
@@ -840,14 +843,7 @@ void CloudsVisualSystemTwitter::selfUpdate()
     
 	
     if(ofGetFrameNum() % refreshRate < 1 && bAnimate){
-        //        currentDateIndex--;
-        //        if (currentDateIndex <= 0) {
-        //			currentDateIndex = dateIndex.size() - 1;
-        //        }
         
-        //        if(currentDateIndex<= dateIndexMin){
-        //            currentDateIndex = (int)dateIndexMin;
-        //        }
         if (currentDateIndex >= dateIndexMax){
             currentDateIndex = (int)dateIndexMin;
         }
@@ -946,35 +942,68 @@ void CloudsVisualSystemTwitter::selfDraw()
     ofPopStyle();
     
 }
+void CloudsVisualSystemTwitter::updateCurrentSelection(){
+    // trigger for updating the current selecition
+    currentSelection.clear();
+    cout<<"Updating selection"<<endl;
+    if (activeTweetPairs.size() > numberOfTweets) {
+        for(int j=0; j<numberOfTweets; j++ ){
+            int ind = ofRandom(activeTweetPairs.size() - 1);
+            currentSelection.push_back(activeTweetPairs[ind]);
+        }
+    }
+    else{
+        cout<<"Not enought active tweets"<<endl;
+    }
+}
 
 void CloudsVisualSystemTwitter::drawFeed(){
     
-    
-    if(numberOfTweets < activeTweetPairs.size()){
-        //   for (int i=0; i<activeTweetPairs.size() -numberOfTweets; i++) {
-        
-        for(int j=0; j<numberOfTweets; j++ ){
+    if (currentSelection.size() > 0) {
+        for(int i=0;i<currentSelection.size(); i++ ){
             ofPushStyle();
             
             ofSetColor(textColor);
-            int ind = ofRandom(activeTweetPairs.size() - 1);
             
-            if (avatars.find(*activeTweetPairs[ind].first)== avatars.end() ){
-                cout<<"Cant find avatar for : "<<*activeTweetPairs[ind].first<< "  using default"<<endl;
-                avatars["default"].draw(tweetFeedRect.x -50,tweetFeedRect.y +j*50, 50, 50);
+            if (avatars.find(*currentSelection[i].first)== avatars.end() ){
+                cout<<"Cant find avatar for : "<<*currentSelection[i].first<< "  using default"<<endl;
+                avatars["default"].draw(tweetFeedRect.x -avatarTweetGap,tweetFeedRect.y +i*50, 50, 50);
             }
             else{
-                avatars[*activeTweetPairs[ind].first].draw(tweetFeedRect.x -50,tweetFeedRect.y +j*50, 50, 50);
+                avatars[*currentSelection[i].first].draw(tweetFeedRect.x -avatarTweetGap,tweetFeedRect.y +i*heightOffset, 50, 50);
             }
             
-            
-            font.drawString(ofToUpper(ofToString(*activeTweetPairs[ind].second)), tweetFeedRect.x, tweetFeedRect.y +j*50 +5 );
+            font.drawString(ofToUpper(ofToString(*currentSelection[i].second)), tweetFeedRect.x, tweetFeedRect.y +i*heightOffset );
             
             ofPopStyle();
         }
     }
-    
-    
+    /*
+     if(numberOfTweets < activeTweetPairs.size()){
+     //   for (int i=0; i<activeTweetPairs.size() -numberOfTweets; i++) {
+     
+     for(int j=0; j<numberOfTweets; j++ ){
+     ofPushStyle();
+     
+     ofSetColor(textColor);
+     int ind = ofRandom(activeTweetPairs.size() - 1);
+     currentSelection.push_back(activeTweetPairs[ind]);
+     if (avatars.find(*activeTweetPairs[ind].first)== avatars.end() ){
+     cout<<"Cant find avatar for : "<<*activeTweetPairs[ind].first<< "  using default"<<endl;
+     avatars["default"].draw(tweetFeedRect.x -50,tweetFeedRect.y +j*50, 50, 50);
+     }
+     else{
+     avatars[*activeTweetPairs[ind].first].draw(tweetFeedRect.x -50,tweetFeedRect.y +j*50, 50, 50);
+     }
+     
+     
+     font.drawString(ofToUpper(ofToString(*activeTweetPairs[ind].second)), tweetFeedRect.x, tweetFeedRect.y +j*50 +5 );
+     
+     ofPopStyle();
+     }
+     }
+     
+     */
 }
 
 // draw any debug stuff here
@@ -1036,11 +1065,8 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
     if(args.key == 'o'){
         dateIndexMax = currentDateIndex;
     }
-    if(args.key == 'd'){
-        map<string, ofImage>::iterator it;
-        for(it = avatars.begin(); it != avatars.end() ; it++){
-            cout<<it->first<<endl;
-        }
+    if(args.key == 'a'){
+        updateCurrentSelection();
     }
 }
 
