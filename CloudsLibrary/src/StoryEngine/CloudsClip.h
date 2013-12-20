@@ -41,7 +41,8 @@ class CloudsClip {
     bool hasRevokedKeywords();
     bool hasSpecialKeyword(string keyword);
     bool hasKeyword(string keyword);
-    
+    void setProjectExample(string projectExample);
+	
     vector<string>& getOriginalKeywords();
     //used to save out links
     vector<string>& getAdditionalKeywords();
