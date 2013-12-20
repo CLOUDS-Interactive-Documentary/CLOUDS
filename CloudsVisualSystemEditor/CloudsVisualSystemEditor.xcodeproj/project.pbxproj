@@ -21,6 +21,24 @@
 		28927CB018591B9F00640B50 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 28927CA018591B9F00640B50 /* kiss_fft.c */; };
 		28927CB118591B9F00640B50 /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 28927CA118591B9F00640B50 /* kiss_fftr.c */; };
 		28927CB218591B9F00640B50 /* kiss_fftnd.c in Sources */ = {isa = PBXBuildFile; fileRef = 28927CA318591B9F00640B50 /* kiss_fftnd.c */; };
+		2A4F33EF1863CDD00070C0ED /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33DD1863CDD00070C0ED /* CloudsAudioEvents.cpp */; };
+		2A4F33F01863CDD00070C0ED /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33DD1863CDD00070C0ED /* CloudsAudioEvents.cpp */; };
+		2A4F33F11863CDD00070C0ED /* CloudsMixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33DF1863CDD00070C0ED /* CloudsMixer.cpp */; };
+		2A4F33F21863CDD00070C0ED /* CloudsMixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33DF1863CDD00070C0ED /* CloudsMixer.cpp */; };
+		2A4F33F31863CDD00070C0ED /* CloudsSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33E11863CDD00070C0ED /* CloudsSound.cpp */; };
+		2A4F33F41863CDD00070C0ED /* CloudsSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33E11863CDD00070C0ED /* CloudsSound.cpp */; };
+		2A4F33F51863CDD00070C0ED /* CloudsSoundFilesSamplesDatabases.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33E31863CDD00070C0ED /* CloudsSoundFilesSamplesDatabases.cpp */; };
+		2A4F33F61863CDD00070C0ED /* CloudsSoundFilesSamplesDatabases.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33E31863CDD00070C0ED /* CloudsSoundFilesSamplesDatabases.cpp */; };
+		2A4F33F71863CDD00070C0ED /* CloudsSoundFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33E41863CDD00070C0ED /* CloudsSoundFuncs.cpp */; };
+		2A4F33F81863CDD00070C0ED /* CloudsSoundFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33E41863CDD00070C0ED /* CloudsSoundFuncs.cpp */; };
+		2A4F33F91863CDD00070C0ED /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4F33E91863CDD00070C0ED /* librtcmix.a */; };
+		2A4F33FA1863CDD00070C0ED /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4F33E91863CDD00070C0ED /* librtcmix.a */; };
+		2A4F33FB1863CDD00070C0ED /* lukeFileFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33EB1863CDD00070C0ED /* lukeFileFuncs.cpp */; };
+		2A4F33FC1863CDD00070C0ED /* lukeFileFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33EB1863CDD00070C0ED /* lukeFileFuncs.cpp */; };
+		2A4F33FD1863CDD00070C0ED /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33EC1863CDD00070C0ED /* lukeFuncs.cpp */; };
+		2A4F33FE1863CDD00070C0ED /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33EC1863CDD00070C0ED /* lukeFuncs.cpp */; };
+		2A4F33FF1863CDD00070C0ED /* lukeMusicFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33EE1863CDD00070C0ED /* lukeMusicFuncs.cpp */; };
+		2A4F34001863CDD00070C0ED /* lukeMusicFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33EE1863CDD00070C0ED /* lukeMusicFuncs.cpp */; };
 		608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */; };
 		6091337D1652C9C900B523AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -1089,6 +1107,19 @@
 		28927CA118591B9F00640B50 /* kiss_fftr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = kiss_fftr.c; sourceTree = "<group>"; };
 		28927CA318591B9F00640B50 /* kiss_fftnd.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = kiss_fftnd.c; sourceTree = "<group>"; };
 		28927CA418591B9F00640B50 /* kiss_fftnd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kiss_fftnd.h; sourceTree = "<group>"; };
+		2A4F33DD1863CDD00070C0ED /* CloudsAudioEvents.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsAudioEvents.cpp; sourceTree = "<group>"; };
+		2A4F33DE1863CDD00070C0ED /* CloudsAudioEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsAudioEvents.h; sourceTree = "<group>"; };
+		2A4F33DF1863CDD00070C0ED /* CloudsMixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMixer.cpp; sourceTree = "<group>"; };
+		2A4F33E01863CDD00070C0ED /* CloudsMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMixer.h; sourceTree = "<group>"; };
+		2A4F33E11863CDD00070C0ED /* CloudsSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSound.cpp; sourceTree = "<group>"; };
+		2A4F33E21863CDD00070C0ED /* CloudsSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSound.h; sourceTree = "<group>"; };
+		2A4F33E31863CDD00070C0ED /* CloudsSoundFilesSamplesDatabases.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSoundFilesSamplesDatabases.cpp; sourceTree = "<group>"; };
+		2A4F33E41863CDD00070C0ED /* CloudsSoundFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSoundFuncs.cpp; sourceTree = "<group>"; };
+		2A4F33E91863CDD00070C0ED /* librtcmix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtcmix.a; sourceTree = "<group>"; };
+		2A4F33EB1863CDD00070C0ED /* lukeFileFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeFileFuncs.cpp; sourceTree = "<group>"; };
+		2A4F33EC1863CDD00070C0ED /* lukeFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeFuncs.cpp; sourceTree = "<group>"; };
+		2A4F33ED1863CDD00070C0ED /* lukeFuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lukeFuncs.h; sourceTree = "<group>"; };
+		2A4F33EE1863CDD00070C0ED /* lukeMusicFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeMusicFuncs.cpp; sourceTree = "<group>"; };
 		608B6AAC16A78AAD00144EF4 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		608B6AAF16A78AB800144EF4 /* ofxCocoaGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCocoaGLView.h; sourceTree = "<group>"; };
 		608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaGLView.mm; sourceTree = "<group>"; };
@@ -2432,6 +2463,7 @@
 				E7C8B305182ACB5A00AAD6E8 /* libftgl.a in Frameworks */,
 				E7D9D4D4182AFBBF00AD56C1 /* opencv.a in Frameworks */,
 				E7FC5511185293B80017A3F2 /* assimp.a in Frameworks */,
+				2A4F33F91863CDD00070C0ED /* librtcmix.a in Frameworks */,
 				E74D50051857B920001CE1F7 /* libsndfile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2464,6 +2496,7 @@
 				E7FB29A31830D9E2009EBD0E /* libftgl.a in Frameworks */,
 				E7FB29A41830D9E2009EBD0E /* opencv.a in Frameworks */,
 				E7FC5512185293B80017A3F2 /* assimp.a in Frameworks */,
+				2A4F33FA1863CDD00070C0ED /* librtcmix.a in Frameworks */,
 				E74D50061857B920001CE1F7 /* libsndfile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2541,6 +2574,66 @@
 				28927CA418591B9F00640B50 /* kiss_fftnd.h */,
 			);
 			path = tools;
+			sourceTree = "<group>";
+		};
+		2A4F33DC1863CDD00070C0ED /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				2A4F33DD1863CDD00070C0ED /* CloudsAudioEvents.cpp */,
+				2A4F33DE1863CDD00070C0ED /* CloudsAudioEvents.h */,
+				2A4F33DF1863CDD00070C0ED /* CloudsMixer.cpp */,
+				2A4F33E01863CDD00070C0ED /* CloudsMixer.h */,
+				2A4F33E11863CDD00070C0ED /* CloudsSound.cpp */,
+				2A4F33E21863CDD00070C0ED /* CloudsSound.h */,
+				2A4F33E31863CDD00070C0ED /* CloudsSoundFilesSamplesDatabases.cpp */,
+				2A4F33E41863CDD00070C0ED /* CloudsSoundFuncs.cpp */,
+				2A4F33E51863CDD00070C0ED /* RTCMix */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		2A4F33E51863CDD00070C0ED /* RTCMix */ = {
+			isa = PBXGroup;
+			children = (
+				2A4F33E61863CDD00070C0ED /* libs */,
+				2A4F33EA1863CDD00070C0ED /* src */,
+			);
+			path = RTCMix;
+			sourceTree = "<group>";
+		};
+		2A4F33E61863CDD00070C0ED /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				2A4F33E71863CDD00070C0ED /* lib */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		2A4F33E71863CDD00070C0ED /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				2A4F33E81863CDD00070C0ED /* osx */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		2A4F33E81863CDD00070C0ED /* osx */ = {
+			isa = PBXGroup;
+			children = (
+				2A4F33E91863CDD00070C0ED /* librtcmix.a */,
+			);
+			path = osx;
+			sourceTree = "<group>";
+		};
+		2A4F33EA1863CDD00070C0ED /* src */ = {
+			isa = PBXGroup;
+			children = (
+				2A4F33EB1863CDD00070C0ED /* lukeFileFuncs.cpp */,
+				2A4F33EC1863CDD00070C0ED /* lukeFuncs.cpp */,
+				2A4F33ED1863CDD00070C0ED /* lukeFuncs.h */,
+				2A4F33EE1863CDD00070C0ED /* lukeMusicFuncs.cpp */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		608B6AAE16A78AB800144EF4 /* src */ = {
@@ -4449,6 +4542,7 @@
 		E737691C1778DC4500892646 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				2A4F33DC1863CDD00070C0ED /* Sound */,
 				E79E6F481855302B00406535 /* Input */,
 				E722CE0F1852D31600636BF1 /* VisualSystems */,
 				E73769201778DC4500892646 /* RGBD */,
@@ -6557,6 +6651,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsVisualSystemEditor" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -6773,9 +6869,11 @@
 				E73676FA17C67E6700CC6EC8 /* CloudsVisualSystem.cpp in Sources */,
 				E736792F17C6E02500CC6EC8 /* ofxAutoReloadedShader.cpp in Sources */,
 				E7D3654917C7D144004A5ED6 /* ofxMarchingCubes.cpp in Sources */,
+				2A4F33F51863CDD00070C0ED /* CloudsSoundFilesSamplesDatabases.cpp in Sources */,
 				E7176E2817D3C02A00C8DC38 /* CloudsRun.cpp in Sources */,
 				E77BAA3617DA781900B8744F /* ofxTextWriter.cpp in Sources */,
 				E77BAA5D17DA784200B8744F /* sqlite3.c in Sources */,
+				2A4F33F11863CDD00070C0ED /* CloudsMixer.cpp in Sources */,
 				E77BAA5E17DA784200B8744F /* ofxSQLite.cpp in Sources */,
 				E77BAA5F17DA784200B8744F /* ofxSQLiteAbstract.cpp in Sources */,
 				E77BAA6017DA784200B8744F /* ofxSQLiteDelete.cpp in Sources */,
@@ -6816,6 +6914,7 @@
 				E71571F31810D43400410646 /* b2DistanceJoint.cpp in Sources */,
 				E71571F41810D43400410646 /* b2FrictionJoint.cpp in Sources */,
 				E71571F51810D43400410646 /* b2GearJoint.cpp in Sources */,
+				2A4F33EF1863CDD00070C0ED /* CloudsAudioEvents.cpp in Sources */,
 				E71571F61810D43400410646 /* b2Joint.cpp in Sources */,
 				E71571F71810D43400410646 /* b2LineJoint.cpp in Sources */,
 				E71571F81810D43400410646 /* b2MouseJoint.cpp in Sources */,
@@ -6893,6 +6992,7 @@
 				85D98B0518381E6800D7065D /* RenderPass.cpp in Sources */,
 				85D98B0718381E6800D7065D /* RGBShiftPass.cpp in Sources */,
 				85D98B0918381E6800D7065D /* RimHighlightingPass.cpp in Sources */,
+				2A4F33F31863CDD00070C0ED /* CloudsSound.cpp in Sources */,
 				85D98B0B18381E6800D7065D /* SSAOPass.cpp in Sources */,
 				85D98B0D18381E6800D7065D /* ToonPass.cpp in Sources */,
 				85D98B0F18381E6800D7065D /* VerticalTiltShifPass.cpp in Sources */,
@@ -7003,6 +7103,7 @@
 				E722D5BC1852D31A00636BF1 /* Module.cpp in Sources */,
 				E722D5BE1852D31A00636BF1 /* RandomMover.cpp in Sources */,
 				E722D5C01852D31A00636BF1 /* CloudsVisualSystemLSystem.cpp in Sources */,
+				2A4F33FF1863CDD00070C0ED /* lukeMusicFuncs.cpp in Sources */,
 				E722D5C21852D31A00636BF1 /* LNode.cpp in Sources */,
 				E722D5C41852D31A00636BF1 /* LSystem.cpp in Sources */,
 				E722D5C61852D31A00636BF1 /* CloudsVisualSystemMandala.cpp in Sources */,
@@ -7057,6 +7158,7 @@
 				E722D6281852D31A00636BF1 /* CloudsVisualSystemRipples.cpp in Sources */,
 				E722D62A1852D31A00636BF1 /* CloudsVisualSystemRulez.cpp in Sources */,
 				E722D6481852D31A00636BF1 /* CloudsVisualSystemScrape.cpp in Sources */,
+				2A4F33FD1863CDD00070C0ED /* lukeFuncs.cpp in Sources */,
 				E722D64A1852D31A00636BF1 /* ofxMtlBoxFitting.cpp in Sources */,
 				E722D6621852D31A00636BF1 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */,
 				E722D6641852D31A00636BF1 /* CloudsVisualSystemTwitter.cpp in Sources */,
@@ -7118,6 +7220,7 @@
 				E7E44601185EC3F500CD1953 /* CloudsVisualSystemSwim.cpp in Sources */,
 				E7E44603185EC3F500CD1953 /* Creature.cpp in Sources */,
 				E7E44605185EC3F500CD1953 /* Creatures.cpp in Sources */,
+				2A4F33F71863CDD00070C0ED /* CloudsSoundFuncs.cpp in Sources */,
 				E7E44607185EC3F500CD1953 /* JellyCreature.cpp in Sources */,
 				E7E44609185EC3F500CD1953 /* MarineSnow.cpp in Sources */,
 				E7E4460B185EC3F500CD1953 /* ModelCreature.cpp in Sources */,
@@ -7130,6 +7233,7 @@
 				E7E4463B185EC42800CD1953 /* Action.cpp in Sources */,
 				E7E4463D185EC42800CD1953 /* ConeAction.cpp in Sources */,
 				E7E4463F185EC42800CD1953 /* CubeAction.cpp in Sources */,
+				2A4F33FB1863CDD00070C0ED /* lukeFileFuncs.cpp in Sources */,
 				E7E44641185EC42800CD1953 /* IcosphereAction.cpp in Sources */,
 				E7E44643185EC42800CD1953 /* LineAction.cpp in Sources */,
 				E7E44645185EC42800CD1953 /* PlaneAction.cpp in Sources */,
@@ -7204,6 +7308,7 @@
 				E7FB28861830D9E2009EBD0E /* ofxEasingLinear.cpp in Sources */,
 				E7FB28871830D9E2009EBD0E /* ofxEasingQuad.cpp in Sources */,
 				E7FB28881830D9E2009EBD0E /* ofxEasingQuart.cpp in Sources */,
+				2A4F33FE1863CDD00070C0ED /* lukeFuncs.cpp in Sources */,
 				E7FB28891830D9E2009EBD0E /* ofxEasingQuint.cpp in Sources */,
 				E7FB288A1830D9E2009EBD0E /* ofxEasingSine.cpp in Sources */,
 				E7FB288B1830D9E2009EBD0E /* ofxTween.cpp in Sources */,
@@ -7347,7 +7452,9 @@
 				E7FB2E9A1830DA6D009EBD0E /* ofxOculusRift.cpp in Sources */,
 				85D98A8418381E4300D7065D /* ParallelTransportFrames.cpp in Sources */,
 				85D98AE418381E6800D7065D /* BleachBypassPass.cpp in Sources */,
+				2A4F33F61863CDD00070C0ED /* CloudsSoundFilesSamplesDatabases.cpp in Sources */,
 				85D98AE618381E6800D7065D /* BloomPass.cpp in Sources */,
+				2A4F33F81863CDD00070C0ED /* CloudsSoundFuncs.cpp in Sources */,
 				85D98AE818381E6800D7065D /* ContrastPass.cpp in Sources */,
 				85D98AEA18381E6800D7065D /* ConvolutionPass.cpp in Sources */,
 				85D98AEC18381E6800D7065D /* DofAltPass.cpp in Sources */,
@@ -7412,6 +7519,7 @@
 				E780D0A71852C9B20096AE8D /* Effect.cpp in Sources */,
 				E780D0A91852C9B20096AE8D /* Filters.cpp in Sources */,
 				E780D0AB1852C9B20096AE8D /* FilterUtils.cpp in Sources */,
+				2A4F33F21863CDD00070C0ED /* CloudsMixer.cpp in Sources */,
 				E780D0AD1852C9B20096AE8D /* FixedValue.cpp in Sources */,
 				E780D0AF1852C9B20096AE8D /* Generator.cpp in Sources */,
 				E780D0B11852C9B20096AE8D /* LFNoise.cpp in Sources */,
@@ -7493,6 +7601,7 @@
 				E722D5E11852D31A00636BF1 /* CloudsVisualSystemNeurons.cpp in Sources */,
 				E722D5E31852D31A00636BF1 /* CloudsVisualSystemOcean.cpp in Sources */,
 				E722D5E71852D31A00636BF1 /* Caster.cpp in Sources */,
+				2A4F33F01863CDD00070C0ED /* CloudsAudioEvents.cpp in Sources */,
 				E722D5E91852D31A00636BF1 /* CastManager.cpp in Sources */,
 				E722D5EB1852D31A00636BF1 /* CloudsVisualSystemOpenP5Caustics.cpp in Sources */,
 				E722D5ED1852D31A00636BF1 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp in Sources */,
@@ -7509,6 +7618,7 @@
 				E722D6031852D31A00636BF1 /* Walker.cpp in Sources */,
 				E722D6051852D31A00636BF1 /* CloudsVisualSystemOpenP5SpinningSolids.cpp in Sources */,
 				E722D6071852D31A00636BF1 /* Tetra.cpp in Sources */,
+				2A4F33F41863CDD00070C0ED /* CloudsSound.cpp in Sources */,
 				E722D6091852D31A00636BF1 /* CloudsVisualSystemOpenP5TextUniverse.cpp in Sources */,
 				E722D60B1852D31A00636BF1 /* TUOrbital.cpp in Sources */,
 				E722D60D1852D31A00636BF1 /* CloudsVisualSystemOrbit.cpp in Sources */,
@@ -7544,6 +7654,7 @@
 				E722D6771852D31A00636BF1 /* cell.cpp in Sources */,
 				E722D6791852D31A00636BF1 /* common.cpp in Sources */,
 				E722D67B1852D31A00636BF1 /* container.cpp in Sources */,
+				2A4F33FC1863CDD00070C0ED /* lukeFileFuncs.cpp in Sources */,
 				E722D67D1852D31A00636BF1 /* container_prd.cpp in Sources */,
 				E722D67F1852D31A00636BF1 /* pre_container.cpp in Sources */,
 				E722D6811852D31A00636BF1 /* unitcell.cpp in Sources */,
@@ -7613,6 +7724,7 @@
 				E7E4464E185EC42800CD1953 /* TransformAction.cpp in Sources */,
 				E7E44650185EC42800CD1953 /* TubeAction.cpp in Sources */,
 				E7E44652185EC42800CD1953 /* Branch.cpp in Sources */,
+				2A4F34001863CDD00070C0ED /* lukeMusicFuncs.cpp in Sources */,
 				E7E44654185EC42800CD1953 /* Rule.cpp in Sources */,
 				E7E44656185EC42800CD1953 /* Rules.cpp in Sources */,
 				E7E44658185EC42800CD1953 /* RuleSet.cpp in Sources */,
@@ -7829,6 +7941,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
+					/Users/gal/itp/tools/of/of_v0.7.4_osx_release/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/ios\"";
@@ -7968,6 +8081,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
+					/Users/gal/itp/tools/of/of_v0.7.4_osx_release/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/ios\"";
@@ -8122,6 +8236,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
+					/Users/gal/itp/tools/of/of_v0.7.4_osx_release/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/osx\"";
@@ -8274,6 +8389,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
+					/Users/gal/itp/tools/of/of_v0.7.4_osx_release/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/osx\"";

@@ -317,6 +317,12 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 									 noiseFlowTex.getTextureReference(),  3);
 	paperMixShader.setUniform2f("dimensions",
 								canvassrc.getWidth(), canvassrc.getHeight());
+	float flowSwap = fmod(ofGetElapsedTimef(), 2.0f);
+	if(flowSwap > 1.0) flowSwap = 2.0 - flowSwap;
+	
+	paperMixShader.setUniform1f("flowSwap", 1.0);//looks stupid
+	paperMixShader.setUniform1f("flowWidth", noiseFlowTex.getWidth());
+	
 	canvasMesh.draw();
 	paperMixShader.end();
 	
@@ -475,7 +481,9 @@ void CloudsVisualSystemGesturePaint::selfMouseMoved(ofMouseEventArgs& data){
 		}
 	}
 	
-	for(float a = 0; a < 1.; a+=.1){
+	float stepsize = ofMap(brushSize, 2, 200, .005, .1, true);
+	
+	for(float a = 0; a < 1.; a+=stepsize){
 		depositPoints.push_back(ofHermiteInterpolate(splineHandles[0],
 													 splineHandles[1],
 													 splineHandles[2],
