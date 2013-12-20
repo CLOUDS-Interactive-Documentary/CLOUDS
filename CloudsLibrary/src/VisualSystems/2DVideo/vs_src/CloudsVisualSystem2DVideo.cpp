@@ -134,7 +134,7 @@ void CloudsVisualSystem2DVideo::restart()
 
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfPresetLoaded(string presetPath)
-{
+{   
     
     //LOADING MOVIE
     ofxUIRadio* r = (ofxUIRadio*)playerGui->getWidget("MOVIE FILES");
