@@ -67,11 +67,17 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 	</project>
 	<project>
 	<project title="Messa Di Voce">
-			<creator_name>Golan Levin, Joan La Barbara, Jaap Blonk</creator_name>
+			<creator_name>Golan Levin, Zach Lieberman Joan La Barbara, Jaap Blonk</creator_name>
 			<description>A performance and installation in which the speech, shouts and songs produced by two vocalists are augmented in real-time by custom interactive visualization</description>
 			<video_file_name></video_file_name>
 	</project>
 
+	<project>
+	<project title="Manual Input Sessions">
+			<creator_name>Golan Levin, Zach Lieberman</creator_name>
+			<description>a series of audiovisual vignettes which probe the expressive possibilities of hand gestures and finger movements.Our concert is performed on a combination of custom interactive software, analog overhead projectors and digital computer video projectors</description>
+			<video_file_name></video_file_name>
+	</project>
 <project>
 	<project title="Listening Post">
 			<creator_name>Mark Hansen, Ben Rubin</creator_name>
@@ -123,6 +129,17 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 			<video_file_name></video_file_name>
 	</project>
 
+	<project title="Coronal Mass Ejection">
+			<creator_name>Robert Hodgin</creator_name>
+			<description>Generative Coronal Mass Ejection, created for the Written Images project</description>
+			<video_file_name></video_file_name>
+	</project>
+
+	<project title="Solar Rework">
+			<creator_name>Robert Hodgin</creator_name>
+			<description>Audio-responsive application created for the V&A Museum. Created with Processing.</description>
+			<video_file_name></video_file_name>
+	</project>
 <project>
 	<project title="Super Mario Clouds">
 			<creator_name>Cory Arcangel</creator_name>
