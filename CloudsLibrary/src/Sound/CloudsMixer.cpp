@@ -10,7 +10,8 @@
 
 CloudsMixer::CloudsMixer()
 {
-//    events = new CloudsMixerEvents();
+	musicVol = 1.0;
+	diageticVol = 1.0;
 }
 
 CloudsMixer::~CloudsMixer()
