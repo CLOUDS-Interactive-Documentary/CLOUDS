@@ -89,6 +89,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     //text stuff
     ofxJSONElement result;
     ofxFTGLSimpleLayout font;
+    ofxFTGLSimpleLayout font2;
     ofxFTGLTextAlignment textAlign;
     
 
