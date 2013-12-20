@@ -192,8 +192,8 @@ void CloudsVisualSystemMandala::selfSetup()
 	radius = 100;
 	
 	bDrawClock = bSmoothSurface = false;
-	bDrawSurface = true;
-	bDrawTails = false;
+	bDrawSurface = false;
+	bDrawTails = true;
 	
 	
 	noiseTimeScale = .2;
@@ -349,10 +349,12 @@ void CloudsVisualSystemMandala::setClock( int numCogs, float scale, int octaves,
 		}
 	}
 	
-	tails.resize(surfaceMeshes.size());
+	tails.resize(surfaceMeshes.size() * 3 );
 	for (int i=0; i<surfaceMeshes.size(); i++)
 	{
-		tails[i].setup(&surfaceMeshes[i]);
+		tails[i*3].setup(&surfaceMeshes[i]);
+		tails[i*3+1].setup(&surfaceMeshes[i], ofVec3f(0,0,.5));
+		tails[i*3+2].setup(&surfaceMeshes[i], ofVec3f(0,0,-.5));
 	}
 	
 	
@@ -459,7 +461,14 @@ void CloudsVisualSystemMandala::selfUpdate()
 		for(int i=0; i<surfaceMeshes.size(); i++)
 		{
 			surfaceMeshes[i].update();
-			if(bDrawTails)	tails[i].update();
+			
+		}
+		if(bDrawTails)
+		{
+			for (int i=0; i<tails.size(); i++)
+			{
+				tails[i].update();
+			}
 		}
 	}
 	
@@ -502,9 +511,13 @@ void CloudsVisualSystemMandala::selfDraw()
 	
 	glLineWidth(2);
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
-	for(int i=0; i<surfaceMeshes.size(); i++)
+
+	if(bDrawTails)
 	{
-		if(bDrawTails)	tails[i].draw();
+		for (int i=0; i<tails.size(); i++)
+		{
+			tails[i].draw();
+		}
 	}
 	ofDisableAlphaBlending();
 	

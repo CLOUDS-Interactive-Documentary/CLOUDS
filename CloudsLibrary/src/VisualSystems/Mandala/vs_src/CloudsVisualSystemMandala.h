@@ -76,6 +76,7 @@ public:
 	{
 		m = NULL;
 		smoothing = .8;
+		bIsSetup = false;
 	};
 	~SPMeshTail()
 	{
@@ -87,6 +88,7 @@ public:
 	{
 		if(_m)
 		{
+			bIsSetup = true;
 			m = _m;
 			localOffset = _localOffset;
 			
@@ -111,6 +113,10 @@ public:
 	
 	void update()
 	{
+		if(!bIsSetup)
+		{
+			setup(m);
+		}
 		if(m)
 		{
 			worldPos = getRootPosoition();
@@ -154,6 +160,19 @@ public:
 		return localOffset * m->getGlobalTransformMatrix();
 	}
 	
+	void operator=( const SPMeshTail t)
+	{
+		m = t.m;
+		localOffset = t.localOffset;
+		worldPos = t.worldPos;
+		
+		points = t.points;
+		uv = t.uv;
+		colors = t.colors;
+		
+		smoothing = t.smoothing;
+	};
+	
 	SPMesh* m;
 	ofVec3f localOffset;
 	ofVec3f worldPos;
@@ -162,10 +181,11 @@ public:
 	
 	ofVbo line;
 	
-	
 	vector<ofVec3f> points;
 	vector<ofVec2f> uv;
 	vector<ofFloatColor> colors;
+	
+	bool bIsSetup;
 };
 
 class TailLoft{
