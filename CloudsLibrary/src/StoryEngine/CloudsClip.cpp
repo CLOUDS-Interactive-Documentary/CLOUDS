@@ -255,6 +255,7 @@ void CloudsClip::collateKeywords(){
     }
     
 	hasProjectExample = false;
+	projectExampleTitle = "";
 	for(int i = 0; i < specialKeywords.size(); i++){
 		if(specialKeywords[i].find("example") != string::npos){
 			vector<string> exampleProject = ofSplitString(specialKeywords[i], "?");
@@ -262,8 +263,9 @@ void CloudsClip::collateKeywords(){
 				ofLogError("CloudsClip::collateKeywords") << "Clip " << getLinkName() << " doesn't have a specific example tagged";
 			}
 			else {
+				projectExampleTitle = exampleProject[1];
 				hasProjectExample = true;
-				
+				cout << "Found project example " << projectExampleTitle << " for clip " << getLinkName() << endl;
 			}
 			break;
 		}

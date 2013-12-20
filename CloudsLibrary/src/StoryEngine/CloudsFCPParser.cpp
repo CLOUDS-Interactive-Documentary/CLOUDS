@@ -256,6 +256,10 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 }
 
 void CloudsFCPParser::parseProjectExamples(string filename){
+	
+	clipIdToProjectExample.clear();
+	projectExamples.clear();
+	
 	ofxXmlSettings projectExamplesXML;
 	if(!projectExamplesXML.loadFile(filename)){
 		ofLogError("CloudsFCPParser::parseProjectExamples") << "Project examples failed to parse at path" << filename;
@@ -295,13 +299,29 @@ void CloudsFCPParser::parseProjectExamples(string filename){
 		
 		projectExamplesXML.popTag();//project
 		
+		clipIdToProjectExample[example.title] = projectExamples.size();
 		projectExamples.push_back(example);
 	}
 	projectExamplesXML.popTag();//clouds
+	
+	//populate project examples on all clips
+	for(int i = 0; i < allClips.size(); i++){
+		if(allClips[i].hasProjectExample){
+			allClips[i].projectExample = getProjectExampleWithTitle(allClips[i].projectExampleTitle);
+		}
+	}
 }
 
 vector<CloudsProjectExample>& CloudsFCPParser::getProjectExamples(){
 	return projectExamples;
+}
+
+CloudsProjectExample& CloudsFCPParser::getProjectExampleWithTitle(string title){
+	if(clipIdToProjectExample.find(title) == clipIdToProjectExample.end()){
+		ofLogError("CloudsFCPParser::getProjectExampleWithTitle") << "Couldn't find project example with title " << title;
+		return dummyProjectExample;
+	}
+	return projectExamples[ clipIdToProjectExample[title] ];
 }
 
 void CloudsFCPParser::populateKeywordCentroids(){
