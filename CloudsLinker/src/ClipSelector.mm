@@ -41,6 +41,7 @@
     [suppressedTable setDoubleAction:@selector(playDoubleClickedRow:)];
 
 	[self updateTables];
+	[projectExamples reloadData];
 }
 
 
@@ -239,10 +240,33 @@
     }
 }
 
+- (NSInteger)numberOfItemsInComboBox:(NSComboBox *)aComboBox
+{
+	if(parser == NULL) return 0;
+	cout << "project example size " << parser->getProjectExamples().size() << endl;
+	return parser->getProjectExamples().size();
+}
+
+- (id)comboBox:(NSComboBox *)aComboBox objectValueForItemAtIndex:(NSInteger)index
+{
+	if(parser == NULL) return @"";
+	return [NSString stringWithUTF8String:parser->getProjectExamples()[index].title.c_str() ];
+}
+
+- (NSUInteger)comboBox:(NSComboBox *)aComboBox indexOfItemWithStringValue:(NSString *)string
+{
+	return 0;
+}
+
+- (NSString *)comboBox:(NSComboBox *)aComboBox completedString:(NSString *)string
+{
+	return @"";
+}
+
 - (CloudsClip&) selectedMeta
 {
     if(currentMetaLinks.size() > 0){
-        CloudsClip& c=currentMetaLinks[metaTable.selectedRow];
+        CloudsClip& c = currentMetaLinks[metaTable.selectedRow];
 //        cout<<"Selected clip from source table "<<c.getLinkName()<<","<<c.hasStartingQuestion()<<endl;
         return c;
     }
@@ -363,22 +387,17 @@ completionsForSubstring:(NSString *)substring
 	}
 }
 
-- (void) setQuestionText:(id)sender{
-//    //button pressed
-////    CloudsClip m = [self selectedClip];
-//	
-//	//needs to be the Clip referenced by the main database to have the question stored
-//    //get the txt from textfield, get currently select clip, and set it
-//    CloudsClip& n = [self selectedClip];
-//    string q = [startQuestion.stringValue UTF8String];
-//    
-//    n.setStartingQuestion(q);
-//    
-//	cout<<"Set the question for clip"<<n.getLinkName()<<"::"<<n.getStartingQuestion()<<endl;
-//	
-//	[testViewParent updateViews];
-//    [self saveLinks:self];
+- (IBAction) attachProjectExample:(id)sender
+{
+	if([self isClipSelected]){
+		NSLog(@"Value is %@", [projectExamples textValue]);
+		string selectedProjectExample = [ [projectExamples objectValueOfSelectedItem] UTF8String];
+		cout << "project example set to " << selectedProjectExample << endl;
+		[self selectedClip].setProjectExample( selectedProjectExample );
+		
+	}
 }
+
 
 - (IBAction) linkFromMetaTable:(id)sender
 {

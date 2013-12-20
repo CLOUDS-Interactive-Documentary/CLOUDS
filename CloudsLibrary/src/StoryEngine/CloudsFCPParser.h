@@ -38,8 +38,10 @@ class CloudsFCPParser {
 //    void parseClusterMap(string mapFile); //SVG
 	void parseClusterNetwork(string fileName);
 	void parseProjectExamples(string filename);
+	vector<CloudsProjectExample>& getProjectExamples();
 	
 	void getOverlappingClipIDs();
+	//TODO: cache this and don't call it every start up	
     void autolinkSequentialClips();
     
     map<string,string> cloudsClipToFileID;

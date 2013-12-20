@@ -256,43 +256,52 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 }
 
 void CloudsFCPParser::parseProjectExamples(string filename){
-	ofxXmlSettings projectExamples;
-	if(!projectExamples.loadFile(filename)){
+	ofxXmlSettings projectExamplesXML;
+	if(!projectExamplesXML.loadFile(filename)){
 		ofLogError("CloudsFCPParser::parseProjectExamples") << "Project examples failed to parse at path" << filename;
 		return;
 	}
-	
-//	vector<CloudsProjectExample> projectExamples;
-//	map<string,int> clipIdToProjectExample;
 		
-	projectExamples.pushTag("clouds");
-	int numProjectExamples = projectExamples.getNumTags("project");
+	projectExamplesXML.pushTag("clouds");
+	int numProjectExamples = projectExamplesXML.getNumTags("project");
 	for(int i = 0; i < numProjectExamples; i++){
 		
-		string projectTitle = projectExamples.getAttribute("project", "title", "", i);
+		string projectTitle = projectExamplesXML.getAttribute("project", "title", "", i);
 		if(projectTitle == ""){
 			ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << i << " does not have a title";
 			continue;
 		}
 		
-		projectExamples.pushTag("project",i);
+		projectExamplesXML.pushTag("project",i);
 
 		CloudsProjectExample example;
 		example.title = projectTitle;
-		example.creatorName = projectExamples.getValue("creator_name", "");
-		example.description = projectExamples.getValue("description", "");
-		example.description = projectExamples.getValue("description", "");
-		projectExamples.pushTag("videos");
-		projectExamples.popTag();
-		
-		int numVideos = projectExamples.getNumTags("file_name");
-		for(int f = 0; f < numVideos; f++){
-			example.exampleVideos.push_back(projectExamples.getValue("file_name","",f));
+		example.creatorName = projectExamplesXML.getValue("creator_name", "");
+		example.description = projectExamplesXML.getValue("description", "");
+		if(projectExamplesXML.tagExists("videos")){
+			projectExamplesXML.pushTag("videos");
+			int numVideos = projectExamplesXML.getNumTags("file");
+			if(numVideos == 0){
+				ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << projectTitle << " doesn't have ny <file> tags in <videos>";
+			}
+			for(int f = 0; f < numVideos; f++){
+				example.exampleVideos.push_back(projectExamplesXML.getValue("file","",f));
+			}
+			projectExamplesXML.popTag(); //videos
 		}
-		projectExamples.popTag();//project
+		else{
+			ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << projectTitle << " doesn't have <videos> tag";
+		}
 		
+		projectExamplesXML.popTag();//project
+		
+		projectExamples.push_back(example);
 	}
-	projectExamples.popTag();
+	projectExamplesXML.popTag();//clouds
+}
+
+vector<CloudsProjectExample>& CloudsFCPParser::getProjectExamples(){
+	return projectExamples;
 }
 
 void CloudsFCPParser::populateKeywordCentroids(){
@@ -321,7 +330,6 @@ void CloudsFCPParser::populateKeywordCentroids(){
 }
 
 void CloudsFCPParser::calculateKeywordAdjascency(){
-//		map<string, vector<string> > keywordAdjacency;
 	keywordAdjacency.clear();
 	vector<string>& keywords = getContentKeywords();
 	for(int i = 0; i < keywords.size(); i++){
