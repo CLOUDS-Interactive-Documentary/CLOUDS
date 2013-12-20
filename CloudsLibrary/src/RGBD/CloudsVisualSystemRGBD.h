@@ -100,7 +100,12 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 
   protected:
 	
+
+	ofxUISuperCanvas *globalMeshGui;
 	bool drawRGBD;
+	float edgeAttenuate;
+	float edgeAttenuateExponent;
+	float skinBrightness;
 	
 	//POINTS
 	ofxUISuperCanvas *pointsGui;
@@ -128,6 +133,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float lineGranularity;
 	float lineFlowPosition;
 	float lineFlowSpeed;
+	float lineHeadOverlap;
 	bool linesFlowUp;
 	bool refreshLines;
 	void generateLines();
@@ -143,6 +149,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float randomVariance;
 	float meshFaceMinRadius;
 	float meshFaceFalloff;
+	float meshRetractionFalloff;
+	
 	bool refreshMesh;
 	void generateMesh();
 	

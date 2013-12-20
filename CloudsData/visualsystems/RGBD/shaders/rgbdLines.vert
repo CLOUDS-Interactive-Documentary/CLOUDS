@@ -43,6 +43,12 @@ uniform float maxDepth;
 uniform float lineExtend; //0. = 1. value that extend the lines out to their base positions
 
 uniform vec3 headPosition;
+uniform float headMinRadius;
+uniform float headFalloff;
+uniform float headLineOverlap;
+
+uniform float edgeAttenuateBase;
+uniform float edgeAttenuateExponent;
 
 //FACE FEATURE
 varying float positionValid;
@@ -57,7 +63,6 @@ varying float diffuseAttenuate;
 
 varying float headPositionAttenuation;
 varying float edgeAttenuate;
-//varying float forceFade;
 
 const float epsilon = 1e-6;
 
@@ -120,12 +125,20 @@ vec2 flowCoord(vec2 basePosition){
 
 void main(void){
 	
-	float bottomAttenuate = 0.;
-	float sideAttenuate   = 0.;
 	// Here we get the position, and account for the vertex position flowing
 	vec2 vertexPos = gl_Vertex.xy;
-	
 	vec2 samplePos = flowCoord(vertexPos);
+	
+	float baseDepth = depthValueFromSample( samplePos + depthRect.xy );
+    vec4 basePos = vec4((samplePos.x - depthPP.x) * baseDepth / depthFOV.x,
+						(samplePos.y - depthPP.y) * baseDepth / depthFOV.y,
+						baseDepth, 1.0);
+
+	//soften near the bottom edge
+	edgeAttenuate = (1.0 - max( 0.0, pow( samplePos.y / depthRect.w, edgeAttenuateExponent) + edgeAttenuateBase ));
+	//but allow parts closer in z to get bright still
+	edgeAttenuate += (1.0 - edgeAttenuate) * pow(map(basePos.z,maxDepth,minDepth,0.0,1.0), 4.);
+	
 	vec2 extendedSamplePos = samplePos + gl_Normal.xy*lineExtend;
 	vec2 neighborSamplePos = samplePos - gl_Normal.xy*lineExtend;
 	
@@ -140,9 +153,10 @@ void main(void){
                     (extendedSamplePos.y - depthPP.y) * depth / depthFOV.y,
                     depth, 1.0);
     
-	//HEAD POSITION
-	//TODO make variable
-	headPositionAttenuation = map(distance(pos.xyz,headPosition), 400, 50, 0.0, 1.0);
+	//attenuate the lines away from the face, mixing them back in a bit
+	headPositionAttenuation = mix(0.0,
+								  map(distance(basePos.xyz,headPosition), headMinRadius+headFalloff, headMinRadius, .0, 1.0),
+								  1.-headLineOverlap);
 	
 	//extract the normal and pass it along to the fragment shader
 	vec2 normalPos   = extendedSamplePos + normalRect.xy;
@@ -152,27 +166,13 @@ void main(void){
     normal = -normalize(gl_NormalMatrix * surfaceNormal);
 	vec3 vert = vec3(gl_ModelViewMatrix * pos);
 	eye = normalize(-vert);
-	
-//  float neighborA = depthValueFromSample( depthRect.xy + mix(gl_Color.xy*depthRect.zw,gl_Normal.xy,triangleContract) );
-//  float neighborB = depthValueFromSample( depthRect.xy + mix(gl_Color.zw*depthRect.zw,gl_Normal.xy,triangleContract) );
-//	float neighborA = depthValueFromSample( samplePos )
-	
+
 	positionValid = (depth < farClip &&
 					 neighborDepth < farClip &&
-					 
 					 depth > nearClip &&
 					 neighborDepth > nearClip &&
-					 
 					 abs(neighborDepth - depth) < edgeClip) ? 1.0 : 0.0;
 
-	
-	edgeAttenuate = (1.0 - max( 0.0, pow( abs(320. - samplePos.x) / 320., 1.5) - sideAttenuate) ) *
-					(1.0 - max( 0.0, pow( samplePos.y / 480., 3.0) + bottomAttenuate ));
-	
-	edgeAttenuate += (1. - edgeAttenuate) * pow(map(pos.z,maxDepth,minDepth,0.0,1.0),4.);
-
-	//positionValid = 1.0;
-	
     // http://opencv.willowgarage.com/documentation/camera_calibration_and_3d_reconstruction.html
     //
     vec4 projection = extrinsics * pos;
@@ -186,9 +186,7 @@ void main(void){
         xypp.x = xyp.x * (1.0 + dK.x*r2 + dK.y*r4 + dK.z*r6) + 2.0*dP.x * xyp.x * xyp.y + dP.y*(r2 + 2.0 * pow(xyp.x,2.0) );
         xypp.y = xyp.y * (1.0 + dK.x*r2 + dK.y*r4 + dK.z*r6) + dP.x * (r2 + 2.0*pow(xyp.y, 2.0) ) + 2.0*dP.y*xyp.x*xyp.y;
         vec2 uv = (colorFOV * xypp + colorPP) * colorScale;
-
-        //gl_TexCoord[0].xy = ((uv-textureSize/2.0) * scale) + textureSize/2.0; 
-		gl_TexCoord[0].xy = clamp(uv,vec2(0.0,0.0), colorRect.zw * colorScale);
+		gl_TexCoord[0].xy = clamp(uv,vec2(0.0), colorRect.zw * colorScale);
 	}
 	
 	//DIFFUSE LIGHT
@@ -200,23 +198,6 @@ void main(void){
 	
 	diffuseLightDirection = diffuseLightDirectionFull / d;
 	
-//	// now that we have the texture coordinate we can sample the face feature and movement map which correlate to the video texture
-//	if(useFaces == 1){
-//		vec2 faceFeatureScale = faceFeatureRect.zw / colorRect.zw / colorScale;
-//		vec2 faceFeaturePos = faceFeatureRect.xy + gl_TexCoord[0].xy * faceFeatureScale;
-//		faceFeatureSample = texture2DRect(rgbdTexture, faceFeaturePos);
-//		
-//		//extract the delta video change
-//		vec2 deltaChangeScale = deltaChangeRect.zw / colorRect.zw / colorScale;
-//		vec2 deltaChangePos = deltaChangeRect.xy + gl_TexCoord[0].xy * deltaChangeScale;
-//		deltaChangeSample = texture2DRect(rgbdTexture, deltaChangePos);
-//	}
-//	else {
-//		faceFeatureSample = vec4(0.);
-//		deltaChangeSample = vec4(0.);
-//	}
-	
-//	forceFade = max(isMeshed, 1.0 - triangleContract);
 	
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
     gl_FrontColor = gl_Color;

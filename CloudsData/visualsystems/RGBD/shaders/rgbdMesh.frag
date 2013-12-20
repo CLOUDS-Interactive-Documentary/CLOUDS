@@ -142,10 +142,12 @@ void main(){
 //					mix( mix(calculateLight(),1.0,isSkin()), 1.0, pow(lum,2.0) ) *
 //					mix(1.0-headPositionAttenuation,headPositionAttenuation, headAttenuateMix) * edgeAttenuate;
 //	
-	gl_FragColor = col * headPositionAttenuation;
+	gl_FragColor = col * mix(headPositionAttenuation * edgeAttenuate,1.0,isSkin())*meshAlpha;
+	//gl_FragColor = vec4(vec3(edgeAttenuate),1.0);
+//	gl_FragColor = vec4(vec3(mix(1.0,headPositionAttenuation * edgeAttenuate, 1.0)),1.0);
 	//gl_FragColor = vec4(headPositionAttenuation);
 //	gl_FragColor.a = 1.0;
-	gl_FragColor.a = meshAlpha;
+	gl_FragColor.a = 1.0;
 //	gl_FragColor = vec4(1.0);
 	
 //	gl_FragColor = vec4(1.0);

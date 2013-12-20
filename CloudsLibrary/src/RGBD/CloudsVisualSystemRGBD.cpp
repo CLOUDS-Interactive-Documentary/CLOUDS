@@ -31,6 +31,9 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	
 	captionFontSize = 12;
 	
+	edgeAttenuate = 0.;
+	skinBrightness = 0.;
+	
 	drawPoints = true;
 	refreshPointcloud = true;
 	numRandomPoints = 20000;
@@ -58,9 +61,6 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetup(){
-//	currentFlowPosition = 0;
-
-//	rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	
 	loadShader();
 	
@@ -148,13 +148,39 @@ void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionTy
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetupGuis(){
 
+	globalMeshGui = new ofxUISuperCanvas("GLOBAL MESH", gui);
+	globalMeshGui->copyCanvasStyle(gui);
+    globalMeshGui->copyCanvasProperties(gui);
+    globalMeshGui->setName("GLOBAL MESH");
+    globalMeshGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	ofxUIToggle *toggle;
+	toggle = globalMeshGui->addToggle("ENABLE", &drawRGBD);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    globalMeshGui->resetPlacer();
+    globalMeshGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    globalMeshGui->addWidgetToHeader(toggle);
+	globalMeshGui->addSlider("Bottom Edge Falloff", 0, 1.0, &edgeAttenuate);
+	globalMeshGui->addSlider("Bottom Edge Expo", 1, 5.0, &edgeAttenuateExponent);
+	globalMeshGui->addSlider("Skin Brightness", 0, 1.0, &skinBrightness);
+		
+	ofAddListener(globalMeshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
+	guis.push_back(globalMeshGui);
+	guimap[globalMeshGui->getName()] = globalMeshGui;
+
+
 	pointsGui = new ofxUISuperCanvas("POINTS", gui);
 	pointsGui->copyCanvasStyle(gui);
     pointsGui->copyCanvasProperties(gui);
     pointsGui->setName("Points");
     pointsGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-
-	pointsGui->addToggle("Draw Points", &drawPoints);
+	
+	toggle = pointsGui->addToggle("ENABLE", &drawPoints);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    pointsGui->resetPlacer();
+    pointsGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    pointsGui->addWidgetToHeader(toggle);
+	
 	pointsGui->addSlider("Point Alpha", 0, 1.0, &pointAlpha);
 	pointsGui->addIntSlider("Num Points", 0, 100000, &numRandomPoints);
 	pointsGui->addRangeSlider("Point Size", 0.0, 3.0, &pointSize.min, &pointSize.max);
@@ -171,11 +197,16 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     linesGui->setName("Lines");
     linesGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	linesGui->addToggle("Draw Lines", &drawLines);
+	toggle = linesGui->addToggle("ENABLE", &drawLines);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    linesGui->resetPlacer();
+    linesGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    linesGui->addWidgetToHeader(toggle);
+	
 	linesGui->addSlider("Line Alpha", 0, 1.0, &lineAlpha);
 	linesGui->addSlider("Line Thickness", 0, 3.0, &lineThickness);
 	linesGui->addSlider("Line Spacing", 1., 16., &lineSpacing);
-//	float lineDensityVariance;
+	linesGui->addSlider("Line Face Overlap", 0., 1.0, &lineHeadOverlap);
 	linesGui->addSlider("Line Granularity", 1., 10.0, &lineGranularity);
 	linesGui->addSlider("Line Flow", 0, 2.0, &lineFlowSpeed);
 	linesGui->addToggle("Lines Flow Up", &linesFlowUp);
@@ -189,14 +220,20 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     meshGui->copyCanvasProperties(gui);
     meshGui->setName("Mesh");
     meshGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	meshGui->addToggle("Draw Mesh", &drawMesh);
+	
+	toggle = meshGui->addToggle("ENABLE", &drawMesh);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    meshGui->resetPlacer();
+    meshGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    meshGui->addWidgetToHeader(toggle);
+
 	meshGui->addSlider("Mesh Alpha", 0., 1.0, &meshAlpha);
 	meshGui->addSlider("X Simplify", 1., 16., &xSimplify);
 	meshGui->addSlider("Y Simplify", 1., 16., &ySimplify);
 	meshGui->addSlider("Random Variance", 0, 10.0, &randomVariance);
-	meshGui->addSlider("Face Min Radius", 0, 300., &meshFaceMinRadius);
-	meshGui->addSlider("Face Falloff", 0, 300., &meshFaceFalloff);
-	float meshFaceFalloff;
+	meshGui->addSlider("Face Min Radius", 0, 600., &meshFaceMinRadius);
+	meshGui->addSlider("Face Falloff", 0, 600., &meshFaceFalloff);
+	meshGui->addSlider("Edge Geo Retraction", 0, 1.0, &meshRetractionFalloff);
 
 	ofAddListener(meshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
 	guis.push_back(meshGui);
@@ -599,8 +636,6 @@ void CloudsVisualSystemRGBD::generateLines(){
 		}
 	}
 	
-	
-	
 	lines.setMode(OF_PRIMITIVE_LINES );
 	
 	refreshLines = false;
@@ -760,7 +795,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glEnable(GL_LINE_SMOOTH);
 	
-	if(getRGBDVideoPlayer().getPlayer().isLoaded()){
+	if(getRGBDVideoPlayer().getPlayer().isLoaded() && drawRGBD){
 		
 		setupRGBDTransforms();
 			
@@ -768,11 +803,14 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			meshShader.begin();
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
 		
-			meshShader.setUniform1f("triangleExtend", 1.0);
+			meshShader.setUniform1f("meshAlpha", meshAlpha);
+			meshShader.setUniform1f("triangleExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+			meshShader.setUniform1f("meshRetractionFalloff",meshRetractionFalloff);
 			meshShader.setUniform1f("headMinRadius", meshFaceMinRadius);
 			meshShader.setUniform1f("headFalloff", meshFaceFalloff);
-			meshShader.setUniform1f("meshAlpha", meshAlpha);
-
+			meshShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
+			meshShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
+			
 			mesh.draw();
 			
 			meshShader.end();
@@ -786,8 +824,13 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			getRGBDVideoPlayer().flowPosition = lineFlowPosition;
 			getRGBDVideoPlayer().setupProjectionUniforms(lineShader);
 			
-			lineShader.setUniform1f("lineExtend", 1.0);
-			
+			lineShader.setUniform1f("lineExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+			lineShader.setUniform1f("headMinRadius", meshFaceMinRadius);
+			lineShader.setUniform1f("headFalloff", meshFaceFalloff);
+			lineShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
+			lineShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
+			lineShader.setUniform1f("headLineOverlap",lineHeadOverlap);
+
 			ofSetColor(255,255*lineAlpha);
 			
 			lines.draw();
