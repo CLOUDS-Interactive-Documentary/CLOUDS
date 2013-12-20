@@ -76,6 +76,7 @@ public:
 	{
 		m = NULL;
 		smoothing = .8;
+		bIsSetup = false;
 	};
 	~SPMeshTail()
 	{
@@ -87,10 +88,11 @@ public:
 	{
 		if(_m)
 		{
+			bIsSetup = true;
 			m = _m;
 			localOffset = _localOffset;
 			
-			points.resize(50);
+			points.resize(30);
 			uv.resize(points.size());
 			colors.resize(points.size());
 			worldPos = getRootPosoition();
@@ -111,18 +113,27 @@ public:
 	
 	void update()
 	{
+		if(!bIsSetup)
+		{
+			setup(m);
+		}
 		if(m)
 		{
 			worldPos = getRootPosoition();
 			
 			points[0] = worldPos;
-			float msmoothing = 1. - smoothing;
+			
+			float dynamicSmoothing = smoothing * min(1.f, lastHead.distance(worldPos) / 10.f );
+			
+			float msmoothing = 1. - dynamicSmoothing;
 			for(int i=points.size()-1; i>0; i--)
 			{
-				points[i] = points[i-1] * smoothing + points[i] * msmoothing;
+				points[i] = points[i-1] * dynamicSmoothing + points[i] * msmoothing;
 			}
 			
 			line.updateVertexData( &points[0], points.size() );
+			
+			lastHead = worldPos;
 		}
 	}
 	
@@ -154,6 +165,19 @@ public:
 		return localOffset * m->getGlobalTransformMatrix();
 	}
 	
+	void operator=( const SPMeshTail t)
+	{
+		m = t.m;
+		localOffset = t.localOffset;
+		worldPos = t.worldPos;
+		
+		points = t.points;
+		uv = t.uv;
+		colors = t.colors;
+		
+		smoothing = t.smoothing;
+	};
+	
 	SPMesh* m;
 	ofVec3f localOffset;
 	ofVec3f worldPos;
@@ -162,10 +186,13 @@ public:
 	
 	ofVbo line;
 	
-	
 	vector<ofVec3f> points;
 	vector<ofVec2f> uv;
 	vector<ofFloatColor> colors;
+	
+	ofVec3f lastHead;
+	
+	bool bIsSetup;
 };
 
 class TailLoft{
@@ -480,7 +507,7 @@ protected:
 	
 	float lastTime, currentTime;
 	
-//	vector<TailLoft> lofts;
+	vector<TailLoft> lofts;
 	
 	//temp
 };
