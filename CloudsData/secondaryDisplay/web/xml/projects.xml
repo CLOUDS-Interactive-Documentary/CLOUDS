@@ -2,7 +2,10 @@
 	<project title="Drawn">
 			<creator_name>Zach Lieberman</creator_name>
 			<description>In the installation drawn, figures drawn with pen and ink take on a life of their own and interact with their creators. They seem to arise from the sheet of drawing paper and start to move in with the hand motions of the person who drew them.</description>
-			<video_file_name>videos/test.mov</video_file_name>
+			<videos>
+				<file>test.mov</file>
+				<file>video2.mov</file>
+			</videos>
 	</project>
 	
 	<project title="Sheep Market">
