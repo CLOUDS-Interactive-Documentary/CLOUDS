@@ -4,24 +4,14 @@
 uniform sampler2DRect rgbdTexture;
 
 varying float positionValid;
-//varying vec4 faceFeatureSample;
-//varying vec4 deltaChangeSample;
 
 //LIGHTING
 varying vec3 eye;
 varying vec3 normal;
 varying float diffuseAttenuate;
 varying vec3 diffuseLightDirection;
-
-uniform float eyeMultiplier;
-uniform float skinMultiplier;
-uniform float baseMultiplier;
-uniform float fadeValue;
-
-uniform float headAttenuateMix;
 varying float headPositionAttenuation;
 varying float edgeAttenuate;
-varying float forceFade;
 
 const float epsilon = 1e-6;
 

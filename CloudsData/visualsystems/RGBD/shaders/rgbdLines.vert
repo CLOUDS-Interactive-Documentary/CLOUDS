@@ -45,7 +45,7 @@ uniform float lineExtend; //0. = 1. value that extend the lines out to their bas
 uniform vec3 headPosition;
 uniform float headMinRadius;
 uniform float headFalloff;
-uniform float headLineOverlap;
+uniform float headOverlap;
 
 uniform float edgeAttenuateBase;
 uniform float edgeAttenuateExponent;
@@ -156,7 +156,7 @@ void main(void){
 	//attenuate the lines away from the face, mixing them back in a bit
 	headPositionAttenuation = mix(0.0,
 								  map(distance(basePos.xyz,headPosition), headMinRadius+headFalloff, headMinRadius, .0, 1.0),
-								  1.-headLineOverlap);
+								  1.-headOverlap);
 	
 	//extract the normal and pass it along to the fragment shader
 	vec2 normalPos   = extendedSamplePos + normalRect.xy;

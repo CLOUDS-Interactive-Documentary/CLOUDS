@@ -38,18 +38,17 @@ uniform float edgeClip;
 
 uniform float minDepth;
 uniform float maxDepth;
-
-uniform float triangleContract;
+uniform float pointSizeMin;
+uniform float pointSizeMax;
 
 uniform vec3 headPosition;
+uniform float headMinRadius;
+uniform float headFalloff;
+uniform float headOverlap;
 
-//FACE FEATURE
-uniform vec4 faceFeatureRect;
-uniform vec4 deltaChangeRect;
-
+uniform float edgeAttenuateBase;
+uniform float edgeAttenuateExponent;
 varying float positionValid;
-varying vec4 faceFeatureSample;
-varying vec4 deltaChangeSample;
 
 //LIGHT
 uniform vec3 lightPosition;
@@ -62,8 +61,6 @@ varying float diffuseAttenuate;
 varying float headPositionAttenuation;
 varying float edgeAttenuate;
 varying float forceFade;
-
-
 
 const float epsilon = 1e-6;
 
@@ -118,8 +115,6 @@ float map(float value, float inputMin, float inputMax, float outputMin, float ou
 
 void main(void){
 	
-	float bottomAttenuate = 0.;
-	float sideAttenuate   = 0.;
 	// Here we get the position, and account for the vertex position flowing
 	vec2 vertexPos = gl_Vertex.xy;
 	vec2 samplePos = vec2(vertexPos.x, + mod(vertexPos.y + flowPosition, depthRect.w));
@@ -127,13 +122,7 @@ void main(void){
     vec2 depthPos = samplePos + depthRect.xy;
     float depth = depthValueFromSample( depthPos );
 	
-	//VALID POSITION
-	if(depth <= nearClip || depth >= farClip){
-		positionValid = 0.0;
-	}
-	else{
-		positionValid = 1.0;
-	}
+	positionValid = depth <= nearClip || depth >= farClip ? 0.0 : 1.0;
 	
 	// Reconstruct the 3D point position
     vec4 pos = vec4((samplePos.x - depthPP.x) * depth / depthFOV.x,
@@ -141,26 +130,24 @@ void main(void){
                     depth, 1.0);
     
 	//HEAD POSITION
-	headPositionAttenuation = map(distance(pos.xyz,headPosition), 400, 50, 0.0, 1.0);
+	headPositionAttenuation = mix(0.0,
+								  map(distance(pos.xyz,headPosition), headMinRadius+headFalloff, headMinRadius, .0, 1.0),
+								  1.-headOverlap);
+	gl_PointSize = mix(pointSizeMin, pointSizeMax, headPositionAttenuation);
 	
 	//NORMAL
 	vec2 normalPos = samplePos.xy + normalRect.xy;
 	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
 	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
     normal = -normalize(gl_NormalMatrix * surfaceNormal);
-	
-	
 	//EYE DIRECTION FOR LIGHTING
 	vec3 vert = vec3(gl_ModelViewMatrix * pos);
 	eye = normalize(-vert);
 	
-	
-		
-	edgeAttenuate = (1.0 - max( 0.0, pow( abs(320. - samplePos.x) / 320., 1.5) - sideAttenuate) ) *
-					(1.0 - max( 0.0, pow( samplePos.y / 480., 3.0) + bottomAttenuate ));
-	
-	edgeAttenuate += (1. - edgeAttenuate) * pow(map(pos.z,maxDepth,minDepth,0.0,1.0),4.);
-
+	//soften near the bottom edge
+	edgeAttenuate = (1.0 - max( 0.0, pow( samplePos.y / depthRect.w, edgeAttenuateExponent) + edgeAttenuateBase ));
+	//but allow parts closer in z to get bright still
+	edgeAttenuate += (1.0 - edgeAttenuate) * pow(map(pos.z,maxDepth,minDepth,0.0,1.0), 4.);
 	
     // http://opencv.willowgarage.com/documentation/camera_calibration_and_3d_reconstruction.html
     //
