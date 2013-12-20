@@ -33,6 +33,9 @@ void testApp::setup(){
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
 	
 	receiver.setup( 12345 );
+    
+    mixer.setup(2, 44100, 512, 2);
+    mixer.setMusicVolume(1);
 }
 
 //--------------------------------------------------------------
@@ -140,13 +143,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
-	
-	ofAudioEventArgs args;
-	args.buffer = output;
-	args.bufferSize = bufferSize;
-	args.nChannels = nChannels;
-	
-	ofNotifyEvent(ofEvents().audioRequested, args, this);
+	mixer.fillBuffer(output, bufferSize, nChannels);
 }
 
 

@@ -7,6 +7,7 @@ uniform float fogDist;
 uniform float useFog;
 uniform float fogExpo;
 
+uniform float groundDrama;
 uniform float maxHeight = 10.;
 
 uniform float edgeSmoothing;
@@ -60,24 +61,18 @@ void main(void)
 	
 	float vMix = max(0., mapLinear(vertex.y, lowerBoundY, upperBoundY, 0., 1. ));
 	
-	
+	vec4 topColor = mix( undergroundColor, groundColor, pow(1.2*vertex.y/(maxHeight*groundDrama),2.) );
 	if(vNormal.y > .5)
 	{
-		gl_FragColor = mix( undergroundColor, groundColor, pow(1.7*vertex.y/maxHeight,2.) );// * (groundSample*.75+.5);
+		gl_FragColor = topColor;//mix( undergroundColor, groundColor, pow(1.2*vertex.y/(maxHeight*groundDrama),2.) );// * (groundSample*.75+.5);
 	}
 	else{
-		gl_FragColor = mix(undergroundColor, groundColor, pow(vMix, 2.) );
+		gl_FragColor = mix(undergroundColor, topColor, pow(vMix, 2.) );
 	}
 	
 	if(underSky>.5){
 		gl_FragColor = mix( gl_FragColor, cloudShadowColor, cloudShadow);
 	}
-	
-//	else if( isCloud > .5)
-//	{
-//		gl_FragColor = fogColor * fr;
-//	}
-//	
 	
 	//fog
 	if(useFog > .5)

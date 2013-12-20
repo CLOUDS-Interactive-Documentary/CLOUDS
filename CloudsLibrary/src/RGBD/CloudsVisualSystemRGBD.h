@@ -141,6 +141,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float xSimplify;
 	float ySimplify;
 	float randomVariance;
+	float meshFaceMinRadius;
+	float meshFaceFalloff;
 	bool refreshMesh;
 	void generateMesh();
 	

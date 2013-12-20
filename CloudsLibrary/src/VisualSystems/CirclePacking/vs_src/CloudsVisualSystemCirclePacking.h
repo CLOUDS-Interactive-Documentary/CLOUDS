@@ -42,6 +42,7 @@ class CloudsVisualSystemCirclePacking: public CloudsVisualSystem {
     void regenerate();
     void initializeNasdaq();
     void initializeBlanks();
+    void initializeHashtags(); 
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
@@ -102,6 +103,7 @@ class CloudsVisualSystemCirclePacking: public CloudsVisualSystem {
     bool shouldRegenerate;
     
     bool NASDAQ;
+    bool HASHTAGS;
     bool BLANKS;
 	
 	ofFloatColor primaryColor;

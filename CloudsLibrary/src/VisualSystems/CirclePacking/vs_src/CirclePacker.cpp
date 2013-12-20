@@ -15,13 +15,13 @@ CirclePacker::CirclePacker()
     
 }
 
-CirclePacker::CirclePacker(float _width, float _height)
+CirclePacker::CirclePacker(float _width, float _height, float _padding)
 {
     width = _width;
     height = _height;
     xcenter = width/2;
     ycenter = height/2;
-    padding = 5;
+    padding = _padding;
     damping = 0.01;
     iterations = 1;
 }
@@ -93,13 +93,13 @@ void CirclePacker::update() {
  * Draw all the circles
  */
 
-void CirclePacker::draw(bool _nasdaq, bool _blanks)
+void CirclePacker::draw(bool _nasdaq, bool _blanks, bool _hashtags)
 {
     if (_blanks == true){
     for (int i = 0; i < circles.size(); i++)
     {
         Circle& c = circles[i];
-        if (c.r < 1)
+        if (c.r < 4)
         {
           circles.erase(circles.begin() + i);
         }
@@ -124,6 +124,25 @@ void CirclePacker::draw(bool _nasdaq, bool _blanks)
             }
         }
         
+    }
+    
+    if (_hashtags == true){
+        for (int i = 0; i < circles.size(); i++)
+        {
+            Circle& c = circles[i];
+            if (circles.size() > 25 )
+            {
+                circles[0].r -= .5;
+            }
+            if (c.r < 1)
+            {
+                circles.erase(circles.begin() + i);
+            }
+            else
+            {
+                c.drawHashtags();
+            }
+        }
     }
     
 }

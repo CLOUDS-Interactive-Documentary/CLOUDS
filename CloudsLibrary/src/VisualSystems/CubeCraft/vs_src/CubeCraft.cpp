@@ -96,14 +96,20 @@ void CubeCraft::selfSetupGui()
 	fogGui->setColorFillHighlight(ofFloatColor(1,1,1,1));
 	
 	fogGui->addToggle("bUseFog", &bUseFog);
+	
+	
+	fogGui->addSpacer();
+	
+	fogGui->addLabel("FogColor");
+	fogGui->addMinimalSlider("fogHue", 0, 255, &fogHue)->setIncrement(1);
+	fogGui->addMinimalSlider("fogSaturation", 0, 255, &fogSaturation)->setIncrement(1);
+	fogGui->addMinimalSlider("fogBrightness", 0, 255, &fogBrightness)->setIncrement(1);
+	
+	fogGui->addSpacer();
 	fogGui->addSlider("fogDist", 10, 200, &fogDist);
 	fogGui->addSlider("fogExpo", .6, 3., &fogExpo);
 	
    //fogGui->addImageSampler("fogColor", &colorMap, 100, 100);
-	
-	fogGui->addSlider("fogHue", 0, 255, &fogHue);
-	fogGui->addSlider("fogSaturation", 0, 255, &fogSaturation);
-	fogGui->addSlider("fogBrightness", 0, 255, &fogBrightness);
 	
 	ofAddListener(fogGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
 	guis.push_back(fogGui);
@@ -131,6 +137,8 @@ void CubeCraft::selfSetupGui()
 	mineCraftGui->addSlider("cloudShadow", 0., 1, &cloudShadow );
 	
 	//colors
+	mineCraftGui->addSpacer();
+	
 	mineCraftGui->addLabel("GroundHSB");
 	mineCraftGui->addMinimalSlider("groundHue", 0, 255, &groundHue );
 	mineCraftGui->addMinimalSlider("groundSaturation", 0, 255, &groundSaturation );
@@ -171,11 +179,17 @@ void CubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 		fillColor2 = sampler->getColor();
 	}
 	
-	else if(name == "fogSaturation" || name == "fogHue" || name == "fogBrightness" )
+	else if(name == "fogSaturation" || name == "fogHue" || name == "fogSaturation" )
 	{
 		fogColor.setHue(fogHue);
 		fogColor.setSaturation(fogSaturation);
 		fogColor.setBrightness(fogBrightness);
+
+		//DON'T NKOW WHY THIS DOESN'T WORK. UBT IT DOESN'T
+//		fogGui->getWidget("FogColor")->setColorFill(fogColor);
+//		fogGui->getWidget("fogHue")->setColorFill(fogColor);
+//		fogGui->getWidget("fogSaturation")->setColorFill(fogColor);
+//		fogGui->getWidget("fogSaturation")->setColorFill(fogColor);
 	}
 	
 	else if(name == "groundHue" || name == "groundSaturation" || name == "groundBrightness")
@@ -183,6 +197,11 @@ void CubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 		groundColor.setHue(groundHue);
 		groundColor.setSaturation(groundSaturation);
 		groundColor.setBrightness(groundBrightness);
+		
+		mineCraftGui->getWidget("GroundHSB")->setColorFill(groundColor);
+		mineCraftGui->getWidget("groundHue")->setColorFill(groundColor);
+		mineCraftGui->getWidget("groundSaturation")->setColorFill(groundColor);
+		mineCraftGui->getWidget("groundBrightness")->setColorFill(groundColor);
 	}
 	
 	else if(name == "cloudShadowHue" || name == "cloudShadowSaturation" || name == "cloudShadowBrightness")
@@ -190,6 +209,11 @@ void CubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 		cloudShadowColor.setHue(cloudShadowHue);
 		cloudShadowColor.setSaturation(cloudShadowSaturation);
 		cloudShadowColor.setBrightness(cloudShadowBrightness);
+		
+		mineCraftGui->getWidget("CloudShadowHSB")->setColorFill(cloudShadowColor);
+		mineCraftGui->getWidget("cloudShadowHue")->setColorFill(cloudShadowColor);
+		mineCraftGui->getWidget("cloudShadowSaturation")->setColorFill(cloudShadowColor);
+		mineCraftGui->getWidget("cloudShadowBrightness")->setColorFill(cloudShadowColor);
 	}
 	
 	
@@ -198,6 +222,11 @@ void CubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 		undergroundColor.setHue(undergroundHue);
 		undergroundColor.setSaturation(undergroundSaturation);
 		undergroundColor.setBrightness(undergroundBrightness);
+		
+		mineCraftGui->getWidget("UndergroundHSB")->setColorFill(undergroundColor);
+		mineCraftGui->getWidget("undergroundHue")->setColorFill(undergroundColor);
+		mineCraftGui->getWidget("undergroundSaturation")->setColorFill(undergroundColor);
+		mineCraftGui->getWidget("undergroundBrightness")->setColorFill(undergroundColor);
 	}
 	
 	if(name == "dimX" || name == "dimY" || name == "dimZ" )
@@ -219,6 +248,25 @@ void CubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 		bDrawCubeCraft = false;
 		//resizeVoxelGrid();
 	}
+}
+
+void CubeCraft::updateAllColors()
+{
+	fogColor.setHue(fogHue);
+	fogColor.setSaturation(fogSaturation);
+	fogColor.setBrightness(fogBrightness);
+	
+	undergroundColor.setHue(undergroundHue);
+	undergroundColor.setSaturation(undergroundSaturation);
+	undergroundColor.setBrightness(undergroundBrightness);
+	
+	cloudShadowColor.setHue(cloudShadowHue);
+	cloudShadowColor.setSaturation(cloudShadowSaturation);
+	cloudShadowColor.setBrightness(cloudShadowBrightness);
+	
+	groundColor.setHue(groundHue);
+	groundColor.setSaturation(groundSaturation);
+	groundColor.setBrightness(groundBrightness);
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -263,7 +311,7 @@ void CubeCraft::selfSetDefaults()
 	
 	
 	//cube craft
-	groundColor.set( .4, 1., .6, 1.);
+	updateAllColors();
 }
 
 void CubeCraft::selfSetup()
@@ -285,6 +333,7 @@ void CubeCraft::selfSetup()
 	
 	loadShaders();
 	
+	updateAllColors();
 }
 
 void CubeCraft::loadShaders()
@@ -623,6 +672,8 @@ void CubeCraft::selfPresetLoaded(string presetPath){
 
 	//setup the voxels
 	resizeVoxelGrid();
+	
+	updateAllColors();
 }
 
 void CubeCraft::selfDrawDebug(){

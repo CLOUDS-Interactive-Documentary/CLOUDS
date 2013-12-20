@@ -20,6 +20,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 	
+        // TODO: use CloudsMixer parameters
         // RTcmix audio stuff
         sr = 44100;
         nbufs = 2; // you can use more for more processing but latency will suffer
@@ -30,10 +31,6 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         // initialize RTcmix
         rtcmixmain();
         maxmsp_rtsetparams(sr, nchans, framesize, NULL, NULL);
-        
-        // initialize OF audio streaming
-        ofSoundStreamSetup(nchans, 0, sr, framesize, nbufs);
-        ofSoundStreamStart();
         
         // launch initial setup score
         RTcmixParseScoreFile("cmixinit.sco");
@@ -58,7 +55,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         AUTORUN = 0;
         DOCLEAR = true;
         
-		ofAddListener(ofEvents().audioRequested, this, &CloudsSound::audioRequested);
+		ofAddListener(GetCloudsAudioEvents()->musicAudioRequested, this, &CloudsSound::audioRequested);
 
 		eventsRegistered = true;
 	}

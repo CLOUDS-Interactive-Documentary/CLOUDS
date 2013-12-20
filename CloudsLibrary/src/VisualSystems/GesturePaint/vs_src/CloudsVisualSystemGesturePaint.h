@@ -35,6 +35,9 @@ class CloudsVisualSystemGesturePaint : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
+	
+	void selfSetDefaults();
+	
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
@@ -85,42 +88,54 @@ class CloudsVisualSystemGesturePaint : public CloudsVisualSystem {
     void selfMouseReleased(ofMouseEventArgs& data);
 	
 
-    // if you use a custom camera to fly through the scene
-	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
-
-	//
-//	ofCamera& getCameraRef(){
-//		if(videoLoaded){
-//			return cloudsCamera;
-//		}
-//		return CloudsVisualSystem::getCameraRef();
-//	}
-
 protected:
     
     //  Your Stuff
     //
 	
-	ofxUISuperCanvas* customGui;
+	ofxUISuperCanvas* waterGui;
+	float blurRadius;
+	float dryRate;
+	float depositeScale;
+	float currentDepositeScale;
 
+	bool showWaterDebug;
+	void createWaterBrush();
+	
+	ofxUISuperCanvas* brushGui;
+	float brushSize;
+	float currentBrushSize;
+	float brushInterpolateStep;
+	float paletteTraversalSpeed;
+	bool previewPalette;
+	int currentPalette;
+	float paletteExpandPercent;
+	void createPaintBrush();
+	
 	ofFbo watersrc,waterdst;
 	ofFbo canvassrc,canvasdst;
 	
 	void reloadShader();
 	ofShader vblurShader;
 	ofShader hblurShader;
+	ofShader forceBrushShader;
+	ofShader paintBrushShader;
 	ofShader paperMixShader;
-	
+
+	ofVec2f palettePosition;
+	ofImage palette;
+	ofImage noiseFlowTex;
 	ofImage brushImage;
 	ofImage paperImage;
 	ofMesh canvasMesh;
 	ofMesh waterMesh;
+	ofMesh forceBrushMesh;
+	ofMesh paintBrushMesh;
+	
 	ofRectangle paperRect;
 	vector<ofVec2f> depositPoints;
-
+	vector<ofVec2f> mouseHistory;
+	
 	void reallocateFramebuffers();
 	void meshFromFbo(ofMesh& m, ofFbo& f);
 };

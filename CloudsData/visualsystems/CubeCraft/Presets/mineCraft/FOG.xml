@@ -13,12 +13,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>fogDist</Name>
-    <Value>147.586</Value>
+    <Value>105.468</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>fogExpo</Name>
-    <Value>0.6</Value>
+    <Value>1.09655</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

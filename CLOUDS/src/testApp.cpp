@@ -8,6 +8,7 @@ void testApp::setup(){
 	ofSetFrameRate(60);
 	ofBackground(0);
 	ofToggleFullscreen();
+	currentAct = NULL;
     parser.loadFromFiles();
 	
 	if(!ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
@@ -30,9 +31,16 @@ void testApp::setup(){
 	player.setup();
     player.setRun(run);
 	player.getClusterMap().buildEntireCluster(parser);
+	
+	mixer.setup();
 	sound.setup(storyEngine);
+
 	player.setStoryEngine(storyEngine);
 
+	websockets.setup();
+	
+	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
+	
 	////////SEED WITH RANDOM CLIP
 //	srand( ofGetSeconds()*1000 );
 //	CloudsClip& clip = parser.getRandomClip(false,false);
@@ -67,11 +75,18 @@ void testApp::setup(){
 }
 
 //--------------------------------------------------------------
+void testApp::actCreated(CloudsActEventArgs& args){
+	if(currentAct != NULL){
+		currentAct->unregisterEvents(&websockets);
+	}
+	currentAct = args.act;
+	currentAct->registerEvents(&websockets);
+}
+
+//--------------------------------------------------------------
 void testApp::update(){
 	player.getSharedVideoPlayer().maxVolume = sound.maxSpeakerVolume;
-	
 	sound.update();
-	//ofShowCursor();
 }
 
 //--------------------------------------------------------------
@@ -103,13 +118,15 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
+
+	mixer.fillBuffer(output,bufferSize,nChannels);
 	
-	ofAudioEventArgs args;
-	args.buffer = output;
-	args.bufferSize = bufferSize;
-	args.nChannels = nChannels;
-	
-	ofNotifyEvent(ofEvents().audioRequested, args, this);
+//	ofAudioEventArgs args;
+//	args.buffer = output;
+//	args.bufferSize = bufferSize;
+//	args.nChannels = nChannels;
+//	
+//	ofNotifyEvent(ofEvents().audioRequested, args, this);
 }
 
 //--------------------------------------------------------------
