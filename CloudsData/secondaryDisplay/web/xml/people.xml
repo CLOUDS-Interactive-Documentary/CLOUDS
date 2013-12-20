@@ -40,8 +40,8 @@
 			<first>Rachel</first>
 			<last>Binx</last>
 			<title>Data Visualizer</title>
-			<twitter@rachelbinx
-t</twitter>
+			<twitter>@rachelbinx</twitter>
+
 			<location1>Albuquerque, New Mexico</location1>
 			<location2>San Francisco, California</location2>
 			<byline1>Rachel Binx’s projects engage with personal location data, and take an innovative approach to mapping people’s global journeys. 
@@ -301,7 +301,7 @@ t</twitter>
 			<location1>location</location1>
 			<location2>Brooklyn, NY</location2>
 			<byline1>Kyle Chayka is a freelance writer who covers digital media art, Internet culture, and commerce for publications including The New Yorker and The New Republic.</byline1>
-			<byline2>He has also curated exhibitions at Garis & Hahn gallery and Moving Image art fair in New York and London.
+			<byline2>He has also curated exhibitions at Garis and Hahn gallery and Moving Image art fair in New York and London.
 </byline2>
 			<resume> ... </resume>
 		</person>

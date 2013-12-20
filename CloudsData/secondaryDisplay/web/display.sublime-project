@@ -8,13 +8,19 @@
 			"path": "fonts"
 		},
 		{
+			"path": "images"
+		},
+		{
 			"path": "js"
 		},
 		{
-			"path": "videos"
+			"path": "textures"
 		},
 		{
 			"path": "xml"
+		},
+		{
+			"path": "videos"
 		}
 	]
 }

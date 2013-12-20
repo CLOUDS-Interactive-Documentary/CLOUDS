@@ -20,9 +20,37 @@
 	"buffers":
 	[
 		{
+			"file": "js/view/graphView.js",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 9579,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/model/model.js",
+			"settings":
+			{
+				"buffer_size": 2617,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/view/personView.js",
+			"settings":
+			{
+				"buffer_size": 323,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "function NodeView(_paper, _node) {	\n	this.paper = _paper;	\n	this.node = _node;\n	this.r = 5;\n	this.x =  this.node.originalX;\n	this.y = this.node.originalY;\n	this.neighborViews = new Array();\n	this.neighborPaths = new Array();\n	this.selected = false;\n	this.color = ColorPalette.getPaletteColor(this.node.originalColor);//TODO: convert this.node.originalFill to our palette. \n	\n	this.circle = this.paper.circle(this.x, this.y, this.r)\n						.attr(\"fill\", this.getFill())\n						.attr(\"stroke\", \"none\");\n	this.strokeWeight = 1;\n	this.selected = false;\n}\n\nNodeView.prototype.addNeighbor = function(neighborView){\n	this.neighborViews.push(neighborView);\n	//update model\n}\n\nNodeView.prototype.getFill = function(){\n	return this.color.toHexString();\n}\n\nNodeView.prototype.setFill = function(fill){\n	this.circle.attr(\"fill\", fill);\n}\n\n\nNodeView.prototype.select = function(){\n	this.selected = true;\n	this.circle.attr(\"fill\",tinycolor.lighten(this.getFill(), 80).toHexString());\n	this.currentGlow = this.circle.glow({color: \"#FFFFFF\", width: 10});\n	\n	\n	for(var i = 0; i < this.neighborViews.length; i++){\n		var neighbor = this.neighborViews[i];\n		neighbor.circle.highlight(60);\n		\n		var pathToNeighbor = this.paper.path(\"M\" + this.x + \", \" + this.y + \"L\" + neighbor.x + \",\" + neighbor.y);\n				pathToNeighbor.attr(\"z-index\", -1);\n				pathToNeighbor.attr(\"stroke\", \"#F1F1F1\");\n		pathToNeighbor.glowOnce(0, 0.5, 0.2);\n		\n		this.neighborPaths.push(pathToNeighbor);\n		\n	}\n}\n\nNodeView.prototype.deselect = function(){\n	if(this.selected){\n		if(this.currentGlow){\n			this.currentGlow.remove();\n		}\n	\n		\n		for(var i = 0; i < this.neighborViews.length; i++){\n			var neighbor = this.neighborViews[i];\n			neighbor.circle.animate({ fill: neighbor.getFill() }, GraphView.timeUnit/2, 'linear');\n		}\n		\n		for(var i = 0; i < this.neighborPaths.length; i++){			\n			this.neighborPaths[i].fadeOut(function(){\n				this.remove();\n			});\n		}\n	}\n	this.selected = false;\n	\n}\n/*\nNodeView.prototype.deleteNeighborPaths = function(){\n	for(var i = 0; i < this.neighborPaths.length; i++){\n		this.neighborPaths[i].remove();\n	}\n	this.neighborPaths = [];\n	\n}*/\n\n",
+			"file": "/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/clipViewRaphael.js",
+			"file_size": 2118,
+			"file_write_time": 1387164136000000,
+			"settings":
+			{
+				"buffer_size": 2118,
 				"line_ending": "Unix"
 			}
 		},
@@ -30,15 +58,39 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 2478,
+				"buffer_size": 2682,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "project example protocol",
+			"file": "js/view/projectExampleView.js",
 			"settings":
 			{
-				"buffer_size": 594,
+				"buffer_size": 483,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/model/clip.js",
+			"settings":
+			{
+				"buffer_size": 495,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/model/person.js",
+			"settings":
+			{
+				"buffer_size": 624,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/model/project.js",
+			"settings":
+			{
+				"buffer_size": 208,
 				"line_ending": "Unix"
 			}
 		}
@@ -67,6 +119,13 @@
 	},
 	"file_history":
 	[
+		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/js/controller.js",
+		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/index.html",
+		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/CloudsMovieDirectory.txt",
+		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/xml/people.xml",
+		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/js/view/clipView.js",
+		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/js/net/loader.js",
+		"/Users/luisaph/dev/of_v0.7.4_osx_release/apps/CLOUDS/CloudsData/secondaryDisplay/web/project example protocol",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/controller.js",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/graphView.js",
 		"/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/clipView.js",
@@ -116,6 +175,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"key",
+			"setMode",
+			"onstorychanged",
+			"onStoryChanged",
+			"onstory",
+			"setMode",
+			"onstory",
+			"onkey",
+			"onStoryChan",
+			"onStoryChanged",
 			"goToRandomProjectExample",
 			"projectex",
 			"\n",
@@ -148,14 +217,15 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "js/view/graphView.js",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 9579,
 						"regions":
 						{
 						},
@@ -168,7 +238,8 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -178,10 +249,64 @@
 				},
 				{
 					"buffer": 1,
-					"file": "index.html",
+					"file": "js/model/model.js",
 					"settings":
 					{
-						"buffer_size": 2478,
+						"buffer_size": 2617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2071,
+								2117
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 740.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/view/personView.js",
+					"settings":
+					{
+						"buffer_size": 323,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								323,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/luisaph/Projects/CLOUDS/StandaloneStoryEngine/data/web/js/view/clipViewRaphael.js",
+					"settings":
+					{
+						"buffer_size": 2118,
 						"regions":
 						{
 						},
@@ -190,6 +315,33 @@
 							[
 								0,
 								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 2682,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1478,
+								1626
 							]
 						],
 						"settings":
@@ -204,11 +356,65 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "project example protocol",
+					"buffer": 5,
+					"file": "js/view/projectExampleView.js",
 					"settings":
 					{
-						"buffer_size": 594,
+						"buffer_size": 483,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								483,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "js/model/clip.js",
+					"settings":
+					{
+						"buffer_size": 495,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								416,
+								490
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "js/model/person.js",
+					"settings":
+					{
+						"buffer_size": 624,
 						"regions":
 						{
 						},
@@ -221,7 +427,34 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "js/model/project.js",
+					"settings":
+					{
+						"buffer_size": 208,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								205,
+								205
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -288,6 +521,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 312.0,
+	"side_bar_width": 245.0,
 	"status_bar_visible": true
 }

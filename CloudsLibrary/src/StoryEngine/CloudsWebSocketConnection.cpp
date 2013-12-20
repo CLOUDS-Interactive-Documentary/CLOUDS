@@ -98,7 +98,7 @@ void CloudsWebSocketConnection::clipBegan(CloudsClipEventArgs& args){
 				\"id\" : \"%s\", \
 				\"duration\" : %f, \
 				\"topic\" : \"%s\", \
-				\"example\" : \"%s\" \
+				\"example\" : \"%s\", \
 				\"question\" : \"%s\" \
 			} }",
 			args.chosenClip.person.c_str(),

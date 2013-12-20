@@ -1,4 +1,4 @@
-function Clip(_class, _x, _y, _fill) {
+function Node(_class, _x, _y, _fill) {
 	this.id = _class;
 	this.originalX = _x;
 	this.originalY = _y;
@@ -7,12 +7,12 @@ function Clip(_class, _x, _y, _fill) {
 	this.neighbors = new Array();
 }
 
-Clip.prototype.markAsVisited = function() {
+Node.prototype.markAsVisited = function() {
 	this.visited = true;
 }
 
-Clip.prototype.addNeighbor = function(neighborClip){
-	this.neighbors.push(neighborClip);
+Node.prototype.addNeighbor = function(neighborNode){
+	this.neighbors.push(neighborNode);
 }
 
 
