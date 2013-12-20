@@ -411,6 +411,7 @@ completionsForSubstring:(NSString *)substring
 
 		[self selectedClip].setProjectExample( selectedProjectExample );
 		[self updateSelectedClip];
+		[testViewParent updateViews];
 		[self saveLinks:self];
 	}
 }
