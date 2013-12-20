@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "CloudsEvents.h"
+#include "CloudsAudioEvents.h"
 #include "CloudsStoryEngine.h"
 #include "CloudsAct.h"
 #include "lukeFuncs.h"
