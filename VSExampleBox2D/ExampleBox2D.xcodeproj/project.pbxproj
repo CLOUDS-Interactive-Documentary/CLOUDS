@@ -109,6 +109,10 @@
 		2A48D69E184075D5007527A2 /* TableLookupOsc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A48D624184075D5007527A2 /* TableLookupOsc.cpp */; };
 		2A48D69F184075D5007527A2 /* TonicFrames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A48D627184075D5007527A2 /* TonicFrames.cpp */; };
 		2A48D6A0184075D5007527A2 /* TonicFrames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A48D627184075D5007527A2 /* TonicFrames.cpp */; };
+		2A4F33BF1863B0C30070C0ED /* CloudsMixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33AF1863B0C20070C0ED /* CloudsMixer.cpp */; };
+		2A4F33C01863B0C30070C0ED /* CloudsMixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33AF1863B0C20070C0ED /* CloudsMixer.cpp */; };
+		2A4F33D11863BE9B0070C0ED /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33D01863BE9B0070C0ED /* CloudsAudioEvents.cpp */; };
+		2A4F33D21863BE9B0070C0ED /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33D01863BE9B0070C0ED /* CloudsAudioEvents.cpp */; };
 		2A6C471E180F03A600A8468A /* CloudsVisualSystemExampleBox2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A6C471B180EFBE000A8468A /* CloudsVisualSystemExampleBox2D.cpp */; };
 		2AAEF500180F12D7005F33D3 /* ofxBox2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF4AC180F12D7005F33D3 /* ofxBox2d.cpp */; };
 		2AAEF501180F12D7005F33D3 /* ofxBox2dBaseShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF4AE180F12D7005F33D3 /* ofxBox2dBaseShape.cpp */; };
@@ -543,6 +547,11 @@
 		2A48D628184075D5007527A2 /* TonicFrames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TonicFrames.h; sourceTree = "<group>"; };
 		2A48D629184075D5007527A2 /* TriangleWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleWave.h; sourceTree = "<group>"; };
 		2A48D62A184075D5007527A2 /* Tonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tonic.h; sourceTree = "<group>"; };
+		2A4F33AE1863B0C20070C0ED /* CloudsAudioEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsAudioEvents.h; sourceTree = "<group>"; };
+		2A4F33AF1863B0C20070C0ED /* CloudsMixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMixer.cpp; sourceTree = "<group>"; };
+		2A4F33B01863B0C20070C0ED /* CloudsMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMixer.h; sourceTree = "<group>"; };
+		2A4F33CF1863B2680070C0ED /* CloudsEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsEvents.h; path = ../../CloudsLibrary/src/StoryEngine/CloudsEvents.h; sourceTree = "<group>"; };
+		2A4F33D01863BE9B0070C0ED /* CloudsAudioEvents.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsAudioEvents.cpp; sourceTree = "<group>"; };
 		2A6C471B180EFBE000A8468A /* CloudsVisualSystemExampleBox2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemExampleBox2D.cpp; sourceTree = "<group>"; };
 		2A6C471C180EFBE000A8468A /* CloudsVisualSystemExampleBox2D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemExampleBox2D.h; sourceTree = "<group>"; };
 		2AAEF4AC180F12D7005F33D3 /* ofxBox2d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBox2d.cpp; sourceTree = "<group>"; };
@@ -1073,6 +1082,18 @@
 			path = Tonic;
 			sourceTree = "<group>";
 		};
+		2A4F33AD1863B0C20070C0ED /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				2A4F33AE1863B0C20070C0ED /* CloudsAudioEvents.h */,
+				2A4F33AF1863B0C20070C0ED /* CloudsMixer.cpp */,
+				2A4F33B01863B0C20070C0ED /* CloudsMixer.h */,
+				2A4F33D01863BE9B0070C0ED /* CloudsAudioEvents.cpp */,
+			);
+			name = Sound;
+			path = ../../CloudsLibrary/src/Sound;
+			sourceTree = "<group>";
+		};
 		2A6C46F0180EFBDF00A8468A /* ExampleBox2D */ = {
 			isa = PBXGroup;
 			children = (
@@ -1378,6 +1399,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				2A4F33CF1863B2680070C0ED /* CloudsEvents.h */,
+				2A4F33AD1863B0C20070C0ED /* Sound */,
 				8537ACA31833DC4D00712D69 /* CloudsGlobal.h */,
 				E7E95E5C1733624100294C72 /* CloudsLibrary */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
@@ -1984,6 +2007,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "ExampleBox2D" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -2118,6 +2143,7 @@
 				85732C6018307C80002B53D9 /* b2CircleShape.cpp in Sources */,
 				85732C6118307C80002B53D9 /* b2TOISolver.cpp in Sources */,
 				85732C6218307C80002B53D9 /* ofxTimeline.cpp in Sources */,
+				2A4F33D21863BE9B0070C0ED /* CloudsAudioEvents.cpp in Sources */,
 				2A48D67A184075D5007527A2 /* Effect.cpp in Sources */,
 				85732C6318307C80002B53D9 /* ofxTLAudioTrack.cpp in Sources */,
 				85732C6418307C80002B53D9 /* b2CollidePolygon.cpp in Sources */,
@@ -2146,6 +2172,7 @@
 				85732C6F18307C80002B53D9 /* ofxTLFlags.cpp in Sources */,
 				85732C7018307C80002B53D9 /* b2WorldCallbacks.cpp in Sources */,
 				85732C7118307C80002B53D9 /* b2Joint.cpp in Sources */,
+				2A4F33C01863B0C30070C0ED /* CloudsMixer.cpp in Sources */,
 				2A48D6A0184075D5007527A2 /* TonicFrames.cpp in Sources */,
 				2A48D67E184075D5007527A2 /* FilterUtils.cpp in Sources */,
 				85732C7218307C80002B53D9 /* ofxTLImageSequence.cpp in Sources */,
@@ -2323,6 +2350,7 @@
 				2AAEF599180F136F005F33D3 /* b2Joint.cpp in Sources */,
 				E7CF78521753FEA1006B7D41 /* ofxTLImageSequence.cpp in Sources */,
 				2AAEF57D180F136F005F33D3 /* b2BroadPhase.cpp in Sources */,
+				2A4F33BF1863B0C30070C0ED /* CloudsMixer.cpp in Sources */,
 				2AAEF504180F12D7005F33D3 /* ofxBox2dPolygon.cpp in Sources */,
 				2AAEF503180F12D7005F33D3 /* ofxBox2dJoint.cpp in Sources */,
 				E7CF78531753FEA1006B7D41 /* ofxTLImageSequenceFrame.cpp in Sources */,
@@ -2399,6 +2427,7 @@
 				2A48D66B184075D5007527A2 /* ControlSnapToScale.cpp in Sources */,
 				2A48D661184075D5007527A2 /* ControlParameter.cpp in Sources */,
 				2A48D63D184075D5007527A2 /* ADSR.cpp in Sources */,
+				2A4F33D11863BE9B0070C0ED /* CloudsAudioEvents.cpp in Sources */,
 				2AAEF596180F136F005F33D3 /* b2DistanceJoint.cpp in Sources */,
 				2A6C471E180F03A600A8468A /* CloudsVisualSystemExampleBox2D.cpp in Sources */,
 				E71BD17118621FD6002B4B63 /* CloudsInput.cpp in Sources */,
@@ -2515,6 +2544,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					/Users/gal/itp/tools/of/of_v0.7.4_osx_release/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
@@ -2627,6 +2657,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					/Users/gal/itp/tools/of/of_v0.7.4_osx_release/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
@@ -2799,6 +2830,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					/Users/gal/itp/tools/of/of_v0.7.4_osx_release/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
@@ -2897,6 +2929,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					/Users/gal/itp/tools/of/of_v0.7.4_osx_release/apps/CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
