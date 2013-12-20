@@ -254,6 +254,20 @@ void CloudsClip::collateKeywords(){
         }
     }
     
+	hasProjectExample = false;
+	for(int i = 0; i < specialKeywords.size(); i++){
+		if(specialKeywords[i].find("example") != string::npos){
+			vector<string> exampleProject = ofSplitString(specialKeywords[i], "?");
+			if(exampleProject.size() != 2){
+				ofLogError("CloudsClip::collateKeywords") << "Clip " << getLinkName() << " doesn't have a specific example tagged";
+			}
+			else {
+				hasProjectExample = true;
+				
+			}
+			break;
+		}
+	}
     keywordsDirty = false;
 }
 
