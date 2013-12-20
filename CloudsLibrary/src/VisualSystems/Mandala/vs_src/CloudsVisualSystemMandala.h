@@ -90,18 +90,22 @@ public:
 			m = _m;
 			localOffset = _localOffset;
 			
-			points.resize(100);
+			points.resize(50);
 			uv.resize(points.size());
+			colors.resize(points.size());
 			worldPos = getRootPosoition();
 			float step = 1./float(points.size()-1);
 			for(int i=0; i<points.size(); i++)
 			{
 				points[i] = worldPos;
 				uv[i].set(step * i);
+
+				colors[i].set( 1, 1, 1, 1. - step*i );
 			}
 			
 			line.setVertexData( &points[0], points.size(), GL_DYNAMIC_DRAW );
 			line.setTexCoordData( &uv[0], uv.size(), GL_DYNAMIC_DRAW );
+			line.setColorData( &colors[0], colors.size(), GL_DYNAMIC_DRAW );
 		}
 	}
 	
@@ -161,8 +165,128 @@ public:
 	
 	vector<ofVec3f> points;
 	vector<ofVec2f> uv;
+	vector<ofFloatColor> colors;
 };
 
+class TailLoft{
+public:
+	
+	TailLoft(SPMeshTail* _t1 = NULL, SPMeshTail* _t2 = NULL)
+	{
+		setup(_t1, _t2);
+	}
+	
+	~TailLoft()
+	{
+		m.clear();
+	}
+	void setup (SPMeshTail* _t1 = NULL, SPMeshTail* _t2 = NULL)
+	{
+		t1 = _t1;
+		t2 = _t2;
+		
+		if(t1 != NULL && t2 != NULL)
+		{
+			//create out mesh
+			m.clear();
+			
+			indices.clear();
+			vertices.clear();
+			normals.clear();
+			
+			vertices.resize(t1->points.size()*2);
+			
+			for(int i=0; i<t1->points.size(); i++)
+			{
+				vertices[i*2] = t1->points[i];
+				vertices[i*2+1] = t2->points[i];
+			}
+			
+			normals.resize(vertices.size());
+			
+			for(int i=1; i<t1->points.size(); i++)
+			{
+				indices.push_back( (i-1)*2 + 1 );
+				indices.push_back( (i-1)*2 );
+				indices.push_back( i*2 );
+				
+				indices.push_back( (i-1)*2 + 1 );
+				indices.push_back( i*2 );
+				indices.push_back( i*2 + 1 );
+			}
+			indexCount = indices.size();
+			
+			cout << "index count: " << indexCount  << endl;
+
+			updateNormals();
+			
+			m.setVertexData( &vertices[0], vertices.size(), GL_DYNAMIC_DRAW );
+			m.setNormalData( &normals[0], normals.size(), GL_DYNAMIC_DRAW );
+			m.setIndexData( &indices[0], indices.size(), GL_DYNAMIC_DRAW );
+		}
+			
+	}
+	
+	void updateNormals()
+	{
+		for(int i=0; i<normals.size(); i++)
+		{
+			normals[i].set(0,0,0);
+		}
+		
+		int i0, i1, i2;
+		ofVec3f n;
+		for(int i=0; i<indices.size(); i+=3)
+		{
+			i0 = indices[i];
+			i1 = i0+1;
+			i2 = i0+2;
+			
+			n = normalFrom3Points( vertices[i0], vertices[i1], vertices[i2]);
+			normals[i0] += n;
+			normals[i1] += n;
+			normals[i2] += n;
+		}
+		
+		for(int i=0; i<normals.size(); i++)
+		{
+			normals[i].normalize();
+		}
+		
+		m.setNormalData( &normals[0], normals.size(), GL_DYNAMIC_DRAW );
+	}
+	
+	void update()
+	{
+		if(t1 != NULL && t2 != NULL){
+			for(int i=0; i<t1->points.size(); i++)
+			{	
+				vertices[i*2] = t1->points[i];
+				vertices[i*2+1] = t2->points[i];
+			}
+			
+			m.setVertexData( &vertices[0], vertices.size(), GL_DYNAMIC_DRAW);
+		}
+		
+		updateNormals();
+	}
+	
+	
+	ofVec3f normalFrom3Points(ofVec3f p0, ofVec3f p1, ofVec3f p2)
+	{
+		return (p2 - p1).cross( p0 - p1).normalized();
+	}
+	
+	SPMeshTail* t1;
+	SPMeshTail* t2;
+	
+	vector<ofVec3f> vertices;
+	vector<ofVec3f> normals;
+	vector<ofIndexType> indices;
+	
+	ofVbo m;
+	ofIndexType indexCount;
+};
 class CloudsVisualSystemMandala : public CloudsVisualSystem {
 public:
     
@@ -355,6 +479,8 @@ protected:
 	
 	
 	float lastTime, currentTime;
+	
+//	vector<TailLoft> lofts;
 	
 	//temp
 };
