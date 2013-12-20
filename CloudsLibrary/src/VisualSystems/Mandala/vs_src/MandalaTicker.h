@@ -21,6 +21,9 @@ public:
 		
 		easeType = ofxTween::easeInOut;
 		ease = OFX_TWEEN_QUINT;
+		
+		note = "_";
+		miscVal = 1;
 	};
 	~MandalaTicker()
 	{
@@ -189,6 +192,23 @@ public:
 		}
 	}
 	
+	void setTargetVal( T _targetVal )
+	{
+		targetVal = _targetVal;
+		delta = startVal - targetVal;
+	}
+	
+	void setStartVal( T _startVal )
+	{
+		startVal = _startVal;
+		delta = startVal - targetVal;
+	}
+	
+	T getTargetVal()
+	{
+		return targetVal;
+	}
+	
 	bool getLoop(){	return bLoop;}
 	bool getContinue(){	return bContinue;}
 	
@@ -196,6 +216,8 @@ public:
 	
 public:
 	bool endTrigger;
+	string note;
+	float miscVal;
 	
 private:
 	bool bLoop, bContinue, bReverse, bPaused, bStarted, bEnded;
@@ -209,4 +231,5 @@ private:
 	int ease;
 	
 	int replayCount;
+	
 };
