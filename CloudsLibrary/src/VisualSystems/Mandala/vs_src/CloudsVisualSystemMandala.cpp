@@ -192,8 +192,8 @@ void CloudsVisualSystemMandala::selfSetup()
 	radius = 100;
 	
 	bDrawClock = bSmoothSurface = false;
-	bDrawSurface = true;
-	bDrawTails = false;
+	bDrawSurface = false;
+	bDrawTails = true;
 	
 	
 	noiseTimeScale = .2;
@@ -349,10 +349,16 @@ void CloudsVisualSystemMandala::setClock( int numCogs, float scale, int octaves,
 		}
 	}
 	
-	tails.resize(surfaceMeshes.size());
+	tails.resize(surfaceMeshes.size() * 3 );
+	
+	lofts.resize( surfaceMeshes.size() );
 	for (int i=0; i<surfaceMeshes.size(); i++)
 	{
-		tails[i].setup(&surfaceMeshes[i]);
+		tails[i*3].setup(&surfaceMeshes[i]);
+		tails[i*3+1].setup(&surfaceMeshes[i], ofVec3f(0,0,.5));
+		tails[i*3+2].setup(&surfaceMeshes[i], ofVec3f(0,0,-.5));
+		
+		lofts[i].setup(&tails[i*3+1], &tails[i*3+2]);
 	}
 	
 	
@@ -454,12 +460,23 @@ void CloudsVisualSystemMandala::selfUpdate()
 	sphereSurface.update();
 
 	//update clock
-	if(bDrawClock)
+	if(bDrawClock || bDrawTails)
 	{
 		for(int i=0; i<surfaceMeshes.size(); i++)
 		{
 			surfaceMeshes[i].update();
-			if(bDrawTails)	tails[i].update();
+			
+		}
+		if(bDrawTails)
+		{
+			for (int i=0; i<tails.size(); i++)
+			{
+				tails[i].update();
+			}
+			
+			for (int i=0; i<lofts.size(); i++) {
+				lofts[i].update();
+			}
 		}
 	}
 	
@@ -488,27 +505,37 @@ void CloudsVisualSystemMandala::selfDraw()
 	
 	ofSetColor(255);
 	
-	if(bDrawClock)
+	facingRatio.begin();
+	for(int i=0; i<surfaceMeshes.size(); i++)
 	{
-		facingRatio.begin();
-		for(int i=0; i<surfaceMeshes.size(); i++)
-		{
-			surfaceMeshes[i].draw();
-			
-			if(bDrawTails)	tails[i].draw();
-			
-			//TODO: opitimize by binding the geometry once
-//			if(surfaceMeshes[i].bDraw && surfaceMeshes[i].m!=NULL)
-//			{
-//				surfaceMeshes[i].transformGL();
-//				surfaceMeshes[i].m->draw();
-//				surfaceMeshes[i].restoreTransformGL();
-//			}
-		}
+		if(bDrawClock)	surfaceMeshes[i].draw();
 		
-		facingRatio.end();
+//		if(bDrawTails)	tails[i].draw();
 	}
-	normalShader.end();
+	
+	
+	if(bDrawTails)
+	{
+		for (int i=0; i<lofts.size(); i++) {
+			lofts[i].m.drawElements(GL_TRIANGLES, lofts[i].indexCount );
+		}
+	}
+
+	facingRatio.end();
+	
+	
+	glLineWidth(2);
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
+
+	if(bDrawTails)
+	{
+		for (int i=0; i<tails.size(); i++)
+		{
+			tails[i].draw();
+		}
+	}
+	ofDisableAlphaBlending();
+	
 
 	
 	//nested surfaces

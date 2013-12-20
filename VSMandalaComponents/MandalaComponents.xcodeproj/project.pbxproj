@@ -687,7 +687,7 @@
 				5055DF9F181ED75200761DA0 /* vs_src */,
 			);
 			name = MandalaComponents;
-			path = src/VisualSystems/MandalaComponents;
+			path = src/VisualSystems/Mandala;
 			sourceTree = "<group>";
 		};
 		5055DF9F181ED75200761DA0 /* vs_src */ = {
