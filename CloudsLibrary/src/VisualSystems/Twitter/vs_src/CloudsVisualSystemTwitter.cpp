@@ -92,7 +92,7 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
     font2.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",3);
     ofEnableSmoothing();
-
+    
     
 }
 
@@ -107,7 +107,7 @@ void CloudsVisualSystemTwitter::selfSetup()
      cout<<"created new network"<<endl;
      while(1);
      */
-        initSystem(getVisualSystemDataPath() +"graphs/NotSimple_Twitter4Men_new.net");
+    initSystem(getVisualSystemDataPath() +"graphs/NotSimple_Twitter4Men_new.net");
     reloadShaders();
     
 }
@@ -236,13 +236,13 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
                     for(int j =0; j<tweets.size(); j ++){
                         Tweet t;
                         t.tweet = tweets[j]["Tweet"].asString();
-
+                        
                         if(ofIsStringInString("\\ud83c",t.tweet))
                         {
                             cout<<" Replacing shit"<<endl;
                             ofStringReplace(t.tweet, "\\ud83c", " TEST ");
                         }
-
+                        
                         ofStringReplace(t.tweet, "ud83d", " TEST ");
                         if(tweets[j]["Hashtag"].isValidIndex(0)){
                             ofxJSONElement hashTags = tweets[j]["Hashtag"];
@@ -280,7 +280,7 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
                             }
                             if(! alreadyExists){
                                 dateIndex.push_back(t.tweetDate);
-
+                                
                                 dateIndexMap[t.dateString] = dateIndex.size()-1;
                                 
                             }
@@ -312,10 +312,20 @@ void CloudsVisualSystemTwitter::loadAvatars(){
             string filePath =getVisualSystemDataPath()+"avatars/"+files[i].getFileName();
             
             vector<string> handle = ofSplitString(files[i].getFileName(),".");
-
+            if (handle[0] == "default") {
+                ofImage img;
+                if(img.loadImage(filePath)){
+                    
+                }
+                else{
+                    cout<<filePath<<" not loaded "<<endl;
+                }
+                avatars["default"] =img;
+                cout<<"Adding default avatar "<< handle[0]<<endl;
+            }
             for (int j =0; j<tweeters.size(); j++) {
                 if(tweeters[j].name == "@" +handle[0]){
-//                    cout<<"adding avatar for "<<handle[0]<<endl;
+                    //                    cout<<"adding avatar for "<<handle[0]<<endl;
                     ofImage img;
                     if(img.loadImage(filePath)){
                         
@@ -327,19 +337,22 @@ void CloudsVisualSystemTwitter::loadAvatars(){
                     break;
                     
                 }
+                
+                
+                
                 if( j == tweeters.size() - 1){
                     cout<<"Avatar not found for "<<handle[0]<<endl;
                 }
-
-                    
+                
+                
             }
             
             
-
+            
             
         }
     }
-
+    
 }
 
 void CloudsVisualSystemTwitter::clearData(){
@@ -419,33 +432,33 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
         if(!tweeters[i].hasTweetOnDate(currentDate)){
 			continue;
 		}
-    
+        
         
         //Highlighting all links when tweeter activated
-
-//        for (int l= 0; l<tweeters[i].linksById.size(); l++) {
-//            Tweeter& t = getTweeterByID(tweeters[i].linksById[l]);
-//            
-//            pair<int, int> currentIndeces;
-//            if(lineIndexPairs.find(make_pair(tweeters[i].name, t.name)) != lineIndexPairs.end()){
-//                currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
-//            }
-//            else if(lineIndexPairs.find(make_pair(t.name,tweeters[i].name)) != lineIndexPairs.end()){
-//                pair<int, int> currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
-//            }
-//            else{
-//                //error!!
-//                continue;
-//            }
-//            //set the edges
-//            edgeMesh.getNormals()[currentIndeces.first].y = 1.0;
-////            edgeMesh.getNormals()[currentIndeces.second].y = 1.0;
-//            int ind = MIN(currentIndeces.first,currentIndeces.second) + 1;
-////            edgeMesh.getNormals()[ind++].y = 1.0;
-////            edgeMesh.getNormals()[ind  ].y = 1.0;
-//            
-//        }
-
+        
+        //        for (int l= 0; l<tweeters[i].linksById.size(); l++) {
+        //            Tweeter& t = getTweeterByID(tweeters[i].linksById[l]);
+        //
+        //            pair<int, int> currentIndeces;
+        //            if(lineIndexPairs.find(make_pair(tweeters[i].name, t.name)) != lineIndexPairs.end()){
+        //                currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
+        //            }
+        //            else if(lineIndexPairs.find(make_pair(t.name,tweeters[i].name)) != lineIndexPairs.end()){
+        //                pair<int, int> currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
+        //            }
+        //            else{
+        //                //error!!
+        //                continue;
+        //            }
+        //            //set the edges
+        //            edgeMesh.getNormals()[currentIndeces.first].y = 1.0;
+        ////            edgeMesh.getNormals()[currentIndeces.second].y = 1.0;
+        //            int ind = MIN(currentIndeces.first,currentIndeces.second) + 1;
+        ////            edgeMesh.getNormals()[ind++].y = 1.0;
+        ////            edgeMesh.getNormals()[ind  ].y = 1.0;
+        //
+        //        }
+        
 		activeTweeters.push_back(&tweeters[i]);
 		vector<Tweet>&  tweetsOnDate = tweeters[i].getTweetsByDate(currentDate);
 		
@@ -463,7 +476,7 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
 				}
 				
 				Tweeter& t = getTweeterByID(user);
-//                activeTweetPairs.push_back(make_pair(&tweeters[i].name, &tweetsOnDate[k].tweet));
+                //                activeTweetPairs.push_back(make_pair(&tweeters[i].name, &tweetsOnDate[k].tweet));
 				//find the nodes
 				pair<int, int> currentIndeces;
 				
@@ -699,7 +712,7 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
             rotation = 0;
         }
     }
-
+    
     font.setSize(fontSize);
     font.setLineLength(stringWidth);
     
@@ -827,15 +840,15 @@ void CloudsVisualSystemTwitter::selfUpdate()
     
 	
     if(ofGetFrameNum() % refreshRate < 1 && bAnimate){
-//        currentDateIndex--;
-//        if (currentDateIndex <= 0) {
-//			currentDateIndex = dateIndex.size() - 1;
-//        }
+        //        currentDateIndex--;
+        //        if (currentDateIndex <= 0) {
+        //			currentDateIndex = dateIndex.size() - 1;
+        //        }
         
-//        if(currentDateIndex<= dateIndexMin){
-//            currentDateIndex = (int)dateIndexMin;
-//        }
-         if (currentDateIndex >= dateIndexMax){
+        //        if(currentDateIndex<= dateIndexMin){
+        //            currentDateIndex = (int)dateIndexMin;
+        //        }
+        if (currentDateIndex >= dateIndexMax){
             currentDateIndex = (int)dateIndexMin;
         }
         else{
@@ -935,29 +948,33 @@ void CloudsVisualSystemTwitter::selfDraw()
 }
 
 void CloudsVisualSystemTwitter::drawFeed(){
-
-
+    
+    
     if(numberOfTweets < activeTweetPairs.size()){
-     //   for (int i=0; i<activeTweetPairs.size() -numberOfTweets; i++) {
-
-//            for(int j=numberOfTweets; j>0; j--  ){
+        //   for (int i=0; i<activeTweetPairs.size() -numberOfTweets; i++) {
+        
         for(int j=0; j<numberOfTweets; j++ ){
-                ofPushStyle();
-                
-                ofSetColor(textColor);
+            ofPushStyle();
+            
+            ofSetColor(textColor);
             int ind = ofRandom(activeTweetPairs.size() - 1);
-//                    cout<<*activeTweetPairs[currentTweetFeedIndex +j].first<<" : "<<*activeTweetPairs[currentTweetFeedIndex+j].second<<endl;
-//            if(! ofGetElapsedTimeMillis() %1000){
-                avatars[*activeTweetPairs[ind].first].draw(tweetFeedRect.x -50,tweetFeedRect.y +j*50, 50, 50);
-                font.drawString(ofToUpper(ofToString(*activeTweetPairs[ind].second)), tweetFeedRect.x, tweetFeedRect.y +j*50 +5 );
-                //              font.drawString(ofToUpper(ofToString(*activeTweetPairs[ofRandom(activeTweetPairs.size()].second)), tweetFeedRect.x, tweetFeedRect.y +j*50 +5 );
-
-//            }
-                ofPopStyle();
+            
+            if (avatars.find(*activeTweetPairs[ind].first)== avatars.end() ){
+                cout<<"Cant find avatar for : "<<*activeTweetPairs[ind].first<< "  using default"<<endl;
+                avatars["default"].draw(tweetFeedRect.x -50,tweetFeedRect.y +j*50, 50, 50);
             }
+            else{
+                avatars[*activeTweetPairs[ind].first].draw(tweetFeedRect.x -50,tweetFeedRect.y +j*50, 50, 50);
+            }
+            
+            
+            font.drawString(ofToUpper(ofToString(*activeTweetPairs[ind].second)), tweetFeedRect.x, tweetFeedRect.y +j*50 +5 );
+            
+            ofPopStyle();
         }
-                                          
-
+    }
+    
+    
 }
 
 // draw any debug stuff here
@@ -1019,6 +1036,12 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
     if(args.key == 'o'){
         dateIndexMax = currentDateIndex;
     }
+    if(args.key == 'd'){
+        map<string, ofImage>::iterator it;
+        for(it = avatars.begin(); it != avatars.end() ; it++){
+            cout<<it->first<<endl;
+        }
+    }
 }
 
 void CloudsVisualSystemTwitter::drawText2D(string text, ofVec2f pos){
@@ -1037,7 +1060,7 @@ void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
     ofScale(0.01,-0.01,0.01);
     ofTranslate(pos.x,pos.y,pos.z);
     font.drawString(ofToUpper(text),0,0);
-    ofPopStyle();    
+    ofPopStyle();
     ofxBillboardEnd();
     
 }
