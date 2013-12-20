@@ -56,4 +56,5 @@ protected:
     ofRectangle screenRect;
     ofRectangle videoRect;
     bool bFileLoaded;
+    float inTime, outTime;
 };
