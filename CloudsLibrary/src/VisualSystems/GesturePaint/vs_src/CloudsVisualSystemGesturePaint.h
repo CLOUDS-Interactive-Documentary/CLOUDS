@@ -104,7 +104,13 @@ protected:
 	
 	ofxUISuperCanvas* brushGui;
 	float brushSize;
+	float currentBrushSize;
 	float brushInterpolateStep;
+	float paletteTraversalSpeed;
+	bool previewPalette;
+	int currentPalette;
+	float paletteExpandPercent;
+	void createPaintBrush();
 	
 	ofFbo watersrc,waterdst;
 	ofFbo canvassrc,canvasdst;
@@ -113,15 +119,19 @@ protected:
 	ofShader vblurShader;
 	ofShader hblurShader;
 	ofShader forceBrushShader;
+	ofShader paintBrushShader;
 	ofShader paperMixShader;
-	
-	
+
+	ofVec2f palettePosition;
+	ofImage palette;
 	ofImage noiseFlowTex;
 	ofImage brushImage;
 	ofImage paperImage;
 	ofMesh canvasMesh;
 	ofMesh waterMesh;
 	ofMesh forceBrushMesh;
+	ofMesh paintBrushMesh;
+	
 	ofRectangle paperRect;
 	vector<ofVec2f> depositPoints;
 	vector<ofVec2f> mouseHistory;

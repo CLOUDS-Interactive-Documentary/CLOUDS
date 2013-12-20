@@ -76,14 +76,22 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void CompareDates(Date d1,Date d2);
     void loadGraphFromPath(string filePath);
     void clearData();
+    void sortTweetsByDate();
     
     //shader stuff
     void reloadShaders();
 
+    
+    //twitter feed stuff
+    int numberOfTweets;
+    int currentTweetFeedIndex =0;
+    
     //text stuff
     ofxJSONElement result;
     ofxFTGLSimpleLayout font;
+    ofxFTGLSimpleLayout font2;
     ofxFTGLTextAlignment textAlign;
+    
 
     float stringWidth;
     float fontSize;
@@ -102,7 +110,9 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     set<pair<int,int> > links;
     map<pair<string, string>, pair<int, int> >lineIndexPairs;
     map<string,int> numberOfMentions;
+    map<string,int> userNameIdMap;
     int currentDateIndex;
+    float dateIndexMin, dateIndexMax;
     void updateLabelWithCurrentMeshName(string name);
 
     // Ma boooooools
@@ -110,6 +120,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bRenderText;
     bool bRenderFeed;
     bool bAnimate;
+    bool rotateModel;
+    
 
     
 protected:
@@ -137,8 +149,12 @@ protected:
     ofxUISuperCanvas* twitterFeedGui;
     
     vector<Tweeter*> activeTweeters;
-    vector<string> activeTweets;
+    vector<string*> activeTweets;
+    vector<pair<string*, string*> >  activeTweetPairs;
+    
+    map<string, ofImage> avatars;
 
+    void loadAvatars();
     void addColorToGui(ofxUISuperCanvas* gui, string prefix, ofFloatColor& col, bool doAlpha = true);
 	
 	float edgeInterpolateExponent;
@@ -166,7 +182,10 @@ protected:
     int theme = 0;
     float xScale,yScale, zScale;
     
-    bool rotateModel;
+    int rotationRate;
+    float rotation ;
+    float rotationAmount;
+
     ofRectangle tweetFeedRect;
     
 	

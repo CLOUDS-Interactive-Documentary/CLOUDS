@@ -16,8 +16,9 @@ void CloudsVisualSystem2DVideo::selfSetupGui()
     playerGui->addLabel("VIDEOS");
     playerGui->addSpacer();
     playerGui->addRadio("MOVIE FILES",movieStrings);
-
-	
+    playerGui->addButton("IN TIME", false);
+    playerGui->addButton("OUT TIME", false);
+    
 	ofAddListener(playerGui->newGUIEvent, this, &CloudsVisualSystem2DVideo::selfGuiEvent);
 	guis.push_back(playerGui);
 	guimap[playerGui->getName()] = playerGui;
@@ -38,6 +39,15 @@ void CloudsVisualSystem2DVideo::selfGuiEvent(ofxUIEventArgs &e)
 				cout << "Loading movie from GUI " << movieStrings[i] << endl;
                 loadMovieAtIndex(i);
             }
+        }
+    }
+    if (e.getKind() == OFX_UI_WIDGET_BUTTON){
+        
+        if(e.getName() == "IN TIME"){
+            inTime = player.getCurrentTime();
+        }
+        else if (e.getName() == "OUT TIME"){
+            outTime = player.getCurrentTime();
         }
     }
 
@@ -139,6 +149,9 @@ void CloudsVisualSystem2DVideo::selfUpdate()
   //  }
     player.update();
 
+    if(timeline->getDurationInSeconds() != (outTime - inTime)){
+        timeline->setDurationInSeconds(outTime-inTime);
+    }
 }
 
 //--------------------------------------------------------------
@@ -179,6 +192,12 @@ void CloudsVisualSystem2DVideo::selfExit(){
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystem2DVideo::selfKeyPressed(ofKeyEventArgs & args){
 	
+    if(args.key == 'i' ){
+        cout<<player.getCurrentTime()<<endl;
+    }
+    else if (args.key == 'o'){
+        cout<<player.getCurrentTime()<<endl;
+    }
 }
 void CloudsVisualSystem2DVideo::selfKeyReleased(ofKeyEventArgs & args){
 	

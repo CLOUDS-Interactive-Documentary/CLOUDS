@@ -2,28 +2,30 @@
 /* VBlurVertexShader.glsl */
 
 uniform vec2 dimensions;
-varying vec2 v_texCoord;
+
 uniform sampler2DRect source_texture;
 uniform sampler2DRect water_texture;
 uniform sampler2DRect flow_texture;
+
+uniform float flowSwap;
+uniform float flowWidth;
+
+varying vec2 v_texCoord;
 varying float v_blurTexCoords[14];
 
 const float epsilon = 1e-6;
 
 void main()
 {
-//	float flowAmount    = texture2DRect(water_texture, v_texCoord*.25).r*4.;
-	
 	vec4 flowSample = texture2DRect(water_texture, v_texCoord*.25);
-	vec2 flowDeviation = texture2DRect(flow_texture, v_texCoord).rg * 2.0 - 1.0;
-	vec2 flowDirection = -normalize( flowSample.rg + flowDeviation) ;
+	vec2 flowSwapCoord = vec2(flowWidth - v_texCoord.x,v_texCoord.y);
+	
+	vec2 flowDeviationA = texture2DRect(flow_texture, flowSwapCoord).rg * 2.0 - 1.0;
+	vec2 flowDeviationB = texture2DRect(flow_texture, v_texCoord).rg * 2.0 - 1.0;
+	vec2 flowDeviation = mix(flowDeviationA,flowDeviationB,flowSwap);
+	vec2 flowDirection = -normalize( flowSample.rg + flowDeviation);
 	float flowAmount   = length( flowSample.rg );
 
-//	vec4 sample = texture2DRect(source_texture, v_texCoord + flowDirection*flowAmount);
-//	gl_FragColor.rgb = sample.rgb;
-	//gl_FragColor.a = max(max(sample.r,sample.g),max(sample.b,sample.a));
-//	gl_FragColor.a = sample.a;
-	
 	if(flowAmount > epsilon){
 		gl_FragColor = vec4(0.0);
 		gl_FragColor += texture2DRect(source_texture, v_texCoord+
@@ -59,9 +61,4 @@ void main()
 	else{
 		gl_FragColor = texture2DRect(source_texture, v_texCoord);
 	}
-
-	//gl_FragColor.rgb = vec3(blurAmount);
-//	gl_FragColor.rgb = 
-//	gl_FragColor.rgb = vec3(1.0);
-//	gl_FragColor.a = 1.0;
 }

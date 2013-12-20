@@ -12,7 +12,11 @@
 #include <set>
 @class testView;
 
-@interface ClipSelector : NSObject <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
+@interface ClipSelector : NSObject <NSTableViewDataSource,
+									NSTableViewDelegate,
+									NSTokenFieldDelegate,
+									NSComboBoxDelegate,
+									NSComboBoxDataSource> {
 
     IBOutlet NSTableView* keywordTable;
     IBOutlet NSTableView* clipTable;
@@ -23,7 +27,7 @@
     IBOutlet NSTextField* revokedKeywords;
     IBOutlet NSTextField* sharedKeywords;
     
-//    IBOutlet NSTextField* startQuestion;
+	IBOutlet NSComboBox* projectExamples;
     IBOutlet NSButton* showOnlyQuestions;
     
     vector<CloudsClip> selectedClips;
@@ -56,6 +60,7 @@
 - (IBAction) updateKeywords:(id)sender;
 
 - (IBAction) applySpecialKeyword:(id<NSUserInterfaceItemIdentification>)sender;
+- (IBAction) attachProjectExample:(id)sender;
 
 - (bool) isClipSelected;
 - (bool) isKeywordSelected;
@@ -67,7 +72,6 @@
 - (void) selectClip:(CloudsClip&) clip;
 
 - (IBAction) playDoubleClickedRow:(id)sender;
-- (IBAction) setQuestionText:(id)sender;
 
 - (IBAction) linkFromMetaTable:(id)sender;
 - (IBAction) suppressFromMetaTable:(id)sender;
@@ -88,5 +92,11 @@
 completionsForSubstring:(NSString *)substring
            indexOfToken:(NSInteger)tokenIndex
     indexOfSelectedItem:(NSInteger *)selectedIndex;
-    
+
+//combo box
+- (NSInteger)numberOfItemsInComboBox:(NSComboBox *)aComboBox;
+- (id)comboBox:(NSComboBox *)aComboBox objectValueForItemAtIndex:(NSInteger)index;
+
+- (NSUInteger)comboBox:(NSComboBox *)aComboBox indexOfItemWithStringValue:(NSString *)string;
+- (NSString *)comboBox:(NSComboBox *)aComboBox completedString:(NSString *)string;
 @end

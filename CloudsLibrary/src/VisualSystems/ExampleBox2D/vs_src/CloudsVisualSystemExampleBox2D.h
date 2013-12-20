@@ -13,6 +13,7 @@
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
 #include "ofxBox2d.h"
+#include "CloudsAudioEvents.h"
 
 #include "ofxTonic.h"
 
@@ -168,19 +169,6 @@ protected:
     float noteMin;
     int triggerIndex;
     Generator output;
-	
-	void audioRequested (float * output, int bufferSize, int nChannels);
-	
-	
-//    Generator collisionGen[WAVE_GEN_NUM];
-//    DummyApp* dummyApp;
-};
 
-class DummyApp : public ofBaseApp
-{
-public:
-    ofxTonicSynth *synth;
-    DummyApp(ofxTonicSynth *s);
-    
-    void audioRequested (float * output, int bufferSize, int nChannels);
+	void audioRequested(ofAudioEventArgs& args);
 };

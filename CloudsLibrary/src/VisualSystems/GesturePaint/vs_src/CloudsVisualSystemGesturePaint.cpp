@@ -33,8 +33,25 @@ void CloudsVisualSystemGesturePaint::selfSetupGui(){
 	brushGui->copyCanvasProperties(gui);
 	brushGui->setName("Brush");
 	brushGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
 	brushGui->addSlider("Brush Size", 1, 256., &brushSize);
+	brushGui->addSlider("Palette Shift Speed", 0, 100., &paletteTraversalSpeed);
+	brushGui->addSlider("Palette Expand", 0, 1.0, &paletteExpandPercent);
+
+	//palettes
+	ofDirectory palettes(getVisualSystemDataPath() + "images/palettes/");
+	palettes.allowExt("jpg");
+	palettes.listDir();
+	vector<string> palettePaths;
+	for(int i = 0; i < palettes.numFiles(); i++){
+		palettePaths.push_back(palettes.getName(i));
+	}
+	
+	if(palettes.size() > 0){
+		brushGui->addRadio("Palette", palettePaths);
+	}
+	
+	brushGui->addSpacer();
+	brushGui->addToggle("Show Palette", &previewPalette);
 	
 	ofAddListener(brushGui->newGUIEvent, this, &CloudsVisualSystemGesturePaint::selfGuiEvent);
 	guis.push_back(brushGui);
@@ -42,8 +59,9 @@ void CloudsVisualSystemGesturePaint::selfSetupGui(){
 }
 
 void CloudsVisualSystemGesturePaint::selfGuiEvent(ofxUIEventArgs &e){
-	if(e.widget->getName() == "Custom Button"){
-		cout << "Button pressed!" << endl;
+	if(e.widget->getParent()->getName() == "Palette" && ((ofxUIButton*)e.widget)->getValue()){
+		cout << "selected palette "<< e.widget->getName() << endl;
+		palette.loadImage(getVisualSystemDataPath() + "images/palettes/" + e.widget->getName() );
 	}
 }
 
@@ -67,13 +85,17 @@ void CloudsVisualSystemGesturePaint::selfSetDefaults(){
 	blurRadius = 1.;
 	dryRate = .001;
 	showWaterDebug = false;
+	palette.clear();
 	
+	previewPalette = false;
 	brushInterpolateStep = 4.;
+	paletteTraversalSpeed = 1.0;
 	
 	currentDepositeScale = 0;
 	depositeScale = 64.;
 	
 	brushSize = 128.;
+	currentBrushSize = 0;
 }
 
 // selfSetup is called when the visual system is first instantiated
@@ -98,10 +120,12 @@ void CloudsVisualSystemGesturePaint::reloadShader(){
 	cout << "loading force brush shader" << endl;
 	forceBrushShader.load(getVisualSystemDataPath() + "shaders/forcebrush");
 
+	cout << "loading paint brush shader" << endl;
+	paintBrushShader.load(getVisualSystemDataPath() + "shaders/paintbrush");
+	
 	brushImage.loadImage(getVisualSystemDataPath() + "images/brush.png");
 	paperImage.loadImage(getVisualSystemDataPath() + "images/paper.jpg");
-	noiseFlowTex.loadImage(getVisualSystemDataPath() + "images/noise.png");
-	
+	noiseFlowTex.loadImage(getVisualSystemDataPath() + "images/noise.png");	
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -125,6 +149,7 @@ void CloudsVisualSystemGesturePaint::selfSceneTransformation(){
 }
 
 void CloudsVisualSystemGesturePaint::reallocateFramebuffers(){
+	
 	canvassrc.allocate(getSharedRenderTarget().getWidth(),
 					   getSharedRenderTarget().getHeight(),
 					   GL_RGBA);
@@ -138,7 +163,6 @@ void CloudsVisualSystemGesturePaint::reallocateFramebuffers(){
 	watersrc.allocate(getSharedRenderTarget().getWidth()*.25,
 					  getSharedRenderTarget().getHeight()*.25,
 					  GL_RGB32F);
-	
 	
 	waterdst.begin();
 	ofClear(0,0,0,0);
@@ -182,7 +206,7 @@ void CloudsVisualSystemGesturePaint::meshFromFbo(ofMesh& m, ofFbo& f){
 }
 
 void CloudsVisualSystemGesturePaint::createWaterBrush(){
-	//TODO make variable size
+
 	forceBrushMesh.clear();
 	forceBrushMesh.addVertex(ofVec3f(0,0,0));
 	forceBrushMesh.addVertex(ofVec3f(depositeScale,0,0));
@@ -199,6 +223,25 @@ void CloudsVisualSystemGesturePaint::createWaterBrush(){
 	currentDepositeScale = depositeScale;
 }
 
+void CloudsVisualSystemGesturePaint::createPaintBrush(){
+	
+	paintBrushMesh.clear();
+	
+	paintBrushMesh.addVertex(ofVec3f(-brushSize/2,-brushSize/2,0));
+	paintBrushMesh.addVertex(ofVec3f( brushSize/2,-brushSize/2,0));
+	paintBrushMesh.addVertex(ofVec3f(-brushSize/2, brushSize/2,0));
+	paintBrushMesh.addVertex(ofVec3f( brushSize/2, brushSize/2,0));
+	
+	paintBrushMesh.addTexCoord(ofVec2f(0,0));
+	paintBrushMesh.addTexCoord(ofVec2f(1,0));
+	paintBrushMesh.addTexCoord(ofVec2f(0,1));
+	paintBrushMesh.addTexCoord(ofVec2f(1,1));
+	
+	paintBrushMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+	
+	currentBrushSize = brushSize;
+}
+
 //normal update call
 void CloudsVisualSystemGesturePaint::selfUpdate(){
 	if(!canvassrc.isAllocated() ||
@@ -211,9 +254,12 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 	if(currentDepositeScale != depositeScale){
 		createWaterBrush();
 	}
+	if(currentBrushSize != brushSize){
+		createPaintBrush();
+	}
 	
 	glDisable(GL_DEPTH_TEST);
-	ofSetColor(255, 255);
+	ofSetColor(255);
 	
 	waterdst.begin();
 	ofDisableAlphaBlending();
@@ -247,10 +293,8 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 	ofEnableAlphaBlending();
 	
 	forceBrushShader.begin();
-	forceBrushShader.setUniform1f("radius", 32);
 	ofVec2f centerTranslate = ofVec2f(depositeScale*.5,depositeScale*.5);
 	for(int i = 0; i < depositPoints.size(); i++){
-//		brushImage.draw( depositPoints[i] * .25 );
 		ofPushMatrix();
 		ofTranslate(depositPoints[i]*.25 - centerTranslate);
 		forceBrushMesh.draw();
@@ -273,19 +317,50 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 									 noiseFlowTex.getTextureReference(),  3);
 	paperMixShader.setUniform2f("dimensions",
 								canvassrc.getWidth(), canvassrc.getHeight());
+	float flowSwap = fmod(ofGetElapsedTimef(), 2.0f);
+	if(flowSwap > 1.0) flowSwap = 2.0 - flowSwap;
+	
+	paperMixShader.setUniform1f("flowSwap", 1.0);//looks stupid
+	paperMixShader.setUniform1f("flowWidth", noiseFlowTex.getWidth());
+	
 	canvasMesh.draw();
 	paperMixShader.end();
 	
 	ofPushStyle();
 	ofEnableAlphaBlending();
 	ofSetRectMode(OF_RECTMODE_CENTER);
-	for(int i = 0; i < depositPoints.size(); i++){
-		ofSetColor(ofColor::fromHsb(fmod(ofGetElapsedTimef()*20, 255.f), 255.0f, 255.0f));
+	
+	paintBrushShader.begin();
+	paintBrushShader.setUniform1i("useColorPalette", palette.isAllocated() ? 1 : 0);
+	paintBrushShader.setUniformTexture("brush", brushImage, 1);
+	paintBrushShader.setUniform2f("brushDimensions",
+								  brushImage.getWidth(),
+								  brushImage.getHeight());
+	if(palette.isAllocated()){
+		palettePosition.x = palette.getWidth()/2.;
+		palettePosition.y = fmod(ofGetElapsedTimef()*paletteTraversalSpeed,palette.getHeight());
 
-		brushImage.draw(depositPoints[i].x,
-						depositPoints[i].y,
-						brushSize,brushSize);
+		paintBrushShader.setUniformTexture("palette", palette, 2);
+		paintBrushShader.setUniform2f("palettePosition",palettePosition.x,palettePosition.y);
+		paintBrushShader.setUniform2f("paletteDimensions",
+									  palette.getWidth(),
+									  palette.getHeight());
+		paintBrushShader.setUniform1f("paletteExpandPercent",
+									  paletteExpandPercent);
 	}
+	else{
+		ofSetColor(ofColor::fromHsb(fmod(ofGetElapsedTimef()*20, 255.f), 255.0f, 255.0f));
+	}
+	
+	for(int i = 0; i < depositPoints.size(); i++){
+		ofPushMatrix();
+		ofTranslate(depositPoints[i]);
+		paintBrushMesh.draw();
+		ofPopMatrix();
+	}
+
+	paintBrushShader.end();
+	
 	depositPoints.clear();
 	ofPopStyle();
 	
@@ -311,16 +386,36 @@ void CloudsVisualSystemGesturePaint::selfDrawBackground(){
 	ofEnableAlphaBlending();
 	paperImage.draw(paperRect);
 	canvassrc.getTextureReference().draw(0,0);
-	if(showWaterDebug){
-		watersrc.getTextureReference().draw(0,0);
+	if(previewPalette && palette.isAllocated()){
+		palette.draw(0, 0);
+		ofPushStyle();
+		ofSetRectMode(OF_RECTMODE_CENTER);
+		ofNoFill();
+		ofColor paletteColor = palette.getColor(palettePosition.x,palettePosition.y);
+		ofSetColor(paletteColor);
+		ofRect(palettePosition.x,palettePosition.y,
+			   palette.getWidth()*paletteExpandPercent,
+			   palette.getHeight()*paletteExpandPercent);
+		ofFill();
+		ofRect(palettePosition.x,palettePosition.y,5,5);
+		ofNoFill();
+		ofSetColor(ofColor::black);
+		ofRect(palettePosition.x,palettePosition.y,5,5);
+
+		ofPopStyle();
 	}
-	
+	if(showWaterDebug){
+		watersrc.getTextureReference().draw(ofGetWidth()-watersrc.getWidth(),0);
+	}
+
 }
+
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemGesturePaint::selfEnd(){
 	
 }
+
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemGesturePaint::selfExit(){
 	
@@ -333,6 +428,7 @@ void CloudsVisualSystemGesturePaint::selfKeyPressed(ofKeyEventArgs & args){
 		reloadShader();
 	}
 }
+
 void CloudsVisualSystemGesturePaint::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
@@ -362,7 +458,6 @@ void CloudsVisualSystemGesturePaint::selfMouseMoved(ofMouseEventArgs& data){
 
 	mouseHistory.push_back(ofVec2f(data.x,data.y));
 	
-	
 	vector<ofVec2f> splineHandles;
 	//make a spline
 	if(mouseHistory.size() == 1){
@@ -386,7 +481,9 @@ void CloudsVisualSystemGesturePaint::selfMouseMoved(ofMouseEventArgs& data){
 		}
 	}
 	
-	for(float a = 0; a < 1.; a+=.1){
+	float stepsize = ofMap(brushSize, 2, 200, .005, .1, true);
+	
+	for(float a = 0; a < 1.; a+=stepsize){
 		depositPoints.push_back(ofHermiteInterpolate(splineHandles[0],
 													 splineHandles[1],
 													 splineHandles[2],

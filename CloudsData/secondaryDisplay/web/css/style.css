@@ -1,6 +1,6 @@
 
 body{
-	font-family:'Conv_MateriaPro_Light',Sans-Serif;
+	font-family:'Blender',Sans-Serif;
 	color:#FFFFFF;
 	font-size:12px;
 	font-weight:lighter;
@@ -17,21 +17,11 @@ body{
 	width:1280px;
 	height:720px;
 }
+/*
 
-.person_info{
-	width:765px;
-	position:fixed;
-	top:198px;
-	right:283px;
-}
 
-.current_artist_block{
-	background-color:#000000;
-	margin-bottom:33px;
-	padding-bottom:15px;
-}
-
-#artist_name, 
+#first, 
+#last,
 #topic{
 	position:relative;
 	padding-left:19px;
@@ -40,7 +30,7 @@ body{
 	font-weight:lighter;
 }
 
-#byline{
+#title{
 	position:relative;
 	padding-left:19px;
 	padding-top:1px;
@@ -48,18 +38,13 @@ body{
 	font-weight:lighter;
 }
 
-#description{
+#byline{
 	padding-left:19px;
 	padding-top:10px;
 	font-size:26px;
 	line-height:32px;
 }
-
-#video{
-	z-index:1;
-}
-
-#info {
+#location {
   position: absolute; 
   z-index: 2147483647;
   top: 600px; 
@@ -68,24 +53,90 @@ body{
   float:left;
   
 }
+*/
 
-#projectex_info{
-	padding-left:20px;
-	width:400px;
-	float:left;
-	overflow:hidden;
+#video{
+	z-index:1;
 }
 
-#projectex_title{
+.current_artist_block{
+	margin-bottom:33px;
+	padding-bottom:15px;
+}
+
+#info{
+	/*
+	padding-right: 50px;
+	
+	*/
+	margin-left: 50px;
+	/*margin-right: 50px;*/
+	background-color:rgba(153, 163, 140, 0.16);
+	position: fixed;
+	bottom: 25px;
+	width:1748px;
+	padding-left: 50px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+.project_info{
+	padding-left:20px;
+	font-size:96px;
+	width:350px;
+	float:left;
+	overflow:hidden;
+
+}
+
+.column1{
+	float:left;
+	width:243px;
+	/*background:#bfb;*/
+	
+}
+.column2{
+	float:right;
+	width:1504px;
+	position: relative;
+	/*background-color: rgba(73, 83, 83, 0.18);*/
+	font-size: 24px;
+	
+}
+.column2_1{	
+	float: left;
+	width: 200px;
+	/*background: #ddf;*/
+	padding-left: 20px;
+	font-size:21px;
+	text-transform: uppercase;
+}
+
+.column2_2{
+	float:right;
+    width:1283px;
+    /*background:#dff;*/
+    font-size:16px;
+}
+
+#first{
+	position: relative;
+	text-transform: uppercase;
+	font-size: 40px;
+	padding-bottom: 8px;
+}
+#last{	
+	text-transform:uppercase;
+	font-size:60px;
+}
+
+.cl_title{
 	float:left;
 	font-size:60px;
 	line-height:60px;
 	z-index: 2147483647;
 	color:#FFF;
-	
 }
-
-#projectex_artist{
+.cl_subtitle{
 	background-color: #FFFFFF;
 /*	padding: 4px;*/
 	float:left;
@@ -93,13 +144,27 @@ body{
 	color:#000;
 }
 
-#projectex_desc{
+.cl_text{
 	padding-left:0px;
 	font-size:24px;
 	line-height:24px;
 	/*position: relative; */
 	float:left;
 	color:#FFF;
+}
+
+
+#projectex_title{
+	
+	
+}
+
+#projectex_artist{
+	
+}
+
+#projectex_desc{
+	
 }
 
 #projectex_content{

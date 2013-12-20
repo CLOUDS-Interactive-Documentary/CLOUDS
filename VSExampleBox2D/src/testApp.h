@@ -1,8 +1,10 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofEvents.h"
 #include "ofxUI.h"
 #include "CloudsVisualSystemExampleBox2D.h"
+#include "CloudsMixer.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -24,4 +26,5 @@ class testApp : public ofBaseApp{
 	void audioRequested(float * output, int bufferSize, int nChannels);
 	
 	CloudsVisualSystemExampleBox2D exampleBox2D;
+    CloudsMixer mixer;
 };

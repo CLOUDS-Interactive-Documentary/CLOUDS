@@ -38,8 +38,11 @@ class CloudsFCPParser {
 //    void parseClusterMap(string mapFile); //SVG
 	void parseClusterNetwork(string fileName);
 	void parseProjectExamples(string filename);
+	vector<CloudsProjectExample>& getProjectExamples();
+	CloudsProjectExample& getProjectExampleWithTitle(string title);
 	
 	void getOverlappingClipIDs();
+	//TODO: cache this and don't call it every start up	
     void autolinkSequentialClips();
     
     map<string,string> cloudsClipToFileID;
@@ -71,6 +74,7 @@ class CloudsFCPParser {
     
     void addIntervention(string clipName, string interventionName);
 	bool clipHasIntervention(string clipName);
+	
 	//QUERIES
 	//true if A has any out going links at all
 	bool clipHasLink(CloudsClip& clip);
@@ -103,11 +107,6 @@ class CloudsFCPParser {
 	
 	float percentOfClipsLinked();
 	float getAllClipDuration();
-	
-	//create a list that maps all of the tags back to closest key theme
-//	void populateKeyThemes();
-//	void populateKeyThemes(set<string>& keyThemes);
-//	string getKeyThemeForTag(string tag);
 	
 #pragma mark Keywords
     void sortKeywordsByOccurrence(bool byOccurrence);
@@ -206,6 +205,7 @@ class CloudsFCPParser {
 	void calculateKeywordFamilies();
     void saveInterventions(string interventionsFile);
 	
+	CloudsProjectExample dummyProjectExample;
     CloudsClip dummyClip; // for failed reference returns
 	float lastBackupTime;
 	float backupTimeInterval;
