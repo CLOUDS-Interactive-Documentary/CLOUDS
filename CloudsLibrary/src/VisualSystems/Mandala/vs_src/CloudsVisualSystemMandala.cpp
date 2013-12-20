@@ -350,11 +350,15 @@ void CloudsVisualSystemMandala::setClock( int numCogs, float scale, int octaves,
 	}
 	
 	tails.resize(surfaceMeshes.size() * 3 );
+	
+	lofts.resize( surfaceMeshes.size() );
 	for (int i=0; i<surfaceMeshes.size(); i++)
 	{
 		tails[i*3].setup(&surfaceMeshes[i]);
 		tails[i*3+1].setup(&surfaceMeshes[i], ofVec3f(0,0,.5));
 		tails[i*3+2].setup(&surfaceMeshes[i], ofVec3f(0,0,-.5));
+		
+		lofts[i].setup(&tails[i*3+1], &tails[i*3+2]);
 	}
 	
 	
@@ -469,6 +473,10 @@ void CloudsVisualSystemMandala::selfUpdate()
 			{
 				tails[i].update();
 			}
+			
+			for (int i=0; i<lofts.size(); i++) {
+				lofts[i].update();
+			}
 		}
 	}
 	
@@ -506,6 +514,13 @@ void CloudsVisualSystemMandala::selfDraw()
 	}
 	
 	
+	if(bDrawTails)
+	{
+		for (int i=0; i<lofts.size(); i++) {
+			lofts[i].m.drawElements(GL_TRIANGLES, lofts[i].indexCount );
+		}
+	}
+
 	facingRatio.end();
 	
 	

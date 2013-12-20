@@ -92,7 +92,7 @@ public:
 			m = _m;
 			localOffset = _localOffset;
 			
-			points.resize(50);
+			points.resize(30);
 			uv.resize(points.size());
 			colors.resize(points.size());
 			worldPos = getRootPosoition();
@@ -500,7 +500,7 @@ protected:
 	
 	float lastTime, currentTime;
 	
-//	vector<TailLoft> lofts;
+	vector<TailLoft> lofts;
 	
 	//temp
 };
