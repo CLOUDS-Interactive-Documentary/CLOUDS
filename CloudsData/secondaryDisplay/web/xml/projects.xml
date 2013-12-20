@@ -43,7 +43,7 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 			<description> One of the earliest feature films to reflect the video-game craze of the 1980s. Stars Jeff Bridges as computer programmer Kevin Flynn, who becomes part of the very game that he's programming</description>
 			<video_file_name></video_file_name>
 	</project>
-<project title="Eyewriter">
+    <project title="Eyewriter">
 			<creator_name>Evan Roth, Chris Sugrue, Zach Lieberman,Theo Watson, James Powderly</creator_name>
 			<description>The EyeWriter is a low-cost eyetracking system originally designed for paralyzed graffiti artist TEMPT1. The EyeWriter system uses inexpensive cameras and open-source computer vision software to that allows a user to draw with eye-movement.</description>
 			<video_file_name></video_file_name>
@@ -53,7 +53,7 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 			<description>A projector throws its beam on an array of vertical wires. The result is a floating, glowing 3d object made entirely of light.</description>
 			<video_file_name></video_file_name>
 	</project>
-<project title="Lit Tree">
+    <project title="Lit Tree">
 			<creator_name>Elliot Woods, Mimi Son</creator_name>
 			<description>The leaves of a tree are used as the voxels in a 3D display for creating volumetric light patterns.</description>
 			<video_file_name></video_file_name>
@@ -64,18 +64,13 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 			<video_file_name>videos/GolanLeiberman_1.mov</video_file_name>
 	</project>
 
-<<<<<<< HEAD
-	<project>
 	<project title="Manual Input Sessions">
 			<creator_name>Golan Levin, Zach Lieberman</creator_name>
 			<description>a series of audiovisual vignettes which probe the expressive possibilities of hand gestures and finger movements.Our concert is performed on a combination of custom interactive software, analog overhead projectors and digital computer video projectors</description>
 			<video_file_name></video_file_name>
 	</project>
-<project>
-	<project title="Listening Post">
-=======
-<project title="Listening Post">
->>>>>>> 3f607e1ca8ffc260e6b0a72653f38b5983ef6738
+    
+    <project title="Listening Post">
 			<creator_name>Mark Hansen, Ben Rubin</creator_name>
 			<description>Listening Post is a 'dynamic portrait' of online communication, displaying uncensored fragments of text sampled in real-time, from public internet chatrooms and bulletin boards.</description>
 			<video_file_name>videos/Listening_Post3.mov</video_file_name>
@@ -85,33 +80,36 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 			<description>An ever-changing organic costume</description>
 			<video_file_name></video_file_name>
 	</project>
-<project title="Open Paths">
+    <project title="Open Paths">
 			<creator_name>Brian House, Jer Thorp, Jake Poroway</creator_name>
 			<description>A model for personal engagement with data that lets people track their locations and visualize where they've been.</description>
 			<video_file_name></video_file_name>
 	</project>
+    
 	<project title="Good Morning!">
 			<creator_name>Jer Thorp</creator_name>
 			<description>GoodMorning! is a Twitter visualization tool that shows about 11000 'good morning' tweets over a 24 hour period, rendering a sample of tweets around the globe.</description>
 			<video_file_name>videos/Good_Morning!.mov</video_file_name>
 	</project>
 
-<project title="Kepler Exoplanet Candidates">
+    <project title="Kepler Exoplanet Candidates">
 			<creator_name>Jer Thorp</creator_name>
 			<description>(2012)- A visualization of the 1236 exoplanet candidates observed by NASA's Kepler mission. </description>
 			<video_file_name></video_file_name>
 	</project>
+    
 	<project title="Cascade">
 			<creator_name>Jer Thorp, Mark Hansen, Jake Poroway</creator_name>
 			<description>Cascade is a tool for analyzing sharing activity on the web, and displaying how information propagates through the social media space.</description>
 			<video_file_name>videos/Cascade.mov</video_file_name>
 	</project>
 
-<project title="Transparency Grenade">
+    <project title="Transparency Grenade">
 			<creator_name>Julian Oliver</creator_name>
 			<description>A digital weapon that lets users leak information from closed meetings by just pulling a pin. The device captures network traffic and audio in a location and anonymously streams it to an external server that mines it for information — including e-mail excerpts, web pages, images and voice. The server then uploads that data to a public website and positions it on a map.</description>
 			<video_file_name>videos/TransparencyGrenade.mov</video_file_name>
 	</project>
+    
 	<project title="ToxicLibs">
 			<creator_name>Karsten Schmidt</creator_name>
 			<description>Toxiclibs is an independent, modular open source library collection for Java and Processing,</description>
@@ -156,7 +154,7 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 			<video_file_name></video_file_name>
 	</project>
 
-<project title="Design by Numbers">
+    <project title="Design by Numbers">
 			<creator_name></creator_name>
 			<description>An influential experiment in teaching programming initiated at the MIT Media Lab during the 1990s.=</description>
 			<video_file_name></video_file_name>
@@ -167,7 +165,7 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 			<video_file_name></video_file_name>
 	</project>
 
-<project title="Energy Flow">
+    <project title="Energy Flow">
 			<creator_name>Vera Glahn, Marcus Wendt - Field IO</creator_name>
 			<description>A non-linear film experience weaving 10 animated story lines into a filmic dream rush of paintings in motion. Energy Flow explores the complexity of how things are connected in our lives today – the fragile equilibrium between physical, political, and cultural tensions.</description>
 			<video_file_name></video_file_name>
@@ -178,7 +176,7 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 			<video_file_name></video_file_name>
 	</project>
 
-<project title="Transfinite">
+    <project title="Transfinite">
 			<creator_name>Ryoji Ikeda</creator_name>
 			<description>A large-scale digital installation
 and sonic landscape that explore the concept of infinity, rationality, and the beauty of data. Ikeda's first work in the united states, exhibited at the Park Avenue Armory in NYC. -2011</description>
@@ -223,7 +221,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 			<video_file_name></video_file_name>
 	</project>
 
-<project title="People Staring at Computers">
+    <project title="People Staring at Computers">
 			<creator_name>Kyle McDonald</creator_name>
 			<description>Kyle wrote a simple application that took one picture every minute. If it found a face, it uploaded the photo to a server. He installed the app around NYC over three days, collecting more than a thousand photos. When the 14th street Apple Store discovered the application on their computers, they called the Secret Service. - 2011</description>
 			<video_file_name></video_file_name>
@@ -234,22 +232,25 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 			<video_file_name></video_file_name>
 	</project>
 
-<project title="Face OSC">
+    <project title="Face OSC">
 			<creator_name>Kyle McDonald</creator_name>
 			<description>FaceOSC is a tool for prototyping face-based interaction. FaceOSC was based on the work of Jason Saragih, a research scientist at CSIRO.</description>
 			<video_file_name></video_file_name>
 	</project>
-<project title="Face Subsitution">
+    
+    <project title="Face Subsitution">
 			<creator_name>Arturo Castro, Kyle McDonald</creator_name>
 			<description>Real time face tracking and substitution experiments including a realization of the Scramble Suit and an interactive installation Faces that picks a new face for you every time you blink. - 2011</description>
 			<video_file_name></video_file_name>
 	</project>
-<project title="FaceShiftOSC">
+    
+    <project title="FaceShiftOSC">
 			<creator_name>Kyle McDonald</creator_name>
 			<description></description>
 			<video_file_name></video_file_name>
 	</project>
-	<project title="Sniff">
+	
+    <project title="Sniff">
 			<creator_name>Karolina Sobecka, James George</creator_name>
 			<description>Sniff is an interactive projection in a storefront window. A CG dog follows the viewer and dynamically responds to his gestures and changes his behavior based on the state of engagement with the viewer.</description>
 			<video_file_name></video_file_name>
