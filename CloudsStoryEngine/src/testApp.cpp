@@ -130,6 +130,26 @@ void testApp::keyPressed(int key){
 	if(key == 'S'){
 		storyEngine.saveGuiSettings();
 	}
+	
+	if(key == 'E'){
+		vector<int> projectExampleIndecs;
+		for(int i = 0; i < parser.getAllClips().size(); i++){
+			if(parser.getAllClips()[i].hasProjectExample){
+				projectExampleIndecs.push_back(i);
+			}
+		}
+		
+		if(projectExampleIndecs.size() > 0){
+			int exampleIndex = projectExampleIndecs[ ofRandom(projectExampleIndecs.size()) ];
+			websockets.sendClip( parser.getAllClips()[exampleIndex]);
+			cout << "SENT CLIP " << parser.getAllClips()[exampleIndex].getLinkName() << " WITH EXAMPLE " << parser.getAllClips()[exampleIndex].projectExampleTitle << endl;
+		}
+	}
+	
+	if(key == 'C'){
+		websockets.sendClip( parser.getAllClips()[ ofRandom(parser.getAllClips().size()) ] );
+	}
+	
 }
 
 //--------------------------------------------------------------

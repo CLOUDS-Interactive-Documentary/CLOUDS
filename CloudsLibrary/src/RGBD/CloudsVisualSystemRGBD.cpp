@@ -167,7 +167,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guis.push_back(globalMeshGui);
 	guimap[globalMeshGui->getName()] = globalMeshGui;
 
-
 	pointsGui = new ofxUISuperCanvas("POINTS", gui);
 	pointsGui->copyCanvasStyle(gui);
     pointsGui->copyCanvasProperties(gui);
