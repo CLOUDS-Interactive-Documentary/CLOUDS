@@ -314,9 +314,8 @@ void CloudsVisualSystemTwitter::loadAvatars(){
             vector<string> handle = ofSplitString(files[i].getFileName(),".");
 
             for (int j =0; j<tweeters.size(); j++) {
-//                cout<<tweeters[j].name<<" : "<<handle[0]<<endl;
                 if(tweeters[j].name == "@" +handle[0]){
-                    cout<<"adding avatar for "<<handle[0]<<endl;
+//                    cout<<"adding avatar for "<<handle[0]<<endl;
                     ofImage img;
                     if(img.loadImage(filePath)){
                         
@@ -327,6 +326,9 @@ void CloudsVisualSystemTwitter::loadAvatars(){
                     avatars[tweeters[j].name] =img;
                     break;
                     
+                }
+                if( j == tweeters.size() - 1){
+                    cout<<"Avatar not found for "<<handle[0]<<endl;
                 }
 
                     
@@ -723,9 +725,9 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
         loadJSONData("tweetsOld");
     }
     else if (strs[strs.size()-1] =="new.net"){
-        cout<<"New data, using tweetsNew folder"<<endl;
+        cout<<"New data, using tweets clean folder"<<endl;
         //loadJSONData("tweetsNew");
-        loadJSONData("tweetsTest");
+        loadJSONData("tweetsClean");
         
     }
     else{
@@ -945,22 +947,17 @@ void CloudsVisualSystemTwitter::drawFeed(){
                 ofSetColor(textColor);
             int ind = ofRandom(activeTweetPairs.size() - 1);
 //                    cout<<*activeTweetPairs[currentTweetFeedIndex +j].first<<" : "<<*activeTweetPairs[currentTweetFeedIndex+j].second<<endl;
-            if(! ofGetElapsedTimeMillis() %1000){
+//            if(! ofGetElapsedTimeMillis() %1000){
                 avatars[*activeTweetPairs[ind].first].draw(tweetFeedRect.x -50,tweetFeedRect.y +j*50, 50, 50);
                 font.drawString(ofToUpper(ofToString(*activeTweetPairs[ind].second)), tweetFeedRect.x, tweetFeedRect.y +j*50 +5 );
                 //              font.drawString(ofToUpper(ofToString(*activeTweetPairs[ofRandom(activeTweetPairs.size()].second)), tweetFeedRect.x, tweetFeedRect.y +j*50 +5 );
 
-            }
+//            }
                 ofPopStyle();
             }
         }
                                           
-//    if(ofGetFrameNum() % refreshRate < 1){
-//        currentTweetFeedIndex++;
-//        if(activeTweetPairs.size() > 0){  
-//            currentTweetFeedIndex = currentTweetFeedIndex%activeTweetPairs.size();
-//        }
-//    }
+
 }
 
 // draw any debug stuff here
