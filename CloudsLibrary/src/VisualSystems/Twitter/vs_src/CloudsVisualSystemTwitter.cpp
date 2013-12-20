@@ -932,8 +932,8 @@ void CloudsVisualSystemTwitter::selfDraw()
     
 }
 
-void CloudsVisualSystemTwitter::drawFeed()
-{    
+void CloudsVisualSystemTwitter::drawFeed(){
+
 
     if(numberOfTweets < activeTweetPairs.size()){
      //   for (int i=0; i<activeTweetPairs.size() -numberOfTweets; i++) {
@@ -943,24 +943,24 @@ void CloudsVisualSystemTwitter::drawFeed()
                 ofPushStyle();
                 
                 ofSetColor(textColor);
+            int ind = ofRandom(activeTweetPairs.size() - 1);
 //                    cout<<*activeTweetPairs[currentTweetFeedIndex +j].first<<" : "<<*activeTweetPairs[currentTweetFeedIndex+j].second<<endl;
-//                cout<<"Here"<<endl;
-                    avatars[*activeTweetPairs[currentTweetFeedIndex +j].first].draw(tweetFeedRect.x -50,tweetFeedRect.y +j*50, 50, 50);
-                    font.drawString(ofToUpper(ofToString(*activeTweetPairs[currentTweetFeedIndex+j].second)), tweetFeedRect.x, tweetFeedRect.y +j*50 +5 );
+            if(! ofGetElapsedTimeMillis() %1000){
+                avatars[*activeTweetPairs[ind].first].draw(tweetFeedRect.x -50,tweetFeedRect.y +j*50, 50, 50);
+                font.drawString(ofToUpper(ofToString(*activeTweetPairs[ind].second)), tweetFeedRect.x, tweetFeedRect.y +j*50 +5 );
+                //              font.drawString(ofToUpper(ofToString(*activeTweetPairs[ofRandom(activeTweetPairs.size()].second)), tweetFeedRect.x, tweetFeedRect.y +j*50 +5 );
+
+            }
                 ofPopStyle();
             }
         }
-
-    if(ofGetFrameNum() % refreshRate < 1){
-        currentTweetFeedIndex++;
-        if(activeTweetPairs.size() > 0){
-            currentTweetFeedIndex = currentTweetFeedIndex%activeTweetPairs.size();
-        }
-    }
-
-
-    
-    //}
+                                          
+//    if(ofGetFrameNum() % refreshRate < 1){
+//        currentTweetFeedIndex++;
+//        if(activeTweetPairs.size() > 0){  
+//            currentTweetFeedIndex = currentTweetFeedIndex%activeTweetPairs.size();
+//        }
+//    }
 }
 
 // draw any debug stuff here
