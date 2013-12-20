@@ -122,13 +122,18 @@ public:
 			worldPos = getRootPosoition();
 			
 			points[0] = worldPos;
-			float msmoothing = 1. - smoothing;
+			
+			float dynamicSmoothing = smoothing * min(1.f, lastHead.distance(worldPos) / 10.f );
+			
+			float msmoothing = 1. - dynamicSmoothing;
 			for(int i=points.size()-1; i>0; i--)
 			{
-				points[i] = points[i-1] * smoothing + points[i] * msmoothing;
+				points[i] = points[i-1] * dynamicSmoothing + points[i] * msmoothing;
 			}
 			
 			line.updateVertexData( &points[0], points.size() );
+			
+			lastHead = worldPos;
 		}
 	}
 	
@@ -184,6 +189,8 @@ public:
 	vector<ofVec3f> points;
 	vector<ofVec2f> uv;
 	vector<ofFloatColor> colors;
+	
+	ofVec3f lastHead;
 	
 	bool bIsSetup;
 };
