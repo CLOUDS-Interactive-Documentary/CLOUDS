@@ -59,7 +59,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     //twitter feed
     void drawFeed();
-    void updateCurrentSelection();
+    void updateCurrentSelection(int index,bool firstTime );
     
     //i/o stuff
     void loadJSONData(string folderName);
