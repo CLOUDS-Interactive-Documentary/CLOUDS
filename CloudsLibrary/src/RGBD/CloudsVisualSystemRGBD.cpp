@@ -162,7 +162,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     globalMeshGui->addWidgetToHeader(toggle);
 	globalMeshGui->addSlider("Bottom Edge Falloff", 0, 1.0, &edgeAttenuate);
 	globalMeshGui->addSlider("Bottom Edge Expo", 1, 5.0, &edgeAttenuateExponent);
-	globalMeshGui->addSlider("Skin Brightness", 0, 1.0, &skinBrightness);
 		
 	ofAddListener(globalMeshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
 	guis.push_back(globalMeshGui);
@@ -184,6 +183,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	pointsGui->addSlider("Point Alpha", 0, 1.0, &pointAlpha);
 	pointsGui->addIntSlider("Num Points", 0, 100000, &numRandomPoints);
 	pointsGui->addRangeSlider("Point Size", 0.0, 3.0, &pointSize.min, &pointSize.max);
+	pointsGui->addSlider("Point Face Overlap",0., 1.0, &pointHeadOverlap);
 	pointsGui->addSlider("Point Flow", 0, 2.0, &pointFlowSpeed);
 	pointsGui->addToggle("Points Flow Up", &pointsFlowUp);
 	
@@ -794,12 +794,13 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	glEnable(GL_POINT_SMOOTH);
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glEnable(GL_LINE_SMOOTH);
-	
+
 	if(getRGBDVideoPlayer().getPlayer().isLoaded() && drawRGBD){
 		
 		setupRGBDTransforms();
 			
 		if(drawMesh){
+			
 			meshShader.begin();
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
 		
@@ -814,13 +815,15 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			mesh.draw();
 			
 			meshShader.end();
+			//glDisable(GL_CULL_FACE);
 		}
 		
 		glDisable(GL_DEPTH_TEST);
-		ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+		ofEnableBlendMode(OF_BLENDMODE_ADD);
 			
 		if(drawLines){
 			lineShader.begin();
+			ofSetLineWidth(lineThickness);
 			getRGBDVideoPlayer().flowPosition = lineFlowPosition;
 			getRGBDVideoPlayer().setupProjectionUniforms(lineShader);
 			
@@ -829,9 +832,8 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			lineShader.setUniform1f("headFalloff", meshFaceFalloff);
 			lineShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
 			lineShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
-			lineShader.setUniform1f("headLineOverlap",lineHeadOverlap);
-
-			ofSetColor(255,255*lineAlpha);
+			lineShader.setUniform1f("headOverlap",lineHeadOverlap);
+			lineShader.setUniform1f("alpha", lineAlpha);
 			
 			lines.draw();
 			
@@ -843,7 +845,15 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			getRGBDVideoPlayer().flowPosition = pointFlowPosition;
 			getRGBDVideoPlayer().setupProjectionUniforms(pointShader);
 			
-			ofSetColor(255,255*pointAlpha);
+			
+			pointShader.setUniform1f("headMinRadius", meshFaceMinRadius);
+			pointShader.setUniform1f("headFalloff", meshFaceFalloff);
+			pointShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
+			pointShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
+			pointShader.setUniform1f("headOverlap", pointHeadOverlap);
+			pointShader.setUniform1f("pointSizeMin", pointSize.min);
+			pointShader.setUniform1f("pointSizeMax", pointSize.max);
+			pointShader.setUniform1f("alpha", pointAlpha * getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
 			
 			points.draw();
 			

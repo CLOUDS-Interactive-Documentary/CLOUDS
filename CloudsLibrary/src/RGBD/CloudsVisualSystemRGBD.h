@@ -115,6 +115,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float pointAlpha;
 	int numRandomPoints;
 	ofRange pointSize;
+	float pointHeadOverlap;
 	float pointFlowPosition;
 	float pointFlowSpeed;
 	bool pointsFlowUp;

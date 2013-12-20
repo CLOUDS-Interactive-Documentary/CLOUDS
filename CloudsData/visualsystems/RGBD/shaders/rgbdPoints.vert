@@ -133,7 +133,6 @@ void main(void){
 	headPositionAttenuation = mix(0.0,
 								  map(distance(pos.xyz,headPosition), headMinRadius+headFalloff, headMinRadius, .0, 1.0),
 								  1.-headOverlap);
-	gl_PointSize = mix(pointSizeMin, pointSizeMax, headPositionAttenuation);
 	
 	//NORMAL
 	vec2 normalPos = samplePos.xy + normalRect.xy;
@@ -174,5 +173,6 @@ void main(void){
 	diffuseLightDirection = diffuseLightDirectionFull / d;
 		
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
-    gl_FrontColor = gl_Color;
+	gl_PointSize = mix(pointSizeMin, pointSizeMax, 1.0-headPositionAttenuation);
+	
 }

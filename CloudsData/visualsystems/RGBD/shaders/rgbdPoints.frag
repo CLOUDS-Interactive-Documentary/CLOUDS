@@ -2,6 +2,7 @@
 #extension GL_ARB_texture_rectangle : enable
 
 uniform sampler2DRect rgbdTexture;
+uniform float alpha;
 
 //SKIN DETECTION SAMPLES
 uniform vec3 skinSampleColor;
@@ -70,10 +71,9 @@ float weightedDistance(vec3 pnt1,vec3 pnt2,vec3 weights){
 	return sqrt(weights.x*(v.x*v.x) + weights.y*(v.y*v.y) + weights.z*(v.z*v.z) ) ;
 }
 float isSkin(){
+	
     vec4 test0 = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
-	
     vec3 hslSample = rgb2hsl(skinSampleColor.rgb);
-	
 	vec3 hslCurrent = rgb2hsl(test0.rgb);
 	
 	//account for the fact that hue is an angular distance, not linear (ie .9 and .1 are actually just .2 appart)
@@ -107,8 +107,9 @@ void main(){
     vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
 	
 	/////basic coloring
-	gl_FragColor.rgb = col.rgb * mix(edgeAttenuate,1.0, isSkin()) * (1.0-headPositionAttenuation);
-	gl_FragColor.a = gl_Color.a;
+	gl_FragColor.rgb = col.rgb * edgeAttenuate * (1.0-headPositionAttenuation);
+	gl_FragColor.a = alpha;
+	
 	//apply lighting universaly
     //gl_FragColor = gl_Color * col * attenuate * calculateLight();
 	
