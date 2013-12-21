@@ -1427,7 +1427,6 @@
 			isa = PBXProject;
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "GesturePaint" */;
 			compatibilityVersion = "Xcode 2.4";
-			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
@@ -1711,6 +1710,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 			};
 			name = Debug;
 		};
@@ -1745,6 +1745,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 			};
 			name = Release;
 		};
@@ -1854,7 +1855,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = GesturePaintDebug;
-				SDKROOT = macosx;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1964,7 +1965,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = GesturePaint;
-				SDKROOT = macosx;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

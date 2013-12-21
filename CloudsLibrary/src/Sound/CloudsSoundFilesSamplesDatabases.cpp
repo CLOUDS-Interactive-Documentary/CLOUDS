@@ -12,30 +12,40 @@
 
 void CloudsSound::loadRTcmixFiles()
 {
-    cout << "==================" << endl;
-    cout << "LOADING SOUND DATA" << endl;
-    cout << "==================" << endl;
-        
-    loadrhythms("rhythms.txt", rhythms);
-    cout << "RHYTHMS:" << endl;
-    for(int i = 0;i<rhythms.size();i++)
+    if(LUKEDEBUG)
     {
-        for(int j = 0;j<rhythms[i].beats.size();j++)
+        cout << "==================" << endl;
+        cout << "LOADING SOUND DATA" << endl;
+        cout << "==================" << endl;
+    }
+    
+    loadrhythms("rhythms.txt", rhythms);
+    
+    if(LUKEDEBUG)
+    {
+        cout << "RHYTHMS:" << endl;
+        for(int i = 0;i<rhythms.size();i++)
         {
-            cout << rhythms[i].beats[j] << " ";
+            for(int j = 0;j<rhythms[i].beats.size();j++)
+            {
+                cout << rhythms[i].beats[j] << " ";
+            }
+            cout << endl;
         }
-        cout << endl;
     }
     
     loadpitches("pitches.txt", pitches);
-    cout << "PITCHES:" << endl;
-    for(int i = 0;i<pitches.size();i++)
+    if(LUKEDEBUG)
     {
-        for(int j = 0;j<pitches[i].notes.size();j++)
+        cout << "PITCHES:" << endl;
+        for(int i = 0;i<pitches.size();i++)
         {
-            cout << pitches[i].notes[j] << " ";
+            for(int j = 0;j<pitches[i].notes.size();j++)
+            {
+                cout << pitches[i].notes[j] << " ";
+            }
+            cout << endl;
         }
-        cout << endl;
     }
     
     //loadpresets("presets.txt", presets);
@@ -45,9 +55,12 @@ void CloudsSound::loadRTcmixFiles()
 
 void CloudsSound::loadRTcmixSamples()
 {
-    cout << "==============" << endl;
-    cout << "LOADING SOUNDS" << endl;
-    cout << "==============" << endl;
+    if(LUKEDEBUG)
+    {
+        cout << "==============" << endl;
+        cout << "LOADING SOUNDS" << endl;
+        cout << "==============" << endl;
+    }
     
     string spath = GetCloudsDataPath() + "sound/samps/";
     ofDirectory sdir(spath);
@@ -83,13 +96,57 @@ void CloudsSound::loadRTcmixSamples()
         string len = ofSplitString(foo.handle, "_")[2];
         len = ofSplitString(len, ".")[0];
         foo.numbeats = ofToInt(len);
-        //cout << foo.handle << " " << foo.bank << " " << foo.numbeats << " " << foo.length << endl;
         looperSamples.push_back(foo);
     }
     
-    cout << "====" << endl;
-    cout << "DONE" << endl;
-    cout << "====" << endl;
+    //load pattern data
+    ofDirectory ddir(spath);
+    //only show sound files
+    ddir.allowExt("txt");
+    //populate the directory object
+    ddir.listDir();
+    for(int i = 0;i < ddir.numFiles(); i++)
+    {
+        string sline;
+        ofFile dfile (ddir.getAbsolutePath() + "/" + ddir.getName(i));
+        if(!dfile.exists())
+        {
+            ofLogError("fucked");
+        }
+        ofBuffer dbuf(dfile);
+        while(!dbuf.isLastLine())
+        {
+            sline = dbuf.getNextLine();
+            vector <string> d = ofSplitString(sline, " ");
+            int pick = -1;
+            for(int j=0;j<looperSamples.size();j++)
+            {
+                if(d[0]==looperSamples[j].handle) pick = j;
+            }
+            if(pick>-1) {
+                for(int j = 1; j<d.size();j++)
+                {
+                    looperSamples[pick].pattern.push_back(d[j]);
+                }
+                
+                if(LUKEDEBUG) {
+                    cout << looperSamples[pick].handle << ": ";
+                    for(int j = 0;j<looperSamples[pick].pattern.size();j++)
+                    {
+                        cout << looperSamples[pick].pattern[j] << " ";
+                    }
+                    cout << endl;
+                }
+            }
+        }
+    }
+    
+    if(LUKEDEBUG)
+    {
+        cout << "============" << endl;
+        cout << "SAMPLES DONE" << endl;
+        cout << "============" << endl;
+    }
     
     
     
