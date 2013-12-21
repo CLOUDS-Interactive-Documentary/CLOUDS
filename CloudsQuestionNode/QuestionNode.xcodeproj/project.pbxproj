@@ -503,6 +503,9 @@
 		E70A1DD118656ADD000E50C4 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortal.h; sourceTree = "<group>"; };
 		E70A1DDB18656B34000E50C4 /* CloudsPortalRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortalRing.h; sourceTree = "<group>"; };
 		E70A1DDC18656B34000E50C4 /* CloudsPortalRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortalRing.cpp; sourceTree = "<group>"; };
+		E70CD8DC186625DF00955691 /* portal.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = portal.frag; sourceTree = "<group>"; };
+		E70CD8DD186625DF00955691 /* portal.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = portal.vert; sourceTree = "<group>"; };
+		E70CD8E41866265E00955691 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		E7380142183C871A0018AB96 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		E7380143183C871A0018AB96 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		E738FFE1183C86F50018AB96 /* QuestionNodeOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuestionNodeOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1217,6 +1220,7 @@
 		E70A1D8F18656830000E50C4 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
+				E70CD8DB186625DF00955691 /* shaders */,
 				E70A1DCF18656ADD000E50C4 /* Portal */,
 			);
 			path = RGBD;
@@ -1231,6 +1235,16 @@
 				E70A1DDC18656B34000E50C4 /* CloudsPortalRing.cpp */,
 			);
 			path = Portal;
+			sourceTree = "<group>";
+		};
+		E70CD8DB186625DF00955691 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E70CD8DD186625DF00955691 /* portal.vert */,
+				E70CD8DC186625DF00955691 /* portal.frag */,
+			);
+			name = shaders;
+			path = ../../../CloudsData/visualsystems/RGBD/shaders;
 			sourceTree = "<group>";
 		};
 		E7380141183C871A0018AB96 /* src */ = {
@@ -1293,6 +1307,7 @@
 		E7DD71F117DBC08D00AFB2DD /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E70CD8E41866265E00955691 /* CloudsGlobal.h */,
 				E70A1D8F18656830000E50C4 /* RGBD */,
 			);
 			path = src;

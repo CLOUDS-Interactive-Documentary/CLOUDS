@@ -14,6 +14,7 @@
 typedef struct {
 	int numSegments;
 	float curentRot;
+	float direction;
 	ofIndexType startIndex;
 	ofIndexType endIndex;
 	ofFloatColor innerColor;
@@ -26,6 +27,9 @@ class CloudsPortalRing {
   public:
 	CloudsPortalRing();
 	void setup(CloudsPortal* parent, ofVboMesh& portalGeo, int ringIndex);
+	void update();
+	
+  protected:
 	vector<PortalShard> shards;
 	void addVertsAtAngle(PortalShard& shard, float angle, bool endCap = false);
 	
