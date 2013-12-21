@@ -1144,6 +1144,7 @@ void CloudsVisualSystemTwitter::drawFeed(){
                 textColor.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1, .1, 1.),2);
                 
 
+                //SM: Local variables for drawings. Apologies to anyone who sees this that isnt me.
                 float avatarX = tweetFeedRect.x -avatarTweetGap;
                 float textX = tweetFeedRect.x;
                 float twitterHandleY = tweetFeedRect.y +i*heightOffset +textHeightOffset;
