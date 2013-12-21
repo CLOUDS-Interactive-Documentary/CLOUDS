@@ -101,19 +101,25 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     avatarSize = 10;
     tweetFeedRect = ofRectangle (0, 0,  ofGetWidth()/2, ofGetHeight());
     font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
-    tweetFont.loadFont(getVisualSystemDataPath() + "fonts/Helvetica.ttf",3);
+    tweetFont.loadFont(getVisualSystemDataPath() + "fonts/Helvetica.ttf",20);
+    tweetFontSmall.loadFont(getVisualSystemDataPath() + "fonts/Helvetica.ttf",8);
+    ofxFTGLTextAlignment alignment;
+    
+//    tweetFont.setAlignment(FTGL_ALIGN_RIGHT);
+
     ofEnableSmoothing();
     ofEnableAlphaBlending();
+    animationLerpRate = 0.02;
     
 }
 
 void CloudsVisualSystemTwitter::selfSetup()
 {
     /*  Use this to create new network for graphinsight
-     
+
      //Minimum num of users to add to tweeter links.
      minUserMentions = 0;
-     
+
      createNewGraph("twitterNewData0Men.net","tweets_");
      cout<<"created new network"<<endl;
      while(1);
@@ -206,14 +212,21 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     twitterFeedGui->addLabel("FEED RECT");
     twitterFeedGui->addMinimalSlider("FEED X", 1, ofGetWidth(), &tweetFeedRect.x);
     twitterFeedGui->addMinimalSlider("FEED Y", 1, ofGetHeight(), &tweetFeedRect.y);
-    twitterFeedGui->addMinimalSlider("HEIGHT OFFSET", 1, 100, &heightOffset);
+    twitterFeedGui->addMinimalSlider("HEIGHT OFFSET", 1, 500, &heightOffset);
     twitterFeedGui->addMinimalSlider("AVATAR TWEET GAP", 1, 100, &avatarTweetGap);
     twitterFeedGui->addMinimalSlider("TEXT HEIGHT OFFSET", 1, 100, &textHeightOffset);
-    twitterFeedGui->addMinimalSlider("GAP BETWEEN UPDATES", 1, 5, &minTimeGapForNextTweet);
-    twitterFeedGui->addRangeSlider("RANDOM OFFSET RANGE", 1,  10, &randomRangeMin, & randomRangeMax);
+    twitterFeedGui->addMinimalSlider("GAP BETWEEN UPDATES", 0.1, 5, &minTimeGapForNextTweet);
+    twitterFeedGui->addRangeSlider("RANDOM OFFSET RANGE", 0.1,  10, &randomRangeMin, & randomRangeMax);
+    twitterFeedGui->addLabel("OTHER PARAMS");
     twitterFeedGui->addIntSlider("NUM TWEETS",1, 20, &numberOfTweets);
     twitterFeedGui->addIntSlider("AVATAR SIZE", 10, 50, &avatarSize);
-
+    twitterFeedGui->addMinimalSlider("ANIMATION LERP RATE", 0.1, 1.0, &animationLerpRate);
+    twitterFeedGui->addLabel("FONT PARAMS");
+    twitterFeedGui->addMinimalSlider("FONT SIZE", 1, 20, &tweetFontSize);
+    twitterFeedGui->addMinimalSlider("LINE LENGTH", 1, 1000, &tweetLineLength);
+    twitterFeedGui->addMinimalSlider("SMALL FONT SIZE", 1, 20, &tweetSmallFontSize);
+    twitterFeedGui->addMinimalSlider("SMALL LINE LENGTH", 1, 1000, &tweetSmallLineLength);
+    twitterFeedGui->addMinimalSlider("STRING WIDTH CAP", 1, 100, &feedStringWidthCap);
     ofAddListener(twitterFeedGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(twitterFeedGui);
 	guimap[textGui->getName()] = twitterFeedGui;
@@ -509,6 +522,7 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
 					//error!!
 					continue;
 				}
+                
 				//set the edges
 				edgeMesh.getNormals()[currentIndeces.first].y = 1.0;
 				edgeMesh.getNormals()[currentIndeces.second].y = 1.0;
@@ -737,8 +751,12 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
     
     font.setSize(fontSize);
     font.setLineLength(stringWidth);
-    tweetFont.setSize(fontSize);
-    tweetFont.setLineLength(stringWidth);
+ 
+    tweetFont.setSize(tweetFontSize);
+    tweetFont.setLineLength(tweetLineLength);
+    
+    tweetFontSmall.setSize(tweetSmallFontSize);
+    tweetFontSmall.setLineLength(tweetSmallLineLength);
     
 }
 
@@ -1051,7 +1069,8 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
         }
     }
 
-    
+    animationLerpAmt = 0;
+    bAnimateFeed = true;
 //    cout<<"Updating selection"<<endl;
 //    if (activeTweetPairs.size() > numberOfTweets) {
 //        for(int j=0; j<numberOfTweets; j++ ){
@@ -1068,31 +1087,97 @@ void CloudsVisualSystemTwitter::drawFeed(){
     
     if (currentSelection.size() > 0) {
         
-         for(int i=0;i<currentSelection.size(); i++ ){
-             ofPushStyle();
+        if(bAnimateFeed){
+            for(int i=0;i<currentSelection.size(); i++ ){
+                ofPushStyle();
+                
+                float avatarX = tweetFeedRect.x -avatarTweetGap;
+                float textX = tweetFeedRect.x;
+//                float targetAvatarX = tweetFeedRect.x -avatarTweetGap;
+//                float targetTextX = tweetFeedRect.x;
+                
+                
+                float sourceTextY = tweetFeedRect.y + +(i-1)*heightOffset +textHeightOffset;
+                float sourceAvatarY = tweetFeedRect.y +(i-1)*heightOffset;
+                
+                float targetTextY = tweetFeedRect.y + +i*heightOffset +textHeightOffset;
+                float targetAvatarY = tweetFeedRect.y +i*heightOffset;
+                
+                float curTextY = ofLerp(sourceTextY, targetTextY, animationLerpAmt);
+                float curAvatarY = ofLerp(sourceAvatarY, targetAvatarY, animationLerpAmt);
+//                ofLer
+                textColor.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1, .1, 1.),2);
+                ofSetColor(textColor);
+                
+                //50 is a magic number right now
+                if(tweetFeedRect.y + i*heightOffset + textHeightOffset + 50 < ofGetHeight()){
+                    
+                    if (avatars.find(*currentSelection[i].first)== avatars.end() ){
+                        cout<<"Cant find avatar for : "<<*currentSelection[i].first<< "  using default"<<endl;
+                        avatars["default"].draw(avatarX,curAvatarY, avatarSize, avatarSize);
+                    }
+                    else{
+                        avatars[*currentSelection[i].first].draw(avatarX,curAvatarY, avatarSize, avatarSize);
+                    }
+                    
+                    tweetFont.drawString(ofToString(*currentSelection[i].first), textX, curTextY );
 
-             textColor.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1, .1, 1.),2);
-             ofSetColor(textColor);
+                    
+                    if(tweetFont.stringHeight(*currentSelection[i].second)>feedStringWidthCap){
+                        
+                        tweetFontSmall.drawString(ofToString(*currentSelection[i].second), textX, curTextY + 15 );
+                    }
+                    else{
+                        tweetFont.drawString(ofToString(*currentSelection[i].second), textX, curTextY + 15 );
+                    }
+                }
+                
+                ofPopStyle();
+                
+            }
+            if(animationLerpAmt >= 1){
+                bAnimateFeed = false;
+                animationLerpAmt = 0;
+            }
+            else{
+                animationLerpAmt  += animationLerpRate;
+            }
+//            bAnimate = false;
+        }
+        else{
+            for(int i=0;i<currentSelection.size(); i++ ){
+                ofPushStyle();
+                
+                textColor.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1, .1, 1.),2);
+                ofSetColor(textColor);
+                
+                //50 is a magic number right now
+                if(tweetFeedRect.y + i*heightOffset + textHeightOffset + 50 < ofGetHeight()){
+                    
+                    if (avatars.find(*currentSelection[i].first)== avatars.end() ){
+                        cout<<"Cant find avatar for : "<<*currentSelection[i].first<< "  using default"<<endl;
+                        avatars["default"].draw(tweetFeedRect.x -avatarTweetGap,tweetFeedRect.y +i*heightOffset, avatarSize, avatarSize);
+                    }
+                    else{
+                        avatars[*currentSelection[i].first].draw(tweetFeedRect.x -avatarTweetGap,tweetFeedRect.y +i*heightOffset, avatarSize, avatarSize);
+                    }
+                    
+                    tweetFont.drawString(ofToString(*currentSelection[i].first), tweetFeedRect.x, tweetFeedRect.y +i*heightOffset +textHeightOffset );
+                    tweetFont.drawString(ofToString(*currentSelection[i].second), tweetFeedRect.x, tweetFeedRect.y +i*heightOffset +textHeightOffset + 15 );
 
-             //50 is a magic number right now
-             if(tweetFeedRect.y + i*heightOffset + textHeightOffset + 50 < ofGetHeight()){
-                 
-                 if (avatars.find(*currentSelection[i].first)== avatars.end() ){
-                     cout<<"Cant find avatar for : "<<*currentSelection[i].first<< "  using default"<<endl;
-                     avatars["default"].draw(tweetFeedRect.x -avatarTweetGap,tweetFeedRect.y +i*heightOffset, avatarSize, avatarSize);
-                 }
-                 else{
-                     avatars[*currentSelection[i].first].draw(tweetFeedRect.x -avatarTweetGap,tweetFeedRect.y +i*heightOffset, avatarSize, avatarSize);
-                 }
-                 
-                 tweetFont.drawString(ofToString(*currentSelection[i].first), tweetFeedRect.x, tweetFeedRect.y +i*heightOffset +textHeightOffset );
-                 tweetFont.drawString(ofToString(*currentSelection[i].second), tweetFeedRect.x, tweetFeedRect.y +i*heightOffset +textHeightOffset + 15 );
-             }
-
-             
-             ofPopStyle();
-             
-         }
+                    if(tweetFont.stringHeight(*currentSelection[i].second)>feedStringWidthCap){
+                        
+                        tweetFontSmall.drawString(ofToString(*currentSelection[i].second), tweetFeedRect.x, tweetFeedRect.y +i*heightOffset +textHeightOffset + 15 );
+                    }
+                    else{
+                        tweetFont.drawString(ofToString(*currentSelection[i].second), tweetFeedRect.x, tweetFeedRect.y +i*heightOffset +textHeightOffset + 15 );
+                    }
+                }
+                
+                ofPopStyle();
+                
+            }
+        }
     }
     else{
         cout<<"selection is 0"<<endl;

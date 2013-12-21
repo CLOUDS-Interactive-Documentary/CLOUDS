@@ -95,17 +95,30 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     float randomRangeMin,randomRangeMax;
     int avatarSize;
     
+    float animationLerpAmt;
+    float animationLerpRate;
+    float feedStringWidthCap;
+    
     //text stuff
     ofxJSONElement result;
     ofxFTGLSimpleLayout font;
     ofxFTGLSimpleLayout tweetFont;
+    ofxFTGLSimpleLayout tweetFontSmall;
+//    ofxFTGLSimpleLayout tweetFontSmall;
     ofxFTGLTextAlignment textAlign;
+    
     
 
     float stringWidth;
     float fontSize;
     int minUserMentions;
     
+    float tweetFontSize;
+    float tweetLineLength;
+
+    
+    float tweetSmallFontSize;
+    float tweetSmallLineLength;
     //draw stuff
     void loadMesh();
     void updateMeshFromTweets(int index);
@@ -120,6 +133,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     map<pair<string, string>, pair<int, int> >lineIndexPairs;
     map<string,int> numberOfMentions;
     map<string,int> userNameIdMap;
+
     int currentDateIndex;
     float dateIndexMin, dateIndexMax;
     void updateLabelWithCurrentMeshName(string name);
@@ -130,6 +144,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bRenderFeed;
     bool bAnimate;
     bool rotateModel;
+    bool bAnimateFeed;
     
 
     
