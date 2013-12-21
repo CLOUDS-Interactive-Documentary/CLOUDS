@@ -22,6 +22,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     
     float t, beatoffset;
     float i, j;
+    lukeSimpleMelody mel;
     
     // trap array shit...
     if(mr>rhythms.size()-1) mr=rhythms.size()-1;
@@ -55,6 +56,12 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // MELODIC INSTRUMENTS
     //
     
+    // META
+    if(arg_a=="simple")
+    {
+        mel = simplemelodies[ofToInt(arg_b)];
+    }
+    
     // SLOWWAVES
     if (mo=="slowwaves")
     {
@@ -75,7 +82,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
         else
         {
-            melodySolver m(arg_a, pitches[mh]);
+            melodySolver m(arg_a, pitches[mh], mel);
             int curpitch;
             float freq;
             
@@ -94,7 +101,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // SLOWWAVESHI
     if (mo=="slowwaveshi")
     {
-        melodySolver m(arg_a, pitches[mh]);
+        melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
 
@@ -118,7 +125,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // WAVESHIPATTERNED
     if (mo=="waveshipatterned")
     {
-        melodySolver m(arg_a, pitches[mh]);
+        melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
 
@@ -145,7 +152,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // LOWWAVEPULSE
     if (mo=="lowwavepulse")
     {
-        melodySolver m(arg_a, pitches[mh]);
+        melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
         
@@ -187,7 +194,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
         else
         {
-            melodySolver m(arg_a, pitches[mh]);
+            melodySolver m(arg_a, pitches[mh], mel);
             int curpitch;
             float freq;
 
@@ -209,7 +216,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // KISS MY ARP SYNCH
     if (mo=="kissmyarpsynch")
     {
-        melodySolver m(arg_a, pitches[mh]);
+        melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
         
@@ -233,7 +240,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // KISS MY ARP FAST
     if (mo=="kissmyarpfast")
     {
-        melodySolver m(arg_a, pitches[mh]);
+        melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
         
@@ -256,7 +263,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // WAVEGUIDE
     if (mo=="waveguide")
     {
-        melodySolver m(arg_a, pitches[mh]);
+        melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
         int preset = 3;
@@ -271,7 +278,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // HELMHOLTZ
     if (mo=="helmholtz")
     {
-        melodySolver m(arg_a, pitches[mh]);
+        melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
         
@@ -288,7 +295,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // FILTERNOISE
     if (mo=="filternoise")
     {
-        melodySolver m(arg_a, pitches[mh]);
+        melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
         for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(8, 32)))
@@ -304,7 +311,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     {
         // patch
         PATCHSYNTH("STRUM2", "aux 6-7 out");
-        melodySolver m(arg_a, pitches[mh]);
+        melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
         for(i = 0;i<musicdur;i+=tempo*4.0)
@@ -321,7 +328,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // STRUMSINE
     if (mo=="strumsine")
     {
-        melodySolver m(arg_a, pitches[mh]);
+        melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
         
@@ -351,7 +358,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // MODALBEATS
     if (mo=="modalbeats")
     {
-        melodySolver m(arg_a, pitches[mh]);
+        melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
         float amp;
@@ -372,7 +379,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // WAVEGUIDEBEATS
     if (mo=="waveguidebeats")
     {
-        melodySolver m(arg_a, pitches[mh]);
+        melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
         float amp;
