@@ -274,7 +274,7 @@ int lindenSequencer::tick()
 // precompute markov chain for pitch array
 void precomputemarkov(lukePitchArray& p)
 {
-    cout << "TEST MARKOV: " << p.notes.size() << endl;
+    if(LUKEDEBUG) cout << "TEST MARKOV: " << p.notes.size() << endl;
     
     // step one - analyze
     int tabsize = 0;
@@ -314,16 +314,19 @@ void precomputemarkov(lukePitchArray& p)
     
     
     // DEBUG
-    cout << "markov table:" << endl;
-    for(int i=0;i<p.markov.size();i++)
+    if(LUKEDEBUG)
     {
-        cout << "  " << i << ": ";
-        for(int j = 0;j<p.markov[i].size();j++)
+        cout << "markov table:" << endl;
+        for(int i=0;i<p.markov.size();i++)
         {
-            cout << p.markov[i][j] << " ";
-        }
-        cout << endl;
+            cout << "  " << i << ": ";
+            for(int j = 0;j<p.markov[i].size();j++)
+            {
+                cout << p.markov[i][j] << " ";
+            }
+            cout << endl;
         
+        }
     }
     
     

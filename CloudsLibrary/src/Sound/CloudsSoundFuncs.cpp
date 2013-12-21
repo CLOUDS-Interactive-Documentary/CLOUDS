@@ -43,7 +43,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     
     outskip = outskip + beatoffset; // fix beat offset to get things in time
     
-    cout << "   start: " << outskip << " " << "s, dur: " << musicdur << " " << "s, orch: " << mo << ", harmony: " << mh << ", rhythm: " << mr << endl;
+    if(LUKEDEBUG) cout << "   start: " << outskip << " " << "s, dur: " << musicdur << " " << "s, orch: " << mo << ", harmony: " << mh << ", rhythm: " << mr << endl;
     
     //
     // =========================
@@ -199,7 +199,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
                 pitch+=pitches[mh].basenote;
                 pitch+=oct;
                 pitch = scale(pitch, pitches[mh].scale);
-                // cout << "doing pitch: " << ptos(pitch) << endl;
                 freq = mtof(pitch);
                 WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
                 WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
@@ -223,7 +222,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
                 pitch+=pitches[mh].basenote;
                 pitch+=oct;
                 pitch = scale(pitch, pitches[mh].scale);
-                // cout << "doing pitch: " << ptos(pitch) << endl;
                 freq = mtof(pitch);
                 WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
                 WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
@@ -247,7 +245,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
             pitch+=pitches[mh].basenote;
             pitch+=oct;
             pitch = scale(pitch, pitches[mh].scale);
-            // cout << "doing pitch: " << ptos(pitch) << endl;
             freq = mtof(pitch);
             WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
             WAVETABLE(outskip+i+tempo*3, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
@@ -301,6 +298,25 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
             FNOISE3(outskip+i, ofRandom(1., 3.), 0.25, 1.0, ofRandom(0.,1.), freq, freq*2.0, freq*3.0, 90., "amp_triangle");
         }
      }
+    
+    // STRUMECHO
+    if (mo=="strumecho")
+    {
+        // patch
+        PATCHSYNTH("STRUM2", "aux 6-7 out");
+        melodySolver m(arg_a, pitches[mh]);
+        int curpitch;
+        float freq;
+        for(i = 0;i<musicdur;i+=tempo*4.0)
+        {
+            curpitch = m.tick();
+            float freq = mtof(curpitch);
+            STRUM(outskip+i, 1., 0.5, freq, ofRandom(1.0, 5.0), ofRandom(1.,5.), ofRandom(1.0));
+        }
+        // repatch
+        PANECHO(outskip, 0, musicdur+5.0, 1., tempo*3., tempo*4., 0.5, 2.);
+        PATCHSYNTH("STRUM2", "aux 0-1 out");
+    }
 
     // STRUMSINE
     if (mo=="strumsine")
@@ -482,9 +498,16 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
             if(looperSamples[i].bank==arg_a)
             {
                 cout << "playing: " << looperSamples[i].handle << endl;
-                for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
+                int pptr = 0; // pattern pointer
+                for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*2.0)
                 {
-                    SOUNDLOOP(outskip+j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25, looperSamples[i].handle);
+                    if(looperSamples[i].pattern[pptr]=="A") { // first half
+                        SOUNDLOOP(outskip+j, 0, looperSamples[i].length/2.0, tempo*looperSamples[i].numbeats*2, 0.25, looperSamples[i].handle);
+                    }
+                    else if(looperSamples[i].pattern[pptr]=="B") { // second half
+                        SOUNDLOOP(outskip+j, looperSamples[i].length/2.0, looperSamples[i].length/2.0, tempo*looperSamples[i].numbeats*2.0, 0.25, looperSamples[i].handle);
+                    }
+                    pptr = (pptr+1) % looperSamples[i].pattern.size();
                 }
             }
         }

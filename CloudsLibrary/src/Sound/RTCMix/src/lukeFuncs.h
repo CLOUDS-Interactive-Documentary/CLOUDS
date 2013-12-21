@@ -13,7 +13,7 @@
 #include "ofxXmlSettings.h"
 
 #define MAXAMP 32768.0 // maximum amp for oscillators (-1., 1) = 2^15
-#define LUKEDEBUG true
+#define LUKEDEBUG false
 
 // BGG rtcmix stuff
 extern "C" {
@@ -64,6 +64,7 @@ struct lukeSample {
     string bank;
     float length;
     float numbeats;
+    vector <string> pattern;
 };
 
 struct lukeNote {
@@ -134,9 +135,12 @@ void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan
 void REVERB(double outskip, double time);
 float LOADSOUND(string file, string handle);
 void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle);
-void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, string handle);
+void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, double amp, string handle);
 void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan);
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
 void SCHEDULEBANG(double time);
+
+void PATCHSYNTH(string inst, string output);
+void PATCHFX(string inst, string input, string output);
 
 #endif

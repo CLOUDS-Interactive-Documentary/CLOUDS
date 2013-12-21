@@ -48,7 +48,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
             precomputemarkov(pitches[i]);
         }
         
-		targetAmp = .7; // wonder what this is?
+		targetAmp = 1.0; // wonder what this is?
 		
         MASTERAMP = 1;
         MASTERTEMPO = 120;

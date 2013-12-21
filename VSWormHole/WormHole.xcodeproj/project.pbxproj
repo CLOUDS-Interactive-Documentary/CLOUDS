@@ -1361,10 +1361,10 @@
 		E7380206183C89E40018AB96 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				504016BC185D4BB10039386C /* CloudsVisualSystemWormHole.cpp */,
 				504016BD185D4BB10039386C /* CloudsVisualSystemWormHole.h */,
-				504016C0185D5FB90039386C /* CloudsPathCamera.cpp */,
+				504016BC185D4BB10039386C /* CloudsVisualSystemWormHole.cpp */,
 				504016C1185D5FB90039386C /* CloudsPathCamera.h */,
+				504016C0185D5FB90039386C /* CloudsPathCamera.cpp */,
 			);
 			name = vs_src;
 			path = ../WormHole;
@@ -1491,7 +1491,6 @@
 			isa = PBXProject;
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "WormHole" */;
 			compatibilityVersion = "Xcode 2.4";
-			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
@@ -1778,6 +1777,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 			};
 			name = Debug;
 		};
@@ -1812,6 +1812,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 			};
 			name = Release;
 		};

@@ -20,7 +20,9 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
     dir.listDir(getVisualSystemDataPath() + "rules");
     for (unsigned i = 0; i < dir.size(); ++i)
     {
-        rulesFiles.push_back(dir.getName(i));
+        rulesFileNames.push_back(dir.getName(i));
+        rules.push_back(ofxRules());
+        rules.back().load(dir.getPath(i));
         rulesWeights.push_back(1.f);
     }
 }
@@ -77,10 +79,7 @@ void CloudsVisualSystemFlying::generate()
     {
         vector<float>::const_iterator it = lower_bound(normalisedWeights.begin(), normalisedWeights.end(), ofRandomuf());
         unsigned idx = it - normalisedWeights.begin();
-        ostringstream oss;
-        oss << getVisualSystemDataPath() << "rules/" << rulesFiles[idx];
-        plantMeshes.push_back(ofxRules());
-        plantMeshes.back().load(oss.str());
+        plantMeshes.push_back(rules[idx]);
         plantMeshes.back().start();
         while (plantMeshes.back().step()) ;
     }
@@ -282,9 +281,9 @@ void CloudsVisualSystemFlying::selfSetupRenderGui()
     rdrGui->addSlider("fogEnd", 100.f, 4000.f, &fogEnd);
     rdrGui->addLabel("Plants");
     rdrGui->addSlider("numNearbyPlants", 20, 500, &numNearbyPlants);
-    for (unsigned i = 0; i < rulesFiles.size(); ++i)
+    for (unsigned i = 0; i < rulesFileNames.size(); ++i)
     {
-        rdrGui->addSlider(rulesFiles[i] + " weighting", 0.f, 1.f, &rulesWeights[i]);
+        rdrGui->addSlider(rulesFileNames[i] + " weighting", 0.f, 1.f, &rulesWeights[i]);
     }
     rdrGui->addSlider("growDist", 100.f, 1000.f, &growDist);
     rdrGui->addSlider("camAvoidDist", 0.f, 1000.f, &camAvoidDist);

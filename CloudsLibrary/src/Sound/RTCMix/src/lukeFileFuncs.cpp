@@ -67,10 +67,12 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
 {
     ofxXmlSettings thestuff;
     
-    cout << "=============" << endl;
-    cout << "SCORE PRESETS:" << endl;
-    cout << "=============" << endl;
-    
+    if(LUKEDEBUG)
+    {
+        cout << "=============" << endl;
+        cout << "SCORE PRESETS:" << endl;
+        cout << "=============" << endl;
+    }
     
     if(thestuff.loadFile(GetCloudsDataPath()+"sound/"+f))
     {
@@ -199,34 +201,38 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
                     foo.arg_b.erase(foo.arg_b.begin()+j);
                 }
             }
-            cout << "PRESET XML " << i << ": " << foo.name << endl;
-            for(int j =0;j<foo.instruments.size();j++)
-            {
-                cout << "   orchestration: " << foo.instruments[j] << endl;
-                cout << "      arg_a: " << foo.arg_a[j] << endl;
-                cout << "      arg_b: " << foo.arg_b[j] << endl;
+            if(LUKEDEBUG) {
+                cout << "PRESET XML " << i << ": " << foo.name << endl;
+                for(int j =0;j<foo.instruments.size();j++)
+                {
+                    cout << "   orchestration: " << foo.instruments[j] << endl;
+                    cout << "      arg_a: " << foo.arg_a[j] << endl;
+                    cout << "      arg_b: " << foo.arg_b[j] << endl;
+                }
+                cout << "   harmony: " << foo.harmony << endl;
+                cout << "   rhythm: " << foo.rhythm << endl;
+                cout << "   tempo: " << foo.tempo << endl;
+                cout << "   dichotomies:" << endl;
+                cout << "      art vs. tech: " << foo.dichomin[0] << " to " << foo.dichomax[0] << endl;
+                cout << "      emotional vs. logical: " << foo.dichomin[1] << " to " << foo.dichomax[1] << endl;
+                cout << "      breakthrough vs. obstacle: " << foo.dichomin[2] << " to " << foo.dichomax[2] << endl;
+                cout << "      inspiring vs. discouraging: " << foo.dichomin[3] << " to " << foo.dichomax[3] << endl;
+                cout << "      fun vs. serious: " << foo.dichomin[4] << " to " << foo.dichomax[4] << endl;
+                cout << "      sincere vs. ironic: " << foo.dichomin[5] << " to " << foo.dichomax[5] << endl;
+                cout << "      mindblowing vs. mundane: " << foo.dichomin[6] << " to " << foo.dichomax[6] << endl;
+                cout << "      rational vs. surreal: " << foo.dichomin[7] << " to " << foo.dichomax[7] << endl;
             }
-            cout << "   harmony: " << foo.harmony << endl;
-            cout << "   rhythm: " << foo.rhythm << endl;
-            cout << "   tempo: " << foo.tempo << endl;
-            cout << "   dichotomies:" << endl;
-            cout << "      art vs. tech: " << foo.dichomin[0] << " to " << foo.dichomax[0] << endl;
-            cout << "      emotional vs. logical: " << foo.dichomin[1] << " to " << foo.dichomax[1] << endl;
-            cout << "      breakthrough vs. obstacle: " << foo.dichomin[2] << " to " << foo.dichomax[2] << endl;
-            cout << "      inspiring vs. discouraging: " << foo.dichomin[3] << " to " << foo.dichomax[3] << endl;
-            cout << "      fun vs. serious: " << foo.dichomin[4] << " to " << foo.dichomax[4] << endl;
-            cout << "      sincere vs. ironic: " << foo.dichomin[5] << " to " << foo.dichomax[5] << endl;
-            cout << "      mindblowing vs. mundane: " << foo.dichomin[6] << " to " << foo.dichomax[6] << endl;
-            cout << "      rational vs. surreal: " << foo.dichomin[7] << " to " << foo.dichomax[7] << endl;
-            
             p.push_back(foo); // add to preset list
         }
         thestuff.popTag();
     }
     
-    cout << "====" << endl;
-    cout << "DONE" << endl;
-    cout << "====" << endl;
+    if(LUKEDEBUG)
+    {
+        cout << "====" << endl;
+        cout << "DONE" << endl;
+        cout << "====" << endl;
+    }
     
     
     
