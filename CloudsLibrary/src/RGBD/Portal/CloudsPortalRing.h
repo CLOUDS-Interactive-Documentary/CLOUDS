@@ -7,15 +7,21 @@
  *
  */
 
+#pragma once
+
+#include "ofMain.h"
+
 typedef struct {
 	float curentRot;
-	float
+	ofIndexType startIndex;
+	ofIndexType endIndex;
 } PortalShard;
 
+class CloudsPortal;
 class CloudsPortalRing {
   public:
 	CloudsPortalRing();
-	void setup();
+	void setup(CloudsPortal* parent, ofVboMesh& portalGeo, int ringIndex);
 	vector<PortalShard> shards;
 	float radius;
 	float thickness;

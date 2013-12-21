@@ -17,6 +17,18 @@ class CloudsPortal {
 	~CloudsPortal();	
 	
 	void setup();
-	vector<CloudsPortalRing> rings;
+	void update();
+	void draw();
 	
+	float ringSegments;
+	float ringRadiusStep;
+	float ringThickness;
+	float ringThicknessMultiplier;
+	float ringStartRadius;
+	float ringDensity;
+	
+	ofVec3f position;
+	vector<CloudsPortalRing> rings;
+
+	ofVboMesh portalGeo;
 };
