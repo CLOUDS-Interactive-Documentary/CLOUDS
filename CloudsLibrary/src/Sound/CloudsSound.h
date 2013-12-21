@@ -77,6 +77,7 @@ class CloudsSound {
 	
     vector<lukeRhythm> rhythms;
     vector<lukePitchArray> pitches;
+    vector<lukeSimpleMelody> simplemelodies;
     vector<lukePreset> presets;
 
     vector<lukeSample> looperSamples;

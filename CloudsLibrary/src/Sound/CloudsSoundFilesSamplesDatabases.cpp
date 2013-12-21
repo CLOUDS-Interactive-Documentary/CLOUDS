@@ -47,7 +47,21 @@ void CloudsSound::loadRTcmixFiles()
             cout << endl;
         }
     }
-    
+
+    loadsimplemelodies("simplemelodies.txt", simplemelodies);
+    if(LUKEDEBUG)
+    {
+        cout << "SIMPLE MELODIES:" << endl;
+        for(int i = 0;i<simplemelodies.size();i++)
+        {
+            for(int j = 0;j<simplemelodies[i].notes.size();j++)
+            {
+                cout << simplemelodies[i].notes[j] << " ";
+            }
+            cout << endl;
+        }
+    }
+
     //loadpresets("presets.txt", presets);
     loadpresets_xml("soundpresets.xml", presets);
     
