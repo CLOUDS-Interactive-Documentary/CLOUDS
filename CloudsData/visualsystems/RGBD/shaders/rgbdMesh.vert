@@ -47,6 +47,7 @@ uniform float headFalloff;
 uniform float edgeAttenuateBase;
 uniform float edgeAttenuateExponent;
 uniform float meshRetractionFalloff;
+uniform float forceGeoRectraction;
 //LIGHT
 uniform vec3 lightPosition;
 
@@ -136,7 +137,7 @@ void main(void){
 	headPositionAttenuation = map( distance(basePos.xyz,headPosition), headMinRadius+headFalloff, headMinRadius, .0, 1.0);
 	
 	//float headRetraction = mix(edgeAttenuate, 1.0, meshRetractionFalloff);
-	float headRetraction = pow(map(headPositionAttenuation, 0.0, meshRetractionFalloff, 0.0, 1.0), 2.0);
+	float headRetraction = pow(map(headPositionAttenuation, 0.0, meshRetractionFalloff, 0.0, 1.0), 2.0) * (1.0-forceGeoRectraction);
 	
 //	headRetraction = 1.0;
 	vec2 samplePosExtended = samplePos + gl_Normal.xy * triangleExtend * headRetraction;
