@@ -8,7 +8,7 @@ void testApp::setup(){
 	
 	ofToggleFullscreen();
     ofEnableSmoothing();
-	ofBackground(0,0,255);
+	ofBackground(0,0,0);
 //	currentAct = NULL;
 //	rebuildAct = false;
 //	
@@ -99,7 +99,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 //	ofBackground(mouseX);
-
+	ofDrawBitmapString(ofToString(ofGetFrameRate()), 20,20);
 	hud.draw();
 //    if(currentAct != NULL){
 //		currentAct->drawDebug();

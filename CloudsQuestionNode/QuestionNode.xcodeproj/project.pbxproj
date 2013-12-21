@@ -489,7 +489,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* EmptyDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmptyDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* QuestionNodeDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuestionNodeDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
@@ -503,9 +503,12 @@
 		E70A1DD118656ADD000E50C4 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortal.h; sourceTree = "<group>"; };
 		E70A1DDB18656B34000E50C4 /* CloudsPortalRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortalRing.h; sourceTree = "<group>"; };
 		E70A1DDC18656B34000E50C4 /* CloudsPortalRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortalRing.cpp; sourceTree = "<group>"; };
+		E70CD8DC186625DF00955691 /* portal.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = portal.frag; sourceTree = "<group>"; };
+		E70CD8DD186625DF00955691 /* portal.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = portal.vert; sourceTree = "<group>"; };
+		E70CD8E41866265E00955691 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		E7380142183C871A0018AB96 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		E7380143183C871A0018AB96 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
-		E738FFE1183C86F50018AB96 /* EmptyOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmptyOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E738FFE1183C86F50018AB96 /* QuestionNodeOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuestionNodeOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E738FFE2183C86F60018AB96 /* Empty copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Empty copy-Info.plist"; path = "/Users/focus/Documents/Xcode/oF/of_gitRelease_obviousjim/openFrameworks/apps/CLOUDS/VSEmpty/Empty copy-Info.plist"; sourceTree = "<absolute>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7846FB61714899C00705E7A /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
@@ -1188,8 +1191,8 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* EmptyDebug.app */,
-				E738FFE1183C86F50018AB96 /* EmptyOculus.app */,
+				E4B69B5B0A3A1756003C02F2 /* QuestionNodeDebug.app */,
+				E738FFE1183C86F50018AB96 /* QuestionNodeOculus.app */,
 				E738FFE2183C86F60018AB96 /* Empty copy-Info.plist */,
 			);
 			sourceTree = "<group>";
@@ -1217,6 +1220,7 @@
 		E70A1D8F18656830000E50C4 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
+				E70CD8DB186625DF00955691 /* shaders */,
 				E70A1DCF18656ADD000E50C4 /* Portal */,
 			);
 			path = RGBD;
@@ -1231,6 +1235,16 @@
 				E70A1DDC18656B34000E50C4 /* CloudsPortalRing.cpp */,
 			);
 			path = Portal;
+			sourceTree = "<group>";
+		};
+		E70CD8DB186625DF00955691 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E70CD8DD186625DF00955691 /* portal.vert */,
+				E70CD8DC186625DF00955691 /* portal.frag */,
+			);
+			name = shaders;
+			path = ../../../CloudsData/visualsystems/RGBD/shaders;
 			sourceTree = "<group>";
 		};
 		E7380141183C871A0018AB96 /* src */ = {
@@ -1293,6 +1307,7 @@
 		E7DD71F117DBC08D00AFB2DD /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E70CD8E41866265E00955691 /* CloudsGlobal.h */,
 				E70A1D8F18656830000E50C4 /* RGBD */,
 			);
 			path = src;
@@ -1301,9 +1316,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* Empty */ = {
+		E4B69B5A0A3A1756003C02F2 /* QuestionNode */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Empty" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "QuestionNode" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -1315,14 +1330,14 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = Empty;
+			name = QuestionNode;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* EmptyDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* QuestionNodeDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E738FF76183C86F50018AB96 /* EmptyOculus */ = {
+		E738FF76183C86F50018AB96 /* QuestionNodeOculus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E738FFDE183C86F50018AB96 /* Build configuration list for PBXNativeTarget "EmptyOculus" */;
+			buildConfigurationList = E738FFDE183C86F50018AB96 /* Build configuration list for PBXNativeTarget "QuestionNodeOculus" */;
 			buildPhases = (
 				E738FF79183C86F50018AB96 /* Sources */,
 				E738FFC4183C86F50018AB96 /* Frameworks */,
@@ -1334,9 +1349,9 @@
 			dependencies = (
 				E738FF77183C86F50018AB96 /* PBXTargetDependency */,
 			);
-			name = EmptyOculus;
+			name = QuestionNodeOculus;
 			productName = myOFApp;
-			productReference = E738FFE1183C86F50018AB96 /* EmptyOculus.app */;
+			productReference = E738FFE1183C86F50018AB96 /* QuestionNodeOculus.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1344,8 +1359,9 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Empty" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "QuestionNode" */;
 			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
@@ -1364,8 +1380,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* Empty */,
-				E738FF76183C86F50018AB96 /* EmptyOculus */,
+				E4B69B5A0A3A1756003C02F2 /* QuestionNode */,
+				E738FF76183C86F50018AB96 /* QuestionNodeOculus */,
 			);
 		};
 /* End PBXProject section */
@@ -1761,7 +1777,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = EmptyDebug;
+				PRODUCT_NAME = QuestionNodeDebug;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1871,7 +1887,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = Empty;
+				PRODUCT_NAME = QuestionNode;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2000,7 +2016,7 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = EmptyOculus;
+				PRODUCT_NAME = QuestionNodeOculus;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2128,7 +2144,7 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release/libovr.a",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = EmptyOculus;
+				PRODUCT_NAME = QuestionNodeOculus;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2137,7 +2153,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Empty" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "QuestionNode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -2146,7 +2162,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Empty" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "QuestionNode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,
@@ -2155,7 +2171,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E738FFDE183C86F50018AB96 /* Build configuration list for PBXNativeTarget "EmptyOculus" */ = {
+		E738FFDE183C86F50018AB96 /* Build configuration list for PBXNativeTarget "QuestionNodeOculus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E738FFDF183C86F50018AB96 /* Debug */,

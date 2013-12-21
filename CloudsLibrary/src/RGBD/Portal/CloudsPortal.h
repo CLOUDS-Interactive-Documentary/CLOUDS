@@ -27,6 +27,7 @@ class CloudsPortal {
 	float ringStartRadius;
 	float ringDensity;
 	
+	ofShader portalShader;
 	ofVec3f position;
 	vector<CloudsPortalRing> rings;
 
