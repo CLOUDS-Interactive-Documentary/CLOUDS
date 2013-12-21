@@ -29,6 +29,9 @@ void CloudsPortalRing::setup(CloudsPortal* parent, ofVboMesh& portalGeo, int rin
 	cout << "	deg / seg " << degreesPerSegment << endl;
 	cout << "	deg / quad " << degreesPerQuad << endl;
 	
+	shardColorIn = shardColorOut = ofFloatColor::fromHsb(ofRandomuf(), 1., 1.);
+	shardColorIn.setSaturation(.5);
+	
 	//for now make one shard
 	PortalShard shard;
 	shard.startIndex = portalGeo.getNumVertices();
@@ -68,7 +71,7 @@ void CloudsPortalRing::addVertsAtAngle(float angle, bool endCap){
 	cout << "added geo at " << vInner << " " << vOuter << endl;
 	
 	geo->addVertex(vInner);
-	geo->addColor(endCap ? ofFloatColor(0,0) : ofFloatColor::red);
+	geo->addColor(endCap ? ofFloatColor(0,0) : shardColorIn);
 	geo->addVertex(vOuter);
-	geo->addColor(endCap ? ofFloatColor(0,0) : ofFloatColor::blue);
+	geo->addColor(endCap ? ofFloatColor(0,0) : shardColorOut);
 }

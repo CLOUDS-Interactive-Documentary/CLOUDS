@@ -30,5 +30,7 @@ class CloudsPortalRing {
 	float radius;
 	float degreesPerSegment;
 	float degreesPerQuad;
+	ofFloatColor shardColorOut;
+	ofFloatColor shardColorIn;
 	ofVboMesh* geo;
 };
