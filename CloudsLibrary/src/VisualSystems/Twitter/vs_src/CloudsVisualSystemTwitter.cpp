@@ -1096,9 +1096,6 @@ void CloudsVisualSystemTwitter::drawFeed(){
                 
                 float avatarX = tweetFeedRect.x -avatarTweetGap;
                 float textX = tweetFeedRect.x;
-//                float targetAvatarX = tweetFeedRect.x -avatarTweetGap;
-//                float targetTextX = tweetFeedRect.x;
-                
                 
                 float sourceTextY = tweetFeedRect.y + +(i-1)*heightOffset +textHeightOffset;
                 float sourceAvatarY = tweetFeedRect.y +(i-1)*heightOffset;
@@ -1108,11 +1105,11 @@ void CloudsVisualSystemTwitter::drawFeed(){
                 
                 float curTextY = ofLerp(sourceTextY, targetTextY, animationLerpAmt);
                 float curAvatarY = ofLerp(sourceAvatarY, targetAvatarY, animationLerpAmt);
-//                ofLer
+                
                 textColor.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1, .1, 1.),2);
                 ofSetColor(textColor);
                 
-                //50 is a magic number right now
+                //50 is a magic number right now using this to not draw tweets that intersect with the edge of the screen
                 if(tweetFeedRect.y + i*heightOffset + textHeightOffset + 50 < ofGetHeight()){
                     
                     if (avatars.find(*currentSelection[i].first)== avatars.end() ){
@@ -1124,15 +1121,8 @@ void CloudsVisualSystemTwitter::drawFeed(){
                     }
                     
                     tweetFont.drawString(ofToString(*currentSelection[i].first), textX, curTextY );
+                    tweetFont.drawString(ofToString(*currentSelection[i].second), textX, curTextY + 15 );
 
-                    
-                    if(tweetFont.stringHeight(*currentSelection[i].second)>feedStringWidthCap){
-                        
-                        tweetFontSmall.drawString(ofToString(*currentSelection[i].second), textX, curTextY + 15 );
-                    }
-                    else{
-                        tweetFont.drawString(ofToString(*currentSelection[i].second), textX, curTextY + 15 );
-                    }
                 }
                 
                 ofPopStyle();
@@ -1145,7 +1135,7 @@ void CloudsVisualSystemTwitter::drawFeed(){
             else{
                 animationLerpAmt  += animationLerpRate;
             }
-//            bAnimate = false;
+
         }
         else{
             for(int i=0;i<currentSelection.size(); i++ ){
@@ -1156,15 +1146,28 @@ void CloudsVisualSystemTwitter::drawFeed(){
 
                 float avatarX = tweetFeedRect.x -avatarTweetGap;
                 float textX = tweetFeedRect.x;
+                float twitterHandleY = tweetFeedRect.y +i*heightOffset +textHeightOffset;
+
+                //TODO: Add the tweet y offset to the GUI
+                float tweetY = tweetFeedRect.y +i*heightOffset +textHeightOffset + 15;
+                
                 float menuX = tweetFeedRect.x + tweetFont.getLineLength() - tweetDeckMenu.width + tweetDeckWidthOffset;
                 float menuY = tweetFeedRect.y +(i +1)*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset;
                 
-                ofSetColor(ofFloatColor(0.2,0.2,0.2,textColor.a - 0.1));
-                ofFill();
-//                ofRect(avatarX - 3, tweetFeedRect.y +i*heightOffset, tweetFeedRect.x + tweetFont.getLineLength(), menuY - tweetDeckLineOffset +5);
+                float lineX1 = avatarX -3;
+                float lineY1 = menuY - tweetDeckLineOffset;
+                float lineX2 = tweetFeedRect.x + tweetFont.getLineLength();
+                float lineY2 =  menuY - tweetDeckLineOffset;
+
+                //TODO: Add this with the params
+//                ofSetColor(ofFloatColor(0.2,0.2,0.2,textColor.a - 0.1));
+//                ofFill();
+//                ofRect(tweetFeedRect);
+                
                 ofNoFill();
                 ofSetColor(textColor);
-                //50 is a magic number right now
+                
+                //50 is a magic number right now using this to not draw tweets that intersect with the edge of the screen
                 if(tweetFeedRect.y + i*heightOffset + textHeightOffset + 50 < ofGetHeight()){
                     
                     if (avatars.find(*currentSelection[i].first)== avatars.end() ){
@@ -1175,13 +1178,13 @@ void CloudsVisualSystemTwitter::drawFeed(){
                         avatars[*currentSelection[i].first].draw(avatarX,tweetFeedRect.y +i*heightOffset, avatarSize, avatarSize);
                     }
                     
-                    twitterHandleFont.drawString(ofToString(*currentSelection[i].first), textX, tweetFeedRect.y +i*heightOffset +textHeightOffset );
-                    tweetFont.drawString(ofToString(*currentSelection[i].second), textX, tweetFeedRect.y +i*heightOffset +textHeightOffset + 15 );
+                    twitterHandleFont.drawString(ofToString(*currentSelection[i].first), textX, twitterHandleY);
+                    tweetFont.drawString(ofToString(*currentSelection[i].second), textX, tweetY);
                     
 
                     ofSetColor(ofFloatColor(0.5,0.5,0.5,textColor.a-0.1));
                     tweetDeckMenu.draw(menuX,menuY, tweetDeckWidth, tweetDeckHeight);
-                    ofLine(avatarX -3,menuY - tweetDeckLineOffset, tweetFeedRect.x + tweetFont.getLineLength(), menuY - tweetDeckLineOffset);
+                    ofLine( lineX1 ,lineY1,lineX2 , lineY2);
 
                 }
                 

@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>TWITTER FEED</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>332.000000000</XPosition>
-    <YPosition>34.000000000</YPosition>
+    <XPosition>484.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -89,7 +89,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>ICON HEIGHT OFFSET </Name>
-    <Value>-21.724138260</Value>
+    <Value>-16.206895828</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
