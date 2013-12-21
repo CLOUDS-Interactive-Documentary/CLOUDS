@@ -67,6 +67,8 @@ private:
     float   noiseZoom;
     int newbornCount;
     
+    bool reset;
+    
     /*  PARAMS */
     cellParams params;
     int numInitialCells;

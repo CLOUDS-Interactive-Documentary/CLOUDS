@@ -20,11 +20,10 @@ void CloudsVisualSystemColony::selfSetup()
     vbo.setMode(OF_PRIMITIVE_LINES);
     
     string path = getVisualSystemDataPath()+"shaders/";
-    balls.setGeometryOutputCount(40); //FIXME: Debug
+    balls.setGeometryOutputCount(45); //FIXME: Debug
     balls.setGeometryInputType(GL_LINES);
     balls.load(path + "balls.vert", path + "balls.frag", path + "balls.geom");
-    //FIXME: THIS IS NOT WORKING PROPERLY
-    balls.setGeometryOutputType(GL_TRIANGLE_FAN);
+    balls.setGeometryOutputType(GL_TRIANGLES);
 }
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
@@ -37,6 +36,9 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
     sysGui->addSlider("Turbulence Speed",0.0,100.0, &params.spdTurbulence);
     sysGui->addSlider("Fertility Rate", 0.0, 1.0, &params.fertilityRate);
     sysGui->addRangeSlider("Lifespan Range", 5, 5000, &params.lifespanMin, &params.lifespanMax);
+    
+    sysGui->addSpacer("Immutables");
+    sysGui->addButton("Reset", &reset);
 }
 
 void CloudsVisualSystemColony::selfUpdate()
