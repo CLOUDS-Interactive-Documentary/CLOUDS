@@ -97,8 +97,9 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     int avatarSize;
     float tweetDeckWidth;
     float tweetDeckHeight;
-    float tweetDeckHeighOffset;
+    float tweetDeckHeightOffset;
     float tweetDeckWidthOffset;
+    float tweetDeckLineOffset;
 
     
     float animationLerpAmt;
