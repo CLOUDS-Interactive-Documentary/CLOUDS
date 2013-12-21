@@ -62,6 +62,30 @@ void loadpitches(string f, vector<lukePitchArray>& p)
     }
 }
 
+// load simple melodies
+void loadsimplemelodies(string f, vector<lukeSimpleMelody>& m)
+{
+    string sline;
+    ofFile pfile (GetCloudsDataPath()+"sound/"+f);
+    if(!pfile.exists())
+    {
+        ofLogError("no data file!");
+    }
+    ofBuffer pbuf(pfile);
+    m.clear();
+    while(!pbuf.isLastLine())
+    {
+        sline=pbuf.getNextLine();
+        lukeSimpleMelody foo;
+        vector<string> temp = ofSplitString(sline, " ");
+        for(int i = 0;i<temp.size();i++)
+        {
+            foo.notes.push_back(ofToInt(temp[i]));
+        }
+        m.push_back(foo);
+    }
+}
+
 // load presets (NEW)
 void loadpresets_xml(string f, vector<lukePreset>& p)
 {
