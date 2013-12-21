@@ -125,7 +125,8 @@ protected:
     float camAvoidDist;
     
     // plants
-    vector<string> rulesFiles;
+    vector<string> rulesFileNames;
+    vector<ofxRules> rules;
     vector<float> rulesWeights;
     ofShader plantsShader;
     unsigned numPlantMeshes;
