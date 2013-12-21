@@ -25,7 +25,7 @@ CloudsPortal::~CloudsPortal(){
 }
 
 void CloudsPortal::setup(){
-	for(int i = 0; i < 20; i++){
+	for(int i = 0; i < 3; i++){
 		CloudsPortalRing r;
 		r.setup(this, portalGeo, i);
 		rings.push_back(r);

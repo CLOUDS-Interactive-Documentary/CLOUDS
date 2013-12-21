@@ -65,9 +65,19 @@ void CloudsPortalRing::setup(CloudsPortal* parent, ofVboMesh& portalGeo, int rin
 		
 		PortalShard& shard = shards[i];
 		shard.startIndex = portalGeo.getNumVertices();
-		shard.innerColor = shard.outerColor = ofFloatColor::fromHsb(ofRandomuf(), 1., 1.);
-		shard.innerColor.setSaturation(.5);
-		
+		ofFloatColor baseColor = ofColor::fromHex(0x5798eb);
+		if(ringIndex == 0){
+			baseColor.setSaturation(0);
+			baseColor.setBrightness(baseColor.getBrightness()*.25);
+		}
+		else if(ringIndex == 1){
+			baseColor.setSaturation(baseColor.getSaturation()*.5);
+			baseColor.setBrightness(baseColor.getBrightness()*.5);
+		}
+		//attenuate all saturation a little bit
+		baseColor.setSaturation(baseColor.getSaturation()*ofRandom(.7,1.0));
+
+		shard.innerColor = shard.outerColor = baseColor;
 		for(int s = currentSegment; s < currentSegment + shard.numSegments; s++){
 		
 			pair<ofIndexType, ofIndexType> segmentPair;
@@ -83,8 +93,8 @@ void CloudsPortalRing::setup(CloudsPortal* parent, ofVboMesh& portalGeo, int rin
 			
 			addVertsAtAngle(shard,endAngle,true);
 			
-			shard.innerColor.setBrightness(shard.innerColor.getBrightness()*.7);
-			shard.outerColor.setBrightness(shard.outerColor.getBrightness()*.7);
+			shard.innerColor.setBrightness(shard.innerColor.getBrightness()*.9);
+			shard.outerColor.setBrightness(shard.outerColor.getBrightness()*.9);
 			
 			segmentPair.second = portalGeo.getNumVertices()-1;
 			shard.segments.push_back( segmentPair );
@@ -105,8 +115,8 @@ void CloudsPortalRing::addVertsAtAngle(PortalShard& shard, float angle, bool end
 	vInner *= radius;
 	vOuter *= radius+thickness;
 	
-	geo->addVertex(vInner);
 	geo->addColor(endCap ? ofFloatColor(0,0) : shard.innerColor);
-	geo->addVertex(vOuter);
+	geo->addVertex(vInner);
 	geo->addColor(endCap ? ofFloatColor(0,0) : shard.outerColor);
+	geo->addVertex(vOuter);
 }
