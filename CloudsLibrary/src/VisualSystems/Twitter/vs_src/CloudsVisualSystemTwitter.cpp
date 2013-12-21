@@ -968,51 +968,49 @@ void CloudsVisualSystemTwitter::selfDraw()
 }
 void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime){
     // trigger for updating the current selecition
-
+    
     if(firstTime) {
         currentSelection.clear();
-//        while(currentSelection.size() < numberOfTweets){
-//            
-//        }
-        
-        for(int i=0; i< numberOfTweets; i++){
-            bool alreadySelected = false;
-            string currentDate = getDateAsString(dateIndex[index]);
-
-            vector<pair<string*, string*> > :: iterator it;
-            
-            for(int i = 0; i < tweeters.size(); i++){
+        while(currentSelection.size() < numberOfTweets){
+            for(int i=0; i< numberOfTweets; i++){
+                bool alreadySelected = false;
+                string currentDate = getDateAsString(dateIndex[index]);
+                cout<<currentDate<<endl;
+                vector<pair<string*, string*> > :: iterator it;
                 
-                if( ! tweeters[i].hasTweetOnDate(currentDate) ){
-                    continue;
-                }
-                else{
-                }
-                
-                //if tweeter is already in the current selection ignore them
-                for( it = currentSelection.begin(); it != currentSelection.end(); it++){
+                for(int i = 0; i < tweeters.size(); i++){
                     
-                    if ( *it->first == tweeters[i].name) {
-                        alreadySelected = true;
+                    if( ! tweeters[i].hasTweetOnDate(currentDate) ){
+                        continue;
                     }
-                }
-                
-                if (! alreadySelected) {
-                    vector<Tweet>&  tweetsOnDate = tweeters[i].getTweetsByDate(currentDate);
                     
-                    cout<<i<<endl;
-                    //add a new tweet to the start
-                    Tweet& randTweet = tweetsOnDate[ofRandom(0,tweetsOnDate.size()-1)];
-                    currentSelection.push_back(make_pair(&tweeters[i].name, &randTweet.tweet));
-                    cout<<"pushin : "<<tweeters[i].name<<" ,  "<<randTweet.tweet<<endl;
+                    //if tweeter is already in the current selection ignore them
+                    for( it = currentSelection.begin(); it != currentSelection.end(); it++){
+                        
+                        if ( *it->first == tweeters[i].name) {
+                            alreadySelected = true;
+                        }
+                    }
+                    
+                    if (! alreadySelected) {
+                        vector<Tweet>&  tweetsOnDate = tweeters[i].getTweetsByDate(currentDate);
+                        
+                        //add a new tweet to the start
+                        Tweet& randTweet = tweetsOnDate[ofRandom(0,tweetsOnDate.size()-1)];
+                        currentSelection.push_back(make_pair(&tweeters[i].name, &randTweet.tweet));
+//                        cout<<"pushin : "<<tweeters[i].name<<" ,  "<<randTweet.tweet<<endl;
+                        
+                    }
                     
                 }
-
             }
+            if(index == 0){
+                index = dateIndex.size() -1;
+            }{
+                index--;    
+            }
+            
         }
-        
-        
-        
     }
     else{
         
