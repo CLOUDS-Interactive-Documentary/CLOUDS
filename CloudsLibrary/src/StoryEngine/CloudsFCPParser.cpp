@@ -28,11 +28,13 @@ CloudsFCPParser::CloudsFCPParser(){
 
 void CloudsFCPParser::loadFromFiles(){
     setup(GetCloudsDataPath() + "fcpxml");
+	parseVOClips();
     parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
 //    parseClusterMap(GetCloudsDataPath() + "gephi/2013_7_25_Clouds_conversation.SVG");
 	//parseClusterMap(GetCloudsDataPath() + "gephi/CLOUDSClusterMap.svg");
 	parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
 	parseProjectExamples(GetCloudsDataPath() + "secondaryDisplay/web/xml/projects.xml");
+	
 }
 
 void CloudsFCPParser::setup(string directory){
@@ -81,8 +83,48 @@ void CloudsFCPParser::saveClusterMap(map<string, ofVec2f> centroidMap ){
         
         cout<<"<text transform=\"matrix(1 0 0 1 "<<it->second.x<<" "<<it->second.y<<")\" font-family=\"'MyriadPro-Regular'\" font-size=\"12\">"<<it->first<<"</text>"<<endl;
     }
+}
 
-
+void CloudsFCPParser::parseVOClips(){
+	ofDirectory dir(GetCloudsDataPath() + "VO");
+	dir.allowExt("aif");
+	dir.allowExt("wav");
+	dir.allowExt("mp3");
+	dir.allowExt("aiff");
+	
+	dir.listDir();
+	
+	for(int i = 0; i < dir.numFiles(); i++){
+		
+		CloudsClip clip;
+		
+		clip.voiceOverAudio = true;
+		clip.combinedVideoPath = dir.getPath(i);
+		clip.sourceVideoFilePath = dir.getPath(i);
+		clip.startFrame = 0;
+		clip.endFrame = 9999;
+		
+		string name = ofFilePath::getBaseName( dir.getName(i) );
+		//remove weird final cut track name
+		ofStringReplace(name, "_1-2", "");
+		vector<string> components = ofSplitString(name,"_");
+        //validate
+		if(components.size() != 2){
+			ofLogError("CloudsFCPParser::parseVOClips") << "VO Clip " << dir.getPath(i) << " incorrectly formatted";
+			continue;
+		}
+		
+		
+		clip.person = components[0];
+		clip.name = components[1];
+		
+		cout << "added VO only clip " << clip.getLinkName() << endl;
+		
+		clipIDToIndex[clip.getID()] = allClips.size();
+		clipLinkNameToIndex[clip.getLinkName()] = allClips.size();
+		allClips.push_back(clip);
+	}
+		
 }
 
 void CloudsFCPParser::parseLinks(string linkFile){

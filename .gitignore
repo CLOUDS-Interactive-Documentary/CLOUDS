@@ -238,3 +238,7 @@ CloudsMovieDirectory_remote.txt
 
 
 /CloudsData/secondaryDisplay/web/videos/*
+/CloudsData/VO/*.aif
+/CloudsData/VO/*.mp3
+/CloudsData/VO/*.wav
+/CloudsData/VO/*.aiff
