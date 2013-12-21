@@ -6838,7 +6838,6 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#tech,#vo</additionalKeywords>
 </clip>
 <clip>
     <name>Chris - Eyewriter</name>
@@ -6852,8 +6851,6 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>#breakthrough,#example,#vo</additionalKeywords>
 </clip>
 <clip>
     <name>Chris - not a gadget-person</name>
@@ -49814,4 +49811,40 @@
     </suppress>
     <revokedKeywords>art versus engineering</revokedKeywords>
     <additionalKeywords>aesthetics,interactivity,art vs engineering,#sincere,#inspiring,#art,#serious,#gold,?tech-demo: When does an experiment become more than just a techo demo?</additionalKeywords>
+</clip>
+<clip>
+    <name>Chris - Eyewriter</name>
+    <link>
+        <target>Kyle_MC - Eyewriter</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jer - Eyewriter touchstone</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#breakthrough,#example,#vo</additionalKeywords>
+</clip>
+<clip>
+    <name>Chris - interfaces</name>
+    <link>
+        <target>Julian - ideology of seamlessness</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Maeda - thinking about interfaces</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#tech,#vo</additionalKeywords>
+</clip>
+<clip>
+    <name>Diederick - hackathon1</name>
+    <additionalKeywords>#fun,#inspiring</additionalKeywords>
+</clip>
+<clip>
+    <name>Joel - InTheNow1</name>
+    <additionalKeywords>#emotional</additionalKeywords>
 </clip>
