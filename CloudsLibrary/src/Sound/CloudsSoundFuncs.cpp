@@ -508,13 +508,16 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
                 int pptr = 0; // pattern pointer
                 for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*2.0)
                 {
-                    if(looperSamples[i].pattern[pptr]=="A") { // first half
-                        SOUNDLOOP(outskip+j, 0, looperSamples[i].length/2.0, tempo*looperSamples[i].numbeats*2, 0.25, looperSamples[i].handle);
+                    if(looperSamples[i].pattern.size()>0) // trap for missing patterns
+                    {
+                        if(looperSamples[i].pattern[pptr]=="A") { // first half
+                            SOUNDLOOP(outskip+j, 0, looperSamples[i].length/2.0, tempo*looperSamples[i].numbeats*2, 0.25, looperSamples[i].handle);
+                        }
+                        else if(looperSamples[i].pattern[pptr]=="B") { // second half
+                            SOUNDLOOP(outskip+j, looperSamples[i].length/2.0, looperSamples[i].length/2.0, tempo*looperSamples[i].numbeats*2.0, 0.25, looperSamples[i].handle);
+                        }
+                        pptr = (pptr+1) % looperSamples[i].pattern.size();
                     }
-                    else if(looperSamples[i].pattern[pptr]=="B") { // second half
-                        SOUNDLOOP(outskip+j, looperSamples[i].length/2.0, looperSamples[i].length/2.0, tempo*looperSamples[i].numbeats*2.0, 0.25, looperSamples[i].handle);
-                    }
-                    pptr = (pptr+1) % looperSamples[i].pattern.size();
                 }
             }
         }
