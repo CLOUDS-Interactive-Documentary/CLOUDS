@@ -15,6 +15,7 @@ typedef struct {
 	float curentRot;
 	ofIndexType startIndex;
 	ofIndexType endIndex;
+	vector< pair<ofIndexType, ofIndexType> > segments;
 } PortalShard;
 
 class CloudsPortal;
@@ -23,7 +24,11 @@ class CloudsPortalRing {
 	CloudsPortalRing();
 	void setup(CloudsPortal* parent, ofVboMesh& portalGeo, int ringIndex);
 	vector<PortalShard> shards;
-	float radius;
-	float thickness;
+	void addVertsAtAngle(float angle, bool endCap = false);
 	
+	float thickness; 
+	float radius;
+	float degreesPerSegment;
+	float degreesPerQuad;
+	ofVboMesh* geo;
 };

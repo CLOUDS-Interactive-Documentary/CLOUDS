@@ -2,6 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+
 	ofSetVerticalSync(true);
 	portal.setup();
 }
@@ -15,6 +16,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+	ofEnableAlphaBlending();
 	portal.draw();	
 }
 
