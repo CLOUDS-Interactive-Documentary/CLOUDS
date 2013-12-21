@@ -93,11 +93,12 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     float timeTillNextUpdate;
     float minTimeGapForNextTweet;
     float randomRangeMin,randomRangeMax;
+    int avatarSize;
     
     //text stuff
     ofxJSONElement result;
     ofxFTGLSimpleLayout font;
-    ofxFTGLSimpleLayout font2;
+    ofxFTGLSimpleLayout tweetFont;
     ofxFTGLTextAlignment textAlign;
     
 
