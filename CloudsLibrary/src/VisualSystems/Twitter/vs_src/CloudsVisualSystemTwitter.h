@@ -83,6 +83,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     //shader stuff
     void reloadShaders();
 
+    ofImage tweetDeckMenu;
     
     //twitter feed params
     int numberOfTweets;
@@ -94,6 +95,11 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     float minTimeGapForNextTweet;
     float randomRangeMin,randomRangeMax;
     int avatarSize;
+    float tweetDeckWidth;
+    float tweetDeckHeight;
+    float tweetDeckHeighOffset;
+    float tweetDeckWidthOffset;
+
     
     float animationLerpAmt;
     float animationLerpRate;
@@ -104,21 +110,19 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     ofxFTGLSimpleLayout font;
     ofxFTGLSimpleLayout tweetFont;
     ofxFTGLSimpleLayout tweetFontSmall;
-//    ofxFTGLSimpleLayout tweetFontSmall;
+    ofxFTGLSimpleLayout twitterHandleFont;
     ofxFTGLTextAlignment textAlign;
-    
-    
-
     float stringWidth;
     float fontSize;
-    int minUserMentions;
-    
     float tweetFontSize;
     float tweetLineLength;
+    float tweetHandleFontSize;
+    float tweetHandleLineLength;
+    
+    int minUserMentions;
+
 
     
-    float tweetSmallFontSize;
-    float tweetSmallLineLength;
     //draw stuff
     void loadMesh();
     void updateMeshFromTweets(int index);
