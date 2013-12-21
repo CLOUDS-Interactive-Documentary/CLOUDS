@@ -12,9 +12,12 @@
 #include "ofMain.h"
 
 typedef struct {
+	int numSegments;
 	float curentRot;
 	ofIndexType startIndex;
 	ofIndexType endIndex;
+	ofFloatColor innerColor;
+	ofFloatColor outerColor;
 	vector< pair<ofIndexType, ofIndexType> > segments;
 } PortalShard;
 
@@ -24,7 +27,7 @@ class CloudsPortalRing {
 	CloudsPortalRing();
 	void setup(CloudsPortal* parent, ofVboMesh& portalGeo, int ringIndex);
 	vector<PortalShard> shards;
-	void addVertsAtAngle(float angle, bool endCap = false);
+	void addVertsAtAngle(PortalShard& shard, float angle, bool endCap = false);
 	
 	float thickness; 
 	float radius;

@@ -12,7 +12,7 @@
 CloudsPortal::CloudsPortal(){
 	
 	ringStartRadius = 100;
-	ringSegments = 360/45.;
+	ringSegments = 360/30.;
 	ringRadiusStep = 10;
 	ringThickness = 10;
 	ringThicknessMultiplier = 1.2;
@@ -25,7 +25,7 @@ CloudsPortal::~CloudsPortal(){
 }
 
 void CloudsPortal::setup(){
-	for(int i = 0; i < 3; i++){
+	for(int i = 0; i < 20; i++){
 		CloudsPortalRing r;
 		r.setup(this, portalGeo, i);
 		rings.push_back(r);

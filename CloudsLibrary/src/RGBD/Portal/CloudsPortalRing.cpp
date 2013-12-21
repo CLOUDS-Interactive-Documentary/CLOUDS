@@ -28,38 +28,75 @@ void CloudsPortalRing::setup(CloudsPortal* parent, ofVboMesh& portalGeo, int rin
 	cout << "	thickness " << radius << endl;
 	cout << "	deg / seg " << degreesPerSegment << endl;
 	cout << "	deg / quad " << degreesPerQuad << endl;
+		
 	
-	shardColorIn = shardColorOut = ofFloatColor::fromHsb(ofRandomuf(), 1., 1.);
-	shardColorIn.setSaturation(.5);
-	
-	//for now make one shard
-	PortalShard shard;
-	shard.startIndex = portalGeo.getNumVertices();
-	for(int i = 0; i < parent->ringSegments; i++){
-		
-		pair<ofIndexType, ofIndexType> segmentPair;
-		segmentPair.first = portalGeo.getNumVertices();
-		float startAngle = degreesPerSegment*i;
-		float endAngle	 = degreesPerSegment*(i+1);
-
-		addVertsAtAngle(startAngle,true);
-		
-		for(float angle = startAngle; angle <= endAngle; angle += degreesPerQuad){
-			addVertsAtAngle(angle);
-		}
-		
-		addVertsAtAngle(endAngle,true);
-		
-		segmentPair.second = portalGeo.getNumVertices()-1;
-		shard.segments.push_back( segmentPair );
+	//either 2 or 5 shards per ring
+	int numShards = (ofRandom(2,5)+.5);
+	//how much of the ring does each shard represent
+	//fill a vector with random variables and normalize it to see
+	float shardPercents[numShards];
+	float totalWeight = 0;
+	for(int i = 0; i < numShards; i++){
+		shardPercents[i] = ofRandom(.25, 1.0);
+		totalWeight+=shardPercents[i];
+	}
+	for(int i = 0; i < numShards; i++){	
+		shardPercents[i] /= totalWeight;
 	}
 	
-	shard.endIndex = portalGeo.getNumVertices()-1;
-	shards.push_back(shard);
+	int totalSegments = 0;
+	for(int i = 0; i < numShards; i++){
+		PortalShard shard;
+		shard.numSegments = ( (shardPercents[i] * parent->ringSegments)+.5);
+		totalSegments += shard.numSegments;
+		shards.push_back(shard);
+	}
 	
+	cout << "total segments " << totalSegments << "/" << parent->ringSegments << endl;
+	if(totalSegments < parent->ringSegments){
+		shards[0].numSegments++;
+	}
+	if(totalSegments > parent->ringSegments){
+		shards[0].numSegments--;
+	}
+
+	int currentSegment = 0;
+	for(int i = 0; i < shards.size(); i++){
+		
+		PortalShard& shard = shards[i];
+		shard.startIndex = portalGeo.getNumVertices();
+		shard.innerColor = shard.outerColor = ofFloatColor::fromHsb(ofRandomuf(), 1., 1.);
+		shard.innerColor.setSaturation(.5);
+		
+		for(int s = currentSegment; s < currentSegment + shard.numSegments; s++){
+		
+			pair<ofIndexType, ofIndexType> segmentPair;
+			segmentPair.first = portalGeo.getNumVertices();
+			float startAngle = degreesPerSegment*s;
+			float endAngle	 = degreesPerSegment*(s+1);
+
+			addVertsAtAngle(shard,startAngle,true);
+			
+			for(float angle = startAngle; angle <= endAngle; angle += degreesPerQuad){
+				addVertsAtAngle(shard,angle);
+			}
+			
+			addVertsAtAngle(shard,endAngle,true);
+			
+			shard.innerColor.setBrightness(shard.innerColor.getBrightness()*.7);
+			shard.outerColor.setBrightness(shard.outerColor.getBrightness()*.7);
+			
+			segmentPair.second = portalGeo.getNumVertices()-1;
+			shard.segments.push_back( segmentPair );
+
+		}
+		
+		currentSegment += shard.numSegments;
+		shard.endIndex = portalGeo.getNumVertices()-1;
+	}
 }
 
-void CloudsPortalRing::addVertsAtAngle(float angle, bool endCap){
+void CloudsPortalRing::addVertsAtAngle(PortalShard& shard, float angle, bool endCap){
 	
 	ofVec3f vInner(0,1,0);
 	ofVec3f vOuter(0,1,0);
@@ -68,10 +105,8 @@ void CloudsPortalRing::addVertsAtAngle(float angle, bool endCap){
 	vInner *= radius;
 	vOuter *= radius+thickness;
 	
-	cout << "added geo at " << vInner << " " << vOuter << endl;
-	
 	geo->addVertex(vInner);
-	geo->addColor(endCap ? ofFloatColor(0,0) : shardColorIn);
+	geo->addColor(endCap ? ofFloatColor(0,0) : shard.innerColor);
 	geo->addVertex(vOuter);
-	geo->addColor(endCap ? ofFloatColor(0,0) : shardColorOut);
+	geo->addColor(endCap ? ofFloatColor(0,0) : shard.outerColor);
 }
