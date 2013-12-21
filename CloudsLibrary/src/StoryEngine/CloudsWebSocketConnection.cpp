@@ -83,32 +83,30 @@ void CloudsWebSocketConnection::actEnded(CloudsActEventArgs& args){
 
 void CloudsWebSocketConnection::clipBegan(CloudsClipEventArgs& args){
 	ofLogNotice("CloudsWebSocketConnection::clipBegan");
-	string example = "";
-	
-//	if( args.chosenClip.hasSpecialKeyword("#example") ){
-	if( args.chosenClip.hasProjectExample ){
-		example = args.chosenClip.example.title;
-	}
+	currentTopic = args.currentTopic;
+	sendClip(args.chosenClip);
+}
+
+void CloudsWebSocketConnection::sendClip(CloudsClip& clip){
 	
 	char message[1024];
     //{"clip" : { "name" : "%s", "id" : "%s", "duration" : %f,"topic" : "%s" "example" : "%s" } }"
 	sprintf(message,
 			"{ \"clip\" : \
-				{ \"name\" : \"%s\", \
-				\"id\" : \"%s\", \
-				\"duration\" : %f, \
-				\"topic\" : \"%s\", \
-				\"example\" : \"%s\", \
-				\"question\" : \"%s\" \
+			{ \"name\" : \"%s\", \
+			\"id\" : \"%s\", \
+			\"duration\" : %f, \
+			\"topic\" : \"%s\", \
+			\"example\" : \"%s\", \
+			\"question\" : \"%s\" \
 			} }",
-			args.chosenClip.person.c_str(),
-			args.chosenClip.getLinkName().c_str(),
-			args.chosenClip.getDuration(),
-			args.currentTopic.c_str(),
-			"Drawn1",
-			"How do you sketch with code?");
-//			example.c_str(),
-//			lastQuestionAsked.c_str());
+			clip.person.c_str(),
+			clip.getLinkName().c_str(),
+			clip.getDuration(),
+			currentTopic.c_str(),
+			clip.projectExampleTitle.c_str(),
+			lastQuestionAsked.c_str());
+	
 	server.send( message );
 	
 	cout << " message " << message << endl;

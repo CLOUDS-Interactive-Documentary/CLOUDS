@@ -235,7 +235,7 @@ void CloudsClip::collateKeywords(){
     //remove special keywords from keywords -> specialKeywords
     for (int l = keywords.size() - 1 ; l>=0; l--) {
         
-        if(keywords[l].compare(0, 1, "#") == 0 &&! ofContains(specialKeywords, keywords[l])){
+        if(keywords[l].compare(0, 1, "#") == 0 && !ofContains(specialKeywords, keywords[l])){
 //            cout<<"Special keywords for clip "<<name<< " : "<<keywords[l]<<". Erasing from keywords list"<<endl;
             specialKeywords.push_back(keywords[l]);
             keywords.erase(keywords.begin()+l);
@@ -254,6 +254,22 @@ void CloudsClip::collateKeywords(){
         }
     }
     
+	hasProjectExample = false;
+	projectExampleTitle = "";
+	for(int i = 0; i < specialKeywords.size(); i++){
+		if(specialKeywords[i].find("example") != string::npos){
+			vector<string> exampleProject = ofSplitString(specialKeywords[i], "?");
+			if(exampleProject.size() != 2){
+				ofLogError("CloudsClip::collateKeywords") << "Clip " << getLinkName() << " doesn't have a specific example tagged";
+			}
+			else {
+				projectExampleTitle = exampleProject[1];
+				hasProjectExample = true;
+				cout << "Found project example " << projectExampleTitle << " for clip " << getLinkName() << endl;
+			}
+			break;
+		}
+	}
     keywordsDirty = false;
 }
 
@@ -287,7 +303,7 @@ void CloudsClip::setDesiredKeywords(vector<string>& desiredKeywords){
 }
 
 void CloudsClip::addKeyword(string keyword){
-    
+    cout << "adding keyword " << keyword<<endl;
     if(!ofContains(additionalKeywords, keyword) &&
        !ofContains(originalKeywords, keyword))
     {
@@ -300,6 +316,17 @@ bool CloudsClip::hasKeyword(string keyword){
 	return ofContains(getKeywords(), keyword);
 }
 
+void CloudsClip::setProjectExample(string projectExample){
+	for(int i = 0; i < specialKeywords.size(); i++){
+		if(ofToLower(specialKeywords[i]).find("example") != string::npos){
+			revokeKeyword(specialKeywords[i]);
+			break;
+		}
+	}
+	
+	addKeyword("#example?"+projectExample);
+	keywordsDirty = true;
+}
 
 bool CloudsClip::hasSpecialKeyword(string keyword){
 	if (keyword.at(0) != '#') {
@@ -309,12 +336,23 @@ bool CloudsClip::hasSpecialKeyword(string keyword){
 }
 
 void CloudsClip::revokeKeyword(string keyword){
+	
+//	cout << "revoking keyword " << keyword << endl;
+//	cout << "	in original? " << (ofContains(originalKeywords, keyword) ? "YES" : "NO") << endl;
+//	cout << "	in additional? " << (ofContains(additionalKeywords, keyword) ? "YES" : "NO") << endl;
+//	cout << "	in revoked? " << (ofContains(revokedKeywords, keyword) ? "YES" : "NO") << endl;
+//	
     if(!ofContains(revokedKeywords, keyword) &&
-       ofContains(originalKeywords, keyword))
+        ofContains(originalKeywords, keyword))
     {
         revokedKeywords.push_back(keyword);
         keywordsDirty = true;
     }
+	else if(ofContains(additionalKeywords, keyword)){
+		additionalKeywords.erase(additionalKeywords.begin() +
+								 ofFind(additionalKeywords, keyword));
+		keywordsDirty = true;
+	}
 }
 
 void CloudsClip::addQuestionTopicPair(string topic, string question){

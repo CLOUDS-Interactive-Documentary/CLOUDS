@@ -291,8 +291,8 @@
 		5055DDBD181ED50000761DA0 /* ofxSimpleSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleSurface.h; sourceTree = "<group>"; };
 		5055DFA0181ED75200761DA0 /* CloudsVisualSystemMandala.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMandala.cpp; sourceTree = "<group>"; };
 		5055DFA1181ED75200761DA0 /* CloudsVisualSystemMandala.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMandala.h; sourceTree = "<group>"; };
-		50C3AB841860B32F00627388 /* facingRatio.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.frag; sourceTree = "<group>"; };
-		50C3AB851860B32F00627388 /* facingRatio.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.vert; sourceTree = "<group>"; };
+		50C3AB841860B32F00627388 /* facingRatio.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		50C3AB851860B32F00627388 /* facingRatio.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		50C3AB861860B32F00627388 /* noduleShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noduleShader.frag; sourceTree = "<group>"; };
 		50C3AB871860B32F00627388 /* noduleShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noduleShader.vert; sourceTree = "<group>"; };
 		50C3AB881860B32F00627388 /* noiseSurface.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noiseSurface.frag; sourceTree = "<group>"; };
@@ -687,7 +687,7 @@
 				5055DF9F181ED75200761DA0 /* vs_src */,
 			);
 			name = MandalaComponents;
-			path = src/VisualSystems/MandalaComponents;
+			path = src/VisualSystems/Mandala;
 			sourceTree = "<group>";
 		};
 		5055DF9F181ED75200761DA0 /* vs_src */ = {

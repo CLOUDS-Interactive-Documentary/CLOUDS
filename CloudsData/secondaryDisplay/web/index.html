@@ -61,31 +61,37 @@
 	    gl_FragColor = vec4( glow, 1.0 );
 	}
 	</script>
-	<video id="video"/>
-  			<source type="video/mp4">
+	<video id="video" preload="auto"/>
+  			<source type="video/mov">
   			Your browser does not support the video tag.
 	</video>
-
-		
-		<div id="project_info">
-			<div id="projectex_info">
-				<div id="projectex_title" class='cl_title'></div>
-				<br>
-				<div id="projectex_artist" class='cl_subtitle'></div>
+		<div id="info">
+			<div id="project_info"><!--this id shouldn't change: we're using it to fade the projectex out-->
+				<div id="projectex_info">
+					<div id="projectex_title" class='cl_title'></div>
+					<br>
+					<div id="projectex_artist" class='cl_subtitle'></div>
+				</div>
+				<div id="projectex_desc" class="cl_text"></div>
 			</div>
-			<div id="projectex_desc" class="cl_text"></div>
-		</div>
-		<div id='clip_info'>
-			<div class="current_artist_block">
-				<div id="first" class='cl_title'></div>
-				<div id="last" class='cl_title'></div>
-				<div id="title" class='cl_subtitle'></div>
-				<div id="location" class='cl_text'></div>
-				<div id="byline" class='cl_text'></div>
-				<div id="question" class='cl_text'></div>
+			<div id='clip_info'><!--this id shouldn't change: we're using it to fade the clip info out-->
+				<div class="column1">
+					<div id="first"></div>
+					<div id="last"></div>
+				</div>
+				<div class="column2">
+					<div class="column2_1">
+						<div id="title" ></div>
+						<div id="location" ></div>
+					</div>
+					<div class="column2_2">
+						<div id="byline" class='cl_text'></div>
+						<div id="question" class='cl_text'></div>
+					</div>
+				</div>
+				
 			</div>
 		</div>
-			
 	
 	<div id="graph"></div>
 	<div id="topic"></div>

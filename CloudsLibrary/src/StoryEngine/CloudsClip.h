@@ -19,10 +19,6 @@ class CloudsClip {
 	
 	string fcpFileId;
     string sourceVideoFilePath;
-
-	//project example stuff
-	bool hasProjectExample;
-	CloudsProjectExample example;
 	
 	ofVec3f networkPosition;
 	
@@ -41,7 +37,8 @@ class CloudsClip {
     bool hasRevokedKeywords();
     bool hasSpecialKeyword(string keyword);
     bool hasKeyword(string keyword);
-    
+    void setProjectExample(string projectExample);
+	
     vector<string>& getOriginalKeywords();
     //used to save out links
     vector<string>& getAdditionalKeywords();
@@ -62,6 +59,11 @@ class CloudsClip {
 	vector<string> getTopicsWithQuestions();
     vector<string> getQuestions();
 	
+	//project example stuff
+	bool hasProjectExample;
+	string projectExampleTitle;
+	CloudsProjectExample projectExample;
+
     //overlapping clips
     vector<string> getOverlappingClips();
     bool hasOverlappingClips();
