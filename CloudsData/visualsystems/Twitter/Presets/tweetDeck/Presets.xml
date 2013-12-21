@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>908.000061035</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <XPosition>920.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -34,6 +34,11 @@
     <Kind>2</Kind>
     <Name>flashes</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>latestWithDeckIcons</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -78,5 +83,5 @@
 <Widget>
     <Kind>2</Kind>
     <Name>tweetDeck</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>

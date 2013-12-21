@@ -1,0 +1,7 @@
+// JONATHAN PATTERNS
+
+// Eccentric
+Eccentric_Groove4_12.wav A B
+Eccentric_Ring1_12.wav - A B
+Eccentric_Ring2_12.wav - - A B
+Eccentric_Ringdrone_12.wav A B B A

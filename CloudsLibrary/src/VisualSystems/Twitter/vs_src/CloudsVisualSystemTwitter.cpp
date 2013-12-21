@@ -103,7 +103,14 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
     tweetFont.loadFont(getVisualSystemDataPath() + "fonts/Helvetica.ttf",20);
     tweetFontSmall.loadFont(getVisualSystemDataPath() + "fonts/Helvetica.ttf",8);
+    twitterHandleFont.loadFont(getVisualSystemDataPath() + "fonts/HelveticaNeue-Bold.ttf",8);
     ofxFTGLTextAlignment alignment;
+    
+    if( ! tweetDeckMenu.loadImage(getVisualSystemDataPath() + "tweetDeckMenu.png")){
+        cout<<"Couldnt load tweet deck image "<<endl;
+    }
+    tweetDeckHeight = tweetDeckMenu.height;
+    tweetDeckWidth = tweetDeckMenu.width;
     
 //    tweetFont.setAlignment(FTGL_ALIGN_RIGHT);
 
@@ -224,9 +231,15 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     twitterFeedGui->addLabel("FONT PARAMS");
     twitterFeedGui->addMinimalSlider("FONT SIZE", 1, 20, &tweetFontSize);
     twitterFeedGui->addMinimalSlider("LINE LENGTH", 1, 1000, &tweetLineLength);
-    twitterFeedGui->addMinimalSlider("SMALL FONT SIZE", 1, 20, &tweetSmallFontSize);
-    twitterFeedGui->addMinimalSlider("SMALL LINE LENGTH", 1, 1000, &tweetSmallLineLength);
+    twitterFeedGui->addMinimalSlider("HANDLE FONT SIZE", 1, 20, &tweetHandleFontSize);
+    twitterFeedGui->addMinimalSlider("HANDLE LINE LENGTH", 1, 1000, &tweetHandleLineLength);
     twitterFeedGui->addMinimalSlider("STRING WIDTH CAP", 1, 100, &feedStringWidthCap);
+    twitterFeedGui->addLabel("ICON PARAMS");
+    twitterFeedGui->addMinimalSlider("ICON HEIGHT OFFSET ", -40, 30, &tweetDeckHeightOffset);
+    twitterFeedGui->addMinimalSlider("ICON WIDTH OFFSET ", -30, 30, &tweetDeckWidthOffset);
+    twitterFeedGui->addMinimalSlider("ICON WIDTH", 100, 200, &tweetDeckWidth);
+    twitterFeedGui->addMinimalSlider("ICON HEIGHT", 10, 200, &tweetDeckHeight);
+    twitterFeedGui->addMinimalSlider("LINE OFFSET", -100, 100, &tweetDeckLineOffset);
     ofAddListener(twitterFeedGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(twitterFeedGui);
 	guimap[textGui->getName()] = twitterFeedGui;
@@ -378,10 +391,6 @@ void CloudsVisualSystemTwitter::loadAvatars(){
                 
                 
             }
-            
-            
-            
-            
         }
     }
     
@@ -755,8 +764,8 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
     tweetFont.setSize(tweetFontSize);
     tweetFont.setLineLength(tweetLineLength);
     
-    tweetFontSmall.setSize(tweetSmallFontSize);
-    tweetFontSmall.setLineLength(tweetSmallLineLength);
+    twitterHandleFont.setSize(tweetHandleFontSize);
+    twitterHandleFont.setLineLength(tweetHandleLineLength);
     
 }
 
@@ -883,11 +892,14 @@ void CloudsVisualSystemTwitter::selfSceneTransformation(){
 void CloudsVisualSystemTwitter::selfUpdate()
 {
     
-    if(ofGetElapsedTimef() > timeTillNextUpdate){
-        timeTillNextUpdate = ofGetElapsedTimef()+ minTimeGapForNextTweet + ofRandom(randomRangeMin, randomRangeMax);
-//        cout<<"updated selection at time : "<<ofGetElapsedTimef() <<" next update at "<<timeTillNextUpdate<< endl;
-        updateCurrentSelection(currentDateIndex,false);
+    if(bRenderFeed){
+        if(ofGetElapsedTimef() > timeTillNextUpdate){
+            timeTillNextUpdate = ofGetElapsedTimef()+ minTimeGapForNextTweet + ofRandom(randomRangeMin, randomRangeMax);
+            //        cout<<"updated selection at time : "<<ofGetElapsedTimef() <<" next update at "<<timeTillNextUpdate<< endl;
+            updateCurrentSelection(currentDateIndex,false);
+        }
     }
+
     
 	
     if(ofGetFrameNum() % refreshRate < 1 && bAnimate){
@@ -1071,16 +1083,7 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
 
     animationLerpAmt = 0;
     bAnimateFeed = true;
-//    cout<<"Updating selection"<<endl;
-//    if (activeTweetPairs.size() > numberOfTweets) {
-//        for(int j=0; j<numberOfTweets; j++ ){
-//            int ind = ofRandom(activeTweetPairs.size() - 1);
-//            currentSelection.push_back(activeTweetPairs[ind]);
-//        }
-//    }
-//    else{
-//        cout<<"Not enought active tweets"<<endl;
-//    }
+
 }
 
 void CloudsVisualSystemTwitter::drawFeed(){
@@ -1093,9 +1096,6 @@ void CloudsVisualSystemTwitter::drawFeed(){
                 
                 float avatarX = tweetFeedRect.x -avatarTweetGap;
                 float textX = tweetFeedRect.x;
-//                float targetAvatarX = tweetFeedRect.x -avatarTweetGap;
-//                float targetTextX = tweetFeedRect.x;
-                
                 
                 float sourceTextY = tweetFeedRect.y + +(i-1)*heightOffset +textHeightOffset;
                 float sourceAvatarY = tweetFeedRect.y +(i-1)*heightOffset;
@@ -1105,11 +1105,11 @@ void CloudsVisualSystemTwitter::drawFeed(){
                 
                 float curTextY = ofLerp(sourceTextY, targetTextY, animationLerpAmt);
                 float curAvatarY = ofLerp(sourceAvatarY, targetAvatarY, animationLerpAmt);
-//                ofLer
+                
                 textColor.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1, .1, 1.),2);
                 ofSetColor(textColor);
                 
-                //50 is a magic number right now
+                //50 is a magic number right now using this to not draw tweets that intersect with the edge of the screen
                 if(tweetFeedRect.y + i*heightOffset + textHeightOffset + 50 < ofGetHeight()){
                     
                     if (avatars.find(*currentSelection[i].first)== avatars.end() ){
@@ -1121,15 +1121,8 @@ void CloudsVisualSystemTwitter::drawFeed(){
                     }
                     
                     tweetFont.drawString(ofToString(*currentSelection[i].first), textX, curTextY );
+                    tweetFont.drawString(ofToString(*currentSelection[i].second), textX, curTextY + 15 );
 
-                    
-                    if(tweetFont.stringHeight(*currentSelection[i].second)>feedStringWidthCap){
-                        
-                        tweetFontSmall.drawString(ofToString(*currentSelection[i].second), textX, curTextY + 15 );
-                    }
-                    else{
-                        tweetFont.drawString(ofToString(*currentSelection[i].second), textX, curTextY + 15 );
-                    }
                 }
                 
                 ofPopStyle();
@@ -1142,36 +1135,58 @@ void CloudsVisualSystemTwitter::drawFeed(){
             else{
                 animationLerpAmt  += animationLerpRate;
             }
-//            bAnimate = false;
+
         }
         else{
             for(int i=0;i<currentSelection.size(); i++ ){
                 ofPushStyle();
                 
                 textColor.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1, .1, 1.),2);
+                
+
+                //SM: Local variables for drawings. Apologies to anyone who sees this that isnt me.
+                float avatarX = tweetFeedRect.x -avatarTweetGap;
+                float textX = tweetFeedRect.x;
+                float twitterHandleY = tweetFeedRect.y +i*heightOffset +textHeightOffset;
+
+                //TODO: Add the tweet y offset to the GUI
+                float tweetY = tweetFeedRect.y +i*heightOffset +textHeightOffset + 15;
+                
+                float menuX = tweetFeedRect.x + tweetFont.getLineLength() - tweetDeckMenu.width + tweetDeckWidthOffset;
+                float menuY = tweetFeedRect.y +(i +1)*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset;
+                
+                float lineX1 = avatarX -3;
+                float lineY1 = menuY - tweetDeckLineOffset;
+                float lineX2 = tweetFeedRect.x + tweetFont.getLineLength();
+                float lineY2 =  menuY - tweetDeckLineOffset;
+
+                //TODO: Add this with the params
+//                ofSetColor(ofFloatColor(0.2,0.2,0.2,textColor.a - 0.1));
+//                ofFill();
+//                ofRect(tweetFeedRect);
+                
+                ofNoFill();
                 ofSetColor(textColor);
                 
-                //50 is a magic number right now
+                //50 is a magic number right now using this to not draw tweets that intersect with the edge of the screen
                 if(tweetFeedRect.y + i*heightOffset + textHeightOffset + 50 < ofGetHeight()){
                     
                     if (avatars.find(*currentSelection[i].first)== avatars.end() ){
                         cout<<"Cant find avatar for : "<<*currentSelection[i].first<< "  using default"<<endl;
-                        avatars["default"].draw(tweetFeedRect.x -avatarTweetGap,tweetFeedRect.y +i*heightOffset, avatarSize, avatarSize);
+                        avatars["default"].draw(avatarX,tweetFeedRect.y +i*heightOffset, avatarSize, avatarSize);
                     }
                     else{
-                        avatars[*currentSelection[i].first].draw(tweetFeedRect.x -avatarTweetGap,tweetFeedRect.y +i*heightOffset, avatarSize, avatarSize);
+                        avatars[*currentSelection[i].first].draw(avatarX,tweetFeedRect.y +i*heightOffset, avatarSize, avatarSize);
                     }
                     
-                    tweetFont.drawString(ofToString(*currentSelection[i].first), tweetFeedRect.x, tweetFeedRect.y +i*heightOffset +textHeightOffset );
-                    tweetFont.drawString(ofToString(*currentSelection[i].second), tweetFeedRect.x, tweetFeedRect.y +i*heightOffset +textHeightOffset + 15 );
+                    twitterHandleFont.drawString(ofToString(*currentSelection[i].first), textX, twitterHandleY);
+                    tweetFont.drawString(ofToString(*currentSelection[i].second), textX, tweetY);
+                    
 
-                    if(tweetFont.stringHeight(*currentSelection[i].second)>feedStringWidthCap){
-                        
-                        tweetFontSmall.drawString(ofToString(*currentSelection[i].second), tweetFeedRect.x, tweetFeedRect.y +i*heightOffset +textHeightOffset + 15 );
-                    }
-                    else{
-                        tweetFont.drawString(ofToString(*currentSelection[i].second), tweetFeedRect.x, tweetFeedRect.y +i*heightOffset +textHeightOffset + 15 );
-                    }
+                    ofSetColor(ofFloatColor(0.5,0.5,0.5,textColor.a-0.1));
+                    tweetDeckMenu.draw(menuX,menuY, tweetDeckWidth, tweetDeckHeight);
+                    ofLine( lineX1 ,lineY1,lineX2 , lineY2);
+
                 }
                 
                 ofPopStyle();
