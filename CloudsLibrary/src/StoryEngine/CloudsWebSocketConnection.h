@@ -14,6 +14,7 @@
 
 class CloudsWebSocketConnection {
   public:
+	
 	CloudsWebSocketConnection();
 	void setup();
 	
@@ -37,5 +38,7 @@ class CloudsWebSocketConnection {
 	void topicChanged(CloudsTopicEventArgs& newTopic);
     void preRollRequested(CloudsPreRollEventArgs& clip);
 	
+	void sendClip(CloudsClip& clip);
 	string lastQuestionAsked;
+	string currentTopic;
 };

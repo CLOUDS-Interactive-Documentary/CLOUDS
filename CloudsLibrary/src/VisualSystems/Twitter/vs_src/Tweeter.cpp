@@ -66,8 +66,8 @@ bool Tweeter::hasTweetOnDate(string tweetDate){
     if(tweetDateMap.find(tweetDate) != tweetDateMap.end()){
         return true;
     }
+//    cout<<name <<" has no tweets on date : "<<tweetDate<<endl;
     return false;
-    cout<<name <<" has no tweets on date : "<<tweetDate<<endl;
 }
 
 string Tweeter::getDateAsString(Date d){

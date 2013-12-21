@@ -59,6 +59,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     //twitter feed
     void drawFeed();
+    void updateCurrentSelection(int index,bool firstTime );
+    
     //i/o stuff
     void loadJSONData(string folderName);
     void addUsersFromMentions();
@@ -82,21 +84,41 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void reloadShaders();
 
     
-    //twitter feed stuff
+    //twitter feed params
     int numberOfTweets;
     int currentTweetFeedIndex =0;
+    float heightOffset;
+    float avatarTweetGap;
+    float textHeightOffset;
+    float timeTillNextUpdate;
+    float minTimeGapForNextTweet;
+    float randomRangeMin,randomRangeMax;
+    int avatarSize;
+    
+    float animationLerpAmt;
+    float animationLerpRate;
+    float feedStringWidthCap;
     
     //text stuff
     ofxJSONElement result;
     ofxFTGLSimpleLayout font;
-    ofxFTGLSimpleLayout font2;
+    ofxFTGLSimpleLayout tweetFont;
+    ofxFTGLSimpleLayout tweetFontSmall;
+//    ofxFTGLSimpleLayout tweetFontSmall;
     ofxFTGLTextAlignment textAlign;
+    
     
 
     float stringWidth;
     float fontSize;
     int minUserMentions;
     
+    float tweetFontSize;
+    float tweetLineLength;
+
+    
+    float tweetSmallFontSize;
+    float tweetSmallLineLength;
     //draw stuff
     void loadMesh();
     void updateMeshFromTweets(int index);
@@ -111,6 +133,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     map<pair<string, string>, pair<int, int> >lineIndexPairs;
     map<string,int> numberOfMentions;
     map<string,int> userNameIdMap;
+
     int currentDateIndex;
     float dateIndexMin, dateIndexMax;
     void updateLabelWithCurrentMeshName(string name);
@@ -121,6 +144,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bRenderFeed;
     bool bAnimate;
     bool rotateModel;
+    bool bAnimateFeed;
     
 
     
@@ -151,6 +175,7 @@ protected:
     vector<Tweeter*> activeTweeters;
     vector<string*> activeTweets;
     vector<pair<string*, string*> >  activeTweetPairs;
+    vector<pair<string*, string*> > currentSelection;
     
     map<string, ofImage> avatars;
 

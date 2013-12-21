@@ -34,6 +34,7 @@ class CloudsFCPParser {
 	CloudsClip& getClipWithID( string ID, bool& clipFound );
 
 #pragma mark Links
+	void parseVOClips();
     void parseLinks(string linkFile);
 //    void parseClusterMap(string mapFile); //SVG
 	void parseClusterNetwork(string fileName);
