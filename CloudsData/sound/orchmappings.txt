@@ -16,4 +16,4 @@ meshbeats, straight pattern lsys;
 slowmeshbeats, straight pattern lsys;
 vermontbeatz, straight pattern lsys;
 slowvermontbeatz, straight pattern lsys;
-avibeats, avi1 avi2a avi2b avi2c avi3a avi3b Eccentric;
+avibeats, avi1 avi2a avi2b avi2c avi3a avi3b Eccentric Minimal Patter Patter2 House Jungle Toms Chord;
