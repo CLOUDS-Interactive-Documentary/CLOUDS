@@ -23,6 +23,8 @@ ofShader CloudsQuestion::shader = ofShader();
 
 CloudsQuestion::CloudsQuestion(){
 	
+	currentTestFileIndex = 0;
+	
 	hovering = false;
 	isSetup = false;
 	radius = 10;
@@ -32,6 +34,8 @@ CloudsQuestion::CloudsQuestion(){
 	hoveringEnabled = true;
 	isDestroyed = false;
 	lockHover = false;
+	
+	testImageSize = 24.;
 	
 	secondsToConsiderSelected = 3;
 	font = NULL;
@@ -102,6 +106,15 @@ void CloudsQuestion::setup(){
 		
 		progressRing.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 		dottedCircle.setMode(OF_PRIMITIVE_LINES);
+		
+
+		if(testFiles.size() != 0){
+			testImages.resize(testFiles.size());
+			for(int i = 0; i < testFiles.size(); i++){
+				cout << "Loaded: " << testFiles[i] << endl;
+				testImages[i].loadImage(testFiles[i]);
+			}
+		}
 	}
 }
 
@@ -113,11 +126,19 @@ void CloudsQuestion::endShader(){
 }
 
 void CloudsQuestion::reloadShader(){
-	cout << "RELOADING QUESTION SHADER" << endl;
-	CloudsQuestion::shader.load(getDataPath() + "/shaders/question");
+	CloudsQuestion::shader.load(GetCloudsDataPath() + "/shaders/question");
 }
 
 void CloudsQuestion::update(){
+	if(ofGetFrameNum() - lastQuestionSwitchedFrame > 30){
+		if(ofGetKeyPressed(OF_KEY_RIGHT) && testImages.size() > 0){
+			currentTestFileIndex =  (currentTestFileIndex + 1) % testImages.size();
+		}
+		else if(ofGetKeyPressed(OF_KEY_LEFT) && testImages.size() > 0){
+			currentTestFileIndex =  (testImages.size() + currentTestFileIndex - 1) % testImages.size();
+		}
+		lastQuestionSwitchedFrame = ofGetFrameNum();
+	}
 	
 	ofVec3f screenPoint = cam->worldToScreen(position);
 	currentScreenPoint = ofVec2f(screenPoint.x,screenPoint.y);
@@ -127,6 +148,40 @@ void CloudsQuestion::update(){
 }
 
 void CloudsQuestion::draw(){
+	
+	if(testImages.size() != 0){
+		
+		CloudsQuestion::shader.end();
+		
+		ofPushStyle();
+		ofPushMatrix();
+		
+		ofSetRectMode(OF_RECTMODE_CENTER);
+		ofEnableAlphaBlending();
+		
+		ofTranslate(position);
+		ofNode n;
+		n.setPosition(position);
+		n.lookAt(cam->getPosition());
+		
+		currentRot.slerp(.1, currentRot, n.getOrientationQuat());
+		
+		ofVec3f axis;
+		float angle;
+		currentRot.getRotate(angle, axis);
+		ofVec3f dial = n.getLookAtDir();
+		ofRotate(-ofGetElapsedTimef()*100,dial.x,dial.y,dial.z);
+		ofRotate(angle,axis.x,axis.y,axis.z);
+
+		testImages[currentTestFileIndex].draw(0,0,testImageSize,testImageSize);
+		
+		ofPopStyle();
+		ofPopMatrix();
+		
+		return;
+	}
+	
+	
 	ofPushStyle();
 
 	if(hovering){

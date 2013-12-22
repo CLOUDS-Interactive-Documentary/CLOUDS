@@ -13,6 +13,8 @@
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
 		609133841652CA6600B523AD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6091337C1652C9C900B523AD /* MainMenu.xib */; };
 		609133871652CB3E00B523AD /* testView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 609133861652CB3E00B523AD /* testView.mm */; };
+		85FCB765185E262200A9740A /* CloudsHUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85FCB763185E262200A9740A /* CloudsHUDLayer.cpp */; };
+		85FCB766185E262200A9740A /* CloudsHUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85FCB763185E262200A9740A /* CloudsHUDLayer.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -28,6 +30,18 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E703CCD0185CE67700547738 /* CloudsHUDController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCCE185CE67700547738 /* CloudsHUDController.cpp */; };
+		E703CCD1185CE67700547738 /* CloudsHUDController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCCE185CE67700547738 /* CloudsHUDController.cpp */; };
+		E703CCFA185D0FE600547738 /* src_colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCF1185D0FE600547738 /* src_colors.cpp */; };
+		E703CCFB185D0FE600547738 /* src_colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCF1185D0FE600547738 /* src_colors.cpp */; };
+		E703CCFC185D0FE600547738 /* svgtiny.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCF2185D0FE600547738 /* svgtiny.cpp */; };
+		E703CCFD185D0FE600547738 /* svgtiny.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCF2185D0FE600547738 /* svgtiny.cpp */; };
+		E703CCFE185D0FE600547738 /* svgtiny_gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCF4185D0FE600547738 /* svgtiny_gradient.cpp */; };
+		E703CCFF185D0FE600547738 /* svgtiny_gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCF4185D0FE600547738 /* svgtiny_gradient.cpp */; };
+		E703CD00185D0FE600547738 /* svgtiny_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCF6185D0FE600547738 /* svgtiny_list.cpp */; };
+		E703CD01185D0FE600547738 /* svgtiny_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCF6185D0FE600547738 /* svgtiny_list.cpp */; };
+		E703CD02185D0FE600547738 /* ofxSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCF8185D0FE600547738 /* ofxSvg.cpp */; };
+		E703CD03185D0FE600547738 /* ofxSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCF8185D0FE600547738 /* ofxSvg.cpp */; };
 		E72258DC183D8B6A00625763 /* CloudsCaption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72258DA183D8B6A00625763 /* CloudsCaption.cpp */; };
 		E72258DD183D8B6A00625763 /* CloudsCaption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72258DA183D8B6A00625763 /* CloudsCaption.cpp */; };
 		E730A47517DBE3FC0088335A /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A46917DBE3FC0088335A /* ofxDelaunay.cpp */; };
@@ -124,6 +138,10 @@
 		E75DB6C617CDC02A00CD99D9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E75DB6C117CDC02A00CD99D9 /* README.md */; };
 		E75DB6E817CDC0A100CD99D9 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DB6DC17CDC0A100CD99D9 /* ofxGameCamera.cpp */; };
 		E79DD944178B71A300057B34 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79DD942178B71A200057B34 /* CloudsQuestion.cpp */; };
+		E79E6F5F1855320E00406535 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6F591855320E00406535 /* CloudsInput.cpp */; };
+		E79E6F601855320E00406535 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6F591855320E00406535 /* CloudsInput.cpp */; };
+		E79E6F631855320E00406535 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6F5D1855320E00406535 /* CloudsInputMouse.cpp */; };
+		E79E6F641855320E00406535 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6F5D1855320E00406535 /* CloudsInputMouse.cpp */; };
 		E7A1E0C81760E80E00A51263 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A1E0C71760E80E00A51263 /* libz.dylib */; };
 		E7A3F21018321B0600EADD94 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		E7A3F21118321B0600EADD94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -322,6 +340,8 @@
 		6091337C1652C9C900B523AD /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		609133851652CB3E00B523AD /* testView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testView.h; sourceTree = "<group>"; };
 		609133861652CB3E00B523AD /* testView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = testView.mm; sourceTree = "<group>"; };
+		85FCB763185E262200A9740A /* CloudsHUDLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDLayer.cpp; sourceTree = "<group>"; };
+		85FCB764185E262200A9740A /* CloudsHUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDLayer.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -339,6 +359,16 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E703CCCE185CE67700547738 /* CloudsHUDController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDController.cpp; sourceTree = "<group>"; };
+		E703CCCF185CE67700547738 /* CloudsHUDController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDController.h; sourceTree = "<group>"; };
+		E703CCF1185D0FE600547738 /* src_colors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = src_colors.cpp; sourceTree = "<group>"; };
+		E703CCF2185D0FE600547738 /* svgtiny.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny.cpp; sourceTree = "<group>"; };
+		E703CCF3185D0FE600547738 /* svgtiny.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svgtiny.h; sourceTree = "<group>"; };
+		E703CCF4185D0FE600547738 /* svgtiny_gradient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny_gradient.cpp; sourceTree = "<group>"; };
+		E703CCF5185D0FE600547738 /* svgtiny_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svgtiny_internal.h; sourceTree = "<group>"; };
+		E703CCF6185D0FE600547738 /* svgtiny_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny_list.cpp; sourceTree = "<group>"; };
+		E703CCF8185D0FE600547738 /* ofxSvg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSvg.cpp; sourceTree = "<group>"; };
+		E703CCF9185D0FE600547738 /* ofxSvg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSvg.h; sourceTree = "<group>"; };
 		E72258DA183D8B6A00625763 /* CloudsCaption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsCaption.cpp; sourceTree = "<group>"; };
 		E72258DB183D8B6A00625763 /* CloudsCaption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsCaption.h; sourceTree = "<group>"; };
 		E730A46917DBE3FC0088335A /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
@@ -597,6 +627,11 @@
 		E75DB6DD17CDC0A100CD99D9 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
 		E79DD942178B71A200057B34 /* CloudsQuestion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsQuestion.cpp; sourceTree = "<group>"; };
 		E79DD943178B71A300057B34 /* CloudsQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsQuestion.h; sourceTree = "<group>"; };
+		E79E6F591855320E00406535 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
+		E79E6F5A1855320E00406535 /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
+		E79E6F5C1855320E00406535 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
+		E79E6F5D1855320E00406535 /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		E79E6F5E1855320E00406535 /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
 		E7A1E0C71760E80E00A51263 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E7A3F28F18321B0600EADD94 /* CloudsPointcloudViewerOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudsPointcloudViewerOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A3F29018321B0700EADD94 /* CloudsPointcloudViewer copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CloudsPointcloudViewer copy-Info.plist"; path = "/Users/focus/Documents/Xcode/oF/of_gitRelease_obviousjim/openFrameworks/apps/CLOUDS/CloudsPointcloudViewer/CloudsPointcloudViewer copy-Info.plist"; sourceTree = "<absolute>"; };
@@ -722,6 +757,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E703CCED185D0FE600547738 /* ofxSvg */,
 				E7DCAE431839C20100A70EAA /* ofxFTGL */,
 				E7A3F29118321B3F00EADD94 /* ofxOculusRift */,
 				E75DB6C717CDC0A100CD99D9 /* ofxGameCamera */,
@@ -832,6 +868,65 @@
 			name = openFrameworks;
 			sourceTree = "<group>";
 		};
+		E703CCCD185CE66100547738 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				85FCB763185E262200A9740A /* CloudsHUDLayer.cpp */,
+				85FCB764185E262200A9740A /* CloudsHUDLayer.h */,
+				E703CCCF185CE67700547738 /* CloudsHUDController.h */,
+				E703CCCE185CE67700547738 /* CloudsHUDController.cpp */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
+		E703CCED185D0FE600547738 /* ofxSvg */ = {
+			isa = PBXGroup;
+			children = (
+				E703CCEE185D0FE600547738 /* libs */,
+				E703CCF7185D0FE600547738 /* src */,
+			);
+			name = ofxSvg;
+			path = ../CloudsLibrary/addons/ofxSvg;
+			sourceTree = "<group>";
+		};
+		E703CCEE185D0FE600547738 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				E703CCEF185D0FE600547738 /* svgTiny */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		E703CCEF185D0FE600547738 /* svgTiny */ = {
+			isa = PBXGroup;
+			children = (
+				E703CCF0185D0FE600547738 /* src */,
+			);
+			path = svgTiny;
+			sourceTree = "<group>";
+		};
+		E703CCF0185D0FE600547738 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E703CCF1185D0FE600547738 /* src_colors.cpp */,
+				E703CCF2185D0FE600547738 /* svgtiny.cpp */,
+				E703CCF3185D0FE600547738 /* svgtiny.h */,
+				E703CCF4185D0FE600547738 /* svgtiny_gradient.cpp */,
+				E703CCF5185D0FE600547738 /* svgtiny_internal.h */,
+				E703CCF6185D0FE600547738 /* svgtiny_list.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E703CCF7185D0FE600547738 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E703CCF8185D0FE600547738 /* ofxSvg.cpp */,
+				E703CCF9185D0FE600547738 /* ofxSvg.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		E730A45217DBE3FC0088335A /* ofxDelaunay */ = {
 			isa = PBXGroup;
 			children = (
@@ -881,6 +976,7 @@
 			isa = PBXGroup;
 			children = (
 				E7402DBD178F304700FEABED /* CloudsGlobal.h */,
+				E79E6F581855320E00406535 /* Input */,
 				E75DB6B817CDC02A00CD99D9 /* VisualSystemsLibrary */,
 				E731D65117401845006B9650 /* RGBD */,
 				E731D65817401845006B9650 /* StoryEngine */,
@@ -891,9 +987,10 @@
 		E731D65117401845006B9650 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
+				E73995D217863E6000EA5F4D /* GPUParticles */,
+				E703CCCD185CE66100547738 /* HUD */,
 				E72258DA183D8B6A00625763 /* CloudsCaption.cpp */,
 				E72258DB183D8B6A00625763 /* CloudsCaption.h */,
-				E73995D217863E6000EA5F4D /* GPUParticles */,
 				E73991171786155A00EA5F4D /* CloudsVisualSystemRGBD.h */,
 				E73991161786155A00EA5F4D /* CloudsVisualSystemRGBD.cpp */,
 				E79DD943178B71A300057B34 /* CloudsQuestion.h */,
@@ -1403,6 +1500,18 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E79E6F581855320E00406535 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				E79E6F591855320E00406535 /* CloudsInput.cpp */,
+				E79E6F5A1855320E00406535 /* CloudsInput.h */,
+				E79E6F5C1855320E00406535 /* CloudsInputEvents.h */,
+				E79E6F5D1855320E00406535 /* CloudsInputMouse.cpp */,
+				E79E6F5E1855320E00406535 /* CloudsInputMouse.h */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
 		E7A3F29118321B3F00EADD94 /* ofxOculusRift */ = {
 			isa = PBXGroup;
 			children = (
@@ -1761,6 +1870,15 @@
 				E7DCAF0B1839C20300A70EAA /* ofxFTGLFont.cpp in Sources */,
 				E7DCAF0D1839C20300A70EAA /* ofxFTGLSimpleLayout.cpp in Sources */,
 				E72258DC183D8B6A00625763 /* CloudsCaption.cpp in Sources */,
+				E79E6F5F1855320E00406535 /* CloudsInput.cpp in Sources */,
+				E79E6F631855320E00406535 /* CloudsInputMouse.cpp in Sources */,
+				E703CCD0185CE67700547738 /* CloudsHUDController.cpp in Sources */,
+				E703CCFA185D0FE600547738 /* src_colors.cpp in Sources */,
+				E703CCFC185D0FE600547738 /* svgtiny.cpp in Sources */,
+				E703CCFE185D0FE600547738 /* svgtiny_gradient.cpp in Sources */,
+				E703CD00185D0FE600547738 /* svgtiny_list.cpp in Sources */,
+				E703CD02185D0FE600547738 /* ofxSvg.cpp in Sources */,
+				85FCB765185E262200A9740A /* CloudsHUDLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1866,6 +1984,15 @@
 				E7DCAF0C1839C20300A70EAA /* ofxFTGLFont.cpp in Sources */,
 				E7DCAF0E1839C20300A70EAA /* ofxFTGLSimpleLayout.cpp in Sources */,
 				E72258DD183D8B6A00625763 /* CloudsCaption.cpp in Sources */,
+				E79E6F601855320E00406535 /* CloudsInput.cpp in Sources */,
+				E79E6F641855320E00406535 /* CloudsInputMouse.cpp in Sources */,
+				E703CCD1185CE67700547738 /* CloudsHUDController.cpp in Sources */,
+				E703CCFB185D0FE600547738 /* src_colors.cpp in Sources */,
+				E703CCFD185D0FE600547738 /* svgtiny.cpp in Sources */,
+				E703CCFF185D0FE600547738 /* svgtiny_gradient.cpp in Sources */,
+				E703CD01185D0FE600547738 /* svgtiny_list.cpp in Sources */,
+				E703CD03185D0FE600547738 /* ofxSvg.cpp in Sources */,
+				85FCB766185E262200A9740A /* CloudsHUDLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

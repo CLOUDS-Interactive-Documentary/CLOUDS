@@ -13,7 +13,7 @@
 #include "ofxXmlSettings.h"
 
 #define MAXAMP 32768.0 // maximum amp for oscillators (-1., 1) = 2^15
-#define DEBUG false
+#define LUKEDEBUG true
 
 // BGG rtcmix stuff
 extern "C" {
@@ -41,6 +41,12 @@ struct lukePitchArray {
     vector<int> notes;
     int basenote;
     int scale;
+    int mindex[128];
+    vector < vector <int> > markov;
+};
+
+struct lukeSimpleMelody {
+    vector<int> notes;
 };
 
 struct lukePreset {
@@ -62,6 +68,51 @@ struct lukeSample {
     string bank;
     float length;
     float numbeats;
+    vector <string> pattern;
+};
+
+struct lukeNote {
+    float starttime;
+    int pitch;
+    float velo;
+    float dur;
+};
+
+class lindenSequencer {
+    int ptr;
+    char match;
+public:
+    string thestring;
+    lindenSequencer(string f);
+    lindenSequencer(); // blank
+    int tick();
+};
+
+class melodySolver {
+    string type;
+    lukePitchArray parray;
+    lukeSimpleMelody marray;
+    int pick;
+    int curpitch;
+public:
+    melodySolver(string c_type, lukePitchArray& c_p, lukeSimpleMelody& c_m);
+    int tick();
+};
+
+class rhythmSolver {
+    string type;
+    string arg_b;
+    lukeRhythm rarray;
+    lindenSequencer* lsys;
+    int ptr;
+public:
+    rhythmSolver(string c_type, string c_arg_b, lukeRhythm& c_r);
+    bool tick();
+};
+
+class cloudsSequencer {
+public:
+    cloudsSequencer(string f, vector<lukeNote>& n);
 };
 
 // luke's music functions
@@ -70,9 +121,11 @@ double mtof(double f);
 double ftom(double f, double tuning);
 string ptos(int p);
 int scale(int p, int o);
+void precomputemarkov(lukePitchArray& p);
+int markov(int current, lukePitchArray& p);
 void loadrhythms(string f, vector<lukeRhythm>& r);
 void loadpitches(string f, vector<lukePitchArray>& p);
-void loadpresets(string f, vector<lukePreset>& p);
+void loadsimplemelodies(string f, vector<lukeSimpleMelody>& m);
 void loadpresets_xml(string f, vector<lukePreset>& p);
 
 // luke's audio functions
@@ -88,9 +141,12 @@ void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan
 void REVERB(double outskip, double time);
 float LOADSOUND(string file, string handle);
 void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle);
-void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, string handle);
+void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, double amp, string handle);
 void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan);
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
 void SCHEDULEBANG(double time);
+
+void PATCHSYNTH(string inst, string output);
+void PATCHFX(string inst, string input, string output);
 
 #endif

@@ -1,6 +1,7 @@
 
 #include "CloudsVisualSystemYellowTail.h"
 
+
 CloudsVisualSystemYellowTail::CloudsVisualSystemYellowTail(){
 
 }
@@ -24,7 +25,7 @@ void CloudsVisualSystemYellowTail::selfSetup(){
 	mNewGestureStyle = GestureStyleTraveling;
     neverTouchedBefore = true;
 	clearGestures();
-	
+    	
 }
 
 void CloudsVisualSystemYellowTail::selfSetupGuis(){
@@ -92,6 +93,8 @@ void CloudsVisualSystemYellowTail::selfDrawBackground(){
     }
 	
 	ofPopStyle();
+    
+//    ((CloudsInputKinectOSC *)GetCloudsInput().get())->debug(0, 0, ofGetWidth(), ofGetHeight());
 }
 
 void CloudsVisualSystemYellowTail::selfDrawDebug(){
@@ -111,7 +114,7 @@ void CloudsVisualSystemYellowTail::selfExit(){
 }
 
 void CloudsVisualSystemYellowTail::selfBegin(){
-	
+
     Gesture *introGesture = new Gesture(ofGetWidth(), ofGetHeight());
     introGesture->fromXMLFile( getVisualSystemDataPath() + "strokes/y_stroke.xml" );
     gestures.push_back(introGesture);
@@ -124,7 +127,7 @@ void CloudsVisualSystemYellowTail::selfEnd(){
 
 void CloudsVisualSystemYellowTail::selfKeyPressed(ofKeyEventArgs & args){
 	switch (args.key){
-		case ' ':
+		case 'g':
 			gestures.clear();
 			break;
 		case 'c':
@@ -140,29 +143,81 @@ void CloudsVisualSystemYellowTail::selfKeyReleased(ofKeyEventArgs & args){
 }
 
 void CloudsVisualSystemYellowTail::selfMouseDragged(ofMouseEventArgs& data){
-	int touchId = 0;//touch.id;
-	
-    map<int,Gesture *>::iterator G = gestureForTouch.find(touchId);
-    assert(G != gestureForTouch.end());
-    Gesture *gesture = G->second;
-    
-    if (gesture->distanceToLastPoint((float)data.x, (float)data.y) > minimumTravelForNewPoint) {
-        
-        float distanceThresholdForAdding = minimumTravelForNewPoint * 8.0;
-        if (gesture->pointCount > 10){ distanceThresholdForAdding = minimumTravelForNewPoint * 2.0;}
-        gesture->addPointAndHalfwayPoint((float)data.x, (float)data.y, distanceThresholdForAdding);
-        
-        gesture->smooth(22.0);
-        gesture->compile();
-    }
+//    int touchId = data.button;
+//	
+//    map<int,Gesture *>::iterator G = gestureForTouch.find(touchId);
+//    assert(G != gestureForTouch.end());
+//    Gesture *gesture = G->second;
+//    
+//    if (gesture->distanceToLastPoint((float)data.x, (float)data.y) > minimumTravelForNewPoint) {
+//        
+//        float distanceThresholdForAdding = minimumTravelForNewPoint * 8.0;
+//        if (gesture->pointCount > 10){ distanceThresholdForAdding = minimumTravelForNewPoint * 2.0;}
+//        gesture->addPointAndHalfwayPoint((float)data.x, (float)data.y, distanceThresholdForAdding);
+//        
+//        gesture->smooth(22.0);
+//        gesture->compile();
+//    }
 }
 
 void CloudsVisualSystemYellowTail::selfMouseMoved(ofMouseEventArgs& data){
-	
+    
 }
 
 void CloudsVisualSystemYellowTail::selfMousePressed(ofMouseEventArgs& data){
-	int touchId = 0;//touch.id;
+//    int touchId = data.button;
+//	
+//	/*
+//	 if (neverTouchedBefore) {
+//	 clearGestures();
+//	 neverTouchedBefore = false;
+//	 }
+//	 */
+//	
+//    if (touchId%2 == 0){
+//        mNewGestureStyle = GestureStyleTraveling;
+//    } else {
+//        mNewGestureStyle = GestureStyleInPlace;
+//    } 
+//    
+//	Gesture *newGesture = new Gesture(ofGetWidth(), ofGetHeight());
+//	newGesture->clear();
+//	newGesture->clearPolygons();
+//	newGesture->addPoint((float)data.x, (float)data.y);
+//	newGesture->setStyle(mNewGestureStyle);
+//    
+//    potentialGestures.insert(newGesture);
+//    
+//    gestureForTouch[touchId] = newGesture;
+}
+
+void CloudsVisualSystemYellowTail::selfMouseReleased(ofMouseEventArgs& data){
+//    int touchId = data.button;
+//	
+//    map<int,Gesture *>::iterator G = gestureForTouch.find(touchId);
+//    
+//	assert(G != gestureForTouch.end());
+//    
+//	Gesture *gesture = G->second;
+//    
+//    gestureForTouch.erase(G);
+//    potentialGestures.erase(find(potentialGestures.begin(), potentialGestures.end(), gesture));
+//    
+//    if (gesture->isValid()) {
+//        gestures.push_back(gesture);
+//    } else {
+//        delete gesture;
+//    }
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemYellowTail::selfInteractionMoved(CloudsInteractionEventArgs& args){
+    
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemYellowTail::selfInteractionStarted(CloudsInteractionEventArgs& args){
+    int touchId = args.playerId;
 	
 	/*
 	 if (neverTouchedBefore) {
@@ -171,26 +226,45 @@ void CloudsVisualSystemYellowTail::selfMousePressed(ofMouseEventArgs& data){
 	 }
 	 */
 	
-	if (data.button == 0){
-		mNewGestureStyle = GestureStyleTraveling;
-	} else {
-		mNewGestureStyle = GestureStyleInPlace;
-	}
+//    if (touchId%2 == 0){
+        mNewGestureStyle = GestureStyleTraveling;
+//    } else {
+//        mNewGestureStyle = GestureStyleInPlace;
+//    } 
     
 	Gesture *newGesture = new Gesture(ofGetWidth(), ofGetHeight());
 	newGesture->clear();
 	newGesture->clearPolygons();
-	newGesture->addPoint((float)data.x, (float)data.y);
+	newGesture->addPoint((float)args.position.x, (float)args.position.y);
 	newGesture->setStyle(mNewGestureStyle);
     
     potentialGestures.insert(newGesture);
     
     gestureForTouch[touchId] = newGesture;
-	
 }
 
-void CloudsVisualSystemYellowTail::selfMouseReleased(ofMouseEventArgs& data){
-	int touchId = 0;//touch.id;
+//--------------------------------------------------------------
+void CloudsVisualSystemYellowTail::selfInteractionDragged(CloudsInteractionEventArgs& args){
+    int touchId = args.playerId;
+	
+    map<int,Gesture *>::iterator G = gestureForTouch.find(touchId);
+    assert(G != gestureForTouch.end());
+    Gesture *gesture = G->second;
+    
+    if (gesture->distanceToLastPoint((float)args.position.x, (float)args.position.y) > minimumTravelForNewPoint) {
+        
+        float distanceThresholdForAdding = minimumTravelForNewPoint * 8.0;
+        if (gesture->pointCount > 10){ distanceThresholdForAdding = minimumTravelForNewPoint * 2.0;}
+        gesture->addPointAndHalfwayPoint((float)args.position.x, (float)args.position.y, distanceThresholdForAdding);
+        
+        gesture->smooth(22.0);
+        gesture->compile();
+    }
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemYellowTail::selfInteractionEnded(CloudsInteractionEventArgs& args){
+    int touchId = args.playerId;
 	
     map<int,Gesture *>::iterator G = gestureForTouch.find(touchId);
     

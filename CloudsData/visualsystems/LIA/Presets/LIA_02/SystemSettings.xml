@@ -1,0 +1,67 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SystemSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maxArcRadius</Name>
+    <Value>0.133004919</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>moverSpeed</Name>
+    <Value>0.852216721</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>crossSize</Name>
+    <Value>0.453201890</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>arcAlpha</Name>
+    <Value>0.517241359</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>lightsStrokeWidth</Name>
+    <Value>0.059113301</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>lightsStrokeAlpha</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>arcLenBase</Name>
+    <Value>0.098522164</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>arcLenRandom</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>arcRotationRandom</Name>
+    <Value>0.029556651</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fakeMouseX</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>moduleKeepTheCircleSize</Name>
+    <Value>0.157635465</Value>
+</Widget>

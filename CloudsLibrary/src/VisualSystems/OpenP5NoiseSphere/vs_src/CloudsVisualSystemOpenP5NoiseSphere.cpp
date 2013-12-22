@@ -12,6 +12,9 @@ float * Hair::levelScaleLookUp = NULL;
 float Hair::minNoiseScale = 0.5f;
 float Hair::maxNoiseScale = 1.0f;
 
+ofFloatColor Hair::baseColor = ofFloatColor::black;
+ofFloatColor Hair::tipColor  = ofFloatColor::white;
+
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
 
@@ -21,34 +24,58 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-//	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
-//	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
-//	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
-//
-//	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
-//	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
-//	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
+    customGui->addIntSlider("HAIR COUNT", 1000, 20000, &count);
+    customGui->addSlider("SPHERE SCALE", 0.0, 75, &sphereSize);
+    customGui->addSlider("NOISE SPEED", 0.0, 10.0, &noiseSpeed);
+    customGui->addRangeSlider("NOISE SCALE", 0.0, 4.0, &Hair::minNoiseScale, &Hair::maxNoiseScale);
     
-    customGui->addLabel("Solid Sphere");
-    customGui->addSlider("Solid_Sphere_Scale", 0.0, .25, &solidSphereScale);
-    customGui->addSlider("Solid_Sphere_Alpha", 0.0, 1.0, &solidSphereAlpha);
-
+    customGui->addSpacer();
+    customGui->addSlider("SPHERE HUE", 0.0f, 1.0f, &sphereColor.r);
+    customGui->addSlider("SPHERE SAT", 0.0f, 1.0f, &sphereColor.g);
+    customGui->addSlider("SPHERE BRI", 0.0f, 1.0f, &sphereColor.b);
+    customGui->addSlider("SPHERE ALPHA", 0.0f, 1.0f, &sphereColor.a);
+    customGui->addSpacer();
+    customGui->addRangeSlider("HAIR LENGTH", 0.0, 5.0, &minHairLength, &maxHairLength);
+    customGui->addRangeSlider("HAIR LINE WIDTH", 0.1f, 10.0f, &minHairLineWidth, &maxHairLineWidth);
     
-    customGui->addSlider("Noise Speed", 0.0, 10.0, &noiseSpeed);
-    customGui->addRangeSlider("Noise Scale", 0.0, 4.0, &Hair::minNoiseScale, &Hair::maxNoiseScale);
-    customGui->addSlider("Fur Length", 0.0, 4., &furLength);
+    customGui->addSpacer();
+    customGui->addRangeSlider("BASE HUE", 0.0f, 1.0f, &minBaseColor.r, &maxBaseColor.r);
+    customGui->addRangeSlider("BASE SAT", 0.0f, 1.0f, &minBaseColor.g, &maxBaseColor.g);
+    customGui->addRangeSlider("BASE BRI", 0.0f, 1.0f, &minBaseColor.b, &maxBaseColor.b);
+    customGui->addRangeSlider("BASE ALPHA", 0.0f, 1.0f, &minBaseColor.a, &maxBaseColor.a);
+    customGui->addSpacer();
+    customGui->addRangeSlider("TIP HUE", 0.0f, 1.0f, &minTipColor.r, &maxTipColor.r);
+    customGui->addRangeSlider("TIP SAT", 0.0f, 1.0f, &minTipColor.g, &maxTipColor.g);
+    customGui->addRangeSlider("TIP BRI", 0.0f, 1.0f, &minTipColor.b, &maxTipColor.b);
+    customGui->addRangeSlider("TIP ALPHA", 0.0f, 1.0f, &minTipColor.a, &maxTipColor.a);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5NoiseSphere::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
     
+	drawingGui = new ofxUISuperCanvas("POINTS_LINES", gui);
+	drawingGui->copyCanvasStyle(gui);
+	drawingGui->copyCanvasProperties(gui);
+	drawingGui->setName("PointsLines");
+	drawingGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	drawingGui->addToggle("DRAW POINTS", &drawPoints);
+	drawingGui->addSlider("POINT ALPHA", 0, 1.0, &pointAlpha);
+    drawingGui->addSlider("POINT SIZE", 1.0, 3.0, &pointSize);
+	drawingGui->addSpacer();
+	drawingGui->addToggle("DRAW LINES", &drawLines);
+	drawingGui->addSlider("LINE ALPHA", 0, 1.0, &lineAlpha);
+
+	ofAddListener(drawingGui->newGUIEvent, this, &CloudsVisualSystemOpenP5NoiseSphere::selfGuiEvent);
+	guis.push_back(drawingGui);
+	guimap[drawingGui->getName()] = drawingGui;
+
     selfSetupAudioGui();
 }
 
-void CloudsVisualSystemOpenP5NoiseSphere::selfGuiEvent(ofxUIEventArgs &e){
-//	if(e.widget->getName() == "Custom Button"){
-//		cout << "Button pressed!" << endl;
-//	}
+void CloudsVisualSystemOpenP5NoiseSphere::selfGuiEvent(ofxUIEventArgs &e)
+{
+
 }
 
 void CloudsVisualSystemOpenP5NoiseSphere::selfSetupAudioGui()
@@ -59,21 +86,16 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupAudioGui()
 	audioGui->setName("Audio");
 	audioGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
-    audioGui->addIntSlider("PEAK HOLD TIME", 0, 30, &fftAnalyzer[0].peakHoldTime);
-    audioGui->addSlider("PEAK DECAY RATE", 0, 1, &fftAnalyzer[0].peakDecayRate);
-    for (int i = 0; i < fftAnalyzer[0].nAverages; i++) {
-        audioGui->addSlider("S" + ofToString(i), 0.0f, 30.0f, fftAnalyzer[0].peaks[i], 17.0f, 160.0f);
-        audioGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    audioGui->addSpacer();
+    vector<string> soundNames;
+    for (int i = 0; i < soundsDir.size(); i++) {
+        soundNames.push_back(soundsDir.getName(i));
     }
-    audioGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    for (int i = 0; i < fftAnalyzer[0].nAverages; i++) {
-        audioGui->addToggle("T" + ofToString(i), &peakToggles[i], 17.0f, 17.0f)->setLabelVisible(false);
-        audioGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    }
-    audioGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    audioGui->addSlider("COMBINED PEAK", 0.0f, 30.0f, &combinedPeak);
-    audioGui->addSlider("FUR PEAK SCALAR", 0.0f, 1.0f, &furPeakScalar);
+    audioGui->addRadio("SOUNDS", soundNames);
+    
+    audioGui->addSpacer();
     audioGui->addSlider("LEVEL", 0.0f, 1.0f, 0.0f);
+    audioGui->addSlider("LEVEL ADJUST", 0.1f, 10.0f, &levelAdjust);
 
     audioGui->addSpacer();
 	audioGui->addSlider("SCROLL SPEED", 0.0f, 2.5f, &scrollSpeed);
@@ -96,7 +118,15 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupAudioGui()
 
 void CloudsVisualSystemOpenP5NoiseSphere::guiAudioEvent(ofxUIEventArgs &e)
 {
-    
+    // Let's look through the files dropdown for a match.
+    string name = e.widget->getName();
+    for (int i = 0; i < soundsDir.numFiles(); i++) {
+        if (name == soundsDir.getName(i) && ((ofxUIToggle *)e.widget)->getValue()) {
+            selectedSoundsIdx = i;
+            reloadSound();
+            break;
+        }
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -116,63 +146,33 @@ void CloudsVisualSystemOpenP5NoiseSphere::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
-// selfSetup is called when the visual system is first instantiated
-// This will be called during a "loading" screen, so any big images or
-// geometry should be loaded here
-void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
-{
-    leftBuffer  = NULL;
-    rightBuffer = NULL;
-    peakToggles = NULL;
-    bAudioBuffered = false;
+void CloudsVisualSystemOpenP5NoiseSphere::selfSetDefaults(){
+	
+	drawLines = true;
+	drawPoints = false;
+	pointSize = 2.0;
+	lineAlpha = 1.0;
+	pointAlpha = 1.0;
+	
+	count = 10000;
+	
+    sphereSize = 75.0f;
+    minHairLength = maxHairLength = 1.0f;
+    minHairLineWidth = maxHairLineWidth = 0.1f;
     
-//    string filePath = "TestVideo/Casey_Software_is_what_i_love_the_most";
-//    string filePath = "TestVideo/Fernanda_social_network_hairballs";
-//    string filePath = "TestVideo/Jer_TestVideo";
-//    if (ofFile::doesFileExist(getVisualSystemDataPath() + filePath + ".mov")){
-//		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + filePath + ".mov",
-//								   getVisualSystemDataPath() + filePath + ".xml" );
-//		
-//		getRGBDVideoPlayer().swapAndPlay();
-//	}
-
-    videoPlayer.loadMovie(getVisualSystemDataPath() + "TestVideo/RedNoise.mov");
-    videoPlayer.play();
-    videoPlayer.setLoopState(OF_LOOP_NORMAL);
+    currLevel = 0;
+    levelAdjust = 1.0f;
     
-    // set up fft analyzer
-    for (int i = 0; i < 2; i++) {
-        fftAnalyzer[i].setup(44100, BUFFER_SIZE/2, 1);
-        fftAnalyzer[i].peakHoldTime = 15;         // hold longer
-        fftAnalyzer[i].peakDecayRate = 0.95f;     // decay slower
-        fftAnalyzer[i].linearEQIntercept = 0.9f;  // reduced gain at lowest frequency
-        fftAnalyzer[i].linearEQSlope = 0.01f;     // increasing gain at higher frequencies
-    }
-    
-    peakToggles = new bool[fftAnalyzer[0].nAverages];
-    for (int i = 0; i < fftAnalyzer[0].nAverages; i++) {
-        peakToggles[i] = false;
-    }
-
-    // set up hairball
-	radius = 75;
-    
-    Hair::levelScaleLookUp = new float[(int)radius * 2 + 1];
-    for (int i = 0; i < radius * 2 + 1; i++) {
-        Hair::levelScaleLookUp[i] = 0;
-    }
-    
-	for (int i=0; i<count; i++) {
-		list.push_back( Hair(radius) );
-	}
-    
+    sphereColor = ofFloatColor::gray;
+    minBaseColor = maxBaseColor = ofFloatColor::black;
+    minTipColor  = maxTipColor  = ofFloatColor::white;
+	
 	noisePosition = 0;
 	noiseSpeed = 0;
 	noiseScale = 1;
-    
-    scrollY = -radius;
-    scrollSpeed = 0.1f;
-    
+
+	radius = 75;
+	
     levelOffset = 1;
     levelScale = 2;
     levelDecayRate = 0.99f;
@@ -182,16 +182,47 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
     levelToNoiseScale = 50;
     levelToNoiseRatio = 0.5f;
 	
-    wireSphereScale = 0.9333;
-    solidSphereScale = 0.8666;
-    wireSphereAlpha = 0.0784;
-    solidSphereAlpha = 1.0;
-    
-    ofEnableSmoothing();
-    ofSetLineWidth(.1);
-
+    // set up hairball
+	radius = 75;
+	
+    scrollY = -radius;
+    scrollSpeed = 0.1f;
+	
 }
 
+// selfSetup is called when the visual system is first instantiated
+// This will be called during a "loading" screen, so any big images or
+// geometry should be loaded here
+void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
+{
+
+	leftBuffer  = NULL;
+    rightBuffer = NULL;
+    bAudioBuffered = false;
+    
+    soundsDir.listDir(getVisualSystemDataPath() + "sounds" );
+    soundsDir.sort();
+    selectedSoundsIdx = 0;
+    reloadSound();
+    
+    Hair::levelScaleLookUp = new float[(int)radius * 2 + 1];
+    for (int i = 0; i < radius * 2 + 1; i++) {
+        Hair::levelScaleLookUp[i] = 0;
+    }
+    
+	generateNoiseSphere();
+	
+    reloadShader();
+}
+
+void CloudsVisualSystemOpenP5NoiseSphere::generateNoiseSphere(){
+
+	list.clear();
+	for (int i=0; i<count; i++) {
+		list.push_back( Hair(radius) );
+	}
+	
+}
 
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
@@ -216,58 +247,39 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
 {
-    videoPlayer.update();
-    if (videoPlayer.isAudioLoaded()) {
-        if (bAudioBuffered == false) {
-            float * interleavedBuffer = videoPlayer.getAllAmplitudes();
-            numAmplitudesPerChannel = videoPlayer.getNumAmplitudes() / 2;
-            leftBuffer  = new float[numAmplitudesPerChannel];
-            rightBuffer = new float[numAmplitudesPerChannel];
-            
-            for (int i = 0; i < numAmplitudesPerChannel; i++) {
-                leftBuffer[i]  = interleavedBuffer[i * 2 + 0];
-                rightBuffer[i] = interleavedBuffer[i * 2 + 1];
+	
+	if(list.size() != count){
+		generateNoiseSphere();
+	}
+	
+    if (bModeVideo) {
+        videoPlayer.update();
+        if (videoPlayer.isAudioLoaded()) {
+            if (bAudioBuffered == false) {
+                float * interleavedBuffer = videoPlayer.getAllAmplitudes();
+                numAmplitudesPerChannel = videoPlayer.getNumAmplitudes() / 2;
+                leftBuffer  = new float[numAmplitudesPerChannel];
+                rightBuffer = new float[numAmplitudesPerChannel];
+                
+                for (int i = 0; i < numAmplitudesPerChannel; i++) {
+                    leftBuffer[i]  = interleavedBuffer[i * 2 + 0];
+                    rightBuffer[i] = interleavedBuffer[i * 2 + 1];
+                }
+                
+                bAudioBuffered = true;
             }
             
-            bAudioBuffered = true;
+            currLevel = ABS(videoPlayer.getAmplitude()) * levelAdjust;
         }
-        
-        // calculate fft
-        float avgPower = 0.0f;
-        
-        int idx = (int)(videoPlayer.getPosition() * (numAmplitudesPerChannel - 1));
-        fft[0].powerSpectrum(idx, BUFFER_SIZE/2, leftBuffer,  BUFFER_SIZE, &magnitude[0][0], &phase[0][0], &power[0][0], &avgPower);
-        fft[1].powerSpectrum(idx, BUFFER_SIZE/2, rightBuffer, BUFFER_SIZE, &magnitude[1][0], &phase[1][0], &power[1][0], &avgPower);
-        for (int i = 0; i < BUFFER_SIZE/2; i++) {
-            freq[0][i] = magnitude[0][i];
-            freq[1][i] = magnitude[1][i];
-        }
-        
-        fftAnalyzer[0].calculate(freq[0]);
-        fftAnalyzer[1].calculate(freq[1]);
-        
-        // update gui sliders
-        int combinedCount = 0;
-        float newCombinedPeak = 0.0f;
-        for (int i = 0; i < fftAnalyzer[0].nAverages; i++) {
-            float monoPeak = ((fftAnalyzer[0].peaks[i] + fftAnalyzer[1].peaks[i]) / 2.0f);
-            ((ofxUISlider *)audioGui->getWidget("S" + ofToString(i)))->setValue(monoPeak);
-//            cout << i << " " << fftAnalyzer[0].peaks[i] << " " << fftAnalyzer[1].peaks[i] << " " << scaledAvgPeak << endl;
-            
-            if (peakToggles[i]) {
-                newCombinedPeak += monoPeak;
-                ++combinedCount;
-            }
-        }
+    }
+    else {
+        ofSoundUpdate();
+        bAudioBuffered = true;
 
-        newCombinedPeak /= combinedCount;
-        float peakLerpRatio = 0.5f;
-        combinedPeak = combinedPeak * (1.0f - peakLerpRatio) + newCombinedPeak * peakLerpRatio;
-        
-        //    float combinedFurLength = furLength * (1.0f - furPeakScalar) + combinedPeak * furPeakScalar;
-        
-        // calculate hairball level scales based on amplitude and scrolling y-value
-        float currLevel = ABS(videoPlayer.getAmplitude());
+        currLevel = ofSoundGetSpectrum(1)[0] * levelAdjust;
+    }
+    
+    if (bAudioBuffered) {
         ((ofxUISlider *)audioGui->getWidget("LEVEL"))->setValue(currLevel);
         
         if (bLevelToNoise) {
@@ -287,45 +299,75 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
             Hair::levelScaleLookUp[i] = MAX(Hair::levelScaleLookUp[i] * (0.9f + levelDecayRate * 0.1f), newLevelScale);
         }
         
+        // adjust hair color
+        ofFloatColor hsbConvertColor = minBaseColor.getLerped(maxBaseColor, currLevel);
+        Hair::baseColor.setHsb(hsbConvertColor.r, hsbConvertColor.g, hsbConvertColor.b, hsbConvertColor.a);
+        hsbConvertColor = minTipColor.getLerped(maxTipColor, currLevel);
+        Hair::tipColor.setHsb(hsbConvertColor.r, hsbConvertColor.g, hsbConvertColor.b, hsbConvertColor.a);
+        
         // scroll up and down
         scrollAng += scrollSpeed;
         scrollY = sin(scrollAng) * radius;
     }
-    
-//    cout << videoPlayer.getAmplitude() << endl;
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemOpenP5NoiseSphere::selfDraw()
 {    
+    ofPushMatrix();
 	ofPushStyle();
-	
-	glDisable(GL_LIGHTING);
-	glEnable(GL_DEPTH_TEST);
-	ofDisableAlphaBlending();
-	ofFill();
-    ofSetColor(bgBri);
-	ofSphere(0, 0, solidSphereScale*300 );
+//	glDisable(GL_LIGHTING);
+//	glEnable(GL_DEPTH_TEST);
+	ofEnableAlphaBlending();
 
-	
-	float rxp = ((ofGetMouseX()-(ofGetWidth()/2))*0.3);
+    float rxp = ((GetCloudsInputX()-(ofGetWidth()/2))*0.3);
 	float ryp = ((ofGetMouseY()-(ofGetHeight()/2))*0.3);
 	rx = (rx*0.9)+(rxp*0.1);
 	ry = (ry*0.9)+(ryp*0.1);
 	ofRotateY(rx);
 	ofRotateX(ry);
-	//sphere(radio);
+    
+	ofFill();
+    ofFloatColor hsbSphereColor;
+    hsbSphereColor.setHsb(sphereColor.r, sphereColor.g, sphereColor.b, sphereColor.a);
+    ofSetColor(hsbSphereColor);
+	ofSphere(0, 0, sphereSize);
 	
 	ofMesh mesh;
 	noisePosition += noiseSpeed;
-	for (int i = 0;i < count; i++) {
-		list[i].draw(mesh, noisePosition, furLength, scrollY);
+	for (int i = 0; i < count; i++) {
+		list[i].draw(mesh, noisePosition, minHairLength + ofSignedNoise(list[i].luckyNumber) * (maxHairLength - minHairLength), scrollY);
+	}    
+	
+	if(drawLines){
+		shader.begin();
+		shader.setUniform1f("alphaDamp", lineAlpha);
+		ofSetLineWidth(ofMap(currLevel, 0, 1, minHairLineWidth, maxHairLineWidth));
+		mesh.setMode(OF_PRIMITIVE_LINES);
+		mesh.draw();
+		shader.end();
+
 	}
-	mesh.setMode(OF_PRIMITIVE_LINES);
-	mesh.draw();
-    
+	
+	if(drawPoints){
+
+		shader.begin();
+		glPushAttrib(GL_POINT_BIT);
+		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
+		glEnable(GL_POINT_SMOOTH);
+		
+		shader.setUniform1f("alphaDamp", pointAlpha);
+		shader.setUniform1f("pointSize", pointSize);
+		mesh.setMode(OF_PRIMITIVE_POINTS);
+		mesh.draw();
+		shader.end();
+		
+		glPopAttrib();
+	}
+
 	ofPopStyle();
+    ofPopMatrix();
 }
 
 // draw any debug stuff here
@@ -335,7 +377,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDrawDebug(){
 
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemOpenP5NoiseSphere::selfDrawBackground(){
-
+    
 	//turn the background refresh off
 	//bClearBackground = false;
 	
@@ -351,18 +393,18 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfExit()
 {
     if (leftBuffer  != NULL) delete [] leftBuffer;
     if (rightBuffer != NULL) delete [] rightBuffer;
-    if (peakToggles != NULL) delete [] peakToggles;
+    leftBuffer = rightBuffer = NULL;
     
     delete [] Hair::levelScaleLookUp;
-    
-    leftBuffer = rightBuffer = NULL;
-    peakToggles = NULL;
 }
 
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemOpenP5NoiseSphere::selfKeyPressed(ofKeyEventArgs & args){
-	
+	if(args.key == 'R'){
+		generateNoiseSphere();
+		reloadShader();
+	}
 }
 void CloudsVisualSystemOpenP5NoiseSphere::selfKeyReleased(ofKeyEventArgs & args){
 	
@@ -382,4 +424,33 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfMousePressed(ofMouseEventArgs& dat
 
 void CloudsVisualSystemOpenP5NoiseSphere::selfMouseReleased(ofMouseEventArgs& data){
 	
+}
+
+void CloudsVisualSystemOpenP5NoiseSphere::reloadSound()
+{
+    // close whatever sound was previously open
+    soundPlayer.stop();
+    soundPlayer.unloadSound();
+    videoPlayer.stop();
+    videoPlayer.close();
+    
+    ofFile file = soundsDir.getFile(selectedSoundsIdx);
+    if (file.getExtension() == "mp4" || file.getExtension() == "mov") {
+        bModeVideo = true;
+        
+        videoPlayer.loadMovie(file.getAbsolutePath());
+        videoPlayer.play();
+        videoPlayer.setLoopState(OF_LOOP_NORMAL);
+    }
+    else {
+        bModeVideo = false;
+        
+        soundPlayer.loadSound(file.getAbsolutePath());
+        soundPlayer.play();
+        soundPlayer.setLoop(true);
+    }
+}
+
+void CloudsVisualSystemOpenP5NoiseSphere::reloadShader(){
+	shader.load(getVisualSystemDataPath() + "shaders/noisehair");
 }

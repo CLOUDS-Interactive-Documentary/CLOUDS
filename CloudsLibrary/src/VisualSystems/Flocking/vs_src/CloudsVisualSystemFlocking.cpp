@@ -267,12 +267,10 @@ void CloudsVisualSystemFlocking::updateAcceleration()
     accShader.begin();
     
     accShader.setUniformTexture("posData",
-                                posFboSrc.getTextureReference(),
-                                posFboSrc.getTextureReference().getTextureData().textureID);
+                                posFboSrc.getTextureReference(),1);
     
     accShader.setUniformTexture("velData",
-                                velFboSrc.getTextureReference(),
-                                velFboSrc.getTextureReference().getTextureData().textureID);
+                                velFboSrc.getTextureReference(),2);
     
     accShader.setUniform1f("resolution", resolution);
     accShader.setUniform1f("limit", *ps->accLimit);
@@ -302,16 +300,13 @@ void CloudsVisualSystemFlocking::updateVelocity()
     velShader.begin();
     
     velShader.setUniformTexture("posData",
-                                posFboSrc.getTextureReference(),
-                                posFboSrc.getTextureReference().getTextureData().textureID);
+                                posFboSrc.getTextureReference(),1);
     
     velShader.setUniformTexture("velData",
-                                velFboSrc.getTextureReference(),
-                                velFboSrc.getTextureReference().getTextureData().textureID);
+                                velFboSrc.getTextureReference(),2);
     
     velShader.setUniformTexture("accData",
-                                accFboSrc.getTextureReference(),
-                                accFboSrc.getTextureReference().getTextureData().textureID);
+                                accFboSrc.getTextureReference(),3);
     
     velShader.setUniform1f("noiseScale", (*ps->noiseScale));
     velShader.setUniform1f("perlinForceConstant", (*ps->perlinForceConstant));
@@ -338,12 +333,10 @@ void CloudsVisualSystemFlocking::updatePosition()
     posShader.begin();
     
     posShader.setUniformTexture("posData",
-                                posFboSrc.getTextureReference(),
-                                posFboSrc.getTextureReference().getTextureData().textureID);
+                                posFboSrc.getTextureReference(),1);
     
     posShader.setUniformTexture("velData",
-                                velFboSrc.getTextureReference(),
-                                velFboSrc.getTextureReference().getTextureData().textureID);
+                                velFboSrc.getTextureReference(),2);
     
     posShader.setUniform1f("border", debugGridSize);
     posShader.setUniform1f("timestep", 1.0);
@@ -366,8 +359,8 @@ void CloudsVisualSystemFlocking::selfDraw(){
     ofSetColor(0,255);
     rdrShader.begin();
     rdrShader.setUniform3f("u_color", redColor, greenColor, blueColor);
-    rdrShader.setUniformTexture("posData", posFboSrc.getTextureReference(), posFboSrc.getTextureReference().getTextureData().textureID);
-    rdrShader.setUniformTexture("accData", accFboSrc.getTextureReference(), accFboSrc.getTextureReference().getTextureData().textureID);
+    rdrShader.setUniformTexture("posData", posFboSrc.getTextureReference(), 1);
+    rdrShader.setUniformTexture("accData", accFboSrc.getTextureReference(), 2);
 
     glow.bind();
     glPointSize(pointSize);

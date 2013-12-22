@@ -1,0 +1,4 @@
+A C 5 
+A ABC 
+B CCA 
+C BA

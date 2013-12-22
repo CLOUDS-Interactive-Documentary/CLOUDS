@@ -1,7 +1,12 @@
 #include "testApp.h"
+#include "CloudsInputKinectOSC.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
+    ofSetVerticalSync(true);
+    
+    SetCloudsInputKinect();
+    
 	exampleVectorMath.setup();
 	exampleVectorMath.playSystem();
 }
@@ -22,6 +27,7 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::exit(){
+    exampleVectorMath.exit();
 }
 
 //--------------------------------------------------------------

@@ -1,0 +1,36 @@
+<rules maxDepth="100" startRule="test" primitive="triangles">
+    <ruleSet name="test">
+        <rule weight="100">
+            <cube colour="139 69 19" size="6" transforms="ty 7 rx 1 sa 0.99" next="test"/>
+        </rule>
+        <rule weight="100">
+            <cube colour="139 69 19" size="6" transforms="ty 7 rx 1 ry 1 sa 0.99" next="test"/>
+        </rule>
+        <rule weight="100">
+            <cube colour="139 69 19" size="6" transforms="ty 7 rx 1 rz -2 sa 0.99" next="test"/>
+        </rule>
+        <rule weight="9">
+            <transform transforms="rx 15" next="test"/>
+            <transform transforms="ry 180" next="test"/>
+        </rule>
+        <rule weight="20">
+            <cube colour="50 205 50" transforms="tx 2 ry 60 sa 10"/>
+            <cube size="0.3" colour="50 205 50" transforms="tx 2 ry 120 sa 10"/>
+            <cube colour="50 205 50" transforms="tx 2 ry 180 sa 10"/>
+            <cube size="0.3" colour="50 205 50" transforms="tx 2 ry 240 sa 10"/>
+            <cube colour="50 205 50" transforms="tx 2 ry 300 sa 10"/>
+            <cube size="0.3" colour="50 205 50" transforms="tx 2 ry 360 sa 10"/>
+            <cube next="test"/>
+        </rule>
+        <rule weight="5">
+            <cube size="0.1" colour="255 214 228" transforms="tx 2 ry 60 sa 10"/>
+            <cube size="0.3" colour="255 184 254" transforms="tx 2 ry 120 sa 10"/>
+            <cube size="0.1" colour="255 214 228" transforms="tx 2 ry 180 sa 10"/>
+            <cube size="0.3" colour="255 184 254" transforms="tx 2 ry 240 sa 10"/>
+            <cube size="0.1" colour="255 214 228" transforms="tx 2 ry 300 sa 10"/>
+            <cube size="0.3" colour="255 184 254" transforms="tx 2 ry 360 sa 10"/>
+            <cube next="test"/>
+        </rule>
+        
+    </ruleSet>
+</rules>

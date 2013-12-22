@@ -19,10 +19,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetupGui()
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
     customGui->addSpacer();
-    bgAlpha = new ofx1DExtruder(0);
-    bgAlpha->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(bgAlpha);
-    customGui->addSlider("BG ALPHA", 0.0, 1.0, bgAlpha->getPosPtr());
+    customGui->addSlider("BG ALPHA", 0.0, 1.0, &bgAlpha);
     
     customGui->addSpacer();
     customGui->addRangeSlider("DISTANCES", 1.0f, 100.0f, &collideDist, &lineDist);
@@ -30,40 +27,16 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetupGui()
     customGui->addSlider("GRAVITY", -1.0f, 1.0f, &gravity);
 
     customGui->addSpacer();
-    lineHue1 = new ofx1DExtruder(0);
-    lineHue1->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(lineHue1);
-    customGui->addSlider("LINE HUE 1", 0.0, 1.0, lineHue1->getPosPtr());
-    lineSat1 = new ofx1DExtruder(0);
-    lineSat1->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(lineSat1);
-    customGui->addSlider("LINE SAT 1", 0.0, 1.0, lineSat1->getPosPtr());
-    lineBri1 = new ofx1DExtruder(0);
-    lineBri1->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(lineBri1);
-    customGui->addSlider("LINE BRI 1", 0.0, 1.0, lineBri1->getPosPtr());
-    lineAlpha1 = new ofx1DExtruder(0);
-    lineAlpha1->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(lineAlpha1);
-    customGui->addSlider("LINE ALPHA 1", 0.0, 1.0, lineAlpha1->getPosPtr());
+    customGui->addSlider("LINE HUE 1", 0.0, 0.99999, &lineParams1[0]);
+    customGui->addSlider("LINE SAT 1", 0.0, 1.0, &lineParams1[1]);
+    customGui->addSlider("LINE BRI 1", 0.0, 1.0, &lineParams1[2]);
+    customGui->addSlider("LINE ALPHA 1", 0.0, 1.0, &lineParams1[3]);
     
     customGui->addSpacer();
-    lineHue2 = new ofx1DExtruder(0);
-    lineHue2->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(lineHue2);
-    customGui->addSlider("LINE HUE 2", 0.0, 1.0, lineHue2->getPosPtr());
-    lineSat2 = new ofx1DExtruder(0);
-    lineSat2->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(lineSat2);
-    customGui->addSlider("LINE SAT 2", 0.0, 1.0, lineSat2->getPosPtr());
-    lineBri2 = new ofx1DExtruder(0);
-    lineBri2->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(lineBri2);
-    customGui->addSlider("LINE BRI 2", 0.0, 1.0, lineBri2->getPosPtr());
-    lineAlpha2 = new ofx1DExtruder(0);
-    lineAlpha2->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(lineAlpha2);
-    customGui->addSlider("LINE ALPHA 2", 0.0, 1.0, lineAlpha2->getPosPtr());
+    customGui->addSlider("LINE HUE 2", 0.0, 0.99999, &lineParams2[0]);
+    customGui->addSlider("LINE SAT 2", 0.0, 1.0, &lineParams2[1]);
+    customGui->addSlider("LINE BRI 2", 0.0, 1.0, &lineParams2[2]);
+    customGui->addSlider("LINE ALPHA 2", 0.0, 1.0, &lineParams2[3]);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5SeaOfLines::selfGuiEvent);
 	guis.push_back(customGui);
@@ -73,35 +46,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetupGui()
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfGuiEvent(ofxUIEventArgs &e)
 {
-    if (e.widget->getName() == "BG ALPHA") {
-        bgAlpha->setPosAndHome(bgAlpha->getPos());
-	}
-    
-    else if (e.widget->getName() == "LINE HUE 1") {
-        lineHue1->setPosAndHome(lineHue1->getPos());
-	}
-    else if (e.widget->getName() == "LINE SAT 1") {
-        lineSat1->setPosAndHome(lineSat1->getPos());
-	}
-    else if (e.widget->getName() == "LINE BRI 1") {
-        lineBri1->setPosAndHome(lineBri1->getPos());
-	}
-    else if (e.widget->getName() == "LINE ALPHA 1") {
-        lineAlpha1->setPosAndHome(lineAlpha1->getPos());
-    }
-    
-    else if (e.widget->getName() == "LINE HUE 2") {
-        lineHue2->setPosAndHome(lineHue2->getPos());
-	}
-    else if (e.widget->getName() == "LINE SAT 2") {
-        lineSat2->setPosAndHome(lineSat2->getPos());
-	}
-    else if (e.widget->getName() == "LINE BRI 2") {
-        lineBri2->setPosAndHome(lineBri2->getPos());
-	}
-    else if (e.widget->getName() == "LINE ALPHA 2") {
-        lineAlpha2->setPosAndHome(lineAlpha2->getPos());
-    }
+
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -183,8 +128,8 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSceneTransformation(){
 void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
 {
     mesh.clear();
-    lineColor1.setHsb(lineHue1->getPos(), lineSat1->getPos(), lineBri1->getPos(), lineAlpha1->getPos());
-    lineColor2.setHsb(lineHue2->getPos(), lineSat2->getPos(), lineBri2->getPos(), lineAlpha2->getPos());
+    lineColor1.setHsb(lineParams1[0], lineParams1[1], lineParams1[2], lineParams1[3]);
+    lineColor2.setHsb(lineParams2[0], lineParams2[1], lineParams2[2], lineParams2[3]);
 
     // First pass: Update player position.
     for (int i = 0; i < players.size(); i++) {
@@ -250,7 +195,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDrawDebug(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfDrawBackground()
 {
-    ofSetColor(bgColor, bgAlpha->getPos() * 255);
+    ofSetColor(bgColor, bgAlpha * 255);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
     ofSetColor(255);

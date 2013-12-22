@@ -1,0 +1,155 @@
+
+body{
+	font-family:'Blender',Sans-Serif;
+	color:#FFFFFF;
+	font-size:12px;
+	font-weight:lighter;
+	background-color:#000000;
+	
+}
+/*
+#graph{
+	width:1920px;
+	height:1080px;
+}*/
+
+#graph{
+	width:1280px;
+	height:720px;
+}
+
+
+#video{
+	z-index:1;
+}
+
+.current_artist_block{
+	margin-bottom:33px;
+	padding-bottom:15px;
+}
+
+#info{
+	margin-left:2%;
+	float: center;
+	background-color:#191e19;
+	position: fixed;
+	bottom: 25px;
+	width:96%;
+/*
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+*/
+}
+
+.project_info{
+	padding-left:20px;
+	font-size:96px;
+	width:33%;
+	float:left;
+	overflow:hidden;
+}
+
+/*
+.clip_info{
+	padding-left:20px;
+	font-size:96px;
+	width:350px;
+	float:left;
+	overflow:hidden;
+../index.html
+}
+*/
+
+.column1{
+	float:left;
+	width:22%;
+	padding-left:1%;
+	display:inline-block;
+/* 	margin: 1%; */
+	/*background:#bfb;*/
+	
+}
+.column2{
+	float:right;
+	width:76%;
+	position: relative;
+	padding-right:1%;
+	/*background-color: rgba(73, 83, 83, 0.18);*/
+	font-size: 24px;
+	display:inline-block;
+	
+}
+.column2_1{	
+	float: left;
+	width: 18%;
+	/*background: #ddf;*/
+/* 	padding-left: 20px; */
+/* 	margin: 1%; */
+	padding: 0.5%;
+	font-size:21px;
+	text-transform: uppercase;
+}
+
+.column2_2{
+	float:right;
+    width:78%;
+    padding: 0.5%;
+    /*background:#dff;*/
+    font-size:16px;
+}
+
+#first{
+	position: relative;
+	text-transform: uppercase;
+	font-size: 40px;
+	padding-bottom: 8px;
+}
+#last{	
+	text-transform:uppercase;
+	font-size:60px;
+}
+
+.cl_title{
+	float:left;
+	font-size:60px;
+	line-height:60px;
+	/* z-index: 2147483647; */
+	color:#FFF;
+}
+.cl_subtitle{
+	background-color: #FFFFFF;
+	float:left;
+	font-size:36px;
+	color:#000;
+}
+
+.cl_text{
+	padding-left:0px;
+	font-size:24px;
+	line-height:24px;
+	/*position: relative; */
+	float:left;
+	color:#FFF;
+}
+
+
+#projectex_title{
+	
+	
+}
+
+#projectex_artist{
+	
+}
+
+#projectex_desc{
+	
+}
+
+#projectex_content{
+}
+
+
+

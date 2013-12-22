@@ -19,6 +19,8 @@ void CloudsVisualSystemExampleBox2D::selfSetupGui(){
 	customGui->setName("EXAMPLE BOX 2D");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
+    customGui->addToggle("DISPLAY", &bDrawToScreen);
+    
     customGui->addToggle("GAVITY CONTROL MODE", &bGravityMod);
     
     customGui->addToggle("CIRCLES", &bCircles);
@@ -212,8 +214,12 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     
     synth.setOutputGen(output);
     
-    dummyApp = new DummyApp(&synth);
-    ofSoundStreamSetup(2, 0, dummyApp, 44100, 512, 4);
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemExampleBox2D::audioRequested);
+    
+
+	//JG this is a problem, memo
+//    dummyApp = new DummyApp(&synth);
+//    ofSoundStreamSetup(2, 0, dummyApp, 44100, 512, 4);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -247,6 +253,9 @@ void CloudsVisualSystemExampleBox2D::selfBegin()
     if (!bRandomPlatforms) {
         removeRandomPlatform();
     }
+
+	//TODO: add!
+//	ofAddListener(ofEvents().audioRequested, this, &CloudsVisualSystemExampleBox2D::audioRequested);
 }
 
 //do things like ofRotate/ofTranslate here
@@ -274,10 +283,10 @@ void CloudsVisualSystemExampleBox2D::selfUpdate(){
     // handle random platform
     if (bRandomPlatforms) {
         randomPlatformCounter--;
-        if (randomPlatformCounter==0) {
+        if (randomPlatformCounter == 0) {
             addRandomPlatform();
         }
-        if (randomPlatformCounter<-400) {
+        if (randomPlatformCounter < -400) {
             removeRandomPlatform();
             randomPlatformCounter = 150;
         }
@@ -615,12 +624,7 @@ float CloudsVisualSystemExampleBox2D::getGaussian() {
     return (sqrt (-2.0 * log(x1)) * cos(2.0 * PI * x2)) / 2;
 }
 
-DummyApp::DummyApp(ofxTonicSynth *s)
+void CloudsVisualSystemExampleBox2D::audioRequested(ofAudioEventArgs& args)
 {
-    synth = s;
-}
-
-void DummyApp::audioRequested(float *output, int bufferSize, int nChannels)
-{
-    synth->fillBufferOfFloats(output, bufferSize, nChannels);
+    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
 }

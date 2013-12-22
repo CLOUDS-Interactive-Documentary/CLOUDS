@@ -12,10 +12,7 @@
 
 #include "CloudsVisualSystem.h"
 
-#ifdef AVF_PLAYER
 #include "ofxAVFVideoPlayer.h"
-#endif
-// TODO: Deal with case when AVF_PLAYER is not #defined
 
 #include "fft.h"
 #include "fftOctaveAnalyzer.h"
@@ -29,17 +26,22 @@ class Hair {
 	float phi;
 	float largo;
 	float theta;
+    float luckyNumber;
     
     static float * levelScaleLookUp;
     
     static float minNoiseScale;
     static float maxNoiseScale;
+    
+    static ofFloatColor baseColor;
+    static ofFloatColor tipColor;
 	
 	Hair(float radius) : radius(radius){
 		z = ofRandom(-radius, radius);
 		phi = ofRandom(TWO_PI);
 		largo = ofRandom(1.05, 1.1);
 		theta = asin(z/radius);
+        luckyNumber = ofRandom(TWO_PI);
 	}
 	
 	void draw(ofMesh& mesh, float noisePosition, float hairScale, float scrollY) {
@@ -70,12 +72,10 @@ class Hair {
 		float yb = yo * largo * hairScale * levelScaleLookUp[i];
 		float zb = zo * largo * hairScale * levelScaleLookUp[i];
       
-
-		mesh.addColor(ofFloatColor::black);
-		mesh.addVertex( ofVec3f(x,y,z) );
-		mesh.addColor(ofFloatColor::white);
-		mesh.addVertex( ofVec3f(xb,yb,zb) );
-		
+		mesh.addColor(baseColor);
+		mesh.addVertex(ofVec3f(x,y,z));
+		mesh.addColor(tipColor);
+		mesh.addVertex(ofVec3f(xb,yb,zb));
 	}
 };
 
@@ -104,6 +104,9 @@ class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
     
     void selfSetupAudioGui();
     void guiAudioEvent(ofxUIEventArgs &e);
+
+	
+	void selfSetDefaults();
 
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
@@ -154,8 +157,10 @@ class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-	
+	void reloadSound();
 
+	void reloadShader();
+	
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 //	ofCamera& getCameraRef(){
@@ -164,52 +169,53 @@ class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
 
 
 protected:
-    
-    //  Your Stuff
-    //
-	
-	ofxUISuperCanvas* customGui;
-
+    ofxUISuperCanvas* customGui;
+	ofxUISuperCanvas* drawingGui;
     ofxUISuperCanvas* audioGui;
 	
-	ofFloatColor color1HSB;
-	ofFloatColor color2HSB;
-	
-	int count = 10000;
+    int count;
 	vector<Hair> list;
 	float radius;
 	float rx = 0;
 	float ry = 0;
 
+	void generateNoiseSphere();
     float noisePosition;
 	float noiseSpeed;
 	float noiseScale;
-	float furLength;
+    
+	float minHairLength;
+    float maxHairLength;
+    float minHairLineWidth;
+    float maxHairLineWidth;
 	
-    //inner sphere
-    
-    void        loadVbo(ofVboMesh &_vbo, string _file);
-    
-    float       wireSphereScale, solidSphereScale, haloSphereScale;
-    float       wireSphereAlpha, solidSphereAlpha, haloSphereAlpha;
+    float sphereSize;
 
 	float * leftBuffer;
     float * rightBuffer;
     int numAmplitudesPerChannel;
     bool bAudioBuffered;
     
-    bool * peakToggles;
-    float combinedPeak;
-    float furPeakScalar;
+    ofFloatColor sphereColor;
+    ofFloatColor minBaseColor, maxBaseColor;
+    ofFloatColor minTipColor, maxTipColor;
     
-    float magnitude[2][BUFFER_SIZE];
-    float phase[2][BUFFER_SIZE];
-    float power[2][BUFFER_SIZE];
-    float freq[2][BUFFER_SIZE/2];
-    fft	fft[2];
-    FFTOctaveAnalyzer fftAnalyzer[2];
+	bool drawLines;
+	bool drawPoints;
+	float lineAlpha;
+	float pointAlpha;
+	float pointSize;
+	
+    float currLevel;
+    float levelAdjust;
     
+    ofDirectory soundsDir;
+    int selectedSoundsIdx;
+    bool bModeVideo;
+    
+	ofShader shader;
     ofxAVFVideoPlayer videoPlayer;
+    ofSoundPlayer soundPlayer;
     
     float scrollY;
     float scrollSpeed;

@@ -88,7 +88,7 @@ void CloudsSpeaker::populateSpeakers(){
 		personnum++;
 	}
 	
-	xmltemplate.saveFile(getDataPath() + "/SpeakerTemplate.xml");
+	xmltemplate.saveFile(GetCloudsDataPath() + "/SpeakerTemplate.xml");
 
 //	<clouds>
 //	<person id="Lauren">

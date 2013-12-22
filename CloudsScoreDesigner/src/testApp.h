@@ -7,6 +7,8 @@
 #include "CloudsAct.h"
 #include "CloudsSound.h"
 #include "CloudsRGBDVideoPlayer.h"
+#include "ofxOscReceiver.h"
+#include "CloudsMixer.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -55,5 +57,13 @@ class testApp : public ofBaseApp{
     void guiEvent(ofxUIEventArgs &e);
     
     bool withVideo;
+    
+    // osc shit
+	ofxOscReceiver receiver;
+    int oharmony, orhythm, otempo;
+    float odur;
+    vector<string> oorch, oarg_a, oarg_b;
+    
+    CloudsMixer mixer;
 
 };

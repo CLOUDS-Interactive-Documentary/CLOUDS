@@ -43,6 +43,13 @@ namespace itg
 {
     using namespace tr1;
     
+    struct ModelParams
+    {
+        unsigned modelIdx;
+        float sizeAverage, sizeStdDeviation;
+        ofFloatColor colour;
+    };
+    
     class ModelCreature : public Creature
     {
         friend class Creatures;
@@ -50,13 +57,13 @@ namespace itg
     public:
         typedef shared_ptr<ModelCreature> Ptr;
         
-        ModelCreature(unsigned modelIdx, const ofFloatColor& colour);
-        
-        void setSize(float size) { this->size = size; }
+        ModelCreature(const ModelParams& params);
         
         void integrate();
         
         void customDraw();
+        
+        ofFloatColor getColour() const { return colour; }
         
     private:
         static vector<ofxAssimpModelLoader> fishModels;
@@ -64,6 +71,7 @@ namespace itg
         static ofShader fishShader;
         static vector<ofVec3f> deformAxes;
         static vector<float> bends;
+        static map<unsigned, ofImage> textures;
         
         float frequency;
         float size;

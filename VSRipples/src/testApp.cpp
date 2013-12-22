@@ -1,9 +1,12 @@
 #include "testApp.h"
+#include "CloudsInputKinectOSC.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
+    
+    SetCloudsInput(ofPtr<CloudsInput>(new CloudsInputKinectOSC()));
     
 	vs.setup();
 	vs.playSystem();
@@ -24,7 +27,9 @@ void testApp::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void testApp::exit(){
+void testApp::exit()
+{
+    vs.exit();
 }
 
 //--------------------------------------------------------------

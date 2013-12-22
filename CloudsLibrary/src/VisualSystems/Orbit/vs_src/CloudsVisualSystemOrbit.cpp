@@ -54,7 +54,8 @@ void CloudsVisualSystemOrbit::selfSetup()
 //normal update call
 void CloudsVisualSystemOrbit::selfUpdate()
 {
-    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
+    if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
+
     if (multiplePaths && (paths.empty() || ofGetElapsedTimeMillis() - lastPathTime > PATH_INTERVAL))
     {
         paths.push_back(itg::Path(meshRadius));
@@ -229,7 +230,6 @@ void CloudsVisualSystemOrbit::guiRenderEvent(ofxUIEventArgs &e)
         motion = WAVY;
     }
 }
-
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOrbit::selfSetupGui(){

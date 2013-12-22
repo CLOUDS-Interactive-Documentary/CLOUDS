@@ -26,12 +26,16 @@ void CloudsVisualSystemCities::selfSetup()
     f=0.2;
 	overScale = 1;
 	
+	colorPalette.loadImage( "GUI/defaultColorPalette.png" );
+	
 	//defaults
 	bDrawPoints = true;
 	bDrawEdges = true;
 	bDrawMesh = true;
 	
 	edgeOffset = 0;
+	edgeAlpha = 100;
+	bUseEdgeMapProjection = true;
 	
 	superFakeAOAmount = .4;
 	superFakeAOExpo = 1.;
@@ -40,6 +44,8 @@ void CloudsVisualSystemCities::selfSetup()
 	
 	bEdgeSetup = false;
     edgeLineWidth = 1.5;
+	
+	passOneAlpha = passTwoAlpha = .1;
 	
     //  Noise
     //
@@ -163,11 +169,6 @@ void CloudsVisualSystemCities::selfSetupSystemGui()
 	
 	laserGui->addSpacer();
 	
-	laserGui->add2DPad("edge projector XZ", ofxUIVec3f(-50, 50, 50), ofxUIVec3f(50, -50, -50), &projectorPosition );
-	laserGui->addSlider("edge projector Z", -50, 50, &projectorHeight );
-	laserGui->addSlider("edgeLineWidth", 0, 10, &edgeLineWidth );
-	laserGui->addSlider("edge offset", 0, 10, &edgeOffset );
-	
 	laserGui->addSpacer();
 	
 	laserGui->addSlider("superFakeAOAmount", 0.,1., &superFakeAOAmount );
@@ -175,11 +176,85 @@ void CloudsVisualSystemCities::selfSetupSystemGui()
 	laserGui->addSlider("shininess",2.f, 128.f, &shininess );
 	laserGui->addSlider("radiusAlphaScl", .5, 5., &radiusAlphaScl );
 	
-	laserGui->addSpacer();
-		
 	ofAddListener(laserGui->newGUIEvent, this, &CloudsVisualSystemCities::selfGuiEvent);
 	guis.push_back(laserGui);
 	guimap[laserGui->getName()] = laserGui;
+	
+	vector<string> blendNames;
+	blendNames.push_back("OF_BLENDMODE_DISABLED");
+	blendNames.push_back("OF_BLENDMODE_ADD");
+	blendNames.push_back("OF_BLENDMODE_ALPHA");
+	blendNames.push_back("OF_BLENDMODE_MULTIPLY");
+	blendNames.push_back("OF_BLENDMODE_SCREEN");
+	blendNames.push_back("OF_BLENDMODE_SUBTRACT");
+	
+	blendModes["OF_BLENDMODE_DISABLED"] = OF_BLENDMODE_DISABLED;
+	blendModes["OF_BLENDMODE_ADD"] = OF_BLENDMODE_ADD;
+	blendModes["OF_BLENDMODE_ALPHA"] = OF_BLENDMODE_ALPHA;
+	blendModes["OF_BLENDMODE_MULTIPLY"] = OF_BLENDMODE_MULTIPLY;
+	blendModes["OF_BLENDMODE_SCREEN"] = OF_BLENDMODE_SCREEN;
+	blendModes["OF_BLENDMODE_SUBTRACT"] = OF_BLENDMODE_SUBTRACT;
+	
+	passOneGui = new ofxUISuperCanvas("PASS_ONE", gui);
+	passOneGui->copyCanvasStyle(gui);
+	passOneGui->copyCanvasProperties(gui);
+	passOneGui->setName("PASS_ONE");
+	passOneGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	passOneGui->addSpacer();
+	
+	passOneGui->addSpacer();
+	passOneGui->addToggle("pass one", &bPassOne);
+	passOneGui->addToggle("bPassOneDepthTest", &bPassOneDepthTest);
+	passOneGui->addImageSampler("passOneColor", &colorPalette, 100, 100);
+	passOneGui->addMinimalSlider("passOneAlpha", 0, 1, &passOneAlpha);
+	passOneGui->addMinimalSlider("sampleColorWeight", 0, 1, &passOneSampleColorWeight );
+	passOneGui->addRadio("passOneBlend", blendNames );
+	
+	
+	ofAddListener(passOneGui->newGUIEvent, this, &CloudsVisualSystemCities::selfGuiEvent);
+	guis.push_back(passOneGui);
+	guimap[passOneGui->getName()] = passOneGui;
+	
+	
+	passTwoGui = new ofxUISuperCanvas("PASS_TWO", gui);
+	passTwoGui->copyCanvasStyle(gui);
+	passTwoGui->copyCanvasProperties(gui);
+	passTwoGui->setName("PASS_TWO");
+	passTwoGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	passTwoGui->addSpacer();
+	
+	passTwoGui->addSpacer();
+	passTwoGui->addToggle("pass two", &bPassTwo);
+	passTwoGui->addToggle("bPassTwoDepthTest", &bPassTwoDepthTest);
+	passTwoGui->addImageSampler("passTwoColor", &colorPalette, 100, 100);
+	passTwoGui->addMinimalSlider("passTwoAlpha", 0, 1, &passTwoAlpha );
+	passTwoGui->addMinimalSlider("sampleColorWeight", 0, 1, &passTwoSampleColorWeight );
+	passTwoGui->addRadio("passTwoBlend", blendNames );
+		
+	ofAddListener(passTwoGui->newGUIEvent, this, &CloudsVisualSystemCities::selfGuiEvent);
+	guis.push_back(passTwoGui);
+	guimap[passTwoGui->getName()] = passTwoGui;
+	
+	
+	edgeGui = new ofxUISuperCanvas("EDGES", gui);
+	edgeGui->copyCanvasStyle(gui);
+	edgeGui->copyCanvasProperties(gui);
+	edgeGui->setName("EDGES");
+	edgeGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	edgeGui->addSpacer();
+	edgeGui->addToggle("bUseEdgeMapProjection", &bUseEdgeMapProjection);
+	edgeGui->addImageSampler("edgeColor", &colorPalette, 100, 100);
+	edgeGui->addMinimalSlider("edgeAlpha", 0, 1, &edgeAlpha );
+	edgeGui->addRadio("edgeBlendMode", blendNames );
+	edgeGui->addSpacer();
+	edgeGui->add2DPad("edge projector XZ", ofxUIVec3f(-50, 50, 50), ofxUIVec3f(50, -50, -50), &projectorPosition, 100, 100);
+	edgeGui->addSlider("edge projector Z", -50, 50, &projectorHeight );
+	edgeGui->addSlider("edgeLineWidth", 0, 10, &edgeLineWidth );
+	edgeGui->addSlider("edge offset", -10, 10, &edgeOffset );
+	
+	ofAddListener(edgeGui->newGUIEvent, this, &CloudsVisualSystemCities::selfGuiEvent);
+	guis.push_back(edgeGui);
+	guimap[edgeGui->getName()] = edgeGui;
 }
 
 void CloudsVisualSystemCities::selfGuiEvent(ofxUIEventArgs &e)
@@ -189,6 +264,38 @@ void CloudsVisualSystemCities::selfGuiEvent(ofxUIEventArgs &e)
 	if(name == "edge projector XY" || name == "edge projector Z")
 	{
 		projectorPosition.z = projectorHeight;
+	}
+	
+	if(name == "passOneColor")
+	{
+		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
+		passOneColor =  sampler->getColor();
+	}
+	else if(name == "passTwoColor")
+	{
+		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
+		passTwoColor =  sampler->getColor();
+	}
+	else if(name == "edgeColor")
+	{
+		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
+		edgeColor =  sampler->getColor();
+	}
+	
+	if(e.widget->getParent()->getName() == "passOneBlend" && e.getToggle()->getValue() )
+	{
+		cout <<e.widget->getParent()->getName() << " : " << e.getToggle()->getName() << endl;
+		passOneBlendMode = blendModes[e.getToggle()->getName()];
+	}
+	else if(e.widget->getParent()->getName() == "passTwoBlend" && e.getToggle()->getValue() )
+	{
+		cout <<e.widget->getParent()->getName() << " : " << e.getToggle()->getName() << endl;
+		passTwoBlendMode = blendModes[e.getToggle()->getName()];
+	}
+	else if(e.widget->getParent()->getName() == "edgeBlendMode" && e.getToggle()->getValue() )
+	{
+		cout <<e.widget->getParent()->getName() << " : " << e.getToggle()->getName() << endl;
+		edgeBlendMode = blendModes[e.getToggle()->getName()];
 	}
 }
 
@@ -360,7 +467,9 @@ void CloudsVisualSystemCities::selfUpdate()
 	
 	
 	//update the image projector
+	float t = ofGetElapsedTimef();
 	ofVec3f projectorTarget(0,0,0);
+	projectorPosition.set( sin(t) * 20., projectorPosition.y, cos(t) * 20.);
 	projector.setPosition(projectorPosition);
 	projector.lookAt( projectorTarget, ofVec3f(0,0,1) );
 	
@@ -375,14 +484,16 @@ void CloudsVisualSystemCities::selfDraw()
 	ofScale(blockSize,blockSize,-blockSize);
 	ofScale(overScale,overScale,overScale);
 	
+	ofSetColor( 255,255,255, 255) ;
+	
 	cubesShader.begin();
-	cubesShader.setUniformTexture("displacment", maskFbo.getTextureReference(), 0);
+	cubesShader.setUniformTexture("displacment", maskFbo.getTextureReference(), 1);
 	cubesShader.setUniform2f( "displacmentDim", maskFbo.getWidth(), maskFbo.getHeight());
-	cubesShader.setUniformTexture("facadeTexture", facadeTexture.getTextureReference(), 1);
+	cubesShader.setUniformTexture("facadeTexture", facadeTexture.getTextureReference(), 2);
 	cubesShader.setUniform2f( "facadeTextureDim", facadeTexture.getWidth(), facadeTexture.getHeight());
 	
 	if(bUseOverlay && overlayMap != NULL){
-		cubesShader.setUniformTexture("overlayMap", overlayMap->getTextureReference(), 2);
+		cubesShader.setUniformTexture("overlayMap", overlayMap->getTextureReference(), 3);
 		cubesShader.setUniform2f("overlayDim", overlayMap->getWidth(), overlayMap->getHeight());
 	}
 	cubesShader.setUniform1i("bUseOverlay", bUseOverlay );
@@ -405,31 +516,67 @@ void CloudsVisualSystemCities::selfDraw()
 	
 	cubesShader.setUniformMatrix4f("invProjection", projector.getModelViewProjectionMatrix() );
 	
-	cubesShader.setUniformTexture("projectedImage", colorMap->getTextureReference(), 3);
+	cubesShader.setUniformTexture("projectedImage", colorMap->getTextureReference(), 4);
 	cubesShader.setUniform2f("projectedImageDim", colorMap->getWidth(), colorMap->getHeight() );
 	
 	
 	ofEnableAlphaBlending();
-	glClearDepth(1);
-	
 	glDisable( GL_DEPTH_TEST );
-	glEnable( GL_DEPTH_TEST );
 	
 	glEnable( GL_CULL_FACE );
 	glCullFace( GL_FRONT );
 	
-	int alpha = 150;
-	
-	ofSetColor(255,255,255, 255);
 	
 	if(bDrawMesh)
 	{
-		cubeMesh.draw();
+		bool bAlphaBlending = true;
+		if(bPassOne)
+		{
+			bPassOneDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
+			ofEnableBlendMode( passOneBlendMode );
+			if(passOneBlendMode == OF_BLENDMODE_DISABLED )
+			{
+				bAlphaBlending = false;
+				ofDisableAlphaBlending();
+			}
+			
+			cubesShader.setUniform1f("sampleColorWeight", passOneSampleColorWeight);
+			cubesShader.setUniform4f("overallColor", passOneColor.r, passOneColor.g, passOneColor.b, passOneAlpha);
+			cubesShader.setUniform1f("bAlphaBlending", bAlphaBlending );
+			
+			cubeMesh.draw();
+		}
 	}
 	
-	ofEnableBlendMode(OF_BLENDMODE_ADD);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-	ofSetColor(255,255,255,230);
+	if(bDrawMesh)
+	{
+		bool bAlphaBlending = true;
+		if(bPassTwo)
+		{
+			glClear( GL_DEPTH_BITS );
+			bPassTwoDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
+			ofEnableBlendMode( passTwoBlendMode );
+			if(passOneBlendMode == OF_BLENDMODE_DISABLED )
+			{
+				bAlphaBlending = false;
+				ofDisableAlphaBlending();
+			}
+			
+			cubesShader.setUniform1f("drawEdges", 0 );
+			cubesShader.setUniform1f("sampleColorWeight", passTwoSampleColorWeight);
+			cubesShader.setUniform4f("overallColor", passTwoColor.r, passTwoColor.g, passTwoColor.b, passTwoAlpha);
+			
+			cubeMesh.draw();
+		}
+	}
+	
+	
+	//draw edges
+	glEnable(GL_DEPTH_TEST);
+	ofEnableBlendMode(edgeBlendMode);
+	ofSetColor(edgeColor.r, edgeColor.g, edgeColor.b, edgeAlpha * 255);
+	cubesShader.setUniform4f("overallColor", 1,1,1,1);
+	cubesShader.setUniform1f("bUseEdgeMap", float(bUseEdgeMapProjection) );
 	
 	if (bDrawEdges) {
 		glLineWidth( edgeLineWidth );
@@ -579,7 +726,7 @@ void CloudsVisualSystemCities::makeBigCubesVbo( int _size, int _resolution )
 	vector<ofVec2f> edgeTexCoords;
 	vector<ofVec3f> baseVerts(8);
 	vector<ofVec3f> baseNormals(8);
-	vector<ofIndexType>baseIndices(8 + 8);//verticle edges + top edges
+	vector<ofIndexType>baseIndices(8 + 8 + 8);//verticle edges + top edges
 	
 	//bottom
 	baseVerts[0].set(-.5, 0, -.5);
@@ -622,6 +769,17 @@ void CloudsVisualSystemCities::makeBigCubesVbo( int _size, int _resolution )
 	baseIndices[13] = 7;
 	baseIndices[14] = 7;
 	baseIndices[15] = 4;
+	
+	
+	//bottom edge indices
+	baseIndices[16] = 0;
+	baseIndices[17] = 1;
+	baseIndices[18] = 1;
+	baseIndices[19] = 2;
+	baseIndices[20] = 2;
+	baseIndices[21] = 3;
+	baseIndices[22] = 3;
+	baseIndices[23] = 4;
 	
 	for (int i=0; i<resolution; i++)
 	{

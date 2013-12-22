@@ -1,0 +1,1775 @@
+{
+    "Tweets": [
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#opencl", 
+                "#OpenGL", 
+                "#op"
+            ], 
+            "Tweet": "RT @jimmyacres: Some more progress with deferred rendering + OpenCL tiled frustum light culling: http://t.co/jatPszYsaF #opencl #OpenGL #op\u2026  ", 
+            "Users": [
+                "@jimmyacres"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "pushing the limits of dynamic generative visuals and interactive narrative with @design_io and @openframeworks http://t.co/2vvqMi9ZYw  ", 
+            "Users": [
+                "@design_io", 
+                "@openframeworks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kcimc: having trouble building an old openFrameworks project/example? just posted a short tutorial explaining how to update https://t.c\u2026  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "RT @admsyn: The #openframeworks xcode plugin will now sort out dependencies and clone them if necessary: https://t.co/TFN8mSYNjS https://t.\u2026  ", 
+            "Users": [
+                "@admsyn"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "check out this XCode plugin from @admsyn that easily adds addons to your OF projects while you're coding https://t.co/qtysgJPjWm  ", 
+            "Users": [
+                "@admsyn"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "We're giving away 2 tickets to the amazing http://t.co/wAjKQsEwJn festival for OF contributors. Add your name here: http://t.co/GryLkY5w48  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Super new openFrameworks book. Highly recommended! http://t.co/H88yDhAjdr ( by @perevalovds )  ", 
+            "Users": [
+                "@perevalovds"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "RT @perevalovds: \"Mastering openFrameworks\" book's examples: http://t.co/qqJ1RyVPiw #openFrameworks  ", 
+            "Users": [
+                "@perevalovds"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @sterlingcrispin: Hey NYC I'm in NYC! also check out http://t.co/fFbGSD6sFY you can now program drones in @ProcessingOrg @cycling74 @ope\u2026  ", 
+            "Users": [
+                "@sterlingcrispin", 
+                "@ProcessingOrg", 
+                "@cycling74", 
+                "@ope"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT: @dcd_uca \"@openframeworks know any good tutors that we could find in London or Surrey - UK?\"  ", 
+            "Users": [
+                "@dcd_uca", 
+                "@openframeworks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @digitalcoleman: made my first commit working on @openframeworks documentation @creativeinquiry today - need my merit badge!  ", 
+            "Users": [
+                "@digitalcoleman", 
+                "@openframeworks", 
+                "@creativeinquiry"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#LISA2013"
+            ], 
+            "Tweet": "RT: @softwareandart \"@openframeworks would your twitter followers like a discount pass to #LISA2013? Use code OPENFRAMEWORKS for $100 off!\"  ", 
+            "Users": [
+                "@softwareandart", 
+                "@openframeworks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "want to understand the fundamentals of OpenGL cameras, textures, matrices, and more? @fctry2 has a new tutorial! http://t.co/b6PXpakTvb  ", 
+            "Users": [
+                "@fctry2"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "If you're into tech & art, specifically interactive installations, don't miss the 1st http://t.co/O4MT4Qb1Fo conference! Amazing lineup!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframew"
+            ], 
+            "Tweet": "RT @Kartikeypan: So happy to share that the Mastering @openframeworks book is published: http://t.co/3mhn9c2fdL Many thanks to #openframew\u2026  ", 
+            "Users": [
+                "@Kartikeypan", 
+                "@openframeworks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @theowatson: Talking about @openframeworks and @design_io projects tonight in Cambridge. Come hang out! https://t.co/mY0uuvS8nu  ", 
+            "Users": [
+                "@theowatson", 
+                "@openframeworks", 
+                "@design_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "this weekend we're doing a documentation drive to fill out the openFrameworks reference! we're looking for more help https://t.co/rlRuragYgj  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @CodeLiberation: We're very excited to announce a ladies game jam and two openFrameworks workshops at the end of this month in NYC! http\u2026  ", 
+            "Users": [
+                "@CodeLiberation"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "we have a new video at http://t.co/AX0lfjzBTM 5 years since the original, this includes a random sequence of videos tagged \"openFrameworks\"  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "we're excited to share the results from our recent community survey, also the first post on the OF blog! http://t.co/HJPCv6wedG  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "interested in contributing to openFrameworks? next time you install on OSX, document your process for the setup guide http://t.co/RvGnqdsb5N  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "RT @admsyn: Toronto #openframeworks meetup tonight, 7pm at Tequila Bookworm!  ", 
+            "Users": [
+                "@admsyn"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "RT @ofxaddons: fun stats: #openFrameworks has 970 add ons from 311 individual contributors, 744 have examples, and there are 139 with 10 st\u2026  ", 
+            "Users": [
+                "@ofxaddons"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "http://t.co/aas4YmL7NB redesign: custom thumbnails, star sort, filtering, fresher forks! by @obviousjim @chrissugrue @laurmccarthy @kikko_fr  ", 
+            "Users": [
+                "@obviousjim", 
+                "@chrissugrue", 
+                "@laurmccarthy", 
+                "@kikko_fr"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "OF 0.8.0 is out! http://t.co/1biiyLR0bw featuring RPi support, ofXml, ofxKinect, shaders on iOS, GLFW, vs2012, ofxGui, and much more!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "live reporting from OF developers conference at @ycam_jp from @tadokoro http://t.co/GNfqLCESUa (in english at the end of the conference)  ", 
+            "Users": [
+                "@ycam_jp", 
+                "@tadokoro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ofxaddons: Some next level 3d sensing and visualization happening with ofxActiveScan https://t.co/iONBr346U2  ", 
+            "Users": [
+                "@ofxaddons"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ofxaddons: ofxTonic, simple sound synthesis done right https://t.co/OmCZhwyWm3 by @pixelmorgan and Nick Donald  ", 
+            "Users": [
+                "@ofxaddons", 
+                "@pixelmorgan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "OF 0.8.0 is out on the 1st! featuring RPi support, core xml+kinect, iOS shaders, cross-platform system fonts, GLFW, vs2012, ofxGui and more!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#TraceYourPath", 
+                "#Lexus"
+            ], 
+            "Tweet": "RT @theDANtheMAN: just another day in the office with #openFrameworks #TraceYourPath #Lexus http://t.co/y3BSidQqB9  ", 
+            "Users": [
+                "@theDANtheMAN"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@maschinentexte unfortunately the attendees have been decided, we'll update/remove the form thanks, and sorry for the confusion!  ", 
+            "Users": [
+                "@maschinentexte"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "OF 0.8.0 is almost here! right now we're squashing the last few issues https://t.co/G2fUZAzLWU and chatting on http://t.co/yWOU0iEQIa  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "in nyc? sign up for http://t.co/y2H5NdbsSv where you can get the latest info on events like the openFrameworks meetup happening tonight!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "we're taking a survey, to make openFrameworks a better tool and understand the community better! https://t.co/QyUzqSZy5r how do you use OF?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "this weekend we're squashing bugs in preparation for OF 0.8.0! join us on IRC http://t.co/J0SIk77WbA  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@djTomServo this is our feeling too, somehow merging the information in both, but still having a \"basic\" representation for beginners.  ", 
+            "Users": [
+                "@djTomServo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "we're experimenting with \"advanced\" documentation using doxygen http://t.co/oN7DKTRvvm and we'd love to hear your thoughts and feedback!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"towards OF 1.0\" openframeworks conference this august @ YCAM japan. please apply to help shape OF's future: https://t.co/Vl8ETzzygv  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"towards OF 1.0\" openframeworks conference this august @ YCAM japan. please apply to help shape OF's future: https://t.co/uhveGyXjux  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Devin__Raposo what kind of documentation are you looking for? we're always looking for more contributors! http://t.co/Au0RO1wa0U  ", 
+            "Users": [
+                "@Devin__Raposo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Devin__Raposo openFrameworks ships uncompiled, so the first compilation usually takes a minute. after that it should take seconds.  ", 
+            "Users": [
+                "@Devin__Raposo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "how do you want to contribute to OF? what would make it easier to get involved? send your thoughts to outreach leader @c_tl_n  ", 
+            "Users": [
+                "@c_tl_n"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "new community page! we're working on making it easier to contribute, get support, and find ways to get involved http://t.co/hmbJH064Oe  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "the openFrameworks documentation now shows all the available functions on a single page http://t.co/QAi2DdY9pf  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "new tutorial from @chrissugrue covers basics of working with stl vectors in c++ http://t.co/TiAOpXNb53 including a particle system example  ", 
+            "Users": [
+                "@chrissugrue"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "interested in writing tutorials for the openFrameworks website? fork and contribute a markdown file here: https://t.co/Y64a3skM7v  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "this weekend we're having a bug-squash/merge-fest working towards 0.8.0! join us for discussion on #openFrameworks http://t.co/2cdJ6J6Rlq  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "openFrameworks 0.7.4 is out http://t.co/2ZIPXUUk code::blocks 12.11 support, new version numbering system, and lots of bugfixes!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "this weekend we're having a bug-squash/merge-fest in preparation for 0.7.4! join us for discussion on #openFrameworks http://t.co/dXLzr6V6  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "OF T-Shirt 001 - circle packing. first OF T-shirt. Grab it here:http://t.co/D0JTEcSR ( designed by @NickHardeman ) http://t.co/KfFa34d9  ", 
+            "Users": [
+                "@NickHardeman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "interested in working with openFrameworks on raspberry pi? check out this \"getting started\" guide https://t.co/kRY7MZdi  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@suse_miessner great suggestion for the interim, just fixed it so they're alphabetized regardless of the underscore. thanks! :)  ", 
+            "Users": [
+                "@suse_miessner"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@suse_miessner sorry! documentation is autogenerated, and we're working on a clever way to combine things like ofImage_ and ofImage  ", 
+            "Users": [
+                "@suse_miessner"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "(correction on previous tweet) 0073 is out now, see http://t.co/2ZIPXUUk  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @patriciogv: @openframeworks I'm doing a research to see how the learning processes of OF could be improve. Please fill & forward ...  ", 
+            "Users": [
+                "@patriciogv", 
+                "@openframeworks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "OF is one of the key tools behind http://t.co/6tZpCXVb which is used for the CLOUDS documentary http://t.co/56SakB3s exploring creative code  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kyndinfo: New video on Vimeo - Andantino: Cast: kyndTags: openframeworks http://t.co/97umSWvk (http://t.co/wMaL5vIf)  ", 
+            "Users": [
+                "@kyndinfo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@trentbrooks looking really good!  ", 
+            "Users": [
+                "@trentbrooks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@_bLackburst_ this is possible with one window, or with multiple windows using ofxFenster https://t.co/kpse9Bie  ", 
+            "Users": [
+                "@_bLackburst_"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"Touch the Train Window!\" by PARTICLE AT REST uses openFrameworks with GPS and Kinect https://t.co/vTtDiCAe  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@RubyChilds it should all happen automatically but if you ever want to rebuild from scratch there are some notes here https://t.co/8yOeWXYH  ", 
+            "Users": [
+                "@RubyChilds"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@openframeworks can you post on the forum? http://t.co/VI9yJLrY there are more people who can help you there!  ", 
+            "Users": [
+                "@openframeworks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@trentbrooks 0071 is unaffected by the timing bug.  ", 
+            "Users": [
+                "@trentbrooks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "0072 has higher precision ofGetElapsedTimef() but wraps back to 0 after ~71 minutes. 0073 keeps the precision but fixes wraparound.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@nardove yup @artur0castro and @julapy - are hard at work on ES 2.0 for iOS and Android. See more here: https://t.co/khrqR4k0  ", 
+            "Users": [
+                "@nardove", 
+                "@artur0castro", 
+                "@julapy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "#openFrameworks 0073 is out. 0072 has critical installation killing bug - please grab the latest release at: http://t.co/2ZIPXUUk  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Important notice! 0072 has a serious bug relating to ofGetElapsedTimef(); 0073 (out soon) will fix it, but for now: http://t.co/SAkZuQIi  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "openFrameworks tip: 0071+ supports ofImage::drawSubsection(), making it easy to draw a \"cropped\" region of an image or texture.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @brunoimbrizi: Made some particles move with openframeworks. Feeling like a master of computer science.  ", 
+            "Users": [
+                "@brunoimbrizi"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Working with openFrameworks in Toronto? @admsyn and @readywater are having a meetup on November 8 at Tequila Bookworm! https://t.co/zEGTVgR5  ", 
+            "Users": [
+                "@admsyn", 
+                "@readywater"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @amcewen: .@FACT_Liverpool want you to hack their 50x50 pixel RGB LED facade, in OpenFrameworks, code library at https://t.co/LqDWlLJ ...  ", 
+            "Users": [
+                "@amcewen", 
+                "@FACT_Liverpool"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#vvvv", 
+                "#openFrameworks"
+            ], 
+            "Tweet": "RT @elliotwoods: #vvvv and #openFrameworks sitting in a tree.. INT-ER-OP-A-BIL-I-TY http://t.co/eLrhfVAw  ", 
+            "Users": [
+                "@elliotwoods"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kyndinfo: New video on Vimeo - pencil sketched metaballs: Cast: kyndTags: openframeworks http://t.co/G5sCS2i2 (http://t.co/wMaL5vIf)  ", 
+            "Users": [
+                "@kyndinfo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "did you know the openFrameworks documentation can be edited at https://t.co/eQU8ycVw or with the \"github\" buttons at the top of each page  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "interested in contributing documentation to OF? @justdayan is coordinating a movement to make our docs more awesome! http://t.co/5pEHefzn  ", 
+            "Users": [
+                "@justdayan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@eightlines great! it might have been an issue with the hosting company killing the site-building process. thanks for keeping us up to date!  ", 
+            "Users": [
+                "@eightlines"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@eightlines looking into it now...  ", 
+            "Users": [
+                "@eightlines"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "interested in using the new openFrameworks projectGenerator? check out this easy tutorial from @jesusgollonet http://t.co/PuTKHj7j  ", 
+            "Users": [
+                "@jesusgollonet"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "the OF server was having some problems, but we fixed them. if you downloaded OF recently and it was broken or incomplete, try again now!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sigma6289 sorry! there was a problem with the server, we're fixing it right now.  ", 
+            "Users": [
+                "@sigma6289"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@RyujiYoshida sorry! there was a problem with the server, we're fixing it right now.  ", 
+            "Users": [
+                "@RyujiYoshida"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@koutarofukui @mmmayang sorry! there was a problem with the server, we're fixing it right now.  ", 
+            "Users": [
+                "@koutarofukui", 
+                "@mmmayang"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "the OF server is having some problems. if you just downloaded OF and it's broken or incomplete, please try again later. more updates soon!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks", 
+                "#TouchApps"
+            ], 
+            "Tweet": "RT @nasht: My ELO Touch + #openframeworks Particle engine experiment. http://t.co/HPqZqETZ @ImaginationLabs #TouchApps  ", 
+            "Users": [
+                "@nasht", 
+                "@ImaginationLabs"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "we're proud to announce openFrameworks 0072 http://t.co/2ZIPXUUk now with a prototype project generator, and tons of bug fixes!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openGL", 
+                "#openFrameworks"
+            ], 
+            "Tweet": "RT @roxlu: Finally some time to do something visually with #openGL #openFrameworks http://t.co/IB8uw9Yj  ", 
+            "Users": [
+                "@roxlu"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @zachlieberman: openframeworks 0072 is looking sweet, super close to release: https://t.co/lKIbn8qd  ", 
+            "Users": [
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "IPCAM2SYPHON by @bakercp https://t.co/GzPVVWOw streams video from live cameras all over the world into other apps via syphon  ", 
+            "Users": [
+                "@bakercp"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "are you a windows developer? we need your help! sign up for the of-dev mailing list http://t.co/EeHJ82u2  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "RT @tomorrowevening: The beginning of a new #openframeworks project I've started in my spare time, rotational forces http://t.co/CBnTdoyH  ", 
+            "Users": [
+                "@tomorrowevening"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "RT @HellicarLewis: All our projects are finally up on Github: https://t.co/aRIHdcsH #openframeworks including our projects for LVMH, Int ...  ", 
+            "Users": [
+                "@HellicarLewis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "RT @memotv: finally posted my older #openframeworks addons (prev part of msalibs) as their own repos, compatible with current OF http:// ...  ", 
+            "Users": [
+                "@memotv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "openFrameworks NYC has a new mailing list! https://t.co/JHN04Ino and we're organizing a meetup some time next week https://t.co/JHN04Ino  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "and for an overview of the dent we made with the bug-squashing weekend, check out this graph of OF issues over time! http://t.co/8xFKQo1n  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "thanks @theowatson bilderbuchi @kylemcdonald for most closed issues last weekend! next time, we'll announce whoever submits their first PR.  ", 
+            "Users": [
+                "@theowatson", 
+                "@kylemcdonald"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "bug-squash weekend was a huge success: we halved the number of open issues for 0072! thanks to everyone who contributed!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#ofdev"
+            ], 
+            "Tweet": "bug-squashing day 2! we're down from 48 to 37 open issues in 0072. join us on #ofdev at http://t.co/dXLzr6V6 to help out!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#ofdev"
+            ], 
+            "Tweet": "we're hanging out on #ofdev at http://t.co/dXLzr6V6 doing some bug-squashing all this weekend. join us!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#ofdev"
+            ], 
+            "Tweet": "come hang out on #ofdev at http://t.co/dXLzr6V6 we'll be online all weekend starting tomorrow, bug-squashing party in preparation for 0072!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "OSX 10.8 breaks openFrameworks by deprecating the 10.6 SDK. some workarounds are available http://t.co/oE44mlY3 and we're working on a fix!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "\"the v motion project\" https://t.co/B7OPak43 interactive audiovisual performance in a new zealand alley, visuals built with #openFrameworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Created using #openFrameworks the Little Digits kids finger counting app by @cowlyowl is out now -> http://t.co/C8329GOX  ", 
+            "Users": [
+                "@cowlyowl"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "exciting work from @julapy on the openFrameworks iOS video player http://t.co/eJy5bW5H cleaner implementation and better performance!  ", 
+            "Users": [
+                "@julapy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@artur0castro just added nightly builds and continuous integration to the site!! http://t.co/SAkZuQIi &amp; http://t.co/j8OsFrCp  ", 
+            "Users": [
+                "@artur0castro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@artur0castro just added nightly builds and continuos integration to the site! http://t.co/SAkZuQIi http://t.co/j8OsFrCp  ", 
+            "Users": [
+                "@artur0castro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#kinect"
+            ], 
+            "Tweet": "\"Paik Times Five\" http://t.co/FFM7rP60 by Flightphase @ksobecka @jefftimesten @NickHardeman #kinect  ", 
+            "Users": [
+                "@ksobecka", 
+                "@jefftimesten", 
+                "@NickHardeman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#eyeo"
+            ], 
+            "Tweet": "OF dinner 5PM tonight at http://t.co/1XbDIhQi at the outside tables! #eyeo  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "We are making a video showreel of great openFrameworks projects created in 2011. Submit yours here by June 15th http://t.co/0VZGtPHm Pls RT  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "on some hardware ofSetBackgroundAuto(false) causes flickering. in OF0071 use window.setDoubleBuffering(false) in main.cpp to fix this!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "as of OF0071 ofxOsc is patched to support broadcast addresses https://t.co/DLJRFZHq and multiple clients listening on the same port  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "ofBackgroundGradient() is new to 0071! use it with a lightly colored center and slightly darker edge to get the popular \"vignette\" look.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "OF 0071 ships with 97 community contributed examples. Full list: https://t.co/rDseGk7O  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "#openFrameworks 0071 is out! Loads of new community contributed examples, features and bugfixes. Grab it here: http://t.co/2ZIPXUUk  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "OF-powered \"Starry Night Interactive Animation\" by @artof01 is available for free on iPad today! http://t.co/7PxGIFFH  ", 
+            "Users": [
+                "@artof01"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "OF-powered \"It's a jungle in here\" by Isobel Knowles+Van Sowerwine w Matthew Gingold receives an Award of Distinction! http://t.co/IPnP4ve4  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "#openframeworks running on the BlackBerry PlayBook http://t.co/3N7lUqLB - http://t.co/W5xKaq82  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "excellent article from @tadokoro on @cbcnet about devcon-detroit http://t.co/KV6agMQ5 \uff08\u65e5\u672c\u8a9e\uff09including previews of 0071  ", 
+            "Users": [
+                "@tadokoro", 
+                "@cbcnet"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@tadokoro has been translating the OF site into japanese http://t.co/IEpgKPmS including the new tutorials http://t.co/rWneJGgi  ", 
+            "Users": [
+                "@tadokoro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "openFrameworks 0071 will contain a cross platform project generator, allowing you to select which addons you want http://t.co/MYjgTk9Z  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "In the midwest & want to come to learn openframeworks this Sunday in Detroit ? there's still room in the workshop: http://t.co/2BAoud5K  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#ofdev"
+            ], 
+            "Tweet": "photos from ofdevcon detroit! http://t.co/uLdNkK5x http://t.co/Lyvj4430 http://t.co/mJiYiRZi we're also on http://t.co/363HrVbR in #ofdev  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "what openFrameworks tutorials do you want to see? how can we improve the documentation? https://t.co/o3gV0Kdn please add your suggestions!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Makego digital toy iPhone app http://t.co/uFV3AtqP just launched made using #openFrameworks by @chrisoshea  ", 
+            "Users": [
+                "@chrisoshea"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "Interactive animation of strokes in Van Goghs starry night http://t.co/rdfFNz7N #openframeworks http://t.co/VEDuUlTA  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "just merged new ofxOpenCv documentation, densely illustrated by coffee-sipping images of @factoryfactory himself http://t.co/6Jxv7FGa  ", 
+            "Users": [
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "#openFrameworks + ofxTimeline controlled lasers http://t.co/Q6zZcDx4  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "sorry for that short outage, http://t.co/iYId4aSW is back up and running.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "http://t.co/iYId4aSW is currently down (including the forum) due to issues with our server @dreamhost please stand by...  ", 
+            "Users": [
+                "@dreamhost"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "#openframeworks workshop @ Medialab-Prado with @artur0castro @drakko @chrissugrue Feb 2-5: http://t.co/jHQJRHlg  ", 
+            "Users": [
+                "@artur0castro", 
+                "@drakko", 
+                "@chrissugrue"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "An Italian Introduction to OF workshop in Turin 20-22 Jan http://t.co/OiqSYC6e  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sethsandler @husamelfaki we're looking for contributions! especially for documentation. fork the new site at https://t.co/vR1Tg0lK  ", 
+            "Users": [
+                "@sethsandler", 
+                "@husamelfaki"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "new site at http://t.co/iYId4aSW it's a work in progress, but we decided to launch the moment it got slightly better than the old site :)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "A new iPad/iPhone word puzzle game SpellTower http://t.co/oEmgi86z by @helvetica made with #openframeworks http://t.co/Zw7BDGIV  ", 
+            "Users": [
+                "@helvetica"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Keep an eye on http://t.co/INR0nbTY ! Freshest addon commits served daily from Github via @ofxaddons  ", 
+            "Users": [
+                "@ofxaddons"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Nice overview of new 007 features here: http://t.co/Cb3DntK  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "OF v007 is now released - http://t.co/zzSZfj9 Thanks to the community and @creativeinquiry for helping make it happen!  ", 
+            "Users": [
+                "@creativeinquiry"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New openFrameworks forum launched http://forum.openframeworks.cc/index.php/topic,5917.0.html  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "the openFrameworks forum will be down for maintenance on Sat 12th Feb. More info http://goo.gl/eIXGU  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "OF 0062 Released! http://bit.ly/KVsBM  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "TEMPT is making art again with the eyewriter system, now there's a kickstarter to get his art out: http://bit.ly/btxWw5 (via @zachlieberman)  ", 
+            "Users": [
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Vancouver folk: @tangibleint is hosting an OpenFrameworks workshop on the 26th, taught by @jaypozo: http://ow.ly/1SRpT (via @blprnt)  ", 
+            "Users": [
+                "@tangibleint", 
+                "@jaypozo", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "tomorrow // albuquerque, new mexico : Infrared Light + Computer Vision Workshop in Processing & openFrameworks http://bit.ly/98oCxU  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "http://ow.ly/1RtaL Open Frameworks workshop Vancouver info and tentative date. Please RT (via @tangibleint)  ", 
+            "Users": [
+                "@tangibleint"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "May 29-30, @pedroangelo will give a workshop in Lisbon on how to hack video in real-time using openframeworks: http://ur1.ca/028n1  ", 
+            "Users": [
+                "@pedroangelo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "1st XD Group workshop will focus on Computer Vision+ Infrared Light setups in Processing+openFrameworks: http://j.mp/d8F9cv (via @drwoohoo)  ", 
+            "Users": [
+                "@drwoohoo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "OF beginners workshop in Utrecht, May 23rd: http://www.opentoko.org/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Still some spots left in the openFrameworks Design I/O Lab in Breda, NL!! Sign up while its hot! http://bit.ly/d9ef2w (via @theowatson)  ", 
+            "Users": [
+                "@theowatson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Come learn some #openFrameworks at Parsons. http://dorkshop.org/openFrameworks2010 (via @mattupstate @NickHardeman)  ", 
+            "Users": [
+                "@mattupstate", 
+                "@NickHardeman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Just posted iPhone 0.061 OF release - loads of new examples! - grab it here: http://bit.ly/KVsBM  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "version 0.061 released. Check out the forum announcement http://www.openframeworks.cc/forum/viewtopic.php?f=13&t=3071  ", 
+            "Users": []
+        }
+    ], 
+    "name": "openframeworks.txt"
+}

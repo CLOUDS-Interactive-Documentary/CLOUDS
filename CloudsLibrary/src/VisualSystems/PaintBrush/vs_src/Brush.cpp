@@ -20,6 +20,10 @@ Brush::Brush(){
     repRad = 5.0;
 }
 
+Brush::~Brush(){
+    clear();
+}
+
 void Brush::setBrushWidth(float _width){
     brushWidth = _width;
     
@@ -234,8 +238,9 @@ void Brush::draw(){
     for(int i = 0; i < springs.size(); i++){
         if (tail.size() < 5){
             ofPushStyle();
+			Bs[i]->color.a = 255;
             ofSetColor(Bs[i]->color);
-            glLineWidth( lineWidth+5  -ofMap(Bs[i]->tail.size(),0,5,lineWidth,lineWidth+5) );
+            glLineWidth( lineWidth+5 - ofMap(Bs[i]->tail.size(),0,5,lineWidth,lineWidth+5) );
             Bs[i]->trail.draw();
             ofPopStyle();
         }

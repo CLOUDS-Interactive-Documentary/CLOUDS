@@ -1,0 +1,2713 @@
+{
+    "Tweets": [
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: Smart, beautiful visualization book by @IsabelMeirelles at http://t.co/WnCQZXKiZn And I'm not judging the book by its cover!  ", 
+            "Users": [
+                "@wattenberg", 
+                "@IsabelMeirelles"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our group and Google Ideas launched http://t.co/x4lqgj1nBy, a visualization of computer attacks around the globe in real time  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#shutdown"
+            ], 
+            "Tweet": "Don't let the #shutdown get you down. 2 free ebooks to inform, change your world: Open Gov + Hack Healthcare http://t.co/uE3Ci7v0SU  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Thanks, @hpfister! Try \"define mortgage\"--what a telling etymology...  ", 
+            "Users": [
+                "@hpfister"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our group and Search launched the new Google Dictionary: type \"define mellifluous\" and expand for visualizations!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Visual explanations of Simpson's Paradox: http://t.co/sTF2QtciIo  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Minha entrevista \u00e0 Folha sobre visualiza\u00e7\u00e3o de dados: http://t.co/rEc5o9Q0rK  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@scheidegger @wattenberg Both, obvs :)  ", 
+            "Users": [
+                "@scheidegger", 
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our group and YouTube just launched TrendsMap http://t.co/XUETDYhBWx which shows trending videos in the US  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sahithya06 Nice meeting you too!  ", 
+            "Users": [
+                "@sahithya06"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @brainpicker: This is great: NASA or MoMA? http://t.co/O0cWCB7KEt (\u21ac@jake_barton)  ", 
+            "Users": [
+                "@brainpicker", 
+                "@jake_barton"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: Like geography games? Hate the Mercator projection? Then you'll enjoy this as much as I did: http://t.co/jec2z0Mw  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#mapvis"
+            ], 
+            "Tweet": "RT @judithd: Beautiful 1915 map depicts every public library in Massachusetts http://t.co/eULxDuz9 #mapvis via @blanket  ", 
+            "Users": [
+                "@judithd", 
+                "@blanket"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Congrats @aagie and @michelle_borkin for discovering \"bones\" in the universe!  ", 
+            "Users": [
+                "@aagie", 
+                "@michelle_borkin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our team at Google (Cambridge, US) is looking for someone who loves visualization and coding! http://t.co/EH2d2q6J  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Wind Map prints! A collaboration with @webchickbot / Point.B http://t.co/CFIqZrWV  ", 
+            "Users": [
+                "@webchickbot"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Hernan_Pisano Indeed. It's a joint project with @wattenberg  ", 
+            "Users": [
+                "@Hernan_Pisano", 
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@moebio Does clicking not work?  ", 
+            "Users": [
+                "@moebio"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@moritz_stefaner You will! Let's chat at Eyeo :)  ", 
+            "Users": [
+                "@moritz_stefaner"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New: the power of wind! Live interactive wind visualization http://t.co/8DscMmxg  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#kony2012"
+            ], 
+            "Tweet": "Google+ ripple of #kony2012 video: http://t.co/kHpTYOpR  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: New! See the spread of any URL (not just a post) on Google+ ripples. For example http://t.co/AgcCMNk9  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lisard Glad you like it, Lis! :)  ", 
+            "Users": [
+                "@lisard"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@pulvereyes That's right--it's the first project from the Big Picture group to become public! :)  ", 
+            "Users": [
+                "@pulvereyes"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New visualization! Google+ Ripples, showing the diffusion of posts http://t.co/yZT0otNB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Times are a-changing: Brazil is booming as Rio steals the business spotlight from S\u00e3o Paulo http://t.co/QoxKky7  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I'm with Warren Buffett: http://t.co/bu5nJsb  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New artwork with @wattenberg: The Art Of Reproduction. http://j.mp/lZ5dWH  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Nice, nice, pendulum. All science museums should have one of these. Video: http://bit.ly/kyKfxY (via @memotv)  ", 
+            "Users": [
+                "@golan", 
+                "@memotv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Nessa P\u00e1scoa, ajude a acabar com a escravid\u00e3o infantil na ind\u00fastria do chocolate http://bit.ly/e6uCfB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@infosthetics it becomes more likely that they will when folks like you tweet about it. ;)  ", 
+            "Users": [
+                "@infosthetics"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "On cnn.com: my op-ed with Martin on the future of visualization http://bit.ly/gqbUWL  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Why Women Rule The Internet: http://tcrn.ch/fgTAYx  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Honored to be among the most influential Brazilians listed in Revista \u00c9poca http://bit.ly/gCsclc  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Honrada de estar entre os brasileiros mais influentes da Revista \u00c9poca http://bit.ly/gCsclc  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Sabia que o Brasil \u00e9 um dos pa\u00edses com maior n\u00famero de produtos feitos por trabalho escravo no planeta? http://bit.ly/bZaavw (via @maiona)  ", 
+            "Users": [
+                "@maiona"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Infographic: Products of Slavery http://bit.ly/bZaavw Awful: Brazil is one of the top countries for child and forced labour (via @maiona)  ", 
+            "Users": [
+                "@maiona"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Many Eyes is all grown up: http://many-eyes.com Congratulations to IBM Research and IBM Cognos--it looks great!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Adieu Flowing Media. Hello Google! http://hint.fm/blog/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "TimeFlow, our open-source timeline takes its first steps: http://wiki.github.com/FlowingMedia/TimeFlow/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Parab\u00e9ns ao pessoal do Estad\u00e3o pela visualiza\u00e7\u00e3o muito bem feita: http://bit.ly/aHF2Dk  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "NY Times, watch out: Brazilian newspaper O Estad\u00e3o nipping at your heels with visualization http://bit.ly/aHF2Dk  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"More oil... More oil!\" Texaco ad from 1944 Life Magazine. Gotta love the happy fish! http://bit.ly/csytoQ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#PdF2010"
+            ], 
+            "Tweet": "looking forward to presenting some new material tomorrow at #PdF2010...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Holy smokes, hay really cleans up an oil spill. http://bit.ly/d1L5wl (via @doriantaylor). Someone please listen to these guys.  ", 
+            "Users": [
+                "@golan", 
+                "@doriantaylor"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Facebook and privacy: a visualization by @mattmckeon http://mattmckeon.com/facebook-privacy/  ", 
+            "Users": [
+                "@mattmckeon"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sadatshami @krees @royrod @finikiotis @sogrady @ricardoprochnow @dabeard Thanks!! \u263a  ", 
+            "Users": [
+                "@sadatshami", 
+                "@krees", 
+                "@royrod", 
+                "@finikiotis", 
+                "@sogrady", 
+                "@ricardoprochnow", 
+                "@dabeard"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Honored to be among The Most Influential Women in Tech 2010 for Fast Company! http://bit.ly/9Kj95G  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "(in Portuguese) Super feliz! Minha nova empresa de visualiza\u00e7\u00e3o com @wattenberg: http://flowingmedia.com/  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: More details on Flowing Media here: http://hint.fm/blog  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Very excited! My new venture with @wattenberg is a whole new chapter: http://flowingmedia.com/  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hairy small multiples: first ladies http://nyti.ms/KO1S7 and their husbands http://nyti.ms/cAwTkr  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Luscious: a celebration of color http://hint.fm/blog/ (my new piece with @wattenberg)  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "(in Portuguese) Visualiza\u00e7\u00e3o dos resultados do Google Suggest brasileiro: http://hint.fm/seer/brasil.html  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "check out Web Seer http://hint.fm/seer our visualization of google suggest--for the Brazilian version, see http://hint.fm/seer/brasil.html  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New blog with @wattenberg at http://hint.fm/blog -- part of our collaborative portfolio at http://hint.fm/  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sadatshami I know--pretty exciting! :)  ", 
+            "Users": [
+                "@sadatshami"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@joandimicco Thanks, Joanie! It's pretty exciting to be finally tweeting!  ", 
+            "Users": [
+                "@joandimicco"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Happy Holidays! My New York Times Op-Ed with @wattenberg visualizing Santa and the Easter Bunny: http://bit.ly/7wgy3W  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }
+    ], 
+    "name": "viegasf.txt"
+}{
+    "Tweets": [
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: Smart, beautiful visualization book by @IsabelMeirelles at http://t.co/WnCQZXKiZn And I'm not judging the book by its cover!  ", 
+            "Users": [
+                "@wattenberg", 
+                "@IsabelMeirelles"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our group and Google Ideas launched http://t.co/x4lqgj1nBy, a visualization of computer attacks around the globe in real time  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#shutdown"
+            ], 
+            "Tweet": "Don't let the #shutdown get you down. 2 free ebooks to inform, change your world: Open Gov + Hack Healthcare http://t.co/uE3Ci7v0SU  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Thanks, @hpfister! Try \"define mortgage\"--what a telling etymology...  ", 
+            "Users": [
+                "@hpfister"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our group and Search launched the new Google Dictionary: type \"define mellifluous\" and expand for visualizations!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Visual explanations of Simpson's Paradox: http://t.co/sTF2QtciIo  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Minha entrevista \u00e0 Folha sobre visualiza\u00e7\u00e3o de dados: http://t.co/rEc5o9Q0rK  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@scheidegger @wattenberg Both, obvs :)  ", 
+            "Users": [
+                "@scheidegger", 
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our group and YouTube just launched TrendsMap http://t.co/XUETDYhBWx which shows trending videos in the US  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sahithya06 Nice meeting you too!  ", 
+            "Users": [
+                "@sahithya06"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @brainpicker: This is great: NASA or MoMA? http://t.co/O0cWCB7KEt (\u21ac@jake_barton)  ", 
+            "Users": [
+                "@brainpicker", 
+                "@jake_barton"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: Like geography games? Hate the Mercator projection? Then you'll enjoy this as much as I did: http://t.co/jec2z0Mw  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#mapvis"
+            ], 
+            "Tweet": "RT @judithd: Beautiful 1915 map depicts every public library in Massachusetts http://t.co/eULxDuz9 #mapvis via @blanket  ", 
+            "Users": [
+                "@judithd", 
+                "@blanket"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Congrats @aagie and @michelle_borkin for discovering \"bones\" in the universe!  ", 
+            "Users": [
+                "@aagie", 
+                "@michelle_borkin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our team at Google (Cambridge, US) is looking for someone who loves visualization and coding! http://t.co/EH2d2q6J  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Wind Map prints! A collaboration with @webchickbot / Point.B http://t.co/CFIqZrWV  ", 
+            "Users": [
+                "@webchickbot"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Hernan_Pisano Indeed. It's a joint project with @wattenberg  ", 
+            "Users": [
+                "@Hernan_Pisano", 
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@moebio Does clicking not work?  ", 
+            "Users": [
+                "@moebio"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@moritz_stefaner You will! Let's chat at Eyeo :)  ", 
+            "Users": [
+                "@moritz_stefaner"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New: the power of wind! Live interactive wind visualization http://t.co/8DscMmxg  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#kony2012"
+            ], 
+            "Tweet": "Google+ ripple of #kony2012 video: http://t.co/kHpTYOpR  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: New! See the spread of any URL (not just a post) on Google+ ripples. For example http://t.co/AgcCMNk9  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lisard Glad you like it, Lis! :)  ", 
+            "Users": [
+                "@lisard"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@pulvereyes That's right--it's the first project from the Big Picture group to become public! :)  ", 
+            "Users": [
+                "@pulvereyes"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New visualization! Google+ Ripples, showing the diffusion of posts http://t.co/yZT0otNB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Times are a-changing: Brazil is booming as Rio steals the business spotlight from S\u00e3o Paulo http://t.co/QoxKky7  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I'm with Warren Buffett: http://t.co/bu5nJsb  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New artwork with @wattenberg: The Art Of Reproduction. http://j.mp/lZ5dWH  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Nice, nice, pendulum. All science museums should have one of these. Video: http://bit.ly/kyKfxY (via @memotv)  ", 
+            "Users": [
+                "@golan", 
+                "@memotv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Nessa P\u00e1scoa, ajude a acabar com a escravid\u00e3o infantil na ind\u00fastria do chocolate http://bit.ly/e6uCfB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@infosthetics it becomes more likely that they will when folks like you tweet about it. ;)  ", 
+            "Users": [
+                "@infosthetics"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "On cnn.com: my op-ed with Martin on the future of visualization http://bit.ly/gqbUWL  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Why Women Rule The Internet: http://tcrn.ch/fgTAYx  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Honored to be among the most influential Brazilians listed in Revista \u00c9poca http://bit.ly/gCsclc  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Honrada de estar entre os brasileiros mais influentes da Revista \u00c9poca http://bit.ly/gCsclc  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Sabia que o Brasil \u00e9 um dos pa\u00edses com maior n\u00famero de produtos feitos por trabalho escravo no planeta? http://bit.ly/bZaavw (via @maiona)  ", 
+            "Users": [
+                "@maiona"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Infographic: Products of Slavery http://bit.ly/bZaavw Awful: Brazil is one of the top countries for child and forced labour (via @maiona)  ", 
+            "Users": [
+                "@maiona"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Many Eyes is all grown up: http://many-eyes.com Congratulations to IBM Research and IBM Cognos--it looks great!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Adieu Flowing Media. Hello Google! http://hint.fm/blog/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "TimeFlow, our open-source timeline takes its first steps: http://wiki.github.com/FlowingMedia/TimeFlow/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Parab\u00e9ns ao pessoal do Estad\u00e3o pela visualiza\u00e7\u00e3o muito bem feita: http://bit.ly/aHF2Dk  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "NY Times, watch out: Brazilian newspaper O Estad\u00e3o nipping at your heels with visualization http://bit.ly/aHF2Dk  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"More oil... More oil!\" Texaco ad from 1944 Life Magazine. Gotta love the happy fish! http://bit.ly/csytoQ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#PdF2010"
+            ], 
+            "Tweet": "looking forward to presenting some new material tomorrow at #PdF2010...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Holy smokes, hay really cleans up an oil spill. http://bit.ly/d1L5wl (via @doriantaylor). Someone please listen to these guys.  ", 
+            "Users": [
+                "@golan", 
+                "@doriantaylor"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Facebook and privacy: a visualization by @mattmckeon http://mattmckeon.com/facebook-privacy/  ", 
+            "Users": [
+                "@mattmckeon"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sadatshami @krees @royrod @finikiotis @sogrady @ricardoprochnow @dabeard Thanks!! \u263a  ", 
+            "Users": [
+                "@sadatshami", 
+                "@krees", 
+                "@royrod", 
+                "@finikiotis", 
+                "@sogrady", 
+                "@ricardoprochnow", 
+                "@dabeard"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Honored to be among The Most Influential Women in Tech 2010 for Fast Company! http://bit.ly/9Kj95G  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "(in Portuguese) Super feliz! Minha nova empresa de visualiza\u00e7\u00e3o com @wattenberg: http://flowingmedia.com/  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: More details on Flowing Media here: http://hint.fm/blog  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Very excited! My new venture with @wattenberg is a whole new chapter: http://flowingmedia.com/  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hairy small multiples: first ladies http://nyti.ms/KO1S7 and their husbands http://nyti.ms/cAwTkr  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Luscious: a celebration of color http://hint.fm/blog/ (my new piece with @wattenberg)  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "(in Portuguese) Visualiza\u00e7\u00e3o dos resultados do Google Suggest brasileiro: http://hint.fm/seer/brasil.html  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "check out Web Seer http://hint.fm/seer our visualization of google suggest--for the Brazilian version, see http://hint.fm/seer/brasil.html  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New blog with @wattenberg at http://hint.fm/blog -- part of our collaborative portfolio at http://hint.fm/  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sadatshami I know--pretty exciting! :)  ", 
+            "Users": [
+                "@sadatshami"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@joandimicco Thanks, Joanie! It's pretty exciting to be finally tweeting!  ", 
+            "Users": [
+                "@joandimicco"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Happy Holidays! My New York Times Op-Ed with @wattenberg visualizing Santa and the Easter Bunny: http://bit.ly/7wgy3W  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }
+    ], 
+    "name": "viegasf.txt"
+}{
+    "Tweets": [
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: Smart, beautiful visualization book by @IsabelMeirelles at http://t.co/WnCQZXKiZn And I'm not judging the book by its cover!  ", 
+            "Users": [
+                "@wattenberg", 
+                "@IsabelMeirelles"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our group and Google Ideas launched http://t.co/x4lqgj1nBy, a visualization of computer attacks around the globe in real time  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#shutdown"
+            ], 
+            "Tweet": "Don't let the #shutdown get you down. 2 free ebooks to inform, change your world: Open Gov + Hack Healthcare http://t.co/uE3Ci7v0SU  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Thanks, @hpfister! Try \"define mortgage\"--what a telling etymology...  ", 
+            "Users": [
+                "@hpfister"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our group and Search launched the new Google Dictionary: type \"define mellifluous\" and expand for visualizations!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Visual explanations of Simpson's Paradox: http://t.co/sTF2QtciIo  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Minha entrevista \u00e0 Folha sobre visualiza\u00e7\u00e3o de dados: http://t.co/rEc5o9Q0rK  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@scheidegger @wattenberg Both, obvs :)  ", 
+            "Users": [
+                "@scheidegger", 
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our group and YouTube just launched TrendsMap http://t.co/XUETDYhBWx which shows trending videos in the US  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sahithya06 Nice meeting you too!  ", 
+            "Users": [
+                "@sahithya06"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @brainpicker: This is great: NASA or MoMA? http://t.co/O0cWCB7KEt (\u21ac@jake_barton)  ", 
+            "Users": [
+                "@brainpicker", 
+                "@jake_barton"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: Like geography games? Hate the Mercator projection? Then you'll enjoy this as much as I did: http://t.co/jec2z0Mw  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#mapvis"
+            ], 
+            "Tweet": "RT @judithd: Beautiful 1915 map depicts every public library in Massachusetts http://t.co/eULxDuz9 #mapvis via @blanket  ", 
+            "Users": [
+                "@judithd", 
+                "@blanket"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Congrats @aagie and @michelle_borkin for discovering \"bones\" in the universe!  ", 
+            "Users": [
+                "@aagie", 
+                "@michelle_borkin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our team at Google (Cambridge, US) is looking for someone who loves visualization and coding! http://t.co/EH2d2q6J  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Wind Map prints! A collaboration with @webchickbot / Point.B http://t.co/CFIqZrWV  ", 
+            "Users": [
+                "@webchickbot"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Hernan_Pisano Indeed. It's a joint project with @wattenberg  ", 
+            "Users": [
+                "@Hernan_Pisano", 
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@moebio Does clicking not work?  ", 
+            "Users": [
+                "@moebio"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@moritz_stefaner You will! Let's chat at Eyeo :)  ", 
+            "Users": [
+                "@moritz_stefaner"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New: the power of wind! Live interactive wind visualization http://t.co/8DscMmxg  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#kony2012"
+            ], 
+            "Tweet": "Google+ ripple of #kony2012 video: http://t.co/kHpTYOpR  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: New! See the spread of any URL (not just a post) on Google+ ripples. For example http://t.co/AgcCMNk9  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lisard Glad you like it, Lis! :)  ", 
+            "Users": [
+                "@lisard"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@pulvereyes That's right--it's the first project from the Big Picture group to become public! :)  ", 
+            "Users": [
+                "@pulvereyes"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New visualization! Google+ Ripples, showing the diffusion of posts http://t.co/yZT0otNB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Times are a-changing: Brazil is booming as Rio steals the business spotlight from S\u00e3o Paulo http://t.co/QoxKky7  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I'm with Warren Buffett: http://t.co/bu5nJsb  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New artwork with @wattenberg: The Art Of Reproduction. http://j.mp/lZ5dWH  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Nice, nice, pendulum. All science museums should have one of these. Video: http://bit.ly/kyKfxY (via @memotv)  ", 
+            "Users": [
+                "@golan", 
+                "@memotv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Nessa P\u00e1scoa, ajude a acabar com a escravid\u00e3o infantil na ind\u00fastria do chocolate http://bit.ly/e6uCfB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@infosthetics it becomes more likely that they will when folks like you tweet about it. ;)  ", 
+            "Users": [
+                "@infosthetics"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "On cnn.com: my op-ed with Martin on the future of visualization http://bit.ly/gqbUWL  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Why Women Rule The Internet: http://tcrn.ch/fgTAYx  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Honored to be among the most influential Brazilians listed in Revista \u00c9poca http://bit.ly/gCsclc  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Honrada de estar entre os brasileiros mais influentes da Revista \u00c9poca http://bit.ly/gCsclc  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Sabia que o Brasil \u00e9 um dos pa\u00edses com maior n\u00famero de produtos feitos por trabalho escravo no planeta? http://bit.ly/bZaavw (via @maiona)  ", 
+            "Users": [
+                "@maiona"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Infographic: Products of Slavery http://bit.ly/bZaavw Awful: Brazil is one of the top countries for child and forced labour (via @maiona)  ", 
+            "Users": [
+                "@maiona"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Many Eyes is all grown up: http://many-eyes.com Congratulations to IBM Research and IBM Cognos--it looks great!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Adieu Flowing Media. Hello Google! http://hint.fm/blog/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "TimeFlow, our open-source timeline takes its first steps: http://wiki.github.com/FlowingMedia/TimeFlow/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Parab\u00e9ns ao pessoal do Estad\u00e3o pela visualiza\u00e7\u00e3o muito bem feita: http://bit.ly/aHF2Dk  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "NY Times, watch out: Brazilian newspaper O Estad\u00e3o nipping at your heels with visualization http://bit.ly/aHF2Dk  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"More oil... More oil!\" Texaco ad from 1944 Life Magazine. Gotta love the happy fish! http://bit.ly/csytoQ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#PdF2010"
+            ], 
+            "Tweet": "looking forward to presenting some new material tomorrow at #PdF2010...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Holy smokes, hay really cleans up an oil spill. http://bit.ly/d1L5wl (via @doriantaylor). Someone please listen to these guys.  ", 
+            "Users": [
+                "@golan", 
+                "@doriantaylor"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Facebook and privacy: a visualization by @mattmckeon http://mattmckeon.com/facebook-privacy/  ", 
+            "Users": [
+                "@mattmckeon"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sadatshami @krees @royrod @finikiotis @sogrady @ricardoprochnow @dabeard Thanks!! \u263a  ", 
+            "Users": [
+                "@sadatshami", 
+                "@krees", 
+                "@royrod", 
+                "@finikiotis", 
+                "@sogrady", 
+                "@ricardoprochnow", 
+                "@dabeard"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Honored to be among The Most Influential Women in Tech 2010 for Fast Company! http://bit.ly/9Kj95G  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "(in Portuguese) Super feliz! Minha nova empresa de visualiza\u00e7\u00e3o com @wattenberg: http://flowingmedia.com/  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: More details on Flowing Media here: http://hint.fm/blog  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Very excited! My new venture with @wattenberg is a whole new chapter: http://flowingmedia.com/  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hairy small multiples: first ladies http://nyti.ms/KO1S7 and their husbands http://nyti.ms/cAwTkr  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Luscious: a celebration of color http://hint.fm/blog/ (my new piece with @wattenberg)  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "(in Portuguese) Visualiza\u00e7\u00e3o dos resultados do Google Suggest brasileiro: http://hint.fm/seer/brasil.html  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "check out Web Seer http://hint.fm/seer our visualization of google suggest--for the Brazilian version, see http://hint.fm/seer/brasil.html  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New blog with @wattenberg at http://hint.fm/blog -- part of our collaborative portfolio at http://hint.fm/  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sadatshami I know--pretty exciting! :)  ", 
+            "Users": [
+                "@sadatshami"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@joandimicco Thanks, Joanie! It's pretty exciting to be finally tweeting!  ", 
+            "Users": [
+                "@joandimicco"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Happy Holidays! My New York Times Op-Ed with @wattenberg visualizing Santa and the Easter Bunny: http://bit.ly/7wgy3W  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }
+    ], 
+    "name": "viegasf.txt"
+}{
+    "Tweets": [
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: Smart, beautiful visualization book by @IsabelMeirelles at http://t.co/WnCQZXKiZn And I'm not judging the book by its cover!  ", 
+            "Users": [
+                "@wattenberg", 
+                "@IsabelMeirelles"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our group and Google Ideas launched http://t.co/x4lqgj1nBy, a visualization of computer attacks around the globe in real time  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#shutdown"
+            ], 
+            "Tweet": "Don't let the #shutdown get you down. 2 free ebooks to inform, change your world: Open Gov + Hack Healthcare http://t.co/uE3Ci7v0SU  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Thanks, @hpfister! Try \"define mortgage\"--what a telling etymology...  ", 
+            "Users": [
+                "@hpfister"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our group and Search launched the new Google Dictionary: type \"define mellifluous\" and expand for visualizations!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Visual explanations of Simpson's Paradox: http://t.co/sTF2QtciIo  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Minha entrevista \u00e0 Folha sobre visualiza\u00e7\u00e3o de dados: http://t.co/rEc5o9Q0rK  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@scheidegger @wattenberg Both, obvs :)  ", 
+            "Users": [
+                "@scheidegger", 
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our group and YouTube just launched TrendsMap http://t.co/XUETDYhBWx which shows trending videos in the US  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sahithya06 Nice meeting you too!  ", 
+            "Users": [
+                "@sahithya06"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @brainpicker: This is great: NASA or MoMA? http://t.co/O0cWCB7KEt (\u21ac@jake_barton)  ", 
+            "Users": [
+                "@brainpicker", 
+                "@jake_barton"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: Like geography games? Hate the Mercator projection? Then you'll enjoy this as much as I did: http://t.co/jec2z0Mw  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#mapvis"
+            ], 
+            "Tweet": "RT @judithd: Beautiful 1915 map depicts every public library in Massachusetts http://t.co/eULxDuz9 #mapvis via @blanket  ", 
+            "Users": [
+                "@judithd", 
+                "@blanket"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Congrats @aagie and @michelle_borkin for discovering \"bones\" in the universe!  ", 
+            "Users": [
+                "@aagie", 
+                "@michelle_borkin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Our team at Google (Cambridge, US) is looking for someone who loves visualization and coding! http://t.co/EH2d2q6J  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Wind Map prints! A collaboration with @webchickbot / Point.B http://t.co/CFIqZrWV  ", 
+            "Users": [
+                "@webchickbot"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Hernan_Pisano Indeed. It's a joint project with @wattenberg  ", 
+            "Users": [
+                "@Hernan_Pisano", 
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@moebio Does clicking not work?  ", 
+            "Users": [
+                "@moebio"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@moritz_stefaner You will! Let's chat at Eyeo :)  ", 
+            "Users": [
+                "@moritz_stefaner"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New: the power of wind! Live interactive wind visualization http://t.co/8DscMmxg  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#kony2012"
+            ], 
+            "Tweet": "Google+ ripple of #kony2012 video: http://t.co/kHpTYOpR  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: New! See the spread of any URL (not just a post) on Google+ ripples. For example http://t.co/AgcCMNk9  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lisard Glad you like it, Lis! :)  ", 
+            "Users": [
+                "@lisard"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@pulvereyes That's right--it's the first project from the Big Picture group to become public! :)  ", 
+            "Users": [
+                "@pulvereyes"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New visualization! Google+ Ripples, showing the diffusion of posts http://t.co/yZT0otNB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Times are a-changing: Brazil is booming as Rio steals the business spotlight from S\u00e3o Paulo http://t.co/QoxKky7  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I'm with Warren Buffett: http://t.co/bu5nJsb  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New artwork with @wattenberg: The Art Of Reproduction. http://j.mp/lZ5dWH  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Nice, nice, pendulum. All science museums should have one of these. Video: http://bit.ly/kyKfxY (via @memotv)  ", 
+            "Users": [
+                "@golan", 
+                "@memotv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Nessa P\u00e1scoa, ajude a acabar com a escravid\u00e3o infantil na ind\u00fastria do chocolate http://bit.ly/e6uCfB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@infosthetics it becomes more likely that they will when folks like you tweet about it. ;)  ", 
+            "Users": [
+                "@infosthetics"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "On cnn.com: my op-ed with Martin on the future of visualization http://bit.ly/gqbUWL  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Why Women Rule The Internet: http://tcrn.ch/fgTAYx  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Honored to be among the most influential Brazilians listed in Revista \u00c9poca http://bit.ly/gCsclc  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Honrada de estar entre os brasileiros mais influentes da Revista \u00c9poca http://bit.ly/gCsclc  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Sabia que o Brasil \u00e9 um dos pa\u00edses com maior n\u00famero de produtos feitos por trabalho escravo no planeta? http://bit.ly/bZaavw (via @maiona)  ", 
+            "Users": [
+                "@maiona"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Infographic: Products of Slavery http://bit.ly/bZaavw Awful: Brazil is one of the top countries for child and forced labour (via @maiona)  ", 
+            "Users": [
+                "@maiona"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Many Eyes is all grown up: http://many-eyes.com Congratulations to IBM Research and IBM Cognos--it looks great!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Adieu Flowing Media. Hello Google! http://hint.fm/blog/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "TimeFlow, our open-source timeline takes its first steps: http://wiki.github.com/FlowingMedia/TimeFlow/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Parab\u00e9ns ao pessoal do Estad\u00e3o pela visualiza\u00e7\u00e3o muito bem feita: http://bit.ly/aHF2Dk  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "NY Times, watch out: Brazilian newspaper O Estad\u00e3o nipping at your heels with visualization http://bit.ly/aHF2Dk  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"More oil... More oil!\" Texaco ad from 1944 Life Magazine. Gotta love the happy fish! http://bit.ly/csytoQ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#PdF2010"
+            ], 
+            "Tweet": "looking forward to presenting some new material tomorrow at #PdF2010...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Holy smokes, hay really cleans up an oil spill. http://bit.ly/d1L5wl (via @doriantaylor). Someone please listen to these guys.  ", 
+            "Users": [
+                "@golan", 
+                "@doriantaylor"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Facebook and privacy: a visualization by @mattmckeon http://mattmckeon.com/facebook-privacy/  ", 
+            "Users": [
+                "@mattmckeon"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sadatshami @krees @royrod @finikiotis @sogrady @ricardoprochnow @dabeard Thanks!! \u263a  ", 
+            "Users": [
+                "@sadatshami", 
+                "@krees", 
+                "@royrod", 
+                "@finikiotis", 
+                "@sogrady", 
+                "@ricardoprochnow", 
+                "@dabeard"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Honored to be among The Most Influential Women in Tech 2010 for Fast Company! http://bit.ly/9Kj95G  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "(in Portuguese) Super feliz! Minha nova empresa de visualiza\u00e7\u00e3o com @wattenberg: http://flowingmedia.com/  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: More details on Flowing Media here: http://hint.fm/blog  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Very excited! My new venture with @wattenberg is a whole new chapter: http://flowingmedia.com/  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hairy small multiples: first ladies http://nyti.ms/KO1S7 and their husbands http://nyti.ms/cAwTkr  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Luscious: a celebration of color http://hint.fm/blog/ (my new piece with @wattenberg)  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "(in Portuguese) Visualiza\u00e7\u00e3o dos resultados do Google Suggest brasileiro: http://hint.fm/seer/brasil.html  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "check out Web Seer http://hint.fm/seer our visualization of google suggest--for the Brazilian version, see http://hint.fm/seer/brasil.html  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New blog with @wattenberg at http://hint.fm/blog -- part of our collaborative portfolio at http://hint.fm/  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sadatshami I know--pretty exciting! :)  ", 
+            "Users": [
+                "@sadatshami"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@joandimicco Thanks, Joanie! It's pretty exciting to be finally tweeting!  ", 
+            "Users": [
+                "@joandimicco"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Happy Holidays! My New York Times Op-Ed with @wattenberg visualizing Santa and the Easter Bunny: http://bit.ly/7wgy3W  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }
+    ], 
+    "name": "viegasf.txt"
+}

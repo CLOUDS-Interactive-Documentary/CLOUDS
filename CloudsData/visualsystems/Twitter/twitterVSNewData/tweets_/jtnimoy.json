@@ -1,0 +1,1857 @@
+{
+    "Tweets": [
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Found my band name (at @Lowes Home Improvement) [pic]: http://t.co/tFZoKGIj9D  ", 
+            "Users": [
+                "@Lowes"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#NowPlaying"
+            ], 
+            "Tweet": "Gabe and Josh kitchen tabling it in Oakland. \u266b Strobe - Full Length Version \u2013 Deadmau5 http://t.co/cgy2yCyiaC #NowPlaying  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @quilime: \"Put a shader on it\"  ", 
+            "Users": [
+                "@quilime"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "The Oscars? More like The Occams.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Part of being a jedi is knowing when to wear a hoodie.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "flattering article about my work on 7Electrons http://t.co/ohZ7rB3TDS  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "today's graphic design by rebecca shostak is looking ambiguously sacajawea  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "You put the DUI in Arduino.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "My artwork on sale Aug 21st from 6 to 9 at Adobe, 601 Townsend St, San Francisco, CA http://t.co/qRAiOzPqpT  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "we don't need no ojijoji http://t.co/0fEsvNWmvh  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I just started following charles aweida on Vimeo: http://t.co/xGAyLYqkyD  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#Processing"
+            ], 
+            "Tweet": "JMyron, #Processing library, moved from SourceForge to GitHub. Plans to update for Processing 2.0. Collabs welcome. https://t.co/NrkDUa9MPH  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "We are one organism more than we are competing individuals. Any surprising redundancy you discover aught to be a celebration of agreement.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "/* GLSL fragment shader mosh exploit */ vec4 mosh(int x){if(x==0)return vec4(0.,0.,0.,0.);} void main(void){gl_FragColor = mosh(1);}  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "i unsubscribed from fab today. http://t.co/jRZuOYSUfi  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#dc21"
+            ], 
+            "Tweet": "showing work at DefCon hacking conference on 2013 august 1 #dc21 http://t.co/Q2wMwsImaI  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "OH: i don't wanna talk about OpenFrameworks.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#zynga", 
+                "#sanfrancisco"
+            ], 
+            "Tweet": "um, so i'm at #zynga in #sanfrancisco, and a lady just walked out with a pug, and it shit on the sidewalk.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#sanfrancisco"
+            ], 
+            "Tweet": "Opening night of Art by Code in #sanfrancisco . The art is for sale, beginning this evening at 6pm PST. http://t.co/VHtSQe8ODJ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#sanfrancisco"
+            ], 
+            "Tweet": "I'm showing work in #sanfrancisco on June 26 http://t.co/QFtty11Gcg  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "If you think my disagreement is implying that I think you're wrong, then I both disagree, and I believe you are wrong. *kiss on cheek*  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @glitchr_: _/\u2594\ufe40\\_\ufe3f\u2571\ufe40\u2572/\u2572\ufe3f_/\ufe3a\u2572\u2581\ufe39_/\ufe40\\_\ufe3f\u2571\u2594\ufe3a\\/\\\ufe39\u2581\u2571\ufe40\u2594\u2572\ufe3f_/\ufe3a\u2594\u2572\u2581\ufe39_/\ufe40\u2594\\\u2044\ufe40\\\u2571\ufe40\u2594\ufe3a\\\ufe39\u2581\ufe3f\u2571\\\u2571\ufe40\u2594\u2572\ufe3f_/\ufe3a\u2594\u2572\u2581\ufe3f/\\\ufe3f\u2571\\\ufe3f\ufe39_/\u2594\ufe40\\_\ufe3f\u2571\u2594\ufe3a\\\ufe39\u2571\ufe40\u2594\u2572\ufe3f_/\ufe3a\u2594\\\u2571\ufe40\u2572\u2581\ufe39_/\ufe40\\_\ufe3f\u2571\u2594\ufe3a\\\ufe39\u2581\ufe3f\u2044\u2572\ufe3f\u2026  ", 
+            "Users": [
+                "@glitchr_"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#SoundCloud"
+            ], 
+            "Tweet": "Preview for upcoming album release Pinyot http://t.co/Q02b36JLnX on #SoundCloud  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#interactive", 
+                "#Codame", 
+                "#SanJose"
+            ], 
+            "Tweet": "Exhibiting musical #interactive art at #Codame SubZero in #SanJose today. http://t.co/wAy0bk30O9  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "When a line hits a line like a big Lichtenstein, that's a Moir\u00e9.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "on a machine-learning forum, i was like \"i'm an artist\" and they were all \"rly? it's cool that you understand all this math\"  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#CCSF"
+            ], 
+            "Tweet": "Presenting at Coders Club of City College of San Francisco #CCSF tomorrow at 6pm http://t.co/6euIIsAdCa  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@LunarFlood never heard of him, although i still may know who he is. got any pics of his face?  ", 
+            "Users": [
+                "@LunarFlood"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Introducing a new Adobe After Effects plugin for fine connoisseurs of 1-bit dither http://t.co/ZALFVdwPHS  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @neb: OH: \"I like to sandbox my idealisms.\"  ", 
+            "Users": [
+                "@neb"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#codeart"
+            ], 
+            "Tweet": "Jake Sargeant's behind-the-scenes LG footage at DD. Some of my #codeart that never saw the light of day...until https://t.co/wccG1DolHj  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#futr"
+            ], 
+            "Tweet": "RT @elliotwoods: @jtnimoy 2 stories tall in the centre of manchester at last week's #futr opening /cc: @obviousjim http://t.co/F2PVhCqWo5  ", 
+            "Users": [
+                "@elliotwoods", 
+                "@jtnimoy", 
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#arthackday"
+            ], 
+            "Tweet": "my piece on cover of fb invite for #arthackday , stockholm https://t.co/68BSlVw2az  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"second cousin, once removed\". laminated and in my wallet. http://t.co/4KIzZLhljQ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "/*p5 2.0b7*/int t;float x=5,y=9,dx=1.1,dy=1.7;void draw(){stroke(t%255);point(x,y);x+=dx;y+=dy;if(x>99||x<1)dx=-dx;if(y>99||y<1)dy=-dy;t++;}  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "/*processing 2.0b7*/int t;void draw(){for(int y=0;y<100;y++)for(int x=0;x<100;x++){stroke((x*y*(t%1280)*0.01)%64*4);point(x,y);}t++;}  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "/*processing 1.5.1*/ int t;void draw(){stroke(t%255,260-t%200,t%512-128);line(50,50,cos(t*0.01)*100+50,sin(t*0.01)*100+50); t++;}  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Image Savant? More like Image Fondant. And by that, I mean closed-source icing on Draves' and Sierpi\u0144ski's open-source cake. Oh snap!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#java", 
+                "#c", 
+                "#OpenFrameworks", 
+                "#GAFFTA"
+            ], 
+            "Tweet": "Entertaining #java to #c++ #OpenFrameworks teaching videos for #GAFFTA. Like this? Sign up for the GAFFTA class http://t.co/GV83Kpd3  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "derailed!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@wassupjodi now. download a copy of Bandwidth from github and see if you can alter the code and recompile it.  ", 
+            "Users": [
+                "@wassupjodi"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@alignedleft @RezaAli @GAFFTA Scott, the pleasure was all mine++  ", 
+            "Users": [
+                "@alignedleft", 
+                "@RezaAli", 
+                "@GAFFTA"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Natzke you've lost weight, you handsome devil you  ", 
+            "Users": [
+                "@Natzke"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@gmunk @davidmoron wait wut?  ", 
+            "Users": [
+                "@gmunk", 
+                "@davidmoron"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#arthackday"
+            ], 
+            "Tweet": "@DonovanJames Alchemy Hack will get posted as soon as I can make a video. Meanwhile #arthackday has a page http://t.co/CCFTiKMF  ", 
+            "Users": [
+                "@DonovanJames"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@RageKit very funny - i follow a lot of people tho. i'm a curious guy.  ", 
+            "Users": [
+                "@RageKit"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#GAFFTA", 
+                "#sanfrancisco"
+            ], 
+            "Tweet": "new piece \"Alchemy Hack\" premiering at #GAFFTA , #sanfrancisco right now  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Support clouds documentary on kickstarter. it's about my people. http://t.co/bpDlyQnt  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Foster my community by pledging to this kickstarter for exquisite new experimental media bi-annual print publication http://t.co/A2bUqaQw  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#interactiveArt", 
+                "#interactiveDesign"
+            ], 
+            "Tweet": "Get new issue of IdN v19n5 in mid-nov, featuring a few of my works. http://t.co/bHPTY4PK @idnworld #interactiveArt #interactiveDesign  ", 
+            "Users": [
+                "@idnworld"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Dear art directors in advertising, http://t.co/H8fseetW ... my sentiments exactly. Thanks, Golan Levin for keeping it real.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#ff", 
+                "#design", 
+                "#thanks"
+            ], 
+            "Tweet": "@malouie wow, my name is not worthy of being beside these amazing geniuses #ff #design #thanks  ", 
+            "Users": [
+                "@malouie"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@ekeneijeoma something that includes volumetric perlin noise, marching cubes, multiple-axis splines, and pure sexual energy  ", 
+            "Users": [
+                "@ekeneijeoma"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#CODAME", 
+                "#ART", 
+                "#TECH", 
+                "#FESTIVAL", 
+                "#sanfrancisco"
+            ], 
+            "Tweet": "A piece of mine will be showing at #CODAME #ART+#TECH #FESTIVAL in #sanfrancisco    ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#processing", 
+                "#openframeworks", 
+                "#opengl", 
+                "#SanFrancisco"
+            ], 
+            "Tweet": "Going to teach C++ OpenFrameworks in San Francisco. Sign up now. #processing #openframeworks #opengl #SanFrancisco http://t.co/fh4FdI7j  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#SoundCloud"
+            ], 
+            "Tweet": "music for a short film by Emmie Lee, 2001 Music for short film: Ruins Among Beauty http://t.co/yQ4lbAez on #SoundCloud  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#SoundCloud"
+            ], 
+            "Tweet": "oops - forgot album from 2001 Joy of Loop http://t.co/aMvuqR9y on #SoundCloud  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@deepspeedmedia i remember walking in the east village of NYC composing that one, looking up at the towers in the sky.  ", 
+            "Users": [
+                "@deepspeedmedia"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#SoundCloud"
+            ], 
+            "Tweet": "Album from 2010 jijiji http://t.co/bN7aYuB5 on #SoundCloud  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#SoundCloud"
+            ], 
+            "Tweet": "Album from 2007 ZL128JAL2 http://t.co/O1PMwrnQ on #SoundCloud  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#SoundCloud"
+            ], 
+            "Tweet": "Album from 2004 After the Fact http://t.co/jUN2qIyH on #SoundCloud  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#soundcloud", 
+                "#music", 
+                "#thenimoys"
+            ], 
+            "Tweet": "sorry, had to change the soundcloud URL to http://t.co/zXrhop8e #soundcloud #music #thenimoys  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#SoundCloud"
+            ], 
+            "Tweet": "Album from 2003 Eventide http://t.co/Ez88knAG on #SoundCloud  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"webgl isolated inside box. cant traverse dom\" said adobe css shaders evangelist to students, explaining why adobe forked chrome browser.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "speaking at Reasons to be Creative in NYC this weekend. http://t.co/7gceB3So  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Stolen Moments from FITC Toronto on Open Source. http://t.co/AEqsJsDp  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Check out IdN Extra 07. Designing Data. http://t.co/KJvTWRuu  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I just became an uncle.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Scale it like a raster.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I will be speaking at FITC Toronto April 23-25 http://t.co/OjYyqxih  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I will be speaking at Resonate in Belgrade, Serbia 16-17 March, 2012 http://t.co/gbfIiGqy  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Software art \"Pinch\" now open source under creative commons and on github. Enjoy a working jttoolkit. https://t.co/ydM2bIUu  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "4 ports of BallDroppings open sourced on Github. Please help me compile for Lion. https://t.co/S4pNkzbx  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Bandwidth added to Rhizome ArtBase. Thanks to the voters. http://t.co/b1rerRbl  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I'll be speaking at FITC Amsterdam 2012 Design, Technology, Cool Shit. Feb 27-28 http://t.co/B7mUWWwG  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "BANDWIDTH - new open source sound toy available for downloading. 6 relaxing modes of musical synaesthesia. http://t.co/jQM5ylAv  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "BANDWIDTH premieres in Art of Noise at The Public,in West Bromwich,UK 21 Oct 2011-15 Jan 2012 http://t.co/qs4UZ0j0  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "oops, google bought my company http://t.co/CnlyBMP  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Soundrop (Balldroppings for iPhone) showing in New York MoMA \"Talk to Me\" http://t.co/MeZ4jaX  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#15"
+            ], 
+            "Tweet": "I'll be featured in Hacker Monthly, Issue #15 (August 1). http://t.co/cdgPKBi  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "quick prototype: a web proxy that transparently converts real audio to mp3 http://jtnimoy.net/?q=183  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "on June 10 in Los Angeles, I'll be presenting work at Media Temple. @LosAngeles_CM http://creativemornings.com  ", 
+            "Users": [
+                "@LosAngeles_CM"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Imagined Overtures generative sound visualization silk screened album for Los Angeles Electric 8. Ooo shiny! http://jtnimoy.net?q=182  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "another recent job btw. generative neuron art rendered with a real renderer http://jtnimoy.net/?q=181  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I finally published those juicy tron details i promised you. http://jtnimoy.net?q=178  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I will give a talk at LA Hacker News this Saturday, 26 Feb http://www.meetup.com/Los-Angeles-Hacker-News  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "something I did with Charlex last November. http://jtnimoy.net/?q=179  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "new electronica album \"jijiji\" from The Nimoys, available from iTunes, Napster and even as real CDs. Enjoy. http://www.cdbaby.com/cd/nimoys  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Here is a new web meme I just finished. I hope it makes you say hmm. http://howmanypaid.com  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "The magician of the future will use mathematical formulas. -- Aleister Crowley, 1911  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Kink Different.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Hey Code Artists, Cinder is kind of a huge deal. http://libcinder.org  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "IBM Data Baby - a new tv commercial has been posted to my portfolio. http://jtnimoy.net?q=175  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "me so codey. me program long time  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Buick 'Behind the Beauty' - TV commercial I worked on at Motion Theory during the winter holiday. http://jtnimoy.net?q=174  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "BallDroppings now available for Android. http://www.androidzoom.com/android_applications/balldroppings  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "shouts to my ITPer Rob Seward for taking robotic typography up a few notches http://rhizome.org/editorial/3403  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "http://snakclub.com A Treat in Itself\u2122 (Touting against competing natural food products, whose treats are found elsewhere)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "tristimulus = fancy word saying that something is in color  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Okay, this is from 3 years ago and i just forget to post it. Generative neuron work for a Gatorade commercial. http://jtnimoy.net?q=173  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Art exhibit with a few of my pieces gets extended til late January 2010 at The Public in West Bromwich, UK http://thepublic.com  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Today, my brother Marc is going to marry his long time girlfriend, Becky. She becomes Becky Nimoy. http://beckyandmarcswedding.com  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Interview on the Making of \"Boom Boom Pow\" video for Black Eyed Peas http://fwdlabs.com/blog  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 10, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "At The Public in West Bromwich, UK - a few of my pieces on touchscreen + projections, including premiere of WithDRAWal http://thepublic.com  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@joedolson yes precisely.  ", 
+            "Users": [
+                "@joedolson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "holy cow, i'm getting all these twitter followers all of a sudden. was it something i said?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [
+                "#A79F94"
+            ], 
+            "Tweet": "The color of art is #A79F94. http://jtnimoy.net?q=172  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Dear Beit T'Shuvah residents, please read: http://xkcd.com/627  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Marley Carroll's new album Melanaster uses Pinch software to generate album graphics. http://marleycarroll.com/blog/downloads  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Caveat Emptor: The cost of software maintenance increases with the square of the programmer's creativity. \u2014Robert D. Bliss, 1992  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "wow, looks like the world prefers balldroppings in the browser. thanks google for helping me see that.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Pirouette, my first wxWidgets app, is now available for your enjoyment. Send me your screenshots! http://jtnimoy.net?q=171  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\\\"withDRAWal\\\" a new software piece about making scribbles. Please try it out and tell me what you think. http://jtnimoy.net?q=170  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "go craig swann! http://twitter.com/twitclipart  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Bye Quicktime, Hello Vimeo. No more plugin headaches on my site, plus 2 projects I missed from the ITP days. Enjoy! http://vimeo.com/6054964  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I joined a thread: What cell phone do you use? http://a.tinythread.com/72hW1c0bfH  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "/me cancels his WoW account, a satisfied not-addicted customer  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "i love my ec2 instance  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"LG Advanced Learning\" is posted with screenshots and sample app. Thanks, designer Jake Seargant, for rocking. http://jtnimoy.net?q=156  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@vellum i'm glad you like it  ", 
+            "Users": [
+                "@vellum"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "GRLBrush able to manually choose colors with popup dialogs. Thanks Paolo Berto for suggesting this. link --> http://www.jtnimoy.net?q=140  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [
+                "#tagcloud"
+            ], 
+            "Tweet": "Website has a tag system now. Easier to find stuff you're interested in. Tagging all the work took me a week. http://jtnimoy.net#tagcloud  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "jtnimoy.net blog now propegates to twitter which then propegates to facebook status. Simplicity is hard work.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Lumivalkoinen you get the Twitters-most-frequently award! <3  ", 
+            "Users": [
+                "@Lumivalkoinen"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "27Balloons posted with source code http://www.jtnimoy.net?q=155  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "some stuff i did for Pentagram, NY is back online now. http://www.jtnimoy.net/pentagram  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Scribble Variations ported to C++ Open Frameworks and now works fullscreen on PCs and Macs http://jtnimoy.net?q=50  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "aim account got password hacked .. sorry if it bothered anyone recently. My password has been changed.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "i like asymmetry, i think it's kinky  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Going to sequoia til wednesday  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "lonely ... i dreamt last night that i fell in love ... then i woke up  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "stop DDoS'ing my website, who ever you are.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "www.jtnimoy.net gets a denial of service attack and DreamHost disables it!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "dreams of nitrous oxide, threating my recovery. mornings of smiles knowing it didn't really happen.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "it's my birthday, i am 30  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": ":)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "surgical grade  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Cancel and Gretel  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "The Black Eyed Peas video is released .. big congrats to everyone who was on this project. http://tinyurl.com/ccegj4  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "not hungry  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "BallDroppings on front page of www.processing.org  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 3, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "BallDroppings makes a comeback on http://www.chromeexperiments.com and look, someone ported to silverlight http://chiz.wik.is no sound tho:(  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Divisidero  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 1, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "staying dry  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 1, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "flying like the eagle  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 1, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "wiped the main hardwood  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 1, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "nag champa  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 1, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "bread that comes pre-toasted in the package .. i bought some its way addictive .. http://tinyurl.com/yugz4u [http://tinyurl.com/yugz4u]  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 12, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "loves phoebe and misses her much  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 12, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "sushi lunch  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 12, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "jammin w gabrielle  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 12, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Tiny kiss  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 12, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I should tell u of freckles spattered inside my left arm and burn marks inside my fingers last month.. I think someone was crying for he ...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 12, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Comb a wave in his front and pop his collar  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 11, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "simmiting  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "why resist .. i launch second life all the time .. what else is there to do in life *winks and smiles* be good to yourself dear  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": ":P terrified as in terrific.. Breakfast time for me **  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Have you been doing any modelling lately plumi  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 11, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "kisses  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 11, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "winks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "kisses  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "success  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 11, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "crying  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 10, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "sleeps soundly  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 10, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "jiji  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 10, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "relaxing in robe  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 10, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "pear orange  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 10, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "jiggling a bit  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 10, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "chillin in place  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "craigslist successes  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "pad hunting  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hi there  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2007
+            }, 
+            "Hashtag": [], 
+            "Tweet": "sitting in philz on 24th and folsom in SF enjoying laptop coffee carrot juice and atmosphere .. hope you are well  ", 
+            "Users": []
+        }
+    ], 
+    "name": "jtnimoy.txt"
+}

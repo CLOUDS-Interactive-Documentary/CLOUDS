@@ -69,9 +69,6 @@ void CloudsVisualSystemBallDroppings::guiRenderEvent(ofxUIEventArgs &e)
 // geometry should be loaded here
 void CloudsVisualSystemBallDroppings::selfSetup()
 {
-    //ofEnableSmoothing();
-	ofToggleFullscreen();
-	
 	//defaults
 	friction = 0.99997f;
 	frequencyRange = 50000;
@@ -168,7 +165,7 @@ void CloudsVisualSystemBallDroppings::selfDrawBackground()
 	//draw the mouse line in-progress
 	if(clickCount%2==1 && mousestate_draggingvert==0){
         ofSetColor(linesColor*0.7f*255);
-		ofLine(lastMouseDown.x,lastMouseDown.y,ofGetMouseX(),ofGetMouseY());
+		ofLine(lastMouseDown.x,lastMouseDown.y,GetCloudsInputX(),GetCloudsInputY());
 	}
     
 	//draw the regular lines
@@ -269,7 +266,7 @@ void CloudsVisualSystemBallDroppings::selfMousePressed(ofMouseEventArgs& data)
 			//draw with mouse
 			if(oldMouse.x!=-1 && oldMouse.y!=-1){ //but only if the old mouse value is useful
 				//load a new line
-				EditLine *el = new EditLine(oldMouse.x,oldMouse.y,ofGetMouseX(), ofGetMouseY());
+				EditLine *el = new EditLine(oldMouse.x,oldMouse.y,data.x, data.y);
                 
 				//construct and register an undoable
 				LinkedList *v=new LinkedList();
@@ -281,8 +278,8 @@ void CloudsVisualSystemBallDroppings::selfMousePressed(ofMouseEventArgs& data)
 		}
 	}
     
-	oldMouse.copyFrom(ofGetMouseX(), ofGetMouseY(),0);
-	lastMouseDown.copyFrom(ofGetMouseX(), ofGetMouseY(),0);
+	oldMouse.copyFrom(data.x, data.y,0);
+	lastMouseDown.copyFrom(data.x, data.y,0);
 	
 	
 }

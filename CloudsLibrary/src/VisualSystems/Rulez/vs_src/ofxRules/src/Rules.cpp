@@ -38,13 +38,14 @@
 #include "TubeAction.h"
 #include "IcosphereAction.h"
 #include "PlaneAction.h"
+#include "ConeAction.h"
 
 namespace itg
 {
     const string Rules::DEFAULT_START_RULE = "start";
     
     Rules::Rules() :
-        maxDepth(numeric_limits<unsigned>::max())
+        maxDepth(numeric_limits<unsigned>::max()), numSteps(0), currentDepth(0)
     {
         registerAction<LineAction>("line");
         registerAction<PointAction>("point");
@@ -54,6 +55,7 @@ namespace itg
         registerAction<IcosphereAction>("ico");
         registerAction<IcosphereAction>("icosphere");
         registerAction<PlaneAction>("plane");
+        registerAction<ConeAction>("cone");
         
         mesh.setUsage(GL_DYNAMIC_DRAW);
         mesh.setMode(OF_PRIMITIVE_TRIANGLES);
@@ -72,6 +74,7 @@ namespace itg
     
     unsigned Rules::step(ofMesh& mesh)
     {
+        numSteps++;
         list<Branch::Ptr> newBranches;
         unsigned activeRuleSets = 0;
         
@@ -84,11 +87,10 @@ namespace itg
                 auto ruleSet = ruleSets.find((*it)->getNextRuleName());
                 if (ruleSet != ruleSets.end())
                 {
-                    //RuleSet::Ptr ruleSet = ruleSets[(*it)->getNextRuleName()];
-                    
                     vector<Branch::Ptr> children = ruleSet->second->randomRule()->step(*it, mesh);
                     newBranches.insert(newBranches.end(), children.begin(), children.end());
                     activeRuleSets++;
+                    currentDepth = max(currentDepth, (*it)->getDepth());
                 }
                 else ofLogError() << "No ruleSet with name " << (*it)->getNextRuleName();
             }
@@ -136,6 +138,9 @@ namespace itg
     {
         ruleSets.clear();
         
+        ofLogNotice() << "=================================================";
+        ofLogNotice() << "Parsing " << fileName;
+
         ofxXmlSettings xml;
         xml.loadFile(fileName);
         
@@ -173,7 +178,7 @@ namespace itg
         {
             string name = xml.getAttribute("ruleSet", "name", "", i);
             xml.pushTag("ruleSet", i);
-            
+            ofLogNotice() << "Ruleset: " << name << ", num rules: " << xml.getNumTags("rule");
             for (unsigned j = 0; j < xml.getNumTags("rule"); ++j)
             {
                 Rule::Ptr rule = addRule(name, xml.getAttribute("rule", "weight", 0.f, j));
@@ -234,6 +239,8 @@ namespace itg
     {
         mesh.clear();
         branches.clear();
+        numSteps = 0;
+        currentDepth = 0;
     }
     
     Rule::Ptr Rules::addRule(const string& ruleName, float weight)

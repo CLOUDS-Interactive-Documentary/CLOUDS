@@ -3,7 +3,11 @@
 
 void main(){
     vec4 c = gl_Color;
-    c.w = pow(c.w, 8);
-	gl_FragColor = c;
+    c.a = pow(c.a, 6);
+    if (c.a < 0.05)
+    {
+        discard;
+    }
+	gl_FragColor += c;
     
 }

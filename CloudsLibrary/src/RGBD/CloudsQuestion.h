@@ -41,6 +41,14 @@ class CloudsQuestion {
 	float expandPercent;
 	float selectPercent;
 	
+	//HACK!!!!
+	vector<string> testFiles;
+	vector<ofImage> testImages;
+	int lastQuestionSwitchedFrame;
+	int currentTestFileIndex;
+	float testImageSize;
+	////UNHACK
+	
 	//hack for now to make oculus q bigger
 	float enlarge;
 	

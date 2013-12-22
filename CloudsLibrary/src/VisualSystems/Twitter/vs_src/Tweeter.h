@@ -21,6 +21,7 @@ struct Date{
 struct Tweet{
     string tweet;
     Date tweetDate;
+    string dateString;
     vector<string> hashtags;
     vector<string> mentionedUsers;
 };
@@ -31,9 +32,22 @@ public:
     Tweeter(string _name, int _id);
     string name;
     int ID;
-    
+    ofVec3f position;
+    int nodeVertexIndex;
+    int edgeVertexIndex;
+
+    bool hasTweetOnDate(string tweetDate);
+    vector<Tweet>& getTweetsByDate(string t);
+    vector<Tweet> sortTweetsByDate(Date d);
+    void indexTweetsByDate(vector<Date> dates);
+    string getDateAsString(Date d);
+    string tweetDate;
+    void addTweetsToDate(Tweet t);
+
     vector<Tweet> tweets;
     vector<string> userLinks;
+    vector<int> linksById;
+    map<string, vector<Tweet> >tweetDateMap;
 
 };
 

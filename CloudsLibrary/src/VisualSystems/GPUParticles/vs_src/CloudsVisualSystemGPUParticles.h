@@ -146,6 +146,7 @@ class CloudsVisualSystemGPUParticles : public CloudsVisualSystem {
     int     numParticles;
     int     textureRes;
     
+	ofVboMesh mesh;
     ofColor newColor;
     float hue1;
     float saturation1;

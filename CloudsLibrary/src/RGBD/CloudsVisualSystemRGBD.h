@@ -15,6 +15,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 
 	string getSystemName();
     
+	void selfSetDefaults();
     void selfSetup();
     void selfSetupGuis();
 	void selfPresetLoaded( string presetName );
@@ -31,6 +32,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     
 	void speakerChanged();
 	
+	void addFakeQuestion(vector<string> testPngFilePaths);
 	void addQuestion(CloudsClip& q,string topic, string question);
     void setSelectedQuestion();
 
@@ -92,23 +94,79 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void printTransitionNodes();
 	void setTransitionNodes( RGBDTransitionType transitionType );
 	
+	void playTestVideo();
+	
 	ofVec3f bottomRight;
+
   protected:
 	
 
+	ofxUISuperCanvas *globalMeshGui;
+	bool drawRGBD;
+	float edgeAttenuate;
+	float edgeAttenuateExponent;
+	float skinBrightness;
+	
+	//POINTS
+	ofxUISuperCanvas *pointsGui;
+	ofShader pointShader;
+	ofVboMesh points;
+	bool drawPoints;
+	float pointAlpha;
+	int numRandomPoints;
+	ofRange pointSize;
+	float pointHeadOverlap;
+	float pointFlowPosition;
+	float pointFlowSpeed;
+	bool pointsFlowUp;
+	bool refreshPointcloud;
+	void generatePoints();
+	
+	//LINES
+	ofxUISuperCanvas *linesGui;
+	ofShader lineShader;
+	ofVboMesh lines;
+	bool drawLines;
+	float lineAlpha;
+	float lineThickness;
+	float lineSpacing;
+	float lineDensityVariance;
+	float lineGranularity;
+	float lineFlowPosition;
+	float lineFlowSpeed;
+	float lineHeadOverlap;
+	bool linesFlowUp;
+	bool refreshLines;
+	void generateLines();
+	
+	//MESH
 	ofxUISuperCanvas *meshGui;
+	ofShader meshShader;
+	ofVboMesh mesh;
+	bool drawMesh;
+	float meshAlpha;
+	float xSimplify;
+	float ySimplify;
+	float randomVariance;
+	float meshFaceMinRadius;
+	float meshFaceFalloff;
+	float meshRetractionFalloff;
+	float meshForceGeoRectraction;
+	
+	bool refreshMesh;
+	void generateMesh();
+	
+	void loadShader();
+	
+//TODO:
 	ofxUISuperCanvas *cameraGui;
 	ofxUISuperCanvas *particleGui;
 	ofxUISuperCanvas *questionGui;
-	ofxUISuperCanvas *connectorGui;
 	
 	ofxFTGLSimpleLayout displayFont;
-	
-	ofVboMesh horizontalScanLines;
-	ofVboMesh verticalScanLines;
-	ofVboMesh pointGrid;
-	ofVboMesh randomPoints;
-	
+
+//	ofVboMesh pointGrid;
+//	ofVboMesh randomPoints;
 //	ParticleConnectionGenerator generator;
 	GPUParticles::Controller particulateController;
 	
@@ -122,66 +180,46 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     
     CloudsCaption cloudsCaption;
 
-	ofVec2f scanlineSimplify;
-	
-	bool drawPoints;
-	
-	bool refreshPointcloud;
-	float pointSizeMin;
-	float pointSizeMax;
-	
-	float pointGridAlpha;
-	float randomPointAlpha;
-
-	bool drawScanlines;
-	float pointVerticalSpace;
-	float pointHorizontalSpace;
-	void generatePointGrid();
-	
 	bool drawParticulate;
-	bool drawCloud;
-	bool drawMesh;
-	float meshAlpha;
 	
-	float eyeMultiplier;
-	float mouthMultiplier;
-	float skinMultiplier;
-	
-	float cloudFlow;
-	float currentFlowPosition;
-	
-	float numRandomPoints;
-	void generateRandomPoints();
-	
-	bool refreshTriangulation;
-	ofxDelaunay delaunay;
-	float triangleContract;
-	ofVboMesh triangulation;
-	
-	void generateTriangulation();
+//	float pointGridAlpha;
 
-	ofShader rgbdShader;
+//	bool drawScanlines;
+//	float pointVerticalSpace;
+//	float pointHorizontalSpace;
+//	void generatePointGrid();
+//	bool drawCloud;
+//	bool drawMesh;
+//	float meshAlpha;
 	
-	float lightOffsetY;
-	float lightOffsetZ;
+//	float eyeMultiplier;
+//	float mouthMultiplier;
+//	float skinMultiplier;
+//	void generateRandomPoints();
+	
+//	bool refreshTriangulation;
+//	ofxDelaunay delaunay;
+//	float triangleContract;
+	
+//	ofShader rgbdShader;
+	
+//	float lightOffsetY;
+//	float lightOffsetZ;
 	
 	float attenuatedCameraDrift;
 	
-	bool refreshScanlineMesh;
-	float verticalScanlineAlpha;
-	float verticalScanlineThickness;
-	float horizontalScanlineAlpha;
-	float horizontalScanlineThickness;
-	void generateScanlines();
+//	float horizontalScanlineAlpha;
+//	float horizontalScanlineThickness;
+//	void generateScanlines();
 	
 	//transition
 	void updateTransition();
 	bool transitioning, transitioningIn, transitioningOut;
 	float transitionStartTime, transitionEndTime, transitionStartVal, transitionTargetVal;
 	
-	float percentChanceOfPoint, lastPercentChanceOfPoint;
-	float triangulationXStep, lastTriangulationXStep;
-	float triangulationYStep, lastTriangulationYStep;
+//	float percentChanceOfPoint, lastPercentChanceOfPoint;
+//	float triangulationXStep, lastTriangulationXStep;
+//	float triangulationYStep, lastTriangulationYStep;
 	
 	ofVec3f questionXZ;
 	float questionDriftRange;

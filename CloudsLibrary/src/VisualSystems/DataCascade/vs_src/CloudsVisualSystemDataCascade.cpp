@@ -35,9 +35,9 @@ void CloudsVisualSystemDataCascade::selfSetup(){
 		
 	regenerate = true;
 	
-	if(ofFile::doesFileExist(getVisualSystemDataPath() + "TestVideo/Casey_tangle.mov")){
-		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + "TestVideo/Casey_tangle.mov",
-								   getVisualSystemDataPath() + "TestVideo/Casey_tangle.xml" );
+	if(ofFile::doesFileExist("TestVideo/Binx_field_of_data_vis.mov")){
+		getRGBDVideoPlayer().setup("TestVideo/Binx_field_of_data_vis.mov",
+								   "TestVideo/Binx_field_of_data_vis.xml" );
 		
 		getRGBDVideoPlayer().swapAndPlay();
 		
@@ -127,8 +127,8 @@ void CloudsVisualSystemDataCascade::selfUpdate(){
 	sourceOffset.begin();
 	
 	updateShader.begin();
-	updateShader.setUniformTexture("image", targetOffset.getTextureReference(), 0);
-	updateShader.setUniformTexture("speed", speedTexture.getTextureReference(), 1);
+	updateShader.setUniformTexture("image", targetOffset.getTextureReference(), 1);
+	updateShader.setUniformTexture("speed", speedTexture.getTextureReference(), 2);
 	updateShader.setUniform1f("speedMultiplier", powf(speed, 2.0));
 	
 	offsetMesh.draw();
@@ -161,8 +161,8 @@ void CloudsVisualSystemDataCascade::selfDraw(){
 		getRGBDVideoPlayer().setupProjectionUniforms(drawShader);
 	}
 	
-	drawShader.setUniformTexture("image", targetOffset.getTextureReference(), 1);
-	drawShader.setUniformTexture("shift", shiftTexture.getTextureReference(), 2);
+	drawShader.setUniformTexture("image", targetOffset.getTextureReference(), 2);
+	drawShader.setUniformTexture("shift", shiftTexture.getTextureReference(), 3);
 	drawShader.setUniform1f("height", height);
 	drawShader.setUniform1f("deviation", deviation);
 	drawShader.setUniform2f("vertexOffset", vertexOffset.x, vertexOffset.y);

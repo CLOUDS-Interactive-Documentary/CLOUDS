@@ -20,6 +20,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 	
+        // TODO: use CloudsMixer parameters
         // RTcmix audio stuff
         sr = 44100;
         nbufs = 2; // you can use more for more processing but latency will suffer
@@ -31,10 +32,6 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         rtcmixmain();
         maxmsp_rtsetparams(sr, nchans, framesize, NULL, NULL);
         
-        // initialize OF audio streaming
-        ofSoundStreamSetup(nchans, 0, sr, framesize, nbufs);
-        ofSoundStreamStart();
-        
         // launch initial setup score
         RTcmixParseScoreFile("cmixinit.sco");
         first_vec = 1; // we haven't had audio yet
@@ -45,15 +42,19 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         // load data files
         loadRTcmixFiles();
         
-		targetAmp = .7; // wonder what this is?
+        // precompute music data
+        for(int i = 0;i<pitches.size();i++)
+        {
+            precomputemarkov(pitches[i]);
+        }
+        
+		targetAmp = 1.0; // wonder what this is?
 		
-        MASTERAMP = 1;
         MASTERTEMPO = 120;
         AUTORUN = 0;
         DOCLEAR = true;
-        RTCMIX_PRINT = false;
         
-		ofAddListener(ofEvents().audioRequested, this, &CloudsSound::audioRequested);
+		ofAddListener(GetCloudsAudioEvents()->musicAudioRequested, this, &CloudsSound::audioRequested);
 
 		eventsRegistered = true;
 	}
@@ -78,13 +79,8 @@ void CloudsSound::exit(ofEventArgs & args){
 	}
 }
 
-void CloudsSound::setMasterAmp(float amp){
-	targetAmp = amp;
-}
-
 //--------------------------------------------------------------------
 void CloudsSound::update(){
-	MASTERAMP += (targetAmp - MASTERAMP) * .05;
 }
 
 //--------------------------------------------------------------------
@@ -157,17 +153,25 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
             }
             if(pscore==8) valid_presets.push_back(j);
         }
-
-        int thepreset = valid_presets[ofRandom(valid_presets.size())];
-        
-        mharmony = presets[thepreset].harmony;
-        mrhythm = presets[thepreset].rhythm;
-        //mtempo = presets[thepreset].tempo;
-        mtempo = 120;
-        for(int j = 0;j<presets[thepreset].instruments.size();j++)
+		
+        if(valid_presets.size()==0)
         {
-            startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo);
+            valid_presets.push_back(12);
         }
+        
+		if(valid_presets.size() > 0){
+			int thepreset = valid_presets[ofRandom(valid_presets.size())];
+		
+			mharmony = presets[thepreset].harmony;
+			mrhythm = presets[thepreset].rhythm;
+			//mtempo = presets[thepreset].tempo;
+			mtempo = 120;
+			for(int j = 0;j<presets[thepreset].instruments.size();j++)
+			{
+				startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo);
+			}
+		}
+
    
     }
     
@@ -225,16 +229,6 @@ void CloudsSound::keyPressed(ofKeyEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsSound::keyReleased(ofKeyEventArgs & args){
 
-    if (args.key == OF_KEY_DOWN)
-    {
-        MASTERAMP-=0.1;
-        if(MASTERAMP<0.) MASTERAMP=0.;
-    }
-    if (args.key == OF_KEY_UP)
-    {
-        MASTERAMP+=0.1;
-        if(MASTERAMP>2.) MASTERAMP=2.;
-    }
 
 }
 
@@ -262,7 +256,7 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
     // fill up the audio buffer
     for (int i = 0; i < args.bufferSize * args.nChannels; i++)
     {
-        args.buffer[i] = MASTERAMP*(float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
+        args.buffer[i] = (float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
     }
     
     // fire first audio-generating info upon confirming audio is up and running
@@ -286,10 +280,10 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
     // not using right now
     if (check_bang() == 1) {
         allownote = 1;
-        if(DEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
+        if(LUKEDEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
     }
 
-    if(RTCMIX_PRINT)
+    if(LUKEDEBUG)
     {
         char *pbuf = get_print();
         char *pbufptr = pbuf;

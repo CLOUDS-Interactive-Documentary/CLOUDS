@@ -125,7 +125,7 @@ void CloudsVisualSystemMarchingCubes::selfSetup()
     
 	mc.setSmoothing(false);
     
-	normalShader.load(getVisualSystemDataPath("MarchingCubes") + "shaders/normalShader");
+	normalShader.load(getVisualSystemDataPath() + "shaders/normalShader");
     
 }
 

@@ -1,0 +1,4210 @@
+{
+    "Tweets": [
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#inst_int"
+            ], 
+            "Tweet": "RT @inst_int: Love, love, love these! Thanks Jason! RT @justsomeguy: Sketchnotes from @inst_int http://t.co/sZWjX9x8F9 #inst_int  ", 
+            "Users": [
+                "@inst_int", 
+                "@justsomeguy", 
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @Justin_Lincoln: I just liked \"Eyeo 2013 - Design IO\" by @eyeofestival on Vimeo: http://t.co/OSKLFplQGM  ", 
+            "Users": [
+                "@Justin_Lincoln", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @theowatson: The John Lennon app which we previewed @eyeofestival, is out today! All proceeds go to fighting global hunger. http://t.co/\u2026  ", 
+            "Users": [
+                "@theowatson", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: If you're coming to INST-INT, get the event APP for iPhone / Android. Essential. Free. http://t.co/pByPKoLRIB @blprnt...  ", 
+            "Users": [
+                "@inst_int", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": ".@slamAcademy = a gem. Lessons+short courses in electronic music production/ performance/sound design & more. http://t.co/X2X9r4I04G  ", 
+            "Users": [
+                "@slamAcademy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#clojure", 
+                "#javascript"
+            ], 
+            "Tweet": "RT @creativeapps: We made @resonate_io 2014 ident open source. Check it out here http://t.co/Eu7q8gtdLR / cc @toxi #clojure #javascript  ", 
+            "Users": [
+                "@creativeapps", 
+                "@resonate_io", 
+                "@toxi"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: Supply & demand for INST-INT tix is balanced. Get on waitlist, 87% chance you'll get one. http://t.co/zUS4yT2Ah0 @blprnt...  ", 
+            "Users": [
+                "@inst_int", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: As predicted - starting to see tix free up for the sold out INST-INT. Get on the waitlist. http://t.co/l8wWpKFGOG @blprnt...  ", 
+            "Users": [
+                "@inst_int", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: So stoked to add Michael Szivos to the lineup http://t.co/dmU2Jzmn9k @softlabnyc's LightHouse for @Sonos is choice.  ", 
+            "Users": [
+                "@inst_int", 
+                "@softlabnyc", 
+                "@Sonos"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#inst_int", 
+                "#outrageous"
+            ], 
+            "Tweet": "RT @inst_int: Super bonus: We just confirmed the final #inst_int speaker: Mike Szivos of the amazing http://t.co/Jt3Kad2C0r #outrageous!  ", 
+            "Users": [
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: 3 tickets left for http://t.co/mwF9LpjWPt (Wow+ThanksY'all) @blprnt @pitchinc @creativeapps @openframeworks @mnartistsdotorg  ", 
+            "Users": [
+                "@inst_int", 
+                "@blprnt", 
+                "@pitchinc", 
+                "@creativeapps", 
+                "@openframeworks", 
+                "@mnartistsdotorg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: 10 tickets left for INST-INT! http://t.co/rAOTYNtrgf Big THX to m-partners @creativeapps @openframeworks @mnartistsdotorg  ", 
+            "Users": [
+                "@inst_int", 
+                "@creativeapps", 
+                "@openframeworks", 
+                "@mnartistsdotorg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @zachlieberman: just won one of these for @sfpc_school on ebay, psyched to play\u2026. http://t.co/wUkIySkV7n  ", 
+            "Users": [
+                "@zachlieberman", 
+                "@sfpc_school"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@alexislloyd: This is so me when I was a kid. MT @katecrawford: Essay on technologies of paperwork is fantastic: http://t.co/YXDz4gJ4G2...  ", 
+            "Users": [
+                "@alexislloyd", 
+                "@katecrawford"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#KinectCommonBridge", 
+                "#OpenSource"
+            ], 
+            "Tweet": "RT @inst_int: New http://t.co/6TantpQnNT sponsor! @Microsoft / @MSOpenTech #KinectCommonBridge = #OpenSource awesome http://t.co/pwA1UVibAk  ", 
+            "Users": [
+                "@inst_int", 
+                "@Microsoft", 
+                "@MSOpenTech"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @flight404: To the folk at @RockstarGames, bravo on the water simulation in GTAV. Exceptionally done, and in so many different forms.  ", 
+            "Users": [
+                "@flight404", 
+                "@RockstarGames"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: 19 days. Tix/time running out. Lineup = outrageous/momentous. Interactive Installation rockstars. http://t.co/6TantpQnNT  ", 
+            "Users": [
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Fantastic RT @Jake_Barton: Brilliant storytelling+reporting+macro+micro+ future+journalism @nytimes does it again http://t.co/0C3V55SUj0  ", 
+            "Users": [
+                "@Jake_Barton", 
+                "@nytimes"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "It remains only in the vault. @jakeporway: @blprnt @slavin_fpo @eyeofestival truth. did a version of that ever make it to the internet?  ", 
+            "Users": [
+                "@jakeporway", 
+                "@blprnt", 
+                "@slavin_fpo", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#ir14"
+            ], 
+            "Tweet": "Lovely. RT @gleemie: @Lmehran's amazing work at the #ir14 reception at the space gallery. http://t.co/TzkAP7Rz1P via @moduloone  ", 
+            "Users": [
+                "@gleemie", 
+                "@Lmehran", 
+                "@moduloone"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Spectacular++ lineup at the @inst_int festival for interactive art+design! -- Nov. 15-16 in MSP: http://t.co/6TantpQnNT  ", 
+            "Users": [
+                "@golan", 
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wattenberg: Smart, beautiful visualization book by @IsabelMeirelles at http://t.co/4VttLsJLNA And I'm not judging the book by its cover!  ", 
+            "Users": [
+                "@wattenberg", 
+                "@IsabelMeirelles"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Woot! RT @shashashasha: Oh shit. We just hit our goal. @gifpop IS HAPPENING http://t.co/UbosUYz7Et  ", 
+            "Users": [
+                "@shashashasha", 
+                "@gifpop"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#MeansAlot"
+            ], 
+            "Tweet": "Got a sweet note & link from George who's \"inspired by work shown at eyeo + @inst_int -Pulse of the City http://t.co/dTe7jANO3F #MeansAlot  ", 
+            "Users": [
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#Cool"
+            ], 
+            "Tweet": "RT @inst_int: Perusing registrations for http://t.co/mwF9LpjWPt - Nice contingent of museum & arts-org people coming in from all over. #Cool  ", 
+            "Users": [
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Happy indeed! RT @brainpicker: Happy birthday, Brain Pickings! Here are 7 hard-earned lessons from 7 years of writing http://t.co/W6Hap0kpbC  ", 
+            "Users": [
+                "@brainpicker"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @shashashasha: Hi everyone. @rachelbinx and I have been working on a new project, and it's about making gifs REAL. http://t.co/Uc6fJbxXBR  ", 
+            "Users": [
+                "@shashashasha", 
+                "@rachelbinx"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#WorthTheTrip"
+            ], 
+            "Tweet": "RT @inst_int: Love it! Started today w/ @inst_int attendees from S. Korea & Amsterdam. #WorthTheTrip http://t.co/mwF9LpjWPt...  ", 
+            "Users": [
+                "@inst_int", 
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#inst_intSpeaker"
+            ], 
+            "Tweet": "RT @inst_int: #inst_intSpeaker Karolina Sobecka controls clouds http://t.co/YSVT9lQDUW via @CreatorsProject - she'll be at...  ", 
+            "Users": [
+                "@inst_int", 
+                "@CreatorsProject"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#inst_intLineup"
+            ], 
+            "Tweet": "RT @inst_int: Nice view into @tangibleint 's interactive cocoons for @PURITY_RING live shows http://t.co/umrdDmWlif #inst_intLineup  ", 
+            "Users": [
+                "@inst_int", 
+                "@tangibleint", 
+                "@PURITY_RING"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @blprnt: Added NYT R&D Lab Creative Director @alexislloyd & MacArthur fellow @CamilleU to the lineup for INST-INT: http://t.co/hUCQdc6W4j  ", 
+            "Users": [
+                "@blprnt", 
+                "@alexislloyd", 
+                "@CamilleU"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#d3js", 
+                "#ona13"
+            ], 
+            "Tweet": "RT @mbostock: Thank you for all the congrats on the #d3js #ona13 award. Please join me in thanking @jasondavies for his tremendous...  ", 
+            "Users": [
+                "@mbostock", 
+                "@jasondavies"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#artTech"
+            ], 
+            "Tweet": "RT @inst_int: Since Friday we've added 3 amazing ppl to the http://t.co/mwF9LpjWPt lineup. @alexislloyd @CamilleU & @phoenixperry #artTech  ", 
+            "Users": [
+                "@inst_int", 
+                "@alexislloyd", 
+                "@CamilleU", 
+                "@phoenixperry"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ben_fry: Happy birthday to @REAS! Processing 2.1b1 now posted http://t.co/WzHoBebB4i\u2026 major changes:...  ", 
+            "Users": [
+                "@ben_fry", 
+                "@REAS"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: INST-INT in 25 days. Just a handful of tickets remain. Today is a wise day to secure yours. http://t.co/mwF9LpjWPt @blprnt...  ", 
+            "Users": [
+                "@inst_int", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Don't miss it. RT @push_conf: your very last chance to join: only 6 tickets for push.conference 2013 are left! http://t.co/EV4R083CTc  ", 
+            "Users": [
+                "@push_conf"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: RT @field_io: work w/ FIELD: hiring a senior creative coder(fulltime) + motion designer(int) + studio assistant(int)...  ", 
+            "Users": [
+                "@inst_int", 
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: More exciting news today: Camille Utterback will be at INST-INT! http://t.co/jPXJUXEulj @blprnt @pitchinc @CamilleU  ", 
+            "Users": [
+                "@inst_int", 
+                "@blprnt", 
+                "@pitchinc", 
+                "@CamilleU"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: Really, really pleased that @alexislloyd will join us at INST-INT. http://t.co/tLkr8xvXzU @nytlabs @blprnt @pitchinc  ", 
+            "Users": [
+                "@inst_int", 
+                "@alexislloyd", 
+                "@nytlabs", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#PixelPyros"
+            ], 
+            "Tweet": "RT @colly: Nottingham folk: don't miss @seb_ly's amazing #PixelPyros digital fireworks in the square tonight from 7.30pm, launching the...  ", 
+            "Users": [
+                "@colly", 
+                "@seb_ly"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @feltron: Pencil it in\u2026 Feltron Studio sale Sunday Nov 10. Back issue reports as well as 2008/2010 posters that I don\u2019t want to ship....  ", 
+            "Users": [
+                "@feltron"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: Excited about a few additions to the http://t.co/mwF9LpjWPt line up we get to announce today. Stay tuned.  ", 
+            "Users": [
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#book", 
+                "#Visualizing", 
+                "#Information", 
+                "#Advocacy"
+            ], 
+            "Tweet": "RT @jssozi: Get the #book - #Visualizing #Information for #Advocacy by Tactical Tech @Info_Activism. http://t.co/D7R0gA6ItM Another great...  ", 
+            "Users": [
+                "@jssozi", 
+                "@Info_Activism"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @HeartInternet: We chatted to coding comedian & all-round web genius @seb_ly ahead of the fantastic @PixelPyros! Check out the post:...  ", 
+            "Users": [
+                "@HeartInternet", 
+                "@seb_ly", 
+                "@PixelPyros"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#res14"
+            ], 
+            "Tweet": "RT @resonate_io: We are not sure how long they will last but almost 1/2 of all tickets are gone. If you are thinking\u2026better act fast. #res14  ", 
+            "Users": [
+                "@resonate_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#earlybird"
+            ], 
+            "Tweet": "YES. RT @moritz_stefaner: You know you want one. \u201c@resonate_io: RESONATE 2014 #earlybird tickets are now available! http://t.co/oM3DaniZdC\u201d  ", 
+            "Users": [
+                "@moritz_stefaner", 
+                "@resonate_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#3Dprinting"
+            ], 
+            "Tweet": "RT @inst_int: RT @futureofmuseums: Sensors everywhere, #3Dprinting changes everything, & smart machines replace people...  ", 
+            "Users": [
+                "@inst_int", 
+                "@futureofmuseums"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @NL_mn: Artist Info Session: Northern Spark 2014 - Are you an artist interested in presenting a... http://t.co/QN18H3mKsF  ", 
+            "Users": [
+                "@NL_mn"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @accuratstudio: *UrbanSensing and Accurat are online on the Atlantic today, redefining neighborhoods of Milan and NYC through......  ", 
+            "Users": [
+                "@accuratstudio"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013", 
+                "#wearables", 
+                "#physcialcomputing"
+            ], 
+            "Tweet": "VideoUP! Super @katehartman's talk \"Nudge & Glow\" @ #eyeo2013 http://t.co/jsffrAikpi @blprnt @pitchinc #wearables #physcialcomputing  ", 
+            "Users": [
+                "@katehartman", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: Get drenched http://t.co/KPckD0JIku via rAndom international's Tower - @rAndomHQ  ", 
+            "Users": [
+                "@inst_int", 
+                "@rAndomHQ"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: RT @tigoe: Nifty embedded sound module on KS: http://t.co/fc9I0uLAYb  ", 
+            "Users": [
+                "@inst_int", 
+                "@tigoe"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#inst_int"
+            ], 
+            "Tweet": "RT @inst_int: Love these visuals @mary_franck did for @magda_music http://t.co/CF7YtQ02EW. Can't wait to see more at #inst_int  ", 
+            "Users": [
+                "@inst_int", 
+                "@mary_franck", 
+                "@magda_music"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: RT @uah: astonishingly beautiful, considered & intelligent work, check out http://t.co/OJB4jBGLce & http://t.co/WwhAwXX2Nk...  ", 
+            "Users": [
+                "@inst_int", 
+                "@uah"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: New exhibit w/ shortwave infrared SWIR camera displays \"wet\" as dark and \"dry\" as light http://t.co/2VV4Qn8187 @ericsoco...  ", 
+            "Users": [
+                "@inst_int", 
+                "@ericsoco"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#inst_int"
+            ], 
+            "Tweet": "RT @inst_int: Don't miss @jaredrawk's talk from TedxKC, \"We were promised flying cars\". http://t.co/AnCdgx5r8l Meet him at #inst_int...  ", 
+            "Users": [
+                "@inst_int", 
+                "@jaredrawk"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "$75K creative challenge in Minneapolis- submissions end Nov 18. http://t.co/VgOtjNGH8d  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: Get a http://t.co/mwF9LpjWPt ticket today & poof! in 1 month you'll be chatting w/ creators of exceptional interactive...  ", 
+            "Users": [
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @derekwillis: Attn journalism students who code, or code students interested in news: apply for NYT Interactive News Internship!...  ", 
+            "Users": [
+                "@derekwillis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#dataviz"
+            ], 
+            "Tweet": "RT @albertocairo: If you like data art, you'll want to see the interview with @bndktgrs in @creativeapps http://t.co/XTscoS10K6 #dataviz...  ", 
+            "Users": [
+                "@albertocairo", 
+                "@bndktgrs", 
+                "@creativeapps"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "inst-int! THX! RT @brainpicker: Ooh! This new event on interactive art from the @eyeofestival team looks amazing http://t.co/YG8CW7EZBK  ", 
+            "Users": [
+                "@brainpicker", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @OpenTwinCities: CityCampMN tickets are going fast! 50 people have already RSVPed to discuss tech and community! http://t.co/8bZRsLw3sW  ", 
+            "Users": [
+                "@OpenTwinCities"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kcimc: i'm showing new work with inmi lee tonight at 6pm http://t.co/RwyKumfFHQ it's sculpture+video about language+gestures...  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#phototrails", 
+                "#visualization"
+            ], 
+            "Tweet": "RT @The_O_C_R: RT @manovich: The exhibition of our #phototrails project (#visualization of 2.3 milion Instagam photos) opens Oct 29...  ", 
+            "Users": [
+                "@The_O_C_R", 
+                "@manovich"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @The_O_C_R: It's your last week to see the @REAS exhibit - Ultraconcentrated - @bitforms in NYC! http://t.co/KjZZQBwspu  ", 
+            "Users": [
+                "@The_O_C_R", 
+                "@REAS", 
+                "@bitforms"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Can't get over this group of speakers for the very 1st http://t.co/mwF9LpjWPt | It's going to be amazing. @blprnt @pitchinc  ", 
+            "Users": [
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#visualizedio"
+            ], 
+            "Tweet": "Pleased to be spending the day at #visualizedio in Berlin. Danke!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#visualizingio"
+            ], 
+            "Tweet": "Pleased to be spending the day at #visualizingio in Berlin. Danke!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @softwareandart: Only 19 hours left to buy your @eyeofestival ticket - June 10-13 Minneapolis from our @kickstarter . Otherwise you wait\u2026  ", 
+            "Users": [
+                "@softwareandart", 
+                "@eyeofestival", 
+                "@kickstarter"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @CreatorsProject: Artist @shantell_martin tells us about live projecting in Japan, switching mediums, and Hong Kong art groupies...  ", 
+            "Users": [
+                "@CreatorsProject", 
+                "@shantell_martin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mslima: Density Design | Raw \u2013 The missing link between spreadsheets and vector graphics. http://t.co/6aDI6ohPXI  ", 
+            "Users": [
+                "@mslima"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Bravo! RT @pitchinc: New work freshly installed at and commissioned by La Panac\u00e9e in Montpellier. http://t.co/SLNUmDrC9s  ", 
+            "Users": [
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "JustInCase -VideoUP! Paola Antonelli's \"A History of Violence\" debut #eyeo2013 http://t.co/ftdSSSjsSR @curiousoctopus @MuseumModernArt...  ", 
+            "Users": [
+                "@curiousoctopus", 
+                "@MuseumModernArt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#dataviz"
+            ], 
+            "Tweet": "RT @VisualizingOrg: GALLLERY: Our top picks for #dataviz uploaded by the Visualizing community in September. http://t.co/KTDpMMPPVH  ", 
+            "Users": [
+                "@VisualizingOrg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Tomorrow, 10/3: Your tax-d donation to artlab @creativeinquiry will be matched by a generous benefactor! http://t.co/An0P1tZVrM  ", 
+            "Users": [
+                "@golan", 
+                "@creativeinquiry"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Indeed as well! RT @moritz_stefaner: Indeed! \u201c@c_behrens: Looking forward to http://t.co/NH8hWZalWu this Saturday in Berlin!\u201d  ", 
+            "Users": [
+                "@moritz_stefaner", 
+                "@c_behrens"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": ".@creativeapps is behind RESONATE. We had an amazing experience in 2013. 2014 looks even better. http://t.co/oM3DaniZdC  ", 
+            "Users": [
+                "@creativeapps"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @pitaru: Thanks to my teammates at @FiftyThree, I can now print custom @moleskine books straight from Paper. Here's a video -...  ", 
+            "Users": [
+                "@pitaru", 
+                "@FiftyThree", 
+                "@moleskine"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#dataviz", 
+                "#hospital"
+            ], 
+            "Tweet": "RT @VisualizingOrg: Congrats to Adam McCann and Esther Chak & Mary-Jo Valentino \u2014 winners of our @RWJF #dataviz #hospital challenge....  ", 
+            "Users": [
+                "@VisualizingOrg", 
+                "@RWJF"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @softwareandart: Hey @eyeofestival lovers! Did you know you can get your 2014 Eyeo ticket on our kickstarter? http://t.co/ly9tx6rXj8  ", 
+            "Users": [
+                "@softwareandart", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @The_O_C_R: RT @nervous_system: blog: Folium \u2013 a new algorithmic jewelry series http://t.co/LhmGskBEWd  ", 
+            "Users": [
+                "@The_O_C_R", 
+                "@nervous_system"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @noralidgus: Everyone has their favorite @eyeofestival talk. This is mine! Paola Antonelli's History of Violence...  ", 
+            "Users": [
+                "@noralidgus", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @obviousjim: computational photographs in motion of Chris Coleman's everyday commute http://t.co/qZNQnlLbRg haunting reconstructions  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! Paola Antonelli's \"A History of Violence\" debut #eyeo2013 http://t.co/ftdSSSjsSR @curiousoctopus @MuseumModernArt @blprnt @pitchinc  ", 
+            "Users": [
+                "@curiousoctopus", 
+                "@MuseumModernArt", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#res14"
+            ], 
+            "Tweet": "RT @gr3gjsmith: Lookin\u2019 good #res14: http://t.co/9Zhkm2HaCD \u2013 see in you April, Belgrade.  ", 
+            "Users": [
+                "@gr3gjsmith"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @OpenTwinCities: Want to make some apps, analyses, and/or art that uses demographic data on rural MN? Check out http://t.co/O87ioMEL0i  ", 
+            "Users": [
+                "@OpenTwinCities"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @pitchinc: Info on my talk next week in Montpellier: http://t.co/Vu7TUapl1H (In FR bc it's better than the EN version)  ", 
+            "Users": [
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: rA's artistic director to be at http://t.co/mwF9LpjWPt RT @MuseumModernArt: rAndom International's Rain Room @ MOMA...  ", 
+            "Users": [
+                "@inst_int", 
+                "@MuseumModernArt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#INST_INT"
+            ], 
+            "Tweet": "RT @inst_int: Yes! RT @jimmyacres: still a month and a half away, but getting super pumped for #INST_INT. Some tickets left, jump on it...  ", 
+            "Users": [
+                "@inst_int", 
+                "@jimmyacres"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": ":-) RT @middlewest: @slavin_fpo @eyeofestival @Complex_Art @walkerartcenter I am dedicated to my slow destruction of humanity (and art)...  ", 
+            "Users": [
+                "@middlewest", 
+                "@slavin_fpo", 
+                "@eyeofestival", 
+                "@Complex_Art", 
+                "@walkerartcenter"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": ".@slavin_fpo @Complex_Art @walkerartcenter For context you need to see Kevin's talk regarding cats + toxoplasmosis http://t.co/Qy0cTVtyEw  ", 
+            "Users": [
+                "@slavin_fpo", 
+                "@Complex_Art", 
+                "@walkerartcenter"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": ".@slavin_fpo - see you there! RT @complex_art: @walkerartcenter\u2019s \"Internet Cat Video Festival\" begins tour in NY http://t.co/zJKkA9SC7Q  ", 
+            "Users": [
+                "@slavin_fpo", 
+                "@complex_art", 
+                "@walkerartcenter"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Exceptional read. RT @memotv: Already had a lot of respect for Steve Albini...and now a letter to Nirvana http://t.co/coYddkqO1l  ", 
+            "Users": [
+                "@memotv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "UE will be at Eyeo's new event http://t.co/mwF9LpjWPt RT @seditionart: Read about @universalevery's installation http://t.co/2Wpaqve8AF  ", 
+            "Users": [
+                "@seditionart", 
+                "@universalevery"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#Shadow", 
+                "#dream"
+            ], 
+            "Tweet": "!! RT @The_O_C_R: A kickstarter for an app #Shadow that stores and analyzes your mind's #dream data: http://t.co/yqTohEE9aq  ", 
+            "Users": [
+                "@The_O_C_R"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: RT @universalevery: We are searching for CGI director-animators for our next endeavours  ", 
+            "Users": [
+                "@inst_int", 
+                "@universalevery"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Yum. RT @giorgialupi: Nice! Interactive timeline of America's Cup: Oracle's path to victory http://t.co/wdccZMygsb via @nigelhawtin  ", 
+            "Users": [
+                "@giorgialupi", 
+                "@nigelhawtin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Team Eyeo - Jer/Wes/Dave will be in Berlin next weekend 11/5 > looking for things to see/do + people to meet. Say hallo. @blprnt @pitchinc  ", 
+            "Users": [
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @creativeapps: Moscow Festival \u201cCircle of Light\u201d feat @UVA_Studio @robertofazio @nanikawa @elliotwoods @KeriElmsly @_SILASVETA_ ++ by...  ", 
+            "Users": [
+                "@creativeapps", 
+                "@UVA_Studio", 
+                "@robertofazio", 
+                "@nanikawa", 
+                "@elliotwoods", 
+                "@KeriElmsly", 
+                "@_SILASVETA_"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#opendata", 
+                "#mpls13"
+            ], 
+            "Tweet": "RT @opentwincities: #opendata questionnaire update: 16 responses have come in from #mpls13 mayoral and city council candidates.  ", 
+            "Users": [
+                "@opentwincities"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeoAccordion"
+            ], 
+            "Tweet": "Touring/Amazing Ethiopian Funk @deboband rehearsing @ Eyeo/INST-INT HQ this afternoon. Show Weds.http://t.co/m6NFW7vhPZ #eyeoAccordion  ", 
+            "Users": [
+                "@deboband"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ben_fry: Try it out/help us test! MT @ProcessingOrg: Big News! @QuarkNinja's PDE X, the future Processing editor. Install with \"Add...  ", 
+            "Users": [
+                "@ben_fry", 
+                "@ProcessingOrg", 
+                "@QuarkNinja"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @datatelling: Open Call for curators of data art from @UKODI http://t.co/VkiUNcmNsb via @misslake  ", 
+            "Users": [
+                "@datatelling", 
+                "@UKODI", 
+                "@misslake"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Woot! RT @design_io: Excited! We can now talk about what we've been working on this last year! http://t.co/HO5Cx9FHBX \u2026  ", 
+            "Users": [
+                "@design_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: Disney Researchers make amazing advances in HC Interaction http://t.co/Kadj5BsNvv Thrilled @ericbrockmeyer will be@...  ", 
+            "Users": [
+                "@inst_int", 
+                "@ericbrockmeyer"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#d3js"
+            ], 
+            "Tweet": "RT @alignedleft: Still a few spots left for my one-day introduction to #d3js in San Francisco on 10/21! http://t.co/fM20g1e9Rx  ", 
+            "Users": [
+                "@alignedleft"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @theowatson: If you liked @eyeofestival the @inst_int has a stella lineup. focused on interactive installations. hurry, only few tickets\u2026  ", 
+            "Users": [
+                "@theowatson", 
+                "@eyeofestival", 
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: Flattered! 57% of INST-INT tix are sold! (in 3.5 hrs) Really appreciate the enthusiasm as we launch this new event. Thanks!...  ", 
+            "Users": [
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: Nice to see people coming in from all over N.A. to INST-INT http://t.co/379ok8Z7mW @bplrnt @pitchinc  ", 
+            "Users": [
+                "@inst_int", 
+                "@bplrnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: 85 tickets to http://t.co/mwF9LpjWPt sold in first 10 minutes.  ", 
+            "Users": [
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "25 inst-int tickets gone in first 5 minutes..  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Just in time - we added Jared Fickin @jaredrawk to the lineup. http://t.co/0oVpazwe83 @blprnt @pitchinc  ", 
+            "Users": [
+                "@jaredrawk", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "In 95 minutes... RT @creativeapps: It's On! @inst_int (http://t.co/mwF9LpjWPt) Amazing people w/amazing work. Only 250 Tickets - on sale!  ", 
+            "Users": [
+                "@creativeapps", 
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jrolimited: Newest sosolimited and Hypersonic piece - CSIS chandelier - is up and running! Gala opening in\u2026 http://t.co/yxLa75h0WH  ", 
+            "Users": [
+                "@jrolimited"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#arduino"
+            ], 
+            "Tweet": "RT @inst_int: Tom Igoe is a hero, and we just added him to the http://t.co/mwF9LpjWPt lineup. Woot! @tigoe #arduino @ITP_NYU @make...  ", 
+            "Users": [
+                "@inst_int", 
+                "@tigoe", 
+                "@ITP_NYU", 
+                "@make"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Artists! Apply for INST-INT Fellowships asap. We only take 40 applications; already have 27. We'll select 10 fellows http://t.co/zUS4yT2Ah0  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Apply to Volunteer at INST-INT asap. We're only taking 40 applications; already have 23. We'll select 10 volunteers http://t.co/npEAY5EoRt  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @curiousoctopus: Orgy of seriously great interactive designers and artists: new @inst_int conference, 11/15-16 http://t.co/PwlMkO7Rz6. I\u2026  ", 
+            "Users": [
+                "@curiousoctopus", 
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#inst_int"
+            ], 
+            "Tweet": "RT @inst_int: Thrilled that we just added Matt Cottam of @tellart to #inst_int Lineup! Amazing work. http://t.co/6TantpQnNT @blprnt...  ", 
+            "Users": [
+                "@inst_int", 
+                "@tellart", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: Ten artist fellowships (aka free tickets) for INST-INT. Apply here, asap http://t.co/zUS4yT2Ah0 @blprnt @pitchinc...  ", 
+            "Users": [
+                "@inst_int", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: Students: Please apply this week to volunteer at INST-INT here: http://t.co/zUS4yT2Ah0 @blprnt @pitchinc...  ", 
+            "Users": [
+                "@inst_int", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: It's On! http://t.co/mwF9LpjWPt Super excited; amazing people w/ amazing work. Only 250 Tickets - on sale THIS FRIDAY....  ", 
+            "Users": [
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#interactiveInstallation"
+            ], 
+            "Tweet": "INST-INT site goes live in next 24hrs. Only 250 tickets available, on sale next week. @inst_int @blprnt @pitchinc #interactiveInstallation  ", 
+            "Users": [
+                "@inst_int", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2014"
+            ], 
+            "Tweet": "RT @softwareandart: the rumors are true there is one #eyeo2014 ticket in existence and it's on our kickstarter http://t.co/OqljXkN1QT thank\u2026  ", 
+            "Users": [
+                "@softwareandart"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @inst_int: Getting pretty excited about speakers we've confirmed for INST-INT. Superstars. Hope to reveal them in a few days. @blprnt...  ", 
+            "Users": [
+                "@inst_int", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @theowatson: Check it! Outdoor/Weatherproof open hardware platform on @kickstarter by studio mate @thierylouis http://t.co/zsWXHiybhr  ", 
+            "Users": [
+                "@theowatson", 
+                "@kickstarter", 
+                "@thierylouis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jake_barton: Crazy smart phone / browser / Arcade Fire / Vincent Morisset interactions: http://t.co/02WdQUtabJ congrats @aaronkoblin  ", 
+            "Users": [
+                "@jake_barton", 
+                "@aaronkoblin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @21h42_: impressive talk and \"don't try this at home\" moment by Montreal hero Rafael Lozano-Hemmer http://t.co/kAOZQad5VS @eyeofestival  ", 
+            "Users": [
+                "@21h42_", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @aaronkoblin: Very happy to announce http://t.co/02WdQUtabJ - New Interactive Arcade Fire project with Vincent Morisset  ", 
+            "Users": [
+                "@aaronkoblin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#AwesomeWork"
+            ], 
+            "Tweet": "Precisely. #AwesomeWork RT @mgiraldo: you can't miss @errafael's presentation et @eyeofestival 2013 http://t.co/kAOZQad5VS  ", 
+            "Users": [
+                "@mgiraldo", 
+                "@errafael", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @errafael: In this talk @eyeofestival I fall off the stage and break two ribs, right after talking about predicting the future...  ", 
+            "Users": [
+                "@errafael", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! The 'Rafael Lozano-Hemmer Approved' edit of his epic presentation @#eyeo2013 http://t.co/kAOZQad5VS @errafael @blprnt @pitchinc  ", 
+            "Users": [
+                "@errafael", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#healthcare", 
+                "#dataviz"
+            ], 
+            "Tweet": "RT @visualizingorg: GALLERY: Explore greater transparency in #healthcare w/ #dataviz projects from our @RWJF challenge:...  ", 
+            "Users": [
+                "@visualizingorg", 
+                "@RWJF"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @darius_morawiec: \"Forget everything what you know, and play.\" by Jake Barton @eyeofestival http://t.co/K9Gjl6G10f  ", 
+            "Users": [
+                "@darius_morawiec", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! @Jake_Barton on \"Improvisation & Technology\" at #eyeo2013 http://t.co/yb7X1b0eim @blprnt @pitchinc @localprojects  ", 
+            "Users": [
+                "@Jake_Barton", 
+                "@blprnt", 
+                "@pitchinc", 
+                "@localprojects"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#TIFFKids"
+            ], 
+            "Tweet": "RT @tiff_net: Call for #TIFFKids digiPlaySpace submissions. We're looking for interactive art, games & activities! http://t.co/BWm8zVGUkj  ", 
+            "Users": [
+                "@tiff_net"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @driven_by_data: Yay, two months and +600 commits later we finally released version 1.5 of our favorite charting tool @Datawrapper. http\u2026  ", 
+            "Users": [
+                "@driven_by_data", 
+                "@Datawrapper"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "It's on! http://t.co/mwF9LpjWPt | November 15-16. Walker Art Center. Minneapolis. Interactive Installation goodness. @blprnt @pitchinc  ", 
+            "Users": [
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Sweet. RT @gravesle: Just hit the inspirational jackpot- found the @eyeofestival 2013 video archive - http://t.co/qPfYrJIDvZ  ", 
+            "Users": [
+                "@gravesle", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Happy Hour. We're starting something new: http://t.co/5V3Uw27Ceb @inst_int  ", 
+            "Users": [
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! @golan 's talk, Hand, Eye, & Alphabet at #eyeo2013 http://t.co/FCZGjPGsXj w/guest @prgarc | @blprnt @pitchinc @neoLucinda  ", 
+            "Users": [
+                "@golan", 
+                "@prgarc", 
+                "@blprnt", 
+                "@pitchinc", 
+                "@neoLucinda"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "We should be announcing dates for our new get-together, http://t.co/mwF9LpjWPt this week. Stay tuned. @inst_int @blprnt @pitchinc  ", 
+            "Users": [
+                "@inst_int", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Happy Friday. More Eyeo videos coming, and if you missed it we're starting something new: http://t.co/5V3Uw27Ceb @inst_int  ", 
+            "Users": [
+                "@inst_int"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! Stefanie Posavec talks about 'Subtle Data' at #eyeo2013 http://t.co/ePZ5Mkzh3l @stefpos @blprnt @pitchinc  ", 
+            "Users": [
+                "@stefpos", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @blprnt: You can follow @inst_int for updates about INST-INT, an upcoming event about interactive installation, from team @eyeofestival  ", 
+            "Users": [
+                "@blprnt", 
+                "@inst_int", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#interactiveInstallation", 
+                "#exciting", 
+                "#excited"
+            ], 
+            "Tweet": "Hey Eyeo Friends, We've got a new event in the works: http://t.co/mwF9LpjWPt @blprnt @pitchinc #interactiveInstallation #exciting #excited  ", 
+            "Users": [
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! http://t.co/FrxTIaTwnz Data & Social Justice Panel at #eyeo2013 w/ @datatelling @laurakurgan @mayameme @jakeporway  ", 
+            "Users": [
+                "@datatelling", 
+                "@laurakurgan", 
+                "@mayameme", 
+                "@jakeporway"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013", 
+                "#happyFriday"
+            ], 
+            "Tweet": "VideoUP! Memo Akten talks about the \"Poetry of Reality' at #eyeo2013 http://t.co/orA6JkP2ev @memotv @blprnt @pitchinc #happyFriday  ", 
+            "Users": [
+                "@memotv", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Eyeo 2014 = June 10-13. @blissboy: @eyeofestival Any word on dates for 2014? Planning an epic June.  ", 
+            "Users": [
+                "@blissboy", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! Heather Dewey-Hagborg discusses her 'Stranger Visions' at #eyeo2013 http://t.co/Drh5ZybRJZ @hdeweyh @blprnt @pitchinc  ", 
+            "Users": [
+                "@hdeweyh", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#Processing"
+            ], 
+            "Tweet": "RT @shiffman: Ok, let's try this. If you need help with #Processing, tweet question and I will answer during broadcast today at 3pm EDT, 7p\u2026  ", 
+            "Users": [
+                "@shiffman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013", 
+                "#dataviz", 
+                "#datastories"
+            ], 
+            "Tweet": "VideoUP! @cedricsam Talks about Social Media/News/Data in China at #eyeo2013 http://t.co/xk6mZvgE3Q @blprnt @pitchinc #dataviz #datastories  ", 
+            "Users": [
+                "@cedricsam", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! @sosolimited \"Texts 'n Effects\" talk at #eyeo2013. http://t.co/fK6GWKs5fW @jrolimited @ericgunther @blprnt @pitchinc  ", 
+            "Users": [
+                "@sosolimited", 
+                "@jrolimited", 
+                "@ericgunther", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#hypercard", 
+                "#processing", 
+                "#openFrameworks"
+            ], 
+            "Tweet": "VideoUP! 'Conversation w/ Toolmakers' http://t.co/AKiTQ5wVCc w/ @blprnt @kcimc @REAS & @billatk #hypercard #processing #openFrameworks...  ", 
+            "Users": [
+                "@blprnt", 
+                "@kcimc", 
+                "@REAS", 
+                "@billatk"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013", 
+                "#processing"
+            ], 
+            "Tweet": "VideoUP! @feltron at #eyeo2013 - http://t.co/unXVC0jzqm Nicholas Felton's 'Process & Processing' @blprnt @pitchinc @processing #processing  ", 
+            "Users": [
+                "@feltron", 
+                "@blprnt", 
+                "@pitchinc", 
+                "@processing"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @errafael: Video of our test for \"Voice Tunnel\": Stroll Through The Park Avenue Tunnel This August http://t.co/uQTNOylaHc  ", 
+            "Users": [
+                "@errafael"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @giorgialupi: 20th-century apocalypse predictors that were wrong! Our viz for @Corriereit featured on @PopSci : http://t.co/fv5ozupSuq...  ", 
+            "Users": [
+                "@giorgialupi", 
+                "@Corriereit", 
+                "@PopSci"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013", 
+                "#AVfail"
+            ], 
+            "Tweet": "VideoUP! 'Failing with Style' panel @#eyeo2013 w @moritz_stefaner @zachlieberman @viegasf @pitchinc http://t.co/N4PQUjNtnf @blprnt #AVfail  ", 
+            "Users": [
+                "@moritz_stefaner", 
+                "@zachlieberman", 
+                "@viegasf", 
+                "@pitchinc", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! Mary Huang/Jenna Fizel on Computational Fashion @ #eyeo2013 http://t.co/8ps6LdDjuy @jftesser @rhyme_andreason @blprnt @pitchinc  ", 
+            "Users": [
+                "@jftesser", 
+                "@rhyme_andreason", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeoBigAppleLove"
+            ], 
+            "Tweet": "Thanks New York! It was a treat to see so many friendly faces out last night and catch up w/ y'all. #eyeoBigAppleLove @blprnt @pitchinc  ", 
+            "Users": [
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "T'anight. Eyeo Meetup NYC: Come hang w/ Team Eyeo (@blprnt @pitchinc &amp; Dave) at http://t.co/9DGVk2grE5 tonight 8pm  ", 
+            "Users": [
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Eyeo Meetup NYC: Come hang w/ Team Eyeo (@blprnt @pitchinc & Dave) at http://t.co/9DGVk2grE5 this Wednesday night (July 24th) 8pm.. woo  ", 
+            "Users": [
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @blprnt: You can wish @giorgialupi a Happy Birthday today by adding 1 view to her amazing #eyeo2013 talk: https://t.co/n4ZLI73Rw2  ", 
+            "Users": [
+                "@blprnt", 
+                "@giorgialupi"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013", 
+                "#dataViz", 
+                "#dataDesign"
+            ], 
+            "Tweet": "VideoUP! 'Data I Paint With' by Giorgia Lupi at #eyeo2013 http://t.co/FrxTIaTwnz @giorgialupi @blprnt @pitchinc #dataViz #dataDesign  ", 
+            "Users": [
+                "@giorgialupi", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Eyeo Meetup NYC: Come hang w/ Team Eyeo (@blprnt @pitchinc & Dave) at http://t.co/9DGVk2grE5 this Wednesday night (July 24th) 8pm ->  ", 
+            "Users": [
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @diversionary: Finishing up the weekend watching @billatk\u2019s wonderful talk from @eyeofestival: Printed Postcards in a Digital Age http:/\u2026  ", 
+            "Users": [
+                "@diversionary", 
+                "@billatk", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! Icon Bill Atkinson @#eyeo2013 http://t.co/FrxTIaTwnz Printed Postcards in a Digital Age @blprnt @billatk @pitchinc  ", 
+            "Users": [
+                "@blprnt", 
+                "@billatk", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! Icon Bill Atkinson @#eyeo2013 http://t.co/FrxTIaTwnz Printed Postcards in a Digital Age @blprnt @billatk @pitchinc  ", 
+            "Users": [
+                "@blprnt", 
+                "@billatk", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! Maya Ganesh on 'Visual Influence' @ #eyeo2013 http://t.co/FrxTIaTwnz @mayameme @Info_activism @bplrnt @pitchinc  ", 
+            "Users": [
+                "@mayameme", 
+                "@Info_activism", 
+                "@bplrnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUp! (@toxi) Karsten Schmidt's 'Tower of Babel' talk at #eyeo2013 http://t.co/FrxTIaTwnz @blprnt @pitchinc  ", 
+            "Users": [
+                "@toxi", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "VideoUP! 'Art, Code & Advertising' panel w/ @sermad @stefpos @memotv & @golan http://t.co/FrxTIaTwnz @bplrnt @pitchinc  ", 
+            "Users": [
+                "@sermad", 
+                "@stefpos", 
+                "@memotv", 
+                "@golan", 
+                "@bplrnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! Fernanda @viegasf & Martin @wattenberg 'Arguments/Songs/Texts' @ #eyeo2013 http://t.co/FrxTIaTwnz @blprnt @pitchinc  ", 
+            "Users": [
+                "@viegasf", 
+                "@wattenberg", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#Eyeo2013"
+            ], 
+            "Tweet": "VideoUP! Amit @pitaru at #Eyeo2013 \"Sharp Corners\" / Kinder Technology + Creative Happiness / http://t.co/FrxTIaTwnz @blprnt @pitchinc  ", 
+            "Users": [
+                "@pitaru", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013", 
+                "#processing", 
+                "#dataart"
+            ], 
+            "Tweet": "VideoUP! Casey @Reas talks software & visual art at #eyeo2013. http://t.co/FrxTIaTwnz @blprnt @pitchinc #processing #dataart  ", 
+            "Users": [
+                "@Reas", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @blprnt: Great dataviz = deep research + thorough process - @benfry talks about 'Connected China' at #eyeo2013: https://t.co/OGHufwFK68  ", 
+            "Users": [
+                "@blprnt", 
+                "@benfry"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@ben_fry We put it up last week, but something went south with the upload. Just uploaded and released the fix. http://t.co/lofcECXxTj  ", 
+            "Users": [
+                "@ben_fry"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013", 
+                "#dataviz"
+            ], 
+            "Tweet": "VideoUP! (Again-fixed) @ben_fry at #eyeo2013 'Digging to China\" & #dataviz http://t.co/1gATWIXwWY @pitchinc @blprnt  ", 
+            "Users": [
+                "@ben_fry", 
+                "@pitchinc", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! James Paterson & the Gently Rounded Triangle @ #eyeo2013 http://t.co/1gATWIXwWY @presstube @pitchinc @blprnt  ", 
+            "Users": [
+                "@presstube", 
+                "@pitchinc", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013", 
+                "#D3js"
+            ], 
+            "Tweet": "VideoUP! Mike Bostock @mbostock Talk @ #eyeo2013 \"For Example\" an Epic Example Exploration. http://t.co/1gATWIXwWY #D3js @pitchinc @blprnt  ", 
+            "Users": [
+                "@mbostock", 
+                "@pitchinc", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I just added \"Eyeo 2013 - Mike Bostock\" to Eyeo Festival 2013: http://t.co/vobpCW11wP  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Bah! VideoDOWN. Ben Fry's talk = upload error. Will fix over weekend. Replacement Eyeo video fix coming in a few moments.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Looking into it. RT @derosimona: @eyeofestival It stops at 5:12...  ", 
+            "Users": [
+                "@derosimona", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#DataViz", 
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! @ben_fry Talks about \"Digging to China\" & #DataViz at #eyeo2013. http://t.co/1gATWIXwWY @pitchinc @blprnt  ", 
+            "Users": [
+                "@ben_fry", 
+                "@pitchinc", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I just added \"Eyeo 2013 - Ben Fry\" to Eyeo Festival 2013: http://t.co/EOLEX5bjN5  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! Befitting Independence day, @kcimc liberates his ideas @ #eyeo2013 http://t.co/1gATWIXwWY @pitchinc @blprnt  ", 
+            "Users": [
+                "@kcimc", 
+                "@pitchinc", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I just added \"Eyeo 2013 - Kyle McDonald\" to Eyeo Festival 2013: http://t.co/XubOL4NwLv  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "VideoUP! Laura Kurgan/Jen Lowe - Multiple Dimensions @ #eyeo2013 http://t.co/1gATWIXwWY @blprnt @pitchinc @datatelling  ", 
+            "Users": [
+                "@blprnt", 
+                "@pitchinc", 
+                "@datatelling"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "Ben Rubin @ #eyeo2013 'Shakespeare Machine/Language Contraptions' http://t.co/1gATWIXwWY @pitchinc @blprnt @earstudio  ", 
+            "Users": [
+                "@pitchinc", 
+                "@blprnt", 
+                "@earstudio"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @benDesigning: I wrote a blog post about my overwhelmingly awesome and inspiring trip to @eyeofestival and #eyeo2013 this year http://t.\u2026  ", 
+            "Users": [
+                "@benDesigning", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "Video up! 'Poems Nots Demos' talk by @zachlieberman @ #eyeo2013 http://t.co/1gATWIXwWY @pitchinc @blprnt  ", 
+            "Users": [
+                "@zachlieberman", 
+                "@pitchinc", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @trinachi: My first Ignite talk, Minneapolis http://t.co/a8Y0C7EXhn via @eyeofestival  ", 
+            "Users": [
+                "@trinachi", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @maximolly: \"Data Places,\" my Ignite talk from Eyeo, is online. I like this one! https://t.co/e1geD9UUJg  ", 
+            "Users": [
+                "@maximolly"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jessiep: The Ignite talk I gave at Eyeo is up. I talk about hula hoops, cats, and empathy. http://t.co/Q7dZXoC8l4  ", 
+            "Users": [
+                "@jessiep"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @xululululuuum: Hey @tangibleint just put up me and @kcimc 's work at the #eyeo2013 hack-o-thon here -> https://t.co/xdVXBVv4f6  ", 
+            "Users": [
+                "@xululululuuum", 
+                "@tangibleint", 
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "+! RT @meganerinmiller: My #eyeo2013 ignite talk is now up on the web! \"Managing Expectations through Tactile Limitations\"...  ", 
+            "Users": [
+                "@meganerinmiller"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Yes! RT @virgilwong: \"Help me visualize my damn data,\" a riveting 5 min Ignite talk by @katiemccurdy at Eyeo Festival 2013 @eyeofestival...  ", 
+            "Users": [
+                "@virgilwong", 
+                "@katiemccurdy", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jake_barton: Local Projects is hiring developers for front and back end. Anyone interested, in NYC or not, email...  ", 
+            "Users": [
+                "@jake_barton"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#ToxoplasmoCats"
+            ], 
+            "Tweet": "Eyeo Ignite talks 7-12 (also 'all so' incredible) are online! http://t.co/1gATWIXwWY @blprnt @pitchinc #ToxoplasmoCats @slavin_fpo  ", 
+            "Users": [
+                "@blprnt", 
+                "@pitchinc", 
+                "@slavin_fpo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#betterLunchBreaks"
+            ], 
+            "Tweet": "Video up. Eyeo Ignite talks 1-6 posted. http://t.co/1gATWIXwWY @blprnt @pitchinc bTHX to @chadvavra #betterLunchBreaks  ", 
+            "Users": [
+                "@blprnt", 
+                "@pitchinc", 
+                "@chadvavra"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @accuratstudio: amazing work from the attendees of our workshop at Eyeo! http://t.co/8fkk5uad8Z\u2026 http://t.co/QF0QcypaMR so...  ", 
+            "Users": [
+                "@accuratstudio"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @sermad: Oooh @daitomanabe has put new things he showed at @eyeofestival on his youtube - robots x lasers x dancers FTW -...  ", 
+            "Users": [
+                "@sermad", 
+                "@daitomanabe", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @design_io: one of the two new projects we showed @eyeofestival - Weather Worlds: http://t.co/LpbpREm9qI http://t.co/i6VCZQcdUy  ", 
+            "Users": [
+                "@design_io", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Eyeo attendees: we emailed links to submit festival/code+ed/workshop feedback. If you haven't fed us back yet - please do by Friday. Thx!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @knewton: Great reflections on #eyeo2013 by Knewton data storyteller @francamps http://t.co/dVDsgDGXjE @eyeofestival  ", 
+            "Users": [
+                "@knewton", 
+                "@francamps", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Posted! THX Scott. RT @alignedleft: @eyeofestival Can I give you this to share under the \"workshops\" section? https://t.co/wc23EKdqQL  ", 
+            "Users": [
+                "@alignedleft", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Videos will start to appear this week. RT @blprnt: Have you seen the @eyeofestival documentation page? http://t.co/1VktsxVMWc - details...  ", 
+            "Users": [
+                "@blprnt", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @zachlieberman: as requested -- here's the slides from my talk at eyeo \"poems not demos\" : https://t.co/XM0VE96ngp will post a bibliogr\u2026  ", 
+            "Users": [
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#Eyeo"
+            ], 
+            "Tweet": "RT @erinsfisher: All our favorite #Eyeo people in one @nytimes article! http://t.co/gqYAGwUWiK @giorgialupi @curiousoctopus @earstudio @RE\u2026  ", 
+            "Users": [
+                "@erinsfisher", 
+                "@nytimes", 
+                "@giorgialupi", 
+                "@curiousoctopus", 
+                "@earstudio", 
+                "@RE"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @MobilisationLab: .@erhardt shares great set of notes from @eyeofestival on using data in social justice work: http://t.co/ToninGRdfI  ", 
+            "Users": [
+                "@MobilisationLab", 
+                "@erhardt", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @Bluecadet: Powering People, Hacking Halos, Iterating Ideas & Crafting Code: Notes from @eyeofestival by @dirtystylus & @Swiley http://t\u2026  ", 
+            "Users": [
+                "@Bluecadet", 
+                "@eyeofestival", 
+                "@dirtystylus", 
+                "@Swiley"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013", 
+                "#art", 
+                "#sketch", 
+                "#illustration", 
+                "#music", 
+                "#polka"
+            ], 
+            "Tweet": "RT @lisamadethis: Polka trio at Nye's. #eyeo2013 #art #sketch #illustration #music #polka http://t.co/XlwKMIwiUl  ", 
+            "Users": [
+                "@lisamadethis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Woot! RT @tangibleint: HALO @eyeofestival photos under our new section. Video coming soon. http://t.co/NRGMMTUuMA http://t.co/8jGCFztcxB  ", 
+            "Users": [
+                "@tangibleint", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @krees: So, I answered some crazy questions from the Walker Art Center :) http://t.co/CTN3DgEgza #eyeo2013  ", 
+            "Users": [
+                "@krees"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @michelleminkoff: A rambling, reflective post on what this journalist/developer learned about herself and her work goals at #eyeo2013: h\u2026  ", 
+            "Users": [
+                "@michelleminkoff"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @superSGP: Better late than never: my sketchnotes from Eyeo. #eyeo2013 http://t.co/Mk9jpSNV22  ", 
+            "Users": [
+                "@superSGP"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo"
+            ], 
+            "Tweet": "RT @andyinabox: Still buzzing off of the @pitaru & @presstube one-two punch at #eyeo. Thanks guys!  ", 
+            "Users": [
+                "@andyinabox", 
+                "@pitaru", 
+                "@presstube"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @rhyme_andreason: @toxi Here's the Netfabb thing I mentioned at Eyeo http://t.co/mJyuqkf85O It does things like variable density  ", 
+            "Users": [
+                "@rhyme_andreason", 
+                "@toxi"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @shashashasha: I wrote up some of the links and references that went into my talk at @eyeofestival http://t.co/xFjSHyYd7r  ", 
+            "Users": [
+                "@shashashasha", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Happy weekend, wherever you're headed! Eyeo titles posted: https://t.co/PmnTReeNzb @blprnt @pitchinc  ", 
+            "Users": [
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @_eventifier_: @eyeofestival #eyeo2013 recap in the form of Photos, Tweets, Videos & more: http://t.co/SI8znwkH8P cc @brainpicker...  ", 
+            "Users": [
+                "@_eventifier_", 
+                "@eyeofestival", 
+                "@brainpicker"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013", 
+                "#betterTogether"
+            ], 
+            "Tweet": "Extra shout out to all the ladies at #eyeo2013 ! Thanks for attending, presenting + being a part of it. @blprnt @pitchinc #betterTogether  ", 
+            "Users": [
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Word! RT @eightlines: \"The beauty of Eyeo is how brandless it is.\" http://t.co/huHc40GgkE @blprnt @pitchinc  ", 
+            "Users": [
+                "@eightlines", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "Love it. RT @gurldigit: The complete, scanned, sketch notes from #eyeo2013: http://t.co/k7c1rEjSfi and a thematic summary:...  ", 
+            "Users": [
+                "@gurldigit"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @justintect: These are some of the best presentation slides I've seen - was a treat to see @giorgialupi present at #eyeo2013!...  ", 
+            "Users": [
+                "@justintect", 
+                "@giorgialupi"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @jehrapatrick: The most brilliant parts of #eyeo2013 in 5 take-aways: http://t.co/huHc40GgkE @eyeofestival @walkerartcenter...  ", 
+            "Users": [
+                "@jehrapatrick", 
+                "@eyeofestival", 
+                "@walkerartcenter"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @erhardt: My first set of notes and thoughts from #eyeo2013: \"Respecting the Data\" http://t.co/eB9u3g6p40  ", 
+            "Users": [
+                "@erhardt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo", 
+                "#madeMyDay"
+            ], 
+            "Tweet": "Just got a PhotoCard in the mail that @billatk helped my 5 year old daughter make & send to me, from #eyeo. #madeMyDay! Thanks Bill!  ", 
+            "Users": [
+                "@billatk"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Thanks Bill! RT @billatk: Wonderful nourishing time at Eyeo. Creative and visionary folks thanked me for changing their lives, and love...  ", 
+            "Users": [
+                "@billatk"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @sanussinus: \"People who have believed in me have drawn out the best in me, and I realized I could do that for others.\" Bill Atkinson...  ", 
+            "Users": [
+                "@sanussinus"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#Eyeo2013"
+            ], 
+            "Tweet": "RT @pdinnen: A second fragmentary and semi-stunned blog post on the fantastic event that was #Eyeo2013 http://t.co/wp3D8SsEJ0. Thank you @e\u2026  ", 
+            "Users": [
+                "@pdinnen", 
+                "@e"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "Love this. RT @katiemccurdy: @eyeofestival...gave ignite talk-meant the world. wrote about my experience http://t.co/igeGU4vb8j #eyeo2013  ", 
+            "Users": [
+                "@katiemccurdy", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @Swiley: Hackers playing with @tangibleint 's light wall at #eyeo2013 http://t.co/gWYdAb1gNO  ", 
+            "Users": [
+                "@Swiley", 
+                "@tangibleint"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#Eyeo"
+            ], 
+            "Tweet": "RT @tcorica: Hello World: Processing documentary features coding/dataViz rock stars, a bunch of whom I just met at #Eyeo! http://t.co/6tQ8\u2026  ", 
+            "Users": [
+                "@tcorica"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@neylano is your power supply MagSafe connector silver or white, new or old(dirty), at post office now.  ", 
+            "Users": [
+                "@neylano"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Indeed we will. Thanks to http://t.co/Gmy5AX3JS0 for them! RT @cjanuska: I hope @eyeofestival will post the opening titles soon. I loved it!  ", 
+            "Users": [
+                "@cjanuska", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo"
+            ], 
+            "Tweet": "RT @alignedleft: If you missed my #eyeo workshop, I\u2019ll be conducting \u201cCrazy Data Circles\u201d again at @itpcamp in NYC June 13! http://t.co/mf\u2026  ", 
+            "Users": [
+                "@alignedleft", 
+                "@itpcamp"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo", 
+                "#toxoplasmosis", 
+                "#notevenIknowwhetherIamserious", 
+                "#butIwasrightaboutmicrowaveballoonsovertheocean"
+            ], 
+            "Tweet": "RT @slavin_fpo: http://t.co/EsLExt4eid #eyeo #toxoplasmosis #notevenIknowwhetherIamserious #butIwasrightaboutmicrowaveballoonsovertheocean  ", 
+            "Users": [
+                "@slavin_fpo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @jan_wolski: Back home after all-consuming #eyeo2013. Short blog post about my festival thoughts: http://t.co/xLDr1xcYgz  ", 
+            "Users": [
+                "@jan_wolski"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#s", 
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @sanussinus: Supporting files from @memotv 's Black Art of #s wrkshp @ #eyeo2013 http://t.co/GTul3wWqGh Check out his MSAFreehandler. V\u2026  ", 
+            "Users": [
+                "@sanussinus", 
+                "@memotv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeofestival"
+            ], 
+            "Tweet": "Thanks for bringing Halo to eyeo!!! RT @tangibleint: Dave you're a terrific host. Thank you #eyeofestival for inviting us again  ", 
+            "Users": [
+                "@tangibleint"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeofestival"
+            ], 
+            "Tweet": "RT @tangibleint: Dave you're a terrific host. Thank you #eyeofestival for inviting us again  ", 
+            "Users": [
+                "@tangibleint"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Holo rocks. RT @HOLOmagazine: Congrats to @eyeofestival for another strong \u2018convergence\u2019. Inspired, now we dive headlong back into our...  ", 
+            "Users": [
+                "@HOLOmagazine", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @unFocusMedia: Eyeo 2013 links http://t.co/styGFm8yVg  ", 
+            "Users": [
+                "@unFocusMedia"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo"
+            ], 
+            "Tweet": "RT @sandsfish: @skunkmama overwhelmed by the layers of amazingness that happened and are happening as a result of #eyeo. so many opportunit\u2026  ", 
+            "Users": [
+                "@sandsfish", 
+                "@skunkmama"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @paontheinternet: Some notes from @zachlieberman's inspiring presentation, Poems Not Demos at Eyeo last week. http://t.co/nzaQckPs8G  ", 
+            "Users": [
+                "@paontheinternet", 
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @shashashasha: Still reeling from the tidal wave of amazingness and kindness from everyone on the last night of Eyeo. Thank you @eyeofes\u2026  ", 
+            "Users": [
+                "@shashashasha", 
+                "@eyeofes"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo"
+            ], 
+            "Tweet": "RT @jasonlong: One of my fav #eyeo projects: Semantic Sabotage by @sosolimited. \"Rainbow Sort\" highly recommended. http://t.co/cCO7JfCT90  ", 
+            "Users": [
+                "@jasonlong", 
+                "@sosolimited"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @source: .@mbostock wrote up his Eyeo talk and it's fantastic. http://t.co/RAtwBHI1hd  ", 
+            "Users": [
+                "@source", 
+                "@mbostock"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo"
+            ], 
+            "Tweet": "Thanks! RT @jbolognino: Intermission music curator killed it. LCD, Four Tet, Broken Social Scene, Pre-Fuse 73, even MMW. #eyeo...  ", 
+            "Users": [
+                "@jbolognino"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Thank you! RT @karlringman: Thanks to @blprnt @pitchinc & Dave for putting on the best festival there is. Can't wait for next years...  ", 
+            "Users": [
+                "@karlringman", 
+                "@blprnt", 
+                "@pitchinc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeofestival", 
+                "#eyeo2013"
+            ], 
+            "Tweet": "I like what you did there. :-) RT @prgarc: Wow what an Eyeopening week... #eyeofestival #eyeo2013  ", 
+            "Users": [
+                "@prgarc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @memotv: at #eyeo2013, @ipoupyrev inventing the future. World 2.0. mind blowing.  ", 
+            "Users": [
+                "@memotv", 
+                "@ipoupyrev"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": ".@ipoupyrev thanks so much Ivan for your amazing talk & work. #eyeo2013  ", 
+            "Users": [
+                "@ipoupyrev"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ipoupyrev: Eyeo is finished, really thankful to Dave for inviting to speak, it was great experience. Flying to Pittsburgh now. @eyeo2013  ", 
+            "Users": [
+                "@ipoupyrev", 
+                "@eyeo2013"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "Thanks Daito!! RT @daitomanabe: a big thank you to @eyeofestival !! #eyeo2013 \u6765\u5e74\u3082\u5fc5\u305a\u53c2\u52a0\u3057\u307e\u3059\uff01 http://t.co/ARpLiHEQ9l  ", 
+            "Users": [
+                "@daitomanabe", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo", 
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @deadlycyns: I feel like I just got home from summer camp. #eyeo #eyeo2013  ", 
+            "Users": [
+                "@deadlycyns"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @liam_young: Minneapolis to Detroit. Thanks for all the kind words #eyeo2013 Hope to see you again next year...  ", 
+            "Users": [
+                "@liam_young"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @earstudio: New tools @NeoLucida, bloody provocations @curiousoctopus, and old friends (many!) made #eyeo2013 an eye-opening joy - thank\u2026  ", 
+            "Users": [
+                "@earstudio", 
+                "@NeoLucida", 
+                "@curiousoctopus"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @walker407: Flying at 500 mph. Mind racing at 50,000 mph #eyeo2013  ", 
+            "Users": [
+                "@walker407"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @dylanschenker: Words I forgot: what a poetic and magical week it has been. those two words are the ones that defined this entire confer\u2026  ", 
+            "Users": [
+                "@dylanschenker"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @RandomEtc: Goodbyeo to friends old and new. Fully recharged. Thanks and see you again #eyeo2013  ", 
+            "Users": [
+                "@RandomEtc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @leyink: I feel like my brain has been taken out and rearranged in the best way. Thank you @eyeofestival for an amazing week. #eyeo2013  ", 
+            "Users": [
+                "@leyink", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "Thank you all! #eyeo2013 @pitchinc @blprnt  ", 
+            "Users": [
+                "@pitchinc", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @hunterfuto: #eyeo2013 - got exactly what I came for and then some. Wish I could fit all of you into my carry-on  ", 
+            "Users": [
+                "@hunterfuto"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo"
+            ], 
+            "Tweet": "RT @runemadsen: I feel honored to have met so many personal heroes of mine at #eyeo. Thanks for being open, honest and welcoming. @golan @R\u2026  ", 
+            "Users": [
+                "@runemadsen", 
+                "@golan", 
+                "@R"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kcimc: if i were stranded on a desert island and could only bring one thing, it would be eyeo <3  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@neylano email us about your adaptor - we'll look into it.  ", 
+            "Users": [
+                "@neylano"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@melbahead I think we have it. Probably best if we plan to mail it to you. Email us.  ", 
+            "Users": [
+                "@melbahead"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @sanussinus: Hey, light rail is dwn 4 maintenance late 2nite & tmrw. Plan ur trips (2 airport) arnd it. @blprnt @scottjanousek plz RT. #\u2026  ", 
+            "Users": [
+                "@sanussinus", 
+                "@blprnt", 
+                "@scottjanousek"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @asweetface: @design_io and @theowatson's eyeo talk is giving me dreams. Beautiful work. #eyeo2013 http://t.co/E7P2dSotkC  ", 
+            "Users": [
+                "@asweetface", 
+                "@design_io", 
+                "@theowatson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013", 
+                "#dataviz", 
+                "#ethics", 
+                "#truth"
+            ], 
+            "Tweet": "RT @numberOneUser: @jakeporway Great insight about non statistical dataviz = rhetoric. #eyeo2013 #dataviz #ethics #truth  ", 
+            "Users": [
+                "@numberOneUser", 
+                "@jakeporway"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @charlestweets: Tackling tough issues on privacy, race, and law in the context of art and technology by @hdeweyh. Loving the breadth of \u2026  ", 
+            "Users": [
+                "@charlestweets", 
+                "@hdeweyh"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013", 
+                "#datadrivenshirt"
+            ], 
+            "Tweet": "RT @numberOneUser: Survey results revealed: 13 festies are murderers. \"Watch your back\" - @stefpos #eyeo2013 #datadrivenshirt  ", 
+            "Users": [
+                "@numberOneUser", 
+                "@stefpos"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @denislirette: conversation w/ toolmakers, incredible panel including @billatk @blprnt @kcimc and @reas #eyeo2013 http://t.co/phTowqUSFZ  ", 
+            "Users": [
+                "@denislirette", 
+                "@billatk", 
+                "@blprnt", 
+                "@kcimc", 
+                "@reas"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @denislirette: @tangibleint halo installation #eyeo2013 http://t.co/BNcqsLFVKP  ", 
+            "Users": [
+                "@denislirette", 
+                "@tangibleint"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @memotv: I've seen @daitomanabe present a dozen times, and will never tire of it. What a legend. #eyeo2013 http://t.co/5JZfI8GUcI  ", 
+            "Users": [
+                "@memotv", 
+                "@daitomanabe"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "Thanks Jake! RT @Jake_Barton: Still glowing from the reception to my talk \"Improvisation and Technology\" Much gratitude to #eyeo2013  ", 
+            "Users": [
+                "@Jake_Barton"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo"
+            ], 
+            "Tweet": "RT @errafael: Incredibly moved and honoured by the support of the #eyeo conference attendees and organizers. Mil gracias a todos de coraz\u00f3n!  ", 
+            "Users": [
+                "@errafael"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo", 
+                "#really"
+            ], 
+            "Tweet": "RT @blprnt: Thank you, #eyeo people. You are the best. #really  ", 
+            "Users": [
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo"
+            ], 
+            "Tweet": "RT @cjanuska: The reception for @errafael's surprise return to #eyeo was a phenomenal community embrace. Beautiful @eyeofestival  ", 
+            "Users": [
+                "@cjanuska", 
+                "@errafael", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#Eyeo2013"
+            ], 
+            "Tweet": "RT @erinsfisher: @errafael just took the stage. So impressed and moved by the supportive community that is @eyeofestival. #Eyeo2013  ", 
+            "Users": [
+                "@erinsfisher", 
+                "@errafael", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mattb: I think @eyeofestival has DoS-attacked my brain. it's been a while since I did this much thinking at a conference.  ", 
+            "Users": [
+                "@mattb", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @SlamAcademy: @eyeofestival Slam Academy is open!  ", 
+            "Users": [
+                "@SlamAcademy", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "RT @blprnt: No pressure - #eyeo2013 is the test audience for MoMA's upcoming History of Violence (working title) exhibition, courtesy of @c\u2026  ", 
+            "Users": [
+                "@blprnt", 
+                "@c"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "Love, love, love Poala Antonelli @curiousoctopus always. Another stellar view into how she thinks about design tonight at #eyeo2013  ", 
+            "Users": [
+                "@curiousoctopus"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo"
+            ], 
+            "Tweet": "RT @shashashasha: \"I just really want to make things for secret agents and superheroes\" @katehartman at #eyeo  ", 
+            "Users": [
+                "@shashashasha", 
+                "@katehartman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo"
+            ], 
+            "Tweet": "RT @alexislloyd: Really fantastic talk by @katehartman . Clear, in-depth discussion of process, approach, and practice. #eyeo  ", 
+            "Users": [
+                "@alexislloyd", 
+                "@katehartman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @billder: Seeing @errafael talk, fall off stage, break two ribs\u2026 come back next night, surprise all to finish his talk is best conf mome\u2026  ", 
+            "Users": [
+                "@billder", 
+                "@errafael"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "If you lost an iPhone tonight at Pantages. See dave. (going to )  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo2013"
+            ], 
+            "Tweet": "Amazing night. Amazing. #eyeo2013 @errafael  ", 
+            "Users": [
+                "@errafael"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo"
+            ], 
+            "Tweet": "RT @blprnt: Hey #eyeo - @billatk, @reas, @kcimc and I will be talking about toolmaking tomorrow at 10:30 in the Cinema. Join us!  ", 
+            "Users": [
+                "@blprnt", 
+                "@billatk", 
+                "@reas", 
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Yup. RT @mattschoenholz: Daito manabe... Mind blown @eyeofestival  ", 
+            "Users": [
+                "@mattschoenholz", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#Eyeo"
+            ], 
+            "Tweet": "RT @REAS: Some folks requested the book list from my #Eyeo talk. Here's the complete bibliography: http://t.co/eqiUplfZjI @PhilDRoberts @st\u2026  ", 
+            "Users": [
+                "@REAS", 
+                "@PhilDRoberts", 
+                "@st"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo"
+            ], 
+            "Tweet": "RT @blprnt: I hope everyone at #eyeo will download Bill's PhotoCard app and send some 'little packets of love'. http://t.co/H438L3pxl8  ", 
+            "Users": [
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#e"
+            ], 
+            "Tweet": "RT @jakeporway: \"People who have believed in me have drawn out the best in me, and I realized I could do that for others.\" Bill Atkinson #e\u2026  ", 
+            "Users": [
+                "@jakeporway"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#eyeo"
+            ], 
+            "Tweet": ":-) RT @memotv: Takeaway from #eyeo this far: do what @golan tells you to do, even if it sends you to the hospital.  ", 
+            "Users": [
+                "@memotv", 
+                "@golan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "We're with @errafael at the hospital. Getting x-rays now. He's in good spirits. Thank you all for being an amazing crowd. 1st class. -dave  ", 
+            "Users": [
+                "@errafael"
+            ]
+        }
+    ], 
+    "name": "eyeofestival.txt"
+}

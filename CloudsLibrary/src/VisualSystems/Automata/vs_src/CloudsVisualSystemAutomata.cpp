@@ -19,28 +19,17 @@ void CloudsVisualSystemAutomata::selfSetupGui()
     customGui->addSlider("RADIUS", 1.0, 50.0, &radius);
     
     customGui->addSpacer();
-    fgHue = new ofx1DExtruder(0);
-    fgHue->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(fgHue);
-    customGui->addSlider("FG HUE", 0.0, 255.0, fgHue->getPosPtr());
-    fgSat = new ofx1DExtruder(0);
-    fgSat->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(fgSat);
-    customGui->addSlider("FG SAT", 0.0, 255.0, fgSat->getPosPtr());
-    fgBri = new ofx1DExtruder(0);
-    fgBri->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(fgBri);
-    customGui->addSlider("FG BRI", 0.0, 255.0, fgBri->getPosPtr());
-    fgAlpha = new ofx1DExtruder(0);
-    fgAlpha->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(fgAlpha);
-    customGui->addSlider("FG ALPHA", 0.0, 255.0, fgAlpha->getPosPtr());
+    customGui->addSlider("FG HUE 1", 0.0f, 0.99999f, &fgParams1[0]);
+    customGui->addSlider("FG SAT 1", 0.0f, 1.0f, &fgParams1[1]);
+    customGui->addSlider("FG BRI 1", 0.0f, 1.0f, &fgParams1[2]);
     
     customGui->addSpacer();
-    bgAlpha = new ofx1DExtruder(0);
-    bgAlpha->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(bgAlpha);
-    customGui->addSlider("BG ALPHA", 0.0, 255.0, bgAlpha->getPosPtr());
+    customGui->addSlider("FG HUE 2", 0.0f, 0.99999f, &fgParams2[0]);
+    customGui->addSlider("FG SAT 2", 0.0f, 1.0f, &fgParams2[1]);
+    customGui->addSlider("FG BRI 2", 0.0f, 1.0f, &fgParams2[2]);
+
+    customGui->addSpacer();
+    customGui->addSlider("FADE", 0.0, 0.5, &fade);  // Fucks up if I go up to 1.0, don't know why, don't care anymore...
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemAutomata::selfGuiEvent);
 	guis.push_back(customGui);
@@ -50,21 +39,7 @@ void CloudsVisualSystemAutomata::selfSetupGui()
 //--------------------------------------------------------------
 void CloudsVisualSystemAutomata::selfGuiEvent(ofxUIEventArgs &e)
 {
-    if (e.widget->getName() == "FG HUE") {
-        fgHue->setPosAndHome(fgHue->getPos());
-	}
-    else if (e.widget->getName() == "FG SAT") {
-        fgSat->setPosAndHome(fgSat->getPos());
-	}
-    else if (e.widget->getName() == "FG BRI") {
-        fgBri->setPosAndHome(fgBri->getPos());
-	}
-    else if (e.widget->getName() == "FG ALPHA") {
-        fgAlpha->setPosAndHome(fgAlpha->getPos());
-    }
-    else if (e.widget->getName() == "BG ALPHA") {
-        bgAlpha->setPosAndHome(bgAlpha->getPos());
-    }
+
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -88,7 +63,8 @@ void CloudsVisualSystemAutomata::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemAutomata::selfSetup()
 {
     // Load the shaders.
-    shader.load("", getVisualSystemDataPath() + "shaders/conway.frag");
+    conwayShader.load("", getVisualSystemDataPath() + "shaders/conway.frag");
+    blenderShader.load("", getVisualSystemDataPath() + "shaders/blender.frag");
     bIs2D = true;
 	
     // Set defaults.
@@ -158,8 +134,8 @@ void CloudsVisualSystemAutomata::selfSceneTransformation(){
 //--------------------------------------------------------------
 void CloudsVisualSystemAutomata::selfUpdate()
 {
-    fgColor.setHsb(fgHue->getPos(), fgSat->getPos(), fgBri->getPos(), fgAlpha->getPos());
-    bgColor.a = bgAlpha->getPos();
+    fgColor1.setHsb(fgParams1[0], fgParams1[1], fgParams1[2]);
+    fgColor2.setHsb(fgParams2[0], fgParams2[1], fgParams2[2]);
     
     if (bRestart || outFbo.getWidth() != ofGetWidth() || outFbo.getHeight() != ofGetHeight()) {
         restart();
@@ -168,34 +144,32 @@ void CloudsVisualSystemAutomata::selfUpdate()
     
     ofPushStyle();
     ofEnableAlphaBlending();
-    texFbo.begin();
     {
-//        ofClear(255, 255);
+        texFbo.begin();
+        {
+//            ofClear(255, 255);
 
-        ofSetColor(255);
-        outFbo.draw(0, 0);
-        
-        ofSetColor(fgColor);
-        ofCircle(ofGetMouseX(), ofGetMouseY(), radius);
-    }
-    texFbo.end();
-    ofPopStyle();
-    
-    ofPushStyle();
-    ofEnableAlphaBlending();
-    outFbo.begin();
-    shader.begin();
-    shader.setUniformTexture("tex", texFbo.getTextureReference(), 1);
-    shader.setUniform4f("liveColor", fgColor.r / 255.0f, fgColor.g / 255.0f, fgColor.b / 255.0f, fgColor.a / 255.0f);
-    shader.setUniform4f("deadColor", bgColor.r / 255.0f, bgColor.g / 255.0f, bgColor.b / 255.0f, bgColor.a / 255.0f);
-    {
-//        ofClear(0, 255);
+            ofSetColor(255);
+            outFbo.draw(0, 0);
+            
+            ofSetColor(255);
+            ofCircle(GetCloudsInputX(), GetCloudsInputY(), radius);
+        }
+        texFbo.end();
 
-        ofSetColor(255);
-        mesh.draw();
+        outFbo.begin();
+        conwayShader.begin();
+        conwayShader.setUniformTexture("tex", texFbo.getTextureReference(), 1);
+        conwayShader.setUniform1f("fade", fade);
+        {
+//            ofClear(0, 255);
+
+            ofSetColor(255);
+            mesh.draw();
+        }
+        conwayShader.end();
+        outFbo.end();
     }
-    shader.end();
-    outFbo.end();
     ofPopStyle();
 }
 
@@ -206,14 +180,7 @@ void CloudsVisualSystemAutomata::selfDraw()
         ofPushMatrix();
         ofScale(1, -1, 1);
         ofTranslate(-ofGetWidth() / 2, -ofGetHeight() / 2);
-        ofPushStyle();
-        ofEnableAlphaBlending();
-        ofDisableLighting();
-        {
-            ofSetColor(255, 255);
-            outFbo.draw(0, 0);
-        }
-        ofPopStyle();
+        render();
         ofPopMatrix();
     }
 }
@@ -227,14 +194,26 @@ void CloudsVisualSystemAutomata::selfDrawDebug(){
 void CloudsVisualSystemAutomata::selfDrawBackground()
 {
     if (bIs2D) {
-        ofPushStyle();
-        ofEnableAlphaBlending();
-        {
-            ofSetColor(255, 255);
-            outFbo.draw(0, 0);
-        }
-        ofPopStyle();
+        render();
     }
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemAutomata::render()
+{
+    ofPushStyle();
+    ofEnableAlphaBlending();
+    blenderShader.begin();
+    blenderShader.setUniformTexture("tex", outFbo.getTextureReference(), 1);
+    blenderShader.setUniform2f("dims", outFbo.getWidth(), outFbo.getHeight());
+    blenderShader.setUniform4f("frontColor1", fgColor1.r, fgColor1.g, fgColor1.b, fgColor1.a);
+    blenderShader.setUniform4f("frontColor2", fgColor2.r, fgColor2.g, fgColor2.b, fgColor2.a);
+    {
+        ofSetColor(255);
+        mesh.draw();
+    }
+    blenderShader.end();
+    ofPopStyle();
 }
 
 // this is called when your system is no longer drawing.
@@ -251,7 +230,9 @@ void CloudsVisualSystemAutomata::selfExit(){
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemAutomata::selfKeyPressed(ofKeyEventArgs & args){
-	
+	if(args.key == 'R'){
+		bRestart = true;
+	}
 }
 void CloudsVisualSystemAutomata::selfKeyReleased(ofKeyEventArgs & args){
 	

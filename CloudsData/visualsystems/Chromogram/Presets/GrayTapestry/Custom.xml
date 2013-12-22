@@ -1,0 +1,98 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell Width</Name>
+    <Value>24.330049515</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell Height</Name>
+    <Value>45.472908020</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Hue - Input range</Name>
+    <HighValue>22.167495728</HighValue>
+    <LowValue>-2.463058472</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Hue - Output range</Name>
+    <HighValue>202.241378784</HighValue>
+    <LowValue>151.995071411</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Sat - Input range</Name>
+    <HighValue>7.389160156</HighValue>
+    <LowValue>-5.418716431</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Sat - Output range</Name>
+    <HighValue>11.305418015</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Bright - Input range</Name>
+    <HighValue>6.403938293</HighValue>
+    <LowValue>-2.463058472</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Bright - Output range</Name>
+    <HighValue>239.926101685</HighValue>
+    <LowValue>38.940887451</LowValue>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Oscilllation Mode</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Oscillation period</Name>
+    <Value>3792</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>H NoiseSpeed</Name>
+    <Value>0.711822689</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>S NoiseSpeed</Name>
+    <Value>0.835960627</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>B NoiseSpeed</Name>
+    <Value>0.702955663</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Stochasticity Mode</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>H Stochasticity</Name>
+    <Value>4434.054199219</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Saturation Stochasticity</Name>
+    <Value>3892.236572266</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Brightness Stochasticity</Name>
+    <Value>4040.004882812</Value>
+</Widget>

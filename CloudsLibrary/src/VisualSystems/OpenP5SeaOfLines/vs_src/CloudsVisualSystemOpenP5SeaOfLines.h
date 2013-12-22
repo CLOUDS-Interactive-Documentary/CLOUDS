@@ -101,9 +101,9 @@ class CloudsVisualSystemOpenP5SeaOfLines : public CloudsVisualSystem
 
     protected:
         ofxUISuperCanvas * customGui;
-        ofx1DExtruder * bgAlpha;
-        ofx1DExtruder * lineHue1, * lineSat1, * lineBri1, * lineAlpha1;
-        ofx1DExtruder * lineHue2, * lineSat2, * lineBri2, * lineAlpha2;
+    
+        float bgAlpha;
+        float lineParams1[4], lineParams2[4];
         ofFloatColor lineColor1, lineColor2;
     
         float collideDist, lineDist;

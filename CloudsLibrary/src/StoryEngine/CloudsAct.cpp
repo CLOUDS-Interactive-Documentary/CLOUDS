@@ -41,9 +41,11 @@ void CloudsAct::populateTime(){
 	timeline.setMinimalHeaders(true);
 	timeline.disableEvents();
     timeline.clear();
-	
+    
 	timeline.setLoopType(OF_LOOP_NONE);
     timeline.setDurationInSeconds(duration);
+   	timeline.setInOutRange(ofRange(0,1.0));
+ 
 	timeline.setPageName("story");
     topicsTrack = timeline.addFlags("Topics");
     visualSystemsTrack = timeline.addFlags("Visual Systems");
@@ -457,6 +459,6 @@ void CloudsAct::clear(){
     duration = 0;
 }
 
-CloudsEvents& CloudsAct::getEvents(){
+CloudsStoryEvents& CloudsAct::getEvents(){
 	return events;
 }

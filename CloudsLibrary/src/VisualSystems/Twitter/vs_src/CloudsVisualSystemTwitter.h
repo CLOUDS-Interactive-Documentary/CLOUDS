@@ -13,7 +13,8 @@
 #include "CloudsVisualSystem.h"
 #include "ofxJSONElement.h"
 #include "Tweeter.h"
-
+#include "ofxFTGL.h"
+#include "ofxBillboard.h"
 //--------------------------------------------------------------
 //--------------------------------------------------------------
 class CloudsVisualSystemTwitter : public CloudsVisualSystem
@@ -27,98 +28,195 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
+	void selfSetDefaults();
+	
     void selfSetupGui();
     void selfGuiEvent(ofxUIEventArgs &e);
-    
-	//Use system gui for global or logical settings, for exmpl
     void selfSetupSystemGui();
     void guiSystemEvent(ofxUIEventArgs &e);
-    
-	//use render gui for display settings, like changing colors
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
-
-	// selfSetup is called when the visual system is first instantiated
-	// This will be called during a "loading" screen, so any big images or
-	// geometry should be loaded here
     void selfSetup();
-
-	// selfBegin is called when the system is ready to be shown
-	// this is a good time to prepare for transitions
-	// but try to keep it light weight as to not cause stuttering
     void selfBegin();
-
-	// selfPresetLoaded is called whenever a new preset is triggered
-	// it'll be called right before selfBegin() and you may wish to
-	// refresh anything that a preset may offset, such as stored colors or particles
 	void selfPresetLoaded(string presetPath);
-    
-	//do things like ofRotate/ofTranslate here
-	//any type of transformation that doesn't have to do with the camera
     void selfSceneTransformation();
-	
-	//normal update call
 	void selfUpdate();
-
-	// selfDraw draws in 3D using the default ofEasyCamera
-	// you can change the camera by returning getCameraRef()
     void selfDraw();
-	
-	// use this to draw the point cloud
 	void selfDrawRGBD();
-	
-    // draw any debug stuff here
 	void selfDrawDebug();
-
-	//draws through RGBD camera;
-//	void selfDrawRGBD();
-	
-	// or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 	void selfDrawBackground();
-
-	// this is called when your system is no longer drawing.
-	// Right after this selfUpdate() and selfDraw() won't be called any more
 	void selfEnd();
-
-	// this is called when you should clear all the memory and delet anything you made in setup
     void selfExit();
-
-	//events are called when the system is active
-	//Feel free to make things interactive for you, and for the user!
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
-    
     void selfMouseDragged(ofMouseEventArgs& data);
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
     
-    void loadJSONData();
-    void addUsersFromMentions();
-    void createPajekNetwork();
-    int getUserIdByName(string name);
+    void initSystem(string filePath);
     
-    ofxJSONElement result;
+    
+    //twitter feed
+    void drawFeed();
+    void updateCurrentSelection(int index,bool firstTime );
+    
+    //i/o stuff
+    void loadJSONData(string folderName);
+    void addUsersFromMentions();
+    void createPajekNetwork(string outputFileName);
+    void parseClusterNetwork(string fileName);
+    void createNewGraph(string outputFileName, string inputDataFolder);
+    
 
-    vector<pair<string,string> > links;
+    //data stuff
+    int getUserIdByName(string name);
+    vector<Tweeter> getTweetersForDate(int index);
+    Tweeter& getTweeterByID(int _id );
+    string getDateAsString(Date d);
+    void drawTweetsForDate(int index);
+    void CompareDates(Date d1,Date d2);
+    void loadGraphFromPath(string filePath);
+    void clearData();
+    void sortTweetsByDate();
+    
+    //shader stuff
+    void reloadShaders();
+
+    ofImage tweetDeckMenu;
+    
+    //twitter feed params
+    int numberOfTweets;
+    int currentTweetFeedIndex =0;
+    float heightOffset;
+    float avatarTweetGap;
+    float textHeightOffset;
+    float timeTillNextUpdate;
+    float minTimeGapForNextTweet;
+    float randomRangeMin,randomRangeMax;
+    int avatarSize;
+    float tweetDeckWidth;
+    float tweetDeckHeight;
+    float tweetDeckHeightOffset;
+    float tweetDeckWidthOffset;
+    float tweetDeckLineOffset;
+
+    
+    float animationLerpAmt;
+    float animationLerpRate;
+    float feedStringWidthCap;
+    
+    //text stuff
+    ofxJSONElement result;
+    ofxFTGLSimpleLayout font;
+    ofxFTGLSimpleLayout tweetFont;
+    ofxFTGLSimpleLayout tweetFontSmall;
+    ofxFTGLSimpleLayout twitterHandleFont;
+    ofxFTGLTextAlignment textAlign;
+    float stringWidth;
+    float fontSize;
+    float tweetFontSize;
+    float tweetLineLength;
+    float tweetHandleFontSize;
+    float tweetHandleLineLength;
+    
+    int minUserMentions;
+
+
+    
+    //draw stuff
+    void loadMesh();
+    void updateMeshFromTweets(int index);
+    void updateMesh();
+    void drawText(string text, ofVec3f pos);
+    void drawText2D(string text, ofVec2f pos);
+
+    //helpers 
+    vector<Date> dateIndex;
+    map<string,int>dateIndexMap;
+    set<pair<int,int> > links;
+    map<pair<string, string>, pair<int, int> >lineIndexPairs;
     map<string,int> numberOfMentions;
-	
-    // if you use a custom camera to fly through the scene
-	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
+    map<string,int> userNameIdMap;
+
+    int currentDateIndex;
+    float dateIndexMin, dateIndexMax;
+    void updateLabelWithCurrentMeshName(string name);
+
+    // Ma boooooools
+    bool bRenderMesh;
+    bool bRenderText;
+    bool bRenderFeed;
+    bool bAnimate;
+    bool rotateModel;
+    bool bAnimateFeed;
+    
+
     
 protected:
     ofTrueTypeFont listFont;
     ofColor listColor;
-	
-	ofxUISuperCanvas * listGui, * treeGui;
-    ofx1DExtruder * listHue, * listSat, * listBri, * listAlpha;
-    ofx1DExtruder * textHue, * textSat, * textBri, * textAlpha;
-	ofx1DExtruder * lineHue, * lineSat, * lineBri, * lineAlpha;
+        
     
     vector<Tweeter> tweeters;
+    stringstream ss;
+    
+    ofVboMesh nodeMesh;
+    ofVboMesh edgeMesh;
+    ofVec3f min,max;
+    
+    int refreshRate;
+    float edgeDecayRate;
 
+    ofImage sprite;
+    ofShader lineShader;
+    ofShader pointsShader;
+    float meshExpansion;
+    float pointSize;
+    ofxUISuperCanvas* clusterGui;
+    ofxUISuperCanvas* textGui;
+    ofxUISuperCanvas* twitterFeedGui;
+    
+    vector<Tweeter*> activeTweeters;
+    vector<string*> activeTweets;
+    vector<pair<string*, string*> >  activeTweetPairs;
+    vector<pair<string*, string*> > currentSelection;
+    
+    map<string, ofImage> avatars;
+
+    void loadAvatars();
+    void addColorToGui(ofxUISuperCanvas* gui, string prefix, ofFloatColor& col, bool doAlpha = true);
+	
+	float edgeInterpolateExponent;
+	ofFloatColor getRGBfromHSV(ofFloatColor hsv);
+	//this is the base color of the lines close to the nodes
+	ofFloatColor lineNodeBaseHSV;
+	//this is the base color of the lines at the midpoint
+	ofFloatColor lineEdgeBaseHSV;
+	
+	//this is the pop color of the lines close to the nodes
+	ofFloatColor lineNodePopHSV;
+	//this is the pop color of the lines at the midpoint
+	ofFloatColor lineEdgePopHSV;
+    
+	//this is the base color of the node
+	ofFloatColor nodeBaseColorHSV;
+	//this is the pop color of the node
+	ofFloatColor nodePopColorHSV;
+	   
+    ofFloatColor textColor;
+    ofFloatColor textColorModifier;
+    
+    string currentMeshFilePath;
+    string currentMeshFileName;
+    int theme = 0;
+    float xScale,yScale, zScale;
+    
+    int rotationRate;
+    float rotation ;
+    float rotationAmount;
+
+    ofRectangle tweetFeedRect;
+    
 	
 };

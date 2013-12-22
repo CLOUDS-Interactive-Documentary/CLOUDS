@@ -25,8 +25,8 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	clipPrerolled = false;
 	
 #ifdef AVF_PLAYER
-	currentPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
 	nextPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
+	currentPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
 #else
 	currentPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 	nextPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
@@ -145,30 +145,36 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 	nearClip = minDepth = XML.getValue("adjustment:depth:min", 1.0f);
 	farClip = maxDepth = XML.getValue("adjustment:depth:max", 6000.0f);
 	
-	//TODO automatically
+	////////-----NO LONGER USED
 	//this describes the face features: eyes, mouth, and skin
 	faceFeatureRect = ofRectangle(depthRect.x, depthRect.getMaxY(), 640, 360);
 	//this describes the change each frame
 	deltaChangeRect = ofRectangle(normalRect.x, normalRect.getMaxY(), 640, 360);
+	////////////
 	
+	hasSkinSettings = XML.tagExists("skin");
+	skinSampleColor.r = XML.getValue("skin:targetR", 0.);
+	skinSampleColor.g = XML.getValue("skin:targetG", 0.);
+	skinSampleColor.b = XML.getValue("skin:targetB", 0.);
+	skinWeights.x = XML.getValue("skin:hueWeight", 0.);
+	skinWeights.y = XML.getValue("skin:satWeight", 0.);
+	skinWeights.z = XML.getValue("skin:brightWeight", 0.);
+	skinThreshold.min = XML.getValue("skin:lowerThreshold", .0);
+	skinThreshold.max = XML.getValue("skin:upperThreshold", 1.0);
+	
+	cout << "HAS SKIN? " << hasSkinSettings << endl;
+
 	//	float colorWidth  = getPlayer().getWidth();
 	//	float colorHeight = getPlayer().getHeight();
 	float colorWidth  = 1280;
 	float colorHeight = 1560;
+    colorScale.x = colorWidth / colorRect.width;
+	colorScale.y = float(colorHeight - (depthRect.height + faceFeatureRect.height) ) / float(colorRect.height);
+	useFaces = true;
 	
-    colorScale.x = float(colorWidth) / float(colorRect.width);
-	if(colorHeight > 1200){
-		useFaces = true;
-		colorScale.y = float(colorHeight - (depthRect.height + faceFeatureRect.height) ) / float(colorRect.height);
-	}
-	else{
-		useFaces = false;
-		colorScale.y = float(colorHeight - (depthRect.height) ) / float(colorRect.height);
-	}
-
 	currentPlayer->stop();
-	nextPlayer->play();
 	swap(currentPlayer,nextPlayer);
+	currentPlayer->play();
 	clipPrerolled = false;
 	
 //	cout << "swapped and played clip " << endl;
@@ -183,7 +189,7 @@ void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
 		return;
 	}
 	
-    shader.setUniformTexture("rgbdTexture", getPlayer().getTextureReference(), 0);
+    shader.setUniformTexture("rgbdTexture", getPlayer().getTextureReference(), 1);
     shader.setUniform2f("textureSize",  getPlayer().getWidth(), getPlayer().getHeight());
     
     shader.setUniform4f("colorRect", colorRect.x, colorRect.y, colorRect.width, colorRect.height);
@@ -208,9 +214,6 @@ void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
     shader.setUniform4f("normalRect", normalRect.x, normalRect.y, normalRect.width, normalRect.height);
     shader.setUniform4f("faceFeatureRect", faceFeatureRect.x, faceFeatureRect.y, faceFeatureRect.width, faceFeatureRect.height);
     shader.setUniform4f("deltaChangeRect", deltaChangeRect.x, deltaChangeRect.y, deltaChangeRect.width, deltaChangeRect.height);
-
-	shader.setUniform1i("useFaces", useFaces ? 1 : 0);
-	shader.setUniform1f("flowPosition", flowPosition);
 	
 	shader.setUniform1f("farClip", farClip);
     shader.setUniform1f("nearClip", nearClip);
@@ -218,7 +221,14 @@ void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
 
 	shader.setUniform1f("minDepth", minDepth);
     shader.setUniform1f("maxDepth", maxDepth);
+	
+	shader.setUniform3f("skinSampleColor",skinSampleColor.r,skinSampleColor.g,skinSampleColor.b);
+	shader.setUniform3f("skinWeights", skinWeights.x,skinWeights.y,skinWeights.z);
+	shader.setUniform2f("skinThreshold", skinThreshold.min, skinThreshold.max);
 
+	shader.setUniform3f("headPosition",headPosition.x,-headPosition.y,headPosition.z);
+	
+	shader.setUniform1f("flowPosition", flowPosition);
 }
 
 //--------------------------------------------------------------- ACTIONS
@@ -234,7 +244,8 @@ ofVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
 void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	
 	currentPlayer->update();
-	if(clipPrerolled){
+	if(clipPrerolled)
+	{
 		nextPlayer->update();
 	}
 	

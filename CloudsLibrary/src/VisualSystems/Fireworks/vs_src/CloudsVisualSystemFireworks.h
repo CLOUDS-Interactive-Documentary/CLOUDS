@@ -11,6 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "CloudsGlobal.h"
 
 class FireworkRocket;
 class FireworkRocket{
@@ -89,6 +90,7 @@ public:
 		endTime = startTime + span;
 		bClamp = true;
 		bEnded = false;
+		textureIndex = ofRandom(0, 4);
 	};
 	
 	FireworkEmitter(float _span)
@@ -101,7 +103,7 @@ public:
 	};
 	~FireworkEmitter(){};
 	
-	void setup( float _startTime, float _span, ofVec3f _startPos, ofVec3f _endPos )
+	void setup( float _startTime, float _span, ofVec3f _startPos, ofVec3f _endPos, int _textureIndex, int _colorIndex )
 	{
 		startTime = _startTime;
 		span = _span;
@@ -110,6 +112,9 @@ public:
 		
 		startPos = _startPos;
 		endPos = _endPos;
+		
+		textureIndex = _textureIndex;
+		colorIndex = _colorIndex;
 	}
 	
 	void update(float t = ofGetElapsedTimef())
@@ -122,18 +127,12 @@ public:
 			vel = lastPos - pos;
 		}
 		
-		if(!bStarted && t >= startTime)
-		{
-			bStarted = true;
-		}
-		
-		else if( t>= endTime)
-		{
-			bEnded = true;
-		}
+
+		bStarted = t >= startTime;
+		bEnded = endTime < t;
 	}
 	
-	void 	  operator=( const FireworkEmitter e)
+	void operator=( const FireworkEmitter e)
 	{
 		startTime = e.startTime;
 		endTime = e.endTime;
@@ -147,6 +146,9 @@ public:
 		vel = e.vel;
 		origin = e.origin;
 		q = e.q;
+		
+		textureIndex = e.textureIndex;
+		colorIndex = e.colorIndex;
 	};
 	
 	float startTime, endTime, age, span;
@@ -156,6 +158,9 @@ public:
 	
 	bool bEnded, bStarted;
 	ofxEasingSine ease;
+	
+	int textureIndex;
+	int colorIndex;
 };
 
 //TODO: rename this to your own visual system
@@ -240,17 +245,18 @@ public:
 	void loadFileToGeometry( string loc, vector<ofVec3f>& points );
 
 	
-	ofCamera& getCameraRef(){
-		//		return cloudsCamera;
-		return camera;
-	}
+//	ofCamera& getCameraRef(){
+//		//		return cloudsCamera;
+//		return camera;
+//	}
 	
+	void updateColors();
 	
 	void updateVbo();
 	void explodeFireWork( ofVec3f origin=ofVec3f(), ofVec3f vel=ofVec3f() );
-	void emitFromPoint( ofVec3f point, ofVec3f dir, float lifespan=ofRandom(1.,3.), float t=ofGetElapsedTimef() );
+	void emitFromPoint( ofVec3f point, ofVec3f dir, float lifespan=ofRandom(1.,3.), float t=ofGetElapsedTimef(), float texIndex=0, int colorIndex=0 );
 	
-	void trailPoint( ofVec3f point, ofVec3f vel = ofVec3f(), int count = 10 );
+	void trailPoint( ofVec3f point, ofVec3f vel = ofVec3f(), int count = 10, float texIndex = 0, int colorIndex=0);
 	
 	//camera
 //	ofEasyCam camera;
@@ -290,7 +296,8 @@ public:
 	float fireWorkExplosionTime;
 	
 	//render attributes
-	ofVec4f startColor, endColor;
+	ofColor startColor, endColor;
+	float startColorSaturation, endColorSaturation;
 	
 	ofxUISuperCanvas* fireworksRenderGui;
 	ofxUISuperCanvas* fireworksBehaviorGui;
@@ -305,6 +312,8 @@ public:
 	
 	void explodeGeometry( vector<ofVec3f>& vertices, ofVec3f offset, ofVec3f rocketStart );
 	void dodecahedronExplostion( ofVec3f offset );
+	
+	float getRandomTextureIndex();
 	
 	ofVec3f nextExplosion;
 	
@@ -327,10 +336,27 @@ public:
 	int rocketCount;
 	
 	ofVbo curvePoints;
+
+	float CubicOut( float k ) {
+		return --k * k * k + 1;
+	}
+	float CubicIn( float k ) {
+		return k * k * k;
+	}
 	
 protected:
 	
+	
+	ofxUISuperCanvas* camGui;
+	
 	ofxUISuperCanvas* customGui;
+	
+	ofxUISuperCanvas* fireworkGui;
+	
+	ofxUISuperCanvas* fireworkFogGui;
+	ofxUISuperCanvas* fireworkColorsGui;
+	
+	
 	bool customToggle;
 	float customFloat1;
 	float customFloat2;
@@ -347,6 +373,7 @@ protected:
 	ofImage triangleImage;
 	ofImage squareImage;
 	ofImage circleImage;
+	ofImage dotImage;
 	
 	float minLifeSpan, maxLifeSpan;
 	ofImage colorSampleImage;
@@ -354,4 +381,24 @@ protected:
 	ofxUIImageSampler* endColorSampler;
 	
 	vector <ofVec3f> debugSpheres;
+	
+	bool bAnimateCamera;
+	
+	float speed, explosionFrequencey, particleLifespan, particleSpread, spawnDistance,particleSize;
+	int emissonRate;
+	ofVec3f gravity;
+	
+	float cameraMotionScl;
+	
+	float fogDistance, fogAttenuation;
+	ofFloatColor fogColor;
+	float fogSaturation;
+	
+	bool bUseCircle, bUseSquare, bUseTriangle, bUseDot;
+	bool bBurst, bOctahedron, bTetrahedron, bDodecagedron;
+	
+	map<string, ofColor> fwColors;
+	map<string, ofColor> fwDeathColors;
+	map<string, float> fwSaturations;
+	map<string, float> fwDeathSaturations;
 };

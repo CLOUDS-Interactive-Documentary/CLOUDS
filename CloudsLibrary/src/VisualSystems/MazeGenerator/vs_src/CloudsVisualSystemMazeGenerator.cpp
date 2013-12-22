@@ -118,9 +118,10 @@ void CloudsVisualSystemMazeGenerator::guiRenderEvent(ofxUIEventArgs &e)
 void CloudsVisualSystemMazeGenerator::selfSetup()
 {
 //    maze = new Maze(30, 4, 30);
-    maze[0] = new Maze(60, 8, 60, &settings);
-    maze[0]->generate();
-    
+    maze[0]=NULL;
+	
+	regenerate();
+	
     mazeCam.setup(maze[0]->getWidth()/2, settings.cameraHeight, 100, &settings);
 
     light = new ofLight();
@@ -131,6 +132,17 @@ void CloudsVisualSystemMazeGenerator::selfSetup()
     
     camPath = maze[0]->createSimpleSpline(50, 50, 500);
     mazeCam.setPath(camPath);
+}
+
+void CloudsVisualSystemMazeGenerator::regenerate(){
+	
+	if(maze[0] != NULL){
+		delete maze[0];
+		maze[0] = NULL;
+	}
+	
+    maze[0] = new Maze(60, 8, 60, &settings);
+    maze[0]->generate();
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -241,7 +253,9 @@ void CloudsVisualSystemMazeGenerator::selfExit()
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemMazeGenerator::selfKeyPressed(ofKeyEventArgs & args)
 {
-	
+	if(args.key == 'R'){
+		regenerate();
+	}
 }
 void CloudsVisualSystemMazeGenerator::selfKeyReleased(ofKeyEventArgs & args)
 {

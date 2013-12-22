@@ -21,7 +21,7 @@ git clone git@github.com:rezaali/ofxExtras
 git clone https://github.com/rezaali/ofxUI
 cd ofxUI
 git checkout -b develop --track origin/develop
-git pull
+git pull origin develop
 cd ..
 
 git clone https://github.com/satoruhiga/ofxCocoaGLView
@@ -44,6 +44,18 @@ git clone https://github.com/obviousjim/ofxOpenSteer.git
 git clone https://github.com/Larsberg/ofxSimpleSpline
 git clone https://github.com/Larsberg/ofxSimpleSurface
 git clone https://github.com/labatrockwell/ofxLibwebsockets
+git clone https://github.com/jefftimesten/ofxJSON.git
+git clone https://github.com/TonicAudio/ofxTonic
+git clone https://github.com/neilmendoza/ofxPtf
+git clone https://github.com/neilmendoza/ofxNearestNeighbour
+git clone https://github.com/neilmendoza/ofxPostProcessing
+git clone https://github.com/kylemcdonald/ofxCv
+
+cd ofxPostProcessing
+git checkout -b develop --track origin/develop
+git pull origin develop
+cd ..
+
 
 ${PREFIX}obviousjim/ofxGenerative #temp obviousjim for windows fix
 ${PREFIX}obviousjim/ofxAVFVideoPlayer
@@ -60,14 +72,16 @@ ${PREFIX}obviousjim/ofxMPMFluid
 ${PREFIX}Flightphase/ofxTextInputField
 cd ofxTextInputField
 git checkout -b develop --track origin/develop
+git pull origin develop
 cd ..
 
 ${PREFIX}obviousjim/ofxRGBDepth
 cd ofxRGBDepth
 git checkout -b develop --track origin/develop
+git pull origin develop
 cd ..
 
-${PREFIX}obviousjim/ofxCv
+
 ${PREFIX}obviousjim/ofxKinect
 ${PREFIX}obviousjim/ofxOpenNI
 ${PREFIX}obviousjim/ofxMSATimer

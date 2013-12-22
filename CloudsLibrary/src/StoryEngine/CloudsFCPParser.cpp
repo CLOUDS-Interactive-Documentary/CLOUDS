@@ -19,7 +19,6 @@ bool distanceSortLargeToSmall(pair<string,float> a, pair<string,float> b ){
     return a.second > b.second;
 }
 
-
 CloudsFCPParser::CloudsFCPParser(){
 	printErrors = false;
     sortedByOccurrence = false;
@@ -28,11 +27,14 @@ CloudsFCPParser::CloudsFCPParser(){
 }
 
 void CloudsFCPParser::loadFromFiles(){
-    setup(getDataPath() + "fcpxml");
-    parseLinks(getDataPath() + "links/clouds_link_db.xml");
-//    parseClusterMap(getDataPath() + "gephi/2013_7_25_Clouds_conversation.SVG");
-	//parseClusterMap(getDataPath() + "gephi/CLOUDSClusterMap.svg");
-	parseClusterNetwork(getDataPath() + "pajek/CloudsNetwork.net");
+    setup(GetCloudsDataPath() + "fcpxml");
+	parseVOClips();
+    parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
+//    parseClusterMap(GetCloudsDataPath() + "gephi/2013_7_25_Clouds_conversation.SVG");
+	//parseClusterMap(GetCloudsDataPath() + "gephi/CLOUDSClusterMap.svg");
+	parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
+	parseProjectExamples(GetCloudsDataPath() + "secondaryDisplay/web/xml/projects.xml");
+	
 }
 
 void CloudsFCPParser::setup(string directory){
@@ -81,8 +83,48 @@ void CloudsFCPParser::saveClusterMap(map<string, ofVec2f> centroidMap ){
         
         cout<<"<text transform=\"matrix(1 0 0 1 "<<it->second.x<<" "<<it->second.y<<")\" font-family=\"'MyriadPro-Regular'\" font-size=\"12\">"<<it->first<<"</text>"<<endl;
     }
+}
 
-
+void CloudsFCPParser::parseVOClips(){
+	ofDirectory dir(GetCloudsDataPath() + "VO");
+	dir.allowExt("aif");
+	dir.allowExt("wav");
+	dir.allowExt("mp3");
+	dir.allowExt("aiff");
+	
+	dir.listDir();
+	
+	for(int i = 0; i < dir.numFiles(); i++){
+		
+		CloudsClip clip;
+		
+		clip.voiceOverAudio = true;
+		clip.combinedVideoPath = dir.getPath(i);
+		clip.sourceVideoFilePath = dir.getPath(i);
+		clip.startFrame = 0;
+		clip.endFrame = 9999;
+		
+		string name = ofFilePath::getBaseName( dir.getName(i) );
+		//remove weird final cut track name
+		ofStringReplace(name, "_1-2", "");
+		vector<string> components = ofSplitString(name,"_");
+        //validate
+		if(components.size() != 2){
+			ofLogError("CloudsFCPParser::parseVOClips") << "VO Clip " << dir.getPath(i) << " incorrectly formatted";
+			continue;
+		}
+		
+		
+		clip.person = components[0];
+		clip.name = components[1];
+		
+		cout << "added VO only clip " << clip.getLinkName() << endl;
+		
+		clipIDToIndex[clip.getID()] = allClips.size();
+		clipLinkNameToIndex[clip.getLinkName()] = allClips.size();
+		allClips.push_back(clip);
+	}
+		
 }
 
 void CloudsFCPParser::parseLinks(string linkFile){
@@ -255,6 +297,75 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 	calculateKeywordFamilies();
 }
 
+void CloudsFCPParser::parseProjectExamples(string filename){
+	
+	clipIdToProjectExample.clear();
+	projectExamples.clear();
+	
+	ofxXmlSettings projectExamplesXML;
+	if(!projectExamplesXML.loadFile(filename)){
+		ofLogError("CloudsFCPParser::parseProjectExamples") << "Project examples failed to parse at path" << filename;
+		return;
+	}
+		
+	projectExamplesXML.pushTag("clouds");
+	int numProjectExamples = projectExamplesXML.getNumTags("project");
+	for(int i = 0; i < numProjectExamples; i++){
+		
+		string projectTitle = projectExamplesXML.getAttribute("project", "title", "", i);
+		if(projectTitle == ""){
+			ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << i << " does not have a title";
+			continue;
+		}
+		
+		projectExamplesXML.pushTag("project",i);
+
+		CloudsProjectExample example;
+		example.title = projectTitle;
+		example.creatorName = projectExamplesXML.getValue("creator_name", "");
+		example.description = projectExamplesXML.getValue("description", "");
+		if(projectExamplesXML.tagExists("videos")){
+			projectExamplesXML.pushTag("videos");
+			int numVideos = projectExamplesXML.getNumTags("file");
+			if(numVideos == 0){
+				ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << projectTitle << " doesn't have ny <file> tags in <videos>";
+			}
+			for(int f = 0; f < numVideos; f++){
+				example.exampleVideos.push_back(projectExamplesXML.getValue("file","",f));
+			}
+			projectExamplesXML.popTag(); //videos
+		}
+		else{
+			ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << projectTitle << " doesn't have <videos> tag";
+		}
+		
+		projectExamplesXML.popTag();//project
+		
+		clipIdToProjectExample[example.title] = projectExamples.size();
+		projectExamples.push_back(example);
+	}
+	projectExamplesXML.popTag();//clouds
+	
+	//populate project examples on all clips
+	for(int i = 0; i < allClips.size(); i++){
+		if(allClips[i].hasProjectExample){
+			allClips[i].projectExample = getProjectExampleWithTitle(allClips[i].projectExampleTitle);
+		}
+	}
+}
+
+vector<CloudsProjectExample>& CloudsFCPParser::getProjectExamples(){
+	return projectExamples;
+}
+
+CloudsProjectExample& CloudsFCPParser::getProjectExampleWithTitle(string title){
+	if(clipIdToProjectExample.find(title) == clipIdToProjectExample.end()){
+		ofLogError("CloudsFCPParser::getProjectExampleWithTitle") << "Couldn't find project example with title " << title;
+		return dummyProjectExample;
+	}
+	return projectExamples[ clipIdToProjectExample[title] ];
+}
+
 void CloudsFCPParser::populateKeywordCentroids(){
 
 	keywordCentroids.clear();
@@ -281,7 +392,6 @@ void CloudsFCPParser::populateKeywordCentroids(){
 }
 
 void CloudsFCPParser::calculateKeywordAdjascency(){
-//		map<string, vector<string> > keywordAdjacency;
 	keywordAdjacency.clear();
 	vector<string>& keywords = getContentKeywords();
 	for(int i = 0; i < keywords.size(); i++){
@@ -349,7 +459,7 @@ void CloudsFCPParser::calculateKeywordFamilies(){
 //			keywordFamilyBuffer.append("	" + overlapScore[i].first + " " + ofToString(overlapScore[i].second) + "\n" );
 		}
 	}
-//	ofBufferToFile(getDataPath() + "stats/keyword_families.txt", keywordFamilyBuffer);
+//	ofBufferToFile(GetCloudsDataPath() + "stats/keyword_families.txt", keywordFamilyBuffer);
 }
 
 vector<string>& CloudsFCPParser::getKeywordFamily(string keyword){
@@ -919,7 +1029,7 @@ void CloudsFCPParser::printDichotomyRatios(){
 		}
 	}
 	
-	ofBufferToFile(getDataPath() + "DichotomyRatios.txt", dichotomyScores);
+	ofBufferToFile(GetCloudsDataPath() + "DichotomyRatios.txt", dichotomyScores);
 }
 
 void CloudsFCPParser::refreshAllKeywords(){

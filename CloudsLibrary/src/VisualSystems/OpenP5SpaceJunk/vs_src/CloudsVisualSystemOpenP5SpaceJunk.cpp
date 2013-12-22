@@ -3,7 +3,7 @@
 //
 
 #include "CloudsVisualSystemOpenP5SpaceJunk.h"
-
+#include "ofxObjLoader.h"
 
 //#include "CloudsRGBDVideoPlayer.h"
 //#ifdef AVF_PLAYER
@@ -22,32 +22,21 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetupGui(){
 	
     customGui->addSlider("Rotation Speed", 0, 25, &speed_);
 	customGui->addRangeSlider("X Scale", 0, 50, &XrandMin, &XrandMax);
-//    customGui->addSlider("X Scale Min", 0, 50, &XrandMin);
-//    customGui->addSlider("X Scale Max", 0, 50, &XrandMax);
     customGui->addRangeSlider("Y Scale", 0, 50, &YrandMin, &YrandMax);
-//    customGui->addSlider("Y Scale Max", 0, 50, );
     customGui->addRangeSlider("Z Scale", 0, 50, &ZrandMin, &ZrandMax);
-//    customGui->addSlider("Z Scale Max", 0, 50, );
     customGui->addRangeSlider("X Rotate", 0, 90, &XrotMin, &XrotMax);
-//    customGui->addSlider("X Rotate Max", 0, 90, );
     customGui->addRangeSlider("Y Rotate", 0, 90, &YrotMin, &YrotMax);
-//    customGui->addSlider("Y Rotate Max", 0, 90, );
     customGui->addRangeSlider("Z Rotate", 0, 90, &ZrotMin, &ZrotMax);
-//    customGui->addSlider("Z Rotate Max", 0, 90, );
-    
-	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
-	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
-	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
 
-	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
-	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
-	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
+//TODO: custom colors?
+//	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
+//	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
+//	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
+//
+//	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
+//	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
+//	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
 
-    
-//	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-//	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-//	customGui->addButton("Custom Button", false);
-//	customGui->addToggle("Custom Toggle", &customToggle);
 	
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5SpaceJunk::selfGuiEvent);
@@ -88,8 +77,34 @@ void CloudsVisualSystemOpenP5SpaceJunk::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemOpenP5SpaceJunk::selfSetup(){
     ang = 0;
     shouldRegenerate = true;
-}
+	ofMesh combinedBox;
 
+	ofxObjLoader::load(getVisualSystemDataPath() + "geometry/box.obj", combinedBox);
+	
+	for(int i = 0; i < combinedBox.getNumIndices(); i+=3){
+		ofIndexType indxA = combinedBox.getIndices()[i+0];
+		ofIndexType indxB = combinedBox.getIndices()[i+1];
+		ofIndexType indxC = combinedBox.getIndices()[i+2];
+		
+		ofVec3f& vA = combinedBox.getVertices()[indxA];
+		ofVec3f& vB = combinedBox.getVertices()[indxB];
+		ofVec3f& vC = combinedBox.getVertices()[indxC];
+		baseBox.addVertex(vA);
+		baseBox.addVertex(vB);
+		baseBox.addVertex(vC);
+		
+		ofVec3f normal = (vB - vA).getCrossed(vC - vA).normalized();
+		baseBox.addNormal(normal);
+		baseBox.addNormal(normal);
+		baseBox.addNormal(normal);
+		
+		baseBox.addIndex(i+0);
+		baseBox.addIndex(i+1);
+		baseBox.addIndex(i+2);
+		
+	}
+	
+}
 
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
@@ -116,13 +131,15 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfUpdate(){
 	if(shouldRegenerate){
 		shouldRegenerate = false;
 		list.clear();
+		mesh.clear();
 		
 		cout << "REGENERATING" << endl;
 		
 		for (int i = 0; i < limit; i++) {
 
 			if(ofRandomuf() > .8){
-				list.push_back( Cube(ofRandom(XrandMin*1.5, XrandMax*1.5), //scale
+				list.push_back( Cube(mesh,baseBox,
+									 ofRandom(XrandMin*1.5, XrandMax*1.5), //scale
 									 ofRandom(YrandMin*1.5, YrandMax*1.5),
 									 ofRandom(ZrandMin*1.5, ZrandMax*1.5),  // 4,20 4,20, 2,20
 									 
@@ -135,7 +152,8 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfUpdate(){
 									 ofRandom(ZrotMin*1.5, ZrotMax*1.5) ) );
 				}
 				else {
-					list.push_back( Cube(ofRandom(XrandMin, XrandMax), //scale
+					list.push_back( Cube(mesh,baseBox,
+										 ofRandom(XrandMin, XrandMax), //scale
 										 ofRandom(YrandMin, YrandMax),
 										 ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
 										 
@@ -146,8 +164,8 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfUpdate(){
 										 ofRandom(XrotMin, XrotMax), //rot
 										 ofRandom(YrotMin, YrotMax),
 										 ofRandom(ZrotMin, ZrotMax) ) );
-
 			}
+			
 //			list.push_back( Cube(ofRandom(XrandMin, XrandMax), ofRandom(YrandMin, YrandMax), ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
 //								 ofRandom(-140, 140), ofRandom(-140, 140), ofRandom(-140, 140),
 //								 ofRandom(XrotMin, XrotMax), ofRandom(YrotMin, YrotMax), ofRandom(ZrotMin, ZrotMax) ) );
@@ -174,19 +192,20 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfDraw(){
     
     ofPushStyle();
     glEnable(GL_DEPTH_TEST);
-//	glDisable(GL_DEPTH_TEST);
     
 	ofPushMatrix();
 	ofEnableAlphaBlending();
 	
+	//Rotate breaks oculus
     ofRotateX(ofRadToDeg(ang));     //X rotation - converts radians to degrees
     ofRotateY(ofRadToDeg(ang));     //Y rotation
 	
     mat->begin();
-	//ofSetColor(128, 0, 0);
-    for (int i = 0;i < list.size(); i++) {
-		list[i].draw();
-	}
+//	//ofSetColor(128, 0, 0);
+//    for (int i = 0;i < list.size(); i++) {
+//		list[i].draw();
+//	}
+	mesh.draw();
     mat->end(); //enables material
 	
     ofPopStyle();

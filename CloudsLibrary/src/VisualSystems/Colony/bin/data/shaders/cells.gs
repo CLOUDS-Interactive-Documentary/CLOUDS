@@ -1,6 +1,6 @@
 #version 120
 #extension all : warn
-#define RESOLUTION 8
+#define RESOLUTION 5
 #define PI 3.14159265359
 #define SPREAD_RADIUS 100.
 
@@ -17,7 +17,7 @@ void main() {
     //POINT GENERATION
     float opacity = 0.1;
     vec4 zShift = vec4(0.,0., (p_in.x+p_in.y) * 0.001 ,0.);
-    float magnitude = 5.;
+    float magnitude = 10.;
     for (int i = 0; i < RESOLUTION ; i++) {
         /*
          b

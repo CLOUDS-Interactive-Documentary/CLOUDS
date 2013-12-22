@@ -12,6 +12,7 @@
 
 #include "CloudsVisualSystem.h"
 
+
 class Cube {
   public:
 	int w;
@@ -25,7 +26,7 @@ class Cube {
     int rotZ;
 
 	
-	Cube(int _w, int _h, int _d, int _shiftX, int _shiftY, int _shiftZ, int _rotX, int _rotY, int _rotZ ){
+	Cube(ofVboMesh& mesh, ofMesh& baseBox, int _w, int _h, int _d, int _shiftX, int _shiftY, int _shiftZ, int _rotX, int _rotY, int _rotZ ){
 		
         w = _w;
         h = _h;
@@ -36,21 +37,45 @@ class Cube {
         rotX = _rotX;
         rotY = _rotY;
         rotZ = _rotZ;
-        
-        
+    
+		//ofPushMatrix();
+//		ofTranslate(shiftX, shiftY, shiftZ);
+//      ofRotateX(rotX);
+//      ofRotateY(rotY);
+//      ofRotateZ(rotZ);
+//      ofScale(w,h,d);
+		
+		ofMatrix4x4 transform;
+		ofMatrix4x4 rotate;
+		transform.scale(w,h,d);
+		rotate.rotate(rotX,1,0,0);
+		rotate.rotate(rotY,0,1,0);
+		rotate.rotate(rotZ,0,0,1);
+		transform *= rotate;
+		transform.translate(shiftX, shiftY, shiftZ);
+
+		ofIndexType initialIndex = mesh.getNumVertices();
+		for(int i = 0; i < baseBox.getVertices().size(); i++){
+			mesh.addVertex(baseBox.getVertices()[i] * transform );
+			mesh.addNormal(baseBox.getNormals()[i] * rotate);
+		}
+		for(int i = 0; i < baseBox.getNumIndices(); i++){
+			mesh.addIndex(initialIndex + baseBox.getIndices()[i] );
+		}
+		
+		//ofBox(1, 1, 1);
+        //ofPopMatrix();
 	}
 	
 	void draw() {
-        
-        ofPushMatrix();
-        ofTranslate(shiftX, shiftY, shiftZ);
-        ofRotateX(rotX);
-        ofRotateY(rotY);
-        ofRotateZ(rotZ);
-        ofScale(w, h, d); 
-        ofBox(1, 1, 1);
-        ofPopMatrix();
-        
+//        ofPushMatrix();
+//        ofTranslate(shiftX, shiftY, shiftZ);
+//        ofRotateX(rotX);
+//        ofRotateY(rotY);
+//        ofRotateZ(rotZ);
+//        ofScale(w, h, d); 
+//        ofBox(1, 1, 1);
+//        ofPopMatrix();
 	}
 };
 
@@ -144,6 +169,9 @@ protected:
 	
 	ofFloatColor color1HSB;
 	ofFloatColor color2HSB;
+	
+	ofVboMesh mesh;
+	ofMesh baseBox;
 	
 	int limit = 500;
     float ang;
