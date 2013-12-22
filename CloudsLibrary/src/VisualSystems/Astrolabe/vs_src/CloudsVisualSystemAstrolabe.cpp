@@ -98,10 +98,15 @@ void CloudsVisualSystemAstrolabe::setupClock(	 int count,
 		astrolabes[i]->addRotationTween("x", xRot * i  , 90, 1000, 2000 * i, 8000);
 		astrolabes[i]->addRotationTween("y", yRot * i , step, tickSpeed, tickSpeed, tickSpeed);
 		astrolabes[i]->addRotationTween("z", zRot * i , 180, 2000, 500 * i, 4000);
+
+		int randColorIndex = ofRandom(4);
+		if(randColorIndex == 0)	astrolabes[i]->color.set(255,255,0,255);
+		if(randColorIndex == 1)	astrolabes[i]->color.set(0,255,255,255);
+		if(randColorIndex == 2)	astrolabes[i]->color.set(255,0,255,255);
 		
-		astrolabes[i]->color.setSaturation( 255 );
-		astrolabes[i]->color.setBrightness( 200 );
-		astrolabes[i]->color.setHue( int(ofRandom(25)) * 10 );
+//		astrolabes[i]->color.setSaturation( 50 );
+//		astrolabes[i]->color.setBrightness( 255 );
+//		astrolabes[i]->color.setHue( int(ofRandom(25)) * 10 );
 		
 		float dist = abs(lowRadian + TWO_PI - hiRadian);
 		if( dist > 3)
@@ -114,7 +119,7 @@ void CloudsVisualSystemAstrolabe::setupClock(	 int count,
 			temp->addRotationTween("z", zRot * i , 180, 2000, 500 * i, 4000);
 			
 			temp->color = astrolabes[i]->color;
-			temp->color.setSaturation( 100 );
+			temp->color.setSaturation( 200 );
 			fillerAstrolabes.push_back(temp);
 		}
 	}
