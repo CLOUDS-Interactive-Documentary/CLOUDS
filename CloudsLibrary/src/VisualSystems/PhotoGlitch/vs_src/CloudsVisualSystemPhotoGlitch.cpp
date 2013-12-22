@@ -91,23 +91,26 @@ void CloudsVisualSystemPhotoGlitch::selfGuiEvent(ofxUIEventArgs &e)
         bShouldGenerate = true;
     }
     else {
-        // Look through the files dropdown for a match.
         string name = e.widget->getName();
-        for (int i = 0; i < imagesDir.numFiles(); i++) {
-            if (name == imagesDir.getName(i) && ((ofxUIToggle *)e.widget)->getValue()) {
-                cout<<"source img name : "<<name<<endl;
-                selectedSrcImageIdx = i;
-                bShouldGenerate = true;
-                break;
+        if(e.widget->getParent()->getName() == "SOURCE IMAGES" ){
+            // Look through the files dropdown for a match.
+            for (int i = 0; i < imagesDir.numFiles(); i++) {
+                if (name == imagesDir.getName(i) && ((ofxUIToggle *)e.widget)->getValue()) {
+                    cout<<"source img name : "<<name<<endl;
+                    selectedSrcImageIdx = i;
+                    bShouldGenerate = true;
+                    break;
+                }
             }
         }
-        
-        for (int i =0; i < targetImagesDir.numFiles(); i++){
-            if (name == targetImagesDir.getName(i) && ((ofxUIToggle *)e.widget)->getValue()){
-                cout<<"target img name : "<<name<<endl;
-                selectedTargetImageIdx = i;
-                bShouldGenerate = true;
-                break;
+        else if(e.widget->getParent()->getName() == "TARGET IMAGES" ){
+            for (int i =0; i < targetImagesDir.numFiles(); i++){
+                if (name == targetImagesDir.getName(i) && ((ofxUIToggle *)e.widget)->getValue()){
+                    cout<<"target img name : "<<name<<endl;
+                    selectedTargetImageIdx = i;
+                    bShouldGenerate = true;
+                    break;
+                }
             }
         }
     }
