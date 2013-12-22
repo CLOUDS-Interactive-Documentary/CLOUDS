@@ -7,7 +7,7 @@ string CloudsVisualSystemColony::getSystemName()
 
 void CloudsVisualSystemColony::selfSetup()
 {
-    numInitialCells = 200; //FIXME : Magic number
+    numInitialCells = 100; //FIXME : Magic number
     //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
     vbo.setMode(OF_PRIMITIVE_LINES);
     
@@ -78,7 +78,11 @@ void CloudsVisualSystemColony::selfDrawBackground()
 
     cellShader.begin();
     cellShader.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
+    ofPushMatrix();
+    //TODO: Dunno why this is happening
+    ofTranslate(getSharedRenderTarget().getWidth()/2., getSharedRenderTarget().getHeight()/2.);
     vbo.draw();
+    ofPopMatrix();
     cellShader.end();
     
     ofDisableBlendMode();
