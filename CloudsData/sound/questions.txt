@@ -1,37 +1,37 @@
-Aaron_exciting_time_ What is new and innovative in new media?
-Aaron_networked_creativity_ How has the internet changed everything?
-Aaron_experience_design_ How does digital design apply to everyday life?
-Casey_Systems_theory_ How can simple rules have complex results?
-Casey_emergence_ What is emergence?
-Casey_Developing_a_microworld_How do you build a universe?
-Elliot_UK_Ideaspace_ Can someone claim ownership of an idea?
-Golan_woah2_ What is surprising?
-JTNimoy_Pickle_ What does it feel like to program?
-Julia_CLOUDS_ What is the story of Clouds?
-Julian_I_love_networks_ What does the internet look like?
-Karsten_demo_scene_2_ What's the connection between videogame culture and creative coding?
-Karsten_code_is_information_ What is code?
-Karsten_programming_is..._ What does it feel like to program?
-Karsten_infinite_conversation_ What is Clouds?
-Kyle_CH_new_generation_ How did the creative coding community take shape?
-Kyle_CH_coding,_magic_ How do algorithms become tangible?
-Lauren_Social_reality_circa_2013_ How do people communicate now?
-Lauren_how_we_communicate_ How do people communicate now?
-Lauren_how_we_communicate,_shorter_ How does human interaction rely on networks?
-Lauren_Constructed_self_ How does your online identity differ from your everyday self?
-Lauren_toward_greater_consciousness_ What does technology aspire toward?
-Lindsay_hackers_ What's the hacker ethos?
-Maeda_a_computer_is_a_clock_ What is a computer?
-Marius_these_things_are_in_my_head_ Where does abstraction originate?
-Marius_Continuous_process_of_exploration_ Is an artwork ever done?
-Marius_gardening_ Does a generative artwork ever reach a state of completion?
-Nervous_Jessica_I_create_the_work_that_I_love_ How do you know whether something is good?
-Philip_with_programming_you_can_do_whatever_ How does a universe begin?
-Ramsey_language_self_expression_ In what way is coding an art form?
-Ramsey_why_code_is_special_ What is code?
-Ramsey_a_hundred_million_ How does programming change the way you think?
-Ramsey_what_is_a_computer_ What is a computer?
-Ramsey_computation_is_interpretation_of_rules_ What is computation?
-Shantell_Coding:_what_does_it_feel_like?_ What is it like to sketch with code?
-Shantell_Coding_gesturally_ How do you "sketch" with code?
-Shiffman_NOC_3_ What would it mean to simulate the world through code?
+Aaron_exciting_time:What is new and innovative in new media?
+Aaron_networked_creativity:How has the internet changed everything?
+Aaron_experience_design:How does digital design apply to everyday life?
+Casey_Systems_theory:How can simple rules have complex results?
+Casey_emergence:What is emergence?
+Casey_Developing_a_microworld:How do you build a universe?
+Elliot_UK_Ideaspace:Can someone claim ownership of an idea?
+Golan_woah2:What is surprising?
+JTNimoy_Pickle:What does it feel like to program?
+Julia_CLOUDS:What is the story of Clouds?
+Julian_I_love_networks:What does the internet look like?
+Karsten_demo_scene_2:What's the connection between videogame culture and creative coding?
+Karsten_code_is_information:What is code?
+Karsten_programming_is...:What does it feel like to program?
+Karsten_infinite_conversation:What is Clouds?
+Kyle_CH_new_generation:How did the creative coding community take shape?
+Kyle_CH_coding,_magic:How do algorithms become tangible?
+Lauren_Social_reality_circa_2013:How do people communicate now?
+Lauren_how_we_communicate:How do people communicate now?
+Lauren_how_we_communicate,_shorter:How does human interaction rely on networks?
+Lauren_Constructed_self:How does your online identity differ from your everyday self?
+Lauren_toward_greater_consciousness:What does technology aspire toward?
+Lindsay_hackers:What's the hacker ethos?
+Maeda_a_computer_is_a_clock:What is a computer?
+Marius_these_things_are_in_my_head:Where does abstraction originate?
+Marius_Continuous_process_of_exploration:Is an artwork ever done?
+Marius_gardening:Does a generative artwork ever reach a state of completion?
+Nervous_Jessica_I_create_the_work_that_I_love:How do you know whether something is good?
+Philip_with_programming_you_can_do_whatever:How does a universe begin?
+Ramsey_language_self_expression:In what way is coding an art form?
+Ramsey_why_code_is_special:What is code?
+Ramsey_a_hundred_million:How does programming change the way you think?
+Ramsey_what_is_a_computer:What is a computer?
+Ramsey_computation_is_interpretation_of_rules:What is computation?
+Shantell_Coding:_what_does_it_feel_like?:What is it like to sketch with code?
+Shantell_Coding_gesturally:How do you "sketch" with code?
+Shiffman_NOC_3:What would it mean to simulate the world through code?
