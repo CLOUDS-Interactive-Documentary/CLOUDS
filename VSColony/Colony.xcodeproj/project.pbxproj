@@ -161,6 +161,15 @@
 		17C0BDE918674BFA0082014A /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
 		17C0BDEC18674BFA0082014A /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
 		17C0BDED18674BFA0082014A /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
+		17C0BDF21867542C0082014A /* balls.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = balls.frag; sourceTree = "<group>"; };
+		17C0BDF31867542C0082014A /* balls.geom */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = balls.geom; sourceTree = "<group>"; };
+		17C0BDF41867542C0082014A /* balls.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = balls.vert; sourceTree = "<group>"; };
+		17C0BDF51867542C0082014A /* cells.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cells.fs; sourceTree = "<group>"; };
+		17C0BDF61867542C0082014A /* cells.gs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cells.gs; sourceTree = "<group>"; };
+		17C0BDF71867542C0082014A /* cells.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cells.vs; sourceTree = "<group>"; };
+		17C0BDF81867542C0082014A /* levelSet.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = levelSet.fs; sourceTree = "<group>"; };
+		17C0BDF91867542C0082014A /* levelSet.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = levelSet.vs; sourceTree = "<group>"; };
+		17C0BDFA1867542C0082014A /* liquidNoise.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = liquidNoise.fs; sourceTree = "<group>"; };
 		4695E24B17512ACD003001E2 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		4695E24C17512ACD003001E2 /* ofxUI2DGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DGraph.h; sourceTree = "<group>"; };
 		4695E24D17512ACD003001E2 /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -513,6 +522,23 @@
 			);
 			name = Input;
 			path = ../../CloudsLibrary/src/Input;
+			sourceTree = "<group>";
+		};
+		17C0BDF11867542C0082014A /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				17C0BDF21867542C0082014A /* balls.frag */,
+				17C0BDF31867542C0082014A /* balls.geom */,
+				17C0BDF41867542C0082014A /* balls.vert */,
+				17C0BDF51867542C0082014A /* cells.fs */,
+				17C0BDF61867542C0082014A /* cells.gs */,
+				17C0BDF71867542C0082014A /* cells.vs */,
+				17C0BDF81867542C0082014A /* levelSet.fs */,
+				17C0BDF91867542C0082014A /* levelSet.vs */,
+				17C0BDFA1867542C0082014A /* liquidNoise.fs */,
+			);
+			name = shaders;
+			path = ../../../../CloudsData/visualsystems/Colony/shaders;
 			sourceTree = "<group>";
 		};
 		4695E24A17512ACD003001E2 /* ofxUI */ = {
@@ -978,6 +1004,7 @@
 		852D01FD181DF3CC00436018 /* Colony */ = {
 			isa = PBXGroup;
 			children = (
+				17C0BDF11867542C0082014A /* shaders */,
 				852D01FE181DF3CC00436018 /* bin */,
 				852D0225181DF3CC00436018 /* vs_src */,
 			);

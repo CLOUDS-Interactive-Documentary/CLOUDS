@@ -1,11 +1,3 @@
-//
-//  CloudsVisualSystemColony.cpp
-//  VSColony
-//
-//  Created by Patricio Gonzalez Vivo on 6/26/13.
-//
-//
-
 #include "CloudsVisualSystemColony.h"
 
 string CloudsVisualSystemColony::getSystemName()
@@ -22,7 +14,6 @@ void CloudsVisualSystemColony::selfSetup()
     string path = getVisualSystemDataPath()+"shaders/";
     cellShader.setGeometryOutputCount(45); //FIXME: Debug
     cellShader.setGeometryInputType(GL_LINES);
-//    balls.load(path + "balls.vert", path + "balls.frag", path + "balls.geom");
     levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
     cellShader.load(path + "cells.vs", path+"cells.fs", path+"cells.gs");
     cellShader.setGeometryOutputType(GL_TRIANGLES);
@@ -82,12 +73,15 @@ void CloudsVisualSystemColony::selfDrawBackground()
 	
     ofPushStyle();
 	ofEnableAlphaBlending();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    glDisable(GL_DEPTH_TEST);
 
     cellShader.begin();
     cellShader.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
     vbo.draw();
     cellShader.end();
-
+    
+    ofDisableBlendMode();
 	ofPopStyle();
 }
 
