@@ -92,7 +92,7 @@ public:
 			m = _m;
 			localOffset = _localOffset;
 			
-			points.resize(15);
+			points.resize(50);
 			uv.resize(points.size());
 			colors.resize(points.size());
 			worldPos = getRootPosoition();
@@ -126,9 +126,11 @@ public:
 			float dynamicSmoothing = smoothing * min(1.f, lastHead.distance(worldPos) / 5.f );
 			
 			float msmoothing = 1. - dynamicSmoothing;
+						
 			for(int i=points.size()-1; i>0; i--)
 			{
-				points[i] = points[i-1] * dynamicSmoothing + points[i] * msmoothing;
+				//points[i] = points[i-1] * dynamicSmoothing + points[i] * msmoothing;
+				points[i] = points[i-1];
 			}
 			
 			line.updateVertexData( &points[0], points.size() );
