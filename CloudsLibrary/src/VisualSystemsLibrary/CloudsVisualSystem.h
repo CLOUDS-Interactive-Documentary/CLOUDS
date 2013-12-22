@@ -6,10 +6,7 @@
 #include "ofxUI.h"
 #include "ofxTLCameraTrack.h"
 #include "CloudsRGBDCamera.h"
-
 #include "CloudsInputEvents.h"
-
-//tenuous
 #include "ofxLight.h"
 #include "ofxGenerative.h"
 

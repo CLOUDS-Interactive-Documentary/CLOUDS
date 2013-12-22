@@ -106,7 +106,7 @@ protected:
 	void loadShaders();
 	void unloadShaders();
     
-    void setupClock(	int count = 15,
+    void setupRings(	int count = 15,
 					float innerRad = 5,
 					float width = 40,
 					float thickness = 10,
@@ -114,9 +114,29 @@ protected:
 					float yRot = 40,
 					float zRot = 60,
 					float spacing = 2,
-					float minTickSpeed = 100);
+					float minTickSpeed = 100,
+					float lowRadians = PI,
+					float hiRadians = TWO_PI);
 	
 	void clearAstrolabes();
+	
+	
+	//RINGS
+	ofxUISuperCanvas* ringsGui;
+	
+	bool bSetupRings;
+	int ringsCount;
+	float ringsInnerRad;
+	float ringsWidth;
+	float ringsThickness;
+	float ringsXRot;
+	float ringsYRot;
+	float ringsZRot;
+	float ringsSpacing;
+	float ringsMinTickSpeed;
+	float ringsLowRadians;
+	float ringsHiRadians;
+	
 	
 	ofxUISuperCanvas* customGui;
 	

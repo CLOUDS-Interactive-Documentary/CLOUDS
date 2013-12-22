@@ -51,7 +51,7 @@ void CloudsFCPParser::refreshXML(){
     clipIDToIndex.clear();
 	clipLinkNameToIndex.clear();
     keywordVector.clear();
-	hasCombinedVideoIndeces.clear();
+	hasMediaAssetIndeces.clear();
 	
     linkedConnections.clear();
     suppressedConnections.clear();
@@ -99,7 +99,8 @@ void CloudsFCPParser::parseVOClips(){
 		CloudsClip clip;
 		
 		clip.voiceOverAudio = true;
-		clip.combinedVideoPath = dir.getPath(i);
+		clip.hasMediaAsset = true; //should be something like 'backing asset'
+		clip.voiceOverAudioPath = dir.getPath(i);
 		clip.sourceVideoFilePath = dir.getPath(i);
 		clip.startFrame = 0;
 		clip.endFrame = 9999;
@@ -113,7 +114,6 @@ void CloudsFCPParser::parseVOClips(){
 			ofLogError("CloudsFCPParser::parseVOClips") << "VO Clip " << dir.getPath(i) << " incorrectly formatted";
 			continue;
 		}
-		
 		
 		clip.person = components[0];
 		clip.name = components[1];
@@ -1085,23 +1085,23 @@ void CloudsFCPParser::refreshAllKeywords(){
 }
 
 void CloudsFCPParser::setCombinedVideoDirectory(string directory){
-	hasCombinedVideoIndeces.clear();
-	hasCombinedVideoAndQuestionIndeces.clear();
+	hasMediaAssetIndeces.clear();
+	hasMediaAssetAndQuestionIndeces.clear();
     hasCombinedAndIsStartingClipIndeces.clear();
     
 	combinedVideoDirectory = directory;
     //	cout << "Setting combined directory to " << directory << " looking for all clips " << allClips.size() << endl;
 	for(int i = 0; i < allClips.size(); i++){
-		allClips[i].hasCombinedVideo = false;
+		allClips[i].hasMediaAsset = false;
 		allClips[i].combinedVideoPath = directory + "/" + allClips[i].getCombinedMovieFile();
 		allClips[i].combinedCalibrationXMLPath = directory + "/" + allClips[i].getCombinedCalibrationXML();
-		allClips[i].hasCombinedVideo = ofFile(allClips[i].combinedVideoPath).exists() && ofFile(allClips[i].combinedCalibrationXMLPath).exists();
+		allClips[i].hasMediaAsset = ofFile(allClips[i].combinedVideoPath).exists() && ofFile(allClips[i].combinedCalibrationXMLPath).exists();
         //        cout << " combined video path is " << allClips[i].combinedVideoPath << " " << allClips[i].combinedCalibrationXMLPath << endl;
         
-		if(allClips[i].hasCombinedVideo){
-			hasCombinedVideoIndeces.push_back(i);
+		if(allClips[i].hasMediaAsset){
+			hasMediaAssetIndeces.push_back(i);
 			if(allClips[i].hasQuestion()){
-				hasCombinedVideoAndQuestionIndeces.push_back(i);
+				hasMediaAssetAndQuestionIndeces.push_back(i);
 				if(allClips[i].hasSpecialKeyword("#start")){
 					hasCombinedAndIsStartingClipIndeces.push_back(i);
 				}				
@@ -1110,14 +1110,14 @@ void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 		}
 	}
 	
-	ofLogNotice("CloudsFCPParser::setCombinedVideoDirectory") << "there are " << hasCombinedVideoAndQuestionIndeces.size() << " items with questions & combined " << endl;
+	ofLogNotice("CloudsFCPParser::setCombinedVideoDirectory") << "there are " << hasMediaAssetAndQuestionIndeces.size() << " items with questions & combined " << endl;
 }
 
-CloudsClip& CloudsFCPParser::getRandomClip(bool hasCombinedVideo,
+CloudsClip& CloudsFCPParser::getRandomClip(bool hasMediaAsset,
 										   bool hasQuestion,
 										   bool hasStartQuestion)
 {
-	if(hasCombinedVideo && hasStartQuestion){
+	if(hasMediaAsset && hasStartQuestion){
 		if(hasCombinedAndIsStartingClipIndeces.size() == 0){
 			ofLogError("CloudsFCPParser::getRandomClip") << "has no start  clips with combined videos";
 			return dummyClip;
@@ -1125,20 +1125,20 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool hasCombinedVideo,
 //		cout << " has " << hasCombinedAndIsStartingClipIndeces.size() << endl;
 		return allClips[ hasCombinedAndIsStartingClipIndeces[ ofRandom(hasCombinedAndIsStartingClipIndeces.size())] ];
 	}
-	else if(hasCombinedVideo && hasQuestion){
-		if(hasCombinedVideoAndQuestionIndeces.size() == 0){
+	else if(hasMediaAsset && hasQuestion){
+		if(hasMediaAssetAndQuestionIndeces.size() == 0){
 			ofLogError("CloudsFCPParser::getRandomClip") << "has no questions clips with combined videos";
 			return dummyClip;
 		}
-		cout << " has " << hasCombinedVideoAndQuestionIndeces.size() << endl;
-		return allClips[ hasCombinedVideoAndQuestionIndeces[ ofRandom(hasCombinedVideoAndQuestionIndeces.size())] ];
+		cout << " has " << hasMediaAssetAndQuestionIndeces.size() << endl;
+		return allClips[ hasMediaAssetAndQuestionIndeces[ ofRandom(hasMediaAssetAndQuestionIndeces.size())] ];
 	}
-	else if(hasCombinedVideo){
-		if(hasCombinedVideoIndeces.size() == 0){
+	else if(hasMediaAsset){
+		if(hasMediaAssetIndeces.size() == 0){
 			ofLogError("CloudsFCPParser::getRandomClip") << "has no combined videos ";
 			return dummyClip;
 		}
-		return allClips[ hasCombinedVideoIndeces[ ofRandom(hasCombinedVideoIndeces.size())] ];
+		return allClips[ hasMediaAssetIndeces[ ofRandom(hasMediaAssetIndeces.size())] ];
 	}
 	else if(hasStartQuestion){
 		if(startQuestionIndeces.size() == 0){

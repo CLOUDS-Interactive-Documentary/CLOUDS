@@ -1,11 +1,3 @@
-//
-//  CloudsVisualSystemColony.cpp
-//  VSColony
-//
-//  Created by Patricio Gonzalez Vivo on 6/26/13.
-//
-//
-
 #include "CloudsVisualSystemColony.h"
 
 string CloudsVisualSystemColony::getSystemName()
@@ -22,7 +14,6 @@ void CloudsVisualSystemColony::selfSetup()
     string path = getVisualSystemDataPath()+"shaders/";
     cellShader.setGeometryOutputCount(45); //FIXME: Debug
     cellShader.setGeometryInputType(GL_LINES);
-//    balls.load(path + "balls.vert", path + "balls.frag", path + "balls.geom");
     levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
     cellShader.load(path + "cells.vs", path+"cells.fs", path+"cells.gs");
     cellShader.setGeometryOutputType(GL_TRIANGLES);
@@ -47,6 +38,7 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
 void CloudsVisualSystemColony::selfUpdate()
 {
     cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
+	
     pMap.clear();
     vbo.clear();
     pMap.put(cells);
@@ -78,32 +70,34 @@ void CloudsVisualSystemColony::selfUpdate()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
+	
+    ofPushStyle();
+	ofEnableAlphaBlending();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    glDisable(GL_DEPTH_TEST);
 
-    }
-
-void CloudsVisualSystemColony::selfDraw(){
-    ofEnableSmoothing();
-    
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-//    getSharedRenderTarget().begin();
     cellShader.begin();
     cellShader.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
     vbo.draw();
     cellShader.end();
-//    getSharedRenderTarget().end();
-    glDisable(GL_BLEND);
+    
+    ofDisableBlendMode();
+	ofPopStyle();
 }
 
-//void CloudsVisualSystemColony::selfPostDraw(){
-//    levelSet.begin();
-//    levelSet.setUniformTexture("tex", getSharedRenderTarget().getTextureReference(),0);
-//    getSharedRenderTarget().draw(0, 0,
-//                                 getSharedRenderTarget().getWidth(),
-//                                 getSharedRenderTarget().getHeight()
-//                                 );
-//    levelSet.end();
-//}
+void CloudsVisualSystemColony::selfDraw(){
+
+}
+
+void CloudsVisualSystemColony::selfPostDraw(){
+    levelSet.begin();
+    levelSet.setUniformTexture("tex", getSharedRenderTarget().getTextureReference(),0);
+    getSharedRenderTarget().draw(0, 0,
+                                 getSharedRenderTarget().getWidth(),
+                                 getSharedRenderTarget().getHeight()
+                                 );
+    levelSet.end();
+}
 
 void CloudsVisualSystemColony::selfBegin()
 {

@@ -18,7 +18,7 @@ CloudsPortal::CloudsPortal(){
 	ringThickness = 10;
 	ringThicknessMultiplier = 1.2;
 	ringDensity = 10; //geo per segment
-	
+	selected = false;
 }
 
 CloudsPortal::~CloudsPortal(){
@@ -26,7 +26,7 @@ CloudsPortal::~CloudsPortal(){
 }
 
 void CloudsPortal::setup(){
-	for(int i = 0; i < 3; i++){
+	for(int i = 0; i < 20; i++){
 		CloudsPortalRing r;
 		r.setup(this, portalGeo, i);
 		rings.push_back(r);
@@ -42,9 +42,14 @@ void CloudsPortal::update(){
 	}
 }
 
+void CloudsPortal::toggleFakeSelection(){
+	selected = !selected;
+	selectedTime = ofGetLastFrameTime();
+}
+
 void CloudsPortal::draw(){
 	ofPushStyle();
-	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+//	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 	ofPushMatrix();
 	portalShader.begin();
 	portalShader.setUniform1f("rotate", ofGetElapsedTimef()*2.);

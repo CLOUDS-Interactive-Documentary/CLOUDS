@@ -75,9 +75,9 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	generatePoints();
 	generateMesh();
 		
-//	particulateController.setParticleCount(20000);
-//	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-//	particulateController.setup();
+	particulateController.setParticleCount(20000);
+	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+	particulateController.setup();
 	
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
@@ -356,7 +356,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
 		particulateController.getPoints().color.a = pointColor.w;
 		
-//		particulateController.update();
+		particulateController.update();
 	}
 	
 	updateQuestions();
@@ -801,7 +801,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glEnable(GL_LINE_SMOOTH);
 
-	if(getRGBDVideoPlayer().getPlayer().isLoaded() && drawRGBD){
+	if(!getRGBDVideoPlayer().playingVO && getRGBDVideoPlayer().getPlayer().isLoaded() && drawRGBD){
 		
 		setupRGBDTransforms();
 			
@@ -869,7 +869,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	if(drawParticulate){
 		glEnable(GL_DEPTH_TEST);
-//		particulateController.draw();
+		particulateController.draw();
 	}
 	
 	glPopAttrib();
@@ -1102,8 +1102,7 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 		
 		loadShader();
 		
-//		reloadShaders();
-//		particulateController.reloadShaders();
+		particulateController.reloadShaders();
 //		CloudsQuestion::reloadShader();
 //		rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	}

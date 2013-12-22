@@ -19,7 +19,7 @@ CloudsClip::CloudsClip(){
 	startFrame = 0;
     endFrame = 0;
 	voiceOverAudio = false;
-	hasCombinedVideo = false;
+	hasMediaAsset = false;
 	adjustmentLoaded = false;
 	minDepth = 400;
 	maxDepth = 1200;

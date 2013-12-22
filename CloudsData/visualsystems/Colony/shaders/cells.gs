@@ -1,6 +1,6 @@
 #version 120
 #extension all : warn
-#define RESOLUTION 5
+#define RESOLUTION 10
 #define PI 3.14159265359
 #define SPREAD_RADIUS 100.
 
@@ -16,7 +16,6 @@ void main() {
     
     //POINT GENERATION
     float opacity = 0.1;
-    vec4 zShift = vec4(0.,0., (p_in.x+p_in.y) * 0.001 ,0.);
     float magnitude = 10.;
     for (int i = 0; i < RESOLUTION ; i++) {
         /*
@@ -28,22 +27,18 @@ void main() {
         float f = data.y + (float(i) / float(RESOLUTION)) * 2. * PI;
         
         //a
-        gl_Position = gl_ModelViewProjectionMatrix  * (p
-                                                       + vec4(data.x * magnitude * vec3(cos(f), sin(f), 0.), 0.)
-                                                       + zShift);
+        gl_Position = gl_ModelViewProjectionMatrix  * (p + vec4(data.x * magnitude * vec3(cos(f), sin(f), 0.), 0.));
         gl_FrontColor = vec4(1., 1., 1., opacity);
         EmitVertex();
         
         //b
-        gl_Position =  gl_ModelViewProjectionMatrix * (p + zShift);
+        gl_Position =  gl_ModelViewProjectionMatrix * p;
         gl_FrontColor = vec4(1., 1., 1., 1.);
         EmitVertex();
         
         //c
         f += (1. / float(RESOLUTION)) * 2. * PI;
-        gl_Position =  gl_ModelViewProjectionMatrix * (p
-                                                       + vec4(data.x * magnitude * vec3(cos(f), sin(f), 0.), 0.)
-                                                       + zShift);
+        gl_Position =  gl_ModelViewProjectionMatrix * (p + vec4(data.x * magnitude * vec3(cos(f), sin(f), 0.), 0.));
         gl_FrontColor = vec4(1., 1., 1., opacity);
         EmitVertex();
         EndPrimitive();

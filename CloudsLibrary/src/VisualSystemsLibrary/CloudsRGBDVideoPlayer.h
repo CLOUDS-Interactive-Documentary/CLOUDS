@@ -24,6 +24,7 @@ public:
     //  SET
     //
 	bool setup(string videoPath, string calibrationXMLPath, float offsetTime = 0);
+	bool setupVO(string audioPath);
 	void swapAndPlay();
 	
 	void setupProjectionUniforms(ofShader& shader);
@@ -34,10 +35,6 @@ public:
 	bool isPlaying();
 	bool isDone();
 	
-	// UNIMPLEMENTED
-//	ofPtr<ofVideoPlayer> getSharedPlayerPtr(){
-//		return ofPtr<ofVideoPlayer>( new ofVideoPlayer());
-//	}
 	float getFadeIn(){
 		return fadeInValue;
 	};
@@ -66,6 +63,8 @@ public:
 	float farClip;
 	float nearClip;
 	
+	bool playingVO;
+
 	float maxVolume;
   protected:
 
@@ -81,6 +80,10 @@ public:
 	ofPtr<ofVideoPlayer> currentPlayer;
 	ofPtr<ofVideoPlayer> nextPlayer;
 #endif
+	ofPtr<ofSoundPlayer> currentVoiceoverPlayer;
+	ofPtr<ofSoundPlayer> nextVoiceoverPlayer;
+	bool nextClipIsVO;
+
 	
     //  RGB
     //
@@ -119,8 +122,9 @@ public:
 	
 	bool clipPrerolled;
 	
-    bool bRendererBound;
-    bool bMeshGenerated;
+//    bool bRendererBound;
+//    bool bMeshGenerated;
+	
 	
 	float fadeInValue;
 	float fadeOutValue;

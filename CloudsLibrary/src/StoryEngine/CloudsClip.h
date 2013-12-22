@@ -84,8 +84,9 @@ class CloudsClip {
     void addOverlappingClipName(string clipName);
 	void removeOverlappingClipName(string clipName);
 
-	bool hasCombinedVideo;
+	bool hasMediaAsset;
 	string combinedVideoPath;
+	string voiceOverAudioPath;
 	string combinedCalibrationXMLPath;
 	
 	string getRelinkedVideoFilePath();
