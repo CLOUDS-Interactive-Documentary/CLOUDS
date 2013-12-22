@@ -2,7 +2,8 @@
 // #extension GL_ARB_texture_rectangle : enable
 
 void main(){
-    
-	gl_FragColor = gl_Color;
+    vec4 c = gl_Color;
+    c.w = pow(c.w, 8);
+	gl_FragColor = c;
     
 }

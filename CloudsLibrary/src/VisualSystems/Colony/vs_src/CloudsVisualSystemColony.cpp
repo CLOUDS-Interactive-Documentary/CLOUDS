@@ -89,34 +89,31 @@ void CloudsVisualSystemColony::selfDrawBackground()
 void CloudsVisualSystemColony::selfDraw(){
     ofEnableSmoothing();
     
-//    getSharedRenderTarget().begin();
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-    
+    getSharedRenderTarget().begin();
     cellShader.begin();
     cellShader.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
     vbo.draw();
     cellShader.end();
-    
+    getSharedRenderTarget().end();
     glDisable(GL_BLEND);
-//    getSharedRenderTarget().end();
-
 }
 
-//void CloudsVisualSystemColony::selfPostDraw(){
-//    levelSet.begin();
-//    levelSet.setUniformTexture("tex", getSharedRenderTarget().getTextureReference(),0);
-//    getSharedRenderTarget().draw(0, 0,
-//                                 getSharedRenderTarget().getWidth(),
-//                                 getSharedRenderTarget().getHeight()
-//                                 );
-//    levelSet.end();
-//}
+void CloudsVisualSystemColony::selfPostDraw(){
+    levelSet.begin();
+    levelSet.setUniformTexture("tex", getSharedRenderTarget().getTextureReference(),0);
+    getSharedRenderTarget().draw(0, 0,
+                                 getSharedRenderTarget().getWidth(),
+                                 getSharedRenderTarget().getHeight()
+                                 );
+    levelSet.end();
+}
 
 void CloudsVisualSystemColony::selfBegin()
 {
     for (int i = 0; i < numInitialCells; i++) {
-        cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight()), params));
+        cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight(), i * 0.01), params));
         cells.push_back(newCell);
     }
 }
