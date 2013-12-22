@@ -2730,12 +2730,12 @@
 		E703CC9D185C1D5800547738 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				E732FCCF1863CC2300643061 /* CloudsAudioEvents.cpp */,
 				E732FCD01863CC2300643061 /* CloudsAudioEvents.h */,
+				E732FCCF1863CC2300643061 /* CloudsAudioEvents.cpp */,
 				E732FCD21863CC2300643061 /* CloudsMixer.h */,
 				E732FCD11863CC2300643061 /* CloudsMixer.cpp */,
-				E703CC9E185C1D5800547738 /* CloudsSound.cpp */,
 				E703CC9F185C1D5800547738 /* CloudsSound.h */,
+				E703CC9E185C1D5800547738 /* CloudsSound.cpp */,
 				E703CCA0185C1D5800547738 /* CloudsSoundFilesSamplesDatabases.cpp */,
 				E703CCA1185C1D5800547738 /* CloudsSoundFuncs.cpp */,
 				E703CCA2185C1D5800547738 /* RTCMix */,

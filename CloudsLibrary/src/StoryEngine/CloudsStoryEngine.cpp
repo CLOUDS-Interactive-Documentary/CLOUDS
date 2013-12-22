@@ -903,7 +903,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history,
     CloudsClip& currentlyPlayingClip = history[history.size()-1];
     
     //rejection criteria -- flat out reject clips on some basis
-    if(combinedClipsOnly && !potentialNextClip.hasCombinedVideo){
+    if(combinedClipsOnly && !potentialNextClip.hasMediaAsset){
         if(printDecisions) cout << "        REJECTED Clip " << potentialNextClip.getLinkName() << ": no combined video file" << endl;
         return 0;
     }
