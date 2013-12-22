@@ -23,6 +23,6 @@ void CloudsHUDHomeButton::update(){
 }
 
 void CloudsHUDHomeButton::draw(){
-	sampleImage.draw(homeLocation);
+//	sampleImage.draw(homeLocation);
 	
 }

@@ -661,16 +661,24 @@ void CloudsPlaybackController::preRollRequested(CloudsPreRollEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
-	if(!clip.hasCombinedVideo){
-		ofLogError() << "CloudsPlaybackController::prerollClip -- clip " << clip.getLinkName() << " doesn't have combined video";
+	if(!clip.hasMediaAsset){
+		ofLogError("CloudsPlaybackController::prerollClip") << "clip " << clip.getLinkName() << " doesn't have combined video";
 		return;
 	}
 	
-	if(!rgbdVisualSystem->getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, toTime) ){
-		ofLogError() << "CloudsPlaybackController::prerollClip Error prerolling clip " << clip.getLinkName() << " file path " << clip.combinedVideoPath;
-		return;
+	bool clipLoadSuccessfullyLoaded = false;
+	if(clip.voiceOverAudio){
+		clipLoadSuccessfullyLoaded = rgbdVisualSystem->getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath);
+	}
+	else{
+		clipLoadSuccessfullyLoaded = rgbdVisualSystem->getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, toTime);
 	}
 	
+	if(!clipLoadSuccessfullyLoaded){
+		ofLogError("CloudsPlaybackController::prerollClip") << "Error loading clip " << clip.getLinkName() << " file path " << clip.combinedVideoPath;
+		return;
+	}
+
 	prerolledClipID = clip.getID();
 }
 
