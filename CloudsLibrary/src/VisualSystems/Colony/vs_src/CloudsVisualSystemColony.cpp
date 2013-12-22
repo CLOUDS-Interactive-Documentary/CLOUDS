@@ -1,11 +1,3 @@
-//
-//  CloudsVisualSystemColony.cpp
-//  VSColony
-//
-//  Created by Patricio Gonzalez Vivo on 6/26/13.
-//
-//
-
 #include "CloudsVisualSystemColony.h"
 
 string CloudsVisualSystemColony::getSystemName()
@@ -15,16 +7,17 @@ string CloudsVisualSystemColony::getSystemName()
 
 void CloudsVisualSystemColony::selfSetup()
 {
-    numInitialCells = 200; //FIXME : Magic number
+    numInitialCells = 100; //FIXME : Magic number
     //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
     vbo.setMode(OF_PRIMITIVE_LINES);
     
     string path = getVisualSystemDataPath()+"shaders/";
-    balls.setGeometryOutputCount(40); //FIXME: Debug
-    balls.setGeometryInputType(GL_LINES);
-    balls.load(path + "balls.vert", path + "balls.frag", path + "balls.geom");
-    //FIXME: THIS IS NOT WORKING PROPERLY
-    balls.setGeometryOutputType(GL_TRIANGLE_FAN);
+    cellShader.setGeometryOutputCount(45); //FIXME: Debug
+    cellShader.setGeometryInputType(GL_LINES);
+    levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
+    cellShader.load(path + "cells.vs", path+"cells.fs", path+"cells.gs");
+    cellShader.setGeometryOutputType(GL_TRIANGLES);
+
 }
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
@@ -37,11 +30,15 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
     sysGui->addSlider("Turbulence Speed",0.0,100.0, &params.spdTurbulence);
     sysGui->addSlider("Fertility Rate", 0.0, 1.0, &params.fertilityRate);
     sysGui->addRangeSlider("Lifespan Range", 5, 5000, &params.lifespanMin, &params.lifespanMax);
+    
+    sysGui->addSpacer("Immutables");
+    sysGui->addButton("Reset", &reset);
 }
 
 void CloudsVisualSystemColony::selfUpdate()
 {
     cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
+	
     pMap.clear();
     vbo.clear();
     pMap.put(cells);
@@ -73,27 +70,43 @@ void CloudsVisualSystemColony::selfUpdate()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
+	
+    ofPushStyle();
+	ofEnableAlphaBlending();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    glDisable(GL_DEPTH_TEST);
 
-//    ofEnableSmoothing();
-//    ofEnableAlphaBlending();
-//    for (int i = 0 ; i < cells.size(); i++){
-//        cells[i]->draw();
-//    }
-    }
+    cellShader.begin();
+    cellShader.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
+    ofPushMatrix();
+    //TODO: Dunno why this is happening
+    ofTranslate(getSharedRenderTarget().getWidth()/2., getSharedRenderTarget().getHeight()/2.);
+    vbo.draw();
+    ofPopMatrix();
+    cellShader.end();
+    
+    ofDisableBlendMode();
+	ofPopStyle();
+}
 
 void CloudsVisualSystemColony::selfDraw(){
-    ofEnableSmoothing();
-    ofEnableAlphaBlending();
-    balls.begin();
-    balls.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
-    vbo.draw();
-    balls.end();
+
+}
+
+void CloudsVisualSystemColony::selfPostDraw(){
+    levelSet.begin();
+    levelSet.setUniformTexture("tex", getSharedRenderTarget().getTextureReference(),0);
+    getSharedRenderTarget().draw(0, 0,
+                                 getSharedRenderTarget().getWidth(),
+                                 getSharedRenderTarget().getHeight()
+                                 );
+    levelSet.end();
 }
 
 void CloudsVisualSystemColony::selfBegin()
 {
     for (int i = 0; i < numInitialCells; i++) {
-        cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight()), params));
+        cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight(), i * 0.01), params));
         cells.push_back(newCell);
     }
 }
@@ -106,7 +119,13 @@ void CloudsVisualSystemColony::selfEnd()
     cells.clear();
 }
 
-void CloudsVisualSystemColony::selfExit(){}
+void CloudsVisualSystemColony::selfExit(){
+    cellShader.unload();
+    levelSet.unload();
+    vbo.clear();
+    //TODO: Destroy everything in gCell;
+}
+
 
 void CloudsVisualSystemColony::selfSetupGuis(){}
 void CloudsVisualSystemColony::selfAutoMode(){}

@@ -52,11 +52,11 @@
 - (void)update
 {
 	
-	if(rgbdVisualSystem.getRGBDVideoPlayer().isDone()){
-		cout << "replaying video!" << endl;
-		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setPosition(0);
-		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().play();
-	}
+//	if(rgbdVisualSystem.getRGBDVideoPlayer().isDone()){
+//		cout << "replaying video!" << endl;
+//		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setPosition(0);
+//		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().play();
+//	}
 }
 
 - (void)draw
@@ -78,7 +78,16 @@
 
 - (IBAction)loadClip:(CloudsClip&)clip
 {
-	if(clip.hasCombinedVideo && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
+	if(clip.hasMediaAsset && clip.voiceOverAudio && rgbdVisualSystem.getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath) ){
+		
+		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
+		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
+									  CloudsSpeaker::speakers[clip.person].lastName,
+									  clip.name );
+		
+		currentClip = clip;
+	}
+	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
 		
 		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
 		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
@@ -181,10 +190,6 @@
     }
 }
 
-
-
-
-
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
 
@@ -195,7 +200,7 @@
 		return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].name.c_str() ];
 	}
 	else if([@"combined" isEqualToString:aTableColumn.identifier]){
-		return parser.getAllClips()[rowIndex].hasCombinedVideo ? @"YES" : @"NO";
+		return parser.getAllClips()[rowIndex].hasMediaAsset ? @"YES" : @"NO";
 	}
 	return @"";
 	

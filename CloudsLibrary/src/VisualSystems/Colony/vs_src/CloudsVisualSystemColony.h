@@ -27,8 +27,7 @@ public:
     void selfDraw();
     void selfDrawDebug();
     void selfSceneTransformation();
-    
-//    void draw(ofEventArgs & args);
+    void selfPostDraw();
     
     void selfExit();
     void selfBegin();
@@ -58,6 +57,8 @@ private:
     ofVboMesh   vbo;
     ofShader    noiseShader;
     ofShader balls;
+    ofShader cellShader;
+    ofShader levelSet;
     
     colonyPartitionMap pMap;
     
@@ -66,6 +67,8 @@ private:
     
     float   noiseZoom;
     int newbornCount;
+    
+    bool reset; //TODO: used?
     
     /*  PARAMS */
     cellParams params;

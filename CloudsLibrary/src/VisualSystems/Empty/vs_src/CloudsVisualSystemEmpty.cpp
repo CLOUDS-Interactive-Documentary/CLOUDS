@@ -52,13 +52,18 @@ void CloudsVisualSystemEmpty::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
+//This is called whenever a new preset is loaded, before selfSetup()
+//use it to ensure all your simple variables are initialized to an
+//acceptable default state
+void CloudsVisualSystemEmpty::selfSetDefaults(){
+	videoLoaded = false;
+}
+
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemEmpty::selfSetup(){
-	
-	videoLoaded = false;
-	
+		
 	if(ofFile::doesFileExist(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov")){
 		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov",
 								   getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.xml" );

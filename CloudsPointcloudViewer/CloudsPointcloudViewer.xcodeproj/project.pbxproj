@@ -42,6 +42,8 @@
 		E703CD01185D0FE600547738 /* svgtiny_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCF6185D0FE600547738 /* svgtiny_list.cpp */; };
 		E703CD02185D0FE600547738 /* ofxSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCF8185D0FE600547738 /* ofxSvg.cpp */; };
 		E703CD03185D0FE600547738 /* ofxSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCF8185D0FE600547738 /* ofxSvg.cpp */; };
+		E71CEC8018654159004F5547 /* CloudsHUDHomeButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71CEC7E18654159004F5547 /* CloudsHUDHomeButton.cpp */; };
+		E71CEC8118654159004F5547 /* CloudsHUDHomeButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71CEC7E18654159004F5547 /* CloudsHUDHomeButton.cpp */; };
 		E72258DC183D8B6A00625763 /* CloudsCaption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72258DA183D8B6A00625763 /* CloudsCaption.cpp */; };
 		E72258DD183D8B6A00625763 /* CloudsCaption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72258DA183D8B6A00625763 /* CloudsCaption.cpp */; };
 		E730A47517DBE3FC0088335A /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A46917DBE3FC0088335A /* ofxDelaunay.cpp */; };
@@ -369,6 +371,8 @@
 		E703CCF6185D0FE600547738 /* svgtiny_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny_list.cpp; sourceTree = "<group>"; };
 		E703CCF8185D0FE600547738 /* ofxSvg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSvg.cpp; sourceTree = "<group>"; };
 		E703CCF9185D0FE600547738 /* ofxSvg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSvg.h; sourceTree = "<group>"; };
+		E71CEC7E18654159004F5547 /* CloudsHUDHomeButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDHomeButton.cpp; sourceTree = "<group>"; };
+		E71CEC7F18654159004F5547 /* CloudsHUDHomeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDHomeButton.h; sourceTree = "<group>"; };
 		E72258DA183D8B6A00625763 /* CloudsCaption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsCaption.cpp; sourceTree = "<group>"; };
 		E72258DB183D8B6A00625763 /* CloudsCaption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsCaption.h; sourceTree = "<group>"; };
 		E730A46917DBE3FC0088335A /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
@@ -871,8 +875,10 @@
 		E703CCCD185CE66100547738 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
-				85FCB763185E262200A9740A /* CloudsHUDLayer.cpp */,
 				85FCB764185E262200A9740A /* CloudsHUDLayer.h */,
+				85FCB763185E262200A9740A /* CloudsHUDLayer.cpp */,
+				E71CEC7F18654159004F5547 /* CloudsHUDHomeButton.h */,
+				E71CEC7E18654159004F5547 /* CloudsHUDHomeButton.cpp */,
 				E703CCCF185CE67700547738 /* CloudsHUDController.h */,
 				E703CCCE185CE67700547738 /* CloudsHUDController.cpp */,
 			);
@@ -989,8 +995,8 @@
 			children = (
 				E73995D217863E6000EA5F4D /* GPUParticles */,
 				E703CCCD185CE66100547738 /* HUD */,
-				E72258DA183D8B6A00625763 /* CloudsCaption.cpp */,
 				E72258DB183D8B6A00625763 /* CloudsCaption.h */,
+				E72258DA183D8B6A00625763 /* CloudsCaption.cpp */,
 				E73991171786155A00EA5F4D /* CloudsVisualSystemRGBD.h */,
 				E73991161786155A00EA5F4D /* CloudsVisualSystemRGBD.cpp */,
 				E79DD943178B71A300057B34 /* CloudsQuestion.h */,
@@ -1879,6 +1885,7 @@
 				E703CD00185D0FE600547738 /* svgtiny_list.cpp in Sources */,
 				E703CD02185D0FE600547738 /* ofxSvg.cpp in Sources */,
 				85FCB765185E262200A9740A /* CloudsHUDLayer.cpp in Sources */,
+				E71CEC8018654159004F5547 /* CloudsHUDHomeButton.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1993,6 +2000,7 @@
 				E703CD01185D0FE600547738 /* svgtiny_list.cpp in Sources */,
 				E703CD03185D0FE600547738 /* ofxSvg.cpp in Sources */,
 				85FCB766185E262200A9740A /* CloudsHUDLayer.cpp in Sources */,
+				E71CEC8118654159004F5547 /* CloudsHUDHomeButton.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

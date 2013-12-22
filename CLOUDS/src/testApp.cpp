@@ -55,7 +55,7 @@ void testApp::setup(){
 			ofLogError() << "Clip " << startingNodes[i].getID() << " is labeled as #start but has no question, removing.";
 			startingNodes.erase(startingNodes.begin() + i);
 		}
-		else if(!startingNodes[i].hasCombinedVideo){
+		else if(!startingNodes[i].hasMediaAsset){
 			ofLogError() << "Clip " << startingNodes[i].getID() << " has no combined video file, removing.";
 			startingNodes.erase(startingNodes.begin() + i);
 		}
@@ -100,11 +100,11 @@ void testApp::keyPressed(int key){
 		useScratch = !useScratch;
 		if(useScratch){
 			player.setUseScratch( true );
-			sound.setMasterAmp(0.0);
+//			sound.setMasterAmp(0.0);
 		}
 		else{
 			player.setUseScratch( false );
-			sound.setMasterAmp(1.0);
+//			sound.setMasterAmp(1.0);
 		}
 	}
     
