@@ -136,12 +136,9 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     int numIndices;
     GLuint * indices;
     
-    int numTargetVerts;
-    GLfloat * targetVerts;
     GLfloat * targetTexCoords;
     GLfloat * targetColors;
-    int targetNumIndices;
-    GLuint * targetIndices;
+
     
     ofImage tex;
     ofVbo vbo;

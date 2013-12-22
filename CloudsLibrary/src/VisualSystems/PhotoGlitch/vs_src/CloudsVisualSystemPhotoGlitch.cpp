@@ -166,6 +166,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     selectedTargetImageIdx = 0;
     
     bShouldGenerate = true;
+    ofEnableAlphaBlending();
 }
 
 void CloudsVisualSystemPhotoGlitch::clear()
@@ -257,21 +258,6 @@ void CloudsVisualSystemPhotoGlitch::generate()
             verts[idx * kVertsPerCell * kCoordsPerVert + 6] = (i + 1) * screenSliceWidth;
             verts[idx * kVertsPerCell * kCoordsPerVert + 7] = (j + 1) * screenSliceHeight;
             
-            ////////
-
-//            // Add Target image verts.
-//            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 0] = (i + 0) * screenSliceWidth;
-//            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 1] = (j + 0) * screenSliceHeight;
-//            
-//            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 2] = (i + 1) * screenSliceWidth;
-//            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 3] = (j + 0) * screenSliceHeight;
-//            
-//            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 4] = (i + 0) * screenSliceWidth;
-//            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 5] = (j + 1) * screenSliceHeight;
-//            
-//            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 6] = (i + 1) * screenSliceWidth;
-//            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 7] = (j + 1) * screenSliceHeight;
-//            ////////
             
             // Add tex coords.
             texCoords[idx * kVertsPerCell * 2 + 0] = (i + 0) * texSliceWidth;
@@ -329,11 +315,7 @@ void CloudsVisualSystemPhotoGlitch::generate()
             
 //            cout<<cells[idx].avgColor.getBrightness()<<endl;
             if (cells[idx].avgColor.getBrightness() < 0.1) {
-                
-                cout<<cells[idx].avgColor.getHue()<<endl;
-                
-//                cells[idx].avgColor.setHue(0.5f);
-                cells[idx].avgColor.setHsb(ofRandomuf(), ofRandomuf(),ofRandomuf());
+                cells[idx].avgColor.setHsb(ofRandomuf(), ofRandomuf(),ofRandomuf(), 0.0);
                 cout<<cells[idx].avgColor.getHue()<<endl;
             }
             
@@ -545,7 +527,12 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
     
     ofSetColor(255);
 //    tex.draw(0, 0);
+    
+    targetTex.bind();
+    targetVbo.drawElements(GL_TRIANGLES, numIndices);
+    targetTex.unbind();
     tex.bind();
+    
     {
 //        vbo.draw(GL_TRIANGLES, 0, 24);
 //        glPushAttrib(GL_POLYGON_BIT);
@@ -564,11 +551,11 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
 //            ofSetColor(targetCells[i].avgColor);
 //            ofRect(targetCells[i].col * screenSliceWidth, targetCells[i].row * screenSliceHeight, screenSliceWidth, screenSliceHeight);
 //        }
-        for (int i = 0; i < numCells; i++) {
-            ofSetColor(cells[i].avgColor);
-            ofRect(cells[i].col * screenSliceWidth, cells[i].row * screenSliceHeight, screenSliceWidth, screenSliceHeight);
-        }
-    } 
+//        for (int i = 0; i < numCells; i++) {
+//            ofSetColor(cells[i].avgColor);
+//            ofRect(cells[i].col * screenSliceWidth, cells[i].row * screenSliceHeight, screenSliceWidth, screenSliceHeight);
+//        }
+    }
 
     // Debug avg colors.
 //    for (int i = 0; i < numCells; i++) {
