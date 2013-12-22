@@ -3,7 +3,7 @@
 
 void main(){
     vec4 c = gl_Color;
-    c.a = pow(c.a, 6);
+    c.a = pow(c.a, 10);
 	gl_FragColor += c;
     
 }
