@@ -86,6 +86,7 @@ class CloudsClip {
 
 	bool hasCombinedVideo;
 	string combinedVideoPath;
+	string voiceOverAudioPath;
 	string combinedCalibrationXMLPath;
 	
 	string getRelinkedVideoFilePath();

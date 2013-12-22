@@ -99,7 +99,7 @@ void CloudsFCPParser::parseVOClips(){
 		CloudsClip clip;
 		
 		clip.voiceOverAudio = true;
-		clip.combinedVideoPath = dir.getPath(i);
+		clip.voiceOverAudioPath = dir.getPath(i);
 		clip.sourceVideoFilePath = dir.getPath(i);
 		clip.startFrame = 0;
 		clip.endFrame = 9999;
@@ -113,7 +113,6 @@ void CloudsFCPParser::parseVOClips(){
 			ofLogError("CloudsFCPParser::parseVOClips") << "VO Clip " << dir.getPath(i) << " incorrectly formatted";
 			continue;
 		}
-		
 		
 		clip.person = components[0];
 		clip.name = components[1];
