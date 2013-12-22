@@ -108,13 +108,16 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void sortHue();
     void sortBri();
     void reorder();
+    void sortTarget();
     
     void tweenAll();
     void tween(int i, int j = -1);
     
     static bool sortIdxForHue(int i, int j);
     static bool sortIdxForBri(int i, int j);
+    static bool sortIdxForHueTarget(int i, int j);
     static PGCell * cells;
+    static PGCell * targetCells;
     
   protected:
     ofxUISuperCanvas * customGui;
@@ -130,11 +133,23 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     int numIndices;
     GLuint * indices;
     
+    int numTargetVerts;
+    GLfloat * targetVerts;
+    GLfloat * targetTexCoords;
+    GLfloat * targetColors;
+    int targetNumIndices;
+    GLuint * targetIndices;
+    
     ofImage tex;
     ofVbo vbo;
     
+    ofImage targetTex;
+    ofVbo targetVbo;
+    
     ofDirectory imagesDir;
+    ofDirectory targetImagesDir;
     int selectedSrcImageIdx;
+    int selectedTargetImageIdx;
     
     int tweenDuration;
     int tweenDelay;
@@ -143,14 +158,19 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     float screenSliceHeight;
     float texSliceWidth;
     float texSliceHeight;
+    float targetTexSliceWidth;
+    float targetTexSliceHeight;
     
     bool bUseColors;
     bool bUseTexture;
+    bool bDrawTarget;
     
     bool bShouldShuffle;
     bool bShouldSortHue;
     bool bShouldSortBri;
+    bool bShouldSortTarget;
     bool bShouldReorder;
+
     
     bool bDoPerpendicular;
     
