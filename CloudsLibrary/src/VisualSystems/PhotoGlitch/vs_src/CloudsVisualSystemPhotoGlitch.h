@@ -109,13 +109,16 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void sortBri();
     void reorder();
     void sortTarget();
+    void sortTargetBrightness();
     
     void tweenAll();
     void tween(int i, int j = -1);
+    void tweenTarget(int i, int j = -1);
     
     static bool sortIdxForHue(int i, int j);
     static bool sortIdxForBri(int i, int j);
     static bool sortIdxForHueTarget(int i, int j);
+    static bool sortIdxForBrightnessTarget(int i, int j);
     static PGCell * cells;
     static PGCell * targetCells;
     
@@ -169,6 +172,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     bool bShouldSortHue;
     bool bShouldSortBri;
     bool bShouldSortTarget;
+    bool bShouldSortTargetBri;
     bool bShouldReorder;
 
     
