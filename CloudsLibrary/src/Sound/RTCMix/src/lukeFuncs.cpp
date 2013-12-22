@@ -56,6 +56,29 @@ void SCHEDULEBANG(double time)
     parse_score(thebuf, bx);
 }
 
+// play an audio file from DISK
+void STREAMSOUND(string file, float dur, float amp)
+{
+    char thebuf [256];
+    int bx;
+    string p = GetCloudsDataPath() + "sound/trax/";
+    ofDirectory sdir(p);
+    
+    string f = sdir.getAbsolutePath()+"/"+file;
+    bx = snprintf(thebuf, 256, "rtinput(\"%s\")", (char*)f.c_str());
+    parse_score(thebuf, bx);
+    if(dur<0)
+    {
+        bx = snprintf(thebuf, 256, "STEREO(0., 0., DUR(), %f*amp_declick, 0, 1)", amp);
+    }
+    else
+    {
+        bx = snprintf(thebuf, 256, "STEREO(0., 0., %f, %f*amp_declick, 0, 1)", dur, amp);
+    }
+    parse_score(thebuf, bx);
+    
+}
+
 // loads an audio file into RAM as a buffer handle
 float LOADSOUND(string file, string handle)
 {

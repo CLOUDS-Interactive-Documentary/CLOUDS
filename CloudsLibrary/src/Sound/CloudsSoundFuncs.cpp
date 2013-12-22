@@ -564,6 +564,14 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
             }
         }
     }
+    
+    // UTILITY
+    if (mo=="simplesound")
+    {
+        PATCHFX("STEREO", "in 0", "out 0-1");
+        STREAMSOUND(arg_b, musicdur, 1.);
+        PATCHFX("STEREO", "in 0", "aux 0-1 out");
+    }
 
     //
     // =======================

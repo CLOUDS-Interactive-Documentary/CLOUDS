@@ -17,3 +17,4 @@ slowmeshbeats, straight pattern lsys;
 vermontbeatz, straight pattern lsys;
 slowvermontbeatz, straight pattern lsys;
 avibeats, avi1 avi2a avi2b avi2c avi3a avi3b Eccentric;
+simplesound, soundfile;
