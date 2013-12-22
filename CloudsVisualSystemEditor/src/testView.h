@@ -21,13 +21,21 @@
 	IBOutlet NSComboBox* grade;
 	IBOutlet NSButton* enabledBox;
 	IBOutlet NSButton* oculusBox;
+	IBOutlet NSButton* soundBox;
+
 	
+	IBOutlet NSButton* filterEnabledBox;
+	IBOutlet NSButton* filterOculusBox;
+	IBOutlet NSButton* filterGradeABox;
+
 	bool shouldPlaySelectedRow;
 	
 	CloudsFCPParser parser;
 	CloudsVisualSystemManager visualSystems;
 	ofPtr<CloudsVisualSystem> currentVisualSystem;
 	CloudsVisualSystemPreset* selectedPreset;
+	vector<int> filteredPresetInds;
+	
 	vector<CloudsClip> associatedClips;
 	vector<CloudsClip> suppressedClips;
 	vector<string> associatedKeywords;
@@ -38,6 +46,8 @@
 	float percentKeywordsTagged;
 	float percentClipsTagged;
 }
+
+- (int)selectedPresetIndex;
 
 - (void)setup;
 - (void)update;
@@ -54,6 +64,7 @@
 
 - (void) updateCounts;
 
+- (IBAction) updateFilters:(id)sender;
 - (IBAction) updatePresets:(id)sender;
 - (IBAction) deletePreset:(id)sender;
 - (IBAction) updateKeywords:(id)sender;
@@ -61,6 +72,7 @@
 - (IBAction) unsuppressClip:(id)sender;
 
 - (IBAction) exportStandalone:(id)sender;
+
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
