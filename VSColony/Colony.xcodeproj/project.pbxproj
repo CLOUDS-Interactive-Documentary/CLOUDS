@@ -75,18 +75,6 @@
 		4695E3EF1752A089003001E2 /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E3D31752A088003001E2 /* ofxTween.cpp */; };
 		8508EC7F1866AAE200A73AB5 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC781866AAE200A73AB5 /* CloudsInput.cpp */; };
 		8508EC811866AAE200A73AB5 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC7D1866AAE200A73AB5 /* CloudsInputMouse.cpp */; };
-		8508EC871866AB8600A73AB5 /* balls.frag in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC831866AB8600A73AB5 /* balls.frag */; };
-		8508EC881866AB8600A73AB5 /* balls.geom in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC841866AB8600A73AB5 /* balls.geom */; };
-		8508EC891866AB8600A73AB5 /* balls.vert in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC851866AB8600A73AB5 /* balls.vert */; };
-		8508EC8A1866AB8600A73AB5 /* liquidNoise.fs in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC861866AB8600A73AB5 /* liquidNoise.fs */; };
-		8508EC911866AC2300A73AB5 /* cells.fs in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC8C1866AC2300A73AB5 /* cells.fs */; };
-		8508EC921866AC2300A73AB5 /* cells.gs in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC8D1866AC2300A73AB5 /* cells.gs */; };
-		8508EC931866AC2300A73AB5 /* cells.vs in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC8E1866AC2300A73AB5 /* cells.vs */; };
-		8508EC941866AC2300A73AB5 /* levelSet.fs in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC8F1866AC2300A73AB5 /* levelSet.fs */; };
-		8508EC951866AC2300A73AB5 /* levelSet.vs in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC901866AC2300A73AB5 /* levelSet.vs */; };
-		8508EC991866AC4700A73AB5 /* cells.fs in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC961866AC4700A73AB5 /* cells.fs */; };
-		8508EC9A1866AC4700A73AB5 /* cells.gs in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC971866AC4700A73AB5 /* cells.gs */; };
-		8508EC9B1866AC4700A73AB5 /* cells.vs in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC981866AC4700A73AB5 /* cells.vs */; };
 		852D022A181DF3CC00436018 /* liquidNoise.fs in Sources */ = {isa = PBXBuildFile; fileRef = 852D0205181DF3CC00436018 /* liquidNoise.fs */; };
 		852D022C181DF3CC00436018 /* CloudsVisualSystemColony.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 852D0228181DF3CC00436018 /* CloudsVisualSystemColony.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -1477,18 +1465,6 @@
 				E7295F1C183ABD4100C5207F /* gCell.cpp in Sources */,
 				8508EC7F1866AAE200A73AB5 /* CloudsInput.cpp in Sources */,
 				8508EC811866AAE200A73AB5 /* CloudsInputMouse.cpp in Sources */,
-				8508EC871866AB8600A73AB5 /* balls.frag in Sources */,
-				8508EC881866AB8600A73AB5 /* balls.geom in Sources */,
-				8508EC891866AB8600A73AB5 /* balls.vert in Sources */,
-				8508EC8A1866AB8600A73AB5 /* liquidNoise.fs in Sources */,
-				8508EC911866AC2300A73AB5 /* cells.fs in Sources */,
-				8508EC921866AC2300A73AB5 /* cells.gs in Sources */,
-				8508EC931866AC2300A73AB5 /* cells.vs in Sources */,
-				8508EC941866AC2300A73AB5 /* levelSet.fs in Sources */,
-				8508EC951866AC2300A73AB5 /* levelSet.vs in Sources */,
-				8508EC991866AC4700A73AB5 /* cells.fs in Sources */,
-				8508EC9A1866AC4700A73AB5 /* cells.gs in Sources */,
-				8508EC9B1866AC4700A73AB5 /* cells.vs in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
