@@ -27,6 +27,7 @@ class CloudsVisualSystemPreset {
 	string grade;
 	bool enabled;
 	bool oculusCompatible;
+	bool hasSound;
 	
 	bool defaultedToFamily;
 	string conjureKeyword;
