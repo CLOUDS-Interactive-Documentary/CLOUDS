@@ -31,7 +31,7 @@ void CloudsPortalRing::setup(CloudsPortal* parent, ofVboMesh& portalGeo, int rin
 		
 	
 	
-	for(int l = 0; l < 1; l++){ //three layers
+	for(int l = 0; l < 2; l++){ //three layers
 		
 		//either 2 or 5 shards per ring
 		int numShards = (ofRandom(2,5)+.5);
@@ -79,9 +79,14 @@ void CloudsPortalRing::setup(CloudsPortal* parent, ofVboMesh& portalGeo, int rin
 			}
 			//attenuate all saturation a little bit
 			baseColor.setSaturation(baseColor.getSaturation()*ofRandom(.7,1.0));
-			shard.direction = ofRandomuf() > .5 ? -1. : 1;
-			shard.direction *= ofMap(ringIndex, 0, 3, 1.0, .5); //slow it down
-			shard.direction *= ofRandom(.5,1.5);
+//			if(l == 0){
+//				shard.direction = 0.0;
+//			}
+//			else{
+				shard.direction = ofRandomuf() > .5 ? -1. : 1;
+				shard.direction *= ofMap(ringIndex, 0, 3, 1.0, .5); //slow it down
+				shard.direction *= ofRandom(.5,1.5);
+//			}
 			
 			shard.innerColor = shard.outerColor = baseColor;
 			for(int s = currentSegment; s < currentSegment + shard.numSegments; s++){
