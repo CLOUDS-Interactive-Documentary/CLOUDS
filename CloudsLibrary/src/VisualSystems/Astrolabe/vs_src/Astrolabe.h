@@ -54,6 +54,7 @@ public:
 	ofxEasing* ease;
 	ofxEasingQuint 	easingquint;
 	ofxEasingBounce easebounce;
+	ofxEasingSine easesine;
 	
 	
 	ofVec3f eularAngels;
