@@ -7,14 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1715D0FB183D4515001EB045 /* balls.geom in Sources */ = {isa = PBXBuildFile; fileRef = 1715D0FA183D4515001EB045 /* balls.geom */; };
-		174C752218661FEE005EFBDC /* cells.gs in Sources */ = {isa = PBXBuildFile; fileRef = 174C752118661FEE005EFBDC /* cells.gs */; };
-		174C752418661FF7005EFBDC /* cells.vs in Sources */ = {isa = PBXBuildFile; fileRef = 174C752318661FF7005EFBDC /* cells.vs */; };
-		174C752618662001005EFBDC /* cells.fs in Sources */ = {isa = PBXBuildFile; fileRef = 174C752518662001005EFBDC /* cells.fs */; };
-		174C752818666DE7005EFBDC /* levelSet.fs in Sources */ = {isa = PBXBuildFile; fileRef = 174C752718666DE7005EFBDC /* levelSet.fs */; };
-		174C752A1866785E005EFBDC /* levelSet.vs in Sources */ = {isa = PBXBuildFile; fileRef = 174C75291866785E005EFBDC /* levelSet.vs */; };
-		1765DEE91849412F00190020 /* balls.frag in Sources */ = {isa = PBXBuildFile; fileRef = 1765DEE81849412F00190020 /* balls.frag */; };
-		179A026818498F360057263B /* balls.vert in Sources */ = {isa = PBXBuildFile; fileRef = 179A026718498F360057263B /* balls.vert */; };
 		4695E2AF17512E45003001E2 /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E27B17512E45003001E2 /* ofxBehavior.cpp */; };
 		4695E2B017512E45003001E2 /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E27F17512E45003001E2 /* ofxBufferEffectorBehavior.cpp */; };
 		4695E2B117512E45003001E2 /* ofxDamperBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E28217512E45003001E2 /* ofxDamperBehavior.cpp */; };
@@ -81,7 +73,6 @@
 		4695E3ED1752A089003001E2 /* ofxEasingQuint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E3CF1752A088003001E2 /* ofxEasingQuint.cpp */; };
 		4695E3EE1752A089003001E2 /* ofxEasingSine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E3D11752A088003001E2 /* ofxEasingSine.cpp */; };
 		4695E3EF1752A089003001E2 /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E3D31752A088003001E2 /* ofxTween.cpp */; };
-		852D022A181DF3CC00436018 /* liquidNoise.fs in Sources */ = {isa = PBXBuildFile; fileRef = 852D0205181DF3CC00436018 /* liquidNoise.fs */; };
 		852D022C181DF3CC00436018 /* CloudsVisualSystemColony.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 852D0228181DF3CC00436018 /* CloudsVisualSystemColony.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -146,14 +137,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1715D0FA183D4515001EB045 /* balls.geom */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = balls.geom; sourceTree = "<group>"; };
-		174C752118661FEE005EFBDC /* cells.gs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cells.gs; sourceTree = "<group>"; };
-		174C752318661FF7005EFBDC /* cells.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cells.vs; sourceTree = "<group>"; };
-		174C752518662001005EFBDC /* cells.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cells.fs; sourceTree = "<group>"; };
-		174C752718666DE7005EFBDC /* levelSet.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = levelSet.fs; sourceTree = "<group>"; };
-		174C75291866785E005EFBDC /* levelSet.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = levelSet.vs; sourceTree = "<group>"; };
-		1765DEE81849412F00190020 /* balls.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = balls.frag; sourceTree = "<group>"; };
-		179A026718498F360057263B /* balls.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = balls.vert; sourceTree = "<group>"; };
+		174C752D1866B4E3005EFBDC /* balls.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = balls.frag; sourceTree = "<group>"; };
+		174C752E1866B4E3005EFBDC /* balls.geom */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = balls.geom; sourceTree = "<group>"; };
+		174C752F1866B4E3005EFBDC /* balls.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = balls.vert; sourceTree = "<group>"; };
+		174C75301866B4E3005EFBDC /* cells.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cells.fs; sourceTree = "<group>"; };
+		174C75311866B4E3005EFBDC /* cells.gs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cells.gs; sourceTree = "<group>"; };
+		174C75321866B4E3005EFBDC /* cells.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cells.vs; sourceTree = "<group>"; };
+		174C75331866B4E3005EFBDC /* levelSet.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = levelSet.fs; sourceTree = "<group>"; };
+		174C75341866B4E3005EFBDC /* levelSet.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = levelSet.vs; sourceTree = "<group>"; };
+		174C75351866B4E3005EFBDC /* liquidNoise.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = liquidNoise.fs; sourceTree = "<group>"; };
+		174C75371866B9BD005EFBDC /* CloudsInput.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
+		174C75381866B9BD005EFBDC /* CloudsInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
+		174C75391866B9BD005EFBDC /* CloudsInputEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
+		174C753C1866B9BD005EFBDC /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		174C753D1866B9BD005EFBDC /* CloudsInputMouse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
 		4695E24B17512ACD003001E2 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		4695E24C17512ACD003001E2 /* ofxUI2DGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DGraph.h; sourceTree = "<group>"; };
 		4695E24D17512ACD003001E2 /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -368,37 +365,6 @@
 		852D0201181DF3CC00436018 /* defaultColorPalette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultColorPalette.png; sourceTree = "<group>"; };
 		852D0202181DF3CC00436018 /* defaultColors.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = defaultColors.xml; sourceTree = "<group>"; };
 		852D0203181DF3CC00436018 /* NewMedia Fett.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewMedia Fett.ttf"; sourceTree = "<group>"; };
-		852D0205181DF3CC00436018 /* liquidNoise.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = liquidNoise.fs; sourceTree = "<group>"; };
-		852D0207181DF3CC00436018 /* Cell_2_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_2_sm.png; sourceTree = "<group>"; };
-		852D0208181DF3CC00436018 /* Cell_3a_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_3a_sm.png; sourceTree = "<group>"; };
-		852D0209181DF3CC00436018 /* Cell_3b_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_3b_sm.png; sourceTree = "<group>"; };
-		852D020A181DF3CC00436018 /* Cell_3d_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_3d_sm.png; sourceTree = "<group>"; };
-		852D020B181DF3CC00436018 /* Cell_3e_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_3e_sm.png; sourceTree = "<group>"; };
-		852D020C181DF3CC00436018 /* Cell_3f_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_3f_sm.png; sourceTree = "<group>"; };
-		852D020D181DF3CC00436018 /* Cell_3g_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_3g_sm.png; sourceTree = "<group>"; };
-		852D020E181DF3CC00436018 /* Cell_4b_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_4b_sm.png; sourceTree = "<group>"; };
-		852D020F181DF3CC00436018 /* Cell_4d_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_4d_sm.png; sourceTree = "<group>"; };
-		852D0210181DF3CC00436018 /* Cell_4f_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_4f_sm.png; sourceTree = "<group>"; };
-		852D0211181DF3CC00436018 /* Cell_4g_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_4g_sm.png; sourceTree = "<group>"; };
-		852D0212181DF3CC00436018 /* Cell_5b_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_5b_sm.png; sourceTree = "<group>"; };
-		852D0213181DF3CC00436018 /* Cell_5d_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_5d_sm.png; sourceTree = "<group>"; };
-		852D0214181DF3CC00436018 /* Cell_5e_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_5e_sm.png; sourceTree = "<group>"; };
-		852D0215181DF3CC00436018 /* Cell_5f_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_5f_sm.png; sourceTree = "<group>"; };
-		852D0216181DF3CC00436018 /* Cell_5g_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_5g_sm.png; sourceTree = "<group>"; };
-		852D0217181DF3CC00436018 /* Cell_5h_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_5h_sm.png; sourceTree = "<group>"; };
-		852D0218181DF3CC00436018 /* Cell_5i_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_5i_sm.png; sourceTree = "<group>"; };
-		852D0219181DF3CC00436018 /* Cell_6a_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_6a_sm.png; sourceTree = "<group>"; };
-		852D021A181DF3CC00436018 /* Cell_6b_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_6b_sm.png; sourceTree = "<group>"; };
-		852D021B181DF3CC00436018 /* Cell_6f_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_6f_sm.png; sourceTree = "<group>"; };
-		852D021C181DF3CC00436018 /* Cell_6f_sm_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_6f_sm_2.png; sourceTree = "<group>"; };
-		852D021D181DF3CC00436018 /* Cell_6f_sm_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_6f_sm_3.png; sourceTree = "<group>"; };
-		852D021E181DF3CC00436018 /* Cell_6f_sm_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_6f_sm_4.png; sourceTree = "<group>"; };
-		852D021F181DF3CC00436018 /* Cell_6k_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_6k_sm.png; sourceTree = "<group>"; };
-		852D0220181DF3CC00436018 /* Cell_6l_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_6l_sm.png; sourceTree = "<group>"; };
-		852D0221181DF3CC00436018 /* Cell_6n_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_6n_sm.png; sourceTree = "<group>"; };
-		852D0222181DF3CC00436018 /* Cell_6o_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_6o_sm.png; sourceTree = "<group>"; };
-		852D0223181DF3CC00436018 /* Cell_white_1a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_white_1a.png; sourceTree = "<group>"; };
-		852D0224181DF3CC00436018 /* Cell_white_1b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_white_1b.png; sourceTree = "<group>"; };
 		852D0228181DF3CC00436018 /* CloudsVisualSystemColony.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemColony.cpp; sourceTree = "<group>"; };
 		852D0229181DF3CC00436018 /* CloudsVisualSystemColony.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemColony.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -495,6 +461,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		174C752C1866B4E3005EFBDC /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				174C752D1866B4E3005EFBDC /* balls.frag */,
+				174C752E1866B4E3005EFBDC /* balls.geom */,
+				174C752F1866B4E3005EFBDC /* balls.vert */,
+				174C75301866B4E3005EFBDC /* cells.fs */,
+				174C75311866B4E3005EFBDC /* cells.gs */,
+				174C75321866B4E3005EFBDC /* cells.vs */,
+				174C75331866B4E3005EFBDC /* levelSet.fs */,
+				174C75341866B4E3005EFBDC /* levelSet.vs */,
+				174C75351866B4E3005EFBDC /* liquidNoise.fs */,
+			);
+			name = shaders;
+			path = ../../../../../../CloudsData/visualsystems/Colony/shaders;
+			sourceTree = "<group>";
+		};
+		174C75361866B9BD005EFBDC /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				174C75371866B9BD005EFBDC /* CloudsInput.cpp */,
+				174C75381866B9BD005EFBDC /* CloudsInput.h */,
+				174C75391866B9BD005EFBDC /* CloudsInputEvents.h */,
+				174C753C1866B9BD005EFBDC /* CloudsInputMouse.cpp */,
+				174C753D1866B9BD005EFBDC /* CloudsInputMouse.h */,
+			);
+			name = Input;
+			path = ../CloudsLibrary/src/Input;
+			sourceTree = "<group>";
+		};
 		4695E24A17512ACD003001E2 /* ofxUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -976,9 +972,8 @@
 		852D01FF181DF3CC00436018 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				174C752C1866B4E3005EFBDC /* shaders */,
 				852D0200181DF3CC00436018 /* GUI */,
-				852D0204181DF3CC00436018 /* shaders */,
-				852D0206181DF3CC00436018 /* sprites */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -991,59 +986,6 @@
 				852D0203181DF3CC00436018 /* NewMedia Fett.ttf */,
 			);
 			path = GUI;
-			sourceTree = "<group>";
-		};
-		852D0204181DF3CC00436018 /* shaders */ = {
-			isa = PBXGroup;
-			children = (
-				852D0205181DF3CC00436018 /* liquidNoise.fs */,
-				1715D0FA183D4515001EB045 /* balls.geom */,
-				1765DEE81849412F00190020 /* balls.frag */,
-				179A026718498F360057263B /* balls.vert */,
-				174C752118661FEE005EFBDC /* cells.gs */,
-				174C752518662001005EFBDC /* cells.fs */,
-				174C752318661FF7005EFBDC /* cells.vs */,
-				174C752718666DE7005EFBDC /* levelSet.fs */,
-				174C75291866785E005EFBDC /* levelSet.vs */,
-			);
-			path = shaders;
-			sourceTree = "<group>";
-		};
-		852D0206181DF3CC00436018 /* sprites */ = {
-			isa = PBXGroup;
-			children = (
-				852D0207181DF3CC00436018 /* Cell_2_sm.png */,
-				852D0208181DF3CC00436018 /* Cell_3a_sm.png */,
-				852D0209181DF3CC00436018 /* Cell_3b_sm.png */,
-				852D020A181DF3CC00436018 /* Cell_3d_sm.png */,
-				852D020B181DF3CC00436018 /* Cell_3e_sm.png */,
-				852D020C181DF3CC00436018 /* Cell_3f_sm.png */,
-				852D020D181DF3CC00436018 /* Cell_3g_sm.png */,
-				852D020E181DF3CC00436018 /* Cell_4b_sm.png */,
-				852D020F181DF3CC00436018 /* Cell_4d_sm.png */,
-				852D0210181DF3CC00436018 /* Cell_4f_sm.png */,
-				852D0211181DF3CC00436018 /* Cell_4g_sm.png */,
-				852D0212181DF3CC00436018 /* Cell_5b_sm.png */,
-				852D0213181DF3CC00436018 /* Cell_5d_sm.png */,
-				852D0214181DF3CC00436018 /* Cell_5e_sm.png */,
-				852D0215181DF3CC00436018 /* Cell_5f_sm.png */,
-				852D0216181DF3CC00436018 /* Cell_5g_sm.png */,
-				852D0217181DF3CC00436018 /* Cell_5h_sm.png */,
-				852D0218181DF3CC00436018 /* Cell_5i_sm.png */,
-				852D0219181DF3CC00436018 /* Cell_6a_sm.png */,
-				852D021A181DF3CC00436018 /* Cell_6b_sm.png */,
-				852D021B181DF3CC00436018 /* Cell_6f_sm.png */,
-				852D021C181DF3CC00436018 /* Cell_6f_sm_2.png */,
-				852D021D181DF3CC00436018 /* Cell_6f_sm_3.png */,
-				852D021E181DF3CC00436018 /* Cell_6f_sm_4.png */,
-				852D021F181DF3CC00436018 /* Cell_6k_sm.png */,
-				852D0220181DF3CC00436018 /* Cell_6l_sm.png */,
-				852D0221181DF3CC00436018 /* Cell_6n_sm.png */,
-				852D0222181DF3CC00436018 /* Cell_6o_sm.png */,
-				852D0223181DF3CC00436018 /* Cell_white_1a.png */,
-				852D0224181DF3CC00436018 /* Cell_white_1b.png */,
-			);
-			path = sprites;
 			sourceTree = "<group>";
 		};
 		852D0225181DF3CC00436018 /* vs_src */ = {
@@ -1130,6 +1072,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				174C75361866B9BD005EFBDC /* Input */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -1390,12 +1333,9 @@
 				4695E2B017512E45003001E2 /* ofxBufferEffectorBehavior.cpp in Sources */,
 				4695E2B117512E45003001E2 /* ofxDamperBehavior.cpp in Sources */,
 				4695E2B217512E45003001E2 /* ofxDistorterBehavior.cpp in Sources */,
-				174C752218661FEE005EFBDC /* cells.gs in Sources */,
 				4695E2B317512E45003001E2 /* ofxElectroStaticBehavior.cpp in Sources */,
 				4695E2B417512E45003001E2 /* ofxField2D.cpp in Sources */,
-				174C752A1866785E005EFBDC /* levelSet.vs in Sources */,
 				4695E2B517512E45003001E2 /* ofxHomingBehavior.cpp in Sources */,
-				179A026818498F360057263B /* balls.vert in Sources */,
 				4695E2B617512E45003001E2 /* ofxPerlinBehavior.cpp in Sources */,
 				4695E2B717512E45003001E2 /* ofxRParticle.cpp in Sources */,
 				4695E2B817512E45003001E2 /* ofxRParticleGlowieRenderer.cpp in Sources */,
@@ -1405,7 +1345,6 @@
 				4695E2BC17512E45003001E2 /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */,
 				4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */,
-				174C752618662001005EFBDC /* cells.fs in Sources */,
 				4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */,
 				4695E33B17529F8A003001E2 /* kiss_fft.c in Sources */,
 				4695E33C17529F8A003001E2 /* kiss_fftr.c in Sources */,
@@ -1435,7 +1374,6 @@
 				4695E35917529F8B003001E2 /* ofxTLSwitches.cpp in Sources */,
 				4695E35A17529F8B003001E2 /* ofxTLTicker.cpp in Sources */,
 				4695E35B17529F8B003001E2 /* ofxTLTrack.cpp in Sources */,
-				1765DEE91849412F00190020 /* balls.frag in Sources */,
 				4695E35C17529F8B003001E2 /* ofxTLTrackHeader.cpp in Sources */,
 				4695E35D17529F8B003001E2 /* ofxTLVideoThumb.cpp in Sources */,
 				4695E35E17529F8B003001E2 /* ofxTLVideoTrack.cpp in Sources */,
@@ -1457,15 +1395,11 @@
 				4695E3EE1752A089003001E2 /* ofxEasingSine.cpp in Sources */,
 				4695E3EF1752A089003001E2 /* ofxTween.cpp in Sources */,
 				E774E26C175E91FA00655914 /* MSACoreGL.cpp in Sources */,
-				174C752818666DE7005EFBDC /* levelSet.fs in Sources */,
 				E774E26F175E91FA00655914 /* MSAObjCPointer.cpp in Sources */,
 				E72FF18717E6A7970007780D /* CloudsRGBDCamera.cpp in Sources */,
 				E72FF18817E6A7970007780D /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				E72FF18917E6A7970007780D /* CloudsVisualSystem.cpp in Sources */,
-				852D022A181DF3CC00436018 /* liquidNoise.fs in Sources */,
 				852D022C181DF3CC00436018 /* CloudsVisualSystemColony.cpp in Sources */,
-				1715D0FB183D4515001EB045 /* balls.geom in Sources */,
-				174C752418661FF7005EFBDC /* cells.vs in Sources */,
 				E7295F1C183ABD4100C5207F /* gCell.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1563,6 +1497,10 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -1661,6 +1599,10 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
