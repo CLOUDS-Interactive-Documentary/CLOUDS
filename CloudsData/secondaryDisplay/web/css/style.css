@@ -17,43 +17,7 @@ body{
 	width:1280px;
 	height:720px;
 }
-/*
 
-
-#first, 
-#last,
-#topic{
-	position:relative;
-	padding-left:19px;
-	padding-top:5px;
-	font-size:96px;
-	font-weight:lighter;
-}
-
-#title{
-	position:relative;
-	padding-left:19px;
-	padding-top:1px;
-	font-size:35px;
-	font-weight:lighter;
-}
-
-#byline{
-	padding-left:19px;
-	padding-top:10px;
-	font-size:26px;
-	line-height:32px;
-}
-#location {
-  position: absolute; 
-  z-index: 2147483647;
-  top: 600px; 
-  background-color: #000;
-  width:1920px;
-  float:left;
-  
-}
-*/
 
 #video{
 	z-index:1;
@@ -65,55 +29,73 @@ body{
 }
 
 #info{
-	/*
-	padding-right: 50px;
-	
-	*/
-	margin-left: 50px;
-	/*margin-right: 50px;*/
-	background-color:rgba(153, 163, 140, 0.16);
+	margin-left:2%;
+	float: center;
+	background-color:#191e19;
 	position: fixed;
 	bottom: 25px;
-	width:1748px;
-	padding-left: 50px;
-	padding-top: 40px;
-	padding-bottom: 40px;
+	width:96%;
+/*
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+*/
 }
+
 .project_info{
+	padding-left:20px;
+	font-size:96px;
+	width:33%;
+	float:left;
+	overflow:hidden;
+}
+
+/*
+.clip_info{
 	padding-left:20px;
 	font-size:96px;
 	width:350px;
 	float:left;
 	overflow:hidden;
-
+../index.html
 }
+*/
 
 .column1{
 	float:left;
-	width:243px;
+	width:22%;
+	padding-left:1%;
+	display:inline-block;
+/* 	margin: 1%; */
 	/*background:#bfb;*/
 	
 }
 .column2{
 	float:right;
-	width:1504px;
+	width:76%;
 	position: relative;
+	padding-right:1%;
 	/*background-color: rgba(73, 83, 83, 0.18);*/
 	font-size: 24px;
+	display:inline-block;
 	
 }
 .column2_1{	
 	float: left;
-	width: 200px;
+	width: 18%;
 	/*background: #ddf;*/
-	padding-left: 20px;
+/* 	padding-left: 20px; */
+/* 	margin: 1%; */
+	padding: 0.5%;
 	font-size:21px;
 	text-transform: uppercase;
 }
 
 .column2_2{
 	float:right;
-    width:1283px;
+    width:78%;
+    padding: 0.5%;
     /*background:#dff;*/
     font-size:16px;
 }
@@ -133,12 +115,11 @@ body{
 	float:left;
 	font-size:60px;
 	line-height:60px;
-	z-index: 2147483647;
+	/* z-index: 2147483647; */
 	color:#FFF;
 }
 .cl_subtitle{
 	background-color: #FFFFFF;
-/*	padding: 4px;*/
 	float:left;
 	font-size:36px;
 	color:#000;
@@ -169,7 +150,6 @@ body{
 
 #projectex_content{
 }
-
 
 
 

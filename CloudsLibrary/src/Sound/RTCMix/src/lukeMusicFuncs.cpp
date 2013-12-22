@@ -88,16 +88,17 @@ int scale(int p, int o)
 // MELODY SOLVERS
 //
 
-melodySolver::melodySolver(string c_type, lukePitchArray& c_p)
+melodySolver::melodySolver(string c_type, lukePitchArray& c_p, lukeSimpleMelody& c_m)
 {
     type = c_type;
     parray = c_p;
+    marray = c_m;
     pick = 0;
     if(type=="markov") {
         pick = (int)ofRandom(0, parray.markov.size());
         curpitch = parray.mindex[pick];
     }
-    if(type=="melody" || type=="static") pick = 0;
+    if(type=="melody" || type=="static" || type=="simple") pick = 0;
 }
 
 int melodySolver::tick()
@@ -109,13 +110,17 @@ int melodySolver::tick()
         pick = markov(pick, parray);
         curpitch = parray.mindex[pick];
     }
+    if(type=="simple")
+    {
+        curpitch = marray.notes[pick];
+    }
     else
     {
         curpitch = parray.notes[pick];
     }
     
     if(type=="melody") pick = (pick+1)%parray.notes.size();
-    
+    if(type=="simple") pick = (pick+1)%marray.notes.size();
     rval = scale(curpitch+parray.basenote, parray.scale);
     return(rval);
     
@@ -274,7 +279,7 @@ int lindenSequencer::tick()
 // precompute markov chain for pitch array
 void precomputemarkov(lukePitchArray& p)
 {
-    cout << "TEST MARKOV: " << p.notes.size() << endl;
+    if(LUKEDEBUG) cout << "TEST MARKOV: " << p.notes.size() << endl;
     
     // step one - analyze
     int tabsize = 0;
@@ -314,16 +319,19 @@ void precomputemarkov(lukePitchArray& p)
     
     
     // DEBUG
-    cout << "markov table:" << endl;
-    for(int i=0;i<p.markov.size();i++)
+    if(LUKEDEBUG)
     {
-        cout << "  " << i << ": ";
-        for(int j = 0;j<p.markov[i].size();j++)
+        cout << "markov table:" << endl;
+        for(int i=0;i<p.markov.size();i++)
         {
-            cout << p.markov[i][j] << " ";
-        }
-        cout << endl;
+            cout << "  " << i << ": ";
+            for(int j = 0;j<p.markov[i].size();j++)
+            {
+                cout << p.markov[i][j] << " ";
+            }
+            cout << endl;
         
+        }
     }
     
     

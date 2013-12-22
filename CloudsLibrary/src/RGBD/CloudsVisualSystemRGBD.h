@@ -151,6 +151,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float meshFaceMinRadius;
 	float meshFaceFalloff;
 	float meshRetractionFalloff;
+	float meshForceGeoRectraction;
 	
 	bool refreshMesh;
 	void generateMesh();

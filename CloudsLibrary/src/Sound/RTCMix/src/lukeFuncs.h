@@ -45,6 +45,10 @@ struct lukePitchArray {
     vector < vector <int> > markov;
 };
 
+struct lukeSimpleMelody {
+    vector<int> notes;
+};
+
 struct lukePreset {
     string name;
     vector<string> instruments;
@@ -64,6 +68,7 @@ struct lukeSample {
     string bank;
     float length;
     float numbeats;
+    vector <string> pattern;
 };
 
 struct lukeNote {
@@ -86,10 +91,11 @@ public:
 class melodySolver {
     string type;
     lukePitchArray parray;
+    lukeSimpleMelody marray;
     int pick;
     int curpitch;
 public:
-    melodySolver(string c_type, lukePitchArray& c_p);
+    melodySolver(string c_type, lukePitchArray& c_p, lukeSimpleMelody& c_m);
     int tick();
 };
 
@@ -119,6 +125,7 @@ void precomputemarkov(lukePitchArray& p);
 int markov(int current, lukePitchArray& p);
 void loadrhythms(string f, vector<lukeRhythm>& r);
 void loadpitches(string f, vector<lukePitchArray>& p);
+void loadsimplemelodies(string f, vector<lukeSimpleMelody>& m);
 void loadpresets_xml(string f, vector<lukePreset>& p);
 
 // luke's audio functions
@@ -134,9 +141,12 @@ void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan
 void REVERB(double outskip, double time);
 float LOADSOUND(string file, string handle);
 void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle);
-void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, string handle);
+void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, double amp, string handle);
 void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan);
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
 void SCHEDULEBANG(double time);
+
+void PATCHSYNTH(string inst, string output);
+void PATCHFX(string inst, string input, string output);
 
 #endif

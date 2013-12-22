@@ -98,25 +98,11 @@ void main(){
         return;
     }
 
-//	float attenuate =  max(isEye() * eyeMultiplier, isSkin() * skinMultiplier)) * fadeValue * forceFade;
-//	if(attenuate < epsilon){
-//		discard;
-//		return;
-//	}
-	
     vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
 	
 	/////basic coloring
 	gl_FragColor.rgb = col.rgb * edgeAttenuate * (1.0-headPositionAttenuation);
 	gl_FragColor.a = alpha;
-	
-	//apply lighting universaly
-    //gl_FragColor = gl_Color * col * attenuate * calculateLight();
-	
-	//apply lighting based on video luminosity
-//	gl_FragColor = gl_Color * col * 
-//					mix( mix(calculateLight(),1.0,isSkin()), 1.0, pow(lum,2.0) ) *
-//					mix(1.0-headPositionAttenuation,headPositionAttenuation, headAttenuateMix) * edgeAttenuate;
 	
 	//apply light to just skin
 //	gl_FragColor = gl_Color * col * attenuate * max( calculateLight(), isSkin() );

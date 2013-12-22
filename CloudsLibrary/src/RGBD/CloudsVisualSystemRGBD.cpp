@@ -52,10 +52,17 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	linesFlowUp = false;
 	refreshLines = true;
 	
+	
+	
 	drawMesh = true;
 	xSimplify = 2.0;
 	ySimplify = 2.0;
 	randomVariance = 1.0;
+
+	meshFaceMinRadius = 0.0;
+	meshFaceFalloff = 0.0;
+	meshRetractionFalloff = 1.0;
+	meshForceGeoRectraction = .0;
 
 }
 
@@ -167,7 +174,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guis.push_back(globalMeshGui);
 	guimap[globalMeshGui->getName()] = globalMeshGui;
 
-
 	pointsGui = new ofxUISuperCanvas("POINTS", gui);
 	pointsGui->copyCanvasStyle(gui);
     pointsGui->copyCanvasProperties(gui);
@@ -184,7 +190,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	pointsGui->addIntSlider("Num Points", 0, 100000, &numRandomPoints);
 	pointsGui->addRangeSlider("Point Size", 0.0, 3.0, &pointSize.min, &pointSize.max);
 	pointsGui->addSlider("Point Face Overlap",0., 1.0, &pointHeadOverlap);
-	pointsGui->addSlider("Point Flow", 0, 2.0, &pointFlowSpeed);
+	pointsGui->addSlider("Point Flow", 0, 1.0, &pointFlowSpeed);
 	pointsGui->addToggle("Points Flow Up", &pointsFlowUp);
 	
 	ofAddListener(pointsGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
@@ -208,7 +214,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	linesGui->addSlider("Line Spacing", 1., 16., &lineSpacing);
 	linesGui->addSlider("Line Face Overlap", 0., 1.0, &lineHeadOverlap);
 	linesGui->addSlider("Line Granularity", 1., 10.0, &lineGranularity);
-	linesGui->addSlider("Line Flow", 0, 2.0, &lineFlowSpeed);
+	linesGui->addSlider("Line Flow", 0, 1.0, &lineFlowSpeed);
 	linesGui->addToggle("Lines Flow Up", &linesFlowUp);
 	ofAddListener(linesGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
 	guis.push_back(linesGui);
@@ -234,7 +240,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	meshGui->addSlider("Face Min Radius", 0, 600., &meshFaceMinRadius);
 	meshGui->addSlider("Face Falloff", 0, 600., &meshFaceFalloff);
 	meshGui->addSlider("Edge Geo Retraction", 0, 1.0, &meshRetractionFalloff);
-
+	meshGui->addSlider("Force Geo Retraction", 0, 1.0, &meshForceGeoRectraction);
 	ofAddListener(meshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
 	guis.push_back(meshGui);
 	guimap[meshGui->getName()] = meshGui;
@@ -338,8 +344,8 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		generateMesh();
 	}
 
-	lineFlowPosition += lineFlowSpeed;
-	pointFlowPosition += pointFlowSpeed;
+	lineFlowPosition += powf(lineFlowSpeed,2.0);
+	pointFlowPosition += powf(pointFlowSpeed,2.0);
 	
 	if(drawParticulate){
 		
@@ -811,7 +817,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			meshShader.setUniform1f("headFalloff", meshFaceFalloff);
 			meshShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
 			meshShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
-			
+			meshShader.setUniform1f("forceGeoRectraction",meshForceGeoRectraction);
 			mesh.draw();
 			
 			meshShader.end();
@@ -824,7 +830,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		if(drawLines){
 			lineShader.begin();
 			ofSetLineWidth(lineThickness);
-			getRGBDVideoPlayer().flowPosition = lineFlowPosition;
+			getRGBDVideoPlayer().flowPosition = lineFlowPosition * (linesFlowUp?-1:1);
 			getRGBDVideoPlayer().setupProjectionUniforms(lineShader);
 			
 			lineShader.setUniform1f("lineExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
@@ -842,7 +848,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			
 		if(drawPoints){
 			pointShader.begin();
-			getRGBDVideoPlayer().flowPosition = pointFlowPosition;
+			getRGBDVideoPlayer().flowPosition = pointFlowPosition * (pointsFlowUp?-1:1);
 			getRGBDVideoPlayer().setupProjectionUniforms(pointShader);
 			
 			

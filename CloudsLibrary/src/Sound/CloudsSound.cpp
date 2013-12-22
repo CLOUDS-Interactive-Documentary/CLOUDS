@@ -48,9 +48,8 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
             precomputemarkov(pitches[i]);
         }
         
-		targetAmp = .7; // wonder what this is?
+		targetAmp = 1.0; // wonder what this is?
 		
-        MASTERAMP = 1;
         MASTERTEMPO = 120;
         AUTORUN = 0;
         DOCLEAR = true;
@@ -80,13 +79,8 @@ void CloudsSound::exit(ofEventArgs & args){
 	}
 }
 
-void CloudsSound::setMasterAmp(float amp){
-	targetAmp = amp;
-}
-
 //--------------------------------------------------------------------
 void CloudsSound::update(){
-	MASTERAMP += (targetAmp - MASTERAMP) * .05;
 }
 
 //--------------------------------------------------------------------
@@ -235,16 +229,6 @@ void CloudsSound::keyPressed(ofKeyEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsSound::keyReleased(ofKeyEventArgs & args){
 
-    if (args.key == OF_KEY_DOWN)
-    {
-        MASTERAMP-=0.1;
-        if(MASTERAMP<0.) MASTERAMP=0.;
-    }
-    if (args.key == OF_KEY_UP)
-    {
-        MASTERAMP+=0.1;
-        if(MASTERAMP>2.) MASTERAMP=2.;
-    }
 
 }
 
@@ -272,7 +256,7 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
     // fill up the audio buffer
     for (int i = 0; i < args.bufferSize * args.nChannels; i++)
     {
-        args.buffer[i] = MASTERAMP*(float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
+        args.buffer[i] = (float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
     }
     
     // fire first audio-generating info upon confirming audio is up and running
