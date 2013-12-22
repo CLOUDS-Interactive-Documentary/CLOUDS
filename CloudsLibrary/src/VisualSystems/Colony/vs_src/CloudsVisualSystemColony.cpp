@@ -82,7 +82,7 @@ void CloudsVisualSystemColony::selfDrawBackground()
 	
     ofPushStyle();
 	ofEnableAlphaBlending();
-    
+
     cellShader.begin();
     cellShader.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
     vbo.draw();
@@ -95,15 +95,15 @@ void CloudsVisualSystemColony::selfDraw(){
 
 }
 
-//void CloudsVisualSystemColony::selfPostDraw(){
-//    levelSet.begin();
-//    levelSet.setUniformTexture("tex", getSharedRenderTarget().getTextureReference(),0);
-//    getSharedRenderTarget().draw(0, 0,
-//                                 getSharedRenderTarget().getWidth(),
-//                                 getSharedRenderTarget().getHeight()
-//                                 );
-//    levelSet.end();
-//}
+void CloudsVisualSystemColony::selfPostDraw(){
+    levelSet.begin();
+    levelSet.setUniformTexture("tex", getSharedRenderTarget().getTextureReference(),0);
+    getSharedRenderTarget().draw(0, 0,
+                                 getSharedRenderTarget().getWidth(),
+                                 getSharedRenderTarget().getHeight()
+                                 );
+    levelSet.end();
+}
 
 void CloudsVisualSystemColony::selfBegin()
 {
