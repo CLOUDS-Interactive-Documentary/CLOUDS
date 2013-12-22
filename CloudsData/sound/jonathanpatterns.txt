@@ -1,0 +1,15 @@
+// JONATHAN PATTERNS
+
+// Eccentric
+Eccentric_Groove4_12.wav A B
+Eccentric_Ring1_12.wav  A B
+Eccentric_Ring2_12.wav  A B
+Eccentric_Ringdrone_12.wav A B
+
+// AnalogTechno
+
+Minimal_bassa_4.wav A B
+Minimal_bassb_3.wav A B
+Minimal_pianoa_4.wav A B
+Minimal_pianob_4.wav A B
+Minimal_pianoc_4.wav A B
