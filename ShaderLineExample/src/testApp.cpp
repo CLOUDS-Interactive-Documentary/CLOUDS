@@ -5,29 +5,34 @@ void testApp::setup(){
 
 	ofBackground(0);
 	ofSetVerticalSync(true);
-	portal.setup();
+	lineAnimate.load("shaders/line_animate");
+	mesh.addNormal(ofVec3f(0,0,0));
+	mesh.addVertex(ofVec3f(0, ofGetHeight()/2,0));
+	mesh.addNormal(ofVec3f(1.,0,0));
+	mesh.addVertex(ofVec3f(ofGetWidth(), ofGetHeight()/2,0));
+	
+	mesh.setMode(OF_PRIMITIVE_LINES);
 }
-
 
 //--------------------------------------------------------------
 void testApp::update(){
-	portal.update();
-}
 
+}
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	ofEnableAlphaBlending();
-	portal.draw();	
+
+	lineAnimate.begin();
+	lineAnimate.setUniform1f("percent", fmod(ofGetElapsedTimef(),1.0f) );
+	mesh.draw();
+	lineAnimate.end();
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
-}
-
-//--------------------------------------------------------------
-void testApp::exit(){
+	if(key == 'R'){
+		lineAnimate.load("shaders/line_animate");
+	}
 }
 
 //--------------------------------------------------------------

@@ -2,23 +2,22 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-
-	ofBackground(0);
 	ofSetVerticalSync(true);
-	portal.setup();
+  
+	empty.setup();
+	empty.playSystem();
 }
 
 
 //--------------------------------------------------------------
 void testApp::update(){
-	portal.update();
+
 }
 
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	ofEnableAlphaBlending();
-	portal.draw();	
+	
 }
 
 //--------------------------------------------------------------
