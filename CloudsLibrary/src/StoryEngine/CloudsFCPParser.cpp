@@ -86,6 +86,7 @@ void CloudsFCPParser::saveClusterMap(map<string, ofVec2f> centroidMap ){
 }
 
 void CloudsFCPParser::parseVOClips(){
+	
 	ofDirectory dir(GetCloudsDataPath() + "VO");
 	dir.allowExt("aif");
 	dir.allowExt("wav");
