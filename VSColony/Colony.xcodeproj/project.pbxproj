@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1715D0FB183D4515001EB045 /* balls.geom in Sources */ = {isa = PBXBuildFile; fileRef = 1715D0FA183D4515001EB045 /* balls.geom */; };
+		174C752218661FEE005EFBDC /* cells.gs in Sources */ = {isa = PBXBuildFile; fileRef = 174C752118661FEE005EFBDC /* cells.gs */; };
+		174C752418661FF7005EFBDC /* cells.vs in Sources */ = {isa = PBXBuildFile; fileRef = 174C752318661FF7005EFBDC /* cells.vs */; };
+		174C752618662001005EFBDC /* cells.fs in Sources */ = {isa = PBXBuildFile; fileRef = 174C752518662001005EFBDC /* cells.fs */; };
+		174C752818666DE7005EFBDC /* levelSet.fs in Sources */ = {isa = PBXBuildFile; fileRef = 174C752718666DE7005EFBDC /* levelSet.fs */; };
+		174C752A1866785E005EFBDC /* levelSet.vs in Sources */ = {isa = PBXBuildFile; fileRef = 174C75291866785E005EFBDC /* levelSet.vs */; };
 		1765DEE91849412F00190020 /* balls.frag in Sources */ = {isa = PBXBuildFile; fileRef = 1765DEE81849412F00190020 /* balls.frag */; };
 		179A026818498F360057263B /* balls.vert in Sources */ = {isa = PBXBuildFile; fileRef = 179A026718498F360057263B /* balls.vert */; };
 		4695E2AF17512E45003001E2 /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E27B17512E45003001E2 /* ofxBehavior.cpp */; };
@@ -142,6 +147,11 @@
 
 /* Begin PBXFileReference section */
 		1715D0FA183D4515001EB045 /* balls.geom */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = balls.geom; sourceTree = "<group>"; };
+		174C752118661FEE005EFBDC /* cells.gs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cells.gs; sourceTree = "<group>"; };
+		174C752318661FF7005EFBDC /* cells.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cells.vs; sourceTree = "<group>"; };
+		174C752518662001005EFBDC /* cells.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cells.fs; sourceTree = "<group>"; };
+		174C752718666DE7005EFBDC /* levelSet.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = levelSet.fs; sourceTree = "<group>"; };
+		174C75291866785E005EFBDC /* levelSet.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = levelSet.vs; sourceTree = "<group>"; };
 		1765DEE81849412F00190020 /* balls.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = balls.frag; sourceTree = "<group>"; };
 		179A026718498F360057263B /* balls.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = balls.vert; sourceTree = "<group>"; };
 		4695E24B17512ACD003001E2 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
@@ -990,6 +1000,11 @@
 				1715D0FA183D4515001EB045 /* balls.geom */,
 				1765DEE81849412F00190020 /* balls.frag */,
 				179A026718498F360057263B /* balls.vert */,
+				174C752118661FEE005EFBDC /* cells.gs */,
+				174C752518662001005EFBDC /* cells.fs */,
+				174C752318661FF7005EFBDC /* cells.vs */,
+				174C752718666DE7005EFBDC /* levelSet.fs */,
+				174C75291866785E005EFBDC /* levelSet.vs */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -1375,8 +1390,10 @@
 				4695E2B017512E45003001E2 /* ofxBufferEffectorBehavior.cpp in Sources */,
 				4695E2B117512E45003001E2 /* ofxDamperBehavior.cpp in Sources */,
 				4695E2B217512E45003001E2 /* ofxDistorterBehavior.cpp in Sources */,
+				174C752218661FEE005EFBDC /* cells.gs in Sources */,
 				4695E2B317512E45003001E2 /* ofxElectroStaticBehavior.cpp in Sources */,
 				4695E2B417512E45003001E2 /* ofxField2D.cpp in Sources */,
+				174C752A1866785E005EFBDC /* levelSet.vs in Sources */,
 				4695E2B517512E45003001E2 /* ofxHomingBehavior.cpp in Sources */,
 				179A026818498F360057263B /* balls.vert in Sources */,
 				4695E2B617512E45003001E2 /* ofxPerlinBehavior.cpp in Sources */,
@@ -1388,6 +1405,7 @@
 				4695E2BC17512E45003001E2 /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */,
 				4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */,
+				174C752618662001005EFBDC /* cells.fs in Sources */,
 				4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */,
 				4695E33B17529F8A003001E2 /* kiss_fft.c in Sources */,
 				4695E33C17529F8A003001E2 /* kiss_fftr.c in Sources */,
@@ -1439,6 +1457,7 @@
 				4695E3EE1752A089003001E2 /* ofxEasingSine.cpp in Sources */,
 				4695E3EF1752A089003001E2 /* ofxTween.cpp in Sources */,
 				E774E26C175E91FA00655914 /* MSACoreGL.cpp in Sources */,
+				174C752818666DE7005EFBDC /* levelSet.fs in Sources */,
 				E774E26F175E91FA00655914 /* MSAObjCPointer.cpp in Sources */,
 				E72FF18717E6A7970007780D /* CloudsRGBDCamera.cpp in Sources */,
 				E72FF18817E6A7970007780D /* CloudsRGBDVideoPlayer.cpp in Sources */,
@@ -1446,6 +1465,7 @@
 				852D022A181DF3CC00436018 /* liquidNoise.fs in Sources */,
 				852D022C181DF3CC00436018 /* CloudsVisualSystemColony.cpp in Sources */,
 				1715D0FB183D4515001EB045 /* balls.geom in Sources */,
+				174C752418661FF7005EFBDC /* cells.vs in Sources */,
 				E7295F1C183ABD4100C5207F /* gCell.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

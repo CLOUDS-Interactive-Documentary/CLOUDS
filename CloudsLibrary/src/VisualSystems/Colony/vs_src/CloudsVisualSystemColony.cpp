@@ -20,10 +20,13 @@ void CloudsVisualSystemColony::selfSetup()
     vbo.setMode(OF_PRIMITIVE_LINES);
     
     string path = getVisualSystemDataPath()+"shaders/";
-    balls.setGeometryOutputCount(45); //FIXME: Debug
-    balls.setGeometryInputType(GL_LINES);
-    balls.load(path + "balls.vert", path + "balls.frag", path + "balls.geom");
-    balls.setGeometryOutputType(GL_TRIANGLES);
+    cellShader.setGeometryOutputCount(45); //FIXME: Debug
+    cellShader.setGeometryInputType(GL_LINES);
+//    balls.load(path + "balls.vert", path + "balls.frag", path + "balls.geom");
+    levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
+    cellShader.load(path + "cells.vs", path+"cells.fs", path+"cells.gs");
+    cellShader.setGeometryOutputType(GL_TRIANGLES);
+
 }
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
@@ -85,12 +88,30 @@ void CloudsVisualSystemColony::selfDrawBackground()
 
 void CloudsVisualSystemColony::selfDraw(){
     ofEnableSmoothing();
-    ofEnableAlphaBlending();
-    balls.begin();
-    balls.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
+    
+//    getSharedRenderTarget().begin();
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+    
+    cellShader.begin();
+    cellShader.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
     vbo.draw();
-    balls.end();
+    cellShader.end();
+    
+    glDisable(GL_BLEND);
+//    getSharedRenderTarget().end();
+
 }
+
+//void CloudsVisualSystemColony::selfPostDraw(){
+//    levelSet.begin();
+//    levelSet.setUniformTexture("tex", getSharedRenderTarget().getTextureReference(),0);
+//    getSharedRenderTarget().draw(0, 0,
+//                                 getSharedRenderTarget().getWidth(),
+//                                 getSharedRenderTarget().getHeight()
+//                                 );
+//    levelSet.end();
+//}
 
 void CloudsVisualSystemColony::selfBegin()
 {
@@ -108,7 +129,13 @@ void CloudsVisualSystemColony::selfEnd()
     cells.clear();
 }
 
-void CloudsVisualSystemColony::selfExit(){}
+void CloudsVisualSystemColony::selfExit(){
+    cellShader.unload();
+    levelSet.unload();
+    vbo.clear();
+    //TODO: Destroy everything in gCell;
+}
+
 
 void CloudsVisualSystemColony::selfSetupGuis(){}
 void CloudsVisualSystemColony::selfAutoMode(){}
