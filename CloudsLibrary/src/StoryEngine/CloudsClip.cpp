@@ -258,7 +258,7 @@ void CloudsClip::collateKeywords(){
 	hasProjectExample = false;
 	projectExampleTitle = "";
 	for(int i = 0; i < specialKeywords.size(); i++){
-		if(specialKeywords[i].find("example") != string::npos){
+		if(specialKeywords[i].find("pe?") != string::npos){
 			vector<string> exampleProject = ofSplitString(specialKeywords[i], "?");
 			if(exampleProject.size() != 2){
 				ofLogError("CloudsClip::collateKeywords") << "Clip " << getLinkName() << " doesn't have a specific example tagged";
@@ -318,14 +318,13 @@ bool CloudsClip::hasKeyword(string keyword){
 
 void CloudsClip::setProjectExample(string projectExample){
 	for(int i = 0; i < specialKeywords.size(); i++){
-		if(ofToLower(specialKeywords[i]).find("example") != string::npos){
+		if(ofToLower(specialKeywords[i]).find("#pe?") != string::npos){
 			revokeKeyword(specialKeywords[i]);
-			break;
 		}
 	}
 	
-	addKeyword("#example?"+projectExample);
-	addKeyword("#pe");
+	addKeyword("#pe?"+projectExample);
+	addKeyword("#example");
 	
 	keywordsDirty = true;
 }
