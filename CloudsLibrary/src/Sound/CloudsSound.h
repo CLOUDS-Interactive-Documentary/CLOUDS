@@ -17,8 +17,6 @@ class CloudsSound {
 	void update();
 	void drawDebug();
 	
-	void setMasterAmp(float amp);
-	
 	void keyPressed(ofKeyEventArgs & args);
 	void keyReleased(ofKeyEventArgs & args);
 	
@@ -68,7 +66,6 @@ class CloudsSound {
     int first_vec;
     float allownote;
 
-    float MASTERAMP;
     float MASTERTEMPO;
     int AUTORUN;
     bool DOCLEAR;

@@ -11,7 +11,7 @@
 
 CloudsHUDHomeButton::CloudsHUDHomeButton(){
 	maxHoverTime = 10.;
-	sampleImage.loadImage( GetCloudsDataPath() + "HUD/home.png" );
+//	sampleImage.loadImage( GetCloudsDataPath() + "HUD/home.png" );
 }
 
 void CloudsHUDHomeButton::setup(){
@@ -23,6 +23,6 @@ void CloudsHUDHomeButton::update(){
 }
 
 void CloudsHUDHomeButton::draw(){
-	sampleImage.draw(homeLocation);
+//	sampleImage.draw(homeLocation);
 	
 }

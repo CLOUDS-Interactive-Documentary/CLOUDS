@@ -12,6 +12,16 @@ CloudsMixer::CloudsMixer()
 {
 	musicVol = 1.0;
 	diageticVol = 1.0;
+    
+    // envelope follower
+    attack = 10.0;
+    decay = 4410.0;
+    followgain = 0.;
+    // compressor
+    thresh = 0.707; // set lower for a quieter squish point
+    ratio = 0.3; // set lower for more squish
+    makeup = 1.5; // set higher for more volume
+
 }
 
 CloudsMixer::~CloudsMixer()
@@ -53,6 +63,8 @@ void CloudsMixer::setDiageticVolume(float vol)
 
 void CloudsMixer::fillBuffer(float *output, int bufferSize, int nChannels)
 {
+    float gain;
+    
     // check for buffer size mismatch
     if (bufferSize != musicArgs.bufferSize ||
         bufferSize != diageticArgs.bufferSize) {
@@ -79,7 +91,20 @@ void CloudsMixer::fillBuffer(float *output, int bufferSize, int nChannels)
     for (int i=0; i<bufferSize*nChannels; i++)
     {
         output[i] = musicArgs.buffer[i]*musicVol + diageticArgs.buffer[i]*diageticVol;
-
+        
+        // Luke's Compressor
+        float current = abs(output[i]);
+        if(current>followgain) {
+            followgain = followgain + ((current-followgain)/attack);
+        }
+        else
+        {
+            followgain = followgain + ((current-followgain)/decay);
+        }
+        if(followgain>thresh) gain = 1.0-((followgain-thresh)*ratio); else gain = 1.0;
+        
+        output[i]=output[i]*gain*makeup;
+        
         // clip
         if (output[i] > 1) {
             output[i] = 1;
@@ -88,6 +113,7 @@ void CloudsMixer::fillBuffer(float *output, int bufferSize, int nChannels)
             output[i] = -1;
         }
     }
+    
     
     
 }

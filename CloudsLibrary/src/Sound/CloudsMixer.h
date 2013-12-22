@@ -33,6 +33,14 @@ protected:
     float musicVol;
     float diageticVol;
     
+    // compressor data
+    float attack;
+    float decay;
+    float thresh;
+    float ratio;
+    float followgain;
+    float makeup;
+    
     CloudsAudioEvents events;
 };
 

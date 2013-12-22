@@ -3,6 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 
+	ofBackground(0);
 	ofSetVerticalSync(true);
 	portal.setup();
 }

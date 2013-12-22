@@ -1,0 +1,11 @@
+#version 120
+
+varying float selected;
+
+float rand(vec2 co){
+    return (sin((co.x + co.y)/20.0) + 1.0) / 3.0;
+}
+
+void main() {
+    gl_FragColor = gl_Color;
+}

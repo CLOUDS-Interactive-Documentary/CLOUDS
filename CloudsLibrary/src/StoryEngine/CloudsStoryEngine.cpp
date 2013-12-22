@@ -903,7 +903,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history,
     CloudsClip& currentlyPlayingClip = history[history.size()-1];
     
     //rejection criteria -- flat out reject clips on some basis
-    if(combinedClipsOnly && !potentialNextClip.hasCombinedVideo){
+    if(combinedClipsOnly && !potentialNextClip.hasMediaAsset){
         if(printDecisions) cout << "        REJECTED Clip " << potentialNextClip.getLinkName() << ": no combined video file" << endl;
         return 0;
     }
@@ -933,12 +933,12 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history,
     }
     
     //If a VS is not running reject clips that do not have video footage
-    if(potentialNextClip.hasSpecialKeyword("#vo") && !visualSystemRunning){
+    if( (potentialNextClip.hasSpecialKeyword("#vo") || potentialNextClip.voiceOverAudio) && !visualSystemRunning){
         return 0;
     }
     
     //If a VS is running and is of a definite duration do not use voice over clips
-    if(potentialNextClip.hasSpecialKeyword("#vo") && visualSystemRunning && !isPresetIndefinite){
+    if( (potentialNextClip.hasSpecialKeyword("#vo") || potentialNextClip.voiceOverAudio) && visualSystemRunning && !isPresetIndefinite){
         return 0;
     }
     

@@ -19,7 +19,7 @@ CloudsClip::CloudsClip(){
 	startFrame = 0;
     endFrame = 0;
 	voiceOverAudio = false;
-	hasCombinedVideo = false;
+	hasMediaAsset = false;
 	adjustmentLoaded = false;
 	minDepth = 400;
 	maxDepth = 1200;
@@ -304,7 +304,6 @@ void CloudsClip::setDesiredKeywords(vector<string>& desiredKeywords){
 }
 
 void CloudsClip::addKeyword(string keyword){
-    cout << "adding keyword " << keyword<<endl;
     if(!ofContains(additionalKeywords, keyword) &&
        !ofContains(originalKeywords, keyword))
     {
@@ -326,6 +325,8 @@ void CloudsClip::setProjectExample(string projectExample){
 	}
 	
 	addKeyword("#example?"+projectExample);
+	addKeyword("#pe");
+	
 	keywordsDirty = true;
 }
 

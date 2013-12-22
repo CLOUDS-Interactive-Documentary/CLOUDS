@@ -20,6 +20,9 @@ class CloudsPortal {
 	void update();
 	void draw();
 	
+	bool selected;
+	float selectedTime;
+	
 	float ringSegments;
 	float ringRadiusStep;
 	float ringThickness;
@@ -27,8 +30,9 @@ class CloudsPortal {
 	float ringStartRadius;
 	float ringDensity;
 	
+	ofShader portalShader;
 	ofVec3f position;
 	vector<CloudsPortalRing> rings;
-
+	void toggleFakeSelection();
 	ofVboMesh portalGeo;
 };
