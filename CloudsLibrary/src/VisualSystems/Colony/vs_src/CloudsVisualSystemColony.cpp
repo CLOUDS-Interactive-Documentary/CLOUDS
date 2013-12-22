@@ -47,6 +47,7 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
 void CloudsVisualSystemColony::selfUpdate()
 {
     cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
+	
     pMap.clear();
     vbo.clear();
     pMap.put(cells);
@@ -78,21 +79,20 @@ void CloudsVisualSystemColony::selfUpdate()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
-
-    }
-
-void CloudsVisualSystemColony::selfDraw(){
-    ofEnableSmoothing();
+	
+    ofPushStyle();
+	ofEnableAlphaBlending();
     
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-//    getSharedRenderTarget().begin();
     cellShader.begin();
     cellShader.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
     vbo.draw();
     cellShader.end();
-//    getSharedRenderTarget().end();
-    glDisable(GL_BLEND);
+
+	ofPopStyle();
+}
+
+void CloudsVisualSystemColony::selfDraw(){
+
 }
 
 //void CloudsVisualSystemColony::selfPostDraw(){
