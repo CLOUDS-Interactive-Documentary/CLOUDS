@@ -20,11 +20,13 @@ void CloudsVisualSystemColony::selfSetup()
     vbo.setMode(OF_PRIMITIVE_LINES);
     
     string path = getVisualSystemDataPath()+"shaders/";
-    balls.setGeometryOutputCount(40); //FIXME: Debug
-    balls.setGeometryInputType(GL_LINES);
-    balls.load(path + "balls.vert", path + "balls.frag", path + "balls.geom");
-    //FIXME: THIS IS NOT WORKING PROPERLY
-    balls.setGeometryOutputType(GL_TRIANGLE_FAN);
+    cellShader.setGeometryOutputCount(45); //FIXME: Debug
+    cellShader.setGeometryInputType(GL_LINES);
+//    balls.load(path + "balls.vert", path + "balls.frag", path + "balls.geom");
+    levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
+    cellShader.load(path + "cells.vs", path+"cells.fs", path+"cells.gs");
+    cellShader.setGeometryOutputType(GL_TRIANGLES);
+
 }
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
@@ -37,6 +39,9 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
     sysGui->addSlider("Turbulence Speed",0.0,100.0, &params.spdTurbulence);
     sysGui->addSlider("Fertility Rate", 0.0, 1.0, &params.fertilityRate);
     sysGui->addRangeSlider("Lifespan Range", 5, 5000, &params.lifespanMin, &params.lifespanMax);
+    
+    sysGui->addSpacer("Immutables");
+    sysGui->addButton("Reset", &reset);
 }
 
 void CloudsVisualSystemColony::selfUpdate()
@@ -74,26 +79,36 @@ void CloudsVisualSystemColony::selfUpdate()
 void CloudsVisualSystemColony::selfDrawBackground()
 {
 
-//    ofEnableSmoothing();
-//    ofEnableAlphaBlending();
-//    for (int i = 0 ; i < cells.size(); i++){
-//        cells[i]->draw();
-//    }
     }
 
 void CloudsVisualSystemColony::selfDraw(){
     ofEnableSmoothing();
-    ofEnableAlphaBlending();
-    balls.begin();
-    balls.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
+    
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+//    getSharedRenderTarget().begin();
+    cellShader.begin();
+    cellShader.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
     vbo.draw();
-    balls.end();
+    cellShader.end();
+//    getSharedRenderTarget().end();
+    glDisable(GL_BLEND);
 }
+
+//void CloudsVisualSystemColony::selfPostDraw(){
+//    levelSet.begin();
+//    levelSet.setUniformTexture("tex", getSharedRenderTarget().getTextureReference(),0);
+//    getSharedRenderTarget().draw(0, 0,
+//                                 getSharedRenderTarget().getWidth(),
+//                                 getSharedRenderTarget().getHeight()
+//                                 );
+//    levelSet.end();
+//}
 
 void CloudsVisualSystemColony::selfBegin()
 {
     for (int i = 0; i < numInitialCells; i++) {
-        cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight()), params));
+        cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight(), i * 0.01), params));
         cells.push_back(newCell);
     }
 }
@@ -106,7 +121,13 @@ void CloudsVisualSystemColony::selfEnd()
     cells.clear();
 }
 
-void CloudsVisualSystemColony::selfExit(){}
+void CloudsVisualSystemColony::selfExit(){
+    cellShader.unload();
+    levelSet.unload();
+    vbo.clear();
+    //TODO: Destroy everything in gCell;
+}
+
 
 void CloudsVisualSystemColony::selfSetupGuis(){}
 void CloudsVisualSystemColony::selfAutoMode(){}

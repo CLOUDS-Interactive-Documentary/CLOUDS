@@ -76,6 +76,10 @@ private:
     bool isInsideBoard(ofPoint p);
 };
 
+
+/* ========================== HELPER CLASSES ============================ */
+
+
 class cellParams{
 public:
     float deathThreshold, dynamicFrictionCoeff, amtTurbulence, spdTurbulence,
@@ -103,7 +107,6 @@ public:
     ~coord2i(){}
     coord2i(int x_, int y_): x(x_), y(y_){};
     coord2i(ofPoint const& p):
-    //FIXME: GetWidth and GetHeight are called millions of time a second. cache;
     x(int(ofClamp((p.x * MAP_SUBDIV) / ofGetWidth() , 0, MAP_SUBDIV - 0.01))),
     y(int(ofClamp((p.y * MAP_SUBDIV) / ofGetHeight(), 0, MAP_SUBDIV - 0.01))) {}
     bool operator<  (const coord2i& rhs) const {return (this->ordered() < rhs.ordered()); }
@@ -117,7 +120,6 @@ public:
 /**
  * Concatenation iterator for iterating a bunch of vectors in series.
  */
-
 class neighbor_iterator : private vector<cellPtr>::const_iterator{
     typedef const vector <cellPtr>* vecPtr;
     vector<vecPtr> v;
@@ -205,7 +207,7 @@ public:
         }}
     
 private:
-    colonyPartitionMap(colonyPartitionMap const& c);//unimplemented; singleton
-    void operator=(colonyPartitionMap const& c);    //unimplemented; singleton
+    colonyPartitionMap(colonyPartitionMap const& c);//singleton
+    void operator=(colonyPartitionMap const& c);    //singleton
 };
 
