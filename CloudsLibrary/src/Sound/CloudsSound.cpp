@@ -101,9 +101,10 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     
     int rigged = 0; // set to '1' for rigged orchestration (set below)
     float clipdur = 0;
+    float starttime = 0;
     float totalduration = args.act->getTimeline().getDurationInSeconds();
     int mharmony, mrhythm, mtempo;
-    
+    bool allowchange = true;
     
     // launch music FX chain
     startMusicFX(0, totalduration);
@@ -115,13 +116,22 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     cout << "MAKING MUSIC!!!" << endl;
     cout << "===============" << endl;
     
-    cout << "KEY!!!!!!!" << args.soundQuestionKey << endl;
+    // loop through clips
+    // first clip: check on soundQuestionKey
+    //  if found in preset, use that preset
+    //  if no, check dichotomies (only using non-disabled clips)
+    
+    // main loop
+    // stay where you are unless energy shift
+    // if energy shift, check dichotomies (use only non-disabled clips)
+    vector<int> valid_presets; // make a vector of presets that match the dichotomy setting
+    int thepreset; // which preset did we choose?
     
     // STUPID MAPPING TEST
     for(int i = 0;i<numclips;i++)
     {
         CloudsClip &theclip = args.act->getAllClips()[i];
-        float starttime = args.act->getClipStartTime(theclip);
+        starttime = args.act->getClipStartTime(theclip);
         if(i==numclips-1) // last clip
         {
             clipdur = theclip.getDuration();
@@ -142,34 +152,39 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
             dichos.push_back(foo[j].balance);
         }
         
-        vector<int> valid_presets; // make a vector of presets that match the dichotomy setting
-        for(int j = 0;j<presets.size();j++)
-        {
-            // CHECK FOR RIGGED
-            if(presets[j].start_question==args.soundQuestionKey) {
-                cout << "RIGGED: " << j << "!!!!" << endl;
-                valid_presets.clear();
-                valid_presets.push_back(j);
-                break;
-            }
-            int pscore = 0;
-            for(int k=0;k<8;k++)
-            {
-                if(dichos[k]<=presets[j].dichomax[k]&&dichos[k]>=presets[j].dichomin[k])
-                {
-                    pscore++;
-                }
-            }
-            if(pscore==8) valid_presets.push_back(j);
-        }
-		
-        if(valid_presets.size()==0)
-        {
-            valid_presets.push_back(12);
-        }
+        if(args.act->isClipEnergyShift(theclip)) allowchange = true;
         
+        if(allowchange)
+        {
+            for(int j = 0;j<presets.size();j++)
+            {
+                // CHECK FOR RIGGED
+                if(presets[j].start_question==args.soundQuestionKey) {
+                    cout << "RIGGED: " << j << "!!!!" << endl;
+                    valid_presets.clear();
+                    valid_presets.push_back(j);
+                    break;
+                }
+                int pscore = 0;
+                for(int k=0;k<8;k++)
+                {
+                    if(dichos[k]<=presets[j].dichomax[k]&&dichos[k]>=presets[j].dichomin[k])
+                    {
+                        pscore++;
+                    }
+                }
+                if(pscore==8) valid_presets.push_back(j);
+            }
+		
+            if(valid_presets.size()==0)
+            {
+                valid_presets.push_back(12);
+            }
+        
+        }
+        // MAKE THE MUSIC
 		if(valid_presets.size() > 0){
-			int thepreset = valid_presets[ofRandom(valid_presets.size())];
+			if(allowchange) thepreset = valid_presets[ofRandom(valid_presets.size())];
 		
 			mharmony = presets[thepreset].harmony;
 			mrhythm = presets[thepreset].rhythm;
@@ -180,7 +195,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
 			}
 		}
 
-   
+        allowchange = false;
     }
     
     if(rigged)
