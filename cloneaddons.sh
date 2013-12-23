@@ -45,7 +45,7 @@ git clone https://github.com/Larsberg/ofxSimpleSpline
 git clone https://github.com/Larsberg/ofxSimpleSurface
 git clone https://github.com/labatrockwell/ofxLibwebsockets
 git clone https://github.com/jefftimesten/ofxJSON.git
-git clone https://github.com/TonicAudio/ofxTonic
+git clone https://github.com/galsasson/ofxTonic
 git clone https://github.com/neilmendoza/ofxPtf
 git clone https://github.com/neilmendoza/ofxNearestNeighbour
 git clone https://github.com/neilmendoza/ofxPostProcessing
