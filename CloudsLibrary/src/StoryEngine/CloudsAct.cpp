@@ -25,6 +25,16 @@ CloudsAct::~CloudsAct(){
 void CloudsAct::play(){
     
     CloudsActEventArgs args(this);
+	if(clips.size() > 0){
+		args.startClip = clips[0];
+		if(args.startClip.hasStartingQuestion() && args.startClip.getTopicsWithQuestions().size() > 0){
+			args.startTopic = args.startClip.getTopicsWithQuestions()[0];
+			args.startQuestion = clips[0].getQuestionForTopic(args.startTopic);
+			args.soundQuestionKey = args.startClip.getID() + ":" + args.startQuestion;
+			cout << "sound question key: " << args.soundQuestionKey << endl;
+		}
+	}
+	
     ofNotifyEvent(events.actBegan, args);
 	
 	timeline.setCurrentTimeMillis(0);

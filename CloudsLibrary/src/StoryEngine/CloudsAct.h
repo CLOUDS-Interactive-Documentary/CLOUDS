@@ -145,7 +145,7 @@ class CloudsAct{
     CloudsClip dummyClip;
     vector<CloudsDichotomy> dummyDichotomies;
     
-    map<string, CloudsClip>clipMap;
+    map<string, CloudsClip> clipMap;
     map<string, ActTimeItem> clipItems;
     map<string, string> clipDifficultyMap;
 

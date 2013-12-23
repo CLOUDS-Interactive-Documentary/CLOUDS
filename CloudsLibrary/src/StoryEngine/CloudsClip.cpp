@@ -248,7 +248,7 @@ void CloudsClip::collateKeywords(){
             
             //format of question topic pair is ?topic:question
             specialKeywords.push_back(keywords[l]);
-            vector<string>questionTopicPair = ofSplitString(keywords[l], ":");
+            vector<string>questionTopicPair = ofSplitString(keywords[l], ":",true,true);
             ofStringReplace(questionTopicPair[0], "?", "");
             addQuestionTopicPair(questionTopicPair[0], questionTopicPair[1]);
             keywords.erase(keywords.begin() + l);
