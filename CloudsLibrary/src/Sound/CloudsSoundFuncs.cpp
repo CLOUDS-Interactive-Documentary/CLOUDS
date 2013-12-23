@@ -44,7 +44,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     
     outskip = outskip + beatoffset; // fix beat offset to get things in time
     
-    if(LUKEDEBUG) cout << "   start: " << outskip << " " << "s, dur: " << musicdur << " " << "s, orch: " << mo << ", harmony: " << mh << ", rhythm: " << mr << endl;
+    if(LUKEDEBUG) cout << "   start: " << outskip << " " << "s, dur: " << musicdur << " " << "s, orch: " << mo << ", harmony: " << mh << ", rhythm: " << mr << ", amp: " << m_amp << ", rev: " << m_rev << endl;
     
     //
     // =========================

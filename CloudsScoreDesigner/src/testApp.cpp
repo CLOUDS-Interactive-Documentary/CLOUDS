@@ -141,6 +141,9 @@ void testApp::update(){
             sound.stopMusic();
             cout << "STOPPING MUSIC" << endl;
 		}
+        else if(m.getAddress() == "/reloadPresets") {
+            sound.reloadPresets();
+        }
 	}
 
 }
@@ -193,6 +196,9 @@ void testApp::keyPressed(int key){
 	if(key == 'S'){
 		storyEngine.saveGuiSettings();
 	}
+    if(key == 'l') {
+        sound.reloadPresets();
+    }
 }
 
 //--------------------------------------------------------------

@@ -104,6 +104,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     float totalduration = args.act->getTimeline().getDurationInSeconds();
     int mharmony, mrhythm, mtempo;
     
+    
     // launch music FX chain
     startMusicFX(0, totalduration);
     
@@ -114,7 +115,8 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     cout << "MAKING MUSIC!!!" << endl;
     cout << "===============" << endl;
     
-
+    cout << "KEY!!!!!!!" << args.soundQuestionKey << endl;
+    
     // STUPID MAPPING TEST
     for(int i = 0;i<numclips;i++)
     {
@@ -143,6 +145,13 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
         vector<int> valid_presets; // make a vector of presets that match the dichotomy setting
         for(int j = 0;j<presets.size();j++)
         {
+            // CHECK FOR RIGGED
+            if(presets[j].start_question==args.soundQuestionKey) {
+                cout << "RIGGED: " << j << "!!!!" << endl;
+                valid_presets.clear();
+                valid_presets.push_back(j);
+                break;
+            }
             int pscore = 0;
             for(int k=0;k<8;k++)
             {
@@ -164,8 +173,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
 		
 			mharmony = presets[thepreset].harmony;
 			mrhythm = presets[thepreset].rhythm;
-			//mtempo = presets[thepreset].tempo;
-			mtempo = 120;
+			mtempo = presets[thepreset].tempo;
 			for(int j = 0;j<presets[thepreset].instruments.size();j++)
 			{
 				startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo, presets[thepreset].m_amp[j], presets[thepreset].m_rev[j]);
