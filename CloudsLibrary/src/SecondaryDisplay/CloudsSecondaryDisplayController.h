@@ -6,9 +6,37 @@
 //
 //
 
-#ifndef __CloudsSecondaryDisplay__CloudsSecondaryDisplayController__
-#define __CloudsSecondaryDisplay__CloudsSecondaryDisplayController__
+#pragma once
 
-#include <iostream>
+#include "ofMain.h"
+#include "ofxOsc.h"
 
-#endif /* defined(__CloudsSecondaryDisplay__CloudsSecondaryDisplayController__) */
+#include "CloudsVisualSystemClusterMap.h"
+#include "CloudsRun.h"
+#include "CloudsStoryEngine.h"
+#include "CloudsAct.h"
+#include "CloudsFCPParser.h"
+#include "ofxOsc.h"
+
+class CloudsSecondaryDisplayController {
+  public:
+	CloudsSecondaryDisplayController();
+	
+	void setup();
+	void update();
+
+	void drawOverlay();
+
+  protected:
+
+	CloudsVisualSystemClusterMap clusterMap;
+	CloudsRun run;
+	CloudsFCPParser parser;
+	CloudsStoryEngine storyEngine;
+	CloudsVisualSystemManager visualSystems;
+
+	ofVideoPlayer archivePlayer;
+
+	ofxOscReceiver receiver;
+
+};
