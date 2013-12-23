@@ -117,7 +117,8 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
                 foo.m_rev[j] = 0.5;
             }
             foo.start_question = "none";
-            foo.energy = "neutral";
+            //foo.energy = "neutral";
+			foo.highEnergy = false;
             foo.dichomin.resize(8);
             foo.dichomax.resize(8);
             thestuff.pushTag("slot", i);
@@ -138,7 +139,8 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
                     foo.tempo = thestuff.getAttribute("pattr", "value", 0, j);
                 }
                 else if(pat=="energy") {
-                    foo.energy = thestuff.getAttribute("pattr", "value", "foo", j);
+                    //foo.energy = thestuff.getAttribute("pattr", "value", "foo", j);
+					foo.highEnergy = thestuff.getAttribute("pattr", "value", 0, j) == 1;
                 }
                 else if(pat=="disabled") {
                     foo.disabled = thestuff.getAttribute("pattr", "value", 0, j);
@@ -297,7 +299,7 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
                 cout << "   harmony: " << foo.harmony << endl;
                 cout << "   rhythm: " << foo.rhythm << endl;
                 cout << "   tempo: " << foo.tempo << endl;
-                cout << "   energy: " << foo.energy << endl;
+                cout << "   energy: " << (foo.highEnergy ? "high" : "low") << endl;
                 cout << "   disabled: " << foo.disabled << endl;
                 cout << "   dichotomies:" << endl;
                 cout << "      art vs. tech: " << foo.dichomin[0] << " to " << foo.dichomax[0] << endl;

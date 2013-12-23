@@ -105,7 +105,8 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     float totalduration = args.act->getTimeline().getDurationInSeconds();
     int mharmony, mrhythm, mtempo;
     bool allowchange = true;
-    
+    bool isHighEnergy = true;
+	
     // launch music FX chain
     startMusicFX(0, totalduration);
     
@@ -152,10 +153,14 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
             dichos.push_back(foo[j].balance);
         }
         
+		cout << "	current energy is " << (isHighEnergy ? "HIGH" : "LOW");
+		
         if(args.act->isClipEnergyShift(theclip)) allowchange = true;
         
         if(allowchange)
         {
+			valid_presets.clear();
+			//Populate valid presets
             for(int j = 0;j<presets.size();j++)
             {
                 // CHECK FOR RIGGED
@@ -165,6 +170,13 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                     valid_presets.push_back(j);
                     break;
                 }
+				
+				//if the energy state is the same and it's not the first clip, don't allow this preset
+				if(presets[j].disabled || (presets[j].highEnergy == isHighEnergy && i != 0) ){
+					//go to next presets
+					continue;
+				}
+				
                 int pscore = 0;
                 for(int k=0;k<8;k++)
                 {
@@ -173,18 +185,25 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                         pscore++;
                     }
                 }
-                if(pscore==8) valid_presets.push_back(j);
+				
+				//if all 8 dichos matched
+                if(pscore==8){
+					valid_presets.push_back(j);	
+				}
             }
 		
             if(valid_presets.size()==0)
             {
-                valid_presets.push_back(12);
+                valid_presets.push_back(0);
             }
-        
         }
+		
         // MAKE THE MUSIC
 		if(valid_presets.size() > 0){
-			if(allowchange) thepreset = valid_presets[ofRandom(valid_presets.size())];
+			if(allowchange){
+				thepreset = valid_presets[ ofRandom(valid_presets.size()) ];
+				isHighEnergy = presets[ thepreset ].highEnergy;
+			}
 		
 			mharmony = presets[thepreset].harmony;
 			mrhythm = presets[thepreset].rhythm;
