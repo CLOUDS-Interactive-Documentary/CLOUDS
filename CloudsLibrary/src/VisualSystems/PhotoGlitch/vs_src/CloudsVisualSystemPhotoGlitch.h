@@ -177,6 +177,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     bool bShouldSortTargetBri;
     bool bShouldReorder;
     bool bRandomSort;
+    bool bDrawBackground;
 
     
     bool bDoPerpendicular;

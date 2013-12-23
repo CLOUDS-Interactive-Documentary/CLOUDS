@@ -69,6 +69,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
 
     customGui->addSpacer();
     customGui->addToggle("DRAW TARGET", &bDrawTarget);
+    customGui->addToggle("DRAW BACKGROUND", &bDrawBackground);
 	customGui->addToggle("SHUFFLE", &bShouldShuffle);
     customGui->addToggle("SORT HUE", &bShouldSortHue);
     customGui->addToggle("SORT BRI", &bShouldSortBri);
@@ -679,12 +680,22 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
         targetVbo.disableTexCoords();
     }
     
-    ofSetColor(255);
+//    ofSetColor(255);
 //    tex.draw(0, 0);
     
-    targetTex.bind();
-    targetVbo.drawElements(GL_TRIANGLES, numIndices);
-    targetTex.unbind();
+//    targetTex.bind();
+//    targetVbo.drawElements(GL_TRIANGLES, numIndices);
+//    targetTex.unbind();
+    if(bDrawBackground){
+        ofPushStyle();
+        for (int i = 0; i < numCells; i++) {
+            ofSetColor(targetCells[i].avgColor);
+            ofRect(targetCells[i].col * screenSliceWidth, targetCells[i].row * screenSliceHeight, screenSliceWidth, screenSliceHeight);
+        }
+        ofPopStyle();
+    }
+
+    
     tex.bind();
     
     {
