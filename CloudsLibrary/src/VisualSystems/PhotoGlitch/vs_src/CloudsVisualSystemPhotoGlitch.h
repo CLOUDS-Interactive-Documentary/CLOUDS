@@ -29,14 +29,16 @@ struct compareObj {
 } ;
 
 struct glitchParams{
-    bool sortByBrightness;
-    bool sortByHue;
+    bool enable = false;
+    bool sortByBrightness = false;
+    bool sortByHue = false;
     vector<string> targetImageNames;
 };
 
 class PhotoGlitch
 {
 public:
+    int ID;
     int numVerts;
     GLfloat * verts;
     GLfloat * texCoords;
@@ -161,7 +163,8 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void clearTarget();
     void generateSource();
     void generateTarget();
-    void generate();
+//    void generate();
+    void generate(PhotoGlitch& pg, int imageIndex);
 
     void shuffle();
     void sortHue();
@@ -169,10 +172,11 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void reorder();
     void sortTarget();
     void sortTargetBrightness();
-    void addTargetToUI(ofxUISuperCanvas& gui,bool bShouldSortTarget, glitchParams params );
+    void addTargetToUI(ofxUISuperCanvas* gui,string suffix, glitchParams& params );
     void tweenAll();
     void tween(int i, int j = -1);
     void tweenTarget(int i, int j = -1);
+    int getTargetFileName(ofxUISuperCanvas * gui, int targetId);
     
     static bool sortIdxForHue(int i, int j);
     static bool sortIdxForBri(int i, int j);
@@ -183,6 +187,14 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     static PGCell * targetCells;
     PhotoGlitch sourcePhoto;
     vector<PhotoGlitch> photos;
+    PhotoGlitch target1;
+    PhotoGlitch target2;
+
+    glitchParams gp1;
+    glitchParams gp2;
+    
+    PhotoGlitch * currentTarget;
+    glitchParams * curretTargetParams;
   protected:
     
     int currentTargetIndex;
