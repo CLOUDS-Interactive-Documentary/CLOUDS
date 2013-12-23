@@ -18,12 +18,7 @@ vec4 convolution(in vec2 coord, in float range){
 }
 
 void main(){
-    vec4 samp = convolution(gl_TexCoord[0].xy, 3.0);
-    //FIXME: Remove
-//    samp = texture2DRect(tex, gl_TexCoord[0].xy);
-    float levl = 0.5 * (1. + sin(-PI * 0.5 + length(samp.xyz) * 5. * PI));
-//	gl_FragColor = vec4(vec3(levl),1.);
-	
-	//gl_FragColor = vec4(gl_TexCoord[0].xy, 0., 1.0);
-    gl_FragColor = texture2DRect(tex, gl_TexCoord[0].xy) * gl_Color;
+    vec4 samp = convolution(gl_TexCoord[0].xy, 1.0);
+    float levl = 0.5 * (1. + sin(-PI * 0.5 + length(samp.xyz) * 4. * PI));
+	gl_FragColor = vec4(vec3(levl),1.);
 }

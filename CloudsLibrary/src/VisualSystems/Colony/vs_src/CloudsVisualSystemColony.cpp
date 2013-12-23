@@ -112,7 +112,6 @@ void CloudsVisualSystemColony::selfDraw(){
 void CloudsVisualSystemColony::selfPostDraw(){
 
     levelSet.begin();
-//    levelSet.setUniformTexture("tex", getSharedRenderTarget().getTextureReference(),1);
     getSharedRenderTarget().draw(0, 0,
                                  getSharedRenderTarget().getWidth(),
                                  getSharedRenderTarget().getHeight());
