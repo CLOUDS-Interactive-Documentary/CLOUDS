@@ -1,4 +1,5 @@
 #include "CloudsVisualSystemColony.h"
+#define INV_2SQRT2 0.35355339059
 
 string CloudsVisualSystemColony::getSystemName()
 {
@@ -9,14 +10,16 @@ void CloudsVisualSystemColony::selfSetup()
 {
     numInitialCells = 100; //FIXME : Magic number
     //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
-    vbo.setMode(OF_PRIMITIVE_LINES);
+    vbo.setMode(OF_PRIMITIVE_POINTS);
     
-    string path = getVisualSystemDataPath()+"shaders/";
-    cellShader.setGeometryOutputCount(45); //FIXME: Debug
-    cellShader.setGeometryInputType(GL_LINES);
+    ofDisableArbTex(); //TODO : See if necessary
+    ofLoadImage(sprite, getVisualSystemDataPath() + "sprites/dot.png");
+    
+    
+    string path = getVisualSystemDataPath() + "shaders/";
     levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
-    cellShader.load(path + "cells.vs", path+"cells.fs", path+"cells.gs");
-    cellShader.setGeometryOutputType(GL_TRIANGLES);
+    cellShader.load(path + "cells.vs", path + "cells.fs"); //not using the gs
+    billboard.load(path + "billboard.vs", path + "billboard.fs");
 
 }
 
@@ -61,30 +64,38 @@ void CloudsVisualSystemColony::selfUpdate()
             cells.erase(cells.begin() + i);
         }
         vbo.addColor(ofColor(255, 255, 255, 100));
-        vbo.addColor(ofColor(255, 255, 255, 100));
         vbo.addVertex(cells[i]->getPosition());
-        //FIXME: This might reverse the angle
-        vbo.addVertex(ofVec2f(cells[i]->getSize(),(cells[i]->getVelocity()).angleRad(ofVec2f(1,0))));
+        //HACK: Normal gives more data to the shader.
+        vbo.addNormal(ofVec3f(cells[i]->getSize(),0.,0.));
     }
+    
 }
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
-	
     ofPushStyle();
 	ofEnableAlphaBlending();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     glDisable(GL_DEPTH_TEST);
+    ofEnablePointSprites();
+    
 
-    cellShader.begin();
-    cellShader.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
+//    cellShader.begin();
+//    cellShader.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
+    billboard.begin();
+    sprite.bind();
+    
     ofPushMatrix();
     //TODO: Dunno why this is happening
-    ofTranslate(getSharedRenderTarget().getWidth()/2., getSharedRenderTarget().getHeight()/2.);
+//    ofTranslate(getSharedRenderTarget().getWidth()/2., getSharedRenderTarget().getHeight()/2.);
     vbo.draw();
     ofPopMatrix();
-    cellShader.end();
     
+    sprite.unbind();
+    billboard.end();
+//    cellShader.end();
+    
+    ofDisablePointSprites();
     ofDisableBlendMode();
 	ofPopStyle();
 }
@@ -94,13 +105,14 @@ void CloudsVisualSystemColony::selfDraw(){
 }
 
 void CloudsVisualSystemColony::selfPostDraw(){
-    levelSet.begin();
-    levelSet.setUniformTexture("tex", getSharedRenderTarget().getTextureReference(),0);
+
+//    levelSet.begin();
+//    levelSet.setUniformTexture("tex", getSharedRenderTarget().getTextureReference(),1);
     getSharedRenderTarget().draw(0, 0,
                                  getSharedRenderTarget().getWidth(),
                                  getSharedRenderTarget().getHeight()
                                  );
-    levelSet.end();
+//    levelSet.end();
 }
 
 void CloudsVisualSystemColony::selfBegin()

@@ -156,14 +156,13 @@
 		174C75291866785E005EFBDC /* levelSet.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = levelSet.vs; sourceTree = "<group>"; };
 		1765DEE81849412F00190020 /* balls.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = balls.frag; sourceTree = "<group>"; };
 		179A026718498F360057263B /* balls.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = balls.vert; sourceTree = "<group>"; };
+		17BC7DF41867DC5700F4E8D8 /* billboard.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = billboard.fs; sourceTree = "<group>"; };
+		17BC7DF51867DC5700F4E8D8 /* billboard.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = billboard.vs; sourceTree = "<group>"; };
 		17C0BDE718674BFA0082014A /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
 		17C0BDE818674BFA0082014A /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
 		17C0BDE918674BFA0082014A /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
 		17C0BDEC18674BFA0082014A /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
 		17C0BDED18674BFA0082014A /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
-		17C0BDF21867542C0082014A /* balls.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = balls.frag; sourceTree = "<group>"; };
-		17C0BDF31867542C0082014A /* balls.geom */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = balls.geom; sourceTree = "<group>"; };
-		17C0BDF41867542C0082014A /* balls.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = balls.vert; sourceTree = "<group>"; };
 		17C0BDF51867542C0082014A /* cells.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cells.fs; sourceTree = "<group>"; };
 		17C0BDF61867542C0082014A /* cells.gs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cells.gs; sourceTree = "<group>"; };
 		17C0BDF71867542C0082014A /* cells.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cells.vs; sourceTree = "<group>"; };
@@ -527,9 +526,8 @@
 		17C0BDF11867542C0082014A /* shaders */ = {
 			isa = PBXGroup;
 			children = (
-				17C0BDF21867542C0082014A /* balls.frag */,
-				17C0BDF31867542C0082014A /* balls.geom */,
-				17C0BDF41867542C0082014A /* balls.vert */,
+				17BC7DF41867DC5700F4E8D8 /* billboard.fs */,
+				17BC7DF51867DC5700F4E8D8 /* billboard.vs */,
 				17C0BDF51867542C0082014A /* cells.fs */,
 				17C0BDF61867542C0082014A /* cells.gs */,
 				17C0BDF71867542C0082014A /* cells.vs */,
