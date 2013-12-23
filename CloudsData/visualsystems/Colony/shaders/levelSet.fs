@@ -18,7 +18,12 @@ vec4 convolution(in vec2 coord, in float range){
 }
 
 void main(){
-    vec4 samp = convolution(gl_TexCoord[0].xy, 1.0);
-    float levl = 0.5 * (1. + sin(-PI * 0.5 + length(samp.xyz) * 4. * PI));
-	gl_FragColor = vec4(vec3(levl),1.);
+//    vec4 samp = convolution(gl_TexCoord[0].xy, 1.0);
+//    float levl = 0.5 * (1. + sin(-PI * 0.5 + length(samp.xyz) * 4. * PI));
+//	gl_FragColor = vec4(vec3(levl),1.);
+    
+    vec4 samp = texture2DRect(tex, gl_TexCoord[0].xy);
+//    float brightness = pow(samp.b * pow (1.1 - samp.r, 2.) - .21, 16.);
+    float brightness = pow(1. - fwidth(samp.r) , 40.) * samp.b;
+    gl_FragColor = vec4(vec3(brightness), 1.);
 }

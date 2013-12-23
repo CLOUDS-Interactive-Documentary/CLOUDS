@@ -138,7 +138,7 @@ void colonyCell::doScanAndFlock(neighbor_iterator& iter){
 //==========================================================================================
 
 void colonyCell::doFeedCellNoise(){
-    lastFeedValue = ofNoise(position.x, position.y, position.z, ofGetElapsedTimef()*100)*250;
+    lastFeedValue = ofNoise(position.x, position.y, position.z, ofGetElapsedTimef() * 100) * 250;
 }
 
 void colonyCell::doAddTurbulence(){
@@ -148,7 +148,6 @@ void colonyCell::doAddTurbulence(){
     float rho = 0; //TODO: Change
     ofPoint force = ofPoint(1,0,0).getRotatedRad(theta, ofPoint(0,0,1)) * amplitude * _params.amtTurbulence;
     doAddForce(force);
-//    cout << "Theta : " << theta << " Amplitude : "<<amplitude<< " Force : " << ofToString(force) <<endl;
 }
 
 //==========================================================================================
@@ -192,8 +191,7 @@ cellPtr colonyCell::doGetReplicated()
 {
     hasReplicated = true;
     cellSize = logf(1 + cellSize);
-//    cellSize *= 0.6; //TODO: Remove magic number
-    return cellPtr(new colonyCell(getPosition() + ofPoint(ofRandom(-1,1),ofRandom(-1,1)), _params));
+    return cellPtr(new colonyCell(getPosition() + ofPoint(ofRandom(-1,1),ofRandom(-1,1)) * cellSize, _params));
 }
 
 const ofPoint colonyCell::getVelocity() const { return velocity; }

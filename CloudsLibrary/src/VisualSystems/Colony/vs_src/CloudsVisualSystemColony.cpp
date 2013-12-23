@@ -14,7 +14,7 @@ void CloudsVisualSystemColony::selfSetup()
     
 	//ofDisableNormalizedTexCoords();
 	ofDisableArbTex();
-    ofLoadImage(sprite, getVisualSystemDataPath() + "sprites/dot.png");
+    ofLoadImage(sprite, getVisualSystemDataPath() + "sprites/marker_dot.png");
     ofEnableArbTex();
     
 	loadShader();
@@ -24,7 +24,7 @@ void CloudsVisualSystemColony::selfSetup()
 void CloudsVisualSystemColony::loadShader(){
     string path = getVisualSystemDataPath() + "shaders/";
 	levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
-    cellShader.load(path + "cells.vs", path + "cells.fs"); //not using the gs
+//    cellShader.load(path + "cells.vs", path + "cells.fs"); //not using the gs
     billboard.load(path + "billboard.vs", path + "billboard.fs");
 }
 

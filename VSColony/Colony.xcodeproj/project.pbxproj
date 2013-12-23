@@ -146,9 +146,6 @@
 		17C0BDE918674BFA0082014A /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
 		17C0BDEC18674BFA0082014A /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
 		17C0BDED18674BFA0082014A /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
-		17C0BDF51867542C0082014A /* cells.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cells.fs; sourceTree = "<group>"; };
-		17C0BDF61867542C0082014A /* cells.gs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cells.gs; sourceTree = "<group>"; };
-		17C0BDF71867542C0082014A /* cells.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cells.vs; sourceTree = "<group>"; };
 		17C0BDF81867542C0082014A /* levelSet.fs */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = levelSet.fs; sourceTree = "<group>"; };
 		17C0BDF91867542C0082014A /* levelSet.vs */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = levelSet.vs; sourceTree = "<group>"; };
 		17C0BDFA1867542C0082014A /* liquidNoise.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = liquidNoise.fs; sourceTree = "<group>"; };
@@ -477,9 +474,6 @@
 			children = (
 				17BC7DF41867DC5700F4E8D8 /* billboard.fs */,
 				17BC7DF51867DC5700F4E8D8 /* billboard.vs */,
-				17C0BDF51867542C0082014A /* cells.fs */,
-				17C0BDF61867542C0082014A /* cells.gs */,
-				17C0BDF71867542C0082014A /* cells.vs */,
 				17C0BDF81867542C0082014A /* levelSet.fs */,
 				17C0BDF91867542C0082014A /* levelSet.vs */,
 				17C0BDFA1867542C0082014A /* liquidNoise.fs */,
@@ -1234,6 +1228,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Colony" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
