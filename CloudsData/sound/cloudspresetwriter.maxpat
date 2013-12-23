@@ -859,7 +859,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 82.0, 373.0, 165.0, 27.0 ],
-					"restore" : [ "Aaron_exciting_time:What is new and innovative in new media?" ],
+					"restore" : [ "none" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -958,7 +958,7 @@
 					"patching_rect" : [ 425.0, 448.105774, 263.0, 38.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 705.192932, 521.0, 263.0, 38.0 ],
-					"text" : "simulation, blah",
+					"text" : "\"simulation, blah\"",
 					"varname" : "textedit[1]"
 				}
 
@@ -1025,7 +1025,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 845.0, 267.0, 107.0, 27.0 ],
-					"restore" : [ "neutral" ],
+					"restore" : [ 0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -1071,14 +1071,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-85",
-					"items" : [ "high", ",", "neutral", ",", "low" ],
+					"items" : [ "low", ",", "high" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 657.0, 300.284485, 128.0, 22.0 ],
-					"pattrmode" : 1,
 					"presentation" : 1,
 					"presentation_rect" : [ 574.515381, 316.337646, 128.0, 22.0 ],
 					"varname" : "umenu[15]"
@@ -8246,7 +8245,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 866.0, -11.389191, 264.0, 27.0 ],
-					"restore" : [ "markov" ],
+					"restore" : [ "none" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -8306,7 +8305,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 866.0, 88.361969, 264.0, 27.0 ],
-					"restore" : [ "melody" ],
+					"restore" : [ "none" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -8326,7 +8325,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 866.0, 38.486389, 264.0, 27.0 ],
-					"restore" : [ "bucket" ],
+					"restore" : [ "none" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -8446,7 +8445,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 769.0, 88.361969, 97.0, 27.0 ],
-					"restore" : [ "filternoise" ],
+					"restore" : [ "off" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -8486,7 +8485,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 769.0, 38.486389, 97.0, 27.0 ],
-					"restore" : [ "slowwaves" ],
+					"restore" : [ "off" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -8601,7 +8600,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 283.757416, 618.110291, 102.0, 27.0 ],
-					"restore" : [ 135 ],
+					"restore" : [ 120 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -8621,7 +8620,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 283.757416, 576.947388, 107.0, 27.0 ],
-					"restore" : [ 3 ],
+					"restore" : [ 28 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -8641,7 +8640,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 283.757416, 543.815063, 122.0, 27.0 ],
-					"restore" : [ 0 ],
+					"restore" : [ 14 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9225,7 +9224,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-65",
-					"items" : [ "none", ",", "bucket", ",", "melody", ",", "markov", ",", "simple" ],
+					"items" : "none",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -9288,7 +9287,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-59",
-					"items" : [ "none", ",", "bucket", ",", "melody", ",", "markov", ",", "simple", ",", "sequencer" ],
+					"items" : "none",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,

@@ -19,7 +19,7 @@
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "" />
+		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
@@ -62,7 +62,7 @@
 		<pattr name = "orch3" value = "meshbeats" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "" />
+		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
@@ -535,7 +535,7 @@
 		<pattr name = "orch3" value = "filternoise" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "neutral" />
+		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&quot;simulation, blah&quot;" />
 		<pattr name = "start_question" value = "&quot;Aaron_exciting_time:What is new and innovative in new media?&quot;" />
@@ -1044,17 +1044,17 @@
 		<pattr name = "d8" value = "0 10" />
 		<pattr name = "harmony" value = "14" />
 		<pattr name = "rhythm" value = "28" />
-		<pattr name = "tempo" value = "72" />
-		<pattr name = "pname" value = "test" />
+		<pattr name = "tempo" value = "120" />
+		<pattr name = "pname" value = "my cool thingie" />
 		<pattr name = "orch1" value = "slowwaves" />
 		<pattr name = "orch2" value = "off" />
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "" />
+		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
-		<pattr name = "start_question" value = "" />
+		<pattr name = "start_question" value = "none" />
 		<pattr name = "amp1" value = "" />
 		<pattr name = "amp2" value = "" />
 		<pattr name = "amp3" value = "" />
@@ -1069,7 +1069,7 @@
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
 		<pattr name = "arg_a5" value = "none" />
-		<pattr name = "arg_a1" value = "bucket" />
+		<pattr name = "arg_a1" value = "lindenmayer" />
 		<pattr name = "arg_b1" value = "filename" />
 		<pattr name = "arg_b2" value = "none" />
 		<pattr name = "arg_b3" value = "none" />
@@ -1094,7 +1094,7 @@
 		<pattr name = "orch3" value = "kissmyarpsynch" />
 		<pattr name = "orch4" value = "filternoise" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "" />
+		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
@@ -1137,7 +1137,7 @@
 		<pattr name = "orch3" value = "kissmyarpsynch" />
 		<pattr name = "orch4" value = "avibeats" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "" />
+		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
