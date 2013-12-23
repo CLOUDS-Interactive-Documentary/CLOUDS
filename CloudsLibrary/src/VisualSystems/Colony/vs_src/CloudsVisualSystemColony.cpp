@@ -12,15 +12,20 @@ void CloudsVisualSystemColony::selfSetup()
     //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
     vbo.setMode(OF_PRIMITIVE_POINTS);
     
-    ofDisableArbTex(); //TODO : See if necessary
+	//ofDisableNormalizedTexCoords();
+	ofDisableArbTex();
     ofLoadImage(sprite, getVisualSystemDataPath() + "sprites/dot.png");
+    ofEnableArbTex();
     
-    
+	loadShader();
+
+}
+
+void CloudsVisualSystemColony::loadShader(){
     string path = getVisualSystemDataPath() + "shaders/";
-    levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
+	levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
     cellShader.load(path + "cells.vs", path + "cells.fs"); //not using the gs
     billboard.load(path + "billboard.vs", path + "billboard.fs");
-
 }
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
@@ -40,7 +45,7 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
 
 void CloudsVisualSystemColony::selfUpdate()
 {
-    cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
+    //cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
 	
     pMap.clear();
     vbo.clear();
@@ -106,13 +111,12 @@ void CloudsVisualSystemColony::selfDraw(){
 
 void CloudsVisualSystemColony::selfPostDraw(){
 
-//    levelSet.begin();
+    levelSet.begin();
 //    levelSet.setUniformTexture("tex", getSharedRenderTarget().getTextureReference(),1);
     getSharedRenderTarget().draw(0, 0,
                                  getSharedRenderTarget().getWidth(),
-                                 getSharedRenderTarget().getHeight()
-                                 );
-//    levelSet.end();
+                                 getSharedRenderTarget().getHeight());
+    levelSet.end();
 }
 
 void CloudsVisualSystemColony::selfBegin()
@@ -144,7 +148,13 @@ void CloudsVisualSystemColony::selfAutoMode(){}
 void CloudsVisualSystemColony::selfSetupRenderGui(){}
 void CloudsVisualSystemColony::guiSystemEvent(ofxUIEventArgs &e){}
 void CloudsVisualSystemColony::guiRenderEvent(ofxUIEventArgs &e){}
-void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){}
+
+void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){
+	if(args.key == 'R'){
+		loadShader();
+	}
+}
+
 void CloudsVisualSystemColony::selfDrawDebug(){}
 void CloudsVisualSystemColony::selfSceneTransformation(){}
 void CloudsVisualSystemColony::selfKeyReleased(ofKeyEventArgs & args){}
