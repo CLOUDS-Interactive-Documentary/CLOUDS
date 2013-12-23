@@ -63,6 +63,7 @@ class testApp : public ofBaseApp{
     int oharmony, orhythm, otempo;
     float odur;
     vector<string> oorch, oarg_a, oarg_b;
+    vector<float> oamp, orev;
     
     CloudsMixer mixer;
 

@@ -168,7 +168,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
 			mtempo = 120;
 			for(int j = 0;j<presets[thepreset].instruments.size();j++)
 			{
-				startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo);
+				startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo, presets[thepreset].m_amp[j], presets[thepreset].m_rev[j]);
 			}
 		}
 
@@ -178,7 +178,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     if(rigged)
     {
         flush_sched();
-        startMusic(0, "reichomatic", "NULL", "NULL", 0, 0, totalduration, 120);
+        startMusic(0, "reichomatic", "NULL", "NULL", 0, 0, totalduration, 120, 0.5, 0.5);
     }
     
     cout << "====================" << endl;
