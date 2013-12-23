@@ -886,7 +886,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#mundane,#serious,#rational,#example</additionalKeywords>
+    <additionalKeywords>#mundane,#serious,#rational,#example,#pe?Sheep Market</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - networked creativity</name>
@@ -2975,7 +2975,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#example</additionalKeywords>
+    <additionalKeywords>#pe?Meshu,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - maps</name>
@@ -3049,7 +3049,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#emotional,#inspiring,#logical,?maps: How do we make maps of memory?</additionalKeywords>
+    <additionalKeywords>#pe?Open Paths,#example,#emotional,#inspiring,#logical,?maps: How do we make maps of memory?</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - meaningful shape1</name>
@@ -3184,7 +3184,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>trace of your life</revokedKeywords>
-    <additionalKeywords>personal data,#logical,#mindblowing</additionalKeywords>
+    <additionalKeywords>personal data,#logical,#mindblowing,#example,#pe?Meshu</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - face data</name>
@@ -4272,6 +4272,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#pe?Cell Cycle,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Design vs Art</name>
@@ -4440,7 +4441,7 @@
 </clip>
 <clip>
     <name>Bruce - Popular installation art</name>
-    <additionalKeywords>#hard</additionalKeywords>
+    <additionalKeywords>#example,#pe?Funky Forest,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Future art</name>
@@ -4760,6 +4761,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Kyle_MC - Keytweeter 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jen - twitter friends</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan_AMA - World becoming one mind</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard,?twitter: Is the internet becoming a global brain?</additionalKeywords>
 </clip>
 <clip>
@@ -5025,6 +5041,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#example,#pe?Processing</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - sketching with code</name>
@@ -5469,7 +5486,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>ide</revokedKeywords>
-    <additionalKeywords>?processing: How did processing get started?,#breakthrough,#easy,#tech</additionalKeywords>
+    <additionalKeywords>?processing: How did processing get started?,#breakthrough,#easy,#tech,#pe?Processing,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Design by numbers to processing</name>
@@ -5524,7 +5541,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>visual language,visual thinking</revokedKeywords>
-    <additionalKeywords>design,aesthetics,design by numbers,#easy,#tech</additionalKeywords>
+    <additionalKeywords>design,aesthetics,design by numbers,#example,#pe?Design by Numbers,#tech,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Processing open</name>
@@ -5573,7 +5590,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#tech</additionalKeywords>
+    <additionalKeywords>#tech,#pe?Processing,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Processing addons</name>
@@ -5592,7 +5609,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#tech</additionalKeywords>
+    <additionalKeywords>#example,#pe?ToxicLibs,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - pushing software beyond</name>
@@ -5669,7 +5686,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#breakthrough,#inspiring</additionalKeywords>
+    <additionalKeywords>#example,#pe?Coronal Mass Ejection,#inspiring,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Style diffuses</name>
@@ -6686,7 +6703,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#hard,#breakthrough,#tech,#example</additionalKeywords>
+    <additionalKeywords>#example,#tech,#breakthrough,#hard,#pe?Tron (1982)</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Something new, totally engrossing</name>
@@ -6843,7 +6860,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>tree,#gold,#mindblowing,#example</additionalKeywords>
+    <additionalKeywords>tree,#pe?Lit Tree,#example,#mindblowing,#gold</additionalKeywords>
 </clip>
 <clip>
     <name>Elliot_UK - aesthetic of error</name>
@@ -9300,7 +9317,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>#fun,#rational,#example,#art,#hard</additionalKeywords>
+    <additionalKeywords>#pe?Manual Input Sessions,#hard,#art,#example,#rational,#fun</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - eno</name>
@@ -9416,7 +9433,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#obstacle,#rational,#hard</additionalKeywords>
+    <additionalKeywords>#example,#pe?Funky Forest,#hard,#rational,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - twitching in a room</name>
@@ -9455,7 +9472,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#hard,#obstacle,#ironic</additionalKeywords>
+    <additionalKeywords>#ironic,#obstacle,#hard,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - what&apos;s an instrument?</name>
@@ -9872,7 +9889,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#emotional,#mindblowing,#hard,?data: How can data be emotionally evokative?</additionalKeywords>
+    <additionalKeywords>#pe?Listening Post,#example,#emotional,#mindblowing,#hard,?data: How can data be emotionally evokative?</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - hybridity</name>
@@ -9982,6 +9999,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#pe?Aesthetics and Computation Group,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - ACG</name>
@@ -10000,7 +10018,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#inspiring,#breakthrough</additionalKeywords>
+    <additionalKeywords>#breakthrough,#inspiring,#example,#pe?Aesthetics and Computation Group</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - people at MIT</name>
@@ -10024,7 +10042,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#sincere</additionalKeywords>
+    <additionalKeywords>#sincere,#example,#pe?Aesthetics and Computation Group</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - ACG3</name>
@@ -10058,7 +10076,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#breakthrough</additionalKeywords>
+    <additionalKeywords>#breakthrough,#example,#pe?Aesthetics and Computation Group</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - Kyle</name>
@@ -10873,7 +10891,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#art,#obstacle,#discouraging,#hard</additionalKeywords>
+    <additionalKeywords>#art,#obstacle,#discouraging,#hard,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - raytraced spheres</name>
@@ -11138,7 +11156,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>engineering,#tech,#hard</additionalKeywords>
+    <additionalKeywords>engineering,#hard,#tech,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - human augmentation</name>
@@ -15751,7 +15769,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>maps,#example,#inspiring,#hard,#tech,#breakthrough</additionalKeywords>
+    <additionalKeywords>maps,#pe?Open Paths,#breakthrough,#tech,#hard,#inspiring,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - open paths 3</name>
@@ -15770,7 +15788,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>maps,#example,#inspiring,#discouraging,#ironic,#hard</additionalKeywords>
+    <additionalKeywords>maps,#example,#inspiring,#discouraging,#ironic,#hard,#pe?Open Paths</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Big Data Security</name>
@@ -15837,7 +15855,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>maps,data ownership,personal data,#example,#inspiring,#hard,#sincere</additionalKeywords>
+    <additionalKeywords>maps,data ownership,personal data,#example,#inspiring,#hard,#sincere,#pe?Open Paths</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Thought it was boring</name>
@@ -15906,7 +15924,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>trace of your life</revokedKeywords>
-    <additionalKeywords>personal data,maps,#example,?maps: How do we make maps of memory?,#sincere,#inspiring,#emotional</additionalKeywords>
+    <additionalKeywords>personal data,maps,#example,?maps: How do we make maps of memory?,#sincere,#inspiring,#emotional,#pe?Open Paths</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - deciding not to record</name>
@@ -20072,7 +20090,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#rational,#tech,#example</additionalKeywords>
+    <additionalKeywords>#pe?Transparency Grenade,#example,#tech,#rational</additionalKeywords>
 </clip>
 <clip>
     <name>Karolina - motion story,</name>
@@ -20254,7 +20272,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>#emotional,#fun,#example</additionalKeywords>
+    <additionalKeywords>#emotional,#fun,#example,#pe?Sniff</additionalKeywords>
 </clip>
 <clip>
     <name>Karolina - system metaphor</name>
@@ -24389,7 +24407,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>#tech,#example</additionalKeywords>
+    <additionalKeywords>#tech,#example,#pe?Face OSC</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_CH - new aesthetic 1</name>
@@ -26505,7 +26523,7 @@
 </clip>
 <clip>
     <name>Kyle_MC - People staring at screens 3</name>
-    <additionalKeywords>#example</additionalKeywords>
+    <additionalKeywords>#pe?People Staring at Computers,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_MC - People staring at screens 4</name>
@@ -26868,7 +26886,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>#inspiring,#hard,#example</additionalKeywords>
+    <additionalKeywords>#pe?Eyewriter,#example,#hard,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_MC - Kinect</name>
@@ -27798,7 +27816,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>#example,#hard</additionalKeywords>
+    <additionalKeywords>#example,#hard,#pe?Social Turkers</additionalKeywords>
 </clip>
 <clip>
     <name>Lauren - wearables 1</name>
@@ -29915,7 +29933,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#example,#art</additionalKeywords>
+    <additionalKeywords>#pe?Reactive Squares,#art,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - subversion</name>
@@ -30659,7 +30677,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>ide (integrated development environment)</revokedKeywords>
-    <additionalKeywords>aesthetics and computation,media lab,#example,#breakthrough,#sincere</additionalKeywords>
+    <additionalKeywords>aesthetics and computation,media lab,#pe?Design by Numbers,#sincere,#breakthrough,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - Processing</name>
@@ -30679,7 +30697,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>link from casey</revokedKeywords>
-    <additionalKeywords>#example,#inspiring,#breakthrough</additionalKeywords>
+    <additionalKeywords>#pe?Processing,#breakthrough,#inspiring,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - Batman superman</name>
@@ -30927,7 +30945,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#example,#inspiring</additionalKeywords>
+    <additionalKeywords>#pe?Processing,#inspiring,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - ACU part 1</name>
@@ -30986,7 +31004,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>aesthetics and computation,#example,#tech</additionalKeywords>
+    <additionalKeywords>aesthetics and computation,#pe?Aesthetics and Computation Group,#tech,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - ACU p 2</name>
@@ -32882,7 +32900,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>#inspiring,#art,#example</additionalKeywords>
+    <additionalKeywords>#pe?Energy Flow,#example,#art,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Marcus - energy flow_riot</name>
@@ -33051,7 +33069,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#hard,#example,#serious</additionalKeywords>
+    <additionalKeywords>#pe?Energy Flow,#serious,#example,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Marcus - visual culture evoling</name>
@@ -35156,7 +35174,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>hypothetical aesthetic technology</revokedKeywords>
-    <additionalKeywords>#tech,#sincere</additionalKeywords>
+    <additionalKeywords>#tech,#sincere,#pe?Cell Cycle,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Marius - 3D printing</name>
@@ -35292,7 +35310,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#mindblowing,#hard</additionalKeywords>
+    <additionalKeywords>#example,#pe?Evolved Virtual Creatures,#hard,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Marius - new tools change perception</name>
@@ -37544,7 +37562,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#sincere,#conclusion,#hard</additionalKeywords>
+    <additionalKeywords>#sincere,#conclusion,#hard,#pe?Cell Cycle,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jesse - reaction lamp</name>
@@ -37882,7 +37900,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#example,#logical,#rational</additionalKeywords>
+    <additionalKeywords>#example,#logical,#rational,#pe?Cell Cycle</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jessica - Big 3D printers Long quote</name>
@@ -38104,7 +38122,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#logical,#art</additionalKeywords>
+    <additionalKeywords>#logical,#art,#pe?Cell Cycle,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jessica - Marker 2</name>
@@ -38119,7 +38137,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>link: marius watz &quot;3d printing&quot;,link: marius watz &quot;color 3d printing&quot;</revokedKeywords>
-    <additionalKeywords>#sincere,#logical,#tech</additionalKeywords>
+    <additionalKeywords>#sincere,#logical,#tech,#pe?Cell Cycle,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jessica - Growing buildings</name>
@@ -39445,7 +39463,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#example,#hard,#logical,#breakthrough</additionalKeywords>
+    <additionalKeywords>#example,#hard,#logical,#breakthrough,#pe?Portal</additionalKeywords>
 </clip>
 <clip>
     <name>Paola - bach mozart coders</name>
@@ -39788,7 +39806,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#example,#mundane</additionalKeywords>
+    <additionalKeywords>#example,#mundane,#pe?Partitura</additionalKeywords>
 </clip>
 <clip>
     <name>Philip - get an idea</name>
@@ -41580,7 +41598,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#hard,#logical,#obstacle,#example</additionalKeywords>
+    <additionalKeywords>#example,#obstacle,#logical,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Ramsey - ALB 2</name>
@@ -41589,7 +41607,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#obstacle,#logical,#example</additionalKeywords>
+    <additionalKeywords>#obstacle,#logical,#example,#pe?قلب, (Alb)</additionalKeywords>
 </clip>
 <clip>
     <name>Ramsey - ALB 3</name>
@@ -41598,7 +41616,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#example,#obstacle,#logical,#tech</additionalKeywords>
+    <additionalKeywords>#pe?قلب,(Alb),#tech,#logical,#obstacle,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Ramsey - ALB 4</name>
@@ -45894,7 +45912,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>galapagos,link:marius - artificial life,coding aesthetics</revokedKeywords>
-    <additionalKeywords>code,dna,evolution: How does the computer simulate accelerated evolution?</additionalKeywords>
+    <additionalKeywords>code,dna,evolution: How does the computer simulate accelerated evolution?,#example,#pe?Galapagos</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - evolution</name>
@@ -47090,7 +47108,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>#breakthrough,#example</additionalKeywords>
+    <additionalKeywords>#pe?Funky Forest,#example,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Theo - Kids interacting</name>
@@ -47992,7 +48010,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>cellular automata,#example,?artificial life: How does art imitate life?</additionalKeywords>
+    <additionalKeywords>cellular automata,#example,?artificial life: How does art imitate life?,#pe?Communion</additionalKeywords>
 </clip>
 <clip>
     <name>Vera - working for clients</name>
@@ -48070,7 +48088,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>#example</additionalKeywords>
+    <additionalKeywords>#pe?Energy Flow,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Vera - Energy Flow2</name>
@@ -48120,7 +48138,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>?society: How does your artwork respond to current events?,#example</additionalKeywords>
+    <additionalKeywords>?society: How does your artwork respond to current events?,#example,#pe?Energy Flow</additionalKeywords>
 </clip>
 <clip>
     <name>Vera - having a protagonist</name>
@@ -48543,7 +48561,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>generations,#breakthrough,#sincere</additionalKeywords>
+    <additionalKeywords>generations,#breakthrough,#sincere,#example,#pe?Messa Di Voce</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - hate working alone</name>
@@ -48616,7 +48634,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#inspiring,#breakthrough,#example</additionalKeywords>
+    <additionalKeywords>#pe?Drawn,#example,#breakthrough,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - Time slows down</name>
@@ -49242,7 +49260,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>zen,time,#emotional,#example</additionalKeywords>
+    <additionalKeywords>zen,time,#pe?Drawn,#example,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - drawing with Tayoon</name>
