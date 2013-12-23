@@ -54,12 +54,18 @@ struct lukePreset {
     vector<string> instruments;
     vector<string> arg_a;
     vector<string> arg_b;
+    vector<float> m_amp;
+    vector<float> m_rev;
     int harmony;
     int rhythm;
     float tempo;
     string bank;
     vector<int> dichomin;
     vector<int> dichomax;
+    bool disabled;
+    string energy;
+    string start_question;
+    vector<string> explicit_topics;
 };
 
 struct lukeSample {
