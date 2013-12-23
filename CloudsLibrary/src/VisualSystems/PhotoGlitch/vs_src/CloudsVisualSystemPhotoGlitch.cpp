@@ -74,6 +74,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
     customGui->addToggle("SORT BRI", &bShouldSortBri);
     customGui->addToggle("SORT TARGET", &bShouldSortTarget);
     customGui->addToggle("SORT TARGET BRI", &bShouldSortTargetBri);
+    customGui->addToggle("RANDOM SORT", &bRandomSort);
     customGui->addToggle("REORDER", &bShouldReorder);
     customGui->addToggle("PERPENDICULAR", &bDoPerpendicular);
     customGui->addIntSlider("TWEEN DURATION", 1, 1000, &tweenDuration);
@@ -108,7 +109,7 @@ void CloudsVisualSystemPhotoGlitch::selfGuiEvent(ofxUIEventArgs &e)
                 if (name == targetImagesDir.getName(i) && ((ofxUIToggle *)e.widget)->getValue()){
                     cout<<"target img name : "<<name<<endl;
                     selectedTargetImageIdx = i;
-                    bShouldGenerate = true;
+                    bShouldGenerateTargetOnly = true;
                     break;
                 }
             }
@@ -169,10 +170,10 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     selectedTargetImageIdx = 0;
     
     bShouldGenerate = true;
-    ofEnableAlphaBlending();
+//    ofEnableAlphaBlending();
 }
 
-void CloudsVisualSystemPhotoGlitch::clear()
+void CloudsVisualSystemPhotoGlitch::clearSource()
 {
     if (cells != NULL) {
         delete [] cells;
@@ -188,21 +189,12 @@ void CloudsVisualSystemPhotoGlitch::clear()
         delete [] texCoords;
         texCoords = NULL;
     }
-    if( targetTexCoords != NULL){
-        delete [] targetTexCoords;
-        targetTexCoords = NULL;
-    }
-    
+
     if (colors != NULL) {
         delete [] colors;
         colors = NULL;
     }
-    
-    if (targetColors != NULL) {
-        delete [] targetColors;
-        targetColors = NULL;
-    }
-    
+
     if (indices != NULL) {
         delete [] indices;
         indices = NULL;
@@ -211,35 +203,40 @@ void CloudsVisualSystemPhotoGlitch::clear()
     tex.clear();
 }
 
-void CloudsVisualSystemPhotoGlitch::generate()
+void CloudsVisualSystemPhotoGlitch::generateSource()
 {
-    clear();
+    clearSource();
     
     tex.loadImage(imagesDir.getPath(selectedSrcImageIdx));
     ofPixels pixels = tex.getPixelsRef();
-    
+/*
     targetTex.loadImage(targetImagesDir.getPath(selectedTargetImageIdx));
     ofPixels targetPixels = targetTex.getPixelsRef();
+*/
     
     numCells = numDivCols * numDivRows;
     
     cells = new PGCell[numCells];
-    targetCells = new PGCell[numCells];
+//    targetCells = new PGCell[numCells];
     
     screenSliceWidth = ofGetWidth() / (float)numDivCols;
     screenSliceHeight = ofGetHeight() / (float)numDivRows;
     texSliceWidth = tex.getWidth() / (float)numDivCols;
     texSliceHeight = tex.getHeight() / (float)numDivRows;
+/*
     targetTexSliceWidth =  targetTex.getWidth() / (float)numDivCols;
     targetTexSliceHeight = targetTex.getHeight() / (float)numDivRows;
-    
+*/    
     // Build the mesh data.
     numVerts = numCells * kVertsPerCell;
     verts = new GLfloat[numVerts * kCoordsPerVert];
     texCoords = new GLfloat[numVerts * 2];
-    targetTexCoords = new GLfloat[numVerts * 2];
+
     colors = new GLfloat[numVerts * 4];
+/*
+    targetTexCoords = new GLfloat[numVerts * 2];
     targetColors = new GLfloat[numVerts * 4];
+*/
     
     numIndices = numCells * kIndicesPerCell;
     indices = new GLuint[numIndices];
@@ -275,7 +272,7 @@ void CloudsVisualSystemPhotoGlitch::generate()
             texCoords[idx * kVertsPerCell * 2 + 6] = (i + 1) * texSliceWidth;
             texCoords[idx * kVertsPerCell * 2 + 7] = (j + 1) * texSliceHeight;
             
-
+/*
             // Add target tex coords.
             targetTexCoords[idx * kVertsPerCell * 2 + 0] = (i + 0) * targetTexSliceWidth;
             targetTexCoords[idx * kVertsPerCell * 2 + 1] = (j + 0) * targetTexSliceHeight;
@@ -288,7 +285,7 @@ void CloudsVisualSystemPhotoGlitch::generate()
          
             targetTexCoords[idx * kVertsPerCell * 2 + 6] = (i + 1) * targetTexSliceWidth;
             targetTexCoords[idx * kVertsPerCell * 2 + 7] = (j + 1) * targetTexSliceHeight;
-
+*/
        
                         
             // Add indices for triangles.
@@ -342,7 +339,7 @@ void CloudsVisualSystemPhotoGlitch::generate()
             colors[idx * kVertsPerCell * 4 + 13] = cells[idx].avgColor.g;
             colors[idx * kVertsPerCell * 4 + 14] = cells[idx].avgColor.b;
             colors[idx * kVertsPerCell * 4 + 15] = cells[idx].avgColor.a;
-            
+/*            
             //doing the same for target image
             avgR = 0;
             avgG = 0;
@@ -363,10 +360,141 @@ void CloudsVisualSystemPhotoGlitch::generate()
                                           (avgB / (targetTexSliceWidth * targetTexSliceHeight)) / 255.0f,
                                           (avgA / (targetTexSliceWidth * targetTexSliceHeight)) / 255.0f);
             
-//            if (targetCells[idx].avgColor.getBrightness() < 0.1) {
-//                targetCells[idx].avgColor.setHue(ofRandom(0.3, 0.99));
-//                cout<<targetCells[idx].avgColor.getHue()<<endl;
-//            }
+
+
+            // Add colors.
+            targetColors[idx * kVertsPerCell * 4 +  0] = targetCells[idx].avgColor.r;
+            targetColors[idx * kVertsPerCell * 4 +  1] = targetCells[idx].avgColor.g;
+            targetColors[idx * kVertsPerCell * 4 +  2] = targetCells[idx].avgColor.b;
+            targetColors[idx * kVertsPerCell * 4 +  3] = targetCells[idx].avgColor.a;
+            
+            targetColors[idx * kVertsPerCell * 4 +  4] = targetCells[idx].avgColor.r;
+            targetColors[idx * kVertsPerCell * 4 +  5] = targetCells[idx].avgColor.g;
+            targetColors[idx * kVertsPerCell * 4 +  6] = targetCells[idx].avgColor.b;
+            targetColors[idx * kVertsPerCell * 4 +  7] = targetCells[idx].avgColor.a;
+            
+            targetColors[idx * kVertsPerCell * 4 +  8] = targetCells[idx].avgColor.r;
+            targetColors[idx * kVertsPerCell * 4 +  9] = targetCells[idx].avgColor.g;
+            targetColors[idx * kVertsPerCell * 4 + 10] = targetCells[idx].avgColor.b;
+            targetColors[idx * kVertsPerCell * 4 + 11] = targetCells[idx].avgColor.a;
+            
+            targetColors[idx * kVertsPerCell * 4 + 12] = targetCells[idx].avgColor.r;
+            targetColors[idx * kVertsPerCell * 4 + 13] = targetCells[idx].avgColor.g;
+            targetColors[idx * kVertsPerCell * 4 + 14] = targetCells[idx].avgColor.b;
+            targetColors[idx * kVertsPerCell * 4 + 15] = targetCells[idx].avgColor.a;
+*/
+
+            // Save the cell struct.
+            cells[idx].idx = idx;
+            cells[idx].col = cells[idx].origCol = i;
+            cells[idx].row = cells[idx].origRow = j;
+/*
+            targetCells[idx].idx = idx;
+            targetCells[idx].col = targetCells[idx].origCol = i;
+            targetCells[idx].row = targetCells[idx].origRow = j;
+*/
+        }
+    }
+    
+    vbo.setVertexData(verts, kCoordsPerVert, numVerts, GL_STREAM_DRAW, kCoordsPerVert * sizeof(GLfloat));
+    vbo.setTexCoordData(texCoords, numVerts, GL_STATIC_DRAW, 2 * sizeof(GLfloat));
+    vbo.setColorData(colors, numVerts, GL_STATIC_DRAW, 4 * sizeof(GLfloat));
+    vbo.setIndexData(indices, numIndices, GL_STATIC_DRAW);
+/*
+    targetVbo.setVertexData(verts, kCoordsPerVert, numVerts, GL_STREAM_DRAW, kCoordsPerVert * sizeof(GLfloat));
+    targetVbo.setTexCoordData(targetTexCoords, numVerts, GL_STATIC_DRAW, 2 * sizeof(GLfloat));
+    targetVbo.setColorData(targetColors, numVerts, GL_STATIC_DRAW, 4 * sizeof(GLfloat));
+    targetVbo.setIndexData(indices, numIndices, GL_STATIC_DRAW);
+*/
+    bShouldReorder = true;
+}
+
+void CloudsVisualSystemPhotoGlitch::generateTarget(){
+    targetTex.loadImage(targetImagesDir.getPath(selectedTargetImageIdx));
+    ofPixels targetPixels = targetTex.getPixelsRef();
+    
+    numCells = numDivCols * numDivRows;
+    
+    targetCells = new PGCell[numCells];
+    
+    screenSliceWidth = ofGetWidth() / (float)numDivCols;
+    screenSliceHeight = ofGetHeight() / (float)numDivRows;
+    
+    targetTexSliceWidth =  targetTex.getWidth() / (float)numDivCols;
+    targetTexSliceHeight = targetTex.getHeight() / (float)numDivRows;
+    
+    // Build the mesh data.
+    numTargetVerts = numCells * kVertsPerCell;
+    targetVerts = new GLfloat[numTargetVerts * kCoordsPerVert];
+    targetTexCoords = new GLfloat[numTargetVerts * 2];
+    targetColors = new GLfloat[numTargetVerts * 4];
+    
+    numTargetIndices = numCells * kIndicesPerCell;
+    targetIndices = new GLuint[numTargetIndices];
+    
+    for (int j = 0; j < numDivRows; j++) {
+        for (int i = 0; i < numDivCols; i++) {
+            int idx = j * numDivCols + i;
+            
+            // Add verts. Same for both source and target
+            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 0] = (i + 0) * screenSliceWidth;
+            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 1] = (j + 0) * screenSliceHeight;
+            
+            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 2] = (i + 1) * screenSliceWidth;
+            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 3] = (j + 0) * screenSliceHeight;
+            
+            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 4] = (i + 0) * screenSliceWidth;
+            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 5] = (j + 1) * screenSliceHeight;
+            
+            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 6] = (i + 1) * screenSliceWidth;
+            targetVerts[idx * kVertsPerCell * kCoordsPerVert + 7] = (j + 1) * screenSliceHeight;
+            
+            
+            targetTexCoords[idx * kVertsPerCell * 2 + 0] = (i + 0) * targetTexSliceWidth;
+            targetTexCoords[idx * kVertsPerCell * 2 + 1] = (j + 0) * targetTexSliceHeight;
+            
+            targetTexCoords[idx * kVertsPerCell * 2 + 2] = (i + 1) * targetTexSliceWidth;
+            targetTexCoords[idx * kVertsPerCell * 2 + 3] = (j + 0) * targetTexSliceHeight;
+            
+            targetTexCoords[idx * kVertsPerCell * 2 + 4] = (i + 0) * targetTexSliceWidth;
+            targetTexCoords[idx * kVertsPerCell * 2 + 5] = (j + 1) * targetTexSliceHeight;
+            
+            targetTexCoords[idx * kVertsPerCell * 2 + 6] = (i + 1) * targetTexSliceWidth;
+            targetTexCoords[idx * kVertsPerCell * 2 + 7] = (j + 1) * targetTexSliceHeight;
+            
+
+            // Add indices for triangles.
+            targetIndices[idx * kIndicesPerCell + 0] = idx * kVertsPerCell + 0;  // top-left
+            targetIndices[idx * kIndicesPerCell + 1] = idx * kVertsPerCell + 1;  // top-right
+            targetIndices[idx * kIndicesPerCell + 2] = idx * kVertsPerCell + 2;  // bottom-left
+            
+            targetIndices[idx * kIndicesPerCell + 3] = idx * kVertsPerCell + 1;  // top-right
+            targetIndices[idx * kIndicesPerCell + 4] = idx * kVertsPerCell + 3;  // bottom-right
+            targetIndices[idx * kIndicesPerCell + 5] = idx * kVertsPerCell + 2;  // bottom-left
+
+            int avgR = 0;
+            int avgG = 0;
+            int avgB = 0;
+            int avgA = 0;
+            for (int y = (j + 0) * targetTexSliceHeight; y < (j + 1) * targetTexSliceHeight; y++) {
+                for (int x = (i + 0) * targetTexSliceWidth; x < (i + 1) * targetTexSliceWidth; x++) {
+                    ofColor c = targetPixels.getColor(x, y);
+                    avgR += c.r;
+                    avgG += c.g;
+                    avgB += c.b;
+                    avgA += c.a;
+                }
+            }
+            
+            targetCells[idx].avgColor.set((avgR / (targetTexSliceWidth * targetTexSliceHeight)) / 255.0f,
+                                          (avgG / (targetTexSliceWidth * targetTexSliceHeight)) / 255.0f,
+                                          (avgB / (targetTexSliceWidth * targetTexSliceHeight)) / 255.0f,
+                                          (avgA / (targetTexSliceWidth * targetTexSliceHeight)) / 255.0f);
+            
+            //            if (targetCells[idx].avgColor.getBrightness() < 0.1) {
+            //                targetCells[idx].avgColor.setHue(ofRandom(0.3, 0.99));
+            //                cout<<targetCells[idx].avgColor.getHue()<<endl;
+            //            }
             
             // Add colors.
             targetColors[idx * kVertsPerCell * 4 +  0] = targetCells[idx].avgColor.r;
@@ -388,12 +516,6 @@ void CloudsVisualSystemPhotoGlitch::generate()
             targetColors[idx * kVertsPerCell * 4 + 13] = targetCells[idx].avgColor.g;
             targetColors[idx * kVertsPerCell * 4 + 14] = targetCells[idx].avgColor.b;
             targetColors[idx * kVertsPerCell * 4 + 15] = targetCells[idx].avgColor.a;
-
-
-            // Save the cell struct.
-            cells[idx].idx = idx;
-            cells[idx].col = cells[idx].origCol = i;
-            cells[idx].row = cells[idx].origRow = j;
             
             targetCells[idx].idx = idx;
             targetCells[idx].col = targetCells[idx].origCol = i;
@@ -401,19 +523,42 @@ void CloudsVisualSystemPhotoGlitch::generate()
         }
     }
     
-    vbo.setVertexData(verts, kCoordsPerVert, numVerts, GL_STREAM_DRAW, kCoordsPerVert * sizeof(GLfloat));
-    vbo.setTexCoordData(texCoords, numVerts, GL_STATIC_DRAW, 2 * sizeof(GLfloat));
-    vbo.setColorData(colors, numVerts, GL_STATIC_DRAW, 4 * sizeof(GLfloat));
-    vbo.setIndexData(indices, numIndices, GL_STATIC_DRAW);
-
-    targetVbo.setVertexData(verts, kCoordsPerVert, numVerts, GL_STREAM_DRAW, kCoordsPerVert * sizeof(GLfloat));
-    targetVbo.setTexCoordData(targetTexCoords, numVerts, GL_STATIC_DRAW, 2 * sizeof(GLfloat));
-    targetVbo.setColorData(targetColors, numVerts, GL_STATIC_DRAW, 4 * sizeof(GLfloat));
-    targetVbo.setIndexData(indices, numIndices, GL_STATIC_DRAW);
+    targetVbo.setVertexData(targetVerts, kCoordsPerVert, numTargetVerts, GL_STREAM_DRAW, kCoordsPerVert * sizeof(GLfloat));
+    targetVbo.setTexCoordData(targetTexCoords, numTargetVerts, GL_STATIC_DRAW, 2 * sizeof(GLfloat));
+    targetVbo.setColorData(targetColors, numTargetVerts, GL_STATIC_DRAW, 4 * sizeof(GLfloat));
+    targetVbo.setIndexData(targetIndices, numTargetIndices, GL_STATIC_DRAW);
     
-    bShouldReorder = true;
+//    bShouldReorder = true;
 }
 
+void CloudsVisualSystemPhotoGlitch::clearTarget(){
+    
+    if (targetCells != NULL) {
+        delete [] cells;
+        cells = NULL;
+    }
+    
+    if (targetVerts != NULL) {
+        delete [] targetVerts;
+        targetVerts = NULL;
+    }
+    
+    if( targetTexCoords != NULL){
+        delete [] targetTexCoords;
+        targetTexCoords = NULL;
+    }
+    
+    if (targetColors != NULL) {
+        delete [] targetColors;
+        targetColors = NULL;
+    }
+    
+    if (targetIndices != NULL) {
+        delete [] targetIndices;
+        targetIndices = NULL;
+    }
+    targetTex.clear();
+}
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
@@ -439,8 +584,14 @@ void CloudsVisualSystemPhotoGlitch::selfSceneTransformation(){
 void CloudsVisualSystemPhotoGlitch::selfUpdate()
 {    
     if (bShouldGenerate) {
-        generate();
+        generateSource();
+        generateTarget();
         bShouldGenerate = false;
+    }
+    
+    if(bShouldGenerateTargetOnly){
+        generateTarget();
+        bShouldGenerateTargetOnly = false;
     }
     
     if (bShouldShuffle) {
@@ -549,15 +700,6 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
         targetTex.bind();
         targetVbo.drawElements(GL_TRIANGLES, numIndices);
         targetTex.unbind();
-        
-//        for (int i = 0; i < numCells; i++) {
-//            ofSetColor(targetCells[i].avgColor);
-//            ofRect(targetCells[i].col * screenSliceWidth, targetCells[i].row * screenSliceHeight, screenSliceWidth, screenSliceHeight);
-//        }
-//        for (int i = 0; i < numCells; i++) {
-//            ofSetColor(cells[i].avgColor);
-//            ofRect(cells[i].col * screenSliceWidth, cells[i].row * screenSliceHeight, screenSliceWidth, screenSliceHeight);
-//        }
     }
 
     // Debug avg colors.
@@ -576,7 +718,8 @@ void CloudsVisualSystemPhotoGlitch::selfEnd(){
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemPhotoGlitch::selfExit()
 {
-    clear();
+    clearSource();
+    clearTarget();
 }
 
 //events are called when the system is active
@@ -695,39 +838,69 @@ void CloudsVisualSystemPhotoGlitch::sortBri()
 void CloudsVisualSystemPhotoGlitch::sortTargetBrightness(){
     vector<int> sourceSlots;
     vector<int> targetSlots;
+    vector  <int>  remainingIndices;
     for (int i = 0; i < numCells; i++) {
         sourceSlots.push_back(i);
         targetSlots.push_back(i);
+        remainingIndices.push_back(i);
     }
     sort(targetSlots.begin(), targetSlots.end(), CloudsVisualSystemPhotoGlitch::sortIdxForBrightnessTarget);
     sort(sourceSlots.begin(), sourceSlots.end(), CloudsVisualSystemPhotoGlitch::sortIdxForBri);
-    
-    
-    for (int i = 0; i < numCells ; i++) {
-        cells[sourceSlots[i]].col = targetCells[targetSlots[i]].col;
-        cells[sourceSlots[i]].row = targetCells[targetSlots[i]].row;
-        
-        tweenTarget(sourceSlots[i]);
+
+    random_shuffle(remainingIndices.begin(), remainingIndices.end());
+
+    if(bRandomSort){
+        for (int i = 0; i < numCells ; i++) {
+            cells[sourceSlots[i]].col = targetCells[targetSlots[i]].col;
+            cells[sourceSlots[i]].row = targetCells[targetSlots[i]].row;
+            tweenTarget(sourceSlots[i],remainingIndices[i]);
+        }
     }
+    else{
+        for (int i = 0; i < numCells ; i++) {
+            cells[sourceSlots[i]].col = targetCells[targetSlots[i]].col;
+            cells[sourceSlots[i]].row = targetCells[targetSlots[i]].row;
+            tweenTarget(sourceSlots[i],targetSlots[i]);
+        }
+    }
+
+
 }
 
 void CloudsVisualSystemPhotoGlitch::sortTarget(){
     vector<int> sourceSlots;
     vector<int> targetSlots;
+    vector  <int>  remainingIndices;
     for (int i = 0; i < numCells; i++) {
         sourceSlots.push_back(i);
         targetSlots.push_back(i);
+        remainingIndices.push_back(i);
     }
     sort(targetSlots.begin(), targetSlots.end(), CloudsVisualSystemPhotoGlitch::sortIdxForHueTarget);
     sort(sourceSlots.begin(), sourceSlots.end(), CloudsVisualSystemPhotoGlitch::sortIdxForHue);
 
+    random_shuffle(remainingIndices.begin(), remainingIndices.end());
     
-    for (int i = 0; i < numCells ; i++) {
-        cells[sourceSlots[i]].col = targetCells[targetSlots[i]].col;
-        cells[sourceSlots[i]].row = targetCells[targetSlots[i]].row;
-    
-        tweenTarget(sourceSlots[i]);
+    if(bRandomSort){
+        for (int i = 0; i < numCells ; i++) {
+            cells[sourceSlots[i]].col = targetCells[targetSlots[i]].col;
+            cells[sourceSlots[i]].row = targetCells[targetSlots[i]].row;
+            tweenTarget(sourceSlots[i],remainingIndices[i]);
+        }
     }
+    else{
+        for (int i = 0; i < numCells ; i++) {
+            cells[sourceSlots[i]].col = targetCells[targetSlots[i]].col;
+            cells[sourceSlots[i]].row = targetCells[targetSlots[i]].row;
+            tweenTarget(sourceSlots[i],targetSlots[i]);
+        }
+    }
+//    for (int i = 0; i < numCells ; i++) {
+//        cells[sourceSlots[i]].col = targetCells[targetSlots[i]].col;
+//        cells[sourceSlots[i]].row = targetCells[targetSlots[i]].row;
+//    
+//        tweenTarget(sourceSlots[i]);
+//    }
 }
 
 void CloudsVisualSystemPhotoGlitch::reorder()

@@ -101,8 +101,10 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
 //		return myCustomCamera;
 //	}
     
-    void clear();
-    void generate();
+    void clearSource();
+    void clearTarget();
+    void generateSource();
+    void generateTarget();
 
     void shuffle();
     void sortHue();
@@ -138,7 +140,10 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     
     GLfloat * targetTexCoords;
     GLfloat * targetColors;
-
+    int numTargetVerts;
+    GLfloat * targetVerts;
+    int numTargetIndices;
+    GLuint * targetIndices;
     
     ofImage tex;
     ofVbo vbo;
@@ -171,9 +176,11 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     bool bShouldSortTarget;
     bool bShouldSortTargetBri;
     bool bShouldReorder;
+    bool bRandomSort;
 
     
     bool bDoPerpendicular;
     
     bool bShouldGenerate;
+    bool bShouldGenerateTargetOnly;
 };
