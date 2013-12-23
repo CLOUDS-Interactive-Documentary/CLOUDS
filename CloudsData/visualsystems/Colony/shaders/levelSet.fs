@@ -23,7 +23,12 @@ void main(){
 //	gl_FragColor = vec4(vec3(levl),1.);
     
     vec4 samp = texture2DRect(tex, gl_TexCoord[0].xy);
-//    float brightness = pow(samp.b * pow (1.1 - samp.r, 2.) - .21, 16.);
-    float brightness = pow(1. - fwidth(samp.r) , 40.) * samp.b;
-    gl_FragColor = vec4(vec3(brightness), 1.);
+    //Check if you're on an area of change
+    float b = fwidth(samp.b);
+    b = smoothstep(0.005, 0.2, b);
+    
+//    float b = pow(1. - fwidth(samp.r) , 40.);
+    
+    gl_FragColor = vec4(vec3(b), 1.);
+//    gl_FragColor = samp;
 }
