@@ -28,6 +28,12 @@ struct compareObj {
     int index;
 } ;
 
+struct glitchParams{
+    bool sortByBrightness;
+    bool sortByHue;
+    vector<string> targetImageNames;
+};
+
 class PhotoGlitch
 {
 public:
@@ -43,7 +49,7 @@ public:
     
     PGCell * cells;
     
-    void clearTarget(){
+    void clear(){
         
         if (cells != NULL) {
             delete [] cells;
@@ -70,7 +76,6 @@ public:
             indices = NULL;
         }
         
-        tex.clear();
     }
 };
 
@@ -164,7 +169,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void reorder();
     void sortTarget();
     void sortTargetBrightness();
-    
+    void addTargetToUI(ofxUISuperCanvas& gui,bool bShouldSortTarget, glitchParams params );
     void tweenAll();
     void tween(int i, int j = -1);
     void tweenTarget(int i, int j = -1);
@@ -176,9 +181,11 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     
     static PGCell * cells;
     static PGCell * targetCells;
-    
+    PhotoGlitch sourcePhoto;
     vector<PhotoGlitch> photos;
   protected:
+    
+    int currentTargetIndex;
     ofxUISuperCanvas * customGui;
     
     int numDivRows;
@@ -221,7 +228,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     float texSliceWidth;
     float texSliceHeight;
     float targetTexSliceWidth;
-    float targetTexSliceHeight;
+    float targetTexSliceHeight; 
     
     bool bUseColors;
     bool bUseTexture;
@@ -236,6 +243,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     bool bRandomSort;
     bool bDrawBackground;
 
+    bool bCurrentlyAnimating;
     
     bool bDoPerpendicular;
     

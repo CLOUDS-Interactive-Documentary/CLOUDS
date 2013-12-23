@@ -82,24 +82,34 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
     customGui->addLabel("DEBUG STUFF");
     customGui->addToggle("DRAW TARGET", &bDrawTarget);
     customGui->addToggle("DRAW BACKGROUND", &bDrawBackground);
-    customGui->addLabel("SORT MODES");
+
+    customGui->addLabel("SOURCE SORT MODES");
 	customGui->addToggle("SHUFFLE", &bShouldShuffle);
     customGui->addToggle("SORT HUE", &bShouldSortHue);
     customGui->addToggle("SORT BRI", &bShouldSortBri);
-    customGui->addToggle("SORT TARGET", &bShouldSortTarget);
-    customGui->addToggle("SORT TARGET BRI", &bShouldSortTargetBri);
-    customGui->addToggle("REORDER", &bShouldReorder);
-    customGui->addLabel("ANIMATION PARAMS");
     customGui->addToggle("RANDOM SORT", &bRandomSort);
-    customGui->addToggle("PERPENDICULAR", &bDoPerpendicular);
+    customGui->addToggle("REORDER", &bShouldReorder);
+    
+    customGui->addLabel("ANIMATION PARAMS");
     customGui->addIntSlider("TWEEN DURATION", 1, 1000, &tweenDuration);
     customGui->addIntSlider("TWEEN DELAY", 0, 1000, &tweenDelay);
+    customGui->addToggle("PERPENDICULAR", &bDoPerpendicular);
     customGui->addDropDownList("SOURCE IMAGES", imageNames);
+    
+
+    customGui->addLabel("TARGET SORT MODES");
+    customGui->addToggle("SORT TARGET", &bShouldSortTarget);
+    customGui->addToggle("SORT TARGET BRI", &bShouldSortTargetBri);
     customGui->addDropDownList("TARGET IMAGES", targetImageNames);
 
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemPhotoGlitch::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
+}
+
+void CloudsVisualSystemPhotoGlitch::addTargetToUI(ofxUISuperCanvas& gui,bool bShouldSortTarget, glitchParams params ){
+
+    gui->
 }
 
 void CloudsVisualSystemPhotoGlitch::selfGuiEvent(ofxUIEventArgs &e)
@@ -169,6 +179,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     bShouldReorder = false;
     bShouldSortTarget = false;
     bShouldSortTargetBri = false;
+    bCurrentlyAnimating = false;
     
     bDoPerpendicular = false;
         
@@ -185,6 +196,8 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     targetImagesDir.sort();
     selectedSrcImageIdx = 0;
     selectedTargetImageIdx = 0;
+    currentTargetIndex = 0;
+    
     screenRect = ofRectangle(0, 0, ofGetWidth(), ofGetHeight());
     bShouldGenerate = true;
 //    ofEnableAlphaBlending();
@@ -192,6 +205,8 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
 
 void CloudsVisualSystemPhotoGlitch::clearSource()
 {
+    //TODO: Put this in the right place.
+    currentTargetIndex = 0;
     if (cells != NULL) {
         delete [] cells;
         cells = NULL;
@@ -302,10 +317,8 @@ void CloudsVisualSystemPhotoGlitch::generate(){
                                     (avgB / (texSliceWidth * texSliceHeight)) / 255.0f,
                                     (avgA / (texSliceWidth * texSliceHeight)) / 255.0f);
             
-//            cout<<pg.cells[idx].avgColor.getHue()<<endl;
             if (pg.cells[idx].avgColor.getBrightness() < 0.1) {
                 pg.cells[idx].avgColor.setHsb(ofRandomuf(), ofRandomuf(),ofRandomuf(), 0.0);
-//                cout<<pg.cells[idx].avgColor.getHue()<<endl;
             }
             
             // Add colors.
@@ -351,10 +364,6 @@ void CloudsVisualSystemPhotoGlitch::generateSource()
     
     tex.loadImage(imagesDir.getPath(selectedSrcImageIdx));
     ofPixels pixels = tex.getPixelsRef();
-/*
-    targetTex.loadImage(targetImagesDir.getPath(selectedTargetImageIdx));
-    ofPixels targetPixels = targetTex.getPixelsRef();
-*/
     
     numCells = numDivCols * numDivRows;
     
@@ -459,58 +468,12 @@ void CloudsVisualSystemPhotoGlitch::generateSource()
             colors[idx * kVertsPerCell * 4 + 13] = cells[idx].avgColor.g;
             colors[idx * kVertsPerCell * 4 + 14] = cells[idx].avgColor.b;
             colors[idx * kVertsPerCell * 4 + 15] = cells[idx].avgColor.a;
-/*            
-            //doing the same for target image
-            avgR = 0;
-            avgG = 0;
-            avgB = 0;
-            avgA = 0;
-            for (int y = (j + 0) * targetTexSliceHeight; y < (j + 1) * targetTexSliceHeight; y++) {
-                for (int x = (i + 0) * targetTexSliceWidth; x < (i + 1) * targetTexSliceWidth; x++) {
-                    ofColor c = targetPixels.getColor(x, y);
-                    avgR += c.r;
-                    avgG += c.g;
-                    avgB += c.b;
-                        avgA += c.a;
-                }
-            }
-
-            targetCells[idx].avgColor.set((avgR / (targetTexSliceWidth * targetTexSliceHeight)) / 255.0f,
-                                          (avgG / (targetTexSliceWidth * targetTexSliceHeight)) / 255.0f,
-                                          (avgB / (targetTexSliceWidth * targetTexSliceHeight)) / 255.0f,
-                                          (avgA / (targetTexSliceWidth * targetTexSliceHeight)) / 255.0f);
-
-            // Add colors.
-            targetColors[idx * kVertsPerCell * 4 +  0] = targetCells[idx].avgColor.r;
-            targetColors[idx * kVertsPerCell * 4 +  1] = targetCells[idx].avgColor.g;
-            targetColors[idx * kVertsPerCell * 4 +  2] = targetCells[idx].avgColor.b;
-            targetColors[idx * kVertsPerCell * 4 +  3] = targetCells[idx].avgColor.a;
-            
-            targetColors[idx * kVertsPerCell * 4 +  4] = targetCells[idx].avgColor.r;
-            targetColors[idx * kVertsPerCell * 4 +  5] = targetCells[idx].avgColor.g;
-            targetColors[idx * kVertsPerCell * 4 +  6] = targetCells[idx].avgColor.b;
-            targetColors[idx * kVertsPerCell * 4 +  7] = targetCells[idx].avgColor.a;
-            
-            targetColors[idx * kVertsPerCell * 4 +  8] = targetCells[idx].avgColor.r;
-            targetColors[idx * kVertsPerCell * 4 +  9] = targetCells[idx].avgColor.g;
-            targetColors[idx * kVertsPerCell * 4 + 10] = targetCells[idx].avgColor.b;
-            targetColors[idx * kVertsPerCell * 4 + 11] = targetCells[idx].avgColor.a;
-            
-            targetColors[idx * kVertsPerCell * 4 + 12] = targetCells[idx].avgColor.r;
-            targetColors[idx * kVertsPerCell * 4 + 13] = targetCells[idx].avgColor.g;
-            targetColors[idx * kVertsPerCell * 4 + 14] = targetCells[idx].avgColor.b;
-            targetColors[idx * kVertsPerCell * 4 + 15] = targetCells[idx].avgColor.a;
-*/
 
             // Save the cell struct.
             cells[idx].idx = idx;
             cells[idx].col = cells[idx].origCol = i;
             cells[idx].row = cells[idx].origRow = j;
-/*
-            targetCells[idx].idx = idx;
-            targetCells[idx].col = targetCells[idx].origCol = i;
-            targetCells[idx].row = targetCells[idx].origRow = j;
-*/
+
         }
     }
     
@@ -518,13 +481,8 @@ void CloudsVisualSystemPhotoGlitch::generateSource()
     vbo.setTexCoordData(texCoords, numVerts, GL_STATIC_DRAW, 2 * sizeof(GLfloat));
     vbo.setColorData(colors, numVerts, GL_STATIC_DRAW, 4 * sizeof(GLfloat));
     vbo.setIndexData(indices, numIndices, GL_STATIC_DRAW);
-/*
-    targetVbo.setVertexData(verts, kCoordsPerVert, numVerts, GL_STREAM_DRAW, kCoordsPerVert * sizeof(GLfloat));
-    targetVbo.setTexCoordData(targetTexCoords, numVerts, GL_STATIC_DRAW, 2 * sizeof(GLfloat));
-    targetVbo.setColorData(targetColors, numVerts, GL_STATIC_DRAW, 4 * sizeof(GLfloat));
-    targetVbo.setIndexData(indices, numIndices, GL_STATIC_DRAW);
-*/
-    bShouldReorder = true;
+    
+//    bShouldReorder = true;
 }
 
 void CloudsVisualSystemPhotoGlitch::generateTarget(){
@@ -618,11 +576,6 @@ void CloudsVisualSystemPhotoGlitch::generateTarget(){
                                           (avgB / (targetTexSliceWidth * targetTexSliceHeight)) / 255.0f,
                                           (avgA / (targetTexSliceWidth * targetTexSliceHeight)) / 255.0f);
             
-            //            if (targetCells[idx].avgColor.getBrightness() < 0.1) {
-            //                targetCells[idx].avgColor.setHue(ofRandom(0.3, 0.99));
-            //                cout<<targetCells[idx].avgColor.getHue()<<endl;
-            //            }
-            
             // Add colors.
             targetColors[idx * kVertsPerCell * 4 +  0] = targetCells[idx].avgColor.r;
             targetColors[idx * kVertsPerCell * 4 +  1] = targetCells[idx].avgColor.g;
@@ -712,8 +665,7 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
 {    
     if (bShouldGenerate) {
         generateSource();
-//        generateTarget();
-        generate();
+//        generate();
         bShouldGenerate = false;
     }
     
@@ -726,37 +678,49 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
     if (bShouldShuffle) {
         shuffle();
         bShouldShuffle = false;
+        bCurrentlyAnimating = true;
+        currentTargetIndex = 0;
     }
     if (bShouldSortHue) {
         sortHue();
         bShouldSortHue = false;
+        bCurrentlyAnimating = true;
+        currentTargetIndex = 0;
     }
     if (bShouldSortBri) {
         sortBri();
         bShouldSortBri = false;
+        bCurrentlyAnimating = true;
+        currentTargetIndex = 0;
     }
     if (bShouldReorder) {
         reorder();
         bShouldReorder = false;
+        bCurrentlyAnimating = true;
+        currentTargetIndex = 0;
     }
     if (bShouldSortTarget){
         sortTarget();
         bShouldSortTarget = false;
+        bCurrentlyAnimating = true;
+        currentTargetIndex = 0;
     }
     if (bShouldSortTargetBri) {
         sortTargetBrightness();
         bShouldSortTargetBri = false;
+        bCurrentlyAnimating = true;
+        currentTargetIndex = 0;        
     }
     
+
     // tween them cells!
     for (int i = 0; i < numCells; i++) {
         int vertIdx = cells[i].idx * kVertsPerCell * kCoordsPerVert;
         
-//        float tweenX = ofLerp(verts[vertIdx + 0], cells[i].col * screenSliceWidth,  0.5f);
-//        float tweenY = ofLerp(verts[vertIdx + 1], cells[i].row * screenSliceHeight, 0.5f);
         float tweenX = cells[i].tweenX.update();
         float tweenY = cells[i].tweenY.update();
-        
+
+
         // update the vert data
         // top-left
         verts[vertIdx + 0] = tweenX;
@@ -774,6 +738,36 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
     
     // update that data
     vbo.setVertexData(verts, kCoordsPerVert, numVerts, GL_STREAM_DRAW, kCoordsPerVert * sizeof(GLfloat));
+    
+    //TODO: Optimise this if it feels too slow
+    bool isComplete = false;
+    for (int i = 0; i < numCells; i++) {
+        int vertIdx = cells[i].idx * kVertsPerCell * kCoordsPerVert;
+        
+        if(cells[i].tweenX.isRunning() && cells[i].tweenY.isRunning()){
+            //            bCurrentlyAnimating = false;
+            isComplete  = false;
+            break;
+        }
+        else{
+            isComplete  = true;
+        }
+    }
+    
+    if(isComplete && bCurrentlyAnimating){
+        bCurrentlyAnimating = false;
+        if(currentTargetIndex == photos.size()-1){
+            cout<<"Sequence complete"<<endl;
+
+        }
+        else{
+            currentTargetIndex++;
+            cout<<"Going to index : "<<currentTargetIndex<<" of "<<photos.size();
+            sortTargetBrightness();
+            bCurrentlyAnimating = true;
+        }
+        
+    }
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -793,31 +787,25 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
     if (bUseColors) {
      vbo.enableColors();
 //        targetVbo.enableColors();
-        photos[0].vbo.enableColors();
+        photos[currentTargetIndex].vbo.enableColors();
     }
     else{
      vbo.disableColors();
 //     targetVbo.disableColors();
-     photos[0].vbo.disableColors();
+     photos[currentTargetIndex].vbo.disableColors();
     }
     
     if (bUseTexture){
         vbo.enableTexCoords();
         targetVbo.enableTexCoords();
-        photos[0].vbo.enableTexCoords();
+        photos[currentTargetIndex].vbo.enableTexCoords();
     }
     else {
         vbo.disableTexCoords();
 //        targetVbo.disableTexCoords();
-        photos[0].vbo.disableTexCoords();
+        photos[currentTargetIndex].vbo.disableTexCoords();
     }
     
-//    ofSetColor(255);
-//    tex.draw(0, 0);
-    
-//    targetTex.bind();
-//    targetVbo.drawElements(GL_TRIANGLES, numIndices);
-//    targetTex.unbind();
     if(bDrawBackground){
         ofPushStyle();
         for (int i = 0; i < numCells; i++) {
@@ -829,17 +817,14 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
 
     
     tex.bind();
-    
-    {
-        vbo.drawElements(GL_TRIANGLES, numIndices);
-    }
+    vbo.drawElements(GL_TRIANGLES, numIndices);
     tex.unbind();
 
     
     if(bDrawTarget){
-        photos[0].tex.bind();
-        photos[0].vbo.drawElements(GL_TRIANGLES, photos[0].numIndices);
-        photos[0].tex.unbind();
+        photos[currentTargetIndex].tex.bind();
+        photos[ currentTargetIndex].vbo.drawElements(GL_TRIANGLES, photos[0].numIndices);
+        photos[currentTargetIndex].tex.unbind();
     }
 
 }
@@ -855,6 +840,10 @@ void CloudsVisualSystemPhotoGlitch::selfExit()
 {
     clearSource();
     clearTarget();
+    
+    for(int i =0 ; i< photos.size(); i++){
+        photos[i].clear();
+    }
 }
 
 //events are called when the system is active
@@ -987,7 +976,7 @@ void CloudsVisualSystemPhotoGlitch::sortTargetBrightness(){
         sourceObj.index = i;
         sourceCompare.push_back(sourceObj);
         
-        targetObj.cell = &targetCells[i];
+        targetObj.cell = &photos[currentTargetIndex].cells[i];
         targetObj.index = i;
         targetCompare.push_back(targetObj);
     }
@@ -999,19 +988,19 @@ void CloudsVisualSystemPhotoGlitch::sortTargetBrightness(){
 
     if(bRandomSort){
         for (int i = 0; i < numCells ; i++) {
-            cells[sourceCompare[i].index].col = targetCells[targetCompare[i].index].col;
-            cells[sourceCompare[i].index].row = targetCells[targetCompare[i].index].row;
+            cells[sourceCompare[i].index].col = photos[currentTargetIndex].cells[targetCompare[i].index].col;
+            cells[sourceCompare[i].index].row = photos[currentTargetIndex].cells[targetCompare[i].index].row;
             tweenTarget(sourceCompare[i].index,remainingIndices[i]);
         }
     }
     else{
         for (int i = 0; i < numCells ; i++) {
-            cells[sourceCompare[i].index].col = targetCells[targetCompare[i].index].col;
-            cells[sourceCompare[i].index].row = targetCells[targetCompare[i].index].row;
+            cells[sourceCompare[i].index].col = photos[currentTargetIndex].cells[targetCompare[i].index].col;
+            cells[sourceCompare[i].index].row = photos[currentTargetIndex].cells[targetCompare[i].index].row;
             tweenTarget(sourceCompare[i].index);
         }
     }
-
+        
 
 }
 
@@ -1032,13 +1021,8 @@ void CloudsVisualSystemPhotoGlitch::sortTarget(){
         sourceObj.index = i;
         sourceCompare.push_back(sourceObj);
         
-//        targetObj.cell = &targetCells[i];
-//        targetObj.index = i;
-//        targetCompare.push_back(targetObj);
-//        cout<<photos[0].cells[i].avgColor.getHue()<<endl;
-        targetObj.cell = &photos[0].cells[i];
+        targetObj.cell = &photos[currentTargetIndex].cells[i];
         targetObj.index = i;
-
         targetCompare.push_back(targetObj);
         
 
@@ -1050,15 +1034,15 @@ void CloudsVisualSystemPhotoGlitch::sortTarget(){
     if(bRandomSort){
         for (int i = 0; i < numCells ; i++) {
 
-            cells[sourceCompare[i].index].col = photos[0].cells[targetCompare[i].index].col;
-            cells[sourceCompare[i].index].row = photos[0].cells[targetCompare[i].index].row;
+            cells[sourceCompare[i].index].col = photos[currentTargetIndex].cells[targetCompare[i].index].col;
+            cells[sourceCompare[i].index].row = photos[currentTargetIndex].cells[targetCompare[i].index].row;
             tweenTarget(sourceCompare[i].index,remainingIndices[i]);
         }
     }
     else{
         for (int i = 0; i < numCells ; i++) {
-            cells[sourceCompare[i].index].col = photos[0].cells[targetCompare[i].index].col;
-            cells[sourceCompare[i].index].row = photos[0].cells[targetCompare[i].index].row;
+            cells[sourceCompare[i].index].col = photos[currentTargetIndex].cells[targetCompare[i].index].col;
+            cells[sourceCompare[i].index].row = photos[currentTargetIndex].cells[targetCompare[i].index].row;
             tweenTarget(sourceCompare[i].index);
         }
     }
@@ -1068,8 +1052,7 @@ void CloudsVisualSystemPhotoGlitch::reorder()
 {
     for (int i = 0; i < numCells; i++) {
         cells[i].col = cells[i].origCol;
-        cells[i].row = cells[i].origRow;
-        
+        cells[i].row = cells[i].origRow;        
         tween(i);
     }
 }
