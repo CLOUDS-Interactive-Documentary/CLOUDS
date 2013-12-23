@@ -23,6 +23,16 @@ public:
     ofxTween tweenX, tweenY;
 };
 
+struct compareObj {
+    PGCell * cell;
+    int index;
+} ;
+
+class PhotoGlitch
+{
+public:
+    
+};
 //TODO: rename this to your own visual system
 class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
 {
