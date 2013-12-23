@@ -536,7 +536,7 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "" />
-		<pattr name = "disabled" value = "" />
+		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
 		<pattr name = "amp1" value = "" />
@@ -579,7 +579,7 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "0" />
+		<pattr name = "disabled" value = "1" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
 		<pattr name = "amp1" value = "1.153846" />
@@ -622,7 +622,7 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "1" />
+		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
 		<pattr name = "amp1" value = "1.153846" />
@@ -708,7 +708,7 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "" />
-		<pattr name = "disabled" value = "" />
+		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
 		<pattr name = "amp1" value = "" />
@@ -840,9 +840,9 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
-		<pattr name = "amp1" value = "" />
-		<pattr name = "amp2" value = "" />
-		<pattr name = "amp3" value = "" />
+		<pattr name = "amp1" value = "1." />
+		<pattr name = "amp2" value = "1.615385" />
+		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
 		<pattr name = "rev1" value = "" />
@@ -1116,6 +1116,49 @@
 		<pattr name = "arg_b1" value = "&quot;1&quot;" />
 		<pattr name = "arg_b2" value = "&quot;1&quot;" />
 		<pattr name = "arg_b3" value = "&quot;1&quot;" />
+		<pattr name = "arg_b4" value = "none" />
+		<pattr name = "arg_b5" value = "none" />
+	</slot>
+	<slot number = "114">
+		<pattr name = "d1" value = "0 10" />
+		<pattr name = "d2" value = "0 10" />
+		<pattr name = "d3" value = "0 10" />
+		<pattr name = "d4" value = "0 10" />
+		<pattr name = "d5" value = "0 10" />
+		<pattr name = "d6" value = "0 10" />
+		<pattr name = "d7" value = "0 10" />
+		<pattr name = "d8" value = "0 10" />
+		<pattr name = "harmony" value = "0" />
+		<pattr name = "rhythm" value = "0" />
+		<pattr name = "tempo" value = "120" />
+		<pattr name = "pname" value = "NewTest" />
+		<pattr name = "orch1" value = "lowwavepulse" />
+		<pattr name = "orch2" value = "lowwavepulse" />
+		<pattr name = "orch3" value = "off" />
+		<pattr name = "orch4" value = "off" />
+		<pattr name = "orch5" value = "off" />
+		<pattr name = "energy" value = "neutral" />
+		<pattr name = "disabled" value = "1" />
+		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
+		<pattr name = "start_question" value = "none" />
+		<pattr name = "amp1" value = "1." />
+		<pattr name = "amp2" value = "0.076923" />
+		<pattr name = "amp3" value = "0.384615" />
+		<pattr name = "amp4" value = "0.384615" />
+		<pattr name = "amp5" value = "1." />
+		<pattr name = "rev1" value = "0.5" />
+		<pattr name = "rev2" value = "0.5" />
+		<pattr name = "rev3" value = "0.5" />
+		<pattr name = "rev4" value = "0.5" />
+		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "arg_a2" value = "melody" />
+		<pattr name = "arg_a3" value = "melody" />
+		<pattr name = "arg_a4" value = "none" />
+		<pattr name = "arg_a5" value = "none" />
+		<pattr name = "arg_a1" value = "static" />
+		<pattr name = "arg_b1" value = "filename" />
+		<pattr name = "arg_b2" value = "none" />
+		<pattr name = "arg_b3" value = "none" />
 		<pattr name = "arg_b4" value = "none" />
 		<pattr name = "arg_b5" value = "none" />
 	</slot>
