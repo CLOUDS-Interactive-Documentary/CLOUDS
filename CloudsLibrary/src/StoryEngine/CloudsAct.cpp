@@ -206,7 +206,7 @@ void CloudsAct::populateTime(){
 }
 
 bool CloudsAct::isClipEnergyShift(CloudsClip& clip){
-	return ofContains(energyShiftClipIDs, clip.getID());
+	return ofContains(energyShiftClipIDs, clip.getLinkName());
 }
 
 void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
