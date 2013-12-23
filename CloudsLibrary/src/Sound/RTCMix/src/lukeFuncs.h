@@ -63,7 +63,8 @@ struct lukePreset {
     vector<int> dichomin;
     vector<int> dichomax;
     bool disabled;
-    string energy;
+//    string energy;
+	bool highEnergy;
     string start_question;
     vector<string> explicit_topics;
 };

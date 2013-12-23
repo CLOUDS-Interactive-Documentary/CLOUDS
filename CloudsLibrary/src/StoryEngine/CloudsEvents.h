@@ -18,6 +18,7 @@ class CloudsActEventArgs : public ofEventArgs {
 	string startQuestion;
 	string startTopic;
 	string soundQuestionKey;
+	
 };
 
 class CloudsClipEventArgs : public ofEventArgs {

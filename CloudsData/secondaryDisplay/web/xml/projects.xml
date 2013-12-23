@@ -99,6 +99,8 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 			<videos>
 				<file>ListeningPost_720.mov</file>
 			</videos>
+	</project>
+	
 	<project title="The Transfiguration">
 			<creator_name>Matt Pyke - Universal Everything</creator_name>
 			<description>An ever-changing organic costume</description>
@@ -193,6 +195,7 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 				<file></file>
 			</videos>
 	</project>
+	
 	<project title="Reactive Book">
 			<creator_name>John Maeda</creator_name>
 			<description>A compendium of four software studies exploring the relationship between the book and the computer as visual media - 1995 </description>
@@ -215,7 +218,8 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 			<videos>
 				<file>DesignByNumbers_720.mov</file>
 			</videos>
-	</project>  
+	</project> 
+	
 	<project title="Nature">
 			<creator_name>John Maeda</creator_name>
 			<description>A series of seven motion paintings inspired by natural phenomena.</description>
@@ -232,6 +236,7 @@ Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description
 				<file>EnergyFlowHadron_720.mov</file>
 			</videos>
 	</project>
+	
 	<project title="Thinking Machine">
 			<creator_name>Martin Wattenberg, Marek Walczak</creator_name>
 			<description>Play chess against an artificial intelligence program, and watch as the computer's thought process is sketched on screen as it plays. A map is created from the traces of literally thousands of possible futures as the program tries to decide its best move.</description>
@@ -268,13 +273,14 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 			</videos>
 	</project>
 
-<project title="Hyphae">
+	<project title="Hyphae">
 			<creator_name>N-E-R-V-O-U-S System</creator_name>
 			<description>Hyphae is a collection of 3D printed artifacts constructed of rhizome-like networks, inspired by the vein structures that carry fluids through organisms from the leaves of plants to our own circulatory systems.</description>
 			<videos>
 				<file></file>
 			</videos>
 	</project>
+	
 	<project title="Portal">
 			<creator_name>Valve</creator_name>
 			<description>A first-person-puzzle videogame developed for Xbox. The player solves puzzles using a teleportation device called the "the Aperture Science Handheld Portal Device" </description>
@@ -283,13 +289,14 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 			</videos>
 	</project>
 
-<project title="Funky Forest">
+	<project title="Funky Forest">
 			<creator_name>Emily Gobeille, Theo Watson</creator_name>
 			<description>An interactive ecosystem where children create trees with their body and then divert the water flowing from the waterfall to the trees to keep them alive. The health of the trees contributes to the overall health of the forest and the types of creatures that inhabit it.</description>
 			<videos>
 				<file></file>
 			</videos>
 	</project>
+	
 	<project title="Communion">
 			<creator_name>Matt Pyke, Vera Glahn, Marcus Wendt</creator_name>
 			<description>An array of evolving creatures going through stages of development from simple cellular structures to dancing multi-limbed creatures. </description>
@@ -299,7 +306,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 			</videos>
 	</project>
 
-<project title="Galapagos">
+	<project title="Galapagos">
 			<creator_name>Carl Sims</creator_name>
 			<description></description>
 			<videos>
@@ -307,6 +314,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 				<file>CarlSims3_480.mov</file>
 			</videos>
 	</project>
+	
 	<project title="Evolved Virtual Creatures">
 			<creator_name>Carl Sims</creator_name>
 			<description></description>
@@ -322,6 +330,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 				<file></file>
 			</videos>
 	</project>
+	
 	<project title="Keytweeter">
 			<creator_name>Kyle McDonald</creator_name>
 			<description>A one-year performance for custom keylogger, tweeting every 140 characters I type, ending June 30, 2010. An exploration of the boundary between "information" and "control", ubiquitous status updates, and personal identity.</description>
@@ -376,7 +385,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 			</videos>
 	</project>
 
-	<project title="قلب, - Alb">
+	<project title="قلب, (Alb)">
 			<creator_name>Ramsey Nasser</creator_name>
 			<description>A fully-functional programming language based on Arabic script.</description>
 			<videos>
@@ -410,7 +419,5 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 				<file>Particle_Dreams_480.mov</file>
 			</videos>
 	</project>
-
-
 	
 </clouds>

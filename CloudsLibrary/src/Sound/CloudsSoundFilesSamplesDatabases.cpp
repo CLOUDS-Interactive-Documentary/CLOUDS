@@ -67,6 +67,12 @@ void CloudsSound::loadRTcmixFiles()
     
 }
 
+void CloudsSound::reloadPresets()
+{
+    loadpresets_xml("soundpresets.xml", presets);
+
+}
+
 void CloudsSound::loadRTcmixSamples()
 {
     if(LUKEDEBUG)

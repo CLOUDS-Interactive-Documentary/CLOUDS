@@ -18,8 +18,17 @@ vec4 convolution(in vec2 coord, in float range){
 }
 
 void main(){
-    vec4 samp = convolution(gl_TexCoord[0].xy, 2.0);
-    float levl = 0.5 * (1. + sin(-PI * 0.5 + length(samp.xyz) * 5. * PI));
-	gl_FragColor = vec4(vec3(levl),1.);
+//    vec4 samp = convolution(gl_TexCoord[0].xy, 1.0);
+//    float levl = 0.5 * (1. + sin(-PI * 0.5 + length(samp.xyz) * 4. * PI));
+//	gl_FragColor = vec4(vec3(levl),1.);
     
+    vec4 samp = texture2DRect(tex, gl_TexCoord[0].xy);
+    //Check if you're on an area of change
+    float b = fwidth(samp.b);
+    b = smoothstep(0.005, 0.2, b);
+    
+//    float b = pow(1. - fwidth(samp.r) , 40.);
+    
+    gl_FragColor = vec4(vec3(b), 1.);
+//    gl_FragColor = samp;
 }

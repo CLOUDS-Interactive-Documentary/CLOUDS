@@ -1,4 +1,5 @@
 #include "CloudsVisualSystemColony.h"
+#define INV_2SQRT2 0.35355339059
 
 string CloudsVisualSystemColony::getSystemName()
 {
@@ -9,15 +10,22 @@ void CloudsVisualSystemColony::selfSetup()
 {
     numInitialCells = 100; //FIXME : Magic number
     //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
-    vbo.setMode(OF_PRIMITIVE_LINES);
+    vbo.setMode(OF_PRIMITIVE_POINTS);
     
-    string path = getVisualSystemDataPath()+"shaders/";
-    cellShader.setGeometryOutputCount(45); //FIXME: Debug
-    cellShader.setGeometryInputType(GL_LINES);
-    levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
-    cellShader.load(path + "cells.vs", path+"cells.fs", path+"cells.gs");
-    cellShader.setGeometryOutputType(GL_TRIANGLES);
+	//ofDisableNormalizedTexCoords();
+	ofDisableArbTex();
+    ofLoadImage(sprite, getVisualSystemDataPath() + "sprites/marker_dot.png");
+    ofEnableArbTex();
+    
+	loadShader();
 
+}
+
+void CloudsVisualSystemColony::loadShader(){
+    string path = getVisualSystemDataPath() + "shaders/";
+	levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
+//    cellShader.load(path + "cells.vs", path + "cells.fs"); //not using the gs
+    billboard.load(path + "billboard.vs", path + "billboard.fs");
 }
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
@@ -37,7 +45,7 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
 
 void CloudsVisualSystemColony::selfUpdate()
 {
-    cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
+    //cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
 	
     pMap.clear();
     vbo.clear();
@@ -61,30 +69,38 @@ void CloudsVisualSystemColony::selfUpdate()
             cells.erase(cells.begin() + i);
         }
         vbo.addColor(ofColor(255, 255, 255, 100));
-        vbo.addColor(ofColor(255, 255, 255, 100));
         vbo.addVertex(cells[i]->getPosition());
-        //FIXME: This might reverse the angle
-        vbo.addVertex(ofVec2f(cells[i]->getSize(),(cells[i]->getVelocity()).angleRad(ofVec2f(1,0))));
+        //HACK: Normal gives more data to the shader.
+        vbo.addNormal(ofVec3f(cells[i]->getSize(),0.,0.));
     }
+    
 }
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
-	
     ofPushStyle();
 	ofEnableAlphaBlending();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     glDisable(GL_DEPTH_TEST);
+    ofEnablePointSprites();
+    
 
-    cellShader.begin();
-    cellShader.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
+//    cellShader.begin();
+//    cellShader.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
+    billboard.begin();
+    sprite.bind();
+    
     ofPushMatrix();
     //TODO: Dunno why this is happening
-    ofTranslate(getSharedRenderTarget().getWidth()/2., getSharedRenderTarget().getHeight()/2.);
+//    ofTranslate(getSharedRenderTarget().getWidth()/2., getSharedRenderTarget().getHeight()/2.);
     vbo.draw();
     ofPopMatrix();
-    cellShader.end();
     
+    sprite.unbind();
+    billboard.end();
+//    cellShader.end();
+    
+    ofDisablePointSprites();
     ofDisableBlendMode();
 	ofPopStyle();
 }
@@ -94,12 +110,11 @@ void CloudsVisualSystemColony::selfDraw(){
 }
 
 void CloudsVisualSystemColony::selfPostDraw(){
+
     levelSet.begin();
-    levelSet.setUniformTexture("tex", getSharedRenderTarget().getTextureReference(),0);
     getSharedRenderTarget().draw(0, 0,
                                  getSharedRenderTarget().getWidth(),
-                                 getSharedRenderTarget().getHeight()
-                                 );
+                                 getSharedRenderTarget().getHeight());
     levelSet.end();
 }
 
@@ -132,7 +147,13 @@ void CloudsVisualSystemColony::selfAutoMode(){}
 void CloudsVisualSystemColony::selfSetupRenderGui(){}
 void CloudsVisualSystemColony::guiSystemEvent(ofxUIEventArgs &e){}
 void CloudsVisualSystemColony::guiRenderEvent(ofxUIEventArgs &e){}
-void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){}
+
+void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){
+	if(args.key == 'R'){
+		loadShader();
+	}
+}
+
 void CloudsVisualSystemColony::selfDrawDebug(){}
 void CloudsVisualSystemColony::selfSceneTransformation(){}
 void CloudsVisualSystemColony::selfKeyReleased(ofKeyEventArgs & args){}

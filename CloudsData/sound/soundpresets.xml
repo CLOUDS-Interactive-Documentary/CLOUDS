@@ -3,36 +3,36 @@
 <pattrstorage name = "clouds">
 	<slot number = "1">
 		<pattr name = "d1" value = "0 10" />
-		<pattr name = "d2" value = "0 5" />
+		<pattr name = "d2" value = "0 10" />
 		<pattr name = "d3" value = "0 10" />
 		<pattr name = "d4" value = "0 10" />
-		<pattr name = "d5" value = "6 10" />
-		<pattr name = "d6" value = "0 3" />
+		<pattr name = "d5" value = "0 10" />
+		<pattr name = "d6" value = "0 10" />
 		<pattr name = "d7" value = "0 10" />
 		<pattr name = "d8" value = "0 10" />
 		<pattr name = "harmony" value = "14" />
 		<pattr name = "rhythm" value = "28" />
 		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "deep" />
+		<pattr name = "pname" value = "my cool thingie" />
 		<pattr name = "orch1" value = "slowwaves" />
 		<pattr name = "orch2" value = "off" />
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "0" />
-		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "0" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -56,26 +56,26 @@
 		<pattr name = "harmony" value = "14" />
 		<pattr name = "rhythm" value = "15" />
 		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "reflective" />
+		<pattr name = "pname" value = "my cool thingie" />
 		<pattr name = "orch1" value = "slowwaves" />
 		<pattr name = "orch2" value = "helmholtz" />
 		<pattr name = "orch3" value = "meshbeats" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "0" />
-		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "0" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -99,26 +99,26 @@
 		<pattr name = "harmony" value = "8" />
 		<pattr name = "rhythm" value = "16" />
 		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "eeriewaves" />
+		<pattr name = "pname" value = "my cool thingie" />
 		<pattr name = "orch1" value = "slowwaves" />
 		<pattr name = "orch2" value = "slowwaveshi" />
 		<pattr name = "orch3" value = "waveshipatterned" />
 		<pattr name = "orch4" value = "lowwavepulse" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "1" />
-		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "0.076923" />
-		<pattr name = "amp3" value = "0.384615" />
-		<pattr name = "amp4" value = "0.384615" />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "melody" />
@@ -142,26 +142,26 @@
 		<pattr name = "harmony" value = "0" />
 		<pattr name = "rhythm" value = "0" />
 		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "beautifulblips" />
+		<pattr name = "pname" value = "my cool thingie" />
 		<pattr name = "orch1" value = "kissmyarpfast" />
 		<pattr name = "orch2" value = "lowwavepulse" />
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "1" />
-		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "0.076923" />
-		<pattr name = "amp3" value = "0.384615" />
-		<pattr name = "amp4" value = "0.384615" />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "melody" />
 		<pattr name = "arg_a3" value = "melody" />
 		<pattr name = "arg_a4" value = "none" />
@@ -185,26 +185,26 @@
 		<pattr name = "harmony" value = "12" />
 		<pattr name = "rhythm" value = "4" />
 		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "highway2" />
+		<pattr name = "pname" value = "my cool thingie" />
 		<pattr name = "orch1" value = "waveguide" />
 		<pattr name = "orch2" value = "waveguide" />
 		<pattr name = "orch3" value = "waveguide" />
 		<pattr name = "orch4" value = "waveguide" />
 		<pattr name = "orch5" value = "slowwaves" />
-		<pattr name = "energy" value = "low" />
-		<pattr name = "disabled" value = "0" />
-		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "0." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "melody" />
 		<pattr name = "arg_a4" value = "markov" />
@@ -228,26 +228,26 @@
 		<pattr name = "harmony" value = "14" />
 		<pattr name = "rhythm" value = "15" />
 		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "myst" />
+		<pattr name = "pname" value = "my cool thingie" />
 		<pattr name = "orch1" value = "helmholtz" />
 		<pattr name = "orch2" value = "helmholtz" />
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "low" />
-		<pattr name = "disabled" value = "0" />
-		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "melody" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -271,26 +271,26 @@
 		<pattr name = "harmony" value = "10" />
 		<pattr name = "rhythm" value = "13" />
 		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "microdreaming" />
+		<pattr name = "pname" value = "my cool thingie" />
 		<pattr name = "orch1" value = "slowwaves" />
 		<pattr name = "orch2" value = "slowwaves" />
 		<pattr name = "orch3" value = "kissmyarpfast" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "low" />
-		<pattr name = "disabled" value = "0" />
-		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "0." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "markov" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -314,26 +314,26 @@
 		<pattr name = "harmony" value = "10" />
 		<pattr name = "rhythm" value = "13" />
 		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "whatwillwebethen" />
+		<pattr name = "pname" value = "my cool thingie" />
 		<pattr name = "orch1" value = "slowwaves" />
 		<pattr name = "orch2" value = "slowwaveshi" />
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "low" />
-		<pattr name = "disabled" value = "0" />
-		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1.230769" />
-		<pattr name = "amp2" value = "0.615385" />
-		<pattr name = "amp3" value = "1." />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "0." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -400,26 +400,26 @@
 		<pattr name = "harmony" value = "9" />
 		<pattr name = "rhythm" value = "0" />
 		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "middleearth" />
+		<pattr name = "pname" value = "my cool thingie" />
 		<pattr name = "orch1" value = "modalbeats" />
 		<pattr name = "orch2" value = "waveguidebeats" />
 		<pattr name = "orch3" value = "strumsine" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "0" />
-		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "0." />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "markov" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -517,6 +517,49 @@
 		<pattr name = "arg_b4" value = "none" />
 		<pattr name = "arg_b5" value = "none" />
 	</slot>
+	<slot number = "20">
+		<pattr name = "d1" value = "0 10" />
+		<pattr name = "d2" value = "0 10" />
+		<pattr name = "d3" value = "0 10" />
+		<pattr name = "d4" value = "0 10" />
+		<pattr name = "d5" value = "0 10" />
+		<pattr name = "d6" value = "0 10" />
+		<pattr name = "d7" value = "0 10" />
+		<pattr name = "d8" value = "0 10" />
+		<pattr name = "harmony" value = "0" />
+		<pattr name = "rhythm" value = "3" />
+		<pattr name = "tempo" value = "135" />
+		<pattr name = "pname" value = "my cool thingie" />
+		<pattr name = "orch1" value = "slowwaves" />
+		<pattr name = "orch2" value = "slowwaves" />
+		<pattr name = "orch3" value = "filternoise" />
+		<pattr name = "orch4" value = "off" />
+		<pattr name = "orch5" value = "off" />
+		<pattr name = "energy" value = "0" />
+		<pattr name = "disabled" value = "0" />
+		<pattr name = "explicit_topics" value = "&quot;simulation, blah&quot;" />
+		<pattr name = "start_question" value = "&quot;Aaron_exciting_time:What is new and innovative in new media?&quot;" />
+		<pattr name = "amp1" value = "1." />
+		<pattr name = "amp2" value = "1." />
+		<pattr name = "amp3" value = "1." />
+		<pattr name = "amp4" value = "1." />
+		<pattr name = "amp5" value = "1." />
+		<pattr name = "rev1" value = "0.5" />
+		<pattr name = "rev2" value = "0.5" />
+		<pattr name = "rev3" value = "0.5" />
+		<pattr name = "rev4" value = "0.5" />
+		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "arg_a2" value = "bucket" />
+		<pattr name = "arg_a3" value = "melody" />
+		<pattr name = "arg_a4" value = "none" />
+		<pattr name = "arg_a5" value = "none" />
+		<pattr name = "arg_a1" value = "markov" />
+		<pattr name = "arg_b1" value = "filename" />
+		<pattr name = "arg_b2" value = "none" />
+		<pattr name = "arg_b3" value = "none" />
+		<pattr name = "arg_b4" value = "none" />
+		<pattr name = "arg_b5" value = "none" />
+	</slot>
 	<slot number = "100">
 		<pattr name = "d1" value = "0 10" />
 		<pattr name = "d2" value = "2 5" />
@@ -536,7 +579,7 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "" />
-		<pattr name = "disabled" value = "0" />
+		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
 		<pattr name = "amp1" value = "" />
@@ -578,20 +621,20 @@
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "1" />
-		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1.153846" />
-		<pattr name = "amp2" value = "1.461538" />
-		<pattr name = "amp3" value = "0." />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "markov" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -621,20 +664,20 @@
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "0" />
-		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1.153846" />
-		<pattr name = "amp2" value = "1.461538" />
-		<pattr name = "amp3" value = "0." />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "melody" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -708,7 +751,7 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "" />
-		<pattr name = "disabled" value = "0" />
+		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
 		<pattr name = "amp1" value = "" />
@@ -750,20 +793,20 @@
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "1" />
-		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1.153846" />
-		<pattr name = "amp2" value = "0.615385" />
-		<pattr name = "amp3" value = "0." />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "pattern" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -840,9 +883,9 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1.615385" />
-		<pattr name = "amp3" value = "1." />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
 		<pattr name = "rev1" value = "" />
@@ -879,20 +922,20 @@
 		<pattr name = "orch3" value = "modalbeats" />
 		<pattr name = "orch4" value = "meshbeats" />
 		<pattr name = "orch5" value = "slowvermontbeatz" />
-		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "0" />
-		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1.153846" />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1.076923" />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "straight" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -965,20 +1008,20 @@
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "0" />
-		<pattr name = "explicit_topics" value = "videogames" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "markov" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1001,32 +1044,32 @@
 		<pattr name = "d8" value = "0 10" />
 		<pattr name = "harmony" value = "14" />
 		<pattr name = "rhythm" value = "28" />
-		<pattr name = "tempo" value = "72" />
-		<pattr name = "pname" value = "morphine" />
+		<pattr name = "tempo" value = "120" />
+		<pattr name = "pname" value = "my cool thingie" />
 		<pattr name = "orch1" value = "slowwaves" />
 		<pattr name = "orch2" value = "off" />
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "low" />
-		<pattr name = "disabled" value = "0" />
-		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
+		<pattr name = "energy" value = "0" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
 		<pattr name = "arg_a5" value = "none" />
-		<pattr name = "arg_a1" value = "none" />
+		<pattr name = "arg_a1" value = "lindenmayer" />
 		<pattr name = "arg_b1" value = "filename" />
 		<pattr name = "arg_b2" value = "none" />
 		<pattr name = "arg_b3" value = "none" />
@@ -1045,31 +1088,31 @@
 		<pattr name = "harmony" value = "9" />
 		<pattr name = "rhythm" value = "28" />
 		<pattr name = "tempo" value = "165" />
-		<pattr name = "pname" value = "glitchwind" />
+		<pattr name = "pname" value = "my cool thingie" />
 		<pattr name = "orch1" value = "avibeats" />
-		<pattr name = "orch2" value = "off" />
+		<pattr name = "orch2" value = "avibeats" />
 		<pattr name = "orch3" value = "kissmyarpsynch" />
 		<pattr name = "orch4" value = "filternoise" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "1" />
-		<pattr name = "explicit_topics" value = "videogames" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
-		<pattr name = "amp4" value = "0.769231" />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "1" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "avi3a" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "bucket" />
 		<pattr name = "arg_a5" value = "none" />
-		<pattr name = "arg_a1" value = "none" />
+		<pattr name = "arg_a1" value = "avi2b" />
 		<pattr name = "arg_b1" value = "filename" />
 		<pattr name = "arg_b2" value = "none" />
 		<pattr name = "arg_b3" value = "none" />
@@ -1079,8 +1122,8 @@
 	<slot number = "113">
 		<pattr name = "d1" value = "0 10" />
 		<pattr name = "d2" value = "0 10" />
-		<pattr name = "d3" value = "0 3" />
-		<pattr name = "d4" value = "0 3" />
+		<pattr name = "d3" value = "0 10" />
+		<pattr name = "d4" value = "0 10" />
 		<pattr name = "d5" value = "0 10" />
 		<pattr name = "d6" value = "0 10" />
 		<pattr name = "d7" value = "0 10" />
@@ -1088,120 +1131,34 @@
 		<pattr name = "harmony" value = "0" />
 		<pattr name = "rhythm" value = "28" />
 		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "ascension" />
+		<pattr name = "pname" value = "my cool thingie" />
 		<pattr name = "orch1" value = "slowwaves" />
 		<pattr name = "orch2" value = "slowwaveshi" />
 		<pattr name = "orch3" value = "kissmyarpsynch" />
-		<pattr name = "orch4" value = "off" />
+		<pattr name = "orch4" value = "avibeats" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "0" />
-		<pattr name = "explicit_topics" value = "&quot;simulation, blah&quot;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "energy" value = "1" />
+		<pattr name = "disabled" value = "" />
+		<pattr name = "explicit_topics" value = "" />
+		<pattr name = "start_question" value = "" />
+		<pattr name = "amp1" value = "" />
+		<pattr name = "amp2" value = "" />
+		<pattr name = "amp3" value = "" />
+		<pattr name = "amp4" value = "" />
+		<pattr name = "amp5" value = "" />
+		<pattr name = "rev1" value = "" />
+		<pattr name = "rev2" value = "" />
+		<pattr name = "rev3" value = "" />
+		<pattr name = "rev4" value = "" />
+		<pattr name = "rev5" value = "" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "simple" />
-		<pattr name = "arg_a4" value = "none" />
+		<pattr name = "arg_a4" value = "avi3a" />
 		<pattr name = "arg_a5" value = "none" />
 		<pattr name = "arg_a1" value = "simple" />
 		<pattr name = "arg_b1" value = "&quot;1&quot;" />
 		<pattr name = "arg_b2" value = "&quot;1&quot;" />
 		<pattr name = "arg_b3" value = "&quot;1&quot;" />
-		<pattr name = "arg_b4" value = "none" />
-		<pattr name = "arg_b5" value = "none" />
-	</slot>
-	<slot number = "114">
-		<pattr name = "d1" value = "0 10" />
-		<pattr name = "d2" value = "0 10" />
-		<pattr name = "d3" value = "0 10" />
-		<pattr name = "d4" value = "0 10" />
-		<pattr name = "d5" value = "0 10" />
-		<pattr name = "d6" value = "0 10" />
-		<pattr name = "d7" value = "0 10" />
-		<pattr name = "d8" value = "0 10" />
-		<pattr name = "harmony" value = "0" />
-		<pattr name = "rhythm" value = "0" />
-		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "NewTest" />
-		<pattr name = "orch1" value = "lowwavepulse" />
-		<pattr name = "orch2" value = "lowwavepulse" />
-		<pattr name = "orch3" value = "off" />
-		<pattr name = "orch4" value = "off" />
-		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "1" />
-		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "0.076923" />
-		<pattr name = "amp3" value = "0.384615" />
-		<pattr name = "amp4" value = "0.384615" />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
-		<pattr name = "arg_a2" value = "melody" />
-		<pattr name = "arg_a3" value = "melody" />
-		<pattr name = "arg_a4" value = "none" />
-		<pattr name = "arg_a5" value = "none" />
-		<pattr name = "arg_a1" value = "static" />
-		<pattr name = "arg_b1" value = "filename" />
-		<pattr name = "arg_b2" value = "none" />
-		<pattr name = "arg_b3" value = "none" />
-		<pattr name = "arg_b4" value = "none" />
-		<pattr name = "arg_b5" value = "none" />
-	</slot>
-	<slot number = "200">
-		<pattr name = "d1" value = "0 10" />
-		<pattr name = "d2" value = "0 10" />
-		<pattr name = "d3" value = "0 10" />
-		<pattr name = "d4" value = "0 10" />
-		<pattr name = "d5" value = "0 10" />
-		<pattr name = "d6" value = "0 10" />
-		<pattr name = "d7" value = "0 10" />
-		<pattr name = "d8" value = "0 10" />
-		<pattr name = "harmony" value = "14" />
-		<pattr name = "rhythm" value = "28" />
-		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "zippo" />
-		<pattr name = "orch1" value = "simplesound" />
-		<pattr name = "orch2" value = "off" />
-		<pattr name = "orch3" value = "off" />
-		<pattr name = "orch4" value = "off" />
-		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "neutral" />
-		<pattr name = "disabled" value = "0" />
-		<pattr name = "explicit_topics" value = "&quot;simulation, blah&quot;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.5" />
-		<pattr name = "rev3" value = "0.5" />
-		<pattr name = "rev4" value = "0.5" />
-		<pattr name = "rev5" value = "0.5" />
-		<pattr name = "arg_a2" value = "none" />
-		<pattr name = "arg_a3" value = "none" />
-		<pattr name = "arg_a4" value = "none" />
-		<pattr name = "arg_a5" value = "none" />
-		<pattr name = "arg_a1" value = "soundfile" />
-		<pattr name = "arg_b1" value = "clouds08_100.wav" />
-		<pattr name = "arg_b2" value = "none" />
-		<pattr name = "arg_b3" value = "none" />
 		<pattr name = "arg_b4" value = "none" />
 		<pattr name = "arg_b5" value = "none" />
 	</slot>

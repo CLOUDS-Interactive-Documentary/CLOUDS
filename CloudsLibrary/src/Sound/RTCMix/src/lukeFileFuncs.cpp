@@ -90,6 +90,7 @@ void loadsimplemelodies(string f, vector<lukeSimpleMelody>& m)
 void loadpresets_xml(string f, vector<lukePreset>& p)
 {
     ofxXmlSettings thestuff;
+    p.clear();
     
     if(LUKEDEBUG)
     {
@@ -116,7 +117,8 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
                 foo.m_rev[j] = 0.5;
             }
             foo.start_question = "none";
-            foo.energy = "neutral";
+            //foo.energy = "neutral";
+			foo.highEnergy = false;
             foo.dichomin.resize(8);
             foo.dichomax.resize(8);
             thestuff.pushTag("slot", i);
@@ -137,16 +139,19 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
                     foo.tempo = thestuff.getAttribute("pattr", "value", 0, j);
                 }
                 else if(pat=="energy") {
-                    foo.energy = thestuff.getAttribute("pattr", "value", "foo", j);
+                    //foo.energy = thestuff.getAttribute("pattr", "value", "foo", j);
+					foo.highEnergy = thestuff.getAttribute("pattr", "value", 0, j) == 1;
                 }
                 else if(pat=="disabled") {
                     foo.disabled = thestuff.getAttribute("pattr", "value", 0, j);
                 }
                 else if(pat=="start_question") {
                     foo.start_question = thestuff.getAttribute("pattr", "value", "foo", j);
+                    ofStringReplace(foo.start_question, "\"", "");
                 }
                 else if(pat=="explicit_topics") {
                     string t = thestuff.getAttribute("pattr", "value", "foo", j);
+                    ofStringReplace(t, "\"", "");
                     vector<string> s = ofSplitString(t, ",", true, true);
                     for(int j = 0;j<s.size();j++)
                     {
@@ -199,34 +204,34 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
                     foo.arg_b[4] = thestuff.getAttribute("pattr", "value", "foo", j);
                 }
                 else if(pat=="amp1") {
-                    foo.m_amp[0] = thestuff.getAttribute("pattr", "value", 0., j);
+                    foo.m_amp[0] = thestuff.getAttribute("pattr", "value", 1., j);
                 }
                 else if(pat=="amp2") {
-                    foo.m_amp[1] = thestuff.getAttribute("pattr", "value", 0., j);
+                    foo.m_amp[1] = thestuff.getAttribute("pattr", "value", 1., j);
                 }
                 else if(pat=="amp3") {
-                    foo.m_amp[2] = thestuff.getAttribute("pattr", "value", 0., j);
+                    foo.m_amp[2] = thestuff.getAttribute("pattr", "value", 1., j);
                 }
                 else if(pat=="amp4") {
-                    foo.m_amp[3] = thestuff.getAttribute("pattr", "value", 0., j);
+                    foo.m_amp[3] = thestuff.getAttribute("pattr", "value", 1., j);
                 }
                 else if(pat=="amp5") {
-                    foo.m_amp[4] = thestuff.getAttribute("pattr", "value", 0., j);
+                    foo.m_amp[4] = thestuff.getAttribute("pattr", "value", 1., j);
                 }
                 else if(pat=="rev1") {
-                    foo.m_rev[0] = thestuff.getAttribute("pattr", "value", 0., j);
+                    foo.m_rev[0] = thestuff.getAttribute("pattr", "value", 0.5, j);
                 }
                 else if(pat=="rev2") {
-                    foo.m_rev[1] = thestuff.getAttribute("pattr", "value", 0., j);
+                    foo.m_rev[1] = thestuff.getAttribute("pattr", "value", 0.5, j);
                 }
                 else if(pat=="rev3") {
-                    foo.m_rev[2] = thestuff.getAttribute("pattr", "value", 0., j);
+                    foo.m_rev[2] = thestuff.getAttribute("pattr", "value", 0.5, j);
                 }
                 else if(pat=="rev4") {
-                    foo.m_rev[3] = thestuff.getAttribute("pattr", "value", 0., j);
+                    foo.m_rev[3] = thestuff.getAttribute("pattr", "value", 0.5, j);
                 }
                 else if(pat=="rev5") {
-                    foo.m_rev[4] = thestuff.getAttribute("pattr", "value", 0., j);
+                    foo.m_rev[4] = thestuff.getAttribute("pattr", "value", 0.5, j);
                 }
                 else if(pat=="d1") {
                     string d = thestuff.getAttribute("pattr", "value", "foo", j);
@@ -294,7 +299,7 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
                 cout << "   harmony: " << foo.harmony << endl;
                 cout << "   rhythm: " << foo.rhythm << endl;
                 cout << "   tempo: " << foo.tempo << endl;
-                cout << "   energy: " << foo.energy << endl;
+                cout << "   energy: " << (foo.highEnergy ? "high" : "low") << endl;
                 cout << "   disabled: " << foo.disabled << endl;
                 cout << "   dichotomies:" << endl;
                 cout << "      art vs. tech: " << foo.dichomin[0] << " to " << foo.dichomax[0] << endl;

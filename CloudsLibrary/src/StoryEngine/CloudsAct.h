@@ -6,8 +6,7 @@
 //
 //
 
-#ifndef __CloudsStoryEngine__CloudsAct__
-#define __CloudsStoryEngine__CloudsAct__
+#pragma once
 
 #include "ofMain.h"
 #include "CloudsEvents.h"
@@ -33,12 +32,6 @@ struct ActTimeItem{
     float outroStartTime;
     float handleLength;
 };
-
-//typedef struct {
-//	vector<CloudsDichotomy> dichotomies;
-//	float timestamp;
-//	CloudsClip clip;
-//} ActDichotomyEntry;
 
 class CloudsAct{
   public:
@@ -75,6 +68,8 @@ class CloudsAct{
     void play();
     void clear();
 	
+	bool isClipEnergyShift(CloudsClip& clip);
+	
     vector<CloudsClip>& getAllClips();
     vector<CloudsVisualSystemPreset>& getAllVisualSystemPresets();
 	vector< ofPtr<CloudsVisualSystem> > getAllVisualSystems();
@@ -94,10 +89,7 @@ class CloudsAct{
     void updateClipStartTime(CloudsClip clip, float startTime, float handleLength,string topic);
     void addQuestion(CloudsClip clip, string topic, float startTime);
     void addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName);
-
-
-    
-//    void removeQuestionAtTime(float startTime, float endTime);
+	
     void removeActItem(ActTimeItem item);
     void updateVsEndTime(CloudsVisualSystemPreset& preset, float newEndTime);
     ActTimeItem& getItemForClip(CloudsClip& clip);
@@ -144,7 +136,8 @@ class CloudsAct{
     ActTimeItem dummy;
     CloudsClip dummyClip;
     vector<CloudsDichotomy> dummyDichotomies;
-    
+    vector<string> energyShiftClipIDs;
+	
     map<string, CloudsClip> clipMap;
     map<string, ActTimeItem> clipItems;
     map<string, string> clipDifficultyMap;
@@ -160,11 +153,9 @@ class CloudsAct{
 	ofxTLFlags* dichotomyClips;
 	map<string, ofxTLCurves*> dichotomyTracks;
 	
-//	vector<CloudsDichotomy> finalDichotomies;
-	
-    float visualSystemDuration;
-    float visualSystemStartTime;
-    float visualSystemEndTime;
+//    float visualSystemDuration;
+//    float visualSystemStartTime;
+//    float visualSystemEndTime;
     
     float duration;
     int currentPlayIndex;
@@ -172,4 +163,4 @@ class CloudsAct{
     float getActDuration();
 };
 
-#endif /* defined(__CloudsStoryEngine__CloudsAct__) */
+
