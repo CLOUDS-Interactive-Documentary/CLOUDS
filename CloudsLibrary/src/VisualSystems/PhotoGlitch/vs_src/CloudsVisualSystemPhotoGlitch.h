@@ -31,9 +31,50 @@ struct compareObj {
 class PhotoGlitch
 {
 public:
+    int numVerts;
+    GLfloat * verts;
+    GLfloat * texCoords;
+    GLfloat * colors;
+    int numIndices;
+    GLuint * indices;
     
+    ofImage tex;
+    ofVbo vbo;
+    
+    PGCell * cells;
+    
+    void clearTarget(){
+        
+        if (cells != NULL) {
+            delete [] cells;
+            cells = NULL;
+        }
+        
+        if (verts != NULL) {
+            delete [] verts;
+            verts = NULL;
+        }
+        
+        if( texCoords != NULL){
+            delete [] texCoords;
+            texCoords = NULL;
+        }
+        
+        if (colors != NULL) {
+            delete [] colors;
+            colors = NULL;
+        }
+        
+        if (indices != NULL) {
+            delete [] indices;
+            indices = NULL;
+        }
+        
+        tex.clear();
+    }
 };
-//TODO: rename this to your own visual system
+
+
 class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
 {
   public:    
@@ -115,6 +156,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void clearTarget();
     void generateSource();
     void generateTarget();
+    void generate();
 
     void shuffle();
     void sortHue();
@@ -131,9 +173,11 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     static bool sortIdxForBri(int i, int j);
     static bool sortIdxForHueTarget(int i, int j);
     static bool sortIdxForBrightnessTarget(int i, int j);
+    
     static PGCell * cells;
     static PGCell * targetCells;
     
+    vector<PhotoGlitch> photos;
   protected:
     ofxUISuperCanvas * customGui;
     
@@ -160,9 +204,12 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     
     ofImage targetTex;
     ofVbo targetVbo;
+
+    ofRectangle screenRect;
     
     ofDirectory imagesDir;
     ofDirectory targetImagesDir;
+    
     int selectedSrcImageIdx;
     int selectedTargetImageIdx;
     
