@@ -36,6 +36,20 @@ void testApp::setup(){
     
     mixer.setup(2, 44100, 512, 2);
     mixer.setMusicVolume(1);
+	
+	
+	//update questions
+	ofBuffer questionBuffer;
+    vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
+    vector<string> questions;
+    for(int i = 0; i < startingNodes.size(); i++){
+        CloudsClip& clip = startingNodes[i];
+		if(clip.getTopicsWithQuestions().size() > 0){
+			questionBuffer.append(clip.getID() + ":" + clip.getQuestionForTopic( clip.getTopicsWithQuestions()[0] ) + "\n");
+		}
+    }
+	
+	ofBufferToFile(GetCloudsDataPath() + "sound/questions.txt", questionBuffer);
 }
 
 //--------------------------------------------------------------
