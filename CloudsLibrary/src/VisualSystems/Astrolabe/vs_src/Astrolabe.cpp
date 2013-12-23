@@ -38,11 +38,8 @@ void Astrolabe::setupMesh( float _lowRadian, float _hiRadian, float _innerRadius
 	
 	//set the profile curve
 	int subDivisions = abs(r1 - r0) / .05;
-	
-	
 	profile.resize(subDivisions);
 	
-	cout << "profile.size(): " << profile.size() << endl;
 	for( int i=0; i<profile.size(); i++)
 	{
 		float radian = ofMap(i, 0, profile.size()-1, r0, r1, true);
@@ -62,7 +59,17 @@ void Astrolabe::updateRotations()
 		if( it->second.isCompleted() )
 		{
 			float start = fmod(it->second.getTarget(0), 360.f);
-			it->second.setParameters(*ease, ofxTween::easeOut, start, start + tweenInfo[it->first].step, tweenInfo[it->first].duration, tweenInfo[it->first].delay );
+			
+			TweenInfo ti = tweenInfo[it->first];
+			
+			if( ti.reverse )
+			{
+				tweenInfo[it->first].step = -tweenInfo[it->first].step;
+			}
+			
+			float scl = ti.scale;
+			
+			it->second.setParameters(*ease, ofxTween::easeOut, start, start + ti.step * scl, ti.duration * scl, ti.delay * scl );
 		}
 	}
 	
@@ -78,7 +85,10 @@ void Astrolabe::addRotationTween( string axis, float startVal, float step, float
 	tweenInfo[axis].set( step, duration, increment );
 	rot[axis].setParameters(*ease, ofxTween::easeInOut, startVal, startVal+step, duration, delay );
 }
-
+void Astrolabe::setRotationTween( string axis, float startVal, float step, float duration, float delay, float increment )
+{
+	addRotationTween( axis, startVal, step, duration, delay, increment );
+};
 
 void Astrolabe::draw()
 {
@@ -198,4 +208,41 @@ void Astrolabe::setVbo( ofVbo& _vbo, int _numVertices )
 {
 	numVertices = _numVertices;
 	adoptedVbo = &_vbo;
+}
+
+void Astrolabe::setTweenIncrement(string axis, int increment)
+{
+	if(rot.find(axis) != rot.end() )
+	{
+		rot[axis].setDuration( increment );
+		tweenInfo[axis].duration = increment;
+	}
+}
+void Astrolabe::setTweenDelay(string axis, int delay)
+{
+	if(rot.find(axis) != rot.end() )
+	{
+		tweenInfo[axis].delay = delay;
+	}
+}
+
+void Astrolabe::setTweenScale(string axis, float scale)
+{
+	if(rot.find(axis) != rot.end() )
+	{
+		tweenInfo[axis].scale = scale;
+	}
+}
+
+void Astrolabe::setTweenReverse( string axis, bool reverse )
+{
+	if(rot.find(axis) != rot.end() )
+	{
+		tweenInfo[axis].reverse = reverse;
+	}
+}
+
+void Astrolabe::getTweenReverse( string axis )
+{
+	return 	rot.find(axis) != rot.end() ? tweenInfo[axis].reverse : false;
 }

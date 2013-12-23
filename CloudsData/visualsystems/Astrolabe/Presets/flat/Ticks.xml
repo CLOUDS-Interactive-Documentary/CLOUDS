@@ -1,0 +1,67 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Ticks</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213</XPosition>
+    <YPosition>1</YPosition>
+</Canvas>
+<Widget>
+    <Kind>44</Kind>
+    <Name>XRot</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>xTickSpeed</Name>
+    <Value>250</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>xTickDelay</Name>
+    <Value>750</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>xReverse</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>YRot</Name>
+    <Value>23</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>yTickSpeed</Name>
+    <Value>250</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>yTickDelay</Name>
+    <Value>750</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>yReverse</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>ZRot</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>zTickSpeed</Name>
+    <Value>250</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>zTickDelay</Name>
+    <Value>750</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>zReverse</Name>
+    <Value>0</Value>
+</Widget>
