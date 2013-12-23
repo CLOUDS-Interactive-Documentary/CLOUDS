@@ -50,20 +50,22 @@ public:
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
     
-   
+	void loadShader();
     
 private:
     
     ofVboMesh   vbo;
     ofShader    noiseShader;
-    ofShader balls;
-    ofShader cellShader;
-    ofShader levelSet;
+    ofShader    cellShader;
+    ofShader    levelSet;
+    ofShader    billboard;
+    
+    ofTexture sprite;
+    
     
     colonyPartitionMap pMap;
     
     vector< cellPtr > cells;
-    vector< cellPtr > newborns;
     
     float   noiseZoom;
     int newbornCount;

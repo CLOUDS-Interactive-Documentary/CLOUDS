@@ -18,8 +18,7 @@ vec4 convolution(in vec2 coord, in float range){
 }
 
 void main(){
-    vec4 samp = convolution(gl_TexCoord[0].xy, 2.0);
-    float levl = 0.5 * (1. + sin(-PI * 0.5 + length(samp.xyz) * 5. * PI));
+    vec4 samp = convolution(gl_TexCoord[0].xy, 1.0);
+    float levl = 0.5 * (1. + sin(-PI * 0.5 + length(samp.xyz) * 4. * PI));
 	gl_FragColor = vec4(vec3(levl),1.);
-    
 }

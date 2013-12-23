@@ -60,7 +60,7 @@ void colonyCell::update()
 //==========================================================================================
 
 void colonyCell::draw()
-{
+{	
     ofPushStyle();
     
     ofSetColor(255, 255, 255, ofMap(MIN(maxSize, cellSize), 0, maxSize, 60, 180));

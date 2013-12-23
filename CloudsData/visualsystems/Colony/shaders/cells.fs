@@ -1,9 +1,10 @@
 #version 120
-// #extension GL_ARB_texture_rectangle : enable
+
+uniform sampler2D tex;
 
 void main(){
-    vec4 c = gl_Color;
-    c.a = pow(c.a, 10);
+    vec4 c = texture2D(tex, gl_TexCoord[0].xy);
+//    c.a = pow(c.a, 10);
 	gl_FragColor += c;
     
 }
