@@ -145,6 +145,7 @@ void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, do
 void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan);
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
 void SCHEDULEBANG(double time);
+void STREAMSOUND(string file, float dur, float amp);
 
 void PATCHSYNTH(string inst, string output);
 void PATCHFX(string inst, string input, string output);
