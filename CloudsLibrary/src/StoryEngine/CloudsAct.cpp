@@ -8,6 +8,10 @@
 
 #include "CloudsAct.h"
 
+bool delta_sort(pair<string,float> a, pair<string,float> b){
+	return a.second > b.second;
+}
+
 CloudsAct::CloudsAct(){
     
 	timelinePopulated = false;
@@ -25,6 +29,16 @@ CloudsAct::~CloudsAct(){
 void CloudsAct::play(){
     
     CloudsActEventArgs args(this);
+	if(clips.size() > 0){
+		args.startClip = clips[0];
+		if(args.startClip.hasStartingQuestion() && args.startClip.getTopicsWithQuestions().size() > 0){
+			args.startTopic = args.startClip.getTopicsWithQuestions()[0];
+			args.startQuestion = clips[0].getQuestionForTopic(args.startTopic);
+			args.soundQuestionKey = args.startClip.getID() + ":" + args.startQuestion;
+			cout << "sound question key: " << args.soundQuestionKey << endl;
+		}
+	}
+	
     ofNotifyEvent(events.actBegan, args);
 	
 	timeline.setCurrentTimeMillis(0);
@@ -118,27 +132,81 @@ void CloudsAct::populateTime(){
 	vector<CloudsDichotomy> dichotomiesBase = CloudsDichotomy::getDichotomies();
     for(int d = 0;  d < dichotomiesBase.size(); d++){
 		string trackName = dichotomiesBase[d].left + "_" + dichotomiesBase[d].right;
-		cout << "adding tracks " << trackName << endl;
 		dichotomyTracks[trackName] = timeline.addCurves(trackName, ofRange(-5,5), 0);
 	}
     
+	//calculate the 3 largest delta shifts;
+	vector< pair<string,float> > clipDeltas;
 	map<string, vector<CloudsDichotomy> >::iterator it;
-	for(it = dichotomiesMap.begin(); it != dichotomiesMap.end(); it++){
+	float lastValues[dichotomiesBase.size()];
+	bool firstLoop = true;
+	for(int i = 1; i < clips.size()-2; i++){
 		
-		float startTime = clipItems[it->first].startTime;
-		dichotomyClips->addFlagAtTime(it->first, startTime*1000);
-		vector<CloudsDichotomy>& clipDichotomy = it->second;		
+		string clipID = clips[i].getLinkName();
+		float startTime = clipItems[clipID].startTime;
+		dichotomyClips->addFlagAtTime(clipID, startTime*1000);
+		if(dichotomiesMap.find(clipID) == dichotomiesMap.end()){
+			continue;
+		}
+		
+		vector<CloudsDichotomy>& clipDichotomy = dichotomiesMap[clipID];
+		float deltaChange = 0;
 		for(int d = 0; d < dichotomiesBase.size(); d++){
 			string trackName = dichotomiesBase[d].left + "_" + dichotomiesBase[d].right;
-			cout << "recalling tracks " << trackName << endl;
 			dichotomyTracks[trackName]->addKeyframeAtMillis(clipDichotomy[d].balance, startTime*1000.0);
+			if(!firstLoop){
+				//deltaChange = MAX(abs(clipDichotomy[d].balance-lastValues[d]),deltaChange);
+				int change = abs(clipDichotomy[d].balance-lastValues[d]);
+				if(change > 1){
+					deltaChange += change;
+				}
+			}
+			lastValues[d] = clipDichotomy[d].balance;
 		}
+
+//		cout << "Delta for clip " << clipItems[clipID].key << " " << deltaChange << endl;
+		
+		if(!firstLoop){
+			clipDeltas.push_back( make_pair(clipItems[clipID].key, deltaChange) );
+		}
+		firstLoop = false;
+	}
+	
+	sort(clipDeltas.begin(),clipDeltas.end(), delta_sort);
+	
+	ofxTLFlags* sections = timeline.addFlags("Sections");
+	if(clipDeltas.size() >= 2){
+		float firstFlagTime = clipItems[clipDeltas[0].first].startTime;
+		sections->addFlagAtTime(ofToString(clipDeltas[0].second), firstFlagTime*1000.);
+		energyShiftClipIDs.push_back(clipDeltas[0].first);
+		
+		float secondFlagTime = clipItems[clipDeltas[1].first].startTime;
+		//if the flag are too close jump
+		if(abs(firstFlagTime-secondFlagTime) < 60 && clipDeltas.size() > 2){
+			
+			energyShiftClipIDs.push_back(clipDeltas[2].first);
+			secondFlagTime = clipItems[clipDeltas[2].first].startTime;
+			sections->addFlagAtTime(ofToString(clipDeltas[2].second), secondFlagTime*1000.);
+			
+		}
+		else{
+			energyShiftClipIDs.push_back(clipDeltas[1].first);
+			sections->addFlagAtTime(ofToString(clipDeltas[1].second), secondFlagTime*1000.);
+		}
+
+	}
+	else {
+		ofLogError("CloudsAct::populateTime") << "Not enough clips to create section markers";
 	}
 	
 	timeline.setCurrentPage(0);
 	
     ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
 	ofAddListener(timeline.events().playbackEnded, this, &CloudsAct::timelineStopped);
+}
+
+bool CloudsAct::isClipEnergyShift(CloudsClip& clip){
+	return ofContains(energyShiftClipIDs, clip.getLinkName());
 }
 
 void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
@@ -312,37 +380,6 @@ float CloudsAct::addClip(CloudsClip& clip, string topic, float startTime, float 
 	
 	return duration;
 }
-
-
-//    clips.push_back(clip);
-//    clipMap[clip.getLinkName()] = clip;
-//    topicMap[clip.getLinkName()] = topic;
-//    string clipDifficulty ;
-//    
-//    if (clip.hasSpecialKeyword("easy")) {
-//        clipDifficulty = "easy";
-//    }
-//    else if(clip.hasSpecialKeyword("hard")){
-//        clipDifficulty = "hard";
-//    }
-//    else{
-//        clipDifficulty = "medium";
-//    }
-//    //    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
-//    ActTimeItem item;
-//    item.type = Clip;
-//    item.key = clip.getLinkName();
-//    item.startTime = startTime;
-//    //defaulting handle length to 1
-//    item.endTime = startTime+clip.getDuration() + 1;
-//    duration = MAX(item.endTime, duration);
-//    
-//    actItems.push_back(item);
-//    actItemsMap[item.key] = item;
-//    clipItems[clip.getLinkName()] = item;
-//    clipDifficultyMap[clip.getLinkName()] = clipDifficulty;
-//	return duration;
-//}
 
 void CloudsAct::updateClipStartTime(CloudsClip clip, float startTime,float handleLength, string topic){
     for(int i =0; i<actItems.size(); i++){

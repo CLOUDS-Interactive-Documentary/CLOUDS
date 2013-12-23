@@ -530,7 +530,7 @@ void CloudsVisualSystemManager::savePresets(){
 		keywordXml.addValue("grade", preset.grade);
 		keywordXml.addValue("enabled", preset.enabled);
 		keywordXml.addValue("oculus", preset.oculusCompatible);
-		
+		keywordXml.addValue("sound", preset.hasSound);
 		keywordXml.popTag(); // pop system
 		
 		systemIndex++;
@@ -626,6 +626,20 @@ set<string> CloudsVisualSystemManager::getAllKeywords(){
 		}
 	}
 	return allKeywords;
+}
+
+//--------------------------------------------------------------------
+vector<int> CloudsVisualSystemManager::getFilteredPresetIndeces(bool enabled, bool oculus, bool gradeA){
+	vector<int> filtered;
+	for(int i = 0; i < presets.size(); i++){
+		if((!enabled || (enabled && presets[i].enabled)) &&
+		   (!oculus  || (oculus  && presets[i].oculusCompatible)) &&
+		   (!gradeA  || (gradeA  && presets[i].grade == "A")))
+		{
+			filtered.push_back( i );
+		}
+	}
+	return filtered;
 }
 
 //--------------------------------------------------------------------

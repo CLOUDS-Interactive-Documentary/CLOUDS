@@ -41,6 +41,12 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		sortedKeywordIndeces.push_back( i );
 	}
 
+	filterEnabledBox.state = NSOffState;
+	filterOculusBox.state  = NSOffState;
+	filterGradeABox.state  = NSOffState;
+	
+	[self updateFilters:self];
+	
     [presetTable setTarget:self];
 	[presetTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	[presetTable reloadData];
@@ -72,13 +78,14 @@ bool clipsort(CloudsClip a, CloudsClip b){
             currentVisualSystem->stopSystem();
 			currentVisualSystem->exit();
         }
-		cout << "loading system " << visualSystems.getPresets()[presetTable.selectedRow].systemName << " preset " << visualSystems.getPresets()[presetTable.selectedRow].presetName << endl;
+
+		cout << "loading system " << visualSystems.getPresets()[ self.selectedPresetIndex ].systemName << " preset " << visualSystems.getPresets()[self.selectedPresetIndex].presetName << endl;
 		
-        currentVisualSystem = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[presetTable.selectedRow].systemName );
+        currentVisualSystem = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[ self.selectedPresetIndex ].systemName );
 		
 		if(currentVisualSystem != NULL){
 			currentVisualSystem->setup();
-			string presetName = visualSystems.getPresets()[presetTable.selectedRow].presetName;
+			string presetName = visualSystems.getPresets()[ self.selectedPresetIndex ].presetName;
 			if(presetName == "+New Preset"){
 				currentVisualSystem->loadPresetGUISFromName("");
 			}
@@ -91,7 +98,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			currentVisualSystem->playSystem();
 		}
 		else{
-			ofSystemAlertDialog(visualSystems.getPresets()[presetTable.selectedRow].systemName + " is not registered system");
+			ofSystemAlertDialog(visualSystems.getPresets()[self.selectedPresetIndex].systemName + " is not registered system");
 		}
 		
 		shouldPlaySelectedRow = false;	
@@ -151,11 +158,10 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (IBAction) updatePresets:(id)sender
 {
-//	visualSystems.loadPresets();
 	
-	if(presetTable.selectedRow >= 0){
+	if(self.selectedPresetIndex >= 0){
 
-		ofPtr<CloudsVisualSystem> system = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[presetTable.selectedRow].systemName );
+		ofPtr<CloudsVisualSystem> system = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[self.selectedPresetIndex].systemName );
 		if(system != NULL){
 			cout << "updating presets for " << system->getSystemName() << endl;
 			visualSystems.updatePresetsForSystem( system );
@@ -173,8 +179,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (IBAction) deletePreset:(id)sender
 {
-	if(presetTable.selectedRow >= 0){
-		visualSystems.deletePreset( presetTable.selectedRow );
+	if(self.selectedPresetIndex >= 0){
+		visualSystems.deletePreset( self.selectedPresetIndex );
 		
 		[clipTable reloadData];
 		[suppressedClipTable reloadData];
@@ -186,7 +192,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (IBAction) updateKeywords:(id)sender
 {
-	if(presetTable.selectedRow >= 0){
+	if(self.selectedPresetIndex >= 0){
 		
 		associatedKeywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
 		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);
@@ -196,6 +202,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		
 		selectedPreset->enabled = (enabledBox.state == NSOnState);
 		selectedPreset->oculusCompatible = (oculusBox.state == NSOnState);
+		selectedPreset->hasSound = (soundBox.state == NSOnState);
 		selectedPreset->comments = [notesText.stringValue UTF8String];
 		selectedPreset->grade = [grade.stringValue UTF8String];
 		
@@ -233,14 +240,14 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		NSUInteger idx = [clipTable.selectedRowIndexes firstIndex];
 		while (idx != NSNotFound) {
 			
-			visualSystems.suppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), associatedClips[idx].getLinkName());
+			visualSystems.suppressClip(visualSystems.getPresets()[self.selectedPresetIndex].getID(), associatedClips[idx].getLinkName());
 			
 			// get the next index in the set
 			idx = [clipTable.selectedRowIndexes indexGreaterThanIndex:idx];
 		}
 		
 		
-        cout<<"Clip: "<<associatedClips[clipTable.selectedRow].getLinkName()<<" suppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
+        cout<<"Clip: "<<associatedClips[clipTable.selectedRow].getLinkName()<<" suppressed for Visual System: "<<visualSystems.getPresets()[self.selectedPresetIndex].getID()<<endl;
         visualSystems.savePresets();
 		
 		[self updateAssociatedClips];
@@ -257,13 +264,13 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		
 		NSUInteger idx = [suppressedClipTable.selectedRowIndexes firstIndex];
 		while (idx != NSNotFound) {
-			visualSystems.unsuppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), suppressedClips[idx].getLinkName());
+			visualSystems.unsuppressClip(visualSystems.getPresets()[self.selectedPresetIndex].getID(), suppressedClips[idx].getLinkName());
 			
 			// get the next index in the set
 			idx = [suppressedClipTable.selectedRowIndexes indexGreaterThanIndex:idx];
 		}
 		
-        cout<<"Clip: "<<suppressedClips[suppressedClipTable.selectedRow].getLinkName()<<" unsuppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
+        cout<<"Clip: "<<suppressedClips[suppressedClipTable.selectedRow].getLinkName()<<" unsuppressed for Visual System: "<<visualSystems.getPresets()[self.selectedPresetIndex].getID()<<endl;
         visualSystems.savePresets();
 		
 		[clipTable selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
@@ -273,6 +280,13 @@ bool clipsort(CloudsClip a, CloudsClip b){
 }
 
 
+- (int) selectedPresetIndex
+{
+	if(presetTable.selectedRow >= 0){
+		return filteredPresetInds[ presetTable.selectedRow ];
+	}
+	return -1;
+}
 
 - (IBAction) exportStandalone:(id)sender {
 	visualSystems.exportStandalonePresets();
@@ -281,7 +295,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {
 	if(aTableView == presetTable){
-		return visualSystems.getPresets().size();
+//		return visualSystems.getPresets().size();
+		return filteredPresetInds.size();
 	}
 	else if(aTableView == clipTable){
 		return associatedClips.size();
@@ -298,32 +313,36 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	return 0;
 }
 
-- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex{
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
+{
+	
+	int presetIndex = filteredPresetInds[ rowIndex ];
 	
 	if(aTableView == presetTable){
 		if([@"system" isEqualToString:aTableColumn.identifier]){
-//			return [NSString stringWithUTF8String: visualSystems.getPresets()[rowIndex].system->getSystemName().c_str()];
-			return [NSString stringWithUTF8String: visualSystems.getPresets()[rowIndex].systemName.c_str()];
+			return [NSString stringWithUTF8String: visualSystems.getPresets()[presetIndex].systemName.c_str()];
 		}
 		else if([@"grade" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String:
-					(string(visualSystems.getPresets()[rowIndex].hasFiles ? "" : "!!") +
-						   (visualSystems.getPresets()[rowIndex].enabled ? "+" : "-") +
-							visualSystems.getPresets()[rowIndex].grade +
-							(visualSystems.getPresets()[rowIndex].oculusCompatible ? "Oc" : "")).c_str()];
-		}		
+					(string(visualSystems.getPresets()[presetIndex].hasFiles ? "" : "!!") +
+						   (visualSystems.getPresets()[presetIndex].enabled ? "+" : "-") +
+							visualSystems.getPresets()[presetIndex].grade +
+							(visualSystems.getPresets()[presetIndex].oculusCompatible ? "Oc" : "") +
+							(visualSystems.getPresets()[presetIndex].hasSound ? "Snd" : "")
+					 ).c_str()];
+		}
 		else if([@"preset" isEqualToString:aTableColumn.identifier]){
-			return [NSString stringWithUTF8String: visualSystems.getPresets()[rowIndex].presetName.c_str()];
+			return [NSString stringWithUTF8String: visualSystems.getPresets()[presetIndex].presetName.c_str()];
 		}
 		else if( [@"keywords" isEqualToString:aTableColumn.identifier] ){
-			return [NSString stringWithUTF8String: ofJoinString( visualSystems.keywordsForPreset(rowIndex), ",").c_str() ];
+			return [NSString stringWithUTF8String: ofJoinString( visualSystems.keywordsForPreset(presetIndex), ",").c_str() ];
 		}
 		else if( [@"timing" isEqualToString:aTableColumn.identifier] ){
-			if(visualSystems.getPresets()[rowIndex].indefinite){
+			if(visualSystems.getPresets()[presetIndex].indefinite){
 				return @"indefinite";
 			}
 			else {
-				return [NSString stringWithFormat:@"%.02fs", visualSystems.getPresets()[rowIndex].duration];
+				return [NSString stringWithFormat:@"%.02fs", visualSystems.getPresets()[presetIndex].duration];
 			}
 		}
 	}
@@ -398,6 +417,24 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	return shared;
 }
 
+- (IBAction) updateFilters:(id)sender
+{
+
+	filteredPresetInds = visualSystems.getFilteredPresetIndeces(filterEnabledBox.state == NSOnState,
+																filterOculusBox.state  == NSOnState,
+																filterGradeABox.state  == NSOnState);
+
+	[presetTable selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
+	
+	[clipTable reloadData];
+	[suppressedClipTable reloadData];
+	[presetTable reloadData];
+	[allKeywordTable reloadData];
+	[allClipTable reloadData];
+
+
+}
+
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
 	if(aNotification.object == presetTable){
@@ -410,6 +447,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			grade.stringValue = [NSString stringWithUTF8String: selectedPreset->grade.c_str() ];
 			enabledBox.state = (selectedPreset->enabled ? NSOnState : NSOffState);
 			oculusBox.state = (selectedPreset->oculusCompatible ? NSOnState : NSOffState);
+			soundBox.state = (selectedPreset->hasSound ? NSOnState : NSOffState);
 		}
 		else{
 			currentKeywords.stringValue = @"";
@@ -490,8 +528,8 @@ completionsForSubstring:(NSString *)substring
 	suppressedClips.clear();
 	associatedKeywords.clear();
 	
-	if(presetTable.selectedRow >= 0){
-		selectedPreset = &visualSystems.getPresets()[ presetTable.selectedRow ];
+	if(self.selectedPresetIndex >= 0){
+		selectedPreset = &visualSystems.getPresets()[ filteredPresetInds[ self.selectedPresetIndex ] ];
 		associatedKeywords = visualSystems.keywordsForPreset(*selectedPreset);
 		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
 	}
@@ -521,6 +559,24 @@ completionsForSubstring:(NSString *)substring
         }
     }
     return NO;
+}
+
+- (IBAction) playSelectedRow:(id)sender
+{
+    shouldPlaySelectedRow = true;
+}
+
+- (IBAction) playPreviousPreset:(id)sender
+{
+	[presetTable selectRowIndexes:[NSIndexSet indexSetWithIndex:MAX(presetTable.selectedRow-1,0)] byExtendingSelection:NO];
+	shouldPlaySelectedRow = true;
+}
+
+- (IBAction) playNextPreset:(id)sender
+{
+	[presetTable selectRowIndexes:[NSIndexSet indexSetWithIndex:MIN(presetTable.selectedRow+1,filteredPresetInds.size()-1)] byExtendingSelection:NO];
+	shouldPlaySelectedRow = true;
+
 }
 
 - (void)playDoubleClickedRow:(id)sender
