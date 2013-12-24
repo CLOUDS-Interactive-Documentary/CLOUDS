@@ -1,33 +1,13 @@
-aesthetics:How do you know whether something is good?
-clouds:What is Clouds?
-clouds:What is the story of Clouds?
-code:What is code?
-coding:What is it like to sketch with code?
-communication:How do people communicate now?
-community:How did the creative coding community take shape?
-computation:What is computation?
-computer:What is a computer?
-cosmogeny:How do you build a universe?
-cosmogeny:How does a universe begin?
-creativity:Where does abstraction originate?
-digital meets physical:How do algorithms become tangible?
-emergence:What is emergence?
-experience design:How does digital design apply to everyday life?
-gardening:Does a generative artwork ever reach a state of completion?
-generative art:Is an artwork ever done?
-hackers:What's the hacker ethos?
-history:What's the connection between videogame culture and creative coding?
-ideas:Can someone claim ownership of an idea?
-identity:How does your online identity differ from your everyday self?
-interconnectedness:What does technology aspire toward?
-internet:What does the internet look like?
-network:How has the internet changed everything?
-programming:What does it feel like to program?
-self expression:In what way is coding an art form?
-simulation:What would it mean to simulate the world through code?
-sketching:How do you "sketch" with code?
-social media:How does human interaction rely on networks?
-surprise:What is surprising?
-systems:How can simple rules have complex results?
-technology:What is new and innovative in new media?
-thinking:How does programming change the way you think?
+Intro_BuildingWorlds2:Is it possible to truly simulate reality?
+Intro_BuildingWorlds:How do you create a digital universe?
+Intro_CodingSketching:How do you sketch with code?
+Intro_Collaboration:How does the network accelerate creativity?
+Intro_Computers:Do computers make us smarter?
+Intro_interactivity1:What makes a satisfying interaction?
+Intro_Interfaces:What's the ultimate interface?
+Intro_Learning:What does it feel like to program?
+Intro_LogicOfPixels:How can the logic of coding be creative?
+Intro_Programming:Is programming a waste of time?
+Intro_Sharing:What is open source all about?
+Intro_Toolmaker:what's the link between invention and art?
+Intro_VirtualReality:Have we hacked reality?
