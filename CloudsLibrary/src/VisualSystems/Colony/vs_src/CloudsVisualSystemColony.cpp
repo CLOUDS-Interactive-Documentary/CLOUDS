@@ -52,7 +52,6 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
 void CloudsVisualSystemColony::selfUpdate()
 {
     //cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
-	
     pMap.clear();
     vbo.clear();
     pMap.put(cells);
@@ -94,9 +93,7 @@ void CloudsVisualSystemColony::selfDrawBackground()
     billboard.begin();
     sprite.bind();
     
-//    ofPushMatrix();
     vbo.draw();
-//    ofPopMatrix();
     
     sprite.unbind();
     billboard.end();
