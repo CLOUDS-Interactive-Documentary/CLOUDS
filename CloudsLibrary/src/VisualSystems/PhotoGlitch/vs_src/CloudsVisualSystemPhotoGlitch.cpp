@@ -73,6 +73,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
     }
     customGui->addSpacer();
     customGui->addButton("ANIMATE", false);
+    customGui->addIntSlider("DELAY B/W TWEENS", 1, 10, &delayParameter);
     customGui->addSpacer();
     customGui->addIntSlider("NUM COLS", 1, 400, &numDivCols);
     customGui->addIntSlider("NUM ROWS", 1, 400, &numDivRows);
@@ -89,7 +90,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
     customGui->addSpacer();
     customGui->addLabel("ANIMATION PARAMS");
     customGui->addIntSlider("TWEEN DURATION", 1, 1000, &tweenDuration);
-    customGui->addIntSlider("TWEEN DELAY", 0, 1000, &tweenDelay);
+    customGui->addIntSlider("TWEEN DELAY", 0, 20, &tweenDelay);
     customGui->addToggle("PERPENDICULAR", &bDoPerpendicular);
     
     customGui->addSpacer();
@@ -102,12 +103,9 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
     customGui->addDropDownList("SOURCE IMAGES", imageNames);
     customGui->addSpacer();
     
-
-    
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemPhotoGlitch::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
-    
     
     target1Gui = new ofxUISuperCanvas("TargetImage1", gui);
 	target1Gui->copyCanvasStyle(gui);
@@ -159,10 +157,8 @@ int CloudsVisualSystemPhotoGlitch::getTargetFileName(ofxUISuperCanvas * gui, int
             }
         }
     }
-    
 
-    return -1;
-    
+    return -1;    
 }
 
 void CloudsVisualSystemPhotoGlitch::beginAnimation(){
@@ -265,6 +261,12 @@ void CloudsVisualSystemPhotoGlitch::selfGuiEvent(ofxUIEventArgs &e)
         beginAnimation();            
         }
 
+    }
+    else if(e.getName()== "DELAY B/W TWEENS"){
+        ofxUIIntSlider* i = (ofxUIIntSlider*) e.widget;
+        
+        int x = i->getValue();
+        delayValue = 1000*x;
     }
     else {
         string name = e.widget->getName();
@@ -732,27 +734,29 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
     }
     
     if(isComplete && bCurrentlyAnimating){
-        bCurrentlyAnimating = false;
-        
-        if (currentTargetParams->mode == SOURCE_MODE) {
-            currentTarget = &target1;
-            currentTargetParams = &gp1;
-            cout<<"Updating animation from source to target"<<endl;
-            updateAnimation();
-        }else{
-            if (currentTarget->ID == 1 && gp2.enable) {
-                currentTarget = &target2;
-                currentTargetParams =  &gp2;
-                cout<<"Updating animation for target 2"<<endl;
+        cout<<ofGetElapsedTimeMillis() % delayValue<<endl;
+        if(ofGetElapsedTimeMillis() % delayValue < 10){
+            cout<<"Here"<<endl;
+            bCurrentlyAnimating = false;
+            
+            if (currentTargetParams->mode == SOURCE_MODE) {
+                currentTarget = &target1;
+                currentTargetParams = &gp1;
+                cout<<"Updating animation from source to target"<<endl;
                 updateAnimation();
             }
-            else if(currentTarget->ID == 2 || ( currentTarget->ID == 1 && !gp2.enable)){
-                cout<<"Sequence Complete"<<endl;
+            else{
+                if (currentTarget->ID == 1 && gp2.enable) {
+                    currentTarget = &target2;
+                    currentTargetParams =  &gp2;
+                    cout<<"Updating animation for target 2"<<endl;
+                    updateAnimation();
+                }
+                else if(currentTarget->ID == 2 || ( currentTarget->ID == 1 && !gp2.enable)){
+                    cout<<"Sequence Complete"<<endl;
+                }
             }
         }
-        
-        
-        
     }
 }
 

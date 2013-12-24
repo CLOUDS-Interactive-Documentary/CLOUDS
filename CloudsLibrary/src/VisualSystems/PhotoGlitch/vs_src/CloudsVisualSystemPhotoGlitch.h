@@ -249,6 +249,8 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     int tweenDuration;
     int tweenDelay;
     
+    int delayParameter;
+    int delayValue;
     float screenSliceWidth;
     float screenSliceHeight;
     float texSliceWidth;
