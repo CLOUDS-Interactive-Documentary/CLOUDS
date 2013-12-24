@@ -71,7 +71,8 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
         gp1.targetImageNames.push_back(targetImagesDir.getName(i));
         gp2.targetImageNames.push_back(targetImagesDir.getName(i));
     }
-    
+    customGui->addSpacer();
+    customGui->addButton("ANIMATE", false);
     customGui->addSpacer();
     customGui->addIntSlider("NUM COLS", 1, 400, &numDivCols);
     customGui->addIntSlider("NUM ROWS", 1, 400, &numDivRows);
@@ -85,36 +86,60 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
     customGui->addToggle("DRAW TARGET", &bDrawTarget);
     customGui->addToggle("DRAW BACKGROUND", &bDrawBackground);
     
+    customGui->addSpacer();
     customGui->addLabel("ANIMATION PARAMS");
     customGui->addIntSlider("TWEEN DURATION", 1, 1000, &tweenDuration);
     customGui->addIntSlider("TWEEN DELAY", 0, 1000, &tweenDelay);
     customGui->addToggle("PERPENDICULAR", &bDoPerpendicular);
+    
+    customGui->addSpacer();
+    customGui->addLabel("SOURCE PARAMS");
+    customGui->addToggle("ENABLE ", &sourceParams.enable);
+	customGui->addToggle("SOURCE SHUFFLE", &sourceParams.shuffle);
+    customGui->addToggle("SOURCE SORT HUE", &sourceParams.sortByHue);
+    customGui->addToggle("SOURCE SORT BRI", &sourceParams.sortByBrightness);
+    customGui->addToggle("SOURCE REORDER", &sourceParams.reorder);
     customGui->addDropDownList("SOURCE IMAGES", imageNames);
+    customGui->addSpacer();
     
-    customGui->addLabel("SOURCE SORT MODES");
-	customGui->addToggle("SHUFFLE", &bShouldShuffle);
-    customGui->addToggle("SORT HUE", &bShouldSortHue);
-    customGui->addToggle("SORT BRI", &bShouldSortBri);
-    customGui->addToggle("RANDOM SORT", &bRandomSort);
-    customGui->addToggle("REORDER", &bShouldReorder);
-    
-    
-    addTargetToUI(customGui,"1", gp1);
-    addTargetToUI(customGui,"2", gp2);
-    
-    customGui->addButton("ANIMATE", false);
+
     
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemPhotoGlitch::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
+    
+    
+    target1Gui = new ofxUISuperCanvas("TargetImage1", gui);
+	target1Gui->copyCanvasStyle(gui);
+	target1Gui->copyCanvasProperties(gui);
+	target1Gui->setName("TargetImage1");
+	target1Gui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    target1Gui->addSpacer();
+    addTargetToUI(target1Gui,"1", gp1);
+    
+    ofAddListener(target1Gui->newGUIEvent, this, &CloudsVisualSystemPhotoGlitch::selfGuiEvent);
+	guis.push_back(target1Gui);
+	guimap[target1Gui->getName()] = target1Gui;
+    
+    target2Gui = new ofxUISuperCanvas("TargetImage2", gui);
+	target2Gui->copyCanvasStyle(gui);
+	target2Gui->copyCanvasProperties(gui);
+	target2Gui->setName("TargetImage2");
+	target2Gui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    target2Gui->addSpacer();
+    addTargetToUI(target2Gui,"2", gp2);
+    ofAddListener(target2Gui->newGUIEvent, this, &CloudsVisualSystemPhotoGlitch::selfGuiEvent);
+	guis.push_back(target2Gui);
+	guimap[target2Gui->getName()] = target2Gui;
 }
 
 void CloudsVisualSystemPhotoGlitch::addTargetToUI(ofxUISuperCanvas* gui,string suffix, glitchParams& params ){
     
-    gui->addLabel("TARGET PARAMS");
+    gui->addLabel("TARGET "+suffix+" PARAMS");
     gui->addToggle("ENABLE", &params.enable);
     gui->addToggle("SORT BY HUE", &params.sortByHue);
-    gui->addToggle("SORT BY SAT", &params.sortByBrightness);
+    gui->addToggle("SORT BY BRI", &params.sortByBrightness);
+    gui->addToggle("RANDOM SORT", &params.randomSort);
     gui->addDropDownList("TARGET IMAGES " + suffix, params.targetImageNames);
     
 }
@@ -135,102 +160,109 @@ int CloudsVisualSystemPhotoGlitch::getTargetFileName(ofxUISuperCanvas * gui, int
         }
     }
     
-    return -1;
 
+    return -1;
+    
+}
+
+void CloudsVisualSystemPhotoGlitch::beginAnimation(){
+    
+    clearSource();
+    target1.clear();
+    target2.clear();
+    generateSource();
+
+    bool successfulUpdate =false;
+    if (gp2.enable) {
+        int imgIdx = getTargetFileName(target2Gui, 2);
+        if( imgIdx != -1){
+            generate(target2, imgIdx);
+            target2.ID = 2;
+            cout<<"Target 2 updated"<<endl;
+            successfulUpdate = true;
+        }
+        else{
+            cout<<"No image selected or image not found for image 2"<<endl;
+        }
+    }
+    
+    if(gp1.enable){
+        int imgIdx = getTargetFileName(target1Gui, 1);
+        if( imgIdx != -1){
+            generate(target1, imgIdx);
+            target1.ID = 1;
+            successfulUpdate = true;
+        }
+        else{
+            cout<<"No image selected or image not found for image 1"<<endl;
+        }
+    }
+
+    if(sourceParams.enable){
+        
+        currentTargetParams = &sourceParams;
+    }
+    else{
+        sourceParams.reorder = true;
+        currentTargetParams = &sourceParams;
+    }
+
+    if(successfulUpdate){
+        bStartAnimating = true;
+    }
+    else{
+        ofLogError()<<"Update not successful try again"<<endl;
+    }
+
+    
+}
+void CloudsVisualSystemPhotoGlitch::updateAnimation(){
+    if(currentTargetParams->mode == SOURCE_MODE){
+
+        if(currentTargetParams->shuffle){
+            shuffle();
+            cout<<"Mode : source shuffle"<<endl;
+        }
+        else if (currentTargetParams->reorder){
+            reorder();
+            cout<<"Mode : source reorder"<<endl;
+        }
+        else if (currentTargetParams->sortByBrightness){
+            sortBri();
+            cout<<"Mode : source bri"<<endl;
+        }
+        else if (currentTargetParams->sortByHue){
+            sortHue();
+            cout<<"Mode : source hue"<<endl;
+        }
+    }
+    else if (currentTargetParams->mode == TARGET_MODE) {
+            cout<<"In target mode"<<endl;
+            if(currentTargetParams->sortByHue){
+            cout<<"Mode : Target Hue"<<endl;
+                sortTarget();
+
+            }
+            else if ( currentTargetParams->sortByBrightness){
+                cout<<"Mode : Target Bri"<<endl;                
+                sortTargetBrightness();
+
+            }
+            
+        }
+    
+    bCurrentlyAnimating = true;
 }
 void CloudsVisualSystemPhotoGlitch::selfGuiEvent(ofxUIEventArgs &e)
 {
     
     if (e.getName() == "NUM COLS" || e.getName() == "NUM ROWS") {
-//        bShouldGenerate = true;
+        //        bShouldGenerate = true;
     }
     else if(e.getName() == "ANIMATE"){
-        ofxUIButton* b = (ofxUIButton*) e.widget;
-
+        ofxUIButton* b = (ofxUIButton*)e.widget;
         if(b->getValue()){
-            bool animateHue = false;
-            bool animateBri = false;
-            
-            if (gp1.enable && !gp2.enable) {
-                int imgIdx = getTargetFileName(customGui, 1);
-
-                
-                if( imgIdx != -1){
-                    generate(target1, imgIdx);
-                    target1.ID = 1;
-                    currentTarget = &target1;
-                    
-                    if (gp1.sortByHue) {
-                        animateHue = true;
-                    }
-                    else if(gp1.sortByBrightness){
-                        animateBri = true;
-                    }
-                }
-                else{
-                    cout<<"No image selected or image not found for image 1"<<endl;
-                }
-                
-            }
-            else if (gp1.enable && gp2.enable){
-                
-                int imgIdx = getTargetFileName(customGui, 1);
-                int imgIdx2 = getTargetFileName(customGui, 2);
-
-                
-                if( imgIdx != -1){
-                    generate(target1, imgIdx);
-                    target1.ID = 1;
-                    if (gp1.sortByHue) {
-                        animateHue = true;
-                    }
-                    else if(gp1.sortByBrightness){
-                        animateBri = true;
-                    }
-                }
-                else{
-                    cout<<"No image selected or image not found for image 1"<<endl;
-                }
-                
-                if( imgIdx2 != -1){
-                    generate(target2, imgIdx2);
-                    target2.ID = 2;
-                    
-                }
-                else{
-                    cout<<"No image selected or image not found for image 2"<<endl;
-                }
-                currentTarget = &target1;
-            }
-            else if( (! gp1.enable) && gp2.enable ){
-                int imgIdx2 = getTargetFileName(customGui, 2);
-                
-                if( imgIdx2 != -1){
-                    generate(target2, imgIdx2);
-                    target2.ID = 2;
-                    
-                    if (gp2.sortByHue) {
-                        animateHue = true;
-                    }
-                    else if(gp2.sortByBrightness){
-                        animateBri = true;
-                    }
-                }
-                else{
-                    cout<<"No image selected or image not found for image id 2"<<endl;
-                }
-                
-                currentTarget = &target2;
-                
-            }
-            generateSource();
-            bCurrentlyAnimating = true;
-            if(animateHue){
-                sortTarget();
-            }
-            else if (animateBri){
-                sortTargetBrightness();
-            }
+        beginAnimation();            
         }
 
     }
@@ -294,6 +326,10 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     
     numDivCols = 20;
     numDivRows = 20;
+    
+    sourceParams.mode = SOURCE_MODE;
+    gp1.mode = TARGET_MODE;
+    gp2.mode = TARGET_MODE;
     
     imagesDir.listDir(getVisualSystemDataPath() + "sourceImages" );
     imagesDir.sort();
@@ -551,7 +587,7 @@ void CloudsVisualSystemPhotoGlitch::generateSource()
             //            cout<<cells[idx].avgColor.getBrightness()<<endl;
             if (cells[idx].avgColor.getBrightness() < 0.1) {
                 cells[idx].avgColor.setHsb(ofRandomuf(), ofRandomuf(),ofRandomuf(), 0.0);
-//                cout<<cells[idx].avgColor.getHue()<<endl;
+                //                cout<<cells[idx].avgColor.getHue()<<endl;
             }
             
             // Add colors.
@@ -588,6 +624,11 @@ void CloudsVisualSystemPhotoGlitch::generateSource()
     vbo.setColorData(colors, numVerts, GL_STATIC_DRAW, 4 * sizeof(GLfloat));
     vbo.setIndexData(indices, numIndices, GL_STATIC_DRAW);
     
+    bgVbo.setVertexData(verts, kCoordsPerVert, numVerts, GL_STREAM_DRAW, kCoordsPerVert * sizeof(GLfloat));
+    bgVbo.setTexCoordData(texCoords, numVerts, GL_STATIC_DRAW, 2 * sizeof(GLfloat));
+    bgVbo.setColorData(colors, numVerts, GL_STATIC_DRAW, 4 * sizeof(GLfloat));
+    bgVbo.setIndexData(indices, numIndices, GL_STATIC_DRAW);
+
     //    bShouldReorder = true;
 }
 
@@ -596,7 +637,7 @@ void CloudsVisualSystemPhotoGlitch::generateSource()
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemPhotoGlitch::selfPresetLoaded(string presetPath)
 {
-    
+    beginAnimation();
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -615,54 +656,38 @@ void CloudsVisualSystemPhotoGlitch::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemPhotoGlitch::selfUpdate()
 {
+    if(bStartAnimating){
+        updateAnimation();
+        bStartAnimating = false;
+        
+    }
     if (bShouldGenerate) {
         generateSource();
-        //        generate();
         bShouldGenerate = false;
     }
-    
-    if(bShouldGenerateTargetOnly){
-        
-        //        generate();
-//        bShouldGenerateTargetOnly = false;
-    }
-    
-    if (bShouldShuffle) {
-        shuffle();
-        bShouldShuffle = false;
-//        bCurrentlyAnimating = true;
-//        currentTargetIndex = 0;
-    }
-    if (bShouldSortHue) {
-        sortHue();
-        bShouldSortHue = false;
-//        bCurrentlyAnimating = true;
-//        currentTargetIndex = 0;
-    }
-    if (bShouldSortBri) {
-        sortBri();
-        bShouldSortBri = false;
-//        bCurrentlyAnimating = true;
-//        currentTargetIndex = 0;
-    }
-    if (bShouldReorder) {
-        reorder();
-        bShouldReorder = false;
-//        bCurrentlyAnimating = true;
-//        currentTargetIndex = 0;
-    }
-    if (bShouldSortTarget){
-//        sortTarget();
-//        bShouldSortTarget = false;
-//        bCurrentlyAnimating = true;
-//        currentTargetIndex = 0;
-    }
-    if (bShouldSortTargetBri) {
-//        sortTargetBrightness();
-//        bShouldSortTargetBri = false;
-//        bCurrentlyAnimating = true;
-//        currentTargetIndex = 0;
-    }
+//
+//    if (bShouldShuffle) {
+//        shuffle();
+//        bShouldShuffle = false;
+//    }
+//    if (bShouldSortHue) {
+//        sortHue();
+//        bShouldSortHue = false;
+//    }
+//    if (bShouldSortBri) {
+//        sortBri();
+//        bShouldSortBri = false;
+//    }
+//    if (bShouldReorder) {
+//        reorder();
+//        bShouldReorder = false;
+//    }
+//    if (bShouldSortTarget){
+//        
+//    }
+//    if (bShouldSortTargetBri) {
+//        
+//    }
     
     
     // tween them cells!
@@ -706,26 +731,29 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
         }
     }
     
-  if(isComplete && bCurrentlyAnimating){
-      bCurrentlyAnimating = false;
-      
-          if (currentTarget->ID == 1 && gp2.enable) {
-              currentTarget = &target2;
-              if (gp2.sortByBrightness) {
-                  sortTargetBrightness();
-                  bCurrentlyAnimating = true;
-              }
-              else if(gp2.sortByHue){
-                  sortTarget();
-                  bCurrentlyAnimating = true;
-              }
-          }
-          else if(currentTarget->ID == 2 || ( currentTarget->ID == 1 && !gp2.enable)){
-              cout<<"Sequence Complete"<<endl;
-          }
-
-
-  }
+    if(isComplete && bCurrentlyAnimating){
+        bCurrentlyAnimating = false;
+        
+        if (currentTargetParams->mode == SOURCE_MODE) {
+            currentTarget = &target1;
+            currentTargetParams = &gp1;
+            cout<<"Updating animation from source to target"<<endl;
+            updateAnimation();
+        }else{
+            if (currentTarget->ID == 1 && gp2.enable) {
+                currentTarget = &target2;
+                currentTargetParams =  &gp2;
+                cout<<"Updating animation for target 2"<<endl;
+                updateAnimation();
+            }
+            else if(currentTarget->ID == 2 || ( currentTarget->ID == 1 && !gp2.enable)){
+                cout<<"Sequence Complete"<<endl;
+            }
+        }
+        
+        
+        
+    }
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -747,7 +775,7 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
         if(currentTarget != NULL){
             currentTarget->vbo.enableColors();
         }
-
+        
     }
     else{
         vbo.disableColors();
@@ -755,32 +783,31 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
         if (currentTarget != NULL) {
             currentTarget->vbo.disableColors();
         }
-
+        
     }
     
     if (bUseTexture){
         vbo.enableTexCoords();
-//        targetVbo.enableTexCoords();
+        //        targetVbo.enableTexCoords();
         if (currentTarget != NULL) {
-        currentTarget->vbo.enableTexCoords();
+            currentTarget->vbo.enableTexCoords();
         }
-
+        
     }
     else {
         vbo.disableTexCoords();
         //        targetVbo.disableTexCoords();
         if (currentTarget != NULL) {
-        currentTarget->vbo.disableTexCoords();
+            currentTarget->vbo.disableTexCoords();
         }
-
+        
     }
     
     if(bDrawBackground){
         ofPushStyle();
-        for (int i = 0; i < numCells; i++) {
-            ofSetColor(cells[i].avgColor);
-            ofRect(cells[i].col * screenSliceWidth, cells[i].row * screenSliceHeight, screenSliceWidth, screenSliceHeight);
-        }
+        tex.bind();
+        bgVbo.drawElements(GL_TRIANGLES, numIndices);
+        tex.unbind();
         ofPopStyle();
     }
     
@@ -793,7 +820,7 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
     if(bDrawTarget){
         if (currentTarget != NULL) {
             currentTarget->tex.bind();
-            currentTarget->vbo.drawElements(GL_TRIANGLES, photos[0].numIndices);
+            currentTarget->vbo.drawElements(GL_TRIANGLES, currentTarget->numIndices);
             currentTarget->tex.unbind();
         }
     }
@@ -812,7 +839,7 @@ void CloudsVisualSystemPhotoGlitch::selfExit()
     clearSource();
     target1.clear();
     target2.clear();
-
+    
 }
 
 //events are called when the system is active
@@ -946,7 +973,6 @@ void CloudsVisualSystemPhotoGlitch::sortTargetBrightness(){
         sourceCompare.push_back(sourceObj);
         
         targetObj.cell = &currentTarget->cells[i];
-//        targetObj.cell = &photos[currentTargetIndex].cells[i];
         targetObj.index = i;
         targetCompare.push_back(targetObj);
     }
@@ -956,17 +982,17 @@ void CloudsVisualSystemPhotoGlitch::sortTargetBrightness(){
     
     random_shuffle(remainingIndices.begin(), remainingIndices.end());
     
-    if(bRandomSort){
+    if(currentTargetParams->randomSort){
         for (int i = 0; i < numCells ; i++) {
-          cells[sourceCompare[i].index].col = currentTarget->cells[targetCompare[i].index].col;
-          cells[sourceCompare[i].index].row = currentTarget->cells[targetCompare[i].index].row;
-          tweenTarget(sourceCompare[i].index,remainingIndices[i]);
+            cells[sourceCompare[i].index].col = currentTarget->cells[targetCompare[i].index].col;
+            cells[sourceCompare[i].index].row = currentTarget->cells[targetCompare[i].index].row;
+            tweenTarget(sourceCompare[i].index,remainingIndices[i]);
         }
     }
     else{
         for (int i = 0; i < numCells ; i++) {
-           cells[sourceCompare[i].index].col = currentTarget->cells[targetCompare[i].index].col;
-           cells[sourceCompare[i].index].row = currentTarget->cells[targetCompare[i].index].row;
+            cells[sourceCompare[i].index].col = currentTarget->cells[targetCompare[i].index].col;
+            cells[sourceCompare[i].index].row = currentTarget->cells[targetCompare[i].index].row;
             tweenTarget(sourceCompare[i].index);
         }
     }
@@ -1001,7 +1027,7 @@ void CloudsVisualSystemPhotoGlitch::sortTarget(){
     sort(targetCompare.begin(), targetCompare.end(),sortIdxForHueTargetNew);
     sort(sourceCompare.begin(), sourceCompare.end(),sortIdxForHueTargetNew);
     
-    if(bRandomSort){
+    if(currentTargetParams->randomSort){
         for (int i = 0; i < numCells ; i++) {
             
             cells[sourceCompare[i].index].col = currentTarget->cells[targetCompare[i].index].col;
@@ -1011,8 +1037,8 @@ void CloudsVisualSystemPhotoGlitch::sortTarget(){
     }
     else{
         for (int i = 0; i < numCells ; i++) {
-           cells[sourceCompare[i].index].col = currentTarget->cells[targetCompare[i].index].col;
-           cells[sourceCompare[i].index].row = currentTarget->cells[targetCompare[i].index].row;
+            cells[sourceCompare[i].index].col = currentTarget->cells[targetCompare[i].index].col;
+            cells[sourceCompare[i].index].row = currentTarget->cells[targetCompare[i].index].row;
             tweenTarget(sourceCompare[i].index);
         }
     }

@@ -23,6 +23,11 @@ public:
     ofxTween tweenX, tweenY;
 };
 
+enum sortMode {
+    SOURCE_MODE,
+    TARGET_MODE
+};
+
 struct compareObj {
     PGCell * cell;
     int index;
@@ -32,7 +37,11 @@ struct glitchParams{
     bool enable = false;
     bool sortByBrightness = false;
     bool sortByHue = false;
+    bool randomSort = true;
+    bool reorder = false;
+    bool shuffle = false;
     vector<string> targetImageNames;
+    sortMode mode;
 };
 
 class PhotoGlitch
@@ -163,9 +172,10 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void clearTarget();
     void generateSource();
     void generateTarget();
-//    void generate();
     void generate(PhotoGlitch& pg, int imageIndex);
-
+    void beginAnimation();
+    void updateAnimation();
+    
     void shuffle();
     void sortHue();
     void sortBri();
@@ -176,6 +186,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void tweenAll();
     void tween(int i, int j = -1);
     void tweenTarget(int i, int j = -1);
+    
     int getTargetFileName(ofxUISuperCanvas * gui, int targetId);
     
     static bool sortIdxForHue(int i, int j);
@@ -192,13 +203,15 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
 
     glitchParams gp1;
     glitchParams gp2;
-    
+    glitchParams sourceParams;
     PhotoGlitch * currentTarget;
-    glitchParams * curretTargetParams;
+    glitchParams * currentTargetParams;
   protected:
     
     int currentTargetIndex;
     ofxUISuperCanvas * customGui;
+    ofxUISuperCanvas * target1Gui;
+    ofxUISuperCanvas * target2Gui;
     
     int numDivRows;
     int numDivCols;
@@ -220,6 +233,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     
     ofImage tex;
     ofVbo vbo;
+    ofVbo bgVbo;
     
     ofImage targetTex;
     ofVbo targetVbo;
@@ -256,6 +270,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     bool bDrawBackground;
 
     bool bCurrentlyAnimating;
+    bool bStartAnimating;
     
     bool bDoPerpendicular;
     
