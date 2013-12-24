@@ -19,10 +19,14 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 	secondaryDisplay.drawOverlay();
+    secondaryDisplay.draw();
+    secondaryDisplay.drawSDLayer();
 }
-
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
+    if(key==' '){
+        secondaryDisplay.animateOn();
+    }
 
 }
 

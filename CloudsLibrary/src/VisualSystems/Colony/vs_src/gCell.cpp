@@ -22,9 +22,9 @@ colonyCell::colonyCell(const ofPoint initialPosition, const cellParams& params):
     cellSize = 1;
     age = 0;
     nutrientLevel = 50; //Magic number
-    maxSpeed = ofRandom(0.3, 0.6);
+    maxSpeed = ofRandom(_params.maxSpeed_min, _params.maxSpeed_max);
     maxForce = .4;
-    maxSize = ofRandom(3, 8);
+    maxSize = ofRandom(_params.maxSize_min, _params.maxSize_max);
     lifespan = ofRandom(_params.lifespanMin, _params.lifespanMax);
     fertile = ofRandomuf() > _params.fertilityRate;
     dead = false;
@@ -142,7 +142,7 @@ void colonyCell::doScanAndFlock(neighbor_iterator& iter){
 //==========================================================================================
 
 void colonyCell::doFeedCellNoise(){
-    lastFeedValue = ofNoise(position.x, position.y, position.z, ofGetElapsedTimef() * 100) * 250;
+    lastFeedValue = powf(ofNoise(position.x, position.y, position.z, ofGetElapsedTimef() * _params.nutrientTimeCoef), 1/_params.nutrientFalloff )* _params.nutrientAmount;
 }
 
 void colonyCell::doAddTurbulence(){
