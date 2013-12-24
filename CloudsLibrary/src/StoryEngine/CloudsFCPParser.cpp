@@ -104,7 +104,7 @@ void CloudsFCPParser::parseVOClips(){
 		clip.voiceOverAudioPath = dir.getPath(i);
 		clip.sourceVideoFilePath = dir.getPath(i);
 		clip.startFrame = 0;
-		clip.endFrame = 9999;
+		clip.endFrame = 35*24.; //DOES THIS WORK LOL?
 		
 		string name = ofFilePath::getBaseName( dir.getName(i) );
 		//remove weird final cut track name

@@ -51,22 +51,25 @@ public:
     void guiRenderEvent(ofxUIEventArgs &e);
     
 	void loadShader();
+    void reallocateFramebuffers();
     
 private:
     
+    //much geometry
     ofVboMesh   vbo;
     ofShader    noiseShader;
     ofShader    cellShader;
     ofShader    levelSet;
     ofShader    billboard;
     
+    //wow video
+    ofFbo fbo;
     ofTexture sprite;
     
-    
+    //lol data
     colonyPartitionMap pMap;
-    
     vector< cellPtr > cells;
-    
+
     float   noiseZoom;
     int newbornCount;
     

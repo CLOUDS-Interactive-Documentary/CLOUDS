@@ -126,7 +126,9 @@ void CloudsAct::populateTime(){
     }
 	
 	topicDurationMap[previousTopic] = duration - currentTopicStartTime;
-    
+    ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
+    ofAddListener(timeline.events().playbackEnded, this, &CloudsAct::timelineStopped);
+
 	timeline.addPage("dichotomies", true);
 	dichotomyClips = timeline.addFlags("DichotomyClips");
 	vector<CloudsDichotomy> dichotomiesBase = CloudsDichotomy::getDichotomies();
@@ -140,6 +142,12 @@ void CloudsAct::populateTime(){
 	map<string, vector<CloudsDichotomy> >::iterator it;
 	float lastValues[dichotomiesBase.size()];
 	bool firstLoop = true;
+ 
+    if(clips.size() < 2){
+        ofLogError("CloudsAct::populateTime") << "Not enough clips in act to create sections";
+        return;
+    }
+
 	for(int i = 1; i < clips.size()-2; i++){
 		
 		string clipID = clips[i].getLinkName();
@@ -201,8 +209,6 @@ void CloudsAct::populateTime(){
 	
 	timeline.setCurrentPage(0);
 	
-    ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
-	ofAddListener(timeline.events().playbackEnded, this, &CloudsAct::timelineStopped);
 }
 
 bool CloudsAct::isClipEnergyShift(CloudsClip& clip){

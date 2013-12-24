@@ -18,8 +18,8 @@ vec4 convolution(in vec2 coord, in float range){
 	return t;
 }
 
-vec4 getLevelSet(){
-    vec4 samp = convolution(gl_TexCoord[0].xy, 1.0);
+vec4 getLevelSet(vec4 samp){
+//    vec4 samp = convolution(gl_TexCoord[0].xy, 1.0);
     float levl = 0.5 * (1. + sin(-PI * 0.5 + length(samp.xyz) * 4. * PI));
 	return vec4(vec3(levl),1.);
 }
@@ -42,6 +42,8 @@ void main(){
     b =  clamp(b, 0., 1.);
     b += samp.g;
     b =  clamp(b, 0., 1.);
+    b = 1. - b*0.8;
     gl_FragColor = vec4(b, b, b, 1.);
+    
 //    gl_FragColor = samp;
 }

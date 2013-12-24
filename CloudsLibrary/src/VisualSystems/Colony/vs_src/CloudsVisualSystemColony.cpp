@@ -51,8 +51,16 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
 
 void CloudsVisualSystemColony::selfUpdate()
 {
+    //Video
+    if(!fbo.isAllocated() ||
+       fbo.getWidth() != getSharedRenderTarget().getWidth() ||
+       fbo.getHeight() != getSharedRenderTarget().getHeight())
+    {
+        reallocateFramebuffers();
+    }
+    
+    //Data
     //cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
-	
     pMap.clear();
     vbo.clear();
     pMap.put(cells);
@@ -84,6 +92,8 @@ void CloudsVisualSystemColony::selfUpdate()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
+    fbo.begin();
+    ofClear(0,0,0,0);
     ofPushStyle();
 	ofEnableAlphaBlending();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -94,9 +104,7 @@ void CloudsVisualSystemColony::selfDrawBackground()
     billboard.begin();
     sprite.bind();
     
-//    ofPushMatrix();
     vbo.draw();
-//    ofPopMatrix();
     
     sprite.unbind();
     billboard.end();
@@ -104,6 +112,7 @@ void CloudsVisualSystemColony::selfDrawBackground()
     ofDisablePointSprites();
     ofDisableBlendMode();
 	ofPopStyle();
+    fbo.end();
 }
 
 void CloudsVisualSystemColony::selfDraw(){
@@ -113,9 +122,8 @@ void CloudsVisualSystemColony::selfDraw(){
 void CloudsVisualSystemColony::selfPostDraw(){
 
     levelSet.begin();
-    getSharedRenderTarget().draw(0, 0,
-                                 getSharedRenderTarget().getWidth(),
-                                 getSharedRenderTarget().getHeight());
+    fbo.draw(0, 0, getSharedRenderTarget().getWidth(),
+             getSharedRenderTarget().getHeight());
     levelSet.end();
 }
 
@@ -142,6 +150,14 @@ void CloudsVisualSystemColony::selfExit(){
     //TODO: Destroy everything in gCell;
 }
 
+void CloudsVisualSystemColony::reallocateFramebuffers(){
+    fbo.allocate(getSharedRenderTarget().getWidth(),
+                       getSharedRenderTarget().getHeight(),
+                       GL_RGBA);
+    fbo.begin();
+    ofClear(0,0,0,0);
+    fbo.end();
+}
 
 void CloudsVisualSystemColony::selfSetupGuis(){}
 void CloudsVisualSystemColony::selfAutoMode(){}
