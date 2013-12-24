@@ -1,5 +1,7 @@
 #version 120
 #define PI 3.14159265359
+//#define ESQUARED 7.38905609893
+#define E 2.71828
 
 uniform sampler2DRect tex;
 
@@ -24,13 +26,15 @@ vec4 getLevelSet(){
 }
 
 void main(){
-
-    
     vec4 samp = texture2DRect(tex, gl_TexCoord[0].xy);
     //Check if you're on an area of change
+    float r = fwidth(samp.r);
     float b = fwidth(samp.b);
-    b = smoothstep(0.05, 0.25, b);
-    b = clamp(b, 0., 1.);
-    gl_FragColor = vec4(samp.b * vec3(1. - b), 1.);
+//    b = smoothstep(0., 0.1, b);
+    //FIXME:
+//    b = log(1. + b * samp.b * pow(E,8.))/8.;
+//    b = smoothstep(0.5, 1., 1.-b);
+//    b = clamp(b, 0., 1.);
+    gl_FragColor = vec4(r,abs(b-r),b, 1.);
 //    gl_FragColor = samp;
 }

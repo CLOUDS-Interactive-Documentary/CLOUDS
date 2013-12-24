@@ -22,9 +22,9 @@ colonyCell::colonyCell(const ofPoint initialPosition, const cellParams& params):
     cellSize = 1;
     age = 0;
     nutrientLevel = 50; //Magic number
-    maxSpeed = ofRandom(1.2);
+    maxSpeed = ofRandom(1.0);
     maxForce = .6;
-    maxSize = ofRandom(5, 12);
+    maxSize = ofRandom(3, 8);
     lifespan = ofRandom(_params.lifespanMin, _params.lifespanMax);
     fertile = ofRandomuf() > _params.fertilityRate;
     dead = false;
@@ -47,7 +47,7 @@ void colonyCell::update()
     position += velocity;
     
     // Feed
-    if (lastFeedValue > nutrientLevel && cellSize <= maxSize){ cellSize += (lastFeedValue/2500); }
+    if ((lastFeedValue > nutrientLevel) && (cellSize <= maxSize)){ cellSize += (lastFeedValue/2500); }
     if (lastFeedValue < nutrientLevel){ cellSize -= .01; }
     cellSize = ofClamp(cellSize, 0, maxSize);
     
