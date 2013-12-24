@@ -17,6 +17,7 @@
 #include "CloudsAct.h"
 #include "CloudsFCPParser.h"
 #include "ofxOsc.h"
+#include "CloudsSpeaker.h"
 
 class CloudsSecondaryDisplayController {
   public:
@@ -27,6 +28,7 @@ class CloudsSecondaryDisplayController {
 
 	void drawOverlay();
 
+
   protected:
 
 	CloudsVisualSystemClusterMap clusterMap;
@@ -34,6 +36,14 @@ class CloudsSecondaryDisplayController {
 	CloudsFCPParser parser;
 	CloudsStoryEngine storyEngine;
 	CloudsVisualSystemManager visualSystems;
+
+	bool hasSpeaker;
+	CloudsSpeaker currentSpeaker;
+	CloudsClip currentClip;
+	CloudsProjectExample currentExample;
+
+	ofxFTGLSimpleLayout exampleType;
+	
 
 	ofVideoPlayer archivePlayer;
 

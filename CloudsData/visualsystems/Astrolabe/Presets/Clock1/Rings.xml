@@ -1,0 +1,62 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Rings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>273.000000000</XPosition>
+    <YPosition>165.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>44</Kind>
+    <Name>count</Name>
+    <Value>9</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>innerRadius</Name>
+    <Value>9.317241669</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>width</Name>
+    <Value>2.273743868</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>thickness</Name>
+    <Value>0.452906370</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>lowRadians</Name>
+    <Value>1.052356124</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>hiRadians</Name>
+    <Value>4.271327972</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>XRot</Name>
+    <Value>-180.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>YRot</Name>
+    <Value>-119.704437256</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ZRot</Name>
+    <Value>-180.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Spacing</Name>
+    <Value>3.645320177</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MinTickSpeed</Name>
+    <Value>10.000000000</Value>
+</Widget>
