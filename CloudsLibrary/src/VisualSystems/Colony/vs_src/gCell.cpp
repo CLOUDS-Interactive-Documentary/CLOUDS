@@ -22,8 +22,8 @@ colonyCell::colonyCell(const ofPoint initialPosition, const cellParams& params):
     cellSize = 1;
     age = 0;
     nutrientLevel = 50; //Magic number
-    maxSpeed = ofRandom(1.0);
-    maxForce = .6;
+    maxSpeed = ofRandom(0.3, 0.6);
+    maxForce = .4;
     maxSize = ofRandom(3, 8);
     lifespan = ofRandom(_params.lifespanMin, _params.lifespanMax);
     fertile = ofRandomuf() > _params.fertilityRate;

@@ -1,6 +1,5 @@
 #version 120
 #define PI 3.14159265359
-//#define ESQUARED 7.38905609893
 #define E 2.71828
 
 uniform sampler2DRect tex;
@@ -25,16 +24,25 @@ vec4 getLevelSet(){
 	return vec4(vec3(levl),1.);
 }
 
+float bump(float t, float center, float width){
+    float f = (t - center);
+    f *= f;
+    return 1. - clamp(f / (width * width), 0., 1.);
+}
+
 void main(){
     vec4 samp = texture2DRect(tex, gl_TexCoord[0].xy);
+    
     //Check if you're on an area of change
-    float r = fwidth(samp.r);
-    float b = fwidth(samp.b);
-//    b = smoothstep(0., 0.1, b);
-    //FIXME:
-//    b = log(1. + b * samp.b * pow(E,8.))/8.;
-//    b = smoothstep(0.5, 1., 1.-b);
-//    b = clamp(b, 0., 1.);
-    gl_FragColor = vec4(r,abs(b-r),b, 1.);
+    float b = 1. - fwidth(samp.b);
+    
+    //see if you're in the right range to be a border
+    
+    b *= samp.b * samp.b;
+    b = samp.b - bump(b, .3, 0.2);
+    b =  clamp(b, 0., 1.);
+    b -= samp.g;
+    b =  clamp(b, 0., 1.);
+    gl_FragColor = vec4(b, b, b, 1.);
 //    gl_FragColor = samp;
 }
