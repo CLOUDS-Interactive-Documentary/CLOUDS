@@ -193,6 +193,30 @@ void CloudsVisualSystemClusterMap::traverse(){
 	*/
 }
 
+
+void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip& clip){
+	
+	CloudsClusterNode& n = nodes[ clipIdToNodeIndex[ clip.getID() ] ];
+	
+	cout << "CloudsVisualSystemClusterMap::traverse	" << clip.getLinkName() << " at position " << (clip.networkPosition *300) << endl;
+	if(!firstClip){
+		for(int s = 1; s < 100; s++){
+			traversalMesh.addVertex(lastClipPosition + s * (clip.networkPosition-lastClipPosition) / 100);
+			traversalMesh.addColor(ofFloatColor());
+		}
+	}
+	lastClipPosition = clip.networkPosition;
+
+	traversalMesh.addVertex(clip.networkPosition);
+	traversalMesh.addColor(ofFloatColor());
+	
+	for(int c = 0; c < n.clusterMeshVertexIds.size(); c++){
+		connectionMesh.setNormal(n.clusterMeshVertexIds[c], ofVec3f(1.0,0.0,0.0));
+	}
+	
+	firstClip = false;
+}
+
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemClusterMap::selfSetupGui(){
 
@@ -351,6 +375,8 @@ void CloudsVisualSystemClusterMap::selfSetup(){
 	cam.loadCameraPosition();
 	run = NULL;
 	
+	firstClip = true;
+	
 	reloadShaders();
 
 }
@@ -371,19 +397,6 @@ void CloudsVisualSystemClusterMap::reloadShaders(){
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemClusterMap::selfPresetLoaded(string presetPath){
 	timeline->setLoopType(OF_LOOP_NONE);
-	
-//	if(run != NULL){
-//		traversal.clear();
-//		for(int i = 0; i < run->clipHistory.size(); i++){
-//			//active history nodes;
-//			traversal.addVertex( run->clipHistory[i].networkPosition * 500 );
-//		}
-//	}
-//	
-//	traversal.setMode(OF_PRIMITIVE_LINE_STRIP);
-	
-//	generate();
-//	traverse();
 	
 }
 

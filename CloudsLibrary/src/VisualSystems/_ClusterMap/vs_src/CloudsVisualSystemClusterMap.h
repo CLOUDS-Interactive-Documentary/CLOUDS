@@ -20,6 +20,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	//will add the latest state of the run to the traversal
 	void traverse();
 	
+	void traverseToClip(CloudsClip& clip);
+	
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
@@ -39,6 +41,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     void guiRenderEvent(ofxUIEventArgs &e);
 
 	void selfSetupTimeline();
+	
 	
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
@@ -121,12 +124,17 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofShader lineShader;
 	ofShader traversalShader;
 	
+	bool firstClip;
+	ofVec3f lastClipPosition;
+	
+	//this is for the secondary display
+	bool incrementalTraversalMode;
+	
 	ofImage sprite;
 	
 	ofVboMesh traversalMesh;
 	ofVboMesh clusterMesh;
 	ofVboMesh connectionMesh;
-	
 	
 	vector<CloudsClusterNode> nodes;
 	map<string,int> clipIdToNodeIndex;
