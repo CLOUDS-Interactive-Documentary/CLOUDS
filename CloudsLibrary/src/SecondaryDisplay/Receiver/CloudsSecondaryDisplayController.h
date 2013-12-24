@@ -64,6 +64,7 @@ class CloudsSecondaryDisplayController {
 	CloudsStoryEngine storyEngine;
 	CloudsVisualSystemManager visualSystems;
 
+	bool playingMovie;
 	bool hasSpeaker;
 	CloudsSpeaker currentSpeaker;
 	CloudsClip currentClip;

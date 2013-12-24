@@ -308,7 +308,21 @@ void CloudsFCPParser::parseProjectExamples(string filename){
 		ofLogError("CloudsFCPParser::parseProjectExamples") << "Project examples failed to parse at path" << filename;
 		return;
 	}
-		
+	
+	//find video file path
+	string videoFilePathPrefix = "";
+	bool hasVideoDataPath = false;
+	string videoFilePathTxt = GetCloudsDataPath() + "CloudsSecondaryDirectory.txt";
+	
+	if(ofFile(videoFilePathTxt).exists()){
+		videoFilePathPrefix = ofFilePath::addTrailingSlash(ofBufferFromFile(videoFilePathTxt).getText());
+		hasVideoDataPath = ofFile(videoFilePathPrefix).exists();
+	}
+	
+	if(!hasVideoDataPath){
+		ofLogError("CloudsFCPParser::parseProjectExamples") << "Couldn't find data path for videos";
+	}
+	
 	projectExamplesXML.pushTag("clouds");
 	int numProjectExamples = projectExamplesXML.getNumTags("project");
 	for(int i = 0; i < numProjectExamples; i++){
@@ -329,10 +343,11 @@ void CloudsFCPParser::parseProjectExamples(string filename){
 			projectExamplesXML.pushTag("videos");
 			int numVideos = projectExamplesXML.getNumTags("file");
 			if(numVideos == 0){
-				ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << projectTitle << " doesn't have ny <file> tags in <videos>";
+				ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << projectTitle << " doesn't have any <file> tags in <videos>";
 			}
+			
 			for(int f = 0; f < numVideos; f++){
-				example.exampleVideos.push_back(projectExamplesXML.getValue("file","",f));
+				example.exampleVideos.push_back(videoFilePathPrefix + projectExamplesXML.getValue("file","",f));
 			}
 			projectExamplesXML.popTag(); //videos
 		}

@@ -19,8 +19,8 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 	secondaryDisplay.drawOverlay();
-    secondaryDisplay.draw();
-    secondaryDisplay.drawSDLayer();
+//    secondaryDisplay.draw();
+//    secondaryDisplay.drawSDLayer();
 }
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){

@@ -11,6 +11,7 @@
 
 CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
 	hasSpeaker = false;
+	playingMovie = false;
 }
 
 void CloudsSecondaryDisplayController::setup(){
@@ -32,7 +33,8 @@ void CloudsSecondaryDisplayController::setup(){
 	
 	clusterMap.buildEntireCluster(parser);
 	clusterMap.setRun(run);
-	clusterMap.traverse();
+
+//	clusterMap.traverse();
 	
 	clusterMap.setDrawToScreen(false);
 	
@@ -48,6 +50,10 @@ void CloudsSecondaryDisplayController::setup(){
 }
 
 void CloudsSecondaryDisplayController::update(){
+	
+	//TODO: fix with perma preset
+	clusterMap.incrementalTraversalMode = true;
+	
 	while(receiver.hasWaitingMessages()){
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
@@ -64,16 +70,31 @@ void CloudsSecondaryDisplayController::update(){
 			hasSpeaker = true;
 			currentSpeaker = CloudsSpeaker::speakers[m.getArgAsString(0)];
 			currentClip = parser.getClipWithID(m.getArgAsString(1));
+			
+			clusterMap.traverseToClip(currentClip);
+			
 			string exampleId = m.getArgAsString(4);
 			if(exampleId != ""){
 				//need to do something smarter here
 				currentExample = parser.getProjectExampleWithTitle(exampleId);
 				if(currentExample.exampleVideos.size() > 0){
-					
-//					archivePlayer.loadMovie( currentExample.exampleVideos[0]);
+					playingMovie = archivePlayer.loadMovie( currentExample.exampleVideos[0]);
+					if(playingMovie){
+						archivePlayer.setLoopState(OF_LOOP_NONE);
+						archivePlayer.play();
+					}
 				}
 			}
+			else{
+				playingMovie = false;
+				archivePlayer.stop();
+			}
 		}
+	}
+	
+	
+	if(playingMovie){
+		archivePlayer.update();
 	}
 }
 
@@ -89,6 +110,11 @@ void CloudsSecondaryDisplayController::drawOverlay(){
 		exampleType.drawString("NO SPEAKER", 30, 30);
 	}
     
+	if(playingMovie){
+		archivePlayer.draw(ofGetWidth()/2 - archivePlayer.getWidth()/2,
+						   ofGetHeight()/2 - archivePlayer.getHeight()/2);
+		playingMovie = archivePlayer.isPlaying();
+	}
     
     // ---------------- added
     

@@ -10,7 +10,6 @@
 		185CE9B1184A5FC800F43977 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 185CE996184A5FC800F43977 /* libftgl.a */; };
 		185CE9B5184A5FC800F43977 /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185CE99F184A5FC800F43977 /* ofxFTGLFont.cpp */; };
 		185CE9B6184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9A1184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp */; };
-		4FBB928818691BF000F050E3 /* CloudsSDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB928618691BF000F050E3 /* CloudsSDLayer.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -59,7 +58,6 @@
 		E70733131656A6DC002E60E5 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E707330D1656A6DC002E60E5 /* tinyxmlerror.cpp */; };
 		E70733141656A6DC002E60E5 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E707330E1656A6DC002E60E5 /* tinyxmlparser.cpp */; };
 		E70733151656A6DC002E60E5 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70733101656A6DC002E60E5 /* ofxXmlSettings.cpp */; };
-		E70CDD291868D44B00955691 /* CloudsSecondaryDisplayController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDD271868D44B00955691 /* CloudsSecondaryDisplayController.cpp */; };
 		E70CDD541868D49200955691 /* IpEndpointName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDD301868D49200955691 /* IpEndpointName.cpp */; };
 		E70CDD551868D49200955691 /* NetworkingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDD351868D49200955691 /* NetworkingUtils.cpp */; };
 		E70CDD561868D49200955691 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDD361868D49200955691 /* UdpSocket.cpp */; };
@@ -78,6 +76,8 @@
 		E70CDDB31868FAB900955691 /* svgtiny_gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDAB1868FAB900955691 /* svgtiny_gradient.cpp */; };
 		E70CDDB41868FAB900955691 /* svgtiny_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDAD1868FAB900955691 /* svgtiny_list.cpp */; };
 		E70CDDB51868FAB900955691 /* ofxSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDAF1868FAB900955691 /* ofxSvg.cpp */; };
+		E70CEC7418696B5400955691 /* CloudsSDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CEC6B18696B5400955691 /* CloudsSDLayer.cpp */; };
+		E70CEC7518696B5400955691 /* CloudsSecondaryDisplayController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CEC6D18696B5400955691 /* CloudsSecondaryDisplayController.cpp */; };
 		E7176E2F17D3DABA00C8DC38 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2D17D3DABA00C8DC38 /* CloudsQuestion.cpp */; };
 		E724461216573A0800D70E01 /* ofxHotKeys_impl_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E724459616573A0400D70E01 /* ofxHotKeys_impl_linux.cpp */; };
 		E724461316573A0800D70E01 /* ofxHotKeys_impl_mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = E724459716573A0400D70E01 /* ofxHotKeys_impl_mac.mm */; };
@@ -205,8 +205,6 @@
 		185CE9A0184A5FC800F43977 /* ofxFTGLFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLFont.h; sourceTree = "<group>"; };
 		185CE9A1184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFTGLSimpleLayout.cpp; sourceTree = "<group>"; };
 		185CE9A2184A5FC800F43977 /* ofxFTGLSimpleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLSimpleLayout.h; sourceTree = "<group>"; };
-		4FBB928618691BF000F050E3 /* CloudsSDLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSDLayer.cpp; sourceTree = "<group>"; };
-		4FBB928718691BF000F050E3 /* CloudsSDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSDLayer.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -351,8 +349,6 @@
 		E707330E1656A6DC002E60E5 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		E70733101656A6DC002E60E5 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		E70733111656A6DC002E60E5 /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
-		E70CDD271868D44B00955691 /* CloudsSecondaryDisplayController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSecondaryDisplayController.cpp; sourceTree = "<group>"; };
-		E70CDD281868D44B00955691 /* CloudsSecondaryDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSecondaryDisplayController.h; sourceTree = "<group>"; };
 		E70CDD2B1868D49200955691 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
 		E70CDD301868D49200955691 /* IpEndpointName.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IpEndpointName.cpp; sourceTree = "<group>"; };
 		E70CDD311868D49200955691 /* IpEndpointName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpEndpointName.h; sourceTree = "<group>"; };
@@ -394,6 +390,10 @@
 		E70CDDAD1868FAB900955691 /* svgtiny_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny_list.cpp; sourceTree = "<group>"; };
 		E70CDDAF1868FAB900955691 /* ofxSvg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSvg.cpp; sourceTree = "<group>"; };
 		E70CDDB01868FAB900955691 /* ofxSvg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSvg.h; sourceTree = "<group>"; };
+		E70CEC6B18696B5400955691 /* CloudsSDLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSDLayer.cpp; sourceTree = "<group>"; };
+		E70CEC6C18696B5400955691 /* CloudsSDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSDLayer.h; sourceTree = "<group>"; };
+		E70CEC6D18696B5400955691 /* CloudsSecondaryDisplayController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSecondaryDisplayController.cpp; sourceTree = "<group>"; };
+		E70CEC6E18696B5400955691 /* CloudsSecondaryDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSecondaryDisplayController.h; sourceTree = "<group>"; };
 		E7176E2D17D3DABA00C8DC38 /* CloudsQuestion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsQuestion.cpp; path = ../RGBD/CloudsQuestion.cpp; sourceTree = "<group>"; };
 		E7176E2E17D3DABA00C8DC38 /* CloudsQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsQuestion.h; path = ../RGBD/CloudsQuestion.h; sourceTree = "<group>"; };
 		E7176E3617D3DAFB00C8DC38 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../CloudsGlobal.h; sourceTree = "<group>"; };
@@ -1003,10 +1003,7 @@
 		E70CDD261868D43400955691 /* SecondaryDisplay */ = {
 			isa = PBXGroup;
 			children = (
-				E70CDD281868D44B00955691 /* CloudsSecondaryDisplayController.h */,
-				E70CDD271868D44B00955691 /* CloudsSecondaryDisplayController.cpp */,
-				4FBB928718691BF000F050E3 /* CloudsSDLayer.h */,
-				4FBB928618691BF000F050E3 /* CloudsSDLayer.cpp */,
+				E70CEC6A18696B5400955691 /* Receiver */,
 			);
 			name = SecondaryDisplay;
 			path = ../CloudsLibrary/src/SecondaryDisplay;
@@ -1163,6 +1160,17 @@
 				E70CDDB01868FAB900955691 /* ofxSvg.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		E70CEC6A18696B5400955691 /* Receiver */ = {
+			isa = PBXGroup;
+			children = (
+				E70CEC6C18696B5400955691 /* CloudsSDLayer.h */,
+				E70CEC6B18696B5400955691 /* CloudsSDLayer.cpp */,
+				E70CEC6E18696B5400955691 /* CloudsSecondaryDisplayController.h */,
+				E70CEC6D18696B5400955691 /* CloudsSecondaryDisplayController.cpp */,
+			);
+			path = Receiver;
 			sourceTree = "<group>";
 		};
 		E7176E3717D3DAFE00C8DC38 /* CloudsLibrary */ = {
@@ -1536,8 +1544,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsSecondaryDisplay" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1678,7 +1684,6 @@
 				E7B3C7EE17EE920D00581ACD /* CloudsStoryEngine.cpp in Sources */,
 				E7B3C7F117EE921500581ACD /* CloudsAct.cpp in Sources */,
 				E7B3C7FA17EF75BA00581ACD /* CloudsVisualSystemManager.cpp in Sources */,
-				4FBB928818691BF000F050E3 /* CloudsSDLayer.cpp in Sources */,
 				E7B3C7FB17EF75BA00581ACD /* CloudsVisualSystemPreset.cpp in Sources */,
 				E7E5E36B1812404300CA4196 /* CloudsClusterNode.cpp in Sources */,
 				E7E5E36C1812404300CA4196 /* CloudsVisualSystemClusterMap.cpp in Sources */,
@@ -1692,7 +1697,6 @@
 				E703CCC9185C237600547738 /* gaussianblur.vert in Sources */,
 				E7D483701860C5D000BE9BF8 /* CloudsInput.cpp in Sources */,
 				E7D483721860C5D000BE9BF8 /* CloudsInputMouse.cpp in Sources */,
-				E70CDD291868D44B00955691 /* CloudsSecondaryDisplayController.cpp in Sources */,
 				E70CDD541868D49200955691 /* IpEndpointName.cpp in Sources */,
 				E70CDD551868D49200955691 /* NetworkingUtils.cpp in Sources */,
 				E70CDD561868D49200955691 /* UdpSocket.cpp in Sources */,
@@ -1711,6 +1715,8 @@
 				E70CDDB31868FAB900955691 /* svgtiny_gradient.cpp in Sources */,
 				E70CDDB41868FAB900955691 /* svgtiny_list.cpp in Sources */,
 				E70CDDB51868FAB900955691 /* ofxSvg.cpp in Sources */,
+				E70CEC7418696B5400955691 /* CloudsSDLayer.cpp in Sources */,
+				E70CEC7518696B5400955691 /* CloudsSecondaryDisplayController.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
