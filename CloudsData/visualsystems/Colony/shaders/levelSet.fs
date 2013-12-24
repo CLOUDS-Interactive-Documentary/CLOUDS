@@ -25,8 +25,7 @@ vec4 getLevelSet(){
 }
 
 float bump(float t, float center, float width){
-    float f = (t - center);
-    f *= f;
+    float f = pow((t - center), 2);
     return 1. - clamp(f / (width * width), 0., 1.);
 }
 

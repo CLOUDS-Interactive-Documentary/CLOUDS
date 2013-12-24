@@ -142,7 +142,7 @@ void colonyCell::doScanAndFlock(neighbor_iterator& iter){
 //==========================================================================================
 
 void colonyCell::doFeedCellNoise(){
-    lastFeedValue = ofNoise(position.x, position.y, position.z, ofGetElapsedTimef() * 100) * 250;
+    lastFeedValue = powf(ofNoise(position.x, position.y, position.z, ofGetElapsedTimef() * _params.nutrientTimeCoef), 1/_params.nutrientFalloff )* _params.nutrientAmount;
 }
 
 void colonyCell::doAddTurbulence(){

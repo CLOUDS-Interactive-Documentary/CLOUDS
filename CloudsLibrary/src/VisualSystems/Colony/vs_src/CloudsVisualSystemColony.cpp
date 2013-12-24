@@ -38,6 +38,10 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
     sysGui->addSlider("Fertility Rate", 0.0, 1.0, &params.fertilityRate);
     sysGui->addRangeSlider("Lifespan Range", 5, 5000, &params.lifespanMin, &params.lifespanMax);
     
+    sysGui->addSlider("Nutrient Amount", 150, 500, &params.nutrientAmount);
+    sysGui->addSlider("Nutrient Change Ratio", 0, 500, &params.nutrientTimeCoef);
+    sysGui->addSlider("Nutrient Contrast", 0, 4.0, &params.nutrientFalloff);
+        
     sysGui->addSpacer("Immutables");
     sysGui->addButton("Reset", &reset);
 }
