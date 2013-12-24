@@ -10,6 +10,7 @@
 		185CE9B1184A5FC800F43977 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 185CE996184A5FC800F43977 /* libftgl.a */; };
 		185CE9B5184A5FC800F43977 /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185CE99F184A5FC800F43977 /* ofxFTGLFont.cpp */; };
 		185CE9B6184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9A1184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp */; };
+		4FBB928818691BF000F050E3 /* CloudsSDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB928618691BF000F050E3 /* CloudsSDLayer.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -204,6 +205,8 @@
 		185CE9A0184A5FC800F43977 /* ofxFTGLFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLFont.h; sourceTree = "<group>"; };
 		185CE9A1184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFTGLSimpleLayout.cpp; sourceTree = "<group>"; };
 		185CE9A2184A5FC800F43977 /* ofxFTGLSimpleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLSimpleLayout.h; sourceTree = "<group>"; };
+		4FBB928618691BF000F050E3 /* CloudsSDLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSDLayer.cpp; sourceTree = "<group>"; };
+		4FBB928718691BF000F050E3 /* CloudsSDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSDLayer.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1002,6 +1005,8 @@
 			children = (
 				E70CDD281868D44B00955691 /* CloudsSecondaryDisplayController.h */,
 				E70CDD271868D44B00955691 /* CloudsSecondaryDisplayController.cpp */,
+				4FBB928718691BF000F050E3 /* CloudsSDLayer.h */,
+				4FBB928618691BF000F050E3 /* CloudsSDLayer.cpp */,
 			);
 			name = SecondaryDisplay;
 			path = ../CloudsLibrary/src/SecondaryDisplay;
@@ -1531,6 +1536,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsSecondaryDisplay" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1671,6 +1678,7 @@
 				E7B3C7EE17EE920D00581ACD /* CloudsStoryEngine.cpp in Sources */,
 				E7B3C7F117EE921500581ACD /* CloudsAct.cpp in Sources */,
 				E7B3C7FA17EF75BA00581ACD /* CloudsVisualSystemManager.cpp in Sources */,
+				4FBB928818691BF000F050E3 /* CloudsSDLayer.cpp in Sources */,
 				E7B3C7FB17EF75BA00581ACD /* CloudsVisualSystemPreset.cpp in Sources */,
 				E7E5E36B1812404300CA4196 /* CloudsClusterNode.cpp in Sources */,
 				E7E5E36C1812404300CA4196 /* CloudsVisualSystemClusterMap.cpp in Sources */,
