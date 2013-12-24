@@ -1,8 +1,8 @@
     //
-//  CubeCraft.cpp
+//  CloudsVisualSystemCubeCraft.cpp
 //
 
-#include "CubeCraft.h"
+#include "CloudsVisualSystemCubeCraft.h"
 #include "CloudsRGBDVideoPlayer.h"
 
 //#include "CloudsRGBDVideoPlayer.h"
@@ -11,7 +11,7 @@
 //#endif
 
 //These methods let us add custom GUI parameters and respond to their events
-void CubeCraft::selfSetupGui()
+void CloudsVisualSystemCubeCraft::selfSetupGui()
 {
 	customGui = new ofxUISuperCanvas("Cubes", gui);
 	customGui->copyCanvasStyle(gui);
@@ -45,7 +45,7 @@ void CubeCraft::selfSetupGui()
 	customGui->addSlider("noiseDirectionZ", -1, 1, &noiseDirection.z);
 	
 	
-	ofAddListener(customGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
+	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemCubeCraft::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 	
@@ -80,7 +80,7 @@ void CubeCraft::selfSetupGui()
 	meshRenderGui->addLabel("SpecColor");
 	meshRenderGui->addImageSampler("specColor", &colorMap, 100, 100);
 	
-	ofAddListener(meshRenderGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
+	ofAddListener(meshRenderGui->newGUIEvent, this, &CloudsVisualSystemCubeCraft::selfGuiEvent);
 	guis.push_back(meshRenderGui);
 	guimap[meshRenderGui->getName()] = meshRenderGui;
 	
@@ -111,7 +111,7 @@ void CubeCraft::selfSetupGui()
 	
    //fogGui->addImageSampler("fogColor", &colorMap, 100, 100);
 	
-	ofAddListener(fogGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
+	ofAddListener(fogGui->newGUIEvent, this, &CloudsVisualSystemCubeCraft::selfGuiEvent);
 	guis.push_back(fogGui);
 	guimap[fogGui->getName()] = fogGui;
 	
@@ -153,13 +153,13 @@ void CubeCraft::selfSetupGui()
 	mineCraftGui->addMinimalSlider("cloudShadowBrightness", 0, 255, &cloudShadowBrightness );
 
 	
-	ofAddListener(mineCraftGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
+	ofAddListener(mineCraftGui->newGUIEvent, this, &CloudsVisualSystemCubeCraft::selfGuiEvent);
 	guis.push_back(mineCraftGui);
 	guimap[mineCraftGui->getName()] = mineCraftGui;
 	
 }
 
-void CubeCraft::selfGuiEvent(ofxUIEventArgs &e)
+void CloudsVisualSystemCubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 {
 	string name = e.getName();
 	
@@ -250,7 +250,7 @@ void CubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 	}
 }
 
-void CubeCraft::updateAllColors()
+void CloudsVisualSystemCubeCraft::updateAllColors()
 {
 	fogColor.setHue(fogHue);
 	fogColor.setSaturation(fogSaturation);
@@ -270,15 +270,15 @@ void CubeCraft::updateAllColors()
 }
 
 //Use system gui for global or logical settings, for exmpl
-void CubeCraft::selfSetupSystemGui(){
+void CloudsVisualSystemCubeCraft::selfSetupSystemGui(){
 	
 }
 
-void CubeCraft::guiSystemEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemCubeCraft::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
 
-void CubeCraft::selfSetDefaults()
+void CloudsVisualSystemCubeCraft::selfSetDefaults()
 {
 	//defaults
 	bDrawVoxels = bDrawCubeCraft = false;
@@ -314,7 +314,7 @@ void CubeCraft::selfSetDefaults()
 	updateAllColors();
 }
 
-void CubeCraft::selfSetup()
+void CloudsVisualSystemCubeCraft::selfSetup()
 {
 	
 	//gui
@@ -336,7 +336,7 @@ void CubeCraft::selfSetup()
 	updateAllColors();
 }
 
-void CubeCraft::loadShaders()
+void CloudsVisualSystemCubeCraft::loadShaders()
 {
 	unloadShaders();
 	
@@ -346,7 +346,7 @@ void CubeCraft::loadShaders()
 	mineCraftCloudsShader.load( getVisualSystemDataPath() + "shaders/mineCraftClouds");
 }
 
-void CubeCraft::unloadShaders()
+void CloudsVisualSystemCubeCraft::unloadShaders()
 {
 	voxelShader.unload();
 	cubeCraftShader.unload();
@@ -354,13 +354,13 @@ void CubeCraft::unloadShaders()
 	mineCraftCloudsShader.unload();
 }
 
-void CubeCraft::selfBegin()
+void CloudsVisualSystemCubeCraft::selfBegin()
 {
 	
 }
 
 
-void CubeCraft::selfUpdate()
+void CloudsVisualSystemCubeCraft::selfUpdate()
 {
 	float currentTime = ofGetElapsedTimef();
 //	ofSetWindowTitle( ofToString( ofGetFrameRate() ) );
@@ -375,7 +375,7 @@ void CubeCraft::selfUpdate()
 }
 
 
-void CubeCraft::selfDraw()
+void CloudsVisualSystemCubeCraft::selfDraw()
 {
 	if(bDrawVoxels)
 	{
@@ -388,7 +388,7 @@ void CubeCraft::selfDraw()
 	}
 }
 
-void CubeCraft::drawVoxelGrid()
+void CloudsVisualSystemCubeCraft::drawVoxelGrid()
 {
 	
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -452,7 +452,7 @@ void CubeCraft::drawVoxelGrid()
 	glPopAttrib();
 }
 
-void CubeCraft::drawCubeCraft()
+void CloudsVisualSystemCubeCraft::drawCubeCraft()
 {
 	
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -571,7 +571,7 @@ void CubeCraft::drawCubeCraft()
 	glPopAttrib();
 }
 
-void CubeCraft::resizeVoxelGrid()
+void CloudsVisualSystemCubeCraft::resizeVoxelGrid()
 {
 	halfDimX = dimX * .5;
 	halfDimY = dimY * .5;
@@ -626,7 +626,7 @@ void CubeCraft::resizeVoxelGrid()
 }
 
 
-//void CubeCraft::updateGroundMap()
+//void CloudsVisualSystemCubeCraft::updateGroundMap()
 //{
 //	//set groundMap
 //	float noiseScale = .025;
@@ -653,22 +653,22 @@ void CubeCraft::resizeVoxelGrid()
 
 //do things like ofRotate/ofTranslate here
 //any type of transformation that doesn't have to do with the camera
-void CubeCraft::selfSceneTransformation(){
+void CloudsVisualSystemCubeCraft::selfSceneTransformation(){
 	
 }
 //use render gui for display settings, like changing colors
-void CubeCraft::selfSetupRenderGui(){
+void CloudsVisualSystemCubeCraft::selfSetupRenderGui(){
 	
 }
 
-void CubeCraft::guiRenderEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemCubeCraft::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
-void CubeCraft::selfPresetLoaded(string presetPath){
+void CloudsVisualSystemCubeCraft::selfPresetLoaded(string presetPath){
 
 	//setup the voxels
 	resizeVoxelGrid();
@@ -676,18 +676,18 @@ void CubeCraft::selfPresetLoaded(string presetPath){
 	updateAllColors();
 }
 
-void CubeCraft::selfDrawDebug(){
+void CloudsVisualSystemCubeCraft::selfDrawDebug(){
 	
 }
 
-void CubeCraft::selfDrawBackground(){
+void CloudsVisualSystemCubeCraft::selfDrawBackground(){
 }
 
-void CubeCraft::selfEnd()
+void CloudsVisualSystemCubeCraft::selfEnd()
 {
 }
 
-void CubeCraft::selfExit()
+void CloudsVisualSystemCubeCraft::selfExit()
 {
 	cubeMesh.clear();
 	
@@ -698,7 +698,7 @@ void CubeCraft::selfExit()
 	unloadShaders();
 }
 
-void CubeCraft::selfKeyPressed(ofKeyEventArgs & args)
+void CloudsVisualSystemCubeCraft::selfKeyPressed(ofKeyEventArgs & args)
 {
 	if(args.key == 'l' || args.key == 'L' )
 	{
@@ -706,22 +706,22 @@ void CubeCraft::selfKeyPressed(ofKeyEventArgs & args)
 	}
 
 }
-void CubeCraft::selfKeyReleased(ofKeyEventArgs & args){
+void CloudsVisualSystemCubeCraft::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
 
-void CubeCraft::selfMouseDragged(ofMouseEventArgs& data){
+void CloudsVisualSystemCubeCraft::selfMouseDragged(ofMouseEventArgs& data){
 	
 }
 
-void CubeCraft::selfMouseMoved(ofMouseEventArgs& data){
+void CloudsVisualSystemCubeCraft::selfMouseMoved(ofMouseEventArgs& data){
 	
 }
 
-void CubeCraft::selfMousePressed(ofMouseEventArgs& data){
+void CloudsVisualSystemCubeCraft::selfMousePressed(ofMouseEventArgs& data){
 	
 }
 
-void CubeCraft::selfMouseReleased(ofMouseEventArgs& data){
+void CloudsVisualSystemCubeCraft::selfMouseReleased(ofMouseEventArgs& data){
 	
 }

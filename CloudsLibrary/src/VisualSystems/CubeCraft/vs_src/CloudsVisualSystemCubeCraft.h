@@ -15,7 +15,7 @@
 #include "ofxObjLoader.h"
 
 
-class CubeCraft : public CloudsVisualSystem {
+class CloudsVisualSystemCubeCraft : public CloudsVisualSystem {
 public:
     
 	
