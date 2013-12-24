@@ -321,7 +321,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
 //    act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
     totalSecondsEnqueued = preRollDuration;
     act->addClip(clip, topic, totalSecondsEnqueued, clipHandleDuration, getCurrentDichotomyBalance());
-    
+    cout << "CLIP START DURATION IS " << clip.getDuration() << endl;
     localClipHistory.push_back(clip);
     localTopicHistory.push_back(topic);
     
@@ -348,6 +348,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     ////
     
     totalSecondsEnqueued += clip.getDuration()+( gapLengthMultiplier * clip.getDuration() ) * clipHandleDuration * 2;
+    
+    cout << "Total seconds? " << totalSecondsEnqueued << endl;
+    
     localTimesOnCurrentTopicHistory[topic]++;
     int timesOnCurrentTopic = 0;
     topicScoreStream << "STARTING TOPIC " << topic << endl;
@@ -969,17 +972,17 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history,
 	
 	if(currentRun == 1 && clipDifficulty != "easy"){
         if (printDecisions) cout<< "         REJECTED Clip "<<potentialNextClip.getLinkName()<<" : easy clips in the intro please!!" << endl;
-		return 0;
+		//return 0; //<@_@> 4:AM JG: don't actually get rid of this plz
 	}
 	
 	if(currentRun <= 2 && clipDifficulty == "medium"){
         if (printDecisions) cout<< "         REJECTED Clip "<<potentialNextClip.getLinkName()<<" : medium clips in the second act please!!" << endl;
-		return 0;
+//		return 0;//<@_@>
 	}
 
 	if( currentRun <= 3 && clipDifficulty == "hard" ){
         if (printDecisions) cout<< "         REJECTED Clip "<<potentialNextClip.getLinkName()<<" : hard clips come 3rd act" << endl;
-		return 0;
+//		return 0;//<@_@>
 	}
 
     //Base score
