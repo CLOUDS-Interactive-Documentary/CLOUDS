@@ -23,7 +23,74 @@ public:
     ofxTween tweenX, tweenY;
 };
 
-//TODO: rename this to your own visual system
+enum sortMode {
+    SOURCE_MODE,
+    TARGET_MODE
+};
+
+struct compareObj {
+    PGCell * cell;
+    int index;
+} ;
+
+struct glitchParams{
+    bool enable = false;
+    bool sortByBrightness = false;
+    bool sortByHue = false;
+    bool randomSort = true;
+    bool reorder = false;
+    bool shuffle = false;
+    vector<string> targetImageNames;
+    sortMode mode;
+};
+
+class PhotoGlitch
+{
+public:
+    int ID;
+    int numVerts;
+    GLfloat * verts;
+    GLfloat * texCoords;
+    GLfloat * colors;
+    int numIndices;
+    GLuint * indices;
+    
+    ofImage tex;
+    ofVbo vbo;
+    
+    PGCell * cells;
+    
+    void clear(){
+        
+        if (cells != NULL) {
+            delete [] cells;
+            cells = NULL;
+        }
+        
+        if (verts != NULL) {
+            delete [] verts;
+            verts = NULL;
+        }
+        
+        if( texCoords != NULL){
+            delete [] texCoords;
+            texCoords = NULL;
+        }
+        
+        if (colors != NULL) {
+            delete [] colors;
+            colors = NULL;
+        }
+        
+        if (indices != NULL) {
+            delete [] indices;
+            indices = NULL;
+        }
+        
+    }
+};
+
+
 class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
 {
   public:    
@@ -101,29 +168,50 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
 //		return myCustomCamera;
 //	}
     
-    void clear();
-    void generate();
-
+    void clearSource();
+    void clearTarget();
+    void generateSource();
+    void generateTarget();
+    void generate(PhotoGlitch& pg, int imageIndex);
+    void beginAnimation();
+    void updateAnimation();
+    
     void shuffle();
     void sortHue();
     void sortBri();
     void reorder();
     void sortTarget();
     void sortTargetBrightness();
-    
+    void addTargetToUI(ofxUISuperCanvas* gui,string suffix, glitchParams& params );
     void tweenAll();
     void tween(int i, int j = -1);
     void tweenTarget(int i, int j = -1);
+    
+    int getTargetFileName(ofxUISuperCanvas * gui, int targetId);
     
     static bool sortIdxForHue(int i, int j);
     static bool sortIdxForBri(int i, int j);
     static bool sortIdxForHueTarget(int i, int j);
     static bool sortIdxForBrightnessTarget(int i, int j);
+    
     static PGCell * cells;
     static PGCell * targetCells;
-    
+    PhotoGlitch sourcePhoto;
+    vector<PhotoGlitch> photos;
+    PhotoGlitch target1;
+    PhotoGlitch target2;
+
+    glitchParams gp1;
+    glitchParams gp2;
+    glitchParams sourceParams;
+    PhotoGlitch * currentTarget;
+    glitchParams * currentTargetParams;
   protected:
+    
+    int currentTargetIndex;
     ofxUISuperCanvas * customGui;
+    ofxUISuperCanvas * target1Gui;
+    ofxUISuperCanvas * target2Gui;
     
     int numDivRows;
     int numDivCols;
@@ -138,28 +226,37 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     
     GLfloat * targetTexCoords;
     GLfloat * targetColors;
-
+    int numTargetVerts;
+    GLfloat * targetVerts;
+    int numTargetIndices;
+    GLuint * targetIndices;
     
     ofImage tex;
     ofVbo vbo;
+    ofVbo bgVbo;
     
     ofImage targetTex;
     ofVbo targetVbo;
+
+    ofRectangle screenRect;
     
     ofDirectory imagesDir;
     ofDirectory targetImagesDir;
+    
     int selectedSrcImageIdx;
     int selectedTargetImageIdx;
     
     int tweenDuration;
     int tweenDelay;
     
+    int delayParameter;
+    int delayValue;
     float screenSliceWidth;
     float screenSliceHeight;
     float texSliceWidth;
     float texSliceHeight;
     float targetTexSliceWidth;
-    float targetTexSliceHeight;
+    float targetTexSliceHeight; 
     
     bool bUseColors;
     bool bUseTexture;
@@ -171,9 +268,14 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     bool bShouldSortTarget;
     bool bShouldSortTargetBri;
     bool bShouldReorder;
+    bool bRandomSort;
+    bool bDrawBackground;
 
+    bool bCurrentlyAnimating;
+    bool bStartAnimating;
     
     bool bDoPerpendicular;
     
     bool bShouldGenerate;
+    bool bShouldGenerateTargetOnly;
 };
