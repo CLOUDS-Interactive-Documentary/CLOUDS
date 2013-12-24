@@ -711,10 +711,10 @@
 		C102654B182EBDA900C7F895 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				2A4F33D41863C64B0070C0ED /* CloudsAudioEvents.cpp */,
 				2A4F33D51863C64B0070C0ED /* CloudsAudioEvents.h */,
-				2A4F33D61863C64B0070C0ED /* CloudsMixer.cpp */,
+				2A4F33D41863C64B0070C0ED /* CloudsAudioEvents.cpp */,
 				2A4F33D71863C64B0070C0ED /* CloudsMixer.h */,
+				2A4F33D61863C64B0070C0ED /* CloudsMixer.cpp */,
 				C102654D182EBDA900C7F895 /* CloudsSound.h */,
 				C102654C182EBDA900C7F895 /* CloudsSound.cpp */,
 				C102654E182EBDA900C7F895 /* CloudsSoundFilesSamplesDatabases.cpp */,
@@ -1830,8 +1830,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsScoreDesigner" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -2096,7 +2094,8 @@
 		E4B69B600A3A1757003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2222,7 +2221,8 @@
 		E4B69B610A3A1757003C02F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

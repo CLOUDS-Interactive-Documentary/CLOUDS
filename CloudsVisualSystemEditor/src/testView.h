@@ -73,6 +73,9 @@
 
 - (IBAction) exportStandalone:(id)sender;
 
+- (IBAction) playSelectedRow:(id)sender;
+- (IBAction) playPreviousPreset:(id)sender;
+- (IBAction) playNextPreset:(id)sender;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;

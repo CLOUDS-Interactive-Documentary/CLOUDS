@@ -561,6 +561,24 @@ completionsForSubstring:(NSString *)substring
     return NO;
 }
 
+- (IBAction) playSelectedRow:(id)sender
+{
+    shouldPlaySelectedRow = true;
+}
+
+- (IBAction) playPreviousPreset:(id)sender
+{
+	[presetTable selectRowIndexes:[NSIndexSet indexSetWithIndex:MAX(presetTable.selectedRow-1,0)] byExtendingSelection:NO];
+	shouldPlaySelectedRow = true;
+}
+
+- (IBAction) playNextPreset:(id)sender
+{
+	[presetTable selectRowIndexes:[NSIndexSet indexSetWithIndex:MIN(presetTable.selectedRow+1,filteredPresetInds.size()-1)] byExtendingSelection:NO];
+	shouldPlaySelectedRow = true;
+
+}
+
 - (void)playDoubleClickedRow:(id)sender
 {
     shouldPlaySelectedRow = true;

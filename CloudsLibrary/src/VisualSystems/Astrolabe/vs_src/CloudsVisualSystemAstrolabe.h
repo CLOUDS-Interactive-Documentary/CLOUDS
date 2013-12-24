@@ -114,7 +114,7 @@ protected:
 					float yRot = 40,
 					float zRot = 60,
 					float spacing = 2,
-					float minTickSpeed = 100,
+					float xTickSpeed = 100,
 					float lowRadians = PI,
 					float hiRadians = TWO_PI);
 	
@@ -123,19 +123,25 @@ protected:
 	
 	//RINGS
 	ofxUISuperCanvas* ringsGui;
+	ofxUISuperCanvas* ticksGui;
 	
 	bool bSetupRings;
 	int ringsCount;
 	float ringsInnerRad;
 	float ringsWidth;
 	float ringsThickness;
-	float ringsXRot;
-	float ringsYRot;
-	float ringsZRot;
+	int ringsXRot;
+	int ringsYRot;
+	int ringsZRot;
 	float ringsSpacing;
 	float ringsMinTickSpeed;
 	float ringsLowRadians;
 	float ringsHiRadians;
+	
+	int xTickSpeed, yTickSpeed, zTickSpeed;
+	int xTickDelay, yTickDelay, zTickDelay;
+	bool bAutoReverseX, bAutoReverseY, bAutoReverseZ;
+	float ringsFalloff;
 	
 	
 	ofxUISuperCanvas* customGui;

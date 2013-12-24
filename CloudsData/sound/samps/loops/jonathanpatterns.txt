@@ -35,9 +35,9 @@ House_kick_32.wav A B
  
 // Jungle
 
-Jungle_Drum_16.wav A B 
-Jungle_Clang2_16.wav - - - - A B A A B A B
-Jungle_Clang1_16.wav - - - - - - A B - - A B - - A B
-Jungle_Clang3_4.wav - - - - A B A B A B A B A B A
+Jungle_Drum_16.wav A B
+Jungle_Clang2_16.wav A B 
+Jungle_Clang1_16.wav A B
+
 
 
