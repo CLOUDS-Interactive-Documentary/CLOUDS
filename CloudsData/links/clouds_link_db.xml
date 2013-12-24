@@ -4289,10 +4289,20 @@
 </clip>
 <clip>
     <name>Bruce - beauty of code 4</name>
+    <suppress>
+        <target>Intro - CodingSketching</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - beauty of code 5</name>
+    <suppress>
+        <target>Intro - CodingSketching</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#easy</additionalKeywords>
 </clip>
 <clip>
@@ -11770,6 +11780,11 @@
     </link>
     <suppress>
         <target>Shiffman - offers me a way to think</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Intro - CodingSketching</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -39096,6 +39111,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Intro - Programming</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#tech,#easy</additionalKeywords>
 </clip>
 <clip>
@@ -45948,6 +45968,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Intro - interactivity1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#art,#inspiring,#sincere,#fun</additionalKeywords>
 </clip>
 <clip>
@@ -51241,67 +51266,102 @@
 </clip>
 <clip>
     <name>Intro - AudioVisualization</name>
-    <additionalKeywords>?audiovisualization: How does audiovisualization work?</additionalKeywords>
+    <additionalKeywords>music,audiovisualization,?audiovisualization: How does audiovisualization work?</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - BuildingWorlds2</name>
-    <additionalKeywords>#start,?simulation: Is it possible to truly simulate reality?</additionalKeywords>
+    <additionalKeywords>cosmogeny,god mode,#start,?simulation: Is it possible to truly simulate reality?,simulation</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - BuildingWorlds</name>
-    <additionalKeywords>?cosmogeny: How do you create a digital universe?,#start</additionalKeywords>
+    <additionalKeywords>#start,?cosmogeny: How do you create a digital universe?,cosmogeny,simulation</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - CodingSketching</name>
-    <additionalKeywords>#start,?sketching: How do you sketch with code?</additionalKeywords>
+    <suppress>
+        <target>Bruce - beauty of code 5</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Bruce - beauty of code 4</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Greg - Creative Coder</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>coding,sketching,self expression,?sketching: How do you sketch with code?,#start,creative coding</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - Collaboration</name>
-    <additionalKeywords>#start,?community: How does the network accelerate creativity?</additionalKeywords>
+    <additionalKeywords>?community: How does the network accelerate creativity?,#start,collaboration,sharing,community</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - Computers</name>
-    <additionalKeywords>#start,?thinking: Do computers make us smarter?</additionalKeywords>
+    <additionalKeywords>computation,computer,thinking through code,#start,?thinking: Do computers make us smarter?,code</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - CriticalPractices</name>
-    <additionalKeywords>?critical engineering: How does academic research inform creative technology ?</additionalKeywords>
+    <additionalKeywords>?critical engineering: How does academic research inform creative technology ?,creative coding,critical engineering</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - interactivity1</name>
-    <additionalKeywords>#start,?interactivity: What makes a satisfying interaction?</additionalKeywords>
+    <suppress>
+        <target>Shantell - Kids</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>interactivity,new media,play,systems,?interactivity: What makes a satisfying interaction?,#start</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - Interfaces</name>
-    <additionalKeywords>?interface: What&apos;s the ultimate interface?,#start</additionalKeywords>
+    <link>
+        <target>Theo - hide the technology,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Greg - camera scaling up</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>interfaces,technology,devices,ubiquitous computing,interface,experience,seamlessness,sensor,?interface: What&apos;s the ultimate interface?,#start</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - KinectFutureCamera</name>
-    <additionalKeywords>?machine vision: What&apos;s the camera of the future?</additionalKeywords>
+    <additionalKeywords>?machine vision: What&apos;s the camera of the future?,kinect,camera</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - Learning</name>
-    <additionalKeywords>#start,?programming: What does it feel like to program?</additionalKeywords>
+    <additionalKeywords>learning,#start,?programming: What does it feel like to program?,programming</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - LogicOfPixels</name>
-    <additionalKeywords>#start,?coding: How can the logic of coding be creative?</additionalKeywords>
+    <additionalKeywords>thinking through code,coding,software,logic,computation,?coding: How can the logic of coding be creative?,#start</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - Programming</name>
-    <additionalKeywords>#start,?programming: Is programming a waste of time?</additionalKeywords>
+    <suppress>
+        <target>Paola - the tribe</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>programming,addiction,coding,hackers,?programming: Is programming a waste of time?,#start</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - Sharing</name>
-    <additionalKeywords>#start,?open source: What is open source all about?</additionalKeywords>
+    <additionalKeywords>?open source: What is open source all about?,#start,sharing,community</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - Toolmaker</name>
-    <additionalKeywords>#start,?toolmakers: what&apos;s the link between invention and art?</additionalKeywords>
+    <additionalKeywords>toolmakers,invention,?toolmakers: what&apos;s the link between invention and art?,#start,tools</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - VirtualReality</name>
-    <additionalKeywords>#start,?real and virtual: Have we hacked reality?</additionalKeywords>
+    <additionalKeywords>virtual,reality,#start,?real and virtual: Have we hacked reality?,real</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - Amiga500</name>
