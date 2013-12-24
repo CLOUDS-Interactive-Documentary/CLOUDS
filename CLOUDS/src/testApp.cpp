@@ -37,7 +37,7 @@ void testApp::setup(){
 
 	player.setStoryEngine(storyEngine);
 
-	websockets.setup();
+	oscSender.setup();
 	
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
 	
@@ -77,10 +77,10 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::actCreated(CloudsActEventArgs& args){
 	if(currentAct != NULL){
-		currentAct->unregisterEvents(&websockets);
+		currentAct->unregisterEvents(&oscSender);
 	}
 	currentAct = args.act;
-	currentAct->registerEvents(&websockets);
+	currentAct->registerEvents(&oscSender);
 }
 
 //--------------------------------------------------------------
@@ -121,12 +121,6 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
 
 	mixer.fillBuffer(output,bufferSize,nChannels);
 	
-//	ofAudioEventArgs args;
-//	args.buffer = output;
-//	args.bufferSize = bufferSize;
-//	args.nChannels = nChannels;
-//	
-//	ofNotifyEvent(ofEvents().audioRequested, args, this);
 }
 
 //--------------------------------------------------------------

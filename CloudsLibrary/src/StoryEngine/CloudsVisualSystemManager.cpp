@@ -5,17 +5,23 @@
 
 #ifndef CLOUDS_NO_VS
 
+#include "CloudsVisualSystem2DVideo.h"
 #include "CloudsVisualSystem3DModelLoader.h"
+#include "CloudsVisualSystemAstrolabe.h"
 #include "CloudsVisualSystemAutomata.h"
 #include "CloudsVisualSystemBallDroppings.h"
 #include "CloudsVisualSystemChromogram.h"
+#include "CloudsVisualSystemCirclePacking.h"
+#include "CloudsVisualSystemCircuit.h"
 #include "CloudsVisualSystemCities.h"
 #include "CloudsVisualSystemCode.h"
 #include "CloudsVisualSystemColony.h"
 #include "CloudsVisualSystemConnectors.h"
 #include "CloudsVisualSystemCosmic.h"
+#include "CloudsVisualSystemCubeCraft.h"
 #include "CloudsVisualSystemDataCascade.h"
 #include "CloudsVisualSystemDrawnLine.h"
+#include "CloudsVisualSystemEmpty.h"
 #include "CloudsVisualSystemExampleBox2D.h"
 #include "CloudsVisualSystemExampleMPMFluid.h"
 #include "CloudsVisualSystemExampleOpenSteer.h"
@@ -25,7 +31,7 @@
 #include "CloudsVisualSystemFlying.h"
 #include "CloudsVisualSystemForkingPaths.h"
 #include "CloudsVisualSystemGPUParticles.h"
-//#include "CloudsVisualSystemGameOfLife.h"
+#include "CloudsVisualSystemGesturePaint.h"
 #include "CloudsVisualSystemHistogram.h"
 #include "CloudsVisualSystemLIA.h"
 #include "CloudsVisualSystemLSystem.h"
@@ -38,7 +44,7 @@
 #include "CloudsVisualSystemNbody.h"
 #include "CloudsVisualSystemNeurons.h"
 #include "CloudsVisualSystemOcean.h"
-//#include "CloudsVisualSystemOpenP53DIntro.h"
+#include "CloudsVisualSystemOpenP53DIntro.h"
 #include "CloudsVisualSystemOpenP5Caustics.h"
 #include "CloudsVisualSystemOpenP5DrawingMachine10.h"
 #include "CloudsVisualSystemOpenP5Fifteen.h"
@@ -55,23 +61,28 @@
 #include "CloudsVisualSystemOscillations.h"
 #include "CloudsVisualSystemPages.h"
 #include "CloudsVisualSystemPaintBrush.h"
+#include "CloudsVisualSystemPhotoGlitch.h"
 //#include "CloudsVisualSystemQuineVisualSystem.h"
 #include "CloudsVisualSystemRGBDVideo.h"
 #include "CloudsVisualSystemRandomDigits.h"
 #include "CloudsVisualSystemReplicator.h"
 #include "CloudsVisualSystemRipples.h"
 #include "CloudsVisualSystemRulez.h"
-#include "CloudsVisualSystemScrape.h"
 #include "CloudsVisualSystemSatoruhiga.h"
+#include "CloudsVisualSystemScrape.h"
 #include "CloudsVisualSystemSwim.h"
-//#include "CloudsVisualSystemThingsInTheDark.h"
+#include "CloudsVisualSystemTerrain.h"
+#include "CloudsVisualSystemThingsInTheDark.h"
+#include "CloudsVisualSystemTunnelDrawing.h"
 #include "CloudsVisualSystemTwitter.h"
+#include "CloudsVisualSystemUextrude.h"
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemVerletForm.h"
 #include "CloudsVisualSystemVision.h"
 #include "CloudsVisualSystemVoro.h"
 #include "CloudsVisualSystemWebHistory.h"
 #include "CloudsVisualSystemWorld.h"
+#include "CloudsVisualSystemWormHole.h"
 #include "CloudsVisualSystemXstatic.h"
 #include "CloudsVisualSystemYellowTail.h"
 
@@ -94,17 +105,23 @@ struct Mapping {
 	}
 } mapping[] = {
 
+	{ "2DVideo", &fCreate<CloudsVisualSystem2DVideo> },
 	{ "3DModelLoader", &fCreate<CloudsVisualSystem3DModelLoader> },
+	{ "Astrolabe", &fCreate<CloudsVisualSystemAstrolabe> },
 	{ "Automata", &fCreate<CloudsVisualSystemAutomata> },
 	{ "BallDroppings", &fCreate<CloudsVisualSystemBallDroppings> },
 	{ "Chromogram", &fCreate<CloudsVisualSystemChromogram> },
+	{ "CirclePacking", &fCreate<CloudsVisualSystemCirclePacking> },
+	{ "Circuit", &fCreate<CloudsVisualSystemCircuit> },
 	{ "Cities", &fCreate<CloudsVisualSystemCities> },
 	{ "Code", &fCreate<CloudsVisualSystemCode> },
 	{ "Colony", &fCreate<CloudsVisualSystemColony> },
 	{ "Connectors", &fCreate<CloudsVisualSystemConnectors> },
 	{ "Cosmic", &fCreate<CloudsVisualSystemCosmic> },
+	{ "CubeCraft", &fCreate<CloudsVisualSystemCubeCraft> },
 	{ "DataCascade", &fCreate<CloudsVisualSystemDataCascade> },
 	{ "DrawnLine", &fCreate<CloudsVisualSystemDrawnLine> },
+	{ "Empty", &fCreate<CloudsVisualSystemEmpty> },
 	{ "ExampleBox2D", &fCreate<CloudsVisualSystemExampleBox2D> },
 	{ "ExampleMPMFluid", &fCreate<CloudsVisualSystemExampleMPMFluid> },
 	{ "ExampleOpenSteer", &fCreate<CloudsVisualSystemExampleOpenSteer> },
@@ -113,8 +130,8 @@ struct Mapping {
 	{ "Flocking", &fCreate<CloudsVisualSystemFlocking> },
 	{ "Flying", &fCreate<CloudsVisualSystemFlying> },
 	{ "ForkingPaths", &fCreate<CloudsVisualSystemForkingPaths> },
-	{ "GPUParticles", &fCreate<CloudsVisualSystemGPUParticles> },
-//	{ "GameOfLife", &fCreate<CloudsVisualSystemGameOfLife> },
+//	{ "GPUParticles", &fCreate<CloudsVisualSystemGPUParticles> },
+	{ "GesturePaint", &fCreate<CloudsVisualSystemGesturePaint> },
 	{ "Histogram", &fCreate<CloudsVisualSystemHistogram> },
 	{ "LIA", &fCreate<CloudsVisualSystemLIA> },
 	{ "LSystem", &fCreate<CloudsVisualSystemLSystem> },
@@ -123,8 +140,8 @@ struct Mapping {
 	{ "MarchingCubes", &fCreate<CloudsVisualSystemMarchingCubes> },
 	{ "MazeGenerator", &fCreate<CloudsVisualSystemMazeGenerator> },
 	{ "Memory", &fCreate<CloudsVisualSystemMemory> },
-	{ "Metaballs", &fCreate<CloudsVisualSystemMetaballs> },
-	{ "Nbody", &fCreate<CloudsVisualSystemNbody> },
+//	{ "Metaballs", &fCreate<CloudsVisualSystemMetaballs> },
+//	{ "Nbody", &fCreate<CloudsVisualSystemNbody> },
 	{ "Neurons", &fCreate<CloudsVisualSystemNeurons> },
 	{ "Ocean", &fCreate<CloudsVisualSystemOcean> },
 //	{ "OpenP53DIntro", &fCreate<CloudsVisualSystemOpenP53DIntro> },
@@ -144,26 +161,30 @@ struct Mapping {
 	{ "Oscillations", &fCreate<CloudsVisualSystemOscillations> },
 	{ "Pages", &fCreate<CloudsVisualSystemPages> },
 	{ "PaintBrush", &fCreate<CloudsVisualSystemPaintBrush> },
+	{ "PhotoGlitch", &fCreate<CloudsVisualSystemPhotoGlitch> },
 //	{ "QuineVisualSystem", &fCreate<CloudsVisualSystemQuineVisualSystem> },
-//	{ "RGBD", &fCreate<CloudsVisualSystemRGBD> },
 	{ "RGBDVideo", &fCreate<CloudsVisualSystemRGBDVideo> },
 	{ "RandomDigits", &fCreate<CloudsVisualSystemRandomDigits> },
 	{ "Replicator", &fCreate<CloudsVisualSystemReplicator> },
 	{ "Ripples", &fCreate<CloudsVisualSystemRipples> },
 	{ "Rulez", &fCreate<CloudsVisualSystemRulez> },
-	{ "Scrape", &fCreate<CloudsVisualSystemScrape> },
 	{ "Satoruhiga", &fCreate<CloudsVisualSystemSatoruhiga> },
+	{ "Scrape", &fCreate<CloudsVisualSystemScrape> },
 	{ "Swim", &fCreate<CloudsVisualSystemSwim> },
-//	{ "ThingsInTheDark", &fCreate<CloudsVisualSystemThingsInTheDark> },
+	{ "Terrain", &fCreate<CloudsVisualSystemTerrain> },
+	{ "ThingsInTheDark", &fCreate<CloudsVisualSystemThingsInTheDark> },
+	{ "TunnelDrawing", &fCreate<CloudsVisualSystemTunnelDrawing> },
 	{ "Twitter", &fCreate<CloudsVisualSystemTwitter> },
+	{ "Uextrude", &fCreate<CloudsVisualSystemUextrude> },
 	{ "VectorFlow", &fCreate<CloudsVisualSystemVectorFlow> },
 	{ "VerletForm", &fCreate<CloudsVisualSystemVerletForm> },
 	{ "Vision", &fCreate<CloudsVisualSystemVision> },
 	{ "Voro", &fCreate<CloudsVisualSystemVoro> },
 	{ "WebHistory", &fCreate<CloudsVisualSystemWebHistory> },
 	{ "World", &fCreate<CloudsVisualSystemWorld> },
+	{ "WormHole", &fCreate<CloudsVisualSystemWormHole> },
 	{ "Xstatic", &fCreate<CloudsVisualSystemXstatic> },
-	{ "YellowTail", &fCreate<CloudsVisualSystemYellowTail> }
+	{ "YellowTail", &fCreate<CloudsVisualSystemYellowTail> }	
 };
 
 map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
