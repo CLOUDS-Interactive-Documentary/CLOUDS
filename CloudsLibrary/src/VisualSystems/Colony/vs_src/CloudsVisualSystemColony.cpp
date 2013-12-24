@@ -12,7 +12,6 @@ void CloudsVisualSystemColony::selfSetup()
     //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
     vbo.setMode(OF_PRIMITIVE_POINTS);
     
-	//ofDisableNormalizedTexCoords();
 	ofDisableArbTex();
     ofLoadImage(sprite, getVisualSystemDataPath() + "sprites/marker_dot.png");
     ofEnableArbTex();
@@ -85,20 +84,15 @@ void CloudsVisualSystemColony::selfDrawBackground()
     ofEnablePointSprites();
     
 
-//    cellShader.begin();
-//    cellShader.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
     billboard.begin();
     sprite.bind();
     
-    ofPushMatrix();
-    //TODO: Dunno why this is happening
-//    ofTranslate(getSharedRenderTarget().getWidth()/2., getSharedRenderTarget().getHeight()/2.);
+//    ofPushMatrix();
     vbo.draw();
-    ofPopMatrix();
+//    ofPopMatrix();
     
     sprite.unbind();
     billboard.end();
-//    cellShader.end();
     
     ofDisablePointSprites();
     ofDisableBlendMode();

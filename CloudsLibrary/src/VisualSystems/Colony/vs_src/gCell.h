@@ -69,9 +69,11 @@ public:
      */
     cellPtr doGetReplicated();
     
-private:
+    
+    
     float getSeparationDist();
     float getAlignmentDist();
+private:
     ofPoint getSteerToTarget(ofPoint _target);
     bool isInsideBoard(ofPoint p);
 };

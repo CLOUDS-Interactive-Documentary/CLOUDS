@@ -22,9 +22,9 @@ colonyCell::colonyCell(const ofPoint initialPosition, const cellParams& params):
     cellSize = 1;
     age = 0;
     nutrientLevel = 50; //Magic number
-    maxSpeed = ofRandom(1.2);
-    maxForce = .6;
-    maxSize = ofRandom(5, 12);
+    maxSpeed = ofRandom(0.3, 0.6);
+    maxForce = .4;
+    maxSize = ofRandom(3, 8);
     lifespan = ofRandom(_params.lifespanMin, _params.lifespanMax);
     fertile = ofRandomuf() > _params.fertilityRate;
     dead = false;
@@ -47,7 +47,7 @@ void colonyCell::update()
     position += velocity;
     
     // Feed
-    if (lastFeedValue > nutrientLevel && cellSize <= maxSize){ cellSize += (lastFeedValue/2500); }
+    if ((lastFeedValue > nutrientLevel) && (cellSize <= maxSize)){ cellSize += (lastFeedValue/2500); }
     if (lastFeedValue < nutrientLevel){ cellSize -= .01; }
     cellSize = ofClamp(cellSize, 0, maxSize);
     
@@ -103,9 +103,13 @@ void colonyCell::doScanAndFlock(neighbor_iterator& iter){
     float anchorSize = 0;
     while (iter.hasNext()) {
         ofPoint diff = position - ((**iter).getPosition()); //direction from other to this
+        
+        float safetyDist = (**iter).getSeparationDist() * 2./3.;
+        safetyDist *= safetyDist;
+        
         float dd = diff.lengthSquared();
         if (dd > 0){
-            if (dd < ss) { //Distance within separation range?
+            if (dd < MAX(ss,safetyDist)) { //Distance within separation range?
                 separate += diff.normalized() * logf(1 + dd) * logf(3 + (**iter).getSize()); //TODO: make the transition softer
             }
             if (dd < aa){ //Distance within flocking range?
