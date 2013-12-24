@@ -69,9 +69,11 @@ public:
      */
     cellPtr doGetReplicated();
     
-private:
+    
+    
     float getSeparationDist();
     float getAlignmentDist();
+private:
     ofPoint getSteerToTarget(ofPoint _target);
     bool isInsideBoard(ofPoint p);
 };
@@ -83,7 +85,8 @@ private:
 class cellParams{
 public:
     float deathThreshold, dynamicFrictionCoeff, amtTurbulence, spdTurbulence,
-    amtAlign, amtCohere, amtSeparate, lifespanMin, lifespanMax, fertilityRate;
+    amtAlign, amtCohere, amtSeparate, lifespanMin, lifespanMax, fertilityRate,
+    nutrientAmount, nutrientTimeCoef, nutrientFalloff;
     
     cellParams(){
         dynamicFrictionCoeff = 0.1;
@@ -96,6 +99,10 @@ public:
         lifespanMax = 200;
         spdTurbulence = 10;
         fertilityRate = .8;
+        
+        nutrientAmount = 350;
+        nutrientTimeCoef = 100;
+        nutrientFalloff = 0.5;
     }
 };
 

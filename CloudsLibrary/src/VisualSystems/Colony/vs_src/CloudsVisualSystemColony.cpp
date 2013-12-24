@@ -12,7 +12,6 @@ void CloudsVisualSystemColony::selfSetup()
     //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
     vbo.setMode(OF_PRIMITIVE_POINTS);
     
-	//ofDisableNormalizedTexCoords();
 	ofDisableArbTex();
     ofLoadImage(sprite, getVisualSystemDataPath() + "sprites/marker_dot.png");
     ofEnableArbTex();
@@ -39,6 +38,10 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
     sysGui->addSlider("Fertility Rate", 0.0, 1.0, &params.fertilityRate);
     sysGui->addRangeSlider("Lifespan Range", 5, 5000, &params.lifespanMin, &params.lifespanMax);
     
+    sysGui->addSlider("Nutrient Amount", 150, 500, &params.nutrientAmount);
+    sysGui->addSlider("Nutrient Change Ratio", 0, 500, &params.nutrientTimeCoef);
+    sysGui->addSlider("Nutrient Contrast", 0, 4.0, &params.nutrientFalloff);
+        
     sysGui->addSpacer("Immutables");
     sysGui->addButton("Reset", &reset);
 }
@@ -85,20 +88,15 @@ void CloudsVisualSystemColony::selfDrawBackground()
     ofEnablePointSprites();
     
 
-//    cellShader.begin();
-//    cellShader.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
     billboard.begin();
     sprite.bind();
     
-    ofPushMatrix();
-    //TODO: Dunno why this is happening
-//    ofTranslate(getSharedRenderTarget().getWidth()/2., getSharedRenderTarget().getHeight()/2.);
+//    ofPushMatrix();
     vbo.draw();
-    ofPopMatrix();
+//    ofPopMatrix();
     
     sprite.unbind();
     billboard.end();
-//    cellShader.end();
     
     ofDisablePointSprites();
     ofDisableBlendMode();
