@@ -23,8 +23,8 @@ CloudsHUDLayer::CloudsHUDLayer(){
 
 void CloudsHUDLayer::parse(string svgFilePath){
 	
-	svg.setup(svgFilePath);
-	
+
+	svg.load(svgFilePath);
 	//find text boxes
 //	ofxXmlSettings xml;
 //	xml.loadFile(svgFilePath);

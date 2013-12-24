@@ -13,7 +13,7 @@ string strrephack(string input, string searchStr, string replaceStr){
 	return input;
 }
 
-bool CloudsSVGMesh::setup(string file){
+bool CloudsSVGMesh::load(string file){
 	ofxXmlSettings svg;
 	if(!svg.loadFile(file)){
 		ofLogError("CloudsSVGMesh::setup") << "Couldn't load svg " << file;
@@ -23,7 +23,6 @@ bool CloudsSVGMesh::setup(string file){
 	//example header
 //	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1440px"
 //	height="900px" viewBox="0 0 1440 900" enable-background="new 0 0 1440 900" xml:space="preserve">
-
 	document = ofRectangle(ofToInt(strrephack(svg.getAttribute("svg", "x", "0px"), "px", "")),
 						   ofToInt(strrephack(svg.getAttribute("svg", "y", "0px"), "px", "")),
 						   ofToInt(strrephack(svg.getAttribute("svg", "width", "0px"), "px", "")),
@@ -36,12 +35,12 @@ bool CloudsSVGMesh::setup(string file){
 	int totalVerts = 0;
 	if(meshes.size() > 0){
 		//find the bounds
-		bounds = ofRectangle(meshes[0].getVertices()[0].x,
-							 meshes[0].getVertices()[0].y,
+		bounds = ofRectangle(meshes[0].mesh.getVertices()[0].x,
+							 meshes[0].mesh.getVertices()[0].y,
 							 0,0);
 		for(int i = 0; i < meshes.size(); i++){
-			for(int v = 0; v < meshes[i].getNumVertices(); v++){
-				bounds.growToInclude( meshes[i].getVertices()[v] );
+			for(int v = 0; v < meshes[i].mesh.getNumVertices(); v++){
+				bounds.growToInclude( meshes[i].mesh.getVertices()[v] );
 				totalVerts++;
 			}
 		}
@@ -52,22 +51,24 @@ bool CloudsSVGMesh::setup(string file){
 
 void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId){
 
-	ofMesh mesh;
-
+	ofMesh strokeMesh;
+	ofMesh fillMesh;
 	//find geo on this layer
 	//<line display="inline" opacity="0.49" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="87.313" y1="612.5" x2="749.313" y2="612.5"/>
 	int numLineTags = xml.getNumTags("line");
 	for(int l = 0; l < numLineTags; l++){
-		mesh.addVertex(ofVec3f(xml.getAttribute("line", "x1", 0., l),
-							   xml.getAttribute("line", "y1", 0., l), 0));
-		mesh.addVertex(ofVec3f(xml.getAttribute("line", "x2", 0., l),
-							   xml.getAttribute("line", "y2", 0., l), 0));
+		strokeMesh.addVertex(ofVec3f(xml.getAttribute("line", "x1", 0., l),
+									 xml.getAttribute("line", "y1", 0., l), 0));
+		strokeMesh.addVertex(ofVec3f(xml.getAttribute("line", "x2", 0., l),
+									 xml.getAttribute("line", "y2", 0., l), 0));
 
 		string hexColor = xml.getAttribute("line", "stroke", "#FFFFFF", l);
-		ofColor color = ofColor::fromHex( ofHexToInt(hexColor));
+		hexColor.erase(hexColor.begin());//kill the #		
+		ofColor color = ofColor::fromHex( ofHexToInt(hexColor) );
 		color.a = xml.getAttribute("line", "opacity", 0., l)*255.;
-		mesh.addColor(color);
-		mesh.addColor(color);
+
+		strokeMesh.addColor(color);
+		strokeMesh.addColor(color);
 	}
 	
 	//sample rect tag
@@ -79,49 +80,87 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId){
 						 xml.getAttribute("rect", "width", 0., r),
 						 xml.getAttribute("rect", "height", 0., r));
 
-		//pull the vertices out as vec3s
+		//pull the vertices out as vec3s		
 		ofVec3f a = rect.getTopLeft();
 		ofVec3f b = rect.getTopRight();
 		ofVec3f c = rect.getBottomRight();
 		ofVec3f d = rect.getBottomLeft();
-
-		//convert to line segments
-		mesh.addVertex(a);
-		mesh.addVertex(b);
 		
-		mesh.addVertex(b);
-		mesh.addVertex(c);
+		string fillProperty = xml.getAttribute("rect", "fill", "none",r);
+		bool isLines = fillProperty == "none";
 		
-		mesh.addVertex(c);
-		mesh.addVertex(d);
-		
-		mesh.addVertex(d);
-		mesh.addVertex(a);
-		
-		string hexColor = xml.getAttribute("rect", "stroke", "#FFFFFF", r);
+		string hexColor = xml.getAttribute("rect", (isLines ? "stroke" : "fill"), "#FFFFFF", r);
 		hexColor.erase(hexColor.begin());//kill the #
 		ofColor color = ofColor::fromHex( ofHexToInt(hexColor));
-//		cout << "hex value is " << hexColor << " hex to int gives " << ofHexToInt(hexColor) << endl;
 		color.a = xml.getAttribute("rect", "opacity", 0., r)*255.;
-		
-		for(int i = 0; i < 8; i++){
-			mesh.addColor(color);
+
+		if(isLines){
+
+			//we may wish to make this a line loop....
+			//convert to line segments
+			strokeMesh.addVertex(a);
+			strokeMesh.addVertex(b);
+			
+			strokeMesh.addVertex(b);
+			strokeMesh.addVertex(c);
+			
+			strokeMesh.addVertex(c);
+			strokeMesh.addVertex(d);
+			
+			strokeMesh.addVertex(d);
+			strokeMesh.addVertex(a);
+			
+			for(int i = 0; i < 8; i++){
+				strokeMesh.addColor(color);
+			}
+		}
+		else{
+			
+//			string hexColor = xml.getAttribute("rect", "stroke", "#FFFFFF", r);
+//			hexColor.erase(hexColor.begin());//kill the #
+//			ofColor color = ofColor::fromHex( ofHexToInt(hexColor));
+//			color.a = xml.getAttribute("rect", "opacity", 0., r)*255.;
+			
+			fillMesh.addVertex(a);
+			fillMesh.addVertex(b);
+			fillMesh.addVertex(d);
+			fillMesh.addVertex(c);
+			
+			for(int i = 0; i < 4; i++){
+				strokeMesh.addColor(color);
+			}
 		}
 	}
 	
 	//if we added go throw it in the group, and give it a name
-	if(mesh.getNumVertices() > 0){
-		if(parentId != ""){
-			meshIdIndex[parentId] = meshes.size();
+	if(strokeMesh.getNumVertices() > 0){
+		SVGMesh m;
+		m.id = parentId;
+		if(m.id != ""){
+			meshIdIndex[m.id] = meshes.size();
 		}
-		ofVboMesh m = ofVboMesh(mesh);
-		m.setMode(OF_PRIMITIVE_LINES);
-		m.setUsage(GL_STATIC_DRAW);
-		meshes.push_back(m);
+		m.mesh = ofVboMesh(strokeMesh);
+		m.mesh.setMode(OF_PRIMITIVE_LINES);
+		m.mesh.setUsage(GL_STATIC_DRAW);
 		
+		meshes.push_back(m);
+	}
+	if(fillMesh.getNumVertices() > 0){
+		
+		
+		SVGMesh m;
+		m.id = parentId;
+		if(m.id != ""){
+			meshIdIndex[m.id] = meshes.size();
+		}
+		m.mesh = ofVboMesh(fillMesh);
+		m.mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+		m.mesh.setUsage(GL_STATIC_DRAW);
+		
+		meshes.push_back(m);
 	}
 	
-	//serach other g tags
+	//search other g tags
 	int numGTags = xml.getNumTags("g");
 	for(int i = 0; i < numGTags; i++){
 		//is g tag displayed?
@@ -143,7 +182,7 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId){
 
 void CloudsSVGMesh::draw(){
 	for(int i = 0; i < meshes.size(); i++){
-		meshes[i].draw();
+		meshes[i].mesh.draw();
 	}
 }
 

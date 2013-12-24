@@ -6,15 +6,22 @@
 //
 //
 
-#pragma once;
+#pragma once
 
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
 
+typedef struct {
+	ofVboMesh mesh;
+	string id;
+	bool fill;
+
+} SVGMesh;
+
 class CloudsSVGMesh
 {
   public:
-	bool setup(string file);
+	bool load(string file);
 	void draw();
 	ofRectangle getBounds();
 
@@ -24,8 +31,9 @@ class CloudsSVGMesh
 
   protected:
 	void recurseSVGTag(ofxXmlSettings& xml, string parentId);
-	vector<ofVboMesh> meshes;
+	vector<SVGMesh> meshes;
 	map<string,int> meshIdIndex;
+	
 	ofRectangle document;
 	ofRectangle bounds;
 
