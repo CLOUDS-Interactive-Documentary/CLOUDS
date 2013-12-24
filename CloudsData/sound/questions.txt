@@ -1,13 +1,13 @@
-Intro_BuildingWorlds2:Is it possible to truly simulate reality?
-Intro_BuildingWorlds:How do you create a digital universe?
-Intro_CodingSketching:How do you sketch with code?
-Intro_Collaboration:How does the network accelerate creativity?
-Intro_Computers:Do computers make us smarter?
-Intro_interactivity1:What makes a satisfying interaction?
-Intro_Interfaces:What's the ultimate interface?
-Intro_Learning:What does it feel like to program?
-Intro_LogicOfPixels:How can the logic of coding be creative?
-Intro_Programming:Is programming a waste of time?
-Intro_Sharing:What is open source all about?
-Intro_Toolmaker:what's the link between invention and art?
-Intro_VirtualReality:Have we hacked reality?
+coding:How can the logic of coding be creative?
+community:How does the network accelerate creativity?
+cosmogeny:How do you create a digital universe?
+interactivity:What makes a satisfying interaction?
+interface:What's the ultimate interface?
+open source:What is open source all about?
+programming:Is programming a waste of time?
+programming:What does it feel like to program?
+real and virtual:Have we hacked reality?
+simulation:Is it possible to truly simulate reality?
+sketching:How do you sketch with code?
+thinking:Do computers make us smarter?
+toolmakers:what's the link between invention and art?
