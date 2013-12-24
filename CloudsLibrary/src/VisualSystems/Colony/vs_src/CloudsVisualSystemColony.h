@@ -51,6 +51,7 @@ public:
     void guiRenderEvent(ofxUIEventArgs &e);
     
 	void loadShader();
+    void reallocateFramebuffers();
     
 private:
     
