@@ -36,7 +36,5 @@ class CloudsSpeaker {
 	string byline1;
 	string byline2;
 	
-
-
 };
 

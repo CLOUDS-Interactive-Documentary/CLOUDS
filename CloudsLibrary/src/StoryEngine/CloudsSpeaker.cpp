@@ -49,9 +49,9 @@ void CloudsSpeaker::populateSpeakers(){
 		speakerxml.popTag();//Person
 		
 		speakers[speaker.fcpID] = speaker;
-		speaker.printInfo();
-		
+///		speaker.printInfo();
 	}
+	
 	speakerxml.popTag();//clouds
 	
 	//	speakers["Aaron"]		= CloudsSpeaker("Aaron", "Aaron", "Koblin", "male");

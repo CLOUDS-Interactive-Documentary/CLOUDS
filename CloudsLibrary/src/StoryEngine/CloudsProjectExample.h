@@ -16,4 +16,5 @@ class CloudsProjectExample {
 	string creatorName;
 	vector<string> exampleVideos;
 	string description;
+	
 };

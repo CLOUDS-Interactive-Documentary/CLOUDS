@@ -72,6 +72,11 @@
 		E70CDD5E1868D49200955691 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDD4E1868D49200955691 /* ofxOscMessage.cpp */; };
 		E70CDD5F1868D49200955691 /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDD501868D49200955691 /* ofxOscReceiver.cpp */; };
 		E70CDD601868D49200955691 /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDD521868D49200955691 /* ofxOscSender.cpp */; };
+		E70CDDB11868FAB900955691 /* src_colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDA81868FAB900955691 /* src_colors.cpp */; };
+		E70CDDB21868FAB900955691 /* svgtiny.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDA91868FAB900955691 /* svgtiny.cpp */; };
+		E70CDDB31868FAB900955691 /* svgtiny_gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDAB1868FAB900955691 /* svgtiny_gradient.cpp */; };
+		E70CDDB41868FAB900955691 /* svgtiny_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDAD1868FAB900955691 /* svgtiny_list.cpp */; };
+		E70CDDB51868FAB900955691 /* ofxSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDAF1868FAB900955691 /* ofxSvg.cpp */; };
 		E7176E2F17D3DABA00C8DC38 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2D17D3DABA00C8DC38 /* CloudsQuestion.cpp */; };
 		E724461216573A0800D70E01 /* ofxHotKeys_impl_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E724459616573A0400D70E01 /* ofxHotKeys_impl_linux.cpp */; };
 		E724461316573A0800D70E01 /* ofxHotKeys_impl_mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = E724459716573A0400D70E01 /* ofxHotKeys_impl_mac.mm */; };
@@ -378,6 +383,14 @@
 		E70CDD511868D49200955691 /* ofxOscReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscReceiver.h; sourceTree = "<group>"; };
 		E70CDD521868D49200955691 /* ofxOscSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscSender.cpp; sourceTree = "<group>"; };
 		E70CDD531868D49200955691 /* ofxOscSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscSender.h; sourceTree = "<group>"; };
+		E70CDDA81868FAB900955691 /* src_colors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = src_colors.cpp; sourceTree = "<group>"; };
+		E70CDDA91868FAB900955691 /* svgtiny.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny.cpp; sourceTree = "<group>"; };
+		E70CDDAA1868FAB900955691 /* svgtiny.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svgtiny.h; sourceTree = "<group>"; };
+		E70CDDAB1868FAB900955691 /* svgtiny_gradient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny_gradient.cpp; sourceTree = "<group>"; };
+		E70CDDAC1868FAB900955691 /* svgtiny_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svgtiny_internal.h; sourceTree = "<group>"; };
+		E70CDDAD1868FAB900955691 /* svgtiny_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny_list.cpp; sourceTree = "<group>"; };
+		E70CDDAF1868FAB900955691 /* ofxSvg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSvg.cpp; sourceTree = "<group>"; };
+		E70CDDB01868FAB900955691 /* ofxSvg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSvg.h; sourceTree = "<group>"; };
 		E7176E2D17D3DABA00C8DC38 /* CloudsQuestion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsQuestion.cpp; path = ../RGBD/CloudsQuestion.cpp; sourceTree = "<group>"; };
 		E7176E2E17D3DABA00C8DC38 /* CloudsQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsQuestion.h; path = ../RGBD/CloudsQuestion.h; sourceTree = "<group>"; };
 		E7176E3617D3DAFB00C8DC38 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../CloudsGlobal.h; sourceTree = "<group>"; };
@@ -656,6 +669,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E70CDDA41868FAB900955691 /* ofxSvg */,
 				E70CDD2A1868D49200955691 /* ofxOsc */,
 				185CE931184A5FC600F43977 /* ofxFTGL */,
 				E7B3C7D017EE29E400581ACD /* ofxMSACore */,
@@ -1094,6 +1108,54 @@
 				E70CDD511868D49200955691 /* ofxOscReceiver.h */,
 				E70CDD521868D49200955691 /* ofxOscSender.cpp */,
 				E70CDD531868D49200955691 /* ofxOscSender.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E70CDDA41868FAB900955691 /* ofxSvg */ = {
+			isa = PBXGroup;
+			children = (
+				E70CDDA51868FAB900955691 /* libs */,
+				E70CDDAE1868FAB900955691 /* src */,
+			);
+			name = ofxSvg;
+			path = ../CloudsLibrary/addons/ofxSvg;
+			sourceTree = "<group>";
+		};
+		E70CDDA51868FAB900955691 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				E70CDDA61868FAB900955691 /* svgTiny */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		E70CDDA61868FAB900955691 /* svgTiny */ = {
+			isa = PBXGroup;
+			children = (
+				E70CDDA71868FAB900955691 /* src */,
+			);
+			path = svgTiny;
+			sourceTree = "<group>";
+		};
+		E70CDDA71868FAB900955691 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E70CDDA81868FAB900955691 /* src_colors.cpp */,
+				E70CDDA91868FAB900955691 /* svgtiny.cpp */,
+				E70CDDAA1868FAB900955691 /* svgtiny.h */,
+				E70CDDAB1868FAB900955691 /* svgtiny_gradient.cpp */,
+				E70CDDAC1868FAB900955691 /* svgtiny_internal.h */,
+				E70CDDAD1868FAB900955691 /* svgtiny_list.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E70CDDAE1868FAB900955691 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E70CDDAF1868FAB900955691 /* ofxSvg.cpp */,
+				E70CDDB01868FAB900955691 /* ofxSvg.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -1636,6 +1698,11 @@
 				E70CDD5E1868D49200955691 /* ofxOscMessage.cpp in Sources */,
 				E70CDD5F1868D49200955691 /* ofxOscReceiver.cpp in Sources */,
 				E70CDD601868D49200955691 /* ofxOscSender.cpp in Sources */,
+				E70CDDB11868FAB900955691 /* src_colors.cpp in Sources */,
+				E70CDDB21868FAB900955691 /* svgtiny.cpp in Sources */,
+				E70CDDB31868FAB900955691 /* svgtiny_gradient.cpp in Sources */,
+				E70CDDB41868FAB900955691 /* svgtiny_list.cpp in Sources */,
+				E70CDDB51868FAB900955691 /* ofxSvg.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1677,7 +1744,7 @@
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/src",
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/osc",
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/ip",
-					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/",
+					"$(OF_PATH)/addons/ofxOsc/libs/oscpack",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1716,7 +1783,7 @@
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/src",
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/osc",
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/ip",
-					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/",
+					"$(OF_PATH)/addons/ofxOsc/libs/oscpack",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1821,18 +1888,8 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
 				);
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/kiss/lib/linux\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/kiss/lib/linux64\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/linux\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/linux64\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/vorbis/lib/linux\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/vorbis/lib/linux64\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux64\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsSecondaryDisplayDebug;
 				WRAPPER_EXTENSION = app;
@@ -1932,18 +1989,8 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
 				);
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/kiss/lib/linux\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/kiss/lib/linux64\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/linux\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/linux64\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/vorbis/lib/linux\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/vorbis/lib/linux64\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux64\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsSecondaryDisplay;
 				WRAPPER_EXTENSION = app;
