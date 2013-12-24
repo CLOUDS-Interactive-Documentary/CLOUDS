@@ -109,6 +109,7 @@
 		E779BE38173D5FCD006357EF /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE26173D5FCD006357EF /* ofxTween.cpp */; };
 		E779BE56173D6082006357EF /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE52173D6082006357EF /* ofxTimecode.cpp */; };
 		E779BE6D173D60A2006357EF /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE69173D60A2006357EF /* ofxTextInputField.cpp */; };
+		E7A4DC2B186A272A002F5371 /* CloudsSVGMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A4DC29186A272A002F5371 /* CloudsSVGMesh.cpp */; };
 		E7C012A9180E1C6200B5CEF1 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C01202180E1C6100B5CEF1 /* jsoncpp.cpp */; };
 		E7C012B0180E1C6200B5CEF1 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C0121E180E1C6100B5CEF1 /* libwebsockets.a */; };
 		E7C012B9180E1C6200B5CEF1 /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C01237180E1C6100B5CEF1 /* Client.cpp */; };
@@ -491,6 +492,8 @@
 		E779BE53173D6082006357EF /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
 		E779BE69173D60A2006357EF /* ofxTextInputField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextInputField.cpp; sourceTree = "<group>"; };
 		E779BE6A173D60A2006357EF /* ofxTextInputField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextInputField.h; sourceTree = "<group>"; };
+		E7A4DC29186A272A002F5371 /* CloudsSVGMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSVGMesh.cpp; sourceTree = "<group>"; };
+		E7A4DC2A186A272A002F5371 /* CloudsSVGMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSVGMesh.h; sourceTree = "<group>"; };
 		E7C01200180E1C6100B5CEF1 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
 		E7C01201180E1C6100B5CEF1 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
 		E7C01202180E1C6100B5CEF1 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
@@ -857,6 +860,8 @@
 				E703CD22185D6B3200547738 /* CloudsHUDHomeButton.h */,
 				E703CD19185D187800547738 /* CloudsHUDController.h */,
 				E703CD18185D187800547738 /* CloudsHUDController.cpp */,
+				E7A4DC2A186A272A002F5371 /* CloudsSVGMesh.h */,
+				E7A4DC29186A272A002F5371 /* CloudsSVGMesh.cpp */,
 			);
 			name = HUD;
 			path = RGBD/HUD;
@@ -2161,6 +2166,7 @@
 				E703CD23185D6B3200547738 /* CloudsHUDHomeButton.cpp in Sources */,
 				E703CD2C185D6B9100547738 /* CloudsInput.cpp in Sources */,
 				E703CD2E185D6B9100547738 /* CloudsInputMouse.cpp in Sources */,
+				E7A4DC2B186A272A002F5371 /* CloudsSVGMesh.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
