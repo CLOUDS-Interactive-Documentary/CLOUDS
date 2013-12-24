@@ -103,9 +103,13 @@ void colonyCell::doScanAndFlock(neighbor_iterator& iter){
     float anchorSize = 0;
     while (iter.hasNext()) {
         ofPoint diff = position - ((**iter).getPosition()); //direction from other to this
+        
+        float safetyDist = (**iter).getSeparationDist() * 2./3.;
+        safetyDist *= safetyDist;
+        
         float dd = diff.lengthSquared();
         if (dd > 0){
-            if (dd < ss) { //Distance within separation range?
+            if (dd < MAX(ss,safetyDist)) { //Distance within separation range?
                 separate += diff.normalized() * logf(1 + dd) * logf(3 + (**iter).getSize()); //TODO: make the transition softer
             }
             if (dd < aa){ //Distance within flocking range?

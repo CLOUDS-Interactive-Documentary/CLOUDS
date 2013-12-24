@@ -39,9 +39,9 @@ void main(){
     //see if you're in the right range to be a border
     
     b *= samp.b * samp.b;
-    b = samp.b - bump(b, .3, 0.2);
+    b =  bump(b, .3, 0.2) - samp.g;
     b =  clamp(b, 0., 1.);
-    b -= samp.g;
+    b += samp.g;
     b =  clamp(b, 0., 1.);
     gl_FragColor = vec4(b, b, b, 1.);
 //    gl_FragColor = samp;

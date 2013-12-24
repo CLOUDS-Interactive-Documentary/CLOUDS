@@ -6,7 +6,7 @@ void main() {
 //	float dist = sqrt(eyeCoord.x*eyeCoord.x + eyeCoord.y*eyeCoord.y + eyeCoord.z*eyeCoord.z);
 //	float att	 = 10000.0 / dist;
 	
-	gl_PointSize = gl_Normal.x * 30.; //* att;
+	gl_PointSize = gl_Normal.x * 18.; //* att;
 	gl_FrontColor = gl_Color;
 }
 
