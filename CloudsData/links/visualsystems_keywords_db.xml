@@ -1,9 +1,66 @@
 <system name="2DVideo_Alice_TextArc">
-    <keywords></keywords>
-    <suppressions></suppressions>
+    <keywords>data visualization|datatelling</keywords>
+    <suppressions>
+        <clip>Andres - Computational lens</clip>
+        <clip>Andres - an overly complex model</clip>
+        <clip>Binx - making a map</clip>
+        <clip>Binx - maps</clip>
+        <clip>Fernanda - A social lens</clip>
+        <clip>Fernanda - Googe plus 2</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - History flow 2</clip>
+        <clip>Fernanda - Wind visualization 2</clip>
+        <clip>Fernanda - defense of complexity 1</clip>
+        <clip>Fernanda - defense of complexity 2</clip>
+        <clip>Fernanda - fleshmap2</clip>
+        <clip>Fernanda - fleshmap 3</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Fernanda - zooming in</clip>
+        <clip>Golan - emotion</clip>
+        <clip>Golan - listening post</clip>
+        <clip>Golan - open data</clip>
+        <clip>Greg - the &quot;Like&quot; button cascade</clip>
+        <clip>Jen - a gravity to the work</clip>
+        <clip>Jen - data viz noire</clip>
+        <clip>Jen - data viz too serious 1</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Jen - generalization 1</clip>
+        <clip>Jen - generalization 2</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jen - oversimplified circles 2</clip>
+        <clip>Jen - stencil pie chart</clip>
+        <clip>Jer - failure to communicate</clip>
+        <clip>Jer - people don&apos;t read these things</clip>
+        <clip>Julian - data viz critique</clip>
+        <clip>Karsten - data visualization</clip>
+        <clip>Karsten - database</clip>
+        <clip>Karsten - social collider</clip>
+        <clip>Kevin - algo trading 6</clip>
+        <clip>Lauren - Squib visualization</clip>
+        <clip>Maeda - people are best communicators</clip>
+        <clip>Martin - Inflation not that interesting</clip>
+        <clip>Martin - all the words</clip>
+        <clip>Martin - flickr flow</clip>
+        <clip>Martin - how to make us smarter</clip>
+        <clip>Jen - rhetorical tool 1</clip>
+        <clip>Jen - rhetorical tool 2</clip>
+        <clip>Jen - Scaling data</clip>
+        <clip>Jen - data viz challenges</clip>
+        <clip>Jen - objective subjective</clip>
+        <clip>Jen - telling stories to engage</clip>
+        <clip>Jen - truthiness</clip>
+        <clip>Jen - visual communication</clip>
+        <clip>Jer - Pattern</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Jer - data visualization</clip>
+        <clip>Jer - reading the complexity</clip>
+        <clip>Jer - take advantage of this thing we can do</clip>
+        <clip>Julian - data viz endorsement</clip>
+        <clip>Fernanda - mainstreaming of data viz</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -35,65 +92,263 @@
     <sound>0</sound>
 </system>
 <system name="2DVideo_Exoplanets">
-    <keywords></keywords>
-    <suppressions></suppressions>
+    <keywords>data visualization|big data</keywords>
+    <suppressions>
+        <clip>Andres - Computational lens</clip>
+        <clip>Andres - an overly complex model</clip>
+        <clip>Binx - field of data vis</clip>
+        <clip>Binx - frustrated about visualization</clip>
+        <clip>Binx - making a map</clip>
+        <clip>Binx - maps</clip>
+        <clip>Binx - meaningful shape1</clip>
+        <clip>Fernanda - A social lens</clip>
+        <clip>Fernanda - Data questions</clip>
+        <clip>Fernanda - Googe plus 2</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - History flow 2</clip>
+        <clip>Fernanda - Replaying the moment of discovery</clip>
+        <clip>Fernanda - Wind visualization 2</clip>
+        <clip>Fernanda - defense of complexity 1</clip>
+        <clip>Fernanda - defense of complexity 2</clip>
+        <clip>Fernanda - fleshmap2</clip>
+        <clip>Fernanda - fleshmap 3</clip>
+        <clip>Fernanda - mainstreaming of data viz</clip>
+        <clip>Fernanda - non numerical visualization</clip>
+        <clip>Fernanda - seeing patterns 1</clip>
+        <clip>Fernanda - seeing patterns 2</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Fernanda - visualized data doesn&apos;t seem complex</clip>
+        <clip>Fernanda - what do we mean by data</clip>
+        <clip>Fernanda - what is data</clip>
+        <clip>Fernanda - zooming in</clip>
+        <clip>Golan - emotion</clip>
+        <clip>Golan - listening post</clip>
+        <clip>Golan - open data</clip>
+        <clip>Greg - the &quot;Like&quot; button cascade</clip>
+        <clip>Jen - Scaling data</clip>
+        <clip>Jen - a gravity to the work</clip>
+        <clip>Jen - data viz noire</clip>
+        <clip>Jen - data viz too serious 1</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Jen - generalization 1</clip>
+        <clip>Jen - generalization 2</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jen - oversimplified circles 2</clip>
+        <clip>Jen - pull out the stories</clip>
+        <clip>Jen - rhetorical tool 1</clip>
+        <clip>Jen - rhetorical tool 2</clip>
+        <clip>Jen - stencil pie chart</clip>
+        <clip>Jen - truthiness</clip>
+        <clip>Jen - visual communication</clip>
+        <clip>Jer - data visualization</clip>
+        <clip>Jer - failure to communicate</clip>
+        <clip>Jer - people don&apos;t read these things</clip>
+        <clip>Jer - take advantage of this thing we can do</clip>
+        <clip>Julian - data viz critique</clip>
+        <clip>Julian - data viz endorsement</clip>
+        <clip>Karsten - data visualization</clip>
+        <clip>Karsten - database</clip>
+        <clip>Karsten - social collider</clip>
+        <clip>Kevin - algo trading 6</clip>
+        <clip>Lauren - Squib visualization</clip>
+        <clip>Maeda - people are best communicators</clip>
+        <clip>Martin - Inflation not that interesting</clip>
+        <clip>Martin - all the words</clip>
+        <clip>Martin - flickr flow</clip>
+        <clip>Martin - how to make us smarter</clip>
+        <clip>Martin - seeing the whole 2</clip>
+        <clip>Martin - words and numbers</clip>
+        <clip>Aaron - digital trace</clip>
+        <clip>Aaron - infinity</clip>
+        <clip>Binx - big data</clip>
+        <clip>Binx - geodata</clip>
+        <clip>Bruce - Digital humanities technology</clip>
+        <clip>Fernanda - Policy and data</clip>
+        <clip>Fernanda - live data</clip>
+        <clip>Javier - Julian Oliver</clip>
+        <clip>Jen - Big data</clip>
+        <clip>Jen - data crystal ball 1</clip>
+        <clip>Jen - data crystal ball 3</clip>
+        <clip>Jen - facebook data</clip>
+        <clip>Jer - Big Data Security</clip>
+        <clip>Jer - Data ownership</clip>
+        <clip>Kevin - computer perception</clip>
+        <clip>Kevin - reality in the eyes of data</clip>
+        <clip>Lauren - data ownership 1</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="2DVideo_FaceDebug_JapaneseCouple">
-    <keywords></keywords>
-    <suppressions></suppressions>
+    <keywords>face tracking|machine vision</keywords>
+    <suppressions>
+        <clip>Bruce - future camera 5</clip>
+        <clip>Greg - AI 1</clip>
+        <clip>Greg - Gaze tracking</clip>
+        <clip>Greg - camera getting cheaper</clip>
+        <clip>Greg - camera scaling up</clip>
+        <clip>Greg - cameras scaling up</clip>
+        <clip>Kyle_CH - RGBD</clip>
+        <clip>Kyle_MC - faceOSC 1</clip>
+        <clip>Kyle_MC - faceOSC 2</clip>
+        <clip>Theo - 3D sensing</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="2DVideo_FaceDebug_Teens">
-    <keywords></keywords>
-    <suppressions></suppressions>
+    <keywords>new aesthetic</keywords>
+    <suppressions>
+        <clip>Aaron - curiosity</clip>
+        <clip>Bruce - camera technician vs explorer</clip>
+        <clip>Bruce - digital status quo</clip>
+        <clip>Elliot_UK - aesthetic of error</clip>
+        <clip>Elliot_UK - limitations 2</clip>
+        <clip>Greg - Object Oriented Ontology 2</clip>
+        <clip>Greg - object oriented ontology 1</clip>
+        <clip>Kyle_MC - Debug screen</clip>
+        <clip>Marius - Aesthetic with no references,</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Theo - eyebeam R&amp;D</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="2DVideo_FaceShift_noisy">
-    <keywords></keywords>
-    <suppressions></suppressions>
+    <keywords>face tracking</keywords>
+    <suppressions>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="2DVideo_FaceSubstitution">
-    <keywords></keywords>
-    <suppressions></suppressions>
+    <keywords>face tracking|new aesthetic|machine aesthetics</keywords>
+    <suppressions>
+        <clip>Aaron - curiosity</clip>
+        <clip>Bruce - camera technician vs explorer</clip>
+        <clip>Bruce - digital status quo</clip>
+        <clip>Elliot_UK - aesthetic of error</clip>
+        <clip>Elliot_UK - limitations 2</clip>
+        <clip>Greg - AI 1</clip>
+        <clip>Greg - AI 2</clip>
+        <clip>Greg - Object Oriented Ontology 2</clip>
+        <clip>Greg - object oriented ontology 1</clip>
+        <clip>Kyle_MC - Debug screen</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Marius - Aesthetic with no references,</clip>
+        <clip>Marius - Machines change the way we see</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Shantell - Drawing with machines</clip>
+        <clip>Theo - eyebeam R&amp;D</clip>
+        <clip>Kyle_MC - faceOSC 1</clip>
+        <clip>Kyle_MC - faceOSC 2</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="2DVideo_LiveCode1_gesturepaint">
-    <keywords></keywords>
-    <suppressions></suppressions>
+    <keywords>coding|programming</keywords>
+    <suppressions>
+        <clip>Higa - language barriers</clip>
+        <clip>Higa - thick wall</clip>
+        <clip>Higa - working all night</clip>
+        <clip>Joel - Amiga500</clip>
+        <clip>Karsten - 256 bytes part 1</clip>
+        <clip>Kyle_CH - alter language 1</clip>
+        <clip>Kyle_CH - coding is 1</clip>
+        <clip>Maeda - not a big deal</clip>
+        <clip>Patricio - Imaginative technologies 1</clip>
+        <clip>Patricio - Magic Spells 1</clip>
+        <clip>Ramsey - Ramsey Intro</clip>
+        <clip>Ramsey - complacency 1</clip>
+        <clip>Ramsey - complacency 2</clip>
+        <clip>Ramsey - designing languages</clip>
+        <clip>Ramsey - wizardry 1</clip>
+        <clip>Ramsey - wizardry 2</clip>
+        <clip>Shantell - Coding gesturally</clip>
+        <clip>Binx - Programming is a superpower</clip>
+        <clip>Binx - programming is a superpower</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Bruce - beauty of code 4</clip>
+        <clip>Casey - Programming at 26</clip>
+        <clip>Diederick - hackathon1</clip>
+        <clip>Greg - Creative Coder</clip>
+        <clip>Higa - beginnings</clip>
+        <clip>Higa - process of working alone</clip>
+        <clip>Higa - simplicity of self made tools</clip>
+        <clip>JTNimoy - Pickle</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jen - to program or not to program</clip>
+        <clip>Julian - mixing code</clip>
+        <clip>Kyle_CH - coding, magic</clip>
+        <clip>Kyle_CH - coding 2</clip>
+        <clip>Martin - verbal programming debate</clip>
+        <clip>Paola - changes the way you think</clip>
+        <clip>Paola - code changes your thinking</clip>
+        <clip>Patricio - Imaginative technologies 2</clip>
+        <clip>Philip - get an idea</clip>
+        <clip>Philip - image is in your brain</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Philip - with programming you can do whatever</clip>
+        <clip>Ramsey - complicated C++</clip>
+        <clip>Ramsey - language as expression</clip>
+        <clip>Ramsey - literacy</clip>
+        <clip>Ramsey - trapese 1</clip>
+        <clip>Ramsey - trapese 2</clip>
+        <clip>Zach - action script</clip>
+        <clip>Zach - action script shorter</clip>
+        <clip>Zach - minecraft livecode</clip>
+        <clip>Zach - on the street</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="2DVideo_LiveCode3_DesignByNumbers">
-    <keywords></keywords>
-    <suppressions></suppressions>
+    <keywords>design by numbers|aesthetics and computation</keywords>
+    <suppressions>
+        <clip>Casey - Programming at 26</clip>
+        <clip>Golan - ACG</clip>
+        <clip>Golan - ACG3</clip>
+        <clip>Golan - MIT</clip>
+        <clip>Golan - pedagogical impulse</clip>
+        <clip>Golan - people at MIT</clip>
+        <clip>Maeda - ACU p 2</clip>
+        <clip>Maeda - ACU part 1</clip>
+        <clip>Maeda - Aesthetics and Computation group</clip>
+        <clip>Maeda - Artist coders coder artists</clip>
+        <clip>Nervous_Jessica - John Maeda</clip>
+        <clip>Nervous_Jessica - MIT beginning</clip>
+        <clip>Zach - Open Frameworks 1</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
