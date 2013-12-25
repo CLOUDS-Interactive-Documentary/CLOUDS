@@ -127,7 +127,8 @@ void CloudsVisualSystemColony::selfPostDraw(){
 //             getSharedRenderTarget().getHeight());
 //    levelSet.end();
     noiseShader.begin();
-    noiseShader.setUniform1f("time", ofGetElapsedTimeMillis()/1000.0);
+    noiseShader.setUniform1i("complexity", 1);
+    noiseShader.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
     noiseShader.setUniform1f("zoom", ofGetMouseX());
     noiseShader.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
     ofRect(0, 0, getSharedRenderTarget().getWidth(),getSharedRenderTarget().getHeight());
