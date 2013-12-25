@@ -393,7 +393,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			vector<CloudsVisualSystemPreset> presets = visualSystems.getPresetsForKeywords( clip.getKeywords() );
 			vector<string> ids;
 			for(int i = 0; i < presets.size(); i++){
-				if(!visualSystems.isClipSuppressed(presets[i].getID(), clip.getLinkName()) ){
+				if(!visualSystems.isClipSuppressed(presets[i].getID(), clip.getLinkName()) &&
+				   presets[i].enabled)
+				{
 					ids.push_back( presets[i].getID() );
 				}
 			}
@@ -431,7 +433,6 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	[presetTable reloadData];
 	[allKeywordTable reloadData];
 	[allClipTable reloadData];
-
 
 }
 
