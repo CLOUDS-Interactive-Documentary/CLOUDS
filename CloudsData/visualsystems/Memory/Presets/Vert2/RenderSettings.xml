@@ -1,0 +1,47 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>8.000000000</XPosition>
+    <YPosition>35.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>margin</Name>
+    <Value>5.566502094</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>block_width</Name>
+    <Value>20.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>block_height</Name>
+    <Value>0.689655185</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>block_scale</Name>
+    <Value>1.295566559</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>block_border</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>border_red</Name>
+    <Value>0.108374387</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>border_green</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>border_blue</Name>
+    <Value>0.000000000</Value>
+</Widget>
