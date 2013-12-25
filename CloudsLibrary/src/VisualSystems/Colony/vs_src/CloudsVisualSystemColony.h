@@ -10,7 +10,6 @@
 
 #include "CloudsVisualSystem.h"
 
-//#include "cCell.h"
 #include "gCell.h"
 
 class CloudsVisualSystemColony : public CloudsVisualSystem {
@@ -77,5 +76,5 @@ private:
     
     /*  PARAMS */
     cellParams params;
-    int numInitialCells;
+    float numInitialCells; //float because ints won't work in gui
 };

@@ -9,7 +9,7 @@ string CloudsVisualSystemColony::getSystemName()
 void CloudsVisualSystemColony::selfSetup()
 {
     numInitialCells = 100; //FIXME : Magic number
-    //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
+    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
     vbo.setMode(OF_PRIMITIVE_POINTS);
     
 	ofDisableArbTex();
@@ -46,6 +46,7 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
     sysGui->addRangeSlider("Max Size", 0.0, 30.0, &params.maxSize_min, &params.maxSize_max);
     
     sysGui->addSpacer("Immutables");
+    sysGui->addSlider("Initial Cells", 0, 1000, &numInitialCells);
     sysGui->addButton("Reset", &reset);
 }
 
@@ -121,15 +122,21 @@ void CloudsVisualSystemColony::selfDraw(){
 
 void CloudsVisualSystemColony::selfPostDraw(){
 
-    levelSet.begin();
-    fbo.draw(0, 0, getSharedRenderTarget().getWidth(),
-             getSharedRenderTarget().getHeight());
-    levelSet.end();
+//    levelSet.begin();
+//    fbo.draw(0, 0, getSharedRenderTarget().getWidth(),
+//             getSharedRenderTarget().getHeight());
+//    levelSet.end();
+    noiseShader.begin();
+    noiseShader.setUniform1f("time", ofGetElapsedTimeMillis()/1000.0);
+    noiseShader.setUniform1f("zoom", ofGetMouseX());
+    noiseShader.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+    ofRect(0, 0, getSharedRenderTarget().getWidth(),getSharedRenderTarget().getHeight());
+    noiseShader.end();
 }
 
 void CloudsVisualSystemColony::selfBegin()
 {
-    for (int i = 0; i < numInitialCells; i++) {
+    for (int i = 0; i < (int) numInitialCells; i++) {
         cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight(), i * 0.01), params));
         cells.push_back(newCell);
     }
@@ -141,13 +148,15 @@ void CloudsVisualSystemColony::selfEnd()
         cells.erase(cells.begin()+i);
     }
     cells.clear();
-}
-
-void CloudsVisualSystemColony::selfExit(){
+    
     cellShader.unload();
     levelSet.unload();
     vbo.clear();
     //TODO: Destroy everything in gCell;
+}
+
+void CloudsVisualSystemColony::selfExit(){
+    
 }
 
 void CloudsVisualSystemColony::reallocateFramebuffers(){
