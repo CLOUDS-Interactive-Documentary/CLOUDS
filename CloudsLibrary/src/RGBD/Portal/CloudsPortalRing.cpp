@@ -95,14 +95,14 @@ void CloudsPortalRing::setup(CloudsPortal* parent, ofVboMesh& portalGeo, int rin
 				segmentPair.first = portalGeo.getNumVertices();
 				float startAngle = degreesPerSegment*s;
 				float endAngle	 = degreesPerSegment*(s+1);
-
-				addVertsAtAngle(shard,startAngle,true);
+				float segmentPercent = (1.0 * currentSegment / parent->ringSegments);
+				addVertsAtAngle(shard,startAngle,segmentPercent,true);
 				
 				for(float angle = startAngle; angle <= endAngle; angle += degreesPerQuad){
-					addVertsAtAngle(shard,angle);
+					addVertsAtAngle(shard,segmentPercent,angle);
 				}
 				
-				addVertsAtAngle(shard,endAngle,true);
+				addVertsAtAngle(shard,endAngle,segmentPercent,true);
 				
 				shard.innerColor.setBrightness(shard.innerColor.getBrightness()*.9);
 				shard.outerColor.setBrightness(shard.outerColor.getBrightness()*.9);
@@ -118,7 +118,7 @@ void CloudsPortalRing::setup(CloudsPortal* parent, ofVboMesh& portalGeo, int rin
 	}
 }
 
-void CloudsPortalRing::addVertsAtAngle(PortalShard& shard, float angle, bool endCap){
+void CloudsPortalRing::addVertsAtAngle(PortalShard& shard, float angle, float segmentPercent, bool endCap){
 	
 	ofVec3f vInner(0,1,0);
 	ofVec3f vOuter(0,1,0);
@@ -128,11 +128,11 @@ void CloudsPortalRing::addVertsAtAngle(PortalShard& shard, float angle, bool end
 	vOuter *= radius+thickness;
 	
 	geo->addColor(endCap ? ofFloatColor(0,0) : shard.innerColor);
-	geo->addNormal(ofVec3f(shard.direction, 0., 1.));
+	geo->addNormal(ofVec3f(shard.direction, segmentPercent, 1.));
 	geo->addVertex(vInner);
 	
 	geo->addColor(endCap ? ofFloatColor(0,0) : shard.outerColor);
-	geo->addNormal(ofVec3f(shard.direction, 0., 1.));
+	geo->addNormal(ofVec3f(shard.direction, segmentPercent, 1.));
 	geo->addVertex(vOuter);
 }
 
