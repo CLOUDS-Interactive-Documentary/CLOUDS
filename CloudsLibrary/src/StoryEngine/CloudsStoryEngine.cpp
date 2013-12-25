@@ -256,11 +256,16 @@ void CloudsStoryEngine::setCustomAct(CloudsAct* act){
 
 #pragma mark INIT ACT
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed){
+	if(seed.getKeywords().size() == 0){
+		ofLogError("CloudsStoryEngine::buildAct") << seed.getLinkName() << " contains no keywords!";
+		return NULL;
+	}
     return buildAct(run, seed, seed.getKeywords()[ ofRandom(seed.getKeywords().size()) ]);
 }
 
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string topic){
 	
+	//this hack let's us inject custom apps 
 	if(customAct != NULL){
 		CloudsActEventArgs args(customAct);
 		ofNotifyEvent(events.actCreated, args);

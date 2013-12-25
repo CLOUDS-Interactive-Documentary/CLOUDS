@@ -854,14 +854,14 @@
 		E703CD17185D187800547738 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
+				E7A4DC2A186A272A002F5371 /* CloudsSVGMesh.h */,
+				E7A4DC29186A272A002F5371 /* CloudsSVGMesh.cpp */,
 				E703CD1D185D419800547738 /* CloudsHUDLayer.h */,
 				E703CD1C185D419700547738 /* CloudsHUDLayer.cpp */,
 				E703CD21185D6B3100547738 /* CloudsHUDHomeButton.cpp */,
 				E703CD22185D6B3200547738 /* CloudsHUDHomeButton.h */,
 				E703CD19185D187800547738 /* CloudsHUDController.h */,
 				E703CD18185D187800547738 /* CloudsHUDController.cpp */,
-				E7A4DC2A186A272A002F5371 /* CloudsSVGMesh.h */,
-				E7A4DC29186A272A002F5371 /* CloudsSVGMesh.cpp */,
 			);
 			name = HUD;
 			path = RGBD/HUD;
@@ -870,8 +870,8 @@
 		E703CD24185D6B9000547738 /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				E703CD25185D6B9100547738 /* CloudsInput.cpp */,
 				E703CD26185D6B9100547738 /* CloudsInput.h */,
+				E703CD25185D6B9100547738 /* CloudsInput.cpp */,
 				E703CD27185D6B9100547738 /* CloudsInputEvents.h */,
 				E703CD2A185D6B9100547738 /* CloudsInputMouse.cpp */,
 				E703CD2B185D6B9100547738 /* CloudsInputMouse.h */,

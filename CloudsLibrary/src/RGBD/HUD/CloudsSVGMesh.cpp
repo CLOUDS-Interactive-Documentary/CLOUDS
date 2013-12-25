@@ -16,7 +16,7 @@ string strrephack(string input, string searchStr, string replaceStr){
 bool CloudsSVGMesh::load(string file){
 	ofxXmlSettings svg;
 	if(!svg.loadFile(file)){
-		ofLogError("CloudsSVGMesh::setup") << "Couldn't load svg " << file;
+		ofLogError("CloudsSVGMesh::setup") << "Couldn't load svg " << file << (ofFile(file).exists() ? "." : ". The file does not exist.");
 		return false;
 	}
 	
@@ -51,8 +51,8 @@ bool CloudsSVGMesh::load(string file){
 				totalVerts++;
 			}
 		}
-//		cout << "Bounds for SVG " << file << " is " << bounds.getMin() << " - " << bounds.getMax() << endl;
-//		cout << "Found " << meshes.size() << " meshes with " << totalVerts << " vertices" << endl;		
+		cout << "Bounds for SVG " << file << " is " << bounds.getMin() << " - " << bounds.getMax() << endl;
+		cout << "Found " << meshes.size() << " meshes with " << totalVerts << " vertices" << endl;		
 	}
 }
 
@@ -70,9 +70,11 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId){
 									 xml.getAttribute("line", "y2", 0., l), 0));
 
 		string hexColor = xml.getAttribute("line", "stroke", "#FFFFFF", l);
-		hexColor.erase(hexColor.begin());//kill the #		
+		hexColor.erase(hexColor.begin());//kill the #
 		ofColor color = ofColor::fromHex( ofHexToInt(hexColor) );
-		color.a = xml.getAttribute("line", "opacity", 0., l)*255.;
+		if(xml.attributeExists("line","opacity",l)){
+			color.a = xml.getAttribute("line", "opacity", 0., l)*255.;
+		}
 
 		strokeMesh.addColor(color);
 		strokeMesh.addColor(color);
@@ -99,7 +101,9 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId){
 		string hexColor = xml.getAttribute("rect", (isLines ? "stroke" : "fill"), "#FFFFFF", r);
 		hexColor.erase(hexColor.begin());//kill the #
 		ofColor color = ofColor::fromHex( ofHexToInt(hexColor));
-		color.a = xml.getAttribute("rect", "opacity", 0., r)*255.;
+		if(xml.attributeExists("line","opacity",r)){
+			color.a = xml.getAttribute("rect", "opacity", 0., r)*255.;
+		}
 
 		if(isLines){
 
@@ -123,18 +127,17 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId){
 		}
 		else{
 			
-//			string hexColor = xml.getAttribute("rect", "stroke", "#FFFFFF", r);
-//			hexColor.erase(hexColor.begin());//kill the #
-//			ofColor color = ofColor::fromHex( ofHexToInt(hexColor));
-//			color.a = xml.getAttribute("rect", "opacity", 0., r)*255.;
 			
 			fillMesh.addVertex(a);
 			fillMesh.addVertex(b);
 			fillMesh.addVertex(d);
+
+			fillMesh.addVertex(b);
+			fillMesh.addVertex(d);
 			fillMesh.addVertex(c);
-			
-			for(int i = 0; i < 4; i++){
-				strokeMesh.addColor(color);
+
+			for(int i = 0; i < 6; i++){
+				fillMesh.addColor(color);
 			}
 		}
 	}
@@ -160,7 +163,7 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId){
 			meshIdIndex[m.id] = meshes.size();
 		}
 		m.mesh = ofVboMesh(fillMesh);
-		m.mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+		m.mesh.setMode(OF_PRIMITIVE_TRIANGLES);
 		m.mesh.setUsage(GL_STATIC_DRAW);
 		m.fill = true;
 		meshes.push_back(m);

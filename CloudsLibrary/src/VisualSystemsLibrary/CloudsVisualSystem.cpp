@@ -43,11 +43,19 @@ static bool backgroundShaderLoaded = false;
 static ofShader backgroundShader;
 static ofImage backgroundGradientCircle;
 static ofImage backgroundGradientBar;
-
+static bool screenResolutionForced = false;
+static int forcedScreenWidth;
+static int forcedScreenHeight;
 
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
 	return staticRenderTarget;
+}
+
+void CloudsVisualSystem::forceScreenResolution(int screenWidth, int screenHeight){
+	screenResolutionForced = true;
+	forcedScreenWidth = screenWidth;
+	forcedScreenHeight = screenHeight;
 }
 
 ofImage& CloudsVisualSystem::getCursor(){
@@ -157,11 +165,21 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	//ofFbo& renderTarget = sharedRenderTarget != NULL ? *sharedRenderTarget : getStaticRenderTarget();
 	ofFbo& renderTarget = getStaticRenderTarget();
 	
-    if(!renderTarget.isAllocated() ||
-       renderTarget.getWidth() != ofGetWidth() ||
-       renderTarget.getHeight() != ofGetHeight())
-    {
-        renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
+	bool reallocateTarget = !renderTarget.isAllocated();
+	reallocateTarget |= !screenResolutionForced &&
+						(renderTarget.getWidth() != ofGetWidth() ||
+						 renderTarget.getHeight() != ofGetHeight());
+	reallocateTarget |= screenResolutionForced &&
+						(renderTarget.getWidth() != forcedScreenWidth ||
+						 renderTarget.getHeight() != forcedScreenHeight);
+
+	if(reallocateTarget){
+		if(screenResolutionForced){
+			renderTarget.allocate(forcedScreenWidth, forcedScreenHeight, GL_RGB);
+		}
+		else{
+			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
+		}
 		renderTarget.begin();
 		ofClear(0,0,0,1.0);
 		renderTarget.end();

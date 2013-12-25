@@ -18,15 +18,10 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	secondaryDisplay.drawOverlay();
-//    secondaryDisplay.draw();
-//    secondaryDisplay.drawSDLayer();
+	secondaryDisplay.draw();
 }
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-    if(key==' '){
-        secondaryDisplay.animateOn();
-    }
 
 }
 

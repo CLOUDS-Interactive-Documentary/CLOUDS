@@ -76,7 +76,6 @@
 		E70CDDB31868FAB900955691 /* svgtiny_gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDAB1868FAB900955691 /* svgtiny_gradient.cpp */; };
 		E70CDDB41868FAB900955691 /* svgtiny_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDAD1868FAB900955691 /* svgtiny_list.cpp */; };
 		E70CDDB51868FAB900955691 /* ofxSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDAF1868FAB900955691 /* ofxSvg.cpp */; };
-		E70CEC7418696B5400955691 /* CloudsSDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CEC6B18696B5400955691 /* CloudsSDLayer.cpp */; };
 		E70CEC7518696B5400955691 /* CloudsSecondaryDisplayController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CEC6D18696B5400955691 /* CloudsSecondaryDisplayController.cpp */; };
 		E7176E2F17D3DABA00C8DC38 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2D17D3DABA00C8DC38 /* CloudsQuestion.cpp */; };
 		E724461216573A0800D70E01 /* ofxHotKeys_impl_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E724459616573A0400D70E01 /* ofxHotKeys_impl_linux.cpp */; };
@@ -124,6 +123,7 @@
 		E72446E416573AD000D70E01 /* ofxEasingSine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72446AF16573AD000D70E01 /* ofxEasingSine.cpp */; };
 		E72446E516573AD000D70E01 /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72446B116573AD000D70E01 /* ofxTween.cpp */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
+		E7A4DC31186B6900002F5371 /* CloudsSVGMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A4DC2F186B6900002F5371 /* CloudsSVGMesh.cpp */; };
 		E7B3C77B17EE291600581ACD /* CloudsClip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B3C75F17EE291500581ACD /* CloudsClip.cpp */; };
 		E7B3C77D17EE291600581ACD /* CloudsDichotomy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B3C76317EE291500581ACD /* CloudsDichotomy.cpp */; };
 		E7B3C77E17EE291600581ACD /* CloudsFCPParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B3C76617EE291500581ACD /* CloudsFCPParser.cpp */; };
@@ -390,8 +390,6 @@
 		E70CDDAD1868FAB900955691 /* svgtiny_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny_list.cpp; sourceTree = "<group>"; };
 		E70CDDAF1868FAB900955691 /* ofxSvg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSvg.cpp; sourceTree = "<group>"; };
 		E70CDDB01868FAB900955691 /* ofxSvg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSvg.h; sourceTree = "<group>"; };
-		E70CEC6B18696B5400955691 /* CloudsSDLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSDLayer.cpp; sourceTree = "<group>"; };
-		E70CEC6C18696B5400955691 /* CloudsSDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSDLayer.h; sourceTree = "<group>"; };
 		E70CEC6D18696B5400955691 /* CloudsSecondaryDisplayController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSecondaryDisplayController.cpp; sourceTree = "<group>"; };
 		E70CEC6E18696B5400955691 /* CloudsSecondaryDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSecondaryDisplayController.h; sourceTree = "<group>"; };
 		E7176E2D17D3DABA00C8DC38 /* CloudsQuestion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsQuestion.cpp; path = ../RGBD/CloudsQuestion.cpp; sourceTree = "<group>"; };
@@ -489,6 +487,8 @@
 		E72446B116573AD000D70E01 /* ofxTween.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTween.cpp; sourceTree = "<group>"; };
 		E72446B216573AD000D70E01 /* ofxTween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTween.h; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		E7A4DC2F186B6900002F5371 /* CloudsSVGMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsSVGMesh.cpp; path = ../RGBD/HUD/CloudsSVGMesh.cpp; sourceTree = "<group>"; };
+		E7A4DC30186B6900002F5371 /* CloudsSVGMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsSVGMesh.h; path = ../RGBD/HUD/CloudsSVGMesh.h; sourceTree = "<group>"; };
 		E7B3C75F17EE291500581ACD /* CloudsClip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClip.cpp; sourceTree = "<group>"; };
 		E7B3C76017EE291500581ACD /* CloudsClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClip.h; sourceTree = "<group>"; };
 		E7B3C76317EE291500581ACD /* CloudsDichotomy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsDichotomy.cpp; sourceTree = "<group>"; };
@@ -1003,6 +1003,8 @@
 		E70CDD261868D43400955691 /* SecondaryDisplay */ = {
 			isa = PBXGroup;
 			children = (
+				E7A4DC30186B6900002F5371 /* CloudsSVGMesh.h */,
+				E7A4DC2F186B6900002F5371 /* CloudsSVGMesh.cpp */,
 				E70CEC6A18696B5400955691 /* Receiver */,
 			);
 			name = SecondaryDisplay;
@@ -1165,8 +1167,6 @@
 		E70CEC6A18696B5400955691 /* Receiver */ = {
 			isa = PBXGroup;
 			children = (
-				E70CEC6C18696B5400955691 /* CloudsSDLayer.h */,
-				E70CEC6B18696B5400955691 /* CloudsSDLayer.cpp */,
 				E70CEC6E18696B5400955691 /* CloudsSecondaryDisplayController.h */,
 				E70CEC6D18696B5400955691 /* CloudsSecondaryDisplayController.cpp */,
 			);
@@ -1715,8 +1715,8 @@
 				E70CDDB31868FAB900955691 /* svgtiny_gradient.cpp in Sources */,
 				E70CDDB41868FAB900955691 /* svgtiny_list.cpp in Sources */,
 				E70CDDB51868FAB900955691 /* ofxSvg.cpp in Sources */,
-				E70CEC7418696B5400955691 /* CloudsSDLayer.cpp in Sources */,
 				E70CEC7518696B5400955691 /* CloudsSecondaryDisplayController.cpp in Sources */,
+				E7A4DC31186B6900002F5371 /* CloudsSVGMesh.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
