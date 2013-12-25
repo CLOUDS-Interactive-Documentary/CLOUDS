@@ -101,6 +101,7 @@ private:
     float   margin;
     float   blockWidth, blockHeight, blockScale;
     float   randomSort, randomMix, randomUp, randomDown;
+    float   brightnessOffset;
     float   noiseLerp;
     
     int     xBlocks;

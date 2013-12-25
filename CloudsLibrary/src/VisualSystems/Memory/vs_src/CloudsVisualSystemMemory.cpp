@@ -25,6 +25,7 @@ void CloudsVisualSystemMemory::selfSetup()
     randomDown = 0;
 
     borderColor = ofFloatColor(0.0823, 0.8509, 0.7960);
+    brightnessOffset = 1;
     bTexture = false;
     bSort = true;
     bDeFrag = false;
@@ -61,6 +62,7 @@ void CloudsVisualSystemMemory::selfSetupRenderGui()
     rdrGui->addSlider("block_height", 0.0, 20, &blockHeight);
     rdrGui->addSlider("block_scale", 0.5
                       , 10, &blockScale);
+    rdrGui->addSlider("brightness offset", 1.0, 20.0, &brightnessOffset);
     rdrGui->addSlider("block_border", 0.0, 1.0, &(borderColor.a));
     rdrGui->addSlider("border_red", 0.0, 1.0, &(borderColor.r));
     rdrGui->addSlider("border_green", 0.0, 1.0, &(borderColor.g));
@@ -119,8 +121,9 @@ void CloudsVisualSystemMemory::generateFromMemory(){
     int blocksTotal = 10000*(10-blockScale);
     unsigned char * data = new unsigned char[blocksTotal];
     
-    int xMargin = 20;
-    int yMargin = 20;
+    
+    int xMargin = 0;
+    int yMargin = 0;
     
     int width = ofGetWidth()-xMargin*2.0;
     int height = ofGetHeight()-yMargin*2.0;
@@ -172,8 +175,9 @@ void CloudsVisualSystemMemory::generateFromTexture(ofTexture &_tex){
     ofPixels pixels;
     _tex.readToPixels(pixels);
     
-    int xMargin = 20;
-    int yMargin = 20;
+    
+    int xMargin = 0;
+    int yMargin = 0;
     
     int width = ofGetWidth()-xMargin*2.0;
     int height = ofGetHeight()-yMargin*2.0;
@@ -190,7 +194,7 @@ void CloudsVisualSystemMemory::generateFromTexture(ofTexture &_tex){
         for (int i = 0; i < xBlocks; i++){
             
             int x = xMargin + ((margin + blockWidth)*blockScale)*i ;
-            int y = yMargin + ((margin + blockHeight)*blockScale)*j ;
+            int y = xMargin + ((margin + blockHeight)*blockScale)*j ;
             
             Block newBlock;
             newBlock.set(block);
@@ -201,7 +205,7 @@ void CloudsVisualSystemMemory::generateFromTexture(ofTexture &_tex){
             st *= ofPoint(_tex.getWidth(),_tex.getHeight());
             
             newBlock.value = pixels.getColor( st.x, st.y ).r;//.getBrightness() ;
-            newBlock.color = ofColor( newBlock.value );
+            newBlock.color = ofColor( newBlock.value)/brightnessOffset;
             newBlock.borderColor = borderColor;
             newBlock.bSelected = false;
             
@@ -394,7 +398,7 @@ void CloudsVisualSystemMemory::swapBlocks(int _indexA, int _indexB, bool _colore
 
 void CloudsVisualSystemMemory::selfDrawBackground()
 {
-
+    /*
     ofNoFill();
     ofSetColor(150);
     ofSetLineWidth(0.5);
@@ -403,6 +407,7 @@ void CloudsVisualSystemMemory::selfDrawBackground()
     ofSetColor(100);
     ofSetLineWidth(1);
     ofRect(10,10,ofGetWidth()-20,ofGetHeight()-20);
+    */
     
     ofSetLineWidth(0.01);
     for (int i = 0; i < blocks.size(); i++) {
