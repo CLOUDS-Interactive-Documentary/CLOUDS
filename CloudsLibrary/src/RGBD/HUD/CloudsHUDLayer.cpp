@@ -22,43 +22,18 @@ CloudsHUDLayer::CloudsHUDLayer(){
 }
 
 void CloudsHUDLayer::parse(string svgFilePath){
-	
 
 	svg.load(svgFilePath);
+	
 	//find text boxes
-//	ofxXmlSettings xml;
-//	xml.loadFile(svgFilePath);
-//	xml.pushTag("svg");
-//	int numGTags = xml.getNumTags("g");
-//	for(int i = 0; i < numGTags; i++){
-//		if(!xml.attributeExists("g","id",i)){
-//			continue;
-//		}
-//		if(xml.attributeExists("g", "display", i) && xml.getAttribute("g", "display", "", i) == "none"){
-//			continue;
-//		}
-//		string id = ofToLower(xml.getAttribute("g", "id", "", i));
-//		if(id.find("textbox") != string::npos){
-//			cout << "Found Text Box " << id << endl;
-//			xml.pushTag("g",i);
-//			int numRects = xml.getNumTags("rect");
-//			if(numRects == 1){
-//				TextBounds tb;
-//				tb.gid = id;
-//				tb.rect = ofRectangle(xml.getAttribute("rect", "x", 0.),
-//									  xml.getAttribute("rect", "y", 0.),
-//									  xml.getAttribute("rect", "width", 0.),
-//									  xml.getAttribute("rect", "height", 0.));
-//				textBoxes.push_back(tb);
-////				cout << "Found rectangle " << tb.rect.x << " " << tb.rect.y << " " << tb.rect.width << " " << tb.rect.height << endl;
-//			}
-//			else{
-//				ofLogError("CloudsHUDLayer::parse") << "Wrong number of rectangles in " << id << endl;
-//			}
-//			xml.popTag();
-//		}
-//		
-//	}
+	for(int i = 0; i < svg.getMeshes().size(); i++){
+		if( ofToLower(svg.getMeshes()[i].id).find("textbox") != string::npos ) {
+			textBoxIds.push_back(svg.getMeshes()[i].id);
+//			cout << svg.sourceFileName <<  " has text box: " << svg.getMeshes()[i].id << " with bounds " << svg.getMeshes()[i].bounds.x << " " << svg.getMeshes()[i].bounds.y << " " << svg.getMeshes()[i].bounds.width << " " << svg.getMeshes()[i].bounds.height << endl;
+		}
+	}
+	
+
 }
 
 void CloudsHUDLayer::start(){
@@ -87,7 +62,6 @@ void CloudsHUDLayer::update(){
 		animating = percentComplete.x != 1.0 || percentComplete.y != 1.0;
 		lastUpdateTime = time;
 	}
-		
 }
 
 void CloudsHUDLayer::draw(){
@@ -95,7 +69,6 @@ void CloudsHUDLayer::draw(){
 	ofPushStyle();
 	ofSetColor(255, 0, 0, 10);
 	
-
 	glEnable(GL_SCISSOR_TEST);
 	//invert and flip
 	float screenHeight = ofGetHeight();

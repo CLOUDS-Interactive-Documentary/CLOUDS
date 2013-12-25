@@ -15,7 +15,7 @@ typedef struct {
 	ofVboMesh mesh;
 	string id;
 	bool fill;
-
+	ofRectangle bounds;
 } SVGMesh;
 
 class CloudsSVGMesh
@@ -25,10 +25,13 @@ class CloudsSVGMesh
 	void draw();
 	ofRectangle getBounds();
 
+	string sourceFileName;
+	
 	//of document
 	float getWidth();
 	float getHeight();
-
+	vector<SVGMesh>& getMeshes();
+	
   protected:
 	void recurseSVGTag(ofxXmlSettings& xml, string parentId);
 	vector<SVGMesh> meshes;

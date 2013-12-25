@@ -19,7 +19,9 @@ bool CloudsSVGMesh::load(string file){
 		ofLogError("CloudsSVGMesh::setup") << "Couldn't load svg " << file;
 		return false;
 	}
-
+	
+	sourceFileName = file;
+	
 	//example header
 //	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1440px"
 //	height="900px" viewBox="0 0 1440 900" enable-background="new 0 0 1440 900" xml:space="preserve">
@@ -32,6 +34,7 @@ bool CloudsSVGMesh::load(string file){
 	recurseSVGTag(svg, "");
 	svg.popTag();//svg
 	
+	//calculate various bounds
 	int totalVerts = 0;
 	if(meshes.size() > 0){
 		//find the bounds
@@ -39,8 +42,12 @@ bool CloudsSVGMesh::load(string file){
 							 meshes[0].mesh.getVertices()[0].y,
 							 0,0);
 		for(int i = 0; i < meshes.size(); i++){
+			meshes[i].bounds = ofRectangle(meshes[i].mesh.getVertices()[0].x,
+										   meshes[i].mesh.getVertices()[0].y,
+										   0,0);
 			for(int v = 0; v < meshes[i].mesh.getNumVertices(); v++){
-				bounds.growToInclude( meshes[i].mesh.getVertices()[v] );
+				bounds.growToInclude(meshes[i].mesh.getVertices()[v]);
+				meshes[i].bounds.growToInclude(meshes[i].mesh.getVertices()[v]);
 				totalVerts++;
 			}
 		}
@@ -142,12 +149,11 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId){
 		m.mesh = ofVboMesh(strokeMesh);
 		m.mesh.setMode(OF_PRIMITIVE_LINES);
 		m.mesh.setUsage(GL_STATIC_DRAW);
-		
+		m.fill = false;
 		meshes.push_back(m);
 	}
+	
 	if(fillMesh.getNumVertices() > 0){
-		
-		
 		SVGMesh m;
 		m.id = parentId;
 		if(m.id != ""){
@@ -156,7 +162,7 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId){
 		m.mesh = ofVboMesh(fillMesh);
 		m.mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 		m.mesh.setUsage(GL_STATIC_DRAW);
-		
+		m.fill = true;
 		meshes.push_back(m);
 	}
 	
@@ -184,6 +190,10 @@ void CloudsSVGMesh::draw(){
 	for(int i = 0; i < meshes.size(); i++){
 		meshes[i].mesh.draw();
 	}
+}
+
+vector<SVGMesh>& CloudsSVGMesh::getMeshes(){
+	return meshes;
 }
 
 ofRectangle CloudsSVGMesh::getBounds(){
