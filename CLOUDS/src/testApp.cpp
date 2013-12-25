@@ -56,7 +56,7 @@ void testApp::setup(){
 			startingNodes.erase(startingNodes.begin() + i);
 		}
 		else if(!startingNodes[i].hasMediaAsset){
-			ofLogError() << "Clip " << startingNodes[i].getID() << " has no combined video file, removing.";
+			ofLogError() << "Clip " << startingNodes[i].getID() << " has no media asset, removing.";
 			startingNodes.erase(startingNodes.begin() + i);
 		}
 		else{

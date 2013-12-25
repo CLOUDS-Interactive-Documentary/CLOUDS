@@ -104,7 +104,7 @@ void CloudsFCPParser::parseVOClips(){
 		clip.voiceOverAudioPath = dir.getPath(i);
 		clip.sourceVideoFilePath = dir.getPath(i);
 		clip.startFrame = 0;
-		clip.endFrame = 9999;
+		clip.endFrame = 35*24.; //DOES THIS WORK LOL?
 		
 		string name = ofFilePath::getBaseName( dir.getName(i) );
 		//remove weird final cut track name
@@ -1093,10 +1093,12 @@ void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 	combinedVideoDirectory = directory;
     //	cout << "Setting combined directory to " << directory << " looking for all clips " << allClips.size() << endl;
 	for(int i = 0; i < allClips.size(); i++){
-		allClips[i].hasMediaAsset = false;
+        
+
 		allClips[i].combinedVideoPath = directory + "/" + allClips[i].getCombinedMovieFile();
 		allClips[i].combinedCalibrationXMLPath = directory + "/" + allClips[i].getCombinedCalibrationXML();
-		allClips[i].hasMediaAsset = ofFile(allClips[i].combinedVideoPath).exists() && ofFile(allClips[i].combinedCalibrationXMLPath).exists();
+		allClips[i].hasMediaAsset = allClips[i].voiceOverAudio ||
+                                    (ofFile(allClips[i].combinedVideoPath).exists() && ofFile(allClips[i].combinedCalibrationXMLPath).exists());
         //        cout << " combined video path is " << allClips[i].combinedVideoPath << " " << allClips[i].combinedCalibrationXMLPath << endl;
         
 		if(allClips[i].hasMediaAsset){
