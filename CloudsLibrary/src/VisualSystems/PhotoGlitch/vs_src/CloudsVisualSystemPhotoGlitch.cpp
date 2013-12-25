@@ -100,6 +100,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
     customGui->addToggle("SOURCE SORT HUE", &sourceParams.sortByHue);
     customGui->addToggle("SOURCE SORT BRI", &sourceParams.sortByBrightness);
     customGui->addToggle("SOURCE REORDER", &sourceParams.reorder);
+//    customGui->addToggle("LOOP BACK TO SOURCE", &bLoopBack);
     customGui->addDropDownList("SOURCE IMAGES", imageNames);
     customGui->addSpacer();
     
@@ -333,10 +334,10 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     gp1.mode = TARGET_MODE;
     gp2.mode = TARGET_MODE;
     
-    imagesDir.listDir(getVisualSystemDataPath() + "sourceImages" );
+    imagesDir.listDir(getVisualSystemDataPath(true) + "sourceImages" );
     imagesDir.sort();
     
-    targetImagesDir.listDir(getVisualSystemDataPath() + "targetImages" );
+    targetImagesDir.listDir(getVisualSystemDataPath(true) + "targetImages" );
     targetImagesDir.sort();
     selectedSrcImageIdx = 0;
     selectedTargetImageIdx = 0;
@@ -667,29 +668,6 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
         generateSource();
         bShouldGenerate = false;
     }
-//
-//    if (bShouldShuffle) {
-//        shuffle();
-//        bShouldShuffle = false;
-//    }
-//    if (bShouldSortHue) {
-//        sortHue();
-//        bShouldSortHue = false;
-//    }
-//    if (bShouldSortBri) {
-//        sortBri();
-//        bShouldSortBri = false;
-//    }
-//    if (bShouldReorder) {
-//        reorder();
-//        bShouldReorder = false;
-//    }
-//    if (bShouldSortTarget){
-//        
-//    }
-//    if (bShouldSortTargetBri) {
-//        
-//    }
     
     
     // tween them cells!
@@ -739,11 +717,12 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
             cout<<"Here"<<endl;
             bCurrentlyAnimating = false;
             
-            if (currentTargetParams->mode == SOURCE_MODE) {
+            if (currentTargetParams->mode == SOURCE_MODE ) {
                 currentTarget = &target1;
                 currentTargetParams = &gp1;
                 cout<<"Updating animation from source to target"<<endl;
-                updateAnimation();
+
+                    updateAnimation();
             }
             else{
                 if (currentTarget->ID == 1 && gp2.enable) {
@@ -752,6 +731,11 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
                     cout<<"Updating animation for target 2"<<endl;
                     updateAnimation();
                 }
+//                if (bLoopBack) {
+//                    bLoopBack = false;
+//                    currentTargetParams = &sourceParams;
+//                    
+//                }
                 else if(currentTarget->ID == 2 || ( currentTarget->ID == 1 && !gp2.enable)){
                     cout<<"Sequence Complete"<<endl;
                 }
@@ -783,6 +767,7 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
     }
     else{
         vbo.disableColors();
+        bgVbo.disableColors();
         //     targetVbo.disableColors();
         if (currentTarget != NULL) {
             currentTarget->vbo.disableColors();
@@ -792,6 +777,7 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
     
     if (bUseTexture){
         vbo.enableTexCoords();
+        bgVbo.enableTexCoords();
         //        targetVbo.enableTexCoords();
         if (currentTarget != NULL) {
             currentTarget->vbo.enableTexCoords();
@@ -800,6 +786,7 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
     }
     else {
         vbo.disableTexCoords();
+        bgVbo.disableTexCoords();
         //        targetVbo.disableTexCoords();
         if (currentTarget != NULL) {
             currentTarget->vbo.disableTexCoords();
