@@ -51,8 +51,6 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	[presetTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	[presetTable reloadData];
 	
-//	[allClipTable setTarget:self];
-//	[allClipTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	[allClipTable reloadData];
 	[allKeywordTable reloadData];
 	
@@ -264,7 +262,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		
 		NSUInteger idx = [suppressedClipTable.selectedRowIndexes firstIndex];
 		while (idx != NSNotFound) {
-			visualSystems.unsuppressClip(visualSystems.getPresets()[self.selectedPresetIndex].getID(), suppressedClips[idx].getLinkName());
+			
+			visualSystems.unsuppressClip(visualSystems.getPresets()[self.selectedPresetIndex].getID(),
+										 suppressedClips[idx].getLinkName());
 			
 			// get the next index in the set
 			idx = [suppressedClipTable.selectedRowIndexes indexGreaterThanIndex:idx];
@@ -279,6 +279,13 @@ bool clipsort(CloudsClip a, CloudsClip b){
     }
 }
 
+- (void) linkClipToPreset:(id)sender
+{
+	if(clipTable.selectedRow >= 0 && presetTable.selectedRow >= 0){
+		visualSystems.linkClip(visualSystems.getPresets()[self.selectedPresetIndex].getID(),
+							   parser.getAllClips()[clipTable.selectedRow].getLinkName());
+	}
+}
 
 - (int) selectedPresetIndex
 {
@@ -295,7 +302,6 @@ bool clipsort(CloudsClip a, CloudsClip b){
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {
 	if(aTableView == presetTable){
-//		return visualSystems.getPresets().size();
 		return filteredPresetInds.size();
 	}
 	else if(aTableView == clipTable){
@@ -309,6 +315,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	}
 	else if(aTableView == allClipTable){
 		return parser.getAllClips().size();
+	}
+	else if(aTableView == clipPresetTable){
+		return currentClipPresets.size();
 	}
 	return 0;
 }
@@ -388,19 +397,23 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		if([@"clip" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].getLinkName().c_str() ];
 		}
-		else if([@"presets" isEqualToString:aTableColumn.identifier]){
+		else{
 			CloudsClip& clip = parser.getAllClips()[rowIndex];
-			vector<CloudsVisualSystemPreset> presets = visualSystems.getPresetsForKeywords( clip.getKeywords() );
-			vector<string> ids;
+			vector<CloudsVisualSystemPreset> presets =
+				visualSystems.getPresetsForKeywords( clip.getKeywords(), clip.getLinkName() );
+			int numPresets = 0;
 			for(int i = 0; i < presets.size(); i++){
 				if(!visualSystems.isClipSuppressed(presets[i].getID(), clip.getLinkName()) &&
 				   presets[i].enabled)
 				{
-					ids.push_back( presets[i].getID() );
+					numPresets++;
 				}
 			}
-			return [NSString stringWithUTF8String: ofJoinString(ids, ", ").c_str()];
+			return [NSString stringWithFormat:@"%d", numPresets];
 		}
+	}
+	else if(aTableView == clipPresetTable){
+		return [NSString stringWithUTF8String: currentClipPresets[rowIndex].getID().c_str() ];
 	}
 
 	return @"-";
@@ -432,12 +445,12 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	[suppressedClipTable reloadData];
 	[presetTable reloadData];
 	[allKeywordTable reloadData];
-	[allClipTable reloadData];
 
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
+		
 	if(aNotification.object == presetTable){
 		
 		[self updateAssociatedClips];
@@ -456,6 +469,23 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			grade.stringValue = @"";
 			enabledBox.state = NSOnState;
 			oculusBox.state = NSOffState;
+		}
+	}
+	else if(aNotification.object == allClipTable){
+		if(allClipTable.selectedRow >= 0){
+			CloudsClip& clip = parser.getAllClips()[allClipTable.selectedRow];
+			vector<CloudsVisualSystemPreset> presets =
+				visualSystems.getPresetsForKeywords( clip.getKeywords(), clip.getLinkName() );
+			currentClipPresets.clear();
+			for(int i = 0; i < presets.size(); i++){
+				if(!visualSystems.isClipSuppressed(presets[i].getID(), clip.getLinkName()) &&
+				   presets[i].enabled)
+				{
+					currentClipPresets.push_back( presets[i] );
+				}
+			}
+			cout << "currently selected " << currentClipPresets.size() << " clips" << endl;
+			[clipPresetTable reloadData];
 		}
 	}
 }

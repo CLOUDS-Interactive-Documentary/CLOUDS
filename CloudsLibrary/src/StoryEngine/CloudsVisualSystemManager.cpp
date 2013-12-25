@@ -299,24 +299,8 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 		}
 	}
 
-	//if we cleaned it out make sure there is a default to get started
-//	if(currentPresets.size() == 0){
 	addDefaultPresetForSystem( system->getSystemName() );
-	
-//	CloudsVisualSystemPreset newPreset;
-//	newPreset.systemName = system->getSystemName();
-//	newPreset.presetName = "+New Preset";
-//	newPreset.enabled = false;
-//	nameToPresets[newPreset.systemName].push_back(newPreset);
-//	presets.push_back(newPreset);
-//	
-//	CloudsVisualSystemPreset currentPreset;
-//	currentPreset.systemName = system->getSystemName();
-//	currentPreset.presetName = "+Current State";
-//	currentPreset.enabled = false;
-//	nameToPresets[currentPreset.systemName].push_back(currentPreset);
-//	presets.push_back(currentPreset);
-//	
+
 	sort(presets.begin(), presets.end(), preset_sort);
 	populateEnabledSystemIndeces();
 	
@@ -330,9 +314,15 @@ void CloudsVisualSystemManager::deletePreset(int i){
 	
 //	cout << "ERASING " << system->getSystemName() << " " << currentPresets[i].presetName << endl;
 	
-	if(i >= presets.size()) return;
+	if(i >= presets.size()){
+		return;	
+	}
 
 	CloudsVisualSystemPreset& preset = presets[i];
+	if(preset.presetName.at(0) == '+'){
+		return;
+	}
+	
 	vector<CloudsVisualSystemPreset>& presetMap = getPresetsForSystem( preset.systemName );
 	
 	for(int p = 0; p < presetMap.size(); p++){
@@ -452,6 +442,7 @@ void CloudsVisualSystemManager::loadPresets(){
 	}
 #endif
 	sort(presets.begin(), presets.end(), preset_sort);
+	updateClipPresetLinks();
 	populateEnabledSystemIndeces();
     cout << "** LOADED PRESETS " << presets.size() << endl;
 }
@@ -589,15 +580,25 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 }
 
 //--------------------------------------------------------------------
-vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeywords(vector<string>& keys){
+vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeywords(vector<string>& keys, string clipName){
 	vector<CloudsVisualSystemPreset> presetsWithKeywords;
-    
+    vector<string> presetIds;
 	for(int i = 0; i < presets.size(); i++){
 		vector<string> presetKeywords = keywordsForPreset(i);
 		for(int k = 0; k < keys.size(); k++){
 			if( ofContains(presetKeywords, keys[k]) ){
 				presetsWithKeywords.push_back(presets[i]);
+				presetIds.push_back(presets[i].getID());
 				continue;
+			}
+		}
+	}
+	
+	//add linked clips
+	if(clipToPresetLinks.find(clipName) != clipToPresetLinks.end()){
+		for(int i = 0; i < clipToPresetLinks[clipName].size(); i++){
+			if( !ofContains(presetIds, clipToPresetLinks[clipName][i]) ){
+				presetsWithKeywords.push_back( getPresetWithID(clipToPresetLinks[clipName][i]) );
 			}
 		}
 	}
@@ -606,9 +607,6 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 
 //--------------------------------------------------------------------
 vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresetsForSystem(string systemName){
-//	if( nameToPresets.find(systemName) == nameToPresets.end() ){
-//		ofLogError() << "Couldn't find presets for system " << systemName << endl;
-//	}
 	return nameToPresets[systemName];
 }
 
@@ -709,6 +707,7 @@ void CloudsVisualSystemManager::linkClip(string presetID, string clipName){
 			unsuppressClip(presetID, clipName);
 		}
 		linkedClips[presetID].push_back(clipName);
+		updateClipPresetLinks();
 	}
 }
 
@@ -746,8 +745,21 @@ void CloudsVisualSystemManager::unlinkClip(string presetID, string clip){
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::unlinkClip(string presetID, int presetIndex){
 	if(linkedClips.find(presetID) != linkedClips.end() &&
-	   linkedClips[presetID].size() < presetIndex){
+	   linkedClips[presetID].size() < presetIndex)
+	{
 		linkedClips[presetID].erase( linkedClips[presetID].begin() + presetIndex );
+		updateClipPresetLinks();
+	}
+}
+
+//--------------------------------------------------------------------
+void CloudsVisualSystemManager::updateClipPresetLinks(){
+	clipToPresetLinks.clear();
+	map<string, vector<string> >::iterator it;
+	for(it = linkedClips.begin(); it != linkedClips.end(); it++){
+		for(int i = 0; i < it->second.size(); i++){
+			clipToPresetLinks[it->second[i]].push_back(it->first);
+		}
 	}
 }
 

@@ -13,6 +13,7 @@
 	IBOutlet NSTableView* suppressedClipTable;
 	IBOutlet NSTableView* allKeywordTable;
 	IBOutlet NSTableView* allClipTable;
+	IBOutlet NSTableView* clipPresetTable; //presets for the selected clip
 	
 	IBOutlet NSTextField* keywordPercent;
 	IBOutlet NSTextField* clipPercent;
@@ -23,7 +24,6 @@
 	IBOutlet NSButton* oculusBox;
 	IBOutlet NSButton* soundBox;
 
-	
 	IBOutlet NSButton* filterEnabledBox;
 	IBOutlet NSButton* filterOculusBox;
 	IBOutlet NSButton* filterGradeABox;
@@ -39,6 +39,8 @@
 	vector<CloudsClip> associatedClips;
 	vector<CloudsClip> suppressedClips;
 	vector<string> associatedKeywords;
+	
+	vector<CloudsVisualSystemPreset> currentClipPresets;
 	
 	vector<int> sortedKeywordIndeces;
 	vector<int> sortedClipIndeces;
@@ -70,6 +72,8 @@
 - (IBAction) updateKeywords:(id)sender;
 - (IBAction) suppressClip:(id)sender;
 - (IBAction) unsuppressClip:(id)sender;
+
+- (IBAction) linkClipToPreset:(id)sender;
 
 - (IBAction) exportStandalone:(id)sender;
 
