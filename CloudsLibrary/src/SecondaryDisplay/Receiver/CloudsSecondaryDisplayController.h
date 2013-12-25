@@ -43,6 +43,7 @@ class CloudsSecondaryDisplayController {
 	CloudsVisualSystemManager visualSystems;
 
 	void loadSVGs();
+	//TODO: make separate layer sets for Project Example vs Person
 	vector<CloudsSVGMesh> testAllLayout;
 	
 	bool playingMovie;

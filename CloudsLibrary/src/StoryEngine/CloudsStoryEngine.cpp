@@ -1130,7 +1130,7 @@ bool CloudsStoryEngine::historyContainsClip(CloudsClip& m, vector<CloudsClip>& h
         }
         
         if (! overlappingClips.empty()) {
-            if(ofContains(overlappingClips, history[i].getLinkName())){
+            if(ofContains(overlappingClips, history[i].getID())){
                 
                 cout << "        REJECTED Clip " << m.getLinkName() << ": it overlaps with clip " <<history[i].getLinkName()<<" which has already been visited"<<endl;
                 return true;
