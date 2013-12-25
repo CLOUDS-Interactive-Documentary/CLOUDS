@@ -256,11 +256,16 @@ void CloudsStoryEngine::setCustomAct(CloudsAct* act){
 
 #pragma mark INIT ACT
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed){
+	if(seed.getKeywords().size() == 0){
+		ofLogError("CloudsStoryEngine::buildAct") << seed.getLinkName() << " contains no keywords!";
+		return NULL;
+	}
     return buildAct(run, seed, seed.getKeywords()[ ofRandom(seed.getKeywords().size()) ]);
 }
 
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string topic){
 	
+	//this hack let's us inject custom apps 
 	if(customAct != NULL){
 		CloudsActEventArgs args(customAct);
 		ofNotifyEvent(events.actCreated, args);
@@ -1125,7 +1130,7 @@ bool CloudsStoryEngine::historyContainsClip(CloudsClip& m, vector<CloudsClip>& h
         }
         
         if (! overlappingClips.empty()) {
-            if(ofContains(overlappingClips, history[i].getLinkName())){
+            if(ofContains(overlappingClips, history[i].getID())){
                 
                 cout << "        REJECTED Clip " << m.getLinkName() << ": it overlaps with clip " <<history[i].getLinkName()<<" which has already been visited"<<endl;
                 return true;

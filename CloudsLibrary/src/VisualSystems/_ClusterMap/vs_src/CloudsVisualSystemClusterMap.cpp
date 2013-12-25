@@ -196,6 +196,11 @@ void CloudsVisualSystemClusterMap::traverse(){
 
 void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip& clip){
 	
+	if(clipIdToNodeIndex.find(clip.getID()) == clipIdToNodeIndex.end()){
+		ofLogError("CloudsVisualSystemClusterMap::traverseToClip") << "Isn't included in cluster map";
+		return;
+	}
+	   
 	CloudsClusterNode& n = nodes[ clipIdToNodeIndex[ clip.getID() ] ];
 	
 	cout << "CloudsVisualSystemClusterMap::traverse	" << clip.getLinkName() << " at position " << (clip.networkPosition *300) << endl;
@@ -209,7 +214,7 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip& clip){
 
 	traversalMesh.addVertex(clip.networkPosition);
 	traversalMesh.addColor(ofFloatColor());
-	
+	cout << ("CloudsVisualSystemClusterMap::traverseToClip") << "After traversing node we have " << traversalMesh.getNumVertices() << " verts" << endl;
 	for(int c = 0; c < n.clusterMeshVertexIds.size(); c++){
 		connectionMesh.setNormal(n.clusterMeshVertexIds[c], ofVec3f(1.0,0.0,0.0));
 	}
@@ -256,7 +261,9 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	displayGui->copyCanvasProperties(gui);
 	displayGui->setName("Display");
 	displayGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-
+	
+	displayGui->addToggle("incremental traversal", &incrementalTraversalMode);
+	
 	displayGui->addSlider("line alpha",  0, 1.0, &lineAlpha);
 	displayGui->addSlider("line focal dist", 0, sqrt(3000), &lineFocalDistance);
 	displayGui->addSlider("line focal range", 0, sqrt(3000), &lineFocalRange);
@@ -265,6 +272,7 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	
 	displayGui->addSlider("traversed node size", 1, 10, &traversedNodeSize);
 	displayGui->addSlider("node pop length", 50, 2000, &nodePopLength);
+	
 	
 //	displayGui->addSlider("line blur amount",  0, 10, &lineBlurAmount);
 //	displayGui->addSlider("line blur fade",  0, 1.0, &lineBlurFade);
@@ -366,6 +374,11 @@ void CloudsVisualSystemClusterMap::selfSetupTimeline(){
 	nodeColor = timeline->addColorsWithPalette("node color","NodeColor.xml", getVisualSystemDataPath() + "images/nerve_palette.png");
 }
 
+void CloudsVisualSystemClusterMap::selfSetDefaults(){
+	incrementalTraversalMode = false;
+	currentVertIndex = 0.;
+}
+
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
@@ -418,10 +431,16 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	
 	cam.applyRotation = cam.applyTranslation = !cursorIsOverGUI();
 //	easeCamera.setTarget( clusterMesh.getCentroid() );
-
-
 //	int vertEndIndex = ofMap(timeline->getPercentComplete(), lineStartTime, lineEndTime, 0, traversal.getVertices().size());
-	int vertEndIndex = ofMap(timeline->getPercentComplete(), 0, 1.0, 0, traversalMesh.getVertices().size());
+	int vertEndIndex;
+	if(incrementalTraversalMode){
+		currentVertIndex += (traversalMesh.getVertices().size() - currentVertIndex) * .1;
+		vertEndIndex = currentVertIndex;
+	}
+	else{
+		vertEndIndex = ofMap(timeline->getPercentComplete(), 0, 1.0, 0, traversalMesh.getVertices().size());
+	}
+	
 	int vertsToHighlight = ofClamp(vertEndIndex,0, traversalMesh.getVertices().size() - 1);
 	int lineDissolveVerts = vertEndIndex*lineDissolve;
 	
@@ -461,7 +480,9 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	if(traversalMesh.getVertices().size() > 0 && vertsToHighlight < traversalMesh.getVertices().size()-1){
 		trailHead = traversalMesh.getVertices()[vertsToHighlight];
 		easeCamera.setDistance(100);
-		easeCamera.setTarget(trailHead*meshExpansion);
+		ofVec3f curTarget = easeCamera.getTarget().getPosition();
+		ofVec3f newTarget = (trailHead*meshExpansion - curTarget) * .01;
+		easeCamera.setTarget( trailHead*meshExpansion );
 	}
 	
 //fuck is this?
