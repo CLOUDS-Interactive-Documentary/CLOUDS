@@ -56,6 +56,29 @@ void SCHEDULEBANG(double time)
     parse_score(thebuf, bx);
 }
 
+// play an audio file from DISK
+void STREAMSOUND(string file, float dur, float amp)
+{
+    char thebuf [256];
+    int bx;
+    string p = GetCloudsDataPath() + "sound/trax/";
+    ofDirectory sdir(p);
+    
+    string f = sdir.getAbsolutePath()+"/"+file;
+    bx = snprintf(thebuf, 256, "rtinput(\"%s\")", (char*)f.c_str());
+    parse_score(thebuf, bx);
+    if(dur<0)
+    {
+        bx = snprintf(thebuf, 256, "STEREO(0., 0., DUR(), %f*amp_declick, 0, 1)", amp);
+    }
+    else
+    {
+        bx = snprintf(thebuf, 256, "STEREO(0., 0., %f, %f*amp_declick, 0, 1)", dur, amp);
+    }
+    parse_score(thebuf, bx);
+    
+}
+
 // loads an audio file into RAM as a buffer handle
 float LOADSOUND(string file, string handle)
 {
@@ -67,7 +90,7 @@ float LOADSOUND(string file, string handle)
     OF_buffer_load_set((char*)file.c_str(), (char*)handle.c_str(), 0., 30.);
     // you can now use the buffer name (bname) in rtinput("MMBUF", "buffername")
     
-    printf("LOADED SOUND %s: file: %s  duration: %f\n", (char*)handle.c_str(),
+    if(LUKEDEBUG) printf("LOADED SOUND %s: file: %s  duration: %f\n", (char*)handle.c_str(),
            (char*)file.c_str(), duration);
     return(duration);
 }
@@ -85,7 +108,7 @@ void STEREO(double outskip, double inskip, double dur, double amp, double pan, s
 }
 
 // loop a sound (transposition auto-corrected based on ideal length)
-void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, string handle)
+void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, double amp, string handle)
 {
     float incr = loopdur/looplen;
     float freq = mtof(60);
@@ -100,9 +123,9 @@ void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, strin
     int bx;
     bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f*amp_declick, %f, 0, 0)", outskip, looplen, amp, transp);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, %f, %f, %f*amp_declick, %f, 0, 0)", outskip, inskip, looplen, amp, transp);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f*amp_declick, %f, 1, 1)", outskip, looplen, amp, transp);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, %f, %f, %f*amp_declick, %f, 1, 1)", outskip, inskip, looplen, amp, transp);
     parse_score(thebuf, bx);
     
 }
@@ -208,4 +231,24 @@ void MBANDEDWG(double outskip, double dur, double amp, double freq, double strik
     bx = snprintf(thebuf, 256, "MBANDEDWG(%f, %f, %f, %f, %f, %i, %f, %i, %f, %f, %f, %f, %s)", outskip, dur, amp*MAXAMP, freq, strikepos, pluckflag, maxvel, preset, bowpressure, resonance, integration, pan, (char*)velocityenvelope.c_str());
     parse_score(thebuf, bx);
 }
+
+// patch synthesizer
+void PATCHSYNTH(string inst, string output)
+{
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "bus_config(\"%s\", \"%s\")", (char*)inst.c_str(), (char*)output.c_str());
+    parse_score(thebuf, bx);
+}
+
+// patch effect
+void PATCHFX(string inst, string input, string output)
+{
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "bus_config(\"%s\", \"%s\", \"%s\")", (char*)inst.c_str(), (char*)input.c_str(), (char*)output.c_str());
+    parse_score(thebuf, bx);
+}
+
+
 

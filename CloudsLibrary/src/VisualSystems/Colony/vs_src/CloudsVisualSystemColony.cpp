@@ -1,12 +1,5 @@
-//
-//  CloudsVisualSystemColony.cpp
-//  VSColony
-//
-//  Created by Patricio Gonzalez Vivo on 6/26/13.
-//
-//
-
 #include "CloudsVisualSystemColony.h"
+#define INV_2SQRT2 0.35355339059
 
 string CloudsVisualSystemColony::getSystemName()
 {
@@ -15,16 +8,23 @@ string CloudsVisualSystemColony::getSystemName()
 
 void CloudsVisualSystemColony::selfSetup()
 {
-    numInitialCells = 200; //FIXME : Magic number
-    //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
-    vbo.setMode(OF_PRIMITIVE_LINES);
+    numInitialCells = 100;
+    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
+    vbo.setMode(OF_PRIMITIVE_POINTS);
     
-    string path = getVisualSystemDataPath()+"shaders/";
-    balls.setGeometryOutputCount(40); //FIXME: Debug
-    balls.setGeometryInputType(GL_LINES);
-    balls.load(path + "balls.vert", path + "balls.frag", path + "balls.geom");
-    //FIXME: THIS IS NOT WORKING PROPERLY
-    balls.setGeometryOutputType(GL_TRIANGLE_FAN);
+	ofDisableArbTex();
+    ofLoadImage(sprite, getVisualSystemDataPath() + "sprites/marker_dot.png");
+    ofEnableArbTex();
+    
+    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/dirt.jpg");
+	loadShader();
+    
+}
+
+void CloudsVisualSystemColony::loadShader(){
+    string path = getVisualSystemDataPath() + "shaders/";
+	levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
+    billboard.load(path + "billboard.vs", path + "billboard.fs");
 }
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
@@ -37,14 +37,32 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
     sysGui->addSlider("Turbulence Speed",0.0,100.0, &params.spdTurbulence);
     sysGui->addSlider("Fertility Rate", 0.0, 1.0, &params.fertilityRate);
     sysGui->addRangeSlider("Lifespan Range", 5, 5000, &params.lifespanMin, &params.lifespanMax);
+    
+    sysGui->addSlider("Nutrient Amount", 150, 500, &params.nutrientAmount);
+    sysGui->addSlider("Nutrient Change Ratio", 0, 500, &params.nutrientTimeCoef);
+    sysGui->addSlider("Nutrient Contrast", 0, 4.0, &params.nutrientFalloff);
+    
+    sysGui->addRangeSlider("Max Speed", 0.0, 10.0, &params.maxSpeed_min, &params.maxSpeed_max);
+    sysGui->addRangeSlider("Max Size", 0.0, 30.0, &params.maxSize_min, &params.maxSize_max);
+    
+    sysGui->addSpacer("Immutables");
+    sysGui->addSlider("Initial Cells", 0, 1000, &numInitialCells);
+    sysGui->addButton("Reset", &reset);
 }
 
 void CloudsVisualSystemColony::selfUpdate()
 {
-    cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
+    //Video
+    if ( !areFbosAllocatedAndSized() ){ reallocateFramebuffers(); }
+    
+    //Data
+    //cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
     pMap.clear();
     vbo.clear();
     pMap.put(cells);
+    
+    updateFoodTexture();
+    
     for (int i = 0; i < cells.size(); i++) {
         
         neighbor_iterator iter = pMap.getNeighbours(coord2i(cells[i]->getPosition()));
@@ -64,56 +82,145 @@ void CloudsVisualSystemColony::selfUpdate()
             cells.erase(cells.begin() + i);
         }
         vbo.addColor(ofColor(255, 255, 255, 100));
-        vbo.addColor(ofColor(255, 255, 255, 100));
         vbo.addVertex(cells[i]->getPosition());
-        //FIXME: This might reverse the angle
-        vbo.addVertex(ofVec2f(cells[i]->getSize(),(cells[i]->getVelocity()).angleRad(ofVec2f(1,0))));
+        //HACK: Normal gives more data to the shader.
+        vbo.addNormal(ofVec3f(cells[i]->getSize(),0.,0.));
     }
+    
+    
+    //Main view
+    fbo_main.begin();
+    {
+        ofPushStyle();
+        ofEnablePointSprites();
+        ofEnableAlphaBlending();
+        
+        ofEnableBlendMode(OF_BLENDMODE_ADD);
+        glDisable(GL_DEPTH_TEST);
+        ofClear(0,0,0,0);
+        
+        billboard.begin();
+        sprite.bind();
+        vbo.draw();
+        sprite.unbind();
+        billboard.end();
+
+        ofDisableBlendMode();
+        ofDisablePointSprites();
+        ofPopStyle();
+    }
+    fbo_main.end();
+    
+    
 }
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
+    ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
+    grunge.bind();
+    grunge.draw(0,0);
+    grunge.unbind();
+    ofDisableBlendMode();
 
-//    ofEnableSmoothing();
-//    ofEnableAlphaBlending();
-//    for (int i = 0 ; i < cells.size(); i++){
-//        cells[i]->draw();
-//    }
-    }
+    
+    ofEnableAlphaBlending();
+    levelSet.begin();
+    fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
+                  getSharedRenderTarget().getHeight());
+    levelSet.end();
+}
 
 void CloudsVisualSystemColony::selfDraw(){
-    ofEnableSmoothing();
-    ofEnableAlphaBlending();
-    balls.begin();
-    balls.setUniform2f("screenResolution", ofGetWidth(), ofGetHeight());
-    vbo.draw();
-    balls.end();
+
 }
+
+
+void CloudsVisualSystemColony::updateFoodTexture(){
+    noiseShader.begin();
+    noiseShader.setUniform1i("complexity", 1);
+    noiseShader.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
+    noiseShader.setUniform1f("zoom", 40.);
+    noiseShader.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+    ofRect(0, 0, getSharedRenderTarget().getWidth(),getSharedRenderTarget().getHeight());
+    noiseShader.end();
+}
+
 
 void CloudsVisualSystemColony::selfBegin()
 {
-    for (int i = 0; i < numInitialCells; i++) {
-        cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight()), params));
-        cells.push_back(newCell);
-    }
+    populate();
 }
 
 void CloudsVisualSystemColony::selfEnd()
 {
+    clear();
+    //TODO: Destroy everything in gCell;
+}
+
+void CloudsVisualSystemColony::selfExit(){
+    clear();
+    cellShader.unload();
+    levelSet.unload();
+}
+
+void CloudsVisualSystemColony::selfPresetLoaded(string presetPath){
+    clear();
+    //TODO: use timeline->getCurrentTimeXX()
+    populate();
+}
+
+void CloudsVisualSystemColony::clear(){
     for (int i = cells.size()-1; i >= 0; i--){
         cells.erase(cells.begin()+i);
     }
     cells.clear();
+    vbo.clear();
 }
 
-void CloudsVisualSystemColony::selfExit(){}
+void CloudsVisualSystemColony::populate(){
+    for (int i = 0; i < (int) numInitialCells; i++) {
+        cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight(), i * 0.01), params));
+        cells.push_back(newCell);
+    }
+}
+
+bool CloudsVisualSystemColony::areFbosAllocatedAndSized(){
+    return fbo_main.isAllocated()
+    && foodTexture.isAllocated()
+    && fbo_main.getWidth() == getSharedRenderTarget().getWidth()
+    && fbo_main.getHeight() == getSharedRenderTarget().getHeight()
+    && foodTexture.getWidth() == getSharedRenderTarget().getWidth()
+    && foodTexture.getHeight() == getSharedRenderTarget().getHeight();
+}
+
+void CloudsVisualSystemColony::reallocateFramebuffers(){
+    int w = getSharedRenderTarget().getWidth();
+    int h = getSharedRenderTarget().getHeight();
+    
+    fbo_main.allocate(w,h,GL_RGBA);
+    foodTexture.allocate(w/4., h/4., GL_RGB);
+    
+    fbo_main.begin();
+    ofClear(0,0,0,0);
+    fbo_main.end();
+    
+    foodTexture.begin();
+    ofClear(0, 0, 0);
+    foodTexture.end();
+}
 
 void CloudsVisualSystemColony::selfSetupGuis(){}
 void CloudsVisualSystemColony::selfAutoMode(){}
 void CloudsVisualSystemColony::selfSetupRenderGui(){}
 void CloudsVisualSystemColony::guiSystemEvent(ofxUIEventArgs &e){}
 void CloudsVisualSystemColony::guiRenderEvent(ofxUIEventArgs &e){}
-void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){}
+
+void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){
+	if(args.key == 'R'){
+		loadShader();
+	}
+}
+
 void CloudsVisualSystemColony::selfDrawDebug(){}
 void CloudsVisualSystemColony::selfSceneTransformation(){}
 void CloudsVisualSystemColony::selfKeyReleased(ofKeyEventArgs & args){}

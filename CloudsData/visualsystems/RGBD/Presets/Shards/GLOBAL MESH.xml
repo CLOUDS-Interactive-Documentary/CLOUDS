@@ -1,0 +1,22 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>GLOBAL MESH</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1246.000000000</XPosition>
+    <YPosition>708.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Bottom Edge Falloff</Name>
+    <Value>0.320197046</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Bottom Edge Expo</Name>
+    <Value>2.004926205</Value>
+</Widget>

@@ -28,11 +28,13 @@ CloudsFCPParser::CloudsFCPParser(){
 
 void CloudsFCPParser::loadFromFiles(){
     setup(GetCloudsDataPath() + "fcpxml");
+	parseVOClips();
     parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
 //    parseClusterMap(GetCloudsDataPath() + "gephi/2013_7_25_Clouds_conversation.SVG");
 	//parseClusterMap(GetCloudsDataPath() + "gephi/CLOUDSClusterMap.svg");
 	parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
 	parseProjectExamples(GetCloudsDataPath() + "secondaryDisplay/web/xml/projects.xml");
+	
 }
 
 void CloudsFCPParser::setup(string directory){
@@ -49,7 +51,7 @@ void CloudsFCPParser::refreshXML(){
     clipIDToIndex.clear();
 	clipLinkNameToIndex.clear();
     keywordVector.clear();
-	hasCombinedVideoIndeces.clear();
+	hasMediaAssetIndeces.clear();
 	
     linkedConnections.clear();
     suppressedConnections.clear();
@@ -81,8 +83,82 @@ void CloudsFCPParser::saveClusterMap(map<string, ofVec2f> centroidMap ){
         
         cout<<"<text transform=\"matrix(1 0 0 1 "<<it->second.x<<" "<<it->second.y<<")\" font-family=\"'MyriadPro-Regular'\" font-size=\"12\">"<<it->first<<"</text>"<<endl;
     }
+}
 
-
+void CloudsFCPParser::parseVOClips(){
+	
+//	ofDirectory dir(GetCloudsDataPath() + "VO");
+//	dir.allowExt("aif");
+//	dir.allowExt("wav");
+//	dir.allowExt("mp3");
+//	dir.allowExt("aiff");
+//	
+//	dir.listDir();
+	
+	ofBuffer voiceOverData = ofBufferFromFile(GetCloudsDataPath() + "VO/_voiceover_data.txt");
+	while(!voiceOverData.isLastLine()){
+		string line = voiceOverData.getNextLine();
+		if(line == ""){
+			continue;
+		}
+		if(line.at(0) == '#'){
+			continue;
+		}
+		
+		vector<string> components = ofSplitString(line, " ",true,true);
+		if(components.size() == 0){
+			continue;
+		}
+		
+		string fileName = components[0];
+		CloudsClip clip;
+		clip.voiceOverAudio = true;
+		
+		clip.voiceOverAudioPath = GetCloudsDataPath() + "VO/" + fileName;
+		clip.sourceVideoFilePath = clip.voiceOverAudioPath;
+		clip.hasMediaAsset = ofFile(clip.voiceOverAudioPath).exists();
+		if (!clip.hasMediaAsset) {
+			ofLogError("CloudsFCPParser::parseVOClips") << "Missing voiceover file " << fileName;
+		}
+		else {
+			ofVideoPlayer p;
+			p.setUseTexture(false);
+			p.loadMovie(clip.voiceOverAudioPath);
+			clip.startFrame = 0;
+			clip.endFrame = p.getDuration()*24.;
+			cout << "Voiceoer Clip " << fileName << " duration is " <<  clip.endFrame/24. << endl;
+		}
+		
+		string name = ofFilePath::getBaseName( fileName );
+		//remove weird final cut track name
+		ofStringReplace(name, "_1-2", "");
+		ofStringReplace(name, "1-2", "");
+		vector<string> clipComponents = ofSplitString(name,"_");
+        //validate
+		if(clipComponents.size() != 2){
+			ofLogError("CloudsFCPParser::parseVOClips") << "VO Clip " << name << " incorrectly formatted";
+			continue;
+		}
+		
+		clip.person = clipComponents[0];
+		clip.name = clipComponents[1];
+		
+		cout << "added VO only clip " << clip.getLinkName() << endl;
+		
+		clipIDToIndex[clip.getID()] = allClips.size();
+		clipLinkNameToIndex[clip.getLinkName()] = allClips.size();
+		allClips.push_back(clip);
+		for(int i = 1; i < components.size(); i++){
+			if(!hasClipWithID(components[i])){
+				ofSystemAlertDialog("VO clip " + clip.getLinkName() + " overlapping clip " + components[i] + " does not exist. Check the name.");
+			}
+			else{
+				clip.addOverlappingClipName(components[i]);
+			}
+		}
+		
+	}
+		
 }
 
 void CloudsFCPParser::parseLinks(string linkFile){
@@ -256,12 +332,30 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 }
 
 void CloudsFCPParser::parseProjectExamples(string filename){
+	
+	clipIdToProjectExample.clear();
+	projectExamples.clear();
+	
 	ofxXmlSettings projectExamplesXML;
 	if(!projectExamplesXML.loadFile(filename)){
 		ofLogError("CloudsFCPParser::parseProjectExamples") << "Project examples failed to parse at path" << filename;
 		return;
 	}
-		
+	
+	//find video file path
+	string videoFilePathPrefix = "";
+	bool hasVideoDataPath = false;
+	string videoFilePathTxt = GetCloudsDataPath() + "CloudsSecondaryDirectory.txt";
+	
+	if(ofFile(videoFilePathTxt).exists()){
+		videoFilePathPrefix = ofFilePath::addTrailingSlash(ofBufferFromFile(videoFilePathTxt).getText());
+		hasVideoDataPath = ofFile(videoFilePathPrefix).exists();
+	}
+	
+	if(!hasVideoDataPath){
+		ofLogError("CloudsFCPParser::parseProjectExamples") << "Couldn't find data path for videos";
+	}
+	
 	projectExamplesXML.pushTag("clouds");
 	int numProjectExamples = projectExamplesXML.getNumTags("project");
 	for(int i = 0; i < numProjectExamples; i++){
@@ -282,10 +376,11 @@ void CloudsFCPParser::parseProjectExamples(string filename){
 			projectExamplesXML.pushTag("videos");
 			int numVideos = projectExamplesXML.getNumTags("file");
 			if(numVideos == 0){
-				ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << projectTitle << " doesn't have ny <file> tags in <videos>";
+				ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << projectTitle << " doesn't have any <file> tags in <videos>";
 			}
+			
 			for(int f = 0; f < numVideos; f++){
-				example.exampleVideos.push_back(projectExamplesXML.getValue("file","",f));
+				example.exampleVideos.push_back(videoFilePathPrefix + projectExamplesXML.getValue("file","",f));
 			}
 			projectExamplesXML.popTag(); //videos
 		}
@@ -295,13 +390,29 @@ void CloudsFCPParser::parseProjectExamples(string filename){
 		
 		projectExamplesXML.popTag();//project
 		
+		clipIdToProjectExample[example.title] = projectExamples.size();
 		projectExamples.push_back(example);
 	}
 	projectExamplesXML.popTag();//clouds
+	
+	//populate project examples on all clips
+	for(int i = 0; i < allClips.size(); i++){
+		if(allClips[i].hasProjectExample){
+			allClips[i].projectExample = getProjectExampleWithTitle(allClips[i].projectExampleTitle);
+		}
+	}
 }
 
 vector<CloudsProjectExample>& CloudsFCPParser::getProjectExamples(){
 	return projectExamples;
+}
+
+CloudsProjectExample& CloudsFCPParser::getProjectExampleWithTitle(string title){
+	if(clipIdToProjectExample.find(title) == clipIdToProjectExample.end()){
+		ofLogError("CloudsFCPParser::getProjectExampleWithTitle") << "Couldn't find project example with title " << title;
+		return dummyProjectExample;
+	}
+	return projectExamples[ clipIdToProjectExample[title] ];
 }
 
 void CloudsFCPParser::populateKeywordCentroids(){
@@ -873,22 +984,20 @@ void CloudsFCPParser::getOverlappingClipIDs(){
         
         // fileIDTOCloudsClip is also populated in  parseClipItem() using this map to associate
         //all clips associated with a file id. Here file id is referenced again from the FCP XML
-
         vector<CloudsClip> clipsFromSameFile = fileIDtoCloudsClips[fileId];
     
-        for(int j =0; j<clipsFromSameFile.size(); j++){
+        for(int j = 0; j < clipsFromSameFile.size(); j++){
 
             //        cout<<  "Checking for overlaps between "<< allClips[i].getLinkName() << " and "<< clipsFromSameFile[j].getLinkName()<< endl;
-            
-            if(allClips[i].getLinkName() != clipsFromSameFile[j].getLinkName()){
-                
-                if( ofRange(allClips[i].startFrame,allClips[i].endFrame).intersects(ofRange(clipsFromSameFile[j].startFrame,clipsFromSameFile[j].endFrame))){
+			ofRange sourceRange(allClips[i].startFrame, allClips[i].endFrame);
+            if(allClips[i].getID() != clipsFromSameFile[j].getID()){
+				ofRange destRange(clipsFromSameFile[j].startFrame,clipsFromSameFile[j].endFrame);
+                if( sourceRange.intersects(destRange)){
                     
                     overlappingClipsMap[allClips[i].getLinkName()].push_back(clipsFromSameFile[j].getLinkName());
                     
                     //adding the overlapping clip name to a vector in the CloudsClip
-                    allClips[i].addOverlappingClipName(clipsFromSameFile[j].getLinkName());
-
+                    allClips[i].addOverlappingClipName(clipsFromSameFile[j].getID());
 //                    ofLogNotice()<< "OVERLAPPING CLIPS: "<<allClips[i].getLinkName()  << " overlaps with clip "<< clipsFromSameFile[j].getLinkName()<<endl;
                 }
                 
@@ -1023,23 +1132,25 @@ void CloudsFCPParser::refreshAllKeywords(){
 }
 
 void CloudsFCPParser::setCombinedVideoDirectory(string directory){
-	hasCombinedVideoIndeces.clear();
-	hasCombinedVideoAndQuestionIndeces.clear();
+	hasMediaAssetIndeces.clear();
+	hasMediaAssetAndQuestionIndeces.clear();
     hasCombinedAndIsStartingClipIndeces.clear();
     
 	combinedVideoDirectory = directory;
     //	cout << "Setting combined directory to " << directory << " looking for all clips " << allClips.size() << endl;
 	for(int i = 0; i < allClips.size(); i++){
-		allClips[i].hasCombinedVideo = false;
+        
+
 		allClips[i].combinedVideoPath = directory + "/" + allClips[i].getCombinedMovieFile();
 		allClips[i].combinedCalibrationXMLPath = directory + "/" + allClips[i].getCombinedCalibrationXML();
-		allClips[i].hasCombinedVideo = ofFile(allClips[i].combinedVideoPath).exists() && ofFile(allClips[i].combinedCalibrationXMLPath).exists();
+		allClips[i].hasMediaAsset = allClips[i].voiceOverAudio ||
+                                    (ofFile(allClips[i].combinedVideoPath).exists() && ofFile(allClips[i].combinedCalibrationXMLPath).exists());
         //        cout << " combined video path is " << allClips[i].combinedVideoPath << " " << allClips[i].combinedCalibrationXMLPath << endl;
         
-		if(allClips[i].hasCombinedVideo){
-			hasCombinedVideoIndeces.push_back(i);
+		if(allClips[i].hasMediaAsset){
+			hasMediaAssetIndeces.push_back(i);
 			if(allClips[i].hasQuestion()){
-				hasCombinedVideoAndQuestionIndeces.push_back(i);
+				hasMediaAssetAndQuestionIndeces.push_back(i);
 				if(allClips[i].hasSpecialKeyword("#start")){
 					hasCombinedAndIsStartingClipIndeces.push_back(i);
 				}				
@@ -1048,14 +1159,14 @@ void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 		}
 	}
 	
-	ofLogNotice("CloudsFCPParser::setCombinedVideoDirectory") << "there are " << hasCombinedVideoAndQuestionIndeces.size() << " items with questions & combined " << endl;
+	ofLogNotice("CloudsFCPParser::setCombinedVideoDirectory") << "there are " << hasMediaAssetAndQuestionIndeces.size() << " items with questions & combined " << endl;
 }
 
-CloudsClip& CloudsFCPParser::getRandomClip(bool hasCombinedVideo,
+CloudsClip& CloudsFCPParser::getRandomClip(bool hasMediaAsset,
 										   bool hasQuestion,
 										   bool hasStartQuestion)
 {
-	if(hasCombinedVideo && hasStartQuestion){
+	if(hasMediaAsset && hasStartQuestion){
 		if(hasCombinedAndIsStartingClipIndeces.size() == 0){
 			ofLogError("CloudsFCPParser::getRandomClip") << "has no start  clips with combined videos";
 			return dummyClip;
@@ -1063,20 +1174,20 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool hasCombinedVideo,
 //		cout << " has " << hasCombinedAndIsStartingClipIndeces.size() << endl;
 		return allClips[ hasCombinedAndIsStartingClipIndeces[ ofRandom(hasCombinedAndIsStartingClipIndeces.size())] ];
 	}
-	else if(hasCombinedVideo && hasQuestion){
-		if(hasCombinedVideoAndQuestionIndeces.size() == 0){
+	else if(hasMediaAsset && hasQuestion){
+		if(hasMediaAssetAndQuestionIndeces.size() == 0){
 			ofLogError("CloudsFCPParser::getRandomClip") << "has no questions clips with combined videos";
 			return dummyClip;
 		}
-		cout << " has " << hasCombinedVideoAndQuestionIndeces.size() << endl;
-		return allClips[ hasCombinedVideoAndQuestionIndeces[ ofRandom(hasCombinedVideoAndQuestionIndeces.size())] ];
+		cout << " has " << hasMediaAssetAndQuestionIndeces.size() << endl;
+		return allClips[ hasMediaAssetAndQuestionIndeces[ ofRandom(hasMediaAssetAndQuestionIndeces.size())] ];
 	}
-	else if(hasCombinedVideo){
-		if(hasCombinedVideoIndeces.size() == 0){
+	else if(hasMediaAsset){
+		if(hasMediaAssetIndeces.size() == 0){
 			ofLogError("CloudsFCPParser::getRandomClip") << "has no combined videos ";
 			return dummyClip;
 		}
-		return allClips[ hasCombinedVideoIndeces[ ofRandom(hasCombinedVideoIndeces.size())] ];
+		return allClips[ hasMediaAssetIndeces[ ofRandom(hasMediaAssetIndeces.size())] ];
 	}
 	else if(hasStartQuestion){
 		if(startQuestionIndeces.size() == 0){

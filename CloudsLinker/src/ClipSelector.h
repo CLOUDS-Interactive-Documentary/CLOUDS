@@ -15,6 +15,7 @@
 @interface ClipSelector : NSObject <NSTableViewDataSource,
 									NSTableViewDelegate,
 									NSTokenFieldDelegate,
+									NSComboBoxDelegate,
 									NSComboBoxDataSource> {
 
     IBOutlet NSTableView* keywordTable;

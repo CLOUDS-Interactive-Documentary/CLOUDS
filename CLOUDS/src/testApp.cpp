@@ -33,11 +33,12 @@ void testApp::setup(){
 	player.getClusterMap().buildEntireCluster(parser);
 	
 	mixer.setup();
-	sound.setup(storyEngine);
+	//KILL SOUND
+//	sound.setup(storyEngine);
 
 	player.setStoryEngine(storyEngine);
 
-	websockets.setup();
+	oscSender.setup();
 	
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
 	
@@ -55,8 +56,8 @@ void testApp::setup(){
 			ofLogError() << "Clip " << startingNodes[i].getID() << " is labeled as #start but has no question, removing.";
 			startingNodes.erase(startingNodes.begin() + i);
 		}
-		else if(!startingNodes[i].hasCombinedVideo){
-			ofLogError() << "Clip " << startingNodes[i].getID() << " has no combined video file, removing.";
+		else if(!startingNodes[i].hasMediaAsset){
+			ofLogError() << "Clip " << startingNodes[i].getID() << " has no media asset, removing.";
 			startingNodes.erase(startingNodes.begin() + i);
 		}
 		else{
@@ -77,10 +78,10 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::actCreated(CloudsActEventArgs& args){
 	if(currentAct != NULL){
-		currentAct->unregisterEvents(&websockets);
+		currentAct->unregisterEvents(&oscSender);
 	}
 	currentAct = args.act;
-	currentAct->registerEvents(&websockets);
+	currentAct->registerEvents(&oscSender);
 }
 
 //--------------------------------------------------------------
@@ -100,11 +101,11 @@ void testApp::keyPressed(int key){
 		useScratch = !useScratch;
 		if(useScratch){
 			player.setUseScratch( true );
-			sound.setMasterAmp(0.0);
+//			sound.setMasterAmp(0.0);
 		}
 		else{
 			player.setUseScratch( false );
-			sound.setMasterAmp(1.0);
+//			sound.setMasterAmp(1.0);
 		}
 	}
     
@@ -121,12 +122,6 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
 
 	mixer.fillBuffer(output,bufferSize,nChannels);
 	
-//	ofAudioEventArgs args;
-//	args.buffer = output;
-//	args.bufferSize = bufferSize;
-//	args.nChannels = nChannels;
-//	
-//	ofNotifyEvent(ofEvents().audioRequested, args, this);
 }
 
 //--------------------------------------------------------------

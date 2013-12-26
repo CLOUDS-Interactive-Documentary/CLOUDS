@@ -17,8 +17,6 @@ class CloudsSound {
 	void update();
 	void drawDebug();
 	
-	void setMasterAmp(float amp);
-	
 	void keyPressed(ofKeyEventArgs & args);
 	void keyReleased(ofKeyEventArgs & args);
 	
@@ -41,8 +39,9 @@ class CloudsSound {
 	
     // Luke's public stuff
     void startMusicFX(float outskip, float musicdur);
-    void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm);
+    void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev);
     void stopMusic();
+    void reloadPresets();
 
   protected:
 
@@ -68,7 +67,6 @@ class CloudsSound {
     int first_vec;
     float allownote;
 
-    float MASTERAMP;
     float MASTERTEMPO;
     int AUTORUN;
     bool DOCLEAR;
@@ -77,6 +75,7 @@ class CloudsSound {
 	
     vector<lukeRhythm> rhythms;
     vector<lukePitchArray> pitches;
+    vector<lukeSimpleMelody> simplemelodies;
     vector<lukePreset> presets;
 
     vector<lukeSample> looperSamples;

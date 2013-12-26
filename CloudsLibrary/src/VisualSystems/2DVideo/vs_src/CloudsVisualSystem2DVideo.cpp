@@ -7,7 +7,7 @@
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfSetupGui()
 {
-
+    
 	playerGui = new ofxUISuperCanvas("VideoPlayer", gui);
 	playerGui->copyCanvasStyle(gui);
 	playerGui->copyCanvasProperties(gui);
@@ -16,22 +16,22 @@ void CloudsVisualSystem2DVideo::selfSetupGui()
     playerGui->addLabel("VIDEOS");
     playerGui->addSpacer();
     playerGui->addRadio("MOVIE FILES",movieStrings);
-    playerGui->addButton("IN TIME", false);
-    playerGui->addButton("OUT TIME", false);
+    playerGui->addSpacer();
+    playerGui->addButton("SET IN TIME", false);
+    playerGui->addButton("SET OUT TIME", false);
+    playerGui->addSlider("INTIME", 0, 1000, &inTime);
+    playerGui->addSlider("OUTTIME", 0, 1000, &outTime);
     
 	ofAddListener(playerGui->newGUIEvent, this, &CloudsVisualSystem2DVideo::selfGuiEvent);
 	guis.push_back(playerGui);
 	guimap[playerGui->getName()] = playerGui;
-    
-
-    
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfGuiEvent(ofxUIEventArgs &e)
 {
     if (e.getKind() == OFX_UI_WIDGET_TOGGLE){
-
+        
         ofxUIToggle* t = (ofxUIToggle*)e.widget;
         cout<<t->getName()<<endl;
         for(int i =0; i<movieStrings.size(); i++){
@@ -43,22 +43,20 @@ void CloudsVisualSystem2DVideo::selfGuiEvent(ofxUIEventArgs &e)
     }
     if (e.getKind() == OFX_UI_WIDGET_BUTTON){
         
-        if(e.getName() == "IN TIME"){
+        if(e.getName() == "SET IN TIME"){
             inTime = player.getCurrentTime();
         }
-        else if (e.getName() == "OUT TIME"){
+        else if (e.getName() == "SET OUT TIME"){
             outTime = player.getCurrentTime();
         }
     }
-
+    
 }
-
-void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index){
- 
+void CloudsVisualSystem2DVideo::loadMovieAtIndexFromPreset(int index){
     if(player.isPlaying()){
         player.stop();
     }
-                cout<<getVisualSystemDataPath(true)<< " : "<<movieStrings[index]<<endl;
+    cout<<getVisualSystemDataPath(true)<< " : "<<movieStrings[index]<<endl;
     if(player.loadMovie(getVisualSystemDataPath(true)+"videos/"+ movieStrings[index])){
         player.play();
         bFileLoaded = false;
@@ -68,9 +66,26 @@ void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index){
     }
 }
 
+void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index){
+    
+    if(player.isPlaying()){
+        player.stop();
+    }
+    cout<<getVisualSystemDataPath(true)<< " : "<<movieStrings[index]<<endl;
+    if(player.loadMovie(getVisualSystemDataPath(true)+"videos/"+ movieStrings[index])){
+        player.play();
+        bFileLoaded = false;
+        inTime = 0;
+        outTime = 0;
+    }
+    else{
+        cout<<"couldn't load the movie"<<endl;
+    }
+}
+
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystem2DVideo::selfSetupSystemGui(){
-
+    
 }
 
 void CloudsVisualSystem2DVideo::guiSystemEvent(ofxUIEventArgs &e){
@@ -78,7 +93,7 @@ void CloudsVisualSystem2DVideo::guiSystemEvent(ofxUIEventArgs &e){
 }
 //use render gui for display settings, like changing colors
 void CloudsVisualSystem2DVideo::selfSetupRenderGui(){
-
+    
 }
 
 void CloudsVisualSystem2DVideo::guiRenderEvent(ofxUIEventArgs &e){
@@ -90,31 +105,71 @@ void CloudsVisualSystem2DVideo::selfSetup()
 {
     screenRect = ofRectangle(0,0, ofGetWidth(), ofGetHeight());
     videoRect = ofRectangle(0,0, ofGetWidth(), ofGetHeight());
+    
     movieIndex = 0;
+    
+//    movieStrings.push_back("traffic_1.mov");
+//    movieStrings.push_back("unionsq_1 - Wi-Fi_Crop.mov");
     movieStrings.push_back("Alice.mov");
     movieStrings.push_back("D3_AAPL.mov");
     movieStrings.push_back("D3_Dial.mov");
     movieStrings.push_back("D3_Radial.mov");
-    movieStrings.push_back("Exoplanets.mp4");
-    movieStrings.push_back("FaceSub_lowSat.mov");
+    movieStrings.push_back("zipcode.mov");
     movieStrings.push_back("OpenPaths.mov");
+    movieStrings.push_back("Exoplanets.mp4");
+    
+    movieStrings.push_back("FaceSub_lowSat.mov");
     movieStrings.push_back("PeopleStaring.mp4");
+    movieStrings.push_back("FaceShift_noise.mov");
+    movieStrings.push_back("FaceSub_lowSat.mov");
+    movieStrings.push_back("JapaneseSlow2.mov");
+    movieStrings.push_back("TeensSlow.mov");
+    
+    movieStrings.push_back("Code_Screenflow3.mov");
+    movieStrings.push_back("networkFlow2.mov");
+    movieStrings.push_back("DesignByNumbers.mov");
+    
     movieStrings.push_back("Reas_network1.mov");
     movieStrings.push_back("Reas_Process13.mov");
-    movieStrings.push_back("zipcode.mov");
+    
+    
+    
     loadMovieAtIndex(movieIndex);
-
+    
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::restart()
 {
-
+    
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfPresetLoaded(string presetPath)
-{
+{   
+    
+    //LOADING MOVIE
+    ofxUIRadio* r = (ofxUIRadio*)playerGui->getWidget("MOVIE FILES");
+    
+    
+    vector<ofxUIToggle*> t = r->getToggles();
+    
+    string movieName;
+    for(int j = 0; j < t.size(); j++){
+        if(t[j]->getValue()) {
+            movieName = t[j]->getName();
+            
+			cout << "LOADING MOVIE :"<<movieName<<endl;
+			
+			for(int i = 0; i < movieStrings.size(); i++){
+				if (movieStrings[i] == movieName) {
+					loadMovieAtIndexFromPreset(i);
+					break;
+				}
+			}
+			break;
+        }
+    }
 
 }
 
@@ -134,35 +189,55 @@ void CloudsVisualSystem2DVideo::selfSceneTransformation(){
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfUpdate()
 {
-    //if(! bFileLoaded){
-        screenRect.width = ofGetWidth();
-        screenRect.height = ofGetHeight();
+    screenRect.width = ofGetWidth();
+    screenRect.height = ofGetHeight();
+    
+    if(player.getWidth() >0){
+        videoRect.x = 0;
+        videoRect.y = 0;
+        videoRect.width = player.getWidth();
+        videoRect.height = player.getHeight();
+        videoRect.scaleTo(screenRect);
+    
+    }
+    if (! bFileLoaded) {
         if(player.getWidth() >0){
-            videoRect.x = 0;
-            videoRect.y = 0;
-            videoRect.width = player.getWidth();
-            videoRect.height = player.getHeight();
-            cout<<player.getWidth()<<","<<player.getHeight()<<endl;
-            videoRect.scaleTo(screenRect);
+            //this is to set the intime once the video has loaded
+            cout<<"setting player time to : "<<inTime<<endl;
+            player.setTime(inTime);
             bFileLoaded = true;
         }
-  //  }
-    player.update();
-
-    if(timeline->getDurationInSeconds() != (outTime - inTime)){
-        timeline->setDurationInSeconds(outTime-inTime);
+        
     }
+    
+    player.update();
+    
+    if(timeline->getDurationInSeconds() != (outTime - inTime)){
+        if(outTime-inTime > 0){
+            timeline->setDurationInSeconds(outTime - inTime);
+     
+
+        }
+        else{
+     
+        }
+
+    }
+    else{
+     
+    }
+    
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfDraw()
 {
-
+    
 }
 
 // draw any debug stuff here
 void CloudsVisualSystem2DVideo::selfDrawDebug(){
-
+    
 }
 
 //--------------------------------------------------------------
@@ -174,13 +249,13 @@ void CloudsVisualSystem2DVideo::selfDrawBackground()
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::render()
 {
-
+    
 }
 
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystem2DVideo::selfEnd(){
-
+    
 	
 }
 // this is called when you should clear all the memory and delet anything you made in setup
@@ -193,10 +268,15 @@ void CloudsVisualSystem2DVideo::selfExit(){
 void CloudsVisualSystem2DVideo::selfKeyPressed(ofKeyEventArgs & args){
 	
     if(args.key == 'i' ){
-        cout<<player.getCurrentTime()<<endl;
+        cout<<"in time :"<<player.getCurrentTime()<<endl;
+        inTime =player.getCurrentTime();
     }
     else if (args.key == 'o'){
-        cout<<player.getCurrentTime()<<endl;
+        cout<< "out time :"<<player.getCurrentTime()<<endl;
+        outTime = player.getCurrentTime();
+    }
+    else if (args.key == 'a'){
+        cout<<timeline->getDurationInSeconds()<<endl;
     }
 }
 void CloudsVisualSystem2DVideo::selfKeyReleased(ofKeyEventArgs & args){

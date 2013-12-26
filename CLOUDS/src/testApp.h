@@ -6,7 +6,7 @@
 #include "CloudsPlaybackController.h"
 #include "CloudsSound.h"
 #include "CloudsMixer.h"
-#include "CloudsWebSocketConnection.h"
+#include "CloudsSecondaryDisplayOSCSender.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -33,7 +33,7 @@ class testApp : public ofBaseApp{
 	CloudsRun run; //temp
 	CloudsAct* currentAct;
 	
-	CloudsWebSocketConnection websockets;
+	CloudsSecondaryDisplayOSCSender oscSender;
 	
 	void actCreated(CloudsActEventArgs& args);
 	

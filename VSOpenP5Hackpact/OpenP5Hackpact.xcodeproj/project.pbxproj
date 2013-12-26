@@ -280,6 +280,10 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7E5EC2B1816731800CA4196 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5EC291816731800CA4196 /* CloudsVisualSystemOpenP5Hackpact.cpp */; };
+		E7FA8EBE186BF86F001AB5FB /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FA8EB7186BF86F001AB5FB /* CloudsInput.cpp */; };
+		E7FA8EBF186BF86F001AB5FB /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FA8EB7186BF86F001AB5FB /* CloudsInput.cpp */; };
+		E7FA8EC2186BF86F001AB5FB /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FA8EBC186BF86F001AB5FB /* CloudsInputMouse.cpp */; };
+		E7FA8EC3186BF86F001AB5FB /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FA8EBC186BF86F001AB5FB /* CloudsInputMouse.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -667,6 +671,12 @@
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7E5EC291816731800CA4196 /* CloudsVisualSystemOpenP5Hackpact.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOpenP5Hackpact.cpp; sourceTree = "<group>"; };
 		E7E5EC2A1816731800CA4196 /* CloudsVisualSystemOpenP5Hackpact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOpenP5Hackpact.h; sourceTree = "<group>"; };
+		E7FA8EB7186BF86F001AB5FB /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
+		E7FA8EB8186BF86F001AB5FB /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
+		E7FA8EB9186BF86F001AB5FB /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
+		E7FA8EBC186BF86F001AB5FB /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		E7FA8EBD186BF86F001AB5FB /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
+		E7FA8EC4186BF92C001AB5FB /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../../CloudsGlobal.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1547,6 +1557,8 @@
 		E7E5EC271816731800CA4196 /* OpenP5Hackpact */ = {
 			isa = PBXGroup;
 			children = (
+				E7FA8EC4186BF92C001AB5FB /* CloudsGlobal.h */,
+				E7FA8EB6186BF86F001AB5FB /* Input */,
 				E7E5EC281816731800CA4196 /* vs_src */,
 			);
 			name = OpenP5Hackpact;
@@ -1570,6 +1582,19 @@
 			);
 			name = CloudsLibrary;
 			path = ../../CloudsLibrary;
+			sourceTree = "<group>";
+		};
+		E7FA8EB6186BF86F001AB5FB /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				E7FA8EB7186BF86F001AB5FB /* CloudsInput.cpp */,
+				E7FA8EB8186BF86F001AB5FB /* CloudsInput.h */,
+				E7FA8EB9186BF86F001AB5FB /* CloudsInputEvents.h */,
+				E7FA8EBC186BF86F001AB5FB /* CloudsInputMouse.cpp */,
+				E7FA8EBD186BF86F001AB5FB /* CloudsInputMouse.h */,
+			);
+			name = Input;
+			path = ../../Input;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1807,6 +1832,8 @@
 				850EE4CD1830708C004411A3 /* b2DistanceJoint.cpp in Sources */,
 				850EE4CE1830708C004411A3 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */,
 				850EE5A6183070F8004411A3 /* ofxOculusRift.cpp in Sources */,
+				E7FA8EBF186BF86F001AB5FB /* CloudsInput.cpp in Sources */,
+				E7FA8EC3186BF86F001AB5FB /* CloudsInputMouse.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1931,6 +1958,8 @@
 				E72FF12417E688FE0007780D /* CloudsVisualSystem.cpp in Sources */,
 				2AAEF596180F136F005F33D3 /* b2DistanceJoint.cpp in Sources */,
 				E7E5EC2B1816731800CA4196 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */,
+				E7FA8EBE186BF86F001AB5FB /* CloudsInput.cpp in Sources */,
+				E7FA8EC2186BF86F001AB5FB /* CloudsInputMouse.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

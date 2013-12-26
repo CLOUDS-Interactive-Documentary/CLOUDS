@@ -21,6 +21,9 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	maxDepth = 2000;
 	maxVolume = 1.5;
 	
+	nextClipIsVO = false;
+	playingVO = false;
+
 	bEventRegistered = false;
 	clipPrerolled = false;
 	
@@ -31,6 +34,9 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	currentPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 	nextPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 #endif
+
+	currentVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
+	nextVoiceoverPlayer = ofPtr<ofSoundPlayer>( new ofSoundPlayer() );
 
 }
 
@@ -49,134 +55,162 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, f
 	}
 	
 	if(!nextPlayer->loadMovie(videoPath)){
-		ofLogError() << "CloudsRGBDVideoPlayer::setup -- Movie path " << videoPath << " failed to load";
+		ofLogError("CloudsRGBDVideoPlayer::setup") << "Movie path " << videoPath << " failed to load";
 		return false;
 	}
-//#ifdef AVF_PLAYER
-//	nextPlayer.setPositionInSeconds( offsetTime );
-//#else
+	
 	nextPlayer->setPosition( offsetTime / nextPlayer->getDuration() );
-//#endif
+
 	nextCalibrationXML = calibrationXMLPath;
 	cout << "prerolled clip " << videoPath << " to time " << offsetTime << endl;
 	clipPrerolled = true;
+	nextClipIsVO = false;
+	
+	return true;
+}
+
+bool CloudsRGBDVideoPlayer::setupVO(string audioPath){
+	
+	if(!nextVoiceoverPlayer->loadSound(audioPath)){
+		ofLogError("CloudsRGBDVideoPlayer::setupVO") << "Audio path " << audioPath << " failed to load";
+		return false;
+	}
+	
+	clipPrerolled = true;
+	nextClipIsVO = true;
 	return true;
 }
 
 void CloudsRGBDVideoPlayer::swapAndPlay(){
 	
-	ofxXmlSettings XML;
-	if ( !XML.loadFile(nextCalibrationXML) ){
-		ofLogError() << "CloudsRGBDVideoPlayer::setup -- XML Path " << nextCalibrationXML << " failed to load";
-		return;
-	}
-	
-	colorPrincipalPoint.x = XML.getValue("colorIntrinsics:ppx", 971.743835449);
-	colorPrincipalPoint.y = XML.getValue("colorIntrinsics:ppy", 546.945983887);
-	colorFOV.x = XML.getValue("colorIntrinsics:fovx", 923.500793457);
-	colorFOV.y = XML.getValue("colorIntrinsics:fovy", 921.060791016);
-	colorRect.x = 0.0f;
-	colorRect.y = 0.0f;
-	colorRect.width = XML.getValue("colorIntrinsics:width", 1920.000000000);
-	colorRect.height = XML.getValue("colorIntrinsics:height", 1080.000000000);
-	
-	float depthToRGBRotation[9];
-	float depthToRGBTranslation[3];
-	for (int i = 0; i < 9; i++) {
-		depthToRGBRotation[i] = XML.getValue("extrinsics:rotation:r"+ofToString(i), 1.0f);
-	}
-	
-	for (int i = 0; i < 3; i++) {
-		depthToRGBTranslation[i] = XML.getValue("extrinsics:translation:t"+ofToString(i), 1.0f);
-	}
-	
-	for (int i = 0; i < 3; i++) {
-		distortionK[i] = XML.getValue("colorIntrinsics:dK:k"+ofToString(i), 1.0f);
-	}
-	
-	for (int i = 0; i < 2; i++) {
-		distortionP[i] = XML.getValue("colorIntrinsics:dP:p"+ofToString(i), 1.0f);
-	}
-	
-	headPosition = ofVec3f(-XML.getValue("face:x", 0.0),
-						   -XML.getValue("face:y", 0.0),
-						   XML.getValue("face:z", 0.0));
-	
-	//cout << "head position " << headPosition << endl;
-	
- 	float mat4x4[16] = {
-		depthToRGBRotation[0],depthToRGBRotation[1],depthToRGBRotation[2],0,
-		depthToRGBRotation[3],depthToRGBRotation[4],depthToRGBRotation[5],0,
-		depthToRGBRotation[6],depthToRGBRotation[7],depthToRGBRotation[8],0,
-		depthToRGBTranslation[0],depthToRGBTranslation[1],depthToRGBTranslation[2],1
-	};
-	
-	extrinsics = ofMatrix4x4(mat4x4);
-	
-	//	cout << "extrinsic matrix: " << endl << extrinsics << endl;
-	
-	//adjustment
-	adjustTranslate.x = XML.getValue("adjustment:translate:x", 0.0);
-	adjustTranslate.y = XML.getValue("adjustment:translate:y", 0.0);
-	adjustTranslate.z = XML.getValue("adjustment:translate:z", 0.0);
-	
-	adjustRotate.x = XML.getValue("adjustment:rotate:x", 0.0);
-	adjustRotate.y = XML.getValue("adjustment:rotate:y", 0.0);
-	adjustRotate.z = XML.getValue("adjustment:rotate:z", 0.0);
-	
-	adjustScale.x = XML.getValue("adjustment:scale:x", 1.0);
-	adjustScale.y = XML.getValue("adjustment:scale:y", 1.0);
-	
-	depthPrincipalPoint.x = XML.getValue("depthIntrinsics:ppx", 320.0);
-	depthPrincipalPoint.y = XML.getValue("depthIntrinsics:ppy", 240.0);
-	depthFOV.x = XML.getValue("depthIntrinsics:fovx", 570.34);
-	depthFOV.y = XML.getValue("depthIntrinsics:fovy", 570.34);
-	
-	depthRect.x = 0.0;      //  TODO: do this automatically
-	depthRect.y = 720.0;    //
-	depthRect.width = XML.getValue("depthIntrinsics:width", 640.0);
-	depthRect.height = XML.getValue("depthIntrinsics:height", 480.0);
-	
-	normalRect.x = 640.0;       //  TODO: do this automatically
-	normalRect.y = 720.0;       //
-	normalRect.width = 640.0;
-	normalRect.height = 480.0;
-	
-	nearClip = minDepth = XML.getValue("adjustment:depth:min", 1.0f);
-	farClip = maxDepth = XML.getValue("adjustment:depth:max", 6000.0f);
-	
-	////////-----NO LONGER USED
-	//this describes the face features: eyes, mouth, and skin
-	faceFeatureRect = ofRectangle(depthRect.x, depthRect.getMaxY(), 640, 360);
-	//this describes the change each frame
-	deltaChangeRect = ofRectangle(normalRect.x, normalRect.getMaxY(), 640, 360);
-	////////////
-	
-	hasSkinSettings = XML.tagExists("skin");
-	skinSampleColor.r = XML.getValue("skin:targetR", 0.);
-	skinSampleColor.g = XML.getValue("skin:targetG", 0.);
-	skinSampleColor.b = XML.getValue("skin:targetB", 0.);
-	skinWeights.x = XML.getValue("skin:hueWeight", 0.);
-	skinWeights.y = XML.getValue("skin:satWeight", 0.);
-	skinWeights.z = XML.getValue("skin:brightWeight", 0.);
-	skinThreshold.min = XML.getValue("skin:lowerThreshold", .0);
-	skinThreshold.max = XML.getValue("skin:upperThreshold", 1.0);
-	
-	cout << "HAS SKIN? " << hasSkinSettings << endl;
+	if(!nextClipIsVO){
+		
+		ofxXmlSettings XML;
+		if ( !XML.loadFile(nextCalibrationXML) ){
+			ofLogError("CloudsRGBDVideoPlayer::setup") << "XML Path " << nextCalibrationXML << " failed to load";
+			return;
+		}
+		
+		colorPrincipalPoint.x = XML.getValue("colorIntrinsics:ppx", 971.743835449);
+		colorPrincipalPoint.y = XML.getValue("colorIntrinsics:ppy", 546.945983887);
+		colorFOV.x = XML.getValue("colorIntrinsics:fovx", 923.500793457);
+		colorFOV.y = XML.getValue("colorIntrinsics:fovy", 921.060791016);
+		colorRect.x = 0.0f;
+		colorRect.y = 0.0f;
+		colorRect.width = XML.getValue("colorIntrinsics:width", 1920.000000000);
+		colorRect.height = XML.getValue("colorIntrinsics:height", 1080.000000000);
+		
+		float depthToRGBRotation[9];
+		float depthToRGBTranslation[3];
+		for (int i = 0; i < 9; i++) {
+			depthToRGBRotation[i] = XML.getValue("extrinsics:rotation:r"+ofToString(i), 1.0f);
+		}
+		
+		for (int i = 0; i < 3; i++) {
+			depthToRGBTranslation[i] = XML.getValue("extrinsics:translation:t"+ofToString(i), 1.0f);
+		}
+		
+		for (int i = 0; i < 3; i++) {
+			distortionK[i] = XML.getValue("colorIntrinsics:dK:k"+ofToString(i), 1.0f);
+		}
+		
+		for (int i = 0; i < 2; i++) {
+			distortionP[i] = XML.getValue("colorIntrinsics:dP:p"+ofToString(i), 1.0f);
+		}
+		
+		headPosition = ofVec3f(-XML.getValue("face:x", 0.0),
+							   -XML.getValue("face:y", 0.0),
+							   XML.getValue("face:z", 0.0));
+		
+		//cout << "head position " << headPosition << endl;
+		
+		float mat4x4[16] = {
+			depthToRGBRotation[0],depthToRGBRotation[1],depthToRGBRotation[2],0,
+			depthToRGBRotation[3],depthToRGBRotation[4],depthToRGBRotation[5],0,
+			depthToRGBRotation[6],depthToRGBRotation[7],depthToRGBRotation[8],0,
+			depthToRGBTranslation[0],depthToRGBTranslation[1],depthToRGBTranslation[2],1
+		};
+		
+		extrinsics = ofMatrix4x4(mat4x4);
+		
+		//	cout << "extrinsic matrix: " << endl << extrinsics << endl;
+		
+		//adjustment
+		adjustTranslate.x = XML.getValue("adjustment:translate:x", 0.0);
+		adjustTranslate.y = XML.getValue("adjustment:translate:y", 0.0);
+		adjustTranslate.z = XML.getValue("adjustment:translate:z", 0.0);
+		
+		adjustRotate.x = XML.getValue("adjustment:rotate:x", 0.0);
+		adjustRotate.y = XML.getValue("adjustment:rotate:y", 0.0);
+		adjustRotate.z = XML.getValue("adjustment:rotate:z", 0.0);
+		
+		adjustScale.x = XML.getValue("adjustment:scale:x", 1.0);
+		adjustScale.y = XML.getValue("adjustment:scale:y", 1.0);
+		
+		depthPrincipalPoint.x = XML.getValue("depthIntrinsics:ppx", 320.0);
+		depthPrincipalPoint.y = XML.getValue("depthIntrinsics:ppy", 240.0);
+		depthFOV.x = XML.getValue("depthIntrinsics:fovx", 570.34);
+		depthFOV.y = XML.getValue("depthIntrinsics:fovy", 570.34);
+		
+		depthRect.x = 0.0;      //  TODO: do this automatically
+		depthRect.y = 720.0;    //
+		depthRect.width = XML.getValue("depthIntrinsics:width", 640.0);
+		depthRect.height = XML.getValue("depthIntrinsics:height", 480.0);
+		
+		normalRect.x = 640.0;       //  TODO: do this automatically
+		normalRect.y = 720.0;       //
+		normalRect.width = 640.0;
+		normalRect.height = 480.0;
+		
+		nearClip = minDepth = XML.getValue("adjustment:depth:min", 1.0f);
+		farClip = maxDepth = XML.getValue("adjustment:depth:max", 6000.0f);
+		
+		////////-----NO LONGER USED
+		//this describes the face features: eyes, mouth, and skin
+		faceFeatureRect = ofRectangle(depthRect.x, depthRect.getMaxY(), 640, 360);
+		//this describes the change each frame
+		deltaChangeRect = ofRectangle(normalRect.x, normalRect.getMaxY(), 640, 360);
+		////////////
+		
+		hasSkinSettings = XML.tagExists("skin");
+		skinSampleColor.r = XML.getValue("skin:targetR", 0.);
+		skinSampleColor.g = XML.getValue("skin:targetG", 0.);
+		skinSampleColor.b = XML.getValue("skin:targetB", 0.);
+		skinWeights.x = XML.getValue("skin:hueWeight", 0.);
+		skinWeights.y = XML.getValue("skin:satWeight", 0.);
+		skinWeights.z = XML.getValue("skin:brightWeight", 0.);
+		skinThreshold.min = XML.getValue("skin:lowerThreshold", .0);
+		skinThreshold.max = XML.getValue("skin:upperThreshold", 1.0);
+		
+		cout << "HAS SKIN? " << hasSkinSettings << endl;
 
-	//	float colorWidth  = getPlayer().getWidth();
-	//	float colorHeight = getPlayer().getHeight();
-	float colorWidth  = 1280;
-	float colorHeight = 1560;
-    colorScale.x = colorWidth / colorRect.width;
-	colorScale.y = float(colorHeight - (depthRect.height + faceFeatureRect.height) ) / float(colorRect.height);
-	useFaces = true;
-	
+		//	float colorWidth  = getPlayer().getWidth();
+		//	float colorHeight = getPlayer().getHeight();
+		float colorWidth  = 1280;
+		float colorHeight = 1560;
+		colorScale.x = colorWidth / colorRect.width;
+		colorScale.y = float(colorHeight - (depthRect.height + faceFeatureRect.height) ) / float(colorRect.height);
+		useFaces = true;
+		
+	}
+
+	currentVoiceoverPlayer->stop();
 	currentPlayer->stop();
-	swap(currentPlayer,nextPlayer);
-	currentPlayer->play();
-	clipPrerolled = false;
 	
+	swap(currentPlayer,nextPlayer);
+	swap(currentVoiceoverPlayer, nextVoiceoverPlayer);
+	
+	if(nextClipIsVO){
+		currentVoiceoverPlayer->play();
+		currentVoiceoverPlayer->setLoop(false);
+	}
+	else{
+		currentPlayer->play();
+	}
+	
+	playingVO = nextClipIsVO;
+	clipPrerolled = false;
+
 //	cout << "swapped and played clip " << endl;
 
 }
@@ -189,6 +223,10 @@ void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
 		return;
 	}
 	
+	if(playingVO){
+		return;
+	}
+
     shader.setUniformTexture("rgbdTexture", getPlayer().getTextureReference(), 1);
     shader.setUniform2f("textureSize",  getPlayer().getWidth(), getPlayer().getHeight());
     
@@ -243,43 +281,48 @@ ofVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	
-	currentPlayer->update();
-	if(clipPrerolled)
-	{
+	if(!playingVO){
+		currentPlayer->update();
+	}
+	
+	if(clipPrerolled && !nextClipIsVO){
 		nextPlayer->update();
 	}
 	
 	float audioVolume = maxVolume;
-//#ifdef AVF_PLAYER
-//	float position = getPlayer().getPositionInSeconds();
-//	float duration = getPlayer().getDuration();
-//#else
-	float position = getPlayer().getPosition()*getPlayer().getDuration();
-	float duration = getPlayer().getDuration();
-//#endif
-	
-	float handleLength = 1.1;
-	//cout << "position is " << position << " " << duration << " duration " << endl;
-	fadeInValue = MIN(position, 1.0);
-	fadeOutValue = ofMap(position, duration - 1.0, duration, 1.0, 0.0, true);
-	if(position < 1.0){
-		audioVolume = ofMap(position, 1.0, 1.1, 0., maxVolume, true);
+	if(playingVO){
+		currentVoiceoverPlayer->setVolume(audioVolume);
 	}
-	else if(position > duration - 1.0){
-		audioVolume = ofMap(position, duration - 1.1, duration - 1.0, maxVolume, 0.0, true);
-	}
+	else{
+		float position = getPlayer().getPosition()*getPlayer().getDuration();
+		float duration = getPlayer().getDuration();
+		float handleLength = 1.1;
+		
+		//cout << "position is " << position << " " << duration << " duration " << endl;
+		
+		fadeInValue = MIN(position, 1.0);
+		fadeOutValue = ofMap(position, duration - 1.0, duration, 1.0, 0.0, true);
+		if(position < 1.0){
+			audioVolume = ofMap(position, 1.0, 1.1, 0., maxVolume, true);
+		}
+		else if(position > duration - 1.0){
+			audioVolume = ofMap(position, duration - 1.1, duration - 1.0, maxVolume, 0.0, true);
+		}
+		
+		//audioVolume = 0.0;
+		
+		getPlayer().setVolume(audioVolume);
 
-	getPlayer().setVolume(audioVolume);
-
-	if(position > duration - .04){
-		getPlayer().stop();
+		if(position > duration - .04){
+			getPlayer().stop();
+		}
 	}
 }
 
 bool CloudsRGBDVideoPlayer::isPlaying(){
-	return getPlayer().isLoaded() && getPlayer().isPlaying();
+	return playingVO ? currentVoiceoverPlayer->getIsPlaying() : (getPlayer().isLoaded() && getPlayer().isPlaying());
 }
 
 bool CloudsRGBDVideoPlayer::isDone(){
-	return getPlayer().isLoaded() && !getPlayer().isPlaying();
+	return playingVO ? !currentVoiceoverPlayer->getIsPlaying() : (getPlayer().isLoaded() && !getPlayer().isPlaying());
 }

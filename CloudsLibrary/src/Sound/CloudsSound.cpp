@@ -48,9 +48,8 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
             precomputemarkov(pitches[i]);
         }
         
-		targetAmp = .7; // wonder what this is?
+		targetAmp = 1.0; // wonder what this is?
 		
-        MASTERAMP = 1;
         MASTERTEMPO = 120;
         AUTORUN = 0;
         DOCLEAR = true;
@@ -80,13 +79,8 @@ void CloudsSound::exit(ofEventArgs & args){
 	}
 }
 
-void CloudsSound::setMasterAmp(float amp){
-	targetAmp = amp;
-}
-
 //--------------------------------------------------------------------
 void CloudsSound::update(){
-	MASTERAMP += (targetAmp - MASTERAMP) * .05;
 }
 
 //--------------------------------------------------------------------
@@ -107,9 +101,12 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     
     int rigged = 0; // set to '1' for rigged orchestration (set below)
     float clipdur = 0;
+    float starttime = 0;
     float totalduration = args.act->getTimeline().getDurationInSeconds();
     int mharmony, mrhythm, mtempo;
-    
+    bool allowchange = true;
+    bool isHighEnergy = true;
+	
     // launch music FX chain
     startMusicFX(0, totalduration);
     
@@ -120,12 +117,22 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     cout << "MAKING MUSIC!!!" << endl;
     cout << "===============" << endl;
     
-
+    // loop through clips
+    // first clip: check on soundQuestionKey
+    //  if found in preset, use that preset
+    //  if no, check dichotomies (only using non-disabled clips)
+    
+    // main loop
+    // stay where you are unless energy shift
+    // if energy shift, check dichotomies (use only non-disabled clips)
+    vector<int> valid_presets; // make a vector of presets that match the dichotomy setting
+    int thepreset; // which preset did we choose?
+    
     // STUPID MAPPING TEST
     for(int i = 0;i<numclips;i++)
     {
         CloudsClip &theclip = args.act->getAllClips()[i];
-        float starttime = args.act->getClipStartTime(theclip);
+        starttime = args.act->getClipStartTime(theclip);
         if(i==numclips-1) // last clip
         {
             clipdur = theclip.getDuration();
@@ -146,45 +153,74 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
             dichos.push_back(foo[j].balance);
         }
         
-        vector<int> valid_presets; // make a vector of presets that match the dichotomy setting
-        for(int j = 0;j<presets.size();j++)
+		cout << "	current energy is " << (isHighEnergy ? "HIGH" : "LOW");
+		
+        if(args.act->isClipEnergyShift(theclip)) allowchange = true;
+        
+        if(allowchange)
         {
-            int pscore = 0;
-            for(int k=0;k<8;k++)
+			valid_presets.clear();
+			//Populate valid presets
+            for(int j = 0;j<presets.size();j++)
             {
-                if(dichos[k]<=presets[j].dichomax[k]&&dichos[k]>=presets[j].dichomin[k])
-                {
-                    pscore++;
+                // CHECK FOR RIGGED
+                if(presets[j].start_question==args.soundQuestionKey) {
+                    cout << "RIGGED: " << j << "!!!!" << endl;
+                    valid_presets.clear();
+                    valid_presets.push_back(j);
+                    break;
                 }
+				
+				//if the energy state is the same and it's not the first clip, don't allow this preset
+				if(presets[j].disabled || (presets[j].highEnergy == isHighEnergy && i != 0) ){
+					//go to next presets
+					continue;
+				}
+				
+                int pscore = 0;
+                for(int k=0;k<8;k++)
+                {
+                    if(dichos[k]<=presets[j].dichomax[k]&&dichos[k]>=presets[j].dichomin[k])
+                    {
+                        pscore++;
+                    }
+                }
+				
+				//if all 8 dichos matched
+                if(pscore==8){
+					valid_presets.push_back(j);	
+				}
             }
-            if(pscore==8) valid_presets.push_back(j);
+		
+            if(valid_presets.size()==0)
+            {
+                valid_presets.push_back(0);
+            }
         }
 		
-        if(valid_presets.size()==0)
-        {
-            valid_presets.push_back(12);
-        }
-        
+        // MAKE THE MUSIC
 		if(valid_presets.size() > 0){
-			int thepreset = valid_presets[ofRandom(valid_presets.size())];
+			if(allowchange){
+				thepreset = valid_presets[ ofRandom(valid_presets.size()) ];
+				isHighEnergy = presets[ thepreset ].highEnergy;
+			}
 		
 			mharmony = presets[thepreset].harmony;
 			mrhythm = presets[thepreset].rhythm;
-			//mtempo = presets[thepreset].tempo;
-			mtempo = 120;
+			mtempo = presets[thepreset].tempo;
 			for(int j = 0;j<presets[thepreset].instruments.size();j++)
 			{
-				startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo);
+				startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo, presets[thepreset].m_amp[j], presets[thepreset].m_rev[j]);
 			}
 		}
 
-   
+        allowchange = false;
     }
     
     if(rigged)
     {
         flush_sched();
-        startMusic(0, "reichomatic", "NULL", "NULL", 0, 0, totalduration, 120);
+        startMusic(0, "reichomatic", "NULL", "NULL", 0, 0, totalduration, 120, 0.5, 0.5);
     }
     
     cout << "====================" << endl;
@@ -235,16 +271,6 @@ void CloudsSound::keyPressed(ofKeyEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsSound::keyReleased(ofKeyEventArgs & args){
 
-    if (args.key == OF_KEY_DOWN)
-    {
-        MASTERAMP-=0.1;
-        if(MASTERAMP<0.) MASTERAMP=0.;
-    }
-    if (args.key == OF_KEY_UP)
-    {
-        MASTERAMP+=0.1;
-        if(MASTERAMP>2.) MASTERAMP=2.;
-    }
 
 }
 
@@ -272,7 +298,7 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
     // fill up the audio buffer
     for (int i = 0; i < args.bufferSize * args.nChannels; i++)
     {
-        args.buffer[i] = MASTERAMP*(float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
+        args.buffer[i] = (float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
     }
     
     // fire first audio-generating info upon confirming audio is up and running

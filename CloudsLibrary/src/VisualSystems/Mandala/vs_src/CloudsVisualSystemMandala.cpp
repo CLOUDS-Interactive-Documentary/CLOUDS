@@ -52,8 +52,9 @@ void CloudsVisualSystemMandala::selfSetupGui()
 	clockGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	clockGui->addSpacer();
 	
-	clockGui->addToggle("draw clock", &bDrawClock);
+	clockGui->addToggle("draw cubes", &bDrawClock);
 	clockGui->addToggle("draw tails", &bDrawTails);
+	clockGui->addToggle("bDrawSpokes", &bDrawSpokes);
 	clockGui->addSlider("spread", .05, .75, &clockSpread)->setIncrement(.001);
 	clockGui->addSlider("clockV", .1, .9, &clockV)->setIncrement(.001);
 	clockGui->addSlider("numCogs", 3., 30., &clockNumCogs)->setIncrement(1);
@@ -147,9 +148,63 @@ void CloudsVisualSystemMandala::selfGuiEvent(ofxUIEventArgs &e)
 		sphereSurface.setFaceted( !e.getToggle()->getValue() );
 	}
 	
-	else if( name == "numCogs" || name == "CogScale" || name == "Octaves" || name == "OctaveScale" || name == "MaxSpeed" || name == "clockV" || name == "spread" )
+//	else if( name == "numCogs" || name == "CogScale" || name == "Octaves" || name == "OctaveScale" || name == "MaxSpeed" || name == "clockV" || name == "spread" )
+//	{
+//		setClock( clockNumCogs, clockScale, clockOctaves, cloackOctaveScale, clockMaxSpeed );
+//	}
+	else if( name == "numCogs" || name == "CogScale" || name == "Octaves" || name == "OctaveScale" || name == "MaxSpeed" )
 	{
 		setClock( clockNumCogs, clockScale, clockOctaves, cloackOctaveScale, clockMaxSpeed );
+		
+		
+		//update teh spread tickers
+		for (int i=0; i<surfaceMeshes.size(); i++)
+		{
+			for (int j=0; j<surfaceMeshes[i].tickers.size(); j++)
+			{
+				if(surfaceMeshes[i].tickers[j].note == "Y")
+				{
+					//cout << "changing the fuck outa this ticker" << endl;
+					float t = surfaceMeshes[i].tickers[j].getTargetVal();
+					float bound = .5 * clockSpread;
+					bound += surfaceMeshes[i].tickers[j].miscVal;
+					if(t < 0)
+					{
+						surfaceMeshes[i].tickers[j].setStartVal( bound + clockV );
+						surfaceMeshes[i].tickers[j].setTargetVal( -bound + clockV );
+					}else{
+						surfaceMeshes[i].tickers[j].setStartVal( -bound + clockV );
+						surfaceMeshes[i].tickers[j].setTargetVal( bound + clockV );
+					}
+				}
+			}
+		}
+	}
+	
+	else if(name == "spread" || name == "clockV")
+	{
+		//update teh spread tickers
+		for (int i=0; i<surfaceMeshes.size(); i++)
+		{
+			for (int j=0; j<surfaceMeshes[i].tickers.size(); j++)
+			{
+				if(surfaceMeshes[i].tickers[j].note == "Y")
+				{
+					//cout << "changing the fuck outa this ticker" << endl;
+					float t = surfaceMeshes[i].tickers[j].getTargetVal();
+					float bound = .5 * clockSpread;
+					bound += surfaceMeshes[i].tickers[j].miscVal;
+					if(t < 0)
+					{
+						surfaceMeshes[i].tickers[j].setStartVal( bound + clockV );
+						surfaceMeshes[i].tickers[j].setTargetVal( -bound + clockV );
+					}else{
+						surfaceMeshes[i].tickers[j].setStartVal( -bound + clockV );
+						surfaceMeshes[i].tickers[j].setTargetVal( bound + clockV );
+					}
+				}
+			}
+		}
 	}
 	
 	else  if(parent == "models")
@@ -192,8 +247,8 @@ void CloudsVisualSystemMandala::selfSetup()
 	radius = 100;
 	
 	bDrawClock = bSmoothSurface = false;
-	bDrawSurface = true;
-	bDrawTails = false;
+	bDrawSurface = false;
+	bDrawTails = true;
 	
 	
 	noiseTimeScale = .2;
@@ -209,6 +264,7 @@ void CloudsVisualSystemMandala::selfSetup()
 	clockMaxSpeed = .05;
 	
 	bDrawOffsetMesh = false;
+	bDrawSpokes = true;
 	faceScale = 1.;
 	faceOffset = .5;
 	noiseOctaveScale = 4.;
@@ -339,20 +395,30 @@ void CloudsVisualSystemMandala::setClock( int numCogs, float scale, int octaves,
 			
 			MandalaTicker<float> ticker0;
 			ticker0.setDelay(j);
-			ticker0.begin( m.sp->uv.y, m.sp->uv.y, m.sp->uv.y + clockSpread, oSpeed );
+			ticker0.begin( m.sp->uv.y, 0, 1, oSpeed );
 			ticker0.setReverse();
 			ticker0.setEaseType( MandalaTicker<float>::OFX_TWEEN_QUINT );
+			ticker0.note = "Y";
+			ticker0.miscVal = ofRandom(-clockSpread*.2, clockSpread*.2);
+			
 			m.tickers.push_back( ticker0 );
+			
 			
 			//lets hold on to this mesh
 			surfaceMeshes.push_back( m );
 		}
 	}
 	
-	tails.resize(surfaceMeshes.size());
+	tails.resize(surfaceMeshes.size() * 3 );
+	
+	lofts.resize( surfaceMeshes.size() );
 	for (int i=0; i<surfaceMeshes.size(); i++)
 	{
-		tails[i].setup(&surfaceMeshes[i]);
+		tails[i*3].setup(&surfaceMeshes[i]);
+		tails[i*3+1].setup(&surfaceMeshes[i], ofVec3f(0,0,.5));
+		tails[i*3+2].setup(&surfaceMeshes[i], ofVec3f(0,0,-.5));
+		
+		lofts[i].setup(&tails[i*3+1], &tails[i*3+2]);
 	}
 	
 	
@@ -454,12 +520,23 @@ void CloudsVisualSystemMandala::selfUpdate()
 	sphereSurface.update();
 
 	//update clock
-	if(bDrawClock)
+	if(bDrawClock || bDrawTails)
 	{
 		for(int i=0; i<surfaceMeshes.size(); i++)
 		{
 			surfaceMeshes[i].update();
-			if(bDrawTails)	tails[i].update();
+			
+		}
+		if(bDrawTails)
+		{
+			for (int i=0; i<tails.size(); i++)
+			{
+				tails[i].update();
+			}
+			
+			for (int i=0; i<lofts.size(); i++) {
+				lofts[i].update();
+			}
 		}
 	}
 	
@@ -488,27 +565,55 @@ void CloudsVisualSystemMandala::selfDraw()
 	
 	ofSetColor(255);
 	
-	if(bDrawClock)
+	facingRatio.begin();
+	for(int i=0; i<surfaceMeshes.size(); i++)
+	{
+		if(bDrawClock)	surfaceMeshes[i].draw();
+		
+//		if(bDrawTails)	tails[i].draw();
+	}
+	facingRatio.end();
+	
+	
+	if(bDrawTails)
 	{
 		facingRatio.begin();
-		for(int i=0; i<surfaceMeshes.size(); i++)
+		for (int i=0; i<lofts.size(); i++) {
+			lofts[i].draw();
+		}
+		facingRatio.end();
+		
+		if(bDrawSpokes)
 		{
-			surfaceMeshes[i].draw();
-			
-			if(bDrawTails)	tails[i].draw();
-			
-			//TODO: opitimize by binding the geometry once
-//			if(surfaceMeshes[i].bDraw && surfaceMeshes[i].m!=NULL)
-//			{
-//				surfaceMeshes[i].transformGL();
-//				surfaceMeshes[i].m->draw();
-//				surfaceMeshes[i].restoreTransformGL();
-//			}
+			glBegin(GL_LINES);
+			for (int i=0; i<surfaceMeshes.size(); i++)
+			{
+				ofSetColor(255,255,255,255);
+				glVertex3f(tails[i*3+2].worldPos.x, tails[i*3+2].worldPos.y, tails[i*3+2].worldPos.z);
+				
+				ofSetColor(255,255,255,0);
+				ofVec3f sp = tails[i*3+2].m->sp->position;
+				glVertex3f(sp.x, sp.y, sp.z);
+			}
+			glEnd();
 		}
 		
-		facingRatio.end();
 	}
-	normalShader.end();
+
+	
+	
+	glLineWidth(2);
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
+
+	if(bDrawTails)
+	{
+		for (int i=0; i<tails.size(); i++)
+		{
+			tails[i].draw();
+		}
+	}
+	ofDisableAlphaBlending();
+	
 
 	
 	//nested surfaces

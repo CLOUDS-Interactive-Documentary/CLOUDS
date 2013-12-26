@@ -20,7 +20,7 @@ class CloudsVisualSystemEmpty : public CloudsVisualSystem {
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
-		return "EmptySystem";
+		return "Empty";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
@@ -35,6 +35,11 @@ class CloudsVisualSystemEmpty : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
+	//This is called whenever a new preset is loaded, before selfSetup()
+	//use it to ensure all your simple variables are initialized to an
+	//acceptable default state
+	void selfSetDefaults();
+	
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here

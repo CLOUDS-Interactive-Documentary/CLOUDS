@@ -1,0 +1,80 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SystemSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Separate</Name>
+    <Value>85.714286804</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cohere</Name>
+    <Value>4.926108360</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Align</Name>
+    <Value>2.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Friction</Name>
+    <Value>0.100000001</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Turbulence Amount</Name>
+    <Value>1.477832556</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Turbulence Speed</Name>
+    <Value>10.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Fertility Rate</Name>
+    <Value>0.931034505</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Lifespan Range</Name>
+    <HighValue>890.812805176</HighValue>
+    <LowValue>30.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Nutrient Amount</Name>
+    <Value>234.482757568</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Nutrient Change Ratio</Name>
+    <Value>192.118225098</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Nutrient Contrast</Name>
+    <Value>0.985221684</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Max Speed</Name>
+    <HighValue>3.201970577</HighValue>
+    <LowValue>0.300000012</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Max Size</Name>
+    <HighValue>20.394088745</HighValue>
+    <LowValue>3.000000000</LowValue>
+</Widget>

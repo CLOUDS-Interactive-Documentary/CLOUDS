@@ -43,6 +43,7 @@ class CloudsVisualSystem2DVideo : public CloudsVisualSystem
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
     void loadMovieAtIndex(int index);
+    void loadMovieAtIndexFromPreset(int index);
 
     void restart();
     void render();

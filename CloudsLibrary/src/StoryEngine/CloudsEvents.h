@@ -14,6 +14,11 @@ class CloudsActEventArgs : public ofEventArgs {
 		: act(act){}
 	
 	CloudsAct* act;
+	CloudsClip startClip;
+	string startQuestion;
+	string startTopic;
+	string soundQuestionKey;
+	
 };
 
 class CloudsClipEventArgs : public ofEventArgs {

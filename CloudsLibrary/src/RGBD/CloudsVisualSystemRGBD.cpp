@@ -31,6 +31,9 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	
 	captionFontSize = 12;
 	
+	edgeAttenuate = 0.;
+	skinBrightness = 0.;
+	
 	drawPoints = true;
 	refreshPointcloud = true;
 	numRandomPoints = 20000;
@@ -49,18 +52,22 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	linesFlowUp = false;
 	refreshLines = true;
 	
+	
+	
 	drawMesh = true;
 	xSimplify = 2.0;
 	ySimplify = 2.0;
 	randomVariance = 1.0;
 
+	meshFaceMinRadius = 0.0;
+	meshFaceFalloff = 0.0;
+	meshRetractionFalloff = 1.0;
+	meshForceGeoRectraction = .0;
+
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetup(){
-//	currentFlowPosition = 0;
-
-//	rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	
 	loadShader();
 	
@@ -68,9 +75,9 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	generatePoints();
 	generateMesh();
 		
-//	particulateController.setParticleCount(20000);
-//	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-//	particulateController.setup();
+	particulateController.setParticleCount(20000);
+	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+	particulateController.setup();
 	
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
@@ -148,17 +155,42 @@ void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionTy
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetupGuis(){
 
+	globalMeshGui = new ofxUISuperCanvas("GLOBAL MESH", gui);
+	globalMeshGui->copyCanvasStyle(gui);
+    globalMeshGui->copyCanvasProperties(gui);
+    globalMeshGui->setName("GLOBAL MESH");
+    globalMeshGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	ofxUIToggle *toggle;
+	toggle = globalMeshGui->addToggle("ENABLE", &drawRGBD);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    globalMeshGui->resetPlacer();
+    globalMeshGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    globalMeshGui->addWidgetToHeader(toggle);
+	globalMeshGui->addSlider("Bottom Edge Falloff", 0, 1.0, &edgeAttenuate);
+	globalMeshGui->addSlider("Bottom Edge Expo", 1, 5.0, &edgeAttenuateExponent);
+		
+	ofAddListener(globalMeshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
+	guis.push_back(globalMeshGui);
+	guimap[globalMeshGui->getName()] = globalMeshGui;
+
 	pointsGui = new ofxUISuperCanvas("POINTS", gui);
 	pointsGui->copyCanvasStyle(gui);
     pointsGui->copyCanvasProperties(gui);
     pointsGui->setName("Points");
     pointsGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-
-	pointsGui->addToggle("Draw Points", &drawPoints);
+	
+	toggle = pointsGui->addToggle("ENABLE", &drawPoints);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    pointsGui->resetPlacer();
+    pointsGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    pointsGui->addWidgetToHeader(toggle);
+	
 	pointsGui->addSlider("Point Alpha", 0, 1.0, &pointAlpha);
 	pointsGui->addIntSlider("Num Points", 0, 100000, &numRandomPoints);
 	pointsGui->addRangeSlider("Point Size", 0.0, 3.0, &pointSize.min, &pointSize.max);
-	pointsGui->addSlider("Point Flow", 0, 2.0, &pointFlowSpeed);
+	pointsGui->addSlider("Point Face Overlap",0., 1.0, &pointHeadOverlap);
+	pointsGui->addSlider("Point Flow", 0, 1.0, &pointFlowSpeed);
 	pointsGui->addToggle("Points Flow Up", &pointsFlowUp);
 	
 	ofAddListener(pointsGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
@@ -171,13 +203,18 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     linesGui->setName("Lines");
     linesGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	linesGui->addToggle("Draw Lines", &drawLines);
+	toggle = linesGui->addToggle("ENABLE", &drawLines);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    linesGui->resetPlacer();
+    linesGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    linesGui->addWidgetToHeader(toggle);
+	
 	linesGui->addSlider("Line Alpha", 0, 1.0, &lineAlpha);
 	linesGui->addSlider("Line Thickness", 0, 3.0, &lineThickness);
 	linesGui->addSlider("Line Spacing", 1., 16., &lineSpacing);
-//	float lineDensityVariance;
+	linesGui->addSlider("Line Face Overlap", 0., 1.0, &lineHeadOverlap);
 	linesGui->addSlider("Line Granularity", 1., 10.0, &lineGranularity);
-	linesGui->addSlider("Line Flow", 0, 2.0, &lineFlowSpeed);
+	linesGui->addSlider("Line Flow", 0, 1.0, &lineFlowSpeed);
 	linesGui->addToggle("Lines Flow Up", &linesFlowUp);
 	ofAddListener(linesGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
 	guis.push_back(linesGui);
@@ -189,15 +226,21 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     meshGui->copyCanvasProperties(gui);
     meshGui->setName("Mesh");
     meshGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	meshGui->addToggle("Draw Mesh", &drawMesh);
+	
+	toggle = meshGui->addToggle("ENABLE", &drawMesh);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    meshGui->resetPlacer();
+    meshGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    meshGui->addWidgetToHeader(toggle);
+
 	meshGui->addSlider("Mesh Alpha", 0., 1.0, &meshAlpha);
 	meshGui->addSlider("X Simplify", 1., 16., &xSimplify);
 	meshGui->addSlider("Y Simplify", 1., 16., &ySimplify);
 	meshGui->addSlider("Random Variance", 0, 10.0, &randomVariance);
-	meshGui->addSlider("Face Min Radius", 0, 300., &meshFaceMinRadius);
-	meshGui->addSlider("Face Falloff", 0, 300., &meshFaceFalloff);
-	float meshFaceFalloff;
-
+	meshGui->addSlider("Face Min Radius", 0, 600., &meshFaceMinRadius);
+	meshGui->addSlider("Face Falloff", 0, 600., &meshFaceFalloff);
+	meshGui->addSlider("Edge Geo Retraction", 0, 1.0, &meshRetractionFalloff);
+	meshGui->addSlider("Force Geo Retraction", 0, 1.0, &meshForceGeoRectraction);
 	ofAddListener(meshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
 	guis.push_back(meshGui);
 	guimap[meshGui->getName()] = meshGui;
@@ -301,8 +344,8 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		generateMesh();
 	}
 
-	lineFlowPosition += lineFlowSpeed;
-	pointFlowPosition += pointFlowSpeed;
+	lineFlowPosition += powf(lineFlowSpeed,2.0);
+	pointFlowPosition += powf(pointFlowSpeed,2.0);
 	
 	if(drawParticulate){
 		
@@ -313,7 +356,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
 		particulateController.getPoints().color.a = pointColor.w;
 		
-//		particulateController.update();
+		particulateController.update();
 	}
 	
 	updateQuestions();
@@ -599,8 +642,6 @@ void CloudsVisualSystemRGBD::generateLines(){
 		}
 	}
 	
-	
-	
 	lines.setMode(OF_PRIMITIVE_LINES );
 	
 	refreshLines = false;
@@ -759,36 +800,46 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	glEnable(GL_POINT_SMOOTH);
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glEnable(GL_LINE_SMOOTH);
-	
-	if(getRGBDVideoPlayer().getPlayer().isLoaded()){
+
+	if(!getRGBDVideoPlayer().playingVO && getRGBDVideoPlayer().getPlayer().isLoaded() && drawRGBD){
 		
 		setupRGBDTransforms();
 			
 		if(drawMesh){
+			
 			meshShader.begin();
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
 		
-			meshShader.setUniform1f("triangleExtend", 1.0);
+			meshShader.setUniform1f("meshAlpha", meshAlpha);
+			meshShader.setUniform1f("triangleExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+			meshShader.setUniform1f("meshRetractionFalloff",meshRetractionFalloff);
 			meshShader.setUniform1f("headMinRadius", meshFaceMinRadius);
 			meshShader.setUniform1f("headFalloff", meshFaceFalloff);
-			meshShader.setUniform1f("meshAlpha", meshAlpha);
-
+			meshShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
+			meshShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
+			meshShader.setUniform1f("forceGeoRectraction",meshForceGeoRectraction);
 			mesh.draw();
 			
 			meshShader.end();
+			//glDisable(GL_CULL_FACE);
 		}
 		
 		glDisable(GL_DEPTH_TEST);
-		ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+		ofEnableBlendMode(OF_BLENDMODE_ADD);
 			
 		if(drawLines){
 			lineShader.begin();
-			getRGBDVideoPlayer().flowPosition = lineFlowPosition;
+			ofSetLineWidth(lineThickness);
+			getRGBDVideoPlayer().flowPosition = lineFlowPosition * (linesFlowUp?-1:1);
 			getRGBDVideoPlayer().setupProjectionUniforms(lineShader);
 			
-			lineShader.setUniform1f("lineExtend", 1.0);
-			
-			ofSetColor(255,255*lineAlpha);
+			lineShader.setUniform1f("lineExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+			lineShader.setUniform1f("headMinRadius", meshFaceMinRadius);
+			lineShader.setUniform1f("headFalloff", meshFaceFalloff);
+			lineShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
+			lineShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
+			lineShader.setUniform1f("headOverlap",lineHeadOverlap);
+			lineShader.setUniform1f("alpha", lineAlpha);
 			
 			lines.draw();
 			
@@ -797,10 +848,18 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			
 		if(drawPoints){
 			pointShader.begin();
-			getRGBDVideoPlayer().flowPosition = pointFlowPosition;
+			getRGBDVideoPlayer().flowPosition = pointFlowPosition * (pointsFlowUp?-1:1);
 			getRGBDVideoPlayer().setupProjectionUniforms(pointShader);
 			
-			ofSetColor(255,255*pointAlpha);
+			
+			pointShader.setUniform1f("headMinRadius", meshFaceMinRadius);
+			pointShader.setUniform1f("headFalloff", meshFaceFalloff);
+			pointShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
+			pointShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
+			pointShader.setUniform1f("headOverlap", pointHeadOverlap);
+			pointShader.setUniform1f("pointSizeMin", pointSize.min);
+			pointShader.setUniform1f("pointSizeMax", pointSize.max);
+			pointShader.setUniform1f("alpha", pointAlpha * getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
 			
 			points.draw();
 			
@@ -810,7 +869,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	if(drawParticulate){
 		glEnable(GL_DEPTH_TEST);
-//		particulateController.draw();
+		particulateController.draw();
 	}
 	
 	glPopAttrib();
@@ -1043,8 +1102,7 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 		
 		loadShader();
 		
-//		reloadShaders();
-//		particulateController.reloadShaders();
+		particulateController.reloadShaders();
 //		CloudsQuestion::reloadShader();
 //		rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	}

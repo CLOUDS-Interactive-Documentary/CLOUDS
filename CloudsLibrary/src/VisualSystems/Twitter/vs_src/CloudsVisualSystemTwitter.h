@@ -59,6 +59,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     //twitter feed
     void drawFeed();
+    void updateCurrentSelection(int index,bool firstTime );
+    
     //i/o stuff
     void loadJSONData(string folderName);
     void addUsersFromMentions();
@@ -81,21 +83,46 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     //shader stuff
     void reloadShaders();
 
+    ofImage tweetDeckMenu;
     
-    //twitter feed stuff
+    //twitter feed params
     int numberOfTweets;
     int currentTweetFeedIndex =0;
+    float heightOffset;
+    float avatarTweetGap;
+    float textHeightOffset;
+    float timeTillNextUpdate;
+    float minTimeGapForNextTweet;
+    float randomRangeMin,randomRangeMax;
+    int avatarSize;
+    float tweetDeckWidth;
+    float tweetDeckHeight;
+    float tweetDeckHeightOffset;
+    float tweetDeckWidthOffset;
+    float tweetDeckLineOffset;
+
+    
+    float animationLerpAmt;
+    float animationLerpRate;
+    float feedStringWidthCap;
     
     //text stuff
     ofxJSONElement result;
     ofxFTGLSimpleLayout font;
-    ofxFTGLSimpleLayout font2;
+    ofxFTGLSimpleLayout tweetFont;
+    ofxFTGLSimpleLayout tweetFontSmall;
+    ofxFTGLSimpleLayout twitterHandleFont;
     ofxFTGLTextAlignment textAlign;
-    
-
     float stringWidth;
     float fontSize;
+    float tweetFontSize;
+    float tweetLineLength;
+    float tweetHandleFontSize;
+    float tweetHandleLineLength;
+    
     int minUserMentions;
+
+
     
     //draw stuff
     void loadMesh();
@@ -111,6 +138,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     map<pair<string, string>, pair<int, int> >lineIndexPairs;
     map<string,int> numberOfMentions;
     map<string,int> userNameIdMap;
+
     int currentDateIndex;
     float dateIndexMin, dateIndexMax;
     void updateLabelWithCurrentMeshName(string name);
@@ -121,6 +149,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bRenderFeed;
     bool bAnimate;
     bool rotateModel;
+    bool bAnimateFeed;
     
 
     
@@ -151,6 +180,7 @@ protected:
     vector<Tweeter*> activeTweeters;
     vector<string*> activeTweets;
     vector<pair<string*, string*> >  activeTweetPairs;
+    vector<pair<string*, string*> > currentSelection;
     
     map<string, ofImage> avatars;
 

@@ -243,7 +243,6 @@
 - (NSInteger)numberOfItemsInComboBox:(NSComboBox *)aComboBox
 {
 	if(parser == NULL) return 0;
-	cout << "project example size " << parser->getProjectExamples().size() << endl;
 	return parser->getProjectExamples().size();
 }
 
@@ -255,12 +254,28 @@
 
 - (NSUInteger)comboBox:(NSComboBox *)aComboBox indexOfItemWithStringValue:(NSString *)string
 {
+	if(parser == NULL) return 0;
+	
+	for(int i = 0; i < parser->getProjectExamples().size(); i++){
+		if(parser->getProjectExamples()[i].title.find([string UTF8String]) != string::npos){
+			return i;
+		}
+	}
 	return 0;
 }
 
 - (NSString *)comboBox:(NSComboBox *)aComboBox completedString:(NSString *)string
 {
-	return @"";
+	if(parser == NULL) return string;
+	NSLog(@"Searching completed string %@", string);
+	for(int i = 0; i < parser->getProjectExamples().size(); i++){
+		cout << "Find for " << parser->getProjectExamples()[i].title << " is " << parser->getProjectExamples()[i].title.find([string UTF8String]) << endl;
+		if(ofToLower(parser->getProjectExamples()[i].title).find(ofToLower([string UTF8String])) == 0){
+			cout << "FOUND STRING " << parser->getProjectExamples()[i].title << endl;
+			return [NSString stringWithUTF8String:parser->getProjectExamples()[i].title.c_str()];
+		}
+	}
+	return string;
 }
 
 - (CloudsClip&) selectedMeta
@@ -350,7 +365,8 @@ completionsForSubstring:(NSString *)substring
     return NO;
 }
 
-- (void) updateKeywords:(id)sender{
+- (void) updateKeywords:(id)sender
+{
 
     if([self isClipSelected]){
 		
@@ -390,11 +406,13 @@ completionsForSubstring:(NSString *)substring
 - (IBAction) attachProjectExample:(id)sender
 {
 	if([self isClipSelected]){
-		NSLog(@"Value is %@", [projectExamples textValue]);
-		string selectedProjectExample = [ [projectExamples objectValueOfSelectedItem] UTF8String];
+		string selectedProjectExample = parser->getProjectExamples()[ projectExamples.indexOfSelectedItem ].title;
 		cout << "project example set to " << selectedProjectExample << endl;
+
 		[self selectedClip].setProjectExample( selectedProjectExample );
-		
+		[self updateSelectedClip];
+		[testViewParent updateViews];
+		[self saveLinks:self];
 	}
 }
 
@@ -554,9 +572,7 @@ completionsForSubstring:(NSString *)substring
 {
 
 	if([self isClipSelected]){
-		
-		cout << "UPDATING SELECTED CLIP, row selected is "<< clipTable.selectedRow << endl;
-		
+				
 		CloudsClip& m = [self selectedClip];
 		string revokedList = "";
 		string keywords = ofJoinString(m.getKeywords(), ",") +","+ofJoinString(m.getSpecialKeywords(),",");

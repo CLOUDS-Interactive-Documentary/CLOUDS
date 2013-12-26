@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1061.000000000</XPosition>
+    <XPosition>1491.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -78,6 +78,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Lars debug</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Lars Doing a Jonathan</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

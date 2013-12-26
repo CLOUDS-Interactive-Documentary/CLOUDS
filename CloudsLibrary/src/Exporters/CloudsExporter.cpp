@@ -1,4 +1,5 @@
 #include "CloudsExporter.h"
+#include "CloudsGlobal.h"
 
 void CloudsExporter::saveChordMatrix(CloudsFCPParser& database){
 
@@ -115,6 +116,6 @@ void CloudsExporter::savePajekNetwork(CloudsFCPParser& parser){
 		
 	}
 	
-	ofBufferToFile("CloudsCluster.net", pajekBuffer);
+	ofBufferToFile(GetCloudsDataPath() + "pajek/CloudsCluster_unpositions.net", pajekBuffer);
 }
 
