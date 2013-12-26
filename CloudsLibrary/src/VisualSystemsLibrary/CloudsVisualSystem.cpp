@@ -764,6 +764,12 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 		case ',':
 			timeline->setCurrentFrame(0);
 			break;
+		case 'I':
+			timeline->setInPointAtPlayhead();
+			break;
+		case 'O':
+			timeline->setOutPointAtPlayhead();
+			break;
 #ifdef OCULUS_RIFT
 		case '0':
 			oculusRift.reset();

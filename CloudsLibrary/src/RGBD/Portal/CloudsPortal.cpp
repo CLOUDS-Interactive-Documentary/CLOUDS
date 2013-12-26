@@ -9,6 +9,7 @@
 
 #include "CloudsPortal.h"
 #include "CloudsGlobal.h"
+#include "CloudsInput.h"
 
 CloudsPortal::CloudsPortal(){
 	
@@ -18,7 +19,12 @@ CloudsPortal::CloudsPortal(){
 	ringThickness = 10;
 	ringThicknessMultiplier = 1.2;
 	ringDensity = 10; //geo per segment
+	
 	selected = false;
+	hovering = false;
+	
+	minSelectDistance = 20.; //screenspace distance from node to hover
+	maxHoverTime = 30.; //how long to hover before select
 }
 
 CloudsPortal::~CloudsPortal(){
@@ -26,7 +32,7 @@ CloudsPortal::~CloudsPortal(){
 }
 
 void CloudsPortal::setup(){
-	for(int i = 0; i < 20; i++){
+	for(int i = 0; i < 3; i++){
 		CloudsPortalRing r;
 		r.setup(this, portalGeo, i);
 		rings.push_back(r);
@@ -37,9 +43,27 @@ void CloudsPortal::setup(){
 }
 
 void CloudsPortal::update(){
+	if(cam != NULL){
+		screenPosition = cam->worldToScreen(hoverPosition);
+		if( screenPosition.distance( ofVec2f(GetCloudsInputX(),GetCloudsInputY())) < minSelectDistance ){
+			if(!hovering){
+				hoverStartTime = ofGetElapsedTimef();
+			}
+			hovering = true;
+			hoverPercentComplete = ofClamp((ofGetElapsedTimef() - hoverStartTime) / maxHoverTime, 0,1.0);
+		}
+		else{
+			hovering = false;
+			hoverPercentComplete = 0;
+		}
+	}
+	
+
 	for(int i = 0; i < rings.size(); i++){
+		rings[i].hoverPercentComplete = hoverPercentComplete;
 		rings[i].update();
 	}
+
 }
 
 void CloudsPortal::toggleFakeSelection(){
@@ -49,11 +73,11 @@ void CloudsPortal::toggleFakeSelection(){
 
 void CloudsPortal::draw(){
 	ofPushStyle();
-//	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 	ofPushMatrix();
+	ofEnableAlphaBlending();
 	portalShader.begin();
 	portalShader.setUniform1f("rotate", ofGetElapsedTimef()*2.);
-	ofTranslate(ofGetWidth()/2,ofGetHeight()/2);
+	
 	portalGeo.draw();
 	portalShader.end();
 	ofPopMatrix();

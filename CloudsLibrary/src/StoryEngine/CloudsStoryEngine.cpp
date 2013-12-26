@@ -739,10 +739,10 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsVisualSystemPreset& preset, 
     }
     
     vector<string> keywords = visualSystems->keywordsForPreset(preset);
-    if(keywords.size() == 0 ){
-        log += "rejected because it has no keywords";
-        return 0;
-    }
+//    if(keywords.size() == 0 ){
+//        log += "rejected because it has no keywords";
+//        return 0;
+//    }
     
 
 #ifdef OCULUS_RIFT
