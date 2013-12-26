@@ -51,14 +51,14 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
 
 void CloudsVisualSystemColony::selfUpdate()
 {
-    //Video
-    if(!fbo.isAllocated() ||
-       fbo.getWidth() != getSharedRenderTarget().getWidth() ||
-       fbo.getHeight() != getSharedRenderTarget().getHeight())
-    {
-        reallocateFramebuffers();
-    }
-    
+//    //Video
+//    if(!fbo.isAllocated() ||
+//       fbo.getWidth() != getSharedRenderTarget().getWidth() ||
+//       fbo.getHeight() != getSharedRenderTarget().getHeight())
+//    {
+//        reallocateFramebuffers();
+//    }
+//    
     //Data
     //cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
     pMap.clear();
@@ -92,8 +92,8 @@ void CloudsVisualSystemColony::selfUpdate()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
-    fbo.begin();
-    ofClear(0,0,0,0);
+//    fbo.begin();
+//    ofClear(0,0,0,0);
     ofPushStyle();
 	ofEnableAlphaBlending();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -112,7 +112,8 @@ void CloudsVisualSystemColony::selfDrawBackground()
     ofDisablePointSprites();
     ofDisableBlendMode();
 	ofPopStyle();
-    fbo.end();
+	
+//    fbo.end();
 }
 
 void CloudsVisualSystemColony::selfDraw(){
@@ -122,8 +123,10 @@ void CloudsVisualSystemColony::selfDraw(){
 void CloudsVisualSystemColony::selfPostDraw(){
 
     levelSet.begin();
-    fbo.draw(0, 0, getSharedRenderTarget().getWidth(),
-             getSharedRenderTarget().getHeight());
+//    fbo.draw(0, 0,
+//			 getSharedRenderTarget().getWidth(),
+//             getSharedRenderTarget().getHeight());
+	CloudsVisualSystem::selfPostDraw();
     levelSet.end();
 }
 
@@ -150,13 +153,14 @@ void CloudsVisualSystemColony::selfExit(){
     //TODO: Destroy everything in gCell;
 }
 
+//JG use main render target
 void CloudsVisualSystemColony::reallocateFramebuffers(){
-    fbo.allocate(getSharedRenderTarget().getWidth(),
-                       getSharedRenderTarget().getHeight(),
-                       GL_RGBA);
-    fbo.begin();
-    ofClear(0,0,0,0);
-    fbo.end();
+//    fbo.allocate(getSharedRenderTarget().getWidth(),
+//                       getSharedRenderTarget().getHeight(),
+//                       GL_RGBA);
+//    fbo.begin();
+//    ofClear(0,0,0,0);
+//    fbo.end();
 }
 
 void CloudsVisualSystemColony::selfSetupGuis(){}

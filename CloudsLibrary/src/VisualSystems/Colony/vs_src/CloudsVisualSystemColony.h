@@ -63,7 +63,7 @@ private:
     ofShader    billboard;
     
     //wow video
-    ofFbo fbo;
+//    ofFbo fbo;
     ofTexture sprite;
     
     //lol data
