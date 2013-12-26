@@ -70,7 +70,7 @@ void Astrolabe::updateRotations()
 			
 			float scl = ti.scale;
 			
-			it->second.setParameters(*ease, ofxTween::easeOut, start, start + tweenInfo[it->first].step * scl, ti.duration * scl, ti.delay * scl );
+			it->second.setParameters(*ease, ofxTween::easeOut, start, start + tweenInfo[it->first].step, ti.duration * scl, ti.delay * scl );
 		}
 	}
 	

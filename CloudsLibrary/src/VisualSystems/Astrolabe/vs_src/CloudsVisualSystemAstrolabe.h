@@ -86,6 +86,8 @@ class CloudsVisualSystemAstrolabe : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
+	void selfSetDefaults();
+	
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -150,6 +152,7 @@ protected:
 	float ringsHiRadians;
 	float ringsDelayOffsetScale;
 	float ringsNoiseyness;
+	float innerSpeed, outerSpeed;
 	bool bResetTicks;
 	
 	ofBlendMode currentBlendMode;
