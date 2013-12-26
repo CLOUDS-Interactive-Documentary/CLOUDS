@@ -263,6 +263,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     bool bUseTexture;
     bool bDrawTarget;
     bool bLoopBack;
+    bool bOneCycleComplete;
     
     bool bShouldShuffle;
     bool bShouldSortHue;

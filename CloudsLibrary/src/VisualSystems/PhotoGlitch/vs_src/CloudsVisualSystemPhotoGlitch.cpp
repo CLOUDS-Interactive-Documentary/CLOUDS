@@ -100,7 +100,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
     customGui->addToggle("SOURCE SORT HUE", &sourceParams.sortByHue);
     customGui->addToggle("SOURCE SORT BRI", &sourceParams.sortByBrightness);
     customGui->addToggle("SOURCE REORDER", &sourceParams.reorder);
-//    customGui->addToggle("LOOP BACK TO SOURCE", &bLoopBack);
+    customGui->addToggle("LOOP BACK TO SOURCE", &bLoopBack);
     customGui->addDropDownList("SOURCE IMAGES", imageNames);
     customGui->addSpacer();
     
@@ -168,7 +168,7 @@ void CloudsVisualSystemPhotoGlitch::beginAnimation(){
     target1.clear();
     target2.clear();
     generateSource();
-
+    bOneCycleComplete = false;
     if (gp2.enable) {
         int imgIdx = getTargetFileName(target2Gui, 2);
         if( imgIdx != -1){
@@ -335,6 +335,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     bShouldSortTarget = false;
     bShouldSortTargetBri = false;
     bCurrentlyAnimating = false;
+    bOneCycleComplete = false;
     
     bDoPerpendicular = false;
     
@@ -730,26 +731,54 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
         if(ofGetElapsedTimeMillis() % delayValue < 10){
             cout<<"Here"<<endl;
             bCurrentlyAnimating = false;
-            
-            if (currentTargetParams->mode == SOURCE_MODE ) {
-                currentTarget = &target1;
-                currentTargetParams = &gp1;
-                cout<<"Updating animation from source to target"<<endl;
+            if (bLoopBack) {
+                if (currentTargetParams->mode == SOURCE_MODE ) {
+                    currentTarget = &target1;
+                    currentTargetParams = &gp1;
+                    cout<<"Updating animation from source to target"<<endl;
+                    if (! bOneCycleComplete) {
+                        updateAnimation();
 
-                    updateAnimation();
+                    }
+                    
+                }
+                else{
+                    if (currentTarget->ID == 1 && gp2.enable) {
+                        currentTarget = &target2;
+                        currentTargetParams =  &gp2;
+                        cout<<"Updating animation for target 2"<<endl;
+                        updateAnimation();
+                    }
+                    
+                    else if(currentTarget->ID == 2 || ( currentTarget->ID == 1 && !gp2.enable)){
+                        currentTargetParams = &sourceParams;
+                        updateAnimation();
+                        bOneCycleComplete = true;
+                    }
+                }
             }
             else{
-                if (currentTarget->ID == 1 && gp2.enable) {
-                    currentTarget = &target2;
-                    currentTargetParams =  &gp2;
-                    cout<<"Updating animation for target 2"<<endl;
+                if (currentTargetParams->mode == SOURCE_MODE ) {
+                    currentTarget = &target1;
+                    currentTargetParams = &gp1;
+                    cout<<"Updating animation from source to target"<<endl;
+                    
                     updateAnimation();
                 }
-
-                else if(currentTarget->ID == 2 || ( currentTarget->ID == 1 && !gp2.enable)){
-                    cout<<"Sequence Complete"<<endl;
-                }
+                else{
+                    if (currentTarget->ID == 1 && gp2.enable) {
+                        currentTarget = &target2;
+                        currentTargetParams =  &gp2;
+                        cout<<"Updating animation for target 2"<<endl;
+                        updateAnimation();
+                    }
+                    
+                    else if(currentTarget->ID == 2 || ( currentTarget->ID == 1 && !gp2.enable)){
+                        cout<<"Sequence Complete"<<endl;
+                    }
+                }                
             }
+            
         }
     }
 }
