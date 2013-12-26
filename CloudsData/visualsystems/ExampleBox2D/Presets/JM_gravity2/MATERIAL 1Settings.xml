@@ -1,109 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>MATERIAL 1Settings</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>170.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>425.000122070</XPosition>
+    <YPosition>360.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>25</Kind>
-    <Name>AR</Name>
-    <Value>0.643979073</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AG</Name>
-    <Value>0.800000012</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AB</Name>
-    <Value>0.800000012</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AR</Name>
-    <Value>0.800000012</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AG</Name>
-    <Value>0.800000012</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AB</Name>
-    <Value>0.800000012</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>ER</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>EG</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>EB</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SR</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SG</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SB</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SHINY</Name>
-    <Value>0.200000003</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AH</Name>
-    <Value>0.500000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AS</Name>
-    <Value>0.195026174</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AV</Name>
-    <Value>0.800000012</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DH</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DS</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DV</Name>
-    <Value>0.800000012</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>EV</Name>
-    <Value>0.000000000</Value>
+    <Name>EH</Name>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -129,4 +34,9 @@
     <Kind>25</Kind>
     <Name>SV</Name>
     <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SHINY</Name>
+    <Value>0.200000003</Value>
 </Widget>

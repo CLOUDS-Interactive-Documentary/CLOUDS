@@ -17,7 +17,7 @@ void CloudsVisualSystemColony::selfSetup()
     ofEnableArbTex();
     
 	loadShader();
-
+    
 }
 
 void CloudsVisualSystemColony::loadShader(){
@@ -86,44 +86,44 @@ void CloudsVisualSystemColony::selfUpdate()
         vbo.addNormal(ofVec3f(cells[i]->getSize(),0.,0.));
     }
     
+    
+    //Main view
+    fbo_main.begin();
+    {
+        ofPushStyle();
+        ofEnablePointSprites();
+        ofEnableAlphaBlending();
+        
+        ofEnableBlendMode(OF_BLENDMODE_ADD);
+        glDisable(GL_DEPTH_TEST);
+        ofClear(0,0,0,0);
+        
+        billboard.begin();
+        sprite.bind();
+        vbo.draw();
+        sprite.unbind();
+        billboard.end();
+
+        ofDisableBlendMode();
+        ofDisablePointSprites();
+        ofPopStyle();
+    }
+    fbo_main.end();
+    
+    
 }
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
-    //Main view
-    fbo_main.begin();
-    ofClear(0,0,0,0);
-    ofPushStyle();
-	ofEnableAlphaBlending();
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
-    glDisable(GL_DEPTH_TEST);
-    ofEnablePointSprites();
-    
-    billboard.begin();
-    sprite.bind();
-    
-    vbo.draw();
-    
-    sprite.unbind();
-    billboard.end();
-    
-    ofDisablePointSprites();
-    ofDisableBlendMode();
-	ofPopStyle();
-    fbo_main.end();
-    
+    ofEnableAlphaBlending();
+    levelSet.begin();
+    fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
+                  getSharedRenderTarget().getHeight());
+    levelSet.end();
 }
 
 void CloudsVisualSystemColony::selfDraw(){
 
-}
-
-void CloudsVisualSystemColony::selfPostDraw(){
-
-    levelSet.begin();
-    fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
-             getSharedRenderTarget().getHeight());
-    levelSet.end();
 }
 
 

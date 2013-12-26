@@ -87,43 +87,76 @@ void CloudsFCPParser::saveClusterMap(map<string, ofVec2f> centroidMap ){
 
 void CloudsFCPParser::parseVOClips(){
 	
-	ofDirectory dir(GetCloudsDataPath() + "VO");
-	dir.allowExt("aif");
-	dir.allowExt("wav");
-	dir.allowExt("mp3");
-	dir.allowExt("aiff");
+//	ofDirectory dir(GetCloudsDataPath() + "VO");
+//	dir.allowExt("aif");
+//	dir.allowExt("wav");
+//	dir.allowExt("mp3");
+//	dir.allowExt("aiff");
+//	
+//	dir.listDir();
 	
-	dir.listDir();
-	
-	for(int i = 0; i < dir.numFiles(); i++){
-		
-		CloudsClip clip;
-		
-		clip.voiceOverAudio = true;
-		clip.hasMediaAsset = true; //should be something like 'backing asset'
-		clip.voiceOverAudioPath = dir.getPath(i);
-		clip.sourceVideoFilePath = dir.getPath(i);
-		clip.startFrame = 0;
-		clip.endFrame = 35*24.; //DOES THIS WORK LOL?
-		
-		string name = ofFilePath::getBaseName( dir.getName(i) );
-		//remove weird final cut track name
-		ofStringReplace(name, "_1-2", "");
-		vector<string> components = ofSplitString(name,"_");
-        //validate
-		if(components.size() != 2){
-			ofLogError("CloudsFCPParser::parseVOClips") << "VO Clip " << dir.getPath(i) << " incorrectly formatted";
+	ofBuffer voiceOverData = ofBufferFromFile(GetCloudsDataPath() + "VO/_voiceover_data.txt");
+	while(!voiceOverData.isLastLine()){
+		string line = voiceOverData.getNextLine();
+		if(line == ""){
+			continue;
+		}
+		if(line.at(0) == '#'){
 			continue;
 		}
 		
-		clip.person = components[0];
-		clip.name = components[1];
+		vector<string> components = ofSplitString(line, " ",true,true);
+		if(components.size() == 0){
+			continue;
+		}
+		
+		string fileName = components[0];
+		CloudsClip clip;
+		clip.voiceOverAudio = true;
+		
+		clip.voiceOverAudioPath = GetCloudsDataPath() + "VO/" + fileName;
+		clip.sourceVideoFilePath = clip.voiceOverAudioPath;
+		clip.hasMediaAsset = ofFile(clip.voiceOverAudioPath).exists();
+		if (!clip.hasMediaAsset) {
+			ofLogError("CloudsFCPParser::parseVOClips") << "Missing voiceover file " << fileName;
+		}
+		else {
+			ofVideoPlayer p;
+			p.setUseTexture(false);
+			p.loadMovie(clip.voiceOverAudioPath);
+			clip.startFrame = 0;
+			clip.endFrame = p.getDuration()*24.;
+			cout << "Voiceoer Clip " << fileName << " duration is " <<  clip.endFrame/24. << endl;
+		}
+		
+		string name = ofFilePath::getBaseName( fileName );
+		//remove weird final cut track name
+		ofStringReplace(name, "_1-2", "");
+		ofStringReplace(name, "1-2", "");
+		vector<string> clipComponents = ofSplitString(name,"_");
+        //validate
+		if(clipComponents.size() != 2){
+			ofLogError("CloudsFCPParser::parseVOClips") << "VO Clip " << name << " incorrectly formatted";
+			continue;
+		}
+		
+		clip.person = clipComponents[0];
+		clip.name = clipComponents[1];
 		
 		cout << "added VO only clip " << clip.getLinkName() << endl;
 		
 		clipIDToIndex[clip.getID()] = allClips.size();
 		clipLinkNameToIndex[clip.getLinkName()] = allClips.size();
 		allClips.push_back(clip);
+		for(int i = 1; i < components.size(); i++){
+			if(!hasClipWithID(components[i])){
+				ofSystemAlertDialog("VO clip " + clip.getLinkName() + " overlapping clip " + components[i] + " does not exist. Check the name.");
+			}
+			else{
+				clip.addOverlappingClipName(components[i]);
+			}
+		}
+		
 	}
 		
 }
@@ -308,7 +341,21 @@ void CloudsFCPParser::parseProjectExamples(string filename){
 		ofLogError("CloudsFCPParser::parseProjectExamples") << "Project examples failed to parse at path" << filename;
 		return;
 	}
-		
+	
+	//find video file path
+	string videoFilePathPrefix = "";
+	bool hasVideoDataPath = false;
+	string videoFilePathTxt = GetCloudsDataPath() + "CloudsSecondaryDirectory.txt";
+	
+	if(ofFile(videoFilePathTxt).exists()){
+		videoFilePathPrefix = ofFilePath::addTrailingSlash(ofBufferFromFile(videoFilePathTxt).getText());
+		hasVideoDataPath = ofFile(videoFilePathPrefix).exists();
+	}
+	
+	if(!hasVideoDataPath){
+		ofLogError("CloudsFCPParser::parseProjectExamples") << "Couldn't find data path for videos";
+	}
+	
 	projectExamplesXML.pushTag("clouds");
 	int numProjectExamples = projectExamplesXML.getNumTags("project");
 	for(int i = 0; i < numProjectExamples; i++){
@@ -329,10 +376,11 @@ void CloudsFCPParser::parseProjectExamples(string filename){
 			projectExamplesXML.pushTag("videos");
 			int numVideos = projectExamplesXML.getNumTags("file");
 			if(numVideos == 0){
-				ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << projectTitle << " doesn't have ny <file> tags in <videos>";
+				ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << projectTitle << " doesn't have any <file> tags in <videos>";
 			}
+			
 			for(int f = 0; f < numVideos; f++){
-				example.exampleVideos.push_back(projectExamplesXML.getValue("file","",f));
+				example.exampleVideos.push_back(videoFilePathPrefix + projectExamplesXML.getValue("file","",f));
 			}
 			projectExamplesXML.popTag(); //videos
 		}
@@ -936,22 +984,20 @@ void CloudsFCPParser::getOverlappingClipIDs(){
         
         // fileIDTOCloudsClip is also populated in  parseClipItem() using this map to associate
         //all clips associated with a file id. Here file id is referenced again from the FCP XML
-
         vector<CloudsClip> clipsFromSameFile = fileIDtoCloudsClips[fileId];
     
-        for(int j =0; j<clipsFromSameFile.size(); j++){
+        for(int j = 0; j < clipsFromSameFile.size(); j++){
 
             //        cout<<  "Checking for overlaps between "<< allClips[i].getLinkName() << " and "<< clipsFromSameFile[j].getLinkName()<< endl;
-            
-            if(allClips[i].getLinkName() != clipsFromSameFile[j].getLinkName()){
-                
-                if( ofRange(allClips[i].startFrame,allClips[i].endFrame).intersects(ofRange(clipsFromSameFile[j].startFrame,clipsFromSameFile[j].endFrame))){
+			ofRange sourceRange(allClips[i].startFrame, allClips[i].endFrame);
+            if(allClips[i].getID() != clipsFromSameFile[j].getID()){
+				ofRange destRange(clipsFromSameFile[j].startFrame,clipsFromSameFile[j].endFrame);
+                if( sourceRange.intersects(destRange)){
                     
                     overlappingClipsMap[allClips[i].getLinkName()].push_back(clipsFromSameFile[j].getLinkName());
                     
                     //adding the overlapping clip name to a vector in the CloudsClip
-                    allClips[i].addOverlappingClipName(clipsFromSameFile[j].getLinkName());
-
+                    allClips[i].addOverlappingClipName(clipsFromSameFile[j].getID());
 //                    ofLogNotice()<< "OVERLAPPING CLIPS: "<<allClips[i].getLinkName()  << " overlaps with clip "<< clipsFromSameFile[j].getLinkName()<<endl;
                 }
                 

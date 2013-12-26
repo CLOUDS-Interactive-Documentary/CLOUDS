@@ -11,11 +11,7 @@
 #include "ofMain.h"
 #include "ofxSvg.h"
 #include "ofxTween.h"
-
-typedef struct {
-	string gid;
-	ofRectangle rect;
-} TextBounds;
+#include "CloudsSVGMesh.h"
 
 class CloudsHUDLayer
 {
@@ -25,8 +21,9 @@ class CloudsHUDLayer
 	
 	void parse(string svgFilePath);
 	
-	vector<TextBounds> textBoxes;
-	ofxSVG svg;
+	vector<string> textBoxIds;
+//	ofxSVG svg;
+	CloudsSVGMesh svg;
 	
 	void start();
 	void update();

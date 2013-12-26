@@ -20,9 +20,13 @@ class CloudsPortal {
 	void update();
 	void draw();
 	
+	bool hovering;
+	float hoverStartTime;
+	
 	bool selected;
 	float selectedTime;
-	
+
+	//GUI VARIABLES
 	float ringSegments;
 	float ringRadiusStep;
 	float ringThickness;
@@ -30,8 +34,19 @@ class CloudsPortal {
 	float ringStartRadius;
 	float ringDensity;
 	
+	float minSelectDistance;
+	float maxHoverTime;
+	
+	//GUI VARIABLES
+	
+	float hoverPercentComplete;
+	ofVec3f hoverPosition;
+	ofVec2f screenPosition;//filled out on update
+	
+	ofCamera* cam;
+	void reloadShader();
+	
 	ofShader portalShader;
-	ofVec3f position;
 	vector<CloudsPortalRing> rings;
 	void toggleFakeSelection();
 	ofVboMesh portalGeo;

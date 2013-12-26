@@ -572,9 +572,7 @@ completionsForSubstring:(NSString *)substring
 {
 
 	if([self isClipSelected]){
-		
-		cout << "UPDATING SELECTED CLIP, row selected is "<< clipTable.selectedRow << endl;
-		
+				
 		CloudsClip& m = [self selectedClip];
 		string revokedList = "";
 		string keywords = ofJoinString(m.getKeywords(), ",") +","+ofJoinString(m.getSpecialKeywords(),",");

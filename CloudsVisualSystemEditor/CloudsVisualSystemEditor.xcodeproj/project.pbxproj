@@ -2604,10 +2604,10 @@
 		2A4F33DC1863CDD00070C0ED /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				2A4F33DD1863CDD00070C0ED /* CloudsAudioEvents.cpp */,
 				2A4F33DE1863CDD00070C0ED /* CloudsAudioEvents.h */,
-				2A4F33DF1863CDD00070C0ED /* CloudsMixer.cpp */,
+				2A4F33DD1863CDD00070C0ED /* CloudsAudioEvents.cpp */,
 				2A4F33E01863CDD00070C0ED /* CloudsMixer.h */,
+				2A4F33DF1863CDD00070C0ED /* CloudsMixer.cpp */,
 				2A4F33E11863CDD00070C0ED /* CloudsSound.cpp */,
 				2A4F33E21863CDD00070C0ED /* CloudsSound.h */,
 				2A4F33E31863CDD00070C0ED /* CloudsSoundFilesSamplesDatabases.cpp */,

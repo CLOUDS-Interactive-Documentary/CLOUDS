@@ -7,10 +7,11 @@
 //
 
 #include "CloudsSecondaryDisplayController.h"
-
+#include "CloudsGlobal.h"
 
 CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
 	hasSpeaker = false;
+	playingMovie = false;
 }
 
 void CloudsSecondaryDisplayController::setup(){
@@ -24,16 +25,17 @@ void CloudsSecondaryDisplayController::setup(){
 	storyEngine.combinedClipsOnly = false;
 	storyEngine.setup();
 	
-	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
-	CloudsAct* act = storyEngine.buildAct(run, startingNodes[ ofRandom(startingNodes.size()) ]);
-	
-	run.topicHistory = act->getAllTopics();
-	run.clipHistory = act->getAllClips();
+//	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
+//	CloudsAct* act = storyEngine.buildAct(run, startingNodes[ ofRandom(startingNodes.size()) ]);
+//	
+//	run.topicHistory = act->getAllTopics();
+//	run.clipHistory = act->getAllClips();
 	
 	clusterMap.buildEntireCluster(parser);
 	clusterMap.setRun(run);
-	clusterMap.traverse();
-	
+
+//	clusterMap.traverse();
+	clusterMap.forceScreenResolution(1920, 1080);
 	clusterMap.setDrawToScreen(false);
 	
 	clusterMap.setup();
@@ -43,11 +45,26 @@ void CloudsSecondaryDisplayController::setup(){
 	
 	exampleType.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf");
     
-    buildSDLayerSets();
-    
+	loadSVGs();
+ 
+	displayTarget.allocate(1920, 1080, GL_RGB);
+}
+
+void CloudsSecondaryDisplayController::loadSVGs(){
+	ofDirectory svgs(GetCloudsDataPath() + "secondaryDisplay/SVG/PROJECTEX1/");
+	svgs.allowExt("svg");
+	svgs.listDir();
+	for(int i = 0; i < svgs.numFiles(); i++){
+		testAllLayout.push_back(CloudsSVGMesh());
+		testAllLayout.back().load(svgs.getPath(i));
+	}
 }
 
 void CloudsSecondaryDisplayController::update(){
+	
+	//TODO: fix with perma preset
+	clusterMap.incrementalTraversalMode = true;
+	
 	while(receiver.hasWaitingMessages()){
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
@@ -64,59 +81,68 @@ void CloudsSecondaryDisplayController::update(){
 			hasSpeaker = true;
 			currentSpeaker = CloudsSpeaker::speakers[m.getArgAsString(0)];
 			currentClip = parser.getClipWithID(m.getArgAsString(1));
+			
+			clusterMap.traverseToClip(currentClip);
+			
 			string exampleId = m.getArgAsString(4);
 			if(exampleId != ""){
 				//need to do something smarter here
 				currentExample = parser.getProjectExampleWithTitle(exampleId);
 				if(currentExample.exampleVideos.size() > 0){
-					
-//					archivePlayer.loadMovie( currentExample.exampleVideos[0]);
+					playingMovie = archivePlayer.loadMovie( currentExample.exampleVideos[0]);
+					if(playingMovie){
+						archivePlayer.setLoopState(OF_LOOP_NONE);
+						archivePlayer.play();
+					}
 				}
+			}
+			else{
+				playingMovie = false;
+				archivePlayer.stop();
 			}
 		}
 	}
+	
+	
+	if(playingMovie){
+		archivePlayer.update();
+	}
 }
 
-void CloudsSecondaryDisplayController::drawOverlay(){
+void CloudsSecondaryDisplayController::draw(){
+	
+	displayTarget.begin();
 	
 	clusterMap.selfPostDraw();
-	
-	//... everything else will happen here
+
+	//DEBUG
 	if(hasSpeaker){
 		exampleType.drawString(currentSpeaker.firstName + " " + currentSpeaker.lastName, 30, 30);
 	}
 	else{
 		exampleType.drawString("NO SPEAKER", 30, 30);
 	}
+    //END DEBUG
+	
+	if(playingMovie){
+		archivePlayer.draw(ofGetWidth()/2 - archivePlayer.getWidth()/2,
+						   ofGetHeight()/2 - archivePlayer.getHeight()/2);
+		playingMovie = archivePlayer.isPlaying();
+	}
     
-    
+	for(int i = 0; i < testAllLayout.size(); i++){
+		testAllLayout[i].draw();
+	}
+	
+	displayTarget.end();
+	
+	ofRectangle screenRect(0,0,ofGetWidth(), ofGetHeight());
+	ofRectangle targetRect(0,0,displayTarget.getWidth(),displayTarget.getHeight());
+	targetRect.scaleTo(screenRect);
+	displayTarget.getTextureReference().draw(targetRect);
+	
     // ---------------- added
     
-//    CloudsSDLayerSet currentSDLayer;
-//	CloudsSDLayer* sdLayer;
-//	
-//	//QUESTION LAYER
-//	currentSDLayer = CLOUDS_SD_QUESTION;
-//    
-//    ofDirectory SVGDir(GetCloudsDataPath() + "secondaryDisplay/SVG/PROJECTEX1");
-//	SVGDir.allowExt("svg");
-//	SVGDir.listDir();
-//	for(int i = 0; i < SVGDir.numFiles(); i++){
-//		cout << "Loading " << SVGDir.getName(i) << endl;
-//		sdLayer = new CloudsSDLayer();
-//		sdLayer->parse(SVGDir.getPath(i));
-////		sdLayerSets[currentSDLayer].push_back( sdLayer );
-////		allSDLayers.push_back(sdLayer);
-//		
-//		sdLayer->duration = 1.5;
-//		sdLayer->delayTime = ofRandomuf();
-//		
-//		sdLayer->startPoint = ofVec2f(sdLayer->svg.getWidth(),0);
-//		sdLayer->endPoint   = ofVec2f(0,sdLayer->svg.getHeight());
-//		
-//	}
-    
-	
 //	//get info for a speaker
 //	CloudsSpeaker::speakers["Kyl_CH"].twitterHandle;
 
@@ -124,83 +150,4 @@ void CloudsSecondaryDisplayController::drawOverlay(){
 	
 	//TODO: overlay with project example when relevant
 	
-}
-
-
-
-
-
-//---------- from CloudsSDController.cpp
-
-//void CloudsSecondaryDisplayController::setup(){
-//	buildLayerSets();
-//}
-
-void CloudsSecondaryDisplayController::buildSDLayerSets(){
-	
-    // configure layers
-    CloudsSDLayerSet currentSDLayer;
-	CloudsSDLayer* sdLayer;
-	
-	//QUESTION LAYER
-	currentSDLayer = CLOUDS_SD_QUESTION;
-    
-    ofDirectory SVGDir(GetCloudsDataPath() + "secondaryDisplay/SVG/PROJECTEX1");
-	SVGDir.allowExt("svg");
-	SVGDir.listDir();
-	for(int i = 0; i < SVGDir.numFiles(); i++){
-		cout << "Loading " << SVGDir.getName(i) << endl;
-		sdLayer = new CloudsSDLayer();
-		sdLayer->parse(SVGDir.getPath(i));
-        sdLayerSets[currentSDLayer].push_back( sdLayer );
-        allSDLayers.push_back(sdLayer);
-		
-		sdLayer->duration = 1.5;
-		sdLayer->delayTime = ofRandomuf();
-		
-		sdLayer->startPoint = ofVec2f(sdLayer->svg.getWidth(),0);
-		sdLayer->endPoint   = ofVec2f(0,sdLayer->svg.getHeight());
-        
-        ofLogNotice() << ">>>>>>>>>>>>>>>>>>>>>> it's happening >>>>>>>>>>>>>>>>>>>>>>>>";
-		
-	}
-}
-
-    void CloudsSecondaryDisplayController::updateSDLayers(){
-	for(int i = 0; i < allSDLayers.size(); i++){
-		
-		allSDLayers[i]->update();
-	}
-	
-    //	home.update();
-}
-
-void CloudsSecondaryDisplayController::draw(){
-	
-	ofPushStyle();
-	ofPushMatrix();
-	ofEnableAlphaBlending();
-	
-    //	ofSetColor(255,255,255,ofGetMouseX());
-	drawSDLayer(CLOUDS_SD_QUESTION);
-	drawSDLayer(CLOUDS_SD_LOWER_THIRD);
-	drawSDLayer(CLOUDS_SD_PROJECT_EXAMPLE);
-	
-    //	home.draw();
-	
-	ofPopMatrix();
-	ofPopStyle();
-}
-
-void CloudsSecondaryDisplayController::drawSDLayer(CloudsSDLayerSet layer){
-	for(int i = 0; i < sdLayerSets[layer].size(); i++){
-		sdLayerSets[layer][i]->draw();
-	}
-}
-
-void CloudsSecondaryDisplayController::animateOn(CloudsSDLayerSet layer){
-    
-	for(int i = 0; i < sdLayerSets[layer].size(); i++){
-		sdLayerSets[layer][i]->start();
-	}
 }

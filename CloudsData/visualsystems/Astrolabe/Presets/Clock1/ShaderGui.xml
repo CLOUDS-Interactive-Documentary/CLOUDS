@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>ShaderGui</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>379</XPosition>
-    <YPosition>29</YPosition>
+    <XPosition>61.000000000</XPosition>
+    <YPosition>303.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>depthTest</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -18,12 +18,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c0_brightness</Name>
-    <Value>255</Value>
+    <Value>189</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c0_saturation</Name>
-    <Value>255</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -33,47 +33,47 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c1_hue</Name>
-    <Value>135</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c1_brightness</Name>
-    <Value>255</Value>
+    <Value>76</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c1_saturation</Name>
-    <Value>255</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c1_alpha</Name>
-    <Value>255</Value>
+    <Value>204</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c2_hue</Name>
-    <Value>223</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c2_brightness</Name>
-    <Value>255</Value>
+    <Value>85</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c2_saturation</Name>
-    <Value>255</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c2_alpha</Name>
-    <Value>255</Value>
+    <Value>233</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>OF_BLENDMODE_ADD</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

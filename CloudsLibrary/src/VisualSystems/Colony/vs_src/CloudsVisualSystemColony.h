@@ -26,7 +26,6 @@ public:
     void selfDraw();
     void selfDrawDebug();
     void selfSceneTransformation();
-    void selfPostDraw();
     
     void selfExit();
     void selfBegin();
