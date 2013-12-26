@@ -5,20 +5,28 @@ void testApp::setup(){
 
 	ofBackground(0);
 	ofSetVerticalSync(true);
+	portal.cam = &easyCam;
 	portal.setup();
 }
-
 
 //--------------------------------------------------------------
 void testApp::update(){
 	portal.update();
 }
 
-
 //--------------------------------------------------------------
 void testApp::draw(){
-	ofEnableAlphaBlending();
-	portal.draw();	
+
+	easyCam.begin();
+	glDisable(GL_DEPTH_TEST);
+	portal.draw();
+	
+	easyCam.end();
+	
+	ofPushStyle();
+	ofSetColor(portal.hovering ? ofColor::yellow : ofColor::white);
+	ofCircle(portal.screenPosition, 10);
+	ofPopStyle();
 }
 
 //--------------------------------------------------------------

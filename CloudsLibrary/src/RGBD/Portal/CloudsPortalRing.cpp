@@ -99,7 +99,7 @@ void CloudsPortalRing::setup(CloudsPortal* parent, ofVboMesh& portalGeo, int rin
 				addVertsAtAngle(shard,startAngle,segmentPercent,true);
 				
 				for(float angle = startAngle; angle <= endAngle; angle += degreesPerQuad){
-					addVertsAtAngle(shard,segmentPercent,angle);
+					addVertsAtAngle(shard,angle,segmentPercent, false);
 				}
 				
 				addVertsAtAngle(shard,endAngle,segmentPercent,true);

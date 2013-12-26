@@ -29,7 +29,7 @@ class CloudsPortalRing {
 	void setup(CloudsPortal* parent, ofVboMesh& portalGeo, int ringIndex);
 	void update();
 	
-	//updated by update function in CloudsPortal
+	//updated by update function in CloudsPortal;
 	float hoverPercentComplete;
 	
   protected:
