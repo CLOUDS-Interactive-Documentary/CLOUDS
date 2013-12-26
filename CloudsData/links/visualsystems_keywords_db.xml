@@ -704,7 +704,7 @@
         <clip>Sophy - Where&apos;s the best hamburger?</clip>
     </suppressions>
     <comments></comments>
-    <grade>C</grade>
+    <grade>D</grade>
     <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -895,12 +895,124 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Automata_ANGLED">
+<system name="Astrolabe_Clock1">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Astrolabe_Clock2">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Astrolabe_Clock2_ZoomIn">
+    <keywords>clock</keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Astrolabe_Clock3">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Astrolabe_Clock3_ZoomOut">
+    <keywords>clock|scale</keywords>
+    <suppressions>
+        <clip>Bruce - beauty of code 3</clip>
+        <clip>Bruce - small fuzzy things</clip>
+        <clip>Casey - Scale 1</clip>
+        <clip>Casey - Scale 2</clip>
+        <clip>Casey - Scale 3</clip>
+        <clip>Casey - Started small</clip>
+        <clip>Fernanda - zooming in</clip>
+        <clip>Jen - Scaling data</clip>
+        <clip>Bruce - Age of the universe, really weird</clip>
+        <clip>Bruce - Infinity in a grain of sand</clip>
+        <clip>Karolina - Ocean as metaphor</clip>
+        <clip>Karsten - DarkNet</clip>
+        <clip>Martin - Big data</clip>
+        <clip>Martin - birds eye view</clip>
+        <clip>Martin - language and infinity</clip>
+        <clip>Martin - seeing the whole 2</clip>
+        <clip>Martin - spiral interface</clip>
+        <clip>Martin - starry night</clip>
+        <clip>Marius - Digi meets physical</clip>
+        <clip>Bruce - 3D printed buildings</clip>
+        <clip>Andres - soft systems 2</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Astrolabe_JG_Clock">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Astrolabe_flat">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Automata_ANGLED">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade>B</grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Automata_ChalkyMapLichen">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Automata_Conway_ZoomIn">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Automata_Conway_ZoomIn2">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -5364,6 +5476,15 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Orbit_Lorenz_Dolly">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
