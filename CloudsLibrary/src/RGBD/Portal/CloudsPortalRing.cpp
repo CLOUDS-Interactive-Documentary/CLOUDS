@@ -14,9 +14,10 @@ CloudsPortalRing::CloudsPortalRing(){
 
 }
 
-void CloudsPortalRing::setup(CloudsPortal* parent, ofVboMesh& portalGeo, int ringIndex){
+void CloudsPortalRing::setup(CloudsPortal* parent, ofVboMesh& portalGeo, int index){
 	
-	//one shard for now
+	ringIndex = index;
+	
 	thickness = parent->ringThickness + ringIndex*(parent->ringThicknessMultiplier);
 	radius = parent->ringStartRadius + ringIndex*(thickness+parent->ringRadiusStep); //radius
 	degreesPerSegment = 360. / parent->ringSegments;
@@ -29,9 +30,7 @@ void CloudsPortalRing::setup(CloudsPortal* parent, ofVboMesh& portalGeo, int rin
 	cout << "	deg / seg " << degreesPerSegment << endl;
 	cout << "	deg / quad " << degreesPerQuad << endl;
 		
-	
-	
-	for(int l = 0; l < 2; l++){ //three layers
+	for(int l = 0; l < 2; l++){ //layers
 		
 		//either 2 or 5 shards per ring
 		int numShards = (ofRandom(2,5)+.5);
@@ -128,11 +127,11 @@ void CloudsPortalRing::addVertsAtAngle(PortalShard& shard, float angle, float se
 	vOuter *= radius+thickness;
 	
 	geo->addColor(endCap ? ofFloatColor(0,0) : shard.innerColor);
-	geo->addNormal(ofVec3f(shard.direction, segmentPercent, 1.));
+	geo->addNormal(ofVec3f(shard.direction, segmentPercent, ringIndex-.5));
 	geo->addVertex(vInner);
 	
 	geo->addColor(endCap ? ofFloatColor(0,0) : shard.outerColor);
-	geo->addNormal(ofVec3f(shard.direction, segmentPercent, 1.));
+	geo->addNormal(ofVec3f(shard.direction, segmentPercent, ringIndex-.5));
 	geo->addVertex(vOuter);
 }
 

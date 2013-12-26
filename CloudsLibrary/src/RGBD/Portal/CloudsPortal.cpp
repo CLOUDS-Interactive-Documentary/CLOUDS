@@ -23,8 +23,10 @@ CloudsPortal::CloudsPortal(){
 	selected = false;
 	hovering = false;
 	
+	hoverPercentComplete = 0.;
+	
 	minSelectDistance = 20.; //screenspace distance from node to hover
-	maxHoverTime = 30.; //how long to hover before select
+	maxHoverTime = 10.; //how long to hover before select
 }
 
 CloudsPortal::~CloudsPortal(){
@@ -39,7 +41,7 @@ void CloudsPortal::setup(){
 	}
 	portalGeo.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 	
-	portalShader.load(GetCloudsVisualSystemDataPath("RGBD") + "shaders/portal");
+	reloadShader();
 }
 
 void CloudsPortal::update(){
@@ -71,13 +73,17 @@ void CloudsPortal::toggleFakeSelection(){
 	selectedTime = ofGetLastFrameTime();
 }
 
+void CloudsPortal::reloadShader(){
+	portalShader.load(GetCloudsVisualSystemDataPath("RGBD") + "shaders/portal");	
+}
+
 void CloudsPortal::draw(){
 	ofPushStyle();
 	ofPushMatrix();
 	ofEnableAlphaBlending();
 	portalShader.begin();
 	portalShader.setUniform1f("rotate", ofGetElapsedTimef()*2.);
-	
+	portalShader.setUniform1f("hoverPercent", hoverPercentComplete);
 	portalGeo.draw();
 	portalShader.end();
 	ofPopMatrix();

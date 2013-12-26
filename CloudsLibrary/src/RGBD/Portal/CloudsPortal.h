@@ -44,6 +44,7 @@ class CloudsPortal {
 	ofVec2f screenPosition;//filled out on update
 	
 	ofCamera* cam;
+	void reloadShader();
 	
 	ofShader portalShader;
 	vector<CloudsPortalRing> rings;

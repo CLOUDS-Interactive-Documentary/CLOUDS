@@ -26,7 +26,7 @@ class CloudsPortal;
 class CloudsPortalRing {
   public:
 	CloudsPortalRing();
-	void setup(CloudsPortal* parent, ofVboMesh& portalGeo, int ringIndex);
+	void setup(CloudsPortal* parent, ofVboMesh& portalGeo, int index);
 	void update();
 	
 	//updated by update function in CloudsPortal;
@@ -36,6 +36,7 @@ class CloudsPortalRing {
 	vector<PortalShard> shards;
 	void addVertsAtAngle(PortalShard& shard, float angle, float segmentPercent, bool endCap = false);
 	
+	int ringIndex;
 	float thickness; 
 	float radius;
 	float degreesPerSegment;
