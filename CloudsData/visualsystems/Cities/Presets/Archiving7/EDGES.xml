@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>EDGES</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>93.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -58,8 +58,8 @@
 <Widget>
     <Kind>11</Kind>
     <Name>edge projector XZ</Name>
-    <XValue>-17.837631226</XValue>
-    <YValue>50.000000000</YValue>
+    <XValue>-16.549987793</XValue>
+    <YValue>-50.000000000</YValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>

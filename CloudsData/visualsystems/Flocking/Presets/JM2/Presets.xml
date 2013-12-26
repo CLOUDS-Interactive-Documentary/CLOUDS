@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>344.000000000</XPosition>
-    <YPosition>119.000000000</YPosition>
+    <XPosition>11.000000000</XPosition>
+    <YPosition>285.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -12,8 +12,18 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>JM1OC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>JM2</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM2OC</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -23,10 +33,5 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Preset2</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>JM2OC</Name>
     <Value>0</Value>
 </Widget>
