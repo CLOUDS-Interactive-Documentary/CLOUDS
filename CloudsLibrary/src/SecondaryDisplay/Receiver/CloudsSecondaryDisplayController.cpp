@@ -27,7 +27,6 @@ void CloudsSecondaryDisplayController::setup(){
 	
 //	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
 //	CloudsAct* act = storyEngine.buildAct(run, startingNodes[ ofRandom(startingNodes.size()) ]);
-//	
 //	run.topicHistory = act->getAllTopics();
 //	run.clipHistory = act->getAllClips();
 	
@@ -125,7 +124,7 @@ void CloudsSecondaryDisplayController::draw(){
     //END DEBUG
 	
 	if(playingMovie){
-		archivePlayer.draw(ofGetWidth()/2 - archivePlayer.getWidth()/2,
+		archivePlayer.draw(ofGetWidth()/2  - archivePlayer.getWidth()/2,
 						   ofGetHeight()/2 - archivePlayer.getHeight()/2);
 		playingMovie = archivePlayer.isPlaying();
 	}
@@ -142,12 +141,9 @@ void CloudsSecondaryDisplayController::draw(){
 	displayTarget.getTextureReference().draw(targetRect);
 	
     // ---------------- added
-    
 //	//get info for a speaker
 //	CloudsSpeaker::speakers["Kyl_CH"].twitterHandle;
-
 	//TODO: draw speaker layout
-	
 	//TODO: overlay with project example when relevant
 	
 }

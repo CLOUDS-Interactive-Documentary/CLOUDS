@@ -34,6 +34,8 @@ bool CloudsSVGMesh::load(string file){
 	recurseSVGTag(svg, "");
 	svg.popTag();//svg
 	
+	cout << "Loading SVG file: " << file << endl;
+
 	//calculate various bounds
 	int totalVerts = 0;
 	if(meshes.size() > 0){
@@ -50,10 +52,13 @@ bool CloudsSVGMesh::load(string file){
 				meshes[i].bounds.growToInclude(meshes[i].mesh.getVertices()[v]);
 				totalVerts++;
 			}
+			cout << "	Found Layer " << meshes[i].id << endl;
 		}
-		cout << "Bounds for SVG " << file << " is " << bounds.getMin() << " - " << bounds.getMax() << endl;
-		cout << "Found " << meshes.size() << " meshes with " << totalVerts << " vertices" << endl;		
+//		cout << "Bounds for SVG " << file << " is " << bounds.getMin() << " - " << bounds.getMax() << endl;
+//		cout << "Found " << meshes.size() << " meshes with " << totalVerts << " vertices" << endl;
 	}
+	
+	
 }
 
 void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId){
@@ -197,6 +202,14 @@ void CloudsSVGMesh::draw(){
 
 vector<SVGMesh>& CloudsSVGMesh::getMeshes(){
 	return meshes;
+}
+
+SVGMesh* CloudsSVGMesh::getMeshByID(string meshId){
+	if(meshIdIndex.find(meshId) == meshIdIndex.end()){
+		ofLogError("CloudsSVGMesh::getMeshByID") << "Couldn't find mesh: " << meshId;
+		return NULL;
+	}
+	return &meshes[ meshIdIndex[meshId] ];
 }
 
 ofRectangle CloudsSVGMesh::getBounds(){

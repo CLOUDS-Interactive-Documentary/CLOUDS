@@ -32,6 +32,9 @@ class CloudsSVGMesh
 	float getHeight();
 	vector<SVGMesh>& getMeshes();
 	
+	//will be null if ID isnt present
+	SVGMesh* getMeshByID(string meshId);
+	
   protected:
 	void recurseSVGTag(ofxXmlSettings& xml, string parentId);
 	vector<SVGMesh> meshes;
