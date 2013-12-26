@@ -51,7 +51,7 @@ void CloudsSecondaryDisplayController::setup(){
 }
 
 void CloudsSecondaryDisplayController::loadSVGs(){
-	ofDirectory svgs(GetCloudsDataPath() + "secondaryDisplay/SVG/PROJECTEX1/");
+	ofDirectory svgs(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/");
 	svgs.allowExt("svg");
 	svgs.listDir();
 	for(int i = 0; i < svgs.numFiles(); i++){
