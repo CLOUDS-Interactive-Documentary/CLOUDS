@@ -977,17 +977,17 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history,
 	
 	if(currentRun == 1 && clipDifficulty != "easy"){
         if (printDecisions) cout<< "         REJECTED Clip "<<potentialNextClip.getLinkName()<<" : easy clips in the intro please!!" << endl;
-		//return 0; //<@_@> 4:AM JG: don't actually get rid of this plz
+		return 0; //<@_@> 4:AM JG: don't actually get rid of this plz
 	}
 	
 	if(currentRun <= 2 && clipDifficulty == "medium"){
         if (printDecisions) cout<< "         REJECTED Clip "<<potentialNextClip.getLinkName()<<" : medium clips in the second act please!!" << endl;
-//		return 0;//<@_@>
+		return 0;//<@_@>
 	}
 
 	if( currentRun <= 3 && clipDifficulty == "hard" ){
         if (printDecisions) cout<< "         REJECTED Clip "<<potentialNextClip.getLinkName()<<" : hard clips come 3rd act" << endl;
-//		return 0;//<@_@>
+		return 0;//<@_@>
 	}
 
     //Base score
