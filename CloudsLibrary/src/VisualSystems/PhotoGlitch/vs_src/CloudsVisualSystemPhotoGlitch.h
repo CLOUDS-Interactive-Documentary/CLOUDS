@@ -187,7 +187,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void tween(int i, int j = -1);
     void tweenTarget(int i, int j = -1);
     void tweenFast(int i);
-    
+    void updateSequence();
     int getTargetFileName(ofxUISuperCanvas * gui, int targetId);
     
     static bool sortIdxForHue(int i, int j);

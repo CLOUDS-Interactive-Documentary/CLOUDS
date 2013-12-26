@@ -671,6 +671,66 @@ void CloudsVisualSystemPhotoGlitch::selfSceneTransformation(){
 	
 }
 
+void CloudsVisualSystemPhotoGlitch::updateSequence(){
+    
+    if (bLoopBack) {
+        if (currentTargetParams->mode == SOURCE_MODE && gp1.enable ) {
+            //Updating current target from source to target 1
+            
+            currentTarget = &target1;
+            currentTargetParams = &gp1;
+            
+            if (! bOneCycleComplete) {
+                updateAnimation();
+            }
+            
+        }
+        else if(currentTarget != NULL){
+            
+            //Updating current target1 from source to target 2
+            if (currentTarget->ID == 1 && gp2.enable) {
+                currentTarget = &target2;
+                currentTargetParams =  &gp2;
+                updateAnimation();
+            }
+            //Updating current target 2 to source since loopback is enabled
+            else if(currentTarget->ID == 2 || ( currentTarget->ID == 1 && !gp2.enable)){
+                currentTargetParams = &sourceParams;
+                updateAnimation();
+                bOneCycleComplete = true;
+            }
+
+        }
+        else{
+            cout<<"Loopback Sequence complete"<<endl;
+        }
+    }
+    else{
+        if (currentTargetParams->mode == SOURCE_MODE && gp1.enable ) {
+            currentTarget = &target1;
+            currentTargetParams = &gp1;
+            updateAnimation();
+        }
+        else if (currentTarget != NULL){
+            if (currentTarget->ID == 1 && gp2.enable) {
+                currentTarget = &target2;
+                currentTargetParams =  &gp2;
+                updateAnimation();
+            }
+            
+            else if(currentTarget->ID == 2 || ( currentTarget->ID == 1 && !gp2.enable)){
+                cout<<"Sequence Complete"<<endl;
+            }
+            else{
+                cout<<"Totes complete "<<endl;
+            }
+        }
+        else{
+             cout<<"Sequence complete "<<endl;
+        }
+    }
+}
+
 //normal update call
 void CloudsVisualSystemPhotoGlitch::selfUpdate()
 {
@@ -711,13 +771,11 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
     // update that data
     vbo.setVertexData(verts, kCoordsPerVert, numVerts, GL_STREAM_DRAW, kCoordsPerVert * sizeof(GLfloat));
     
-    //TODO: Optimise this if it feels too slow
     bool isComplete = false;
     for (int i = 0; i < numCells; i++) {
         int vertIdx = cells[i].idx * kVertsPerCell * kCoordsPerVert;
         
         if(cells[i].tweenX.isRunning() && cells[i].tweenY.isRunning()){
-            //            bCurrentlyAnimating = false;
             isComplete  = false;
             break;
         }
@@ -729,56 +787,9 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
     if(isComplete && bCurrentlyAnimating){
 
         if(ofGetElapsedTimeMillis() % delayValue < 10){
-            cout<<"Here"<<endl;
-            bCurrentlyAnimating = false;
-            if (bLoopBack) {
-                if (currentTargetParams->mode == SOURCE_MODE ) {
-                    currentTarget = &target1;
-                    currentTargetParams = &gp1;
-                    cout<<"Updating animation from source to target"<<endl;
-                    if (! bOneCycleComplete) {
-                        updateAnimation();
 
-                    }
-                    
-                }
-                else{
-                    if (currentTarget->ID == 1 && gp2.enable) {
-                        currentTarget = &target2;
-                        currentTargetParams =  &gp2;
-                        cout<<"Updating animation for target 2"<<endl;
-                        updateAnimation();
-                    }
-                    
-                    else if(currentTarget->ID == 2 || ( currentTarget->ID == 1 && !gp2.enable)){
-                        currentTargetParams = &sourceParams;
-                        updateAnimation();
-                        bOneCycleComplete = true;
-                    }
-                }
-            }
-            else{
-                if (currentTargetParams->mode == SOURCE_MODE ) {
-                    currentTarget = &target1;
-                    currentTargetParams = &gp1;
-                    cout<<"Updating animation from source to target"<<endl;
-                    
-                    updateAnimation();
-                }
-                else{
-                    if (currentTarget->ID == 1 && gp2.enable) {
-                        currentTarget = &target2;
-                        currentTargetParams =  &gp2;
-                        cout<<"Updating animation for target 2"<<endl;
-                        updateAnimation();
-                    }
-                    
-                    else if(currentTarget->ID == 2 || ( currentTarget->ID == 1 && !gp2.enable)){
-                        cout<<"Sequence Complete"<<endl;
-                    }
-                }                
-            }
-            
+            bCurrentlyAnimating = false;
+            updateSequence();
         }
     }
 }
@@ -807,7 +818,6 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
     else{
         vbo.disableColors();
         bgVbo.disableColors();
-        //     targetVbo.disableColors();
         if (currentTarget != NULL) {
             currentTarget->vbo.disableColors();
         }
@@ -817,7 +827,6 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
     if (bUseTexture){
         vbo.enableTexCoords();
         bgVbo.enableTexCoords();
-        //        targetVbo.enableTexCoords();
         if (currentTarget != NULL) {
             currentTarget->vbo.enableTexCoords();
         }
@@ -826,7 +835,6 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
     else {
         vbo.disableTexCoords();
         bgVbo.disableTexCoords();
-        //        targetVbo.disableTexCoords();
         if (currentTarget != NULL) {
             currentTarget->vbo.disableTexCoords();
         }
@@ -870,6 +878,7 @@ void CloudsVisualSystemPhotoGlitch::selfExit()
     target1.clear();
     target2.clear();
     
+    
 }
 
 //events are called when the system is active
@@ -902,10 +911,11 @@ void CloudsVisualSystemPhotoGlitch::selfMouseReleased(int x, int y, int button){
 void CloudsVisualSystemPhotoGlitch::shuffle(bool tweenCells)
 {
     bool * slots = new bool[numCells];
+
     for (int i = 0; i < numCells; i++) {
         slots[i] = false;
     }
-    
+
     int numOccupied = 0;
     int lastOpenSlotIdx = 0;
     for (int i = 0; i < numCells; i++) {
@@ -953,12 +963,17 @@ void CloudsVisualSystemPhotoGlitch::shuffle(bool tweenCells)
 
 void CloudsVisualSystemPhotoGlitch::sortHue(bool tweenCells)
 {
+    vector<compareObj> sourceCompare;
     vector<int> slots;
     for (int i = 0; i < numCells; i++) {
         slots.push_back(i);
+        compareObj sourceObj;
+        sourceObj.cell = &cells[i];
+        sourceObj.index = i;
+        sourceCompare.push_back(sourceObj);
     }
     
-    sort(slots.begin(), slots.end(), CloudsVisualSystemPhotoGlitch::sortIdxForHue);
+    sort(sourceCompare.begin(), sourceCompare.end(), sortIdxForHueTargetNew);
     
     for (int i = 0; i < numCells; i++) {
         int slotIdx = slots[i];
@@ -980,14 +995,18 @@ void CloudsVisualSystemPhotoGlitch::sortHue(bool tweenCells)
 void CloudsVisualSystemPhotoGlitch::sortBri(bool tweenCells)
 {
     vector<int> slots;
+    vector<compareObj> sourceCompare;
     for (int i = 0; i < numCells; i++) {
         slots.push_back(i);
+        compareObj sourceObj;
+        sourceObj.cell = &cells[i];
+        sourceObj.index = i;
+        sourceCompare.push_back(sourceObj);
     }
     
-    sort(slots.begin(), slots.end(), CloudsVisualSystemPhotoGlitch::sortIdxForBri);
-    
+    sort(sourceCompare.begin(), sourceCompare.end(),sortIdxForBrightnessTargetNew);
     for (int i = 0; i < numCells; i++) {
-        int slotIdx = slots[i];
+        int slotIdx = sourceCompare[i].index;
         
         // set the target position using the row and col indices
         cells[i].col = slotIdx % numDivCols;
