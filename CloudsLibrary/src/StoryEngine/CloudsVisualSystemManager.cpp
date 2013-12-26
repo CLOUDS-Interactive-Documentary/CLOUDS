@@ -404,7 +404,7 @@ void CloudsVisualSystemManager::loadPresets(){
 		if(keywordXml.tagExists("suppressions")){
 			keywordXml.pushTag("suppressions");
 			int numSuppressions = keywordXml.getNumTags("clip");
-			for(int i=0; i<numSuppressions;i++){
+			for(int i = 0; i < numSuppressions;i++){
 				string suppressedLinkName = keywordXml.getValue("clip", "", i);
                 //				cout << "found suppression " << suppressedLinkName << endl;
 				suppressedClips[preset->getID()].push_back(suppressedLinkName);
@@ -724,9 +724,10 @@ bool CloudsVisualSystemManager::isClipLinked(string presetID,string clip){
 
 //--------------------------------------------------------------------
 bool CloudsVisualSystemManager::isClipLinked(string presetID,string clip, int& index){
+	
 	vector<string>& clips = linkedClips[presetID];
-    for(int i=0;i<clips.size();i++){
-        if(clips[i]==clip){
+    for(int i = 0; i < clips.size(); i++){
+        if(clips[i] == clip){
             index = i;
             return true;
         }
@@ -744,8 +745,7 @@ void CloudsVisualSystemManager::unlinkClip(string presetID, string clip){
 
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::unlinkClip(string presetID, int presetIndex){
-	if(linkedClips.find(presetID) != linkedClips.end() &&
-	   linkedClips[presetID].size() < presetIndex)
+	if(linkedClips.find(presetID) != linkedClips.end() && presetIndex < linkedClips[presetID].size())
 	{
 		linkedClips[presetID].erase( linkedClips[presetID].begin() + presetIndex );
 		updateClipPresetLinks();
@@ -802,7 +802,7 @@ bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip, in
 
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::unsuppressClip(string presetID, int presetIndex){
-    if(suppressedClips.find(presetID) != suppressedClips.end()){
+    if(suppressedClips.find(presetID) != suppressedClips.end() ){
 		suppressedClips[presetID].erase(suppressedClips[presetID].begin() +presetIndex);
     }
     else{

@@ -238,7 +238,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		NSUInteger idx = [clipTable.selectedRowIndexes firstIndex];
 		while (idx != NSNotFound) {
 			
-			visualSystems.suppressClip(visualSystems.getPresets()[self.selectedPresetIndex].getID(), associatedClips[idx].getLinkName());
+			visualSystems.suppressClip(visualSystems.getPresets()[self.selectedPresetIndex].getID(),
+									   associatedClips[idx].getLinkName());
 			
 			// get the next index in the set
 			idx = [clipTable.selectedRowIndexes indexGreaterThanIndex:idx];
@@ -249,9 +250,11 @@ bool clipsort(CloudsClip a, CloudsClip b){
         visualSystems.savePresets();
 		
 		[self updateAssociatedClips];
-        [clipTable selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
+		[self updateCurrentClipPresets];
 		
-//      [clipTable reloadData];
+        [clipTable selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
+
+		[allClipTable reloadData];
 //		[suppressedClipTable reloadData];
 		
     }
@@ -271,19 +274,33 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		}
 		
         cout<<"Clip: "<<suppressedClips[suppressedClipTable.selectedRow].getLinkName()<<" unsuppressed for Visual System: "<<visualSystems.getPresets()[self.selectedPresetIndex].getID()<<endl;
-        visualSystems.savePresets();
+        
+		visualSystems.savePresets();
 		
 		[clipTable selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
 		[self updateAssociatedClips];
+		[self updateCurrentClipPresets];
+		
 		
     }
 }
 
 - (void) linkClipToPreset:(id)sender
 {
-	if(clipTable.selectedRow >= 0 && presetTable.selectedRow >= 0){
+	if(allClipTable.selectedRow >= 0 &&
+	   presetTable.selectedRow  >= 0)
+	{
 		visualSystems.linkClip(visualSystems.getPresets()[self.selectedPresetIndex].getID(),
-							   parser.getAllClips()[clipTable.selectedRow].getLinkName());
+							   parser.getAllClips()[allClipTable.selectedRow].getLinkName());
+		
+		visualSystems.savePresets();
+
+		[self updateAssociatedClips];
+		[self updateCurrentClipPresets];
+		
+		[presetTable reloadData];
+		[allClipTable reloadData];
+		[clipPresetTable reloadData];
 	}
 }
 
@@ -325,9 +342,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
 	
-	int presetIndex = filteredPresetInds[ rowIndex ];
-	
 	if(aTableView == presetTable){
+		int presetIndex = filteredPresetInds[ rowIndex ];
 		if([@"system" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String: visualSystems.getPresets()[presetIndex].systemName.c_str()];
 		}
@@ -360,6 +376,10 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			return [NSString stringWithUTF8String: associatedClips[rowIndex].getLinkName().c_str() ];
 		}
 		else if([@"keyword" isEqualToString:aTableColumn.identifier]){
+			if(visualSystems.isClipLinked(visualSystems.getPresets()[self.selectedPresetIndex].getID(),
+										  associatedClips[rowIndex].getLinkName() )){
+				return @"LINK";
+			}
 			return [NSString stringWithUTF8String: ofJoinString([self entries:associatedClips[rowIndex].getKeywords()
 																   sharedWith:associatedKeywords], ",").c_str() ];
 		}
@@ -473,21 +493,31 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	}
 	else if(aNotification.object == allClipTable){
 		if(allClipTable.selectedRow >= 0){
-			CloudsClip& clip = parser.getAllClips()[allClipTable.selectedRow];
-			vector<CloudsVisualSystemPreset> presets =
-				visualSystems.getPresetsForKeywords( clip.getKeywords(), clip.getLinkName() );
-			currentClipPresets.clear();
-			for(int i = 0; i < presets.size(); i++){
-				if(!visualSystems.isClipSuppressed(presets[i].getID(), clip.getLinkName()) &&
-				   presets[i].enabled)
-				{
-					currentClipPresets.push_back( presets[i] );
-				}
-			}
-			cout << "currently selected " << currentClipPresets.size() << " clips" << endl;
-			[clipPresetTable reloadData];
+			[self updateCurrentClipPresets];
 		}
 	}
+}
+
+- (void)updateCurrentClipPresets
+{
+	if(allClipTable.selectedRow < 0 ){
+		return;
+	}
+	
+	CloudsClip& clip = parser.getAllClips()[allClipTable.selectedRow];
+	vector<CloudsVisualSystemPreset> presets =
+	visualSystems.getPresetsForKeywords( clip.getKeywords(), clip.getLinkName() );
+	currentClipPresets.clear();
+	for(int i = 0; i < presets.size(); i++){
+		if(!visualSystems.isClipSuppressed(presets[i].getID(), clip.getLinkName()) &&
+		   presets[i].enabled)
+		{
+			currentClipPresets.push_back( presets[i] );
+		}
+	}
+
+	[allClipTable reloadData];
+	[clipPresetTable reloadData];
 }
 
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors{
@@ -560,21 +590,37 @@ completionsForSubstring:(NSString *)substring
 	associatedKeywords.clear();
 	
 	if(self.selectedPresetIndex >= 0){
-		selectedPreset = &visualSystems.getPresets()[ filteredPresetInds[ self.selectedPresetIndex ] ];
+		selectedPreset = &visualSystems.getPresets()[ self.selectedPresetIndex ];
 		associatedKeywords = visualSystems.keywordsForPreset(*selectedPreset);
 		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
-	}
-	
-	for(int i = associatedClips.size() - 1; i >= 0; i-- ){
-		if(visualSystems.isClipSuppressed(selectedPreset->getID(), associatedClips[i].getLinkName())){
-//			cout << "adding suppressed clip " << associatedClips[i].getLinkName();
-			suppressedClips.push_back(associatedClips[i]);
-			associatedClips.erase(associatedClips.begin() + i);
+
+		//create a set of all the names
+		set<string> clipIds;
+		for(int i = 0; i < associatedClips.size(); i++){
+			clipIds.insert(associatedClips[i].getLinkName());
 		}
+		
+		//insert the links
+		vector<string>& links = visualSystems.getLinksForPreset(selectedPreset->getID());
+		for(int i = 0; i < links.size(); i++){
+			if(clipIds.find(links[i])  == clipIds.end()){
+				associatedClips.push_back( parser.getClipWithLinkName(links[i]) );
+			}
+		}
+		
+		for(int i = associatedClips.size() - 1; i >= 0; i-- ){
+			if(visualSystems.isClipSuppressed(selectedPreset->getID(), associatedClips[i].getLinkName())){
+				//			cout << "adding suppressed clip " << associatedClips[i].getLinkName();
+				suppressedClips.push_back(associatedClips[i]);
+				associatedClips.erase(associatedClips.begin() + i);
+			}
+		}
+		
+		sort(associatedClips.begin(),associatedClips.end(), clipsort);
+		sort(suppressedClips.begin(),suppressedClips.end(), clipsort);
+
 	}
 	
-	sort(associatedClips.begin(),associatedClips.end(), clipsort);
-	sort(suppressedClips.begin(),suppressedClips.end(), clipsort);
 	
 	[clipTable reloadData];
 	[suppressedClipTable reloadData];

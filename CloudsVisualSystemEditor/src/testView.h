@@ -50,6 +50,9 @@
 }
 
 - (int)selectedPresetIndex;
+- (void) updateCurrentClipPresets;
+- (void) updateCounts;
+
 
 - (void)setup;
 - (void)update;
@@ -64,7 +67,6 @@
 - (void)mouseReleased:(NSPoint)p button:(int)button;
 - (void)windowResized:(NSSize)size;
 
-- (void) updateCounts;
 
 - (IBAction) updateFilters:(id)sender;
 - (IBAction) updatePresets:(id)sender;
