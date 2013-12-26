@@ -23,7 +23,6 @@ void CloudsVisualSystemColony::selfSetup()
 void CloudsVisualSystemColony::loadShader(){
     string path = getVisualSystemDataPath() + "shaders/";
 	levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
-//    cellShader.load(path + "cells.vs", path + "cells.fs"); //not using the gs
     billboard.load(path + "billboard.vs", path + "billboard.fs");
 }
 
@@ -53,12 +52,7 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
 void CloudsVisualSystemColony::selfUpdate()
 {
     //Video
-    if(!fbo.isAllocated() ||
-       fbo.getWidth() != getSharedRenderTarget().getWidth() ||
-       fbo.getHeight() != getSharedRenderTarget().getHeight())
-    {
-        reallocateFramebuffers();
-    }
+    if ( !areFbosAllocatedAndSized() ){ reallocateFramebuffers(); }
     
     //Data
     //cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
@@ -93,7 +87,7 @@ void CloudsVisualSystemColony::selfUpdate()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
-    fbo.begin();
+    fbo_main.begin();
     ofClear(0,0,0,0);
     ofPushStyle();
 	ofEnableAlphaBlending();
@@ -113,7 +107,7 @@ void CloudsVisualSystemColony::selfDrawBackground()
     ofDisablePointSprites();
     ofDisableBlendMode();
 	ofPopStyle();
-    fbo.end();
+    fbo_main.end();
 }
 
 void CloudsVisualSystemColony::selfDraw(){
@@ -129,7 +123,7 @@ void CloudsVisualSystemColony::selfPostDraw(){
     noiseShader.begin();
     noiseShader.setUniform1i("complexity", 1);
     noiseShader.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
-    noiseShader.setUniform1f("zoom", ofGetMouseX());
+    noiseShader.setUniform1f("zoom", 40.);
     noiseShader.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
     ofRect(0, 0, getSharedRenderTarget().getWidth(),getSharedRenderTarget().getHeight());
     noiseShader.end();
@@ -160,13 +154,29 @@ void CloudsVisualSystemColony::selfExit(){
     
 }
 
+bool CloudsVisualSystemColony::areFbosAllocatedAndSized(){
+    return fbo_main.isAllocated()
+    && fbo_food.isAllocated()
+    && fbo_main.getWidth() == getSharedRenderTarget().getWidth()
+    && fbo_main.getHeight() == getSharedRenderTarget().getHeight()
+    && fbo_food.getWidth() == getSharedRenderTarget().getWidth()
+    && fbo_food.getHeight() == getSharedRenderTarget().getHeight();
+}
+
 void CloudsVisualSystemColony::reallocateFramebuffers(){
-    fbo.allocate(getSharedRenderTarget().getWidth(),
-                       getSharedRenderTarget().getHeight(),
-                       GL_RGBA);
-    fbo.begin();
+    int w = getSharedRenderTarget().getWidth();
+    int h = getSharedRenderTarget().getHeight();
+    
+    fbo_main.allocate(w,h,GL_RGBA);
+    fbo_food.allocate(w/4., h/4., GL_RGB);
+    
+    fbo_main.begin();
     ofClear(0,0,0,0);
-    fbo.end();
+    fbo_main.end();
+    
+    fbo_food.begin();
+    ofClear(0, 0, 0);
+    fbo_food.end();
 }
 
 void CloudsVisualSystemColony::selfSetupGuis(){}

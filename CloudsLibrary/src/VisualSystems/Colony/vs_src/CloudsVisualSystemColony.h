@@ -62,7 +62,7 @@ private:
     ofShader    billboard;
     
     //wow video
-    ofFbo fbo;
+    ofFbo fbo_main, fbo_food;
     ofTexture sprite;
     
     //lol data
@@ -74,7 +74,10 @@ private:
     
     bool reset; //TODO: used?
     
-    /*  PARAMS */
+    /*  SUCH PARAMS */
     cellParams params;
     float numInitialCells; //float because ints won't work in gui
+    
+    /* WOW UTILITY */
+    bool areFbosAllocatedAndSized();
 };
