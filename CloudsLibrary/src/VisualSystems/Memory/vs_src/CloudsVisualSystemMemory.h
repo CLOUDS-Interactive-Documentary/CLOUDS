@@ -29,6 +29,45 @@ class Block : public ofRectangle {
 		return this->value < b.value;
 	}
     
+	void setup(){
+		outlineIndices.min = outlineMesh->getNumVertices();
+		
+		ofVec3f a = ofVec3f(getMinX(),getMinY(),0);
+		ofVec3f b = ofVec3f(getMaxX(),getMinY(),0);
+		ofVec3f c = ofVec3f(getMaxX(),getMaxY(),0);
+		ofVec3f d = ofVec3f(getMinX(),getMaxY(),0);
+		
+		outlineMesh->addVertex(a);
+		outlineMesh->addVertex(b);
+		
+		outlineMesh->addVertex(b);
+		outlineMesh->addVertex(c);
+
+		outlineMesh->addVertex(c);
+		outlineMesh->addVertex(d);
+		
+		outlineMesh->addVertex(d);
+		outlineMesh->addVertex(a);
+		
+		outlineIndices.max = outlineMesh->getNumVertices();
+		
+		for(int i = 0; i < 8; i++){
+			outlineMesh->addColor(ofFloatColor());
+		}
+		
+		fillMesh->addVertex(a);
+		fillMesh->addVertex(b);
+		fillMesh->addVertex(d);
+		
+		fillMesh->addVertex(b);
+		fillMesh->addVertex(d);
+		fillMesh->addVertex(c);
+		
+		for(int i = 0; i < 6; i++){
+			fillMesh->addColor(color);
+		}
+		
+	}
 		
 	void update(){
 		ofFloatColor curStroke;
@@ -40,9 +79,6 @@ class Block : public ofRectangle {
 
 		for(int i = outlineIndices.min; i < outlineIndices.max; i++) {
 			outlineMesh->setColor(i, curStroke);
-		}
-		for(int i = fillIndices.min; i < fillIndices.max; i++){
-			fillMesh->setColor(i, color);
 		}
 
 	}

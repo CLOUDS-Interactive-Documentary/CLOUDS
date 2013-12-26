@@ -136,7 +136,12 @@ void CloudsVisualSystemMemory::generateFromMemory(){
     
     blocks.clear();
 	outlineMesh.clear();
+	outlineMesh.setMode(OF_PRIMITIVE_LINES);
+	outlineMesh.setUsage(GL_STREAM_DRAW);
+	
 	fillMesh.clear();
+	fillMesh.setMode(OF_PRIMITIVE_TRIANGLES);
+	outlineMesh.setUsage(GL_STATIC_DRAW);
 	
     int index = 0;
     for (int j = 0; j < yBlocks; j++) {
@@ -144,8 +149,8 @@ void CloudsVisualSystemMemory::generateFromMemory(){
             
             if (index < blocksTotal ){
                 
-                int x = xMargin + ((margin + blockWidth)*blockScale)*i ;
-                int y = yMargin + ((margin + blockHeight)*blockScale)*j ;
+                int x = xMargin + ((margin + blockWidth)*blockScale)*i;
+                int y = yMargin + ((margin + blockHeight)*blockScale)*j;
                 
                 if ( y > (getSharedRenderTarget().getHeight() + margin + heightBlocks)){
                     break;
@@ -162,7 +167,7 @@ void CloudsVisualSystemMemory::generateFromMemory(){
                 block.bSelected = false;
                 block.outlineMesh = &outlineMesh;
 				block.fillMesh = &fillMesh;
-				
+				block.setup();
                 blocks.push_back(block);
                 
             } else {
@@ -195,6 +200,14 @@ void CloudsVisualSystemMemory::generateFromTexture(ofTexture &_tex){
     xBlocks = (float)width/((blockWidth+margin)*blockScale);
     yBlocks = (float)height/((blockHeight+margin)*blockScale);
     
+	outlineMesh.clear();
+	outlineMesh.setMode(OF_PRIMITIVE_LINES);
+	outlineMesh.setUsage(GL_STREAM_DRAW);
+	
+	fillMesh.clear();
+	fillMesh.setMode(OF_PRIMITIVE_TRIANGLES);
+	outlineMesh.setUsage(GL_STATIC_DRAW);
+
     blocks.clear();
     for (int j = 0; j < yBlocks; j++) {
         for (int i = 0; i < xBlocks; i++){
@@ -215,6 +228,10 @@ void CloudsVisualSystemMemory::generateFromTexture(ofTexture &_tex){
             newBlock.borderColor = borderColor;
             newBlock.bSelected = false;
             
+			newBlock.outlineMesh = &outlineMesh;
+			newBlock.fillMesh = &fillMesh;
+			newBlock.setup();
+
             blocks.push_back(newBlock);
         }
     }
@@ -273,7 +290,11 @@ void CloudsVisualSystemMemory::selfUpdate()
     if (bDeFrag){
         applyDeFrag();
     }
-    
+	
+    for (int i = 0; i < blocks.size(); i++) {
+        blocks[i].update();
+  }
+
 }
 
 void CloudsVisualSystemMemory::applySort(){
@@ -416,9 +437,12 @@ void CloudsVisualSystemMemory::selfDrawBackground()
     */
     
     ofSetLineWidth(0.01);
-    for (int i = 0; i < blocks.size(); i++) {
-        blocks[i].draw();
-    }
+//    for (int i = 0; i < blocks.size(); i++) {
+//        blocks[i].draw();
+  //  }
+	
+	fillMesh.draw();
+	outlineMesh.draw();
 }
 
 

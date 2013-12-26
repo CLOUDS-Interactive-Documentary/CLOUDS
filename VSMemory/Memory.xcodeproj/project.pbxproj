@@ -1341,8 +1341,8 @@
 		E7FA8EC8186C02D2001AB5FB /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7FA8EC9186C02D2001AB5FB /* CloudsVisualSystemMemory.cpp */,
 				E7FA8ECA186C02D2001AB5FB /* CloudsVisualSystemMemory.h */,
+				E7FA8EC9186C02D2001AB5FB /* CloudsVisualSystemMemory.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
