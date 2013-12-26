@@ -95,7 +95,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
     
     customGui->addSpacer();
     customGui->addLabel("SOURCE PARAMS");
-    customGui->addToggle("ENABLE ", &sourceParams.enable);
+    customGui->addToggle("ANIMATE SOURCE", &sourceParams.enable);
 	customGui->addToggle("SOURCE SHUFFLE", &sourceParams.shuffle);
     customGui->addToggle("SOURCE SORT HUE", &sourceParams.sortByHue);
     customGui->addToggle("SOURCE SORT BRI", &sourceParams.sortByBrightness);
@@ -169,14 +169,12 @@ void CloudsVisualSystemPhotoGlitch::beginAnimation(){
     target2.clear();
     generateSource();
 
-    bool successfulUpdate =false;
     if (gp2.enable) {
         int imgIdx = getTargetFileName(target2Gui, 2);
         if( imgIdx != -1){
             generate(target2, imgIdx);
             target2.ID = 2;
             cout<<"Target 2 updated"<<endl;
-            successfulUpdate = true;
         }
         else{
             cout<<"No image selected or image not found for image 2"<<endl;
@@ -188,7 +186,7 @@ void CloudsVisualSystemPhotoGlitch::beginAnimation(){
         if( imgIdx != -1){
             generate(target1, imgIdx);
             target1.ID = 1;
-            successfulUpdate = true;
+
         }
         else{
             cout<<"No image selected or image not found for image 1"<<endl;
@@ -200,38 +198,54 @@ void CloudsVisualSystemPhotoGlitch::beginAnimation(){
         currentTargetParams = &sourceParams;
     }
     else{
-        sourceParams.reorder = true;
         currentTargetParams = &sourceParams;
+        
     }
 
-    if(successfulUpdate){
         bStartAnimating = true;
-    }
-    else{
-        ofLogError()<<"Update not successful try again"<<endl;
-    }
+
 
     
 }
 void CloudsVisualSystemPhotoGlitch::updateAnimation(){
     if(currentTargetParams->mode == SOURCE_MODE){
+        if (currentTargetParams->enable) {
+            if(currentTargetParams->shuffle){
+                shuffle();
+                cout<<"Mode : source shuffle"<<endl;
+            }
+            else if (currentTargetParams->reorder){
+                reorder();
+                cout<<"Mode : source reorder"<<endl;
+            }
+            else if (currentTargetParams->sortByBrightness){
+                sortBri();
+                cout<<"Mode : source bri"<<endl;
+            }
+            else if (currentTargetParams->sortByHue){
+                sortHue();
+                cout<<"Mode : source hue"<<endl;
+            }
+        }
+        else{
+            if(currentTargetParams->shuffle){
+                shuffle(false);
+                cout<<"Mode : source shuffle"<<endl;
+            }
+            else if (currentTargetParams->reorder){
+                reorder(false);
+                cout<<"Mode : source reorder"<<endl;
+            }
+            else if (currentTargetParams->sortByBrightness){
+                sortBri(false);
+                cout<<"Mode : source bri"<<endl;
+            }
+            else if (currentTargetParams->sortByHue){
+                sortHue(false);
+                cout<<"Mode : source hue"<<endl;
+            }
+        }
 
-        if(currentTargetParams->shuffle){
-            shuffle();
-            cout<<"Mode : source shuffle"<<endl;
-        }
-        else if (currentTargetParams->reorder){
-            reorder();
-            cout<<"Mode : source reorder"<<endl;
-        }
-        else if (currentTargetParams->sortByBrightness){
-            sortBri();
-            cout<<"Mode : source bri"<<endl;
-        }
-        else if (currentTargetParams->sortByHue){
-            sortHue();
-            cout<<"Mode : source hue"<<endl;
-        }
     }
     else if (currentTargetParams->mode == TARGET_MODE) {
             cout<<"In target mode"<<endl;
@@ -712,7 +726,7 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
     }
     
     if(isComplete && bCurrentlyAnimating){
-        cout<<ofGetElapsedTimeMillis() % delayValue<<endl;
+
         if(ofGetElapsedTimeMillis() % delayValue < 10){
             cout<<"Here"<<endl;
             bCurrentlyAnimating = false;
@@ -731,11 +745,7 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
                     cout<<"Updating animation for target 2"<<endl;
                     updateAnimation();
                 }
-//                if (bLoopBack) {
-//                    bLoopBack = false;
-//                    currentTargetParams = &sourceParams;
-//                    
-//                }
+
                 else if(currentTarget->ID == 2 || ( currentTarget->ID == 1 && !gp2.enable)){
                     cout<<"Sequence Complete"<<endl;
                 }
@@ -860,7 +870,7 @@ void CloudsVisualSystemPhotoGlitch::selfMouseReleased(int x, int y, int button){
 	
 }
 
-void CloudsVisualSystemPhotoGlitch::shuffle()
+void CloudsVisualSystemPhotoGlitch::shuffle(bool tweenCells)
 {
     bool * slots = new bool[numCells];
     for (int i = 0; i < numCells; i++) {
@@ -896,7 +906,13 @@ void CloudsVisualSystemPhotoGlitch::shuffle()
         cells[i].col = openCol;
         cells[i].row = openRow;
         
-        tween(i, openSlotIdx);
+        if (tweenCells) {
+            tween(i, openSlotIdx);
+        }
+        else{
+            tweenFast(i);
+        }
+
         
         
         slots[openSlotIdx] = true;
@@ -906,7 +922,7 @@ void CloudsVisualSystemPhotoGlitch::shuffle()
     delete [] slots;
 }
 
-void CloudsVisualSystemPhotoGlitch::sortHue()
+void CloudsVisualSystemPhotoGlitch::sortHue(bool tweenCells)
 {
     vector<int> slots;
     for (int i = 0; i < numCells; i++) {
@@ -922,11 +938,17 @@ void CloudsVisualSystemPhotoGlitch::sortHue()
         cells[i].col = slotIdx % numDivCols;
         cells[i].row = slotIdx / numDivCols;
         
-        tween(i, slotIdx);
+        if(tweenCells){
+            tween(i, slotIdx);
+        }
+        else{
+            tweenFast(i);
+        }
+
     }
 }
 
-void CloudsVisualSystemPhotoGlitch::sortBri()
+void CloudsVisualSystemPhotoGlitch::sortBri(bool tweenCells)
 {
     vector<int> slots;
     for (int i = 0; i < numCells; i++) {
@@ -942,7 +964,13 @@ void CloudsVisualSystemPhotoGlitch::sortBri()
         cells[i].col = slotIdx % numDivCols;
         cells[i].row = slotIdx / numDivCols;
         
-        tween(i, slotIdx);
+        if(tweenCells){
+            tween(i, slotIdx);
+        }
+        else{
+            tweenFast(i);
+        }
+        
     }
 }
 
@@ -1035,7 +1063,7 @@ void CloudsVisualSystemPhotoGlitch::sortTarget(){
     }
 }
 
-void CloudsVisualSystemPhotoGlitch::reorder()
+void CloudsVisualSystemPhotoGlitch::reorder(bool tweenCells)
 {
     for (int i = 0; i < numCells; i++) {
         cells[i].col = cells[i].origCol;
@@ -1069,6 +1097,20 @@ void CloudsVisualSystemPhotoGlitch::tween(int i, int j)
     cells[i].tweenX.start();
     cells[i].tweenY.start();
 }
+void CloudsVisualSystemPhotoGlitch::tweenFast(int i){
+    
+    int vertIdx = cells[i].idx * kVertsPerCell * kCoordsPerVert;
+    
+    if (bDoPerpendicular) {
+        cells[i].tweenX.setParameters(easing, ofxTween::easeOut, verts[vertIdx + 0], cells[i].col * screenSliceWidth,  0, 0);
+        cells[i].tweenY.setParameters(easing, ofxTween::easeOut, verts[vertIdx + 1], cells[i].row * screenSliceHeight, 0, 0);
+    }
+    
+    cells[i].tweenX.start();
+    cells[i].tweenY.start();
+    
+}
+
 
 void CloudsVisualSystemPhotoGlitch::tweenTarget(int i, int j)
 {

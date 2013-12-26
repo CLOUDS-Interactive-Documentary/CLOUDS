@@ -176,16 +176,17 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void beginAnimation();
     void updateAnimation();
     
-    void shuffle();
-    void sortHue();
-    void sortBri();
-    void reorder();
+    void shuffle(bool tweenCells=true);
+    void sortHue(bool tweenCells=true);
+    void sortBri(bool tweenCells=true);
+    void reorder(bool tweenCells=true);
     void sortTarget();
     void sortTargetBrightness();
     void addTargetToUI(ofxUISuperCanvas* gui,string suffix, glitchParams& params );
     void tweenAll();
     void tween(int i, int j = -1);
     void tweenTarget(int i, int j = -1);
+    void tweenFast(int i);
     
     int getTargetFileName(ofxUISuperCanvas * gui, int targetId);
     
