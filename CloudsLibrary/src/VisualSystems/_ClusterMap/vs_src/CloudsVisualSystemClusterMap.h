@@ -42,6 +42,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 
 	void selfSetupTimeline();
 	
+	void selfSetDefaults();
 	
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
@@ -102,6 +103,9 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 
 	void reloadShaders();
 	
+	//this is for the secondary display
+	bool incrementalTraversalMode;
+
   protected:
     
     //  Your Stuff
@@ -127,8 +131,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	bool firstClip;
 	ofVec3f lastClipPosition;
 	
-	//this is for the secondary display
-	bool incrementalTraversalMode;
+	float currentVertIndex;
 	
 	ofImage sprite;
 	

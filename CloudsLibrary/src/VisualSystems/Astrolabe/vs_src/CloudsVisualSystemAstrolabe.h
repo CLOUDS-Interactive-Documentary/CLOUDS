@@ -105,6 +105,9 @@ protected:
 	
 	void loadShaders();
 	void unloadShaders();
+	
+	void setAstrolabesColors();
+	void resetRingRotations();
     
     void setupRings(	int count = 15,
 					float innerRad = 5,
@@ -116,14 +119,22 @@ protected:
 					float spacing = 2,
 					float xTickSpeed = 100,
 					float lowRadians = PI,
-					float hiRadians = TWO_PI);
+					float hiRadians = TWO_PI,
+					float initialOffsetScale = .25);
 	
 	void clearAstrolabes();
 	
 	
 	//RINGS
 	ofxUISuperCanvas* ringsGui;
+	ofxUISuperCanvas* shaderGui;
 	ofxUISuperCanvas* ticksGui;
+	
+	int c0_hue,c1_hue,c2_hue;
+	int c0_brightness,c1_brightness,c2_brightness;
+	int c0_saturation,c1_saturation,c2_saturation;
+	int c0_alpha,c1_alpha,c2_alpha;
+	ofColor c0, c1, c2;
 	
 	bool bSetupRings;
 	int ringsCount;
@@ -137,6 +148,12 @@ protected:
 	float ringsMinTickSpeed;
 	float ringsLowRadians;
 	float ringsHiRadians;
+	float ringsDelayOffsetScale;
+	float ringsNoiseyness;
+	bool bResetTicks;
+	
+	ofBlendMode currentBlendMode;
+	bool bDepthTest;
 	
 	int xTickSpeed, yTickSpeed, zTickSpeed;
 	int xTickDelay, yTickDelay, zTickDelay;
@@ -150,6 +167,9 @@ protected:
 	
 	//
 	vector<Astrolabe*> astrolabes;
+	vector<ofImage> palettes;
+	vector<string> paletteNames;
+//	map<string, ofImage> palettes;
 	
 	ofShader normalShader;
 	ofShader facingRatio;

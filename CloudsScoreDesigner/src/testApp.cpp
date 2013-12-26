@@ -41,13 +41,19 @@ void testApp::setup(){
 	//update questions
 	ofBuffer questionBuffer;
     vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
-    vector<string> questions;
+    set<string> questionsTopics;
+	
     for(int i = 0; i < startingNodes.size(); i++){
         CloudsClip& clip = startingNodes[i];
 		if(clip.getTopicsWithQuestions().size() > 0){
-			questionBuffer.append(clip.getID() + ":" + clip.getQuestionForTopic( clip.getTopicsWithQuestions()[0] ) + "\n");
+			questionsTopics.insert(clip.getTopicsWithQuestions()[0] + ":" + clip.getQuestionForTopic( clip.getTopicsWithQuestions()[0]));
 		}
     }
+	
+	set<string>::iterator it;
+	for(it = questionsTopics.begin(); it != questionsTopics.end(); it++){
+		questionBuffer.append( *it + "\n" );
+	}
 	
 	ofBufferToFile(GetCloudsDataPath() + "sound/questions.txt", questionBuffer);
 }

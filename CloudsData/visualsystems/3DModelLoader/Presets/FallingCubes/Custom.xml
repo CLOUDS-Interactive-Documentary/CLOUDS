@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Custom</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>282.000000000</XPosition>
+    <YPosition>23.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -42,11 +42,6 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>discardThreshold</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
     <Name>modelScale</Name>
     <Value>1.806896567</Value>
 </Widget>
@@ -72,101 +67,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>BigCube_ErrodedTriangulate.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BigCube_triangulate.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>CheesePuffsTriangulated.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>elephant.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>FallenCubes_Triangulated.obj</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>FallingChairs_Triangulated.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Hive_triangulated1.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Hive_triangulated2.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Hive_Triangulated3.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>house_wood.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Kelp.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Kelp2.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Man_Bicycle.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>NestedBrokenSphere.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>StackofChairs_Triangulated.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>SucculentTriangulated.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Tangle_Triangulated.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>voronoi.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Vortex_Triangulated.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>normalShader</Name>
     <Value>1</Value>
 </Widget>
@@ -178,5 +78,15 @@
 <Widget>
     <Kind>2</Kind>
     <Name>facingRatio</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>xRay</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>simple</Name>
     <Value>0</Value>
 </Widget>

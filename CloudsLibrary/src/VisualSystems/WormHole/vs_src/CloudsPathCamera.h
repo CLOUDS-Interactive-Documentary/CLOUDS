@@ -6,6 +6,7 @@
 //
 
 #pragma once
+
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
 #include "ofxSimpleSpline.h"

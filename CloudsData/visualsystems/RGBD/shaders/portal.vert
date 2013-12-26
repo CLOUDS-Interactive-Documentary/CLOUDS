@@ -1,7 +1,10 @@
 uniform float rotate;
+uniform float hoverPercent;
 uniform mat4 rot;
 
 const float epsilon = 1e-6;
+
+varying float ringPosition;
 
 float map(float value, float inputMin, float inputMax, float outputMin, float outputMax) {;
 	return ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
@@ -25,5 +28,5 @@ void main(void)
 	vec4 pos = gl_Vertex*rotationMatrix(vec3(0.,0.,1.), rotate * gl_Normal.x);
 	gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
 	gl_FrontColor = gl_Color;
-
+	ringPosition = gl_Normal.z;
 }

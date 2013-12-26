@@ -111,6 +111,7 @@ Aaron - Mini-Artificial Intelligences,Marcus - modeling consciousness
 Aaron - Mini-Artificial Intelligences,Martin - limits of computation
 Aaron - Mini-Artificial Intelligences,Ramsey - independent of any human
 Aaron - Mini-Artificial Intelligences,Ramsey - a hundred million
+Aaron - Mini-Artificial Intelligences,Intro - Computers
 Aaron - Tailored Stories,Kevin - algo stories 3
 Aaron - Tailored Stories,Kevin - cognition vs computation 1
 Aaron - Tailored Stories,Kyle_CH - Cloud atlas
@@ -152,6 +153,7 @@ Aaron - webGL,Kyle_CH - Avatars
 Aaron - webGL,Regine - virtual
 Aaron - lego creatures,Kevin - non-mimetic reality
 Aaron - lego creatures,Kyle_CH - videogame world
+Aaron - lego creatures,Patricio - Dream of eggs
 Aaron - lego creatures,Ramsey - minecraft 1
 Aaron - sharing,Casey - Processing open
 Aaron - sharing,Golan - closed source mistake
@@ -172,6 +174,7 @@ Aaron - sharing,Shiffman - sharing
 Aaron - sharing,Shiffman - Open Source Contract
 Aaron - sharing,Zach - decompiling
 Aaron - sharing,Zach - Open Frameworks 1
+Aaron - sharing,Chris - EthicOfSharing
 Aaron - exquisite forest,Bruce - Github Tarball
 Aaron - exquisite forest,Casey - Something new, totally engrossing
 Aaron - exquisite forest,Golan - hackathons2
@@ -316,6 +319,7 @@ Andres - examples of the impossible,Higa - sharing accidently 1
 Andres - examples of the impossible,Higa - sharing accidently 2
 Andres - examples of the impossible,Maeda - sharing for collective advancement
 Andres - examples of the impossible,Patricio - CopyPaste
+Andres - examples of the impossible,Patricio - Learning through others
 Andres - examples of the impossible,Shiffman - advanced environment
 Andres - examples of the impossible,Zach - processing, publishing
 Andres - sharing code,Golan - limits to sharing
@@ -333,6 +337,7 @@ Andres - Reaching higher,Higa - sharing accidently 2
 Andres - Reaching higher,JTNimoy - enough cooks
 Andres - Reaching higher,Kyle_CH - new generation
 Andres - Reaching higher,Patricio - Jam session
+Andres - Reaching higher,Intro - Collaboration
 Andres - DNA computing 1,Casey - Craig Venter
 Andres - DNA computing 1,Kevin - Biological computation 1
 Andres - DNA computing 1,Kevin - computation was invented
@@ -379,9 +384,11 @@ Andres - soft systems 2,Fernanda - zooming in
 Andres - soft systems 2,Jer - Pattern
 Andres - soft systems 2,Joel - scale of universe
 Andres - soft systems 2,Karolina - Ocean as metaphor
+Andres - soft systems 2,Karsten - DarkNet
 Andres - soft systems 2,Martin - birds eye view
 Andres - soft systems 2,Martin - Zooming is critical
 Andres - soft systems 2,Martin - spiral interface
+Andres - soft systems 2,Joel - scaleofUniverse
 Andres - modeling complex systems,Fernanda - seeing patterns 1
 Andres - modeling complex systems,Fernanda - seeing patterns 2
 Andres - modeling complex systems,Fernanda - Wind visualization 2
@@ -426,6 +433,7 @@ Andres - Computational lens,Greg - camera getting cheaper
 Andres - Computational lens,Greg - camera scaling up
 Andres - Computational lens,Greg - cameras scaling up
 Andres - Computational lens,Jen - Lidar 1
+Andres - Computational lens,Elliot - Kinect
 Andres - camera distorts reality,Elliot_UK - 2D vision in a 3D world
 Andres - camera distorts reality,Jen - Math simulating reality
 Andres - camera distorts reality,Kevin - Tools of perception
@@ -452,10 +460,13 @@ Binx - actually interesting,Jen - data memory 2
 Binx - actually interesting,Jen - immersion in data
 Binx - actually interesting,Jer - Pattern
 Binx - actually interesting,Jer - Thought it was boring
+Binx - actually interesting,Jer - storage
 Binx - actually interesting,Karsten - database
 Binx - actually interesting,Martin - Revelation
 Binx - actually interesting,Martin - Inflation not that interesting
 Binx - actually interesting,Martin - Statistics
+Binx - actually interesting,Patricio - Information 3
+Binx - actually interesting,Patricio - Library of Babel
 Binx - tool for others,Jen - life chapters
 Binx - tool for others,Jer - everyday experience
 Binx - tool for others,Jer - active not interactive
@@ -529,6 +540,8 @@ Binx - meaningful shape1,Jer - deciding not to record
 Binx - meaningful shape1,Jer - storage
 Binx - meaningful shape1,Jer - opportunistic sensors for apple
 Binx - meaningful shape1,Martin - Inflation not that interesting
+Binx - meaningful shape1,Patricio - Information 3
+Binx - meaningful shape1,Patricio - Library of Babel
 Binx - making a map,Fernanda - defense of complexity 2
 Binx - making a map,Fernanda - non numerical visualization
 Binx - making a map,Jen - data autobiography
@@ -540,6 +553,7 @@ Binx - making a map,Jer - Research at Open Paths
 Binx - making a map,Jer - Thought it was boring
 Binx - making a map,Jer - open paths 1
 Binx - making a map,Jer - deciding not to record
+Binx - making a map,Jer - storage
 Binx - making a map,Jer - opportunistic sensors for apple
 Binx - making a map,Karsten - database
 Binx - making a map,Kyle_CH - Future life storage
@@ -556,6 +570,7 @@ Binx - hackathon,Kyle_CH - new generation
 Binx - hackathon,Shantell - doingwithothers
 Binx - hackathon,Zach - hate working alone
 Binx - hackathon,Zach - venn diagrams of interest
+Binx - hackathon,Diederick - hackathon2
 Binx - ar&&code,Golan - hackathon
 Binx - ar&&code,Golan - hackathons2
 Binx - ar&&code,Jer - makerthons
@@ -564,10 +579,12 @@ Binx - ar&&code,Kyle_CH - new generation
 Binx - ar&&code,Shantell - doingwithothers
 Binx - ar&&code,Zach - hate working alone
 Binx - ar&&code,Zach - venn diagrams of interest
+Binx - ar&&code,Diederick - hackathon2
 Binx - women in tech,Jen - right choice 1
 Binx - programming is a superpower,Casey - Software is what i love the most
 Binx - programming is a superpower,Philip - with programming you can do whatever
 Binx - programming is a superpower,Shiffman - mysterious box
+Binx - programming is a superpower,Diederick - allprogrammershavethat
 Binx - tech fracturing,Casey - Programming at 26
 Binx - tech fracturing,Jen - hated computer science
 Binx - tech fracturing,Karsten - why don't we learn?
@@ -576,10 +593,12 @@ Binx - tech fracturing,Ramsey - traditional engineering
 Binx - tech fracturing,Shiffman - Maybe I'd like that
 Binx - tech fracturing,Zach - action script
 Binx - tech fracturing,Zach - action script shorter
+Binx - tech fracturing,Intro - Learning
 Binx - skillshare,Greg - community
 Binx - skillshare,Higa - thick wall
 Binx - skillshare,Jer - fireflies
 Binx - skillshare,Martin - deeper learning
+Binx - skillshare,Patricio - Alchemy 3
 Binx - learning,Casey - Processing open
 Binx - learning,Casey - group teaching
 Binx - learning,Golan - Kyle
@@ -594,9 +613,12 @@ Binx - learning,Karsten - becoming insular
 Binx - learning,Kyle_CH - new generation
 Binx - learning,Lindsay - memes 2
 Binx - learning,Maeda - sharing for collective advancement
+Binx - learning,Patricio - Learning through others
 Binx - learning,Shiffman - sharing
 Binx - learning,Zach - at a festival
 Binx - learning,Zach - printshop
+Binx - learning,Intro - Collaboration
+Binx - learning,Intro - Sharing
 Binx - learning with others,Andres - examples of the impossible
 Binx - learning with others,Casey - Processing open
 Binx - learning with others,Casey - group teaching
@@ -609,10 +631,13 @@ Binx - learning with others,Julia - toward greater generosity 1
 Binx - learning with others,Kyle_CH - new generation
 Binx - learning with others,Maeda - sharing for collective advancement
 Binx - learning with others,Maeda - Processing community
+Binx - learning with others,Patricio - Learning through others
 Binx - learning with others,Shiffman - sharing
 Binx - learning with others,Zach - at a festival
 Binx - learning with others,Zach - printshop
 Binx - learning with others,Zach - emailing the communnity
+Binx - learning with others,Intro - Collaboration
+Binx - learning with others,Intro - Sharing
 Binx - big data,Jen - data crystal ball 3
 Binx - big data,Jer - Big Data Security
 Binx - big data,Jer - Data ownership
@@ -682,6 +707,8 @@ Binx - Background,Marius - cross discplines
 Binx - Background,Nervous_Jessica - MIT beginning
 Binx - Background,Shiffman - Maybe I'd like that
 Binx - Background,Theo - learning
+Binx - Background,Diederick - MoreADeveloper
+Binx - Background,Joel - Amiga500
 Binx - there was no degree,Bruce - Parametric vs Generative
 Binx - there was no degree,Casey - Birth of processing
 Binx - there was no degree,Golan - hybridity
@@ -783,6 +810,9 @@ Bruce - Constant improvement,Ramsey - designing languages
 Bruce - Constant improvement,Shantell - Coding: what does it feel like?
 Bruce - Constant improvement,Shantell - Coding gesturally
 Bruce - Constant improvement,Shiffman - offers me a way to think
+Bruce - Constant improvement,Diederick - allprogrammershavethat
+Bruce - Constant improvement,Diederick - hackathon1
+Bruce - Constant improvement,Intro - Programming
 Bruce - aborted projects,Aaron - curiosity
 Bruce - aborted projects,Golan - keeping you stuff working
 Bruce - aborted projects,Jer - storage
@@ -790,6 +820,7 @@ Bruce - aborted projects,Julian - toolkit culture
 Bruce - aborted projects,Kevin - Draft mode
 Bruce - aborted projects,Marius - Living in a state of newness since age 10
 Bruce - aborted projects,Marius - Thoroughly enjoying it at the moment
+Bruce - aborted projects,Patricio - CLOUDS 2
 Bruce - aborted projects,Philip - young medium
 Bruce - aborted projects,Theo - newness
 Bruce - Volition,Javier - behavior change
@@ -798,6 +829,7 @@ Bruce - Volition,Kevin - algo culture 2
 Bruce - Volition,Marius - constraining randomness
 Bruce - Volition,Ramsey - algorithms run wild
 Bruce - Volition,Ramsey - dating algorithms
+Bruce - Gardening 1,Marius - gardening
 Bruce - Gardening 1,Marius - constraining randomness
 Bruce - Gardening 1,Marius - parameter space
 Bruce - Gardening 2,Marius - gardening
@@ -819,6 +851,7 @@ Bruce - Digital humanities technology,Jen - objective subjective
 Bruce - Digital humanities technology,Jen - data essay 1
 Bruce - Digital humanities technology,Jer - lives being documented through data
 Bruce - Digital humanities technology,Jer - Thought it was boring
+Bruce - Digital humanities technology,Jer - storage
 Bruce - Digital humanities technology,Jer - spoken word
 Bruce - Digital humanities technology,Karsten - code is information
 Bruce - Digital humanities technology,Kevin - reality in the eyes of data
@@ -828,6 +861,8 @@ Bruce - Digital humanities technology,Kyle_CH - Future life storage
 Bruce - Digital humanities technology,Lauren - words shape
 Bruce - Digital humanities technology,Lauren - Metaphors
 Bruce - Digital humanities technology,Martin - Big data 1
+Bruce - Digital humanities technology,Patricio - Information 3
+Bruce - Digital humanities technology,Patricio - Library of Babel
 Bruce - Digital humanities technology,Shantell - sharing
 Bruce - Textual technologies,Aaron - global interactions
 Bruce - Textual technologies,Aaron - different ways of communicating
@@ -866,13 +901,18 @@ Bruce - Dead sea scrolls,Karsten - atari emulation
 Bruce - Dead sea scrolls,Shiffman - what do you archive?
 Bruce - beauty of code 1,Aaron - Mini-Artificial Intelligences
 Bruce - beauty of code 1,Ramsey - a hundred million
+Bruce - beauty of code 1,Intro - Computers
+Bruce - beauty of code 1,Intro - LogicOfPixels
+Bruce - beauty of code 1,Joel - Bicycles1
 Bruce - beauty of code 2,Aaron - Mini-Artificial Intelligences
 Bruce - beauty of code 2,Philip - build the whole universe
 Bruce - beauty of code 2,Ramsey - a hundred million
+Bruce - beauty of code 2,Intro - Computers
 Bruce - beauty of code 3,Aaron - Mini-Artificial Intelligences
 Bruce - beauty of code 3,Martin - language and infinity
 Bruce - beauty of code 3,Philip - build the whole universe
 Bruce - beauty of code 3,Ramsey - a hundred million
+Bruce - beauty of code 3,Intro - Computers
 Bruce - beauty of math,Andres - correct is beautiful
 Bruce - beauty of math,Golan - formalism
 Bruce - beauty of math,Jen - a different mathematics
@@ -946,6 +986,7 @@ Bruce - Age of the universe, really weird,Ramsey - Conway 2
 Bruce - Age of the universe, really weird,Ramsey - emergence from simple rules
 Bruce - Age of the universe, really weird,Ramsey - New Kind of Science
 Bruce - Age of the universe, really weird,Sophy - Evolution
+Bruce - Age of the universe, really weird,Joel - scaleofUniverse
 Bruce - Fax machine,Casey - old media
 Bruce - Fax machine,Casey - learning from precursors
 Bruce - Fax machine,Golan - raytraced spheres
@@ -1068,9 +1109,12 @@ Bruce - Hand dryer,Lauren - wearables 1
 Bruce - Hand dryer,Lauren - wearables 2
 Bruce - Hand dryer,Lauren - swapping perspectives 2
 Bruce - Hand dryer,Regine - future camera
+Bruce - Hand dryer,Elliot - AugementedReality
+Bruce - Hand dryer,Intro - Interfaces
 Bruce - Pointcloud world,Sophy - the Cloud
 Bruce - future city 1,Kevin - area code 1
 Bruce - future city 1,Kevin - Area code 2
+Bruce - future city 1,Elliot - AugementedReality
 Bruce - future city 2,Julian - science fiction
 Bruce - future city 2,Kevin - cognition vs computation 1
 Bruce - future city 2,Kyle_CH - Future life storage
@@ -1117,6 +1161,7 @@ Bruce - Everted Cyberspace,Ramsey - resilient internet
 Bruce - Everted Cyberspace,Ramsey - the internet 1
 Bruce - Everted Cyberspace,Ramsey - distributed model
 Bruce - Everted Cyberspace,Sophy - the Cloud
+Bruce - Everted Cyberspace,Elliot - AugementedReality
 Bruce - future camera 5,Greg - camera getting cheaper
 Bruce - future camera 5,Greg - ubiquitous computing
 Bruce - future camera 5,Greg - camera scaling up
@@ -1143,6 +1188,7 @@ Bruce - unstable mileau of media art,Julia - medium of our time
 Bruce - unstable mileau of media art,Kyle_CH - erase distinctions
 Bruce - unstable mileau of media art,Maeda - Isn't it supposed to be new?
 Bruce - unstable mileau of media art,Philip - young medium
+Bruce - unstable mileau of media art,Joel - FirstMover
 Bruce - 2060s (Lashup 5),Golan - staring down the barrel
 Bruce - 2060s (Lashup 5),Julian - Ray Bradbury story
 Bruce - 2060s (Lashup 5),Julian - science fiction
@@ -1298,6 +1344,7 @@ Bruce - creative agglomeration short,Martin - Are we getting smarter?
 Bruce - creative agglomeration short,Martin - Are we getting smarter 2
 Bruce - creative agglomeration short,Regine - twitter, future
 Bruce - FFFFFAT Lab,Lindsay - memes 2
+Bruce - FFFFFAT Lab,Diederick - hackathon2
 Bruce - Simulation Replication Recursion,Jer - Generative Art
 Bruce - Simulation Replication Recursion,Theo - favorite projects
 Bruce - Fountain pen,Casey - Developing a microworld
@@ -1336,12 +1383,27 @@ Casey - beginnings,Nervous_Jessica - MIT beginning
 Casey - beginnings,Nervous_Jessica - John Maeda
 Casey - Processing, what is it?,Karsten - processing
 Casey - Processing, what is it?,Shiffman - make it random
+Casey - sketching with code,Golan - make a mark
 Casey - sketching with code,Greg - Creative Coder
 Casey - sketching with code,Higa - create a system 2
 Casey - sketching with code,JTNimoy - thinking by doing
+Casey - sketching with code,Kevin - Draft mode
 Casey - sketching with code,Kyle_MC - code as a theme 1
+Casey - sketching with code,Maeda - last trick
+Casey - sketching with code,Nervous_Jessica - Can't draw
 Casey - sketching with code,Philip - get an idea
+Casey - sketching with code,Shantell - drawing with the computer
+Casey - sketching with code,Shantell - drawing with computers
+Casey - sketching with code,Shantell - full circle
+Casey - sketching with code,Shantell - circularity
+Casey - sketching with code,Shiffman - Not a visual thinker
+Casey - sketching with code,Shiffman - what computers can do
+Casey - sketching with code,Shiffman - make it random
 Casey - sketching with code,Shiffman - inexactitude
+Casey - sketching with code,Zach - drawing with Tayoon
+Casey - tangle,Golan - make a mark
+Casey - tangle,Higa - collaboration with machines 1
+Casey - tangle,Higa - collaboration with machines 2
 Casey - tangle,JTNimoy - thinking by doing
 Casey - tangle,Paola - Thinking by doing
 Casey - tangle,Shiffman - offers me a way to think
@@ -1352,6 +1414,7 @@ Casey - Borrowing from culture,Golan - eno
 Casey - Borrowing from culture,Golan - hybridity
 Casey - Borrowing from culture,Golan - hybridity2
 Casey - Borrowing from culture,Maeda - Artist coders coder artists
+Casey - Borrowing from culture,Marcus - visual culture evoling
 Casey - Borrowing from culture,Marius - jumping from medium to medium
 Casey - Systems theory,Andres - soft systems 1
 Casey - Systems theory,Higa - collaboration with machines 1
@@ -1461,6 +1524,7 @@ Casey - Processing open,Paola - generosity
 Casey - Processing open,Paola - sharing
 Casey - Processing open,Paola - code ant farm
 Casey - Processing open,Patricio - Rethinking education systems
+Casey - Processing open,Patricio - Zeitgeist of open source
 Casey - Processing open,Shiffman - advanced environment
 Casey - Processing open,Shiffman - sharing
 Casey - Processing open,Shiffman - Open Source Contract
@@ -1471,6 +1535,9 @@ Casey - Processing open,Zach - printshop
 Casey - Processing open,Zach - decompiling
 Casey - Processing open,Zach - emailing the communnity
 Casey - Processing open,Zach - processing, publishing
+Casey - Processing open,Chris - EthicOfSharing
+Casey - Processing open,Intro - Collaboration
+Casey - Processing open,Intro - Sharing
 Casey - Processing addons,Golan - limits to sharing
 Casey - Processing addons,Jer - Making a tool
 Casey - Processing addons,Julia - can't be solitary
@@ -1478,6 +1545,7 @@ Casey - Processing addons,Karsten - processing
 Casey - Processing addons,Karsten - Educational tools
 Casey - Processing addons,Nervous_Jesse - limiting open source
 Casey - Processing addons,Patricio - Rethinking education systems
+Casey - Processing addons,Patricio - Zeitgeist of open source
 Casey - Processing addons,Shiffman - advanced environment
 Casey - Processing addons,Shiffman - sharing
 Casey - Processing addons,Shiffman - Open Source Contract
@@ -1503,6 +1571,8 @@ Casey - group teaching,Zach - at a festival
 Casey - group teaching,Zach - printshop
 Casey - group teaching,Zach - emailing the communnity
 Casey - group teaching,Zach - processing, publishing
+Casey - group teaching,Intro - Collaboration
+Casey - group teaching,Intro - Sharing
 Casey - Style diffuses,Aaron - recombination
 Casey - Style diffuses,Bruce - Trendier than thou
 Casey - Style diffuses,Bruce - orange
@@ -1570,7 +1640,12 @@ Casey - branching off branching,Zach - hide the tech
 Casey - Ideally it goes beyond my imagination,Golan - would be boring
 Casey - Ideally it goes beyond my imagination,JTNimoy - thinking by doing
 Casey - Ideally it goes beyond my imagination,Maeda - last trick
+Casey - Ideally it goes beyond my imagination,Marius - these things are in my head
 Casey - Ideally it goes beyond my imagination,Marius - Continuous process of exploration
+Casey - Ideally it goes beyond my imagination,Patricio - Imaginative technologies 1
+Casey - Ideally it goes beyond my imagination,Patricio - Imaginative technologies 2
+Casey - Ideally it goes beyond my imagination,Patricio - Alchemy 1
+Casey - Ideally it goes beyond my imagination,Patricio - Alchemy 2
 Casey - Ideally it goes beyond my imagination,Philip - with programming you can do whatever
 Casey - Ideally it goes beyond my imagination,Shiffman - There's an element of surprise
 Casey - Tree of Life,Jen - data viz noire
@@ -1596,6 +1671,8 @@ Casey - New modes of expression,Aaron - exciting time
 Casey - New modes of expression,Maeda - self expression
 Casey - New modes of expression,Ramsey - Ramsey Intro
 Casey - New modes of expression,Shantell - sharing
+Casey - New modes of expression,Diederick - programmingWithFeeling
+Casey - New modes of expression,Joel - Watercolors
 Casey - Indie Game movement,Kevin - game designers
 Casey - Indie Game movement,Paola - Portal
 Casey - Indie Game movement,Ramsey - games for access
@@ -1603,9 +1680,11 @@ Casey - Started small,Martin - spiral interface
 Casey - Scale 1,Andres - soft systems 2
 Casey - Scale 1,Jen - Scaling data
 Casey - Scale 1,Joel - scale of universe
+Casey - Scale 1,Karsten - DarkNet
 Casey - Scale 1,Martin - seeing the whole 2
 Casey - Scale 1,Martin - spiral interface
 Casey - Scale 1,Martin - Big data
+Casey - Scale 1,Joel - scaleofUniverse
 Casey - Scale 2,Martin - spiral interface
 Casey - Scale 3,Martin - spiral interface
 Casey - old media,Bruce - It's an old thing
@@ -1637,6 +1716,7 @@ Casey - learning from precursors,Shiffman - what do you archive?
 Casey - learning from precursors,Theo - eyebeam R&D
 Casey - ideas of art history,Kevin - Tools of perception
 Casey - thinking about time,Golan - 
+Casey - thinking about time,Intro - interactivity1
 Casey - Programming at 26,Binx - tech fracturing
 Casey - Programming at 26,Binx - Background
 Casey - Programming at 26,Golan - MIT
@@ -1663,6 +1743,8 @@ Casey - Programming at 26,Shiffman - mysterious box
 Casey - Programming at 26,Theo - learning
 Casey - Programming at 26,Zach - action script
 Casey - Programming at 26,Zach - action script shorter
+Casey - Programming at 26,Intro - Learning
+Casey - Programming at 26,Joel - Amiga500
 Casey - Computer as collaborator,Golan_AMA - machines and human intelligence
 Casey - Computer as collaborator,Greg - human augmentation
 Casey - Computer as collaborator,Joel - Bicycles for the Mind
@@ -1689,6 +1771,7 @@ Casey - Developing a microworld,Karolina - system metaphor
 Casey - Developing a microworld,Kevin - non-mimetic reality
 Casey - Developing a microworld,Kyle_CH - Polygons
 Casey - Developing a microworld,Marcus - emergence
+Casey - Developing a microworld,Patricio - Building Universes 2
 Casey - Developing a microworld,Philip - programming the river
 Casey - Developing a microworld,Philip - with programming you can do whatever
 Casey - Developing a microworld,Philip - build the whole universe
@@ -1703,6 +1786,8 @@ Casey - Developing a microworld,Shiffman - how far could we get?
 Casey - Developing a microworld,Shiffman - Constraints,
 Casey - Developing a microworld,Shiffman - NOC 1
 Casey - Developing a microworld,Shiffman - NOC 2
+Casey - Developing a microworld,Intro - BuildingWorlds2
+Casey - Developing a microworld,Intro - BuildingWorlds
 Casey - Massive parallel systems,Julia - program or be programmed
 Casey - Massive parallel systems,Karsten - parallel processing
 Casey - Massive parallel systems,Karsten - always improved
@@ -1736,6 +1821,7 @@ Casey - Something new, totally engrossing,Marcus - energy flow_riot
 Casey - Something new, totally engrossing,Marcus - audience
 Casey - Something new, totally engrossing,Marcus - code for storytelling
 Casey - Something new, totally engrossing,Patricio - Playlist 1
+Casey - Something new, totally engrossing,Patricio - Playlist 2
 Casey - Something new, totally engrossing,Sophy - nonlinearity
 Casey - Something new, totally engrossing,Vera - Energy Flow1
 Casey - Something new, totally engrossing,Vera - having a protagonist
@@ -1752,6 +1838,8 @@ Elliot_UK - limitations 2,Kevin - crash and burn
 Elliot_UK - limitations 2,Nervous_Jesse - understanding to control 1
 Elliot_UK - limitations 2,Nervous_Jesse - understanding to control 2
 Elliot_UK - limitations 2,Nervous_Jesse - understanding to control 3
+Elliot_UK - limitations 2,Elliot - Kinect
+Elliot_UK - limitations 2,Intro - KinectFutureCamera
 Elliot_UK - 2D vision in a 3D world,Andres - camera distorts reality
 Elliot_UK - 2D vision in a 3D world,Fernanda - seeing patterns 2
 Elliot_UK - 2D vision in a 3D world,JTNimoy - be a robot
@@ -1795,6 +1883,7 @@ Fernanda - History flow 1,Kyle_CH - new generation
 Fernanda - History flow 1,Lindsay - memes 2
 Fernanda - History flow 1,Martin - rapid dissemination of info
 Fernanda - History flow 1,Patricio - Jam session
+Fernanda - History flow 1,Intro - Collaboration
 Fernanda - A social lens,Greg - the "Like" button cascade
 Fernanda - A social lens,Julian - data viz endorsement
 Fernanda - History flow 3,Aaron - networked creativity
@@ -2056,6 +2145,8 @@ Fernanda - Personal data,Lauren - data ownership 1
 Fernanda - Personal data,Lauren - digital afterlife
 Fernanda - Personal data,Lauren - inheriting digital property
 Fernanda - Personal data,Lauren - digital memory
+Fernanda - Personal data,Patricio - Information 3
+Fernanda - Personal data,Patricio - Library of Babel
 Fernanda - Personal data,Ramsey - cloud 2
 Fernanda - email storytelling,Aaron - digital trace
 Fernanda - email storytelling,Binx - trips
@@ -2165,6 +2256,7 @@ Golan - playable image,Shantell - Live performance,
 Golan - playable image,Shantell - group improvisation
 Golan - playable image,Vera - Playing with a system
 Golan - playable image,Zach - Drawn1
+Golan - playable image,Intro - interactivity1
 Golan - eno,Casey - Borrowing from culture
 Golan - ,Bruce - unstable mileau of media art
 Golan - ,Casey - beginnings
@@ -2176,6 +2268,8 @@ Golan - instruments,Maeda - playful systems
 Golan - instruments,Patricio - Play 1
 Golan - instruments,Shantell - Kids
 Golan - instruments,Theo - Kids interacting
+Golan - instruments,Intro - interactivity1
+Golan - piano and pencil,,Patricio - Theory of Play 1
 Golan - piano and pencil,,Zach - hide the tech
 Golan - observation of users,Vera - Playing with a system
 Golan - twitching in a room,Zach - hide the tech
@@ -2183,6 +2277,8 @@ Golan - what's an instrument?,Higa - collaboration with machines 1
 Golan - what's an instrument?,Higa - collaboration with machines 2
 Golan - what's an instrument?,Karsten - immediate feedback
 Golan - Play,Maeda - playful systems
+Golan - Play,Patricio - Theory of Play 1
+Golan - Play,Patricio - Building Universes 1
 Golan - Play,Shantell - big kid
 Golan - Play,Shantell - Kids
 Golan - Play,Theo - Kids interacting
@@ -2192,6 +2288,8 @@ Golan - why major in art,Binx - art for money
 Golan - why major in art,JTNimoy - corporate
 Golan - why major in art,Regine - making a living
 Golan - why major in art,Shantell - Goals
+Golan - make a mark,Casey - sketching with code
+Golan - make a mark,Casey - tangle
 Golan - make a mark,Karsten - immediate feedback
 Golan - make a mark,Nervous_Jessica - Can't draw
 Golan - make a mark,Shantell - drawing with the computer
@@ -2204,6 +2302,7 @@ Golan - make a mark,Shiffman - sketching with code
 Golan - make a mark,Shiffman - Not a visual thinker
 Golan - make a mark,Shiffman - make it random
 Golan - make a mark,Zach - drawing with Tayoon
+Golan - make a mark,Joel - Watercolors
 Golan - woah,Casey - branching off branching
 Golan - woah,Vera - Playing with a system
 Golan - woah2,Marius - algorithms as parameter space
@@ -2324,6 +2423,8 @@ Golan - Kyle,Shiffman - sharing
 Golan - Kyle,Zach - at a festival
 Golan - Kyle,Zach - work with Golan
 Golan - Kyle,Zach - working with golan 2
+Golan - Kyle,Intro - Collaboration
+Golan - Kyle,Intro - Sharing
 Golan - closed source mistake,Aaron - sharing
 Golan - closed source mistake,Casey - Processing open
 Golan - closed source mistake,Higa - not sharing its a backup
@@ -2336,6 +2437,7 @@ Golan - closed source mistake,Karsten - becoming insular
 Golan - closed source mistake,Shiffman - Open Source Contract
 Golan - closed source mistake,Zach - decompiling
 Golan - closed source mistake,Zach - Open Frameworks 1
+Golan - closed source mistake,Chris - EthicOfSharing
 Golan - pedagogical impulse,Casey - Birth of processing
 Golan - pedagogical impulse,Casey - Processing open
 Golan - pedagogical impulse,Casey - group teaching
@@ -2368,6 +2470,7 @@ Golan - limits to sharing,Shiffman - sharing
 Golan - limits to sharing,Shiffman - Open Source Contract
 Golan - limits to sharing,Zach - decompiling
 Golan - limits to sharing,Zach - Open Frameworks 1
+Golan - limits to sharing,Chris - EthicOfSharing
 Golan - damn,Casey - Processing open
 Golan - damn,Shiffman - sharing
 Golan - damn,Shiffman - Open Source Contract
@@ -2401,6 +2504,7 @@ Golan - hackathon,Binx - ar&&code
 Golan - hackathon,Jer - makerthons
 Golan - hackathon,Kyle_CH - new generation
 Golan - hackathon,Zach - venn diagrams of interest
+Golan - hackathon,Diederick - hackathon2
 Golan - hackathons2,Aaron - exquisite forest
 Golan - hackathons2,Binx - hackathon
 Golan - hackathons2,Binx - ar&&code
@@ -2415,6 +2519,7 @@ Golan - hackathons2,Kyle_CH - new generation
 Golan - hackathons2,Paola - code ant farm
 Golan - hackathons2,Shantell - doingwithothers
 Golan - hackathons2,Zach - hate working alone
+Golan - hackathons2,Diederick - hackathon2
 Golan - Anxious about the future,Karsten - solving complex problems
 Golan - Anxious about the future,Regine - looking forward to problems
 Golan - staring down the barrel,Bruce - 2060s (Lashup 5)
@@ -2467,6 +2572,7 @@ Golan - raytraced spheres,Karsten - new media
 Golan - raytraced spheres,Maeda - do not resuscitate
 Golan - raytraced spheres,Maeda - Isn't it supposed to be new?
 Golan - raytraced spheres,Maeda - New media
+Golan - raytraced spheres,Joel - FirstMover
 Golan - kerrington,Regine - dark future
 Golan - kessler,Regine - dark future
 Golan - apocalypse3,Kyle_CH - old server farms
@@ -2476,6 +2582,8 @@ Golan - jolted into the NOW,Joel - in the now
 Golan - jolted into the NOW,Theo - hide the technology,
 Golan - jolted into the NOW,Zach - Time slows down
 Golan - jolted into the NOW,Zach - drawn2
+Golan - jolted into the NOW,Joel - InTheNow1
+Golan - jolted into the NOW,Joel - InTheNow2
 Golan_AMA - machines and human intelligence,Aaron - Mini-Artificial Intelligences
 Golan_AMA - machines and human intelligence,Bruce - machines don't think 1
 Golan_AMA - machines and human intelligence,Bruce - machines don't think 2
@@ -2549,6 +2657,7 @@ Golan_AMA - first computer art,Karsten - new media
 Golan_AMA - first computer art,Karsten - obsolescence
 Golan_AMA - first computer art,Karsten - atari emulation
 Golan_AMA - first computer art,Kevin - Tools of perception
+Golan_AMA - first computer art,Kyle_CH - new generation
 Golan_AMA - first computer art,Maeda - do not resuscitate
 Golan_AMA - first computer art,Maeda - New media
 Golan_AMA - first computer art,Maeda - old and new
@@ -2562,6 +2671,8 @@ Greg - camera getting cheaper,Kyle_CH - RGBD
 Greg - camera getting cheaper,Kyle_MC - face algos
 Greg - camera getting cheaper,Kyle_MC - vision
 Greg - camera getting cheaper,Kyle_MC - Camera doesn't care if you're human
+Greg - camera getting cheaper,Elliot - Kinect
+Greg - camera getting cheaper,Intro - Interfaces
 Greg - ubiquitous computing,Bruce - camera technician vs explorer
 Greg - ubiquitous computing,Bruce - camera of future 25 years
 Greg - ubiquitous computing,Bruce - Augmented Ubiquity
@@ -2580,6 +2691,8 @@ Greg - camera scaling up,Kyle_MC - faceOSC 2
 Greg - camera scaling up,Kyle_MC - face algos
 Greg - camera scaling up,Kyle_MC - vision
 Greg - camera scaling up,Kyle_MC - Camera doesn't care if you're human
+Greg - camera scaling up,Elliot - Kinect
+Greg - camera scaling up,Intro - Interfaces
 Greg - Doug Engelbart part 1,Golan_AMA - machines and human intelligence
 Greg - Doug Engelbart part 1,Joel - Bicycles for the Mind
 Greg - Doug Engelbart part 1,Julian - Critical engineering
@@ -2708,6 +2821,8 @@ Greg - cameras scaling up,Kyle_MC - face algos
 Greg - cameras scaling up,Kyle_MC - vision
 Greg - cameras scaling up,Kyle_MC - Camera doesn't care if you're human
 Greg - cameras scaling up,Regine - future camera
+Greg - cameras scaling up,Elliot - Kinect
+Greg - cameras scaling up,Intro - Interfaces
 Greg - makematics1,Binx - Background
 Greg - makematics1,Casey - randomness
 Greg - makematics1,Jen - MathMajor 1
@@ -2751,6 +2866,8 @@ Higa - difficult question,Kyle_MC - imagining your pointcloud
 Higa - difficult question,Maeda - Clouds
 Higa - difficult question,Patricio - Playlist 1
 Higa - difficult question,Patricio - Playlist 2
+Higa - difficult question,Patricio - CLOUDS
+Higa - difficult question,Patricio - CLOUDS 2
 Higa - difficult question,Shiffman - NOC 2
 Higa - difficult question,Sophy - the Cloud
 Higa - beginnings,Casey - Software is what i love the most
@@ -2795,6 +2912,8 @@ Higa - committed to community,Zach - Open Frameworks 1
 Higa - committed to community,Zach - Open Frameworks 3
 Higa - committed to community,Zach - emailing the communnity
 Higa - committed to community,Zach - Open Frameworks 4
+Higa - committed to community,Intro - Collaboration
+Higa - committed to community,Intro - Sharing
 Higa - not sharing its a backup,Aaron - sharing
 Higa - not sharing its a backup,Andres - examples of the impossible
 Higa - not sharing its a backup,Andres - sharing code
@@ -2848,6 +2967,7 @@ Higa - not sharing its a backup,Theo - eyebeam R&D
 Higa - not sharing its a backup,Zach - decompiling
 Higa - not sharing its a backup,Zach - Open Frameworks 1
 Higa - not sharing its a backup,Zach - Joshua Davis
+Higa - not sharing its a backup,Chris - EthicOfSharing
 Higa - ,Aaron - sharing
 Higa - ,Casey - Processing open
 Higa - ,Golan - Kyle
@@ -2869,9 +2989,11 @@ Higa - ,Shiffman - sharing
 Higa - ,Shiffman - Open Source Contract
 Higa - ,Zach - decompiling
 Higa - ,Zach - Open Frameworks 1
+Higa - ,Chris - EthicOfSharing
 Higa - language barriers,Jen - hated computer science
 Higa - language barriers,Karsten - programming is...
 Higa - language barriers,Nervous_Jesse - Open source education
+Higa - language barriers,Patricio - infinity of projects on google
 Higa - language barriers,Ramsey - the curse of 60s tech
 Higa - language barriers,Ramsey - complacency 1
 Higa - language barriers,Ramsey - complacency 2
@@ -2894,6 +3016,7 @@ Higa - thick wall,Karsten - programming is...
 Higa - thick wall,Maeda - Processing community
 Higa - thick wall,Nervous_Jesse - Open source education
 Higa - thick wall,Paola - code ant farm
+Higa - thick wall,Patricio - infinity of projects on google
 Higa - thick wall,Ramsey - the curse of 60s tech
 Higa - thick wall,Ramsey - complacency 1
 Higa - thick wall,Ramsey - complacency 2
@@ -2903,6 +3026,7 @@ Higa - thick wall,Ramsey - google's business model 2
 Higa - thick wall,Shiffman - sharing
 Higa - thick wall,Shiffman - problem solving
 Higa - thick wall,Zach - open source challenge
+Higa - thick wall,Joel - Amiga500
 Higa - otaku level,Binx - brogrammers
 Higa - otaku level,Bruce - Geeks with style
 Higa - otaku level,Golan - people like myself
@@ -2939,6 +3063,7 @@ Higa - working all night,JTNimoy - I addicted myself
 Higa - working all night,Karsten - 256 bytes part 1
 Higa - working all night,Maeda - People
 Higa - working all night,Maeda - Coding for humanity
+Higa - working all night,Intro - Programming
 Higa - commercial vs personal work,Binx - art for money
 Higa - commercial vs personal work,Binx - work for hire
 Higa - commercial vs personal work,Joel - in the now
@@ -2946,10 +3071,12 @@ Higa - commercial vs personal work,Joel - water colors and soccer balls
 Higa - commercial vs personal work,JTNimoy - corporate
 Higa - commercial vs personal work,Regine - making a living
 Higa - commercial vs personal work,Regine - adapting work for commercial contexts
+Higa - commercial vs personal work,Joel - CocaCola
 Higa - process of working alone,Maeda - self expression
 Higa - process of working alone,Philip - get an idea
 Higa - collaboration with machines 1,Andres - soft systems 1
 Higa - collaboration with machines 1,Andres - modeling the human being
+Higa - collaboration with machines 1,Casey - tangle
 Higa - collaboration with machines 1,Casey - Systems theory
 Higa - collaboration with machines 1,Casey - emergence
 Higa - collaboration with machines 1,Casey - branching off branching
@@ -2987,8 +3114,10 @@ Higa - collaboration with machines 1,Shiffman - how far could we get?
 Higa - collaboration with machines 1,Shiffman - inexactitude
 Higa - collaboration with machines 1,Shiffman - NOC 2
 Higa - collaboration with machines 1,Vera - Playing with a system
+Higa - collaboration with machines 1,Intro - interactivity1
 Higa - collaboration with machines 2,Andres - soft systems 1
 Higa - collaboration with machines 2,Andres - modeling the human being
+Higa - collaboration with machines 2,Casey - tangle
 Higa - collaboration with machines 2,Casey - Systems theory
 Higa - collaboration with machines 2,Casey - emergence
 Higa - collaboration with machines 2,Casey - branching off branching
@@ -3026,6 +3155,7 @@ Higa - collaboration with machines 2,Shiffman - how far could we get?
 Higa - collaboration with machines 2,Shiffman - inexactitude
 Higa - collaboration with machines 2,Shiffman - NOC 2
 Higa - collaboration with machines 2,Vera - Playing with a system
+Higa - collaboration with machines 2,Intro - interactivity1
 Higa - sound and video,Golan - audiovisual concept
 Higa - sound and video,Kyle_CH - Casey Reas Music Visualizations
 Higa - sound and video,Marcus - Audiovisual glue
@@ -3034,8 +3164,10 @@ Higa - sound and video,Marius - reach your visual cortex
 Higa - sound and video,Philip - audiovisual gigs
 Higa - sound and video,Shantell - Live performance,
 Higa - sound and video,Shantell - drawing with noise
+Higa - sound and video,Intro - AudioVisualization
 Higa - simplicity of self made tools,Casey - Birth of processing
 Higa - simplicity of self made tools,Martin - useful only
+Higa - simplicity of self made tools,Intro - LogicOfPixels
 Higa - beautiful-useful-interesting,Bruce - Don't care about design
 Higa - understanding pointers,Jen - struggle with programming
 Higa - understanding pointers,Martin - verbal programming debate
@@ -3096,6 +3228,10 @@ Higa - sharing accidently 1,Zach - printshop
 Higa - sharing accidently 1,Zach - decompiling
 Higa - sharing accidently 1,Zach - Open Frameworks 1
 Higa - sharing accidently 1,Zach - emailing the communnity
+Higa - sharing accidently 1,Chris - EthicOfSharing
+Higa - sharing accidently 1,Chris - RemoteCollaboration
+Higa - sharing accidently 1,Intro - Collaboration
+Higa - sharing accidently 1,Intro - Sharing
 Higa - sharing accidently 2,Aaron - sharing
 Higa - sharing accidently 2,Aaron - exquisite forest
 Higa - sharing accidently 2,Andres - examples of the impossible
@@ -3146,6 +3282,10 @@ Higa - sharing accidently 2,Zach - printshop
 Higa - sharing accidently 2,Zach - decompiling
 Higa - sharing accidently 2,Zach - Open Frameworks 1
 Higa - sharing accidently 2,Zach - emailing the communnity
+Higa - sharing accidently 2,Chris - EthicOfSharing
+Higa - sharing accidently 2,Chris - RemoteCollaboration
+Higa - sharing accidently 2,Intro - Collaboration
+Higa - sharing accidently 2,Intro - Sharing
 Javier - behavior change,Bruce - Volition
 Javier - behavior change,Bruce - military
 Javier - behavior change,Jen - prisons
@@ -3202,6 +3342,8 @@ Javier - hacker critique,Fernanda - History flow 1
 Javier - hacker critique,Fernanda - History flow 4
 Javier - hacker critique,Kyle_MC - Anonymous
 Javier - hacker critique,Ramsey - google's business model 2
+Javier - hackers 1,Regine - Hacking
+Javier - hackers 1,Regine - Hackers
 Javier - Data ownership,Bruce - hamster herding
 Javier - Data ownership,Fernanda - Personal data
 Javier - Data ownership,Golan - staring down the barrel
@@ -3227,6 +3369,7 @@ Jen - MathMajor 1,Karsten - east german hardware 2
 Jen - MathMajor 1,Nervous_Jessica - MIT beginning
 Jen - MathMajor 1,Shiffman - Maybe I'd like that
 Jen - MathMajor 1,Zach - Open Frameworks 3
+Jen - MathMajor 1,Joel - Amiga500
 Jen - a different mathematics,Bruce - beauty of math
 Jen - a different mathematics,Kevin - invented as opposed to discovered 1
 Jen - a different mathematics,Kevin - invented as opposed to discovered 2
@@ -3235,6 +3378,7 @@ Jen - a different mathematics,Philip - first time computation
 Jen - a different mathematics,Ramsey - does nature compute? 2
 Jen - a different mathematics,Ramsey - social computer
 Jen - a different mathematics,Ramsey - computation is interpretation of rules
+Jen - a different mathematics,Intro - LogicOfPixels
 Jen - Math simulating reality,Andres - camera distorts reality
 Jen - Math simulating reality,Bruce - beauty of math
 Jen - Math simulating reality,Karolina - uncanny/sniff
@@ -3251,6 +3395,7 @@ Jen - Math shapes the world,Kevin - invented as opposed to discovered 1
 Jen - Math shapes the world,Kevin - invented as opposed to discovered 2
 Jen - Math shapes the world,Sophy - the Cloud
 Jen - Lidar 1,Andres - Computational lens
+Jen - Lidar 1,Elliot - Kinect
 Jen - Predicting weather,Fernanda - seeing patterns 1
 Jen - Predicting weather,Fernanda - Wind visualization 2
 Jen - Predicting weather,Jer - Pattern
@@ -3278,6 +3423,11 @@ Jen - hated computer science,Shiffman - Maybe I'd like that
 Jen - hated computer science,Shiffman - offers me a way to think
 Jen - hated computer science,Zach - Fucking boring
 Jen - hated computer science,Zach - Open Frameworks 3
+Jen - hated computer science,Diederick - allprogrammershavethat
+Jen - hated computer science,Diederick - hackathon1
+Jen - hated computer science,Intro - Learning
+Jen - hated computer science,Intro - Programming
+Jen - hated computer science,Joel - Amiga500
 Jen - necessity of code 1,Bruce - Constant improvement
 Jen - necessity of code 1,JTNimoy - I addicted myself
 Jen - necessity of code 1,Karsten - programming is...
@@ -3285,6 +3435,9 @@ Jen - necessity of code 1,Ramsey - designing languages
 Jen - necessity of code 1,Shantell - Coding: what does it feel like?
 Jen - necessity of code 1,Shiffman - offers me a way to think
 Jen - necessity of code 1,Zach - Fucking boring
+Jen - necessity of code 1,Diederick - allprogrammershavethat
+Jen - necessity of code 1,Diederick - hackathon1
+Jen - necessity of code 1,Intro - Programming
 Jen - necessity of code 2,Bruce - Constant improvement
 Jen - necessity of code 2,JTNimoy - I addicted myself
 Jen - necessity of code 2,Karsten - programming is...
@@ -3292,6 +3445,10 @@ Jen - necessity of code 2,Ramsey - designing languages
 Jen - necessity of code 2,Shantell - Coding: what does it feel like?
 Jen - necessity of code 2,Shantell - Coding gesturally
 Jen - necessity of code 2,Shiffman - offers me a way to think
+Jen - necessity of code 2,Diederick - allprogrammershavethat
+Jen - necessity of code 2,Diederick - hackathon1
+Jen - necessity of code 2,Intro - CodingSketching
+Jen - necessity of code 2,Intro - Programming
 Jen - sitting in front of a computer,Julia - what is it doing to us
 Jen - sitting in front of a computer,Kyle_MC - People staring at screens 1
 Jen - sitting in front of a computer,Kyle_MC - People staring at screens 2
@@ -3335,6 +3492,7 @@ Jen - facebook data,Jer - lives being documented through data
 Jen - facebook data,Jer - Big Data Security
 Jen - facebook data,Jer - Data ownership
 Jen - facebook data,Jer - Thought it was boring
+Jen - facebook data,Jer - storage
 Jen - facebook data,Julia - million facebook
 Jen - facebook data,Kyle_CH - Future life storage
 Jen - facebook data,Martin - Big data 1
@@ -3374,6 +3532,8 @@ Jen - personal archive 1,Lauren - digital afterlife
 Jen - personal archive 1,Lauren - inheriting digital property
 Jen - personal archive 1,Lauren - digital memory
 Jen - personal archive 1,Martin - baby names
+Jen - personal archive 1,Patricio - Information 3
+Jen - personal archive 1,Patricio - Library of Babel
 Jen - personal archive 1,Ramsey - cloud 2
 Jen - personal archive 1,Zach - Joshua Davis
 Jen - keeping pictures,Aaron - digital trace
@@ -3393,6 +3553,8 @@ Jen - keeping pictures,Kyle_CH - Twitter archive
 Jen - keeping pictures,Lauren - digital afterlife
 Jen - keeping pictures,Lauren - inheriting digital property
 Jen - keeping pictures,Lauren - digital memory
+Jen - keeping pictures,Patricio - Information 3
+Jen - keeping pictures,Patricio - Library of Babel
 Jen - keeping pictures,Ramsey - cloud 2
 Jen - Personal archive 2,Aaron - digital trace
 Jen - Personal archive 2,Binx - trips
@@ -3411,6 +3573,8 @@ Jen - Personal archive 2,Kyle_CH - Twitter archive
 Jen - Personal archive 2,Lauren - digital afterlife
 Jen - Personal archive 2,Lauren - inheriting digital property
 Jen - Personal archive 2,Lauren - digital memory
+Jen - Personal archive 2,Patricio - Information 3
+Jen - Personal archive 2,Patricio - Library of Babel
 Jen - Personal archive 2,Ramsey - cloud 2
 Jen - Personal archive 2,Zach - Joshua Davis
 Jen - data autobiography,Aaron - digital trace
@@ -3423,6 +3587,8 @@ Jen - data autobiography,Jer - lives being documented through data
 Jen - data autobiography,Jer - Thought it was boring
 Jen - data autobiography,Jer - storage
 Jen - data autobiography,Kyle_CH - Future life storage
+Jen - data autobiography,Patricio - Information 3
+Jen - data autobiography,Patricio - Library of Babel
 Jen - data viz challenges,Aaron - data storytelling
 Jen - data viz challenges,Aaron - code, story, communication
 Jen - data viz challenges,Karsten - data visualization
@@ -3459,11 +3625,13 @@ Jen - Scaling data,Fernanda - Replaying the moment of discovery
 Jen - Scaling data,Jer - data visualization
 Jen - Scaling data,Jer - failure to communicate
 Jen - Scaling data,Joel - scale of universe
+Jen - Scaling data,Karsten - DarkNet
 Jen - Scaling data,Maeda - people are best communicators
 Jen - Scaling data,Martin - Seeing the whole 1
 Jen - Scaling data,Martin - seeing the whole 2
 Jen - Scaling data,Martin - all the words
 Jen - Scaling data,Martin - Big data
+Jen - Scaling data,Joel - scaleofUniverse
 Jen - pull out the stories,Aaron - data storytelling
 Jen - pull out the stories,Golan - listening post
 Jen - data viz too serious 2,Binx - field of data vis
@@ -3500,6 +3668,8 @@ Jen - rafael's cardiogram,Patricio - Play 1
 Jen - rafael's cardiogram,Regine - ambiguous categories
 Jen - rafael's cardiogram,Theo - hide the technology,
 Jen - rafael's cardiogram,Zach - more poetry, less demo
+Jen - rafael's cardiogram,Intro - interactivity1
+Jen - rafael's cardiogram,Joel - Interactivity
 Jen - stencil pie chart,Martin - how to make us smarter
 Jen - stasis 1,Casey - Style diffuses
 Jen - stasis 1,JTNimoy - originality
@@ -3511,6 +3681,7 @@ Jen - stasis 2,Golan - this to that
 Jen - stasis 2,Kyle_CH - don't underestimate traditional art
 Jen - stasis 2,Zach - less demo
 Jen - stasis 2,Zach - more poetry, less demo
+Jen - stasis 2,Intro - interactivity1
 Jen - telling stories to engage,Aaron - data storytelling
 Jen - telling stories to engage,Karolina - motion story,
 Jen - telling stories to engage,Karolina - interactive tableau
@@ -3522,13 +3693,22 @@ Jen - telling stories to engage,Marcus - energy flow
 Jen - telling stories to engage,Marcus - code for storytelling
 Jen - data memory 1,Binx - meaningful shape1
 Jen - data memory 1,Jer - Thought it was boring
+Jen - data memory 1,Jer - storage
 Jen - data memory 1,Kyle_CH - Future life storage
+Jen - data memory 1,Patricio - Information 3
+Jen - data memory 1,Patricio - Library of Babel
 Jen - data memory 2,Binx - meaningful shape1
 Jen - data memory 2,Jer - Thought it was boring
+Jen - data memory 2,Jer - storage
 Jen - data memory 2,Kyle_CH - Future life storage
+Jen - data memory 2,Patricio - Information 3
+Jen - data memory 2,Patricio - Library of Babel
 Jen - data truth,Binx - meaningful shape1
 Jen - data truth,Jer - Thought it was boring
+Jen - data truth,Jer - storage
 Jen - data truth,Kyle_CH - Future life storage
+Jen - data truth,Patricio - Information 3
+Jen - data truth,Patricio - Library of Babel
 Jen - truthiness,Fernanda - visualized data doesn't seem complex
 Jen - truthiness,Fernanda - defense of complexity 2
 Jen - truthiness,Fernanda - beautiful evidence 1
@@ -3562,6 +3742,7 @@ Jen - objective subjective,Kevin - reality in the eyes of data
 Jen - objective subjective,Lauren - words shape
 Jen - numbers and words,Martin - language and infinity
 Jen - numbers and words,Martin - words and numbers
+Jen - library,Patricio - Information 1
 Jen - deep interaction,Golan - jolted into the NOW
 Jen - deep interaction,Joel - in the now
 Jen - deep interaction,Maeda - lost interest in interactivity
@@ -3569,7 +3750,10 @@ Jen - deep interaction,Theo - 3D sensing
 Jen - deep interaction,Theo - hide the technology,
 Jen - deep interaction,Zach - Time slows down
 Jen - deep interaction,Zach - drawn2
+Jen - deep interaction,Joel - InTheNow1
+Jen - deep interaction,Joel - InTheNow2
 Jen - immersion of reading,Maeda - distraction and focus
+Jen - immersion of reading,Joel - InTheNow2
 Jen - in the movie,Aaron - exquisite forest 2
 Jen - in the movie,Casey - passionate about cinema
 Jen - in the movie,Casey - Something new, totally engrossing
@@ -3577,6 +3761,7 @@ Jen - in the movie,JTNimoy - performance1
 Jen - in the movie,JTNimoy - immersion2
 Jen - in the movie,Karsten - infinite conversation
 Jen - in the movie,Maeda - Clouds
+Jen - in the movie,Patricio - Playlist 2
 Jen - museum immersion,Aaron - exquisite forest 2
 Jen - museum immersion,JTNimoy - immersion
 Jen - museum immersion,JTNimoy - immersion2
@@ -3584,6 +3769,7 @@ Jen - museum immersion,Kevin - Area code 2
 Jen - museum immersion,Kevin - immersive games
 Jen - museum immersion,Theo - 3D sensing
 Jen - museum immersion,Theo - hide the technology,
+Jen - museum immersion,Joel - InTheNow2
 Jen - immersion in data,Marius - keeping the door open
 Jen - intuitive spelunking,Fernanda - social network hairballs
 Jen - intuitive spelunking,Javier - Julian Oliver
@@ -3591,6 +3777,7 @@ Jen - intuitive spelunking,Marius - keeping the door open
 Jen - Guesswork,Marius - Continuous process of exploration
 Jen - Guesswork,Marius - keeping the door open
 Jen - information cave,Karsten - code is information
+Jen - information cave,Patricio - Information 3
 Jen - information cave,Sophy - information overload
 Jen - all about complexity,Binx - digestibility
 Jen - all about complexity,Fernanda - defense of complexity 1
@@ -3600,6 +3787,7 @@ Jen - all about complexity,Jer - Pattern
 Jen - all about complexity,Karolina - Ocean as metaphor
 Jen - all about complexity,Karsten - database
 Jen - all about complexity,Kyle_CH - abstraction
+Jen - browsing,Patricio - Information 3
 Jen - browsing,Sophy - information overload
 Jen - data essay 1,Aaron - code, story, communication
 Jen - data essay 1,Bruce - Digital humanities technology
@@ -3625,6 +3813,8 @@ Jen - data essay 2,Kyle_MC - imagining your pointcloud
 Jen - data essay 2,Maeda - Clouds
 Jen - data essay 2,Patricio - Playlist 1
 Jen - data essay 2,Patricio - Playlist 2
+Jen - data essay 2,Patricio - CLOUDS
+Jen - data essay 2,Patricio - CLOUDS 2
 Jen - life chapters,Aaron - digital trace
 Jen - life chapters,Binx - tool for others
 Jen - life chapters,Binx - trips
@@ -3659,6 +3849,8 @@ Jen - twitter friends,Lauren - desire to get together
 Jen - twitter friends,Lauren - identity and interaction
 Jen - twitter friends,Lauren - digital memory
 Jen - twitter friends,Lindsay - meeting IRL
+Jen - twitter friends,Patricio - Information 3
+Jen - twitter friends,Patricio - Library of Babel
 Jen - twitter friends,Ramsey - cloud 2
 Jen - twitter friends,Sophy - tumblr 1
 Jen - building community,Julia - net friends
@@ -3710,6 +3902,7 @@ Jer - Making a tool,Paola - generosity
 Jer - Making a tool,Shiffman - sharing
 Jer - Making a tool,Shiffman - Open Source Contract
 Jer - Making a tool,Zach - Open Frameworks 1
+Jer - Making a tool,Chris - EthicOfSharing
 Jer - everyday experience,Binx - tool for others
 Jer - everyday experience,Binx - tools for storytelling2
 Jer - everyday experience,JTNimoy - relating
@@ -3728,6 +3921,7 @@ Jer - makerthons,Golan - hackathons2
 Jer - makerthons,Kyle_CH - new generation
 Jer - makerthons,Shantell - doingwithothers
 Jer - makerthons,Zach - venn diagrams of interest
+Jer - makerthons,Diederick - hackathon2
 Jer - Desire to get together,Bruce - All of a sudden...
 Jer - Desire to get together,Bruce - Tidepools
 Jer - Desire to get together,Casey - Processing open
@@ -3746,12 +3940,14 @@ Jer - Desire to get together,Shantell - doingwithothers
 Jer - Desire to get together,Shiffman - sharing
 Jer - Desire to get together,Zach - open source challenge
 Jer - Desire to get together,Zach - nerd art center
+Jer - Desire to get together,Diederick - hackathon2
 Jer - Generative Art,Bruce - Simulation Replication Recursion
 Jer - Generative Art,Casey - Software is what i love the most
 Jer - Generative Art,Marius - Continuous process of exploration
 Jer - Generative Art,Philip - with programming you can do whatever
 Jer - Generative Art,Zach - action script
 Jer - Generative Art,Zach - action script shorter
+Jer - Generative Art,Joel - Watercolors
 Jer - Pattern,Andres - soft systems 2
 Jer - Pattern,Andres - an overly complex model
 Jer - Pattern,Fernanda - seeing patterns 1
@@ -3855,6 +4051,8 @@ Jer - lives being documented through data,Kyle_CH - Future life storage
 Jer - lives being documented through data,Kyle_CH - Twitter archive
 Jer - lives being documented through data,Lauren - digital afterlife
 Jer - lives being documented through data,Lauren - inheriting digital property
+Jer - lives being documented through data,Patricio - Information 3
+Jer - lives being documented through data,Patricio - Library of Babel
 Jer - lives being documented through data,Zach - Joshua Davis
 Jer - open paths 2,Binx - maps
 Jer - open paths 2,Binx - meaningful shape1
@@ -3924,6 +4122,8 @@ Jer - Thought it was boring,Kyle_CH - Twitter archive
 Jer - Thought it was boring,Lauren - digital afterlife
 Jer - Thought it was boring,Lauren - inheriting digital property
 Jer - Thought it was boring,Lauren - digital memory
+Jer - Thought it was boring,Patricio - Information 3
+Jer - Thought it was boring,Patricio - Library of Babel
 Jer - Thought it was boring,Ramsey - cloud 2
 Jer - Thought it was boring,Zach - Joshua Davis
 Jer - open paths 1,Binx - meaningful shape1
@@ -3937,15 +4137,21 @@ Jer - storage,Aaron - exciting time
 Jer - storage,Aaron - digital trace
 Jer - storage,Binx - trips
 Jer - storage,Binx - meaningful shape1
+Jer - storage,Binx - making a map
 Jer - storage,Bruce - aborted projects
+Jer - storage,Bruce - Digital humanities technology
 Jer - storage,Bruce - Dead sea scrolls
 Jer - storage,Fernanda - email storytelling
 Jer - storage,Higa - not sharing its a backup
 Jer - storage,Javier - Data ownership
+Jer - storage,Jen - facebook data
 Jer - storage,Jen - personal archive 1
 Jer - storage,Jen - keeping pictures
 Jer - storage,Jen - Personal archive 2
 Jer - storage,Jen - data autobiography
+Jer - storage,Jen - data memory 1
+Jer - storage,Jen - data memory 2
+Jer - storage,Jen - data truth
 Jer - storage,Jen - life chapters
 Jer - storage,JTNimoy - data loss
 Jer - storage,Karsten - archiving
@@ -3956,6 +4162,9 @@ Jer - storage,Kyle_CH - Twitter archive
 Jer - storage,Lauren - digital afterlife
 Jer - storage,Lauren - inheriting digital property
 Jer - storage,Lauren - digital memory
+Jer - storage,Patricio - Information 3
+Jer - storage,Patricio - Library of Babel
+Jer - storage,Patricio - CLOUDS 2
 Jer - storage,Shiffman - what do you archive?
 Jer - storage,Zach - Joshua Davis
 Jer - spoken word,Aaron - exciting time
@@ -3997,6 +4206,8 @@ Jer - spoken word,Sophy - Strange cultures
 Jer - spoken word,Zach - at a festival
 Jer - spoken word,Zach - printshop
 Jer - spoken word,Zach - emailing the communnity
+Jer - spoken word,Intro - Collaboration
+Jer - spoken word,Intro - Sharing
 Jer - active not interactive,Binx - tool for others
 Jer - active not interactive,Binx - tools for storytelling
 Jer - active not interactive,Binx - tools for storytelling2
@@ -4009,6 +4220,7 @@ Jer - active not interactive,Lauren - desires to connect
 Jer - active not interactive,Lauren - desire to get together
 Jer - active not interactive,Maeda - People you're meeting,
 Jer - active not interactive,Theo - hide the technology,
+Jer - active not interactive,Joel - Interactivity
 Jer - failure to communicate,Binx - frustrated about visualization
 Jer - failure to communicate,Binx - field of data vis
 Jer - failure to communicate,Fernanda - defense of complexity 1
@@ -4037,6 +4249,8 @@ Jer - Thanks,Shiffman - sharing
 Jer - Thanks,Shiffman - Open Source Contract
 Jer - Thanks,Zach - at a festival
 Jer - Thanks,Zach - emailing the communnity
+Jer - Thanks,Intro - Collaboration
+Jer - Thanks,Intro - Sharing
 Jer - Software1,Aaron - sheep market 2
 Jer - Software1,Higa - not sharing its a backup
 Jer - Software1,Joel - advertising
@@ -4044,6 +4258,8 @@ Jer - Software1,Joel - CocoCola
 Jer - Software1,Marcus - economics question
 Jer - Software1,Regine - making a living
 Jer - Software1,Shiffman - Open Source Contract
+Jer - Software1,Joel - CocaCola
+Jer - Software1,Joel - WrongToSell
 Jer - Software2,Aaron - sheep market 2
 Jer - Software2,Higa - not sharing its a backup
 Jer - Software2,Joel - advertising
@@ -4052,6 +4268,8 @@ Jer - Software2,JTNimoy - corporate
 Jer - Software2,Marcus - economics question
 Jer - Software2,Regine - making a living
 Jer - Software2,Shiffman - Open Source Contract
+Jer - Software2,Joel - CocaCola
+Jer - Software2,Joel - WrongToSell
 Jer - Post-capitalism,Aaron - sheep market 2
 Jer - Post-capitalism,Aaron - sharing
 Jer - Post-capitalism,Casey - Processing open
@@ -4063,6 +4281,7 @@ Jer - Post-capitalism,Julia - open source and ego
 Jer - Post-capitalism,Marcus - economics question
 Jer - Post-capitalism,Shiffman - sharing
 Jer - Post-capitalism,Shiffman - Open Source Contract
+Jer - Post-capitalism,Chris - EthicOfSharing
 Jer - post-capitalism2,Aaron - sheep market 2
 Jer - post-capitalism2,Aaron - sharing
 Jer - post-capitalism2,Casey - Processing open
@@ -4075,6 +4294,7 @@ Jer - post-capitalism2,Julia - can't be solitary
 Jer - post-capitalism2,Marcus - economics question
 Jer - post-capitalism2,Shiffman - sharing
 Jer - post-capitalism2,Shiffman - Open Source Contract
+Jer - post-capitalism2,Chris - EthicOfSharing
 Jer - Toxi: gurus,Casey - group teaching
 Jer - Toxi: gurus,Golan - Kyle
 Jer - Toxi: gurus,Golan - pedagogical impulse
@@ -4111,11 +4331,13 @@ Joel - scale of universe,Bruce - Age of the universe, really weird
 Joel - scale of universe,Casey - Scale 1
 Joel - scale of universe,Fernanda - zooming in
 Joel - scale of universe,Jen - Scaling data
+Joel - scale of universe,Karsten - DarkNet
 Joel - scale of universe,Martin - birds eye view
 Joel - scale of universe,Martin - seeing the whole 2
 Joel - scale of universe,Martin - starry night
 Joel - scale of universe,Martin - spiral interface
 Joel - scale of universe,Martin - Big data
+Joel - scale of universe,Patricio - Building Universes 2
 Joel - scale of universe,Ramsey - Conway 2
 Joel - scale of universe,Ramsey - emergence from simple rules
 Joel - scale of universe,Ramsey - New Kind of Science
@@ -4142,14 +4364,19 @@ Joel - water colors and soccer balls,Regine - adapting work for commercial conte
 JTNimoy - Describe the Kinect,Kyle_CH - RGBD
 JTNimoy - Describe the Kinect,Kyle_MC - kinect 2
 JTNimoy - Describe the Kinect,Kyle_MC - folowing the finger
+JTNimoy - Describe the Kinect,Elliot - Kinect
+JTNimoy - Describe the Kinect,Intro - KinectFutureCamera
 JTNimoy - increased the bandwidth,Kyle_CH - RGBD
 JTNimoy - increased the bandwidth,Kyle_MC - kinect 2
 JTNimoy - increased the bandwidth,Kyle_MC - folowing the finger
+JTNimoy - increased the bandwidth,Elliot - Kinect
+JTNimoy - increased the bandwidth,Intro - KinectFutureCamera
 JTNimoy - performance1,Binx - face data
 JTNimoy - performance1,Greg - visual effects
 JTNimoy - performance1,Jen - in the movie
 JTNimoy - performance1,Karsten - infinite conversation
 JTNimoy - performance1,Maeda - Clouds
+JTNimoy - performance1,Patricio - Playlist 2
 JTNimoy - performance1,Philip - all the points can flush
 JTNimoy - performance1,Shantell - group improvisation
 JTNimoy - evolution,Casey - Software is what i love the most
@@ -4181,6 +4408,10 @@ JTNimoy - I addicted myself,Shantell - Coding gesturally
 JTNimoy - I addicted myself,Shiffman - Maybe I'd like that
 JTNimoy - I addicted myself,Zach - action script
 JTNimoy - I addicted myself,Zach - nerd art center
+JTNimoy - I addicted myself,Diederick - allprogrammershavethat
+JTNimoy - I addicted myself,Diederick - hackathon1
+JTNimoy - I addicted myself,Intro - Programming
+JTNimoy - I addicted myself,Joel - Amiga500
 JTNimoy - be a robot,Elliot_UK - 2D vision in a 3D world
 JTNimoy - be a robot,Julian - change the way we see tech
 JTNimoy - be a robot,Kevin - Tools of perception
@@ -4194,6 +4425,7 @@ JTNimoy - be a robot,Marius - Machines change the way we see
 JTNimoy - be a robot,Marius - cyperpunk history
 JTNimoy - be a robot,Marius - new tools change perception
 JTNimoy - be a robot,Ramsey - Google glass
+JTNimoy - Dream1,Patricio - Dreams
 JTNimoy - Comes from the human mind,Greg - AI 1
 JTNimoy - Comes from the human mind,Karsten - culture and evolution
 JTNimoy - Unplugging,Javier - behavior change
@@ -4216,6 +4448,8 @@ JTNimoy - data loss,Karsten - preserving history
 JTNimoy - data loss,Kyle_CH - old server farms
 JTNimoy - data loss,Kyle_CH - Future life storage
 JTNimoy - data loss,Lauren - digital memory
+JTNimoy - data loss,Patricio - Information 3
+JTNimoy - data loss,Patricio - Library of Babel
 JTNimoy - data loss,Ramsey - cloud 2
 JTNimoy - open source mensch,Bruce - Github Tarball
 JTNimoy - open source mensch,Casey - Processing open
@@ -4253,6 +4487,8 @@ JTNimoy - 100 artists versus One,Kyle_CH - new generation
 JTNimoy - 100 artists versus One,Lindsay - memes 2
 JTNimoy - 100 artists versus One,Paola - code ant farm
 JTNimoy - 100 artists versus One,Shantell - doingwithothers
+JTNimoy - 100 artists versus One,Chris - RemoteCollaboration
+JTNimoy - 100 artists versus One,Intro - Collaboration
 JTNimoy - one of us,Aaron - Crowdsourcing
 JTNimoy - one of us,Aaron - exquisite forest
 JTNimoy - one of us,Binx - hackathon
@@ -4261,12 +4497,15 @@ JTNimoy - one of us,Higa - sharing accidently 2
 JTNimoy - one of us,Kyle_CH - new generation
 JTNimoy - one of us,Paola - code ant farm
 JTNimoy - one of us,Shantell - doingwithothers
+JTNimoy - one of us,Chris - RemoteCollaboration
+JTNimoy - one of us,Intro - Collaboration
 JTNimoy - enough cooks,Andres - Reaching higher
 JTNimoy - enough cooks,Fernanda - History flow 1
 JTNimoy - enough cooks,Higa - sharing accidently 1
 JTNimoy - enough cooks,Higa - sharing accidently 2
 JTNimoy - enough cooks,Kyle_CH - new generation
 JTNimoy - enough cooks,Patricio - Jam session
+JTNimoy - enough cooks,Intro - Collaboration
 JTNimoy - originality,Aaron - recombination
 JTNimoy - originality,Bruce - orange
 JTNimoy - originality,Bruce - unstable mileau of media art
@@ -4279,6 +4518,7 @@ JTNimoy - originality,Julian - toolkit culture
 JTNimoy - originality,Lindsay - collective creativity
 JTNimoy - originality,Maeda - Isn't it supposed to be new?
 JTNimoy - originality,Philip - young medium
+JTNimoy - originality,Joel - FirstMover
 JTNimoy - geek culture,Binx - Background
 JTNimoy - geek culture,Binx - brogrammers
 JTNimoy - geek culture,Bruce - All of a sudden...
@@ -4303,6 +4543,7 @@ JTNimoy - geek culture,Paola - generosity
 JTNimoy - geek culture,Sophy - Strange cultures
 JTNimoy - geek culture,Vera - What I like about this field
 JTNimoy - geek culture,Zach - nerd art center
+JTNimoy - geek culture,Diederick - hackathon2
 JTNimoy - relating,Fernanda - Social dynamics
 JTNimoy - relating,Jen - grouping people
 JTNimoy - relating,Jer - everyday experience
@@ -4330,12 +4571,14 @@ JTNimoy - immersion,Maeda - Slurpies and pizza
 JTNimoy - immersion,Marcus - Epic Games predictions
 JTNimoy - immersion,Marius - my work exists in a utopian space,
 JTNimoy - immersion,Patricio - Play 2
+JTNimoy - immersion,Patricio - Reality
 JTNimoy - immersion,Philip - with programming you can do whatever
 JTNimoy - immersion,Philip - bits and bytes
 JTNimoy - immersion,Regine - virtual
 JTNimoy - immersion,Shiffman - reality will only get you so far
 JTNimoy - immersion,Shiffman - NOC 2
 JTNimoy - immersion,Sophy - Where's the best hamburger?
+JTNimoy - immersion,Intro - VirtualReality
 JTNimoy - immersion2,Aaron - webGL
 JTNimoy - immersion2,Bruce - Everted Cyberspace
 JTNimoy - immersion2,Elliot_UK - lightscape
@@ -4358,10 +4601,12 @@ JTNimoy - immersion2,Lauren - real and virtual 1
 JTNimoy - immersion2,Marcus - Epic Games predictions
 JTNimoy - immersion2,Marius - my work exists in a utopian space,
 JTNimoy - immersion2,Patricio - Play 2
+JTNimoy - immersion2,Patricio - Reality
 JTNimoy - immersion2,Philip - with programming you can do whatever
 JTNimoy - immersion2,Philip - bits and bytes
 JTNimoy - immersion2,Regine - virtual
 JTNimoy - immersion2,Shiffman - reality will only get you so far
+JTNimoy - immersion2,Intro - VirtualReality
 JTNimoy - icosahedron,Karolina - motion story,
 JTNimoy - corporate,Binx - art for money
 JTNimoy - corporate,Golan - wide open field
@@ -4369,6 +4614,7 @@ JTNimoy - corporate,Golan - why major in art
 JTNimoy - corporate,Higa - commercial vs personal work
 JTNimoy - corporate,Jer - Software2
 JTNimoy - corporate,Regine - making a living
+JTNimoy - Dream,Patricio - Dreams
 JTNimoy - Dream,Ramsey - dating algorithms
 JTNimoy - Dream,Shiffman - genetics short 2
 JTNimoy - based on human mind,Bruce - It's an old thing
@@ -4384,6 +4630,7 @@ JTNimoy - Pickle,Casey - Programming at 26
 JTNimoy - Pickle,Higa - beginnings
 JTNimoy - Pickle,Higa - only meets pure geeks
 JTNimoy - Pickle,Shiffman - Maybe I'd like that
+JTNimoy - Pickle,Intro - Programming
 Julia - museum emotion,Jen - generalization 1
 Julia - museum emotion,Jer - everyday experience
 Julia - museum emotion,Jer - Eyewriter touchstone
@@ -4449,6 +4696,7 @@ Julia - open source and ego,Marcus - economics question
 Julia - open source and ego,Paola - generosity
 Julia - open source and ego,Shiffman - sharing
 Julia - open source and ego,Shiffman - Open Source Contract
+Julia - open source and ego,Chris - EthicOfSharing
 Julia - can't be solitary,Aaron - sharing
 Julia - can't be solitary,Andres - sharing code
 Julia - can't be solitary,Casey - Processing open
@@ -4474,6 +4722,7 @@ Julia - can't be solitary,Shiffman - Open Source Contract
 Julia - can't be solitary,Zach - printshop
 Julia - can't be solitary,Zach - decompiling
 Julia - can't be solitary,Zach - Open Frameworks 1
+Julia - can't be solitary,Chris - EthicOfSharing
 Julia - work in context,Maeda - How do you relate to people?
 Julia - work in context,Regine - more concerned with socially engaged work
 Julia - aesthetic value,Bruce - Don't care about design
@@ -4528,6 +4777,9 @@ Julia - toward greater generosity 1,Vera - Energy Flow2
 Julia - toward greater generosity 1,Zach - at a festival
 Julia - toward greater generosity 1,Zach - printshop
 Julia - toward greater generosity 1,Zach - emailing the communnity
+Julia - toward greater generosity 1,Chris - EthicOfSharing
+Julia - toward greater generosity 1,Intro - Collaboration
+Julia - toward greater generosity 1,Intro - Sharing
 Julia - feeling of kinship,Aaron - dreaming together
 Julia - feeling of kinship,Philip - in touch all the time
 Julia - feeling of kinship,Sophy - the Cloud
@@ -4617,6 +4869,7 @@ Julia - new and interesting,Maeda - Isn't it supposed to be new?
 Julia - new and interesting,Maeda - old and new
 Julia - new and interesting,Philip - young medium
 Julia - new and interesting,Zach - less demo
+Julia - new and interesting,Joel - FirstMover
 Julia - emotional,Aaron - individualization + emotion
 Julia - emotional,Fernanda - Sentiment analysis
 Julia - emotional,Golan - emotion
@@ -4630,6 +4883,8 @@ Julia - medium of our time,Maeda - Isn't it supposed to be new?
 Julia - medium of our time,Philip - young medium
 Julia - medium of our time,Regine - doesn't matter as long as it's good
 Julia - medium of our time,Theo - art world
+Julia - medium of our time,Joel - FirstMover
+Julia - medium of our time,Joel - MythOfArtAndTech1
 Julia - we feel fine,Lauren - social media rewards
 Julia - strength of weak ties,Bruce - Textual technologies
 Julia - strength of weak ties,Bruce - twitter is not your friend
@@ -4897,6 +5152,7 @@ Karolina - system metaphor,Marcus - Sims
 Karolina - system metaphor,Marcus - Epic Games predictions
 Karolina - system metaphor,Marcus - lego bricks
 Karolina - system metaphor,Patricio - Play 2
+Karolina - system metaphor,Patricio - Reality
 Karolina - system metaphor,Philip - with programming you can do whatever
 Karolina - system metaphor,Philip - understanding through physics
 Karolina - system metaphor,Philip - bits and bytes
@@ -4909,6 +5165,7 @@ Karolina - system metaphor,Shiffman - how far could we get?
 Karolina - system metaphor,Shiffman - reality will only get you so far
 Karolina - system metaphor,Shiffman - NOC 1
 Karolina - system metaphor,Shiffman - NOC 2
+Karolina - system metaphor,Intro - VirtualReality
 Karolina - Journey,Aaron - exquisite forest
 Karolina - Journey,Aaron - exquisite forest 2
 Karolina - Journey,Casey - Tree of Life
@@ -4924,6 +5181,7 @@ Karolina - Journey,Marcus - energy flow_riot
 Karolina - Journey,Marcus - audience
 Karolina - Journey,Marcus - code for storytelling
 Karolina - Journey,Patricio - Playlist 1
+Karolina - Journey,Patricio - Playlist 2
 Karolina - Journey,Sophy - nonlinearity
 Karolina - Journey,Vera - Energy Flow1
 Karolina - Journey,Vera - having a protagonist
@@ -5000,6 +5258,8 @@ Karsten - Paul Burke,Golan - Kyle
 Karsten - Paul Burke,Jer - Toxi: gurus
 Karsten - Paul Burke,Maeda - sharing for collective advancement
 Karsten - Paul Burke,Marcus - gurus
+Karsten - Paul Burke,Patricio - Learning through others
+Karsten - Paul Burke,Patricio - Mentors
 Karsten - processing,Casey - Processing, what is it?
 Karsten - processing,Casey - Processing open
 Karsten - processing,Casey - Processing addons
@@ -5034,6 +5294,7 @@ Karsten - parallel processing,Ramsey - computation is interpretation of rules
 Karsten - parallel processing,Regine - twitter, future
 Karsten - parallel processing,Regine - imagining the future
 Karsten - parallel processing,Sophy - distributed culture
+Karsten - parallel processing,Intro - Computers
 Karsten - Educational tools,Casey - Birth of processing
 Karsten - Educational tools,Casey - Design by numbers to processing
 Karsten - Educational tools,Casey - Processing open
@@ -5066,6 +5327,10 @@ Karsten - becoming insular,Zach - decompiling
 Karsten - becoming insular,Zach - Open Frameworks 1
 Karsten - becoming insular,Zach - emailing the communnity
 Karsten - becoming insular,Zach - Open Frameworks 4
+Karsten - becoming insular,Chris - EthicOfSharing
+Karsten - becoming insular,Diederick - openFrameworks
+Karsten - becoming insular,Intro - Collaboration
+Karsten - becoming insular,Intro - Sharing
 Karsten - always improved,Casey - understanding future
 Karsten - always improved,Casey - Massive parallel systems
 Karsten - always improved,Higa - thick wall
@@ -5085,6 +5350,7 @@ Karsten - east german hardware 2,Ramsey - videogame development
 Karsten - east german hardware 2,Shiffman - Maybe I'd like that
 Karsten - east german hardware 2,Theo - learning
 Karsten - east german hardware 2,Zach - action script
+Karsten - east german hardware 2,Joel - Amiga500
 Karsten - demo scene 1,JTNimoy - evolution
 Karsten - demo scene 1,Kevin - from code to magazines to code
 Karsten - demo scene 1,Kyle_CH - Cory Arcangel
@@ -5103,6 +5369,7 @@ Karsten - 256 bytes part 1,Paola - bach mozart coders
 Karsten - 256 bytes part 1,Ramsey - designing languages
 Karsten - 256 bytes part 1,Ramsey - cloud 1
 Karsten - 256 bytes part 1,Ramsey - no ambiguity allowed
+Karsten - 256 bytes part 1,Intro - Programming
 Karsten - code is information,Bruce - Digital humanities technology
 Karsten - code is information,Bruce - Textual technologies
 Karsten - code is information,Jen - information cave
@@ -5111,6 +5378,7 @@ Karsten - code is information,Martin - language is like code
 Karsten - code is information,Martin - language and infinity
 Karsten - code is information,Paola - code is a language
 Karsten - code is information,Paola - code changes your thinking
+Karsten - code is information,Patricio - Information 3
 Karsten - code is information,Ramsey - language self expression
 Karsten - code is information,Ramsey - complicated C++
 Karsten - code is information,Sophy - information overload
@@ -5153,6 +5421,11 @@ Karsten - programming is...,Shiffman - Maybe I'd like that
 Karsten - programming is...,Shiffman - mysterious box
 Karsten - programming is...,Zach - action script
 Karsten - programming is...,Zach - action script shorter
+Karsten - programming is...,Diederick - allprogrammershavethat
+Karsten - programming is...,Diederick - hackathon1
+Karsten - programming is...,Intro - Learning
+Karsten - programming is...,Intro - Programming
+Karsten - programming is...,Joel - Amiga500
 Karsten - solving complex problems,Binx - changing the world
 Karsten - solving complex problems,Fernanda - Policy and data
 Karsten - solving complex problems,Golan - Anxious about the future
@@ -5242,23 +5515,32 @@ Karsten - changing behavior,Martin - how to make us smarter
 Karsten - changing behavior,Paola - Design and science
 Karsten - changing behavior,Regine - looking forward to problems
 Karsten - changing behavior,Regine - ineffectual art
+Karsten - DarkNet,Andres - soft systems 2
 Karsten - DarkNet,Bruce - Everted Cyberspace
 Karsten - DarkNet,Bruce - relating to history through networks
+Karsten - DarkNet,Casey - Scale 1
 Karsten - DarkNet,Golan_AMA - World becoming one mind
+Karsten - DarkNet,Jen - Scaling data
+Karsten - DarkNet,Joel - scale of universe
 Karsten - DarkNet,Julia - Who owns the internet?
 Karsten - DarkNet,Julian - I love networks
 Karsten - DarkNet,Kevin - Networked intelligence
 Karsten - DarkNet,Marius - Predicting the internet
+Karsten - DarkNet,Martin - seeing the whole 2
 Karsten - DarkNet,Martin - Are we getting smarter?
 Karsten - DarkNet,Martin - Are we getting smarter 2
+Karsten - DarkNet,Martin - Big data
+Karsten - DarkNet,Patricio - Network perception
 Karsten - DarkNet,Ramsey - biology and the internet
 Karsten - DarkNet,Ramsey - the internet 1
 Karsten - DarkNet,Ramsey - distributed model
 Karsten - DarkNet,Sophy - the Cloud
+Karsten - DarkNet,Joel - scaleofUniverse
 Karsten - infinite conversation,Binx - face data
 Karsten - infinite conversation,Jen - in the movie
 Karsten - infinite conversation,JTNimoy - performance1
 Karsten - infinite conversation,Maeda - Clouds
+Karsten - infinite conversation,Patricio - Playlist 2
 Karsten - new media,Bruce - It's an old thing
 Karsten - new media,Bruce - Fax machine
 Karsten - new media,Bruce - Computer art takes flight
@@ -5298,6 +5580,8 @@ Karsten - archiving,Kyle_CH - Future life storage
 Karsten - archiving,Lauren - digital memory
 Karsten - archiving,Paola - Moma games
 Karsten - archiving,Paola - museum collections
+Karsten - archiving,Patricio - Information 3
+Karsten - archiving,Patricio - Library of Babel
 Karsten - archiving,Ramsey - cloud 2
 Karsten - archiving,Ramsey - unmaintainable code
 Karsten - archiving,Shiffman - what do you archive?
@@ -5317,6 +5601,8 @@ Karsten - preserving history,Kyle_CH - Future life storage
 Karsten - preserving history,Lauren - digital memory
 Karsten - preserving history,Paola - Moma games
 Karsten - preserving history,Paola - museum collections
+Karsten - preserving history,Patricio - Information 3
+Karsten - preserving history,Patricio - Library of Babel
 Karsten - preserving history,Ramsey - cloud 2
 Karsten - preserving history,Ramsey - unmaintainable code
 Karsten - preserving history,Shiffman - what do you archive?
@@ -5337,6 +5623,7 @@ Karsten - atari emulation,Lindsay - death of technology
 Karsten - atari emulation,Maeda - New media
 Karsten - atari emulation,Paola - Moma games
 Karsten - atari emulation,Paola - museum collections
+Karsten - atari emulation,Patricio - Information 3
 Karsten - atari emulation,Ramsey - cloud 2
 Karsten - atari emulation,Ramsey - unmaintainable code
 Karsten - atari emulation,Shiffman - what do you archive?
@@ -5352,6 +5639,7 @@ Kevin - from code to magazines to code,Karsten - demo scene 1
 Kevin - from code to magazines to code,Nervous_Jessica - MIT beginning
 Kevin - from code to magazines to code,Patricio - CopyPaste
 Kevin - from code to magazines to code,Shiffman - Maybe I'd like that
+Kevin - from code to magazines to code,Joel - Amiga500
 Kevin - learning to code,Karsten - code is information
 Kevin - learning to code,Martin - language is like code
 Kevin - learning to code,Nervous_Jesse - understanding to control 1
@@ -5385,10 +5673,12 @@ Kevin - game designers,Marcus - Epic Games predictions
 Kevin - game designers,Paola - Portal
 Kevin - game designers,Paola - bach mozart coders
 Kevin - game designers,Patricio - Play 2
+Kevin - game designers,Patricio - Reality
 Kevin - game designers,Philip - bits and bytes
 Kevin - game designers,Ramsey - games for access
 Kevin - game designers,Regine - virtual
 Kevin - game designers,Shiffman - reality will only get you so far
+Kevin - game designers,Intro - VirtualReality
 Kevin - algo trading 1,Higa - create a system 2
 Kevin - algo trading 1,Marius - We've embraced Dystopia
 Kevin - algo trading 1,Ramsey - algorithms run wild
@@ -5461,11 +5751,16 @@ Kevin - No consequences 1,Regine - virtual
 Kevin - no consequences 2,Karolina - system metaphor
 Kevin - no consequences 2,Paola - bach mozart coders
 Kevin - no consequences 2,Patricio - Play 2
+Kevin - no consequences 2,Patricio - Seduced by Play 3
+Kevin - no consequences 2,Patricio - Building Universes 1
+Kevin - no consequences 2,Patricio - Reality
 Kevin - no consequences 2,Philip - bits and bytes
 Kevin - no consequences 2,Shantell - Kids
 Kevin - no consequences 2,Shiffman - reality will only get you so far
 Kevin - no consequences 2,Sophy - made of photons
+Kevin - no consequences 2,Intro - VirtualReality
 Kevin - Draft mode,Bruce - aborted projects
+Kevin - Draft mode,Casey - sketching with code
 Kevin - Draft mode,JTNimoy - thinking by doing
 Kevin - Draft mode,Shantell - full circle
 Kevin - Draft mode,Shantell - circularity
@@ -5520,6 +5815,9 @@ Kevin - invented as opposed to discovered 1,Ramsey - does nature compute? 2
 Kevin - invented as opposed to discovered 1,Ramsey - computer was a person
 Kevin - invented as opposed to discovered 1,Ramsey - computation is interpretation of rules
 Kevin - invented as opposed to discovered 1,Ramsey - elegant system
+Kevin - invented as opposed to discovered 1,Intro - Computers
+Kevin - invented as opposed to discovered 1,Intro - LogicOfPixels
+Kevin - invented as opposed to discovered 1,Joel - Bicycles1
 Kevin - invented as opposed to discovered 2,Bruce - beauty of math
 Kevin - invented as opposed to discovered 2,Jen - a different mathematics
 Kevin - invented as opposed to discovered 2,Jen - Math simulating reality
@@ -5541,6 +5839,9 @@ Kevin - invented as opposed to discovered 2,Ramsey - does nature compute? 2
 Kevin - invented as opposed to discovered 2,Ramsey - computer was a person
 Kevin - invented as opposed to discovered 2,Ramsey - computation is interpretation of rules
 Kevin - invented as opposed to discovered 2,Ramsey - elegant system
+Kevin - invented as opposed to discovered 2,Intro - Computers
+Kevin - invented as opposed to discovered 2,Intro - LogicOfPixels
+Kevin - invented as opposed to discovered 2,Joel - Bicycles1
 Kevin - math havoc 1,Golan_AMA - machines and human intelligence
 Kevin - math havoc 1,Javier - behavior change
 Kevin - math havoc 1,Ramsey - algorithms run wild
@@ -5653,6 +5954,7 @@ Kevin - Tools of perception,Elliot_UK - 2D vision in a 3D world
 Kevin - Tools of perception,Golan_AMA - first computer art
 Kevin - Tools of perception,JTNimoy - be a robot
 Kevin - Tools of perception,Julia - how it makes me feel
+Kevin - Tools of perception,Kyle_CH - new generation
 Kevin - Tools of perception,Lauren - altering reality of users
 Kevin - Tools of perception,Ramsey - fluxus
 Kevin - Tools of perception,Regine - doesn't matter as long as it's good
@@ -5697,9 +5999,11 @@ Kevin - non-mimetic reality,Kyle_CH - Avatars
 Kevin - non-mimetic reality,Kyle_CH - coral reefs
 Kevin - non-mimetic reality,Kyle_CH - videogame world
 Kevin - non-mimetic reality,Patricio - Play 2
+Kevin - non-mimetic reality,Patricio - Reality
 Kevin - non-mimetic reality,Philip - bits and bytes
 Kevin - non-mimetic reality,Regine - virtual
 Kevin - non-mimetic reality,Shiffman - reality will only get you so far
+Kevin - non-mimetic reality,Intro - VirtualReality
 Kevin - area code 1,Bruce - Hand dryer
 Kevin - area code 1,Bruce - future city 1
 Kevin - area code 1,Bruce - Everted Cyberspace
@@ -5707,6 +6011,7 @@ Kevin - area code 1,Kyle_CH - coral reefs
 Kevin - area code 1,Kyle_CH - videogame world
 Kevin - area code 1,Paola - Portal
 Kevin - area code 1,Regine - virtual
+Kevin - area code 1,Elliot - AugementedReality
 Kevin - Area code 2,Aaron - exquisite forest 2
 Kevin - Area code 2,Aaron - the best games are great stories
 Kevin - Area code 2,Bruce - Hand dryer
@@ -5719,6 +6024,7 @@ Kevin - Area code 2,Karolina - suspension of disbelief
 Kevin - Area code 2,Lauren - wearables 2
 Kevin - Area code 2,Paola - Portal
 Kevin - Area code 2,Theo - hide the technology,
+Kevin - Area code 2,Elliot - AugementedReality
 Kevin - Race to versimilitude,JTNimoy - immersion2
 Kevin - Race to versimilitude,Karolina - suspension of disbelief
 Kevin - Race to versimilitude,Karolina - system metaphor
@@ -5881,6 +6187,7 @@ Kyle_CH - new generation,Casey - group teaching
 Kyle_CH - new generation,Fernanda - History flow 1
 Kyle_CH - new generation,Golan - hackathon
 Kyle_CH - new generation,Golan - hackathons2
+Kyle_CH - new generation,Golan_AMA - first computer art
 Kyle_CH - new generation,Greg - Creative Coder
 Kyle_CH - new generation,Higa - committed to community
 Kyle_CH - new generation,Higa - sharing accidently 1
@@ -5893,6 +6200,7 @@ Kyle_CH - new generation,JTNimoy - one of us
 Kyle_CH - new generation,JTNimoy - enough cooks
 Kyle_CH - new generation,Julia - toward greater generosity 1
 Kyle_CH - new generation,Karsten - becoming insular
+Kyle_CH - new generation,Kevin - Tools of perception
 Kyle_CH - new generation,Lauren - Beginning art and tech
 Kyle_CH - new generation,Lindsay - memes 2
 Kyle_CH - new generation,Maeda - Processing community
@@ -5903,6 +6211,10 @@ Kyle_CH - new generation,Shiffman - sharing
 Kyle_CH - new generation,Zach - at a festival
 Kyle_CH - new generation,Zach - emailing the communnity
 Kyle_CH - new generation,Zach - venn diagrams of interest
+Kyle_CH - new generation,Chris - RemoteCollaboration
+Kyle_CH - new generation,Diederick - hackathon2
+Kyle_CH - new generation,Intro - Collaboration
+Kyle_CH - new generation,Intro - Sharing
 Kyle_CH - face OSC,Kyle_MC - faceOSC 2
 Kyle_CH - face OSC,Kyle_MC - face algos
 Kyle_CH - face OSC,Kyle_MC - box on your face
@@ -5943,6 +6255,8 @@ Kyle_CH - RGBD,Kyle_MC - face algos
 Kyle_CH - RGBD,Kyle_MC - vision
 Kyle_CH - RGBD,Kyle_MC - kinect 2
 Kyle_CH - RGBD,Kyle_MC - Camera doesn't care if you're human
+Kyle_CH - RGBD,Elliot - Kinect
+Kyle_CH - RGBD,Intro - KinectFutureCamera
 Kyle_CH - Social media performance,Aaron - digital trace
 Kyle_CH - Social media performance,Kyle_MC - Keytweeter 2
 Kyle_CH - Social media performance,Lauren - identity and interaction
@@ -5999,6 +6313,8 @@ Kyle_CH - old server farms,Lauren - digital memory
 Kyle_CH - old server farms,Lindsay - death of technology
 Kyle_CH - old server farms,Paola - Moma games
 Kyle_CH - old server farms,Paola - museum collections
+Kyle_CH - old server farms,Patricio - Information 3
+Kyle_CH - old server farms,Patricio - Library of Babel
 Kyle_CH - old server farms,Ramsey - cloud 2
 Kyle_CH - old server farms,Ramsey - unmaintainable code
 Kyle_CH - old server farms,Shiffman - what do you archive?
@@ -6026,12 +6342,14 @@ Kyle_CH - Casey Reas Music Visualizations,Marcus - Audiovisual glue
 Kyle_CH - Casey Reas Music Visualizations,Marcus - electronic music influence
 Kyle_CH - Casey Reas Music Visualizations,Philip - audiovisual gigs
 Kyle_CH - Casey Reas Music Visualizations,Shantell - Live performance,
+Kyle_CH - Casey Reas Music Visualizations,Intro - AudioVisualization
 Kyle_CH - Sentience of digital art,Bruce - Anthropomorphism
 Kyle_CH - Sentience of digital art,Kyle_MC - uncanny
 Kyle_CH - don't underestimate traditional art,Jen - stasis 2
 Kyle_CH - don't underestimate traditional art,Jen - truthiness
 Kyle_CH - don't underestimate traditional art,Jen - oversimplified circles 1
 Kyle_CH - don't underestimate traditional art,Jer - data visualization
+Kyle_CH - don't underestimate traditional art,Intro - interactivity1
 Kyle_CH - interactivity 2,Karolina - interactive tableau
 Kyle_CH - interactivity 2,Karolina - uncanny/sniff
 Kyle_CH - erase distinctions,Bruce - unstable mileau of media art
@@ -6041,8 +6359,10 @@ Kyle_CH - erase distinctions,Julia - new and interesting
 Kyle_CH - erase distinctions,Maeda - Isn't it supposed to be new?
 Kyle_CH - erase distinctions,Maeda - old and new
 Kyle_CH - erase distinctions,Philip - young medium
+Kyle_CH - erase distinctions,Joel - FirstMover
 Kyle_CH - coding is 1,Higa - collaboration with machines 1
 Kyle_CH - coding is 1,Higa - collaboration with machines 2
+Kyle_CH - coding is 1,Patricio - Magic Spells 1
 Kyle_CH - coding is 1,Philip - with programming you can do whatever
 Kyle_CH - coding is 1,Philip - couldn't do this with actual water
 Kyle_CH - coding is 1,Philip - build the whole universe
@@ -6054,6 +6374,9 @@ Kyle_CH - coding is 1,Ramsey - Conway 1
 Kyle_CH - coding is 1,Shiffman - programming the universe
 Kyle_CH - coding is 1,Shiffman - how far could we get?
 Kyle_CH - coding is 1,Theo - magic
+Kyle_CH - coding is 1,Diederick - allprogrammershavethat
+Kyle_CH - coding is 1,Intro - BuildingWorlds2
+Kyle_CH - coding is 1,Intro - BuildingWorlds
 Kyle_CH - coding 2,Philip - with programming you can do whatever
 Kyle_CH - coding 2,Philip - build the whole universe
 Kyle_CH - coding 2,Ramsey - minecraft 2
@@ -6062,7 +6385,11 @@ Kyle_CH - coding 2,Ramsey - Conway 2
 Kyle_CH - coding 2,Ramsey - Conway 3
 Kyle_CH - coding 2,Shiffman - programming the universe
 Kyle_CH - coding 2,Shiffman - how far could we get?
+Kyle_CH - coding 2,Diederick - allprogrammershavethat
+Kyle_CH - coding 2,Intro - BuildingWorlds2
+Kyle_CH - coding 2,Intro - BuildingWorlds
 Kyle_CH - coding, magic,Kevin - algo culture 3
+Kyle_CH - coding, magic,Patricio - Magic Spells 1
 Kyle_CH - coding, magic,Ramsey - wizardry 1
 Kyle_CH - coding, magic,Ramsey - wizardry 2
 Kyle_CH - coding, magic,Shantell - Coding gesturally
@@ -6073,6 +6400,7 @@ Kyle_CH - blows my mind,Ramsey - it's not painting 1
 Kyle_CH - blows my mind,Ramsey - it's not painting 2
 Kyle_CH - blows my mind,Ramsey - independent of any human
 Kyle_CH - blows my mind,Ramsey - a hundred million
+Kyle_CH - blows my mind,Intro - Computers
 Kyle_CH - alter language 1,Ramsey - designing languages
 Kyle_CH - storytelling,Aaron - mini-brains
 Kyle_CH - storytelling,Aaron - mini-brains 2
@@ -6155,6 +6483,9 @@ Kyle_CH - Future life storage,Lauren - digital afterlife
 Kyle_CH - Future life storage,Lauren - inheriting digital property
 Kyle_CH - Future life storage,Lauren - digital memory
 Kyle_CH - Future life storage,Marcus - global conversation
+Kyle_CH - Future life storage,Patricio - Information 3
+Kyle_CH - Future life storage,Patricio - Library of Babel
+Kyle_CH - Future life storage,Patricio - CLOUDS 2
 Kyle_CH - Future life storage,Ramsey - cloud 2
 Kyle_CH - Future life storage,Zach - Joshua Davis
 Kyle_CH - Twitter archive,Aaron - exciting time
@@ -6363,6 +6694,8 @@ Kyle_MC - kinect 2,Javier - Hummingbird drone
 Kyle_MC - kinect 2,JTNimoy - Describe the Kinect
 Kyle_MC - kinect 2,JTNimoy - increased the bandwidth
 Kyle_MC - kinect 2,Kyle_CH - RGBD
+Kyle_MC - kinect 2,Elliot - Kinect
+Kyle_MC - kinect 2,Intro - KinectFutureCamera
 Kyle_MC - beauty,Marius - Art world gave up on beauty
 Kyle_MC - beauty,Marius - culturally biased aesthetic
 Kyle_MC - programmers vs artists,Golan - useless, whimsical
@@ -6527,11 +6860,13 @@ Lauren - wearables 1,Bruce - Hand dryer
 Lauren - wearables 1,JTNimoy - be a robot
 Lauren - wearables 1,Marius - cyperpunk history
 Lauren - wearables 1,Ramsey - Google glass
+Lauren - wearables 1,Intro - Interfaces
 Lauren - wearables 2,Bruce - Hand dryer
 Lauren - wearables 2,Kevin - Area code 2
 Lauren - sex tech 2,Fernanda - fleshmap1
 Lauren - sex tech 2,Fernanda - fleshmap2
 Lauren - sex tech 2,Fernanda - fleshmap 3
+Lauren - sex tech 2,Patricio - Physical synchronization
 Lauren - student apps 2,Javier - Data ownership
 Lauren - student apps 2,Julian - Critical engineering
 Lauren - student apps 2,Julian - change the way we see tech
@@ -6720,6 +7055,8 @@ Lauren - digital memory,Karsten - preserving history
 Lauren - digital memory,Karsten - atari emulation
 Lauren - digital memory,Kyle_CH - old server farms
 Lauren - digital memory,Kyle_CH - Future life storage
+Lauren - digital memory,Patricio - Information 3
+Lauren - digital memory,Patricio - Library of Babel
 Lauren - digital memory,Ramsey - cloud 2
 Lauren - sentiment anaylsis,Fernanda - Sentiment analysis
 Lauren - sentiment anaylsis,Kevin - cognition vs computation 1
@@ -6804,12 +7141,15 @@ Lindsay - memes 2,Marcus - community styles
 Lindsay - memes 2,Marcus - new tricks
 Lindsay - memes 2,Paola - generosity
 Lindsay - memes 2,Paola - code ant farm
-Lindsay - memes 2,Patricio - Jam session
 Lindsay - memes 2,Shantell - doingwithothers
 Lindsay - memes 2,Shiffman - sharing
 Lindsay - memes 2,Vera - What I like about this field
 Lindsay - memes 2,Zach - at a festival
 Lindsay - memes 2,Zach - printshop
+Lindsay - memes 2,Chris - RemoteCollaboration
+Lindsay - memes 2,Diederick - hackathon2
+Lindsay - memes 2,Intro - Collaboration
+Lindsay - memes 2,Intro - Sharing
 Lindsay - meme as weapon,Elliot_UK - Ideaspace
 Lindsay - online identity,Aaron - digital trace
 Lindsay - online identity,Julia - strength of weak ties
@@ -6855,9 +7195,12 @@ Maeda - playful systems,Golan - playable image
 Maeda - playful systems,Golan - instruments
 Maeda - playful systems,Golan - Play
 Maeda - playful systems,Patricio - Play 1
+Maeda - playful systems,Patricio - Theory of Play 1
+Maeda - playful systems,Patricio - Building Universes 1
 Maeda - playful systems,Shantell - Kids
 Maeda - playful systems,Theo - Kids interacting
 Maeda - playful systems,Theo - leaving a mark
+Maeda - playful systems,Intro - interactivity1
 Maeda - reactive square,Golan - playable image
 Maeda - subversion,Zach - less demo
 Maeda - Digital meets analog,Casey - teaching at UCLA
@@ -6895,6 +7238,7 @@ Maeda - people are best communicators,Karsten - data visualization
 Maeda - people are best communicators,Karsten - changing behavior
 Maeda - people are best communicators,Kevin - algo trading 6
 Maeda - people are best communicators,Martin - simple elegant prose
+Maeda - last trick,Casey - sketching with code
 Maeda - last trick,Casey - branching off branching
 Maeda - last trick,Casey - Ideally it goes beyond my imagination
 Maeda - last trick,Shantell - drawing with the computer
@@ -6906,6 +7250,7 @@ Maeda - self expression,Marius - these things are in my head
 Maeda - self expression,Shantell - drawing with the computer
 Maeda - self expression,Shantell - sharing
 Maeda - self expression,Shiffman - what computers can do
+Maeda - self expression,Diederick - programmingWithFeeling
 Maeda - lost interest in interactivity,Jen - deep interaction
 Maeda - Isn't it supposed to be new?,Bruce - Trendier than thou
 Maeda - Isn't it supposed to be new?,Bruce - orange
@@ -6925,6 +7270,7 @@ Maeda - Isn't it supposed to be new?,Lindsay - collective creativity
 Maeda - Isn't it supposed to be new?,Marcus - new tricks
 Maeda - Isn't it supposed to be new?,Paola - beauty in exile
 Maeda - Isn't it supposed to be new?,Philip - young medium
+Maeda - Isn't it supposed to be new?,Joel - FirstMover
 Maeda - Aesthetics and Computation group,Casey - beginnings
 Maeda - Aesthetics and Computation group,Casey - Programming at 26
 Maeda - Aesthetics and Computation group,Golan - MIT
@@ -6970,6 +7316,7 @@ Maeda - Processing toolkit,Karsten - becoming insular
 Maeda - Processing toolkit,Kevin - Networked intelligence
 Maeda - Processing toolkit,Kyle_CH - open source
 Maeda - Processing toolkit,Patricio - Rethinking education systems
+Maeda - Processing toolkit,Patricio - Zeitgeist of open source
 Maeda - Processing toolkit,Patricio - infinity of projects on google
 Maeda - Processing toolkit,Philip - if I had Processing in school
 Maeda - Processing toolkit,Shiffman - sharing
@@ -6977,6 +7324,10 @@ Maeda - Processing toolkit,Shiffman - Open Source Contract
 Maeda - Processing toolkit,Theo - development feedback,
 Maeda - Processing toolkit,Zach - open source challenge
 Maeda - Processing toolkit,Zach - decompiling
+Maeda - Processing toolkit,Chris - EthicOfSharing
+Maeda - Processing toolkit,Diederick - openFrameworks
+Maeda - Processing toolkit,Joel - CocaCola
+Maeda - Processing toolkit,Joel - WrongToSell
 Maeda - ACU part 1,Kyle_CH - history of computational art
 Maeda - ACU part 1,Zach - Open Frameworks 1
 Maeda - ACU p 2,Golan - ACG
@@ -6999,6 +7350,7 @@ Maeda - sharing for collective advancement,Julia - can't be solitary
 Maeda - sharing for collective advancement,Karsten - Paul Burke
 Maeda - sharing for collective advancement,Lauren - using tools in unexpected ways
 Maeda - sharing for collective advancement,Marcus - gurus
+Maeda - sharing for collective advancement,Patricio - Learning through others
 Maeda - sharing for collective advancement,Zach - printshop
 Maeda - passing the baton,Bruce - creativity in old age
 Maeda - passing the baton,Golan - sad not to be making
@@ -7083,6 +7435,7 @@ Maeda - People you're meeting,,Lauren - desire to get together
 Maeda - own the tool,Casey - teaching at UCLA
 Maeda - own the tool,Karsten - why don't we learn?
 Maeda - own the tool,Karsten - code as way of knowing
+Maeda - own the tool,Joel - Bicycles2
 Maeda - Artist coders coder artists,Binx - hybridity
 Maeda - Artist coders coder artists,Binx - Background
 Maeda - Artist coders coder artists,Binx - there was no degree
@@ -7117,6 +7470,9 @@ Maeda - Processing community,Zach - at a festival
 Maeda - Processing community,Zach - open source challenge
 Maeda - Processing community,Zach - Open Frameworks 1
 Maeda - Processing community,Zach - emailing the communnity
+Maeda - Processing community,Chris - EthicOfSharing
+Maeda - Processing community,Intro - Collaboration
+Maeda - Processing community,Intro - Sharing
 Maeda - Slurpies and pizza,Greg - object oriented ontology 3
 Maeda - Slurpies and pizza,Higa - otaku level
 Maeda - Slurpies and pizza,JTNimoy - immersion
@@ -7150,9 +7506,12 @@ Marcus - Audiovisual glue,Patricio - Jam session
 Marcus - Audiovisual glue,Philip - what we do
 Marcus - Audiovisual glue,Philip - audiovisual gigs
 Marcus - Audiovisual glue,Shantell - drawing with noise
+Marcus - Audiovisual glue,Intro - AudioVisualization
 Marcus - gurus,Jer - Toxi: gurus
 Marcus - gurus,Karsten - Paul Burke
 Marcus - gurus,Maeda - sharing for collective advancement
+Marcus - gurus,Patricio - Learning through others
+Marcus - gurus,Patricio - Mentors
 Marcus - emergence,Casey - emergence
 Marcus - emergence,Casey - What is emergence?
 Marcus - emergence,Casey - Developing a microworld
@@ -7161,6 +7520,7 @@ Marcus - emergence,Higa - collaboration with machines 2
 Marcus - emergence,Marius - constraining randomness
 Marcus - emergence,Marius - keeping the door open
 Marcus - emergence,Nervous_Jesse - our explorations are random
+Marcus - emergence,Patricio - Building Universes 2
 Marcus - emergence,Ramsey - Conway 1
 Marcus - emergence,Ramsey - emergence from simple rules
 Marcus - emergence,Ramsey - New Kind of Science
@@ -7219,6 +7579,7 @@ Marcus - energy flow_riot,Vera - Energy Flow2
 Marcus - energy flow_riot,Vera - having a protagonist
 Marcus - energy flow_riot,Vera - Accessibility through strories
 Marcus - visual culture evoling,Bruce - Trendier than thou
+Marcus - visual culture evoling,Casey - Borrowing from culture
 Marcus - scaling up,Binx - art and culture
 Marcus - scaling up,Lindsay - 319 scholes
 Marcus - scaling up,Regine - doesn't matter as long as it's good
@@ -7274,10 +7635,12 @@ Marcus - economics question,Julia - can't be solitary
 Marcus - economics question,Maeda - Processing community
 Marcus - economics question,Shiffman - Open Source Contract
 Marcus - economics question,Zach - Open Frameworks 1
+Marcus - economics question,Chris - EthicOfSharing
 Marcus - electronic music influence,Higa - sound and video
 Marcus - electronic music influence,Kyle_CH - Casey Reas Music Visualizations
 Marcus - electronic music influence,Philip - audiovisual gigs
 Marcus - electronic music influence,Shantell - Live performance,
+Marcus - electronic music influence,Intro - AudioVisualization
 Marcus - new tricks,Bruce - All of a sudden...
 Marcus - new tricks,Bruce - Tidepools
 Marcus - new tricks,Bruce - Trendier than thou
@@ -7323,6 +7686,7 @@ Marcus - code for storytelling,Kevin - algo stories 2
 Marcus - code for storytelling,Kyle_CH - storytelling
 Marcus - code for storytelling,Lauren - Metaphors
 Marcus - code for storytelling,Patricio - Playlist 1
+Marcus - code for storytelling,Patricio - Playlist 2
 Marcus - code for storytelling,Sophy - nonlinearity
 Marcus - code for storytelling,Vera - Energy Flow1
 Marcus - code for storytelling,Vera - Energy Flow2
@@ -7336,7 +7700,12 @@ Marius - algorithms as parameter space,Nervous_Jesse - understanding to control 
 Marius - algorithms as parameter space,Shantell - luck
 Marius - algorithms as parameter space,Shantell - Sharing creates luck
 Marius - algorithms as parameter space,Shiffman - There's an element of surprise
+Marius - these things are in my head,Casey - Ideally it goes beyond my imagination
 Marius - these things are in my head,Maeda - self expression
+Marius - these things are in my head,Patricio - Imaginative technologies 1
+Marius - these things are in my head,Patricio - Imaginative technologies 2
+Marius - these things are in my head,Patricio - Alchemy 1
+Marius - these things are in my head,Patricio - Alchemy 2
 Marius - Continuous process of exploration,Bruce - what gets you out of bed
 Marius - Continuous process of exploration,Bruce - find the inner wellspring
 Marius - Continuous process of exploration,Casey - branching off branching
@@ -7354,8 +7723,10 @@ Marius - jumping from medium to medium,Casey - Borrowing from culture
 Marius - jumping from medium to medium,Golan - hybridity
 Marius - jumping from medium to medium,Golan - hybridity2
 Marius - jumping from medium to medium,Maeda - Artist coders coder artists
+Marius - gardening,Bruce - Gardening 1
 Marius - gardening,Bruce - Gardening 2
 Marius - gardening,Casey - You need noise
+Marius - gardening,Nervous_Jesse - organic process
 Marius - gardening,Nervous_Jesse - our explorations are random
 Marius - constraining randomness,Bruce - Volition
 Marius - constraining randomness,Bruce - Gardening 1
@@ -7488,6 +7859,7 @@ Marius - I hate the word nerd,Paola - the tribe
 Marius - I hate the word nerd,Sophy - Strange cultures
 Marius - I hate the word nerd,Vera - What I like about this field
 Marius - I hate the word nerd,Zach - nerd art center
+Marius - I hate the word nerd,Diederick - hackathon2
 Marius - Stylistic darwinism,Martin - evolution of interfaces
 Marius - Stylistic darwinism,Shiffman - Carl Sims
 Marius - if it's not interesting I abandon it,Higa - create a system 2
@@ -7614,6 +7986,7 @@ Martin - birds eye view,Joel - scale of universe
 Martin - birds eye view,Shiffman - a mystical quality
 Martin - birds eye view,Shiffman - how far could we get?
 Martin - birds eye view,Theo - inspired by nature
+Martin - birds eye view,Joel - scaleofUniverse
 Martin - baby names,Fernanda - quantified self
 Martin - baby names,Jen - personal archive 1
 Martin - baby names,Kyle_CH - Twitter archive
@@ -7658,6 +8031,8 @@ Martin - seeing the whole 2,Jer - take advantage of this thing we can do
 Martin - seeing the whole 2,Jer - reading the complexity
 Martin - seeing the whole 2,Joel - scale of universe
 Martin - seeing the whole 2,Karolina - Ocean as metaphor
+Martin - seeing the whole 2,Karsten - DarkNet
+Martin - seeing the whole 2,Joel - scaleofUniverse
 Martin - limits of computation,Aaron - Mini-Artificial Intelligences
 Martin - limits of computation,Bruce - machines don't think 1
 Martin - limits of computation,Bruce - machines don't think 2
@@ -7673,6 +8048,7 @@ Martin - limits of computation,Nervous_Jesse - Time in the universe
 Martin - limits of computation,Philip - limitations
 Martin - limits of computation,Ramsey - a hundred million
 Martin - limits of computation,Ramsey - elegant system
+Martin - limits of computation,Joel - Bicycles1
 Martin - seeing thought 1,Bruce - machines don't think 1
 Martin - seeing thought 1,Bruce - machines don't think 2
 Martin - seeing thought 1,Karsten - code as way of knowing
@@ -7757,6 +8133,7 @@ Martin - getting weirder,Kevin - printing code
 Martin - getting weirder,Kevin - Getting smarter together
 Martin - getting weirder,Regine - twitter, future
 Martin - deeper learning,Binx - skillshare
+Martin - deeper learning,Patricio - Alchemy 3
 Martin - lolcats,Fernanda - viral videos
 Martin - lolcats,Fernanda - teens give birth to memes
 Martin - lolcats,Julia - propagates itself
@@ -7781,6 +8158,7 @@ Martin - short attention span,Shantell - simple
 Martin - starry night,Bruce - Age of the universe, really weird
 Martin - starry night,Joel - scale of universe
 Martin - starry night,Karolina - Ocean as metaphor
+Martin - starry night,Joel - scaleofUniverse
 Martin - evolution of interfaces,Marius - Stylistic darwinism
 Martin - evolution of interfaces,Ramsey - Google glass
 Martin - spiral interface,Andres - soft systems 2
@@ -7866,7 +8244,9 @@ Martin - Big data,Jen - generalization 2
 Martin - Big data,Jen - Scaling data
 Martin - Big data,Joel - scale of universe
 Martin - Big data,Karolina - Ocean as metaphor
+Martin - Big data,Karsten - DarkNet
 Martin - Big data,Kevin - reality in the eyes of data
+Martin - Big data,Joel - scaleofUniverse
 Martin - Statistics,Binx - changing the world
 Martin - Statistics,Fernanda - Policy and data
 Martin - Statistics,Javier - Data ownership
@@ -7882,6 +8262,7 @@ Nervous_Jesse - organic process,Andres - soft systems 1
 Nervous_Jesse - organic process,Higa - create a system 2
 Nervous_Jesse - organic process,Higa - collaboration with machines 1
 Nervous_Jesse - organic process,Higa - collaboration with machines 2
+Nervous_Jesse - organic process,Marius - gardening
 Nervous_Jesse - organic process,Marius - constraining randomness
 Nervous_Jesse - organic process,Ramsey - elegant system
 Nervous_Jesse - organic process,Vera - Playing with a system
@@ -7931,6 +8312,7 @@ Nervous_Jesse - Time in the universe,Kevin - invented as opposed to discovered 1
 Nervous_Jesse - Time in the universe,Kevin - invented as opposed to discovered 2
 Nervous_Jesse - Time in the universe,Martin - limits of computation
 Nervous_Jesse - Time in the universe,Ramsey - a hundred million
+Nervous_Jesse - Time in the universe,Joel - Bicycles1
 Nervous_Jesse - doing something new with a system,Higa - create a system 2
 Nervous_Jesse - doing something new with a system,Higa - collaboration with machines 1
 Nervous_Jesse - doing something new with a system,Higa - collaboration with machines 2
@@ -7949,6 +8331,7 @@ Nervous_Jesse - limiting open source,Julia - can't be solitary
 Nervous_Jesse - limiting open source,Philip - if I had Processing in school
 Nervous_Jesse - Open source education,Higa - language barriers
 Nervous_Jesse - Open source education,Higa - thick wall
+Nervous_Jesse - Open source education,Patricio - infinity of projects on google
 Nervous_Jesse - Open source education,Ramsey - complacency 1
 Nervous_Jesse - Open source education,Ramsey - complacency 2
 Nervous_Jesse - making things,Marius - 3D printing
@@ -7985,6 +8368,8 @@ Nervous_Jessica - MIT beginning,Jen - MathMajor 1
 Nervous_Jessica - MIT beginning,Kevin - from code to magazines to code
 Nervous_Jessica - MIT beginning,Maeda - Aesthetics and Computation group
 Nervous_Jessica - MIT beginning,Shiffman - Maybe I'd like that
+Nervous_Jessica - MIT beginning,Joel - Amiga500
+Nervous_Jessica - Can't draw,Casey - sketching with code
 Nervous_Jessica - Can't draw,Golan - make a mark
 Nervous_Jessica - Can't draw,Maeda - I can still draw
 Nervous_Jessica - Can't draw,Shantell - Drawing with machines
@@ -8084,6 +8469,7 @@ Paola - generosity,Shiffman - sharing
 Paola - generosity,Shiffman - Open Source Contract
 Paola - generosity,Zach - decompiling
 Paola - generosity,Zach - Open Frameworks 1
+Paola - generosity,Chris - EthicOfSharing
 Paola - sharing,Casey - Processing open
 Paola - sharing,Higa - committed to community
 Paola - sharing,Higa - sharing accidently 1
@@ -8092,6 +8478,8 @@ Paola - sharing,Jer - spoken word
 Paola - sharing,Julia - toward greater generosity 1
 Paola - sharing,Shiffman - sharing
 Paola - sharing,Zach - emailing the communnity
+Paola - sharing,Intro - Collaboration
+Paola - sharing,Intro - Sharing
 Paola - code ant farm,Aaron - exquisite forest
 Paola - code ant farm,Bruce - Github Tarball
 Paola - code ant farm,Casey - Processing open
@@ -8109,6 +8497,8 @@ Paola - code ant farm,Maeda - Processing community
 Paola - code ant farm,Shantell - doingwithothers
 Paola - code ant farm,Shiffman - problem solving
 Paola - code ant farm,Zach - open source challenge
+Paola - code ant farm,Chris - RemoteCollaboration
+Paola - code ant farm,Intro - Collaboration
 Paola - mutant ants,Jen - self and other
 Paola - mutant ants,Jer - spoken word
 Paola - mutant ants,Jer - fireflies
@@ -8283,9 +8673,11 @@ Paola - bach mozart coders,Kevin - no consequences 2
 Paola - bach mozart coders,Kevin - human perception
 Paola - bach mozart coders,Lauren - real and virtual 1
 Paola - bach mozart coders,Patricio - Play 2
+Paola - bach mozart coders,Patricio - Reality
 Paola - bach mozart coders,Philip - bits and bytes
 Paola - bach mozart coders,Ramsey - cloud 1
 Paola - bach mozart coders,Shiffman - reality will only get you so far
+Paola - bach mozart coders,Intro - VirtualReality
 Patricio - Playlist 1,Aaron - exquisite forest 2
 Patricio - Playlist 1,Casey - It's not cinema not a game
 Patricio - Playlist 1,Casey - Something new, totally engrossing
@@ -8294,6 +8686,17 @@ Patricio - Playlist 1,Karolina - Journey
 Patricio - Playlist 1,Marcus - code for storytelling
 Patricio - Playlist 1,Vera - Energy Flow1
 Patricio - Playlist 1,Vera - Energy Flow2
+Patricio - Playlist 2,Casey - Something new, totally engrossing
+Patricio - Playlist 2,Jen - in the movie
+Patricio - Playlist 2,JTNimoy - performance1
+Patricio - Playlist 2,Karolina - Journey
+Patricio - Playlist 2,Karsten - infinite conversation
+Patricio - Playlist 2,Marcus - code for storytelling
+Patricio - Playlist 2,Sophy - nonlinearity
+Patricio - Playlist 2,Vera - Energy Flow1
+Patricio - Playlist 2,Vera - Energy Flow2
+Patricio - Playlist 2,Vera - having a protagonist
+Patricio - Playlist 2,Vera - Accessibility through strories
 Patricio - CopyPaste,Andres - examples of the impossible
 Patricio - CopyPaste,Casey - Programming at 26
 Patricio - CopyPaste,Higa - beginnings
@@ -8306,6 +8709,7 @@ Patricio - CopyPaste,Shiffman - Maybe I'd like that
 Patricio - CopyPaste,Zach - action script
 Patricio - CopyPaste,Zach - action script shorter
 Patricio - CopyPaste,Zach - programming 2
+Patricio - CopyPaste,Intro - Learning
 Patricio - InteractiveTable 1,Bruce - Popular installation art
 Patricio - InteractiveTable 1,Jen - rafael's cardiogram
 Patricio - InteractiveTable 1,Theo - funky forest
@@ -8315,6 +8719,7 @@ Patricio - Play 1,Maeda - playful systems
 Patricio - Play 1,Shantell - Kids
 Patricio - Play 1,Theo - Kids interacting
 Patricio - Play 1,Vera - Playing with a system
+Patricio - Play 1,Intro - interactivity1
 Patricio - Play 2,Karolina - system metaphor
 Patricio - Play 2,Kevin - game designers
 Patricio - Play 2,Kevin - no consequences 2
@@ -8323,28 +8728,168 @@ Patricio - Play 2,Paola - bach mozart coders
 Patricio - Play 2,Philip - bits and bytes
 Patricio - Play 2,Regine - virtual
 Patricio - Play 2,Shiffman - reality will only get you so far
+Patricio - Play 2,Intro - VirtualReality
+Patricio - Theory of Play 1,Golan - piano and pencil,
+Patricio - Theory of Play 1,Golan - Play
+Patricio - Theory of Play 1,Maeda - playful systems
+Patricio - Theory of Play 1,Shantell - big kid
+Patricio - Theory of Play 1,Shantell - Kids
+Patricio - Theory of Play 1,Theo - Kids interacting
+Patricio - Theory of Play 1,Theo - leaving a mark
 Patricio - Rethinking education systems,Casey - Processing open
 Patricio - Rethinking education systems,Casey - Processing addons
 Patricio - Rethinking education systems,Philip - if I had Processing in school
 Patricio - Rethinking education systems,Shiffman - sharing
 Patricio - Rethinking education systems,Shiffman - Open Source Contract
 Patricio - Rethinking education systems,Shiffman - problem solving
+Patricio - Zeitgeist of open source,Casey - Processing open
+Patricio - Zeitgeist of open source,Casey - Processing addons
+Patricio - Zeitgeist of open source,Philip - if I had Processing in school
+Patricio - Zeitgeist of open source,Shiffman - sharing
+Patricio - Zeitgeist of open source,Shiffman - Open Source Contract
+Patricio - Zeitgeist of open source,Shiffman - problem solving
+Patricio - Making tools,Diederick - MoreADeveloper
+Patricio - Making tools,Elliot - ToolmakerArtist1
+Patricio - Making tools,Elliot - ToolmakerArtist2
+Patricio - Making tools,Intro - Toolmaker
+Patricio - Seduced by Play 3,Kevin - no consequences 2
+Patricio - Seduced by Play 3,Shantell - Kids
+Patricio - Building Universes 1,Golan - Play
+Patricio - Building Universes 1,Kevin - no consequences 2
+Patricio - Building Universes 1,Maeda - playful systems
+Patricio - Building Universes 1,Philip - build the whole universe
+Patricio - Building Universes 1,Ramsey - Conway 2
+Patricio - Building Universes 1,Ramsey - Conway 3
+Patricio - Building Universes 1,Shantell - big kid
+Patricio - Building Universes 1,Shantell - Kids
+Patricio - Building Universes 1,Theo - Kids interacting
+Patricio - Building Universes 1,Theo - leaving a mark
+Patricio - Building Universes 2,Casey - Developing a microworld
+Patricio - Building Universes 2,Joel - scale of universe
+Patricio - Building Universes 2,Marcus - emergence
+Patricio - Building Universes 2,Philip - build the whole universe
+Patricio - Building Universes 2,Ramsey - Conway 2
+Patricio - Building Universes 2,Ramsey - Conway 3
+Patricio - Building Universes 2,Ramsey - emergence from simple rules
+Patricio - Building Universes 2,Ramsey - New Kind of Science
+Patricio - Building Universes 2,Shiffman - programming the universe
+Patricio - Building Universes 2,Shiffman - how far could we get?
+Patricio - Building Universes 2,Sophy - Evolution
+Patricio - Building Universes 2,Joel - scaleofUniverse
 Patricio - Jam session,Andres - Reaching higher
 Patricio - Jam session,Fernanda - History flow 1
 Patricio - Jam session,Higa - sharing accidently 1
 Patricio - Jam session,Higa - sharing accidently 2
 Patricio - Jam session,JTNimoy - enough cooks
 Patricio - Jam session,Kyle_CH - new generation
-Patricio - Jam session,Lindsay - memes 2
 Patricio - Jam session,Marcus - Audiovisual glue
 Patricio - Jam session,Philip - audiovisual gigs
 Patricio - Jam session,Shantell - Live performance,
+Patricio - Jam session,Intro - Collaboration
+Patricio - Imaginative technologies 1,Casey - Ideally it goes beyond my imagination
+Patricio - Imaginative technologies 1,Marius - these things are in my head
+Patricio - Imaginative technologies 1,Shiffman - offers me a way to think
+Patricio - Imaginative technologies 1,Joel - Bicycles1
+Patricio - Imaginative technologies 2,Casey - Ideally it goes beyond my imagination
+Patricio - Imaginative technologies 2,Marius - these things are in my head
+Patricio - Imaginative technologies 2,Shiffman - offers me a way to think
+Patricio - Imaginative technologies 2,Joel - Bicycles1
+Patricio - Alchemy 1,Casey - Ideally it goes beyond my imagination
+Patricio - Alchemy 1,Marius - these things are in my head
+Patricio - Reality,Karolina - system metaphor
+Patricio - Reality,Kevin - game designers
+Patricio - Reality,Kevin - no consequences 2
+Patricio - Reality,Kevin - non-mimetic reality
+Patricio - Reality,Paola - bach mozart coders
+Patricio - Reality,Philip - bits and bytes
+Patricio - Reality,Regine - virtual
+Patricio - Reality,Shiffman - reality will only get you so far
+Patricio - Reality,Intro - VirtualReality
+Patricio - Alchemy 2,Casey - Ideally it goes beyond my imagination
+Patricio - Alchemy 2,Marius - these things are in my head
+Patricio - Magic Spells 1,Kyle_CH - coding is 1
+Patricio - Magic Spells 1,Kyle_CH - coding, magic
+Patricio - Magic Spells 1,Ramsey - wizardry 1
+Patricio - Magic Spells 1,Ramsey - wizardry 2
+Patricio - infinity of projects on google,Higa - language barriers
+Patricio - infinity of projects on google,Higa - thick wall
+Patricio - infinity of projects on google,Nervous_Jesse - Open source education
+Patricio - infinity of projects on google,Ramsey - complacency 1
+Patricio - infinity of projects on google,Ramsey - complacency 2
+Patricio - Alchemy 3,Binx - skillshare
+Patricio - Alchemy 3,Martin - deeper learning
+Patricio - Physical synchronization,Lauren - sex tech 2
 Patricio - Discovering Mathematical Reality,Andres - camera distorts reality
 Patricio - Discovering Mathematical Reality,Jen - Math simulating reality
 Patricio - Discovering Mathematical Reality,Kevin - invented as opposed to discovered 1
 Patricio - Network perception,Aaron - dreaming together
+Patricio - Network perception,Karsten - DarkNet
 Patricio - Network perception,Philip - in touch all the time
 Patricio - Network perception,Sophy - the Cloud
+Patricio - Learning through others,Andres - examples of the impossible
+Patricio - Learning through others,Binx - learning
+Patricio - Learning through others,Binx - learning with others
+Patricio - Learning through others,Karsten - Paul Burke
+Patricio - Learning through others,Maeda - sharing for collective advancement
+Patricio - Learning through others,Marcus - gurus
+Patricio - Information 1,Jen - library
+Patricio - Information 3,Binx - meaningful shape1
+Patricio - Information 3,Bruce - Digital humanities technology
+Patricio - Information 3,Fernanda - Personal data
+Patricio - Information 3,Jen - personal archive 1
+Patricio - Information 3,Jen - keeping pictures
+Patricio - Information 3,Jen - Personal archive 2
+Patricio - Information 3,Jen - data autobiography
+Patricio - Information 3,Jen - data memory 1
+Patricio - Information 3,Jen - data memory 2
+Patricio - Information 3,Jen - data truth
+Patricio - Information 3,Jen - information cave
+Patricio - Information 3,Jen - browsing
+Patricio - Information 3,Jen - twitter friends
+Patricio - Information 3,Jer - lives being documented through data
+Patricio - Information 3,Jer - Thought it was boring
+Patricio - Information 3,Jer - storage
+Patricio - Information 3,JTNimoy - data loss
+Patricio - Information 3,Karsten - code is information
+Patricio - Information 3,Karsten - archiving
+Patricio - Information 3,Karsten - preserving history
+Patricio - Information 3,Karsten - atari emulation
+Patricio - Information 3,Kyle_CH - old server farms
+Patricio - Information 3,Kyle_CH - Future life storage
+Patricio - Information 3,Lauren - digital memory
+Patricio - Information 3,Ramsey - cloud 2
+Patricio - Information 3,Sophy - information overload
+Patricio - Library of Babel,Binx - meaningful shape1
+Patricio - Library of Babel,Bruce - Digital humanities technology
+Patricio - Library of Babel,Fernanda - Personal data
+Patricio - Library of Babel,Jen - personal archive 1
+Patricio - Library of Babel,Jen - keeping pictures
+Patricio - Library of Babel,Jen - Personal archive 2
+Patricio - Library of Babel,Jen - data autobiography
+Patricio - Library of Babel,Jen - data memory 1
+Patricio - Library of Babel,Jen - data memory 2
+Patricio - Library of Babel,Jen - data truth
+Patricio - Library of Babel,Jen - twitter friends
+Patricio - Library of Babel,Jer - lives being documented through data
+Patricio - Library of Babel,Jer - Thought it was boring
+Patricio - Library of Babel,Jer - storage
+Patricio - Library of Babel,JTNimoy - data loss
+Patricio - Library of Babel,Karsten - archiving
+Patricio - Library of Babel,Karsten - preserving history
+Patricio - Library of Babel,Kyle_CH - old server farms
+Patricio - Library of Babel,Kyle_CH - Future life storage
+Patricio - Library of Babel,Lauren - digital memory
+Patricio - Library of Babel,Ramsey - cloud 2
+Patricio - Mentors,Karsten - Paul Burke
+Patricio - Mentors,Marcus - gurus
+Patricio - CLOUDS 2,Bruce - aborted projects
+Patricio - CLOUDS 2,Jer - storage
+Patricio - CLOUDS 2,Kyle_CH - Future life storage
+Patricio - Dreams,JTNimoy - Dream1
+Patricio - Dreams,JTNimoy - Dream
+Patricio - Dream of eggs,Aaron - lego creatures
+Patricio - Dream of eggs,Sophy - nanobots
+Patricio - Dream of eggs,Sophy - computer dream
 Philip - what we do,Golan - playable image
 Philip - what we do,Marcus - Audiovisual glue
 Philip - what we do,Shantell - Live performance,
@@ -8356,6 +8901,7 @@ Philip - audiovisual gigs,Marcus - electronic music influence
 Philip - audiovisual gigs,Patricio - Jam session
 Philip - audiovisual gigs,Shantell - Live performance,
 Philip - audiovisual gigs,Shantell - drawing with noise
+Philip - audiovisual gigs,Intro - AudioVisualization
 Philip - get an idea,Casey - sketching with code
 Philip - get an idea,Casey - branching off branching
 Philip - get an idea,Higa - process of working alone
@@ -8385,6 +8931,7 @@ Philip - learn through programming,Karsten - programming is...
 Philip - learn through programming,Shiffman - mysterious box
 Philip - learn through programming,Zach - action script
 Philip - learn through programming,Zach - action script shorter
+Philip - learn through programming,Intro - Learning
 Philip - with programming you can do whatever,Binx - programming is a superpower
 Philip - with programming you can do whatever,Casey - Software is what i love the most
 Philip - with programming you can do whatever,Casey - Ideally it goes beyond my imagination
@@ -8406,6 +8953,9 @@ Philip - with programming you can do whatever,Shiffman - how far could we get?
 Philip - with programming you can do whatever,Shiffman - reality will only get you so far
 Philip - with programming you can do whatever,Shiffman - offers me a way to think
 Philip - with programming you can do whatever,Shiffman - NOC 2
+Philip - with programming you can do whatever,Diederick - allprogrammershavethat
+Philip - with programming you can do whatever,Intro - BuildingWorlds2
+Philip - with programming you can do whatever,Intro - BuildingWorlds
 Philip - understanding through physics,Andres - camera distorts reality
 Philip - understanding through physics,Jen - Math simulating reality
 Philip - understanding through physics,Karolina - system metaphor
@@ -8418,6 +8968,7 @@ Philip - understanding through physics,Shiffman - Constraints,
 Philip - understanding through physics,Sophy - made of photons
 Philip - understanding through physics,Zach - action script
 Philip - understanding through physics,Zach - action script shorter
+Philip - understanding through physics,Intro - Learning
 Philip - toxi's physics,Casey - emergence
 Philip - toxi's physics,Casey - pseudo-science
 Philip - toxi's physics,Higa - collaboration with machines 1
@@ -8448,6 +8999,7 @@ Philip - couldn't do this with actual water,Shiffman - Constraints,
 Philip - couldn't do this with actual water,Shiffman - NOC 1
 Philip - couldn't do this with actual water,Shiffman - NOC 2
 Philip - couldn't do this with actual water,Theo - magic
+Philip - couldn't do this with actual water,Intro - BuildingWorlds2
 Philip - bits and bytes,Jen - Math simulating reality
 Philip - bits and bytes,Karolina - suspension of disbelief
 Philip - bits and bytes,Karolina - uncanny/sniff
@@ -8467,13 +9019,16 @@ Philip - bits and bytes,Maeda - Digital meets analog
 Philip - bits and bytes,Marcus - Epic Games predictions
 Philip - bits and bytes,Paola - bach mozart coders
 Philip - bits and bytes,Patricio - Play 2
+Philip - bits and bytes,Patricio - Reality
 Philip - bits and bytes,Shiffman - reality will only get you so far
 Philip - bits and bytes,Shiffman - NOC 2
 Philip - bits and bytes,Sophy - made of photons
+Philip - bits and bytes,Intro - VirtualReality
 Philip - system in your head,Karolina - Ocean as metaphor
 Philip - system in your head,Marius - Aesthetic with no references,
 Philip - system in your head,Ramsey - C++ built the modern world
 Philip - system in your head,Shantell - Kids
+Philip - system in your head,Intro - interactivity1
 Philip - image is in your brain,Elliot_UK - 2D vision in a 3D world
 Philip - image is in your brain,Higa - understanding pointers
 Philip - image is in your brain,JTNimoy - Cortex
@@ -8508,6 +9063,7 @@ Philip - if I had Processing in school,Karsten - processing
 Philip - if I had Processing in school,Karsten - Educational tools
 Philip - if I had Processing in school,Nervous_Jesse - limiting open source
 Philip - if I had Processing in school,Patricio - Rethinking education systems
+Philip - if I had Processing in school,Patricio - Zeitgeist of open source
 Philip - if I had Processing in school,Shiffman - advanced environment
 Philip - build the whole universe,Bruce - beauty of code 2
 Philip - build the whole universe,Bruce - beauty of code 3
@@ -8515,12 +9071,16 @@ Philip - build the whole universe,Casey - Developing a microworld
 Philip - build the whole universe,Karolina - stasis
 Philip - build the whole universe,Kyle_CH - coding is 1
 Philip - build the whole universe,Kyle_CH - coding 2
+Philip - build the whole universe,Patricio - Building Universes 1
+Philip - build the whole universe,Patricio - Building Universes 2
 Philip - build the whole universe,Ramsey - minecraft 2
 Philip - build the whole universe,Ramsey - Conway 1
 Philip - build the whole universe,Ramsey - Conway 3
 Philip - build the whole universe,Ramsey - emergence from simple rules
 Philip - build the whole universe,Shiffman - NOC 3
 Philip - build the whole universe,Shiffman - how far could we get?
+Philip - build the whole universe,Intro - BuildingWorlds2
+Philip - build the whole universe,Intro - BuildingWorlds
 Philip - limitations,Andres - an overly complex model
 Philip - limitations,Andres - modeling the human being
 Philip - limitations,Kevin - cognition vs computation 1
@@ -8541,6 +9101,7 @@ Philip - young medium,Kyle_CH - erase distinctions
 Philip - young medium,Maeda - Isn't it supposed to be new?
 Philip - young medium,Marius - Living in a state of newness since age 10
 Philip - young medium,Theo - newness
+Philip - young medium,Joel - FirstMover
 Philip - all the points can flush,Greg - visual effects
 Philip - all the points can flush,JTNimoy - performance1
 Philip - all the points can flush,Karolina - stasis
@@ -8551,6 +9112,9 @@ Ramsey - Ramsey Intro,Bruce - beauty of code 5
 Ramsey - Ramsey Intro,Casey - New modes of expression
 Ramsey - Ramsey Intro,Greg - Creative Coder
 Ramsey - Ramsey Intro,JTNimoy - I addicted myself
+Ramsey - Ramsey Intro,Diederick - programmingWithFeeling
+Ramsey - Ramsey Intro,Intro - CodingSketching
+Ramsey - Ramsey Intro,Joel - Amiga500
 Ramsey - designing languages,Bruce - Constant improvement
 Ramsey - designing languages,Bruce - beauty of code 5
 Ramsey - designing languages,Casey - Birth of processing
@@ -8572,6 +9136,9 @@ Ramsey - designing languages,Paola - code changes your thinking
 Ramsey - designing languages,Shantell - Coding gesturally
 Ramsey - designing languages,Shiffman - offers me a way to think
 Ramsey - designing languages,Zach - drawing with Tayoon
+Ramsey - designing languages,Diederick - allprogrammershavethat
+Ramsey - designing languages,Diederick - hackathon1
+Ramsey - designing languages,Intro - Programming
 Ramsey - literacy,Jen - to program or not to program
 Ramsey - literacy,Julian - Critical engineering
 Ramsey - literacy,Julian - change the way we see tech
@@ -8609,8 +9176,11 @@ Ramsey - code specifies behavior,Kevin - invented as opposed to discovered 2
 Ramsey - code specifies behavior,Kyle_CH - blows my mind
 Ramsey - code specifies behavior,Martin - language is like code
 Ramsey - code specifies behavior,Martin - language and infinity
+Ramsey - code specifies behavior,Intro - Computers
 Ramsey - it's not painting 1,Kyle_CH - blows my mind
+Ramsey - it's not painting 1,Intro - Computers
 Ramsey - it's not painting 2,Kyle_CH - blows my mind
+Ramsey - it's not painting 2,Intro - Computers
 Ramsey - cloud 1,Bruce - networks vs robots
 Ramsey - cloud 1,Greg - human augmentation
 Ramsey - cloud 1,Karsten - 256 bytes part 1
@@ -8637,6 +9207,8 @@ Ramsey - cloud 2,Lauren - digital afterlife
 Ramsey - cloud 2,Lauren - inheriting digital property
 Ramsey - cloud 2,Lauren - digital memory
 Ramsey - cloud 2,Lindsay - death of technology
+Ramsey - cloud 2,Patricio - Information 3
+Ramsey - cloud 2,Patricio - Library of Babel
 Ramsey - independent of any human,Aaron - software is a brain
 Ramsey - independent of any human,Aaron - Mini-Artificial Intelligences
 Ramsey - independent of any human,Casey - Software is what i love the most
@@ -8648,6 +9220,7 @@ Ramsey - independent of any human,Paola - changes the way you think
 Ramsey - independent of any human,Paola - code changes your thinking
 Ramsey - independent of any human,Patricio - CopyPaste
 Ramsey - independent of any human,Zach - programming 2
+Ramsey - independent of any human,Intro - Computers
 Ramsey - no ambiguity allowed,Jen - struggle with programming
 Ramsey - no ambiguity allowed,Jen - to program or not to program
 Ramsey - no ambiguity allowed,Jen - new toolkits
@@ -8681,6 +9254,7 @@ Ramsey - a hundred million,Philip - changes your thinking
 Ramsey - a hundred million,Philip - first time computation
 Ramsey - a hundred million,Philip - limitations
 Ramsey - a hundred million,Zach - programming 2
+Ramsey - a hundred million,Intro - Computers
 Ramsey - thinking previously unthinkable thoughts,Joel - Bicycles for the Mind
 Ramsey - thinking previously unthinkable thoughts,Karsten - parallel processing
 Ramsey - thinking previously unthinkable thoughts,Karsten - code as way of knowing
@@ -8722,11 +9296,15 @@ Ramsey - complacency 1,Higa - thick wall
 Ramsey - complacency 1,Jen - hated computer science
 Ramsey - complacency 1,Karsten - programming is...
 Ramsey - complacency 1,Nervous_Jesse - Open source education
+Ramsey - complacency 1,Patricio - infinity of projects on google
+Ramsey - complacency 1,Joel - Amiga500
 Ramsey - complacency 2,Higa - language barriers
 Ramsey - complacency 2,Higa - thick wall
 Ramsey - complacency 2,Jen - hated computer science
 Ramsey - complacency 2,Karsten - programming is...
 Ramsey - complacency 2,Nervous_Jesse - Open source education
+Ramsey - complacency 2,Patricio - infinity of projects on google
+Ramsey - complacency 2,Joel - Amiga500
 Ramsey - traditional engineering,Binx - tech fracturing
 Ramsey - traditional engineering,Casey - understanding future
 Ramsey - traditional engineering,Higa - language barriers
@@ -8748,12 +9326,14 @@ Ramsey - does nature compute? 1,Kevin - computation is unnatural
 Ramsey - does nature compute? 1,Kevin - invented as opposed to discovered 1
 Ramsey - does nature compute? 1,Kevin - invented as opposed to discovered 2
 Ramsey - does nature compute? 1,Theo - evolution
+Ramsey - does nature compute? 1,Intro - Computers
 Ramsey - does nature compute? 2,Jen - a different mathematics
 Ramsey - does nature compute? 2,Karsten - parallel processing
 Ramsey - does nature compute? 2,Kevin - computation was invented
 Ramsey - does nature compute? 2,Kevin - computation is unnatural
 Ramsey - does nature compute? 2,Kevin - invented as opposed to discovered 1
 Ramsey - does nature compute? 2,Kevin - invented as opposed to discovered 2
+Ramsey - does nature compute? 2,Intro - Computers
 Ramsey - fluxus,Kevin - Tools of perception
 Ramsey - fluxus,Lauren - Fluxus App
 Ramsey - fluxus,Lauren - Lifelong project
@@ -8768,6 +9348,7 @@ Ramsey - computation is interpretation of rules,Jen - a different mathematics
 Ramsey - computation is interpretation of rules,Karsten - parallel processing
 Ramsey - computation is interpretation of rules,Kevin - invented as opposed to discovered 1
 Ramsey - computation is interpretation of rules,Kevin - invented as opposed to discovered 2
+Ramsey - computation is interpretation of rules,Intro - Computers
 Ramsey - DNA and code,Andres - protein folding 1
 Ramsey - DNA and code,Andres - protein folding 2
 Ramsey - DNA and code,Andres - DNA computing 1
@@ -8983,10 +9564,14 @@ Ramsey - minecraft 2,Philip - with programming you can do whatever
 Ramsey - minecraft 2,Philip - build the whole universe
 Ramsey - minecraft 2,Shiffman - programming the universe
 Ramsey - minecraft 2,Shiffman - how far could we get?
+Ramsey - minecraft 2,Intro - BuildingWorlds2
+Ramsey - minecraft 2,Intro - BuildingWorlds
 Ramsey - wizardry 1,Kyle_CH - coding is 1
 Ramsey - wizardry 1,Kyle_CH - coding, magic
+Ramsey - wizardry 1,Patricio - Magic Spells 1
 Ramsey - wizardry 2,Kyle_CH - coding is 1
 Ramsey - wizardry 2,Kyle_CH - coding, magic
+Ramsey - wizardry 2,Patricio - Magic Spells 1
 Ramsey - games for access,Casey - Indie Game movement
 Ramsey - games for access,Kevin - game designers
 Ramsey - games for access,Kevin - No consequences 1
@@ -9008,6 +9593,8 @@ Ramsey - Conway 1,Shiffman - how far could we get?
 Ramsey - Conway 1,Shiffman - genetics short 2
 Ramsey - Conway 1,Shiffman - gambling 2
 Ramsey - Conway 1,Vera - Digital life forms
+Ramsey - Conway 1,Intro - BuildingWorlds2
+Ramsey - Conway 1,Intro - BuildingWorlds
 Ramsey - Conway 2,Bruce - Age of the universe, really weird
 Ramsey - Conway 2,Casey - Systems theory
 Ramsey - Conway 2,Casey - emergence
@@ -9022,6 +9609,8 @@ Ramsey - Conway 2,Kevin - computation was invented
 Ramsey - Conway 2,Kyle_CH - coding 2
 Ramsey - Conway 2,Kyle_CH - Polygons
 Ramsey - Conway 2,Marcus - lego bricks
+Ramsey - Conway 2,Patricio - Building Universes 1
+Ramsey - Conway 2,Patricio - Building Universes 2
 Ramsey - Conway 2,Philip - with programming you can do whatever
 Ramsey - Conway 2,Shiffman - a mystical quality
 Ramsey - Conway 2,Shiffman - NOC 3
@@ -9031,6 +9620,9 @@ Ramsey - Conway 2,Shiffman - NOC 2
 Ramsey - Conway 2,Shiffman - gambling 2
 Ramsey - Conway 2,Sophy - Evolution
 Ramsey - Conway 2,Vera - Digital life forms
+Ramsey - Conway 2,Intro - BuildingWorlds2
+Ramsey - Conway 2,Intro - BuildingWorlds
+Ramsey - Conway 2,Joel - scaleofUniverse
 Ramsey - Conway 3,Casey - Systems theory
 Ramsey - Conway 3,Casey - emergence
 Ramsey - Conway 3,Casey - What is emergence?
@@ -9042,6 +9634,8 @@ Ramsey - Conway 3,Karolina - system metaphor
 Ramsey - Conway 3,Kyle_CH - coding 2
 Ramsey - Conway 3,Marcus - lego bricks
 Ramsey - Conway 3,Marius - constraining randomness
+Ramsey - Conway 3,Patricio - Building Universes 1
+Ramsey - Conway 3,Patricio - Building Universes 2
 Ramsey - Conway 3,Philip - with programming you can do whatever
 Ramsey - Conway 3,Philip - build the whole universe
 Ramsey - Conway 3,Shiffman - Games
@@ -9050,6 +9644,8 @@ Ramsey - Conway 3,Shiffman - genetics short 2
 Ramsey - Conway 3,Shiffman - NOC 2
 Ramsey - Conway 3,Shiffman - gambling 2
 Ramsey - Conway 3,Vera - Digital life forms
+Ramsey - Conway 3,Intro - BuildingWorlds2
+Ramsey - Conway 3,Intro - BuildingWorlds
 Ramsey - emergence from simple rules,Andres - soft systems 1
 Ramsey - emergence from simple rules,Andres - modeling complex systems
 Ramsey - emergence from simple rules,Bruce - Age of the universe, really weird
@@ -9066,6 +9662,7 @@ Ramsey - emergence from simple rules,Marcus - lego bricks
 Ramsey - emergence from simple rules,Marius - constraining randomness
 Ramsey - emergence from simple rules,Marius - code can be messy
 Ramsey - emergence from simple rules,Nervous_Jessica - biocomputer
+Ramsey - emergence from simple rules,Patricio - Building Universes 2
 Ramsey - emergence from simple rules,Philip - couldn't do this with actual water
 Ramsey - emergence from simple rules,Philip - build the whole universe
 Ramsey - emergence from simple rules,Shiffman - Magnets
@@ -9079,11 +9676,14 @@ Ramsey - emergence from simple rules,Shiffman - genetics short 2
 Ramsey - emergence from simple rules,Shiffman - NOC 2
 Ramsey - emergence from simple rules,Shiffman - genetic algos 2
 Ramsey - emergence from simple rules,Sophy - Evolution
+Ramsey - emergence from simple rules,Joel - scaleofUniverse
 Ramsey - New Kind of Science,Bruce - Age of the universe, really weird
 Ramsey - New Kind of Science,Joel - scale of universe
 Ramsey - New Kind of Science,Marcus - emergence
+Ramsey - New Kind of Science,Patricio - Building Universes 2
 Ramsey - New Kind of Science,Shiffman - NOC 2
 Ramsey - New Kind of Science,Sophy - Evolution
+Ramsey - New Kind of Science,Joel - scaleofUniverse
 Ramsey - elegant system,Andres - fuzzy systems
 Ramsey - elegant system,Andres - soft systems 1
 Ramsey - elegant system,Andres - an overly complex model
@@ -9172,8 +9772,10 @@ Regine - making a living,Jer - Software2
 Regine - making a living,Joel - water colors and soccer balls
 Regine - making a living,JTNimoy - corporate
 Regine - making a living,Shantell - Goals
+Regine - making a living,Joel - CocaCola
 Regine - adapting work for commercial contexts,Higa - commercial vs personal work
 Regine - adapting work for commercial contexts,Joel - water colors and soccer balls
+Regine - adapting work for commercial contexts,Joel - CocaCola
 Regine - advertisers stealing,Joel - advertising
 Regine - advertisers stealing,Joel - CocoCola
 Regine - commercial appropriation,Bruce - Augmented Ubiquity
@@ -9195,6 +9797,8 @@ Regine - doesn't matter as long as it's good,Zach - less demo
 Regine - more concerned with socially engaged work,Bruce - Criticism
 Regine - more concerned with socially engaged work,Julia - work in context
 Regine - more concerned with socially engaged work,Zach - less demo
+Regine - Hacking,Javier - hackers 1
+Regine - Hackers,Javier - hackers 1
 Regine - Boring beauty,Bruce - Don't care about design
 Regine - Boring beauty,Fernanda - beautiful evidence 2
 Regine - Boring beauty,Fernanda - aesthetics as communication
@@ -9269,6 +9873,8 @@ Regine - virtual,Kyle_CH - Avatars
 Regine - virtual,Kyle_CH - coral reefs
 Regine - virtual,Lauren - real and virtual 1
 Regine - virtual,Patricio - Play 2
+Regine - virtual,Patricio - Reality
+Regine - virtual,Intro - VirtualReality
 Regine - future camera,Bruce - camera technician vs explorer
 Regine - future camera,Bruce - camera of future 25 years
 Regine - future camera,Bruce - Augmented Ubiquity
@@ -9337,6 +9943,7 @@ Regine - not everyone wants that,Julian - what's inside this thing
 Regine - not everyone wants that,Lauren - student apps 2
 Regine - regine's question,Karsten - solving complex problems
 Regine - regine's question,Shiffman - problem solving
+Shantell - drawing with the computer,Casey - sketching with code
 Shantell - drawing with the computer,Golan - make a mark
 Shantell - drawing with the computer,Higa - create a system
 Shantell - drawing with the computer,Higa - collaboration with machines 1
@@ -9349,7 +9956,10 @@ Shantell - drawing with the computer,Zach - drawing with Tayoon
 Shantell - Markmaking software,Golan - yellow tail
 Shantell - Markmaking software,Golan - make a mark
 Shantell - big kid,Golan - Play
+Shantell - big kid,Patricio - Theory of Play 1
+Shantell - big kid,Patricio - Building Universes 1
 Shantell - Drawing with machines,Nervous_Jessica - Can't draw
+Shantell - drawing with computers,Casey - sketching with code
 Shantell - drawing with computers,Casey - branching off branching
 Shantell - drawing with computers,Golan - make a mark
 Shantell - drawing with computers,Higa - create a system
@@ -9380,6 +9990,11 @@ Shantell - Coding: what does it feel like?,Philip - get an idea
 Shantell - Coding: what does it feel like?,Zach - Fucking boring
 Shantell - Coding: what does it feel like?,Zach - programming 2
 Shantell - Coding: what does it feel like?,Zach - Live coding
+Shantell - Coding: what does it feel like?,Diederick - allprogrammershavethat
+Shantell - Coding: what does it feel like?,Diederick - hackathon1
+Shantell - Coding: what does it feel like?,Intro - CodingSketching
+Shantell - Coding: what does it feel like?,Intro - Programming
+Shantell - full circle,Casey - sketching with code
 Shantell - full circle,Casey - teaching at UCLA
 Shantell - full circle,Kevin - Draft mode
 Shantell - full circle,Lauren - real and virtual 2
@@ -9393,6 +10008,9 @@ Shantell - Kids,Golan - Play
 Shantell - Kids,Kevin - no consequences 2
 Shantell - Kids,Maeda - playful systems
 Shantell - Kids,Patricio - Play 1
+Shantell - Kids,Patricio - Theory of Play 1
+Shantell - Kids,Patricio - Seduced by Play 3
+Shantell - Kids,Patricio - Building Universes 1
 Shantell - Kids,Philip - system in your head
 Shantell - Kids,Theo - funky forest
 Shantell - Kids,Theo - Kids interacting
@@ -9420,6 +10038,7 @@ Shantell - Live performance,,Philip - what we do
 Shantell - Live performance,,Philip - audiovisual gigs
 Shantell - Live performance,,Zach - Drawn1
 Shantell - Live performance,,Zach - drawn2
+Shantell - Live performance,,Intro - AudioVisualization
 Shantell - drawing with noise,Higa - sound and video
 Shantell - drawing with noise,Marcus - Audiovisual glue
 Shantell - drawing with noise,Philip - audiovisual gigs
@@ -9448,6 +10067,11 @@ Shantell - Coding gesturally,Karsten - programming is...
 Shantell - Coding gesturally,Kyle_CH - coding, magic
 Shantell - Coding gesturally,Philip - get an idea
 Shantell - Coding gesturally,Ramsey - designing languages
+Shantell - Coding gesturally,Diederick - allprogrammershavethat
+Shantell - Coding gesturally,Diederick - hackathon1
+Shantell - Coding gesturally,Intro - CodingSketching
+Shantell - Coding gesturally,Intro - Programming
+Shantell - circularity,Casey - sketching with code
 Shantell - circularity,Golan - make a mark
 Shantell - circularity,Kevin - Draft mode
 Shantell - circularity,Lauren - real and virtual 2
@@ -9474,6 +10098,7 @@ Shantell - sharing,Lauren - words shape
 Shantell - sharing,Lauren - Metaphors
 Shantell - sharing,Maeda - self expression
 Shantell - sharing,Ramsey - language self expression
+Shantell - sharing,Diederick - programmingWithFeeling
 Shantell - doingwithothers,Binx - hackathon
 Shantell - doingwithothers,Binx - ar&&code
 Shantell - doingwithothers,Golan - hackathons2
@@ -9488,6 +10113,9 @@ Shantell - doingwithothers,Lindsay - memes 2
 Shantell - doingwithothers,Paola - code ant farm
 Shantell - doingwithothers,Zach - hate working alone
 Shantell - doingwithothers,Zach - venn diagrams of interest
+Shantell - doingwithothers,Chris - RemoteCollaboration
+Shantell - doingwithothers,Diederick - hackathon2
+Shantell - doingwithothers,Intro - Collaboration
 Shantell - Sharing creates luck,Golan - Kyle
 Shantell - Sharing creates luck,Higa - 
 Shantell - Sharing creates luck,Marius - algorithms as parameter space
@@ -9517,18 +10145,23 @@ Shiffman - Maybe I'd like that,Ramsey - complicated C++
 Shiffman - Maybe I'd like that,Theo - learning
 Shiffman - Maybe I'd like that,Zach - action script
 Shiffman - Maybe I'd like that,Zach - action script shorter
+Shiffman - Maybe I'd like that,Intro - Learning
+Shiffman - Maybe I'd like that,Joel - Amiga500
 Shiffman - Magnets,Philip - toxi's physics
 Shiffman - Magnets,Philip - couldn't do this with actual water
 Shiffman - Magnets,Ramsey - emergence from simple rules
+Shiffman - Magnets,Joel - Amiga500
 Shiffman - sketching with code,Golan - make a mark
 Shiffman - sketching with code,Karsten - immediate feedback
 Shiffman - sketching with code,Marius - Continuous process of exploration
 Shiffman - sketching with code,Zach - action script shorter
 Shiffman - Not a visual thinker,Binx - there was no degree
+Shiffman - Not a visual thinker,Casey - sketching with code
 Shiffman - Not a visual thinker,Golan - make a mark
 Shiffman - Not a visual thinker,Nervous_Jessica - Can't draw
 Shiffman - Not a visual thinker,Shantell - full circle
 Shiffman - Not a visual thinker,Shantell - circularity
+Shiffman - what computers can do,Casey - sketching with code
 Shiffman - what computers can do,Maeda - last trick
 Shiffman - what computers can do,Maeda - self expression
 Shiffman - what computers can do,Shantell - drawing with the computer
@@ -9592,6 +10225,7 @@ Shiffman - programming the universe,Higa - collaboration with machines 1
 Shiffman - programming the universe,Higa - collaboration with machines 2
 Shiffman - programming the universe,Kyle_CH - coding is 1
 Shiffman - programming the universe,Kyle_CH - coding 2
+Shiffman - programming the universe,Patricio - Building Universes 2
 Shiffman - programming the universe,Philip - with programming you can do whatever
 Shiffman - programming the universe,Philip - toxi's physics
 Shiffman - programming the universe,Philip - couldn't do this with actual water
@@ -9600,6 +10234,8 @@ Shiffman - programming the universe,Ramsey - Conway 1
 Shiffman - programming the universe,Ramsey - emergence from simple rules
 Shiffman - programming the universe,Ramsey - elegant system
 Shiffman - programming the universe,Theo - magic
+Shiffman - programming the universe,Intro - BuildingWorlds2
+Shiffman - programming the universe,Intro - BuildingWorlds
 Shiffman - how far could we get?,Andres - modeling complex systems
 Shiffman - how far could we get?,Andres - modeling the human being
 Shiffman - how far could we get?,Casey - emergence
@@ -9617,6 +10253,7 @@ Shiffman - how far could we get?,Kyle_CH - coding 2
 Shiffman - how far could we get?,Marcus - emergence
 Shiffman - how far could we get?,Martin - data revleation
 Shiffman - how far could we get?,Martin - birds eye view
+Shiffman - how far could we get?,Patricio - Building Universes 2
 Shiffman - how far could we get?,Philip - programming the river
 Shiffman - how far could we get?,Philip - with programming you can do whatever
 Shiffman - how far could we get?,Philip - toxi's physics
@@ -9629,6 +10266,8 @@ Shiffman - how far could we get?,Ramsey - emergence from simple rules
 Shiffman - how far could we get?,Ramsey - elegant system
 Shiffman - how far could we get?,Theo - inspired by nature
 Shiffman - how far could we get?,Theo - magic
+Shiffman - how far could we get?,Intro - BuildingWorlds2
+Shiffman - how far could we get?,Intro - BuildingWorlds
 Shiffman - million monkeys,Ramsey - emergence from simple rules
 Shiffman - reality will only get you so far,Elliot_UK - lightscape
 Shiffman - reality will only get you so far,Jen - Math simulating reality
@@ -9643,9 +10282,11 @@ Shiffman - reality will only get you so far,Kyle_CH - storytelling
 Shiffman - reality will only get you so far,Marcus - Epic Games predictions
 Shiffman - reality will only get you so far,Paola - bach mozart coders
 Shiffman - reality will only get you so far,Patricio - Play 2
+Shiffman - reality will only get you so far,Patricio - Reality
 Shiffman - reality will only get you so far,Philip - with programming you can do whatever
 Shiffman - reality will only get you so far,Philip - understanding through physics
 Shiffman - reality will only get you so far,Philip - bits and bytes
+Shiffman - reality will only get you so far,Intro - VirtualReality
 Shiffman - Constraints,,Andres - modeling the human being
 Shiffman - Constraints,,Casey - emergence
 Shiffman - Constraints,,Casey - pseudo-science
@@ -9659,6 +10300,7 @@ Shiffman - Constraints,,Philip - all the points can flush
 Shiffman - Constraints,,Ramsey - emergence from simple rules
 Shiffman - Constraints,,Theo - magic
 Shiffman - make it random,Casey - Processing, what is it?
+Shiffman - make it random,Casey - sketching with code
 Shiffman - make it random,Casey - randomness
 Shiffman - make it random,Golan - make a mark
 Shiffman - make it random,Karsten - immediate feedback
@@ -9745,11 +10387,15 @@ Shiffman - sharing,Maeda - Processing community
 Shiffman - sharing,Paola - generosity
 Shiffman - sharing,Paola - sharing
 Shiffman - sharing,Patricio - Rethinking education systems
+Shiffman - sharing,Patricio - Zeitgeist of open source
 Shiffman - sharing,Zach - at a festival
 Shiffman - sharing,Zach - open source challenge
 Shiffman - sharing,Zach - printshop
 Shiffman - sharing,Zach - decompiling
 Shiffman - sharing,Zach - emailing the communnity
+Shiffman - sharing,Chris - EthicOfSharing
+Shiffman - sharing,Intro - Collaboration
+Shiffman - sharing,Intro - Sharing
 Shiffman - Open Source Contract,Aaron - sharing
 Shiffman - Open Source Contract,Casey - Processing open
 Shiffman - Open Source Contract,Casey - Processing addons
@@ -9774,7 +10420,9 @@ Shiffman - Open Source Contract,Maeda - Processing community
 Shiffman - Open Source Contract,Marcus - economics question
 Shiffman - Open Source Contract,Paola - generosity
 Shiffman - Open Source Contract,Patricio - Rethinking education systems
+Shiffman - Open Source Contract,Patricio - Zeitgeist of open source
 Shiffman - Open Source Contract,Zach - decompiling
+Shiffman - Open Source Contract,Chris - EthicOfSharing
 Shiffman - problem solving,Casey - Processing open
 Shiffman - problem solving,Casey - Processing addons
 Shiffman - problem solving,Higa - thick wall
@@ -9785,6 +10433,7 @@ Shiffman - problem solving,Karsten - why don't we learn?
 Shiffman - problem solving,Karsten - solving complex problems
 Shiffman - problem solving,Paola - code ant farm
 Shiffman - problem solving,Patricio - Rethinking education systems
+Shiffman - problem solving,Patricio - Zeitgeist of open source
 Shiffman - problem solving,Regine - regine's question
 Shiffman - problem solving,Zach - open source challenge
 Shiffman - Desire for order,Nervous_Jesse - theoretical
@@ -9817,6 +10466,7 @@ Shiffman - mysterious box,Casey - Programming at 26
 Shiffman - mysterious box,Karsten - programming is...
 Shiffman - mysterious box,Philip - learn through programming
 Shiffman - mysterious box,Zach - action script shorter
+Shiffman - mysterious box,Intro - Learning
 Shiffman - offers me a way to think,Bruce - Constant improvement
 Shiffman - offers me a way to think,Bruce - beauty of code 5
 Shiffman - offers me a way to think,Casey - tangle
@@ -9826,8 +10476,14 @@ Shiffman - offers me a way to think,Jen - necessity of code 1
 Shiffman - offers me a way to think,Jen - necessity of code 2
 Shiffman - offers me a way to think,Kevin - Draft mode
 Shiffman - offers me a way to think,Paola - changes the way you think
+Shiffman - offers me a way to think,Patricio - Imaginative technologies 1
+Shiffman - offers me a way to think,Patricio - Imaginative technologies 2
 Shiffman - offers me a way to think,Philip - with programming you can do whatever
 Shiffman - offers me a way to think,Ramsey - designing languages
+Shiffman - offers me a way to think,Diederick - allprogrammershavethat
+Shiffman - offers me a way to think,Diederick - hackathon1
+Shiffman - offers me a way to think,Intro - Programming
+Shiffman - offers me a way to think,Joel - Bicycles1
 Shiffman - inexactitude,Casey - sketching with code
 Shiffman - inexactitude,Higa - collaboration with machines 1
 Shiffman - inexactitude,Higa - collaboration with machines 2
@@ -9901,6 +10557,7 @@ Sophy - information overload,Fernanda - live data
 Sophy - information overload,Jen - information cave
 Sophy - information overload,Jen - browsing
 Sophy - information overload,Karsten - code is information
+Sophy - information overload,Patricio - Information 3
 Sophy - nanobots,Aaron - dreaming together
 Sophy - nanobots,Aaron - progress
 Sophy - nanobots,Bruce - future city 2
@@ -9909,15 +10566,18 @@ Sophy - nanobots,Bruce - 2060s (Lashup 5)
 Sophy - nanobots,Bruce - A sappy Singularity
 Sophy - nanobots,Julian - science fiction
 Sophy - nanobots,Kevin - cognition vs computation 1
+Sophy - nanobots,Patricio - Dream of eggs
 Sophy - nanobots,Regine - imagining the future
 Sophy - nanobots,Regine - teleportation
 Sophy - nanobots,Theo - crazy researcher
 Sophy - nonlinearity,Casey - Something new, totally engrossing
 Sophy - nonlinearity,Karolina - Journey
 Sophy - nonlinearity,Marcus - code for storytelling
+Sophy - nonlinearity,Patricio - Playlist 2
 Sophy - nonlinearity,Vera - Energy Flow1
 Sophy - nonlinearity,Vera - having a protagonist
 Sophy - nonlinearity,Vera - Accessibility through strories
+Sophy - computer dream,Patricio - Dream of eggs
 Sophy - techno-fungus,Kyle_CH - Modeling consciousness
 Sophy - techno-fungus,Marius - cyperpunk history
 Sophy - distributed culture,Aaron - exchange of ideas drives progress
@@ -9962,10 +10622,12 @@ Sophy - the Cloud,Ramsey - the internet 1
 Sophy - the Cloud,Ramsey - distributed model
 Sophy - Evolution,Bruce - Age of the universe, really weird
 Sophy - Evolution,Joel - scale of universe
+Sophy - Evolution,Patricio - Building Universes 2
 Sophy - Evolution,Ramsey - Conway 2
 Sophy - Evolution,Ramsey - emergence from simple rules
 Sophy - Evolution,Ramsey - New Kind of Science
 Sophy - Evolution,Theo - evolution
+Sophy - Evolution,Joel - scaleofUniverse
 Sophy - made of photons,Andres - camera distorts reality
 Sophy - made of photons,Elliot_UK - 2D vision in a 3D world
 Sophy - made of photons,Fernanda - seeing patterns 2
@@ -9990,16 +10652,22 @@ Theo - Kids interacting,Golan - instruments
 Theo - Kids interacting,Golan - Play
 Theo - Kids interacting,Maeda - playful systems
 Theo - Kids interacting,Patricio - Play 1
+Theo - Kids interacting,Patricio - Theory of Play 1
+Theo - Kids interacting,Patricio - Building Universes 1
 Theo - Kids interacting,Shantell - Kids
+Theo - Kids interacting,Intro - interactivity1
 Theo - leaving a mark,Golan - my mother the abstract painter
 Theo - leaving a mark,Golan - Play
 Theo - leaving a mark,Maeda - playful systems
+Theo - leaving a mark,Patricio - Theory of Play 1
+Theo - leaving a mark,Patricio - Building Universes 1
 Theo - leaving a mark,Shantell - Kids
 Theo - learning,Binx - Background
 Theo - learning,Casey - Programming at 26
 Theo - learning,Karsten - east german hardware 2
 Theo - learning,Shiffman - Maybe I'd like that
 Theo - learning,Zach - action script
+Theo - learning,Joel - Amiga500
 Theo - struggle with technology,Kevin - learning to code
 Theo - struggle with technology,Kevin - autonomous machines crash
 Theo - struggle with technology,Nervous_Jesse - understanding to control 3
@@ -10020,6 +10688,8 @@ Theo - hide the technology,,Golan - jolted into the NOW
 Theo - hide the technology,,Jen - deep interaction
 Theo - hide the technology,,Jer - active not interactive
 Theo - hide the technology,,Kevin - Area code 2
+Theo - hide the technology,,Intro - Interfaces
+Theo - hide the technology,,Joel - Interactivity
 Theo - open frameworks,Maeda - ACU p 2
 Theo - open frameworks,Zach - Open Frameworks 2
 Theo - open frameworks,Zach - at a festival
@@ -10027,9 +10697,11 @@ Theo - open frameworks,Zach - decompiling
 Theo - open frameworks,Zach - Open Frameworks 1
 Theo - open frameworks,Zach - Open Frameworks 3
 Theo - open frameworks,Zach - emailing the communnity
+Theo - open frameworks,Diederick - openFrameworks
 Theo - development feedback,,Karsten - processing
 Theo - development feedback,,Karsten - toxiclibs
 Theo - development feedback,,Maeda - Processing toolkit
+Theo - development feedback,,Diederick - openFrameworks
 Theo - favorite projects,Bruce - Simulation Replication Recursion
 Theo - favorite projects,Kevin - algo culture 4
 Theo - generative and pre-rendered,Marius - Continuous process of exploration
@@ -10095,6 +10767,7 @@ Vera - Playing with a system,Marcus - lego bricks
 Vera - Playing with a system,Nervous_Jesse - organic process
 Vera - Playing with a system,Patricio - Play 1
 Vera - Playing with a system,Ramsey - elegant system
+Vera - Playing with a system,Intro - interactivity1
 Vera - Digital life forms,Casey - Systems theory
 Vera - Digital life forms,Marcus - emergence
 Vera - Digital life forms,Marius - artificial creativity
@@ -10121,6 +10794,7 @@ Vera - Energy Flow1,Marcus - energy flow_riot
 Vera - Energy Flow1,Marcus - audience
 Vera - Energy Flow1,Marcus - code for storytelling
 Vera - Energy Flow1,Patricio - Playlist 1
+Vera - Energy Flow1,Patricio - Playlist 2
 Vera - Energy Flow1,Sophy - nonlinearity
 Vera - Energy Flow2,Aaron - mini-brains
 Vera - Energy Flow2,Aaron - autonomous storytellers
@@ -10140,6 +10814,7 @@ Vera - Energy Flow2,Marcus - energy flow_riot
 Vera - Energy Flow2,Marcus - code for storytelling
 Vera - Energy Flow2,Paola - mutant ants
 Vera - Energy Flow2,Patricio - Playlist 1
+Vera - Energy Flow2,Patricio - Playlist 2
 Vera - Energy Flow2,Ramsey - social computer
 Vera - having a protagonist,Aaron - mini-brains
 Vera - having a protagonist,Aaron - autonomous storytellers
@@ -10156,6 +10831,7 @@ Vera - having a protagonist,Marcus - energy flow
 Vera - having a protagonist,Marcus - energy flow_riot
 Vera - having a protagonist,Marcus - audience
 Vera - having a protagonist,Marcus - code for storytelling
+Vera - having a protagonist,Patricio - Playlist 2
 Vera - having a protagonist,Sophy - nonlinearity
 Vera - Accessibility through strories,Aaron - mini-brains
 Vera - Accessibility through strories,Aaron - autonomous storytellers
@@ -10173,6 +10849,7 @@ Vera - Accessibility through strories,Marcus - energy flow
 Vera - Accessibility through strories,Marcus - energy flow_riot
 Vera - Accessibility through strories,Marcus - audience
 Vera - Accessibility through strories,Marcus - code for storytelling
+Vera - Accessibility through strories,Patricio - Playlist 2
 Vera - Accessibility through strories,Sophy - nonlinearity
 Vera - What I like about this field,Bruce - All of a sudden...
 Vera - What I like about this field,Bruce - Tidepools
@@ -10202,6 +10879,8 @@ Zach - at a festival,Lindsay - memes 2
 Zach - at a festival,Maeda - Processing community
 Zach - at a festival,Shiffman - sharing
 Zach - at a festival,Theo - open frameworks
+Zach - at a festival,Intro - Collaboration
+Zach - at a festival,Intro - Sharing
 Zach - open source challenge,Casey - Processing open
 Zach - open source challenge,Higa - thick wall
 Zach - open source challenge,Higa - sharing accidently 1
@@ -10231,6 +10910,8 @@ Zach - printshop,Lauren - using tools in unexpected ways
 Zach - printshop,Lindsay - memes 2
 Zach - printshop,Maeda - sharing for collective advancement
 Zach - printshop,Shiffman - sharing
+Zach - printshop,Intro - Collaboration
+Zach - printshop,Intro - Sharing
 Zach - action script,Binx - tech fracturing
 Zach - action script,Casey - Software is what i love the most
 Zach - action script,Casey - Programming at 26
@@ -10244,6 +10925,8 @@ Zach - action script,Philip - learn through programming
 Zach - action script,Philip - understanding through physics
 Zach - action script,Shiffman - Maybe I'd like that
 Zach - action script,Theo - learning
+Zach - action script,Intro - Learning
+Zach - action script,Joel - Amiga500
 Zach - work with Golan,Golan - Kyle
 Zach - work with Golan,Maeda - passing the baton
 Zach - work with Golan,Maeda - Forever
@@ -10259,6 +10942,7 @@ Zach - hate working alone,Golan - hackathons2
 Zach - hate working alone,Shantell - meeting zach
 Zach - hate working alone,Shantell - work with zach
 Zach - hate working alone,Shantell - doingwithothers
+Zach - hate working alone,Diederick - hackathon2
 Zach - Drawn1,Golan - yellow tail
 Zach - Drawn1,Golan - playable image
 Zach - Drawn1,Julia - we feel fine
@@ -10272,6 +10956,8 @@ Zach - Time slows down,Kevin - storytelling human to human
 Zach - Time slows down,Shantell - drawing with computers
 Zach - Time slows down,Shantell - live drawing
 Zach - Time slows down,Shantell - simple
+Zach - Time slows down,Joel - InTheNow1
+Zach - Time slows down,Joel - InTheNow2
 Zach - Fucking boring,Jen - hated computer science
 Zach - Fucking boring,Jen - necessity of code 1
 Zach - Fucking boring,Jen - sitting in front of a computer
@@ -10327,6 +11013,7 @@ Zach - decompiling,Ramsey - legos 1
 Zach - decompiling,Shiffman - sharing
 Zach - decompiling,Shiffman - Open Source Contract
 Zach - decompiling,Theo - open frameworks
+Zach - decompiling,Chris - EthicOfSharing
 Zach - less demo,Bruce - Criticism
 Zach - less demo,Golan - this to that
 Zach - less demo,Jen - stasis 1
@@ -10357,6 +11044,8 @@ Zach - Open Frameworks 1,Marcus - economics question
 Zach - Open Frameworks 1,Paola - generosity
 Zach - Open Frameworks 1,Ramsey - legos 1
 Zach - Open Frameworks 1,Theo - open frameworks
+Zach - Open Frameworks 1,Chris - EthicOfSharing
+Zach - Open Frameworks 1,Diederick - openFrameworks
 Zach - Open Frameworks 3,Binx - there was no degree
 Zach - Open Frameworks 3,Greg - makematics1
 Zach - Open Frameworks 3,Higa - committed to community
@@ -10383,6 +11072,8 @@ Zach - emailing the communnity,Maeda - Processing community
 Zach - emailing the communnity,Paola - sharing
 Zach - emailing the communnity,Shiffman - sharing
 Zach - emailing the communnity,Theo - open frameworks
+Zach - emailing the communnity,Intro - Collaboration
+Zach - emailing the communnity,Intro - Sharing
 Zach - Open Frameworks 4,Higa - committed to community
 Zach - Open Frameworks 4,Julia - community
 Zach - Open Frameworks 4,Karsten - becoming insular
@@ -10397,12 +11088,14 @@ Zach - action script shorter,Philip - understanding through physics
 Zach - action script shorter,Shiffman - Maybe I'd like that
 Zach - action script shorter,Shiffman - sketching with code
 Zach - action script shorter,Shiffman - mysterious box
+Zach - action script shorter,Intro - Learning
 Zach - venn diagrams of interest,Binx - hackathon
 Zach - venn diagrams of interest,Binx - ar&&code
 Zach - venn diagrams of interest,Golan - hackathon
 Zach - venn diagrams of interest,Jer - makerthons
 Zach - venn diagrams of interest,Kyle_CH - new generation
 Zach - venn diagrams of interest,Shantell - doingwithothers
+Zach - venn diagrams of interest,Diederick - hackathon2
 Zach - drawn2,Golan - jolted into the NOW
 Zach - drawn2,Jen - deep interaction
 Zach - drawn2,Joel - in the now
@@ -10411,6 +11104,9 @@ Zach - drawn2,Shantell - Live performance,
 Zach - drawn2,Shantell - live drawing
 Zach - drawn2,Shantell - every line is a mistake
 Zach - drawn2,Shantell - simple
+Zach - drawn2,Joel - InTheNow1
+Zach - drawn2,Joel - InTheNow2
+Zach - drawing with Tayoon,Casey - sketching with code
 Zach - drawing with Tayoon,Casey - tangle
 Zach - drawing with Tayoon,Golan - make a mark
 Zach - drawing with Tayoon,Higa - collaboration with machines 1
@@ -10457,3 +11153,351 @@ Zach - more poetry, less demo,Golan - easy beauty
 Zach - more poetry, less demo,Jen - stasis 2
 Zach - more poetry, less demo,Kevin - algo culture 4
 Zach - more poetry, less demo,Paola - beauty in exile
+Chris - EthicOfSharing,Aaron - sharing
+Chris - EthicOfSharing,Casey - Processing open
+Chris - EthicOfSharing,Golan - closed source mistake
+Chris - EthicOfSharing,Golan - limits to sharing
+Chris - EthicOfSharing,Higa - not sharing its a backup
+Chris - EthicOfSharing,Higa - 
+Chris - EthicOfSharing,Higa - sharing accidently 1
+Chris - EthicOfSharing,Higa - sharing accidently 2
+Chris - EthicOfSharing,Jer - Making a tool
+Chris - EthicOfSharing,Jer - Post-capitalism
+Chris - EthicOfSharing,Jer - post-capitalism2
+Chris - EthicOfSharing,Julia - open source and ego
+Chris - EthicOfSharing,Julia - can't be solitary
+Chris - EthicOfSharing,Julia - toward greater generosity 1
+Chris - EthicOfSharing,Karsten - becoming insular
+Chris - EthicOfSharing,Maeda - Processing community
+Chris - EthicOfSharing,Marcus - economics question
+Chris - EthicOfSharing,Paola - generosity
+Chris - EthicOfSharing,Shiffman - sharing
+Chris - EthicOfSharing,Shiffman - Open Source Contract
+Chris - EthicOfSharing,Zach - decompiling
+Chris - EthicOfSharing,Zach - Open Frameworks 1
+Chris - RemoteCollaboration,Higa - sharing accidently 1
+Chris - RemoteCollaboration,Higa - sharing accidently 2
+Chris - RemoteCollaboration,JTNimoy - 100 artists versus One
+Chris - RemoteCollaboration,JTNimoy - one of us
+Chris - RemoteCollaboration,Kyle_CH - new generation
+Chris - RemoteCollaboration,Lindsay - memes 2
+Chris - RemoteCollaboration,Paola - code ant farm
+Chris - RemoteCollaboration,Shantell - doingwithothers
+Chris - RemoteCollaboration,Intro - Collaboration
+Diederick - MoreADeveloper,Binx - Background
+Diederick - MoreADeveloper,Patricio - Making tools
+Diederick - MoreADeveloper,Elliot - ToolmakerArtist1
+Diederick - MoreADeveloper,Elliot - ToolmakerArtist2
+Diederick - MoreADeveloper,Intro - Toolmaker
+Diederick - PaintingLikeCoding,Joel - Watercolors
+Diederick - allprogrammershavethat,Binx - programming is a superpower
+Diederick - allprogrammershavethat,Bruce - Constant improvement
+Diederick - allprogrammershavethat,Jen - hated computer science
+Diederick - allprogrammershavethat,Jen - necessity of code 1
+Diederick - allprogrammershavethat,Jen - necessity of code 2
+Diederick - allprogrammershavethat,JTNimoy - I addicted myself
+Diederick - allprogrammershavethat,Karsten - programming is...
+Diederick - allprogrammershavethat,Kyle_CH - coding is 1
+Diederick - allprogrammershavethat,Kyle_CH - coding 2
+Diederick - allprogrammershavethat,Philip - with programming you can do whatever
+Diederick - allprogrammershavethat,Ramsey - designing languages
+Diederick - allprogrammershavethat,Shantell - Coding: what does it feel like?
+Diederick - allprogrammershavethat,Shantell - Coding gesturally
+Diederick - allprogrammershavethat,Shiffman - offers me a way to think
+Diederick - allprogrammershavethat,Intro - Programming
+Diederick - hackathon1,Bruce - Constant improvement
+Diederick - hackathon1,Jen - hated computer science
+Diederick - hackathon1,Jen - necessity of code 1
+Diederick - hackathon1,Jen - necessity of code 2
+Diederick - hackathon1,JTNimoy - I addicted myself
+Diederick - hackathon1,Karsten - programming is...
+Diederick - hackathon1,Ramsey - designing languages
+Diederick - hackathon1,Shantell - Coding: what does it feel like?
+Diederick - hackathon1,Shantell - Coding gesturally
+Diederick - hackathon1,Shiffman - offers me a way to think
+Diederick - hackathon1,Intro - Programming
+Diederick - hackathon2,Binx - hackathon
+Diederick - hackathon2,Binx - ar&&code
+Diederick - hackathon2,Bruce - FFFFFAT Lab
+Diederick - hackathon2,Golan - hackathon
+Diederick - hackathon2,Golan - hackathons2
+Diederick - hackathon2,Jer - makerthons
+Diederick - hackathon2,Jer - Desire to get together
+Diederick - hackathon2,Kyle_CH - new generation
+Diederick - hackathon2,Lindsay - memes 2
+Diederick - hackathon2,Shantell - doingwithothers
+Diederick - hackathon2,Zach - hate working alone
+Diederick - hackathon2,Zach - venn diagrams of interest
+Diederick - openFrameworks,Karsten - becoming insular
+Diederick - openFrameworks,Theo - open frameworks
+Diederick - openFrameworks,Theo - development feedback,
+Diederick - openFrameworks,Zach - Open Frameworks 1
+Diederick - programmingWithFeeling,Casey - New modes of expression
+Diederick - programmingWithFeeling,Maeda - self expression
+Diederick - programmingWithFeeling,Ramsey - Ramsey Intro
+Diederick - programmingWithFeeling,Shantell - sharing
+Diederick - programmingWithFeeling,Joel - Watercolors
+Elliot - AugementedReality,Bruce - Hand dryer
+Elliot - AugementedReality,Bruce - future city 1
+Elliot - AugementedReality,Bruce - Everted Cyberspace
+Elliot - AugementedReality,Kevin - area code 1
+Elliot - AugementedReality,Kevin - Area code 2
+Elliot - Kinect,Andres - Computational lens
+Elliot - Kinect,Elliot_UK - limitations 2
+Elliot - Kinect,Greg - camera getting cheaper
+Elliot - Kinect,Greg - camera scaling up
+Elliot - Kinect,Greg - cameras scaling up
+Elliot - Kinect,Jen - Lidar 1
+Elliot - Kinect,JTNimoy - Describe the Kinect
+Elliot - Kinect,JTNimoy - increased the bandwidth
+Elliot - Kinect,Kyle_CH - RGBD
+Elliot - Kinect,Kyle_MC - kinect 2
+Elliot - Kinect,Intro - KinectFutureCamera
+Elliot - ToolmakerArtist1,Patricio - Making tools
+Elliot - ToolmakerArtist1,Diederick - MoreADeveloper
+Elliot - ToolmakerArtist1,Intro - Toolmaker
+Elliot - ToolmakerArtist2,Patricio - Making tools
+Elliot - ToolmakerArtist2,Diederick - MoreADeveloper
+Elliot - ToolmakerArtist2,Intro - Toolmaker
+Intro - AudioVisualization,Higa - sound and video
+Intro - AudioVisualization,Kyle_CH - Casey Reas Music Visualizations
+Intro - AudioVisualization,Marcus - Audiovisual glue
+Intro - AudioVisualization,Marcus - electronic music influence
+Intro - AudioVisualization,Philip - audiovisual gigs
+Intro - AudioVisualization,Shantell - Live performance,
+Intro - BuildingWorlds2,Casey - Developing a microworld
+Intro - BuildingWorlds2,Kyle_CH - coding is 1
+Intro - BuildingWorlds2,Kyle_CH - coding 2
+Intro - BuildingWorlds2,Philip - with programming you can do whatever
+Intro - BuildingWorlds2,Philip - couldn't do this with actual water
+Intro - BuildingWorlds2,Philip - build the whole universe
+Intro - BuildingWorlds2,Ramsey - minecraft 2
+Intro - BuildingWorlds2,Ramsey - Conway 1
+Intro - BuildingWorlds2,Ramsey - Conway 2
+Intro - BuildingWorlds2,Ramsey - Conway 3
+Intro - BuildingWorlds2,Shiffman - programming the universe
+Intro - BuildingWorlds2,Shiffman - how far could we get?
+Intro - BuildingWorlds,Casey - Developing a microworld
+Intro - BuildingWorlds,Kyle_CH - coding is 1
+Intro - BuildingWorlds,Kyle_CH - coding 2
+Intro - BuildingWorlds,Philip - with programming you can do whatever
+Intro - BuildingWorlds,Philip - build the whole universe
+Intro - BuildingWorlds,Ramsey - minecraft 2
+Intro - BuildingWorlds,Ramsey - Conway 1
+Intro - BuildingWorlds,Ramsey - Conway 2
+Intro - BuildingWorlds,Ramsey - Conway 3
+Intro - BuildingWorlds,Shiffman - programming the universe
+Intro - BuildingWorlds,Shiffman - how far could we get?
+Intro - CodingSketching,Jen - necessity of code 2
+Intro - CodingSketching,Ramsey - Ramsey Intro
+Intro - CodingSketching,Shantell - Coding: what does it feel like?
+Intro - CodingSketching,Shantell - Coding gesturally
+Intro - Collaboration,Andres - Reaching higher
+Intro - Collaboration,Binx - learning
+Intro - Collaboration,Binx - learning with others
+Intro - Collaboration,Casey - Processing open
+Intro - Collaboration,Casey - group teaching
+Intro - Collaboration,Fernanda - History flow 1
+Intro - Collaboration,Golan - Kyle
+Intro - Collaboration,Higa - committed to community
+Intro - Collaboration,Higa - sharing accidently 1
+Intro - Collaboration,Higa - sharing accidently 2
+Intro - Collaboration,Jer - spoken word
+Intro - Collaboration,Jer - Thanks
+Intro - Collaboration,JTNimoy - 100 artists versus One
+Intro - Collaboration,JTNimoy - one of us
+Intro - Collaboration,JTNimoy - enough cooks
+Intro - Collaboration,Julia - toward greater generosity 1
+Intro - Collaboration,Karsten - becoming insular
+Intro - Collaboration,Kyle_CH - new generation
+Intro - Collaboration,Lindsay - memes 2
+Intro - Collaboration,Maeda - Processing community
+Intro - Collaboration,Paola - sharing
+Intro - Collaboration,Paola - code ant farm
+Intro - Collaboration,Patricio - Jam session
+Intro - Collaboration,Shantell - doingwithothers
+Intro - Collaboration,Shiffman - sharing
+Intro - Collaboration,Zach - at a festival
+Intro - Collaboration,Zach - printshop
+Intro - Collaboration,Zach - emailing the communnity
+Intro - Collaboration,Chris - RemoteCollaboration
+Intro - Computers,Aaron - Mini-Artificial Intelligences
+Intro - Computers,Bruce - beauty of code 1
+Intro - Computers,Bruce - beauty of code 2
+Intro - Computers,Bruce - beauty of code 3
+Intro - Computers,Karsten - parallel processing
+Intro - Computers,Kevin - invented as opposed to discovered 1
+Intro - Computers,Kevin - invented as opposed to discovered 2
+Intro - Computers,Kyle_CH - blows my mind
+Intro - Computers,Ramsey - code specifies behavior
+Intro - Computers,Ramsey - it's not painting 1
+Intro - Computers,Ramsey - it's not painting 2
+Intro - Computers,Ramsey - independent of any human
+Intro - Computers,Ramsey - a hundred million
+Intro - Computers,Ramsey - does nature compute? 1
+Intro - Computers,Ramsey - does nature compute? 2
+Intro - Computers,Ramsey - computation is interpretation of rules
+Intro - Interfaces,Bruce - Hand dryer
+Intro - Interfaces,Greg - camera getting cheaper
+Intro - Interfaces,Greg - camera scaling up
+Intro - Interfaces,Greg - cameras scaling up
+Intro - Interfaces,Lauren - wearables 1
+Intro - Interfaces,Theo - hide the technology,
+Intro - KinectFutureCamera,Elliot_UK - limitations 2
+Intro - KinectFutureCamera,JTNimoy - Describe the Kinect
+Intro - KinectFutureCamera,JTNimoy - increased the bandwidth
+Intro - KinectFutureCamera,Kyle_CH - RGBD
+Intro - KinectFutureCamera,Kyle_MC - kinect 2
+Intro - KinectFutureCamera,Elliot - Kinect
+Intro - Learning,Binx - tech fracturing
+Intro - Learning,Casey - Programming at 26
+Intro - Learning,Jen - hated computer science
+Intro - Learning,Karsten - programming is...
+Intro - Learning,Patricio - CopyPaste
+Intro - Learning,Philip - learn through programming
+Intro - Learning,Philip - understanding through physics
+Intro - Learning,Shiffman - Maybe I'd like that
+Intro - Learning,Shiffman - mysterious box
+Intro - Learning,Zach - action script
+Intro - Learning,Zach - action script shorter
+Intro - LogicOfPixels,Bruce - beauty of code 1
+Intro - LogicOfPixels,Higa - simplicity of self made tools
+Intro - LogicOfPixels,Jen - a different mathematics
+Intro - LogicOfPixels,Kevin - invented as opposed to discovered 1
+Intro - LogicOfPixels,Kevin - invented as opposed to discovered 2
+Intro - LogicOfPixels,Joel - Bicycles1
+Intro - Programming,Bruce - Constant improvement
+Intro - Programming,Higa - working all night
+Intro - Programming,Jen - hated computer science
+Intro - Programming,Jen - necessity of code 1
+Intro - Programming,Jen - necessity of code 2
+Intro - Programming,JTNimoy - I addicted myself
+Intro - Programming,JTNimoy - Pickle
+Intro - Programming,Karsten - 256 bytes part 1
+Intro - Programming,Karsten - programming is...
+Intro - Programming,Ramsey - designing languages
+Intro - Programming,Shantell - Coding: what does it feel like?
+Intro - Programming,Shantell - Coding gesturally
+Intro - Programming,Shiffman - offers me a way to think
+Intro - Programming,Diederick - allprogrammershavethat
+Intro - Programming,Diederick - hackathon1
+Intro - Sharing,Binx - learning
+Intro - Sharing,Binx - learning with others
+Intro - Sharing,Casey - Processing open
+Intro - Sharing,Casey - group teaching
+Intro - Sharing,Golan - Kyle
+Intro - Sharing,Higa - committed to community
+Intro - Sharing,Higa - sharing accidently 1
+Intro - Sharing,Higa - sharing accidently 2
+Intro - Sharing,Jer - spoken word
+Intro - Sharing,Jer - Thanks
+Intro - Sharing,Julia - toward greater generosity 1
+Intro - Sharing,Karsten - becoming insular
+Intro - Sharing,Kyle_CH - new generation
+Intro - Sharing,Lindsay - memes 2
+Intro - Sharing,Maeda - Processing community
+Intro - Sharing,Paola - sharing
+Intro - Sharing,Shiffman - sharing
+Intro - Sharing,Zach - at a festival
+Intro - Sharing,Zach - printshop
+Intro - Sharing,Zach - emailing the communnity
+Intro - Toolmaker,Patricio - Making tools
+Intro - Toolmaker,Diederick - MoreADeveloper
+Intro - Toolmaker,Elliot - ToolmakerArtist1
+Intro - Toolmaker,Elliot - ToolmakerArtist2
+Intro - VirtualReality,Karolina - system metaphor
+Intro - VirtualReality,Kevin - game designers
+Intro - VirtualReality,Kevin - no consequences 2
+Intro - VirtualReality,Kevin - non-mimetic reality
+Intro - VirtualReality,Paola - bach mozart coders
+Intro - VirtualReality,Patricio - Play 2
+Intro - VirtualReality,Patricio - Reality
+Intro - VirtualReality,Philip - bits and bytes
+Intro - VirtualReality,Regine - virtual
+Intro - VirtualReality,Shiffman - reality will only get you so far
+Intro - interactivity1,Casey - thinking about time
+Intro - interactivity1,Golan - playable image
+Intro - interactivity1,Golan - instruments
+Intro - interactivity1,Higa - collaboration with machines 1
+Intro - interactivity1,Higa - collaboration with machines 2
+Intro - interactivity1,Jen - rafael's cardiogram
+Intro - interactivity1,Jen - stasis 2
+Intro - interactivity1,Kyle_CH - don't underestimate traditional art
+Intro - interactivity1,Maeda - playful systems
+Intro - interactivity1,Patricio - Play 1
+Intro - interactivity1,Philip - system in your head
+Intro - interactivity1,Theo - Kids interacting
+Intro - interactivity1,Vera - Playing with a system
+Joel - Amiga500,Binx - Background
+Joel - Amiga500,Casey - Programming at 26
+Joel - Amiga500,Higa - thick wall
+Joel - Amiga500,Jen - MathMajor 1
+Joel - Amiga500,Jen - hated computer science
+Joel - Amiga500,JTNimoy - I addicted myself
+Joel - Amiga500,Karsten - east german hardware 2
+Joel - Amiga500,Karsten - programming is...
+Joel - Amiga500,Kevin - from code to magazines to code
+Joel - Amiga500,Nervous_Jessica - MIT beginning
+Joel - Amiga500,Ramsey - Ramsey Intro
+Joel - Amiga500,Ramsey - complacency 1
+Joel - Amiga500,Ramsey - complacency 2
+Joel - Amiga500,Shiffman - Maybe I'd like that
+Joel - Amiga500,Shiffman - Magnets
+Joel - Amiga500,Theo - learning
+Joel - Amiga500,Zach - action script
+Joel - Bicycles1,Bruce - beauty of code 1
+Joel - Bicycles1,Kevin - invented as opposed to discovered 1
+Joel - Bicycles1,Kevin - invented as opposed to discovered 2
+Joel - Bicycles1,Martin - limits of computation
+Joel - Bicycles1,Nervous_Jesse - Time in the universe
+Joel - Bicycles1,Patricio - Imaginative technologies 1
+Joel - Bicycles1,Patricio - Imaginative technologies 2
+Joel - Bicycles1,Shiffman - offers me a way to think
+Joel - Bicycles1,Intro - LogicOfPixels
+Joel - Bicycles2,Maeda - own the tool
+Joel - CocaCola,Higa - commercial vs personal work
+Joel - CocaCola,Jer - Software1
+Joel - CocaCola,Jer - Software2
+Joel - CocaCola,Regine - making a living
+Joel - CocaCola,Regine - adapting work for commercial contexts
+Joel - FirstMover,Bruce - unstable mileau of media art
+Joel - FirstMover,Golan - raytraced spheres
+Joel - FirstMover,JTNimoy - originality
+Joel - FirstMover,Julia - new and interesting
+Joel - FirstMover,Julia - medium of our time
+Joel - FirstMover,Kyle_CH - erase distinctions
+Joel - FirstMover,Maeda - Isn't it supposed to be new?
+Joel - FirstMover,Philip - young medium
+Joel - InTheNow1,Golan - jolted into the NOW
+Joel - InTheNow1,Jen - deep interaction
+Joel - InTheNow1,Zach - Time slows down
+Joel - InTheNow1,Zach - drawn2
+Joel - InTheNow2,Golan - jolted into the NOW
+Joel - InTheNow2,Jen - deep interaction
+Joel - InTheNow2,Jen - immersion of reading
+Joel - InTheNow2,Zach - Time slows down
+Joel - InTheNow2,Zach - drawn2
+Joel - Interactivity,Jer - active not interactive
+Joel - Interactivity,Theo - hide the technology,
+Joel - MythOfArtAndTech1,Julia - medium of our time
+Joel - Watercolors,Casey - New modes of expression
+Joel - Watercolors,Golan - make a mark
+Joel - Watercolors,Jer - Generative Art
+Joel - Watercolors,Diederick - PaintingLikeCoding
+Joel - Watercolors,Diederick - programmingWithFeeling
+Joel - WrongToSell,Jer - Software1
+Joel - WrongToSell,Jer - Software2
+Joel - scaleofUniverse,Andres - soft systems 2
+Joel - scaleofUniverse,Bruce - Age of the universe, really weird
+Joel - scaleofUniverse,Casey - Scale 1
+Joel - scaleofUniverse,Jen - Scaling data
+Joel - scaleofUniverse,Karsten - DarkNet
+Joel - scaleofUniverse,Martin - birds eye view
+Joel - scaleofUniverse,Martin - seeing the whole 2
+Joel - scaleofUniverse,Martin - starry night
+Joel - scaleofUniverse,Martin - Big data
+Joel - scaleofUniverse,Patricio - Building Universes 2
+Joel - scaleofUniverse,Ramsey - Conway 2
+Joel - scaleofUniverse,Ramsey - emergence from simple rules
+Joel - scaleofUniverse,Ramsey - New Kind of Science
+Joel - scaleofUniverse,Sophy - Evolution

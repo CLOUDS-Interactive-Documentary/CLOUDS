@@ -256,11 +256,16 @@ void CloudsStoryEngine::setCustomAct(CloudsAct* act){
 
 #pragma mark INIT ACT
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed){
+	if(seed.getKeywords().size() == 0){
+		ofLogError("CloudsStoryEngine::buildAct") << seed.getLinkName() << " contains no keywords!";
+		return NULL;
+	}
     return buildAct(run, seed, seed.getKeywords()[ ofRandom(seed.getKeywords().size()) ]);
 }
 
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string topic){
 	
+	//this hack let's us inject custom apps 
 	if(customAct != NULL){
 		CloudsActEventArgs args(customAct);
 		ofNotifyEvent(events.actCreated, args);
@@ -321,7 +326,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
 //    act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
     totalSecondsEnqueued = preRollDuration;
     act->addClip(clip, topic, totalSecondsEnqueued, clipHandleDuration, getCurrentDichotomyBalance());
-    
+    cout << "CLIP START DURATION IS " << clip.getDuration() << endl;
     localClipHistory.push_back(clip);
     localTopicHistory.push_back(topic);
     
@@ -348,6 +353,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     ////
     
     totalSecondsEnqueued += clip.getDuration()+( gapLengthMultiplier * clip.getDuration() ) * clipHandleDuration * 2;
+    
+    cout << "Total seconds? " << totalSecondsEnqueued << endl;
+    
     localTimesOnCurrentTopicHistory[topic]++;
     int timesOnCurrentTopic = 0;
     topicScoreStream << "STARTING TOPIC " << topic << endl;
@@ -731,10 +739,10 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsVisualSystemPreset& preset, 
     }
     
     vector<string> keywords = visualSystems->keywordsForPreset(preset);
-    if(keywords.size() == 0 ){
-        log += "rejected because it has no keywords";
-        return 0;
-    }
+//    if(keywords.size() == 0 ){
+//        log += "rejected because it has no keywords";
+//        return 0;
+//    }
     
 
 #ifdef OCULUS_RIFT
@@ -969,17 +977,17 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history,
 	
 	if(currentRun == 1 && clipDifficulty != "easy"){
         if (printDecisions) cout<< "         REJECTED Clip "<<potentialNextClip.getLinkName()<<" : easy clips in the intro please!!" << endl;
-		return 0;
+		return 0; //<@_@> 4:AM JG: don't actually get rid of this plz
 	}
 	
 	if(currentRun <= 2 && clipDifficulty == "medium"){
         if (printDecisions) cout<< "         REJECTED Clip "<<potentialNextClip.getLinkName()<<" : medium clips in the second act please!!" << endl;
-		return 0;
+		return 0;//<@_@>
 	}
 
 	if( currentRun <= 3 && clipDifficulty == "hard" ){
         if (printDecisions) cout<< "         REJECTED Clip "<<potentialNextClip.getLinkName()<<" : hard clips come 3rd act" << endl;
-		return 0;
+		return 0;//<@_@>
 	}
 
     //Base score
@@ -1122,7 +1130,7 @@ bool CloudsStoryEngine::historyContainsClip(CloudsClip& m, vector<CloudsClip>& h
         }
         
         if (! overlappingClips.empty()) {
-            if(ofContains(overlappingClips, history[i].getLinkName())){
+            if(ofContains(overlappingClips, history[i].getID())){
                 
                 cout << "        REJECTED Clip " << m.getLinkName() << ": it overlaps with clip " <<history[i].getLinkName()<<" which has already been visited"<<endl;
                 return true;

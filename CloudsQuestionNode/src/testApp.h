@@ -20,5 +20,6 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 		
+	ofEasyCam easyCam;
 	CloudsPortal portal;
 };

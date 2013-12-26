@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1529.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1077.000000000</XPosition>
+    <YPosition>-5.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -47,6 +47,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>BlueScribblesOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BlueSmoothScribblesOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>BrowGreen_worms</Name>
     <Value>0</Value>
 </Widget>
@@ -69,6 +79,11 @@
     <Kind>2</Kind>
     <Name>fuzzy_galaxy2</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Fuzzy_galaxyOC</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -192,6 +207,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>SmoothScribblesOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>VioletBlue_Nebula</Name>
     <Value>0</Value>
 </Widget>
@@ -199,9 +219,4 @@
     <Kind>2</Kind>
     <Name>VioletBlue_worms</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Fuzzy_galaxyOC</Name>
-    <Value>1</Value>
 </Widget>

@@ -213,6 +213,8 @@ protected:
     int selectedSoundsIdx;
     bool bModeVideo;
     
+	bool soundPlayerReady;
+	bool videoPlayerReady;
 	ofShader shader;
     ofxAVFVideoPlayer videoPlayer;
     ofSoundPlayer soundPlayer;

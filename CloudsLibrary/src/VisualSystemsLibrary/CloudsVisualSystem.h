@@ -50,8 +50,8 @@ class CloudsVisualSystem {
 	};
 	
 	
-
 	static ofFbo& getStaticRenderTarget(); //default
+	static void forceScreenResolution(int screenWidth, int screenHeight);
 	static void loadBackgroundShader();
 	static CloudsRGBDVideoPlayer& getRGBDVideoPlayer();
 	static void getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height);

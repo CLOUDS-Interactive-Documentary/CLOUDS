@@ -2,12 +2,27 @@
     <Kind>42</Kind>
     <Name>EXAMPLE BOX 2D</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>720.000000000</XPosition>
-    <YPosition>59.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
+    <Name>DISPLAY</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>GAVITY CONTROL MODE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CIRCLES</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RECTANGLES</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
@@ -17,38 +32,33 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>MAX OBJECTS</Name>
-    <Value>200.000000000</Value>
+    <Name>MAX CIRCLES</Name>
+    <Value>127.044334412</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>CIRCLE MIN SIZE</Name>
-    <Value>5.000000000</Value>
+    <Name>MAX RECTANGLES</Name>
+    <Value>112.413795471</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>CIRCLE MAX SIZE</Name>
-    <Value>20.000000000</Value>
+    <Name>CIRCLE MAX MEAN</Name>
+    <Value>16.527093887</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>RECT MIN WIDTH</Name>
-    <Value>5.000000000</Value>
+    <Name>CIRCLE SIZE DEVIATION</Name>
+    <Value>10.763546944</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>RECT MAX WIDTH</Name>
-    <Value>30.000001907</Value>
+    <Name>RECT MAX MEAN</Name>
+    <Value>14.975369453</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>RECT MIN HEIGHT</Name>
-    <Value>5.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>RECT MAX HEIGHT</Name>
-    <Value>30.000001907</Value>
+    <Name>RECT SIZE DEVIATION</Name>
+    <Value>12.758621216</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -67,31 +77,56 @@
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>CR</Name>
-    <Value>0.659685850</Value>
+    <Name>H1</Name>
+    <Value>100.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>CG</Name>
-    <Value>0.931937099</Value>
+    <Name>S1</Name>
+    <Value>100.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>CB</Name>
-    <Value>1.000000000</Value>
+    <Name>B1</Name>
+    <Value>230.968414307</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>RR</Name>
-    <Value>0.581151843</Value>
+    <Name>H2</Name>
+    <Value>136.178009033</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>RG</Name>
-    <Value>0.602094173</Value>
+    <Name>S2</Name>
+    <Value>121.492065430</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>RB</Name>
-    <Value>0.780104518</Value>
+    <Name>B2</Name>
+    <Value>226.963195801</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>H3</Name>
+    <Value>36.047119141</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S3</Name>
+    <Value>133.507766724</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>B3</Name>
+    <Value>226.963195801</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX FREQ</Name>
+    <Value>50.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MIN FREQ</Name>
+    <Value>16.256158829</Value>
 </Widget>

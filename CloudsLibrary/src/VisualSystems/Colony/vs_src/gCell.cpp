@@ -65,9 +65,7 @@ void colonyCell::draw()
     
     ofSetColor(255, 255, 255, ofMap(MIN(maxSize, cellSize), 0, maxSize, 60, 180));
     ofCircle(position.x, position.y, MIN(maxSize, cellSize)); //TODO: This is where you do art
-    //    ofLine(position, anchor); //TODO Remove anchor
     if (cellSize > 10){
-//        ofNoFill();
         ofSetColor(255, 255, 255, ofMap(cellSize, 10, maxSize, 0, 70));
         ofCircle(position, cellSize + 10);
     }
@@ -142,14 +140,18 @@ void colonyCell::doScanAndFlock(neighbor_iterator& iter){
 //==========================================================================================
 
 void colonyCell::doFeedCellNoise(){
-    lastFeedValue = powf(ofNoise(position.x, position.y, position.z, ofGetElapsedTimef() * _params.nutrientTimeCoef), 1/_params.nutrientFalloff )* _params.nutrientAmount;
+    lastFeedValue = powf(ofNoise(position.x, position.y, position.z, ofGetElapsedTimef() * _params.nutrientTimeCoef), 1./_params.nutrientFalloff )* _params.nutrientAmount;
 }
+
+void colonyCell::doFeedCellNoise(const ofFbo& texture){
+    //TODO: Implement
+}
+
 
 void colonyCell::doAddTurbulence(){
     float changeRate = 0.001 * _params.spdTurbulence;
     float amplitude = ofNoise(-position.x/10,-position.y/10,-position.z/10, ofGetElapsedTimef() * changeRate);
-    float theta = ofNoise(position.x/100,position.y/100,position.z/100, ofGetElapsedTimef() * changeRate) * 2 * TWO_PI; //FIXME: Magic number
-    float rho = 0; //TODO: Change
+    float theta = ofNoise(position.x/100,position.y/100,position.z/100, ofGetElapsedTimef() * changeRate) * 2 * TWO_PI;
     ofPoint force = ofPoint(1,0,0).getRotatedRad(theta, ofPoint(0,0,1)) * amplitude * _params.amtTurbulence;
     doAddForce(force);
 }
