@@ -1169,7 +1169,7 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="CirclePackingSystem_Basic">
+<system name="CirclePacking_Basic">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1178,7 +1178,7 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="CirclePackingSystem_Blank">
+<system name="CirclePacking_Blank">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1187,7 +1187,7 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="CirclePackingSystem_NASDAQ">
+<system name="CirclePacking_NASDAQ">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
