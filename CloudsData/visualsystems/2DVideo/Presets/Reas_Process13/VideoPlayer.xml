@@ -27,6 +27,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>zipcode.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OpenPaths.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Exoplanets.mp4</Name>
     <Value>0</Value>
 </Widget>
@@ -37,12 +47,42 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>OpenPaths.mov</Name>
+    <Name>PeopleStaring.mp4</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>PeopleStaring.mp4</Name>
+    <Name>FaceShift_noise.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FaceSub_lowSat.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JapaneseSlow2.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>TeensSlow.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Code_Screenflow3.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>networkFlow2.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DesignByNumbers.mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -54,11 +94,6 @@
     <Kind>2</Kind>
     <Name>Reas_Process13.mov</Name>
     <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>zipcode.mov</Name>
-    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
