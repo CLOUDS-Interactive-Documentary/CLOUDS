@@ -10,7 +10,6 @@
 
 #include "CloudsVisualSystem.h"
 
-//#include "cCell.h"
 #include "gCell.h"
 
 class CloudsVisualSystemColony : public CloudsVisualSystem {
@@ -27,7 +26,6 @@ public:
     void selfDraw();
     void selfDrawDebug();
     void selfSceneTransformation();
-    void selfPostDraw();
     
     void selfExit();
     void selfBegin();
@@ -50,32 +48,43 @@ public:
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
     
+    void selfPresetLoaded(string presetPath);
+    
+    //Publics stuffs
+    
 	void loadShader();
     void reallocateFramebuffers();
     
 private:
     
-    //much geometry
+    /* MUCH GEOMETRY */
     ofVboMesh   vbo;
     ofShader    noiseShader;
     ofShader    cellShader;
     ofShader    levelSet;
     ofShader    billboard;
     
-    //wow video
-//    ofFbo fbo;
-    ofTexture sprite;
+    /* WOW VIDEO */
+    ofFbo fbo_main, foodTexture;
+    ofTexture sprite, grunge;
     
-    //lol data
+    /* LOL DATA */
     colonyPartitionMap pMap;
     vector< cellPtr > cells;
 
-    float   noiseZoom;
+    float  noiseZoom;
     int newbornCount;
     
     bool reset; //TODO: used?
     
-    /*  PARAMS */
+    /*  SUCH PARAMS */
     cellParams params;
-    int numInitialCells;
+    float numInitialCells; //float because ints won't work in gui
+    
+    /* WOW UTILITY */
+    void updateFoodTexture();
+    bool areFbosAllocatedAndSized();
+    
+    void clear();
+    void populate();
 };

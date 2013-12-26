@@ -36,14 +36,12 @@ void main(){
     float b = 1. - fwidth(samp.b);
     
     //see if you're in the right range to be a border
-    
     b *= samp.b * samp.b;
     b =  bump(b, .3, 0.2) - samp.g;
     b =  clamp(b, 0., 1.);
     b += samp.g;
     b =  clamp(b, 0., 1.);
-    b = 1. - b*0.8;
-    gl_FragColor = vec4(b, b, b, 1.);
+    gl_FragColor = vec4(1., 1., 1., b);
     
 //    gl_FragColor = samp;
 }

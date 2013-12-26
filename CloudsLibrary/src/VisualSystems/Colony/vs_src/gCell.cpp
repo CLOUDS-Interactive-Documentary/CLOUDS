@@ -65,7 +65,6 @@ void colonyCell::draw()
     
     ofSetColor(255, 255, 255, ofMap(MIN(maxSize, cellSize), 0, maxSize, 60, 180));
     ofCircle(position.x, position.y, MIN(maxSize, cellSize)); //TODO: This is where you do art
-    //    ofLine(position, anchor); //TODO Remove anchor
     if (cellSize > 10){
         ofSetColor(255, 255, 255, ofMap(cellSize, 10, maxSize, 0, 70));
         ofCircle(position, cellSize + 10);
@@ -143,6 +142,11 @@ void colonyCell::doScanAndFlock(neighbor_iterator& iter){
 void colonyCell::doFeedCellNoise(){
     lastFeedValue = powf(ofNoise(position.x, position.y, position.z, ofGetElapsedTimef() * _params.nutrientTimeCoef), 1./_params.nutrientFalloff )* _params.nutrientAmount;
 }
+
+void colonyCell::doFeedCellNoise(const ofFbo& texture){
+    //TODO: Implement
+}
+
 
 void colonyCell::doAddTurbulence(){
     float changeRate = 0.001 * _params.spdTurbulence;

@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>OceanSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1485.000000000</XPosition>
+    <XPosition>849.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>WAVE SCALE</Name>
-    <Value>14.018541336</Value>
+    <Value>12.686297417</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
