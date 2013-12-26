@@ -991,7 +991,7 @@
     <sound>0</sound>
 </system>
 <system name="Astrolabe_Clock3_ZoomOut">
-    <keywords>clock|scale</keywords>
+    <keywords>clock|scale|computer</keywords>
     <links></links>
     <suppressions>
         <clip>Bruce - beauty of code 3</clip>
@@ -1015,6 +1015,23 @@
         <clip>Marius - Digi meets physical</clip>
         <clip>Bruce - 3D printed buildings</clip>
         <clip>Andres - soft systems 2</clip>
+        <clip>Bruce - Future camera 1</clip>
+        <clip>Karolina - Everything</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - east german hardware 1</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Karsten - literacy issues&apos;</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Philip - bits and bytes</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Ramsey - thinking previously unthinkable thoughts</clip>
+        <clip>Aaron - software is a brain</clip>
+        <clip>Ramsey - computation is interpretation of rules</clip>
+        <clip>Ramsey - code specifies behavior</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Ramsey - a hundred million</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
