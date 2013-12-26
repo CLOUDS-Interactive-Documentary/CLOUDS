@@ -8,7 +8,7 @@ string CloudsVisualSystemColony::getSystemName()
 
 void CloudsVisualSystemColony::selfSetup()
 {
-    numInitialCells = 100; //FIXME : Magic number
+    numInitialCells = 100;
     noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
     vbo.setMode(OF_PRIMITIVE_POINTS);
     
@@ -16,6 +16,7 @@ void CloudsVisualSystemColony::selfSetup()
     ofLoadImage(sprite, getVisualSystemDataPath() + "sprites/marker_dot.png");
     ofEnableArbTex();
     
+    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/dirt.jpg");
 	loadShader();
     
 }
@@ -115,6 +116,13 @@ void CloudsVisualSystemColony::selfUpdate()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
+    ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
+    grunge.bind();
+    grunge.draw(0,0);
+    grunge.unbind();
+    ofDisableBlendMode();
+
+    
     ofEnableAlphaBlending();
     levelSet.begin();
     fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
@@ -140,27 +148,40 @@ void CloudsVisualSystemColony::updateFoodTexture(){
 
 void CloudsVisualSystemColony::selfBegin()
 {
-    for (int i = 0; i < (int) numInitialCells; i++) {
-        cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight(), i * 0.01), params));
-        cells.push_back(newCell);
-    }
+    populate();
 }
 
 void CloudsVisualSystemColony::selfEnd()
 {
-    for (int i = cells.size()-1; i >= 0; i--){
-        cells.erase(cells.begin()+i);
-    }
-    cells.clear();
-    
-    cellShader.unload();
-    levelSet.unload();
-    vbo.clear();
+    clear();
     //TODO: Destroy everything in gCell;
 }
 
 void CloudsVisualSystemColony::selfExit(){
-    
+    clear();
+    cellShader.unload();
+    levelSet.unload();
+}
+
+void CloudsVisualSystemColony::selfPresetLoaded(string presetPath){
+    clear();
+    //TODO: use timeline->getCurrentTimeXX()
+    populate();
+}
+
+void CloudsVisualSystemColony::clear(){
+    for (int i = cells.size()-1; i >= 0; i--){
+        cells.erase(cells.begin()+i);
+    }
+    cells.clear();
+    vbo.clear();
+}
+
+void CloudsVisualSystemColony::populate(){
+    for (int i = 0; i < (int) numInitialCells; i++) {
+        cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight(), i * 0.01), params));
+        cells.push_back(newCell);
+    }
 }
 
 bool CloudsVisualSystemColony::areFbosAllocatedAndSized(){

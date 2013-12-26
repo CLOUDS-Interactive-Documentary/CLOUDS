@@ -41,7 +41,6 @@ void main(){
     b =  clamp(b, 0., 1.);
     b += samp.g;
     b =  clamp(b, 0., 1.);
-//    b  0.8;
     gl_FragColor = vec4(1., 1., 1., b);
     
 //    gl_FragColor = samp;
