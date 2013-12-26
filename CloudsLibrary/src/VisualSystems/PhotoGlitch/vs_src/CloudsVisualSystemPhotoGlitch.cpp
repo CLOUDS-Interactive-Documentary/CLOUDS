@@ -16,27 +16,6 @@ static int kIndicesPerCell = 6;
 
 static ofxEasingQuad easing;
 
-PGCell * CloudsVisualSystemPhotoGlitch::cells;
-PGCell * CloudsVisualSystemPhotoGlitch::targetCells;
-
-bool CloudsVisualSystemPhotoGlitch::sortIdxForHue(int i, int j) {
-    return (cells[i].avgColor.getHue() < cells[j].avgColor.getHue());
-}
-
-bool CloudsVisualSystemPhotoGlitch::sortIdxForHueTarget(int i, int j) {
-    return (targetCells[i].avgColor.getHue() < targetCells[j].avgColor.getHue());
-}
-
-bool CloudsVisualSystemPhotoGlitch::sortIdxForBrightnessTarget(int i, int j) {
-    return (targetCells[i].avgColor.getBrightness() < targetCells[j].avgColor.getBrightness());
-}
-
-bool CloudsVisualSystemPhotoGlitch::sortIdxForBri(int i, int j) {
-    return (cells[i].avgColor.getBrightness() < cells[j].avgColor.getBrightness());
-}
-
-
-
 
 bool sortIdxForHueTargetNew(compareObj obj1,compareObj obj2){
     return (obj1.cell->avgColor.getHue() < obj2.cell->avgColor.getHue());
@@ -46,8 +25,6 @@ bool sortIdxForBrightnessTargetNew(compareObj obj1,compareObj obj2){
     
     return (obj1.cell->avgColor.getBrightness() < obj2.cell->avgColor.getBrightness());
 }
-
-
 
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -146,8 +123,7 @@ void CloudsVisualSystemPhotoGlitch::addTargetToUI(ofxUISuperCanvas* gui,string s
 int CloudsVisualSystemPhotoGlitch::getTargetFileName(ofxUISuperCanvas * gui, int targetId){
     ofxUIDropDownList* menu = (ofxUIDropDownList*) gui->getWidget("TARGET IMAGES "+ ofToString(targetId));
     vector<ofxUILabelToggle*> files = menu->getToggles();
-    
-    //    cout<<fileNames->getValue()<<endl;
+
     for (int i=0 ; i<files.size(); i++) {
         for (int j =0; j < targetImagesDir.numFiles(); j++){
             ofxUILabel* l = files[i]->getLabel();
@@ -164,7 +140,6 @@ int CloudsVisualSystemPhotoGlitch::getTargetFileName(ofxUISuperCanvas * gui, int
 
 void CloudsVisualSystemPhotoGlitch::beginAnimation(){
     
-    clearSource();
     target1.clear();
     target2.clear();
     generateSource();
@@ -230,25 +205,25 @@ void CloudsVisualSystemPhotoGlitch::updateAnimation(){
         else{
             if(currentTargetParams->shuffle){
                 shuffle(false);
-                cout<<"Mode : source shuffle"<<endl;
+                cout<<"Mode : source quick shuffle"<<endl;
             }
             else if (currentTargetParams->reorder){
                 reorder(false);
-                cout<<"Mode : source reorder"<<endl;
+                cout<<"Mode : source quick reorder"<<endl;
             }
             else if (currentTargetParams->sortByBrightness){
                 sortBri(false);
-                cout<<"Mode : source bri"<<endl;
+                cout<<"Mode : source quick bri"<<endl;
             }
             else if (currentTargetParams->sortByHue){
                 sortHue(false);
-                cout<<"Mode : source hue"<<endl;
+                cout<<"Mode : source quick hue"<<endl;
             }
         }
 
     }
     else if (currentTargetParams->mode == TARGET_MODE) {
-            cout<<"In target mode"<<endl;
+
             if(currentTargetParams->sortByHue){
             cout<<"Mode : Target Hue"<<endl;
                 sortTarget();
@@ -260,7 +235,7 @@ void CloudsVisualSystemPhotoGlitch::updateAnimation(){
 
             }
             
-        }
+    }
     
     bCurrentlyAnimating = true;
 }
@@ -401,7 +376,7 @@ void CloudsVisualSystemPhotoGlitch::generate(PhotoGlitch& pg,int imgIndex){
     pg.tex.loadImage(targetImagesDir.getPath(imgIndex));
     
     ofPixels pixels = pg.tex.getPixelsRef();
-    
+
     numCells = numDivCols * numDivRows;
     
     pg.cells = new PGCell[numCells];
@@ -549,7 +524,7 @@ void CloudsVisualSystemPhotoGlitch::generateSource()
         for (int i = 0; i < numDivCols; i++) {
             int idx = j * numDivCols + i;
             
-            // Add verts. Same for both source and target
+            // Add verts.
             verts[idx * kVertsPerCell * kCoordsPerVert + 0] = (i + 0) * screenSliceWidth;
             verts[idx * kVertsPerCell * kCoordsPerVert + 1] = (j + 0) * screenSliceHeight;
             
@@ -655,7 +630,32 @@ void CloudsVisualSystemPhotoGlitch::generateSource()
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemPhotoGlitch::selfPresetLoaded(string presetPath)
 {
-    beginAnimation();
+    
+    cout<<"Im in preset loaded"<<endl;
+        ofxUIDropDownList* r = (ofxUIDropDownList*) customGui->getWidget("SOURCE IMAGES");
+    
+        vector<ofxUILabelToggle*> toggles = r->getToggles();
+    
+        // Look through the files dropdown for a match.
+        for (int i = 0; i < imagesDir.numFiles(); i++) {
+            for ( int j =0; j<toggles.size(); j++){
+                if (toggles[i]->getName() == imagesDir.getName(i) && toggles[i]->getValue()) {
+                    cout<<"source img name : "<<toggles[i]->getName()<<endl;
+                    selectedSrcImageIdx = i;
+                    bShouldGenerate = true;
+                    break;
+                }
+            }
+        }
+
+        beginAnimation();
+    
+        ofxUIIntSlider* i = (ofxUIIntSlider*) customGui->getWidget("DELAY B/W TWEENS");
+        
+        int x = i->getValue();
+        delayValue = 1000*x;
+
+
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -679,7 +679,7 @@ void CloudsVisualSystemPhotoGlitch::updateSequence(){
             
             currentTarget = &target1;
             currentTargetParams = &gp1;
-            
+            cout<<"Update from source to target"<<endl;
             if (! bOneCycleComplete) {
                 updateAnimation();
             }
@@ -699,6 +699,9 @@ void CloudsVisualSystemPhotoGlitch::updateSequence(){
                 updateAnimation();
                 bOneCycleComplete = true;
             }
+            else{
+                cout<<"Loopback Sequence complete"<<endl;
+            }
 
         }
         else{
@@ -709,6 +712,7 @@ void CloudsVisualSystemPhotoGlitch::updateSequence(){
         if (currentTargetParams->mode == SOURCE_MODE && gp1.enable ) {
             currentTarget = &target1;
             currentTargetParams = &gp1;
+            cout<<"Update from source to target"<<endl;
             updateAnimation();
         }
         else if (currentTarget != NULL){
@@ -722,7 +726,7 @@ void CloudsVisualSystemPhotoGlitch::updateSequence(){
                 cout<<"Sequence Complete"<<endl;
             }
             else{
-                cout<<"Totes complete "<<endl;
+                cout<<"Sequence complete "<<endl;
             }
         }
         else{
@@ -752,7 +756,7 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
         float tweenX = cells[i].tweenX.update();
         float tweenY = cells[i].tweenY.update();
         
-        
+
         // update the vert data
         // top-left
         verts[vertIdx + 0] = tweenX;
@@ -1114,6 +1118,7 @@ void CloudsVisualSystemPhotoGlitch::sortTarget(){
 void CloudsVisualSystemPhotoGlitch::reorder(bool tweenCells)
 {
     for (int i = 0; i < numCells; i++) {
+        cout<<cells[i].col<<" : "<<cells[i].origCol<<endl;
         cells[i].col = cells[i].origCol;
         cells[i].row = cells[i].origRow;
         tween(i);

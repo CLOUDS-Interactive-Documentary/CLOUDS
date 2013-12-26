@@ -189,14 +189,14 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void tweenFast(int i);
     void updateSequence();
     int getTargetFileName(ofxUISuperCanvas * gui, int targetId);
-    
+    /*
     static bool sortIdxForHue(int i, int j);
     static bool sortIdxForBri(int i, int j);
     static bool sortIdxForHueTarget(int i, int j);
     static bool sortIdxForBrightnessTarget(int i, int j);
-    
-    static PGCell * cells;
-    static PGCell * targetCells;
+    */
+    PGCell * cells;
+//    PGCell * targetCells;
     PhotoGlitch sourcePhoto;
     vector<PhotoGlitch> photos;
     PhotoGlitch target1;
