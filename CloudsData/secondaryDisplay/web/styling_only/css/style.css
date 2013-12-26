@@ -1,40 +1,18 @@
 
 body{
 	font-family:'Blender',Sans-Serif;
-	color:#FFFFFF;
-	font-size:12px;
-	font-weight:lighter;
 	background-color:#000000;
 	width:1920px;
 	height:1080px;
+	color:#FFFFFE;
 	
 }
 
-#graph{
-	width:1920px;
-	height:1080px;
-	float:right;
-}
-
-/*#graph{
-	width:1280px;
-	height:720px;
-}*/
-
-#video{
-	z-index:1;
-	float:left;
-}
-
 #overlay{
-	right:0px;
-	left:0px;
 	position:relative;
 	margin-left:50px;
 	margin-right:50px;
 	margin-top:50px;
-	/*width:100%;
-	height:100%;*/
 	height:1001px;
 	/*width:1818px;*/
 	/*margin-bottom:27px;*/
@@ -156,11 +134,6 @@ body{
 #last{	
 	font-size:66px;
 }
-
-
-
-
-
 
 
 
