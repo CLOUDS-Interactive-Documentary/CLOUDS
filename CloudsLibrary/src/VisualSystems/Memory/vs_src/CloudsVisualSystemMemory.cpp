@@ -135,6 +135,9 @@ void CloudsVisualSystemMemory::generateFromMemory(){
     yBlocks = (float)height/(heightBlocks+margin*blockScale);
     
     blocks.clear();
+	outlineMesh.clear();
+	fillMesh.clear();
+	
     int index = 0;
     for (int j = 0; j < yBlocks; j++) {
         for (int i = 0; i < xBlocks; i++){
@@ -144,8 +147,9 @@ void CloudsVisualSystemMemory::generateFromMemory(){
                 int x = xMargin + ((margin + blockWidth)*blockScale)*i ;
                 int y = yMargin + ((margin + blockHeight)*blockScale)*j ;
                 
-                if ( y > (ofGetHeight()+margin+heightBlocks))
+                if ( y > (getSharedRenderTarget().getHeight() + margin + heightBlocks)){
                     break;
+				}
                 
                 Block block;
                 block.x = x+widthBlocks*0.5;
@@ -156,7 +160,9 @@ void CloudsVisualSystemMemory::generateFromMemory(){
                 block.borderColor = borderColor;
                 block.value = (int)data[index];
                 block.bSelected = false;
-                
+                block.outlineMesh = &outlineMesh;
+				block.fillMesh = &fillMesh;
+				
                 blocks.push_back(block);
                 
             } else {

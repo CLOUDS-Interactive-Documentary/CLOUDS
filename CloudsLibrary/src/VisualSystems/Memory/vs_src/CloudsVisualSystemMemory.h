@@ -11,17 +11,44 @@
 #include "CloudsVisualSystem.h"
 
 class Block : public ofRectangle {
-public:
+  public:
     ofFloatColor    color,borderColor;
     int             value;
     float           border;
     bool            bSelected;
     
-    bool operator > (Block &b){ return this->value > b.value; }    
-    bool operator < (Block &b){ return this->value < b.value; }
+	ofIntRange outlineIndices;
+	ofIntRange fillIndices;
+	ofVboMesh* outlineMesh;
+	ofVboMesh* fillMesh;
+	
+    bool operator > (Block &b){
+		return this->value > b.value;
+	}
+    bool operator < (Block &b){
+		return this->value < b.value;
+	}
     
+		
+	void update(){
+		ofFloatColor curStroke;
+		if (bSelected){
+            curStroke = borderColor;
+        } else {
+            curStroke = ofFloatColor(0.5,borderColor.a);
+        }
+
+		for(int i = outlineIndices.min; i < outlineIndices.max; i++) {
+			outlineMesh->setColor(i, curStroke);
+		}
+		for(int i = fillIndices.min; i < fillIndices.max; i++){
+			fillMesh->setColor(i, color);
+		}
+
+	}
+		
     void draw(){
-        ofPushStyle();
+		ofPushStyle();
         
         ofFill();
         ofSetColor(color);
@@ -34,9 +61,6 @@ public:
             ofSetColor(ofFloatColor(0.5,borderColor.a));
         }
         ofRect(*this);
-        
-//        ofSetColor(255);
-//        ofDrawBitmapString( ofToString(value) , x+width*0.5-4,y+height*0.5+4);
         
         ofPopStyle();
     }
@@ -80,7 +104,10 @@ public:
     
 private:
     vector<Block> blocks;
-    
+	
+	ofVboMesh outlineMesh;
+	ofVboMesh fillMesh;
+
     void    generate();
     void    generateFromMemory();
     void    generateFromTexture(ofTexture &_tex);

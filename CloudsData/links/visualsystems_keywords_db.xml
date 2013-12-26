@@ -4368,6 +4368,26 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Memory_ThinBlueRows">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Memory_ThinBlueRows_CU">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Memory_Vert2">
     <keywords></keywords>
     <links></links>
@@ -4375,6 +4395,16 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Memory_WideLEDCells">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -5831,7 +5861,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>1</sound>
+    <sound>0</sound>
 </system>
 <system name="OpenP5NoiseSphere_InYourFace">
     <keywords></keywords>
@@ -5866,7 +5896,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>1</sound>
+    <sound>0</sound>
 </system>
 <system name="OpenP5NoiseSphere_Nervous_Colors">
     <keywords>emotion|music</keywords>
@@ -5897,7 +5927,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>1</sound>
+    <sound>0</sound>
 </system>
 <system name="OpenP5NoiseSphere_SPACE">
     <keywords></keywords>
