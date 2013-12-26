@@ -48,6 +48,8 @@ public:
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
     
+    void selfPresetLoaded(string presetPath);
+    
     //Publics stuffs
     
 	void loadShader();
@@ -82,4 +84,7 @@ private:
     /* WOW UTILITY */
     void updateFoodTexture();
     bool areFbosAllocatedAndSized();
+    
+    void clear();
+    void populate();
 };
