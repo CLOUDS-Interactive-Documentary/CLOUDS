@@ -1,6 +1,9 @@
 varying float zdist;
+uniform mat4 geoTransform;
 void main() {
-	zdist = gl_Vertex.y;
+
+	vec4 pos = geoTransform * gl_Vertex;
+	zdist = pos.y;
 	gl_Position = gl_ModelViewProjectionMatrix*gl_Vertex;
 	gl_FrontColor = gl_Color;
 }

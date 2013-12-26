@@ -248,20 +248,33 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 		float spread = (max.y - min.y);
 		shader.setUniform1f("minFogDist",spread*(numReplications-2.));
 		shader.setUniform1f("maxFogDist",spread*(numReplications-1.));
+		shader.setUniform1f("cameray", tunnelCam.getPosition().y);
 		shader.setUniform3f("fogColor",color.r,color.g,color.b);
+//		shader.setUniformMatrix4f("inverseView", tunnelCam.getModelViewMatrix().getInverse());
 		float startY = min.y + tunnelCam.getPosition().y - fmod(tunnelCam.getPosition().y, spread);
 		
+		ofMatrix4x4 geo;
 		ofSetColor(255);
 		
 		for(int i = 0; i < numReplications; i++){
 			ofPushMatrix();
 			
 			float translateAmount = (startY + i*spread);
-			ofTranslate(0,translateAmount,0);
-			ofTranslate(center);
-
-			ofRotate((i+int(tunnelCam.getPosition().y/spread))*90,0,-1,0);
-			ofTranslate(-center);
+			float rotationAngle = (i+int(tunnelCam.getPosition().y/spread))*90;
+//			ofTranslate(0,translateAmount,0);
+//			ofTranslate(center);
+//			ofRotate(rotationAngle,0,-1,0);
+//			ofTranslate(-center);
+			
+			geo.makeIdentityMatrix();
+			geo.translate(-center);
+			geo.rotate(rotationAngle,0,-1,0);
+			geo.translate(center);
+			geo.translate(0, translateAmount, 0);
+			ofMultMatrix(geo);
+			
+			shader.setUniformMatrix4f("geoTransform",geo);
+			
 			float cameraoffset = tunnelCam.getPosition().y - translateAmount - spread;
 			
 			int index;
