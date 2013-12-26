@@ -3664,8 +3664,8 @@
 		E70CE6651869648F00955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE6661869648F00955691 /* CloudsVisualSystemMemory.cpp */,
 				E70CE6671869648F00955691 /* CloudsVisualSystemMemory.h */,
+				E70CE6661869648F00955691 /* CloudsVisualSystemMemory.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3732,8 +3732,8 @@
 		E70CE6751869648F00955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE6761869648F00955691 /* CloudsVisualSystemOcean.cpp */,
 				E70CE6771869648F00955691 /* CloudsVisualSystemOcean.h */,
+				E70CE6761869648F00955691 /* CloudsVisualSystemOcean.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";

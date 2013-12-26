@@ -1,7 +1,6 @@
 
 #include "CloudsVisualSystemVectorFlow.h"
-
-//TODO preallocate buffers
+#include "CloudsGlobal.h"
 
 //--------------------------------------------------------------
 CloudsVisualSystemVectorFlow::CloudsVisualSystemVectorFlow(){
@@ -23,17 +22,19 @@ string CloudsVisualSystemVectorFlow::getSystemName(){
 void CloudsVisualSystemVectorFlow::initFlowField(){
 	maxVertices = generateMaxVerts;
 	trailLength = generateTrailLength;
-	width = ofGetWidth();
-	height = ofGetHeight();
+	
+	width = getSharedRenderTarget().getWidth();
+	height = getSharedRenderTarget().getHeight();
 		
 	//gives our initial columns
-	cout << "creating " << width/int(step) << " " << height/int(step) << " lines" << endl;
+//	cout << "creating " << width/int(step) << " " << height/int(step) << " lines" << endl;
 
 	particles.clear();
 	particleMesh.clear();
 	particleMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+	particleMesh.setUsage(GL_STREAM_DRAW);
 	
-    cout << "adding vertices" << endl;
+//    cout << "adding vertices" << endl;
     
 	lines.clear();
 	lines.setMode(OF_PRIMITIVE_LINES);
@@ -49,7 +50,7 @@ void CloudsVisualSystemVectorFlow::initFlowField(){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemVectorFlow::selfSetup(){
-	colorMap.loadImage( getVisualSystemDataPath() + "GUI/defaultColorPalette.png" );
+	colorMap.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png" );
 	bIs2D = true;
 }
 
