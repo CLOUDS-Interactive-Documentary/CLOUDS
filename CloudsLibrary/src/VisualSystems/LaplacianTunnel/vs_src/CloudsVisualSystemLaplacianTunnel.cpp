@@ -246,8 +246,8 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 		
 		ofFloatColor color = ofFloatColor::fromHsb(bgHue/255., bgSat/255., bgBri/255.);
 		float spread = (max.y - min.y);
-		shader.setUniform1f("minFogDist",spread*(numReplications-1));
-		shader.setUniform1f("maxFogDist", spread*numReplications);
+		shader.setUniform1f("minFogDist",spread*(numReplications-2.));
+		shader.setUniform1f("maxFogDist",spread*(numReplications-1.));
 		shader.setUniform3f("fogColor",color.r,color.g,color.b);
 		float startY = min.y + tunnelCam.getPosition().y - fmod(tunnelCam.getPosition().y, spread);
 		
