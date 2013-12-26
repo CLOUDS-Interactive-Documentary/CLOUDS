@@ -49,27 +49,29 @@ public:
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
     
+    //Publics stuffs
+    
 	void loadShader();
     void reallocateFramebuffers();
     
 private:
     
-    //much geometry
+    /* MUCH GEOMETRY */
     ofVboMesh   vbo;
     ofShader    noiseShader;
     ofShader    cellShader;
     ofShader    levelSet;
     ofShader    billboard;
     
-    //wow video
-    ofFbo fbo_main, fbo_food;
+    /* WOW VIDEO */
+    ofFbo fbo_main, foodTexture;
     ofTexture sprite;
     
-    //lol data
+    /* LOL DATA */
     colonyPartitionMap pMap;
     vector< cellPtr > cells;
 
-    float   noiseZoom;
+    float  noiseZoom;
     int newbornCount;
     
     bool reset; //TODO: used?
@@ -79,5 +81,6 @@ private:
     float numInitialCells; //float because ints won't work in gui
     
     /* WOW UTILITY */
+    void updateFoodTexture();
     bool areFbosAllocatedAndSized();
 };

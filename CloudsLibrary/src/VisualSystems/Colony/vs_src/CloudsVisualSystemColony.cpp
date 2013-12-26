@@ -59,6 +59,9 @@ void CloudsVisualSystemColony::selfUpdate()
     pMap.clear();
     vbo.clear();
     pMap.put(cells);
+    
+    updateFoodTexture();
+    
     for (int i = 0; i < cells.size(); i++) {
         
         neighbor_iterator iter = pMap.getNeighbours(coord2i(cells[i]->getPosition()));
@@ -87,6 +90,7 @@ void CloudsVisualSystemColony::selfUpdate()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
+    //Main view
     fbo_main.begin();
     ofClear(0,0,0,0);
     ofPushStyle();
@@ -95,7 +99,6 @@ void CloudsVisualSystemColony::selfDrawBackground()
     glDisable(GL_DEPTH_TEST);
     ofEnablePointSprites();
     
-
     billboard.begin();
     sprite.bind();
     
@@ -108,6 +111,7 @@ void CloudsVisualSystemColony::selfDrawBackground()
     ofDisableBlendMode();
 	ofPopStyle();
     fbo_main.end();
+    
 }
 
 void CloudsVisualSystemColony::selfDraw(){
@@ -116,10 +120,14 @@ void CloudsVisualSystemColony::selfDraw(){
 
 void CloudsVisualSystemColony::selfPostDraw(){
 
-//    levelSet.begin();
-//    fbo.draw(0, 0, getSharedRenderTarget().getWidth(),
-//             getSharedRenderTarget().getHeight());
-//    levelSet.end();
+    levelSet.begin();
+    fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
+             getSharedRenderTarget().getHeight());
+    levelSet.end();
+}
+
+
+void CloudsVisualSystemColony::updateFoodTexture(){
     noiseShader.begin();
     noiseShader.setUniform1i("complexity", 1);
     noiseShader.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
@@ -128,6 +136,7 @@ void CloudsVisualSystemColony::selfPostDraw(){
     ofRect(0, 0, getSharedRenderTarget().getWidth(),getSharedRenderTarget().getHeight());
     noiseShader.end();
 }
+
 
 void CloudsVisualSystemColony::selfBegin()
 {
@@ -156,11 +165,11 @@ void CloudsVisualSystemColony::selfExit(){
 
 bool CloudsVisualSystemColony::areFbosAllocatedAndSized(){
     return fbo_main.isAllocated()
-    && fbo_food.isAllocated()
+    && foodTexture.isAllocated()
     && fbo_main.getWidth() == getSharedRenderTarget().getWidth()
     && fbo_main.getHeight() == getSharedRenderTarget().getHeight()
-    && fbo_food.getWidth() == getSharedRenderTarget().getWidth()
-    && fbo_food.getHeight() == getSharedRenderTarget().getHeight();
+    && foodTexture.getWidth() == getSharedRenderTarget().getWidth()
+    && foodTexture.getHeight() == getSharedRenderTarget().getHeight();
 }
 
 void CloudsVisualSystemColony::reallocateFramebuffers(){
@@ -168,15 +177,15 @@ void CloudsVisualSystemColony::reallocateFramebuffers(){
     int h = getSharedRenderTarget().getHeight();
     
     fbo_main.allocate(w,h,GL_RGBA);
-    fbo_food.allocate(w/4., h/4., GL_RGB);
+    foodTexture.allocate(w/4., h/4., GL_RGB);
     
     fbo_main.begin();
     ofClear(0,0,0,0);
     fbo_main.end();
     
-    fbo_food.begin();
+    foodTexture.begin();
     ofClear(0, 0, 0);
-    fbo_food.end();
+    foodTexture.end();
 }
 
 void CloudsVisualSystemColony::selfSetupGuis(){}

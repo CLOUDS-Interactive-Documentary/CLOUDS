@@ -143,6 +143,11 @@ void colonyCell::doFeedCellNoise(){
     lastFeedValue = powf(ofNoise(position.x, position.y, position.z, ofGetElapsedTimef() * _params.nutrientTimeCoef), 1./_params.nutrientFalloff )* _params.nutrientAmount;
 }
 
+void colonyCell::doFeedCellNoise(const ofFbo& texture){
+    //TODO: Implement
+}
+
+
 void colonyCell::doAddTurbulence(){
     float changeRate = 0.001 * _params.spdTurbulence;
     float amplitude = ofNoise(-position.x/10,-position.y/10,-position.z/10, ofGetElapsedTimef() * changeRate);
