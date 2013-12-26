@@ -16,6 +16,10 @@ string CloudsVisualSystemMemory::getSystemName()
 
 void CloudsVisualSystemMemory::selfSetup()
 {
+    generate();
+}
+
+void CloudsVisualSystemMemory::selfSetDefaults(){
     blockScale = 1.0;
     blockWidth = 4;
     blockHeight = 8;
@@ -23,17 +27,14 @@ void CloudsVisualSystemMemory::selfSetup()
     noiseLerp = 0;
     randomUp = 0;
     randomDown = 0;
-
+	borderBase = .5;
     borderColor = ofFloatColor(0.0823, 0.8509, 0.7960);
-    brightnessOffset = 1;
+	//    brightnessOffset = 1;
     bTexture = false;
     bSort = true;
     bDeFrag = false;
     bBiDirectionalSort = false;
     bIs2D = true;
-	
-    ofEnableAlphaBlending();
-    generate();
 }
 
 void CloudsVisualSystemMemory::selfSetupSystemGui()
@@ -60,9 +61,9 @@ void CloudsVisualSystemMemory::selfSetupRenderGui()
     
     rdrGui->addSlider("block_width", 0.0, 20, &blockWidth);
     rdrGui->addSlider("block_height", 0.0, 20, &blockHeight);
-    rdrGui->addSlider("block_scale", 0.5
-                      , 10, &blockScale);
-    rdrGui->addSlider("brightness offset", 1.0, 20.0, &brightnessOffset);
+    rdrGui->addSlider("block_scale", 0.5, 10, &blockScale);
+	rdrGui->addRangeSlider("block_value_range", 0, 1, &baseColorRange.min, &baseColorRange.max);
+	rdrGui->addSlider("block_border_base", 0, 1, &borderBase);
     rdrGui->addSlider("block_border", 0.0, 1.0, &(borderColor.a));
     rdrGui->addSlider("border_red", 0.0, 1.0, &(borderColor.r));
     rdrGui->addSlider("border_green", 0.0, 1.0, &(borderColor.g));
@@ -161,8 +162,16 @@ void CloudsVisualSystemMemory::generateFromMemory(){
                 block.y = y+heightBlocks*0.5;
                 block.width = widthBlocks;
                 block.height = heightBlocks;
-                block.color = ofColor((unsigned char)data[index]);
+				if(baseColorRange.min == baseColorRange.max){
+					block.color = ofFloatColor(baseColorRange.min);
+				}
+				else{
+					block.color = ofFloatColor( ofMap((unsigned char)data[index], 0, 255,
+													  baseColorRange.min,baseColorRange.max), 1.0);
+				}
+				
                 block.borderColor = borderColor;
+				block.borderBase = borderBase;
                 block.value = (int)data[index];
                 block.bSelected = false;
                 block.outlineMesh = &outlineMesh;
@@ -223,8 +232,16 @@ void CloudsVisualSystemMemory::generateFromTexture(ofTexture &_tex){
             ofPoint st = ofPoint( ((float)i)/((float)xBlocks), ((float)j)/((float)yBlocks));
             st *= ofPoint(_tex.getWidth(),_tex.getHeight());
             
-            newBlock.value = pixels.getColor( st.x, st.y ).r;//.getBrightness() ;
-            newBlock.color = ofColor( newBlock.value)/brightnessOffset;
+            newBlock.value = pixels.getColor( st.x, st.y ).getBrightness();
+//            newBlock.color = ofColor( newBlock.value)/brightnessOffset;
+			if(baseColorRange.min == baseColorRange.max){
+				newBlock.color = ofFloatColor(baseColorRange.min);
+			}
+			else{
+				newBlock.color = ofFloatColor(ofMap(newBlock.value, 0, 255,
+													baseColorRange.min,baseColorRange.max), 1.0);
+			}
+			newBlock.borderBase = borderBase;
             newBlock.borderColor = borderColor;
             newBlock.bSelected = false;
             
@@ -425,21 +442,10 @@ void CloudsVisualSystemMemory::swapBlocks(int _indexA, int _indexB, bool _colore
 
 void CloudsVisualSystemMemory::selfDrawBackground()
 {
-    /*
-    ofNoFill();
-    ofSetColor(150);
-    ofSetLineWidth(0.5);
-    ofRect(14,14,ofGetWidth()-28,ofGetHeight()-28);
-    
-    ofSetColor(100);
-    ofSetLineWidth(1);
-    ofRect(10,10,ofGetWidth()-20,ofGetHeight()-20);
-    */
-    
     ofSetLineWidth(0.01);
 //    for (int i = 0; i < blocks.size(); i++) {
 //        blocks[i].draw();
-  //  }
+//  }
 	
 	fillMesh.draw();
 	outlineMesh.draw();
@@ -447,11 +453,6 @@ void CloudsVisualSystemMemory::selfDrawBackground()
 
 
 void CloudsVisualSystemMemory::selfSetupGuis()
-{
-    
-}
-
-void CloudsVisualSystemMemory::selfAutoMode()
 {
     
 }

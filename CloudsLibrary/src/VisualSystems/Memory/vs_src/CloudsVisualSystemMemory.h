@@ -13,6 +13,7 @@
 class Block : public ofRectangle {
   public:
     ofFloatColor    color,borderColor;
+	float			borderBase;
     int             value;
     float           border;
     bool            bSelected;
@@ -55,6 +56,8 @@ class Block : public ofRectangle {
 			outlineMesh->addColor(ofFloatColor());
 		}
 		
+		fillIndices.min = fillMesh->getNumVertices();
+		
 		fillMesh->addVertex(a);
 		fillMesh->addVertex(b);
 		fillMesh->addVertex(d);
@@ -63,10 +66,11 @@ class Block : public ofRectangle {
 		fillMesh->addVertex(d);
 		fillMesh->addVertex(c);
 		
+		fillIndices.max = fillMesh->getNumVertices();
+		
 		for(int i = 0; i < 6; i++){
 			fillMesh->addColor(color);
 		}
-		
 	}
 		
 	void update(){
@@ -74,32 +78,36 @@ class Block : public ofRectangle {
 		if (bSelected){
             curStroke = borderColor;
         } else {
-            curStroke = ofFloatColor(0.5,borderColor.a);
+            curStroke = ofFloatColor(borderBase,borderColor.a);
         }
 
 		for(int i = outlineIndices.min; i < outlineIndices.max; i++) {
 			outlineMesh->setColor(i, curStroke);
 		}
+		for(int i = fillIndices.min; i < fillIndices.max; i++){
+			fillMesh->setColor(i, color);
+		}
+			
 
 	}
 		
-    void draw(){
-		ofPushStyle();
-        
-        ofFill();
-        ofSetColor(color);
-        ofRect(*this);
-        
-        ofNoFill();
-        if (bSelected){
-            ofSetColor(borderColor);
-        } else {
-            ofSetColor(ofFloatColor(0.5,borderColor.a));
-        }
-        ofRect(*this);
-        
-        ofPopStyle();
-    }
+//    void draw(){
+//		ofPushStyle();
+//        
+//        ofFill();
+//        ofSetColor(color);
+//        ofRect(*this);
+//        
+//        ofNoFill();
+//        if (bSelected){
+//            ofSetColor(borderColor);
+//        } else {
+//            ofSetColor(ofFloatColor(0.5,borderColor.a));
+//        }
+//        ofRect(*this);
+//        
+//        ofPopStyle();
+//    }
 };
 
 
@@ -111,7 +119,8 @@ public:
     void selfSetup();
     void selfSetupGuis();
     
-    void selfAutoMode();
+	void selfSetDefaults();
+	
     void selfUpdate();
     void selfDrawBackground();
     void selfDrawDebug();
@@ -160,11 +169,14 @@ private:
     void    applyRandomUp();
     void    applyRandomDown();
     
+	ofRange baseColorRange;
     ofFloatColor borderColor;
+	float borderBase;
+
     float   margin;
     float   blockWidth, blockHeight, blockScale;
     float   randomSort, randomMix, randomUp, randomDown;
-    float   brightnessOffset;
+//    float   brightnessOffset;
     float   noiseLerp;
     
     int     xBlocks;
