@@ -16,6 +16,7 @@ void CloudsVisualSystemColony::selfSetup()
     ofLoadImage(sprite, getVisualSystemDataPath() + "sprites/marker_dot.png");
     ofEnableArbTex();
     
+    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/dirt.jpg");
 	loadShader();
     
 }
@@ -115,6 +116,14 @@ void CloudsVisualSystemColony::selfUpdate()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
+    ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
+    grunge.bind();
+    grunge.draw(0,0);
+//    ofRect(0, 0, getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+    grunge.unbind();
+    ofDisableBlendMode();
+
+    
     ofEnableAlphaBlending();
     levelSet.begin();
     fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),

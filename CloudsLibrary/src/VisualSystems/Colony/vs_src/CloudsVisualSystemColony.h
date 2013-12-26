@@ -64,7 +64,7 @@ private:
     
     /* WOW VIDEO */
     ofFbo fbo_main, foodTexture;
-    ofTexture sprite;
+    ofTexture sprite, grunge;
     
     /* LOL DATA */
     colonyPartitionMap pMap;
