@@ -1,0 +1,87 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Brush</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>422.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Brush Size</Name>
+    <Value>128.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Palette Shift Speed</Name>
+    <Value>6.403941154</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Palette Expand</Name>
+    <Value>0.226600990</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>burtynsky1.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>burtynsky2.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>hubble1.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>monet1.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>monet2.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>richter1.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>richter2.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>richter3.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>richter4.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>richter5.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>rothkoSunset.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>turrell.jpg</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Show Palette</Name>
+    <Value>0</Value>
+</Widget>

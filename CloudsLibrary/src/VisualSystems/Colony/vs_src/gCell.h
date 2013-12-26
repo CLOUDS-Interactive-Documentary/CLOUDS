@@ -55,6 +55,7 @@ public:
     void doWrapXY();
     
     void doFeedCellNoise();
+    void doFeedCellNoise(const ofFbo& texture);
     void doAddTurbulence();
     
     bool isFertile(); 
