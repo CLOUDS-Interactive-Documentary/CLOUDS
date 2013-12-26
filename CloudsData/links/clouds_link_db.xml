@@ -12023,6 +12023,10 @@
     </link>
 </clip>
 <clip>
+    <name>Higa - </name>
+    <additionalKeywords>#dud</additionalKeywords>
+</clip>
+<clip>
     <name>Higa - language barriers</name>
     <link>
         <target>Lauren - breaking down barriers</target>
@@ -51035,6 +51039,15 @@
     <additionalKeywords>assistive technology,#vo</additionalKeywords>
 </clip>
 <clip>
+    <name>Chris - RemoteCollaboration</name>
+    <link>
+        <target>Julia - feeling of kinship</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>collaboration,community</additionalKeywords>
+</clip>
+<clip>
     <name>Chris - interfaces</name>
     <link>
         <target>Julian - ideology of seamlessness</target>
@@ -51059,13 +51072,37 @@
     <additionalKeywords>#tech,#vo</additionalKeywords>
 </clip>
 <clip>
-    <name>Chris - RemoteCollaboration</name>
+    <name>Diederick - MoreADeveloper</name>
     <link>
-        <target>Julia - feeling of kinship</target>
+        <target>Elliot - ToolmakerArtist1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>collaboration,community</additionalKeywords>
+    <additionalKeywords>invention,beginnings,toolmakers,#vo,hybridity</additionalKeywords>
+</clip>
+<clip>
+    <name>Diederick - PaintingLikeCoding</name>
+    <link>
+        <target>Joel - Watercolors</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shantell - Coding gesturally</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shantell - Markmaking software</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - sketching with code</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>painting,#vo,expression</additionalKeywords>
 </clip>
 <clip>
     <name>Diederick - allprogrammershavethat</name>
@@ -51145,15 +51182,6 @@
     <additionalKeywords>hackathon,collaboration,tribe</additionalKeywords>
 </clip>
 <clip>
-    <name>Diederick - MoreADeveloper</name>
-    <link>
-        <target>Elliot - ToolmakerArtist1</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <additionalKeywords>invention,beginnings,toolmakers,#vo,hybridity</additionalKeywords>
-</clip>
-<clip>
     <name>Diederick - openFrameworks</name>
     <link>
         <target>Zach - emailing the communnity</target>
@@ -51176,30 +51204,6 @@
         <endFrame>-1</endFrame>
     </suppress>
     <additionalKeywords>#vo,open frameworks,open source</additionalKeywords>
-</clip>
-<clip>
-    <name>Diederick - PaintingLikeCoding</name>
-    <link>
-        <target>Joel - Watercolors</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Shantell - Coding gesturally</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Shantell - Markmaking software</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Casey - sketching with code</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <additionalKeywords>painting,#vo,expression</additionalKeywords>
 </clip>
 <clip>
     <name>Diederick - programmingWithFeeling</name>
@@ -51308,15 +51312,6 @@
     <additionalKeywords>?critical engineering: How does academic research inform creative technology ?,creative coding,critical engineering</additionalKeywords>
 </clip>
 <clip>
-    <name>Intro - interactivity1</name>
-    <suppress>
-        <target>Shantell - Kids</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
-    <additionalKeywords>interactivity,new media,play,systems,?interactivity: What makes a satisfying interaction?,#start</additionalKeywords>
-</clip>
-<clip>
     <name>Intro - Interfaces</name>
     <link>
         <target>Theo - hide the technology,</target>
@@ -51362,6 +51357,15 @@
 <clip>
     <name>Intro - VirtualReality</name>
     <additionalKeywords>virtual,reality,#start,?real and virtual: Have we hacked reality?,real</additionalKeywords>
+</clip>
+<clip>
+    <name>Intro - interactivity1</name>
+    <suppress>
+        <target>Shantell - Kids</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>interactivity,new media,play,systems,?interactivity: What makes a satisfying interaction?,#start</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - Amiga500</name>
@@ -51464,25 +51468,6 @@
     <additionalKeywords>newness,#vo,new media</additionalKeywords>
 </clip>
 <clip>
-    <name>Joel - Interactivity</name>
-    <link>
-        <target>Jen - deep interaction</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Jer - active not interactive</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Theo - hide the technology,</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <additionalKeywords>interactivity,#ironic,#vo,interfaces</additionalKeywords>
-</clip>
-<clip>
     <name>Joel - InTheNow1</name>
     <link>
         <target>Jen - deep interaction</target>
@@ -51511,6 +51496,25 @@
     <additionalKeywords>zen,commercial art,immersion,#vo,time</additionalKeywords>
 </clip>
 <clip>
+    <name>Joel - Interactivity</name>
+    <link>
+        <target>Jen - deep interaction</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jer - active not interactive</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - hide the technology,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>interactivity,#ironic,#vo,interfaces</additionalKeywords>
+</clip>
+<clip>
     <name>Joel - MicrosoftResearch</name>
     <link>
         <target>Bruce - kinect hacking</target>
@@ -51537,6 +51541,57 @@
         <endFrame>-1</endFrame>
     </link>
     <additionalKeywords>technology,#vo,art and tech</additionalKeywords>
+</clip>
+<clip>
+    <name>Joel - Watercolors</name>
+    <link>
+        <target>Kyle_CH - don&apos;t underestimate traditional art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - New modes of expression</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Diederick - programmingWithFeeling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Joel - Watercolors</name>
+    <link>
+        <target>Kyle_CH - don&apos;t underestimate traditional art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - New modes of expression</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Diederick - programmingWithFeeling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>painting,drawing,expression,simulation,#vo,art and code</additionalKeywords>
+</clip>
+<clip>
+    <name>Joel - WrongToSell</name>
+    <link>
+        <target>Jer - Software1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jer - Software2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#vo,commercial art,software,open source</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - scaleofUniverse</name>
@@ -51576,37 +51631,4 @@
         <endFrame>-1</endFrame>
     </link>
     <additionalKeywords>scale,#vo,universe,nature,perception</additionalKeywords>
-</clip>
-<clip>
-    <name>Joel - Watercolors</name>
-    <link>
-        <target>Kyle_CH - don&apos;t underestimate traditional art</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Casey - New modes of expression</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Diederick - programmingWithFeeling</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <additionalKeywords>painting,drawing,expression,simulation,#vo,art and code</additionalKeywords>
-</clip>
-<clip>
-    <name>Joel - WrongToSell</name>
-    <link>
-        <target>Jer - Software1</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Jer - Software2</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <additionalKeywords>#vo,commercial art,software,open source</additionalKeywords>
 </clip>
