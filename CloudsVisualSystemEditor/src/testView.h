@@ -50,9 +50,9 @@
 }
 
 - (int)selectedPresetIndex;
-- (void) updateCurrentClipPresets;
-- (void) updateCounts;
-
+- (void)updateAssociatedClips;
+- (void)updateCurrentClipPresets;
+- (void)updateCounts;
 
 - (void)setup;
 - (void)update;
@@ -97,7 +97,7 @@ completionsForSubstring:(NSString *)substring
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor;
 - (NSArray *)tokenField:(NSTokenField *)tokenField shouldAddObjects:(NSArray *)tokens atIndex:(NSUInteger)index;
-- (void) updateAssociatedClips;
+
 - (BOOL) hasKeyword:(NSString*) keyword;
 - (vector<string>) entries:(vector<string>&)a sharedWith:(vector<string>&)b;
 

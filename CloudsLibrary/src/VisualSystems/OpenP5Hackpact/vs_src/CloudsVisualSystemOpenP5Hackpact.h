@@ -85,11 +85,12 @@ class CloudsVisualSystemOpenP5Hackpact : public CloudsVisualSystem {
     void selfMouseReleased(ofMouseEventArgs& data);
 	
 
+	ofCamera simpleCam;
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
+	ofCamera& getCameraRef(){
+		return simpleCam;
+	}
 
 
 protected:

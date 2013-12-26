@@ -180,8 +180,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	if(self.selectedPresetIndex >= 0){
 		visualSystems.deletePreset( self.selectedPresetIndex );
 		
-		[clipTable reloadData];
-		[suppressedClipTable reloadData];
+		[self updateAssociatedClips];
+		
 		[presetTable reloadData];
 		[allKeywordTable reloadData];
 		[allClipTable reloadData];
