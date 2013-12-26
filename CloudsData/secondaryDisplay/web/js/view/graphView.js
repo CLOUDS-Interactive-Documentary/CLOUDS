@@ -292,9 +292,6 @@ GraphView = {
 			
 		});
 		tween.start();
-		
-		
-		    
 				
 	},
 	addPath: function(callback){
