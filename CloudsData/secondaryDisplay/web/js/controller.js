@@ -104,7 +104,7 @@ Controller = {
 			$('#first').html(person.first);
 			$('#last').html(person.last);
 			$('#title').html(person.title);
-			$('#location').html(person.location);
+			$('#location1').html(person.location);
 			$('#byline').html(person.byline1);
 			$('#description').html(person.byline2);
 

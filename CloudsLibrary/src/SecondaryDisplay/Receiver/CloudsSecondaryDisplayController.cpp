@@ -27,7 +27,6 @@ void CloudsSecondaryDisplayController::setup(){
 	
 //	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
 //	CloudsAct* act = storyEngine.buildAct(run, startingNodes[ ofRandom(startingNodes.size()) ]);
-//	
 //	run.topicHistory = act->getAllTopics();
 //	run.clipHistory = act->getAllClips();
 	
@@ -50,8 +49,9 @@ void CloudsSecondaryDisplayController::setup(){
 	displayTarget.allocate(1920, 1080, GL_RGB);
 }
 
+/*LOADING SVG LAYOUT files from Sarah*/
 void CloudsSecondaryDisplayController::loadSVGs(){
-	ofDirectory svgs(GetCloudsDataPath() + "secondaryDisplay/SVG/PROJECTEX1/");
+	ofDirectory svgs(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/");
 	svgs.allowExt("svg");
 	svgs.listDir();
 	for(int i = 0; i < svgs.numFiles(); i++){
@@ -109,6 +109,7 @@ void CloudsSecondaryDisplayController::update(){
 	}
 }
 
+/* WORK MOSTLY IN HERE - JK */
 void CloudsSecondaryDisplayController::draw(){
 	
 	displayTarget.begin();
@@ -125,7 +126,7 @@ void CloudsSecondaryDisplayController::draw(){
     //END DEBUG
 	
 	if(playingMovie){
-		archivePlayer.draw(ofGetWidth()/2 - archivePlayer.getWidth()/2,
+		archivePlayer.draw(ofGetWidth()/2  - archivePlayer.getWidth()/2,
 						   ofGetHeight()/2 - archivePlayer.getHeight()/2);
 		playingMovie = archivePlayer.isPlaying();
 	}
@@ -142,12 +143,9 @@ void CloudsSecondaryDisplayController::draw(){
 	displayTarget.getTextureReference().draw(targetRect);
 	
     // ---------------- added
-    
 //	//get info for a speaker
 //	CloudsSpeaker::speakers["Kyl_CH"].twitterHandle;
-
 	//TODO: draw speaker layout
-	
 	//TODO: overlay with project example when relevant
 	
 }
