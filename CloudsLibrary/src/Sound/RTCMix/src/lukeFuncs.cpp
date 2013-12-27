@@ -30,20 +30,78 @@ void RTcmixParseScoreFile(string f)
     parse_score((char*)thescore.c_str(), thescore.length());
 }
 
+// use the SPLITTER() instrument to configure effects path
+void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus)
+{
+    char thebuf [256];
+    int bx;
+    
+    // string format the auxiliary bus numbers
+    int abl = auxbus*2 + 20;
+    int abr = auxbus*2 + 21;
+    string output = "aux " + ofToString(abl) + "-" + ofToString(abr) + " out";
+    string input = "aux " + ofToString(abl) + "-" + ofToString(abr) + " in";
+    
+    // do the bus_config() calls
+    
+    // do the instrument bus_config()
+    if(inst=="FILTERBANK") {
+        bx = snprintf(thebuf, 256, "bus_config(\"%s\", \"aux 8-9 in\", \"%s\")", (char*)inst.c_str(), (char*)output.c_str());
+    }
+    else if(inst=="STEREO" || inst=="TRANS3")
+    {
+        bx = snprintf(thebuf, 256, "bus_config(\"%s\", \"in 0\", \"%s\")", (char*)inst.c_str(), (char*)output.c_str());
+    }
+    else
+    {
+        bx = snprintf(thebuf, 256, "bus_config(\"%s\", \"%s\")", (char*)inst.c_str(), (char*)output.c_str());
+    }
+    parse_score(thebuf, bx);
+    
+    // do the SPLITTER bus_config()
+    bx = snprintf(thebuf, 256, "bus_config(\"SPLITTER\", \"%s\", \"aux 2-3 out\", \"aux 4-5 out\", \"aux 6-7 out\")", (char*)input.c_str());
+    parse_score(thebuf, bx);
+
+    // do the SPLITTER() calls
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f, 0, %f, 0., %f, 0., %f, 0.)", outskip, time, amp, dry, verb, echo);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f, 1, 0., %f, %f, 0., 0., %f)", outskip, time, amp, dry, verb, echo);
+    parse_score(thebuf, bx);
+    
+}
+
 // uses the SPLITTER() and MIX() and GVERB() instruments
 void REVERB(double outskip, double time)
 {
     char thebuf [256];
     int bx;
+    // NOW DONE WITH SETUPMIX()
+    /*
     bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, 1., 0, 1., 0., 1., 0., 1., 0.)", outskip, time);
     parse_score(thebuf, bx);
     bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, 1., 1, 0., 1., 1., 0., 0., 1.)", outskip, time);
     parse_score(thebuf, bx);
+     */
+    
+    // DRY MIX
     bx = snprintf(thebuf, 256, "MIX(%f, 0.0, %f, 1., 0, 1)", outskip, time);
     parse_score(thebuf, bx);
-    //bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 50., 8., 0.5, 0.1, -90., -9., -9., 3.0)", outskip, time);
-    //bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 150., 8., 0.5, 1.0, -90., -18., -9., 3.0)", outskip, time);
-    bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 50., 4., 0.9, 0.2, -90., -24., -18., 3.0)", outskip, time);
+    
+    // REVERB
+    // p0 = output start time (seconds)
+    // p1 = input start time (seconds)
+    // p2 = duration (seconds)
+    // p3 = amplitude multiplier (relative multiplier of input signal)
+    // p4 = roomsize (1.0 - 300.0)
+    // p5 = reverb time (0.1 - 360.0)
+    // p6 = damping (0.0 - 1.0)
+    // p7 = input filter bandwidth (0.0 - 1.0)
+    // p8 = dry level (inverse dB, -90.0 - 0.0)
+    // p9 = early reflection level (inverse dB, -90.0 - 0.0)
+    // p10 = tail level (inverse dB, -90.0 - 0.0)
+    // p11 = ring-down time (seconds, added to duration)
+
+    bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 75., 8., 0.2, 1., -90., -15., -12., 3.0)", outskip, time);
     parse_score(thebuf, bx);
 }
 

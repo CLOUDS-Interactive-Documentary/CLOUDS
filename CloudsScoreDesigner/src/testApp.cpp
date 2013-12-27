@@ -154,7 +154,7 @@ void testApp::update(){
             for(int i = 0;i<oorch.size();i++)
             {
                 cout << "running " << oorch[i] << endl;
-                sound.startMusic(0, oorch[i], oarg_a[i], oarg_b[i], oharmony, orhythm, odur, otempo, oamp[i], orev[i]);
+                sound.startMusic(0, oorch[i], oarg_a[i], oarg_b[i], oharmony, orhythm, odur, otempo, oamp[i], orev[i], i);
             }
 		}
 		else if(m.getAddress() == "/stopMusic"){
