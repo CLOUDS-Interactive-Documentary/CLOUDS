@@ -25,7 +25,7 @@ public:
 	ofVec3f position;
     bool primary;
 	int actionType; //will signal grip vs finger, or left click right click
-	int playerId; //0 for mouse, 0 or 1 for kinect based on the person
+	int playerId; //0 for mouse, 0, 1, 2 or 3 for kinect based on the hand
 };
 
 class CloudsInputEvents {
