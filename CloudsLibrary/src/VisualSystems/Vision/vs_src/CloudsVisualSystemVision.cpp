@@ -330,8 +330,6 @@ void CloudsVisualSystemVision::updateOpticalFlow(){
 
 void CloudsVisualSystemVision::updateHeatMap(){
     
-
-	accumulationCount++;
 	// take the absolute difference of prev and cam and save it inside diff
 	toCv(accumulation) += toCv(previousHeatMap) -toCv(player->getPixelsRef()) ;
 	
@@ -483,14 +481,15 @@ void CloudsVisualSystemVision::selfUpdate(){
         //AVFoundation loads videos asynchronously.
         //Using this condition to update the system settings once the video is loaded.
     
-        if(bNewVideoLoaded && player->getWidth() > 0 ){
+        if(bNewVideoLoaded && player->getPixelsRef().isAllocated() ){
             player->setLoopState(OF_LOOP_NORMAL);
             updateSettingsForNewVideo();
             
             bNewVideoLoaded = false;
             resizeToPixels.allocate(player->getWidth()/scale,player->getHeight()/scale,
                               OF_IMAGE_COLOR);
-            cout<<"Updating settings for new video : "<<player->getPixelsRef().getImageType()<<endl;
+            cout<<"UPDATED VIDEO SETTINGS"<<endl;
+//            cout<<"Updating settings for new video : "<<player->getPixelsRef().getImageType()<<endl;
         }
         else{
             player->update();
@@ -862,7 +861,7 @@ void  CloudsVisualSystemVision::loadMovieAtIndex(int index){
 }
 void CloudsVisualSystemVision::updateSettingsForNewVideo(){
     updateCVParameters();
-    //populateOpticalFlowRegions();
+//    populateOpticalFlowRegions();
     updateImagesForNewVideo();
     resetFlowField();
 }
