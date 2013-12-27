@@ -10,6 +10,7 @@
 #include "CloudsVisualSystem.h"
 #include "ofxCv.h"
 #include "MyTracker.h"
+#include "ofxAVFVideoPlayer.h"
 
 typedef enum{
     OpticalFlow =0,
@@ -65,13 +66,15 @@ public:
 protected:
 
     //video player stuff        
-    ofPtr<ofVideoPlayer> player;
+//    ofPtr<ofVideoPlayer> player;
     ofPixels resizeToPixels;
     int skipFrames;
 //    ofVideoPlayer* player;
+    ofPtr<ofxAVFVideoPlayer> player;
     int playerIndex;
     int movieIndex;
     bool frameIsNew;
+    bool bNewVideoLoaded;
     vector<string> movieStrings;
 
     CVMode currentMode;
@@ -135,6 +138,7 @@ protected:
 	
     void loadCurrentMovie();
     void loadMovieAtIndex(int movieIndex);
+    void updateSettingsForNewVideo();
     
     void setMode(CVMode mode);
     int accumulationCount;

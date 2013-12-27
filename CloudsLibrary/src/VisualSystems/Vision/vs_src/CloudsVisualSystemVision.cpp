@@ -207,9 +207,9 @@ void CloudsVisualSystemVision::clearAccumulation(){
 }
 void CloudsVisualSystemVision::updateImagesForNewVideo(){
     
-    imitate(previousHeatMap, *player);
-    imitate(diff, *player);
-    accumulation.allocate(player->width, player->height, OF_IMAGE_COLOR);
+    imitate(previousHeatMap, player->getPixelsRef());
+    imitate(diff, player->getPixelsRef());
+    accumulation.allocate(player->getWidth(), player->getHeight(), OF_IMAGE_COLOR);
     
 }
 void CloudsVisualSystemVision::resetFlowField(){
@@ -236,12 +236,12 @@ void CloudsVisualSystemVision::populateOpticalFlowRegions(){
     int rectHeight = 20;
     for( int j=0; j<player->getHeight(); j +=rectHeight){
         for( int i=0; i<player->getWidth(); i += rectWidth){
-            if (i +rectWidth -1>player->width) {
-                rectWidth =player->width- i +1;
+            if (i +rectWidth -1>player->getWidth()) {
+                rectWidth =player->getWidth()- i +1;
             }
             
-            if (j +rectHeight -1>player->height) {
-                rectHeight =player->height- j +1;
+            if (j +rectHeight -1>player->getHeight()) {
+                rectHeight =player->getHeight()- j +1;
             }
             flowRegions.push_back(ofRectangle(i, j, rectWidth, rectHeight));
         }
@@ -315,9 +315,9 @@ void CloudsVisualSystemVision::updateHeatMap(){
 
 	accumulationCount++;
 	// take the absolute difference of prev and cam and save it inside diff
-	toCv(accumulation) += toCv(previousHeatMap) -toCv(*player) ;
+	toCv(accumulation) += toCv(previousHeatMap) -toCv(player->getPixelsRef()) ;
 	
-	absdiff(previousHeatMap, *player, diff);
+	absdiff(previousHeatMap, player->getPixelsRef(), diff);
 	for(int i =0; i< diff.width; i++ ){
 		for(int j =0; j<diff.height; j++){
 			ofColor c = diff.getColor(i, j);
@@ -331,11 +331,11 @@ void CloudsVisualSystemVision::updateHeatMap(){
 		}
 	}
 	diff.update();
-	copy(*player, previousHeatMap);
+	copy(player->getPixelsRef(), previousHeatMap);
 }
 
 void CloudsVisualSystemVision::updateContourTracking(){
-	background.update(*player, thresholded);
+	background.update(player->getPixelsRef(), thresholded);
 	thresholded.update();
 	blur(thresholded, 5);
 	contourFinder.findContours(thresholded);
@@ -466,31 +466,44 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
 }
 
 void CloudsVisualSystemVision::selfUpdate(){
-	
-    player->update();
-    frameIsNew = player->isFrameNew();
-	
-    if(frameIsNew){
-		
-		if(drawThresholded){
-			background.update(*player, thresholded);
-			thresholded.update();
-			blur(thresholded, 5);
-		}
-	
-		if(bContourTracking){
-			updateContourTracking();
-		}
-		
-		if(bOpticalFlow){
-			updateOpticalFlow();
-		}
-		
-		if (bDrawHeatMap) {
-			updateHeatMap();
-		}
-		
-    }
+
+        //AVFoundation loads videos asynchronously.
+        //Using this condition to update the system settings once the video is loaded.
+    
+        if(bNewVideoLoaded && player->getWidth() > 0 ){
+            player->setLoopState(OF_LOOP_NORMAL);
+            updateSettingsForNewVideo();
+            
+            bNewVideoLoaded = false;
+            resizeToPixels.allocate(player->getWidth()/scale,player->getHeight()/scale,
+                              OF_IMAGE_COLOR);
+            cout<<"Updating settings for new video : "<<player->getPixelsRef().getImageType()<<endl;
+        }
+    
+        player->update();
+        frameIsNew = player->isFrameNew();
+        
+        if(frameIsNew && ! bNewVideoLoaded){
+            
+            if(drawThresholded){
+                background.update(player->getPixelsRef(), thresholded);
+                thresholded.update();
+                blur(thresholded, 5);
+            }
+            
+            if(bContourTracking){
+                updateContourTracking();
+            }
+            
+            if(bOpticalFlow){
+                updateOpticalFlow();
+            }
+            
+            if (bDrawHeatMap) {
+                updateHeatMap();
+            }
+            
+        }
 }
 
 void CloudsVisualSystemVision::selfDrawBackground()
@@ -571,7 +584,6 @@ void CloudsVisualSystemVision::selfDrawBackground()
     }
     
     if(bDrawHeatMap){
-  
         
  /*     
 		shader.begin();
@@ -701,7 +713,6 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     string name = e.widget->getName();
     int kind = e.widget->getKind();
 
-    cout<<kind<<" : "<<name<<endl;
     ofxUIRadio* r = (ofxUIRadio*)e.widget;
     ofxUIButton* b  = (ofxUIButton*) e.widget;
     ofxUIToggle* t  = (ofxUIToggle*) e.widget;
@@ -772,7 +783,6 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
         
     }
     
-    
     if (kind == OFX_UI_WIDGET_TOGGLE){
         thresholded.clear();
         background.reset();
@@ -813,22 +823,28 @@ void CloudsVisualSystemVision::loadCurrentMovie(){
 
 void  CloudsVisualSystemVision::loadMovieAtIndex(int index){
     movieIndex = index;
-    player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
+
+    player = ofPtr<ofxAVFVideoPlayer>(new ofxAVFVideoPlayer());
+
     if(player->loadMovie(getVisualSystemDataPath(true) + movieStrings[ movieIndex ])){
-        resizeToPixels.allocate(player->getWidth()/scale,player->getHeight()/scale,
-                                player->getPixelsRef().getImageType());
+        
         player->play();
     }
     else{
         cout<<"Not Playing"<<endl;
     }
-    //    videoRect.alignTo(screenRect);
+    
+    bNewVideoLoaded = true; 
     cout<<"Player dimensions (new) :"<< player->getWidth()<<" , "<<player->getHeight() <<endl;
+
+}
+void CloudsVisualSystemVision::updateSettingsForNewVideo(){
     updateCVParameters();
     populateOpticalFlowRegions();
     updateImagesForNewVideo();
     resetFlowField();
 }
+
 void CloudsVisualSystemVision::guiRenderEvent(ofxUIEventArgs &e)
 {
     
