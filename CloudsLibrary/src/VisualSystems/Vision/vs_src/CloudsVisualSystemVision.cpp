@@ -40,7 +40,7 @@ void CloudsVisualSystemVision::selfSetDefaults(){
     
     videoAlpha = 128;
     windowAlpha = 10;
-    thresholdAlpha = 10h;
+    thresholdAlpha = 10;
     
     bContourTracking = false;
     bOpticalFlow = false;
@@ -146,6 +146,8 @@ void CloudsVisualSystemVision::selfSetupGui()
     opticalFlowGui->addSlider("FLOW LINE LENGTH", 0.5, 8, &flowLineMultiplier);
     opticalFlowGui->addSlider("FLOW COLOUR MAP RANGE", 10, 1000, &flowColorMapRange);
     opticalFlowGui->addSlider("FLOW LINE WIDTH", 1, 10, &flowLineWidth);
+	opticalFlowGui->addSlider("FLOW LINE AMP")flowAmp;
+	float flowDamp;
     
     opticalFlowGui->addSpacer();
     opticalFlowGui->addLabel("OPTICAL FLOW PARAMS");
@@ -155,6 +157,7 @@ void CloudsVisualSystemVision::selfSetupGui()
     opticalFlowGui->addSlider("ITERATIONS",1, 8, &iterations);
     opticalFlowGui->addSlider("POLYN",5, 7, &polyN);
     opticalFlowGui->addSlider("POLYSIGMA", 1.1, 1.1, &polySigma);
+
     ofAddListener(opticalFlowGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
 	
     guis.push_back(opticalFlowGui);
