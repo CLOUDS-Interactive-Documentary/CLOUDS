@@ -18,7 +18,7 @@ void CloudsVisualSystemColony::selfSetup()
     
     ofLoadImage(grunge, getVisualSystemDataPath() + "textures/dirt.jpg");
 	loadShader();
-    
+ 
 }
 
 void CloudsVisualSystemColony::loadShader(){
@@ -43,6 +43,7 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
     sysGui->addSlider("Nutrient Contrast", 0, 4.0, &params.nutrientFalloff);
     
     sysGui->addRangeSlider("Max Speed", 0.0, 10.0, &params.maxSpeed_min, &params.maxSpeed_max);
+    sysGui->addRangeSlider("Max Force", 0.0, 10.0, &params.maxForce_min, &params.maxForce_max);
     sysGui->addRangeSlider("Max Size", 0.0, 30.0, &params.maxSize_min, &params.maxSize_max);
     
     sysGui->addSpacer("Immutables");
