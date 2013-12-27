@@ -123,7 +123,9 @@ protected:
     ofVboMesh flowMesh;
     float windowWidth;
     float windowHeight;
-    
+    float flowAmp;
+	float flowDamp;
+	
     bool drawPlayer;
     bool drawThresholded;
     bool drawDiff;

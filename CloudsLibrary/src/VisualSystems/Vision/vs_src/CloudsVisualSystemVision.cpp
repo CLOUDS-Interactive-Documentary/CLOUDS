@@ -516,7 +516,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
 			ofRectangle videoRect(0,0,player->getWidth(), player->getHeight());
 			ofRectangle screenRect(0,0,getCanvasWidth(), getCanvasHeight());
 			videoRect.scaleTo(screenRect);
-			player->draw(videoRect);
+			player->draw(videoRect.x,videoRect.y,videoRect.width,videoRect.height);
 			ofPopStyle();
 		}
 		else{
@@ -560,11 +560,16 @@ void CloudsVisualSystemVision::selfDrawBackground()
 				
 				ofPushMatrix();
 				ofPushStyle();
+				
 				ofSetColor(windowAlpha);
-				ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
-				tex.drawSubsection(mouseX-window.width/2 , mouseY-window.height/2, window.width, window.height, mouseX-window.width/2, mouseY-window.height/2);
+				ofScale(getCanvasWidth()/player->getWidth(),
+						getCanvasHeight()/player->getHeight());
+				tex.drawSubsection(mouseX-window.width/2 ,
+								   mouseY-window.height/2, window.width, window.height,
+								   mouseX-window.width/2, mouseY-window.height/2);
 				ofSetLineWidth(flowLineWidth);
 				flowMesh.draw();
+				
 				ofPopStyle();
 				ofPopMatrix();
 			}
