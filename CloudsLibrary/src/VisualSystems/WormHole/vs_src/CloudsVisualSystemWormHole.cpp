@@ -380,6 +380,8 @@ void CloudsVisualSystemWormHole::selfUpdate()
 	lastTime = t;
 	
 	noiseTime += timeDelta * noiseSpeed;
+	
+	getCameraRef().setNearClip(.01);
 }
 
 void CloudsVisualSystemWormHole::selfDraw()
