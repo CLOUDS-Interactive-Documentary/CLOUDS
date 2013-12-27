@@ -49,16 +49,16 @@ class PhotoGlitch
 public:
     int ID;
     int numVerts;
-    GLfloat * verts;
-    GLfloat * texCoords;
-    GLfloat * colors;
+    GLfloat* verts;
+    GLfloat* texCoords;
+    GLfloat* colors;
     int numIndices;
-    GLuint * indices;
+    GLuint* indices;
     
     ofImage tex;
     ofVbo vbo;
     
-    PGCell * cells;
+    PGCell* cells;
     
     void clear(){
         
@@ -172,30 +172,31 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void clearTarget();
     void generateSource();
     void generateTarget();
-    void generate(PhotoGlitch& pg, int imageIndex);
+    void generate(PhotoGlitch& pg, int imageIndex,bool isSource= false);
     void beginAnimation();
     void updateAnimation();
     
-    void shuffle();
-    void sortHue();
-    void sortBri();
-    void reorder();
+    void shuffle(bool tweenCells=true);
+    void sortHue(bool tweenCells=true);
+    void sortBri(bool tweenCells=true);
+    void reorder(bool tweenCells=true);
     void sortTarget();
     void sortTargetBrightness();
     void addTargetToUI(ofxUISuperCanvas* gui,string suffix, glitchParams& params );
     void tweenAll();
     void tween(int i, int j = -1);
     void tweenTarget(int i, int j = -1);
-    
+    void tweenFast(int i);
+    void updateSequence();
     int getTargetFileName(ofxUISuperCanvas * gui, int targetId);
-    
+    /*
     static bool sortIdxForHue(int i, int j);
     static bool sortIdxForBri(int i, int j);
     static bool sortIdxForHueTarget(int i, int j);
     static bool sortIdxForBrightnessTarget(int i, int j);
-    
-    static PGCell * cells;
-    static PGCell * targetCells;
+    */
+    PGCell * cells;
+//    PGCell * targetCells;
     PhotoGlitch sourcePhoto;
     vector<PhotoGlitch> photos;
     PhotoGlitch target1;
@@ -261,6 +262,8 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     bool bUseColors;
     bool bUseTexture;
     bool bDrawTarget;
+    bool bLoopBack;
+    bool bOneCycleComplete;
     
     bool bShouldShuffle;
     bool bShouldSortHue;
@@ -270,6 +273,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     bool bShouldReorder;
     bool bRandomSort;
     bool bDrawBackground;
+    bool bIsFirstTime;
 
     bool bCurrentlyAnimating;
     bool bStartAnimating;

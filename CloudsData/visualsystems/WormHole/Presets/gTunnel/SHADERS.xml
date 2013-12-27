@@ -2,8 +2,13 @@
     <Kind>42</Kind>
     <Name>SHADERS</Name>
     <IsMinified>0</IsMinified>
+<<<<<<< HEAD
     <XPosition>641.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
+=======
+    <XPosition>554</XPosition>
+    <YPosition>79</YPosition>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,7 +28,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>OF_BLENDMODE_DISABLED</Name>
+<<<<<<< HEAD
     <Value>0</Value>
+=======
+    <Value>1</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -58,7 +67,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>facingRatio</Name>
+<<<<<<< HEAD
     <Value>0</Value>
+=======
+    <Value>1</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -68,35 +81,63 @@
 <Widget>
     <Kind>4</Kind>
     <Name>shininess</Name>
+<<<<<<< HEAD
     <Value>16.000000000</Value>
+=======
+    <Value>1.84926</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>28</Kind>
     <Name>c1</Name>
+<<<<<<< HEAD
     <XValue>0.500000000</XValue>
     <YValue>0.500000000</YValue>
     <RColor>0</RColor>
     <GColor>1</GColor>
     <BColor>5</BColor>
+=======
+    <XValue>0.68</XValue>
+    <YValue>0.33</YValue>
+    <RColor>250</RColor>
+    <GColor>0</GColor>
+    <BColor>174</BColor>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
     <AColor>255</AColor>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>c1_alpha</Name>
+<<<<<<< HEAD
     <Value>1.000000000</Value>
+=======
+    <Value>1</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>28</Kind>
     <Name>c2</Name>
+<<<<<<< HEAD
     <XValue>0.500000000</XValue>
     <YValue>0.500000000</YValue>
     <RColor>0</RColor>
     <GColor>1</GColor>
     <BColor>5</BColor>
+=======
+    <XValue>0.73</XValue>
+    <YValue>0.51</YValue>
+    <RColor>231</RColor>
+    <GColor>4</GColor>
+    <BColor>0</BColor>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
     <AColor>255</AColor>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>c2_alpha</Name>
+<<<<<<< HEAD
     <Value>1.000000000</Value>
+=======
+    <Value>1</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>

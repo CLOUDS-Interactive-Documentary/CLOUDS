@@ -1,9 +1,15 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>BgSettings</Name>
+<<<<<<< HEAD
     <IsMinified>0</IsMinified>
     <XPosition>1701.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
+=======
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>187</YPosition>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,30 +24,54 @@
 <Widget>
     <Kind>4</Kind>
     <Name>HUE</Name>
+<<<<<<< HEAD
     <Value>0.000000000</Value>
+=======
+    <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SAT</Name>
+<<<<<<< HEAD
     <Value>0.000000000</Value>
+=======
+    <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BRI</Name>
+<<<<<<< HEAD
     <Value>0.000000000</Value>
+=======
+    <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>HUE2</Name>
+<<<<<<< HEAD
     <Value>0.000000000</Value>
+=======
+    <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SAT2</Name>
+<<<<<<< HEAD
     <Value>0.000000000</Value>
+=======
+    <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BRI2</Name>
+<<<<<<< HEAD
     <Value>0.000000000</Value>
+=======
+    <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>

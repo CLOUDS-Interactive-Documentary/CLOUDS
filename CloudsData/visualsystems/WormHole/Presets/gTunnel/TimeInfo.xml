@@ -1,6 +1,13 @@
 <timeinfo>
+<<<<<<< HEAD
     <indefinite>1</indefinite>
     <duration>60.000000000</duration>
     <introDuration>0.000000000</introDuration>
     <outroDuration>0.000000000</outroDuration>
+=======
+    <indefinite>0</indefinite>
+    <duration>60</duration>
+    <introDuration>0</introDuration>
+    <outroDuration>0</outroDuration>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </timeinfo>

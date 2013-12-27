@@ -30,6 +30,11 @@
 		184CB84D181EC0E200B14025 /* CloudsVisualSystemVision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB843181EC0E200B14025 /* CloudsVisualSystemVision.cpp */; };
 		184CB84E181EC0E200B14025 /* FlowField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB845181EC0E200B14025 /* FlowField.cpp */; };
 		184CB84F181EC0E200B14025 /* MyTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB847181EC0E200B14025 /* MyTracker.cpp */; };
+		189C7600186D131000508F34 /* ofxAVFVideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 189C75F7186D131000508F34 /* ofxAVFVideoPlayer.mm */; };
+		189C7601186D131000508F34 /* ofxAVFVideoRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 189C75F9186D131000508F34 /* ofxAVFVideoRenderer.m */; };
+		189C760B186D199300508F34 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189C760A186D199300508F34 /* QuartzCore.framework */; };
+		189C760D186D199C00508F34 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189C760C186D199C00508F34 /* CoreMedia.framework */; };
+		189C760E186D19A200508F34 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189C7608186D195200508F34 /* AVFoundation.framework */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -295,6 +300,13 @@
 		184CB846181EC0E200B14025 /* FlowField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowField.h; sourceTree = "<group>"; };
 		184CB847181EC0E200B14025 /* MyTracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyTracker.cpp; sourceTree = "<group>"; };
 		184CB848181EC0E200B14025 /* MyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTracker.h; sourceTree = "<group>"; };
+		189C75F6186D131000508F34 /* ofxAVFVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoPlayer.h; sourceTree = "<group>"; };
+		189C75F7186D131000508F34 /* ofxAVFVideoPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxAVFVideoPlayer.mm; sourceTree = "<group>"; };
+		189C75F8186D131000508F34 /* ofxAVFVideoRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoRenderer.h; sourceTree = "<group>"; };
+		189C75F9186D131000508F34 /* ofxAVFVideoRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ofxAVFVideoRenderer.m; sourceTree = "<group>"; };
+		189C7608186D195200508F34 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
+		189C760A186D199300508F34 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
+		189C760C186D199C00508F34 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
 		18C070CF1835C5E500B58246 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../CloudsLibrary/src/CloudsGlobal.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -565,6 +577,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				189C760E186D19A200508F34 /* AVFoundation.framework in Frameworks */,
+				189C760D186D199C00508F34 /* CoreMedia.framework in Frameworks */,
+				189C760B186D199300508F34 /* QuartzCore.framework in Frameworks */,
 				E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */,
 				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
@@ -1008,9 +1023,30 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
+		189C75CF186D130E00508F34 /* ofxAVFVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				189C75F5186D130F00508F34 /* src */,
+			);
+			name = ofxAVFVideoPlayer;
+			path = ../../../addons/ofxAVFVideoPlayer;
+			sourceTree = "<group>";
+		};
+		189C75F5186D130F00508F34 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				189C75F6186D131000508F34 /* ofxAVFVideoPlayer.h */,
+				189C75F7186D131000508F34 /* ofxAVFVideoPlayer.mm */,
+				189C75F8186D131000508F34 /* ofxAVFVideoRenderer.h */,
+				189C75F9186D131000508F34 /* ofxAVFVideoRenderer.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				189C75CF186D130E00508F34 /* ofxAVFVideoPlayer */,
 				184CB617181EBB2500B14025 /* ofxOpenCv */,
 				184CB2E9181E122800B14025 /* ofxCv */,
 				E7B3C7D017EE29E400581ACD /* ofxMSACore */,
@@ -1081,6 +1117,9 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				189C760C186D199C00508F34 /* CoreMedia.framework */,
+				189C760A186D199300508F34 /* QuartzCore.framework */,
+				189C7608186D195200508F34 /* AVFoundation.framework */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E7176E3717D3DAFE00C8DC38 /* CloudsLibrary */,
@@ -1806,6 +1845,8 @@
 				E7AF94A31858C4620057411D /* heatMapShader.vert in Sources */,
 				E7AF94AC1858D1C60057411D /* CloudsInput.cpp in Sources */,
 				E7AF94AE1858D1C60057411D /* CloudsInputMouse.cpp in Sources */,
+				189C7600186D131000508F34 /* ofxAVFVideoPlayer.mm in Sources */,
+				189C7601186D131000508F34 /* ofxAVFVideoRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

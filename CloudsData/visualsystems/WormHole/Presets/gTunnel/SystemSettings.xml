@@ -1,9 +1,15 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>SystemSettings</Name>
+<<<<<<< HEAD
     <IsMinified>0</IsMinified>
     <XPosition>1277.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
+=======
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>139</YPosition>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Canvas>
 <Widget>
     <Kind>2</Kind>

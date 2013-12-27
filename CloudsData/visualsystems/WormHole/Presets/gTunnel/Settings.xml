@@ -2,8 +2,13 @@
     <Kind>42</Kind>
     <Name>Settings</Name>
     <IsMinified>0</IsMinified>
+<<<<<<< HEAD
     <XPosition>1065.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
+=======
+    <XPosition>228</XPosition>
+    <YPosition>219</YPosition>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Canvas>
 <Widget>
     <Kind>2</Kind>

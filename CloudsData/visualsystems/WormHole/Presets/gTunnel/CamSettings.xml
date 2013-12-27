@@ -1,34 +1,60 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>CamSettings</Name>
+<<<<<<< HEAD
     <IsMinified>0</IsMinified>
     <XPosition>2125.000244141</XPosition>
     <YPosition>1.000000000</YPosition>
+=======
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>237</YPosition>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>DIST</Name>
+<<<<<<< HEAD
     <Value>200.000000000</Value>
+=======
+    <Value>200</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FOV</Name>
+<<<<<<< HEAD
     <Value>60.000000000</Value>
+=======
+    <Value>60</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-X</Name>
+<<<<<<< HEAD
     <Value>0.000000000</Value>
+=======
+    <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Y</Name>
+<<<<<<< HEAD
     <Value>0.000000000</Value>
+=======
+    <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Z</Name>
+<<<<<<< HEAD
     <Value>0.000000000</Value>
+=======
+    <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>2</Kind>

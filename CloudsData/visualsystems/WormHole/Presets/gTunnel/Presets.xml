@@ -2,8 +2,13 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
+<<<<<<< HEAD
     <XPosition>2761.000244141</XPosition>
     <YPosition>1.000000000</YPosition>
+=======
+    <XPosition>224</XPosition>
+    <YPosition>346</YPosition>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -12,7 +17,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+<<<<<<< HEAD
     <Name>Square_01</Name>
+=======
+    <Name>debug</Name>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -22,11 +31,14 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+<<<<<<< HEAD
     <Name>gTunnel206_solidwhite</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
+=======
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
     <Name>gTunnel</Name>
     <Value>1</Value>
 </Widget>
