@@ -116,11 +116,11 @@ void CloudsVisualSystemColony::selfUpdate()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
-    ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
-    grunge.bind();
-    grunge.draw(0,0);
-    grunge.unbind();
-    ofDisableBlendMode();
+//    ofEnableBlendMode(OF_BLENDMODE_ADD);
+//    grunge.bind();
+//    grunge.draw(0,0);
+//    grunge.unbind();
+//    ofDisableBlendMode();
 
     
     ofEnableAlphaBlending();
