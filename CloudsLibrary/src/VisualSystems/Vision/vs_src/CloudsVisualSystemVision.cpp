@@ -520,7 +520,10 @@ void CloudsVisualSystemVision::selfDrawBackground()
 		if(player->isLoaded() && player->isPlaying()){
 			ofPushStyle();
 			ofSetColor(videoAlpha);
-			player->draw(0,0,ofGetWidth(),ofGetHeight());
+			ofRectangle videoRect(0,0,player->getWidth(), player->getHeight());
+			ofRectangle screenRect(0,0,getCanvasWidth(), getCanvasHeight());
+			videoRect.scaleTo(screenRect);
+			player->draw(videoRect);
 			ofPopStyle();
 		}
 		else{

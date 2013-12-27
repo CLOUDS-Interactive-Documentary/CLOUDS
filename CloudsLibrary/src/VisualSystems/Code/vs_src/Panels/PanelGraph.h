@@ -18,7 +18,7 @@ class PanelGraph : public Panel {
 	void selfSetup();
 	void selfDraw();
 	
-		
+	float pixelStep;
   protected:	
 	
 };

@@ -61,7 +61,8 @@ class CloudsVisualSystem {
 #endif
 	ofFbo& getSharedRenderTarget();
 	ofImage& getCursor();
-
+	int getCanvasWidth();
+	int getCanvasHeight();
 	
 	//SUB CLASSES USE THESE METHODS:
 	virtual void selfSetDefaults();

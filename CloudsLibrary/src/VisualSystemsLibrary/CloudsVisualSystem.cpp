@@ -65,6 +65,14 @@ ofImage& CloudsVisualSystem::getCursor(){
 	return sharedCursor;
 }
 
+int CloudsVisualSystem::getCanvasWidth(){
+	return getSharedRenderTarget().getWidth();
+}
+
+int CloudsVisualSystem::getCanvasHeight(){
+	return getSharedRenderTarget().getHeight();
+}
+
 CloudsRGBDVideoPlayer& CloudsVisualSystem::getRGBDVideoPlayer(){
 	return rgbdPlayer;
 }
@@ -825,8 +833,6 @@ void CloudsVisualSystem::keyReleased(ofKeyEventArgs & args)
     }
 }
 
-
-//TODO REMOVE FAKES!!
 void CloudsVisualSystem::interactionMoved(CloudsInteractionEventArgs& args){
     if(args.primary){
         ofMouseEventArgs fakeArgs;
@@ -1414,7 +1420,6 @@ void CloudsVisualSystem::setupCameraGui()
     guis.push_back(camGui);
     guimap[camGui->getName()] = camGui;
 	
-
 }
 
 CloudsVisualSystem::RGBDTransitionType CloudsVisualSystem::getTransitionType()
