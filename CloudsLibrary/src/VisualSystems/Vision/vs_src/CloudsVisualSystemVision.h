@@ -38,7 +38,10 @@ public:
     void selfExit();
     void selfBegin();
 	void selfEnd();
-    ofRectangle window;
+    
+	ofRectangle flowWindow;
+	ofRectangle videoRect;
+	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
@@ -79,8 +82,8 @@ protected:
 
     CVMode currentMode;
     int scale;
-    vector<ofRectangle> flowRegions;
-    void populateOpticalFlowRegions();
+//    vector<ofRectangle> flowRegions;
+//    void populateOpticalFlowRegions();
     vector<ofVec2f> flowMotion;
 
     float colorRange;
@@ -122,7 +125,6 @@ protected:
     ofVboMesh flowMesh;
     float windowWidth;
     float windowHeight;
-    float flowAmp;
 	float flowDamp;
 	
     bool drawPlayer;
