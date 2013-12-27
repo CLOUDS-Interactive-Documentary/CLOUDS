@@ -3,8 +3,10 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-		
-    visionSystem.setup();
+	
+	ofSetVerticalSync(true);
+	
+	visionSystem.setup();
 	visionSystem.playSystem();
 
 }
@@ -17,6 +19,11 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 
+}
+
+//--------------------------------------------------------------
+void testApp::exit(){
+	visionSystem.exit();
 }
 
 //--------------------------------------------------------------
