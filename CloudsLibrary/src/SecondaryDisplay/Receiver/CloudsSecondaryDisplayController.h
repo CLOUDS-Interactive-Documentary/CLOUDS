@@ -64,4 +64,6 @@ class CloudsSecondaryDisplayController {
 	ofFbo displayTarget;
     
     int layoutID;
+    
+    string displayMode;
 };
