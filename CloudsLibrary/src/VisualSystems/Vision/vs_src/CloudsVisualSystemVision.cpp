@@ -479,31 +479,34 @@ void CloudsVisualSystemVision::selfUpdate(){
                               OF_IMAGE_COLOR);
             cout<<"Updating settings for new video : "<<player->getPixelsRef().getImageType()<<endl;
         }
-    
-        player->update();
-        frameIsNew = player->isFrameNew();
-        
-        if(frameIsNew && ! bNewVideoLoaded){
+        else{
+            player->update();
+            frameIsNew = player->isFrameNew();
             
-            if(drawThresholded){
-                background.update(player->getPixelsRef(), thresholded);
-                thresholded.update();
-                blur(thresholded, 5);
+            if(frameIsNew && ! bNewVideoLoaded){
+                
+                if(drawThresholded){
+                    background.update(player->getPixelsRef(), thresholded);
+                    thresholded.update();
+                    blur(thresholded, 5);
+                }
+                
+                if(bContourTracking){
+                    updateContourTracking();
+                }
+                
+                if(bOpticalFlow){
+                    updateOpticalFlow();
+                }
+                
+                if (bDrawHeatMap) {
+                    updateHeatMap();
+                }
+                
             }
-            
-            if(bContourTracking){
-                updateContourTracking();
-            }
-            
-            if(bOpticalFlow){
-                updateOpticalFlow();
-            }
-            
-            if (bDrawHeatMap) {
-                updateHeatMap();
-            }
-            
         }
+    
+
 }
 
 void CloudsVisualSystemVision::selfDrawBackground()

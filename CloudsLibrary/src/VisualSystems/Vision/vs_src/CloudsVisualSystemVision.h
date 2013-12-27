@@ -110,7 +110,6 @@ protected:
     ofImage thresholded;
     ofxCv::RunningBackground background;
     cv::Rect accumRegion;
-    //vector<ParkedCar> parked;
 
     //Optical flow types
     ofxCv::FlowFarneback farneback;
