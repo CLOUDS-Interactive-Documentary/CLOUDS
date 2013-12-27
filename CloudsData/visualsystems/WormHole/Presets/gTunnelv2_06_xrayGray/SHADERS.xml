@@ -1,0 +1,102 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SHADERS</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>depthTest</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_ADD</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_ALPHA</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_DISABLED</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_MULTIPLY</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_SCREEN</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_SUBTRACT</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>use shader</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>draw points</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>XRayShader</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>facingRatio</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>normalShader</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>shininess</Name>
+    <Value>16.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>c1</Name>
+    <XValue>0.259999990</XValue>
+    <YValue>0.239999995</YValue>
+    <RColor>130</RColor>
+    <GColor>178</GColor>
+    <BColor>255</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>c1_alpha</Name>
+    <Value>0.320197046</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>c2</Name>
+    <XValue>0.219999999</XValue>
+    <YValue>0.159999996</YValue>
+    <RColor>224</RColor>
+    <GColor>249</GColor>
+    <BColor>255</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>c2_alpha</Name>
+    <Value>0.364532024</Value>
+</Widget>

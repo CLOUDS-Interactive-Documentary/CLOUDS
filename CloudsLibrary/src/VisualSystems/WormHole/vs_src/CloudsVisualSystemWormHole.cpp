@@ -59,6 +59,7 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	cameraGui->addSpacer();
 	
 	cameraGui->addRadio("paths", cameraPathNames );
+    
 	
 	ofAddListener(cameraGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 	guis.push_back(cameraGui);
@@ -280,6 +281,12 @@ void CloudsVisualSystemWormHole::selfSetupSystemGui(){
 	
 }
 
+void CloudsVisualSystemWormHole::selfSetupCameraGui(){
+    
+    camGui->addSlider("near clip plane", .001, .05, &nearClipPlane); 
+	
+}
+
 void CloudsVisualSystemWormHole::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
@@ -361,7 +368,9 @@ void CloudsVisualSystemWormHole::selfBegin(){
 void CloudsVisualSystemWormHole::selfUpdate()
 {
 	//lights
-	lightPos = getCameraRef().getPosition();
+	lightPos = getCameraRef().getPosition();\
+    
+    getCameraRef().setNearClip(nearClipPlane);
 	
 	//camera
 	if(bUseCameraPath)
@@ -380,6 +389,7 @@ void CloudsVisualSystemWormHole::selfUpdate()
 	lastTime = t;
 	
 	noiseTime += timeDelta * noiseSpeed;
+    
 }
 
 void CloudsVisualSystemWormHole::selfDraw()

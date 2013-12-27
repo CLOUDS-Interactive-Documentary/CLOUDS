@@ -29,6 +29,7 @@ class CloudsVisualSystemWormHole : public CloudsVisualSystem {
 
 	//These methods let us add custom GUI parameters and respond to their events
     void selfSetupGui();
+    void selfSetupCameraGui();
     void selfGuiEvent(ofxUIEventArgs &e);
     
 	//Use system gui for global or logical settings, for exmpl
@@ -161,4 +162,6 @@ protected:
 	bool bUseNoiseDisplacement;
 	float noiseDisplacement, noiseSpeed, noiseTime, noiseScale;
 	ofVec3f noiseOffset, noiseDir;
+    
+    float nearClipPlane; 
 };
