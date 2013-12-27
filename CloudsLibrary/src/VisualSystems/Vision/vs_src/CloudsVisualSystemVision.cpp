@@ -14,8 +14,7 @@ string CloudsVisualSystemVision::getSystemName()
 	return "Vision";
 }
 
-void CloudsVisualSystemVision::selfSetup()
-{
+void CloudsVisualSystemVision::selfSetDefaults(){
     currentMode = OpticalFlow;
     curFlow = &farneback;
     bIs2D = true;
@@ -40,8 +39,8 @@ void CloudsVisualSystemVision::selfSetup()
     drawThresholded =false;
     
     videoAlpha = 128;
-    windowAlpha = 128;
-    thresholdAlpha = 128;
+    windowAlpha = 10;
+    thresholdAlpha = 10h;
     
     bContourTracking = false;
     bOpticalFlow = false;
@@ -72,9 +71,12 @@ void CloudsVisualSystemVision::selfSetup()
     contourLifetimeColorRange = 110;
     windowWidth = 500;
     windowHeight = 500;
-    
+}
 
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
+void CloudsVisualSystemVision::selfSetup()
+{
+
+
     shader.load(getVisualSystemDataPath() + "heatMapShader");
 
     //	app
@@ -511,7 +513,9 @@ void CloudsVisualSystemVision::selfUpdate(){
 
 void CloudsVisualSystemVision::selfDrawBackground()
 {
-    
+    ofPushStyle();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+
     if(drawPlayer){
 		if(player->isLoaded() && player->isPlaying()){
 			ofPushStyle();
@@ -616,6 +620,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
 
 
     }
+    ofPopStyle();
 }
 
 void CloudsVisualSystemVision::selfDraw()

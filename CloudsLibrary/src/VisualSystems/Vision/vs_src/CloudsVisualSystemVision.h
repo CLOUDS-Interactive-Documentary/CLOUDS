@@ -28,7 +28,7 @@ public:
     void selfSetupGuis();
     
 	void selfPresetLoaded(string presetPath);
-	
+	void selfSetDefaults();
     void selfAutoMode();
     void selfUpdate();
     void selfDrawBackground();
