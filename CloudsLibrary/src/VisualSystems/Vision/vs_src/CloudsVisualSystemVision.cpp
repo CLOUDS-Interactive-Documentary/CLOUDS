@@ -272,50 +272,55 @@ void CloudsVisualSystemVision::updateOpticalFlow(){
 	player->getPixelsRef().resizeTo(resizeToPixels);
 	farneback.calcOpticalFlow(resizeToPixels);
 	
-	flowWindow.setFromCenter(mouseX, mouseY, windowWidth, windowHeight);
+	if(bDrawFlowWindow){
+		flowWindow.setFromCenter(mouseX, mouseY, windowWidth, windowHeight);
+	}
+	else{
+		flowWindow = videoRect;
+	}
 
 	for( int i = 0; i < flowMesh.getVertices().size(); i+=2){
-		if(bDrawFlowWindow){
-			if(flowWindow.inside(flowMesh.getVertex(i))){
-				ofVec2f pos = farneback.getFlowOffset(flowMesh.getVertex(i).x/scale,
-													  flowMesh.getVertex(i).y/scale );
-				
-				pos *= flowLineMultiplier;
-				pos.x += flowMesh.getVertex(i).x;
-				pos.y += flowMesh.getVertex(i).y;
-				ofVec3f curPos = flowMesh.getVertices()[i+1];
-				ofVec3f newPos = ofVec3f(pos.x,pos.y,0);
-				
-				flowMesh.setVertex(i+1,curPos + (newPos - curPos)*flowDamp );
-				
-				float mag = flowMesh.getVertex(i).distance(flowMesh.getVertex(i+1));
-				
-				float scaledHue = ofMap(mag, 0, colorRange,
-										ofFloatColor::blue.getHue(),
-										ofFloatColor::red.getHue(),true);
-				ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 128, 128 );
-				flowMesh.setColor(i+1,magnitudeColor);
-				
-			}
-			else{
-				flowMesh.setColor(i,0);
-				flowMesh.setColor(i+1,0);
-			}
-		}
-		else{
-			ofVec2f pos = farneback.getFlowOffset(flowMesh.getVertex(i).x/scale, flowMesh.getVertex(i).y/scale );
+//		if(bDrawFlowWindow){
+		if(flowWindow.inside(flowMesh.getVertex(i))){
+			ofVec2f pos = farneback.getFlowOffset(flowMesh.getVertex(i).x/scale,
+												  flowMesh.getVertex(i).y/scale );
 			
 			pos *= flowLineMultiplier;
 			pos.x += flowMesh.getVertex(i).x;
 			pos.y += flowMesh.getVertex(i).y;
-			flowMesh.setVertex(i+1, ofVec3f( pos.x,pos.y,0));
+			ofVec3f curPos = flowMesh.getVertices()[i+1];
+			ofVec3f newPos = ofVec3f(pos.x,pos.y,0);
 			
-			float mag =flowMesh.getVertex(i).distance(flowMesh.getVertex(i+1));
+			flowMesh.setVertex(i+1,curPos + (newPos - curPos)*flowDamp );
 			
-			float scaledHue = ofMap(mag,0, colorRange, ofFloatColor::blue.getHue(), ofFloatColor::red.getHue());
-			ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 128, 128 ) ;
+			float mag = flowMesh.getVertex(i).distance(flowMesh.getVertex(i+1));
+			
+			float scaledHue = ofMap(mag, 0, colorRange,
+									ofFloatColor::blue.getHue(),
+									ofFloatColor::red.getHue(),true);
+			ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 128, 128 );
 			flowMesh.setColor(i+1,magnitudeColor);
+			
 		}
+		else{
+			flowMesh.setColor(i,0);
+			flowMesh.setColor(i+1,0);
+		}
+//		}
+//		else{
+//			ofVec2f pos = farneback.getFlowOffset(flowMesh.getVertex(i).x/scale, flowMesh.getVertex(i).y/scale );
+//			
+//			pos *= flowLineMultiplier;
+//			pos.x += flowMesh.getVertex(i).x;
+//			pos.y += flowMesh.getVertex(i).y;
+//			flowMesh.setVertex(i+1, ofVec3f( pos.x,pos.y,0));
+//			
+//			float mag =flowMesh.getVertex(i).distance(flowMesh.getVertex(i+1));
+//			
+//			float scaledHue = ofMap(mag,0, colorRange, ofFloatColor::blue.getHue(), ofFloatColor::red.getHue());
+//			ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 128, 128 ) ;
+//			flowMesh.setColor(i+1,magnitudeColor);
+//		}
 	}
 	
 
@@ -570,34 +575,34 @@ void CloudsVisualSystemVision::selfDrawBackground()
 
         ofTexture& tex = player->getTextureReference();
 		if(tex.isAllocated()){
-			if(bDrawFlowWindow){
+//			if(bDrawFlowWindow){
 				
-				ofPushMatrix();
-				ofPushStyle();
-                ofEnableBlendMode(OF_BLENDMODE_SCREEN);
-				ofSetColor(windowAlpha);
+			ofPushMatrix();
+			ofPushStyle();
+			ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+			ofSetColor(windowAlpha);
 
-				ofScale(videoRect.width/player->getWidth(),
-						videoRect.height/player->getHeight());
-				tex.drawSubsection(mouseX-flowWindow.width/2,
-								   mouseY-flowWindow.height/2,
-								   flowWindow.width, flowWindow.height,
-								   mouseX-flowWindow.width/2, mouseY-flowWindow.height/2);
-				ofSetLineWidth(flowLineWidth);
-				flowMesh.draw();
-				
-				ofPopStyle();
-				ofPopMatrix();
-			}
-			else{
-				ofPushMatrix();
-				ofPushStyle();
-				ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
-				ofSetLineWidth(flowLineWidth);
-				flowMesh.draw();
-				ofPopStyle();
-				ofPopMatrix();
-			}
+			ofScale(videoRect.width/player->getWidth(),
+					videoRect.height/player->getHeight());
+			tex.drawSubsection(mouseX-flowWindow.width/2,
+							   mouseY-flowWindow.height/2,
+							   flowWindow.width, flowWindow.height,
+							   mouseX-flowWindow.width/2, mouseY-flowWindow.height/2);
+			ofSetLineWidth(flowLineWidth);
+			flowMesh.draw();
+			
+			ofPopStyle();
+			ofPopMatrix();
+//			}
+//			else{
+//				ofPushMatrix();
+//				ofPushStyle();
+//				ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
+//				ofSetLineWidth(flowLineWidth);
+//				flowMesh.draw();
+//				ofPopStyle();
+//				ofPopMatrix();
+//			}
 		}
 		else{
 			ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Video texture not allocated for optical flow";
