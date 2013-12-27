@@ -224,6 +224,12 @@
 		E738FFD9183C86F50018AB96 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5B9573175308AD00F558AC /* libsndfile.a */; };
 		E738FFDA183C86F50018AB96 /* libsndfile-1.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5B9575175308AD00F558AC /* libsndfile-1.lib */; };
 		E738FFDD183C86F50018AB96 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E75BC33D186D13A300582E19 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75BC337186D13A300582E19 /* ofxGameCamera.cpp */; };
+		E75BC33E186D13A300582E19 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75BC337186D13A300582E19 /* ofxGameCamera.cpp */; };
+		E75BC346186DEE4600582E19 /* blips.frag in Sources */ = {isa = PBXBuildFile; fileRef = E75BC344186DEE4600582E19 /* blips.frag */; };
+		E75BC347186DEE4600582E19 /* blips.frag in Sources */ = {isa = PBXBuildFile; fileRef = E75BC344186DEE4600582E19 /* blips.frag */; };
+		E75BC348186DEE4600582E19 /* blips.vert in Sources */ = {isa = PBXBuildFile; fileRef = E75BC345186DEE4600582E19 /* blips.vert */; };
+		E75BC349186DEE4600582E19 /* blips.vert in Sources */ = {isa = PBXBuildFile; fileRef = E75BC345186DEE4600582E19 /* blips.vert */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
 		E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB81714899C00705E7A /* tinyxmlerror.cpp */; };
@@ -659,6 +665,10 @@
 		E7380142183C871A0018AB96 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		E7380143183C871A0018AB96 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		E738FFE1183C86F50018AB96 /* CircuitOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CircuitOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E75BC337186D13A300582E19 /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
+		E75BC338186D13A300582E19 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
+		E75BC344186DEE4600582E19 /* blips.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = blips.frag; sourceTree = "<group>"; };
+		E75BC345186DEE4600582E19 /* blips.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = blips.vert; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7846FB61714899C00705E7A /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
 		E7846FB71714899C00705E7A /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
@@ -1278,6 +1288,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E75BC322186D13A300582E19 /* ofxGameCamera */,
 				E70CD90618667F8700955691 /* ofxCv */,
 				E738FFE3183C87180018AB96 /* ofxOculusRift */,
 				3D5B9697175308FE00F558AC /* ofxTimecode */,
@@ -1394,6 +1405,7 @@
 		E70CD90018667D3400955691 /* Circuit */ = {
 			isa = PBXGroup;
 			children = (
+				E75BC343186DEE4600582E19 /* shaders */,
 				E70CD90118667D3400955691 /* vs_src */,
 			);
 			name = Circuit;
@@ -1783,6 +1795,34 @@
 			path = ../../../addons/ofxOculusRift;
 			sourceTree = "<group>";
 		};
+		E75BC322186D13A300582E19 /* ofxGameCamera */ = {
+			isa = PBXGroup;
+			children = (
+				E75BC336186D13A300582E19 /* src */,
+			);
+			name = ofxGameCamera;
+			path = ../../../addons/ofxGameCamera;
+			sourceTree = "<group>";
+		};
+		E75BC336186D13A300582E19 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E75BC337186D13A300582E19 /* ofxGameCamera.cpp */,
+				E75BC338186D13A300582E19 /* ofxGameCamera.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E75BC343186DEE4600582E19 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E75BC345186DEE4600582E19 /* blips.vert */,
+				E75BC344186DEE4600582E19 /* blips.frag */,
+			);
+			name = shaders;
+			path = ../../../../CloudsData/visualsystems/Circuit/shaders;
+			sourceTree = "<group>";
+		};
 		E7846FB41714899C00705E7A /* ofxXmlSettings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1835,8 +1875,8 @@
 		E7DD846117DBC0A500AFB2DD /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				E7DD846317DBC0A500AFB2DD /* CloudsRGBDCamera.cpp */,
 				E7DD846417DBC0A500AFB2DD /* CloudsRGBDCamera.h */,
+				E7DD846317DBC0A500AFB2DD /* CloudsRGBDCamera.cpp */,
 				E7DD846517DBC0A500AFB2DD /* CloudsRGBDVideoPlayer.cpp */,
 				E7DD846617DBC0A500AFB2DD /* CloudsRGBDVideoPlayer.h */,
 				E7DD846717DBC0A500AFB2DD /* CloudsVisualSystem.cpp */,
@@ -2053,6 +2093,9 @@
 				E70CDC3818667F9700955691 /* Tracker.cpp in Sources */,
 				E70CDC3A18667F9700955691 /* Utilities.cpp in Sources */,
 				E70CDC3C18667F9700955691 /* Wrappers.cpp in Sources */,
+				E75BC33D186D13A300582E19 /* ofxGameCamera.cpp in Sources */,
+				E75BC346186DEE4600582E19 /* blips.frag in Sources */,
+				E75BC348186DEE4600582E19 /* blips.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2150,6 +2193,9 @@
 				E70CDC3918667F9700955691 /* Tracker.cpp in Sources */,
 				E70CDC3B18667F9700955691 /* Utilities.cpp in Sources */,
 				E70CDC3D18667F9700955691 /* Wrappers.cpp in Sources */,
+				E75BC33E186D13A300582E19 /* ofxGameCamera.cpp in Sources */,
+				E75BC347186DEE4600582E19 /* blips.frag in Sources */,
+				E75BC349186DEE4600582E19 /* blips.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
