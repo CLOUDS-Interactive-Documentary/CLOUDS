@@ -207,8 +207,8 @@ void CloudsVisualSystemVision::clearAccumulation(){
 }
 void CloudsVisualSystemVision::updateImagesForNewVideo(){
     
-    imitate(previousHeatMap, *player);
-    imitate(diff, *player);
+    imitate(previousHeatMap, player->getPixelsRef());
+    imitate(diff, player->getPixelsRef());
     accumulation.allocate(player->getWidth(), player->getHeight(), OF_IMAGE_COLOR);
     
 }
@@ -315,9 +315,9 @@ void CloudsVisualSystemVision::updateHeatMap(){
 
 	accumulationCount++;
 	// take the absolute difference of prev and cam and save it inside diff
-	toCv(accumulation) += toCv(previousHeatMap) -toCv(*player) ;
+	toCv(accumulation) += toCv(previousHeatMap) -toCv(player->getPixelsRef()) ;
 	
-	absdiff(previousHeatMap, *player, diff);
+	absdiff(previousHeatMap, player->getPixelsRef(), diff);
 	for(int i =0; i< diff.width; i++ ){
 		for(int j =0; j<diff.height; j++){
 			ofColor c = diff.getColor(i, j);
@@ -331,11 +331,11 @@ void CloudsVisualSystemVision::updateHeatMap(){
 		}
 	}
 	diff.update();
-	copy(*player, previousHeatMap);
+	copy(player->getPixelsRef(), previousHeatMap);
 }
 
 void CloudsVisualSystemVision::updateContourTracking(){
-	background.update(*player, thresholded);
+	background.update(player->getPixelsRef(), thresholded);
 	thresholded.update();
 	blur(thresholded, 5);
 	contourFinder.findContours(thresholded);
@@ -468,6 +468,7 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
 void CloudsVisualSystemVision::selfUpdate(){
 
         if(bNewVideoLoaded && player->getWidth() > 0 ){
+            player->setLoopState(OF_LOOP_NORMAL);
             updateSettingsForNewVideo();
             
             bNewVideoLoaded = false;
@@ -482,7 +483,7 @@ void CloudsVisualSystemVision::selfUpdate(){
         if(frameIsNew && ! bNewVideoLoaded){
             
             if(drawThresholded){
-                background.update(*player, thresholded);
+                background.update(player->getPixelsRef(), thresholded);
                 thresholded.update();
                 blur(thresholded, 5);
             }
@@ -818,10 +819,10 @@ void CloudsVisualSystemVision::loadCurrentMovie(){
 
 void  CloudsVisualSystemVision::loadMovieAtIndex(int index){
     movieIndex = index;
-    player = ofPtr<ofxAVFVideoPlayer>(new ofxAVFVideoPlayer());
-    if(player->loadMovie(getVisualSystemDataPath(true) + movieStrings[ movieIndex ])){
 
-//        bNewVideoLoaded = true;
+    player = ofPtr<ofxAVFVideoPlayer>(new ofxAVFVideoPlayer());
+
+    if(player->loadMovie(getVisualSystemDataPath(true) + movieStrings[ movieIndex ])){
         
         player->play();
     }
