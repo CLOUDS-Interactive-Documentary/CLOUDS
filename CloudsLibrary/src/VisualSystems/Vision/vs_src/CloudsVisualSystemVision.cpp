@@ -209,7 +209,7 @@ void CloudsVisualSystemVision::updateImagesForNewVideo(){
     
     imitate(previousHeatMap, *player);
     imitate(diff, *player);
-    accumulation.allocate(player->width, player->height, OF_IMAGE_COLOR);
+    accumulation.allocate(player->getWidth(), player->getHeight(), OF_IMAGE_COLOR);
     
 }
 void CloudsVisualSystemVision::resetFlowField(){
@@ -236,12 +236,12 @@ void CloudsVisualSystemVision::populateOpticalFlowRegions(){
     int rectHeight = 20;
     for( int j=0; j<player->getHeight(); j +=rectHeight){
         for( int i=0; i<player->getWidth(); i += rectWidth){
-            if (i +rectWidth -1>player->width) {
-                rectWidth =player->width- i +1;
+            if (i +rectWidth -1>player->getWidth()) {
+                rectWidth =player->getWidth()- i +1;
             }
             
-            if (j +rectHeight -1>player->height) {
-                rectHeight =player->height- j +1;
+            if (j +rectHeight -1>player->getHeight()) {
+                rectHeight =player->getHeight()- j +1;
             }
             flowRegions.push_back(ofRectangle(i, j, rectWidth, rectHeight));
         }
@@ -466,31 +466,40 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
 }
 
 void CloudsVisualSystemVision::selfUpdate(){
-	
-    player->update();
-    frameIsNew = player->isFrameNew();
-	
-    if(frameIsNew){
-		
-		if(drawThresholded){
-			background.update(*player, thresholded);
-			thresholded.update();
-			blur(thresholded, 5);
-		}
-	
-		if(bContourTracking){
-			updateContourTracking();
-		}
-		
-		if(bOpticalFlow){
-			updateOpticalFlow();
-		}
-		
-		if (bDrawHeatMap) {
-			updateHeatMap();
-		}
-		
-    }
+
+        if(bNewVideoLoaded && player->getWidth() > 0 ){
+            updateSettingsForNewVideo();
+            
+            bNewVideoLoaded = false;
+            resizeToPixels.allocate(player->getWidth()/scale,player->getHeight()/scale,
+                              OF_IMAGE_COLOR);
+            cout<<"Updating settings for new video : "<<player->getPixelsRef().getImageType()<<endl;
+        }
+    
+        player->update();
+        frameIsNew = player->isFrameNew();
+        
+        if(frameIsNew && ! bNewVideoLoaded){
+            
+            if(drawThresholded){
+                background.update(*player, thresholded);
+                thresholded.update();
+                blur(thresholded, 5);
+            }
+            
+            if(bContourTracking){
+                updateContourTracking();
+            }
+            
+            if(bOpticalFlow){
+                updateOpticalFlow();
+            }
+            
+            if (bDrawHeatMap) {
+                updateHeatMap();
+            }
+            
+        }
 }
 
 void CloudsVisualSystemVision::selfDrawBackground()
@@ -504,7 +513,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
 			ofPopStyle();
 		}
 		else{
-			ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Player is not loaded";
+//			ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Player is not loaded";
 		}
     }
 	
@@ -516,7 +525,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
 			ofPopStyle();
 		}
 		else{
-			ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Draw threshold turned on but image not prepared";
+//			ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Draw threshold turned on but image not prepared";
 		}
     }
     
@@ -769,7 +778,6 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
         
     }
     
-    
     if (kind == OFX_UI_WIDGET_TOGGLE){
         thresholded.clear();
         background.reset();
@@ -810,22 +818,28 @@ void CloudsVisualSystemVision::loadCurrentMovie(){
 
 void  CloudsVisualSystemVision::loadMovieAtIndex(int index){
     movieIndex = index;
-    player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
+    player = ofPtr<ofxAVFVideoPlayer>(new ofxAVFVideoPlayer());
     if(player->loadMovie(getVisualSystemDataPath(true) + movieStrings[ movieIndex ])){
-        resizeToPixels.allocate(player->getWidth()/scale,player->getHeight()/scale,
-                                player->getPixelsRef().getImageType());
+
+//        bNewVideoLoaded = true;
+        
         player->play();
     }
     else{
         cout<<"Not Playing"<<endl;
     }
-    //    videoRect.alignTo(screenRect);
+    
+    bNewVideoLoaded = true; 
     cout<<"Player dimensions (new) :"<< player->getWidth()<<" , "<<player->getHeight() <<endl;
+
+}
+void CloudsVisualSystemVision::updateSettingsForNewVideo(){
     updateCVParameters();
     populateOpticalFlowRegions();
     updateImagesForNewVideo();
     resetFlowField();
 }
+
 void CloudsVisualSystemVision::guiRenderEvent(ofxUIEventArgs &e)
 {
     
