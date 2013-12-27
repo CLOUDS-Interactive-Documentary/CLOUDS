@@ -146,8 +146,9 @@ void CloudsVisualSystemVision::selfSetupGui()
     opticalFlowGui->addSlider("FLOW LINE LENGTH", 0.5, 8, &flowLineMultiplier);
     opticalFlowGui->addSlider("FLOW COLOUR MAP RANGE", 10, 1000, &flowColorMapRange);
     opticalFlowGui->addSlider("FLOW LINE WIDTH", 1, 10, &flowLineWidth);
-	opticalFlowGui->addSlider("FLOW LINE AMP")flowAmp;
-	float flowDamp;
+	opticalFlowGui->addSlider("FLOW LINE AMP", 1., 10., &flowAmp);
+	opticalFlowGui->addSlider("FLOW LINE DAMP", 0., 1., &flowDamp);
+
     
     opticalFlowGui->addSpacer();
     opticalFlowGui->addLabel("OPTICAL FLOW PARAMS");
