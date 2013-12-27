@@ -210,7 +210,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
 			mtempo = presets[thepreset].tempo;
 			for(int j = 0;j<presets[thepreset].instruments.size();j++)
 			{
-				startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo, presets[thepreset].m_amp[j], presets[thepreset].m_rev[j]);
+				startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo, presets[thepreset].m_amp[j], presets[thepreset].m_rev[j], j);
 			}
 		}
 
@@ -220,7 +220,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     if(rigged)
     {
         flush_sched();
-        startMusic(0, "reichomatic", "NULL", "NULL", 0, 0, totalduration, 120, 0.5, 0.5);
+        startMusic(0, "reichomatic", "NULL", "NULL", 0, 0, totalduration, 120, 0.5, 0.5, 0);
     }
     
     cout << "====================" << endl;
@@ -343,31 +343,3 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
 void CloudsSound::mouseReleased(ofMouseEventArgs & args){
 	
 }
-
-
-// UTILITY STUFF (non-sound):
-
-// translate color strings into numbers for score system
-int CloudsSound::returnColor(string c)
-{
-    //cout << "color: " << c << endl;
-    int outc = -1;
-    if(c.compare("3753a9")==0) outc = 0;
-    else if(c.compare("377ea9")==0) outc = 1;
-    else if(c.compare("37a953")==0) outc = 2;
-    else if(c.compare("37a97e")==0) outc = 3;
-    else if(c.compare("37a9a9")==0) outc = 4;
-    else if(c.compare("4537a9")==0) outc = 5;
-    else if(c.compare("45a937")==0) outc = 6;
-    else if(c.compare("7037a9")==0) outc = 7;
-    else if(c.compare("70a937")==0) outc = 8;
-    else if(c.compare("9b37a9")==0) outc = 9;
-    else if(c.compare("9ba937")==0) outc = 10;
-    else if(c.compare("a93737")==0) outc = 11;
-    else if(c.compare("a93762")==0) outc = 12;
-    else if(c.compare("a9378d")==0) outc = 13;
-    else if(c.compare("a96237")==0) outc = 14;
-    else if(c.compare("a98d37")==0) outc = 15;
-    return(outc);
-}
-

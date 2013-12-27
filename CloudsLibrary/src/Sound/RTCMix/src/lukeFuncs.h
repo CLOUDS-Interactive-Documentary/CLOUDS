@@ -13,7 +13,7 @@
 #include "ofxXmlSettings.h"
 
 #define MAXAMP 32768.0 // maximum amp for oscillators (-1., 1) = 2^15
-#define LUKEDEBUG true
+#define LUKEDEBUG false
 
 // BGG rtcmix stuff
 extern "C" {
@@ -153,6 +153,8 @@ void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, s
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
 void SCHEDULEBANG(double time);
 void STREAMSOUND(string file, float dur, float amp);
+
+void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus);
 
 void PATCHSYNTH(string inst, string output);
 void PATCHFX(string inst, string input, string output);
