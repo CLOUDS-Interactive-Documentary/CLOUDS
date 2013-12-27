@@ -138,11 +138,11 @@ int CloudsVisualSystemPhotoGlitch::getTargetFileName(ofxUISuperCanvas * gui, int
 }
 
 void CloudsVisualSystemPhotoGlitch::beginAnimation(){
-    
-    target1.clear();
-    target2.clear();
-//    generateSource();
-    sourcePhoto.clear();
+
+    //clearing in the generate function now
+//    target1.clear();
+//    target2.clear();
+//    sourcePhoto.clear();
     generate(sourcePhoto, selectedSrcImageIdx, true);
     bOneCycleComplete = false;
     if (gp2.enable) {
@@ -168,20 +168,17 @@ void CloudsVisualSystemPhotoGlitch::beginAnimation(){
             cout<<"No image selected or image not found for image 1"<<endl;
         }
     }
-
-    if(sourceParams.enable){
-        
-        currentTargetParams = &sourceParams;
-    }
-    else{
-        currentTargetParams = &sourceParams;
-        
-    }
-        bStartAnimating = true;
+    
+    //Start animation with the source
+    currentTargetParams = &sourceParams;
+    bStartAnimating = true;
 }
 void CloudsVisualSystemPhotoGlitch::updateAnimation(){
     if(currentTargetParams->mode == SOURCE_MODE){
+        //if Source photo animation is enabled do a slow tween, otherwise do it fast.
         if (currentTargetParams->enable) {
+            
+            //
             if(currentTargetParams->shuffle){
                 shuffle();
                 cout<<"Mode : source shuffle"<<endl;
@@ -263,7 +260,8 @@ void CloudsVisualSystemPhotoGlitch::selfGuiEvent(ofxUIEventArgs &e)
                 if (name == imagesDir.getName(i) && ((ofxUIToggle *)e.widget)->getValue()) {
                     cout<<"source img name : "<<name<<endl;
                     selectedSrcImageIdx = i;
-                    bShouldGenerate = true;
+                    generate(sourcePhoto, selectedSrcImageIdx,true);
+//                    bShouldGenerate = true;
                     break;
                 }
             }
@@ -300,12 +298,13 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     bUseColors  = false;
     bUseTexture = true;
     
-    bShouldShuffle = false;
-    bShouldSortHue = false;
-    bShouldSortBri = false;
-    bShouldReorder = false;
-    bShouldSortTarget = false;
-    bShouldSortTargetBri = false;
+//    bShouldShuffle = false;
+//    bShouldSortHue = false;
+//    bShouldSortBri = false;
+//    bShouldReorder = false;
+//    bShouldSortTarget = false;
+//    bShouldSortTargetBri = false;
+    
     bCurrentlyAnimating = false;
     bOneCycleComplete = false;
     bIsFirstTime = false;
@@ -332,7 +331,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     
     screenRect = ofRectangle(0, 0, ofGetWidth(), ofGetHeight());
     bShouldGenerate = true;
-    //    ofEnableAlphaBlending();
+
 }
 
 void CloudsVisualSystemPhotoGlitch::clearSource()
@@ -369,7 +368,7 @@ void CloudsVisualSystemPhotoGlitch::clearSource()
 
 void CloudsVisualSystemPhotoGlitch::generate(PhotoGlitch& pg,int imgIndex, bool isSource){
     
-    
+    pg.clear();
     if(isSource) {
         cout<<"Im a source " <<"loading : "<<imagesDir.getPath(imgIndex)<<endl;
         pg.tex.loadImage(imagesDir.getPath(imgIndex));
@@ -505,134 +504,134 @@ void CloudsVisualSystemPhotoGlitch::generate(PhotoGlitch& pg,int imgIndex, bool 
 }
 
 
-void CloudsVisualSystemPhotoGlitch::generateSource()
-{
-    clearSource();
-    
-    tex.loadImage(imagesDir.getPath(selectedSrcImageIdx));
-    ofPixels pixels = tex.getPixelsRef();
-    
-    numCells = numDivCols * numDivRows;
-    
-    cells = new PGCell[numCells];
-    //    targetCells = new PGCell[numCells];
-    
-    screenSliceWidth = ofGetWidth() / (float)numDivCols;
-    screenSliceHeight = ofGetHeight() / (float)numDivRows;
-    texSliceWidth = tex.getWidth() / (float)numDivCols;
-    texSliceHeight = tex.getHeight() / (float)numDivRows;
-    
-    // Build the mesh data.
-    numVerts = numCells * kVertsPerCell;
-    verts = new GLfloat[numVerts * kCoordsPerVert];
-    texCoords = new GLfloat[numVerts * 2];
-    
-    colors = new GLfloat[numVerts * 4];
-    
-    numIndices = numCells * kIndicesPerCell;
-    indices = new GLuint[numIndices];
-    
-    for (int j = 0; j < numDivRows; j++) {
-        for (int i = 0; i < numDivCols; i++) {
-            int idx = j * numDivCols + i;
-            
-            // Add verts.
-            verts[idx * kVertsPerCell * kCoordsPerVert + 0] = (i + 0) * screenSliceWidth;
-            verts[idx * kVertsPerCell * kCoordsPerVert + 1] = (j + 0) * screenSliceHeight;
-            
-            verts[idx * kVertsPerCell * kCoordsPerVert + 2] = (i + 1) * screenSliceWidth;
-            verts[idx * kVertsPerCell * kCoordsPerVert + 3] = (j + 0) * screenSliceHeight;
-            
-            verts[idx * kVertsPerCell * kCoordsPerVert + 4] = (i + 0) * screenSliceWidth;
-            verts[idx * kVertsPerCell * kCoordsPerVert + 5] = (j + 1) * screenSliceHeight;
-            
-            verts[idx * kVertsPerCell * kCoordsPerVert + 6] = (i + 1) * screenSliceWidth;
-            verts[idx * kVertsPerCell * kCoordsPerVert + 7] = (j + 1) * screenSliceHeight;
-            
-            
-            // Add tex coords.
-            texCoords[idx * kVertsPerCell * 2 + 0] = (i + 0) * texSliceWidth;
-            texCoords[idx * kVertsPerCell * 2 + 1] = (j + 0) * texSliceHeight;
-            
-            texCoords[idx * kVertsPerCell * 2 + 2] = (i + 1) * texSliceWidth;
-            texCoords[idx * kVertsPerCell * 2 + 3] = (j + 0) * texSliceHeight;
-            
-            texCoords[idx * kVertsPerCell * 2 + 4] = (i + 0) * texSliceWidth;
-            texCoords[idx * kVertsPerCell * 2 + 5] = (j + 1) * texSliceHeight;
-            
-            texCoords[idx * kVertsPerCell * 2 + 6] = (i + 1) * texSliceWidth;
-            texCoords[idx * kVertsPerCell * 2 + 7] = (j + 1) * texSliceHeight;
-            
-            
-            // Add indices for triangles.
-            indices[idx * kIndicesPerCell + 0] = idx * kVertsPerCell + 0;  // top-left
-            indices[idx * kIndicesPerCell + 1] = idx * kVertsPerCell + 1;  // top-right
-            indices[idx * kIndicesPerCell + 2] = idx * kVertsPerCell + 2;  // bottom-left
-            
-            indices[idx * kIndicesPerCell + 3] = idx * kVertsPerCell + 1;  // top-right
-            indices[idx * kIndicesPerCell + 4] = idx * kVertsPerCell + 3;  // bottom-right
-            indices[idx * kIndicesPerCell + 5] = idx * kVertsPerCell + 2;  // bottom-left
-            
-            // Calculate the average source color.
-            int avgR = 0, avgG = 0, avgB = 0, avgA = 0;
-            for (int y = (j + 0) * texSliceHeight; y < (j + 1) * texSliceHeight; y++) {
-                for (int x = (i + 0) * texSliceWidth; x < (i + 1) * texSliceWidth; x++) {
-                    ofColor c = pixels.getColor(x, y);
-                    avgR += c.r;
-                    avgG += c.g;
-                    avgB += c.b;
-                    avgA += c.a;
-                }
-            }
-            cells[idx].avgColor.set((avgR / (texSliceWidth * texSliceHeight)) / 255.0f,
-                                    (avgG / (texSliceWidth * texSliceHeight)) / 255.0f,
-                                    (avgB / (texSliceWidth * texSliceHeight)) / 255.0f,
-                                    (avgA / (texSliceWidth * texSliceHeight)) / 255.0f);
-            
-            //            cout<<cells[idx].avgColor.getBrightness()<<endl;
-            if (cells[idx].avgColor.getBrightness() < 0.1) {
-                cells[idx].avgColor.setHsb(ofRandomuf(), ofRandomuf(),ofRandomuf(), 0.0);
-                //                cout<<cells[idx].avgColor.getHue()<<endl;
-            }
-            
-            // Add colors.
-            colors[idx * kVertsPerCell * 4 +  0] = cells[idx].avgColor.r;
-            colors[idx * kVertsPerCell * 4 +  1] = cells[idx].avgColor.g;
-            colors[idx * kVertsPerCell * 4 +  2] = cells[idx].avgColor.b;
-            colors[idx * kVertsPerCell * 4 +  3] = cells[idx].avgColor.a;
-            
-            colors[idx * kVertsPerCell * 4 +  4] = cells[idx].avgColor.r;
-            colors[idx * kVertsPerCell * 4 +  5] = cells[idx].avgColor.g;
-            colors[idx * kVertsPerCell * 4 +  6] = cells[idx].avgColor.b;
-            colors[idx * kVertsPerCell * 4 +  7] = cells[idx].avgColor.a;
-            
-            colors[idx * kVertsPerCell * 4 +  8] = cells[idx].avgColor.r;
-            colors[idx * kVertsPerCell * 4 +  9] = cells[idx].avgColor.g;
-            colors[idx * kVertsPerCell * 4 + 10] = cells[idx].avgColor.b;
-            colors[idx * kVertsPerCell * 4 + 11] = cells[idx].avgColor.a;
-            
-            colors[idx * kVertsPerCell * 4 + 12] = cells[idx].avgColor.r;
-            colors[idx * kVertsPerCell * 4 + 13] = cells[idx].avgColor.g;
-            colors[idx * kVertsPerCell * 4 + 14] = cells[idx].avgColor.b;
-            colors[idx * kVertsPerCell * 4 + 15] = cells[idx].avgColor.a;
-            
-            // Save the cell struct.
-            cells[idx].idx = idx;
-            cells[idx].col = cells[idx].origCol = i;
-            cells[idx].row = cells[idx].origRow = j;
-            
-        }
-    }
-    
-    vbo.setVertexData(verts, kCoordsPerVert, numVerts, GL_STREAM_DRAW, kCoordsPerVert * sizeof(GLfloat));
-    vbo.setTexCoordData(texCoords, numVerts, GL_STATIC_DRAW, 2 * sizeof(GLfloat));
-    vbo.setColorData(colors, numVerts, GL_STATIC_DRAW, 4 * sizeof(GLfloat));
-    vbo.setIndexData(indices, numIndices, GL_STATIC_DRAW);
-    
-
-
-    //    bShouldReorder = true;
-}
+//void CloudsVisualSystemPhotoGlitch::generateSource()
+//{
+//    clearSource();
+//    
+//    tex.loadImage(imagesDir.getPath(selectedSrcImageIdx));
+//    ofPixels pixels = tex.getPixelsRef();
+//    
+//    numCells = numDivCols * numDivRows;
+//    
+//    cells = new PGCell[numCells];
+//    //    targetCells = new PGCell[numCells];
+//    
+//    screenSliceWidth = ofGetWidth() / (float)numDivCols;
+//    screenSliceHeight = ofGetHeight() / (float)numDivRows;
+//    texSliceWidth = tex.getWidth() / (float)numDivCols;
+//    texSliceHeight = tex.getHeight() / (float)numDivRows;
+//    
+//    // Build the mesh data.
+//    numVerts = numCells * kVertsPerCell;
+//    verts = new GLfloat[numVerts * kCoordsPerVert];
+//    texCoords = new GLfloat[numVerts * 2];
+//    
+//    colors = new GLfloat[numVerts * 4];
+//    
+//    numIndices = numCells * kIndicesPerCell;
+//    indices = new GLuint[numIndices];
+//    
+//    for (int j = 0; j < numDivRows; j++) {
+//        for (int i = 0; i < numDivCols; i++) {
+//            int idx = j * numDivCols + i;
+//            
+//            // Add verts.
+//            verts[idx * kVertsPerCell * kCoordsPerVert + 0] = (i + 0) * screenSliceWidth;
+//            verts[idx * kVertsPerCell * kCoordsPerVert + 1] = (j + 0) * screenSliceHeight;
+//            
+//            verts[idx * kVertsPerCell * kCoordsPerVert + 2] = (i + 1) * screenSliceWidth;
+//            verts[idx * kVertsPerCell * kCoordsPerVert + 3] = (j + 0) * screenSliceHeight;
+//            
+//            verts[idx * kVertsPerCell * kCoordsPerVert + 4] = (i + 0) * screenSliceWidth;
+//            verts[idx * kVertsPerCell * kCoordsPerVert + 5] = (j + 1) * screenSliceHeight;
+//            
+//            verts[idx * kVertsPerCell * kCoordsPerVert + 6] = (i + 1) * screenSliceWidth;
+//            verts[idx * kVertsPerCell * kCoordsPerVert + 7] = (j + 1) * screenSliceHeight;
+//            
+//            
+//            // Add tex coords.
+//            texCoords[idx * kVertsPerCell * 2 + 0] = (i + 0) * texSliceWidth;
+//            texCoords[idx * kVertsPerCell * 2 + 1] = (j + 0) * texSliceHeight;
+//            
+//            texCoords[idx * kVertsPerCell * 2 + 2] = (i + 1) * texSliceWidth;
+//            texCoords[idx * kVertsPerCell * 2 + 3] = (j + 0) * texSliceHeight;
+//            
+//            texCoords[idx * kVertsPerCell * 2 + 4] = (i + 0) * texSliceWidth;
+//            texCoords[idx * kVertsPerCell * 2 + 5] = (j + 1) * texSliceHeight;
+//            
+//            texCoords[idx * kVertsPerCell * 2 + 6] = (i + 1) * texSliceWidth;
+//            texCoords[idx * kVertsPerCell * 2 + 7] = (j + 1) * texSliceHeight;
+//            
+//            
+//            // Add indices for triangles.
+//            indices[idx * kIndicesPerCell + 0] = idx * kVertsPerCell + 0;  // top-left
+//            indices[idx * kIndicesPerCell + 1] = idx * kVertsPerCell + 1;  // top-right
+//            indices[idx * kIndicesPerCell + 2] = idx * kVertsPerCell + 2;  // bottom-left
+//            
+//            indices[idx * kIndicesPerCell + 3] = idx * kVertsPerCell + 1;  // top-right
+//            indices[idx * kIndicesPerCell + 4] = idx * kVertsPerCell + 3;  // bottom-right
+//            indices[idx * kIndicesPerCell + 5] = idx * kVertsPerCell + 2;  // bottom-left
+//            
+//            // Calculate the average source color.
+//            int avgR = 0, avgG = 0, avgB = 0, avgA = 0;
+//            for (int y = (j + 0) * texSliceHeight; y < (j + 1) * texSliceHeight; y++) {
+//                for (int x = (i + 0) * texSliceWidth; x < (i + 1) * texSliceWidth; x++) {
+//                    ofColor c = pixels.getColor(x, y);
+//                    avgR += c.r;
+//                    avgG += c.g;
+//                    avgB += c.b;
+//                    avgA += c.a;
+//                }
+//            }
+//            cells[idx].avgColor.set((avgR / (texSliceWidth * texSliceHeight)) / 255.0f,
+//                                    (avgG / (texSliceWidth * texSliceHeight)) / 255.0f,
+//                                    (avgB / (texSliceWidth * texSliceHeight)) / 255.0f,
+//                                    (avgA / (texSliceWidth * texSliceHeight)) / 255.0f);
+//            
+//            //            cout<<cells[idx].avgColor.getBrightness()<<endl;
+//            if (cells[idx].avgColor.getBrightness() < 0.1) {
+//                cells[idx].avgColor.setHsb(ofRandomuf(), ofRandomuf(),ofRandomuf(), 0.0);
+//                //                cout<<cells[idx].avgColor.getHue()<<endl;
+//            }
+//            
+//            // Add colors.
+//            colors[idx * kVertsPerCell * 4 +  0] = cells[idx].avgColor.r;
+//            colors[idx * kVertsPerCell * 4 +  1] = cells[idx].avgColor.g;
+//            colors[idx * kVertsPerCell * 4 +  2] = cells[idx].avgColor.b;
+//            colors[idx * kVertsPerCell * 4 +  3] = cells[idx].avgColor.a;
+//            
+//            colors[idx * kVertsPerCell * 4 +  4] = cells[idx].avgColor.r;
+//            colors[idx * kVertsPerCell * 4 +  5] = cells[idx].avgColor.g;
+//            colors[idx * kVertsPerCell * 4 +  6] = cells[idx].avgColor.b;
+//            colors[idx * kVertsPerCell * 4 +  7] = cells[idx].avgColor.a;
+//            
+//            colors[idx * kVertsPerCell * 4 +  8] = cells[idx].avgColor.r;
+//            colors[idx * kVertsPerCell * 4 +  9] = cells[idx].avgColor.g;
+//            colors[idx * kVertsPerCell * 4 + 10] = cells[idx].avgColor.b;
+//            colors[idx * kVertsPerCell * 4 + 11] = cells[idx].avgColor.a;
+//            
+//            colors[idx * kVertsPerCell * 4 + 12] = cells[idx].avgColor.r;
+//            colors[idx * kVertsPerCell * 4 + 13] = cells[idx].avgColor.g;
+//            colors[idx * kVertsPerCell * 4 + 14] = cells[idx].avgColor.b;
+//            colors[idx * kVertsPerCell * 4 + 15] = cells[idx].avgColor.a;
+//            
+//            // Save the cell struct.
+//            cells[idx].idx = idx;
+//            cells[idx].col = cells[idx].origCol = i;
+//            cells[idx].row = cells[idx].origRow = j;
+//            
+//        }
+//    }
+//    
+//    vbo.setVertexData(verts, kCoordsPerVert, numVerts, GL_STREAM_DRAW, kCoordsPerVert * sizeof(GLfloat));
+//    vbo.setTexCoordData(texCoords, numVerts, GL_STATIC_DRAW, 2 * sizeof(GLfloat));
+//    vbo.setColorData(colors, numVerts, GL_STATIC_DRAW, 4 * sizeof(GLfloat));
+//    vbo.setIndexData(indices, numIndices, GL_STATIC_DRAW);
+//    
+//
+//
+//    //    bShouldReorder = true;
+//}
 
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
@@ -651,7 +650,7 @@ void CloudsVisualSystemPhotoGlitch::selfPresetLoaded(string presetPath)
                 if (toggles[i]->getName() == imagesDir.getName(i) && toggles[i]->getValue()) {
                     cout<<"source img name : "<<toggles[i]->getName()<<endl;
                     selectedSrcImageIdx = i;
-                    bShouldGenerate = true;
+//                    bShouldGenerate = true;
                     break;
                 }
             }
@@ -660,7 +659,6 @@ void CloudsVisualSystemPhotoGlitch::selfPresetLoaded(string presetPath)
         beginAnimation();
     
         ofxUIIntSlider* i = (ofxUIIntSlider*) customGui->getWidget("DELAY B/W TWEENS");
-        
         int x = i->getValue();
         delayValue = 1000*x;
 
@@ -762,20 +760,13 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
         else if(sourceParams.sortByHue){
             sortHue(false);
         }
-//        reorder(false);
-//        bShouldReorder = false;
     }
     if(bStartAnimating){
         updateAnimation();
         bStartAnimating = false;
         
     }
-    if (bShouldGenerate) {
-//        generateSource();
-        generate(sourcePhoto, selectedSrcImageIdx, true);
-        bShouldGenerate = false;
-    }
-    
+        
     
     // tween them cells!
     for (int i = 0; i < numCells; i++) {
@@ -906,9 +897,10 @@ void CloudsVisualSystemPhotoGlitch::selfEnd(){
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemPhotoGlitch::selfExit()
 {
-    clearSource();
+
     target1.clear();
     target2.clear();
+    sourcePhoto.clear();
     
     
 }
@@ -1030,6 +1022,7 @@ void CloudsVisualSystemPhotoGlitch::sortBri(bool tweenCells)
     vector<compareObj> sourceCompare;
     for (int i = 0; i < numCells; i++) {
         slots.push_back(i);
+        
         compareObj sourceObj;
         sourceObj.cell = &sourcePhoto.cells[i];
         sourceObj.index = i;
@@ -1187,7 +1180,7 @@ void CloudsVisualSystemPhotoGlitch::tween(int i, int j)
 void CloudsVisualSystemPhotoGlitch::tweenFast(int i){
     
     int vertIdx = sourcePhoto.cells[i].idx * kVertsPerCell * kCoordsPerVert;
-//        cout<<sourcePhoto.verts[vertIdx + 0]<<" : "<<sourcePhoto.cells[i].col * screenSliceWidth<<endl;
+
     if (bDoPerpendicular) {
         sourcePhoto.cells[i].tweenX.setParameters(easing, ofxTween::easeOut, sourcePhoto.verts[vertIdx + 0], sourcePhoto.cells[i].col * screenSliceWidth,  1, 1);
         sourcePhoto.cells[i].tweenY.setParameters(easing, ofxTween::easeOut, sourcePhoto.verts[vertIdx + 1], sourcePhoto.cells[i].row * screenSliceHeight, 1, 1);
