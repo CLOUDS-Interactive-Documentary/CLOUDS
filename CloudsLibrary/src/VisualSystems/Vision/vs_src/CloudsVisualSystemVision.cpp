@@ -467,6 +467,9 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
 
 void CloudsVisualSystemVision::selfUpdate(){
 
+        //AVFoundation loads videos asynchronously.
+        //Using this condition to update the system settings once the video is loaded.
+    
         if(bNewVideoLoaded && player->getWidth() > 0 ){
             player->setLoopState(OF_LOOP_NORMAL);
             updateSettingsForNewVideo();
@@ -514,7 +517,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
 			ofPopStyle();
 		}
 		else{
-//			ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Player is not loaded";
+			ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Player is not loaded";
 		}
     }
 	
@@ -526,7 +529,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
 			ofPopStyle();
 		}
 		else{
-//			ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Draw threshold turned on but image not prepared";
+			ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Draw threshold turned on but image not prepared";
 		}
     }
     
@@ -578,7 +581,6 @@ void CloudsVisualSystemVision::selfDrawBackground()
     }
     
     if(bDrawHeatMap){
-  
         
  /*     
 		shader.begin();
@@ -708,7 +710,6 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     string name = e.widget->getName();
     int kind = e.widget->getKind();
 
-    cout<<kind<<" : "<<name<<endl;
     ofxUIRadio* r = (ofxUIRadio*)e.widget;
     ofxUIButton* b  = (ofxUIButton*) e.widget;
     ofxUIToggle* t  = (ofxUIToggle*) e.widget;

@@ -189,69 +189,74 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void tweenFast(int i);
     void updateSequence();
     int getTargetFileName(ofxUISuperCanvas * gui, int targetId);
-    /*
-    static bool sortIdxForHue(int i, int j);
-    static bool sortIdxForBri(int i, int j);
-    static bool sortIdxForHueTarget(int i, int j);
-    static bool sortIdxForBrightnessTarget(int i, int j);
-    */
-    PGCell * cells;
-//    PGCell * targetCells;
-    PhotoGlitch sourcePhoto;
-    vector<PhotoGlitch> photos;
-    PhotoGlitch target1;
-    PhotoGlitch target2;
 
-    glitchParams gp1;
-    glitchParams gp2;
-    glitchParams sourceParams;
-    PhotoGlitch * currentTarget;
-    glitchParams * currentTargetParams;
+//    PGCell * cells;
+
+//    vector<PhotoGlitch> photos;
+
   protected:
     
-    int currentTargetIndex;
+
     ofxUISuperCanvas * customGui;
     ofxUISuperCanvas * target1Gui;
     ofxUISuperCanvas * target2Gui;
     
+    //Source and targets
+    PhotoGlitch target1;
+    PhotoGlitch target2;
+    PhotoGlitch sourcePhoto;
+    
+    
+    //Params that control the animation. gp1 and hp2 correspond to targets 1 and 2
+    glitchParams gp1;
+    glitchParams gp2;
+    glitchParams sourceParams;
+   
+    PhotoGlitch * currentTarget;
+    glitchParams * currentTargetParams;
+    
     int numDivRows;
     int numDivCols;
     int numCells;
+//    int currentTargetIndex;    
+//    int numVerts;
+//    GLfloat * verts;
+//    GLfloat * texCoords;
+//    GLfloat * colors;
+//    int numIndices;
+//    GLuint * indices;
     
-    int numVerts;
-    GLfloat * verts;
-    GLfloat * texCoords;
-    GLfloat * colors;
-    int numIndices;
-    GLuint * indices;
+//    GLfloat * targetTexCoords;
+//    GLfloat * targetColors;
+//    int numTargetVerts;
+//    GLfloat * targetVerts;
+//    int numTargetIndices;
+//    GLuint * targetIndices;
     
-    GLfloat * targetTexCoords;
-    GLfloat * targetColors;
-    int numTargetVerts;
-    GLfloat * targetVerts;
-    int numTargetIndices;
-    GLuint * targetIndices;
+//    ofImage tex;
+//    ofVbo vbo;
+//    ofImage targetTex;
+//    ofVbo targetVbo;
     
-    ofImage tex;
-    ofVbo vbo;
     ofVbo bgVbo;
     
-    ofImage targetTex;
-    ofVbo targetVbo;
+
 
     ofRectangle screenRect;
     
+    //SRC + TRGT IMG PARAMS
     ofDirectory imagesDir;
     ofDirectory targetImagesDir;
     
     int selectedSrcImageIdx;
     int selectedTargetImageIdx;
     
+    //ANIMATION PARAMS
     int tweenDuration;
     int tweenDelay;
-    
     int delayParameter;
     int delayValue;
+    
     float screenSliceWidth;
     float screenSliceHeight;
     float texSliceWidth;
@@ -259,27 +264,19 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     float targetTexSliceWidth;
     float targetTexSliceHeight; 
     
+    
+    //Ma boolzz
     bool bUseColors;
     bool bUseTexture;
     bool bDrawTarget;
     bool bLoopBack;
     bool bOneCycleComplete;
-    
-    bool bShouldShuffle;
-    bool bShouldSortHue;
-    bool bShouldSortBri;
-    bool bShouldSortTarget;
-    bool bShouldSortTargetBri;
-    bool bShouldReorder;
     bool bRandomSort;
     bool bDrawBackground;
     bool bIsFirstTime;
-
     bool bCurrentlyAnimating;
     bool bStartAnimating;
-    
     bool bDoPerpendicular;
-    
     bool bShouldGenerate;
-    bool bShouldGenerateTargetOnly;
+//    bool bShouldGenerateTargetOnly;
 };
