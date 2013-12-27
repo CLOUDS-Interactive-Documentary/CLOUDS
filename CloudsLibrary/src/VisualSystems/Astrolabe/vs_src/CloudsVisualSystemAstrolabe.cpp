@@ -42,7 +42,10 @@ void CloudsVisualSystemAstrolabe::selfSetupGui(){
 	
 	ticksGui->addButton("reset", &bResetTicks);
 	ticksGui->addSlider("delayOffsetScale", 0, 2, &ringsDelayOffsetScale );
-	ticksGui->addSlider("noiseyness", 0, 1, &ringsNoiseyness );
+	ticksGui->addSpacer();
+	//ticksGui->addSlider("noiseyness", 0, 1, &ringsNoiseyness );
+	ticksGui->addSlider("innerSpeed", .001, 10, &innerSpeed)->setIncrement(.001);
+	ticksGui->addSlider("outerSpeed", .001, 10, &outerSpeed)->setIncrement(.001);
 	
 	ticksGui->addSpacer();
 	
@@ -244,10 +247,15 @@ void CloudsVisualSystemAstrolabe::selfGuiEvent(ofxUIEventArgs &e)
 				astrolabes[i]->setTweenScale("z", scl );
 			}
 		}
-		else if(name == "noiseyness" || name == "delayOffsetScale")
+		else if(name == "innerSpeed" || name == "outerSpeed" || name == "delayOffsetScale")
 		{
 			resetRingRotations();
 		}
+		
+//		else if(name == "noiseyness" || name == "delayOffsetScale")
+//		{
+//			resetRingRotations();
+//		}
 		else if( name == "xTickSpeed" || name == "yTickSpeed" || name == "zTickSpeed" )
 		{
 			for (int i=0; i<astrolabes.size(); i++)
@@ -306,6 +314,40 @@ void CloudsVisualSystemAstrolabe::selfSetup()
 	loadShaders();
 	
 	//defaults
+//	ringsCount = 15;
+//	ringsInnerRad = 5;
+//	ringsWidth = 40;
+//	ringsThickness = 10;
+//	ringsXRot = 0;
+//	ringsYRot = 0;
+//	ringsZRot = 0;
+//	ringsSpacing = 2;
+//	ringsMinTickSpeed = 100;
+//	ringsLowRadians = 0;
+//	ringsHiRadians = TWO_PI;
+//	ringsDelayOffsetScale = .25;
+//	
+//	bResetTicks = false;
+//	
+//	bDepthTest = true;
+//	
+//	currentBlendMode= OF_BLENDMODE_ADD;
+//	
+//	bAutoReverseX = bAutoReverseY = bAutoReverseZ = false;
+//	xTickSpeed = yTickSpeed = zTickSpeed = 250;
+//	xTickDelay = yTickDelay = zTickDelay = 750;
+//	
+//	c0_hue = c1_hue = c2_hue = 255;
+//	c0_brightness = c1_brightness = c2_brightness = 255;
+//	c0_saturation = c1_saturation = c2_saturation = 255;
+//	c0_alpha = c1_alpha = c2_alpha = 255;
+//	
+//	innerSpeed = 1;
+//	outerSpeed = 10;
+}
+
+void CloudsVisualSystemAstrolabe::selfSetDefaults()
+{
 	ringsCount = 15;
 	ringsInnerRad = 5;
 	ringsWidth = 40;
@@ -333,6 +375,9 @@ void CloudsVisualSystemAstrolabe::selfSetup()
 	c0_brightness = c1_brightness = c2_brightness = 255;
 	c0_saturation = c1_saturation = c2_saturation = 255;
 	c0_alpha = c1_alpha = c2_alpha = 255;
+	
+	innerSpeed = 1;
+	outerSpeed = 10;
 }
 
 void CloudsVisualSystemAstrolabe::setupRings(int count,
@@ -462,6 +507,8 @@ void CloudsVisualSystemAstrolabe::selfUpdate()
 
 void CloudsVisualSystemAstrolabe::resetRingRotations()
 {
+	//float innerSpeed = 1, outerSpeed = 10;
+
 	for(int i=0 ; i<astrolabes.size(); i++)
 	{
 		//astrolabes[i]->addRotationTween( axis, startVal, step, duration, delay, increment)
@@ -469,11 +516,15 @@ void CloudsVisualSystemAstrolabe::resetRingRotations()
 		astrolabes[i]->addRotationTween("y", i * ringsYRot, ringsYRot, yTickSpeed, xTickDelay * i * ringsDelayOffsetScale, yTickDelay);
 		astrolabes[i]->addRotationTween("z", 0, ringsZRot, zTickSpeed, zTickDelay * i * ringsDelayOffsetScale, zTickSpeed);
 		
-		float scl = ofSignedNoise(i*.1) * ringsNoiseyness + 1.;
+		float scl = ofMap( i, 0, astrolabes.size()-1, innerSpeed, outerSpeed );// ofSignedNoise(i*.1) * ringsNoiseyness + 1.;
 		astrolabes[i]->setTweenScale("x", scl );
 		astrolabes[i]->setTweenScale("y", scl );
 		astrolabes[i]->setTweenScale("z", scl );
-
+		
+//		float scl = 1;// ofMap( i, 0, astrolabes.size()-1, innerSpeed, outerSpeed );
+//		astrolabes[i]->setTweenScale( "x", scl );
+//		astrolabes[i]->setTweenScale( "y", scl );
+//		astrolabes[i]->setTweenScale( "z", scl );
 	}
 }
 

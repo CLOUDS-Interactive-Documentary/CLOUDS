@@ -187,7 +187,10 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetDefaults(){
 	
     scrollY = -radius;
     scrollSpeed = 0.1f;
-	
+
+	soundPlayerReady = false;
+	videoPlayerReady = false;
+
 }
 
 // selfSetup is called when the visual system is first instantiated
@@ -235,6 +238,14 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfPresetLoaded(string presetPath){
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemOpenP5NoiseSphere::selfBegin(){
+	if(bModeVideo){
+		videoPlayer.play();
+		videoPlayer.setLoopState(OF_LOOP_NORMAL);
+	}
+	else {
+		soundPlayer.play();
+		soundPlayer.setLoop(true);
+	}
 	
 }
 
@@ -386,8 +397,14 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDrawBackground(){
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemOpenP5NoiseSphere::selfEnd(){
 
-	
+	if(bModeVideo){
+		videoPlayer.stop();
+	}
+	else {
+		soundPlayer.stop();
+	}
 }
+
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemOpenP5NoiseSphere::selfExit()
 {
@@ -439,15 +456,19 @@ void CloudsVisualSystemOpenP5NoiseSphere::reloadSound()
         bModeVideo = true;
         
         videoPlayer.loadMovie(file.getAbsolutePath());
-        videoPlayer.play();
-        videoPlayer.setLoopState(OF_LOOP_NORMAL);
+		//JG don't play until begin()
+//        videoPlayer.play();
+//        videoPlayer.setLoopState(OF_LOOP_NORMAL);
+		videoPlayerReady = true;
     }
     else {
         bModeVideo = false;
-        
         soundPlayer.loadSound(file.getAbsolutePath());
-        soundPlayer.play();
-        soundPlayer.setLoop(true);
+		//JG dont play until begin()
+//        soundPlayer.play();
+//        soundPlayer.setLoop(true);
+		
+		soundPlayerReady = true;
     }
 }
 

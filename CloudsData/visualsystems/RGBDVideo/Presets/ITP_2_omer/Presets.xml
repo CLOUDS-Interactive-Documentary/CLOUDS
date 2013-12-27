@@ -7,8 +7,18 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
+    <Name>AICmontage</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>ITP_1</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ITP_1OC</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -17,12 +27,27 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>ITP_2_omerOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>ITP_3</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>ITP_3OC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>ITP_4</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ShinyLab</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

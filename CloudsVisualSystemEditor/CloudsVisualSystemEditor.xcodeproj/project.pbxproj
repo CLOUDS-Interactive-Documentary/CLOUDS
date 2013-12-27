@@ -3211,8 +3211,8 @@
 		E70CE5D81869648D00955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE5D91869648D00955691 /* CloudsVisualSystemColony.cpp */,
 				E70CE5DA1869648D00955691 /* CloudsVisualSystemColony.h */,
+				E70CE5D91869648D00955691 /* CloudsVisualSystemColony.cpp */,
 				E70CE5DB1869648D00955691 /* gCell.cpp */,
 				E70CE5DC1869648D00955691 /* gCell.h */,
 			);
@@ -3340,8 +3340,8 @@
 		E70CE5FE1869648E00955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE5FF1869648E00955691 /* CloudsVisualSystemExampleBox2D.cpp */,
 				E70CE6001869648E00955691 /* CloudsVisualSystemExampleBox2D.h */,
+				E70CE5FF1869648E00955691 /* CloudsVisualSystemExampleBox2D.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3664,8 +3664,8 @@
 		E70CE6651869648F00955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE6661869648F00955691 /* CloudsVisualSystemMemory.cpp */,
 				E70CE6671869648F00955691 /* CloudsVisualSystemMemory.h */,
+				E70CE6661869648F00955691 /* CloudsVisualSystemMemory.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3732,8 +3732,8 @@
 		E70CE6751869648F00955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE6761869648F00955691 /* CloudsVisualSystemOcean.cpp */,
 				E70CE6771869648F00955691 /* CloudsVisualSystemOcean.h */,
+				E70CE6761869648F00955691 /* CloudsVisualSystemOcean.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3855,8 +3855,8 @@
 		E70CE6951869648F00955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE6961869648F00955691 /* CloudsVisualSystemOpenP5NoiseSphere.cpp */,
 				E70CE6971869648F00955691 /* CloudsVisualSystemOpenP5NoiseSphere.h */,
+				E70CE6961869648F00955691 /* CloudsVisualSystemOpenP5NoiseSphere.cpp */,
 				E70CE6981869648F00955691 /* fft.cpp */,
 				E70CE6991869648F00955691 /* fft.h */,
 				E70CE69A1869648F00955691 /* fftOctaveAnalyzer.cpp */,
