@@ -383,27 +383,26 @@ void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
     cout<<"LOADED PRESET: "<<presetPath<<endl;
     
     //LOADING CURRENT ENABLED MODES
-    ofxUIToggle *opticalFlowBtn = (ofxUIToggle*)rdrGui->getWidget("OPTICAL FLOW");
-    bOpticalFlow = opticalFlowBtn->getValue();
+//    ofxUIToggle *opticalFlowBtn = (ofxUIToggle*)rdrGui->getWidget("OPTICAL FLOW");
+//    bOpticalFlow = opticalFlowBtn->getValue();
     if(bOpticalFlow){
         setMode(OpticalFlow);
-        
     }
     
-    ofxUIToggle *ContourBtn = (ofxUIToggle*)rdrGui->getWidget("CONTOUR TRACKING");
-    bContourTracking = ContourBtn->getValue();
+//    ofxUIToggle *ContourBtn = (ofxUIToggle*)rdrGui->getWidget("CONTOUR TRACKING");
+//    bContourTracking = ContourBtn->getValue();
     if(bContourTracking){
         setMode(ContourTracking);   
     }
     
-    ofxUIToggle *AbsDiffBtn = (ofxUIToggle*)rdrGui->getWidget("ABS DIFF HEAT MAP");
-    bDrawHeatMap = AbsDiffBtn->getValue();
+//    ofxUIToggle *AbsDiffBtn = (ofxUIToggle*)rdrGui->getWidget("ABS DIFF HEAT MAP");
+//    bDrawHeatMap = AbsDiffBtn->getValue();
     if(bDrawHeatMap){
         setMode(HeatMap);
     }
     
-    ofxUIToggle *ThresholBtn = (ofxUIToggle*)rdrGui->getWidget("DRAW THRESHOLDED");
-    drawThresholded = ThresholBtn->getValue();
+//    ofxUIToggle *ThresholBtn = (ofxUIToggle*)rdrGui->getWidget("DRAW THRESHOLDED");
+//    drawThresholded = ThresholBtn->getValue();
 
     //LOADING MOVIE
     ofxUIRadio* r = (ofxUIRadio*)rdrGui->getWidget("VIDEO");
@@ -455,10 +454,10 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
 
     rdrGui->addSpacer();
     rdrGui->addLabel("PLAY MODES");
-    ofxUIToggle *opticalFlowBtn = rdrGui->addToggle("OPTICAL FLOW",bOpticalFlow);
-    ofxUIToggle *ContourBtn = rdrGui->addToggle("CONTOUR TRACKING",bContourTracking);
-    ofxUIToggle *AbsDiffBtn = rdrGui->addToggle("ABS DIFF HEAT MAP",bDrawHeatMap);
-    ofxUIToggle *ThresholBtn = rdrGui->addToggle("DRAW THRESHOLDED",drawThresholded);
+    ofxUIToggle *opticalFlowBtn = rdrGui->addToggle("OPTICAL FLOW",&bOpticalFlow);
+    ofxUIToggle *ContourBtn = rdrGui->addToggle("CONTOUR TRACKING",&bContourTracking);
+    ofxUIToggle *AbsDiffBtn = rdrGui->addToggle("ABS DIFF HEAT MAP",&bDrawHeatMap);
+    ofxUIToggle *ThresholBtn = rdrGui->addToggle("DRAW THRESHOLDED",&drawThresholded);
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     ofxUIButton *drawplayerbtn = rdrGui->addToggle("DRAW PLAYER", &drawPlayer);
     ofxUIButton *bDrawFlowWindowbtn = rdrGui->addToggle("DRAW FLOW WINDOW", &bDrawFlowWindow);
@@ -754,38 +753,35 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     }
     else if (name == "OPTICAL FLOW"){
         setMode(OpticalFlow);
-        
-        bOpticalFlow = b->getValue();
-
     }
     else if( name == "CONTOUR TRACKING" ){
         setMode(ContourTracking);
-        bContourTracking = t->getValue();
+//        bContourTracking = t->getValue();
     }
-    else if (name == "DRAW PLAYER"){
-        drawPlayer = b->getValue();
-    }
-    else if( name == "DRAW THRESHOLDED"){
-        drawThresholded = b->getValue();    
-    }
+//    else if (name == "DRAW PLAYER"){
+//        drawPlayer = b->getValue();
+//    }
+//    else if( name == "DRAW THRESHOLDED"){
+//        drawThresholded = b->getValue();    
+//    }
     else if( name == "ABS DIFF HEAT MAP"){
         setMode(HeatMap);
-        bDrawHeatMap = b->getValue();
+//        bDrawHeatMap = b->getValue();
     }
     else if( name == "CLEAR DIFF"){
         b->setValue(false);
         clearAccumulation();
     }
-    else if(name == "FLOW WINDOW"){
-        bDrawFlowWindow = b->getValue();
-    }
+//    else if(name == "FLOW WINDOW"){
+//        bDrawFlowWindow = b->getValue();
+//    }
     
-    else if(name=="DRAW BOXES"){
-        bDrawBoxes = b->getValue();
-    }
-    else if(name == "DRAW NUMBERS"){
-        bNumbers = b->getValue();
-    }
+//    else if(name=="DRAW BOXES"){
+//        bDrawBoxes = b->getValue();
+//    }
+//    else if(name == "DRAW NUMBERS"){
+//        bNumbers = b->getValue();
+//    }
 //    else if(name == "DRAW LINES"){
 //        bDrawLines = b->getValue();
 //    }
