@@ -37,11 +37,12 @@ void main(){
     
     //see if you're in the right range to be a border
     b *= samp.b * samp.b;
-    b =  bump(b, .3, 0.2) - samp.g;
-    b =  clamp(b, 0., 1.);
-    b += samp.g;
-    b =  clamp(b, 0., 1.);
-    gl_FragColor = vec4(1., 1., 1., b);
+    float innerCell = clamp(bump(b, .8, 0.4),0.,1.) * (1. -(0.2 + 0.2 * sin(gl_FragCoord.x + gl_FragCoord.y)) );
+    float shell = clamp(bump(b, .3, 0.2), 0.,0.95);
+    vec4 kernel = clamp(samp.g * 1.5 * vec4(0.6,0.7,0.6,1.),0.,1.);
+    vec4 envelope = pow(shell,1.5) * vec4(1.,1.,1.,1.);
+    vec4 color = envelope + kernel + (innerCell-samp.g) * vec4(0.5,0.,0.,0.3);
+    gl_FragColor = color;
     
 //    gl_FragColor = samp;
 }

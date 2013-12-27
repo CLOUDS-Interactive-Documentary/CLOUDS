@@ -1,0 +1,27 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Presets</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>224</XPosition>
+    <YPosition>346</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>blueTunnel</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>debug</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>xray</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnel</Name>
+    <Value>1</Value>
+</Widget>

@@ -178,10 +178,10 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 				{
 					loadMesh( meshNames[i] );
 					
-					if(bFacetMesh && !bMeshHasBeenFaceted)
-					{
-						facetMesh(mesh, mesh);
-					}
+//					if(bFacetMesh && !bMeshHasBeenFaceted)
+//					{
+//						facetMesh(mesh, mesh);
+//					}
 				}
 			}
 		}
@@ -201,19 +201,19 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 		
 		else if(name == "FacetMesh" )
 		{
-			if(!bMeshHasBeenFaceted)
-			{
-				facetMesh(mesh, mesh);
-				bSmoothMesh = false;
-			}
+//			if(!bMeshHasBeenFaceted)
+//			{
+//				facetMesh(mesh, mesh);
+//				bSmoothMesh = false;
+//			}
 		}
 		else if(name == "SmoothMesh" )
 		{
-			if(!bMeshHasBeenSmoothed)
-			{
-				smoothMesh(mesh, mesh);
-				bFacetMesh = false;
-			}
+//			if(!bMeshHasBeenSmoothed)
+//			{
+//				smoothMesh(mesh, mesh);
+//				bFacetMesh = false;
+//			}
 		}
 	}
 	
@@ -249,9 +249,9 @@ void CloudsVisualSystemWormHole::loadMesh(string name)
 		
 		bMeshHasBeenFaceted = bMeshHasBeenSmoothed = false;
 		
-		if(bFacetMesh)	facetMesh(mesh, mesh);
-		else if(bSmoothMesh)	smoothMesh(mesh, mesh);
-	}	
+//		if(bFacetMesh)	facetMesh(mesh, mesh);
+//		else if(bSmoothMesh)	smoothMesh(mesh, mesh);
+	}
 }
 
 void CloudsVisualSystemWormHole::loadShaders()
@@ -380,6 +380,9 @@ void CloudsVisualSystemWormHole::selfUpdate()
 	lastTime = t;
 	
 	noiseTime += timeDelta * noiseSpeed;
+	
+	
+	getCameraRef().setNearClip(.1);
 }
 
 void CloudsVisualSystemWormHole::selfDraw()
@@ -601,6 +604,7 @@ void CloudsVisualSystemWormHole::smoothMesh( ofMesh& facetedMesh, ofMesh& target
 
 void CloudsVisualSystemWormHole::facetMesh( ofMesh& smoothedMesh, ofMesh& targetMesh )
 {
+	cout << "Faceting Mesh" << endl;
 	float startTime = ofGetElapsedTimeMillis();
 	//get our vertex, uv and face info
 	vector<ofVec3f>& v = smoothedMesh.getVertices();

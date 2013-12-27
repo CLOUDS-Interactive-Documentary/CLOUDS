@@ -88,7 +88,7 @@ public:
     float deathThreshold, dynamicFrictionCoeff, amtTurbulence, spdTurbulence,
     amtAlign, amtCohere, amtSeparate, lifespanMin, lifespanMax, fertilityRate,
     nutrientAmount, nutrientTimeCoef, nutrientFalloff, maxSpeed_min, maxSpeed_max,
-    maxSize_min, maxSize_max;
+    maxSize_min, maxSize_max, maxForce_min, maxForce_max;
     
     cellParams(){
         dynamicFrictionCoeff = 0.1;
@@ -108,6 +108,9 @@ public:
         
         maxSpeed_min = 0.3;
         maxSpeed_max = 0.6;
+        
+        maxForce_min = 0.6;
+        maxForce_max = 1.0;
         
         maxSize_min = 3;
         maxSize_max = 8;
