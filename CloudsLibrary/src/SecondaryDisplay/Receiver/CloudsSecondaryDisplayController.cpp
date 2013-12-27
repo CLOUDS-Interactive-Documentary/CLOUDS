@@ -12,6 +12,8 @@
 CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
 	hasSpeaker = false;
 	playingMovie = false;
+    
+    layoutID = 0;
 }
 
 void CloudsSecondaryDisplayController::setup(){
@@ -42,7 +44,8 @@ void CloudsSecondaryDisplayController::setup(){
 
 	receiver.setup(12346);
 	
-	exampleType.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf");
+	exampleType.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", 40);
+    exampleType.setLineLength(544);
     
 	loadSVGs();
  
@@ -54,6 +57,7 @@ void CloudsSecondaryDisplayController::loadSVGs(){
 	ofDirectory svgs(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/");
 	svgs.allowExt("svg");
 	svgs.listDir();
+    //loading all the SVG files in the BIO dir, but why?
 	for(int i = 0; i < svgs.numFiles(); i++){
 		testAllLayout.push_back(CloudsSVGMesh());
 		testAllLayout.back().load(svgs.getPath(i));
@@ -109,6 +113,21 @@ void CloudsSecondaryDisplayController::update(){
 	}
 }
 
+void CloudsSecondaryDisplayController::drawNextLayout(){
+    layoutID++;
+    if(layoutID>testAllLayout.size()-1)
+        layoutID = 0;
+    cout << "Draw Display: "<< testAllLayout[layoutID].sourceFileName <<" #" << layoutID << " of " << testAllLayout.size()-1 << endl;
+    
+}
+
+void CloudsSecondaryDisplayController::drawPrevLayout(){
+    layoutID--;
+    if(layoutID<0)
+        layoutID =testAllLayout.size()-1;
+    cout << "Draw Display: "<< testAllLayout[layoutID].sourceFileName <<" #" << layoutID << " of " << testAllLayout.size()-1 << endl;
+}
+
 /* WORK MOSTLY IN HERE - JK */
 void CloudsSecondaryDisplayController::draw(){
 	
@@ -117,13 +136,22 @@ void CloudsSecondaryDisplayController::draw(){
 	clusterMap.selfPostDraw();
 
 	//DEBUG
+    string speakerString;
 	if(hasSpeaker){
-		exampleType.drawString(currentSpeaker.firstName + " " + currentSpeaker.lastName, 30, 30);
+        speakerString = currentSpeaker.firstName + " " + currentSpeaker.lastName;
+		
 	}
 	else{
-		exampleType.drawString("NO SPEAKER", 30, 30);
+        speakerString = "NO SPEAKER";
 	}
+    
     //END DEBUG
+    
+    //DRAW SPEAKER FIRST NAME
+    SVGMesh* t = testAllLayout[layoutID].getMeshByID("TEXTBOX_x5F_FIRSTNAME");
+    if(t){
+        exampleType.drawString(speakerString, t->bounds.x, t->bounds.y + t->bounds.height);
+    }
 	
 	if(playingMovie){
 		archivePlayer.draw(ofGetWidth()/2  - archivePlayer.getWidth()/2,
@@ -131,9 +159,10 @@ void CloudsSecondaryDisplayController::draw(){
 		playingMovie = archivePlayer.isPlaying();
 	}
     
-	for(int i = 0; i < testAllLayout.size(); i++){
-		testAllLayout[i].draw();
-	}
+    //loop through and draw all the CloudsSVGMesh objects
+	//for(int i = 0; i < testAllLayout.size(); i++){
+		testAllLayout[layoutID].draw();
+	//}
 	
 	displayTarget.end();
 	
