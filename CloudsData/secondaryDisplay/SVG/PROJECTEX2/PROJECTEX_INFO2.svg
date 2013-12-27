@@ -6,8 +6,8 @@
 <g id="BACKGROUND" display="none">
 	<rect x="0.241" y="0.369" display="inline" fill="#060F42" width="1920" height="1080"/>
 </g>
-<g id="BOX_x5F_INFO">
-	<rect x="47.813" y="881.948" fill="none" width="1824" height="150"/>
+<g id="BOX_x5F_INFO" display="none">
+	<rect x="47.813" y="881.948" display="inline" fill="none" width="1824" height="150"/>
 </g>
 <g id="BOX_x5F_DETAILS" display="none">
 	<path display="inline" fill="none" d="M1494.092,1052.708"/>
@@ -40,8 +40,8 @@
 <g id="BOX_x5F_VIDEO" display="none">
 	<rect x="309.04" y="91.934" display="inline" fill="none" width="1280" height="720"/>
 </g>
-<g id="INFO" display="none">
-	<path display="inline" fill="none" d="M1494.333,1056.596"/>
-	<path display="inline" fill="none" d="M1569.621,1056.596"/>
+<g id="INFO">
+	<path fill="none" d="M1494.333,1056.596"/>
+	<path fill="none" d="M1569.621,1056.596"/>
 </g>
 </svg>
