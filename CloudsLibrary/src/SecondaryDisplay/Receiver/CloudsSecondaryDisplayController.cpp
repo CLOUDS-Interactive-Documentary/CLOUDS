@@ -14,6 +14,7 @@ CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
 	playingMovie = false;
     
     layoutID = 0;
+    displayMode = "BIO";
 }
 
 void CloudsSecondaryDisplayController::setup(){
@@ -90,6 +91,7 @@ void CloudsSecondaryDisplayController::update(){
 			
 			string exampleId = m.getArgAsString(4);
 			if(exampleId != ""){
+                displayMode = "EXAMPLE";
 				//need to do something smarter here
 				currentExample = parser.getProjectExampleWithTitle(exampleId);
 				if(currentExample.exampleVideos.size() > 0){
@@ -101,6 +103,7 @@ void CloudsSecondaryDisplayController::update(){
 				}
 			}
 			else{
+                displayMode = "BIO";
 				playingMovie = false;
 				archivePlayer.stop();
 			}
