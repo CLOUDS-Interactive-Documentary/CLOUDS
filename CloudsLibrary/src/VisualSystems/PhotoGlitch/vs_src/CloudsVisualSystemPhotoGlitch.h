@@ -49,16 +49,16 @@ class PhotoGlitch
 public:
     int ID;
     int numVerts;
-    GLfloat * verts;
-    GLfloat * texCoords;
-    GLfloat * colors;
+    GLfloat* verts;
+    GLfloat* texCoords;
+    GLfloat* colors;
     int numIndices;
-    GLuint * indices;
+    GLuint* indices;
     
     ofImage tex;
     ofVbo vbo;
     
-    PGCell * cells;
+    PGCell* cells;
     
     void clear(){
         
@@ -172,7 +172,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void clearTarget();
     void generateSource();
     void generateTarget();
-    void generate(PhotoGlitch& pg, int imageIndex);
+    void generate(PhotoGlitch& pg, int imageIndex,bool isSource= false);
     void beginAnimation();
     void updateAnimation();
     
@@ -273,6 +273,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     bool bShouldReorder;
     bool bRandomSort;
     bool bDrawBackground;
+    bool bIsFirstTime;
 
     bool bCurrentlyAnimating;
     bool bStartAnimating;
