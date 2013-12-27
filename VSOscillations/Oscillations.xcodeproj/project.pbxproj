@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17BC7E00186C8A3A00F4E8D8 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC7DF9186C8A3A00F4E8D8 /* CloudsInput.cpp */; };
+		17BC7E01186C8A3A00F4E8D8 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC7DF9186C8A3A00F4E8D8 /* CloudsInput.cpp */; };
+		17BC7E04186C8A3A00F4E8D8 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC7DFE186C8A3A00F4E8D8 /* CloudsInputMouse.cpp */; };
+		17BC7E05186C8A3A00F4E8D8 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC7DFE186C8A3A00F4E8D8 /* CloudsInputMouse.cpp */; };
 		850EDC7018305AB3004411A3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		850EDC7118305AB3004411A3 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */; };
 		850EDC7218305AB3004411A3 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
@@ -256,6 +260,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		17BC7DF9186C8A3A00F4E8D8 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
+		17BC7DFA186C8A3A00F4E8D8 /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
+		17BC7DFB186C8A3A00F4E8D8 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
+		17BC7DFE186C8A3A00F4E8D8 /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		17BC7DFF186C8A3A00F4E8D8 /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
+		17BC7E06186CF22300F4E8D8 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../../CloudsLibrary/src/CloudsGlobal.h; sourceTree = "<group>"; };
 		850EDCD918305AB3004411A3 /* Oscillations copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oscillations copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		850EDCDA18305AB4004411A3 /* Oscillations copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Oscillations copy-Info.plist"; path = "/Users/jonathanminard/Documents/Development/openFrameworks/apps/CLOUDS/VSOscillations/Oscillations copy-Info.plist"; sourceTree = "<absolute>"; };
 		850EDDA118305BFB004411A3 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
@@ -562,6 +572,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17BC7DF8186C8A3A00F4E8D8 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				17BC7DF9186C8A3A00F4E8D8 /* CloudsInput.cpp */,
+				17BC7DFA186C8A3A00F4E8D8 /* CloudsInput.h */,
+				17BC7DFB186C8A3A00F4E8D8 /* CloudsInputEvents.h */,
+				17BC7DFE186C8A3A00F4E8D8 /* CloudsInputMouse.cpp */,
+				17BC7DFF186C8A3A00F4E8D8 /* CloudsInputMouse.h */,
+			);
+			name = Input;
+			path = ../../CloudsLibrary/src/Input;
+			sourceTree = "<group>";
+		};
 		850EDD9B18305BFB004411A3 /* ofxOculusRift */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,6 +690,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				17BC7E06186CF22300F4E8D8 /* CloudsGlobal.h */,
+				17BC7DF8186C8A3A00F4E8D8 /* Input */,
 				E7E95E5C1733624100294C72 /* CloudsLibrary */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
@@ -1322,6 +1347,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Oscillations" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1457,12 +1484,14 @@
 				850EDCAD18305AB3004411A3 /* ofxEasingElastic.cpp in Sources */,
 				850EDCAE18305AB3004411A3 /* ofxEasingExpo.cpp in Sources */,
 				850EDCAF18305AB3004411A3 /* ofxEasingLinear.cpp in Sources */,
+				17BC7E01186C8A3A00F4E8D8 /* CloudsInput.cpp in Sources */,
 				850EDCB018305AB3004411A3 /* ofxEasingQuad.cpp in Sources */,
 				850EDCB118305AB3004411A3 /* ofxEasingQuart.cpp in Sources */,
 				850EDCB218305AB3004411A3 /* ofxEasingQuint.cpp in Sources */,
 				850EDCB318305AB3004411A3 /* ofxEasingSine.cpp in Sources */,
 				850EDCB418305AB3004411A3 /* ofxTween.cpp in Sources */,
 				850EDCB518305AB3004411A3 /* ofxMSATimer.cpp in Sources */,
+				17BC7E05186C8A3A00F4E8D8 /* CloudsInputMouse.cpp in Sources */,
 				850EDCB618305AB3004411A3 /* ofxTextInputField.cpp in Sources */,
 				850EDCB718305AB3004411A3 /* CloudsRGBDCamera.cpp in Sources */,
 				850EDCB818305AB3004411A3 /* CloudsRGBDVideoPlayer.cpp in Sources */,
@@ -1488,6 +1517,7 @@
 				E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */,
 				E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */,
 				E7D32FA01751C626006706ED /* ofxBehavior.cpp in Sources */,
+				17BC7E04186C8A3A00F4E8D8 /* CloudsInputMouse.cpp in Sources */,
 				E7D32FA11751C626006706ED /* ofxBufferEffectorBehavior.cpp in Sources */,
 				E7D32FA21751C626006706ED /* ofxDamperBehavior.cpp in Sources */,
 				E7D32FA31751C626006706ED /* ofxDistorterBehavior.cpp in Sources */,
@@ -1530,6 +1560,7 @@
 				E7CF78581753FEA1006B7D41 /* ofxTLPage.cpp in Sources */,
 				E7CF78591753FEA1006B7D41 /* ofxTLPageTabs.cpp in Sources */,
 				E7CF785A1753FEA1006B7D41 /* ofxTLSwitches.cpp in Sources */,
+				17BC7E00186C8A3A00F4E8D8 /* CloudsInput.cpp in Sources */,
 				E7CF785B1753FEA1006B7D41 /* ofxTLTicker.cpp in Sources */,
 				E7CF785C1753FEA1006B7D41 /* ofxTLTrack.cpp in Sources */,
 				E7CF785D1753FEA1006B7D41 /* ofxTLTrackHeader.cpp in Sources */,
@@ -1583,7 +1614,7 @@
 		850EDCD718305AB3004411A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_CXX0X_EXTENSIONS = NO;
@@ -1687,7 +1718,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
@@ -1703,7 +1734,7 @@
 		850EDCD818305AB3004411A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_CXX0X_EXTENSIONS = NO;
@@ -1806,7 +1837,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release/libovr.a\n",
@@ -1889,7 +1920,7 @@
 		E4B69B600A3A1757003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_CXX0X_EXTENSIONS = NO;
@@ -1983,7 +2014,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
+				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = OscillationsDebug;
 				SDKROOT = macosx10.8;
@@ -1994,7 +2025,7 @@
 		E4B69B610A3A1757003C02F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_CXX0X_EXTENSIONS = NO;
@@ -2087,7 +2118,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
+				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = Oscillations;
 				SDKROOT = macosx10.8;
