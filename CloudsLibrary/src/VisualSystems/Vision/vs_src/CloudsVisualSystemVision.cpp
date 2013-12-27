@@ -574,7 +574,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
 				
 				ofPushMatrix();
 				ofPushStyle();
-                ofEnableBlendMode(OF_BLENDMODE_ADD);				
+                ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 				ofSetColor(windowAlpha);
 				ofScale(getCanvasWidth()/player->getWidth(),
 						getCanvasHeight()/player->getHeight());
