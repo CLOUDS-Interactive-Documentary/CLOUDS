@@ -61,7 +61,6 @@ public:
     void updateContourTracking();
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
-//    void getTextures(); JG didn't see where this was used
 
     ofxUISuperCanvas *opticalFlowGui;
     ofxUISuperCanvas *contourTrackingGui;

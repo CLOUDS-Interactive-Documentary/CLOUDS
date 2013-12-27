@@ -575,8 +575,9 @@ void CloudsVisualSystemVision::selfDrawBackground()
 				ofPushStyle();
 				
 				ofSetColor(windowAlpha);
-				ofScale(getCanvasWidth()/player->getWidth(),
-						getCanvasHeight()/player->getHeight());
+
+				ofScale(videoRect.width/player->getWidth(),
+						videoRect.height/player->getHeight());
 				tex.drawSubsection(mouseX-flowWindow.width/2,
 								   mouseY-flowWindow.height/2,
 								   flowWindow.width, flowWindow.height,
