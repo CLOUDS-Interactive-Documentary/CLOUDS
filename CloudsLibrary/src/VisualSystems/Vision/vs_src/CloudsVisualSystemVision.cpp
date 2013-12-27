@@ -581,13 +581,15 @@ void CloudsVisualSystemVision::selfDrawBackground()
 			ofPushStyle();
 			ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 			ofSetColor(windowAlpha);
-
+			
 			ofScale(videoRect.width/player->getWidth(),
 					videoRect.height/player->getHeight());
-			tex.drawSubsection(mouseX-flowWindow.width/2,
-							   mouseY-flowWindow.height/2,
-							   flowWindow.width, flowWindow.height,
-							   mouseX-flowWindow.width/2, mouseY-flowWindow.height/2);
+			if(bDrawFlowWindow){
+				tex.drawSubsection(mouseX-flowWindow.width/2,
+								   mouseY-flowWindow.height/2,
+								   flowWindow.width, flowWindow.height,
+								   mouseX-flowWindow.width/2, mouseY-flowWindow.height/2);
+			}
 			ofSetLineWidth(flowLineWidth);
 			flowMesh.draw();
 			
@@ -639,7 +641,6 @@ void CloudsVisualSystemVision::selfDrawBackground()
         ofSetColor(0, 0, 255);
         ofRect(0, 20,  mapBlue, 10);
         ofPopStyle();
-
 
     }
     ofPopStyle();
