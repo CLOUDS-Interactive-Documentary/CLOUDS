@@ -143,8 +143,7 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
     float distX = abs(ofGetMouseX() - ofGetPreviousMouseX());
     float distY = abs(ofGetMouseY() - ofGetPreviousMouseY());
     float mSpeed = sqrt(distX*distX + distY*distY);
-    mouseX.value(ofMap(mSpeed, 0, 30, 1200, 50, true));
-    hpfCutoff.value(ofMap(mSpeed, 0, 30, 600, 50, true));
+    lpfCutoff.value(ofMap(mSpeed, 0, 30, 200, 2000, true));
 }
 
 void CloudsVisualSystemVectorFlow::addParticle(){
@@ -435,15 +434,12 @@ Generator CloudsVisualSystemVectorFlow::buildSynth()
     
     SampleTable sample = loadAudioFile(strAbsPath);
     
-    mouseX = synth.addParameter("mousex", 0).displayName("Mouse X").min(50).max(1200);
-    hpfCutoff = synth.addParameter("cutoff_freq", 200).displayName("Cutoff Freq").min(50).max(600);
+    lpfCutoff = synth.addParameter("cutoff_freq", 50).displayName("Cutoff Freq").min(50).max(2000);
     
     Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1) * 0.6;
 //    Generator noiseGen = LFNoise().setFreq(mouseX) * SineWave().freq(1);
     
-    HPF12 filter = HPF12().cutoff(hpfCutoff.smoothed());
-    
-    Reverb revb = Reverb().inputHPFCutoff(mouseX);
+    LPF24 filter = LPF24().cutoff(lpfCutoff.smoothed());
     
     return (sampleGen >> filter);// >> revb);
 }

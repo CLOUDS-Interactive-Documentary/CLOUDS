@@ -108,7 +108,7 @@ protected:
     
     // Sound
     ofxTonicSynth synth;
-    ControlParameter hpfCutoff, mouseX;
+    ControlParameter lpfCutoff;
     Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
 };
