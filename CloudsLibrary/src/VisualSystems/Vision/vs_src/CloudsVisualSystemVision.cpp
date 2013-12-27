@@ -14,8 +14,7 @@ string CloudsVisualSystemVision::getSystemName()
 	return "Vision";
 }
 
-void CloudsVisualSystemVision::selfSetup()
-{
+void CloudsVisualSystemVision::selfSetDefaults(){
     currentMode = OpticalFlow;
     curFlow = &farneback;
     bIs2D = true;
@@ -40,8 +39,8 @@ void CloudsVisualSystemVision::selfSetup()
     drawThresholded =false;
     
     videoAlpha = 128;
-    windowAlpha = 128;
-    thresholdAlpha = 128;
+    windowAlpha = 10;
+    thresholdAlpha = 10h;
     
     bContourTracking = false;
     bOpticalFlow = false;
@@ -72,9 +71,12 @@ void CloudsVisualSystemVision::selfSetup()
     contourLifetimeColorRange = 110;
     windowWidth = 500;
     windowHeight = 500;
-    
+}
 
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
+void CloudsVisualSystemVision::selfSetup()
+{
+
+
     shader.load(getVisualSystemDataPath() + "heatMapShader");
 
     //	app
@@ -479,36 +481,41 @@ void CloudsVisualSystemVision::selfUpdate(){
                               OF_IMAGE_COLOR);
             cout<<"Updating settings for new video : "<<player->getPixelsRef().getImageType()<<endl;
         }
-    
-        player->update();
-        frameIsNew = player->isFrameNew();
-        
-        if(frameIsNew && ! bNewVideoLoaded){
+        else{
+            player->update();
+            frameIsNew = player->isFrameNew();
             
-            if(drawThresholded){
-                background.update(player->getPixelsRef(), thresholded);
-                thresholded.update();
-                blur(thresholded, 5);
+            if(frameIsNew && ! bNewVideoLoaded){
+                
+                if(drawThresholded){
+                    background.update(player->getPixelsRef(), thresholded);
+                    thresholded.update();
+                    blur(thresholded, 5);
+                }
+                
+                if(bContourTracking){
+                    updateContourTracking();
+                }
+                
+                if(bOpticalFlow){
+                    updateOpticalFlow();
+                }
+                
+                if (bDrawHeatMap) {
+                    updateHeatMap();
+                }
+                
             }
-            
-            if(bContourTracking){
-                updateContourTracking();
-            }
-            
-            if(bOpticalFlow){
-                updateOpticalFlow();
-            }
-            
-            if (bDrawHeatMap) {
-                updateHeatMap();
-            }
-            
         }
+    
+
 }
 
 void CloudsVisualSystemVision::selfDrawBackground()
 {
-    
+    ofPushStyle();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+
     if(drawPlayer){
 		if(player->isLoaded() && player->isPlaying()){
 			ofPushStyle();
@@ -621,6 +628,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
 
 
     }
+    ofPopStyle();
 }
 
 void CloudsVisualSystemVision::selfDraw()

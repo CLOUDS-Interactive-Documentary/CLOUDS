@@ -28,7 +28,7 @@ public:
     void selfSetupGuis();
     
 	void selfPresetLoaded(string presetPath);
-	
+	void selfSetDefaults();
     void selfAutoMode();
     void selfUpdate();
     void selfDrawBackground();
@@ -110,7 +110,6 @@ protected:
     ofImage thresholded;
     ofxCv::RunningBackground background;
     cv::Rect accumRegion;
-    //vector<ParkedCar> parked;
 
     //Optical flow types
     ofxCv::FlowFarneback farneback;
