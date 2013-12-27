@@ -20,38 +20,40 @@ typedef struct {
 	
 } SyntaxLine;
 
-class CodePanel {
+
+class Panel {
   public:
-	CodePanel();
+	Panel();
 	void setup(string codeFile);
 	
 	void update();
 	void draw(float screenHeight);
-	//ofxFTGLSimpleLayout layout;
-	ofxFTGLFont layout;
+	
+	virtual void selfSetup();
+	virtual void selfUpdate();
+	virtual void selfDraw();
+	
 	ofBuffer initialBuffer;
 	
 	float offset;
 	float scanSpeed;
-	
+		
 	ofRectangle drawRect;
-//	vector<string> lines;
-	vector<SyntaxLine> syntaxLines;
 	string code;
-	
+	vector<string> lines;
+	vector<SyntaxLine> syntaxLines;
+
 	float animationStartTime;
 	float animationEndTime;
 
 	float* outlineAlpha;
 	int maxCharsOnLine;
 	
-	bool drawAsHist;
-	bool drawAsConsole;
+	ofFloatColor tint;
+	vector<ofFloatColor> matchColorTypes;
 	
-protected:
-	
-	ofColor randomBoxColor;
+  protected:
 	void myReplace(string& str, const string& oldStr, const string& newStr);
 	int indexOf(string s, string f, int startIndex);
-	
+
 };
