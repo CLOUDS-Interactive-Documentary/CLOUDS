@@ -12,22 +12,22 @@
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemGesturePaint::selfSetupGui(){
-
+    
 	waterGui = new ofxUISuperCanvas("WATER", gui);
 	waterGui->copyCanvasStyle(gui);
 	waterGui->copyCanvasProperties(gui);
 	waterGui->setName("Water");
 	waterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
+    
 	waterGui->addSlider("Blur Radius", 0, 5., &blurRadius);
 	waterGui->addSlider("Dry Rate", 0, .5, &dryRate);
 	waterGui->addSlider("Deposite Scale", 1., 256., &depositeScale);
 	waterGui->addToggle("Show Debug Tex", &showWaterDebug);
-	
+    
 	ofAddListener(waterGui->newGUIEvent, this, &CloudsVisualSystemGesturePaint::selfGuiEvent);
 	guis.push_back(waterGui);
 	guimap[waterGui->getName()] = waterGui;
-
+    
 	brushGui = new ofxUISuperCanvas("BRUSH", gui);
 	brushGui->copyCanvasStyle(gui);
 	brushGui->copyCanvasProperties(gui);
@@ -36,7 +36,7 @@ void CloudsVisualSystemGesturePaint::selfSetupGui(){
 	brushGui->addSlider("Brush Size", 1, 256., &brushSize);
 	brushGui->addSlider("Palette Shift Speed", 0, 100., &paletteTraversalSpeed);
 	brushGui->addSlider("Palette Expand", 0, 1.0, &paletteExpandPercent);
-
+    
 	//palettes
 	ofDirectory palettes(getVisualSystemDataPath() + "images/palettes/");
 	palettes.allowExt("jpg");
@@ -74,7 +74,7 @@ void CloudsVisualSystemGesturePaint::guiSystemEvent(ofxUIEventArgs &e){
 }
 //use render gui for display settings, like changing colors
 void CloudsVisualSystemGesturePaint::selfSetupRenderGui(){
-
+    
 }
 
 void CloudsVisualSystemGesturePaint::guiRenderEvent(ofxUIEventArgs &e){
@@ -113,19 +113,19 @@ void CloudsVisualSystemGesturePaint::reloadShader(){
 	cout << "loading vblur" << endl;
 	vblurShader.load(getVisualSystemDataPath() + "shaders/vblur.vert",
 					 getVisualSystemDataPath() + "shaders/blur.frag");
-
+    
 	cout << "loading paper mix" << endl;
 	paperMixShader.load(getVisualSystemDataPath() + "shaders/papermix");
 	
 	cout << "loading force brush shader" << endl;
 	forceBrushShader.load(getVisualSystemDataPath() + "shaders/forcebrush");
-
+    
 	cout << "loading paint brush shader" << endl;
 	paintBrushShader.load(getVisualSystemDataPath() + "shaders/paintbrush");
 	
 	brushImage.loadImage(getVisualSystemDataPath() + "images/brush.png");
 	paperImage.loadImage(getVisualSystemDataPath() + "images/paper.jpg");
-	noiseFlowTex.loadImage(getVisualSystemDataPath() + "images/noise.png");	
+	noiseFlowTex.loadImage(getVisualSystemDataPath() + "images/noise.png");
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -206,7 +206,7 @@ void CloudsVisualSystemGesturePaint::meshFromFbo(ofMesh& m, ofFbo& f){
 }
 
 void CloudsVisualSystemGesturePaint::createWaterBrush(){
-
+    
 	forceBrushMesh.clear();
 	forceBrushMesh.addVertex(ofVec3f(0,0,0));
 	forceBrushMesh.addVertex(ofVec3f(depositeScale,0,0));
@@ -294,17 +294,20 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 	
 	forceBrushShader.begin();
 	ofVec2f centerTranslate = ofVec2f(depositeScale*.5,depositeScale*.5);
-	for(int i = 0; i < depositPoints.size(); i++){
-		ofPushMatrix();
-		ofTranslate(depositPoints[i]*.25 - centerTranslate);
-		forceBrushMesh.draw();
-		ofPopMatrix();
-	}
+    map<int, vector<ofVec2f> >::iterator it;
+    for (it = playerDepositPoints.begin(); it != playerDepositPoints.end(); it++) {
+        for(int i = 0; i <it->second.size(); i++){
+            ofPushMatrix();
+            ofTranslate(it->second[i]*.25 - centerTranslate);
+            forceBrushMesh.draw();
+            ofPopMatrix();
+        }
+    }
 	forceBrushShader.end();
 	waterdst.end();
 	
 	swap(watersrc,waterdst);
-
+    
 	canvasdst.begin();
 	ofDisableAlphaBlending();
 	ofClear(0, 0, 0, 0);
@@ -339,7 +342,7 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 	if(palette.isAllocated()){
 		palettePosition.x = palette.getWidth()/2.;
 		palettePosition.y = fmod(ofGetElapsedTimef()*paletteTraversalSpeed,palette.getHeight());
-
+        
 		paintBrushShader.setUniformTexture("palette", palette, 2);
 		paintBrushShader.setUniform2f("palettePosition",palettePosition.x,palettePosition.y);
 		paintBrushShader.setUniform2f("paletteDimensions",
@@ -352,16 +355,21 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
 		ofSetColor(ofColor::fromHsb(fmod(ofGetElapsedTimef()*20, 255.f), 255.0f, 255.0f));
 	}
 	
-	for(int i = 0; i < depositPoints.size(); i++){
-		ofPushMatrix();
-		ofTranslate(depositPoints[i]);
-		paintBrushMesh.draw();
-		ofPopMatrix();
-	}
-
+    for (it = playerDepositPoints.begin(); it != playerDepositPoints.end(); it++) {
+        for(int i = 0; i <it->second.size(); i++){
+            ofPushMatrix();
+            ofTranslate(it->second[i]);
+            paintBrushMesh.draw();
+            ofPopMatrix();
+        }
+    }
+    
 	paintBrushShader.end();
 	
-	depositPoints.clear();
+    for (it = playerDepositPoints.begin(); it != playerDepositPoints.end(); it++) {
+        it->second.clear();
+    }
+    
 	ofPopStyle();
 	
 	canvasdst.end();
@@ -380,8 +388,12 @@ void CloudsVisualSystemGesturePaint::selfDrawDebug(){
 }
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemGesturePaint::selfDrawBackground(){
-
-
+    
+    if(!watersrc.isAllocated()){
+        ofLogError("CloudsVisualSystemGesturePaint::selfDrawBackground") << "texture not allocated";
+        return;
+    }
+    
 	glDisable(GL_DEPTH_TEST);
 	ofEnableAlphaBlending();
 	paperImage.draw(paperRect);
@@ -401,13 +413,13 @@ void CloudsVisualSystemGesturePaint::selfDrawBackground(){
 		ofNoFill();
 		ofSetColor(ofColor::black);
 		ofRect(palettePosition.x,palettePosition.y,5,5);
-
+        
 		ofPopStyle();
 	}
 	if(showWaterDebug){
 		watersrc.getTextureReference().draw(ofGetWidth()-watersrc.getWidth(),0);
 	}
-
+    
 }
 
 // this is called when your system is no longer drawing.
@@ -433,9 +445,7 @@ void CloudsVisualSystemGesturePaint::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
 
-void CloudsVisualSystemGesturePaint::selfMouseDragged(ofMouseEventArgs& data){
-	
-}
+
 
 ofVec2f ofHermiteInterpolate(ofVec2f y0, ofVec2f y1, ofVec2f y2, ofVec2f y3, float pct, float tension, float bias){
 	ofVec2f m0,m1;
@@ -454,53 +464,47 @@ ofVec2f ofHermiteInterpolate(ofVec2f y0, ofVec2f y1, ofVec2f y2, ofVec2f y3, flo
 	return(a0*y1 + a1*m0+a2*m1+a3*y2);
 }
 
-void CloudsVisualSystemGesturePaint::selfMouseMoved(ofMouseEventArgs& data){
-
-	mouseHistory.push_back(ofVec2f(data.x,data.y));
-	
+void CloudsVisualSystemGesturePaint::selfInteractionMoved(CloudsInteractionEventArgs& args){
+    
+    playerHistoryMap[args.playerId].push_back(ofVec2f(args.position.x,args.position.y));
+    
 	vector<ofVec2f> splineHandles;
 	//make a spline
-	if(mouseHistory.size() == 1){
+	if(playerHistoryMap[args.playerId].size() == 1){
 		return; //draw next time
 	}
-	if(mouseHistory.size() == 2){
-		splineHandles.push_back(mouseHistory[0]);
-		splineHandles.push_back(mouseHistory[0]);
-		splineHandles.push_back(mouseHistory[1]);
-		splineHandles.push_back(mouseHistory[1]);
+	if(playerHistoryMap[args.playerId].size() == 2){
+		splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+		splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+		splineHandles.push_back(playerHistoryMap[args.playerId][1]);
+		splineHandles.push_back(playerHistoryMap[args.playerId][1]);
 	}
-	else if(mouseHistory.size() == 3){
-		splineHandles.push_back(mouseHistory[0]);
-		splineHandles.push_back(mouseHistory[0]);
-		splineHandles.push_back(mouseHistory[1]);
-		splineHandles.push_back(mouseHistory[2]);
+	else if(playerHistoryMap[args.playerId].size() == 3){
+		splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+		splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+		splineHandles.push_back(playerHistoryMap[args.playerId][1]);
+		splineHandles.push_back(playerHistoryMap[args.playerId][2]);
 	}
 	else{
-		for(int i = mouseHistory.size()-4; i < mouseHistory.size(); i++){
-			splineHandles.push_back(mouseHistory[i]);
+		for(int i = playerHistoryMap[args.playerId].size()-4; i < playerHistoryMap[args.playerId].size(); i++){
+			splineHandles.push_back(playerHistoryMap[args.playerId][i]);
 		}
 	}
 	
 	float stepsize = ofMap(brushSize, 2, 200, .005, .1, true);
 	
 	for(float a = 0; a < 1.; a+=stepsize){
-		depositPoints.push_back(ofHermiteInterpolate(splineHandles[0],
-													 splineHandles[1],
-													 splineHandles[2],
-													 splineHandles[3], a, 0, 0));
+		playerDepositPoints[args.playerId].push_back(ofHermiteInterpolate(splineHandles[0],
+                                                                          splineHandles[1],
+                                                                          splineHandles[2],
+                                                                          splineHandles[3], a, 0, 0));
 	}
-	
-	if(mouseHistory.size() > 4){
-		mouseHistory.erase(mouseHistory.begin());
+    
+	if(playerHistoryMap[args.playerId].size() > 4){
+		playerHistoryMap.erase(playerHistoryMap.begin());
 	}
-	
-	
 }
+void CloudsVisualSystemGesturePaint:: selfInteractionStarted(CloudsInteractionEventArgs& args){}
+void CloudsVisualSystemGesturePaint::selfInteractionDragged(CloudsInteractionEventArgs& args){}
+void CloudsVisualSystemGesturePaint:: selfInteractionEnded(CloudsInteractionEventArgs& args){}
 
-void CloudsVisualSystemGesturePaint::selfMousePressed(ofMouseEventArgs& data){
-	
-}
-
-void CloudsVisualSystemGesturePaint::selfMouseReleased(ofMouseEventArgs& data){
-	
-}

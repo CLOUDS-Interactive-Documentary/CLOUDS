@@ -298,13 +298,6 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     bUseColors  = false;
     bUseTexture = true;
     
-//    bShouldShuffle = false;
-//    bShouldSortHue = false;
-//    bShouldSortBri = false;
-//    bShouldReorder = false;
-//    bShouldSortTarget = false;
-//    bShouldSortTargetBri = false;
-    
     bCurrentlyAnimating = false;
     bOneCycleComplete = false;
     bIsFirstTime = false;
@@ -327,44 +320,43 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     targetImagesDir.sort();
     selectedSrcImageIdx = 0;
     selectedTargetImageIdx = 0;
-    currentTargetIndex = 0;
     
     screenRect = ofRectangle(0, 0, ofGetWidth(), ofGetHeight());
     bShouldGenerate = true;
 
 }
 
-void CloudsVisualSystemPhotoGlitch::clearSource()
-{
-    //TODO: Put this in the right place.
-    currentTargetIndex = 0;
-    if (cells != NULL) {
-        delete [] cells;
-        cells = NULL;
-    }
-    
-    if (verts != NULL) {
-        delete [] verts;
-        verts = NULL;
-    }
-    
-    if (texCoords != NULL) {
-        delete [] texCoords;
-        texCoords = NULL;
-    }
-    
-    if (colors != NULL) {
-        delete [] colors;
-        colors = NULL;
-    }
-    
-    if (indices != NULL) {
-        delete [] indices;
-        indices = NULL;
-    }
-    
-    tex.clear();
-}
+//void CloudsVisualSystemPhotoGlitch::clearSource()
+//{
+//    //TODO: Put this in the right place.
+//    
+//    if (cells != NULL) {
+//        delete [] cells;
+//        cells = NULL;
+//    }
+//    
+//    if (verts != NULL) {
+//        delete [] verts;
+//        verts = NULL;
+//    }
+//    
+//    if (texCoords != NULL) {
+//        delete [] texCoords;
+//        texCoords = NULL;
+//    }
+//    
+//    if (colors != NULL) {
+//        delete [] colors;
+//        colors = NULL;
+//    }
+//    
+//    if (indices != NULL) {
+//        delete [] indices;
+//        indices = NULL;
+//    }
+//    
+////    tex.clear();
+//}
 
 void CloudsVisualSystemPhotoGlitch::generate(PhotoGlitch& pg,int imgIndex, bool isSource){
     

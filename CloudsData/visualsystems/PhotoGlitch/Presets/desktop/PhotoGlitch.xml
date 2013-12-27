@@ -8,22 +8,22 @@
 <Widget>
     <Kind>44</Kind>
     <Name>DELAY B/W TWEENS</Name>
-    <Value>1</Value>
+    <Value>2</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>NUM COLS</Name>
-    <Value>260</Value>
+    <Value>295</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>NUM ROWS</Name>
-    <Value>260</Value>
+    <Value>303</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>USE COLORS</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW BACKGROUND</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -48,7 +48,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>TWEEN DELAY</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -57,8 +57,8 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>ENABLE </Name>
-    <Value>0</Value>
+    <Name>ANIMATE SOURCE</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -78,6 +78,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>SOURCE REORDER</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LOOP BACK TO SOURCE</Name>
     <Value>1</Value>
 </Widget>
 <Widget>

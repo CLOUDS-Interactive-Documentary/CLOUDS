@@ -30,6 +30,9 @@ class CloudsSecondaryDisplayController {
     
     void saveGuiSettings();
 	void toggleGuis();
+    
+    void drawNextLayout();
+    void drawPrevLayout();
 	
 	ofxUISuperCanvas *SDGui;
     void draw();
@@ -59,4 +62,8 @@ class CloudsSecondaryDisplayController {
 	ofxOscReceiver receiver;
 
 	ofFbo displayTarget;
+    
+    int layoutID;
+    
+    string displayMode;
 };

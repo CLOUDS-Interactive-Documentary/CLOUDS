@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Basic//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd">
+<svg version="1.1" baseProfile="basic" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" width="1920px" height="1080px" viewBox="0 0 1920 1080" xml:space="preserve">
+<g id="Layer_1" display="none">
+	
+		<image display="inline" overflow="visible" width="1440" height="900" xlink:href="../../../references/HUD/CLOUDS_Name_rev1.jpg"  transform="matrix(1.3321 0 0 1.3321 0 -118.8848)">
+	</image>
+</g>
+<g id="Layer_2">
+	<rect x="50.38" y="818.836" fill="none" width="1824" height="150"/>
+	<path fill="none" d="M1496.659,989.596"/>
+	<path fill="none" d="M1571.947,989.596"/>
+	<path fill="none" d="M1496.659,989.596"/>
+	<rect x="48.969" y="817.441" fill="none" width="2.802" height="2.801"/>
+	<rect x="48.969" y="967.416" fill="none" width="2.802" height="2.801"/>
+	<rect x="1873.028" y="817.289" fill="none" width="2.802" height="2.803"/>
+	<rect x="1873.028" y="967.277" fill="none" width="2.802" height="2.801"/>
+	<line fill="none" x1="48" y1="818" x2="48" y2="969"/>
+	<line fill="none" x1="1872" y1="818" x2="1872" y2="969"/>
+	<line fill="none" x1="1875" y1="821" x2="50" y2="821"/>
+	<path fill="none" d="M1496.659,989.596"/>
+	<line fill="none" x1="50" y1="971" x2="1875" y2="971"/>
+	<path fill="none" d="M1571.947,989.596"/>
+	<rect x="48.969" y="817.441" fill="none" width="2.802" height="2.801"/>
+	<rect x="48.969" y="967.416" fill="none" width="2.802" height="2.801"/>
+	<line fill="none" x1="48" y1="818" x2="48" y2="969"/>
+	<rect x="87.836" y="836.797" fill="none" width="976.584" height="50.186"/>
+	<rect x="87.785" y="900.883" fill="none" width="370.383" height="38.965"/>
+	<rect x="100.346" y="908.727" fill="none" width="345.262" height="23.277"/>
+	<rect x="511.263" y="900.883" fill="none" width="370.382" height="38.965"/>
+	<rect x="523.823" y="908.727" fill="none" width="345.261" height="23.277"/>
+	<rect x="311.365" y="24.934" fill="none" width="1280" height="720"/>
+	<rect x="472.673" y="908.727" fill="none" width="23.276" height="23.277"/>
+</g>
+</svg>

@@ -8,6 +8,8 @@ void testApp::setup(){
 	ofEnableAlphaBlending();
 	
 	secondaryDisplay.setup();
+    
+    layoutID = 0;
 
 }
 
@@ -20,8 +22,15 @@ void testApp::update(){
 void testApp::draw(){
 	secondaryDisplay.draw();
 }
+
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
+    if (key == OF_KEY_RIGHT){
+        secondaryDisplay.drawNextLayout();
+    }
+    else if(key == OF_KEY_LEFT){
+        secondaryDisplay.drawPrevLayout();
+    }
 
 }
 
