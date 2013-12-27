@@ -1216,13 +1216,15 @@ void CloudsVisualSystemTwitter::selfDrawBackground()
         ofPopStyle();
     }
     
-    ofxBillboardBeginSphericalCheat(ofVec3f(0,0,0));
     ofPushStyle();
-    ofScale(0.01,-0.01,0.01);
-    ofSetColor(textColor);
-    font.drawString(getDateAsString(dateIndex[currentDateIndex]),0,0);
+    ofxBillboardBeginSphericalCheat(ofVec3f(100,100,0));
+//    ofScale(0.01,-0.01,0.01);
+    ofSetColor(128,255);
+    ofTranslate(100, 100,0);
+    tweetFont.drawString("TESTING", 0, 0);
     ofxBillboardEnd();
     ofPopStyle();
+
     
 }
 
