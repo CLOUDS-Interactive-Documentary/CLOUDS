@@ -38,9 +38,9 @@ void CloudsVisualSystemVision::selfSetDefaults(){
     drawPlayer = true;
     drawThresholded =false;
     
-    videoAlpha = 128;
-    windowAlpha = 10;
-    thresholdAlpha = 10;
+    videoAlpha = 255;
+    windowAlpha = 0;
+    thresholdAlpha = 0;
     
     bContourTracking = false;
     bOpticalFlow = false;
@@ -518,7 +518,7 @@ void CloudsVisualSystemVision::selfUpdate(){
 void CloudsVisualSystemVision::selfDrawBackground()
 {
     ofPushStyle();
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
+//  
 
     if(drawPlayer){
 		if(player->isLoaded() && player->isPlaying()){
@@ -564,14 +564,15 @@ void CloudsVisualSystemVision::selfDrawBackground()
         
     }
     
-    if(bOpticalFlow){   
+    if(bOpticalFlow){
+
         ofTexture& tex = player->getTextureReference();
 		if(tex.isAllocated()){
 			if(bDrawFlowWindow){
 				
 				ofPushMatrix();
 				ofPushStyle();
-				
+                ofEnableBlendMode(OF_BLENDMODE_ADD);				
 				ofSetColor(windowAlpha);
 				ofScale(getCanvasWidth()/player->getWidth(),
 						getCanvasHeight()/player->getHeight());
