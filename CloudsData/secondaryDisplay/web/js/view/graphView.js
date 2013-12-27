@@ -11,7 +11,7 @@ GraphView = {
 	time_unit: 1000,
 
 	showBB: false,
-	padding: 0,
+	padding: 10,
 	currentRect: null,
 	centeredRect:null,
 	min_dist: 160,
@@ -232,6 +232,27 @@ GraphView = {
 			
 		}
 		return {x: targetX, y:targetY, w:targetWidth, h:targetHeight};
+	},
+
+	constrainBB: function(bb, targetBox){
+		var targetX, targetY, targetWidth, targetHeight;
+
+		//center bbx
+		if(bb.w > bb.h){ 
+			targetWidth = bb.w + this.padding*2;
+			targetHeight = targetWidth *targetBox.h/targetBox.w;
+			targetX = bb.x - this.padding;
+			targetY = bb.y - (targetHeight - bb.h)/2;
+			
+		}
+		else{
+			targetHeight = bb.h + this.padding*2;//only padding below
+			targetWidth = targetHeight * targetBox.w/targetBox.h;
+			targetY = bb.y - this.padding;//only padding below
+			targetX = bb.x - (targetWidth - bb.w)/2;
+			
+		}
+		return {x: targetX, y:targetY, w:targetWidth, h:targetHeight};
 	},	
 
 	zoomAndPanTo: function(bb){	
@@ -239,22 +260,26 @@ GraphView = {
 			this.currentRect.destroy();
 			this.centeredRect.destroy();
 		}
+
+		// var cb = this.centerBB(bb);
+		var upperThirds = {x:0, y:0, w:this.width, h:this.height};///3*2
+		var cb = this.constrainBB(bb, upperThirds);
 		
-		var cb = this.centerBB(bb);
 		if(this.showBB){
 			//draw bounding boxes
 			this.currentRect = new Rectangle(this.scene, bb.x, bb.y, 25, bb.w, bb.h, 0x00FF00);
 			this.centeredRect = new Rectangle(this.scene, cb.x, cb.y, 25, cb.w, cb.h, 0xff0000);
 		}
-		
-		
 
 		var pos = this.camera.position.clone();
 
-		var bbCenterX = bb.x + bb.w/2;
-		var bbCenterY = bb.y + bb.h/2;
+		// var cbCenterX = cb.x + cb.w/2;		
+		// var cbCenterY = cb.y + cb.h/2;
+		var cbCenterX = GraphView.currNodeView.x;
+		var cbCenterY = GraphView.currNodeView.y;
+
 		var targetZ = cb.h/2 / Math.tan(this.viewAngle/2);
-		var target = new THREE.Vector3( bbCenterX, bbCenterY, targetZ );
+		var target = new THREE.Vector3( cbCenterX, cbCenterY, targetZ );
 		
 		var tween = new TWEEN.Tween(pos).to(target, this.time_unit);
 		tween.easing(TWEEN.Easing.Quadratic.InOut);
@@ -267,9 +292,6 @@ GraphView = {
 			
 		});
 		tween.start();
-		
-		
-		    
 				
 	},
 	addPath: function(callback){

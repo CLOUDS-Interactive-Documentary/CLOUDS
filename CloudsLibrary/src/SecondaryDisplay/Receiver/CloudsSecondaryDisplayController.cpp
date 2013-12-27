@@ -49,6 +49,7 @@ void CloudsSecondaryDisplayController::setup(){
 	displayTarget.allocate(1920, 1080, GL_RGB);
 }
 
+/*LOADING SVG LAYOUT files from Sarah*/
 void CloudsSecondaryDisplayController::loadSVGs(){
 	ofDirectory svgs(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/");
 	svgs.allowExt("svg");
@@ -108,6 +109,7 @@ void CloudsSecondaryDisplayController::update(){
 	}
 }
 
+/* WORK MOSTLY IN HERE - JK */
 void CloudsSecondaryDisplayController::draw(){
 	
 	displayTarget.begin();

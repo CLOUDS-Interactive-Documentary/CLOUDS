@@ -65,36 +65,51 @@
   			<source type="video/mov">
   			Your browser does not support the video tag.
 	</video>
-		<div id="info">
-			<div id="project_info"><!--this id shouldn't change: we're using it to fade the projectex out-->
-				<div id="projectex_info">
-					<div id="projectex_title" class='cl_title'></div>
-					<br>
-					<div id="projectex_artist" class='cl_subtitle'></div>
-				</div>
-				<div id="projectex_desc" class="cl_text"></div>
-			</div>
-			<div id='clip_info'><!--this id shouldn't change: we're using it to fade the clip info out-->
-				<div class="column1">
-					<div id="first"></div>
-					<div id="last"></div>
+	<div id="graph"></div>
+	<div id="topic"></div>
+	<div id="overlay">	
+		<div id="question"  >How you 'sketch' with code?</div>
+		<div id='clip_info'  class="lower_third">			
+			<div class="column1">
+					<div id="first">Kyle</div>
+					<div id="last">Chayka</div>
 				</div>
 				<div class="column2">
 					<div class="column2_1">
-						<div id="title" ></div>
-						<div id="location" ></div>
+						<div id="title" class="box">Writer + Curator</div>
+						<div id="location" class="box" >Brooklyn, NY</div>
 					</div>
 					<div class="column2_2">
-						<div id="byline" class='cl_text'></div>
-						<div id="question" class='cl_text'></div>
+						<div id="byline">Freelance writer who covers digital media art, internet culture, and commerce for
+publications including the new yorker and the new republic. He has also curated exhibitions at Garis & Hahn gallery and moving image art fair in New York and London.</div>
 					</div>
 				</div>
-				
-			</div>
+			<img src="images/circle.png" class="border-top-left"/>
+			<img src="images/circle.png" class="border-top-right"/>
+			<img src="images/circle.png" class="border-bottom-right"/>
+			<img src="images/circle.png" class="border-bottom-left"/>
 		</div>
+		<div id="project_info" hidden class="lower_third" >		
+			<div class="column1">
+				<div id="projectex_title">People Staring at Computers</div>
+			</div>
+			<div class="column2">
+				<div class="column2_1">
+					<div id="projectex_artist" class="box">Kyle McDonald</div>
+				</div>
+				<div class="column2_2">
+					<div id="projectex_desc">A photographic intervention. Custom app installed around NYC computer stores, taking a picture each minute and uploading it. Photos exhibited on site, full screen, on every computer.</div>
+				</div>	
+			</div>
+			<img src="images/circle.png" class="border-top-left"/>
+			<img src="images/circle.png" class="border-top-right"/>
+			<img src="images/circle.png" class="border-bottom-right"/>
+			<img src="images/circle.png" class="border-bottom-left"/>
+		</div>
+
+	</div>	
 	
-	<div id="graph"></div>
-	<div id="topic"></div>
+	
 
 	<script src="fonts/blender_bold.typeface.js"></script>   
     <script src="fonts/blender_book.typeface.js"></script>   
