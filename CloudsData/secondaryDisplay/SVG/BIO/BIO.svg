@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Basic//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd">
-<svg version="1.1" baseProfile="basic" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-	 y="0px" width="1920px" height="1080px" viewBox="0 0 1920 1080" xml:space="preserve">
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="1920px" height="1080px" viewBox="0 0 1920 1080" enable-background="new 0 0 1920 1080" xml:space="preserve">
 <g id="BOX_x5F_INFO">
 	<rect x="48.403" y="880.528" fill="none" width="1824" height="150"/>
 </g>
@@ -17,27 +17,25 @@
 	<path fill="none" d="M1494.683,1051.289"/>
 	<line fill="none" x1="48.312" y1="1032" x2="1873.312" y2="1032"/>
 </g>
-<g id="TEXTBOX_x5F_FIRSTNAME">
+<g id="TEXTBOX_x5F_FIRSTNAME" opacity="0">
 	<rect x="83.123" y="904.264" fill="none" width="544.069" height="40.965"/>
 </g>
-<g id="TEXTBOX_x5F_LASTNAME">
+<g id="TEXTBOX_x5F_LASTNAME" opacity="0">
 	<rect x="83.123" y="956.75" fill="none" width="544.069" height="53.767"/>
 </g>
 <g id="BOX_x5F_TITLE">
-	<rect x="657.685" y="908.92" fill="none" width="362.883" height="38.965"/>
+	<rect x="657.685" y="908.92" fill="none" width="362.884" height="38.965"/>
 </g>
-<g id="TEXTBOX_x5F_TITLE">
-	<path fill="none" d="M1569.971,1051.289"/>
-	<rect x="668.382" y="918.462" fill="none" width="340.299" height="19.881"/>
-</g>
+<path fill="none" d="M1569.971,1051.289"/>
+<rect x="668.382" y="918.462" opacity="0" fill="none" width="340.299" height="19.881"/>
 <g id="BOX_x5F_LOC">
-	<rect x="657.685" y="962.848" fill="none" width="266.81" height="40.36"/>
+	<rect x="657.685" y="962.848" fill="none" width="266.811" height="40.36"/>
 </g>
-<g id="TEXTBOX_x5F_LOC">
+<g id="TEXTBOX_x5F_LOC" opacity="0">
 	<rect x="668.382" y="973.087" fill="none" width="246.201" height="19.881"/>
 </g>
-<g id="TEXTBOX_x5F_BIO">
-	<rect x="1098.91" y="907.498" fill="none" width="748.881" height="96.774"/>
+<g id="TEXTBOX_x5F_BIO" opacity="0">
+	<rect x="1098.91" y="907.498" fill="none" width="748.881" height="96.773"/>
 </g>
 <g id="BOX_x5F_QUESTION_x5F_DETAILS">
 	<rect x="47.039" y="45.183" fill="none" width="2.802" height="2.802"/>
@@ -49,7 +47,7 @@
 	<line fill="none" x1="48.312" y1="207" x2="684.312" y2="207"/>
 	<line fill="none" x1="682.312" y1="206" x2="682.312" y2="46"/>
 </g>
-<g id="TEXTBOX_x5F_QUESTION">
+<g id="TEXTBOX_x5F_QUESTION" opacity="0">
 	<rect x="83.104" y="64.842" fill="none" width="565.9" height="115.841"/>
 </g>
 </svg>

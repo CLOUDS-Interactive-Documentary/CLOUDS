@@ -106,7 +106,7 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId){
 		string hexColor = xml.getAttribute("rect", (isLines ? "stroke" : "fill"), "#FFFFFF", r);
 		hexColor.erase(hexColor.begin());//kill the #
 		ofColor color = ofColor::fromHex( ofHexToInt(hexColor));
-		if(xml.attributeExists("line","opacity",r)){
+		if(xml.attributeExists("rect","opacity",r)){
 			color.a = xml.getAttribute("rect", "opacity", 0., r)*255.;
 		}
 

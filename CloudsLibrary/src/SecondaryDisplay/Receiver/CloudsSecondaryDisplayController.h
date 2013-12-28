@@ -65,7 +65,7 @@ class CloudsSecondaryDisplayController {
 
 	ofFbo displayTarget;
     
-    int layoutID;
+    int pFontSize, h3FontSize;
     
     string displayMode, lastQuestion;
 };

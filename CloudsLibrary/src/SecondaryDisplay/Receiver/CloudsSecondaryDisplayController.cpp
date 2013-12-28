@@ -13,7 +13,7 @@ CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
 	hasSpeaker = false;
 	playingMovie = false;
     
-    layoutID = 0;
+//    layoutID = 0;
     displayMode = "BIO";
 }
 
@@ -53,19 +53,21 @@ void CloudsSecondaryDisplayController::setup(){
 	exampleType.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", 40);
     exampleType.setLineLength(544);
     ////last name
-    h1.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.height);
+    h1.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_LASTNAME")->bounds.height);
     h1.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.width);
     ////first name
     h2.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.height);
     h2.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.width);
     ////question
-    h3.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION")->bounds.height);
+    h3FontSize = 38;
+    h3.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", h3FontSize);
     h3.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION")->bounds.width);
     ////location / creator name
-    h4.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("BOX_x5F_LOC")->bounds.height);
+    h4.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_LOC")->bounds.height);
     h4.setLineLength(bioLayout.getMeshByID("BOX_x5F_LOC")->bounds.width);
     ////byline / description
-    p.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_BIO")->bounds.height);
+    pFontSize = 21;
+    p.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", pFontSize);
     p.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_BIO")->bounds.width);
  
 	displayTarget.allocate(1920, 1080, GL_RGB);
@@ -143,7 +145,7 @@ void CloudsSecondaryDisplayController::update(){
 	}
 }
 
-void CloudsSecondaryDisplayController::drawNextLayout(){
+/*void CloudsSecondaryDisplayController::drawNextLayout(){
     layoutID++;
     if(layoutID>testAllLayout.size()-1)
         layoutID = 0;
@@ -156,15 +158,17 @@ void CloudsSecondaryDisplayController::drawPrevLayout(){
     if(layoutID<0)
         layoutID =testAllLayout.size()-1;
     cout << "Draw Display: "<< testAllLayout[layoutID].sourceFileName <<" #" << layoutID << " of " << testAllLayout.size()-1 << endl;
-}
+}*/
 
 /* WORK MOSTLY IN HERE - JK */
 void CloudsSecondaryDisplayController::draw(){
+    ofEnableAlphaBlending();
 	
 	displayTarget.begin();
 	
 	clusterMap.selfPostDraw();
 
+    SVGMesh* t;
     
     if(displayMode == "BIO"){
         
@@ -172,9 +176,9 @@ void CloudsSecondaryDisplayController::draw(){
         bioLayout.draw();
         
         ////question
-        SVGMesh* t = bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION");
+        t = bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION");
         if(t){
-            h3.drawString(lastQuestion, t->bounds.x, t->bounds.y + t->bounds.height);
+            h3.drawString(lastQuestion, t->bounds.x, t->bounds.y + h3FontSize);
         }
         
         string firstName, lastName;
@@ -194,14 +198,14 @@ void CloudsSecondaryDisplayController::draw(){
             h2.drawString(firstName, t->bounds.x, t->bounds.y + t->bounds.height);
         }
         ////last name
-        t = bioLayout.getMeshByID("BOX_x5F_NAME");
+        t = bioLayout.getMeshByID("TEXTBOX_x5F_LASTNAME");
         if(t){
             h1.drawString(lastName, t->bounds.x, t->bounds.y + t->bounds.height);
         }
         
         
         ////location
-        t = bioLayout.getMeshByID("BOX_x5F_LOC");
+        t = bioLayout.getMeshByID("TEXTBOX_x5F_LOC");
         if(t){
             h4.drawString(currentSpeaker.location1, t->bounds.x, t->bounds.y + t->bounds.height);
         }
@@ -212,19 +216,44 @@ void CloudsSecondaryDisplayController::draw(){
             h4.drawString(currentSpeaker.title, t->bounds.x, t->bounds.y + t->bounds.height);
         }
         
-        ////byline
+        ////byline / bio / description
         t = bioLayout.getMeshByID("TEXTBOX_x5F_BIO");
         if(t)
-            p.drawString(currentSpeaker.byline1, t->bounds.x, t->bounds.y + t->bounds.height);
+            p.drawString(currentSpeaker.byline1, t->bounds.x, t->bounds.y + pFontSize);
         
     }else if(displayMode == "PROJECT"){
         //DISPLAY PROJECT LAYOUT
         projectLayout.draw();
+        
+        //video
         if(playingMovie){
-            archivePlayer.draw(ofGetWidth()/2  - archivePlayer.getWidth()/2,
-                               ofGetHeight()/2 - archivePlayer.getHeight()/2);
+            t = projectLayout.getMeshByID("BOX_x5F_VIDEO");
+            if(t){
+                //scale and preserve the aspect ratio
+                ofRectangle playerRect(0,0,archivePlayer.getWidth(), archivePlayer.getHeight());
+                playerRect.scaleTo(t->bounds);
+//                archivePlayer.draw(t->bounds.x, t->bounds.y, t->bounds.width, t->bounds.height);
+                archivePlayer.draw(playerRect);
+            }
             playingMovie = archivePlayer.isPlaying();
         }
+        
+        ////title
+        t = projectLayout.getMeshByID("TEXTBOX_x5F_TITLE");
+        if(t)
+            h2.drawString(currentExample.title, t->bounds.x, t->bounds.y + t->bounds.height);
+        
+        ////name
+        t = projectLayout.getMeshByID("TEXTBOX_x5F_ARTIST");
+        if(t)
+            h4.drawString(currentExample.creatorName, t->bounds.x, t->bounds.y + t->bounds.height);
+        
+        ////description
+        t = projectLayout.getMeshByID("TEXTBOX_x5F_DESC");
+        if(t)
+            p.drawString(currentExample.description, t->bounds.x, t->bounds.y + pFontSize);
+        
+        
     }else if(displayMode == "SYSTEM"){
         systemLayout.draw();
     }
