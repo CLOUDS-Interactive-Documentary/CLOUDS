@@ -581,7 +581,7 @@
 		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&quot;simulation, blah&quot;" />
-		<pattr name = "start_question" value = "&quot;Aaron_exciting_time:What is new and innovative in new media?&quot;" />
+		<pattr name = "start_question" value = "" />
 		<pattr name = "amp1" value = "1." />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
@@ -1312,7 +1312,7 @@
 		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
-		<pattr name = "start_question" value = "&quot;Intro_CodingSketching:How do you sketch with code?&quot;" />
+		<pattr name = "start_question" value = "&quot;sketching:How do you sketch with code?&quot;" />
 		<pattr name = "amp1" value = "0.923077" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
@@ -1398,7 +1398,7 @@
 		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "&quot;Intro_BuildingWorlds:How do you create a digital universe?&quot;" />
+		<pattr name = "start_question" value = "&quot;cosmogeny:How do you create a digital universe?&quot;" />
 		<pattr name = "amp1" value = "1." />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
@@ -1742,7 +1742,7 @@
 		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
-		<pattr name = "start_question" value = "&quot;Intro_Learning:What does it feel like to program?&quot;" />
+		<pattr name = "start_question" value = "&quot;programming:What does it feel like to program?&quot;" />
 		<pattr name = "amp1" value = "0.923077" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
@@ -1957,7 +1957,7 @@
 		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
-		<pattr name = "start_question" value = "&quot;Intro_Computers:Do computers make us smarter?&quot;" />
+		<pattr name = "start_question" value = "&quot;thinking:Do computers make us smarter?&quot;" />
 		<pattr name = "amp1" value = "0.923077" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
@@ -2172,7 +2172,7 @@
 		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "&quot;Intro_Sharing:What is open source all about?&quot;" />
+		<pattr name = "start_question" value = "&quot;open source:What is open source all about?&quot;" />
 		<pattr name = "amp1" value = "0.923077" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
@@ -2516,7 +2516,7 @@
 		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
-		<pattr name = "start_question" value = "&quot;Intro_CodingSketching:How do you sketch with code?&quot;" />
+		<pattr name = "start_question" value = "&quot;sketching:How do you sketch with code?&quot;" />
 		<pattr name = "amp1" value = "0.923077" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
@@ -2559,7 +2559,7 @@
 		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
-		<pattr name = "start_question" value = "&quot;Intro_Toolmaker:what's the link between invention and art?&quot;" />
+		<pattr name = "start_question" value = "&quot;toolmakers:what's the link between invention and art?&quot;" />
 		<pattr name = "amp1" value = "0.923077" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
@@ -2602,7 +2602,7 @@
 		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
-		<pattr name = "start_question" value = "&quot;Intro_VirtualReality:Have we hacked reality?&quot;" />
+		<pattr name = "start_question" value = "&quot;real and virtual:Have we hacked reality?&quot;" />
 		<pattr name = "amp1" value = "0.923077" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
