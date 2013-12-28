@@ -82,7 +82,7 @@ void CloudsVisualSystemVision::selfSetup()
 
     //	app
     movieIndex = 0;
-    
+    /*
     movieStrings.push_back("union_square_crop.mov");
     movieStrings.push_back("GreenPoint_bike_crop.mov");
    // movieStrings.push_back("indianTrafficCrop.mov");
@@ -120,7 +120,13 @@ void CloudsVisualSystemVision::selfSetup()
 	for(int i = 0; i < movieStrings.size(); i++){
 		
 	}
-	
+    */
+
+    videosDir.listDir(getVisualSystemDataPath(true) + "videos" );
+    videosDir.sort();
+    for (int i = 0; i < videosDir.size(); i++) {
+        movieStrings.push_back(videosDir.getName(i));
+    }
     frameIsNew = false;
     loadCurrentMovie();
     
@@ -129,17 +135,20 @@ void CloudsVisualSystemVision::selfSetup()
 
 void CloudsVisualSystemVision::selfSetupGui()
 {
-    opticalFlowGui = new ofxUISuperCanvas("OPTICAL FLOW", gui);
+    opticalFlowGui = new ofxUISuperCanvas("OP FLOW", gui);
     opticalFlowGui->copyCanvasStyle(gui);
     opticalFlowGui->copyCanvasProperties(gui);
+    opticalFlowGui->setName("OP FLOW");
  
-    opticalFlowGui->addLabel("VISUAL PARAMS");
+    ofxUIToggle *toggle = opticalFlowGui->addToggle("ENABLE",&bOpticalFlow);
+
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    opticalFlowGui->resetPlacer();
+    opticalFlowGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    opticalFlowGui->addWidgetToHeader(toggle);
     
     opticalFlowGui->addSpacer();
-    ofxUIButton *bDrawFlowWindowbtn = opticalFlowGui->addToggle("DRAW FLOW WINDOW", &bDrawFlowWindow);
-    opticalFlowGui->addSlider("FLOW WINDOW TINT", 0, 255, &windowAlpha);
-    
-    opticalFlowGui->addSpacer();
+    opticalFlowGui->addSlider("WINDOW TINT", 0, 255, &windowAlpha);
     opticalFlowGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     opticalFlowGui->addSlider("WINDOW WIDTH", .0, 1., &windowWidth);
     opticalFlowGui->addSlider("WINDOW HEIGHT", 0., 1., &windowHeight);
@@ -161,9 +170,17 @@ void CloudsVisualSystemVision::selfSetupGui()
     guimap[opticalFlowGui->getName()] = opticalFlowGui;
     
     
-    contourTrackingGui = new ofxUISuperCanvas("CONTOUR TRACKING",gui);
+    contourTrackingGui = new ofxUISuperCanvas("CONTOUR",gui);
     contourTrackingGui->copyCanvasStyle(gui);
     contourTrackingGui->copyCanvasProperties(gui);
+    contourTrackingGui->setName("CONTOUR"); 
+    ofxUIToggle *ContourBtn = contourTrackingGui->addToggle("ENABLE",&bContourTracking);
+    
+    ContourBtn->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    contourTrackingGui->resetPlacer();
+    contourTrackingGui->addWidgetDown(ContourBtn, OFX_UI_ALIGN_RIGHT, true);
+    contourTrackingGui->addWidgetToHeader(ContourBtn);
+    
     contourTrackingGui->addSpacer();
     contourTrackingGui->addLabel("VISUAL PARAMS");
     contourTrackingGui->addSpacer();
@@ -201,13 +218,13 @@ void CloudsVisualSystemVision::selfSetupGui()
     
 }
 
-void CloudsVisualSystemVision::clearAccumulation(){
-    for(int j=0; j<accumulation.height; j++){
-        for( int i=0; i<accumulation.width; i++){
-            accumulation.setColor(i, j, ofFloatColor(0));
-        }
-    }
-}
+//void CloudsVisualSystemVision::clearAccumulation(){
+//    for(int j=0; j<accumulation.height; j++){
+//        for( int i=0; i<accumulation.width; i++){
+//            accumulation.setColor(i, j, ofFloatColor(0));
+//        }
+//    }
+//}
 
 void CloudsVisualSystemVision::updateImagesForNewVideo(){
     imitate(previousHeatMap, player->getPixelsRef());
@@ -394,21 +411,21 @@ void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
     //LOADING CURRENT ENABLED MODES
 //    ofxUIToggle *opticalFlowBtn = (ofxUIToggle*)rdrGui->getWidget("OPTICAL FLOW");
 //    bOpticalFlow = opticalFlowBtn->getValue();
-    if(bOpticalFlow){
-        setMode(OpticalFlow);
-    }
+//    if(bOpticalFlow){
+//        setMode(OpticalFlow);
+//    }
     
 //    ofxUIToggle *ContourBtn = (ofxUIToggle*)rdrGui->getWidget("CONTOUR TRACKING");
 //    bContourTracking = ContourBtn->getValue();
-    if(bContourTracking){
-        setMode(ContourTracking);   
-    }
+//    if(bContourTracking){
+//        setMode(ContourTracking);   
+//    }
     
 //    ofxUIToggle *AbsDiffBtn = (ofxUIToggle*)rdrGui->getWidget("ABS DIFF HEAT MAP");
 //    bDrawHeatMap = AbsDiffBtn->getValue();
-    if(bDrawHeatMap){
-        setMode(HeatMap);
-    }
+//    if(bDrawHeatMap){
+//        setMode(HeatMap);
+//    }
     
 //    ofxUIToggle *ThresholBtn = (ofxUIToggle*)rdrGui->getWidget("DRAW THRESHOLDED");
 //    drawThresholded = ThresholBtn->getValue();
@@ -426,7 +443,6 @@ void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
 			
 			for(int i = 0; i < movieStrings.size(); i++){
 				if (movieStrings[i] == movieName) {
-					cout << "HERE " << movieStrings[i] << endl;
 					loadMovieAtIndex(i);
 					break;
 				}
@@ -461,8 +477,7 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
 {
     rdrGui->addSpacer();
     rdrGui->addLabel("PLAY MODES");
-    ofxUIToggle *opticalFlowBtn = rdrGui->addToggle("OPTICAL FLOW",&bOpticalFlow);
-    ofxUIToggle *ContourBtn = rdrGui->addToggle("CONTOUR TRACKING",&bContourTracking);
+    
     ofxUIToggle *AbsDiffBtn = rdrGui->addToggle("ABS DIFF HEAT MAP",&bDrawHeatMap);
     ofxUIToggle *ThresholBtn = rdrGui->addToggle("DRAW THRESHOLDED",&drawThresholded);
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
@@ -471,12 +486,11 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     ofxUIButton *clearthresholdbtn = rdrGui->addToggle("CLEAR DIFF", false);
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    rdrGui->addLabel("VIDEOS");
-    rdrGui->addRadio("VIDEO", movieStrings);
     rdrGui->addSlider("VIDEO TINT", 0, 255, &videoAlpha);
     rdrGui->addSlider("THRESHOLD TINT", 0, 255, &thresholdAlpha);
     rdrGui->addSlider("DIFF TINT", 0, 255, &diffAlpha);
     rdrGui->addSlider("FLOW WINDOW TINT", 0, 255, &windowAlpha);
+    rdrGui->addDropDownList("VIDEO", movieStrings);
     rdrGui->autoSizeToFitWidgets();
     ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
     
@@ -527,7 +541,6 @@ void CloudsVisualSystemVision::selfUpdate(){
 void CloudsVisualSystemVision::selfDrawBackground()
 {
     ofPushStyle();
-	
     if(drawPlayer){
 		if(player->isLoaded() && player->isPlaying()){
 			ofPushStyle();
@@ -546,6 +559,8 @@ void CloudsVisualSystemVision::selfDrawBackground()
     if(drawThresholded){
         if( thresholded.isAllocated() ){
 			ofPushStyle();
+            ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+            ofTranslate(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
 			ofSetColor(thresholdAlpha);        
 			thresholded.draw(0,0, ofGetWidth(), ofGetHeight());
 			ofPopStyle();
@@ -558,8 +573,9 @@ void CloudsVisualSystemVision::selfDrawBackground()
     if(bContourTracking){
 		
         ofPushMatrix();
-        ofScale(ofGetWidth()/player->getWidth(),
-				ofGetHeight()/player->getHeight());
+//        ofTranslate(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
+        ofScale(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
+
         if(bContours){
             contourFinder.draw();
         }
@@ -568,9 +584,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
             float b = followers[i].getLifeTime();
             followers[i].draw(lineWidth, bLifeTime, contourLifetimeColorRange, bDrawBoxes, bDrawLines, bNumbers, boxColor);
         }
-		
-        ofPopMatrix();
-        
+        ofPopMatrix();   
     }
     
     if(bOpticalFlow){
@@ -619,6 +633,8 @@ void CloudsVisualSystemVision::selfDrawBackground()
 */
         ofPushStyle();
         ofSetColor(128,diffAlpha);
+        ofPushMatrix();
+        ofTranslate(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
         diff.draw(0, 0,ofGetWidth(),ofGetHeight());
         
         float diffRed = diffMean[0];
@@ -634,6 +650,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
         ofRect(0,10, mapGreen, 10);
         ofSetColor(0, 0, 255);
         ofRect(0, 20,  mapBlue, 10);
+        ofPopMatrix();
         ofPopStyle();
 
     }
@@ -744,27 +761,27 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
         updateOpticalFlowParameters();
         cout<<"Updating Optical Flow parameters"<<endl;
     }
-    else if (name == "OPTICAL FLOW"){
-        setMode(OpticalFlow);
-    }
-    else if( name == "CONTOUR TRACKING" ){
-        setMode(ContourTracking);
+//    else if (name == "OPTICAL FLOW"){
+//        setMode(OpticalFlow);
+//    }
+//    else if( name == "CONTOUR TRACKING" ){
+//        setMode(ContourTracking);
 //        bContourTracking = t->getValue();
-    }
+//    }
 //    else if (name == "DRAW PLAYER"){
 //        drawPlayer = b->getValue();
 //    }
 //    else if( name == "DRAW THRESHOLDED"){
 //        drawThresholded = b->getValue();    
 //    }
-    else if( name == "ABS DIFF HEAT MAP"){
-        setMode(HeatMap);
+//    else if( name == "ABS DIFF HEAT MAP"){
+//        setMode(HeatMap);
 //        bDrawHeatMap = b->getValue();
-    }
-    else if( name == "CLEAR DIFF"){
-        b->setValue(false);
-        clearAccumulation();
-    }
+//    }
+//    else if( name == "CLEAR DIFF"){
+//        b->setValue(false);
+//        clearAccumulation();
+//    }
 //    else if(name == "FLOW WINDOW"){
 //        bDrawFlowWindow = b->getValue();
 //    }
@@ -793,8 +810,7 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     else if(name == "BOX B"){
         boxColor.setBrightness(boxBright);
     }
-    
-    if (kind == OFX_UI_WIDGET_TOGGLE){
+    if (e.widget->getParent()->getName()  == "VIDEO"){
         thresholded.clear();
         background.reset();
         updateImagesForNewVideo();
@@ -807,6 +823,8 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
             }
         }
     }
+    
+
     
 }
 
@@ -837,7 +855,7 @@ void  CloudsVisualSystemVision::loadMovieAtIndex(int index){
 
     player = ofPtr<ofxAVFVideoPlayer>(new ofxAVFVideoPlayer());
 
-    if(player->loadMovie(getVisualSystemDataPath(true) + movieStrings[ movieIndex ])){
+    if(player->loadMovie(getVisualSystemDataPath(true)+"/videos/" + movieStrings[ movieIndex ])){
         player->play();
     }
     else{
