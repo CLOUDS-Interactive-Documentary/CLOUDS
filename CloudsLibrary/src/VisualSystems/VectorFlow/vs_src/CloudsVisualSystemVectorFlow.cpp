@@ -63,8 +63,6 @@ void CloudsVisualSystemVectorFlow::selfSetup(){
     
     // sound
     synth.setOutputGen(buildSynth());
-    
-    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVectorFlow::audioRequested);
 }
 
 void CloudsVisualSystemVectorFlow::selfSetupGuis(){
@@ -311,6 +309,10 @@ void CloudsVisualSystemVectorFlow::selfExit(){
 
 void CloudsVisualSystemVectorFlow::selfBegin(){
 	regenerateFlow = true;
+    
+    
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVectorFlow::audioRequested);
+    soundTrigger.trigger();
 }
 
 void CloudsVisualSystemVectorFlow::selfPresetLoaded(string presetPath)
@@ -320,7 +322,7 @@ void CloudsVisualSystemVectorFlow::selfPresetLoaded(string presetPath)
 }
 
 void CloudsVisualSystemVectorFlow::selfEnd(){
-	
+    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVectorFlow::audioRequested);
 }
 
 void CloudsVisualSystemVectorFlow::selfKeyPressed(ofKeyEventArgs & args){
@@ -442,7 +444,7 @@ Generator CloudsVisualSystemVectorFlow::buildSynth()
     
     lpfCutoff = synth.addParameter("cutoff_freq", 50).displayName("Cutoff Freq").min(50).max(2000);
     
-    Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1) * 0.6;
+    Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(soundTrigger).loop(1) * 0.6;
 //    Generator noiseGen = LFNoise().setFreq(mouseX) * SineWave().freq(1);
     
     LPF12 filter = LPF12().cutoff(lpfCutoff.smoothed());
