@@ -260,6 +260,10 @@ void CloudsVisualSystem::setup(){
 	
 }
 
+bool CloudsVisualSystem::isSetup(){
+	return bIsSetup;
+}
+
 void CloudsVisualSystem::playSystem(){
 
 	if(!isPlaying){
