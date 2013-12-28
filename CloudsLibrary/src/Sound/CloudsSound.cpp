@@ -100,7 +100,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
 	//Happens at the very beginning of a sequence
 
     
-    int rigged = 1; // set to '1' for rigged orchestration (set below)
+    int rigged = 0; // set to '1' for rigged orchestration (set below)
     float clipdur = 0;
     float starttime = 0;
     float totalduration = args.act->getTimeline().getDurationInSeconds();
@@ -262,7 +262,7 @@ void CloudsSound::preRollRequested(CloudsPreRollEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsSound::actEnded(CloudsActEventArgs& args){
 	args.act->unregisterEvents(this);
-    flush_sched();
+    stopMusic();
 }
 
 //--------------------------------------------------------------------
