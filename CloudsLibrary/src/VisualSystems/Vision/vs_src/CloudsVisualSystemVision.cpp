@@ -194,9 +194,6 @@ void CloudsVisualSystemVision::selfSetupGui()
     contourTrackingGui->addSlider("BOX S", 0.0,1.0,&boxSat);
     contourTrackingGui->addSlider("BOX B", 0.0,1.0,&boxBright);
     contourTrackingGui->addSlider("BOX LINE WIDTH", 1, 10, &lineWidth);
-    contourTrackingGui->addLabel("BACKGROUND PARAM");
-    contourTrackingGui->addSlider("LEARNING TIME", 0,100,&learningTime);
-    contourTrackingGui->addSlider("THRESHOLD VALUE", 0,255  ,&thresholdValue);
     contourTrackingGui->addSlider("LIFETIME COLOUR RANGE", 0,255  ,&contourLifetimeColorRange);
     
     contourTrackingGui->addLabel("TRACKER PARAM");
@@ -214,8 +211,26 @@ void CloudsVisualSystemVision::selfSetupGui()
     ofAddListener(contourTrackingGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
 	
     guis.push_back(contourTrackingGui);
-    guimap[opticalFlowGui->getName()] = contourTrackingGui;
+    guimap[contourTrackingGui->getName()] = contourTrackingGui;
     
+    
+    thresholdGui = new ofxUISuperCanvas("BG DIFF",gui);
+    thresholdGui->copyCanvasStyle(gui);
+    thresholdGui->copyCanvasProperties(gui);
+    thresholdGui->setName("THRESHOLD");
+    
+    ofxUIToggle *ThresholdBtn = thresholdGui->addToggle("DRAW",&drawThresholded);
+    ThresholdBtn->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    thresholdGui->resetPlacer();
+    thresholdGui->addWidgetDown(ThresholdBtn, OFX_UI_ALIGN_RIGHT, true);
+    thresholdGui->addWidgetToHeader(ThresholdBtn);
+
+    
+    thresholdGui->addSlider("LEARNING TIME", 0,100,&learningTime);
+    thresholdGui->addSlider("THRESHOLD VALUE", 0,255  ,&thresholdValue);
+    ofAddListener(contourTrackingGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
+    guis.push_back(thresholdGui);
+    guimap[thresholdGui->getName()] = thresholdGui;
 }
 
 
@@ -423,7 +438,7 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
     rdrGui->addWidgetToHeader(toggle);
 
     ofxUIToggle *AbsDiffBtn = rdrGui->addToggle("ABS DIFF HEAT MAP",&bDrawHeatMap);
-    ofxUIToggle *ThresholBtn = rdrGui->addToggle("DRAW THRESHOLDED",&drawThresholded);
+
     rdrGui->addSlider("VIDEO TINT", 0, 255, &videoAlpha);
     rdrGui->addSlider("THRESHOLD TINT", 0, 255, &thresholdAlpha);
     rdrGui->addSlider("DIFF TINT", 0, 255, &diffAlpha);

@@ -64,6 +64,7 @@ public:
 
     ofxUISuperCanvas *opticalFlowGui;
     ofxUISuperCanvas *contourTrackingGui;
+    ofxUISuperCanvas *thresholdGui;
 	
 protected:
 
