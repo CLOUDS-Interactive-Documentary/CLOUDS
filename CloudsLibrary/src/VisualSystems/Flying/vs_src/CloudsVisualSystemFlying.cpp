@@ -53,6 +53,9 @@ void CloudsVisualSystemFlying::selfSetup()
     
     // meshes
     generate();
+    
+    // sound
+    synth.setOutputGen(buildSynth());
 }
 
 void CloudsVisualSystemFlying::generate()
@@ -146,6 +149,15 @@ void CloudsVisualSystemFlying::generate()
 void CloudsVisualSystemFlying::selfBegin()
 {
     getCameraRef().setPosition(0, 200, floorHalfD);
+    
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemFlying::audioRequested);
+
+    for (int i=0; i<3; i++)
+    {
+        if (playSample[i]) {
+            soundTriggers[i].trigger();
+        }
+    }
 }
 
 //normal update call
@@ -296,6 +308,11 @@ void CloudsVisualSystemFlying::selfSetupRenderGui()
     {
         rdrGui->addToggle(post[i]->getName(), &post[i]->getEnabledRef());
     }
+    
+    rdrGui->addSpacer();
+    rdrGui->addToggle(soundFiles[0], &playSample[0]);
+    rdrGui->addToggle(soundFiles[1], &playSample[1]);
+    rdrGui->addToggle(soundFiles[2], &playSample[2]);
 }
 
 void CloudsVisualSystemFlying::guiRenderEvent(ofxUIEventArgs &e)
@@ -307,6 +324,16 @@ void CloudsVisualSystemFlying::guiRenderEvent(ofxUIEventArgs &e)
         {
             generate();
             toggle->setValue(false);
+        }
+    }
+    for (int i=0; i<3; i++)
+    {
+        if (e.widget->getName() == soundFiles[i]) {
+            ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
+            playSample[i] = toggle->getValue();
+            if (toggle->getValue() == true) {
+                soundTriggers[i].trigger();
+            }
         }
     }
 }
@@ -375,7 +402,8 @@ void CloudsVisualSystemFlying::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemFlying::selfEnd(){
-	
+    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemFlying::audioRequested);
+
 	simplePointcloud.clear();
 	
 }
@@ -408,3 +436,32 @@ void CloudsVisualSystemFlying::selfMousePressed(ofMouseEventArgs& data){
 void CloudsVisualSystemFlying::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
+
+
+Generator CloudsVisualSystemFlying::buildSynth()
+{
+    string strDir = GetCloudsDataPath()+"sound/textures/";
+    ofDirectory sdir(strDir);
+    
+    SampleTable samples[3];
+    
+    int nSounds = sizeof(soundFiles) / sizeof(string);
+    for (int i=0; i<nSounds; i++)
+    {
+        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+        samples[i] = loadAudioFile(strAbsPath);
+    }
+    
+    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
+    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).trigger(soundTriggers[1]).loop(1);
+    Generator sampleGen3 = BufferPlayer().setBuffer(samples[2]).trigger(soundTriggers[2]).loop(1);
+    
+    return sampleGen1 * 1.0f + sampleGen2 * 0.5f + sampleGen3 * 1.0f;
+}
+
+void CloudsVisualSystemFlying::audioRequested(ofAudioEventArgs& args)
+{
+    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+}
+
+
