@@ -11,6 +11,8 @@
 
 void CloudsSound::startMusicFX(float outskip, float musicdur)
 {
+    // blow out routing table
+    INITMIX();
     // REVERB
     REVERB(outskip, musicdur+7.0); // gimme some reverb
     // schedule end event at time + ring-down
