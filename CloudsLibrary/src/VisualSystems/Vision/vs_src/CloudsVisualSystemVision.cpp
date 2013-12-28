@@ -218,13 +218,13 @@ void CloudsVisualSystemVision::selfSetupGui()
     
 }
 
-void CloudsVisualSystemVision::clearAccumulation(){
-    for(int j=0; j<accumulation.height; j++){
-        for( int i=0; i<accumulation.width; i++){
-            accumulation.setColor(i, j, ofFloatColor(0));
-        }
-    }
-}
+//void CloudsVisualSystemVision::clearAccumulation(){
+//    for(int j=0; j<accumulation.height; j++){
+//        for( int i=0; i<accumulation.width; i++){
+//            accumulation.setColor(i, j, ofFloatColor(0));
+//        }
+//    }
+//}
 
 void CloudsVisualSystemVision::updateImagesForNewVideo(){
     imitate(previousHeatMap, player->getPixelsRef());
@@ -486,12 +486,11 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     ofxUIButton *clearthresholdbtn = rdrGui->addToggle("CLEAR DIFF", false);
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    rdrGui->addLabel("VIDEOS");
-    rdrGui->addDropDownList("VIDEO", movieStrings);
     rdrGui->addSlider("VIDEO TINT", 0, 255, &videoAlpha);
     rdrGui->addSlider("THRESHOLD TINT", 0, 255, &thresholdAlpha);
     rdrGui->addSlider("DIFF TINT", 0, 255, &diffAlpha);
     rdrGui->addSlider("FLOW WINDOW TINT", 0, 255, &windowAlpha);
+    rdrGui->addDropDownList("VIDEO", movieStrings);
     rdrGui->autoSizeToFitWidgets();
     ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
     
@@ -634,6 +633,8 @@ void CloudsVisualSystemVision::selfDrawBackground()
 */
         ofPushStyle();
         ofSetColor(128,diffAlpha);
+        ofPushMatrix();
+        ofTranslate(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
         diff.draw(0, 0,ofGetWidth(),ofGetHeight());
         
         float diffRed = diffMean[0];
@@ -649,6 +650,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
         ofRect(0,10, mapGreen, 10);
         ofSetColor(0, 0, 255);
         ofRect(0, 20,  mapBlue, 10);
+        ofPopMatrix();
         ofPopStyle();
 
     }
@@ -761,27 +763,27 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
         updateOpticalFlowParameters();
         cout<<"Updating Optical Flow parameters"<<endl;
     }
-    else if (name == "OPTICAL FLOW"){
-        setMode(OpticalFlow);
-    }
-    else if( name == "CONTOUR TRACKING" ){
-        setMode(ContourTracking);
+//    else if (name == "OPTICAL FLOW"){
+//        setMode(OpticalFlow);
+//    }
+//    else if( name == "CONTOUR TRACKING" ){
+//        setMode(ContourTracking);
 //        bContourTracking = t->getValue();
-    }
+//    }
 //    else if (name == "DRAW PLAYER"){
 //        drawPlayer = b->getValue();
 //    }
 //    else if( name == "DRAW THRESHOLDED"){
 //        drawThresholded = b->getValue();    
 //    }
-    else if( name == "ABS DIFF HEAT MAP"){
-        setMode(HeatMap);
+//    else if( name == "ABS DIFF HEAT MAP"){
+//        setMode(HeatMap);
 //        bDrawHeatMap = b->getValue();
-    }
-    else if( name == "CLEAR DIFF"){
-        b->setValue(false);
-        clearAccumulation();
-    }
+//    }
+//    else if( name == "CLEAR DIFF"){
+//        b->setValue(false);
+//        clearAccumulation();
+//    }
 //    else if(name == "FLOW WINDOW"){
 //        bDrawFlowWindow = b->getValue();
 //    }
@@ -810,8 +812,7 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     else if(name == "BOX B"){
         boxColor.setBrightness(boxBright);
     }
-    
-    if (name == "VIDEOS"){
+    if (e.widget->getParent()->getName()  == "VIDEO"){
         thresholded.clear();
         background.reset();
         updateImagesForNewVideo();

@@ -118,7 +118,7 @@ protected:
 	ofxCv::FlowPyrLK pyrLk;
 	ofxCv::Flow* curFlow;
     void updateOpticalFlow();
-    void clearAccumulation();
+//    void clearAccumulation();
     void drawFlowHeatMap(int x, int y);
 
     ofDirectory videosDir;
