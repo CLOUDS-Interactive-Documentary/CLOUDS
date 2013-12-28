@@ -75,6 +75,9 @@ void CloudsVisualSystemAutomata::selfSetup()
 //--------------------------------------------------------------
 void CloudsVisualSystemAutomata::restart()
 {
+    ofImage seedImage;
+    seedImage.loadImage(getVisualSystemDataPath() + "mem.gif");
+    
     float width = getSharedRenderTarget().getWidth();
     float height = getSharedRenderTarget().getHeight();
     
@@ -96,6 +99,7 @@ void CloudsVisualSystemAutomata::restart()
     outFbo.begin();
     {
         ofClear(0, 0);
+        seedImage.draw((width - seedImage.getWidth()) / 2, (height - seedImage.getHeight()) / 2);
     }
     outFbo.end();
     
