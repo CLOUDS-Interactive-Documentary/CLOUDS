@@ -253,23 +253,6 @@ void CloudsVisualSystemVision::resetFlowField(){
     
 }
 
-//void CloudsVisualSystemVision::populateOpticalFlowRegions(){
-//    int rectWidth =20;
-//    int rectHeight = 20;
-//    for( int j=0; j<player->getHeight(); j +=rectHeight){
-//        for( int i=0; i<player->getWidth(); i += rectWidth){
-//            if (i +rectWidth -1>player->getWidth()) {
-//                rectWidth =player->getWidth()- i +1;
-//            }
-//            
-//            if (j +rectHeight -1>player->getHeight()) {
-//                rectHeight =player->getHeight()- j +1;
-//            }
-//            flowRegions.push_back(ofRectangle(i, j, rectWidth, rectHeight));
-//        }
-//    }
-//}
-
 void CloudsVisualSystemVision::updateOpticalFlowParameters(){
     farneback.setPyramidScale(pyrScale);
     farneback.setNumLevels( levels );
@@ -332,21 +315,6 @@ void CloudsVisualSystemVision::updateOpticalFlow(){
 			flowMesh.setColor(i,0);
 			flowMesh.setColor(i+1,0);
 		}
-//		}
-//		else{
-//			ofVec2f pos = farneback.getFlowOffset(flowMesh.getVertex(i).x/scale, flowMesh.getVertex(i).y/scale );
-//			
-//			pos *= flowLineMultiplier;
-//			pos.x += flowMesh.getVertex(i).x;
-//			pos.y += flowMesh.getVertex(i).y;
-//			flowMesh.setVertex(i+1, ofVec3f( pos.x,pos.y,0));
-//			
-//			float mag =flowMesh.getVertex(i).distance(flowMesh.getVertex(i+1));
-//			
-//			float scaledHue = ofMap(mag,0, colorRange, ofFloatColor::blue.getHue(), ofFloatColor::red.getHue());
-//			ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 128, 128 ) ;
-//			flowMesh.setColor(i+1,magnitudeColor);
-//		}
 	}
 	
 
@@ -408,28 +376,6 @@ void CloudsVisualSystemVision::updateCVParameters(){
 void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
     cout<<"LOADED PRESET: "<<presetPath<<endl;
     
-    //LOADING CURRENT ENABLED MODES
-//    ofxUIToggle *opticalFlowBtn = (ofxUIToggle*)rdrGui->getWidget("OPTICAL FLOW");
-//    bOpticalFlow = opticalFlowBtn->getValue();
-//    if(bOpticalFlow){
-//        setMode(OpticalFlow);
-//    }
-    
-//    ofxUIToggle *ContourBtn = (ofxUIToggle*)rdrGui->getWidget("CONTOUR TRACKING");
-//    bContourTracking = ContourBtn->getValue();
-//    if(bContourTracking){
-//        setMode(ContourTracking);   
-//    }
-    
-//    ofxUIToggle *AbsDiffBtn = (ofxUIToggle*)rdrGui->getWidget("ABS DIFF HEAT MAP");
-//    bDrawHeatMap = AbsDiffBtn->getValue();
-//    if(bDrawHeatMap){
-//        setMode(HeatMap);
-//    }
-    
-//    ofxUIToggle *ThresholBtn = (ofxUIToggle*)rdrGui->getWidget("DRAW THRESHOLDED");
-//    drawThresholded = ThresholBtn->getValue();
-
     //LOADING MOVIE
     ofxUIRadio* r = (ofxUIRadio*)rdrGui->getWidget("VIDEO");
     
@@ -761,46 +707,6 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
         updateOpticalFlowParameters();
         cout<<"Updating Optical Flow parameters"<<endl;
     }
-//    else if (name == "OPTICAL FLOW"){
-//        setMode(OpticalFlow);
-//    }
-//    else if( name == "CONTOUR TRACKING" ){
-//        setMode(ContourTracking);
-//        bContourTracking = t->getValue();
-//    }
-//    else if (name == "DRAW PLAYER"){
-//        drawPlayer = b->getValue();
-//    }
-//    else if( name == "DRAW THRESHOLDED"){
-//        drawThresholded = b->getValue();    
-//    }
-//    else if( name == "ABS DIFF HEAT MAP"){
-//        setMode(HeatMap);
-//        bDrawHeatMap = b->getValue();
-//    }
-//    else if( name == "CLEAR DIFF"){
-//        b->setValue(false);
-//        clearAccumulation();
-//    }
-//    else if(name == "FLOW WINDOW"){
-//        bDrawFlowWindow = b->getValue();
-//    }
-    
-//    else if(name=="DRAW BOXES"){
-//        bDrawBoxes = b->getValue();
-//    }
-//    else if(name == "DRAW NUMBERS"){
-//        bNumbers = b->getValue();
-//    }
-//    else if(name == "DRAW LINES"){
-//        bDrawLines = b->getValue();
-//    }
-//    else if(name == "DRAW CONTOURS"){
-//        bContours = b->getValue();
-//    }
-//    else if(name == "LIFESPAN COLOR"){
-//        bLifeTime = b->getValue();
-//    }
     else if(name == "BOX H"){
         boxColor.setHue(boxHue);
     }
@@ -832,30 +738,18 @@ void CloudsVisualSystemVision::loadCurrentMovie(){
 	
 	loadMovieAtIndex(movieIndex);
 
-	//JG redundant
-//    player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
-//    if(player->loadMovie(getVisualSystemDataPath() + movieStrings[ movieIndex ])){
-//        resizeToPixels.allocate(player->getWidth()/scale,player->getHeight()/scale,
-//                                player->getPixelsRef().getImageType());
-//        player->play();
-//    }
-//    else{
-//        cout<<"Not Playing"<<endl;
-//    }
-//    
-//    cout<<"Player dimensions (new) :"<< player->getWidth()<<" , "<<player->getHeight() <<endl;
-//    updateCVParameters();
-//    populateOpticalFlowRegions();
-//    updateImagesForNewVideo();
-//    resetFlowField();
 }
 
-void  CloudsVisualSystemVision::loadMovieAtIndex(int index){
+void CloudsVisualSystemVision::loadMovieAtIndex(int index){
+	if(movieStrings.size() == 0){
+		ofLogError("CloudsVisualSystemVision::loadMovieAtIndex") << "No movies. Make sure you have a visualsystems_ignored/Vision/videos folder.";
+		return;
+	}
+
     movieIndex = index;
 
     player = ofPtr<ofxAVFVideoPlayer>(new ofxAVFVideoPlayer());
-
-    if(player->loadMovie(getVisualSystemDataPath(true)+"/videos/" + movieStrings[ movieIndex ])){
+    if(player->loadMovie(getVisualSystemDataPath(true)+"videos/" + movieStrings[ movieIndex ])){
         player->play();
     }
     else{
