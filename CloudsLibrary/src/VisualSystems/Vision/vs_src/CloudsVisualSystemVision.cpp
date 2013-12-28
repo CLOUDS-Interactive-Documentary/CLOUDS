@@ -70,8 +70,8 @@ void CloudsVisualSystemVision::selfSetDefaults(){
     accumulationCount =0;
     skipFrames = 0;
     contourLifetimeColorRange = 110;
-    windowWidth = 100;
-    windowHeight = 100;
+    windowWidth = .1;
+    windowHeight = .1;
 }
 
 void CloudsVisualSystemVision::selfSetup()
@@ -129,8 +129,6 @@ void CloudsVisualSystemVision::selfSetup()
     }
     frameIsNew = false;
     loadCurrentMovie();
-    
-    
 }
 
 void CloudsVisualSystemVision::selfSetupGui()
@@ -148,6 +146,7 @@ void CloudsVisualSystemVision::selfSetupGui()
     opticalFlowGui->addWidgetToHeader(toggle);
     
     opticalFlowGui->addSpacer();
+    opticalFlowGui->addToggle("DRAW FLOW WINDOW", &bDrawFlowWindow);
     opticalFlowGui->addSlider("WINDOW TINT", 0, 255, &windowAlpha);
     opticalFlowGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     opticalFlowGui->addSlider("WINDOW WIDTH", .0, 1., &windowWidth);
@@ -194,9 +193,6 @@ void CloudsVisualSystemVision::selfSetupGui()
     contourTrackingGui->addSlider("BOX S", 0.0,1.0,&boxSat);
     contourTrackingGui->addSlider("BOX B", 0.0,1.0,&boxBright);
     contourTrackingGui->addSlider("BOX LINE WIDTH", 1, 10, &lineWidth);
-    contourTrackingGui->addLabel("BACKGROUND PARAM");
-    contourTrackingGui->addSlider("LEARNING TIME", 0,100,&learningTime);
-    contourTrackingGui->addSlider("THRESHOLD VALUE", 0,255  ,&thresholdValue);
     contourTrackingGui->addSlider("LIFETIME COLOUR RANGE", 0,255  ,&contourLifetimeColorRange);
     
     contourTrackingGui->addLabel("TRACKER PARAM");
@@ -214,17 +210,28 @@ void CloudsVisualSystemVision::selfSetupGui()
     ofAddListener(contourTrackingGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
 	
     guis.push_back(contourTrackingGui);
-    guimap[opticalFlowGui->getName()] = contourTrackingGui;
+    guimap[contourTrackingGui->getName()] = contourTrackingGui;
     
+    
+    thresholdGui = new ofxUISuperCanvas("BG DIFF",gui);
+    thresholdGui->copyCanvasStyle(gui);
+    thresholdGui->copyCanvasProperties(gui);
+    thresholdGui->setName("THRESHOLD");
+    
+    ofxUIToggle *ThresholdBtn = thresholdGui->addToggle("DRAW",&drawThresholded);
+    ThresholdBtn->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    thresholdGui->resetPlacer();
+    thresholdGui->addWidgetDown(ThresholdBtn, OFX_UI_ALIGN_RIGHT, true);
+    thresholdGui->addWidgetToHeader(ThresholdBtn);
+
+    
+    thresholdGui->addSlider("LEARNING TIME", 0,100,&learningTime);
+    thresholdGui->addSlider("THRESHOLD VALUE", 0,255  ,&thresholdValue);
+    ofAddListener(contourTrackingGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
+    guis.push_back(thresholdGui);
+    guimap[thresholdGui->getName()] = thresholdGui;
 }
 
-//void CloudsVisualSystemVision::clearAccumulation(){
-//    for(int j=0; j<accumulation.height; j++){
-//        for( int i=0; i<accumulation.width; i++){
-//            accumulation.setColor(i, j, ofFloatColor(0));
-//        }
-//    }
-//}
 
 void CloudsVisualSystemVision::updateImagesForNewVideo(){
     imitate(previousHeatMap, player->getPixelsRef());
@@ -421,17 +428,16 @@ void CloudsVisualSystemVision::selfSetupSystemGui()
 
 void CloudsVisualSystemVision::selfSetupRenderGui()
 {
-    rdrGui->addSpacer();
-    rdrGui->addLabel("PLAY MODES");
+
     
+    ofxUIToggle *toggle = rdrGui->addToggle("PLAYER",&drawPlayer);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    rdrGui->resetPlacer();
+    rdrGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    rdrGui->addWidgetToHeader(toggle);
+
     ofxUIToggle *AbsDiffBtn = rdrGui->addToggle("ABS DIFF HEAT MAP",&bDrawHeatMap);
-    ofxUIToggle *ThresholBtn = rdrGui->addToggle("DRAW THRESHOLDED",&drawThresholded);
-    rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    ofxUIButton *drawplayerbtn = rdrGui->addToggle("DRAW PLAYER", &drawPlayer);
-    ofxUIButton *bDrawFlowWindowbtn = rdrGui->addToggle("DRAW FLOW WINDOW", &bDrawFlowWindow);
-    rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    ofxUIButton *clearthresholdbtn = rdrGui->addToggle("CLEAR DIFF", false);
-    rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+
     rdrGui->addSlider("VIDEO TINT", 0, 255, &videoAlpha);
     rdrGui->addSlider("THRESHOLD TINT", 0, 255, &thresholdAlpha);
     rdrGui->addSlider("DIFF TINT", 0, 255, &diffAlpha);
@@ -486,29 +492,38 @@ void CloudsVisualSystemVision::selfUpdate(){
 
 void CloudsVisualSystemVision::selfDrawBackground()
 {
+	if(!player->isLoaded() || !player->getPixelsRef().isAllocated() ){
+		ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Player is not loaded";
+		
+		return;
+	}
+	
     ofPushStyle();
+	ofPushMatrix();
+	
+	videoRect = ofRectangle(0,0, player->getWidth(), player->getHeight());
+	ofRectangle screenRect(0,0, getCanvasWidth(), getCanvasHeight());
+	videoRect.scaleTo(screenRect);
+
+	float playerWidth  = player->getWidth();
+	float playerHeight = player->getHeight();
+	ofTranslate(videoRect.x, videoRect.y);
+	ofScale(videoRect.width/playerWidth,
+			videoRect.height/playerHeight);
+
     if(drawPlayer){
-		if(player->isLoaded() && player->isPlaying()){
-			ofPushStyle();
-			ofSetColor(videoAlpha);
-			videoRect = ofRectangle(0,0,player->getWidth(), player->getHeight());
-			ofRectangle screenRect(0,0,getCanvasWidth(), getCanvasHeight());
-			videoRect.scaleTo(screenRect);
-			player->draw(videoRect.x,videoRect.y,videoRect.width,videoRect.height);
-			ofPopStyle();
-		}
-		else{
-			ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Player is not loaded";
-		}
+		ofPushStyle();
+		ofSetColor(videoAlpha);
+		player->draw(0,0);
+		ofPopStyle();
     }
 	
     if(drawThresholded){
         if( thresholded.isAllocated() ){
 			ofPushStyle();
             ofEnableBlendMode(OF_BLENDMODE_SCREEN);
-            ofTranslate(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
 			ofSetColor(thresholdAlpha);        
-			thresholded.draw(0,0, ofGetWidth(), ofGetHeight());
+			thresholded.draw(0,0, playerWidth, playerHeight);
 			ofPopStyle();
 		}
 		else{
@@ -518,9 +533,9 @@ void CloudsVisualSystemVision::selfDrawBackground()
     
     if(bContourTracking){
 		
-        ofPushMatrix();
+//        ofPushMatrix();
 //        ofTranslate(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
-        ofScale(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
+//        ofScale(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
 
         if(bContours){
             contourFinder.draw();
@@ -530,7 +545,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
             float b = followers[i].getLifeTime();
             followers[i].draw(lineWidth, bLifeTime, contourLifetimeColorRange, bDrawBoxes, bDrawLines, bNumbers, boxColor);
         }
-        ofPopMatrix();   
+//        ofPopMatrix();
     }
     
     if(bOpticalFlow){
@@ -538,13 +553,13 @@ void CloudsVisualSystemVision::selfDrawBackground()
         ofTexture& tex = player->getTextureReference();
 		if(tex.isAllocated()){
 				
-			ofPushMatrix();
+//			ofPushMatrix();
 			ofPushStyle();
 			ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 			ofSetColor(windowAlpha);
-			ofTranslate(videoRect.x, videoRect.y);
-			ofScale(videoRect.width/player->getWidth(),
-					videoRect.height/player->getHeight());
+//			ofTranslate(videoRect.x, videoRect.y);
+//			ofScale(videoRect.width/player->getWidth(),
+//					videoRect.height/player->getHeight());
 			if(bDrawFlowWindow){
 				tex.drawSubsection(mouseX-flowWindow.width/2,
 								   mouseY-flowWindow.height/2,
@@ -552,13 +567,14 @@ void CloudsVisualSystemVision::selfDrawBackground()
 								   mouseX-flowWindow.width/2, mouseY-flowWindow.height/2);
 			}
 			ofSetLineWidth(flowLineWidth);
+			
 			ofPushMatrix();
 			ofScale(opticalFlowScale,opticalFlowScale);
 			flowMesh.draw();
 			ofPopMatrix();
 			
 			ofPopStyle();
-			ofPopMatrix();
+//			ofPopMatrix();
 		}
 		else{
 			ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Video texture not allocated for optical flow";
@@ -579,9 +595,11 @@ void CloudsVisualSystemVision::selfDrawBackground()
 */
         ofPushStyle();
         ofSetColor(128,diffAlpha);
-        ofPushMatrix();
-        ofTranslate(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
-        diff.draw(0, 0,ofGetWidth(),ofGetHeight());
+//        ofPushMatrix();
+//		ofTranslate(videoRect.x, videoRect.y);
+//		ofScale(videoRect.width/player->getWidth(),
+//				videoRect.height/player->getHeight());
+        diff.draw(0, 0,playerWidth,playerHeight);
         
         float diffRed = diffMean[0];
         float mapRed = ofMap(diffRed, 0, 512, 0, accumulation.width,true);
@@ -596,10 +614,12 @@ void CloudsVisualSystemVision::selfDrawBackground()
         ofRect(0,10, mapGreen, 10);
         ofSetColor(0, 0, 255);
         ofRect(0, 20,  mapBlue, 10);
-        ofPopMatrix();
+//        ofPopMatrix();
         ofPopStyle();
 
     }
+	
+	ofPopMatrix();
     ofPopStyle();
 }
 
