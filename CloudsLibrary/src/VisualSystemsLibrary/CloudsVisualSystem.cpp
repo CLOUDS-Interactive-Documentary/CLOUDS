@@ -308,7 +308,6 @@ void CloudsVisualSystem::stopSystem(){
 		}
 		
 		CloudsUnregisterInputEvents(this);
-		//ofUnregisterMouseEvents(this);
 		ofUnregisterKeyEvents(this);
 		ofRemoveListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofRemoveListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
