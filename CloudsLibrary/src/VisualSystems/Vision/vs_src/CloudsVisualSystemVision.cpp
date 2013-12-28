@@ -146,6 +146,7 @@ void CloudsVisualSystemVision::selfSetupGui()
     opticalFlowGui->addWidgetToHeader(toggle);
     
     opticalFlowGui->addSpacer();
+    opticalFlowGui->addToggle("DRAW FLOW WINDOW", &bDrawFlowWindow);
     opticalFlowGui->addSlider("WINDOW TINT", 0, 255, &windowAlpha);
     opticalFlowGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     opticalFlowGui->addSlider("WINDOW WIDTH", .0, 1., &windowWidth);
