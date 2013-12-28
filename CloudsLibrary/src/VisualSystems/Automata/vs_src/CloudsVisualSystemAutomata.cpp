@@ -120,8 +120,7 @@ void CloudsVisualSystemAutomata::restart()
 //--------------------------------------------------------------
 void CloudsVisualSystemAutomata::selfPresetLoaded(string presetPath)
 {
-    //bRestart = true;
-	restart();
+    bRestart = true;
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -236,10 +235,9 @@ void CloudsVisualSystemAutomata::selfExit(){
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemAutomata::selfKeyPressed(ofKeyEventArgs & args){
-	if(args.key == 'R'){
-		bRestart = true;
-	}
+
 }
+
 void CloudsVisualSystemAutomata::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
