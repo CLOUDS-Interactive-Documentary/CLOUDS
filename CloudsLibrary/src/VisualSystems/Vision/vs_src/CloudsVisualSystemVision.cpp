@@ -70,8 +70,8 @@ void CloudsVisualSystemVision::selfSetDefaults(){
     accumulationCount =0;
     skipFrames = 0;
     contourLifetimeColorRange = 110;
-    windowWidth = 100;
-    windowHeight = 100;
+    windowWidth = .1;
+    windowHeight = .1;
 }
 
 void CloudsVisualSystemVision::selfSetup()
@@ -129,8 +129,6 @@ void CloudsVisualSystemVision::selfSetup()
     }
     frameIsNew = false;
     loadCurrentMovie();
-    
-    
 }
 
 void CloudsVisualSystemVision::selfSetupGui()
@@ -493,29 +491,38 @@ void CloudsVisualSystemVision::selfUpdate(){
 
 void CloudsVisualSystemVision::selfDrawBackground()
 {
+	if(!player->isLoaded() || !player->getPixelsRef().isAllocated() ){
+		ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Player is not loaded";
+		
+		return;
+	}
+	
     ofPushStyle();
+	ofPushMatrix();
+	
+	videoRect = ofRectangle(0,0, player->getWidth(), player->getHeight());
+	ofRectangle screenRect(0,0, getCanvasWidth(), getCanvasHeight());
+	videoRect.scaleTo(screenRect);
+
+	float playerWidth  = player->getWidth();
+	float playerHeight = player->getHeight();
+	ofTranslate(videoRect.x, videoRect.y);
+	ofScale(videoRect.width/playerWidth,
+			videoRect.height/playerHeight);
+
     if(drawPlayer){
-		if(player->isLoaded() && player->isPlaying()){
-			ofPushStyle();
-			ofSetColor(videoAlpha);
-			videoRect = ofRectangle(0,0,player->getWidth(), player->getHeight());
-			ofRectangle screenRect(0,0,getCanvasWidth(), getCanvasHeight());
-			videoRect.scaleTo(screenRect);
-			player->draw(videoRect.x,videoRect.y,videoRect.width,videoRect.height);
-			ofPopStyle();
-		}
-		else{
-			ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Player is not loaded";
-		}
+		ofPushStyle();
+		ofSetColor(videoAlpha);
+		player->draw(0,0);
+		ofPopStyle();
     }
 	
     if(drawThresholded){
         if( thresholded.isAllocated() ){
 			ofPushStyle();
             ofEnableBlendMode(OF_BLENDMODE_SCREEN);
-            ofTranslate(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
 			ofSetColor(thresholdAlpha);        
-			thresholded.draw(0,0, ofGetWidth(), ofGetHeight());
+			thresholded.draw(0,0, playerWidth, playerHeight);
 			ofPopStyle();
 		}
 		else{
@@ -525,9 +532,9 @@ void CloudsVisualSystemVision::selfDrawBackground()
     
     if(bContourTracking){
 		
-        ofPushMatrix();
+//        ofPushMatrix();
 //        ofTranslate(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
-        ofScale(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
+//        ofScale(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
 
         if(bContours){
             contourFinder.draw();
@@ -537,7 +544,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
             float b = followers[i].getLifeTime();
             followers[i].draw(lineWidth, bLifeTime, contourLifetimeColorRange, bDrawBoxes, bDrawLines, bNumbers, boxColor);
         }
-        ofPopMatrix();   
+//        ofPopMatrix();
     }
     
     if(bOpticalFlow){
@@ -545,13 +552,13 @@ void CloudsVisualSystemVision::selfDrawBackground()
         ofTexture& tex = player->getTextureReference();
 		if(tex.isAllocated()){
 				
-			ofPushMatrix();
+//			ofPushMatrix();
 			ofPushStyle();
 			ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 			ofSetColor(windowAlpha);
-			ofTranslate(videoRect.x, videoRect.y);
-			ofScale(videoRect.width/player->getWidth(),
-					videoRect.height/player->getHeight());
+//			ofTranslate(videoRect.x, videoRect.y);
+//			ofScale(videoRect.width/player->getWidth(),
+//					videoRect.height/player->getHeight());
 			if(bDrawFlowWindow){
 				tex.drawSubsection(mouseX-flowWindow.width/2,
 								   mouseY-flowWindow.height/2,
@@ -559,13 +566,14 @@ void CloudsVisualSystemVision::selfDrawBackground()
 								   mouseX-flowWindow.width/2, mouseY-flowWindow.height/2);
 			}
 			ofSetLineWidth(flowLineWidth);
+			
 			ofPushMatrix();
 			ofScale(opticalFlowScale,opticalFlowScale);
 			flowMesh.draw();
 			ofPopMatrix();
 			
 			ofPopStyle();
-			ofPopMatrix();
+//			ofPopMatrix();
 		}
 		else{
 			ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Video texture not allocated for optical flow";
@@ -586,9 +594,11 @@ void CloudsVisualSystemVision::selfDrawBackground()
 */
         ofPushStyle();
         ofSetColor(128,diffAlpha);
-        ofPushMatrix();
-        ofTranslate(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
-        diff.draw(0, 0,ofGetWidth(),ofGetHeight());
+//        ofPushMatrix();
+//		ofTranslate(videoRect.x, videoRect.y);
+//		ofScale(videoRect.width/player->getWidth(),
+//				videoRect.height/player->getHeight());
+        diff.draw(0, 0,playerWidth,playerHeight);
         
         float diffRed = diffMean[0];
         float mapRed = ofMap(diffRed, 0, 512, 0, accumulation.width,true);
@@ -603,10 +613,12 @@ void CloudsVisualSystemVision::selfDrawBackground()
         ofRect(0,10, mapGreen, 10);
         ofSetColor(0, 0, 255);
         ofRect(0, 20,  mapBlue, 10);
-        ofPopMatrix();
+//        ofPopMatrix();
         ofPopStyle();
 
     }
+	
+	ofPopMatrix();
     ofPopStyle();
 }
 
