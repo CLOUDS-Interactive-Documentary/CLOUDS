@@ -870,7 +870,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1124.0, 248.394226, 97.0, 27.0 ],
-					"restore" : [ 1.0 ],
+					"restore" : [ 0.923077 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -942,7 +942,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 82.0, 373.0, 165.0, 27.0 ],
-					"restore" : [ "none" ],
+					"restore" : [ "real and virtual:Have we hacked reality?" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -974,7 +974,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-133",
-					"items" : [ "none", ",", "Aaron_exciting_time:What", "is", "new", "and", "innovative", "in", "new", "media?", ",", "Aaron_networked_creativity:How", "has", "the", "internet", "changed", "everything?", ",", "Aaron_experience_design:How", "does", "digital", "design", "apply", "to", "everyday", "life?", ",", "Casey_Systems_theory:How", "can", "simple", "rules", "have", "complex", "results?", ",", "Casey_emergence:What", "is", "emergence?", ",", "Casey_Developing_a_microworld:How", "do", "you", "build", "a", "universe?", ",", "Elliot_UK_Ideaspace:Can", "someone", "claim", "ownership", "of", "an", "idea?", ",", "Golan_woah2:What", "is", "surprising?", ",", "JTNimoy_Pickle:What", "does", "it", "feel", "like", "to", "program?", ",", "Julia_CLOUDS:What", "is", "the", "story", "of", "Clouds?", ",", "Julian_I_love_networks:What", "does", "the", "internet", "look", "like?", ",", "Karsten_demo_scene_2:What's", "the", "connection", "between", "videogame", "culture", "and", "creative", "coding?", ",", "Karsten_code_is_information:What", "is", "code?", ",", "Karsten_programming_is...:What", "does", "it", "feel", "like", "to", "program?", ",", "Karsten_infinite_conversation:What", "is", "Clouds?", ",", "Kyle_CH_new_generation:How", "did", "the", "creative", "coding", "community", "take", "shape?", ",", "Kyle_CH_coding", ",", "_magic:How", "do", "algorithms", "become", "tangible?", ",", "Lauren_Social_reality_circa_2013:How", "do", "people", "communicate", "now?", ",", "Lauren_how_we_communicate:How", "do", "people", "communicate", "now?", ",", "Lauren_how_we_communicate", ",", "_shorter:How", "does", "human", "interaction", "rely", "on", "networks?", ",", "Lauren_Constructed_self:How", "does", "your", "online", "identity", "differ", "from", "your", "everyday", "self?", ",", "Lauren_toward_greater_consciousness:What", "does", "technology", "aspire", "toward?", ",", "Lindsay_hackers:What's", "the", "hacker", "ethos?", ",", "Maeda_a_computer_is_a_clock:What", "is", "a", "computer?", ",", "Marius_these_things_are_in_my_head:Where", "does", "abstraction", "originate?", ",", "Marius_Continuous_process_of_exploration:Is", "an", "artwork", "ever", "done?", ",", "Marius_gardening:Does", "a", "generative", "artwork", "ever", "reach", "a", "state", "of", "completion?", ",", "Nervous_Jessica_I_create_the_work_that_I_love:How", "do", "you", "know", "whether", "something", "is", "good?", ",", "Philip_with_programming_you_can_do_whatever:How", "does", "a", "universe", "begin?", ",", "Ramsey_language_self_expression:In", "what", "way", "is", "coding", "an", "art", "form?", ",", "Ramsey_why_code_is_special:What", "is", "code?", ",", "Ramsey_a_hundred_million:How", "does", "programming", "change", "the", "way", "you", "think?", ",", "Ramsey_what_is_a_computer:What", "is", "a", "computer?", ",", "Ramsey_computation_is_interpretation_of_rules:What", "is", "computation?", ",", "Shantell_Coding:_what_does_it_feel_like?:What", "is", "it", "like", "to", "sketch", "with", "code?", ",", "Shantell_Coding_gesturally:How", "do", "you", "sketch", "with", "code?", ",", "Shiffman_NOC_3:What", "would", "it", "mean", "to", "simulate", "the", "world", "through", "code?" ],
+					"items" : [ "none", ",", "coding:How", "can", "the", "logic", "of", "coding", "be", "creative?", ",", "community:How", "does", "the", "network", "accelerate", "creativity?", ",", "cosmogeny:How", "do", "you", "create", "a", "digital", "universe?", ",", "interactivity:What", "makes", "a", "satisfying", "interaction?", ",", "interface:What's", "the", "ultimate", "interface?", ",", "open", "source:What", "is", "open", "source", "all", "about?", ",", "programming:Is", "programming", "a", "waste", "of", "time?", ",", "programming:What", "does", "it", "feel", "like", "to", "program?", ",", "real", "and", "virtual:Have", "we", "hacked", "reality?", ",", "simulation:Is", "it", "possible", "to", "truly", "simulate", "reality?", ",", "sketching:How", "do", "you", "sketch", "with", "code?", ",", "thinking:Do", "computers", "make", "us", "smarter?", ",", "toolmakers:what's", "the", "link", "between", "invention", "and", "art?" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -6841,7 +6841,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 823.0, 945.071228, 89.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 104.0, 521.0, 77.0, 23.0 ],
+					"presentation_rect" : [ 104.0, 565.894226, 77.0, 23.0 ],
 					"text" : "used slots"
 				}
 
@@ -6883,15 +6883,16 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-193",
-					"linecount" : 5,
+					"linecount" : 14,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 658.0, 937.0, 133.0, 83.0 ],
+					"patching_rect" : [ 658.0, 937.0, 133.0, 223.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 104.0, 494.0, 586.0, 20.0 ],
-					"text" : "1 2 3 4 5 6 7 8 9 10 11 12 20 100 101 102 103 104 105 106 107 108 109 110 111 112 113"
+					"presentation_linecount" : 3,
+					"presentation_rect" : [ 104.0, 494.0, 586.0, 51.0 ],
+					"text" : "1 2 3 4 5 6 7 8 9 10 11 12 13 20 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 299 300 301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 321 322 323 324 325 326 327 328 329 330"
 				}
 
 			}
@@ -8619,7 +8620,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 974.0, -11.389191, 274.0, 27.0 ],
-					"restore" : [ "none" ],
+					"restore" : [ "clouds18_125.wav" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9233,7 +9234,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-75",
-					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "waveguide", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "modalbeats", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound" ],
+					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "waveguide", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "hardbuzz", ",", "modalbeats", ",", "wish", ",", "slowlowwish", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound", ",", "granular_sparkles", ",", "granular_rain", ",", "granular_shimmer", ",", "granular_whales", ",", "granular_pad", ",", "granular_sparse", ",", "granular_buzz", ",", "granular_swish" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -9296,7 +9297,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-81",
-					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "waveguide", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "modalbeats", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound" ],
+					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "waveguide", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "hardbuzz", ",", "modalbeats", ",", "wish", ",", "slowlowwish", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound", ",", "granular_sparkles", ",", "granular_rain", ",", "granular_shimmer", ",", "granular_whales", ",", "granular_pad", ",", "granular_sparse", ",", "granular_buzz", ",", "granular_swish" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -9359,7 +9360,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-69",
-					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "waveguide", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "modalbeats", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound" ],
+					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "waveguide", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "hardbuzz", ",", "modalbeats", ",", "wish", ",", "slowlowwish", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound", ",", "granular_sparkles", ",", "granular_rain", ",", "granular_shimmer", ",", "granular_whales", ",", "granular_pad", ",", "granular_sparse", ",", "granular_buzz", ",", "granular_swish" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -9422,7 +9423,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-63",
-					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "waveguide", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "modalbeats", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound" ],
+					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "waveguide", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "hardbuzz", ",", "modalbeats", ",", "wish", ",", "slowlowwish", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound", ",", "granular_sparkles", ",", "granular_rain", ",", "granular_shimmer", ",", "granular_whales", ",", "granular_pad", ",", "granular_sparse", ",", "granular_buzz", ",", "granular_swish" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -9443,7 +9444,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-57",
-					"items" : "none",
+					"items" : [ "none", ",", "clouds08_100.wav", ",", "clouds11_125.wav", ",", "clouds13.wav", ",", "clouds16_100.wav", ",", "clouds17_100.wav", ",", "clouds18_125.wav", ",", "clouds20_100.wav", ",", "clouds20_75.wav", ",", "clouds21_100.wav", ",", "clouds26_100.wav", ",", "clouds27_125.wav", ",", "clouds29_125.wav", ",", "clouds30_125.wav", ",", "clouds32_100.wav", ",", "clouds34_125.wav", ",", "clouds35_100.wav", ",", "clouds35_75.wav", ",", "clouds38_100.wav", ",", "CLOUDS_IntelligentGroove.wav", ",", "CLOUDS_IntelligentGroove_EQ.wav", ",", "CLOUDS_introTunnel_full.wav", ",", "CLOUDS_introTunnel_light.wav", ",", "cloudsdream_mix1.aif", ",", "cloudsdream_mix2.aif", ",", "cloudsdream_mix3.aif", ",", "cloudsintro1.mp3", ",", "cloudsintro1_low.mp3", ",", "cloudsintro2.mp3", ",", "DuBoisAmbient0.wav", ",", "DuboisAmbient01.wav", ",", "Jungle_Master.aif", ",", "Lament_piano_288.aif", ",", "LimAmbient00.wav", ",", "LimAmbient01.wav", ",", "ParallelStripes.wav", ",", "thingsthatgo.wav", ",", "Vocal_harmonic_high_shorter_1-2.wav", ",", "vocal_harmony_bass_1-2_noise_reduced.wav" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -9685,7 +9686,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-39",
-					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "waveguide", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "modalbeats", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound" ],
+					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "waveguide", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "hardbuzz", ",", "modalbeats", ",", "wish", ",", "slowlowwish", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound", ",", "granular_sparkles", ",", "granular_rain", ",", "granular_shimmer", ",", "granular_whales", ",", "granular_pad", ",", "granular_sparse", ",", "granular_buzz", ",", "granular_swish" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
