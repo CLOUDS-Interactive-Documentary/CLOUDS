@@ -1,4 +1,9 @@
 <zoom>
+<<<<<<< HEAD
+    <min>0.000000000</min>
+    <max>1.000000000</max>
+=======
     <min>0</min>
     <max>1</max>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </zoom>

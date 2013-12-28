@@ -1,9 +1,15 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>POINT LIGHT 1Settings</Name>
+<<<<<<< HEAD
+    <IsMinified>0</IsMinified>
+    <XPosition>2549.000244141</XPosition>
+    <YPosition>1.000000000</YPosition>
+=======
     <IsMinified>1</IsMinified>
     <XPosition>1</XPosition>
     <YPosition>285</YPosition>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,60 +19,108 @@
 <Widget>
     <Kind>25</Kind>
     <Name>X</Name>
+<<<<<<< HEAD
+    <Value>-623.036621094</Value>
+=======
     <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>Y</Name>
+<<<<<<< HEAD
+    <Value>-47.121032715</Value>
+=======
     <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>Z</Name>
+<<<<<<< HEAD
+    <Value>151.832153320</Value>
+=======
     <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AH</Name>
+<<<<<<< HEAD
+    <Value>0.062827222</Value>
+=======
     <Value>1</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AS</Name>
+<<<<<<< HEAD
+    <Value>0.146596536</Value>
+=======
     <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AV</Name>
+<<<<<<< HEAD
+    <Value>0.230366334</Value>
+=======
     <Value>0.5</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>DH</Name>
+<<<<<<< HEAD
+    <Value>0.141361251</Value>
+=======
     <Value>1</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>DS</Name>
+<<<<<<< HEAD
+    <Value>0.083769314</Value>
+=======
     <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>DV</Name>
+<<<<<<< HEAD
+    <Value>0.638743281</Value>
+=======
     <Value>0.5</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SH</Name>
+<<<<<<< HEAD
+    <Value>1.000000000</Value>
+=======
     <Value>1</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SS</Name>
+<<<<<<< HEAD
+    <Value>0.000000000</Value>
+=======
     <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SV</Name>
+<<<<<<< HEAD
+    <Value>0.340313971</Value>
+=======
     <Value>0.5</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>

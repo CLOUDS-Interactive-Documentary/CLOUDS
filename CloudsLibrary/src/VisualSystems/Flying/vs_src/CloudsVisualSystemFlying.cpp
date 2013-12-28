@@ -456,7 +456,7 @@ Generator CloudsVisualSystemFlying::buildSynth()
     Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).trigger(soundTriggers[1]).loop(1);
     Generator sampleGen3 = BufferPlayer().setBuffer(samples[2]).trigger(soundTriggers[2]).loop(1);
     
-    return sampleGen1 * 1.0f + sampleGen2 * 0.5f + sampleGen3 * 1.0f;
+    return sampleGen1 * 1.0f + sampleGen2 * 0.35f + sampleGen3 * 0.6f;
 }
 
 void CloudsVisualSystemFlying::audioRequested(ofAudioEventArgs& args)
