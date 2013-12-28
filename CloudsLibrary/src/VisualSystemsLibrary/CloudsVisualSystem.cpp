@@ -1564,13 +1564,13 @@ void CloudsVisualSystem::setupPresetGui()
     presetGui->copyCanvasProperties(gui);
     presetGui->addSpacer();
     
-    vector<string> empty; empty.clear();
+    vector<string> empty;
+	empty.clear();
 	presetRadio = presetGui->addRadio("PRESETS", empty);
 	
 	presetGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     vector<string> presets = getPresets();
-    for(vector<string>::iterator it = presets.begin(); it != presets.end(); ++it)
-    {
+    for(vector<string>::iterator it = presets.begin(); it != presets.end(); ++it) {
         ofxUIToggle *t = presetGui->addToggle((*it), false);
         presetRadio->addToggle(t);
     }
@@ -1584,9 +1584,17 @@ void CloudsVisualSystem::setupPresetGui()
 void CloudsVisualSystem::guiPresetEvent(ofxUIEventArgs &e)
 {
     ofxUIToggle *t = (ofxUIToggle *) e.widget;
-    if(t->getValue())
-    {
-        loadPresetGUISFromName(e.widget->getName());
+    if(t->getValue()){
+		
+		if(isSetup()){
+			selfEnd();
+		}
+        
+		loadPresetGUISFromName(e.widget->getName());
+		
+		if(isSetup()){
+			selfBegin();
+		}
     }
 }
 
