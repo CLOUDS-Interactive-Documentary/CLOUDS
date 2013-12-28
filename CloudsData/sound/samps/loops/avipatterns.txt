@@ -25,10 +25,10 @@ avi2b_kick2_32.wav A B B A A B B B
 avi2b_rimz2_32.wav - - A A B
 
 // AVI2c
-avi2c_clak2_32.wav - - A B -
-avi2c_hh2_32.wav - A - B - A B
-avi2c_kick2_32.wav A B A B B
-avi2c_rimz2_32.wav - A B A B A
+avi2c_clak2_32.wav - - A - - B
+avi2c_hh2_32.wav - A - B A A B -
+avi2c_kick2_32.wav A A A A B
+avi2c_rimz2_32.wav - A B - B A
 
 // AVI3a
 avi3a_808kick_32.wav A A A B B B

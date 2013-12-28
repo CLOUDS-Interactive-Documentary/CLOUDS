@@ -155,7 +155,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                 dichos.push_back(foo[j].balance);
             }
             
-            cout << "	current energy is " << (isHighEnergy ? "HIGH" : "LOW");
+            cout << "	current energy is " << (isHighEnergy ? "HIGH" : "LOW") << endl;
             
             if(args.act->isClipEnergyShift(theclip)) allowchange = true;
             
