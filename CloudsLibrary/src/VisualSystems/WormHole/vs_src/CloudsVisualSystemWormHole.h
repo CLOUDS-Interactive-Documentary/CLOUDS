@@ -15,6 +15,7 @@
 #include "ofxSimpleSpline.h"
 #include "CloudsPathCamera.h"
 #include "ofxObjLoader.h"
+#include "glm.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemWormHole : public CloudsVisualSystem {
@@ -116,12 +117,15 @@ protected:
 	ofxUISuperCanvas* cameraGui;
 	ofxUISuperCanvas* meshGui;
 	ofxUISuperCanvas* shaderGui;
+	ofxUISuperCanvas* fogGui;
 	ofxUISuperCanvas* displacementGui;
+	
 	ofImage colorSampleImage;
 
 	bool bDoShader;
 	ofShader normalShader;
 	ofShader facingRatio;
+	ofShader WormholeShader;
 	
 	map<string, ofShader*> shaderMap;
 	map<string, ofBlendMode> blendModes;
@@ -133,14 +137,13 @@ protected:
 	ofVboMesh mesh;
 	string modelPath;
 	string currentMeshName;
-	bool bFacetMesh, bSmoothMesh, bMeshHasBeenFaceted, bMeshHasBeenSmoothed;
-	
 	
 	vector<string> meshNames;
 	vector<string> cameraPathNames;
 		
 	float fogDist, fogExpo;
-	ofFloatColor fogColor;
+	int fogHue, fogSaturation, fogBrightness;
+	ofColor fogColor;
 	
 	ofVec3f lightPos;
 	ofFloatColor lightColor;
@@ -161,4 +164,7 @@ protected:
 	bool bUseNoiseDisplacement;
 	float noiseDisplacement, noiseSpeed, noiseTime, noiseScale;
 	ofVec3f noiseOffset, noiseDir;
+
+	ofVbo testVbo;
+	int testVertexCount;
 };

@@ -30,8 +30,8 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	meshGui->setName("Mesh");
 	meshGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	meshGui->addToggle("FacetMesh", &bFacetMesh);
-	meshGui->addToggle("SmoothMesh", &bSmoothMesh);
+//	meshGui->addToggle("FacetMesh", &bFacetMesh);
+//	meshGui->addToggle("SmoothMesh", &bSmoothMesh);
 	
 	meshGui->addSpacer();
 	meshGui->addLabel("mesh files");
@@ -110,6 +110,28 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	guis.push_back(shaderGui);
 	guimap[shaderGui->getName()] = shaderGui;
 	
+	
+	fogGui = new ofxUISuperCanvas("FOG", gui);
+	fogGui->copyCanvasStyle(gui);
+	fogGui->copyCanvasProperties(gui);
+	fogGui->setName("Fog");
+	fogGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	//fogHue, fogSaturation, fogBrightness;
+	fogGui->addSlider("fogDistance", 1, 1000, &fogDist)->setIncrement(1);
+	fogGui->addSlider("fogExpo", .6, 10, &fogExpo);
+	
+	fogGui->addSpacer();
+	fogGui->addIntSlider("fogHue", 0, 255, &fogHue);
+	fogGui->addIntSlider("fogSaturation", 0, 255, &fogSaturation);
+	fogGui->addIntSlider("fogBrightness", 0, 255, &fogBrightness);
+	
+	
+	
+	ofAddListener(fogGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	guis.push_back(fogGui);
+	guimap[fogGui->getName()] = fogGui;
+	
 	//displacement
 	displacementGui = new ofxUISuperCanvas("Displacement", gui);
 	displacementGui->copyCanvasStyle(gui);
@@ -177,11 +199,6 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 				if(name == meshNames[i])
 				{
 					loadMesh( meshNames[i] );
-					
-//					if(bFacetMesh && !bMeshHasBeenFaceted)
-//					{
-//						facetMesh(mesh, mesh);
-//					}
 				}
 			}
 		}
@@ -193,34 +210,13 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 				if(name == it->first)
 				{
 					currentBlendMode = it->second;
-					
-					cout << "WTF" << endl;
 				}
 			}
-		}
-		
-		else if(name == "FacetMesh" )
-		{
-//			if(!bMeshHasBeenFaceted)
-//			{
-//				facetMesh(mesh, mesh);
-//				bSmoothMesh = false;
-//			}
-		}
-		else if(name == "SmoothMesh" )
-		{
-//			if(!bMeshHasBeenSmoothed)
-//			{
-//				smoothMesh(mesh, mesh);
-//				bFacetMesh = false;
-//			}
 		}
 	}
 	
 	if(name == "c1")
-	{
-		cout << "GUI event" << name << endl;
-		
+	{	
 		ofFloatColor tempColor = ((ofxUIImageSampler *) e.widget)->getColor();
 		c1.r = tempColor.r;
 		c1.g = tempColor.g;
@@ -229,11 +225,21 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 	
 	else if(name == "c2")
 	{
-		cout << "GUI event" << name << endl;
 		ofFloatColor tempColor = ((ofxUIImageSampler *) e.widget)->getColor();
 		c2.r = tempColor.r;
 		c2.g = tempColor.g;
 		c2.b = tempColor.b;
+	}
+	
+	else if( name == "fogHue"|| name == "fogSaturation"|| name == "fogBrightness")
+	{
+		fogColor.setHue(fogHue);
+		fogColor.setSaturation(fogSaturation);
+		fogColor.setBrightness(fogBrightness);
+		
+		fogGui->getWidget("fogHue")->setColorFill(fogColor);
+		fogGui->getWidget("fogSaturation")->setColorFill(fogColor);
+		fogGui->getWidget("fogBrightness")->setColorFill(fogColor);
 	}
 }
 
@@ -241,16 +247,14 @@ void CloudsVisualSystemWormHole::loadMesh(string name)
 {
 	if(name != currentMeshName)
 	{
+		float startTime = ofGetElapsedTimeMillis();
 		currentMeshName = name;
 		
 		mesh.clear();
 		
 		ofxObjLoader::load( modelPath + name, mesh, false );
 		
-		bMeshHasBeenFaceted = bMeshHasBeenSmoothed = false;
-		
-//		if(bFacetMesh)	facetMesh(mesh, mesh);
-//		else if(bSmoothMesh)	smoothMesh(mesh, mesh);
+		cout << name + " loaded in " << ofGetElapsedTimeMillis() - startTime << " milliseconds" << endl;
 	}
 }
 
@@ -259,6 +263,7 @@ void CloudsVisualSystemWormHole::loadShaders()
 	loadShader("normalShader");
 	loadShader("facingRatio");
 	loadShader("XRayShader");
+	loadShader("WormholeShader");
 }
 
 void CloudsVisualSystemWormHole::loadShader( string shaderName )
@@ -307,10 +312,10 @@ void CloudsVisualSystemWormHole::selfSetup()
 	shininess = 16;
 	bDepthTest = true;
 	
-	bFacetMesh = true;
-	bMeshHasBeenFaceted = false;
-	
 	currentBlendMode = OF_BLENDMODE_DISABLED;
+	
+	fogColor.set(0,0,0, 255);
+	fogDist = 70;
 	
 	//meshes
 	modelPath = getVisualSystemDataPath() + "models/";
@@ -405,6 +410,12 @@ void CloudsVisualSystemWormHole::selfDraw()
 	{
 		currentShader->begin();
 		currentShader->setUniform1f("time", ofGetElapsedTimef());
+		ofVec3f cp = getCameraPosition();
+		currentShader->setUniform3f("cameraPosition", cp.x, cp.y, cp.z );
+		ofFloatColor fc = fogColor;
+		currentShader->setUniform4f("fogColor", fc.r, fc.g, fc.b, fc.a);
+		currentShader->setUniform1f("fogDistance", fogDist );
+		
 		currentShader->setUniform1f("shininess", shininess );
 		currentShader->setUniform4f("c1", c1.r, c1.g, c1.b, c1.a );
 		currentShader->setUniform4f("c2", c2.r, c2.g, c2.b, c2.a );
@@ -434,10 +445,11 @@ void CloudsVisualSystemWormHole::selfDraw()
 		mat->end();
 	}
 	
-	ofPopMatrix();
-	
 	//unbind shade
 	if (bDoShader && currentShader != NULL)	currentShader->end();
+	
+	ofPopMatrix();
+	
 	
 	//disable depth testing
 	glDisable(GL_DEPTH_TEST);
@@ -596,15 +608,11 @@ void CloudsVisualSystemWormHole::smoothMesh( ofMesh& facetedMesh, ofMesh& target
 	if(hasTC)	targetMesh.addTexCoords( smoothTexCoords );
 	targetMesh.addIndices( smoothIndices );
 	
-	bMeshHasBeenSmoothed = true;
-	bMeshHasBeenFaceted = false;
-	
 	cout << "smoothed mesh in "<< ofToString((ofGetElapsedTimeMillis() - startTime)) << " milli seconds" << endl;
 }
 
 void CloudsVisualSystemWormHole::facetMesh( ofMesh& smoothedMesh, ofMesh& targetMesh )
 {
-	cout << "Faceting Mesh" << endl;
 	float startTime = ofGetElapsedTimeMillis();
 	//get our vertex, uv and face info
 	vector<ofVec3f>& v = smoothedMesh.getVertices();
@@ -644,7 +652,5 @@ void CloudsVisualSystemWormHole::facetMesh( ofMesh& smoothedMesh, ofMesh& target
 	if(hasTC)	targetMesh.addTexCoords( facetedTexCoords );
 	targetMesh.addIndices( facetedIndices );
 	
-	bMeshHasBeenFaceted = true;
-	bMeshHasBeenSmoothed = false;
-	cout << "smoothed mesh in "<< ofToString((ofGetElapsedTimeMillis() - startTime)) << " milli seconds" << endl;
+	cout << "faceted mesh in "<< ofToString((ofGetElapsedTimeMillis() - startTime)) << " milli seconds" << endl;
 }

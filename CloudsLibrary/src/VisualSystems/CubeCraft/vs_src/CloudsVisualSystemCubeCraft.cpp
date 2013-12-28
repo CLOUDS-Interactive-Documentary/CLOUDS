@@ -513,8 +513,6 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	mineCraftGroundShader.setUniform3f("cameraOffset", -cameraOffset.x, 0., -cameraOffset.z);
 	
 	mineCraftGroundShader.setUniform3f("cubeScale", 1,1,1 );
-	
-	
 
 	voxelVbo.draw(GL_TRIANGLES, 0, voxelIndexCount );
 
@@ -522,8 +520,6 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	
 	
 	//CLOUDS
-	mineCraftCloudsShader.begin();
-	
 	mineCraftCloudsShader.begin();
 	mineCraftCloudsShader.setUniform1f("cameraCutoffDistance", 3);
 	

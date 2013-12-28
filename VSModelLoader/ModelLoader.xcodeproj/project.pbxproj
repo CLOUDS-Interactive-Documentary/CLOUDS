@@ -16,7 +16,6 @@
 		5055DB7A181B069000761DA0 /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5055D871181B068F00761DA0 /* rgbdcombined.vert */; };
 		5055DB7B181B069000761DA0 /* XRayShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5055D872181B068F00761DA0 /* XRayShader.frag */; };
 		5055DB80181B069000761DA0 /* CloudsOrthoCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB6F181B069000761DA0 /* CloudsOrthoCamera.cpp */; };
-		5055DB81181B069000761DA0 /* CloudsPathCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB71181B069000761DA0 /* CloudsPathCamera.cpp */; };
 		5055DB9E181B06DA00761DA0 /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB99181B06DA00761DA0 /* ofxObjLoader.cpp */; };
 		5055DBBC181B06EE00761DA0 /* ofxSimpleSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DBB7181B06EE00761DA0 /* ofxSimpleSpline.cpp */; };
 		5055DBC4181B076F00761DA0 /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 5055DBC2181B076F00761DA0 /* glm.c */; };
@@ -104,7 +103,6 @@
 		850EE7EF183072BC004411A3 /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5055D871181B068F00761DA0 /* rgbdcombined.vert */; };
 		850EE7F0183072BC004411A3 /* XRayShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5055D872181B068F00761DA0 /* XRayShader.frag */; };
 		850EE7F2183072BC004411A3 /* CloudsOrthoCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB6F181B069000761DA0 /* CloudsOrthoCamera.cpp */; };
-		850EE7F3183072BC004411A3 /* CloudsPathCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB71181B069000761DA0 /* CloudsPathCamera.cpp */; };
 		850EE7F4183072BC004411A3 /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB99181B06DA00761DA0 /* ofxObjLoader.cpp */; };
 		850EE7F5183072BC004411A3 /* ofxSimpleSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DBB7181B06EE00761DA0 /* ofxSimpleSpline.cpp */; };
 		850EE7F6183072BC004411A3 /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 5055DBC2181B076F00761DA0 /* glm.c */; };
@@ -977,8 +975,6 @@
 		5055DB66181B069000761DA0 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
 		5055DB6F181B069000761DA0 /* CloudsOrthoCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsOrthoCamera.cpp; sourceTree = "<group>"; };
 		5055DB70181B069000761DA0 /* CloudsOrthoCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsOrthoCamera.h; sourceTree = "<group>"; };
-		5055DB71181B069000761DA0 /* CloudsPathCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPathCamera.cpp; sourceTree = "<group>"; };
-		5055DB72181B069000761DA0 /* CloudsPathCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPathCamera.h; sourceTree = "<group>"; };
 		5055DB99181B06DA00761DA0 /* ofxObjLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxObjLoader.cpp; sourceTree = "<group>"; };
 		5055DB9A181B06DA00761DA0 /* ofxObjLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxObjLoader.h; sourceTree = "<group>"; };
 		5055DBB7181B06EE00761DA0 /* ofxSimpleSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleSpline.cpp; sourceTree = "<group>"; };
@@ -2526,8 +2522,6 @@
 				504016BA185D499F0039386C /* CloudsVisualSystem3DModelLoader.h */,
 				5055DB6F181B069000761DA0 /* CloudsOrthoCamera.cpp */,
 				5055DB70181B069000761DA0 /* CloudsOrthoCamera.h */,
-				5055DB71181B069000761DA0 /* CloudsPathCamera.cpp */,
-				5055DB72181B069000761DA0 /* CloudsPathCamera.h */,
 			);
 			name = vs_src;
 			path = ../3DModelLoader/vs_src;
@@ -3438,7 +3432,6 @@
 				850EE7EF183072BC004411A3 /* rgbdcombined.vert in Sources */,
 				850EE7F0183072BC004411A3 /* XRayShader.frag in Sources */,
 				850EE7F2183072BC004411A3 /* CloudsOrthoCamera.cpp in Sources */,
-				850EE7F3183072BC004411A3 /* CloudsPathCamera.cpp in Sources */,
 				850EE7F4183072BC004411A3 /* ofxObjLoader.cpp in Sources */,
 				850EE7F5183072BC004411A3 /* ofxSimpleSpline.cpp in Sources */,
 				850EE7F6183072BC004411A3 /* glm.c in Sources */,
@@ -3534,7 +3527,6 @@
 				5055DB7A181B069000761DA0 /* rgbdcombined.vert in Sources */,
 				5055DB7B181B069000761DA0 /* XRayShader.frag in Sources */,
 				5055DB80181B069000761DA0 /* CloudsOrthoCamera.cpp in Sources */,
-				5055DB81181B069000761DA0 /* CloudsPathCamera.cpp in Sources */,
 				5055DB9E181B06DA00761DA0 /* ofxObjLoader.cpp in Sources */,
 				5055DBBC181B06EE00761DA0 /* ofxSimpleSpline.cpp in Sources */,
 				5055DBC4181B076F00761DA0 /* glm.c in Sources */,
