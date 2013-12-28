@@ -159,6 +159,7 @@ void SCHEDULEBANG(double time);
 void STREAMSOUND(string file, float dur, float amp, ofSoundPlayer& bupsound);
 
 void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus);
+void INITMIX();
 
 void PATCHSYNTH(string inst, string output);
 void PATCHFX(string inst, string input, string output);
