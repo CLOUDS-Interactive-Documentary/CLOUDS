@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>449.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>118.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -12,13 +12,43 @@
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>creatureFogStart</Name>
-    <Value>4285.714355469</Value>
+    <Name>maxCamSpeed</Name>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>creatureFogEnd</Name>
-    <Value>5123.152832031</Value>
+    <Kind>6</Kind>
+    <Name>creatureFogRange</Name>
+    <HighValue>7832.513671875</HighValue>
+    <LowValue>4975.369628906</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowFogRange</Name>
+    <HighValue>8226.600585938</HighValue>
+    <LowValue>1921.181884766</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowInnerFogRange</Name>
+    <HighValue>640.394104004</HighValue>
+    <LowValue>100.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowAlphaRange</Name>
+    <HighValue>0.280788183</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowSizeRange</Name>
+    <HighValue>443.349792480</HighValue>
+    <LowValue>242.364440918</LowValue>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numSnowParticles</Name>
+    <Value>57571</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -54,36 +84,6 @@
     <Kind>25</Kind>
     <Name>maxDistFromCentre</Name>
     <Value>1655.172363281</Value>
-</Widget>
-<Widget>
-    <Kind>44</Kind>
-    <Name>numPointOne</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>huePointOne</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>44</Kind>
-    <Name>numPointTwo</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>huePointTwo</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>44</Kind>
-    <Name>numPointThree</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>huePointThree</Name>
-    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
