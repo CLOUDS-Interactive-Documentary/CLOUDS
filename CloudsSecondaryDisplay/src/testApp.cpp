@@ -25,12 +25,6 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-    if (key == OF_KEY_RIGHT){
-        secondaryDisplay.drawNextLayout();
-    }
-    else if(key == OF_KEY_LEFT){
-        secondaryDisplay.drawPrevLayout();
-    }
 
 }
 

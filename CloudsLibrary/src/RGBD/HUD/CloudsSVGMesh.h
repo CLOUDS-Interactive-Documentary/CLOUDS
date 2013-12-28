@@ -36,7 +36,7 @@ class CloudsSVGMesh
 	SVGMesh* getMeshByID(string meshId);
 	
   protected:
-	void recurseSVGTag(ofxXmlSettings& xml, string parentId);
+	void recurseSVGTag(ofxXmlSettings& xml, string parentId, float parentOpacity);
 	vector<SVGMesh> meshes;
 	map<string,int> meshIdIndex;
 	

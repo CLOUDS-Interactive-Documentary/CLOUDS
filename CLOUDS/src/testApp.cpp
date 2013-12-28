@@ -33,8 +33,8 @@ void testApp::setup(){
 	player.getClusterMap().buildEntireCluster(parser);
 	
 	mixer.setup();
-	//KILL SOUND
-//	sound.setup(storyEngine);
+
+	sound.setup(storyEngine);
 
 	player.setStoryEngine(storyEngine);
 

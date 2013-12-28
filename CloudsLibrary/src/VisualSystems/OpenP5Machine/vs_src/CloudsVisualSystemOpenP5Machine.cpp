@@ -75,7 +75,6 @@ void CloudsVisualSystemOpenP5Machine::selfSetup(){
     // sound
     synth.setOutputGen(buildSynth());
     
-    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOpenP5Machine::audioRequested);
 }
 
 
@@ -90,7 +89,7 @@ void CloudsVisualSystemOpenP5Machine::selfPresetLoaded(string presetPath){
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemOpenP5Machine::selfBegin(){
-	
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOpenP5Machine::audioRequested);	
 }
 
 //do things like ofRotate/ofTranslate here
@@ -194,9 +193,9 @@ void CloudsVisualSystemOpenP5Machine::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemOpenP5Machine::selfEnd(){
-
-	
+	ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOpenP5Machine::audioRequested);
 }
+
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemOpenP5Machine::selfExit(){
 	
