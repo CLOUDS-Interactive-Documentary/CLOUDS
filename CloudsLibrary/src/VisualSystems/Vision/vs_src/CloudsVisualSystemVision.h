@@ -12,12 +12,7 @@
 #include "MyTracker.h"
 #include "ofxAVFVideoPlayer.h"
 
-typedef enum{
-    OpticalFlow =0,
-    ContourTracking,
-    HeatMap
 
-}CVMode;
 
 class CloudsVisualSystemVision : public CloudsVisualSystem {
 public:
@@ -79,8 +74,6 @@ protected:
     bool frameIsNew;
     bool bNewVideoLoaded;
     vector<string> movieStrings;
-
-    CVMode currentMode;
     int opticalFlowScale;
 //    vector<ofRectangle> flowRegions;
 //    void populateOpticalFlowRegions();
@@ -145,7 +138,7 @@ protected:
     void loadMovieAtIndex(int movieIndex);
     void updateSettingsForNewVideo();
     
-    void setMode(CVMode mode);
+//    void setMode(CVMode mode);
     int accumulationCount;
     cv::Scalar diffMean;
     

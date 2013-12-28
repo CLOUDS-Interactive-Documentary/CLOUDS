@@ -535,8 +535,8 @@
 		E72446B116573AD000D70E01 /* ofxTween.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTween.cpp; sourceTree = "<group>"; };
 		E72446B216573AD000D70E01 /* ofxTween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTween.h; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
-		E7AF94A01858C4620057411D /* heatMapShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = heatMapShader.frag; path = ../../../../CloudsData/visualsystems/Vision/heatMapShader.frag; sourceTree = "<group>"; };
-		E7AF94A11858C4620057411D /* heatMapShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = heatMapShader.vert; path = ../../../../CloudsData/visualsystems/Vision/heatMapShader.vert; sourceTree = "<group>"; };
+		E7AF94A01858C4620057411D /* heatMapShader.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = heatMapShader.frag; path = ../../../../CloudsData/visualsystems/Vision/heatMapShader.frag; sourceTree = "<group>"; };
+		E7AF94A11858C4620057411D /* heatMapShader.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = heatMapShader.vert; path = ../../../../CloudsData/visualsystems/Vision/heatMapShader.vert; sourceTree = "<group>"; };
 		E7AF94A51858D1C60057411D /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
 		E7AF94A61858D1C60057411D /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
 		E7AF94A71858D1C60057411D /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };

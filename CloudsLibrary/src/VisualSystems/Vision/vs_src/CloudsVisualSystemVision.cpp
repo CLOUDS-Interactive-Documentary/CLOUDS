@@ -15,7 +15,7 @@ string CloudsVisualSystemVision::getSystemName()
 }
 
 void CloudsVisualSystemVision::selfSetDefaults(){
-    currentMode = OpticalFlow;
+//    currentMode = OpticalFlow;
     curFlow = &farneback;
     bIs2D = true;
 	
@@ -590,7 +590,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
     
     if(bDrawHeatMap){
         
- /*     
+     
 		shader.begin();
         shader.setUniformTexture("thresholdedImage", thresholded, 0);
         shader.setUniform1f("inRangeMax", 50);
@@ -599,7 +599,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
         diff.draw(0,0,ofGetWidth(), ofGetHeight());
         shader.end();
   
-*/
+        /*
         ofPushStyle();
         ofSetColor(128,diffAlpha);
 //        ofPushMatrix();
@@ -623,6 +623,8 @@ void CloudsVisualSystemVision::selfDrawBackground()
         ofRect(0, 20,  mapBlue, 10);
 //        ofPopMatrix();
         ofPopStyle();
+        
+        */
 
     }
 	
@@ -693,26 +695,26 @@ void CloudsVisualSystemVision::selfMouseReleased(ofMouseEventArgs& data)
     
 }
 
-void CloudsVisualSystemVision::setMode(CVMode mode){
-    
-    switch (mode) {
-        case OpticalFlow:
-            cout<<"setting mode to optical flow"<<endl;
-            currentMode = OpticalFlow;
-            break;
-            
-        case ContourTracking:
-            currentMode = ContourTracking;
-            break;
-            
-        case HeatMap:
-            currentMode = HeatMap;
-            break;
-            
-        default:
-            break;
-    }
-}
+//void CloudsVisualSystemVision::setMode(CVMode mode){
+//    
+//    switch (mode) {
+//        case OpticalFlow:
+//            cout<<"setting mode to optical flow"<<endl;
+//            currentMode = OpticalFlow;
+//            break;
+//            
+//        case ContourTracking:
+//            currentMode = ContourTracking;
+//            break;
+//            
+//        case HeatMap:
+//            currentMode = HeatMap;
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//}
 
 void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
 {

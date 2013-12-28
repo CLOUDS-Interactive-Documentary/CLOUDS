@@ -52,17 +52,21 @@ void main (void)
     vec3 hsv;
     float f;
 	f = (colorSample.x +colorSample.y + colorSample.z)/3.0;
-    float hue =map(f, 0.,inRangeMax,outRangeMin,outRangeMax);
-    vec3 newHSV;
-    newHSV = vec3(hue,128.,128.);
+    if (f > 0.2) {
+        float hue =map(f, 0.,inRangeMax,outRangeMin,outRangeMax);
+        vec3 newHSV;
+        newHSV = vec3(0.2,1.0,1.);
+        
+        
+        vec3 newRGB;
+        newRGB  = hsv2rgb(newHSV);
+        gl_FragColor = vec4(newRGB,0.5);//sample * tint * brightness;
+    }
 
 
-    vec3 newRGB;
-	newRGB  = hsv2rgb(newHSV);
-
-    
+    gl_FragColor = colorSample;
     //same a
     //vec4 sample = texture2DRect(image, gl_TexCoord[0].xy);
 	//use the color tint as well as whatever ofSetColor() is set to
-	gl_FragData[0] = vec4(newRGB,128.);//sample * tint * brightness;
+
 }
