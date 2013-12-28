@@ -27,12 +27,6 @@
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E703C907185BDCD900547738 /* ofxAnimationPrimitivesTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703C901185BDCD900547738 /* ofxAnimationPrimitivesTimer.cpp */; };
 		E703C908185BDCD900547738 /* ofxAnimationPrimitivesTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703C901185BDCD900547738 /* ofxAnimationPrimitivesTimer.cpp */; };
-		E703CC6F185BE89800547738 /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CBED185BE89800547738 /* Client.cpp */; };
-		E703CC70185BE89800547738 /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CBEE185BE89800547738 /* Connection.cpp */; };
-		E703CC71185BE89800547738 /* Events.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CBEF185BE89800547738 /* Events.cpp */; };
-		E703CC72185BE89800547738 /* Protocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CBF0185BE89800547738 /* Protocol.cpp */; };
-		E703CC73185BE89800547738 /* Reactor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CBF1185BE89800547738 /* Reactor.cpp */; };
-		E703CC74185BE89800547738 /* Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CBF2185BE89800547738 /* Server.cpp */; };
 		E703CC8F185C135D00547738 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E703CC8E185C135D00547738 /* OpenAL.framework */; };
 		E703CC9C185C1CC700547738 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E703CC8E185C135D00547738 /* OpenAL.framework */; };
 		E703CCAD185C1D5800547738 /* CloudsSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CC9E185C1D5800547738 /* CloudsSound.cpp */; };
@@ -51,7 +45,6 @@
 		E703CCBA185C1D5800547738 /* lukeMusicFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CCAC185C1D5800547738 /* lukeMusicFuncs.cpp */; };
 		E703CCBB185C1DD400547738 /* CloudsCaption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E795820F18433E330093FA2D /* CloudsCaption.cpp */; };
 		E70CDDC8186958B200955691 /* CloudsSecondaryDisplayOSCSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDC2186958B200955691 /* CloudsSecondaryDisplayOSCSender.cpp */; };
-		E70CDDC9186958B200955691 /* CloudsWebSocketConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDC4186958B200955691 /* CloudsWebSocketConnection.cpp */; };
 		E70CE1E118695CCC00955691 /* CloudsVisualSystem2DVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDCD18695CC800955691 /* CloudsVisualSystem2DVideo.cpp */; };
 		E70CE1E218695CCC00955691 /* CloudsVisualSystem2DVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDCD18695CC800955691 /* CloudsVisualSystem2DVideo.cpp */; };
 		E70CE1E318695CCC00955691 /* CloudsOrthoCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDD218695CC800955691 /* CloudsOrthoCamera.cpp */; };
@@ -1156,14 +1149,6 @@
 		E703C900185BDCD900547738 /* ofxAnimationPrimitivesReplicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesReplicator.h; sourceTree = "<group>"; };
 		E703C901185BDCD900547738 /* ofxAnimationPrimitivesTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAnimationPrimitivesTimer.cpp; sourceTree = "<group>"; };
 		E703C902185BDCD900547738 /* ofxAnimationPrimitivesTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesTimer.h; sourceTree = "<group>"; };
-		E703CBED185BE89800547738 /* Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Client.cpp; sourceTree = "<group>"; };
-		E703CBEE185BE89800547738 /* Connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Connection.cpp; sourceTree = "<group>"; };
-		E703CBEF185BE89800547738 /* Events.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Events.cpp; sourceTree = "<group>"; };
-		E703CBF0185BE89800547738 /* Protocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Protocol.cpp; sourceTree = "<group>"; };
-		E703CBF1185BE89800547738 /* Reactor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Reactor.cpp; sourceTree = "<group>"; };
-		E703CBF2185BE89800547738 /* Server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Server.cpp; sourceTree = "<group>"; };
-		E703CC3E185BE89800547738 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		E703CC8D185C132000547738 /* ofxLibwebsockets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxLibwebsockets.h; sourceTree = "<group>"; };
 		E703CC8E185C135D00547738 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		E703CC9E185C1D5800547738 /* CloudsSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSound.cpp; sourceTree = "<group>"; };
 		E703CC9F185C1D5800547738 /* CloudsSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSound.h; sourceTree = "<group>"; };
@@ -1176,8 +1161,6 @@
 		E703CCAC185C1D5800547738 /* lukeMusicFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeMusicFuncs.cpp; sourceTree = "<group>"; };
 		E70CDDC2186958B200955691 /* CloudsSecondaryDisplayOSCSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSecondaryDisplayOSCSender.cpp; sourceTree = "<group>"; };
 		E70CDDC3186958B200955691 /* CloudsSecondaryDisplayOSCSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSecondaryDisplayOSCSender.h; sourceTree = "<group>"; };
-		E70CDDC4186958B200955691 /* CloudsWebSocketConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsWebSocketConnection.cpp; sourceTree = "<group>"; };
-		E70CDDC5186958B200955691 /* CloudsWebSocketConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsWebSocketConnection.h; sourceTree = "<group>"; };
 		E70CDDCD18695CC800955691 /* CloudsVisualSystem2DVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem2DVideo.cpp; sourceTree = "<group>"; };
 		E70CDDCE18695CC800955691 /* CloudsVisualSystem2DVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem2DVideo.h; sourceTree = "<group>"; };
 		E70CDDD218695CC800955691 /* CloudsOrthoCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsOrthoCamera.cpp; sourceTree = "<group>"; };
@@ -2598,7 +2581,6 @@
 			isa = PBXGroup;
 			children = (
 				E7E17448186E630D007D1EDC /* ofxTonic */,
-				E703CAEB185BE89600547738 /* ofxLibwebsockets */,
 				E734A00C18556E92002E615C /* ofxOsc */,
 				E79E6EC418551AFE00406535 /* ofxNearestNeighbour */,
 				E780D1051852CA140096AE8D /* ofxAssimpModelLoader */,
@@ -2756,54 +2738,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		E703CAEB185BE89600547738 /* ofxLibwebsockets */ = {
-			isa = PBXGroup;
-			children = (
-				E703CC8C185C132000547738 /* src */,
-				E703CBB3185BE89800547738 /* libs */,
-				E703CC3E185BE89800547738 /* README.md */,
-			);
-			name = ofxLibwebsockets;
-			path = ../../../addons/ofxLibwebsockets;
-			sourceTree = "<group>";
-		};
-		E703CBB3185BE89800547738 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				E703CBE2185BE89800547738 /* ofxLibwebsockets */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		E703CBE2185BE89800547738 /* ofxLibwebsockets */ = {
-			isa = PBXGroup;
-			children = (
-				E703CBEC185BE89800547738 /* src */,
-			);
-			path = ofxLibwebsockets;
-			sourceTree = "<group>";
-		};
-		E703CBEC185BE89800547738 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				E703CBED185BE89800547738 /* Client.cpp */,
-				E703CBEE185BE89800547738 /* Connection.cpp */,
-				E703CBEF185BE89800547738 /* Events.cpp */,
-				E703CBF0185BE89800547738 /* Protocol.cpp */,
-				E703CBF1185BE89800547738 /* Reactor.cpp */,
-				E703CBF2185BE89800547738 /* Server.cpp */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		E703CC8C185C132000547738 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				E703CC8D185C132000547738 /* ofxLibwebsockets.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		E703CC9D185C1D5800547738 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
@@ -2885,8 +2819,6 @@
 			children = (
 				E70CDDC3186958B200955691 /* CloudsSecondaryDisplayOSCSender.h */,
 				E70CDDC2186958B200955691 /* CloudsSecondaryDisplayOSCSender.cpp */,
-				E70CDDC5186958B200955691 /* CloudsWebSocketConnection.h */,
-				E70CDDC4186958B200955691 /* CloudsWebSocketConnection.cpp */,
 			);
 			path = Sender;
 			sourceTree = "<group>";
@@ -7029,6 +6961,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CLOUDS" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -7352,12 +7286,6 @@
 				E734A05218556E92002E615C /* ofxOscSender.cpp in Sources */,
 				E734A0561855750F002E615C /* CloudsInputKinectOSC.cpp in Sources */,
 				E703C907185BDCD900547738 /* ofxAnimationPrimitivesTimer.cpp in Sources */,
-				E703CC6F185BE89800547738 /* Client.cpp in Sources */,
-				E703CC70185BE89800547738 /* Connection.cpp in Sources */,
-				E703CC71185BE89800547738 /* Events.cpp in Sources */,
-				E703CC72185BE89800547738 /* Protocol.cpp in Sources */,
-				E703CC73185BE89800547738 /* Reactor.cpp in Sources */,
-				E703CC74185BE89800547738 /* Server.cpp in Sources */,
 				E703CCAD185C1D5800547738 /* CloudsSound.cpp in Sources */,
 				E703CCAF185C1D5800547738 /* CloudsSoundFilesSamplesDatabases.cpp in Sources */,
 				E703CCB1185C1D5800547738 /* CloudsSoundFuncs.cpp in Sources */,
@@ -7367,7 +7295,6 @@
 				E732FCD31863CC2300643061 /* CloudsAudioEvents.cpp in Sources */,
 				E732FCD51863CC2300643061 /* CloudsMixer.cpp in Sources */,
 				E70CDDC8186958B200955691 /* CloudsSecondaryDisplayOSCSender.cpp in Sources */,
-				E70CDDC9186958B200955691 /* CloudsWebSocketConnection.cpp in Sources */,
 				E70CE1E118695CCC00955691 /* CloudsVisualSystem2DVideo.cpp in Sources */,
 				E70CE1E318695CCC00955691 /* CloudsOrthoCamera.cpp in Sources */,
 				E70CE1E718695CCC00955691 /* CloudsVisualSystem3DModelLoader.cpp in Sources */,
@@ -8227,6 +8154,7 @@
 		E4B69B600A3A1757003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8351,8 +8279,8 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/linux64\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18 = "\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19 = "\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/openssl/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18 = "";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19 = "";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
@@ -8362,8 +8290,10 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
+				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = CLOUDSDebug;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -8371,6 +8301,7 @@
 		E4B69B610A3A1757003C02F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8490,8 +8421,8 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/linux64\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18 = "\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19 = "\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/openssl/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18 = "";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19 = "";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
@@ -8501,8 +8432,10 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
+				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = CLOUDS;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
