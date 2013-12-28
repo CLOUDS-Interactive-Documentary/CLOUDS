@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "CloudsEvents.h"
+#include "CloudsAudioEvents.h"
 #include "CloudsStoryEngine.h"
 #include "CloudsAct.h"
 #include "lukeFuncs.h"
@@ -16,8 +17,6 @@ class CloudsSound {
 	void update();
 	void drawDebug();
 	
-	void setMasterAmp(float amp);
-	
 	void keyPressed(ofKeyEventArgs & args);
 	void keyReleased(ofKeyEventArgs & args);
 	
@@ -27,7 +26,6 @@ class CloudsSound {
 	void mouseReleased(ofMouseEventArgs & args);
 	
 	void audioRequested(ofAudioEventArgs& args);
-
 	void actBegan(CloudsActEventArgs& args);
 	void actEnded(CloudsActEventArgs& args);
 	void clipBegan(CloudsClipEventArgs& args);
@@ -41,8 +39,9 @@ class CloudsSound {
 	
     // Luke's public stuff
     void startMusicFX(float outskip, float musicdur);
-    void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm);
+    void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum);
     void stopMusic();
+    void reloadPresets();
 
   protected:
 
@@ -64,11 +63,9 @@ class CloudsSound {
     int nchans; // 2 = stereo
     int framesize; // sigvs (512 seems ok)
 
-    int returnColor(string c);
-    int first_vec;
-    float allownote;
+    bool first_vec;
+    bool rtc_playing;
 
-    float MASTERAMP;
     float MASTERTEMPO;
     int AUTORUN;
     bool DOCLEAR;
@@ -77,6 +74,7 @@ class CloudsSound {
 	
     vector<lukeRhythm> rhythms;
     vector<lukePitchArray> pitches;
+    vector<lukeSimpleMelody> simplemelodies;
     vector<lukePreset> presets;
 
     vector<lukeSample> looperSamples;

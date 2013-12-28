@@ -69,9 +69,6 @@ void CloudsVisualSystemBallDroppings::guiRenderEvent(ofxUIEventArgs &e)
 // geometry should be loaded here
 void CloudsVisualSystemBallDroppings::selfSetup()
 {
-    //ofEnableSmoothing();
-	ofToggleFullscreen();
-	
 	//defaults
 	friction = 0.99997f;
 	frequencyRange = 50000;

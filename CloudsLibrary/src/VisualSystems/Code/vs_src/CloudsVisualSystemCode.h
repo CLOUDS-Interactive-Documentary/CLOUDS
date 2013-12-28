@@ -11,7 +11,9 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "CodePanel.h"
+#include "Panel.h"
+#include "PanelCode.h"
+#include "PanelGraph.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemCode : public CloudsVisualSystem {
@@ -36,6 +38,7 @@ class CloudsVisualSystemCode : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
+	void selfSetDefaults();
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
@@ -88,8 +91,7 @@ class CloudsVisualSystemCode : public CloudsVisualSystem {
 
 	void generatePanels();
 	
-	CodePanel testPanel;
-	vector<CodePanel> panels;
+	vector<Panel*> panels;
 	
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -104,8 +106,13 @@ protected:
 	vector<ofRectangle> rectTests;
 	
 	ofxUISuperCanvas* typeGui;
+	ofxUISuperCanvas* colorGui;
 	ofRange speedRange;
 	
+	vector<ofFloatColor> matchColorTypes;
+	ofFloatColor matchColorTypesHSV[MATCH_TYPES];
+	ofFloatColor tintColorHSV;
+	ofFloatColor tintColor;
 	ofxUISuperCanvas* boxGui;
 	int minsize;
 	float minTextboxSize;
@@ -113,6 +120,8 @@ protected:
 	float maxheight;
 	int boxSeed;
 	float outlineAlpha;
+	
+	bool panelsGenerated;
 	
 
 

@@ -33,6 +33,29 @@ void testApp::setup(){
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
 	
 	receiver.setup( 12345 );
+    
+    mixer.setup(2, 44100, 512, 2);
+    mixer.setMusicVolume(1);
+	
+	
+	//update questions
+	ofBuffer questionBuffer;
+    vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
+    set<string> questionsTopics;
+	
+    for(int i = 0; i < startingNodes.size(); i++){
+        CloudsClip& clip = startingNodes[i];
+		if(clip.getTopicsWithQuestions().size() > 0){
+			questionsTopics.insert(clip.getTopicsWithQuestions()[0] + ":" + clip.getQuestionForTopic( clip.getTopicsWithQuestions()[0]));
+		}
+    }
+	
+	set<string>::iterator it;
+	for(it = questionsTopics.begin(); it != questionsTopics.end(); it++){
+		questionBuffer.append( *it + "\n" );
+	}
+	
+	ofBufferToFile(GetCloudsDataPath() + "sound/questions.txt", questionBuffer);
 }
 
 //--------------------------------------------------------------
@@ -106,7 +129,7 @@ void testApp::update(){
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
 		if(m.getAddress() == "/setupMusic"){
-            sound.stopMusic();
+            //sound.stopMusic();
 			oharmony = m.getArgAsInt32(0);
 			orhythm = m.getArgAsInt32(1);
 			otempo = m.getArgAsInt32(2);
@@ -114,39 +137,39 @@ void testApp::update(){
             oorch.clear();
             oarg_a.clear();
             oarg_b.clear();
+            oamp.clear();
+            orev.clear();
 		}
 		if(m.getAddress() == "/addOrch"){
 			oorch.push_back(m.getArgAsString(0));
 			oarg_a.push_back(m.getArgAsString(1));
 			oarg_b.push_back(m.getArgAsString(2));
+            oamp.push_back(m.getArgAsFloat(3));
+            orev.push_back(m.getArgAsFloat(4));
 		}
 		if(m.getAddress() == "/startMusic"){
-			//sound.startMusic();
 			cout << "STARTING MUSIC" << endl;
             sound.startMusicFX(0, odur+5);
             for(int i = 0;i<oorch.size();i++)
             {
                 cout << "running " << oorch[i] << endl;
-                sound.startMusic(0, oorch[i], oarg_a[i], oarg_b[i], oharmony, orhythm, odur, otempo);
+                sound.startMusic(0, oorch[i], oarg_a[i], oarg_b[i], oharmony, orhythm, odur, otempo, oamp[i], orev[i], i);
             }
 		}
 		else if(m.getAddress() == "/stopMusic"){
             sound.stopMusic();
             cout << "STOPPING MUSIC" << endl;
 		}
+        else if(m.getAddress() == "/reloadPresets") {
+            sound.reloadPresets();
+        }
 	}
 
 }
 
 //--------------------------------------------------------------
 void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
-	
-	ofAudioEventArgs args;
-	args.buffer = output;
-	args.bufferSize = bufferSize;
-	args.nChannels = nChannels;
-	
-	ofNotifyEvent(ofEvents().audioRequested, args, this);
+	mixer.fillBuffer(output, bufferSize, nChannels);
 }
 
 
@@ -192,6 +215,9 @@ void testApp::keyPressed(int key){
 	if(key == 'S'){
 		storyEngine.saveGuiSettings();
 	}
+    if(key == 'l') {
+        sound.reloadPresets();
+    }
 }
 
 //--------------------------------------------------------------

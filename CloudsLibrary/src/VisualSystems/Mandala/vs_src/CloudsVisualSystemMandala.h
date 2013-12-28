@@ -11,12 +11,14 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "CloudsGlobal.h"
 #include "ofxSimpleSurface.h"
 #include "ofxObjLoader.h"
 #include "ofxTween.h"
 #include "MandalaTicker.h"
 #include "MandalaComponent.h"
 #include "SurfacePoint.h"
+
 
 
 class SPMesh :  public ofNode{
@@ -68,6 +70,250 @@ public:
 	vector< MandalaTicker<float> > tickers;
 };
 
+class SPMeshTail{
+public:
+	SPMeshTail()
+	{
+		m = NULL;
+		smoothing = .8;
+		bIsSetup = false;
+	};
+	~SPMeshTail()
+	{
+		line.clear();
+		points.clear();
+	};
+	
+	void setup( SPMesh* _m, ofVec3f _localOffset=ofVec3f(0,0,0))
+	{
+		if(_m)
+		{
+			bIsSetup = true;
+			m = _m;
+			localOffset = _localOffset;
+			
+			points.resize(50);
+			uv.resize(points.size());
+			colors.resize(points.size());
+			worldPos = getRootPosoition();
+			float step = 1./float(points.size()-1);
+			for(int i=0; i<points.size(); i++)
+			{
+				points[i] = worldPos;
+				uv[i].set(step * i);
+
+				colors[i].set( 1, 1, 1, 1. - step*i );
+			}
+			
+			line.setVertexData( &points[0], points.size(), GL_DYNAMIC_DRAW );
+			line.setTexCoordData( &uv[0], uv.size(), GL_DYNAMIC_DRAW );
+			line.setColorData( &colors[0], colors.size(), GL_DYNAMIC_DRAW );
+		}
+	}
+	
+	void update()
+	{
+		if(!bIsSetup)
+		{
+			setup(m);
+		}
+		if(m)
+		{
+			worldPos = getRootPosoition();
+			
+			points[0] = worldPos;
+			
+			float dynamicSmoothing = smoothing * min(1.f, lastHead.distance(worldPos) / 5.f );
+			
+			float msmoothing = 1. - dynamicSmoothing;
+						
+			for(int i=points.size()-1; i>0; i--)
+			{
+				//points[i] = points[i-1] * dynamicSmoothing + points[i] * msmoothing;
+				points[i] = points[i-1];
+			}
+			
+			line.updateVertexData( &points[0], points.size() );
+			
+			lastHead = worldPos;
+		}
+	}
+	
+	void draw()
+	{
+		ofSetColor(255, 255, 255);
+		line.draw(GL_LINE_STRIP, 0, points.size());
+	}
+	
+	ofVec3f getRootPosoition()
+	{
+		if(m == NULL){
+			cout << "no mesh" << endl;
+			return ofVec3f(0,0,0);
+		}
+		
+		return localOffset * m->getGlobalTransformMatrix();
+	}
+	
+	void operator=( const SPMeshTail t)
+	{
+		m = t.m;
+		localOffset = t.localOffset;
+		worldPos = t.worldPos;
+		
+		points = t.points;
+		uv = t.uv;
+		colors = t.colors;
+		
+		smoothing = t.smoothing;
+	};
+	
+	SPMesh* m;
+	ofVec3f localOffset;
+	ofVec3f worldPos;
+	
+	float smoothing;
+	
+	ofVbo line;
+	
+	vector<ofVec3f> points;
+	vector<ofVec2f> uv;
+	vector<ofFloatColor> colors;
+	
+	ofVec3f lastHead;
+	
+	bool bIsSetup;
+};
+
+class TailLoft{
+public:
+	
+	TailLoft(SPMeshTail* _t1 = NULL, SPMeshTail* _t2 = NULL)
+	{
+		setup(_t1, _t2);
+	}
+	
+	~TailLoft()
+	{
+		m.clear();
+	}
+	void setup (SPMeshTail* _t1 = NULL, SPMeshTail* _t2 = NULL)
+	{
+		t1 = _t1;
+		t2 = _t2;
+		
+		color.setHue( (.1 * int(ofRandom(0,10)) ) * 255 );
+		color.setSaturation( 200 );
+		color.setBrightness( 255 );
+		
+		if(t1 != NULL && t2 != NULL)
+		{
+			//create out mesh
+			m.clear();
+			
+			indices.clear();
+			vertices.clear();
+			normals.clear();
+			
+			vertices.resize(t1->points.size()*2);
+			
+			for(int i=0; i<t1->points.size(); i++)
+			{
+				vertices[i*2] = t1->points[i];
+				vertices[i*2+1] = t2->points[i];
+			}
+			
+			normals.resize(vertices.size());
+			
+			for(int i=1; i<t1->points.size(); i++)
+			{
+				indices.push_back( (i-1)*2 + 1 );
+				indices.push_back( (i-1)*2 );
+				indices.push_back( i*2 );
+				
+				indices.push_back( (i-1)*2 + 1 );
+				indices.push_back( i*2 );
+				indices.push_back( i*2 + 1 );
+			}
+			indexCount = indices.size();
+
+			updateNormals();
+			
+			m.setVertexData( &vertices[0], vertices.size(), GL_DYNAMIC_DRAW );
+			m.setNormalData( &normals[0], normals.size(), GL_DYNAMIC_DRAW );
+			m.setIndexData( &indices[0], indices.size(), GL_DYNAMIC_DRAW );
+		}
+			
+	}
+	
+	void updateNormals()
+	{
+		for(int i=0; i<normals.size(); i++)
+		{
+			normals[i].set(0,0,0);
+		}
+		
+		int i0, i1, i2;
+		ofVec3f n;
+		for(int i=0; i<indices.size(); i+=3)
+		{
+			i0 = indices[i];
+			i1 = i0+1;
+			i2 = i0+2;
+			
+			n = normalFrom3Points( vertices[i0], vertices[i1], vertices[i2]);
+			normals[i0] += n;
+			normals[i1] += n;
+			normals[i2] += n;
+		}
+		
+		for(int i=0; i<normals.size(); i++)
+		{
+			normals[i].normalize();
+		}
+		
+		m.setNormalData( &normals[0], normals.size(), GL_DYNAMIC_DRAW );
+	}
+	
+	void update()
+	{
+		if(t1 != NULL && t2 != NULL){
+			for(int i=0; i<t1->points.size(); i++)
+			{	
+				vertices[i*2] = t1->points[i];
+				vertices[i*2+1] = t2->points[i];
+			}
+			
+			m.setVertexData( &vertices[0], vertices.size(), GL_DYNAMIC_DRAW);
+		}
+		
+		updateNormals();
+	}
+	
+	void draw()
+	{
+		ofSetColor( color );
+		m.drawElements(GL_TRIANGLES, indexCount );
+	}
+	
+	
+	ofVec3f normalFrom3Points(ofVec3f p0, ofVec3f p1, ofVec3f p2)
+	{
+		return (p2 - p1).cross( p0 - p1).normalized();
+	}
+	
+	SPMeshTail* t1;
+	SPMeshTail* t2;
+	
+	vector<ofVec3f> vertices;
+	vector<ofVec3f> normals;
+	vector<ofIndexType> indices;
+	
+	ofColor color;
+	
+	ofVbo m;
+	ofIndexType indexCount;
+};
 class CloudsVisualSystemMandala : public CloudsVisualSystem {
 public:
     
@@ -218,6 +464,7 @@ protected:
 	map<string, ofVboMesh*> meshOptions;//names of the different meshes availlable to the components
 	
 	vector<SPMesh> surfaceMeshes;
+	vector<SPMeshTail> tails;
 	
 	bool bDrawBoxClock;
 	vector <MandalaComponent*> boxClockComponents;
@@ -255,10 +502,12 @@ protected:
 	map<string, bool> whatsDrawn;
 	
 	
-	bool bDrawSurface, bSmoothSurface;
+	bool bDrawSurface, bSmoothSurface, bDrawTails, bDrawSpokes;
 	
 	
 	float lastTime, currentTime;
+	
+	vector<TailLoft> lofts;
 	
 	//temp
 };

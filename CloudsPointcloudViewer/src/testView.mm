@@ -30,9 +30,10 @@
 	[clipTable reloadData];
     [interventionTextBox setTarget:self];   
 	
-//	rgbdVisualSystem.setRenderer(renderer);
 	rgbdVisualSystem.setup();
-//	renderer.setShaderPath( renderer.G() + "shaders/rgbdcombined");
+	rgbdVisualSystem.setDrawToScreen(false);
+	hud.setup();
+
 
 	rgbdVisualSystem.playSystem();
 #ifdef OCULUS_RIFT
@@ -42,22 +43,27 @@
 #endif
 	srand(ofGetSeconds());
 	
+	
+	
 	[self loadClip: parser.getRandomClip(true, false)];
 	
 }
 
 - (void)update
 {
-//	renderer.update();
-	if(rgbdVisualSystem.getRGBDVideoPlayer().isDone()){
-		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setPosition(0);
-		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().play();
-	}
+	
+//	if(rgbdVisualSystem.getRGBDVideoPlayer().isDone()){
+//		cout << "replaying video!" << endl;
+//		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setPosition(0);
+//		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().play();
+//	}
 }
 
 - (void)draw
 {
-
+	rgbdVisualSystem.selfPostDraw();
+	
+	hud.draw();
 }
 
 - (void) loadClipFromTable:(id)sender
@@ -72,7 +78,16 @@
 
 - (IBAction)loadClip:(CloudsClip&)clip
 {
-	if(clip.hasCombinedVideo && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
+	if(clip.hasMediaAsset && clip.voiceOverAudio && rgbdVisualSystem.getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath) ){
+		
+		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
+		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
+									  CloudsSpeaker::speakers[clip.person].lastName,
+									  clip.name );
+		
+		currentClip = clip;
+	}
+	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
 		
 		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
 		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
@@ -175,10 +190,6 @@
     }
 }
 
-
-
-
-
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
 
@@ -189,7 +200,7 @@
 		return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].name.c_str() ];
 	}
 	else if([@"combined" isEqualToString:aTableColumn.identifier]){
-		return parser.getAllClips()[rowIndex].hasCombinedVideo ? @"YES" : @"NO";
+		return parser.getAllClips()[rowIndex].hasMediaAsset ? @"YES" : @"NO";
 	}
 	return @"";
 	

@@ -6,7 +6,8 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsInput.h"
 
-const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying.xml", "rules/flower.xml" };
+//const string CloudsVisualSystemFlying::RULES_FILES[] = { "flower1.xml", "tree1.xml", "tree2.xml", "tree3.xml" };
+//const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying2.xml" };
 const float CloudsVisualSystemFlying::CAM_DAMPING = .08f;
 
 CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
@@ -15,6 +16,15 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
     cameraControl(true), fogStart(200.f), fogEnd(500.f), growDist(300.f), drawPlantPosns(false), numNearbyPlants(200),
     zSpeed(0), yRot(0), xRot(20), camAvoidDist(500.f)
 {
+    ofDirectory dir;
+    dir.listDir(getVisualSystemDataPath() + "rules");
+    for (unsigned i = 0; i < dir.size(); ++i)
+    {
+        rulesFileNames.push_back(dir.getName(i));
+        rules.push_back(ofxRules());
+        rules.back().load(dir.getPath(i));
+        rulesWeights.push_back(1.f);
+    }
 }
 
 // selfSetup is called when the visual system is first instantiated
@@ -22,8 +32,6 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
 // geometry should be loaded here
 void CloudsVisualSystemFlying::selfSetup()
 {
-    ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemFlying::onWindowResized);
-    
     post.init(ofGetWidth(), ofGetHeight(), true);
     //post.createPass<EdgePass>();
     post.createPass<FxaaPass>();
@@ -45,6 +53,9 @@ void CloudsVisualSystemFlying::selfSetup()
     
     // meshes
     generate();
+    
+    // sound
+    synth.setOutputGen(buildSynth());
 }
 
 void CloudsVisualSystemFlying::generate()
@@ -53,11 +64,25 @@ void CloudsVisualSystemFlying::generate()
     plants.clear();
     floor.clear();
     
+    float totalWeight = 0.f;
+    for (unsigned i = 0; i < rulesWeights.size(); ++i)
+    {
+        totalWeight += rulesWeights[i];
+    }
+    
+    vector<float> normalisedWeights;
+    for (int i = 0; i < rulesWeights.size(); ++i)
+    {
+        if (i == 0) normalisedWeights.push_back(rulesWeights[i] / totalWeight);
+        else normalisedWeights.push_back(normalisedWeights[i - 1] + rulesWeights[i] / totalWeight);
+    }
+    
     // plants
     for (unsigned i = 0; i < numPlantMeshes; ++i)
     {
-        plantMeshes.push_back(ofxRules());
-        plantMeshes.back().load(getVisualSystemDataPath() + RULES_FILES[rand() % NUM_RULES_FILES]);
+        vector<float>::const_iterator it = lower_bound(normalisedWeights.begin(), normalisedWeights.end(), ofRandomuf());
+        unsigned idx = it - normalisedWeights.begin();
+        plantMeshes.push_back(rules[idx]);
         plantMeshes.back().start();
         while (plantMeshes.back().step()) ;
     }
@@ -124,12 +149,22 @@ void CloudsVisualSystemFlying::generate()
 void CloudsVisualSystemFlying::selfBegin()
 {
     getCameraRef().setPosition(0, 200, floorHalfD);
+    
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemFlying::audioRequested);
+
+    for (int i=0; i<3; i++)
+    {
+        if (playSample[i]) {
+            soundTriggers[i].trigger();
+        }
+    }
 }
 
 //normal update call
 void CloudsVisualSystemFlying::selfUpdate()
 {
-    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
+    if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
+    
     if (cameraControl)
     {
         xRot += CAM_DAMPING * (ofMap(abs(GetCloudsInputY() - ofGetHeight() * .5f), 0, ofGetHeight() * 0.5, 30.f, 20.f) - xRot);
@@ -181,8 +216,8 @@ void CloudsVisualSystemFlying::selfDraw()
         ofPopStyle();
     }
     
-    ofMatrix4x4 modelview;
-    glGetFloatv(GL_MODELVIEW_MATRIX, modelview.getPtr());
+    //ofMatrix4x4 modelview;
+    //glGetFloatv(GL_MODELVIEW_MATRIX, modelview.getPtr());
     
     // eye space light pos
     ofVec3f lEye = ofVec3f(1000, 1000, 1000);// * modelview;
@@ -191,11 +226,10 @@ void CloudsVisualSystemFlying::selfDraw()
     
     // PLANTS
     plantsShader.begin();
+    const float camAvoidDistSq = camAvoidDist * camAvoidDist;
     for (auto it = plants.begin(); it != plants.end(); ++it)
     {
-        float growth = ofMap((it->pos - floorLookAt).lengthSquared(), 0.f, growDistSq, 1.4f * plantMeshes[it->meshIdx].getNumSteps(), 0.f, true);
-        
-        const float camAvoidDistSq = camAvoidDistSq * camAvoidDistSq;
+        float growth = ofMap((it->pos - floorLookAt).lengthSquared(), 0.f, growDistSq, 1.4f * plantMeshes[it->meshIdx].getCurrentDepth(), 0.f, true);
         float distToCamSq = (it->pos - cam.getPosition()).lengthSquared();
         if (distToCamSq < camAvoidDistSq)
         {
@@ -204,7 +238,6 @@ void CloudsVisualSystemFlying::selfDraw()
         if (growth > 0.f)
         {
             plantsShader.setUniform1f("growth", growth);
-            plantsShader.setUniform1f("maxDepth", plantMeshes[it->meshIdx].getMaxDepth());
             plantsShader.setUniform3fv("lEye", lEye.getPtr());
             plantsShader.setUniform1f("noiseFreq", noiseFreq);
             plantsShader.setUniform1f("noiseAmp", noiseAmp);
@@ -255,12 +288,17 @@ void CloudsVisualSystemFlying::selfPostDraw()
 void CloudsVisualSystemFlying::selfSetupRenderGui()
 {
     rdrGui->addToggle("regenerate", false);
-    rdrGui->addSlider("growDist", 100.f, 1000.f, &growDist);
-    rdrGui->addSlider("numNearbyPlants", 20, 500, &numNearbyPlants);
+    rdrGui->addToggle("cameraControl", &cameraControl);
     rdrGui->addSlider("fogStart", 100.f, 4000.f, &fogStart);
     rdrGui->addSlider("fogEnd", 100.f, 4000.f, &fogEnd);
+    rdrGui->addLabel("Plants");
+    rdrGui->addSlider("numNearbyPlants", 20, 500, &numNearbyPlants);
+    for (unsigned i = 0; i < rulesFileNames.size(); ++i)
+    {
+        rdrGui->addSlider(rulesFileNames[i] + " weighting", 0.f, 1.f, &rulesWeights[i]);
+    }
+    rdrGui->addSlider("growDist", 100.f, 1000.f, &growDist);
     rdrGui->addSlider("camAvoidDist", 0.f, 1000.f, &camAvoidDist);
-    rdrGui->addToggle("cameraControl", &cameraControl);
     rdrGui->addToggle("drawPlantPosns", &drawPlantPosns);
     rdrGui->addLabel("Floor");
     rdrGui->addSlider("noiseFreq", 0.001, 0.01, &noiseFreq);
@@ -270,6 +308,11 @@ void CloudsVisualSystemFlying::selfSetupRenderGui()
     {
         rdrGui->addToggle(post[i]->getName(), &post[i]->getEnabledRef());
     }
+    
+    rdrGui->addSpacer();
+    rdrGui->addToggle(soundFiles[0], &playSample[0]);
+    rdrGui->addToggle(soundFiles[1], &playSample[1]);
+    rdrGui->addToggle(soundFiles[2], &playSample[2]);
 }
 
 void CloudsVisualSystemFlying::guiRenderEvent(ofxUIEventArgs &e)
@@ -283,11 +326,24 @@ void CloudsVisualSystemFlying::guiRenderEvent(ofxUIEventArgs &e)
             toggle->setValue(false);
         }
     }
+    for (int i=0; i<3; i++)
+    {
+        if (e.widget->getName() == soundFiles[i]) {
+            ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
+            playSample[i] = toggle->getValue();
+            if (toggle->getValue() == true) {
+                soundTriggers[i].trigger();
+            }
+        }
+    }
 }
 
-void CloudsVisualSystemFlying::onWindowResized(ofResizeEventArgs& args)
+// selfPresetLoaded is called whenever a new preset is triggered
+// it'll be called right before selfBegin() and you may wish to
+// refresh anything that a preset may offset, such as stored colors or particles
+void CloudsVisualSystemFlying::selfPresetLoaded(string presetPath)
 {
-    post.init(args.width, args.height, true);
+    generate();
 }
 
 void CloudsVisualSystemFlying::selfGuiEvent(ofxUIEventArgs &e)
@@ -326,13 +382,6 @@ void CloudsVisualSystemFlying::selfSetupGui() {
     
 }
 
-// selfPresetLoaded is called whenever a new preset is triggered
-// it'll be called right before selfBegin() and you may wish to
-// refresh anything that a preset may offset, such as stored colors or particles
-void CloudsVisualSystemFlying::selfPresetLoaded(string presetPath){
-	
-}
-
 //do things like ofRotate/ofTranslate here
 //any type of transformation that doesn't have to do with the camera
 void CloudsVisualSystemFlying::selfSceneTransformation(){
@@ -353,7 +402,8 @@ void CloudsVisualSystemFlying::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemFlying::selfEnd(){
-	
+    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemFlying::audioRequested);
+
 	simplePointcloud.clear();
 	
 }
@@ -386,3 +436,32 @@ void CloudsVisualSystemFlying::selfMousePressed(ofMouseEventArgs& data){
 void CloudsVisualSystemFlying::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
+
+
+Generator CloudsVisualSystemFlying::buildSynth()
+{
+    string strDir = GetCloudsDataPath()+"sound/textures/";
+    ofDirectory sdir(strDir);
+    
+    SampleTable samples[3];
+    
+    int nSounds = sizeof(soundFiles) / sizeof(string);
+    for (int i=0; i<nSounds; i++)
+    {
+        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+        samples[i] = loadAudioFile(strAbsPath);
+    }
+    
+    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
+    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).trigger(soundTriggers[1]).loop(1);
+    Generator sampleGen3 = BufferPlayer().setBuffer(samples[2]).trigger(soundTriggers[2]).loop(1);
+    
+    return sampleGen1 * 1.0f + sampleGen2 * 0.5f + sampleGen3 * 1.0f;
+}
+
+void CloudsVisualSystemFlying::audioRequested(ofAudioEventArgs& args)
+{
+    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+}
+
+

@@ -1,0 +1,45 @@
+// AVI PATTERNS
+
+// AVI1
+avi1_4floor_32.wav - - - - A B A B
+avi1_clap_32.wav A B A B - - - -
+avi1_delay_32.wav - - - - A B A B
+avi1_hh_32.wav - - A B A B - -
+avi1_kick_32.wav A B A B B A B A
+avi1_openhat_32.wav A B - - - - A B
+avi1_tambo_32.wav - - A B A B A B
+
+// AVI2a
+avi2a_crack_64.wav A A - - B B - -
+avi2a_hh_64.wav - A - B A A B B
+avi2a_kick_64.wav A B A B A B A B
+avi2a_snare_64.wav - - - - A A B B
+avi2a_things_64.wav - - - - - - A B
+avi2a_vshh_64.wav - - A A B B A B
+
+// AVI2b
+avi2b_clak2_32.wav A B -
+avi2b_hh2_32.wav A A - B 
+avi2b_hh2open_32.wav A B A
+avi2b_kick2_32.wav A B B A A B B B
+avi2b_rimz2_32.wav - - A A B
+
+// AVI2c
+avi2c_clak2_32.wav - - A B -
+avi2c_hh2_32.wav - A - B - A B
+avi2c_kick2_32.wav A B A B B
+avi2c_rimz2_32.wav - A B A B A
+
+// AVI3a
+avi3a_808kick_32.wav A A A B B B
+avi3a_808snare_32.wav - A A B B -
+avi3a_coinz_32.wav - A B A B - -
+avi3a_kick_32.wav - B - A - B A B
+avi3a_rim_32.wav - - A B A B A B A B
+
+// AVI3b
+avi3b_clap2_32.wav - - A A - B
+avi3b_hh2_32.wav A B A B A B B A
+avi3b_kick2_32.wav A A A B B B
+avi3b_tambourin2_32.wav - A - - B
+avi3b_toms2_32.wav - - A B A - B

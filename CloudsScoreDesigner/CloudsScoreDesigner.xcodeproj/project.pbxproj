@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		186B68AF17EA34110020C952 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 186B68AE17EA34110020C952 /* CloudsVisualSystemManager.cpp */; };
 		18731D30178628D200E22F84 /* CloudsAct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D2E178628D200E22F84 /* CloudsAct.cpp */; };
+		2A4F33D81863C64B0070C0ED /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33D41863C64B0070C0ED /* CloudsAudioEvents.cpp */; };
+		2A4F33D91863C64B0070C0ED /* CloudsMixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F33D61863C64B0070C0ED /* CloudsMixer.cpp */; };
 		3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		C1026558182EBDA900C7F895 /* CloudsSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C102654C182EBDA900C7F895 /* CloudsSound.cpp */; };
@@ -182,6 +184,10 @@
 		18731D2E178628D200E22F84 /* CloudsAct.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsAct.cpp; sourceTree = "<group>"; };
 		18731D2F178628D200E22F84 /* CloudsAct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsAct.h; sourceTree = "<group>"; };
 		1877A9F9178F417A006DAA37 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
+		2A4F33D41863C64B0070C0ED /* CloudsAudioEvents.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsAudioEvents.cpp; sourceTree = "<group>"; };
+		2A4F33D51863C64B0070C0ED /* CloudsAudioEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsAudioEvents.h; sourceTree = "<group>"; };
+		2A4F33D61863C64B0070C0ED /* CloudsMixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMixer.cpp; sourceTree = "<group>"; };
+		2A4F33D71863C64B0070C0ED /* CloudsMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsMixer.h; sourceTree = "<group>"; };
 		3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
 		3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -705,6 +711,10 @@
 		C102654B182EBDA900C7F895 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				2A4F33D51863C64B0070C0ED /* CloudsAudioEvents.h */,
+				2A4F33D41863C64B0070C0ED /* CloudsAudioEvents.cpp */,
+				2A4F33D71863C64B0070C0ED /* CloudsMixer.h */,
+				2A4F33D61863C64B0070C0ED /* CloudsMixer.cpp */,
 				C102654D182EBDA900C7F895 /* CloudsSound.h */,
 				C102654C182EBDA900C7F895 /* CloudsSound.cpp */,
 				C102654E182EBDA900C7F895 /* CloudsSoundFilesSamplesDatabases.cpp */,
@@ -1932,6 +1942,7 @@
 				E779BE2C173D5FCD006357EF /* ofxEasing.cpp in Sources */,
 				E779BE2D173D5FCD006357EF /* ofxEasingBack.cpp in Sources */,
 				E779BE2E173D5FCD006357EF /* ofxEasingBounce.cpp in Sources */,
+				2A4F33D81863C64B0070C0ED /* CloudsAudioEvents.cpp in Sources */,
 				E779BE2F173D5FCD006357EF /* ofxEasingCirc.cpp in Sources */,
 				E779BE30173D5FCD006357EF /* ofxEasingCubic.cpp in Sources */,
 				E779BE31173D5FCD006357EF /* ofxEasingElastic.cpp in Sources */,
@@ -1953,6 +1964,7 @@
 				E7D330701751D446006706ED /* ofxField2D.cpp in Sources */,
 				E7D330711751D446006706ED /* ofxHomingBehavior.cpp in Sources */,
 				E7D330721751D446006706ED /* ofxPerlinBehavior.cpp in Sources */,
+				2A4F33D91863C64B0070C0ED /* CloudsMixer.cpp in Sources */,
 				E7D330731751D446006706ED /* ofxRParticle.cpp in Sources */,
 				E7D330741751D446006706ED /* ofxRParticleGlowieRenderer.cpp in Sources */,
 				E7D330751751D446006706ED /* ofxRParticleRenderer.cpp in Sources */,
@@ -2082,6 +2094,8 @@
 		E4B69B600A3A1757003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2199,6 +2213,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/openssl/lib/win32\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsScoreDesignerDebug;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2206,6 +2221,8 @@
 		E4B69B610A3A1757003C02F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2322,6 +2339,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/openssl/lib/win32\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsScoreDesigner;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

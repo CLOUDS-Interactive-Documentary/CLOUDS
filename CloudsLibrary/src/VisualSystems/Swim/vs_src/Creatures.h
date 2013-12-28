@@ -45,7 +45,7 @@ namespace itg
     public:
         void init(const string& dataPath);
         void update();
-        void draw();
+        void draw(const ofCamera& cam);
 
         void onGui(ofxUIEventArgs& args);
         

@@ -10,9 +10,9 @@
 #include "ofxXmlSettings.h"
 #include "CloudsGlobal.h"
 
-#ifndef CLOUDS_NO_VS
+//#ifndef CLOUDS_NO_VS
 //#include "CloudsVisualSystem.h"
-#endif
+//#endif
 
 
 CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
@@ -22,6 +22,7 @@ CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 	defaultedToFamily = false;
 	randomlySelected = false;
 	oculusCompatible = false;
+	hasSound = false;
 	duration = 60;
 	introDuration = 0;
 	outroDuration = 0;

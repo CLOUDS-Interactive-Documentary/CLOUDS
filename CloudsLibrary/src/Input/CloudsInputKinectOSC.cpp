@@ -61,6 +61,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             float activeThresholdPosY = ofMap(activeThresholdY, 0, 1, 1, -1);
             bool bDoProximity = (activeThresholdZ != 1);
             float activeThresholdPosZ = ofMap(activeThresholdZ, 0, 1, 0, -1);
+            float zRef = bDoProximity? activeThresholdPosZ : 0;
 
             int i = 0;
 			int idx = m.getArgAsInt32(i++);
@@ -137,7 +138,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             //mapCoords(bodies[idx]->spineShoulderJoint.inputPosition, mappingLength, bodies[idx]->neckJoint);
             //mapCoords(bodies[idx]->spineShoulderJoint.inputPosition, mappingLength, bodies[idx]->spineShoulderJoint);
             //mapCoords(bodies[idx]->spineShoulderJoint.inputPosition, mappingLength, bodies[idx]->spineMidJoint);
-            mapCoords(bodies[idx]->spineShoulderJoint.inputPosition, mappingWidth, mappingHeight, bodies[idx]->spineBaseJoint);
+            mapCoords(bodies[idx]->spineShoulderJoint.inputPosition, zRef, mappingWidth, mappingHeight, bodies[idx]->spineBaseJoint);
             
             // refresh the update frame and age
             bodies[idx]->lastUpdateFrame = lastOscFrame;
@@ -161,6 +162,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                                                                             m.getArgAsFloat(i++), 
                                                                             m.getArgAsFloat(i++)), loip);
                 
+                // set the custom origin and map the hand coords
                 ofVec3f origin = bodies[idx]->neckJoint.inputPosition;
                 if (hands[handIdx]->handJoint.type == k4w::JointType_HandLeft) {
                     origin.x -= mappingWidth - neckOverlapWidth;
@@ -169,7 +171,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                     origin.x += mappingWidth - neckOverlapWidth;
                 }
                 origin.y -= mappingHeight;
-                mapCoords(origin, mappingWidth, mappingHeight, hands[handIdx]->handJoint);
+                mapCoords(origin, zRef, mappingWidth, mappingHeight, hands[handIdx]->handJoint);
                 
                 hands[handIdx]->trackingBounds.setFromCenter(origin, mappingWidth * 2, mappingHeight * 2);
                 
@@ -342,7 +344,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
 }
 
 //--------------------------------------------------------------
-void CloudsInputKinectOSC::mapCoords(ofVec3f& origin, float width, float height, k4w::Joint& joint)
+void CloudsInputKinectOSC::mapCoords(ofVec3f& origin, float zRef, float width, float height, k4w::Joint& joint)
 {
     // switch to a local coord system, centered at origin
     joint.localPosition = joint.inputPosition;
@@ -352,7 +354,7 @@ void CloudsInputKinectOSC::mapCoords(ofVec3f& origin, float width, float height,
     float inMaxY = -(height - (2 * (1.0f - activeThresholdY) * height));
     joint.screenPosition.set(ofMap(joint.localPosition.x, -width, width,  0, ofGetWidth()),
                              ofMap(joint.localPosition.y, height, inMaxY, 0, ofGetHeight()),
-                             ofMap(joint.localPosition.z, -width, width,  1, -1));
+                             ofMap(joint.localPosition.z, zRef - width, zRef + width,  1, -1));
 }
 
 //--------------------------------------------------------------

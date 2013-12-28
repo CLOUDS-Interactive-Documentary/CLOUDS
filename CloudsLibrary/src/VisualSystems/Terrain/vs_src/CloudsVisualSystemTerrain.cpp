@@ -30,6 +30,16 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
     customGui->addSlider("noise_zoom", 0.0, 10.0, &noiseZoom);
     customGui->addSlider("noise_speed", 0.0, 1.0, &noiseSpeed);
     
+    customGui->addLabel("GrayScott");
+    customGui->addSlider("Feed", 0.0, 0.1, &grayscottFade);
+    customGui->addSlider("Loops", 1.0, 25, &grayscottLoops);
+    customGui->addSlider("DiffV", 0.0, 1.0, &diffV);
+    customGui->addSlider("DiffU", 0.0, 1.0, &diffU);
+    customGui->addSlider("k", 0.0, 1.0, &k);
+    customGui->addSlider("t", 0.0, 1.0, &f);
+    customGui->addToggle("enable", &bGrayscott);
+    customGui->addButton("clean", &bCleanGrayscott);
+    
     customGui->addLabel("Terrain");
     customGui->addSlider("Terrain_Size", 10, 200, &size);
     customGui->addSlider("Terrain_Altitud", 0, 2, &terrainHeight);
@@ -47,8 +57,12 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
 
 void CloudsVisualSystemTerrain::selfSetup()
 {
-
-
+    grayscottLoops = 10;
+    terrainResolution = 1.0;
+    diffU=0.25;
+    diffV=0.04;
+    k=0.047;
+    f=0.2;
 
     terrainResolution = 1.0;
     setResolution(200, 200);
@@ -57,6 +71,7 @@ void CloudsVisualSystemTerrain::selfSetup()
     noiseShader.load("", getVisualSystemDataPath()+"shaders/mNoise.fs");
     normalsShader.load("", getVisualSystemDataPath()+"shaders/normals.fs");
     patternShader.load("", getVisualSystemDataPath()+"shaders/pattern.fs");
+    grayscottShader.load("", getVisualSystemDataPath()+"shaders/grayscott.fs");
     
     patternScale = 50.0;
     
@@ -111,7 +126,13 @@ void CloudsVisualSystemTerrain::setResolution( int _width, int _height ){
     noiseFbo.allocate(width, height);
     normalsFbo.allocate(width, height);
     patternFbo.allocate(width*patternScale, height*patternScale);
-}
+    
+    for (int i = 0; i < 2; i++) {
+        grayscottFbo[i].allocate(width, height);
+        grayscottFbo[i].begin();
+        ofClear(0);
+        grayscottFbo[i].end();
+    }}
 
 void CloudsVisualSystemTerrain::selfKeyPressed(ofKeyEventArgs & args){
     if (args.key == OF_KEY_UP){
@@ -152,15 +173,58 @@ void CloudsVisualSystemTerrain::selfUpdate()
         noiseShader.end();
         noiseFbo.end();
         
+        if(bGrayscott){
+            if (bCleanGrayscott){
+                for (int i = 0; i < 2; i++) {
+                    grayscottFbo[i].begin();
+                    ofClear(0);
+                    grayscottFbo[i].end();
+                }
+                bCleanGrayscott = false;
+            }
+            
+            for (int i = 0; i < grayscottLoops; i++) {
+                nPingPong = (nPingPong+1)%2;
+                
+                grayscottFbo[nPingPong%2].begin();
+                grayscottShader.begin();
+                grayscottShader.setUniformTexture("backbuffer", grayscottFbo[(nPingPong+1)%2], 1);
+                grayscottShader.setUniformTexture("tex0", noiseFbo, 2);
+                grayscottShader.setUniform1f("diffU", diffU);
+                grayscottShader.setUniform1f("diffV", diffV);
+                grayscottShader.setUniform1f("k", k);
+                grayscottShader.setUniform1f("f", f);
+                grayscottShader.setUniform1f("time", ofGetElapsedTimef());
+                grayscottShader.setUniform1f("fade", grayscottFade);
+                glBegin(GL_QUADS);
+                glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
+                glTexCoord2f(width, 0); glVertex3f(width, 0, 0);
+                glTexCoord2f(width, height); glVertex3f(width, height, 0);
+                glTexCoord2f(0,height);  glVertex3f(0,height, 0);
+                glEnd();
+                grayscottShader.end();
+                grayscottFbo[nPingPong%2].end();
+                
+            }
+        }
+        
         //  Normals
         //
         normalsFbo.begin();
         normalsShader.begin();
-        noiseFbo.draw(0, 0);
+        if(bGrayscott){
+            grayscottFbo[nPingPong%2].draw(0, 0);
+        } else {
+            noiseFbo.draw(0, 0);
+        }
         normalsShader.end();
         normalsFbo.end();
         
-        makeTerrain(noiseFbo.getTextureReference());
+        if(bGrayscott){
+            makeTerrain(grayscottFbo[nPingPong%2].getTextureReference());
+        } else {
+            makeTerrain(noiseFbo.getTextureReference());
+        }
         
         //  Pattern
         //
@@ -287,14 +351,26 @@ void CloudsVisualSystemTerrain::selfDraw()
     
     ofPushMatrix();
     
-    patternFbo.getTextureReference().bind();
+    if(bGrayscott){
+        grayscottFbo[nPingPong%2].getTextureReference().bind();
+    } else {
+//        noiseFbo.getTextureReference().bind();
+        patternFbo.getTextureReference().bind();
+    }
+    
 
     ofSetColor(255);
     glEnable(GL_SMOOTH);
-        glShadeModel(GL_SMOOTH);
+    glShadeModel(GL_SMOOTH);
     terrainVbo.draw(GL_TRIANGLES , 0, nVertexCount);
     
-    patternFbo.getTextureReference().unbind();
+    if(bGrayscott){
+        grayscottFbo[nPingPong%2].getTextureReference().unbind();
+    } else {
+        //noiseFbo.getTextureReference().unbind();
+        patternFbo.getTextureReference().unbind();
+    }
+    
     
     ofPopMatrix();
     

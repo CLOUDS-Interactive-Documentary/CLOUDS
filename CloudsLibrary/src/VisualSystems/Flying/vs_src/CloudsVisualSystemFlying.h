@@ -13,6 +13,11 @@
 #include "CloudsVisualSystem.h"
 #include "ofxRules.h"
 #include "ofxPostProcessing.h"
+#include "ofxTonic.h"
+#include "CloudsAudioEvents.h"
+#include "CloudsGlobal.h"
+
+using namespace Tonic;
 
 struct Plant
 {
@@ -23,8 +28,8 @@ struct Plant
 class CloudsVisualSystemFlying : public CloudsVisualSystem
 {
   public:
-    static const unsigned NUM_RULES_FILES = 2;
-    static const string RULES_FILES[NUM_RULES_FILES];
+    //static const unsigned NUM_RULES_FILES = 4;
+    //static const string RULES_FILES[NUM_RULES_FILES];
     static const float CAM_DAMPING;
     
     CloudsVisualSystemFlying();
@@ -114,7 +119,6 @@ protected:
     //  Your Stuff
     //
     void generate();
-    void onWindowResized(ofResizeEventArgs& args);
     
     ofxPostProcessing post;
     
@@ -126,6 +130,9 @@ protected:
     float camAvoidDist;
     
     // plants
+    vector<string> rulesFileNames;
+    vector<ofxRules> rules;
+    vector<float> rulesWeights;
     ofShader plantsShader;
     unsigned numPlantMeshes;
     float numNearbyPlants;
@@ -154,4 +161,15 @@ protected:
 	ofImage someImage;
 	ofShader pointcloudShader;
 	ofVboMesh simplePointcloud;
+    
+	// Sound
+    string soundFiles[3] = {"SriLankaForest.aif",
+        "FOREST.aif",
+        "organ_slower.aif"};
+    float sampleVolume[3] = {0};
+    bool playSample[3] = {false};
+    ControlTrigger soundTriggers[3];
+    ofxTonicSynth synth;
+    Generator buildSynth();
+	void audioRequested(ofAudioEventArgs& args);
 };

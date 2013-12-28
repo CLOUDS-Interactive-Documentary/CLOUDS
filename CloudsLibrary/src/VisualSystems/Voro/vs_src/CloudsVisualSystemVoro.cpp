@@ -46,8 +46,8 @@ void CloudsVisualSystemVoro::selfSetupSystemGui()
     sysGui->addSlider("Z_Move", 0.0, 1.0, &zMove);
     sysGui->addSlider("Atraction", 0.0, 0.3, &atractionPct);
     sysGui->addSlider("Repulsion", 0.0, 1.0, &repulsionPct);
-    sysGui->addToggle("Glow",& bDrawGlow);
-    sysGui->addToggle("Nucles",& bDrawNucles);
+//    sysGui->addToggle("Glow",& bDrawGlow);
+//    sysGui->addToggle("Nucles",& bDrawNucles);
     sysGui->addSlider("texture_Size", 0.0, 1.0, &tSize);
     sysGui->addButton("Clear", &bClear);
     
@@ -155,7 +155,7 @@ void CloudsVisualSystemVoro::selfUpdate()
                        ofPoint(ofNoise(ofGetElapsedTimef()*0.1, fps*0.03)*2.0-1.0,
                                ofNoise(ofGetElapsedTimef()*0.05, fps*0.07)*2.0-1.0,
                                (ofNoise(ofGetElapsedTimef()*0.01, fps*0.003)-0.5)*zMove)*initialForce );
-            seed->size = 0.1;
+//            seed->size = 0.1;
             seed->nucle = &nucles[ (int)(ofGetElapsedTimef()*10)%28 ];
             seedParticles.push_back(seed);
         }
@@ -177,9 +177,9 @@ void CloudsVisualSystemVoro::selfUpdate()
 	}
     
     for (int i = seedParticles.size()-1; i >=0 ; i--){
-        if(seedParticles[i]->size < MaxSize){
-            seedParticles[i]->size += growRate;
-        }
+//        if(seedParticles[i]->size < MaxSize){
+//            seedParticles[i]->size += growRate;
+//        }
         seedParticles[i]->addAttractionForce( ofPoint(0,0) ,200,atractionPct);
         seedParticles[i]->update();
 	}
@@ -240,9 +240,6 @@ void CloudsVisualSystemVoro::selfUpdate()
     fps++;
     
     //  Cosmic Dust Particles
-    //
-    
-    //  Insert Particles if it's need
     //
 //    if ( (seedParticles.size() > 2) && (particles.size() < nMaxPoints-2) ){
 //        int randomIndex = ofRandom(seedParticles.size()-1);
@@ -324,7 +321,7 @@ void CloudsVisualSystemVoro::selfDraw()
 //        }
 //    }
     
-    if (cellsVertexAlpha>0.0){
+    if (cellsVertexAlpha > 0.0){
         for(int i = 0; i < cellMeshes.size(); i++){
             ofSetColor(155,cellsVertexAlpha*255.0);
             cellMeshes[i].drawVertices();

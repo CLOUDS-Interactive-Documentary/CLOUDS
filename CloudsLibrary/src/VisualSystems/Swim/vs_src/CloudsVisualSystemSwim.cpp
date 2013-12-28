@@ -10,19 +10,27 @@
 //#include "ofxAVFVideoPlayer.h"
 //#endif
 
+const float CloudsVisualSystemSwim::CAM_DAMPING = .08f;
+
+CloudsVisualSystemSwim::CloudsVisualSystemSwim() : camYRot(0), camSpeed(0), maxCamSpeed(600.f)
+{
+}
+
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemSwim::selfSetup()
 {
-    ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemSwim::onWindowResized);
-    
+    snow.init(getVisualSystemDataPath());
     bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
     
     post.init(ofGetWidth(), ofGetHeight(), true);
-    post.createPass<FxaaPass>();
+    //post.createPass<FxaaPass>();
     post.createPass<BloomPass>();
+    
+    // sound
+    synth.setOutputGen(buildSynth());
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -32,22 +40,44 @@ void CloudsVisualSystemSwim::selfBegin()
 {
     // adding this here as custom gui data is loaded after setup
 	creatures.generate();
+    snow.generate();
+
+    // sound
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemSwim::audioRequested);
+    
+    for (int i=0; i<2; i++)
+    {
+        if (playSample[i]) {
+            soundTriggers[i].trigger();
+        }
+    }
 }
 
 //normal update call
 void CloudsVisualSystemSwim::selfUpdate()
 {
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
-    bubbles.update();
-    creatures.update();
+    
+    if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
+    
+    // cam
+    camYRot += CAM_DAMPING * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20, true) - camYRot);
+    camSpeed += CAM_DAMPING * (ofMap(GetCloudsInputY(), 0, ofGetHeight(), -maxCamSpeed, 0.f, true) - camSpeed);
+    getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
+    getCameraRef().setOrientation(ofVec3f(0, camYRot, 0.f));
+    getCameraRef().setFarClip(Creature::fogEnd);
+
+    //bubbles.update();
+    creatures.update();//getCameraRef().getPosition() + 1000.f * getCameraRef().getLookAtDir().normalized());
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemSwim::selfDraw()
 {
-    creatures.draw();
-    bubbles.draw();
+    creatures.draw(getCameraRef());
+    //bubbles.draw();
+    snow.draw(getCameraRef());
 }
 
 void CloudsVisualSystemSwim::selfPostDraw()
@@ -63,7 +93,20 @@ void CloudsVisualSystemSwim::selfPostDraw()
 void CloudsVisualSystemSwim::selfSetupRenderGui()
 {    
     rdrGui->addToggle("regenerate", false);
+    //rdrGui->addMinimalSlider("creatureFogStart", 0.f, 10000.f, &Creature::fogStart);
+    //rdrGui->addMinimalSlider("creatureFogEnd", 0.f, 10000.f, &Creature::fogEnd);
     
+    rdrGui->addMinimalSlider("maxCamSpeed", 0.f, 1500.f, &maxCamSpeed);
+    
+    rdrGui->addRangeSlider("creatureFogRange", 0.f, 10000.f, &Creature::fogStart, &Creature::fogEnd);
+    rdrGui->addRangeSlider("snowFogRange", 0.f, 10000.f, &snow.getFogStartRef(), &snow.getFogEndRef());
+    rdrGui->addRangeSlider("snowInnerFogRange", 0.f, 2000.f, &snow.getInnerFogStartRef(), &snow.getInnerFogEndRef());
+    rdrGui->addRangeSlider("snowAlphaRange", 0.f, 1.f, &snow.getAlphaMinRef(), &snow.getAlphaMaxRef());
+    rdrGui->addRangeSlider("snowSizeRange", 0.f, 1000.f, &snow.getSizeMinRef(), &snow.getSizeMaxRef());
+    rdrGui->addIntSlider("numSnowParticles", 1000, 100000, &snow.getNumParticlesRef());
+    
+    //rdrGui->addMinimalSlider("snowInnerFogStart", 0, 2000.f, &snow.getInnerFogStartRef());
+    //rdrGui->addMinimalSlider("snowInnerFogEnd", 0, 2000.f, &snow.getInnerFogEndRef());
     rdrGui->addLabel("Flocking");
     rdrGui->addSpacer();
     rdrGui->addMinimalSlider("zoneRadius", 50.f, 2000.f, &creatures.zoneRadius);
@@ -74,14 +117,16 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addMinimalSlider("attractStrength", 0.f, 1.f, &creatures.attractStrength);
     rdrGui->addMinimalSlider("maxDistFromCentre", 500.f, 4000.f, &creatures.maxDistFromCentre);
     
+    /*
     rdrGui->addLabel("Points");
     rdrGui->addSpacer();
     rdrGui->addIntSlider("numPointOne", 0, 1000, &creatures.numPointOne);
-    rdrGui->addSlider("huePointOne", 0.f, 1.f, &creatures.huePointOne);
+    rdrGui->addMinimalSlider("huePointOne", 0.f, 1.f, &creatures.huePointOne);
     rdrGui->addIntSlider("numPointTwo", 0, 1000, &creatures.numPointTwo);
-    rdrGui->addSlider("huePointTwo", 0.f, 1.f, &creatures.huePointTwo);
+    rdrGui->addMinimalSlider("huePointTwo", 0.f, 1.f, &creatures.huePointTwo);
     rdrGui->addIntSlider("numPointThree", 0, 1000, &creatures.numPointThree);
-    rdrGui->addSlider("huePointThree", 0.f, 1.f, &creatures.huePointThree);
+    rdrGui->addMinimalSlider("huePointThree", 0.f, 1.f, &creatures.huePointThree);
+     */
     
     rdrGui->addLabel("Jellies (see other menus)");
     rdrGui->addSpacer();
@@ -100,7 +145,8 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addMinimalSlider("yellowSizeAverage", .1f, 3.f, &creatures.fishTwoParams.sizeAverage);
     rdrGui->addMinimalSlider("yellowSizeStdDeviation", 0.f, 1.f, &creatures.fishTwoParams.sizeStdDeviation);
     
-    rdrGui->addMinimalSlider("fishTexAmt", 0.f, 1.f, &ModelCreature::texAmount);
+    //rdrGui->addMinimalSlider("fishTexAmt", 0.f, 1.f, &ModelCreature::texAmount);
+    
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -111,6 +157,12 @@ void CloudsVisualSystemSwim::selfSetupGui()
     
     jellyTwoGui = createCustomGui("Jellyus Twous");
     addSliders(jellyTwoGui, creatures.jellyTwoParams);
+    
+    soundGui = createCustomGui("Sound");
+    // sound
+    soundGui->addToggle(soundFiles[0], &playSample[0]);
+    soundGui->addToggle(soundFiles[1], &playSample[1]);
+    
 }
 
 void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& params)
@@ -144,9 +196,13 @@ void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& para
     gui->addRangeSlider("superformula m2 (range)", 2, 20, &params.m2Min, &params.m2Max);
 }
 
-void CloudsVisualSystemSwim::onWindowResized(ofResizeEventArgs& args)
+// selfPresetLoaded is called whenever a new preset is triggered
+// it'll be called right before selfBegin() and you may wish to
+// refresh anything that a preset may offset, such as stored colors or particles
+void CloudsVisualSystemSwim::selfPresetLoaded(string presetPath)
 {
-    post.init(args.width, args.height, true);
+    creatures.generate();
+    snow.generate();
 }
 
 ofxUISuperCanvas* CloudsVisualSystemSwim::createCustomGui(const string& name)
@@ -170,6 +226,7 @@ void CloudsVisualSystemSwim::guiRenderEvent(ofxUIEventArgs &e)
         ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
         if (toggle->getValue())
         {
+            snow.generate();
             creatures.generate();
             toggle->setValue(false);
         }
@@ -180,6 +237,16 @@ void CloudsVisualSystemSwim::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "Custom Button"){
 		cout << "Button pressed!" << endl;
 	}
+    for (int i=0; i<2; i++)
+    {
+        if (e.widget->getName() == soundFiles[i]) {
+            ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
+            playSample[i] = toggle->getValue();
+            if (toggle->getValue() == true) {
+                soundTriggers[i].trigger();
+            }
+        }
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -188,14 +255,6 @@ void CloudsVisualSystemSwim::selfSetupSystemGui(){
 }
 
 void CloudsVisualSystemSwim::guiSystemEvent(ofxUIEventArgs &e){
-	
-}
-
-
-// selfPresetLoaded is called whenever a new preset is triggered
-// it'll be called right before selfBegin() and you may wish to
-// refresh anything that a preset may offset, such as stored colors or particles
-void CloudsVisualSystemSwim::selfPresetLoaded(string presetPath) {
 	
 }
 
@@ -224,6 +283,8 @@ void CloudsVisualSystemSwim::selfDrawBackground(){
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemSwim::selfEnd(){
 	
+    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemSwim::audioRequested);
+
 	simplePointcloud.clear();
 	
 }
@@ -256,3 +317,30 @@ void CloudsVisualSystemSwim::selfMousePressed(ofMouseEventArgs& data){
 void CloudsVisualSystemSwim::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
+
+Generator CloudsVisualSystemSwim::buildSynth()
+{
+    string strDir = GetCloudsDataPath()+"sound/textures/";
+    ofDirectory sdir(strDir);
+    
+    SampleTable samples[3];
+    
+    int nSounds = sizeof(soundFiles) / sizeof(string);
+    for (int i=0; i<nSounds; i++)
+    {
+        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+        samples[i] = loadAudioFile(strAbsPath);
+    }
+    
+    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
+    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(soundTriggers[1]);
+    
+    return sampleGen1 * 1.0f + sampleGen2 * 1.0f;
+}
+
+void CloudsVisualSystemSwim::audioRequested(ofAudioEventArgs& args)
+{
+    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+}
+
+

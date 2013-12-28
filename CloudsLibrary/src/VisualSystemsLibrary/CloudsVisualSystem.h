@@ -6,10 +6,7 @@
 #include "ofxUI.h"
 #include "ofxTLCameraTrack.h"
 #include "CloudsRGBDCamera.h"
-
 #include "CloudsInputEvents.h"
-
-//tenuous
 #include "ofxLight.h"
 #include "ofxGenerative.h"
 
@@ -53,8 +50,8 @@ class CloudsVisualSystem {
 	};
 	
 	
-
 	static ofFbo& getStaticRenderTarget(); //default
+	static void forceScreenResolution(int screenWidth, int screenHeight);
 	static void loadBackgroundShader();
 	static CloudsRGBDVideoPlayer& getRGBDVideoPlayer();
 	static void getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height);
@@ -64,9 +61,11 @@ class CloudsVisualSystem {
 #endif
 	ofFbo& getSharedRenderTarget();
 	ofImage& getCursor();
-
+	int getCanvasWidth();
+	int getCanvasHeight();
 	
 	//SUB CLASSES USE THESE METHODS:
+	virtual void selfSetDefaults();
     virtual void selfSetup();
     virtual void selfSetupGuis();
     
@@ -256,7 +255,7 @@ class CloudsVisualSystem {
     void toggleGUIS();
     void toggleGuiAndPosition(ofxUISuperCanvas *g);
     void deleteGUIS();
-    
+
 	void setCurrentCamera( ofCamera& cam );
 	void setCurrentCamera( ofCamera* swappedInCam );
 	virtual ofCamera& getCameraRef();
@@ -291,6 +290,15 @@ class CloudsVisualSystem {
     ofxUISuperCanvas *camGui;
     ofxUISuperCanvas *presetGui;
     ofxUISuperCanvas *tlGui;
+    
+    //UI Colours
+    ofxUIColor cb;
+    ofxUIColor co;
+    ofxUIColor coh;
+    ofxUIColor cf;
+    ofxUIColor cfh;
+    ofxUIColor cp;
+    ofxUIColor cpo;
 	
 	void stackGuiWindows();
 	void drawScene();

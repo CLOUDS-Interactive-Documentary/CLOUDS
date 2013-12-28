@@ -45,17 +45,28 @@ struct lukePitchArray {
     vector < vector <int> > markov;
 };
 
+struct lukeSimpleMelody {
+    vector<int> notes;
+};
+
 struct lukePreset {
     string name;
     vector<string> instruments;
     vector<string> arg_a;
     vector<string> arg_b;
+    vector<float> m_amp;
+    vector<float> m_rev;
     int harmony;
     int rhythm;
     float tempo;
     string bank;
     vector<int> dichomin;
     vector<int> dichomax;
+    bool disabled;
+//    string energy;
+	bool highEnergy;
+    string start_question;
+    vector<string> explicit_topics;
 };
 
 struct lukeSample {
@@ -64,6 +75,7 @@ struct lukeSample {
     string bank;
     float length;
     float numbeats;
+    vector <string> pattern;
 };
 
 struct lukeNote {
@@ -86,10 +98,11 @@ public:
 class melodySolver {
     string type;
     lukePitchArray parray;
+    lukeSimpleMelody marray;
     int pick;
     int curpitch;
 public:
-    melodySolver(string c_type, lukePitchArray& c_p);
+    melodySolver(string c_type, lukePitchArray& c_p, lukeSimpleMelody& c_m);
     int tick();
 };
 
@@ -115,28 +128,39 @@ double mtof(double f);
 double ftom(double f, double tuning);
 string ptos(int p);
 int scale(int p, int o);
+double octcps(double cps);
 void precomputemarkov(lukePitchArray& p);
 int markov(int current, lukePitchArray& p);
 void loadrhythms(string f, vector<lukeRhythm>& r);
 void loadpitches(string f, vector<lukePitchArray>& p);
+void loadsimplemelodies(string f, vector<lukeSimpleMelody>& m);
 void loadpresets_xml(string f, vector<lukePreset>& p);
 
 // luke's audio functions
 void RTcmixParseScoreFile(string f);
 void WAVETABLE(double outskip, double dur, double amp, double freq, double pan, string waveform, string ampenvelope);
+void GRANSYNTH(double outskip, double dur, double amp, double freq, double freq_jitter, double grate, double grate_var, double gdur_min, double gdur_max, double gamp_min, double gamp_max, double gpan_min, double gpan_max, string waveform, string ampenvelope, string transphandle);
+void GRANSYNTH(double outskip, double dur, double amp, double freq, double freq_jitter, double grate, double grate_var, double gdur_min, double gdur_max, double gamp_min, double gamp_max, double gpan_min, double gpan_max, string waveform, string ampenvelope, string transphandle, string pitchhandle, string ratehandle, string durhandle);
 void MMODALBAR(double outskip, double dur, double amp, double freq, double hardness, double pos, int instrument);
 void STRUM(double outskip, double dur, double amp, double freq, double squish, double decay, double pan);
 void MBLOWBOTL(double outskip, double dur, double amp, double freq, double noiseamp, double maxpressure, double pan, string pressureenv, string ampenvelope);
 void MMESH2D(double outskip, double dur, double amp, int nxpoints, int nypoints, double xpos, double ypos, double decay, double strike, double pan);
 void MBANDEDWG(double outskip, double dur, double amp, double freq, double strikepos, int pluckflag, double maxvel, int preset, double bowpressure, double resonance, double integration, double pan, string velocityenvelope);
 void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan, double f1, double f2, double f3, double Q, string ampenvelope);
+void WAVESHAPE(double outskip, double dur, double amp, double freq, double pan, string waveform, string ampenvelope, string xferfunc, string controlenv);
 
 void REVERB(double outskip, double time);
 float LOADSOUND(string file, string handle);
 void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle);
-void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, string handle);
+void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, double amp, string handle);
 void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan);
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
 void SCHEDULEBANG(double time);
+void STREAMSOUND(string file, float dur, float amp);
+
+void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus);
+
+void PATCHSYNTH(string inst, string output);
+void PATCHFX(string inst, string input, string output);
 
 #endif

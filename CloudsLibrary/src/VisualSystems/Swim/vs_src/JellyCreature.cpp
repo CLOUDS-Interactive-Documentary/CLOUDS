@@ -167,6 +167,8 @@ namespace itg
         shader.setUniform1f("frequency", frequency);
         shader.setUniformTexture("tex", tex, 0);
         shader.setUniform1f("texRepeatS", texRepeatS);
+        shader.setUniform1f("fogStart", fogStart);
+        shader.setUniform1f("fogEnd", fogEnd);
 #warning take light pos from visual system
         shader.setUniform3f("lightPos", 1000, 0, 1000);
     }

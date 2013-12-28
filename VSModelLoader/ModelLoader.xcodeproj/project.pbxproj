@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		504016BB185D499F0039386C /* CloudsVisualSystem3DModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 504016B9185D499F0039386C /* CloudsVisualSystem3DModelLoader.cpp */; };
 		5055DB75181B069000761DA0 /* gridShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5055D86C181B068F00761DA0 /* gridShader.frag */; };
 		5055DB76181B069000761DA0 /* gridShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5055D86D181B068F00761DA0 /* gridShader.vert */; };
 		5055DB77181B069000761DA0 /* normalShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5055D86E181B068F00761DA0 /* normalShader.frag */; };
@@ -14,7 +15,6 @@
 		5055DB79181B069000761DA0 /* rgbdcombined.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5055D870181B068F00761DA0 /* rgbdcombined.frag */; };
 		5055DB7A181B069000761DA0 /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5055D871181B068F00761DA0 /* rgbdcombined.vert */; };
 		5055DB7B181B069000761DA0 /* XRayShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5055D872181B068F00761DA0 /* XRayShader.frag */; };
-		5055DB7F181B069000761DA0 /* 3DModelVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB6D181B069000761DA0 /* 3DModelVisualSystem.cpp */; };
 		5055DB80181B069000761DA0 /* CloudsOrthoCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB6F181B069000761DA0 /* CloudsOrthoCamera.cpp */; };
 		5055DB81181B069000761DA0 /* CloudsPathCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB71181B069000761DA0 /* CloudsPathCamera.cpp */; };
 		5055DB9E181B06DA00761DA0 /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB99181B06DA00761DA0 /* ofxObjLoader.cpp */; };
@@ -103,7 +103,6 @@
 		850EE7EE183072BC004411A3 /* rgbdcombined.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5055D870181B068F00761DA0 /* rgbdcombined.frag */; };
 		850EE7EF183072BC004411A3 /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5055D871181B068F00761DA0 /* rgbdcombined.vert */; };
 		850EE7F0183072BC004411A3 /* XRayShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5055D872181B068F00761DA0 /* XRayShader.frag */; };
-		850EE7F1183072BC004411A3 /* 3DModelVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB6D181B069000761DA0 /* 3DModelVisualSystem.cpp */; };
 		850EE7F2183072BC004411A3 /* CloudsOrthoCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB6F181B069000761DA0 /* CloudsOrthoCamera.cpp */; };
 		850EE7F3183072BC004411A3 /* CloudsPathCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB71181B069000761DA0 /* CloudsPathCamera.cpp */; };
 		850EE7F4183072BC004411A3 /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB99181B06DA00761DA0 /* ofxObjLoader.cpp */; };
@@ -274,6 +273,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		504016B9185D499F0039386C /* CloudsVisualSystem3DModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem3DModelLoader.cpp; sourceTree = "<group>"; };
+		504016BA185D499F0039386C /* CloudsVisualSystem3DModelLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem3DModelLoader.h; sourceTree = "<group>"; };
 		5055D86A181B068F00761DA0 /* facingRatio.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.frag; sourceTree = "<group>"; };
 		5055D86B181B068F00761DA0 /* facingRatio.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.vert; sourceTree = "<group>"; };
 		5055D86C181B068F00761DA0 /* gridShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gridShader.frag; sourceTree = "<group>"; };
@@ -284,11 +285,8 @@
 		5055D871181B068F00761DA0 /* rgbdcombined.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdcombined.vert; sourceTree = "<group>"; };
 		5055D872181B068F00761DA0 /* XRayShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = XRayShader.frag; sourceTree = "<group>"; };
 		5055D873181B068F00761DA0 /* XRayShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = XRayShader.vert; sourceTree = "<group>"; };
-		5055D874181B068F00761DA0 /* arrow.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arrow.mtl; sourceTree = "<group>"; };
-		5055D875181B068F00761DA0 /* arrow.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arrow.obj; sourceTree = "<group>"; };
 		5055D877181B068F00761DA0 /* testPath.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testPath.xml; sourceTree = "<group>"; };
 		5055D878181B068F00761DA0 /* testPath1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testPath1.xml; sourceTree = "<group>"; };
-		5055D879181B068F00761DA0 /* cameraVertices.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cameraVertices.txt; sourceTree = "<group>"; };
 		5055D87B181B068F00761DA0 /* defaultColorPalette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultColorPalette.png; sourceTree = "<group>"; };
 		5055D87C181B068F00761DA0 /* defaultColors.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = defaultColors.xml; sourceTree = "<group>"; };
 		5055D87D181B068F00761DA0 /* NewMedia Fett.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewMedia Fett.ttf"; sourceTree = "<group>"; };
@@ -977,8 +975,6 @@
 		5055DB64181B069000761DA0 /* xray_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = xray_inout.xml; sourceTree = "<group>"; };
 		5055DB65181B069000761DA0 /* xray_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = xray_zoomer.xml; sourceTree = "<group>"; };
 		5055DB66181B069000761DA0 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
-		5055DB6D181B069000761DA0 /* 3DModelVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = 3DModelVisualSystem.cpp; sourceTree = "<group>"; };
-		5055DB6E181B069000761DA0 /* 3DModelVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 3DModelVisualSystem.h; sourceTree = "<group>"; };
 		5055DB6F181B069000761DA0 /* CloudsOrthoCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsOrthoCamera.cpp; sourceTree = "<group>"; };
 		5055DB70181B069000761DA0 /* CloudsOrthoCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsOrthoCamera.h; sourceTree = "<group>"; };
 		5055DB71181B069000761DA0 /* CloudsPathCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPathCamera.cpp; sourceTree = "<group>"; };
@@ -1312,10 +1308,7 @@
 			isa = PBXGroup;
 			children = (
 				5055D869181B068F00761DA0 /* 3DModelShaders */,
-				5055D874181B068F00761DA0 /* arrow.mtl */,
-				5055D875181B068F00761DA0 /* arrow.obj */,
 				5055D876181B068F00761DA0 /* cameraPaths */,
-				5055D879181B068F00761DA0 /* cameraVertices.txt */,
 				5055D87A181B068F00761DA0 /* GUI */,
 				5055D87E181B068F00761DA0 /* models */,
 				5055D8B4181B068F00761DA0 /* Presets */,
@@ -1339,7 +1332,8 @@
 				5055D872181B068F00761DA0 /* XRayShader.frag */,
 				5055D873181B068F00761DA0 /* XRayShader.vert */,
 			);
-			path = 3DModelShaders;
+			name = 3DModelShaders;
+			path = ../../../../../../CloudsData/visualsystems/3DModelLoader/3DModelShaders;
 			sourceTree = "<group>";
 		};
 		5055D876181B068F00761DA0 /* cameraPaths */ = {
@@ -1348,7 +1342,8 @@
 				5055D877181B068F00761DA0 /* testPath.xml */,
 				5055D878181B068F00761DA0 /* testPath1.xml */,
 			);
-			path = cameraPaths;
+			name = cameraPaths;
+			path = ../../../../../../CloudsData/visualsystems/3DModelLoader/cameraPaths;
 			sourceTree = "<group>";
 		};
 		5055D87A181B068F00761DA0 /* GUI */ = {
@@ -2527,14 +2522,15 @@
 		5055DB6C181B069000761DA0 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				5055DB6D181B069000761DA0 /* 3DModelVisualSystem.cpp */,
-				5055DB6E181B069000761DA0 /* 3DModelVisualSystem.h */,
+				504016B9185D499F0039386C /* CloudsVisualSystem3DModelLoader.cpp */,
+				504016BA185D499F0039386C /* CloudsVisualSystem3DModelLoader.h */,
 				5055DB6F181B069000761DA0 /* CloudsOrthoCamera.cpp */,
 				5055DB70181B069000761DA0 /* CloudsOrthoCamera.h */,
 				5055DB71181B069000761DA0 /* CloudsPathCamera.cpp */,
 				5055DB72181B069000761DA0 /* CloudsPathCamera.h */,
 			);
-			path = vs_src;
+			name = vs_src;
+			path = ../3DModelLoader/vs_src;
 			sourceTree = "<group>";
 		};
 		5055DB82181B06DA00761DA0 /* ofxObjLoader */ = {
@@ -3441,7 +3437,6 @@
 				850EE7EE183072BC004411A3 /* rgbdcombined.frag in Sources */,
 				850EE7EF183072BC004411A3 /* rgbdcombined.vert in Sources */,
 				850EE7F0183072BC004411A3 /* XRayShader.frag in Sources */,
-				850EE7F1183072BC004411A3 /* 3DModelVisualSystem.cpp in Sources */,
 				850EE7F2183072BC004411A3 /* CloudsOrthoCamera.cpp in Sources */,
 				850EE7F3183072BC004411A3 /* CloudsPathCamera.cpp in Sources */,
 				850EE7F4183072BC004411A3 /* ofxObjLoader.cpp in Sources */,
@@ -3538,7 +3533,6 @@
 				5055DB79181B069000761DA0 /* rgbdcombined.frag in Sources */,
 				5055DB7A181B069000761DA0 /* rgbdcombined.vert in Sources */,
 				5055DB7B181B069000761DA0 /* XRayShader.frag in Sources */,
-				5055DB7F181B069000761DA0 /* 3DModelVisualSystem.cpp in Sources */,
 				5055DB80181B069000761DA0 /* CloudsOrthoCamera.cpp in Sources */,
 				5055DB81181B069000761DA0 /* CloudsPathCamera.cpp in Sources */,
 				5055DB9E181B06DA00761DA0 /* ofxObjLoader.cpp in Sources */,
@@ -3546,6 +3540,7 @@
 				5055DBC4181B076F00761DA0 /* glm.c in Sources */,
 				50E89B44182847B500BFD711 /* simple.frag in Sources */,
 				50E89B45182847B500BFD711 /* simple.vert in Sources */,
+				504016BB185D499F0039386C /* CloudsVisualSystem3DModelLoader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

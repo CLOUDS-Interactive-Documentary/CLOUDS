@@ -5,6 +5,8 @@
 #include "CloudsFCPParser.h"
 #include "CloudsPlaybackController.h"
 #include "CloudsSound.h"
+#include "CloudsMixer.h"
+#include "CloudsSecondaryDisplayOSCSender.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -26,8 +28,14 @@ class testApp : public ofBaseApp{
 	CloudsVisualSystemManager visualSystems;
 	CloudsPlaybackController player;
 	CloudsStoryEngine storyEngine;
+	CloudsMixer mixer;
 	CloudsSound sound;
 	CloudsRun run; //temp
+	CloudsAct* currentAct;
+	
+	CloudsSecondaryDisplayOSCSender oscSender;
+	
+	void actCreated(CloudsActEventArgs& args);
 	
 	bool useScratch;
 	

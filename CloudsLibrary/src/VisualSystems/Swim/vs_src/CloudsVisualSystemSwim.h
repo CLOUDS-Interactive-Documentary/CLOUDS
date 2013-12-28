@@ -13,11 +13,20 @@
 #include "CloudsVisualSystem.h"
 #include "Creatures.h"
 #include "Bubbles.h"
+#include "MarineSnow.h"
 #include "ofxPostProcessing.h"
+#include "ofxTonic.h"
+#include "CloudsAudioEvents.h"
+#include "CloudsGlobal.h"
+
+using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemSwim : public CloudsVisualSystem {
   public:
+    static const float CAM_DAMPING;
+    
+    CloudsVisualSystemSwim();
     
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
@@ -107,12 +116,15 @@ protected:
     
     //  Your Stuff
     //
-    void onWindowResized(ofResizeEventArgs& args);
     ofxUISuperCanvas* createCustomGui(const string& name);
     void addSliders(ofxUISuperCanvas* gui, JellyParams& params);
     
+    // cam
+    float camYRot, camSpeed, maxCamSpeed;
+    
     itg::Creatures creatures;
     itg::Bubbles bubbles;
+    itg::MarineSnow snow;
     ofxPostProcessing post;
     
 	ofxUISuperCanvas* jellyOneGui;
@@ -126,4 +138,14 @@ protected:
 	ofImage someImage;
 	ofShader pointcloudShader;
 	ofVboMesh simplePointcloud;
+    
+	// Sound
+    ofxUISuperCanvas* soundGui;
+    string soundFiles[2] = {"Underwater_stretch.aif",
+        "underwater.aif"};
+    bool playSample[2] = {false};
+    ControlTrigger soundTriggers[2];
+    ofxTonicSynth synth;
+    Generator buildSynth();
+	void audioRequested(ofAudioEventArgs& args);
 };

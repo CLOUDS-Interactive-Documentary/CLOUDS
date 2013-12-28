@@ -237,7 +237,11 @@ void CloudsVisualSystemOcean::selfEnd(){
 void CloudsVisualSystemOcean::selfKeyPressed(ofKeyEventArgs & args){
 
 	if(args.key == 'R'){
-		reloadShader();
+		generateOcean();
+	}
+	
+	if(args.key == 'S'){
+		reloadShader();		
 	}
 }
 

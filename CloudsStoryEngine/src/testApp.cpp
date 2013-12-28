@@ -25,7 +25,8 @@ void testApp::setup(){
 	
 	parser.printDichotomyRatios();
 	
-	websockets.setup();
+	//websockets.setup();
+	oscSender.setup();
 	
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
 }
@@ -35,14 +36,13 @@ void testApp::actCreated(CloudsActEventArgs& args){
 	
 	if(currentAct != NULL){
 		currentAct->unregisterEvents(this);
-		currentAct->unregisterEvents(&websockets);
+		currentAct->unregisterEvents(&oscSender);
 		delete currentAct;
 	}
 
-	
 	currentAct = args.act;
 	currentAct->registerEvents(this);
-	currentAct->registerEvents(&websockets);
+	currentAct->registerEvents(&oscSender);
 	
 	currentAct->play();
     currentAct->getTimeline().enableEvents();
@@ -130,6 +130,26 @@ void testApp::keyPressed(int key){
 	if(key == 'S'){
 		storyEngine.saveGuiSettings();
 	}
+	
+	if(key == 'E'){
+		vector<int> projectExampleIndecs;
+		for(int i = 0; i < parser.getAllClips().size(); i++){
+			if(parser.getAllClips()[i].hasProjectExample){
+				projectExampleIndecs.push_back(i);
+			}
+		}
+		
+		if(projectExampleIndecs.size() > 0){
+			int exampleIndex = projectExampleIndecs[ ofRandom(projectExampleIndecs.size()) ];
+			oscSender.sendClip( parser.getAllClips()[exampleIndex]);
+			cout << "SENT CLIP " << parser.getAllClips()[exampleIndex].getLinkName() << " WITH EXAMPLE " << parser.getAllClips()[exampleIndex].projectExampleTitle << endl;
+		}
+	}
+	
+	if(key == 'C'){
+		oscSender.sendClip( parser.getAllClips()[ ofRandom(parser.getAllClips().size()) ] );
+	}
+	
 }
 
 //--------------------------------------------------------------

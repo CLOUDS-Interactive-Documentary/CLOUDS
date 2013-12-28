@@ -16,8 +16,8 @@ uniform sampler2D tex;
 
 varying vec3 nEye;
 varying vec3 vEye;
+varying float fogAmount;
 //varying float superOffset;
-
 
 void main()
 {
@@ -32,5 +32,5 @@ void main()
 
     vec4 textured = texAmount * texture2D(tex, vec2(texRepeatS * gl_TexCoord[0].s, gl_TexCoord[0].t)) + (1.0 - texAmount);
     
-    gl_FragColor = lighting * textured * colour;
+    gl_FragColor = (1.0 - fogAmount) * lighting * textured * colour;
 }

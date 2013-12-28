@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>POINT LIGHT 1Settings</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>170.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>425.000122070</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>X</Name>
-    <Value>539.265014648</Value>
+    <Value>445.022338867</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -23,52 +23,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>Z</Name>
-    <Value>371.726440430</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AR</Name>
-    <Value>0.345547825</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AG</Name>
-    <Value>0.350783110</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AB</Name>
-    <Value>0.371725172</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DR</Name>
-    <Value>0.502616823</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DG</Name>
-    <Value>0.382196695</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DB</Name>
-    <Value>0.277484357</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SR</Name>
-    <Value>0.565444052</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SG</Name>
-    <Value>0.382196695</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SB</Name>
-    <Value>0.528795183</Value>
+    <Value>-225.136047363</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -83,7 +38,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>AV</Name>
-    <Value>0.371725172</Value>
+    <Value>0.293191165</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -98,7 +53,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>DV</Name>
-    <Value>0.502616823</Value>
+    <Value>0.308897972</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -113,5 +68,5 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SV</Name>
-    <Value>0.565444052</Value>
+    <Value>0.010468648</Value>
 </Widget>

@@ -1,0 +1,2019 @@
+{
+    "Tweets": [
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Processing 2.0.3 is out with lots of OpenGL fixes: https://t.co/7m4ksHcUQa, https://t.co/c8LsbN8jxQ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "some notes and code about dome projection: http://t.co/DrNfI0nS0I  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@cwarny maybe these two references are useful: http://t.co/J64wy5ReR4, http://t.co/DzjhgcW1A7  ", 
+            "Users": [
+                "@cwarny"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#WebGL"
+            ], 
+            "Tweet": "nice #WebGL demo explaining several concepts in 3D graphics (antialiasing, sampling, affine transforms, etc.): http://t.co/bydw3Wxxli  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @asalga: @shiffman @Pomax I'm actually prepping to add PShaders to Processing.js.  ", 
+            "Users": [
+                "@asalga", 
+                "@shiffman", 
+                "@Pomax"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sableRaph yes, every time you call shader() the geometry cached up to that point is flushed to the GPU  ", 
+            "Users": [
+                "@sableRaph"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mariuswatz: .@ProcessingOrg 2.0 is out, I just posted some links and notes about it: http://t.co/z50q4Yey59 (still harping on about PVe\u2026  ", 
+            "Users": [
+                "@mariuswatz", 
+                "@ProcessingOrg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Some notes about OpenGL in Processing 2.0: http://t.co/gKVL37GZCc  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#Processing"
+            ], 
+            "Tweet": "RT @ProcessingOrg: The #Processing 2.0 release was a great team effort: http://t.co/wq9IWJXA9K Check the commits from 2002 to 2013: https:/\u2026  ", 
+            "Users": [
+                "@ProcessingOrg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Processing 2.0 is out! http://t.co/kR0JFEHewF  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@blprnt thanks, see you at eyeo in a couple of weeks!  ", 
+            "Users": [
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@iquilezles @sableRaph adding glFinish() at frame's end fixed the problem, maybe Processing's draw thread was clogging GL's command queue?  ", 
+            "Users": [
+                "@iquilezles", 
+                "@sableRaph"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#Fathom"
+            ], 
+            "Tweet": "Amazing visualization of the power structures in China by my colleagues at #Fathom: http://t.co/qmMaegdnp4  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ProcessingOrg: Processing 2.0 beta 8 is ready: http://t.co/NxHywDKYLN Changes here: https://t.co/ZpTZqneDRZ  ", 
+            "Users": [
+                "@ProcessingOrg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "We are working at Fathom on a shader editor, a first version for the iPad is here: http://t.co/FZVO3rX8  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#Syphon", 
+                "#Processing"
+            ], 
+            "Tweet": "...and new release of #Syphon library for #Processing: http://t.co/AjPJgsFp (with better initialization and server discovery)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#Processing"
+            ], 
+            "Tweet": "#Processing 2.0b7 released: http://t.co/ficxuHGc, with many, many (475,382) fixes: http://t.co/BrU7PzjQ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#Processing"
+            ], 
+            "Tweet": "Great GLSL tutorials by @baldand: http://t.co/7rEvBd8z. Being ported to #Processing by @sableRaph: http://t.co/rPzuKHl3  ", 
+            "Users": [
+                "@baldand", 
+                "@sableRaph"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jonobr1 this is 1.5 only for the time being. Here is a discussion on the forum about it: http://t.co/keE0US7w  ", 
+            "Users": [
+                "@jonobr1"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "great visualization by Terrence Fradet showing the relationship between language and color: http://t.co/6fQK9YUq  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Real-time ink simulation by Byun-Joo Lee: http://t.co/rV3REmLa  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#GStreamer"
+            ], 
+            "Tweet": "#GStreamer 1.0.0 released: http://t.co/LeSWWclE !  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Intro to Processing Workshop (Somerville, MA): http://t.co/1imDnMrH  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#Syphon", 
+                "#Processing"
+            ], 
+            "Tweet": "#Syphon library for #Processing updated to work with 2.0b1: http://t.co/joNwgcF4  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ben_fry: Processing 2.0 beta 1 has arrived! http://t.co/jtgijsJ3 and the damage here: http://t.co/jGRH5ZSN  ", 
+            "Users": [
+                "@ben_fry"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jonobr1 I first thought it was on Steam, but not, is just listed on \"Steam Greenlight\", something different: http://t.co/GPoDarqu  ", 
+            "Users": [
+                "@jonobr1"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#Processing", 
+                "#GLGraphics"
+            ], 
+            "Tweet": "Chroma Cell, sleek Shoot 'em Up game with great soundtrack (made with #Processing and #GLGraphics): http://t.co/UGVz0P8w, by \u00d8yvind Byhring  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Miguel Aragon's DeepSky engine: http://t.co/xRAPv253 http://t.co/CGwoY1Ml. More work by Miguel: http://t.co/XviAbrbD http://t.co/RoCD9fVK  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New release of the Ketai sensor library for Processing Android: http://t.co/ceGytdLg, @daniel_sauter, @KetaiLibrary  ", 
+            "Users": [
+                "@daniel_sauter", 
+                "@KetaiLibrary"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#OpenCL", 
+                "#Processing"
+            ], 
+            "Tweet": "Generative painting from particle systems implemented with #OpenCL in #Processing 2 by Bryan Chung: http://t.co/Y1FYf5qU  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#Processing"
+            ], 
+            "Tweet": "A few write-ups about shaders in #Processing 2.0: http://t.co/0qstzmMB, http://t.co/agIhS9oK, http://t.co/zABtxwkW  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#Processingjs", 
+                "#Processing"
+            ], 
+            "Tweet": "RT @fjenett: Real world testing #Processingjs 1.4.0 with #Processing 2.0 JavaScript mode at work today \u2026 if all works it goes into SVN t ...  ", 
+            "Users": [
+                "@fjenett"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @humphd: New post: Processing.js 1.4.0 http://t.co/2orzqmwV  ", 
+            "Users": [
+                "@humphd"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#WebGL"
+            ], 
+            "Tweet": "RT @aaronkoblin: Particles and dynamics on the GPU in #WebGL @mrdoob + @BlurSpline https://t.co/gg5zxuMD Win.  ", 
+            "Users": [
+                "@aaronkoblin", 
+                "@mrdoob", 
+                "@BlurSpline"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@billautomata yes they do, but you don't actually need to write shaders, take a look at the LowLevelGL example in 2.0a7  ", 
+            "Users": [
+                "@billautomata"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Talking about Processing 2.0 at SIGGRAPH next Monday: http://t.co/Buk2V5ds  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#Syphon", 
+                "#Processing"
+            ], 
+            "Tweet": "Also, the #Syphon library for #Processing has been updated to work with 2.0a7: http://t.co/AjPJgsFp  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#Processing"
+            ], 
+            "Tweet": "#Processing 2.0a7 is just out: http://t.co/ficxuHGc, changes: http://t.co/BrU7PzjQ (probably last alpha)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#Processing"
+            ], 
+            "Tweet": "For people who need 3D software rendering in #Processing 2.0, use this: http://t.co/OZG1nSfA, by @jnsstnbrg  ", 
+            "Users": [
+                "@jnsstnbrg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#eyeo2012"
+            ], 
+            "Tweet": "the videos from the #eyeo2012 festival (really amazing event) just started to show up: http://t.co/1VZxmrU8  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#glsl"
+            ], 
+            "Tweet": "great #glsl visual experiments from Amnon Owed: http://t.co/TN0fcSU2  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ben_fry: Getting closer: Processing 2.0a6 now posted: http://t.co/jtgijsJ3 Changes http://t.co/4psQHkky Who needs sunshine? Indoor w ...  ", 
+            "Users": [
+                "@ben_fry"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@JoelGethinLewis I put the inc and lib64 folders from the mingw64 build for windows in this zip: http://t.co/vAITQbx2  ", 
+            "Users": [
+                "@JoelGethinLewis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#JavacvPro", 
+                "#Processing"
+            ], 
+            "Tweet": "New version of the #JavacvPro library (OpenCV for #Processing): http://t.co/MhS9Z0EB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Exploration of textiles as digital objects by @blprnt: http://t.co/R0knb2Ck  ", 
+            "Users": [
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@JoelGethinLewis things improved since then. GSVideo 1.0 http://t.co/5bolyV1W works out of the box on Mac/Lin/Win most of the time.  ", 
+            "Users": [
+                "@JoelGethinLewis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Ported @mariuswatz Bezier patch code http://t.co/I7jb85yj to use the new retained mode in Processing 2: http://t.co/Vu9uITib  ", 
+            "Users": [
+                "@mariuswatz"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Watch artist @ericsiu became a touchable human camera: http://t.co/DZmoe0jH  ", 
+            "Users": [
+                "@ericsiu"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "The Scale of the Universe: http://t.co/aCYqngTm  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Fathom Information Design is looking for talented developers and designers: http://t.co/4OzZDPHP  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"Perpetual motion\", ocean visualization from NASA: http://t.co/fIib5I8g, RT @aaronkoblin, @blprnt  ", 
+            "Users": [
+                "@aaronkoblin", 
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Processing 2.0 alpha 5 is out with new OpenGL renderer for PC, Mac and Android: http://t.co/yOvImiL1 \u00a1buen fin de semana!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#Syphon", 
+                "#Processing"
+            ], 
+            "Tweet": "#Syphon client & server for #Processing. Check the details out (Processing-Quartz demo): http://t.co/siHemGXP  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Sergio Albiac's videorative portraits: http://t.co/WajT62xv, http://t.co/3MdlUlWk  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "WebGL playground: http://t.co/Gt7rQ0Gu via @asalga  ", 
+            "Users": [
+                "@asalga"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @Uraeus2: Just published an interview with Wim Taymans about GStreamer 1.0 - http://t.co/L2n7bTjh  ", 
+            "Users": [
+                "@Uraeus2"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Fathom"
+            ], 
+            "Tweet": "Dencity project from #Fathom maps world's population density: http://t.co/Du3WHab7  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#JavacvPro", 
+                "#OpenCV", 
+                "#Processing"
+            ], 
+            "Tweet": "Testing #JavacvPro (#OpenCV 2 in #Processing): http://t.co/aBsEBM9S  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @_syphon: We've created a vimeo group for Syphon. Showcase your videos, techniques, tools, combinations and results using syphon htt ...  ", 
+            "Users": [
+                "@_syphon"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @benDesigning: Stunning photos. http://t.co/wqmD4o1h  ", 
+            "Users": [
+                "@benDesigning"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @hmason: Nice demo of a force-based label placement algorithm for a dense network by the awesome @moritz_stefaner http://t.co/kIBUcAjL  ", 
+            "Users": [
+                "@hmason", 
+                "@moritz_stefaner"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Processing", 
+                "#OpenCV", 
+                "#JavaCV"
+            ], 
+            "Tweet": "JavacvPro: amazing new computer vision library for #Processing by Xavier Hinault, based on #OpenCV and #JavaCV: http://t.co/Ekdub45x  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @dj_orion: tryin to get @memotv's MSAFluid workin w @_syphon via @codeanticode's processing for @modul8_team? this is useful http://t ...  ", 
+            "Users": [
+                "@dj_orion", 
+                "@memotv", 
+                "@_syphon", 
+                "@codeanticode", 
+                "@modul8_team"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@humphd yes, a few of those effects I included in glgraphics :-)  ", 
+            "Users": [
+                "@humphd"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#GLSL", 
+                "#WebGL"
+            ], 
+            "Tweet": "#GLSL Sandbox Gallery (needs browser with #WebGL support): http://t.co/BaU7gnyF  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Matt Pearson\u2019s AbandonedArt site: http://t.co/RyVMgx5j  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Processing"
+            ], 
+            "Tweet": "Video getting better in the new alpha release of #Processing 2.0: http://t.co/KpDsVW8k  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Kinect", 
+                "#Processing"
+            ], 
+            "Tweet": "Thomas Diewald updated his excellent #Kinect library for #Processing, now with 64 bits support: http://t.co/EmjPqSY7  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Foldit"
+            ], 
+            "Tweet": "#Foldit protein folding game used to find structure of AIDS-related enzyme: http://t.co/w6zTspaJ, http://t.co/7WFgRprq  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Android", 
+                "#Processing"
+            ], 
+            "Tweet": "A couple of very nice apps for #Android made with #Processing: http://t.co/p19Nl6iJ, http://t.co/LaBQNTLl  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Processing"
+            ], 
+            "Tweet": "mapping tools for #Processing: http://t.co/jXkTB7g  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "APOD: 2011 September 4 - In the Shadow of Saturn \u00a0http://t.co/T2b1Nrj  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@hamoid is making an excellent series of video tutorials on Creative Coding: http://t.co/heP4nyu, http://t.co/tGkKuYT  ", 
+            "Users": [
+                "@hamoid"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Processing"
+            ], 
+            "Tweet": "New computer vision library for #Processing, by Thomas Diewald: http://t.co/cH6z5ss  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ben_fry: Processing 2.0 alpha 1 is rough around the edges but available for download: http://j.mp/pwBr53 read about it here: http:// ...  ", 
+            "Users": [
+                "@ben_fry"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Support Processing development by getting this new T-shirt with design by @toxi: http://t.co/5KeYvJK  ", 
+            "Users": [
+                "@toxi"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Check out this visualization of genes & genetic conditions (available as web applet or android app): http://t.co/Tbfdfwv  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "What video codecs are most important to support in Processing 2.0? Please discuss here: http://t.co/ZUw1vsw  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Photoshop math with GLSL: http://t.co/Da3H1AT RT @theowatson love this shader! http://t.co/DVhfP6a.  ", 
+            "Users": [
+                "@theowatson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @_vade: This is hard core: Physical modeling of lens flares in realtime. Awesome. http://t.co/TxNkS5J  ", 
+            "Users": [
+                "@_vade"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@iragreenberg Some appear online: http://t.co/9K1hHcM  ", 
+            "Users": [
+                "@iragreenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Amazing fluid library for Processing, by Thomas Diewald: http://t.co/y0L9d1q  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Great SIGGRAPH course from @aras_p about optimizing shaders on mobile devices. PDF with slides available: http://t.co/iYtk8nC  ", 
+            "Users": [
+                "@aras_p"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Fathom"
+            ], 
+            "Tweet": "First project at #Fathom: Android version of the \"Stats of the Union\" visualization http://t.co/agLSk6b  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "GStreamer-java 1.5 is out: http://bit.ly/nwEJhr  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "RT @theowatson: OF 007 released today - http://t.co/yoP40dU #openframeworks  ", 
+            "Users": [
+                "@theowatson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Running Android Emulator much faster using x86 build and VirtualBox: http://bit.ly/q2Qduz  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "A collection of GLSL shaders, mostly from users of PureData/GEM, Max/Jitter and Fluxus: http://code.google.com/p/glslang-library/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "The sky at different wavelengths: http://www.chromoscope.net/ RT @wattenberg  ", 
+            "Users": [
+                "@wattenberg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#webcl", 
+                "#webgl", 
+                "#opencl"
+            ], 
+            "Tweet": "RT @thekhronosgroup: Samsung's WebCL Prototype for WebKit http://bit.ly/mi39P8 #webcl #webgl #opencl  ", 
+            "Users": [
+                "@thekhronosgroup"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "3D animations of biomolecular systems from WEHI.TV: http://bit.ly/jTCzSI  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @eskimobloood: Audio reactive shader experiment: http://t.co/zsEHvvo  ", 
+            "Users": [
+                "@eskimobloood"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @aarontweets: Love these 70's J.G. Ballard cover illustrations by David Pelham: http://t.co/YI6Kbpl  ", 
+            "Users": [
+                "@aarontweets"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Proscene", 
+                "#Processing"
+            ], 
+            "Tweet": "New version of #Proscene, #Processing library for scene handling: http://bit.ly/jqy3Nj (check the CameraCrane and Woobik examples!)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#shaders", 
+                "#Processing", 
+                "#GLGraphics"
+            ], 
+            "Tweet": "Great notes about #shaders in #Processing using #GLGraphics by @atduskgreg: http://bit.ly/mzlLbz, http://bit.ly/lCjm7r  ", 
+            "Users": [
+                "@atduskgreg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "rockin' on! http://bit.ly/iPo3Rl \\m/ \\m/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @atduskgreg: Notes from @codeanticode's session at ITP on using shaders in Processing: http://t.co/Am35vew  ", 
+            "Users": [
+                "@atduskgreg", 
+                "@codeanticode"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@blprnt Thanks! I just arrived, ok trip. ~24 hs door to door NY -> Seoul!  ", 
+            "Users": [
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "An Introduction to Shaders by @brysonian: http://www.html5rocks.com/en/tutorials/webgl/shaders/  ", 
+            "Users": [
+                "@brysonian"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "JavaScript mode in Processing looking awesome! Kudos to @fjenett for the great work! http://twitpic.com/5b9fag  ", 
+            "Users": [
+                "@fjenett"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#processing", 
+                "#processing"
+            ], 
+            "Tweet": "RT @fjenett: Can't wait to play wit #processing ide #processing.js mode over the weekend. http://t.co/D22RIZ1  ", 
+            "Users": [
+                "@fjenett"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @REAS: We maintain a list of \"creative coding\" platforms here, please add relevant projects: http://wiki.processing.org/w/Related_Pro ...  ", 
+            "Users": [
+                "@REAS"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "World Resource Footprint: http://bit.ly/lFIDge, individual footprint calculator: http://bit.ly/l4stJy  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I will be teaching two sessions on 3D and shaders at ITP Camp 2011: http://bit.ly/ikMLKJ, http://bit.ly/lFSSbw (June 23rd and 24th)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Cytoscape", 
+                "#VTK"
+            ], 
+            "Tweet": "3DScape: #Cytoscape plugin using #VTK: http://bit.ly/mPq2Xz  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "All books from National Academy of Sciences freely available: http://bit.ly/muj2yO  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @aaronkoblin: Cyriak meets minecraft meets powers of 10 -- http://youtu.be/Mf6JCpJjdiY  ", 
+            "Users": [
+                "@aaronkoblin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "C++/Lua frameworks for creative coding: Polycode (http://polycode.org/), Moldeo (http://moldeo.org/)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Cassini mission short film: http://vimeo.com/24410924  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#processingjs"
+            ], 
+            "Tweet": "RT @v3ga: new #processingjs is out ! I Just tried WebGL renderer by porting turmites sketch from 2D to 3D : http://bit.ly/mbtBPN  ", 
+            "Users": [
+                "@v3ga"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @gridinoc: The Macroscope http://t.co/LAGeZgD  ", 
+            "Users": [
+                "@gridinoc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Computer Vision: Algorithms and Applications book: http://szeliski.org/Book/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @_vade: This is an absolutely brilliant change in perspective: Time lapse showing the earth rotating, stars stationary. Amazing http ...  ", 
+            "Users": [
+                "@_vade"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "congratulations to @ben_fry, winner of the The Interaction Design Award. http://cooperhewitt.org/nda/awards/interaction-design  ", 
+            "Users": [
+                "@ben_fry"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Eclipse", 
+                "#Linux"
+            ], 
+            "Tweet": "Making #Eclipse usable on #Linux: http://bit.ly/iKcL24  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"Content is Queen\", generative video painting by Sergio Albiac: http://vimeo.com/24065726  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Visualization of all MacGyverisms: http://fathom.info/macrecipes/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "data != knowledge in the pharmaceutical industry: http://bit.ly/lsoZ7d  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Processing"
+            ], 
+            "Tweet": "Heatmaps, Point Clouds and Big Data in #Processing: http://jimblackhurst.com/wp/?p=213  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Faster GSVideo: http://bit.ly/iM7wSI (50% less CPU usage!)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#WebGL"
+            ], 
+            "Tweet": "Since these days #WebGL is all the rage, I ported some shaders from Shader Toy (http://bit.ly/kIWRHK) into GLGraphics http://bit.ly/mcmQGb  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#rome", 
+                "#webgl"
+            ], 
+            "Tweet": "RT @valdean: Launched!! http://ro.me/ -- Google's new interactive WebGL film with Danger Mouse and Norah Jones. #rome #webgl  ", 
+            "Users": [
+                "@valdean"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#OpenCL"
+            ], 
+            "Tweet": "Started porting traer.physics to #OpenCL: http://vimeo.com/22794645, http://vimeo.com/22875913. More details: http://bit.ly/fjMg8P  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@blprnt This is amazing. Congratulations! Do you have any images or videos of the actual installation?  ", 
+            "Users": [
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @blprnt: Details and videos from Project Cascade are now up on the @nytlabs website: http://nytlabs.com/projects/cascade.html  ", 
+            "Users": [
+                "@blprnt", 
+                "@nytlabs"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "GLGraphics library updated to work with Processing 1.5: http://bit.ly/fEDTKf  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Syphon", 
+                "#Processing"
+            ], 
+            "Tweet": "#Syphon (http://syphon.v002.info/) working in #Processing: http://bit.ly/gIGz7p  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Full instructions to compile gstreamer on android: http://bit.ly/hsdePm  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @REAS: The Signals project is now documented on Vimeo with a few time-lapse videos: http://vimeo.com/album/1572020  ", 
+            "Users": [
+                "@REAS"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Compilation of Processing-Android sketches: http://bit.ly/dRp029 (GPS, physics, actuators, OSC, gestures, physics)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Cytoscape", 
+                "#Processing"
+            ], 
+            "Tweet": "Template to write #Cytoscape plugins using #Processing + OPENGL2 renderer: http://bit.ly/gDdpeJ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "GSVideo 0.8 released. http://bit.ly/f4RfL9  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Ketai sensor library for Processing.Android: http://ketaiproject.com  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @cpbotha: I crushed the GSVideo problematic frame error! http://is.gd/NMIKU8  ", 
+            "Users": [
+                "@cpbotha"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Lonnen yes, that's the idea: GLES 1.1 fixed pipeline on old devices, GLES 2.0+ programmable pipeline for the newer ones.  ", 
+            "Users": [
+                "@Lonnen"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Lonnen thanks. I just finished back-porting the changes in OPENGL2 to Android.  ", 
+            "Users": [
+                "@Lonnen"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @yy: Check out this week's special section of Science, \"Data\" - http://www.sciencemag.org/content/331/6018.cover-expansion  ", 
+            "Users": [
+                "@yy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#OpenGL", 
+                "#Processing"
+            ], 
+            "Tweet": "Some updates about the new #OpenGL renderer in #Processing: http://bit.ly/gq3AIv  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @blprnt: It was fun working with @LeeBillings on this visualization of Kepler's exoplanet candidates: http://bit.ly/e35LjD - more to ...  ", 
+            "Users": [
+                "@blprnt", 
+                "@LeeBillings"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@AlexandreRangel nice. obrigado!  ", 
+            "Users": [
+                "@AlexandreRangel"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Gave a quick try to Quasi-Cinema VJ tool on Snow Leopard. Looks very good. http://bit.ly/f4lJ8D  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jonobr1: @georgealways and I made a JavaScript library inspired by @sojamo's controlP5. Demo's fun whether you're a coder or not: ht ...  ", 
+            "Users": [
+                "@jonobr1", 
+                "@georgealways", 
+                "@sojamo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jonobr1 any videos of the installation up yet guys?  ", 
+            "Users": [
+                "@jonobr1"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@victamin it would be cool to port it to processing :-)  ", 
+            "Users": [
+                "@victamin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New GLGraphics release: http://bit.ly/fzost1 , with some enhancements for large 3D models.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@REAS I'm planning to do some work in that area. And here is a datavis I did last year using protein sim data: http://bit.ly/gzu4LB  ", 
+            "Users": [
+                "@REAS"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @CedricKiefer: CUDA working in Processing via JCuda http://is.gd/xgv5J5  ", 
+            "Users": [
+                "@CedricKiefer"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Mots Cousus just released a new Processing lib for DMX: http://bit.ly/ehH3RT . Supports enttec DMX USB Pro and lanbox LCE.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "finally my new website is up: http://interfaze.info/ ! Still need to upload more projects and resources, but at least is working...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Just uploaded GLGraphics 0.9.9. Many fixes and readying for 1.0. Download link: http://bit.ly/hZi6cY  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Samuel Audet is making good progress with JNA for Android: http://bit.ly/f2GYCR  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@REAS: SceneBuilder looks very interesting. Is it possible to install and give it a try?  ", 
+            "Users": [
+                "@REAS"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Getting ready for Make Art. Working again with Andiamo. http://is.gd/gt87e  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "GSVideo packages for Leopard (32 and 64 bits) are available for download: http://bit.ly/cj6S56  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Dave Liu made a new GStreamer binary installer for Mac OSX (Snow Leopard, 32/64 bits). Grab from here: http://bit.ly/davSrI  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Posted a short overview of 3D in Processing for Android: http://bit.ly/96Pibw , including an example using accelerometer data.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@blprnt You can do offscreen rendering using the GLGraphicsOffScreen class in GLGraphics, I don't know if this what you need.  ", 
+            "Users": [
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Mac GStreamer installer slowly coming along. For those interested in compiling from source, this wiki might be useful: http://bit.ly/d5I9De  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Back from the Processing.Android symposium (http://bit.ly/aWacy9). It was great, and will post soon about it and the new 3D stuff.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "In a couple of hours is my turn ( http://bit.ly/bHPUbb ) !  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "The Ketai workshop yesterday was great: http://bit.ly/anp17Q . Download the library from here: http://bit.ly/dbWLl4  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I'll be participating in the Processing.Android symposium at UIC. Check details: http://bit.ly/boDX1Q  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "This Odroid-T developer tablet is very cool I must say: http://bit.ly/9THCFP . And Processing should run on it!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "For the technically inclined, the nasty details of compiling GStreamer on OSX: http://bit.ly/czMhEy  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New posts in my blog about the latest releases of GLGraphics and GSVideo: http://codeanticode.wordpress.com/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "And new release of GSVideo too (0.7). It works quite nicely on OSX Snow Leopard (including export apps). http://bit.ly/c9q1TY  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New GLGraphics released (0.9.4): http://bit.ly/cP5JQd More details tomorrow on my blog.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Test package of gsvideo for OSX Snow Leopard. http://bit.ly/9l4zxR  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Final release of GSVideo 0.6 with proper support for Mac is coming up soon. Stay tuned.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Uploaded new test version of gsvideo: Download link: http://bit.ly/9WHyCk and release notes: http://bit.ly/cXA8NK  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Proscene 0.9 released. More info here: http://bit.ly/drexLu  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Live visuals in European tour of piano player Ludovico Einaudi, generated with gsvideo and glgraphics: http://bit.ly/9FXD7a  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "ok... my first tweet... how exciting!  ", 
+            "Users": []
+        }
+    ], 
+    "name": "CodeAntiCode.txt"
+}

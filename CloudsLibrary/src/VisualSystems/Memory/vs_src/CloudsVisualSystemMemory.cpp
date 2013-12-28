@@ -16,6 +16,10 @@ string CloudsVisualSystemMemory::getSystemName()
 
 void CloudsVisualSystemMemory::selfSetup()
 {
+    generate();
+}
+
+void CloudsVisualSystemMemory::selfSetDefaults(){
     blockScale = 1.0;
     blockWidth = 4;
     blockHeight = 8;
@@ -23,16 +27,14 @@ void CloudsVisualSystemMemory::selfSetup()
     noiseLerp = 0;
     randomUp = 0;
     randomDown = 0;
-
+	borderBase = .5;
     borderColor = ofFloatColor(0.0823, 0.8509, 0.7960);
+	//    brightnessOffset = 1;
     bTexture = false;
     bSort = true;
     bDeFrag = false;
     bBiDirectionalSort = false;
     bIs2D = true;
-	
-    ofEnableAlphaBlending();
-    generate();
 }
 
 void CloudsVisualSystemMemory::selfSetupSystemGui()
@@ -59,8 +61,9 @@ void CloudsVisualSystemMemory::selfSetupRenderGui()
     
     rdrGui->addSlider("block_width", 0.0, 20, &blockWidth);
     rdrGui->addSlider("block_height", 0.0, 20, &blockHeight);
-    rdrGui->addSlider("block_scale", 0.5
-                      , 10, &blockScale);
+    rdrGui->addSlider("block_scale", 0.5, 10, &blockScale);
+	rdrGui->addRangeSlider("block_value_range", 0, 1, &baseColorRange.min, &baseColorRange.max);
+	rdrGui->addSlider("block_border_base", 0, 1, &borderBase);
     rdrGui->addSlider("block_border", 0.0, 1.0, &(borderColor.a));
     rdrGui->addSlider("border_red", 0.0, 1.0, &(borderColor.r));
     rdrGui->addSlider("border_green", 0.0, 1.0, &(borderColor.g));
@@ -119,8 +122,9 @@ void CloudsVisualSystemMemory::generateFromMemory(){
     int blocksTotal = 10000*(10-blockScale);
     unsigned char * data = new unsigned char[blocksTotal];
     
-    int xMargin = 20;
-    int yMargin = 20;
+    
+    int xMargin = 0;
+    int yMargin = 0;
     
     int width = ofGetWidth()-xMargin*2.0;
     int height = ofGetHeight()-yMargin*2.0;
@@ -132,28 +136,47 @@ void CloudsVisualSystemMemory::generateFromMemory(){
     yBlocks = (float)height/(heightBlocks+margin*blockScale);
     
     blocks.clear();
+	outlineMesh.clear();
+	outlineMesh.setMode(OF_PRIMITIVE_LINES);
+	outlineMesh.setUsage(GL_STREAM_DRAW);
+	
+	fillMesh.clear();
+	fillMesh.setMode(OF_PRIMITIVE_TRIANGLES);
+	outlineMesh.setUsage(GL_STATIC_DRAW);
+	
     int index = 0;
     for (int j = 0; j < yBlocks; j++) {
         for (int i = 0; i < xBlocks; i++){
             
             if (index < blocksTotal ){
                 
-                int x = xMargin + ((margin + blockWidth)*blockScale)*i ;
-                int y = yMargin + ((margin + blockHeight)*blockScale)*j ;
+                int x = xMargin + ((margin + blockWidth)*blockScale)*i;
+                int y = yMargin + ((margin + blockHeight)*blockScale)*j;
                 
-                if ( y > (ofGetHeight()+margin+heightBlocks))
+                if ( y > (getSharedRenderTarget().getHeight() + margin + heightBlocks)){
                     break;
+				}
                 
                 Block block;
                 block.x = x+widthBlocks*0.5;
                 block.y = y+heightBlocks*0.5;
                 block.width = widthBlocks;
                 block.height = heightBlocks;
-                block.color = ofColor((unsigned char)data[index]);
+				if(baseColorRange.min == baseColorRange.max){
+					block.color = ofFloatColor(baseColorRange.min);
+				}
+				else{
+					block.color = ofFloatColor( ofMap((unsigned char)data[index], 0, 255,
+													  baseColorRange.min,baseColorRange.max), 1.0);
+				}
+				
                 block.borderColor = borderColor;
+				block.borderBase = borderBase;
                 block.value = (int)data[index];
                 block.bSelected = false;
-                
+                block.outlineMesh = &outlineMesh;
+				block.fillMesh = &fillMesh;
+				block.setup();
                 blocks.push_back(block);
                 
             } else {
@@ -172,8 +195,9 @@ void CloudsVisualSystemMemory::generateFromTexture(ofTexture &_tex){
     ofPixels pixels;
     _tex.readToPixels(pixels);
     
-    int xMargin = 20;
-    int yMargin = 20;
+    
+    int xMargin = 0;
+    int yMargin = 0;
     
     int width = ofGetWidth()-xMargin*2.0;
     int height = ofGetHeight()-yMargin*2.0;
@@ -185,12 +209,20 @@ void CloudsVisualSystemMemory::generateFromTexture(ofTexture &_tex){
     xBlocks = (float)width/((blockWidth+margin)*blockScale);
     yBlocks = (float)height/((blockHeight+margin)*blockScale);
     
+	outlineMesh.clear();
+	outlineMesh.setMode(OF_PRIMITIVE_LINES);
+	outlineMesh.setUsage(GL_STREAM_DRAW);
+	
+	fillMesh.clear();
+	fillMesh.setMode(OF_PRIMITIVE_TRIANGLES);
+	outlineMesh.setUsage(GL_STATIC_DRAW);
+
     blocks.clear();
     for (int j = 0; j < yBlocks; j++) {
         for (int i = 0; i < xBlocks; i++){
             
             int x = xMargin + ((margin + blockWidth)*blockScale)*i ;
-            int y = yMargin + ((margin + blockHeight)*blockScale)*j ;
+            int y = xMargin + ((margin + blockHeight)*blockScale)*j ;
             
             Block newBlock;
             newBlock.set(block);
@@ -200,11 +232,23 @@ void CloudsVisualSystemMemory::generateFromTexture(ofTexture &_tex){
             ofPoint st = ofPoint( ((float)i)/((float)xBlocks), ((float)j)/((float)yBlocks));
             st *= ofPoint(_tex.getWidth(),_tex.getHeight());
             
-            newBlock.value = pixels.getColor( st.x, st.y ).r;//.getBrightness() ;
-            newBlock.color = ofColor( newBlock.value );
+            newBlock.value = pixels.getColor( st.x, st.y ).getBrightness();
+//            newBlock.color = ofColor( newBlock.value)/brightnessOffset;
+			if(baseColorRange.min == baseColorRange.max){
+				newBlock.color = ofFloatColor(baseColorRange.min);
+			}
+			else{
+				newBlock.color = ofFloatColor(ofMap(newBlock.value, 0, 255,
+													baseColorRange.min,baseColorRange.max), 1.0);
+			}
+			newBlock.borderBase = borderBase;
             newBlock.borderColor = borderColor;
             newBlock.bSelected = false;
             
+			newBlock.outlineMesh = &outlineMesh;
+			newBlock.fillMesh = &fillMesh;
+			newBlock.setup();
+
             blocks.push_back(newBlock);
         }
     }
@@ -263,7 +307,11 @@ void CloudsVisualSystemMemory::selfUpdate()
     if (bDeFrag){
         applyDeFrag();
     }
-    
+	
+    for (int i = 0; i < blocks.size(); i++) {
+        blocks[i].update();
+  }
+
 }
 
 void CloudsVisualSystemMemory::applySort(){
@@ -394,29 +442,17 @@ void CloudsVisualSystemMemory::swapBlocks(int _indexA, int _indexB, bool _colore
 
 void CloudsVisualSystemMemory::selfDrawBackground()
 {
-
-    ofNoFill();
-    ofSetColor(150);
-    ofSetLineWidth(0.5);
-    ofRect(14,14,ofGetWidth()-28,ofGetHeight()-28);
-    
-    ofSetColor(100);
-    ofSetLineWidth(1);
-    ofRect(10,10,ofGetWidth()-20,ofGetHeight()-20);
-    
     ofSetLineWidth(0.01);
-    for (int i = 0; i < blocks.size(); i++) {
-        blocks[i].draw();
-    }
+//    for (int i = 0; i < blocks.size(); i++) {
+//        blocks[i].draw();
+//  }
+	
+	fillMesh.draw();
+	outlineMesh.draw();
 }
 
 
 void CloudsVisualSystemMemory::selfSetupGuis()
-{
-    
-}
-
-void CloudsVisualSystemMemory::selfAutoMode()
 {
     
 }

@@ -31,47 +31,44 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
     customGui->addIntSlider("NUM PARTICLES", 0, 2000, &nParticles);
     customGui->addToggle("BOUNCE OFF WALLS", &bBounceOffWalls);
 
-    customGui->addSpacer();
     customGui->addToggle("FREEZE", &bShouldFreeze);
     customGui->addToggle("RISE", &bShouldRise);
     customGui->addToggle("FALL", &bShouldFall);
     customGui->addMinimalSlider("RISE/FALL SPEED", 0, 200, &riseFallSpeed);
     
-    customGui->addSpacer();
+
     customGui->addToggle("EXPLODE", &bShouldExplode);
     customGui->addMinimalSlider("EXPLODE SPEED", 0, 200, &explodeSpeed);
     
-    customGui->addSpacer();
     customGui->addLabel("GRAVITY");
     customGui->addMinimalSlider("GRAVITY X", -1, 1, &gravity.x);
     customGui->addMinimalSlider("GRAVITY Y", -1, 1, &gravity.y);
     customGui->addMinimalSlider("GRAVITY Z", -1, 1, &gravity.z);
     
-    customGui->addSpacer();
+   
     customGui->addSlider("ROTATE ANGLE", 45, 135, &rotateAngle);
     customGui->addSlider("ROTATE SPEED", 0, 10, &rotateSpeed);
     customGui->addSlider("PULL SPEED", 0, 10, &pullSpeed);
     
-    customGui->addSpacer();
-    customGui->addSlider("WIND SPEED", 0, 10, &windSpeed);
+
+    customGui->addMinimalSlider("WIND SPEED", 0, 10, &windSpeed);
     
-    customGui->addSpacer();
-    customGui->addSlider("DRAG", 0, 1, &drag);
+
+    customGui->addMinimalSlider("DRAG", 0, 1, &drag);
     
-    customGui->addSpacer();
     customGui->addRangeSlider("SIZE", 0, 20, &XParticle::minSize, &XParticle::maxSize);
-    customGui->addSlider("HEIGHT TO SIZE", 0, 1, &XParticle::heightToSize);
-    customGui->addSlider("VEL TO SIZE", 0, 1, &XParticle::velToSize);
+    customGui->addMinimalSlider("HEIGHT TO SIZE", 0, 1, &XParticle::heightToSize);
+    customGui->addMinimalSlider("VEL TO SIZE", 0, 1, &XParticle::velToSize);
     
     customGui->addSpacer();
     customGui->addRangeSlider("BRIGHTNESS", 0, 1, &XParticle::minBri, &XParticle::maxBri);
     
     customGui->addSpacer();
-    customGui->addSlider("OSC SPEED", 0, 1, &XParticle::oscSpeed);
+    customGui->addMinimalSlider("OSC SPEED", 0, 1, &XParticle::oscSpeed);
     customGui->addToggle("OSCILLATE SIZE", &XParticle::bOscillateSize);
     customGui->addToggle("OSCILLATE BRI", &XParticle::bOscillateBri);
-    customGui->addSlider("TRIGGER DURATION", 1, 1000, &XParticle::triggerDuration);
-    customGui->addSlider("TRIGGER RANGE", 10, 1000, &XParticle::triggerRange);
+    customGui->addMinimalSlider("TRIGGER DURATION", 1, 1000, &XParticle::triggerDuration);
+    customGui->addMinimalSlider("TRIGGER RANGE", 10, 1000, &XParticle::triggerRange);
     
     customGui->addSpacer();
     customGui->addMinimalSlider("HUE 1", 0, 1, &color1.r);

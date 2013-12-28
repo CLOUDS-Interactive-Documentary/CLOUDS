@@ -167,7 +167,7 @@ public:
     
     void update(ofEventArgs& args);
     
-    void mapCoords(ofVec3f& origin, float width, float height, k4w::Joint& joint);
+    void mapCoords(ofVec3f& origin, float zRef, float width, float height, k4w::Joint& joint);
 	void processHandEvent(int handIdx, k4w::Hand * hand, k4w::HandState newState);
     
     void debug(float x, float y, float width, float height);

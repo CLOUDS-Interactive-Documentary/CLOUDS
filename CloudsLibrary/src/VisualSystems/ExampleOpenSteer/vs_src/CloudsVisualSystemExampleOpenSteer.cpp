@@ -308,6 +308,13 @@ void CloudsVisualSystemExampleOpenSteer::selfExit(){
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemExampleOpenSteer::selfKeyPressed(ofKeyEventArgs & args){
+	if(args.key == 'R'){
+		if(currentSimulation){
+			currentSimulation->exit();
+			currentSimulation->setup();
+		}
+	}
+	
     /*
     if( args.key == OF_KEY_LEFT ){
 		simulationIndex--;

@@ -100,10 +100,6 @@
 		E713265C1858E988004C0B6A /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71326541858E988004C0B6A /* CloudsInput.cpp */; };
 		E713265F1858E988004C0B6A /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71326591858E988004C0B6A /* CloudsInputMouse.cpp */; };
 		E71326601858E988004C0B6A /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71326591858E988004C0B6A /* CloudsInputMouse.cpp */; };
-		E713266A18594315004C0B6A /* hblur.vert in Sources */ = {isa = PBXBuildFile; fileRef = E713266818594315004C0B6A /* hblur.vert */; };
-		E713266B18594315004C0B6A /* hblur.vert in Sources */ = {isa = PBXBuildFile; fileRef = E713266818594315004C0B6A /* hblur.vert */; };
-		E713266C18594315004C0B6A /* vblur.vert in Sources */ = {isa = PBXBuildFile; fileRef = E713266918594315004C0B6A /* vblur.vert */; };
-		E713266D18594315004C0B6A /* vblur.vert in Sources */ = {isa = PBXBuildFile; fileRef = E713266918594315004C0B6A /* vblur.vert */; };
 		E73801FA183C871B0018AB96 /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7380142183C871A0018AB96 /* ofxOculusRift.cpp */; };
 		E738FF7A183C86F50018AB96 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E738FF7B183C86F50018AB96 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */; };
@@ -521,6 +517,12 @@
 		E7132662185913C5004C0B6A /* blur.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = blur.frag; sourceTree = "<group>"; };
 		E713266818594315004C0B6A /* hblur.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = hblur.vert; sourceTree = "<group>"; };
 		E713266918594315004C0B6A /* vblur.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = vblur.vert; sourceTree = "<group>"; };
+		E71326E4185A7F61004C0B6A /* papermix.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = papermix.frag; sourceTree = "<group>"; };
+		E71326E5185A7F61004C0B6A /* papermix.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = papermix.vert; sourceTree = "<group>"; };
+		E732FC801863401900643061 /* forcebrush.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = forcebrush.frag; sourceTree = "<group>"; };
+		E732FC811863401900643061 /* forcebrush.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = forcebrush.vert; sourceTree = "<group>"; };
+		E732FC8418639C5100643061 /* paintbrush.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = paintbrush.frag; sourceTree = "<group>"; };
+		E732FC8518639C5100643061 /* paintbrush.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = paintbrush.vert; sourceTree = "<group>"; };
 		E7380142183C871A0018AB96 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		E7380143183C871A0018AB96 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		E738FFE1183C86F50018AB96 /* GesturePaintOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GesturePaintOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1263,8 +1265,8 @@
 		E71326531858E988004C0B6A /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				E71326541858E988004C0B6A /* CloudsInput.cpp */,
 				E71326551858E988004C0B6A /* CloudsInput.h */,
+				E71326541858E988004C0B6A /* CloudsInput.cpp */,
 				E71326561858E988004C0B6A /* CloudsInputEvents.h */,
 				E71326591858E988004C0B6A /* CloudsInputMouse.cpp */,
 				E713265A1858E988004C0B6A /* CloudsInputMouse.h */,
@@ -1276,6 +1278,12 @@
 		E7132661185913C5004C0B6A /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				E732FC8418639C5100643061 /* paintbrush.frag */,
+				E732FC8518639C5100643061 /* paintbrush.vert */,
+				E732FC801863401900643061 /* forcebrush.frag */,
+				E732FC811863401900643061 /* forcebrush.vert */,
+				E71326E5185A7F61004C0B6A /* papermix.vert */,
+				E71326E4185A7F61004C0B6A /* papermix.frag */,
 				E713266818594315004C0B6A /* hblur.vert */,
 				E713266918594315004C0B6A /* vblur.vert */,
 				E7132662185913C5004C0B6A /* blur.frag */,
@@ -1561,8 +1569,6 @@
 				E71326501858E809004C0B6A /* CloudsVisualSystemGesturePaint.cpp in Sources */,
 				E713265B1858E988004C0B6A /* CloudsInput.cpp in Sources */,
 				E713265F1858E988004C0B6A /* CloudsInputMouse.cpp in Sources */,
-				E713266A18594315004C0B6A /* hblur.vert in Sources */,
-				E713266C18594315004C0B6A /* vblur.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1648,8 +1654,6 @@
 				E71326511858E809004C0B6A /* CloudsVisualSystemGesturePaint.cpp in Sources */,
 				E713265C1858E988004C0B6A /* CloudsInput.cpp in Sources */,
 				E71326601858E988004C0B6A /* CloudsInputMouse.cpp in Sources */,
-				E713266B18594315004C0B6A /* hblur.vert in Sources */,
-				E713266D18594315004C0B6A /* vblur.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1699,6 +1703,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 			};
 			name = Debug;
 		};
@@ -1733,6 +1738,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 			};
 			name = Release;
 		};
@@ -1839,10 +1845,10 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/openal/libs/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/sndfile/lib/osx\"";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PREBINDING = NO;
 				PRODUCT_NAME = GesturePaintDebug;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1949,10 +1955,10 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/openal/libs/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/sndfile/lib/osx\"";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PREBINDING = NO;
 				PRODUCT_NAME = GesturePaint;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

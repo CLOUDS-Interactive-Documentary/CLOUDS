@@ -1,0 +1,6401 @@
+{
+    "Tweets": [
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "an event to \"network the networks and influence the influencers\" \u2013 i think thats a bit too meta for me  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@nickmetcalf thank you nick, great that you had time to stop by!  ", 
+            "Users": [
+                "@nickmetcalf"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: FIELD for Nike Hyperfeel: new series of 4 video artworks now online http://t.co/Raxv9UzPHw  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"Im englischen Sprachraum haben wir es oft mit geschulten Konfrontationsvermeidern zu tun\" http://t.co/ItOsticQ3g  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Nice debrief chat over coffee and hardware pickup at the British Library - very enjoyable collab. Project docu coming soon, too!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "work with FIELD: hiring a senior creative coder (full time) + motion designer (intern) + studio assistant (intern) http://t.co/WZWQxxAGzE  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@norette next time you're in town for sure ;)  ", 
+            "Users": [
+                "@norette"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@denisewilton 'Right-click and Save-As'. Oh. Yeah, ok then. ;)  ", 
+            "Users": [
+                "@denisewilton"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#newprojectsyeah"
+            ], 
+            "Tweet": "a symphony in gantt #newprojectsyeah  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#FeelLondon"
+            ], 
+            "Tweet": "A new series of video artworks for Nike Hyperfeel \u2013 coming to selected stores worldwide; now @1948london #FeelLondon http://t.co/oR0QTMGbzu  ", 
+            "Users": [
+                "@1948london"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#feellondon"
+            ], 
+            "Tweet": "getting ready for HYPERFEEL: new FIELD video installation going live at Nike 1948 in Shoreditch tomorrow #feellondon http://t.co/RLZN6BS6oM  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@instruct awesome! let me know when you have a date.  ", 
+            "Users": [
+                "@instruct"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "music heroes here i come; just bought the last tickets for @panthaduprince and matthew herbert at the barbican this friday - whoooo!  ", 
+            "Users": [
+                "@panthaduprince"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@bxftys good to meet you again chris!  ", 
+            "Users": [
+                "@bxftys"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "excited! RT @tempsmoderne: Tonight Power of Art + Code at Shoreditch House with Vera from Field.io @onedotzero @field_io  ", 
+            "Users": [
+                "@tempsmoderne", 
+                "@onedotzero", 
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "boom! 5 hrs in and all early bird offers gone: talented friends @brosefogale kickstart their furniture project today http://t.co/eNLOA0uGTZ  ", 
+            "Users": [
+                "@brosefogale"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "excellent @interactivepint deluxe bbq edition tonight at london fields park!  ", 
+            "Users": [
+                "@interactivepint"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@chrisoshea Five Reasons to Stop Saying \"Good Job!\" ;) http://t.co/h8q6ZLQ6i1  ", 
+            "Users": [
+                "@chrisoshea"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: new identity work together with @OPX_London: fluid data illustrations for Detica http://t.co/6PrNPRZqyE  ", 
+            "Users": [
+                "@field_io", 
+                "@OPX_London"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "... the foreignness of what you no longer are or no longer possess lies in wait for you in foreign, unpossessed places.\"  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"arriving at each new city, the traveler finds again a past of his that he did not know he had: ...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Michel_in_space all the best michael!  ", 
+            "Users": [
+                "@Michel_in_space"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @alaindebotton: Enough romanticism about 'creativity': it's about work, confidence, endurance, courage and appetite for suffering.  ", 
+            "Users": [
+                "@alaindebotton"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#dunwichdynamo"
+            ], 
+            "Tweet": "doing the #dunwichdynamo is not much harder than to party til the sun comes up, says @marcuswendt. well, then!  ", 
+            "Users": [
+                "@marcuswendt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "please RT: @field_io have a spare desk for rent in our bright Dalston studio. DM or email for details if you're interested!...  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "friends @studiooutput are hiring: Five days left to get your application in for our designer job at Studio Output http://t.co/bO15R51Ug3  ", 
+            "Users": [
+                "@studiooutput"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@gnrtvdsgn @CedricKiefer @kamptweets @aplusplus @StudioNAND @akllr lovely to see you all chaps. berlin summer rocks.  ", 
+            "Users": [
+                "@gnrtvdsgn", 
+                "@CedricKiefer", 
+                "@kamptweets", 
+                "@aplusplus", 
+                "@StudioNAND", 
+                "@akllr"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@thomastraum i resolved on a taxi at 4am. cheap flights totally pay off.  ", 
+            "Users": [
+                "@thomastraum"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "trying to figure out how to get to luton at 4 in the morning...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#BLPropaganda"
+            ], 
+            "Tweet": "RT @srendgen: Twitter data documentaries: Installation by @field_io at British Library \"Propaganda\" exhibition #BLPropaganda http://t.co/KK\u2026  ", 
+            "Users": [
+                "@srendgen", 
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@gnrtvdsgn @cedrickiefer i guess cedric either had a super productive time, or he's been dancing on the tables :)  ", 
+            "Users": [
+                "@gnrtvdsgn", 
+                "@cedrickiefer"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@cedrickiefer sounds good, should give that a try :)  ", 
+            "Users": [
+                "@cedrickiefer"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@cedrickiefer cheers :) how are you guys?  ", 
+            "Users": [
+                "@cedrickiefer"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @creativereview: A generative eye-dentity: Someone and Field create system using spectacular images of human iris...  ", 
+            "Users": [
+                "@creativereview"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#BLPropaganda"
+            ], 
+            "Tweet": "Art or political rhetoric? \u2013 great video intro of the #BLPropaganda exhibit by BBC Politics feat our installation http://t.co/p4wRDF4MUh  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@bl_bens thanks ben, keep me posted about the press please. great to meet you too - dubliners is next on my list now :)  ", 
+            "Users": [
+                "@bl_bens"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "full day of one-to-one crits at @nuagraphics. good vibes and well done \u2013 you'll all get there guys! cc @denisewilton http://t.co/gjLdbBMnxt  ", 
+            "Users": [
+                "@nuagraphics", 
+                "@denisewilton"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"misunderstandings are a part of our business\" - Bernard Stein visiting from Berlin  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @alaindebotton: It's not necessarily your fault if all you're attempting to say won't fit into a tweet.  ", 
+            "Users": [
+                "@alaindebotton"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "6am productivity boost  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @_DesignStudio_: Wrapping up the first in a series of internal DesignStudio talks, a big thank you to Vera from @field_io for sharing...  ", 
+            "Users": [
+                "@_DesignStudio_", 
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": ";) RT @rebecca_bright: @field_io's V: \"it's not my intention to insult anyone,but I just couldn't miss this chance\" Brilliant intro. All...  ", 
+            "Users": [
+                "@rebecca_bright", 
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#squared2013"
+            ], 
+            "Tweet": "RT @field_io: next: Vera speaking at #squared2013 tomorrow, Google's education project for todays + tomorrows leaders in digital...  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#res13"
+            ], 
+            "Tweet": "wo war eigentlich @kamptweets? #res13  ", 
+            "Users": [
+                "@kamptweets"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "the trick is to keep breathing  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kamptweets all live now, have you seen them? http://t.co/pc7R5WfXUE  ", 
+            "Users": [
+                "@kamptweets"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#energyflow"
+            ], 
+            "Tweet": "RT @field_io: Energy Flow Directors Cuts \u2013 http://t.co/pc7R5WfXUE including collaborators @3rdm @__anf @dxmiq #energyflow  ", 
+            "Users": [
+                "@field_io", 
+                "@3rdm", 
+                "@__anf", 
+                "@dxmiq"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#energyflow"
+            ], 
+            "Tweet": "new post about the composer software! RT @field_io: Wondered how we made 1000 films for Energy Flow? http://t.co/vDcqnpiCPu #energyflow  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jackhone cheers jack, hope you enjoyed it!  ", 
+            "Users": [
+                "@jackhone"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Gali_gal @Cleaaa cheers ladies!  ", 
+            "Users": [
+                "@Gali_gal", 
+                "@Cleaaa"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lucyblazey thank you Lucy, glad you enjoyed it!  ", 
+            "Users": [
+                "@lucyblazey"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kimbaillie1 cheers Kim, glad you enjoyed it!  ", 
+            "Users": [
+                "@kimbaillie1"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@simonjchild you\u2019re welcome ;), was nice to chat  ", 
+            "Users": [
+                "@simonjchild"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@rswalk thank you Richard! What a great event  ", 
+            "Users": [
+                "@rswalk"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Jack_W_Burton haha cheers jack ;)  ", 
+            "Users": [
+                "@Jack_W_Burton"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@OfficeOfCraig good! Nobody fell asleep, and no swearing. Really good fun! And great to hang out yday.  ", 
+            "Users": [
+                "@OfficeOfCraig"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@ishoream thank you amy!  ", 
+            "Users": [
+                "@ishoream"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@dubbuuu thumbs up for sharing so many notes! Hope you enjoyed it  ", 
+            "Users": [
+                "@dubbuuu"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @creatorsproject: Composer @kamptweets talks about the modular soundtrack for @field_io's Energy Flow: http://t.co/LSjwRtoP  ", 
+            "Users": [
+                "@creatorsproject", 
+                "@kamptweets", 
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "All movement is the result of a negotiated relationship. Antony Gormley  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @nucagraphics: Very proud to have @veraglahn as speaker at @NUAcowbird design symposium. http://t.co/01hLudg5  ", 
+            "Users": [
+                "@nucagraphics", 
+                "@veraglahn", 
+                "@NUAcowbird"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "meeting confirmation frenzy  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@muratpak thank you murat! should catch up via email :)  ", 
+            "Users": [
+                "@muratpak"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hope this was the last 4-hour-night of 2012 // >> LCY  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#energyflow"
+            ], 
+            "Tweet": "RT @field_io: \"A thought-provoking digital art project\" #energyflow in The Guardian's 30 best Android apps of the week! http://t.co/hywQpXBv  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#WOW"
+            ], 
+            "Tweet": ":) RT #WOW de la semaine ! Energy Flow http://t.co/wkcAUMv6  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "poetry, dance, light and interaction \u2013 beautiful stage piece by @noctestudio : WOODS http://t.co/DpGIJUzf  ", 
+            "Users": [
+                "@noctestudio"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#free"
+            ], 
+            "Tweet": "RT @creativeapps: Must! Energy Flow - Non-linear film experience by @field_io now available for Android and iOS http://t.co/WDb4Ebz0 #free  ", 
+            "Users": [
+                "@creativeapps", 
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "a pack of haribo and back to work  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mckenna1977 thanks so much but our shoot was last Friday already - sorry was a bit of a short notice ;). Hope to see you poolside soon!  ", 
+            "Users": [
+                "@mckenna1977"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"... the thrill of living in the city arises from its combination of majesty and vulnerability\" http://t.co/z7cnDmP5  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@_vade @obviousjim @deepspeedmedia ooh i loved that film! Tactile internetting  ", 
+            "Users": [
+                "@_vade", 
+                "@obviousjim", 
+                "@deepspeedmedia"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#energyflow"
+            ], 
+            "Tweet": "RT @field_io: Story No. 2 from Energy Flow: Chance \u2013 the tipping point of control vs randomness http://t.co/z1B7tHjS #energyflow  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "cave allegory 2013 -- Physicists May Have Evidence Universe Is A Computer Simulation http://t.co/voarcops via @deepspeedmedia  ", 
+            "Users": [
+                "@deepspeedmedia"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "congrats! RT @creativeapps: RESONATE 2013! http://t.co/GantUNEW  ", 
+            "Users": [
+                "@creativeapps"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#DebugViewArt"
+            ], 
+            "Tweet": "thx @juliaxgulia \"behind the scenes of upcoming film ENERGY FLOW from @field_io http://t.co/UxLr1NTo #DebugViewArt @CreatorsProject  ", 
+            "Users": [
+                "@juliaxgulia", 
+                "@field_io", 
+                "@CreatorsProject"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: FIELD 2.0, Day 1: Color, Life + Infinity http://t.co/TMWfJhBs - Here's to new adventures!  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@rmkoolhoven sorry didnt see you outside later. maybe because of the flicker behind my eyes ;). awesome show!  ", 
+            "Users": [
+                "@rmkoolhoven"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "3D printshow >> squarepusher at hackney empire whoop!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"glucose is a vital part of willpower\" \u2013 word! http://t.co/3Gd1MOs2  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "well done @alphavillefest for staging the brilliant @AntiVJ and Murcof at the beautiful Hackney Empire this weekend \u2013 amazing show!  ", 
+            "Users": [
+                "@alphavillefest", 
+                "@AntiVJ"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@aaronmelander are we live? :)  ", 
+            "Users": [
+                "@aaronmelander"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"why is contemporary art so reluctant to describe our experience of digitized life?\" Claire Bishop - Digital Divide http://t.co/EkUjthIH  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@chrisoshea wow so jealous!  ", 
+            "Users": [
+                "@chrisoshea"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@memotv haha, cheers memo - comment of the day ;)  ", 
+            "Users": [
+                "@memotv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: finally: a first taster for our generative film project Energy Flow \u2013 now live @CreatorsProject http://t.co/2VjDjMP6  ", 
+            "Users": [
+                "@field_io", 
+                "@CreatorsProject"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "back in the studio after a lovely 24hrs holiday in suffolk  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#DDXX"
+            ], 
+            "Tweet": "kind of sad now that i'll be driving not cycling \u2013 next year i hope! at least i'll get a sunrise dip at dunwich beach #DDXX  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#DDXX"
+            ], 
+            "Tweet": "my love heading off for #DDXX - good luck everyone!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "5-core brain  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"It always astonished him how 26 highly conventionalized glyphs could find such varied expression once a living hand set to write them down\"  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Just bumped into nicoletto on broadway market, hope he didnt carry a dagger in his cloak  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: signoff on our biggest project yet - now only Germany has to win to make it a perfect Friday!  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Lido breakfast with park view  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#outofbalance"
+            ], 
+            "Tweet": "curing minnesota sunburn, mosquito bites and jetlag in rainy london \u2013 waiting to get the heating and hot water fixed #outofbalance  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sermad @supernat13 hey we're at a burger place called Acadia 4th/ cedar st where ate you? Party later?  ", 
+            "Users": [
+                "@sermad", 
+                "@supernat13"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@supernat13 @sermad wake up bunis, time for a swim!  ", 
+            "Users": [
+                "@supernat13", 
+                "@sermad"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Heathrow - Minneapolis with @marcuswendt http://t.co/DmbLti3S  ", 
+            "Users": [
+                "@marcuswendt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "endlich!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "at the prince george, trying to make contact with NYC @sermad @supernat13 @marcuswendt http://t.co/cn99Qbfo  ", 
+            "Users": [
+                "@sermad", 
+                "@supernat13", 
+                "@marcuswendt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "at least getting completely soaked doesn't matter when you're on the way to the pool! @clissoldmasters  ", 
+            "Users": [
+                "@clissoldmasters"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hailstorm, wellies, woollen socks \u2013 May, anyone??  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@curl1982 cheers Kat, glad you enjoyed it! where can i see you work? ;)  ", 
+            "Users": [
+                "@curl1982"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@skeelogy hi skeel, would love to get in touch about a possible job - please email vera@field.io  ", 
+            "Users": [
+                "@skeelogy", 
+                "@field"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "wow I'm on the new bus - just hopped onto the back at a red light ;)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "just waved off a bus full of school kids on the way back to Germany - bye bye Barbara!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#bitm12"
+            ], 
+            "Tweet": "lovely break to the workday; loved @markchampkins talk and the exhibition. thanks for hosting @itsnicethat + @GFSmithpapers #bitm12  ", 
+            "Users": [
+                "@markchampkins", 
+                "@itsnicethat", 
+                "@GFSmithpapers"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@alexiesommer cheers alexie, glad you enjoyed it ;)  ", 
+            "Users": [
+                "@alexiesommer"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@followprocess hi let me know how I can help!  ", 
+            "Users": [
+                "@followprocess"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "i'm doing a lunchtime talk today in Victoria House, Bloomsbury: \"Bespoke\" w @field_io @markchampkins \u2013 hope to see you there!...  ", 
+            "Users": [
+                "@field_io", 
+                "@markchampkins"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "home office with garden view @field_io  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#herooftheday"
+            ], 
+            "Tweet": "fixed mum's internet #herooftheday  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@thomassilverman well those hackney folks, always in a rush arnt they? me enjoys the peacefulness of rural germany right now. hows business?  ", 
+            "Users": [
+                "@thomassilverman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Man war ich lange nicht mehr in Deutschland. Gleich erstmal n Schnitzelbr\u00f6tchen zur Akklimatisierung!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@marcinignac ah cool, would be great to see you!  ", 
+            "Users": [
+                "@marcinignac"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@nervous_jessica cheers yeah that was silly, hope it's fixed now!  ", 
+            "Users": [
+                "@nervous_jessica"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "facts on gender divisions in graphic design by @Sara_De_Bondt \u2013 curious to hear more about what you found out! http://t.co/wXgmhpNP via...  ", 
+            "Users": [
+                "@Sara_De_Bondt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "we're part of @itsnicethat lunch time talks series: Beauty in the Making / Bespoke \u2013 register for free tickets now! http://t.co/Uu4XxcGP  ", 
+            "Users": [
+                "@itsnicethat"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#GlugLDN"
+            ], 
+            "Tweet": "fun night + great talks @glug with @GiveUpArt @tomdarracott @foamagency @NickClement @StudioOutput \u2013 thanks for having us! #GlugLDN  ", 
+            "Users": [
+                "@glug", 
+                "@GiveUpArt", 
+                "@tomdarracott", 
+                "@foamagency", 
+                "@NickClement", 
+                "@StudioOutput"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#NewAesthetic"
+            ], 
+            "Tweet": "@kcimc liked your point of view here! #NewAesthetic http://t.co/bC2IBvpW  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#GlugLDN"
+            ], 
+            "Tweet": "RT @field_io: speaking at #GlugLDN tonight \u2013 swing by if you can for barbecue and beers at Cargo in Shoreditch! http://t.co/YI1SQLQx  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "is it important, or just pressing? http://t.co/T8pLYoP5  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "many interesting aspects touched on: Apple's suppliers in China http://t.co/vY7TpQR1  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "bought something I can't carry - folded my bike into a taxicab! loving it :)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "my inbox fills up like the magic porridge pot! whenever i tick one off i get two back!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jonnyrichards nice one, cheers! (but check all the links please!)  ", 
+            "Users": [
+                "@jonnyrichards"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "we're hiring: producer / project management talents out there, please get in touch!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@stevefisherx very much! great chatting with you - please do send me your reading list when you have a minute ;)  ", 
+            "Users": [
+                "@stevefisherx"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@matthbooth cheers matt!  ", 
+            "Users": [
+                "@matthbooth"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "inspiring chat over breakfast \u2013 thanks @AJWShaughnessy  ", 
+            "Users": [
+                "@AJWShaughnessy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@willhudson great to meet you \u2013 catch up soon!  ", 
+            "Users": [
+                "@willhudson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#impressed", 
+                "#mcrds2012"
+            ], 
+            "Tweet": "#impressed #mcrds2012 http://t.co/r8MGRHeu  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#MDS2012"
+            ], 
+            "Tweet": "on the way to Manchester for #MDS2012 \u2013 impressive lineup, excited to meet a lot of new people \u2013 who else is coming?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "The Shrine/An Argument: already loved @staceyrozich's creatures, even better in motion \u2013 beautiful work @gograndchildren...  ", 
+            "Users": [
+                "@staceyrozich", 
+                "@gograndchildren"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "stars and cities seen from the ISS http://t.co/7L7c4jQP  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sermad amazing! see you there  ", 
+            "Users": [
+                "@sermad"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#resonate"
+            ], 
+            "Tweet": "cheeers :D RT @sivinjski: WOOOOOO! @field_io duo, vera & marcus are real ninjas :D #resonate  ", 
+            "Users": [
+                "@sivinjski", 
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#resonate"
+            ], 
+            "Tweet": "blown away by alva noto and blixa bargeld live at #resonate  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#eyeofestival"
+            ], 
+            "Tweet": "RT @eyeofestival: Thrilled to announce FIELD ( @veraglahn @marcuswendt ) will be at #eyeofestival http://t.co/ELG7reTN @field_io @bplrn ...  ", 
+            "Users": [
+                "@eyeofestival", 
+                "@veraglahn", 
+                "@marcuswendt", 
+                "@field_io", 
+                "@bplrn"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#resonate"
+            ], 
+            "Tweet": "Leaving the fog behind - Belgrade we're on the way! #resonate  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@panjapop lets do it!  ", 
+            "Users": [
+                "@panjapop"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: \"Vibrant and innovative, these guys make the kind of digital future we\u2019d like to live in\" \u2013 thanks @itsnicethat :)...  ", 
+            "Users": [
+                "@field_io", 
+                "@itsnicethat"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#mds2012"
+            ], 
+            "Tweet": "happy to be invited to ManchesterDesignSymposium #mds2012 w @itsnicethat @AJWShaughnessy @Fontsmith @malcolmgarrett ......  ", 
+            "Users": [
+                "@itsnicethat", 
+                "@AJWShaughnessy", 
+                "@Fontsmith", 
+                "@malcolmgarrett"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#NextNature"
+            ], 
+            "Tweet": "RT @livingarchitect: Is any sufficiently advanced technology indistinguishable from nature? http://t.co/WgAQFFtI #NextNature  ", 
+            "Users": [
+                "@livingarchitect"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "http://t.co/YO15YW4v  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@aplusplus supercool that you're coming, will have a good time! no idea where we're staying yet, will find out!  ", 
+            "Users": [
+                "@aplusplus"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @porticoquartet: And it's 99% air, 1% matter  ", 
+            "Users": [
+                "@porticoquartet"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @porticoquartet: I just saw the future an it's beautiful  ", 
+            "Users": [
+                "@porticoquartet"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jennydeluxe: This! In the NYT! \"Few women want to marry a man whose penis rises and falls in tandem with the size of his paycheck.\" ...  ", 
+            "Users": [
+                "@jennydeluxe"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Dalston-kebab-detox after 3 days of schnitzel-leberk\u00e4s-bratkartoffel-diet in Munich  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@frederickken see you later!  ", 
+            "Users": [
+                "@frederickken"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#tocame12"
+            ], 
+            "Tweet": "Warm up for #tocame12 - today on a FIELD trip, kneedeep in the datastream http://t.co/T88y1yj7  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#tocame12"
+            ], 
+            "Tweet": "RT @field_io: On the way to Munich and excited to present at #tocame12 tomorrow - there will be skateboards, jet planes and physics invo ...  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "recruitment suffering  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "lazy lazy LAZY \u2013 the OTHERS, not me!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@clissoldmasters oh no, i wont be making it today (really wanted to get my first official timings ;) sorry!  ", 
+            "Users": [
+                "@clissoldmasters"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "it's the weekend! http://t.co/ouCqxFHL  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#TED"
+            ], 
+            "Tweet": "Defend our freedom to share (or why SOPA is a bad idea) #TED http://t.co/32hr9Gbf RT @alphavillefest:  ", 
+            "Users": [
+                "@alphavillefest"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: Tian Shan - photographs from our last trip / flyover the mongolian mountain landscape http://t.co/fCeZWhyD by @marcuswendt  ", 
+            "Users": [
+                "@field_io", 
+                "@marcuswendt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "43 hrs journey coming to an end... now where's the luggage?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Looking forward to a safe trip to moscow with the Russian wrestling team on board  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: RT @interactivepint: Come and enjoy the last interactive pint of the year today from 8pm at the London Fields Pub, Mare...  ", 
+            "Users": [
+                "@field_io", 
+                "@interactivepint"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@JoelGethinLewis just updated your favourite ascii page  ", 
+            "Users": [
+                "@JoelGethinLewis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "finally seen Richter @tatemodern. Amazed  ", 
+            "Users": [
+                "@tatemodern"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Amazing - 3 different views on synaesthesia: @quayola, Nick Ryan and Fred Deakin at sound and vision panel @onedotzero  ", 
+            "Users": [
+                "@quayola", 
+                "@onedotzero"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sermad will do mate! Hope you are well.  ", 
+            "Users": [
+                "@sermad"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@nilsknoblick dude, you in town? come down to onedotzero  ", 
+            "Users": [
+                "@nilsknoblick"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "last minute tweaks for a demo of our music video racer game @alphalabscc launching tomorrow @onedotzero http://t.co/cCpnYhnT  ", 
+            "Users": [
+                "@alphalabscc", 
+                "@onedotzero"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@caimatthews @JoelGethinLewis we're outsmarting each other  ", 
+            "Users": [
+                "@caimatthews", 
+                "@JoelGethinLewis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@joelgethinlewis @caimatthews i'd say \"non musca sed pluma est\". wont be able to translate w google, it's not that simple ;)  ", 
+            "Users": [
+                "@joelgethinlewis", 
+                "@caimatthews"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "On the way to Basel  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "the entrepreneurial generation http://t.co/vxNdhMEo via @marcuswendt  ", 
+            "Users": [
+                "@marcuswendt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "empty studio, loud music \u2013 @field_io  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@joelgethinlewis site updated and ready for mailout, sir  ", 
+            "Users": [
+                "@joelgethinlewis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#sighofrelief"
+            ], 
+            "Tweet": "an odyssey ends; my new passport has arrived! #sighofrelief  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@nikanika_com whohoo well done!  ", 
+            "Users": [
+                "@nikanika_com"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sermad looks like they're not doing it this year... but seems like a march on parliament is planned!  ", 
+            "Users": [
+                "@sermad"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mrsbunz: Is society even more unjust than we think it is? - by me http://t.co/VDfQDolo feat. Daniel Kahneman's studies of financial...  ", 
+            "Users": [
+                "@mrsbunz"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "loving it! RT @kamptweets: planning big plans with @field_io.  ", 
+            "Users": [
+                "@kamptweets", 
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@nikanika_com cool, say hi ;) sounds like a great event!  ", 
+            "Users": [
+                "@nikanika_com"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "wow RT @kamptweets: Light Field Camera. take image now, decide on which object to focus on later. crazy. http://t.co/GJcAShRC  ", 
+            "Users": [
+                "@kamptweets"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#ows"
+            ], 
+            "Tweet": "\"The #ows claim that 1% of people have most of the wealth reflects a logical phase of the self-organising economy.\" http://t.co/11IM9aYd  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @lasern: everything will be okay in the end. if it's not okay, it's not the end. (unknown)  ", 
+            "Users": [
+                "@lasern"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Personalisation as censorship http://t.co/ZUREIOaB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@nervous_jessica they're beautiful jess!  ", 
+            "Users": [
+                "@nervous_jessica"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@supernat13 for sure!  ", 
+            "Users": [
+                "@supernat13"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@supernat13 yep!  ", 
+            "Users": [
+                "@supernat13"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#ows"
+            ], 
+            "Tweet": "incredible \u2013 occupy wall st micro cultures http://t.co/68VXE29p #ows  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "lady at pool reception: \"sorry the machine is very slow today. i'd say it's the internet but the internet says it's not them\"  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "look, our store is now on facebook aswell. more beautiful images coming soon! http://t.co/CMrcDLPY  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "like! RT @generatorx: Frankenfont from @ben_fry and Fathom, typesets Shelley's Frankenstein in found fonts from PDFs http://ow.ly/6MabU  ", 
+            "Users": [
+                "@generatorx", 
+                "@ben_fry"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "great talking to @kerielmsly! so many ideas :)  ", 
+            "Users": [
+                "@kerielmsly"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@supernat13 hows life as wife sweetheart?  ", 
+            "Users": [
+                "@supernat13"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Looks like brand new! http://t.co/g5G6NpWN  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "90km cycling -2400 calories. scone with jam and cream +480 calories.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "german is a really strange language  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "at the car club watching @quayola and jamie xx - nice start guys! http://t.co/ydv8Cy9a  ", 
+            "Users": [
+                "@quayola"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Dark Matters \u2014 Shadow_Technology_Art exhibition @WhitworthArt opening tomorrow, trailer now online: http://t.co/ZLdVqTch @CreativeConcern  ", 
+            "Users": [
+                "@WhitworthArt", 
+                "@CreativeConcern"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "can you recommend a photographer in manchester for a small job? please email hello@field.io or retweet. thanks!  ", 
+            "Users": [
+                "@field"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jgl south beach, key west, snorkeling, palm shade, all of it!  ", 
+            "Users": [
+                "@jgl"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "one-way to key west  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "florrrrrida!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@supernat13 haha, just had a vision of a knitted veil ;) sorry i didn't see you msg re rooftop earlier!  ", 
+            "Users": [
+                "@supernat13"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "nice music flowing into the studio from @cafeOTO  ", 
+            "Users": [
+                "@cafeOTO"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@thomastraum good article, well balanced view  ", 
+            "Users": [
+                "@thomastraum"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#hackney"
+            ], 
+            "Tweet": "RT @Dalstonpeople: Lido shut, London Fields almost empty. Lots of police outside town hall. #hackney  ", 
+            "Users": [
+                "@Dalstonpeople"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#hackney", 
+                "#londonriots"
+            ], 
+            "Tweet": "all shops closing down on kingsland rd after police warnings #hackney #londonriots  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "http://www.guardian.co.uk/uk/2011/aug/09/hackney-riots-police-east-london?CMP=twt_gu  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @thetings: STOP this. There's people around the world fighting for their lives, for water, food, some ruled & beaten, Uk this is an...  ", 
+            "Users": [
+                "@thetings"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sermad phew glad to hear that!  ", 
+            "Users": [
+                "@sermad"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Must love dalston RT @sarahdrinkwater:Turkish in Dalston working with the police & handing out tea. Like they've all called their...  ", 
+            "Users": [
+                "@sarahdrinkwater"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @PaulLewis: Kingsland Road chaotic as Turkish men attack other, predominantly black, youths with sticks, metal barricades and bricks. ...  ", 
+            "Users": [
+                "@PaulLewis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#LondonRiots"
+            ], 
+            "Tweet": "Right she is! Awesome comment http://t.co/zKfMHuv #LondonRiots  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@katybeale just made it home to london fields without trouble, but didn't have to go through the park. Looks quiet.  ", 
+            "Users": [
+                "@katybeale"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#hackney"
+            ], 
+            "Tweet": "RT @katybeale: Seriously AWFUL if true :: Avoid London fields cyclists. Gang of kids mugging people for bikes #hackney please RT  ", 
+            "Users": [
+                "@katybeale"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@katybeale have you heard more from london fields? just thinking whether i can go home!  ", 
+            "Users": [
+                "@katybeale"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#LondonRiots"
+            ], 
+            "Tweet": "so shocking RT @marcuswendt: #LondonRiots going on literally across the park/ our house. http://twitpic.com/630tb4  ", 
+            "Users": [
+                "@marcuswendt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "On the way to Field Day! Who's there?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "almost feierabend http://soundcloud.com/n_u_t_s/2011-07-20-20-00-00-mp3/s-1eM3e  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "feels like home, here and there  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@sermad wohoo, get your nose clip on!  ", 
+            "Users": [
+                "@sermad"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@andyhunti great news andy, all the best!  ", 
+            "Users": [
+                "@andyhunti"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "nice interview with @memotv on @softwareandart \u2013 love the inspiration part :) http://t.co/NnYc8hA  ", 
+            "Users": [
+                "@memotv", 
+                "@softwareandart"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@miketucker yes we should find another nice gridded structure to project onto! :)  ", 
+            "Users": [
+                "@miketucker"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@miketucker yeah we're working on that, would be awesome to show it in London!  ", 
+            "Users": [
+                "@miketucker"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@plannerpaultj glad you like :)  ", 
+            "Users": [
+                "@plannerpaultj"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "last chance to see Communion life \u2013 Super Computer Romantics open until tomorrow! http://bit.ly/jNfOjo @universalevery @gaitelyrique  ", 
+            "Users": [
+                "@universalevery", 
+                "@gaitelyrique"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "great micro interviews http://theandproject.com/bullseye/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "can't write in german anymore :-/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@tkachkovsky published yesterday :) http://www.field.io/project/deutsche-bank-hong-kong  ", 
+            "Users": [
+                "@tkachkovsky"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@i_am_kaiju firefox view should be fixed, give it a try!  ", 
+            "Users": [
+                "@i_am_kaiju"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "nice review of Super Computer Romantics on Co.Design! http://ow.ly/4Y2MC  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@tkachkovsky great you enjoyed scamp! the Deutsche Bank project will be published on our website in a matter of days, please bear with us :)  ", 
+            "Users": [
+                "@tkachkovsky"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#madmen", 
+                "#BBC", 
+                "#comeon"
+            ], 
+            "Tweet": "RT @Visuelleuk: When is Mad Men series 5 on BBC #madmen #BBC #comeon  ", 
+            "Users": [
+                "@Visuelleuk"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "beautiful. http://.ro.me/ congrats @mrdoob @aaronkoblin  ", 
+            "Users": [
+                "@mrdoob", 
+                "@aaronkoblin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#scamp11"
+            ], 
+            "Tweet": "really enjoyed the mashup conference day at #scamp11 \u2013 great vibes! and thanks for the brilliant tweets everyone! @shesaysuk  ", 
+            "Users": [
+                "@shesaysuk"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "searching for ipad developers, please get in touch!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#SCAMP11"
+            ], 
+            "Tweet": "showing some brand new FIELD work at Shesays' SCAMP conference today! #SCAMP11  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "speak french or die trying  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "anyone know a good paris photographer who could help document our installation / photo & video? hello@field.io please get in touch or RT :)  ", 
+            "Users": [
+                "@field"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@thomastraum cheers tommi!  ", 
+            "Users": [
+                "@thomastraum"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "recommendations for a good AV company in London, anyone? thanks!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "wish we had a housebar in the studio right now...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#fukushima"
+            ], 
+            "Tweet": "pray this will have a good end; hope it'll be the last needed proof that this technology is uncontrollable #fukushima  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@charlieperrins hey charlie, really nice to meet you yesterday!  ", 
+            "Users": [
+                "@charlieperrins"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jgl in every sense!  ", 
+            "Users": [
+                "@jgl"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "small but pro. yeah!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @thetwoblackcats: It's International Women's Day today. If you see a woman say well done for being one.  ", 
+            "Users": [
+                "@thetwoblackcats"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@marcinignac wow!  ", 
+            "Users": [
+                "@marcinignac"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @nervous_jessica: the fractal explorer by @subblue is finally here and it's fantastic http://fractal.io  ", 
+            "Users": [
+                "@nervous_jessica", 
+                "@subblue"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "nice and quiet saturday in the studio, shooting some stop motion making-of  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "is catching up!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "one day i will go to iceland http://bit.ly/gmsrK8  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hat ein bisschen aufger\u00e4umt und 25GB platz gefunden  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "head in the clouds. and in houdini.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "lean back, work on  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mysteryplaysrec: Tickets still available for the launch gig at Cafe Oto feat. Inch-time, Icarus and AM/PM http://bit.ly/dLyAjv  ", 
+            "Users": [
+                "@mysteryplaysrec"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "ready for mad men season 5  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#forex"
+            ], 
+            "Tweet": "@wendtg du kannst alle m\u00f6glichen stichw\u00f6rter wie #forex mit einem hash einf\u00fcgen, dann finden dich andere die das thema auch verfolgen  ", 
+            "Users": [
+                "@wendtg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@intertwilight leider schon andere pl\u00e4ne :-/ sollte mir n\u00e4chstes jahr tm mal wieder fest vornehmen ;) viel erfolg!  ", 
+            "Users": [
+                "@intertwilight"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "beautiful! RT @marcinignac: Oribotics - origami and robotics http://vimeo.com/16429167  ", 
+            "Users": [
+                "@marcinignac"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "nephology  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#DAS", 
+                "#tm", 
+                "#ctm", 
+                "#createberlin"
+            ], 
+            "Tweet": "Amazing! RT @intertwilight: Berlin's first ever #DAS Digital Art + Sound Weekend by #tm, #ctm, #createberlin coming up!...  ", 
+            "Users": [
+                "@intertwilight"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "ticked off my last todo for friday at 17.20, now when did that ever happen? now time for a little blogpost?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@quayola well, deadline is over anyways :-/  ", 
+            "Users": [
+                "@quayola"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@quayola you will need to tell everyone that you were against us but unable to convince the rest of the jury ;)  ", 
+            "Users": [
+                "@quayola"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@quayola wow congratulations! should submit some stuff ;)  ", 
+            "Users": [
+                "@quayola"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "oops friday yet...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "favourite shots of rice terraces http://bit.ly/g4Qfvw  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @tiredoflondon: Today's Idea - Gaze into Kapoor's Turning the World Upside Down http://bit.ly/gZ38al  ", 
+            "Users": [
+                "@tiredoflondon"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "i made it back to reality! sorry for all of you stuck in the snow... http://ow.ly/i/6xJI  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "sitting upright and wheeling soundless on my new hag chair  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@_01010101 merci jerome!  ", 
+            "Users": [
+                "@_01010101"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: Muse is selected for the Portable Film Festival! 5 days to go; let's hear your votes! http://bit.ly/g2NSW3  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Russendisko  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Landed in Moscow. Oligarchs may pass the queue, we miss our connecting flight. Complimentary salami sandwiches in the Aeroflot lounge. Mh.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Boarding for Moscow with clothes for Hong Kong  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "nice words, thanks Marius! RT @generatorx: new posts related to @nodeforum: Catalogue texts about Ralf Baecker and FIELD http://ow.ly/3hG6S  ", 
+            "Users": [
+                "@generatorx", 
+                "@nodeforum"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@marcinignac really nice marcin!  ", 
+            "Users": [
+                "@marcinignac"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "booking one-way to Paderborn :D  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ldn: A London to Paris cycle route is due to open in 2012 http://bbc.in/dZWqg8  ", 
+            "Users": [
+                "@ldn"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lennyjpg gabs mal \"ein klare Grenze zw. Kunst u. digitalen Medien\"? Bei der Art dauerts wohl noch ein bisschen ;) fand sound objects toll!  ", 
+            "Users": [
+                "@lennyjpg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@saskiaschmidt wohoo, congrats and good luck!  ", 
+            "Users": [
+                "@saskiaschmidt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "i didn't know it before, but if there's a place in russia i'd love to go it must be st petersburg!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "juhuuuu! Angry Birds Peace Treaty http://youtu.be/bMltvlqEM54 RT @rosscolquhoun @hypetype  ", 
+            "Users": [
+                "@rosscolquhoun", 
+                "@hypetype"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "news overflow!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@defetto i hope so ;) enjoy the rest of your time in beautiful frankfurt  ", 
+            "Users": [
+                "@defetto"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@nervous_jessica you shouldnt miss london while you're over here for once ;) would be really cool to meet up!  ", 
+            "Users": [
+                "@nervous_jessica"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@defetto i know ;D would just love to see it myself and how it's setup in the room... could you send me another snapshot?  ", 
+            "Users": [
+                "@defetto"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@defetto true, i dont know... how do you like it so far?  ", 
+            "Users": [
+                "@defetto"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "very well done, congrats! RT @anf_nu \"Egyptrixx - Start from the Beginning\" video in HD on Vimeo http://vimeo.com/16660444  ", 
+            "Users": [
+                "@anf_nu"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#node10"
+            ], 
+            "Tweet": "thanks Rainer! RT @khlrqa: @veraglahn your movies looking awesome on the big screen! #node10 http://twitpic.com/37erbb  ", 
+            "Users": [
+                "@khlrqa", 
+                "@veraglahn"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#inspiration"
+            ], 
+            "Tweet": "love this! RT @rosscolquhoun: linking modern fashion pieces to great / classic looks http://bit.ly/aB10xp #inspiration  ", 
+            "Users": [
+                "@rosscolquhoun"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "street view voyerism RT @thomastraum: Amazing google maps tumblr http://9eyes.tumblr.com/  ", 
+            "Users": [
+                "@thomastraum"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@domtak destination?  ", 
+            "Users": [
+                "@domtak"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Would love to be in Frankfurt today for the opening of NODE10 w/ an installation of Muse and Interim Camp. http://node10.vvvv.org @nodeforum  ", 
+            "Users": [
+                "@nodeforum"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "how much better could a wednesday night ever get?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "wohoo off to brixton last minute to see MIA, praise Julia!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#onedotzero"
+            ], 
+            "Tweet": "@creativeapps #onedotzero that would be cool!  ", 
+            "Users": [
+                "@creativeapps"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "we do! RT @miketucker: new site is up, hope you like it! http://mike-tucker.com  ", 
+            "Users": [
+                "@miketucker"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#cpluv"
+            ], 
+            "Tweet": "ariel at computerlove http://bit.ly/9OKv2f #cpluv @stateless @ninjatunehq  ", 
+            "Users": [
+                "@stateless", 
+                "@ninjatunehq"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "tough choice for tonight: dj sniff at cafe oto, or first coached swim session in 4 months?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@quayola cant wait to see it!  ", 
+            "Users": [
+                "@quayola"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mazbox haha, about 15 could be from me ;) sorry. how was the tour, are you back in town yet?  ", 
+            "Users": [
+                "@mazbox"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@christianklotz deja-vu! say hi to everyone! though the only person i recognise is olaf...  ", 
+            "Users": [
+                "@christianklotz"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "defrosting my toes after an easy bike tour out east. ventilation on my shoes is a bit too good for october.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "moving from one air-conditioned bubble into the next  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Landed in hong kong during blue hour last night  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@marcuswendt count me in  ", 
+            "Users": [
+                "@marcuswendt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@marcinignac erm... no, such a shame. cant wait to see what they make of it! how are you?  ", 
+            "Users": [
+                "@marcinignac"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kimasendorf cool thanks for coming! how long are you in town?  ", 
+            "Users": [
+                "@kimasendorf"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Beginning to think in english  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@marcinignac very cool marcin, awesome creatures! love the shading.  ", 
+            "Users": [
+                "@marcinignac"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@chrisoshea phew, much better than the other way round. good luck with the new place  ", 
+            "Users": [
+                "@chrisoshea"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@chrisoshea oha. still happy with the move?  ", 
+            "Users": [
+                "@chrisoshea"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "looking for an imaginative experienced contemporary dancer for an exciting arts project! 19 July, travel costs + fee provided. please RT!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "reaching the whatever-the-cost level  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "90 minuten an die fahne geklammert :-/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "had a dip in the lido at 6.30, fresh-ness!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@domtak oh no, on holidays then :(  ", 
+            "Users": [
+                "@domtak"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#tidyup"
+            ], 
+            "Tweet": "almost managed to get the inbox under 100 items #tidyup  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "welcome tiemen! http://bit.ly/9TdciW @rapatski  ", 
+            "Users": [
+                "@rapatski"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "had a lovely picnic day and a dip in the pond in hampstead heath  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mrmeier ich auch!  ", 
+            "Users": [
+                "@mrmeier"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hup holland hup!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@CedricKiefer mhm but really good would be interactive AND eatable!  ", 
+            "Users": [
+                "@CedricKiefer"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@domtak should tell you sooner next time ;) would be great to catch up!  ", 
+            "Users": [
+                "@domtak"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "speaking tonight at Motive Night at The Book Club in Shoreditch \u2013 hope to see some of you there! http://bit.ly/cd2yi1  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "flower delivery from happy client \u2013 thats how life should be! http://bit.ly/cqyEZz  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "gut gedanced gestern  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Apple and carrot juice makes you fit for early Friday morning meetings  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "graf zahl  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "i need shoes by rem koolhaas!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@monsterswell cheers, but i guess a flat share room would be better ;)  ", 
+            "Users": [
+                "@monsterswell"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "15 mins, quickest signoff meeting ever :)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Anyone got a room to rent around E8 for July - Sept/Oct for our intern Tiemen?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "2, 1, risiko...!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@xuv still don't know what they were looking for. next time i'll go down and ask as curious neighbours usually do ;)  ", 
+            "Users": [
+                "@xuv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "packing the boxes for the field office move!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#museumoflondon"
+            ], 
+            "Tweet": "LDN24 our new data driven art installation with The Light Surgeons in the Galleries of Modern London http://bit.ly/aJGV5s #museumoflondon  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#londonfields"
+            ], 
+            "Tweet": "ten bobbies searching around our house. whats going on here again? #londonfields  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "summers coming, time for rhubarb crumble pie!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: 'Muse' a new experimental shortfilm http://bit.ly/ceuFDZ - transforming our digital scrapbooks from the last 3 years into ...  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "in CPH for 'private bits' launch & artist talk at netfilmmakers, curated by @sixthsensor http://netfilmmakers.dk http://bit.ly/aH49qr  ", 
+            "Users": [
+                "@sixthsensor"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "in copenhagen this weekend! anyone got tips?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#timeflies"
+            ], 
+            "Tweet": "just realised it's just been exactly 1 year since we came to london... #timeflies  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Cycling through the city on a bank holiday morning, nice  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "let entrepreneurs cut the deficit http://www.guardian.co.uk/commentisfree/2010/apr/28/entrepreneurs-deficit-public-private-pay  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: Warp Records vs. Ninja Tune 3D Soundclash \u2013 generative realtime live visuals at the Royal Albert Hall http://bit.ly/cJPlac  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@thomastraum z\u00f6gerst du etwa? ;)  ", 
+            "Users": [
+                "@thomastraum"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "finally started the season, sunny 44k cycling tour round epping forest this morning with @marcuswendt  ", 
+            "Users": [
+                "@marcuswendt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "meet the neighbours \u2013 map of gangs in hackney http://bit.ly/b1KuGY  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "my back tells me i should rather not work on the couch. but it's friday evening...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@andyhunti i never thought that would really work. cool!  ", 
+            "Users": [
+                "@andyhunti"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: going to see the Speed of Light http://bit.ly/dn3Puf tonight, then on to Dorkbot http://bit.ly/aObV0g \u2013 anyone else going?  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: new project: liquids, generative animations for aol with @universalevery http://bit.ly/cMz4tD  ", 
+            "Users": [
+                "@field_io", 
+                "@universalevery"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: new post up: documentation of our generative landscape animations for aol with @universalevery http://bit.ly/bZq8o1  ", 
+            "Users": [
+                "@field_io", 
+                "@universalevery"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "wohoo got last minute tickets for autechre playing around the corner tonite!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: new project online: more photos and a short video of our Photon Interactive Light Games http://bit.ly/bqtLGm @DurhamLumier ...  ", 
+            "Users": [
+                "@field_io", 
+                "@DurhamLumier"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: new project up: data-driven print identity for the dokfest film festival http://bit.ly/aRucT3  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "dreaming. saving. http://www.scottusa.com/us_en/product/8295/45146/speedster_s30  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 4, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: finally time for portfolio updates at www.field.io/project first up: xbox 360 music vid and tvc with lily allen http://bit ...  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#bt"
+            ], 
+            "Tweet": "Offline in hackney due to line cut in paddington. You kidding me? #bt  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "big fan of Kapoor, but ... not sure about the Anish Kapoor London Olympic sculpture http://bit.ly/atDkkg (via @LDN @PaulCalway)  ", 
+            "Users": [
+                "@LDN", 
+                "@PaulCalway"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#LHC"
+            ], 
+            "Tweet": "RT @field_io: First Physics imagery from the #LHC on our process blog http://bit.ly/9G8xv1  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "http://www.guardian.co.uk/global/2010/mar/29/lhc-launch-live-large-hadron-collider  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "You cant accelerate the beams without the cryogenics working, because the superconducting magnets have to be ultra-chilled to work properly.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: amazed by the houdini renderings of the depotart collective http://bit.ly/95Qwtq  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@remotelocation looks ace guys, congrats! NEW NUMBERS WEBSITE \u2192 http://nmbrs.net @numbers12345678  ", 
+            "Users": [
+                "@remotelocation", 
+                "@numbers12345678"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "is filtering the noise  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "has a new cute white bicycle  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Tron! http://wdmp-7.vo.llnwd.net/d1/wdsmp/TRON/42Ent/1Trlr/Grid_1tlr_1280x532_720p.mov  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: great exploding cube sculptures by chris cornish and alison moffett http://bit.ly/aYR6Ig  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 3, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "A day of meetings ahead. Fingers crossed!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "wont make it to the V&A late today... :-/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "view inside the bug: http://bit.ly/9MYfQb  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "metro boulo dodo  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "tonight: apple crumble instead of swim training  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "amazing polygonal landscape paintings by torben giehler http://bit.ly/d9Pktk  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: pictures from our live visuals set for warprecords vs ninja tunes with @thomastraum @quayola @minivegas for @onedotzero ht ...  ", 
+            "Users": [
+                "@field_io", 
+                "@thomastraum", 
+                "@quayola", 
+                "@minivegas", 
+                "@onedotzero"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "taucht wieder auf...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "received a cheque for the first time in life. this financial capital is really behind in the small things...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "checking out heligoland  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: designing record covers, coding audio-reactive landscapes, installing an 18m 360degree clock, animating with javascript fo ...  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "summer holidays in cornwall booked jippieh!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#3031147"
+            ], 
+            "Tweet": "whole different perspective on the war in afghanistan http://www.channel4.com/programmes/dispatches/4od#3031147  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Things the world does not need: chocolate tea  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "jenga!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "jute statt plastik. i like this! http://beunpackaged.com/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 2, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "a productive weekend and a sunny start into a new month :D  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@rosscolquhoun happy birthday ross!  ", 
+            "Users": [
+                "@rosscolquhoun"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@marcuswendt i guess i'll have to fight back with quiche lorraine  ", 
+            "Users": [
+                "@marcuswendt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "working on camera matrix maths with @marcuswendt; feels like back then in maths tutoring  ", 
+            "Users": [
+                "@marcuswendt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: Lily Allen \"The Fear\" music videos for XBox made with our crowdsourcing grid generators http://bit.ly/5rtNzL http://bit.ly ...  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: Interim Camp featured in the \"Colour\" issue of IdN magazine + DVD, available soon! http://idnworld.com/mags/?id=v16n6  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "lounging with an ergonomically clear conscience in my new aeron chair  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 1, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#Numbers"
+            ], 
+            "Tweet": "Had a good shake last night at the #Numbers party at fabric wohoo!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "back home in hackney!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@rosscolquhoun great! this is the cultural heritage we immigrants will never be able to catch up with ;)  ", 
+            "Users": [
+                "@rosscolquhoun"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mrmeier bei euch bleibt sicher auch nix liegen...  ", 
+            "Users": [
+                "@mrmeier"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "snow in hackney!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [
+                "#x"
+            ], 
+            "Tweet": "RT @field_io: our first crowdsourced generative tv ad with lilly allen for xbox lips during the #x-factor finals tonight!  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: our contributions to the Aol relaunch together with Universal Everything http://tr.im/Hd38 @universalevery  ", 
+            "Users": [
+                "@field_io", 
+                "@universalevery"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "electric shocks from my power adaptor... maybe tape wasn't the best way to fix it.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io: is looking forward to Touch's Atmospheres3 @ Cafe Oto http://www.cafeoto.co.uk/touch.shtm  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 12, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hotel lobbyism in d\u00fcsseldorf  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "needs a better screencapture option, right now! any suggestions?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "imac shipped. gaping wound on the desktop.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@domtak well-deserved, congrats!  ", 
+            "Users": [
+                "@domtak"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "christmas flights booked, jippieh!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io posted some early sketches of Photon: http://bit.ly/2d8P4R  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [
+                "#Lumiere"
+            ], 
+            "Tweet": "The Observer wrote about #Lumiere, nice! http://tr.im/F0KB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "boundless just-CC-everyone habitus...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [
+                "#Durham", 
+                "#Lumiere"
+            ], 
+            "Tweet": "home after 5 days in #Durham; amazed by people's reactions to our Photon installation at #Lumiere, despite cold and rain. http://tr.im/EXSI  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 11, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Marcus fighting the bugs http://yfrog.com/j5hmgxj  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 10, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Meeting HAL http://yfrog.com/7fwgpj  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 10, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Waiting for the fog to light in Stansted on the way to D\u00fcsseldorf...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 10, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "very nice little video documentation from pluto festival! http://www.vimeo.com/7295903  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "new posts on field.io/process about pluto festival, light, prisms, and duchamp: http://bit.ly/2VzJww  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 10, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "eating delayed birthday cake, yum  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 10, 
+                "Year": 2009
+            }, 
+            "Hashtag": [
+                "#Brussels"
+            ], 
+            "Tweet": "If you're in #Brussels get out to Opwijk to see Rustie, FourTet, Kentaro and many more perform Friday Night at http://pluto-festival.be/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Field trip to the north, I love my work :)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "again helicopters over london fields, whats going on here?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @marcuswendt @comkee @miketucker: This Happened @ shoreditch town hall, 7:20pm http://www.thishappened.org - see you there!  ", 
+            "Users": [
+                "@marcuswendt", 
+                "@comkee", 
+                "@miketucker"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @field_io built a crowd sourced video system for http://www.amplichoir.com \u2013 help us create the world's biggest user-generated choir!  ", 
+            "Users": [
+                "@field_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "we\u00b4re looking for a talented sound guy or girl to collaborate with on some nice art projects! http://tr.im/znG2  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "on the way to digital architecture london http://www.digital-architecture.org/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "met the personified german mittelstand today and found it quite amusing  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "catching up with the tv duel of german chancellor candidates...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "new haircut neck free. sunday chill and jaffa cakes.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [
+                "#onedotzero"
+            ], 
+            "Tweet": "liked this fever ray video in last night's #onedotzero program http://bit.ly/csQnw  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "beat the snooze alarm  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "quick cornershop run for beer&crisps before kickoff!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "reading about string theory  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 9, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "bicycles gone, sad  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@synecstasy london is missing on your list!  ", 
+            "Users": [
+                "@synecstasy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "lunchbreak treat: jellyfish http://bit.ly/270F0X  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "new article about the fantastic generative architecture of kokkugia on http://www.field.io/process  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hope to see everyone tonight! https://exhibitx.co.uk/index.php/blog/field1  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "looking into options to rent a mac for more render power \u2013 any recommendations?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "nothing like some funky bookkeeping on a sunny weekend  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "a busy sunny early morning! hello!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "was swimming in the rain, refreshing  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "a few more festival submissions for interim camp....  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "got a parcel full of haribo and pudding! yummi!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [
+                "#yeah"
+            ], 
+            "Tweet": "sent off a proposal #yeah  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@nordgren definitely! we\u00b4re in london fields, how about you?  ", 
+            "Users": [
+                "@nordgren"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "i cant work without sweets!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "jusz posted a new article about Sol LeWitt on http://www.field.io/process  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [
+                "#TheEnlightenmentClub"
+            ], 
+            "Tweet": "on the way to #TheEnlightenmentClub  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mrmeier ah, doch nicht so einfach...  ", 
+            "Users": [
+                "@mrmeier"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mrmeier i think you need an invitation for outside uk  ", 
+            "Users": [
+                "@mrmeier"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "trying out spotify, liking it!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "saturday noon chill out  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mrmeier very pretty work! say hi to rita!  ", 
+            "Users": [
+                "@mrmeier"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "broadway market coffee as a reward :)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "our new portfolio is online! have a look: http://www.field.io/ feedback welcome!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "testing the new field site!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "will be busy as a bee today  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "proceeded from pizza to coffee to lemon cake to beer with lisa, rita and @mrmeier :)  ", 
+            "Users": [
+                "@mrmeier"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "shaalimaaar curry!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "chasing jpeg artifacts  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "forgot the entry deadline of the kassel dokfest... upps!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "trying to find back a particular image of a glacier on flickr... only a few millions to skip thru.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 7, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "more effort for less text  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@techgyver no, moving into a new flat! obviously all telekoms around the world are the same ...  ", 
+            "Users": [
+                "@techgyver"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "facing to be offline for four weeks. gasp.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "yeah, hammertime! http://bit.ly/MgZHn  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "building a nice new site for field!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "better have the international radiotelephony alphabet handy before calling a UK hotline again! says Victor Echo Romeo Alfa  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "signed the rental contract today, moving to london fields next week jippieh!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "cant believe german telekom finally received my cancellation after about 8 trys. now lets see how long it takes them to process it  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "got caught in hyde park before reaching the tate. not too bad though.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "is making strawberry pie  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "experimental saturday  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "just found this possibly life-saving webshop: http://tr.im/oiGR  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "tuned in to bollywood radio  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "oh... another night of live music at the freaky bar across the street...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "the couch is still just the best laptop workplace  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [
+                "#dorkbotlondon"
+            ], 
+            "Tweet": "met so many nice people at #dorkbotlondon and had a fun night!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "made this huge bowl of tabule and knows it will be gone in no time  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "suddenly has cucumber in all her cosmetic products. is that a credit crunch substitute for aloe?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 6, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "three more interesting flats to view tonight. fingers crossed!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "red curry on a warm day \u2013 phhhh  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "translating a translated text back to german. doh!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "ghostwriting production reports  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "starting the 2nd round of flathunting!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "i want to get out of this nooooooooise  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"designs\" a budget statement  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "cant really agree with her neighbours taste of music.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "so many status bars!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "feels very weekend, but better get some work done  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "on the way to cambridge  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mrmeier hall\u00f6chen!  ", 
+            "Users": [
+                "@mrmeier"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "preparing nervousink for another use...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "cake, paper, blanket, park  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "interactive barbapapas  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "peachy pitch  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "dividing the ebay prey  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "has a new home :-)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 5, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "and off we go!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "up to the bulk waste!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "better drink the champagne before selling the fridge  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "cycling around taking photos of houses.... dumdidum  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@defetto moving in may! hope to see you then!  ", 
+            "Users": [
+                "@defetto"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "trying to get rich on ebay  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "preparing an interim camp excerpt for siggraph09!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "cant believe she just started packing!! :-D  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hat einen hexenschuss  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "and will not give in!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "is fighting a landlord war  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hates it when a plan doesnt work grrrrrr  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 4, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "what the fck is a schluss\u00fcberschussanteil?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 3, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "tries to unlearn how to feel cold  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 3, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "is back in kassel  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 3, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@toxi isnt it quite strange that every year on these days something important is scheduled that goes all wrong when you oversleep?  ", 
+            "Users": [
+                "@toxi"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 3, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "no emails today... whats wrong?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 3, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "is afraid to get lost in the forest  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": ":-o vimeo stole the last minutes of our film!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@tobhellwig yes, you\u00b4re in the oldie residence now, be aware!  ", 
+            "Users": [
+                "@tobhellwig"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "cleared out our workspace in the art school - feels good and a bit odd at the same time :)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@tobhellwig na ihr jecken, wie isses mit aufr\u00e4umen?  ", 
+            "Users": [
+                "@tobhellwig"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@tobhellwig dont tell me you drove all the way to munich just to go the the apple store!  ", 
+            "Users": [
+                "@tobhellwig"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "has been sleepy and hungry all week  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "succeeded in transporting stack of printed thesises + posters + cake on the bicycle  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "yei! finished the written part of the graduation. http://tr.im/f9jc  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "masala chai and text layout  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "is a fan of abraham moles  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@boersenmedien ja bitte, am 10.2. um 17.00 uhr  ", 
+            "Users": [
+                "@boersenmedien"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@boersenmedien na klar in kassel... schreibe gerade meine erste und vermutlich letzte wissenschaftliche arbeit.  ", 
+            "Users": [
+                "@boersenmedien"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@boersenmedien und, gef\u00e4llts dir? dann kannst du ja noch alles auf vimeo durchgucken http://www.vimeo.com/field  ", 
+            "Users": [
+                "@boersenmedien"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@boersenmedien hallooo! cooles pseydonym, hihi...  ", 
+            "Users": [
+                "@boersenmedien"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 2, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@FabianWendt ollaketal?  ", 
+            "Users": [
+                "@FabianWendt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "is making stupid hangover jokes  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@tobhellwig neee, liebestragikom\u00f6die nat\u00fcrlich!  ", 
+            "Users": [
+                "@tobhellwig"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "had a very productive day writing on the thesis and happily sinks into the tv chair  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@frannyglass79 oh, so where are you going then?  ", 
+            "Users": [
+                "@frannyglass79"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "reunited a long separated pair of socks. a good deed every day.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@carlieness indeed ;-)  ", 
+            "Users": [
+                "@carlieness"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "hates authors who use words like notwithstanding and inasmuch  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "just discovered the beautiful term \"veracity\" :-)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@tobhellwig so you\u00b4ll join me tomorrow?  ", 
+            "Users": [
+                "@tobhellwig"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "loves yoga in the morning  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "dives into artificial life theory  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "just officially launched our new baby: http://www.field.io/ - hurrah!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "just has to work more!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 1, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "jui schlittschuhlaufen auf dem auesee!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 12, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "just woke up from 14hrs of refreshing sleep  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 12, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "makes new videos of old projects  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 12, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "umckaloabiert gleich  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 12, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "is on wick day med  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 11, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "and now the workday begins...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 11, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@tobhellwig how much is it?  ", 
+            "Users": [
+                "@tobhellwig"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\u00b4s world is black white grey now.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@tobhellwig now that you\u00b4re so relaxed... how about some techno action movie for tonight? ;-)  ", 
+            "Users": [
+                "@tobhellwig"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 10, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "would love to go flat runting right now!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 10, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "is finally making some pretty fluid renderings! jippieh  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 10, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "is hypnotized by twistori.com and thinks maybe twitter isnt that bad at all  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 9, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "fighting frostiness and premature winter depressions  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 9, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "writer\u00b4s block  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 9, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "find the caspar david friedrich in you...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 9, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "back to baking technology  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 9, 
+                "Year": 2008
+            }, 
+            "Hashtag": [], 
+            "Tweet": "tv, rain and herbal tea \u2013 what a saturday night...  ", 
+            "Users": []
+        }
+    ], 
+    "name": "VeraGlahn.txt"
+}

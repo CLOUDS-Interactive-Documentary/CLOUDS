@@ -7,53 +7,58 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
+    <Name>DISPLAY</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>GAVITY CONTROL MODE</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>CIRCLES</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>RECTANGLES</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>TRIGGER FORCE</Name>
-    <Value>8.275861740</Value>
+    <Value>15.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>MAX CIRCLES</Name>
-    <Value>175.812805176</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>MAX RECTANGLES</Name>
     <Value>10.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>MAX RECTANGLES</Name>
+    <Value>283.103454590</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>CIRCLE MAX MEAN</Name>
-    <Value>26.059112549</Value>
+    <Value>21.625616074</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>CIRCLE SIZE DEVIATION</Name>
-    <Value>15.418719292</Value>
+    <Value>7.881773472</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RECT MAX MEAN</Name>
-    <Value>5.000000000</Value>
+    <Value>25.837438583</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RECT SIZE DEVIATION</Name>
-    <Value>5.000000000</Value>
+    <Value>10.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -78,7 +83,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>S1</Name>
-    <Value>125.497360229</Value>
+    <Value>129.502593994</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -93,12 +98,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>S2</Name>
-    <Value>117.486892700</Value>
+    <Value>129.502593994</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>B2</Name>
-    <Value>50.732944489</Value>
+    <Value>230.968536377</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -114,4 +119,14 @@
     <Kind>25</Kind>
     <Name>B3</Name>
     <Value>174.895233154</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX FREQ</Name>
+    <Value>50.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MIN FREQ</Name>
+    <Value>16.256158829</Value>
 </Widget>

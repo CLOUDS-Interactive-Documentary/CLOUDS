@@ -69,14 +69,14 @@ void CloudsVisualSystemAutomata::selfSetup()
 	
     // Set defaults.
     radius = 5.0f;
-    bRestart = true;
+
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemAutomata::restart()
 {
-    float width = ofGetWidth();
-    float height = ofGetHeight();
+    float width = getSharedRenderTarget().getWidth();
+    float height = getSharedRenderTarget().getHeight();
     
     ofFbo::Settings fboSettings = ofFbo::Settings::Settings();
     fboSettings.width = width;
@@ -106,6 +106,7 @@ void CloudsVisualSystemAutomata::restart()
     mesh.addVertex(ofVec3f(width, 0));
     mesh.addVertex(ofVec3f(width, height));
     mesh.addVertex(ofVec3f(0, height));
+	
     mesh.addTexCoord(ofVec2f(0, 0));
     mesh.addTexCoord(ofVec2f(width, 0));
     mesh.addTexCoord(ofVec2f(width, height));
@@ -115,14 +116,15 @@ void CloudsVisualSystemAutomata::restart()
 //--------------------------------------------------------------
 void CloudsVisualSystemAutomata::selfPresetLoaded(string presetPath)
 {
-    bRestart = true;
+    //bRestart = true;
+	restart();
 }
 
 // selfBegin is called when the system is ready to be shown
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemAutomata::selfBegin(){
-	
+
 }
 
 //do things like ofRotate/ofTranslate here
@@ -230,7 +232,9 @@ void CloudsVisualSystemAutomata::selfExit(){
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemAutomata::selfKeyPressed(ofKeyEventArgs & args){
-	
+	if(args.key == 'R'){
+		bRestart = true;
+	}
 }
 void CloudsVisualSystemAutomata::selfKeyReleased(ofKeyEventArgs & args){
 	

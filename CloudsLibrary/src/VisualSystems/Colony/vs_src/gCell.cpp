@@ -22,9 +22,9 @@ colonyCell::colonyCell(const ofPoint initialPosition, const cellParams& params):
     cellSize = 1;
     age = 0;
     nutrientLevel = 50; //Magic number
-    maxSpeed = ofRandom(3.5);
-    maxForce = .8;
-    maxSize = ofRandom(5, 22);
+    maxSpeed = ofRandom(_params.maxSpeed_min, _params.maxSpeed_max);
+    maxForce = ofRandom(_params.maxForce_min, _params.maxForce_max);
+    maxSize = ofRandom(_params.maxSize_min, _params.maxSize_max);
     lifespan = ofRandom(_params.lifespanMin, _params.lifespanMax);
     fertile = ofRandomuf() > _params.fertilityRate;
     dead = false;
@@ -47,7 +47,7 @@ void colonyCell::update()
     position += velocity;
     
     // Feed
-    if (lastFeedValue > nutrientLevel && cellSize <= maxSize){ cellSize += (lastFeedValue/2500); }
+    if ((lastFeedValue > nutrientLevel) && (cellSize <= maxSize)){ cellSize += (lastFeedValue/2500); }
     if (lastFeedValue < nutrientLevel){ cellSize -= .01; }
     cellSize = ofClamp(cellSize, 0, maxSize);
     
@@ -60,14 +60,12 @@ void colonyCell::update()
 //==========================================================================================
 
 void colonyCell::draw()
-{
+{	
     ofPushStyle();
     
     ofSetColor(255, 255, 255, ofMap(MIN(maxSize, cellSize), 0, maxSize, 60, 180));
     ofCircle(position.x, position.y, MIN(maxSize, cellSize)); //TODO: This is where you do art
-    //    ofLine(position, anchor); //TODO Remove anchor
     if (cellSize > 10){
-//        ofNoFill();
         ofSetColor(255, 255, 255, ofMap(cellSize, 10, maxSize, 0, 70));
         ofCircle(position, cellSize + 10);
     }
@@ -103,9 +101,13 @@ void colonyCell::doScanAndFlock(neighbor_iterator& iter){
     float anchorSize = 0;
     while (iter.hasNext()) {
         ofPoint diff = position - ((**iter).getPosition()); //direction from other to this
+        
+        float safetyDist = (**iter).getSeparationDist() * 2./3.;
+        safetyDist *= safetyDist;
+        
         float dd = diff.lengthSquared();
         if (dd > 0){
-            if (dd < ss) { //Distance within separation range?
+            if (dd < MAX(ss,safetyDist)) { //Distance within separation range?
                 separate += diff.normalized() * logf(1 + dd) * logf(3 + (**iter).getSize()); //TODO: make the transition softer
             }
             if (dd < aa){ //Distance within flocking range?
@@ -138,17 +140,20 @@ void colonyCell::doScanAndFlock(neighbor_iterator& iter){
 //==========================================================================================
 
 void colonyCell::doFeedCellNoise(){
-    lastFeedValue = ofNoise(position.x, position.y, position.z, ofGetElapsedTimef()*100)*250;
+    lastFeedValue = powf(ofNoise(position.x, position.y, position.z, ofGetElapsedTimef() * _params.nutrientTimeCoef), 1./_params.nutrientFalloff )* _params.nutrientAmount;
 }
+
+void colonyCell::doFeedCellNoise(const ofFbo& texture){
+    //TODO: Implement
+}
+
 
 void colonyCell::doAddTurbulence(){
     float changeRate = 0.001 * _params.spdTurbulence;
     float amplitude = ofNoise(-position.x/10,-position.y/10,-position.z/10, ofGetElapsedTimef() * changeRate);
-    float theta = ofNoise(position.x/100,position.y/100,position.z/100, ofGetElapsedTimef() * changeRate) * 2 * TWO_PI; //FIXME: Magic number
-    float rho = 0; //TODO: Change
+    float theta = ofNoise(position.x/100,position.y/100,position.z/100, ofGetElapsedTimef() * changeRate) * 2 * TWO_PI;
     ofPoint force = ofPoint(1,0,0).getRotatedRad(theta, ofPoint(0,0,1)) * amplitude * _params.amtTurbulence;
     doAddForce(force);
-//    cout << "Theta : " << theta << " Amplitude : "<<amplitude<< " Force : " << ofToString(force) <<endl;
 }
 
 //==========================================================================================
@@ -192,8 +197,7 @@ cellPtr colonyCell::doGetReplicated()
 {
     hasReplicated = true;
     cellSize = logf(1 + cellSize);
-//    cellSize *= 0.6; //TODO: Remove magic number
-    return cellPtr(new colonyCell(getPosition() + ofPoint(ofRandom(-1,1),ofRandom(-1,1)), _params));
+    return cellPtr(new colonyCell(getPosition() + ofPoint(ofRandom(-1,1),ofRandom(-1,1)) * cellSize, _params));
 }
 
 const ofPoint colonyCell::getVelocity() const { return velocity; }

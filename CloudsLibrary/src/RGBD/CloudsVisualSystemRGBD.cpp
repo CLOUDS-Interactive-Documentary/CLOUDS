@@ -11,43 +11,12 @@ string CloudsVisualSystemRGBD::getSystemName(){
 	return "RGBD";
 }
 
-//--------------------------------------------------------------
-void CloudsVisualSystemRGBD::selfSetup(){
-	currentFlowPosition = 0;
+void CloudsVisualSystemRGBD::selfSetDefaults(){
 	visualSystemFadeValue = 1.0;
-	
-	drawMesh = false;
+
+	drawRGBD = true;
 	
 	questionLifeSpan = 3;
-
-	rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
-	CloudsQuestion::reloadShader();
-
-	lastPercentChanceOfPoint = 0;
-	lastTriangulationXStep = 0;
-	lastTriangulationYStep = 0;
-	
-	percentChanceOfPoint = .5;
-	triangulationXStep = 1.5;
-	triangulationYStep = 1.5;
-	
-	generatePointGrid();
-	generateScanlines();
-	generateTriangulation();
-	
-	particulateController.setParticleCount(20000);
-	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-	particulateController.setup();
-	
-	cloudsCamera.setup();
-	cloudsCamera.lookTarget = ofVec3f(0,25,0);
-	setCurrentCamera(cloudsCamera);
-	
-//	generator.setup();
-	
-	displayFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", 14);
-	
-	//TODO: do this elsewhere
 	transitioning = transitioningIn = transitioningOut = false;
 	
 	transitionInStart.setPosition( 0, 0, -1000 );
@@ -57,25 +26,86 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	transitionOutTarget.rotate( 180, ofVec3f(0, 1, 0 ) );
 	
 	transitionCam.useArrowKeys = true;
-	
 	transitionTarget = &transitionOutTarget;
-	
 	drawTransitionNodes = false;
+	
+	captionFontSize = 12;
+	
+	edgeAttenuate = 0.;
+	skinBrightness = 0.;
+	
+	drawPoints = true;
+	refreshPointcloud = true;
+	numRandomPoints = 20000;
+	pointSize.min = 1.0;
+	pointSize.max = 3.0;
+	pointAlpha = 1.0;
+	pointFlowPosition = 0.0;
+	pointFlowSpeed = 0.0;
+	pointsFlowUp = false;
+	
+	drawLines = true;
+	lineAlpha = .5;
+	lineThickness	= 1.0;
+	lineFlowPosition = 0.;
+	lineFlowSpeed = 0.;
+	linesFlowUp = false;
+	refreshLines = true;
+	
+	
+	
+	drawMesh = true;
+	xSimplify = 2.0;
+	ySimplify = 2.0;
+	randomVariance = 1.0;
+
+	meshFaceMinRadius = 0.0;
+	meshFaceFalloff = 0.0;
+	meshRetractionFalloff = 1.0;
+	meshForceGeoRectraction = .0;
+
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemRGBD::selfSetup(){
+	
+	loadShader();
+	
+	generateLines();
+	generatePoints();
+	generateMesh();
+		
+	particulateController.setParticleCount(20000);
+	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+	particulateController.setup();
+	
+	cloudsCamera.setup();
+	cloudsCamera.lookTarget = ofVec3f(0,25,0);
+	setCurrentCamera(cloudsCamera);
+		
+	displayFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", 14);
 	
 	transitionCam.setup();
 	
-    captionFontSize = 12;
     rebuildCaptionFont();
+}
 
+void CloudsVisualSystemRGBD::playTestVideo(){
+	if(ofFile::doesFileExist("TestVideo/Elliot_UK_wiremape_description.mov")){
+		getRGBDVideoPlayer().setup("TestVideo/Elliot_UK_wiremape_description.mov",
+								   "TestVideo/Elliot_UK_wiremape_description.xml" );
+		getRGBDVideoPlayer().swapAndPlay();
+	}
+}
 
-//	enum RGBDTransitionType
-//  {
-//	TWO_DIMENSIONAL = 0,
-//	FLY_THROUGH = 1,
-//	WHIP_PAN = 2,
-//	RGBD = 3
-//  };
-
+void CloudsVisualSystemRGBD::loadShader(){
+	cout << "loading point shader " << endl;
+	pointShader.load(getVisualSystemDataPath() + "shaders/rgbdPoints");
+	cout << "loading line shader " << endl;
+	lineShader.load( getVisualSystemDataPath() + "shaders/rgbdLines");
+	cout << "loading mesh shader " << endl;
+	meshShader.load( getVisualSystemDataPath() + "shaders/rgbdMesh");
+//	CloudsQuestion::reloadShader();
 }
 
 void CloudsVisualSystemRGBD::rebuildCaptionFont(){
@@ -124,6 +154,72 @@ void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionTy
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetupGuis(){
+
+	globalMeshGui = new ofxUISuperCanvas("GLOBAL MESH", gui);
+	globalMeshGui->copyCanvasStyle(gui);
+    globalMeshGui->copyCanvasProperties(gui);
+    globalMeshGui->setName("GLOBAL MESH");
+    globalMeshGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	ofxUIToggle *toggle;
+	toggle = globalMeshGui->addToggle("ENABLE", &drawRGBD);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    globalMeshGui->resetPlacer();
+    globalMeshGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    globalMeshGui->addWidgetToHeader(toggle);
+	globalMeshGui->addSlider("Bottom Edge Falloff", 0, 1.0, &edgeAttenuate);
+	globalMeshGui->addSlider("Bottom Edge Expo", 1, 5.0, &edgeAttenuateExponent);
+		
+	ofAddListener(globalMeshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
+	guis.push_back(globalMeshGui);
+	guimap[globalMeshGui->getName()] = globalMeshGui;
+
+	pointsGui = new ofxUISuperCanvas("POINTS", gui);
+	pointsGui->copyCanvasStyle(gui);
+    pointsGui->copyCanvasProperties(gui);
+    pointsGui->setName("Points");
+    pointsGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	toggle = pointsGui->addToggle("ENABLE", &drawPoints);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    pointsGui->resetPlacer();
+    pointsGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    pointsGui->addWidgetToHeader(toggle);
+	
+	pointsGui->addSlider("Point Alpha", 0, 1.0, &pointAlpha);
+	pointsGui->addIntSlider("Num Points", 0, 100000, &numRandomPoints);
+	pointsGui->addRangeSlider("Point Size", 0.0, 3.0, &pointSize.min, &pointSize.max);
+	pointsGui->addSlider("Point Face Overlap",0., 1.0, &pointHeadOverlap);
+	pointsGui->addSlider("Point Flow", 0, 1.0, &pointFlowSpeed);
+	pointsGui->addToggle("Points Flow Up", &pointsFlowUp);
+	
+	ofAddListener(pointsGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
+	guis.push_back(pointsGui);
+	guimap[pointsGui->getName()] = pointsGui;
+	
+	linesGui = new ofxUISuperCanvas("LINES", gui);
+	linesGui->copyCanvasStyle(gui);
+    linesGui->copyCanvasProperties(gui);
+    linesGui->setName("Lines");
+    linesGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	toggle = linesGui->addToggle("ENABLE", &drawLines);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    linesGui->resetPlacer();
+    linesGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    linesGui->addWidgetToHeader(toggle);
+	
+	linesGui->addSlider("Line Alpha", 0, 1.0, &lineAlpha);
+	linesGui->addSlider("Line Thickness", 0, 3.0, &lineThickness);
+	linesGui->addSlider("Line Spacing", 1., 16., &lineSpacing);
+	linesGui->addSlider("Line Face Overlap", 0., 1.0, &lineHeadOverlap);
+	linesGui->addSlider("Line Granularity", 1., 10.0, &lineGranularity);
+	linesGui->addSlider("Line Flow", 0, 1.0, &lineFlowSpeed);
+	linesGui->addToggle("Lines Flow Up", &linesFlowUp);
+	ofAddListener(linesGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
+	guis.push_back(linesGui);
+	guimap[linesGui->getName()] = linesGui;
+
 	
 	meshGui = new ofxUISuperCanvas("MESH", gui);
 	meshGui->copyCanvasStyle(gui);
@@ -131,47 +227,21 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     meshGui->setName("Mesh");
     meshGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	meshGui->addToggle("DRAW CLOUD", &drawCloud);
-	
-	meshGui->addSlider("CLOUD SCALE", .001,  1.0, &pointcloudScale);
-	meshGui->addSlider("CLOUD OFFSET",   0, -800, &pointcloudOffsetZ);
-	
-	meshGui->addLabel("MESH");
-	meshGui->addToggle("DRAW MESH", &drawMesh);
-	meshGui->addSlider("MESH ALPHA", 0, 1.0f, &meshAlpha);
-	meshGui->addSlider("SKIN MULTIPLIER", 0, 1.0f, &skinMultiplier);
-	meshGui->addSlider("EYE MULTIPLIER", 0, 1.0f, &eyeMultiplier);
-	
-	meshGui->addLabel("POINTS");
-	meshGui->addToggle("DRAW POINTS", &drawPoints);
-	meshGui->addSlider("SIZE MAX", 0, 3, &pointSizeMax);
-	meshGui->addSlider("SIZE MIN", 0, 3, &pointSizeMin);
-	meshGui->addSpacer();
-	meshGui->addSlider("P GRID ALPHA", 0, 1.0, &pointGridAlpha);
-	meshGui->addSlider("P GRID VERT SPACE", 1, 10, &pointVerticalSpace);
-	meshGui->addSlider("P GRID HORI SPACE", 1, 10, &pointHorizontalSpace);
-	meshGui->addSpacer();
-	meshGui->addSlider("NUM RANDOM POINTS", 0, 500000.0f, &numRandomPoints);
-	meshGui->addSlider("RANDOM ALPHA", 0, 1.0f, &randomPointAlpha);
-	
-	meshGui->addLabel("LINES");
-	meshGui->addToggle("DRAW LINES", &drawScanlines);
-	meshGui->addSlider("VERT LINE SPACE", .5, 12, &scanlineSimplify.x);
-	meshGui->addSlider("VERT LINE ALPHA", 0, 1.0, &verticalScanlineAlpha);
-	meshGui->addSlider("VERT LINE THICKNESS", 0, 2.0, &verticalScanlineThickness);
-	meshGui->addSpacer();
-	meshGui->addSlider("HORIZ LINE SPACE", .5, 12, &scanlineSimplify.y);
-	meshGui->addSlider("HORIZ LINE ALPHA", 0, 1.0, &horizontalScanlineAlpha);
-	meshGui->addSlider("HORIZ LINE THICKNESS", 0, 2.0, &horizontalScanlineThickness);
-	
-	meshGui->addLabel("FLOW");
-	meshGui->addSlider("CLOUD FLOW", -5, 5, &cloudFlow);
-	
-	meshGui->addSlider("LIGHT_OFFSET_Y", -100, 100, &lightOffsetY);
-	meshGui->addSlider("LIGHT_OFFSET_Z", 0, 100, &lightOffsetZ);
+	toggle = meshGui->addToggle("ENABLE", &drawMesh);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    meshGui->resetPlacer();
+    meshGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    meshGui->addWidgetToHeader(toggle);
 
+	meshGui->addSlider("Mesh Alpha", 0., 1.0, &meshAlpha);
+	meshGui->addSlider("X Simplify", 1., 16., &xSimplify);
+	meshGui->addSlider("Y Simplify", 1., 16., &ySimplify);
+	meshGui->addSlider("Random Variance", 0, 10.0, &randomVariance);
+	meshGui->addSlider("Face Min Radius", 0, 600., &meshFaceMinRadius);
+	meshGui->addSlider("Face Falloff", 0, 600., &meshFaceFalloff);
+	meshGui->addSlider("Edge Geo Retraction", 0, 1.0, &meshRetractionFalloff);
+	meshGui->addSlider("Force Geo Retraction", 0, 1.0, &meshForceGeoRectraction);
 	ofAddListener(meshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
-	
 	guis.push_back(meshGui);
 	guimap[meshGui->getName()] = meshGui;
 	
@@ -242,11 +312,12 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guis.push_back(questionGui);
 	guimap[meshGui->getName()] = questionGui;
 	
-	connectorGui = new ofxUISuperCanvas("CONNECTORS", gui);
-	connectorGui->copyCanvasStyle(gui);
-	connectorGui->copyCanvasProperties(gui);
-	connectorGui->setName("connectors");
-	connectorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+//	connectorGui = new ofxUISuperCanvas("CONNECTORS", gui);
+//	connectorGui->copyCanvasStyle(gui);
+//	connectorGui->copyCanvasProperties(gui);
+//	connectorGui->setName("connectors");
+//	connectorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 //	connectorGui->addSlider("Num Particles", 50, 64*64, &generator.numParticles);
 //	connectorGui->addToggle("Draw Connections", &generator.drawConnections);
@@ -254,34 +325,28 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 //	connectorGui->addSlider("Boundary Size", 100, 1000, &generator.boundarySize);
 //	connectorGui->addSlider("Max Connections", 1, 10, &generator.maxConnections);
 	
-	guis.push_back(connectorGui);
-	guimap[connectorGui->getName()] = connectorGui;
+//	guis.push_back(connectorGui);
+//	guimap[connectorGui->getName()] = connectorGui;
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfUpdate(){
 	
-	if(drawCloud){
-		if(refreshScanlineMesh){
-			generateScanlines();
-		}
-		
-		if(refreshPointcloud){
-			generatePointGrid();
-		}
-		
-		if(numRandomPoints != randomPoints.getNumVertices()){
-			generateRandomPoints();
-		}
-		
-		if(refreshTriangulation){
-			generateTriangulation();
-		}
-		
-		currentFlowPosition += cloudFlow;
-		getRGBDVideoPlayer().flowPosition = currentFlowPosition;
+	if(numRandomPoints != points.getNumVertices()){
+		generatePoints();
+	}
+	
+	if(refreshLines){
+		generateLines();
 	}
 
+	if(refreshMesh){
+		generateMesh();
+	}
+
+	lineFlowPosition += powf(lineFlowSpeed,2.0);
+	pointFlowPosition += powf(pointFlowSpeed,2.0);
+	
 	if(drawParticulate){
 		
 		particulateController.birthPlace = translatedHeadPosition;
@@ -307,6 +372,29 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		cloudsCamera.driftNoiseSpeed = caughtQuestion ? 0 : attenuatedCameraDrift;
 	}
 
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemRGBD::addFakeQuestion(vector<string> testPngFilePaths){
+	CloudsQuestion* q = new CloudsQuestion();
+	q->cam = &cloudsCamera;
+	q->font = &displayFont;
+	q->topic = "no topic";
+	q->question = testPngFilePaths[0];
+	q->testFiles = testPngFilePaths;
+	
+	ofVec3f startPosition = ofVec3f(questionXZ.x, questionYCenter, questionXZ.z)
+	+ ofVec3f(ofRandom(-questionDriftRange,questionDriftRange),
+			  ofRandom(-questionYRange,questionYRange),
+			  ofRandom(-questionDriftRange,questionDriftRange));
+	
+	q->position = translatedHeadPosition + startPosition;
+	q->birthTime = ofGetElapsedTimef();
+	
+	q->setup();
+	
+	questions.push_back(q);
+	
 }
 
 //--------------------------------------------------------------
@@ -392,13 +480,12 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 
 void CloudsVisualSystemRGBD::setSelectedQuestion(){
 
-    if(questions.size() > 0)    {
+    if(questions.size() > 0){
         selectedQuestion = questions[0];
     }
     else{
         cout << "No questions!" << endl;
     }
-    
 }
 
 void CloudsVisualSystemRGBD::clearQuestions(){
@@ -424,7 +511,6 @@ void CloudsVisualSystemRGBD::updateTransition(){
 		if(t >= transitionEndTime ){
 			cout <<"CloudsVisualSystemRGBD: transition ended "<< ofGetElapsedTimef() << endl << endl;
 			transitioning = false;
-			
 			cloudsCamera.targetNode = NULL;
 			cloudsCamera.startNode = NULL;
 		}
@@ -477,7 +563,7 @@ void CloudsVisualSystemRGBD::printTransitionNodes(){
 	
 	ofVec4f endQuat = transitionOutTarget.getOrientationQuat()._v;
 	
-	cout << endl <<endl <<endl <<endl;
+	cout << endl<<endl<<endl<<endl;
 	cout << "case TRANSITION_TYPE:" << endl;
 	cout << "	transitionInStart.setPosition(" << transitionInStart.getPosition() << ");"<< endl ;
 	cout << "	transitionInStart.setOrientation( ofQuaternion( " << strtQuat << ") );"<< endl << endl;
@@ -507,47 +593,100 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOut(){
 	setCurrentCamera( transitionCam );
 }
 
+//--------------------------------------------------------------
+void CloudsVisualSystemRGBD::generatePoints(){
+	
+	lines.setUsage( GL_STATIC_DRAW);
+	
+	if(numRandomPoints == 0){
+		points.clear();
+	}
+	else if(numRandomPoints < points.getNumVertices() ){
+		points.getVertices().erase(points.getVertices().begin(),
+								   points.getVertices().begin() + (points.getNumVertices() - numRandomPoints) );
+	}
+	
+	while(numRandomPoints > points.getNumVertices()){
+		points.addVertex( ofVec3f(ofRandom(640),ofRandom(480),0) );
+	}
+	
+	points.setMode(OF_PRIMITIVE_POINTS);
+
+}
 
 //--------------------------------------------------------------
-void CloudsVisualSystemRGBD::generatePointGrid(){
+void CloudsVisualSystemRGBD::generateLines(){
 	
-	pointGrid.clear();
+	lines.clear();
+	lines.setUsage(GL_STATIC_DRAW);
+
+	if(lineGranularity <= 0) lineGranularity = 1;
+	if(lineSpacing <= 0) lineSpacing = 1;
 	
-	pointVerticalSpace = MAX(pointVerticalSpace, 1);
-	pointHorizontalSpace = MAX(pointHorizontalSpace, 1);
-	for(float y = 0; y <= 480; y+= pointVerticalSpace){
-		for(float x = 0; x <= 640; x+= pointHorizontalSpace){
-			pointGrid.addVertex(ofVec3f(x,y,0));
+	int height = 480;
+	int width = 640;
+	
+	//HORIZONTAL
+	for (float ystep = 0; ystep <= height; ystep += lineSpacing){
+		for (float xstep = 0; xstep <= width - lineGranularity; xstep += lineGranularity){
+			
+			ofVec3f stepA = ofVec3f(xstep, ystep, 0);
+			ofVec3f stepB = ofVec3f(xstep+lineGranularity, ystep, 0);
+			ofVec3f mid   = stepA.getInterpolated(stepB, .5);
+			
+			lines.addNormal( stepA-mid );
+			lines.addVertex( mid );
+			
+			lines.addNormal( stepB-mid );
+			lines.addVertex( mid );
 		}
 	}
-//        ofRange(clip1.start,clip1.end).intersects(ofRange(clip2.start,clip2.end))
+	
+	lines.setMode(OF_PRIMITIVE_LINES );
+	
+	refreshLines = false;
+}
 
-    //of
-	pointGrid.clearIndices();
+
+void CloudsVisualSystemRGBD::generateMesh(){
+		
+	if(xSimplify <= 0) xSimplify = 1.0;
+	if(ySimplify <= 0) ySimplify = 1.0;
+
 	int x = 0;
 	int y = 0;
+
+	int gw = ceil(640. / xSimplify);
+	int w = gw*xSimplify;
+	int h = 480.;
 	
-	int gw = ceil(640 / pointHorizontalSpace);
-	int w = gw*pointHorizontalSpace;
-	int h = 480;
+	vector<ofVec3f> vertices;
 	
-	for (float ystep = 0; ystep < h-pointVerticalSpace; ystep += pointVerticalSpace){
-		for (float xstep = 0; xstep < w-pointHorizontalSpace; xstep += pointHorizontalSpace){
+	for (float y = 0; y < 480; y += ySimplify){
+		for (float x = 0; x < 640; x += xSimplify){
+			vertices.push_back(ofVec3f(x + ofRandomf()*randomVariance,
+									   y + ofRandomf()*randomVariance,0));
+		}
+	}
+	
+	vector<int> indeces;
+	for (float ystep = 0; ystep < h-ySimplify; ystep += ySimplify){
+		for (float xstep = 0; xstep < w-xSimplify; xstep += xSimplify){
 			ofIndexType a,b,c;
 			
 			a = x+y*gw;
 			b = (x+1)+y*gw;
 			c = x+(y+1)*gw;
-			pointGrid.addIndex(a);
-			pointGrid.addIndex(b);
-			pointGrid.addIndex(c);
-            
+			indeces.push_back(a);
+			indeces.push_back(b);
+			indeces.push_back(c);
+			
 			a = (x+1)+(y+1)*gw;
 			b = x+(y+1)*gw;
 			c = (x+1)+(y)*gw;
-			pointGrid.addIndex(a);
-			pointGrid.addIndex(b);
-			pointGrid.addIndex(c);
+			indeces.push_back(a);
+			indeces.push_back(b);
+			indeces.push_back(c);
 			
 			x++;
 		}
@@ -555,78 +694,44 @@ void CloudsVisualSystemRGBD::generatePointGrid(){
 		y++;
 		x = 0;
 	}
-
-//	pointGrid.setMode(OF_PRIMITIVE_POINTS);
-}
-
-//--------------------------------------------------------------
-void CloudsVisualSystemRGBD::generateRandomPoints(){
-	if(numRandomPoints == 0){
-		randomPoints.clear();
-	}
-	else if(numRandomPoints < randomPoints.getNumVertices() ){
-		randomPoints.getVertices().erase(randomPoints.getVertices().begin(), randomPoints.getVertices().begin() + (randomPoints.getNumVertices() - numRandomPoints) );
-	}
-	while(numRandomPoints > randomPoints.getNumVertices()){
-		randomPoints.addVertex( ofVec3f(ofRandom(640),ofRandom(480),0) );
-	}
 	
-	randomPoints.setMode(OF_PRIMITIVE_POINTS);
-}
+	mesh.clear();
+	mesh.setUsage(GL_STATIC_DRAW);
 
-//--------------------------------------------------------------
-void CloudsVisualSystemRGBD::generateScanlines(){
+	for(int i = 0; i < indeces.size(); i+=3){
+		
+		ofVec3f& a = vertices[ indeces[i+0] ];
+		ofVec3f& b = vertices[ indeces[i+1] ];
+		ofVec3f& c = vertices[ indeces[i+2] ];
+		ofVec3f mid = (a+b+c)/3.;
+		
+		ofVec3f toA = a-mid;
+		ofVec3f toB = b-mid;
+		ofVec3f toC = c-mid;
+		
+		mesh.addNormal(toA);
+		mesh.addColor(ofFloatColor(toB.x/640.,toB.y/480.,toC.x/640.,toC.y/480.));
+		mesh.addVertex(mid);
 
-	verticalScanLines.clear();
-	horizontalScanLines.clear();
-	
-	if(scanlineSimplify.x <= 0) scanlineSimplify.x = 1;
-	if(scanlineSimplify.y <= 0) scanlineSimplify.y = 1;
-	
-	int height = 480;
-	int width = 640;
-	
-	//VERTICAL
-	for (float xstep = 0; xstep <= width-scanlineSimplify.x; xstep += scanlineSimplify.x){
-		for (float ystep = 0; ystep <= height-scanlineSimplify.y; ystep += scanlineSimplify.y){
-			verticalScanLines.addVertex( ofVec3f(xstep, ystep, 0) );
-			verticalScanLines.addVertex( ofVec3f(xstep, ystep+scanlineSimplify.y, 0) );
-		}
+		mesh.addNormal(toB);
+		mesh.addColor(ofFloatColor(toA.x/640.,toA.y/480.,toC.x/640.,toC.y/480.));
+		mesh.addVertex(mid);
+		
+		mesh.addNormal(toC);
+		mesh.addColor(ofFloatColor(toA.x/640.,toA.y/480.,toB.x/640.,toB.y/480.));
+		mesh.addVertex(mid);
 	}
 	
-	//HORIZONTAL
-	for (float ystep = 0; ystep <= height-scanlineSimplify.y; ystep += scanlineSimplify.y){
-		for (float xstep = 0; xstep <= width-scanlineSimplify.x; xstep += scanlineSimplify.x){
-			
-//			float ystepOffset = ofRandom(-scanlineSimplify.y/4,scanlineSimplify.y/4);
-			
-//			horizontalScanLines.addColor(ofFloatColor(ofRandom(1.)));
-			ofVec3f stepA = ofVec3f(xstep, ystep, 0);
-			ofVec3f stepB = ofVec3f(xstep+scanlineSimplify.x, ystep, 0);
-			ofVec3f mid = (stepA + stepB) / 2.0;
-			
-			horizontalScanLines.addNormal( mid );
-			horizontalScanLines.addColor( ofFloatColor( stepB.x/640,stepB.y/480, stepB.x/640,stepB.y/480) );
-			horizontalScanLines.addVertex( stepA);
-			
-			horizontalScanLines.addNormal( mid );
-			horizontalScanLines.addColor( ofFloatColor( stepA.x/640,stepA.y/480, stepA.x/640,stepA.y/480 ) );
-			horizontalScanLines.addVertex( stepB);
-		}
-	}
-
-	verticalScanLines.setMode( OF_PRIMITIVE_LINES );
-	horizontalScanLines.setMode( OF_PRIMITIVE_LINES );
-	
-	refreshScanlineMesh = false;
+	mesh.setMode(OF_PRIMITIVE_TRIANGLES);
+	refreshMesh = false;
 }
 
 void CloudsVisualSystemRGBD::speakerChanged(){
-
+	
 	//check speaker vars
-//	this->speakerFirstName = speakerFirstName;
-//	this->speakerLastName = speakerLastName;
-//	this->quoteName = quoteName;
+	//	this->speakerFirstName = speakerFirstName;
+	//	this->speakerLastName = speakerLastName;
+	//	this->quoteName = quoteName;
     
 	// Add an appearance for this speaker.
     string key = speakerFirstName + " " + speakerLastName;
@@ -649,59 +754,6 @@ void CloudsVisualSystemRGBD::speakerChanged(){
     else {
         cloudsCaption.isEnabled = false;
     }
-}
-
-void CloudsVisualSystemRGBD::generateTriangulation(){
-	
-
-	if(percentChanceOfPoint == lastPercentChanceOfPoint ||
-	   triangulationXStep == lastTriangulationXStep ||
-	   triangulationYStep == lastTriangulationYStep)
-	{
-		return;
-	}
-
-	delaunay.reset();
-
-	for(float y = 0; y < 480; y += triangulationYStep){
-		for(float x = 0; x < 640; x += triangulationXStep){
-			if(ofRandomuf() < percentChanceOfPoint){
-				delaunay.addPoint(ofVec2f(x,y));
-			}
-		}
-	}
-	
-	lastPercentChanceOfPoint = percentChanceOfPoint;
-	lastTriangulationXStep = triangulationXStep;
-	lastTriangulationYStep = triangulationYStep;
-
-	delaunay.triangulate();
-	
-	ofMesh& dmesh = delaunay.triangleMesh;
-	triangulation.clear();
-	for(int i = 0; i < dmesh.getNumIndices(); i += 3){
-		
-		ofVec3f& a = dmesh.getVertices()[ dmesh.getIndices()[i  ] ];
-		ofVec3f& b = dmesh.getVertices()[ dmesh.getIndices()[i+1] ];
-		ofVec3f& c = dmesh.getVertices()[ dmesh.getIndices()[i+2] ];
-		
-		ofVec3f center = (a+b+c)/3.0;
-		
-		triangulation.addColor( ofFloatColor(b.x/640., b.y/480., c.x/640., c.y/480.) );
-		triangulation.addNormal(center);
-		triangulation.addVertex(a);
-
-		triangulation.addColor( ofFloatColor(a.x/640., a.y/480., c.x/640., c.y/480.) );
-		triangulation.addNormal(center);
-		triangulation.addVertex(b);
-		
-		triangulation.addColor( ofFloatColor(a.x/640., a.y/480., b.x/640., b.y/480.) );
-		triangulation.addNormal(center);
-		triangulation.addVertex(c);
-	
-	}
-	
-	refreshTriangulation = false;
 }
 
 void CloudsVisualSystemRGBD::selfDrawBackground(){
@@ -737,16 +789,14 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 
 void CloudsVisualSystemRGBD::selfDraw(){
 	
+	ofPushStyle();
 	ofPushMatrix();
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	glDisable(GL_LIGHTING);
 	
-	if(drawCloud && hasSpeaker){
 
-//		cout << "RGBD DRAW" << endl;
-		
-		ofPushStyle();
-		ofPushMatrix();
-		glPushAttrib(GL_ALL_ATTRIB_BITS);
-		glDisable(GL_LIGHTING);
+
+	if(!getRGBDVideoPlayer().playingVO && getRGBDVideoPlayer().getPlayer().isLoaded() && drawRGBD){
 		
 		//Enable smooth lines and screen blending
 		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
@@ -754,33 +804,101 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		glEnable(GL_POINT_SMOOTH);
 		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 		glEnable(GL_LINE_SMOOTH);
-		
 		setupRGBDTransforms();
+			
+		if(drawMesh){
+			
+			meshShader.begin();
+			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
 		
-		rgbdShader.begin();
-		getRGBDVideoPlayer().setupProjectionUniforms(rgbdShader);
+			meshShader.setUniform1f("meshAlpha", meshAlpha);
+			meshShader.setUniform1f("triangleExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+			meshShader.setUniform1f("meshRetractionFalloff",meshRetractionFalloff);
+			meshShader.setUniform1f("headMinRadius", meshFaceMinRadius);
+			meshShader.setUniform1f("headFalloff", meshFaceFalloff);
+			meshShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
+			meshShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
+			meshShader.setUniform1f("forceGeoRectraction",meshForceGeoRectraction);
+			mesh.draw();
+			
+			meshShader.end();
+			//glDisable(GL_CULL_FACE);
+		}
+		
+		glDisable(GL_DEPTH_TEST);
+		ofEnableBlendMode(OF_BLENDMODE_ADD);
+			
+		if(drawLines){
+			lineShader.begin();
+			ofSetLineWidth(lineThickness);
+			getRGBDVideoPlayer().flowPosition = lineFlowPosition * (linesFlowUp?-1:1);
+			getRGBDVideoPlayer().setupProjectionUniforms(lineShader);
+			
+			lineShader.setUniform1f("lineExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+			lineShader.setUniform1f("headMinRadius", meshFaceMinRadius);
+			lineShader.setUniform1f("headFalloff", meshFaceFalloff);
+			lineShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
+			lineShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
+			lineShader.setUniform1f("headOverlap",lineHeadOverlap);
+			lineShader.setUniform1f("alpha", lineAlpha);
+			
+			lines.draw();
+			
+			lineShader.end();
+		}
+			
+		if(drawPoints){
+			pointShader.begin();
+			getRGBDVideoPlayer().flowPosition = pointFlowPosition * (pointsFlowUp?-1:1);
+			getRGBDVideoPlayer().setupProjectionUniforms(pointShader);
+			
+			
+			pointShader.setUniform1f("headMinRadius", meshFaceMinRadius);
+			pointShader.setUniform1f("headFalloff", meshFaceFalloff);
+			pointShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
+			pointShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
+			pointShader.setUniform1f("headOverlap", pointHeadOverlap);
+			pointShader.setUniform1f("pointSizeMin", pointSize.min);
+			pointShader.setUniform1f("pointSizeMax", pointSize.max);
+			pointShader.setUniform1f("alpha", pointAlpha * getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+			
+			points.draw();
+			
+			pointShader.end();
+		}
+	}
+	
+	if(drawParticulate){
+		glEnable(GL_DEPTH_TEST);
+		particulateController.draw();
+	}
+	
+	glPopAttrib();
+	ofPopMatrix();
+	ofPopStyle();
+	
+//		rgbdShader.begin();
+//		getRGBDVideoPlayer().setupProjectionUniforms(rgbdShader);
 		
 //		cout << "base multiplier " << getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() << endl;
-		rgbdShader.setUniform1f("fadeValue", 1.0);
+//		rgbdShader.setUniform1f("fadeValue", 1.0);
 //		rgbdShader.setUniform1f("fadeValue", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
-		float transitionValue = 1.0 - getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() * visualSystemFadeValue;
-		ofxEasingCubic cub;
-		rgbdShader.setUniform1f("triangleContract", ofxTween::map(transitionValue, 0, 1.0, 0, 1.0, true, cub, ofxTween::easeOut));
-		rgbdShader.setUniform1f("eyeMultiplier", 0.0);
-		rgbdShader.setUniform1f("skinMultiplier", 0.0);
-		rgbdShader.setUniform1f("baseMultiplier", 1.0);
-		
-		rgbdShader.setUniform3f("headPosition",
-								getRGBDVideoPlayer().headPosition.x,
-								-getRGBDVideoPlayer().headPosition.y,
-								getRGBDVideoPlayer().headPosition.z);
-		
-		rgbdShader.setUniform3f("lightPosition",
-								getRGBDVideoPlayer().headPosition.x,
-								getRGBDVideoPlayer().headPosition.y+lightOffsetY*100,
-								getRGBDVideoPlayer().headPosition.z+lightOffsetZ*100);
-		
-		
+//		float transitionValue = 1.0 - getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() * visualSystemFadeValue;
+//		ofxEasingCubic cub;
+//		rgbdShader.setUniform1f("triangleContract", ofxTween::map(transitionValue, 0, 1.0, 0, 1.0, true, cub, ofxTween::easeOut));
+//		rgbdShader.setUniform1f("eyeMultiplier", 0.0);
+//		rgbdShader.setUniform1f("skinMultiplier", 0.0);
+//		rgbdShader.setUniform1f("baseMultiplier", 1.0);
+//		
+//		rgbdShader.setUniform3f("headPosition",
+//								getRGBDVideoPlayer().headPosition.x,
+//								-getRGBDVideoPlayer().headPosition.y,
+//								getRGBDVideoPlayer().headPosition.z);
+//		
+//		rgbdShader.setUniform3f("lightPosition",
+//								getRGBDVideoPlayer().headPosition.x,
+//								getRGBDVideoPlayer().headPosition.y+lightOffsetY*100,
+//								getRGBDVideoPlayer().headPosition.z+lightOffsetZ*100);
 		//		if(drawMesh){
 		//			rgbdShader.setUniform1f("flowPosition", 0);
 		//			rgbdShader.setUniform1f("eyeMultiplier", eyeMultiplier);
@@ -808,94 +926,91 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		
 		//set up the renderer so that any geometry within 640x480 space
 		//can be prjected onto the pointcloud
-		ofDisableAlphaBlending();
-		//ofEnableAlphaBlending();
-		ofEnableBlendMode(OF_BLENDMODE_SCREEN);
-		if(drawMesh){
+//		ofDisableAlphaBlending();
+//		//ofEnableAlphaBlending();
+//		ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+//		if(drawMesh){
 			
-			ofPushStyle();
-			ofSetColor(255, 255, 255);
-			rgbdShader.setUniform1f("isMeshed", 1);
-			rgbdShader.setUniform1f("headAttenuateMix", 1.);
-			rgbdShader.setUniform1f("flowPosition", 0);
-			glEnable(GL_DEPTH_TEST);
-			
-//			glDepthFunc(GL_LEQUAL);
-			glEnable(GL_CULL_FACE);
-			//if(bUseOculusRift){
-		//		glCullFace(GL_FRONT);
-		//	}
-		//	else{
-				glCullFace(GL_BACK);
-		//	}
-			
-			triangulation.draw();
-
-			glDisable(GL_CULL_FACE);
-			ofPopStyle();
-		}
-			
-		
-		glDisable(GL_DEPTH_TEST);
-		ofEnableBlendMode(OF_BLENDMODE_ADD);
-//		glDepthFunc(GL_LESS);
-
-		if(drawPoints){
-			rgbdShader.setUniform1f("flowPosition", currentFlowPosition);
-			rgbdShader.setUniform1f("isMeshed", 0);
-			rgbdShader.setUniform1f("headAttenuateMix", 0.);
-			//draw the points
-			glPointSize(pointSizeMin);
-			ofSetColor(255*randomPointAlpha);
-			randomPoints.draw();
-			ofSetColor(255*pointGridAlpha);
-			pointGrid.drawVertices();
-		}
-		
-		rgbdShader.setUniform2f("simplify", scanlineSimplify.x, scanlineSimplify.y);
-
-		//draw the lines
-		if(drawScanlines){
-			rgbdShader.setUniform1f("flowPosition", 0.0);
-			rgbdShader.setUniform1f("isMeshed", 1.0);
-			rgbdShader.setUniform1f("headAttenuateMix", .0);
-
-			ofSetLineWidth(horizontalScanlineThickness);
-			horizontalScanLines.draw();
-
+//			ofPushStyle();
+//			ofSetColor(255, 255, 255);
+//			rgbdShader.setUniform1f("isMeshed", 1);
+//			rgbdShader.setUniform1f("headAttenuateMix", 1.);
 //			rgbdShader.setUniform1f("flowPosition", 0);
-//			ofSetLineWidth(verticalScanlineThickness);
-//			ofSetColor(255*verticalScanlineAlpha);
-//			verticalScanLines.draw();
-		}
+//			glEnable(GL_DEPTH_TEST);
+//			
+////			glDepthFunc(GL_LEQUAL);
+//			glEnable(GL_CULL_FACE);
+//			//if(bUseOculusRift){
+//		//		glCullFace(GL_FRONT);
+//		//	}
+//		//	else{
+//				glCullFace(GL_BACK);
+//		//	}
+//			
+//			triangulation.draw();
+//
+//			glDisable(GL_CULL_FACE);
+//			ofPopStyle();
+//		}
+			
+		
+//		glDisable(GL_DEPTH_TEST);
+//		ofEnableBlendMode(OF_BLENDMODE_ADD);
+////		glDepthFunc(GL_LESS);
+//
+//		if(drawPoints){
+//			rgbdShader.setUniform1f("flowPosition", currentFlowPosition);
+//			rgbdShader.setUniform1f("isMeshed", 0);
+//			rgbdShader.setUniform1f("headAttenuateMix", 0.);
+//			//draw the points
+//			glPointSize(pointSizeMin);
+//			ofSetColor(255*randomPointAlpha);
+//			randomPoints.draw();
+//			ofSetColor(255*pointGridAlpha);
+//			pointGrid.drawVertices();
+//		}
+		
+//		rgbdShader.setUniform2f("simplify", scanlineSimplify.x, scanlineSimplify.y);
+
+//		//draw the lines
+//		if(drawScanlines){
+//			rgbdShader.setUniform1f("flowPosition", 0.0);
+//			rgbdShader.setUniform1f("isMeshed", 1.0);
+//			rgbdShader.setUniform1f("headAttenuateMix", .0);
+//
+//			ofSetLineWidth(horizontalScanlineThickness);
+//			horizontalScanLines.draw();
+//
+////			rgbdShader.setUniform1f("flowPosition", 0);
+////			ofSetLineWidth(verticalScanlineThickness);
+////			ofSetColor(255*verticalScanlineAlpha);
+////			verticalScanLines.draw();
+//		}
 		
 		//subtractive wirerame
 		//glDisable(GL_DEPTH_TEST);
-		ofPushMatrix();
-		ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
-		glPushAttrib(GL_POLYGON_BIT);
-		glPolygonOffset(1, 0);
-//		triangulation.drawWireframe();
-		glPopAttrib();
-		ofEnableAlphaBlending();
-		ofPopMatrix();
+//		ofPushMatrix();
+//		ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
+//		glPushAttrib(GL_POLYGON_BIT);
+//		glPolygonOffset(1, 0);
+////		triangulation.drawWireframe();
+//		glPopAttrib();
+//		ofEnableAlphaBlending();
+//		ofPopMatrix();
 
 //		connectionGenerator.draw();
 //		generator.draw();
 		
-		rgbdShader.end();
+//		rgbdShader.end();
 				
-		glPopAttrib();
-		ofPopMatrix();
-		ofPopStyle();
-	}
+//		glPopAttrib();
+//		ofPopMatrix();
+//		ofPopStyle();
+//	}
 		
-	if(drawParticulate){
-		glEnable(GL_DEPTH_TEST);
-		particulateController.draw();
-	}
+
 	
-	ofPopMatrix();
+//	ofPopMatrix();
 	
 
 	if(drawTransitionNodes){
@@ -951,11 +1066,12 @@ void CloudsVisualSystemRGBD::selfDrawOverlay() {
 		questions[i]->drawOverlay();
 	}
     
+	//This will be replaced with the HUD
     cloudsCaption.drawOverlay();
 
 	//test overlay
-	ofSetColor(0,0,0,0);
-	ofRect(20, 20, 300,300);
+//	ofSetColor(0,0,0,0);
+//	ofRect(20, 20, 300,300);
 	ofPopStyle();
 }
 
@@ -984,9 +1100,12 @@ CloudsQuestion* CloudsVisualSystemRGBD::getSelectedQuestion(){
 
 void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
+		
+		loadShader();
+		
 		particulateController.reloadShaders();
-		CloudsQuestion::reloadShader();
-		rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
+//		CloudsQuestion::reloadShader();
+//		rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	}
 	
 	if(args.key == 'v' && currentCamera != &transitionCam ){
@@ -1035,26 +1154,21 @@ void CloudsVisualSystemRGBD::selfSetupGui(){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfPresetLoaded( string presetName ){
-	refreshScanlineMesh = true;
-	refreshPointcloud = true;
-	refreshTriangulation = true;
+	refreshLines = true;
+	refreshMesh = true;
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e){
-	if(e.widget->getName() == "VERT LINE SPACE"){
-		refreshScanlineMesh = true;
+	if(e.widget->getName() == "Line Spacing" || e.widget->getName() == "Line Granularity") {
+		refreshLines = true;
 	}
-	else if(e.widget->getName() == "HORIZ LINE SPACE"){
-		refreshScanlineMesh = true;
+	else if(e.widget->getName() == "X Simplify" ||
+			e.widget->getName() == "Y Simplify" ||
+			e.widget->getName() == "Random Variance")
+	{
+		refreshMesh = true;
 	}
-	else if(e.widget->getName() == "P GRID VERT SPACE"){
-		refreshPointcloud = true;
-	}
-	else if(e.widget->getName() == "P GRID HORI SPACE"){
-		refreshPointcloud = true;
-	}
-
 }
 
 //--------------------------------------------------------------

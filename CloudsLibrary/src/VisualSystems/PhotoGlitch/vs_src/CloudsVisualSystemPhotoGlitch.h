@@ -11,6 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "ofxTween.h"
 
 class PGCell
 {
@@ -18,9 +19,78 @@ public:
     int idx;
     int row, origRow;
     int col, origCol;
+    ofFloatColor avgColor;
+    ofxTween tweenX, tweenY;
 };
 
-//TODO: rename this to your own visual system
+enum sortMode {
+    SOURCE_MODE,
+    TARGET_MODE
+};
+
+struct compareObj {
+    PGCell * cell;
+    int index;
+} ;
+
+struct glitchParams{
+    bool enable = false;
+    bool sortByBrightness = false;
+    bool sortByHue = false;
+    bool randomSort = true;
+    bool reorder = false;
+    bool shuffle = false;
+    vector<string> targetImageNames;
+    sortMode mode;
+};
+
+class PhotoGlitch
+{
+public:
+    int ID;
+    int numVerts;
+    GLfloat* verts;
+    GLfloat* texCoords;
+    GLfloat* colors;
+    int numIndices;
+    GLuint* indices;
+    
+    ofImage tex;
+    ofVbo vbo;
+    
+    PGCell* cells;
+    
+    void clear(){
+        
+        if (cells != NULL) {
+            delete [] cells;
+            cells = NULL;
+        }
+        
+        if (verts != NULL) {
+            delete [] verts;
+            verts = NULL;
+        }
+        
+        if( texCoords != NULL){
+            delete [] texCoords;
+            texCoords = NULL;
+        }
+        
+        if (colors != NULL) {
+            delete [] colors;
+            colors = NULL;
+        }
+        
+        if (indices != NULL) {
+            delete [] indices;
+            indices = NULL;
+        }
+        
+    }
+};
+
+
 class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
 {
   public:    
@@ -98,31 +168,115 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
 //		return myCustomCamera;
 //	}
     
-    void shuffle();
-    void reorder();
+    void clearSource();
+    void clearTarget();
+    void generateSource();
+    void generateTarget();
+    void generate(PhotoGlitch& pg, int imageIndex,bool isSource= false);
+    void beginAnimation();
+    void updateAnimation();
+    
+    void shuffle(bool tweenCells=true);
+    void sortHue(bool tweenCells=true);
+    void sortBri(bool tweenCells=true);
+    void reorder(bool tweenCells=true);
+    void sortTarget();
+    void sortTargetBrightness();
+    void addTargetToUI(ofxUISuperCanvas* gui,string suffix, glitchParams& params );
+    void tweenAll();
+    void tween(int i, int j = -1);
+    void tweenTarget(int i, int j = -1);
+    void tweenFast(int i);
+    void updateSequence();
+    int getTargetFileName(ofxUISuperCanvas * gui, int targetId);
+
+//    PGCell * cells;
+
+//    vector<PhotoGlitch> photos;
 
   protected:
+    
+
     ofxUISuperCanvas * customGui;
+    ofxUISuperCanvas * target1Gui;
+    ofxUISuperCanvas * target2Gui;
+    
+    //Source and targets
+    PhotoGlitch target1;
+    PhotoGlitch target2;
+    PhotoGlitch sourcePhoto;
+    
+    
+    //Params that control the animation. gp1 and hp2 correspond to targets 1 and 2
+    glitchParams gp1;
+    glitchParams gp2;
+    glitchParams sourceParams;
+   
+    PhotoGlitch * currentTarget;
+    glitchParams * currentTargetParams;
     
     int numDivRows;
     int numDivCols;
     int numCells;
-    PGCell * cells;
-        
-    int numVerts;
-    GLfloat * verts;
-    GLfloat * texCoords;
-    int numIndices;
-    GLuint * indices;
+//    int currentTargetIndex;    
+//    int numVerts;
+//    GLfloat * verts;
+//    GLfloat * texCoords;
+//    GLfloat * colors;
+//    int numIndices;
+//    GLuint * indices;
     
-    ofImage tex;
-    ofVbo vbo;
+//    GLfloat * targetTexCoords;
+//    GLfloat * targetColors;
+//    int numTargetVerts;
+//    GLfloat * targetVerts;
+//    int numTargetIndices;
+//    GLuint * targetIndices;
+    
+//    ofImage tex;
+//    ofVbo vbo;
+//    ofImage targetTex;
+//    ofVbo targetVbo;
+    
+    ofVbo bgVbo;
+    
+
+
+    ofRectangle screenRect;
+    
+    //SRC + TRGT IMG PARAMS
+    ofDirectory imagesDir;
+    ofDirectory targetImagesDir;
+    
+    int selectedSrcImageIdx;
+    int selectedTargetImageIdx;
+    
+    //ANIMATION PARAMS
+    int tweenDuration;
+    int tweenDelay;
+    int delayParameter;
+    int delayValue;
     
     float screenSliceWidth;
     float screenSliceHeight;
     float texSliceWidth;
     float texSliceHeight;
+    float targetTexSliceWidth;
+    float targetTexSliceHeight; 
     
-    bool bShouldShuffle;
-    bool bShouldReorder;
+    
+    //Ma boolzz
+    bool bUseColors;
+    bool bUseTexture;
+    bool bDrawTarget;
+    bool bLoopBack;
+    bool bOneCycleComplete;
+    bool bRandomSort;
+    bool bDrawBackground;
+    bool bIsFirstTime;
+    bool bCurrentlyAnimating;
+    bool bStartAnimating;
+    bool bDoPerpendicular;
+    bool bShouldGenerate;
+//    bool bShouldGenerateTargetOnly;
 };

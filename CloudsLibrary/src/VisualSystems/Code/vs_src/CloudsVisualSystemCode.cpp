@@ -38,10 +38,40 @@ void CloudsVisualSystemCode::selfSetupGui(){
 	boxGui->addIntSlider("box gen seed", 1, 300, &boxSeed);
 	boxGui->addSlider("outline alpha", 0, 1.0, &outlineAlpha);
 	
+	
 	ofAddListener(boxGui->newGUIEvent, this, &CloudsVisualSystemCode::selfGuiEvent);
 	guis.push_back(boxGui);
 	guimap[boxGui->getName()] = boxGui;
-		
+	
+	
+	colorGui = new ofxUISuperCanvas("COLOR", gui);
+	colorGui->copyCanvasStyle(gui);
+	colorGui->copyCanvasProperties(gui);
+	colorGui->setName("Color");
+	colorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	colorGui->addLabel("tint");
+	colorGui->addMinimalSlider("color ting h", 0, 1.0, &tintColorHSV.r);
+	colorGui->addMinimalSlider("color ting s", 0, 1.0, &tintColorHSV.g);
+	colorGui->addMinimalSlider("color ting v", 0, 1.0, &tintColorHSV.b);
+
+	string colorNames[MATCH_TYPES];
+	colorNames[0] = "comments";
+	colorNames[1] = "strings";
+	colorNames[2] = "base types";
+	colorNames[3] = "preprocessors";
+	colorNames[4] = "keywords";
+	
+	for(int i = 0; i < MATCH_TYPES; i++){
+		colorGui->addLabel("color " + ofToString(i+1) + " " +colorNames[i] );
+		colorGui->addMinimalSlider("color " + ofToString(i+1) + " h", 0, 1.0, &matchColorTypesHSV[i].r);
+		colorGui->addMinimalSlider("color " + ofToString(i+1) + " s", 0, 1.0, &matchColorTypesHSV[i].g);
+		colorGui->addMinimalSlider("color " + ofToString(i+1) + " v", 0, 1.0, &matchColorTypesHSV[i].b);
+	}
+	
+	ofAddListener(colorGui->newGUIEvent, this, &CloudsVisualSystemCode::selfGuiEvent);
+	guis.push_back(colorGui);
+	guimap[colorGui->getName()] = colorGui;
 }
 
 void CloudsVisualSystemCode::selfGuiEvent(ofxUIEventArgs &e){
@@ -77,15 +107,24 @@ void CloudsVisualSystemCode::generatePanels(){
 	panels.clear();
 	
 	for(int i = 0; i < rectTests.size(); i++){
-		CodePanel p;
-		p.setup( getVisualSystemDataPath() + "code_test.txt" );
-		p.drawRect = rectTests[i];
-		p.drawAsHist = MIN(p.drawRect.height,p.drawRect.width) < minTextboxSize;
-		p.outlineAlpha = &outlineAlpha;
-		p.scanSpeed = powf(ofRandom(speedRange.min,speedRange.max),2);
-		panels.push_back(p);		
+		Panel* p;
+		if(MIN(rectTests[i].height, rectTests[i].width) < minTextboxSize){
+			p = new PanelGraph();
+		}
+		else{
+			p = new PanelCode;
+		}
+		p->setup( getVisualSystemDataPath() + "code_test.txt" );
+		
+		p->outlineAlpha = &outlineAlpha;
+		p->scanSpeed = powf(ofRandom(speedRange.min,speedRange.max),2);
+		p->drawRect = rectTests[i];
+		panels.push_back(p);
+	
+	
 	}
-
+	
+	panelsGenerated = true;
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -105,11 +144,16 @@ void CloudsVisualSystemCode::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
+void CloudsVisualSystemCode::selfSetDefaults(){
+	
+}
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemCode::selfSetup(){
-	testPanel.setup(getVisualSystemDataPath() + "code_test.txt");
+//	testPanel.setup(getVisualSystemDataPath() + "code_test.txt");	
+	matchColorTypes.resize(MATCH_TYPES);
+//	matchColorTypesHSV.resize(MATCH_TYPES);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -123,6 +167,9 @@ void CloudsVisualSystemCode::selfPresetLoaded(string presetPath){
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemCode::selfBegin(){
+	if(panelsGenerated){
+		generatePanels();
+	}
 	
 }
 
@@ -134,8 +181,20 @@ void CloudsVisualSystemCode::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemCode::selfUpdate(){
+	for(int i = 0; i < MATCH_TYPES; i++){
+		matchColorTypes[i] = ofFloatColor::fromHsb(matchColorTypesHSV[i].r,
+												   matchColorTypesHSV[i].g,
+												   matchColorTypesHSV[i].b);
+	}
+	
+	tintColor = ofFloatColor::fromHsb(tintColorHSV.r,
+									  tintColorHSV.g,
+									  tintColorHSV.b);
+	
 	for(int i = 0; i < panels.size(); i++){
-		panels[i].update();
+		panels[i]->tint = tintColor;
+		panels[i]->matchColorTypes = matchColorTypes;
+		panels[i]->update();
 	}
 
 }
@@ -163,7 +222,7 @@ void CloudsVisualSystemCode::selfDrawBackground(){
 //	ofPopStyle();
 
 	for(int i = 0; i < panels.size(); i++){
-		panels[i].draw( getSharedRenderTarget().getHeight() );
+		panels[i]->draw( getSharedRenderTarget().getHeight() );
 	}
 	
 //	testPanel.draw();

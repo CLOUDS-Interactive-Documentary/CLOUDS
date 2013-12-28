@@ -21,11 +21,11 @@
 		284AE6691859D56E00780DBB /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE65B1859D56E00780DBB /* OscPrintReceivedElements.cpp */; };
 		284AE66A1859D56E00780DBB /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE65D1859D56E00780DBB /* OscReceivedElements.cpp */; };
 		284AE66B1859D56E00780DBB /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE65F1859D56E00780DBB /* OscTypes.cpp */; };
+		284AE68F185A25E300780DBB /* orbit.frag in Sources */ = {isa = PBXBuildFile; fileRef = 284AE68D185A25E300780DBB /* orbit.frag */; };
+		284AE690185A25E300780DBB /* orbit.vert in Sources */ = {isa = PBXBuildFile; fileRef = 284AE68E185A25E300780DBB /* orbit.vert */; };
 		285185B01837B691009D8339 /* CloudsVisualSystemOrbit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285185A81837B691009D8339 /* CloudsVisualSystemOrbit.cpp */; };
 		285185B11837B691009D8339 /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285185AA1837B691009D8339 /* Path.cpp */; };
 		285185B21837B691009D8339 /* PathPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285185AC1837B691009D8339 /* PathPoint.cpp */; };
-		285185B61837B6A2009D8339 /* orbit.frag in Sources */ = {isa = PBXBuildFile; fileRef = 285185B41837B6A2009D8339 /* orbit.frag */; };
-		285185B71837B6A2009D8339 /* orbit.vert in Sources */ = {isa = PBXBuildFile; fileRef = 285185B51837B6A2009D8339 /* orbit.vert */; };
 		285185D61837B8F8009D8339 /* ParallelTransportFrames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285185D11837B8F8009D8339 /* ParallelTransportFrames.cpp */; };
 		285C2099182FFFEE0065BCAE /* BleachBypassPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2066182FFFEE0065BCAE /* BleachBypassPass.cpp */; };
 		285C209A182FFFEE0065BCAE /* BloomPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2068182FFFEE0065BCAE /* BloomPass.cpp */; };
@@ -214,14 +214,14 @@
 		284AE65E1859D56E00780DBB /* OscReceivedElements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscReceivedElements.h; sourceTree = "<group>"; };
 		284AE65F1859D56E00780DBB /* OscTypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OscTypes.cpp; sourceTree = "<group>"; };
 		284AE6601859D56E00780DBB /* OscTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscTypes.h; sourceTree = "<group>"; };
+		284AE68D185A25E300780DBB /* orbit.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = orbit.frag; path = ../../../../CloudsData/visualsystems/Orbit/shaders/orbit.frag; sourceTree = "<group>"; };
+		284AE68E185A25E300780DBB /* orbit.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = orbit.vert; path = ../../../../CloudsData/visualsystems/Orbit/shaders/orbit.vert; sourceTree = "<group>"; };
 		285185A81837B691009D8339 /* CloudsVisualSystemOrbit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOrbit.cpp; sourceTree = "<group>"; };
 		285185A91837B691009D8339 /* CloudsVisualSystemOrbit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOrbit.h; sourceTree = "<group>"; };
 		285185AA1837B691009D8339 /* Path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Path.cpp; sourceTree = "<group>"; };
 		285185AB1837B691009D8339 /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
 		285185AC1837B691009D8339 /* PathPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PathPoint.cpp; sourceTree = "<group>"; };
 		285185AD1837B691009D8339 /* PathPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathPoint.h; sourceTree = "<group>"; };
-		285185B41837B6A2009D8339 /* orbit.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = orbit.frag; sourceTree = "<group>"; };
-		285185B51837B6A2009D8339 /* orbit.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = orbit.vert; sourceTree = "<group>"; };
 		285185D01837B8F8009D8339 /* ofxPtf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPtf.h; sourceTree = "<group>"; };
 		285185D11837B8F8009D8339 /* ParallelTransportFrames.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParallelTransportFrames.cpp; sourceTree = "<group>"; };
 		285185D21837B8F8009D8339 /* ParallelTransportFrames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParallelTransportFrames.h; sourceTree = "<group>"; };
@@ -653,10 +653,19 @@
 			path = osc;
 			sourceTree = "<group>";
 		};
+		284AE68C185A25D600780DBB /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				284AE68D185A25E300780DBB /* orbit.frag */,
+				284AE68E185A25E300780DBB /* orbit.vert */,
+			);
+			name = shaders;
+			sourceTree = "<group>";
+		};
 		2851853B1837B691009D8339 /* Orbit */ = {
 			isa = PBXGroup;
 			children = (
-				285185B31837B6A2009D8339 /* shaders */,
+				284AE68C185A25D600780DBB /* shaders */,
 				285185A71837B691009D8339 /* vs_src */,
 			);
 			name = Orbit;
@@ -674,16 +683,6 @@
 				285185AD1837B691009D8339 /* PathPoint.h */,
 			);
 			path = vs_src;
-			sourceTree = "<group>";
-		};
-		285185B31837B6A2009D8339 /* shaders */ = {
-			isa = PBXGroup;
-			children = (
-				285185B41837B6A2009D8339 /* orbit.frag */,
-				285185B51837B6A2009D8339 /* orbit.vert */,
-			);
-			name = shaders;
-			path = bin/data/shaders;
 			sourceTree = "<group>";
 		};
 		285185B81837B8F8009D8339 /* ofxPtf */ = {
@@ -1501,6 +1500,7 @@
 				284AE6611859D56E00780DBB /* ofxOscBundle.cpp in Sources */,
 				284AE6661859D56E00780DBB /* NetworkingUtils.cpp in Sources */,
 				E7D32FA21751C626006706ED /* ofxDamperBehavior.cpp in Sources */,
+				284AE68F185A25E300780DBB /* orbit.frag in Sources */,
 				E7D32FA31751C626006706ED /* ofxDistorterBehavior.cpp in Sources */,
 				E7D32FA41751C626006706ED /* ofxElectroStaticBehavior.cpp in Sources */,
 				E7D32FA51751C626006706ED /* ofxField2D.cpp in Sources */,
@@ -1565,6 +1565,7 @@
 				E7CF78CB1753FECA006B7D41 /* ofxEasingElastic.cpp in Sources */,
 				E7CF78CC1753FECA006B7D41 /* ofxEasingExpo.cpp in Sources */,
 				E7CF78CD1753FECA006B7D41 /* ofxEasingLinear.cpp in Sources */,
+				284AE690185A25E300780DBB /* orbit.vert in Sources */,
 				E7CF78CE1753FECA006B7D41 /* ofxEasingQuad.cpp in Sources */,
 				E7CF78CF1753FECA006B7D41 /* ofxEasingQuart.cpp in Sources */,
 				E7CF78D01753FECA006B7D41 /* ofxEasingQuint.cpp in Sources */,
@@ -1604,8 +1605,6 @@
 				285185B01837B691009D8339 /* CloudsVisualSystemOrbit.cpp in Sources */,
 				285185B11837B691009D8339 /* Path.cpp in Sources */,
 				285185B21837B691009D8339 /* PathPoint.cpp in Sources */,
-				285185B61837B6A2009D8339 /* orbit.frag in Sources */,
-				285185B71837B6A2009D8339 /* orbit.vert in Sources */,
 				285185D61837B8F8009D8339 /* ParallelTransportFrames.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

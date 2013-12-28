@@ -6,6 +6,7 @@
 #include "ofxUI.h"
 #include "CloudsAct.h"
 #include "CloudsWebSocketConnection.h"
+#include "CloudsSecondaryDisplayOSCSender.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -30,8 +31,8 @@ class testApp : public ofBaseApp{
 	CloudsAct* currentAct;
 	CloudsRun run;
 	
-	CloudsWebSocketConnection websockets;
-	
+	//CloudsWebSocketConnection websockets;
+	CloudsSecondaryDisplayOSCSender oscSender;
 	//clip events
 	void actCreated(CloudsActEventArgs& args);
 	void actBegan(CloudsActEventArgs& args);

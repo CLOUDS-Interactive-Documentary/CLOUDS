@@ -1,0 +1,43 @@
+// JONATHAN PATTERNS
+
+// Eccentric
+Eccentric_Groove4_12.wav A B
+Eccentric_Ring1_12.wav  A B
+Eccentric_Ring2_12.wav  A B
+
+// AnalogTechno
+
+Minimal_bassa_4.wav A B
+Minimal_bassb_3.wav A B
+Minimal_pianoa_4.wav A B
+Minimal_pianob_4.wav A B
+Minimal_pianoc_4.wav A B
+
+// Patter
+
+Patter_delay_32.wav A B
+
+// Patter 2
+
+Patter2_things_64.wav A B
+
+// Toms
+
+Toms_alpha_32.wav A B
+
+// Chords 
+
+Chord_alpha_16.wav A B
+
+// House
+
+House_kick_32.wav A B
+ 
+// Jungle
+
+Jungle_Drum_16.wav A B
+Jungle_Clang2_16.wav A B 
+Jungle_Clang1_16.wav A B
+
+
+

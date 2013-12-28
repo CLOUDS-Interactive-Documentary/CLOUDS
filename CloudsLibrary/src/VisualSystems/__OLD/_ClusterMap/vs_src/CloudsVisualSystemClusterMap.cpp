@@ -106,7 +106,7 @@ void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip>& questionClip
 		
 		CloudsQuestion q;
 		q.cam = &getCameraRef();
-		q.font = &font;
+//		q.font = &font;
 		q.clip = questionClips[i];
 		
 		q.setup();

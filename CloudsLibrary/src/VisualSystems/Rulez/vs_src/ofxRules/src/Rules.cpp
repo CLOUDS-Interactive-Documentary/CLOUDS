@@ -38,13 +38,14 @@
 #include "TubeAction.h"
 #include "IcosphereAction.h"
 #include "PlaneAction.h"
+#include "ConeAction.h"
 
 namespace itg
 {
     const string Rules::DEFAULT_START_RULE = "start";
     
     Rules::Rules() :
-        maxDepth(numeric_limits<unsigned>::max()), numSteps(0)
+        maxDepth(numeric_limits<unsigned>::max()), numSteps(0), currentDepth(0)
     {
         registerAction<LineAction>("line");
         registerAction<PointAction>("point");
@@ -54,6 +55,7 @@ namespace itg
         registerAction<IcosphereAction>("ico");
         registerAction<IcosphereAction>("icosphere");
         registerAction<PlaneAction>("plane");
+        registerAction<ConeAction>("cone");
         
         mesh.setUsage(GL_DYNAMIC_DRAW);
         mesh.setMode(OF_PRIMITIVE_TRIANGLES);
@@ -85,11 +87,10 @@ namespace itg
                 auto ruleSet = ruleSets.find((*it)->getNextRuleName());
                 if (ruleSet != ruleSets.end())
                 {
-                    //RuleSet::Ptr ruleSet = ruleSets[(*it)->getNextRuleName()];
-                    
                     vector<Branch::Ptr> children = ruleSet->second->randomRule()->step(*it, mesh);
                     newBranches.insert(newBranches.end(), children.begin(), children.end());
                     activeRuleSets++;
+                    currentDepth = max(currentDepth, (*it)->getDepth());
                 }
                 else ofLogError() << "No ruleSet with name " << (*it)->getNextRuleName();
             }
@@ -238,6 +239,8 @@ namespace itg
     {
         mesh.clear();
         branches.clear();
+        numSteps = 0;
+        currentDepth = 0;
     }
     
     Rule::Ptr Rules::addRule(const string& ruleName, float weight)
