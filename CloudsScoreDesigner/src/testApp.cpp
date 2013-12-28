@@ -20,11 +20,13 @@ void testApp::setup(){
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	
-    storyEngine.combinedClipsOnly = true; // true if using a clips drive
-	storyEngine.setup();
+    storyEngine.combinedClipsOnly = false; // true if using a clips drive
+    withVideo = false; // draw video?
+
+	
+    storyEngine.setup();
 	storyEngine.printDecisions = false;
 	storyEngine.toggleGuis(true);
-    withVideo = true; // draw video?
     
     sound.setup(storyEngine);
     
