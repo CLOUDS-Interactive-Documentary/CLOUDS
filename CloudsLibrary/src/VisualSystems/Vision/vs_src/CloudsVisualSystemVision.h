@@ -68,11 +68,8 @@ public:
 	
 protected:
 
-    //video player stuff        
-//    ofPtr<ofVideoPlayer> player;
     ofPixels opticalFlowPixels;
     int skipFrames;
-//    ofVideoPlayer* player;
     ofPtr<ofxAVFVideoPlayer> player;
     int playerIndex;
     int movieIndex;
@@ -82,8 +79,6 @@ protected:
 
     CVMode currentMode;
     int opticalFlowScale;
-//    vector<ofRectangle> flowRegions;
-//    void populateOpticalFlowRegions();
     vector<ofVec2f> flowMotion;
 
     float colorRange;
@@ -137,8 +132,6 @@ protected:
     float diffAlpha;
 
     ofVec2f averageFlow;
-    int mouseX;
-    int mouseY;
 	
     void loadCurrentMovie();
     void loadMovieAtIndex(int movieIndex);
