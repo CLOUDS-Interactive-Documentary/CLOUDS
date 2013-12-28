@@ -121,6 +121,7 @@ protected:
     void clearAccumulation();
     void drawFlowHeatMap(int x, int y);
 
+    ofDirectory videosDir;
     ofVboMesh flowMesh;
     float windowWidth;
     float windowHeight;

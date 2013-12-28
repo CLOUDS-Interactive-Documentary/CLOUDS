@@ -82,7 +82,7 @@ void CloudsVisualSystemVision::selfSetup()
 
     //	app
     movieIndex = 0;
-    
+    /*
     movieStrings.push_back("union_square_crop.mov");
     movieStrings.push_back("GreenPoint_bike_crop.mov");
    // movieStrings.push_back("indianTrafficCrop.mov");
@@ -120,7 +120,13 @@ void CloudsVisualSystemVision::selfSetup()
 	for(int i = 0; i < movieStrings.size(); i++){
 		
 	}
-	
+    */
+
+    videosDir.listDir(getVisualSystemDataPath(true) + "videos" );
+    videosDir.sort();
+    for (int i = 0; i < videosDir.size(); i++) {
+        movieStrings.push_back(videosDir.getName(i));
+    }
     frameIsNew = false;
     loadCurrentMovie();
     
@@ -129,17 +135,20 @@ void CloudsVisualSystemVision::selfSetup()
 
 void CloudsVisualSystemVision::selfSetupGui()
 {
-    opticalFlowGui = new ofxUISuperCanvas("OPTICAL FLOW", gui);
+    opticalFlowGui = new ofxUISuperCanvas("OP FLOW", gui);
     opticalFlowGui->copyCanvasStyle(gui);
     opticalFlowGui->copyCanvasProperties(gui);
+    opticalFlowGui->setName("OP FLOW");
  
-    opticalFlowGui->addLabel("VISUAL PARAMS");
+    ofxUIToggle *toggle = opticalFlowGui->addToggle("ENABLE",&bOpticalFlow);
+
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    opticalFlowGui->resetPlacer();
+    opticalFlowGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    opticalFlowGui->addWidgetToHeader(toggle);
     
     opticalFlowGui->addSpacer();
-    ofxUIButton *bDrawFlowWindowbtn = opticalFlowGui->addToggle("DRAW FLOW WINDOW", &bDrawFlowWindow);
-    opticalFlowGui->addSlider("FLOW WINDOW TINT", 0, 255, &windowAlpha);
-    
-    opticalFlowGui->addSpacer();
+    opticalFlowGui->addSlider("WINDOW TINT", 0, 255, &windowAlpha);
     opticalFlowGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     opticalFlowGui->addSlider("WINDOW WIDTH", 10, 1000, &windowWidth);
     opticalFlowGui->addSlider("WINDOW HEIGHT", 10, 1000, &windowHeight);
@@ -161,9 +170,17 @@ void CloudsVisualSystemVision::selfSetupGui()
     guimap[opticalFlowGui->getName()] = opticalFlowGui;
     
     
-    contourTrackingGui = new ofxUISuperCanvas("CONTOUR TRACKING",gui);
+    contourTrackingGui = new ofxUISuperCanvas("CONTOUR",gui);
     contourTrackingGui->copyCanvasStyle(gui);
     contourTrackingGui->copyCanvasProperties(gui);
+    contourTrackingGui->setName("CONTOUR"); 
+    ofxUIToggle *ContourBtn = contourTrackingGui->addToggle("ENABLE",&bContourTracking);
+    
+    ContourBtn->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    contourTrackingGui->resetPlacer();
+    contourTrackingGui->addWidgetDown(ContourBtn, OFX_UI_ALIGN_RIGHT, true);
+    contourTrackingGui->addWidgetToHeader(ContourBtn);
+    
     contourTrackingGui->addSpacer();
     contourTrackingGui->addLabel("VISUAL PARAMS");
     contourTrackingGui->addSpacer();
@@ -394,21 +411,21 @@ void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
     //LOADING CURRENT ENABLED MODES
 //    ofxUIToggle *opticalFlowBtn = (ofxUIToggle*)rdrGui->getWidget("OPTICAL FLOW");
 //    bOpticalFlow = opticalFlowBtn->getValue();
-    if(bOpticalFlow){
-        setMode(OpticalFlow);
-    }
+//    if(bOpticalFlow){
+//        setMode(OpticalFlow);
+//    }
     
 //    ofxUIToggle *ContourBtn = (ofxUIToggle*)rdrGui->getWidget("CONTOUR TRACKING");
 //    bContourTracking = ContourBtn->getValue();
-    if(bContourTracking){
-        setMode(ContourTracking);   
-    }
+//    if(bContourTracking){
+//        setMode(ContourTracking);   
+//    }
     
 //    ofxUIToggle *AbsDiffBtn = (ofxUIToggle*)rdrGui->getWidget("ABS DIFF HEAT MAP");
 //    bDrawHeatMap = AbsDiffBtn->getValue();
-    if(bDrawHeatMap){
-        setMode(HeatMap);
-    }
+//    if(bDrawHeatMap){
+//        setMode(HeatMap);
+//    }
     
 //    ofxUIToggle *ThresholBtn = (ofxUIToggle*)rdrGui->getWidget("DRAW THRESHOLDED");
 //    drawThresholded = ThresholBtn->getValue();
@@ -426,7 +443,6 @@ void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
 			
 			for(int i = 0; i < movieStrings.size(); i++){
 				if (movieStrings[i] == movieName) {
-					cout << "HERE " << movieStrings[i] << endl;
 					loadMovieAtIndex(i);
 					break;
 				}
@@ -461,8 +477,7 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
 {
     rdrGui->addSpacer();
     rdrGui->addLabel("PLAY MODES");
-    ofxUIToggle *opticalFlowBtn = rdrGui->addToggle("OPTICAL FLOW",&bOpticalFlow);
-    ofxUIToggle *ContourBtn = rdrGui->addToggle("CONTOUR TRACKING",&bContourTracking);
+    
     ofxUIToggle *AbsDiffBtn = rdrGui->addToggle("ABS DIFF HEAT MAP",&bDrawHeatMap);
     ofxUIToggle *ThresholBtn = rdrGui->addToggle("DRAW THRESHOLDED",&drawThresholded);
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
@@ -472,7 +487,7 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
     ofxUIButton *clearthresholdbtn = rdrGui->addToggle("CLEAR DIFF", false);
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     rdrGui->addLabel("VIDEOS");
-    rdrGui->addRadio("VIDEO", movieStrings);
+    rdrGui->addDropDownList("VIDEO", movieStrings);
     rdrGui->addSlider("VIDEO TINT", 0, 255, &videoAlpha);
     rdrGui->addSlider("THRESHOLD TINT", 0, 255, &thresholdAlpha);
     rdrGui->addSlider("DIFF TINT", 0, 255, &diffAlpha);
@@ -796,7 +811,7 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
         boxColor.setBrightness(boxBright);
     }
     
-    if (kind == OFX_UI_WIDGET_TOGGLE){
+    if (name == "VIDEOS"){
         thresholded.clear();
         background.reset();
         updateImagesForNewVideo();
@@ -809,6 +824,8 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
             }
         }
     }
+    
+
     
 }
 
@@ -839,7 +856,7 @@ void  CloudsVisualSystemVision::loadMovieAtIndex(int index){
 
     player = ofPtr<ofxAVFVideoPlayer>(new ofxAVFVideoPlayer());
 
-    if(player->loadMovie(getVisualSystemDataPath(true) + movieStrings[ movieIndex ])){
+    if(player->loadMovie(getVisualSystemDataPath(true)+"/videos/" + movieStrings[ movieIndex ])){
         player->play();
     }
     else{
