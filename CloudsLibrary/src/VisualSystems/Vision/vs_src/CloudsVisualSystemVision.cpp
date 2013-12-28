@@ -524,7 +524,6 @@ void CloudsVisualSystemVision::selfUpdate(){
 void CloudsVisualSystemVision::selfDrawBackground()
 {
     ofPushStyle();
-//  
 
     if(drawPlayer){
 		if(player->isLoaded() && player->isPlaying()){
@@ -544,6 +543,8 @@ void CloudsVisualSystemVision::selfDrawBackground()
     if(drawThresholded){
         if( thresholded.isAllocated() ){
 			ofPushStyle();
+            ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+            ofTranslate(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
 			ofSetColor(thresholdAlpha);        
 			thresholded.draw(0,0, ofGetWidth(), ofGetHeight());
 			ofPopStyle();
@@ -556,7 +557,8 @@ void CloudsVisualSystemVision::selfDrawBackground()
     if(bContourTracking){
 		
         ofPushMatrix();
-        ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
+//        ofTranslate(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
+        ofScale(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
         if(bContours){
             contourFinder.draw();
         }
@@ -565,9 +567,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
             float b = followers[i].getLifeTime();
             followers[i].draw(lineWidth, bLifeTime, contourLifetimeColorRange, bDrawBoxes, bDrawLines, bNumbers, boxColor);
         }
-		
-        ofPopMatrix();
-        
+        ofPopMatrix();   
     }
     
     if(bOpticalFlow){
