@@ -144,8 +144,9 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
     float distX = abs(GetCloudsInputX() - prevInputX);
     float distY = abs(GetCloudsInputY() - prevInputY);
     float mSpeed = sqrt(distX*distX + distY*distY);
-    curMSpeed += (mSpeed - curMSpeed)*.01;
-    lpfCutoff.value(ofMap(curMSpeed, 0, 30, 200, 2000, true));
+    curMSpeed += (mSpeed - curMSpeed)*.05;
+    lpfCutoff.value(ofMap(curMSpeed, 0, 20, 100, 5500, true));
+    volume.value(ofMap(curMSpeed, 0, 20, 0, .7, true));
     prevInputX = GetCloudsInputX();
     prevInputY = GetCloudsInputY();
 }
@@ -312,7 +313,8 @@ void CloudsVisualSystemVectorFlow::selfBegin(){
     
     
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVectorFlow::audioRequested);
-    soundTrigger.trigger();
+    soundTrigger1.trigger();
+    soundTrigger2.trigger();
 }
 
 void CloudsVisualSystemVectorFlow::selfPresetLoaded(string presetPath)
@@ -438,18 +440,25 @@ Generator CloudsVisualSystemVectorFlow::buildSynth()
     string strDir = GetCloudsDataPath()+"sound/textures/";
     
     ofDirectory sdir(strDir);
-    string strAbsPath = sdir.getAbsolutePath() + "/Wind 2.aif";
+    //string strAbsPath = sdir.getAbsolutePath() + "/Wind 2.aif";
+    string strAbsPath = sdir.getAbsolutePath() + "/Wind 2.aif"; //Wind 2. aif
     
     SampleTable sample = loadAudioFile(strAbsPath);
     
-    lpfCutoff = synth.addParameter("cutoff_freq", 50).displayName("Cutoff Freq").min(50).max(2000);
+    string strAbsPath2 = sdir.getAbsolutePath() + "/slowgrains.aif"; //slowgrains.aif
     
-    Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(soundTrigger).loop(1) * 0.6;
-//    Generator noiseGen = LFNoise().setFreq(mouseX) * SineWave().freq(1);
+    SampleTable sample2 = loadAudioFile(strAbsPath2);
+    
+    lpfCutoff = synth.addParameter("cutoff_freq", 50).displayName("Cutoff Freq").min(50).max(8000);
+    volume = synth.addParameter("volume", 0.0).displayName("Cutoff Freq").min(0.0).max(1);
+    
+    Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(soundTrigger1).loop(1) * volume;
+    
+    Generator sampleGen2 = BufferPlayer().setBuffer(sample2).trigger(soundTrigger2).loop(1);
     
     LPF12 filter = LPF12().cutoff(lpfCutoff.smoothed());
     
-    return (sampleGen >> filter);// >> revb);
+    return (sampleGen2 * .1) + (sampleGen >> filter);
 }
 
 void CloudsVisualSystemVectorFlow::audioRequested(ofAudioEventArgs& args)
