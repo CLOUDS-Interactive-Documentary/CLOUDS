@@ -30,6 +30,11 @@ void RTcmixParseScoreFile(string f)
     parse_score((char*)thescore.c_str(), thescore.length());
 }
 
+void INITMIX()
+{
+    RTcmixParseScoreFile("cmixclear.sco");
+}
+
 // use the SPLITTER() instrument to configure effects path
 void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus)
 {
