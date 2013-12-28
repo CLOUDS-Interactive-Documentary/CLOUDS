@@ -85,7 +85,7 @@ protected:
 	
 	float speed;
 	float oscFrequency;
-	
+	float curMSpeed;
 	ofImage colorMap;
 	ofFloatColor startColor;
 	ofFloatColor endColor;
@@ -107,6 +107,7 @@ protected:
     ofFbo fboInitial, fboBlurX, fboFinal;
     
     // Sound
+    int prevInputX, prevInputY;
     ofxTonicSynth synth;
     ControlParameter lpfCutoff;
     Generator buildSynth();

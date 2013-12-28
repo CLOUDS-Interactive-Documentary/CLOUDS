@@ -72,6 +72,10 @@ void CloudsVisualSystemOpenP5Machine::selfSetup(){
     color2HSB.g = 130;
     color2HSB.b = 90;
 
+    // sound
+    synth.setOutputGen(buildSynth());
+    
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOpenP5Machine::audioRequested);
 }
 
 
@@ -225,3 +229,23 @@ void CloudsVisualSystemOpenP5Machine::selfMouseReleased(int x, int y, int button
 //     cam.enableMouseInput();
 	
 }
+
+Generator CloudsVisualSystemOpenP5Machine::buildSynth()
+{
+    string strDir = GetCloudsDataPath()+"sound/textures/";
+    ofDirectory sdir(strDir);
+    string strAbsPath = sdir.getAbsolutePath() + "/Machine.aif";
+    
+    SampleTable sample = loadAudioFile(strAbsPath);
+    
+    Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1);
+    
+    return sampleGen;
+}
+
+void CloudsVisualSystemOpenP5Machine::audioRequested(ofAudioEventArgs& args)
+{
+    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+}
+
+

@@ -69,7 +69,7 @@ protected:
 
     //video player stuff        
 //    ofPtr<ofVideoPlayer> player;
-    ofPixels resizeToPixels;
+    ofPixels opticalFlowPixels;
     int skipFrames;
 //    ofVideoPlayer* player;
     ofPtr<ofxAVFVideoPlayer> player;
@@ -80,7 +80,7 @@ protected:
     vector<string> movieStrings;
 
     CVMode currentMode;
-    int scale;
+    int opticalFlowScale;
 //    vector<ofRectangle> flowRegions;
 //    void populateOpticalFlowRegions();
     vector<ofVec2f> flowMotion;
@@ -118,9 +118,10 @@ protected:
 	ofxCv::FlowPyrLK pyrLk;
 	ofxCv::Flow* curFlow;
     void updateOpticalFlow();
-    void clearAccumulation();
+//    void clearAccumulation();
     void drawFlowHeatMap(int x, int y);
 
+    ofDirectory videosDir;
     ofVboMesh flowMesh;
     float windowWidth;
     float windowHeight;
