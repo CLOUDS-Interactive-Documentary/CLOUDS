@@ -218,13 +218,6 @@ void CloudsVisualSystemVision::selfSetupGui()
     
 }
 
-//void CloudsVisualSystemVision::clearAccumulation(){
-//    for(int j=0; j<accumulation.height; j++){
-//        for( int i=0; i<accumulation.width; i++){
-//            accumulation.setColor(i, j, ofFloatColor(0));
-//        }
-//    }
-//}
 
 void CloudsVisualSystemVision::updateImagesForNewVideo(){
     imitate(previousHeatMap, player->getPixelsRef());
@@ -421,17 +414,16 @@ void CloudsVisualSystemVision::selfSetupSystemGui()
 
 void CloudsVisualSystemVision::selfSetupRenderGui()
 {
-    rdrGui->addSpacer();
-    rdrGui->addLabel("PLAY MODES");
+
     
+    ofxUIToggle *toggle = rdrGui->addToggle("PLAYER",&drawPlayer);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    rdrGui->resetPlacer();
+    rdrGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    rdrGui->addWidgetToHeader(toggle);
+
     ofxUIToggle *AbsDiffBtn = rdrGui->addToggle("ABS DIFF HEAT MAP",&bDrawHeatMap);
     ofxUIToggle *ThresholBtn = rdrGui->addToggle("DRAW THRESHOLDED",&drawThresholded);
-    rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    ofxUIButton *drawplayerbtn = rdrGui->addToggle("DRAW PLAYER", &drawPlayer);
-    ofxUIButton *bDrawFlowWindowbtn = rdrGui->addToggle("DRAW FLOW WINDOW", &bDrawFlowWindow);
-    rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    ofxUIButton *clearthresholdbtn = rdrGui->addToggle("CLEAR DIFF", false);
-    rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     rdrGui->addSlider("VIDEO TINT", 0, 255, &videoAlpha);
     rdrGui->addSlider("THRESHOLD TINT", 0, 255, &thresholdAlpha);
     rdrGui->addSlider("DIFF TINT", 0, 255, &diffAlpha);
