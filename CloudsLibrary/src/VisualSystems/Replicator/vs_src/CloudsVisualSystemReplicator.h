@@ -5,6 +5,12 @@
 #include "CloudsVisualSystem.h"
 
 #include "ofxAnimationPrimitives.h"
+#include "ofxTonic.h"
+#include "CloudsAudioEvents.h"
+#include "CloudsGlobal.h"
+
+using namespace Tonic;
+
 
 class CloudsVisualSystemReplicator : public CloudsVisualSystem {
  public:
@@ -52,5 +58,15 @@ class CloudsVisualSystemReplicator : public CloudsVisualSystem {
 	
 	void selfSetupRenderGui();
 	void guiRenderEvent(ofxUIEventArgs &e);
+
+	// Sound
+    ofxUISuperCanvas* soundGui;
+    string soundFiles[2] = {"organ_slower.aif",
+        "EchoVortex.aif"};
+    bool playSample[2] = {false};
+    ControlTrigger soundTriggers[2];
+    ofxTonicSynth synth;
+    Generator buildSynth();
+	void audioRequested(ofAudioEventArgs& args);
 };
 
