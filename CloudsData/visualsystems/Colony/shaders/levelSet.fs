@@ -49,8 +49,8 @@ vec4 getLevelSet(vec4 fg){
 }
 
 float bump(float t, float center, float width){
-    float f = pow((t - center), 2.);
-    return 1. - clamp(f / (width * width), 0., 1.);
+    float f = (t - center) / width;
+    return 1. - clamp(f * f, 0., 1.);
 }
 
 void main(){
@@ -66,13 +66,12 @@ void main(){
         
         //see if you're in the right range to be a border
         b *= fg.b * fg.b;
-        float innerCell = clamp(bump(b, .8, 0.4),0.,1.) * (1. -(0.2 + 0.2 * sin(gl_FragCoord.x + gl_FragCoord.y)) );
-        float shell = clamp(bump(b, .3, 0.2), 0.,0.95);
-        vec4 kernel = clamp(fg.g * 1.5 * vec4(0.6,0.7,0.6,1.),0.,1.);
-        vec4 envelope = pow(shell,1.5) * vec4(1.);// * mix(1.,rand(gl_FragCoord.xy * 0.01), 0.15 );
-        color = envelope + kernel + (innerCell-fg.g); //* vec4(0.5,0.,0.,0.3);
+        float innerCell = clamp(bump(b, .8, .4), 0., 1.) * (1. - (.2 + .2 * sin(gl_FragCoord.x + gl_FragCoord.y)));
+        float shell = clamp(bump(b, .3, .2), 0., .95);
+        vec4 kernel = clamp(fg.g * 1.5 * vec4(.6, .7, .6, 1.), 0., 1.);
+        vec4 envelope = pow(shell, 1.5) * vec4(1.);// * mix(1.,rand(gl_FragCoord.xy * 0.01), 0.15 );
+        color = envelope + kernel + (innerCell - fg.g); //* vec4(0.5,0.,0.,0.3);
     }
-
     gl_FragColor = color;
 }
 
