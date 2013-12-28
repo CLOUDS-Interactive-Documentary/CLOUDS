@@ -34,7 +34,7 @@ void CloudsAct::play(){
 		if(args.startClip.hasStartingQuestion() && args.startClip.getTopicsWithQuestions().size() > 0){
 			args.startTopic = args.startClip.getTopicsWithQuestions()[0];
 			args.startQuestion = clips[0].getQuestionForTopic(args.startTopic);
-			args.soundQuestionKey = args.startClip.getID() + ":" + args.startQuestion;
+			args.soundQuestionKey = args.startTopic + ":" + args.startQuestion;
 			cout << "sound question key: " << args.soundQuestionKey << endl;
 		}
 	}

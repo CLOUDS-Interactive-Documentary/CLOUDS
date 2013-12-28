@@ -39,7 +39,7 @@ class CloudsSound {
 	
     // Luke's public stuff
     void startMusicFX(float outskip, float musicdur);
-    void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev);
+    void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum);
     void stopMusic();
     void reloadPresets();
 
@@ -63,9 +63,8 @@ class CloudsSound {
     int nchans; // 2 = stereo
     int framesize; // sigvs (512 seems ok)
 
-    int returnColor(string c);
-    int first_vec;
-    float allownote;
+    bool first_vec;
+    bool rtc_playing;
 
     float MASTERTEMPO;
     int AUTORUN;
@@ -80,4 +79,7 @@ class CloudsSound {
 
     vector<lukeSample> looperSamples;
 
+    // the backup soundplayer
+    ofSoundPlayer backupsound;
+    
 };

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Basic//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd">
+<svg version="1.1" baseProfile="basic" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" width="1920px" height="1080px" viewBox="0 0 1920 1080" xml:space="preserve">
+<g id="BOX_x5F_INFO">
+	<rect x="47.875" y="882.528" opacity="0.16" width="1824.875" height="150.001"/>
+</g>
+<g id="BOX_x5F_DETAILS">
+	<rect x="46.181" y="881.136" fill="#FFFFFF" width="2.801" height="2.802"/>
+	<rect x="46.181" y="1030.938" fill="#FFFFFF" width="2.801" height="2.802"/>
+	<rect x="1871.052" y="881.136" fill="#FFFFFF" width="2.802" height="2.802"/>
+	<rect x="1871.052" y="1030.938" fill="#FFFFFF" width="2.802" height="2.802"/>
+	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="47.5" y1="882" x2="47.5" y2="1033"/>
+	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1872.5" y1="882" x2="1872.5" y2="1033"/>
+	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1872" y1="882.5" x2="47" y2="882.5"/>
+	<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1494.683,1033.74"/>
+	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="48" y1="1032.5" x2="1873" y2="1032.5"/>
+</g>
+<g id="BOX_x5F_ARTIST1">
+	<rect x="83.785" y="971.883" opacity="0.36" fill="#101010" width="370.383" height="38.965"/>
+</g>
+<g id="TEXTBOX_x5F_ARTIST1">
+	<rect x="96.346" y="979.727" opacity="0" fill="none" width="345.262" height="23.277"/>
+</g>
+<g id="TEXTBOX_x5F_AND">
+	<rect x="468.673" y="979.727" opacity="0" fill="none" width="23.276" height="23.277"/>
+</g>
+<g id="BOX_x5F_ARTIST2">
+	<rect x="507.263" y="971.883" opacity="0.36" fill="#101010" width="370.382" height="38.965"/>
+</g>
+<g id="TEXTBOX_x5F_ARTIST2">
+	<rect x="519.823" y="979.727" opacity="0" fill="none" width="345.261" height="23.277"/>
+</g>
+<g id="TEXTBOX_x5F_TITLE">
+	<rect x="83.836" y="903.797" opacity="0" fill="none" width="976.584" height="50.186"/>
+</g>
+</svg>

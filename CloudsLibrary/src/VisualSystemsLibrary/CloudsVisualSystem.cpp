@@ -65,6 +65,14 @@ ofImage& CloudsVisualSystem::getCursor(){
 	return sharedCursor;
 }
 
+int CloudsVisualSystem::getCanvasWidth(){
+	return getSharedRenderTarget().getWidth();
+}
+
+int CloudsVisualSystem::getCanvasHeight(){
+	return getSharedRenderTarget().getHeight();
+}
+
 CloudsRGBDVideoPlayer& CloudsVisualSystem::getRGBDVideoPlayer(){
 	return rgbdPlayer;
 }
@@ -252,6 +260,10 @@ void CloudsVisualSystem::setup(){
 	
 }
 
+bool CloudsVisualSystem::isSetup(){
+	return bIsSetup;
+}
+
 void CloudsVisualSystem::playSystem(){
 
 	if(!isPlaying){
@@ -296,7 +308,6 @@ void CloudsVisualSystem::stopSystem(){
 		}
 		
 		CloudsUnregisterInputEvents(this);
-		//ofUnregisterMouseEvents(this);
 		ofUnregisterKeyEvents(this);
 		ofRemoveListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofRemoveListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
@@ -825,8 +836,6 @@ void CloudsVisualSystem::keyReleased(ofKeyEventArgs & args)
     }
 }
 
-
-//TODO REMOVE FAKES!!
 void CloudsVisualSystem::interactionMoved(CloudsInteractionEventArgs& args){
     if(args.primary){
         ofMouseEventArgs fakeArgs;
@@ -1414,7 +1423,6 @@ void CloudsVisualSystem::setupCameraGui()
     guis.push_back(camGui);
     guimap[camGui->getName()] = camGui;
 	
-
 }
 
 CloudsVisualSystem::RGBDTransitionType CloudsVisualSystem::getTransitionType()
@@ -1559,13 +1567,13 @@ void CloudsVisualSystem::setupPresetGui()
     presetGui->copyCanvasProperties(gui);
     presetGui->addSpacer();
     
-    vector<string> empty; empty.clear();
+    vector<string> empty;
+	empty.clear();
 	presetRadio = presetGui->addRadio("PRESETS", empty);
 	
 	presetGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     vector<string> presets = getPresets();
-    for(vector<string>::iterator it = presets.begin(); it != presets.end(); ++it)
-    {
+    for(vector<string>::iterator it = presets.begin(); it != presets.end(); ++it) {
         ofxUIToggle *t = presetGui->addToggle((*it), false);
         presetRadio->addToggle(t);
     }
@@ -1579,9 +1587,17 @@ void CloudsVisualSystem::setupPresetGui()
 void CloudsVisualSystem::guiPresetEvent(ofxUIEventArgs &e)
 {
     ofxUIToggle *t = (ofxUIToggle *) e.widget;
-    if(t->getValue())
-    {
-        loadPresetGUISFromName(e.widget->getName());
+    if(t->getValue()){
+		
+		if(isSetup()){
+			selfEnd();
+		}
+        
+		loadPresetGUISFromName(e.widget->getName());
+		
+		if(isSetup()){
+			selfBegin();
+		}
     }
 }
 

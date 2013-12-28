@@ -10,7 +10,12 @@
 
 #pragma once
 
+#include "CloudsGlobal.h"
 #include "CloudsVisualSystem.h"
+#include "ofxTonic.h"
+#include "CloudsAudioEvents.h"
+
+using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemOpenP5Machine : public CloudsVisualSystem {
@@ -121,6 +126,9 @@ protected:
     float shiftY;
     float shiftZ;
 
-	
+	// Sound
+    ofxTonicSynth synth;
+    Generator buildSynth();
+	void audioRequested(ofAudioEventArgs& args);
 
 };

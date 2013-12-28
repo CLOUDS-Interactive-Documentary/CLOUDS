@@ -20,7 +20,7 @@ CloudsMixer::CloudsMixer()
     // compressor
     thresh = 0.707; // set lower for a quieter squish point
     ratio = 0.3; // set lower for more squish
-    makeup = 1.5; // set higher for more volume
+    makeup = 2.; // set higher for more volume
 
 }
 

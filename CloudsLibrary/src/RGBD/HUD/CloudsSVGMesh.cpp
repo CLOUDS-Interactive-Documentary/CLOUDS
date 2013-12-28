@@ -31,7 +31,7 @@ bool CloudsSVGMesh::load(string file){
 						   ofToInt(strrephack(svg.getAttribute("svg", "height", "0px"), "px", "")));
 	
 	svg.pushTag("svg");
-	recurseSVGTag(svg, "");
+	recurseSVGTag(svg, "", 1.0);
 	svg.popTag();//svg
 	
 	cout << "Loading SVG file: " << file << endl;
@@ -61,7 +61,7 @@ bool CloudsSVGMesh::load(string file){
 	
 }
 
-void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId){
+void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId, float parentOpacity){
 
 	ofMesh strokeMesh;
 	ofMesh fillMesh;
@@ -80,7 +80,7 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId){
 		if(xml.attributeExists("line","opacity",l)){
 			color.a = xml.getAttribute("line", "opacity", 0., l)*255.;
 		}
-
+		color.a *= parentOpacity;
 		strokeMesh.addColor(color);
 		strokeMesh.addColor(color);
 	}
@@ -106,10 +106,10 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId){
 		string hexColor = xml.getAttribute("rect", (isLines ? "stroke" : "fill"), "#FFFFFF", r);
 		hexColor.erase(hexColor.begin());//kill the #
 		ofColor color = ofColor::fromHex( ofHexToInt(hexColor));
-		if(xml.attributeExists("line","opacity",r)){
+		if(xml.attributeExists("rect","opacity",r)){
 			color.a = xml.getAttribute("rect", "opacity", 0., r)*255.;
 		}
-
+		color.a *= parentOpacity;
 		if(isLines){
 
 			//we may wish to make this a line loop....
@@ -188,8 +188,11 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId){
 		if(xml.attributeExists("g", "id", i)){
 			parentId = xml.getAttribute("g", "id", "",i);
 		}
+		if(xml.attributeExists("g", "opacity", i)){
+			parentOpacity *= xml.getAttribute("g", "opacity", 1.0, i);;
+		}
 		xml.pushTag("g",i);
-		recurseSVGTag(xml, parentId);
+		recurseSVGTag(xml, parentId, parentOpacity);
 		xml.popTag();
 	}
 }

@@ -28,7 +28,6 @@
 		184CB77E181EBB2700B14025 /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB706181EBB2600B14025 /* ofxCvImage.cpp */; };
 		184CB77F181EBB2700B14025 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB709181EBB2600B14025 /* ofxCvShortImage.cpp */; };
 		184CB84D181EC0E200B14025 /* CloudsVisualSystemVision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB843181EC0E200B14025 /* CloudsVisualSystemVision.cpp */; };
-		184CB84E181EC0E200B14025 /* FlowField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB845181EC0E200B14025 /* FlowField.cpp */; };
 		184CB84F181EC0E200B14025 /* MyTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB847181EC0E200B14025 /* MyTracker.cpp */; };
 		189C7600186D131000508F34 /* ofxAVFVideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 189C75F7186D131000508F34 /* ofxAVFVideoPlayer.mm */; };
 		189C7601186D131000508F34 /* ofxAVFVideoRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 189C75F9186D131000508F34 /* ofxAVFVideoRenderer.m */; };
@@ -296,8 +295,6 @@
 		184CB70B181EBB2600B14025 /* ofxOpenCv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOpenCv.h; sourceTree = "<group>"; };
 		184CB843181EC0E200B14025 /* CloudsVisualSystemVision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVision.cpp; sourceTree = "<group>"; };
 		184CB844181EC0E200B14025 /* CloudsVisualSystemVision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVision.h; sourceTree = "<group>"; };
-		184CB845181EC0E200B14025 /* FlowField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlowField.cpp; sourceTree = "<group>"; };
-		184CB846181EC0E200B14025 /* FlowField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowField.h; sourceTree = "<group>"; };
 		184CB847181EC0E200B14025 /* MyTracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyTracker.cpp; sourceTree = "<group>"; };
 		184CB848181EC0E200B14025 /* MyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTracker.h; sourceTree = "<group>"; };
 		189C75F6186D131000508F34 /* ofxAVFVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoPlayer.h; sourceTree = "<group>"; };
@@ -538,8 +535,8 @@
 		E72446B116573AD000D70E01 /* ofxTween.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTween.cpp; sourceTree = "<group>"; };
 		E72446B216573AD000D70E01 /* ofxTween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTween.h; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
-		E7AF94A01858C4620057411D /* heatMapShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = heatMapShader.frag; path = ../../../../CloudsData/visualsystems/Vision/heatMapShader.frag; sourceTree = "<group>"; };
-		E7AF94A11858C4620057411D /* heatMapShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = heatMapShader.vert; path = ../../../../CloudsData/visualsystems/Vision/heatMapShader.vert; sourceTree = "<group>"; };
+		E7AF94A01858C4620057411D /* heatMapShader.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = heatMapShader.frag; path = ../../../../CloudsData/visualsystems/Vision/heatMapShader.frag; sourceTree = "<group>"; };
+		E7AF94A11858C4620057411D /* heatMapShader.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = heatMapShader.vert; path = ../../../../CloudsData/visualsystems/Vision/heatMapShader.vert; sourceTree = "<group>"; };
 		E7AF94A51858D1C60057411D /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
 		E7AF94A61858D1C60057411D /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
 		E7AF94A71858D1C60057411D /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
@@ -1015,8 +1012,6 @@
 			children = (
 				184CB844181EC0E200B14025 /* CloudsVisualSystemVision.h */,
 				184CB843181EC0E200B14025 /* CloudsVisualSystemVision.cpp */,
-				184CB846181EC0E200B14025 /* FlowField.h */,
-				184CB845181EC0E200B14025 /* FlowField.cpp */,
 				184CB848181EC0E200B14025 /* MyTracker.h */,
 				184CB847181EC0E200B14025 /* MyTracker.cpp */,
 			);
@@ -1070,6 +1065,9 @@
 		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				189C760C186D199C00508F34 /* CoreMedia.framework */,
+				189C760A186D199300508F34 /* QuartzCore.framework */,
+				189C7608186D195200508F34 /* AVFoundation.framework */,
 				E761F4D71622CA3D00029E43 /* Accelerate.framework */,
 				E4C2424410CC5A17004149E2 /* AppKit.framework */,
 				E4C2424510CC5A17004149E2 /* Cocoa.framework */,
@@ -1117,9 +1115,6 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				189C760C186D199C00508F34 /* CoreMedia.framework */,
-				189C760A186D199300508F34 /* QuartzCore.framework */,
-				189C7608186D195200508F34 /* AVFoundation.framework */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E7176E3717D3DAFE00C8DC38 /* CloudsLibrary */,
@@ -1839,7 +1834,6 @@
 				184CB77E181EBB2700B14025 /* ofxCvImage.cpp in Sources */,
 				184CB77F181EBB2700B14025 /* ofxCvShortImage.cpp in Sources */,
 				184CB84D181EC0E200B14025 /* CloudsVisualSystemVision.cpp in Sources */,
-				184CB84E181EC0E200B14025 /* FlowField.cpp in Sources */,
 				184CB84F181EC0E200B14025 /* MyTracker.cpp in Sources */,
 				E7AF94A21858C4620057411D /* heatMapShader.frag in Sources */,
 				E7AF94A31858C4620057411D /* heatMapShader.vert in Sources */,
