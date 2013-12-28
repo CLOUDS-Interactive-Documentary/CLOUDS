@@ -163,6 +163,7 @@ void CloudsVisualSystemSwim::selfSetupGui()
     soundGui->addToggle(soundFiles[0], &playSample[0]);
     soundGui->addToggle(soundFiles[1], &playSample[1]);
     
+    ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemSwim::selfGuiEvent);
 }
 
 void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& params)

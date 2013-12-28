@@ -12,12 +12,7 @@
 #include "MyTracker.h"
 #include "ofxAVFVideoPlayer.h"
 
-typedef enum{
-    OpticalFlow =0,
-    ContourTracking,
-    HeatMap
 
-}CVMode;
 
 class CloudsVisualSystemVision : public CloudsVisualSystem {
 public:
@@ -57,7 +52,6 @@ public:
     void guiSystemEvent(ofxUIEventArgs &e);
     void updateImagesForNewVideo();
     void updateOpticalFlowParameters();
-    void updateHeatMap();
     void updateContourTracking();
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
@@ -70,14 +64,14 @@ protected:
 
     ofPixels opticalFlowPixels;
     int skipFrames;
-    ofPtr<ofxAVFVideoPlayer> player;
+	ofPtr<ofxAVFVideoPlayer> player;
+	ofPixels lastPixels;
+//	ofPtr<ofVideoPlayer> player;
     int playerIndex;
     int movieIndex;
     bool frameIsNew;
     bool bNewVideoLoaded;
     vector<string> movieStrings;
-
-    CVMode currentMode;
     int opticalFlowScale;
     vector<ofVec2f> flowMotion;
 
@@ -100,10 +94,15 @@ protected:
     bool bNumbers;
     bool bColor;
     bool bContours;
-    
+    int flowDensity;
+	int currentFlowDensity;
+	float differenceHueShift;
+	float flowLineAlpha;
+	
     //Contour tracking stuff
     ofxCv::ContourFinder contourFinder;
 	ofxCv::RectTrackerFollower<MyTracker> tracker;
+    vector<ofPolyline> contours;
     void updateCVParameters();
     ofImage thresholded;
     ofxCv::RunningBackground background;
@@ -137,10 +136,11 @@ protected:
     void loadMovieAtIndex(int movieIndex);
     void updateSettingsForNewVideo();
     
-    void setMode(CVMode mode);
+//    void setMode(CVMode mode);
     int accumulationCount;
     cv::Scalar diffMean;
     
+    ofTexture prev;
     //OPTICAL FLOW PARAMETERS
     float pyrScale;
     float levels;
