@@ -34,7 +34,8 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         
         // launch initial setup score
         RTcmixParseScoreFile("cmixinit.sco");
-        first_vec = 1; // we haven't had audio yet
+        first_vec = true; // we haven't had audio yet
+        rtc_playing = false; // engine is idle
         
         // load samples
         loadRTcmixSamples();
@@ -292,7 +293,7 @@ void CloudsSound::mousePressed(ofMouseEventArgs & args){
 // =========================
 // =========================
 void CloudsSound::audioRequested(ofAudioEventArgs& args){
-    
+
     pullTraverse(NULL, s_audio_outbuf); // grab audio from RTcmix
 
     // fill up the audio buffer
@@ -300,28 +301,10 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
     {
         args.buffer[i] = (float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
     }
-    
-    // fire first audio-generating info upon confirming audio is up and running
-	//JG COMMENTED FOR DEMO
-    if (first_vec == 1)
-    {
-        first_vec = 0;
-		/*
-        // play pretty intro melody
-        for(int i = 0;i<12;i++)
-        {
-            WAVETABLE(i*0.1, 0.1, 0.05, mtof(48.+(i*5)+7), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
-            STRUM(i*0.1, 1.0, 0.1, mtof(48.+(i*5)), 1.0, 1.0, ofRandom(1.0));
-            STEREO(i*0.1, 0., 0.2, 0.05, i/11.0, "BD");
-        }
-        // launch initial effects chain (reverb)
-        REVERB(0, 5.0); // gimme some reverb
-         */
-    }
+
     
     // not using right now
     if (check_bang() == 1) {
-        allownote = 1;
         if(LUKEDEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
     }
 
