@@ -24,10 +24,6 @@ float noise2f( in vec2 p ){
 
 
 float heightMap(vec2 co){
-//    vec2 c = co * 0.001 + 0.3;
-//    return pow(clamp(noise2f(vec2(cos(c.x), sin(c.y)) * 100.) + .8, 0., 1. ), 4.);
-//    return 0;
-//    return ((co.x + co.y )*(noise2f(co*0.00001)) + 100.);
     float bumps = 0;
     co *= 0.2;
     int iters = 3;
