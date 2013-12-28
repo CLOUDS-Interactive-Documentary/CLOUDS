@@ -107,6 +107,9 @@ protected:
     ofFbo texFbo, outFbo;
     ofVboMesh mesh;
     
+    ofDirectory seedDir;
+    int selectedSeedIdx;
+    
     float radius;
     bool bRestart;
 };
