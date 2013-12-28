@@ -52,7 +52,6 @@ public:
     void guiSystemEvent(ofxUIEventArgs &e);
     void updateImagesForNewVideo();
     void updateOpticalFlowParameters();
-    void updateHeatMap();
     void updateContourTracking();
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
@@ -65,7 +64,9 @@ protected:
 
     ofPixels opticalFlowPixels;
     int skipFrames;
-    ofPtr<ofxAVFVideoPlayer> player;
+	ofPtr<ofxAVFVideoPlayer> player;
+	ofPixels lastPixels;
+//	ofPtr<ofVideoPlayer> player;
     int playerIndex;
     int movieIndex;
     bool frameIsNew;
@@ -93,7 +94,11 @@ protected:
     bool bNumbers;
     bool bColor;
     bool bContours;
-    
+    int flowDensity;
+	int currentFlowDensity;
+	float differenceHueShift;
+	float flowLineAlpha;
+	
     //Contour tracking stuff
     ofxCv::ContourFinder contourFinder;
 	ofxCv::RectTrackerFollower<MyTracker> tracker;
@@ -135,9 +140,7 @@ protected:
     int accumulationCount;
     cv::Scalar diffMean;
     
-    ofImage img;
     ofTexture prev;
-    ofTexture curr;
     //OPTICAL FLOW PARAMETERS
     float pyrScale;
     float levels;
