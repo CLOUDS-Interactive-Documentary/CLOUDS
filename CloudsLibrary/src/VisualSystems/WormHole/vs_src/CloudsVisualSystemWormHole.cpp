@@ -59,6 +59,7 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	cameraGui->addSpacer();
 	
 	cameraGui->addRadio("paths", cameraPathNames );
+    
 	
 	ofAddListener(cameraGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 	guis.push_back(cameraGui);
@@ -199,6 +200,14 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 				if(name == meshNames[i])
 				{
 					loadMesh( meshNames[i] );
+<<<<<<< HEAD
+=======
+					
+					if(bFacetMesh && !bMeshHasBeenFaceted)
+					{
+						facetMesh(mesh, mesh);
+					}
+>>>>>>> 9890e802e1e19c3e6c10451fd9b5c33e6f4aafda
 				}
 			}
 		}
@@ -213,6 +222,26 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 				}
 			}
 		}
+<<<<<<< HEAD
+=======
+		
+		else if(name == "FacetMesh" )
+		{
+			if(!bMeshHasBeenFaceted)
+			{
+				facetMesh(mesh, mesh);
+				bSmoothMesh = false;
+			}
+		}
+		else if(name == "SmoothMesh" )
+		{
+			if(!bMeshHasBeenSmoothed)
+			{
+				smoothMesh(mesh, mesh);
+				bFacetMesh = false;
+			}
+		}
+>>>>>>> 9890e802e1e19c3e6c10451fd9b5c33e6f4aafda
 	}
 	
 	if(name == "c1")
@@ -254,8 +283,16 @@ void CloudsVisualSystemWormHole::loadMesh(string name)
 		
 		ofxObjLoader::load( modelPath + name, mesh, false );
 		
+<<<<<<< HEAD
 		cout << name + " loaded in " << ofGetElapsedTimeMillis() - startTime << " milliseconds" << endl;
 	}
+=======
+		bMeshHasBeenFaceted = bMeshHasBeenSmoothed = false;
+		
+		if(bFacetMesh)	facetMesh(mesh, mesh);
+		else if(bSmoothMesh)	smoothMesh(mesh, mesh);
+	}	
+>>>>>>> 9890e802e1e19c3e6c10451fd9b5c33e6f4aafda
 }
 
 void CloudsVisualSystemWormHole::loadShaders()
@@ -282,6 +319,12 @@ void CloudsVisualSystemWormHole::loadShader( string shaderName )
 
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemWormHole::selfSetupSystemGui(){
+	
+}
+
+void CloudsVisualSystemWormHole::selfSetupCameraGui(){
+    
+    camGui->addSlider("near clip plane", .001, .05, &nearClipPlane); 
 	
 }
 
@@ -366,7 +409,9 @@ void CloudsVisualSystemWormHole::selfBegin(){
 void CloudsVisualSystemWormHole::selfUpdate()
 {
 	//lights
-	lightPos = getCameraRef().getPosition();
+	lightPos = getCameraRef().getPosition();\
+    
+    getCameraRef().setNearClip(nearClipPlane);
 	
 	//camera
 	if(bUseCameraPath)
@@ -385,9 +430,7 @@ void CloudsVisualSystemWormHole::selfUpdate()
 	lastTime = t;
 	
 	noiseTime += timeDelta * noiseSpeed;
-	
-	
-	getCameraRef().setNearClip(.1);
+    
 }
 
 void CloudsVisualSystemWormHole::selfDraw()
