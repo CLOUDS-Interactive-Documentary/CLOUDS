@@ -63,8 +63,8 @@ class CloudsSound {
     int nchans; // 2 = stereo
     int framesize; // sigvs (512 seems ok)
 
-    int first_vec;
-    float allownote;
+    bool first_vec;
+    bool rtc_playing;
 
     float MASTERTEMPO;
     int AUTORUN;
@@ -79,4 +79,7 @@ class CloudsSound {
 
     vector<lukeSample> looperSamples;
 
+    // the backup soundplayer
+    ofSoundPlayer backupsound;
+    
 };

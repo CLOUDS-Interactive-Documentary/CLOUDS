@@ -40,6 +40,7 @@ struct glitchParams{
     bool randomSort = true;
     bool reorder = false;
     bool shuffle = false;
+    bool startAt  = false;
     vector<string> targetImageNames;
     sortMode mode;
 };
@@ -180,8 +181,8 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void sortHue(bool tweenCells=true);
     void sortBri(bool tweenCells=true);
     void reorder(bool tweenCells=true);
-    void sortTarget();
-    void sortTargetBrightness();
+    void sortTarget(bool tweenCells=true);
+    void sortTargetBrightness(bool tweenCells=true);
     void addTargetToUI(ofxUISuperCanvas* gui,string suffix, glitchParams& params );
     void tweenAll();
     void tween(int i, int j = -1);

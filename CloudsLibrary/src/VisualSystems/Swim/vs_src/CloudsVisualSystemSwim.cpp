@@ -28,6 +28,9 @@ void CloudsVisualSystemSwim::selfSetup()
     post.init(ofGetWidth(), ofGetHeight(), true);
     //post.createPass<FxaaPass>();
     post.createPass<BloomPass>();
+    
+    // sound
+    synth.setOutputGen(buildSynth());
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -38,6 +41,16 @@ void CloudsVisualSystemSwim::selfBegin()
     // adding this here as custom gui data is loaded after setup
 	creatures.generate();
     snow.generate();
+
+    // sound
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemSwim::audioRequested);
+    
+    for (int i=0; i<2; i++)
+    {
+        if (playSample[i]) {
+            soundTriggers[i].trigger();
+        }
+    }
 }
 
 //normal update call
@@ -133,6 +146,7 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addMinimalSlider("yellowSizeStdDeviation", 0.f, 1.f, &creatures.fishTwoParams.sizeStdDeviation);
     
     //rdrGui->addMinimalSlider("fishTexAmt", 0.f, 1.f, &ModelCreature::texAmount);
+    
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -143,6 +157,13 @@ void CloudsVisualSystemSwim::selfSetupGui()
     
     jellyTwoGui = createCustomGui("Jellyus Twous");
     addSliders(jellyTwoGui, creatures.jellyTwoParams);
+    
+    soundGui = createCustomGui("Sound");
+    // sound
+    soundGui->addToggle(soundFiles[0], &playSample[0]);
+    soundGui->addToggle(soundFiles[1], &playSample[1]);
+    
+    ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemSwim::selfGuiEvent);
 }
 
 void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& params)
@@ -217,6 +238,16 @@ void CloudsVisualSystemSwim::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "Custom Button"){
 		cout << "Button pressed!" << endl;
 	}
+    for (int i=0; i<2; i++)
+    {
+        if (e.widget->getName() == soundFiles[i]) {
+            ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
+            playSample[i] = toggle->getValue();
+            if (toggle->getValue() == true) {
+                soundTriggers[i].trigger();
+            }
+        }
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -253,6 +284,8 @@ void CloudsVisualSystemSwim::selfDrawBackground(){
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemSwim::selfEnd(){
 	
+    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemSwim::audioRequested);
+
 	simplePointcloud.clear();
 	
 }
@@ -285,3 +318,30 @@ void CloudsVisualSystemSwim::selfMousePressed(ofMouseEventArgs& data){
 void CloudsVisualSystemSwim::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
+
+Generator CloudsVisualSystemSwim::buildSynth()
+{
+    string strDir = GetCloudsDataPath()+"sound/textures/";
+    ofDirectory sdir(strDir);
+    
+    SampleTable samples[3];
+    
+    int nSounds = sizeof(soundFiles) / sizeof(string);
+    for (int i=0; i<nSounds; i++)
+    {
+        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+        samples[i] = loadAudioFile(strAbsPath);
+    }
+    
+    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
+    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(soundTriggers[1]);
+    
+    return sampleGen1 * 1.0f + sampleGen2 * 1.0f;
+}
+
+void CloudsVisualSystemSwim::audioRequested(ofAudioEventArgs& args)
+{
+    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+}
+
+

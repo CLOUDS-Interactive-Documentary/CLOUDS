@@ -86,16 +86,13 @@ void CloudsSound::loadRTcmixSamples()
     ofDirectory sdir(spath);
     
     // load individual base hits
-    LOADSOUND(sdir.getAbsolutePath() + "/" + "BD.aif", "BD");
+    LOADSOUND(sdir.getAbsolutePath() + "/" + "BD1.aif", "BD1");
+    LOADSOUND(sdir.getAbsolutePath() + "/" + "BD2.aif", "BD2");
+    LOADSOUND(sdir.getAbsolutePath() + "/" + "BD3.aif", "BD3");
+    LOADSOUND(sdir.getAbsolutePath() + "/" + "BD4.aif", "BD4");
     LOADSOUND(sdir.getAbsolutePath() + "/" + "SD.aif", "SD");
     LOADSOUND(sdir.getAbsolutePath() + "/" + "CH.aif", "CH");
     LOADSOUND(sdir.getAbsolutePath() + "/" + "OH.aif", "OH");
-    
-    LOADSOUND(sdir.getAbsolutePath() + "/" + "BD2.aif", "BD2");
-    LOADSOUND(sdir.getAbsolutePath() + "/" + "VD1.aif", "VD1");
-    LOADSOUND(sdir.getAbsolutePath() + "/" + "VD2.aif", "VD2");
-    LOADSOUND(sdir.getAbsolutePath() + "/" + "VD3.aif", "VD3");
-    LOADSOUND(sdir.getAbsolutePath() + "/" + "VD4.aif", "VD4");
     
     //load loops
     spath = spath+"loops/";

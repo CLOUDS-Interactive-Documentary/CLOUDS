@@ -12,6 +12,7 @@
 
 #include "CloudsVisualSystem.h"
 #include "ofxCv.h"
+#include "ofxGameCamera.h"
 
 typedef struct {
     int lineIndex;
@@ -21,6 +22,11 @@ typedef struct {
     ofFloatColor color;
     ofVec3f pos;
 } Blip;
+
+
+//TODO: point shader
+//	-- suze attenuator
+//	-- color attenuate
 
 class CloudsVisualSystemCircuit : public CloudsVisualSystem {
   public:
@@ -98,17 +104,31 @@ class CloudsVisualSystemCircuit : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
+	void selfSetupCameraGui();
+	
+	ofCamera& getCameraRef();
+	ofxGameCamera cam;
+	
 protected:
     
     //  Your Stuff
     //
 	
-	ofxUISuperCanvas* customGui;
+	ofxUISuperCanvas* blipGui;
+	ofRange pointSizeRange;
+	ofRange pointDistanceRange;
 	
+	ofxUISuperCanvas* lineGui;
+	
+	float nearClippingPlane;
+	
+	ofShader blipShader;
 	void reloadShaders();
 	void generateCircuit();
 	
 	float blipSpeed;
+	
+	ofxGameCamera gameCam;
 	
 	ofxCv::ContourFinder contourFinder;
     vector<Blip> blips;

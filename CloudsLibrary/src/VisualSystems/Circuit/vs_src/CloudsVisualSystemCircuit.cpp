@@ -7,23 +7,37 @@
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemCircuit::selfSetupGui(){
 
-	customGui = new ofxUISuperCanvas("CUSTOM", gui);
-	customGui->copyCanvasStyle(gui);
-	customGui->copyCanvasProperties(gui);
-	customGui->setName("Custom");
-	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	blipGui = new ofxUISuperCanvas("BLIPS", gui);
+	blipGui->copyCanvasStyle(gui);
+	blipGui->copyCanvasProperties(gui);
+	blipGui->setName("Blips");
+	blipGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	customGui->addSlider("Blip Speed", 0, 10, &blipSpeed);
+	blipGui->addSlider("Blip Speed", 0, 10, &blipSpeed);
+	blipGui->addRangeSlider("Blip Size", 0., 2.0, &pointSizeRange.min, &pointSizeRange.max);
+	blipGui->addRangeSlider("Blip Distance", 0, 1200.,
+							  &pointDistanceRange.min,
+							  &pointDistanceRange.max);
 	
-	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemCircuit::selfGuiEvent);
-	guis.push_back(customGui);
-	guimap[customGui->getName()] = customGui;
+	ofAddListener(blipGui->newGUIEvent, this, &CloudsVisualSystemCircuit::selfGuiEvent);
+	guis.push_back(blipGui);
+	guimap[blipGui->getName()] = blipGui;
+	
+}
+
+void CloudsVisualSystemCircuit::selfSetupCameraGui(){
+	camGui->addSlider("near clip", 0.01, 0.1, &nearClippingPlane);
 }
 
 void CloudsVisualSystemCircuit::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "Custom Button"){
 		cout << "Button pressed!" << endl;
 	}
+}
+
+ofCamera& CloudsVisualSystemCircuit::getCameraRef(){
+//	return cam;
+	return CloudsVisualSystem::getCameraRef();
 }
 
 void CloudsVisualSystemCircuit::generateCircuit(){
@@ -150,6 +164,10 @@ void CloudsVisualSystemCircuit::generateCircuit(){
 	}
 }
 
+void CloudsVisualSystemCircuit::reloadShaders(){
+	blipShader.load(getVisualSystemDataPath() + "shaders/blips");
+}
+
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemCircuit::selfSetupSystemGui(){
 	
@@ -178,7 +196,13 @@ void CloudsVisualSystemCircuit::selfSetDefaults(){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemCircuit::selfSetup(){
+	cam.autosavePosition = true;
+	cam.loadCameraPosition();
+	cam.speed = .5;
+	cam.setup();
+	
 	generateCircuit();
+	reloadShaders();
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -204,6 +228,8 @@ void CloudsVisualSystemCircuit::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemCircuit::selfUpdate(){
 	
+	getCameraRef().setNearClip( nearClippingPlane );
+	
     for(int i = 0; i < blips.size(); i++){
         ofPolyline& line = contourLines[ blips[i].lineIndex ];
         int numVerts = line.getVertices().size();
@@ -228,12 +254,12 @@ void CloudsVisualSystemCircuit::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemCircuit::selfDraw(){
 	
-	
     ofSetColor(255);
     ofEnableAlphaBlending();
 	lineMesh.draw();
 	
-//	blipMesh.clear();
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	
     glDisable(GL_DEPTH_TEST);
     float blipAlpha = 1.0;
 	
@@ -241,11 +267,28 @@ void CloudsVisualSystemCircuit::selfDraw(){
 	
 //    for(int i = 0; i < blips.size(); i++){
 //        blipMesh.se(blips[i].pos);
-////        blipMesh.addColor(blips[i].color);
+//        blipMesh.addColor(blips[i].color);
 //    }
-    
+	
+	//Enable smooth lines and screen blending
+	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
+	glEnable(GL_POINT_SMOOTH);
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+	glEnable(GL_LINE_SMOOTH);
+	
+	blipShader.begin();
+	
+	blipShader.setUniform1f("pointSizeMin", pointSizeRange.min);
+	blipShader.setUniform1f("pointSizeMax", pointSizeRange.max);
+	blipShader.setUniform1f("pointDistanceMin", pointDistanceRange.min);
+	blipShader.setUniform1f("pointDistanceMax", pointDistanceRange.max);
+	
     blipMesh.drawVertices();
 
+	blipShader.end();
+	
+	glPopAttrib();
 }
 
 // draw any debug stuff here
@@ -272,7 +315,14 @@ void CloudsVisualSystemCircuit::selfExit(){
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemCircuit::selfKeyPressed(ofKeyEventArgs & args){
+
+	if(args.key == 'R'){
+		reloadShaders();
+	}
 	
+	if(args.key == 'C'){
+		cam.reset();
+	}
 }
 
 void CloudsVisualSystemCircuit::selfKeyReleased(ofKeyEventArgs & args){

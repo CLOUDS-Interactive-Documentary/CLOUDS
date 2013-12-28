@@ -794,15 +794,16 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glDisable(GL_LIGHTING);
 	
-	//Enable smooth lines and screen blending
-	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
-	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
-	glEnable(GL_POINT_SMOOTH);
-	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-	glEnable(GL_LINE_SMOOTH);
+
 
 	if(!getRGBDVideoPlayer().playingVO && getRGBDVideoPlayer().getPlayer().isLoaded() && drawRGBD){
 		
+		//Enable smooth lines and screen blending
+		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
+		glEnable(GL_POINT_SMOOTH);
+		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+		glEnable(GL_LINE_SMOOTH);
 		setupRGBDTransforms();
 			
 		if(drawMesh){

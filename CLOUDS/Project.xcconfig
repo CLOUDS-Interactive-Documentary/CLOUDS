@@ -4,23 +4,13 @@ OF_PATH = ../../..
 
 //THIS HAS ALL THE HEADER AND LIBS FOR OF CORE
 #include "../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig"
-OFX_LWS_PATH = "$(OF_PATH)/addons/ofxLibwebsockets"
-
-LIB_SSL = "$(OFX_LWS_PATH)/libs/openssl/lib/osx/libssl.a"
-LIB_CRYPTO = "$(OFX_LWS_PATH)/libs/openssl/lib/osx/libcrypto.a"
-LIB_LIBWEBSOCKETS = "$(OFX_LWS_PATH)/libs/libwebsockets/lib/osx/libwebsockets.a"
-SSL_INC = "$(OFX_LWS_PATH)/libs/openssl/"
-LWS_INC = "$(OFX_LWS_PATH)/libs/libwebsockets/include"
-OFX_LWS_INC = "$(OFX_LWS_PATH)/libs/ofxLibwebsockets/include" "$(OFX_LWS_PATH)/libs/ofxLibwebsockets/src"
-
-OFX_LWS_LIBS = $(LIB_CRYPTO) $(LIB_SSL) $(LIB_LIBWEBSOCKETS)
-OFX_LWS_INCLUDES= $(SSL_INC) $(LWS_INC) $(OFX_LWS_INC)
-OFX_LWS_SEARCH = "$(OFX_LWS_PATH)/libs/libwebsockets/lib/osx" "$(OFX_LWS_PATH)/libs/libwebsockets/lib/osx"
 
 
-OTHER_LDFLAGS = $(OF_CORE_LIBS) $(OFX_LWS_LIBS)
-HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS) $(OFX_LWS_INCLUDES)
-LIBRARY_SEARCH_PATHS = $(inherited) $(OFX_LWS_SEARCH)
+
+
+OTHER_LDFLAGS = $(OF_CORE_LIBS)
+HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS)
+LIBRARY_SEARCH_PATHS = $(inherited)
 
 //OTHER_LDFLAGS = $(OF_CORE_LIBS)
 //HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS)

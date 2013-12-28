@@ -15,6 +15,11 @@
 #include "Bubbles.h"
 #include "MarineSnow.h"
 #include "ofxPostProcessing.h"
+#include "ofxTonic.h"
+#include "CloudsAudioEvents.h"
+#include "CloudsGlobal.h"
+
+using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemSwim : public CloudsVisualSystem {
@@ -133,4 +138,14 @@ protected:
 	ofImage someImage;
 	ofShader pointcloudShader;
 	ofVboMesh simplePointcloud;
+    
+	// Sound
+    ofxUISuperCanvas* soundGui;
+    string soundFiles[2] = {"Underwater_stretch.aif",
+        "underwater.aif"};
+    bool playSample[2] = {false};
+    ControlTrigger soundTriggers[2];
+    ofxTonicSynth synth;
+    Generator buildSynth();
+	void audioRequested(ofAudioEventArgs& args);
 };

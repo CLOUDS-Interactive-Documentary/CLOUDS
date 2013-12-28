@@ -43,6 +43,7 @@ void MyTracker::kill() {
 
 void MyTracker::draw(float lineWidth, bool lifeTime, float lifetimeColorRange,bool drawBoxes, bool drawLine, bool drawNumbers, ofFloatColor boxColor) {
 	ofPushStyle();
+	
 	float size = 16;
 	ofSetColor(255);
 	if(startedDying) {
@@ -60,7 +61,7 @@ void MyTracker::draw(float lineWidth, bool lifeTime, float lifetimeColorRange,bo
     }
     
     if(drawBoxes){
-        ofSetLineWidth((int)lineWidth);
+        ofSetLineWidth(lineWidth);
         ofRect(boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
     }
     
@@ -72,6 +73,7 @@ void MyTracker::draw(float lineWidth, bool lifeTime, float lifetimeColorRange,bo
         ofDrawBitmapString(ofToString(label), cur);
 
     }
+	
     ofPopStyle();    
 }
 

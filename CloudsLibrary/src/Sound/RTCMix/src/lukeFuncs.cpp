@@ -30,6 +30,11 @@ void RTcmixParseScoreFile(string f)
     parse_score((char*)thescore.c_str(), thescore.length());
 }
 
+void INITMIX()
+{
+    RTcmixParseScoreFile("cmixclear.sco");
+}
+
 // use the SPLITTER() instrument to configure effects path
 void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus)
 {
@@ -41,7 +46,7 @@ void SETUPMIX(double outskip, double time, double amp, double dry, double verb, 
     int abr = auxbus*2 + 21;
     string output = "aux " + ofToString(abl) + "-" + ofToString(abr) + " out";
     string input = "aux " + ofToString(abl) + "-" + ofToString(abr) + " in";
-    
+    cout << "patching: " << output << " " << input << endl;
     // do the bus_config() calls
     
     // do the instrument bus_config()
@@ -115,8 +120,9 @@ void SCHEDULEBANG(double time)
 }
 
 // play an audio file from DISK
-void STREAMSOUND(string file, float dur, float amp)
+void STREAMSOUND(string file, float dur, float amp, ofSoundPlayer& bupsound)
 {
+    /*
     char thebuf [256];
     int bx;
     string p = GetCloudsDataPath() + "sound/trax/";
@@ -134,7 +140,15 @@ void STREAMSOUND(string file, float dur, float amp)
         bx = snprintf(thebuf, 256, "STEREO(0., 0., %f, %f*amp_declick, 0, 1)", dur, amp);
     }
     parse_score(thebuf, bx);
+    */
+    string p = GetCloudsDataPath() + "sound/trax/";
+    ofDirectory sdir(p);
     
+    string f = sdir.getAbsolutePath()+"/"+file;
+
+    bupsound.loadSound(f);
+    bupsound.setVolume(amp);
+    bupsound.play();
 }
 
 // loads an audio file into RAM as a buffer handle
@@ -228,6 +242,35 @@ void WAVETABLE(double outskip, double dur, double amp, double freq, double pan, 
     int bx;
     bx = snprintf(thebuf, 256, "WAVETABLE(%f, %f, %f*%s, %f, %f, %s)", outskip, dur, amp*MAXAMP, (char*)ampenvelope.c_str(), freq, pan, (char*)waveform.c_str());
     parse_score(thebuf, bx);
+}
+
+// granular synth
+void GRANSYNTH(double outskip, double dur, double amp, double freq, double freq_jitter, double grate, double grate_var, double gdur_min, double gdur_max, double gamp_min, double gamp_max, double gpan_min, double gpan_max, string waveform, string ampenvelope, string transphandle)
+{
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "GRANSYNTH(%f, %f, %f*amp_declick, %s, %s, %f, %f, %f, %f, %f, %f, %f, %s, %f, %f, %f, %f)", outskip, dur, amp*MAXAMP, (char*)waveform.c_str(), (char*)ampenvelope.c_str(), grate, grate_var, gdur_min, gdur_max, gamp_min, gamp_max, octcps(freq), (char*)transphandle.c_str(), freq_jitter, ofRandom(0, 1000.), gpan_min, gpan_max);
+    parse_score(thebuf, bx);
+    
+}
+
+// granular synth, overloaded
+void GRANSYNTH(double outskip, double dur, double amp, double freq, double freq_jitter, double grate, double grate_var, double gdur_min, double gdur_max, double gamp_min, double gamp_max, double gpan_min, double gpan_max, string waveform, string ampenvelope, string transphandle, string pitchhandle, string ratehandle, string durhandle)
+{
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "GRANSYNTH(%f, %f, %f*amp_declick, %s, %s, %f*%s, %f*%s, %f*%s, %f*%s, %f, %f, %f, %s, %f*%s, %f, %f, %f)", outskip, dur, amp*MAXAMP, (char*)waveform.c_str(), (char*)ampenvelope.c_str(), grate, (char*)ratehandle.c_str(), grate_var, (char*)ratehandle.c_str(), gdur_min, (char*)durhandle.c_str(), gdur_max, (char*)durhandle.c_str(), gamp_min, gamp_max, octcps(freq), (char*)transphandle.c_str(), freq_jitter, (char*)pitchhandle.c_str(), ofRandom(RAND_MAX), gpan_min, gpan_max);
+    parse_score(thebuf, bx);
+}
+
+// waveshaper
+void WAVESHAPE(double outskip, double dur, double amp, double freq, double pan, string waveform, string ampenvelope, string xferfunc, string controlenv)
+{
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "WAVESHAPE(%f, %f, %f, 0., 1., %f*%s, %f, %s, %s, %s)", outskip, dur, freq, amp*MAXAMP, (char*)ampenvelope.c_str(), pan, (char*)waveform.c_str(), (char*)xferfunc.c_str(), (char*)controlenv.c_str());
+    parse_score(thebuf, bx);
+    
 }
 
 // helmholtz resonator

@@ -16,6 +16,7 @@ void CloudsVisualSystemAutomata::selfSetupGui()
     customGui->addSpacer();
     customGui->addToggle("RESTART", &bRestart);
     customGui->addToggle("2D", &bIs2D);
+    customGui->addToggle("USE INPUT", &bDoInput);
     customGui->addSlider("RADIUS", 1.0, 50.0, &radius);
     
     customGui->addSpacer();
@@ -30,6 +31,14 @@ void CloudsVisualSystemAutomata::selfSetupGui()
 
     customGui->addSpacer();
     customGui->addSlider("FADE", 0.0, 0.5, &fade);  // Fucks up if I go up to 1.0, don't know why, don't care anymore...
+    
+    customGui->addSpacer();
+    customGui->addLabel("SEED IMAGE");
+    vector<string> seedNames;
+    for (int i = 0; i < seedDir.size(); i++) {
+        seedNames.push_back(seedDir.getName(i));
+    }
+    customGui->addRadio("SEEDS", seedNames);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemAutomata::selfGuiEvent);
 	guis.push_back(customGui);
@@ -39,7 +48,15 @@ void CloudsVisualSystemAutomata::selfSetupGui()
 //--------------------------------------------------------------
 void CloudsVisualSystemAutomata::selfGuiEvent(ofxUIEventArgs &e)
 {
-
+    // Let's look through the files dropdown for a match.
+    string name = e.widget->getName();
+    for (int i = 0; i < seedDir.numFiles(); i++) {
+        if (name == seedDir.getName(i) && ((ofxUIToggle *)e.widget)->getValue()) {
+            selectedSeedIdx = i;
+            bRestart = true;
+            break;
+        }
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -69,12 +86,21 @@ void CloudsVisualSystemAutomata::selfSetup()
 	
     // Set defaults.
     radius = 5.0f;
+    bDoInput = true;
 
+    seedDir.listDir(getVisualSystemDataPath() + "seedImages");
+    seedDir.sort();
+    selectedSeedIdx = -1;
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemAutomata::restart()
 {
+    ofImage seedImage;
+    if (selectedSeedIdx > -1) {
+        seedImage.loadImage(seedDir.getPath(selectedSeedIdx));
+    }
+    
     float width = getSharedRenderTarget().getWidth();
     float height = getSharedRenderTarget().getHeight();
     
@@ -96,6 +122,9 @@ void CloudsVisualSystemAutomata::restart()
     outFbo.begin();
     {
         ofClear(0, 0);
+        if (seedImage.isAllocated()) {
+            seedImage.draw((width - seedImage.getWidth()) / 2, (height - seedImage.getHeight()) / 2);
+        }
     }
     outFbo.end();
     
@@ -116,8 +145,7 @@ void CloudsVisualSystemAutomata::restart()
 //--------------------------------------------------------------
 void CloudsVisualSystemAutomata::selfPresetLoaded(string presetPath)
 {
-    //bRestart = true;
-	restart();
+    bRestart = true;
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -154,8 +182,10 @@ void CloudsVisualSystemAutomata::selfUpdate()
             ofSetColor(255);
             outFbo.draw(0, 0);
             
-            ofSetColor(255);
-            ofCircle(GetCloudsInputX(), GetCloudsInputY(), radius);
+            if (bDoInput) {
+                ofSetColor(255);
+                ofCircle(GetCloudsInputX(), GetCloudsInputY(), radius);
+            }
         }
         texFbo.end();
 
@@ -232,10 +262,9 @@ void CloudsVisualSystemAutomata::selfExit(){
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemAutomata::selfKeyPressed(ofKeyEventArgs & args){
-	if(args.key == 'R'){
-		bRestart = true;
-	}
+
 }
+
 void CloudsVisualSystemAutomata::selfKeyReleased(ofKeyEventArgs & args){
 	
 }

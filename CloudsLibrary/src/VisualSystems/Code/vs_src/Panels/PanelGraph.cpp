@@ -3,18 +3,10 @@
 #include "CloudsGlobal.h"
 #include "ofxRegex.h"
 #include "ofxTween.h"
-
-
-//static ofColor matchColors[MATCH_TYPES] = {
-//	ofColor(0, 255, 0),
-//	ofColor(255, 0, 0),
-//	ofColor(0, 0, 255),
-//	ofColor(135, 96, 82),
-//	ofColor(222, 69, 219)
-//};
+#include "ofRange.h"
 
 PanelGraph::PanelGraph(){
-	
+	pixelStep = 10.;
 }
 
 void PanelGraph::selfSetup(){
@@ -24,12 +16,17 @@ void PanelGraph::selfSetup(){
 void PanelGraph::selfDraw(){
 	
 	map<unsigned char, ofPolyline> charPolies;
-	for(int i = drawRect.x; i < drawRect.getMaxX(); i++){
-		int curline = (i + int(offset*30)) % lines.size();
+	for(int i = drawRect.x; i < drawRect.getMaxX(); i+=pixelStep){
+		int curline = (i + int(offset)) % lines.size();
 		map<unsigned char,int>::iterator it;
+		ofRange logs;
 		for(it = syntaxLines[curline].charCounts.begin(); it != syntaxLines[curline].charCounts.end(); it++){
-			charPolies[it->first].addVertex(ofPoint(i,ofMap(it->second, 0, maxCharsOnLine, drawRect.getMaxY(), drawRect.getMinY())));
+			float logGraphPoint = log(ofMap(it->second, 0, maxCharsOnLine, 0, 1.));
+			logs.min = MIN(logs.min,logGraphPoint);
+			logs.max = MAX(logs.max,logGraphPoint);
+			charPolies[it->first].addVertex( ofPoint(i,ofMap(logGraphPoint,0,drawRect.height,drawRect.getMaxY(), drawRect.getMinY())) );
 		}
+		cout << "min & max " << logs << endl;
 	}
 	
 	int col=0;
