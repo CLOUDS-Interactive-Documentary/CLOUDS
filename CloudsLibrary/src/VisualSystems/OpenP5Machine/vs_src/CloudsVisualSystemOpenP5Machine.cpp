@@ -239,7 +239,7 @@ Generator CloudsVisualSystemOpenP5Machine::buildSynth()
     
     Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1);
     
-    return sampleGen;
+    return sampleGen * .07;
 }
 
 void CloudsVisualSystemOpenP5Machine::audioRequested(ofAudioEventArgs& args)
