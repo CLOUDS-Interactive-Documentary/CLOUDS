@@ -69,7 +69,7 @@ protected:
 
     //video player stuff        
 //    ofPtr<ofVideoPlayer> player;
-    ofPixels resizeToPixels;
+    ofPixels opticalFlowPixels;
     int skipFrames;
 //    ofVideoPlayer* player;
     ofPtr<ofxAVFVideoPlayer> player;
@@ -80,7 +80,7 @@ protected:
     vector<string> movieStrings;
 
     CVMode currentMode;
-    int scale;
+    int opticalFlowScale;
 //    vector<ofRectangle> flowRegions;
 //    void populateOpticalFlowRegions();
     vector<ofVec2f> flowMotion;

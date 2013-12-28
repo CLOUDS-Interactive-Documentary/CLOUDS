@@ -14,9 +14,9 @@ CloudsInput::CloudsInput(){
 	enabled = false;
 	events = new CloudsInputEvents();
 	currentPosition = ofVec3f();
+	lastPosition = ofVec3f();
 	dragging = false;
 }
-
 
 CloudsInputEvents& CloudsInput::getEvents(){
 	return *events;
@@ -27,10 +27,9 @@ map<int, CloudsInteractionEventArgs>& CloudsInput::getInputPoints(){
 }
 
 void CloudsInput::interactionMoved(ofVec3f pos, bool primary, int actionType, int playerId){
-//	if(dragging)
-//		ofLogError("CloudsInput::interactionMoved") << "Dragging logic inconsistent. called Moved when Dragging";
 	
     if (primary) {
+		lastPosition = currentPosition;
         currentPosition = pos;
     }
 	CloudsInteractionEventArgs args(pos, primary, actionType, playerId);
@@ -39,8 +38,6 @@ void CloudsInput::interactionMoved(ofVec3f pos, bool primary, int actionType, in
 }
 
 void CloudsInput::interactionStarted(ofVec3f pos, bool primary, int actionType, int playerId){
-//	if(dragging)
-//		ofLogError("CloudsInput::interactionStarted") << "Dragging logic inconsistent. calld Start when Dragging";
 	
     if (primary) {
         currentPosition = pos;
@@ -91,6 +88,9 @@ float CloudsInput::getPositionZ(){
 ofVec3f CloudsInput::getPosition(){
 	return currentPosition;
 }
+ofVec3f CloudsInput::getPreviousPosition(){
+	return currentPosition;
+}
 
 ///////////// //STATICS
 static ofPtr<CloudsInput> cloudsInput;
@@ -130,4 +130,17 @@ ofVec3f GetCloudsInputPosition(){
 }
 map<int, CloudsInteractionEventArgs>& GetCloudsInputPoints(){
     return GetCloudsInput()->getInputPoints();
+}
+
+ofVec3f GetCloudsPreviousInputPosition(){
+	return GetCloudsInput()->getPreviousPosition();
+}
+float GetCloudsPreviousInputX(){
+	return GetCloudsPreviousInputPosition().x;
+}
+float GetCloudsPreviousInputY(){
+	return GetCloudsPreviousInputPosition().y;
+}
+float GetCloudsPreviousInputZ(){
+	return GetCloudsPreviousInputPosition().z;
 }
