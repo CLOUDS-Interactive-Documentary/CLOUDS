@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxUI.h"
 #include "CloudsVisualSystemSwim.h"
+#include "CloudsMixer.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -21,5 +22,8 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 		
+    void audioRequested(float *output, int bufferSize, int nChannels);
+    
     CloudsVisualSystemSwim swim;
+    CloudsMixer mixer;
 };
