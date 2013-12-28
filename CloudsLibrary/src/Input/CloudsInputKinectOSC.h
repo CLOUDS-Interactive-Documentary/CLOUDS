@@ -183,4 +183,3 @@ public:
 };
 
 void SetCloudsInputKinect(float activeThresholdY = 0.8f, float activeThresholdZ = 0.4f);
- 3
