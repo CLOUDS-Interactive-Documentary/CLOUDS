@@ -2,10 +2,12 @@
 //here are some example uniforms
 //sampler 2d rect is a texture
 //
-uniform sampler2DRect thresholdedImage;
-uniform float inRangeMax;
-uniform float outRangeMin;
-uniform float outRangeMax;
+//uniform sampler2DRect thresholdedImage;
+uniform sampler2DRect previousFrame;
+uniform sampler2DRect currentFrame;
+//uniform float inRangeMax;
+//uniform float outRangeMin;
+//uniform float outRangeMax;
 
 float rgbToGray(vec4 rgbVal){
  float f =  0.21*rgbVal.r + 0.71*rgbVal.g + 0.07*rgbVal.b;
@@ -47,24 +49,29 @@ void main (void)
     //st is the same as xy or rg
     //so instead of doing myVec.x and myVec.y
     //you cam do myVec.xy
-    vec4 colorSample = texture2DRect(thresholdedImage, gl_TexCoord[0].st);
-
+//    vec4 colorSample = texture2DRect(thresholdedImage, gl_TexCoord[0].st);
+    vec4 colorSample = texture2DRect(currentFrame, gl_TexCoord[0].st) - texture2DRect(previousFrame, gl_TexCoord[0].st);
     vec3 hsv;
     float f;
-	f = (colorSample.x +colorSample.y + colorSample.z)/3.0;
-    if (f > 0.2) {
-        float hue =map(f, 0.,inRangeMax,outRangeMin,outRangeMax);
+//	f = (colorSample.x +colorSample.y + colorSample.z)/3.0;
+    hsv = rgb2hsv(colorSample.xyz);
+
+    if (hsv.z > 0.1) {
+
         vec3 newHSV;
-        newHSV = vec3(0.2,1.0,1.);
-        
+        newHSV.x = hsv.z;//map(hsv.z, 0.1, float  inputMax, float  outputMin,float  outputMax )
+        newHSV.y = 0.8; //vec3(0.4,1.0,1.);
+        newHSV.z = 0.8;
         
         vec3 newRGB;
         newRGB  = hsv2rgb(newHSV);
-        gl_FragColor = vec4(newRGB,0.5);//sample * tint * brightness;
+        gl_FragColor = vec4(newRGB,0.8);//sample * tint * brightness;
+    }
+    else{
+        gl_FragColor = colorSample;    
     }
 
-
-    gl_FragColor = colorSample;
+    
     //same a
     //vec4 sample = texture2DRect(image, gl_TexCoord[0].xy);
 	//use the color tint as well as whatever ofSetColor() is set to

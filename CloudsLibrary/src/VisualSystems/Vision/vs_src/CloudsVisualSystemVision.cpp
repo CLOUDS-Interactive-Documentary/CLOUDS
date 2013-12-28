@@ -456,7 +456,8 @@ void CloudsVisualSystemVision::selfUpdate(){
 	if(bNewVideoLoaded && player->getPixelsRef().isAllocated() ){
 		player->setLoopState(OF_LOOP_NORMAL);
 		updateSettingsForNewVideo();
-		
+//        prev = player->getTextureReference();
+        img.allocate(player->getWidth(), player->getHeight(), OF_IMAGE_COLOR_ALPHA);
 		bNewVideoLoaded = false;
 		opticalFlowPixels.allocate(player->getWidth()/opticalFlowScale,
 								player->getHeight()/opticalFlowScale,
@@ -464,9 +465,9 @@ void CloudsVisualSystemVision::selfUpdate(){
 		cout<<"UPDATED VIDEO SETTINGS"<<endl;
 	}
 	else{
-		
+			    
 		if(frameIsNew && ! bNewVideoLoaded){
-			
+            curr = player->getTextureReference();
 			if(drawThresholded){
 				background.update(player->getPixelsRef(), thresholded);
 				thresholded.update();
@@ -482,7 +483,7 @@ void CloudsVisualSystemVision::selfUpdate(){
 			}
 			
 			if (bDrawHeatMap) {
-				updateHeatMap();
+//				updateHeatMap();
 			}
 		}
 	}
@@ -591,15 +592,14 @@ void CloudsVisualSystemVision::selfDrawBackground()
     
     if(bDrawHeatMap){
         
-     
-		shader.begin();
-        shader.setUniformTexture("thresholdedImage", thresholded, 0);
-        shader.setUniform1f("inRangeMax", 50);
-        shader.setUniform1f("outRangeMin", ofFloatColor::blue.getHue());
-        shader.setUniform1f("outRangeMax", ofFloatColor::red.getHue());
-        diff.draw(0,0,ofGetWidth(), ofGetHeight());
-        shader.end();
-  
+            shader.begin();
+            shader.setUniformTexture("thresholdedImage", thresholded, 0);
+            shader.setUniformTexture("previousFrame", prev, 1);
+            shader.setUniformTexture("currentFrame", curr, 2);
+            img.draw(0,0);
+            shader.end();
+
+
         /*
         ofPushStyle();
         ofSetColor(128,diffAlpha);
@@ -628,6 +628,10 @@ void CloudsVisualSystemVision::selfDrawBackground()
 	
 	ofPopMatrix();
     ofPopStyle();
+    if(frameIsNew){
+          prev = player->getTextureReference();
+    }
+    
 }
 
 void CloudsVisualSystemVision::selfDraw()
@@ -780,7 +784,7 @@ void CloudsVisualSystemVision::loadMovieAtIndex(int index){
     else{
         cout<<"Not Playing"<<endl;
     }
-    
+
     bNewVideoLoaded = true; 
     cout<<"Player dimensions (new) :"<< player->getWidth()<<" , "<<player->getHeight() <<endl;
 

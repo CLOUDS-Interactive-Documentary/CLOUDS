@@ -135,6 +135,9 @@ protected:
     int accumulationCount;
     cv::Scalar diffMean;
     
+    ofImage img;
+    ofTexture prev;
+    ofTexture curr;
     //OPTICAL FLOW PARAMETERS
     float pyrScale;
     float levels;
