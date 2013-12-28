@@ -110,6 +110,7 @@ protected:
     int prevInputX, prevInputY;
     ofxTonicSynth synth;
     ControlParameter lpfCutoff;
+    ControlTrigger soundTrigger;
     Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
 };
