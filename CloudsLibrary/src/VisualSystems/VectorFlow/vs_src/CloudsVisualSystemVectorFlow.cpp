@@ -11,6 +11,9 @@ CloudsVisualSystemVectorFlow::CloudsVisualSystemVectorFlow(){
 	sincPosition = ofVec2f(.5,.5);
 	sincRadius = 0;
     sincStrength = 1;
+    curMSpeed = 0;
+    prevInputX = GetCloudsInputX();
+    prevInputY = GetCloudsInputY();
 }
 
 //--------------------------------------------------------------
@@ -140,10 +143,13 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
 	}
     
     // UPDATE Sound parameters
-    float distX = abs(ofGetMouseX() - ofGetPreviousMouseX());
-    float distY = abs(ofGetMouseY() - ofGetPreviousMouseY());
+    float distX = abs(GetCloudsInputX() - prevInputX);
+    float distY = abs(GetCloudsInputY() - prevInputY);
     float mSpeed = sqrt(distX*distX + distY*distY);
-    lpfCutoff.value(ofMap(mSpeed, 0, 30, 200, 2000, true));
+    curMSpeed += (mSpeed - curMSpeed)*.01;
+    lpfCutoff.value(ofMap(curMSpeed, 0, 30, 200, 2000, true));
+    prevInputX = GetCloudsInputX();
+    prevInputY = GetCloudsInputY();
 }
 
 void CloudsVisualSystemVectorFlow::addParticle(){
@@ -430,7 +436,7 @@ Generator CloudsVisualSystemVectorFlow::buildSynth()
     string strDir = GetCloudsDataPath()+"sound/textures/";
     
     ofDirectory sdir(strDir);
-    string strAbsPath = sdir.getAbsolutePath() + "/Wind 2.caf";
+    string strAbsPath = sdir.getAbsolutePath() + "/Wind 2.aif";
     
     SampleTable sample = loadAudioFile(strAbsPath);
     
@@ -439,7 +445,7 @@ Generator CloudsVisualSystemVectorFlow::buildSynth()
     Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1) * 0.6;
 //    Generator noiseGen = LFNoise().setFreq(mouseX) * SineWave().freq(1);
     
-    LPF24 filter = LPF24().cutoff(lpfCutoff.smoothed());
+    LPF12 filter = LPF12().cutoff(lpfCutoff.smoothed());
     
     return (sampleGen >> filter);// >> revb);
 }
