@@ -45,24 +45,48 @@ void CloudsSecondaryDisplayController::setup(){
 
 	receiver.setup(12346);
 	
-	exampleType.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", 40);
-    exampleType.setLineLength(544);
+    
     
 	loadSVGs();
+    
+    //load all fonts
+	exampleType.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", 40);
+    exampleType.setLineLength(544);
+    ////last name
+    h1.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.height);
+    h1.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.width);
+    ////first name
+    h2.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.height);
+    h2.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.width);
+    ////question
+    h3.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION")->bounds.height);
+    h3.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION")->bounds.width);
+    ////location / creator name
+    h4.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("BOX_x5F_LOC")->bounds.height);
+    h4.setLineLength(bioLayout.getMeshByID("BOX_x5F_LOC")->bounds.width);
+    ////byline / description
+    p.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_BIO")->bounds.height);
+    p.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_BIO")->bounds.width);
  
 	displayTarget.allocate(1920, 1080, GL_RGB);
 }
 
 /*LOADING SVG LAYOUT files from Sarah*/
 void CloudsSecondaryDisplayController::loadSVGs(){
-	ofDirectory svgs(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/");
+	/*ofDirectory svgs(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/");
 	svgs.allowExt("svg");
 	svgs.listDir();
     //loading all the SVG files in the BIO dir, but why?
 	for(int i = 0; i < svgs.numFiles(); i++){
 		testAllLayout.push_back(CloudsSVGMesh());
 		testAllLayout.back().load(svgs.getPath(i));
-	}
+	}*/
+    
+    //load the three different layouts
+    bioLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/BIO.svg");
+    projectLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/PROJECTEX/PROJECTEX.svg");
+    systemLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/VISUALSYSTEM/VISUALSYS.svg");
+
 }
 
 void CloudsSecondaryDisplayController::update(){
@@ -91,11 +115,11 @@ void CloudsSecondaryDisplayController::update(){
 			
 			string exampleId = m.getArgAsString(4);
 			if(exampleId != ""){
-                displayMode = "EXAMPLE";
+                displayMode = "PROJECT";
 				//need to do something smarter here
 				currentExample = parser.getProjectExampleWithTitle(exampleId);
 				if(currentExample.exampleVideos.size() > 0){
-					playingMovie = archivePlayer.loadMovie( currentExample.exampleVideos[0]);
+					playingMovie = archivePlayer.loadMovie(currentExample.exampleVideos[0]);
 					if(playingMovie){
 						archivePlayer.setLoopState(OF_LOOP_NONE);
 						archivePlayer.play();
@@ -106,6 +130,9 @@ void CloudsSecondaryDisplayController::update(){
                 displayMode = "BIO";
 				playingMovie = false;
 				archivePlayer.stop();
+                
+                //setup all bio data
+                lastQuestion = m.getArgAsString(5);
 			}
 		}
 	}
@@ -138,34 +165,69 @@ void CloudsSecondaryDisplayController::draw(){
 	
 	clusterMap.selfPostDraw();
 
-	//DEBUG
-    string speakerString;
-	if(hasSpeaker){
-        speakerString = currentSpeaker.firstName + " " + currentSpeaker.lastName;
-		
-	}
-	else{
-        speakerString = "NO SPEAKER";
-	}
     
-    //END DEBUG
-    
-    //DRAW SPEAKER FIRST NAME
-    SVGMesh* t = testAllLayout[layoutID].getMeshByID("TEXTBOX_x5F_FIRSTNAME");
-    if(t){
-        exampleType.drawString(speakerString, t->bounds.x, t->bounds.y + t->bounds.height);
+    if(displayMode == "BIO"){
+        
+        //DRAW BIO LAYOUT
+        bioLayout.draw();
+        
+        ////question
+        SVGMesh* t = bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION");
+        if(t){
+            h3.drawString(lastQuestion, t->bounds.x, t->bounds.y + t->bounds.height);
+        }
+        
+        string firstName, lastName;
+        if(hasSpeaker){
+            firstName = currentSpeaker.firstName;
+            lastName = currentSpeaker.lastName;
+        }
+        else{
+            firstName = "NO";
+            lastName = "SPEAKER";
+        }
+        
+        //DRAW SPEAKER NAME
+        ////first name
+        t = bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME");
+        if(t){
+            h2.drawString(firstName, t->bounds.x, t->bounds.y + t->bounds.height);
+        }
+        ////last name
+        t = bioLayout.getMeshByID("BOX_x5F_NAME");
+        if(t){
+            h1.drawString(lastName, t->bounds.x, t->bounds.y + t->bounds.height);
+        }
+        
+        
+        ////location
+        t = bioLayout.getMeshByID("BOX_x5F_LOC");
+        if(t){
+            h4.drawString(currentSpeaker.location1, t->bounds.x, t->bounds.y + t->bounds.height);
+        }
+        
+        ////title
+        t = bioLayout.getMeshByID("BOX_x5F_TITLE");
+        if(t){
+            h4.drawString(currentSpeaker.title, t->bounds.x, t->bounds.y + t->bounds.height);
+        }
+        
+        ////byline
+        t = bioLayout.getMeshByID("TEXTBOX_x5F_BIO");
+        if(t)
+            p.drawString(currentSpeaker.byline1, t->bounds.x, t->bounds.y + t->bounds.height);
+        
+    }else if(displayMode == "PROJECT"){
+        //DISPLAY PROJECT LAYOUT
+        projectLayout.draw();
+        if(playingMovie){
+            archivePlayer.draw(ofGetWidth()/2  - archivePlayer.getWidth()/2,
+                               ofGetHeight()/2 - archivePlayer.getHeight()/2);
+            playingMovie = archivePlayer.isPlaying();
+        }
+    }else if(displayMode == "SYSTEM"){
+        systemLayout.draw();
     }
-	
-	if(playingMovie){
-		archivePlayer.draw(ofGetWidth()/2  - archivePlayer.getWidth()/2,
-						   ofGetHeight()/2 - archivePlayer.getHeight()/2);
-		playingMovie = archivePlayer.isPlaying();
-	}
-    
-    //loop through and draw all the CloudsSVGMesh objects
-	//for(int i = 0; i < testAllLayout.size(); i++){
-		testAllLayout[layoutID].draw();
-	//}
 	
 	displayTarget.end();
 	

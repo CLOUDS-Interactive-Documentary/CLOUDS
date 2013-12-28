@@ -48,6 +48,8 @@ class CloudsSecondaryDisplayController {
 	void loadSVGs();
 	//TODO: make separate layer sets for Project Example vs Person
 	vector<CloudsSVGMesh> testAllLayout;
+    
+    CloudsSVGMesh bioLayout, projectLayout, systemLayout;
 	
 	bool playingMovie;
 	bool hasSpeaker;
@@ -55,7 +57,7 @@ class CloudsSecondaryDisplayController {
 	CloudsClip currentClip;
 	CloudsProjectExample currentExample;
 
-	ofxFTGLSimpleLayout exampleType;
+	ofxFTGLSimpleLayout exampleType, h1, h2, h3, h4, h5, p;
 
 	ofVideoPlayer archivePlayer;
 
@@ -65,5 +67,5 @@ class CloudsSecondaryDisplayController {
     
     int layoutID;
     
-    string displayMode;
+    string displayMode, lastQuestion;
 };
