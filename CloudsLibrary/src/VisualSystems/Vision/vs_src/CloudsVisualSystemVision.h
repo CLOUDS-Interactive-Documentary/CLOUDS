@@ -109,6 +109,7 @@ protected:
     //Contour tracking stuff
     ofxCv::ContourFinder contourFinder;
 	ofxCv::RectTrackerFollower<MyTracker> tracker;
+    vector<ofPolyline> contours;
     void updateCVParameters();
     ofImage thresholded;
     ofxCv::RunningBackground background;

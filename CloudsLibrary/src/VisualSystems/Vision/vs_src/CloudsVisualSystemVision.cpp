@@ -357,6 +357,7 @@ void CloudsVisualSystemVision::updateContourTracking(){
 	blur(thresholded, 5);
 	contourFinder.findContours(thresholded);
     tracker.track(contourFinder.getBoundingRects());
+    contours = contourFinder.getPolylines();
 }
 
 void CloudsVisualSystemVision::updateCVParameters(){
@@ -537,15 +538,21 @@ void CloudsVisualSystemVision::selfDrawBackground()
 //        ofTranslate(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
 //        ofScale(videoRect.width/player->getWidth(),videoRect.height/player->getHeight());
 
-        if(bContours){
-            contourFinder.draw();
-        }
+//        if(bContours){
+//            contourFinder.draw();
+//        }
         vector<MyTracker>& followers = tracker.getFollowers();
         for(int i = 0; i < followers.size(); i++) {
             float b = followers[i].getLifeTime();
             followers[i].draw(lineWidth, bLifeTime, contourLifetimeColorRange, bDrawBoxes, bDrawLines, bNumbers, boxColor);
         }
-//        ofPopMatrix();
+        
+        if (bContours) {
+            for (int j=0; j<contours.size(); j++) {
+                contours[j].draw();
+            }
+        }
+
     }
     
     if(bOpticalFlow){
