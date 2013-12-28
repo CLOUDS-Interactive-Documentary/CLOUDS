@@ -897,8 +897,8 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // UTILITY
     if (mo=="simplesound")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "STEREO", instnum);
-        STREAMSOUND(arg_b, musicdur, 1.*m_amp);
+        //SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "STEREO", instnum);
+        STREAMSOUND(arg_b, musicdur, 1.*m_amp, backupsound);
     }
 
     //
@@ -920,4 +920,7 @@ void CloudsSound::stopMusic()
     parse_score(thebuf, bx);
  */
     rtc_playing = false;
+    
+    backupsound.stop();
+    backupsound.unloadSound();
 }

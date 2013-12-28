@@ -115,8 +115,9 @@ void SCHEDULEBANG(double time)
 }
 
 // play an audio file from DISK
-void STREAMSOUND(string file, float dur, float amp)
+void STREAMSOUND(string file, float dur, float amp, ofSoundPlayer& bupsound)
 {
+    /*
     char thebuf [256];
     int bx;
     string p = GetCloudsDataPath() + "sound/trax/";
@@ -134,7 +135,15 @@ void STREAMSOUND(string file, float dur, float amp)
         bx = snprintf(thebuf, 256, "STEREO(0., 0., %f, %f*amp_declick, 0, 1)", dur, amp);
     }
     parse_score(thebuf, bx);
+    */
+    string p = GetCloudsDataPath() + "sound/trax/";
+    ofDirectory sdir(p);
     
+    string f = sdir.getAbsolutePath()+"/"+file;
+
+    bupsound.loadSound(f);
+    bupsound.setVolume(amp);
+    bupsound.play();
 }
 
 // loads an audio file into RAM as a buffer handle
