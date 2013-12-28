@@ -70,8 +70,8 @@ void CloudsVisualSystemVision::selfSetDefaults(){
     accumulationCount =0;
     skipFrames = 0;
     contourLifetimeColorRange = 110;
-    windowWidth = 500;
-    windowHeight = 500;
+    windowWidth = 100;
+    windowHeight = 100;
 }
 
 void CloudsVisualSystemVision::selfSetup()
@@ -141,8 +141,8 @@ void CloudsVisualSystemVision::selfSetupGui()
     
     opticalFlowGui->addSpacer();
     opticalFlowGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    opticalFlowGui->addSlider("WINDOW WIDTH", 10, 1000, &windowWidth);
-    opticalFlowGui->addSlider("WINDOW HEIGHT", 10, 1000, &windowHeight);
+    opticalFlowGui->addSlider("WINDOW WIDTH", .0, 1., &windowWidth);
+    opticalFlowGui->addSlider("WINDOW HEIGHT", 0., 1., &windowHeight);
     opticalFlowGui->addSlider("FLOW LINE LENGTH", 0.5, 8, &flowLineMultiplier);
     opticalFlowGui->addSlider("FLOW COLOUR MAP RANGE", 10, 1000, &flowColorMapRange);
     opticalFlowGui->addSlider("FLOW LINE WIDTH", 1, 10, &flowLineWidth);
@@ -271,17 +271,17 @@ void CloudsVisualSystemVision::updateOpticalFlow(){
 	int flowWidth  = opticalFlowPixels.getWidth();
 	int flowHeight = opticalFlowPixels.getHeight();
 	
-	float screenToFlowScale = flowWidth / videoRect.width;
-	ofVec2f screenToFlowTranslate = videoRect.getTopLeft();
-	
-	
 	ofRectangle flowWindowVideoSpace;
 	if(bDrawFlowWindow){
-		flowWindowVideoSpace.setFromCenter((mouseX - videoRect.x) * screenToFlowScale,
-										   (mouseY - videoRect.y) * screenToFlowScale,
-										   windowWidth*screenToFlowScale, windowHeight*screenToFlowScale);
-		
-		flowWindow.setFromCenter(mouseX, mouseY, windowWidth, windowHeight);
+//		flowWindowVideoSpace.setFromCenter((mouseX - videoRect.x),
+//										   (mouseY - videoRect.y),
+//										   windowWidth, windowHeight);
+//		
+		//		flowWindowVideoSpace.scale(screenToFlowScale);
+		float screenToFlowScale = flowWidth / videoRect.width;
+		float mouseXVideo = (mouseX - videoRect.x) * screenToFlowScale;
+		float mouseYVideo = (mouseY - videoRect.y) * screenToFlowScale;
+		flowWindow.setFromCenter(mouseXVideo, mouseYVideo, flowWidth*windowWidth, flowHeight*windowHeight);
 	}
 	else{
 		flowWindow = videoRect;
@@ -733,8 +733,6 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     ofxUIRadio* r = (ofxUIRadio*)e.widget;
     ofxUIButton* b  = (ofxUIButton*) e.widget;
     ofxUIToggle* t  = (ofxUIToggle*) e.widget;
-    
-    
     
     if(name == "UPDATE CV PARAMS" &&  b->getValue() ){
         b->setValue(false);
