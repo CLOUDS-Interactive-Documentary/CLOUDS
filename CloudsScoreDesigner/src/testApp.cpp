@@ -129,7 +129,7 @@ void testApp::update(){
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
 		if(m.getAddress() == "/setupMusic"){
-            sound.stopMusic();
+            //sound.stopMusic();
 			oharmony = m.getArgAsInt32(0);
 			orhythm = m.getArgAsInt32(1);
 			otempo = m.getArgAsInt32(2);
@@ -148,7 +148,6 @@ void testApp::update(){
             orev.push_back(m.getArgAsFloat(4));
 		}
 		if(m.getAddress() == "/startMusic"){
-			//sound.startMusic();
 			cout << "STARTING MUSIC" << endl;
             sound.startMusicFX(0, odur+5);
             for(int i = 0;i<oorch.size();i++)

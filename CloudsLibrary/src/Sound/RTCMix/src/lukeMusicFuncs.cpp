@@ -10,6 +10,11 @@
 #include "lukeFuncs.h"
 #include "CloudsGlobal.h"
 
+#define MIDC_OFFSET (261.62556530059868 / 256.0)
+#ifndef M_LN2		// log_e 2
+    #define M_LN2	0.69314718055994529
+#endif
+
 // ====================
 // MISC MUSIC FUNCTIONS
 // ====================
@@ -82,6 +87,12 @@ int scale(int p, int o)
     int oct = p/12;
     int pc = p%12;
     return(oct*12 + s[pc]);
+}
+
+// cps to linear octaves
+double octcps(double cps)
+{
+	return log(cps / MIDC_OFFSET) / M_LN2;
 }
 
 //
