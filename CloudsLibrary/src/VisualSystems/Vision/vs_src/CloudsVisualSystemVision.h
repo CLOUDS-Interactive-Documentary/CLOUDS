@@ -28,7 +28,7 @@ public:
     void selfSetupGuis();
     
 	void selfPresetLoaded(string presetPath);
-	
+	void selfSetDefaults();
     void selfAutoMode();
     void selfUpdate();
     void selfDrawBackground();
@@ -38,7 +38,10 @@ public:
     void selfExit();
     void selfBegin();
 	void selfEnd();
-    ofRectangle window;
+    
+	ofRectangle flowWindow;
+	ofRectangle videoRect;
+	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
@@ -58,7 +61,6 @@ public:
     void updateContourTracking();
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
-//    void getTextures(); JG didn't see where this was used
 
     ofxUISuperCanvas *opticalFlowGui;
     ofxUISuperCanvas *contourTrackingGui;
@@ -67,7 +69,7 @@ protected:
 
     //video player stuff        
 //    ofPtr<ofVideoPlayer> player;
-    ofPixels resizeToPixels;
+    ofPixels opticalFlowPixels;
     int skipFrames;
 //    ofVideoPlayer* player;
     ofPtr<ofxAVFVideoPlayer> player;
@@ -78,9 +80,9 @@ protected:
     vector<string> movieStrings;
 
     CVMode currentMode;
-    int scale;
-    vector<ofRectangle> flowRegions;
-    void populateOpticalFlowRegions();
+    int opticalFlowScale;
+//    vector<ofRectangle> flowRegions;
+//    void populateOpticalFlowRegions();
     vector<ofVec2f> flowMotion;
 
     float colorRange;
@@ -110,20 +112,21 @@ protected:
     ofImage thresholded;
     ofxCv::RunningBackground background;
     cv::Rect accumRegion;
-    //vector<ParkedCar> parked;
 
     //Optical flow types
     ofxCv::FlowFarneback farneback;
 	ofxCv::FlowPyrLK pyrLk;
 	ofxCv::Flow* curFlow;
     void updateOpticalFlow();
-    void clearAccumulation();
+//    void clearAccumulation();
     void drawFlowHeatMap(int x, int y);
 
+    ofDirectory videosDir;
     ofVboMesh flowMesh;
     float windowWidth;
     float windowHeight;
-    
+	float flowDamp;
+	
     bool drawPlayer;
     bool drawThresholded;
     bool drawDiff;
