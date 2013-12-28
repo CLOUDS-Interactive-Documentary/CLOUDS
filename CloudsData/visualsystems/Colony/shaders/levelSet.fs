@@ -34,8 +34,7 @@ float heightMap(vec2 co){
         co *= .07;
         co += vec2(sin(co.y), cos(co.x + time * 0.1));
     }
-    float i = float(iters);
-    bumps /= (i * log(i));
+    bumps /= (iters * log(iters));
     return (-.5 + pow(bumps, 18.)) * PI;
 }
 
