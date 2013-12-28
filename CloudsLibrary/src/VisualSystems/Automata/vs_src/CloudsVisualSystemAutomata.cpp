@@ -16,6 +16,7 @@ void CloudsVisualSystemAutomata::selfSetupGui()
     customGui->addSpacer();
     customGui->addToggle("RESTART", &bRestart);
     customGui->addToggle("2D", &bIs2D);
+    customGui->addToggle("USE INPUT", &bDoInput);
     customGui->addSlider("RADIUS", 1.0, 50.0, &radius);
     
     customGui->addSpacer();
@@ -85,6 +86,7 @@ void CloudsVisualSystemAutomata::selfSetup()
 	
     // Set defaults.
     radius = 5.0f;
+    bDoInput = true;
 
     seedDir.listDir(getVisualSystemDataPath() + "seedImages");
     seedDir.sort();
@@ -180,8 +182,10 @@ void CloudsVisualSystemAutomata::selfUpdate()
             ofSetColor(255);
             outFbo.draw(0, 0);
             
-            ofSetColor(255);
-            ofCircle(GetCloudsInputX(), GetCloudsInputY(), radius);
+            if (bDoInput) {
+                ofSetColor(255);
+                ofCircle(GetCloudsInputX(), GetCloudsInputY(), radius);
+            }
         }
         texFbo.end();
 
