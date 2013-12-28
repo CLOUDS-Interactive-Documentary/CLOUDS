@@ -421,12 +421,11 @@ void CloudsVisualSystemCosmic::selfDrawBackground()
 
 void CloudsVisualSystemCosmic::selfEnd()
 {	
-	clear();
 }
 
 void CloudsVisualSystemCosmic::selfExit()
 {
-
+	clear();
 }
 
 void CloudsVisualSystemCosmic::clear(){
@@ -634,16 +633,13 @@ void CloudsVisualSystemCosmic::applyHomeShader()
     homeShader.begin();
     
     homeShader.setUniformTexture("posData",
-                                 posFboSrc.getTextureReference(),
-                                 1);
+                                 posFboSrc.getTextureReference(),1);
     
     homeShader.setUniformTexture("homeData",
-                                 homeFbo.getTextureReference(),
-                                 2);
+                                 homeFbo.getTextureReference(),2);
     
     homeShader.setUniformTexture("accData",
-                                 accFboSrc.getTextureReference(),
-                                 3);
+                                 accFboSrc.getTextureReference(),3);
     
     
     homeShader.setUniform1f("limit", homeForceLimit);
