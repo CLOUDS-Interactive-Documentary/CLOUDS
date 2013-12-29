@@ -1050,11 +1050,9 @@ vector<string> CloudsVisualSystem::getPresets()
 	vector<string> presets;
 	string presetPath = getVisualSystemDataPath() + "Presets/";
 	ofDirectory presetsFolder = ofDirectory(presetPath);
-	cout << "PRESET PATH AT " << presetPath << endl;
 	
 	if(presetsFolder.exists()){
 		presetsFolder.listDir();
-		cout << " found " << presetsFolder.size() << " files " << endl;
 		for(int i = 0; i < presetsFolder.size(); i++){
 			if(presetsFolder.getFile(i).isDirectory() &&
                ofFilePath::removeTrailingSlash(presetsFolder.getName(i)) != "Working" &&
@@ -2611,19 +2609,9 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	
 	selfSetDefaults();
 	
-	//custom colors
-//    cb = ofxUIColor(128,255);
-//    co = ofxUIColor(255, 255, 255, 100);
-//    coh = ofxUIColor(255, 255, 255, 200);
-//    cf = ofxUIColor(255, 255, 255, 200);
-//    cfh = ofxUIColor(255, 255, 255, 255);
-//    cp = ofxUIColor(0, 100);
-//    cpo =  ofxUIColor(255, 200);
-	
     for(int i = 0; i < guis.size(); i++) {
 		string presetPathName = presetPath+"/"+guis[i]->getName()+".xml";
         guis[i]->loadSettings(presetPathName);
-//		guis[i]->setUIColors(cb,co,coh,cf,cfh,cp, cpo);
     }
 	
     cam.reset();

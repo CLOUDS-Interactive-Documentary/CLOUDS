@@ -328,7 +328,6 @@ void CloudsVisualSystemVision::updateCVParameters(){
 //radio field
 
 void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
-    cout<<"LOADED PRESET: "<<presetPath<<endl;
 
 	ofxUIDropDownList* d = (ofxUIDropDownList*)rdrGui->getWidget("VIDEO");
 	vector<int>& selected = d->getSelectedIndeces();
