@@ -48,24 +48,24 @@ void CloudsVisualSystem2DVideo::selfGuiEvent(ofxUIEventArgs &e)
     if (e.getKind() == OFX_UI_WIDGET_BUTTON){
         
         if(e.getName() == "SET IN TIME"){
-            inTime = player.getCurrentTime();
+            inTime = player->getCurrentTime();
         }
         else if (e.getName() == "SET OUT TIME"){
-            outTime = player.getCurrentTime();
+            outTime = player->getCurrentTime();
         }
     }
     
 }
 //void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index){
-//    if(player.isPlaying()){
-//        player.stop();
+//    if(player->isPlaying()){
+//        player->stop();
 //    }
 //	
 //    cout << getVisualSystemDataPath(true) << " : " << movieStrings[index]<<endl;
 //	loadedMoviePath = movieStrings[index];
 //	
-//    if(player.loadMovie(getVisualSystemDataPath(true)+"videos/"+ movieStrings[index])){
-//        player.play();
+//    if(player->loadMovie(getVisualSystemDataPath(true)+"videos/"+ movieStrings[index])){
+//        player->play();
 //        bFileLoaded = false;
 //    }
 //    else{
@@ -76,14 +76,15 @@ void CloudsVisualSystem2DVideo::selfGuiEvent(ofxUIEventArgs &e)
 
 void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index, bool reset){
 
-    if(player.isPlaying()){
-        player.stop();
+    
+    if( player != NULL && player->isPlaying()  ){
+        player->stop();
     }
-	
+    player = ofPtr<ofxAVFVideoPlayer>(new ofxAVFVideoPlayer());
 	loadedMoviePath = movieStrings[index];
-    if(player.loadMovie(getVisualSystemDataPath(true)+"videos/"+ movieStrings[index])){
+    if(player->loadMovie(getVisualSystemDataPath(true)+"videos/"+ movieStrings[index])){
         
-		player.play();
+		player->play();
         bFileLoaded = false;
 		
 		if(reset){
@@ -193,7 +194,7 @@ void CloudsVisualSystem2DVideo::loadMovieWithName(string name){
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystem2DVideo::selfBegin(){
-	player.play();
+	player->play();
 }
 
 //do things like ofRotate/ofTranslate here
@@ -208,26 +209,26 @@ void CloudsVisualSystem2DVideo::selfUpdate()
     screenRect.width = getCanvasWidth();
     screenRect.height = getCanvasHeight();
     
-    if(player.getWidth() > 0){
+    if(player->getWidth() > 0){
         videoRect.x = 0;
         videoRect.y = 0;
-        videoRect.width = player.getWidth();
-        videoRect.height = player.getHeight();
+        videoRect.width = player->getWidth();
+        videoRect.height = player->getHeight();
         videoRect.scaleTo(screenRect);
     
     }
     if (! bFileLoaded) {
-        if(player.getWidth() >0){
+        if(player->getWidth() >0){
             //this is to set the intime once the video has loaded
             cout<<"setting player time to : "<<inTime<<endl;
-            player.setTime(inTime);
+            player->setTime(inTime);
             bFileLoaded = true;
         }
         
     }
     
-    player.update();
-    receivedFrame |= player.isFrameNew();
+    player->update();
+    receivedFrame |= player->isFrameNew();
 	
     if(timeline->getDurationInSeconds() != (outTime - inTime)){
         if(outTime-inTime > 0){
@@ -258,8 +259,8 @@ void CloudsVisualSystem2DVideo::selfDrawDebug(){
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfDrawBackground()
 {
-	if(player.isLoaded() && receivedFrame){
-		player.draw(videoRect.x, videoRect.y, videoRect.width, videoRect.height);
+	if(player->isLoaded() && receivedFrame){
+		player->draw(videoRect.x, videoRect.y, videoRect.width, videoRect.height);
 	}
 	else {
 		ofLogError("CloudsVisualSystem2DVideo::selfDrawBackground") << "Video not loaded: " << loadedMoviePath;
@@ -288,12 +289,12 @@ void CloudsVisualSystem2DVideo::selfExit(){
 void CloudsVisualSystem2DVideo::selfKeyPressed(ofKeyEventArgs & args){
 	
     if(args.key == 'i' ){
-        cout<<"in time :"<<player.getCurrentTime()<<endl;
-        inTime = player.getCurrentTime();
+        cout<<"in time :"<<player->getCurrentTime()<<endl;
+        inTime = player->getCurrentTime();
     }
     else if (args.key == 'o'){
-        cout<< "out time :"<<player.getCurrentTime()<<endl;
-        outTime = player.getCurrentTime();
+        cout<< "out time :"<<player->getCurrentTime()<<endl;
+        outTime = player->getCurrentTime();
     }
     else if (args.key == 'a'){
         cout<<timeline->getDurationInSeconds()<<endl;
