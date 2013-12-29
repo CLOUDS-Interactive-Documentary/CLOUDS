@@ -19,7 +19,7 @@ void CloudsSound::startMusicFX(float outskip, float musicdur)
     // SCHEDULEBANG(outskip+musicdur+7.0);
 }
 
-void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum)
+void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum, string ampenvelope)
 {
     
     float t, beatoffset;
@@ -69,14 +69,14 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     if (mo=="testsine")
     {
         PATCHSYNTH("WAVETABLE", "out 0-1");
-        SETUPMIX(outskip, musicdur, m_amp, 1.0, 0, 0, "WAVETABLE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0, 0, 0, "WAVETABLE", instnum, ampenvelope);
         WAVETABLE(0, musicdur, 1.0, 440., 0.5, "wf_puresine", "amp_sharphold");
     }
     
     // SLOWWAVES
     if (mo=="slowwaves")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
         if(arg_a=="sequencer")
         {
             vector<lukeNote> n;
@@ -113,7 +113,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // HARDBUZZ
     if (mo=="hardbuzz")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
         if(arg_a=="sequencer")
         {
             vector<lukeNote> n;
@@ -150,7 +150,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // SLOWWAVESHI
     if (mo=="slowwaveshi")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -175,7 +175,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // WAVESHIPATTERNED
     if (mo=="waveshipatterned")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -203,7 +203,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // LOWWAVEPULSE
     if (mo=="lowwavepulse")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -229,7 +229,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // LOWWAVEJUNO
     if (mo=="lowwavejuno")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -251,7 +251,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // HIJUNO
     if (mo=="hijuno")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -277,7 +277,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // KISS MY ARP
     if (mo=="kissmyarp")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
         if(arg_a=="sequencer")
         {
             vector<lukeNote> n;
@@ -295,7 +295,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
         else
         {
-            SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+            SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
             melodySolver m(arg_a, pitches[mh], mel);
             int curpitch;
             float freq;
@@ -318,7 +318,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // KISS MY SINE
     if (mo=="kissmysine")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
         if(arg_a=="sequencer")
         {
             vector<lukeNote> n;
@@ -336,7 +336,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
         else
         {
-            SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+            SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
             melodySolver m(arg_a, pitches[mh], mel);
             int curpitch;
             float freq;
@@ -359,7 +359,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // KISS MY ARP SYNCH
     if (mo=="kissmyarpsynch")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -384,7 +384,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // KISS MY SINE SYNCH
     if (mo=="kissmysinesynch")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -409,7 +409,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // KISS MY ARP FAST
     if (mo=="kissmyarpfast")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -431,7 +431,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // KISS MY SINE FAST
     if (mo=="kissmysinefast")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -453,7 +453,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // WISH
     if (mo=="wish")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVESHAPE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVESHAPE", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -482,7 +482,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // SLOWLOWWISH
     if (mo=="slowlowwish")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVESHAPE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVESHAPE", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -508,7 +508,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // GRANSYNTH1
     if (mo=="granular_sparkles")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -534,7 +534,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // GRANSYNTH2
     if (mo=="granular_rain")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -560,7 +560,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // GRANSYNTH3
     if (mo=="granular_shimmer")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -586,7 +586,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // GRANSYNTH4
     if (mo=="granular_whales")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -612,7 +612,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // GRANSYNTH5
     if (mo=="granular_pad")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -638,7 +638,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // GRANSYNTH6
     if (mo=="granular_sparse")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -664,7 +664,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // GRANSYNTH7
     if (mo=="granular_buzz")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -693,7 +693,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // GRANSYNTH8
     if (mo=="granular_swish")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -722,7 +722,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // GRANSYNTH9
     if (mo=="granular_hail")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -751,7 +751,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // GRANSYNTH10
     if (mo=="granular_juno")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -782,7 +782,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // WAVEGUIDE
     if (mo=="waveguide")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "MBANDEDWG", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "MBANDEDWG", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -798,7 +798,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // WAVEGUIDE2
     if (mo=="waveguide2")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "MBANDEDWG", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "MBANDEDWG", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -814,7 +814,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // WAVEGUIDE
     if (mo=="waveguide3")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "MBANDEDWG", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "MBANDEDWG", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -830,7 +830,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // WAVEGUIDE
     if (mo=="waveguide4")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "MBANDEDWG", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "MBANDEDWG", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -846,7 +846,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // HELMHOLTZ
     if (mo=="helmholtz")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "MBLOWBOTL", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "MBLOWBOTL", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -864,7 +864,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // FILTERNOISE
     if (mo=="filternoise")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "FILTERBANK", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "FILTERBANK", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -879,7 +879,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // STRUMECHO
     if (mo=="strumecho")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0.5, "STRUM2", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0.5, "STRUM2", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -896,7 +896,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // STRUMSINE
     if (mo=="strumsine")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0.5, "WAVETABLE", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0.5, "WAVETABLE", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -926,7 +926,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // MODALBEATS
     if (mo=="modalbeats")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "MMODALBAR", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "MMODALBAR", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -948,7 +948,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // WAVEGUIDEBEATS
     if (mo=="waveguidebeats")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "MBANDEDWG", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "MBANDEDWG", instnum, ampenvelope);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -974,7 +974,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // MESHBEATS
     if (mo=="meshbeats")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "MMESH2D", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "MMESH2D", instnum, ampenvelope);
         rhythmSolver r(arg_a, arg_b, rhythms[mr]);
         for(i=0;i<musicdur;i+=tempo)
         {
@@ -992,7 +992,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // SLOWMESHBEATS
     if (mo=="slowmeshbeats")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "MMESH2D", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "MMESH2D", instnum, ampenvelope);
         rhythmSolver r(arg_a, arg_b, rhythms[mr]);
         for(i = 0;i<musicdur;i+=tempo*2.)
         {
@@ -1010,7 +1010,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // VERMONTBEATZ
     if (mo=="vermontbeatz")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "TRANS3", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "TRANS3", instnum, ampenvelope);
         rhythmSolver r(arg_a, arg_b, rhythms[mr]);
         int pick;
         for(i = 0;i<musicdur;i+=tempo)
@@ -1030,7 +1030,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // SLOWVERMONTBEATZ
     if (mo=="slowvermontbeatz")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "TRANS3", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "TRANS3", instnum, ampenvelope);
         rhythmSolver r(arg_a, arg_b, rhythms[mr]);
         int pick;
         for(i = 0;i<musicdur;i+=tempo*2.)
@@ -1050,7 +1050,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // PHATBEATZ
     if (mo=="phatbeatz")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "TRANS3", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "TRANS3", instnum, ampenvelope);
         int pick;
         for(i = 0;i<musicdur;i+=tempo*2.)
         {
@@ -1074,7 +1074,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // AVIBEATS
     if (mo=="avibeats")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "TRANS3", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "TRANS3", instnum, ampenvelope);
         cout << "Sample number: " << looperSamples.size() << endl;
         for(i = 0;i<looperSamples.size();i++)
         {
@@ -1102,8 +1102,8 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // UTILITY
     if (mo=="simplesound")
     {
-        //SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "STEREO", instnum);
-        PATCHFX("STEREO", "in 0", "out 0-1");
+        SETUPMIX(outskip, musicdur, m_amp, 1.0, 0., 0., "STEREO", instnum, ampenvelope);
+        //PATCHFX("STEREO", "in 0", "out 0-1");
         STREAMSOUND(outskip, arg_b, musicdur, 1.0*m_amp, backupsound); // set to masterGain
         //STREAMSOUND(outskip, arg_b, musicdur, 1.*m_amp*MASTER_GAIN, backupsound); // set to masterGain
     }
