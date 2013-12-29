@@ -76,7 +76,8 @@ private:
     /*  SUCH PARAMS */
     cellParams params;
     bool levelSetMode;
-    int numInitialCells; //float because ints won't work in gui
+    int numInitialCells;
+    float translucenseCell, translucenseDish;
     
     /* WOW UTILITY */
     void updateFoodTexture();

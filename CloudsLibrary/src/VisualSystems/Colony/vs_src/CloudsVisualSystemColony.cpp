@@ -52,7 +52,10 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
     
     sysGui->addSpacer("Immutables");
     sysGui->addIntSlider("Initial Cells", 0, 1000, &numInitialCells);
-    sysGui->addButton("Reset", &reset);
+    
+    sysGui->addSlider("Cell Floor Translusence", 0., 1., &translucenseCell);
+    sysGui->addSlider("Dish Floor Translusence", 0., 1., &translucenseDish);
+//    sysGui->addButton("Reset", &reset);
 }
 
 void CloudsVisualSystemColony::selfUpdate()
@@ -130,6 +133,8 @@ void CloudsVisualSystemColony::selfDrawBackground()
     levelSet.setUniform1i("levelSet", levelSetMode);
     levelSet.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
     levelSet.setUniform2f("imgRes", grunge.getWidth(), grunge.getHeight());
+    levelSet.setUniform1f("translucenseCell", translucenseCell);
+    levelSet.setUniform1f("translucenseDish", translucenseDish);
     fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
                   getSharedRenderTarget().getHeight());
     levelSet.end();
