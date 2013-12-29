@@ -70,7 +70,8 @@ class CloudsSound {
     int AUTORUN;
     bool DOCLEAR;
     float cleartime;
-    float targetAmp;
+    float instGain; // master multiplier per instrument
+    
 	
     vector<lukeRhythm> rhythms;
     vector<lukePitchArray> pitches;

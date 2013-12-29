@@ -14,14 +14,16 @@ CloudsMixer::CloudsMixer()
 	diageticVol = 1.0;
     
     // envelope follower
-    attack = 10.0;
-    decay = 4410.0;
+    attack = 200.0;
+    decay = 17640.0;
     followgain = 0.;
     // compressor
-    thresh = 0.707; // set lower for a quieter squish point
-    ratio = 0.3; // set lower for more squish
-    makeup = 2.; // set higher for more volume
+    //thresh = 0.707; // set lower for a quieter squish point
+    thresh = 0.3;
+    ratio = 3.; // set higher for more squish
 
+    showCompressor = false;
+    
 }
 
 CloudsMixer::~CloudsMixer()
@@ -103,7 +105,7 @@ void CloudsMixer::fillBuffer(float *output, int bufferSize, int nChannels)
         }
         if(followgain>thresh) gain = 1.0-((followgain-thresh)*ratio); else gain = 1.0;
         
-        output[i]=output[i]*gain*makeup;
+        output[i]=output[i]*gain*MASTER_GAIN;
         
         // clip
         if (output[i] > 1) {
@@ -113,6 +115,21 @@ void CloudsMixer::fillBuffer(float *output, int bufferSize, int nChannels)
             output[i] = -1;
         }
     }
+    
+    if(showCompressor) {
+        for(float i = 0;i<0.5;i=i+0.01)
+        {
+            if (followgain>i) cout << "•"; else cout << " ";
+        }
+        cout << " : ";
+        for(float i = 0.5;i<1.;i=i+0.01)
+        {
+            if (gain>i) cout << "•"; else cout << " ";
+        }
+        cout << endl;
+    }
+    
+    //cout << followgain << " : " << gain << endl;
     
     
     

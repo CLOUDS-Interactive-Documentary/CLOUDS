@@ -121,6 +121,7 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
 			foo.highEnergy = false;
             foo.dichomin.resize(8);
             foo.dichomax.resize(8);
+            foo.slotnumber = thestuff.getAttribute("slot", "number", 0, i);
             thestuff.pushTag("slot", i);
             int numfields = thestuff.getNumTags("pattr");
             for(int j = 0;j<numfields;j++)
@@ -288,6 +289,7 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
             }
             if(LUKEDEBUG) {
                 cout << "PRESET XML " << i << ": " << foo.name << endl;
+                cout << "   slot number: " << foo.slotnumber << endl;
                 for(int j =0;j<foo.instruments.size();j++)
                 {
                     cout << "   orchestration: " << foo.instruments[j] << endl;
