@@ -10,8 +10,8 @@
 
 CloudsMixer::CloudsMixer()
 {
-	musicVol = 1.0;
-	diageticVol = 1.0;
+	musicVol = 1.0; // RTcmix main volume
+	diageticVol = 1.0; // Tonic main volume
     
     // envelope follower
     attack = 200.0;
