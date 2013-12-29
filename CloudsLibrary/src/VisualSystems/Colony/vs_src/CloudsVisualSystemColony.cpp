@@ -10,7 +10,6 @@ void CloudsVisualSystemColony::selfSetup()
 {
     numInitialCells = 100;
     kernel_maxValue = 0.8;
-    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
     vbo.setMode(OF_PRIMITIVE_POINTS);
     
 	ofDisableArbTex();
@@ -188,13 +187,6 @@ void CloudsVisualSystemColony::selfDraw(){
 
 
 void CloudsVisualSystemColony::updateFoodTexture(){
-    noiseShader.begin();
-    noiseShader.setUniform1i("complexity", 1);
-    noiseShader.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
-    noiseShader.setUniform1f("zoom", 40.);
-    noiseShader.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
-    ofRect(0, 0, getSharedRenderTarget().getWidth(),getSharedRenderTarget().getHeight());
-    noiseShader.end();
 }
 
 
@@ -240,11 +232,8 @@ void CloudsVisualSystemColony::populate(){
 
 bool CloudsVisualSystemColony::areFbosAllocatedAndSized(){
     return fbo_main.isAllocated()
-    && foodTexture.isAllocated()
     && fbo_main.getWidth() == getSharedRenderTarget().getWidth()
-    && fbo_main.getHeight() == getSharedRenderTarget().getHeight()
-    && foodTexture.getWidth() == getSharedRenderTarget().getWidth()
-    && foodTexture.getHeight() == getSharedRenderTarget().getHeight();
+    && fbo_main.getHeight() == getSharedRenderTarget().getHeight();
 }
 
 void CloudsVisualSystemColony::reallocateFramebuffers(){
@@ -252,15 +241,10 @@ void CloudsVisualSystemColony::reallocateFramebuffers(){
     int h = getSharedRenderTarget().getHeight();
     
     fbo_main.allocate(w,h,GL_RGBA);
-    foodTexture.allocate(w/4., h/4., GL_RGB);
     
     fbo_main.begin();
     ofClear(0,0,0,0);
     fbo_main.end();
-    
-    foodTexture.begin();
-    ofClear(0, 0, 0);
-    foodTexture.end();
 }
 
 

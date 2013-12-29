@@ -63,15 +63,12 @@ private:
     
     /* MUCH GEOMETRY */
     ofVboMesh   vbo;
-    ofShader    noiseShader;
-    ofShader    cellShader;
-    ofShader    levelSet;
-    ofShader    billboard;
     
     /* WOW VIDEO */
-    ofFbo fbo_main, foodTexture;
+    ofFbo fbo_main;
     ofTexture sprite, grunge;
-    ofImage grime;
+    ofShader    levelSet;
+    ofShader    billboard;
     
     /* LOL DATA */
     colonyPartitionMap pMap;
