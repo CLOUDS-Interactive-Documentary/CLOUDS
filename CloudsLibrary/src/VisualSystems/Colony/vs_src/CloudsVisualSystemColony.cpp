@@ -76,7 +76,7 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     guiLooks->addSlider("Dish Floor Translusence", 0., 1., &translucenseDish);
     
     float hDim = 16;
-    float vDim = 100;
+    float vDim = 80;
     
     guiLooks->addWidgetDown(new ofxUILabel("KERNEL COLOR", OFX_UI_FONT_MEDIUM));
     guiLooks->addSlider("R1", 0, 1., &(kernelColor_high.x), hDim, vDim);
@@ -94,7 +94,6 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     guis.push_back(guiLooks);
     guimap[guiDynamics->getName()] = guiDynamics;
     guimap[guiLooks->getName()] = guiLooks;
-
 }
 
 
