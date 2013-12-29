@@ -190,9 +190,9 @@ void CloudsVisualSystemCirclePacking::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemCirclePacking::selfDrawBackground(){
 
-	for (int i = 0; i<pack.circles.size(); i++){
-		cout << "circle radius : " << pack.circles[i].r << endl;
-	}
+//	for (int i = 0; i<pack.circles.size(); i++){
+//		cout << "circle radius : " << pack.circles[i].r << endl;
+//	}
     
 	ofPushStyle();
 	ofNoFill();
