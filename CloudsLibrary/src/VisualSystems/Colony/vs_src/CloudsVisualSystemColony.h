@@ -1,10 +1,8 @@
-//
-//  CloudsVisualSystemColony.h
-//  VSColony
-//
-//  Created by Patricio Gonzalez Vivo on 6/26/13.
-//
-//
+/* 
+ WOW SUCH VISUAL
+ VERY COPYRIGHT
+ */
+
 
 #pragma once
 
@@ -50,10 +48,6 @@ public:
     
     void selfPresetLoaded(string presetPath);
     
-    //Publics stuffs
-    
-	void loadShaders();
-    void reallocateFramebuffers();
     
 private:
     
@@ -82,6 +76,8 @@ private:
     /* WOW UTILITY */
     void updateFoodTexture();
     bool areFbosAllocatedAndSized();
+    void loadShaders();
+    void reallocateFramebuffers();
     
     void clear();
     void populate();

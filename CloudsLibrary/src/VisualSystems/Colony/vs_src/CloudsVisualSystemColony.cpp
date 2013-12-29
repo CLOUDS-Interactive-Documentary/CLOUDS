@@ -222,9 +222,9 @@ void CloudsVisualSystemColony::guiSystemEvent(ofxUIEventArgs &e){}
 void CloudsVisualSystemColony::guiRenderEvent(ofxUIEventArgs &e){}
 
 void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){
-//	if(args.key == 'R'){
-//		loadShaders();
-//	}
+	if(args.key == 'R'){
+		levelSetMode = !levelSetMode;
+	}
 }
 
 void CloudsVisualSystemColony::selfDrawDebug(){}
