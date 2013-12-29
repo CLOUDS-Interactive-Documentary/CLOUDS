@@ -67,7 +67,6 @@ void CloudsVisualSystemColony::selfUpdate()
     vbo.clear();
     pMap.put(cells);
     
-    updateFoodTexture();
     
     for (int i = 0; i < cells.size(); i++) {
         
