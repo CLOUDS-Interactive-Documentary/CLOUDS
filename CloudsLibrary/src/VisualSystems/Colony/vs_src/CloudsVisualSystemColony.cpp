@@ -75,17 +75,20 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     guiLooks->addSlider("Cell Floor Translusence", 0., 1., &translucenseCell);
     guiLooks->addSlider("Dish Floor Translusence", 0., 1., &translucenseDish);
     
-    //    guiLooks->addWidgetDown(new ofxUILabel("V SLIDERS", OFX_UI_FONT_MEDIUM));
-    guiLooks->addSlider("R", 0, 1., &(kernelColor_high.x));
-    guiLooks->addSlider("G", 0, 1., &(kernelColor_high.y));
-    guiLooks->addSlider("B", 0, 1., &(kernelColor_high.z));
-    guiLooks->addSlider("A", 0, 1., &(kernelColor_high.w));
-    guiLooks->addSlider("R", 0, 1., &(kernelColor_low.x));
-    guiLooks->addSlider("G", 0, 1., &(kernelColor_low.y));
-    guiLooks->addSlider("B", 0, 1., &(kernelColor_low.z));
-    guiLooks->addSlider("A", 0, 1., &(kernelColor_low.w));
+    float hDim = 16;
+    float vDim = 100;
     
-    //    guiLooks->add
+    guiLooks->addWidgetDown(new ofxUILabel("KERNEL COLOR", OFX_UI_FONT_MEDIUM));
+    guiLooks->addSlider("R1", 0, 1., &(kernelColor_high.x), hDim, vDim);
+    guiLooks->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    guiLooks->addSlider("G1", 0, 1., &(kernelColor_high.y), hDim, vDim);
+    guiLooks->addSlider("B1", 0, 1., &(kernelColor_high.z), hDim, vDim);
+    guiLooks->addSlider("A1", 0, 1., &(kernelColor_high.w), hDim, vDim);
+    guiLooks->addSlider("R2", 0, 1., &(kernelColor_low.x), hDim, vDim);
+    guiLooks->addSlider("G2", 0, 1., &(kernelColor_low.y), hDim, vDim);
+    guiLooks->addSlider("B2", 0, 1., &(kernelColor_low.z), hDim, vDim);
+    guiLooks->addSlider("A2", 0, 1., &(kernelColor_low.w), hDim, vDim);
+    guiLooks->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
 
     guis.push_back(guiDynamics);
     guis.push_back(guiLooks);
