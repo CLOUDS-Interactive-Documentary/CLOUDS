@@ -134,10 +134,10 @@ void CloudsAct::populateTime(){
     }
 	
 	///////////////CALCULATE SOUND CUES
-	CloudsClip& startClip = clips[0];
-	
 	cues.clear();
 	CloudsSoundCue introCue;
+	
+	CloudsClip& startClip = clips[0];
 	if(startClip.hasStartingQuestion() && startClip.getTopicsWithQuestions().size() > 0){
 		string startTopic    = startClip.getTopicsWithQuestions()[0];
 		string startQuestion = startClip.getQuestionForTopic(startTopic);
@@ -145,7 +145,7 @@ void CloudsAct::populateTime(){
 	}
 	introCue.mixLevel = 1;
 	introCue.startTime = clipItems[startClip.getLinkName()].startTime;
-	introCue.duration = clipItems[clips[1].getLinkName()].startTime;
+	introCue.duration = clipItems[clips[1].getLinkName()].startTime - introCue.startTime;
 	introCue.dichotomies = dichotomiesMap[startClip.getLinkName()];
 	cues.push_back(introCue);
 	
@@ -216,7 +216,7 @@ void CloudsAct::populateTime(){
 		CloudsSoundCue actCue;
 		actCue.mixLevel = 1;
 		actCue.startTime = clipItems[clips[1].getLinkName()].startTime;
-		actCue.duration = clipItems[ energyShiftClipIDs[0] ].startTime;
+		actCue.duration = clipItems[ energyShiftClipIDs[0] ].startTime - actCue.startTime;
 		actCue.dichotomies = dichotomiesMap[ clips[1].getLinkName() ];
 		cues.push_back(actCue);
 		
@@ -235,7 +235,7 @@ void CloudsAct::populateTime(){
 	//create sound cue timeline debug
 	ofxTLFlags* soundQueues = timeline.addFlags("Sound Cues");
 	for(int i = 0; i < cues.size(); i++){
-		soundQueues->addFlagAtTime( "cue", cues[i].startTime*1000 );
+		soundQueues->addFlagAtTime( "cue: " + cues[i].soundQuestionKey, cues[i].startTime*1000 );
 	}
 	
 	timeline.setCurrentPage(0);
