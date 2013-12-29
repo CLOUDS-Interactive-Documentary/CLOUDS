@@ -31,8 +31,8 @@ float noise2f( in vec2 p ){
 }
 */
 
-vec4 premult(in vec4 source, in float alpha){
-    return vec4(source.rgb * source.a, alpha);
+vec4 premult(in vec4 source){
+    return vec4(source.rgb * source.a, source.a);
 }
 
 float bump(float t, float center, float width){
