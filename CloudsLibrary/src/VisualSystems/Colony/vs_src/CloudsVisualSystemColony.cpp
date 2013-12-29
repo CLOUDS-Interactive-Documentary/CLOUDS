@@ -55,7 +55,6 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
     
     sysGui->addSlider("Cell Floor Translusence", 0., 1., &translucenseCell);
     sysGui->addSlider("Dish Floor Translusence", 0., 1., &translucenseDish);
-//    sysGui->addButton("Reset", &reset);
 }
 
 void CloudsVisualSystemColony::selfUpdate()
@@ -64,7 +63,6 @@ void CloudsVisualSystemColony::selfUpdate()
     if ( !areFbosAllocatedAndSized() ){ reallocateFramebuffers(); }
     
     //Data
-    //cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
     pMap.clear();
     vbo.clear();
     pMap.put(cells);
@@ -164,7 +162,6 @@ void CloudsVisualSystemColony::selfBegin()
 void CloudsVisualSystemColony::selfEnd()
 {
     clear();
-    //TODO: Destroy everything in gCell;
 }
 
 void CloudsVisualSystemColony::selfExit(){
@@ -226,9 +223,9 @@ void CloudsVisualSystemColony::guiSystemEvent(ofxUIEventArgs &e){}
 void CloudsVisualSystemColony::guiRenderEvent(ofxUIEventArgs &e){}
 
 void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){
-	if(args.key == 'R'){
-		loadShaders();
-	}
+//	if(args.key == 'R'){
+//		loadShaders();
+//	}
 }
 
 void CloudsVisualSystemColony::selfDrawDebug(){}
