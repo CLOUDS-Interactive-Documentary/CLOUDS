@@ -183,11 +183,13 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                     }
                 }
             
-                if(valid_presets.size()==0)
-                {
-                    valid_presets.push_back(0);
-                }
                 isHighEnergy = !isHighEnergy; // flip energy state at each dicho check
+            }
+            
+            // emergency check
+            if(valid_presets.size()==0)
+            {
+                valid_presets.push_back(0);
             }
             
             // MAKE THE MUSIC
