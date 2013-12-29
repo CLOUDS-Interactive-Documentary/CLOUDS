@@ -21,6 +21,7 @@ typedef struct {
 class CloudsSVGMesh
 {
   public:
+	bool loadDirectory(string file);
 	bool load(string file);
 	void draw();
 	ofRectangle getBounds();

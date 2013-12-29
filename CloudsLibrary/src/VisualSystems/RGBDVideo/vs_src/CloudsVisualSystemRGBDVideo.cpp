@@ -71,7 +71,7 @@ void CloudsVisualSystemRGBDVideo::selfUpdate(){
 	
 	if(movieLoaded){
 		player.update();
-		cout << "time? " << player.getCurrentTime() << endl;
+//		cout << "time? " << player.getCurrentTime() << endl;
 	}
 }
 

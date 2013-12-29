@@ -22,7 +22,6 @@ class CloudsHUDLayer
 	void parse(string svgFilePath);
 	
 	vector<string> textBoxIds;
-//	ofxSVG svg;
 	CloudsSVGMesh svg;
 	
 	void start();

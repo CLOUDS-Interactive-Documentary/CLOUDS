@@ -33,6 +33,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -62,7 +67,7 @@
 		<pattr name = "orch3" value = "meshbeats" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "0" />
+		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
@@ -76,8 +81,13 @@
 		<pattr name = "rev3" value = "0.538462" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_FADEINBY33" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
-		<pattr name = "arg_a3" value = "markov" />
+		<pattr name = "arg_a3" value = "straight" />
 		<pattr name = "arg_a4" value = "none" />
 		<pattr name = "arg_a5" value = "none" />
 		<pattr name = "arg_a1" value = "melody" />
@@ -119,6 +129,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "0.269231" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_FADEINBY25" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "markov" />
@@ -148,20 +163,25 @@
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "" />
+		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
-		<pattr name = "amp1" value = "0.846154" />
-		<pattr name = "amp2" value = "0.923077" />
+		<pattr name = "amp1" value = "0.307692" />
+		<pattr name = "amp2" value = "0.692308" />
 		<pattr name = "amp3" value = "" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
-		<pattr name = "rev1" value = "0.5" />
+		<pattr name = "rev1" value = "0.692308" />
 		<pattr name = "rev2" value = "" />
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_FADEINBY50" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "melody" />
 		<pattr name = "arg_a3" value = "melody" />
 		<pattr name = "arg_a4" value = "none" />
@@ -205,6 +225,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_FADEOUTBY75" />
+		<pattr name = "env2" value = "e_FADEOUTBY75" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_FADEINBY25" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "bucket" />
 		<pattr name = "arg_a4" value = "bucket" />
@@ -248,6 +273,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "melody" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -274,16 +304,16 @@
 		<pattr name = "pname" value = "faux blade runner" />
 		<pattr name = "orch1" value = "slowwaves" />
 		<pattr name = "orch2" value = "slowwaves" />
-		<pattr name = "orch3" value = "kissmyarpfast" />
+		<pattr name = "orch3" value = "kissmysinefast" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "" />
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
-		<pattr name = "amp1" value = "" />
-		<pattr name = "amp2" value = "" />
-		<pattr name = "amp3" value = "0.769231" />
+		<pattr name = "amp1" value = "0.615385" />
+		<pattr name = "amp2" value = "0.615385" />
+		<pattr name = "amp3" value = "0.538462" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
 		<pattr name = "rev1" value = "" />
@@ -291,6 +321,11 @@
 		<pattr name = "rev3" value = "0.423077" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_MIDDLEIN75" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "markov" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -324,8 +359,8 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
-		<pattr name = "amp1" value = "0.769231" />
-		<pattr name = "amp2" value = "" />
+		<pattr name = "amp1" value = "0.538462" />
+		<pattr name = "amp2" value = "0.615385" />
 		<pattr name = "amp3" value = "" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
@@ -334,6 +369,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -367,8 +407,8 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.692308" />
-		<pattr name = "amp2" value = "0.692308" />
+		<pattr name = "amp1" value = "0.384616" />
+		<pattr name = "amp2" value = "0.615385" />
 		<pattr name = "amp3" value = "0.769231" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
@@ -377,6 +417,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_MIDDLEIN50" />
+		<pattr name = "env2" value = "e_FADEINBY75" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -398,7 +443,7 @@
 		<pattr name = "d7" value = "0 10" />
 		<pattr name = "d8" value = "0 10" />
 		<pattr name = "harmony" value = "9" />
-		<pattr name = "rhythm" value = "0" />
+		<pattr name = "rhythm" value = "6" />
 		<pattr name = "tempo" value = "120" />
 		<pattr name = "pname" value = "son of strumsine" />
 		<pattr name = "orch1" value = "modalbeats" />
@@ -410,9 +455,9 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.461539" />
-		<pattr name = "amp2" value = "0.461539" />
-		<pattr name = "amp3" value = "0.384616" />
+		<pattr name = "amp1" value = "0.384616" />
+		<pattr name = "amp2" value = "0.384616" />
+		<pattr name = "amp3" value = "0.307693" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
 		<pattr name = "rev1" value = "" />
@@ -420,6 +465,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_FADEINBY25" />
+		<pattr name = "env2" value = "e_FADEINBY33" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "markov" />
 		<pattr name = "arg_a3" value = "bucket" />
 		<pattr name = "arg_a4" value = "none" />
@@ -454,7 +504,7 @@
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "&quot;programming:Is programming a waste of time?&quot;" />
 		<pattr name = "amp1" value = "0.846154" />
-		<pattr name = "amp2" value = "0.769231" />
+		<pattr name = "amp2" value = "0.692308" />
 		<pattr name = "amp3" value = "0.769231" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
@@ -463,6 +513,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_FADEINBY66" />
+		<pattr name = "env4" value = "e_MIDDLEIN75" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "lsys" />
 		<pattr name = "arg_a3" value = "bucket" />
 		<pattr name = "arg_a4" value = "markov" />
@@ -497,15 +552,20 @@
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
 		<pattr name = "amp1" value = "0.461538" />
-		<pattr name = "amp2" value = "0.538462" />
-		<pattr name = "amp3" value = "1.230769" />
-		<pattr name = "amp4" value = "0.769231" />
+		<pattr name = "amp2" value = "0.461539" />
+		<pattr name = "amp3" value = "1.076923" />
+		<pattr name = "amp4" value = "0.384616" />
 		<pattr name = "amp5" value = "" />
 		<pattr name = "rev1" value = "0.653846" />
 		<pattr name = "rev2" value = "0.653846" />
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "0.115385" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_FADEINBY33" />
+		<pattr name = "env2" value = "e_FADEINBY66" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "simple" />
 		<pattr name = "arg_a4" value = "avi2c" />
@@ -542,13 +602,18 @@
 		<pattr name = "amp1" value = "" />
 		<pattr name = "amp2" value = "" />
 		<pattr name = "amp3" value = "0.692308" />
-		<pattr name = "amp4" value = "" />
+		<pattr name = "amp4" value = "0.461538" />
 		<pattr name = "amp5" value = "" />
 		<pattr name = "rev1" value = "" />
 		<pattr name = "rev2" value = "" />
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "0.230769" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_MIDDLEIN33" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "pattern" />
 		<pattr name = "arg_a4" value = "avi2b" />
@@ -582,8 +647,8 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.769231" />
-		<pattr name = "amp2" value = "0.769231" />
+		<pattr name = "amp1" value = "0.538462" />
+		<pattr name = "amp2" value = "0.615385" />
 		<pattr name = "amp3" value = "" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
@@ -592,6 +657,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_FADEINBY25" />
+		<pattr name = "env2" value = "e_FADEINBY50" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "bucket" />
 		<pattr name = "arg_a4" value = "bucket" />
@@ -635,6 +705,11 @@
 		<pattr name = "rev3" value = "0.576923" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_FADEINBY33" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -668,8 +743,8 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "&quot;real and virtual:Have we hacked reality?&quot;" />
-		<pattr name = "amp1" value = "0.923077" />
-		<pattr name = "amp2" value = "0.846154" />
+		<pattr name = "amp1" value = "0.461539" />
+		<pattr name = "amp2" value = "0.461539" />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
@@ -678,6 +753,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -711,8 +791,8 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.923077" />
-		<pattr name = "amp2" value = "0.846154" />
+		<pattr name = "amp1" value = "0.538462" />
+		<pattr name = "amp2" value = "0.615385" />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
@@ -721,6 +801,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -753,9 +838,9 @@
 		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "&quot;open source:What is open source all about?&quot;" />
-		<pattr name = "amp1" value = "0.769231" />
-		<pattr name = "amp2" value = "0.846154" />
+		<pattr name = "start_question" value = "none" />
+		<pattr name = "amp1" value = "0.538462" />
+		<pattr name = "amp2" value = "0.769231" />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
@@ -764,6 +849,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -797,8 +887,8 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "&quot;community:How does the network accelerate creativity?&quot;" />
-		<pattr name = "amp1" value = "0.769231" />
-		<pattr name = "amp2" value = "0.769231" />
+		<pattr name = "amp1" value = "0.615385" />
+		<pattr name = "amp2" value = "0.615385" />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
@@ -807,6 +897,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEINBY50" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -840,9 +935,9 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&quot;simulation, blah&quot;" />
 		<pattr name = "start_question" value = "&quot;simulation:Is it possible to truly simulate reality?&quot;" />
-		<pattr name = "amp1" value = "0.76923" />
-		<pattr name = "amp2" value = "0.76923" />
-		<pattr name = "amp3" value = "1." />
+		<pattr name = "amp1" value = "0.615384" />
+		<pattr name = "amp2" value = "0.615384" />
+		<pattr name = "amp3" value = "0.692308" />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.615385" />
@@ -850,6 +945,11 @@
 		<pattr name = "rev3" value = "0.653846" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEINBY33" />
+		<pattr name = "env2" value = "e_MIDDLEIN60" />
+		<pattr name = "env3" value = "e_FADEOUTBY75" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "melody" />
 		<pattr name = "arg_a4" value = "none" />
@@ -893,6 +993,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -936,6 +1041,11 @@
 		<pattr name = "rev3" value = "0.423077" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_FADEINBY33" />
+		<pattr name = "env3" value = "e_MIDDLEIN75" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "lsys" />
 		<pattr name = "arg_a3" value = "lsys" />
 		<pattr name = "arg_a4" value = "none" />
@@ -969,8 +1079,8 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "&quot;coding:How can the logic of coding be creative?&quot;" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
+		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp2" value = "0.846154" />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
@@ -979,6 +1089,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_FADEINBY33" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "lsys" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1012,8 +1127,8 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
+		<pattr name = "amp1" value = "0.538462" />
+		<pattr name = "amp2" value = "0.538462" />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
@@ -1022,6 +1137,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1055,8 +1175,8 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
+		<pattr name = "amp1" value = "0.538462" />
+		<pattr name = "amp2" value = "0.538462" />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
@@ -1065,6 +1185,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1098,8 +1223,8 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
+		<pattr name = "amp1" value = "0.692308" />
+		<pattr name = "amp2" value = "0.692308" />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
@@ -1108,6 +1233,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_FADEINBY25" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1129,7 +1259,7 @@
 		<pattr name = "d7" value = "0 10" />
 		<pattr name = "d8" value = "0 10" />
 		<pattr name = "harmony" value = "5" />
-		<pattr name = "rhythm" value = "0" />
+		<pattr name = "rhythm" value = "12" />
 		<pattr name = "tempo" value = "120" />
 		<pattr name = "pname" value = "moody whales and sparkles and beats" />
 		<pattr name = "orch1" value = "granular_whales" />
@@ -1141,9 +1271,9 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "0.846154" />
+		<pattr name = "amp1" value = "0.692308" />
+		<pattr name = "amp2" value = "0.615385" />
+		<pattr name = "amp3" value = "0.615385" />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.5" />
@@ -1151,6 +1281,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_MIDDLEIN66" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1184,9 +1319,9 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.769231" />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
+		<pattr name = "amp1" value = "0.461539" />
+		<pattr name = "amp2" value = "0.461538" />
+		<pattr name = "amp3" value = "0.538462" />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.5" />
@@ -1194,6 +1329,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEINBY25" />
+		<pattr name = "env2" value = "e_FADEOUTBY75" />
+		<pattr name = "env3" value = "e_FADEINBY33" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "markov" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1227,8 +1367,8 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
+		<pattr name = "amp1" value = "0.615385" />
+		<pattr name = "amp2" value = "0.692308" />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
@@ -1237,6 +1377,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1270,9 +1415,9 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
+		<pattr name = "amp1" value = "0.692308" />
+		<pattr name = "amp2" value = "0.692308" />
+		<pattr name = "amp3" value = "0.923077" />
 		<pattr name = "amp4" value = "0.769231" />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.5" />
@@ -1280,6 +1425,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTBY50" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_FADEINBY33" />
+		<pattr name = "env4" value = "e_FADEINBY66" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "lsys" />
 		<pattr name = "arg_a4" value = "simple" />
@@ -1313,9 +1463,9 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "&quot;interface:What's the ultimate interface?&quot;" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
+		<pattr name = "amp1" value = "0.692308" />
+		<pattr name = "amp2" value = "0.692308" />
+		<pattr name = "amp3" value = "0.538462" />
 		<pattr name = "amp4" value = "0.769231" />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.5" />
@@ -1323,6 +1473,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_MIDDLEIN60" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "simple" />
 		<pattr name = "arg_a4" value = "simple" />
@@ -1356,9 +1511,9 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
+		<pattr name = "amp1" value = "0.538462" />
+		<pattr name = "amp2" value = "0.538462" />
+		<pattr name = "amp3" value = "0.692308" />
 		<pattr name = "amp4" value = "0.769231" />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.5" />
@@ -1366,6 +1521,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_MIDDLEIN75" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "markov" />
 		<pattr name = "arg_a3" value = "simple" />
 		<pattr name = "arg_a4" value = "simple" />
@@ -1399,16 +1559,21 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
-		<pattr name = "amp4" value = "0.923077" />
+		<pattr name = "amp1" value = "0.692308" />
+		<pattr name = "amp2" value = "0.692308" />
+		<pattr name = "amp3" value = "0.692308" />
+		<pattr name = "amp4" value = "0.538462" />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.5" />
 		<pattr name = "rev2" value = "0.5" />
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.192308" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "markov" />
 		<pattr name = "arg_a3" value = "simple" />
 		<pattr name = "arg_a4" value = "avi2b" />
@@ -1442,9 +1607,9 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "&quot;simulation:Is it possible to truly simulate reality?&quot;" />
-		<pattr name = "amp1" value = "0.769231" />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
+		<pattr name = "amp1" value = "0.307693" />
+		<pattr name = "amp2" value = "0.846154" />
+		<pattr name = "amp3" value = "0.692308" />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.615385" />
@@ -1452,6 +1617,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_MIDDLEIN75" />
+		<pattr name = "env3" value = "e_MIDDLEIN66" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "melody" />
 		<pattr name = "arg_a4" value = "avi2b" />
@@ -1485,9 +1655,9 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "1." />
-		<pattr name = "amp3" value = "1." />
+		<pattr name = "amp1" value = "0.461538" />
+		<pattr name = "amp2" value = "0.538462" />
+		<pattr name = "amp3" value = "0.615385" />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.5" />
@@ -1495,6 +1665,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_MIDDLEIN66" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "bucket" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1528,9 +1703,9 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "&quot;interactivity:What makes a satisfying interaction?&quot;" />
-		<pattr name = "amp1" value = "0.230769" />
-		<pattr name = "amp2" value = "0.230769" />
-		<pattr name = "amp3" value = "1.230769" />
+		<pattr name = "amp1" value = "0.153846" />
+		<pattr name = "amp2" value = "0.153846" />
+		<pattr name = "amp3" value = "0.923077" />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "1." />
@@ -1538,6 +1713,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_MIDDLEIN75" />
+		<pattr name = "env2" value = "e_MIDDLEIN75" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "simple" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1547,6 +1727,150 @@
 		<pattr name = "arg_b2" value = "&quot;5&quot;" />
 		<pattr name = "arg_b3" value = "&quot;5&quot;" />
 		<pattr name = "arg_b4" value = "none" />
+		<pattr name = "arg_b5" value = "none" />
+	</slot>
+	<slot number = "37">
+		<pattr name = "d1" value = "0 10" />
+		<pattr name = "d2" value = "0 10" />
+		<pattr name = "d3" value = "0 10" />
+		<pattr name = "d4" value = "0 10" />
+		<pattr name = "d5" value = "0 10" />
+		<pattr name = "d6" value = "0 10" />
+		<pattr name = "d7" value = "0 10" />
+		<pattr name = "d8" value = "0 10" />
+		<pattr name = "harmony" value = "8" />
+		<pattr name = "rhythm" value = "15" />
+		<pattr name = "tempo" value = "120" />
+		<pattr name = "pname" value = "sinephase1" />
+		<pattr name = "orch1" value = "kissmysine" />
+		<pattr name = "orch2" value = "kissmysine" />
+		<pattr name = "orch3" value = "kissmysine" />
+		<pattr name = "orch4" value = "kissmysine" />
+		<pattr name = "orch5" value = "lowwavejuno" />
+		<pattr name = "energy" value = "1" />
+		<pattr name = "disabled" value = "0" />
+		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
+		<pattr name = "start_question" value = "none" />
+		<pattr name = "amp1" value = "0.307692" />
+		<pattr name = "amp2" value = "0.384615" />
+		<pattr name = "amp3" value = "0.384615" />
+		<pattr name = "amp4" value = "0.538462" />
+		<pattr name = "amp5" value = "0.307692" />
+		<pattr name = "rev1" value = "0.153846" />
+		<pattr name = "rev2" value = "0.192308" />
+		<pattr name = "rev3" value = "0.192308" />
+		<pattr name = "rev4" value = "0.192308" />
+		<pattr name = "rev5" value = "0.423077" />
+		<pattr name = "env1" value = "e_FADEOUTBY75" />
+		<pattr name = "env2" value = "e_MIDDLEOUT75" />
+		<pattr name = "env3" value = "e_MIDDLEIN75" />
+		<pattr name = "env4" value = "e_FADEINBY75" />
+		<pattr name = "env5" value = "e_FADEINBY75" />
+		<pattr name = "arg_a2" value = "simple" />
+		<pattr name = "arg_a3" value = "simple" />
+		<pattr name = "arg_a4" value = "simple" />
+		<pattr name = "arg_a5" value = "melody" />
+		<pattr name = "arg_a1" value = "simple" />
+		<pattr name = "arg_b1" value = "&quot;11&quot;" />
+		<pattr name = "arg_b2" value = "&quot;12&quot;" />
+		<pattr name = "arg_b3" value = "&quot;9&quot;" />
+		<pattr name = "arg_b4" value = "&quot;10&quot;" />
+		<pattr name = "arg_b5" value = "none" />
+	</slot>
+	<slot number = "38">
+		<pattr name = "d1" value = "0 10" />
+		<pattr name = "d2" value = "0 10" />
+		<pattr name = "d3" value = "0 10" />
+		<pattr name = "d4" value = "0 10" />
+		<pattr name = "d5" value = "0 10" />
+		<pattr name = "d6" value = "0 10" />
+		<pattr name = "d7" value = "0 10" />
+		<pattr name = "d8" value = "0 10" />
+		<pattr name = "harmony" value = "0" />
+		<pattr name = "rhythm" value = "15" />
+		<pattr name = "tempo" value = "120" />
+		<pattr name = "pname" value = "grains and guide" />
+		<pattr name = "orch1" value = "granular_buzz" />
+		<pattr name = "orch2" value = "granular_buzz" />
+		<pattr name = "orch3" value = "granular_sparkles" />
+		<pattr name = "orch4" value = "waveguide3" />
+		<pattr name = "orch5" value = "off" />
+		<pattr name = "energy" value = "1" />
+		<pattr name = "disabled" value = "0" />
+		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
+		<pattr name = "start_question" value = "none" />
+		<pattr name = "amp1" value = "0.307692" />
+		<pattr name = "amp2" value = "0.384615" />
+		<pattr name = "amp3" value = "0.384615" />
+		<pattr name = "amp4" value = "0.384615" />
+		<pattr name = "amp5" value = "0.307692" />
+		<pattr name = "rev1" value = "0.5" />
+		<pattr name = "rev2" value = "0.5" />
+		<pattr name = "rev3" value = "0.192308" />
+		<pattr name = "rev4" value = "0.538462" />
+		<pattr name = "rev5" value = "0.423077" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
+		<pattr name = "arg_a2" value = "simple" />
+		<pattr name = "arg_a3" value = "simple" />
+		<pattr name = "arg_a4" value = "simple" />
+		<pattr name = "arg_a5" value = "melody" />
+		<pattr name = "arg_a1" value = "simple" />
+		<pattr name = "arg_b1" value = "&quot;13&quot;" />
+		<pattr name = "arg_b2" value = "&quot;13&quot;" />
+		<pattr name = "arg_b3" value = "&quot;13&quot;" />
+		<pattr name = "arg_b4" value = "&quot;14&quot;" />
+		<pattr name = "arg_b5" value = "none" />
+	</slot>
+	<slot number = "39">
+		<pattr name = "d1" value = "0 10" />
+		<pattr name = "d2" value = "0 10" />
+		<pattr name = "d3" value = "0 10" />
+		<pattr name = "d4" value = "0 10" />
+		<pattr name = "d5" value = "0 10" />
+		<pattr name = "d6" value = "0 10" />
+		<pattr name = "d7" value = "0 10" />
+		<pattr name = "d8" value = "0 10" />
+		<pattr name = "harmony" value = "0" />
+		<pattr name = "rhythm" value = "0" />
+		<pattr name = "tempo" value = "120" />
+		<pattr name = "pname" value = "helmpattern" />
+		<pattr name = "orch1" value = "helmholtz" />
+		<pattr name = "orch2" value = "waveshipatterned" />
+		<pattr name = "orch3" value = "off" />
+		<pattr name = "orch4" value = "off" />
+		<pattr name = "orch5" value = "off" />
+		<pattr name = "energy" value = "0" />
+		<pattr name = "disabled" value = "0" />
+		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
+		<pattr name = "start_question" value = "none" />
+		<pattr name = "amp1" value = "0.615385" />
+		<pattr name = "amp2" value = "0.615385" />
+		<pattr name = "amp3" value = "1." />
+		<pattr name = "amp4" value = "1." />
+		<pattr name = "amp5" value = "1." />
+		<pattr name = "rev1" value = "0.5" />
+		<pattr name = "rev2" value = "0.5" />
+		<pattr name = "rev3" value = "0.5" />
+		<pattr name = "rev4" value = "0.5" />
+		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_FADEINBY66" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
+		<pattr name = "arg_a2" value = "simple" />
+		<pattr name = "arg_a3" value = "simple" />
+		<pattr name = "arg_a4" value = "simple" />
+		<pattr name = "arg_a5" value = "melody" />
+		<pattr name = "arg_a1" value = "simple" />
+		<pattr name = "arg_b1" value = "&quot;14&quot;" />
+		<pattr name = "arg_b2" value = "&quot;13&quot;" />
+		<pattr name = "arg_b3" value = "none" />
+		<pattr name = "arg_b4" value = "&quot;14&quot;" />
 		<pattr name = "arg_b5" value = "none" />
 	</slot>
 	<slot number = "100">
@@ -1571,7 +1895,7 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
-		<pattr name = "amp1" value = "" />
+		<pattr name = "amp1" value = "0.692308" />
 		<pattr name = "amp2" value = "" />
 		<pattr name = "amp3" value = "" />
 		<pattr name = "amp4" value = "" />
@@ -1581,6 +1905,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "markov" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1614,8 +1943,8 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
-		<pattr name = "amp1" value = "" />
-		<pattr name = "amp2" value = "" />
+		<pattr name = "amp1" value = "0.538462" />
+		<pattr name = "amp2" value = "0.615385" />
 		<pattr name = "amp3" value = "" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
@@ -1624,6 +1953,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_FADEINBY25" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "markov" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1657,8 +1991,8 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
-		<pattr name = "amp1" value = "" />
-		<pattr name = "amp2" value = "" />
+		<pattr name = "amp1" value = "0.692308" />
+		<pattr name = "amp2" value = "0.615385" />
 		<pattr name = "amp3" value = "" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
@@ -1667,6 +2001,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "melody" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1700,8 +2039,8 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
-		<pattr name = "amp1" value = "" />
-		<pattr name = "amp2" value = "" />
+		<pattr name = "amp1" value = "0.615385" />
+		<pattr name = "amp2" value = "0.615385" />
 		<pattr name = "amp3" value = "" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
@@ -1710,6 +2049,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "melody" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1742,9 +2086,9 @@
 		<pattr name = "energy" value = "" />
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
-		<pattr name = "start_question" value = "" />
-		<pattr name = "amp1" value = "" />
-		<pattr name = "amp2" value = "" />
+		<pattr name = "start_question" value = "none" />
+		<pattr name = "amp1" value = "0.384615" />
+		<pattr name = "amp2" value = "0.461538" />
 		<pattr name = "amp3" value = "" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
@@ -1753,6 +2097,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1786,8 +2135,8 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "&quot;videogames, minecraft&quot;" />
 		<pattr name = "start_question" value = "" />
-		<pattr name = "amp1" value = "" />
-		<pattr name = "amp2" value = "" />
+		<pattr name = "amp1" value = "0.461538" />
+		<pattr name = "amp2" value = "0.538462" />
 		<pattr name = "amp3" value = "" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
@@ -1796,6 +2145,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1829,8 +2183,8 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
-		<pattr name = "amp1" value = "" />
-		<pattr name = "amp2" value = "" />
+		<pattr name = "amp1" value = "0.538462" />
+		<pattr name = "amp2" value = "0.538462" />
 		<pattr name = "amp3" value = "" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
@@ -1839,6 +2193,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_FADEINBY33" />
+		<pattr name = "env2" value = "e_FADEOUTBY75" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -1873,15 +2232,20 @@
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
 		<pattr name = "amp1" value = "" />
-		<pattr name = "amp2" value = "" />
-		<pattr name = "amp3" value = "" />
-		<pattr name = "amp4" value = "" />
-		<pattr name = "amp5" value = "" />
+		<pattr name = "amp2" value = "0.538462" />
+		<pattr name = "amp3" value = "0.538462" />
+		<pattr name = "amp4" value = "0.538462" />
+		<pattr name = "amp5" value = "0.615385" />
 		<pattr name = "rev1" value = "" />
 		<pattr name = "rev2" value = "" />
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_FADEINBY33" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "pattern" />
@@ -1917,14 +2281,19 @@
 		<pattr name = "start_question" value = "" />
 		<pattr name = "amp1" value = "" />
 		<pattr name = "amp2" value = "" />
-		<pattr name = "amp3" value = "0.615385" />
-		<pattr name = "amp4" value = "0.615385" />
-		<pattr name = "amp5" value = "0.846154" />
+		<pattr name = "amp3" value = "0.384616" />
+		<pattr name = "amp4" value = "0.384616" />
+		<pattr name = "amp5" value = "0.615385" />
 		<pattr name = "rev1" value = "" />
 		<pattr name = "rev2" value = "" />
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_FADEINBY25" />
+		<pattr name = "env4" value = "e_FADEINBY50" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "straight" />
 		<pattr name = "arg_a3" value = "bucket" />
 		<pattr name = "arg_a4" value = "pattern" />
@@ -1959,15 +2328,20 @@
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
 		<pattr name = "amp1" value = "" />
-		<pattr name = "amp2" value = "" />
-		<pattr name = "amp3" value = "" />
-		<pattr name = "amp4" value = "" />
-		<pattr name = "amp5" value = "" />
+		<pattr name = "amp2" value = "0.615385" />
+		<pattr name = "amp3" value = "0.384615" />
+		<pattr name = "amp4" value = "0.461538" />
+		<pattr name = "amp5" value = "0.769231" />
 		<pattr name = "rev1" value = "" />
 		<pattr name = "rev2" value = "" />
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_MIDDLEIN33" />
+		<pattr name = "env4" value = "e_MIDDLEOUT25" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "bucket" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "pattern" />
@@ -2001,8 +2375,8 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
-		<pattr name = "amp1" value = "" />
-		<pattr name = "amp2" value = "" />
+		<pattr name = "amp1" value = "0.384615" />
+		<pattr name = "amp2" value = "0.461538" />
 		<pattr name = "amp3" value = "" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
@@ -2011,6 +2385,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "markov" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2034,34 +2413,39 @@
 		<pattr name = "harmony" value = "14" />
 		<pattr name = "rhythm" value = "28" />
 		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "my cool thingie" />
+		<pattr name = "pname" value = "astral" />
 		<pattr name = "orch1" value = "slowwaves" />
-		<pattr name = "orch2" value = "off" />
-		<pattr name = "orch3" value = "off" />
+		<pattr name = "orch2" value = "granular_shimmer" />
+		<pattr name = "orch3" value = "granular_shimmer" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "" />
-		<pattr name = "amp2" value = "" />
-		<pattr name = "amp3" value = "" />
+		<pattr name = "amp1" value = "0.615385" />
+		<pattr name = "amp2" value = "0.384615" />
+		<pattr name = "amp3" value = "0.384615" />
 		<pattr name = "amp4" value = "" />
 		<pattr name = "amp5" value = "" />
 		<pattr name = "rev1" value = "" />
-		<pattr name = "rev2" value = "" />
-		<pattr name = "rev3" value = "" />
+		<pattr name = "rev2" value = "0.730769" />
+		<pattr name = "rev3" value = "0.692308" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
-		<pattr name = "arg_a2" value = "none" />
-		<pattr name = "arg_a3" value = "none" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_FADEINBY66" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
+		<pattr name = "arg_a2" value = "bucket" />
+		<pattr name = "arg_a3" value = "simple" />
 		<pattr name = "arg_a4" value = "none" />
 		<pattr name = "arg_a5" value = "none" />
 		<pattr name = "arg_a1" value = "bucket" />
 		<pattr name = "arg_b1" value = "filename" />
 		<pattr name = "arg_b2" value = "none" />
-		<pattr name = "arg_b3" value = "none" />
+		<pattr name = "arg_b3" value = "&quot;7&quot;" />
 		<pattr name = "arg_b4" value = "none" />
 		<pattr name = "arg_b5" value = "none" />
 	</slot>
@@ -2089,14 +2473,19 @@
 		<pattr name = "start_question" value = "none" />
 		<pattr name = "amp1" value = "0.538462" />
 		<pattr name = "amp2" value = "0.307692" />
-		<pattr name = "amp3" value = "0.846154" />
-		<pattr name = "amp4" value = "0.846154" />
+		<pattr name = "amp3" value = "0.461539" />
+		<pattr name = "amp4" value = "0.461539" />
 		<pattr name = "amp5" value = "0.538462" />
 		<pattr name = "rev1" value = "" />
 		<pattr name = "rev2" value = "" />
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_MIDDLEIN25" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "avi3a" />
 		<pattr name = "arg_a3" value = "markov" />
 		<pattr name = "arg_a4" value = "bucket" />
@@ -2130,16 +2519,21 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.769231" />
-		<pattr name = "amp2" value = "0.846154" />
-		<pattr name = "amp3" value = "0.846154" />
+		<pattr name = "amp1" value = "0.538462" />
+		<pattr name = "amp2" value = "0.538462" />
+		<pattr name = "amp3" value = "0.384616" />
 		<pattr name = "amp4" value = "0.230769" />
 		<pattr name = "amp5" value = "" />
 		<pattr name = "rev1" value = "" />
 		<pattr name = "rev2" value = "" />
 		<pattr name = "rev3" value = "" />
-		<pattr name = "rev4" value = "" />
+		<pattr name = "rev4" value = "0.192308" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_FADEINBY33" />
+		<pattr name = "env2" value = "e_FADEINBY25" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "simple" />
 		<pattr name = "arg_a4" value = "avi3a" />
@@ -2173,9 +2567,9 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1.153846" />
-		<pattr name = "amp2" value = "0.384616" />
-		<pattr name = "amp3" value = "0.615385" />
+		<pattr name = "amp1" value = "1." />
+		<pattr name = "amp2" value = "0.307693" />
+		<pattr name = "amp3" value = "0.23077" />
 		<pattr name = "amp4" value = "0.153846" />
 		<pattr name = "amp5" value = "0." />
 		<pattr name = "rev1" value = "" />
@@ -2183,6 +2577,11 @@
 		<pattr name = "rev3" value = "" />
 		<pattr name = "rev4" value = "" />
 		<pattr name = "rev5" value = "" />
+		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "simple" />
 		<pattr name = "arg_a3" value = "simple" />
 		<pattr name = "arg_a4" value = "Patter" />
@@ -2226,6 +2625,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2269,6 +2673,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2312,6 +2721,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2345,7 +2759,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "&quot;cosmogeny:How do you create a digital universe?&quot;" />
-		<pattr name = "amp1" value = "1." />
+		<pattr name = "amp1" value = "0.923077" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -2355,6 +2769,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "e_CONSTANT" />
+		<pattr name = "env3" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env5" value = "e_CONSTANT" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2398,6 +2817,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2441,6 +2865,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2484,6 +2913,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2527,6 +2961,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2570,6 +3009,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2613,6 +3057,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2656,6 +3105,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2699,6 +3153,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2742,6 +3201,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2785,6 +3249,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2828,6 +3297,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2871,6 +3345,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2914,6 +3393,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -2957,6 +3441,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -3000,6 +3489,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -3043,6 +3537,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -3086,6 +3585,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -3129,6 +3633,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -3172,6 +3681,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -3215,6 +3729,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -3258,6 +3777,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -3301,6 +3825,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -3344,6 +3873,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -3387,6 +3921,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -3430,6 +3969,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -3473,6 +4017,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -3516,6 +4065,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
@@ -3559,6 +4113,11 @@
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
+		<pattr name = "env2" value = "" />
+		<pattr name = "env3" value = "" />
+		<pattr name = "env4" value = "" />
+		<pattr name = "env5" value = "" />
 		<pattr name = "arg_a2" value = "none" />
 		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />

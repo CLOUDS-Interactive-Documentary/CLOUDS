@@ -37,8 +37,7 @@ void testApp::setup(){
 	receiver.setup( 12345 );
     
     mixer.setup(2, 44100, 512, 2);
-    mixer.setMusicVolume(1);
-	
+	mixer.showCompressor = true;
 	
 	//update questions
 	ofBuffer questionBuffer;
@@ -151,6 +150,7 @@ void testApp::update(){
             oarg_b.clear();
             oamp.clear();
             orev.clear();
+            oenv.clear();
 		}
 		if(m.getAddress() == "/addOrch"){
 			oorch.push_back(m.getArgAsString(0));
@@ -158,6 +158,7 @@ void testApp::update(){
 			oarg_b.push_back(m.getArgAsString(2));
             oamp.push_back(m.getArgAsFloat(3));
             orev.push_back(m.getArgAsFloat(4));
+            oenv.push_back(m.getArgAsString(5));
 		}
 		if(m.getAddress() == "/startMusic"){
 			cout << "STARTING MUSIC" << endl;
@@ -165,7 +166,7 @@ void testApp::update(){
             for(int i = 0;i<oorch.size();i++)
             {
                 cout << "running " << oorch[i] << endl;
-                sound.startMusic(0, oorch[i], oarg_a[i], oarg_b[i], oharmony, orhythm, odur, otempo, oamp[i], orev[i], i);
+                sound.startMusic(0, oorch[i], oarg_a[i], oarg_b[i], oharmony, orhythm, odur, otempo, oamp[i], orev[i], i, oenv[i]);
             }
 		}
 		else if(m.getAddress() == "/stopMusic"){
@@ -196,6 +197,17 @@ void testApp::draw(){
                                     player.getPlayer().getWidth()*.25,
                                     player.getPlayer().getHeight()*.25);
         }
+    }
+    if(mixer.showCompressor)
+    {
+        int r = ofMap(mixer.gain, 0.5, 1., 255, 0);
+        int g = ofMap(mixer.followgain, 0., 0.5, 0, 255);
+        ofSetColor(0, g, 0);
+        ofFill();
+        ofRect(ofGetWidth()*.75, ofGetHeight()*.05, 50, 50);
+        ofSetColor(r, 0, 0);
+        ofFill();
+        ofRect(ofGetWidth()*.85, ofGetHeight()*.05, 50, 50);
     }
 }
 

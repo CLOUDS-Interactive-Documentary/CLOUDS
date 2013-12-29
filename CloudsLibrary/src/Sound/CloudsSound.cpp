@@ -167,7 +167,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                 for(int j = 0;j<presets.size();j++)
                 {
                     // CHECK FOR RIGGED
-                    if(i==0 && presets[j].start_question==args.soundQuestionKey) {
+                    if(i==0 /* &&  presets[j].start_question == args.soundQuestionKey*/) {
                         //if(presets[j].slotnumber < 250) // temporary
                         //{
                             if(LUKEDEBUG) cout << "   rigged preset: " << presets[j].slotnumber << endl;
@@ -220,18 +220,17 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                 INITMIX();
                 for(int j = 0;j<presets[thepreset].instruments.size();j++)
                 {
-                    startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo, presets[thepreset].m_amp[j], presets[thepreset].m_rev[j], j);
+                    startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo, presets[thepreset].m_amp[j], presets[thepreset].m_rev[j], j, presets[thepreset].env[j]);
                 }
             }
 
             allowchange = false;
-            //ofSleepMillis(1000);
         }
     }
     if(rigged)
     {
         //flush_sched();
-        startMusic(0, "slowwaves", "markov", "NULL", 0, 0, totalduration, 120, 0.5, 0.5, 0);
+        startMusic(0, "slowwaves", "markov", "NULL", 0, 0, totalduration, 120, 0.5, 0.5, 0, "e_FADEINOUTFASTEST");
     }
     
     if(LUKEDEBUG) cout << "====================" << endl;

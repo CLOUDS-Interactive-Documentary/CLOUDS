@@ -3048,8 +3048,8 @@
 		E70CE3A41869648900955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE3A51869648900955691 /* CloudsVisualSystem2DVideo.cpp */,
 				E70CE3A61869648900955691 /* CloudsVisualSystem2DVideo.h */,
+				E70CE3A51869648900955691 /* CloudsVisualSystem2DVideo.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";

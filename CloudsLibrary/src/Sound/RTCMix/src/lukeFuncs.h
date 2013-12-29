@@ -55,6 +55,7 @@ struct lukePreset {
     vector<string> instruments;
     vector<string> arg_a;
     vector<string> arg_b;
+    vector<string> env;
     vector<float> m_amp;
     vector<float> m_rev;
     int harmony;
@@ -160,7 +161,7 @@ void PANECHO(double outskip, double inskip, double dur, double amp, double leftd
 void SCHEDULEBANG(double time);
 void STREAMSOUND(double outskip, string file, double dur, double amp, ofSoundPlayer& bupsound);
 
-void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus);
+void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus, string ampcurve);
 void INITMIX();
 
 void PATCHSYNTH(string inst, string output);
