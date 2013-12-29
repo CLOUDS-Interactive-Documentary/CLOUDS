@@ -2,8 +2,13 @@
     <Kind>42</Kind>
     <Name>Mesh</Name>
     <IsMinified>0</IsMinified>
+<<<<<<< HEAD
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+=======
     <XPosition>992</XPosition>
     <YPosition>11</YPosition>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,7 +33,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>gTunnelv2_01.obj</Name>
+<<<<<<< HEAD
+    <Value>0</Value>
+=======
     <Value>1</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -53,7 +62,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>gTunnelv2_06.obj</Name>
+<<<<<<< HEAD
+    <Value>1</Value>
+=======
     <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>2</Kind>

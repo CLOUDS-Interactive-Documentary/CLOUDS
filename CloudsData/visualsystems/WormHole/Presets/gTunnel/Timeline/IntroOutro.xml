@@ -2,6 +2,10 @@
     <key>
         <flag />
         <time>00:00:27:582</time>
+<<<<<<< HEAD
+        <value>0.975000024</value>
+=======
         <value>0.975</value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
     </key>
 </keyframes>

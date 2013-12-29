@@ -2835,6 +2835,16 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="ExampleOpenSteer_Algae">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="ExampleOpenSteer_Basic">
     <keywords></keywords>
     <links></links>
@@ -2928,6 +2938,35 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="ExampleOpenSteer_Streamers">
+    <keywords>emergence|flocking</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Casey - Systems theory</clip>
+        <clip>Casey - You need noise</clip>
+        <clip>Higa - collaboration with machines 1</clip>
+        <clip>Higa - collaboration with machines 2</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Marcus - Sims</clip>
+        <clip>Marcus - energy flow_riot</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Nervous_Jesse - organic process</clip>
+        <clip>Nervous_Jesse - reaction lamp</clip>
+        <clip>Nervous_Jessica - RNA and Viruses</clip>
+        <clip>Nervous_Jessica - biocomputer</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Shiffman - Games</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -3184,139 +3223,33 @@
     <oculus>1</oculus>
     <sound>0</sound>
 </system>
-<system name="Fireworks_emitter">
+<system name="Fireworks_Gravity">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Fireworks_fw4">
+<system name="Fireworks_WildBlue">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Fireworks_fw_1">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments>Fun.</comments>
-    <grade>B</grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
-<system name="Fireworks_fw_10_fast">
-    <keywords>Simulation|videogames</keywords>
-    <links></links>
-    <suppressions>
-        <clip>Kyle_CH - MMORPGs</clip>
-        <clip>Ramsey - a piece of my mind</clip>
-        <clip>Zach - minecraft livecode</clip>
-        <clip>Ramsey - videogame development</clip>
-        <clip>Ramsey - games for access</clip>
-        <clip>Kyle_CH - Cory Arcangel</clip>
-        <clip>Kevin - Big games 1</clip>
-        <clip>Karsten - east german hardware 2</clip>
-        <clip>Karsten - atari emulation</clip>
-        <clip>Diederick - don&apos;t like that kind of interaction</clip>
-        <clip>Casey - Something new, totally engrossing</clip>
-        <clip>Aaron - lego creatures</clip>
-        <clip>Aaron - experience design</clip>
-        <clip>Paola - Moma games</clip>
-    </suppressions>
-    <comments></comments>
-    <grade>A</grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
-<system name="Fireworks_fw_2">
+<system name="Fireworks_underwater">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
-<system name="Fireworks_fw_3">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
-<system name="Fireworks_fw_4">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
-<system name="Fireworks_fw_5">
-    <keywords>videogames</keywords>
-    <links></links>
-    <suppressions>
-        <clip>Aaron - lego creatures</clip>
-        <clip>Aaron - experience design</clip>
-        <clip>Casey - radically different from a videogame</clip>
-        <clip>Diederick - don&apos;t like that kind of interaction</clip>
-        <clip>JTNimoy - evolution</clip>
-        <clip>Karsten - east german hardware 2</clip>
-        <clip>Karsten - demo scene 1</clip>
-        <clip>Karsten - atari emulation</clip>
-        <clip>Kevin - Big games 1</clip>
-        <clip>Kevin - non-mimetic reality</clip>
-        <clip>Kevin - Area code 2</clip>
-        <clip>Kevin - area code 1</clip>
-        <clip>Kevin - Acknolwedgement of artifice</clip>
-        <clip>Kyle_CH - Avatars</clip>
-        <clip>Kyle_CH - Cory Arcangel</clip>
-        <clip>Kyle_CH - videogame world</clip>
-        <clip>Paola - Moma games</clip>
-        <clip>Ramsey - games for access</clip>
-        <clip>Ramsey - videogame development</clip>
-        <clip>Zach - minecraft livecode</clip>
-    </suppressions>
-    <comments></comments>
-    <grade>B</grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
-<system name="Fireworks_fw_7">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
-<system name="Fireworks_fw_9">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -3755,6 +3688,26 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="LaplacianTunnel_Black_5Reps">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="LaplacianTunnel_LaplacianPointsOC">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="LaplacianTunnel_LaplacianTunnel">
     <keywords></keywords>
     <links></links>
@@ -3762,6 +3715,46 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="LaplacianTunnel_LaplacianWhiteOc">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="LaplacianTunnel_LoopTest">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="LaplacianTunnel_White_4Reps">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="LaplacianTunnel_White_5Reps_Slow">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -8296,6 +8289,16 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Vision_BridgePreset">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Vision_GreenPoint_Contour">
     <keywords></keywords>
     <links></links>
@@ -8373,6 +8376,16 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Vision_UnionFlow_JG">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>

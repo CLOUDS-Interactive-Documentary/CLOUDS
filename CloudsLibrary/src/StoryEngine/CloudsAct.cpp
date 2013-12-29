@@ -140,9 +140,11 @@ void CloudsAct::populateTime(){
 	//calculate the 3 largest delta shifts;
 	vector< pair<string,float> > clipDeltas;
 	map<string, vector<CloudsDichotomy> >::iterator it;
-	float lastValues[dichotomiesBase.size()];
+	vector<float> lastValues;
+	lastValues.resize(dichotomiesBase.size());
+
 	bool firstLoop = true;
- 
+
     if(clips.size() < 2){
         ofLogError("CloudsAct::populateTime") << "Not enough clips in act to create sections";
         return;

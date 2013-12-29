@@ -270,7 +270,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
 		CloudsActEventArgs args(customAct);
 		ofNotifyEvent(events.actCreated, args);
 		customAct = NULL;
-		return;
+		return NULL;
 	}
 	
     CloudsAct* act = new CloudsAct();
