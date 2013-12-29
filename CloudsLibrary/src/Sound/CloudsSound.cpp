@@ -106,7 +106,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     float totalduration = args.act->getTimeline().getDurationInSeconds();
     int mharmony, mrhythm, mtempo;
     bool allowchange = true;
-    bool isHighEnergy = true;
+    bool isHighEnergy = false;
 	
     // launch music FX chain
     startMusicFX(0, totalduration);
@@ -157,6 +157,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
             if(LUKEDEBUG) cout << "	current energy is " << (isHighEnergy ? "HIGH" : "LOW") << endl;
             
             if(args.act->isClipEnergyShift(theclip)) allowchange = true;
+            if(i==1) allowchange=true;
             
             if(allowchange)
             {
