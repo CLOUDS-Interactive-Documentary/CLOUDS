@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Cell Floor Translusence</Name>
-    <Value>0.527093291</Value>
+    <Value>0.620689332</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,17 +18,17 @@
 <Widget>
     <Kind>5</Kind>
     <Name>R1</Name>
-    <Value>1.000000000</Value>
+    <Value>0.762499988</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>G1</Name>
-    <Value>1.000000000</Value>
+    <Value>0.800000012</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>B1</Name>
-    <Value>1.000000000</Value>
+    <Value>0.737500012</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
@@ -38,20 +38,20 @@
 <Widget>
     <Kind>5</Kind>
     <Name>R2</Name>
-    <Value>0.600000024</Value>
+    <Value>0.537500024</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>G2</Name>
-    <Value>1.000000000</Value>
+    <Value>0.475000024</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>B2</Name>
-    <Value>0.637499988</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>A2</Name>
-    <Value>1.000000000</Value>
+    <Value>0.774999976</Value>
 </Widget>
