@@ -20,13 +20,13 @@ CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
 void CloudsSecondaryDisplayController::setup(){
 
 	parser.loadFromFiles();
-	visualSystems.loadPresets();
+//	visualSystems.loadPresets();
 	
-	storyEngine.parser = &parser;
-	storyEngine.visualSystems = &visualSystems;
-	storyEngine.printDecisions = false;
-	storyEngine.combinedClipsOnly = false;
-	storyEngine.setup();
+	//storyEngine.parser = &parser;
+	////storyEngine.visualSystems = &visualSystems;
+	//storyEngine.printDecisions = false;
+	//storyEngine.combinedClipsOnly = false;
+	//storyEngine.setup();
 	
 //	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
 //	CloudsAct* act = storyEngine.buildAct(run, startingNodes[ ofRandom(startingNodes.size()) ]);
@@ -34,7 +34,7 @@ void CloudsSecondaryDisplayController::setup(){
 //	run.clipHistory = act->getAllClips();
 	
 	clusterMap.buildEntireCluster(parser);
-	clusterMap.setRun(run);
+//	clusterMap.setRun(run);
 
 //	clusterMap.traverse();
 	clusterMap.forceScreenResolution(1920, 1080);

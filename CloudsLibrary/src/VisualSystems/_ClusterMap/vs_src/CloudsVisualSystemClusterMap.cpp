@@ -265,8 +265,8 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	displayGui->addToggle("incremental traversal", &incrementalTraversalMode);
 	
 	displayGui->addSlider("line alpha",  0, 1.0, &lineAlpha);
-	displayGui->addSlider("line focal dist", 0, sqrt(3000), &lineFocalDistance);
-	displayGui->addSlider("line focal range", 0, sqrt(3000), &lineFocalRange);
+	displayGui->addSlider("line focal dist", 0, sqrt(3000.0f), &lineFocalDistance);
+	displayGui->addSlider("line focal range", 0, sqrt(3000.0f), &lineFocalRange);
 	
 	displayGui->addSlider("line dissolve", 0, 1.0, &lineDissolve);
 	
