@@ -12,9 +12,9 @@
 #include "ofxOsc.h"
 
 #include "CloudsVisualSystemClusterMap.h"
-#include "CloudsRun.h"
-#include "CloudsStoryEngine.h"
-#include "CloudsAct.h"
+//#include "CloudsRun.h"
+//#include "CloudsStoryEngine.h"
+//#include "CloudsAct.h"
 #include "CloudsFCPParser.h"
 #include "ofxOsc.h"
 #include "CloudsSpeaker.h"
@@ -40,10 +40,10 @@ class CloudsSecondaryDisplayController {
   protected:
 	
 	CloudsVisualSystemClusterMap clusterMap;
-	CloudsRun run;
+	//CloudsRun run;
 	CloudsFCPParser parser;
-	CloudsStoryEngine storyEngine;
-	CloudsVisualSystemManager visualSystems;
+	//CloudsStoryEngine storyEngine;
+	//CloudsVisualSystemManager visualSystems;
 
 	void loadSVGs();
 	//TODO: make separate layer sets for Project Example vs Person
