@@ -15,10 +15,14 @@ hanning = maketable("window", 4000, "hanning")
 hamming = maketable("window", 4000, "hamming")
 
 wf_puresine = maketable("wave", 1000, 1.0);
+wf_dampedsine = maketable("wave", 1000, 1.0, 0.1, 0.01, 0.001, 0.0001);
 wf_organ = maketable("wave", 1000, 1.0, 0.7, 0.4, 0.3, 0.2, 0.1, 0.05, 0.02);
 wf_slowwaves = maketable("wave", 1000, 1.0, 0.3, 0.2, 0.1, 0.05);
 wf_slowwaveshi = maketable("wave", 1000, 1.0, 0.1, 0.3, 0.05, 0.15, 0.025);
-wf_waveshi = maketable("wave", 1000, "tri");
+wf_tri = maketable("wave", 1000, "tri30");
+wf_saw = maketable("wave", 1000, "sawup30")
+wf_square = maketable("wave", 1000, "square30")
+wf_buzz = maketable("wave", 1000, "buzz30")
 
 vel_strike = maketable("line", 1000, 0.0, 1.0, 1.0, 0.0, 10., 0.);
 ws_xfer = maketable("linebrk", 1000, -0.5, 300, -0.5, 200, 0, 200, 0.5, 300, 0.5)

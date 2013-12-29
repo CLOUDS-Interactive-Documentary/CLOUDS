@@ -1,9 +1,15 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Displacement</Name>
+<<<<<<< HEAD
+    <IsMinified>0</IsMinified>
+    <XPosition>853.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+=======
     <IsMinified>1</IsMinified>
     <XPosition>1</XPosition>
     <YPosition>93</YPosition>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,30 +19,54 @@
 <Widget>
     <Kind>4</Kind>
     <Name>displacement</Name>
+<<<<<<< HEAD
+    <Value>0.000000000</Value>
+=======
     <Value>9.31034</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseDirectionX</Name>
+<<<<<<< HEAD
+    <Value>0.000000000</Value>
+=======
     <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseDirectionY</Name>
+<<<<<<< HEAD
+    <Value>0.000000000</Value>
+=======
     <Value>0.330049</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseDirectionZ</Name>
+<<<<<<< HEAD
+    <Value>0.000000000</Value>
+=======
     <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseSpeed</Name>
+<<<<<<< HEAD
+    <Value>0.000000000</Value>
+=======
     <Value>0.369458</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noiseScale</Name>
+<<<<<<< HEAD
+    <Value>0.000000000</Value>
+=======
     <Value>3.94089</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
 </Widget>

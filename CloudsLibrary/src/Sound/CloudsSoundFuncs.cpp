@@ -11,6 +11,8 @@
 
 void CloudsSound::startMusicFX(float outskip, float musicdur)
 {
+    // blow out routing table
+    INITMIX();
     // REVERB
     REVERB(outskip, musicdur+7.0); // gimme some reverb
     // schedule end event at time + ring-down
@@ -59,7 +61,9 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // META
     if(arg_a=="simple")
     {
-        mel = simplemelodies[ofToInt(arg_b)];
+        int a = ofToInt(arg_b);
+        if(a>simplemelodies.size()-1) a=simplemelodies.size();
+        mel = simplemelodies[a];
     }
     
     // SLOWWAVES
@@ -181,9 +185,9 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
                 float of2 = d1*ofRandom(0.3, 0.7);
                 float d2 = d1+of1+of2;
                 float amp = 0.02*rhythms[mr].beats[bcount];
-                WAVETABLE(outskip+i, d0, amp, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
-                WAVETABLE(outskip+i+of1, d1, amp, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
-                WAVETABLE(outskip+i+of2, d2, amp, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                WAVETABLE(outskip+i, d0, amp, freq, ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+                WAVETABLE(outskip+i+of1, d1, amp, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+                WAVETABLE(outskip+i+of2, d2, amp, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_tri", "amp_sharphold");
             }
             bcount = (bcount+1)%rhythms[mr].beats.size();
         }
@@ -214,7 +218,55 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
         
     }
-  
+
+    // LOWWAVEJUNO
+    if (mo=="lowwavejuno")
+    {
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        melodySolver m(arg_a, pitches[mh], mel);
+        int curpitch;
+        float freq;
+        
+        for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(8, 32)))
+        {
+            curpitch = m.tick();
+            freq = mtof(curpitch)*0.5;
+            
+            float t_amp = 0.025;
+            float d = ofRandom(2., 6.);
+            float p = ofRandom(0., 1.);
+            WAVETABLE(outskip+i, d, t_amp, freq, p, "wf_saw", "amp_triangle");
+            WAVETABLE(outskip+i, d*ofRandom(0.9,1.1), t_amp, freq*0.99, 1.-p, "wf_square", "amp_triangle");
+        }
+        
+    }
+
+    // HIJUNO
+    if (mo=="hijuno")
+    {
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        melodySolver m(arg_a, pitches[mh], mel);
+        int curpitch;
+        float freq;
+        
+        for(i = 0;i<musicdur;i+=tempo*2.)
+        {
+            if(rhythms[mr].beats[bcount]>0.) {
+
+                curpitch = m.tick();
+                freq = mtof(curpitch);
+                
+                float t_amp = rhythms[mr].beats[bcount]*0.025;
+                float d = tempo*floor(ofRandom(2., 5.));
+                float p = ofRandom(0., 1.);
+                WAVETABLE(outskip+i, d, t_amp, freq, p, "wf_saw", "amp_sharpadsr");
+                WAVETABLE(outskip+i, d*ofRandom(0.9,1.1), t_amp, freq*0.99, 1.-p, "wf_square", "amp_sharpadsr");
+            }
+            bcount = (bcount+1)%rhythms[mr].beats.size();
+       }
+        
+    }
+
     // KISS MY ARP
     if (mo=="kissmyarp")
     {
@@ -228,8 +280,8 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
                 if(n[i].starttime < musicdur)
                 {
                     int pitch = scale(n[i].pitch, pitches[mh].scale);
-                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1, mtof(pitch), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
-                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur*3., n[i].velo*0.05, mtof(pitch), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1, mtof(pitch), ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur*3., n[i].velo*0.05, mtof(pitch), ofRandom(0.,1.), "wf_tri", "amp_sharphold");
                 }
             }
             
@@ -250,8 +302,49 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
                 pitch+=oct;
                 pitch = scale(pitch, pitches[mh].scale);
                 freq = mtof(pitch);
-                WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
-                WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+                WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+            }
+        }
+    }
+    
+    // KISS MY SINE
+    if (mo=="kissmysine")
+    {
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        if(arg_a=="sequencer")
+        {
+            vector<lukeNote> n;
+            cloudsSequencer(arg_b, n);
+            for(int i = 0;i<n.size();i++)
+            {
+                if(n[i].starttime < musicdur)
+                {
+                    int pitch = scale(n[i].pitch, pitches[mh].scale);
+                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1, mtof(pitch), ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
+                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur*3., n[i].velo*0.05, mtof(pitch), ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
+                }
+            }
+            
+        }
+        else
+        {
+            SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+            melodySolver m(arg_a, pitches[mh], mel);
+            int curpitch;
+            float freq;
+            
+            for(i = 0;i<musicdur;i+=tempo*2)
+            {
+                int oct = ofRandom(0., 1.)*12;
+                curpitch = m.tick();
+                int pitch = curpitch % 12;
+                pitch+=pitches[mh].basenote;
+                pitch+=oct;
+                pitch = scale(pitch, pitches[mh].scale);
+                freq = mtof(pitch);
+                WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
+                WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
             }
         }
     }
@@ -274,8 +367,33 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
                 pitch+=oct;
                 pitch = scale(pitch, pitches[mh].scale);
                 freq = mtof(pitch);
-                WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
-                WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+                WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+            }
+            bcount = (bcount+1)%rhythms[mr].beats.size();
+        }
+    }
+    
+    // KISS MY SINE SYNCH
+    if (mo=="kissmysinesynch")
+    {
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        melodySolver m(arg_a, pitches[mh], mel);
+        int curpitch;
+        float freq;
+        
+        for(i = 0;i<musicdur;i+=tempo*2)
+        {
+            if(rhythms[mr].beats[bcount]>0.) {
+                int oct = ofRandom(0., 1.)*12;
+                curpitch = m.tick();
+                int pitch = curpitch % 12;
+                pitch+=pitches[mh].basenote;
+                pitch+=oct;
+                pitch = scale(pitch, pitches[mh].scale);
+                freq = mtof(pitch);
+                WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
+                WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
             }
             bcount = (bcount+1)%rhythms[mr].beats.size();
         }
@@ -298,11 +416,33 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
             pitch+=oct;
             pitch = scale(pitch, pitches[mh].scale);
             freq = mtof(pitch);
-            WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
-            WAVETABLE(outskip+i+tempo*3, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+            WAVETABLE(outskip+i+tempo*3, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_tri", "amp_sharphold");
         }
     }
     
+    // KISS MY SINE FAST
+    if (mo=="kissmysinefast")
+    {
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum);
+        melodySolver m(arg_a, pitches[mh], mel);
+        int curpitch;
+        float freq;
+        
+        for(i = 0;i<musicdur;i+=tempo)
+        {
+            int oct = ofRandom(0., 2.)*12;
+            curpitch = m.tick();
+            int pitch = curpitch % 12;
+            pitch+=pitches[mh].basenote;
+            pitch+=oct;
+            pitch = scale(pitch, pitches[mh].scale);
+            freq = mtof(pitch);
+            WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
+            WAVETABLE(outskip+i+tempo*3, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
+        }
+    }
+
     // WISH
     if (mo=="wish")
     {
@@ -325,8 +465,8 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
                 float amp = 0.02*rhythms[mr].beats[bcount];
 
                 WAVESHAPE(outskip+i, d0, amp, freq, ofRandom(0., 1.), "wf_puresine", "amp_sharpadsr", "ws_xfer", "ramp_01");
-                WAVESHAPE(outskip+i+of1, d1, amp, freq*ofRandom(0.99, 1.01), ofRandom(0., 1.), "wf_puresine", "amp_sharpadsr", "ws_xfer", "ramp_01");
-                WAVESHAPE(outskip+i+of2, d2, amp, freq*ofRandom(0.99, 1.01), ofRandom(0., 1.), "wf_puresine", "amp_sharpadsr", "ws_xfer", "ramp_01");
+                WAVESHAPE(outskip+i, d1, amp, freq*ofRandom(0.99, 1.01), ofRandom(0., 1.), "wf_puresine", "amp_sharpadsr", "ws_xfer", "ramp_01");
+                WAVESHAPE(outskip+i, d2, amp, freq*ofRandom(0.99, 1.01), ofRandom(0., 1.), "wf_puresine", "amp_sharpadsr", "ws_xfer", "ramp_01");
             }
             bcount = (bcount+1)%rhythms[mr].beats.size();
         }
@@ -572,8 +712,64 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
     }
     
-    
-    
+    // GRANSYNTH9
+    if (mo=="granular_hail")
+    {
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum);
+        melodySolver m(arg_a, pitches[mh], mel);
+        int curpitch;
+        float freq;
+        
+        float freq_jitter = 1;
+        float grate = 0.01;
+        float grate_var = 0.005;
+        float gdur_min = 0.004;
+        float gdur_max = 0.025;
+        float gamp_min = 0.05;
+        float gamp_max = 0.4;
+        string pitchhandle = "ramp_12";
+        string ratehandle = "ramp_21";
+        string durhandle = "ramp_12";
+       
+        for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(8, 16)))
+        {
+            curpitch = m.tick();
+            freq = mtof(curpitch);
+            
+            float d = tempo*ofRandom(12., 36.);
+            GRANSYNTH(outskip+i, d, 0.1, freq, freq_jitter, grate, grate_var, gdur_min, gdur_max, gamp_min, gamp_max, 0., 1., "wf_slowwaveshi", "hanning", "transplist2", pitchhandle, ratehandle, durhandle);
+        }
+    }
+   
+    // GRANSYNTH10
+    if (mo=="granular_juno")
+    {
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "GRANSYNTH", instnum);
+        melodySolver m(arg_a, pitches[mh], mel);
+        int curpitch;
+        float freq;
+        
+        float freq_jitter = 1.;
+        float grate = 0.01;
+        float grate_var = 0.005;
+        float gdur_min = 0.1;
+        float gdur_max = 0.15;
+        float gamp_min = 0.01;
+        float gamp_max = 0.2;
+        string pitchhandle = "ramp_12";
+        string ratehandle = "ramp_21";
+        string durhandle = "ramp_12";
+        
+        for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(4, 16)))
+        {
+            curpitch = m.tick();
+            freq = mtof(curpitch);
+            
+            float d = tempo*ofRandom(8., 12.);
+            GRANSYNTH(outskip+i, d, 0.1, freq, freq_jitter, grate, grate_var, gdur_min, gdur_max, gamp_min, gamp_max, 0., 1., "wf_square", "hanning", "transplist2",pitchhandle, ratehandle, durhandle);
+        }
+    }
+
     // PHYSICAL MODELS (MELODIC)
     
     // WAVEGUIDE
@@ -592,6 +788,54 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
     }
     
+    // WAVEGUIDE2
+    if (mo=="waveguide2")
+    {
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "MBANDEDWG", instnum);
+        melodySolver m(arg_a, pitches[mh], mel);
+        int curpitch;
+        float freq;
+        int preset = 2;
+        for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(6, 12)))
+        {
+            curpitch = m.tick();
+            freq = mtof(curpitch);
+            MBANDEDWG(outskip+i, 2., ofRandom(0.05, 0.25), freq, ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
+        }
+    }
+
+    // WAVEGUIDE
+    if (mo=="waveguide3")
+    {
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "MBANDEDWG", instnum);
+        melodySolver m(arg_a, pitches[mh], mel);
+        int curpitch;
+        float freq;
+        int preset = 1;
+        for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(6, 12)))
+        {
+            curpitch = m.tick();
+            freq = mtof(curpitch);
+            MBANDEDWG(outskip+i, 2., ofRandom(0.05, 0.25), freq, ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
+        }
+    }
+
+    // WAVEGUIDE
+    if (mo=="waveguide4")
+    {
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "MBANDEDWG", instnum);
+        melodySolver m(arg_a, pitches[mh], mel);
+        int curpitch;
+        float freq;
+        int preset = 0;
+        for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(6, 12)))
+        {
+            curpitch = m.tick();
+            freq = mtof(curpitch);
+            MBANDEDWG(outskip+i, 2., ofRandom(0.05, 0.25), freq, ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
+        }
+    }
+
     // HELMHOLTZ
     if (mo=="helmholtz")
     {
@@ -645,8 +889,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // STRUMSINE
     if (mo=="strumsine")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "WAVETABLE", instnum);
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0.5, "STRUM2", instnum+5);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0.5, "WAVETABLE", instnum);
         melodySolver m(arg_a, pitches[mh], mel);
         int curpitch;
         float freq;
@@ -655,11 +898,10 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         {
             curpitch = m.tick();
             float pitch = curpitch;
-            WAVETABLE(outskip+i, 2., 0.025*m_amp, mtof(pitch), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
+            WAVETABLE(outskip+i, 2., 0.025, mtof(pitch), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
             for(j=0;j<tempo;j+=(tempo/floor(ofRandom(4,8))))
             {
-                
-                STRUM(outskip+i+j, 1.0, 0.05*m_amp, mtof(pitch), ofRandom(1.0, 5.0), ofRandom(1.0, 5.0), ofRandom(1.0));
+                WAVETABLE(outskip+i+j, 1., 0.05, mtof(pitch), ofRandom(1.0), "wf_puresine", "amp_sharphold");
                 int tr = ofRandom(0, 5);
                 if(tr==0) pitch+=7;
             }
@@ -689,7 +931,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
                 curpitch = m.tick();
                 freq = mtof(curpitch);
                 
-                MMODALBAR(outskip+i, 1., amp*0.2*m_amp, freq, ofRandom(0.1,0.9), ofRandom(0.,1.), int(ofRandom(8))    );
+                MMODALBAR(outskip+i, 1., amp*0.2, freq, ofRandom(0.1,0.9), ofRandom(0.,1.), int(ofRandom(8))    );
             }
             bcount = (bcount+1)%rhythms[mr].beats.size();
         }
@@ -770,10 +1012,10 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
             {
 
                 pick = ofRandom(0,5);
-                if(pick==1) STEREO(outskip+i, 0., 0.5*m_amp, ofRandom(0.05, 0.2), 0.5, "VD1");
-                else if(pick==2) STEREO(outskip+i, 0., 0.2*m_amp, ofRandom(0.05, 0.2), 0.5, "VD2");
-                else if(pick==3) STEREO(outskip+i, 0., 0.2*m_amp, ofRandom(0.05, 0.2), 0.5, "VD3");
-                else if(pick==4) STEREO(outskip+i, 0., 0.2*m_amp, ofRandom(0.05, 0.2), 0.5, "VD4");
+                if(pick==1) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "BD1");
+                else if(pick==2) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "BD2");
+                else if(pick==3) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "BD3");
+                else if(pick==4) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "BD4");
             }
         }
     }
@@ -790,10 +1032,10 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
             {
                 
                 pick = ofRandom(0,5);
-                if(pick==1) STEREO(outskip+i, 0., 0.5*m_amp, ofRandom(0.05, 0.2), 0.5, "VD1");
-                else if(pick==2) STEREO(outskip+i, 0., 0.2*m_amp, ofRandom(0.05, 0.2), 0.5, "VD2");
-                else if(pick==3) STEREO(outskip+i, 0., 0.2*m_amp, ofRandom(0.05, 0.2), 0.5, "VD3");
-                else if(pick==4) STEREO(outskip+i, 0., 0.2*m_amp, ofRandom(0.05, 0.2), 0.5, "VD4");
+                if(pick==1) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "BD1");
+                else if(pick==2) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "BD2");
+                else if(pick==3) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "BD3");
+                else if(pick==4) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "BD4");
             }
         }
     }
@@ -809,7 +1051,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
                 
                 float t_amp = rhythms[mr].beats[bcount]*ofRandom(0.1, 0.2);
                 pick = (int)ofRandom(0, 3);
-                if(pick<2) STEREO(outskip+i, 0., 0.5, t_amp*m_amp, 0.5, "BD"); else STEREO(outskip+i, 0., 0.5, t_amp, 0.5, "SD");
+                if(pick<2) STEREO(outskip+i, 0., 0.5, t_amp*m_amp, 0.5, "BD1"); else STEREO(outskip+i, 0., 0.5, t_amp, 0.5, "SD");
             }
             pick = ofRandom(0,4);
             if(pick<2) STEREO(outskip+i, 0., 0.5, ofRandom(0.05, 0.2)*m_amp, 0.5, "CH");
@@ -897,8 +1139,8 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // UTILITY
     if (mo=="simplesound")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "STEREO", instnum);
-        STREAMSOUND(arg_b, musicdur, 1.*m_amp);
+        //SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "STEREO", instnum);
+        STREAMSOUND(arg_b, musicdur, 1.*m_amp, backupsound);
     }
 
     //
@@ -920,4 +1162,7 @@ void CloudsSound::stopMusic()
     parse_score(thebuf, bx);
  */
     rtc_playing = false;
+    
+    backupsound.stop();
+    backupsound.unloadSound();
 }

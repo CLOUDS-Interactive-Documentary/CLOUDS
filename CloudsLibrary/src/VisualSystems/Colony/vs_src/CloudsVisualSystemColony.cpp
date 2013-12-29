@@ -45,9 +45,11 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
     sysGui->addRangeSlider("Max Speed", 0.0, 10.0, &params.maxSpeed_min, &params.maxSpeed_max);
     sysGui->addRangeSlider("Max Force", 0.0, 10.0, &params.maxForce_min, &params.maxForce_max);
     sysGui->addRangeSlider("Max Size", 0.0, 30.0, &params.maxSize_min, &params.maxSize_max);
+
+    sysGui->addToggle("Level Set Mode", &levelSetMode);
     
     sysGui->addSpacer("Immutables");
-    sysGui->addSlider("Initial Cells", 0, 1000, &numInitialCells);
+    sysGui->addIntSlider("Initial Cells", 0, 1000, &numInitialCells);
     sysGui->addButton("Reset", &reset);
 }
 
@@ -117,15 +119,13 @@ void CloudsVisualSystemColony::selfUpdate()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
-//    ofEnableBlendMode(OF_BLENDMODE_ADD);
-//    grunge.bind();
-//    grunge.draw(0,0);
-//    grunge.unbind();
-//    ofDisableBlendMode();
 
     
     ofEnableAlphaBlending();
     levelSet.begin();
+    levelSet.setUniformTexture("grunge", grunge, 1);
+    levelSet.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
+    levelSet.setUniform1i("levelSet", levelSetMode);
     fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
                   getSharedRenderTarget().getHeight());
     levelSet.end();

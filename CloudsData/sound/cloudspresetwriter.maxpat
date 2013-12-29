@@ -31,6 +31,78 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-174",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 329.0, 9.0, 79.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 193.0, 21.663971, 79.0, 20.0 ],
+					"text" : "< reload files"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-171",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 299.0, 7.0, 20.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 163.0, 21.663971, 20.0, 20.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-172",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 142.0, 949.0, 62.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 513.0, 21.663971, 62.0, 20.0 ],
+					"text" : "< clear all"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 18.0,
+					"id" : "obj-169",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 94.0, 980.0, 48.0, 27.0 ],
+					"text" : "s init"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.913725, 0.913725, 0.913725, 0.0 ],
+					"id" : "obj-140",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 95.0, 949.0, 31.0, 31.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 479.0, 16.163971, 31.0, 31.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
 					"fontsize" : 18.0,
 					"id" : "obj-168",
 					"maxclass" : "newobj",
@@ -974,7 +1046,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-133",
-					"items" : [ "none", ",", "Aaron_exciting_time:What", "is", "new", "and", "innovative", "in", "new", "media?", ",", "Aaron_networked_creativity:How", "has", "the", "internet", "changed", "everything?", ",", "Aaron_experience_design:How", "does", "digital", "design", "apply", "to", "everyday", "life?", ",", "Casey_Systems_theory:How", "can", "simple", "rules", "have", "complex", "results?", ",", "Casey_emergence:What", "is", "emergence?", ",", "Casey_Developing_a_microworld:How", "do", "you", "build", "a", "universe?", ",", "Elliot_UK_Ideaspace:Can", "someone", "claim", "ownership", "of", "an", "idea?", ",", "Golan_woah2:What", "is", "surprising?", ",", "JTNimoy_Pickle:What", "does", "it", "feel", "like", "to", "program?", ",", "Julia_CLOUDS:What", "is", "the", "story", "of", "Clouds?", ",", "Julian_I_love_networks:What", "does", "the", "internet", "look", "like?", ",", "Karsten_demo_scene_2:What's", "the", "connection", "between", "videogame", "culture", "and", "creative", "coding?", ",", "Karsten_code_is_information:What", "is", "code?", ",", "Karsten_programming_is...:What", "does", "it", "feel", "like", "to", "program?", ",", "Karsten_infinite_conversation:What", "is", "Clouds?", ",", "Kyle_CH_new_generation:How", "did", "the", "creative", "coding", "community", "take", "shape?", ",", "Kyle_CH_coding", ",", "_magic:How", "do", "algorithms", "become", "tangible?", ",", "Lauren_Social_reality_circa_2013:How", "do", "people", "communicate", "now?", ",", "Lauren_how_we_communicate:How", "do", "people", "communicate", "now?", ",", "Lauren_how_we_communicate", ",", "_shorter:How", "does", "human", "interaction", "rely", "on", "networks?", ",", "Lauren_Constructed_self:How", "does", "your", "online", "identity", "differ", "from", "your", "everyday", "self?", ",", "Lauren_toward_greater_consciousness:What", "does", "technology", "aspire", "toward?", ",", "Lindsay_hackers:What's", "the", "hacker", "ethos?", ",", "Maeda_a_computer_is_a_clock:What", "is", "a", "computer?", ",", "Marius_these_things_are_in_my_head:Where", "does", "abstraction", "originate?", ",", "Marius_Continuous_process_of_exploration:Is", "an", "artwork", "ever", "done?", ",", "Marius_gardening:Does", "a", "generative", "artwork", "ever", "reach", "a", "state", "of", "completion?", ",", "Nervous_Jessica_I_create_the_work_that_I_love:How", "do", "you", "know", "whether", "something", "is", "good?", ",", "Philip_with_programming_you_can_do_whatever:How", "does", "a", "universe", "begin?", ",", "Ramsey_language_self_expression:In", "what", "way", "is", "coding", "an", "art", "form?", ",", "Ramsey_why_code_is_special:What", "is", "code?", ",", "Ramsey_a_hundred_million:How", "does", "programming", "change", "the", "way", "you", "think?", ",", "Ramsey_what_is_a_computer:What", "is", "a", "computer?", ",", "Ramsey_computation_is_interpretation_of_rules:What", "is", "computation?", ",", "Shantell_Coding:_what_does_it_feel_like?:What", "is", "it", "like", "to", "sketch", "with", "code?", ",", "Shantell_Coding_gesturally:How", "do", "you", "sketch", "with", "code?", ",", "Shiffman_NOC_3:What", "would", "it", "mean", "to", "simulate", "the", "world", "through", "code?" ],
+					"items" : [ "none", ",", "coding:How", "can", "the", "logic", "of", "coding", "be", "creative?", ",", "community:How", "does", "the", "network", "accelerate", "creativity?", ",", "cosmogeny:How", "do", "you", "create", "a", "digital", "universe?", ",", "interactivity:What", "makes", "a", "satisfying", "interaction?", ",", "interface:What's", "the", "ultimate", "interface?", ",", "open", "source:What", "is", "open", "source", "all", "about?", ",", "programming:Is", "programming", "a", "waste", "of", "time?", ",", "programming:What", "does", "it", "feel", "like", "to", "program?", ",", "real", "and", "virtual:Have", "we", "hacked", "reality?", ",", "simulation:Is", "it", "possible", "to", "truly", "simulate", "reality?", ",", "sketching:How", "do", "you", "sketch", "with", "code?", ",", "thinking:Do", "computers", "make", "us", "smarter?", ",", "toolmakers:what's", "the", "link", "between", "invention", "and", "art?" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -1158,7 +1230,7 @@
 					"fontsize" : 18.0,
 					"id" : "obj-1",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patcher" : 					{
@@ -1190,6 +1262,76 @@
 						"digest" : "",
 						"tags" : "",
 						"boxes" : [ 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 18.0,
+									"id" : "obj-23",
+									"linecount" : 2,
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 460.0, 162.0, 139.0, 45.0 ],
+									"text" : "read argmappings.txt"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-21",
+									"maxclass" : "button",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 321.0, 278.0, 20.0, 20.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 18.0,
+									"id" : "obj-19",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 434.0, 115.0, 189.0, 25.0 ],
+									"text" : "read orchmappings.txt"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 18.0,
+									"id" : "obj-17",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 4,
+									"outlettype" : [ "", "", "", "" ],
+									"patching_rect" : [ 350.0, 303.0, 172.0, 27.0 ],
+									"saved_object_attributes" : 									{
+										"embed" : 0
+									}
+,
+									"text" : "coll argmappings.txt"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-16",
+									"maxclass" : "inlet",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 448.0, 64.0, 25.0, 25.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 18.0,
@@ -1337,10 +1479,64 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-19", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-16", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-23", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-16", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-19", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-21", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-2", 2 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-7", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-2", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-21", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-17", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-23", 0 ]
 								}
 
 							}
@@ -6841,7 +7037,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 823.0, 945.071228, 89.0, 23.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 104.0, 521.0, 77.0, 23.0 ],
+					"presentation_rect" : [ 104.0, 565.894226, 77.0, 23.0 ],
 					"text" : "used slots"
 				}
 
@@ -6883,15 +7079,16 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-193",
-					"linecount" : 5,
+					"linecount" : 17,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 658.0, 937.0, 133.0, 83.0 ],
+					"patching_rect" : [ 658.0, 937.0, 133.0, 270.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 104.0, 494.0, 586.0, 20.0 ],
-					"text" : "1 2 3 4 5 6 7 8 9 10 11 12 20 100 101 102 103 104 105 106 107 108 109 110 111 112 113"
+					"presentation_linecount" : 4,
+					"presentation_rect" : [ 104.0, 494.0, 586.0, 67.0 ],
+					"text" : "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 299 300 301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 321 322 323 324 325 326 327 328 329 330"
 				}
 
 			}
@@ -8639,7 +8836,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 769.0, -11.389191, 97.0, 27.0 ],
-					"restore" : [ "slowwaves" ],
+					"restore" : [ "off" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -8694,7 +8891,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 76.971786, 700.733032, 107.0, 27.0 ],
-					"restore" : [ "my", "cool", "thingie" ],
+					"restore" : [ "<empty>" ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -8734,7 +8931,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 283.757416, 576.947388, 107.0, 27.0 ],
-					"restore" : [ 28 ],
+					"restore" : [ 0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -8754,7 +8951,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 283.757416, 543.815063, 122.0, 27.0 ],
-					"restore" : [ 14 ],
+					"restore" : [ 0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -9163,7 +9360,6 @@
 					"patching_rect" : [ 224.323578, 732.020325, 250.616516, 25.486425 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 221.323578, 249.020325, 250.616516, 25.486425 ],
-					"text" : "my cool thingie",
 					"varname" : "textedit"
 				}
 
@@ -9233,7 +9429,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-75",
-					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "waveguide", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "modalbeats", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound" ],
+					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "kissmysine", ",", "kissmysinesynch", ",", "kissmysinefast", ",", "waveguide", ",", "waveguide2", ",", "waveguide3", ",", "waveguide4", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "hardbuzz", ",", "modalbeats", ",", "wish", ",", "slowlowwish", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound", ",", "granular_sparkles", ",", "granular_rain", ",", "granular_shimmer", ",", "granular_whales", ",", "granular_pad", ",", "granular_sparse", ",", "granular_buzz", ",", "granular_swish", ",", "granular_hail" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -9296,7 +9492,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-81",
-					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "waveguide", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "modalbeats", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound" ],
+					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "kissmysine", ",", "kissmysinesynch", ",", "kissmysinefast", ",", "waveguide", ",", "waveguide2", ",", "waveguide3", ",", "waveguide4", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "hardbuzz", ",", "modalbeats", ",", "wish", ",", "slowlowwish", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound", ",", "granular_sparkles", ",", "granular_rain", ",", "granular_shimmer", ",", "granular_whales", ",", "granular_pad", ",", "granular_sparse", ",", "granular_buzz", ",", "granular_swish", ",", "granular_hail" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -9317,7 +9513,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-64",
-					"items" : "none",
+					"items" : [ "none", ",", 0, ",", 1, ",", 2, ",", 3, ",", 4, ",", 5, ",", 6, ",", 7, ",", 8, ",", 9, ",", 10, ",", 11, ",", 12, ",", 13, ",", 14, ",", 15, ",", 16, ",", 17, ",", 18, ",", 19, ",", 20, ",", 21, ",", 22, ",", 23, ",", 24, ",", 25, ",", 26, ",", 27, ",", 28, ",", 29, ",", 30 ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -9359,7 +9555,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-69",
-					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "waveguide", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "modalbeats", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound" ],
+					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "kissmysine", ",", "kissmysinesynch", ",", "kissmysinefast", ",", "waveguide", ",", "waveguide2", ",", "waveguide3", ",", "waveguide4", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "hardbuzz", ",", "modalbeats", ",", "wish", ",", "slowlowwish", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound", ",", "granular_sparkles", ",", "granular_rain", ",", "granular_shimmer", ",", "granular_whales", ",", "granular_pad", ",", "granular_sparse", ",", "granular_buzz", ",", "granular_swish", ",", "granular_hail" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -9422,7 +9618,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-63",
-					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "waveguide", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "modalbeats", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound" ],
+					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "kissmysine", ",", "kissmysinesynch", ",", "kissmysinefast", ",", "waveguide", ",", "waveguide2", ",", "waveguide3", ",", "waveguide4", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "hardbuzz", ",", "modalbeats", ",", "wish", ",", "slowlowwish", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound", ",", "granular_sparkles", ",", "granular_rain", ",", "granular_shimmer", ",", "granular_whales", ",", "granular_pad", ",", "granular_sparse", ",", "granular_buzz", ",", "granular_swish", ",", "granular_hail" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -9464,7 +9660,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-56",
-					"items" : [ "none", ",", "bucket", ",", "melody", ",", "markov", ",", "simple", ",", "sequencer" ],
+					"items" : "none",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -9685,7 +9881,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-39",
-					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "waveguide", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "modalbeats", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound" ],
+					"items" : [ "off", ",", "slowwaves", ",", "slowwaveshi", ",", "waveshipatterned", ",", "lowwavepulse", ",", "kissmyarp", ",", "kissmyarpsynch", ",", "kissmyarpfast", ",", "kissmysine", ",", "kissmysinesynch", ",", "kissmysinefast", ",", "waveguide", ",", "waveguide2", ",", "waveguide3", ",", "waveguide4", ",", "helmholtz", ",", "filternoise", ",", "strumsine", ",", "strumecho", ",", "hardbuzz", ",", "modalbeats", ",", "wish", ",", "slowlowwish", ",", "waveguidebeats", ",", "meshbeats", ",", "slowmeshbeats", ",", "vermontbeatz", ",", "slowvermontbeatz", ",", "avibeats", ",", "simplesound", ",", "granular_sparkles", ",", "granular_rain", ",", "granular_shimmer", ",", "granular_whales", ",", "granular_pad", ",", "granular_sparse", ",", "granular_buzz", ",", "granular_swish", ",", "granular_hail" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -10772,6 +10968,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-169", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-140", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-129", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -11091,6 +11296,15 @@
 					"disabled" : 0,
 					"hidden" : 1,
 					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-171", 0 ]
 				}
 
 			}

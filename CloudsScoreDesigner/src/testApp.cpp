@@ -21,10 +21,12 @@ void testApp::setup(){
 	storyEngine.visualSystems = &visualSystems;
 	
     storyEngine.combinedClipsOnly = false; // true if using a clips drive
-	storyEngine.setup();
+    withVideo = false; // draw video?
+
+	
+    storyEngine.setup();
 	storyEngine.printDecisions = false;
 	storyEngine.toggleGuis(true);
-    withVideo = false; // draw video?
     
     sound.setup(storyEngine);
     
@@ -113,8 +115,15 @@ void testApp::questionAsked(CloudsQuestionEventArgs& args){
 
 void testApp::preRollRequested(CloudsPreRollEventArgs& clip){
 	
-	if(withVideo) player.setup(clip.preRollClip.combinedVideoPath,
-				 clip.preRollClip.combinedCalibrationXMLPath);
+	if(withVideo) {
+        if(clip.preRollClip.voiceOverAudio){
+            player.setupVO(clip.preRollClip.voiceOverAudioPath);
+        }
+        else{
+            player.setup(clip.preRollClip.combinedVideoPath,
+                         clip.preRollClip.combinedCalibrationXMLPath);
+        }
+    }
 	
 }
 //--------------------------------------------------------------
