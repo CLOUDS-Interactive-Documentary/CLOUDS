@@ -29,15 +29,6 @@ CloudsAct::~CloudsAct(){
 void CloudsAct::play(){
     
     CloudsActEventArgs args(this);
-	if(clips.size() > 0){
-		args.startClip = clips[0];
-		if(args.startClip.hasStartingQuestion() && args.startClip.getTopicsWithQuestions().size() > 0){
-			args.startTopic = args.startClip.getTopicsWithQuestions()[0];
-			args.startQuestion = clips[0].getQuestionForTopic(args.startTopic);
-			args.soundQuestionKey = args.startTopic + ":" + args.startQuestion;
-			cout << "sound question key: " << args.soundQuestionKey << endl;
-		}
-	}
 	
     ofNotifyEvent(events.actBegan, args);
 	
@@ -137,19 +128,34 @@ void CloudsAct::populateTime(){
 		dichotomyTracks[trackName] = timeline.addCurves(trackName, ofRange(-5,5), 0);
 	}
     
-	//calculate the 3 largest delta shifts;
-	vector< pair<string,float> > clipDeltas;
-	map<string, vector<CloudsDichotomy> >::iterator it;
-	vector<float> lastValues;
-	lastValues.resize(dichotomiesBase.size());
-
-	bool firstLoop = true;
-
     if(clips.size() < 2){
         ofLogError("CloudsAct::populateTime") << "Not enough clips in act to create sections";
         return;
     }
-
+	
+	///////////////CALCULATE SOUND CUES
+	CloudsClip& startClip = clips[0];
+	
+	cues.clear();
+	CloudsSoundCue introCue;
+	if(startClip.hasStartingQuestion() && startClip.getTopicsWithQuestions().size() > 0){
+		string startTopic    = startClip.getTopicsWithQuestions()[0];
+		string startQuestion = startClip.getQuestionForTopic(startTopic);
+		introCue.soundQuestionKey = startTopic + ":" + startQuestion;
+	}
+	introCue.mixLevel = 1;
+	introCue.startTime = clipItems[startClip.getLinkName()].startTime;
+	introCue.duration = clipItems[clips[1].getLinkName()].startTime;
+	introCue.dichotomies = dichotomiesMap[startClip.getLinkName()];
+	cues.push_back(introCue);
+	
+	//calculate the 2 largest delta shifts;
+	vector< pair<string,float> > clipDeltas;
+	map<string, vector<CloudsDichotomy> >::iterator it;
+	vector<float> lastValues;
+	lastValues.resize(dichotomiesBase.size());
+	
+	bool firstLoop = true;
 	for(int i = 1; i < clips.size()-2; i++){
 		
 		string clipID = clips[i].getLinkName();
@@ -166,7 +172,7 @@ void CloudsAct::populateTime(){
 			dichotomyTracks[trackName]->addKeyframeAtMillis(clipDichotomy[d].balance, startTime*1000.0);
 			if(!firstLoop){
 				//deltaChange = MAX(abs(clipDichotomy[d].balance-lastValues[d]),deltaChange);
-				int change = abs(clipDichotomy[d].balance-lastValues[d]);
+				int change = abs(clipDichotomy[d].balance - lastValues[d]);
 				if(change > 1){
 					deltaChange += change;
 				}
@@ -182,8 +188,9 @@ void CloudsAct::populateTime(){
 		firstLoop = false;
 	}
 	
-	sort(clipDeltas.begin(),clipDeltas.end(), delta_sort);
-	
+	sort(clipDeltas.begin(), clipDeltas.end(), delta_sort);
+
+	//MOOD CUES
 	ofxTLFlags* sections = timeline.addFlags("Sections");
 	if(clipDeltas.size() >= 2){
 		float firstFlagTime = clipItems[clipDeltas[0].first].startTime;
@@ -203,10 +210,32 @@ void CloudsAct::populateTime(){
 			energyShiftClipIDs.push_back(clipDeltas[1].first);
 			sections->addFlagAtTime(ofToString(clipDeltas[1].second), secondFlagTime*1000.);
 		}
-
+		
+		//Add 2 cues, act begun and mood shift
+		//End of intro cue
+		CloudsSoundCue actCue;
+		actCue.mixLevel = 1;
+		actCue.startTime = clipItems[clips[1].getLinkName()].startTime;
+		actCue.duration = clipItems[ energyShiftClipIDs[0] ].startTime;
+		actCue.dichotomies = dichotomiesMap[ clips[1].getLinkName() ];
+		cues.push_back(actCue);
+		
+		CloudsSoundCue energyShift;
+		energyShift.mixLevel = 1;
+		energyShift.startTime = clipItems[ energyShiftClipIDs[0] ].startTime;
+		energyShift.duration = duration - energyShift.startTime;
+		energyShift.dichotomies = dichotomiesMap[startClip.getLinkName()];
+		cues.push_back(energyShift);
+		
 	}
 	else {
 		ofLogError("CloudsAct::populateTime") << "Not enough clips to create section markers";
+	}
+
+	//create sound cue timeline debug
+	ofxTLFlags* soundQueues = timeline.addFlags("Sound Cues");
+	for(int i = 0; i < cues.size(); i++){
+		soundQueues->addFlagAtTime( "cue", cues[i].startTime*1000 );
 	}
 	
 	timeline.setCurrentPage(0);
@@ -271,6 +300,10 @@ float CloudsAct::getActDuration(){
     return duration;
 }
 
+vector<CloudsSoundCue>& CloudsAct::getSoundCues(){
+	return cues;
+}
+
 vector<CloudsDichotomy>& CloudsAct::getDichotomiesForClip(CloudsClip& clip){
 	return getDichotomiesForClip(clip.getLinkName());
 }
@@ -280,7 +313,6 @@ vector<CloudsDichotomy>& CloudsAct::getDichotomiesForClip(string clipName){
     if(dichotomiesMap.find(clipName) != dichotomiesMap.end()){
         return dichotomiesMap[clipName];
     }
-    cout<<"dichotomoies not found for clip: "<< clipName<<endl;
     return dummyDichotomies;
 }
 

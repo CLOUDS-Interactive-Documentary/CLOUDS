@@ -167,7 +167,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                 for(int j = 0;j<presets.size();j++)
                 {
                     // CHECK FOR RIGGED
-                    if(i==0 && presets[j].start_question==args.soundQuestionKey) {
+                    if(i==0 /* &&  presets[j].start_question == args.soundQuestionKey*/) {
                         //if(presets[j].slotnumber < 250) // temporary
                         //{
                             if(LUKEDEBUG) cout << "   rigged preset: " << presets[j].slotnumber << endl;
