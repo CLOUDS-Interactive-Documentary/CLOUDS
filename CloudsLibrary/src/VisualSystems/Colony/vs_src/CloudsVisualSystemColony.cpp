@@ -9,6 +9,7 @@ string CloudsVisualSystemColony::getSystemName()
 void CloudsVisualSystemColony::selfSetup()
 {
     numInitialCells = 100;
+    kernel_maxValue = 0.8;
     noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
     vbo.setMode(OF_PRIMITIVE_POINTS);
     
@@ -55,6 +56,19 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
     
     sysGui->addSlider("Cell Floor Translusence", 0., 1., &translucenseCell);
     sysGui->addSlider("Dish Floor Translusence", 0., 1., &translucenseDish);
+    
+//    sysGui->addWidgetDown(new ofxUILabel("V SLIDERS", OFX_UI_FONT_MEDIUM));
+    sysGui->addSlider("R", 0, 1., &(kernelColor_high.x));
+    sysGui->addSlider("G", 0, 1., &(kernelColor_high.y));
+    sysGui->addSlider("B", 0, 1., &(kernelColor_high.z));
+    sysGui->addSlider("A", 0, 1., &(kernelColor_high.w));
+    sysGui->addSlider("R", 0, 1., &(kernelColor_low.x));
+    sysGui->addSlider("G", 0, 1., &(kernelColor_low.y));
+    sysGui->addSlider("B", 0, 1., &(kernelColor_low.z));
+    sysGui->addSlider("A", 0, 1., &(kernelColor_low.w));
+    
+    
+//    sysGui->add
 }
 
 void CloudsVisualSystemColony::selfUpdate()
@@ -106,7 +120,10 @@ void CloudsVisualSystemColony::selfUpdate()
         
         billboard.begin();
         sprite.bind();
+        
+        billboard.setUniform1f("kernel_maxValue", kernel_maxValue);
         vbo.draw();
+        
         sprite.unbind();
         billboard.end();
 
@@ -132,6 +149,9 @@ void CloudsVisualSystemColony::selfDrawBackground()
     levelSet.setUniform2f("imgRes", grunge.getWidth(), grunge.getHeight());
     levelSet.setUniform1f("translucenseCell", translucenseCell);
     levelSet.setUniform1f("translucenseDish", translucenseDish);
+    levelSet.setUniform4fv("kernelColor_high", kernelColor_high.getPtr());
+    levelSet.setUniform4fv("kernelColor_low", kernelColor_low.getPtr());
+    levelSet.setUniform1f("kernel_maxValue", kernel_maxValue);
     fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
                   getSharedRenderTarget().getHeight());
     levelSet.end();

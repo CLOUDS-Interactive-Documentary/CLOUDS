@@ -12,6 +12,9 @@ uniform vec2 resolution;
 uniform vec2 imgRes;
 uniform float translucenseDish;
 uniform float translucenseCell;
+uniform vec4 kernelColor_high;
+uniform vec4 kernelColor_low;
+uniform float kernel_maxValue;
 
 /*
 float rand(vec2 co){
@@ -74,7 +77,7 @@ vec4 getMicroscope(vec4 fg, vec4 bg){
     b *= fg.b * fg.b;
     float innerCell = clamp(bump(b, .8, .4), 0., translucenseCell); // * (1. - (.2 + .2 * sin(gl_FragCoord.x + gl_FragCoord.y)));
     float shell = clamp(bump(b, .3, .2), 0., .95);
-    vec4 kernel = clamp(fg.g * 1.5 * vec4(.6, .7, .6, 1.), 0., 1.);
+    vec4 kernel = clamp(fg.g * 1.5 * vec4(.6, .7, .6, 1.), 0., 1.) * mix(kernelColor_low, kernelColor_high, fg.g/kernel_maxValue);
     vec4 envelope = pow(shell, 1.5) * vec4(1.);// * mix(1.,rand(gl_FragCoord.xy * 0.01), 0.15 );
     return envelope + kernel + (innerCell - fg.g) * bg; //* vec4(0.5,0.,0.,0.3);
 }
