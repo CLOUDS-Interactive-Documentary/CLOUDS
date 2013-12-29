@@ -1,6 +1,7 @@
 #version 120
 #define PI 3.14159265359
 #define E 2.71828
+#define LN_18 2.890371757896165
 
 uniform float time;
 uniform bool levelSet;
@@ -24,15 +25,23 @@ float noise2f( in vec2 p ){
     return res * res;
 }
 */
+
+float bump(float t, float center, float width){
+    float f = (t - center) / width;
+    return 1. - clamp(f * f, 0., 1.);
+}
+
 float heightMap(vec2 co){
     float bumps = 0;
     co *= 0.2;
-    int iters = 3;
-    for (int i = 1; i <= iters; ++i) {
+    float iters = 3.;
+    float t = time * .01;
+    for (float i = 1.; i <= iters; i += 1.) {
         //TODO: optimize this.
-        bumps += .25 * (2. + sin(co.x) + sin(co.y)) * log(1 + i); //normalized
+        bumps += (.5 + dot(sin(co),vec2(.25))) * log(1 + i);
         co *= .07;
-        co += vec2(sin(co.y), cos(co.x + time * 0.1));
+//        co += sin(co.yx + vec2(0.,t + PI/2.));
+        co += co.yx * (1 - cos(t));
     }
     bumps /= (iters * log(iters));
     return (-.5 + pow(bumps, 18.)) * PI;
@@ -40,16 +49,12 @@ float heightMap(vec2 co){
 
 vec4 getLevelSet(vec4 fg){
     float a = PI * (.5 + log(.25 + fg.b) * 6.);
-    float b = heightMap(gl_FragCoord.xy) * 18.;
+    float b = heightMap(gl_TexCoord[0].xy) * 18.;
+    float g = fg.g + .1;
+    g *= g * g;
     float levl = mix (a + b, max(a, b), .5);
-    float set = .5 * (1. + sin(levl));
-    set += pow(fg.g + .1, 3.);
-	return vec4(vec3(set), 1.);
-}
-
-float bump(float t, float center, float width){
-    float f = (t - center) / width;
-    return 1. - clamp(f * f, 0., 1.);
+    float set = .5 * (1. + sin(levl)) + g;
+	return vec4(set, set, set, 1.);
 }
 
 void main(){
