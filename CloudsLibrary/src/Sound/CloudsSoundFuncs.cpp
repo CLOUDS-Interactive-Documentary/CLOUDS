@@ -1010,7 +1010,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // VERMONTBEATZ
     if (mo=="vermontbeatz")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "STEREO", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "TRANS3", instnum);
         rhythmSolver r(arg_a, arg_b, rhythms[mr]);
         int pick;
         for(i = 0;i<musicdur;i+=tempo)
@@ -1019,10 +1019,10 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
             {
 
                 pick = ofRandom(0,5);
-                if(pick==1) STEREO(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD1");
-                else if(pick==2) STEREO(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD2");
-                else if(pick==3) STEREO(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD3");
-                else if(pick==4) STEREO(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD4");
+                if(pick==1) STEREO3(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD1");
+                else if(pick==2) STEREO3(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD2");
+                else if(pick==3) STEREO3(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD3");
+                else if(pick==4) STEREO3(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD4");
             }
         }
     }
@@ -1030,7 +1030,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // SLOWVERMONTBEATZ
     if (mo=="slowvermontbeatz")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "STEREO", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "TRANS3", instnum);
         rhythmSolver r(arg_a, arg_b, rhythms[mr]);
         int pick;
         for(i = 0;i<musicdur;i+=tempo*2.)
@@ -1039,10 +1039,10 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
             {
                 
                 pick = ofRandom(0,5);
-                if(pick==1) STEREO(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD1");
-                else if(pick==2) STEREO(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD2");
-                else if(pick==3) STEREO(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD3");
-                else if(pick==4) STEREO(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD4");
+                if(pick==1) STEREO3(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD1");
+                else if(pick==2) STEREO3(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD2");
+                else if(pick==3) STEREO3(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD3");
+                else if(pick==4) STEREO3(outskip+i, 0., 0.2*instGain, ofRandom(0.05, 0.2), 0.5, "BD4");
             }
         }
     }
@@ -1050,7 +1050,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // PHATBEATZ
     if (mo=="phatbeatz")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "STEREO", instnum);
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "TRANS3", instnum);
         int pick;
         for(i = 0;i<musicdur;i+=tempo*2.)
         {
@@ -1058,11 +1058,11 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
                 
                 float t_amp = rhythms[mr].beats[bcount]*ofRandom(0.1, 0.2);
                 pick = (int)ofRandom(0, 3);
-                if(pick<2) STEREO(outskip+i, 0., 0.5, t_amp*m_amp, 0.5, "BD1"); else STEREO(outskip+i, 0., 0.5, t_amp, 0.5, "SD");
+                if(pick<2) STEREO3(outskip+i, 0., 0.5, t_amp*m_amp, 0.5, "BD1"); else STEREO3(outskip+i, 0., 0.5, t_amp, 0.5, "SD");
             }
             pick = ofRandom(0,4);
-            if(pick<2) STEREO(outskip+i, 0., 0.5, ofRandom(0.05, 0.2)*instGain, 0.5, "CH");
-            else if(pick==2) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2)*instGain, 0.5, "OH");
+            if(pick<2) STEREO3(outskip+i, 0., 0.5, ofRandom(0.05, 0.2)*instGain, 0.5, "CH");
+            else if(pick==2) STEREO3(outskip+i, 0., 0.2, ofRandom(0.05, 0.2)*instGain, 0.5, "OH");
             bcount = (bcount+1)%rhythms[mr].beats.size();
         }
     }
@@ -1098,57 +1098,13 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
             }
         }
     }
-
-    //
-    // UNUSED
-    //
-    
-    // REICHOMATIC
-    if (mo=="reichomatic")
-    {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "TRANS3", instnum);
-        cout << "Sample number: " << looperSamples.size() << endl;
-        for(i = 0;i<looperSamples.size();i++)
-        {
-            if(looperSamples[i].bank==arg_a)
-            {
-                cout << "Sample: " << looperSamples[i].handle << endl;
-                for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
-                {
-                    int p = ofRandom(0, 3);
-                    if(p<1)
-                    {
-                        cout << "Playing: " << looperSamples[i].handle << " of length " << looperSamples[i].length << " at " << j << endl;
-                        SOUNDLOOPMONO(outskip+j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25*m_amp, looperSamples[i].handle, ofRandom(0.,1));
-                    }
-                }
-            }
-        }
-    }
-    
-    // GLASSOMATIC
-    if (mo=="glassomatic")
-    {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "TRANS3", instnum);
-        cout << "Sample number: " << looperSamples.size() << endl;
-        for(i = 0;i<looperSamples.size();i++)
-        {
-            if(looperSamples[i].bank==arg_b)
-            {
-                for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
-                {
-                    SOUNDLOOPMONO(outskip+j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25*m_amp, looperSamples[i].handle, (float)i/looperSamples.size()-1);
-                }
-            }
-        }
-    }
     
     // UTILITY
     if (mo=="simplesound")
     {
         //SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "STEREO", instnum);
-        PATCHFX("STEREO", "in 0-1", "out 0-1");
-        STREAMSOUND(outskip, arg_b, musicdur, 1.*m_amp, backupsound); // set to masterGain
+        PATCHFX("STEREO", "in 0", "out 0-1");
+        STREAMSOUND(outskip, arg_b, musicdur, 1.0*m_amp, backupsound); // set to masterGain
         //STREAMSOUND(outskip, arg_b, musicdur, 1.*m_amp*MASTER_GAIN, backupsound); // set to masterGain
     }
 
@@ -1172,6 +1128,6 @@ void CloudsSound::stopMusic()
  */
     rtc_playing = false;
     
-    backupsound.stop();
-    backupsound.unloadSound();
+    //backupsound.stop();
+    //backupsound.unloadSound();
 }
