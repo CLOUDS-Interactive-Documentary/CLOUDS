@@ -54,6 +54,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         MASTERTEMPO = 120;
         AUTORUN = 0;
         DOCLEAR = true;
+        DOCMIXPRINT = false;
         
 		ofAddListener(GetCloudsAudioEvents()->musicAudioRequested, this, &CloudsSound::audioRequested);
 
@@ -193,7 +194,9 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                     
                     //if all 8 dichos matched
                     if(pscore==8){
-                        valid_presets.push_back(j);	
+                        //if(presets[j].slotnumber<250) { // temporary
+                        valid_presets.push_back(j);
+                        //}
                     }
                 }
             
@@ -214,6 +217,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                 mrhythm = presets[thepreset].rhythm;
                 mtempo = presets[thepreset].tempo;
                 if(LUKEDEBUG) cout << "   preset: " << presets[thepreset].slotnumber;
+                INITMIX();
                 for(int j = 0;j<presets[thepreset].instruments.size();j++)
                 {
                     startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo, presets[thepreset].m_amp[j], presets[thepreset].m_rev[j], j);
@@ -221,6 +225,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
             }
 
             allowchange = false;
+            //ofSleepMillis(1000);
         }
     }
     if(rigged)
@@ -290,6 +295,12 @@ void CloudsSound::mouseMoved(ofMouseEventArgs & args){
 }
 
 void CloudsSound::mousePressed(ofMouseEventArgs & args){
+}
+
+void CloudsSound::doPrinting() {
+    DOCMIXPRINT = !DOCMIXPRINT;
+    if(DOCMIXPRINT) RTcmixParseScoreFile("print_on.sco");
+    else RTcmixParseScoreFile("print_off.sco");
 }
 
 // =========================

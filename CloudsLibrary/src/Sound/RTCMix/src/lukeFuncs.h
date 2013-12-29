@@ -153,6 +153,7 @@ void WAVESHAPE(double outskip, double dur, double amp, double freq, double pan, 
 void REVERB(double outskip, double time);
 float LOADSOUND(string file, string handle);
 void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle);
+void STEREO3(double outskip, double inskip, double dur, double amp, double pan, string handle);
 void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, double amp, string handle);
 void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan);
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);

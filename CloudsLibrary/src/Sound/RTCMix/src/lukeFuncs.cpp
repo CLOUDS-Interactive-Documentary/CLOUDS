@@ -139,6 +139,7 @@ void STREAMSOUND(double outskip, string file, double dur, double amp, ofSoundPla
         bx = snprintf(thebuf, 256, "STEREO(%f, 0., %f, %f*amp_declick, 0, 1)", outskip, dur, amp);
     }
     parse_score(thebuf, bx);
+    
     /*
     string p = GetCloudsDataPath() + "sound/trax/";
     ofDirectory sdir(p);
@@ -178,6 +179,19 @@ void STEREO(double outskip, double inskip, double dur, double amp, double pan, s
     parse_score(thebuf, bx);
     
 }
+
+// soundfile mixing with TRANS3
+void STEREO3(double outskip, double inskip, double dur, double amp, double pan, string handle)
+{
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, %f, %f, %f*amp_declick, 0., 0, %f)", outskip, inskip, dur, amp, pan);
+    parse_score(thebuf, bx);
+    
+}
+
 
 // loop a sound (transposition auto-corrected based on ideal length)
 void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, double amp, string handle)

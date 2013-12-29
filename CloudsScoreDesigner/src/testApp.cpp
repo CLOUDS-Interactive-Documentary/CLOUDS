@@ -233,6 +233,9 @@ void testApp::keyPressed(int key){
     if(key == 'c') {
         mixer.showCompressor = !mixer.showCompressor;
     }
+    if(key == 'p') {
+        sound.doPrinting();
+    }
 }
 
 //--------------------------------------------------------------
