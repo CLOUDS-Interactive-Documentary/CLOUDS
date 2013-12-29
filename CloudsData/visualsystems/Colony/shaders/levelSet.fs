@@ -59,13 +59,24 @@ float heightMap(vec2 co){
     return (-.5 + pow(bumps, 18.)) * PI;
 }
 
+//TODO: YOU WROTE THIS MOTHERFUCKER
+
+float getLightIntensity(float elevation, vec3 light){
+    //TODO: SMOOTH THIS
+    float dx = dFdx(elevation);
+    float dy = dFdy(elevation);
+    //TODO: use 3d
+    return dot(normalize(vec2(dx,dy)),normalize(light.xy));
+}
+
+
 vec4 getLevelSet(vec4 fg){
     float a = PI * (.5 + log(.25 + fg.b) * 6.);
     float b = heightMap(gl_TexCoord[0].xy) * 18.;
     float g = fg.g + .1;
     g *= g * g;
     float levl = mix (a + b, max(a, b), .5);
-    float set = .5 * (1. + sin(levl)) + g;
+    float set = (.5 * (1. + sin(levl)) + g) * mix(1,getLightIntensity(levl, vec3(1.)), 0.3);
 	return vec4(set, set, set, 1.);
 }
 
@@ -75,11 +86,12 @@ vec4 getMicroscope(vec4 fg, vec4 bg){
     
     //see if you're in the right range to be a border
     b *= fg.b * fg.b;
-    float innerCell = clamp(bump(b, .8, .4), 0., translucenseCell); // * (1. - (.2 + .2 * sin(gl_FragCoord.x + gl_FragCoord.y)));
-    float shell = clamp(bump(b, .3, .2), 0., .95);
-    vec4 kernel = clamp(fg.g * 1.5, 0., 1.) * mix(kernelColor_low, kernelColor_high, fg.g/kernel_maxValue);
-    vec4 envelope = pow(shell, 1.5) * vec4(1.);// * mix(1.,rand(gl_FragCoord.xy * 0.01), 0.15 );
-    return envelope + kernel + (innerCell - fg.g) * bg; //* vec4(0.5,0.,0.,0.3);
+    float innerCell = clamp(bump(b, .8, .4), 0., translucenseCell);
+    //innerCell *= (1. - (.2 + .2 * sin(gl_FragCoord.x + gl_FragCoord.y)));
+    float shellAlpha = clamp(bump(b, .3, .2), 0., .95);
+    vec4 kernel = clamp(fg.g/kernel_maxValue, 0., 1.) * mix(kernelColor_low, kernelColor_high, fg.g/kernel_maxValue);
+    vec4 shell = pow(shellAlpha, 1.5) * vec4(1.);
+    return premult(shell) + premult(kernel) + (innerCell - fg.g) * bg; //TODO: ?
 }
 
 void main(){
@@ -90,12 +102,13 @@ void main(){
             color = getLevelSet(fg);
     } else {
         
-        //FIXME: This is happening because I can only use sampler2dRect
+        //This is happening because I can only use sampler2dRect
         vec2 normalizedCoords = gl_TexCoord[0].xy * imgRes / resolution;
         vec4 bg = texture2DRect(grunge, normalizedCoords);
         vec4 bg_cu = texture2DRect(grunge, normalizedCoords * .5 + imgRes * .25 ); //enlarged
         vec4 cells = getMicroscope(fg, bg_cu);
-        color = vec4(bg.rgb * (1. - cells.a), translucenseDish) + cells;
+        bg.a -= min(bg.a, cells.a); //The joy of compisiting
+        color = vec4(premult(bg).rgb, translucenseDish) + premult(cells);
     }
     gl_FragColor = color;
 }
