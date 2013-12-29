@@ -72,11 +72,6 @@ private:
     /* LOL DATA */
     colonyPartitionMap pMap;
     vector< cellPtr > cells;
-
-    float  noiseZoom;
-    int newbornCount;
-    
-    bool reset; //TODO: used?
     
     /*  SUCH PARAMS */
     cellParams params;

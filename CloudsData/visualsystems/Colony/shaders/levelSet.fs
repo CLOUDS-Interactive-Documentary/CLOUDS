@@ -10,6 +10,8 @@ uniform sampler2DRect tex;
 uniform sampler2DRect grunge;
 uniform vec2 resolution;
 uniform vec2 imgRes;
+uniform float translucenseDish;
+uniform float translucenseCell;
 
 /*
 float rand(vec2 co){
@@ -66,7 +68,7 @@ vec4 getMicroscope(vec4 fg, vec4 bg){
     
     //see if you're in the right range to be a border
     b *= fg.b * fg.b;
-    float innerCell = clamp(bump(b, .8, .4), 0., 1.); // * (1. - (.2 + .2 * sin(gl_FragCoord.x + gl_FragCoord.y)));
+    float innerCell = clamp(bump(b, .8, .4), 0., translucenseCell); // * (1. - (.2 + .2 * sin(gl_FragCoord.x + gl_FragCoord.y)));
     float shell = clamp(bump(b, .3, .2), 0., .95);
     vec4 kernel = clamp(fg.g * 1.5 * vec4(.6, .7, .6, 1.), 0., 1.);
     vec4 envelope = pow(shell, 1.5) * vec4(1.);// * mix(1.,rand(gl_FragCoord.xy * 0.01), 0.15 );
@@ -84,9 +86,9 @@ void main(){
         //FIXME: This is happening because I can only use sampler2dRect
         vec2 normalizedCoords = gl_TexCoord[0].xy * imgRes / resolution;
         vec4 bg = texture2DRect(grunge, normalizedCoords);
-        vec4 bg_cu = texture2DRect(grunge, normalizedCoords * .5 + imgRes * .25 );
+        vec4 bg_cu = texture2DRect(grunge, normalizedCoords * .5 + imgRes * .25 ); //enlarged
         vec4 cells = getMicroscope(fg, bg_cu);
-        color = vec4(bg.rgb * (1. - cells.a), 0.2) + cells;
+        color = vec4(bg.rgb * (1. - cells.a), translucenseDish) + cells;
     }
     gl_FragColor = color;
 }
