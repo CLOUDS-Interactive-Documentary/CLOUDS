@@ -31,6 +31,10 @@ float noise2f( in vec2 p ){
 }
 */
 
+vec4 premult(in vec4 source, in float alpha){
+    return vec4(source.rgb * source.a, alpha);
+}
+
 float bump(float t, float center, float width){
     float f = (t - center) / width;
     return 1. - clamp(f * f, 0., 1.);
@@ -45,8 +49,8 @@ float heightMap(vec2 co){
         //TODO: optimize this.
         bumps += (.5 + dot(sin(co),vec2(.25))) * log(1 + i);
         co *= .07;
-//        co += sin(co.yx + vec2(0.,t + PI/2.));
-        co += co.yx * (1 - cos(t));
+        co += sin(co.yx + vec2(0.,t*10. + PI/2.));
+//        co += co.yx * (1 - cos(t));
     }
     bumps /= (iters * log(iters));
     return (-.5 + pow(bumps, 18.)) * PI;
