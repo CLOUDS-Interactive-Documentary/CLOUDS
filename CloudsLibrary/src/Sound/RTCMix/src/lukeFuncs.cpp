@@ -67,9 +67,9 @@ void SETUPMIX(double outskip, double time, double amp, double dry, double verb, 
     parse_score(thebuf, bx);
 
     // do the SPLITTER() calls
-    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*%s, 0, %f, 0., %f, 0., %f, 0.)", outskip, time, amp, (char*)ampcurve.c_str(), dry, verb, echo);
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*%s*e_DECLICK, 0, %f, 0., %f, 0., %f, 0.)", outskip, time, amp, (char*)ampcurve.c_str(), dry, verb, echo);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*%s, 1, 0., %f, %f, 0., 0., %f)", outskip, time, amp, (char*)ampcurve.c_str(), dry, verb, echo);
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*%s*e_DECLICK, 1, 0., %f, %f, 0., 0., %f)", outskip, time, amp, (char*)ampcurve.c_str(), dry, verb, echo);
     parse_score(thebuf, bx);
     
 }

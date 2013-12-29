@@ -225,7 +225,6 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
             }
 
             allowchange = false;
-            //ofSleepMillis(1000);
         }
     }
     if(rigged)
