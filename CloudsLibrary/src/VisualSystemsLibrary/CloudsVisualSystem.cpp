@@ -256,7 +256,6 @@ void CloudsVisualSystem::setup(){
 	hideGUIS();
 
 	bIsSetup = true;
-	
 }
 
 bool CloudsVisualSystem::isSetup(){
@@ -362,7 +361,7 @@ void CloudsVisualSystem::speakerEnded()
 
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
-    if(bEnableTimeline)
+    if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack)
     {
         updateTimelineUIParams();
     }
@@ -3157,8 +3156,7 @@ void CloudsVisualSystem::selfInteractionEnded(CloudsInteractionEventArgs& args){
 }
 
 
-void CloudsVisualSystem::selfSetupGui()
-{
+void CloudsVisualSystem::selfSetupGui(){
 
 }
 
@@ -3205,4 +3203,12 @@ void CloudsVisualSystem::selfSetupTimelineGui()
 void CloudsVisualSystem::selfTimelineGuiEvent(ofxUIEventArgs &e)
 {
     
+}
+
+void CloudsVisualSystem::checkOpenGLError(string function){
+	
+    GLuint err = glGetError();
+    if (err != GL_NO_ERROR){
+        ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << "in function " << function;
+    }
 }
