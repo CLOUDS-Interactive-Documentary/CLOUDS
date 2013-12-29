@@ -1,12 +1,17 @@
 #version 120
+//#extension GL_ARB_shader_texture_lod: enable
+#extension GL_ARB_texture_rectangle: enable
 #define PI 3.14159265359
 #define E 2.71828
-#define LN_18 2.890371757896165
 
 uniform float time;
 uniform bool levelSet;
 uniform sampler2DRect tex;
 uniform sampler2DRect grunge;
+uniform vec2 resolution;
+uniform vec2 imgRes;
+uniform float translucenseDish;
+uniform float translucenseCell;
 
 /*
 float rand(vec2 co){
@@ -26,6 +31,10 @@ float noise2f( in vec2 p ){
 }
 */
 
+vec4 premult(in vec4 source){
+    return vec4(source.rgb * source.a, source.a);
+}
+
 float bump(float t, float center, float width){
     float f = (t - center) / width;
     return 1. - clamp(f * f, 0., 1.);
@@ -40,8 +49,8 @@ float heightMap(vec2 co){
         //TODO: optimize this.
         bumps += (.5 + dot(sin(co),vec2(.25))) * log(1 + i);
         co *= .07;
-//        co += sin(co.yx + vec2(0.,t + PI/2.));
-        co += co.yx * (1 - cos(t));
+        co += sin(co.yx + vec2(0.,t*10. + PI/2.));
+//        co += co.yx * (1 - cos(t));
     }
     bumps /= (iters * log(iters));
     return (-.5 + pow(bumps, 18.)) * PI;
@@ -57,6 +66,19 @@ vec4 getLevelSet(vec4 fg){
 	return vec4(set, set, set, 1.);
 }
 
+vec4 getMicroscope(vec4 fg, vec4 bg){
+    //Check if you're on an area of change
+    float b = 1. - fwidth(fg.b);
+    
+    //see if you're in the right range to be a border
+    b *= fg.b * fg.b;
+    float innerCell = clamp(bump(b, .8, .4), 0., translucenseCell); // * (1. - (.2 + .2 * sin(gl_FragCoord.x + gl_FragCoord.y)));
+    float shell = clamp(bump(b, .3, .2), 0., .95);
+    vec4 kernel = clamp(fg.g * 1.5 * vec4(.6, .7, .6, 1.), 0., 1.);
+    vec4 envelope = pow(shell, 1.5) * vec4(1.);// * mix(1.,rand(gl_FragCoord.xy * 0.01), 0.15 );
+    return envelope + kernel + (innerCell - fg.g) * bg; //* vec4(0.5,0.,0.,0.3);
+}
+
 void main(){
     vec4 color;
     vec4 fg = texture2DRect(tex, gl_TexCoord[0].xy);
@@ -64,17 +86,13 @@ void main(){
     if (levelSet) {
             color = getLevelSet(fg);
     } else {
-        vec4 bg = texture2DRect(grunge, gl_FragCoord.xy);
-        //Check if you're on an area of change
-        float b = 1. - fwidth(fg.b);
         
-        //see if you're in the right range to be a border
-        b *= fg.b * fg.b;
-        float innerCell = clamp(bump(b, .8, .4), 0., 1.) * (1. - (.2 + .2 * sin(gl_FragCoord.x + gl_FragCoord.y)));
-        float shell = clamp(bump(b, .3, .2), 0., .95);
-        vec4 kernel = clamp(fg.g * 1.5 * vec4(.6, .7, .6, 1.), 0., 1.);
-        vec4 envelope = pow(shell, 1.5) * vec4(1.);// * mix(1.,rand(gl_FragCoord.xy * 0.01), 0.15 );
-        color = envelope + kernel + (innerCell - fg.g); //* vec4(0.5,0.,0.,0.3);
+        //FIXME: This is happening because I can only use sampler2dRect
+        vec2 normalizedCoords = gl_TexCoord[0].xy * imgRes / resolution;
+        vec4 bg = texture2DRect(grunge, normalizedCoords);
+        vec4 bg_cu = texture2DRect(grunge, normalizedCoords * .5 + imgRes * .25 ); //enlarged
+        vec4 cells = getMicroscope(fg, bg_cu);
+        color = vec4(bg.rgb * (1. - cells.a), translucenseDish) + cells;
     }
     gl_FragColor = color;
 }

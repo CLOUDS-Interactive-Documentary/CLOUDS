@@ -16,12 +16,14 @@ void CloudsVisualSystemColony::selfSetup()
     ofLoadImage(sprite, getVisualSystemDataPath() + "sprites/marker_dot.png");
     ofEnableArbTex();
     
-    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/dirt.jpg");
-	loadShader();
+    grunge.setCompression(OF_COMPRESS_ARB);
+    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/dirt_square.jpg");
+
+	loadShaders();
  
 }
 
-void CloudsVisualSystemColony::loadShader(){
+void CloudsVisualSystemColony::loadShaders(){
     string path = getVisualSystemDataPath() + "shaders/";
 	levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
     billboard.load(path + "billboard.vs", path + "billboard.fs");
@@ -50,7 +52,9 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
     
     sysGui->addSpacer("Immutables");
     sysGui->addIntSlider("Initial Cells", 0, 1000, &numInitialCells);
-    sysGui->addButton("Reset", &reset);
+    
+    sysGui->addSlider("Cell Floor Translusence", 0., 1., &translucenseCell);
+    sysGui->addSlider("Dish Floor Translusence", 0., 1., &translucenseDish);
 }
 
 void CloudsVisualSystemColony::selfUpdate()
@@ -59,12 +63,10 @@ void CloudsVisualSystemColony::selfUpdate()
     if ( !areFbosAllocatedAndSized() ){ reallocateFramebuffers(); }
     
     //Data
-    //cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
     pMap.clear();
     vbo.clear();
     pMap.put(cells);
     
-    updateFoodTexture();
     
     for (int i = 0; i < cells.size(); i++) {
         
@@ -126,6 +128,10 @@ void CloudsVisualSystemColony::selfDrawBackground()
     levelSet.setUniformTexture("grunge", grunge, 1);
     levelSet.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
     levelSet.setUniform1i("levelSet", levelSetMode);
+    levelSet.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+    levelSet.setUniform2f("imgRes", grunge.getWidth(), grunge.getHeight());
+    levelSet.setUniform1f("translucenseCell", translucenseCell);
+    levelSet.setUniform1f("translucenseDish", translucenseDish);
     fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
                   getSharedRenderTarget().getHeight());
     levelSet.end();
@@ -155,7 +161,6 @@ void CloudsVisualSystemColony::selfBegin()
 void CloudsVisualSystemColony::selfEnd()
 {
     clear();
-    //TODO: Destroy everything in gCell;
 }
 
 void CloudsVisualSystemColony::selfExit(){
@@ -218,7 +223,7 @@ void CloudsVisualSystemColony::guiRenderEvent(ofxUIEventArgs &e){}
 
 void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
-		loadShader();
+		levelSetMode = !levelSetMode;
 	}
 }
 

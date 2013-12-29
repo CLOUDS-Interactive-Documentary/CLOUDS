@@ -1,10 +1,8 @@
-//
-//  CloudsVisualSystemColony.h
-//  VSColony
-//
-//  Created by Patricio Gonzalez Vivo on 6/26/13.
-//
-//
+/* 
+ WOW SUCH VISUAL
+ VERY COPYRIGHT
+ */
+
 
 #pragma once
 
@@ -50,10 +48,6 @@ public:
     
     void selfPresetLoaded(string presetPath);
     
-    //Publics stuffs
-    
-	void loadShader();
-    void reallocateFramebuffers();
     
 private:
     
@@ -67,24 +61,23 @@ private:
     /* WOW VIDEO */
     ofFbo fbo_main, foodTexture;
     ofTexture sprite, grunge;
+    ofImage grime;
     
     /* LOL DATA */
     colonyPartitionMap pMap;
     vector< cellPtr > cells;
-
-    float  noiseZoom;
-    int newbornCount;
-    
-    bool reset; //TODO: used?
     
     /*  SUCH PARAMS */
     cellParams params;
     bool levelSetMode;
-    int numInitialCells; //float because ints won't work in gui
+    int numInitialCells;
+    float translucenseCell, translucenseDish;
     
     /* WOW UTILITY */
     void updateFoodTexture();
     bool areFbosAllocatedAndSized();
+    void loadShaders();
+    void reallocateFramebuffers();
     
     void clear();
     void populate();
