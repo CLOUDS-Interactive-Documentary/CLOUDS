@@ -52,7 +52,7 @@ public:
     
     //Publics stuffs
     
-	void loadShader();
+	void loadShaders();
     void reallocateFramebuffers();
     
 private:
@@ -67,6 +67,7 @@ private:
     /* WOW VIDEO */
     ofFbo fbo_main, foodTexture;
     ofTexture sprite, grunge;
+    ofImage grime;
     
     /* LOL DATA */
     colonyPartitionMap pMap;

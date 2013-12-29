@@ -16,12 +16,14 @@ void CloudsVisualSystemColony::selfSetup()
     ofLoadImage(sprite, getVisualSystemDataPath() + "sprites/marker_dot.png");
     ofEnableArbTex();
     
-    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/dirt.jpg");
-	loadShader();
+    grunge.setCompression(OF_COMPRESS_ARB);
+    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/dirt_square.jpg");
+
+	loadShaders();
  
 }
 
-void CloudsVisualSystemColony::loadShader(){
+void CloudsVisualSystemColony::loadShaders(){
     string path = getVisualSystemDataPath() + "shaders/";
 	levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
     billboard.load(path + "billboard.vs", path + "billboard.fs");
@@ -126,6 +128,8 @@ void CloudsVisualSystemColony::selfDrawBackground()
     levelSet.setUniformTexture("grunge", grunge, 1);
     levelSet.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
     levelSet.setUniform1i("levelSet", levelSetMode);
+    levelSet.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+    levelSet.setUniform2f("imgRes", grunge.getWidth(), grunge.getHeight());
     fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
                   getSharedRenderTarget().getHeight());
     levelSet.end();
@@ -218,7 +222,7 @@ void CloudsVisualSystemColony::guiRenderEvent(ofxUIEventArgs &e){}
 
 void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
-		loadShader();
+		loadShaders();
 	}
 }
 
