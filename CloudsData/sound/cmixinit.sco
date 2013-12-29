@@ -40,6 +40,47 @@ ramp_21 = maketable("line", "nonorm", 1000, 0, 2.0, 1, 1.0)
 ramp_101 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 0.0, 2, 1.0)
 ramp_212 = maketable("line", "nonorm", 1000, 0, 2.0, 1, 1.0, 2, 2.0)
 
+
+e_CONSTANT = maketable("line", "nonorm", 1000, 0, 1.0, 1, 1.0)
+
+e_FADEUP = maketable("line", "nonorm", 1000, 0, 0.0, 1, 1.0)
+e_FADEDOWN = maketable("line", "nonorm", 1000, 0, 1.0, 1, 0.0)
+
+e_FADEINFASTEST = maketable("line", "nonorm", 1000, 0, 0.0, 1, 1.0, 100, 1.0)
+e_FADEINFAST = maketable("line", "nonorm", 1000, 0, 0.0, 1, 1.0, 10, 1.0)
+
+e_FADEOUTFASTEST = maketable("line", "nonorm", 1000, 0, 1.0, 99, 1.0, 100, 0.0)
+e_FADEOUTFAST = maketable("line", "nonorm", 1000, 0, 1.0, 9, 1.0, 10, 0.0)
+
+e_FADEINOUTFAST = maketable("line", "nonorm", 1000, 0, 0.0, 1, 1.0, 9, 1.0, 10, 0.0)
+e_FADEINOUTFASTEST = maketable("line", "nonorm", 1000, 0, 0.0, 1, 1.0, 99, 1.0, 100, 0.0)
+
+e_MIDDLEIN25 = maketable("line", "nonorm", 1000, 0, 0.0, 1, 0.0, 3, 1.0, 5, 1.0, 7, 0.0, 8, 0.0)
+e_MIDDLEIN33 = maketable("line", "nonorm", 1000, 0, 0.0, 1, 1.0, 2, 0.0)
+e_MIDDLEIN50 = maketable("line", "nonorm", 1000, 0, 0.0, 1, 1.0, 2, 1.0, 3, 0.0)
+e_MIDDLEIN60 = maketable("line", "nonorm", 1000, 0, 0.0, 1, 1.0, 3, 1.0, 4, 0.0)
+e_MIDDLEIN66 = maketable("line", "nonorm", 1000, 0, 0.0, 1, 1.0, 4, 1.0, 5, 0.0)
+e_MIDDLEIN75 = maketable("line", "nonorm", 1000, 0, 0.0, 1, 1.0, 6, 1.0, 7, 0.0)
+
+e_MIDDLEOUT25 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 1.0, 3, 0.0, 5, 0.0, 7, 1.0, 8, 1.0)
+e_MIDDLEOUT33 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 0.0, 2, 1.0)
+e_MIDDLEOUT50 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 0.0, 2, 0.0, 3, 1.0)
+e_MIDDLEOUT60 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 0.0, 3, 0.0, 4, 1.0)
+e_MIDDLEOUT66 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 0.0, 4, 0.0, 5, 1.0)
+e_MIDDLEOUT75 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 0.0, 6, 0.0, 7, 1.0)
+
+e_FADEINBY25 = maketable("line", "nonorm", 1000, 0, 0.0, 1, 1.0, 2, 1.0, 3, 1.0)
+e_FADEINBY33 = maketable("line", "nonorm", 1000, 0, 0.0, 1, 1.0, 2, 1.0)
+e_FADEINBY50 = maketable("line", "nonorm", 1000, 0, 0.0, 1, 0.0, 2, 1.0, 3, 1.0)
+e_FADEINBY66 = maketable("line", "nonorm", 1000, 0, 0.0, 1, 0.0, 2, 1.0)
+e_FADEINBY75 = maketable("line", "nonorm", 1000, 0, 0.0, 1, 0.0, 2, 0.0, 3, 1.0)
+
+e_FADEOUTBY25 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 0.0, 2, 0.0, 3, 0.0)
+e_FADEOUTBY33 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 0.0, 2, 0.0)
+e_FADEOUTBY50 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 1.0, 2, 0.0, 3, 0.0)
+e_FADEOUTBY66 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 1.0, 2, 0.0)
+e_FADEOUTBY75 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 1.0, 2, 1.0, 3, 0.0)
+
   
 bus_config("NOISE", "aux 8-9 out");
 bus_config("FILTERBANK", "aux 8-9 in", "aux 0-1 out");

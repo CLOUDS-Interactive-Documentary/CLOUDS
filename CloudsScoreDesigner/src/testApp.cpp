@@ -151,6 +151,7 @@ void testApp::update(){
             oarg_b.clear();
             oamp.clear();
             orev.clear();
+            oenv.clear();
 		}
 		if(m.getAddress() == "/addOrch"){
 			oorch.push_back(m.getArgAsString(0));
@@ -158,6 +159,7 @@ void testApp::update(){
 			oarg_b.push_back(m.getArgAsString(2));
             oamp.push_back(m.getArgAsFloat(3));
             orev.push_back(m.getArgAsFloat(4));
+            oenv.push_back(m.getArgAsString(5));
 		}
 		if(m.getAddress() == "/startMusic"){
 			cout << "STARTING MUSIC" << endl;
@@ -165,7 +167,7 @@ void testApp::update(){
             for(int i = 0;i<oorch.size();i++)
             {
                 cout << "running " << oorch[i] << endl;
-                sound.startMusic(0, oorch[i], oarg_a[i], oarg_b[i], oharmony, orhythm, odur, otempo, oamp[i], orev[i], i);
+                sound.startMusic(0, oorch[i], oarg_a[i], oarg_b[i], oharmony, orhythm, odur, otempo, oamp[i], orev[i], i, oenv[i]);
             }
 		}
 		else if(m.getAddress() == "/stopMusic"){
