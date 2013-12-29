@@ -219,7 +219,7 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
     
 	if(!getPlayer().isLoaded()){
-		ofLogWarning() << " CloudsRGBDVideoPlayer::setupProjectionUniforms -- player is not ready";
+		//ofLogWarning() << " CloudsRGBDVideoPlayer::setupProjectionUniforms -- player is not ready";
 		return;
 	}
 	

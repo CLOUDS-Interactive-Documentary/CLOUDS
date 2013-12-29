@@ -227,6 +227,9 @@ void testApp::keyPressed(int key){
     if(key == 'l') {
         sound.reloadPresets();
     }
+    if(key == 'c') {
+        mixer.showCompressor = !mixer.showCompressor;
+    }
 }
 
 //--------------------------------------------------------------
