@@ -2129,10 +2129,10 @@
 		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
-		<pattr name = "start_question" value = "" />
-		<pattr name = "amp1" value = "" />
-		<pattr name = "amp2" value = "" />
-		<pattr name = "amp3" value = "" />
+		<pattr name = "start_question" value = "none" />
+		<pattr name = "amp1" value = "0.769231" />
+		<pattr name = "amp2" value = "0.846154" />
+		<pattr name = "amp3" value = "0.846154" />
 		<pattr name = "amp4" value = "0.230769" />
 		<pattr name = "amp5" value = "" />
 		<pattr name = "rev1" value = "" />
