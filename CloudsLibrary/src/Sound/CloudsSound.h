@@ -38,6 +38,7 @@ class CloudsSound {
 	float maxSpeakerVolume; // set between 0. and 1.0 to modulate speaker volume
 	
     // Luke's public stuff
+    void schedulePreset(lukePreset &p, float outskip, float dur, int mixlevel);
     void startMusicFX(float outskip, float musicdur);
     void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum, string ampenvelope);
     void stopMusic();
