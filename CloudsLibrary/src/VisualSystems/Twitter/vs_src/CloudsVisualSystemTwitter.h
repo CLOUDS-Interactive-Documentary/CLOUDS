@@ -204,8 +204,9 @@ protected:
 	//this is the pop color of the node
 	ofFloatColor nodePopColorHSV;
 	   
-    ofFloatColor textColor;
-    ofFloatColor textColorModifier;
+    ofFloatColor textColorHSV;
+    
+    ofFloatColor tweetDeckColorHSV;
     
     string currentMeshFilePath;
     string currentMeshFileName;
