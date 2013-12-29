@@ -127,8 +127,26 @@ void testApp::guiEvent(ofxUIEventArgs &e)
 void testApp::keyPressed(int key){
     
 	if(key == ' '){
+		hud.animateOn(CLOUDS_HUD_FULL);
+	}
+    
+    if(key == '1'){
+		hud.animateOn(CLOUDS_HUD_LOWER_THIRD);
+	}
+    
+    if(key == '2'){
 		hud.animateOn(CLOUDS_HUD_QUESTION);
 	}
+    
+    if(key == '3'){
+		hud.animateOn(CLOUDS_HUD_MAP);
+	}
+    
+    if(key == '4'){
+		hud.animateOn(CLOUDS_HUD_PROJECT_EXAMPLE);
+	}
+    
+
 	
     if(key == 'h'){
 		hud.toggleGuis();

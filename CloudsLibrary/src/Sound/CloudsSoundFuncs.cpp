@@ -9,6 +9,20 @@
 
 #include "CloudsSound.h"
 
+void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mixlevel)
+{
+    float a;
+    if(mixlevel==0) a = 0;
+    else if(mixlevel==1) a = 1.0;
+    else if(mixlevel==2) a = 1.5;
+    
+    INITMIX();
+    for(int j = 0;j<p.instruments.size();j++)
+    {
+        startMusic(outskip, p.instruments[j], p.arg_a[j], p.arg_b[j], p.harmony, p.rhythm, dur, p.tempo, p.m_amp[j]*a, p.m_rev[j], j, p.env[j]);
+    }
+}
+
 void CloudsSound::startMusicFX(float outskip, float musicdur)
 {
     // blow out routing table
@@ -46,7 +60,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     
     outskip = outskip + beatoffset; // fix beat offset to get things in time
     
-    if(LUKEDEBUG) cout << "   start: " << outskip << " " << "s, dur: " << musicdur << " " << "s, orch: " << mo << ", harmony: " << mh << ", rhythm: " << mr << ", amp: " << m_amp << ", rev: " << m_rev << endl;
+    if(LUKEDEBUG) cout << "   start: " << outskip << " " << "s, dur: " << musicdur << " " << "s, orch: " << mo << ", harmony: " << mh << ", rhythm: " << mr << ", amp: " << m_amp << ", rev: " << m_rev << ", env: " << ampenvelope << endl;
     
     //
     // =========================
