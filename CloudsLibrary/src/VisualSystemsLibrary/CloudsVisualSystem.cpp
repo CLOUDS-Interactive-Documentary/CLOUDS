@@ -394,9 +394,7 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	//Make this happen only when the timeline is modified by the user or when a new track is added.
 	if(!ofGetMousePressed())
     {
-		ofLogError("TIMELINE UPDATE FOR SYSTEM " + getSystemName());
-		if(timeline == NULL){
-		}
+//		ofLogError("TIMELINE UPDATE FOR SYSTEM " + getSystemName());
 		timeline->setOffset(ofVec2f(4, ofGetHeight() - timeline->getHeight() - 4 ));
 		timeline->setWidth(ofGetWidth() - 8);
 	}
