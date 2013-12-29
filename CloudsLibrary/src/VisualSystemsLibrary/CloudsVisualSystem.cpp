@@ -227,7 +227,6 @@ void CloudsVisualSystem::setup(){
 	
     ofDirectory dir;
     string directoryName = getVisualSystemDataPath()+"Presets/";
-    cout<<"Directory name: "<< directoryName<<endl;
     if(!dir.doesDirectoryExist(directoryName))
     {
         dir.createDirectory(directoryName);
@@ -395,6 +394,9 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	//Make this happen only when the timeline is modified by the user or when a new track is added.
 	if(!ofGetMousePressed())
     {
+		ofLogError("TIMELINE UPDATE FOR SYSTEM " + getSystemName());
+		if(timeline == NULL){
+		}
 		timeline->setOffset(ofVec2f(4, ofGetHeight() - timeline->getHeight() - 4 ));
 		timeline->setWidth(ofGetWidth() - 8);
 	}
@@ -409,7 +411,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
     if(bRenderSystem)
     {
 	  
-	  //bind our fbo, lights, debug
+		//bind our fbo, lights, debug
         if(bUseOculusRift){
 			#ifdef OCULUS_RIFT
             getOculusRift().beginBackground();

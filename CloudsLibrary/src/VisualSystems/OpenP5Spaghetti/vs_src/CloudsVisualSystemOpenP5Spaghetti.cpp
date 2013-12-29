@@ -30,7 +30,6 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
     modes.push_back("SMOOTH");
     modes.push_back("GNARLY");
     customGui->addRadio("MODE", modes, OFX_UI_ORIENTATION_HORIZONTAL);
-  //  customGui->addToggle("TRIANGLES", &drawTriangles);
     customGui->addSlider("Number of Walkers", 1, 100, &NWalkers);
     customGui->addSlider("Particles per Walker", 10, 1000, &Walker::nParticles);
     
