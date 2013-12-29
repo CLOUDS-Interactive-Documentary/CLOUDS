@@ -10,7 +10,6 @@ void CloudsVisualSystemColony::selfSetup()
 {
     numInitialCells = 100;
     kernel_maxValue = 0.8;
-    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
     vbo.setMode(OF_PRIMITIVE_POINTS);
     
 	ofDisableArbTex();
@@ -32,44 +31,71 @@ void CloudsVisualSystemColony::loadShaders(){
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
 {
-    sysGui->addSlider("Separate",0.0,100, &params.amtSeparate);
-    sysGui->addSlider("Cohere",0.0,100, &params.amtCohere);
-    sysGui->addSlider("Align",0.0,100, &params.amtAlign);
-    sysGui->addSlider("Friction",0.0,1.0, &params.dynamicFrictionCoeff);
-    sysGui->addSlider("Turbulence Amount",0.0,100.0, &params.amtTurbulence);
-    sysGui->addSlider("Turbulence Speed",0.0,100.0, &params.spdTurbulence);
-    sysGui->addSlider("Fertility Rate", 0.0, 1.0, &params.fertilityRate);
-    sysGui->addRangeSlider("Lifespan Range", 5, 5000, &params.lifespanMin, &params.lifespanMax);
-    
-    sysGui->addSlider("Nutrient Amount", 150, 500, &params.nutrientAmount);
-    sysGui->addSlider("Nutrient Change Ratio", 0, 500, &params.nutrientTimeCoef);
-    sysGui->addSlider("Nutrient Contrast", 0, 4.0, &params.nutrientFalloff);
-    
-    sysGui->addRangeSlider("Max Speed", 0.0, 10.0, &params.maxSpeed_min, &params.maxSpeed_max);
-    sysGui->addRangeSlider("Max Force", 0.0, 10.0, &params.maxForce_min, &params.maxForce_max);
-    sysGui->addRangeSlider("Max Size", 0.0, 30.0, &params.maxSize_min, &params.maxSize_max);
 
     sysGui->addToggle("Level Set Mode", &levelSetMode);
     
     sysGui->addSpacer("Immutables");
     sysGui->addIntSlider("Initial Cells", 0, 1000, &numInitialCells);
     
-    sysGui->addSlider("Cell Floor Translusence", 0., 1., &translucenseCell);
-    sysGui->addSlider("Dish Floor Translusence", 0., 1., &translucenseDish);
+   }
+
+void CloudsVisualSystemColony::selfSetupGuis(){
+    float length = (gui->getGlobalCanvasWidth()-gui->getWidgetSpacing()*5)/3.;
+    float dim =gui->getGlobalSliderHeight();
     
-//    sysGui->addWidgetDown(new ofxUILabel("V SLIDERS", OFX_UI_FONT_MEDIUM));
-    sysGui->addSlider("R", 0, 1., &(kernelColor_high.x));
-    sysGui->addSlider("G", 0, 1., &(kernelColor_high.y));
-    sysGui->addSlider("B", 0, 1., &(kernelColor_high.z));
-    sysGui->addSlider("A", 0, 1., &(kernelColor_high.w));
-    sysGui->addSlider("R", 0, 1., &(kernelColor_low.x));
-    sysGui->addSlider("G", 0, 1., &(kernelColor_low.y));
-    sysGui->addSlider("B", 0, 1., &(kernelColor_low.z));
-    sysGui->addSlider("A", 0, 1., &(kernelColor_low.w));
+    guiDynamics = new ofxUISuperCanvas("DYNAMICS", gui);
+	guiDynamics->copyCanvasStyle(gui);
+	guiDynamics->copyCanvasProperties(gui);
+	guiDynamics->setName("DYNAMICS");
+	guiDynamics->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    guiDynamics->addSlider("Separate",0.0,100, &params.amtSeparate);
+    guiDynamics->addSlider("Cohere",0.0,100, &params.amtCohere);
+    guiDynamics->addSlider("Align",0.0,100, &params.amtAlign);
+    guiDynamics->addSlider("Friction",0.0,1.0, &params.dynamicFrictionCoeff);
+    guiDynamics->addSlider("Turbulence Amount",0.0,100.0, &params.amtTurbulence);
+    guiDynamics->addSlider("Turbulence Speed",0.0,100.0, &params.spdTurbulence);
+    guiDynamics->addSlider("Fertility Rate", 0.0, 1.0, &params.fertilityRate);
+    guiDynamics->addRangeSlider("Lifespan Range", 5, 5000, &params.lifespanMin, &params.lifespanMax);
+    guiDynamics->addSlider("Nutrient Amount", 150, 500, &params.nutrientAmount);
+    guiDynamics->addSlider("Nutrient Change Ratio", 0, 500, &params.nutrientTimeCoef);
+    guiDynamics->addSlider("Nutrient Contrast", 0, 4.0, &params.nutrientFalloff);
+    guiDynamics->addRangeSlider("Max Speed", 0.0, 10.0, &params.maxSpeed_min, &params.maxSpeed_max);
+    guiDynamics->addRangeSlider("Max Force", 0.0, 10.0, &params.maxForce_min, &params.maxForce_max);
+    guiDynamics->addRangeSlider("Max Size", 0.0, 30.0, &params.maxSize_min, &params.maxSize_max);
+    
+    ofAddListener(guiDynamics->newGUIEvent, this, &CloudsVisualSystemColony::selfGuiEvent);
     
     
-//    sysGui->add
+    guiLooks = new ofxUISuperCanvas("LOOK", gui);
+    guiLooks->copyCanvasStyle(gui);
+    guiLooks->copyCanvasProperties(gui);
+    guiLooks->setName("LOOKS");
+    guiLooks->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    guiLooks->addSlider("Cell Floor Translusence", 0., 1., &translucenseCell);
+    guiLooks->addSlider("Dish Floor Translusence", 0., 1., &translucenseDish);
+    
+    float hDim = 16;
+    float vDim = 80;
+    
+    guiLooks->addWidgetDown(new ofxUILabel("KERNEL COLOR", OFX_UI_FONT_MEDIUM));
+    guiLooks->addSlider("R1", 0, 1., &(kernelColor_high.x), hDim, vDim);
+    guiLooks->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    guiLooks->addSlider("G1", 0, 1., &(kernelColor_high.y), hDim, vDim);
+    guiLooks->addSlider("B1", 0, 1., &(kernelColor_high.z), hDim, vDim);
+    guiLooks->addSlider("A1", 0, 1., &(kernelColor_high.w), hDim, vDim);
+    guiLooks->addSlider("R2", 0, 1., &(kernelColor_low.x), hDim, vDim);
+    guiLooks->addSlider("G2", 0, 1., &(kernelColor_low.y), hDim, vDim);
+    guiLooks->addSlider("B2", 0, 1., &(kernelColor_low.z), hDim, vDim);
+    guiLooks->addSlider("A2", 0, 1., &(kernelColor_low.w), hDim, vDim);
+    guiLooks->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+
+    guis.push_back(guiDynamics);
+    guis.push_back(guiLooks);
+    guimap[guiDynamics->getName()] = guiDynamics;
+    guimap[guiLooks->getName()] = guiLooks;
 }
+
 
 void CloudsVisualSystemColony::selfUpdate()
 {
@@ -163,13 +189,6 @@ void CloudsVisualSystemColony::selfDraw(){
 
 
 void CloudsVisualSystemColony::updateFoodTexture(){
-    noiseShader.begin();
-    noiseShader.setUniform1i("complexity", 1);
-    noiseShader.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
-    noiseShader.setUniform1f("zoom", 40.);
-    noiseShader.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
-    ofRect(0, 0, getSharedRenderTarget().getWidth(),getSharedRenderTarget().getHeight());
-    noiseShader.end();
 }
 
 
@@ -185,8 +204,10 @@ void CloudsVisualSystemColony::selfEnd()
 
 void CloudsVisualSystemColony::selfExit(){
     clear();
-    cellShader.unload();
     levelSet.unload();
+    //TODO: is this necessary?
+    delete guiLooks;
+    delete guiDynamics;
 }
 
 void CloudsVisualSystemColony::selfPresetLoaded(string presetPath){
@@ -212,11 +233,8 @@ void CloudsVisualSystemColony::populate(){
 
 bool CloudsVisualSystemColony::areFbosAllocatedAndSized(){
     return fbo_main.isAllocated()
-    && foodTexture.isAllocated()
     && fbo_main.getWidth() == getSharedRenderTarget().getWidth()
-    && fbo_main.getHeight() == getSharedRenderTarget().getHeight()
-    && foodTexture.getWidth() == getSharedRenderTarget().getWidth()
-    && foodTexture.getHeight() == getSharedRenderTarget().getHeight();
+    && fbo_main.getHeight() == getSharedRenderTarget().getHeight();
 }
 
 void CloudsVisualSystemColony::reallocateFramebuffers(){
@@ -224,18 +242,13 @@ void CloudsVisualSystemColony::reallocateFramebuffers(){
     int h = getSharedRenderTarget().getHeight();
     
     fbo_main.allocate(w,h,GL_RGBA);
-    foodTexture.allocate(w/4., h/4., GL_RGB);
     
     fbo_main.begin();
     ofClear(0,0,0,0);
     fbo_main.end();
-    
-    foodTexture.begin();
-    ofClear(0, 0, 0);
-    foodTexture.end();
 }
 
-void CloudsVisualSystemColony::selfSetupGuis(){}
+
 void CloudsVisualSystemColony::selfAutoMode(){}
 void CloudsVisualSystemColony::selfSetupRenderGui(){}
 void CloudsVisualSystemColony::guiSystemEvent(ofxUIEventArgs &e){}
