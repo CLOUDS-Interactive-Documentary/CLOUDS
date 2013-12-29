@@ -43,10 +43,13 @@ void testApp::setup(){
     vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
     set<string> questionsTopics;
 	
+	cout << "TOPIC / QUESTIONS / CLIP " << endl;
+	
     for(int i = 0; i < startingNodes.size(); i++){
         CloudsClip& clip = startingNodes[i];
 		if(clip.getTopicsWithQuestions().size() > 0){
-			questionsTopics.insert(clip.getTopicsWithQuestions()[0] + ":" + clip.getQuestionForTopic( clip.getTopicsWithQuestions()[0]));
+			cout << clip.getLinkName() << " has topic " << clip.getTopicsWithQuestions()[0] << " \"" << clip.getQuestionForTopic( clip.getTopicsWithQuestions()[0] ) << "\"" << endl;
+			questionsTopics.insert( clip.getTopicsWithQuestions()[0] + ":" + clip.getQuestionForTopic( clip.getTopicsWithQuestions()[0]));
 		}
     }
 	
