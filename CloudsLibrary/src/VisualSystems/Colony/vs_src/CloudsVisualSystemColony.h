@@ -51,6 +51,16 @@ public:
     
 private:
     
+    /*  SUCH PARAMS */
+    cellParams params;
+    bool levelSetMode;
+    int numInitialCells;
+    float translucenseCell, translucenseDish;
+    ofVec4f kernelColor_high, kernelColor_low;
+
+    /* MUCH PRIVATE */
+    float kernel_maxValue;
+    
     /* MUCH GEOMETRY */
     ofVboMesh   vbo;
     ofShader    noiseShader;
@@ -66,12 +76,6 @@ private:
     /* LOL DATA */
     colonyPartitionMap pMap;
     vector< cellPtr > cells;
-    
-    /*  SUCH PARAMS */
-    cellParams params;
-    bool levelSetMode;
-    int numInitialCells;
-    float translucenseCell, translucenseDish;
     
     /* WOW UTILITY */
     void updateFoodTexture();
