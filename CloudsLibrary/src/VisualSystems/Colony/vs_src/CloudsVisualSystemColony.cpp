@@ -202,7 +202,6 @@ void CloudsVisualSystemColony::selfEnd()
 
 void CloudsVisualSystemColony::selfExit(){
     clear();
-    cellShader.unload();
     levelSet.unload();
     //TODO: is this necessary?
     delete guiLooks;
