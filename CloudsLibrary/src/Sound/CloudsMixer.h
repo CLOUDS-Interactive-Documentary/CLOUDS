@@ -27,6 +27,8 @@ public:
     CloudsAudioEvents& getEvents() { return events; };
     
     bool showCompressor;
+    float followgain;
+    float gain;
     
 protected:
     ofAudioEventArgs musicArgs;
@@ -41,7 +43,6 @@ protected:
     float decay;
     float thresh;
     float ratio;
-    float followgain;
     
     CloudsAudioEvents events;
 };

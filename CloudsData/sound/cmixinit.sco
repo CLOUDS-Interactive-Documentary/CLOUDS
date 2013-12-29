@@ -41,7 +41,9 @@ ramp_101 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 0.0, 2, 1.0)
 ramp_212 = maketable("line", "nonorm", 1000, 0, 2.0, 1, 1.0, 2, 2.0)
 
 
-e_CONSTANT = maketable("line", "nonorm", 1000, 0, 1.0, 1, 1.0)
+e_DECLICK = maketable("line", "nonorm", 1000, 0, 0., 1, 1.0, 998, 1.0, 1000, 0.0)
+
+e_CONSTANT = maketable("line", "nonorm", 1000, 0, 1., 1, 1.)
 
 e_FADEUP = maketable("line", "nonorm", 1000, 0, 0.0, 1, 1.0)
 e_FADEDOWN = maketable("line", "nonorm", 1000, 0, 1.0, 1, 0.0)
