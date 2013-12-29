@@ -77,7 +77,11 @@ private:
     colonyPartitionMap pMap;
     vector< cellPtr > cells;
     
-    /* WOW UTILITY */
+    /* SO GUI */
+    ofxUISuperCanvas* guiDynamics;
+    ofxUISuperCanvas* guiLooks;
+    
+    /* ALL THE UTILITY */
     void updateFoodTexture();
     bool areFbosAllocatedAndSized();
     void loadShaders();
