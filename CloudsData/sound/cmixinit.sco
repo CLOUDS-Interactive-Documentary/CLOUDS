@@ -1,5 +1,5 @@
 /* print_off(); */
-/* print_on(4) */
+/* print_on(5) */
 /* set_option("exit_on_error=0") */
 
 srand();

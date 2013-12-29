@@ -39,3 +39,4 @@ granular_buzz, bucket melody markov simple;
 granular_swish, bucket melody markov simple;
 granular_hail, bucket melody markov simple;
 granular_juno, bucket melody markov simple;
+testsine, bucket;

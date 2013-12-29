@@ -49,7 +49,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
             precomputemarkov(pitches[i]);
         }
         
-		targetAmp = 1.0; // wonder what this is?
+		instGain = 5.0;
 		
         MASTERTEMPO = 120;
         AUTORUN = 0;
@@ -114,9 +114,9 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     // iterate through clips
     int numclips = args.act->getAllClips().size();
     
-    cout << "===============" << endl;
-    cout << "MAKING MUSIC!!!" << endl;
-    cout << "===============" << endl;
+    if(LUKEDEBUG) cout << "===============" << endl;
+    if(LUKEDEBUG) cout << "MAKING MUSIC!!!" << endl;
+    if(LUKEDEBUG) cout << "===============" << endl;
     
     // loop through clips
     // first clip: check on soundQuestionKey
@@ -145,17 +145,16 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                 float nextstart = args.act->getClipStartTime(nextclip);
                 clipdur = nextstart-starttime;
             }
-            cout << i << ": " << theclip.getLinkName() << ": " << clipdur << ":" << endl;
-            cout << "   starting at: " << starttime << endl;
+            if(LUKEDEBUG) cout << i << ": " << theclip.getLinkName() << ": " << clipdur << ":" << endl;
+            if(LUKEDEBUG) cout << "   starting at: " << starttime << endl;
             vector<CloudsDichotomy> foo = args.act->getDichotomiesForClip(theclip);
             vector<int> dichos;
             for(int j = 0;j<foo.size();j++)
             {
-                cout << "   " << foo[j].left << " versus " << foo[j].right << " is " << foo[j].balance << endl;
                 dichos.push_back(foo[j].balance);
             }
             
-            cout << "	current energy is " << (isHighEnergy ? "HIGH" : "LOW") << endl;
+            if(LUKEDEBUG) cout << "	current energy is " << (isHighEnergy ? "HIGH" : "LOW") << endl;
             
             if(args.act->isClipEnergyShift(theclip)) allowchange = true;
             
@@ -166,11 +165,14 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                 for(int j = 0;j<presets.size();j++)
                 {
                     // CHECK FOR RIGGED
-                    if(presets[j].start_question==args.soundQuestionKey) {
-                        cout << "RIGGED: " << j << "!!!!" << endl;
-                        valid_presets.clear();
-                        valid_presets.push_back(j);
-                        break;
+                    if(i==0 && presets[j].start_question==args.soundQuestionKey) {
+                        //if(presets[j].slotnumber < 250) // temporary
+                        //{
+                            if(LUKEDEBUG) cout << "   rigged preset: " << presets[j].slotnumber << endl;
+                            valid_presets.clear();
+                            valid_presets.push_back(j);
+                            break;
+                        //}
                     }
                     
                     //if the energy state is the same and it's not the first clip, don't allow this preset
@@ -210,6 +212,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                 mharmony = presets[thepreset].harmony;
                 mrhythm = presets[thepreset].rhythm;
                 mtempo = presets[thepreset].tempo;
+                if(LUKEDEBUG) cout << "   preset: " << presets[thepreset].slotnumber;
                 for(int j = 0;j<presets[thepreset].instruments.size();j++)
                 {
                     startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo, presets[thepreset].m_amp[j], presets[thepreset].m_rev[j], j);
@@ -225,9 +228,9 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
         startMusic(0, "slowwaves", "markov", "NULL", 0, 0, totalduration, 120, 0.5, 0.5, 0);
     }
     
-    cout << "====================" << endl;
-    cout << "DONE MAKING MUSIC!!!" << endl;
-    cout << "====================" << endl;
+    if(LUKEDEBUG) cout << "====================" << endl;
+    if(LUKEDEBUG) cout << "DONE MAKING MUSIC!!!" << endl;
+    if(LUKEDEBUG) cout << "====================" << endl;
 
     
 }
