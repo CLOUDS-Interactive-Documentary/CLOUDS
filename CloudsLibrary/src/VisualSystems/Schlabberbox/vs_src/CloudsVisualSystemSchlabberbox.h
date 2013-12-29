@@ -11,31 +11,16 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ofxCv.h"
-#include "ofxGameCamera.h"
-
-typedef struct {
-    int lineIndex;
-    float vertIndex;
-	int meshIndex;
-    float speed;
-    ofFloatColor color;
-    ofVec3f pos;
-} Blip;
+#include "GridFluid.h"
 
 
-//TODO: point shader
-//	-- suze attenuator
-//	-- color attenuate
-
-class CloudsVisualSystemCircuit : public CloudsVisualSystem {
+class CloudsVisualSystemSchlabberbox : public CloudsVisualSystem {
   public:
     
-	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
-		return "Circuit";
+		return "Schlabberbox";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
@@ -104,44 +89,26 @@ class CloudsVisualSystemCircuit : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-	void selfSetupCameraGui();
-	
-	ofCamera& getCameraRef();
-	ofxGameCamera cam;
-	
+
+    // if you use a custom camera to fly through the scene
+	// you must implement this method for the transitions to work properly
+//	ofCamera& getCameraRef(){
+//		return myCustomCamera;
+//	}
+
+	//
+
 protected:
     
     //  Your Stuff
     //
 	
-	ofxUISuperCanvas* blipGui;
-	ofRange pointSizeRange;
-	ofRange pointDistanceRange;
-	float blipScaleExponent;
-	float blipSpeed;
+	ofxUISuperCanvas* customGui;
+	bool customToggle;
+	float customFloat1;
+	float customFloat2;
 
-	ofxUISuperCanvas* lineGui;
-	
-	float nearClippingPlane;
-	
-	ofShader blipShader;
-	void reloadShaders();
-	void generateCircuit();
-	
-	
-	ofxGameCamera gameCam;
-	
-	ofxCv::ContourFinder contourFinder;
-    vector<Blip> blips;
-	vector<ofPolyline> contourLines;
-	vector<ofVec3f> centers;
-    vector<ofColor> colors;
-	
-    vector<ofIndexType> elevated;
-    
-    ofImage heightMap;
-    ofVboMesh heightMesh;
-	ofVboMesh lineMesh;
-	ofVboMesh blipMesh;
+	FluidBox fluids;	
+	bool inForceDrawMode;
 
 };

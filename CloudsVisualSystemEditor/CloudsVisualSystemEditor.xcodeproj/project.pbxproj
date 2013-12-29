@@ -3546,8 +3546,8 @@
 		E70CE62C1869648E00955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE62D1869648E00955691 /* CloudsVisualSystemHistogram.cpp */,
 				E70CE62E1869648E00955691 /* CloudsVisualSystemHistogram.h */,
+				E70CE62D1869648E00955691 /* CloudsVisualSystemHistogram.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3957,10 +3957,10 @@
 		E70CE6A91869648F00955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE6AA1869648F00955691 /* CloudsVisualSystemOpenP5Spaghetti.cpp */,
 				E70CE6AB1869648F00955691 /* CloudsVisualSystemOpenP5Spaghetti.h */,
-				E70CE6AC1869648F00955691 /* Walker.cpp */,
+				E70CE6AA1869648F00955691 /* CloudsVisualSystemOpenP5Spaghetti.cpp */,
 				E70CE6AD1869648F00955691 /* Walker.h */,
+				E70CE6AC1869648F00955691 /* Walker.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -4128,10 +4128,10 @@
 		E70CE6DF1869648F00955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE6E01869648F00955691 /* CloudsVisualSystemRandomDigits.cpp */,
 				E70CE6E11869648F00955691 /* CloudsVisualSystemRandomDigits.h */,
-				E70CE6E21869648F00955691 /* Rand.cpp */,
+				E70CE6E01869648F00955691 /* CloudsVisualSystemRandomDigits.cpp */,
 				E70CE6E31869648F00955691 /* Rand.h */,
+				E70CE6E21869648F00955691 /* Rand.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -4478,8 +4478,8 @@
 		E70CE75E1869649000955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE75F1869649000955691 /* CloudsVisualSystemVision.cpp */,
 				E70CE7601869649000955691 /* CloudsVisualSystemVision.h */,
+				E70CE75F1869649000955691 /* CloudsVisualSystemVision.cpp */,
 				E70CE7631869649000955691 /* MyTracker.cpp */,
 				E70CE7641869649000955691 /* MyTracker.h */,
 			);
@@ -6899,8 +6899,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsVisualSystemEditor" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;

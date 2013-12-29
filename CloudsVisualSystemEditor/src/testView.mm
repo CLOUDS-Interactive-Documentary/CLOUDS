@@ -70,7 +70,66 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)update
 {
-    if(shouldPlaySelectedRow){
+	
+	if(runningTest){
+		
+		if(ofGetElapsedTimef() - lastSystemStartTime > 5){
+			
+			if(currentVisualSystem != NULL){
+				cout << "5) (" << currentTestPresetIndex << "/" << testPresetIndeces.size() << ") STOPPING SYSTEM " << currentVisualSystem->getSystemName() << endl;
+				currentVisualSystem->stopSystem();
+			}
+
+			if(testBatchIndex == testBatch.size() || testBatch.size() == 0){
+				
+				for(int i = 0; i < testBatch.size(); i++){
+					cout << "5) CALLING EXIT " << testBatch[i]->getSystemName() << endl;
+					testBatch[i]->exit();
+				}
+				
+				cout << "DELETING PRESET BATCH" << endl;
+				testBatch.clear();
+//				currentVisualSystem = ofPtr<CloudsVisualSystem>( (CloudsVisualSystem*)(NULL) );
+				
+				int i = 0;
+				for(i = currentTestPresetIndex; i < MIN(testPresetIndeces.size(),currentTestPresetIndex+2); i++){
+					
+					CloudsVisualSystemPreset& preset = visualSystems.getPresets()[ testPresetIndeces[i] ];
+					cout << "******* 1) (" << i << "/" << testPresetIndeces.size() << ") INSTANTIATING " << preset.systemName << " : " << preset.presetName << endl;
+					ofPtr<CloudsVisualSystem> vs = CloudsVisualSystemManager::InstantiateSystem( preset.systemName );
+					cout << "******* 2) (" << i << "/" << testPresetIndeces.size() << ") SETTING UP " << preset.systemName << " : " << preset.presetName << endl;
+					if(vs == NULL){
+						cout << "******* 3) (" << i << "/" << testPresetIndeces.size() << ") PRESET NOT REGISTERED " << preset.systemName << " : " << preset.presetName << endl;
+						continue;
+					}
+					vs->setup();
+					cout << "******* 3) (" << i << "/" << testPresetIndeces.size() << ") LOADING PRESET " << preset.systemName << " : " << preset.presetName << endl;
+					vs->loadPresetGUISFromName(preset.presetName);
+					
+					testBatch.push_back(vs);
+				}
+				
+				if(i == testPresetIndeces.size()){
+					runningTest = false;
+				}
+				
+				testBatchIndex = 0;
+			}
+			
+			
+			if(testBatchIndex < testBatch.size()){
+				currentVisualSystem = testBatch[testBatchIndex];
+				cout << "4) PLAYING SYSTEM " << currentVisualSystem->getSystemName() << endl;
+				currentVisualSystem->playSystem();
+				lastSystemStartTime = ofGetElapsedTimef();
+				
+				testBatchIndex++;
+				currentTestPresetIndex++;
+			}
+			
+		}
+	}
+    else if(shouldPlaySelectedRow){
         
 		if(currentVisualSystem != NULL){
             currentVisualSystem->stopSystem();
@@ -450,6 +509,16 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		}
 	}
 	return shared;
+}
+
+- (IBAction) runTests:(id)sender
+{
+	testPresetIndeces = visualSystems.getFilteredPresetIndeces(true,false,false);
+	random_shuffle( testPresetIndeces.begin(),testPresetIndeces.end() );
+	
+	currentTestPresetIndex = 0;
+	lastSystemStartTime = ofGetElapsedTimef()-5;
+	runningTest = true;
 }
 
 - (IBAction) updateFilters:(id)sender

@@ -42,6 +42,7 @@ class CloudsSound {
     void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum);
     void stopMusic();
     void reloadPresets();
+    void doPrinting();
 
   protected:
 
@@ -71,7 +72,7 @@ class CloudsSound {
     bool DOCLEAR;
     float cleartime;
     float instGain; // master multiplier per instrument
-    
+    bool DOCMIXPRINT;
 	
     vector<lukeRhythm> rhythms;
     vector<lukePitchArray> pitches;

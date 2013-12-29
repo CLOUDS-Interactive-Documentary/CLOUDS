@@ -66,7 +66,7 @@ protected:
     int skipFrames;
 	ofPtr<ofxAVFVideoPlayer> player;
 	ofPixels lastPixels;
-//	ofPtr<ofVideoPlayer> player;
+
     int playerIndex;
     int movieIndex;
     bool frameIsNew;
@@ -134,6 +134,7 @@ protected:
 	
     void loadCurrentMovie();
     void loadMovieAtIndex(int movieIndex);
+	void loadMovieWithName(string name);
     void updateSettingsForNewVideo();
     
 //    void setMode(CVMode mode);
@@ -174,7 +175,6 @@ protected:
     float boxSat;
     float boxBright;
     ofFloatColor boxColor;
-    
     
     //SHADER
     ofShader shader;
