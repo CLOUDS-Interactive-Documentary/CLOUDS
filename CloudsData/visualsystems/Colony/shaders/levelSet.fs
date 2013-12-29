@@ -15,6 +15,8 @@ uniform float translucenseCell;
 uniform vec4 kernelColor_high;
 uniform vec4 kernelColor_low;
 uniform float kernel_maxValue;
+uniform vec3 lightDirection;
+uniform vec4 lightColor;
 
 /*
 float rand(vec2 co){
@@ -67,12 +69,13 @@ float heightMap(vec2 co){
 
 //TODO: YOU WROTE THIS MOTHERFUCKER
 
-float getLightIntensity(float elevation, vec3 light){
+float getLightIntensity(float elevation, vec2 light){
     //TODO: SMOOTH THIS
     float dx = dFdx(elevation);
     float dy = dFdy(elevation);
     //TODO: use 3d
-    return dot(normalize(vec2(dx,dy)),normalize(light.xy));
+    float intensity = clamp(length(light),0.001, 1.); //arbitrary epsilon
+    return mix(1., dot(normalize(vec2(dx,dy)),normalize(light)), intensity);
 }
 
 
@@ -83,7 +86,7 @@ vec4 getLevelSet(vec4 fg){
     g *= g * g;
     float levl = mix (a + b, max(a, b), .5);
     float set = (.5 * (1. + sin(levl)) + g) 
-                * mix(1,getLightIntensity(levl, vec3(1.)), 0.3);
+                * mix(1, getLightIntensity(levl, lightDirection.xy), 0.3);
 	return vec4(set, set, set, 1.);
 }
 
@@ -97,6 +100,7 @@ vec4 getMicroscope(vec4 fg, vec4 bg){
     //innerCell *= (1. - (.2 + .2 * sin(gl_FragCoord.x + gl_FragCoord.y)));
     float shellAlpha = clamp(bump(b, .3, .2), 0., .95);
     vec4 kernel = clamp(fg.g/kernel_maxValue, 0., 1.)
+//                * vec4(vec3(mix(1.,getLightIntensity(fg.g/kernel_maxValue, vec3(1)), 0.3)),1.)
                 * mix(kernelColor_low, kernelColor_high, fg.g/kernel_maxValue);
     vec4 shell = pow(shellAlpha, 1.5)
                * vec4(1.);
@@ -106,17 +110,12 @@ vec4 getMicroscope(vec4 fg, vec4 bg){
     ret = over(premult(ret), premult(vec4(bg.rgb, bg.a*innerCellAlpha)));
     return ret;
     
-    
-//    return premult(shell)
-//            + premult(kernel)
-//            + (innerCellAlpha - fg.g)
-//            * bg; //TODO: ?
 }
 
 void main(){
     vec4 color;
     vec4 fg = texture2DRect(tex, gl_TexCoord[0].xy);
-    
+    fg.g = sqrt(fg.g);
     if (levelSet) {
             color = getLevelSet(fg);
     } else {
@@ -128,8 +127,6 @@ void main(){
         vec4 cells = getMicroscope(fg, bg_cu);
         bg.a *= translucenseDish;
         color = over(premult(cells), premult(bg));
-//        bg.a -= min(bg.a, cells.a); //The joy of compisiting
-//        color = vec4(premult(bg).rgb, translucenseDish) + premult(cells);
     }
     gl_FragColor = color;
 }

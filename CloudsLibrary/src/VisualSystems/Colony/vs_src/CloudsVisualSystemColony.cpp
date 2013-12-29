@@ -178,6 +178,9 @@ void CloudsVisualSystemColony::selfDrawBackground()
     levelSet.setUniform4fv("kernelColor_high", kernelColor_high.getPtr());
     levelSet.setUniform4fv("kernelColor_low", kernelColor_low.getPtr());
     levelSet.setUniform1f("kernel_maxValue", kernel_maxValue);
+    
+    levelSet.setUniform3fv("lightDirection", (*(*lights.begin()).second).lightPos.getPtr());
+    
     fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
                   getSharedRenderTarget().getHeight());
     levelSet.end();
