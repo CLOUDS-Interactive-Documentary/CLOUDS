@@ -8,7 +8,7 @@ reset(11025);
 amp_declick = maketable("line", 4000, 0.0, 0.0, 0.001, 1., 0.999, 1., 1.0, 0.);
 amp_trapezoid = maketable("line", 1000, 0.0, 0.0, 50.0, 1.0, 200.0, 1., 250.0, 0.0);
 amp_sharp = maketable("line", 1000, 0.0, 0.0, 0.01, 1.0, 3.0, 0.0);
-amp_sharpadsr = maketable("line", 1000, 0.0, 0.0, 0.01, 1.0, 0.5, 0.7, 2., 0.7, 3.0, 0.0);
+amp_sharpadsr = maketable("line", 4000, 0.0, 0.0, 0.01, 1.0, 0.5, 0.7, 2., 0.7, 3.0, 0.0);
 amp_sharphold = maketable("line", 4000, 0.0, 0.0, 0.01, 1.0, 25, 1., 30, 0.0);
 amp_triangle = maketable("line", 1000, 0.0, 0.0, 1.0, 1.0, 2.0, 0.0);
 hanning = maketable("window", 4000, "hanning")
