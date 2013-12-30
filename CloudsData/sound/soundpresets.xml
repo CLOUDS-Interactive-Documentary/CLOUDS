@@ -2231,9 +2231,9 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.230769" />
-		<pattr name = "amp2" value = "0.230769" />
-		<pattr name = "amp3" value = "0.307692" />
+		<pattr name = "amp1" value = "0.384615" />
+		<pattr name = "amp2" value = "0.384615" />
+		<pattr name = "amp3" value = "0.384615" />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.5" />
