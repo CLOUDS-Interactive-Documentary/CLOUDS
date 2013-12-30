@@ -2279,9 +2279,9 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.230769" />
-		<pattr name = "amp2" value = "0.230769" />
-		<pattr name = "amp3" value = "0.307692" />
+		<pattr name = "amp1" value = "0.461538" />
+		<pattr name = "amp2" value = "0.461538" />
+		<pattr name = "amp3" value = "0.384615" />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.5" />
@@ -2327,9 +2327,9 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.538462" />
-		<pattr name = "amp2" value = "0.384615" />
-		<pattr name = "amp3" value = "0.538462" />
+		<pattr name = "amp1" value = "0.615385" />
+		<pattr name = "amp2" value = "0.461538" />
+		<pattr name = "amp3" value = "0.615385" />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.5" />
@@ -2380,7 +2380,7 @@
 		<pattr name = "amp3" value = "0.538462" />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
+		<pattr name = "rev1" value = "0.307692" />
 		<pattr name = "rev2" value = "0.5" />
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
@@ -2423,9 +2423,9 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.615385" />
-		<pattr name = "amp2" value = "0.615385" />
-		<pattr name = "amp3" value = "0.538462" />
+		<pattr name = "amp1" value = "0.769231" />
+		<pattr name = "amp2" value = "0.692308" />
+		<pattr name = "amp3" value = "0.692308" />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.5" />
