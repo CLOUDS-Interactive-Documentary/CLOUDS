@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Rings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>304.000000000</XPosition>
-    <YPosition>368.000000000</YPosition>
+    <XPosition>1</XPosition>
+    <YPosition>1</YPosition>
 </Canvas>
 <Widget>
     <Kind>44</Kind>
@@ -13,30 +13,30 @@
 <Widget>
     <Kind>4</Kind>
     <Name>innerRadius</Name>
-    <Value>0.929064035</Value>
+    <Value>0.929064</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>width</Name>
-    <Value>5.920739174</Value>
+    <Value>5.92074</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>thickness</Name>
-    <Value>1.338719130</Value>
+    <Value>1.33872</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>lowRadians</Name>
-    <Value>2.568987131</Value>
+    <Value>2.56899</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>hiRadians</Name>
-    <Value>4.209424496</Value>
+    <Value>4.20942</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Spacing</Name>
-    <Value>10.049261093</Value>
+    <Value>10.0493</Value>
 </Widget>
