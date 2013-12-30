@@ -95,16 +95,21 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         {
             vector<lukeNote> n;
             cloudsSequencer(arg_b, n);
-            for(int i = 0;i<n.size();i++)
+            float t = 0.;
+            int i=0;
+            while(t+n[i].starttime<musicdur)
             {
-                if(n[i].starttime < musicdur)
+                int pitch = scale(n[i].pitch, pitches[mh].scale);
+                WAVETABLE(t+outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1*instGain, mtof(pitch), ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+                WAVETABLE(t+outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1*instGain, mtof(pitch)*0.99, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+                
+                i++;
+                if(i>=n.size())
                 {
-                    int pitch = scale(n[i].pitch, pitches[mh].scale);
-                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1*instGain, mtof(pitch), ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
-                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1*instGain, mtof(pitch)*0.99, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+                    t+=n[i-1].starttime;
+                    i = 0;
                 }
-            }
-            
+            }            
         }
         else
         {
@@ -134,16 +139,21 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         {
             vector<lukeNote> n;
             cloudsSequencer(arg_b, n);
-            for(int i = 0;i<n.size();i++)
+            float t = 0.;
+            int i=0;
+            while(t+n[i].starttime<musicdur)
             {
-                if(n[i].starttime < musicdur)
+                int pitch = scale(n[i].pitch, pitches[mh].scale);
+                WAVETABLE(t+outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1*instGain, mtof(pitch), ofRandom(0.,1.), "vel_strike", "amp_triangle");
+                WAVETABLE(t+outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1*instGain, mtof(pitch)*0.99, ofRandom(0.,1.), "vel_strike", "amp_triangle");
+                
+                i++;
+                if(i>=n.size())
                 {
-                    int pitch = scale(n[i].pitch, pitches[mh].scale);
-                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1*instGain, mtof(pitch), ofRandom(0.,1.), "vel_strike", "amp_triangle");
-                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1*instGain, mtof(pitch)*0.99, ofRandom(0.,1.), "vel_strike", "amp_triangle");
+                    t+=n[i-1].starttime;
+                    i = 0;
                 }
             }
-            
         }
         else
         {
@@ -277,28 +287,57 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // HIJUNO
     if (mo=="hijuno")
     {
-        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
-        melodySolver m(arg_a, pitches[mh], mel);
-        int curpitch;
         float freq;
-        
-        for(i = 0;i<musicdur;i+=tempo*2.)
+        SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
+        if(arg_a=="sequencer")
         {
-            if(rhythms[mr].beats[bcount]>0.) {
+            vector<lukeNote> n;
+            cloudsSequencer(arg_b, n);
+            float t = 0.;
+            int i=0;
+            while(t+n[i].starttime<musicdur)
+            {
+                int pitch = scale(n[i].pitch, pitches[mh].scale);
+                freq = mtof(pitch);
+                
+                float t_amp = 0.025*instGain;
+                float d = tempo*floor(ofRandom(2., 5.));
+                float p = ofRandom(0., 1.);
+                WAVETABLE(t+outskip+n[i].starttime*seqrate, d, t_amp, freq, p, "wf_saw", "amp_sharpadsr");
+                WAVETABLE(t+outskip+n[i].starttime*seqrate, d*ofRandom(0.9,1.1), t_amp, freq*0.99, 1.-p, "wf_square", "amp_sharpadsr");
 
-                curpitch = m.tick();
-                if(curpitch>-1) {
-                    freq = mtof(curpitch);
-                    
-                    float t_amp = rhythms[mr].beats[bcount]*0.025*instGain;
-                    float d = tempo*floor(ofRandom(2., 5.));
-                    float p = ofRandom(0., 1.);
-                    WAVETABLE(outskip+i, d, t_amp, freq, p, "wf_saw", "amp_sharpadsr");
-                    WAVETABLE(outskip+i, d*ofRandom(0.9,1.1), t_amp, freq*0.99, 1.-p, "wf_square", "amp_sharpadsr");
+                i++;
+                if(i>=n.size())
+                {
+                    t+=n[i-1].starttime;
+                    i = 0;
                 }
             }
-            bcount = (bcount+1)%rhythms[mr].beats.size();
-       }
+        }
+        else
+        {
+                melodySolver m(arg_a, pitches[mh], mel);
+                int curpitch;
+                float freq;
+                
+                for(i = 0;i<musicdur;i+=tempo*2.)
+                {
+                    if(rhythms[mr].beats[bcount]>0.) {
+                        
+                        curpitch = m.tick();
+                        if(curpitch>-1) {
+                            freq = mtof(curpitch);
+                            
+                            float t_amp = rhythms[mr].beats[bcount]*0.025*instGain;
+                            float d = tempo*floor(ofRandom(2., 5.));
+                            float p = ofRandom(0., 1.);
+                            WAVETABLE(outskip+i, d, t_amp, freq, p, "wf_saw", "amp_sharpadsr");
+                            WAVETABLE(outskip+i, d*ofRandom(0.9,1.1), t_amp, freq*0.99, 1.-p, "wf_square", "amp_sharpadsr");
+                        }
+                    }
+                    bcount = (bcount+1)%rhythms[mr].beats.size();
+                }
+        }
         
     }
 
@@ -310,16 +349,21 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         {
             vector<lukeNote> n;
             cloudsSequencer(arg_b, n);
-            for(int i = 0;i<n.size();i++)
+            float t = 0.;
+            int i=0;
+            while(t+n[i].starttime<musicdur)
             {
-                if(n[i].starttime < musicdur)
+                int pitch = scale(n[i].pitch, pitches[mh].scale);
+                WAVETABLE(t+outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1*instGain, mtof(pitch), ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+                WAVETABLE(t+outskip+n[i].starttime*seqrate, n[i].dur*3., n[i].velo*0.05*instGain, mtof(pitch), ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+                
+                i++;
+                if(i>=n.size())
                 {
-                    int pitch = scale(n[i].pitch, pitches[mh].scale);
-                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1*instGain, mtof(pitch), ofRandom(0.,1.), "wf_tri", "amp_sharphold");
-                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur*3., n[i].velo*0.05*instGain, mtof(pitch), ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+                    t+=n[i-1].starttime;
+                    i = 0;
                 }
             }
-            
         }
         else
         {
@@ -353,16 +397,21 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         {
             vector<lukeNote> n;
             cloudsSequencer(arg_b, n);
-            for(int i = 0;i<n.size();i++)
+            float t = 0.;
+            int i=0;
+            while(t+n[i].starttime<musicdur)
             {
-                if(n[i].starttime < musicdur)
+                int pitch = scale(n[i].pitch, pitches[mh].scale);
+                WAVETABLE(t+outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1*instGain, mtof(pitch), ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
+                WAVETABLE(t+outskip+n[i].starttime*seqrate, n[i].dur*3., n[i].velo*0.05*instGain, mtof(pitch), ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
+                
+                i++;
+                if(i>=n.size())
                 {
-                    int pitch = scale(n[i].pitch, pitches[mh].scale);
-                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1*instGain, mtof(pitch), ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
-                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur*3., n[i].velo*0.05*instGain, mtof(pitch), ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
+                    t+=n[i-1].starttime;
+                    i = 0;
                 }
             }
-            
         }
         else
         {
@@ -1188,8 +1237,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     {
         SETUPMIX(outskip, musicdur, m_amp, 1.0, 0., 0., "STEREO", instnum, ampenvelope);
         //PATCHFX("STEREO", "in 0", "out 0-1");
-        STREAMSOUND(outskip, arg_b, musicdur, 1.0*m_amp, backupsound); // set to masterGain
-        //STREAMSOUND(outskip, arg_b, musicdur, 1.*m_amp*MASTER_GAIN, backupsound); // set to masterGain
+        STREAMSOUND(outskip, arg_b, musicdur, 1.0*m_amp); // set to masterGain
     }
 
     //
@@ -1205,13 +1253,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
 void CloudsSound::stopMusic()
 {
     flush_sched();
-/*    char thebuf [256];
-    int bx;
-    bx = snprintf(thebuf, 256, "exit()");
-    parse_score(thebuf, bx);
- */
+
     rtc_playing = false;
-    
-    //backupsound.stop();
-    //backupsound.unloadSound();
 }

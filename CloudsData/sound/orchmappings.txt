@@ -3,7 +3,7 @@ slowwaveshi, bucket melody markov simple;
 waveshipatterned, bucket melody markov simple;
 lowwavepulse, bucket melody markov simple;
 lowwavejuno, bucket melody markov simple;
-hijuno, bucket melody markov simple;
+hijuno, bucket melody markov simple sequencer;
 kissmyarp, static bucket melody markov simple sequencer;
 kissmyarpsynch, static bucket melody markov simple;
 kissmyarpfast, static bucket melody markov simple;
