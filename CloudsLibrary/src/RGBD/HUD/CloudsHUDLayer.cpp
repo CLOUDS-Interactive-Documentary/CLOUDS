@@ -15,6 +15,7 @@ CloudsHUDLayer::CloudsHUDLayer(){
 	delayTime = 0;
 	percentComplete = ofVec2f(0,0);
 	animating = false;
+    bIsOpen = false;
 	maxUpdateInterval = 1./60.;
 	lastUpdateTime = 0;
 	startPercent.x = .8;
@@ -32,8 +33,6 @@ void CloudsHUDLayer::parse(string svgFilePath){
 //			cout << svg.sourceFileName <<  " has text box: " << svg.getMeshes()[i].id << " with bounds " << svg.getMeshes()[i].bounds.x << " " << svg.getMeshes()[i].bounds.y << " " << svg.getMeshes()[i].bounds.width << " " << svg.getMeshes()[i].bounds.height << endl;
 		}
 	}
-	
-
 }
 
 void CloudsHUDLayer::parseDirectory(string svgDirectoryPath){
@@ -50,7 +49,22 @@ void CloudsHUDLayer::parseDirectory(string svgDirectoryPath){
 }
 
 void CloudsHUDLayer::start(){
+    if( bIsOpen ){
+        return;
+    }
+    bIsOpen = true;
+    
 	startTime = ofGetElapsedTimef();
+	animating = true;
+}
+
+void CloudsHUDLayer::close() {
+    if( !bIsOpen ){
+        return;
+    }
+    bIsOpen = false;
+    
+    startTime = ofGetElapsedTimef();
 	animating = true;
 }
 
@@ -65,6 +79,11 @@ void CloudsHUDLayer::update(){
 		
 		percentComplete.x = ofMap(totalpercent,startPercent.x,1.,0,1.0,true);
 		percentComplete.y = ofMap(totalpercent,startPercent.y,1.,0,1.0,true);
+        
+        if( !bIsOpen ){
+            percentComplete.x = 1. - percentComplete.x;
+            percentComplete.y = 1. - percentComplete.y;
+        }
 
 		drawRect = ofRectangle(startPoint.x,startPoint.y,0,0);
 		ofVec2f p;
@@ -93,4 +112,8 @@ void CloudsHUDLayer::draw(){
 		
 	ofPopStyle();
 
+}
+
+bool CloudsHUDLayer::isOpen(){
+    return bIsOpen;
 }
