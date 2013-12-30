@@ -5,10 +5,6 @@
 #include "CloudsVisualSystemOpenP5SpaceJunk.h"
 #include "ofxObjLoader.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5SpaceJunk::selfSetupGui(){
@@ -28,16 +24,6 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetupGui(){
     customGui->addRangeSlider("Y Rotate", 0, 90, &YrotMin, &YrotMax);
     customGui->addRangeSlider("Z Rotate", 0, 90, &ZrotMin, &ZrotMax);
 
-//TODO: custom colors?
-//	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
-//	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
-//	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
-//
-//	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
-//	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
-//	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
-
-	
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5SpaceJunk::selfGuiEvent);
 	guis.push_back(customGui);
@@ -171,47 +157,34 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfUpdate(){
 //								 ofRandom(XrotMin, XrotMax), ofRandom(YrotMin, YrotMax), ofRandom(ZrotMin, ZrotMax) ) );
 		}
 	}
+	
+	ang += (speed_ / 10000); //angular rotation speed
+
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemOpenP5SpaceJunk::selfDraw(){
     
-    /* Lighting Advice 
-     
-    background(0);
-    fill(200);
-    
-    // Set up some different colored lights
-    pointLight(51, 102, 255, 65, 60, 100);
-    pointLight(200, 40, 60, -65, -60, -150);
-    
-    // Raise overall light in scene
-    ambientLight(70, 70, 10);
-    */ 
-    
+
     ofPushStyle();
     glEnable(GL_DEPTH_TEST);
     
 	ofPushMatrix();
 	ofEnableAlphaBlending();
 	
-	//Rotate breaks oculus
+	//Rotate breaks oculus overlay
     ofRotateX(ofRadToDeg(ang));     //X rotation - converts radians to degrees
     ofRotateY(ofRadToDeg(ang));     //Y rotation
 	
     mat->begin();
-//	//ofSetColor(128, 0, 0);
-//    for (int i = 0;i < list.size(); i++) {
-//		list[i].draw();
-//	}
+
 	mesh.draw();
     mat->end(); //enables material
 	
     ofPopStyle();
     ofPopMatrix();
 	
-    ang += (speed_ / 10000); //angular rotation speed
     
 }
 

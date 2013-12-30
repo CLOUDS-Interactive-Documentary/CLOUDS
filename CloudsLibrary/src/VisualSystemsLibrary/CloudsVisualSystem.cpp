@@ -1649,7 +1649,7 @@ void CloudsVisualSystem::setupMaterial(string name, ofxMaterial *m)
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     g->addSpacer();
     
-    g->addMinimalSlider("SHINY", 0.0, 128.0, m->matShininess)->setShowValue(false);
+    g->addMinimalSlider("SHINY", 0.0, 128.0, &m->matShininess)->setShowValue(false);
     
     g->autoSizeToFitWidgets();
     g->setPosition(ofGetWidth()*.5-g->getRect()->getHalfWidth(), ofGetHeight()*.5 - g->getRect()->getHalfHeight());
