@@ -82,7 +82,4 @@ class CloudsSound {
 
     vector<lukeSample> looperSamples;
 
-    // the backup soundplayer
-    ofSoundPlayer backupsound;
-    
 };
