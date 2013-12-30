@@ -32,13 +32,13 @@ void CloudsHUDHomeButton::setup(){
 	dir.allowExt("png");
 	dir.listDir();
     
-    cout << "Loading home buton textures" << endl;
+    cout << "Loading home button textures (" << dir.numFiles() << ") [";
     
     float sc = 1.0;
     
     ofImage loader;
     for(int i = 0; i < dir.numFiles(); i++){
-        cout << "   " + ofToString(i) + "/" + ofToString(dir.numFiles()) << endl;
+        cout << ".";
         
         textureList.push_back( new ofTexture() );
         loader.loadImage( dir.getPath(i) );
@@ -50,6 +50,7 @@ void CloudsHUDHomeButton::setup(){
         textureList[textureList.size()-1]->allocate( loader.getWidth(), loader.getHeight(), GL_RGBA );
         textureList[textureList.size()-1]->loadData( loader.getPixels(), loader.getWidth(), loader.getHeight(), GL_RGBA );
     }
+    cout << "]" << endl;
     
     if( textureList.size() ){
         hitBox.set( homeLocation, textureList[0]->getWidth(), textureList[0]->getHeight() );
