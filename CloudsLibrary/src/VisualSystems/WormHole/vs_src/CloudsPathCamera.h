@@ -53,6 +53,8 @@ public:
 	void setLoop(bool loop);
 	bool& getLoop();
 	
+	float u;
+	
 protected:
 	ofxSimpleSpline positionSpline, targetSpline, upSpline;
 	float startTime, duration;

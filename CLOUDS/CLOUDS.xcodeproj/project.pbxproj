@@ -5267,8 +5267,8 @@
 		E7637D401734DE68008ADC62 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
-				E746194C17DB783B002FC464 /* CloudsSpeaker.h */,
 				E7637D431734DE68008ADC62 /* CloudsEvents.h */,
+				E746194C17DB783B002FC464 /* CloudsSpeaker.h */,
 				E746194B17DB783B002FC464 /* CloudsSpeaker.cpp */,
 				E7BBB4E617A02BB5007D7EC1 /* CloudsDichotomy.h */,
 				E7BBB4E517A02BB5007D7EC1 /* CloudsDichotomy.cpp */,

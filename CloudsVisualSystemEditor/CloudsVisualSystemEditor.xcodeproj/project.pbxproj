@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1803CA3618711B9300B19A4C /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1803CA3318711B9300B19A4C /* Timer.cpp */; };
 		28927CA518591B9F00640B50 /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28927C9118591B9F00640B50 /* ofxOcean.cpp */; };
 		28927CA618591B9F00640B50 /* ofxOceanCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28927C9318591B9F00640B50 /* ofxOceanCamera.cpp */; };
 		28927CA718591B9F00640B50 /* ofxOceanRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28927C9518591B9F00640B50 /* ofxOceanRenderer.cpp */; };
@@ -722,6 +721,8 @@
 		E7D9D4D4182AFBBF00AD56C1 /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7D9D4D3182AFBBF00AD56C1 /* opencv.a */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7F0511018712C9700017521 /* ofxAnimationPrimitivesTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F0510018712C9700017521 /* ofxAnimationPrimitivesTimer.cpp */; };
+		E7F0511118712C9700017521 /* ofxAnimationPrimitivesTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F0510018712C9700017521 /* ofxAnimationPrimitivesTimer.cpp */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
 		E7FB28541830D9E2009EBD0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		E7FB28551830D9E2009EBD0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -969,8 +970,6 @@
 		F37C7D45186EAF9800FCDA79 /* PanelCode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7D3E186EAF9800FCDA79 /* PanelCode.cpp */; };
 		F37C7D46186EAF9800FCDA79 /* PanelGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7D40186EAF9800FCDA79 /* PanelGraph.cpp */; };
 		F37C7D47186EAF9800FCDA79 /* PanelGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7D40186EAF9800FCDA79 /* PanelGraph.cpp */; };
-		F37C7D64186EB1E700FCDA79 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F37C7D49186EB1E600FCDA79 /* .gitignore */; };
-		F37C7D65186EB1E700FCDA79 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F37C7D49186EB1E600FCDA79 /* .gitignore */; };
 		F37C7E55186EB28C00FCDA79 /* ofxTonicSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7DAE186EB28B00FCDA79 /* ofxTonicSynth.cpp */; };
 		F37C7E56186EB28C00FCDA79 /* ofxTonicSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7DAE186EB28B00FCDA79 /* ofxTonicSynth.cpp */; };
 		F37C7E57186EB28C00FCDA79 /* ADSR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7DB1186EB28B00FCDA79 /* ADSR.cpp */; };
@@ -1135,14 +1134,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1803CA2E18711B9300B19A4C /* Easing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Easing.h; sourceTree = "<group>"; };
-		1803CA2F18711B9300B19A4C /* Generator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Generator.h; sourceTree = "<group>"; };
-		1803CA3018711B9300B19A4C /* ofxAnimationPrimitivesUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesUtils.h; sourceTree = "<group>"; };
-		1803CA3118711B9300B19A4C /* Pattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pattern.h; sourceTree = "<group>"; };
-		1803CA3218711B9300B19A4C /* Replicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Replicator.h; sourceTree = "<group>"; };
-		1803CA3318711B9300B19A4C /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
-		1803CA3418711B9300B19A4C /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
-		1803CA3518711B9300B19A4C /* VectorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorHelper.h; sourceTree = "<group>"; };
 		28927C9118591B9F00640B50 /* ofxOcean.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOcean.cpp; sourceTree = "<group>"; };
 		28927C9218591B9F00640B50 /* ofxOcean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOcean.h; sourceTree = "<group>"; };
 		28927C9318591B9F00640B50 /* ofxOceanCamera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOceanCamera.cpp; sourceTree = "<group>"; };
@@ -2305,6 +2296,16 @@
 		E7D9D4D3182AFBBF00AD56C1 /* opencv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = opencv.a; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E7F050F818712C9700017521 /* coroutine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = coroutine.hpp; sourceTree = "<group>"; };
+		E7F050F918712C9700017521 /* ofxAnimationPrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitives.h; sourceTree = "<group>"; };
+		E7F050FA18712C9700017521 /* ofxAnimationPrimitivesConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesConstants.h; sourceTree = "<group>"; };
+		E7F050FB18712C9700017521 /* ofxAnimationPrimitivesEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesEasing.h; sourceTree = "<group>"; };
+		E7F050FC18712C9700017521 /* ofxAnimationPrimitivesGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesGenerator.h; sourceTree = "<group>"; };
+		E7F050FD18712C9700017521 /* ofxAnimationPrimitivesInstanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesInstanceManager.h; sourceTree = "<group>"; };
+		E7F050FE18712C9700017521 /* ofxAnimationPrimitivesPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesPattern.h; sourceTree = "<group>"; };
+		E7F050FF18712C9700017521 /* ofxAnimationPrimitivesReplicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesReplicator.h; sourceTree = "<group>"; };
+		E7F0510018712C9700017521 /* ofxAnimationPrimitivesTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAnimationPrimitivesTimer.cpp; sourceTree = "<group>"; };
+		E7F0510118712C9700017521 /* ofxAnimationPrimitivesTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesTimer.h; sourceTree = "<group>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7FB29B01830D9E2009EBD0E /* CloudsVisualSystemEditorOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudsVisualSystemEditorOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7FB29B11830D9E3009EBD0E /* CloudsVisualSystemEditor copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CloudsVisualSystemEditor copy-Info.plist"; path = "/Users/focus/Documents/Xcode/oF/of_gitRelease_obviousjim/openFrameworks/apps/CLOUDS/CloudsVisualSystemEditor/CloudsVisualSystemEditor copy-Info.plist"; sourceTree = "<absolute>"; };
@@ -2365,9 +2366,6 @@
 		F37C7D3F186EAF9800FCDA79 /* PanelCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelCode.h; sourceTree = "<group>"; };
 		F37C7D40186EAF9800FCDA79 /* PanelGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelGraph.cpp; sourceTree = "<group>"; };
 		F37C7D41186EAF9800FCDA79 /* PanelGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelGraph.h; sourceTree = "<group>"; };
-		F37C7D49186EB1E600FCDA79 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		F37C7D5A186EB1E700FCDA79 /* coroutine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = coroutine.hpp; sourceTree = "<group>"; };
-		F37C7D5B186EB1E700FCDA79 /* ofxAnimationPrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitives.h; sourceTree = "<group>"; };
 		F37C7DAD186EB28B00FCDA79 /* ofxTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTonic.h; sourceTree = "<group>"; };
 		F37C7DAE186EB28B00FCDA79 /* ofxTonicSynth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTonicSynth.cpp; sourceTree = "<group>"; };
 		F37C7DAF186EB28B00FCDA79 /* ofxTonicSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTonicSynth.h; sourceTree = "<group>"; };
@@ -2814,8 +2812,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E7F050E618712C9700017521 /* ofxAnimationPrimitives */,
 				F37C7D77186EB28700FCDA79 /* ofxTonic */,
-				F37C7D48186EB1E600FCDA79 /* ofxAnimationPrimitives */,
 				28927C8F18591B9F00640B50 /* ofxOcean */,
 				E79E6F7D1855529600406535 /* ofxOsc */,
 				E79346441852A4E400335668 /* ofxJSON */,
@@ -6496,6 +6494,32 @@
 			path = osx;
 			sourceTree = "<group>";
 		};
+		E7F050E618712C9700017521 /* ofxAnimationPrimitives */ = {
+			isa = PBXGroup;
+			children = (
+				E7F050F718712C9700017521 /* src */,
+			);
+			name = ofxAnimationPrimitives;
+			path = ../../../addons/ofxAnimationPrimitives;
+			sourceTree = "<group>";
+		};
+		E7F050F718712C9700017521 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E7F050F818712C9700017521 /* coroutine.hpp */,
+				E7F050F918712C9700017521 /* ofxAnimationPrimitives.h */,
+				E7F050FA18712C9700017521 /* ofxAnimationPrimitivesConstants.h */,
+				E7F050FB18712C9700017521 /* ofxAnimationPrimitivesEasing.h */,
+				E7F050FC18712C9700017521 /* ofxAnimationPrimitivesGenerator.h */,
+				E7F050FD18712C9700017521 /* ofxAnimationPrimitivesInstanceManager.h */,
+				E7F050FE18712C9700017521 /* ofxAnimationPrimitivesPattern.h */,
+				E7F050FF18712C9700017521 /* ofxAnimationPrimitivesReplicator.h */,
+				E7F0510018712C9700017521 /* ofxAnimationPrimitivesTimer.cpp */,
+				E7F0510118712C9700017521 /* ofxAnimationPrimitivesTimer.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		E7FB2C281830DA68009EBD0E /* ofxOculusRift */ = {
 			isa = PBXGroup;
 			children = (
@@ -6678,33 +6702,6 @@
 				F37C7D41186EAF9800FCDA79 /* PanelGraph.h */,
 			);
 			path = Panels;
-			sourceTree = "<group>";
-		};
-		F37C7D48186EB1E600FCDA79 /* ofxAnimationPrimitives */ = {
-			isa = PBXGroup;
-			children = (
-				F37C7D49186EB1E600FCDA79 /* .gitignore */,
-				F37C7D59186EB1E700FCDA79 /* src */,
-			);
-			name = ofxAnimationPrimitives;
-			path = ../../../addons/ofxAnimationPrimitives;
-			sourceTree = "<group>";
-		};
-		F37C7D59186EB1E700FCDA79 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				1803CA2E18711B9300B19A4C /* Easing.h */,
-				1803CA2F18711B9300B19A4C /* Generator.h */,
-				1803CA3018711B9300B19A4C /* ofxAnimationPrimitivesUtils.h */,
-				1803CA3118711B9300B19A4C /* Pattern.h */,
-				1803CA3218711B9300B19A4C /* Replicator.h */,
-				1803CA3318711B9300B19A4C /* Timer.cpp */,
-				1803CA3418711B9300B19A4C /* Timer.h */,
-				1803CA3518711B9300B19A4C /* VectorHelper.h */,
-				F37C7D5A186EB1E700FCDA79 /* coroutine.hpp */,
-				F37C7D5B186EB1E700FCDA79 /* ofxAnimationPrimitives.h */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		F37C7D77186EB28700FCDA79 /* ofxTonic */ = {
@@ -6940,7 +6937,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F37C7D64186EB1E700FCDA79 /* .gitignore in Resources */,
 				609133841652CA6600B523AD /* MainMenu.xib in Resources */,
 				E73774CD1778DD2900892646 /* easing_terms_of_use.html in Resources */,
 				E730A4A417DC492B0088335A /* README.md in Resources */,
@@ -6963,7 +6959,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F37C7D65186EB1E700FCDA79 /* .gitignore in Resources */,
 				E7FB29A91830D9E2009EBD0E /* MainMenu.xib in Resources */,
 				E7FB29AA1830D9E2009EBD0E /* easing_terms_of_use.html in Resources */,
 				E7FB29AB1830D9E2009EBD0E /* README.md in Resources */,
@@ -7513,7 +7508,7 @@
 				E70CEC651869649200955691 /* GestureRendererInPlace.cpp in Sources */,
 				F37C7E95186EB28C00FCDA79 /* ControlTriggerFilter.cpp in Sources */,
 				E70CEC671869649200955691 /* GestureRendererTraveling.cpp in Sources */,
-				1803CA3618711B9300B19A4C /* Timer.cpp in Sources */,
+				E7F0511018712C9700017521 /* ofxAnimationPrimitivesTimer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8017,6 +8012,7 @@
 				E70CEC661869649200955691 /* GestureRendererInPlace.cpp in Sources */,
 				F37C7EAA186EB28C00FCDA79 /* LFNoise.cpp in Sources */,
 				E70CEC681869649200955691 /* GestureRendererTraveling.cpp in Sources */,
+				E7F0511118712C9700017521 /* ofxAnimationPrimitivesTimer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

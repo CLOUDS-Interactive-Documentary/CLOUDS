@@ -1649,7 +1649,7 @@ void CloudsVisualSystem::setupMaterial(string name, ofxMaterial *m)
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     g->addSpacer();
     
-    g->addMinimalSlider("SHINY", 0.0, 128.0, m->matShininess)->setShowValue(false);
+    g->addMinimalSlider("SHINY", 0.0, 128.0, &m->matShininess)->setShowValue(false);
     
     g->autoSizeToFitWidgets();
     g->setPosition(ofGetWidth()*.5-g->getRect()->getHalfWidth(), ofGetHeight()*.5 - g->getRect()->getHalfHeight());
@@ -3042,11 +3042,6 @@ ofVec3f CloudsVisualSystem::getCameraPosition()
 void CloudsVisualSystem::selfDraw()
 {
 	
-//    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-//    mat->begin();
-//    ofSetColor(ofColor(255));
-//    ofFill();
-//    mat->end();
 }
 
 void CloudsVisualSystem::selfDrawOverlay(){
@@ -3214,6 +3209,6 @@ void CloudsVisualSystem::checkOpenGLError(string function){
 	
     GLuint err = glGetError();
     if (err != GL_NO_ERROR){
-        ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " in " << function;
+        ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " : " << gluErrorString(err) << " in " << function;
     }
 }
