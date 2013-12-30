@@ -49,11 +49,12 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
             precomputemarkov(pitches[i]);
         }
         
-		targetAmp = 1.0; // wonder what this is?
+		instGain = 5.0;
 		
         MASTERTEMPO = 120;
         AUTORUN = 0;
         DOCLEAR = true;
+        DOCMIXPRINT = false;
         
 		ofAddListener(GetCloudsAudioEvents()->musicAudioRequested, this, &CloudsSound::audioRequested);
 
@@ -100,134 +101,115 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
 	//Happens at the very beginning of a sequence
 
     
-    int rigged = 0; // set to '1' for rigged orchestration (set below)
-    float clipdur = 0;
-    float starttime = 0;
-    float totalduration = args.act->getTimeline().getDurationInSeconds();
-    int mharmony, mrhythm, mtempo;
-    bool allowchange = true;
-    bool isHighEnergy = true;
+    int rigged = 0; // set to '1' for slowwaves all the time
+    float totalduration = args.act->getTimeline().getDurationInSeconds(); // how long
+    bool isHighEnergy = false;
 	
+    vector<CloudsSoundCue>&thecues = args.act->getSoundCues(); // copy the cues
+    vector<int> valid_presets; // make a vector of presets that match the dichotomy setting
+    vector<int> cuedichos; // place to stash cue dichotomies
+
+    int numcues = thecues.size(); // how many cues in this act?
+    
+    float pad = 5.0; // padding for FX chain
+    
+    //
+    // GOGOGO
+    //
+    
+    if(LUKEDEBUG) cout << "===============" << endl;
+    if(LUKEDEBUG) cout << "MAKING MUSIC!!!" << endl;
+    if(LUKEDEBUG) cout << "===============" << endl;
+
+    totalduration+=pad; // pad the total
+    
+    if(LUKEDEBUG) cout << "TOTAL DURATION: " << totalduration << endl;
+
     // launch music FX chain
     startMusicFX(0, totalduration);
     
     // iterate through clips
-    int numclips = args.act->getAllClips().size();
-    
-    cout << "===============" << endl;
-    cout << "MAKING MUSIC!!!" << endl;
-    cout << "===============" << endl;
-    
-    // loop through clips
-    // first clip: check on soundQuestionKey
-    //  if found in preset, use that preset
-    //  if no, check dichotomies (only using non-disabled clips)
-    
-    // main loop
-    // stay where you are unless energy shift
-    // if energy shift, check dichotomies (use only non-disabled clips)
-    vector<int> valid_presets; // make a vector of presets that match the dichotomy setting
-    int thepreset; // which preset did we choose?
-    
-    if(!rigged) {
-        // STUPID MAPPING TEST
-        for(int i = 0;i<numclips;i++)
+    if(rigged) // fallback
+    {
+        startMusic(0, "slowwaves", "markov", "NULL", 0, 0, totalduration, 120, 0.5, 0.5, 0, "e_FADEINOUTFASTEST");
+    }
+    else
+    {
+        for(int i = 0;i<numcues;i++)
         {
-            CloudsClip &theclip = args.act->getAllClips()[i];
-            starttime = args.act->getClipStartTime(theclip);
-            if(i==numclips-1) // last clip
+            // TEST 1: CHECK FOR RIGGED PRESET NAME -- THESE CUES CAN BE "DISABLED"
+            if(thecues[i].riggedPresetName!="")
             {
-                clipdur = theclip.getDuration();
+                for(int j = 0; j<presets.size();j++)
+                {
+                    if(presets[j].name==thecues[i].riggedPresetName) // match
+                    {
+                        valid_presets.push_back(j);
+                    }
+                }
             }
+            // TEST 2: CHECK FOR OPENING QUESTION MATCH
+            if(thecues[i].soundQuestionKey!="")
+            {
+                for(int j = 0; j<presets.size();j++)
+                {
+                    if(presets[j].start_question==thecues[i].soundQuestionKey&&presets[j].disabled==0) // match
+                    {
+                        valid_presets.push_back(j);
+                    }
+                }                
+            }
+            // USE DICHOTOMIES
             else
             {
-                CloudsClip &nextclip = args.act->getAllClips()[i+1];
-                float nextstart = args.act->getClipStartTime(nextclip);
-                clipdur = nextstart-starttime;
-            }
-            cout << i << ": " << theclip.getLinkName() << ": " << clipdur << ":" << endl;
-            cout << "   starting at: " << starttime << endl;
-            vector<CloudsDichotomy> foo = args.act->getDichotomiesForClip(theclip);
-            vector<int> dichos;
-            for(int j = 0;j<foo.size();j++)
-            {
-                cout << "   " << foo[j].left << " versus " << foo[j].right << " is " << foo[j].balance << endl;
-                dichos.push_back(foo[j].balance);
-            }
-            
-            cout << "	current energy is " << (isHighEnergy ? "HIGH" : "LOW") << endl;
-            
-            if(args.act->isClipEnergyShift(theclip)) allowchange = true;
-            
-            if(allowchange)
-            {
-                valid_presets.clear();
+                // add up dichos for cue
+                cuedichos.clear();
+                for(int j = 0;j<thecues[i].dichotomies.size();j++)
+                {
+                    cuedichos.push_back(thecues[i].dichotomies[j].balance);
+                }
+
                 //Populate valid presets
+                valid_presets.clear();
                 for(int j = 0;j<presets.size();j++)
                 {
-                    // CHECK FOR RIGGED
-                    if(presets[j].start_question==args.soundQuestionKey) {
-                        cout << "RIGGED: " << j << "!!!!" << endl;
-                        valid_presets.clear();
-                        valid_presets.push_back(j);
-                        break;
-                    }
-                    
-                    //if the energy state is the same and it's not the first clip, don't allow this preset
-                    if(presets[j].disabled || (presets[j].highEnergy == isHighEnergy && i != 0) ){
-                        //go to next presets
-                        continue;
-                    }
-                    
                     int pscore = 0;
                     for(int k=0;k<8;k++)
                     {
-                        if(dichos[k]<=presets[j].dichomax[k]&&dichos[k]>=presets[j].dichomin[k])
+                        if(cuedichos[k]<=presets[j].dichomax[k]&&cuedichos[k]>=presets[j].dichomin[k])
                         {
                             pscore++;
                         }
                     }
-                    
                     //if all 8 dichos matched
-                    if(pscore==8){
-                        valid_presets.push_back(j);	
+                    if(pscore==8&&presets[j].highEnergy==isHighEnergy&&presets[j].disabled==0){
+                        //if(presets[j].slotnumber<250) { // temporary
+                        valid_presets.push_back(j);
+                        //}
                     }
                 }
             
-                if(valid_presets.size()==0)
-                {
-                    valid_presets.push_back(0);
-                }
+                isHighEnergy = !isHighEnergy; // flip energy state at each dicho check
+            }
+            
+            // emergency check
+            if(valid_presets.size()==0)
+            {
+                valid_presets.push_back(0);
             }
             
             // MAKE THE MUSIC
-            if(valid_presets.size() > 0){
-                if(allowchange){
-                    thepreset = valid_presets[ ofRandom(valid_presets.size()) ];
-                    isHighEnergy = presets[ thepreset ].highEnergy;
-                }
+            int GOPRESET = valid_presets[ ofRandom(valid_presets.size()) ];
             
-                mharmony = presets[thepreset].harmony;
-                mrhythm = presets[thepreset].rhythm;
-                mtempo = presets[thepreset].tempo;
-                for(int j = 0;j<presets[thepreset].instruments.size();j++)
-                {
-                    startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo, presets[thepreset].m_amp[j], presets[thepreset].m_rev[j], j);
-                }
-            }
+            if(LUKEDEBUG) cout << "   preset: " << presets[GOPRESET].slotnumber << endl;
+            schedulePreset(presets[GOPRESET], thecues[i].startTime, thecues[i].duration, thecues[i].mixLevel);
 
-            allowchange = false;
         }
     }
-    if(rigged)
-    {
-        //flush_sched();
-        startMusic(0, "slowwaves", "markov", "NULL", 0, 0, totalduration, 120, 0.5, 0.5, 0);
-    }
     
-    cout << "====================" << endl;
-    cout << "DONE MAKING MUSIC!!!" << endl;
-    cout << "====================" << endl;
+    if(LUKEDEBUG) cout << "====================" << endl;
+    if(LUKEDEBUG) cout << "DONE MAKING MUSIC!!!" << endl;
+    if(LUKEDEBUG) cout << "====================" << endl;
 
     
 }
@@ -262,7 +244,7 @@ void CloudsSound::preRollRequested(CloudsPreRollEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsSound::actEnded(CloudsActEventArgs& args){
 	args.act->unregisterEvents(this);
-    stopMusic();
+    // stopMusic();
 }
 
 //--------------------------------------------------------------------
@@ -286,6 +268,12 @@ void CloudsSound::mouseMoved(ofMouseEventArgs & args){
 }
 
 void CloudsSound::mousePressed(ofMouseEventArgs & args){
+}
+
+void CloudsSound::doPrinting() {
+    DOCMIXPRINT = !DOCMIXPRINT;
+    if(DOCMIXPRINT) RTcmixParseScoreFile("print_on.sco");
+    else RTcmixParseScoreFile("print_off.sco");
 }
 
 // =========================

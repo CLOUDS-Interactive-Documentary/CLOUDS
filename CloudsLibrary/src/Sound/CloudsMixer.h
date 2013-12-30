@@ -25,21 +25,24 @@ public:
     void fillBuffer(float *output, int bufferSize, int nChannels);
     
     CloudsAudioEvents& getEvents() { return events; };
-
+    
+    bool showCompressor;
+    float followgain;
+    float gain;
+    
 protected:
     ofAudioEventArgs musicArgs;
     ofAudioEventArgs diageticArgs;
     
     float musicVol;
     float diageticVol;
+    float masterGain;
     
     // compressor data
     float attack;
     float decay;
     float thresh;
     float ratio;
-    float followgain;
-    float makeup;
     
     CloudsAudioEvents events;
 };

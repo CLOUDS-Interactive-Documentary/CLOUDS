@@ -424,4 +424,7 @@ class CloudsVisualSystem {
 	
 	bool isPlaying;
 	float secondsRemaining;
+	
+	void checkOpenGLError(string function);
+	
 };

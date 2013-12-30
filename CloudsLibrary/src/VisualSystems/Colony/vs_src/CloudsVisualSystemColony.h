@@ -1,10 +1,8 @@
-//
-//  CloudsVisualSystemColony.h
-//  VSColony
-//
-//  Created by Patricio Gonzalez Vivo on 6/26/13.
-//
-//
+/* 
+ WOW SUCH VISUAL
+ VERY COPYRIGHT
+ */
+
 
 #pragma once
 
@@ -50,40 +48,41 @@ public:
     
     void selfPresetLoaded(string presetPath);
     
-    //Publics stuffs
-    
-	void loadShader();
-    void reallocateFramebuffers();
     
 private:
     
+    /*  SUCH PARAMS */
+    cellParams params;
+    bool levelSetMode;
+    int numInitialCells;
+    float translucenseCell, translucenseDish;
+    ofVec4f kernelColor_high, kernelColor_low;
+
+    /* MUCH PRIVATE */
+    float kernel_maxValue;
+    
     /* MUCH GEOMETRY */
     ofVboMesh   vbo;
-    ofShader    noiseShader;
-    ofShader    cellShader;
-    ofShader    levelSet;
-    ofShader    billboard;
     
     /* WOW VIDEO */
-    ofFbo fbo_main, foodTexture;
+    ofFbo fbo_main;
     ofTexture sprite, grunge;
+    ofShader    levelSet;
+    ofShader    billboard;
     
     /* LOL DATA */
     colonyPartitionMap pMap;
     vector< cellPtr > cells;
-
-    float  noiseZoom;
-    int newbornCount;
     
-    bool reset; //TODO: used?
+    /* SO GUI */
+    ofxUISuperCanvas* guiDynamics;
+    ofxUISuperCanvas* guiLooks;
     
-    /*  SUCH PARAMS */
-    cellParams params;
-    float numInitialCells; //float because ints won't work in gui
-    
-    /* WOW UTILITY */
+    /* ALL THE UTILITY */
     void updateFoodTexture();
     bool areFbosAllocatedAndSized();
+    void loadShaders();
+    void reallocateFramebuffers();
     
     void clear();
     void populate();

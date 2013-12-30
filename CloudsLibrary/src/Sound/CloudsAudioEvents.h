@@ -12,6 +12,8 @@
 #include "ofMain.h"
 #include "ofEvents.h"
 
+#define MASTER_GAIN 0.85
+
 class CloudsAudioEvents {
 public:
     ofEvent<ofAudioEventArgs>   musicAudioRequested;

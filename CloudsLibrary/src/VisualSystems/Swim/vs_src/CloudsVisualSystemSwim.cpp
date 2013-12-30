@@ -265,10 +265,6 @@ void CloudsVisualSystemSwim::selfSceneTransformation(){
 	
 }
 
-
-
-
-
 // draw any debug stuff here
 void CloudsVisualSystemSwim::selfDrawDebug(){
 	

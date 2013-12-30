@@ -111,16 +111,19 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
             foo.arg_b.resize(5);
             foo.m_amp.resize(5);
             foo.m_rev.resize(5);
+            foo.env.resize(5);
             for(int j = 0;j<foo.m_amp.size();j++)
             {
                 foo.m_amp[j] = 1.;
                 foo.m_rev[j] = 0.5;
+                foo.env[j] = "e_CONSTANT";
             }
             foo.start_question = "none";
             //foo.energy = "neutral";
 			foo.highEnergy = false;
             foo.dichomin.resize(8);
             foo.dichomax.resize(8);
+            foo.slotnumber = thestuff.getAttribute("slot", "number", 0, i);
             thestuff.pushTag("slot", i);
             int numfields = thestuff.getNumTags("pattr");
             for(int j = 0;j<numfields;j++)
@@ -233,6 +236,21 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
                 else if(pat=="rev5") {
                     foo.m_rev[4] = thestuff.getAttribute("pattr", "value", 0.5, j);
                 }
+                else if(pat=="env1") {
+                    foo.env[0] = thestuff.getAttribute("pattr", "value", "e_CONSTANT", j);
+                }
+                else if(pat=="env2") {
+                    foo.env[1] = thestuff.getAttribute("pattr", "value", "e_CONSTANT", j);
+                }
+                else if(pat=="env3") {
+                    foo.env[2] = thestuff.getAttribute("pattr", "value", "e_CONSTANT", j);
+                }
+                else if(pat=="env4") {
+                    foo.env[3] = thestuff.getAttribute("pattr", "value", "e_CONSTANT", j);
+                }
+                else if(pat=="env5") {
+                    foo.env[4] = thestuff.getAttribute("pattr", "value", "e_CONSTANT", j);
+                }
                 else if(pat=="d1") {
                     string d = thestuff.getAttribute("pattr", "value", "foo", j);
                     foo.dichomin[0] = ofToInt(ofSplitString(d, " ")[0])-5;
@@ -284,10 +302,14 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
                     foo.instruments.erase(foo.instruments.begin()+j);
                     foo.arg_a.erase(foo.arg_a.begin()+j);
                     foo.arg_b.erase(foo.arg_b.begin()+j);
+                    foo.m_amp.erase(foo.m_amp.begin()+j);
+                    foo.m_rev.erase(foo.m_rev.begin()+j);
+                    foo.env.erase(foo.env.begin()+j);
                 }
             }
             if(LUKEDEBUG) {
                 cout << "PRESET XML " << i << ": " << foo.name << endl;
+                cout << "   slot number: " << foo.slotnumber << endl;
                 for(int j =0;j<foo.instruments.size();j++)
                 {
                     cout << "   orchestration: " << foo.instruments[j] << endl;

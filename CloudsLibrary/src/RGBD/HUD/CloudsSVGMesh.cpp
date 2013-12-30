@@ -13,6 +13,16 @@ string strrephack(string input, string searchStr, string replaceStr){
 	return input;
 }
 
+bool CloudsSVGMesh::loadDirectory(string file){
+	ofDirectory dir(file);
+	dir.allowExt("svg");
+	dir.listDir();
+	for(int i = 0; i < dir.numFiles(); i++){
+		load(dir.getPath(i));
+	}
+	return true;
+}
+
 bool CloudsSVGMesh::load(string file){
 	ofxXmlSettings svg;
 	if(!svg.loadFile(file)){

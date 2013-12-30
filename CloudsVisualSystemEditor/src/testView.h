@@ -44,9 +44,18 @@
 	
 	vector<int> sortedKeywordIndeces;
 	vector<int> sortedClipIndeces;
-	
+		
 	float percentKeywordsTagged;
 	float percentClipsTagged;
+
+	//test drive stuff
+	vector<int> testPresetIndeces;
+	int currentTestPresetIndex;
+	bool runningTest;
+	float lastSystemStartTime;
+	vector< ofPtr<CloudsVisualSystem> > testBatch;
+	int testBatchIndex;
+
 }
 
 - (int)selectedPresetIndex;
@@ -67,6 +76,7 @@
 - (void)mouseReleased:(NSPoint)p button:(int)button;
 - (void)windowResized:(NSSize)size;
 
+- (IBAction) runTests:(id)sender;
 
 - (IBAction) updateFilters:(id)sender;
 - (IBAction) updatePresets:(id)sender;

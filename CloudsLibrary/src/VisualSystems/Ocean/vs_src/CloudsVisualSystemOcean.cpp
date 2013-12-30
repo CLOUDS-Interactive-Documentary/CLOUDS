@@ -26,7 +26,6 @@ string CloudsVisualSystemOcean::getSystemName(){
 }
 
 void CloudsVisualSystemOcean::selfSetup(){
-	generateOcean();
 	
 }
 
@@ -35,6 +34,7 @@ void CloudsVisualSystemOcean::selfPresetLoaded(string presetPath){
 }
 
 void CloudsVisualSystemOcean::generateOcean(){
+	
 	ocean.size = ofVec3f(int(oceanTileSizeX), 1.0, int(oceanTileSizeY));
     ocean.windSpeed = windSpeed;
     ocean.setup();
@@ -100,11 +100,10 @@ void CloudsVisualSystemOcean::selfSetupGuis(){
 	
 	blendMode = OF_BLENDMODE_ALPHA;
 	
-	reloadShader();
 }
 
 void CloudsVisualSystemOcean::selfUpdate(){
-
+	
 	if(useOceanCam){
 		getCameraRef().dolly(cameraSpeed);
 		ocean.cameraPosition = getCameraRef().getPosition();
@@ -166,7 +165,6 @@ void CloudsVisualSystemOcean::selfSceneTransformation(){
 
 void CloudsVisualSystemOcean::selfDraw(){
 	
-
 	glPushAttrib(GL_POINT_BIT | GL_POLYGON_BIT | GL_FOG_BIT | GL_DEPTH_BITS);
 	glEnable(GL_POINT_SMOOTH);
 	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
@@ -211,15 +209,10 @@ void CloudsVisualSystemOcean::selfDraw(){
 	if(drawOcean){
 		renderer.draw();
 	}
+	
 	mat->end();
 	
-	//oceanShader.end();
-	
 	glPopAttrib();
-	
-	ofEnableAlphaBlending();
-	
-
 }
 
 void CloudsVisualSystemOcean::selfExit(){
@@ -240,9 +233,6 @@ void CloudsVisualSystemOcean::selfKeyPressed(ofKeyEventArgs & args){
 		generateOcean();
 	}
 	
-	if(args.key == 'S'){
-		reloadShader();		
-	}
 }
 
 void CloudsVisualSystemOcean::selfKeyReleased(ofKeyEventArgs & args){
@@ -283,10 +273,10 @@ void CloudsVisualSystemOcean::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
 
-void CloudsVisualSystemOcean::reloadShader(){
-	cout << "Reloading ocean shader" << endl;
-	oceanShader.load(getVisualSystemDataPath() + "shaders/ocean");
-}
+//void CloudsVisualSystemOcean::reloadShader(){
+////	cout << "Reloading ocean shader" << endl;
+////	oceanShader.load(getVisualSystemDataPath() + "shaders/ocean");
+//}
 
 void CloudsVisualSystemOcean::selfSetupRenderGui(){
 	vector<string> modes;

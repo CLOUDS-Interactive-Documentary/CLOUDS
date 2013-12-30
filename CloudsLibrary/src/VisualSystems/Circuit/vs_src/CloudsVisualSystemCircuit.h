@@ -117,7 +117,9 @@ protected:
 	ofxUISuperCanvas* blipGui;
 	ofRange pointSizeRange;
 	ofRange pointDistanceRange;
-	
+	float blipScaleExponent;
+	float blipSpeed;
+
 	ofxUISuperCanvas* lineGui;
 	
 	float nearClippingPlane;
@@ -126,7 +128,6 @@ protected:
 	void reloadShaders();
 	void generateCircuit();
 	
-	float blipSpeed;
 	
 	ofxGameCamera gameCam;
 	
