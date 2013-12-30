@@ -1,0 +1,79 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>240.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>speed</Name>
+    <Value>0.975369453</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>point size</Name>
+    <Value>2.064039230</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>scale</Name>
+    <Value>1.810344815</Value>
+</Widget>
+<Widget>
+    <Kind>11</Kind>
+    <Name>offset</Name>
+    <XValue>-2269.950927734</XValue>
+    <YValue>-326.305419922</YValue>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>wrappedOnly</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>draw rgbd</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>warp fade</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cylinder z</Name>
+    <Value>-433.497528076</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cylinder radius</Name>
+    <Value>51.231525421</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>draw double</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>double offset</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>double cheat</Name>
+    <Value>2.216748714</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>fog range</Name>
+    <HighValue>3349.754882812</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fog density</Name>
+    <Value>0.062068969</Value>
+</Widget>
