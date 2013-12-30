@@ -37,6 +37,7 @@
 #include "ModelCreature.h"
 #include "JellyCreature.h"
 #include "PointCreature.h"
+#include "ofxGpuParticles.h"
 
 namespace itg
 {
@@ -75,9 +76,14 @@ namespace itg
         void addModelFish(unsigned number, const ModelParams& params);
         void addJellyFish(unsigned number, const JellyParams& params);
         
+        static const unsigned TENTACLE_NUM_SECTIONS = 10;
+        static const unsigned TENTACLE_SECTION_LENGTH = 10;
+        
         vector<Creature::Ptr> creatures;
         vector<vector<Creature::Ptr> > creaturesByType;
+        vector<unsigned> jellyIndices;
         ofxNearestNeighbour3D nn;
         ofVboMesh pointCreatureMesh;
+        ofxGpuParticles tentacles;
     };
 }

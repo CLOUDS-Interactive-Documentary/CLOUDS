@@ -63,7 +63,7 @@ void CloudsVisualSystemSwim::selfUpdate()
     // cam
     camYRot += CAM_DAMPING * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20, true) - camYRot);
     camSpeed += CAM_DAMPING * (ofMap(GetCloudsInputY(), 0, ofGetHeight(), -maxCamSpeed, 0.f, true) - camSpeed);
-    getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
+    //getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
     getCameraRef().setOrientation(ofVec3f(0, camYRot, 0.f));
     getCameraRef().setFarClip(Creature::fogEnd);
 
