@@ -445,6 +445,7 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
 		nodeMesh.getNormals()[tweeters[i].nodeVertexIndex].y = 1.0;
         
 		for(int k = 0; k < tweetsOnDate.size(); k ++){
+            
 			activeTweets.push_back(&tweetsOnDate[k].tweet);
             activeTweetPairs.push_back(make_pair(&tweeters[i].name, &tweetsOnDate[k].tweet));
             
@@ -1029,30 +1030,24 @@ void CloudsVisualSystemTwitter::drawFeed(){
         if(bAnimateFeed){
             for(int i=0;i<currentSelection.size(); i++ ){
                 ofPushStyle();
+                float textX = getCanvasWidth() - tweetFeedRect.x;
+                float avatarX = textX -avatarTweetGap;
+                float menuX = textX + tweetFont.getLineLength() - tweetDeckMenu.width + tweetDeckWidthOffset;
+                float lineX1 = avatarX -3;
+                float lineX2 = textX + tweetFont.getLineLength() ;
                 
-                float avatarX = tweetFeedRect.x -avatarTweetGap;
-                float textX = tweetFeedRect.x;
-                
+                // Only nede to lerp y values
                 float sourceTextY = tweetFeedRect.y + +(i-1)*heightOffset +textHeightOffset;
-                float sourceAvatarY = tweetFeedRect.y +(i-1)*heightOffset;
-                
                 float targetTextY = tweetFeedRect.y + +i*heightOffset +textHeightOffset;
-                float targetAvatarY = tweetFeedRect.y +i*heightOffset;
-                
 
-                
-                float menuX = tweetFeedRect.x + tweetFont.getLineLength() - tweetDeckMenu.width + tweetDeckWidthOffset;
+                float sourceAvatarY = tweetFeedRect.y +(i-1)*heightOffset;
+                float targetAvatarY = tweetFeedRect.y +i*heightOffset;
+                                
                 float sourceMenuY = tweetFeedRect.y +(i +1)*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset;
                 float targetMenuY = tweetFeedRect.y +(i +2)*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset;
-
-                float lineX1 = avatarX -3;
-                float lineX2 = tweetFeedRect.x + tweetFont.getLineLength();
                 
-//                float sourceLineY1 = sourceMenuY - tweetDeckLineOffset;
-//                float targetLineY1 = targetMenuY - tweetDeckLineOffset;
-
-//                float sourcelineY2 =  sourceMenuY - tweetDeckLineOffset;
                 
+                //lerp them lines and text
                 float curTextY = ofLerp(sourceTextY, targetTextY, animationLerpAmt);
                 float curAvatarY = ofLerp(sourceAvatarY, targetAvatarY, animationLerpAmt);
                 float curMenuY = ofLerp(sourceMenuY, targetMenuY, animationLerpAmt);
@@ -1097,29 +1092,20 @@ void CloudsVisualSystemTwitter::drawFeed(){
                 
                 col.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1, .1, 1.),2);
                 
-                
                 //SM: Local variables for drawings. Apologies to anyone who sees this that isnt me.
-                float avatarX = tweetFeedRect.x -avatarTweetGap;
-                float textX = tweetFeedRect.x;
-                float twitterHandleY = tweetFeedRect.y +i*heightOffset +textHeightOffset;
-                
-                //TODO: Add the tweet y offset to the GUI
-                float tweetY = tweetFeedRect.y +i*heightOffset +textHeightOffset + 15;
-                
-                float menuX = tweetFeedRect.x + tweetFont.getLineLength() - tweetDeckMenu.width + tweetDeckWidthOffset;
-                float menuY = tweetFeedRect.y +(i +1)*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset;
-                
+                float textX = getCanvasWidth() - tweetFeedRect.x;
+                float avatarX = textX -avatarTweetGap;
+                float menuX = textX + tweetFont.getLineLength() - tweetDeckMenu.width + tweetDeckWidthOffset;
                 float lineX1 = avatarX -3;
-                float lineY1 = menuY - tweetDeckLineOffset;
-                float lineX2 = tweetFeedRect.x + tweetFont.getLineLength();
-                float lineY2 =  menuY - tweetDeckLineOffset;
+                float lineX2 = textX + tweetFont.getLineLength() ;
                 
-                //TODO: Add this with the params
-                //                ofSetColor(ofFloatColor(0.2,0.2,0.2,textColor.a - 0.1));
-                //                ofFill();
-                //                ofRect(tweetFeedRect);
                 
-//                ofNoFill();
+                float curYpos = tweetFeedRect.y +i*heightOffset + textHeightOffset;
+                float twitterHandleY =  curYpos ;
+                float tweetY = curYpos + 15;
+                float menuY = curYpos + heightOffset  - tweetDeckMenu.height + tweetDeckHeightOffset;
+                float lineY = curYpos + heightOffset - tweetDeckLineOffset;
+
                 ofSetColor(col);
                 
                 //50 is a magic number right now using this to not draw tweets that intersect with the edge of the screen
@@ -1135,12 +1121,9 @@ void CloudsVisualSystemTwitter::drawFeed(){
                     
                     twitterHandleFont.drawString(ofToString(*currentSelection[i].first), textX, twitterHandleY);
                     tweetFont.drawString(ofToString(*currentSelection[i].second), textX, tweetY);
-                    
-                    
-//                    //                    ofSetColor(ofFloatColor(0.5,0.5,0.5,col.a));
 
                     tweetDeckMenu.draw(menuX,menuY, tweetDeckWidth, tweetDeckHeight);
-                    ofLine( lineX1 ,lineY1,lineX2 , lineY2);
+                    ofLine( lineX1 ,lineY,lineX2 , lineY);
                 }
                 
 
@@ -1164,16 +1147,17 @@ void CloudsVisualSystemTwitter::selfDrawDebug()
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemTwitter::selfDrawBackground()
 {
-    //    ofPushMatrix();
-    //    ofxBillboardBeginSphericalCheat(ofVec3f(100,100,0));
-    //    ofPushStyle();
-    //    ofSetColor(128,255);
-    //    ofTranslate(100, -100);
-    //    ofScale(0,-1,0);
-    //    tweetFont.drawString(getDateAsString(dateIndex[currentDateIndex]), 0, 0);
-    //    ofPopStyle();
-    //    ofxBillboardEnd();
-    //    ofPopMatrix();
+//    ofFloatColor  col = getRGBfromHSV(textColorHSV);
+//    ofPushMatrix();
+//    ofxBillboardBeginSphericalCheat(ofVec3f(0,0,0));
+//    ofPushStyle();
+//    ofSetColor(col);
+////    ofTranslate(100, -100);
+////    ofScale(0.01,-0.01,0.01);
+//    font.drawString(getDateAsString(dateIndex[currentDateIndex]), 0, 0);
+//    ofPopStyle();
+//    ofxBillboardEnd();
+//    ofPopMatrix();
     
     
     if(bRenderFeed){

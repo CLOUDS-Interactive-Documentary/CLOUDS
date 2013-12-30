@@ -12,7 +12,7 @@
 Astrolabe::Astrolabe()
 {
 	adoptedVbo = NULL;
-	ease = &easesine;
+	ease = &easelinear;
 }
 Astrolabe::~Astrolabe()
 {
@@ -50,9 +50,7 @@ void Astrolabe::setupMesh( float _lowRadian, float _hiRadian, float _innerRadius
 };
 
 void Astrolabe::updateRotations()
-{
-	//states for tween different attributes...
-	
+{	
 	//rotation tween in x or z & y
 	for( map<string, ofxTween>::iterator it = rot.begin(); it!= rot.end(); it++ )
 	{
@@ -64,13 +62,10 @@ void Astrolabe::updateRotations()
 			
 			if( ti.reverse )
 			{
-				
 				tweenInfo[it->first].step = -tweenInfo[it->first].step;
 			}
 			
-			float scl = ti.scale;
-			
-			it->second.setParameters(*ease, ofxTween::easeOut, start, start + tweenInfo[it->first].step, ti.duration * scl, ti.delay * scl );
+			it->second.setParameters(*ease, ofxTween::easeOut, start, start + tweenInfo[it->first].step, ti.duration * ti.scale, ti.delay * ti.scale );
 		}
 	}
 	
@@ -81,11 +76,13 @@ void Astrolabe::updateRotations()
 	setOrientation( eularAngels );
 }
 
+
 void Astrolabe::addRotationTween( string axis, float startVal, float step, float duration, float delay, float increment )
 {
 	tweenInfo[axis].set( step, duration, increment );
 	rot[axis].setParameters(*ease, ofxTween::easeInOut, startVal, startVal+step, duration, delay );
 }
+
 void Astrolabe::setRotationTween( string axis, float startVal, float step, float duration, float delay, float increment )
 {
 	addRotationTween( axis, startVal, step, duration, delay, increment );
@@ -246,4 +243,15 @@ void Astrolabe::setTweenReverse( string axis, bool reverse )
 void Astrolabe::getTweenReverse( string axis )
 {
 	return 	rot.find(axis) != rot.end() ? tweenInfo[axis].reverse : false;
+}
+
+
+void Astrolabe::setEase( ofxEasing& e )
+{
+	ease = &e;
+}
+
+void Astrolabe::setEase( ofxEasing* e )
+{
+	ease = e;
 }

@@ -1,3 +1,5 @@
+#version 120
+
 varying float size;
 
 void main() {
