@@ -80,6 +80,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         mel = simplemelodies[a];
     }
     
+    // SINE WAVE TEST
     if (mo=="testsine")
     {
         PATCHSYNTH("WAVETABLE", "out 0-1");
