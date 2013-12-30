@@ -603,9 +603,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
         
     }
     
-    //add the history of the last topic in the act to the timesOnCurrentTopicHistory map of the CloudsRun.
-    //    timesOnCurrentTopicHistory[topic] += timesOnCurrentTopic;
-    
     if(systemRunning){
         
         float clipStartTime = act->getItemForClip(act->getClip(act->getAllClips().size()-1)).startTime;
@@ -618,7 +615,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
                 }
                 
                 act->addVisualSystem(currentPreset, visualSystemStartTime, visualSystemDuration);
-                //act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
                 systemRunning = false;
                 lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
             }
@@ -627,7 +623,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
             if(visualSystemDuration > definitePresetEndTime ){
                 definitePresetEndTime = visualSystemStartTime + currentPreset.duration;;
                 act->addVisualSystem(currentPreset, visualSystemStartTime, definitePresetEndTime);
-                //act->removeQuestionAtTime(visualSystemStartTime, definitePresetEndTime);
                 systemRunning = false;
                 isPresetIndefinite = true;
                 lastVisualSystemEnded = visualSystemStartTime + definitePresetEndTime;

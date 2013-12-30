@@ -119,7 +119,7 @@ void SCHEDULEBANG(double time)
 }
 
 // play an audio file from DISK
-void STREAMSOUND(double outskip, string file, double dur, double amp, ofSoundPlayer& bupsound)
+void STREAMSOUND(double outskip, string file, double dur, double amp)
 {
     
     char thebuf [256];
