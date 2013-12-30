@@ -194,8 +194,9 @@ void CloudsVisualSystemExampleVectorMath::selfDraw(){
             glVertex3f(pts[i].pos.x, pts[i].pos.y, pts[i].pos.z);
         }
     }
-    ofDisableAlphaBlending();
     glEnd();
+    ofDisableAlphaBlending();
+    
     
     if(bShowAxis)
     {

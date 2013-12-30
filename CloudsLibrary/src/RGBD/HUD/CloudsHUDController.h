@@ -11,8 +11,11 @@
 #include "ofMain.h"
 #include "ofxSvg.h"
 #include "ofxUI.h"
+#include "ofxFTGL.h"
+
 #include "CloudsHUDLayer.h"
 #include "CloudsHUDHomeButton.h"
+#include "CloudsHUDLabel.h"
 
 typedef enum {
 	CLOUDS_HUD_FULL = 0,
@@ -24,7 +27,7 @@ typedef enum {
 
 class CloudsClip;
 class CloudsHUDController {
-public:
+  public:
 	
 	CloudsHUDController();
 	
@@ -33,6 +36,8 @@ public:
 	void draw();
 
 	void buildLayerSets();
+    void calculateFontSizes();
+    int getFontSizeForMesh( SVGMesh* textMesh );
 	
 	void clipBegan(CloudsClip& clip);
 	
@@ -51,8 +56,24 @@ public:
 	CloudsHUDHomeButton home;
 	
   protected:
-	void drawLayer(CloudsHUDLayerSet layer);
-	
+    void drawLayer(CloudsHUDLayerSet layer);
+    ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName );
+    
+    vector<ofxFTGLFont*>    tempFontList;
+    ofxFTGLSimpleLayout     *BylineBodyCopyTextBox,
+                            *BylineFirstNameTextBox,
+                            *BylineLastNameTextBox,
+                            *BylineTopicTextBoxBottom,
+                            *BylineTopicTextBoxTop,
+                            *ResetButtonTextBox,
+                            *QuestionTextBox,
+                            *TopicTextBoxLeft,
+                            *TopicTextBoxRight,
+                            *ProjectExampleTextboxLeft,
+                            *ProjectExampleTextboxRight,
+                            *ProjectExampleTextBoxTop;
+    
+    vector<CloudsHUDLabel>  hudLabelList;
 };
 
 

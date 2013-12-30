@@ -30,6 +30,8 @@ extern "C" {
     int mm_buf_getchans(char *bufname);
     float maxmsp_vals[1024];
     int vals_ready;
+    void pfield_set(int inlet, float pval);
+    int check_vals(float *thevals);
 }
 
 // luke's comp structures
@@ -160,11 +162,13 @@ void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, s
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
 void SCHEDULEBANG(double time);
 void STREAMSOUND(double outskip, string file, double dur, double amp);
+void STREAMSOUND_DYNAMIC(double outskip, string file, double amp, string pvar, int updatenr);
 
 void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus, string ampcurve);
 void INITMIX();
 
 void PATCHSYNTH(string inst, string output);
 void PATCHFX(string inst, string input, string output);
+void PFIELD_SCHED(float outskip, float duration, int nr, string action);
 
 #endif

@@ -37,8 +37,7 @@ void CloudsHUDLayer::parse(string svgFilePath){
 }
 
 void CloudsHUDLayer::parseDirectory(string svgDirectoryPath){
-    
-    cout << "Loading SVG directory :: " << svgDirectoryPath << endl;
+//    cout << "Loading SVG directory :: " << svgDirectoryPath << endl;
     
     svg.loadDirectory(svgDirectoryPath);
     

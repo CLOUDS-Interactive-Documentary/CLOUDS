@@ -1,10 +1,10 @@
-#version 110
+#version 120
 
 uniform float numPoints;
 uniform vec4 targetColor;
 uniform vec2 resolution;
 uniform float curveProgress;
-uniform float precision;
+uniform float selfPrecision;
 uniform float offsetX;
 uniform float offsetY;
 uniform float curveWidth;
@@ -17,8 +17,8 @@ uniform float curveDepth;
  */
 vec3 getThePoint(float pointID){
 	//Magic numbers in yo face
-	float px = cos((0.7+ 0.09 * 0.3 / resolution.x) * pointID * precision + offsetX);
-	float py = sin(pointID * precision + offsetY);
+	float px = cos((0.7+ 0.09 * 0.3 / resolution.x) * pointID * selfPrecision + offsetX);
+	float py = sin(pointID * selfPrecision + offsetY);
 	float pz = abs((-numPoints / 2.0) + pointID) / (numPoints / 2.0);
 	return vec3( -curveWidth / 2.0 + px * curveWidth, -curveHeight / 2.0 + py * curveHeight, -curveDepth / 2.0 + curveZPos + pz * curveDepth);
 }

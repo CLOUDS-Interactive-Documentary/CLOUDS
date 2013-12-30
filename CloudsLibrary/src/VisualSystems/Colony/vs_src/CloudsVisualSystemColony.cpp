@@ -17,7 +17,7 @@ void CloudsVisualSystemColony::selfSetup()
     ofEnableArbTex();
     
     grunge.setCompression(OF_COMPRESS_ARB);
-    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/dirt_square.jpg");
+    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/blur_square3.jpg");
 
 	loadShaders();
  
@@ -165,6 +165,7 @@ void CloudsVisualSystemColony::selfUpdate()
 void CloudsVisualSystemColony::selfDrawBackground()
 {
     ofEnableAlphaBlending();
+    
     levelSet.begin();
     levelSet.setUniformTexture("grunge", grunge, 1);
     levelSet.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
@@ -261,7 +262,9 @@ void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){
 	}
 }
 
-void CloudsVisualSystemColony::selfDrawDebug(){}
+void CloudsVisualSystemColony::selfDrawDebug(){
+    fbo_debug.draw(0, 0, getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+}
 void CloudsVisualSystemColony::selfSceneTransformation(){}
 void CloudsVisualSystemColony::selfKeyReleased(ofKeyEventArgs & args){}
 void CloudsVisualSystemColony::mouseDragged(ofMouseEventArgs& data){}

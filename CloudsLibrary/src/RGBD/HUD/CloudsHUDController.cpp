@@ -19,7 +19,8 @@ CloudsHUDController::CloudsHUDController(){
 void CloudsHUDController::setup(){
 //	testImage.loadImage( GetCloudsDataPath() + "HUD/overlayTest.png" );
 	buildLayerSets();
-		
+    calculateFontSizes();
+	
 	home.setup();
 }
 
@@ -119,31 +120,91 @@ void CloudsHUDController::buildLayerSets(){
         allLayers[i]->startPoint = ofVec2f(allLayers[i]->svg.getWidth(),0);
         allLayers[i]->endPoint   = ofVec2f(0,allLayers[i]->svg.getHeight());
     }
-    
-  
-    /*
-	ofDirectory testSVGDir(GetCloudsDataPath() + "HUD/SVG");
-	testSVGDir.allowExt("svg");
-	testSVGDir.listDir();
-	for(int i = 0; i < testSVGDir.numFiles(); i++){
-//			cout << "Loading " << testSVGDir.getName(i) << endl;
-		layer = new CloudsHUDLayer();
-		layer->parse(testSVGDir.getPath(i));
-		layerSets[currentLayer].push_back( layer );
-		allLayers.push_back(layer);
-		
-		layer->duration = 1.5;
-		layer->delayTime = ofRandomuf();
-		
-		layer->startPoint = ofVec2f(layer->svg.getWidth(),0);
-		layer->endPoint   = ofVec2f(0,layer->svg.getHeight());
-		
-	}
-     */
 	
 //	layerSets[CLOUDS_HUD_QUESTION].push_back( new CloudsHUDLayer(GetCloudsDataPath() + "HUD/01_MAIN_innermost.svg" ) );
 //	layerSets[CLOUDS_HUD_QUESTION].push_back( new CloudsHUDLayer(GetCloudsDataPath() + "HUD/01_MAIN_Outer.svg" ) );
 	
+}
+
+void CloudsHUDController::calculateFontSizes(){
+    // temporary allocate
+    int minFontSize = 1;
+    int maxFontSize = 40;
+    
+    for( int i=minFontSize; i<maxFontSize; i++){
+        ofxFTGLFont *tmp = new ofxFTGLFont();
+        tmp->loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", i );
+        tempFontList.push_back( tmp );
+    }
+
+    
+    BylineBodyCopyTextBox       = getLayoutForLayer("BylineBodyCopyTextBox");
+    BylineFirstNameTextBox      = getLayoutForLayer("BylineFirstNameTextBox_1_");
+    BylineLastNameTextBox       = getLayoutForLayer("BylineLastNameTextBox");
+    BylineTopicTextBoxBottom    = getLayoutForLayer("BylineTopicTextBoxBottom");
+    BylineTopicTextBoxTop       = getLayoutForLayer("BylineTopicTextBoxTop");
+    ResetButtonTextBox          = getLayoutForLayer("ResetButtonTextBox");
+    QuestionTextBox             = getLayoutForLayer("QuestionTextBox");
+    TopicTextBoxLeft            = getLayoutForLayer("TopicTextBoxLeft");
+    TopicTextBoxRight           = getLayoutForLayer("TopicTextBoxRight");
+    ProjectExampleTextboxLeft   = getLayoutForLayer("ProjectExampleTextboxLeft");
+    ProjectExampleTextboxRight  = getLayoutForLayer("ProjectExampleTextboxRight");
+    ProjectExampleTextBoxTop    = getLayoutForLayer("ProjectExampleTextBoxTop");
+    
+    
+    // cleanup!
+    for( int i=0; i<tempFontList.size(); i++ ){
+        delete tempFontList[i];
+    }
+    tempFontList.clear();
+}
+
+ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName ) {
+    for( int i=0; i<allLayers.size(); i++ ){
+        SVGMesh* textMesh = allLayers[i]->svg.getMeshByID( layerName );
+        
+        if( textMesh != NULL ){
+            float maxHeight = textMesh->bounds.height;
+            int fontSize = getFontSizeForMesh( textMesh );
+            
+//            cout << "The correct font size is " << fontSize << ". Width is " << textMesh->bounds.width << endl;
+            
+            // make a layout
+            ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
+            newLayout->loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", fontSize );
+            newLayout->setLineLength( textMesh->bounds.width );
+            
+            // make a label
+            CloudsHUDLabel newLabel;
+            newLabel.layout = newLayout;
+            newLabel.bounds = textMesh->bounds;
+            
+            hudLabelList.push_back( newLabel );
+            
+            return newLayout;
+        }
+    }
+    
+    return NULL;
+}
+
+int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
+    if( !textMesh ){
+        ofLogError("CloudsHUDController :: Text box not found");
+        return 0;
+    }
+    
+    int fontSize = 0;
+    float textBoxHeight = textMesh->bounds.height;
+    
+    for( int k=0; k<tempFontList.size()-1; k++){
+        if( tempFontList[k]->getLineHeight() <= textBoxHeight && tempFontList[k+1]->getLineHeight() > textBoxHeight ){
+            fontSize = 1 + k;
+            break;
+        }
+    }
+    
+    return fontSize;
 }
 
 void CloudsHUDController::update(){
@@ -165,6 +226,10 @@ void CloudsHUDController::draw(){
 	drawLayer(CLOUDS_HUD_LOWER_THIRD);
 	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
 	drawLayer(CLOUDS_HUD_MAP);
+    
+    for( int i=0; i<hudLabelList.size(); i++ ){
+        hudLabelList[i].draw();
+    }
     
 	home.draw();
 	

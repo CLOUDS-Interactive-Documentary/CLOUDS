@@ -27,6 +27,10 @@ void CloudsVisualSystemAstrolabe::selfSetupGui(){
 	ringsGui->addSlider("hiRadians", 0, TWO_PI, &ringsHiRadians);
 	ringsGui->addSlider("Spacing", 0, 20, &ringsSpacing );
 	
+	ringsGui->addSpacer();
+	ringsGui->addToggle("useSpheres", &bUseSpheres);
+	ringsGui->addIntSlider("numSpheresPerArc", 1, 10, &numSpheresPerArc);
+	
 	
 	ofAddListener(ringsGui->newGUIEvent, this, &CloudsVisualSystemAstrolabe::selfGuiEvent);
 	guis.push_back(ringsGui);
@@ -46,6 +50,16 @@ void CloudsVisualSystemAstrolabe::selfSetupGui(){
 	//ticksGui->addSlider("noiseyness", 0, 1, &ringsNoiseyness );
 	ticksGui->addSlider("innerSpeed", .001, 10, &innerSpeed)->setIncrement(.001);
 	ticksGui->addSlider("outerSpeed", .001, 10, &outerSpeed)->setIncrement(.001);
+	ticksGui->addIntSlider("skipAheadOnCreation", 0, 33, &skipAhead);
+	ticksGui->addSpacer();
+	
+	vector<string> easeNames;
+	for(map<string, ofxEasing*>::iterator it = easeMap.begin(); it != easeMap.end(); it++)
+	{
+		easeNames.push_back(it->first);
+	}
+	
+	ticksGui->addRadio("EASE_TYPES", easeNames);
 	
 	ticksGui->addSpacer();
 	
@@ -161,6 +175,14 @@ void CloudsVisualSystemAstrolabe::selfGuiEvent(ofxUIEventArgs &e)
 		{
 			bSetupRings = true;
 		}
+		else if(name == "useSpheres")
+		{
+			bUseRings = !bUseSpheres;
+			if(bUseRings)
+			{
+				bSetupRings = true;
+			}
+		}
 	}
 	
 	if(parentName == "ShaderGui")
@@ -230,32 +252,30 @@ void CloudsVisualSystemAstrolabe::selfGuiEvent(ofxUIEventArgs &e)
 	}
 	
 	//TICKS
-	else if(parentName == "Ticks")
+	else if(parentName == "Ticks" || parentName == "EASE_TYPES")
 	{
-		if( name == "XRot" || name == "YRot" || name == "ZRot" )
+		if(e.getKind() == OFX_UI_WIDGET_TOGGLE && e.getToggle()->getValue() )
 		{
-			for(int i=0 ; i<astrolabes.size(); i++)
+			for (map<string, ofxEasing*>::iterator it = easeMap.begin(); it!=easeMap.end(); it++)
 			{
-				//		astrolabes[i]->addRotationTween(string axis, float startVal, float step, float duration, float delay, float increment)
-				astrolabes[i]->addRotationTween("x", i * ringsXRot, ringsXRot, xTickSpeed, xTickDelay, xTickDelay);
-				astrolabes[i]->addRotationTween("y", i * ringsYRot, ringsYRot, yTickSpeed, xTickDelay, yTickDelay);
-				astrolabes[i]->addRotationTween("z", i * ringsZRot, ringsZRot, zTickSpeed, zTickDelay, zTickSpeed);
-				
-				float scl = ofSignedNoise(i*.1) * .75 + 1.;
-				astrolabes[i]->setTweenScale("x", scl );
-				astrolabes[i]->setTweenScale("y", scl );
-				astrolabes[i]->setTweenScale("z", scl );
+				if(name == it->first)
+				{
+					for (int i=0; i<astrolabes.size(); i++)
+					{
+						astrolabes[i]->setEase(it->second);
+					}
+				}
 			}
 		}
-		else if(name == "innerSpeed" || name == "outerSpeed" || name == "delayOffsetScale")
+		else if( name == "XRot" || name == "YRot" || name == "ZRot" )
+		{
+			resetRingRotations();
+		}
+		else if(name == "innerSpeed" || name == "outerSpeed" || name == "delayOffsetScale" || name == "skipAheadOnCreation")
 		{
 			resetRingRotations();
 		}
 		
-//		else if(name == "noiseyness" || name == "delayOffsetScale")
-//		{
-//			resetRingRotations();
-//		}
 		else if( name == "xTickSpeed" || name == "yTickSpeed" || name == "zTickSpeed" )
 		{
 			for (int i=0; i<astrolabes.size(); i++)
@@ -313,37 +333,17 @@ void CloudsVisualSystemAstrolabe::selfSetup()
 	
 	loadShaders();
 	
-	//defaults
-//	ringsCount = 15;
-//	ringsInnerRad = 5;
-//	ringsWidth = 40;
-//	ringsThickness = 10;
-//	ringsXRot = 0;
-//	ringsYRot = 0;
-//	ringsZRot = 0;
-//	ringsSpacing = 2;
-//	ringsMinTickSpeed = 100;
-//	ringsLowRadians = 0;
-//	ringsHiRadians = TWO_PI;
-//	ringsDelayOffsetScale = .25;
-//	
-//	bResetTicks = false;
-//	
-//	bDepthTest = true;
-//	
-//	currentBlendMode= OF_BLENDMODE_ADD;
-//	
-//	bAutoReverseX = bAutoReverseY = bAutoReverseZ = false;
-//	xTickSpeed = yTickSpeed = zTickSpeed = 250;
-//	xTickDelay = yTickDelay = zTickDelay = 750;
-//	
-//	c0_hue = c1_hue = c2_hue = 255;
-//	c0_brightness = c1_brightness = c2_brightness = 255;
-//	c0_saturation = c1_saturation = c2_saturation = 255;
-//	c0_alpha = c1_alpha = c2_alpha = 255;
-//	
-//	innerSpeed = 1;
-//	outerSpeed = 10;
+	//set up the ease map
+	easeMap["SINE"] = &easesine;
+	easeMap["LINEAR"] = &easelinear;
+	easeMap["CUBIC"] = &easecubic;
+	easeMap["QUADRATIC"] = &easequad;
+	easeMap["QUINTIC"] = &easingquint;
+	easeMap["BOUNCE"] = &easebounce;
+	
+	bUseRings = true;
+	
+	ofxObjLoader::load( getVisualSystemDataPath() + "models/sphere.obj", sphereMesh );
 }
 
 void CloudsVisualSystemAstrolabe::selfSetDefaults()
@@ -378,6 +378,13 @@ void CloudsVisualSystemAstrolabe::selfSetDefaults()
 	
 	innerSpeed = 1;
 	outerSpeed = 10;
+	
+	skipAhead = 7;
+	
+	bUseRings = true;
+	bUseSpheres = !bUseRings;
+	
+	numSpheresPerArc = 5;
 }
 
 void CloudsVisualSystemAstrolabe::setupRings(int count,
@@ -402,6 +409,7 @@ void CloudsVisualSystemAstrolabe::setupRings(int count,
 	
 	for(int i=0 ; i<astrolabes.size(); i++)
 	{
+
 		astrolabes[i] = new Astrolabe();
 		float innerRadius = innerRad;
 		float outerRadius = innerRadius + width;// * (i+1);
@@ -411,7 +419,18 @@ void CloudsVisualSystemAstrolabe::setupRings(int count,
 		float lowRadian = lowRadians + radianOffset;
 		float hiRadian = hiRadians + radianOffset;
 		
-		astrolabes[i]->setupMesh(lowRadian, hiRadian, innerRadius, outerRadius, thickness );
+		
+		if(bUseRings)
+		{
+			astrolabes[i]->setupMesh(lowRadian, hiRadian, innerRadius, outerRadius, thickness );
+		}
+		else
+		{
+			astrolabes[i]->innerRadius = innerRadius;
+			astrolabes[i]->outerRadius = outerRadius;
+			astrolabes[i]->r0 = lowRadian;
+			astrolabes[i]->r1 = hiRadian;
+		}
 	}
 	
 	resetRingRotations();
@@ -507,24 +526,18 @@ void CloudsVisualSystemAstrolabe::selfUpdate()
 
 void CloudsVisualSystemAstrolabe::resetRingRotations()
 {
-	//float innerSpeed = 1, outerSpeed = 10;
-
 	for(int i=0 ; i<astrolabes.size(); i++)
 	{
-		//astrolabes[i]->addRotationTween( axis, startVal, step, duration, delay, increment)
-		astrolabes[i]->addRotationTween("x", 0, ringsXRot, xTickSpeed, xTickDelay * i * ringsDelayOffsetScale, xTickDelay);
-		astrolabes[i]->addRotationTween("y", i * ringsYRot, ringsYRot, yTickSpeed, xTickDelay * i * ringsDelayOffsetScale, yTickDelay);
-		astrolabes[i]->addRotationTween("z", 0, ringsZRot, zTickSpeed, zTickDelay * i * ringsDelayOffsetScale, zTickSpeed);
+		float scl = ofMap( i, 0, astrolabes.size()-1, innerSpeed, outerSpeed );
 		
-		float scl = ofMap( i, 0, astrolabes.size()-1, innerSpeed, outerSpeed );// ofSignedNoise(i*.1) * ringsNoiseyness + 1.;
+		//astrolabes[i]->addRotationTween( axis, startVal, step, duration, delay, increment)
+		astrolabes[i]->addRotationTween("x", ringsXRot * scl * skipAhead, ringsXRot, xTickSpeed, xTickDelay * scl, xTickDelay);
+		astrolabes[i]->addRotationTween("y", i * ringsYRot + ringsYRot * scl * skipAhead, ringsYRot, xTickSpeed, yTickDelay * scl, yTickDelay);
+		astrolabes[i]->addRotationTween("z", ringsZRot * scl * skipAhead, ringsZRot, zTickSpeed, zTickDelay * scl, zTickSpeed);
+		
 		astrolabes[i]->setTweenScale("x", scl );
 		astrolabes[i]->setTweenScale("y", scl );
 		astrolabes[i]->setTweenScale("z", scl );
-		
-//		float scl = 1;// ofMap( i, 0, astrolabes.size()-1, innerSpeed, outerSpeed );
-//		astrolabes[i]->setTweenScale( "x", scl );
-//		astrolabes[i]->setTweenScale( "y", scl );
-//		astrolabes[i]->setTweenScale( "z", scl );
 	}
 }
 
@@ -541,9 +554,37 @@ void CloudsVisualSystemAstrolabe::selfDraw()
 	bDepthTest? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
 	
 	facingRatio.begin();
+	float rad, sphereRad, arcStep = 1. / (numSpheresPerArc - 1.);
 	for(int i=0 ; i<astrolabes.size(); i++)
 	{
-		astrolabes[i]->draw();
+		if(bUseRings)
+		{
+			astrolabes[i]->draw();
+		}
+		else
+		{
+			ofSetColor(astrolabes[i]->color);
+
+			ofPushMatrix();
+			ofMultMatrix(astrolabes[i]->getGlobalTransformMatrix());
+			rad = .5 * (astrolabes[i]->innerRadius + astrolabes[i]->outerRadius);
+			sphereRad = (astrolabes[i]->outerRadius - astrolabes[i]->innerRadius);
+			
+			for (int j=0; j<numSpheresPerArc; j++)
+			{
+				float radian = ofMap(j, 0, numSpheresPerArc, astrolabes[i]->r0, astrolabes[i]->r1);
+				
+				ofPushMatrix();
+				ofTranslate( sin(radian) * rad, 0, cos(radian) * rad );
+				ofScale(sphereRad,sphereRad,sphereRad);
+				
+				sphereMesh.draw();
+				
+				ofPopMatrix();
+			}
+			
+			ofPopMatrix();
+		}
 	}
 	facingRatio.end();
 	
@@ -567,15 +608,14 @@ void CloudsVisualSystemAstrolabe::selfDrawBackground(){
 }
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
-void CloudsVisualSystemAstrolabe::selfEnd(){
-	
-//	simplePointcloud.clear();
-	
+void CloudsVisualSystemAstrolabe::selfEnd()
+{
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemAstrolabe::selfExit()
 {
 	clearAstrolabes();
+	sphereMesh.clear();
 }
 
 void CloudsVisualSystemAstrolabe::clearAstrolabes()

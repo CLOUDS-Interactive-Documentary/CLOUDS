@@ -54,8 +54,8 @@ void PointLight(in vec3 lightPosition,
 	
     halfVector = normalize(VP + eye);
 
-    nDotVP = abs( dot(normal, VP));
-    nDotHV = abs( dot(normal, halfVector));
+    nDotVP = abs( dot( normal, VP) );
+    nDotHV = abs( dot( normal, halfVector) );
 
     if (nDotVP == 0.0)
         pf = 0.0;
