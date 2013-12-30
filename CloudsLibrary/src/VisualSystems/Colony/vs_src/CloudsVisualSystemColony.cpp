@@ -1,5 +1,4 @@
 #include "CloudsVisualSystemColony.h"
-#define INV_2SQRT2 0.35355339059
 
 string CloudsVisualSystemColony::getSystemName()
 {
@@ -17,7 +16,7 @@ void CloudsVisualSystemColony::selfSetup()
     ofEnableArbTex();
     
     grunge.setCompression(OF_COMPRESS_ARB);
-    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/blur_square3.jpg");
+    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/dirt_square.jpg");
 
 	loadShaders();
  
@@ -59,7 +58,7 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     guiDynamics->addRangeSlider("Lifespan Range", 5, 5000, &params.lifespanMin, &params.lifespanMax);
     guiDynamics->addSlider("Nutrient Amount", 50, 500, &params.nutrientAmount);
     guiDynamics->addSlider("Nutrient Change Ratio", 0, 1.0, &params.nutrientTimeCoef);
-    guiDynamics->addSlider("Nutrient Contrast", 0, 4.0, &params.nutrientFalloff);
+    guiDynamics->addSlider("Nutrient Contrast", 0, 12.0, &params.nutrientFalloff);
     guiDynamics->addSlider("Nutrient Scale", 0.0001, 0.1, &params.nutrientScale);
     guiDynamics->addRangeSlider("Max Speed", 0.0, 10.0, &params.maxSpeed_min, &params.maxSpeed_max);
     guiDynamics->addRangeSlider("Max Force", 0.0, 10.0, &params.maxForce_min, &params.maxForce_max);
@@ -183,7 +182,7 @@ void CloudsVisualSystemColony::selfUpdate()
         
         for (int i = 0; i < img_debug.getWidth(); i++){
             for (int j = 0; j < img_debug.getHeight(); j++){
-                img_debug.setColor(i, j, ofColor(colonyCell::getCellNoise(i, j, 0, params.nutrientTimeCoef, params.nutrientFalloff, params.nutrientAmount, params.nutrientScale)));
+                img_debug.setColor(i, j, ofColor(colonyCell::getCellNoise(i, j, params.nutrientTimeCoef, params.nutrientFalloff, params.nutrientAmount, params.nutrientScale)));
             }
         }
         img_debug.update();

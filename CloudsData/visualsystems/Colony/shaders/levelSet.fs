@@ -114,7 +114,7 @@ vec4 getMicroscope(vec4 fg){
     vec2 normalizedCoords = gl_TexCoord[0].xy * imgRes / resolution;
     float distortion = fg.b - .25 * fg.g;
     vec4 bg = texture2DRect(grunge, normalizedCoords * .5
-                            + vec2(dFdx(distortion),dFdy(distortion)) * 100.0
+                            + vec2(dFdx(distortion),dFdy(distortion)) * 200.0
                             + imgRes * .25 ); //enlarged
     
     //COMPOSITING STAGE

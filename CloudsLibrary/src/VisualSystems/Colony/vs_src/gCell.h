@@ -55,7 +55,7 @@ public:
     void doWrapXY();
     
     void doFeedCellNoise();
-    static float getCellNoise(int x, int y, int z, float nutrientTimeCoef, float nutrientFalloff, float nutrientAmount, float nutrientScale);
+    static float getCellNoise(int x, int y, float nutrientTimeCoef, float nutrientFalloff, float nutrientAmount, float nutrientScale);
     void doAddTurbulence();
     
     bool isFertile(); 
