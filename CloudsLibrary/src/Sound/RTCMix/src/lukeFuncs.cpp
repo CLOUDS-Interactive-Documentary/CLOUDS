@@ -79,32 +79,12 @@ void REVERB(double outskip, double time)
 {
     char thebuf [256];
     int bx;
-    // NOW DONE WITH SETUPMIX()
-    /*
-    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, 1., 0, 1., 0., 1., 0., 1., 0.)", outskip, time);
-    parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, 1., 1, 0., 1., 1., 0., 0., 1.)", outskip, time);
-    parse_score(thebuf, bx);
-     */
     
     // DRY MIX
     bx = snprintf(thebuf, 256, "MIX(%f, 0.0, %f, 1., 0, 1)", outskip, time);
     parse_score(thebuf, bx);
     
-    // REVERB
-    // p0 = output start time (seconds)
-    // p1 = input start time (seconds)
-    // p2 = duration (seconds)
-    // p3 = amplitude multiplier (relative multiplier of input signal)
-    // p4 = roomsize (1.0 - 300.0)
-    // p5 = reverb time (0.1 - 360.0)
-    // p6 = damping (0.0 - 1.0)
-    // p7 = input filter bandwidth (0.0 - 1.0)
-    // p8 = dry level (inverse dB, -90.0 - 0.0)
-    // p9 = early reflection level (inverse dB, -90.0 - 0.0)
-    // p10 = tail level (inverse dB, -90.0 - 0.0)
-    // p11 = ring-down time (seconds, added to duration)
-
+    // WET MIX
     bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 75., 8., 0.2, 1., -90., -15., -12., 3.0)", outskip, time);
     parse_score(thebuf, bx);
 }
@@ -139,17 +119,32 @@ void STREAMSOUND(double outskip, string file, double dur, double amp)
         bx = snprintf(thebuf, 256, "STEREO(%f, 0., %f, %f*amp_declick, 0, 1)", outskip, dur, amp);
     }
     parse_score(thebuf, bx);
-    
-    /*
+}
+
+// play an audio file from DISK with PFIELD UPDATING
+void STREAMSOUND_DYNAMIC(double outskip, string file, double amp, string pvar, int updatenr)
+{
+    char thebuf [256];
+    int bx;
     string p = GetCloudsDataPath() + "sound/trax/";
     ofDirectory sdir(p);
     
     string f = sdir.getAbsolutePath()+"/"+file;
 
-    bupsound.loadSound(f);
-    bupsound.setVolume(amp);
-    bupsound.play();
-     */
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)pvar.c_str(), updatenr);
+    parse_score(thebuf, bx);
+    cout << thebuf << endl;
+    // load file
+    bx = snprintf(thebuf, 256, "rtinput(\"%s\")", (char*)f.c_str());
+    parse_score(thebuf, bx);
+    cout << thebuf << endl;
+    
+    // start sound
+    bx = snprintf(thebuf, 256, "STEREO(%f, 0., DUR(), %f*%s, 0, 1)", outskip, amp, (char*)pvar.c_str());
+    parse_score(thebuf, bx);
+    cout << thebuf << endl;
+   
 }
 
 // loads an audio file into RAM as a buffer handle
@@ -365,5 +360,14 @@ void PATCHFX(string inst, string input, string output)
     parse_score(thebuf, bx);
 }
 
-
+// p-field updating
+void PFIELD_SCHED(float outskip, float duration, int nr, string action)
+{
+    char thebuf [256];
+    int bx;
+    // BUG - the de-queue flag doesn't work as advertised; brad is investigating
+    bx = snprintf(thebuf, 256, "PFSCHED(%f, %f, %d, %s, 1)", outskip, duration, nr, (char*)action.c_str());
+    parse_score(thebuf, bx);
+    cout << thebuf << endl;
+}
 
