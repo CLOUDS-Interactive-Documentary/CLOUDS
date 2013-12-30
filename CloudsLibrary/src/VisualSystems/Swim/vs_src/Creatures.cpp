@@ -346,9 +346,10 @@ namespace itg
         // draw all creatures except point creatures
         for (unsigned i = 0; i < creaturesByType.size(); ++i)
         {
+            if (!creaturesByType[i].empty() && creaturesByType[i][0]->getType() == Creature::POINT) break;
+            
             for (unsigned j = 0; j < creaturesByType[i].size(); ++j)
             {
-                if (creaturesByType[i][j]->getType() == Creature::POINT) break;
                 creaturesByType[i][j]->draw(cam);
             }
         }
