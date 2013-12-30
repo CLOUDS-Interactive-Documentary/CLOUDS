@@ -6479,6 +6479,56 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="OpenP5NoiseSphere_gx_work_01a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5NoiseSphere_gx_work_02a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5NoiseSphere_gx_work_03a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5NoiseSphere_gx_work_04a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5NoiseSphere_gx_work_05a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="OpenP5SeaOfLines_DeepSea">
     <keywords></keywords>
     <links></links>
@@ -7579,7 +7629,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -7642,7 +7692,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -7692,7 +7742,27 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Oscillations_gx_work_01a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Oscillations_laser_blast">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
