@@ -445,6 +445,7 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
 		nodeMesh.getNormals()[tweeters[i].nodeVertexIndex].y = 1.0;
         
 		for(int k = 0; k < tweetsOnDate.size(); k ++){
+            
 			activeTweets.push_back(&tweetsOnDate[k].tweet);
             activeTweetPairs.push_back(make_pair(&tweeters[i].name, &tweetsOnDate[k].tweet));
             
@@ -1146,17 +1147,17 @@ void CloudsVisualSystemTwitter::selfDrawDebug()
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemTwitter::selfDrawBackground()
 {
-    ofFloatColor  col = getRGBfromHSV(textColorHSV);
-    ofPushMatrix();
-    ofxBillboardBeginSphericalCheat(ofVec3f(0,0,0));
-    ofPushStyle();
-    ofSetColor(col);
-//    ofTranslate(100, -100);
-    ofScale(0.01,-0.01,0.01);
-    font.drawString(getDateAsString(dateIndex[currentDateIndex]), 0, 0);
-    ofPopStyle();
-    ofxBillboardEnd();
-    ofPopMatrix();
+//    ofFloatColor  col = getRGBfromHSV(textColorHSV);
+//    ofPushMatrix();
+//    ofxBillboardBeginSphericalCheat(ofVec3f(0,0,0));
+//    ofPushStyle();
+//    ofSetColor(col);
+////    ofTranslate(100, -100);
+////    ofScale(0.01,-0.01,0.01);
+//    font.drawString(getDateAsString(dateIndex[currentDateIndex]), 0, 0);
+//    ofPopStyle();
+//    ofxBillboardEnd();
+//    ofPopMatrix();
     
     
     if(bRenderFeed){
