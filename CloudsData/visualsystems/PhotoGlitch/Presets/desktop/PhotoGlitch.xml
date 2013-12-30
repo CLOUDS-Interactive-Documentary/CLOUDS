@@ -8,17 +8,17 @@
 <Widget>
     <Kind>44</Kind>
     <Name>DELAY B/W TWEENS</Name>
-    <Value>2</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>NUM COLS</Name>
-    <Value>295</Value>
+    <Value>158</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>NUM ROWS</Name>
-    <Value>303</Value>
+    <Value>154</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -38,17 +38,17 @@
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW BACKGROUND</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>TWEEN DURATION</Name>
-    <Value>611</Value>
+    <Value>443</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>TWEEN DELAY</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -58,12 +58,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>ANIMATE SOURCE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>SOURCE SHUFFLE</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -83,6 +83,21 @@
 <Widget>
     <Kind>2</Kind>
     <Name>LOOP BACK TO SOURCE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>ArtGlitch.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blue.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>BronzeGreen.jpg</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
@@ -107,8 +122,23 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>CodeWindows.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>Desktops.jpg</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>FinderWindows.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Friends1.jpg</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -117,12 +147,32 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>People.jpg</Name>
+    <Name>Gold.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>PeopleComposit.jpg</Name>
+    <Name>Gray.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Green.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Memory.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>QRcodes.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Sunsets.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -132,12 +182,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>browser.png</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>catglitch.jpg</Name>
+    <Name>cats.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -152,27 +197,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>friends.jpg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>glitch.jpg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>glitch2.jpeg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>sexy-desktop.jpg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>sunset.jpg</Name>
+    <Name>memory_bw.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
