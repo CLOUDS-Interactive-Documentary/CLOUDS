@@ -22,4 +22,6 @@ class testApp : public ofBaseApp {
     int layoutID;
 
 	CloudsSecondaryDisplayController secondaryDisplay;
+    
+    bool debug;
 };
