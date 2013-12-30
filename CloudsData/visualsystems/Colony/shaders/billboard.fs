@@ -1,3 +1,5 @@
+#version 120
+
 uniform sampler2D tex;
 uniform float kernel_maxValue;
 varying float size;

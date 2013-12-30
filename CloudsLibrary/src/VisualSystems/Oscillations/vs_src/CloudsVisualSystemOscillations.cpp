@@ -182,7 +182,7 @@ void CloudsVisualSystemOscillations::selfUpdate(){
     oscillator.setUniform1f("numPoints", (float) NUMPOINTS);
     oscillator.setUniform4fv("targetColor", curveColor.v); //FIXME: needs to be on color and off color
     oscillator.setUniform1f("curveProgress",curveProgress);
-    oscillator.setUniform1f("precision", precision);
+    oscillator.setUniform1f("selfPrecision", precision);
     oscillator.setUniform1f("offsetX", offsetX);
     oscillator.setUniform1f("offsetY", offsetY);
     oscillator.setUniform1f("curveWidth", curveWidth);
