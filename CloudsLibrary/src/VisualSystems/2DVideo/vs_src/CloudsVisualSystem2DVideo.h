@@ -53,7 +53,8 @@ protected:
 
 	void loadMovieFromRadio();
 	bool receivedFrame;
-    ofxAVFVideoPlayer player;
+//    ofxAVFVideoPlayer player;
+    ofPtr<ofxAVFVideoPlayer> player;
     vector<string> movieStrings;
     int movieIndex;
 	string loadedMoviePath;
