@@ -67,11 +67,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>variedSpeed</Name>
-    <Value>0</Value>
+    <Name>tentacles</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>tentacles</Name>
-    <Value>1</Value>
+    <Name>variedSpeed</Name>
+    <Value>0</Value>
 </Widget>

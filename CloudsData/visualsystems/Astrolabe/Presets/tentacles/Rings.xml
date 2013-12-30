@@ -18,12 +18,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>width</Name>
-    <Value>40.4</Value>
+    <Value>19.7125</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>thickness</Name>
-    <Value>0.452906</Value>
+    <Value>1.28951</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Spacing</Name>
-    <Value>1.87192</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -48,5 +48,10 @@
 <Widget>
     <Kind>44</Kind>
     <Name>numSpheresPerArc</Name>
-    <Value>8</Value>
+    <Value>7</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>sphereScale</Name>
+    <Value>2.44089</Value>
 </Widget>
