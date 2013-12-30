@@ -18,6 +18,16 @@ typedef struct{
 
 using namespace msa::physics;
 
+typedef struct{
+	int state;
+	int stateCnt;
+	int gridx;
+	int gridy;
+	ofVec3f vD;
+	Particle3D* p;
+} MWParticle;
+
+
 class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
   public:
 	
@@ -59,9 +69,34 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
     void selfSetupTimeline();
     void selfSetupTimelineGui();
     void selfTimelineGuiEvent(ofxUIEventArgs &e);
- 
-  protected:
+
+	float currentRotAngle;
+	float currentCamDistance;
+	//this makes it work with clouds!
+	ofCamera& getCameraRef(){
+		return cam;
+	}
 	
+  protected:
+
+	ofCamera cam;
+  	vector<MWParticle*> pp;
+	vector<MWParticle*> ppActive;
+	float fpsMod,activityCnt;
+
+	void mwUpdate();
+	void mwNewActivity(int id,int state);
+	void mwFix(MWParticle &pt);
+	void mwMakeParticle(Particle3D* pt,int x,int y);
+
+	std::vector< std::vector<ofVec3f> > mwGrid(int type);
+	void mwGridSticky();
+	void mwGridPt (ofVec3f &o,int type);
+	int mwGetRndID(int edge);
+
+	float rndExtend ();
+
+
 	ofxUISuperCanvas* clothGui;
 	ofxUISuperCanvas* auxLightGuis[3];
 	
@@ -89,6 +124,8 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	
 	void updateNormals();
 	
+
+
 	vector< vector<Particle3D*> > particles;
 	
 	//color generators
