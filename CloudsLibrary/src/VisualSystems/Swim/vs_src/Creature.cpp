@@ -74,7 +74,7 @@ namespace itg
         ofPushMatrix();
         if (cam.getPosition().z - getPosition().z > Creature::fogEnd)
         {
-            ofTranslate(0, 0, Creature::fogEnd * floor(abs(cam.getPosition().z - getPosition().z) / Creature::fogEnd));
+            ofTranslate(0, 0, Creature::fogEnd * floor((cam.getPosition().z - getPosition().z) / Creature::fogEnd));
         }
         else if (getPosition().z > cam.getPosition().z)
         {

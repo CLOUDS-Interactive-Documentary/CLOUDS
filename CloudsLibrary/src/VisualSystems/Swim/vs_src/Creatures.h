@@ -82,6 +82,7 @@ namespace itg
         vector<Creature::Ptr> creatures;
         vector<vector<Creature::Ptr> > creaturesByType;
         vector<unsigned> jellyIndices;
+        vector<ofVec4f> tentaclePosns;
         ofxNearestNeighbour3D nn;
         ofVboMesh pointCreatureMesh;
         ofxGpuParticles tentacles;

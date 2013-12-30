@@ -110,6 +110,7 @@ namespace itg
     
     void Creatures::generate()
     {
+        jellyIndices.clear();
         creatures.clear();
         creaturesByType.clear();
         
@@ -131,7 +132,7 @@ namespace itg
         
         for (unsigned i = 0; i < creatures.size(); ++i)
         {
-            creatures[i]->setPosition(ofRandom(-startArea, startArea), ofRandom(-startArea, startArea), ofRandom(-startArea, 0));
+            creatures[i]->setPosition(ofRandom(-startArea, startArea), ofRandom(-startArea, startArea), ofRandom(startArea, 0));
             creatures[i]->setOrientation(ofVec3f(ofRandom(-180.f, 180.f), ofRandom(-180.f, 180.f), ofRandom(-180.f, 180.f)));
         }
         
@@ -154,6 +155,7 @@ namespace itg
         tentacles.loadDataTexture(ofxGpuParticles::POSITION, particlePosns);
         delete[] particlePosns;
         tentacles.zeroDataTexture(ofxGpuParticles::VELOCITY);
+        tentaclePosns.resize(numJellyOne + numJellyTwo);
     }
     
     void Creatures::addPointFish(unsigned number, float hue)
@@ -327,11 +329,17 @@ namespace itg
             }
         }
         
-        //tentacles.update();
+        for (unsigned i = 0; i < jellyIndices.size(); ++i)
+        {
+            tentaclePosns[i] = creatures[jellyIndices[i]]->getPosition();
+        }
+        tentacles.loadDataTexture(ofxGpuParticles::POSITION, tentaclePosns[0].getPtr(), 0, 0, 1, tentacles.getHeight());
+        tentacles.update();
     }
     
     void Creatures::draw(const ofCamera& cam)
     {
+        
         glPushAttrib(GL_ENABLE_BIT);
         glEnable(GL_DEPTH_TEST);
         
@@ -348,19 +356,14 @@ namespace itg
         // tentacles
         ofPushStyle();
         ofSetColor(255);
-        //ofEnableBlendMode(OF_BLENDMODE_ADD);
-        //glDepthMask(GL_FALSE);
-        //glLineWidth(.2f);
-        glPointSize(10.f);
-        ofPushMatrix();
-        ofTranslate(cam.getPosition() + ofVec3f(0, 0, -500));
-        ofDrawAxis(100.f);
+        tentacles.getDrawShaderRef().begin();
+        tentacles.getDrawShaderRef().setUniform1f("fogStart", Creature::fogStart);
+        tentacles.getDrawShaderRef().setUniform1f("fogEnd", Creature::fogEnd);
+        tentacles.getDrawShaderRef().setUniform1f("camZ", cam.getZ());
+        tentacles.getDrawShaderRef().end();
         tentacles.draw();
-        ofPopMatrix();
-        //glLineWidth(1.f);
-        //glDepthMask(GL_TRUE);
-        //ofDisableBlendMode();
         ofPopStyle();
+        
         
         // point creatures
         pointCreatureMesh.draw();

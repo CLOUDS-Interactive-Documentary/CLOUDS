@@ -45,6 +45,8 @@ namespace itg
     
     class Creature : public ofNode
     {
+        friend class Creatures;
+        
     public:
         enum CreatureType
         {

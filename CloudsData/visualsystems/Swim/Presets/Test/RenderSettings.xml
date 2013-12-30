@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>673.000000000</XPosition>
+    <XPosition>445.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -18,8 +18,8 @@
 <Widget>
     <Kind>6</Kind>
     <Name>creatureFogRange</Name>
-    <HighValue>6995.074218750</HighValue>
-    <LowValue>3793.103515625</LowValue>
+    <HighValue>6256.159667969</HighValue>
+    <LowValue>3054.187255859</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
