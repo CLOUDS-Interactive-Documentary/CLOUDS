@@ -33,6 +33,8 @@ class CloudsSecondaryDisplayController {
 	
 	ofxUISuperCanvas *SDGui;
     void draw();
+    
+    bool debug;
 
   protected:
 	
@@ -45,6 +47,9 @@ class CloudsSecondaryDisplayController {
 	void loadSVGs();
     void hideQuestionBox();
     void showQuestionBox();
+    ofxFTGLSimpleLayout* getLayoutForLayer( SVGMesh* textMesh);
+    int getFontSizeForMesh( SVGMesh* textMesh );
+
 	//TODO: make separate layer sets for Project Example vs Person
 	vector<CloudsSVGMesh> testAllLayout;
     
@@ -56,7 +61,7 @@ class CloudsSecondaryDisplayController {
 	CloudsClip currentClip;
 	CloudsProjectExample currentExample;
 
-	ofxFTGLSimpleLayout exampleType, h1, h2, h3, h4, h5, p;
+	ofxFTGLSimpleLayout  *h1, *h2, *h3, *h4, *h5, *p;
 
 	ofVideoPlayer archivePlayer;
 
@@ -70,4 +75,7 @@ class CloudsSecondaryDisplayController {
     
     //colors
     ofColor lightBlue, darkBlue;
+    
+    vector<ofxFTGLFont*>    tempFontList;
+
 };
