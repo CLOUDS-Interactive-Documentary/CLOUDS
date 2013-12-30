@@ -36,7 +36,7 @@ void INITMIX()
 }
 
 // use the SPLITTER() instrument to configure effects path
-void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus)
+void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus, string ampcurve)
 {
     char thebuf [256];
     int bx;
@@ -46,7 +46,6 @@ void SETUPMIX(double outskip, double time, double amp, double dry, double verb, 
     int abr = auxbus*2 + 21;
     string output = "aux " + ofToString(abl) + "-" + ofToString(abr) + " out";
     string input = "aux " + ofToString(abl) + "-" + ofToString(abr) + " in";
-    cout << "patching: " << output << " " << input << endl;
     // do the bus_config() calls
     
     // do the instrument bus_config()
@@ -68,9 +67,9 @@ void SETUPMIX(double outskip, double time, double amp, double dry, double verb, 
     parse_score(thebuf, bx);
 
     // do the SPLITTER() calls
-    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f, 0, %f, 0., %f, 0., %f, 0.)", outskip, time, amp, dry, verb, echo);
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*%s*e_DECLICK, 0, %f, 0., %f, 0., %f, 0.)", outskip, time, amp, (char*)ampcurve.c_str(), dry, verb, echo);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f, 1, 0., %f, %f, 0., 0., %f)", outskip, time, amp, dry, verb, echo);
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*%s*e_DECLICK, 1, 0., %f, %f, 0., 0., %f)", outskip, time, amp, (char*)ampcurve.c_str(), dry, verb, echo);
     parse_score(thebuf, bx);
     
 }
@@ -120,9 +119,9 @@ void SCHEDULEBANG(double time)
 }
 
 // play an audio file from DISK
-void STREAMSOUND(string file, float dur, float amp, ofSoundPlayer& bupsound)
+void STREAMSOUND(double outskip, string file, double dur, double amp)
 {
-    /*
+    
     char thebuf [256];
     int bx;
     string p = GetCloudsDataPath() + "sound/trax/";
@@ -133,14 +132,15 @@ void STREAMSOUND(string file, float dur, float amp, ofSoundPlayer& bupsound)
     parse_score(thebuf, bx);
     if(dur<0)
     {
-        bx = snprintf(thebuf, 256, "STEREO(0., 0., DUR(), %f*amp_declick, 0, 1)", amp);
+        bx = snprintf(thebuf, 256, "STEREO(%f, 0., DUR(), %f*amp_declick, 0, 1)", outskip, amp);
     }
     else
     {
-        bx = snprintf(thebuf, 256, "STEREO(0., 0., %f, %f*amp_declick, 0, 1)", dur, amp);
+        bx = snprintf(thebuf, 256, "STEREO(%f, 0., %f, %f*amp_declick, 0, 1)", outskip, dur, amp);
     }
     parse_score(thebuf, bx);
-    */
+    
+    /*
     string p = GetCloudsDataPath() + "sound/trax/";
     ofDirectory sdir(p);
     
@@ -149,6 +149,7 @@ void STREAMSOUND(string file, float dur, float amp, ofSoundPlayer& bupsound)
     bupsound.loadSound(f);
     bupsound.setVolume(amp);
     bupsound.play();
+     */
 }
 
 // loads an audio file into RAM as a buffer handle
@@ -178,6 +179,19 @@ void STEREO(double outskip, double inskip, double dur, double amp, double pan, s
     parse_score(thebuf, bx);
     
 }
+
+// soundfile mixing with TRANS3
+void STEREO3(double outskip, double inskip, double dur, double amp, double pan, string handle)
+{
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, %f, %f, %f*amp_declick, 0., 0, %f)", outskip, inskip, dur, amp, pan);
+    parse_score(thebuf, bx);
+    
+}
+
 
 // loop a sound (transposition auto-corrected based on ideal length)
 void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, double amp, string handle)

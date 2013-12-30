@@ -328,28 +328,33 @@ void CloudsVisualSystemVision::updateCVParameters(){
 //radio field
 
 void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
-    cout<<"LOADED PRESET: "<<presetPath<<endl;
-    
-    //LOADING MOVIE
-    ofxUIRadio* r = (ofxUIRadio*)rdrGui->getWidget("VIDEO");
-    
-    vector<ofxUIToggle*> t = r->getToggles();
-    string movieName;
-    for(int j = 0; j < t.size(); j++){
-        if(t[j]->getValue()) {
-            movieName = t[j]->getName();
-            
-			cout << "LOADING MOVIE :"<<movieName<<endl;
-			
-			for(int i = 0; i < movieStrings.size(); i++){
-				if (movieStrings[i] == movieName) {
-					loadMovieAtIndex(i);
-					break;
-				}
-			}
-			break;
-        }
-    }
+
+	ofxUIDropDownList* d = (ofxUIDropDownList*)rdrGui->getWidget("VIDEO");
+	vector<int>& selected = d->getSelectedIndeces();
+	if(selected.size() > 0){
+		loadMovieWithName( d->getToggles()[ selected[0] ]->getName() );
+	}
+	
+//    //LOADING MOVIE
+//    ofxUIRadio* r = (ofxUIRadio*)rdrGui->getWidget("VIDEO");
+//    
+//    vector<ofxUIToggle*> t = r->getToggles();
+//    string movieName;
+//    for(int j = 0; j < t.size(); j++){
+//        if(t[j]->getValue()) {
+//            movieName = t[j]->getName();
+//            
+//			cout << "LOADING MOVIE :"<<movieName<<endl;
+//			
+//			for(int i = 0; i < movieStrings.size(); i++){
+//				if (movieStrings[i] == movieName) {
+//					loadMovieAtIndex(i);
+//					break;
+//				}
+//			}
+//			break;
+//        }
+//    }
 }
 
 
@@ -406,14 +411,14 @@ void CloudsVisualSystemVision::selfUpdate(){
 	//AVFoundation loads videos asynchronously.
 	//Using this condition to update the system settings once the video is loaded.
 	
-	if(player->isLoaded() && player->getPixelsRef().isAllocated() ){
+	if( player->isLoaded() && player->getPixelsRef().isAllocated() ){
 		lastPixels = player->getPixelsRef();
 	}
 	
 	player->update();
 	
 	frameIsNew = player->isFrameNew();
-    if(frameIsNew){
+    if(frameIsNew && lastPixels.isAllocated() ){
 		if(!prev.isAllocated()){
 			prev.allocate(lastPixels);
 		}
@@ -724,23 +729,31 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     else if(name == "BOX B"){
         boxColor.setBrightness(boxBright);
     }
-    if (e.widget->getParent()->getName()  == "VIDEO"){
+    if (e.widget->getParent()->getName() == "VIDEO"){
+
         thresholded.clear();
         background.reset();
         updateImagesForNewVideo();
+		
         ofxUIToggle* t = (ofxUIToggle*)e.widget;
-        cout<<t->getName()<<endl;
-        for(int i =0; i<movieStrings.size(); i++){
-            if (movieStrings[i] == t->getName()) {
-				cout << "Loading movie from GUI " << movieStrings[i] << endl;
-                loadMovieAtIndex(i);
-            }
-        }
+		loadMovieWithName( t->getName() );
+		
     }
 }
 
 void CloudsVisualSystemVision::loadCurrentMovie(){
 	loadMovieAtIndex(movieIndex);
+}
+
+void CloudsVisualSystemVision::loadMovieWithName(string name){
+
+	for(int i = 0; i < movieStrings.size(); i++){
+		if (movieStrings[i] == name) {
+			cout << "Loading movie from GUI " << movieStrings[i] << endl;
+			loadMovieAtIndex(i);
+			break;
+		}
+	}
 }
 
 void CloudsVisualSystemVision::loadMovieAtIndex(int index){

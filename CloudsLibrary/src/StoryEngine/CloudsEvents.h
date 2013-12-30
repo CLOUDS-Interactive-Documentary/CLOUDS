@@ -14,10 +14,11 @@ class CloudsActEventArgs : public ofEventArgs {
 		: act(act){}
 	
 	CloudsAct* act;
-	CloudsClip startClip;
-	string startQuestion;
-	string startTopic;
-	string soundQuestionKey;
+//	CloudsClip startClip;
+//	vector<CloudsSoundCue> soundCues;	
+//	string startQuestion;
+//	string startTopic;
+//	string soundQuestionKey;
 	
 };
 

@@ -69,6 +69,7 @@ void CloudsSound::loadRTcmixFiles()
 
 void CloudsSound::reloadPresets()
 {
+    loadsimplemelodies("simplemelodies.txt", simplemelodies);
     loadpresets_xml("soundpresets.xml", presets);
 
 }

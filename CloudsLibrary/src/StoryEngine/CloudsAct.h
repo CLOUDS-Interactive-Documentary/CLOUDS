@@ -33,6 +33,16 @@ struct ActTimeItem{
     float handleLength;
 };
 
+struct CloudsSoundCue
+{
+	float startTime;
+	float duration;
+	int mixLevel; //0, 1, 2;
+	string riggedPresetName;
+	string soundQuestionKey;
+	vector<CloudsDichotomy> dichotomies;
+};
+
 class CloudsAct{
   public:
 	
@@ -75,6 +85,7 @@ class CloudsAct{
 	vector< ofPtr<CloudsVisualSystem> > getAllVisualSystems();
 	vector<CloudsDichotomy>& getDichotomiesForClip(CloudsClip& clip);
 	vector<CloudsDichotomy>& getDichotomiesForClip(string clipName);
+	vector<CloudsSoundCue>& getSoundCues();
 	
     vector<string>& getAllTopics();
     
@@ -153,10 +164,8 @@ class CloudsAct{
 	ofxTLFlags* dichotomyClips;
 	map<string, ofxTLCurves*> dichotomyTracks;
 	
-//    float visualSystemDuration;
-//    float visualSystemStartTime;
-//    float visualSystemEndTime;
-    
+	vector<CloudsSoundCue> cues;
+	
     float duration;
     int currentPlayIndex;
     void loadNextClip();

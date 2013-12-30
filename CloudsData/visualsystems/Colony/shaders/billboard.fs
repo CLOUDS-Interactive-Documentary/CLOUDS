@@ -1,4 +1,5 @@
 uniform sampler2D tex;
+uniform float kernel_maxValue;
 varying float size;
 
 float rand(vec2 co){
@@ -21,7 +22,8 @@ float noise2f( in vec2 p ){
 
 void main (void) {
     vec4 c = texture2D(tex, gl_TexCoord[0].xy);
-    c.g += 0.3 * clamp(pow(c.g + 1., size * 0.05) - 1., 0., 1.) * (0.9 + 0.2 * rand(0.0001 * size * gl_TexCoord[0].xy));
-	gl_FragColor = c * 0.8; //*gl_Color
+//    c.g += 0.3 * clamp(pow(c.g + 1., size * 0.05) - 1., 0., 1.);
+// * (0.9 + 0.2 * rand(0.0001 * size * gl_TexCoord[0].xy));
+	gl_FragColor = c * kernel_maxValue;
     
 }

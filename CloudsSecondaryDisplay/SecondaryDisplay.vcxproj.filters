@@ -1,0 +1,1113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\testApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp">
+      <Filter>addons\ofxXmlSettings\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp">
+      <Filter>addons\ofxXmlSettings\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp">
+      <Filter>addons\ofxXmlSettings\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp">
+      <Filter>addons\ofxXmlSettings\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.cpp">
+      <Filter>addons\ofxCameraSaveLoad\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.cpp">
+      <Filter>addons\ofxGameCamera\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxBufferEffectorBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxDamperBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxDistorterBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxElectroStaticBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxField2D.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxHomingBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxLorentzBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxPerlinBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticle.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticleGlowieRenderer.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticleRenderer.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxRParticleSystem.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSolver.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSphericalAttractionBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxSwarmBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.cpp">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMSACore\src\MSACoreGL.cpp">
+      <Filter>addons\ofxMSACore\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMSAInteractiveObject\src\ofxMSAInteractiveObject.cpp">
+      <Filter>addons\ofxMSAInteractiveObject\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMSAObjCPointer\src\MSAObjCPointer.cpp">
+      <Filter>addons\ofxMSAObjCPointer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMSATimer\src\ofxMSATimer.cpp">
+      <Filter>addons\ofxMSATimer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTextInputField\src\ofxTextInputField.cpp">
+      <Filter>addons\ofxTextInputField\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimecode\src\ofxTimecode.cpp">
+      <Filter>addons\ofxTimecode\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxHotKeys_impl_linux.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxHotKeys_impl_mac.mm">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxHotKeys_impl_win.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxRemoveCocoaMenu.mm">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTimeline.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLBangs.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLCameraTrack.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLColors.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLColorTrack.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLCurves.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLEmptyKeyframes.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLEmptyTrack.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLFlags.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLImageSequence.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLImageSequenceFrame.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLImageTrack.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLInOut.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLKeyframes.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLLFO.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLPage.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLPageTabs.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLSwitches.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLTicker.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLTrack.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLTrackHeader.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLVideoThumb.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLVideoTrack.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTimeline\src\ofxTLZoomer.cpp">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasing.cpp">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBack.cpp">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBounce.cpp">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingCirc.cpp">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingCubic.cpp">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingElastic.cpp">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingExpo.cpp">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingLinear.cpp">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuad.cpp">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuart.cpp">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuint.cpp">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingSine.cpp">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTween\src\ofxTween.cpp">
+      <Filter>addons\ofxTween\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp">
+      <Filter>src\CloudsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp">
+      <Filter>src\CloudsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.cpp">
+      <Filter>src\CloudsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp">
+      <Filter>src\CloudsInput</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp">
+      <Filter>src\CloudsInput</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp">
+      <Filter>addons\ofxOsc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.cpp">
+      <Filter>addons\ofxOsc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.cpp">
+      <Filter>addons\ofxOsc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscSender.cpp">
+      <Filter>addons\ofxOsc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp">
+      <Filter>addons\ofxOsc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\NetworkingUtilsWin.cpp">
+      <Filter>addons\ofxOsc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\UdpSocketWin.cpp">
+      <Filter>addons\ofxOsc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.cpp">
+      <Filter>addons\ofxOsc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp">
+      <Filter>addons\ofxOsc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp">
+      <Filter>addons\ofxOsc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp">
+      <Filter>addons\ofxOsc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\SecondaryDisplay\Receiver\CloudsSecondaryDisplayController.cpp">
+      <Filter>src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.cpp">
+      <Filter>src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.cpp">
+      <Filter>src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.cpp">
+      <Filter>src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.cpp">
+      <Filter>src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.cpp">
+      <Filter>src\_ClusterMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.cpp">
+      <Filter>src\_ClusterMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.cpp">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.cpp">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.cpp">
+      <Filter>src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.cpp">
+      <Filter>src\StoryEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.cpp">
+      <Filter>src\StoryEngine\Question</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{71834f65-f3a9-211e-73b8-dc8563776aec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxXmlSettings">
+      <UniqueIdentifier>{877f005d-13e6-0592-1d97-f2e39d804d43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxXmlSettings\src">
+      <UniqueIdentifier>{ccb2ac63-49d2-977c-cfe8-aeadb8be6a99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxXmlSettings\libs">
+      <UniqueIdentifier>{687714a8-1662-fa1c-261f-50f068335398}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCameraSaveLoad">
+      <UniqueIdentifier>{47019832-8095-b242-8fab-84b3e3e65060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCameraSaveLoad\src">
+      <UniqueIdentifier>{b223a27b-3563-869e-1e21-5aaffc00851b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGameCamera">
+      <UniqueIdentifier>{8c084dfa-31ae-c9e8-4b85-12c4b8a68d70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGameCamera\src">
+      <UniqueIdentifier>{7b38b4f7-016e-1f8a-da9a-bb61e1e55a41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGenerative">
+      <UniqueIdentifier>{27f003e6-ffd7-6449-5d93-ee12e4519667}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGenerative\src">
+      <UniqueIdentifier>{dbcdd77e-7ee2-fb9a-afc4-7fd595c072c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMSACore">
+      <UniqueIdentifier>{731ef7f9-8f49-031c-eedf-fc0d26b651ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMSACore\src">
+      <UniqueIdentifier>{ada31002-61e1-e44b-8b38-c5099c5681b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMSAInteractiveObject">
+      <UniqueIdentifier>{7f7a88a6-f023-28f9-9a1e-c77399743e79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMSAInteractiveObject\src">
+      <UniqueIdentifier>{267164f9-41de-eea9-6f4a-21a9c326ce46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMSAObjCPointer">
+      <UniqueIdentifier>{077ccfcb-bb73-e171-52af-62bb374c4bc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMSAObjCPointer\src">
+      <UniqueIdentifier>{aa4e7c29-bfda-9dc2-5807-f4b8e0c79403}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMSAPhysics">
+      <UniqueIdentifier>{ed661f95-f00d-ae04-f1a2-f841b75c4a60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMSAPhysics\src">
+      <UniqueIdentifier>{06b72e8b-5168-487b-eabe-b3fe469589e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMSATimer">
+      <UniqueIdentifier>{fa2c7f81-95ad-913a-95ee-6d674205f1e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMSATimer\src">
+      <UniqueIdentifier>{21227b69-34ba-dc94-65c0-e08097e60473}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxRange">
+      <UniqueIdentifier>{c5cf358f-f6d6-0f61-5433-25f14c446730}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxRange\src">
+      <UniqueIdentifier>{afee1af4-3be7-35e2-f89c-feb8f18a60fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTextInputField">
+      <UniqueIdentifier>{a4b02712-30e4-b504-c110-2c93e13629d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTextInputField\src">
+      <UniqueIdentifier>{b67afc83-af32-6fe3-281f-ac212c044641}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTimecode">
+      <UniqueIdentifier>{1b5cd1f2-714c-1a5f-97d0-2f9712f8476a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTimecode\src">
+      <UniqueIdentifier>{1e8626d6-b6a0-d240-f534-c5e88dad08e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTimeline">
+      <UniqueIdentifier>{b6cb78c7-bc44-ad08-8e43-896c4501b36d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTimeline\src">
+      <UniqueIdentifier>{ac132e01-0f0d-5ff9-8d64-8dada9b5aa38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTween">
+      <UniqueIdentifier>{8a8810e8-a79d-7a1d-2f0a-7203302f4656}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTween\src">
+      <UniqueIdentifier>{40ac4b42-6a5a-9537-eb82-d1b80d647dfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTween\src\Easings">
+      <UniqueIdentifier>{ef0f6a8b-b04f-e782-21ef-d4ba278d3ee5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxUI">
+      <UniqueIdentifier>{b492c5b0-ff91-9c5a-638a-31420f9e8d66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxUI\src">
+      <UniqueIdentifier>{a00c2d23-6c11-bc86-3993-2cf0e345f895}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\CloudsLibrary">
+      <UniqueIdentifier>{a5776577-e9cf-4891-9853-0ad7d10d5fd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\CloudsInput">
+      <UniqueIdentifier>{87480edd-777f-4102-b146-5a6d42d2dbeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOsc">
+      <UniqueIdentifier>{cd7a8762-6bbf-44a3-a316-43d76ba51633}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\StoryEngine">
+      <UniqueIdentifier>{c664fe94-f080-48e9-9511-dbb6e115004c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_ClusterMap">
+      <UniqueIdentifier>{b2f211b2-d2fc-4250-935f-3a0e7b1aef76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFTGL">
+      <UniqueIdentifier>{4bfc34b6-c5d1-4e06-a802-79e5e69f9f25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFTGL\src">
+      <UniqueIdentifier>{f3b20568-79f6-4bc6-9b54-d7bc6c6ef714}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFTGL\libs">
+      <UniqueIdentifier>{ad57e8d0-2b4e-48c4-ab38-d6bf5666ea42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\StoryEngine\Question">
+      <UniqueIdentifier>{74608966-0e2a-49fa-a63b-a20db984c8cf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\testApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h">
+      <Filter>addons\ofxXmlSettings\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h">
+      <Filter>addons\ofxXmlSettings\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCameraSaveLoad\src\ofxCameraSaveLoad.h">
+      <Filter>addons\ofxCameraSaveLoad\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGameCamera\src\ofxGameCamera.h">
+      <Filter>addons\ofxGameCamera\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofx1DExtruder.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBufferEffectorBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxCircle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxDamperBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxDistorterBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxElectroStaticBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxField2D.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxFieldAgitator.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxGenerative.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxGenericShape.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxHOCParticle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxHOCParticleSystem.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxHomingBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxLorentzBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxParticle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxParticleSystem.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxParticleTouch.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxPerlinBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRezaParticle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRezaParticleSystem.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleData.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleGlowieRenderer.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleRenderer.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxRParticleSystem.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSolver.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSphericalAttractionBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSpring.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSpringSystem.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSuperShape.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSwarmBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxTrailParticle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVerletSolver.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxVortexBehavior.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSACore\src\MSACore-Cinder.h">
+      <Filter>addons\ofxMSACore\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSACore\src\MSACore-OF.h">
+      <Filter>addons\ofxMSACore\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSACore\src\MSACore.h">
+      <Filter>addons\ofxMSACore\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSACore\src\MSACoreCommon.h">
+      <Filter>addons\ofxMSACore\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSACore\src\MSACoreGL.h">
+      <Filter>addons\ofxMSACore\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSACore\src\MSACoreMath.h">
+      <Filter>addons\ofxMSACore\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAInteractiveObject\src\ofxMSAInteractiveObject.h">
+      <Filter>addons\ofxMSAInteractiveObject\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAInteractiveObject\src\ofxMSAInteractiveObjectDelegate.h">
+      <Filter>addons\ofxMSAInteractiveObject\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAObjCPointer\src\MSAObjCPointer.h">
+      <Filter>addons\ofxMSAObjCPointer\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysics.h">
+      <Filter>addons\ofxMSAPhysics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysics2D.h">
+      <Filter>addons\ofxMSAPhysics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysics3D.h">
+      <Filter>addons\ofxMSAPhysics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsAttraction.h">
+      <Filter>addons\ofxMSAPhysics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsCallbacks.h">
+      <Filter>addons\ofxMSAPhysics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsConstraint.h">
+      <Filter>addons\ofxMSAPhysics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsDataRecorder.h">
+      <Filter>addons\ofxMSAPhysics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsParams.h">
+      <Filter>addons\ofxMSAPhysics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsParticle.h">
+      <Filter>addons\ofxMSAPhysics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsParticleDrawer.h">
+      <Filter>addons\ofxMSAPhysics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsParticleUpdater.h">
+      <Filter>addons\ofxMSAPhysics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsSector.h">
+      <Filter>addons\ofxMSAPhysics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsSpring.h">
+      <Filter>addons\ofxMSAPhysics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSAPhysics\src\MSAPhysicsWorld.h">
+      <Filter>addons\ofxMSAPhysics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMSATimer\src\ofxMSATimer.h">
+      <Filter>addons\ofxMSATimer\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRange\src\ofRange.h">
+      <Filter>addons\ofxRange\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTextInputField\src\ofxTextInputField.h">
+      <Filter>addons\ofxTextInputField\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTextInputField\src\ofxTextInputFieldFontRenderer.h">
+      <Filter>addons\ofxTextInputField\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimecode\src\ofxTimecode.h">
+      <Filter>addons\ofxTimecode\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxHotKeys.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxRemoveCocoaMenu.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTimeline.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLBangs.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLCameraTrack.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLColors.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLColorTrack.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLCurves.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLEmptyKeyframes.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLEmptyTrack.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLEvents.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLFlags.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLImageSequence.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLImageSequenceFrame.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLImageTrack.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLInOut.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLKeyframes.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLLFO.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLPage.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLPageTabs.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLSwitches.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLTicker.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLTrack.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLTrackHeader.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLVideoThumb.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLVideoTrack.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTimeline\src\ofxTLZoomer.h">
+      <Filter>addons\ofxTimeline\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\easing_terms_of_use.html">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasing.h">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBack.h">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBounce.h">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingCirc.h">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingCubic.h">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingElastic.h">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingExpo.h">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingLinear.h">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuad.h">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuart.h">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuint.h">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingSine.h">
+      <Filter>addons\ofxTween\src\Easings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTween\src\ofxTween.h">
+      <Filter>addons\ofxTween\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUI.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUI2DGraph.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUI2DPad.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIBaseDraws.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIBiLabelSlider.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIButton.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUICanvas.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUICircleSlider.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUICustomImageButton.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIDropDownList.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIEventArgs.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIFPS.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIFPSSlider.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIImage.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIImageButton.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIImageSampler.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIImageSlider.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIImageToggle.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUILabel.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUILabelButton.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUILabelToggle.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIMinimalSlider.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIMovingGraph.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIMultiImageButton.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIMultiImageSlider.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIMultiImageToggle.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUINumberDialer.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIOFWrapper.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIRadio.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIRangeSlider.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIRectangle.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIRotarySlider.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIScrollableCanvas.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUISlider.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUISpacer.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUISpectrum.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUISuperCanvas.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUITabBar.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUITextArea.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUITextInput.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIToggle.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIToggleMatrix.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIUtils.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIValuePlotter.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWaveform.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidget.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidgetWithLabel.h">
+      <Filter>addons\ofxUI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h">
+      <Filter>src\CloudsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h">
+      <Filter>src\CloudsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.h">
+      <Filter>src\CloudsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\ofxLight.h">
+      <Filter>src\CloudsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBoidParticle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBoidSystem.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSmartParticle.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSmartParticleSystem.h">
+      <Filter>addons\ofxGenerative\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h">
+      <Filter>src\CloudsInput</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h">
+      <Filter>src\CloudsInput</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h">
+      <Filter>src\CloudsInput</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscArg.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscSender.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\NetworkingUtils.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\PacketListener.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\TimerListener.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\MessageMappingOscPacketListener.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscException.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscHostEndianness.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPacketListener.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h">
+      <Filter>addons\ofxOsc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\SecondaryDisplay\Receiver\CloudsSecondaryDisplayController.h">
+      <Filter>src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.h">
+      <Filter>src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsEvents.h">
+      <Filter>src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsFCPParser.h">
+      <Filter>src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsLink.h">
+      <Filter>src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsProjectExample.h">
+      <Filter>src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsSpeaker.h">
+      <Filter>src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsClusterNode.h">
+      <Filter>src\_ClusterMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\_ClusterMap\vs_src\CloudsVisualSystemClusterMap.h">
+      <Filter>src\_ClusterMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGL.h">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLFont.h">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\src\ofxFTGLSimpleLayout.h">
+      <Filter>addons\ofxFTGL\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBBox.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBitmapGlyph.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBuffer.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBufferFont.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTBufferGlyph.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTExtrdGlyph.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTFont.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\ftgl.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLBitmapFont.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLExtrdFont.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLOutlineFont.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLPixmapFont.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLPolygonFont.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGLTextureFont.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTGlyph.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTLayout.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTOutlineGlyph.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTPixmapGlyph.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTPoint.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTPolyGlyph.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTSimpleLayout.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFTGL\libs\FTGL\include\FTGL\FTTextureGlyph.h">
+      <Filter>addons\ofxFTGL\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.h">
+      <Filter>src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsDichotomy.h">
+      <Filter>src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.h">
+      <Filter>src\StoryEngine\Question</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -147,7 +147,7 @@ void CloudsVisualSystemRandomDigits::selfDraw(){
         ofTranslate(-800,-400);
         //noiseRotation
         // if(! (ofGetElapsedTimeMillis()% 8000)){
-        cout<<"here"<< " :"<<i<<endl;
+//        cout<<"here"<< " :"<<i<<endl;
         //          for (int k = 0; k < grid.size(); k++){
         //          grid[k].changeRandomNumber();
         //          }

@@ -227,7 +227,6 @@ void CloudsVisualSystem::setup(){
 	
     ofDirectory dir;
     string directoryName = getVisualSystemDataPath()+"Presets/";
-    cout<<"Directory name: "<< directoryName<<endl;
     if(!dir.doesDirectoryExist(directoryName))
     {
         dir.createDirectory(directoryName);
@@ -257,7 +256,6 @@ void CloudsVisualSystem::setup(){
 	hideGUIS();
 
 	bIsSetup = true;
-	
 }
 
 bool CloudsVisualSystem::isSetup(){
@@ -363,7 +361,7 @@ void CloudsVisualSystem::speakerEnded()
 
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
-    if(bEnableTimeline)
+    if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack)
     {
         updateTimelineUIParams();
     }
@@ -395,21 +393,22 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	//Make this happen only when the timeline is modified by the user or when a new track is added.
 	if(!ofGetMousePressed())
     {
+//		ofLogError("TIMELINE UPDATE FOR SYSTEM " + getSystemName());
 		timeline->setOffset(ofVec2f(4, ofGetHeight() - timeline->getHeight() - 4 ));
 		timeline->setWidth(ofGetWidth() - 8);
 	}
+	
+	checkOpenGLError(getSystemName() + ":: UPDATE");
 }
 
 void CloudsVisualSystem::draw(ofEventArgs & args)
 {
     ofPushStyle();
 	
-
-	
     if(bRenderSystem)
     {
 	  
-	  //bind our fbo, lights, debug
+		//bind our fbo, lights, debug
         if(bUseOculusRift){
 			#ifdef OCULUS_RIFT
             getOculusRift().beginBackground();
@@ -418,6 +417,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 
 			getOculusRift().beginOverlay(-230, 320,240);
 			selfDrawOverlay();
+			checkOpenGLError(getSystemName() + ":: DRAW OVERLAY");
 			getOculusRift().endOverlay();
 			
             if(bIs2D){
@@ -426,6 +426,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
                     ofClear(0, 0, 0, 1.0);
                 }                
                 selfDrawBackground();
+				checkOpenGLError(getSystemName() + ":: DRAW BACKGROUND");
                 CloudsVisualSystem::getSharedRenderTarget().end();
                 
                 getOculusRift().baseCamera = &getCameraRef();
@@ -527,6 +528,7 @@ void CloudsVisualSystem::drawScene(){
 	
 	ofPushStyle();
 	drawDebug();
+	checkOpenGLError(getSystemName() + ":: DRAW DEBUG");
 	ofPopStyle();
 	
 	lightsBegin();
@@ -534,6 +536,7 @@ void CloudsVisualSystem::drawScene(){
 	//draw this visual system
 	ofPushStyle();
 	selfDraw();
+	checkOpenGLError(getSystemName() + ":: DRAW");
 	ofPopStyle();
 	
 	lightsEnd();
@@ -1050,11 +1053,9 @@ vector<string> CloudsVisualSystem::getPresets()
 	vector<string> presets;
 	string presetPath = getVisualSystemDataPath() + "Presets/";
 	ofDirectory presetsFolder = ofDirectory(presetPath);
-	cout << "PRESET PATH AT " << presetPath << endl;
 	
 	if(presetsFolder.exists()){
 		presetsFolder.listDir();
-		cout << " found " << presetsFolder.size() << " files " << endl;
 		for(int i = 0; i < presetsFolder.size(); i++){
 			if(presetsFolder.getFile(i).isDirectory() &&
                ofFilePath::removeTrailingSlash(presetsFolder.getName(i)) != "Working" &&
@@ -2611,19 +2612,9 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	
 	selfSetDefaults();
 	
-	//custom colors
-//    cb = ofxUIColor(128,255);
-//    co = ofxUIColor(255, 255, 255, 100);
-//    coh = ofxUIColor(255, 255, 255, 200);
-//    cf = ofxUIColor(255, 255, 255, 200);
-//    cfh = ofxUIColor(255, 255, 255, 255);
-//    cp = ofxUIColor(0, 100);
-//    cpo =  ofxUIColor(255, 200);
-	
     for(int i = 0; i < guis.size(); i++) {
 		string presetPathName = presetPath+"/"+guis[i]->getName()+".xml";
         guis[i]->loadSettings(presetPathName);
-//		guis[i]->setUIColors(cb,co,coh,cf,cfh,cp, cpo);
     }
 	
     cam.reset();
@@ -2916,6 +2907,7 @@ void CloudsVisualSystem::drawBackground()
 	ofTranslate(0, ofGetHeight());
 	ofScale(1,-1,1);
 	selfDrawBackground();
+	checkOpenGLError(getSystemName() + ":: DRAW BACKGROUND");		
 	ofPopMatrix();
 	ofPopStyle();
 }
@@ -3169,8 +3161,7 @@ void CloudsVisualSystem::selfInteractionEnded(CloudsInteractionEventArgs& args){
 }
 
 
-void CloudsVisualSystem::selfSetupGui()
-{
+void CloudsVisualSystem::selfSetupGui(){
 
 }
 
@@ -3217,4 +3208,12 @@ void CloudsVisualSystem::selfSetupTimelineGui()
 void CloudsVisualSystem::selfTimelineGuiEvent(ofxUIEventArgs &e)
 {
     
+}
+
+void CloudsVisualSystem::checkOpenGLError(string function){
+	
+    GLuint err = glGetError();
+    if (err != GL_NO_ERROR){
+        ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " in " << function;
+    }
 }

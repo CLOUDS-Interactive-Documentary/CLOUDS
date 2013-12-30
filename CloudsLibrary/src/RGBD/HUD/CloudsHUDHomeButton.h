@@ -21,11 +21,31 @@ class CloudsHUDHomeButton {
 	void draw();
 	
 	bool isActive();
-	
-	ofImage sampleImage;
+    bool hitTest( float xPos, float yPos );
+    bool hitTest( ofPoint mousePos );
+    
+    void playIdle();
+    void playHover();
+    void playLoop();
+    
 	ofVec2f homeLocation;
+
   protected:
-	
+	ofRectangle hitBox;
+    
+    float   playhead;
+    float   targetFps;
+    
+    bool    bIsHovering;
+    
 	float maxHoverTime;
 	float hoverStartTime;
+    float targetButtonHeight;
+    
+    int IDLE_FRAME;
+    int LOOP_START;
+    int LOOP_END;
+    
+    
+    vector<ofTexture*>  textureList;
 };

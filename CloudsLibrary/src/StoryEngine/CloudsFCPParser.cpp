@@ -87,15 +87,28 @@ void CloudsFCPParser::saveClusterMap(map<string, ofVec2f> centroidMap ){
 
 void CloudsFCPParser::parseVOClips(){
 	
-//	ofDirectory dir(GetCloudsDataPath() + "VO");
-//	dir.allowExt("aif");
-//	dir.allowExt("wav");
-//	dir.allowExt("mp3");
-//	dir.allowExt("aiff");
-//	
-//	dir.listDir();
-	
+	//Cache the durations on the audio to speed up start up
+	string voDurationCache = GetCloudsDataPath() + "VO/_voiceover_durations_cache.txt";
+	bool voCacheExists = ofFile(voDurationCache).exists() ;
+	map<string,float> voiceoverDuration;
+	if(voCacheExists){
+		ofBuffer voiceOverDurationBuf = ofBufferFromFile(voDurationCache);
+		while(!voiceOverDurationBuf.isLastLine()){
+			string line = voiceOverDurationBuf.getNextLine();
+			if(line == ""){
+				continue;
+			}
+			vector<string> split = ofSplitString(line, "|", true, true);
+			if(split.size() != 2){
+				continue;
+			}
+			voiceoverDuration[split[0]] = ofToFloat(split[1]);
+		}
+	}
+
+
 	ofBuffer voiceOverData = ofBufferFromFile(GetCloudsDataPath() + "VO/_voiceover_data.txt");
+	
 	while(!voiceOverData.isLastLine()){
 		string line = voiceOverData.getNextLine();
 		if(line == ""){
@@ -121,11 +134,17 @@ void CloudsFCPParser::parseVOClips(){
 			ofLogError("CloudsFCPParser::parseVOClips") << "Missing voiceover file " << fileName;
 		}
 		else {
-			ofVideoPlayer p;
-			p.setUseTexture(false);
-			p.loadMovie(clip.voiceOverAudioPath);
 			clip.startFrame = 0;
-			clip.endFrame = p.getDuration()*24.;
+			if(voCacheExists){
+				clip.endFrame = voiceoverDuration[ ofFilePath::getBaseName(clip.voiceOverAudioPath) ] * 24.;
+			}
+			else{
+				ofVideoPlayer p;
+				p.setUseTexture(false);
+				p.loadMovie(clip.voiceOverAudioPath);
+				clip.endFrame = p.getDuration()*24.;
+				voiceoverDuration[ ofFilePath::getBaseName(clip.voiceOverAudioPath) ] = p.getDuration();
+			}
 			cout << "Voiceoer Clip " << fileName << " duration is " <<  clip.endFrame/24. << endl;
 		}
 		
@@ -148,6 +167,7 @@ void CloudsFCPParser::parseVOClips(){
 		clipIDToIndex[clip.getID()] = allClips.size();
 		clipLinkNameToIndex[clip.getLinkName()] = allClips.size();
 		allClips.push_back(clip);
+		
 		for(int i = 1; i < components.size(); i++){
 			if(!hasClipWithID(components[i])){
 				ofSystemAlertDialog("VO clip " + clip.getLinkName() + " overlapping clip " + components[i] + " does not exist. Check the name.");
@@ -158,7 +178,16 @@ void CloudsFCPParser::parseVOClips(){
 		}
 		
 	}
-		
+	
+	//if we have no cache create it
+	if(!voCacheExists){
+		map<string,float>::iterator it;
+		ofBuffer voiceOverDurationBuf;
+		for(it = voiceoverDuration.begin(); it != voiceoverDuration.end(); it++){
+			voiceOverDurationBuf.append( it->first + "|" + ofToString(it->second,4) + "\n");
+		}
+		ofBufferToFile(voDurationCache, voiceOverDurationBuf);
+	}
 }
 
 void CloudsFCPParser::parseLinks(string linkFile){
@@ -1389,8 +1418,6 @@ vector<CloudsClip> CloudsFCPParser::getClipsWithQuestionsForTopic(string topic){
     return clips;
 }
 
-
-
 set<string> CloudsFCPParser::getRelatedKeywords(string filterWord){
 	set<string> relatedKeywords;
     
@@ -1545,25 +1572,22 @@ void CloudsFCPParser::saveInterventions(string interventionsFile){
 		string clipName = allClips[i].getLinkName();
 		
 		bool hasIntervention = clipHasIntervention(allClips[i].getLinkName());
-
         
         if(hasIntervention){
 			
 			linksXML.addTag("clip");
 			linksXML.pushTag("clip", numClips++);
-			
-			linksXML.addValue("name", clipName);
-            
 
-				vector<CloudsLink>& clipLinks = linkedConnections[clipName];
-                
-				for(int l = 0; l < clipLinks.size(); l++){
-					linksXML.addTag("intervention");
-					linksXML.pushTag("intervention", l);
-					linksXML.addValue("name", clipInterventions[clipName] );;
-					linksXML.popTag(); //link!
-				}
-			
+			linksXML.addValue("name", clipName);
+
+			vector<CloudsLink>& clipLinks = linkedConnections[clipName];
+
+			for(int l = 0; l < clipLinks.size(); l++){
+				linksXML.addTag("intervention");
+				linksXML.pushTag("intervention", l);
+				linksXML.addValue("name", clipInterventions[clipName] );;
+				linksXML.popTag(); //link!
+			}
 			
 			linksXML.popTag();
 		}
@@ -1572,7 +1596,7 @@ void CloudsFCPParser::saveInterventions(string interventionsFile){
     if(! linksXML.saveFile(interventionsFile) ){
 		if(printErrors) ofSystemAlertDialog("UNABLE TO SAVE LINKS. DO NOT PROCEED");
 	}
-    
+
 }
 
 

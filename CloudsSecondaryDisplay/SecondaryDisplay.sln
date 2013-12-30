@@ -1,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openframeworksLib", "..\..\..\libs\openFrameworksCompiled\project\vs2010\openframeworksLib.vcxproj", "{5837595D-ACA9-485C-8E76-729040CE4B0B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SecondaryDisplay", "SecondaryDisplay.vcxproj", "{150A5E79-BF42-4DF0-9CC2-969058A4144A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Debug|Win32.Build.0 = Debug|Win32
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Release|Win32.ActiveCfg = Release|Win32
+		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Release|Win32.Build.0 = Release|Win32
+		{150A5E79-BF42-4DF0-9CC2-969058A4144A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{150A5E79-BF42-4DF0-9CC2-969058A4144A}.Debug|Win32.Build.0 = Debug|Win32
+		{150A5E79-BF42-4DF0-9CC2-969058A4144A}.Release|Win32.ActiveCfg = Release|Win32
+		{150A5E79-BF42-4DF0-9CC2-969058A4144A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

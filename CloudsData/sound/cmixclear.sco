@@ -12,5 +12,5 @@ bus_config("FILTERBANK", "aux 8-9 in", "out 0-1");
 bus_config("STRUM2", "out 0-1")
 bus_config("MMODALBAR", "out 0-1")
 bus_config("MMESH2D", "out 0-1")
-bus_config("STEREO", "out 0-1")
-bus_config("TRANS3", "out 0-1")
+bus_config("STEREO", "in 0", "out 0-1")
+bus_config("TRANS3", "in 0", "out 0-1")
