@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "ofxUI.h"
 #include "CloudsHUDController.h"
-
+#include "CloudsFCPParser.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -23,6 +23,6 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	
 	CloudsHUDController hud;
-
+	CloudsFCPParser parser;
     void guiEvent(ofxUIEventArgs &e);
 };
