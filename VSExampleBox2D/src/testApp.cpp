@@ -2,8 +2,11 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	exampleVectorMath.setup();
-	exampleVectorMath.playSystem();
+    mixer.setup(2, 44100, 512, 2);
+    mixer.setDiageticVolume(1);
+    
+	exampleBox2D.setup();
+	exampleBox2D.playSystem();
 }
 
 //--------------------------------------------------------------
@@ -22,6 +25,12 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::exit(){
+	exampleBox2D.exit();
+}
+
+//--------------------------------------------------------------
+void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
+    mixer.fillBuffer(output, bufferSize, nChannels);
 }
 
 //--------------------------------------------------------------

@@ -6,8 +6,7 @@
 //
 //
 
-#ifndef CloudsStoryEngine_CloudsGlobal_h
-#define CloudsStoryEngine_CloudsGlobal_h
+#pragma once
 
 #include "ofMain.h"
 
@@ -15,7 +14,7 @@ static bool confirmedDataPath = false;
 static bool usingDevelopmentFolder = false;
 
 //--------------------------------------------------------------------
-static string getDataPath()
+static string GetCloudsDataPath()
 {
 	if(!confirmedDataPath){
 		usingDevelopmentFolder = ofDirectory("../../../CloudsData/").exists();
@@ -27,6 +26,24 @@ static string getDataPath()
     return usingDevelopmentFolder ? "../../../CloudsData/" : "CloudsData/";
 }
 
+static string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolder = false){
+	//  building from src project file
+	string datapath;
+	if(ofDirectory("../../../CloudsData/").exists()){
+		datapath = string("../../../CloudsData/visualsystems") + (ignoredFolder ? "_ignored" : "") + "/" + systemName + "/";
+	}
+	//  stand alone full app
+	else if(ofDirectory("CloudsData/").exists()){
+		datapath =  string("CloudsData/visualsystems") + (ignoredFolder ? "_ignored" : "") + "/" + systemName + "/";
+	}
+	//  stand alone single app
+	else{
+		datapath =  "../../../data/";
+	}
+	
+	return datapath;
+}
+
 //--------------------------------------------------------------------
 static string relinkFilePath(string filePath){
 	
@@ -35,7 +52,7 @@ static string relinkFilePath(string filePath){
 	drives.push_back("Seance");
 	drives.push_back("Nebula");
 	drives.push_back("Supernova");
-	drives.push_back("Nebula_helper");
+	drives.push_back("WhiteDwarf");
     
 	if( !ofFile(filePath).exists() ){
 		for(int i = 0; i < drives.size(); i++){
@@ -53,4 +70,4 @@ static string relinkFilePath(string filePath){
 	return filePath;
 }
 
-#endif
+

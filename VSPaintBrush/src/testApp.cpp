@@ -1,19 +1,20 @@
 #include "testApp.h"
+#include "CloudsInputKinectOSC.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
 	ofSetVerticalSync(true);
-  
+    
+    SetCloudsInputKinect();
+    
 	PaintBrush.setup();
 	PaintBrush.playSystem();
 }
-
 
 //--------------------------------------------------------------
 void testApp::update(){
 
 }
-
 
 //--------------------------------------------------------------
 void testApp::draw(){
@@ -27,6 +28,7 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::exit(){
+	PaintBrush.exit();
 }
 
 //--------------------------------------------------------------

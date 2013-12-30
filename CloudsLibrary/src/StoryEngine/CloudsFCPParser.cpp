@@ -19,7 +19,6 @@ bool distanceSortLargeToSmall(pair<string,float> a, pair<string,float> b ){
     return a.second > b.second;
 }
 
-
 CloudsFCPParser::CloudsFCPParser(){
 	printErrors = false;
     sortedByOccurrence = false;
@@ -28,11 +27,14 @@ CloudsFCPParser::CloudsFCPParser(){
 }
 
 void CloudsFCPParser::loadFromFiles(){
-    setup(getDataPath() + "fcpxml");
-    parseLinks(getDataPath() + "links/clouds_link_db.xml");
-//    parseClusterMap(getDataPath() + "gephi/2013_7_25_Clouds_conversation.SVG");
-	//parseClusterMap(getDataPath() + "gephi/CLOUDSClusterMap.svg");
-	parseClusterNetwork(getDataPath() + "pajek/CloudsNetwork.net");
+    setup(GetCloudsDataPath() + "fcpxml");
+	parseVOClips();
+    parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
+//    parseClusterMap(GetCloudsDataPath() + "gephi/2013_7_25_Clouds_conversation.SVG");
+	//parseClusterMap(GetCloudsDataPath() + "gephi/CLOUDSClusterMap.svg");
+	parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
+	parseProjectExamples(GetCloudsDataPath() + "secondaryDisplay/web/xml/projects.xml");
+	
 }
 
 void CloudsFCPParser::setup(string directory){
@@ -49,7 +51,7 @@ void CloudsFCPParser::refreshXML(){
     clipIDToIndex.clear();
 	clipLinkNameToIndex.clear();
     keywordVector.clear();
-	hasCombinedVideoIndeces.clear();
+	hasMediaAssetIndeces.clear();
 	
     linkedConnections.clear();
     suppressedConnections.clear();
@@ -81,8 +83,111 @@ void CloudsFCPParser::saveClusterMap(map<string, ofVec2f> centroidMap ){
         
         cout<<"<text transform=\"matrix(1 0 0 1 "<<it->second.x<<" "<<it->second.y<<")\" font-family=\"'MyriadPro-Regular'\" font-size=\"12\">"<<it->first<<"</text>"<<endl;
     }
+}
+
+void CloudsFCPParser::parseVOClips(){
+	
+	//Cache the durations on the audio to speed up start up
+	string voDurationCache = GetCloudsDataPath() + "VO/_voiceover_durations_cache.txt";
+	bool voCacheExists = ofFile(voDurationCache).exists() ;
+	map<string,float> voiceoverDuration;
+	if(voCacheExists){
+		ofBuffer voiceOverDurationBuf = ofBufferFromFile(voDurationCache);
+		while(!voiceOverDurationBuf.isLastLine()){
+			string line = voiceOverDurationBuf.getNextLine();
+			if(line == ""){
+				continue;
+			}
+			vector<string> split = ofSplitString(line, "|", true, true);
+			if(split.size() != 2){
+				continue;
+			}
+			voiceoverDuration[split[0]] = ofToFloat(split[1]);
+		}
+	}
 
 
+	ofBuffer voiceOverData = ofBufferFromFile(GetCloudsDataPath() + "VO/_voiceover_data.txt");
+	
+	while(!voiceOverData.isLastLine()){
+		string line = voiceOverData.getNextLine();
+		if(line == ""){
+			continue;
+		}
+		if(line.at(0) == '#'){
+			continue;
+		}
+		
+		vector<string> components = ofSplitString(line, " ",true,true);
+		if(components.size() == 0){
+			continue;
+		}
+		
+		string fileName = components[0];
+		CloudsClip clip;
+		clip.voiceOverAudio = true;
+		
+		clip.voiceOverAudioPath = GetCloudsDataPath() + "VO/" + fileName;
+		clip.sourceVideoFilePath = clip.voiceOverAudioPath;
+		clip.hasMediaAsset = ofFile(clip.voiceOverAudioPath).exists();
+		if (!clip.hasMediaAsset) {
+			ofLogError("CloudsFCPParser::parseVOClips") << "Missing voiceover file " << fileName;
+		}
+		else {
+			clip.startFrame = 0;
+			if(voCacheExists){
+				clip.endFrame = voiceoverDuration[ ofFilePath::getBaseName(clip.voiceOverAudioPath) ] * 24.;
+			}
+			else{
+				ofVideoPlayer p;
+				p.setUseTexture(false);
+				p.loadMovie(clip.voiceOverAudioPath);
+				clip.endFrame = p.getDuration()*24.;
+				voiceoverDuration[ ofFilePath::getBaseName(clip.voiceOverAudioPath) ] = p.getDuration();
+			}
+			cout << "Voiceoer Clip " << fileName << " duration is " <<  clip.endFrame/24. << endl;
+		}
+		
+		string name = ofFilePath::getBaseName( fileName );
+		//remove weird final cut track name
+		ofStringReplace(name, "_1-2", "");
+		ofStringReplace(name, "1-2", "");
+		vector<string> clipComponents = ofSplitString(name,"_");
+        //validate
+		if(clipComponents.size() != 2){
+			ofLogError("CloudsFCPParser::parseVOClips") << "VO Clip " << name << " incorrectly formatted";
+			continue;
+		}
+		
+		clip.person = clipComponents[0];
+		clip.name = clipComponents[1];
+		
+		cout << "added VO only clip " << clip.getLinkName() << endl;
+		
+		clipIDToIndex[clip.getID()] = allClips.size();
+		clipLinkNameToIndex[clip.getLinkName()] = allClips.size();
+		allClips.push_back(clip);
+		
+		for(int i = 1; i < components.size(); i++){
+			if(!hasClipWithID(components[i])){
+				ofSystemAlertDialog("VO clip " + clip.getLinkName() + " overlapping clip " + components[i] + " does not exist. Check the name.");
+			}
+			else{
+				clip.addOverlappingClipName(components[i]);
+			}
+		}
+		
+	}
+	
+	//if we have no cache create it
+	if(!voCacheExists){
+		map<string,float>::iterator it;
+		ofBuffer voiceOverDurationBuf;
+		for(it = voiceoverDuration.begin(); it != voiceoverDuration.end(); it++){
+			voiceOverDurationBuf.append( it->first + "|" + ofToString(it->second,4) + "\n");
+		}
+		ofBufferToFile(voDurationCache, voiceOverDurationBuf);
+	}
 }
 
 void CloudsFCPParser::parseLinks(string linkFile){
@@ -255,6 +360,90 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 	calculateKeywordFamilies();
 }
 
+void CloudsFCPParser::parseProjectExamples(string filename){
+	
+	clipIdToProjectExample.clear();
+	projectExamples.clear();
+	
+	ofxXmlSettings projectExamplesXML;
+	if(!projectExamplesXML.loadFile(filename)){
+		ofLogError("CloudsFCPParser::parseProjectExamples") << "Project examples failed to parse at path" << filename;
+		return;
+	}
+	
+	//find video file path
+	string videoFilePathPrefix = "";
+	bool hasVideoDataPath = false;
+	string videoFilePathTxt = GetCloudsDataPath() + "CloudsSecondaryDirectory.txt";
+	
+	if(ofFile(videoFilePathTxt).exists()){
+		videoFilePathPrefix = ofFilePath::addTrailingSlash(ofBufferFromFile(videoFilePathTxt).getText());
+		hasVideoDataPath = ofFile(videoFilePathPrefix).exists();
+	}
+	
+	if(!hasVideoDataPath){
+		ofLogError("CloudsFCPParser::parseProjectExamples") << "Couldn't find data path for videos";
+	}
+	
+	projectExamplesXML.pushTag("clouds");
+	int numProjectExamples = projectExamplesXML.getNumTags("project");
+	for(int i = 0; i < numProjectExamples; i++){
+		
+		string projectTitle = projectExamplesXML.getAttribute("project", "title", "", i);
+		if(projectTitle == ""){
+			ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << i << " does not have a title";
+			continue;
+		}
+		
+		projectExamplesXML.pushTag("project",i);
+
+		CloudsProjectExample example;
+		example.title = projectTitle;
+		example.creatorName = projectExamplesXML.getValue("creator_name", "");
+		example.description = projectExamplesXML.getValue("description", "");
+		if(projectExamplesXML.tagExists("videos")){
+			projectExamplesXML.pushTag("videos");
+			int numVideos = projectExamplesXML.getNumTags("file");
+			if(numVideos == 0){
+				ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << projectTitle << " doesn't have any <file> tags in <videos>";
+			}
+			
+			for(int f = 0; f < numVideos; f++){
+				example.exampleVideos.push_back(videoFilePathPrefix + projectExamplesXML.getValue("file","",f));
+			}
+			projectExamplesXML.popTag(); //videos
+		}
+		else{
+			ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << projectTitle << " doesn't have <videos> tag";
+		}
+		
+		projectExamplesXML.popTag();//project
+		
+		clipIdToProjectExample[example.title] = projectExamples.size();
+		projectExamples.push_back(example);
+	}
+	projectExamplesXML.popTag();//clouds
+	
+	//populate project examples on all clips
+	for(int i = 0; i < allClips.size(); i++){
+		if(allClips[i].hasProjectExample){
+			allClips[i].projectExample = getProjectExampleWithTitle(allClips[i].projectExampleTitle);
+		}
+	}
+}
+
+vector<CloudsProjectExample>& CloudsFCPParser::getProjectExamples(){
+	return projectExamples;
+}
+
+CloudsProjectExample& CloudsFCPParser::getProjectExampleWithTitle(string title){
+	if(clipIdToProjectExample.find(title) == clipIdToProjectExample.end()){
+		ofLogError("CloudsFCPParser::getProjectExampleWithTitle") << "Couldn't find project example with title " << title;
+		return dummyProjectExample;
+	}
+	return projectExamples[ clipIdToProjectExample[title] ];
+}
+
 void CloudsFCPParser::populateKeywordCentroids(){
 
 	keywordCentroids.clear();
@@ -281,7 +470,6 @@ void CloudsFCPParser::populateKeywordCentroids(){
 }
 
 void CloudsFCPParser::calculateKeywordAdjascency(){
-//		map<string, vector<string> > keywordAdjacency;
 	keywordAdjacency.clear();
 	vector<string>& keywords = getContentKeywords();
 	for(int i = 0; i < keywords.size(); i++){
@@ -349,7 +537,7 @@ void CloudsFCPParser::calculateKeywordFamilies(){
 //			keywordFamilyBuffer.append("	" + overlapScore[i].first + " " + ofToString(overlapScore[i].second) + "\n" );
 		}
 	}
-//	ofBufferToFile(getDataPath() + "stats/keyword_families.txt", keywordFamilyBuffer);
+//	ofBufferToFile(GetCloudsDataPath() + "stats/keyword_families.txt", keywordFamilyBuffer);
 }
 
 vector<string>& CloudsFCPParser::getKeywordFamily(string keyword){
@@ -444,7 +632,7 @@ void CloudsFCPParser::saveLinks(string linkFile){
 			if(printErrors) ofSystemAlertDialog("UNABLE TO CREATE LINK BACK UP");
 			return;
 		}
-		
+
 		cout << "BACKUPING UP FILE FROM " << linkFile << " to " << backup << endl;
 	}
 	
@@ -790,9 +978,9 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
 			}
 			else{
 				markerLinkNames.insert( cm.getLinkName() );
-				cm.color.r = fcpXML.getValue("color:red", 0);
-				cm.color.g = fcpXML.getValue("color:green", 0);
-				cm.color.b = fcpXML.getValue("color:blue", 0);
+//				cm.color.r = fcpXML.getValue("color:red", 0);
+//				cm.color.g = fcpXML.getValue("color:green", 0);
+//				cm.color.b = fcpXML.getValue("color:blue", 0);
 				string keywordString = ofToLower( fcpXML.getValue("comment", "") );
 				ofStringReplace(keywordString, "\n", ",");
                 vector<string> fcpKeywords = ofSplitString(keywordString, ",",true,true);
@@ -825,22 +1013,20 @@ void CloudsFCPParser::getOverlappingClipIDs(){
         
         // fileIDTOCloudsClip is also populated in  parseClipItem() using this map to associate
         //all clips associated with a file id. Here file id is referenced again from the FCP XML
-
         vector<CloudsClip> clipsFromSameFile = fileIDtoCloudsClips[fileId];
     
-        for(int j =0; j<clipsFromSameFile.size(); j++){
+        for(int j = 0; j < clipsFromSameFile.size(); j++){
 
             //        cout<<  "Checking for overlaps between "<< allClips[i].getLinkName() << " and "<< clipsFromSameFile[j].getLinkName()<< endl;
-            
-            if(allClips[i].getLinkName() != clipsFromSameFile[j].getLinkName()){
-                
-                if( ofRange(allClips[i].startFrame,allClips[i].endFrame).intersects(ofRange(clipsFromSameFile[j].startFrame,clipsFromSameFile[j].endFrame))){
+			ofRange sourceRange(allClips[i].startFrame, allClips[i].endFrame);
+            if(allClips[i].getID() != clipsFromSameFile[j].getID()){
+				ofRange destRange(clipsFromSameFile[j].startFrame,clipsFromSameFile[j].endFrame);
+                if( sourceRange.intersects(destRange)){
                     
                     overlappingClipsMap[allClips[i].getLinkName()].push_back(clipsFromSameFile[j].getLinkName());
                     
                     //adding the overlapping clip name to a vector in the CloudsClip
-                    allClips[i].addOverlappingClipName(clipsFromSameFile[j].getLinkName());
-
+                    allClips[i].addOverlappingClipName(clipsFromSameFile[j].getID());
 //                    ofLogNotice()<< "OVERLAPPING CLIPS: "<<allClips[i].getLinkName()  << " overlaps with clip "<< clipsFromSameFile[j].getLinkName()<<endl;
                 }
                 
@@ -919,7 +1105,7 @@ void CloudsFCPParser::printDichotomyRatios(){
 		}
 	}
 	
-	ofBufferToFile(getDataPath() + "DichotomyRatios.txt", dichotomyScores);
+	ofBufferToFile(GetCloudsDataPath() + "DichotomyRatios.txt", dichotomyScores);
 }
 
 void CloudsFCPParser::refreshAllKeywords(){
@@ -975,23 +1161,25 @@ void CloudsFCPParser::refreshAllKeywords(){
 }
 
 void CloudsFCPParser::setCombinedVideoDirectory(string directory){
-	hasCombinedVideoIndeces.clear();
-	hasCombinedVideoAndQuestionIndeces.clear();
+	hasMediaAssetIndeces.clear();
+	hasMediaAssetAndQuestionIndeces.clear();
     hasCombinedAndIsStartingClipIndeces.clear();
     
 	combinedVideoDirectory = directory;
     //	cout << "Setting combined directory to " << directory << " looking for all clips " << allClips.size() << endl;
 	for(int i = 0; i < allClips.size(); i++){
-		allClips[i].hasCombinedVideo = false;
+        
+
 		allClips[i].combinedVideoPath = directory + "/" + allClips[i].getCombinedMovieFile();
 		allClips[i].combinedCalibrationXMLPath = directory + "/" + allClips[i].getCombinedCalibrationXML();
-		allClips[i].hasCombinedVideo = ofFile(allClips[i].combinedVideoPath).exists() && ofFile(allClips[i].combinedCalibrationXMLPath).exists();
+		allClips[i].hasMediaAsset = allClips[i].voiceOverAudio ||
+                                    (ofFile(allClips[i].combinedVideoPath).exists() && ofFile(allClips[i].combinedCalibrationXMLPath).exists());
         //        cout << " combined video path is " << allClips[i].combinedVideoPath << " " << allClips[i].combinedCalibrationXMLPath << endl;
         
-		if(allClips[i].hasCombinedVideo){
-			hasCombinedVideoIndeces.push_back(i);
+		if(allClips[i].hasMediaAsset){
+			hasMediaAssetIndeces.push_back(i);
 			if(allClips[i].hasQuestion()){
-				hasCombinedVideoAndQuestionIndeces.push_back(i);
+				hasMediaAssetAndQuestionIndeces.push_back(i);
 				if(allClips[i].hasSpecialKeyword("#start")){
 					hasCombinedAndIsStartingClipIndeces.push_back(i);
 				}				
@@ -1000,14 +1188,14 @@ void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 		}
 	}
 	
-	ofLogNotice("CloudsFCPParser::setCombinedVideoDirectory") << "there are " << hasCombinedVideoAndQuestionIndeces.size() << " items with questions & combined " << endl;
+	ofLogNotice("CloudsFCPParser::setCombinedVideoDirectory") << "there are " << hasMediaAssetAndQuestionIndeces.size() << " items with questions & combined " << endl;
 }
 
-CloudsClip& CloudsFCPParser::getRandomClip(bool hasCombinedVideo,
+CloudsClip& CloudsFCPParser::getRandomClip(bool hasMediaAsset,
 										   bool hasQuestion,
 										   bool hasStartQuestion)
 {
-	if(hasCombinedVideo && hasStartQuestion){
+	if(hasMediaAsset && hasStartQuestion){
 		if(hasCombinedAndIsStartingClipIndeces.size() == 0){
 			ofLogError("CloudsFCPParser::getRandomClip") << "has no start  clips with combined videos";
 			return dummyClip;
@@ -1015,20 +1203,20 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool hasCombinedVideo,
 //		cout << " has " << hasCombinedAndIsStartingClipIndeces.size() << endl;
 		return allClips[ hasCombinedAndIsStartingClipIndeces[ ofRandom(hasCombinedAndIsStartingClipIndeces.size())] ];
 	}
-	else if(hasCombinedVideo && hasQuestion){
-		if(hasCombinedVideoAndQuestionIndeces.size() == 0){
+	else if(hasMediaAsset && hasQuestion){
+		if(hasMediaAssetAndQuestionIndeces.size() == 0){
 			ofLogError("CloudsFCPParser::getRandomClip") << "has no questions clips with combined videos";
 			return dummyClip;
 		}
-		cout << " has " << hasCombinedVideoAndQuestionIndeces.size() << endl;
-		return allClips[ hasCombinedVideoAndQuestionIndeces[ ofRandom(hasCombinedVideoAndQuestionIndeces.size())] ];
+		cout << " has " << hasMediaAssetAndQuestionIndeces.size() << endl;
+		return allClips[ hasMediaAssetAndQuestionIndeces[ ofRandom(hasMediaAssetAndQuestionIndeces.size())] ];
 	}
-	else if(hasCombinedVideo){
-		if(hasCombinedVideoIndeces.size() == 0){
+	else if(hasMediaAsset){
+		if(hasMediaAssetIndeces.size() == 0){
 			ofLogError("CloudsFCPParser::getRandomClip") << "has no combined videos ";
 			return dummyClip;
 		}
-		return allClips[ hasCombinedVideoIndeces[ ofRandom(hasCombinedVideoIndeces.size())] ];
+		return allClips[ hasMediaAssetIndeces[ ofRandom(hasMediaAssetIndeces.size())] ];
 	}
 	else if(hasStartQuestion){
 		if(startQuestionIndeces.size() == 0){
@@ -1230,8 +1418,6 @@ vector<CloudsClip> CloudsFCPParser::getClipsWithQuestionsForTopic(string topic){
     return clips;
 }
 
-
-
 set<string> CloudsFCPParser::getRelatedKeywords(string filterWord){
 	set<string> relatedKeywords;
     
@@ -1366,6 +1552,51 @@ void CloudsFCPParser::reciprocateSuppressions(CloudsClip& sourceClip){
             cout<<"Added reciprocal suppression for source: "<<sourceClip.getLinkName()<<" and target: "<<targetClip.getLinkName()<<endl;
         }
     }
+}
+
+
+void CloudsFCPParser:: addIntervention(string clipName, string interventionName){
+    clipInterventions[clipName] = interventionName;
+}
+
+bool CloudsFCPParser::clipHasIntervention(string clipName){
+	return clipInterventions.find(clipName) != clipInterventions.end();
+}
+
+void CloudsFCPParser::saveInterventions(string interventionsFile){
+    int numClips = 0;
+    ofxXmlSettings linksXML;
+    map<string, vector<CloudsLink> >::iterator it;
+	
+	for(int i = 0; i < allClips.size(); i++){
+		string clipName = allClips[i].getLinkName();
+		
+		bool hasIntervention = clipHasIntervention(allClips[i].getLinkName());
+        
+        if(hasIntervention){
+			
+			linksXML.addTag("clip");
+			linksXML.pushTag("clip", numClips++);
+
+			linksXML.addValue("name", clipName);
+
+			vector<CloudsLink>& clipLinks = linkedConnections[clipName];
+
+			for(int l = 0; l < clipLinks.size(); l++){
+				linksXML.addTag("intervention");
+				linksXML.pushTag("intervention", l);
+				linksXML.addValue("name", clipInterventions[clipName] );;
+				linksXML.popTag(); //link!
+			}
+			
+			linksXML.popTag();
+		}
+	}
+    
+    if(! linksXML.saveFile(interventionsFile) ){
+		if(printErrors) ofSystemAlertDialog("UNABLE TO SAVE LINKS. DO NOT PROCEED");
+	}
+
 }
 
 

@@ -10,10 +10,17 @@
 
 #pragma once
 
+#include "ofMain.h"
 #include "CloudsVisualSystem.h"
 #include "ofxBox2d.h"
+#include "CloudsAudioEvents.h"
 
+#include "ofxTonic.h"
 
+using namespace Tonic;
+
+#define WAVE_GEN_NUM    150
+class DummyApp;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemExampleBox2D : public CloudsVisualSystem {
@@ -111,6 +118,9 @@ protected:
     void reinitBounds();
     float getGaussian();
     
+    // triggered on collisions
+    void contactStart(ofxBox2dContactArgs &e);
+    
     ofxBox2d box2d;
     
     ofVec2f prevScreenSize;
@@ -151,4 +161,14 @@ protected:
     float circleSizeMean;
     float rectSizeDev;
     float rectSizeMean;
+    
+    ofxTonicSynth synth;
+    ControlTrigger collisionTrigger[WAVE_GEN_NUM];
+    ControlRandom noteControl[WAVE_GEN_NUM];
+    float noteMax;
+    float noteMin;
+    int triggerIndex;
+    Generator output;
+
+	void audioRequested(ofAudioEventArgs& args);
 };

@@ -10,13 +10,9 @@
 #include "CloudsVisualSystem.h"
 #include "ofxCv.h"
 #include "MyTracker.h"
+#include "ofxAVFVideoPlayer.h"
 
-typedef enum{
-    OpticalFlow =0,
-    ContourTracking,
-    HeatMap
 
-}CVMode;
 
 class CloudsVisualSystemVision : public CloudsVisualSystem {
 public:
@@ -27,7 +23,7 @@ public:
     void selfSetupGuis();
     
 	void selfPresetLoaded(string presetPath);
-	
+	void selfSetDefaults();
     void selfAutoMode();
     void selfUpdate();
     void selfDrawBackground();
@@ -37,7 +33,10 @@ public:
     void selfExit();
     void selfBegin();
 	void selfEnd();
-    ofRectangle window;
+    
+	ofRectangle flowWindow;
+	ofRectangle videoRect;
+	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
@@ -53,30 +52,27 @@ public:
     void guiSystemEvent(ofxUIEventArgs &e);
     void updateImagesForNewVideo();
     void updateOpticalFlowParameters();
-    void updateHeatMap();
     void updateContourTracking();
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
-    void getTextures();
 
     ofxUISuperCanvas *opticalFlowGui;
     ofxUISuperCanvas *contourTrackingGui;
+    ofxUISuperCanvas *thresholdGui;
+	
 protected:
 
-    //video player stuff        
-    ofPtr<ofVideoPlayer> player;
-    ofPixels resizeToPixels;
+    ofPixels opticalFlowPixels;
     int skipFrames;
-//    ofVideoPlayer* player;
+	ofPtr<ofxAVFVideoPlayer> player;
+	ofPixels lastPixels;
+
     int playerIndex;
     int movieIndex;
     bool frameIsNew;
+    bool bNewVideoLoaded;
     vector<string> movieStrings;
-
-    CVMode currentMode;
-    int scale;
-    vector<ofRectangle> flowRegions;
-    void populateOpticalFlowRegions();
+    int opticalFlowScale;
     vector<ofVec2f> flowMotion;
 
     float colorRange;
@@ -97,28 +93,35 @@ protected:
     bool bLifeTime;
     bool bNumbers;
     bool bColor;
-    
+    bool bContours;
+    int flowDensity;
+	int currentFlowDensity;
+	float differenceHueShift;
+	float flowLineAlpha;
+	
     //Contour tracking stuff
     ofxCv::ContourFinder contourFinder;
 	ofxCv::RectTrackerFollower<MyTracker> tracker;
+    vector<ofPolyline> contours;
     void updateCVParameters();
     ofImage thresholded;
     ofxCv::RunningBackground background;
     cv::Rect accumRegion;
-    //vector<ParkedCar> parked;
 
     //Optical flow types
     ofxCv::FlowFarneback farneback;
 	ofxCv::FlowPyrLK pyrLk;
 	ofxCv::Flow* curFlow;
     void updateOpticalFlow();
-    void clearAccumulation();
+//    void clearAccumulation();
     void drawFlowHeatMap(int x, int y);
 
+    ofDirectory videosDir;
     ofVboMesh flowMesh;
     float windowWidth;
     float windowHeight;
-    
+	float flowDamp;
+	
     bool drawPlayer;
     bool drawThresholded;
     bool drawDiff;
@@ -127,21 +130,18 @@ protected:
     float thresholdAlpha;
     float diffAlpha;
 
-
-
     ofVec2f averageFlow;
-    int mouseX;
-    int mouseY;
-    
-
-    
+	
     void loadCurrentMovie();
     void loadMovieAtIndex(int movieIndex);
+	void loadMovieWithName(string name);
+    void updateSettingsForNewVideo();
     
-    void setMode(CVMode mode);
+//    void setMode(CVMode mode);
     int accumulationCount;
     cv::Scalar diffMean;
     
+    ofTexture prev;
     //OPTICAL FLOW PARAMETERS
     float pyrScale;
     float levels;
@@ -170,7 +170,14 @@ protected:
     float flowLineWidth;
     float learningTime;
     float thresholdValue;
+    //CONTOUR VIS PARAMS
+    float boxHue;
+    float boxSat;
+    float boxBright;
+    ofFloatColor boxColor;
     
+    //SHADER
+    ofShader shader;
     
     
 };

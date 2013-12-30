@@ -8,15 +8,16 @@ void testApp::setup(){
 	ofSetFrameRate(60);
 	ofBackground(0);
 	ofToggleFullscreen();
+	currentAct = NULL;
     parser.loadFromFiles();
 	
-	if(!ofFile::doesFileExist(getDataPath() + "CloudsMovieDirectory.txt")){
+	if(!ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
 		ofSystemAlertDialog("Could not find movie file path. \
 							Create a file called CloudsMovieDirectory.txt \
 							that contains one line, the path to your movies folder");
 	}
 
-	parser.setCombinedVideoDirectory(ofBufferFromFile(getDataPath() + "CloudsMovieDirectory.txt").getText());
+	parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
 	
 	//visualSystems.populateVisualSystems();
 	visualSystems.loadPresets();
@@ -28,11 +29,19 @@ void testApp::setup(){
 	storyEngine.setup();
 	
 	player.setup();
-	player.setStoryEngine(storyEngine);
     player.setRun(run);
 	player.getClusterMap().buildEntireCluster(parser);
+	
+	mixer.setup();
+
 	sound.setup(storyEngine);
 
+	player.setStoryEngine(storyEngine);
+
+	oscSender.setup();
+	
+	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
+	
 	////////SEED WITH RANDOM CLIP
 //	srand( ofGetSeconds()*1000 );
 //	CloudsClip& clip = parser.getRandomClip(false,false);
@@ -47,8 +56,8 @@ void testApp::setup(){
 			ofLogError() << "Clip " << startingNodes[i].getID() << " is labeled as #start but has no question, removing.";
 			startingNodes.erase(startingNodes.begin() + i);
 		}
-		else if(!startingNodes[i].hasCombinedVideo){
-			ofLogError() << "Clip " << startingNodes[i].getID() << " has no combined video file, removing.";
+		else if(!startingNodes[i].hasMediaAsset){
+			ofLogError() << "Clip " << startingNodes[i].getID() << " has no media asset, removing.";
 			startingNodes.erase(startingNodes.begin() + i);
 		}
 		else{
@@ -61,17 +70,24 @@ void testApp::setup(){
 	//////////////SHOW INTRO
 	
 	//temp sound stuff
-//	sound.setMasterAmp(1.0);
+	//sound.setMasterAmp(1.0);
 	useScratch = false;
 	
 }
 
 //--------------------------------------------------------------
+void testApp::actCreated(CloudsActEventArgs& args){
+	if(currentAct != NULL){
+		currentAct->unregisterEvents(&oscSender);
+	}
+	currentAct = args.act;
+	currentAct->registerEvents(&oscSender);
+}
+
+//--------------------------------------------------------------
 void testApp::update(){
 	player.getSharedVideoPlayer().maxVolume = sound.maxSpeakerVolume;
-	
 	sound.update();
-	ofShowCursor();
 }
 
 //--------------------------------------------------------------
@@ -85,11 +101,11 @@ void testApp::keyPressed(int key){
 		useScratch = !useScratch;
 		if(useScratch){
 			player.setUseScratch( true );
-			sound.setMasterAmp(0.0);
+//			sound.setMasterAmp(0.0);
 		}
 		else{
 			player.setUseScratch( false );
-			sound.setMasterAmp(1.0);
+//			sound.setMasterAmp(1.0);
 		}
 	}
     
@@ -103,13 +119,9 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
+
+	mixer.fillBuffer(output,bufferSize,nChannels);
 	
-	ofAudioEventArgs args;
-	args.buffer = output;
-	args.bufferSize = bufferSize;
-	args.nChannels = nChannels;
-	
-	ofNotifyEvent(ofEvents().audioRequested, args, this);
 }
 
 //--------------------------------------------------------------

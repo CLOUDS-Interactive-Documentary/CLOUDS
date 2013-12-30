@@ -18,7 +18,7 @@
 	
 	movieSuccessfullyLoaded = false;
     
-	parser.printErrors = true;
+//	parser.printErrors = true;
 	parser.loadFromFiles();
     clipEndFrame = 0;
     clipLoaded = NO;
@@ -35,13 +35,12 @@
 	[linkerA setup];
     [linkerB setup];
     
-	
 	vector<CloudsClip> projectExamples = parser.getClipsWithKeyword("#example");
 	for(int i = 0; i < projectExamples.size(); i++){
 		cout << projectExamples[i].getSpeakerFirstName() << " " << projectExamples[i].getSpeakerLastName() << ": " << projectExamples[i].name << endl;
 	}
 	
-	//exporter.saveGephiCSV(parser);
+	CloudsExporter::saveGephiCSV(parser);
 	CloudsExporter::savePajekNetwork(parser);
 }
 

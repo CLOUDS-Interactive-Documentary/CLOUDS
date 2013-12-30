@@ -5,18 +5,25 @@
 #include "CloudsFCPParser.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsVisualSystemRGBD.h"
+#include "CloudsHUDController.h"
+
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
 	IBOutlet NSTableView* clipTable;
+    IBOutlet NSTextField* interventionTextBox;
+    
 	
 	CloudsFCPParser parser;
+	CloudsHUDController hud;
 	CloudsVisualSystemRGBD rgbdVisualSystem;
 	
 	CloudsClip currentClip;
 	int currentClipIndex;
+
 }
 
 @property (assign) IBOutlet NSTableView *clipTable;
+@property (assign) IBOutlet NSTextField *interventionTextBox;
 
 - (void)setup;
 - (void)update;
@@ -30,9 +37,12 @@
 - (void)mousePressed:(NSPoint)p button:(int)button;
 - (void)mouseReleased:(NSPoint)p button:(int)button;
 - (void)windowResized:(NSSize)size;
-
+- (void)addIntervention:(id)sender;
 - (IBAction)loadClipFromTable:(id)sender;
-- (IBAction)loadClip:(CloudsClip&)clip;
+
+
+
+- (std::string)convertString:(NSString *)string;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;

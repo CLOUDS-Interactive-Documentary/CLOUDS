@@ -1,0 +1,12 @@
+<keyframes>
+    <key>
+        <flag>LOOP_START</flag>
+        <time>00:00:42:783</time>
+        <value>0.475000024</value>
+    </key>
+    <key>
+        <flag>LOOP_END</flag>
+        <time>00:00:54:339</time>
+        <value>1.000000000</value>
+    </key>
+</keyframes>

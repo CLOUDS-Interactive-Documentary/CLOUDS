@@ -14,6 +14,7 @@
 #include "CloudsClip.h"
 #include "CloudsQuestion.h"
 #include "CloudsRun.h"
+#include "ofxFTGL.h"
 
 class CloudsIntroSequence : public CloudsVisualSystem {
   public:
@@ -72,7 +73,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	bool isStartQuestionSelected();
 	void autoSelectQuestion();
 	CloudsQuestion* getSelectedQuestion();
-	
 	CloudsRun& getSelectedRun(){
 		return currentRun;
 	};
@@ -84,6 +84,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	ofxUISuperCanvas* questionGui;
 	ofxUISuperCanvas* tunnelGui;
+	ofxUISuperCanvas* typeGui;
 	
 	bool showingQuestions;
 	float questionWrapDistance;
@@ -95,29 +96,52 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float questionSize;
 	float questionTunnelInnerRadius;
 	
-	//TODO pick a better font renderer
-	ofTrueTypeFont font;
+	bool startedOnclick;
 	
+
+	
+	ofxFTGLFont extrudedTitleText; //for the title
+	float currentTitleOpacity;
+	float titleTypeOpacity;
+	int titleFontSize;
+	int titleFontExtrude;
+	float titleTypeTracking;
+	float titleTypeOffset;
+	
+	float titleNoiseDensity;
+	float titleMaxGlow;
+	float titleMinGlow;
+	float titleNoiseSpeed;
+	float titleNoisePosition;
+
+	float titleRectWidth;
+	float titleRectHeight;
+	ofRectangle titleRect;
+	bool hoveringTitle;
+	
+	
+	ofxFTGLSimpleLayout questionFont;
+    void rebuildQuestionFont();
+    int questionFontSize;
+	float questionLineLength;
+    float questionLineSpacing;
+
+	
+	float currentFontSize;
+	float currentFontExtrusion;
+
 	void positionStartQuestions();
 	vector<CloudsQuestion> startQuestions;
 	CloudsQuestion* selectedQuestion;
 	CloudsQuestion* caughtQuestion;
 
 	vector<string> loadedQuestions;
-	
-	float fontSize;
-	float fontExtrusion;
-	float fontScale;
-	
-	float currentFontSize;
-	float currentFontExtrusion;
-	
 	float perlinOffset;
 	float wireframeAlpha;
 	
 	void reloadShaders();
 	bool paused;
-	void pauseAtBeginning();
+
 	
 	ofMesh blocksMesh;
 	ofMesh tunnelMeshTight;
@@ -127,9 +151,14 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofxGameCamera camera;
 	ofCamera warpCamera;
 	
+	float camWobbleRange;
+	float camWobbleSpeed;
+
 	ofShader tunnelShader;
 	ofShader questionShader;
 	ofShader chroma;
+	ofShader typeShader;
+	
 	
 	ofRange pointSize;	
 	ofRange distanceRange;
@@ -151,14 +180,14 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float looseTunnelResolutionX;
 	float looseTunnelResolutionZ;
 	
-	
 	ofFloatColor tint;
 	ofFloatColor questionNodeTint;
 	
-	ofMesh thickTypeMesh;
-	ofMesh thinTypeMesh;
+//	ofMesh thickTypeMesh;
+//	ofMesh thinTypeMesh;
 
 	ofImage sprite;
 
-
+    ofVec3f cursor;
+    
 };

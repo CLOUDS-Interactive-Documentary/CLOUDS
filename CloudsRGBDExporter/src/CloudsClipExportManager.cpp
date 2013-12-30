@@ -49,9 +49,8 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	holeFiller.setKernelSize(3);
     holeFiller.setIterations(3);
     
-    
 	done = false;
-	currentFrame = clip.startFrame - 24; //24 frame handle
+	currentFrame = clip.startFrame - (clip.is30FPS() ? 30 : 24); //24 frame handle
 	
 	rgbdPlayer.setUseTexture(false);
 	
@@ -73,7 +72,8 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	renderer.setRGBTexture(*rgbdPlayer.getVideoPlayer());
 	
 	medianPixels.allocate(rgbdPlayer.getDepthPixels().getWidth(),
-						  rgbdPlayer.getDepthPixels().getHeight(), OF_IMAGE_GRAYSCALE);
+						  rgbdPlayer.getDepthPixels().getHeight(),
+						  OF_IMAGE_GRAYSCALE);
 	renderer.setDepthImage(medianPixels);
 
 	currentClip.loadAdjustmentFromXML(true);
@@ -86,11 +86,16 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	rgbdPlayer.getVideoPlayer()->setFrame(currentFrame);
 	rgbdPlayer.getVideoPlayer()->update();
 	renderer.update();
-	
-	exporter.minBlobSize = currentClip.contourMinBlobSize;
-	exporter.targetColor = currentClip.contourTargetColor;
-	exporter.contourThreshold = currentClip.contourTargetThreshold;
-	exporter.facePosition = renderer.getWorldPoint(currentClip.faceCoord, rgbdPlayer.getDepthSequence()->getPixels());
+
+    exporter.facePosition = renderer.getWorldPoint(currentClip.faceCoord, rgbdPlayer.getDepthSequence()->getPixels());
+    
+    //SM ADDED  skin stuff
+	exporter.targetColor = currentClip.skinTargetColor;
+    exporter.skinHueWeight = currentClip.skinHueWeight;
+    exporter.skinSatWeight = currentClip.skinSatWeight;
+    exporter.skinBrightWeight = currentClip.skinBrightWeight;
+    exporter.skinThresholdLower = currentClip.skinLowerThreshold;
+    exporter.skinThresholdUpper = currentClip.skinUpperThreshold;
 	
 	exporter.prepare();
 	
@@ -146,7 +151,7 @@ void CloudsClipExportManager::threadedFunction(){
 	exporter.log = "writing " + currentClip.getID() + " from " + rgbdPlayer.getScene().name + "\n";
 	int lastFrame = currentFrame;
 	bool completedClip = false;
-	while( isThreadRunning() && !completedClip ){ //24 frame handle
+	while( isThreadRunning() && !completedClip ){
 		
 		//cout << "Exporting  " << currentClip.getLinkName() << " : " << currentFrame << endl;
 		
@@ -165,7 +170,7 @@ void CloudsClipExportManager::threadedFunction(){
         	completedClip = true;
         }
         
-		if(currentFrame > currentClip.endFrame + 24){
+		if(currentFrame > currentClip.endFrame + (currentClip.is30FPS() ? 30 : 24) ){
             exporter.log += "Export completed successfully \n";
 			completedClip = true;
 		}

@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "CloudsEvents.h"
+#include "CloudsAudioEvents.h"
 #include "CloudsStoryEngine.h"
 #include "CloudsAct.h"
 #include "lukeFuncs.h"
@@ -16,8 +17,6 @@ class CloudsSound {
 	void update();
 	void drawDebug();
 	
-	void setMasterAmp(float amp);
-	
 	void keyPressed(ofKeyEventArgs & args);
 	void keyReleased(ofKeyEventArgs & args);
 	
@@ -27,7 +26,6 @@ class CloudsSound {
 	void mouseReleased(ofMouseEventArgs & args);
 	
 	void audioRequested(ofAudioEventArgs& args);
-
 	void actBegan(CloudsActEventArgs& args);
 	void actEnded(CloudsActEventArgs& args);
 	void clipBegan(CloudsClipEventArgs& args);
@@ -39,6 +37,14 @@ class CloudsSound {
 	
 	float maxSpeakerVolume; // set between 0. and 1.0 to modulate speaker volume
 	
+    // Luke's public stuff
+    void schedulePreset(lukePreset &p, float outskip, float dur, int mixlevel);
+    void startMusicFX(float outskip, float musicdur);
+    void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum, string ampenvelope);
+    void stopMusic();
+    void reloadPresets();
+    void doPrinting();
+
   protected:
 
 	CloudsStoryEngine* storyEngine;
@@ -49,9 +55,6 @@ class CloudsSound {
 
     // Luke's stuff
 	//
-    void startMusicFX(float outskip, float musicdur);
-    void startMusic(float outskip, vector<string> mo, int mh, int mr, float musicdur, float bpm, string samplebank);
-    void stopMusic();
     void loadRTcmixFiles();
     void loadRTcmixSamples();
     void registerOrchs();
@@ -62,27 +65,24 @@ class CloudsSound {
     int nchans; // 2 = stereo
     int framesize; // sigvs (512 seems ok)
 
-    int returnColor(string c);
-    int first_vec;
-    float allownote;
-    int mharmony, mrhythm;
-    vector<string> morch;
-    string mbank;
+    bool first_vec;
+    bool rtc_playing;
 
-    float MASTERAMP;
     float MASTERTEMPO;
     int AUTORUN;
     bool DOCLEAR;
     float cleartime;
-    float targetAmp;
-    bool RTCMIX_PRINT;
-    float tl1, tl2, tl3, bl1;
+    float instGain; // master multiplier per instrument
+    bool DOCMIXPRINT;
 	
     vector<lukeRhythm> rhythms;
     vector<lukePitchArray> pitches;
+    vector<lukeSimpleMelody> simplemelodies;
     vector<lukePreset> presets;
-    vector<string> orchestra;
 
     vector<lukeSample> looperSamples;
 
+    // the backup soundplayer
+    ofSoundPlayer backupsound;
+    
 };

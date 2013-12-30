@@ -1,0 +1,76 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>MATERIAL 1Settings</Name>
+<<<<<<< HEAD
+    <IsMinified>0</IsMinified>
+    <XPosition>2337.000244141</XPosition>
+    <YPosition>1.000000000</YPosition>
+=======
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>262</YPosition>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
+</Canvas>
+<Widget>
+    <Kind>25</Kind>
+    <Name>EH</Name>
+<<<<<<< HEAD
+    <Value>0.659685850</Value>
+=======
+    <Value>1</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>ES</Name>
+<<<<<<< HEAD
+    <Value>1.000000000</Value>
+=======
+    <Value>1</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>EV</Name>
+<<<<<<< HEAD
+    <Value>0.000000000</Value>
+=======
+    <Value>1</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SH</Name>
+<<<<<<< HEAD
+    <Value>1.000000000</Value>
+=======
+    <Value>1</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SS</Name>
+<<<<<<< HEAD
+    <Value>0.272250980</Value>
+=======
+    <Value>1</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SV</Name>
+<<<<<<< HEAD
+    <Value>0.528795183</Value>
+=======
+    <Value>1</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SHINY</Name>
+<<<<<<< HEAD
+    <Value>73.773399353</Value>
+=======
+    <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
+</Widget>

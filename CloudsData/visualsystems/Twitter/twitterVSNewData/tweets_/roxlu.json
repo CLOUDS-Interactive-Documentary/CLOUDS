@@ -1,0 +1,5318 @@
+{
+    "Tweets": [
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@1948dev rgbshift  ", 
+            "Users": [
+                "@1948dev"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@1948dev testing rgbshift  ", 
+            "Users": [
+                "@1948dev"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "these awesome guys @HellicarLewis got a coffee machine for me! So much good karma these guys!  ", 
+            "Users": [
+                "@HellicarLewis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Remotely broadcasting #openFrameworks from remote location to television http://t.co/MYXqbGV82j  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@1948dev rgbshift  ", 
+            "Users": [
+                "@1948dev"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"The Cross Fader\" by @elliotwoods http://t.co/h8tDcA3myk  ", 
+            "Users": [
+                "@elliotwoods"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Really enjoying working with @HellicarLewis and @elliotwoods on a opensource realtime interactive broadcast system. http://t.co/zifSmULGy5  ", 
+            "Users": [
+                "@HellicarLewis", 
+                "@elliotwoods"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Awesome article and elegant solution to get an orthogonal vector based on another one: http://t.co/A1XIDuzpKW by @samhocevar  ", 
+            "Users": [
+                "@samhocevar"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "nanomsg is such a great library for communication between services/apps/etc: http://t.co/RvowUvBYih  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Tiny, fast xml configuration file parser: https://t.co/Ys3buOQbvy  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@ourfoo hey young ho, I'm trying to find your email; got a question about your gettext code project page.  ", 
+            "Users": [
+                "@ourfoo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@PlumCantaloupe hey lets get in contact through mail, I've got a workin version  ", 
+            "Users": [
+                "@PlumCantaloupe"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jonbro yeah and then using that color formula to combine them. I've implemented all parts except mean shift; but CV has that  ", 
+            "Users": [
+                "@jonbro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jonbro hey I read that waterpaint paper, and it looks quite doable! Real time will be a bit tricky  ", 
+            "Users": [
+                "@jonbro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jonbro Looks nice! Wanna give it a try together at the end of the week?  ", 
+            "Users": [
+                "@jonbro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Hihi a bit over the top application for drawing graphs for data from ultrasonic distance sensors : ) #openFrameworks http://t.co/A4VtMlrNEA  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "If you're in need of a LMS data parser check this out: https://t.co/eKkPLOl4IO Talking about this http://t.co/8whXAqSpyp  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@IntelMediaSDK hey when is a linux or mac version of the SDK coming? Would be great to have HW encoding/decoding!  ", 
+            "Users": [
+                "@IntelMediaSDK"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Really happy to be be working with @elliotwoods on a new #openFrameworks project such a pro!  ", 
+            "Users": [
+                "@elliotwoods"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Really happy to be working with @elliotwoods and @HellicarLewis for a new project. New addon, https://t.co/HsPP7TVBqd #openFrameworks  ", 
+            "Users": [
+                "@elliotwoods", 
+                "@HellicarLewis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Services are a pretty neat feature of windows, handy when you're working on service based app: https://t.co/jfJiPeinuC #openFrameworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#wip"
+            ], 
+            "Tweet": "Real time painting simulation... drawing 500.000 textured particles.. yay.. getting somewhere : ) #wip http://t.co/jXGEanF2xp  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#opengl", 
+                "#openFrameworks", 
+                "#libcinder"
+            ], 
+            "Tweet": "Attribute less rendering with #opengl https://t.co/RqnQsPZCEh #openFrameworks #libcinder  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "project idea: boys and girls posing on instagram  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "project idea: automatic stereo-type detection from images shared on the web  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Audio synthesis library https://t.co/PEDWfoB0OV  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#opengl"
+            ], 
+            "Tweet": "Great resource for #opengl, a sample pack http://t.co/2ih0lqdFLs  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Migrating my mailbox: \"msg 231/38752 (38110 bytes) delivered\", that can take a while.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Basic example of how to use the x264 library for real time encoding http://t.co/5itwjxMbG2  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "And a new video codec is born Daala by Xiph, still pre-beta, though very interesting! http://t.co/WbWno7GLsj  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframeworks", 
+                "#glfw", 
+                "#opengl"
+            ], 
+            "Tweet": "For those who are using GLFW 3.0.0, upgrade to 3.0.2 :) https://t.co/LLqVKe8WwM #openframeworks #glfw #opengl  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@victamin np! got some time to look more into it tonight. learnt one thing: stick to yuv when working with realtime video :)  ", 
+            "Users": [
+                "@victamin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "Some amazing smart work by @jvcleave hardware decoding directly on/to gpu! #openframeworks https://t.co/5EZ4KDaCpF  ", 
+            "Users": [
+                "@jvcleave"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mark_lundin awesome tool man. I love this tool http://t.co/9rSMXKXkWq too  ", 
+            "Users": [
+                "@mark_lundin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @obviousjim: If you aren\u2019t trying to do something impossible you are wasting your time  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@victamin ha thanks! that's going to be my next step; I want to do uploading from another thread  ", 
+            "Users": [
+                "@victamin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#opengl", 
+                "#openframeworks"
+            ], 
+            "Tweet": "Working on optimized video playback with texture streaming and raw yuv/uyvy422. #opengl: https://t.co/05Cg5ua9KA #openframeworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I love BitTorrentSync, a free fast dropbox like sharing tool http://t.co/IyfvYYmU9o  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "GLFW 3.0 released! good moment to update #openframeworks ;-)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kcimc that looks wicked! again..AMAZING work!  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @victordponten: 'Home Recording' verandert het Amsterdamse muziekstudentencomplex 'Home' in een internetzendstation. http://t.co/ovDW1Rh\u2026  ", 
+            "Users": [
+                "@victordponten"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @victordponten: Omdat persberichten eigenlijk maar saai zijn, hier ook een directe link naar het filmpje over 'Home Recording': http://t\u2026  ", 
+            "Users": [
+                "@victordponten"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "New project: Home Recording http://t.co/D2cZDKzNLv with @victordponten, http://t.co/TUR0JYcz1j, http://t.co/SUW3gZX50G #openframeworks  ", 
+            "Users": [
+                "@victordponten"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @HellicarLewis: I just uploaded \"Touch and Tweet!\" to Vimeo: http://t.co/in8iyuGVRY  ", 
+            "Users": [
+                "@HellicarLewis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#opengl"
+            ], 
+            "Tweet": "Oh boy oh boy.. GLFW 3.0 will be released very soon! Can't wait! #opengl  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@JGL a bit late but happy birthday! best wishes!  ", 
+            "Users": [
+                "@JGL"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Eulerian video magnification for #openFrameworks from @_mayfa https://t.co/WfAmbW8ZaX  ", 
+            "Users": [
+                "@_mayfa"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@obviousjim YES! I just love rays ;-) You might like this too: http://t.co/EJBsJCuSNZ  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Hellicar @HellicarLewis That looks awesome! Love how the reflection of the cube turned out!  ", 
+            "Users": [
+                "@Hellicar", 
+                "@HellicarLewis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@TheHelloCube draw love  ", 
+            "Users": [
+                "@TheHelloCube"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Setting up a project with our good friends of Hellicar and Lewis @jgl @Hellicar @JoelGethinLewis http://t.co/eg50sY659l  ", 
+            "Users": [
+                "@jgl", 
+                "@Hellicar", 
+                "@JoelGethinLewis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@obviousjim I'm using GLFW for this, But its easily ported to OF  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Hair simulation using position based dynamics https://t.co/j6q7k8AfJK http://t.co/7AIqogwKkf  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Can't wait to start using ORBX.js .. better then x264, works in all major browsers.. live streaming .. hmmm http://t.co/iU7jqs08qt  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: 5pm Thursday, May 2 @creativeinquiry: an exhibition of final projects from my Interactive Art & Computational Design course!\u2026  ", 
+            "Users": [
+                "@golan", 
+                "@creativeinquiry"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#libcinder", 
+                "#openframeworks"
+            ], 
+            "Tweet": "libmapper super interesing library for interactive installations #libcinder #openframeworks https://t.co/XyRdolNpPP http://t.co/Syhy72XfFG  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@bgstaal already got the EDSK?  ", 
+            "Users": [
+                "@bgstaal"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@seb_ly hey, didn't see this message, but good to hear it's working for you!  ", 
+            "Users": [
+                "@seb_ly"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@qDot @Triggur beautifull, like how everyone's wearing a hat : )  ", 
+            "Users": [
+                "@qDot", 
+                "@Triggur"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@gmunk @OblivionMovie wow as awesome as always! great work man!  ", 
+            "Users": [
+                "@gmunk", 
+                "@OblivionMovie"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Finally moved some wrappers for GL into its own little addon : ) https://t.co/KHpHbvzX9n  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@AnneliesTermeer @UploadTV success! Great concept!  ", 
+            "Users": [
+                "@AnneliesTermeer", 
+                "@UploadTV"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kcimc a fellow student based his desicisions for some period using a dice http://t.co/3WD4Kg7PCB  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#codeart"
+            ], 
+            "Tweet": "RT @jtnimoy: Jake Sargeant's behind-the-scenes LG footage at DD. Some of my #codeart that never saw the light of day...until https://t.c ...  ", 
+            "Users": [
+                "@jtnimoy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @skaven_: My wife : \"You mean, indie games are not games made in India?\" How long have I been working on my game already?  ", 
+            "Users": [
+                "@skaven_"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Chromes default audio codec will be the awesome opus codec http://t.co/xf4ZY1TzXz  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@milesmacklin congrats, cant wait to see it!  ", 
+            "Users": [
+                "@milesmacklin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#gif"
+            ], 
+            "Tweet": "hey @rachelbinx you might like this to create cliplets http://t.co/LA4iz5YpzA #gif  ", 
+            "Users": [
+                "@rachelbinx"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Wow the @polocode creative coding library has matured a lot... they got a custom IDE http://t.co/57nmCmImG9 now  ", 
+            "Users": [
+                "@polocode"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "That just so beautifull @kcimc !! love this kind of work! just like @wblut http://t.co/4TQTmSVQGQ  ", 
+            "Users": [
+                "@kcimc", 
+                "@wblut"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Nice article on polyline simplification http://t.co/Wk6dkyhr8j  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": ".@theowatson that looks awesome! are those tangent lines based on particles? They look super stable/relaxed! Can't wait to use it!  ", 
+            "Users": [
+                "@theowatson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "XDoG Thresholding looks awesome! http://t.co/CyjwEFJzTb !  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#opengl"
+            ], 
+            "Tweet": "If you want to draw lots and lots of the same geometry, instanced drawing + TBO is what you want. basic TBO: http://t.co/Avx1hTcE73 #opengl  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Looking into generative oil painting https://t.co/8RkT8cpJTd with code https://t.co/53ILGw19fX http://t.co/JgL7SAUPNB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframeworks", 
+                "#CMake"
+            ], 
+            "Tweet": "Got most of #openframeworks working with #CMake. Linux need a bit more work. Compile opencv example (win/mac/linux): https://t.co/sat5pg3WaH  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @zuppaman: Wanna have superpowers, learn to code => http://t.co/qSanRvLTLI  ", 
+            "Users": [
+                "@zuppaman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Configuring remote login though SSHD to a windows PC step by step guide: https://t.co/q8kLzD7EnL  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@iquilezles that's awesome! thanks for sharing your know how!  ", 
+            "Users": [
+                "@iquilezles"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#CMake", 
+                "#openframeworks"
+            ], 
+            "Tweet": "WIP #CMake files of OF which makes it possible to use a tiny file for truly cross platform dev. https://t.co/kRndGBDJI5 #openframeworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@AnneliesTermeer Haha weet precies wat je bedoeld! Mijn koptelefoon is een stuk belangrijker geworden sinds ik met de trein reis :-)  ", 
+            "Users": [
+                "@AnneliesTermeer"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I just love light ray shaders : ) http://t.co/FObbzbKkBU  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@nothings a text layout markup parser for freetype/... :-)  ", 
+            "Users": [
+                "@nothings"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#FITCAM"
+            ], 
+            "Tweet": "Always great to see @theowatson presenting! great talk at #FITCAM http://t.co/4PCGrdal  ", 
+            "Users": [
+                "@theowatson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": ".@jvcleave w/o any optimization and CPU format transform yuv > rgb, 1024x768 it runs at ~45fps (not yet using threads).  ", 
+            "Users": [
+                "@jvcleave"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Yay! Streaming P2P video with #openFrameworks apps: https://t.co/ZAa3ChCW soon more!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframeworks", 
+                "#cinder"
+            ], 
+            "Tweet": "just pushed my build scripts to github: cross platform building of libraries #openframeworks #cinder https://t.co/S6DQzbZg  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#cinder"
+            ], 
+            "Tweet": "Auto HTTP POST + file upload util Mac/Win/Linux. Msg for info / binaries. https://t.co/fLx5Uq4Z #openFrameworks #cinder http://t.co/TZFtygFA  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#Webm"
+            ], 
+            "Tweet": "made a good start with a #Webm recorder, almost a complete free streaming solution! https://t.co/15AfgTei  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jasonrwalters lets talk on skype/mail about curl  ", 
+            "Users": [
+                "@jasonrwalters"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@AnneliesTermeer hey annelies, tof project @uploadTV ! ik ben met een project bezig wat mss interessant is hiervoor. even mailen?  ", 
+            "Users": [
+                "@AnneliesTermeer", 
+                "@uploadTV"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#leapmotion"
+            ], 
+            "Tweet": "newest #leapmotion just arrived and I've to say I'm pretty impressed by the accuracy https://t.co/uOtVvQe5 can wait to start experimenting  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kcimc probably yeah, but not ES compatible. Downloads: yes, but there are some other things to optimize. Downloading: https://t.co/Ir4kDyRo  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframeworks", 
+                "#opengl"
+            ], 
+            "Tweet": "Super fast pixel upload transfers #openframeworks #opengl https://t.co/jfhGdbfA  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @zachlieberman: super cute & well illustrated ios game: http://t.co/eEcFFVnv made w/ openframeworks  ", 
+            "Users": [
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#opengl"
+            ], 
+            "Tweet": "Awesome! Improved my FLV recorder (mp3/x264) to use PBO, got 60fps easily + streams to the web #openFrameworks #opengl https://t.co/Ir4kDyRo  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@_vade @jimmyacres this is my setup, really love it! https://t.co/dBtIDIzJ  ", 
+            "Users": [
+                "@_vade", 
+                "@jimmyacres"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jimmyacres: Pretty sick of this deferred stuff, but too stubborn to not finish it! Quick test video with where it's currently at: ht ...  ", 
+            "Users": [
+                "@jimmyacres"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@fctry2 yeah although building gtk+ and glib is something I really, really don't like on windows :) happy to almost start using cmake again  ", 
+            "Users": [
+                "@fctry2"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#cinder", 
+                "#openframeworks"
+            ], 
+            "Tweet": "Best find in a couple of days while working with Visual Studio, Property Sheets http://t.co/opxNy9VQ #cinder #openframeworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframeworks", 
+                "#cinder", 
+                "#opengl"
+            ], 
+            "Tweet": ". @jimmyacres is doing some great examples with shader / openGL https://t.co/x1qTDHi9 #openframeworks #cinder #opengl  ", 
+            "Users": [
+                "@jimmyacres"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#php", 
+                "#apache"
+            ], 
+            "Tweet": "I had to reinstall PHP, MySQL and Apache on my Mac OSX, might be handy if you want to install it manually https://t.co/bw8vIXdi #php #apache  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "Essential debug information for debugging with MSVC, makes your debugging super easy! http://t.co/FkwfYXWe #openframeworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Hardware accelerated YUY2 (raw webcam video) to RGB24 using libswscale in #openFrameworks https://t.co/Wkt9ybf2  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "Slowly finding my way with scripted builds on Windows and msvc++ might be handy for #openframeworks addon developers https://t.co/L34Hx92m  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "oh boy oh boy hair simulation http://t.co/y1Gijw2Y  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#photoshop", 
+                "#gimp"
+            ], 
+            "Tweet": "After finding out that I can't install #photoshop on case-sensitive fs, I'm pretty impressed by #gimp 2.8 http://t.co/VgGSEBEg  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@bazitov kind of depends on what gpu/cpu you're using and what framerates you want to get. But definitely worth a try.  ", 
+            "Users": [
+                "@bazitov"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Another evening of fun with @jimmyacres; working on a set of shaders, \"rays\" (ref. @fabynou http://t.co/aJnF8klm ) http://t.co/5m5Daoup  ", 
+            "Users": [
+                "@jimmyacres", 
+                "@fabynou"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I really, really like @iquilezles articles!. Nice read at the end of this year: Multiresolution Ambient Occlusion, http://t.co/bNgwXM08  ", 
+            "Users": [
+                "@iquilezles"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "Compiling pango/cairo with all deps .. finally working using latest releases on osx. New addon soon #openframeworks http://t.co/AgB0LojU  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl", 
+                "#shaders", 
+                "#openframeworks"
+            ], 
+            "Tweet": "Depth of field with #opengl #shaders #openframeworks (work in progress) http://t.co/5lG9b5P6  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Nice article on game/simulation timers by @fabynou http://t.co/WUHuiobs another interesting one by Glen Fielder: http://t.co/h1RiHboF  ", 
+            "Users": [
+                "@fabynou"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl", 
+                "#openframeworks"
+            ], 
+            "Tweet": "I like to keep shader code in my headers, @jimmyacres pointed me to a nice stringify trick: https://t.co/FCEqIfpe #opengl #openframeworks  ", 
+            "Users": [
+                "@jimmyacres"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl", 
+                "#openframeworks"
+            ], 
+            "Tweet": "Love flocking simulations .. can't stop working/looking with them.... #opengl #openframeworks http://t.co/oFOjIFnW http://t.co/WJQMMmeA  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mark_lundin: We're in the top 10 most memorable projects 2012! http://t.co/Sd826hMk Well done team @evanbbb @secti0n9 @timonscreen ...  ", 
+            "Users": [
+                "@mark_lundin", 
+                "@evanbbb", 
+                "@secti0n9", 
+                "@timonscreen"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#loveopensource", 
+                "#openframeworks"
+            ], 
+            "Tweet": "Thorough example on exponential shadow mapping in clear openGL from @jimmyacres https://t.co/PGn9ZIeD #loveopensource #openframeworks  ", 
+            "Users": [
+                "@jimmyacres"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Streaming geometry/texture from #openFrameworks app to ipad w @keezpipslab https://t.co/lgnE6V6R http://t.co/lkSVWvl6 http://t.co/0n54ONRO  ", 
+            "Users": [
+                "@keezpipslab"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@recyclerobot I use arp-scan for that. eg scan network through wlan: arp-scan --interface=wlan0 --localnet (did that on a linux pc)  ", 
+            "Users": [
+                "@recyclerobot"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl"
+            ], 
+            "Tweet": "Love the new http://t.co/mrP48J2B! @github awesome work! Basic application template for #opengl ES2 for iIOS https://t.co/IE0sXIRa  ", 
+            "Users": [
+                "@github"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@tangibleint you may find this interestigng too: http://t.co/jT4OXjWb  ", 
+            "Users": [
+                "@tangibleint"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mikeyk hi, after some testing I found some undocumented API ifnormation. It would be nice if that could be added to the docs. pls msg me  ", 
+            "Users": [
+                "@mikeyk"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@nardove info[monkey]http://t.co/Tqvdwf7p  ", 
+            "Users": [
+                "@nardove"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@nardove it was all hands on during the workshop, but Im happy to explain some things over skype  ", 
+            "Users": [
+                "@nardove"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Hahaha! @jvcleave @qDot yes we used http://t.co/Xh67LTNy some awesome technology :) Works perfectly  ", 
+            "Users": [
+                "@jvcleave", 
+                "@qDot"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#really", 
+                "#nice"
+            ], 
+            "Tweet": "RT @zuppaman: Some code I've opensourced got used in a experimental dj set http://t.co/7k3cse2S check the circles at 00:40 #really #nice ...  ", 
+            "Users": [
+                "@zuppaman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mrdoob awesome! like that style nice old school fax :)  ", 
+            "Users": [
+                "@mrdoob"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl", 
+                "#openframeworks", 
+                "#libcinder"
+            ], 
+            "Tweet": "Working on some basic deferred shading with @jimmyacres. #opengl #openframeworks #libcinder https://t.co/Owb0mMQa  ", 
+            "Users": [
+                "@jimmyacres"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @elliotwoods: ScreenLab presentation in 5 hours. @JoelGethinLewis @kcimc @JoanieLemercier @UoSArts @toodrew @creativeapps @owlproject ...  ", 
+            "Users": [
+                "@elliotwoods", 
+                "@JoelGethinLewis", 
+                "@kcimc", 
+                "@JoanieLemercier", 
+                "@UoSArts", 
+                "@toodrew", 
+                "@creativeapps", 
+                "@owlproject"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#debugviewart"
+            ], 
+            "Tweet": "First rough version of motion blur shader... needs a bit more work. #debugviewart https://t.co/XkVhkmuY http://t.co/ccLAm4Eg  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Truly honored that my sqlite addon for #openFrameworks is used by this amazing project: http://t.co/C4RohLhJ ; power of open source!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "thanks @rux_twitts_here and @felixturner can't wait to add fake chromatic aberration  ", 
+            "Users": [
+                "@rux_twitts_here", 
+                "@felixturner"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl", 
+                "#openframeworks"
+            ], 
+            "Tweet": "Playing with blending grayscale, phong lighted fragments, blur/bloom: http://t.co/e2yORqa4 #opengl #openframeworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl", 
+                "#openframeworks", 
+                "#libcinder"
+            ], 
+            "Tweet": "Nice clean blur class #opengl, #openframeworks #libcinder https://t.co/gBHLJ797  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@toolbits sure be better with email: info@roxlu.com  ", 
+            "Users": [
+                "@toolbits", 
+                "@roxlu"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@PostNLWebcare Mijn pakket is aangeboden bij mijn deur maar direct naar het postkantoor gebracht. Dit gebeurt vaker en ik vraag me af waarom  ", 
+            "Users": [
+                "@PostNLWebcare"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#artandcode", 
+                "#mediaArc"
+            ], 
+            "Tweet": "RT @golan: Announcing the video release of Erkki Huhtamo's epic \"Mar\u00e9orama\" performance from #artandcode! http://t.co/tOb4HIwE #mediaArc ...  ", 
+            "Users": [
+                "@golan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks", 
+                "#libcinder", 
+                "#opengl"
+            ], 
+            "Tweet": "Awesome, just did a test with real time H264/FLV encoding/muxing at 1400FPS! https://t.co/hMEHTY27 #openframeworks #libcinder #opengl  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Onze kat heeft weer een koolmeesje gevangen.... arme beestjes :( http://t.co/mm8xwxUl  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@atduskgreg hey, I'm working on some other project atm, but if u want to team up for skeleton animation, that would be nice! wanna skype?  ", 
+            "Users": [
+                "@atduskgreg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@brunoimbrizi sure or skype/mail mme  ", 
+            "Users": [
+                "@brunoimbrizi"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@nardove awesome lets do a skype call this week!  ", 
+            "Users": [
+                "@nardove"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#carpseagull"
+            ], 
+            "Tweet": "RT @evanbbb: vote for the #carpseagull on FWA http://t.co/btUYiIgr  ", 
+            "Users": [
+                "@evanbbb"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl", 
+                "#gamedev", 
+                "#openframeworks", 
+                "#libcinder"
+            ], 
+            "Tweet": "giving a two day opengl shader programming workshop this weekend! oh boy oh boy! #opengl #gamedev #openframeworks #libcinder  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#we"
+            ], 
+            "Tweet": "RT @mrdoob: The Carp and the Seagull, an interactive short film by @evanbbb, @nexuslondon and @CreatorsProject. http://t.co/d4PWSliz #we ...  ", 
+            "Users": [
+                "@mrdoob", 
+                "@evanbbb", 
+                "@nexuslondon", 
+                "@CreatorsProject"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#threejs", 
+                "#webgl"
+            ], 
+            "Tweet": "Proud being part of this project by @creatorsproject/@nexuslondon/@evanbb, @secti0n9, @mark_lundin http://t.co/e8bXp1vx #threejs #webgl  ", 
+            "Users": [
+                "@creatorsproject", 
+                "@nexuslondon", 
+                "@evanbb", 
+                "@secti0n9", 
+                "@mark_lundin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl"
+            ], 
+            "Tweet": "Do you or do you know someone who dreams about #opengl shaders and want to join our meet-up in Amsterdam this weekend? pls msg me or retweet  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Wow! http://t.co/deD5daLt  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl"
+            ], 
+            "Tweet": "Skeleton implementation in #opengl ... tiny steps ... tiny steps... http://t.co/O64Rfomw  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "GamePlay3D interesting, complete, well documented, cross platfrom c++ game engine http://t.co/aMAcEocB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#webgl", 
+                "#thressjs", 
+                "#html5"
+            ], 
+            "Tweet": "RT @evanbbb: http://t.co/xUhK5fNN by me, @mark_lundin @secti0n9 @roxlu and @nexuslondon #webgl #thressjs #html5  ", 
+            "Users": [
+                "@evanbbb", 
+                "@mark_lundin", 
+                "@secti0n9", 
+                "@roxlu", 
+                "@nexuslondon"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@atduskgreg hehe for now it's almost nothing.. just drawing a bone at an orientation... but it will be for OF/CI  ", 
+            "Users": [
+                "@atduskgreg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#debugviewart", 
+                "#opengl"
+            ], 
+            "Tweet": "#debugviewart using bones for animation ... #opengl http://t.co/nitslcQi  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#debugviewart"
+            ], 
+            "Tweet": "Awesome project #debugviewart http://t.co/qdzhANh6 http://t.co/mCJBJVXR http://t.co/Y12h41OK http://t.co/WlZVEf3K http://t.co/pjKoW5f4  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#libuv", 
+                "#openssl", 
+                "#openFrameworks", 
+                "#libcinder"
+            ], 
+            "Tweet": "HTTPS client with #libuv + #openssl for real time APIs like twitter, flickr, instagram for #openFrameworks #libcinder https://t.co/IuVIVsGp  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@ivoflipse5 you certainly heard about opencv right? Love the images on stack overflow!  ", 
+            "Users": [
+                "@ivoflipse5"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl", 
+                "#openframeworks", 
+                "#libcinder"
+            ], 
+            "Tweet": "OpenGL Insights: http://t.co/rXbesONs if you really want to know how openGL works. #opengl #openframeworks #libcinder  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Nature of Code by @shiffman go and buy or read for free online http://t.co/psrNU2UA Thanks so much!  ", 
+            "Users": [
+                "@shiffman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@ivoflipse5 Thanks for sending me this message! Have been working working on a new site.. is online now. Old site is on http://t.co/sGzUO8w7  ", 
+            "Users": [
+                "@ivoflipse5"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Looking into cow tracking for an upcoming project :-) http://t.co/eSIdieOT  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@atduskgreg @sstephenson cool! Did you try binary websockets?  ", 
+            "Users": [
+                "@atduskgreg", 
+                "@sstephenson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@zachlieberman do you know such an elegant trick for fast particles in 3D too? (or am I stuck to binning / hashing / trees)  ", 
+            "Users": [
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#libcinder"
+            ], 
+            "Tweet": "Basic websocket server in ~450 lines https://t.co/3MhyhBL5 #openFrameworks #libcinder  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @keezpipslab: Back to my roots, tonite in KCB Bergen, showing some art.-light . Steven de Peven spins.  ", 
+            "Users": [
+                "@keezpipslab"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ID_AA_Carmack: Got approval for GPL release of Doom 3 BFG code (minus third party bits)! @idBrianHarris has already done most of the ...  ", 
+            "Users": [
+                "@ID_AA_Carmack", 
+                "@idBrianHarris"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jvcleave I can't wait to get the time to implement a RTP client/server :-)  ", 
+            "Users": [
+                "@jvcleave"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jvcleave I still need to go through the specs, but from what I've heard is that it's finally making \"real time\" audio/video possible  ", 
+            "Users": [
+                "@jvcleave"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "The web is getting awesome with webrtc, live streaming video, peer 2 peer, mic input, video input, webgl  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openGL", 
+                "#openFrameworks"
+            ], 
+            "Tweet": "Finally some time to do something visually with #openGL #openFrameworks http://t.co/IB8uw9Yj  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Goodbye @victamin (didn't know you were still in Amsterdam!)  ", 
+            "Users": [
+                "@victamin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@victamin it's one I'm working on and trying to improve during each project. Needs a bit more work. But can be used as remote gui  ", 
+            "Users": [
+                "@victamin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl", 
+                "#openframeworks"
+            ], 
+            "Tweet": "[x] Port gui to ipad, [x] auto create gui over network, [ ] add to app store http://t.co/5AuRTE7o #opengl #openframeworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@victamin @grahamsellers used gpuperfstudio it this week, was amazed by it! nice to have a decent debugger!  ", 
+            "Users": [
+                "@victamin", 
+                "@grahamsellers"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Chrome with WebRTC support! http://t.co/1wwnJzCm  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 10, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Oh oh... did I just \"re-actived\" my linkedIn account... what's becomming of me : )  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@zachlieberman intesting! just read this http://t.co/6biYJmQR which might have some influence on performance too. have you looked at simd?  ", 
+            "Users": [
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Awesome visualisation by @minivegas http://t.co/FVIyNEcl  ", 
+            "Users": [
+                "@minivegas"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@zuppaman hey, videodecoding op gpu , interessant! Wat wilde je hiervoor gebruiken?  ", 
+            "Users": [
+                "@zuppaman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "RT @HellicarLewis: All our projects are finally up on Github: https://t.co/aRIHdcsH #openframeworks including our projects for LVMH, Int ...  ", 
+            "Users": [
+                "@HellicarLewis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@julapy thanks, the will be on github soon.  ", 
+            "Users": [
+                "@julapy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: In case you hadn't seen it: @SarahKSilverman's awesome NSFW PSA about VoterID laws: http://t.co/bRV1NZ6j  ", 
+            "Users": [
+                "@golan", 
+                "@SarahKSilverman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks", 
+                "#opengl"
+            ], 
+            "Tweet": "These new gui widgets are going to be really helpful for my current project #openframeworks #opengl http://t.co/KGUuWnUi  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#opengl"
+            ], 
+            "Tweet": "Insane amount of settings for \"growing\" rainbows :-) #openFrameworks #opengl http://t.co/VuMY49YJ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Mystery of the disappearing bees: Solved! - The Great Debate http://t.co/qvYQYL39 /via @theowatson  ", 
+            "Users": [
+                "@theowatson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#opengl"
+            ], 
+            "Tweet": "Bike stolen, but working on this make me forget :-) https://t.co/IOwnJFOj #openFrameworks #opengl http://t.co/kTQbC5Je  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#fail"
+            ], 
+            "Tweet": "\"sorry maar ik kan niet kijken of uw fiets hier in het depot staat, daarvoor moet u zelf langskomen\", \"dit is het beleid\" @amsterdamnl #fail  ", 
+            "Users": [
+                "@amsterdamnl"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@PICNICfestival @liveeventreport live stream isn't working here. restarts every 10 seconds (maybe too many people?)  ", 
+            "Users": [
+                "@PICNICfestival", 
+                "@liveeventreport"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl", 
+                "#openFrameworks"
+            ], 
+            "Tweet": "Playing with rainbows #opengl #openFrameworks https://t.co/Zt5aRxBH looks like http://t.co/mrP48J2B is my new blog ;-)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "@rachelbinx haha! awesome. Would be a good solution for real time video streaming video. Wish I had time to make an #openframeworks version  ", 
+            "Users": [
+                "@rachelbinx"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jvcleave @atduskgreg @peter_nitsch want to share your compile commands? These were the ones I used: https://t.co/ON7mj3lf  ", 
+            "Users": [
+                "@jvcleave", 
+                "@atduskgreg", 
+                "@peter_nitsch"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@atduskgreg @peter_nitsch congrats! I remember the fun of compiling PCL and all dependencies for OS.Does linking against it takes ages too?  ", 
+            "Users": [
+                "@atduskgreg", 
+                "@peter_nitsch"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Great article on open multimedia codecs. OPUS, a new audio codec leaves mp3 far behind http://t.co/vQpkJcEE  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Basic Mac/Windows client socket wrapper https://t.co/Adre2phQ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "An amazing collection of examples for simulations by @zachlieberman https://t.co/NP8iPXcj #openframeworks  ", 
+            "Users": [
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl", 
+                "#openFrameworks", 
+                "#libcinder"
+            ], 
+            "Tweet": "Example of using point sprites with a VBO and shader. https://t.co/le78KPdv #opengl #openFrameworks #libcinder  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@fctry2 yes! I've been watching that! Also very interesting: getting audio/video from user with javascript http://t.co/IjLUR5rU  ", 
+            "Users": [
+                "@fctry2"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@atduskgreg the link to Mendeley isn't working on this page: http://t.co/XLferSKu  ", 
+            "Users": [
+                "@atduskgreg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "Lots of #openframeworks goodies for project I worked on with @Hellicar and @JGL https://t.co/qQCR6BrJ  ", 
+            "Users": [
+                "@Hellicar", 
+                "@JGL"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Ok everyone who is not watching the Dutch Hockey at the olympics should watch now! It's insane 9 - 1 !  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 8, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Great video presentation on video and audio encoding http://t.co/6fPyus9Y  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Awesome article on choosing procedural colours! http://t.co/ZGtOmVia /via @skaven_  ", 
+            "Users": [
+                "@skaven_"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Also handy is graphing with google search \"sin(x)\" @mrdoob  ", 
+            "Users": [
+                "@mrdoob"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Thanks @damian0815 for giving me a superfast intro into the world of digital audio and #openFrameworks! Can't wait to see ofSoundBuffer  ", 
+            "Users": [
+                "@damian0815"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@aelgin send me your email, I'll put you on the mailinglist.  ", 
+            "Users": [
+                "@aelgin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "This sunday another #openframeworks meetup in Amsterdam! msg me for info  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @gwenvanhee: Volgende zondag (29/07): OF Freakday in Amsterdam. Iemand zin om mee te gaan? @zuppaman @NeuroProd @wimvanhenden  ", 
+            "Users": [
+                "@gwenvanhee", 
+                "@zuppaman", 
+                "@NeuroProd", 
+                "@wimvanhenden"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@_vade Thanks man! I'm super happy too! Did a test with grabbing screenpixels > movie.flv. Encoding was running at 60fps!  ", 
+            "Users": [
+                "@_vade"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@_vade I'm encoding with libav using crtmpsever as test rtmp server now. I'll post a full description soon.  ", 
+            "Users": [
+                "@_vade"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#libcinder"
+            ], 
+            "Tweet": "YES! Got a clean super easy to use library working to stream real-time video from a generic app to the web! #openFrameworks #libcinder  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @JoelGethinLewis: Intel and Hellicar & Lewis launch TRIPTYCH | Protein\u00ae Feed: http://t.co/rvnrlDKw  ", 
+            "Users": [
+                "@JoelGethinLewis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl"
+            ], 
+            "Tweet": "Amazing work from @NeuroProd, check out his blog post about his #opengl rendering pipeline. http://t.co/lOySPj7J  ", 
+            "Users": [
+                "@NeuroProd"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#gamedev", 
+                "#openframeworks", 
+                "#libcinder"
+            ], 
+            "Tweet": "Graphics Gems Source Code #gamedev, #openframeworks, #libcinder http://t.co/fOQCrTfT  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Sorry for trivializing your work, Chuck, but I've been giving \"Rip Chuck\" as an introductory Processing assignment for more t ...  ", 
+            "Users": [
+                "@golan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mazbox: Wonder what takes more days off people's lives? Microsoft of cigarettes?  ", 
+            "Users": [
+                "@mazbox"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#opengl"
+            ], 
+            "Tweet": "Best glitch ever #openFrameworks #opengl http://t.co/uJF1Et2m  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openGL"
+            ], 
+            "Tweet": "RT @joshblake: Fixed ;) RT @roxlu: Want [additive blending] in #openGL? Create an image with black bg, use GL_ONE, GL_ONE as blendfunc h ...  ", 
+            "Users": [
+                "@joshblake", 
+                "@roxlu"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@joshblake Oh sorry, you're totally right.. additive blending it is!  ", 
+            "Users": [
+                "@joshblake"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openGL", 
+                "#openFrameworks"
+            ], 
+            "Tweet": "Wanna do bloom in #openGL? Create an image with black background, use GL_ONE, GL_ONE as blendfunc #openFrameworks http://t.co/XJzrhTlq  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#PCL"
+            ], 
+            "Tweet": "PointCloud #PCL compile script for Mac OSX https://t.co/05DsvcPg  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I love C++ templates! Saves me hours of work! Generic trail code https://t.co/3adbM6Cu  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@atduskgreg @jvcleave I recently compiled all dependencies and pcl, let me know if I can help or did you get everything working? (osx)  ", 
+            "Users": [
+                "@atduskgreg", 
+                "@jvcleave"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mazbox: short post on \"Electricity Comes From Other Planets\" http://t.co/kFVvNinb project I done with @FredDeakin, @JJBulley and @re ...  ", 
+            "Users": [
+                "@mazbox", 
+                "@FredDeakin", 
+                "@JJBulley", 
+                "@re"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#RepairCafe"
+            ], 
+            "Tweet": "RT @companje: Heb je 'iets' dat stuk is? Kom dan zondag 30 juni a.s. naar het #RepairCafe in Amersfoort. http://t.co/J4EaATsH  ", 
+            "Users": [
+                "@companje"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "You know @_vade is a openGL pro! Don't know someone who knows more about it!  ", 
+            "Users": [
+                "@_vade"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Hellicar http://t.co/3a6l242h  ", 
+            "Users": [
+                "@Hellicar"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "RT @Hellicar: Portrait experiment with @roxlu #openframeworks http://t.co/41zfg5kI  ", 
+            "Users": [
+                "@Hellicar", 
+                "@roxlu"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @Hellicar: I spent all day trying to make generative type with @roxlu and I am so tired. http://t.co/Xekm7ZNm  ", 
+            "Users": [
+                "@Hellicar", 
+                "@roxlu"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "@jimmyacres doing some awesome #openframeworks stuff with james!  ", 
+            "Users": [
+                "@jimmyacres"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kcimc @golan they are going to release the source for that algorithm. @golan do you remember that artist with springs from poem numerique?  ", 
+            "Users": [
+                "@kcimc", 
+                "@golan", 
+                "@golan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Animated gif version of Mikkelsen space normal mapping experiments.. http://t.co/ahZpeOCo #openFrameworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Experimenting with Mikkelsen tangent spaces. #openFrameworks http://t.co/VzGl4zyE  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#opengl"
+            ], 
+            "Tweet": "Learning a lot from @flight404 eyeo github project! Thanks for sharing Robert! https://t.co/YlQ8HfGd enable/disable depthMask #opengl  ", 
+            "Users": [
+                "@flight404"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Super simple 3D .OBJ file importer https://t.co/1cAl2Pje http://t.co/Krog0QAC  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @obviousjim: did you know that you can cull vertices in the vertex shader by setting their .w to zero? even unstitches triangles. Tha ...  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Had a great discussion with @NeuroProd about quad trees, octtrrees, binning etc..  ", 
+            "Users": [
+                "@NeuroProd"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "prepping our voice controlled car http://t.co/mZRTE10V  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @Hellicar: Interactive lunch. @somantics http://t.co/B5uI47yh  ", 
+            "Users": [
+                "@Hellicar", 
+                "@somantics"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@flight404 thanks for sharing your works Robert! https://t.co/WWzH0RZo  ", 
+            "Users": [
+                "@flight404"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@victamin another one for free 3D models is http://t.co/qnedJMh9  ", 
+            "Users": [
+                "@victamin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Some experiments with generative meshes http://t.co/xUV5uPog http://t.co/8wwUpnFP http://t.co/RKhnda9T http://t.co/x6p89qzq #openFrameworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @flight404: Awww shucks, @mflux, thanks for the kind words and the airport show n' tell: http://t.co/ljQhf794  ", 
+            "Users": [
+                "@flight404", 
+                "@mflux"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @fabynou: Just finished Doom3 Source Code Review: http://t.co/t8e9k81e  ", 
+            "Users": [
+                "@fabynou"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Wow, 4 out of 4 imacs we bought last year have screens like this http://t.co/Ev1tiiIZ apple ignores problem; never an imac again  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Hellicar something for you? Freeline skating by @zuppaman https://t.co/WMLI6qqj  ", 
+            "Users": [
+                "@Hellicar", 
+                "@zuppaman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#blender", 
+                "#openframeworks"
+            ], 
+            "Tweet": "@theowatson, @jonbro yes... those images I just posted are also #blender ;--) + generated mesh in #openframeworks  ", 
+            "Users": [
+                "@theowatson", 
+                "@jonbro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Generated mesh, smoothed with catmull rom/clark, oriented with parallel transport frames, aka bling bling http://t.co/By09Ex9Y  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "Experimenting with http://t.co/KO509pma http://t.co/eZVWU1UH http://t.co/TkeG828V #openframeworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "thinking about directed spring based fluid simulation ....  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Blown away by the accuracy of a motion tracking studio I just visited. /me wants one :-|  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @victamin: Wall Pinball: An interactive Pinball game commissioned by O Cubo for Luminaria Festival at Sintra. http://t.co/GfMVZHW4  ", 
+            "Users": [
+                "@victamin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@factoryfactory I've created a templated wrapper for vertex data and common vertex types, would love to share with you  ", 
+            "Users": [
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @Hellicar: Doing a little talk at The Whitechapel this eve and showing @thehellocube. http://t.co/9AdZQ8mr  ", 
+            "Users": [
+                "@Hellicar", 
+                "@thehellocube"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@factoryfactory yes I saw your forum post. I hope these paste are a bit helpfull.  ", 
+            "Users": [
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "@factoryfactory Example of using raw opengl with shader, vbo, vao, textures in #openFrameworks https://t.co/MWgSYp1i https://t.co/srBnsJDS  ", 
+            "Users": [
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@obviousjim I found this quite interesting, surface reconstruction from oriented points (with source) http://t.co/mBnCIt1o  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Generating a simple 1D wave example #openFrameworks https://t.co/EB59AvCD  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Gradient operator in code #openFrameworks https://t.co/lYKPapSo  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Interactive pee installation we worked on with @weareachtung http://t.co/pkvY2hba  ", 
+            "Users": [
+                "@weareachtung"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#cinder"
+            ], 
+            "Tweet": "Playing with texture displacement and caustics https://t.co/MKHfGS8q #openFrameworks #cinder  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Finally updating the Pango font rendering addon for #openFrameworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Good grief. This high-end code landfill via @factoryfactory will take some time to pick through. http://t.co/0f3Ly44o  ", 
+            "Users": [
+                "@golan", 
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @atduskgreg: @golan @factoryfactory Also, on the graphics side checkout http://t.co/kTHAlQgB Both of these found via @rms80 (this one ...  ", 
+            "Users": [
+                "@atduskgreg", 
+                "@golan", 
+                "@factoryfactory", 
+                "@rms80"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Great voronoi implementation! http://t.co/pXrLTwQR  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Software artist meetup in Amsterdam with @gwenvanhee, @NeuroProd, @martinbabbels, @zuppaman, @martinbabbels and more! https://t.co/AGu1Arf1  ", 
+            "Users": [
+                "@gwenvanhee", 
+                "@NeuroProd", 
+                "@martinbabbels", 
+                "@zuppaman", 
+                "@martinbabbels"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@julapy argh... didn't see that one. I created a GIF class based on code I found in GIMP. With Floyd-Steinberg dithering and median cut.  ", 
+            "Users": [
+                "@julapy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Yay GIF animations from #openFrameworks :-) http://t.co/c9obRrAq  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@Geeks3D what good linux hardware setups are recommended for modern openGL and real time visuals?  ", 
+            "Users": [
+                "@Geeks3D"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@v3ga hehe I wish ;-) it's more like an interactive public toilet :-) whaha  ", 
+            "Users": [
+                "@v3ga"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "We got a GO! for one of the most insane projects I've ever did. More about this soooon.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@rachelbinx thanks! :-) next step is tubelizing it...  ", 
+            "Users": [
+                "@rachelbinx"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Working on space colonization + automatic branching http://t.co/agbQmjFN  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@thehellocube wietske blue ripple texture  ", 
+            "Users": [
+                "@thehellocube"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @obviousjim: \u2704 - - - - - - - - - - - - - - - - - -  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Finally! @atduskgreg started something which seems was missing forever! great work! http://t.co/RyL1GkTx  ", 
+            "Users": [
+                "@atduskgreg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@thehellocube love this project! Great working with such a talented group @hellicar, @vanderlin and @JGL  ", 
+            "Users": [
+                "@thehellocube", 
+                "@hellicar", 
+                "@vanderlin", 
+                "@JGL"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@thehellocube give me cells with some love and do a pixelate with swirl and wave  ", 
+            "Users": [
+                "@thehellocube"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@thehellocube ripple spots  ", 
+            "Users": [
+                "@thehellocube"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@thehellocube there we go! ripple some love with cells  ", 
+            "Users": [
+                "@thehellocube"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@martialtwist hi there! I'm curious on what kind of project you're working? I'm a C++ (OF/Cinder/openGL) programmer  ", 
+            "Users": [
+                "@martialtwist"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@roxlutest texture magenta ripple shake  ", 
+            "Users": [
+                "@roxlutest"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#libcinder"
+            ], 
+            "Tweet": "Started a #openFrameworks, #libcinder gui for Mac while curating a project at TED2012 http://t.co/Ul9szTFS (will be released soon)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#TED2012"
+            ], 
+            "Tweet": "#TED2012 just raised more than 1 mln dollar in 5 minutes... outside you see dozens of people living on street  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#TED2012"
+            ], 
+            "Tweet": "@mazbox and me, having fun and demoing a project we worked on for the creativity lab at #TED2012 http://t.co/gq8reYtd  ", 
+            "Users": [
+                "@mazbox"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#TED"
+            ], 
+            "Tweet": "\u201c@StephenatDewars: @JoelGethinLewis @mazbox @roxlu thanks it's all looking amazing #TED\u201d THANKS!  ", 
+            "Users": [
+                "@StephenatDewars", 
+                "@JoelGethinLewis", 
+                "@mazbox", 
+                "@roxlu"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@dewarshub entertainment  ", 
+            "Users": [
+                "@dewarshub"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Sitting next to this super talented coder, @mazbox who is fixing some awesome caustics in 30 min http://t.co/yVmRwuBn  ", 
+            "Users": [
+                "@mazbox"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @sansumbrella: Yup, Paul Houx is awesome. Implementation of Valve's signed distance field font rendering in Cinder: http://t.co/D0M3ZpO2  ", 
+            "Users": [
+                "@sansumbrella"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @deepfield_co: pocode is a new C++ creative coding framework from Potion http://t.co/RzutdPbY  ", 
+            "Users": [
+                "@deepfield_co"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @quasimondo: Looks like it did not work :-(  ", 
+            "Users": [
+                "@quasimondo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Kinect", 
+                "#openframeworks", 
+                "#needmorebeer"
+            ], 
+            "Tweet": "RT @m4r13k3: Latenight OF testing at BEK with @roxlu & @companje #Kinect #openframeworks #needmorebeer http://t.co/45liXOA4  ", 
+            "Users": [
+                "@m4r13k3", 
+                "@roxlu", 
+                "@companje"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#bekdotno"
+            ], 
+            "Tweet": "Really enjoying these smart people at the #openFrameworks works at #bekdotno  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openGL"
+            ], 
+            "Tweet": "Do you get these wierd edges with #openGL http://t.co/CSajZQNd try to change your near plane, checkout this http://t.co/b82Xy5LT  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#bekdotno"
+            ], 
+            "Tweet": "Going through particles during #openFrameworks worskhop at #bekdotno http://t.co/5jth5NND  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "Just arrived in Bergen, Norway for a week #openframeworks workshop at bek. Interested, msg me,  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Amazing timeline addon/app from @obviousjim ! A must have for all time based apps! thanks! http://t.co/KjQotJ25  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Did you know about the default plotting application called Grapher on Mac? Really helpful while coding my #openFrameworks app  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@julapy no, a custom binary format as non of the standard blender importers were doing what I needed; it's fast and has most features i need  ", 
+            "Users": [
+                "@julapy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openframeworks", 
+                "#blender"
+            ], 
+            "Tweet": "@julapy tried to embed different raytracers lux & yafaray, but ended with an exporter from #openframeworks to #blender  ", 
+            "Users": [
+                "@julapy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @deepfield_co: Behind the scenes of 'Lights' - http://t.co/YMDFnvWy  ", 
+            "Users": [
+                "@deepfield_co"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#ofdev"
+            ], 
+            "Tweet": "@factoryfactory @joelgethinlewis @jonbro I'm on IRC at freenode #ofdev lets make a plan there  ", 
+            "Users": [
+                "@factoryfactory", 
+                "@joelgethinlewis", 
+                "@jonbro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@JGL it's @martinbabbels  ", 
+            "Users": [
+                "@JGL", 
+                "@martinbabbels"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@JGL nice seeing you again at FOAM! Great installation!  ", 
+            "Users": [
+                "@JGL"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "@mrdoob with my today cleaned version of ofxOgg you can create your own live kinect point cloud web stream :-) #openframeworks  ", 
+            "Users": [
+                "@mrdoob"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#freakday"
+            ], 
+            "Tweet": "Hacking around at our studio during our #freakday with openFrameworks. Cleaned up the streaming video addon (for mac): http://t.co/eMmirfXh  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@flight404 I know what you mean: http://t.co/wnJRJrLn  ", 
+            "Users": [
+                "@flight404"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kcimc what about calculating point clouds from 2D video? This would be an awesome challenge!  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#artandcode"
+            ], 
+            "Tweet": "@obviousjim didn't know it was your b'day, congrats, miss #artandcode already!  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#artandcode"
+            ], 
+            "Tweet": "I'm so going to miss you #artandcode people! http://t.co/dmFwT2XQ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#artandcode"
+            ], 
+            "Tweet": "I'm on http://128.2.77.104/live.html live 3D kinect streaming at #artandcode! full in the face  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#artandcode", 
+                "#threejs", 
+                "#openfram"
+            ], 
+            "Tweet": "RT @JoelGethinLewis: Anaglyphic 3D bonus! http://t.co/HY1tfSbQ @golan @mrdoob @artur0castro @roxlu @kcimc #artandcode #threejs #openfram ...  ", 
+            "Users": [
+                "@JoelGethinLewis", 
+                "@golan", 
+                "@mrdoob", 
+                "@artur0castro", 
+                "@roxlu", 
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#artandcode", 
+                "#studioforcreativeinquiry"
+            ], 
+            "Tweet": "Some photos from the #artandcode lab. Thanks @golan for having us at the #studioforcreativeinquiry! http://t.co/DVB98Vud  ", 
+            "Users": [
+                "@golan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#artandcode"
+            ], 
+            "Tweet": "Getting live 3D streaming up and running at #artandcode! http://t.co/Roe3Ctgw  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#artandcode"
+            ], 
+            "Tweet": "RT @qDot: Wow. Porcupine rave depth porn (twitter picture abstractly NSFW). #artandcode http://t.co/IlUWbjN9  ", 
+            "Users": [
+                "@qDot"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#artandcode"
+            ], 
+            "Tweet": "#artandcode real time ogg and webm encoding and decoding no ffmpeg needed.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#artandcode"
+            ], 
+            "Tweet": "RT @kcimc: we've got a few hackers hanging out in #artandcode on freenode!  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#artandcode"
+            ], 
+            "Tweet": "RT @kcimc: glad to finally announce depth image registration and accurate 3d coordinates in ofxKinect http://t.co/5jJmDAJq #artandcode  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#wegl", 
+                "#threejs"
+            ], 
+            "Tweet": "Doing some #wegl using #threejs together with realtime streaming data using websockets together with @jgl  ", 
+            "Users": [
+                "@jgl"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mrdoob: Oh nooes! @Google killing Code Search? I use that a lot :/ http://t.co/DMoP3f4k  ", 
+            "Users": [
+                "@mrdoob", 
+                "@Google"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#artandcode"
+            ], 
+            "Tweet": "Finishing up for #artandcode so happy to go there and see all you guys! http://t.co/SEpaEPUG  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Happy to see peoply like my #openFrameworks slideshares... they seem to be \"hot\" on facebook: http://t.co/1TD8EZqx  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@kcimc @_vade @openframeworks whahah got that too! I can see @_vade sitting, coding and mumbling that comments  ", 
+            "Users": [
+                "@kcimc", 
+                "@_vade", 
+                "@openframeworks", 
+                "@_vade"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Who is Fourier, one of the best book on Math I've read so far http://t.co/iJe25rSz @mathpunk maybe a nice read for you?  ", 
+            "Users": [
+                "@mathpunk"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#undef"
+            ], 
+            "Tweet": "@jcleave not sure if #undef is still necessary. Had to do with a library on OS X if I remember correctly. Is it working for you?  ", 
+            "Users": [
+                "@jcleave"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@elliotwoods would be nice to meetup! not in town tonight though. Maybe some other day this week  ", 
+            "Users": [
+                "@elliotwoods"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@arturo & @kcimc thanks for the great ofxFacetracker addon! Face swap redux http://t.co/JHkQnIUB  ", 
+            "Users": [
+                "@arturo", 
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@jvcleave you'll love it at the end :) I switched from XCode to jEdit+CMake == better debugging ;)  ", 
+            "Users": [
+                "@jvcleave"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@socialdistress need to fix rss on my blog...  ", 
+            "Users": [
+                "@socialdistress"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @theowatson: Really happy to have a new @design_io project up - Night Bright http://t.co/hHpDHW85  ", 
+            "Users": [
+                "@theowatson", 
+                "@design_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @julapy: @artur0castro thats amazing! rt // playing with face tracking + image cloning: http://t.co/F4FJtU0T  ", 
+            "Users": [
+                "@julapy", 
+                "@artur0castro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@marcinignac totally understand what you mean! I switched from XCode to jEdit to get some proper debug/compilation information from llvm ;-)  ", 
+            "Users": [
+                "@marcinignac"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "#openframeworks xcode4 change name of target: click on project > select target > build settings > search for product name!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "And if you're around Amsterdam tomorrow make sure to come over to our free #openFrameworks workshop/meetup http://t.co/17MAYjd  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Flash", 
+                "#openFrameworks"
+            ], 
+            "Tweet": "#Flash remoting in #openFrameworks with ofxAMFServer. Read more at: http://t.co/WmUPoAN **beta release**  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "great read on video standards http://t.co/MBXoKPe  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Awesome ofxAvahi by @artur0castro http://t.co/fW5YhTH great works Arturo!  ", 
+            "Users": [
+                "@artur0castro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @memotv: google greeble  ", 
+            "Users": [
+                "@memotv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@ruimm think it's a personal thing; though codeblocks uses gcc compliant compiler which is more cross platform.  ", 
+            "Users": [
+                "@ruimm"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@lucminivegas and I really thought you just found a nice picture of me! Damn you hacker who hacked lucs account!  ", 
+            "Users": [
+                "@lucminivegas"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#hate"
+            ], 
+            "Tweet": "RT @_vade: More 10.7 #hate Argh. http://t.co/Pj7wFyP  ", 
+            "Users": [
+                "@_vade"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "oh did I just posted a wrong link to my ofxKeylogger. Here is the correct link for ofxKeylogger: http://t.co/M4WKu7C #openFrameworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#ofxKeylogger"
+            ], 
+            "Tweet": "Registered 21.000 key strokes in 4 hours ... meaning 52.500 per day...262.500 a week.. 1mln a month, 12mln a year.. wtf #ofxKeylogger  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "#openFrameworks: new addon, ofxKeylogger. receive system wide key events (win/mac). http://t.co/KyHN2FB  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @vineshgayadin: Duintjer CS burglars caught on camera http://t.co/DszLfMa  ", 
+            "Users": [
+                "@vineshgayadin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "Some visuals while working on Half Edge implementation #openframeworks http://t.co/ilufIiN  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "Check it out new box2d for #openframeworks 007 http://t.co/gMICZNn  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "#openFrameworks 007 keynotes on my blog http://t.co/DJRF89u Have fun!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Now that OF 007 is released -- announcing artist lectures by 12 of the developers! http://vimeo.com/album/1642841  ", 
+            "Users": [
+                "@golan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Awesome #openFrameworks 007 released after amazing amount of work! Go get it and play!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @zachlieberman: no ones eyes were blinded working on this video w/ @bellinspace (her first!), now up at http://vimeo.com/26649425  ", 
+            "Users": [
+                "@zachlieberman", 
+                "@bellinspace"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#xcode4", 
+                "#lion"
+            ], 
+            "Tweet": "RT @nanikawa: #xcode4 .0.2 does not run under #lion so make sure you download the 4.2 beta before you sit down to do some evening coding ...  ", 
+            "Users": [
+                "@nanikawa"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@dietlev whaha nice you learnt something about creative coding last week ;-)  ", 
+            "Users": [
+                "@dietlev"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @recyclerobot: OF Antwerp crew pic http://t.co/syVW5Up thx guys for three awesome days! (via @zuppaman)  ", 
+            "Users": [
+                "@recyclerobot", 
+                "@zuppaman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "RT @companje: Participants creating nice stuff at @zuppaman's #openFrameworks workshop in Antwerpen. http://t.co/LxeJVNQ  ", 
+            "Users": [
+                "@companje", 
+                "@zuppaman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@aarontweets do you use LLVM 2.0? When I started using LLVM instead of GCC I got good code completion  ", 
+            "Users": [
+                "@aarontweets"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@theowatson @vanderlin I watched the keynotes on XCode 4 from the WWDC 2011 and now loving xcode 4.02! Two things: select LLVM 2.0 + LLDB  ", 
+            "Users": [
+                "@theowatson", 
+                "@vanderlin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@theowatson louder.... ^#^  ", 
+            "Users": [
+                "@theowatson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@theowatson ha! Excepting pull requests / hard work, even loader ;-)  ", 
+            "Users": [
+                "@theowatson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "Thanks @jtnimoy for some info on your Tron work! Love it, played with #openframeworks to create something alike. http://t.co/xgBAiMm  ", 
+            "Users": [
+                "@jtnimoy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @fabynou: New article: \"Polygon Codec and Homogeneous clipping\". Here: http://t.co/2ptklQB  ", 
+            "Users": [
+                "@fabynou"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Posted some new generative sketches create with #openFrameworks at http://t.co/DJRF89u  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @venomgfx: Blender 2.58 is out! http://t.co/nhQpMyc Even more stable than before and some little additions as well: http://t.co/sSJc ...  ", 
+            "Users": [
+                "@venomgfx"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openframeworks", 
+                "#dataviz"
+            ], 
+            "Tweet": "On my way to the \"freakDay\" meeting: creative coding in Amsterdam #openframeworks #dataviz msg me for info  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#blender"
+            ], 
+            "Tweet": "Generated meshes: http://t.co/O7ZqLAR #openFrameworks #blender  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@fi5e rough output of my 1.000.000 faces project ( http://goo.gl/ULLJI ) as 51Mb jpg,contains ~22.500 faces (raw). DL: goo.gl/9aanS  ", 
+            "Users": [
+                "@fi5e"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Help collecting 1.000.000 faces from photos for research and art at http://www.freakdays.nl  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Had a in depth talk with @elimak about the pecularities of preloading in Flash and using staged clips with linkage. Thanks @elimak!  ", 
+            "Users": [
+                "@elimak", 
+                "@elimak"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "openFrameworks freakDay workshop in Antwerp. Will be discussing shaders, threading, physics, etc.. http://goo.gl/yY0Hv  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Crazy work from Kris Meeusen with whom we're organizing a 3 day #openFrameworks workshop/freakday in Antwerpen: http://bit.ly/lpbuhC  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Faces of twitter: http://goo.gl/0o3Wc  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mariuswatz: Milton Glaser gives some of the best creative advice I've heard about the fear of failure. Mandatory watching: http://ow ...  ", 
+            "Users": [
+                "@mariuswatz"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @phaistonian: Scientists cure cancer, but no one takes notice http://goo.gl/NWF1W  ", 
+            "Users": [
+                "@phaistonian"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#beamlab"
+            ], 
+            "Tweet": "Thanks #beamlab http://goo.gl/C9Tvz for inviting us to give a short talk on Kinect! Great energy over there!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "@jesusgollonet thanks for the nice words! Was a great #openframeworks day for sure!  ", 
+            "Users": [
+                "@jesusgollonet"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @flight404: Dear XCode 4, why did you stop showing me errors inline? I thought we had an understanding.  ", 
+            "Users": [
+                "@flight404"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Again amazing work by Kyle McDonald @kcimc http://vimeo.com/21531156  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#mammoth", 
+                "#flash"
+            ], 
+            "Tweet": "@julapy ha found it as well last week.. seems to be quite since 2009 #mammoth #flash  ", 
+            "Users": [
+                "@julapy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "RT @jesusgollonet: Now on github: ofxGifEncoder. an addon to export animated gifs from #openframeworks http://t.co/o2nDrGe  ", 
+            "Users": [
+                "@jesusgollonet"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kcimc: doing realtime ocr on the video from my webcam http://j.mp/fJJXTs loving the glitches  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@zachlieberman wierd error! can't really reproduce it here. hope someone fixes it  ", 
+            "Users": [
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @_vade: /////____-___---___/\\/\\// +==++==++++=+=++++= ??///???//\\/\\/\\/\\/\\/\\/\\/|?|?|? )()()(**()()(***)()((*)(****)()(*()() XXXXX_X_X_ ...  ", 
+            "Users": [
+                "@_vade"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@marcinignac Use this nifty error.h file with handy macros: http://goo.gl/2Pt3V Put \"eglGetError()\" after each opengl function.  ", 
+            "Users": [
+                "@marcinignac"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@marcinignac Ha! Rafael L-H stole my idea more then 10 years ago! Mine will be a homage to that work ;) My inspiration http://t.co/8FvJ13m  ", 
+            "Users": [
+                "@marcinignac"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Transdisciplinary students will answer the question of \"What's your major?\" with \"What's your problem?\" - M. Jelacic / RT @cy ...  ", 
+            "Users": [
+                "@golan", 
+                "@cy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#freakDay"
+            ], 
+            "Tweet": "Martin just uploaded his experiments form the last #openFrameworks #freakDay! http://vimeo.com/20206474  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#opensource"
+            ], 
+            "Tweet": "RT @memotv: Did I mention that @mkalten and my tuio tracker app for iphone, ipad, ipod is now on the appstore? also #opensource http://t ...  ", 
+            "Users": [
+                "@memotv", 
+                "@mkalten"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "RT @companje: Yesterday at #openFrameworks Freakday in Amsterdam we added some nice examples to the oflab website http://bit.ly/ofExamples  ", 
+            "Users": [
+                "@companje"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks", 
+                "#Amsterdam"
+            ], 
+            "Tweet": "Great #openFrameworks meeting in #Amsterdam. See some presentations, examples and photos here http://goo.gl/5eDHO  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#opensource", 
+                "#TUIO"
+            ], 
+            "Tweet": "RT @memotv: TuioPad: #opensource #TUIO tracker for iOS devices finally available for free on iTunes App Store http://t.co/xf7Adde /via @ ...  ", 
+            "Users": [
+                "@memotv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "RT @zachlieberman: wow - web browser running inside of #openFrameworks, instead of the other way around :) http://bit.ly/dM6TLS @jeffti ...  ", 
+            "Users": [
+                "@zachlieberman", 
+                "@jeffti"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 1, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Another day OF-WWDC at 2.18AM in Pittsburgh with amazing people!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#processingjs", 
+                "#webgl"
+            ], 
+            "Tweet": "RT @marcinignac: \"Cindermedusae - making of\" Generative Creatures Tutorial with examples in #processingjs and #webgl http://bit.ly/fIyiOe  ", 
+            "Users": [
+                "@marcinignac"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#PrimeSense", 
+                "#openni", 
+                "#mac", 
+                "#CMake", 
+                "#NITE"
+            ], 
+            "Tweet": "Together with #PrimeSense we got #openni working on #mac. Created a #CMake build system. Next #NITE. http://goo.gl/SG31T  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#PrimeSense", 
+                "#openni", 
+                "#kinect", 
+                "#openframeworks"
+            ], 
+            "Tweet": "Wow! Just had a three hour talk with one the #PrimeSense founders about #openni they sensor cam, #kinect and #openframeworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#DE2010", 
+                "#TheSceneMachine"
+            ], 
+            "Tweet": "RT @AnneliesTermeer: Na het Stadsarchief en #DE2010 staat onze filminstallatie #TheSceneMachine nu te pronken in de hal van @EYE_film. K ...  ", 
+            "Users": [
+                "@AnneliesTermeer", 
+                "@EYE_film"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#scenemachine", 
+                "#DE2010"
+            ], 
+            "Tweet": "RT @AnneliesTermeer: presenting the #scenemachine at #DE2010  ", 
+            "Users": [
+                "@AnneliesTermeer"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 12, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @Grrr_nl: The Scene Machine: Via Annelies @ EYE Film Instituut: Graag nodigen we u uit voor de feestelijke presentatie van... http:// ...  ", 
+            "Users": [
+                "@Grrr_nl"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Working on articles for @openframeworks http://roxlu.com/of/index including new GUI addon, @flash communication, @github info.  ", 
+            "Users": [
+                "@openframeworks", 
+                "@flash", 
+                "@github"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "had some time tonight to update my blog: http://www.roxlu.com with some new posts on a recent project.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 11, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @memotv: RT @openframeworks: OF 0062 Released! http://bit.ly/KVsBM  ", 
+            "Users": [
+                "@memotv", 
+                "@openframeworks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#feelingit"
+            ], 
+            "Tweet": "RT @julapy: ofxFlash is starting to come along... #feelingit  ", 
+            "Users": [
+                "@julapy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@golan I'm very excited to be part of the Poeme Numerique Masterclass! Can't wait 'till it starts!  ", 
+            "Users": [
+                "@golan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@golan Just saw your tweet about the workshop in Eindhoven and directly send my application! Would be great to meet you there!  ", 
+            "Users": [
+                "@golan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 10, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@memotv check out ofxBoost for easy integration with openFrameworks (github)  ", 
+            "Users": [
+                "@memotv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#ahm04"
+            ], 
+            "Tweet": "#ahm04 nee zeker niet, fijn juist een stropdas  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#ahm03"
+            ], 
+            "Tweet": "#ahm03 een pak? Wat is dat!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#ahm01"
+            ], 
+            "Tweet": "#ahm01 zeker weten!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#ahm02"
+            ], 
+            "Tweet": "#ahm02 ja hoor laat maar lekker zien!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#ahm02"
+            ], 
+            "Tweet": "#ahm02 ja heel belangrijk love you haiko  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#ahm01", 
+                "#ahm02", 
+                "#ahm03", 
+                "#ahm04"
+            ], 
+            "Tweet": "Testsession @ahm in amsterdam #ahm01 #ahm02 #ahm03 #ahm04 grtz Died  ", 
+            "Users": [
+                "@ahm"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#ahm04"
+            ], 
+            "Tweet": "#ahm04 @ahm \u2022  ", 
+            "Users": [
+                "@ahm"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#ahm03"
+            ], 
+            "Tweet": "#ahm03 ahm\u2022  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#ahm03"
+            ], 
+            "Tweet": "#ahm03 @ahm  ", 
+            "Users": [
+                "@ahm"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#ahm01"
+            ], 
+            "Tweet": "#ahm01 @ahm test \u2022  ", 
+            "Users": [
+                "@ahm"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 9, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#ahm02"
+            ], 
+            "Tweet": "#ahm02 ahm \u2022\u2022  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 8, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#tonijntje"
+            ], 
+            "Tweet": "Almost finished with a new project #tonijntje which listens to new tweets :\u2022)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@chrisoshea haha is it \"chrishoshea rip off year?\" @chrisoshea just found another ripoff of Flap to Freedom.  ", 
+            "Users": [
+                "@chrisoshea", 
+                "@chrisoshea"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Announcing the next openFrameworks Summer freakDay @ Amsterdam, July 18th! Subscription required.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "your message here  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 7, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@flight404 Your works keeps amazing me Robert!  ", 
+            "Users": [
+                "@flight404"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "Giving a talk at the openFrameworks freakDay tomorrow in Amsterdam, starting at 11 o'clock. Everyone is welcome! #openFrameworks  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Some screen shots from the application I created during the openFrameworks Lab at the Graphic Design Festival Breda http://bit.ly/bblW9d  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 5, 
+                "Year": 2010
+            }, 
+            "Hashtag": [], 
+            "Tweet": "OMG my first tweet :# Little write up on stalk/stem/plant drawing with openFrameworks http://bit.ly/aSjVRM  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "http://twitpic.com/ei3oy - park leiden  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 8, 
+                "Year": 2009
+            }, 
+            "Hashtag": [], 
+            "Tweet": "http://twitpic.com/ehjj8 - sweet  ", 
+            "Users": []
+        }
+    ], 
+    "name": "roxlu.txt"
+}

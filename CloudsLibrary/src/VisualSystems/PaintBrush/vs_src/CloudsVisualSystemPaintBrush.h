@@ -33,10 +33,10 @@ public:
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
-    void mouseDragged(ofMouseEventArgs & args);
-    void mouseMoved(ofMouseEventArgs & args);
-    void mousePressed(ofMouseEventArgs & args);
-    void mouseReleased(ofMouseEventArgs & args);
+    void selfInteractionMoved(CloudsInteractionEventArgs& args);
+    void selfInteractionStarted(CloudsInteractionEventArgs& args);
+    void selfInteractionDragged(CloudsInteractionEventArgs& args);
+    void selfInteractionEnded(CloudsInteractionEventArgs& args);
     
     void selfSetupGui();
     void selfGuiEvent(ofxUIEventArgs &e);
@@ -48,10 +48,12 @@ public:
     void guiRenderEvent(ofxUIEventArgs &e);
     
 protected:
-    ofFbo               canvas;
-    Brush               brush;
+    ofFbo               canvasSrc, canvasDst;
+    map<int, Brush *>   brushes;
     vector<Particle>    particles;
     
+	void drawPaint();
+	
     float   brushWidth;
     float   brushNumber;
     float   brushDamp;
@@ -61,12 +63,21 @@ protected:
     
     float   lineWidth;
     
+    float   particlesThreshold;
+    float   particlesTurbulence;
+    float   particlesAlpha;
+
     float   colorHue;
     float   colorLerp;
     float   colorRandom;
     
-    float   particlesThreshold;
-    float   particlesTurbulence;
-    float   particlesAlpha;
+    bool                    bUseColorMap;
+    ofPixels *              colorMap;
+    vector<string>          colorMapNames;
+	map<string, ofPixels *> colorMapPixelsMap;
+    int                     mapX, mapY;
+    bool                    bMapForward;
+    
+    float       fadeAmount;
 
 };

@@ -1,0 +1,32 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>TWITTER FEED</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>272.000000000</XPosition>
+    <YPosition>192.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RENDER FEEDS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>FEED X</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>FEED Y</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>FEED WIDTH</Name>
+    <Value>612.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>FEED HEIGHT</Name>
+    <Value>768.000000000</Value>
+</Widget>

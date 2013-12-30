@@ -1,8 +1,10 @@
 #import "testView.h"
 #include "CloudsGlobal.h"
+#include "CloudsSpeaker.h"
+
 @implementation testView
 @synthesize clipTable;
-
+@synthesize interventionTextBox;
 - (void)setup
 {
 
@@ -14,8 +16,9 @@
 	parser.loadFromFiles();
 
 	
-	if(ofFile::doesFileExist(getDataPath() + "CloudsMovieDirectory.txt")){
-		parser.setCombinedVideoDirectory(ofBufferFromFile(getDataPath() + "CloudsMovieDirectory.txt").getText());
+	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
+		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
+        cout<<"Clouds Directory is pointing to "<<ofBufferFromFile(GetCloudsDataPath	() + "CloudsMovieDirectory.txt").getText()<<endl;
 	}
 	else{
 		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
@@ -25,15 +28,22 @@
 	[clipTable setTarget:self];
 	[clipTable setDoubleAction:@selector(loadClipFromTable:)];
 	[clipTable reloadData];
+    [interventionTextBox setTarget:self];   
 	
-//	rgbdVisualSystem.setRenderer(renderer);
 	rgbdVisualSystem.setup();
-//	renderer.setShaderPath( renderer.G() + "shaders/rgbdcombined");
+	rgbdVisualSystem.setDrawToScreen(false);
+	hud.setup();
+
 
 	rgbdVisualSystem.playSystem();
+#ifdef OCULUS_RIFT
+	rgbdVisualSystem.loadPresetGUISFromName("RGBDOC");
+#else
 	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
-	
+#endif
 	srand(ofGetSeconds());
+	
+	
 	
 	[self loadClip: parser.getRandomClip(true, false)];
 	
@@ -41,19 +51,26 @@
 
 - (void)update
 {
-//	renderer.update();
+	
+//	if(rgbdVisualSystem.getRGBDVideoPlayer().isDone()){
+//		cout << "replaying video!" << endl;
+//		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setPosition(0);
+//		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().play();
+//	}
 }
 
 - (void)draw
 {
-
+	rgbdVisualSystem.selfPostDraw();
+	
+	hud.draw();
 }
 
 - (void) loadClipFromTable:(id)sender
 {
 
 	if(clipTable.selectedRow >= 0){
-
+		
 		[self loadClip: parser.getAllClips()[ clipTable.selectedRow ] ];
 		
 	}
@@ -61,12 +78,23 @@
 
 - (IBAction)loadClip:(CloudsClip&)clip
 {
-	if(clip.hasCombinedVideo && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
+	if(clip.hasMediaAsset && clip.voiceOverAudio && rgbdVisualSystem.getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath) ){
 		
-//		renderer.getPlayer().play();
 		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
-		rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
+		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
+									  CloudsSpeaker::speakers[clip.person].lastName,
+									  clip.name );
+		
 		currentClip = clip;
+	}
+	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
+		
+		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
+		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
+									   CloudsSpeaker::speakers[clip.person].lastName,
+									   clip.name );
+		currentClip = clip;
+		
 	}
 	else{
 		ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";
@@ -115,7 +143,7 @@
 
 - (void)keyReleased:(int)key
 {
-	
+
 }
 
 - (void)mouseMoved:(NSPoint)p
@@ -146,6 +174,21 @@
 	return parser.getAllClips().size();
 }
 
+- (std::string)convertString:(NSString *)string
+{
+    std::string cppString([string UTF8String], [string lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+    return cppString;
+}
+
+-(void)addIntervention:(id)sender{
+
+    const char* interventionName =[interventionTextBox.stringValue UTF8String ];
+    string name = interventionName;
+    if(clipTable.selectedRow >= 0){
+        CloudsClip& clip =parser.getAllClips()[[clipTable selectedRow]];
+        cout<<" Adding intervention : "<<name<<" to clip "<<clip.getLinkName()<<endl;
+    }
+}
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
@@ -157,7 +200,7 @@
 		return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].name.c_str() ];
 	}
 	else if([@"combined" isEqualToString:aTableColumn.identifier]){
-		return parser.getAllClips()[rowIndex].hasCombinedVideo ? @"YES" : @"NO";
+		return parser.getAllClips()[rowIndex].hasMediaAsset ? @"YES" : @"NO";
 	}
 	return @"";
 	

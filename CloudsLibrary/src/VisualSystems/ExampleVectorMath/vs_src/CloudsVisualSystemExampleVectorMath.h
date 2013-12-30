@@ -96,7 +96,7 @@ public:
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 	ofCamera& getCameraRef(){
-		return cam;
+		return camera;
 	}
 
 protected:
@@ -116,7 +116,7 @@ protected:
     ofFloatColor color;
     float maxDrawPointAge;
     bool bShowAxis;
-    ofCamera cam;
+    ofCamera camera;
     ofVec3f camPos;
     vector<DrawPoint> pts;
     //ofVec3f	pts[MAX_N_PTS];

@@ -1,8 +1,12 @@
 #include "testApp.h"
 
 //--------------------------------------------------------------
-void testApp::setup(){
-	vs.setup();
+void testApp::setup()
+{
+    ofSetFrameRate(60);
+    ofSetVerticalSync(true);
+	
+    vs.setup();
 	vs.playSystem();
 }
 
@@ -21,7 +25,9 @@ void testApp::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void testApp::exit(){
+void testApp::exit()
+{
+    vs.exit();
 }
 
 //--------------------------------------------------------------

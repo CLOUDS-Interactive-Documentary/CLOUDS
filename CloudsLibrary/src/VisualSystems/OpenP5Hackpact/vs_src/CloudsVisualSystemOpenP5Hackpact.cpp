@@ -92,7 +92,8 @@ void CloudsVisualSystemOpenP5Hackpact::selfSetup(){
 			mesh.addVertex(ofVec3f());
 		}
 	}
-	
+	mesh.setMode(OF_PRIMITIVE_POINTS);
+	mesh.setUsage(GL_STREAM_DRAW);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -117,7 +118,15 @@ void CloudsVisualSystemOpenP5Hackpact::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemOpenP5Hackpact::selfUpdate(){
-
+	//limit the camera movement
+	ofVec3f camposition;
+	camposition.x = ofMap(GetCloudsInputX(), 0, getSharedRenderTarget().getWidth(), 1800, 2000, true);
+	camposition.y = ofMap(GetCloudsInputY(), 0, getSharedRenderTarget().getHeight(), -30, 30, true);
+	camposition.z = 0;
+	camposition.rotate(35, ofVec3f(0,0,1));
+//	camposition.rotate(ofGetElapsedTimef(), ofVec3f(0,1,0));
+	simpleCam.setPosition(camposition);
+	simpleCam.lookAt(ofVec3f(0,0,0), ofVec3f(0,0,1));
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -130,19 +139,6 @@ void CloudsVisualSystemOpenP5Hackpact::selfDraw(){
 	int idx = 0;
 	for( int r = 10; r < 1000; r += 50){
 		for (int j = 0; j < N; j += 1) {
-			
-			//P5
-			//			float x = r*cos(radians(j));
-			//			float y = r*sin(radians(j));
-			//			rotateY(radians(beta));
-			//
-			//			stroke(60,200,255-r/4);
-			//			point(x, y, r);
-			//			point(-x, -y, r);
-			//
-			//			stroke(95,200,255-r/4);
-			//			point(y, x, -r);
-			//			point(-y, -x, -r);
 			
 			//OF
 			float x = r*cos(ofDegToRad(j));

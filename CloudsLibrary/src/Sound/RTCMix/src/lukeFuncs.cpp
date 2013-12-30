@@ -17,7 +17,7 @@ void RTcmixParseScoreFile(string f)
 {
     string thescore = "";
     
-    ofFile sco (getDataPath()+"sound/"+f);
+    ofFile sco (GetCloudsDataPath()+"sound/"+f);
     if(!sco.exists())
     {
         ofLogError("no score file!");
@@ -30,18 +30,82 @@ void RTcmixParseScoreFile(string f)
     parse_score((char*)thescore.c_str(), thescore.length());
 }
 
+void INITMIX()
+{
+    RTcmixParseScoreFile("cmixclear.sco");
+}
+
+// use the SPLITTER() instrument to configure effects path
+void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus, string ampcurve)
+{
+    char thebuf [256];
+    int bx;
+    
+    // string format the auxiliary bus numbers
+    int abl = auxbus*2 + 20;
+    int abr = auxbus*2 + 21;
+    string output = "aux " + ofToString(abl) + "-" + ofToString(abr) + " out";
+    string input = "aux " + ofToString(abl) + "-" + ofToString(abr) + " in";
+    // do the bus_config() calls
+    
+    // do the instrument bus_config()
+    if(inst=="FILTERBANK") {
+        bx = snprintf(thebuf, 256, "bus_config(\"%s\", \"aux 8-9 in\", \"%s\")", (char*)inst.c_str(), (char*)output.c_str());
+    }
+    else if(inst=="STEREO" || inst=="TRANS3")
+    {
+        bx = snprintf(thebuf, 256, "bus_config(\"%s\", \"in 0\", \"%s\")", (char*)inst.c_str(), (char*)output.c_str());
+    }
+    else
+    {
+        bx = snprintf(thebuf, 256, "bus_config(\"%s\", \"%s\")", (char*)inst.c_str(), (char*)output.c_str());
+    }
+    parse_score(thebuf, bx);
+    
+    // do the SPLITTER bus_config()
+    bx = snprintf(thebuf, 256, "bus_config(\"SPLITTER\", \"%s\", \"aux 2-3 out\", \"aux 4-5 out\", \"aux 6-7 out\")", (char*)input.c_str());
+    parse_score(thebuf, bx);
+
+    // do the SPLITTER() calls
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*%s*e_DECLICK, 0, %f, 0., %f, 0., %f, 0.)", outskip, time, amp, (char*)ampcurve.c_str(), dry, verb, echo);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*%s*e_DECLICK, 1, 0., %f, %f, 0., 0., %f)", outskip, time, amp, (char*)ampcurve.c_str(), dry, verb, echo);
+    parse_score(thebuf, bx);
+    
+}
+
 // uses the SPLITTER() and MIX() and GVERB() instruments
 void REVERB(double outskip, double time)
 {
     char thebuf [256];
     int bx;
+    // NOW DONE WITH SETUPMIX()
+    /*
     bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, 1., 0, 1., 0., 1., 0., 1., 0.)", outskip, time);
     parse_score(thebuf, bx);
     bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, 1., 1, 0., 1., 1., 0., 0., 1.)", outskip, time);
     parse_score(thebuf, bx);
+     */
+    
+    // DRY MIX
     bx = snprintf(thebuf, 256, "MIX(%f, 0.0, %f, 1., 0, 1)", outskip, time);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 50., 8., 0.5, 0.1, -90., -9., -9., 3.0)", outskip, time);
+    
+    // REVERB
+    // p0 = output start time (seconds)
+    // p1 = input start time (seconds)
+    // p2 = duration (seconds)
+    // p3 = amplitude multiplier (relative multiplier of input signal)
+    // p4 = roomsize (1.0 - 300.0)
+    // p5 = reverb time (0.1 - 360.0)
+    // p6 = damping (0.0 - 1.0)
+    // p7 = input filter bandwidth (0.0 - 1.0)
+    // p8 = dry level (inverse dB, -90.0 - 0.0)
+    // p9 = early reflection level (inverse dB, -90.0 - 0.0)
+    // p10 = tail level (inverse dB, -90.0 - 0.0)
+    // p11 = ring-down time (seconds, added to duration)
+
+    bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 75., 8., 0.2, 1., -90., -15., -12., 3.0)", outskip, time);
     parse_score(thebuf, bx);
 }
 
@@ -52,6 +116,40 @@ void SCHEDULEBANG(double time)
     int bx;
     bx = snprintf(thebuf, 256, "MAXBANG(%f)", time);
     parse_score(thebuf, bx);
+}
+
+// play an audio file from DISK
+void STREAMSOUND(double outskip, string file, double dur, double amp, ofSoundPlayer& bupsound)
+{
+    
+    char thebuf [256];
+    int bx;
+    string p = GetCloudsDataPath() + "sound/trax/";
+    ofDirectory sdir(p);
+    
+    string f = sdir.getAbsolutePath()+"/"+file;
+    bx = snprintf(thebuf, 256, "rtinput(\"%s\")", (char*)f.c_str());
+    parse_score(thebuf, bx);
+    if(dur<0)
+    {
+        bx = snprintf(thebuf, 256, "STEREO(%f, 0., DUR(), %f*amp_declick, 0, 1)", outskip, amp);
+    }
+    else
+    {
+        bx = snprintf(thebuf, 256, "STEREO(%f, 0., %f, %f*amp_declick, 0, 1)", outskip, dur, amp);
+    }
+    parse_score(thebuf, bx);
+    
+    /*
+    string p = GetCloudsDataPath() + "sound/trax/";
+    ofDirectory sdir(p);
+    
+    string f = sdir.getAbsolutePath()+"/"+file;
+
+    bupsound.loadSound(f);
+    bupsound.setVolume(amp);
+    bupsound.play();
+     */
 }
 
 // loads an audio file into RAM as a buffer handle
@@ -65,7 +163,7 @@ float LOADSOUND(string file, string handle)
     OF_buffer_load_set((char*)file.c_str(), (char*)handle.c_str(), 0., 30.);
     // you can now use the buffer name (bname) in rtinput("MMBUF", "buffername")
     
-    printf("LOADED SOUND %s: file: %s  duration: %f\n", (char*)handle.c_str(),
+    if(LUKEDEBUG) printf("LOADED SOUND %s: file: %s  duration: %f\n", (char*)handle.c_str(),
            (char*)file.c_str(), duration);
     return(duration);
 }
@@ -82,8 +180,21 @@ void STEREO(double outskip, double inskip, double dur, double amp, double pan, s
     
 }
 
+// soundfile mixing with TRANS3
+void STEREO3(double outskip, double inskip, double dur, double amp, double pan, string handle)
+{
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, %f, %f, %f*amp_declick, 0., 0, %f)", outskip, inskip, dur, amp, pan);
+    parse_score(thebuf, bx);
+    
+}
+
+
 // loop a sound (transposition auto-corrected based on ideal length)
-void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, string handle)
+void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, double amp, string handle)
 {
     float incr = loopdur/looplen;
     float freq = mtof(60);
@@ -98,9 +209,9 @@ void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, strin
     int bx;
     bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f*amp_declick, %f, 0, 0)", outskip, looplen, amp, transp);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, %f, %f, %f*amp_declick, %f, 0, 0)", outskip, inskip, looplen, amp, transp);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f*amp_declick, %f, 1, 1)", outskip, looplen, amp, transp);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, %f, %f, %f*amp_declick, %f, 1, 1)", outskip, inskip, looplen, amp, transp);
     parse_score(thebuf, bx);
     
 }
@@ -145,6 +256,35 @@ void WAVETABLE(double outskip, double dur, double amp, double freq, double pan, 
     int bx;
     bx = snprintf(thebuf, 256, "WAVETABLE(%f, %f, %f*%s, %f, %f, %s)", outskip, dur, amp*MAXAMP, (char*)ampenvelope.c_str(), freq, pan, (char*)waveform.c_str());
     parse_score(thebuf, bx);
+}
+
+// granular synth
+void GRANSYNTH(double outskip, double dur, double amp, double freq, double freq_jitter, double grate, double grate_var, double gdur_min, double gdur_max, double gamp_min, double gamp_max, double gpan_min, double gpan_max, string waveform, string ampenvelope, string transphandle)
+{
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "GRANSYNTH(%f, %f, %f*amp_declick, %s, %s, %f, %f, %f, %f, %f, %f, %f, %s, %f, %f, %f, %f)", outskip, dur, amp*MAXAMP, (char*)waveform.c_str(), (char*)ampenvelope.c_str(), grate, grate_var, gdur_min, gdur_max, gamp_min, gamp_max, octcps(freq), (char*)transphandle.c_str(), freq_jitter, ofRandom(0, 1000.), gpan_min, gpan_max);
+    parse_score(thebuf, bx);
+    
+}
+
+// granular synth, overloaded
+void GRANSYNTH(double outskip, double dur, double amp, double freq, double freq_jitter, double grate, double grate_var, double gdur_min, double gdur_max, double gamp_min, double gamp_max, double gpan_min, double gpan_max, string waveform, string ampenvelope, string transphandle, string pitchhandle, string ratehandle, string durhandle)
+{
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "GRANSYNTH(%f, %f, %f*amp_declick, %s, %s, %f*%s, %f*%s, %f*%s, %f*%s, %f, %f, %f, %s, %f*%s, %f, %f, %f)", outskip, dur, amp*MAXAMP, (char*)waveform.c_str(), (char*)ampenvelope.c_str(), grate, (char*)ratehandle.c_str(), grate_var, (char*)ratehandle.c_str(), gdur_min, (char*)durhandle.c_str(), gdur_max, (char*)durhandle.c_str(), gamp_min, gamp_max, octcps(freq), (char*)transphandle.c_str(), freq_jitter, (char*)pitchhandle.c_str(), ofRandom(RAND_MAX), gpan_min, gpan_max);
+    parse_score(thebuf, bx);
+}
+
+// waveshaper
+void WAVESHAPE(double outskip, double dur, double amp, double freq, double pan, string waveform, string ampenvelope, string xferfunc, string controlenv)
+{
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "WAVESHAPE(%f, %f, %f, 0., 1., %f*%s, %f, %s, %s, %s)", outskip, dur, freq, amp*MAXAMP, (char*)ampenvelope.c_str(), pan, (char*)waveform.c_str(), (char*)xferfunc.c_str(), (char*)controlenv.c_str());
+    parse_score(thebuf, bx);
+    
 }
 
 // helmholtz resonator
@@ -207,156 +347,23 @@ void MBANDEDWG(double outskip, double dur, double amp, double freq, double strik
     parse_score(thebuf, bx);
 }
 
-
-
-// --- music functions ---
-
-// load rhythm array
-void loadrhythms(string f, vector<lukeRhythm>& r)
+// patch synthesizer
+void PATCHSYNTH(string inst, string output)
 {
-    string sline;
-    ofFile rfile (getDataPath()+"sound/"+f);
-    if(!rfile.exists())
-    {
-        ofLogError("no data file!");
-    }
-    ofBuffer rbuf(rfile);
-    r.clear();
-    while(!rbuf.isLastLine())
-    {
-        sline=rbuf.getNextLine();
-        lukeRhythm foo;
-        vector<string> temp = ofSplitString(sline, " ");
-        for(int i = 0;i<temp.size();i++)
-        {
-            foo.beats.push_back(ofToFloat(temp[i]));
-        }
-        r.push_back(foo);
-    }
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "bus_config(\"%s\", \"%s\")", (char*)inst.c_str(), (char*)output.c_str());
+    parse_score(thebuf, bx);
 }
 
-// load pitch array
-void loadpitches(string f, vector<lukePitchArray>& p)
+// patch effect
+void PATCHFX(string inst, string input, string output)
 {
-    string sline;
-    ofFile pfile (getDataPath()+"sound/"+f);
-    if(!pfile.exists())
-    {
-        ofLogError("no data file!");
-    }
-    ofBuffer pbuf(pfile);
-    p.clear();
-    while(!pbuf.isLastLine())
-    {
-        sline=pbuf.getNextLine();
-        lukePitchArray foo;
-        vector<string> temp = ofSplitString(sline, " ");
-        foo.basenote = ofToInt(temp[0]);
-        foo.scale = ofToInt(temp[1]);
-        for(int i = 2;i<temp.size();i++)
-        {
-            foo.notes.push_back(ofToInt(temp[i]));
-        }
-        p.push_back(foo);
-    }
-}
-
-// load preset file
-void loadpresets(string f, vector<lukePreset>& p)
-{
-    string sline;
-    ofFile pfile (getDataPath()+"sound/"+f);
-    if(!pfile.exists())
-    {
-        ofLogError("no data file!");
-    }
-    ofBuffer pbuf(pfile);
-    p.clear();
-    while(!pbuf.isLastLine())
-    {
-        sline=pbuf.getNextLine();
-        lukePreset foo;
-        vector<string> temp = ofSplitString(sline, " ");
-        for(int i = 0;i<temp.size()-4;i++)
-        {
-            foo.instruments.push_back(temp[i]);
-        }
-        foo.harmony = ofToInt(temp[temp.size()-4])-1;
-        foo.rhythm = ofToInt(temp[temp.size()-3])-1;
-        foo.tempo = ofToFloat(temp[temp.size()-2]);
-        foo.bank = temp[temp.size()-1];
-        p.push_back(foo);
-    }
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "bus_config(\"%s\", \"%s\", \"%s\")", (char*)inst.c_str(), (char*)input.c_str(), (char*)output.c_str());
+    parse_score(thebuf, bx);
 }
 
 
 
-
-// frequency-to-midi
-double ftom(double f, double tuning)
-{
-    // midi -> frequency conversion
-    if(f>0) return(69. + (1./.057762265) * log(f/tuning));
-    else return(-999.);
-}
-
-// midi-to-frequency
-double mtof(double f, double tuning)
-{
-    // midi -> frequency conversion
-	return (tuning * exp(.057762265 * (f - 69.)));
-}
-
-// ditto, overloaded to assume A440
-double mtof(double f)
-{
-    // midi -> frequency conversion
-	return (440. * exp(.057762265 * (f - 69.)));
-}
-
-// midi-to-string
-string ptos(int p)
-{
-    string s = "";
-    int pc = p%12;
-    if(pc==0) s = "C";
-    else if(pc==1) s = "C#";
-    else if(pc==2) s = "D";
-    else if(pc==3) s = "D#";
-    else if(pc==4) s = "E";
-    else if(pc==5) s = "F";
-    else if(pc==6) s = "F#";
-    else if(pc==7) s = "G";
-    else if(pc==8) s = "G#";
-    else if(pc==9) s = "A";
-    else if(pc==10) s = "A#";
-    else if(pc==11) s = "B";
-    
-    return(s);
-}
-
-// quantize to a specific scale register
-int scale(int p, int o)
-{
-    // minor scale
-    int basescale[12] = {0, 0, 2, 3, 3, 5, 5, 7, 8, 8, 10, 10};
-    int s[12];
-    if(o==-1)
-    {
-        for(int i = 0;i<12;i++)
-        {
-            s[i] = i;
-        }
-    }
-    else
-    {
-        for(int i = 0;i<12;i++)
-        {
-            s[i] = (basescale[(i-o+12)%12]+o)%12;
-        }
-    }
-    
-    int oct = p/12;
-    int pc = p%12;
-    return(oct*12 + s[pc]);
-}

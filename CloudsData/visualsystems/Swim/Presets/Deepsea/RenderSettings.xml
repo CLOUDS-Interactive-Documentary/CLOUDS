@@ -1,0 +1,127 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>118.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>regenerate</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxCamSpeed</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>creatureFogRange</Name>
+    <HighValue>7832.513671875</HighValue>
+    <LowValue>4975.369628906</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowFogRange</Name>
+    <HighValue>8226.600585938</HighValue>
+    <LowValue>1921.181884766</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowInnerFogRange</Name>
+    <HighValue>640.394104004</HighValue>
+    <LowValue>100.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowAlphaRange</Name>
+    <HighValue>0.280788183</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowSizeRange</Name>
+    <HighValue>443.349792480</HighValue>
+    <LowValue>242.364440918</LowValue>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numSnowParticles</Name>
+    <Value>57571</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>zoneRadius</Name>
+    <Value>500.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>alignmentLower</Name>
+    <Value>0.330000013</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>alignmentUpper</Name>
+    <Value>0.660000026</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>repelStrength</Name>
+    <Value>0.334975362</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>alignStrength</Name>
+    <Value>0.200000003</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>attractStrength</Name>
+    <Value>0.200000003</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxDistFromCentre</Name>
+    <Value>1655.172363281</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numJellyOne</Name>
+    <Value>40</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numJellyTwo</Name>
+    <Value>32</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numGreyFish</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>greySizeAverage</Name>
+    <Value>0.599999964</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>greySizeStdDeviation</Name>
+    <Value>0.073891625</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numYellowFish</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>yellowSizeAverage</Name>
+    <Value>0.514285743</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>yellowSizeStdDeviation</Name>
+    <Value>0.093596056</Value>
+</Widget>

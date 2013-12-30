@@ -155,7 +155,9 @@ void CloudsVisualSystemOcean::selfDrawBackground(){
 }
 
 void CloudsVisualSystemOcean::selfDrawDebug(){
-	
+	if(!useOceanCam){
+		oceanCamera.drawDebug();
+	}	
 }
 
 void CloudsVisualSystemOcean::selfSceneTransformation(){
@@ -164,9 +166,6 @@ void CloudsVisualSystemOcean::selfSceneTransformation(){
 
 void CloudsVisualSystemOcean::selfDraw(){
 	
-	if(!useOceanCam){
-		oceanCamera.drawDebug();
-	}
 
 	glPushAttrib(GL_POINT_BIT | GL_POLYGON_BIT | GL_FOG_BIT | GL_DEPTH_BITS);
 	glEnable(GL_POINT_SMOOTH);
@@ -238,7 +237,11 @@ void CloudsVisualSystemOcean::selfEnd(){
 void CloudsVisualSystemOcean::selfKeyPressed(ofKeyEventArgs & args){
 
 	if(args.key == 'R'){
-		reloadShader();
+		generateOcean();
+	}
+	
+	if(args.key == 'S'){
+		reloadShader();		
 	}
 }
 

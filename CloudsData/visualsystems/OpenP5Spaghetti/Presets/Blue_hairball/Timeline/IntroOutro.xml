@@ -1,0 +1,37 @@
+<keyframes>
+    <key>
+        <flag />
+        <time>00:00:00:394</time>
+        <value>1.000000000</value>
+    </key>
+    <key>
+        <flag />
+        <time>00:00:00:444</time>
+        <value>1.000000000</value>
+    </key>
+    <key>
+        <flag />
+        <time>00:00:00:789</time>
+        <value>0.375000000</value>
+    </key>
+    <key>
+        <flag />
+        <time>00:00:01:332</time>
+        <value>0.500000000</value>
+    </key>
+    <key>
+        <flag />
+        <time>00:00:05:230</time>
+        <value>0.100000024</value>
+    </key>
+    <key>
+        <flag />
+        <time>00:00:06:315</time>
+        <value>0.675000012</value>
+    </key>
+    <key>
+        <flag />
+        <time>00:00:46:233</time>
+        <value>0.625000000</value>
+    </key>
+</keyframes>

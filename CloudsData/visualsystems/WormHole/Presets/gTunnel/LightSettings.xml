@@ -1,0 +1,50 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>LightSettings</Name>
+<<<<<<< HEAD
+    <IsMinified>0</IsMinified>
+    <XPosition>1913.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+=======
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>212</YPosition>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SMOOTH</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>H</Name>
+<<<<<<< HEAD
+    <Value>1.000000000</Value>
+=======
+    <Value>1</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S</Name>
+<<<<<<< HEAD
+    <Value>0.000000000</Value>
+=======
+    <Value>0</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>V</Name>
+<<<<<<< HEAD
+    <Value>0.450261146</Value>
+=======
+    <Value>0.5</Value>
+>>>>>>> 66f7b92f76c1112e6b1c0690dda91d2050b85bfe
+</Widget>

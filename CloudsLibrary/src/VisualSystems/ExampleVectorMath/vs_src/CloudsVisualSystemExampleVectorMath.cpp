@@ -81,13 +81,17 @@ void CloudsVisualSystemExampleVectorMath::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemExampleVectorMath::selfSetup(){
     
-    cam.setPosition(0, 0, 750);
+    camera.setPosition(0, 0, 750);
     speedOfRotation = 0.5f;
     lineWidth = 1;
     maxDrawPointAge = 10;
     fadeSpeed = 10;
     autoDrawSpeed = 2;
     bAutoDraw = false;
+	
+	//jg temp to remove mismatched cursor
+	bDrawCursor = false;
+	
     colorShiftSpeed = 0.5;
     color = ofFloatColor::white;
     autoDraw.x = ofRandomf();
@@ -132,7 +136,7 @@ bool IsInvisible (DrawPoint& pt) {
 //normal update call
 void CloudsVisualSystemExampleVectorMath::selfUpdate(){
     drawBackground();
-    cam.setPosition(camPos);
+    camera.setPosition(camPos);
     
 
     // rotate the points
@@ -171,8 +175,9 @@ void CloudsVisualSystemExampleVectorMath::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemExampleVectorMath::selfDraw(){
 
+	ofPushStyle();
     
-    cam.begin();
+
     ofPushMatrix();
     ofScale(1, -1, 1);
     ofSetLineWidth(lineWidth);
@@ -204,10 +209,12 @@ void CloudsVisualSystemExampleVectorMath::selfDraw(){
             glVertex3f(zAxisMin.x, zAxisMin.y, zAxisMin.z);
             glVertex3f(zAxisMax.x, zAxisMax.y, zAxisMax.z);
         glEnd();
+		ofSetColor(255);
     }
     
     ofPopMatrix();
-    cam.end();
+
+	ofPopStyle();
 }
 
 // draw any debug stuff here

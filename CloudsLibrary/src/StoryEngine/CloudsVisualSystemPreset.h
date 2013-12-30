@@ -14,6 +14,8 @@ class CloudsVisualSystemPreset {
 	float introDuration;
 	float outroDuration;
 	float duration;
+
+	bool systemIsRegistered;
 	bool indefinite;
 	void loadTimeInfo();
 	void eraseFiles();
@@ -25,6 +27,7 @@ class CloudsVisualSystemPreset {
 	string grade;
 	bool enabled;
 	bool oculusCompatible;
+	bool hasSound;
 	
 	bool defaultedToFamily;
 	string conjureKeyword;

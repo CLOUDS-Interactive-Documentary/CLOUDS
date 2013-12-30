@@ -33,14 +33,6 @@ void CloudsVisualSystemOpenP5Machine::selfSetupGui(){
 	customGui->addSlider("Shift Y", 0.0, 5.0, &shiftY);
 	customGui->addSlider("Shift Z", 0.0, 5.0, &shiftZ);
 
-    
-//	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-//	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-//	customGui->addButton("Custom Button", false);
-//	customGui->addToggle("Custom Toggle", &customToggle);
-	
-	
-	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5Machine::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
@@ -73,21 +65,16 @@ void CloudsVisualSystemOpenP5Machine::guiRenderEvent(ofxUIEventArgs &e){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemOpenP5Machine::selfSetup(){
-	
 
-	
-    
     depth = 400;
-    
-//    ofEnableSmoothing();
-    //
-    //ofSetSmoothLighting(true);
-    
     
     color1HSB.r = 200;
     color2HSB.g = 130;
     color2HSB.b = 90;
 
+    // sound
+    synth.setOutputGen(buildSynth());
+    
 }
 
 
@@ -102,7 +89,7 @@ void CloudsVisualSystemOpenP5Machine::selfPresetLoaded(string presetPath){
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemOpenP5Machine::selfBegin(){
-	
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOpenP5Machine::audioRequested);	
 }
 
 //do things like ofRotate/ofTranslate here
@@ -145,7 +132,6 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
             for (int x = -2; x < 2; x++) {
                 for (int z = -1; z < 2; z++) {
                     
-                
                     ofPushMatrix();
                     ofTranslate(shiftX*400*x, shiftY*300*y, shiftZ*300*z);
                     color.setHsb(color1HSB.r,color1HSB.g,color1HSB.b);
@@ -189,7 +175,6 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
 	mat->end();
     ofPopStyle();
 	
- //   cam.end();
 }
 
 
@@ -208,9 +193,9 @@ void CloudsVisualSystemOpenP5Machine::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemOpenP5Machine::selfEnd(){
-
-	
+	ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOpenP5Machine::audioRequested);
 }
+
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemOpenP5Machine::selfExit(){
 	
@@ -234,12 +219,32 @@ void CloudsVisualSystemOpenP5Machine::selfMouseMoved(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystemOpenP5Machine::selfMousePressed(int x, int y, int button){
-	if (gui->isHit(x, y)) {
-        cam.disableMouseInput();
-    }
+//	if (gui->isHit(x, y)) {
+//        cam.disableMouseInput();
+//    }
 }
 
 void CloudsVisualSystemOpenP5Machine::selfMouseReleased(int x, int y, int button){
-     cam.enableMouseInput();
+//     cam.enableMouseInput();
 	
 }
+
+Generator CloudsVisualSystemOpenP5Machine::buildSynth()
+{
+    string strDir = GetCloudsDataPath()+"sound/textures/";
+    ofDirectory sdir(strDir);
+    string strAbsPath = sdir.getAbsolutePath() + "/Machine.aif";
+    
+    SampleTable sample = loadAudioFile(strAbsPath);
+    
+    Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1);
+    
+    return sampleGen * .07;
+}
+
+void CloudsVisualSystemOpenP5Machine::audioRequested(ofAudioEventArgs& args)
+{
+    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+}
+
+

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2A450EE0182AB23900BF557A /* ofxSimpleSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A450EDB182AB23900BF557A /* ofxSimpleSpline.cpp */; };
+		2A4F340C1863E9590070C0ED /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F34061863E9590070C0ED /* CloudsInput.cpp */; };
+		2A4F340E1863E9590070C0ED /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F340A1863E9590070C0ED /* CloudsInputMouse.cpp */; };
 		2A5822AC182D821D00F799BC /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A58229D182D821D00F799BC /* Ball.cpp */; };
 		2A5822AD182D821D00F799BC /* EditLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A58229F182D821D00F799BC /* EditLine.cpp */; };
 		2A5822AE182D821D00F799BC /* FileUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A5822A1182D821D00F799BC /* FileUtils.cpp */; };
@@ -148,6 +150,11 @@
 /* Begin PBXFileReference section */
 		2A450EDB182AB23900BF557A /* ofxSimpleSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleSpline.cpp; sourceTree = "<group>"; };
 		2A450EDC182AB23900BF557A /* ofxSimpleSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleSpline.h; sourceTree = "<group>"; };
+		2A4F34041863E8FE0070C0ED /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputEvents.h; path = src/Input/CloudsInputEvents.h; sourceTree = "<group>"; };
+		2A4F34061863E9590070C0ED /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInput.cpp; path = src/Input/CloudsInput.cpp; sourceTree = "<group>"; };
+		2A4F34071863E9590070C0ED /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInput.h; path = src/Input/CloudsInput.h; sourceTree = "<group>"; };
+		2A4F340A1863E9590070C0ED /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInputMouse.cpp; path = src/Input/CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		2A4F340B1863E9590070C0ED /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputMouse.h; path = src/Input/CloudsInputMouse.h; sourceTree = "<group>"; };
 		2A58229D182D821D00F799BC /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = "<group>"; };
 		2A58229E182D821D00F799BC /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ball.h; sourceTree = "<group>"; };
 		2A58229F182D821D00F799BC /* EditLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EditLine.cpp; sourceTree = "<group>"; };
@@ -164,6 +171,7 @@
 		2A6D83A1182D6949001C2F45 /* CloudsVisualSystemBallDroppings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemBallDroppings.h; sourceTree = "<group>"; };
 		2A6D83AA182D6949001C2F45 /* ParamManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParamManager.cpp; sourceTree = "<group>"; };
 		2A6D83AB182D6949001C2F45 /* ParamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParamManager.h; sourceTree = "<group>"; };
+		2A99A1FF183D4F07003080CC /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = src/CloudsGlobal.h; sourceTree = "<group>"; };
 		2ACC04CE1811B0CE00953B09 /* ofxMPMFluid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMPMFluid.cpp; sourceTree = "<group>"; };
 		2ACC04CF1811B0CE00953B09 /* ofxMPMFluid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMPMFluid.h; sourceTree = "<group>"; };
 		2ACC04D01811B0CE00953B09 /* ofxMPMNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMPMNode.cpp; sourceTree = "<group>"; };
@@ -457,6 +465,18 @@
 				2A450EDC182AB23900BF557A /* ofxSimpleSpline.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		2A4F34051863E9400070C0ED /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				2A4F34061863E9590070C0ED /* CloudsInput.cpp */,
+				2A4F34071863E9590070C0ED /* CloudsInput.h */,
+				2A4F340A1863E9590070C0ED /* CloudsInputMouse.cpp */,
+				2A4F340B1863E9590070C0ED /* CloudsInputMouse.h */,
+				2A4F34041863E8FE0070C0ED /* CloudsInputEvents.h */,
+			);
+			name = Input;
 			sourceTree = "<group>";
 		};
 		2A6D8330182D6949001C2F45 /* BallDroppings */ = {
@@ -1138,6 +1158,8 @@
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				2A4F34051863E9400070C0ED /* Input */,
+				2A99A1FF183D4F07003080CC /* CloudsGlobal.h */,
 				2A6D8330182D6949001C2F45 /* BallDroppings */,
 				E72FF11817E688FE0007780D /* VisualSystemsLibrary */,
 			);
@@ -1249,6 +1271,7 @@
 				E7D32FA71751C626006706ED /* ofxPerlinBehavior.cpp in Sources */,
 				E7D32FA81751C626006706ED /* ofxRParticle.cpp in Sources */,
 				E7D32FA91751C626006706ED /* ofxRParticleGlowieRenderer.cpp in Sources */,
+				2A4F340C1863E9590070C0ED /* CloudsInput.cpp in Sources */,
 				E7D32FAA1751C626006706ED /* ofxRParticleRenderer.cpp in Sources */,
 				E7D32FAB1751C626006706ED /* ofxRParticleSystem.cpp in Sources */,
 				2A6D83B3182D6949001C2F45 /* ParamManager.cpp in Sources */,
@@ -1301,6 +1324,7 @@
 				E7CF78C81753FECA006B7D41 /* ofxEasingBounce.cpp in Sources */,
 				E7CF78C91753FECA006B7D41 /* ofxEasingCirc.cpp in Sources */,
 				E7CF78CA1753FECA006B7D41 /* ofxEasingCubic.cpp in Sources */,
+				2A4F340E1863E9590070C0ED /* CloudsInputMouse.cpp in Sources */,
 				E7CF78CB1753FECA006B7D41 /* ofxEasingElastic.cpp in Sources */,
 				E7CF78CC1753FECA006B7D41 /* ofxEasingExpo.cpp in Sources */,
 				E7CF78CD1753FECA006B7D41 /* ofxEasingLinear.cpp in Sources */,

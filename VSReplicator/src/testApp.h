@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxUI.h"
 #include "CloudsVisualSystemReplicator.h"
+#include "CloudsMixer.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -20,6 +21,9 @@ class testApp : public ofBaseApp{
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 	void exit();
-		
+		  
+    void audioRequested(float *output, int bufferSize, int nChannels);
+    
 	CloudsVisualSystemReplicator replicator;
+    CloudsMixer mixer;
 };

@@ -1,7 +1,6 @@
 
 #include "CloudsVisualSystemVectorFlow.h"
-
-//TODO preallocate buffers
+#include "CloudsGlobal.h"
 
 //--------------------------------------------------------------
 CloudsVisualSystemVectorFlow::CloudsVisualSystemVectorFlow(){
@@ -11,6 +10,10 @@ CloudsVisualSystemVectorFlow::CloudsVisualSystemVectorFlow(){
 	speed = 0;
 	sincPosition = ofVec2f(.5,.5);
 	sincRadius = 0;
+    sincStrength = 1;
+    curMSpeed = 0;
+    prevInputX = GetCloudsInputX();
+    prevInputY = GetCloudsInputY();
 }
 
 //--------------------------------------------------------------
@@ -22,17 +25,19 @@ string CloudsVisualSystemVectorFlow::getSystemName(){
 void CloudsVisualSystemVectorFlow::initFlowField(){
 	maxVertices = generateMaxVerts;
 	trailLength = generateTrailLength;
-	width = ofGetWidth();
-	height = ofGetHeight();
+	
+	width = getSharedRenderTarget().getWidth();
+	height = getSharedRenderTarget().getHeight();
 		
 	//gives our initial columns
-	cout << "creating " << width/int(step) << " " << height/int(step) << " lines" << endl;
+//	cout << "creating " << width/int(step) << " " << height/int(step) << " lines" << endl;
 
 	particles.clear();
 	particleMesh.clear();
 	particleMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+	particleMesh.setUsage(GL_STREAM_DRAW);
 	
-    cout << "adding vertices" << endl;
+//    cout << "adding vertices" << endl;
     
 	lines.clear();
 	lines.setMode(OF_PRIMITIVE_LINES);
@@ -48,8 +53,16 @@ void CloudsVisualSystemVectorFlow::initFlowField(){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemVectorFlow::selfSetup(){
-	colorMap.loadImage( getVisualSystemDataPath() + "GUI/defaultColorPalette.png" );
+	colorMap.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png" );
 	bIs2D = true;
+    
+    shaderBlurX.load(GetCloudsDataPath()+"/visualsystems/VectorFlow/shaders/simpleBlurHorizontal");
+    shaderBlurY.load(GetCloudsDataPath()+"/visualsystems/VectorFlow/shaders/simpleBlurVertical");
+    
+    initBlurFilter();
+    
+    // sound
+    synth.setOutputGen(buildSynth());
 }
 
 void CloudsVisualSystemVectorFlow::selfSetupGuis(){
@@ -58,7 +71,7 @@ void CloudsVisualSystemVectorFlow::selfSetupGuis(){
 
 void CloudsVisualSystemVectorFlow::selfUpdate(){
 	   
-	if(regenerateFlow){
+	if(regenerateFlow || width != ofGetWidth() || height != ofGetHeight()){
 		regenerateFlow = false;
 		initFlowField();
 	}
@@ -126,6 +139,16 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
 		c.a = fieldAlpha;
 		lines.setColor(i+1, c);
 	}
+    
+    // UPDATE Sound parameters
+    float distX = abs(GetCloudsInputX() - prevInputX);
+    float distY = abs(GetCloudsInputY() - prevInputY);
+    float mSpeed = sqrt(distX*distX + distY*distY);
+    curMSpeed += (mSpeed - curMSpeed)*.05;
+    lpfCutoff.value(ofMap(curMSpeed, 0, 20, 100, 5500, true));
+    volume.value(ofMap(curMSpeed, 0, 20, 0, .7, true));
+    prevInputX = GetCloudsInputX();
+    prevInputY = GetCloudsInputY();
 }
 
 void CloudsVisualSystemVectorFlow::addParticle(){
@@ -211,7 +234,7 @@ void CloudsVisualSystemVectorFlow::getSincSourceAngle(int x, int y, float& angle
 	if(sincRadius > 0 && distSq < sincRadSq){
 //		angle = ofMap( atan2(y,x) - atan2(mousePos.y,mousePos.x), -PI/2.0, PI/2.0, 0, 1.0 ) ;
 		angle = ofMap( atan2(sincToPos.y,sincToPos.x), -TWO_PI, TWO_PI, -1.0, 1.0 ) ;
-		weight = ofMap(distSq, 0, sincRadSq, 1.0, 0.0, true);
+		weight = ofMap(distSq, 0, sincRadSq, sincStrength, 0.0, true);
 //		weight = 1.;
 	}
 //		return
@@ -220,6 +243,9 @@ void CloudsVisualSystemVectorFlow::getSincSourceAngle(int x, int y, float& angle
 
 }
 void CloudsVisualSystemVectorFlow::selfDrawBackground(){
+    
+    // draw to first FBO
+    fboInitial.begin();
     
 	ofPushStyle();
 	ofEnableAlphaBlending();
@@ -236,11 +262,6 @@ void CloudsVisualSystemVectorFlow::selfDrawBackground(){
 	lines.draw();
 	particleMesh.draw();
 	
-//	ofSetColor(startColor);
-//	ofRect(0,0,100,100);
-//	ofSetColor(endColor);
-//	ofRect(100,0,100,100);
-	
 	if(!bClearBackground){
 		ofEnableAlphaBlending();
 		ofSetColor(0,0,0, 5);
@@ -248,6 +269,27 @@ void CloudsVisualSystemVectorFlow::selfDrawBackground(){
 	}
 	ofPopStyle();
 
+    fboInitial.end();
+
+    // BLUR fboInitial
+    fboBlurX.begin();
+    shaderBlurX.begin();
+    shaderBlurX.setUniform1f("blurAmnt", blurAmount);
+
+    // draw here
+    fboInitial.draw(0, 0);
+    
+    shaderBlurX.end();
+    fboBlurX.end();
+    
+    fboFinal.begin();
+    shaderBlurY.begin();
+    shaderBlurY.setUniform1f("blurAmnt", blurAmount);
+    fboBlurX.draw(0, 0);
+    shaderBlurY.end();
+    fboFinal.end();
+    
+    fboFinal.draw(0, 0);
 }
 
 void CloudsVisualSystemVectorFlow::selfDrawDebug(){
@@ -268,15 +310,21 @@ void CloudsVisualSystemVectorFlow::selfExit(){
 
 void CloudsVisualSystemVectorFlow::selfBegin(){
 	regenerateFlow = true;
+    
+    
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVectorFlow::audioRequested);
+    soundTrigger1.trigger();
+    soundTrigger2.trigger();
 }
 
 void CloudsVisualSystemVectorFlow::selfPresetLoaded(string presetPath)
 {
 	regenerateFlow = true;
+    initBlurFilter();
 }
 
 void CloudsVisualSystemVectorFlow::selfEnd(){
-	
+    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVectorFlow::audioRequested);
 }
 
 void CloudsVisualSystemVectorFlow::selfKeyPressed(ofKeyEventArgs & args){
@@ -337,6 +385,7 @@ void CloudsVisualSystemVectorFlow::selfSetupRenderGui(){
 	rdrGui->addSlider("chaos", 5, 100, &chaos);
 	rdrGui->addSlider("speed", 0, .1, &speed);
 	rdrGui->addSlider("sincRadius", 0, 1.0, &sincRadius);
+    rdrGui->addSlider("sincStrength", 0, 10.0, &sincStrength);
 	rdrGui->addSlider("fieldAmplitude", .0, 10.0, &fieldAmplitude);
 
 	rdrGui->addSlider("oscFreq", 0, .1, &oscFrequency);
@@ -349,6 +398,8 @@ void CloudsVisualSystemVectorFlow::selfSetupRenderGui(){
 	rdrGui->addToggle("Interpolate RGB", &interpRGB);
 	rdrGui->addToggle("Refresh Bg", &bClearBackground);
 	rdrGui->addToggle("Blend Add", &blendAdd);
+    
+    rdrGui->addSlider("Blur", 0, 10, &blurAmount);
 
 }
 
@@ -366,4 +417,53 @@ void CloudsVisualSystemVectorFlow::guiRenderEvent(ofxUIEventArgs &e){
 		endColor = sampler->getColor();
 	}
 }
+
+void CloudsVisualSystemVectorFlow::initBlurFilter()
+{
+    
+    fboBlurX.allocate(ofGetWidth(), ofGetHeight());
+    fboFinal.allocate(ofGetWidth(), ofGetHeight());
+    fboInitial.allocate(ofGetWidth(), ofGetHeight());
+    fboBlurX.begin();
+    ofClear(0, 0, 0);
+    fboBlurX.end();
+    fboFinal.begin();
+    ofClear(0, 0, 0);
+    fboFinal.end();
+    fboInitial.begin();
+    ofClear(0, 0, 0);
+    fboInitial.end();
+}
+
+Generator CloudsVisualSystemVectorFlow::buildSynth()
+{
+    string strDir = GetCloudsDataPath()+"sound/textures/";
+    
+    ofDirectory sdir(strDir);
+    //string strAbsPath = sdir.getAbsolutePath() + "/Wind 2.aif";
+    string strAbsPath = sdir.getAbsolutePath() + "/Wind 2.aif"; //Wind 2. aif
+    
+    SampleTable sample = loadAudioFile(strAbsPath);
+    
+    string strAbsPath2 = sdir.getAbsolutePath() + "/slowgrains.aif"; //slowgrains.aif
+    
+    SampleTable sample2 = loadAudioFile(strAbsPath2);
+    
+    lpfCutoff = synth.addParameter("cutoff_freq", 50).displayName("Cutoff Freq").min(50).max(8000);
+    volume = synth.addParameter("volume", 0.0).displayName("Cutoff Freq").min(0.0).max(1);
+    
+    Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(soundTrigger1).loop(1) * volume;
+    
+    Generator sampleGen2 = BufferPlayer().setBuffer(sample2).trigger(soundTrigger2).loop(1);
+    
+    LPF12 filter = LPF12().cutoff(lpfCutoff.smoothed());
+    
+    return (sampleGen2 * .1) + (sampleGen >> filter);
+}
+
+void CloudsVisualSystemVectorFlow::audioRequested(ofAudioEventArgs& args)
+{
+    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+}
+
 

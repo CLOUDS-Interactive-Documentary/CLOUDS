@@ -1,0 +1,31 @@
+<Map>
+    <Bangs></Bangs>
+    <Switches></Switches>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>STEP SIZE Y</WidgetName>
+                <WidgetID>21</WidgetID>
+                <WidgetCanvasParent>Spaghetti</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>STEP SIZE X</WidgetName>
+                <WidgetID>19</WidgetID>
+                <WidgetCanvasParent>Spaghetti</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>STEP SIZE Z</WidgetName>
+                <WidgetID>23</WidgetID>
+                <WidgetCanvasParent>Spaghetti</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>

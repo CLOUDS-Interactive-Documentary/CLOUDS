@@ -1,17 +1,15 @@
-//
-//  CloudsVisualSystemColony.h
-//  VSColony
-//
-//  Created by Patricio Gonzalez Vivo on 6/26/13.
-//
-//
+/* 
+ WOW SUCH VISUAL
+ VERY COPYRIGHT
+ */
+
 
 #pragma once
 
 #include "CloudsVisualSystem.h"
 
-#include "cCell.h"
-        
+#include "gCell.h"
+
 class CloudsVisualSystemColony : public CloudsVisualSystem {
 public:
     
@@ -23,10 +21,9 @@ public:
     void selfAutoMode();
     void selfUpdate();
     void selfDrawBackground();
+    void selfDraw();
     void selfDrawDebug();
     void selfSceneTransformation();
-    
-//    void draw(ofEventArgs & args);
     
     void selfExit();
     void selfBegin();
@@ -49,19 +46,44 @@ public:
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
     
-   
+    void selfPresetLoaded(string presetPath);
+    
     
 private:
     
-    ofFbo       foodFbo;
-    ofShader    noiseShader;
+    /*  SUCH PARAMS */
+    cellParams params;
+    bool levelSetMode;
+    int numInitialCells;
+    float translucenseCell, translucenseDish;
+    ofVec4f kernelColor_high, kernelColor_low;
+
+    /* MUCH PRIVATE */
+    float kernel_maxValue;
     
-	vector<ofImage> sprites;
-	ofImage noise;
-	
-    vector< colonyCell* > cells;
-    vector< colonyCell* > newborns;
+    /* MUCH GEOMETRY */
+    ofVboMesh   vbo;
     
-    float   noiseZoom;
-    int newbornCount;
+    /* WOW VIDEO */
+    ofFbo fbo_main;
+    ofTexture sprite, grunge;
+    ofShader    levelSet;
+    ofShader    billboard;
+    
+    /* LOL DATA */
+    colonyPartitionMap pMap;
+    vector< cellPtr > cells;
+    
+    /* SO GUI */
+    ofxUISuperCanvas* guiDynamics;
+    ofxUISuperCanvas* guiLooks;
+    
+    /* ALL THE UTILITY */
+    void updateFoodTexture();
+    bool areFbosAllocatedAndSized();
+    void loadShaders();
+    void reallocateFramebuffers();
+    
+    void clear();
+    void populate();
 };

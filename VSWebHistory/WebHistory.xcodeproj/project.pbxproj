@@ -478,6 +478,7 @@
 		64176862182BED9000B6AB20 /* ofxSQLiteWhere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteWhere.h; sourceTree = "<group>"; };
 		64176875182BED9000B6AB20 /* ofxTextWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextWriter.cpp; sourceTree = "<group>"; };
 		64176876182BED9000B6AB20 /* ofxTextWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextWriter.h; sourceTree = "<group>"; };
+		642CF4AF18318B1D007394FF /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = src/CloudsGlobal.h; sourceTree = "<group>"; };
 		643F130C18213B3B003988A3 /* FTBBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBBox.h; sourceTree = "<group>"; };
 		643F130D18213B3B003988A3 /* FTBitmapGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBitmapGlyph.h; sourceTree = "<group>"; };
 		643F130E18213B3B003988A3 /* FTBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBuffer.h; sourceTree = "<group>"; };
@@ -509,8 +510,7 @@
 		643F133518213B3B003988A3 /* ofxFTGLSimpleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLSimpleLayout.h; sourceTree = "<group>"; };
 		644AAEFA182BE667000CC433 /* ofxBillboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBillboard.cpp; sourceTree = "<group>"; };
 		644AAEFB182BE667000CC433 /* ofxBillboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBillboard.h; sourceTree = "<group>"; };
-		851182BD18303F4C003D4F58 /* WebHistory copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WebHistory copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		851182BE18303F4C003D4F58 /* WebHistory copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "WebHistory copy-Info.plist"; path = "/Users/jonathanminard/Documents/Development/openFrameworks/apps/CLOUDS/VSWebHistory/WebHistory copy-Info.plist"; sourceTree = "<absolute>"; };
+		851182BD18303F4C003D4F58 /* WebHistoryOculusDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebHistoryOculusDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8511834918303FD6003D4F58 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		8511834A18303FD6003D4F58 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -1293,8 +1293,7 @@
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
 				E4B69B5B0A3A1756003C02F2 /* WebHistoryDebug.app */,
-				851182BD18303F4C003D4F58 /* WebHistory copy.app */,
-				851182BE18303F4C003D4F58 /* WebHistory copy-Info.plist */,
+				851182BD18303F4C003D4F58 /* WebHistoryOculusDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1839,6 +1838,7 @@
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				642CF4AF18318B1D007394FF /* CloudsGlobal.h */,
 				641767BD182BECBE00B6AB20 /* WebHistory */,
 				E72FF11817E688FE0007780D /* VisualSystemsLibrary */,
 			);
@@ -1865,7 +1865,7 @@
 			);
 			name = WebHistoryOculus;
 			productName = myOFApp;
-			productReference = 851182BD18303F4C003D4F58 /* WebHistory copy.app */;
+			productReference = 851182BD18303F4C003D4F58 /* WebHistoryOculusDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E4B69B5A0A3A1756003C02F2 /* WebHistory */ = {
@@ -2361,7 +2361,7 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "WebHistory copy";
+				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2473,7 +2473,7 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release/libovr.a",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "WebHistory copy";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};

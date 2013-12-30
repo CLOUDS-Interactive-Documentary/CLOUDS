@@ -1,0 +1,121 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+	<title>CLOUDS</title>  
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+	<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" charset="utf-8" />
+	<link href="css/style.css" rel="stylesheet" media="screen"> 
+	<link href="css/fonts.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+
+	  
+	
+	<script type="text/javascript" src="js/lib/jquery.min.js"></script>	
+    <script type="text/javascript" src="js/lib/three.js"></script>
+    <script type="text/javascript" src="js/lib/tween.js"></script>
+	<script type="text/javascript" src="js/lib/tinycolor.js"></script>
+	<script type="text/javascript" src="js/lib/OrbitControls.js"></script>
+	<script type="text/javascript" src="js/lib/Detector.js"></script>
+	<script type="text/javascript" src="js/lib/THREEx.Fullscreen.js"></script>
+	<script type="text/javascript" src="js/lib/THREEx.WindowResize.js"></script>
+	<script type="text/javascript" src="js/lib/dat.gui.js"></script>
+	<script type="text/javascript" src="js/lib/stats.js"></script>
+	<script type="text/javascript" src="js/net/sockets.js"></script>
+	<script type="text/javascript" src="js/net/utils.js"></script>		
+	<script type="text/javascript" src="js/model/person.js"></script>
+	<script type="text/javascript" src="js/model/project.js"></script>
+	<script type="text/javascript" src="js/model/node.js"></script>	
+	<script type="text/javascript" src="js/model/connection.js"></script>
+	<script type="text/javascript" src="js/model/model.js"></script>
+	
+	<!--<script type="text/javascript" src="js/animation/animation.js"></script>-->
+	<script type="text/javascript" src="js/view/colorPalette.js"></script>
+	<script type="text/javascript" src="js/view/nodeView.js"></script>
+	<script type="text/javascript" src="js/three_js_utils/rectangle.js"></script>	
+	<script type="text/javascript" src="js/view/graphView.js"></script>	
+	<script type="text/javascript" src="js/net/loader.js"></script>		
+	<script type="text/javascript" src="js/controller.js"></script>	
+</head>  
+<body>  
+	<script id="vertexShader" type="x-shader/x-vertex">
+	uniform vec3 viewVector;
+	uniform float c;
+	uniform float p;
+	varying float intensity;
+	void main() 
+	{
+	    vec3 vNormal = normalize( normalMatrix * normal );
+		vec3 vNormel = normalize( normalMatrix * viewVector );
+		intensity = pow( c - dot(vNormal, vNormel), p );
+		
+	    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+	}
+	</script>
+
+	<!-- fragment shader a.k.a. pixel shader -->
+	<script id="fragmentShader" type="x-shader/x-vertex"> 
+	uniform vec3 glowColor;
+	varying float intensity;
+	void main() 
+	{
+		vec3 glow = glowColor * intensity;
+	    gl_FragColor = vec4( glow, 1.0 );
+	}
+	</script>
+	<video id="video" preload="auto"/>
+  			<source type="video/mov">
+  			Your browser does not support the video tag.
+	</video>
+	<div id="graph"></div>
+	<div id="topic"></div>
+	<div id="overlay">	
+		<div id="question"  >How you 'sketch' with code?</div>
+		<div id='clip_info'  class="lower_third">			
+			<div class="column1">
+					<div id="first">Kyle</div>
+					<div id="last">Chayka</div>
+				</div>
+				<div class="column2">
+					<div class="column2_1">
+						<div id="title" class="box">Writer + Curator</div>
+						<div id="location" class="box" >Brooklyn, NY</div>
+					</div>
+					<div class="column2_2">
+						<div id="byline">Freelance writer who covers digital media art, internet culture, and commerce for
+publications including the new yorker and the new republic. He has also curated exhibitions at Garis & Hahn gallery and moving image art fair in New York and London.</div>
+					</div>
+				</div>
+			<img src="images/circle.png" class="border-top-left"/>
+			<img src="images/circle.png" class="border-top-right"/>
+			<img src="images/circle.png" class="border-bottom-right"/>
+			<img src="images/circle.png" class="border-bottom-left"/>
+		</div>
+		<div id="project_info" hidden class="lower_third" >		
+			<div class="column1">
+				<div id="projectex_title">People Staring at Computers</div>
+			</div>
+			<div class="column2">
+				<div class="column2_1">
+					<div id="projectex_artist" class="box">Kyle McDonald</div>
+				</div>
+				<div class="column2_2">
+					<div id="projectex_desc">A photographic intervention. Custom app installed around NYC computer stores, taking a picture each minute and uploading it. Photos exhibited on site, full screen, on every computer.</div>
+				</div>	
+			</div>
+			<img src="images/circle.png" class="border-top-left"/>
+			<img src="images/circle.png" class="border-top-right"/>
+			<img src="images/circle.png" class="border-bottom-right"/>
+			<img src="images/circle.png" class="border-bottom-left"/>
+		</div>
+
+	</div>	
+	
+	
+
+	<script src="fonts/blender_bold.typeface.js"></script>   
+    <script src="fonts/blender_book.typeface.js"></script>   
+    <script src="fonts/blender_medium.typeface.js"></script>   
+    <script src="fonts/blender_strong.typeface.js"></script>   
+    <script src="fonts/blender_thin.typeface.js"></script>    
+	
+</body>  
+</html>  

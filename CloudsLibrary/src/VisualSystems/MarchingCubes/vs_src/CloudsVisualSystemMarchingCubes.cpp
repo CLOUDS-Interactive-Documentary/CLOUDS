@@ -5,21 +5,89 @@
 #include "CloudsVisualSystemMarchingCubes.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-
-string surfaceTypes[] = { "noise", "spheres", "sine^2"};
-float elapsedTime;
-bool bPause = false;
-
 void CloudsVisualSystemMarchingCubes::selfSetupGui()
 {
+	customGui = new ofxUISuperCanvas("MARCHING CUBES", gui);
+	customGui->copyCanvasStyle(gui);
+	customGui->copyCanvasProperties(gui);
+	customGui->setName("MarchingCubes");
+	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    customGui->addSpacer();
+    customGui->addToggle("PAUSED", &bPaused);
+    customGui->addToggle("DRAW GRID", &bDrawGrid);
+    customGui->addToggle("RENDER NORMALS", &bRenderNormals);
+    customGui->addButton("FLIP NORMALS", false);
+    customGui->addToggle("SMOOTHED", &mc.bSmoothed);
+    customGui->addToggle("WIREFRAME", &bWireframe);
+    customGui->addSlider("THRESHOLD", 0, 1, &mc.threshold);
+    
+    customGui->addSpacer();
+    vector<string> surfaceTypes;
+    surfaceTypes.push_back("NOISE");
+    surfaceTypes.push_back("SPHERES");
+    surfaceTypes.push_back("SINE^2");
+    customGui->addRadio("SURFACE TYPES", surfaceTypes);
+    
+    customGui->addSpacer();
+    fgHue = new ofx1DExtruder(0);
+    fgHue->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(fgHue);
+    customGui->addSlider("FG HUE", 0.0, 255.0, fgHue->getPosPtr());
+    fgSat = new ofx1DExtruder(0);
+    fgSat->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(fgSat);
+    customGui->addSlider("FG SAT", 0.0, 255.0, fgSat->getPosPtr());
+    fgBri = new ofx1DExtruder(0);
+    fgBri->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(fgBri);
+    customGui->addSlider("FG BRI", 0.0, 255.0, fgBri->getPosPtr());
+    fgAlpha = new ofx1DExtruder(0);
+    fgAlpha->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(fgAlpha);
+    customGui->addSlider("FG ALPHA", 0.0, 255.0, fgAlpha->getPosPtr());
 	
-	
+	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemMarchingCubes::selfGuiEvent);
+	guis.push_back(customGui);
+	guimap[customGui->getName()] = customGui;
 }
-
 
 void CloudsVisualSystemMarchingCubes::selfGuiEvent(ofxUIEventArgs &e)
 {
+    if (e.widget->getName() == "PAUSED") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            pauseTime = ofGetElapsedTimef();
+        }
+        else {
+            startTime += ofGetElapsedTimef() - pauseTime;
+        }
+    }
+    else if (e.widget->getName() == "FLIP NORMALS" && ((ofxUIToggle *)e.widget)->getValue()) {
+        mc.flipNormals();
+    }
 	
+    else if (e.widget->getName() == "NOISE" && ((ofxUIToggle *)e.widget)->getValue()) {
+        differentSurfaces = 0;
+    }
+    else if (e.widget->getName() == "SPHERES" && ((ofxUIToggle *)e.widget)->getValue()) {
+        differentSurfaces = 1;
+    }
+    else if (e.widget->getName() == "SINE^2" && ((ofxUIToggle *)e.widget)->getValue()) {
+        differentSurfaces = 2;
+    }
+    
+    else if (e.widget->getName() == "FG HUE") {
+        fgHue->setPosAndHome(fgHue->getPos());
+	}
+    else if (e.widget->getName() == "FG SAT") {
+        fgSat->setPosAndHome(fgSat->getPos());
+	}
+    else if (e.widget->getName() == "FG BRI") {
+        fgBri->setPosAndHome(fgBri->getPos());
+	}
+    else if (e.widget->getName() == "FG ALPHA") {
+        fgAlpha->setPosAndHome(fgAlpha->getPos());
+    }
 }
 
 void CloudsVisualSystemMarchingCubes::selfSetupSystemGui(){
@@ -38,19 +106,27 @@ void CloudsVisualSystemMarchingCubes::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
-void CloudsVisualSystemMarchingCubes::selfSetup(){
-    glEnable(GL_DEPTH_TEST);
-	
-	differentSurfaces = 0;
-	drawGrid = true;
+void CloudsVisualSystemMarchingCubes::selfSetup()
+{
+    // Set defaults.
+    bPaused = false;
+    startTime = pauseTime = elapsedTime = 0;
+    
+    bRenderNormals = true;
+	bWireframe = false;
+    bDrawGrid = true;
+    differentSurfaces = 0;
+    
+    fgColor.set(128);
+
 	mc.setup();
-	mc.setResolution(32,16,32);
-	mc.scale.set( 500, 250, 500 );
+	mc.setResolution(32, 16, 32);
+	mc.scale.set(500, 250, 500);
     
-	mc.setSmoothing( false );
+	mc.setSmoothing(false);
     
-	normalShader.load(getVisualSystemDataPath("MarchingCubes") + "shaders/normalShader");
-	
+	normalShader.load(getVisualSystemDataPath() + "shaders/normalShader");
+    
 }
 
 void CloudsVisualSystemMarchingCubes::selfPresetLoaded(string presetPath){
@@ -58,16 +134,16 @@ void CloudsVisualSystemMarchingCubes::selfPresetLoaded(string presetPath){
 }
 
 void CloudsVisualSystemMarchingCubes::selfBegin(){
+
 }
 
+void CloudsVisualSystemMarchingCubes::selfUpdate()
+{    
+    fgColor.setHsb(fgHue->getPos(), fgSat->getPos(), fgBri->getPos(), fgAlpha->getPos());
 
-
-void CloudsVisualSystemMarchingCubes::selfUpdate(){
-    
-	if(!bPause) elapsedTime = ofGetElapsedTimef();
+    if (!bPaused) elapsedTime = ofGetElapsedTimef() - startTime;
 	
-	if(differentSurfaces == 0){
-		//NOISE
+	if (differentSurfaces == 0) {  // NOISE
 		float noiseStep = elapsedTime * .5;
 		float noiseScale = .06;
 		float noiseScale2 = noiseScale * 2.;
@@ -82,8 +158,7 @@ void CloudsVisualSystemMarchingCubes::selfUpdate(){
 			}
 		}
 	}
-	else if(differentSurfaces == 1){
-		//SPHERES
+	else if (differentSurfaces == 1) {  // SPHERES
 		ofVec3f step = ofVec3f(3./mc.resX, 1.5/mc.resY, 3./mc.resZ) * PI;
 		for(int i=0; i<mc.resX; i++){
 			for(int j=0; j<mc.resY; j++){
@@ -95,9 +170,8 @@ void CloudsVisualSystemMarchingCubes::selfUpdate(){
 			}
 		}
 	}
-	else if(differentSurfaces == 2){
-		//SIN
-		float sinScale = .5;
+	else if (differentSurfaces == 2) {  // SIN^2
+		static float sinScale = .5f;
 		for(int i=0; i<mc.resX; i++){
 			for(int j=0; j<mc.resY; j++){
 				for(int k=0; k<mc.resZ; k++){
@@ -109,44 +183,29 @@ void CloudsVisualSystemMarchingCubes::selfUpdate(){
 	}
 	
 	//update the mesh
-	mc.update();
-    //	mc.update(threshold);
-	
+	mc.update();	
 }
 
-void CloudsVisualSystemMarchingCubes::selfDraw(){
-    
-    float elapsedTime = ofGetElapsedTimef();
-    ofSetWindowTitle( ofToString( ofGetFrameRate() ) );
+void CloudsVisualSystemMarchingCubes::selfDraw()
+{
+    if (!bRenderNormals && fgColor.a < 255.0f) {
+        glDisable(GL_DEPTH_TEST);
+    }
+    else {
+        glEnable(GL_DEPTH_TEST);
+    }
 	
-	camera.begin();
-	
-	//draw the mesh
+    //draw the mesh
 	normalShader.begin();
-    
-	wireframe?	mc.drawWireframe() : mc.draw();
-	
+    normalShader.setUniform1i("bRenderNormals", bRenderNormals);
+    normalShader.setUniform4f("fgColor", fgColor.r / 255.0f, fgColor.g / 255.0f, fgColor.b / 255.0f, fgColor.a / 255.0f);
+    {
+        bWireframe?	mc.drawWireframe() : mc.draw();
+	}
 	normalShader.end();
 	
 	//draw the voxel grid
-	if(drawGrid)	mc.drawGrid();
-	
-	camera.end();
-	
-	string info = "fps:" + ofToString(ofGetFrameRate()) +
-	+ "\nnum vertices:" + ofToString(mc.vertexCount, 0)
-	+ "\nthreshold:" + ofToString(mc.threshold)
-    + "\n' ' changes surface type, currently " + surfaceTypes[differentSurfaces]
-	
-    + "\n's' toggles smoothing"
-    + "\n'w' toggles wireframe"
-    + "\n'f' flips normals"
-    + "\n'g' toggles draw grid"
-    + "\n'p' toggles pause"
-    + "\n'up/down' +- threshold";
-    
-	ofDrawBitmapString(info, 20, 20);
-	
+	if (bDrawGrid) mc.drawGrid();
 }
 
 
@@ -156,62 +215,19 @@ void CloudsVisualSystemMarchingCubes::selfDrawDebug(){
 
 void CloudsVisualSystemMarchingCubes::selfDrawBackground(){
 
-	//turn the background refresh off
-	//bClearBackground = false;
-	
 }
 
 void CloudsVisualSystemMarchingCubes::selfEnd(){
 }
 
-void CloudsVisualSystemMarchingCubes::selfExit()
-{
+void CloudsVisualSystemMarchingCubes::selfExit(){
 
 }
 
 void CloudsVisualSystemMarchingCubes::selfKeyPressed(ofKeyEventArgs &args){
-
-switch (args.key) {
-    case 'w':
-        wireframe = !wireframe;
-        break;
-        
-    case 'f':
-        mc.flipNormals();
-        break;
-        
-    case 's':
-        mc.setSmoothing( !mc.getSmoothing() );
-        break;
-        
-    case 'g':
-        drawGrid = !drawGrid;
-        break;
-        
-    case ' ':
-        differentSurfaces++;
-        if(differentSurfaces>=3){
-            differentSurfaces = 0;
-        }
-        break;
-        
-    case 'p':
-        bPause = !bPause;
-        break;
-        
-    case OF_KEY_UP:
-        mc.threshold += .03;
-        break;
-    case OF_KEY_DOWN:
-        mc.threshold -= .03;
-        break;
-        
-    default:
-        break;
-}
-
 	
 }
+
 void CloudsVisualSystemMarchingCubes::selfKeyReleased(ofKeyEventArgs &args){
 	
 }

@@ -1,0 +1,47 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>855.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Size</Name>
+    <Value>96.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Resolution</Name>
+    <Value>95.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Height</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Min_Dist</Name>
+    <Value>0.487684727</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Min_Size</Name>
+    <Value>0.044334974</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Blocks_Alpha</Name>
+    <Value>0.068965517</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Chroma_Distortion</Name>
+    <Value>-0.182265997</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Grain_Distortion</Name>
+    <Value>0.000000000</Value>
+</Widget>

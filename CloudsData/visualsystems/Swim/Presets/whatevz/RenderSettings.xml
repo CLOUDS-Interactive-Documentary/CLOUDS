@@ -1,0 +1,92 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>449.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>regenerate</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>zoneRadius</Name>
+    <Value>500.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>alignmentLower</Name>
+    <Value>0.330000013</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>alignmentUpper</Name>
+    <Value>0.660000026</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>repelStrength</Name>
+    <Value>0.200000003</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>alignStrength</Name>
+    <Value>0.200000003</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>attractStrength</Name>
+    <Value>0.200000003</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxDistFromCentre</Name>
+    <Value>1500.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>numJellyOne</Name>
+    <Value>73.793106079</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>numJellyTwo</Name>
+    <Value>66.896545410</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>numGreyFish</Name>
+    <Value>66.896545410</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>greySizeAverage</Name>
+    <Value>0.700000048</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>greySizeStdDeviation</Name>
+    <Value>0.280788183</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>numYellowFish</Name>
+    <Value>69.655166626</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>yellowSizeAverage</Name>
+    <Value>0.557142854</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>yellowSizeStdDeviation</Name>
+    <Value>0.211822659</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>fishTexAmt</Name>
+    <Value>1.000000000</Value>
+</Widget>

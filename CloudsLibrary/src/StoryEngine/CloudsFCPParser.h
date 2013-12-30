@@ -12,17 +12,19 @@
 #include "CloudsLink.h"
 #include <set>
 #include "ofRange.h"
+#include "CloudsProjectExample.h"
+
 class CloudsFCPParser {
   public:
-    
+
 	CloudsFCPParser();
-	
+
 	void loadFromFiles();
     void setup(string directory);
     void refreshXML();
 	void setCombinedVideoDirectory(string directory);
 	bool printErrors;
-	
+
 #pragma mark Clips
 	bool hasClipWithLinkName(string linkname);
 	bool hasClipWithID(string ID);
@@ -32,11 +34,16 @@ class CloudsFCPParser {
 	CloudsClip& getClipWithID( string ID, bool& clipFound );
 
 #pragma mark Links
+	void parseVOClips();
     void parseLinks(string linkFile);
-//    void parseClusterMap(string mapFile);
+//    void parseClusterMap(string mapFile); //SVG
 	void parseClusterNetwork(string fileName);
+	void parseProjectExamples(string filename);
+	vector<CloudsProjectExample>& getProjectExamples();
+	CloudsProjectExample& getProjectExampleWithTitle(string title);
 	
 	void getOverlappingClipIDs();
+	//TODO: cache this and don't call it every start up	
     void autolinkSequentialClips();
     
     map<string,string> cloudsClipToFileID;
@@ -65,6 +72,9 @@ class CloudsFCPParser {
     void refreshAllKeywords();
 	void printSpeakerList();
 	void printDichotomyRatios();
+    
+    void addIntervention(string clipName, string interventionName);
+	bool clipHasIntervention(string clipName);
 	
 	//QUERIES
 	//true if A has any out going links at all
@@ -99,16 +109,11 @@ class CloudsFCPParser {
 	float percentOfClipsLinked();
 	float getAllClipDuration();
 	
-	//create a list that maps all of the tags back to closest key theme
-//	void populateKeyThemes();
-//	void populateKeyThemes(set<string>& keyThemes);
-//	string getKeyThemeForTag(string tag);
-	
 #pragma mark Keywords
     void sortKeywordsByOccurrence(bool byOccurrence);
     vector<string>& getAllKeywords();
     vector<CloudsClip>& getAllClips();
-	CloudsClip& getRandomClip(bool hasCombinedVideo = false,
+	CloudsClip& getRandomClip(bool hasMediaAsset = false,
 							  bool hasQuestion = false,
 							  bool hasStartQuestion = false);
 	int getNumberOfClipsWithKeyword(string filterWord);
@@ -132,6 +137,7 @@ class CloudsFCPParser {
     bool operator()(const string& a, const string& b);
     vector<string>& getContentKeywords();
 	vector<string>& getKeywordFamily(string keyword);
+    
 	
 #pragma mark key themes
 	string closestKeyThemeToTag(string searchTag);
@@ -173,14 +179,19 @@ class CloudsFCPParser {
 	
 	vector<int> questionIndeces;
 	vector<int> startQuestionIndeces;
-	vector<int> hasCombinedVideoIndeces;
-	vector<int> hasCombinedVideoAndQuestionIndeces;
+	vector<int> hasMediaAssetIndeces;
+	vector<int> hasMediaAssetAndQuestionIndeces;
 	vector<int> hasCombinedAndIsStartingClipIndeces;
 	
     map<string, vector<CloudsLink> > linkedConnections;
 	map<string, vector<CloudsLink> > suppressedConnections;
 	map<string, vector<string> > sourceSupression;
+    map<string, string> clipInterventions;
     
+	//PROJECT EXAMPLES
+	vector<CloudsProjectExample> projectExamples;
+	map<string,int> clipIdToProjectExample;
+	
 	//KEYWORDS + CLUSTER NETWORK
     vector<pair<string, ofVec3f> > keywordCentroids;
 	map<string, vector<string> > keywordAdjacency;
@@ -193,8 +204,9 @@ class CloudsFCPParser {
     int getCentroidMapIndex(string keyword);
 	void calculateKeywordAdjascency();
 	void calculateKeywordFamilies();
-
+    void saveInterventions(string interventionsFile);
 	
+	CloudsProjectExample dummyProjectExample;
     CloudsClip dummyClip; // for failed reference returns
 	float lastBackupTime;
 	float backupTimeInterval;

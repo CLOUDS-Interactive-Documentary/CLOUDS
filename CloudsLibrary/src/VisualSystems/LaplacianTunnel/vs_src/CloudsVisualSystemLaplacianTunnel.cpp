@@ -3,13 +3,14 @@
 //
 
 #include "CloudsVisualSystemLaplacianTunnel.h"
-#include "CloudsRGBDVideoPlayer.h"
+
 
 bool meshsort(NamedVbo a, NamedVbo b){
-	return ofToInt( ofSplitString(a.name,"Tunnel")[1] ) < ofToInt( ofSplitString(b.name,"Tunnel")[1] );
+//	return ofToInt( ofSplitString(a.name,"Tunnel_")[1] ) < ofToInt( ofSplitString(b.name,"Tunnel_")[1] );
+	return ofToInt( a.name ) < ofToInt( b.name );
 }
 
-int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVbo &vbo, string path) {
+int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVboByteColor &vbo, string path) {
     char* buffer;
     long size;
 	
@@ -28,10 +29,57 @@ int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVbo &vbo, string path) {
     int numPts = ints[0];
     int numTriangles = ints[1];
     float *pts = (float *) (ints+2);
-	
 	for(int i = 0; i < numPts; i++){
 		ofVec3f p(pts[i*3+0],pts[i*3+1],pts[i*3+2]);
-		center += p;
+		//center += p;
+		if(!isnan(p[0])) {
+			min = ofVec3f(MIN(min.x,p.x),
+						  MIN(min.y,p.y),
+						  MIN(min.z,p.z));
+			max = ofVec3f(MAX(max.x,p.x),
+						  MAX(max.y,p.y),
+						  MAX(max.z,p.z));
+		}
+	}
+	//center /= numPts;
+	
+    unsigned int * indices = ints + 2 + numPts*3+numPts;
+	
+    //not sure what is enable or disable by default
+    vbo.enableIndices();
+	vbo.enableColors();
+    //vbo.enableNormals();
+    //vbo.disableColors();
+    vbo.disableNormals();
+	vbo.disableTexCoords();
+    vbo.setVertexData(pts,3,numPts, GL_STATIC_DRAW,sizeof(float)*3);
+    //vbo.setNormalData(pts+numPts*3,numPts, GL_STATIC_DRAW,sizeof(float)*3);
+	vbo.setColorData(pts+numPts*3,numPts, GL_STATIC_DRAW,sizeof(unsigned char)*4);
+	vbo.setIndexData(indices,numTriangles*3, GL_STATIC_DRAW);
+	
+	//cout << "File " << path << " has " << numTriangles << " triangles " << endl;
+	return numTriangles*3;
+}
+
+int CloudsVisualSystemLaplacianTunnel::loadMeshPLY(ofVboByteColor &vbo, string path) {
+    char* buffer;
+    long size;
+	
+	//cout << "path is " << path << endl;
+	
+    ofMesh mesh;
+	mesh.load(path);
+	vbo.enableIndices();
+    //vbo.enableNormals();
+    vbo.enableColors();
+    vbo.disableNormals();
+	vbo.disableTexCoords();
+	vbo.setMesh(mesh,GL_STATIC_DRAW);
+	int numPts = mesh.getNumVertices();
+	
+	for(int i = 0; i < numPts; i++){
+		ofVec3f p = mesh.getVertex(i);
+		//center += p;
 		min = ofVec3f(MIN(min.x,p.x),
 					  MIN(min.y,p.y),
 					  MIN(min.z,p.z));
@@ -40,25 +88,15 @@ int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVbo &vbo, string path) {
 					  MAX(max.z,p.z));
 		
 	}
-	center /= numPts;
+	//center /= numPts;
 	
-    unsigned int * indices = ints + 2 + numPts*6;
+	
     //not sure what is enable or disable by default
-    vbo.enableIndices();
-    vbo.enableNormals();
-    vbo.disableColors();
-    vbo.disableTexCoords();
-    vbo.setVertexData(pts,3,numPts,GL_STATIC_DRAW,sizeof(float)*3);
-    vbo.setNormalData(pts+numPts*3,numPts,GL_STATIC_DRAW,sizeof(float)*3);
-    vbo.setIndexData(indices,numTriangles*3,GL_STATIC_DRAW);
+    
 	
 	//cout << "File " << path << " has " << numTriangles << " triangles " << endl;
-	return numTriangles*3;
+	return mesh.getNumIndices();
 }
-
-//CloudsVisualSystemLaplacianTunnel::~CloudsVisualSystemLaplacianTunnel(){
-//	clear();
-//}
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemLaplacianTunnel::selfSetupGui(){
@@ -68,11 +106,14 @@ void CloudsVisualSystemLaplacianTunnel::selfSetupGui(){
     customGui->copyCanvasProperties(gui);
 	
 	customGui->addIntSlider("num replications", 1, 5, &numReplications);
-	customGui->addSlider("replication offset", 0, 500, &replicationOffset);
-	customGui->addSlider("fog density", 0, .3, &fogDensity);
-	customGui->addSlider("light distance", 20, 600, &lightDistance);
-	customGui->addSlider("cam speed", 0, 10, &cameraSpeed);
-	customGui->addSlider("corkscrew factor", 0, .2, &corkscrewFactor);
+//	customGui->addSlider("fog density", 0, .3, &fogDensity);
+	customGui->addSlider("cam speed", 0, 2, &cameraSpeed);
+	customGui->addToggle("draw points", &bDrawPoints);
+	customGui->addToggle("external debug cam", &bUseExternalCamera);
+	customGui->addSlider("max look angle", 0, 90, &maxLookAngle);
+	customGui->addToggle("palindrome", &bPalindrome);
+	customGui->addSlider("growh fps", 0, 30, &growthFPS);
+	
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemLaplacianTunnel::selfGuiEvent);
 	
@@ -109,24 +150,35 @@ void CloudsVisualSystemLaplacianTunnel::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemLaplacianTunnel::selfSetup(){
 	frameCount = 0;
-	fps = 15;
+	bUseExternalCamera = false;
+	bPalindrome = false;
+	lastFrameTime = 0;
+	growthFPS = 0;
+	currentGrowthIndex = 0;
 	
-	ofDirectory objs(getVisualSystemDataPath() + "Meshes/");
+	ofDirectory objs(getVisualSystemDataPath(true) + "Meshes/");
 	objs.allowExt("vbo");
 	objs.listDir();
 	
 	clear();
 	
+	min.set(999999);
+	max.set(-99999);
+	center.set(14.000,5.900,-13.950);
 	int numFiles = objs.numFiles();
 	vbos.resize( numFiles );
 	for(int i = 0; i < numFiles; i++){
-		vbos[i].vbo = new ofVbo();
+		vbos[i].vbo = new ofVboByteColor();
 		vbos[i].name = objs.getName(i);
 		vbos[i].indexCount = loadMesh(*vbos[i].vbo, objs.getPath( i ) );
+		//vbos[i].indexCount = loadMeshPLY(*vbos[i].vbo, objs.getPath( i ) );
 	}
 	
 	sort(vbos.begin(), vbos.end(), meshsort);
 	
+	reloadShader();
+	tunnelCam.setNearClip(.01);
+	tunnelCam.setFov(70);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -140,9 +192,8 @@ void CloudsVisualSystemLaplacianTunnel::selfPresetLoaded(string presetPath){
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemLaplacianTunnel::selfBegin(){
-	tunnelCam.setPosition(center - ofVec3f(0,300,0));
+	tunnelCam.setPosition(center + ofVec3f(0,(max.y - min.y)*.5,0));
 	tunnelCam.lookAt(center, ofVec3f(1,0,0));
-	startTime = ofGetElapsedTimef();
 }
 
 //do things like ofRotate/ofTranslate here
@@ -153,79 +204,105 @@ void CloudsVisualSystemLaplacianTunnel::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemLaplacianTunnel::selfUpdate(){
-	tunnelCam.dolly(-cameraSpeed);
-	headlight.setPointLight();
-	headlight.setPosition(tunnelCam.getPosition() + ofVec3f(0,lightDistance,0));
+	tunnelCam.setPosition( ofVec3f(tunnelCam.getPosition().x,
+								   tunnelCam.getPosition().y + cameraSpeed,
+								   tunnelCam.getPosition().z) );
+	
+	externalCam.setTarget(tunnelCam.getPosition());
+
+	
+	ofVec2f targetLookAngle;
+	targetLookAngle.x = ofMap(GetCloudsInputX(), 0, ofGetWidth(), -maxLookAngle,maxLookAngle);
+	targetLookAngle.y = ofMap(GetCloudsInputY(), 0, ofGetHeight(),-maxLookAngle,maxLookAngle);
+	
+	currentLookAngle.interpolate(targetLookAngle, .05);
+	
+	ofQuaternion base, rx,ry;
+	base.makeRotate(90, 1, 0, 0); //straight up
+	rx.makeRotate(currentLookAngle.x, 0, 0, -1);
+	ry.makeRotate(currentLookAngle.y, -1, 0, 0);
+	tunnelCam.setOrientation(base * rx * ry);
+		
+	currentGrowthIndex += (ofGetElapsedTimef() - lastFrameTime) * growthFPS;
+	lastFrameTime = ofGetElapsedTimef();
+}
+
+void CloudsVisualSystemLaplacianTunnel::reloadShader(){
+	shader.load(getVisualSystemDataPath() + "shaders/laplacian");
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemLaplacianTunnel::selfDraw(){
+	
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
+	glFrontFace(GL_CCW);
+	
+	glPointSize(2);
 	if(vbos.size() > 0){
+		shader.begin();
 		
-		glPushAttrib(GL_FOG_BIT);
-		
-		glEnable(GL_FOG);
-		glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
-		glFogi(GL_FOG_MODE, GL_EXP);
-		
-		//	float FogCol[3]={0.8f,0.8f,0.8f}; // Define a nice light grey
-		//	glFogfv(GL_FOG_COLOR, FogCol);     // Set the fog color
-		glFogf(GL_FOG_DENSITY, powf(fogDensity,2));
-		
-		ofFloatColor bgColor = ofFloatColor::fromHsb(bgHue, bgSat, bgBri);
-		
-		GLfloat fogColor[4] = {bgColor.r/255.,bgColor.g/255.,bgColor.b/255., 1.0 };
-		glFogfv (GL_FOG_COLOR, fogColor);
-		glEnable(GL_DEPTH_TEST);
-		//glDisable(GL_DEPTH_TEST);
-		
-		ofEnableAlphaBlending();
-
-		int vboIndex = int( (ofGetElapsedTimef() - startTime) * fps) % vbos.size() ;
-		
-		headlight.enable();
+		ofFloatColor color = ofFloatColor::fromHsb(bgHue/255., bgSat/255., bgBri/255.);
 		float spread = (max.y - min.y);
+		shader.setUniform1f("minFogDist",spread*(numReplications-2.));
+		shader.setUniform1f("maxFogDist",spread*(numReplications-1.));
+		shader.setUniform1f("cameray", tunnelCam.getPosition().y);
+		shader.setUniform3f("fogColor",color.r,color.g,color.b);
+//		shader.setUniformMatrix4f("inverseView", tunnelCam.getModelViewMatrix().getInverse());
 		float startY = min.y + tunnelCam.getPosition().y - fmod(tunnelCam.getPosition().y, spread);
 		
-		mat->begin();
-//		ofSphere(tunnelCam.getPosition(), 20);
-//		numReplications = 1;
-//		ofTranslate(0,translateAmount,0);
-
+		ofMatrix4x4 geo;
+		ofSetColor(255);
+		
 		for(int i = 0; i < numReplications; i++){
 			ofPushMatrix();
-			glPointSize(2);
-			float translateAmount = (startY + i*spread);
-			ofTranslate(0,translateAmount,0);
-			ofTranslate(center);
-			ofRotate(translateAmount*corkscrewFactor,0,1,0);
-			ofTranslate(-center);
 			
-//			cout << "translating " << translateAmount << " camera is currently at " << tunnelCam.getPosition().y << endl;
+			float translateAmount = (startY + i*spread);
+			float rotationAngle = (i+int(tunnelCam.getPosition().y/spread))*90;
+//			ofTranslate(0,translateAmount,0);
+//			ofTranslate(center);
+//			ofRotate(rotationAngle,0,-1,0);
+//			ofTranslate(-center);
+			
+			geo.makeIdentityMatrix();
+			geo.translate(-center);
+			geo.rotate(rotationAngle,0,-1,0);
+			geo.translate(center);
+			geo.translate(0, translateAmount, 0);
+			ofMultMatrix(geo);
+			
+			shader.setUniformMatrix4f("geoTransform",geo);
 			
 			float cameraoffset = tunnelCam.getPosition().y - translateAmount - spread;
-			int index = int(ofMap(cameraoffset, 0, -spread*numReplications, 1.0, 0.0, true) * (vbos.size()-1));
-
-//			if(i == 0){
-//				ofSetColor(0);
-//				vbos[index].vbo->drawElements(GL_TRIANGLES, vbos[index].indexCount);
-//			}
-			ofSetColor(255);
-			//vbos[index].vbo->drawElements(GL_TRIANGLES, vbos[index].indexCount);
-			//vbos[index].vbo->draw(GL_TRIANGLES, 0, vbos[index].indexCount);
-			vbos[index].vbo->draw(GL_POINTS, 0, vbos[index].indexCount);
+			
+			int index;
+			if(bPalindrome){
+				index = fmod(currentGrowthIndex, vbos.size()*2);
+				//palindrome wrap
+				if(index >= vbos.size()){
+					index = vbos.size()*2 - index - 1;
+				}
+			}
+			else{
+				index = int( ofMap(cameraoffset, 0, -spread*numReplications, vbos.size()-1, 0.0, true) );
+			}
+			if(bDrawPoints){
+				vbos[index].vbo->draw(GL_POINTS, 0, vbos[index].indexCount);
+			}
+			else{
+				vbos[index].vbo->drawElements(GL_TRIANGLES, vbos[index].indexCount);
+			}
 			
 			ofPopMatrix();
 		}
 
-		
-		mat->end();
-		headlight.disable();
-
-		glPopAttrib();
+		shader.end();
 	}
 	
+	glDisable(GL_CULL_FACE);
+
 }
 
 // draw any debug stuff here
@@ -263,7 +340,9 @@ void CloudsVisualSystemLaplacianTunnel::clear(){
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemLaplacianTunnel::selfKeyPressed(ofKeyEventArgs & args){
-	
+	if(args.key == 'R'){
+		reloadShader();
+	}
 }
 void CloudsVisualSystemLaplacianTunnel::selfKeyReleased(ofKeyEventArgs & args){
 	

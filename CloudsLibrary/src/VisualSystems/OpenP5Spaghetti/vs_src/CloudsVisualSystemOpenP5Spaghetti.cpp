@@ -6,18 +6,12 @@
 
 float CloudsVisualSystemOpenP5Spaghetti::NWalkers = 100;
 bool CloudsVisualSystemOpenP5Spaghetti::smooth = true;
-bool CloudsVisualSystemOpenP5Spaghetti::gnarly= false;
 //bool CloudsVisualSystemOpenP5Spaghetti::drawTriangles = false;
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
 
     // Set defaults.
-    currSpin = 0.0f;
-    spinSpeed = 0.5f;
-    float dim = 16;
-	float xInit = OFX_UI_GLOBAL_WIDGET_SPACING;
-    float length = 255-xInit;
     currSpin = 0.0f;
     spinSpeed = 0.5f;
 
@@ -28,47 +22,50 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 
    
-    customGui->addSpacer(length-xInit, 2);
+    customGui->addSpacer();
     customGui->addLabel("SIMULATION");
-    customGui->addLabel("click to reset");
     customGui->addButton("REGENERATE", &shouldRegenerate);
     customGui->addIntSlider("Preloads", 0, 50000, &numPreloads);
-    customGui->addToggle("SMOOTH", &smooth);
-    customGui->addToggle("GNARLY", &gnarly);
-  //  customGui->addToggle("TRIANGLES", &drawTriangles);
+    vector<string> modes;
+    modes.push_back("SMOOTH");
+    modes.push_back("GNARLY");
+    customGui->addRadio("MODE", modes, OFX_UI_ORIENTATION_HORIZONTAL);
     customGui->addSlider("Number of Walkers", 1, 100, &NWalkers);
     customGui->addSlider("Particles per Walker", 10, 1000, &Walker::nParticles);
     
     customGui->addSlider("SPIN SPEED", 0, 5, &spinSpeed);
-    customGui->addSlider("STEP SIZE X", 0.0, 5.0, &Walker::stepSizex);
-    customGui->addSlider("STEP SIZE Y", 0.0, 5.0, &Walker::stepSizey);
-    customGui->addSlider("STEP SIZE Z", 0.0, 5.0, &Walker::stepSizez);
+    customGui->addMinimalSlider("STEP SIZE X", 0.0, 5.0, &Walker::stepSizex);
+    customGui->addMinimalSlider("STEP SIZE Y", 0.0, 5.0, &Walker::stepSizey);
+    customGui->addMinimalSlider("STEP SIZE Z", 0.0, 5.0, &Walker::stepSizez);
     
-	customGui->addSlider("NOISE SPEED X", 0.0, 20.0, &Walker::noiseSpeedx);
-    customGui->addSlider("NOISE SPEED Y", 0.0, 20.0, &Walker::noiseSpeedy);
-    customGui->addSlider("NOISE SPEED Z", 0.0, 20.0, &Walker::noiseSpeedz);
+	customGui->addMinimalSlider("NOISE SPEED X", 0.0, 20.0, &Walker::noiseSpeedx);
+    customGui->addMinimalSlider("NOISE SPEED Y", 0.0, 20.0, &Walker::noiseSpeedy);
+    customGui->addMinimalSlider("NOISE SPEED Z", 0.0, 20.0, &Walker::noiseSpeedz);
     
     customGui->addLabel("COLOR MODES");
-    customGui->addSpacer(length-xInit, 2);
+    customGui->addSpacer();
    // customGui->addImageSampler("Color 1", &colorMap, colorMap.getWidth()/2., colorMap.getHeight()/2. );
    //customGui->addImageSampler("Color 2", &colorMap, colorMap.getWidth()/2., colorMap.getHeight()/2. );
     
-    customGui->addSlider("Hue1", 0.0, 255.0, &hue1);
-    customGui->addSlider("Saturation1", 0.0, 200.0, &saturation1);
-    customGui->addSlider("Brightness1", 0.0, 255.0, &brightness1);
-    customGui->addSlider("Hue2", 0.0, 255.0, &hue2);
-    customGui->addSlider("Saturation2", 0.0, 200.0, &saturation2);
-    customGui->addSlider("Brightness2", 0.0, 255.0, &brightness2);
+    customGui->addMinimalSlider("Hue1", 0.0, 255.0, &hue1);
+    customGui->addMinimalSlider("Saturation1", 0.0, 200.0, &saturation1);
+    customGui->addMinimalSlider("Brightness1", 0.0, 255.0, &brightness1);
+    customGui->addMinimalSlider("Hue2", 0.0, 255.0, &hue2);
+    customGui->addMinimalSlider("Saturation2", 0.0, 200.0, &saturation2);
+    customGui->addMinimalSlider("Brightness2", 0.0, 255.0, &brightness2);
     
     customGui->addToggle("Oscillator Mode", &oscillate);
-     customGui->addSlider("Oscilator Period (in frames)", 0.0, 1000.0, &period);
     customGui->addToggle("Rainbow Mode", &rainbow);
     customGui->addToggle("Dichromatic Mode", &dichromatic);
-    customGui->addSlider("Saturation", 0.0, 200.0, &saturation);
-    customGui->addSlider("Brightness", 0.0, 255.0, &brightness);
-	customGui->addToggle("DRAW POINTS", &Walker::drawPoints);
-    customGui->addToggle("DRAW LINES", &Walker::drawLines);
-    
+    customGui->addSlider("Oscilator Period (in frames)", 0.0, 1000.0, &period);
+    customGui->addMinimalSlider("Saturation", 0.0, 200.0, &saturation);
+    customGui->addMinimalSlider("Brightness", 0.0, 255.0, &brightness);
+    vector<string> drawModes;
+    drawModes.push_back("DRAW POINTS");
+    drawModes.push_back("DRAW LINES");
+    customGui->addRadio("DRAW MODES", drawModes);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    customGui->addSlider("LINE WIDTH", 0.1, 10, &Walker::lineWidth);
 
     ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent);
 	guis.push_back(customGui);
@@ -85,6 +82,20 @@ void CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent(ofxUIEventArgs &e){
     if(e.widget->getName() == "REGENERATE" && ((ofxUIButton*)e.widget)->getValue() ){
 		regenerate();
 	}
+    
+    else if (e.widget->getName() == "SMOOTH" && ((ofxUIToggle *)e.widget)->getValue()) {
+        smooth = true;
+    }
+    else if (e.widget->getName() == "GNARLY" && ((ofxUIToggle *)e.widget)->getValue()) {
+        smooth = false;
+    }
+    
+    else if (e.widget->getName() == "DRAW POINTS" && ((ofxUIToggle *)e.widget)->getValue()) {
+        Walker::drawPoints = true;
+    }
+    else if (e.widget->getName() == "DRAW LINES" && ((ofxUIToggle *)e.widget)->getValue()) {
+        Walker::drawPoints = false;
+    }
 }
 
 
@@ -94,6 +105,8 @@ void CloudsVisualSystemOpenP5Spaghetti::regenerate(){
     // cout << "regenerated color1 = "<< color1 << endl;
     color2.setHsb(hue2,saturation2,brightness2);
     //  cout << "regenerated color2 = "<< color2 << endl;
+    
+    
     
     for(int i = 0; i<NWalkers; i++){
         //clear all meshes
@@ -126,6 +139,15 @@ void CloudsVisualSystemOpenP5Spaghetti::regenerate(){
             walkers[i].setColor(newColor);
         }
     }
+    
+    //shouldn't PRELOADS should happen in regenerate...?
+    for (int j = 0; j<numPreloads; j++){
+        
+        selfUpdate();
+        cout << "preloaded " << j << "times" << endl;
+        //selfDraw();
+    }
+    
 }
 
 
@@ -168,14 +190,7 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetup(){
         walkers[i].init(NWalkers, newColor); //  walkers[i] = *new Walker(); << wrong syntax
 
     }
-    
-    for (int j = 0; j<numPreloads; j++){
-        
-        selfUpdate();
-        cout << "preloaded " << j << "times" << endl;
-        //selfDraw();
-        
-    }
+   
     
 }
 
@@ -220,8 +235,12 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
              walkers[i].setColor(newColor);
         }
 
-        if (smooth){ gnarly = false; walkers[i].smoothTrails();}
-        if (gnarly){ smooth = false; walkers[i].gnarlyTrails(); }
+        if (smooth){
+            walkers[i].smoothTrails();
+        }
+        else {
+            walkers[i].gnarlyTrails();
+        }
      //   if (drawTriangles){ smooth = false;  walkers[i].doubleTrails(); }
         }
        
@@ -230,27 +249,32 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
-void CloudsVisualSystemOpenP5Spaghetti ::selfDraw(){
-	ofEnableBlendMode(OF_BLENDMODE_ADD);
+void CloudsVisualSystemOpenP5Spaghetti::selfDraw(){
+
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glDisable(GL_DEPTH_TEST);
-	
+	glEnable(GL_POINT_SMOOTH);
+    glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+    glPointSize(1);
+
     ofPushStyle();
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofPushMatrix();
-    {
-    ofRotate(currSpin, 0, 1, 0);
-    
-    for(int i = 0; i<NWalkers; i++){
-		
-        walkers[i].draw();
-    }
-    
-    ofPopStyle(); 
+
+	ofRotate(currSpin, 0, 1, 0);
+    ofSetLineWidth(Walker::lineWidth);
+    for(int i = 0; i < NWalkers; i++){
+		walkers[i].draw();
+	}
+    ofSetLineWidth(1.0f);
+	
+	ofPopStyle();
     ofPopMatrix();
-        }
+	glPopAttrib();
 }
 
 // draw any debug stuff here
-void CloudsVisualSystemOpenP5Spaghetti ::selfDrawDebug(){
+void CloudsVisualSystemOpenP5Spaghetti::selfDrawDebug(){
 
 }
 

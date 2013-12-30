@@ -16,7 +16,7 @@
 #include <set>
 
 
-#define MAX_GESTURES    20
+#define MAX_GESTURES    5
 #define MAX_TOUCHES     11
 
 class CloudsVisualSystemYellowTail : public CloudsVisualSystem {
@@ -47,6 +47,11 @@ class CloudsVisualSystemYellowTail : public CloudsVisualSystem {
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
+    
+    void selfInteractionMoved(CloudsInteractionEventArgs& args);
+    void selfInteractionStarted(CloudsInteractionEventArgs& args);
+    void selfInteractionDragged(CloudsInteractionEventArgs& args);
+    void selfInteractionEnded(CloudsInteractionEventArgs& args);
     
     void selfSetupGui();
     void selfGuiEvent(ofxUIEventArgs &e);

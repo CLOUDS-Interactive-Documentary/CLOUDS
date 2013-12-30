@@ -467,10 +467,10 @@
 		6449BF0D181E089700E27EFB /* TUText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TUText.h; path = ../../OpenP5TextUniverse/vs_src/TUText.h; sourceTree = "<group>"; };
 		6472185A18199AAA0024C21E /* CloudsVisualSystemOpenP5TextUniverse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsVisualSystemOpenP5TextUniverse.cpp; path = ../../OpenP5TextUniverse/vs_src/CloudsVisualSystemOpenP5TextUniverse.cpp; sourceTree = "<group>"; };
 		6472185B18199AAA0024C21E /* CloudsVisualSystemOpenP5TextUniverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsVisualSystemOpenP5TextUniverse.h; path = ../../OpenP5TextUniverse/vs_src/CloudsVisualSystemOpenP5TextUniverse.h; sourceTree = "<group>"; };
+		6484BC571832A689006695E5 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = src/CloudsGlobal.h; sourceTree = "<group>"; };
 		64E98A9318203B380039E3A7 /* TUOrbital.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TUOrbital.h; path = ../../OpenP5TextUniverse/vs_src/TUOrbital.h; sourceTree = "<group>"; };
 		64E98A97182046B30039E3A7 /* TUOrbital.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TUOrbital.cpp; path = ../../OpenP5TextUniverse/vs_src/TUOrbital.cpp; sourceTree = "<group>"; };
-		850EDE3C18305EF6004411A3 /* OpenP5TextUniverse copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenP5TextUniverse copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		850EDE3D18305EF6004411A3 /* OpenP5TextUniverse copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OpenP5TextUniverse copy-Info.plist"; path = "/Users/jonathanminard/Documents/Development/openFrameworks/apps/CLOUDS/VSOpenP5TextUniverse/OpenP5TextUniverse copy-Info.plist"; sourceTree = "<absolute>"; };
+		850EDE3C18305EF6004411A3 /* OpenP5TextUniverseOculusDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenP5TextUniverseOculusDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		850EDEC618305F13004411A3 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		850EDEC718305F13004411A3 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -1160,8 +1160,7 @@
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
 				E4B69B5B0A3A1756003C02F2 /* OpenP5TextUniverseDebug.app */,
-				850EDE3C18305EF6004411A3 /* OpenP5TextUniverse copy.app */,
-				850EDE3D18305EF6004411A3 /* OpenP5TextUniverse copy-Info.plist */,
+				850EDE3C18305EF6004411A3 /* OpenP5TextUniverseOculusDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1727,6 +1726,7 @@
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				6484BC571832A689006695E5 /* CloudsGlobal.h */,
 				E7E5EC271816731800CA4196 /* OpenP5TextUniverse */,
 				E72FF11817E688FE0007780D /* VisualSystemsLibrary */,
 			);
@@ -1753,7 +1753,7 @@
 			);
 			name = OpenP5TextUniverseOculus;
 			productName = myOFApp;
-			productReference = 850EDE3C18305EF6004411A3 /* OpenP5TextUniverse copy.app */;
+			productReference = 850EDE3C18305EF6004411A3 /* OpenP5TextUniverseOculusDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E4B69B5A0A3A1756003C02F2 /* OpenP5TextUniverse */ = {
@@ -2142,7 +2142,7 @@
 					../../../addons/ofxFTGL/libs/FTGL/include,
 					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
 				);
-				INFOPLIST_FILE = "OpenP5TextUniverse copy-Info.plist";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2239,7 +2239,7 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "OpenP5TextUniverse copy";
+				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2266,7 +2266,7 @@
 					../../../addons/ofxFTGL/libs/FTGL/include,
 					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
 				);
-				INFOPLIST_FILE = "OpenP5TextUniverse copy-Info.plist";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2355,7 +2355,7 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release/libovr.a",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "OpenP5TextUniverse copy";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};

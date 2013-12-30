@@ -51,15 +51,19 @@ namespace itg
             GEOMETRIC,
             WOBBLY,
             MODEL,
-            JELLY
+            JELLY,
+            POINT
         };
         
         typedef shared_ptr<Creature> Ptr;
+        
+        static float fogStart, fogEnd;
         
 		Creature();
         ~Creature() {}
         
 		virtual void update() {};
+        void draw(const ofCamera& cam);
         virtual void customDraw() = 0;
         
         void setVelocity(float x, float y, float z) { velocity.set(x, y, z); }
@@ -90,17 +94,20 @@ namespace itg
 		// make the creature magic if someone is interacting with it
 		void setMagic(bool magic) { this->magic = magic; }
 		bool getMagic() { return magic; }
+        
+        static float randomGauss(float mean, float stdDev);
+        
+        virtual ofFloatColor getColour() const = 0;
 
-    protected:    
+    protected:
         // forces
         ofVec3f accumulated;
         CreatureType type;
         float frequency;
         ofVec3f velocity;
-		
+        
     private:
         bool magic;
-        //float fear;
         ofVec3f normalisedVelocity;
     };
 }

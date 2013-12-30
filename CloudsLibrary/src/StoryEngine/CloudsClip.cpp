@@ -10,7 +10,7 @@
 #include "CloudsGlobal.h"
 #include "CloudsSpeaker.h"
 
-#define FRAME_PADDING 24
+//#define FRAME_PADDING 24
 
 
 
@@ -18,12 +18,14 @@ CloudsClip::CloudsClip(){
 	currentScore = 0;
 	startFrame = 0;
     endFrame = 0;
-	hasCombinedVideo = false;
+	voiceOverAudio = false;
+	hasMediaAsset = false;
 	adjustmentLoaded = false;
 	minDepth = 400;
 	maxDepth = 1200;
     keywordsDirty = true;
 	networkPosition = ofVec3f(-1,-1,-1);
+	hasProjectExample = false;
 }
 
 string CloudsClip::getLinkName(){
@@ -43,7 +45,7 @@ string CloudsClip::getSpeakerGender(){
 }
 
 float CloudsClip::getDuration(){
-	return (endFrame - startFrame) / 23.976; //TODO: HigaSan was recorded @ 30.0, need to compensate
+	return (endFrame - startFrame) / (is30FPS() ? 29.97 : 23.976); //TODO: HigaSan was recorded @ 30.0, need to compensate
 }
 
 //string CloudsClip::getStartingQuestion(){
@@ -110,12 +112,17 @@ string CloudsClip::getCombinedCalibrationXML(){
 	return getID() + ".xml";
 }
 
+bool CloudsClip::is30FPS(){
+    return person == "Higa";
+}
+
 string CloudsClip::getFFMpegLine(string alternativeVideoPath, string exportFolder){
+
+    float frameRate = is30FPS() ? 29.97 : 23.98;
+	int framePadding = is30FPS() ? 30 : 24;
+    float duration = ((float)( (endFrame-startFrame) + (framePadding*2 - 1) )) / frameRate;
     
-    float frameRate = 23.98;
-    float duration = ((float)( (endFrame-startFrame) + (FRAME_PADDING*2 - 1) )) / frameRate;
-    
-    string dstSound = exportFolder + "/" +  getID()+".wav";
+    string dstSound = exportFolder + "/" +  getID() + ".wav";
     string srcSound;
 	if(alternativeVideoPath != ""){
 		srcSound = alternativeVideoPath + ofFilePath::getFileName(sourceVideoFilePath);
@@ -126,16 +133,21 @@ string CloudsClip::getFFMpegLine(string alternativeVideoPath, string exportFolde
 	
     stringstream pipeline1;
     pipeline1 << "ffmpeg -i \"" << srcSound << "\"";
-    pipeline1 << " -ss " << ofToString((float)(startFrame-FRAME_PADDING+1)/(float)frameRate);
-    pipeline1 << " -t " << ofToString(duration);
+    pipeline1 << " -ss " << ofToString( (float)(startFrame-framePadding+1) / (float)frameRate );
+    pipeline1 << " -t "  << ofToString( duration );
     pipeline1 << " -ac 2 -ar 44100 -vn \"" << dstSound <<"\"";
     
     stringstream pipeline2;
-    pipeline2 << "ffmpeg -start_number " << ofToString(startFrame-FRAME_PADDING+1);
+    pipeline2 << "ffmpeg -start_number " << ofToString(startFrame-framePadding+1);
     pipeline2 << " -f image2 -r " << ofToString(frameRate);
     pipeline2 << " -i \"" << exportFolder << "/" << getCombinedPNGExportFolder() << getID() << "_%05d.png\"";
     pipeline2 << " -i \"" << dstSound << "\" -acodec copy ";
-    pipeline2 << " -codec:v libx264 -pix_fmt yuv420p -b 8000k -r 23.976 \"" << exportFolder << "/" << getCombinedMovieFile() << "\"";
+	if(is30FPS()){
+		pipeline2 << " -codec:v libx264 -pix_fmt yuv420p -b 8000k -r 29.97 \"" << exportFolder << "/" << getCombinedMovieFile() << "\"";
+	}
+	else{
+		pipeline2 << " -codec:v libx264 -pix_fmt yuv420p -b 8000k -r 23.976 \"" << exportFolder << "/" << getCombinedMovieFile() << "\"";
+	}
     
     stringstream pipeline3;
     pipeline3 << "cp \"" << exportFolder << "/" << getCombinedPNGExportFolder() << "_calibration.xml\" ";
@@ -224,7 +236,7 @@ void CloudsClip::collateKeywords(){
     //remove special keywords from keywords -> specialKeywords
     for (int l = keywords.size() - 1 ; l>=0; l--) {
         
-        if(keywords[l].compare(0, 1, "#") == 0 &&! ofContains(specialKeywords, keywords[l])){
+        if(keywords[l].compare(0, 1, "#") == 0 && !ofContains(specialKeywords, keywords[l])){
 //            cout<<"Special keywords for clip "<<name<< " : "<<keywords[l]<<". Erasing from keywords list"<<endl;
             specialKeywords.push_back(keywords[l]);
             keywords.erase(keywords.begin()+l);
@@ -236,13 +248,29 @@ void CloudsClip::collateKeywords(){
             
             //format of question topic pair is ?topic:question
             specialKeywords.push_back(keywords[l]);
-            vector<string>questionTopicPair = ofSplitString(keywords[l], ":");
+            vector<string>questionTopicPair = ofSplitString(keywords[l], ":",true,true);
             ofStringReplace(questionTopicPair[0], "?", "");
             addQuestionTopicPair(questionTopicPair[0], questionTopicPair[1]);
             keywords.erase(keywords.begin() + l);
         }
     }
     
+	hasProjectExample = false;
+	projectExampleTitle = "";
+	for(int i = 0; i < specialKeywords.size(); i++){
+		if(specialKeywords[i].find("pe?") != string::npos){
+			vector<string> exampleProject = ofSplitString(specialKeywords[i], "?");
+			if(exampleProject.size() != 2){
+				ofLogError("CloudsClip::collateKeywords") << "Clip " << getLinkName() << " doesn't have a specific example tagged";
+			}
+			else {
+				projectExampleTitle = exampleProject[1];
+				hasProjectExample = true;
+				cout << "Found project example " << projectExampleTitle << " for clip " << getLinkName() << endl;
+			}
+			break;
+		}
+	}
     keywordsDirty = false;
 }
 
@@ -276,7 +304,6 @@ void CloudsClip::setDesiredKeywords(vector<string>& desiredKeywords){
 }
 
 void CloudsClip::addKeyword(string keyword){
-    
     if(!ofContains(additionalKeywords, keyword) &&
        !ofContains(originalKeywords, keyword))
     {
@@ -289,6 +316,18 @@ bool CloudsClip::hasKeyword(string keyword){
 	return ofContains(getKeywords(), keyword);
 }
 
+void CloudsClip::setProjectExample(string projectExample){
+	for(int i = 0; i < specialKeywords.size(); i++){
+		if(ofToLower(specialKeywords[i]).find("#pe?") != string::npos){
+			revokeKeyword(specialKeywords[i]);
+		}
+	}
+	
+	addKeyword("#pe?"+projectExample);
+	addKeyword("#example");
+	
+	keywordsDirty = true;
+}
 
 bool CloudsClip::hasSpecialKeyword(string keyword){
 	if (keyword.at(0) != '#') {
@@ -298,12 +337,23 @@ bool CloudsClip::hasSpecialKeyword(string keyword){
 }
 
 void CloudsClip::revokeKeyword(string keyword){
+	
+//	cout << "revoking keyword " << keyword << endl;
+//	cout << "	in original? " << (ofContains(originalKeywords, keyword) ? "YES" : "NO") << endl;
+//	cout << "	in additional? " << (ofContains(additionalKeywords, keyword) ? "YES" : "NO") << endl;
+//	cout << "	in revoked? " << (ofContains(revokedKeywords, keyword) ? "YES" : "NO") << endl;
+//	
     if(!ofContains(revokedKeywords, keyword) &&
-       ofContains(originalKeywords, keyword))
+        ofContains(originalKeywords, keyword))
     {
         revokedKeywords.push_back(keyword);
         keywordsDirty = true;
     }
+	else if(ofContains(additionalKeywords, keyword)){
+		additionalKeywords.erase(additionalKeywords.begin() +
+								 ofFind(additionalKeywords, keyword));
+		keywordsDirty = true;
+	}
 }
 
 void CloudsClip::addQuestionTopicPair(string topic, string question){
@@ -348,7 +398,7 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	
 	ofxXmlSettings adjustmentSettings;
 	if(!adjustmentSettings.loadFile(getAdjustmentXML())){
-		ofLogError() << "Couldn't load adjustment XML" << getAdjustmentXML() << endl;
+//		ofLogError() << "Couldn't load adjustment XML" << getAdjustmentXML() << endl;
 	}
 	
 	adjustTranslate.x = adjustmentSettings.getValue("adjustment:translate:x", 0.);
@@ -366,17 +416,26 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	minDepth = adjustmentSettings.getValue("adjustment:depth:min", 300);
 	maxDepth = adjustmentSettings.getValue("adjustment:depth:max", 1200);
 	
-	contourTargetColor = ofColor(adjustmentSettings.getValue("adjustment:extraction:colorr", 255),
-								 adjustmentSettings.getValue("adjustment:extraction:colorg", 255),
-								 adjustmentSettings.getValue("adjustment:extraction:colorb", 255));
-	contourTargetThreshold = adjustmentSettings.getValue("adjustment:extraction:threshold", 100);
+	skinTargetColor = ofFloatColor(adjustmentSettings.getValue("adjustment:skin:targetR", 1.0),
+								   adjustmentSettings.getValue("adjustment:skin:targetG", 0.0),
+								   adjustmentSettings.getValue("adjustment:skin:targetB", 0.0));
 	
-	contourMinBlobSize = adjustmentSettings.getValue("adjustment:extraction:blobsize", 100);
+//	cout << "loaded skin target color " << skinTargetColor << endl;
 	
-	faceCoord = ofVec2f(adjustmentSettings.getValue("adjustment:extraction:faceu", 320),
-						adjustmentSettings.getValue("adjustment:extraction:facev", 110));
+	skinLowerThreshold = adjustmentSettings.getValue("adjustment:skin:lowerThreshold", 0.);
+    skinUpperThreshold = adjustmentSettings.getValue("adjustment:skin:upperThreshold", 1.);
+    skinHueWeight = adjustmentSettings.getValue("adjustment:skin:hueWeight", 0.5);
+    skinSatWeight = adjustmentSettings.getValue("adjustment:skin:satWeight", 0.5);
+    skinBrightWeight = adjustmentSettings.getValue("adjustment:skin:brightWeight", 0.5);
+
+//	contourTargetThreshold = adjustmentSettings.getValue("adjustment:extraction:threshold", 100);
+//	contourMinBlobSize = adjustmentSettings.getValue("adjustment:extraction:blobsize", 100);
 	
-    
+	faceCoord = ofVec2f(adjustmentSettings.getValue("adjustment:extraction:faceu", 320.),
+						adjustmentSettings.getValue("adjustment:extraction:facev", 110.));
+	
+//    cout << "loaded face coord color " << faceCoord << endl;
+	
 	//cout << "FOR CLIP " << getID() << " LOADED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	adjustmentLoaded = true;
@@ -416,18 +475,34 @@ void CloudsClip::saveAdjustmentToXML(){
     
 	alignmentSettings.addTag("extraction");
 	alignmentSettings.pushTag("extraction");
+    /*
 	alignmentSettings.addValue("colorr", contourTargetColor.r);
 	alignmentSettings.addValue("colorg", contourTargetColor.g);
 	alignmentSettings.addValue("colorb", contourTargetColor.b);
+     
 	alignmentSettings.addValue("threshold", contourTargetThreshold);
 	alignmentSettings.addValue("blobsize", contourMinBlobSize);
+    */
 	alignmentSettings.addValue("faceu", faceCoord.x);
 	alignmentSettings.addValue("facev", faceCoord.y);
+
 	
-	
-	cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
+	//cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	alignmentSettings.popTag(); //extraction
+
+    ///SM ADDED
+    alignmentSettings.addTag("skin");
+    alignmentSettings.pushTag("skin");
+    alignmentSettings.addValue("targetR",skinTargetColor.r);
+    alignmentSettings.addValue("targetG",skinTargetColor.g);
+    alignmentSettings.addValue("targetB",skinTargetColor.b);
+    alignmentSettings.addValue("hueWeight", skinHueWeight);
+    alignmentSettings.addValue("satWeight",skinSatWeight);
+    alignmentSettings.addValue("brightWeight", skinBrightWeight);
+    alignmentSettings.addValue("lowerThreshold", skinLowerThreshold);
+    alignmentSettings.addValue("upperThreshold",skinUpperThreshold);
+    alignmentSettings.popTag();//skin
     
 	alignmentSettings.popTag(); //adjustment
 	

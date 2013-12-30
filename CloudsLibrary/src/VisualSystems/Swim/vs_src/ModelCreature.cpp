@@ -36,12 +36,16 @@ namespace itg
     vector<ofxAssimpModelLoader> ModelCreature::fishModels;
     vector<ofVec3f> ModelCreature::deformAxes;
     vector<float> ModelCreature::bends;
+    map<unsigned, ofImage> ModelCreature::textures;
     ofShader ModelCreature::fishShader;
+    //float ModelCreature::texAmount = 1.f;
     
-    ModelCreature::ModelCreature(unsigned modelIdx, const ofFloatColor& colour) :
-        modelIdx(modelIdx), colour(colour), Creature()
+    ModelCreature::ModelCreature(const ModelParams& params) : Creature()
     {
         type = MODEL;
+        modelIdx = params.modelIdx;
+        colour = params.colour;
+        size = randomGauss(params.sizeAverage, params.sizeStdDeviation);
         
         frequency = ofRandom(2, 5);
     }
@@ -49,6 +53,7 @@ namespace itg
     void ModelCreature::integrate()
     {
         velocity += accumulated;
+        // slow down y velocity to stop fish swimming upwards and downwards
         velocity.y *= 0.1f;
     }
     
@@ -63,6 +68,16 @@ namespace itg
         fishShader.setUniform3fv("deformAxis", deformAxes[modelIdx].getPtr());
         fishShader.setUniform1f("bend", bends[modelIdx]);
         fishShader.setUniform3f("colour", colour.r, colour.g, colour.b);
+        fishShader.setUniform1f("fogStart", fogStart);
+        fishShader.setUniform1f("fogEnd", fogEnd);
+        if (textures.find(modelIdx) != textures.end())
+        {
+            ofTexture tex = fishModels[modelIdx].getTextureForMesh(0);
+            fishShader.setUniformTexture("tex", textures[modelIdx], 0);
+            //fishShader.setUniformTexture("tex", tex, 1);
+            //fishShader.setUniform1f("texAmt", texAmount);
+        }
+        else fishShader.setUniform1f("texAmt", 0.f);
         fishModels[modelIdx].drawFaces();
         fishShader.end();
     }

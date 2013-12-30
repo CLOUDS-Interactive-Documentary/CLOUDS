@@ -1,12 +1,5 @@
-//
-//  CloudsVisualSystemColony.cpp
-//  VSColony
-//
-//  Created by Patricio Gonzalez Vivo on 6/26/13.
-//
-//
-
 #include "CloudsVisualSystemColony.h"
+#define INV_2SQRT2 0.35355339059
 
 string CloudsVisualSystemColony::getSystemName()
 {
@@ -15,227 +8,264 @@ string CloudsVisualSystemColony::getSystemName()
 
 void CloudsVisualSystemColony::selfSetup()
 {
-    noiseShader.load("", getVisualSystemDataPath()+"shaders//liquidNoise.fs");
-    foodFbo.allocate(ofGetWidth(), ofGetHeight());
-    noiseZoom = 100.0;
-    sprites.resize(5);
-	sprites[0].loadImage(getVisualSystemDataPath() + "sprites/Cell_white_1a.png");
-    sprites[1].loadImage(getVisualSystemDataPath() + "sprites/Cell_white_1b.png");
-    sprites[2].loadImage(getVisualSystemDataPath() + "sprites/Cell_white_1a.png");
-    sprites[3].loadImage(getVisualSystemDataPath() + "sprites/Cell_white_1b.png");
-    sprites[4].loadImage(getVisualSystemDataPath() + "sprites/Cell_white_1a.png");
+    numInitialCells = 100;
+    kernel_maxValue = 0.8;
+    vbo.setMode(OF_PRIMITIVE_POINTS);
+    
+	ofDisableArbTex();
+    ofLoadImage(sprite, getVisualSystemDataPath() + "sprites/marker_dot.png");
+    ofEnableArbTex();
+    
+    grunge.setCompression(OF_COMPRESS_ARB);
+    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/dirt_square.jpg");
+
+	loadShaders();
+ 
+}
+
+void CloudsVisualSystemColony::loadShaders(){
+    string path = getVisualSystemDataPath() + "shaders/";
+	levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
+    billboard.load(path + "billboard.vs", path + "billboard.fs");
 }
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
 {
-    sysGui->addSlider("noiseZoom", 0.0, 1000, &noiseZoom);
-  //  sysGui->addSlider("NutrientLevel", 0.0, 1000, &nutrientLevel);
-}
 
-void CloudsVisualSystemColony::selfSetupRenderGui()
-{
-
-}
-
-void CloudsVisualSystemColony::guiSystemEvent(ofxUIEventArgs &e)
-{
+    sysGui->addToggle("Level Set Mode", &levelSetMode);
     
-}
+    sysGui->addSpacer("Immutables");
+    sysGui->addIntSlider("Initial Cells", 0, 1000, &numInitialCells);
+    
+   }
 
-void CloudsVisualSystemColony::guiRenderEvent(ofxUIEventArgs &e)
-{
+void CloudsVisualSystemColony::selfSetupGuis(){
+    float length = (gui->getGlobalCanvasWidth()-gui->getWidgetSpacing()*5)/3.;
+    float dim =gui->getGlobalSliderHeight();
+    
+    guiDynamics = new ofxUISuperCanvas("DYNAMICS", gui);
+	guiDynamics->copyCanvasStyle(gui);
+	guiDynamics->copyCanvasProperties(gui);
+	guiDynamics->setName("DYNAMICS");
+	guiDynamics->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    guiDynamics->addSlider("Separate",0.0,100, &params.amtSeparate);
+    guiDynamics->addSlider("Cohere",0.0,100, &params.amtCohere);
+    guiDynamics->addSlider("Align",0.0,100, &params.amtAlign);
+    guiDynamics->addSlider("Friction",0.0,1.0, &params.dynamicFrictionCoeff);
+    guiDynamics->addSlider("Turbulence Amount",0.0,100.0, &params.amtTurbulence);
+    guiDynamics->addSlider("Turbulence Speed",0.0,100.0, &params.spdTurbulence);
+    guiDynamics->addSlider("Fertility Rate", 0.0, 1.0, &params.fertilityRate);
+    guiDynamics->addRangeSlider("Lifespan Range", 5, 5000, &params.lifespanMin, &params.lifespanMax);
+    guiDynamics->addSlider("Nutrient Amount", 150, 500, &params.nutrientAmount);
+    guiDynamics->addSlider("Nutrient Change Ratio", 0, 500, &params.nutrientTimeCoef);
+    guiDynamics->addSlider("Nutrient Contrast", 0, 4.0, &params.nutrientFalloff);
+    guiDynamics->addRangeSlider("Max Speed", 0.0, 10.0, &params.maxSpeed_min, &params.maxSpeed_max);
+    guiDynamics->addRangeSlider("Max Force", 0.0, 10.0, &params.maxForce_min, &params.maxForce_max);
+    guiDynamics->addRangeSlider("Max Size", 0.0, 30.0, &params.maxSize_min, &params.maxSize_max);
+    
+    ofAddListener(guiDynamics->newGUIEvent, this, &CloudsVisualSystemColony::selfGuiEvent);
+    
+    
+    guiLooks = new ofxUISuperCanvas("LOOK", gui);
+    guiLooks->copyCanvasStyle(gui);
+    guiLooks->copyCanvasProperties(gui);
+    guiLooks->setName("LOOKS");
+    guiLooks->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    guiLooks->addSlider("Cell Floor Translusence", 0., 1., &translucenseCell);
+    guiLooks->addSlider("Dish Floor Translusence", 0., 1., &translucenseDish);
+    
+    float hDim = 16;
+    float vDim = 80;
+    
+    guiLooks->addWidgetDown(new ofxUILabel("KERNEL COLOR", OFX_UI_FONT_MEDIUM));
+    guiLooks->addSlider("R1", 0, 1., &(kernelColor_high.x), hDim, vDim);
+    guiLooks->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    guiLooks->addSlider("G1", 0, 1., &(kernelColor_high.y), hDim, vDim);
+    guiLooks->addSlider("B1", 0, 1., &(kernelColor_high.z), hDim, vDim);
+    guiLooks->addSlider("A1", 0, 1., &(kernelColor_high.w), hDim, vDim);
+    guiLooks->addSlider("R2", 0, 1., &(kernelColor_low.x), hDim, vDim);
+    guiLooks->addSlider("G2", 0, 1., &(kernelColor_low.y), hDim, vDim);
+    guiLooks->addSlider("B2", 0, 1., &(kernelColor_low.z), hDim, vDim);
+    guiLooks->addSlider("A2", 0, 1., &(kernelColor_low.w), hDim, vDim);
+    guiLooks->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
 
-}
-
-void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){
-
+    guis.push_back(guiDynamics);
+    guis.push_back(guiLooks);
+    guimap[guiDynamics->getName()] = guiDynamics;
+    guimap[guiLooks->getName()] = guiLooks;
 }
 
 
 void CloudsVisualSystemColony::selfUpdate()
 {
-	
-	if(!noise.isAllocated() || noise.getWidth() != ofGetWidth() || noise.getHeight() != ofGetHeight()){
-		noise.allocate(ofGetWidth(), ofGetHeight(), OF_IMAGE_GRAYSCALE);
-		
-		for(int x = 0; x < noise.getWidth(); x++){
-			for(int y = 0; y < noise.getHeight(); y++){
-				noise.setColor(x,y,ofColor(ofNoise(x/200.,y/200.0) * 255, 255) );
-
-			}
-		}
-		
-		noise.reloadTexture();
-	}
-	
-    //  Process food texture
-    //
-    int width = foodFbo.getWidth();
-    int height = foodFbo.getHeight();
-    /*
-    ofSetColor(255);
-    foodFbo.begin();
-    noiseShader.begin();
-    noiseShader.setUniform1f("time", ofGetElapsedTimef());
-    noiseShader.setUniform1f("zoom", noiseZoom);
-    noiseShader.setUniform2f("resolution", (float)width, (float)height);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
-    glTexCoord2f(width, 0); glVertex3f(width, 0, 0);
-    glTexCoord2f(width, height); glVertex3f(width, height, 0);
-    glTexCoord2f(0,height);  glVertex3f(0,height, 0);
-    glEnd();
-    noiseShader.end();
-    foodFbo.end();
+    //Video
+    if ( !areFbosAllocatedAndSized() ){ reallocateFramebuffers(); }
     
-    ofPixels pixels;
-    foodFbo.getTextureReference().readToPixels(pixels);
-    */
-	
-    //  Update cells position and life
-    //
+    //Data
+    pMap.clear();
+    vbo.clear();
+    pMap.put(cells);
+    
+    
     for (int i = 0; i < cells.size(); i++) {
         
-        cells[i]->applyFlock(cells);
-        cells[i]->applyBorders();
+        neighbor_iterator iter = pMap.getNeighbours(coord2i(cells[i]->getPosition()));
+        
+        cells[i]->doResetForces(); //TODO: Decide where all the operations should be. This isn't a good place.
+        cells[i]->doScanAndFlock(iter);
+        cells[i]->doAddTurbulence();
+        cells[i]->doFeedCellNoise();
+        
         cells[i]->update();
         
-//        cells[i]->feedCellWidth( pixels );
-		cells[i]->feedCellWidth( noise.getPixelsRef() );
-    }
-    
-    for (int i = cells.size()-1; i >= 0; i--){
-        if (cells[i] -> isFertile && cells[i]->shouldReplicate){
-    
-            colonyCell *newCell = new colonyCell();
-            newCell->set(*cells[i]);
+        if (cells[i] -> isFertile() && cells[i]->isReadyToReplicate()){
+            cellPtr newCell = cells[i]->doGetReplicated();
             cells.push_back(newCell);
-            
-            cells[i]->shouldReplicate = false;
-            cells[i]->hasReplicated = true;
         }
-        
-        if (cells[i]->dead == true){
-            delete cells[i];
-            cells.erase( cells.begin() + i);
+        if (cells[i]->isDead()){
+            cells.erase(cells.begin() + i);
         }
+        vbo.addColor(ofColor(255, 255, 255, 100));
+        vbo.addVertex(cells[i]->getPosition());
+        //HACK: Normal gives more data to the shader.
+        vbo.addNormal(ofVec3f(cells[i]->getSize(),0.,0.));
     }
     
-}
+    
+    //Main view
+    fbo_main.begin();
+    {
+        ofPushStyle();
+        ofEnablePointSprites();
+        ofEnableAlphaBlending();
+        
+        ofEnableBlendMode(OF_BLENDMODE_ADD);
+        glDisable(GL_DEPTH_TEST);
+        ofClear(0,0,0,0);
+        
+        billboard.begin();
+        sprite.bind();
+        
+        billboard.setUniform1f("kernel_maxValue", kernel_maxValue);
+        vbo.draw();
+        
+        sprite.unbind();
+        billboard.end();
 
-//void CloudsVisualSystemColony::draw(ofEventArgs & args)
-//{
-//    ofPushStyle();
-//    if(bRenderSystem)
-//    {
-////        drawBackground();
-//    
-//    }
-//    
-//    ofPopStyle();
-//
-//}
-
-
-void CloudsVisualSystemColony::selfSetupGuis()
-{
+        ofDisableBlendMode();
+        ofDisablePointSprites();
+        ofPopStyle();
+    }
+    fbo_main.end();
+    
     
 }
-
-void CloudsVisualSystemColony::selfAutoMode()
-{
-    
-}
-
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
-	ofSetColor(255,255,255);
-//	noise.draw(0,0);
-	//foodFbo.draw(0, 0);
-	
-	ofEnableAlphaBlending();
-	for(int i = 0; i < sprites.size(); i++){
-		sprites[i].getTextureReference().bind();
-		for (int c = 0; c < cells.size(); c++) {
-			if(cells[c]->spriteIndex == i){
-				cells[c]->draw();
-			}
-		}		
-		sprites[i].getTextureReference().unbind();
-	}
-				
-//	sprite.getTextureReference().bind();
-//	for (int i = 0; i < cells.size(); i++) {
-//		cells[i]->draw();
-//	}
-//	sprite.getTextureReference().unbind();
+
     
+    ofEnableAlphaBlending();
+    levelSet.begin();
+    levelSet.setUniformTexture("grunge", grunge, 1);
+    levelSet.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
+    levelSet.setUniform1i("levelSet", levelSetMode);
+    levelSet.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+    levelSet.setUniform2f("imgRes", grunge.getWidth(), grunge.getHeight());
+    levelSet.setUniform1f("translucenseCell", translucenseCell);
+    levelSet.setUniform1f("translucenseDish", translucenseDish);
+    levelSet.setUniform4fv("kernelColor_high", kernelColor_high.getPtr());
+    levelSet.setUniform4fv("kernelColor_low", kernelColor_low.getPtr());
+    levelSet.setUniform1f("kernel_maxValue", kernel_maxValue);
+    fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
+                  getSharedRenderTarget().getHeight());
+    levelSet.end();
 }
 
-void CloudsVisualSystemColony::selfDrawDebug()
-{
-    
+void CloudsVisualSystemColony::selfDraw(){
+
 }
 
-void CloudsVisualSystemColony::selfSceneTransformation()
-{
-    
+
+void CloudsVisualSystemColony::updateFoodTexture(){
 }
 
-void CloudsVisualSystemColony::selfExit()
-{
-    
-}
 
 void CloudsVisualSystemColony::selfBegin()
 {
-    for (int i = 0; i < 5; i++) {
-        colonyCell *newCell = new colonyCell();
-        newCell->set(ofRandomWidth(),ofRandomHeight());
-        cells.push_back(newCell);
-    }
+    populate();
 }
 
 void CloudsVisualSystemColony::selfEnd()
 {
+    clear();
+}
+
+void CloudsVisualSystemColony::selfExit(){
+    clear();
+    levelSet.unload();
+    //TODO: is this necessary?
+    delete guiLooks;
+    delete guiDynamics;
+}
+
+void CloudsVisualSystemColony::selfPresetLoaded(string presetPath){
+    clear();
+    //TODO: use timeline->getCurrentTimeXX()
+    populate();
+}
+
+void CloudsVisualSystemColony::clear(){
     for (int i = cells.size()-1; i >= 0; i--){
-        delete cells[i];
         cells.erase(cells.begin()+i);
+    }
+    cells.clear();
+    vbo.clear();
+}
+
+void CloudsVisualSystemColony::populate(){
+    for (int i = 0; i < (int) numInitialCells; i++) {
+        cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight(), i * 0.01), params));
+        cells.push_back(newCell);
     }
 }
 
-void CloudsVisualSystemColony::selfKeyReleased(ofKeyEventArgs & args)
-{
-    
+bool CloudsVisualSystemColony::areFbosAllocatedAndSized(){
+    return fbo_main.isAllocated()
+    && fbo_main.getWidth() == getSharedRenderTarget().getWidth()
+    && fbo_main.getHeight() == getSharedRenderTarget().getHeight();
 }
 
-void CloudsVisualSystemColony::mouseDragged(ofMouseEventArgs& data)
-{
+void CloudsVisualSystemColony::reallocateFramebuffers(){
+    int w = getSharedRenderTarget().getWidth();
+    int h = getSharedRenderTarget().getHeight();
     
+    fbo_main.allocate(w,h,GL_RGBA);
+    
+    fbo_main.begin();
+    ofClear(0,0,0,0);
+    fbo_main.end();
 }
 
-void CloudsVisualSystemColony::mouseMoved(ofMouseEventArgs &args)
-{
-    
+
+void CloudsVisualSystemColony::selfAutoMode(){}
+void CloudsVisualSystemColony::selfSetupRenderGui(){}
+void CloudsVisualSystemColony::guiSystemEvent(ofxUIEventArgs &e){}
+void CloudsVisualSystemColony::guiRenderEvent(ofxUIEventArgs &e){}
+
+void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){
+	if(args.key == 'R'){
+		levelSetMode = !levelSetMode;
+	}
 }
 
-void CloudsVisualSystemColony::mousePressed(ofMouseEventArgs &args)
-{
-    
-}
-
-void CloudsVisualSystemColony::mouseReleased(ofMouseEventArgs &args)
-{
-    
-}
-
-void CloudsVisualSystemColony::selfSetupGui()
-{
-    
-}
-
-void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e)
-{
-    
-}
+void CloudsVisualSystemColony::selfDrawDebug(){}
+void CloudsVisualSystemColony::selfSceneTransformation(){}
+void CloudsVisualSystemColony::selfKeyReleased(ofKeyEventArgs & args){}
+void CloudsVisualSystemColony::mouseDragged(ofMouseEventArgs& data){}
+void CloudsVisualSystemColony::mouseMoved(ofMouseEventArgs &args){}
+void CloudsVisualSystemColony::mousePressed(ofMouseEventArgs &args){}
+void CloudsVisualSystemColony::mouseReleased(ofMouseEventArgs &args){}
+void CloudsVisualSystemColony::selfSetupGui(){}
+void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e){}

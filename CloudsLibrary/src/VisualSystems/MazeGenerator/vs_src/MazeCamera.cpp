@@ -7,8 +7,9 @@
 //
 
 #include "MazeCamera.h"
+#include "CloudsInput.h"
 
-MazeCamera::MazeCamera(float x, float y, float z, MazeSettings* set) : ofCamera()
+void MazeCamera::setup(float x, float y, float z, MazeSettings* set)
 {
     settings = set;
     setPosition(x, y, z);
@@ -17,7 +18,6 @@ MazeCamera::MazeCamera(float x, float y, float z, MazeSettings* set) : ofCamera(
     setFov(60);
     
     xRot = yRot = zRot = 0;
-    
     vel = ofVec3f(0, 0, 1);
 }
 
@@ -33,7 +33,7 @@ void MazeCamera::setFlyOver(float x)
     setPosition(x, settings->cameraHeight, 100);
     
     // face mouse centered
-    mouseMove(ofVec2f(ofGetMouseX(), ofGetMouseY()));
+    mouseMove(ofVec2f(GetCloudsInputX(), GetCloudsInputY()));
     update();
     
 }
@@ -101,7 +101,8 @@ void MazeCamera::applyLimits(ofVec3f &p)
 {
     if (p.x < 50) {
         p.x = 50;
-    } else if (p.x > 30*60) {
+    }
+	else if (p.x > 30*60) {
         p.x = 30*60;
     }
     

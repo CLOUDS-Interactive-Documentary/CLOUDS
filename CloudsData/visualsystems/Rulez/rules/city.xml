@@ -1,0 +1,39 @@
+<rules startRule="test" maxDepth="8" primitive="triangles" enableColour="1">
+    <ruleSet name="test">
+        <rule weight="100">
+            <plane width="100000" depth="100000" transforms="ty -50"/>
+            <transform transforms="tx 200 sa 0.995" next="test2"/>
+            <transform transforms="tx 200 ry 120 sa 0.995" next="test2"/>
+            <transform radius="100" transforms="tx 200 ry 240 sa 0.995" next="test2"/>
+        </rule>
+    </ruleSet>
+    <ruleSet name="test2">
+        <rule weight="100">
+            <cube size="100" colour="127" transforms="tx 200 ty -50 sa 0.5" next="test2"/>
+            <cube size="100" transforms="tx 200 ty -50 ry 120 sa 0.5" next="test2"/>
+            <cube size="100" transforms="tx 300 ty -50 ry 240 sa 0.5" next="test2"/>
+        </rule>
+        <rule weight="100">
+            <cube size="100" colour="255 200 127" transforms="tx 200 ty -50 sa 0.5" next="test2"/>
+            <!--<cube size="100" transforms="tx 400 ty -50 ry 120 sa 0.5" next="test2"/>-->
+            <cube size="100" transforms="tx 200 ty -50 ry 240 sa 0.5" next="test2"/>
+        </rule>
+        <rule weight="100">
+            <cube size="100" colour="127 200 200" transforms="tx 200 ty -50 sa 0.5" next="test2"/>
+            <cube size="100" transforms="tx 400 ty -50 ry 120 sa 0.5" next="test2"/>
+            <cube size="100" colour="100" transforms="tx 200 ty -50 ry 240 sa 0.5" next="test2"/>
+        </rule>
+        <rule weight="100">
+            <cube size="100" transforms="tx 200 ty -50 sa 0.5" next="test2"/>
+            <cube size="100" transforms="tx 400 ty -50 ry 120 sa 0.5"/>
+            <cube size="100" transforms="tx 200 ty -50 ry 240 sa 0.5" next="test2"/>
+        </rule>
+    </ruleSet>
+    <ruleSet name="test3">
+        <rule weight="100">
+            <cube size="100" transforms="tx 200 ty -50 sa 0.5" next="test2"/>
+            <cube size="100" transforms="tx 200 ty -50 ry 120 sa 0.5" next="test2"/>
+            <cube size="100" transforms="tx 200 ty -50 ry 240 sa 0.5" next="test2"/>
+        </rule>
+    </ruleSet>
+</rules>

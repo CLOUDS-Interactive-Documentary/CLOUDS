@@ -79,15 +79,19 @@ void CloudsVisualSystemOscillations::selfSetupGui(){
     colorControls->setWidgetFontSize(OFX_UI_FONT_SMALL);
     colorControls->addSlider("Chromatic Abberation", 0.0, 2.0, &chromaAbbr);
     colorControls->addSlider("CRT Distortion", 0.0, 2.0, &lensDistortion);
-
-    
     
     guis.push_back(curveControls);
     guis.push_back(gridControls);
     guis.push_back(colorControls);
+	
     guimap[curveControls->getName()] = curveControls;
 	guimap[gridControls->getName()] = gridControls;
     guimap[colorControls->getName()] = colorControls;
+}
+
+void CloudsVisualSystemOscillations::selfSetupCameraGui(){
+	camGui->addSlider("near plane", 0.01, 10, &clipPlanes.min);
+	camGui->addSlider("far plane" , 1000, 5000, &clipPlanes.max);
 }
 
 void CloudsVisualSystemOscillations::selfGuiEvent(ofxUIEventArgs &e){
@@ -123,7 +127,6 @@ void CloudsVisualSystemOscillations::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemOscillations::selfSetup(){
     
-    
     ofEnableAlphaBlending();
     
     ofFloatColor zero = ofFloatColor(0,0,0);
@@ -132,15 +135,12 @@ void CloudsVisualSystemOscillations::selfSetup(){
         mesh.addVertex(ofPoint(0,0,i));
     }
     
-    
     //TODO: Find way to update on every resize
-    
     offsetX = offsetY = 0;
     BuildGrid();
 
     oscillator.load(getVisualSystemDataPath() +"shaders/oscillationsShader");
     crtShader.load(getVisualSystemDataPath() +"shaders/chromaticAbberation");
-
 	
 }
 
@@ -196,6 +196,9 @@ void CloudsVisualSystemOscillations::selfUpdate(){
     
     //FIXME: This shouldn't happen unprovoked. It needs to be a callback to the UI.
     BuildGrid();
+	
+	getCameraRef().setNearClip(clipPlanes.min);
+	getCameraRef().setFarClip(clipPlanes.max);
 }
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
@@ -244,7 +247,7 @@ void CloudsVisualSystemOscillations::selfPostDraw(){
 
     crtShader.begin();
 //    crtShader.setUniform1i("screen", GL_TEXTURE0);
-    crtShader.setUniformTexture("screen", getSharedRenderTarget(), 0 );
+    crtShader.setUniformTexture("screen", getSharedRenderTarget(), 1 );
     crtShader.setUniform2f("resolution",
 						   float(getSharedRenderTarget().getWidth()),
 						   float(getSharedRenderTarget().getHeight()));

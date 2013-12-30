@@ -7,7 +7,6 @@
 //
 
 #include "CloudsVisualSystemPreset.h"
-#include "CloudsVisualSystem.h"
 #include "ofxXmlSettings.h"
 #include "CloudsGlobal.h"
 
@@ -18,6 +17,7 @@ CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 	defaultedToFamily = false;
 	randomlySelected = false;
 	oculusCompatible = false;
+	hasSound = false;
 	duration = 60;
 	introDuration = 0;
 	outroDuration = 0;
@@ -30,8 +30,17 @@ string CloudsVisualSystemPreset::getID(){
 }
 
 void CloudsVisualSystemPreset::loadTimeInfo(){
+	
+
 	ofxXmlSettings timeInfo;
-	string path = CloudsVisualSystem::getVisualSystemDataPath(systemName) + "Presets/" + presetName + "/TimeInfo.xml";
+	string directory = GetCloudsVisualSystemDataPath(systemName) + "Presets/" + presetName;
+
+	if(!ofDirectory(directory).exists()){
+		ofLogError() << "Preset " << systemName << " / " << presetName << " has no directory";
+		return;
+	}
+	
+	string path = directory + "/TimeInfo.xml";
 	if(timeInfo.loadFile(path) ){
 		timeInfo.pushTag("timeinfo");
 		indefinite = timeInfo.getValue("indefinite", true);
@@ -40,30 +49,31 @@ void CloudsVisualSystemPreset::loadTimeInfo(){
 		outroDuration = timeInfo.getValue("outroDuration", 0);
 	}
 	else{
-		ofLogError() << "Preset " << systemName << " / " << presetName << " has no time info at path" << path << ". creating default";
-//		if(system != NULL){
-			timeInfo.addTag("timeinfo");
-			timeInfo.pushTag("timeinfo");
-			timeInfo.addValue("duration", duration);
-			timeInfo.addValue("indefinite", indefinite);
-			timeInfo.addValue("introDuration", introDuration);
-			timeInfo.addValue("outroDuration", outroDuration);
-			timeInfo.saveFile(path);
-//		}
+		ofLogError() << "Preset " << systemName << " / " << presetName << " has no time info at path " << path << ". creating default";
+		timeInfo.addTag("timeinfo");
+		timeInfo.pushTag("timeinfo");
+		timeInfo.addValue("duration", duration);
+		timeInfo.addValue("indefinite", indefinite);
+		timeInfo.addValue("introDuration", introDuration);
+		timeInfo.addValue("outroDuration", outroDuration);
+		timeInfo.saveFile(path);
 	}
+
 }
 
 void CloudsVisualSystemPreset::checkHasFiles(){
-	hasFiles = ofFile(CloudsVisualSystem::getVisualSystemDataPath(systemName) + "Presets/" + presetName).exists();
+
+	hasFiles = ofFile(GetCloudsVisualSystemDataPath(systemName) + "Presets/" + presetName).exists();
 }
 
 void CloudsVisualSystemPreset::eraseFiles(){
-	
-	string path = CloudsVisualSystem::getVisualSystemDataPath(systemName) + "Presets/" + presetName;
+
+	string path = GetCloudsVisualSystemDataPath(systemName) + "Presets/" + presetName;
 	if(ofFile(path).remove(true)){		
 		ofLogWarning("CloudsVisualSystemPreset::eraseFiles") << "Deleted preset at path " << path << endl;
 	}
 	else{
 		ofLogError("CloudsVisualSystemPreset::eraseFiles") << "Delete failed at path " << path << endl;
 	}
+
 }

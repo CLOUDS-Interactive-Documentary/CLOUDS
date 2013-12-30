@@ -11,8 +11,10 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "ofVboByteColor.h"
+
 typedef struct {
-	ofVbo* vbo;
+	ofVboByteColor* vbo;
 	string name;
 	int indexCount;
 } NamedVbo;
@@ -85,38 +87,45 @@ class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
+	ofShader shader;
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 	ofCamera& getCameraRef(){
+		if(bUseExternalCamera){
+			return externalCam;
+		}
 		return tunnelCam;
 	}
-
 
   protected:
     
     //  Your Stuff
     //
-	ofLight headlight;
-	float corkscrewFactor;
-	float lightDistance;
 	ofVec3f min;
 	ofVec3f max;
 	ofVec3f center;
-	
-	int loadMesh(ofVbo &vbo, string path);
-
+	int loadMesh(ofVboByteColor &vbo, string path);
+	int loadMeshPLY(ofVboByteColor &vbo, string path);
+	ofRange fogDistance;
 	ofCamera tunnelCam;
 	ofxUISuperCanvas* customGui;
 	int frameCount;
-	float startTime;
-	float fps;
-	float fogDensity;
 	int numReplications;
-	float replicationOffset;
-	float cameraDistance;
 	float cameraSpeed;
 	vector<NamedVbo> vbos;
 	
+	bool bUseExternalCamera;
+	bool bDrawPoints;
+	bool bPalindrome;
+	float growthFPS; //only works in palindrome
+	float maxLookAngle;
+	ofVec2f currentLookAngle;
+	float currentGrowthIndex;
+	float lastFrameTime;
+	
+	ofEasyCam externalCam;
+
+	void reloadShader();
 	void clear();
 	
 };

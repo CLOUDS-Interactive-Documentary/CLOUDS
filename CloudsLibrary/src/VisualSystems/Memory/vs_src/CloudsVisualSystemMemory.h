@@ -11,35 +11,103 @@
 #include "CloudsVisualSystem.h"
 
 class Block : public ofRectangle {
-public:
+  public:
     ofFloatColor    color,borderColor;
+	float			borderBase;
     int             value;
     float           border;
     bool            bSelected;
     
-    bool operator > (Block &b){ return this->value > b.value; }    
-    bool operator < (Block &b){ return this->value < b.value; }
+	ofIntRange outlineIndices;
+	ofIntRange fillIndices;
+	ofVboMesh* outlineMesh;
+	ofVboMesh* fillMesh;
+	
+    bool operator > (Block &b){
+		return this->value > b.value;
+	}
+    bool operator < (Block &b){
+		return this->value < b.value;
+	}
     
-    void draw(){
-        ofPushStyle();
-        
-        ofFill();
-        ofSetColor(color);
-        ofRect(*this);
-        
-        ofNoFill();
-        if (bSelected){
-            ofSetColor(borderColor);
+	void setup(){
+		outlineIndices.min = outlineMesh->getNumVertices();
+		
+		ofVec3f a = ofVec3f(getMinX(),getMinY(),0);
+		ofVec3f b = ofVec3f(getMaxX(),getMinY(),0);
+		ofVec3f c = ofVec3f(getMaxX(),getMaxY(),0);
+		ofVec3f d = ofVec3f(getMinX(),getMaxY(),0);
+		
+		outlineMesh->addVertex(a);
+		outlineMesh->addVertex(b);
+		
+		outlineMesh->addVertex(b);
+		outlineMesh->addVertex(c);
+
+		outlineMesh->addVertex(c);
+		outlineMesh->addVertex(d);
+		
+		outlineMesh->addVertex(d);
+		outlineMesh->addVertex(a);
+		
+		outlineIndices.max = outlineMesh->getNumVertices();
+		
+		for(int i = 0; i < 8; i++){
+			outlineMesh->addColor(ofFloatColor());
+		}
+		
+		fillIndices.min = fillMesh->getNumVertices();
+		
+		fillMesh->addVertex(a);
+		fillMesh->addVertex(b);
+		fillMesh->addVertex(d);
+		
+		fillMesh->addVertex(b);
+		fillMesh->addVertex(d);
+		fillMesh->addVertex(c);
+		
+		fillIndices.max = fillMesh->getNumVertices();
+		
+		for(int i = 0; i < 6; i++){
+			fillMesh->addColor(color);
+		}
+	}
+		
+	void update(){
+		ofFloatColor curStroke;
+		if (bSelected){
+            curStroke = borderColor;
         } else {
-            ofSetColor(ofFloatColor(0.5,borderColor.a));
+            curStroke = ofFloatColor(borderBase,borderColor.a);
         }
-        ofRect(*this);
-        
-//        ofSetColor(255);
-//        ofDrawBitmapString( ofToString(value) , x+width*0.5-4,y+height*0.5+4);
-        
-        ofPopStyle();
-    }
+
+		for(int i = outlineIndices.min; i < outlineIndices.max; i++) {
+			outlineMesh->setColor(i, curStroke);
+		}
+		for(int i = fillIndices.min; i < fillIndices.max; i++){
+			fillMesh->setColor(i, color);
+		}
+			
+
+	}
+		
+//    void draw(){
+//		ofPushStyle();
+//        
+//        ofFill();
+//        ofSetColor(color);
+//        ofRect(*this);
+//        
+//        ofNoFill();
+//        if (bSelected){
+//            ofSetColor(borderColor);
+//        } else {
+//            ofSetColor(ofFloatColor(0.5,borderColor.a));
+//        }
+//        ofRect(*this);
+//        
+//        ofPopStyle();
+//    }
 };
 
 
@@ -51,7 +119,8 @@ public:
     void selfSetup();
     void selfSetupGuis();
     
-    void selfAutoMode();
+	void selfSetDefaults();
+	
     void selfUpdate();
     void selfDrawBackground();
     void selfDrawDebug();
@@ -80,7 +149,10 @@ public:
     
 private:
     vector<Block> blocks;
-    
+	
+	ofVboMesh outlineMesh;
+	ofVboMesh fillMesh;
+
     void    generate();
     void    generateFromMemory();
     void    generateFromTexture(ofTexture &_tex);
@@ -97,10 +169,14 @@ private:
     void    applyRandomUp();
     void    applyRandomDown();
     
+	ofRange baseColorRange;
     ofFloatColor borderColor;
+	float borderBase;
+
     float   margin;
     float   blockWidth, blockHeight, blockScale;
     float   randomSort, randomMix, randomUp, randomDown;
+//    float   brightnessOffset;
     float   noiseLerp;
     
     int     xBlocks;

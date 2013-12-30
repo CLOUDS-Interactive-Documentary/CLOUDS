@@ -11,32 +11,11 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ofxFX.h"
 
-/*
-class Hair {
-  public:
-	float radius;
-	float z;
-	float phi;
-	float largo;
-	float theta;
-	
-	Hair(float radius) : radius(radius){
-		z = ofRandom(-radius, radius);
-		phi = ofRandom(TWO_PI);
-		largo = ofRandom(1.05, 1.1);
-		theta = asin(z/radius);
-	}
-	
-	void draw() {
-
-	}
-};
- */
-
-//TODO: rename this to your own visual system
-class CloudsVisualSystemAutomata : public CloudsVisualSystem {
+//--------------------------------------------------------------
+//--------------------------------------------------------------
+class CloudsVisualSystemAutomata : public CloudsVisualSystem
+{
   public:
     
 	//TODO: Change this to the name of your visual system
@@ -106,8 +85,6 @@ class CloudsVisualSystemAutomata : public CloudsVisualSystem {
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
-	
-	
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -115,22 +92,26 @@ class CloudsVisualSystemAutomata : public CloudsVisualSystem {
 //		return myCustomCamera;
 //	}
 
+    void restart();
+    void render();
 
 protected:
+    ofxUISuperCanvas * customGui;
+
+    float fgParams1[3], fgParams2[3];
+    float fade;
+    ofFloatColor fgColor1, fgColor2;
+	
+    ofShader conwayShader;
+    ofShader blenderShader;
+    ofFbo texFbo, outFbo;
+    ofVboMesh mesh;
     
-    //  Your Stuff
-    //
-	
-	ofxUISuperCanvas* customGui;
-	
-    ofImage      image;
-    ofxFXObject  conway;
+    ofDirectory seedDir;
+    int selectedSeedIdx;
     
-   // ofFbo               canvas;
-	//ofFloatColor color1HSB;
-	//ofFloatColor color2HSB;
-
-
-	
-
+    bool bDoInput;
+    
+    float radius;
+    bool bRestart;
 };

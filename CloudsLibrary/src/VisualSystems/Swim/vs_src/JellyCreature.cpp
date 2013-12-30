@@ -43,10 +43,21 @@ namespace itg
     ofShader JellyCreature::shader;
     ofImage JellyCreature::tex;
     
-    JellyCreature::JellyCreature(const ofFloatColor& bodyColour, const ofFloatColor& tentacleColour, float m1, float m2, float segment, float w, float d) :
-        bodyColour(bodyColour), tentacleColour(tentacleColour), m1(m1), m2(m2), segment(segment), Creature()
+    JellyCreature::JellyCreature(const JellyParams& params) : Creature()
     {
         type = JELLY;
+        
+        bodyColour = ofFloatColor::fromHsb(params.bodyHsb.x, params.bodyHsb.y, params.bodyHsb.z);
+        tentacleColour = ofFloatColor::fromHsb(params.tentacleHsb.x, params.tentacleHsb.y, params.tentacleHsb.z);
+        
+        bodyAlpha = params.bodyAlpha;
+        
+        m1 = ofRandom(params.m1Min, params.m1Max);
+        m2 = ofRandom(params.m2Min, params.m2Max);
+        
+        pulseAmt = ofRandom(params.pulseAmtMin, params.pulseAmtMax);
+        
+        segment = ofRandom(params.segmentMin, params.segmentMax);
         
         n11 = .5;
         n21 = 1.7;
@@ -62,7 +73,10 @@ namespace itg
         
         drawInner = true;
         
-        size = ofVec3f(w, w, d);
+        float w = randomGauss(params.widthAverage, params.widthStdDeviation);
+        float l = randomGauss(params.lengthAverage, params.lengthStdDeviation);
+        
+        size = ofVec3f(w, w, l);
         
         deformAmount = 0.5 * w;
         
@@ -153,6 +167,8 @@ namespace itg
         shader.setUniform1f("frequency", frequency);
         shader.setUniformTexture("tex", tex, 0);
         shader.setUniform1f("texRepeatS", texRepeatS);
+        shader.setUniform1f("fogStart", fogStart);
+        shader.setUniform1f("fogEnd", fogEnd);
 #warning take light pos from visual system
         shader.setUniform3f("lightPos", 1000, 0, 1000);
     }
@@ -173,7 +189,7 @@ namespace itg
         
         shader.setUniform1f("texAmount", 0.f);
         shader.setUniform1f("lightingAmount", 1.f);
-        shader.setUniform4f("colour", bodyColour.r, bodyColour.g, bodyColour.b, 80 / 255.f);
+        shader.setUniform4f("colour", bodyColour.r, bodyColour.g, bodyColour.b, bodyAlpha + pulseAmt * sin(ofGetElapsedTimef() * frequency));
         if (drawInner) innerMesh.draw();
         
         shader.setUniform1f("texAmount", 0.f);

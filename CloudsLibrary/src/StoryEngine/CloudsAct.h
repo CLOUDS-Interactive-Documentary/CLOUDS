@@ -6,8 +6,7 @@
 //
 //
 
-#ifndef __CloudsStoryEngine__CloudsAct__
-#define __CloudsStoryEngine__CloudsAct__
+#pragma once
 
 #include "ofMain.h"
 #include "CloudsEvents.h"
@@ -34,11 +33,15 @@ struct ActTimeItem{
     float handleLength;
 };
 
-//typedef struct {
-//	vector<CloudsDichotomy> dichotomies;
-//	float timestamp;
-//	CloudsClip clip;
-//} ActDichotomyEntry;
+struct CloudsSoundCue
+{
+	float startTime;
+	float duration;
+	int mixLevel; //0, 1, 2;
+	string riggedPresetName;
+	string soundQuestionKey;
+	vector<CloudsDichotomy> dichotomies;
+};
 
 class CloudsAct{
   public:
@@ -75,11 +78,14 @@ class CloudsAct{
     void play();
     void clear();
 	
+	bool isClipEnergyShift(CloudsClip& clip);
+	
     vector<CloudsClip>& getAllClips();
     vector<CloudsVisualSystemPreset>& getAllVisualSystemPresets();
 	vector< ofPtr<CloudsVisualSystem> > getAllVisualSystems();
 	vector<CloudsDichotomy>& getDichotomiesForClip(CloudsClip& clip);
 	vector<CloudsDichotomy>& getDichotomiesForClip(string clipName);
+	vector<CloudsSoundCue>& getSoundCues();
 	
     vector<string>& getAllTopics();
     
@@ -87,19 +93,16 @@ class CloudsAct{
     CloudsClip& getClipAtTime(float time);
 
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
-    void addClip(CloudsClip clip, string topic, float startTime);
-    void addClip(CloudsClip clip, string topic, float startTime, float handleLength,vector<CloudsDichotomy> currentDichotomiesBalance);
-    void addGapForCadence(CloudsVisualSystemPreset preset,float startTime, float duration);
+    float addClip(CloudsClip& clip, string topic, float startTime);
+    float addClip(CloudsClip& clip, string topic, float startTime, float handleLength, vector<CloudsDichotomy> currentDichotomiesBalance);
+    float addVisualSystem(CloudsVisualSystemPreset& preset, float startTime, float duration);
+    void addGapForCadence(CloudsVisualSystemPreset& preset,float startTime, float duration);
     void updateClipStartTime(CloudsClip clip, float startTime, float handleLength,string topic);
     void addQuestion(CloudsClip clip, string topic, float startTime);
-    void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
     void addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName);
-
-
-    
-//    void removeQuestionAtTime(float startTime, float endTime);
+	
     void removeActItem(ActTimeItem item);
-    void updateVsEndTime(CloudsVisualSystemPreset preset, float newEndTime);
+    void updateVsEndTime(CloudsVisualSystemPreset& preset, float newEndTime);
     ActTimeItem& getItemForClip(CloudsClip& clip);
     ActTimeItem& getItemForVisualSystem(CloudsVisualSystemPreset& preset);
     float getClipStartTime(CloudsClip& clip);
@@ -110,11 +113,13 @@ class CloudsAct{
 	ofxTimeline& getTimeline(){ return timeline; }
     
     void drawDebug();
-
+	//set via storyengine param
+	float defaulPrerollDuration;
+	
     bool timeToPlayVisualSystem(); // decide when to play VS based in clips
-    CloudsEvents& getEvents();
+    CloudsStoryEvents& getEvents();
     
-protected:
+  protected:
 
     ofxTimeline timeline;
     ofxTLFlags* visualSystemsTrack;
@@ -129,11 +134,9 @@ protected:
 	
 	bool timelinePopulated;
     string currentTopic;
-    CloudsEvents events;
+    CloudsStoryEvents events;
     vector<CloudsClip> clips;
     vector<CloudsVisualSystemPreset> visualSystems;
-
-	
 	
     vector<ActTimeItem> actItems;
     map<string,ActTimeItem> actItemsMap;
@@ -144,8 +147,9 @@ protected:
     ActTimeItem dummy;
     CloudsClip dummyClip;
     vector<CloudsDichotomy> dummyDichotomies;
-    
-    map<string, CloudsClip>clipMap;
+    vector<string> energyShiftClipIDs;
+	
+    map<string, CloudsClip> clipMap;
     map<string, ActTimeItem> clipItems;
     map<string, string> clipDifficultyMap;
 
@@ -160,16 +164,12 @@ protected:
 	ofxTLFlags* dichotomyClips;
 	map<string, ofxTLCurves*> dichotomyTracks;
 	
-	vector<CloudsDichotomy> finalDichotomies;
+	vector<CloudsSoundCue> cues;
 	
-    float visualSystemDuration;
-    float visualSystemStartTime;
-    float visualSystemEndTime;
-    
     float duration;
     int currentPlayIndex;
     void loadNextClip();
     float getActDuration();
 };
 
-#endif /* defined(__CloudsStoryEngine__CloudsAct__) */
+
