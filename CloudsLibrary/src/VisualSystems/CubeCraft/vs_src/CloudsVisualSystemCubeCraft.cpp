@@ -469,7 +469,7 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	ofScale(scale,scale,scale);
 	
 	mineCraftGroundShader.begin();
-	
+
 	mineCraftGroundShader.begin();
 	mineCraftGroundShader.setUniform1f("cameraCutoffDistance", 3);
 	
@@ -482,7 +482,7 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	mineCraftGroundShader.setUniform1f("fogExpo", fogExpo );
 
 	mineCraftGroundShader.setUniform1f("useFog", bUseFog);
-	
+
 	fc = fillColor2;
 	mineCraftGroundShader.setUniform4f("specularColor", fc.r, fc.g, fc.b, fc.a );
 
@@ -493,14 +493,8 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	mineCraftGroundShader.setUniform4f("undergroundColor", fc.r, fc.g, fc.b, fc.a );
 
 	fc = cloudShadowColor;
-	cubeCraftShader.setUniform4f("cloudShadowColor", fc.r, fc.g, fc.b, fc.a );
-//
-//	cubeCraftShader.setUniform1f("dimX", dimX );
-//	cubeCraftShader.setUniform1f("dimY", dimY );
-//	cubeCraftShader.setUniform1f("dimZ", dimZ );
-//	cubeCraftShader.setUniform3f("minBound", -.5 * dimX, -.5 * dimY, -.5 * dimZ);
-//	cubeCraftShader.setUniform3f("maxBound", .5 * dimX, .5 * dimY, .5 * dimZ);
-//	
+	mineCraftGroundShader.setUniform4f("cloudShadowColor", fc.r, fc.g, fc.b, fc.a );
+
 	ofVec3f cp = getCameraRef().getPosition() / scale;
 	mineCraftGroundShader.setUniform3f("cameraPos", cp.x, cp.y, cp.z );
 	
@@ -557,7 +551,7 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	
 	voxelVbo.draw(GL_TRIANGLES, 0, voxelIndexCount );
 	
-	mineCraftGroundShader.end();
+	mineCraftCloudsShader.end();
 	
 	
 	ofPopMatrix();
