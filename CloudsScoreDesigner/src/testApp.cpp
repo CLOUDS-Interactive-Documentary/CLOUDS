@@ -249,11 +249,10 @@ void testApp::keyPressed(int key){
         sound.doPrinting();
     }
     if(key == 's') {
-        STREAMSOUND_DYNAMIC(0, "CLOUDS_introTunnel_light.wav", 1.0, "tunnelamp", 1);
-        //STREAMSOUND_DYNAMIC(0, "SJ.aif", 1.0, "tunnelamp", 1);
+        sound.enterTunnel();
     }
     if(key == 'a') {
-        PFIELD_SCHED(0., 5., 1, "ramp_10");
+        sound.exitTunnel();
     }
 }
 

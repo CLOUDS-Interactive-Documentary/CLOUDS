@@ -134,16 +134,14 @@ void STREAMSOUND_DYNAMIC(double outskip, string file, double amp, string pvar, i
     // establish handle
     bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)pvar.c_str(), updatenr);
     parse_score(thebuf, bx);
-    cout << thebuf << endl;
+
     // load file
     bx = snprintf(thebuf, 256, "rtinput(\"%s\")", (char*)f.c_str());
     parse_score(thebuf, bx);
-    cout << thebuf << endl;
     
     // start sound
     bx = snprintf(thebuf, 256, "STEREO(%f, 0., DUR(), %f*%s, 0, 1)", outskip, amp, (char*)pvar.c_str());
     parse_score(thebuf, bx);
-    cout << thebuf << endl;
    
 }
 
@@ -368,6 +366,5 @@ void PFIELD_SCHED(float outskip, float duration, int nr, string action)
     // BUG - the de-queue flag doesn't work as advertised; brad is investigating
     bx = snprintf(thebuf, 256, "PFSCHED(%f, %f, %d, %s, 1)", outskip, duration, nr, (char*)action.c_str());
     parse_score(thebuf, bx);
-    cout << thebuf << endl;
 }
 
