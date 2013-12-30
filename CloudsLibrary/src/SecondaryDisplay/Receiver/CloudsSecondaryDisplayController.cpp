@@ -13,7 +13,6 @@ CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
 	hasSpeaker = false;
 	playingMovie = false;
     
-//    layoutID = 0;
     displayMode = "BIO";
 }
 
@@ -49,24 +48,27 @@ void CloudsSecondaryDisplayController::setup(){
     
 	loadSVGs();
     
+    //FONT SIZES ARE IN POINTS
+    //1 pixel = .75pts
+    float fScale = .75;
     //load all fonts
-	exampleType.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", 40);
-    exampleType.setLineLength(544);
+	//exampleType.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", 40*fScale);
+    //exampleType.setLineLength(544);
     ////last name
-    h1.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_LASTNAME")->bounds.height);
+    h1.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_LASTNAME")->bounds.height * fScale);
     h1.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.width);
     ////first name
-    h2.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.height);
+    h2.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.height * fScale);
     h2.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.width);
     ////question
-    h3FontSize = 38;
+    h3FontSize = 38 * fScale;
     h3.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", h3FontSize);
     h3.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION")->bounds.width);
     ////location / creator name
-    h4.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_LOC")->bounds.height);
+    h4.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_LOC")->bounds.height * fScale);
     h4.setLineLength(bioLayout.getMeshByID("BOX_x5F_LOC")->bounds.width);
     ////byline / description
-    pFontSize = 21;
+    pFontSize = 21 * fScale;
     p.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", pFontSize);
     p.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_BIO")->bounds.width);
  
@@ -87,7 +89,7 @@ void CloudsSecondaryDisplayController::loadSVGs(){
     //load the three different layouts
     bioLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/BIO.svg");
     projectLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/PROJECTEX/PROJECTEX.svg");
-    systemLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/VISUALSYSTEM/VISUALSYS.svg");
+    systemLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/VISUALSYSTEM/VISUAL.svg");
 
 }
 
