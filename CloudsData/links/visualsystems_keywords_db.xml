@@ -245,7 +245,7 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="2DVideo_FaceShift_noisy_space">
+<system name="2DVideo_FaceShift_noisy_">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -663,26 +663,6 @@
     <links>
         <clip>Binx - maps</clip>
     </links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
-<system name="2DVideo_test">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
-<system name="2DVideo_test2">
-    <keywords></keywords>
-    <links></links>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -2259,6 +2239,16 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Colony_Cool_Petri_Bro">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Colony_Default">
     <keywords></keywords>
     <links></links>
@@ -2270,6 +2260,16 @@
     <sound>0</sound>
 </system>
 <system name="Colony_Default_2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Colony_Four">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>

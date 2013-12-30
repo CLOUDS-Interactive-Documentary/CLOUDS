@@ -3,11 +3,16 @@
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
     <XPosition>425.000061035</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>Bacteria</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Cool_Petri_Bro</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -22,12 +27,22 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Four</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>PetriDish</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>PetriDish_darker</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Phytoplankton</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -42,7 +57,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Phytoplankton</Name>
+    <Name>SyntheticBlack</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SyntheticGreen</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

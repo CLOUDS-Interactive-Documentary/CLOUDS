@@ -2,56 +2,56 @@
     <Kind>42</Kind>
     <Name>LOOKS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000061035</XPosition>
-    <YPosition>542.000000000</YPosition>
+    <XPosition>849.000122070</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell Floor Translusence</Name>
-    <Value>0.492610544</Value>
+    <Value>0.137930736</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Dish Floor Translusence</Name>
-    <Value>0.221674576</Value>
+    <Value>0.261083454</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>R1</Name>
-    <Value>0.762499988</Value>
+    <Value>0.587499976</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>G1</Name>
-    <Value>0.800000012</Value>
+    <Value>0.550000012</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>B1</Name>
-    <Value>0.737500012</Value>
+    <Value>0.662500024</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>A1</Name>
-    <Value>1.000000000</Value>
+    <Value>0.574999988</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>R2</Name>
-    <Value>0.537500024</Value>
+    <Value>0.512499988</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>G2</Name>
-    <Value>0.475000024</Value>
+    <Value>0.324999988</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>B2</Name>
-    <Value>1.000000000</Value>
+    <Value>0.537500024</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>A2</Name>
-    <Value>0.774999976</Value>
+    <Value>0.237500012</Value>
 </Widget>
