@@ -105,14 +105,17 @@ vec4 getMicroscope(vec4 fg){
     b *= fg.b * fg.b;
     float innerCellAlpha = clamp(bump(b, .8, .8), 0., translucenseCell);
 //    innerCellAlpha *= (1. - (.2 + .2 * sin(gl_FragCoord.x + gl_FragCoord.y)));
-    float shellAlpha = clamp(bump(b, .3, .2), 0., .95);
+    float shellAlpha = clamp(bump(b, .3, .2), 0., .90);
     vec4 kernel = clamp(fg.g/kernel_maxValue, 0., 1.)
 //                * vec4(vec3(mix(1.,getLightIntensity(fg.g/kernel_maxValue, vec3(1)), 0.3)),1.)
                 * mix(kernelColor_low, kernelColor_high, fg.g/kernel_maxValue);
     vec4 shell = vec4(1.,1.,1.,pow(shellAlpha, 1.5));
     
     vec2 normalizedCoords = gl_TexCoord[0].xy * imgRes / resolution;
-    vec4 bg = texture2DRect(grunge, normalizedCoords * .5  + vec2(dFdx(fg.b),dFdy(fg.b)) * 100.0+ imgRes * .25 ); //enlarged
+    float distortion = fg.b - .25 * fg.g;
+    vec4 bg = texture2DRect(grunge, normalizedCoords * .5
+                            + vec2(dFdx(distortion),dFdy(distortion)) * 100.0
+                            + imgRes * .25 ); //enlarged
     
     //COMPOSITING STAGE
     vec4 ret = over(premult(shell), premult(kernel)); //top
@@ -128,10 +131,9 @@ void main(){
             color = getLevelSet(fg);
     } else {
         
-        //This is happening because I can only use sampler2dRect
+//        //This is happening because I can only use sampler2dRect
         vec2 normalizedCoords = gl_TexCoord[0].xy * imgRes / resolution;
         vec4 bg = texture2DRect(grunge, normalizedCoords);
-        vec4 bg_cu = texture2DRect(grunge, normalizedCoords * .5 + imgRes * .25 ); //enlarged
         vec4 cells = getMicroscope(fg);
         bg.a *= translucenseDish;
         color = over(premult(cells), premult(bg));
