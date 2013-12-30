@@ -4,9 +4,10 @@
 
 uniform float fogDistance = 100.;
 uniform float fogAttenuation = 1.;
-uniform float fogExpo = 2.;
-uniform vec4 fogColor = vec4(0.,0.,0.,1.);
+uniform float fogExpo = 1.;
 
+uniform vec3 lightPosition;
+varying vec3 lPos;
 
 uniform int useNoiseDisplacement = 0;
 uniform float noiseDisplacement = 2.;
@@ -14,9 +15,11 @@ uniform vec3 noiseScale = vec3( .01 );
 uniform vec3 noiseOffset = vec3(0.,0.,0.);
 
 varying vec4 color;
+varying float fogAmount;
 
 varying vec3 norm;
 varying vec3 ePos;
+varying vec4 ecPosition;
 varying vec2 uv;
 
 vec4 permute( vec4 x ) {
@@ -96,9 +99,12 @@ void main()
 	
 	norm = gl_NormalMatrix * gl_Normal;
 	
-	vec4 ecPosition = gl_ModelViewMatrix * v;
+	lPos = vec3(gl_ModelViewMatrix * vec4(lightPosition, 1.));
+	
+	ecPosition = gl_ModelViewMatrix * v;
 	
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
+	
 	
 	gl_Position = gl_ProjectionMatrix * ecPosition;
 	
@@ -106,6 +112,8 @@ void main()
 	
 	//fog
 	float camDelta = length( ecPosition );
-	color = mix( fogColor, color, min(1., max(0., pow( (1. - camDelta / fogDistance), fogExpo) * fogAttenuation) ) );
+	fogAmount = min(1., max(0., 1.25 * pow( (1. - camDelta / fogDistance), fogExpo) * fogAttenuation ) );
+	
+//	color = mix( fogColor, vec4(1.), min(1., max(0., pow( (1. - camDelta / fogDistance), fogExpo) * fogAttenuation) ) );
 }
 

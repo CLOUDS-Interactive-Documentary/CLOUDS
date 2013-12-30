@@ -101,6 +101,8 @@ class CloudsVisualSystemWormHole : public CloudsVisualSystem {
 	ofCamera& getCameraRef(){
 		return CloudsVisualSystem::getCameraRef();
 	}
+	
+	void selfSetDefaults();
 
 protected:
 	
@@ -119,6 +121,7 @@ protected:
 	ofxUISuperCanvas* meshGui;
 	ofxUISuperCanvas* shaderGui;
 	ofxUISuperCanvas* fogGui;
+	ofxUISuperCanvas* wormholeLightGui;
 	ofxUISuperCanvas* displacementGui;
 	
 	ofImage colorSampleImage;
@@ -147,7 +150,10 @@ protected:
 	ofColor fogColor;
 	
 	ofVec3f lightPos;
-	ofFloatColor lightColor;
+	float lightLinearAttenuation, lightQuadraticAttenuation, lightConstantAttenuation, lightPathOffset;
+	int lightHue, lightSaturation, lightBrightness;
+	
+	ofColor lightColor;
 	float lightFallOff;
 	
 	string cameraPathPath;
@@ -156,21 +162,17 @@ protected:
 	CloudsPathCamera pathCamera;
 	
 	float sampleTime, lastTime, speed;
-	float shininess;
+	float shininess,facingRatioExpo;
 	ofBlendMode currentBlendMode;
 	bool bDepthTest;
 	
-	ofFloatColor c1, c2;
+	int c1Hue, c1Sat, c1Bri;
+	int c2Hue, c2Sat, c2Bri;
+	ofColor c1, c2;
 		
 	bool bUseNoiseDisplacement;
 	float noiseDisplacement, noiseSpeed, noiseTime, noiseScale;
 	ofVec3f noiseOffset, noiseDir;
-<<<<<<< HEAD
-
-	ofVbo testVbo;
-	int testVertexCount;
-=======
     
-    float nearClipPlane; 
->>>>>>> 9890e802e1e19c3e6c10451fd9b5c33e6f4aafda
+    float nearClipPlane;
 };

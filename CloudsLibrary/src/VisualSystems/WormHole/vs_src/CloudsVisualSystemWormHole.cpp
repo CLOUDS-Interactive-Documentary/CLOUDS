@@ -97,15 +97,19 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	shaderGui->addSpacer();
 	shaderGui->addRadio("shaders", shaderNames);
 	shaderGui->addSpacer();
+	shaderGui->addSlider("facingRatioExpo", .6, 64, &facingRatioExpo);
 	shaderGui->addSlider("shininess", .6, 64, &shininess);
 	
 	shaderGui->addSpacer();
 	shaderGui->addLabel("color1");
-	shaderGui->addImageSampler("c1", &colorSampleImage, 100, 100);
-	shaderGui->addMinimalSlider("c1_alpha", 0, 1, &c1.a);
+	shaderGui->addIntSlider("c1Hue", 0, 255, &c1Hue);
+	shaderGui->addIntSlider("c1Saturation", 0, 255, &c1Sat);
+	shaderGui->addIntSlider("c1Brightness", 0, 255, &c1Bri);
+	
 	shaderGui->addLabel("color2");
-	shaderGui->addImageSampler("c2", &colorSampleImage, 100, 100);
-	shaderGui->addMinimalSlider("c2_alpha", 0, 1, &c2.a);
+	shaderGui->addIntSlider("c2Hue", 0, 255, &c2Hue);
+	shaderGui->addIntSlider("c2Saturation", 0, 255, &c2Sat);
+	shaderGui->addIntSlider("c2Brightness", 0, 255, &c2Bri);
 	
 	ofAddListener(shaderGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 	guis.push_back(shaderGui);
@@ -127,11 +131,31 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	fogGui->addIntSlider("fogSaturation", 0, 255, &fogSaturation);
 	fogGui->addIntSlider("fogBrightness", 0, 255, &fogBrightness);
 	
-	
-	
 	ofAddListener(fogGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 	guis.push_back(fogGui);
 	guimap[fogGui->getName()] = fogGui;
+
+		
+	wormholeLightGui = new ofxUISuperCanvas("WH_light", gui);
+	wormholeLightGui->copyCanvasStyle(gui);
+	wormholeLightGui->copyCanvasProperties(gui);
+	wormholeLightGui->setName("w_h_light");
+	wormholeLightGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	//fogHue, fogSaturation, fogBrightness;
+	wormholeLightGui->addSlider("pathOffset", 0, .5, &lightPathOffset)->setIncrement(.001);
+	wormholeLightGui->addSpacer();
+	wormholeLightGui->addSlider("constantAttenuation", 0, 2, &lightConstantAttenuation)->setIncrement(.01);
+	wormholeLightGui->addSlider("linearAttenuation", 0, 1, &lightLinearAttenuation)->setIncrement(.01);
+	wormholeLightGui->addSlider("quadraticAttenuation", 0, 1, &lightQuadraticAttenuation)->setIncrement(.01);
+	wormholeLightGui->addIntSlider("lightHue", 0, 255, &lightHue);
+	wormholeLightGui->addIntSlider("lightSaturation", 0, 255, &lightSaturation);
+	wormholeLightGui->addIntSlider("lightBrightness", 0, 255, &lightBrightness);
+	
+	
+	ofAddListener(wormholeLightGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	guis.push_back(wormholeLightGui);
+	guimap[wormholeLightGui->getName()] = wormholeLightGui;
 	
 	//displacement
 	displacementGui = new ofxUISuperCanvas("Displacement", gui);
@@ -200,14 +224,6 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 				if(name == meshNames[i])
 				{
 					loadMesh( meshNames[i] );
-<<<<<<< HEAD
-=======
-					
-					if(bFacetMesh && !bMeshHasBeenFaceted)
-					{
-						facetMesh(mesh, mesh);
-					}
->>>>>>> 9890e802e1e19c3e6c10451fd9b5c33e6f4aafda
 				}
 			}
 		}
@@ -222,26 +238,6 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 				}
 			}
 		}
-<<<<<<< HEAD
-=======
-		
-		else if(name == "FacetMesh" )
-		{
-			if(!bMeshHasBeenFaceted)
-			{
-				facetMesh(mesh, mesh);
-				bSmoothMesh = false;
-			}
-		}
-		else if(name == "SmoothMesh" )
-		{
-			if(!bMeshHasBeenSmoothed)
-			{
-				smoothMesh(mesh, mesh);
-				bFacetMesh = false;
-			}
-		}
->>>>>>> 9890e802e1e19c3e6c10451fd9b5c33e6f4aafda
 	}
 	
 	if(name == "c1")
@@ -252,12 +248,26 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 		c1.b = tempColor.b;
 	}
 	
-	else if(name == "c2")
+	else if( name == "c1Hue"|| name == "c1Saturation"|| name == "c1Brightness")
 	{
-		ofFloatColor tempColor = ((ofxUIImageSampler *) e.widget)->getColor();
-		c2.r = tempColor.r;
-		c2.g = tempColor.g;
-		c2.b = tempColor.b;
+		c1.setHue(c1Hue);
+		c1.setSaturation(c1Sat);
+		c1.setBrightness(c1Bri);
+		
+		shaderGui->getWidget("c1Hue")->setColorFill(c1);
+		shaderGui->getWidget("c1Saturation")->setColorFill(c1);
+		shaderGui->getWidget("c1Brightness")->setColorFill(c1);
+	}
+	
+	else if( name == "c2Hue"|| name == "c2Saturation"|| name == "c2Brightness")
+	{
+		c2.setHue(c2Hue);
+		c2.setSaturation(c2Sat);
+		c2.setBrightness(c2Bri);
+		
+		shaderGui->getWidget("c2Hue")->setColorFill(c2);
+		shaderGui->getWidget("c2Saturation")->setColorFill(c2);
+		shaderGui->getWidget("c2Brightness")->setColorFill(c2);
 	}
 	
 	else if( name == "fogHue"|| name == "fogSaturation"|| name == "fogBrightness")
@@ -269,6 +279,22 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 		fogGui->getWidget("fogHue")->setColorFill(fogColor);
 		fogGui->getWidget("fogSaturation")->setColorFill(fogColor);
 		fogGui->getWidget("fogBrightness")->setColorFill(fogColor);
+		
+		bgHue = fogHue;
+		bgSat = fogSaturation;
+		bgBri = fogBrightness;
+		
+		//??? would it be better to set the fog to the background color
+	}
+	else if( name == "lightHue"|| name == "lightSaturation"|| name == "lightBrightness")
+	{
+		lightColor.setHue(lightHue);
+		lightColor.setSaturation(lightSaturation);
+		lightColor.setBrightness(lightBrightness);
+		
+		wormholeLightGui->getWidget("lightHue")->setColorFill(lightColor);
+		wormholeLightGui->getWidget("lightSaturation")->setColorFill(lightColor);
+		wormholeLightGui->getWidget("lightBrightness")->setColorFill(lightColor);
 	}
 }
 
@@ -283,23 +309,15 @@ void CloudsVisualSystemWormHole::loadMesh(string name)
 		
 		ofxObjLoader::load( modelPath + name, mesh, false );
 		
-<<<<<<< HEAD
 		cout << name + " loaded in " << ofGetElapsedTimeMillis() - startTime << " milliseconds" << endl;
 	}
-=======
-		bMeshHasBeenFaceted = bMeshHasBeenSmoothed = false;
-		
-		if(bFacetMesh)	facetMesh(mesh, mesh);
-		else if(bSmoothMesh)	smoothMesh(mesh, mesh);
-	}	
->>>>>>> 9890e802e1e19c3e6c10451fd9b5c33e6f4aafda
 }
 
 void CloudsVisualSystemWormHole::loadShaders()
 {
-	loadShader("normalShader");
-	loadShader("facingRatio");
-	loadShader("XRayShader");
+//	loadShader("normalShader");
+//	loadShader("facingRatio");
+//	loadShader("XRayShader");
 	loadShader("WormholeShader");
 }
 
@@ -341,10 +359,10 @@ void CloudsVisualSystemWormHole::guiRenderEvent(ofxUIEventArgs &e){
 }
 
 
-void CloudsVisualSystemWormHole::selfSetup()
+void CloudsVisualSystemWormHole::selfSetDefaults()
 {
 	//defaults
-	currentShader = NULL;
+	currentShader = shaderMap.find("WormholeShader") != shaderMap.end() ? shaderMap["WormholeShader"] : NULL;
 	bUseCameraPath = false;
 	cameraPathPosition = 0;
 	speed = .1;
@@ -359,6 +377,17 @@ void CloudsVisualSystemWormHole::selfSetup()
 	
 	fogColor.set(0,0,0, 255);
 	fogDist = 70;
+	
+	lightPathOffset = .05;
+	
+	lightConstantAttenuation = .7;
+	lightLinearAttenuation = .01;
+	lightQuadraticAttenuation = .01;
+}
+
+void CloudsVisualSystemWormHole::selfSetup()
+{
+	currentShader = NULL;
 	
 	//meshes
 	modelPath = getVisualSystemDataPath() + "models/";
@@ -408,8 +437,7 @@ void CloudsVisualSystemWormHole::selfBegin(){
 //normal update call
 void CloudsVisualSystemWormHole::selfUpdate()
 {
-	//lights
-	lightPos = getCameraRef().getPosition();\
+	//light(s)	
     
     getCameraRef().setNearClip(nearClipPlane);
 	
@@ -421,7 +449,17 @@ void CloudsVisualSystemWormHole::selfUpdate()
 		getCameraRef().setPosition(pathCamera.getPosition());
 		getCameraRef().lookAt(pathCamera.getLookAtDir() + pathCamera.getPosition());
 		
+		//light on path
+		lightPos = pathCamera.getPositionSpline().getPoint( ofClamp(pathCamera.u + lightPathOffset, 0, 1) );
+		
 	}
+	else
+	{
+		lightPos = getCameraRef().getPosition() + getCameraRef().getLookAtDir() * 10;
+	}
+	
+	//transform light to modelview space
+//	lightPos = lightPos * getCameraRef().getModelViewMatrix();
 	
 	//action
 	float t = ofGetElapsedTimef();
@@ -453,15 +491,25 @@ void CloudsVisualSystemWormHole::selfDraw()
 	{
 		currentShader->begin();
 		currentShader->setUniform1f("time", ofGetElapsedTimef());
-		ofVec3f cp = getCameraPosition();
-		currentShader->setUniform3f("cameraPosition", cp.x, cp.y, cp.z );
+		
+		ofFloatColor lc = lightColor;
+		currentShader->setUniform4f("lightColor", lc.r, lc.g, lc.b, lc.a);
+		currentShader->setUniform3f("lightPosition", lightPos.x, lightPos.y, lightPos.z );
+		currentShader->setUniform1f("lightConstantAttenuation", lightConstantAttenuation);
+		currentShader->setUniform1f("lightLinearAttenuation", lightLinearAttenuation);
+		currentShader->setUniform1f("lightQuadraticAttenuation", lightQuadraticAttenuation);
+		
 		ofFloatColor fc = fogColor;
 		currentShader->setUniform4f("fogColor", fc.r, fc.g, fc.b, fc.a);
 		currentShader->setUniform1f("fogDistance", fogDist );
+		currentShader->setUniform1f("fogExpo", fogExpo );
 		
+		currentShader->setUniform1f("facingRatioExpo", facingRatioExpo );
 		currentShader->setUniform1f("shininess", shininess );
-		currentShader->setUniform4f("c1", c1.r, c1.g, c1.b, c1.a );
-		currentShader->setUniform4f("c2", c2.r, c2.g, c2.b, c2.a );
+		ofFloatColor c1f = c1;
+		ofFloatColor c2f = c2;
+		currentShader->setUniform4f("c1", c1f.r, c1f.g, c1f.b, c1f.a );
+		currentShader->setUniform4f("c2", c2f.r, c2f.g, c2f.b, c2f.a );
 		
 		currentShader->setUniform1i("useNoiseDisplacement", bUseNoiseDisplacement );
 		currentShader->setUniform3f("noiseOffset", noiseDir.x * noiseTime, noiseDir.y * noiseTime, noiseDir.z * noiseTime);
