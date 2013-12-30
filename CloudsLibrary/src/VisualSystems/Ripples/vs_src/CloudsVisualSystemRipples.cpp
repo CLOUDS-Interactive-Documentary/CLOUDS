@@ -117,8 +117,8 @@ void CloudsVisualSystemRipples::selfSetup()
 
 void CloudsVisualSystemRipples::restart()
 {
-    float width = ofGetWidth();
-    float height = ofGetHeight();
+    float width = getCanvasWidth();
+    float height = getCanvasHeight();
     
     ripplesSrcFbo.allocate(width, height, GL_RGBA32F);
     ripplesSrcFbo.begin();
@@ -171,7 +171,7 @@ void CloudsVisualSystemRipples::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemRipples::selfUpdate()
 {    
-    if (bRestart || ripplesSrcFbo.getWidth() != ofGetWidth() || ripplesSrcFbo.getHeight() != ofGetHeight()) {
+    if (bRestart || ripplesSrcFbo.getWidth() != getCanvasWidth() || ripplesSrcFbo.getHeight() != getCanvasHeight()) {
         restart();
         bRestart = false;
     }
@@ -188,7 +188,7 @@ void CloudsVisualSystemRipples::selfUpdate()
             ofNoFill();
 #ifdef OCULUS_RIFT
             // I don't know why everything is flipped, but it is.
-            ofCircle(ofGetHeight() - GetCloudsInputY(), ofGetWidth() - GetCloudsInputX(), radius);
+            ofCircle(getCanvasHeight()() - GetCloudsInputY(), getCanvasWidth() - GetCloudsInputX(), radius);
 #else
             ofCircle(GetCloudsInputX(), GetCloudsInputY(), radius);
 #endif
