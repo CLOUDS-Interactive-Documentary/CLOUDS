@@ -2,9 +2,14 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>725.000000000</XPosition>
-    <YPosition>238.000000000</YPosition>
+    <XPosition>637.000122070</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>architecture_lighting</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>BasicMotion</Name>
@@ -47,12 +52,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>JM_Sweep</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>larger_irregular_cubes</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>LightPreset</Name>
+    <Name>StarkCubes</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
