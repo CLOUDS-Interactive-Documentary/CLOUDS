@@ -20,8 +20,8 @@ void testApp::setup(){
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	
-    storyEngine.combinedClipsOnly = true; // true if using a clips drive
-    withVideo = true; // draw video?
+    storyEngine.combinedClipsOnly = false; // true if using a clips drive
+    withVideo = false; // draw video?
 
 	
     storyEngine.setup();
@@ -247,6 +247,13 @@ void testApp::keyPressed(int key){
     }
     if(key == 'p') {
         sound.doPrinting();
+    }
+    if(key == 's') {
+        STREAMSOUND_DYNAMIC(0, "CLOUDS_introTunnel_light.wav", 1.0, "tunnelamp", 1);
+        //STREAMSOUND_DYNAMIC(0, "SJ.aif", 1.0, "tunnelamp", 1);
+    }
+    if(key == 'a') {
+        PFIELD_SCHED(0., 5., 1, "ramp_10");
     }
 }
 

@@ -74,11 +74,15 @@ public:
 	
 	void getTweenReverse( string axis );
 	
+	void setEase( ofxEasing& e );
+	void setEase( ofxEasing* e );
+	
 //protected:
 	ofxEasing* ease;
 	ofxEasingQuint 	easingquint;
 	ofxEasingBounce easebounce;
 	ofxEasingSine easesine;
+	ofxEasingLinear easelinear;
 	
 	
 	ofVec3f eularAngels;

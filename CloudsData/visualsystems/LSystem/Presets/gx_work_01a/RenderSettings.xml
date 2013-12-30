@@ -1,0 +1,72 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Grid_Size</Name>
+    <Value>22.660099030</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Grid_Resolution</Name>
+    <Value>2.857142925</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Grid_Cross_Size</Name>
+    <Value>0.010000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Grid_Cross_Width</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Grid_Cross_Alpha</Name>
+    <Value>0.793103456</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Oringinal_alpha</Name>
+    <Value>0.123152710</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Growing_alpha</Name>
+    <Value>0.374384224</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Dots_alpha</Name>
+    <Value>0.935960591</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Dots_size</Name>
+    <Value>3.349753618</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Flow_lenght</Name>
+    <Value>4.433497429</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Flow_alpha</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Chroma_Distortion</Name>
+    <Value>0.190886706</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Grain_Distortion</Name>
+    <Value>0.024630541</Value>
+</Widget>
