@@ -13,12 +13,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>innerSpeed</Name>
-    <Value>0.986202</Value>
+    <Value>1.5772</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>outerSpeed</Name>
-    <Value>1.9714</Value>
+    <Value>5.02513</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -58,12 +58,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>XRot</Name>
-    <Value>0</Value>
+    <Value>7</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>xTickSpeed</Name>
-    <Value>10</Value>
+    <Value>764</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -78,12 +78,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>YRot</Name>
-    <Value>1</Value>
+    <Value>36</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>yTickSpeed</Name>
-    <Value>274</Value>
+    <Value>715</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -98,12 +98,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>ZRot</Name>
-    <Value>8</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>zTickSpeed</Name>
-    <Value>470</Value>
+    <Value>157</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>

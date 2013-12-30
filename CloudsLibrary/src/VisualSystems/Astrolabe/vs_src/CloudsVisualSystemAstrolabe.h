@@ -188,12 +188,15 @@ protected:
 	ofxEasingSine easesine;
 	ofxEasingLinear easelinear;
 	
+	
 	map<string, ofxEasing*> easeMap;
+	
+	ofxEasing* currentEase;
 	
 	int skipAhead;
 	
 	ofVboMesh sphereMesh;
-	
+	float sphereScale;
 	int numSpheresPerArc;
 	
 	bool bUseSpheres;

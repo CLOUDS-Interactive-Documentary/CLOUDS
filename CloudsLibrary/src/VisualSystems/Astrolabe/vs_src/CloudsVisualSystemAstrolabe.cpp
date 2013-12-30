@@ -11,7 +11,8 @@
 //#endif
 
 //These methods let us add custom GUI parameters and respond to their events
-void CloudsVisualSystemAstrolabe::selfSetupGui(){
+void CloudsVisualSystemAstrolabe::selfSetupGui()
+{
 
 	ringsGui = new ofxUISuperCanvas("RINGS", gui);
 	ringsGui->copyCanvasStyle(gui);
@@ -30,6 +31,7 @@ void CloudsVisualSystemAstrolabe::selfSetupGui(){
 	ringsGui->addSpacer();
 	ringsGui->addToggle("useSpheres", &bUseSpheres);
 	ringsGui->addIntSlider("numSpheresPerArc", 1, 10, &numSpheresPerArc);
+	ringsGui->addSlider("sphereScale", .1, 10, &sphereScale);
 	
 	
 	ofAddListener(ringsGui->newGUIEvent, this, &CloudsVisualSystemAstrolabe::selfGuiEvent);
@@ -159,13 +161,7 @@ void CloudsVisualSystemAstrolabe::selfGuiEvent(ofxUIEventArgs &e)
 		}
 		else if( name == "innerRadius" || name == "width" || name == "thickness" || name == "Spacing" )
 		{
-			float innerRad = ringsInnerRad;
-			for (int i=0; i<astrolabes.size(); i++)
-			{
-				float outerRad = innerRad + ringsWidth;
-				astrolabes[i]->setupMesh( ringsLowRadians, ringsHiRadians, innerRad, outerRad, ringsThickness );
-				innerRad = outerRad + ringsSpacing;
-			}
+			bSetupRings = true;
 		}
 		else if( name == "lowRadians" )
 		{
@@ -260,6 +256,8 @@ void CloudsVisualSystemAstrolabe::selfGuiEvent(ofxUIEventArgs &e)
 			{
 				if(name == it->first)
 				{
+					currentEase = it->second;
+					
 					for (int i=0; i<astrolabes.size(); i++)
 					{
 						astrolabes[i]->setEase(it->second);
@@ -341,6 +339,8 @@ void CloudsVisualSystemAstrolabe::selfSetup()
 	easeMap["QUINTIC"] = &easingquint;
 	easeMap["BOUNCE"] = &easebounce;
 	
+	currentEase = &easecubic;
+	
 	bUseRings = true;
 	
 	ofxObjLoader::load( getVisualSystemDataPath() + "models/sphere.obj", sphereMesh );
@@ -385,6 +385,7 @@ void CloudsVisualSystemAstrolabe::selfSetDefaults()
 	bUseSpheres = !bUseRings;
 	
 	numSpheresPerArc = 5;
+	sphereScale = 1;
 }
 
 void CloudsVisualSystemAstrolabe::setupRings(int count,
@@ -419,6 +420,7 @@ void CloudsVisualSystemAstrolabe::setupRings(int count,
 		float lowRadian = lowRadians + radianOffset;
 		float hiRadian = hiRadians + radianOffset;
 		
+		astrolabes[i]->setEase(*currentEase);
 		
 		if(bUseRings)
 		{
@@ -531,13 +533,16 @@ void CloudsVisualSystemAstrolabe::resetRingRotations()
 		float scl = ofMap( i, 0, astrolabes.size()-1, innerSpeed, outerSpeed );
 		
 		//astrolabes[i]->addRotationTween( axis, startVal, step, duration, delay, increment)
-		astrolabes[i]->addRotationTween("x", ringsXRot * scl * skipAhead, ringsXRot, xTickSpeed, xTickDelay * scl, xTickDelay);
-		astrolabes[i]->addRotationTween("y", i * ringsYRot + ringsYRot * scl * skipAhead, ringsYRot, xTickSpeed, yTickDelay * scl, yTickDelay);
-		astrolabes[i]->addRotationTween("z", ringsZRot * scl * skipAhead, ringsZRot, zTickSpeed, zTickDelay * scl, zTickSpeed);
+		astrolabes[i]->addRotationTween("x", ringsXRot * scl * skipAhead, ringsXRot, xTickSpeed, xTickDelay * scl, xTickDelay * scl);
+		astrolabes[i]->addRotationTween("y", i * ringsYRot + ringsYRot * scl * skipAhead, ringsYRot, xTickSpeed, yTickDelay * scl, yTickDelay * scl);
+		astrolabes[i]->addRotationTween("z", ringsZRot * scl * skipAhead, ringsZRot, zTickSpeed, zTickDelay * scl, zTickSpeed * scl);
 		
 		astrolabes[i]->setTweenScale("x", scl );
 		astrolabes[i]->setTweenScale("y", scl );
 		astrolabes[i]->setTweenScale("z", scl );
+		
+		
+		astrolabes[i]->setEase(*currentEase);
 	}
 }
 
@@ -568,7 +573,7 @@ void CloudsVisualSystemAstrolabe::selfDraw()
 			ofPushMatrix();
 			ofMultMatrix(astrolabes[i]->getGlobalTransformMatrix());
 			rad = .5 * (astrolabes[i]->innerRadius + astrolabes[i]->outerRadius);
-			sphereRad = (astrolabes[i]->outerRadius - astrolabes[i]->innerRadius);
+			sphereRad = (astrolabes[i]->outerRadius - astrolabes[i]->innerRadius) * sphereScale;
 			
 			for (int j=0; j<numSpheresPerArc; j++)
 			{

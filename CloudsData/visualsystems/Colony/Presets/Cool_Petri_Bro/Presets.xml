@@ -2,76 +2,71 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1061</XPosition>
-    <YPosition>213</YPosition>
+    <XPosition>425.000061035</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>BigDial</Name>
+    <Name>Bacteria</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>BigDial_PanZoomout</Name>
+    <Name>Default</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Clock1</Name>
+    <Name>Default_2</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Clock2</Name>
+    <Name>Four</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Clock2_ZoomIn</Name>
+    <Name>PetriDish</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Clock3</Name>
+    <Name>PetriDish_darker</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Clock3_ZoomOut</Name>
+    <Name>Phytoplankton</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>debug</Name>
+    <Name>QuantumDecoherence</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>flat</Name>
+    <Name>RapidCulture</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>fractal</Name>
+    <Name>SyntheticBlack</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>JG_Clock</Name>
+    <Name>SyntheticGreen</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>notTick</Name>
+    <Name>SyntheticWhite</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>tentacles</Name>
+    <Name>Cool_Petri_Bro</Name>
     <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>variedSpeed</Name>
-    <Value>0</Value>
 </Widget>

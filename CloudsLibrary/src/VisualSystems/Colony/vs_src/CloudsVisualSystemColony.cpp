@@ -1,5 +1,4 @@
 #include "CloudsVisualSystemColony.h"
-#define INV_2SQRT2 0.35355339059
 
 string CloudsVisualSystemColony::getSystemName()
 {
@@ -17,7 +16,7 @@ void CloudsVisualSystemColony::selfSetup()
     ofEnableArbTex();
     
     grunge.setCompression(OF_COMPRESS_ARB);
-    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/blur_square3.jpg");
+    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/dirt_square.jpg");
 
 	loadShaders();
  
@@ -57,9 +56,10 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     guiDynamics->addSlider("Turbulence Speed",0.0,100.0, &params.spdTurbulence);
     guiDynamics->addSlider("Fertility Rate", 0.0, 1.0, &params.fertilityRate);
     guiDynamics->addRangeSlider("Lifespan Range", 5, 5000, &params.lifespanMin, &params.lifespanMax);
-    guiDynamics->addSlider("Nutrient Amount", 150, 500, &params.nutrientAmount);
-    guiDynamics->addSlider("Nutrient Change Ratio", 0, 500, &params.nutrientTimeCoef);
-    guiDynamics->addSlider("Nutrient Contrast", 0, 4.0, &params.nutrientFalloff);
+    guiDynamics->addSlider("Nutrient Amount", 50, 500, &params.nutrientAmount);
+    guiDynamics->addSlider("Nutrient Change Ratio", 0, 1.0, &params.nutrientTimeCoef);
+    guiDynamics->addSlider("Nutrient Contrast", 0, 12.0, &params.nutrientFalloff);
+    guiDynamics->addSlider("Nutrient Scale", 0.0001, 0.1, &params.nutrientScale);
     guiDynamics->addRangeSlider("Max Speed", 0.0, 10.0, &params.maxSpeed_min, &params.maxSpeed_max);
     guiDynamics->addRangeSlider("Max Force", 0.0, 10.0, &params.maxForce_min, &params.maxForce_max);
     guiDynamics->addRangeSlider("Max Size", 0.0, 30.0, &params.maxSize_min, &params.maxSize_max);
@@ -97,6 +97,11 @@ void CloudsVisualSystemColony::selfSetupGuis(){
 }
 
 
+
+//==========================================================================================
+
+
+
 void CloudsVisualSystemColony::selfUpdate()
 {
     //Video
@@ -129,6 +134,7 @@ void CloudsVisualSystemColony::selfUpdate()
         vbo.addColor(ofColor(255, 255, 255, 100));
         vbo.addVertex(cells[i]->getPosition());
         //HACK: Normal gives more data to the shader.
+        //TODO: use the other two normal positions to dictate an excited state
         vbo.addNormal(ofVec3f(cells[i]->getSize(),0.,0.));
     }
     
@@ -160,10 +166,38 @@ void CloudsVisualSystemColony::selfUpdate()
     fbo_main.end();
     
     
+    //Debug
+    
+    //FIXME: Should definitely be removed in the distribution mode
+    if (bDebug){
+        if ( (!img_debug.isAllocated())
+            || (!img_debug.getWidth()==getSharedRenderTarget().getWidth())
+            || (!!img_debug.getHeight()==getSharedRenderTarget().getHeight()))
+        {
+            img_debug.allocate(
+                               getSharedRenderTarget().getWidth(),
+                               getSharedRenderTarget().getHeight(),
+                               OF_IMAGE_GRAYSCALE);
+        }
+        
+        for (int i = 0; i < img_debug.getWidth(); i++){
+            for (int j = 0; j < img_debug.getHeight(); j++){
+                img_debug.setColor(i, j, ofColor(colonyCell::getCellNoise(i, j, params.nutrientTimeCoef, params.nutrientFalloff, params.nutrientAmount, params.nutrientScale)));
+            }
+        }
+        img_debug.update();
+    }
+    
 }
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
+    
+    //FIXME: This shouldn't be here, but it's the only way to draw stuff in 2d
+    if(bDebug){
+        img_debug.draw(0, 0, getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+    }
+    
     ofEnableAlphaBlending();
     
     levelSet.begin();
@@ -183,6 +217,7 @@ void CloudsVisualSystemColony::selfDrawBackground()
     fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
                   getSharedRenderTarget().getHeight());
     levelSet.end();
+    
 }
 
 void CloudsVisualSystemColony::selfDraw(){
@@ -263,7 +298,7 @@ void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){
 }
 
 void CloudsVisualSystemColony::selfDrawDebug(){
-    fbo_debug.draw(0, 0, getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+
 }
 void CloudsVisualSystemColony::selfSceneTransformation(){}
 void CloudsVisualSystemColony::selfKeyReleased(ofKeyEventArgs & args){}
