@@ -2649,6 +2649,16 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="CubeCraft_g_work_02a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="CubeCraft_lewitt">
     <keywords></keywords>
     <links></links>
