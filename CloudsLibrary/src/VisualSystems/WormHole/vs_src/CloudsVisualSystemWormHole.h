@@ -15,6 +15,7 @@
 #include "ofxSimpleSpline.h"
 #include "CloudsPathCamera.h"
 #include "ofxObjLoader.h"
+#include "glm.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemWormHole : public CloudsVisualSystem {
@@ -100,6 +101,8 @@ class CloudsVisualSystemWormHole : public CloudsVisualSystem {
 	ofCamera& getCameraRef(){
 		return CloudsVisualSystem::getCameraRef();
 	}
+	
+	void selfSetDefaults();
 
 protected:
 	
@@ -117,12 +120,16 @@ protected:
 	ofxUISuperCanvas* cameraGui;
 	ofxUISuperCanvas* meshGui;
 	ofxUISuperCanvas* shaderGui;
+	ofxUISuperCanvas* fogGui;
+	ofxUISuperCanvas* wormholeLightGui;
 	ofxUISuperCanvas* displacementGui;
+	
 	ofImage colorSampleImage;
 
 	bool bDoShader;
 	ofShader normalShader;
 	ofShader facingRatio;
+	ofShader WormholeShader;
 	
 	map<string, ofShader*> shaderMap;
 	map<string, ofBlendMode> blendModes;
@@ -134,17 +141,19 @@ protected:
 	ofVboMesh mesh;
 	string modelPath;
 	string currentMeshName;
-	bool bFacetMesh, bSmoothMesh, bMeshHasBeenFaceted, bMeshHasBeenSmoothed;
-	
 	
 	vector<string> meshNames;
 	vector<string> cameraPathNames;
 		
 	float fogDist, fogExpo;
-	ofFloatColor fogColor;
+	int fogHue, fogSaturation, fogBrightness;
+	ofColor fogColor;
 	
 	ofVec3f lightPos;
-	ofFloatColor lightColor;
+	float lightLinearAttenuation, lightQuadraticAttenuation, lightConstantAttenuation, lightPathOffset;
+	int lightHue, lightSaturation, lightBrightness;
+	
+	ofColor lightColor;
 	float lightFallOff;
 	
 	string cameraPathPath;
@@ -153,15 +162,17 @@ protected:
 	CloudsPathCamera pathCamera;
 	
 	float sampleTime, lastTime, speed;
-	float shininess;
+	float shininess,facingRatioExpo;
 	ofBlendMode currentBlendMode;
 	bool bDepthTest;
 	
-	ofFloatColor c1, c2;
+	int c1Hue, c1Sat, c1Bri;
+	int c2Hue, c2Sat, c2Bri;
+	ofColor c1, c2;
 		
 	bool bUseNoiseDisplacement;
 	float noiseDisplacement, noiseSpeed, noiseTime, noiseScale;
 	ofVec3f noiseOffset, noiseDir;
     
-    float nearClipPlane; 
+    float nearClipPlane;
 };

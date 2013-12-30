@@ -99,7 +99,7 @@ protected:
     
 	bool showWaterDebug;
 	void createWaterBrush();
-	
+
 	ofxUISuperCanvas* brushGui;
 	float brushSize;
 	float currentBrushSize;

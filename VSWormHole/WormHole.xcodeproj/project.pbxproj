@@ -88,8 +88,10 @@
 		504016CF185D81BF0039386C /* XRayShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 504016CD185D81BF0039386C /* XRayShader.vert */; };
 		5092B702185CF6CC00AEB8F3 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5092B6FB185CF6CC00AEB8F3 /* CloudsInput.cpp */; };
 		5092B704185CF6CC00AEB8F3 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5092B700185CF6CC00AEB8F3 /* CloudsInputMouse.cpp */; };
-		5092B720185D461400AEB8F3 /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 5092B718185D461400AEB8F3 /* glm.c */; };
 		5092B721185D461400AEB8F3 /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5092B71C185D461400AEB8F3 /* ofxObjLoader.cpp */; };
+		50E6EEC8186F3CDF0080EF62 /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 50E6EEC6186F3CDF0080EF62 /* glm.c */; };
+		50E6EECC186F3EAE0080EF62 /* WormholeShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50E6EECA186F3EAE0080EF62 /* WormholeShader.frag */; };
+		50E6EECD186F3EAE0080EF62 /* WormholeShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50E6EECB186F3EAE0080EF62 /* WormholeShader.vert */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -510,10 +512,12 @@
 		5092B6FD185CF6CC00AEB8F3 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
 		5092B700185CF6CC00AEB8F3 /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
 		5092B701185CF6CC00AEB8F3 /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
-		5092B718185D461400AEB8F3 /* glm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glm.c; sourceTree = "<group>"; };
-		5092B719185D461400AEB8F3 /* glm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glm.h; sourceTree = "<group>"; };
 		5092B71C185D461400AEB8F3 /* ofxObjLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxObjLoader.cpp; sourceTree = "<group>"; };
 		5092B71D185D461400AEB8F3 /* ofxObjLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxObjLoader.h; sourceTree = "<group>"; };
+		50E6EEC6186F3CDF0080EF62 /* glm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glm.c; sourceTree = "<group>"; };
+		50E6EEC7186F3CDF0080EF62 /* glm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glm.h; sourceTree = "<group>"; };
+		50E6EECA186F3EAE0080EF62 /* WormholeShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = WormholeShader.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		50E6EECB186F3EAE0080EF62 /* WormholeShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = WormholeShader.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1174,6 +1178,8 @@
 		504016C3185D72540039386C /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				50E6EECA186F3EAE0080EF62 /* WormholeShader.frag */,
+				50E6EECB186F3EAE0080EF62 /* WormholeShader.vert */,
 				504016CC185D81BF0039386C /* XRayShader.frag */,
 				504016CD185D81BF0039386C /* XRayShader.vert */,
 				504016C4185D72540039386C /* normalShader.frag */,
@@ -1211,18 +1217,9 @@
 		5092B716185D461400AEB8F3 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				5092B717185D461400AEB8F3 /* glm */,
+				50E6EEC5186F3CDF0080EF62 /* glm */,
 			);
 			path = libs;
-			sourceTree = "<group>";
-		};
-		5092B717185D461400AEB8F3 /* glm */ = {
-			isa = PBXGroup;
-			children = (
-				5092B718185D461400AEB8F3 /* glm.c */,
-				5092B719185D461400AEB8F3 /* glm.h */,
-			);
-			path = glm;
 			sourceTree = "<group>";
 		};
 		5092B71B185D461400AEB8F3 /* src */ = {
@@ -1232,6 +1229,15 @@
 				5092B71D185D461400AEB8F3 /* ofxObjLoader.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		50E6EEC5186F3CDF0080EF62 /* glm */ = {
+			isa = PBXGroup;
+			children = (
+				50E6EEC6186F3CDF0080EF62 /* glm.c */,
+				50E6EEC7186F3CDF0080EF62 /* glm.h */,
+			);
+			path = glm;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
@@ -1491,6 +1497,7 @@
 			isa = PBXProject;
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "WormHole" */;
 			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
@@ -1635,7 +1642,6 @@
 				E7DD854917DBC0A500AFB2DD /* CloudsVisualSystem.cpp in Sources */,
 				5092B702185CF6CC00AEB8F3 /* CloudsInput.cpp in Sources */,
 				5092B704185CF6CC00AEB8F3 /* CloudsInputMouse.cpp in Sources */,
-				5092B720185D461400AEB8F3 /* glm.c in Sources */,
 				5092B721185D461400AEB8F3 /* ofxObjLoader.cpp in Sources */,
 				504016B4185D490D0039386C /* ofxSimpleSpline.cpp in Sources */,
 				504016BE185D4BB10039386C /* CloudsVisualSystemWormHole.cpp in Sources */,
@@ -1646,6 +1652,9 @@
 				504016CB185D72960039386C /* facingRatio.vert in Sources */,
 				504016CE185D81BF0039386C /* XRayShader.frag in Sources */,
 				504016CF185D81BF0039386C /* XRayShader.vert in Sources */,
+				50E6EEC8186F3CDF0080EF62 /* glm.c in Sources */,
+				50E6EECC186F3EAE0080EF62 /* WormholeShader.frag in Sources */,
+				50E6EECD186F3EAE0080EF62 /* WormholeShader.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

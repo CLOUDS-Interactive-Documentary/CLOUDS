@@ -81,8 +81,6 @@
 		50618E741853A93C00DD8FD8 /* base.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50618E6E1853A93C00DD8FD8 /* base.vert */; };
 		50618E751853A93C00DD8FD8 /* post.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50618E6F1853A93C00DD8FD8 /* post.frag */; };
 		50618E761853A93C00DD8FD8 /* post.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50618E701853A93C00DD8FD8 /* post.vert */; };
-		50618E771853A93C00DD8FD8 /* rgbdcombined.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50618E711853A93C00DD8FD8 /* rgbdcombined.frag */; };
-		50618E781853A93C00DD8FD8 /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50618E721853A93C00DD8FD8 /* rgbdcombined.vert */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -506,8 +504,6 @@
 		50618E6E1853A93C00DD8FD8 /* base.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = base.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		50618E6F1853A93C00DD8FD8 /* post.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = post.frag; sourceTree = "<group>"; };
 		50618E701853A93C00DD8FD8 /* post.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = post.vert; sourceTree = "<group>"; };
-		50618E711853A93C00DD8FD8 /* rgbdcombined.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdcombined.frag; sourceTree = "<group>"; };
-		50618E721853A93C00DD8FD8 /* rgbdcombined.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdcombined.vert; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1196,8 +1192,6 @@
 				50618E6E1853A93C00DD8FD8 /* base.vert */,
 				50618E6F1853A93C00DD8FD8 /* post.frag */,
 				50618E701853A93C00DD8FD8 /* post.vert */,
-				50618E711853A93C00DD8FD8 /* rgbdcombined.frag */,
-				50618E721853A93C00DD8FD8 /* rgbdcombined.vert */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -1614,8 +1608,6 @@
 				50618E741853A93C00DD8FD8 /* base.vert in Sources */,
 				50618E751853A93C00DD8FD8 /* post.frag in Sources */,
 				50618E761853A93C00DD8FD8 /* post.vert in Sources */,
-				50618E771853A93C00DD8FD8 /* rgbdcombined.frag in Sources */,
-				50618E781853A93C00DD8FD8 /* rgbdcombined.vert in Sources */,
 				E79E700B1855640B00406535 /* CloudsInput.cpp in Sources */,
 				E79E700F1855640B00406535 /* CloudsInputMouse.cpp in Sources */,
 			);
