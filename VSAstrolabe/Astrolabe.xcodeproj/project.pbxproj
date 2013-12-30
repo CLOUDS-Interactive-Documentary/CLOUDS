@@ -77,6 +77,8 @@
 		4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AA17512E45003001E2 /* ofxSwarmBehavior.cpp */; };
 		4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
+		50193793187200CE000F22E6 /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 50193789187200CE000F22E6 /* glm.c */; };
+		50193794187200CE000F22E6 /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5019378D187200CE000F22E6 /* ofxObjLoader.cpp */; };
 		503FDBD0186642740040C651 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503FD2EE1866426D0040C651 /* CloudsInput.cpp */; };
 		503FDBD2186642740040C651 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503FD2F31866426D0040C651 /* CloudsInputMouse.cpp */; };
 		503FDD1F186642740040C651 /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503FDBC7186642740040C651 /* CloudsRGBDCamera.cpp */; };
@@ -488,6 +490,10 @@
 		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		50193789187200CE000F22E6 /* glm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glm.c; sourceTree = "<group>"; };
+		5019378A187200CE000F22E6 /* glm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glm.h; sourceTree = "<group>"; };
+		5019378D187200CE000F22E6 /* ofxObjLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxObjLoader.cpp; sourceTree = "<group>"; };
+		5019378E187200CE000F22E6 /* ofxObjLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxObjLoader.h; sourceTree = "<group>"; };
 		503FD2E6186641CB0040C651 /* Astrolabe copy-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Astrolabe copy-Info.plist"; sourceTree = "<group>"; };
 		503FD2E91866426D0040C651 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		503FD2EE1866426D0040C651 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
@@ -1142,6 +1148,42 @@
 			path = ../../../addons/ofxCameraSaveLoad/src;
 			sourceTree = "<group>";
 		};
+		5019376A187200CD000F22E6 /* ofxObjLoader */ = {
+			isa = PBXGroup;
+			children = (
+				50193787187200CE000F22E6 /* libs */,
+				5019378C187200CE000F22E6 /* src */,
+			);
+			name = ofxObjLoader;
+			path = ../../../addons/ofxObjLoader;
+			sourceTree = "<group>";
+		};
+		50193787187200CE000F22E6 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				50193788187200CE000F22E6 /* glm */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		50193788187200CE000F22E6 /* glm */ = {
+			isa = PBXGroup;
+			children = (
+				50193789187200CE000F22E6 /* glm.c */,
+				5019378A187200CE000F22E6 /* glm.h */,
+			);
+			path = glm;
+			sourceTree = "<group>";
+		};
+		5019378C187200CE000F22E6 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				5019378D187200CE000F22E6 /* ofxObjLoader.cpp */,
+				5019378E187200CE000F22E6 /* ofxObjLoader.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		503FD2E81866426D0040C651 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -1196,6 +1238,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				5019376A187200CD000F22E6 /* ofxObjLoader */,
 				E738FFE3183C87180018AB96 /* ofxOculusRift */,
 				3D5B9697175308FE00F558AC /* ofxTimecode */,
 				3D5B9605175308CF00F558AC /* ofxMSATimer */,
@@ -1575,6 +1618,8 @@
 				503FDD5A186659E80040C651 /* normalShader.vert in Sources */,
 				503FDD5B186659E80040C651 /* simple.frag in Sources */,
 				503FDD5C186659E80040C651 /* simple.vert in Sources */,
+				50193793187200CE000F22E6 /* glm.c in Sources */,
+				50193794187200CE000F22E6 /* ofxObjLoader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
