@@ -54,7 +54,7 @@ class CloudsSecondaryDisplayController {
 	//TODO: make separate layer sets for Project Example vs Person
 	vector<CloudsSVGMesh> testAllLayout;
     
-    CloudsSVGMesh bioLayout, projectLayout, systemLayout;
+    CloudsSVGMesh bioLayout, projectLayout, questionLayout;
 	
 	bool playingMovie;
 	bool hasSpeaker;
