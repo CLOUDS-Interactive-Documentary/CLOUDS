@@ -25,6 +25,7 @@ typedef enum {
 	CLOUDS_HUD_MAP
 } CloudsHUDLayerSet;
 
+class CloudsClip;
 class CloudsHUDController {
   public:
 	
@@ -37,6 +38,8 @@ class CloudsHUDController {
 	void buildLayerSets();
     void calculateFontSizes();
     int getFontSizeForMesh( SVGMesh* textMesh );
+	
+	void clipBegan(CloudsClip& clip);
 	
 	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void animateOff();

@@ -159,7 +159,7 @@ void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, do
 void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan);
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
 void SCHEDULEBANG(double time);
-void STREAMSOUND(double outskip, string file, double dur, double amp, ofSoundPlayer& bupsound);
+void STREAMSOUND(double outskip, string file, double dur, double amp);
 
 void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus, string ampcurve);
 void INITMIX();

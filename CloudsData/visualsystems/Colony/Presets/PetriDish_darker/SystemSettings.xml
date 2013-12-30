@@ -1,0 +1,106 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SystemSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>496.000000000</XPosition>
+    <YPosition>55.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Separate</Name>
+    <Value>68.965515137</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cohere</Name>
+    <Value>41.871921539</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Align</Name>
+    <Value>6.403941154</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Friction</Name>
+    <Value>0.054187194</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Turbulence Amount</Name>
+    <Value>5.911330223</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Turbulence Speed</Name>
+    <Value>5.418719292</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Fertility Rate</Name>
+    <Value>0.800000012</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Lifespan Range</Name>
+    <HighValue>570.935974121</HighValue>
+    <LowValue>30.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Nutrient Amount</Name>
+    <Value>346.551727295</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Nutrient Change Ratio</Name>
+    <Value>100.985221863</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Nutrient Contrast</Name>
+    <Value>0.768472910</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Max Speed</Name>
+    <HighValue>0.985221624</HighValue>
+    <LowValue>0.147783250</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Max Force</Name>
+    <HighValue>0.640394092</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Max Size</Name>
+    <HighValue>9.310343742</HighValue>
+    <LowValue>1.817733765</LowValue>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Level Set Mode</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Initial Cells</Name>
+    <Value>379</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell Floor Translusence</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Dish Floor Translusence</Name>
+    <Value>0.000000000</Value>
+</Widget>

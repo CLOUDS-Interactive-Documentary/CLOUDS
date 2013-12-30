@@ -45,6 +45,9 @@ class CloudsSound {
     void reloadPresets();
     void doPrinting();
 
+    // public data structure
+    vector<lukePreset> presets;
+
   protected:
 
 	CloudsStoryEngine* storyEngine;
@@ -78,11 +81,7 @@ class CloudsSound {
     vector<lukeRhythm> rhythms;
     vector<lukePitchArray> pitches;
     vector<lukeSimpleMelody> simplemelodies;
-    vector<lukePreset> presets;
 
     vector<lukeSample> looperSamples;
 
-    // the backup soundplayer
-    ofSoundPlayer backupsound;
-    
 };

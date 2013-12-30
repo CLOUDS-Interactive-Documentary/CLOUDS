@@ -302,6 +302,9 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
                     foo.instruments.erase(foo.instruments.begin()+j);
                     foo.arg_a.erase(foo.arg_a.begin()+j);
                     foo.arg_b.erase(foo.arg_b.begin()+j);
+                    foo.m_amp.erase(foo.m_amp.begin()+j);
+                    foo.m_rev.erase(foo.m_rev.begin()+j);
+                    foo.env.erase(foo.env.begin()+j);
                 }
             }
             if(LUKEDEBUG) {

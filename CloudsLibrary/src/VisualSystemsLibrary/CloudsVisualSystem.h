@@ -9,6 +9,7 @@
 #include "CloudsInputEvents.h"
 #include "ofxLight.h"
 #include "ofxGenerative.h"
+//#include "ofxMaterial.h"
 
 #ifdef OCULUS_RIFT
 #include "ofxOculusRift.h"

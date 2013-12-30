@@ -105,14 +105,16 @@ void CloudsPathCamera::setUpControlVertices( vector<ofVec3f>& v )
 
 void CloudsPathCamera::	update()
 {
-	float t = ofMap( ofGetElapsedTimef(), startTime, startTime + duration,0 ,1);
-	update( t );
+	u = ofMap( ofGetElapsedTimef(), startTime, startTime + duration,0 ,1);
+	update( u );
 }
 
 void CloudsPathCamera::update( float t )
 {
 	if(bLoop)	t -= floor( t );
 	else t = ofClamp(t, 0, 1);
+	
+	u = t;
 	
 	setPosition( positionSpline.getPoint( t ) );
 	if(bUseUpSpline)	lookAt( targetSpline.getPoint( t ), upSpline.getPoint( t ) );

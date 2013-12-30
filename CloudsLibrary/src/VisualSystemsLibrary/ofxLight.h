@@ -22,8 +22,7 @@
  
  **********************************************************************************/
 
-#ifndef OFX_LIGHT
-#define OFX_LIGHT
+#pragma once
 
 #include "ofMath.h"
 #include "ofColor.h"
@@ -115,44 +114,63 @@ public:
     ofFloatColor lightSpecularHSV;
 };
 
-
-class ofxMaterial
+class ofxMaterial : public ofMaterial
 {
-  public:
-	
-//    ofxMaterial(){}
-//    ~ofxMaterial(){}
-    
-    void begin()
-    {
+public:
+
+	ofFloatColor matDiffuseHSV;
+	ofFloatColor matSpecularHSV;
+	ofFloatColor matEmissiveHSV;
+	ofFloatColor matAmbientHSV;
+	float matShininess;
+
+	virtual void begin(){
+		
 		ofFloatColor matAmbient  = ofFloatColor::fromHsb(matAmbientHSV.r,  matAmbientHSV.g,  matAmbientHSV.b);
 		ofFloatColor matDiffuse  = ofFloatColor::fromHsb(matDiffuseHSV.r,  matDiffuseHSV.g,  matDiffuseHSV.b);
 		ofFloatColor matEmissive = ofFloatColor::fromHsb(matEmissiveHSV.r, matEmissiveHSV.g, matEmissiveHSV.b);
 		ofFloatColor matSpecular = ofFloatColor::fromHsb(matSpecularHSV.r, matSpecularHSV.g, matSpecularHSV.b);
 		
-		mat.setAmbientColor(matAmbient);
-		mat.setDiffuseColor(matDiffuse);
-		mat.setSpecularColor(matSpecular);
-		mat.setEmissiveColor(matEmissive);
-		mat.setShininess(matShininess);
+		glGetMaterialfv(GL_FRONT,GL_DIFFUSE, &prev_diffuse_front.r);
+		glGetMaterialfv(GL_FRONT,GL_SPECULAR, &prev_specular_front.r);
+		glGetMaterialfv(GL_FRONT,GL_AMBIENT, &prev_ambient_front.r);
+		glGetMaterialfv(GL_FRONT,GL_EMISSION, &prev_emissive_front.r);
+		glGetMaterialfv(GL_FRONT, GL_SHININESS, &prev_shininess_front);
 		
-		mat.begin();
-    }
-    
-    void end(){
-        mat.end();
-    }
-    
-//    bool bEnabled;
-    
-    ofMaterial mat;
-	
-	float matShininess;
-	ofFloatColor matDiffuseHSV;
-	ofFloatColor matSpecularHSV;
-	ofFloatColor matEmissiveHSV;
-	ofFloatColor matAmbientHSV;
-	
-};
+		glGetMaterialfv(GL_BACK,GL_DIFFUSE,&prev_diffuse_back.r);
+		glGetMaterialfv(GL_BACK,GL_SPECULAR,&prev_specular_back.r);
+		glGetMaterialfv(GL_BACK,GL_AMBIENT,&prev_ambient_front.r);
+		glGetMaterialfv(GL_BACK,GL_EMISSION,&prev_emissive_back.r);
+		glGetMaterialfv(GL_BACK, GL_SHININESS, &prev_shininess_back);
+		
+		glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, &matDiffuse.r);
+		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, &matAmbient.r);
+		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, &matSpecular.r);
+		glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, &matEmissive.r);
+		glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, &matShininess);
+		
+	}
 
-#endif
+	virtual void end(){
+		
+		glMaterialfv(GL_FRONT,GL_DIFFUSE,&prev_diffuse_front.r);
+		glMaterialfv(GL_FRONT,GL_SPECULAR,&prev_specular_front.r);
+		glMaterialfv(GL_FRONT,GL_AMBIENT,&prev_ambient_front.r);
+		glMaterialfv(GL_FRONT,GL_EMISSION,&prev_emissive_front.r);
+		glMaterialfv(GL_FRONT,GL_SHININESS, &prev_shininess_front);
+		
+		glMaterialfv(GL_BACK,GL_DIFFUSE,&prev_diffuse_back.r);
+		glMaterialfv(GL_BACK,GL_EMISSION,&prev_emissive_back.r);
+		glMaterialfv(GL_BACK,GL_SPECULAR,&prev_specular_back.r);
+		glMaterialfv(GL_BACK,GL_AMBIENT,&prev_ambient_back.r);
+		glMaterialfv(GL_BACK,GL_SHININESS, &prev_shininess_back);
+		
+	}
+  protected:
+	
+	ofFloatColor prev_diffuse_front, prev_diffuse_back;
+	ofFloatColor prev_ambient_front, prev_ambient_back;
+	ofFloatColor prev_specular_front, prev_specular_back;
+	ofFloatColor prev_emissive_front, prev_emissive_back;
+	float prev_shininess_front, prev_shininess_back;
+};

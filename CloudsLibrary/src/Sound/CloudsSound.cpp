@@ -109,10 +109,9 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     vector<int> valid_presets; // make a vector of presets that match the dichotomy setting
     vector<int> cuedichos; // place to stash cue dichotomies
 
-    // launch music FX chain
-    startMusicFX(0, totalduration);
-    
     int numcues = thecues.size(); // how many cues in this act?
+    
+    float pad = 5.0; // padding for FX chain
     
     //
     // GOGOGO
@@ -122,6 +121,13 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     if(LUKEDEBUG) cout << "MAKING MUSIC!!!" << endl;
     if(LUKEDEBUG) cout << "===============" << endl;
 
+    totalduration+=pad; // pad the total
+    
+    if(LUKEDEBUG) cout << "TOTAL DURATION: " << totalduration << endl;
+
+    // launch music FX chain
+    startMusicFX(0, totalduration);
+    
     // iterate through clips
     if(rigged) // fallback
     {
@@ -131,7 +137,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     {
         for(int i = 0;i<numcues;i++)
         {
-            // TEST 1: CHECK FOR RIGGED PRESET NAME
+            // TEST 1: CHECK FOR RIGGED PRESET NAME -- THESE CUES CAN BE "DISABLED"
             if(thecues[i].riggedPresetName!="")
             {
                 for(int j = 0; j<presets.size();j++)
@@ -176,24 +182,26 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                         }
                     }
                     //if all 8 dichos matched
-                    if(pscore==8&&presets[j].highEnergy==isHighEnergy){
+                    if(pscore==8&&presets[j].highEnergy==isHighEnergy&&presets[j].disabled==0){
                         //if(presets[j].slotnumber<250) { // temporary
                         valid_presets.push_back(j);
                         //}
                     }
                 }
             
-                if(valid_presets.size()==0)
-                {
-                    valid_presets.push_back(0);
-                }
                 isHighEnergy = !isHighEnergy; // flip energy state at each dicho check
+            }
+            
+            // emergency check
+            if(valid_presets.size()==0)
+            {
+                valid_presets.push_back(0);
             }
             
             // MAKE THE MUSIC
             int GOPRESET = valid_presets[ ofRandom(valid_presets.size()) ];
             
-            if(LUKEDEBUG) cout << "   preset: " << presets[GOPRESET].slotnumber;
+            if(LUKEDEBUG) cout << "   preset: " << presets[GOPRESET].slotnumber << endl;
             schedulePreset(presets[GOPRESET], thecues[i].startTime, thecues[i].duration, thecues[i].mixLevel);
 
         }
@@ -236,7 +244,7 @@ void CloudsSound::preRollRequested(CloudsPreRollEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsSound::actEnded(CloudsActEventArgs& args){
 	args.act->unregisterEvents(this);
-    stopMusic();
+    // stopMusic();
 }
 
 //--------------------------------------------------------------------
