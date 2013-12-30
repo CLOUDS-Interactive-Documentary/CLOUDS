@@ -67,15 +67,14 @@ float heightMap(vec2 co){
     return (-.5 + pow(bumps, 18.)) * PI;
 }
 
-//TODO: YOU WROTE THIS MOTHERFUCKER
 
 float getLightIntensity(float elevation, vec2 light){
-    //TODO: SMOOTH THIS
     float dx = dFdx(elevation);
     float dy = dFdy(elevation);
-    //TODO: use 3d
-    float intensity = clamp(length(light),0.001, 1.); //arbitrary epsilon
-    return mix(1., dot(normalize(vec2(dx,dy)),normalize(light)), intensity);
+    vec2 normal = vec2(dx,dy);
+    
+    float intensity = smoothstep(0.,0.1,clamp(length(light)*length(normal),0.001, 1.)); //arbitrary epsilon
+    return mix(0., dot(normalize(normal),normalize(light)), intensity);
 }
 
 
@@ -87,11 +86,12 @@ vec4 getLevelSet(vec4 fg){
     float g = fg.g + .1;
     g *= g * g;
     float levl = mix (a + b, max(a, b), .5);
-    float set = (.5 * (1. + sin(levl)) + g);
-    float light = getLightIntensity(levl, lightDirection.xy);
+    float set = (.5 * (1. + sin(levl)) + g/2.);
+    float light = clamp(getLightIntensity(levl, lightDirection.xy),0.1,1);
 	return vec4(set
-                * mix(1, light, 0.3)
-                * mix(vec3(1.),lightColor, light),
+                * mix(1, light, 0.5)
+                * mix(vec3(1.),lightColor, smoothstep(0.2,0.7,light))
+                + vec3(g),
                 1.);
 }
 
@@ -109,13 +109,13 @@ vec4 getMicroscope(vec4 fg){
     vec4 kernel = clamp(fg.g/kernel_maxValue, 0., 1.)
 //                * vec4(vec3(mix(1.,getLightIntensity(fg.g/kernel_maxValue, vec3(1)), 0.3)),1.)
                 * mix(kernelColor_low, kernelColor_high, fg.g/kernel_maxValue);
-    vec4 shell = vec4(1.,1.,1.,pow(shellAlpha, 1.5));
     
     vec2 normalizedCoords = gl_TexCoord[0].xy * imgRes / resolution;
-    float distortion = fg.b - .25 * fg.g;
+    float distortion = fg.b - .25 * fg.g +shellAlpha;
     vec4 bg = texture2DRect(grunge, normalizedCoords * .5
-                            + vec2(dFdx(distortion),dFdy(distortion)) * 200.0
+                            + vec2(dFdx(distortion),dFdy(distortion)) * 150.0
                             + imgRes * .25 ); //enlarged
+    vec4 shell = vec4(mix(vec3(1.),bg.rgb ,0.6),pow(shellAlpha, 1.5));
     
     //COMPOSITING STAGE
     vec4 ret = over(premult(shell), premult(kernel)); //top
