@@ -102,6 +102,7 @@ namespace itg
         tentacles.getUpdateShaderRef().setUniform1f("restLength", TENTACLE_SECTION_LENGTH);
         tentacles.getUpdateShaderRef().end();
         tentacles.getDrawShaderRef().load(dataPath + "shaders/tentaclesDraw");
+        tentacles.setTextureLocation(1);
         
         //generate();
         pointCreatureMesh.setUsage(GL_DYNAMIC_DRAW);
