@@ -2,18 +2,18 @@
     <Kind>42</Kind>
     <Name>SHADERS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>736.000000000</XPosition>
+    <YPosition>36.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>depthTest</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>OF_BLENDMODE_ADD</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>OF_BLENDMODE_DISABLED</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -68,7 +68,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>shininess</Name>
-    <Value>11.218700409</Value>
+    <Value>19.963548660</Value>
 </Widget>
 <Widget>
     <Kind>28</Kind>

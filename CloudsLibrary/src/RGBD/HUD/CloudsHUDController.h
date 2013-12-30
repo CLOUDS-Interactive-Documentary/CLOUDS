@@ -22,6 +22,7 @@ typedef enum {
 	CLOUDS_HUD_MAP
 } CloudsHUDLayerSet;
 
+class CloudsClip;
 class CloudsHUDController {
 public:
 	
@@ -32,6 +33,8 @@ public:
 	void draw();
 
 	void buildLayerSets();
+	
+	void clipBegan(CloudsClip& clip);
 	
 	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void animateOff();
