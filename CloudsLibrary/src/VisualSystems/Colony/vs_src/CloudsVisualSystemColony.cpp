@@ -35,7 +35,7 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
     sysGui->addToggle("Level Set Mode", &levelSetMode);
     
     sysGui->addSpacer("Immutables");
-    sysGui->addIntSlider("Initial Cells", 0, 1000, &numInitialCells);
+    sysGui->addIntSlider("Initial Cells", 0, 300, &numInitialCells);
     
    }
 
@@ -164,8 +164,6 @@ void CloudsVisualSystemColony::selfUpdate()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
-
-    
     ofEnableAlphaBlending();
     levelSet.begin();
     levelSet.setUniformTexture("grunge", grunge, 1);
@@ -178,9 +176,9 @@ void CloudsVisualSystemColony::selfDrawBackground()
     levelSet.setUniform4fv("kernelColor_high", kernelColor_high.getPtr());
     levelSet.setUniform4fv("kernelColor_low", kernelColor_low.getPtr());
     levelSet.setUniform1f("kernel_maxValue", kernel_maxValue);
-    
-    levelSet.setUniform3fv("lightDirection", (*(*lights.begin()).second).lightPos.getPtr());
-    
+    ofxLight& l = (*(*lights.begin()).second);
+    levelSet.setUniform3fv("lightDirection", l.lightPos.getPtr());
+    levelSet.setUniform3f("lightColor", l.lightSpecularHSV.r,l.lightSpecularHSV.g,l.lightSpecularHSV.b);
     fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
                   getSharedRenderTarget().getHeight());
     levelSet.end();
@@ -243,7 +241,7 @@ bool CloudsVisualSystemColony::areFbosAllocatedAndSized(){
 void CloudsVisualSystemColony::reallocateFramebuffers(){
     int w = getSharedRenderTarget().getWidth();
     int h = getSharedRenderTarget().getHeight();
-    
+
     fbo_main.allocate(w,h,GL_RGBA);
     
     fbo_main.begin();
