@@ -11,19 +11,19 @@
 	<rect x="46.653" y="881.326" fill="#FFFFFF" width="2.802" height="2.802"/>
 	<rect x="1871.385" y="881.326" fill="#FFFFFF" width="2.803" height="2.802"/>
 	<rect x="1871.385" y="1031.465" fill="#FFFFFF" width="2.803" height="2.802"/>
-	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1872.813" y1="882.419" x2="1872.813" y2="1033.419"/>
-	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1872.313" y1="882.919" x2="47.313" y2="882.919"/>
-	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="47.313" y1="1032.919" x2="1872.313" y2="1032.919"/>
+	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1872.812" y1="882.419" x2="1872.812" y2="1033.419"/>
+	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1872.312" y1="882.919" x2="47.313" y2="882.919"/>
+	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="47.313" y1="1032.919" x2="1872.312" y2="1032.919"/>
 	<rect x="46.653" y="1031.465" fill="#FFFFFF" width="2.802" height="2.802"/>
 	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="47.813" y1="882.419" x2="47.813" y2="1033.419"/>
 </g>
 <g id="BOX_x5F_ARTIST">
-	<rect x="1004.106" y="909.396" opacity="0.36" fill="#101010" width="370.383" height="38.966"/>
+	<rect x="1004.105" y="909.396" opacity="0.36" fill="#101010" width="370.384" height="38.966"/>
 </g>
 <g id="BOX_x5F_VIDEO">
 	<rect x="308.799" y="88.046" fill="none" width="1280" height="720"/>
 </g>
-<rect x="85.093" y="909.625" opacity="0" fill="none" width="860.763" height="31.352"/>
-<rect x="1017.479" y="922.322" opacity="0" fill="none" width="341.518" height="14.213"/>
-<rect x="1417.885" y="907.814" fill="none" width="421.628" height="17.464"/>
+<rect id="TEXTBOX_x5F_TITLE" x="85.093" y="909.625" opacity="0" fill="none" width="860.763" height="31.352"/>
+<rect id="TEXTBOX_x5F_ARTIST" x="1017.479" y="922.322" opacity="0" fill="none" width="341.519" height="14.213"/>
+<rect id="TEXTBOX_x5F_DESC" x="1417.885" y="907.814" opacity="0" fill="none" width="421.628" height="17.464"/>
 </svg>
