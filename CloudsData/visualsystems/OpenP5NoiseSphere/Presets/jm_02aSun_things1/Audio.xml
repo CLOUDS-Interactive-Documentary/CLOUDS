@@ -1,0 +1,77 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Audio</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>177.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Glitch2.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ThingsInDark.aif</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ThingsInDark2.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ThingsInDark3.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEVEL</Name>
+    <Value>0.050573390</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEVEL ADJUST</Name>
+    <Value>11.623644829</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SCROLL SPEED</Name>
+    <Value>0.046093572</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEVEL OFFSET</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEVEL SCALE</Name>
+    <Value>8.916255951</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEVEL DECAY RATE</Name>
+    <Value>0.950000048</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>INVERT LEVEL</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LEVEL TO NOISE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEVEL TO NOISE SCALE</Name>
+    <Value>50.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEVEL TO NOISE RATIO</Name>
+    <Value>0.500000000</Value>
+</Widget>

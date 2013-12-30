@@ -4225,6 +4225,232 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="LSystem_gx_work_01a">
+    <keywords>cities|complexity</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Ramsey - social computer</clip>
+        <clip>Andres - an overly complex model</clip>
+        <clip>Andres - fuzzy systems</clip>
+        <clip>Binx - big data</clip>
+        <clip>Binx - digestibility</clip>
+        <clip>Binx - frustrated about visualization</clip>
+        <clip>Fernanda - Googe plus 2</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - Wind visualization 1</clip>
+        <clip>Fernanda - defense of complexity 1</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Jen - Predicting weather</clip>
+        <clip>Jen - data crystal ball 3</clip>
+        <clip>Jen - oversimplified circles 1</clip>
+        <clip>Jen - truthiness</clip>
+        <clip>Jer - data visualization</clip>
+        <clip>Jer - people don&apos;t read these things</clip>
+        <clip>Jer - reading the complexity</clip>
+        <clip>Jer - take advantage of this thing we can do</clip>
+        <clip>Karolina - Ocean as metaphor</clip>
+        <clip>Karsten - database</clip>
+        <clip>Kyle_CH - don&apos;t underestimate traditional art</clip>
+        <clip>Kyle_MC - We don&apos;t understand the thing</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marcus - energy flow_riot</clip>
+        <clip>Marius - code can be messy</clip>
+        <clip>Martin - Seeing the whole 1</clip>
+        <clip>Martin - Zooming is critical</clip>
+        <clip>Martin - birds eye view</clip>
+        <clip>Martin - limits of computation</clip>
+        <clip>Martin - seeing the whole 2</clip>
+        <clip>Nervous_Jesse - understanding to control 3</clip>
+        <clip>Nervous_Jessica - biocomputer</clip>
+        <clip>Philip - first time computation</clip>
+        <clip>Philip - limitations</clip>
+        <clip>Ramsey - elegant system</clip>
+        <clip>Shiffman - million monkeys</clip>
+        <clip>Vera - Energy Flow2</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="LSystem_gx_work_01b">
+    <keywords>complexity|systems</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Andres - fuzzy systems</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - soft systems 1</clip>
+        <clip>Andres - soft systems 2</clip>
+        <clip>Binx - big data</clip>
+        <clip>Binx - digestibility</clip>
+        <clip>Binx - frustrated about visualization</clip>
+        <clip>Casey - Computer as collaborator</clip>
+        <clip>Casey - What is emergence?</clip>
+        <clip>Casey - thinking about time</clip>
+        <clip>Fernanda - Googe plus 2</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - Wind visualization 1</clip>
+        <clip>Fernanda - Wind visualization 2</clip>
+        <clip>Fernanda - defense of complexity 1</clip>
+        <clip>Fernanda - defense of complexity 2</clip>
+        <clip>Fernanda - seeing patterns 2</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Fernanda - visualized data doesn&apos;t seem complex</clip>
+        <clip>Golan - audiovisual concept</clip>
+        <clip>Golan - woah</clip>
+        <clip>Golan - woah2</clip>
+        <clip>Higa - collaboration with machines 1</clip>
+        <clip>Higa - collaboration with machines 2</clip>
+        <clip>Higa - sound and video</clip>
+        <clip>Intro - interactivity1</clip>
+        <clip>Jen - Math shapes the world</clip>
+        <clip>Jen - Predicting weather</clip>
+        <clip>Jen - all about complexity</clip>
+        <clip>Jen - data crystal ball 3</clip>
+        <clip>Jen - oversimplified circles 1</clip>
+        <clip>Jen - truthiness</clip>
+        <clip>Jer - Pattern</clip>
+        <clip>Jer - data visualization</clip>
+        <clip>Jer - people don&apos;t read these things</clip>
+        <clip>Jer - reading the complexity</clip>
+        <clip>Jer - take advantage of this thing we can do</clip>
+        <clip>Karolina - Ocean as metaphor</clip>
+        <clip>Karolina - system metaphor</clip>
+        <clip>Karsten - database</clip>
+        <clip>Kevin - algo trading 1</clip>
+        <clip>Kevin - cognition vs computation 1</clip>
+        <clip>Kevin - computation is unnatural</clip>
+        <clip>Kevin - invented as opposed to discovered 1</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kyle_CH - Casey Reas Music Visualizations</clip>
+        <clip>Kyle_CH - Sentience of digital art</clip>
+        <clip>Kyle_CH - abstraction</clip>
+        <clip>Kyle_CH - don&apos;t underestimate traditional art</clip>
+        <clip>Kyle_MC - We don&apos;t understand the thing</clip>
+        <clip>Marcus - Sims</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marcus - energy flow_riot</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Marius - code can be messy</clip>
+        <clip>Martin - limits of computation</clip>
+        <clip>Martin - seeing the whole 2</clip>
+        <clip>Nervous_Jesse - Biology is messy</clip>
+        <clip>Nervous_Jesse - doing something new with a system</clip>
+        <clip>Nervous_Jesse - organic process</clip>
+        <clip>Nervous_Jesse - our explorations are random</clip>
+        <clip>Nervous_Jesse - understanding to control 3</clip>
+        <clip>Nervous_Jesse - we like things tidy</clip>
+        <clip>Nervous_Jessica - biocomputer</clip>
+        <clip>Philip - first time computation</clip>
+        <clip>Philip - limitations</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Ramsey - C++ built the modern world</clip>
+        <clip>Ramsey - elegant system</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Shiffman - Games</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Shiffman - how far could we get?</clip>
+        <clip>Shiffman - million monkeys</clip>
+        <clip>Sophy - the Cloud</clip>
+        <clip>Vera - Energy Flow2</clip>
+        <clip>Vera - Playing with a system</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="LSystem_gx_work_01c">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="LSystem_gx_work_01d">
+    <keywords>cities|systems|algorithms</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Ramsey - social computer</clip>
+        <clip>Andres - camera distorts reality</clip>
+        <clip>Andres - fuzzy systems</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - soft systems 1</clip>
+        <clip>Bruce - future city 2</clip>
+        <clip>Casey - Computer as collaborator</clip>
+        <clip>Casey - thinking about time</clip>
+        <clip>Golan - audiovisual concept</clip>
+        <clip>Golan - woah</clip>
+        <clip>Golan - woah2</clip>
+        <clip>Greg - AI 2</clip>
+        <clip>Higa - collaboration with machines 1</clip>
+        <clip>Higa - collaboration with machines 2</clip>
+        <clip>Higa - create a system 2</clip>
+        <clip>Higa - sound and video</clip>
+        <clip>Intro - interactivity1</clip>
+        <clip>Jen - Predicting weather</clip>
+        <clip>Karolina - Everything</clip>
+        <clip>Karolina - Ocean as metaphor</clip>
+        <clip>Kevin - Tools of perception</clip>
+        <clip>Kevin - algo culture 1</clip>
+        <clip>Kevin - algo culture 2</clip>
+        <clip>Kevin - algo culture 3</clip>
+        <clip>Kevin - algo stories 3</clip>
+        <clip>Kevin - algo stories 4</clip>
+        <clip>Kevin - algo trading 1</clip>
+        <clip>Kevin - algo trading 2</clip>
+        <clip>Kevin - algo trading 3</clip>
+        <clip>Kevin - algo trading 4</clip>
+        <clip>Kevin - algo trading 5</clip>
+        <clip>Kevin - algo trading 6</clip>
+        <clip>Kevin - autonomous machines crash</clip>
+        <clip>Kevin - computation is unnatural</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kevin - crash and burn</clip>
+        <clip>Kevin - invented as opposed to discovered 1</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kyle_CH - Casey Reas Music Visualizations</clip>
+        <clip>Kyle_CH - Sentience of digital art</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Marius - We&apos;ve embraced Dystopia</clip>
+        <clip>Nervous_Jesse - Biology is messy</clip>
+        <clip>Nervous_Jesse - doing something new with a system</clip>
+        <clip>Nervous_Jesse - organic process</clip>
+        <clip>Nervous_Jesse - our explorations are random</clip>
+        <clip>Nervous_Jesse - we like things tidy</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Ramsey - elegant system</clip>
+        <clip>Shiffman - genetic algos 1</clip>
+        <clip>Shiffman - how far could we get?</clip>
+        <clip>Sophy - the Cloud</clip>
+        <clip>Vera - Playing with a system</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="LSystem_gx_work_02a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="LaplacianTunnel_Black_5Reps">
     <keywords></keywords>
     <links></links>
