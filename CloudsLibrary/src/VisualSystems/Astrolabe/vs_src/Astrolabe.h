@@ -79,9 +79,6 @@ public:
 	
 //protected:
 	ofxEasing* ease;
-	ofxEasingQuint 	easingquint;
-	ofxEasingBounce easebounce;
-	ofxEasingSine easesine;
 	ofxEasingLinear easelinear;
 	
 	

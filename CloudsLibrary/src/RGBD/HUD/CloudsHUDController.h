@@ -54,32 +54,26 @@ class CloudsHUDController {
 	
 	ofxUISuperCanvas *hudGui;
 	CloudsHUDHomeButton home;
-    
-    ofxFTGLSimpleLayout testFont;
 	
   protected:
+    void drawLayer(CloudsHUDLayerSet layer);
+    ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName );
+    
     vector<ofxFTGLFont*>    tempFontList;
+    ofxFTGLSimpleLayout     *BylineBodyCopyTextBox,
+                            *BylineFirstNameTextBox,
+                            *BylineLastNameTextBox,
+                            *BylineTopicTextBoxBottom,
+                            *BylineTopicTextBoxTop,
+                            *ResetButtonTextBox,
+                            *QuestionTextBox,
+                            *TopicTextBoxLeft,
+                            *TopicTextBoxRight,
+                            *ProjectExampleTextboxLeft,
+                            *ProjectExampleTextboxRight,
+                            *ProjectExampleTextBoxTop;
     
-    
-    ofxFTGLSimpleLayout* getLayoutForLayer( string layerName );
-    
-	void drawLayer(CloudsHUDLayerSet layer);
-	
-    ofxFTGLSimpleLayout *BylineBodyCopyTextBox,
-                        *BylineFirstNameTextBox,
-                        *BylineLastNameTextBox,
-                        *BylineTopicTextBoxBottom,
-                        *BylineTopicTextBoxTop,
-                        *ResetButtonTextBox,
-                        *QuestionTextBox,
-                        *TopicTextBoxLeft,
-                        *TopicTextBoxRight,
-                        *ProjectExampleTextboxLeft,
-                        *ProjectExampleTextboxRight,
-                        *ProjectExampleTextBoxTop;
-    
-    vector<CloudsHUDLabel> hudLabelList;
-    
+    vector<CloudsHUDLabel>  hudLabelList;
 };
 
 

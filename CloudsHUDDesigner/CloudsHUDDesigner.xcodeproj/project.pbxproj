@@ -984,16 +984,16 @@
 		E703CD17185D187800547738 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
-				CB5019F61871D9350057E844 /* CloudsHUDLabel.cpp */,
 				CB5019F71871D9350057E844 /* CloudsHUDLabel.h */,
+				CB5019F61871D9350057E844 /* CloudsHUDLabel.cpp */,
 				E7A4DC2A186A272A002F5371 /* CloudsSVGMesh.h */,
 				E7A4DC29186A272A002F5371 /* CloudsSVGMesh.cpp */,
 				E703CD1D185D419800547738 /* CloudsHUDLayer.h */,
 				E703CD1C185D419700547738 /* CloudsHUDLayer.cpp */,
 				E703CD21185D6B3100547738 /* CloudsHUDHomeButton.cpp */,
 				E703CD22185D6B3200547738 /* CloudsHUDHomeButton.h */,
-				E703CD19185D187800547738 /* CloudsHUDController.h */,
 				E703CD18185D187800547738 /* CloudsHUDController.cpp */,
+				E703CD19185D187800547738 /* CloudsHUDController.h */,
 			);
 			name = HUD;
 			path = RGBD/HUD;
@@ -2513,11 +2513,11 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
-					"\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";

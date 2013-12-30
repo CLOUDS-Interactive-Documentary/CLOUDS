@@ -127,14 +127,10 @@ void CloudsHUDController::buildLayerSets(){
 }
 
 void CloudsHUDController::calculateFontSizes(){
-    
-    cout << "CloudsHUDController :: Calculating font sizes" << endl;
-    
-    testFont.loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", 9);
-    
     // temporary allocate
     int minFontSize = 1;
-    int maxFontSize = 32;
+    int maxFontSize = 40;
+    
     for( int i=minFontSize; i<maxFontSize; i++){
         ofxFTGLFont *tmp = new ofxFTGLFont();
         tmp->loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", i );
@@ -164,18 +160,14 @@ void CloudsHUDController::calculateFontSizes(){
 }
 
 ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName ) {
-    cout << "Looking for :: " << layerName << endl;
-    
     for( int i=0; i<allLayers.size(); i++ ){
         SVGMesh* textMesh = allLayers[i]->svg.getMeshByID( layerName );
         
         if( textMesh != NULL ){
-            cout << "Found the correct text layer for " << layerName << endl;
-            
             float maxHeight = textMesh->bounds.height;
             int fontSize = getFontSizeForMesh( textMesh );
             
-            cout << "The correct font size is " << fontSize << ". Width is " << textMesh->bounds.width << endl;
+//            cout << "The correct font size is " << fontSize << ". Width is " << textMesh->bounds.width << endl;
             
             // make a layout
             ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
@@ -206,7 +198,6 @@ int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
     float textBoxHeight = textMesh->bounds.height;
     
     for( int k=0; k<tempFontList.size()-1; k++){
-        cout << "   " << textBoxHeight << "/" << tempFontList[k]->getLineHeight() << endl;
         if( tempFontList[k]->getLineHeight() <= textBoxHeight && tempFontList[k+1]->getLineHeight() > textBoxHeight ){
             fontSize = 1 + k;
             break;
@@ -239,8 +230,6 @@ void CloudsHUDController::draw(){
     for( int i=0; i<hudLabelList.size(); i++ ){
         hudLabelList[i].draw();
     }
-    
-//    testFont.drawString("SODFJSDO", 100, 100);
     
 	home.draw();
 	

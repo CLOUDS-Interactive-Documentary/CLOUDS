@@ -7,6 +7,12 @@
 #include "CloudsAct.h"
 #include "lukeFuncs.h"
 
+#define PF_INTRO_BUS 1
+#define PF_TUNNEL_BUS 2
+#define PF_LOADER_BUS 3
+#define PF_OUTRO_BUS 4
+#define PF_CLUSTERMAP_BUS 5
+
 class CloudsSound {
   public:
 	CloudsSound();
@@ -34,6 +40,10 @@ class CloudsSound {
 	void questionAsked(CloudsQuestionEventArgs& args);	
 	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
+    
+    // new callbacks
+    void enterTunnel();
+    void exitTunnel();
 	
 	float maxSpeakerVolume; // set between 0. and 1.0 to modulate speaker volume
 	
@@ -45,7 +55,7 @@ class CloudsSound {
     void reloadPresets();
     void doPrinting();
 
-    // public data structure
+    // public data structures
     vector<lukePreset> presets;
 
   protected:
