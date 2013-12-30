@@ -428,7 +428,7 @@ void _C::selfDraw(){
     
     
     if(renderNeurons){
-        
+
         _N::drawMode = GL_LINES;
         ofMesh m;
         // for all root nodes:
@@ -452,7 +452,7 @@ void _C::selfDraw(){
         
 		//TODO: remove all immediate modes and replace with ofMesh
         glPointSize(dotSize);
-        //glBegin(GL_POINTS);		
+//        glBegin(GL_POINTS);		
 //        glColor3f(1,1,1);
         // for all terminals
         for(it=_N::terminals.begin();it!=_N::terminals.end();it++){
@@ -464,7 +464,7 @@ void _C::selfDraw(){
 		
 		ofSetColor(255);
 		m.drawVertices();
-        glEnd();
+//        glEnd();
         
     }
 
