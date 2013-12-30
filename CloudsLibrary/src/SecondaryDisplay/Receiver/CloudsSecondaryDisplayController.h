@@ -30,9 +30,6 @@ class CloudsSecondaryDisplayController {
     
     void saveGuiSettings();
 	void toggleGuis();
-    
-    void drawNextLayout();
-    void drawPrevLayout();
 	
 	ofxUISuperCanvas *SDGui;
     void draw();
@@ -46,6 +43,8 @@ class CloudsSecondaryDisplayController {
 	//CloudsVisualSystemManager visualSystems;
 
 	void loadSVGs();
+    void hideQuestionBox();
+    void showQuestionBox();
 	//TODO: make separate layer sets for Project Example vs Person
 	vector<CloudsSVGMesh> testAllLayout;
     
@@ -68,4 +67,7 @@ class CloudsSecondaryDisplayController {
     float pFontSize, h3FontSize;
     
     string displayMode, lastQuestion;
+    
+    //colors
+    ofColor lightBlue, darkBlue;
 };
