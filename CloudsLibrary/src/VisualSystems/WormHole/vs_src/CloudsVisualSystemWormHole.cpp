@@ -315,9 +315,9 @@ void CloudsVisualSystemWormHole::loadMesh(string name)
 
 void CloudsVisualSystemWormHole::loadShaders()
 {
-//	loadShader("normalShader");
-//	loadShader("facingRatio");
-//	loadShader("XRayShader");
+	loadShader("normalShader");
+	loadShader("facingRatio");
+	loadShader("XRayShader");
 	loadShader("WormholeShader");
 }
 

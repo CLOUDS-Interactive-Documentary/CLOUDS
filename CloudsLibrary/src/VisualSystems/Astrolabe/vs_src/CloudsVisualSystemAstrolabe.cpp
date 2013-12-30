@@ -257,18 +257,7 @@ void CloudsVisualSystemAstrolabe::selfGuiEvent(ofxUIEventArgs &e)
 		}
 		else if( name == "XRot" || name == "YRot" || name == "ZRot" )
 		{
-			for(int i=0 ; i<astrolabes.size(); i++)
-			{
-				//astrolabes[i]->addRotationTween(string axis, float startVal, float step, float duration, float delay, float increment)
-				astrolabes[i]->addRotationTween("x", i * ringsXRot, ringsXRot, xTickSpeed, xTickDelay, xTickDelay);
-				astrolabes[i]->addRotationTween("y", i * ringsYRot, ringsYRot, yTickSpeed, xTickDelay, yTickDelay);
-				astrolabes[i]->addRotationTween("z", i * ringsZRot, ringsZRot, zTickSpeed, zTickDelay, zTickSpeed);
-				
-				//float scl = ofSignedNoise(i*.1) * .75 + 1.;
-				//astrolabes[i]->setTweenScale("x", scl );
-				//astrolabes[i]->setTweenScale("y", scl );
-				//astrolabes[i]->setTweenScale("z", scl );
-			}
+			resetRingRotations();
 		}
 		else if(name == "innerSpeed" || name == "outerSpeed" || name == "delayOffsetScale" || name == "skipAheadOnCreation")
 		{
