@@ -9,6 +9,8 @@
 #include "CloudsHUDController.h"
 #include "CloudsGlobal.h"
 #include "CloudsInput.h"
+#include "CloudsClip.h"
+#include "CloudsSpeaker.h"
 
 CloudsHUDController::CloudsHUDController(){
 	hudGui = NULL;
@@ -17,7 +19,7 @@ CloudsHUDController::CloudsHUDController(){
 void CloudsHUDController::setup(){
 //	testImage.loadImage( GetCloudsDataPath() + "HUD/overlayTest.png" );
 	buildLayerSets();
-	
+		
 	home.setup();
 }
 
@@ -34,6 +36,19 @@ void CloudsHUDController::setup(){
 //ResetButtonTextBox.svg has text box: ResetButtonTextBox with bounds 1269.64 837.294 67.314 16.147
 //TopicTextBoxLeft.svg has text box: TopicTextBoxLeft with bounds 114.656 114.926 71.314 13.147
 //TopicTextBoxRight.svg has text box: TopicTextBoxRight with bounds 247.999 114.926 122.314 13.147
+
+void CloudsHUDController::clipBegan(CloudsClip& clip){
+	
+	cout << "ID's on clip " << clip.name << " and fcp id? " << clip.fcpFileId << endl;
+	CloudsSpeaker speaker = CloudsSpeaker::speakers[ clip.person ];
+	cout << "Clip is " <<  clip.getLinkName() << endl;
+	cout << "speaker: " << speaker.firstName << " " << speaker.lastName << endl;
+	
+	if(clip.hasProjectExample){
+		CloudsProjectExample example = clip.projectExample;
+		cout << "project " << example.title << " with videos? " << example.exampleVideos.size() << endl;
+	}
+}
 
 void CloudsHUDController::buildLayerSets(){
 	
