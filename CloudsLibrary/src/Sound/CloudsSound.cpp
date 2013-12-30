@@ -137,7 +137,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     {
         for(int i = 0;i<numcues;i++)
         {
-            // TEST 1: CHECK FOR RIGGED PRESET NAME
+            // TEST 1: CHECK FOR RIGGED PRESET NAME -- THESE CUES CAN BE "DISABLED"
             if(thecues[i].riggedPresetName!="")
             {
                 for(int j = 0; j<presets.size();j++)
@@ -182,7 +182,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                         }
                     }
                     //if all 8 dichos matched
-                    if(pscore==8&&presets[j].highEnergy==isHighEnergy){
+                    if(pscore==8&&presets[j].highEnergy==isHighEnergy&&presets[j].disabled==0){
                         //if(presets[j].slotnumber<250) { // temporary
                         valid_presets.push_back(j);
                         //}
