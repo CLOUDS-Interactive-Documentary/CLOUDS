@@ -26,8 +26,6 @@ varying vec2 uv;
 varying float camDelta;
 
 varying float doDiscard = .0;
-varying float isGround = .0;
-varying float isCloud = 0.;
 varying vec4 groundSample;
 varying float underSky;
 varying float lowerBoundY;

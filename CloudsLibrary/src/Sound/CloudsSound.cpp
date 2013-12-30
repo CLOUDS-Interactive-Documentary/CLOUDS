@@ -214,6 +214,28 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     
 }
 
+void CloudsSound::enterTunnel()
+{
+    string soundfile = "CLOUDS_introTunnel_light.wav"; // change to something in trax
+    string ampsym = "tunnelamp"; // needs to be unique per RT instance
+    float volume = 1.0; // how load does this sound play?
+
+    if(LUKEDEBUG) cout << "sound: enterTunnel()" << endl;
+
+    PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
+    STREAMSOUND_DYNAMIC(0, soundfile, 1.0, ampsym, PF_TUNNEL_BUS);
+}
+
+void CloudsSound::exitTunnel()
+{
+    float fadedur = 5.0; // change to adjust fade time
+
+    if(LUKEDEBUG) cout << "sound: exitTunnel()" << endl;
+
+    PFIELD_SCHED(0., fadedur, PF_TUNNEL_BUS, "ramp_10");
+}
+
+
 void CloudsSound::visualSystemBegan(CloudsVisualSystemEventArgs& args){
 	
 }

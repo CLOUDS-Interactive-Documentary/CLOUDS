@@ -37,7 +37,6 @@ void CloudsHUDLayer::parse(string svgFilePath){
 }
 
 void CloudsHUDLayer::parseDirectory(string svgDirectoryPath){
-    
 //    cout << "Loading SVG directory :: " << svgDirectoryPath << endl;
     
     svg.loadDirectory(svgDirectoryPath);
@@ -46,8 +45,6 @@ void CloudsHUDLayer::parseDirectory(string svgDirectoryPath){
 	for(int i = 0; i < svg.getMeshes().size(); i++){
 		if( ofToLower(svg.getMeshes()[i].id).find("textbox") != string::npos ) {
 			textBoxIds.push_back(svg.getMeshes()[i].id);
-            
-            cout << svg.getMeshes()[i].id << endl;
 		}
 	}
 }

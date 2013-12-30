@@ -16,6 +16,7 @@ typedef struct {
 	string id;
 	bool fill;
 	ofRectangle bounds;
+    bool visible;
 } SVGMesh;
 
 class CloudsSVGMesh

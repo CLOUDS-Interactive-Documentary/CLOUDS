@@ -85,12 +85,8 @@
 		850EDCB718305AB3004411A3 /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */; };
 		850EDCB818305AB3004411A3 /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */; };
 		850EDCB918305AB3004411A3 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF11E17E688FE0007780D /* CloudsVisualSystem.cpp */; };
-		850EDCBA18305AB3004411A3 /* oscillationsShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E759EF45181DC80E00FA1E90 /* oscillationsShader.frag */; };
-		850EDCBB18305AB3004411A3 /* oscillationsShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E759EF46181DC80E00FA1E90 /* oscillationsShader.vert */; };
 		850EDCBC18305AB3004411A3 /* CloudsVisualSystemOscillations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E759EF48181DC80E00FA1E90 /* CloudsVisualSystemOscillations.cpp */; };
 		850EDCBD18305AB3004411A3 /* ofxAutoReloadedShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E759EFA0181DC85500FA1E90 /* ofxAutoReloadedShader.cpp */; };
-		850EDCBE18305AB3004411A3 /* chromaticAbberation.frag in Sources */ = {isa = PBXBuildFile; fileRef = E759EFE9181E5FDE00FA1E90 /* chromaticAbberation.frag */; };
-		850EDCBF18305AB3004411A3 /* chromaticAbberation.vert in Sources */ = {isa = PBXBuildFile; fileRef = E759EFEA181E5FDE00FA1E90 /* chromaticAbberation.vert */; };
 		850EDCC118305AB3004411A3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		850EDCC218305AB3004411A3 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		850EDCC318305AB3004411A3 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -131,12 +127,8 @@
 		E72FF12217E688FE0007780D /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */; };
 		E72FF12317E688FE0007780D /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */; };
 		E72FF12417E688FE0007780D /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF11E17E688FE0007780D /* CloudsVisualSystem.cpp */; };
-		E759EF4A181DC80E00FA1E90 /* oscillationsShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E759EF45181DC80E00FA1E90 /* oscillationsShader.frag */; };
-		E759EF4B181DC80E00FA1E90 /* oscillationsShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E759EF46181DC80E00FA1E90 /* oscillationsShader.vert */; };
 		E759EF4C181DC80E00FA1E90 /* CloudsVisualSystemOscillations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E759EF48181DC80E00FA1E90 /* CloudsVisualSystemOscillations.cpp */; };
 		E759EFAB181DC85500FA1E90 /* ofxAutoReloadedShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E759EFA0181DC85500FA1E90 /* ofxAutoReloadedShader.cpp */; };
-		E759EFEB181E5FDE00FA1E90 /* chromaticAbberation.frag in Sources */ = {isa = PBXBuildFile; fileRef = E759EFE9181E5FDE00FA1E90 /* chromaticAbberation.frag */; };
-		E759EFEC181E5FDE00FA1E90 /* chromaticAbberation.vert in Sources */ = {isa = PBXBuildFile; fileRef = E759EFEA181E5FDE00FA1E90 /* chromaticAbberation.vert */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
 		E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB81714899C00705E7A /* tinyxmlerror.cpp */; };
@@ -266,6 +258,10 @@
 		17BC7DFE186C8A3A00F4E8D8 /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
 		17BC7DFF186C8A3A00F4E8D8 /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
 		17BC7E06186CF22300F4E8D8 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../../CloudsLibrary/src/CloudsGlobal.h; sourceTree = "<group>"; };
+		17BFC68C1872055A00514ED5 /* chromaticAbberation.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = chromaticAbberation.frag; sourceTree = "<group>"; };
+		17BFC68D1872055A00514ED5 /* chromaticAbberation.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = chromaticAbberation.vert; sourceTree = "<group>"; };
+		17BFC68E1872055A00514ED5 /* oscillationsShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = oscillationsShader.frag; sourceTree = "<group>"; };
+		17BFC68F1872055A00514ED5 /* oscillationsShader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = oscillationsShader.vert; sourceTree = "<group>"; };
 		850EDCD918305AB3004411A3 /* Oscillations copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oscillations copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		850EDCDA18305AB4004411A3 /* Oscillations copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Oscillations copy-Info.plist"; path = "/Users/jonathanminard/Documents/Development/openFrameworks/apps/CLOUDS/VSOscillations/Oscillations copy-Info.plist"; sourceTree = "<absolute>"; };
 		850EDDA118305BFB004411A3 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
@@ -298,14 +294,10 @@
 		E72FF11E17E688FE0007780D /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
 		E72FF11F17E688FE0007780D /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
 		E72FF12017E688FE0007780D /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
-		E759EF45181DC80E00FA1E90 /* oscillationsShader.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = oscillationsShader.frag; sourceTree = "<group>"; };
-		E759EF46181DC80E00FA1E90 /* oscillationsShader.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = oscillationsShader.vert; sourceTree = "<group>"; };
 		E759EF48181DC80E00FA1E90 /* CloudsVisualSystemOscillations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOscillations.cpp; sourceTree = "<group>"; };
 		E759EF49181DC80E00FA1E90 /* CloudsVisualSystemOscillations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOscillations.h; sourceTree = "<group>"; };
 		E759EFA0181DC85500FA1E90 /* ofxAutoReloadedShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAutoReloadedShader.cpp; sourceTree = "<group>"; };
 		E759EFA1181DC85500FA1E90 /* ofxAutoReloadedShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAutoReloadedShader.h; sourceTree = "<group>"; };
-		E759EFE9181E5FDE00FA1E90 /* chromaticAbberation.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = chromaticAbberation.frag; sourceTree = "<group>"; };
-		E759EFEA181E5FDE00FA1E90 /* chromaticAbberation.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = chromaticAbberation.vert; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7846F411714887E00705E7A /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		E7846F421714887E00705E7A /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -585,6 +577,18 @@
 			path = ../../CloudsLibrary/src/Input;
 			sourceTree = "<group>";
 		};
+		17BFC68B1872055A00514ED5 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				17BFC68C1872055A00514ED5 /* chromaticAbberation.frag */,
+				17BFC68D1872055A00514ED5 /* chromaticAbberation.vert */,
+				17BFC68E1872055A00514ED5 /* oscillationsShader.frag */,
+				17BFC68F1872055A00514ED5 /* oscillationsShader.vert */,
+			);
+			name = shaders;
+			path = ../../../../../../CloudsData/visualsystems/Oscillations/shaders;
+			sourceTree = "<group>";
+		};
 		850EDD9B18305BFB004411A3 /* ofxOculusRift */ = {
 			isa = PBXGroup;
 			children = (
@@ -745,20 +749,9 @@
 		E759EE19181DC80C00FA1E90 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				E759EF44181DC80E00FA1E90 /* shaders */,
+				17BFC68B1872055A00514ED5 /* shaders */,
 			);
 			path = data;
-			sourceTree = "<group>";
-		};
-		E759EF44181DC80E00FA1E90 /* shaders */ = {
-			isa = PBXGroup;
-			children = (
-				E759EFE9181E5FDE00FA1E90 /* chromaticAbberation.frag */,
-				E759EFEA181E5FDE00FA1E90 /* chromaticAbberation.vert */,
-				E759EF45181DC80E00FA1E90 /* oscillationsShader.frag */,
-				E759EF46181DC80E00FA1E90 /* oscillationsShader.vert */,
-			);
-			path = shaders;
 			sourceTree = "<group>";
 		};
 		E759EF47181DC80E00FA1E90 /* vs_src */ = {
@@ -1496,12 +1489,8 @@
 				850EDCB718305AB3004411A3 /* CloudsRGBDCamera.cpp in Sources */,
 				850EDCB818305AB3004411A3 /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				850EDCB918305AB3004411A3 /* CloudsVisualSystem.cpp in Sources */,
-				850EDCBA18305AB3004411A3 /* oscillationsShader.frag in Sources */,
-				850EDCBB18305AB3004411A3 /* oscillationsShader.vert in Sources */,
 				850EDCBC18305AB3004411A3 /* CloudsVisualSystemOscillations.cpp in Sources */,
 				850EDCBD18305AB3004411A3 /* ofxAutoReloadedShader.cpp in Sources */,
-				850EDCBE18305AB3004411A3 /* chromaticAbberation.frag in Sources */,
-				850EDCBF18305AB3004411A3 /* chromaticAbberation.vert in Sources */,
 				850EDDA318305BFB004411A3 /* ofxOculusRift.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1586,12 +1575,8 @@
 				E72FF12217E688FE0007780D /* CloudsRGBDCamera.cpp in Sources */,
 				E72FF12317E688FE0007780D /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				E72FF12417E688FE0007780D /* CloudsVisualSystem.cpp in Sources */,
-				E759EF4A181DC80E00FA1E90 /* oscillationsShader.frag in Sources */,
-				E759EF4B181DC80E00FA1E90 /* oscillationsShader.vert in Sources */,
 				E759EF4C181DC80E00FA1E90 /* CloudsVisualSystemOscillations.cpp in Sources */,
 				E759EFAB181DC85500FA1E90 /* ofxAutoReloadedShader.cpp in Sources */,
-				E759EFEB181E5FDE00FA1E90 /* chromaticAbberation.frag in Sources */,
-				E759EFEC181E5FDE00FA1E90 /* chromaticAbberation.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

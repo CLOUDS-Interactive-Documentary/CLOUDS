@@ -51,7 +51,7 @@ public:
     
 private:
     
-    /*  SUCH PARAMS */
+    /* SUCH PARAMS */
     cellParams params;
     bool levelSetMode;
     int numInitialCells;
@@ -86,4 +86,8 @@ private:
     
     void clear();
     void populate();
+    
+    /* VERY DEBUG */
+    ofImage img_debug;
+
 };

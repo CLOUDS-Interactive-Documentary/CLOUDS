@@ -12,6 +12,7 @@
 
 #include "CloudsVisualSystem.h"
 #include "CloudsGlobal.h"
+#include "ofxObjLoader.h"
 #include "Astrolabe.h"
 
 //TODO: rename this to your own visual system
@@ -163,6 +164,8 @@ protected:
 	bool bAutoReverseX, bAutoReverseY, bAutoReverseZ;
 	float ringsFalloff;
 	
+	bool bUseRings;
+	
 	
 	ofxUISuperCanvas* customGui;
 	
@@ -185,7 +188,16 @@ protected:
 	ofxEasingSine easesine;
 	ofxEasingLinear easelinear;
 	
+	
 	map<string, ofxEasing*> easeMap;
 	
+	ofxEasing* currentEase;
+	
 	int skipAhead;
+	
+	ofVboMesh sphereMesh;
+	float sphereScale;
+	int numSpheresPerArc;
+	
+	bool bUseSpheres;
 };

@@ -10,11 +10,6 @@ uniform float fogExpo;
 uniform float groundDrama;
 uniform float maxHeight = 10.;
 
-uniform float edgeSmoothing;
-uniform vec4 edgeColor;
-uniform vec4 fillColor;
-uniform vec4 specularColor;
-
 uniform vec4 groundColor = vec4( .4, 1., .6, 1.);
 uniform vec4 undergroundColor = vec4( .6 ,.2, .1, 1.);
 uniform vec4 cloudShadowColor;
@@ -22,10 +17,6 @@ uniform float cloudShadow;
 
 uniform float specExpo;
 uniform float specScale;
-
-uniform float drawCenters;
-uniform float noiseCutoff;
-uniform float edgeThreshold;
 
 varying vec3 vertex;
 varying vec3 vNormal;
@@ -39,8 +30,6 @@ varying vec2 uv;
 
 varying float camDelta;
 varying float doDiscard;
-varying float isGround;
-varying float isCloud;
 
 varying vec4 groundSample;
 varying float underSky;
