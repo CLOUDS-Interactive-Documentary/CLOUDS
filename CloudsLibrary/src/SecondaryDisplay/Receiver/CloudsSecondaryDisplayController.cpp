@@ -13,7 +13,6 @@ CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
 	hasSpeaker = false;
 	playingMovie = false;
     
-//    layoutID = 0;
     displayMode = "BIO";
 }
 
@@ -49,24 +48,25 @@ void CloudsSecondaryDisplayController::setup(){
     
 	loadSVGs();
     
+    //FONT SIZES ARE IN POINTS
+    //1 pixel = .75pts
+    float fScale = .75;
     //load all fonts
-	exampleType.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", 40);
-    exampleType.setLineLength(544);
     ////last name
-    h1.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_LASTNAME")->bounds.height);
+    h1.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_LASTNAME")->bounds.height * fScale);
     h1.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.width);
     ////first name
-    h2.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.height);
+    h2.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.height * fScale);
     h2.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.width);
     ////question
-    h3FontSize = 38;
+    h3FontSize = 38 * fScale;
     h3.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", h3FontSize);
     h3.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION")->bounds.width);
     ////location / creator name
-    h4.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_LOC")->bounds.height);
+    h4.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_LOC")->bounds.height * fScale);
     h4.setLineLength(bioLayout.getMeshByID("BOX_x5F_LOC")->bounds.width);
     ////byline / description
-    pFontSize = 21;
+    pFontSize = 21 * fScale;
     p.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", pFontSize);
     p.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_BIO")->bounds.width);
  
@@ -87,7 +87,7 @@ void CloudsSecondaryDisplayController::loadSVGs(){
     //load the three different layouts
     bioLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/BIO.svg");
     projectLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/PROJECTEX/PROJECTEX.svg");
-    systemLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/VISUALSYSTEM/VISUALSYS.svg");
+    systemLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/VISUALSYSTEM/VISUAL.svg");
 
 }
 
@@ -135,6 +135,7 @@ void CloudsSecondaryDisplayController::update(){
                 
                 //setup all bio data
                 lastQuestion = m.getArgAsString(5);
+                cout << "lastQuestion: '" << lastQuestion << "'";
 			}
 		}
 	}
@@ -160,7 +161,6 @@ void CloudsSecondaryDisplayController::drawPrevLayout(){
     cout << "Draw Display: "<< testAllLayout[layoutID].sourceFileName <<" #" << layoutID << " of " << testAllLayout.size()-1 << endl;
 }*/
 
-/* WORK MOSTLY IN HERE - JK */
 void CloudsSecondaryDisplayController::draw(){
     ofEnableAlphaBlending();
 	
@@ -171,16 +171,30 @@ void CloudsSecondaryDisplayController::draw(){
     SVGMesh* t;
     
     if(displayMode == "BIO"){
-        
         //DRAW BIO LAYOUT
-        bioLayout.draw();
+        
         
         ////question
-        t = bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION");
-        if(t){
-            h3.drawString(lastQuestion, t->bounds.x, t->bounds.y + h3FontSize);
+        ////// don't display if not avilable
+        //find the question box
+        t = bioLayout.getMeshByID("BOX_x5F_QUESTION_x5F_DETAILS");
+        if(lastQuestion != ""){
+            //show the question box
+            t->visible = true;
+            
+            //find the text box
+            t = bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION");
+            if(t){
+                h3.drawString(lastQuestion, t->bounds.x, t->bounds.y + h3FontSize);
+            }
+        }
+        else{
+            t->visible = false;
+            //this does not work because the group I am looking for is composed not of one mesh, but of 8 different mesh objects, and the method getMeshByID does not return the entire group of meshes, but only one of them.
+            //At this point, it is better to draw whetever elements need to show or hide as separate SVG files
         }
         
+        ////speaker name
         string firstName, lastName;
         if(hasSpeaker){
             firstName = currentSpeaker.firstName;
@@ -220,6 +234,9 @@ void CloudsSecondaryDisplayController::draw(){
         t = bioLayout.getMeshByID("TEXTBOX_x5F_BIO");
         if(t)
             p.drawString(currentSpeaker.byline1, t->bounds.x, t->bounds.y + pFontSize);
+        
+        //DRAW BIO LAYOUT
+        bioLayout.draw();
         
     }else if(displayMode == "PROJECT"){
         //DISPLAY PROJECT LAYOUT
@@ -271,4 +288,12 @@ void CloudsSecondaryDisplayController::draw(){
 	//TODO: draw speaker layout
 	//TODO: overlay with project example when relevant
 	
+}
+
+void CloudsSecondaryDisplayController::hideQuestionBox(){
+    bioLayout.getMeshByID("BOX_x5F_QUESTION_x5F_DETAILS")->visible = false;;
+}
+
+void CloudsSecondaryDisplayController::showQuestionBox(){
+    
 }

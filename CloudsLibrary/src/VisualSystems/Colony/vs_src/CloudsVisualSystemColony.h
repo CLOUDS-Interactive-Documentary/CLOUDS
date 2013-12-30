@@ -65,7 +65,7 @@ private:
     ofVboMesh   vbo;
     
     /* WOW VIDEO */
-    ofFbo fbo_main;
+    ofFbo fbo_main, fbo_debug;
     ofTexture sprite, grunge;
     ofShader    levelSet;
     ofShader    billboard;
