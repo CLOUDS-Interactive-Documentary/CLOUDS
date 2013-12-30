@@ -9,8 +9,7 @@ void testApp::setup(){
 	
 	secondaryDisplay.setup();
     
-    layoutID = 0;
-
+    debug = false;
 }
 
 //--------------------------------------------------------------
@@ -25,7 +24,10 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+    if(key == 'd'){
+        debug = !debug;
+        secondaryDisplay.debug = debug;
+    }
 }
 
 //--------------------------------------------------------------
