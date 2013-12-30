@@ -101,29 +101,18 @@ void CloudsSecondaryDisplayController::loadSVGs(){
     //load the three different layouts
     bioLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/BIO.svg");
     projectLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/PROJECTEX/PROJECTEX.svg");
-    systemLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/VISUALSYSTEM/VISUAL.svg");
+    questionLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/QUESTION/QUESTION.svg");
 
 }
 
 ofxFTGLSimpleLayout* CloudsSecondaryDisplayController::getLayoutForLayer( SVGMesh* textMesh ) {
     
         if( textMesh != NULL ){
-//            float maxHeight = textMesh->bounds.height;
             int fontSize = getFontSizeForMesh( textMesh );
-            
-            //            cout << "The correct font size is " << fontSize << ". Width is " << textMesh->bounds.width << endl;
-            
             // make a layout
             ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
             newLayout->loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", fontSize );
             newLayout->setLineLength( textMesh->bounds.width );
-            
-            // make a label
-            /*CloudsHUDLabel newLabel;
-            newLabel.layout = newLayout;
-            newLabel.bounds = textMesh->bounds;
-            
-            hudLabelList.push_back( newLabel );*/
             
             return newLayout;
         }
@@ -226,25 +215,17 @@ void CloudsSecondaryDisplayController::draw(){
         t = bioLayout.getMeshByID("BOX_x5F_QUESTION_x5F_DETAILS");
         if(lastQuestion != ""){
             //show the question box
-            t->visible = true;
-            
+            questionLayout.draw();
             //find the text box
             t = bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION");
             if(t){
                 lastQuestion = ofToUpper(lastQuestion);
                 drawTextToMesh(h3, lastQuestion, t);
-                //h3->setLineLength(t->bounds.width);
-                //h3->drawString(lastQuestion, t->bounds.x, t->bounds.y + h3FontSize);
             }
             
             if(debug)
                 ofRect(t->bounds);
             
-        }
-        else{
-            t->visible = false;
-            //this does not work because the group I am looking for is composed not of one mesh, but of 8 different mesh objects, and the method getMeshByID does not return the entire group of meshes, but only one of them.
-            //At this point, it is better to draw whetever elements need to show or hide as separate SVG files
         }
         
         ////speaker name
@@ -351,8 +332,6 @@ void CloudsSecondaryDisplayController::draw(){
         
         
         
-    }else if(displayMode == "SYSTEM"){
-        systemLayout.draw();
     }
 	
 	displayTarget.end();
@@ -362,13 +341,12 @@ void CloudsSecondaryDisplayController::draw(){
 	targetRect.scaleTo(screenRect);
 	displayTarget.getTextureReference().draw(targetRect);
 	
-    // ---------------- added
-//	//get info for a speaker
-//	CloudsSpeaker::speakers["Kyl_CH"].twitterHandle;
-	//TODO: draw speaker layout
-	//TODO: overlay with project example when relevant
 	
 }
+
+/*void CloudsSecondaryDisplayController::drawBioLayout(){
+    
+}*/
 
 void CloudsSecondaryDisplayController::drawTextToMesh(ofxFTGLSimpleLayout* font, string text, SVGMesh* mesh){
     //update line length
