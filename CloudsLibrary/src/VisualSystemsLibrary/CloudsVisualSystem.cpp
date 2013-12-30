@@ -256,7 +256,6 @@ void CloudsVisualSystem::setup(){
 	hideGUIS();
 
 	bIsSetup = true;
-	
 }
 
 bool CloudsVisualSystem::isSetup(){
@@ -362,7 +361,7 @@ void CloudsVisualSystem::speakerEnded()
 
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
-    if(bEnableTimeline)
+    if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack)
     {
         updateTimelineUIParams();
     }
@@ -398,13 +397,13 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 		timeline->setOffset(ofVec2f(4, ofGetHeight() - timeline->getHeight() - 4 ));
 		timeline->setWidth(ofGetWidth() - 8);
 	}
+	
+	checkOpenGLError(getSystemName() + ":: UPDATE");
 }
 
 void CloudsVisualSystem::draw(ofEventArgs & args)
 {
     ofPushStyle();
-	
-
 	
     if(bRenderSystem)
     {
@@ -418,6 +417,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 
 			getOculusRift().beginOverlay(-230, 320,240);
 			selfDrawOverlay();
+			checkOpenGLError(getSystemName() + ":: DRAW OVERLAY");
 			getOculusRift().endOverlay();
 			
             if(bIs2D){
@@ -426,6 +426,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
                     ofClear(0, 0, 0, 1.0);
                 }                
                 selfDrawBackground();
+				checkOpenGLError(getSystemName() + ":: DRAW BACKGROUND");
                 CloudsVisualSystem::getSharedRenderTarget().end();
                 
                 getOculusRift().baseCamera = &getCameraRef();
@@ -527,6 +528,7 @@ void CloudsVisualSystem::drawScene(){
 	
 	ofPushStyle();
 	drawDebug();
+	checkOpenGLError(getSystemName() + ":: DRAW DEBUG");
 	ofPopStyle();
 	
 	lightsBegin();
@@ -534,6 +536,7 @@ void CloudsVisualSystem::drawScene(){
 	//draw this visual system
 	ofPushStyle();
 	selfDraw();
+	checkOpenGLError(getSystemName() + ":: DRAW");
 	ofPopStyle();
 	
 	lightsEnd();
@@ -2904,6 +2907,7 @@ void CloudsVisualSystem::drawBackground()
 	ofTranslate(0, ofGetHeight());
 	ofScale(1,-1,1);
 	selfDrawBackground();
+	checkOpenGLError(getSystemName() + ":: DRAW BACKGROUND");		
 	ofPopMatrix();
 	ofPopStyle();
 }
@@ -3157,8 +3161,7 @@ void CloudsVisualSystem::selfInteractionEnded(CloudsInteractionEventArgs& args){
 }
 
 
-void CloudsVisualSystem::selfSetupGui()
-{
+void CloudsVisualSystem::selfSetupGui(){
 
 }
 
@@ -3205,4 +3208,12 @@ void CloudsVisualSystem::selfSetupTimelineGui()
 void CloudsVisualSystem::selfTimelineGuiEvent(ofxUIEventArgs &e)
 {
     
+}
+
+void CloudsVisualSystem::checkOpenGLError(string function){
+	
+    GLuint err = glGetError();
+    if (err != GL_NO_ERROR){
+        ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " in " << function;
+    }
 }

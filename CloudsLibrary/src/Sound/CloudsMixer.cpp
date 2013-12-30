@@ -10,20 +10,18 @@
 
 CloudsMixer::CloudsMixer()
 {
-	musicVol = 1.0;
-	diageticVol = 1.0;
+	musicVol = 1.0; // RTcmix main volume
+	diageticVol = 1.0; // Tonic main volume
     
     // envelope follower
     attack = 200.0;
     decay = 17640.0;
     followgain = 0.;
     // compressor
-    //thresh = 0.707; // set lower for a quieter squish point
-    thresh = 0.3;
+    thresh = 0.2; // set lower for a quieter squish point
     ratio = 3.; // set higher for more squish
 
     showCompressor = false;
-    
 }
 
 CloudsMixer::~CloudsMixer()
@@ -65,8 +63,6 @@ void CloudsMixer::setDiageticVolume(float vol)
 
 void CloudsMixer::fillBuffer(float *output, int bufferSize, int nChannels)
 {
-    float gain;
-    
     // check for buffer size mismatch
     if (bufferSize != musicArgs.bufferSize ||
         bufferSize != diageticArgs.bufferSize) {
@@ -116,6 +112,7 @@ void CloudsMixer::fillBuffer(float *output, int bufferSize, int nChannels)
         }
     }
     
+    /*
     if(showCompressor) {
         for(float i = 0;i<0.5;i=i+0.01)
         {
@@ -128,6 +125,7 @@ void CloudsMixer::fillBuffer(float *output, int bufferSize, int nChannels)
         }
         cout << endl;
     }
+     */
     
     //cout << followgain << " : " << gain << endl;
     

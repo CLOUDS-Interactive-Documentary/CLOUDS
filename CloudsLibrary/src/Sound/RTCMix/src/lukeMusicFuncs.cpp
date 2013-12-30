@@ -132,7 +132,7 @@ int melodySolver::tick()
     
     if(type=="melody") pick = (pick+1)%parray.notes.size();
     if(type=="simple") pick = (pick+1)%marray.notes.size();
-    rval = scale(curpitch+parray.basenote, parray.scale);
+    rval = curpitch<0 ? -1 : scale(curpitch+parray.basenote, parray.scale);
     return(rval);
     
 }

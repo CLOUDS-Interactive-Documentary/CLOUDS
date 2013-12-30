@@ -8,6 +8,7 @@
 
 #include "CloudsHUDController.h"
 #include "CloudsGlobal.h"
+#include "CloudsInput.h"
 
 CloudsHUDController::CloudsHUDController(){
 	hudGui = NULL;
@@ -38,7 +39,7 @@ void CloudsHUDController::buildLayerSets(){
 	
 	//configure layers
 	CloudsHUDLayerSet currentLayer;
-	CloudsHUDLayer* layer;
+//	CloudsHUDLayer* layer;
 	
 	//QUESTION LAYER
 	currentLayer = CLOUDS_HUD_QUESTION;
@@ -74,6 +75,38 @@ void CloudsHUDController::buildLayerSets(){
 //	layer->startPoint = ofVec2f(layer->svg.getWidth(),0);
 //	layer->endPoint   = ofVec2f(0,layer->svg.getHeight());
 
+    
+    CloudsHUDLayer* lowerThirdLayer = new CloudsHUDLayer();
+    lowerThirdLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_LOWER_THIRD");
+    layerSets[CLOUDS_HUD_LOWER_THIRD].push_back( lowerThirdLayer );
+    allLayers.push_back( lowerThirdLayer );
+    
+    CloudsHUDLayer* questionLayer = new CloudsHUDLayer();
+    questionLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_QUESTION");
+    layerSets[CLOUDS_HUD_QUESTION].push_back( questionLayer );
+    allLayers.push_back( questionLayer );
+    
+    CloudsHUDLayer* mapLayer = new CloudsHUDLayer();
+    mapLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_MAP");
+    layerSets[CLOUDS_HUD_MAP].push_back( mapLayer );
+    allLayers.push_back( mapLayer );
+    
+    CloudsHUDLayer* projectExampleLayer = new CloudsHUDLayer();
+    projectExampleLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_PROJECT_EXAMPLE");
+    layerSets[CLOUDS_HUD_PROJECT_EXAMPLE].push_back( projectExampleLayer );
+    allLayers.push_back( projectExampleLayer );
+
+    
+    for( int i=0; i<allLayers.size(); i++ ){
+        allLayers[i]->duration = 1.5;
+        allLayers[i]->delayTime = ofRandomuf();
+        
+        allLayers[i]->startPoint = ofVec2f(allLayers[i]->svg.getWidth(),0);
+        allLayers[i]->endPoint   = ofVec2f(0,allLayers[i]->svg.getHeight());
+    }
+    
+  
+    /*
 	ofDirectory testSVGDir(GetCloudsDataPath() + "HUD/SVG");
 	testSVGDir.allowExt("svg");
 	testSVGDir.listDir();
@@ -91,6 +124,7 @@ void CloudsHUDController::buildLayerSets(){
 		layer->endPoint   = ofVec2f(0,layer->svg.getHeight());
 		
 	}
+     */
 	
 //	layerSets[CLOUDS_HUD_QUESTION].push_back( new CloudsHUDLayer(GetCloudsDataPath() + "HUD/01_MAIN_innermost.svg" ) );
 //	layerSets[CLOUDS_HUD_QUESTION].push_back( new CloudsHUDLayer(GetCloudsDataPath() + "HUD/01_MAIN_Outer.svg" ) );
@@ -99,10 +133,9 @@ void CloudsHUDController::buildLayerSets(){
 
 void CloudsHUDController::update(){
 	for(int i = 0; i < allLayers.size(); i++){
-		
 		allLayers[i]->update();
 	}
-	
+
 	home.update();
 }
 
@@ -116,7 +149,8 @@ void CloudsHUDController::draw(){
 	drawLayer(CLOUDS_HUD_QUESTION);
 	drawLayer(CLOUDS_HUD_LOWER_THIRD);
 	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
-	
+	drawLayer(CLOUDS_HUD_MAP);
+    
 	home.draw();
 	
 	ofPopMatrix();
@@ -130,10 +164,18 @@ void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
 }
 
 void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
-
-	for(int i = 0; i < layerSets[layer].size(); i++){
-		layerSets[layer][i]->start();
-	}
+    if( layer == CLOUDS_HUD_FULL ){
+        for( int i=0; i<layerSets.size(); i++ ){
+            for(int k = 0; k < layerSets[(CloudsHUDLayerSet)i].size(); i++){
+                layerSets[(CloudsHUDLayerSet)i][k]->start();
+            }
+        }
+    }
+    else{
+        for(int i = 0; i < layerSets[layer].size(); i++){
+            layerSets[layer][i]->start();
+        }
+    }
 }
 
 void CloudsHUDController::animateOff(){

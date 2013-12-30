@@ -148,7 +148,6 @@
 		17C0BDED18674BFA0082014A /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
 		17C0BDF81867542C0082014A /* levelSet.fs */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = levelSet.fs; sourceTree = "<group>"; };
 		17C0BDF91867542C0082014A /* levelSet.vs */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = levelSet.vs; sourceTree = "<group>"; };
-		17C0BDFA1867542C0082014A /* liquidNoise.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = liquidNoise.fs; sourceTree = "<group>"; };
 		4695E24B17512ACD003001E2 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		4695E24C17512ACD003001E2 /* ofxUI2DGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DGraph.h; sourceTree = "<group>"; };
 		4695E24D17512ACD003001E2 /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -476,7 +475,6 @@
 				17BC7DF51867DC5700F4E8D8 /* billboard.vs */,
 				17C0BDF81867542C0082014A /* levelSet.fs */,
 				17C0BDF91867542C0082014A /* levelSet.vs */,
-				17C0BDFA1867542C0082014A /* liquidNoise.fs */,
 			);
 			name = shaders;
 			path = ../../../../CloudsData/visualsystems/Colony/shaders;

@@ -37,8 +37,7 @@ void testApp::setup(){
 	receiver.setup( 12345 );
     
     mixer.setup(2, 44100, 512, 2);
-    mixer.setMusicVolume(1);
-	
+	mixer.showCompressor = true;
 	
 	//update questions
 	ofBuffer questionBuffer;
@@ -198,6 +197,17 @@ void testApp::draw(){
                                     player.getPlayer().getWidth()*.25,
                                     player.getPlayer().getHeight()*.25);
         }
+    }
+    if(mixer.showCompressor)
+    {
+        int r = ofMap(mixer.gain, 0.5, 1., 255, 0);
+        int g = ofMap(mixer.followgain, 0., 0.5, 0, 255);
+        ofSetColor(0, g, 0);
+        ofFill();
+        ofRect(ofGetWidth()*.75, ofGetHeight()*.05, 50, 50);
+        ofSetColor(r, 0, 0);
+        ofFill();
+        ofRect(ofGetWidth()*.85, ofGetHeight()*.05, 50, 50);
     }
 }
 
