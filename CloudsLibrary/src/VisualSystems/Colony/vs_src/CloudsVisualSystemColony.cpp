@@ -204,7 +204,6 @@ void CloudsVisualSystemColony::selfUpdate()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
-    
     //FIXME: This shouldn't be here, but it's the only way to draw stuff in 2d
     if(bDebug){
         img_debug.draw(0, 0, getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
@@ -239,7 +238,7 @@ void CloudsVisualSystemColony::selfDrawBackground()
                       getSharedRenderTarget().getHeight());
         levelSet.end();
     } else {
-        ofLog(OF_LOG_ERROR, "Colony : selfDrawBackground() being called before selfUpdate(). Skipping selfDrawBackground()");
+        ofLog(OF_LOG_ERROR, "Colony : selfDrawBackground() being called before fbos were allocated");
     };
 }
 
