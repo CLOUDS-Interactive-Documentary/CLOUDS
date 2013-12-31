@@ -71,6 +71,7 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     guiLooks->copyCanvasStyle(gui);
     guiLooks->copyCanvasProperties(gui);
     guiLooks->setName("LOOKS");
+    guiLooks->addToggle("Level Set BG", &levelSetBG);
     guiLooks->setWidgetFontSize(OFX_UI_FONT_SMALL);
     guiLooks->addSlider("Cell Floor Translusence", 0., 1., &translucenseCell);
     guiLooks->addSlider("Dish Floor Translusence", 0., 1., &translucenseDish);
@@ -204,6 +205,7 @@ void CloudsVisualSystemColony::selfDrawBackground()
     levelSet.setUniformTexture("grunge", grunge, 1);
     levelSet.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
     levelSet.setUniform1i("levelSet", levelSetMode);
+    levelSet.setUniform1i("levelSetBg", levelSetBG);
     levelSet.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
     levelSet.setUniform2f("imgRes", grunge.getWidth(), grunge.getHeight());
     levelSet.setUniform1f("translucenseCell", translucenseCell);
