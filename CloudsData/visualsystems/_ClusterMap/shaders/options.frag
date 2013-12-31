@@ -1,3 +1,4 @@
+
 uniform float percentOptionsRevealed;
 uniform int fadeIn;
 varying float optionPosition;

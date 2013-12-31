@@ -114,13 +114,13 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 					continue;
 				}
 				
-				n1.connectionMeshVertexIds.push_back( connectionMesh.getNumVertices() );
-				connectionMesh.addVertex(clip.networkPosition);
-				connectionMesh.addNormal(ofVec3f(0,0,0));
+//				n1.connectionMeshVertexIds.push_back( connectionMesh.getNumVertices() );
+//				connectionMesh.addVertex(clip.networkPosition);
+//				connectionMesh.addNormal(ofVec3f(0,0,0));
 				
-				n2.connectionMeshVertexIds.push_back( connectionMesh.getNumVertices() );
-				connectionMesh.addVertex(meta[j].networkPosition);
-				connectionMesh.addNormal(ofVec3f(0,0,0));
+//				n2.connectionMeshVertexIds.push_back( connectionMesh.getNumVertices() );
+//				connectionMesh.addVertex(meta[j].networkPosition);
+//				connectionMesh.addNormal(ofVec3f(0,0,0));
 
 				//create curved connection mesh
 				//naive simple spherical interpolation over 10 steps
@@ -134,8 +134,8 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 				arc.makeRotate(dirToStart,dirToDest);
 				
 				//handle
-				curveConnectionMesh.addColor(ofFloatColor(0,0));
-				curveConnectionMesh.addVertex(clip.networkPosition);
+				networkMesh.addColor(ofFloatColor(0,0));
+				networkMesh.addVertex(clip.networkPosition);
 				
 				int numSteps = 10;
 				for(int i = 0; i <= numSteps; i++){
@@ -146,20 +146,20 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 					float arcRad = ofLerp(radStart, radDest, stepPercent);
 					ofVec3f arcPoint = arcDir * arcRad + centroid;
 					
-					curveConnectionMesh.addColor(ofFloatColor(1,1));
-					curveConnectionMesh.addVertex(arcPoint);
+					networkMesh.addColor(ofFloatColor(1,1));
+					networkMesh.addVertex(arcPoint);
 				}
 				
 				//handle
-				curveConnectionMesh.addColor(ofFloatColor(0,0));
-				curveConnectionMesh.addVertex(meta[j].networkPosition);
+				networkMesh.addColor(ofFloatColor(0,0));
+				networkMesh.addVertex(meta[j].networkPosition);
 				
 			}
 		}
 	}
 	
-	connectionMesh.setMode(OF_PRIMITIVE_LINES);
-	curveConnectionMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+//	connectionMesh.setMode(OF_PRIMITIVE_LINES);
+	networkMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
 	traversalMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
 	optionsMeshNext.setMode(OF_PRIMITIVE_LINE_STRIP);
 	optionsMeshPrev.setMode(OF_PRIMITIVE_LINE_STRIP);
@@ -554,6 +554,7 @@ void CloudsVisualSystemClusterMap::selfSetup(){
 void CloudsVisualSystemClusterMap::reloadShaders(){
 	
 	cout << "reload shader" << endl;
+	
 	ofDisableArbTex();
 	sprite.loadImage(getVisualSystemDataPath() + "images/dot.png");
 //	nodeSpriteBasic.loadImage(getVisualSystemDataPath() + "images/dot_no_ring.png");
@@ -561,8 +562,8 @@ void CloudsVisualSystemClusterMap::reloadShaders(){
 
 	traversalShader.load(getVisualSystemDataPath() + "shaders/traversal");
 	optionsShader.load(getVisualSystemDataPath() + "shaders/options");
-	lineShader.load(getVisualSystemDataPath() +"shaders/attenuatelines");
-	clusterShader.load(getVisualSystemDataPath() + "shaders/cluster");
+	networkShader.load(getVisualSystemDataPath() +"shaders/network");
+	nodesShader.load(getVisualSystemDataPath() + "shaders/nodes");
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -665,18 +666,19 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 void CloudsVisualSystemClusterMap::selfDraw(){
 
 	glDisable(GL_DEPTH_TEST);
-	
+
 	ofPushStyle();
+	ofPushMatrix();
+	ofEnableAlphaBlending();
 	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+	ofScale(meshExpansion,meshExpansion,meshExpansion);
 	
 	////POINTS
-	ofPushStyle();
-	clusterShader.begin();
-	clusterShader.setUniformTexture("tex", sprite, 1);
-	clusterShader.setUniform1f("expansion", meshExpansion);
-	clusterShader.setUniform1f("minSize", pointSize);
-	clusterShader.setUniform3f("attractor", 0, 0, 0);
-	clusterShader.setUniform1f("radius", 300.);
+	nodesShader.begin();
+	nodesShader.setUniformTexture("tex", sprite, 1);
+	nodesShader.setUniform1f("minSize", pointSize);
+	nodesShader.setUniform3f("attractor", 0, 0, 0);
+	nodesShader.setUniform1f("radius", 300.);
 	
 	ofEnablePointSprites();
 	ofDisableArbTex();
@@ -684,39 +686,30 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	ofEnableArbTex();
 	ofDisablePointSprites();
 
-	clusterShader.end();
-	
-	ofPopStyle();
+	nodesShader.end();
 	/////END POINTS
 	
 	///NETWORK LINES
-	ofPushStyle();
-	lineShader.begin();
-	lineShader.setUniform1f("focalPlane", powf(lineFocalDistance,2));
-	lineShader.setUniform1f("focalRange", powf(lineFocalRange,2));
-	lineShader.setUniform1f("lineFade", lineAlpha);
-	lineShader.setUniform1f("expansion", meshExpansion);
-	lineShader.setUniform3f("attractor", trailHead.x, trailHead.y, trailHead.z);
-	lineShader.setUniform1f("radius", 300.);
+	networkShader.begin();
+	networkShader.setUniform1f("focalPlane", powf(lineFocalDistance,2));
+	networkShader.setUniform1f("focalRange", powf(lineFocalRange,2));
+	networkShader.setUniform1f("lineFade", lineAlpha);
+	networkShader.setUniform3f("attractor", trailHead.x, trailHead.y, trailHead.z);
+	networkShader.setUniform1f("radius", 300.);
+	networkShader.setUniform3f("lineColor", 100/255., 150/255., 200/255.);
 	
-	ofSetColor(100, 150, 200);
-	//connectionMesh.draw();
-
-	lineShader.end();
+	networkMesh.draw();
 	
-	ofPopStyle();
+	networkShader.end();
 	///END NETWORK LINES
 	
 	//////TRAVERSAL
-	ofPushMatrix();
-	ofEnableAlphaBlending();
-	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
-	ofScale(meshExpansion,meshExpansion,meshExpansion);
+
 	traversalShader.begin();
 	traversalShader.setUniform1f("percentTraverseRevealed", percentToDest);
 	traversalMesh.draw();
 	traversalShader.end();
-	ofPopMatrix();
+
 	///END TRAVERSAL
 	
 	
@@ -736,14 +729,8 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	/////END OPTIONS
 	
 	//TEST CURVE MESH
-	ofPushMatrix();
-	ofEnableAlphaBlending();
-	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
-	ofScale(meshExpansion,meshExpansion,meshExpansion);
-	curveConnectionMesh.draw();
-	ofPopMatrix();	
-	//END TEST CURVE MESH
-	
+
+	ofPopMatrix();
 	ofPopStyle();
 
 }

@@ -195,7 +195,7 @@ void CloudsVisualSystemExampleMPMFluid::selfUpdate()
     }
     parSpeed /= particles.size();
     parSpeed = (float)pow(parSpeed, 2);
-    cout<<parSpeed<<endl;
+//    cout<<parSpeed<<endl;
     
     totalSpeed.value(ofMap(parSpeed, 0, 0.5, 0, 0.8, true));
     
@@ -210,7 +210,7 @@ void CloudsVisualSystemExampleMPMFluid::selfUpdate()
         volumeControl[i].value(volume[i]);
     }
     
->>>>>>> a6f83df86e291f21b7b873771dd54a5652ad5cca
+
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -293,7 +293,7 @@ void CloudsVisualSystemExampleMPMFluid:: selfInteractionMoved(CloudsInteractionE
     if (currentPlayers.find(args.playerId) == currentPlayers.end()) {
         fluid.addTouch(args.playerId, args.position);
         currentPlayers[args.playerId] = 0;
-        cout<<"Adding : "<< args.playerId<<endl;
+//        cout<<"Adding : "<< args.playerId<<endl;
     }
     else{
 //        cout<<"Updating : "<< args.playerId<<endl;
@@ -317,7 +317,7 @@ void CloudsVisualSystemExampleMPMFluid:: selfInteractionEnded(CloudsInteractionE
         
         if (it->first == args.playerId) {
             currentPlayers.erase(it);
-            cout<<"removing from map "<<it->first<<endl;
+//            cout<<"removing from map "<<it->first<<endl;
          
         }
     }

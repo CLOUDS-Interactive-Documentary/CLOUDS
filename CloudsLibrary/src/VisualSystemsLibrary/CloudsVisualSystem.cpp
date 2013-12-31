@@ -9,32 +9,32 @@
 #endif
 
 
-#define GLSL(version, shader)  "#version " #version "\n" #shader
-
-static const char*
-BackgroundVert =
-GLSL(120,
-varying vec2 oTexCoord;
-void main()
-{
-	oTexCoord = gl_MultiTexCoord0.xy;
-	gl_Position = ftransform();
-});
-
-
-static const char*
-BackgroundFrag =
-GLSL(120,
-	 
-uniform sampler2DRect image;
-uniform vec3 colorOne;
-uniform vec3 colorTwo;
-varying vec2 oTexCoord;
-
-void main()
-{
-	gl_FragColor = vec4(mix(colorTwo,colorOne, texture2DRect(image,oTexCoord).r), 1.0);
-});
+//#define GLSL(version, shader)  "#version " #version "\n" #shader
+//
+//static const char*
+//BackgroundVert =
+//GLSL(140,
+//varying vec2 oTexCoord;
+//void main()
+//{
+//	oTexCoord = gl_MultiTexCoord0.xy;
+//	gl_Position = ftransform();
+//});
+//
+//
+//static const char*
+//BackgroundFrag =
+//GLSL(140,
+//	 
+//uniform sampler2DRect image;
+//uniform vec3 colorOne;
+//uniform vec3 colorTwo;
+//varying vec2 oTexCoord;
+//
+//void main()
+//{
+//	gl_FragColor = vec4(mix(colorTwo,colorOne, texture2DRect(image,oTexCoord).r), 1.0);
+//});
 
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
@@ -80,10 +80,10 @@ CloudsRGBDVideoPlayer& CloudsVisualSystem::getRGBDVideoPlayer(){
 void CloudsVisualSystem::loadBackgroundShader(){
 	backgroundGradientBar.loadImage(GetCloudsDataPath() + "backgrounds/bar.png");
 	backgroundGradientCircle.loadImage(GetCloudsDataPath() + "backgrounds/circle.png");
-	backgroundShader.setupShaderFromSource(GL_VERTEX_SHADER, BackgroundVert);
-	backgroundShader.setupShaderFromSource(GL_FRAGMENT_SHADER, BackgroundFrag);
-	backgroundShader.linkProgram();
-	
+//	backgroundShader.setupShaderFromSource(GL_VERTEX_SHADER, BackgroundVert);
+//	backgroundShader.setupShaderFromSource(GL_FRAGMENT_SHADER, BackgroundFrag);
+//	backgroundShader.linkProgram();
+	backgroundShader.load(GetCloudsDataPath() + "shaders/background");
 	backgroundShaderLoaded = true;
 }
 

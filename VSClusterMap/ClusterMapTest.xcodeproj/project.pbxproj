@@ -27,12 +27,6 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		E703CCC4185C237600547738 /* attenuatelines.frag in Sources */ = {isa = PBXBuildFile; fileRef = E703CCBE185C237600547738 /* attenuatelines.frag */; };
-		E703CCC5185C237600547738 /* attenuatelines.vert in Sources */ = {isa = PBXBuildFile; fileRef = E703CCBF185C237600547738 /* attenuatelines.vert */; };
-		E703CCC6185C237600547738 /* cluster.frag in Sources */ = {isa = PBXBuildFile; fileRef = E703CCC0185C237600547738 /* cluster.frag */; };
-		E703CCC7185C237600547738 /* cluster.vert in Sources */ = {isa = PBXBuildFile; fileRef = E703CCC1185C237600547738 /* cluster.vert */; };
-		E703CCC8185C237600547738 /* gaussianblur.frag in Sources */ = {isa = PBXBuildFile; fileRef = E703CCC2185C237600547738 /* gaussianblur.frag */; };
-		E703CCC9185C237600547738 /* gaussianblur.vert in Sources */ = {isa = PBXBuildFile; fileRef = E703CCC3185C237600547738 /* gaussianblur.vert */; };
 		E704D01417B3BB3600F77528 /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E704D00C17B3BB3600F77528 /* CloudsRGBDCamera.cpp */; };
 		E704D01517B3BB3600F77528 /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E704D00E17B3BB3600F77528 /* CloudsRGBDVideoPlayer.cpp */; };
 		E704D01617B3BB3600F77528 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E704D01017B3BB3600F77528 /* CloudsVisualSystem.cpp */; };
@@ -122,10 +116,6 @@
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7E5E36B1812404300CA4196 /* CloudsClusterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E3611812404300CA4196 /* CloudsClusterNode.cpp */; };
 		E7E5E36C1812404300CA4196 /* CloudsVisualSystemClusterMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E3631812404300CA4196 /* CloudsVisualSystemClusterMap.cpp */; };
-		E7F051241872492200017521 /* traversal.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7F051221872492200017521 /* traversal.frag */; };
-		E7F051251872492200017521 /* traversal.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7F051231872492200017521 /* traversal.vert */; };
-		E7F051291872654400017521 /* options.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7F051271872654400017521 /* options.frag */; };
-		E7F0512A1872654400017521 /* options.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7F051281872654400017521 /* options.vert */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,10 +200,10 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
-		E703CCBE185C237600547738 /* attenuatelines.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.frag; sourceTree = "<group>"; };
-		E703CCBF185C237600547738 /* attenuatelines.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.vert; sourceTree = "<group>"; };
-		E703CCC0185C237600547738 /* cluster.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cluster.frag; sourceTree = "<group>"; };
-		E703CCC1185C237600547738 /* cluster.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cluster.vert; sourceTree = "<group>"; };
+		E703CCBE185C237600547738 /* network.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = network.frag; sourceTree = "<group>"; };
+		E703CCBF185C237600547738 /* network.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = network.vert; sourceTree = "<group>"; };
+		E703CCC0185C237600547738 /* nodes.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = nodes.frag; sourceTree = "<group>"; };
+		E703CCC1185C237600547738 /* nodes.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = nodes.vert; sourceTree = "<group>"; };
 		E703CCC2185C237600547738 /* gaussianblur.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.frag; sourceTree = "<group>"; };
 		E703CCC3185C237600547738 /* gaussianblur.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.vert; sourceTree = "<group>"; };
 		E704D00C17B3BB3600F77528 /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
@@ -487,6 +477,8 @@
 		E7F051231872492200017521 /* traversal.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = traversal.vert; sourceTree = "<group>"; };
 		E7F051271872654400017521 /* options.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = options.frag; sourceTree = "<group>"; };
 		E7F051281872654400017521 /* options.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = options.vert; sourceTree = "<group>"; };
+		E7F0512C18734EE000017521 /* background.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; name = background.frag; path = ../CloudsData/shaders/background.frag; sourceTree = "<group>"; };
+		E7F0512D18734EE100017521 /* background.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; name = background.vert; path = ../CloudsData/shaders/background.vert; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -721,10 +713,10 @@
 				E7F051281872654400017521 /* options.vert */,
 				E7F051221872492200017521 /* traversal.frag */,
 				E7F051231872492200017521 /* traversal.vert */,
-				E703CCBE185C237600547738 /* attenuatelines.frag */,
-				E703CCBF185C237600547738 /* attenuatelines.vert */,
-				E703CCC0185C237600547738 /* cluster.frag */,
-				E703CCC1185C237600547738 /* cluster.vert */,
+				E703CCBE185C237600547738 /* network.frag */,
+				E703CCBF185C237600547738 /* network.vert */,
+				E703CCC0185C237600547738 /* nodes.frag */,
+				E703CCC1185C237600547738 /* nodes.vert */,
 				E703CCC2185C237600547738 /* gaussianblur.frag */,
 				E703CCC3185C237600547738 /* gaussianblur.vert */,
 			);
@@ -948,6 +940,8 @@
 		E7176E3717D3DAFE00C8DC38 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E7F0512C18734EE000017521 /* background.frag */,
+				E7F0512D18734EE100017521 /* background.vert */,
 				E7D483681860C5D000BE9BF8 /* Input */,
 				E704D00A17B3BB3600F77528 /* VisualSystemsLibrary */,
 				E7E5E31C1812404300CA4196 /* _ClusterMap */,
@@ -1460,18 +1454,8 @@
 				E7E5E36C1812404300CA4196 /* CloudsVisualSystemClusterMap.cpp in Sources */,
 				185CE9B5184A5FC800F43977 /* ofxFTGLFont.cpp in Sources */,
 				185CE9B6184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp in Sources */,
-				E703CCC4185C237600547738 /* attenuatelines.frag in Sources */,
-				E703CCC5185C237600547738 /* attenuatelines.vert in Sources */,
-				E703CCC6185C237600547738 /* cluster.frag in Sources */,
-				E703CCC7185C237600547738 /* cluster.vert in Sources */,
-				E703CCC8185C237600547738 /* gaussianblur.frag in Sources */,
-				E703CCC9185C237600547738 /* gaussianblur.vert in Sources */,
 				E7D483701860C5D000BE9BF8 /* CloudsInput.cpp in Sources */,
 				E7D483721860C5D000BE9BF8 /* CloudsInputMouse.cpp in Sources */,
-				E7F051241872492200017521 /* traversal.frag in Sources */,
-				E7F051251872492200017521 /* traversal.vert in Sources */,
-				E7F051291872654400017521 /* options.frag in Sources */,
-				E7F0512A1872654400017521 /* options.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
