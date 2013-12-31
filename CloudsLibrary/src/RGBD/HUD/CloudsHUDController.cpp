@@ -200,8 +200,6 @@ ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName, s
             // make a label
             CloudsHUDLabel *newLabel = new CloudsHUDLabel();
             newLabel->setup( newLayout, textMesh->bounds );
-            hudLabelList.push_back( newLabel );
-            
             hudLabelMap[layerName] = newLabel;
             
             return newLayout;
@@ -258,8 +256,8 @@ void CloudsHUDController::draw(){
 	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
 	drawLayer(CLOUDS_HUD_MAP);
     
-    for( int i=0; i<hudLabelList.size(); i++ ){
-        hudLabelList[i]->draw();
+    for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
+        (it->second)->draw();
     }
     
 	home.draw();

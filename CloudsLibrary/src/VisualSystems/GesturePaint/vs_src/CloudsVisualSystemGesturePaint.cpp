@@ -369,7 +369,7 @@ void CloudsVisualSystemGesturePaint::selfUpdate(){
     for (it = playerDepositPoints.begin(); it != playerDepositPoints.end(); it++) {
         it->second.clear();
     }
-    
+
 	ofPopStyle();
 	
 	canvasdst.end();
@@ -465,7 +465,7 @@ ofVec2f ofHermiteInterpolate(ofVec2f y0, ofVec2f y1, ofVec2f y2, ofVec2f y3, flo
 }
 
 void CloudsVisualSystemGesturePaint::selfInteractionMoved(CloudsInteractionEventArgs& args){
-    
+
     playerHistoryMap[args.playerId].push_back(ofVec2f(args.position.x,args.position.y));
     
 	vector<ofVec2f> splineHandles;
@@ -501,9 +501,11 @@ void CloudsVisualSystemGesturePaint::selfInteractionMoved(CloudsInteractionEvent
 	}
     
 	if(playerHistoryMap[args.playerId].size() > 4){
-		playerHistoryMap.erase(playerHistoryMap.begin());
+		playerHistoryMap[args.playerId].erase(playerHistoryMap[args.playerId].begin());
 	}
 }
+
+
 void CloudsVisualSystemGesturePaint:: selfInteractionStarted(CloudsInteractionEventArgs& args){}
 void CloudsVisualSystemGesturePaint::selfInteractionDragged(CloudsInteractionEventArgs& args){}
 void CloudsVisualSystemGesturePaint:: selfInteractionEnded(CloudsInteractionEventArgs& args){}

@@ -75,7 +75,7 @@ class CloudsHUDController {
                             *ProjectExampleTextboxRight,
                             *ProjectExampleTextBoxTop;
     
-    vector<CloudsHUDLabel*>         hudLabelList;
+//    vector<CloudsHUDLabel*>         hudLabelList;
     map<string, CloudsHUDLabel*>    hudLabelMap;
     
 };

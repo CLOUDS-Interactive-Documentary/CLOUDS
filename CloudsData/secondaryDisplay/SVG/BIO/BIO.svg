@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Basic//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd">
-<svg version="1.1" baseProfile="basic" id="Layer_1"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1920px" height="1080px"
-	 viewBox="0 0 1920 1080" xml:space="preserve">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="1920px" height="1080px" viewBox="0 0 1920 1080" enable-background="new 0 0 1920 1080" xml:space="preserve">
 <g id="BOX_x5F_INFO">
-	<rect x="47.875" y="882.528" opacity="0.16" width="1824.875" height="150"/>
+	<rect x="47.875" y="882.528" opacity="0.16" enable-background="new    " width="1824.875" height="150"/>
 </g>
 <g id="BOX_x5F_DETAILS">
-	<rect x="46.438" y="881.229" fill="#FFFFFF" width="2.801" height="2.803"/>
+	<rect x="46.438" y="881.229" fill="#FFFFFF" width="2.801" height="2.806"/>
 	<rect x="46.438" y="1030.804" fill="#FFFFFF" width="2.801" height="2.802"/>
-	<rect x="1871.164" y="881.229" fill="#FFFFFF" width="2.802" height="2.803"/>
+	<rect x="1871.164" y="881.229" fill="#FFFFFF" width="2.802" height="2.806"/>
 	<rect x="1871.164" y="1031.068" fill="#FFFFFF" width="2.802" height="2.802"/>
 	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="47.812" y1="882" x2="47.812" y2="1033"/>
 	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1872.812" y1="882" x2="1872.812" y2="1033"/>
@@ -18,15 +17,19 @@
 	<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1494.684,1051.289"/>
 	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="48.312" y1="1032.5" x2="1873.312" y2="1032.5"/>
 </g>
-<g id="BOX_x5F_TITLE">
-	<rect x="657.686" y="908.92" opacity="0.36" fill="#101010" width="362.884" height="38.965"/>
+<g id="TEXTBOX_x5F_TITLE_1_" opacity="0">
+	<rect id="_x3C_Path_x3E__4_" x="670.495" y="909.656" fill="none" width="336.062" height="14.25"/>
 </g>
-<g id="BOX_x5F_LOC">
-	<rect x="657.686" y="962.848" opacity="0.36" fill="#101010" width="266.811" height="40.36"/>
+<g id="TEXTBOX_x5F_LOC_1_" opacity="0">
+	<rect id="_x3C_Path_x3E__3_" x="670.479" y="941.027" fill="none" width="238.189" height="14.25"/>
 </g>
-<rect id="TEXTBOX_x5F_TITLE" x="670.495" y="922.297" opacity="0" fill="none" width="336.063" height="14.25"/>
-<rect id="TEXTBOX_x5F_LOC" x="670.479" y="976.807" opacity="0" fill="none" width="238.189" height="14.25"/>
-<rect id="TEXTBOX_x5F_FIRSTNAME" x="1099.164" y="908.967" opacity="0" fill="none" width="740.35" height="16.312"/>
-<rect id="TEXTBOX_x5F_LASTNAME" x="85.249" y="909.656" opacity="0" fill="none" width="541.944" height="31.452"/>
-<rect id="TEXTBOX_x5F_BIO" x="84.749" y="960.74" opacity="0" fill="none" width="541.777" height="43.201"/>
+<g id="TEXTBOX_x5F_BIO" opacity="0">
+	<rect id="_x3C_Path_x3E__2_" x="1099.164" y="909.656" fill="none" width="740.35" height="16.312"/>
+</g>
+<g id="TEXTBOX_x5F_FIRSTNAME_2_" opacity="0">
+	<rect id="_x3C_Path_x3E__1_" x="85.249" y="909.656" fill="none" width="541.944" height="31.452"/>
+</g>
+<g id="TEXTBOX_x5F_LASTNAME_1_" opacity="0">
+	<rect id="_x3C_Path_x3E_" x="84.749" y="960.74" fill="none" width="541.777" height="43.201"/>
+</g>
 </svg>

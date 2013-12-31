@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Basic//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd">
-<svg version="1.1" baseProfile="basic" id="Layer_1"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1920px" height="1080px"
-	 viewBox="0 0 1920 1080" xml:space="preserve">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="1920px" height="1080px" viewBox="0 0 1920 1080" enable-background="new 0 0 1920 1080" xml:space="preserve">
 <g id="BOX_x5F_INFO">
-	<rect x="47.875" y="882.528" opacity="0.16" width="1824.875" height="150"/>
+	<rect x="47.875" y="882.528" opacity="0.16" enable-background="new    " width="1824.875" height="150"/>
 </g>
 <g id="BOX_x5F_DETAILS">
 	<rect x="46.653" y="881.326" fill="#FFFFFF" width="2.802" height="2.802"/>
@@ -17,13 +16,16 @@
 	<rect x="46.653" y="1031.465" fill="#FFFFFF" width="2.802" height="2.802"/>
 	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="47.813" y1="882.419" x2="47.813" y2="1033.419"/>
 </g>
-<g id="BOX_x5F_ARTIST">
-	<rect x="1004.105" y="909.396" opacity="0.36" fill="#101010" width="370.384" height="38.966"/>
-</g>
 <g id="BOX_x5F_VIDEO">
 	<rect x="308.799" y="88.046" fill="none" width="1280" height="720"/>
 </g>
-<rect id="TEXTBOX_x5F_TITLE" x="85.093" y="909.625" opacity="0" fill="none" width="860.763" height="31.352"/>
-<rect id="TEXTBOX_x5F_ARTIST" x="1017.479" y="922.322" opacity="0" fill="none" width="341.519" height="14.213"/>
-<rect id="TEXTBOX_x5F_DESC" x="1417.885" y="907.814" opacity="0" fill="none" width="421.628" height="17.464"/>
+<g id="TEXTBOX_x5F_TITLE_1_" opacity="0">
+	<rect x="85.049" y="909.594" opacity="0" fill="none" width="492.925" height="50.184"/>
+</g>
+<g id="TEXTBOX_x5F_ARTIST_1_" opacity="0">
+	<rect id="_x3C_Path_x3E__1_" x="654.592" y="909.609" fill="none" width="341.521" height="14.213"/>
+</g>
+<g id="TEXTBOX_x5F_DESC_1_" opacity="0">
+	<rect id="_x3C_Path_x3E__2_" x="1099.164" y="909.609" fill="none" width="740.35" height="16.312"/>
+</g>
 </svg>

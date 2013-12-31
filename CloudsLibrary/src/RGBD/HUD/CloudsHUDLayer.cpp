@@ -81,8 +81,8 @@ void CloudsHUDLayer::update(){
 		percentComplete.y = ofMap(totalpercent,startPercent.y,1.,0,1.0,true);
         
         if( !bIsOpen ){
-            percentComplete.x = 1. - percentComplete.x;
-            percentComplete.y = 1. - percentComplete.y;
+            percentComplete.x = 1.0 - percentComplete.x;
+            percentComplete.y = 1.0 - percentComplete.y;
         }
 
 		drawRect = ofRectangle(startPoint.x,startPoint.y,0,0);
@@ -91,7 +91,11 @@ void CloudsHUDLayer::update(){
 		p.y = ofLerp(startPoint.y, endPoint.y, percentComplete.y);
 		
 		drawRect.growToInclude(p);
-		animating = percentComplete.x != 1.0 || percentComplete.y != 1.0;
+        if( bIsOpen ){
+            animating = percentComplete.x != 1.0 || percentComplete.y != 1.0;
+        }else{
+            animating = percentComplete.x != 0.0 || percentComplete.y != 0.0;
+        }
 		lastUpdateTime = time;
 	}
 }
