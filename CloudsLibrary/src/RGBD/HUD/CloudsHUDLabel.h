@@ -11,12 +11,14 @@
 #include "ofxFTGLSimpleLayout.h"
 
 class CloudsHUDLabel {
-public:
-
-    void draw(){
-        layout->drawString("TEST STRING", bounds.x, bounds.y + layout->getLineHeight() );
-    };
+  public:
+    CloudsHUDLabel();
+    void setup( ofxFTGLSimpleLayout *textLayout, ofRectangle textBounds );
+    void draw();
+    
+    void setText( string newText );
     
     ofxFTGLSimpleLayout *layout;
     ofRectangle bounds;
+    string  text;
 };

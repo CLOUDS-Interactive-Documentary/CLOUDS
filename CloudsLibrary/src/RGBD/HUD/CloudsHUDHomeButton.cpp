@@ -19,15 +19,16 @@ CloudsHUDHomeButton::CloudsHUDHomeButton(){
     buttonSize.set(200, 200);
     
     bIsHovering = false;
+    bWasOpened = false;
 }
 
 void CloudsHUDHomeButton::setup(){
     homeLocation = ofVec2f(100 - 84, ofGetHeight()-300 + 60);
     
-    rolloverFrames      = loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/01_IntroHover/" );
-    rolloverOutFrames   = loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/02a_IntroLoopBack/" );
-    activeIntroFrames   = loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/02b_IntroToActive/" );
-    activeLoopFrames    = loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/03_Active/" );
+    rolloverTextures[CLOUDS_HUD_HOVER_ROLLOVER]     = loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/01_IntroHover/" );;
+    rolloverTextures[CLOUDS_HUD_HOVER_OUTRO]        = loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/02a_IntroLoopBack/" );;
+    rolloverTextures[CLOUDS_HUD_HOVER_ACTIVE_INTRO] = loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/02b_IntroToActive/" );;
+    rolloverTextures[CLOUDS_HUD_HOVER_ACTIVE_LOOP]  = loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/03_Active/" );;
 }
 
 vector<ofTexture*> CloudsHUDHomeButton::loadFramesDir( string dirPath ){
@@ -60,8 +61,10 @@ vector<ofTexture*> CloudsHUDHomeButton::loadFramesDir( string dirPath ){
 }
 
 void CloudsHUDHomeButton::update(){
+    lastFrameTime = ofGetElapsedTimef();
+    
 	homeLocation = ofVec2f(100 - 84, ofGetHeight()-300 + 57);
-    hitBox.set( homeLocation, buttonSize.x, buttonSize.y );
+//    hitBox.set( homeLocation, buttonSize.x, buttonSize.y );
     
     bool hit = hitTest( GetCloudsInputX(), GetCloudsInputY() );
     if( !bIsHovering && hit ){
@@ -77,15 +80,30 @@ void CloudsHUDHomeButton::update(){
     if( bIsHovering ){
         float elapsed = ofGetElapsedTimef() - hoverStartTime;
         float elapsedFrames = targetFps * elapsed;
+        playhead = elapsedFrames;
+        
+//        cout << "playhead :: " << floor(playhead) << " - " << (int)currentState << endl;
         
         if( currentState == CLOUDS_HUD_HOVER_ROLLOVER ){
-            
+            if( playhead >= rolloverTextures[CLOUDS_HUD_HOVER_ROLLOVER].size() ){
+                currentState = CLOUDS_HUD_HOVER_ACTIVE_INTRO;
+                hoverStartTime = ofGetElapsedTimef();
+                playhead = 0;
+            }
         }else if( currentState == CLOUDS_HUD_HOVER_OUTRO ){
             
         }else if( currentState == CLOUDS_HUD_HOVER_ACTIVE_INTRO ){
-            
-        }else if( currentState == CLOUDS_HUD_HOVER_ACTIVE ){
-            
+            if( playhead >= rolloverTextures[CLOUDS_HUD_HOVER_ACTIVE_INTRO].size() ){
+                currentState = CLOUDS_HUD_HOVER_ACTIVE_LOOP;
+                hoverStartTime = ofGetElapsedTimef();
+                playhead = 0;
+                
+                bWasOpened = true;
+            }
+        }else if( currentState == CLOUDS_HUD_HOVER_ACTIVE_LOOP ){
+            if( playhead >= rolloverTextures[CLOUDS_HUD_HOVER_ACTIVE_LOOP].size() ){
+                hoverStartTime = ofGetElapsedTimef();
+            }
         }
         
         
@@ -101,19 +119,15 @@ void CloudsHUDHomeButton::update(){
 void CloudsHUDHomeButton::rollover(){
     currentState = CLOUDS_HUD_HOVER_ROLLOVER;
     hoverStartTime = ofGetElapsedTimef();
-    
-    cout << "HUD ROLLOVER " << endl;
 }
 
 void CloudsHUDHomeButton::rollout(){
     currentState = CLOUDS_HUD_HOVER_IDLE;
     playhead = 0;
-    
-    cout << "HUD ROLLOUT" << endl;
 }
 
 bool CloudsHUDHomeButton::hitTest(float xPos, float yPos){
-    return hitBox.inside( xPos, yPos );
+    return bounds.inside( xPos, yPos );
 }
 
 bool CloudsHUDHomeButton::hitTest(ofPoint mousePos){
@@ -123,26 +137,33 @@ bool CloudsHUDHomeButton::hitTest(ofPoint mousePos){
 void CloudsHUDHomeButton::draw(){
     ofPushMatrix();{
         
-        ofTranslate( homeLocation );
-        
+//        ofTranslate( homeLocation );
+        /*
         if( currentState == CLOUDS_HUD_HOVER_IDLE ){
             rolloverFrames[0]->draw(0,0);
         }else if( currentState == CLOUDS_HUD_HOVER_ROLLOVER ){
-            playhead = floor( ofClamp( playhead, 0, rolloverFrames.size()-1) );
-            rolloverFrames[playhead]->draw(0,0);
+            playhead = ofClamp( playhead, 0, rolloverFrames.size()-1);
+            rolloverFrames[floor(playhead)]->draw(0,0);
         }
         else if( currentState == CLOUDS_HUD_HOVER_OUTRO ){
-            playhead = floor( ofClamp( playhead, 0, rolloverOutFrames.size()-1) );
-            rolloverOutFrames[playhead]->draw(0,0);
+            playhead = ofClamp( playhead, 0, rolloverOutFrames.size()-1);
+            rolloverOutFrames[floor(playhead)]->draw(0,0);
         }
         else if( currentState == CLOUDS_HUD_HOVER_ACTIVE_INTRO ){
-            playhead = floor( ofClamp( playhead, 0, activeIntroFrames.size()-1) );
-            activeIntroFrames[playhead]->draw(0,0);
+            playhead = ofClamp( playhead, 0, activeIntroFrames.size()-1);
+            activeIntroFrames[floor(playhead)]->draw(0,0);
         }
-        else if( currentState == CLOUDS_HUD_HOVER_ACTIVE ){
-            playhead = floor( ofClamp( playhead, 0, activeLoopFrames.size()-1) );
-            activeLoopFrames[playhead]->draw(0,0);
+        else if( currentState == CLOUDS_HUD_HOVER_ACTIVE_LOOP ){
+            playhead = ofClamp( playhead, 0, activeLoopFrames.size()-1);
+        }*/
+        
+        if( currentState == CLOUDS_HUD_HOVER_IDLE ){
+            rolloverTextures[CLOUDS_HUD_HOVER_ROLLOVER][0]->draw( bounds );
+        }else{
+            playhead = ofClamp( playhead, 0, rolloverTextures[currentState].size()-1);
+            rolloverTextures[currentState][floor(playhead)]->draw( bounds );
         }
+        
         
 	}ofPopMatrix();
 }

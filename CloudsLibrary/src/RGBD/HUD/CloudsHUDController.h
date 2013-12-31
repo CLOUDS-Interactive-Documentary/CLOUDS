@@ -56,8 +56,10 @@ class CloudsHUDController {
 	CloudsHUDHomeButton home;
 	
   protected:
+    bool    bIsHudOpen;
+    
     void drawLayer(CloudsHUDLayerSet layer);
-    ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName );
+    ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath );
     
     vector<ofxFTGLFont*>    tempFontList;
     ofxFTGLSimpleLayout     *BylineBodyCopyTextBox,
@@ -73,7 +75,9 @@ class CloudsHUDController {
                             *ProjectExampleTextboxRight,
                             *ProjectExampleTextBoxTop;
     
-    vector<CloudsHUDLabel>  hudLabelList;
+//    vector<CloudsHUDLabel*>         hudLabelList;
+    map<string, CloudsHUDLabel*>    hudLabelMap;
+    
 };
 
 

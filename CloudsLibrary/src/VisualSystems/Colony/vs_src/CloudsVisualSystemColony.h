@@ -51,9 +51,9 @@ public:
     
 private:
     
-    /*  SUCH PARAMS */
+    /* SUCH PARAMS */
     cellParams params;
-    bool levelSetMode;
+    bool levelSetMode, levelSetBG;
     int numInitialCells;
     float translucenseCell, translucenseDish;
     ofVec4f kernelColor_high, kernelColor_low;
@@ -65,7 +65,7 @@ private:
     ofVboMesh   vbo;
     
     /* WOW VIDEO */
-    ofFbo fbo_main, fbo_debug;
+    ofFbo fbo_main;
     ofTexture sprite, grunge;
     ofShader    levelSet;
     ofShader    billboard;
@@ -86,4 +86,8 @@ private:
     
     void clear();
     void populate();
+    
+    /* VERY DEBUG */
+    ofImage img_debug;
+
 };

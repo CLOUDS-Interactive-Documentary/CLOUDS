@@ -12,7 +12,7 @@
 Astrolabe::Astrolabe()
 {
 	adoptedVbo = NULL;
-	ease = &easesine;
+	ease = &easelinear;
 }
 Astrolabe::~Astrolabe()
 {
