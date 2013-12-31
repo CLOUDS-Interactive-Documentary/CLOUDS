@@ -122,6 +122,10 @@
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7E5E36B1812404300CA4196 /* CloudsClusterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E3611812404300CA4196 /* CloudsClusterNode.cpp */; };
 		E7E5E36C1812404300CA4196 /* CloudsVisualSystemClusterMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E3631812404300CA4196 /* CloudsVisualSystemClusterMap.cpp */; };
+		E7F051241872492200017521 /* traversal.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7F051221872492200017521 /* traversal.frag */; };
+		E7F051251872492200017521 /* traversal.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7F051231872492200017521 /* traversal.vert */; };
+		E7F051291872654400017521 /* options.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7F051271872654400017521 /* options.frag */; };
+		E7F0512A1872654400017521 /* options.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7F051281872654400017521 /* options.vert */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -479,6 +483,10 @@
 		E7E5E3621812404300CA4196 /* CloudsClusterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClusterNode.h; sourceTree = "<group>"; };
 		E7E5E3631812404300CA4196 /* CloudsVisualSystemClusterMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemClusterMap.cpp; sourceTree = "<group>"; };
 		E7E5E3641812404300CA4196 /* CloudsVisualSystemClusterMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemClusterMap.h; sourceTree = "<group>"; };
+		E7F051221872492200017521 /* traversal.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = traversal.frag; sourceTree = "<group>"; };
+		E7F051231872492200017521 /* traversal.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = traversal.vert; sourceTree = "<group>"; };
+		E7F051271872654400017521 /* options.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = options.frag; sourceTree = "<group>"; };
+		E7F051281872654400017521 /* options.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = options.vert; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -709,6 +717,10 @@
 		E703CCBD185C237600547738 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				E7F051271872654400017521 /* options.frag */,
+				E7F051281872654400017521 /* options.vert */,
+				E7F051221872492200017521 /* traversal.frag */,
+				E7F051231872492200017521 /* traversal.vert */,
 				E703CCBE185C237600547738 /* attenuatelines.frag */,
 				E703CCBF185C237600547738 /* attenuatelines.vert */,
 				E703CCC0185C237600547738 /* cluster.frag */,
@@ -1245,8 +1257,8 @@
 		E7D483681860C5D000BE9BF8 /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				E7D483691860C5D000BE9BF8 /* CloudsInput.cpp */,
 				E7D4836A1860C5D000BE9BF8 /* CloudsInput.h */,
+				E7D483691860C5D000BE9BF8 /* CloudsInput.cpp */,
 				E7D4836B1860C5D000BE9BF8 /* CloudsInputEvents.h */,
 				E7D4836E1860C5D000BE9BF8 /* CloudsInputMouse.cpp */,
 				E7D4836F1860C5D000BE9BF8 /* CloudsInputMouse.h */,
@@ -1268,10 +1280,10 @@
 		E7E5E3601812404300CA4196 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7E5E3611812404300CA4196 /* CloudsClusterNode.cpp */,
 				E7E5E3621812404300CA4196 /* CloudsClusterNode.h */,
-				E7E5E3631812404300CA4196 /* CloudsVisualSystemClusterMap.cpp */,
+				E7E5E3611812404300CA4196 /* CloudsClusterNode.cpp */,
 				E7E5E3641812404300CA4196 /* CloudsVisualSystemClusterMap.h */,
+				E7E5E3631812404300CA4196 /* CloudsVisualSystemClusterMap.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -1456,6 +1468,10 @@
 				E703CCC9185C237600547738 /* gaussianblur.vert in Sources */,
 				E7D483701860C5D000BE9BF8 /* CloudsInput.cpp in Sources */,
 				E7D483721860C5D000BE9BF8 /* CloudsInputMouse.cpp in Sources */,
+				E7F051241872492200017521 /* traversal.frag in Sources */,
+				E7F051251872492200017521 /* traversal.vert in Sources */,
+				E7F051291872654400017521 /* options.frag in Sources */,
+				E7F0512A1872654400017521 /* options.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

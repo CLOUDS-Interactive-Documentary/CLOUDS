@@ -11,6 +11,8 @@ class CloudsFCPParser;
 class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
   public:
     
+	CloudsVisualSystemClusterMap();
+	
 	void buildEntireCluster(CloudsFCPParser& parser);
 
 	void setRun(CloudsRun& run);
@@ -93,7 +95,6 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 	ofCamera& getCameraRef(){
@@ -120,6 +121,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofxTLColorTrack* lineColor;
 	ofxTLColorTrack* nodeColor;
 
+	vector<ofVec2f> traversalPath;
 	//TODO pick a better font renderer
 	ofTrueTypeFont font;
 	vector<CloudsQuestion> questions;
@@ -127,17 +129,24 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofShader clusterShader;
 	ofShader lineShader;
 	ofShader traversalShader;
+	ofShader optionsShader;
+	ofIndexType lastTraverseStartedIndex;
 	
 	bool firstClip;
-	ofVec3f lastClipPosition;
+	ofVec3f currentNodePosition;
+	ofIndexType currentNodeIndex;
+	int currentTraversalIndex;
 	
-	float currentVertIndex;
+	ofVec3f cameraStartPosition;
+	float percentToDest;
 	
 	ofImage sprite;
-	
+
 	ofVboMesh traversalMesh;
-	ofVboMesh clusterMesh;
+	ofVboMesh optionsMeshPrev,optionsMeshNext;
+	ofVboMesh nodeMesh;
 	ofVboMesh connectionMesh;
+	ofVboMesh curveConnectionMesh;
 	
 	vector<CloudsClusterNode> nodes;
 	map<string,int> clipIdToNodeIndex;
@@ -152,7 +161,9 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float lineFocalRange;
 	float lineDissolve;
 	ofVec3f trailHead;
-	
+
 	float nodePopLength;
 	float traversedNodeSize;
+	
+	ofVec3f randomDirection();
 };
