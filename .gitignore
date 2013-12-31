@@ -292,3 +292,7 @@ CloudsMovieDirectory_remote.txt
 /CloudsData/sound/textures/
 
 /CloudsData/sound/triggers/
+
+/CloudsData/sound/electromagneticsweep.wav
+/CloudsData/sound/Slow_Red.wav
+/CloudsData/sound/Slow_Sweep.wav
