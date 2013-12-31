@@ -14,7 +14,7 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
     numPlantMeshes(100), floorW(2000), floorD(2000), floorHalfW(.5f * floorW), floorHalfD(.5f * floorD),
     noiseAmp(20.f), noiseFreq(5.f), xResolution(100), zResolution(100), xStep(floorW / (float)xResolution), zStep(floorD / (float)zResolution),
     cameraControl(true), fogStart(200.f), fogEnd(500.f), growDist(300.f), drawPlantPosns(false), numNearbyPlants(200),
-    zSpeed(0), yRot(0), xRot(20), camAvoidDist(500.f)
+    zSpeed(0), yRot(0), xRot(20), camAvoidDist(500.f), regenerate(false)
 {
     ofDirectory dir;
     dir.listDir(getVisualSystemDataPath() + "rules");
@@ -164,6 +164,12 @@ void CloudsVisualSystemFlying::selfBegin()
 void CloudsVisualSystemFlying::selfUpdate()
 {
     if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
+ 
+    if (regenerate)
+    {
+        generate();
+        regenerate = false;
+    }
     
     if (cameraControl)
     {
@@ -287,7 +293,7 @@ void CloudsVisualSystemFlying::selfPostDraw()
 //use render gui for display settings, like changing colors
 void CloudsVisualSystemFlying::selfSetupRenderGui()
 {
-    rdrGui->addToggle("regenerate", false);
+    rdrGui->addToggle("regenerate", &regenerate);
     rdrGui->addToggle("cameraControl", &cameraControl);
     rdrGui->addSlider("fogStart", 100.f, 4000.f, &fogStart);
     rdrGui->addSlider("fogEnd", 100.f, 4000.f, &fogEnd);
@@ -315,17 +321,23 @@ void CloudsVisualSystemFlying::selfSetupRenderGui()
     rdrGui->addToggle(soundFiles[2], &playSample[2]);
 }
 
+//events are called when the system is active
+//Feel free to make things interactive for you, and for the user!
+void CloudsVisualSystemFlying::selfKeyPressed(ofKeyEventArgs & args)
+{
+    switch (args.key)
+    {
+        case 'R':
+            regenerate = true;
+            break;
+        
+        default:
+            break;
+    }
+}
+
 void CloudsVisualSystemFlying::guiRenderEvent(ofxUIEventArgs &e)
 {
-    if (e.widget->getName() == "regenerate")
-    {
-        ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-        if (toggle->getValue())
-        {
-            generate();
-            toggle->setValue(false);
-        }
-    }
     for (int i=0; i<3; i++)
     {
         if (e.widget->getName() == soundFiles[i]) {
@@ -346,11 +358,8 @@ void CloudsVisualSystemFlying::selfPresetLoaded(string presetPath)
     generate();
 }
 
-void CloudsVisualSystemFlying::selfGuiEvent(ofxUIEventArgs &e)
-{
-	if(e.widget->getName() == "Custom Button"){
-		cout << "Button pressed!" << endl;
-	}
+void CloudsVisualSystemFlying::selfGuiEvent(ofxUIEventArgs &e){
+    
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -363,22 +372,7 @@ void CloudsVisualSystemFlying::guiSystemEvent(ofxUIEventArgs &e){
 }
 
 //These methods let us add custom GUI parameters and respond to their events
-void CloudsVisualSystemFlying::selfSetupGui() {
-    
-	customGui = new ofxUISuperCanvas("CUSTOM", gui);
-	customGui->copyCanvasStyle(gui);
-	customGui->copyCanvasProperties(gui);
-	customGui->setName("Custom");
-	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-	customGui->addButton("Custom Button", false);
-	customGui->addToggle("Custom Toggle", &customToggle);
-	
-	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemFlying::selfGuiEvent);
-	guis.push_back(customGui);
-	guimap[customGui->getName()] = customGui;
+void CloudsVisualSystemFlying::selfSetupGui(){
     
 }
 
@@ -403,20 +397,12 @@ void CloudsVisualSystemFlying::selfDrawBackground(){
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemFlying::selfEnd(){
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemFlying::audioRequested);
-
-	simplePointcloud.clear();
-	
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemFlying::selfExit(){
 	
 }
 
-//events are called when the system is active
-//Feel free to make things interactive for you, and for the user!
-void CloudsVisualSystemFlying::selfKeyPressed(ofKeyEventArgs & args){
-	
-}
 void CloudsVisualSystemFlying::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
