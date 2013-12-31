@@ -540,14 +540,9 @@ void CloudsVisualSystemAstrolabe::resetRingRotations()
 		float scl = ofMap( i, 0, astrolabes.size()-1, innerSpeed, outerSpeed );
 		
 		//astrolabes[i]->addRotationTween( axis, startVal, step, duration, delay, increment)
-		astrolabes[i]->addRotationTween("x", ringsXRot * scl * skipAhead, ringsXRot, xTickSpeed, xTickDelay * scl, xTickDelay * scl);
-		astrolabes[i]->addRotationTween("y", i * ringsYRot + ringsYRot * scl * skipAhead, ringsYRot, xTickSpeed, yTickDelay * scl, yTickDelay * scl);
-		astrolabes[i]->addRotationTween("z", ringsZRot * scl * skipAhead, ringsZRot, zTickSpeed, zTickDelay * scl, zTickSpeed * scl);
-		
-		astrolabes[i]->setTweenScale("x", scl );
-		astrolabes[i]->setTweenScale("y", scl );
-		astrolabes[i]->setTweenScale("z", scl );
-		
+		astrolabes[i]->addRotationTween("x", ringsXRot * scl * skipAhead, ringsXRot, xTickSpeed, 0, xTickDelay, scl);
+		astrolabes[i]->addRotationTween("y", i * ringsYRot*scl + ringsYRot * scl * skipAhead, ringsYRot, xTickSpeed, 0, yTickDelay, scl);
+		astrolabes[i]->addRotationTween("z", ringsZRot * scl * skipAhead, ringsZRot, zTickSpeed, 0, zTickSpeed, scl);
 		
 		astrolabes[i]->setEase(*currentEase);
 	}
