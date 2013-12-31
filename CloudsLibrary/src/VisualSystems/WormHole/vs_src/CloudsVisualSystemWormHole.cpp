@@ -492,14 +492,14 @@ void CloudsVisualSystemWormHole::selfDraw()
 	{
 		currentShader->begin();
 		currentShader->setUniform1f("time", ofGetElapsedTimef());
-		
+
 		ofFloatColor lc = lightColor;
 		currentShader->setUniform4f("lightColor", lc.r, lc.g, lc.b, lc.a);
 		currentShader->setUniform3f("lightPosition", lightPos.x, lightPos.y, lightPos.z );
 		currentShader->setUniform1f("lightConstantAttenuation", lightConstantAttenuation);
-		currentShader->setUniform1f("lightLinearAttenuation", lightLinearAttenuation);
-		currentShader->setUniform1f("lightQuadraticAttenuation", lightQuadraticAttenuation);
-		
+		currentShader->setUniform1f("lightLinearAttenuation", lightLinearAttenuation * lightLinearAttenuation);
+		currentShader->setUniform1f("lightQuadraticAttenuation", lightQuadraticAttenuation * lightQuadraticAttenuation);
+
 		ofFloatColor fc = fogColor;
 		currentShader->setUniform4f("fogColor", fc.r, fc.g, fc.b, fc.a);
 		currentShader->setUniform1f("fogDistance", fogDist );
@@ -511,13 +511,13 @@ void CloudsVisualSystemWormHole::selfDraw()
 		ofFloatColor c2f = c2;
 		currentShader->setUniform4f("c1", c1f.r, c1f.g, c1f.b, c1f.a );
 		currentShader->setUniform4f("c2", c2f.r, c2f.g, c2f.b, c2f.a );
-		
-		currentShader->setUniform1i("useNoiseDisplacement", bUseNoiseDisplacement );
-		currentShader->setUniform3f("noiseOffset", noiseDir.x * noiseTime, noiseDir.y * noiseTime, noiseDir.z * noiseTime);
-		currentShader->setUniform1f("noiseScale", noiseScale );
-		currentShader->setUniform1f("noiseDisplacement", noiseDisplacement );
+
+//		currentShader->setUniform1i("useNoiseDisplacement", bUseNoiseDisplacement );
+//		currentShader->setUniform3f("noiseOffset", noiseDir.x * noiseTime, noiseDir.y * noiseTime, noiseDir.z * noiseTime);
+//		currentShader->setUniform1f("noiseScale", noiseScale );
+//		currentShader->setUniform1f("noiseDisplacement", noiseDisplacement );
 	}
-	
+
 	//draw mesh
 	ofPushMatrix();
 	ofMultMatrix( meshNode.getGlobalTransformMatrix() );
