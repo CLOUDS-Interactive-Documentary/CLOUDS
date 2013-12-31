@@ -241,15 +241,15 @@ void CloudsSecondaryDisplayController::draw(){
         //    ofRect(t->bounds);
         
         float firstNameWidth = h2->getStringBoundingBox(firstName, 0, 0).width;
-        float lastNameWidth = h2->getStringBoundingBox(firstName, 0, 0).width;
-        SVGMesh *longestName;
+        float lastNameWidth = h1->getStringBoundingBox(lastName, 0, 0).width;
+        float longestNameWidth;
         if(firstNameWidth > lastNameWidth)
-            longestName = meshBioFirstName;
+            longestNameWidth = firstNameWidth;
         else
-            longestName = meshBioLastName;
+            longestNameWidth = lastNameWidth;
         
-        float margin = 37;
-        float titleX = longestName->bounds.x + longestName->bounds.width + margin;
+        float margin = 60;
+        float titleX = meshBioFirstName->bounds.x + longestNameWidth + margin;
         
         ////title
         string title = ofToUpper(currentSpeaker.title);
