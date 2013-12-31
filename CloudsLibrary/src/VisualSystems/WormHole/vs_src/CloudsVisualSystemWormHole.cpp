@@ -473,7 +473,8 @@ void CloudsVisualSystemWormHole::selfUpdate()
 
 void CloudsVisualSystemWormHole::selfDraw()
 {
-	
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
 	
 	//alpha blending
 	if(currentBlendMode == OF_BLENDMODE_DISABLED)
@@ -544,6 +545,9 @@ void CloudsVisualSystemWormHole::selfDraw()
 	
 	//disable depth testing
 	glDisable(GL_DEPTH_TEST);
+	
+	
+	glDisable(GL_CULL_FACE);
 
 	//disable alpha blending
 	ofDisableAlphaBlending();
