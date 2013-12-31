@@ -122,8 +122,39 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 				connectionMesh.addVertex(meta[j].networkPosition);
 				connectionMesh.addNormal(ofVec3f(0,0,0));
 
+				//create curved connection mesh
+				//naive simple spherical interpolation over 10 steps
+				ofVec3f vecToStart = clip.networkPosition - centroid;
+				ofVec3f vecToDest  = meta[j].networkPosition - centroid;
+				float radStart = vecToStart.length();
+				float radDest  = vecToDest.length();
+				ofVec3f dirToStart = vecToStart / radStart;
+				ofVec3f dirToDest  = vecToDest  / radDest;
+				ofQuaternion arc;
+				arc.makeRotate(dirToStart,dirToDest);
+				
+				//handle
+				curveConnectionMesh.addColor(ofFloatColor(0,0));
+				curveConnectionMesh.addVertex(clip.networkPosition);
+				
+				int numSteps = 10;
+				for(int i = 0; i <= numSteps; i++){
+					float stepPercent = (1.* i) / numSteps;
+					ofQuaternion step;
+					step.slerp(stepPercent, ofQuaternion(), arc);
+					ofVec3f arcDir = step * dirToStart;
+					float arcRad = ofLerp(radStart, radDest, stepPercent);
+					ofVec3f arcPoint = arcDir * arcRad + centroid;
+					
+					curveConnectionMesh.addColor(ofFloatColor(1,1));
+					curveConnectionMesh.addVertex(arcPoint);
+				}
+				
+				//handle
+				curveConnectionMesh.addColor(ofFloatColor(0,0));
+				curveConnectionMesh.addVertex(meta[j].networkPosition);
+				
 			}
-		
 		}
 	}
 	
@@ -641,7 +672,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	////POINTS
 	ofPushStyle();
 	clusterShader.begin();
-	clusterShader.setUniformTexture("tex", sprite, 0);
+	clusterShader.setUniformTexture("tex", sprite, 1);
 	clusterShader.setUniform1f("expansion", meshExpansion);
 	clusterShader.setUniform1f("minSize", pointSize);
 	clusterShader.setUniform3f("attractor", 0, 0, 0);
@@ -650,8 +681,8 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	ofEnablePointSprites();
 	ofDisableArbTex();
 	nodeMesh.draw();
-	ofDisablePointSprites();
 	ofEnableArbTex();
+	ofDisablePointSprites();
 
 	clusterShader.end();
 	
@@ -669,7 +700,8 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	lineShader.setUniform1f("radius", 300.);
 	
 	ofSetColor(100, 150, 200);
-	connectionMesh.draw();
+	//connectionMesh.draw();
+
 	lineShader.end();
 	
 	ofPopStyle();
@@ -702,6 +734,15 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 //	ofPopMatrix();
 //	ofPopStyle();
 	/////END OPTIONS
+	
+	//TEST CURVE MESH
+	ofPushMatrix();
+	ofEnableAlphaBlending();
+	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+	ofScale(meshExpansion,meshExpansion,meshExpansion);
+	curveConnectionMesh.draw();
+	ofPopMatrix();	
+	//END TEST CURVE MESH
 	
 	ofPopStyle();
 
@@ -775,4 +816,4 @@ ofVec3f CloudsVisualSystemClusterMap::randomDirection(){
 	float usqrtinv = sqrt(1. - powf(u,2.));
 	return ofVec3f(cos(theta) * usqrtinv,
 				   sin(theta) * usqrtinv, u);
-};
+}

@@ -344,7 +344,7 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 			bool foundClip;
 			CloudsClip& clip = getClipWithLinkName(linkName,foundClip);
 			if(!foundClip){
-				ofLogError("CLIP " + linkName + " NOT FOUND IN CLUSTER NETWORK");
+				ofLogError("CloudsFCPParser::parseClusterNetwork") << "Clip " << linkName << " Not found in Pajek Cluster Map";
 				continue;
 			}
 			int numcomp = components.size();
@@ -358,6 +358,7 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 //	populateKeywordCentroids();
 //	calculateCohesionMedianForKeywords();
 //	calculateKeywordAdjascency();
+	//TODO CACHE::
 	calculateKeywordFamilies();
 }
 
@@ -1597,7 +1598,4 @@ void CloudsFCPParser::saveInterventions(string interventionsFile){
     if(! linksXML.saveFile(interventionsFile) ){
 		if(printErrors) ofSystemAlertDialog("UNABLE TO SAVE LINKS. DO NOT PROCEED");
 	}
-
 }
-
-

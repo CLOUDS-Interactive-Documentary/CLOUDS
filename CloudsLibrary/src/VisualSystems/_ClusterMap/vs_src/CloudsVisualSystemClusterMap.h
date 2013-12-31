@@ -98,8 +98,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 	ofCamera& getCameraRef(){
-//		return cam;
-		return easeCamera;
+		return cam;
+//		return easeCamera;
 	}
 
 	void reloadShaders();
