@@ -8,28 +8,37 @@
 
 CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	run = NULL;
-	firstClip = true;
-	lastTraverseStartedIndex = -1;
 }
 
 //called once from start up of the app
 void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
+	this->parser = &parser;
+	resetGeometry();
+}
+
+void CloudsVisualSystemClusterMap::resetGeometry(){
+	
+	firstClip = true;
+	lastTraverseStartedIndex = -1;
+
+	networkMesh.clear();
+	traversalMesh.clear();
+	optionsMeshNext.clear();
+	optionsMeshPrev.clear();
+	nodeMesh.clear();
+	nodes.clear();
+	traversalPath.clear();
+	clipIdToNodeIndex.clear();
 	
 	currentTraversalIndex = 0;
-	
-	nodes.clear();
-	nodeMesh.clear();
-	clipIdToNodeIndex.clear();
-	traversalMesh.clear();
-	
 	
 	ofVec3f centroid(0,0,0);
 	ofVec3f maxBounds(0,0,0);
 	ofVec3f minBounds(0,0,0);
 	
-	for(int i = 0; i < parser.getAllClips().size(); i++){
+	for(int i = 0; i < parser->getAllClips().size(); i++){
 		CloudsClusterNode n;
-		CloudsClip& clip = parser.getAllClips()[i];
+		CloudsClip& clip = parser->getAllClips()[i];
 		n.clipId = clip.getID();
 		n.mesh = &nodeMesh;
 		n.vertexIndex = nodeMesh.getNumVertices();
@@ -52,8 +61,8 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 	
 	centroid /= nodes.size();
 	float maxDistance = 0;
-	for(int i = 0; i < parser.getAllClips().size(); i++){
-		maxDistance = MAX(maxDistance, parser.getAllClips()[i].networkPosition.distance(centroid));
+	for(int i = 0; i < parser->getAllClips().size(); i++){
+		maxDistance = MAX(maxDistance, parser->getAllClips()[i].networkPosition.distance(centroid));
 	}
 	
 	cout << "CENTROID " << centroid << " MAX D " << maxDistance << endl;
@@ -61,10 +70,10 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 	//add all connections to connection mesh
 	set< pair<string,string> > connections;
 	
-	for(int i = 0; i < parser.getAllClips().size(); i++){
-		CloudsClip& clip = parser.getAllClips()[i];
-		vector<CloudsClip> meta = parser.getClipsWithKeyword(clip.getKeywords());
-		vector<CloudsLink> links = parser.getLinksForClip(clip);
+	for(int i = 0; i < parser->getAllClips().size(); i++){
+		CloudsClip& clip = parser->getAllClips()[i];
+		vector<CloudsClip> meta = parser->getClipsWithKeyword(clip.getKeywords());
+		vector<CloudsLink> links = parser->getLinksForClip(clip);
 		string nameA = clip.getID();
 		CloudsClusterNode& n1 = nodes[ clipIdToNodeIndex[nameA] ];
 		
@@ -75,7 +84,7 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 //		}
 
 		for(int l = 0; l < links.size(); l++){
-			meta.push_back(parser.getClipWithLinkName(links[l].targetName));
+			meta.push_back(parser->getClipWithLinkName(links[l].targetName));
 		}
 		
 		ofVec3f randDir = randomDirection();
@@ -83,10 +92,9 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 			string nameB = meta[j].getID();
 			bool valid = true;
 			valid &= (nameA != nameB);
-			valid &= (clip.person != meta[j].person || parser.clipLinksTo(nameA, nameB));
-			valid &= !parser.linkIsSuppressed(nameA, nameB);
+			valid &= (clip.person != meta[j].person || parser->clipLinksTo(nameA, nameB));
+			valid &= !parser->linkIsSuppressed(nameA, nameB);
 //			valid &= parser.getNumberOfSharedKeywords(clip, meta[j]) > 1;
-
 			if(valid)
 			{
 				CloudsClusterNode& n2 = nodes[ clipIdToNodeIndex[nameB] ];
@@ -100,7 +108,7 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 				
 				connections.insert(make_pair(nameA, nameB));
 				
-				if(parser.getNumberOfSharedKeywords(clip, meta[j]) < 2){
+				if(parser->getNumberOfSharedKeywords(clip, meta[j]) < 2){
 					continue;
 				}
 				
@@ -164,7 +172,6 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 	optionsMeshNext.setMode(OF_PRIMITIVE_LINE_STRIP);
 	optionsMeshPrev.setMode(OF_PRIMITIVE_LINE_STRIP);
 	
-//	traversalMesh.setMode(OF_PRIMITIVE_POINTS);
 }
 
 void CloudsVisualSystemClusterMap::traverse(){
@@ -278,27 +285,27 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip& clip){
 		cout << "** TRAVERSE FROM :	" << nodes[currentNodeIndex].clipId << " >>> " << nodes[ newNodeIndex ].clipId << endl;
 	}
 	
-	for(int i = 0; i < n.adjascentClipIds.size(); i++){
-		cout << "	** ADJASCENT CLIPS " << n.adjascentClipIds[i] << endl;
-	}
+//	for(int i = 0; i < n.adjascentClipIds.size(); i++){
+//		cout << "	** ADJASCENT CLIPS " << n.adjascentClipIds[i] << endl;
+//	}
 
 	ofVec3f startDirection;
 	if(firstClip){
-		startDirection = randomDirection();
+		currentTraversalDirection = randomDirection();
+		currentTraversalPosition = clip.networkPosition;
 	}
 	else{
-		startDirection = (clip.networkPosition - currentNodePosition).normalized();
+		//startDirection = (clip.networkPosition - currentNodePosition).normalized();
+		
 		//trace out the connection that we took
+		/*
 		if(ofContains( nodes[ currentNodeIndex ].adjascentClipIds, clip.getID()) ){
 			TraversalCurve& t = nodes[ currentNodeIndex ].connectionCurves[ clip.getID() ];
 			ofIndexType lastTraverseEndedIndex = traversalMesh.getNumVertices();
 			
 			for(ofIndexType i = t.startIndx; i < t.endIndx; i++){
-				//maybe we want to outline a different path
-				//traversalMesh.getNormals()[i].x = ofMap(i, t.startIndx, t.endIndx, 1.0, 0.0, true);
-//				float percentOnTraverse = ofMap(i, t.startIndx, t.endIndx, 1.0, 0.0, true);
-				traversalMesh.addVertex( optionsMeshNext.getVertices()[i] );
-				traversalMesh.addNormal( optionsMeshNext.getNormals()[i] );
+//				traversalMesh.addVertex( optionsMeshNext.getVertices()[i] );
+//				traversalMesh.addNormal( optionsMeshNext.getNormals()[i] );
 			}
 			if(lastTraverseStartedIndex != -1){
 				for(ofIndexType i = lastTraverseStartedIndex; i < lastTraverseEndedIndex; i++){
@@ -311,8 +318,50 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip& clip){
 			ofLogError("CloudsVisualSystemClusterMap::traverseToClip") << "Traversed to non connect clip "
 				<< clip.getID() << " from " <<  nodes[ currentNodeIndex ].clipId << endl;
 		}
+		*/
+		
+		float minDistSq = powf(minTraversalSolveDistance,2.0);
+		TraversalSegment newSegment;
+		newSegment.startIndex = traversalMesh.getNumVertices();
+		int maxSteps = 5000;
+		cout << currentTraversalPosition.distanceSquared(clip.networkPosition) << " current distance" << endl;
+		while(minDistSq < currentTraversalPosition.distanceSquared(clip.networkPosition) && maxSteps-- > 0){
+			ofVec3f toNodeDirection  = (clip.networkPosition - currentTraversalPosition).normalized();
+			ofVec3f vectorToNode = clip.networkPosition - currentTraversalPosition;
+			float distanceToNode = vectorToNode.length();
+			ofVec3f directionToNode = vectorToNode/distanceToNode;
+			
+			ofQuaternion rotToNode, incrementalRotate;
+			rotToNode.makeRotate(currentTraversalDirection, directionToNode);
+			incrementalRotate.slerp(traverseAngleDampen, ofQuaternion(), rotToNode);
+			traverseAngleDampen *= (1.- traverseAngleDampen) * .01;
+			currentTraversalDirection = incrementalRotate * currentTraversalDirection;
+			currentTraversalPosition += currentTraversalDirection * traverseStepSize;
+			
+			traversalMesh.addVertex(currentTraversalPosition);
+			cout << "	" << maxSteps << " current distance is " << currentTraversalPosition.distance(clip.networkPosition) << endl;
+		}
+		
+		newSegment.endIndex = traversalMesh.getNumVertices();
+		cout << "Step took " << (newSegment.endIndex - newSegment.startIndex) << " vertices" << endl;
+
+		//solidify old segement by flagging n.y = 1
+		if(traversalPath.size() > 0){
+			TraversalSegment& s = traversalPath.back();
+			for(ofIndexType i = s.startIndex; i < s.endIndex; i++){
+				traversalMesh.setNormal(i, ofVec3f(1,1,0));
+			}
+		}
+		
+		//add normals along percent to facilitate transition
+		for(int i = newSegment.startIndex; i < newSegment.endIndex; i++){
+			float percentAlong = ofMap(i, newSegment.startIndex,newSegment.endIndex,0, 1.0);
+			traversalMesh.addNormal(ofVec3f(percentAlong,0., 0.));
+		}
+		traversalPath.push_back(newSegment);
 	}
-	cameraStartPosition = easeCamera.getPosition();
+			  
+	cameraStartPosition = easyCamera.getPosition();
 	
 	swap(optionsMeshPrev,optionsMeshNext);
 	
@@ -397,56 +446,69 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip& clip){
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemClusterMap::selfSetupGui(){
+	
+	ofxUIToggle* toggle;
+	
+	drawNodes = true;
+	drawLines = true;
+	drawTraversal = true;
+	drawOptionPaths = true;
+	
+	nodesGui = new ofxUISuperCanvas("NODES", gui);
+	nodesGui->copyCanvasStyle(gui);
+	nodesGui->copyCanvasProperties(gui);
+	nodesGui->setName("Nodes");
+	
+	toggle = nodesGui->addToggle("ENABLE", &drawNodes);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    nodesGui->resetPlacer();
+    nodesGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    nodesGui->addWidgetToHeader(toggle);
+	
+	nodesGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	nodesGui->addSlider("MESH SCALE", 100, 1000, &meshExpansion);
+	nodesGui->addLabel("POINTS");
+	nodesGui->addRangeSlider("POINT SIZE RANGE", .5, 4., &pointSize.min, &pointSize.max);
+	nodesGui->addSlider("TRAVERSED NODE SIZE", 1, 10, &traversedNodeSize);
+	nodesGui->addSlider("NODE POP LENGTH", 50, 2000, &nodePopLength);
 
-	generatorGui = new ofxUISuperCanvas("GENERATOR", gui);
-	generatorGui->copyCanvasStyle(gui);
-	generatorGui->copyCanvasProperties(gui);
-	generatorGui->setName("Generator");
-	generatorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	generatorGui->addSlider("mesh expansion", 100, 10000, &meshExpansion);
-	generatorGui->addSlider("point size", 1, 50, &pointSize);
+	ofAddListener(nodesGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
+	guis.push_back(nodesGui);
+	guimap[nodesGui->getName()] = nodesGui;
 
-//	generatorGui->addSlider("seed", 0, 100, &seed);
-//	generatorGui->addSlider("hero nodes", 5, 20, &heroNodes);
-//	generatorGui->addSlider("spawn radius",  5, 1000, &heroRadius);
-//	generatorGui->addSlider("radius var",  5, 1000, &heroRadiusVariance);
-//	generatorGui->addSlider("num iterations", 1, 20, &numIterations);
-//	generatorGui->addSlider("num branches", 1, 20, &numBranches);
-//	generatorGui->addSlider("surviving branches", 1, 10, &numSurvivingBranches);
-//	generatorGui->addSlider("min branch dist",  10, 1000, &minDistance);
-//	generatorGui->addSlider("branch dist rng",  0, 3.0, &distanceRange);
-//	generatorGui->addSlider("step size",  1, 300, &stepSize);
+	linesGui = new ofxUISuperCanvas("LINES", gui);
+	linesGui->copyCanvasStyle(gui);
+	linesGui->copyCanvasProperties(gui);
+	linesGui->setName("Lines");
 
-//	generatorGui->addSlider("min attract radius",  10, 1000, &minAttractRadius);
-//	generatorGui->addSlider("min repel radius",  0, 1000, &minRepelRadius);
-//	generatorGui->addSlider("min fuse radius",  1, 100, &minFuseRadius);
-//	generatorGui->addSlider("max attract force",  0, 1.0, &maxAttractForce);
-//	generatorGui->addSlider("max repel force",  0, 1.0, &maxRepelForce);
-	generatorGui->addSlider("max traverse angle",  0, 180, &maxTraverseAngle);
+	toggle = linesGui->addToggle("ENABLE", &drawLines);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    linesGui->resetPlacer();
+    linesGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    linesGui->addWidgetToHeader(toggle);
+	
+	linesGui->addSlider("LINE ALPHA", 0.0, 1.0, &lineAlpha);
+	linesGui->addSlider("LINE FOCAL DISTANCE", 0, sqrt(3000.0f), &lineFocalDistance);
+	linesGui->addSlider("LINE FOCAL RANGE", 0, sqrt(3000.0f), &lineFocalRange);
 
-	ofAddListener(generatorGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
-	guis.push_back(generatorGui);
-	guimap[generatorGui->getName()] = generatorGui;
+	traversalGui = new ofxUISuperCanvas("TRAVERSAL", gui);
+	traversalGui->copyCanvasStyle(gui);
+	traversalGui->copyCanvasProperties(gui);
+	traversalGui->setName("Traversal");
+	traversalGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	toggle = linesGui->addToggle("ENABLE", &drawTraversal);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    traversalGui->resetPlacer();
+    traversalGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    traversalGui->addWidgetToHeader(toggle);
+	
+	traversalGui->addLabel("TRAVERSE");
+	traversalGui->addSlider("TRAVERSE ANGLE DAMPEN", 0.01, .5, &traverseAngleDampen);
+	traversalGui->addSlider("TRAVERSE MIN STEP SIZE", .01, .1, &traverseMinStepSize);
+	traversalGui->addSlider("MIN SOLVE DISTANCE", .001, 0.1, &minTraversalSolveDistance);
+	traversalGui->addSlider("MAX TRAVERSE ANGLE",  0, 180, &maxTraverseAngle);
 
-	displayGui = new ofxUISuperCanvas("DISPLAY", gui);
-	displayGui->copyCanvasStyle(gui);
-	displayGui->copyCanvasProperties(gui);
-	displayGui->setName("Display");
-	displayGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	displayGui->addToggle("incremental traversal", &incrementalTraversalMode);
-	
-	displayGui->addSlider("line alpha",  0, 1.0, &lineAlpha);
-	displayGui->addSlider("line focal dist", 0, sqrt(3000.0f), &lineFocalDistance);
-	displayGui->addSlider("line focal range", 0, sqrt(3000.0f), &lineFocalRange);
-	
-	displayGui->addSlider("line dissolve", 0, 1.0, &lineDissolve);
-	
-	displayGui->addSlider("traversed node size", 1, 10, &traversedNodeSize);
-	displayGui->addSlider("node pop length", 50, 2000, &nodePopLength);
-	
-	
 //	displayGui->addSlider("line blur amount",  0, 10, &lineBlurAmount);
 //	displayGui->addSlider("line blur fade",  0, 1.0, &lineBlurFade);
 //	
@@ -464,15 +526,9 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 //	displayGui->addSlider("cluster node size", 1, 10, &clusterNodeSize);
 
 
-	ofAddListener(displayGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
-	guis.push_back(displayGui);
-	guimap[generatorGui->getName()] = displayGui;
-
-//	traversedNodePoints.setUsage( GL_DYNAMIC_DRAW );
-//	traversedNodePoints.setMode(OF_PRIMITIVE_POINTS);
-//	nodeCloudPoints.enableNormals();
-//	
-//	loadShader();
+	ofAddListener(traversalGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
+	guis.push_back(traversalGui);
+	guimap[traversalGui->getName()] = traversalGui;
 }
 
 
@@ -494,7 +550,6 @@ void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip>& questionClip
 		
 		CloudsQuestion q;
 		q.cam = &getCameraRef();
-//		q.font = &font;
 		q.clip = questionClips[i];
 		
 		q.setup();
@@ -533,17 +588,19 @@ void CloudsVisualSystemClusterMap::selfSetupTimeline(){
 }
 
 void CloudsVisualSystemClusterMap::selfSetDefaults(){
-//	incrementalTraversalMode = false;
-//	currentVertIndex = 0.;
+	drawNodes = true;
+	drawLines = true;
+	drawTraversal = true;
+	drawOptionPaths = true;
 }
 
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemClusterMap::selfSetup(){
-	cam.setup();
-	cam.autosavePosition = true;
-	cam.loadCameraPosition();
+	gameCamera.setup();
+	gameCamera.autosavePosition = true;
+	gameCamera.loadCameraPosition();
 	
 	firstClip = true;
 	
@@ -557,7 +614,6 @@ void CloudsVisualSystemClusterMap::reloadShaders(){
 	
 	ofDisableArbTex();
 	sprite.loadImage(getVisualSystemDataPath() + "images/dot.png");
-//	nodeSpriteBasic.loadImage(getVisualSystemDataPath() + "images/dot_no_ring.png");
 	ofEnableArbTex();
 
 	traversalShader.load(getVisualSystemDataPath() + "shaders/traversal");
@@ -590,13 +646,19 @@ void CloudsVisualSystemClusterMap::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemClusterMap::selfUpdate(){
 	
-	cam.applyRotation = cam.applyTranslation = !cursorIsOverGUI();
+	gameCamera.applyRotation = gameCamera.applyTranslation = !cursorIsOverGUI();
+	if(cursorIsOverGUI()){
+		easyCamera.disableMouseInput();
+	}
+	else{
+		easyCamera.enableMouseInput();
+	}
 	
-	easeCamera.setDistance(100);
-	ofVec3f curPosition = easeCamera.getTarget().getPosition();
+	easyCamera.setDistance(100);
+	ofVec3f curPosition = easyCamera.getTarget().getPosition();
 	ofVec3f curTarget = (currentNodePosition*meshExpansion);
 	ofVec3f newPos = curPosition + (curTarget - curPosition) * .05;
-	easeCamera.setTarget(newPos);
+	easyCamera.setTarget(newPos);
 	percentToDest = (newPos - cameraStartPosition).length() / (curTarget - cameraStartPosition).length();
 	
 //	cout << "** PERCENT TO DEST IS " << percentToDest << endl;
@@ -674,58 +736,55 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	ofScale(meshExpansion,meshExpansion,meshExpansion);
 	
 	////POINTS
-	nodesShader.begin();
-	nodesShader.setUniformTexture("tex", sprite, 1);
-	nodesShader.setUniform1f("minSize", pointSize);
-	nodesShader.setUniform3f("attractor", 0, 0, 0);
-	nodesShader.setUniform1f("radius", 300.);
-	
-	ofEnablePointSprites();
-	ofDisableArbTex();
-	nodeMesh.draw();
-	ofEnableArbTex();
-	ofDisablePointSprites();
-
-	nodesShader.end();
+	if(drawNodes){
+		nodesShader.begin();
+		nodesShader.setUniformTexture("tex", sprite, 1);
+		nodesShader.setUniform1f("minSize", pointSize.min);
+		nodesShader.setUniform1f("maxSize", pointSize.max);
+		nodesShader.setUniform3f("attractor", 0, 0, 0);
+		nodesShader.setUniform1f("radius", 300.);
+		ofEnablePointSprites();
+		ofDisableArbTex();
+		nodeMesh.draw();
+		ofEnableArbTex();
+		ofDisablePointSprites();
+		nodesShader.end();
+	}
 	/////END POINTS
 	
 	///NETWORK LINES
-	networkShader.begin();
-	networkShader.setUniform1f("focalPlane", powf(lineFocalDistance,2));
-	networkShader.setUniform1f("focalRange", powf(lineFocalRange,2));
-	networkShader.setUniform1f("lineFade", lineAlpha);
-	networkShader.setUniform3f("attractor", trailHead.x, trailHead.y, trailHead.z);
-	networkShader.setUniform1f("radius", 300.);
-	networkShader.setUniform3f("lineColor", 100/255., 150/255., 200/255.);
-	
-	networkMesh.draw();
-	
-	networkShader.end();
+	if(drawLines){
+		networkShader.begin();
+		networkShader.setUniform1f("focalPlane", powf(lineFocalDistance,2));
+		networkShader.setUniform1f("focalRange", powf(lineFocalRange,2));
+		networkShader.setUniform1f("lineFade", lineAlpha);
+		networkShader.setUniform3f("attractor", trailHead.x, trailHead.y, trailHead.z);
+		networkShader.setUniform1f("radius", 300.);
+		networkShader.setUniform3f("lineColor", 100/255., 150/255., 200/255.);
+		networkMesh.draw();
+		networkShader.end();
+	}
 	///END NETWORK LINES
 	
 	//////TRAVERSAL
-
-	traversalShader.begin();
-	traversalShader.setUniform1f("percentTraverseRevealed", percentToDest);
-	traversalMesh.draw();
-	traversalShader.end();
-
+	if(drawTraversal){
+		traversalShader.begin();
+		traversalShader.setUniform1f("percentTraverseRevealed", percentToDest);
+		traversalMesh.draw();
+		traversalShader.end();
+	}
 	///END TRAVERSAL
 	
-	
 	/////OPTIONS
-//	ofPushStyle();
-//	ofPushMatrix();
-//	ofScale(meshExpansion,meshExpansion,meshExpansion);
-//	optionsShader.begin();
-//	optionsShader.setUniform1f("percentOptionsRevealed", percentToDest);
-//	optionsShader.setUniform1i("fadeIn", 1);
-//	optionsMeshNext.draw();
-//	optionsShader.setUniform1i("fadeIn", 0);
-//	optionsMeshPrev.draw();
-//	optionsShader.end();
-//	ofPopMatrix();
-//	ofPopStyle();
+	if(drawOptionPaths){
+		optionsShader.begin();
+		optionsShader.setUniform1f("percentOptionsRevealed", percentToDest);
+		optionsShader.setUniform1i("fadeIn", 1);
+		optionsMeshNext.draw();
+		optionsShader.setUniform1i("fadeIn", 0);
+		optionsMeshPrev.draw();
+		optionsShader.end();
+	}
 	/////END OPTIONS
 	
 	//TEST CURVE MESH
@@ -742,11 +801,10 @@ void CloudsVisualSystemClusterMap::selfDrawDebug(){
 
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemClusterMap::selfDrawBackground(){
-
 	//turn the background refresh off
 	//bClearBackground = false;
-	
 }
+
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemClusterMap::selfEnd(){
@@ -763,7 +821,7 @@ void CloudsVisualSystemClusterMap::selfKeyPressed(ofKeyEventArgs & args){
 	
 	int key = args.key;
 	if(key == 'C'){
-		cam.reset();
+		gameCamera.reset();
 	}
 	
 	if(key == 'G'){
@@ -772,7 +830,9 @@ void CloudsVisualSystemClusterMap::selfKeyPressed(ofKeyEventArgs & args){
 	
 	if(key == 'R'){
 		reloadShaders();
+		resetGeometry();
 	}
+	
 }
 
 
