@@ -120,14 +120,15 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	
 	ofxTLColorTrack* lineColor;
 	ofxTLColorTrack* nodeColor;
-
-	vector<ofVec2f> traversalPath;
-	//TODO pick a better font renderer
-	ofTrueTypeFont font;
-	vector<CloudsQuestion> questions;
-	CloudsQuestion* selectedQuestion;
-	ofShader clusterShader;
-	ofShader lineShader;
+	
+	ofVboMesh traversalMesh;
+	ofVboMesh optionsMeshPrev,optionsMeshNext;
+	ofVboMesh nodeMesh;
+//	ofVboMesh connectionMesh;
+	ofVboMesh networkMesh;
+	
+	ofShader nodesShader;
+	ofShader networkShader;
 	ofShader traversalShader;
 	ofShader optionsShader;
 	ofIndexType lastTraverseStartedIndex;
@@ -142,11 +143,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	
 	ofImage sprite;
 
-	ofVboMesh traversalMesh;
-	ofVboMesh optionsMeshPrev,optionsMeshNext;
-	ofVboMesh nodeMesh;
-	ofVboMesh connectionMesh;
-	ofVboMesh curveConnectionMesh;
+
 	
 	vector<CloudsClusterNode> nodes;
 	map<string,int> clipIdToNodeIndex;
@@ -166,4 +163,9 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float traversedNodeSize;
 	
 	ofVec3f randomDirection();
+	
+	//	vector<ofVec2f> traversalPath;//?
+	vector<CloudsQuestion> questions;
+	CloudsQuestion* selectedQuestion;
+
 };
