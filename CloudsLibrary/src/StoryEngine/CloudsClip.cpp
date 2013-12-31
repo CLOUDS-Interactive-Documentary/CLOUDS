@@ -266,7 +266,7 @@ void CloudsClip::collateKeywords(){
 			else {
 				projectExampleTitle = exampleProject[1];
 				hasProjectExample = true;
-				cout << "Found project example " << projectExampleTitle << " for clip " << getLinkName() << endl;
+//				cout << "Found project example " << projectExampleTitle << " for clip " << getLinkName() << endl;
 			}
 			break;
 		}
