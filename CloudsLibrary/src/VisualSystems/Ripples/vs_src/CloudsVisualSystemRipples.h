@@ -129,7 +129,7 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
     bool bEnableSounds;
     ofMutex mutex;
     ofxTonicSynth mainSynth;
-    ofxTonicSynth notes[10];
+    ofxTonicSynth notes[5];
     int noteIndex;
     int baseNote;
     vector<float> scale;

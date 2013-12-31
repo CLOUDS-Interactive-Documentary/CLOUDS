@@ -244,7 +244,7 @@ void CloudsVisualSystemRipples::selfUpdate()
         if (dontTriggerSoundCounter == 0) {
             dontTriggerSoundCounter = 20;
             if (bEnableSounds) {
-                playNote(GetCloudsInputX()/20+50);
+                playNote(GetCloudsInputX()/40+50);
             }
         }
     }
@@ -338,12 +338,12 @@ void CloudsVisualSystemRipples::selfMouseReleased(int x, int y, int button){
 
 Generator CloudsVisualSystemRipples::buildSynth()
 {
-    for (int i=0; i<10; i++)
+    for (int i=0; i<5; i++)
     {
         mixer.addInput(notes[i]);
     }
     
-    return mixer >> Reverb().roomSize(100) >> BasicDelay(3, 4).feedback(0.7);
+    return mixer >> Reverb().roomSize(100) >> BasicDelay(3, 4).feedback(0.5);
 }
 
 void CloudsVisualSystemRipples::setScaleByName(string name)
@@ -400,10 +400,10 @@ void CloudsVisualSystemRipples::playNote(int note)
     scaleSnapper.input(note);
     mutex.lock();
     
-    Generator noteGen = (SineWave().freq(ControlMidiToFreq().input(scaleSnapper)) * volumeControl[0]) * ADSR(0.02, 0.25, 0.0, 0).trigger(1);
+    Generator noteGen = (SineWave().freq(ControlMidiToFreq().input(scaleSnapper)) * volumeControl[0]) * ADSR(0.02, 0.7, 0.15, 0.1).trigger(1);
     Generator noiseGen = ((Noise() * volumeControl[1]) >> LPF12().cutoff(1000)) * ADSR(0.04, 0.12, 0.0, 0).trigger(1);
     notes[noteIndex++].setOutputGen(noteGen * SineWave().freq(4) + noiseGen);
-    noteIndex = noteIndex%10;
+    noteIndex = noteIndex%5;
     mutex.unlock();
 }
 
