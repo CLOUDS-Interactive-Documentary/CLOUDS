@@ -33,6 +33,10 @@ void CloudsVisualSystemAstrolabe::selfSetupGui()
 	ringsGui->addIntSlider("numSpheresPerArc", 1, 10, &numSpheresPerArc);
 	ringsGui->addSlider("sphereScale", .1, 10, &sphereScale);
 	
+	ringsGui->addToggle("drawCircles", &bDrawCircles);
+	ringsGui->addSlider("circleLinewidth", 0, 10, &circleLinewidth );
+	ringsGui->addSlider("circleOpacity", 0, 255, &circleOpacity );
+	
 	
 	ofAddListener(ringsGui->newGUIEvent, this, &CloudsVisualSystemAstrolabe::selfGuiEvent);
 	guis.push_back(ringsGui);
@@ -558,6 +562,8 @@ void CloudsVisualSystemAstrolabe::selfDraw()
 	
 	bDepthTest? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
 	
+	glLineWidth( circleLinewidth );
+	
 	facingRatio.begin();
 	float rad, sphereRad, arcStep = 1. / (numSpheresPerArc - 1.);
 	for(int i=0 ; i<astrolabes.size(); i++)
@@ -585,8 +591,13 @@ void CloudsVisualSystemAstrolabe::selfDraw()
 				
 				sphereMesh.draw();
 				
+				glNormal3f(0, 1, 0);
+				
 				ofPopMatrix();
 			}
+			
+			ofNoFill();
+			ofCircle(0, 0, 0, rad);
 			
 			ofPopMatrix();
 		}
