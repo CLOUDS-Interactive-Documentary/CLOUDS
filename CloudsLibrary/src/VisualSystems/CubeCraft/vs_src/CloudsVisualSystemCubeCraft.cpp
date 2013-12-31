@@ -100,10 +100,13 @@ void CloudsVisualSystemCubeCraft::selfSetupGui()
 	
 	fogGui->addSpacer();
 	
-	fogGui->addLabel("FogColor");
-	fogGui->addMinimalSlider("fogHue", 0, 255, &fogHue)->setIncrement(1);
-	fogGui->addMinimalSlider("fogSaturation", 0, 255, &fogSaturation)->setIncrement(1);
-	fogGui->addMinimalSlider("fogBrightness", 0, 255, &fogBrightness)->setIncrement(1);
+	fogGui->addLabel("FOG_Color");
+//	fogGui->addMinimalSlider("fogHue", 0, 255, &fogHue)->setIncrement(1);
+//	fogGui->addMinimalSlider("fogSaturation", 0, 255, &fogSaturation)->setIncrement(1);
+//	fogGui->addMinimalSlider("fogBrightness", 0, 255, &fogBrightness)->setIncrement(1);
+	fogGui->addIntSlider("fogHue", 0, 255, &fogHue);
+	fogGui->addIntSlider("fogSaturation", 0, 255, &fogSaturation);
+	fogGui->addIntSlider("fogBrightness", 0, 255, &fogBrightness);
 	
 	fogGui->addSpacer();
 	fogGui->addSlider("fogDist", 10, 200, &fogDist);
@@ -179,17 +182,22 @@ void CloudsVisualSystemCubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 		fillColor2 = sampler->getColor();
 	}
 	
-	else if(name == "fogSaturation" || name == "fogHue" || name == "fogSaturation" )
+	else if(name == "fogSaturation" || name == "fogHue" || name == "fogBrightness" )
 	{
-		fogColor.setHue(fogHue);
-		fogColor.setSaturation(fogSaturation);
-		fogColor.setBrightness(fogBrightness);
-
+		fogColor.setHsb(fogHue, fogSaturation, fogBrightness);
+		
 		//DON'T NKOW WHY THIS DOESN'T WORK. UBT IT DOESN'T
-//		fogGui->getWidget("FogColor")->setColorFill(fogColor);
-//		fogGui->getWidget("fogHue")->setColorFill(fogColor);
-//		fogGui->getWidget("fogSaturation")->setColorFill(fogColor);
-//		fogGui->getWidget("fogSaturation")->setColorFill(fogColor);
+		fogGui->getWidget("FOG_Color")->setColorFill( fogColor);
+		fogGui->getWidget("fogHue")->setColorFill( fogColor);
+		fogGui->getWidget("fogSaturation")->setColorFill(fogColor);
+		fogGui->getWidget("fogBrightness")->setColorFill(fogColor);
+		
+//		fogGui->setColorBack( fogColor );
+		
+		bgHue = fogHue;
+		bgSat = fogSaturation;
+		bgBri = fogBrightness;
+	
 	}
 	
 	else if(name == "groundHue" || name == "groundSaturation" || name == "groundBrightness")
