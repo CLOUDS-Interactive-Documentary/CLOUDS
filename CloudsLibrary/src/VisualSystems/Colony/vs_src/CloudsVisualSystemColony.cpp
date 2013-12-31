@@ -208,34 +208,39 @@ void CloudsVisualSystemColony::selfDrawBackground()
     //FIXME: This shouldn't be here, but it's the only way to draw stuff in 2d
     if(bDebug){
         img_debug.draw(0, 0, getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+        ofLog(OF_LOG_ERROR, "Colony: bDebug is on. Remove this before reaching production");
     }
     
-    ofEnableAlphaBlending();
-    
-    levelSet.begin();
-    levelSet.setUniformTexture("grunge", grunge, 1);
-    levelSet.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
-    levelSet.setUniform1i("levelSet", levelSetMode);
-    levelSet.setUniform1i("levelSetBg", levelSetBG);
-    levelSet.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
-    levelSet.setUniform2f("imgRes", grunge.getWidth(), grunge.getHeight());
-    levelSet.setUniform1f("translucenseCell", translucenseCell);
-    levelSet.setUniform1f("translucenseDish", translucenseDish);
-    levelSet.setUniform4fv("kernelColor_high", kernelColor_high.getPtr());
-    levelSet.setUniform4fv("kernelColor_low", kernelColor_low.getPtr());
-    levelSet.setUniform1f("kernel_maxValue", kernel_maxValue);
-
-    ofxLight& l = (*(*lights.begin()).second);
-    levelSet.setUniform3fv("lightDirection", l.lightPos.getPtr());
-    levelSet.setUniform3f("lightColor", l.lightSpecularHSV.r,l.lightSpecularHSV.g,l.lightSpecularHSV.b);
-
-    levelSet.setUniform1f("stippleScale", stippleScale);
-    levelSet.setUniform4fv("stippleColor", stippleColor.getPtr());
-
-    fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
-                  getSharedRenderTarget().getHeight());
-    levelSet.end();
-    
+    //FIXME: This is a safety check if FBOs are not allocated, in order to avoid calling an empty one
+    if (areFbosAllocatedAndSized()){
+        ofEnableAlphaBlending();
+        
+        levelSet.begin();
+        levelSet.setUniformTexture("grunge", grunge, 1);
+        levelSet.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
+        levelSet.setUniform1i("levelSet", levelSetMode);
+        levelSet.setUniform1i("levelSetBg", levelSetBG);
+        levelSet.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+        levelSet.setUniform2f("imgRes", grunge.getWidth(), grunge.getHeight());
+        levelSet.setUniform1f("translucenseCell", translucenseCell);
+        levelSet.setUniform1f("translucenseDish", translucenseDish);
+        levelSet.setUniform4fv("kernelColor_high", kernelColor_high.getPtr());
+        levelSet.setUniform4fv("kernelColor_low", kernelColor_low.getPtr());
+        levelSet.setUniform1f("kernel_maxValue", kernel_maxValue);
+        
+        ofxLight& l = (*(*lights.begin()).second);
+        levelSet.setUniform3fv("lightDirection", l.lightPos.getPtr());
+        levelSet.setUniform3f("lightColor", l.lightSpecularHSV.r,l.lightSpecularHSV.g,l.lightSpecularHSV.b);
+        
+        levelSet.setUniform1f("stippleScale", stippleScale);
+        levelSet.setUniform4fv("stippleColor", stippleColor.getPtr());
+        
+        fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
+                      getSharedRenderTarget().getHeight());
+        levelSet.end();
+    } else {
+        ofLog(OF_LOG_ERROR, "Colony : selfDrawBackground() being called before selfUpdate(). Skipping selfDrawBackground()");
+    };
 }
 
 void CloudsVisualSystemColony::selfDraw(){
@@ -259,6 +264,7 @@ void CloudsVisualSystemColony::selfEnd()
 
 void CloudsVisualSystemColony::selfExit(){
     clear();
+    billboard.unload();
     levelSet.unload();
     //TODO: is this necessary?
     delete guiLooks;
