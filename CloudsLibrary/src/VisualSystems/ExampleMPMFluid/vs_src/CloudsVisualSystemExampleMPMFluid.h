@@ -13,7 +13,11 @@
 #include "CloudsVisualSystem.h"
 #include "ofxMPMFluid.h"
 
+#include "ofxTonic.h"
+#include "CloudsAudioEvents.h"
+#include "CloudsGlobal.h"
 
+using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemExampleMPMFluid : public CloudsVisualSystem {
@@ -117,4 +121,15 @@ protected:
     ofFloatColor pColor;
     float lineWidth;
     float mouseForce;
+
+	// Sound
+    ofxUISuperCanvas* soundGui;
+    float volume[4] = {0};
+    ControlParameter volumeControl[4];
+    ControlTrigger soundTriggers[3];
+    ControlParameter mouseX, mouseY, mouseSpeed, totalSpeed;
+    int prevMouseX, prevMouseY;
+    ofxTonicSynth synth;
+    Generator buildSynth();
+	void audioRequested(ofAudioEventArgs& args);
 };
