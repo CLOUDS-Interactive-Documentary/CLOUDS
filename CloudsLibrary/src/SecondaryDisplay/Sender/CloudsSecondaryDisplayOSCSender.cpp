@@ -61,7 +61,12 @@ void CloudsSecondaryDisplayOSCSender::sendClip(CloudsClip& clip){
 	m.addFloatArg(clip.getDuration());//duraiton
 	m.addStringArg(currentTopic); //topic
 	m.addStringArg(clip.projectExampleTitle); //example
-	m.addStringArg(lastQuestionAsked); //question
-	
+	//m.addStringArg(lastQuestionAsked); //question
+	if(clip.hasQuestion()){
+		m.addStringArg( clip.getQuestionForTopic(clip.getTopicsWithQuestions()[0]) );
+	}
+	else{
+		m.addStringArg(lastQuestionAsked); //question
+	}
 	sender.sendMessage(m);
 }
