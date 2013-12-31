@@ -12,6 +12,11 @@
 
 #include "CloudsVisualSystem.h"
 #include "ParticleConnectionGenerator.h"
+#include "CloudsGlobal.h"
+#include "CloudsAudioEvents.h"
+#include "ofxTonic.h"
+
+using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemConnectors : public CloudsVisualSystem {
@@ -115,4 +120,12 @@ protected:
 	ParticleConnectionGenerator generator;
 	ofMesh connectionLines;
 	
+	// Sound
+    ofxUISuperCanvas* soundGui;
+    string soundFiles[1] = {"wind_chimes.aif"};
+    bool playSample[1];
+    ControlTrigger soundTriggers[1];
+    ofxTonicSynth synth;
+    Generator buildSynth();
+	void audioRequested(ofAudioEventArgs& args);
 };
