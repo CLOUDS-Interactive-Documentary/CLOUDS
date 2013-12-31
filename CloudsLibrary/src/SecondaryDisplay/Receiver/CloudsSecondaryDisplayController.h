@@ -34,7 +34,7 @@ class CloudsSecondaryDisplayController {
 	ofxUISuperCanvas *SDGui;
     void draw();
     
-    bool debug;
+    bool debug, color;
 
   protected:
 	
@@ -49,11 +49,12 @@ class CloudsSecondaryDisplayController {
     void showQuestionBox();
     ofxFTGLSimpleLayout* getLayoutForLayer( SVGMesh* textMesh);
     int getFontSizeForMesh( SVGMesh* textMesh );
+    void drawTextToMesh(ofxFTGLSimpleLayout* font, string text, SVGMesh* mesh);
 
 	//TODO: make separate layer sets for Project Example vs Person
 	vector<CloudsSVGMesh> testAllLayout;
     
-    CloudsSVGMesh bioLayout, projectLayout, systemLayout;
+    CloudsSVGMesh bioLayout, projectLayout, questionLayout;
 	
 	bool playingMovie;
 	bool hasSpeaker;
@@ -77,5 +78,17 @@ class CloudsSecondaryDisplayController {
     ofColor lightBlue, darkBlue;
     
     vector<ofxFTGLFont*>    tempFontList;
+    
+    SVGMesh *meshQuestion,
+            *meshBioLastName,
+            *meshBioFirstName,
+            *meshBioLocation,
+            *meshBioTitle,
+            *meshBioDescription,
+            *meshProjectVideo,
+            *meshProjectTitle,
+            *meshProjectArtist,
+            *meshProjectDescription;
+
 
 };

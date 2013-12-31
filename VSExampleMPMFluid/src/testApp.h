@@ -4,6 +4,8 @@
 #include "ofxUI.h"
 #include "CloudsVisualSystemExampleMPMFluid.h"
 #include "CloudsInputKinectOSC.h"
+#include "CloudsMixer.h"
+
 
 class testApp : public ofBaseApp{
   public:
@@ -22,5 +24,8 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 		
+    void audioRequested(float *output, int bufferSize, int nChannels);
+    
 	CloudsVisualSystemExampleMPMFluid exampleMPMFluid;
+    CloudsMixer mixer;
 };
