@@ -13,6 +13,9 @@ CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
 	hasSpeaker = false;
 	playingMovie = false;
     displayMode = "BIO";
+    lightBlue = ofColor::fromHex(0x97d7fb);
+    darkBlue = ofColor::fromHex(0x439ced);
+    color = false;
 }
 
 void CloudsSecondaryDisplayController::setup(){
@@ -231,14 +234,10 @@ void CloudsSecondaryDisplayController::draw(){
         ////first name
         firstName = ofToUpper(firstName);
         drawTextToMesh(h2, firstName, meshBioFirstName);
-       // if(debug)
-         //   ofRect(t->bounds);
-            
+        
         ////last name
         lastName = ofToUpper(lastName);
         drawTextToMesh(h1, lastName, meshBioLastName);
-      //  if(debug)
-        //    ofRect(t->bounds);
         
         float firstNameWidth = h2->getStringBoundingBox(firstName, 0, 0).width;
         float lastNameWidth = h1->getStringBoundingBox(lastName, 0, 0).width;
@@ -257,17 +256,23 @@ void CloudsSecondaryDisplayController::draw(){
         //reposition title to float left
         meshBioTitle->bounds.x = titleX;
         
+        if(color)
+            ofSetColor(lightBlue);
         drawTextToMesh(h4, title, meshBioTitle);
         if(debug)
             ofRect(t->bounds);
         
         ////location
+        if(color)
+            ofSetColor(darkBlue);
+
         string loc = ofToUpper(currentSpeaker.location2);
         meshBioLocation->bounds.x = titleX;
         meshBioLocation->bounds.width = 9999;
         drawTextToMesh(h4, loc, meshBioLocation);
-       // if(debug)
-         //   ofRect(t->bounds);
+        
+        if(color)
+            ofSetColor(255);
         
         ////byline / bio / description
         drawTextToMesh(p, currentSpeaker.byline1, meshBioDescription);
@@ -281,39 +286,23 @@ void CloudsSecondaryDisplayController::draw(){
         
         //video
         if(playingMovie){
-          //  t = projectLayout.getMeshByID("BOX_x5F_VIDEO");
-           // if(t){
-                //scale and preserve the aspect ratio
-                ofRectangle playerRect(0,0,archivePlayer.getWidth(), archivePlayer.getHeight());
-                playerRect.scaleTo(meshProjectVideo->bounds);
-                archivePlayer.draw(playerRect);
-            //}
+            //scale and preserve the aspect ratio
+            ofRectangle playerRect(0,0,archivePlayer.getWidth(), archivePlayer.getHeight());
+            playerRect.scaleTo(meshProjectVideo->bounds);
+            archivePlayer.draw(playerRect);
             playingMovie = archivePlayer.isPlaying();
         }
         
         ////project title
-       // t = projectLayout.getMeshByID("TEXTBOX_x5F_TITLE");
-        //if(t){
             string title = ofToUpper(currentExample.title);
             drawTextToMesh(h2, title, meshProjectTitle);
-           // h2->drawString(currentExample.title, t->bounds.x, t->bounds.y + t->bounds.height);
-        //}
         
         ////artist name
-       // t = projectLayout.getMeshByID("TEXTBOX_x5F_ARTIST");
-       // if(t){
             string name = currentExample.creatorName;
             drawTextToMesh(h4, name, meshProjectArtist);
-            //h4->drawString(currentExample.creatorName, t->bounds.x, t->bounds.y + t->bounds.height);
-        //}
         
         ////project description
-      //  t = projectLayout.getMeshByID("TEXTBOX_x5F_DESC");
-       // if(t)
             drawTextToMesh(p, currentExample.description, meshProjectDescription);
-           // p->drawString(currentExample.description, t->bounds.x, t->bounds.y + pFontSize);
-        
-        
         
     }
 	

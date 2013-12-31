@@ -34,7 +34,7 @@ class CloudsSecondaryDisplayController {
 	ofxUISuperCanvas *SDGui;
     void draw();
     
-    bool debug;
+    bool debug, color;
 
   protected:
 	
