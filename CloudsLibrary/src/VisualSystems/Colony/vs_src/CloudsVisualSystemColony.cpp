@@ -211,7 +211,7 @@ void CloudsVisualSystemColony::selfDrawBackground()
     }
     
     //FIXME: This is a safety check if FBOs are not allocated, in order to avoid calling an empty one
-    if (areFbosAllocatedAndSized()){
+
         ofEnableAlphaBlending();
         
         levelSet.begin();
@@ -233,13 +233,16 @@ void CloudsVisualSystemColony::selfDrawBackground()
         
         levelSet.setUniform1f("stippleScale", stippleScale);
         levelSet.setUniform4fv("stippleColor", stippleColor.getPtr());
-        
+    
+    if (areFbosAllocatedAndSized()){
         fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
                       getSharedRenderTarget().getHeight());
-        levelSet.end();
     } else {
-        ofLog(OF_LOG_ERROR, "Colony : selfDrawBackground() being called before fbos were allocated");
+        ofRect(0, 0, getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+        ofLog(OF_LOG_ERROR, "Colony : selfDrawBackground() being called before fbos were allocated. Drawing empty background instead");
     };
+        levelSet.end();
+    
 }
 
 void CloudsVisualSystemColony::selfDraw(){
