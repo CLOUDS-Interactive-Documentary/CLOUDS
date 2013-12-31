@@ -34,7 +34,7 @@ class CloudsSecondaryDisplayController {
 	ofxUISuperCanvas *SDGui;
     void draw();
     
-    bool debug;
+    bool debug, color;
 
   protected:
 	
@@ -78,5 +78,17 @@ class CloudsSecondaryDisplayController {
     ofColor lightBlue, darkBlue;
     
     vector<ofxFTGLFont*>    tempFontList;
+    
+    SVGMesh *meshQuestion,
+            *meshBioLastName,
+            *meshBioFirstName,
+            *meshBioLocation,
+            *meshBioTitle,
+            *meshBioDescription,
+            *meshProjectVideo,
+            *meshProjectTitle,
+            *meshProjectArtist,
+            *meshProjectDescription;
+
 
 };

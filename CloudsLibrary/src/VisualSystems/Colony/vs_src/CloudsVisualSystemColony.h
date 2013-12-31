@@ -1,6 +1,7 @@
 /* 
  WOW SUCH VISUAL
- VERY COPYRIGHT
+ VERY SYSTEM
+ MUCH COPYRIGHT
  */
 
 
@@ -55,8 +56,13 @@ private:
     cellParams params;
     bool levelSetMode, levelSetBG;
     int numInitialCells;
+    
     float translucenseCell, translucenseDish;
     ofVec4f kernelColor_high, kernelColor_low;
+
+    float stippleScale;
+    ofVec4f stippleColor;
+
 
     /* MUCH PRIVATE */
     float kernel_maxValue;

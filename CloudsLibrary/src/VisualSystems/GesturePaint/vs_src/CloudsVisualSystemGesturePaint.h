@@ -81,7 +81,7 @@ public:
 	//Feel free to make things interactive for you, and for the user!
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
-    
+
     void selfInteractionMoved(CloudsInteractionEventArgs& args);
 	void selfInteractionStarted(CloudsInteractionEventArgs& args);
 	void selfInteractionDragged(CloudsInteractionEventArgs& args);
