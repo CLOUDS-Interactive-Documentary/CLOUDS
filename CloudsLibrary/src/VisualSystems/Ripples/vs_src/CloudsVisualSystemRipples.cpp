@@ -53,6 +53,29 @@ void CloudsVisualSystemRipples::selfSetupGui()
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemRipples::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
+    
+    // sound gui
+	soundGui = new ofxUISuperCanvas("Ripples Sound", gui);
+	soundGui->copyCanvasStyle(gui);
+	soundGui->copyCanvasProperties(gui);
+	soundGui->setName("Ripples Sound");
+	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    soundGui->addToggle("Enable sound", &bEnableSounds);
+    soundGui->addSlider("Note vol", 0, 1, &volume[0]);
+    soundGui->addSlider("Note noise vol", 0, 1, &volume[1]);
+    soundGui->addIntSlider("Base note", 0, 11, &baseNote);
+    vector<string> items;
+    items.push_back("Chord Major 4");
+    items.push_back("Chord Minor 4");
+    items.push_back("Scale Major");
+    items.push_back("Scale Blues");
+    items.push_back("Scale Pentatonic");
+    soundGui->addDropDownList("Scale", items);
+    
+	ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemRipples::selfGuiEvent);
+	guis.push_back(soundGui);
+	guimap[customGui->getName()] = soundGui;
 }
 
 void CloudsVisualSystemRipples::selfGuiEvent(ofxUIEventArgs &e)
@@ -68,6 +91,12 @@ void CloudsVisualSystemRipples::selfGuiEvent(ofxUIEventArgs &e)
 	}
     else if (e.widget->getName() == "TINT ALPHA") {
         tintAlpha->setPosAndHome(tintAlpha->getPos());
+    }
+    else if (e.widget->getParent()->getName() == "Scale") {
+        ofxUIToggle *toggle = (ofxUIToggle*)e.widget;
+        if (toggle->getValue()) {
+            setScaleByName(e.widget->getName());
+        }
     }
 }
 
@@ -113,6 +142,13 @@ void CloudsVisualSystemRipples::selfSetup()
     ripplesShader.load("", getVisualSystemDataPath() + "shaders/ripples.frag");
     
     bRestart = true;
+
+    // sound
+    bEnableSounds = true;
+    noteIndex = 0;
+    baseNote = 0;
+    setScaleByName("Scale Pentatonic");
+    mainSynth.setOutputGen(buildSynth());
 }
 
 void CloudsVisualSystemRipples::restart()
@@ -152,6 +188,12 @@ void CloudsVisualSystemRipples::restart()
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemRipples::selfPresetLoaded(string presetPath)
 {
+    ofxUIDropDownList* d = (ofxUIDropDownList*)soundGui->getWidget("Scale");
+	vector<int>& selected = d->getSelectedIndeces();
+	if (selected.size() > 0) {
+        setScaleByName(d->getToggles()[selected[0]]->getName());
+	}
+
     bRestart = true;
 }
 
@@ -159,7 +201,8 @@ void CloudsVisualSystemRipples::selfPresetLoaded(string presetPath)
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemRipples::selfBegin(){
-	
+    dontTriggerSoundCounter = 0;
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemRipples::audioRequested);
 }
 
 //do things like ofRotate/ofTranslate here
@@ -196,6 +239,14 @@ void CloudsVisualSystemRipples::selfUpdate()
         ripplesSrcFbo.end();
         ofPopMatrix();
         ofPopStyle();
+        
+        // sound
+        if (dontTriggerSoundCounter == 0) {
+            dontTriggerSoundCounter = 20;
+            if (bEnableSounds) {
+                playNote(GetCloudsInputX()/20+50);
+            }
+        }
     }
     
     ofPushStyle();
@@ -210,7 +261,17 @@ void CloudsVisualSystemRipples::selfUpdate()
     }
     ripplesShader.end();
     ripplesDstFbo.end();
+
     ofPopStyle();
+    
+    // sound
+    if (dontTriggerSoundCounter > 0)
+    {
+        dontTriggerSoundCounter--;
+    }
+    volumeControl[0].value(volume[0]);
+    volumeControl[1].value(volume[1]);
+>>>>>>> 90e4584... VSRipple: added sound
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -242,7 +303,7 @@ void CloudsVisualSystemRipples::selfDrawBackground()
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemRipples::selfEnd(){
-	
+    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemRipples::audioRequested);
 }
 
 // this is called when you should clear all the memory and delet anything you made in setup
@@ -274,4 +335,82 @@ void CloudsVisualSystemRipples::selfMousePressed(int x, int y, int button){
 
 void CloudsVisualSystemRipples::selfMouseReleased(int x, int y, int button){
 	
+}
+
+Generator CloudsVisualSystemRipples::buildSynth()
+{
+    for (int i=0; i<10; i++)
+    {
+        mixer.addInput(notes[i]);
+    }
+    
+    return mixer >> Reverb().roomSize(100) >> BasicDelay(3, 4).feedback(0.7);
+}
+
+void CloudsVisualSystemRipples::setScaleByName(string name)
+{
+    scale.clear();
+    
+    if (name == "Chord Major 4") {
+        cout<<"Scale: Selected Major 4"<<endl;
+        scale.push_back(baseNote + 0);
+        scale.push_back(baseNote + 4);
+        scale.push_back(baseNote + 7);
+        scale.push_back(baseNote + 11);
+    }
+    else if (name == "Chord Minor 4") {
+        cout<<"Scale: Selected Minor 4"<<endl;
+        scale.push_back(baseNote + 0);
+        scale.push_back(baseNote + 3);
+        scale.push_back(baseNote + 7);
+        scale.push_back(baseNote + 10);
+    }
+    else if (name == "Scale Major") {
+        cout<<"Scale: Selected Scale Major"<<endl;
+        scale.push_back(baseNote + 0);
+        scale.push_back(baseNote + 2);
+        scale.push_back(baseNote + 4);
+        scale.push_back(baseNote + 5);
+        scale.push_back(baseNote + 7);
+        scale.push_back(baseNote + 9);
+        scale.push_back(baseNote + 11);
+    }
+    else if (name == "Scale Blues") {
+        cout<<"Scale: Selected Scale Blues"<<endl;
+        scale.push_back(baseNote + 0);
+        scale.push_back(baseNote + 3);
+        scale.push_back(baseNote + 5);
+        scale.push_back(baseNote + 6);
+        scale.push_back(baseNote + 7);
+        scale.push_back(baseNote + 10);
+    }
+    else if (name == "Scale Pentatonic") {
+        cout<<"Scale: Selected Scale Pentatonic"<<endl;
+        scale.push_back(baseNote + 0);
+        scale.push_back(baseNote + 2);
+        scale.push_back(baseNote + 4);
+        scale.push_back(baseNote + 7);
+        scale.push_back(baseNote + 9);
+    }
+    
+}
+
+void CloudsVisualSystemRipples::playNote(int note)
+{
+    ControlSnapToScale scaleSnapper = ControlSnapToScale().setScale(scale);
+    scaleSnapper.input(note);
+    mutex.lock();
+    
+    Generator noteGen = (SineWave().freq(ControlMidiToFreq().input(scaleSnapper)) * volumeControl[0]) * ADSR(0.02, 0.25, 0.0, 0).trigger(1);
+    Generator noiseGen = ((Noise() * volumeControl[1]) >> LPF12().cutoff(1000)) * ADSR(0.04, 0.12, 0.0, 0).trigger(1);
+    notes[noteIndex++].setOutputGen(noteGen * SineWave().freq(4) + noiseGen);
+    noteIndex = noteIndex%10;
+    mutex.unlock();
+}
+
+void CloudsVisualSystemRipples::audioRequested(ofAudioEventArgs& args)
+{
+    mutex.lock();
+    mainSynth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+    mutex.unlock();
 }
