@@ -198,19 +198,18 @@ void CloudsVisualSystemRipples::selfUpdate()
         ofPopStyle();
     }
     
-    ofPushStyle();
+
     ripplesDstFbo.begin();
     ripplesShader.begin();
     ripplesShader.setUniformTexture("backbuffer", ripplesDstFbo.getTextureReference(), 1);
     ripplesShader.setUniformTexture("tex0", ripplesSrcFbo.getTextureReference(), 2);
     ripplesShader.setUniform1f("damping", damping / 10.0f + 0.9f);  // 0.9 - 1.0 range
     {
-        ofSetColor(tintColor);
         renderMesh.draw();
     }
     ripplesShader.end();
     ripplesDstFbo.end();
-    ofPopStyle();
+
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -230,6 +229,7 @@ void CloudsVisualSystemRipples::selfDrawBackground()
     ofSetColor(255, 255);
     
     ofPushStyle();
+    ofSetColor(tintColor);
     ofEnableAlphaBlending();
     {
         ripplesDstFbo.draw(0, 0);
