@@ -13,6 +13,9 @@ CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
 	hasSpeaker = false;
 	playingMovie = false;
     displayMode = "BIO";
+    lightBlue = ofColor::fromHex(0x97d7fb);
+    darkBlue = ofColor::fromHex(0x439ced);
+    color = false;
 }
 
 void CloudsSecondaryDisplayController::setup(){
@@ -46,40 +49,34 @@ void CloudsSecondaryDisplayController::setup(){
         tmp->loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", i );
         tempFontList.push_back( tmp );
     }
-
     
+    //setup references to all meshes that need references
+    meshQuestion = questionLayout.getMeshByID("TEXTBOX_x5F_QUESTION_1_");
+    ////for bio
+    meshBioFirstName = bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME_2_");
+    meshBioLastName = bioLayout.getMeshByID("TEXTBOX_x5F_LASTNAME_1_");
+    meshBioTitle = bioLayout.getMeshByID("TEXTBOX_x5F_TITLE_1_");
+    meshBioLocation = bioLayout.getMeshByID("TEXTBOX_x5F_LOC_1_");
+    meshBioDescription = bioLayout.getMeshByID("TEXTBOX_x5F_BIO");
+    ////for project example
+    meshProjectVideo = projectLayout.getMeshByID("BOX_x5F_VIDEO");
+    meshProjectTitle = projectLayout.getMeshByID("TEXTBOX_x5F_TITLE_1_");
+    meshProjectArtist = projectLayout.getMeshByID("TEXTBOX_x5F_ARTIST_1_");
+    meshProjectDescription = projectLayout.getMeshByID("TEXTBOX_x5F_DESC_1_");
+
     //load all fonts
     ////last name
-    h1 = getLayoutForLayer(bioLayout.getMeshByID("TEXTBOX_x5F_LASTNAME"));
-   // h1.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_LASTNAME")->bounds.height * fScale);
-   // h1.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.width);
+    h1 = getLayoutForLayer(meshBioLastName);
     ////first name
-    h2 = getLayoutForLayer(bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME"));
-
-  //  h2.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.height * fScale);
-   // h2.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME")->bounds.width);
-    
+    h2 = getLayoutForLayer(meshBioFirstName);
     ////question
-    h3 = getLayoutForLayer(bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION"));
-    
-   // h3FontSize = 38 * fScale;
-   // h3.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", h3FontSize);
-   // h3.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION")->bounds.width);
-    ////location / creator name
-    h4 = getLayoutForLayer(bioLayout.getMeshByID("TEXTBOX_x5F_LOC"));
-    
-   // h4.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", bioLayout.getMeshByID("TEXTBOX_x5F_LOC")->bounds.height * fScale);
-  //  h4.setLineLength(bioLayout.getMeshByID("BOX_x5F_LOC")->bounds.width);
+    h3 = getLayoutForLayer(meshQuestion);
+    ////locations
+    h4 = getLayoutForLayer(meshBioLocation);
     ////byline / description
-    p = getLayoutForLayer(bioLayout.getMeshByID("TEXTBOX_x5F_BIO"));
+    p = getLayoutForLayer(meshBioDescription);
 
-    
-  //  pFontSize = 21 * fScale;
-   // p.loadFont(GetCloudsDataPath() + "font/Blender-THIN.ttf", pFontSize);
-   // p.setLineLength(bioLayout.getMeshByID("TEXTBOX_x5F_BIO")->bounds.width);
- 
 	displayTarget.allocate(1920, 1080, GL_RGB);
-    
     // cleanup!
     for( int i=0; i<tempFontList.size(); i++ ){
         delete tempFontList[i];
@@ -101,29 +98,18 @@ void CloudsSecondaryDisplayController::loadSVGs(){
     //load the three different layouts
     bioLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/BIO.svg");
     projectLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/PROJECTEX/PROJECTEX.svg");
-    systemLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/VISUALSYSTEM/VISUAL.svg");
+    questionLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/QUESTION/QUESTION.svg");
 
 }
 
 ofxFTGLSimpleLayout* CloudsSecondaryDisplayController::getLayoutForLayer( SVGMesh* textMesh ) {
     
         if( textMesh != NULL ){
-//            float maxHeight = textMesh->bounds.height;
             int fontSize = getFontSizeForMesh( textMesh );
-            
-            //            cout << "The correct font size is " << fontSize << ". Width is " << textMesh->bounds.width << endl;
-            
             // make a layout
             ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
             newLayout->loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", fontSize );
             newLayout->setLineLength( textMesh->bounds.width );
-            
-            // make a label
-            /*CloudsHUDLabel newLabel;
-            newLabel.layout = newLayout;
-            newLabel.bounds = textMesh->bounds;
-            
-            hudLabelList.push_back( newLabel );*/
             
             return newLayout;
         }
@@ -223,28 +209,14 @@ void CloudsSecondaryDisplayController::draw(){
         ////question
         ////// don't display if not avilable
         //find the question box
-        t = bioLayout.getMeshByID("BOX_x5F_QUESTION_x5F_DETAILS");
         if(lastQuestion != ""){
             //show the question box
-            t->visible = true;
-            
+            questionLayout.draw();
             //find the text box
-            t = bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION");
-            if(t){
-                lastQuestion = ofToUpper(lastQuestion);
-                drawTextToMesh(h3, lastQuestion, t);
-                //h3->setLineLength(t->bounds.width);
-                //h3->drawString(lastQuestion, t->bounds.x, t->bounds.y + h3FontSize);
-            }
-            
-            if(debug)
-                ofRect(t->bounds);
-            
-        }
-        else{
-            t->visible = false;
-            //this does not work because the group I am looking for is composed not of one mesh, but of 8 different mesh objects, and the method getMeshByID does not return the entire group of meshes, but only one of them.
-            //At this point, it is better to draw whetever elements need to show or hide as separate SVG files
+            lastQuestion = ofToUpper(lastQuestion);
+            drawTextToMesh(h3, lastQuestion, meshQuestion);
+         //   if(debug)
+           //     ofRect(t->bounds);
         }
         
         ////speaker name
@@ -260,54 +232,51 @@ void CloudsSecondaryDisplayController::draw(){
         
         //DRAW SPEAKER NAME
         ////first name
-        t = bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME");
-        if(t){
-            firstName = ofToUpper(firstName);
-            drawTextToMesh(h2, firstName, t);
-           // h2->drawString(firstName, t->bounds.x, t->bounds.y + t->bounds.height);
-            if(debug)
-                ofRect(t->bounds);
-            
-        }
+        firstName = ofToUpper(firstName);
+        drawTextToMesh(h2, firstName, meshBioFirstName);
+        
         ////last name
-        t = bioLayout.getMeshByID("TEXTBOX_x5F_LASTNAME");
-        if(t){
-            lastName = ofToUpper(lastName);
-            drawTextToMesh(h1, lastName, t);
-           // h1->drawString(lastName, t->bounds.x, t->bounds.y + t->bounds.height);
-            if(debug)
-                ofRect(t->bounds);
-            
-        }
+        lastName = ofToUpper(lastName);
+        drawTextToMesh(h1, lastName, meshBioLastName);
+        
+        float firstNameWidth = h2->getStringBoundingBox(firstName, 0, 0).width;
+        float lastNameWidth = h1->getStringBoundingBox(lastName, 0, 0).width;
+        float longestNameWidth;
+        if(firstNameWidth > lastNameWidth)
+            longestNameWidth = firstNameWidth;
+        else
+            longestNameWidth = lastNameWidth;
+        
+        float margin = 60;
+        float titleX = meshBioFirstName->bounds.x + longestNameWidth + margin;
         
         ////title
-        t = bioLayout.getMeshByID("TEXTBOX_x5F_TITLE");
-        if(t){
-            string title = ofToUpper(currentSpeaker.title);
-            drawTextToMesh(h4, title, t);
-           // h4->drawString(title, t->bounds.x, t->bounds.y + t->bounds.height);
-            if(debug)
-                ofRect(t->bounds);
-        }
+        string title = ofToUpper(currentSpeaker.title);
+        meshBioTitle->bounds.width = 9999;
+        //reposition title to float left
+        meshBioTitle->bounds.x = titleX;
+        
+        if(color)
+            ofSetColor(lightBlue);
+        drawTextToMesh(h4, title, meshBioTitle);
+        if(debug)
+            ofRect(t->bounds);
         
         ////location
-        t = bioLayout.getMeshByID("TEXTBOX_x5F_LOC");
-        if(t){
-            string loc = ofToUpper(currentSpeaker.location1);
-            drawTextToMesh(h4, loc, t);
-          //  h4->drawString(currentSpeaker.location1, t->bounds.x, t->bounds.y + t->bounds.height);
-            if(debug)
-                ofRect(t->bounds);
-            
-        }
+        if(color)
+            ofSetColor(darkBlue);
+
+        string loc = ofToUpper(currentSpeaker.location2);
+        meshBioLocation->bounds.x = titleX;
+        meshBioLocation->bounds.width = 9999;
+        drawTextToMesh(h4, loc, meshBioLocation);
+        
+        if(color)
+            ofSetColor(255);
         
         ////byline / bio / description
-        t = bioLayout.getMeshByID("TEXTBOX_x5F_BIO");
-        if(t){
-            drawTextToMesh(p, currentSpeaker.byline1, t);
+        drawTextToMesh(p, currentSpeaker.byline1, meshBioDescription);
 
-           // p->drawString(currentSpeaker.byline1, t->bounds.x, t->bounds.y + pFontSize);
-        }
         
         
         
@@ -317,42 +286,24 @@ void CloudsSecondaryDisplayController::draw(){
         
         //video
         if(playingMovie){
-            t = projectLayout.getMeshByID("BOX_x5F_VIDEO");
-            if(t){
-                //scale and preserve the aspect ratio
-                ofRectangle playerRect(0,0,archivePlayer.getWidth(), archivePlayer.getHeight());
-                playerRect.scaleTo(t->bounds);
-                archivePlayer.draw(playerRect);
-            }
+            //scale and preserve the aspect ratio
+            ofRectangle playerRect(0,0,archivePlayer.getWidth(), archivePlayer.getHeight());
+            playerRect.scaleTo(meshProjectVideo->bounds);
+            archivePlayer.draw(playerRect);
             playingMovie = archivePlayer.isPlaying();
         }
         
-        ////title
-        t = projectLayout.getMeshByID("TEXTBOX_x5F_TITLE");
-        if(t){
+        ////project title
             string title = ofToUpper(currentExample.title);
-            drawTextToMesh(h2, title, t);
-           // h2->drawString(currentExample.title, t->bounds.x, t->bounds.y + t->bounds.height);
-        }
+            drawTextToMesh(h2, title, meshProjectTitle);
         
-        ////name
-        t = projectLayout.getMeshByID("TEXTBOX_x5F_ARTIST");
-        if(t){
+        ////artist name
             string name = currentExample.creatorName;
-            drawTextToMesh(h4, name, t);
-            //h4->drawString(currentExample.creatorName, t->bounds.x, t->bounds.y + t->bounds.height);
-        }
+            drawTextToMesh(h4, name, meshProjectArtist);
         
-        ////description
-        t = projectLayout.getMeshByID("TEXTBOX_x5F_DESC");
-        if(t)
-            drawTextToMesh(p, currentExample.description, t);
-           // p->drawString(currentExample.description, t->bounds.x, t->bounds.y + pFontSize);
+        ////project description
+            drawTextToMesh(p, currentExample.description, meshProjectDescription);
         
-        
-        
-    }else if(displayMode == "SYSTEM"){
-        systemLayout.draw();
     }
 	
 	displayTarget.end();
@@ -362,13 +313,12 @@ void CloudsSecondaryDisplayController::draw(){
 	targetRect.scaleTo(screenRect);
 	displayTarget.getTextureReference().draw(targetRect);
 	
-    // ---------------- added
-//	//get info for a speaker
-//	CloudsSpeaker::speakers["Kyl_CH"].twitterHandle;
-	//TODO: draw speaker layout
-	//TODO: overlay with project example when relevant
 	
 }
+
+/*void CloudsSecondaryDisplayController::drawBioLayout(){
+    
+}*/
 
 void CloudsSecondaryDisplayController::drawTextToMesh(ofxFTGLSimpleLayout* font, string text, SVGMesh* mesh){
     //update line length
@@ -377,10 +327,3 @@ void CloudsSecondaryDisplayController::drawTextToMesh(ofxFTGLSimpleLayout* font,
     font->drawString(text, mesh->bounds.x, mesh->bounds.y + font->getStringBoundingBox("M", 0, 0).height);
 }
 
-void CloudsSecondaryDisplayController::hideQuestionBox(){
-    bioLayout.getMeshByID("BOX_x5F_QUESTION_x5F_DETAILS")->visible = false;;
-}
-
-void CloudsSecondaryDisplayController::showQuestionBox(){
-    
-}

@@ -16,7 +16,7 @@ typedef enum {
     CLOUDS_HUD_HOVER_ROLLOVER,
     CLOUDS_HUD_HOVER_OUTRO,
     CLOUDS_HUD_HOVER_ACTIVE_INTRO,
-    CLOUDS_HUD_HOVER_ACTIVE
+    CLOUDS_HUD_HOVER_ACTIVE_LOOP
 } CloudsHUDHomeState;
 
 class CloudsHUDHomeButton {
@@ -32,7 +32,16 @@ class CloudsHUDHomeButton {
     bool hitTest( float xPos, float yPos );
     bool hitTest( ofPoint mousePos );
     
+    bool wasHomeOpened(){
+        if( bWasOpened ){
+            bWasOpened = false;
+            return true;
+        }
+        return false;
+    }
+    
 	ofVec2f homeLocation;
+    ofRectangle bounds;
 
   protected:
     void rollover();
@@ -40,21 +49,19 @@ class CloudsHUDHomeButton {
     
     vector<ofTexture*>  loadFramesDir( string dirPath );
     
-	ofRectangle hitBox;
     ofVec2f     buttonSize;
     
     float   playhead;
     float   targetFps;
+    float   lastFrameTime;
     
     CloudsHUDHomeState  currentState;
     
     bool    bIsHovering;
+    bool    bWasOpened;
     
 	float maxHoverTime;
 	float hoverStartTime;
     
-    vector<ofTexture*>  rolloverFrames;
-    vector<ofTexture*>  rolloverOutFrames;
-    vector<ofTexture*>  activeIntroFrames;
-    vector<ofTexture*>  activeLoopFrames;
+    map<CloudsHUDHomeState, vector<ofTexture*> >    rolloverTextures;
 };

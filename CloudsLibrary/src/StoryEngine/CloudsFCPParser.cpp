@@ -145,7 +145,8 @@ void CloudsFCPParser::parseVOClips(){
 				clip.endFrame = p.getDuration()*24.;
 				voiceoverDuration[ ofFilePath::getBaseName(clip.voiceOverAudioPath) ] = p.getDuration();
 			}
-			cout << "Voiceoer Clip " << fileName << " duration is " <<  clip.endFrame/24. << endl;
+			
+//			cout << "Voiceoer Clip " << fileName << " duration is " <<  clip.endFrame/24. << endl;
 		}
 		
 		string name = ofFilePath::getBaseName( fileName );
@@ -162,7 +163,7 @@ void CloudsFCPParser::parseVOClips(){
 		clip.person = clipComponents[0];
 		clip.name = clipComponents[1];
 		
-		cout << "added VO only clip " << clip.getLinkName() << endl;
+//		cout << "added VO only clip " << clip.getLinkName() << endl;
 		
 		clipIDToIndex[clip.getID()] = allClips.size();
 		clipLinkNameToIndex[clip.getLinkName()] = allClips.size();
@@ -343,7 +344,7 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 			bool foundClip;
 			CloudsClip& clip = getClipWithLinkName(linkName,foundClip);
 			if(!foundClip){
-				ofLogError("CLIP " + linkName + " NOT FOUND IN CLUSTER NETWORK");
+				ofLogError("CloudsFCPParser::parseClusterNetwork") << "Clip " << linkName << " Not found in Pajek Cluster Map";
 				continue;
 			}
 			int numcomp = components.size();
@@ -357,6 +358,7 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 //	populateKeywordCentroids();
 //	calculateCohesionMedianForKeywords();
 //	calculateKeywordAdjascency();
+	//TODO CACHE::
 	calculateKeywordFamilies();
 }
 
@@ -1064,7 +1066,7 @@ void CloudsFCPParser::autolinkSequentialClips(){
                         
                         //adding link from clip N -1 -> N
                         addLink(allClips[i], getAllClips()[j]);
-                        cout<<"Auto linking "<<allClips[i].getLinkName() << " and "<<getAllClips()[j].getLinkName() << " as they are in sequence" <<endl;
+//                        cout<<"Auto linking "<<allClips[i].getLinkName() << " and "<<getAllClips()[j].getLinkName() << " as they are in sequence" <<endl;
 
                         //removing clip N fromt clip N-1's overlapping list so that they story engine doesnt reject it.
                         getAllClips()[i].removeOverlappingClipName(allClips[j].getLinkName());
@@ -1259,7 +1261,7 @@ CloudsClip& CloudsFCPParser::getClipWithLinkName( string linkname, bool& found )
 	if(found){
 		return allClips[ clipLinkNameToIndex[linkname] ];
 	}
-    ofLogError() << "No clip found with link name " << linkname << ". Returning dummy video!";
+    ofLogError("CloudsFCPParser::getClipWithLinkName") << "No clip found with link name " << linkname << ". Returning dummy video!";
 	return dummyClip;
 }
 
@@ -1596,7 +1598,4 @@ void CloudsFCPParser::saveInterventions(string interventionsFile){
     if(! linksXML.saveFile(interventionsFile) ){
 		if(printErrors) ofSystemAlertDialog("UNABLE TO SAVE LINKS. DO NOT PROCEED");
 	}
-
 }
-
-

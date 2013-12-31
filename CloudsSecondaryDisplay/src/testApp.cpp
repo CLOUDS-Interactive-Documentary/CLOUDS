@@ -28,6 +28,9 @@ void testApp::keyPressed(int key){
         debug = !debug;
         secondaryDisplay.debug = debug;
     }
+    else if(key == 'c'){
+        secondaryDisplay.color = !secondaryDisplay.color;
+    }
 }
 
 //--------------------------------------------------------------

@@ -71,12 +71,24 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     guiLooks->copyCanvasStyle(gui);
     guiLooks->copyCanvasProperties(gui);
     guiLooks->setName("LOOKS");
+    guiLooks->addToggle("Level Set BG", &levelSetBG);
     guiLooks->setWidgetFontSize(OFX_UI_FONT_SMALL);
     guiLooks->addSlider("Cell Floor Translusence", 0., 1., &translucenseCell);
     guiLooks->addSlider("Dish Floor Translusence", 0., 1., &translucenseDish);
     
     float hDim = 16;
     float vDim = 80;
+
+    guiLooks->addWidgetDown(new ofxUILabel("STIPPLE", OFX_UI_FONT_MEDIUM));
+    guiLooks->addSlider("R", 0, 1., &(stippleColor.x), hDim, vDim);
+    guiLooks->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    guiLooks->addSlider("G", 0, 1., &(stippleColor.y), hDim, vDim);
+    guiLooks->addSlider("B", 0, 1., &(stippleColor.z), hDim, vDim);
+    guiLooks->addSlider("A", 0, 1., &(stippleColor.w), hDim, vDim);
+
+    guiLooks->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    guiLooks->addSlider("Stipple Scale", 0,2, &stippleScale);
+    
     
     guiLooks->addWidgetDown(new ofxUILabel("KERNEL COLOR", OFX_UI_FONT_MEDIUM));
     guiLooks->addSlider("R1", 0, 1., &(kernelColor_high.x), hDim, vDim);
@@ -204,6 +216,7 @@ void CloudsVisualSystemColony::selfDrawBackground()
     levelSet.setUniformTexture("grunge", grunge, 1);
     levelSet.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
     levelSet.setUniform1i("levelSet", levelSetMode);
+    levelSet.setUniform1i("levelSetBg", levelSetBG);
     levelSet.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
     levelSet.setUniform2f("imgRes", grunge.getWidth(), grunge.getHeight());
     levelSet.setUniform1f("translucenseCell", translucenseCell);
@@ -211,9 +224,14 @@ void CloudsVisualSystemColony::selfDrawBackground()
     levelSet.setUniform4fv("kernelColor_high", kernelColor_high.getPtr());
     levelSet.setUniform4fv("kernelColor_low", kernelColor_low.getPtr());
     levelSet.setUniform1f("kernel_maxValue", kernel_maxValue);
+
     ofxLight& l = (*(*lights.begin()).second);
     levelSet.setUniform3fv("lightDirection", l.lightPos.getPtr());
     levelSet.setUniform3f("lightColor", l.lightSpecularHSV.r,l.lightSpecularHSV.g,l.lightSpecularHSV.b);
+
+    levelSet.setUniform1f("stippleScale", stippleScale);
+    levelSet.setUniform4fv("stippleColor", stippleColor.getPtr());
+
     fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
                   getSharedRenderTarget().getHeight());
     levelSet.end();
