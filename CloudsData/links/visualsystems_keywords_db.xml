@@ -245,16 +245,6 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="2DVideo_FaceShift_noisy_">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
 <system name="2DVideo_FaceSubstitution">
     <keywords>face tracking|new aesthetic|machine aesthetics</keywords>
     <links></links>
