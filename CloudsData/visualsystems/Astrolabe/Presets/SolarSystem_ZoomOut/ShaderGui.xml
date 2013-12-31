@@ -13,17 +13,17 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c0_hue</Name>
-    <Value>145</Value>
+    <Value>143</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c0_brightness</Name>
-    <Value>154</Value>
+    <Value>180</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c0_saturation</Name>
-    <Value>89</Value>
+    <Value>36</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -33,17 +33,17 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c1_hue</Name>
-    <Value>148</Value>
+    <Value>165</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c1_brightness</Name>
-    <Value>0</Value>
+    <Value>148</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>c1_saturation</Name>
-    <Value>136</Value>
+    <Value>195</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -58,7 +58,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c2_brightness</Name>
-    <Value>0</Value>
+    <Value>33</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -68,7 +68,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c2_alpha</Name>
-    <Value>106</Value>
+    <Value>27</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

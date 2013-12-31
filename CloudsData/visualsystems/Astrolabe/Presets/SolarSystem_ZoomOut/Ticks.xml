@@ -8,17 +8,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>delayOffsetScale</Name>
-    <Value>0.394088656</Value>
+    <Value>1.241379261</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>innerSpeed</Name>
-    <Value>0.986123085</Value>
+    <Value>0.739842296</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>outerSpeed</Name>
-    <Value>8.177522659</Value>
+    <Value>5.025127888</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -38,12 +38,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>LINEAR</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>QUADRATIC</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -78,12 +78,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>YRot</Name>
-    <Value>-160</Value>
+    <Value>-180</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>yTickSpeed</Name>
-    <Value>313</Value>
+    <Value>1588</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
