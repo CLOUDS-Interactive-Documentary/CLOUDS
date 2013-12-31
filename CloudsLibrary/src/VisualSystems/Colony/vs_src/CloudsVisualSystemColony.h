@@ -53,7 +53,7 @@ private:
     
     /* SUCH PARAMS */
     cellParams params;
-    bool levelSetMode;
+    bool levelSetMode, levelSetBG;
     int numInitialCells;
     float translucenseCell, translucenseDish;
     ofVec4f kernelColor_high, kernelColor_low;

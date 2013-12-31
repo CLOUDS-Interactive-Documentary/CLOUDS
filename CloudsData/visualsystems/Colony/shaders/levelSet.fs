@@ -6,6 +6,7 @@
 
 uniform float time;
 uniform bool levelSet;
+uniform bool levelSetBg;
 uniform sampler2DRect tex;
 uniform sampler2DRect grunge;
 uniform vec2 resolution;
@@ -19,9 +20,25 @@ uniform vec3 lightDirection;
 uniform vec3 lightColor;
 
 
-float rand(vec2 co){
-    return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453);
+//float rand(vec2 co){
+//    return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453);
+//}
+
+mat3 kernel = mat3(0.0625, 0.125,  0.0625,
+                   0.125,  0.250,  0.125,
+                   0.0625, 0.125,  0.0625);
+
+vec4 convolution(in sampler2DRect screen,in vec2 coord){
+    vec4 t = vec4(0.);
+    for (float i = -1. ; i < 2.; i += 1.){
+        for (float j = -1. ; j < 2.; j += 1.){
+            t += texture2DRect(screen, coord+vec2(i, j)) * kernel[int(1. + i)][int(1. + j)];
+        }
+    }
+    return t;
 }
+
+
 /*
 //Hash-Based Noise Func
 float noise2f( in vec2 p ){
@@ -64,7 +81,7 @@ float heightMap(vec2 co){
 //        co += co.yx * (1 - cos(t));
     }
     bumps /= (iters * log(iters));
-    return (-.5 + pow(bumps, 18.)) * PI;
+    return pow(bumps, 18.);
 }
 
 
@@ -82,7 +99,7 @@ float getLightIntensity(float elevation, vec2 light){
 
 vec4 getLevelSet(vec4 fg){
     float a = PI * (.5 + log(.25 + fg.b) * 6.);
-    float b = heightMap(gl_TexCoord[0].xy) * 18.;
+    float b = (-.5 + (levelSetBg ?heightMap(gl_TexCoord[0].xy) : 0. )) * 18 * PI;
     float g = fg.g + .1;
     g *= g * g;
     float levl = mix (a + b, max(a, b), .5);
@@ -107,7 +124,6 @@ vec4 getMicroscope(vec4 fg){
 //    innerCellAlpha *= (1. - (.2 + .2 * sin(gl_FragCoord.x + gl_FragCoord.y)));
     float shellAlpha = clamp(bump(b, .3, .2), 0., .90);
     vec4 kernel = clamp(fg.g/kernel_maxValue, 0., 1.)
-//                * vec4(vec3(mix(1.,getLightIntensity(fg.g/kernel_maxValue, vec3(1)), 0.3)),1.)
                 * mix(kernelColor_low, kernelColor_high, fg.g/kernel_maxValue);
     
     vec2 normalizedCoords = gl_TexCoord[0].xy * imgRes / resolution;
