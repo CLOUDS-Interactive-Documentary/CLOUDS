@@ -199,5 +199,7 @@ protected:
 	float sphereScale;
 	int numSpheresPerArc;
 	
-	bool bUseSpheres;
+	bool bUseSpheres, bDrawCircles;
+	float circleLinewidth;
+	float circleOpacity;
 };
