@@ -6,7 +6,7 @@ void testApp::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     
-    SetCloudsInput(ofPtr<CloudsInput>(new CloudsInputKinectOSC()));
+    SetCloudsInputKinect();
     
 	vs.setup();
 	vs.playSystem();
