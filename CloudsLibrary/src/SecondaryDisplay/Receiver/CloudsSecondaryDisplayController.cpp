@@ -101,29 +101,18 @@ void CloudsSecondaryDisplayController::loadSVGs(){
     //load the three different layouts
     bioLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/BIO.svg");
     projectLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/PROJECTEX/PROJECTEX.svg");
-    systemLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/VISUALSYSTEM/VISUAL.svg");
+    questionLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/QUESTION/QUESTION.svg");
 
 }
 
 ofxFTGLSimpleLayout* CloudsSecondaryDisplayController::getLayoutForLayer( SVGMesh* textMesh ) {
     
         if( textMesh != NULL ){
-//            float maxHeight = textMesh->bounds.height;
             int fontSize = getFontSizeForMesh( textMesh );
-            
-            //            cout << "The correct font size is " << fontSize << ". Width is " << textMesh->bounds.width << endl;
-            
             // make a layout
             ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
             newLayout->loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", fontSize );
             newLayout->setLineLength( textMesh->bounds.width );
-            
-            // make a label
-            /*CloudsHUDLabel newLabel;
-            newLabel.layout = newLayout;
-            newLabel.bounds = textMesh->bounds;
-            
-            hudLabelList.push_back( newLabel );*/
             
             return newLayout;
         }
@@ -207,21 +196,6 @@ void CloudsSecondaryDisplayController::update(){
 	}
 }
 
-/*void CloudsSecondaryDisplayController::drawNextLayout(){
-    layoutID++;
-    if(layoutID>testAllLayout.size()-1)
-        layoutID = 0;
-    cout << "Draw Display: "<< testAllLayout[layoutID].sourceFileName <<" #" << layoutID << " of " << testAllLayout.size()-1 << endl;
-    
-}
-
-void CloudsSecondaryDisplayController::drawPrevLayout(){
-    layoutID--;
-    if(layoutID<0)
-        layoutID =testAllLayout.size()-1;
-    cout << "Draw Display: "<< testAllLayout[layoutID].sourceFileName <<" #" << layoutID << " of " << testAllLayout.size()-1 << endl;
-}*/
-
 void CloudsSecondaryDisplayController::draw(){
     ofEnableAlphaBlending();
 	
@@ -232,8 +206,8 @@ void CloudsSecondaryDisplayController::draw(){
     SVGMesh* t;
     
     if(displayMode == "BIO"){
-        //DRAW BIO LAYOUT
-        
+        //DRAW BIO LAYOUT, need to draw this first, text goes over it
+        bioLayout.draw();
         
         ////question
         ////// don't display if not avilable
@@ -241,23 +215,17 @@ void CloudsSecondaryDisplayController::draw(){
         t = bioLayout.getMeshByID("BOX_x5F_QUESTION_x5F_DETAILS");
         if(lastQuestion != ""){
             //show the question box
-            t->visible = true;
-            
+            questionLayout.draw();
             //find the text box
             t = bioLayout.getMeshByID("TEXTBOX_x5F_QUESTION");
             if(t){
                 lastQuestion = ofToUpper(lastQuestion);
-                h3->drawString(lastQuestion, t->bounds.x, t->bounds.y + h3FontSize);
+                drawTextToMesh(h3, lastQuestion, t);
             }
             
             if(debug)
                 ofRect(t->bounds);
             
-        }
-        else{
-            t->visible = false;
-            //this does not work because the group I am looking for is composed not of one mesh, but of 8 different mesh objects, and the method getMeshByID does not return the entire group of meshes, but only one of them.
-            //At this point, it is better to draw whetever elements need to show or hide as separate SVG files
         }
         
         ////speaker name
@@ -276,7 +244,8 @@ void CloudsSecondaryDisplayController::draw(){
         t = bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME");
         if(t){
             firstName = ofToUpper(firstName);
-            h2->drawString(firstName, t->bounds.x, t->bounds.y + t->bounds.height);
+            drawTextToMesh(h2, firstName, t);
+           // h2->drawString(firstName, t->bounds.x, t->bounds.y + t->bounds.height);
             if(debug)
                 ofRect(t->bounds);
             
@@ -285,7 +254,8 @@ void CloudsSecondaryDisplayController::draw(){
         t = bioLayout.getMeshByID("TEXTBOX_x5F_LASTNAME");
         if(t){
             lastName = ofToUpper(lastName);
-            h1->drawString(lastName, t->bounds.x, t->bounds.y + t->bounds.height);
+            drawTextToMesh(h1, lastName, t);
+           // h1->drawString(lastName, t->bounds.x, t->bounds.y + t->bounds.height);
             if(debug)
                 ofRect(t->bounds);
             
@@ -295,17 +265,18 @@ void CloudsSecondaryDisplayController::draw(){
         t = bioLayout.getMeshByID("TEXTBOX_x5F_TITLE");
         if(t){
             string title = ofToUpper(currentSpeaker.title);
-            h4->drawString(title, t->bounds.x, t->bounds.y + t->bounds.height);
+            drawTextToMesh(h4, title, t);
+           // h4->drawString(title, t->bounds.x, t->bounds.y + t->bounds.height);
             if(debug)
                 ofRect(t->bounds);
-            
         }
         
         ////location
         t = bioLayout.getMeshByID("TEXTBOX_x5F_LOC");
         if(t){
             string loc = ofToUpper(currentSpeaker.location1);
-            h4->drawString(currentSpeaker.location1, t->bounds.x, t->bounds.y + t->bounds.height);
+            drawTextToMesh(h4, loc, t);
+          //  h4->drawString(currentSpeaker.location1, t->bounds.x, t->bounds.y + t->bounds.height);
             if(debug)
                 ofRect(t->bounds);
             
@@ -314,12 +285,12 @@ void CloudsSecondaryDisplayController::draw(){
         ////byline / bio / description
         t = bioLayout.getMeshByID("TEXTBOX_x5F_BIO");
         if(t){
-            
-            p->drawString(currentSpeaker.byline1, t->bounds.x, t->bounds.y + pFontSize);
+            drawTextToMesh(p, currentSpeaker.byline1, t);
+
+           // p->drawString(currentSpeaker.byline1, t->bounds.x, t->bounds.y + pFontSize);
         }
         
-        //DRAW BIO LAYOUT
-        bioLayout.draw();
+        
         
     }else if(displayMode == "PROJECT"){
         //DISPLAY PROJECT LAYOUT
@@ -332,7 +303,6 @@ void CloudsSecondaryDisplayController::draw(){
                 //scale and preserve the aspect ratio
                 ofRectangle playerRect(0,0,archivePlayer.getWidth(), archivePlayer.getHeight());
                 playerRect.scaleTo(t->bounds);
-//                archivePlayer.draw(t->bounds.x, t->bounds.y, t->bounds.width, t->bounds.height);
                 archivePlayer.draw(playerRect);
             }
             playingMovie = archivePlayer.isPlaying();
@@ -340,22 +310,28 @@ void CloudsSecondaryDisplayController::draw(){
         
         ////title
         t = projectLayout.getMeshByID("TEXTBOX_x5F_TITLE");
-        if(t)
-            h2->drawString(currentExample.title, t->bounds.x, t->bounds.y + t->bounds.height);
+        if(t){
+            string title = ofToUpper(currentExample.title);
+            drawTextToMesh(h2, title, t);
+           // h2->drawString(currentExample.title, t->bounds.x, t->bounds.y + t->bounds.height);
+        }
         
         ////name
         t = projectLayout.getMeshByID("TEXTBOX_x5F_ARTIST");
-        if(t)
-            h4->drawString(currentExample.creatorName, t->bounds.x, t->bounds.y + t->bounds.height);
+        if(t){
+            string name = currentExample.creatorName;
+            drawTextToMesh(h4, name, t);
+            //h4->drawString(currentExample.creatorName, t->bounds.x, t->bounds.y + t->bounds.height);
+        }
         
         ////description
         t = projectLayout.getMeshByID("TEXTBOX_x5F_DESC");
         if(t)
-            p->drawString(currentExample.description, t->bounds.x, t->bounds.y + pFontSize);
+            drawTextToMesh(p, currentExample.description, t);
+           // p->drawString(currentExample.description, t->bounds.x, t->bounds.y + pFontSize);
         
         
-    }else if(displayMode == "SYSTEM"){
-        systemLayout.draw();
+        
     }
 	
 	displayTarget.end();
@@ -365,12 +341,18 @@ void CloudsSecondaryDisplayController::draw(){
 	targetRect.scaleTo(screenRect);
 	displayTarget.getTextureReference().draw(targetRect);
 	
-    // ---------------- added
-//	//get info for a speaker
-//	CloudsSpeaker::speakers["Kyl_CH"].twitterHandle;
-	//TODO: draw speaker layout
-	//TODO: overlay with project example when relevant
 	
+}
+
+/*void CloudsSecondaryDisplayController::drawBioLayout(){
+    
+}*/
+
+void CloudsSecondaryDisplayController::drawTextToMesh(ofxFTGLSimpleLayout* font, string text, SVGMesh* mesh){
+    //update line length
+    font->setLineLength(mesh->bounds.width);
+    //draw the text
+    font->drawString(text, mesh->bounds.x, mesh->bounds.y + font->getStringBoundingBox("M", 0, 0).height);
 }
 
 void CloudsSecondaryDisplayController::hideQuestionBox(){

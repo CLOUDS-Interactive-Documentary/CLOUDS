@@ -14,6 +14,7 @@
 
 CloudsHUDController::CloudsHUDController(){
 	hudGui = NULL;
+    bIsHudOpen = false;
 }
 
 void CloudsHUDController::setup(){
@@ -45,9 +46,25 @@ void CloudsHUDController::clipBegan(CloudsClip& clip){
 	cout << "Clip is " <<  clip.getLinkName() << endl;
 	cout << "speaker: " << speaker.firstName << " " << speaker.lastName << endl;
 	
+    hudLabelMap["BylineFirstNameTextBox_1_"]->setText( speaker.firstName );
+    hudLabelMap["BylineLastNameTextBox"]->setText( speaker.lastName );
+    
+    hudLabelMap["BylineTopicTextBoxTop"]->setText( speaker.title );
+    hudLabelMap["BylineTopicTextBoxBottom"]->setText( speaker.location1 );
+    
+    hudLabelMap["BylineBodyCopyTextBox"]->setText( speaker.byline1 );
+    
+    animateOn( CLOUDS_HUD_LOWER_THIRD );
+    
 	if(clip.hasProjectExample){
 		CloudsProjectExample example = clip.projectExample;
 		cout << "project " << example.title << " with videos? " << example.exampleVideos.size() << endl;
+        
+        hudLabelMap["ProjectExampleTextboxLeft"]->setText( speaker.lastName );
+        hudLabelMap["ProjectExampleTextboxRight"]->setText( speaker.lastName );
+        hudLabelMap["ProjectExampleTextBoxTop"]->setText( speaker.lastName );
+        
+        animateOn( CLOUDS_HUD_PROJECT_EXAMPLE );
 	}
 }
 
@@ -111,7 +128,6 @@ void CloudsHUDController::buildLayerSets(){
     projectExampleLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_PROJECT_EXAMPLE");
     layerSets[CLOUDS_HUD_PROJECT_EXAMPLE].push_back( projectExampleLayer );
     allLayers.push_back( projectExampleLayer );
-
     
     for( int i=0; i<allLayers.size(); i++ ){
         allLayers[i]->duration = 1.5;
@@ -120,6 +136,9 @@ void CloudsHUDController::buildLayerSets(){
         allLayers[i]->startPoint = ofVec2f(allLayers[i]->svg.getWidth(),0);
         allLayers[i]->endPoint   = ofVec2f(0,allLayers[i]->svg.getHeight());
     }
+    
+    home.bounds = lowerThirdLayer->svg.getMeshByID("HomeButtonFrame")->bounds;
+    home.bounds.scaleFromCenter(1.5);
 	
 //	layerSets[CLOUDS_HUD_QUESTION].push_back( new CloudsHUDLayer(GetCloudsDataPath() + "HUD/01_MAIN_innermost.svg" ) );
 //	layerSets[CLOUDS_HUD_QUESTION].push_back( new CloudsHUDLayer(GetCloudsDataPath() + "HUD/01_MAIN_Outer.svg" ) );
@@ -129,7 +148,7 @@ void CloudsHUDController::buildLayerSets(){
 void CloudsHUDController::calculateFontSizes(){
     // temporary allocate
     int minFontSize = 1;
-    int maxFontSize = 40;
+    int maxFontSize = 70;
     
     for( int i=minFontSize; i<maxFontSize; i++){
         ofxFTGLFont *tmp = new ofxFTGLFont();
@@ -138,19 +157,18 @@ void CloudsHUDController::calculateFontSizes(){
     }
 
     
-    BylineBodyCopyTextBox       = getLayoutForLayer("BylineBodyCopyTextBox");
-    BylineFirstNameTextBox      = getLayoutForLayer("BylineFirstNameTextBox_1_");
-    BylineLastNameTextBox       = getLayoutForLayer("BylineLastNameTextBox");
-    BylineTopicTextBoxBottom    = getLayoutForLayer("BylineTopicTextBoxBottom");
-    BylineTopicTextBoxTop       = getLayoutForLayer("BylineTopicTextBoxTop");
-    ResetButtonTextBox          = getLayoutForLayer("ResetButtonTextBox");
-    QuestionTextBox             = getLayoutForLayer("QuestionTextBox");
-    TopicTextBoxLeft            = getLayoutForLayer("TopicTextBoxLeft");
-    TopicTextBoxRight           = getLayoutForLayer("TopicTextBoxRight");
-    ProjectExampleTextboxLeft   = getLayoutForLayer("ProjectExampleTextboxLeft");
-    ProjectExampleTextboxRight  = getLayoutForLayer("ProjectExampleTextboxRight");
-    ProjectExampleTextBoxTop    = getLayoutForLayer("ProjectExampleTextBoxTop");
-    
+    BylineBodyCopyTextBox       = getLayoutForLayer("BylineBodyCopyTextBox", GetCloudsDataPath() + "font/Blender-THIN.ttf");
+    BylineFirstNameTextBox      = getLayoutForLayer("BylineFirstNameTextBox_1_", GetCloudsDataPath() + "font/Blender-THIN.ttf");
+    BylineLastNameTextBox       = getLayoutForLayer("BylineLastNameTextBox", GetCloudsDataPath() + "font/Blender-THIN.ttf");
+    BylineTopicTextBoxBottom    = getLayoutForLayer("BylineTopicTextBoxBottom", GetCloudsDataPath() + "font/Blender-THIN.ttf");
+    BylineTopicTextBoxTop       = getLayoutForLayer("BylineTopicTextBoxTop", GetCloudsDataPath() + "font/Blender-THIN.ttf");
+    ResetButtonTextBox          = getLayoutForLayer("ResetButtonTextBox", GetCloudsDataPath() + "font/Blender-THIN.ttf");
+    QuestionTextBox             = getLayoutForLayer("QuestionTextBox", GetCloudsDataPath() + "font/Blender-THIN.ttf");
+    TopicTextBoxLeft            = getLayoutForLayer("TopicTextBoxLeft", GetCloudsDataPath() + "font/Blender-THIN.ttf");
+    TopicTextBoxRight           = getLayoutForLayer("TopicTextBoxRight", GetCloudsDataPath() + "font/Blender-THIN.ttf");
+    ProjectExampleTextboxLeft   = getLayoutForLayer("ProjectExampleTextboxLeft", GetCloudsDataPath() + "font/Blender-THIN.ttf");
+    ProjectExampleTextboxRight  = getLayoutForLayer("ProjectExampleTextboxRight", GetCloudsDataPath() + "font/Blender-THIN.ttf");
+    ProjectExampleTextBoxTop    = getLayoutForLayer("ProjectExampleTextBoxTop", GetCloudsDataPath() + "font/Blender-THIN.ttf");
     
     // cleanup!
     for( int i=0; i<tempFontList.size(); i++ ){
@@ -159,7 +177,7 @@ void CloudsHUDController::calculateFontSizes(){
     tempFontList.clear();
 }
 
-ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName ) {
+ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName, string fontPath ) {
     for( int i=0; i<allLayers.size(); i++ ){
         SVGMesh* textMesh = allLayers[i]->svg.getMeshByID( layerName );
         
@@ -171,15 +189,20 @@ ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName ) 
             
             // make a layout
             ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
-            newLayout->loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", fontSize );
-            newLayout->setLineLength( textMesh->bounds.width );
+            newLayout->loadFont( fontPath, fontSize );
+            newLayout->setLineLength( 999 );
+            
+            if( layerName == "BylineBodyCopyTextBox" ){         // this is the main body copy in the lower thirds
+                newLayout->loadFont( fontPath, floor(fontSize/4.5) );
+                newLayout->setLineLength( textMesh->bounds.width );
+            }
             
             // make a label
-            CloudsHUDLabel newLabel;
-            newLabel.layout = newLayout;
-            newLabel.bounds = textMesh->bounds;
-            
+            CloudsHUDLabel *newLabel = new CloudsHUDLabel();
+            newLabel->setup( newLayout, textMesh->bounds );
             hudLabelList.push_back( newLabel );
+            
+            hudLabelMap[layerName] = newLabel;
             
             return newLayout;
         }
@@ -198,7 +221,8 @@ int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
     float textBoxHeight = textMesh->bounds.height;
     
     for( int k=0; k<tempFontList.size()-1; k++){
-        if( tempFontList[k]->getLineHeight() <= textBoxHeight && tempFontList[k+1]->getLineHeight() > textBoxHeight ){
+        
+        if( tempFontList[k]->getStringBoundingBox("W",0,0).height <= textBoxHeight && tempFontList[k+1]->getStringBoundingBox("W",0,0).height > textBoxHeight ){
             fontSize = 1 + k;
             break;
         }
@@ -213,10 +237,17 @@ void CloudsHUDController::update(){
 	}
 
 	home.update();
+    
+    if( home.wasHomeOpened() ){
+        if( !bIsHudOpen ){
+            animateOn( CLOUDS_HUD_LOWER_THIRD );
+        }else{
+            animateOff();
+        }
+    }
 }
 
 void CloudsHUDController::draw(){
-	
 	ofPushStyle();
 	ofPushMatrix();
 	ofEnableAlphaBlending();
@@ -228,7 +259,7 @@ void CloudsHUDController::draw(){
 	drawLayer(CLOUDS_HUD_MAP);
     
     for( int i=0; i<hudLabelList.size(); i++ ){
-        hudLabelList[i].draw();
+        hudLabelList[i]->draw();
     }
     
 	home.draw();
@@ -244,6 +275,8 @@ void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
 }
 
 void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
+    bIsHudOpen = true;
+    
     if( layer == CLOUDS_HUD_FULL ){
         for( int i=0; i<layerSets.size(); i++ ){
             for(int k = 0; k < layerSets[(CloudsHUDLayerSet)i].size(); i++){
@@ -259,7 +292,15 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
 }
 
 void CloudsHUDController::animateOff(){
-	
+	bIsHudOpen = false;
+    
+    cout << "ANIMATE OFF" << endl;
+    
+    for( int i=0; i<layerSets.size(); i++ ){
+        for(int k = 0; k < layerSets[(CloudsHUDLayerSet)i].size(); i++){
+            layerSets[(CloudsHUDLayerSet)i][k]->close();
+        }
+    }
 }
 
 void CloudsHUDController::saveGuiSettings(){

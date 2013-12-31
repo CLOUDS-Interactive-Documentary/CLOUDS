@@ -49,11 +49,12 @@ class CloudsSecondaryDisplayController {
     void showQuestionBox();
     ofxFTGLSimpleLayout* getLayoutForLayer( SVGMesh* textMesh);
     int getFontSizeForMesh( SVGMesh* textMesh );
+    void drawTextToMesh(ofxFTGLSimpleLayout* font, string text, SVGMesh* mesh);
 
 	//TODO: make separate layer sets for Project Example vs Person
 	vector<CloudsSVGMesh> testAllLayout;
     
-    CloudsSVGMesh bioLayout, projectLayout, systemLayout;
+    CloudsSVGMesh bioLayout, projectLayout, questionLayout;
 	
 	bool playingMovie;
 	bool hasSpeaker;
