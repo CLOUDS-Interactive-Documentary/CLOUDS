@@ -89,6 +89,10 @@ class CloudsVisualSystemExampleMPMFluid : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
+    void selfInteractionMoved(CloudsInteractionEventArgs& args);
+	void selfInteractionStarted(CloudsInteractionEventArgs& args);
+	void selfInteractionDragged(CloudsInteractionEventArgs& args);
+	void selfInteractionEnded(CloudsInteractionEventArgs& args);
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -100,6 +104,8 @@ protected:
     
     ofxMPMFluid fluid;
     ofxMPMObstacle* obstacle;
+    
+    map<int, int> currentPlayers;
     
     float scaleFactor;
     

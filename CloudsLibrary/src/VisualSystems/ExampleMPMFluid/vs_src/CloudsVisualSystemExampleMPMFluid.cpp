@@ -32,7 +32,7 @@ void CloudsVisualSystemExampleMPMFluid::selfSetupGui(){
     
     float length = (customGui->getGlobalCanvasWidth()-customGui->getWidgetSpacing()*5)/3.;
     float dim = customGui->getGlobalSliderHeight();
-
+    
     /* Particle color */
     //customGui->addSpacer();
     customGui->addSpacer();
@@ -44,7 +44,7 @@ void CloudsVisualSystemExampleMPMFluid::selfSetupGui(){
     customGui->addMinimalSlider("B", 0.0, 255, &pColor.b, length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     customGui->addSlider("PARTICLE LINE", 0, 5, &lineWidth);
-
+    
     customGui->addSpacer();
     customGui->addLabel("INTERACTIVITY");
     vector<string> modes;
@@ -61,7 +61,7 @@ void CloudsVisualSystemExampleMPMFluid::selfSetupGui(){
 
 void CloudsVisualSystemExampleMPMFluid::selfGuiEvent(ofxUIEventArgs &e)
 {
-
+    
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -115,7 +115,7 @@ void CloudsVisualSystemExampleMPMFluid::selfSetup()
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemExampleMPMFluid::selfPresetLoaded(string presetPath)
 {
-
+    
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -123,7 +123,7 @@ void CloudsVisualSystemExampleMPMFluid::selfPresetLoaded(string presetPath)
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemExampleMPMFluid::selfBegin()
 {
-
+    
 }
 
 //do things like ofRotate/ofTranslate here
@@ -162,7 +162,10 @@ void CloudsVisualSystemExampleMPMFluid::selfUpdate()
         obstacle->radius2 = obstacleSize * obstacleSize;
     }
     
-    fluid.update(GetCloudsInputX(),GetCloudsInputY());
+    //    fluid.update(GetCloudsInputX(),GetCloudsInputY());
+    fluid.update(0,0);
+
+
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -187,13 +190,13 @@ void CloudsVisualSystemExampleMPMFluid::selfDrawBackground()
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	// These improve the appearance of small lines and/or points.
 	glDisable(GL_LIGHTING);
-//	glDisable(GL_DEPTH_TEST);
+    //	glDisable(GL_DEPTH_TEST);
 	glEnable (GL_LINE_SMOOTH);
 	glEnable (GL_POINT_SMOOTH); // in case you want it
-//	glEnable (GL_MULTISAMPLE);
-//	glEnable (GL_BLEND);
-//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
+    //	glEnable (GL_MULTISAMPLE);
+    //	glEnable (GL_BLEND);
+    //	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
 	ofColor c = ofColor::fromHsb(pColor.r, pColor.g, pColor.b);
     c.a = 200;
 	ofSetColor(c);
@@ -221,6 +224,8 @@ void CloudsVisualSystemExampleMPMFluid::selfDrawBackground()
 	
 	glPopAttrib();
 	ofPopStyle();
+    
+
 }
 
 // this is called when your system is no longer drawing.
@@ -238,6 +243,41 @@ void CloudsVisualSystemExampleMPMFluid::selfExit()
 
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
+void CloudsVisualSystemExampleMPMFluid:: selfInteractionMoved(CloudsInteractionEventArgs& args){
+    
+    if (currentPlayers.find(args.playerId) == currentPlayers.end()) {
+        fluid.addTouch(args.playerId, args.position);
+        currentPlayers[args.playerId] = 0;
+        cout<<"Adding : "<< args.playerId<<endl;
+    }
+    else{
+//        cout<<"Updating : "<< args.playerId<<endl;
+        currentPlayers[args.playerId]++;
+        fluid.updateTouch(args.playerId, args.position);
+    }
+}
+
+void CloudsVisualSystemExampleMPMFluid :: selfInteractionStarted(CloudsInteractionEventArgs& args){
+    
+}
+
+void CloudsVisualSystemExampleMPMFluid:: selfInteractionDragged(CloudsInteractionEventArgs& args){
+    
+}
+
+void CloudsVisualSystemExampleMPMFluid:: selfInteractionEnded(CloudsInteractionEventArgs& args){
+
+    map<int, int >::iterator it;
+    for(it = currentPlayers.begin(); it != currentPlayers.end(); it++){
+        
+        if (it->first == args.playerId) {
+            currentPlayers.erase(it);
+            cout<<"removing from map "<<it->first<<endl;
+         
+        }
+    }
+    fluid.removeTouch(args.playerId);
+}
 void CloudsVisualSystemExampleMPMFluid::selfKeyPressed(ofKeyEventArgs & args)
 {
 	
@@ -249,7 +289,7 @@ void CloudsVisualSystemExampleMPMFluid::selfKeyReleased(ofKeyEventArgs & args)
 
 void CloudsVisualSystemExampleMPMFluid::selfMouseDragged(ofMouseEventArgs& data)
 {
-
+    
 }
 
 void CloudsVisualSystemExampleMPMFluid::selfMouseMoved(ofMouseEventArgs& data)

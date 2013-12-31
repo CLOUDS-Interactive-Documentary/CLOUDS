@@ -2,6 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+    SetCloudsInputKinect();
 	exampleMPMFluid.setup();
 	exampleMPMFluid.playSystem();
 }

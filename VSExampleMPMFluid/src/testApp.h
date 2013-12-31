@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxUI.h"
 #include "CloudsVisualSystemExampleMPMFluid.h"
+#include "CloudsInputKinectOSC.h"
 
 class testApp : public ofBaseApp{
   public:
