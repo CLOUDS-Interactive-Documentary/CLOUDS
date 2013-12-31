@@ -198,6 +198,7 @@ void CloudsVisualSystemRipples::selfUpdate()
         ofPopStyle();
     }
     
+    ofPushStyle();
     ripplesDstFbo.begin();
     ripplesShader.begin();
     ripplesShader.setUniformTexture("backbuffer", ripplesDstFbo.getTextureReference(), 1);
@@ -209,6 +210,7 @@ void CloudsVisualSystemRipples::selfUpdate()
     }
     ripplesShader.end();
     ripplesDstFbo.end();
+    ofPopStyle();
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera

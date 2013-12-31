@@ -2,23 +2,30 @@
 //#extension GL_ARB_shader_texture_lod: enable
 //#extension GL_ARB_texture_rectangle: enable
 #define PI 3.14159265359
-#define E 2.71828
 
-uniform float time;
-uniform bool levelSet;
-uniform bool levelSetBg;
 uniform sampler2DRect tex;
 uniform sampler2DRect grunge;
+
+uniform float time;
+
+uniform bool levelSet;
+uniform bool levelSetBg;
+
 uniform vec2 resolution;
 uniform vec2 imgRes;
+
 uniform float translucenseDish;
 uniform float translucenseCell;
+
 uniform vec4 kernelColor_high;
 uniform vec4 kernelColor_low;
 uniform float kernel_maxValue;
+
 uniform vec3 lightDirection;
 uniform vec3 lightColor;
 
+uniform float stippleScale;
+uniform vec4 stippleColor;
 
 //float rand(vec2 co){
 //    return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453);
@@ -37,21 +44,6 @@ vec4 convolution(in sampler2DRect screen,in vec2 coord){
     }
     return t;
 }
-
-
-/*
-//Hash-Based Noise Func
-float noise2f( in vec2 p ){
-    vec2 ip = vec2(floor(p));
-    vec2 u = fract(p);
-    u = u * u * (3.0 - 2.0 * u);
-    float res = mix(
-                    mix(rand(ip), rand(ip + vec2(1.0,0.0)), u.x),
-                    mix(rand(ip + vec2(0.0, 1.0)), rand(ip + vec2(1.0, 1.0)), u.x),
-                    u.y);
-    return res * res;
-}
-*/
 
 vec4 premult(in vec4 source){
     return vec4(source.rgb * source.a, source.a);
@@ -86,12 +78,11 @@ float heightMap(vec2 co){
 
 
 float getLightIntensity(float elevation, vec2 light){
-    float dx = dFdx(elevation);
-    float dy = dFdy(elevation);
-    vec2 normal = vec2(dx,dy);
-    
-    float intensity = smoothstep(0.,0.1,clamp(length(light)*length(normal),0.001, 1.)); //arbitrary epsilon
-    return mix(0., dot(normalize(normal),normalize(light)), intensity);
+    vec2 normal = vec2(dFdx(elevation),dFdy(elevation));
+    float reflection = dot(normalize(normal), normalize(light));
+    float amplitude = clamp(length(light) * length(normal),0.001, 1.);
+    float amplitude_smoothed = smoothstep(0., 0.1, amplitude);
+    return mix(0., reflection, amplitude_smoothed);
 }
 
 
@@ -99,7 +90,7 @@ float getLightIntensity(float elevation, vec2 light){
 
 vec4 getLevelSet(vec4 fg){
     float a = PI * (.5 + log(.25 + fg.b) * 6.);
-    float b = (-.5 + (levelSetBg ?heightMap(gl_TexCoord[0].xy) : 0. )) * 18 * PI;
+    float b = (-.5 + (levelSetBg ? heightMap(gl_TexCoord[0].xy) : 0. )) * 18. * PI;
     float g = fg.g + .1;
     g *= g * g;
     float levl = mix (a + b, max(a, b), .5);
@@ -120,8 +111,10 @@ vec4 getMicroscope(vec4 fg){
     
     //see if you're in the right range to be a border
     b *= fg.b * fg.b;
-    float innerCellAlpha = clamp(bump(b, .8, .8), 0., translucenseCell);
-//    innerCellAlpha *= (1. - (.2 + .2 * sin(gl_FragCoord.x + gl_FragCoord.y)));
+    float innerCellAlpha = bump(b, .8, .8);
+    float stippleAlpha = .5 * (1. + sin((gl_FragCoord.x + gl_FragCoord.y) * stippleScale)) * innerCellAlpha;
+    innerCellAlpha = clamp(innerCellAlpha, 0., translucenseCell);
+    vec4 stipple = stippleColor * stippleAlpha;
     float shellAlpha = clamp(bump(b, .3, .2), 0., .90);
     vec4 kernel = clamp(fg.g/kernel_maxValue, 0., 1.)
                 * mix(kernelColor_low, kernelColor_high, fg.g/kernel_maxValue);
@@ -135,6 +128,7 @@ vec4 getMicroscope(vec4 fg){
     
     //COMPOSITING STAGE
     vec4 ret = over(premult(shell), premult(kernel)); //top
+    ret = over(ret, premult(stipple)); //no need to premult?
     ret = over(premult(ret), premult(vec4(bg.rgb, bg.a*innerCellAlpha)));
     return ret;
 }
@@ -147,7 +141,7 @@ void main(){
             color = getLevelSet(fg);
     } else {
         
-//        //This is happening because I can only use sampler2dRect
+        //This is happening because I can only use sampler2dRect
         vec2 normalizedCoords = gl_TexCoord[0].xy * imgRes / resolution;
         vec4 bg = texture2DRect(grunge, normalizedCoords);
         vec4 cells = getMicroscope(fg);
