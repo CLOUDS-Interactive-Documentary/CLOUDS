@@ -98,9 +98,6 @@ namespace itg
         JellyCreature::shader.load(dataPath + "shaders/jelly");
         
         tentacles.getUpdateShaderRef().load(dataPath + "shaders/tentaclesUpdate");
-        tentacles.getUpdateShaderRef().begin();
-        tentacles.getUpdateShaderRef().setUniform1f("restLength", TENTACLE_SECTION_LENGTH);
-        tentacles.getUpdateShaderRef().end();
         tentacles.getDrawShaderRef().load(dataPath + "shaders/tentaclesDraw");
         tentacles.setTextureLocation(1);
         
@@ -148,7 +145,7 @@ namespace itg
             {
                 unsigned idx = y * TENTACLE_NUM_SECTIONS + x;
                 particlePosns[idx * 4] = pos.x;
-                particlePosns[idx * 4 + 1] = pos.y + x * TENTACLE_SECTION_LENGTH;
+                particlePosns[idx * 4 + 1] = pos.y - x * TENTACLE_SECTION_LENGTH;
                 particlePosns[idx * 4 + 2] = pos.z;
                 particlePosns[idx * 4 + 3] = 0.f;
             }
@@ -335,6 +332,10 @@ namespace itg
             tentaclePosns[i] = creatures[jellyIndices[i]]->getPosition();
         }
         tentacles.loadDataTexture(ofxGpuParticles::POSITION, tentaclePosns[0].getPtr(), 0, 0, 1, tentacles.getHeight());
+        tentacles.getUpdateShaderRef().begin();
+        tentacles.getUpdateShaderRef().setUniform1f("restLength", TENTACLE_SECTION_LENGTH);
+        tentacles.getUpdateShaderRef().setUniform1f("elapsed", ofGetLastFrameTime());
+        tentacles.getUpdateShaderRef().end();
         tentacles.update();
     }
     

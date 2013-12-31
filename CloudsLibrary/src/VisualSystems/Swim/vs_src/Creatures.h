@@ -76,8 +76,8 @@ namespace itg
         void addModelFish(unsigned number, const ModelParams& params);
         void addJellyFish(unsigned number, const JellyParams& params);
         
-        static const unsigned TENTACLE_NUM_SECTIONS = 10;
-        static const unsigned TENTACLE_SECTION_LENGTH = 10;
+        static const unsigned TENTACLE_NUM_SECTIONS = 20;
+        static const unsigned TENTACLE_SECTION_LENGTH = 5;
         
         vector<Creature::Ptr> creatures;
         vector<vector<Creature::Ptr> > creaturesByType;
