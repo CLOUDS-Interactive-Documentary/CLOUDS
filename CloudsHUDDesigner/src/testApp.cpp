@@ -143,7 +143,6 @@ void testApp::keyPressed(int key){
 			hud.clipBegan( parser.getAllClips()[exampleIndex] );
 			cout << "SENT CLIP " << parser.getAllClips()[exampleIndex].getLinkName() << " WITH EXAMPLE " << parser.getAllClips()[exampleIndex].projectExampleTitle << endl;
 		}
-		
 	}
 	
 	if(key == ' '){
