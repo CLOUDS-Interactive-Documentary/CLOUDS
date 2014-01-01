@@ -124,7 +124,9 @@ protected:
     float fogStart, fogEnd;
     
     // cam
-    float xRot, yRot, zSpeed;
+    //float xRot, yRot, zSpeed;
+    float camSpeed;
+    ofVec2f currentLookAngle;
     float camAvoidDist;
     
     // plants
