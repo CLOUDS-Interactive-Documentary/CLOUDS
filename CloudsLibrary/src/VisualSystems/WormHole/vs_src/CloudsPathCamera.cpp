@@ -33,25 +33,40 @@ void CloudsPathCamera::loadPathFromFile( string path )
 	xml.loadFile( path );
 	int numFrames = xml.getNumTags("frame");
 		
-	vector<ofVec3f> cameraPath( numFrames );
-	vector<ofVec3f> cameraTargetPath(numFrames);
-	vector<ofVec3f> cameraUp( numFrames );
+	//vector<ofVec3f> cameraPath( numFrames );
+	//vector<ofVec3f> cameraTargetPath(numFrames);
+	//vector<ofVec3f> cameraUp( numFrames );
+	
+	ofPolyline posLine;
+	ofPolyline targetLine;
+	ofPolyline upLine;
 
 	for (int i=0; i<numFrames; i++) {
 		xml.pushTag("frame", i);
 		
-		cameraPath[i].set( xml.getValue("x", 0.f), xml.getValue("y", 0.f), xml.getValue("z", 0.f) );
-		cameraTargetPath[i].set( xml.getValue("tx", 0.f), xml.getValue("ty", 0.f), xml.getValue("tz", 0.f) );
-		cameraUp[i].set( xml.getValue("upx", 0.f), xml.getValue("upy", 0.f), xml.getValue("upz", 0.f) );
+		posLine.addVertex( ofVec3f(xml.getValue("x", 0.f), xml.getValue("y", 0.f), xml.getValue("z", 0.f) ) );
+		targetLine.addVertex(ofVec3f(xml.getValue("tx", 0.f), xml.getValue("ty", 0.f), xml.getValue("tz", 0.f)));
+		upLine.addVertex(ofVec3f(xml.getValue("upx", 0.f), xml.getValue("upy", 0.f), xml.getValue("upz", 0.f)));
+		//cameraPath[i].set( xml.getValue("x", 0.f), xml.getValue("y", 0.f), xml.getValue("z", 0.f) );
+		//cameraTargetPath[i].set( xml.getValue("tx", 0.f), xml.getValue("ty", 0.f), xml.getValue("tz", 0.f) );
+		//cameraUp[i].set( xml.getValue("upx", 0.f), xml.getValue("upy", 0.f), xml.getValue("upz", 0.f) );
 		
 		xml.popTag();
 	}
 	
 	clear();
 
-	addPositionControlVertices( cameraPath );
-	addTargetControlVertices( cameraTargetPath );
-	addUpControlVertices( cameraUp );
+	//addPositionControlVertices( cameraPath );
+	//addTargetControlVertices( cameraTargetPath );
+	//addUpControlVertices( cameraUp );
+
+	
+	//linearize the cv spacing for the control curve
+	float spacing = .5;//this seemed to fit the typical paths we have so far
+	
+	addPositionControlVertices( posLine.getResampledBySpacing(spacing).getVertices() );
+	addTargetControlVertices( targetLine.getResampledBySpacing(spacing).getVertices() );
+	addUpControlVertices( upLine.getResampledBySpacing(spacing).getVertices() );
 	
 	startTime = ofGetElapsedTimef();
 }

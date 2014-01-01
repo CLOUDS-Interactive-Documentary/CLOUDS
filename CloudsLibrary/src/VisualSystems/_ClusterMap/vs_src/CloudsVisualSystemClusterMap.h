@@ -7,6 +7,11 @@
 #include "CloudsQuestion.h"
 #include "CloudsRun.h"
 
+typedef struct{
+	ofIndexType startIndex;
+	ofIndexType endIndex;
+} TraversalSegment;
+
 class CloudsFCPParser;
 class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
   public:
@@ -98,39 +103,51 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 	ofCamera& getCameraRef(){
-		return cam;
-//		return easeCamera;
+		return easyCamera;
+//		return gameCamera;
 	}
 
 	void reloadShaders();
 	
-	//this is for the secondary display
-	bool incrementalTraversalMode;
 
   protected:
-    
-    //  Your Stuff
-    //
-	ofEasyCam easeCamera;
-	ofxUISuperCanvas* generatorGui;
-	ofxUISuperCanvas* displayGui;
+
+	ofxUISuperCanvas* nodesGui;
+	ofxUISuperCanvas* linesGui;
+	ofxUISuperCanvas* optionPathsGui;
+	ofxUISuperCanvas* traversalGui;
+
+	ofEasyCam easyCamera;
+	ofxGameCamera gameCamera;
 	
-	ofxGameCamera cam;
+	CloudsFCPParser* parser;
 	CloudsRun* run;
+	void resetGeometry();
+	
+	bool drawNodes;
+	bool drawLines;
+	bool drawTraversal;
+	bool drawOptionPaths;
 	
 	ofxTLColorTrack* lineColor;
 	ofxTLColorTrack* nodeColor;
 	
+	vector<CloudsClusterNode> nodes;
+	map<string,int> clipIdToNodeIndex;
+
 	ofVboMesh traversalMesh;
 	ofVboMesh optionsMeshPrev,optionsMeshNext;
 	ofVboMesh nodeMesh;
-//	ofVboMesh connectionMesh;
 	ofVboMesh networkMesh;
 	
 	ofShader nodesShader;
 	ofShader networkShader;
 	ofShader traversalShader;
 	ofShader optionsShader;
+	
+	vector<TraversalSegment> traversalPath;
+	ofVec3f currentTraversalPosition;
+	ofVec3f currentTraversalDirection;
 	ofIndexType lastTraverseStartedIndex;
 	
 	bool firstClip;
@@ -142,29 +159,27 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float percentToDest;
 	
 	ofImage sprite;
-
-
-	
-	vector<CloudsClusterNode> nodes;
-	map<string,int> clipIdToNodeIndex;
-	
-	float maxTraverseAngle;
 	
 	float meshExpansion;
-	float pointSize;
-	
+	ofRange pointSize;
+
+	ofVec3f trailHead;
+
 	float lineAlpha;
 	float lineFocalDistance;
 	float lineFocalRange;
 	float lineDissolve;
-	ofVec3f trailHead;
-
+	
+	float maxTraverseAngle;
 	float nodePopLength;
 	float traversedNodeSize;
+	float minTraversalSolveDistance;
+	float traverseStepSize;
+	float traverseAngleDampen;
+	float traverseMinStepSize;
 	
 	ofVec3f randomDirection();
 	
-	//	vector<ofVec2f> traversalPath;//?
 	vector<CloudsQuestion> questions;
 	CloudsQuestion* selectedQuestion;
 

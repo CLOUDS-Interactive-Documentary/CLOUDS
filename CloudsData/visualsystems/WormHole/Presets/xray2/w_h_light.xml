@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>w_h_light</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425</XPosition>
+    <XPosition>437</XPosition>
     <YPosition>201</YPosition>
 </Canvas>
 <Widget>
@@ -13,17 +13,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>constantAttenuation</Name>
-    <Value>0.0689655</Value>
+    <Value>1.03448</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>linearAttenuation</Name>
-    <Value>0.07</Value>
+    <Value>0.0689655</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>quadraticAttenuation</Name>
-    <Value>0</Value>
+    <Value>0.0541872</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>

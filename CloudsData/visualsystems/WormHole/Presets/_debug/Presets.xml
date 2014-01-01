@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1497</XPosition>
+    <XPosition>1285</XPosition>
     <YPosition>1</YPosition>
 </Canvas>
 <Widget>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>gTunnel</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -264,9 +264,4 @@
     <Kind>2</Kind>
     <Name>xray2</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>_debug</Name>
-    <Value>1</Value>
 </Widget>

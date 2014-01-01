@@ -12,6 +12,12 @@
 
 #include "CloudsVisualSystem.h"
 
+#include "ofxTonic.h"
+#include "CloudsAudioEvents.h"
+#include "CloudsGlobal.h"
+
+using namespace Tonic;
+
 //TODO: rename this to your own visual system
 class CloudsVisualSystemRipples : public CloudsVisualSystem {
   public:
@@ -114,4 +120,22 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
     float radius;
     
 	bool bRestart;
+
+	// Sound
+    int dontTriggerSoundCounter;
+    ofxUISuperCanvas* soundGui;
+    float volume[2] = {0};
+    ControlParameter volumeControl[2];
+    bool bEnableSounds;
+    ofMutex mutex;
+    ofxTonicSynth mainSynth;
+    ofxTonicSynth notes[5];
+    int noteIndex;
+    int baseNote;
+    vector<float> scale;
+    void setScaleByName(string name);
+    Generator buildSynth();
+    Tonic::Mixer mixer;
+    void playNote(int note);
+	void audioRequested(ofAudioEventArgs& args);
 };

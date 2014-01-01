@@ -4,8 +4,7 @@
 #include "ofMain.h"
 
 //class for showing a dot in the constellation of the ClusterMap
-typedef struct
-{
+typedef struct {
 	string destinationClipId;
 	ofIndexType startIndx;
 	ofIndexType endIndx;

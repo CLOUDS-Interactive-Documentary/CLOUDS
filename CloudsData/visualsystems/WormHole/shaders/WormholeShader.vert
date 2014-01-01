@@ -111,7 +111,7 @@ void main()
 	color = gl_Color;
 	
 	//fog
-	float camDelta = length( ecPosition );
+	float camDelta = length( ecPosition.xyz );
 	fogAmount = min(1., max(0., 1.25 * pow( (1. - camDelta / fogDistance), fogExpo) * fogAttenuation ) );
 	
 //	color = mix( fogColor, vec4(1.), min(1., max(0., pow( (1. - camDelta / fogDistance), fogExpo) * fogAttenuation) ) );
