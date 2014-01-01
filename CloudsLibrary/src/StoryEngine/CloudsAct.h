@@ -56,7 +56,6 @@ class CloudsAct{
         ofAddListener(events.questionAsked, listener, &ListenerClass::questionAsked);
 		ofAddListener(events.topicChanged, listener, &ListenerClass::topicChanged);
         ofAddListener(events.preRollRequested, listener, &ListenerClass::preRollRequested);
-		
 	}
 	
 	template<class ListenerClass>
