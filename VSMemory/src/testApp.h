@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystemMemory.h"
+#include "CloudsMixer.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -21,4 +22,8 @@ class testApp : public ofBaseApp{
 	void exit();
 		
 	CloudsVisualSystemMemory memory;
+    
+    void audioRequested(float *output, int bufferSize, int nChannels);
+   
+    CloudsMixer mixer;
 };
