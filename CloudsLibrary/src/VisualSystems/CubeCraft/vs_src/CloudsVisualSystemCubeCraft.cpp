@@ -186,7 +186,6 @@ void CloudsVisualSystemCubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 	{
 		fogColor.setHsb(fogHue, fogSaturation, fogBrightness);
 		
-		//DON'T NKOW WHY THIS DOESN'T WORK. UBT IT DOESN'T
 		fogGui->getWidget("FOG_Color")->setColorFill( fogColor);
 		fogGui->getWidget("fogHue")->setColorFill( fogColor);
 		fogGui->getWidget("fogSaturation")->setColorFill(fogColor);
