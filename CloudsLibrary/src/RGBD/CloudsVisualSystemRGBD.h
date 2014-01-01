@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
 //#include "ParticleConnectionGenerator.h"
-#include "CloudsCaption.h"
+//#include "CloudsCaption.h"
 #include "CloudsQuestion.h"
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
@@ -99,7 +99,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofVec3f bottomRight;
 
   protected:
-	
 
 	ofxUISuperCanvas *globalMeshGui;
 	bool drawRGBD;
@@ -157,17 +156,14 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void generateMesh();
 	
 	void loadShader();
-	
-//TODO:
+
 	ofxUISuperCanvas *cameraGui;
 	ofxUISuperCanvas *particleGui;
 	ofxUISuperCanvas *questionGui;
-	
+
+	//TODO: move to hud
 	ofxFTGLSimpleLayout displayFont;
 
-//	ofVboMesh pointGrid;
-//	ofVboMesh randomPoints;
-//	ParticleConnectionGenerator generator;
 	GPUParticles::Controller particulateController;
 	
 	void updateQuestions();
@@ -178,49 +174,18 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     CloudsQuestion* selectedQuestion;
 	ofVec4f pointColor;
     
-    CloudsCaption cloudsCaption;
+//    CloudsCaption cloudsCaption;
 
 	bool drawParticulate;
-	
-//	float pointGridAlpha;
 
-//	bool drawScanlines;
-//	float pointVerticalSpace;
-//	float pointHorizontalSpace;
-//	void generatePointGrid();
-//	bool drawCloud;
-//	bool drawMesh;
-//	float meshAlpha;
-	
-//	float eyeMultiplier;
-//	float mouthMultiplier;
-//	float skinMultiplier;
-//	void generateRandomPoints();
-	
-//	bool refreshTriangulation;
-//	ofxDelaunay delaunay;
-//	float triangleContract;
-	
-//	ofShader rgbdShader;
-	
-//	float lightOffsetY;
-//	float lightOffsetZ;
 	
 	float attenuatedCameraDrift;
-	
-//	float horizontalScanlineAlpha;
-//	float horizontalScanlineThickness;
-//	void generateScanlines();
 	
 	//transition
 	void updateTransition();
 	bool transitioning, transitioningIn, transitioningOut;
 	float transitionStartTime, transitionEndTime, transitionStartVal, transitionTargetVal;
-	
-//	float percentChanceOfPoint, lastPercentChanceOfPoint;
-//	float triangulationXStep, lastTriangulationXStep;
-//	float triangulationYStep, lastTriangulationYStep;
-	
+		
 	ofVec3f questionXZ;
 	float questionDriftRange;
 	float questionYCenter;
@@ -241,6 +206,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float transitionVal;
 	
     //caption
-    static map<string, int> appearances;
+//    static map<string, int> appearances;
 	
 };

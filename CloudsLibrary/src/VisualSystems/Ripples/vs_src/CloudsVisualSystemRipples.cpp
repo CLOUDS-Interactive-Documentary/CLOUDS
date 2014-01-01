@@ -291,9 +291,7 @@ void CloudsVisualSystemRipples::selfDrawBackground()
     ofPushStyle();
     ofSetColor(tintColor);
     ofEnableAlphaBlending();
-    {
-        ripplesDstFbo.draw(0, 0);
-    }
+    ripplesDstFbo.draw(0, 0);
     ofPopStyle();
     
     swap(ripplesSrcFbo, ripplesDstFbo);

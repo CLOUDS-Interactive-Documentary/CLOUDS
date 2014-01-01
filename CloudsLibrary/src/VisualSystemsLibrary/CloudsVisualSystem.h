@@ -184,7 +184,7 @@ class CloudsVisualSystem {
     void drawGrid(float x, float y, float w, float h, float color);
     void billBoard(ofVec3f globalCamPosition, ofVec3f globelObjectPosition);
 
-    void drawNormalizedTexturedQuad();
+//    void drawNormalizedTexturedQuad();
     void drawBackground();
 	void drawBackgroundGradient();
     void draw2dSystemPlane();
@@ -320,14 +320,11 @@ class CloudsVisualSystem {
 	float bgHue2;
 	float bgSat2;
 	float bgBri2;
-
-//	ofx1DExtruder *bgHue;
-//	ofx1DExtruder *bgSat;
-//	ofx1DExtruder *bgBri;
-//	ofx1DExtruder *bgHue2;
-//	ofx1DExtruder *bgSat2;
-//	ofx1DExtruder *bgBri2;
-    
+	
+	//some crashes are being caused by update before draw
+	//this makes sure the draw() command only happens after the first update
+	bool updateCyclced;
+	
     ofxUISlider *hueSlider;
     ofxUISlider *satSlider;
     ofxUISlider *briSlider;

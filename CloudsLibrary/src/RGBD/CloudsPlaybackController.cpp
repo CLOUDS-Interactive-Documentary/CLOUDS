@@ -497,12 +497,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(ofEventArgs & args){
     
-	//turn off depth testing and enable blending
     glDisable( GL_DEPTH_TEST );
-	
 	ofPushStyle();
 	
-	//???: rgbdVisualSystem.getBlendMode()
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	
 	float mixVal = ofClamp( crossfadeValue * 255, 0, 255);
@@ -513,11 +510,10 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	}
 	if(!showingClusterMap && currentVisualSystem != NULL){
 		currentVisualSystem->selfPostDraw();
-		if(!showingIntro){
+		if(numClipsPlayed > 1){
 			hud.draw();
 		}
 	}
-	
     ofPopStyle();
     glEnable( GL_DEPTH_TEST );
 	
@@ -559,11 +555,13 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 #pragma story engine events
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
+	numClipsPlayed = 0;
 	playAct(args.act);
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
+
 }
 
 //--------------------------------------------------------------------
@@ -672,6 +670,9 @@ void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playClip(CloudsClip& clip){
+
+	numClipsPlayed++;
+	
 	rgbdVisualSystem->clearQuestions();
 	if(clip.getID() != prerolledClipID){
 		prerollClip(clip,1);
