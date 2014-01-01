@@ -1,6 +1,7 @@
 
 varying float traversalPosition;
 varying float optionPosition;
+
 void main() {
 //	gl_Position = ftransform();
 	optionPosition = gl_Normal.x;

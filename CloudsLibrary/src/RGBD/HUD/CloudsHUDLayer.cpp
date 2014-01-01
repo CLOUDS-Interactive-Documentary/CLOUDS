@@ -30,6 +30,7 @@ void CloudsHUDLayer::parse(string svgFilePath){
 	for(int i = 0; i < svg.getMeshes().size(); i++){
 		if( ofToLower(svg.getMeshes()[i].id).find("textbox") != string::npos ) {
 			textBoxIds.push_back(svg.getMeshes()[i].id);
+            
 //			cout << svg.sourceFileName <<  " has text box: " << svg.getMeshes()[i].id << " with bounds " << svg.getMeshes()[i].bounds.x << " " << svg.getMeshes()[i].bounds.y << " " << svg.getMeshes()[i].bounds.width << " " << svg.getMeshes()[i].bounds.height << endl;
 		}
 	}

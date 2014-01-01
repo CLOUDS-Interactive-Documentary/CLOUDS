@@ -20,6 +20,8 @@ void CloudsVisualSystemColony::selfSetup()
 
 	loadShaders();
  
+    // sound
+    synth.setOutputGen(buildSynth());
 }
 
 void CloudsVisualSystemColony::loadShaders(){
@@ -106,6 +108,21 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     guis.push_back(guiLooks);
     guimap[guiDynamics->getName()] = guiDynamics;
     guimap[guiLooks->getName()] = guiLooks;
+    
+    // sound
+    soundGui = new ofxUISuperCanvas("COLONY Sound", gui);
+	soundGui->copyCanvasStyle(gui);
+	soundGui->copyCanvasProperties(gui);
+	soundGui->setName("COLONY Sound");
+	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    soundGui->addToggle(soundFiles[0], &playSample[0]);
+    soundGui->addToggle(soundFiles[1], &playSample[1]);
+    soundGui->addToggle(soundFiles[2], &playSample[2]);
+    
+	guis.push_back(soundGui);
+	guimap[soundGui->getName()] = soundGui;
+    ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemColony::selfGuiEvent);
 }
 
 
@@ -204,37 +221,44 @@ void CloudsVisualSystemColony::selfUpdate()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
-    
     //FIXME: This shouldn't be here, but it's the only way to draw stuff in 2d
     if(bDebug){
         img_debug.draw(0, 0, getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+        ofLog(OF_LOG_ERROR, "Colony: bDebug is on. Remove this before reaching production");
     }
     
-    ofEnableAlphaBlending();
+    //FIXME: This is a safety check if FBOs are not allocated, in order to avoid calling an empty one
+
+        ofEnableAlphaBlending();
+        
+        levelSet.begin();
+        levelSet.setUniformTexture("grunge", grunge, 1);
+        levelSet.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
+        levelSet.setUniform1i("levelSet", levelSetMode);
+        levelSet.setUniform1i("levelSetBg", levelSetBG);
+        levelSet.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+        levelSet.setUniform2f("imgRes", grunge.getWidth(), grunge.getHeight());
+        levelSet.setUniform1f("translucenseCell", translucenseCell);
+        levelSet.setUniform1f("translucenseDish", translucenseDish);
+        levelSet.setUniform4fv("kernelColor_high", kernelColor_high.getPtr());
+        levelSet.setUniform4fv("kernelColor_low", kernelColor_low.getPtr());
+        levelSet.setUniform1f("kernel_maxValue", kernel_maxValue);
+        
+        ofxLight& l = (*(*lights.begin()).second);
+        levelSet.setUniform3fv("lightDirection", l.lightPos.getPtr());
+        levelSet.setUniform3f("lightColor", l.lightSpecularHSV.r,l.lightSpecularHSV.g,l.lightSpecularHSV.b);
+        
+        levelSet.setUniform1f("stippleScale", stippleScale);
+        levelSet.setUniform4fv("stippleColor", stippleColor.getPtr());
     
-    levelSet.begin();
-    levelSet.setUniformTexture("grunge", grunge, 1);
-    levelSet.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
-    levelSet.setUniform1i("levelSet", levelSetMode);
-    levelSet.setUniform1i("levelSetBg", levelSetBG);
-    levelSet.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
-    levelSet.setUniform2f("imgRes", grunge.getWidth(), grunge.getHeight());
-    levelSet.setUniform1f("translucenseCell", translucenseCell);
-    levelSet.setUniform1f("translucenseDish", translucenseDish);
-    levelSet.setUniform4fv("kernelColor_high", kernelColor_high.getPtr());
-    levelSet.setUniform4fv("kernelColor_low", kernelColor_low.getPtr());
-    levelSet.setUniform1f("kernel_maxValue", kernel_maxValue);
-
-    ofxLight& l = (*(*lights.begin()).second);
-    levelSet.setUniform3fv("lightDirection", l.lightPos.getPtr());
-    levelSet.setUniform3f("lightColor", l.lightSpecularHSV.r,l.lightSpecularHSV.g,l.lightSpecularHSV.b);
-
-    levelSet.setUniform1f("stippleScale", stippleScale);
-    levelSet.setUniform4fv("stippleColor", stippleColor.getPtr());
-
-    fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
-                  getSharedRenderTarget().getHeight());
-    levelSet.end();
+    if (areFbosAllocatedAndSized()){
+        fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
+                      getSharedRenderTarget().getHeight());
+    } else {
+        ofRect(0, 0, getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+        ofLog(OF_LOG_ERROR, "Colony : selfDrawBackground() being called before fbos were allocated. Drawing empty background instead");
+    };
+        levelSet.end();
     
 }
 
@@ -250,15 +274,29 @@ void CloudsVisualSystemColony::updateFoodTexture(){
 void CloudsVisualSystemColony::selfBegin()
 {
     populate();
+
+    // sound
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemColony::audioRequested);
+    
+    for (int i=0; i<3; i++)
+    {
+        if (playSample[i]) {
+            soundTriggers[i].trigger();
+        }
+    }
 }
 
 void CloudsVisualSystemColony::selfEnd()
 {
     clear();
+
+    // sound
+    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemColony::audioRequested);
 }
 
 void CloudsVisualSystemColony::selfExit(){
     clear();
+    billboard.unload();
     levelSet.unload();
     //TODO: is this necessary?
     delete guiLooks;
@@ -325,4 +363,44 @@ void CloudsVisualSystemColony::mouseMoved(ofMouseEventArgs &args){}
 void CloudsVisualSystemColony::mousePressed(ofMouseEventArgs &args){}
 void CloudsVisualSystemColony::mouseReleased(ofMouseEventArgs &args){}
 void CloudsVisualSystemColony::selfSetupGui(){}
-void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e){}
+void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e)
+{
+    for (int i=0; i<3; i++)
+    {
+        if (e.widget->getName() == soundFiles[i]) {
+            ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
+            playSample[i] = toggle->getValue();
+            if (toggle->getValue() == true) {
+                soundTriggers[i].trigger();
+            }
+        }
+    }
+}
+
+Generator CloudsVisualSystemColony::buildSynth()
+{
+    string strDir = GetCloudsDataPath()+"sound/textures/";
+    ofDirectory sdir(strDir);
+    
+    SampleTable samples[3];
+    
+    int nSounds = sizeof(soundFiles) / sizeof(string);
+    for (int i=0; i<nSounds; i++)
+    {
+        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+        samples[i] = loadAudioFile(strAbsPath);
+    }
+    
+    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
+    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(soundTriggers[1]);
+    Generator sampleGen3 = BufferPlayer().setBuffer(samples[2]).loop(1).trigger(soundTriggers[2]);
+    
+    return sampleGen1 * 0.4f + sampleGen2 * 0.4f + sampleGen3 * 0.2f;
+}
+
+void CloudsVisualSystemColony::audioRequested(ofAudioEventArgs& args)
+{
+    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+}
+
+

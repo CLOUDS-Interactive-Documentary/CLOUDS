@@ -52,6 +52,8 @@
 - (void)update
 {
 	
+	hud.update();
+	
 //	if(rgbdVisualSystem.getRGBDVideoPlayer().isDone()){
 //		cout << "replaying video!" << endl;
 //		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setPosition(0);

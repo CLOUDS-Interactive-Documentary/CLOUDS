@@ -33,17 +33,24 @@ void testApp::setup(){
 	
 	clusterMap.setup();
 	clusterMap.playSystem();
+	
+//	for(int i = 0; i < parser.getAllClips().size(); i++){
+//		cout << parser.getAllClips()[i].getID() << endl;
+//	}
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-	
 
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
 
+}
+//--------------------------------------------------------------
+void testApp::exit(){
+	clusterMap.exit();
 }
 
 //--------------------------------------------------------------

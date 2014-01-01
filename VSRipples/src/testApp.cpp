@@ -6,10 +6,13 @@ void testApp::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     
-    SetCloudsInputKinect();
+//    SetCloudsInputKinect();
     
 	vs.setup();
 	vs.playSystem();
+    
+    mixer.setup();
+    mixer.setDiageticVolume(1);
 }
 
 //--------------------------------------------------------------
@@ -70,4 +73,9 @@ void testApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void testApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+void testApp::audioRequested(float *output, int bufferSize, int nChannels)
+{
+    mixer.fillBuffer(output, bufferSize, nChannels);
 }

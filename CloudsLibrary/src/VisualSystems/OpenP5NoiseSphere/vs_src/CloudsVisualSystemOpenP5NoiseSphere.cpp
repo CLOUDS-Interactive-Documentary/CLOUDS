@@ -95,7 +95,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupAudioGui()
     
     audioGui->addSpacer();
     audioGui->addSlider("LEVEL", 0.0f, 1.0f, 0.0f);
-    audioGui->addSlider("LEVEL ADJUST", 0.1f, 10.0f, &levelAdjust);
+    audioGui->addSlider("LEVEL ADJUST", 0.1f, 15.0f, &levelAdjust);
 
     audioGui->addSpacer();
 	audioGui->addSlider("SCROLL SPEED", 0.0f, 2.5f, &scrollSpeed);

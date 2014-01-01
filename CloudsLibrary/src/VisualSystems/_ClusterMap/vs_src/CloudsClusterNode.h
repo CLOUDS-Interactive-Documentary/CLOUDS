@@ -4,12 +4,12 @@
 #include "ofMain.h"
 
 //class for showing a dot in the constellation of the ClusterMap
-typedef struct
-{
+typedef struct {
 	string destinationClipId;
-	ofIndexType startIndx;
-	ofIndexType endIndx;
-} TraversalCurve;
+	bool source;
+	ofIndexType startIndex;
+	ofIndexType endIndex;
+} NetworkEdge;
 
 class CloudsClusterNode {
   public:
@@ -23,7 +23,7 @@ class CloudsClusterNode {
 
 	//indeces of edge ends that we connect to
 	vector<ofIndexType> connectionMeshVertexIds;
-	map<string, TraversalCurve> connectionCurves;
+	map<string, NetworkEdge> connectionCurves;
 	ofVboMesh* mesh;
 	
 	int vertexIndex;

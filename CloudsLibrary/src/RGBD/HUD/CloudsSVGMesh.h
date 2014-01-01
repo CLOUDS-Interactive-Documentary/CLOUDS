@@ -26,7 +26,7 @@ class CloudsSVGMesh
 	bool load(string file);
 	void draw();
 	ofRectangle getBounds();
-
+    
 	string sourceFileName;
 	
 	//of document

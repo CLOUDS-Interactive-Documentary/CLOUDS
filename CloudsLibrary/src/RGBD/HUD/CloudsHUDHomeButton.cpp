@@ -14,6 +14,7 @@ CloudsHUDHomeButton::CloudsHUDHomeButton(){
 	maxHoverTime = 10.;
     targetFps = 24.;
     playhead = 0;
+    hudScale = 1.0;
     hoverStartTime = ofGetElapsedTimef();
     
     buttonSize.set(200, 200);
@@ -23,8 +24,6 @@ CloudsHUDHomeButton::CloudsHUDHomeButton(){
 }
 
 void CloudsHUDHomeButton::setup(){
-    homeLocation = ofVec2f(100 - 84, ofGetHeight()-300 + 60);
-    
     rolloverTextures[CLOUDS_HUD_HOVER_ROLLOVER]     = loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/01_IntroHover/" );;
     rolloverTextures[CLOUDS_HUD_HOVER_OUTRO]        = loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/02a_IntroLoopBack/" );;
     rolloverTextures[CLOUDS_HUD_HOVER_ACTIVE_INTRO] = loadFramesDir( GetCloudsDataPath() + "HUD/HOME_SM/02b_IntroToActive/" );;
@@ -62,9 +61,6 @@ vector<ofTexture*> CloudsHUDHomeButton::loadFramesDir( string dirPath ){
 
 void CloudsHUDHomeButton::update(){
     lastFrameTime = ofGetElapsedTimef();
-    
-	homeLocation = ofVec2f(100 - 84, ofGetHeight()-300 + 57);
-//    hitBox.set( homeLocation, buttonSize.x, buttonSize.y );
     
     bool hit = hitTest( GetCloudsInputX(), GetCloudsInputY() );
     if( !bIsHovering && hit ){
@@ -127,7 +123,7 @@ void CloudsHUDHomeButton::rollout(){
 }
 
 bool CloudsHUDHomeButton::hitTest(float xPos, float yPos){
-    return bounds.inside( xPos, yPos );
+    return bounds.inside( xPos * hudScale, yPos * hudScale );
 }
 
 bool CloudsHUDHomeButton::hitTest(ofPoint mousePos){
@@ -137,7 +133,6 @@ bool CloudsHUDHomeButton::hitTest(ofPoint mousePos){
 void CloudsHUDHomeButton::draw(){
     ofPushMatrix();{
         
-//        ofTranslate( homeLocation );
         /*
         if( currentState == CLOUDS_HUD_HOVER_IDLE ){
             rolloverFrames[0]->draw(0,0);
