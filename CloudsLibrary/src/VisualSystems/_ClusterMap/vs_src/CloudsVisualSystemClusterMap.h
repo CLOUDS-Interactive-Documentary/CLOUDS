@@ -165,18 +165,29 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 
 	ofVec3f trailHead;
 
+	float nodePopLength;
 	float lineAlpha;
 	float lineFocalDistance;
 	float lineFocalRange;
 	float lineDissolve;
 	
-	float maxTraverseAngle;
-	float nodePopLength;
+	bool drawTraversalPoints;
+	float traversCameraDistance;
 	float traversedNodeSize;
-	float minTraversalSolveDistance;
 	float traverseStepSize;
 	float traverseAngleDampen;
-	float traverseMinStepSize;
+	float traverseHomingMinDistance;
+	float traverseMinSolvedDistance;
+	
+	//animate params
+	float traverseAnimationDuration;
+	float optionsAnimationDuration;
+	
+	bool drawHomingDistanceDebug;
+	
+	float traverseStartTime;
+	float percentTraversed;
+	float percentOptionsRevealed;
 	
 	ofVec3f randomDirection();
 	
