@@ -37,7 +37,7 @@ void CloudsVisualSystemConnectors::selfSetupGui(){
 	soundGui->setName("CONNECTORS Sound");
 	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 
-    soundGui->addToggle("wind_chimes.aif", &playSample[0]);
+    soundGui->addToggle(soundFiles[0], &playSample[0]);
 
 	guis.push_back(soundGui);
 	guimap[soundGui->getName()] = soundGui;

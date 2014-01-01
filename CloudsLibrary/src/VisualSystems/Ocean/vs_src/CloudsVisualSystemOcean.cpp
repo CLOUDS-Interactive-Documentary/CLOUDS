@@ -16,6 +16,8 @@ CloudsVisualSystemOcean::CloudsVisualSystemOcean(){
 	currentSteerRot = 0;
 	maxLookUpRot = 90;
 	maxLookDownRot = 90;
+	
+	needsRegenerate = false;
 
 	drawOcean = true;
 	depthTesting = false;
@@ -26,7 +28,7 @@ string CloudsVisualSystemOcean::getSystemName(){
 }
 
 void CloudsVisualSystemOcean::selfSetup(){
-	
+	needsRegenerate = true;
 }
 
 void CloudsVisualSystemOcean::selfPresetLoaded(string presetPath){
@@ -34,7 +36,7 @@ void CloudsVisualSystemOcean::selfPresetLoaded(string presetPath){
 }
 
 void CloudsVisualSystemOcean::generateOcean(){
-	
+	needsRegenerate = false;
 	ocean.size = ofVec3f(int(oceanTileSizeX), 1.0, int(oceanTileSizeY));
     ocean.windSpeed = windSpeed;
     ocean.setup();
@@ -103,6 +105,10 @@ void CloudsVisualSystemOcean::selfSetupGuis(){
 }
 
 void CloudsVisualSystemOcean::selfUpdate(){
+	
+	if(	needsRegenerate){
+		generateOcean();
+	}
 	
 	if(useOceanCam){
 		getCameraRef().dolly(cameraSpeed);

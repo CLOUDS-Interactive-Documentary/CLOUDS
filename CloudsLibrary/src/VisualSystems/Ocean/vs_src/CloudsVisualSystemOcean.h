@@ -56,7 +56,7 @@ class CloudsVisualSystemOcean : public CloudsVisualSystem {
 	
 	ofBlendMode blendMode;
 	
-//	void reloadShader();
+	bool needsRegenerate;
 	bool useOceanCam;
 	
 	bool drawPoints;
