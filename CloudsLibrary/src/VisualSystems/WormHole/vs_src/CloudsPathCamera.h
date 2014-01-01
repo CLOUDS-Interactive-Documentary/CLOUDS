@@ -44,6 +44,18 @@ public:
 	float& getStartTime();
 	float& getDuration();
 	
+	void resampleSpline(ofxSimpleSpline& spline, float spacing = 20 )
+	{
+		spline.getControlVertices();
+		
+		ofPolyline resampler(spline.getControlVertices());
+		resampler.getResampledBySpacing(spacing);
+		
+		spline.clear();
+		
+		spline.addControlVertices(resampler.getVertices());
+	}
+	
 	ofxSimpleSpline& getPositionSpline();
 	ofxSimpleSpline& getTargetSpline();
 	ofxSimpleSpline& getUpSpline();

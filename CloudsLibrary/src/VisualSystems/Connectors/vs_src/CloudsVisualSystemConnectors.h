@@ -122,7 +122,7 @@ protected:
 	
 	// Sound
     ofxUISuperCanvas* soundGui;
-    string soundFiles[1] = {"wind_chimes.aif"};
+    string soundFiles[1] = {"WindChimes1.aif"};
     bool playSample[1];
     ControlTrigger soundTriggers[1];
     ofxTonicSynth synth;

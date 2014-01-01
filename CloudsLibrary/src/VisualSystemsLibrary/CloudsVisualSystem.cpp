@@ -1316,6 +1316,26 @@ void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
             bgGui->autoSizeToFitWidgets();
         }
     }
+	
+	//change the gui color on slider change
+	if(name == "HUE" || name == "SAT" || name == "BRI")
+	{
+		ofColor backgrounfFillColor;
+		backgrounfFillColor.setHsb(bgHue, bgSat, bgBri);
+		
+		bgGui->getWidget("HUE")->setColorFill(backgrounfFillColor);
+		bgGui->getWidget("SAT")->setColorFill(backgrounfFillColor);
+		bgGui->getWidget("BRI")->setColorFill(backgrounfFillColor);
+	}
+	else if(name == "HUE2" || name == "SAT2" || name == "BRI2")
+	{
+		ofColor backgrounfFillColor;
+		backgrounfFillColor.setHsb(bgHue2, bgSat2, bgBri2);
+		
+		bgGui->getWidget("HUE2")->setColorFill(backgrounfFillColor);
+		bgGui->getWidget("SAT2")->setColorFill(backgrounfFillColor);
+		bgGui->getWidget("BRI2")->setColorFill(backgrounfFillColor);
+	}
 }
 
 void CloudsVisualSystem::setupLightingGui()

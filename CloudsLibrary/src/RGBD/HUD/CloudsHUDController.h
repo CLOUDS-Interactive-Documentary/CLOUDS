@@ -12,6 +12,7 @@
 #include "ofxSvg.h"
 #include "ofxUI.h"
 #include "ofxFTGL.h"
+#include "ofxAVFVideoPlayer.h"
 
 #include "CloudsHUDLayer.h"
 #include "CloudsHUDHomeButton.h"
@@ -42,7 +43,7 @@ class CloudsHUDController {
 	void clipBegan(CloudsClip& clip);
 	
 	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
-	void animateOff();
+	void animateOff(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	
 	ofImage testImage;
 	
@@ -56,7 +57,14 @@ class CloudsHUDController {
 	CloudsHUDHomeButton home;
 	
   protected:
+    void populateLowerThird( string firstName="", string lastName="", string title="", string location="", string textbox="", bool forceOn=false );
+    void populateProjectExample(string videoPath="", string textLeft="", string textRight="", string textTop="", bool forceOn=false);
+    
+    ofxAVFVideoPlayer       videoPlayer;
+    ofRectangle             svgVideoBounds, videoBounds;
+    
     bool    bIsHudOpen;
+    bool    bSkipAVideoFrame;
     
     void drawLayer(CloudsHUDLayerSet layer);
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath );
@@ -75,7 +83,6 @@ class CloudsHUDController {
                             *ProjectExampleTextboxRight,
                             *ProjectExampleTextBoxTop;
     
-//    vector<CloudsHUDLabel*>         hudLabelList;
     map<string, CloudsHUDLabel*>    hudLabelMap;
     
 };
