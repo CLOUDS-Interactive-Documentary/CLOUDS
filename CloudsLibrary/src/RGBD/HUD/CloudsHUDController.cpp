@@ -26,21 +26,39 @@ void CloudsHUDController::setup(){
 	home.setup();
 }
 
-//Our textboxes are:
-//BylineBodyCopyTextBox.svg has text box: BylineBodyCopyTextBox with bounds 741.999 725.021 583.814 63.34
-//BylineFirstNameTextBox.svg has text box: BylineFirstNameTextBox_1_ with bounds 200.813 719.021 80.314 26.147
-//BylineLastNameTextBox.svg has text box: BylineLastNameTextBox with bounds 200.813 754.021 278.314 37.147
-//SVG/BylineTopicTextBoxBottom.svg has text box: BylineTopicTextBoxBottom with bounds 498.656 770.521 146.314 13.147
-//BylineTopicTextBoxTop.svg has text box: BylineTopicTextBoxTop with bounds 498.656 728.676 182.314 13.147
-//ProjectExampleTextboxLeft.svg has text box: ProjectExampleTextboxLeft with bounds 875.406 388.5 318.814 15.34
-//ProjectExampleTextboxRight.svg has text box: ProjectExampleTextboxRight with bounds 1305.19 388.5 40.127 15.34
-//ProjectExampleTextBoxTop.svg has text box: ProjectExampleTextBoxTop with bounds 875.406 63.5 158.5 15.34
-//QuestionTextBox.svg has text box: QuestionTextBox with bounds 114.656 68.926 468.314 20.147
-//ResetButtonTextBox.svg has text box: ResetButtonTextBox with bounds 1269.64 837.294 67.314 16.147
-//TopicTextBoxLeft.svg has text box: TopicTextBoxLeft with bounds 114.656 114.926 71.314 13.147
-//TopicTextBoxRight.svg has text box: TopicTextBoxRight with bounds 247.999 114.926 122.314 13.147
+void CloudsHUDController::actBegan(CloudsActEventArgs& args){
+	
+}
 
-void CloudsHUDController::clipBegan(CloudsClip& clip){
+void CloudsHUDController::actEnded(CloudsActEventArgs& args){
+	
+}
+
+void CloudsHUDController::clipBegan(CloudsClipEventArgs& args){
+	respondToClip(args.chosenClip);
+}
+
+void CloudsHUDController::visualSystemBegan(CloudsVisualSystemEventArgs& args){
+	
+}
+
+void CloudsHUDController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
+	
+}
+
+void CloudsHUDController::questionAsked(CloudsQuestionEventArgs& args){
+	
+}
+
+void CloudsHUDController::topicChanged(CloudsTopicEventArgs& args){
+	
+}
+
+void CloudsHUDController::preRollRequested(CloudsPreRollEventArgs& args){
+	
+}
+
+void CloudsHUDController::respondToClip(CloudsClip& clip){
 	
 	cout << "ID's on clip " << clip.name << " and fcp id? " << clip.fcpFileId << endl;
 	CloudsSpeaker speaker = CloudsSpeaker::speakers[ clip.person ];

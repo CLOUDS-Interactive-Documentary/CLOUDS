@@ -9,7 +9,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxSvg.h"
 #include "ofxUI.h"
 #include "ofxFTGL.h"
 #include "ofxAVFVideoPlayer.h"
@@ -17,6 +16,7 @@
 #include "CloudsHUDLayer.h"
 #include "CloudsHUDHomeButton.h"
 #include "CloudsHUDLabel.h"
+#include "CloudsEvents.h"
 
 typedef enum {
 	CLOUDS_HUD_FULL = 0,
@@ -40,12 +40,11 @@ class CloudsHUDController {
     void calculateFontSizes();
     int getFontSizeForMesh( SVGMesh* textMesh );
 	
-	void clipBegan(CloudsClip& clip);
-	
 	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void animateOff(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	
 	ofImage testImage;
+	void respondToClip(CloudsClip& clip);
 	
 	map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> > layerSets;
 	vector<CloudsHUDLayer*> allLayers;
@@ -56,10 +55,20 @@ class CloudsHUDController {
 	ofxUISuperCanvas *hudGui;
 	CloudsHUDHomeButton home;
 	
+	void actBegan(CloudsActEventArgs& args);
+	void actEnded(CloudsActEventArgs& args);
+	void clipBegan(CloudsClipEventArgs& args);
+	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
+	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
+	void questionAsked(CloudsQuestionEventArgs& args);
+	void topicChanged(CloudsTopicEventArgs& args);
+	void preRollRequested(CloudsPreRollEventArgs& args);
+
   protected:
     void populateLowerThird( string firstName="", string lastName="", string title="", string location="", string textbox="", bool forceOn=false );
     void populateProjectExample(string videoPath="", string textLeft="", string textRight="", string textTop="", bool forceOn=false);
-    
+	
+
     ofxAVFVideoPlayer       videoPlayer;
     ofRectangle             svgVideoBounds, videoBounds;
     

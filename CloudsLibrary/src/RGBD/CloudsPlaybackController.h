@@ -13,7 +13,7 @@
 #include "CloudsIntroSequence.h"
 #include "CloudsVisualSystemClusterMap.h"
 #include "CloudsVisualSystemRGBD.h"
-
+#include "CloudsHUDController.h"
 
 class CloudsPlaybackControllerEvent : public ofEventArgs {
     
@@ -219,6 +219,7 @@ class CloudsPlaybackController {
 	//CloudsIntroSequence introSequence;
 	ofPtr<CloudsIntroSequence> introSequence;
 	CloudsVisualSystemClusterMap clusterMapVisualSystem;
+	CloudsHUDController hud;
 	
 	float cursorMovedTime;
 	bool showingCursor;
