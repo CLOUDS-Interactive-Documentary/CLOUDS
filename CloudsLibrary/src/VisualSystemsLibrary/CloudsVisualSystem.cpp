@@ -154,7 +154,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
     bMatchBackgrounds = false;
 	bIs2D = false;
 	bDrawCursor = true;
-	
+	updateCyclced = false;
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
 #else
@@ -366,7 +366,8 @@ void CloudsVisualSystem::update(ofEventArgs & args)
         updateTimelineUIParams();
     }
     
-    if(bUpdateSystem)
+	//JG Never skip the update loop this is causing lots of problems
+//    if(bUpdateSystem)
     {
         for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it)
         {
@@ -399,12 +400,18 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	}
 	
 	checkOpenGLError(getSystemName() + ":: UPDATE");
+	
+	updateCyclced = true;
 }
 
 void CloudsVisualSystem::draw(ofEventArgs & args)
 {
-    ofPushStyle();
+
+	if(!updateCyclced)
+		return;
 	
+	ofPushStyle();
+
     if(bRenderSystem)
     {
 	  
@@ -2897,25 +2904,25 @@ void CloudsVisualSystem::billBoard(ofVec3f globalCamPosition, ofVec3f globelObje
 //    glEnd ();
 //}
 
-void CloudsVisualSystem::drawNormalizedTexturedQuad()
-{
-    glBegin (GL_QUADS);
-    
-    glTexCoord2f (0.0, 0.0);
-    glVertex3f (0.0, 0.0, 0.0);
-    
-    glTexCoord2f (1.0, 0.0);
-    glVertex3f (ofGetWidth(), 0.0, 0.0);
-    
-    
-    glTexCoord2f (1.0, 1.0);
-    glVertex3f (ofGetWidth(), ofGetHeight(), 0.0);
-    
-    glTexCoord2f (0.0, 1.0);
-    glVertex3f (0.0, ofGetHeight(), 0.0);
-    
-    glEnd ();
-}
+//void CloudsVisualSystem::drawNormalizedTexturedQuad()
+//{
+//    glBegin (GL_QUADS);
+//    
+//    glTexCoord2f (0.0, 0.0);
+//    glVertex3f (0.0, 0.0, 0.0);
+//    
+//    glTexCoord2f (1.0, 0.0);
+//    glVertex3f (ofGetWidth(), 0.0, 0.0);
+//    
+//    
+//    glTexCoord2f (1.0, 1.0);
+//    glVertex3f (ofGetWidth(), ofGetHeight(), 0.0);
+//    
+//    glTexCoord2f (0.0, 1.0);
+//    glVertex3f (0.0, ofGetHeight(), 0.0);
+//    
+//    glEnd ();
+//}
 
 void CloudsVisualSystem::drawBackground()
 {

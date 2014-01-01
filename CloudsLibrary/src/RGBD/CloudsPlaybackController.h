@@ -208,8 +208,6 @@ class CloudsPlaybackController {
 	vector<CloudsClip> fakeQuestions;
   protected:
 
-	
-
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
 	CloudsAct* currentAct;
@@ -223,6 +221,7 @@ class CloudsPlaybackController {
 	
 	float cursorMovedTime;
 	bool showingCursor;
+	int numClipsPlayed;
 	
 	string combinedMoviesFolder;
 	string currentTopic;
