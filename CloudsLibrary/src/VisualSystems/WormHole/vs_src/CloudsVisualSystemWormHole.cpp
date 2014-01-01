@@ -591,8 +591,6 @@ void CloudsVisualSystemWormHole::selfExit()
 		delete shader;
 	}
 	shaderMap.clear();
-	
-	
 }
 
 //events are called when the system is active
