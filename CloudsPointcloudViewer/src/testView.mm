@@ -192,6 +192,11 @@
     }
 }
 
+- (IBAction)updateSpeakerVolume:(id)sender{
+
+    cout<<"IM IN UPDATE SPEAKER VOLUME"<<endl;  
+}
+
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
 

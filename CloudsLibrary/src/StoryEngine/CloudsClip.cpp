@@ -26,6 +26,7 @@ CloudsClip::CloudsClip(){
     keywordsDirty = true;
 	networkPosition = ofVec3f(-1,-1,-1);
 	hasProjectExample = false;
+    speakerVolume = 1;
 }
 
 string CloudsClip::getLinkName(){

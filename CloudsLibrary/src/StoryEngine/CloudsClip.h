@@ -22,6 +22,8 @@ class CloudsClip {
 	
 	ofVec3f networkPosition;
 	
+    //TODO
+    float speakerVolume;
 	bool voiceOverAudio;
     float currentScore;
     int startFrame;
