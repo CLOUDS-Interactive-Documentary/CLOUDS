@@ -260,7 +260,7 @@ void CloudsSecondaryDisplayController::draw(){
             ofSetColor(lightBlue);
         drawTextToMesh(h4, title, meshBioTitle);
         if(debug)
-            ofRect(t->bounds);
+            //ofRect(t->bounds);
         
         ////location
         if(color)
