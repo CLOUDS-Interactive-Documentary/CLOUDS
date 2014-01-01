@@ -12,7 +12,7 @@
 CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
 	hasSpeaker = false;
 	playingMovie = false;
-    displayMode = "BIO";
+    displayMode = "NONE";
     lightBlue = ofColor::fromHex(0x97d7fb);
     darkBlue = ofColor::fromHex(0x439ced);
     color = false;
@@ -37,17 +37,18 @@ void CloudsSecondaryDisplayController::setup(){
 	loadSVGs();
     
     //FONT SIZES ARE IN POINTS
-    //1 pixel = .75pts
-   // float fScale = .75;
-    
-    //load a nunch of fonts at different sizes
+    //load a bunch of fonts at different sizes
     int minFontSize = 1;
     int maxFontSize = 80;
     
     for( int i=minFontSize; i<maxFontSize; i++){
-        ofxFTGLFont *tmp = new ofxFTGLFont();
-        tmp->loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", i );
-        tempFontList.push_back( tmp );
+        ofxFTGLFont *tmpThin = new ofxFTGLFont();
+        tmpThin->loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", i );
+        tempFontListThin.push_back( tmpThin );
+        
+        ofxFTGLFont *tmpBook = new ofxFTGLFont();
+        tmpBook->loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i );
+        tempFontListBook.push_back( tmpBook );
     }
     
     //setup references to all meshes that need references
@@ -66,22 +67,25 @@ void CloudsSecondaryDisplayController::setup(){
 
     //load all fonts
     ////last name
-    h1 = getLayoutForLayer(meshBioLastName);
+    h1 = getLayoutForLayer(meshBioLastName, "Blender-BOOK");
     ////first name
-    h2 = getLayoutForLayer(meshBioFirstName);
+    h2 = getLayoutForLayer(meshBioFirstName, "Blender-THIN");
     ////question
-    h3 = getLayoutForLayer(meshQuestion);
+    h3 = getLayoutForLayer(meshQuestion, "Blender-BOOK");
     ////locations
-    h4 = getLayoutForLayer(meshBioLocation);
+    h4 = getLayoutForLayer(meshBioLocation, "Blender-BOOK");
     ////byline / description
-    p = getLayoutForLayer(meshBioDescription);
+    p = getLayoutForLayer(meshBioDescription, "Blender-BOOK");
 
 	displayTarget.allocate(1920, 1080, GL_RGB);
     // cleanup!
-    for( int i=0; i<tempFontList.size(); i++ ){
-        delete tempFontList[i];
+    for( int i=0; i<tempFontListThin.size(); i++ ){
+        delete tempFontListThin[i];
+        delete tempFontListBook[i];
     }
-    tempFontList.clear();
+    tempFontListThin.clear();
+    tempFontListBook.clear();
+
 }
 
 /*LOADING SVG LAYOUT files from Sarah*/
@@ -102,13 +106,14 @@ void CloudsSecondaryDisplayController::loadSVGs(){
 
 }
 
-ofxFTGLSimpleLayout* CloudsSecondaryDisplayController::getLayoutForLayer( SVGMesh* textMesh ) {
+ofxFTGLSimpleLayout* CloudsSecondaryDisplayController::getLayoutForLayer( SVGMesh* textMesh, string font) {
     
         if( textMesh != NULL ){
-            int fontSize = getFontSizeForMesh( textMesh );
+            
+            int fontSize = getFontSizeForMesh( textMesh, font );
             // make a layout
             ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
-            newLayout->loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", fontSize );
+            newLayout->loadFont( GetCloudsDataPath() + "font/"+font+".ttf", fontSize );
             newLayout->setLineLength( textMesh->bounds.width );
             
             return newLayout;
@@ -117,7 +122,7 @@ ofxFTGLSimpleLayout* CloudsSecondaryDisplayController::getLayoutForLayer( SVGMes
     return NULL;
 }
 
-int CloudsSecondaryDisplayController::getFontSizeForMesh( SVGMesh* textMesh ){
+int CloudsSecondaryDisplayController::getFontSizeForMesh( SVGMesh* textMesh, string font ){
     if( !textMesh ){
         ofLogError("CloudsHUDController :: Text box not found");
         return 0;
@@ -126,9 +131,17 @@ int CloudsSecondaryDisplayController::getFontSizeForMesh( SVGMesh* textMesh ){
     int fontSize = 0;
     float textBoxHeight = textMesh->bounds.height;
     
-    for( int k=0; k<tempFontList.size()-1; k++){
-        float f1h = tempFontList[k]->getStringBoundingBox("M", 0, 0).height;
-        float f2h = tempFontList[k+1]->getStringBoundingBox("M", 0, 0).height;
+    
+    for( int k=0; k<tempFontListThin.size()-1; k++){
+        float f1h, f2h;
+        if(font == "Blender-THIN"){
+            f1h = tempFontListThin[k]->getStringBoundingBox("M", 0, 0).height;
+            f2h = tempFontListThin[k+1]->getStringBoundingBox("M", 0, 0).height;
+        }
+        else if(font == "Blender-BOOK"){
+            f1h = tempFontListBook[k]->getStringBoundingBox("M", 0, 0).height;
+            f2h = tempFontListBook[k+1]->getStringBoundingBox("M", 0, 0).height;
+        }
         if( f1h <= textBoxHeight && f2h > textBoxHeight ){
             fontSize = 1 + k;
             break;
@@ -185,12 +198,27 @@ void CloudsSecondaryDisplayController::update(){
                 cout << "lastQuestion: '" << lastQuestion << "'";
 			}
 		}
+        else if(m.getAddress() == "/actBegan"){
+            onActBegan();
+        }
+        else if(m.getAddress() == "/actEnded"){
+            onActEnded();
+        }
 	}
 	
 	
 	if(playingMovie){
 		archivePlayer.update();
 	}
+}
+
+void CloudsSecondaryDisplayController::onActBegan(){
+    
+}
+
+void CloudsSecondaryDisplayController::onActEnded(){
+    //hide the secondary display hud
+    displayMode = "NONE";
 }
 
 void CloudsSecondaryDisplayController::draw(){
