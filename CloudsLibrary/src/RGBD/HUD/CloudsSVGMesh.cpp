@@ -209,6 +209,8 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId, float pa
 	}
 }
 
+
+
 void CloudsSVGMesh::draw(){
 	for(int i = 0; i < meshes.size(); i++){
         if(meshes[i].visible)
