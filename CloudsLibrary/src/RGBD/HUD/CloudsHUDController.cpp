@@ -129,12 +129,12 @@ void CloudsHUDController::populateProjectExample(string videoPath, string textLe
         hudLabelMap["ProjectExampleTextboxLeft"]->setText( textLeft );
         hudLabelMap["ProjectExampleTextboxRight"]->setText( textRight );
         hudLabelMap["ProjectExampleTextBoxTop"]->setText( textTop );
+        
+        if( forceOn ){
+            animateOn( CLOUDS_HUD_PROJECT_EXAMPLE );
+        }
     }else{
         cout << "CloudsHUDController :: Project example video does not exist: " << videoPath << endl;
-    }
-    
-    if( forceOn ){
-        animateOn( CLOUDS_HUD_PROJECT_EXAMPLE );
     }
 }
 
@@ -317,6 +317,7 @@ void CloudsHUDController::update(){
     
     scaleAmt = (xScale < yScale) ? xScale : yScale;
 
+    home.hudScale = scaleAmt;
 	home.update();
     
     if( videoPlayer.isPlaying() ){
@@ -339,6 +340,10 @@ void CloudsHUDController::update(){
 }
 
 void CloudsHUDController::draw(){
+    
+    if( !bDrawHud )
+        return;
+    
 	ofPushStyle();
 	ofPushMatrix();
 	ofEnableAlphaBlending();

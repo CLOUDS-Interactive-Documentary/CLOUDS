@@ -40,8 +40,8 @@ class CloudsHUDHomeButton {
         return false;
     }
     
-	ofVec2f homeLocation;
     ofRectangle bounds;
+    float hudScale;
 
   protected:
     void rollover();

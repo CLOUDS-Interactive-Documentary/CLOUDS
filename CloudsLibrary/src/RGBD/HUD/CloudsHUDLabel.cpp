@@ -50,7 +50,7 @@ void CloudsHUDLabel::draw(){
     if( layout ){
         ofPushStyle();{
             ofSetColor(255, 255, 255, textAlpha);
-            layout->drawString( text.substr(0, playhead ), bounds.x, bounds.y + layout->getStringBoundingBox("W", 0, 0).height );
+            layout->drawString( ofToUpper(text.substr(0, playhead )), bounds.x, bounds.y + layout->getStringBoundingBox("W", 0, 0).height );
         }ofPopStyle();
     }
 }
