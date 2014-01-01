@@ -1050,8 +1050,8 @@
 		2A85300918738FA1001E0632 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				2A85300A18738FA1001E0632 /* CloudsVisualSystemOcean.cpp */,
 				2A85300B18738FA1001E0632 /* CloudsVisualSystemOcean.h */,
+				2A85300A18738FA1001E0632 /* CloudsVisualSystemOcean.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -2191,8 +2191,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Ocean" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
