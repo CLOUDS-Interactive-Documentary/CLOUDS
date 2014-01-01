@@ -67,12 +67,14 @@ class CloudsHUDController {
   protected:
     void populateLowerThird( string firstName="", string lastName="", string title="", string location="", string textbox="", bool forceOn=false );
     void populateProjectExample(string videoPath="", string textLeft="", string textRight="", string textTop="", bool forceOn=false);
-	
-
+    void populateQuestion( string question="", bool forceOn=false);
+    void populateMap( string leftBox="", string rightBox="", bool forceOn=false);
+    
     ofxAVFVideoPlayer       videoPlayer;
     ofRectangle             svgVideoBounds, videoBounds;
     
     bool    bIsHudOpen;
+    bool    bDrawHud;
     bool    bSkipAVideoFrame;
     
     void drawLayer(CloudsHUDLayerSet layer);
@@ -93,7 +95,8 @@ class CloudsHUDController {
                             *ProjectExampleTextBoxTop;
     
     map<string, CloudsHUDLabel*>    hudLabelMap;
-    
+    ofRectangle hudBounds;
+    float scaleAmt;
 };
 
 

@@ -16,6 +16,9 @@ CloudsHUDController::CloudsHUDController(){
 	hudGui = NULL;
     bIsHudOpen = false;
     bSkipAVideoFrame = false;
+    bDrawHud = true;
+    
+    scaleAmt = 1.0;
 }
 
 void CloudsHUDController::setup(){
@@ -27,11 +30,11 @@ void CloudsHUDController::setup(){
 }
 
 void CloudsHUDController::actBegan(CloudsActEventArgs& args){
-	
+	bDrawHud = true;
 }
 
 void CloudsHUDController::actEnded(CloudsActEventArgs& args){
-	
+	animateOff( CLOUDS_HUD_FULL );
 }
 
 void CloudsHUDController::clipBegan(CloudsClipEventArgs& args){
@@ -39,19 +42,19 @@ void CloudsHUDController::clipBegan(CloudsClipEventArgs& args){
 }
 
 void CloudsHUDController::visualSystemBegan(CloudsVisualSystemEventArgs& args){
-	
+	bDrawHud = false;
 }
 
 void CloudsHUDController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
-	
+	bDrawHud = true;
 }
 
 void CloudsHUDController::questionAsked(CloudsQuestionEventArgs& args){
-	
+    populateQuestion( args.question, true);
 }
 
 void CloudsHUDController::topicChanged(CloudsTopicEventArgs& args){
-	
+
 }
 
 void CloudsHUDController::preRollRequested(CloudsPreRollEventArgs& args){
@@ -80,6 +83,23 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
         populateProjectExample( videoPath, example.creatorName, "", example.title, true );
 	}else{
         animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
+    }
+}
+
+void CloudsHUDController::populateMap( string leftBox, string rightBox, bool forceOn){
+    hudLabelMap["TopicTextBoxLeft"]->setText( leftBox );
+    hudLabelMap["TopicTextBoxRight"]->setText( rightBox );
+    
+    if( forceOn ){
+        animateOn( CLOUDS_HUD_MAP );
+    }
+}
+
+void CloudsHUDController::populateQuestion( string question, bool forceOn ){
+    hudLabelMap["QuestionTextBox"]->setText( question );
+    
+    if( forceOn ){
+        animateOn( CLOUDS_HUD_QUESTION );
     }
 }
 
@@ -195,7 +215,11 @@ void CloudsHUDController::buildLayerSets(){
     
 //	layerSets[CLOUDS_HUD_QUESTION].push_back( new CloudsHUDLayer(GetCloudsDataPath() + "HUD/01_MAIN_innermost.svg" ) );
 //	layerSets[CLOUDS_HUD_QUESTION].push_back( new CloudsHUDLayer(GetCloudsDataPath() + "HUD/01_MAIN_Outer.svg" ) );
-	
+    
+    hudBounds.set( 0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
+    
+//	cout << "HUD BOUNDS " << hudBounds.width << " / " << hudBounds.height << endl;
+//    cout << "SCREEN " << ofGetScreenWidth() << " / " << ofGetScreenHeight() << endl;
 }
 
 void CloudsHUDController::calculateFontSizes(){
@@ -287,6 +311,11 @@ void CloudsHUDController::update(){
 	for(int i = 0; i < allLayers.size(); i++){
 		allLayers[i]->update();
 	}
+    
+    float xScale = ofGetWindowWidth()/hudBounds.width;
+    float yScale = ofGetWindowHeight()/hudBounds.height;
+    
+    scaleAmt = (xScale < yScale) ? xScale : yScale;
 
 	home.update();
     
@@ -302,7 +331,7 @@ void CloudsHUDController::update(){
     
     if( home.wasHomeOpened() ){
         if( !bIsHudOpen ){
-            animateOn( CLOUDS_HUD_LOWER_THIRD );
+            animateOn( CLOUDS_HUD_FULL );
         }else{
             animateOff();
         }
@@ -314,6 +343,10 @@ void CloudsHUDController::draw(){
 	ofPushMatrix();
 	ofEnableAlphaBlending();
 	
+    ofVec2f hudSize(hudBounds.width*scaleAmt, hudBounds.height*scaleAmt);
+    ofTranslate( (ofGetWindowSize() - hudSize ) * 0.5 );
+    ofScale( scaleAmt, scaleAmt );
+    
     if( videoPlayer.isPlaying() ){
         ofSetColor(255, 255, 255, 255*0.7);
         if( !bSkipAVideoFrame ){
