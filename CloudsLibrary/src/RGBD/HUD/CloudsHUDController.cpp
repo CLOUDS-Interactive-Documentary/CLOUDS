@@ -331,7 +331,7 @@ void CloudsHUDController::update(){
     
     if( home.wasHomeOpened() ){
         if( !bIsHudOpen ){
-            animateOn( CLOUDS_HUD_LOWER_THIRD );
+            animateOn( CLOUDS_HUD_FULL );
         }else{
             animateOff();
         }
