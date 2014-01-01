@@ -141,7 +141,7 @@ int CloudsSecondaryDisplayController::getFontSizeForMesh( SVGMesh* textMesh ){
 void CloudsSecondaryDisplayController::update(){
 	
 	//TODO: fix with perma preset
-	clusterMap.incrementalTraversalMode = true;
+	//clusterMap.incrementalTraversalMode = true;
 	
 	while(receiver.hasWaitingMessages()){
 		ofxOscMessage m;
