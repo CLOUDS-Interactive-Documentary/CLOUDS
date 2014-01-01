@@ -54,14 +54,31 @@ void CloudsHUDController::clipBegan(CloudsClip& clip){
 	if(clip.hasProjectExample && clip.projectExample.exampleVideos.size() ){
 		CloudsProjectExample example = clip.projectExample;
         string videoPath = example.exampleVideos[ (int)ofRandom(0, example.exampleVideos.size()) ];
-//        if( ofRandom(1.0) < 0.5 ){
-//            videoPath = "/Volumes/MERCURY/HUDVideos/OpenPaths_720.mov";
-//        }else{
-//            videoPath = "/Volumes/MERCURY/HUDVideos/Particle_Dreams_480.mov";
-//        }
+        if( ofRandom(1.0) < 0.5 ){
+            videoPath = "/Volumes/MERCURY/HUDVideos/OpenPaths_720.mov";
+        }else{
+            videoPath = "/Volumes/MERCURY/HUDVideos/Particle_Dreams_480.mov";
+        }
         populateProjectExample( videoPath, example.creatorName, "", example.title, true );
 	}else{
         animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
+    }
+}
+
+void CloudsHUDController::populateMap( string leftBox, string rightBox, bool forceOn){
+    hudLabelMap["TopicTextBoxLeft"]->setText( leftBox );
+    hudLabelMap["TopicTextBoxRight"]->setText( rightBox );
+    
+    if( forceOn ){
+        animateOn( CLOUDS_HUD_MAP );
+    }
+}
+
+void CloudsHUDController::populateQuestion( string question, bool forceOn ){
+    hudLabelMap["QuestionTextBox"]->setText( question );
+    
+    if( forceOn ){
+        animateOn( CLOUDS_HUD_QUESTION );
     }
 }
 
