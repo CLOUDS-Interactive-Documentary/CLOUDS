@@ -43,12 +43,11 @@ class CloudsFCPParser {
 	CloudsProjectExample& getProjectExampleWithTitle(string title);
 	
 	void getOverlappingClipIDs();
-	//TODO: cache this and don't call it every start up	
     void autolinkSequentialClips();
     
     map<string,string> cloudsClipToFileID;
-    map<string, vector<CloudsClip> > fileIDtoCloudsClips;
-    map<string, vector<string> > overlappingClipsMap;
+    map<string,vector<CloudsClip> > fileIDtoCloudsClips;
+    map<string,vector<string> > overlappingClipsMap;
     
 	vector<CloudsLink>& getLinksForClip(CloudsClip& clip);
     vector<CloudsLink>& getLinksForClip(string clipName);
