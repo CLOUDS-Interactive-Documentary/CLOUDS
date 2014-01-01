@@ -1067,6 +1067,16 @@
 		E7FC8C2117DA9AA5007BEFA5 /* ofxSQLiteSelect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C1017DA9AA5007BEFA5 /* ofxSQLiteSelect.cpp */; };
 		E7FC8C2317DA9AA5007BEFA5 /* ofxSQLiteUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C1617DA9AA5007BEFA5 /* ofxSQLiteUpdate.cpp */; };
 		E7FC8C3717DA9AC1007BEFA5 /* ofxTextWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C3317DA9AC1007BEFA5 /* ofxTextWriter.cpp */; };
+		E7FEFC821873BB61009533A7 /* CloudsHUDController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFC781873BB61009533A7 /* CloudsHUDController.cpp */; };
+		E7FEFC831873BB61009533A7 /* CloudsHUDController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFC781873BB61009533A7 /* CloudsHUDController.cpp */; };
+		E7FEFC841873BB61009533A7 /* CloudsHUDHomeButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFC7A1873BB61009533A7 /* CloudsHUDHomeButton.cpp */; };
+		E7FEFC851873BB61009533A7 /* CloudsHUDHomeButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFC7A1873BB61009533A7 /* CloudsHUDHomeButton.cpp */; };
+		E7FEFC861873BB61009533A7 /* CloudsHUDLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFC7C1873BB61009533A7 /* CloudsHUDLabel.cpp */; };
+		E7FEFC871873BB61009533A7 /* CloudsHUDLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFC7C1873BB61009533A7 /* CloudsHUDLabel.cpp */; };
+		E7FEFC881873BB61009533A7 /* CloudsHUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFC7E1873BB61009533A7 /* CloudsHUDLayer.cpp */; };
+		E7FEFC891873BB61009533A7 /* CloudsHUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFC7E1873BB61009533A7 /* CloudsHUDLayer.cpp */; };
+		E7FEFC8A1873BB61009533A7 /* CloudsSVGMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFC801873BB61009533A7 /* CloudsSVGMesh.cpp */; };
+		E7FEFC8B1873BB61009533A7 /* CloudsSVGMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFC801873BB61009533A7 /* CloudsSVGMesh.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2488,6 +2498,16 @@
 		E7FC8C1817DA9AA5007BEFA5 /* ofxSQLiteWhere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteWhere.h; sourceTree = "<group>"; };
 		E7FC8C3317DA9AC1007BEFA5 /* ofxTextWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextWriter.cpp; sourceTree = "<group>"; };
 		E7FC8C3417DA9AC1007BEFA5 /* ofxTextWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextWriter.h; sourceTree = "<group>"; };
+		E7FEFC781873BB61009533A7 /* CloudsHUDController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDController.cpp; sourceTree = "<group>"; };
+		E7FEFC791873BB61009533A7 /* CloudsHUDController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDController.h; sourceTree = "<group>"; };
+		E7FEFC7A1873BB61009533A7 /* CloudsHUDHomeButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDHomeButton.cpp; sourceTree = "<group>"; };
+		E7FEFC7B1873BB61009533A7 /* CloudsHUDHomeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDHomeButton.h; sourceTree = "<group>"; };
+		E7FEFC7C1873BB61009533A7 /* CloudsHUDLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDLabel.cpp; sourceTree = "<group>"; };
+		E7FEFC7D1873BB61009533A7 /* CloudsHUDLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDLabel.h; sourceTree = "<group>"; };
+		E7FEFC7E1873BB61009533A7 /* CloudsHUDLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDLayer.cpp; sourceTree = "<group>"; };
+		E7FEFC7F1873BB61009533A7 /* CloudsHUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDLayer.h; sourceTree = "<group>"; };
+		E7FEFC801873BB61009533A7 /* CloudsSVGMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSVGMesh.cpp; sourceTree = "<group>"; };
+		E7FEFC811873BB61009533A7 /* CloudsSVGMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSVGMesh.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -5295,6 +5315,7 @@
 		E7637D5E1734DE8A008ADC62 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
+				E7FEFC771873BB61009533A7 /* HUD */,
 				E7402E93178F459000FEABED /* GPUParticles */,
 				E7637D601734DE8A008ADC62 /* CloudsPlaybackController.h */,
 				E7637D5F1734DE8A008ADC62 /* CloudsPlaybackController.cpp */,
@@ -6917,6 +6938,23 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E7FEFC771873BB61009533A7 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				E7FEFC791873BB61009533A7 /* CloudsHUDController.h */,
+				E7FEFC781873BB61009533A7 /* CloudsHUDController.cpp */,
+				E7FEFC7B1873BB61009533A7 /* CloudsHUDHomeButton.h */,
+				E7FEFC7A1873BB61009533A7 /* CloudsHUDHomeButton.cpp */,
+				E7FEFC7D1873BB61009533A7 /* CloudsHUDLabel.h */,
+				E7FEFC7C1873BB61009533A7 /* CloudsHUDLabel.cpp */,
+				E7FEFC7F1873BB61009533A7 /* CloudsHUDLayer.h */,
+				E7FEFC7E1873BB61009533A7 /* CloudsHUDLayer.cpp */,
+				E7FEFC811873BB61009533A7 /* CloudsSVGMesh.h */,
+				E7FEFC801873BB61009533A7 /* CloudsSVGMesh.cpp */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -7537,6 +7575,11 @@
 				C1644D41186F92020024E091 /* json_value.cpp in Sources */,
 				C1644D43186F92020024E091 /* json_writer.cpp in Sources */,
 				C1644D45186F92020024E091 /* ofxJSONElement.cpp in Sources */,
+				E7FEFC821873BB61009533A7 /* CloudsHUDController.cpp in Sources */,
+				E7FEFC841873BB61009533A7 /* CloudsHUDHomeButton.cpp in Sources */,
+				E7FEFC861873BB61009533A7 /* CloudsHUDLabel.cpp in Sources */,
+				E7FEFC881873BB61009533A7 /* CloudsHUDLayer.cpp in Sources */,
+				E7FEFC8A1873BB61009533A7 /* CloudsSVGMesh.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8047,6 +8090,11 @@
 				C1644D42186F92020024E091 /* json_value.cpp in Sources */,
 				C1644D44186F92020024E091 /* json_writer.cpp in Sources */,
 				C1644D46186F92020024E091 /* ofxJSONElement.cpp in Sources */,
+				E7FEFC831873BB61009533A7 /* CloudsHUDController.cpp in Sources */,
+				E7FEFC851873BB61009533A7 /* CloudsHUDHomeButton.cpp in Sources */,
+				E7FEFC871873BB61009533A7 /* CloudsHUDLabel.cpp in Sources */,
+				E7FEFC891873BB61009533A7 /* CloudsHUDLayer.cpp in Sources */,
+				E7FEFC8B1873BB61009533A7 /* CloudsSVGMesh.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

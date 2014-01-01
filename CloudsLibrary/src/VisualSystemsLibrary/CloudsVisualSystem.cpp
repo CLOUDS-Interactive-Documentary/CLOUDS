@@ -9,32 +9,32 @@
 #endif
 
 
-#define GLSL(version, shader)  "#version " #version "\n" #shader
-
-static const char*
-BackgroundVert =
-GLSL(120,
-varying vec2 oTexCoord;
-void main()
-{
-	oTexCoord = gl_MultiTexCoord0.xy;
-	gl_Position = ftransform();
-});
-
-
-static const char*
-BackgroundFrag =
-GLSL(120,
-	 
-uniform sampler2DRect image;
-uniform vec3 colorOne;
-uniform vec3 colorTwo;
-varying vec2 oTexCoord;
-
-void main()
-{
-	gl_FragColor = vec4(mix(colorTwo,colorOne, texture2DRect(image,oTexCoord).r), 1.0);
-});
+//#define GLSL(version, shader)  "#version " #version "\n" #shader
+//
+//static const char*
+//BackgroundVert =
+//GLSL(140,
+//varying vec2 oTexCoord;
+//void main()
+//{
+//	oTexCoord = gl_MultiTexCoord0.xy;
+//	gl_Position = ftransform();
+//});
+//
+//
+//static const char*
+//BackgroundFrag =
+//GLSL(140,
+//	 
+//uniform sampler2DRect image;
+//uniform vec3 colorOne;
+//uniform vec3 colorTwo;
+//varying vec2 oTexCoord;
+//
+//void main()
+//{
+//	gl_FragColor = vec4(mix(colorTwo,colorOne, texture2DRect(image,oTexCoord).r), 1.0);
+//});
 
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
@@ -80,10 +80,10 @@ CloudsRGBDVideoPlayer& CloudsVisualSystem::getRGBDVideoPlayer(){
 void CloudsVisualSystem::loadBackgroundShader(){
 	backgroundGradientBar.loadImage(GetCloudsDataPath() + "backgrounds/bar.png");
 	backgroundGradientCircle.loadImage(GetCloudsDataPath() + "backgrounds/circle.png");
-	backgroundShader.setupShaderFromSource(GL_VERTEX_SHADER, BackgroundVert);
-	backgroundShader.setupShaderFromSource(GL_FRAGMENT_SHADER, BackgroundFrag);
-	backgroundShader.linkProgram();
-	
+//	backgroundShader.setupShaderFromSource(GL_VERTEX_SHADER, BackgroundVert);
+//	backgroundShader.setupShaderFromSource(GL_FRAGMENT_SHADER, BackgroundFrag);
+//	backgroundShader.linkProgram();
+	backgroundShader.load(GetCloudsDataPath() + "shaders/background");
 	backgroundShaderLoaded = true;
 }
 
@@ -154,7 +154,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
     bMatchBackgrounds = false;
 	bIs2D = false;
 	bDrawCursor = true;
-	
+	updateCyclced = false;
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
 #else
@@ -366,7 +366,8 @@ void CloudsVisualSystem::update(ofEventArgs & args)
         updateTimelineUIParams();
     }
     
-    if(bUpdateSystem)
+	//JG Never skip the update loop this is causing lots of problems
+//    if(bUpdateSystem)
     {
         for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it)
         {
@@ -399,12 +400,18 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	}
 	
 	checkOpenGLError(getSystemName() + ":: UPDATE");
+	
+	updateCyclced = true;
 }
 
 void CloudsVisualSystem::draw(ofEventArgs & args)
 {
-    ofPushStyle();
+
+	if(!updateCyclced)
+		return;
 	
+	ofPushStyle();
+
     if(bRenderSystem)
     {
 	  
@@ -1316,6 +1323,26 @@ void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
             bgGui->autoSizeToFitWidgets();
         }
     }
+	
+	//change the gui color on slider change
+	if(name == "HUE" || name == "SAT" || name == "BRI")
+	{
+		ofColor backgrounfFillColor;
+		backgrounfFillColor.setHsb(bgHue, bgSat, bgBri);
+		
+		bgGui->getWidget("HUE")->setColorFill(backgrounfFillColor);
+		bgGui->getWidget("SAT")->setColorFill(backgrounfFillColor);
+		bgGui->getWidget("BRI")->setColorFill(backgrounfFillColor);
+	}
+	else if(name == "HUE2" || name == "SAT2" || name == "BRI2")
+	{
+		ofColor backgrounfFillColor;
+		backgrounfFillColor.setHsb(bgHue2, bgSat2, bgBri2);
+		
+		bgGui->getWidget("HUE2")->setColorFill(backgrounfFillColor);
+		bgGui->getWidget("SAT2")->setColorFill(backgrounfFillColor);
+		bgGui->getWidget("BRI2")->setColorFill(backgrounfFillColor);
+	}
 }
 
 void CloudsVisualSystem::setupLightingGui()
@@ -2877,25 +2904,25 @@ void CloudsVisualSystem::billBoard(ofVec3f globalCamPosition, ofVec3f globelObje
 //    glEnd ();
 //}
 
-void CloudsVisualSystem::drawNormalizedTexturedQuad()
-{
-    glBegin (GL_QUADS);
-    
-    glTexCoord2f (0.0, 0.0);
-    glVertex3f (0.0, 0.0, 0.0);
-    
-    glTexCoord2f (1.0, 0.0);
-    glVertex3f (ofGetWidth(), 0.0, 0.0);
-    
-    
-    glTexCoord2f (1.0, 1.0);
-    glVertex3f (ofGetWidth(), ofGetHeight(), 0.0);
-    
-    glTexCoord2f (0.0, 1.0);
-    glVertex3f (0.0, ofGetHeight(), 0.0);
-    
-    glEnd ();
-}
+//void CloudsVisualSystem::drawNormalizedTexturedQuad()
+//{
+//    glBegin (GL_QUADS);
+//    
+//    glTexCoord2f (0.0, 0.0);
+//    glVertex3f (0.0, 0.0, 0.0);
+//    
+//    glTexCoord2f (1.0, 0.0);
+//    glVertex3f (ofGetWidth(), 0.0, 0.0);
+//    
+//    
+//    glTexCoord2f (1.0, 1.0);
+//    glVertex3f (ofGetWidth(), ofGetHeight(), 0.0);
+//    
+//    glTexCoord2f (0.0, 1.0);
+//    glVertex3f (0.0, ofGetHeight(), 0.0);
+//    
+//    glEnd ();
+//}
 
 void CloudsVisualSystem::drawBackground()
 {

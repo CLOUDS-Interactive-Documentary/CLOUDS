@@ -34,7 +34,7 @@ void CloudsVisualSystemAstrolabe::selfSetupGui()
 	ringsGui->addSlider("sphereScale", .1, 10, &sphereScale);
 	
 	ringsGui->addToggle("drawCircles", &bDrawCircles);
-	ringsGui->addSlider("circleLinewidth", 0, 10, &circleLinewidth );
+	ringsGui->addSlider("circleLinewidth", 0.1, 10, &circleLinewidth );
 	ringsGui->addSlider("circleOpacity", 0, 255, &circleOpacity );
 	
 	
@@ -390,6 +390,9 @@ void CloudsVisualSystemAstrolabe::selfSetDefaults()
 	
 	numSpheresPerArc = 5;
 	sphereScale = 1;
+	
+	circleLinewidth = .1;
+	circleOpacity = 30;
 }
 
 void CloudsVisualSystemAstrolabe::setupRings(int count,
@@ -537,14 +540,9 @@ void CloudsVisualSystemAstrolabe::resetRingRotations()
 		float scl = ofMap( i, 0, astrolabes.size()-1, innerSpeed, outerSpeed );
 		
 		//astrolabes[i]->addRotationTween( axis, startVal, step, duration, delay, increment)
-		astrolabes[i]->addRotationTween("x", ringsXRot * scl * skipAhead, ringsXRot, xTickSpeed, xTickDelay * scl, xTickDelay * scl);
-		astrolabes[i]->addRotationTween("y", i * ringsYRot + ringsYRot * scl * skipAhead, ringsYRot, xTickSpeed, yTickDelay * scl, yTickDelay * scl);
-		astrolabes[i]->addRotationTween("z", ringsZRot * scl * skipAhead, ringsZRot, zTickSpeed, zTickDelay * scl, zTickSpeed * scl);
-		
-		astrolabes[i]->setTweenScale("x", scl );
-		astrolabes[i]->setTweenScale("y", scl );
-		astrolabes[i]->setTweenScale("z", scl );
-		
+		astrolabes[i]->addRotationTween("x", ringsXRot * scl * skipAhead, ringsXRot, xTickSpeed, 0, xTickDelay, scl);
+		astrolabes[i]->addRotationTween("y", i * ringsYRot*scl + ringsYRot * scl * skipAhead, ringsYRot, xTickSpeed, 0, yTickDelay, scl);
+		astrolabes[i]->addRotationTween("z", ringsZRot * scl * skipAhead, ringsZRot, zTickSpeed, 0, zTickSpeed, scl);
 		
 		astrolabes[i]->setEase(*currentEase);
 	}
@@ -555,15 +553,12 @@ void CloudsVisualSystemAstrolabe::selfDraw()
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	
-//	currentBlendMode != OF_BLENDMODE_DISABLED?	ofEnableBlendMode(currentBlendMode) : ofDisableAlphaBlending();
-	
-	ofEnableAlphaBlending();
-	ofEnableBlendMode(currentBlendMode);
-	
+	currentBlendMode != OF_BLENDMODE_DISABLED?	ofEnableBlendMode(currentBlendMode) : ofDisableAlphaBlending();
+
 	bDepthTest? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
-	
-	glLineWidth( circleLinewidth );
-	
+
+	glLineWidth(circleLinewidth);
+
 	facingRatio.begin();
 	float rad, sphereRad, arcStep = 1. / (numSpheresPerArc - 1.);
 	for(int i=0 ; i<astrolabes.size(); i++)
@@ -591,13 +586,20 @@ void CloudsVisualSystemAstrolabe::selfDraw()
 				
 				sphereMesh.draw();
 				
-				glNormal3f(0, 1, 0);
 				
 				ofPopMatrix();
 			}
 			
-			ofNoFill();
-			ofCircle(0, 0, 0, rad);
+			if (bDrawCircles)
+			{	
+				ofSetColor(astrolabes[i]->color.r,astrolabes[i]->color.g,astrolabes[i]->color.b, circleOpacity );
+				ofNoFill();
+				ofSetCircleResolution(60);
+				
+				ofRotate(90, 1, 0, 0);
+				glNormal3f(0, 1, 0);
+				ofCircle(0, 0, 0, rad);
+			}
 			
 			ofPopMatrix();
 		}

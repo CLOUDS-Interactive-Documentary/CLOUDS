@@ -4,7 +4,7 @@
 #include "CloudsGlobal.h"
 
 //--------------------------------------------------------------
-map<string, int> CloudsVisualSystemRGBD::appearances;
+//map<string, int> CloudsVisualSystemRGBD::appearances;
 
 //--------------------------------------------------------------
 string CloudsVisualSystemRGBD::getSystemName(){
@@ -362,7 +362,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	updateQuestions();
 	updateTransition();
     
-    cloudsCaption.update();
+//    cloudsCaption.update();
 	
 	if(currentCamera == &transitionCam){
 		transitionCamTargetNode->setPosition( transitionCam.getPosition() );
@@ -734,26 +734,26 @@ void CloudsVisualSystemRGBD::speakerChanged(){
 	//	this->quoteName = quoteName;
     
 	// Add an appearance for this speaker.
-    string key = speakerFirstName + " " + speakerLastName;
+//    string key = speakerFirstName + " " + speakerLastName;
+//    
+//    if (appearances.find(key) == appearances.end()) {
+//        appearances[key] = 1;
+//    }
+//    else {
+//        appearances[key]++;
+//    }
+//    
+//    cout << "CloudsVisualSystemRGBD::speakerChanged " << speakerFirstName << " " << speakerLastName << ": " << quoteName << " (" << appearances[key] << ")" << endl;
     
-    if (appearances.find(key) == appearances.end()) {
-        appearances[key] = 1;
-    }
-    else {
-        appearances[key]++;
-    }
-    
-    cout << "CloudsVisualSystemRGBD::speakerChanged " << speakerFirstName << " " << speakerLastName << ": " << quoteName << " (" << appearances[key] << ")" << endl;
-    
-    if (appearances[key] == 1) {
-        cloudsCaption.font = &captionFont;
-        cloudsCaption.caption = key;
-        cloudsCaption.isEnabled = true;
-        cloudsCaption.begin();
-    }
-    else {
-        cloudsCaption.isEnabled = false;
-    }
+//    if (appearances[key] == 1) {
+//        cloudsCaption.font = &captionFont;
+//        cloudsCaption.caption = key;
+//        cloudsCaption.isEnabled = true;
+//        cloudsCaption.begin();
+//    }
+//    else {
+//        cloudsCaption.isEnabled = false;
+//    }
 }
 
 void CloudsVisualSystemRGBD::selfDrawBackground(){
@@ -1067,7 +1067,7 @@ void CloudsVisualSystemRGBD::selfDrawOverlay() {
 	}
     
 	//This will be replaced with the HUD
-    cloudsCaption.drawOverlay();
+//    cloudsCaption.drawOverlay();
 
 	//test overlay
 //	ofSetColor(0,0,0,0);
@@ -1083,7 +1083,7 @@ void CloudsVisualSystemRGBD::selfBegin(){
 	
 	cloudsCamera.jumpToPosition();
     
-    cloudsCaption.begin();
+//    cloudsCaption.begin();
 }
 
 void CloudsVisualSystemRGBD::selfEnd(){

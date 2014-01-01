@@ -118,8 +118,6 @@
 		E739951C1786200500EA5F4D /* ofxSphericalAttractionBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995031786200500EA5F4D /* ofxSphericalAttractionBehavior.cpp */; };
 		E739951D1786200500EA5F4D /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995081786200500EA5F4D /* ofxSwarmBehavior.cpp */; };
 		E739951E1786200500EA5F4D /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E739950B1786200500EA5F4D /* ofxVerletSolver.cpp */; };
-		E73995CF1786240100EA5F4D /* rgbdcombined.frag in Sources */ = {isa = PBXBuildFile; fileRef = E73995CD1786240100EA5F4D /* rgbdcombined.frag */; };
-		E73995D01786240100EA5F4D /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = E73995CE1786240100EA5F4D /* rgbdcombined.vert */; };
 		E73995DF17863E6000EA5F4D /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995D317863E6000EA5F4D /* Controller.cpp */; };
 		E73995E017863E6000EA5F4D /* Force.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995D517863E6000EA5F4D /* Force.cpp */; };
 		E73995E117863E6000EA5F4D /* ForceSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995D717863E6000EA5F4D /* ForceSet.cpp */; };
@@ -218,8 +216,6 @@
 		E7A3F25618321B0600EADD94 /* ofxSphericalAttractionBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995031786200500EA5F4D /* ofxSphericalAttractionBehavior.cpp */; };
 		E7A3F25718321B0600EADD94 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995081786200500EA5F4D /* ofxSwarmBehavior.cpp */; };
 		E7A3F25818321B0600EADD94 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E739950B1786200500EA5F4D /* ofxVerletSolver.cpp */; };
-		E7A3F25918321B0600EADD94 /* rgbdcombined.frag in Sources */ = {isa = PBXBuildFile; fileRef = E73995CD1786240100EA5F4D /* rgbdcombined.frag */; };
-		E7A3F25A18321B0600EADD94 /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = E73995CE1786240100EA5F4D /* rgbdcombined.vert */; };
 		E7A3F25B18321B0600EADD94 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995D317863E6000EA5F4D /* Controller.cpp */; };
 		E7A3F25C18321B0600EADD94 /* Force.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995D517863E6000EA5F4D /* Force.cpp */; };
 		E7A3F25D18321B0600EADD94 /* ForceSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995D717863E6000EA5F4D /* ForceSet.cpp */; };
@@ -280,6 +276,10 @@
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7E5E2C21812192900CA4196 /* question.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E2C01812192900CA4196 /* question.frag */; };
 		E7E5E2C31812192900CA4196 /* question.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E2C11812192900CA4196 /* question.vert */; };
+		E7F051311873664C00017521 /* CloudsHUDLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F0512F1873664C00017521 /* CloudsHUDLabel.cpp */; };
+		E7F051321873664C00017521 /* CloudsHUDLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F0512F1873664C00017521 /* CloudsHUDLabel.cpp */; };
+		E7F051351873667500017521 /* CloudsSVGMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F051331873667500017521 /* CloudsSVGMesh.cpp */; };
+		E7F051361873667500017521 /* CloudsSVGMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F051331873667500017521 /* CloudsSVGMesh.cpp */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
@@ -538,8 +538,6 @@
 		E739950A1786200500EA5F4D /* ofxTrailParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTrailParticle.h; sourceTree = "<group>"; };
 		E739950B1786200500EA5F4D /* ofxVerletSolver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVerletSolver.cpp; sourceTree = "<group>"; };
 		E739950C1786200500EA5F4D /* ofxVerletSolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVerletSolver.h; sourceTree = "<group>"; };
-		E73995CD1786240100EA5F4D /* rgbdcombined.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = rgbdcombined.frag; path = ../../CloudsData/shaders/rgbdcombined.frag; sourceTree = "<group>"; };
-		E73995CE1786240100EA5F4D /* rgbdcombined.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = rgbdcombined.vert; path = ../../CloudsData/shaders/rgbdcombined.vert; sourceTree = "<group>"; };
 		E73995D317863E6000EA5F4D /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		E73995D417863E6000EA5F4D /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		E73995D517863E6000EA5F4D /* Force.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Force.cpp; sourceTree = "<group>"; };
@@ -675,6 +673,10 @@
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7E5E2C01812192900CA4196 /* question.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = question.frag; path = ../../CloudsData/shaders/question.frag; sourceTree = "<group>"; };
 		E7E5E2C11812192900CA4196 /* question.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = question.vert; path = ../../CloudsData/shaders/question.vert; sourceTree = "<group>"; };
+		E7F0512F1873664C00017521 /* CloudsHUDLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDLabel.cpp; sourceTree = "<group>"; };
+		E7F051301873664C00017521 /* CloudsHUDLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDLabel.h; sourceTree = "<group>"; };
+		E7F051331873667500017521 /* CloudsSVGMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSVGMesh.cpp; sourceTree = "<group>"; };
+		E7F051341873667500017521 /* CloudsSVGMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSVGMesh.h; sourceTree = "<group>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -875,6 +877,10 @@
 		E703CCCD185CE66100547738 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
+				E7F051341873667500017521 /* CloudsSVGMesh.h */,
+				E7F051331873667500017521 /* CloudsSVGMesh.cpp */,
+				E7F051301873664C00017521 /* CloudsHUDLabel.h */,
+				E7F0512F1873664C00017521 /* CloudsHUDLabel.cpp */,
 				85FCB764185E262200A9740A /* CloudsHUDLayer.h */,
 				85FCB763185E262200A9740A /* CloudsHUDLayer.cpp */,
 				E71CEC7F18654159004F5547 /* CloudsHUDHomeButton.h */,
@@ -1111,8 +1117,6 @@
 			children = (
 				E7E5E2C01812192900CA4196 /* question.frag */,
 				E7E5E2C11812192900CA4196 /* question.vert */,
-				E73995CD1786240100EA5F4D /* rgbdcombined.frag */,
-				E73995CE1786240100EA5F4D /* rgbdcombined.vert */,
 			);
 			name = shaders;
 			sourceTree = "<group>";
@@ -1509,8 +1513,8 @@
 		E79E6F581855320E00406535 /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				E79E6F591855320E00406535 /* CloudsInput.cpp */,
 				E79E6F5A1855320E00406535 /* CloudsInput.h */,
+				E79E6F591855320E00406535 /* CloudsInput.cpp */,
 				E79E6F5C1855320E00406535 /* CloudsInputEvents.h */,
 				E79E6F5D1855320E00406535 /* CloudsInputMouse.cpp */,
 				E79E6F5E1855320E00406535 /* CloudsInputMouse.h */,
@@ -1851,8 +1855,6 @@
 				E739951C1786200500EA5F4D /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				E739951D1786200500EA5F4D /* ofxSwarmBehavior.cpp in Sources */,
 				E739951E1786200500EA5F4D /* ofxVerletSolver.cpp in Sources */,
-				E73995CF1786240100EA5F4D /* rgbdcombined.frag in Sources */,
-				E73995D01786240100EA5F4D /* rgbdcombined.vert in Sources */,
 				E73995DF17863E6000EA5F4D /* Controller.cpp in Sources */,
 				E73995E017863E6000EA5F4D /* Force.cpp in Sources */,
 				E73995E117863E6000EA5F4D /* ForceSet.cpp in Sources */,
@@ -1886,6 +1888,8 @@
 				E703CD02185D0FE600547738 /* ofxSvg.cpp in Sources */,
 				85FCB765185E262200A9740A /* CloudsHUDLayer.cpp in Sources */,
 				E71CEC8018654159004F5547 /* CloudsHUDHomeButton.cpp in Sources */,
+				E7F051311873664C00017521 /* CloudsHUDLabel.cpp in Sources */,
+				E7F051351873667500017521 /* CloudsSVGMesh.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1966,8 +1970,6 @@
 				E7A3F25618321B0600EADD94 /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				E7A3F25718321B0600EADD94 /* ofxSwarmBehavior.cpp in Sources */,
 				E7A3F25818321B0600EADD94 /* ofxVerletSolver.cpp in Sources */,
-				E7A3F25918321B0600EADD94 /* rgbdcombined.frag in Sources */,
-				E7A3F25A18321B0600EADD94 /* rgbdcombined.vert in Sources */,
 				E7A3F25B18321B0600EADD94 /* Controller.cpp in Sources */,
 				E7A3F25C18321B0600EADD94 /* Force.cpp in Sources */,
 				E7A3F25D18321B0600EADD94 /* ForceSet.cpp in Sources */,
@@ -2001,6 +2003,8 @@
 				E703CD03185D0FE600547738 /* ofxSvg.cpp in Sources */,
 				85FCB766185E262200A9740A /* CloudsHUDLayer.cpp in Sources */,
 				E71CEC8118654159004F5547 /* CloudsHUDHomeButton.cpp in Sources */,
+				E7F051321873664C00017521 /* CloudsHUDLabel.cpp in Sources */,
+				E7F051361873667500017521 /* CloudsSVGMesh.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>SHADERS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213</XPosition>
+    <XPosition>225</XPosition>
     <YPosition>1</YPosition>
 </Canvas>
 <Widget>
@@ -54,6 +54,21 @@
     <Kind>2</Kind>
     <Name>WormholeShader</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>XRayShader</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>facingRatio</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>normalShader</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
