@@ -250,6 +250,12 @@
 	clipEndFrame = clip.endFrame;	
 }
 
+- (IBAction) autolinkByNumber:(id)sender
+{
+	parser.autolinkSequentialClips();
+	[self saveLinks:sender];
+}
+
 - (void)keyReleased:(int)key
 {
 	

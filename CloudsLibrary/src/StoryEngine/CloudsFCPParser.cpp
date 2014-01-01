@@ -67,7 +67,7 @@ void CloudsFCPParser::refreshXML(){
 	
 	//printSpeakerList();
     getOverlappingClipIDs();
-    autolinkSequentialClips();
+//    autolinkSequentialClips();
 	CloudsSpeaker::populateSpeakers();
     refreshAllKeywords();
 }
@@ -173,11 +173,11 @@ void CloudsFCPParser::parseVOClips(){
 			if(!hasClipWithID(components[i])){
 				ofSystemAlertDialog("VO clip " + clip.getLinkName() + " overlapping clip " + components[i] + " does not exist. Check the name.");
 			}
-			else{
-				clip.addOverlappingClipName(components[i]);
+			else {
+				clip.addOverlappingClipID(components[i]);
+				cout << " *** overlapping clip is " << components[i] << endl;
 			}
 		}
-		
 	}
 	
 	//if we have no cache create it
@@ -510,36 +510,66 @@ vector<string> CloudsFCPParser::getAdjacentKeywords( string currentKeyword , int
 
 void CloudsFCPParser::calculateKeywordFamilies(){
 	keywordFamilies.clear();
-	vector<string>& keywords = getContentKeywords();
-	ofBuffer keywordFamilyBuffer;
 	
-	for(int i = 0; i < keywords.size(); i++){
-		
-		string keywordA = keywords[i];
-		int clipsWithKeywordA = getNumberOfClipsWithKeyword(keywordA);
-		set<string> related = getRelatedKeywords(keywordA);
-		set<string>::iterator it;
-		vector< pair<string,float> > overlapScore;
-		
-		for(it = related.begin(); it != related.end(); it++){
-			string keywordB = *it;
-			int clipsWithKeywordB = getNumberOfClipsWithKeyword(keywordB);
-			int clipsInCommon = getNumberOfSharedClips(keywordA, keywordB);
-			float percent = 1.0 * clipsInCommon / (clipsWithKeywordA + clipsWithKeywordB - clipsInCommon);
-			overlapScore.push_back(make_pair(keywordB, percent));
-		}
-		
-		sort(overlapScore.begin(), overlapScore.end(), distanceSortLargeToSmall);
-//		cout << "keyword " << keywordA << endl;
-		
-//		keywordFamilyBuffer.append("keyword " + keywordA + "\n");
-		for(int i = 0; i < MIN(overlapScore.size(), 10); i++){
-			//cout << "	" << overlapScore[i].first << " " << overlapScore[i].second << endl;
-			keywordFamilies[keywordA].push_back(overlapScore[i].first);
-//			keywordFamilyBuffer.append("	" + overlapScore[i].first + " " + ofToString(overlapScore[i].second) + "\n" );
+	ofBuffer keywordFamilyBuffer;
+	string keywordFamilyPath = GetCloudsDataPath() + "stats/keyword_families.txt";
+
+	//look for keyword family cache
+	if( ofFile(keywordFamilyPath).exists() ){
+		keywordFamilyBuffer = ofBufferFromFile(keywordFamilyPath);
+		while(!keywordFamilyBuffer.isLastLine()){
+			string line = keywordFamilyBuffer.getNextLine();
+			vector<string> keywords = ofSplitString(line, ",",true,true);
+			if(keywords.size() > 1){
+				for(int i = 1; i < keywords.size(); i++){
+					keywordFamilies[ keywords[0] ].push_back( keywords[i] );
+				}
+			}
 		}
 	}
-//	ofBufferToFile(GetCloudsDataPath() + "stats/keyword_families.txt", keywordFamilyBuffer);
+	else{
+		//not cached, recompute
+		vector<string>& keywords = getContentKeywords();
+		for(int i = 0; i < keywords.size(); i++){
+			vector<string> familyWords;
+			
+			string keywordA = keywords[i];
+			int clipsWithKeywordA = getNumberOfClipsWithKeyword(keywordA);
+			set<string> related = getRelatedKeywords(keywordA);
+			set<string>::iterator it;
+			vector< pair<string,float> > overlapScore;
+			
+			for(it = related.begin(); it != related.end(); it++){
+				string keywordB = *it;
+				int clipsWithKeywordB = getNumberOfClipsWithKeyword(keywordB);
+				int clipsInCommon = getNumberOfSharedClips(keywordA, keywordB);
+				float percent = 1.0 * clipsInCommon / (clipsWithKeywordA + clipsWithKeywordB - clipsInCommon);
+				overlapScore.push_back(make_pair(keywordB, percent));
+			}
+			
+			sort(overlapScore.begin(), overlapScore.end(), distanceSortLargeToSmall);
+			
+			keywordFamilyBuffer.append(keywordA + ",");
+			for(int i = 0; i < MIN(overlapScore.size(), 10); i++){
+				familyWords.push_back(overlapScore[i].first);
+				keywordFamilies[keywordA].push_back(overlapScore[i].first);
+			}
+			keywordFamilyBuffer.append(ofJoinString(familyWords, ",") + "\n");
+		}
+		//cache!
+		ofBufferToFile(keywordFamilyPath, keywordFamilyBuffer);
+	}
+	
+	//DEBUG PRINT KEYWORD FAMILIES
+//	map<string, vector<string> >::iterator it;
+//	for(it = keywordFamilies.begin(); it != keywordFamilies.end(); it++){
+//		cout << "KEYWORD: " << it->first << ": ";
+//		for(int i = 0; i < it->second.size(); i++){
+//			cout << it->second[i] << ",";
+//		}
+//		cout << endl;
+//	}
+
 }
 
 vector<string>& CloudsFCPParser::getKeywordFamily(string keyword){
@@ -975,28 +1005,22 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
 			cm.sourceVideoFilePath = clipFilePath;
 			
 			if( markerLinkNames.find(cm.getLinkName()) != markerLinkNames.end() ){
-				ofLogError() << "DUPLICATE CLIP " << cm.getLinkName() << " " << cm.getMetaInfo();
-				//ofLogError() << "	EXISTING CLIP INFO " << getClipWithLinkName(cm.getLinkName()).getMetaInfo();
+				ofLogError("CloudsFCPParser::parseClipItem") << "DUPLICATE CLIP " << cm.getLinkName() << " " << cm.getMetaInfo();
 			}
 			else{
 				markerLinkNames.insert( cm.getLinkName() );
-//				cm.color.r = fcpXML.getValue("color:red", 0);
-//				cm.color.g = fcpXML.getValue("color:green", 0);
-//				cm.color.b = fcpXML.getValue("color:blue", 0);
 				string keywordString = ofToLower( fcpXML.getValue("comment", "") );
 				ofStringReplace(keywordString, "\n", ",");
                 vector<string> fcpKeywords = ofSplitString(keywordString, ",",true,true);
 				cm.setOriginalKeywords(fcpKeywords);
                 
-                //            cout << "       added marker: \"" << cm.name << "\" with [" << cm.keywords.size() << "] keywords" << endl;
                 clipIDToIndex[cm.getID()] = allClips.size();
 				clipLinkNameToIndex[cm.getLinkName()] = allClips.size();
 				allClips.push_back(cm);
                 
                 //used for checking overlapping clips
-                cloudsClipToFileID[cm.getLinkName()] =fileID;
+                cloudsClipToFileID[cm.getLinkName()] = fileID;
                 fileIDtoCloudsClips[fileID].push_back(cm);
-//                cout<<" Adding "<<cm.getLinkName()<<" to  video file : "<<fileID<<endl;
 			}
         }
 
@@ -1015,20 +1039,18 @@ void CloudsFCPParser::getOverlappingClipIDs(){
         
         // fileIDTOCloudsClip is also populated in  parseClipItem() using this map to associate
         //all clips associated with a file id. Here file id is referenced again from the FCP XML
-        vector<CloudsClip> clipsFromSameFile = fileIDtoCloudsClips[fileId];
+        vector<CloudsClip>& clipsFromSameFile = fileIDtoCloudsClips[fileId];
     
         for(int j = 0; j < clipsFromSameFile.size(); j++){
-
-            //        cout<<  "Checking for overlaps between "<< allClips[i].getLinkName() << " and "<< clipsFromSameFile[j].getLinkName()<< endl;
 			ofRange sourceRange(allClips[i].startFrame, allClips[i].endFrame);
             if(allClips[i].getID() != clipsFromSameFile[j].getID()){
 				ofRange destRange(clipsFromSameFile[j].startFrame,clipsFromSameFile[j].endFrame);
                 if( sourceRange.intersects(destRange)){
                     
-                    overlappingClipsMap[allClips[i].getLinkName()].push_back(clipsFromSameFile[j].getLinkName());
+                    //overlappingClipsMap[allClips[i].getLinkName()].push_back(clipsFromSameFile[j].getLinkName());
                     
                     //adding the overlapping clip name to a vector in the CloudsClip
-                    allClips[i].addOverlappingClipName(clipsFromSameFile[j].getID());
+                    allClips[i].addOverlappingClip(clipsFromSameFile[j]);
 //                    ofLogNotice()<< "OVERLAPPING CLIPS: "<<allClips[i].getLinkName()  << " overlaps with clip "<< clipsFromSameFile[j].getLinkName()<<endl;
                 }
                 
@@ -1043,33 +1065,31 @@ void CloudsFCPParser::autolinkSequentialClips(){
 
     vector<CloudsClip>& allClips = getAllClips();
     
-    for(int i=0; i<allClips.size(); i++){
+    for(int i = 0; i < allClips.size(); i++){
         
         string clipName= allClips[i].getLinkName();
         string nums = "0123456789";
         
         //does the clip name end with a number?
-        if( clipName.find_last_of(nums) == clipName.length() -1){
-            
-            for(int j=0; j<getAllClips().size();j++){
-
-                string compareName =getAllClips()[j].getLinkName();
-                
+        if(clipName.find_last_of(nums) == clipName.length() - 1){
+            for(int j = 0; j < allClips.size(); j++){
+				if(i == j){
+					continue;
+				}
+                string compareName = allClips[j].getLinkName();
                 //do the clips have the same name except for the last char i.e the sequence number? && are they not the same clip?
-                if( ! clipName.compare(0, clipName.length() -1, compareName, 0, compareName.length() -1)  &&
-                    clipName != compareName){
+                if(clipName.compare(0, clipName.length() - 1, compareName, 0, compareName.length() -1) == 0  &&
+                    clipName != compareName)
+				{
                     
-                    int clipID = clipName.at(clipName.length() -1) - '0';
-                    int compareID = compareName.at(compareName.length() -1 ) - '0';
-                    
-                    if(compareID == ++clipID){
-                        
+                    int clipID = clipName.at(clipName.length() - 1) - '0';
+                    int compareID = compareName.at(compareName.length() - 1 ) - '0';
+                    if(compareID == ++clipID && !allClips[i].overlapsWithClip(allClips[j] )){
                         //adding link from clip N -1 -> N
                         addLink(allClips[i], getAllClips()[j]);
-//                        cout<<"Auto linking "<<allClips[i].getLinkName() << " and "<<getAllClips()[j].getLinkName() << " as they are in sequence" <<endl;
-
+//                       cout<<"Auto linking "<<allClips[i].getLinkName() << " and "<<getAllClips()[j].getLinkName() << " as they are in sequence" <<endl;
                         //removing clip N fromt clip N-1's overlapping list so that they story engine doesnt reject it.
-                        getAllClips()[i].removeOverlappingClipName(allClips[j].getLinkName());
+//                        getAllClips()[i].removeOverlappingClipName(allClips[j].getLinkName());
                     }
                 }
             }

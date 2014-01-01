@@ -48,37 +48,35 @@ float CloudsClip::getDuration(){
 	return (endFrame - startFrame) / (is30FPS() ? 29.97 : 23.976); //TODO: HigaSan was recorded @ 30.0, need to compensate
 }
 
-//string CloudsClip::getStartingQuestion(){
-//    if(startingQuestion.empty()){
-//        return "-";
-//    }
-//    else{
-//		return startingQuestion;
-//    }
+void CloudsClip::addOverlappingClip(CloudsClip& clip){
+    overlappingClipIDs.push_back(clip.getID());
+}
+
+void CloudsClip::addOverlappingClipID(string clipID){
+	overlappingClipIDs.push_back(clipID);
+}
+
+//void CloudsClip::removeOverlappingClipName(string clipName) {
+//    if(ofContains(overlappingClips, clipName)){
+//        overlappingClips.erase(overlappingClips.begin()+ofFind(overlappingClips, clipName));
+//        
+//        cout<<"removing clip "<<clipName <<" from overlapping vector of clip "<< getLinkName()<<endl;
+//     }
 //}
-
-void CloudsClip::addOverlappingClipName( string clipName){
-    overlappingClips.push_back(clipName);
-}
-
-void CloudsClip::removeOverlappingClipName(string clipName) {
-    if(ofContains(overlappingClips, clipName)){
-        overlappingClips.erase(overlappingClips.begin()+ofFind(overlappingClips, clipName));
-        
-        cout<<"removing clip "<<clipName <<" from overlapping vector of clip "<< getLinkName()<<endl;
-     }
-}
 
 bool CloudsClip::hasOverlappingClips(){
-    return !overlappingClips.empty();
+    return !overlappingClipIDs.empty();
 }
 
-vector<string> CloudsClip::getOverlappingClips(){
-    return overlappingClips;
+vector<string>& CloudsClip::getOverlappingClipIDs(){
+    return overlappingClipIDs;
 }
-//void CloudsClip::setStartingQuestion(string question){
-//    startingQuestion = question;
-//}
+bool CloudsClip::overlapsWithClip(CloudsClip& clip){
+	return ofContains(overlappingClipIDs, clip.getID());
+}
+bool CloudsClip::overlapsWithClipID(string clipID){
+	return ofContains(overlappingClipIDs, clipID);
+}
 bool CloudsClip::hasStartingQuestion(){
 	return hasQuestion() && hasSpecialKeyword("#start");
 }
