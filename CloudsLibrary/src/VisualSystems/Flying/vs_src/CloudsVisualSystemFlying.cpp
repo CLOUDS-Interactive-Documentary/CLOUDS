@@ -14,7 +14,7 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
     numPlantMeshes(100), floorW(2000), floorD(2000), floorHalfW(.5f * floorW), floorHalfD(.5f * floorD),
     noiseAmp(20.f), noiseFreq(5.f), xResolution(100), zResolution(100), xStep(floorW / (float)xResolution), zStep(floorD / (float)zResolution),
     cameraControl(true), fogStart(200.f), fogEnd(500.f), growDist(300.f), drawPlantPosns(false), numNearbyPlants(200),
-    zSpeed(0), yRot(0), xRot(20), camAvoidDist(500.f), regenerate(false)
+    camSpeed(-500.f), currentLookAngle(-20.f, 0.f), camAvoidDist(500.f), regenerate(false)
 {
     ofDirectory dir;
     dir.listDir(getVisualSystemDataPath() + "rules");
@@ -173,11 +173,21 @@ void CloudsVisualSystemFlying::selfUpdate()
     
     if (cameraControl)
     {
-        xRot += CAM_DAMPING * (ofMap(abs(GetCloudsInputY() - ofGetHeight() * .5f), 0, ofGetHeight() * 0.5, 30.f, 20.f) - xRot);
+        ofVec2f targetLookAngle;
+        targetLookAngle.x = ofMap(GetCloudsInputY(), 0, ofGetHeight(), -20.f, -30.f, true);
+        targetLookAngle.y = ofMap(GetCloudsInputX(), 0, ofGetWidth(), 20.f, -20.f, true);
+        currentLookAngle.interpolate(targetLookAngle, .05);
+        ofQuaternion rx, ry;
+        rx.makeRotate(currentLookAngle.x, 1, 0, 0);
+        ry.makeRotate(currentLookAngle.y, 0, 1, 0);
+        getCameraRef().setOrientation(rx * ry);
+        getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
+        
+        /*xRot += CAM_DAMPING * (ofMap(abs(GetCloudsInputY() - ofGetHeight() * .5f), 0, ofGetHeight() * 0.5, 30.f, 20.f) - xRot);
         yRot += CAM_DAMPING * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20) - yRot);
         zSpeed += CAM_DAMPING * (ofMap(GetCloudsInputY(), 0, ofGetHeight(), -600.f, 600.f) - zSpeed);
         getCameraRef().move(0, 0, zSpeed * ofGetLastFrameTime());
-        getCameraRef().setOrientation(ofVec3f(-xRot, yRot, 0.f));
+        getCameraRef().setOrientation(ofVec3f(-xRot, yRot, 0.f));*/
     }
     float distToFloor = getCameraRef().getPosition().y / cos(DEG_TO_RAD * (90 + getCameraRef().getRoll()));
     floorLookAt = getCameraRef().getPosition() + getCameraRef().getLookAtDir().normalized() * distToFloor;
@@ -297,6 +307,7 @@ void CloudsVisualSystemFlying::selfSetupRenderGui()
     rdrGui->addToggle("cameraControl", &cameraControl);
     rdrGui->addSlider("fogStart", 100.f, 4000.f, &fogStart);
     rdrGui->addSlider("fogEnd", 100.f, 4000.f, &fogEnd);
+    rdrGui->addSlider("camSpeed", 0.f, -1000.f, &camSpeed);
     rdrGui->addLabel("Plants");
     rdrGui->addSlider("numNearbyPlants", 20, 500, &numNearbyPlants);
     for (unsigned i = 0; i < rulesFileNames.size(); ++i)
