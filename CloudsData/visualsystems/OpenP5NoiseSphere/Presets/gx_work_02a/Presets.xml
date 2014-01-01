@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>2121.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>452.000000000</XPosition>
+    <YPosition>77.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -42,6 +42,31 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>gx_work_01a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_02a</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_03a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_04a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_05a</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>HangryOrangeBall</Name>
     <Value>0</Value>
 </Widget>
@@ -74,9 +99,4 @@
     <Kind>2</Kind>
     <Name>VeryNervous</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>gx_work_02a</Name>
-    <Value>1</Value>
 </Widget>

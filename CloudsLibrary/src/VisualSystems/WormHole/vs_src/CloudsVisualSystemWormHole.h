@@ -17,6 +17,12 @@
 #include "ofxObjLoader.h"
 #include "glm.h"
 
+#include "CloudsGlobal.h"
+#include "CloudsAudioEvents.h"
+#include "ofxTonic.h"
+
+using namespace Tonic;
+
 //TODO: rename this to your own visual system
 class CloudsVisualSystemWormHole : public CloudsVisualSystem {
   public:
@@ -175,4 +181,17 @@ protected:
 	ofVec3f noiseOffset, noiseDir;
     
     float nearClipPlane;
+
+    // Sound
+    ofxUISuperCanvas* soundGui;
+    int nSamples = 4;
+    string soundFiles[4] = {"EchoVortex.aif",
+        "wormholeZoom.aif",
+        "wormholeZoom2.aif",
+        "slowgrains.aif"};
+    bool playSample[4];
+    ControlTrigger soundTriggers[4];
+    ofxTonicSynth synth;
+    Generator buildSynth();
+	void audioRequested(ofAudioEventArgs& args);
 };

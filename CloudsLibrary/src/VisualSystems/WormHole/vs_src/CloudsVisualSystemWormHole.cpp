@@ -183,6 +183,23 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	ofAddListener(displacementGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 	guis.push_back(displacementGui);
 	guimap[displacementGui->getName()] = displacementGui;
+    
+    
+    // sound
+    soundGui = new ofxUISuperCanvas("WORMHOLE Sound", gui);
+	soundGui->copyCanvasStyle(gui);
+	soundGui->copyCanvasProperties(gui);
+	soundGui->setName("WORMHOLE Sound");
+	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+
+    for (int i=0; i<nSamples; i++)
+    {
+        soundGui->addToggle(soundFiles[i], &playSample[i]);
+    }
+    
+	guis.push_back(soundGui);
+	guimap[soundGui->getName()] = soundGui;
+    ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 }
 
 void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
@@ -296,6 +313,17 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 		wormholeLightGui->getWidget("lightSaturation")->setColorFill(lightColor);
 		wormholeLightGui->getWidget("lightBrightness")->setColorFill(lightColor);
 	}
+
+    for (int i=0; i<nSamples; i++)
+    {
+        if (e.widget->getName() == soundFiles[i]) {
+            ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
+            playSample[i] = toggle->getValue();
+            if (toggle->getValue() == true) {
+                soundTriggers[i].trigger();
+            }
+        }
+    }
 }
 
 void CloudsVisualSystemWormHole::loadMesh(string name)
@@ -390,7 +418,7 @@ void CloudsVisualSystemWormHole::selfSetup()
 	currentShader = NULL;
 	
 	//meshes
-	modelPath = getVisualSystemDataPath() + "models/";
+	modelPath = getVisualSystemDataPath(true) + "models/";
 	cameraPathPath = getVisualSystemDataPath() + "cameraPaths/";
 	
 	cout << modelPath << endl;
@@ -427,10 +455,20 @@ void CloudsVisualSystemWormHole::selfSetup()
 	//gui
 	colorSampleImage.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png" );
 	
+    // sound
+    synth.setOutputGen(buildSynth());
 }
 
 void CloudsVisualSystemWormHole::selfBegin(){
-	
+    // sound
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemWormHole::audioRequested);
+    
+    for (int i=0; i<nSamples; i++)
+    {
+        if (playSample[i]) {
+            soundTriggers[i].trigger();
+        }
+    }
 }
 
 
@@ -573,8 +611,8 @@ void CloudsVisualSystemWormHole::selfDrawBackground(){
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemWormHole::selfEnd()
 {
-
-	
+    // sound
+    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemWormHole::audioRequested);
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemWormHole::selfExit()
@@ -747,3 +785,36 @@ void CloudsVisualSystemWormHole::facetMesh( ofMesh& smoothedMesh, ofMesh& target
 	
 	cout << "faceted mesh in "<< ofToString((ofGetElapsedTimeMillis() - startTime)) << " milli seconds" << endl;
 }
+
+
+Generator CloudsVisualSystemWormHole::buildSynth()
+{
+    string strDir = GetCloudsDataPath()+"sound/textures/";
+    ofDirectory sdir(strDir);
+    
+    SampleTable samples[4];
+    
+    for (int i=0; i<nSamples; i++)
+    {
+        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+        samples[i] = loadAudioFile(strAbsPath);
+    }
+    
+    Generator sampleGen[4];
+    for (int i=0; i<nSamples; i++)
+    {
+        sampleGen[i] = BufferPlayer().setBuffer(samples[i]).loop(1).trigger(soundTriggers[i]);
+    }
+    
+    return sampleGen[0] * 1.0f +
+        sampleGen[1] * 1.0f +
+        sampleGen[2] * 1.0f +
+        sampleGen[3] * 1.0f;
+}
+
+void CloudsVisualSystemWormHole::audioRequested(ofAudioEventArgs& args)
+{
+    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+}
+
+

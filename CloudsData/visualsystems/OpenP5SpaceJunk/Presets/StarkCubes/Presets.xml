@@ -7,6 +7,11 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
+    <Name>architecture_lighting</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>BasicMotion</Name>
     <Value>0</Value>
 </Widget>
@@ -47,6 +52,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>JM_Sweep</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>larger_irregular_cubes</Name>
     <Value>0</Value>
 </Widget>
@@ -54,6 +64,11 @@
     <Kind>2</Kind>
     <Name>LightPreset</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>StarkCubes</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -69,19 +84,4 @@
     <Kind>2</Kind>
     <Name>virtual_architecture</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>JM_Sweep</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>architecture_lighting</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>StarkCubes</Name>
-    <Value>1</Value>
 </Widget>

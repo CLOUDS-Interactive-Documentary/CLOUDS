@@ -1,0 +1,31 @@
+<Map>
+    <Bangs></Bangs>
+    <Switches></Switches>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>BG ALPHA</WidgetName>
+                <WidgetID>3</WidgetID>
+                <WidgetCanvasParent>SeaOfLines</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>GRAVITY</WidgetName>
+                <WidgetID>10</WidgetID>
+                <WidgetCanvasParent>SeaOfLines</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LINE ALPHA 1</WidgetName>
+                <WidgetID>19</WidgetID>
+                <WidgetCanvasParent>SeaOfLines</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>

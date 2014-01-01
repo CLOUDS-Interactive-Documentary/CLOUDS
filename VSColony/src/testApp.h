@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystemColony.h"
+#include "CloudsMixer.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -20,5 +21,8 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 		
+    void audioRequested(float *output, int bufferSize, int nChannels);
+    
 	CloudsVisualSystemColony colony;
+    CloudsMixer mixer;
 };
