@@ -10,6 +10,11 @@
 #include "CloudsVisualSystem.h"
 
 #include "gCell.h"
+#include "CloudsGlobal.h"
+#include "CloudsAudioEvents.h"
+#include "ofxTonic.h"
+
+using namespace Tonic;
 
 class CloudsVisualSystemColony : public CloudsVisualSystem {
 public:
@@ -95,5 +100,15 @@ private:
     
     /* VERY DEBUG */
     ofImage img_debug;
-
+    
+    // Sound
+    ofxUISuperCanvas* soundGui;
+    string soundFiles[3] = {"granular_water2.aif",
+        "granular_water2_slow.aif",
+        "Grains1_slow_low.aif"};
+    bool playSample[3];
+    ControlTrigger soundTriggers[3];
+    ofxTonicSynth synth;
+    Generator buildSynth();
+	void audioRequested(ofAudioEventArgs& args);
 };
