@@ -1125,7 +1125,7 @@ float CloudsStoryEngine::getHandleForClip(CloudsClip& clip){
 }
 
 bool CloudsStoryEngine::historyContainsClip(CloudsClip& m, vector<CloudsClip>& history){
-    string clipID = m.getLinkName();
+    string clipID = m.getID();
     
     for(int i = 0; i < history.size(); i++){
 		

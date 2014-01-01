@@ -170,13 +170,13 @@ void CloudsFCPParser::parseVOClips(){
 		allClips.push_back(clip);
 		
 		for(int i = 1; i < components.size(); i++){
-			if(!hasClipWithID(components[i])){
-				ofSystemAlertDialog("VO clip " + clip.getLinkName() + " overlapping clip " + components[i] + " does not exist. Check the name.");
-			}
-			else {
+//			if(!hasClipWithID(components[i])){
+//				ofSystemAlertDialog("VO clip " + clip.getLinkName() + " overlapping clip " + components[i] + " does not exist. Check the name.");
+//			}
+//			else {
 				clip.addOverlappingClipID(components[i]);
 				cout << " *** overlapping clip is " << components[i] << endl;
-			}
+//			}
 		}
 	}
 	
@@ -1057,14 +1057,10 @@ void CloudsFCPParser::getOverlappingClipIDs(){
             }
         }
     }
-    
 }
 
-
 void CloudsFCPParser::autolinkSequentialClips(){
-
     vector<CloudsClip>& allClips = getAllClips();
-    
     for(int i = 0; i < allClips.size(); i++){
         
         string clipName= allClips[i].getLinkName();
