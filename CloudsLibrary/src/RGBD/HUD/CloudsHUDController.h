@@ -74,6 +74,7 @@ class CloudsHUDController {
     ofRectangle             svgVideoBounds, videoBounds;
     
     bool    bIsHudOpen;
+    bool    bDrawHud;
     bool    bSkipAVideoFrame;
     
     void drawLayer(CloudsHUDLayerSet layer);
@@ -94,7 +95,8 @@ class CloudsHUDController {
                             *ProjectExampleTextBoxTop;
     
     map<string, CloudsHUDLabel*>    hudLabelMap;
-    
+    ofRectangle hudBounds;
+    float scaleAmt;
 };
 
 
