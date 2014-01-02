@@ -4,7 +4,6 @@
 #include "ofxCocoaGLView.h"
 #include "CloudsFCPParser.h"
 #include "CloudsRGBDVideoPlayer.h"
-#include "CloudsVisualSystemRGBD.h"
 #include "CloudsVisualSystemManager.h"
 #include "CloudsSpeaker.h"
 #include "CloudsGlobal.h"
@@ -37,7 +36,7 @@
 	CloudsFCPParser parser;
 
     //RGBD PLAYER
-	CloudsVisualSystemRGBD rgbdVisualSystem;
+//	CloudsVisualSystemRGBD rgbdVisualSystem;
 	CloudsClip currentClip;
     
 	CloudsVisualSystemManager visualSystems;
@@ -103,7 +102,6 @@
 - (IBAction) playNextPreset:(id)sender;
 
 - (IBAction)loadClip:(CloudsClip&)clip;
-- (void) loadClipFromTable:(id)sender;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
@@ -111,6 +109,7 @@
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors;
 
 - (void)playDoubleClickedRow:(id)sender;
+- (void)loadClipFromTable:(id)sender;
 
 - (NSArray *)tokenField:(NSTokenField *)tokenField
 completionsForSubstring:(NSString *)substring
