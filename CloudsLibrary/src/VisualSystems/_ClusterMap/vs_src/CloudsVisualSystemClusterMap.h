@@ -192,7 +192,10 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofFloatColor traverseTailColorHSV;
 	ofFloatColor traverseTailColorRGB;
 	float traverseFalloff;
-	
+
+	ofFloatColor optionColorHSV;
+	ofFloatColor optionColorRGB;
+
 	//animate params
 	float traverseAnimationDuration;
 	float optionsAnimationDuration;

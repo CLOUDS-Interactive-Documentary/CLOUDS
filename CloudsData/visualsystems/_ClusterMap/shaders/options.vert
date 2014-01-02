@@ -1,10 +1,12 @@
 
 varying float traversalPosition;
 varying float optionPosition;
-
+varying float handleAttenutation;
 void main() {
 //	gl_Position = ftransform();
 	optionPosition = gl_Normal.x;
+	handleAttenutation = gl_Normal.z;
+	
 	gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;
 	gl_FrontColor = gl_Color;
 }

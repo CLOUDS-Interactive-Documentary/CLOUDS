@@ -240,31 +240,6 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip& clip){
 		currentTraversalPosition = clip.networkPosition;
 	}
 	else{
-		//startDirection = (clip.networkPosition - currentNodePosition).normalized();
-		
-		//trace out the connection that we took
-		/*
-		if(ofContains( nodes[ currentNodeIndex ].adjascentClipIds, clip.getID()) ){
-			TraversalCurve& t = nodes[ currentNodeIndex ].connectionCurves[ clip.getID() ];
-			ofIndexType lastTraverseEndedIndex = traversalMesh.getNumVertices();
-			
-			for(ofIndexType i = t.startIndx; i < t.endIndx; i++){
-//				traversalMesh.addVertex( optionsMeshNext.getVertices()[i] );
-//				traversalMesh.addNormal( optionsMeshNext.getNormals()[i] );
-			}
-			if(lastTraverseStartedIndex != -1){
-				for(ofIndexType i = lastTraverseStartedIndex; i < lastTraverseEndedIndex; i++){
-					traversalMesh.setNormal(i, ofVec3f(1,1,0));
-				}
-			}
-			lastTraverseStartedIndex = lastTraverseEndedIndex;
-		}
-		else{
-			ofLogError("CloudsVisualSystemClusterMap::traverseToClip") << "Traversed to non connect clip "
-				<< clip.getID() << " from " <<  nodes[ currentNodeIndex ].clipId << endl;
-		}
-		*/
-		
 		//this is to correct the scales in the sliders to more friendly numbers...
 		float localMinSolve = traverseMinSolvedDistance * .001;
 		float localStepSize = traverseStepSize * .001;
@@ -334,8 +309,9 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip& clip){
 			else{
 				percentComplete = ofMap(i,edge.startIndex,edge.endIndex-1, 0.0, 1.0);
 			}
-			optionsMeshNext.addColor( networkMesh.getColor(i));
-			optionsMeshNext.addNormal(ofVec3f(percentComplete,0,0) );
+//			optionsMeshNext.addColor( networkMesh.getColor(i));
+			//z attenuates the handles
+			optionsMeshNext.addNormal(ofVec3f(percentComplete,0,networkMesh.getNormal(i).z) );
 			optionsMeshNext.addVertex(networkMesh.getVertex(i));
 		}
 	}
@@ -492,12 +468,6 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
     traversalGui->resetPlacer();
     traversalGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
     traversalGui->addWidgetToHeader(toggle);
-	
-//	ofFloatColor traverseHeadColorHSV;
-//	ofFloatColor traverseHeadColorRGB;
-//	ofFloatColor traverseTailColorHSV;
-//	ofFloatColor traverseTailColorRGB;
-//	float traverseFalloff;
 
 	traversalGui->addLabel("HEAD COLOR");
     traversalGui->addMinimalSlider("TH_HUE", 0.0, 1.0, &traverseHeadColorHSV.r, length, dim)->setShowValue(false);
@@ -505,16 +475,17 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
     traversalGui->addMinimalSlider("TH_SAT", 0.0, 1.0, &traverseHeadColorHSV.g, length, dim)->setShowValue(false);
     traversalGui->addMinimalSlider("TH_BRI", 0.0, 1.0, &traverseHeadColorHSV.b, length, dim)->setShowValue(false);
     traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-	traversalGui->addLabel("EDGE COLOR");
+	traversalGui->addMinimalSlider("TH_A", 0.0, 1.0, &traverseHeadColorHSV.a);	
+	traversalGui->addLabel("TAIL COLOR");
     traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-	traversalGui->addButton("MATCH", &matchLineColor);
+	traversalGui->addButton("MATCH", &matchTraversalColor);
     traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    traversalGui->addMinimalSlider("LE_HUE", 0.0, 1.0, &traverseTailColorHSV.r, length, dim)->setShowValue(false);
+    traversalGui->addMinimalSlider("TT_HUE", 0.0, 1.0, &traverseTailColorHSV.r, length, dim)->setShowValue(false);
     traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    traversalGui->addMinimalSlider("LE_SAT", 0.0, 1.0, &traverseTailColorHSV.g, length, dim)->setShowValue(false);
-    traversalGui->addMinimalSlider("LE_BRI", 0.0, 1.0, &traverseTailColorHSV.b, length, dim)->setShowValue(false);
+    traversalGui->addMinimalSlider("TT_SAT", 0.0, 1.0, &traverseTailColorHSV.g, length, dim)->setShowValue(false);
+    traversalGui->addMinimalSlider("TT_BRI", 0.0, 1.0, &traverseTailColorHSV.b, length, dim)->setShowValue(false);
     traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-	traversalGui->addMinimalSlider("LE_A", 0.0, 1.0, &traverseTailColorHSV.a);
+	traversalGui->addMinimalSlider("TT_A", 0.0, 1.0, &traverseTailColorHSV.a);
 	traversalGui->addMinimalSlider("FALLOFF", 0, 7.0, &traverseFalloff);
 
 	traversalGui->addSpacer();
@@ -545,6 +516,14 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
     optionPathsGui->addWidgetToHeader(toggle);
 	optionPathsGui->addLabel("ANIMATE");
 	optionPathsGui->addSlider("ANIMATE DURATION", 1, 4, &optionsAnimationDuration);
+
+	optionPathsGui->addLabel("COLOR");
+    optionPathsGui->addMinimalSlider("OP_HUE", 0.0, 1.0, &optionColorHSV.r, length, dim)->setShowValue(false);
+    optionPathsGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    optionPathsGui->addMinimalSlider("OP_SAT", 0.0, 1.0, &optionColorHSV.g, length, dim)->setShowValue(false);
+    optionPathsGui->addMinimalSlider("OP_BRI", 0.0, 1.0, &optionColorHSV.b, length, dim)->setShowValue(false);
+    optionPathsGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+	optionPathsGui->addMinimalSlider("OP_A", 0.0, 1.0, &optionColorHSV.a);
 
 	ofAddListener(optionPathsGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(optionPathsGui);
@@ -677,11 +656,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	}
 	
 	easyCamera.setDistance(traversCameraDistance);
-	ofVec3f curPosition = easyCamera.getTarget().getPosition();
-	ofVec3f curTarget = (currentTraversalPosition*meshExpansion);
-	ofVec3f newPos = curPosition + (curTarget - curPosition) * .05;
-	easyCamera.setTarget(newPos);
-	percentToDest = (newPos - cameraStartPosition).length() / (curTarget - cameraStartPosition).length();
+
 	
 	percentTraversed = ofMap(ofGetElapsedTimef(),
 							 traverseStartTime, traverseStartTime+traverseAnimationDuration,
@@ -690,6 +665,19 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 								   traverseStartTime+traverseAnimationDuration,
 								   traverseStartTime+traverseAnimationDuration+optionsAnimationDuration,
 								   0.0, 1.0, true);
+	
+	if(traversalPath.size() > 0){
+		ofIndexType curIndex = ofMap(percentTraversed,
+									 0, 1.0,
+									 traversalPath.back().startIndex, traversalPath.back().endIndex-1,true);
+		trailHead = traversalMesh.getVertex(curIndex);
+		ofVec3f curPosition = easyCamera.getTarget().getPosition();
+		ofVec3f curTarget = (trailHead*meshExpansion);
+		ofVec3f newPos = curPosition + (curTarget - curPosition) * .1;
+		easyCamera.setTarget(newPos);
+		percentToDest = (newPos - cameraStartPosition).length() / (curTarget - cameraStartPosition).length();
+	}
+	
 
 	if(matchLineColor){
 		lineEdgeColorHSV = lineNodeColorHSV;
@@ -717,6 +705,10 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 												 traverseTailColorHSV.b);
 	traverseTailColorRGB.a = traverseTailColorHSV.a;
 
+	optionColorRGB = ofFloatColor::fromHsb(optionColorHSV.r,
+												 optionColorHSV.g,
+												 optionColorHSV.b);
+	optionColorRGB.a = optionColorHSV.a;
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -816,8 +808,12 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	/////OPTIONS
 	if(drawOptionPaths){
 		optionsShader.begin();
-		
-		optionsShader.setUniform3f("lineColor", 100/255., 150/255., 200/255.);
+
+		optionsShader.setUniform4f("lineColor",
+								   optionColorRGB.r,
+								   optionColorRGB.g,
+								   optionColorRGB.b,
+								   optionColorRGB.a);
 		
 		optionsShader.setUniform1f("percentOptionsRevealed", percentTraversed);
 		optionsShader.setUniform1i("fadeIn", 0);
