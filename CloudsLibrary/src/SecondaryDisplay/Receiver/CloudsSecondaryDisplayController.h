@@ -86,12 +86,25 @@ class CloudsSecondaryDisplayController {
             *meshBioLastName,
             *meshBioFirstName,
             *meshBioLocation,
+            *meshBioLocationBG,
             *meshBioTitle,
+            *meshBioTitleBG,
             *meshBioDescription,
             *meshProjectVideo,
             *meshProjectTitle,
             *meshProjectArtist,
             *meshProjectDescription;
+    
+    ofxFTGLSimpleLayout     *layoutQuestion,
+                            *layoutBioLastName,
+                            *layoutBioFirstName,
+                            *layoutBioLocation,
+                            *layoutBioTitle,
+                            *layoutBioDescription,
+                            *layoutProjectVideo,
+                            *layoutProjectTitle,
+                            *layoutProjectArtist,
+                            *layoutProjectDescription;
     
     int stringCounter;
 

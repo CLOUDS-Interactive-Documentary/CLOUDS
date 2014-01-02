@@ -25,6 +25,8 @@ class CloudsHUDLabel {
     void animateIn();
     void animateOut();
     
+    bool caps;
+    
   protected:
     string  text;
     

@@ -103,8 +103,10 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 	ofCamera& getCameraRef(){
+		if(lockCameraAxis){
+			return axisCamera;
+		}
 		return easyCamera;
-//		return gameCamera;
 	}
 
 	void reloadShaders();
@@ -116,8 +118,10 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofxUISuperCanvas* linesGui;
 	ofxUISuperCanvas* optionPathsGui;
 	ofxUISuperCanvas* traversalGui;
-
+	ofxUISuperCanvas* followCamGui;
+	
 	ofEasyCam easyCamera;
+	ofCamera axisCamera;
 	ofxGameCamera gameCamera;
 	
 	CloudsFCPParser* parser;
@@ -166,12 +170,13 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofVec3f trailHead;
 
 	float nodePopLength;
-	float lineAlpha;
+	float lineDensity;
 	float lineFocalDistance;
 	float lineFocalRange;
-	float lineDissolve;
 	
 	bool drawTraversalPoints;
+	bool lockCameraAxis;
+	float traverseCamFOV;
 	float traversCameraDistance;
 	float traversedNodeSize;
 	float traverseStepSize;
@@ -179,6 +184,24 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float traverseHomingMinDistance;
 	float traverseMinSolvedDistance;
 	
+	//colors~
+	bool matchLineColor;
+	ofFloatColor lineNodeColorHSV;
+	ofFloatColor lineNodeColorRGB;
+	ofFloatColor lineEdgeColorHSV;
+	ofFloatColor lineEdgeColorRGB;
+	float lineColorMixExponent;
+	
+	bool matchTraversalColor;
+	ofFloatColor traverseHeadColorHSV;
+	ofFloatColor traverseHeadColorRGB;
+	ofFloatColor traverseTailColorHSV;
+	ofFloatColor traverseTailColorRGB;
+	float traverseFalloff;
+
+	ofFloatColor optionColorHSV;
+	ofFloatColor optionColorRGB;
+
 	//animate params
 	float traverseAnimationDuration;
 	float optionsAnimationDuration;

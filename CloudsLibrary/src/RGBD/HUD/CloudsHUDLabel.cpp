@@ -13,6 +13,7 @@ CloudsHUDLabel::CloudsHUDLabel(){
     
     bIsAnimatingIn = false;
     bIsAnimatingOut = false;
+    caps = true;
     
     animationClamp.min = 0.3;
     animationClamp.max = 3.0;
@@ -50,12 +51,16 @@ void CloudsHUDLabel::draw(){
     if( layout ){
         ofPushStyle();{
             ofSetColor(255, 255, 255, textAlpha);
-            layout->drawString( ofToUpper(text.substr(0, playhead )), bounds.x, bounds.y + layout->getStringBoundingBox("W", 0, 0).height );
+            string t = text.substr(0, playhead );
+            if(caps)
+                t = ofToUpper(t);
+            layout->drawString( t, bounds.x, bounds.y + layout->getStringBoundingBox("W", 0, 0).height );
         }ofPopStyle();
     }
 }
 
 void CloudsHUDLabel::setText( string newText ){
+    cout << "CloudsHUDLabel::setText: " << newText;
     text = newText;
     playhead = 0;
     
