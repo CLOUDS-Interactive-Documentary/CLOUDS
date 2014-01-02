@@ -66,11 +66,6 @@
 		E70CDD5E1868D49200955691 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDD4E1868D49200955691 /* ofxOscMessage.cpp */; };
 		E70CDD5F1868D49200955691 /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDD501868D49200955691 /* ofxOscReceiver.cpp */; };
 		E70CDD601868D49200955691 /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDD521868D49200955691 /* ofxOscSender.cpp */; };
-		E70CDDB11868FAB900955691 /* src_colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDA81868FAB900955691 /* src_colors.cpp */; };
-		E70CDDB21868FAB900955691 /* svgtiny.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDA91868FAB900955691 /* svgtiny.cpp */; };
-		E70CDDB31868FAB900955691 /* svgtiny_gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDAB1868FAB900955691 /* svgtiny_gradient.cpp */; };
-		E70CDDB41868FAB900955691 /* svgtiny_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDAD1868FAB900955691 /* svgtiny_list.cpp */; };
-		E70CDDB51868FAB900955691 /* ofxSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDAF1868FAB900955691 /* ofxSvg.cpp */; };
 		E70CEC7518696B5400955691 /* CloudsSecondaryDisplayController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CEC6D18696B5400955691 /* CloudsSecondaryDisplayController.cpp */; };
 		E7176E2F17D3DABA00C8DC38 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2D17D3DABA00C8DC38 /* CloudsQuestion.cpp */; };
 		E724461216573A0800D70E01 /* ofxHotKeys_impl_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E724459616573A0400D70E01 /* ofxHotKeys_impl_linux.cpp */; };
@@ -137,6 +132,7 @@
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7E5E36B1812404300CA4196 /* CloudsClusterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E3611812404300CA4196 /* CloudsClusterNode.cpp */; };
 		E7E5E36C1812404300CA4196 /* CloudsVisualSystemClusterMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E3631812404300CA4196 /* CloudsVisualSystemClusterMap.cpp */; };
+		E7FEFD5C1875F47D009533A7 /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFD581875F47D009533A7 /* ofxBillboard.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -373,14 +369,6 @@
 		E70CDD511868D49200955691 /* ofxOscReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscReceiver.h; sourceTree = "<group>"; };
 		E70CDD521868D49200955691 /* ofxOscSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscSender.cpp; sourceTree = "<group>"; };
 		E70CDD531868D49200955691 /* ofxOscSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscSender.h; sourceTree = "<group>"; };
-		E70CDDA81868FAB900955691 /* src_colors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = src_colors.cpp; sourceTree = "<group>"; };
-		E70CDDA91868FAB900955691 /* svgtiny.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny.cpp; sourceTree = "<group>"; };
-		E70CDDAA1868FAB900955691 /* svgtiny.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svgtiny.h; sourceTree = "<group>"; };
-		E70CDDAB1868FAB900955691 /* svgtiny_gradient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny_gradient.cpp; sourceTree = "<group>"; };
-		E70CDDAC1868FAB900955691 /* svgtiny_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svgtiny_internal.h; sourceTree = "<group>"; };
-		E70CDDAD1868FAB900955691 /* svgtiny_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny_list.cpp; sourceTree = "<group>"; };
-		E70CDDAF1868FAB900955691 /* ofxSvg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSvg.cpp; sourceTree = "<group>"; };
-		E70CDDB01868FAB900955691 /* ofxSvg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSvg.h; sourceTree = "<group>"; };
 		E70CEC6D18696B5400955691 /* CloudsSecondaryDisplayController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSecondaryDisplayController.cpp; sourceTree = "<group>"; };
 		E70CEC6E18696B5400955691 /* CloudsSecondaryDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSecondaryDisplayController.h; sourceTree = "<group>"; };
 		E7176E2D17D3DABA00C8DC38 /* CloudsQuestion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsQuestion.cpp; path = ../RGBD/CloudsQuestion.cpp; sourceTree = "<group>"; };
@@ -545,6 +533,10 @@
 		E7FEFD32187538A2009533A7 /* options.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = options.vert; sourceTree = "<group>"; };
 		E7FEFD33187538A2009533A7 /* traversal.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = traversal.frag; sourceTree = "<group>"; };
 		E7FEFD34187538A2009533A7 /* traversal.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = traversal.vert; sourceTree = "<group>"; };
+		E7FEFD541875F47D009533A7 /* license.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.md; sourceTree = "<group>"; };
+		E7FEFD561875F47D009533A7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		E7FEFD581875F47D009533A7 /* ofxBillboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBillboard.cpp; sourceTree = "<group>"; };
+		E7FEFD591875F47D009533A7 /* ofxBillboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBillboard.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -673,7 +665,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				E70CDDA41868FAB900955691 /* ofxSvg */,
+				E7FEFD421875F47C009533A7 /* ofxBillboard */,
 				E70CDD2A1868D49200955691 /* ofxOsc */,
 				185CE931184A5FC600F43977 /* ofxFTGL */,
 				E7B3C7D017EE29E400581ACD /* ofxMSACore */,
@@ -1103,54 +1095,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		E70CDDA41868FAB900955691 /* ofxSvg */ = {
-			isa = PBXGroup;
-			children = (
-				E70CDDA51868FAB900955691 /* libs */,
-				E70CDDAE1868FAB900955691 /* src */,
-			);
-			name = ofxSvg;
-			path = ../CloudsLibrary/addons/ofxSvg;
-			sourceTree = "<group>";
-		};
-		E70CDDA51868FAB900955691 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				E70CDDA61868FAB900955691 /* svgTiny */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		E70CDDA61868FAB900955691 /* svgTiny */ = {
-			isa = PBXGroup;
-			children = (
-				E70CDDA71868FAB900955691 /* src */,
-			);
-			path = svgTiny;
-			sourceTree = "<group>";
-		};
-		E70CDDA71868FAB900955691 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				E70CDDA81868FAB900955691 /* src_colors.cpp */,
-				E70CDDA91868FAB900955691 /* svgtiny.cpp */,
-				E70CDDAA1868FAB900955691 /* svgtiny.h */,
-				E70CDDAB1868FAB900955691 /* svgtiny_gradient.cpp */,
-				E70CDDAC1868FAB900955691 /* svgtiny_internal.h */,
-				E70CDDAD1868FAB900955691 /* svgtiny_list.cpp */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		E70CDDAE1868FAB900955691 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				E70CDDAF1868FAB900955691 /* ofxSvg.cpp */,
-				E70CDDB01868FAB900955691 /* ofxSvg.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		E70CEC6A18696B5400955691 /* Receiver */ = {
 			isa = PBXGroup;
 			children = (
@@ -1524,6 +1468,26 @@
 			path = ../../../../CloudsData/visualsystems/_ClusterMap/shaders;
 			sourceTree = "<group>";
 		};
+		E7FEFD421875F47C009533A7 /* ofxBillboard */ = {
+			isa = PBXGroup;
+			children = (
+				E7FEFD541875F47D009533A7 /* license.md */,
+				E7FEFD561875F47D009533A7 /* README.md */,
+				E7FEFD571875F47D009533A7 /* src */,
+			);
+			name = ofxBillboard;
+			path = ../../../addons/ofxBillboard;
+			sourceTree = "<group>";
+		};
+		E7FEFD571875F47D009533A7 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E7FEFD581875F47D009533A7 /* ofxBillboard.cpp */,
+				E7FEFD591875F47D009533A7 /* ofxBillboard.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1712,13 +1676,9 @@
 				E70CDD5E1868D49200955691 /* ofxOscMessage.cpp in Sources */,
 				E70CDD5F1868D49200955691 /* ofxOscReceiver.cpp in Sources */,
 				E70CDD601868D49200955691 /* ofxOscSender.cpp in Sources */,
-				E70CDDB11868FAB900955691 /* src_colors.cpp in Sources */,
-				E70CDDB21868FAB900955691 /* svgtiny.cpp in Sources */,
-				E70CDDB31868FAB900955691 /* svgtiny_gradient.cpp in Sources */,
-				E70CDDB41868FAB900955691 /* svgtiny_list.cpp in Sources */,
-				E70CDDB51868FAB900955691 /* ofxSvg.cpp in Sources */,
 				E70CEC7518696B5400955691 /* CloudsSecondaryDisplayController.cpp in Sources */,
 				E7A4DC31186B6900002F5371 /* CloudsSVGMesh.cpp in Sources */,
+				E7FEFD5C1875F47D009533A7 /* ofxBillboard.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

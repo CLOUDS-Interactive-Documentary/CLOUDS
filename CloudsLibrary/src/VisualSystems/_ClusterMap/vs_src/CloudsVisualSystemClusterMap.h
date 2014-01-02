@@ -6,11 +6,19 @@
 #include "CloudsClusterNode.h"
 #include "CloudsQuestion.h"
 #include "CloudsRun.h"
+#include "ofxFTGLFont.h"
 
 typedef struct{
 	ofIndexType startIndex;
 	ofIndexType endIndex;
 } TraversalSegment;
+
+typedef struct{
+	string keyword;
+	ofVec3f position;
+	int numClips;
+	float normalizedTopicScale;
+} TopicPoint;
 
 class CloudsFCPParser;
 class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
@@ -119,6 +127,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofxUISuperCanvas* optionPathsGui;
 	ofxUISuperCanvas* traversalGui;
 	ofxUISuperCanvas* followCamGui;
+	ofxUISuperCanvas* typeGui;
 	
 	ofEasyCam easyCamera;
 	ofCamera axisCamera;
@@ -132,9 +141,6 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	bool drawLines;
 	bool drawTraversal;
 	bool drawOptionPaths;
-	
-	ofxTLColorTrack* lineColor;
-	ofxTLColorTrack* nodeColor;
 	
 	vector<CloudsClusterNode> nodes;
 	map<string,int> clipIdToNodeIndex;
@@ -202,6 +208,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofFloatColor optionColorHSV;
 	ofFloatColor optionColorRGB;
 
+	
 	//animate params
 	float traverseAnimationDuration;
 	float optionsAnimationDuration;
@@ -211,6 +218,16 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float traverseStartTime;
 	float percentTraversed;
 	float percentOptionsRevealed;
+	
+	//type vars
+	void populateTopicPoints();
+	vector<TopicPoint> topicPoints;
+	ofxFTGLFont topicFont;
+	bool drawType;
+	int baseFontSize;
+	int currentFontSize;
+	int topicCutoff;
+	ofRange typeScaleRange;
 	
 	ofVec3f randomDirection();
 	
