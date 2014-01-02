@@ -479,15 +479,14 @@
 			<byline2>His work applies mathematical principles underlying physics to create digital worlds, which he develops through tutorials, examples, and libraries for Processing, an open source programming language and environment.</byline2>
 			<gender>male</gender>
 		</person>
-	<person id="Sophy">
+		<person id="Sophy">
 			<first>Sophy</first>
 			<last>Yuditskaya</last>
 			<title>Researcher, Practitioner</title>
 			<twitter>@horusVacui</twitter>
 			<location1>New York NY</location1>
 			<location2></location2>
-			<byline1>Sophy examines the nature of objects and human action in relationship to their fragmented digital representations. 
-</byline1>
+			<byline1>Sophy examines the nature of objects and human action in relationship to their fragmented digital representations. </byline1>
 			<byline2>Her practice coils together a variety of performance types, including musical performance with electronic instruments, spoken word, dance, techno-futuristic rituals, and site specific social experiments.</byline2>
 			<gender>female</gender>
 		</person>
@@ -497,36 +496,43 @@
 			<title>Artist, Designer</title>
 			<twitter>@theowatson</twitter>
 			<location1>London UK</location1>
-<location2>Cambridge MA</location2>
-			<byline1>Develops playful interactive systems and software tools. He is the the co-founder of openFrameworks with Zach Lieberman and Arturo Castro, an open source library for writing creative code in C++.</byline1>
-			<byline2>His company Design IO, with partner Emily Gobeille, creates immersive environments that engage full-body interaction.
-</byline2>
+			<location2>Cambridge MA</location2>
+			<byline1>
+				Develops playful interactive systems and software tools. He is the the co-founder of openFrameworks with Zach Lieberman and Arturo Castro, an open source library for writing creative code in C++.
+			</byline1>
+			<byline2>
+				His company Design IO, with partner Emily Gobeille, creates immersive environments that engage full-body interaction.
+			</byline2>
 			<gender>male</gender>
 		</person>
-	<person id="Vera">
+		<person id="Vera">
 			<first>Vera</first>
 			<last>Glahn</last>
 			<title>Designer, Project Manager</title>
 			<twitter>@veraglahn</twitter>
 			<location1>London UK</location1>
 			<location2></location1>
-			<byline1>Her company Field IO, with partner Marcus Wendt, designs interactive installations, audiovisual performances, and videos.</byline1>
-			<byline2>Field recently produced a non-linear film, Energy Flow, consisting of 10 animated story lines exploring themes of complexity, chaos and interconnectivity. 
-</byline2>
+			<byline1>
+				Her company Field IO, with partner Marcus Wendt, designs interactive installations, audiovisual performances, and videos.
+			</byline1>
+			<byline2>
+				Field recently produced a non-linear film, Energy Flow, consisting of 10 animated story lines exploring themes of complexity, chaos and interconnectivity. 
+			</byline2>
 			<gender>female</gender>
 		</person>
-	<person id="Zach">
+		<person id="Zach">
 			<first>Zach</first>
 			<last>Lieberman</last>
 			<title>Artist, Educator</title>
 			<twitter>@zachlieberman</twitter>
 			<location1>Brooklyn NY</location1>
 			<location2></location2>
-			<byline1>Explores new modes of expression and play. He develops openFrameworks, a c++ library for creative coding, and co-founded the School for Poetic Computation in Brookly NY.
-</byline1>
-			<byline2>He co-founded and develops open Frameworks, a c++ library for creative coding. He recently founded The School for Poetic Computation in Brooklyn, to bridge the gap between computer programming, engineering, design and art.
-
-</byline2>
+			<byline1>
+				Explores new modes of expression and play. He develops openFrameworks, a c++ library for creative coding, and co-founded the School for Poetic Computation in Brookly NY.
+			</byline1>
+			<byline2>
+				He co-founded and develops open Frameworks, a c++ library for creative coding. He recently founded The School for Poetic Computation in Brooklyn, to bridge the gap between computer programming, engineering, design and art.
+			</byline2>
 			<gender>male</gender>
 		</person>
 
@@ -538,11 +544,8 @@
 			<twitter>@patriciogv</twitter>
 			<location1>b Buenos Aires AR</location1>
 			<location2></location2>
-			<byline1>He focuses on bringing cutting-edge technologies to spaces where creativity and play can transform people. Lives in Brooklyn NY.
-</byline1>
-			<byline2>
-
-</byline2>
+			<byline1>He focuses on bringing cutting-edge technologies to spaces where creativity and play can transform people. Lives in Brooklyn NY.</byline1>
+			<byline2></byline2>
 			<gender>male</gender>
 		</person>
 
@@ -553,16 +556,16 @@
 			<twitter>@satoruhiga</twitter>
 			<location1>Tokyo JP</location1>
 			<location2></location2>
-			<byline1>A creative coder who develops interactive art, games and apps. He has been an artist-in-residence at Yamaguchi Center for Arts and Media (YCAM), a collaborator with Daito Manabe.
-
-</byline1>
-			<byline2> Saturo has contributed numerous add-ons to open Frameworks, a c++ library for artists.
-
-
-</byline2>
+			<byline1>
+				A creative coder who develops interactive art, games and apps. He has been an artist-in-residence at Yamaguchi Center for Arts and Media (YCAM), a collaborator with Daito Manabe.
+			</byline1>
+			<byline2>
+				Higasan has contributed numerous add-ons to open Frameworks, a c++ library for artists.
+			</byline2>
 			<gender>male</gender>
 		</person>
-
+		
+		</person>
 			<person id="LIA">
 			<first>LIA</first>
 			<last></last>
@@ -570,27 +573,26 @@
 			<twitter>@liasomething</twitter>
 			<location1>Vienna AU</location1>
 			<location2></location2>
-			<byline1>An anonymous software artist active in early net art sites re-move.org, turux.at, and processing.org. She develops generative visual systems, apps, installations, and live audioreactive performances.
-
-</byline1>
+			<byline1>
+				An anonymous software artist active in early net art sites re-move.org, turux.at, and processing.org. She develops generative visual systems, apps, installations, and live audioreactive performances.
+			</byline1>
 			<byline2></byline2>
 			<gender>female</gender>
 		</person>
-
-		</person>
-
-			<person id="Damion">
+		
+		<person id="Damion">
 			<first>Damian</first>
 			<last>Stewart</last>
 			<title>Sound Artist, Engineer</title>
 			<twitter>@damian0815</twitter>
 			<location1>b Aukland NZ</location1>
-			<location2>Works with sound, code, light, and electronics to create immersive environments that alter the viewer's sense of time and space.</location2>
-			<byline1>
-</byline1>
+			<location2>
+				Works with sound, code, light, and electronics to create immersive environments that alter the viewer's sense of time and space.
+			</location2>
+			<byline1></byline1>
 			<byline2></byline2>
 			<gender>male</gender>
 		</person>
-
+		
 </clouds>
 
