@@ -107,7 +107,7 @@
 
 - (void)exit
 {
-
+    parser.saveSpeakersVolume(GetCloudsDataPath()+"sound/SpeakersVolume.txt");
 }
 
 - (void)keyPressed:(int)key
@@ -201,11 +201,12 @@
 //    string name = interventi÷onName;
 //    cout<<interventionName<<endl;
     float speakerVol =speakerVolTextBox.floatValue;
-    cout<<speakerVol<<endl;
 
     if(clipTable.selectedRow >= 0){
         CloudsClip& clip =parser.getAllClips()[[clipTable selectedRow]];
-        cout<<" Updating vol for speaker : "<<clip.getSpeakerFirstName()<<" "<<clip.getSpeakerLastName()<<" on clip "<<clip.getLinkName()<<endl;
+        parser.setSpeakerVolume(clip.getSpeakerFullName(), speakerVol);
+        cout<<" Updating vol for speaker : "<<clip.getSpeakerFullName()<<" new vol : "<<speakerVol<<endl;
+        parser.saveSpeakersVolume(GetCloudsDataPath()+"sound/SpeakersVolume.txt");
     }
     
 }
