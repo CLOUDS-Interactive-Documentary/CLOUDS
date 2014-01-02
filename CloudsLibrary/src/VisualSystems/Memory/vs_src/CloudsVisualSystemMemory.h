@@ -9,6 +9,10 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "ofxTonic.h"
+#include "CloudsAudioEvents.h"
+
+using namespace Tonic;
 
 class Block : public ofRectangle {
   public:
@@ -186,5 +190,10 @@ private:
     bool    bDeFrag;
     bool    bBiDirectionalSort;
     bool    bTexture;
+    
+    // Sound
+    ofxTonicSynth synth;
+    Generator buildSynth();
+	void audioRequested(ofAudioEventArgs& args);
     
 };

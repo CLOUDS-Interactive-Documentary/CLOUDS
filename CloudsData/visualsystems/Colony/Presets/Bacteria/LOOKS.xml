@@ -3,17 +3,17 @@
     <Name>LOOKS</Name>
     <IsMinified>0</IsMinified>
     <XPosition>637.000061035</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <YPosition>542.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell Floor Translusence</Name>
-    <Value>1.000000000</Value>
+    <Value>0.492610544</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Dish Floor Translusence</Name>
-    <Value>0.300492316</Value>
+    <Value>0.221674576</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>

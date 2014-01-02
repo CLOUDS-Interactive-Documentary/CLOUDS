@@ -31,6 +31,26 @@ void testApp::keyPressed(int key){
     else if(key == 'c'){
         secondaryDisplay.color = !secondaryDisplay.color;
     }
+	
+	if(key == 'C'){
+		secondaryDisplay.respondToClip( secondaryDisplay.parser.getRandomClip() );
+	}
+	
+	if(key == 'E'){
+		vector<int> projectExampleIndecs;
+		for(int i = 0; i < secondaryDisplay.parser.getAllClips().size(); i++){
+			if(secondaryDisplay.parser.getAllClips()[i].hasProjectExample){
+				projectExampleIndecs.push_back(i);
+			}
+		}
+		
+		if(projectExampleIndecs.size() > 0){
+			int exampleIndex = projectExampleIndecs[ ofRandom(projectExampleIndecs.size()) ];
+			secondaryDisplay.respondToClip( secondaryDisplay.parser.getAllClips()[exampleIndex] );
+//			cout << "SENT CLIP " << parser.getAllClips()[exampleIndex].getLinkName() << " WITH EXAMPLE " << parser.getAllClips()[exampleIndex].projectExampleTitle << endl;
+		}
+	}
+	
 }
 
 //--------------------------------------------------------------

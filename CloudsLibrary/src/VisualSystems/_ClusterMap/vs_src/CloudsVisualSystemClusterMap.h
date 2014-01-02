@@ -6,6 +6,20 @@
 #include "CloudsClusterNode.h"
 #include "CloudsQuestion.h"
 #include "CloudsRun.h"
+#include "ofxFTGLFont.h"
+
+typedef struct{
+	ofIndexType startIndex;
+	ofIndexType endIndex;
+} TraversalSegment;
+
+typedef struct{
+	string keyword;
+	ofVec3f position;
+	ofVec2f screenPosition;
+	int numClips;
+	float normalizedTopicScale;
+} TopicPoint;
 
 class CloudsFCPParser;
 class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
@@ -78,6 +92,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	// or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 	void selfDrawBackground();
 
+	void selfDrawOverlay();
+	
 	// this is called when your system is no longer drawing.
 	// Right after this selfUpdate() and selfDraw() won't be called any more
 	void selfEnd();
@@ -98,39 +114,53 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 	ofCamera& getCameraRef(){
-		return cam;
-//		return easeCamera;
+		if(lockCameraAxis){
+			return axisCamera;
+		}
+		return easyCamera;
 	}
 
 	void reloadShaders();
 	
-	//this is for the secondary display
-	bool incrementalTraversalMode;
 
   protected:
-    
-    //  Your Stuff
-    //
-	ofEasyCam easeCamera;
-	ofxUISuperCanvas* generatorGui;
-	ofxUISuperCanvas* displayGui;
+
+	ofxUISuperCanvas* nodesGui;
+	ofxUISuperCanvas* linesGui;
+	ofxUISuperCanvas* optionPathsGui;
+	ofxUISuperCanvas* traversalGui;
+	ofxUISuperCanvas* followCamGui;
+	ofxUISuperCanvas* typeGui;
 	
-	ofxGameCamera cam;
+	ofEasyCam easyCamera;
+	ofCamera axisCamera;
+	ofxGameCamera gameCamera;
+	
+	CloudsFCPParser* parser;
 	CloudsRun* run;
+	void resetGeometry();
 	
-	ofxTLColorTrack* lineColor;
-	ofxTLColorTrack* nodeColor;
+	bool drawNodes;
+	bool drawLines;
+	bool drawTraversal;
+	bool drawOptionPaths;
 	
+	vector<CloudsClusterNode> nodes;
+	map<string,int> clipIdToNodeIndex;
+
 	ofVboMesh traversalMesh;
 	ofVboMesh optionsMeshPrev,optionsMeshNext;
 	ofVboMesh nodeMesh;
-//	ofVboMesh connectionMesh;
 	ofVboMesh networkMesh;
 	
 	ofShader nodesShader;
 	ofShader networkShader;
 	ofShader traversalShader;
 	ofShader optionsShader;
+	
+	vector<TraversalSegment> traversalPath;
+	ofVec3f currentTraversalPosition;
+	ofVec3f currentTraversalDirection;
 	ofIndexType lastTraverseStartedIndex;
 	
 	bool firstClip;
@@ -142,29 +172,72 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float percentToDest;
 	
 	ofImage sprite;
-
-
-	
-	vector<CloudsClusterNode> nodes;
-	map<string,int> clipIdToNodeIndex;
-	
-	float maxTraverseAngle;
 	
 	float meshExpansion;
-	float pointSize;
-	
-	float lineAlpha;
-	float lineFocalDistance;
-	float lineFocalRange;
-	float lineDissolve;
+	ofRange pointSize;
+
 	ofVec3f trailHead;
 
 	float nodePopLength;
+	float lineDensity;
+	float lineFocalDistance;
+	float lineFocalRange;
+	
+	bool drawTraversalPoints;
+	bool lockCameraAxis;
+	float traverseCamFOV;
+	float traversCameraDistance;
 	float traversedNodeSize;
+	float traverseStepSize;
+	float traverseAngleDampen;
+	float traverseHomingMinDistance;
+	float traverseMinSolvedDistance;
+	
+	//colors~
+	bool matchLineColor;
+	ofFloatColor lineNodeColorHSV;
+	ofFloatColor lineNodeColorRGB;
+	ofFloatColor lineEdgeColorHSV;
+	ofFloatColor lineEdgeColorRGB;
+	float lineColorMixExponent;
+	
+	bool matchTraversalColor;
+	ofFloatColor traverseHeadColorHSV;
+	ofFloatColor traverseHeadColorRGB;
+	ofFloatColor traverseTailColorHSV;
+	ofFloatColor traverseTailColorRGB;
+	float traverseFalloff;
+
+	ofFloatColor optionColorHSV;
+	ofFloatColor optionColorRGB;
+
+	
+	//animate params
+	float traverseAnimationDuration;
+	float optionsAnimationDuration;
+	
+	bool drawHomingDistanceDebug;
+	
+	float traverseStartTime;
+	float percentTraversed;
+	float percentOptionsRevealed;
+	
+	//type vars
+	void populateTopicPoints();
+	vector<TopicPoint> topicPoints;
+	vector<ofxFTGLFont> topicFont;
+	bool drawType;
+	int baseFontSize;
+	ofIntRange clipsShowTopic;
+	ofRange clipCountRange;
+	ofRange typeDistanceRange;
+	ofIntRange typeSizeRange;
+	ofIntRange currentTypeSizeRange;
+	//int currentFontSize;
+	//ofRange typeScaleRange;
 	
 	ofVec3f randomDirection();
 	
-	//	vector<ofVec2f> traversalPath;//?
 	vector<CloudsQuestion> questions;
 	CloudsQuestion* selectedQuestion;
 

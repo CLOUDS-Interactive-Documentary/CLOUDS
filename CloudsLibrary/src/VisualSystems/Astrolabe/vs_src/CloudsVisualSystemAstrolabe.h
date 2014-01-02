@@ -200,6 +200,6 @@ protected:
 	int numSpheresPerArc;
 	
 	bool bUseSpheres, bDrawCircles;
-	float circleLinewidth;
+	GLfloat circleLinewidth;
 	float circleOpacity;
 };

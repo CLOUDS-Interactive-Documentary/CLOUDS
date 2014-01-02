@@ -5,6 +5,7 @@
 @implementation testView
 @synthesize clipTable;
 @synthesize interventionTextBox;
+@synthesize speakerVolTextBox;
 - (void)setup
 {
 
@@ -29,7 +30,8 @@
 	[clipTable setDoubleAction:@selector(loadClipFromTable:)];
 	[clipTable reloadData];
     [interventionTextBox setTarget:self];   
-	
+	[speakerVolTextBox setTarget:self];
+    
 	rgbdVisualSystem.setup();
 	rgbdVisualSystem.setDrawToScreen(false);
 	hud.setup();
@@ -89,8 +91,8 @@
 		
 		currentClip = clip;
 	}
-	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
-		
+	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath,1,clip.speakerVolume) ){
+		cout<<"clip.speakerVolume : "<<clip.speakerVolume<<endl;
 		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
 		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
 									   CloudsSpeaker::speakers[clip.person].lastName,
@@ -105,7 +107,7 @@
 
 - (void)exit
 {
-
+    parser.saveSpeakersVolume(GetCloudsDataPath()+"sound/SpeakersVolume.txt");
 }
 
 - (void)keyPressed:(int)key
@@ -182,16 +184,44 @@
     return cppString;
 }
 
--(void)addIntervention:(id)sender{
+-(IBAction)addIntervention:(id)sender{
 
     const char* interventionName =[interventionTextBox.stringValue UTF8String ];
     string name = interventionName;
+
     if(clipTable.selectedRow >= 0){
         CloudsClip& clip =parser.getAllClips()[[clipTable selectedRow]];
         cout<<" Adding intervention : "<<name<<" to clip "<<clip.getLinkName()<<endl;
     }
 }
 
+- (IBAction)updateSpeakerVolume:(id)sender{
+
+    float speakerVol =speakerVolTextBox.floatValue;
+
+    if(clipTable.selectedRow >= 0){
+        CloudsClip& clip =parser.getAllClips()[[clipTable selectedRow]];
+        parser.setSpeakerVolume(clip.person, speakerVol);
+        cout<<" Updating vol for speaker : "<<clip.person<<" new vol : "<<speakerVol<<endl;
+        parser.saveSpeakersVolume(GetCloudsDataPath()+"sound/SpeakersVolume.txt");
+        
+        rgbdVisualSystem.getRGBDVideoPlayer().currentMaxVolume = rgbdVisualSystem.getRGBDVideoPlayer().maxVolume *  speakerVol;
+    }
+    
+}
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification
+{
+    if (aNotification.object == clipTable) {
+        [self updateSpeakerVolumeTextField];
+    }
+}
+
+- (void) updateSpeakerVolumeTextField{
+        if(clipTable.selectedRow >= 0){
+            CloudsClip& clip =parser.getAllClips()[[clipTable selectedRow]];
+            speakerVolTextBox.floatValue = clip.getSpeakerVolume();
+        }
+}
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
 

@@ -77,15 +77,15 @@ void Astrolabe::updateRotations()
 }
 
 
-void Astrolabe::addRotationTween( string axis, float startVal, float step, float duration, float delay, float increment )
+void Astrolabe::addRotationTween( string axis, float startVal, float step, float duration, float delay, float increment, float _scale )
 {
-	tweenInfo[axis].set( step, duration, increment );
-	rot[axis].setParameters(*ease, ofxTween::easeInOut, startVal, startVal+step, duration, delay );
+	tweenInfo[axis].set( step, duration, increment, _scale );
+	rot[axis].setParameters(*ease, ofxTween::easeInOut, startVal, startVal+step, duration * tweenInfo[axis].scale, delay * tweenInfo[axis].scale );
 }
 
-void Astrolabe::setRotationTween( string axis, float startVal, float step, float duration, float delay, float increment )
+void Astrolabe::setRotationTween( string axis, float startVal, float step, float duration, float delay, float increment, float _scale )
 {
-	addRotationTween( axis, startVal, step, duration, delay, increment );
+	addRotationTween( axis, startVal, step, duration, delay, increment, _scale );
 };
 
 void Astrolabe::draw()

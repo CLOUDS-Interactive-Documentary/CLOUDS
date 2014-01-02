@@ -17,6 +17,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>FireWeb_mellow</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>GravityShift</Name>
     <Value>0</Value>
 </Widget>
@@ -24,14 +29,4 @@
     <Kind>2</Kind>
     <Name>Mellow</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>FireWeb_Minimal</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>FireWeb_mellow</Name>
-    <Value>1</Value>
 </Widget>

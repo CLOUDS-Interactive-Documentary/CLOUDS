@@ -7,6 +7,8 @@
 //
 
 #include "CloudsVisualSystemMemory.h"
+#include "CloudsGlobal.h"
+
 
 
 string CloudsVisualSystemMemory::getSystemName()
@@ -17,6 +19,9 @@ string CloudsVisualSystemMemory::getSystemName()
 void CloudsVisualSystemMemory::selfSetup()
 {
     generate();
+    
+    // sound
+    synth.setOutputGen(buildSynth());
 }
 
 void CloudsVisualSystemMemory::selfSetDefaults(){
@@ -72,11 +77,13 @@ void CloudsVisualSystemMemory::selfSetupRenderGui()
 
 void CloudsVisualSystemMemory::selfBegin()
 {
+     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemMemory::audioRequested);
     generate();
 }
 
 void CloudsVisualSystemMemory::selfEnd()
 {
+    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemMemory::audioRequested);
     
 }
 
@@ -449,6 +456,25 @@ void CloudsVisualSystemMemory::selfDrawBackground()
 	
 	fillMesh.draw();
 	outlineMesh.draw();
+}
+
+
+Generator CloudsVisualSystemMemory::buildSynth()
+{
+    string strDir = GetCloudsDataPath()+"sound/textures/";
+    ofDirectory sdir(strDir);
+    string strAbsPath = sdir.getAbsolutePath() + "/CPUBeepsFastDrone_.aif";
+    
+    SampleTable sample = loadAudioFile(strAbsPath);
+    
+    Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1);
+    
+    return sampleGen * 5;
+}
+
+void CloudsVisualSystemMemory::audioRequested(ofAudioEventArgs& args)
+{
+    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
 }
 
 

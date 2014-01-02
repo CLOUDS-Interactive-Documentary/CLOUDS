@@ -216,6 +216,7 @@ void CloudsVisualSystemVision::resetFlowField(){
     flowMesh.setMode(OF_PRIMITIVE_LINES);
     flowMesh.setUsage(GL_STREAM_DRAW);
 	
+    
 	cout<<"resetting flow lines: "<<player->getWidth()<<" , "<<player->getHeight()<<endl;
 	
     for( int j=0; j<player->getHeight() / opticalFlowScale; j += flowDensity){
@@ -403,8 +404,12 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
 
 void CloudsVisualSystemVision::selfUpdate(){
 
-	
-	if(currentFlowDensity != flowDensity){
+	if(player == NULL){
+        ofLogError("CloudsVisualSystemVision::selfUpdate") << "Player is not initialised";
+        return;
+    }
+    
+	if(currentFlowDensity != flowDensity ){
 		resetFlowField();
 	}
 	
@@ -456,6 +461,10 @@ void CloudsVisualSystemVision::selfUpdate(){
 
 void CloudsVisualSystemVision::selfDrawBackground()
 {
+    if (player == NULL) {
+        ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Player is not initialised";
+        return;
+    }
 	if(!player->isLoaded() || !player->getPixelsRef().isAllocated() ){
 		ofLogError("CloudsVisualSystemVision::selfDrawBackground") << "Player is not loaded";
 		

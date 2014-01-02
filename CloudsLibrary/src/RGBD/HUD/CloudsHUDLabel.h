@@ -9,6 +9,7 @@
 #pragma once
 
 #include "ofxFTGLSimpleLayout.h"
+#include "ofRange.h"
 
 class CloudsHUDLabel {
   public:
@@ -20,5 +21,24 @@ class CloudsHUDLabel {
     
     ofxFTGLSimpleLayout *layout;
     ofRectangle bounds;
+    
+    void animateIn();
+    void animateOut();
+    
+    bool caps;
+    
+  protected:
     string  text;
+    
+    ofRange animationClamp;
+    
+    float baseAnimationSpeed;
+    float animationSpeed;
+    float fadeOutSpeed;
+    float beginTime;
+    float pct;
+    float textAlpha;
+    int playhead;
+    
+    bool bIsAnimatingIn, bIsAnimatingOut;
 };

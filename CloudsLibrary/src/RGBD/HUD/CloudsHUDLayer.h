@@ -9,7 +9,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxSvg.h"
 #include "ofxTween.h"
 #include "CloudsSVGMesh.h"
 

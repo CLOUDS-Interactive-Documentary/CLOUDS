@@ -109,6 +109,8 @@
 		E7DD854917DBC0A500AFB2DD /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DD846717DBC0A500AFB2DD /* CloudsVisualSystem.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7FEFC711873856D009533A7 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFC6C1873856D009533A7 /* CloudsInput.cpp */; };
+		E7FEFC721873856D009533A7 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFC6F1873856D009533A7 /* CloudsInputMouse.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -699,6 +701,11 @@
 		E7DD846A17DBC0A500AFB2DD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E7FEFC6C1873856D009533A7 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInput.cpp; path = Input/CloudsInput.cpp; sourceTree = "<group>"; };
+		E7FEFC6D1873856D009533A7 /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInput.h; path = Input/CloudsInput.h; sourceTree = "<group>"; };
+		E7FEFC6E1873856D009533A7 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputEvents.h; path = Input/CloudsInputEvents.h; sourceTree = "<group>"; };
+		E7FEFC6F1873856D009533A7 /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInputMouse.cpp; path = Input/CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		E7FEFC701873856D009533A7 /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputMouse.h; path = Input/CloudsInputMouse.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2097,6 +2104,11 @@
 			isa = PBXGroup;
 			children = (
 				E7DD71F217DBC08D00AFB2DD /* CloudsGlobal.h */,
+				E7FEFC6C1873856D009533A7 /* CloudsInput.cpp */,
+				E7FEFC6D1873856D009533A7 /* CloudsInput.h */,
+				E7FEFC6E1873856D009533A7 /* CloudsInputEvents.h */,
+				E7FEFC6F1873856D009533A7 /* CloudsInputMouse.cpp */,
+				E7FEFC701873856D009533A7 /* CloudsInputMouse.h */,
 				E7DD723617DBC08D00AFB2DD /* VisualSystems */,
 				E7DD846117DBC0A500AFB2DD /* VisualSystemsLibrary */,
 			);
@@ -2289,6 +2301,8 @@
 				E72FF35617E6CBB50007780D /* Globals.cpp in Sources */,
 				E72FF35717E6CBB50007780D /* Module.cpp in Sources */,
 				E72FF35817E6CBB50007780D /* RandomMover.cpp in Sources */,
+				E7FEFC711873856D009533A7 /* CloudsInput.cpp in Sources */,
+				E7FEFC721873856D009533A7 /* CloudsInputMouse.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

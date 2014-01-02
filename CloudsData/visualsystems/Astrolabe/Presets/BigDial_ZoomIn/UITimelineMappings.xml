@@ -1,0 +1,15 @@
+<Map>
+    <Bangs></Bangs>
+    <Switches>
+        <Mapping>
+            <Widget>
+                <WidgetName>useSpheres</WidgetName>
+                <WidgetID>17</WidgetID>
+                <WidgetCanvasParent>Rings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </Switches>
+    <SliderCurves></SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>

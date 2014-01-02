@@ -670,7 +670,6 @@ Binx - art for money,Aaron - Google Data arts
 Binx - art for money,Bruce - find the inner wellspring
 Binx - art for money,Golan - useless, whimsical
 Binx - art for money,Golan - why major in art
-Binx - art for money,Higa - commercial vs personal work
 Binx - art for money,JTNimoy - corporate
 Binx - art for money,Julian - artist and hired hand
 Binx - art for money,Regine - making a living
@@ -730,10 +729,8 @@ Binx - tools for storytelling2,Jen - life chapters
 Binx - tools for storytelling2,Jer - everyday experience
 Binx - tools for storytelling2,Jer - active not interactive
 Binx - tools for storytelling2,Kevin - storytelling human to human
-Binx - work for hire,Higa - commercial vs personal work
 Binx - work for hire,Regine - making a living
 Binx - brogrammers,Bruce - Geeks with style
-Binx - brogrammers,Higa - otaku level
 Binx - brogrammers,Higa - only meets pure geeks
 Binx - brogrammers,JTNimoy - geek culture
 Binx - brogrammers,Kyle_MC - they all wear the same glasses
@@ -776,7 +773,6 @@ Bruce - Tidepools,Zach - nerd art center
 Bruce - Geeks with style,Binx - brogrammers
 Bruce - Geeks with style,Golan - people like myself
 Bruce - Geeks with style,Golan - finding a community
-Bruce - Geeks with style,Higa - otaku level
 Bruce - Geeks with style,Higa - only meets pure geeks
 Bruce - Geeks with style,JTNimoy - geek culture
 Bruce - Geeks with style,Kyle_MC - they all wear the same glasses
@@ -940,6 +936,7 @@ Bruce - Parametric vs Generative,Maeda - Artist coders coder artists
 Bruce - Parametric vs Generative,Marius - jumping from medium to medium
 Bruce - Digital fabrication,Nervous_Jessica - Design process 2
 Bruce - Digital fabrication,Nervous_Jessica - Design process
+Bruce - Digital fabrication,LIA - 3DTchotchkes
 Bruce - 3D printed buildings,Marius - Digi meets physical
 Bruce - 3D printed buildings,Nervous_Jessica - Big 3D printers Long quote
 Bruce - 3D printed buildings,Nervous_Jessica - Growing buildings
@@ -1067,6 +1064,7 @@ Bruce - future of the new aesthetic,Nervous_Jessica - I create the work that I l
 Bruce - Popular installation art,Jen - rafael's cardiogram
 Bruce - Popular installation art,Patricio - InteractiveTable 1
 Bruce - Popular installation art,Theo - funky forest
+Bruce - Popular installation art,LIA - AntiInteractivity
 Bruce - Future art,Aaron - exchange of ideas drives progress
 Bruce - Future art,Aaron - progress
 Bruce - Future art,Binx - technoutopian
@@ -2351,7 +2349,6 @@ Golan - hybridity2,Maeda - Artist coders coder artists
 Golan - hybridity2,Marius - jumping from medium to medium
 Golan - people like myself,Binx - Background
 Golan - people like myself,Bruce - Geeks with style
-Golan - people like myself,Higa - otaku level
 Golan - people like myself,Higa - only meets pure geeks
 Golan - people like myself,JTNimoy - geek culture
 Golan - people like myself,Kyle_MC - they all wear the same glasses
@@ -2365,7 +2362,6 @@ Golan - finding a community,Bruce - All of a sudden...
 Golan - finding a community,Bruce - Tidepools
 Golan - finding a community,Bruce - Geeks with style
 Golan - finding a community,Fernanda - hybrid community
-Golan - finding a community,Higa - otaku level
 Golan - finding a community,Higa - only meets pure geeks
 Golan - finding a community,Jer - Desire to get together
 Golan - finding a community,JTNimoy - geek culture
@@ -2753,7 +2749,6 @@ Greg - AI 2,Marius - artificial creativity
 Greg - object oriented ontology 1,Marius - Machines change the way we see
 Greg - object oriented ontology 1,Marius - new tools change perception
 Greg - object oriented ontology 1,Philip - its a tool
-Greg - object oriented ontology 3,Higa - otaku level
 Greg - object oriented ontology 3,Maeda - Slurpies and pizza
 Greg - Object Oriented Ontology 2,Marius - Machines change the way we see
 Greg - Object Oriented Ontology 2,Marius - new tools change perception
@@ -2809,8 +2804,6 @@ Greg - Gaze tracking,Regine - future camera
 Greg - community,Binx - skillshare
 Greg - community,Binx - hybridity
 Greg - community,Jer - fireflies
-Greg - visual effects,JTNimoy - performance1
-Greg - visual effects,Philip - all the points can flush
 Greg - cameras scaling up,Andres - Computational lens
 Greg - cameras scaling up,Bruce - camera technician vs explorer
 Greg - cameras scaling up,Bruce - camera of future 25 years
@@ -3027,17 +3020,6 @@ Higa - thick wall,Shiffman - sharing
 Higa - thick wall,Shiffman - problem solving
 Higa - thick wall,Zach - open source challenge
 Higa - thick wall,Joel - Amiga500
-Higa - otaku level,Binx - brogrammers
-Higa - otaku level,Bruce - Geeks with style
-Higa - otaku level,Golan - people like myself
-Higa - otaku level,Golan - finding a community
-Higa - otaku level,Greg - object oriented ontology 3
-Higa - otaku level,JTNimoy - geek culture
-Higa - otaku level,Kyle_MC - they all wear the same glasses
-Higa - otaku level,Maeda - old and new
-Higa - otaku level,Maeda - Slurpies and pizza
-Higa - otaku level,Marius - I hate the word nerd
-Higa - otaku level,Zach - nerd art center
 Higa - only meets pure geeks,Binx - brogrammers
 Higa - only meets pure geeks,Bruce - All of a sudden...
 Higa - only meets pure geeks,Bruce - Tidepools
@@ -3064,14 +3046,6 @@ Higa - working all night,Karsten - 256 bytes part 1
 Higa - working all night,Maeda - People
 Higa - working all night,Maeda - Coding for humanity
 Higa - working all night,Intro - Programming
-Higa - commercial vs personal work,Binx - art for money
-Higa - commercial vs personal work,Binx - work for hire
-Higa - commercial vs personal work,Joel - in the now
-Higa - commercial vs personal work,Joel - water colors and soccer balls
-Higa - commercial vs personal work,JTNimoy - corporate
-Higa - commercial vs personal work,Regine - making a living
-Higa - commercial vs personal work,Regine - adapting work for commercial contexts
-Higa - commercial vs personal work,Joel - CocaCola
 Higa - process of working alone,Maeda - self expression
 Higa - process of working alone,Philip - get an idea
 Higa - collaboration with machines 1,Andres - soft systems 1
@@ -3670,6 +3644,7 @@ Jen - rafael's cardiogram,Theo - hide the technology,
 Jen - rafael's cardiogram,Zach - more poetry, less demo
 Jen - rafael's cardiogram,Intro - interactivity1
 Jen - rafael's cardiogram,Joel - Interactivity
+Jen - rafael's cardiogram,LIA - AntiInteractivity
 Jen - stencil pie chart,Martin - how to make us smarter
 Jen - stasis 1,Casey - Style diffuses
 Jen - stasis 1,JTNimoy - originality
@@ -4343,7 +4318,6 @@ Joel - scale of universe,Ramsey - emergence from simple rules
 Joel - scale of universe,Ramsey - New Kind of Science
 Joel - scale of universe,Sophy - Evolution
 Joel - in the now,Golan - jolted into the NOW
-Joel - in the now,Higa - commercial vs personal work
 Joel - in the now,Jen - deep interaction
 Joel - in the now,Zach - Time slows down
 Joel - in the now,Zach - drawn2
@@ -4358,7 +4332,6 @@ Joel - myth of art and technology,Greg - Creative Coder
 Joel - myth of art and technology,Julia - medium of our time
 Joel - myth of art and technology,Paola - Integrating with technology
 Joel - interactivity,Golan - instruments
-Joel - water colors and soccer balls,Higa - commercial vs personal work
 Joel - water colors and soccer balls,Regine - making a living
 Joel - water colors and soccer balls,Regine - adapting work for commercial contexts
 JTNimoy - Describe the Kinect,Kyle_CH - RGBD
@@ -4372,12 +4345,10 @@ JTNimoy - increased the bandwidth,Kyle_MC - folowing the finger
 JTNimoy - increased the bandwidth,Elliot - Kinect
 JTNimoy - increased the bandwidth,Intro - KinectFutureCamera
 JTNimoy - performance1,Binx - face data
-JTNimoy - performance1,Greg - visual effects
 JTNimoy - performance1,Jen - in the movie
 JTNimoy - performance1,Karsten - infinite conversation
 JTNimoy - performance1,Maeda - Clouds
 JTNimoy - performance1,Patricio - Playlist 2
-JTNimoy - performance1,Philip - all the points can flush
 JTNimoy - performance1,Shantell - group improvisation
 JTNimoy - evolution,Casey - Software is what i love the most
 JTNimoy - evolution,Higa - beginnings
@@ -4476,7 +4447,6 @@ JTNimoy - thinking by doing,Shiffman - inexactitude
 JTNimoy - Cortex,Julia - how it makes me feel
 JTNimoy - Cortex,Karsten - physical feedback
 JTNimoy - Cortex,Marius - reach your visual cortex
-JTNimoy - Cortex,Philip - image is in your brain
 JTNimoy - 100 artists versus One,Aaron - Crowdsourcing
 JTNimoy - 100 artists versus One,Aaron - exquisite forest
 JTNimoy - 100 artists versus One,Binx - hackathon
@@ -4527,7 +4497,6 @@ JTNimoy - geek culture,Bruce - Geeks with style
 JTNimoy - geek culture,Bruce - FFFFFAT Lab
 JTNimoy - geek culture,Golan - people like myself
 JTNimoy - geek culture,Golan - finding a community
-JTNimoy - geek culture,Higa - otaku level
 JTNimoy - geek culture,Higa - only meets pure geeks
 JTNimoy - geek culture,Jen - grouping people
 JTNimoy - geek culture,Julia - community
@@ -4611,7 +4580,6 @@ JTNimoy - icosahedron,Karolina - motion story,
 JTNimoy - corporate,Binx - art for money
 JTNimoy - corporate,Golan - wide open field
 JTNimoy - corporate,Golan - why major in art
-JTNimoy - corporate,Higa - commercial vs personal work
 JTNimoy - corporate,Jer - Software2
 JTNimoy - corporate,Regine - making a living
 JTNimoy - Dream,Patricio - Dreams
@@ -6529,7 +6497,6 @@ Kyle_MC - they all wear the same glasses,Binx - brogrammers
 Kyle_MC - they all wear the same glasses,Bruce - Geeks with style
 Kyle_MC - they all wear the same glasses,Golan - people like myself
 Kyle_MC - they all wear the same glasses,Golan - finding a community
-Kyle_MC - they all wear the same glasses,Higa - otaku level
 Kyle_MC - they all wear the same glasses,Higa - only meets pure geeks
 Kyle_MC - they all wear the same glasses,JTNimoy - geek culture
 Kyle_MC - they all wear the same glasses,Marius - I hate the word nerd
@@ -7417,7 +7384,6 @@ Maeda - old and new,Bruce - Computer art takes flight
 Maeda - old and new,Casey - learning from precursors
 Maeda - old and new,Golan_AMA - first computer art
 Maeda - old and new,Higa - not sharing its a backup
-Maeda - old and new,Higa - otaku level
 Maeda - old and new,Julia - new and interesting
 Maeda - old and new,Karsten - new media
 Maeda - old and new,Karsten - obsolescence
@@ -7474,7 +7440,6 @@ Maeda - Processing community,Chris - EthicOfSharing
 Maeda - Processing community,Intro - Collaboration
 Maeda - Processing community,Intro - Sharing
 Maeda - Slurpies and pizza,Greg - object oriented ontology 3
-Maeda - Slurpies and pizza,Higa - otaku level
 Maeda - Slurpies and pizza,JTNimoy - immersion
 Maeda - Slurpies and pizza,Sophy - Where's the best hamburger?
 Maeda - Clouds,Binx - face data
@@ -7843,7 +7808,6 @@ Marius - I hate the word nerd,Bruce - Geeks with style
 Marius - I hate the word nerd,Bruce - FFFFFAT Lab
 Marius - I hate the word nerd,Golan - people like myself
 Marius - I hate the word nerd,Golan - finding a community
-Marius - I hate the word nerd,Higa - otaku level
 Marius - I hate the word nerd,Higa - only meets pure geeks
 Marius - I hate the word nerd,Jen - grouping people
 Marius - I hate the word nerd,Jer - Desire to get together
@@ -8393,6 +8357,7 @@ Nervous_Jessica - RNA and Viruses,Andres - protein folding 1
 Nervous_Jessica - Design process 2,Bruce - Digital fabrication
 Nervous_Jessica - Design process 2,Marius - Digi meets physical
 Nervous_Jessica - Design process 2,Marius - 3D printing
+Nervous_Jessica - Design process 2,LIA - 3DTchotchkes
 Nervous_Jessica - Big 3D printers Long quote,Bruce - 3D printed buildings
 Nervous_Jessica - Big 3D printers Long quote,Elliot_UK - lightscape
 Nervous_Jessica - Big 3D printers Long quote,Marius - Digi meets physical
@@ -8423,6 +8388,7 @@ Nervous_Jessica - Design process,Binx - Mesh-U business
 Nervous_Jessica - Design process,Bruce - Digital fabrication
 Nervous_Jessica - Design process,Marius - Digi meets physical
 Nervous_Jessica - Design process,Marius - 3D printing
+Nervous_Jessica - Design process,LIA - 3DTchotchkes
 Nervous_Jessica - Marker 2,Marius - Digi meets physical
 Nervous_Jessica - Marker 2,Marius - 3D printing
 Nervous_Jessica - Growing buildings,Bruce - 3D printed buildings
@@ -8546,6 +8512,7 @@ Paola - should be useful,Marius - Continuous process of exploration
 Paola - should be useful,Nervous_Jessica - Design process 2
 Paola - should be useful,Nervous_Jessica - Design process
 Paola - should be useful,Regine - ineffectual art
+Paola - should be useful,LIA - 3DTchotchkes
 Paola - beauty in exile,Bruce - Don't care about design
 Paola - beauty in exile,Fernanda - beautiful evidence 2
 Paola - beauty in exile,Fernanda - aesthetics as communication
@@ -8713,6 +8680,7 @@ Patricio - CopyPaste,Intro - Learning
 Patricio - InteractiveTable 1,Bruce - Popular installation art
 Patricio - InteractiveTable 1,Jen - rafael's cardiogram
 Patricio - InteractiveTable 1,Theo - funky forest
+Patricio - InteractiveTable 1,LIA - AntiInteractivity
 Patricio - Play 1,Golan - instruments
 Patricio - Play 1,Jen - rafael's cardiogram
 Patricio - Play 1,Maeda - playful systems
@@ -9031,7 +8999,6 @@ Philip - system in your head,Shantell - Kids
 Philip - system in your head,Intro - interactivity1
 Philip - image is in your brain,Elliot_UK - 2D vision in a 3D world
 Philip - image is in your brain,Higa - understanding pointers
-Philip - image is in your brain,JTNimoy - Cortex
 Philip - changes your thinking,Karsten - code as way of knowing
 Philip - changes your thinking,Ramsey - a hundred million
 Philip - its a tool,Golan_AMA - machines and human intelligence
@@ -9102,8 +9069,6 @@ Philip - young medium,Maeda - Isn't it supposed to be new?
 Philip - young medium,Marius - Living in a state of newness since age 10
 Philip - young medium,Theo - newness
 Philip - young medium,Joel - FirstMover
-Philip - all the points can flush,Greg - visual effects
-Philip - all the points can flush,JTNimoy - performance1
 Philip - all the points can flush,Karolina - stasis
 Philip - all the points can flush,Marcus - global conversation
 Philip - all the points can flush,Shiffman - NOC 3
@@ -9766,14 +9731,12 @@ Regine - making a living,Binx - art for money
 Regine - making a living,Binx - work for hire
 Regine - making a living,Golan - wide open field
 Regine - making a living,Golan - why major in art
-Regine - making a living,Higa - commercial vs personal work
 Regine - making a living,Jer - Software1
 Regine - making a living,Jer - Software2
 Regine - making a living,Joel - water colors and soccer balls
 Regine - making a living,JTNimoy - corporate
 Regine - making a living,Shantell - Goals
 Regine - making a living,Joel - CocaCola
-Regine - adapting work for commercial contexts,Higa - commercial vs personal work
 Regine - adapting work for commercial contexts,Joel - water colors and soccer balls
 Regine - adapting work for commercial contexts,Joel - CocaCola
 Regine - advertisers stealing,Joel - advertising
@@ -10648,6 +10611,7 @@ Theo - relating to nature,Nervous_Jessica - Why is it beautiful
 Theo - funky forest,Bruce - Popular installation art
 Theo - funky forest,Patricio - InteractiveTable 1
 Theo - funky forest,Shantell - Kids
+Theo - funky forest,LIA - AntiInteractivity
 Theo - Kids interacting,Golan - instruments
 Theo - Kids interacting,Golan - Play
 Theo - Kids interacting,Maeda - playful systems
@@ -10983,7 +10947,6 @@ Zach - nerd art center,Bruce - Tidepools
 Zach - nerd art center,Bruce - Geeks with style
 Zach - nerd art center,Golan - people like myself
 Zach - nerd art center,Golan - finding a community
-Zach - nerd art center,Higa - otaku level
 Zach - nerd art center,Higa - only meets pure geeks
 Zach - nerd art center,Jer - Desire to get together
 Zach - nerd art center,JTNimoy - I addicted myself
@@ -11455,7 +11418,6 @@ Joel - Bicycles1,Patricio - Imaginative technologies 2
 Joel - Bicycles1,Shiffman - offers me a way to think
 Joel - Bicycles1,Intro - LogicOfPixels
 Joel - Bicycles2,Maeda - own the tool
-Joel - CocaCola,Higa - commercial vs personal work
 Joel - CocaCola,Jer - Software1
 Joel - CocaCola,Jer - Software2
 Joel - CocaCola,Regine - making a living
@@ -11501,3 +11463,10 @@ Joel - scaleofUniverse,Ramsey - Conway 2
 Joel - scaleofUniverse,Ramsey - emergence from simple rules
 Joel - scaleofUniverse,Ramsey - New Kind of Science
 Joel - scaleofUniverse,Sophy - Evolution
+LIA - 3DTchotchkes,Bruce - Digital fabrication
+LIA - 3DTchotchkes,Nervous_Jessica - Design process 2
+LIA - 3DTchotchkes,Nervous_Jessica - Design process
+LIA - AntiInteractivity,Bruce - Popular installation art
+LIA - AntiInteractivity,Jen - rafael's cardiogram
+LIA - AntiInteractivity,Patricio - InteractiveTable 1
+LIA - AntiInteractivity,Theo - funky forest

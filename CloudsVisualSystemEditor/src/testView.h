@@ -3,7 +3,11 @@
 #include "ofMain.h"
 #include "ofxCocoaGLView.h"
 #include "CloudsFCPParser.h"
+#include "CloudsRGBDVideoPlayer.h"
+#include "CloudsVisualSystemRGBD.h"
 #include "CloudsVisualSystemManager.h"
+#include "CloudsSpeaker.h"
+#include "CloudsGlobal.h"
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
 	IBOutlet NSTokenField* currentKeywords;
@@ -31,6 +35,11 @@
 	bool shouldPlaySelectedRow;
 	
 	CloudsFCPParser parser;
+
+    //RGBD PLAYER
+	CloudsVisualSystemRGBD rgbdVisualSystem;
+	CloudsClip currentClip;
+    
 	CloudsVisualSystemManager visualSystems;
 	ofPtr<CloudsVisualSystem> currentVisualSystem;
 	CloudsVisualSystemPreset* selectedPreset;
@@ -92,6 +101,9 @@
 - (IBAction) playSelectedRow:(id)sender;
 - (IBAction) playPreviousPreset:(id)sender;
 - (IBAction) playNextPreset:(id)sender;
+
+- (IBAction)loadClip:(CloudsClip&)clip;
+- (void) loadClipFromTable:(id)sender;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;

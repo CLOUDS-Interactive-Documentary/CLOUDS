@@ -74,6 +74,12 @@ float snoise( vec3 v ) {
 }
 
 
+uniform float fogDistance = 100.;
+uniform float fogAttenuation = 1.;
+uniform float fogExpo = 1.;
+
+varying float fogAmount;
+
 void main()
 {
 	vec4 v = gl_Vertex;
@@ -93,5 +99,10 @@ void main()
 	uv = gl_MultiTexCoord0.xy;
 	
 	gl_FrontColor = gl_Color;
+	
+	//fog
+	float camDelta = length( ecPosition.xyz );
+	fogAmount = min(1., max(0., 1.25 * pow( (1. - camDelta / fogDistance), fogExpo) * fogAttenuation ) );
+	
 }
 

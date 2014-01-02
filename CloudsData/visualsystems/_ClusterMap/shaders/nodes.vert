@@ -1,7 +1,6 @@
 uniform float minSize;
+uniform float maxSize;
 uniform vec3 attractor;
-
-
 
 void main() {
 		//gl_PointSize = minSize * (gl_Normal.x+1.);// * att * nearAttenuate;

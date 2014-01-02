@@ -1,9 +1,18 @@
 Chris_EthicOfSharing_1-2.aif
 Chris_Eyewriter1_1-2.aif
 Chris_Eyewriter2_1-2.aif
-Chris_Eyewriter_1-2.aif
 Chris_RemoteCollaboration_1-2.aif
 Chris_interfaces_1-2.aif
+Damion_BeingOnDrugs.aif
+Damion_CodingAndCommunication.aif
+Damion_FrustratedArtists.aif
+Damion_HumanChemicalMachine.aif
+Damion_OOO.aif
+Damion_ReadableCode.aif
+Damion_ShiftingIdeaOfCoding.aif
+Damion_ShortCircuit.aif
+Damion_SmallCommunity.aif
+Damion_loseSenseofTime.aif
 Diederick_MoreADeveloper_1-2.aif
 Diederick_PaintingLikeCoding_1-2.aif
 Diederick_allprogrammershavethat_1-2.aif
@@ -20,26 +29,26 @@ Elliot_ToolmakerArtist2_1-2.aif
 Elliot_Wiremap1_1-2.aif
 Elliot_Wiremap2_1-2.aif
 ExpressiveCoding_1-2.aif
-Intro_AudioVisualization_1-2.aif
-Intro_BuildingWorlds2_1-2.aif
-Intro_BuildingWorlds_1-2.aif
-Intro_CodingSketching_1-2.aif
-Intro_Collaboration_1-2.aif
-Intro_Computers_1-2.aif
-Intro_CriticalPractices_1-2.aif
-Intro_Interfaces_1-2.aif
-Intro_KinectFutureCamera_1-2.aif
-Intro_Learning_1-2.aif
-Intro_LogicOfPixels_1-2.aif
-Intro_Programming_1-2.aif
-Intro_Sharing_1-2.aif
-Intro_Toolmaker_1-2.aif
-Intro_VirtualReality_1-2.aif
-Intro_interactivity1_1-2.aif
+Intro_AudioVisualization_1-2.aif Elliot_Audiovisuals
+Intro_BuildingWorlds2_1-2.aif 
+Intro_BuildingWorlds_1-2.aif Philip_with_programming_you_can_do_whatever Aaron_exquisite_forest_2 Shiffman_a_mystical_quality
+Intro_CodingSketching_1-2.aif Shiffman_reality_will_only_get_you_so_far
+Intro_Collaboration_1-2.aif Chris_RemoteCollaboration Theo_development_feedback, Julia_can't_be_solitary Kevin_Networked_intelligence Kevin_Getting_smarter_together
+
+Intro_Computers_1-2.aif Joel_Bicycles1 Joel_Bicycles2 Lauren_languages_as_tools Ramsey_thinking_previously_unthinkable_thoughts
+Intro_CriticalPractices_1-2.aif Greg_Creative_Coder
+Intro_Interfaces_1-2.aif Lauren_real_and_virtual_1 Lauren_real_and_virtual_2 Kevin_reality_in_the_eyes_of_data Elliot_AugementedReality
+Intro_KinectFutureCamera_1-2.aif Elliot_Kinect JTNimoy_Describe_the_Kinect
+Intro_Learning_1-2.aif Diederick_MoreADeveloper Binx_programming_is_a_superpower Shiffman_mysterious_box Shiffman_sketching_with_code
+Intro_LogicOfPixels_1-2.aif Shiffman_offers_me_a_way_to_think
+Intro_Programming_1-2.aif JTNimoy_I_addicted_myself Zach_Time_slows_down Shantell_Coding:_what_does_it_feel_like?
+Intro_Sharing_1-2.aif Chris_EthicOfSharing Julia_can't_be_solitary Casey_group_teaching
+Intro_Toolmaker_1-2.aif Elliot_ToolmakerArtist1 Lauren_Beginning_art_and_tech Theo_crazy_researcher
+Intro_VirtualReality_1-2.aif Kevin_reality_in_the_eyes_of_data Lauren_toward_greater_consciousness 
+Intro_interactivity1_1-2.aif Kyle_CH_interactivity_2
 Joel_Amiga500_1-2.aif
 Joel_Bicycles1.aif
 Joel_Bicycles2.aif
-Joel_Bicycyles1_1-2.aif
 Joel_CocaCola_1-2.aif
 Joel_FirstMover_1-2.aif
 Joel_InTheNow1_1-2.aif
@@ -49,7 +58,38 @@ Joel_MicrosoftResearch_1-2.aif
 Joel_MythOfArtAndTech1_1-2.aif
 Joel_MythOfArtAndTech_long_1-2.aif
 Joel_Watercolors.aif
-Joel_Watercolors_1-2.aif
 Joel_WrongToSell_1-2.aif
-Joel_bicycles2_1-2.aif
 Joel_scaleofUniverse_1-2.aif
+LIA_3DPrintingProcess.aif
+LIA_3DTchotchkes.aif
+LIA_AntiInteractivity.aif
+LIA_Art1.aif
+LIA_Art2.aif
+LIA_Circle1.aif
+LIA_Circle2.aif
+LIA_CircleFormula1.aif
+LIA_ExplanatoryText1.aif
+LIA_Formulas.aif
+LIA_HandCopyingCode.aif
+LIA_HopePeopleCanEnjoyMyArt.aif
+LIA_IdeaToCode.aif
+LIA_LTree.aif
+LIA_Lingo.aif
+LIA_MalleableMath.aif
+LIA_MathAnotherLanguage.aif
+LIA_NeedTheInternet.aif
+LIA_NonVerbalWay.aif
+LIA_NotInventingAnything1.aif
+LIA_NotInventingAnything2.aif
+LIA_Number20.aif
+LIA_PatternsIntheBrain.aif
+LIA_Sandcastles.aif
+LIA_SkepticismAboutOpenSource.aif
+LIA_TimeStamps1.aif
+LIA_TimeStamps2.aif
+LIA_TinyButtons1.aif
+LIA_TinyButtons2.aif
+LIA_VeryFirstArtworks.aif
+LIA_VisualizeAnIdea.aif
+LIA_audiovisualization.aif
+LIA_helldotcom.aif
