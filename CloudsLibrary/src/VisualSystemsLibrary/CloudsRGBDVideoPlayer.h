@@ -23,11 +23,10 @@ public:
 	
     //  SET
     //
-	bool setup(string videoPath, string calibrationXMLPath, float offsetTime = 0);
+	bool setup(string videoPath, string calibrationXMLPath, float offsetTime = 0, float clipVolume =1);
 	bool setupVO(string audioPath);
 	void swapAndPlay();
 	
-    void setVolume(float volume);
 	void setupProjectionUniforms(ofShader& shader);
     
 	//  CYCLE
@@ -67,6 +66,10 @@ public:
 	bool playingVO;
 
 	float maxVolume;
+    
+    float currentClipVolumeAdjustment;
+    float nextClipVolumeAdjustment;
+    float currentMaxVolume;
   protected:
 
 	//  UPDATE
@@ -84,6 +87,7 @@ public:
 	ofPtr<ofSoundPlayer> currentVoiceoverPlayer;
 	ofPtr<ofSoundPlayer> nextVoiceoverPlayer;
 	bool nextClipIsVO;
+
 
 	
     //  RGB

@@ -657,13 +657,9 @@ void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
 		clipLoadSuccessfullyLoaded = rgbdVisualSystem->getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath);
 	}
 	else{
-		clipLoadSuccessfullyLoaded = rgbdVisualSystem->getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, toTime);
+		clipLoadSuccessfullyLoaded = rgbdVisualSystem->getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, toTime,clip.getSpeakerVolume());
 	}
-	
-    if (clip.getSpeakerVolume() != 1.0) {
-        cout<<"[ SPEAKER VOL ] : "<<clip.getSpeakerFullName()<<" has volume level : "<<clip.getSpeakerVolume()<<" setting it on the player"<<endl;
-        getSharedVideoPlayer().setVolume(clip.getSpeakerVolume());
-    }
+
 	if(!clipLoadSuccessfullyLoaded){
 		ofLogError("CloudsPlaybackController::prerollClip") << "Error loading clip " << clip.getLinkName() << " file path " << clip.combinedVideoPath;
 		return;

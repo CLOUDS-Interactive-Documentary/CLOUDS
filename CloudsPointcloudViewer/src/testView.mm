@@ -91,8 +91,8 @@
 		
 		currentClip = clip;
 	}
-	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
-		
+	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath,1,clip.speakerVolume) ){
+		cout<<"clip.speakerVolume : "<<clip.speakerVolume<<endl;
 		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
 		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
 									   CloudsSpeaker::speakers[clip.person].lastName,
@@ -197,16 +197,15 @@
 
 - (IBAction)updateSpeakerVolume:(id)sender{
 
-//    string interventionName =[speakerVolTextBox.stringValue UTF8String ];
-//    string name = interventi÷onName;
-//    cout<<interventionName<<endl;
     float speakerVol =speakerVolTextBox.floatValue;
 
     if(clipTable.selectedRow >= 0){
         CloudsClip& clip =parser.getAllClips()[[clipTable selectedRow]];
-        parser.setSpeakerVolume(clip.getSpeakerFullName(), speakerVol);
-        cout<<" Updating vol for speaker : "<<clip.getSpeakerFullName()<<" new vol : "<<speakerVol<<endl;
+        parser.setSpeakerVolume(clip.person, speakerVol);
+        cout<<" Updating vol for speaker : "<<clip.person<<" new vol : "<<speakerVol<<endl;
         parser.saveSpeakersVolume(GetCloudsDataPath()+"sound/SpeakersVolume.txt");
+        
+        rgbdVisualSystem.getRGBDVideoPlayer().currentMaxVolume = rgbdVisualSystem.getRGBDVideoPlayer().maxVolume *  speakerVol;
     }
     
 }
