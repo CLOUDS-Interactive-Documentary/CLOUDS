@@ -70,6 +70,9 @@ namespace itg
         
         void generate();
         
+        void loadSeed(const string& path);
+        void saveSeed(const string& path);
+        
     private:
         void addPointFish(unsigned number, float hue);
         void addModelFish(unsigned number, const ModelParams& params);
