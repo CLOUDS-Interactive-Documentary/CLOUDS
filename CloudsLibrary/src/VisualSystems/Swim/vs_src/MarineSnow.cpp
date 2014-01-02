@@ -36,7 +36,8 @@ namespace itg
 {
     MarineSnow::MarineSnow() :
         alphaMin(.2f), alphaMax(.8f), innerFogStart(100.f), innerFogEnd(400.f),
-        sizeMin(0.1f), sizeMax(400.f), numParticles(100000)
+        sizeMin(0.1f), sizeMax(400.f), numParticles(100000), hueMin(.1f), hueMax(.3f),
+        saturationMin(0.f), saturationMax(.8f)
     {
     }
     
@@ -63,7 +64,7 @@ namespace itg
                                    ofRandom(-1500.f, 1500.f),
                                    ofRandom(-fogEnd, 0)));
             
-            mesh.addColor(ofFloatColor::fromHsb(ofRandom(0.1f, 0.3f), ofRandom(0.f, 0.8f), 1.f, ofRandom(alphaMin, alphaMax)));
+            mesh.addColor(ofFloatColor::fromHsb(ofRandom(hueMin, hueMax), ofRandom(saturationMin, saturationMax), 1.f, ofRandom(alphaMin, alphaMax)));
             
             // stick texture offset and size into normal
             mesh.addNormal(ofVec3f((rand() % 2) * .5f, (rand() % 2) * .5f, ofRandom(sizeMin, sizeMax)));

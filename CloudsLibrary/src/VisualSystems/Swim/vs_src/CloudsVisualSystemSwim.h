@@ -131,10 +131,11 @@ protected:
     
     // misc
     itg::Bubbles bubbles;
-    itg::MarineSnow snow;
     ofxPostProcessing post;
     bool regenerate;
-	
+	itg::MarineSnow snow;
+    ofxUISuperCanvas* snowGui;
+    
 	// Sound
     ofxUISuperCanvas* soundGui;
     string soundFiles[2] = {"Underwater_stretch.aif",

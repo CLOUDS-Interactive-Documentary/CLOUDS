@@ -332,9 +332,9 @@ namespace itg
             vector<string> creatureDatum = ofSplitString(creatureData[i], "#");
             
             istringstream iss(creatureDatum[0]);
-            ofMatrix4x4 m;
-            iss >> m;
-            creatures[i]->setTransformMatrix(m);
+            ofVec3f pos;
+            iss >> pos;
+            creatures[i]->setGlobalPosition(pos);
             
             iss.str(creatureDatum[1]);
             ofVec3f vel;
@@ -349,7 +349,7 @@ namespace itg
         ofstream fileStream(path.c_str());
         for (unsigned i = 0; i < creatures.size(); ++i)
         {
-            fileStream << creatures[i]->getGlobalTransformMatrix();
+            fileStream << creatures[i]->getGlobalPosition();
             fileStream << "#";
             fileStream << creatures[i]->getVelocity();
             fileStream << "|";

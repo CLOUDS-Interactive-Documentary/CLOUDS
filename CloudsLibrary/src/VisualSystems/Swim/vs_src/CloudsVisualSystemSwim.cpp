@@ -135,11 +135,6 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addMinimalSlider("camSpeed", 0.f, -1500.f, &camSpeed);
     
     rdrGui->addRangeSlider("creatureFogRange", 0.f, 10000.f, &Creature::fogStart, &Creature::fogEnd);
-    rdrGui->addRangeSlider("snowFogRange", 0.f, 10000.f, &snow.getFogStartRef(), &snow.getFogEndRef());
-    rdrGui->addRangeSlider("snowInnerFogRange", 0.f, 2000.f, &snow.getInnerFogStartRef(), &snow.getInnerFogEndRef());
-    rdrGui->addRangeSlider("snowAlphaRange", 0.f, 1.f, &snow.getAlphaMinRef(), &snow.getAlphaMaxRef());
-    rdrGui->addRangeSlider("snowSizeRange", 0.f, 1000.f, &snow.getSizeMinRef(), &snow.getSizeMaxRef());
-    rdrGui->addIntSlider("numSnowParticles", 1000, 100000, &snow.getNumParticlesRef());
     
     //rdrGui->addMinimalSlider("snowInnerFogStart", 0, 2000.f, &snow.getInnerFogStartRef());
     //rdrGui->addMinimalSlider("snowInnerFogEnd", 0, 2000.f, &snow.getInnerFogEndRef());
@@ -194,6 +189,15 @@ void CloudsVisualSystemSwim::selfSetupGui()
     jellyTwoGui = createCustomGui("Jellyus Twous");
     addSliders(jellyTwoGui, creatures.jellyTwoParams);
     
+    snowGui = createCustomGui("Snow");
+    snowGui->addRangeSlider("snowFogRange", 0.f, 10000.f, &snow.getFogStartRef(), &snow.getFogEndRef());
+    snowGui->addRangeSlider("snowInnerFogRange", 0.f, 2000.f, &snow.getInnerFogStartRef(), &snow.getInnerFogEndRef());
+    snowGui->addRangeSlider("snowAlphaRange", 0.f, 1.f, &snow.getAlphaMinRef(), &snow.getAlphaMaxRef());
+    snowGui->addRangeSlider("snowSizeRange", 0.f, 1000.f, &snow.getSizeMinRef(), &snow.getSizeMaxRef());
+    snowGui->addIntSlider("numSnowParticles", 1000, 100000, &snow.getNumParticlesRef());
+    snowGui->addRangeSlider("hueRange", 0.f, 1.f, &snow.getHueMinRef(), &snow.getHueMaxRef());
+    snowGui->addRangeSlider("saturationRange", 0.f, 1.f, &snow.getSaturationMinRef(), &snow.getSaturationMaxRef());
+    
     seedGui = createCustomGui("Seed positions");
     ofDirectory dir;
     dir.listDir(getVisualSystemDataPath() + "seed");
@@ -214,18 +218,17 @@ void CloudsVisualSystemSwim::selfSetupGui()
 
 void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& params)
 {
-    gui->addSpacer();
-    
     gui->addLabel("Colour");
-    gui->addMinimalSlider("body h", 0.f, 1.f, &params.bodyHsb.x);
-    gui->addMinimalSlider("body s", 0.f, 1.f, &params.bodyHsb.y);
-    gui->addMinimalSlider("body b", 0.f, 1.f, &params.bodyHsb.z);
+    //gui->addMinimalSlider("body h", 0.f, 1.f, &params.bodyHsb.x);
+    gui->addRangeSlider("body h range", 0.f, 1.f, &params.bodyHMin, &params.bodyHMax);
+    gui->addMinimalSlider("body s", 0.f, 1.f, &params.bodyS);
+    gui->addMinimalSlider("body b", 0.f, 1.f, &params.bodyB);
     
     gui->addMinimalSlider("body alpha", 0.f, 1.f, &params.bodyAlpha);
     
-    gui->addMinimalSlider("tentacles h", 0.f, 1.f, &params.tentacleHsb.x);
-    gui->addMinimalSlider("tentacles s", 0.f, 1.f, &params.tentacleHsb.y);
-    gui->addMinimalSlider("tentacles b", 0.f, 1.f, &params.tentacleHsb.z);
+    gui->addRangeSlider("tentacles h range", 0.f, 1.f, &params.tentaclesHMin, &params.tentaclesHMax);
+    gui->addMinimalSlider("tentacles s", 0.f, 1.f, &params.tentaclesS);
+    gui->addMinimalSlider("tentacles b", 0.f, 1.f, &params.tentaclesB);
     
     gui->addRangeSlider("pulse amt (range)", 0.f, 0.4f, &params.pulseAmtMin, &params.pulseAmtMax);
     
@@ -281,6 +284,7 @@ ofxUISuperCanvas* CloudsVisualSystemSwim::createCustomGui(const string& name)
 	newGui->copyCanvasProperties(gui);
 	newGui->setName(name);
 	newGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    newGui->addSpacer();
     
     guis.push_back(newGui);
 	guimap[newGui->getName()] = newGui;
