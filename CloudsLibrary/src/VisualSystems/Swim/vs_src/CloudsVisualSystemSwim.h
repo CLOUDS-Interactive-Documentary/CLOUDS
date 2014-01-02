@@ -106,9 +106,6 @@ class CloudsVisualSystemSwim : public CloudsVisualSystem {
 
 	//
 	ofCamera& getCameraRef(){
-		if(videoLoaded){
-			return cloudsCamera;
-		}
 		return CloudsVisualSystem::getCameraRef();
 	}
 
@@ -130,15 +127,6 @@ protected:
 	ofxUISuperCanvas* jellyOneGui;
     ofxUISuperCanvas* jellyTwoGui;
 	
-    bool customToggle;
-	float customFloat1;
-	float customFloat2;
-	
-	bool videoLoaded;
-	ofImage someImage;
-	ofShader pointcloudShader;
-	ofVboMesh simplePointcloud;
-    
 	// Sound
     ofxUISuperCanvas* soundGui;
     string soundFiles[2] = {"Underwater_stretch.aif",
