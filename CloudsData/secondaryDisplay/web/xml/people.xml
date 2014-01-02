@@ -567,7 +567,7 @@
 			<first>LIA</first>
 			<last></last>
 			<title>Software artist</title>
-			<twitter>@satoruhiga</twitter>
+			<twitter>@liasomething</twitter>
 			<location1>Vienna AU</location1>
 			<location2></location2>
 			<byline1>An anonymous software artist active in early net art sites re-move.org, turux.at, and processing.org. She develops generative visual systems, apps, installations, and live audioreactive performances.
@@ -577,6 +577,20 @@
 			<gender>female</gender>
 		</person>
 
+		</person>
+
+			<person id="Damion">
+			<first>Damian</first>
+			<last>Stewart</last>
+			<title>Sound Artist, Engineer</title>
+			<twitter>@damian0815</twitter>
+			<location1>b Aukland NZ</location1>
+			<location2>Works with sound, code, light, and electronics to create immersive environments that alter the viewer's sense of time and space.</location2>
+			<byline1>
+</byline1>
+			<byline2></byline2>
+			<gender>male</gender>
+		</person>
 
 </clouds>
 
