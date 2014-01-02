@@ -1583,15 +1583,15 @@ bool CloudsFCPParser::clipHasIntervention(string clipName){
 }
 
 void CloudsFCPParser::parseSpeakersVolume(){
-    string speakersVolFilename =GetCloudsDataPath()+"sound/SpeakersVolume.txt";
+    string speakersVolFilePath =GetCloudsDataPath()+"sound/SpeakersVolume.txt";
     
-	bool volFileExists = ofFile(speakersVolFilename).exists() ;
+	bool volFileExists = ofFile(speakersVolFilePath).exists() ;
 
     //Populate speaker vol map
 	if(volFileExists){
         speakerVolumes.clear();
         
-		ofBuffer speakerVolBuf = ofBufferFromFile(speakersVolFilename);
+		ofBuffer speakerVolBuf = ofBufferFromFile(speakersVolFilePath);
 		while(!speakerVolBuf.isLastLine()){
 			string line = speakerVolBuf.getNextLine();
 			if(line == ""){
