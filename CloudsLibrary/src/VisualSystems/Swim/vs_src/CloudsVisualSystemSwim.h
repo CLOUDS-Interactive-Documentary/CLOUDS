@@ -117,7 +117,8 @@ protected:
     void addSliders(ofxUISuperCanvas* gui, JellyParams& params);
     void generate();
     
-    float camYRot, camSpeed, maxCamSpeed;
+    float camSpeed;
+    ofVec2f currentLookAngle;
     bool regenerate;
     itg::Creatures creatures;
     itg::Bubbles bubbles;

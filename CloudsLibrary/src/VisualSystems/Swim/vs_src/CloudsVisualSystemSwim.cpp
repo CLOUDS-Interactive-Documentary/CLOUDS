@@ -12,7 +12,7 @@
 
 const float CloudsVisualSystemSwim::CAM_DAMPING = .08f;
 
-CloudsVisualSystemSwim::CloudsVisualSystemSwim() : camYRot(0), camSpeed(0), maxCamSpeed(600.f), regenerate(false)
+CloudsVisualSystemSwim::CloudsVisualSystemSwim() : camSpeed(-600.f), regenerate(false)
 {
 }
 
@@ -72,12 +72,24 @@ void CloudsVisualSystemSwim::selfUpdate()
     }
     
     // cam
+    ofVec2f targetLookAngle;
+    targetLookAngle.x = ofMap(GetCloudsInputY(), 0, ofGetHeight(), 10.f, -10.f, true);
+    targetLookAngle.y = ofMap(GetCloudsInputX(), 0, ofGetWidth(), 20.f, -20.f, true);
+    currentLookAngle.interpolate(targetLookAngle, .05);
+    ofQuaternion rx, ry;
+    rx.makeRotate(currentLookAngle.x, 1, 0, 0);
+    ry.makeRotate(currentLookAngle.y, 0, 1, 0);
+    getCameraRef().setOrientation(rx * ry);
+    getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
+    
+    /*
     camYRot += CAM_DAMPING * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20, true) - camYRot);
     camSpeed += CAM_DAMPING * (ofMap(GetCloudsInputY(), 0, ofGetHeight(), -maxCamSpeed, 0.f, true) - camSpeed);
     getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
     getCameraRef().setOrientation(ofVec3f(0, camYRot, 0.f));
     getCameraRef().setFarClip(Creature::fogEnd);
-
+     */
+    
     //bubbles.update();
     creatures.update();//getCameraRef().getPosition() + 1000.f * getCameraRef().getLookAtDir().normalized());
 }
@@ -107,7 +119,7 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     //rdrGui->addMinimalSlider("creatureFogStart", 0.f, 10000.f, &Creature::fogStart);
     //rdrGui->addMinimalSlider("creatureFogEnd", 0.f, 10000.f, &Creature::fogEnd);
     
-    rdrGui->addMinimalSlider("maxCamSpeed", 0.f, 1500.f, &maxCamSpeed);
+    rdrGui->addMinimalSlider("camSpeed", 0.f, -1500.f, &camSpeed);
     
     rdrGui->addRangeSlider("creatureFogRange", 0.f, 10000.f, &Creature::fogStart, &Creature::fogEnd);
     rdrGui->addRangeSlider("snowFogRange", 0.f, 10000.f, &snow.getFogStartRef(), &snow.getFogEndRef());
