@@ -3,8 +3,7 @@
 #include "ofMain.h"
 #include "ofxCocoaGLView.h"
 #include "CloudsFCPParser.h"
-
-//#include "CloudsVisualSystemRGBD.h"
+#include "CloudsRGBDVideoPlayer.h"
 #include "CloudsVisualSystemManager.h"
 #include "CloudsSpeaker.h"
 #include "CloudsGlobal.h"

@@ -1,7 +1,7 @@
 #import "testView.h"
 #include "CloudsVisualSystem.h"
 #include "CloudsInputKinectOSC.h"
-#include "CloudsRGBDVideoPlayer.h"
+
 
 struct sortObject {
 	CloudsFCPParser* parser;
@@ -196,6 +196,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (IBAction)loadClip:(CloudsClip&)clip
 {
+	
 	if(clip.hasMediaAsset && clip.voiceOverAudio && CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath) ){
 		
 		CloudsVisualSystem::getRGBDVideoPlayer().swapAndPlay();

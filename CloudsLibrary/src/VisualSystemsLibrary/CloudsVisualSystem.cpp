@@ -3211,3 +3211,7 @@ void CloudsVisualSystem::checkOpenGLError(string function){
         ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " : " << gluErrorString(err) << " in " << function;
     }
 }
+
+//#ifdef UInt32
+//#undef UInt32
+//#endif
