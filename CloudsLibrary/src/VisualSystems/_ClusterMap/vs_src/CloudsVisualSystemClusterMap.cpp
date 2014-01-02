@@ -397,8 +397,19 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip& clip){
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemClusterMap::selfSetupGui(){
 	
+	followCamGui = new ofxUISuperCanvas("FOLLOW CAM", gui);
+	followCamGui->copyCanvasStyle(gui);
+	followCamGui->copyCanvasProperties(gui);
+	followCamGui->setName("FollowCam");
+	followCamGui->addSlider("CAMERA DISTANCE", 10, 400, &traversCameraDistance);
+	followCamGui->addToggle("LOCK AXIS", &lockCameraAxis);
+	followCamGui->addSlider("FOV", 4, 90, &traverseCamFOV);
+	
+	ofAddListener(followCamGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
+	guis.push_back(followCamGui);
+	guimap[followCamGui->getName()] = followCamGui;
+
 	ofxUIToggle* toggle;
-		
 	nodesGui = new ofxUISuperCanvas("NODES", gui);
 	nodesGui->copyCanvasStyle(gui);
 	nodesGui->copyCanvasProperties(gui);
@@ -415,6 +426,7 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	nodesGui->addRangeSlider("POINT SIZE RANGE", .5, 4., &pointSize.min, &pointSize.max);
 	nodesGui->addSlider("TRAVERSED NODE SIZE", 1, 10, &traversedNodeSize);
 	nodesGui->addSlider("NODE POP LENGTH", 50, 2000, &nodePopLength);
+
 	ofAddListener(nodesGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(nodesGui);
 	guimap[nodesGui->getName()] = nodesGui;
@@ -453,7 +465,6 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	linesGui->addMinimalSlider("LE_A", 0.0, 1.0, &lineEdgeColorHSV.a);
 	linesGui->addMinimalSlider("COLOR MIX EXPONENT", 0, 7.0, &lineColorMixExponent);
 
-	
 	ofAddListener(linesGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(linesGui);
 	guimap[linesGui->getName()] = linesGui;
@@ -489,8 +500,7 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	traversalGui->addMinimalSlider("FALLOFF", 0, 7.0, &traverseFalloff);
 
 	traversalGui->addSpacer();
-	
-	traversalGui->addSlider("CAMERA DISTANCE", 10, 400, &traversCameraDistance);
+
 	traversalGui->addSlider("ANGLE DAMPEN", 0.01, .5, &traverseAngleDampen);
 	traversalGui->addSlider("STEP SIZE", .2, 10, &traverseStepSize);
 	traversalGui->addSlider("MIN HOMING DISTANCE", 1.0, 100.0, &traverseHomingMinDistance);
@@ -647,17 +657,6 @@ void CloudsVisualSystemClusterMap::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemClusterMap::selfUpdate(){
 	
-	gameCamera.applyRotation = gameCamera.applyTranslation = !cursorIsOverGUI();
-	if(cursorIsOverGUI()){
-		easyCamera.disableMouseInput();
-	}
-	else{
-		easyCamera.enableMouseInput();
-	}
-	
-	easyCamera.setDistance(traversCameraDistance);
-
-	
 	percentTraversed = ofMap(ofGetElapsedTimef(),
 							 traverseStartTime, traverseStartTime+traverseAnimationDuration,
 							 0, 1.0, true);
@@ -666,18 +665,35 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 								   traverseStartTime+traverseAnimationDuration+optionsAnimationDuration,
 								   0.0, 1.0, true);
 	
+	gameCamera.applyRotation = gameCamera.applyTranslation = !cursorIsOverGUI();
+	if(cursorIsOverGUI()){
+		easyCamera.disableMouseInput();
+	}
+	else{
+		easyCamera.enableMouseInput();
+	}
+	
+
 	if(traversalPath.size() > 0){
 		ofIndexType curIndex = ofMap(percentTraversed,
 									 0, 1.0,
 									 traversalPath.back().startIndex, traversalPath.back().endIndex-1,true);
 		trailHead = traversalMesh.getVertex(curIndex);
-		ofVec3f curPosition = easyCamera.getTarget().getPosition();
-		ofVec3f curTarget = (trailHead*meshExpansion);
-		ofVec3f newPos = curPosition + (curTarget - curPosition) * .1;
-		easyCamera.setTarget(newPos);
-		percentToDest = (newPos - cameraStartPosition).length() / (curTarget - cameraStartPosition).length();
+		if(lockCameraAxis){
+			axisCamera.setPosition(trailHead*meshExpansion + ofVec3f(0,0,traversCameraDistance));
+			axisCamera.lookAt(trailHead*meshExpansion,ofVec3f(0,1,0));
+		}
+		else{
+			easyCamera.setDistance(traversCameraDistance);
+			ofVec3f curPosition = easyCamera.getTarget().getPosition();
+			ofVec3f curTarget = (trailHead*meshExpansion);
+			ofVec3f newPos = curPosition + (curTarget - curPosition) * .1;
+			easyCamera.setTarget(newPos);
+//			percentToDest = (newPos - cameraStartPosition).length() / (curTarget - cameraStartPosition).length();
+		}
+		
+		getCameraRef().setFov(traverseCamFOV);
 	}
-	
 
 	if(matchLineColor){
 		lineEdgeColorHSV = lineNodeColorHSV;
