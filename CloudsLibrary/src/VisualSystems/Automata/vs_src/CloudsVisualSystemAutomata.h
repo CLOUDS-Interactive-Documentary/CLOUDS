@@ -81,11 +81,15 @@ class CloudsVisualSystemAutomata : public CloudsVisualSystem
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
-    void selfMouseDragged(ofMouseEventArgs& data);
-    void selfMouseMoved(ofMouseEventArgs& data);
-    void selfMousePressed(ofMouseEventArgs& data);
-    void selfMouseReleased(ofMouseEventArgs& data);
+//    void selfMouseDragged(ofMouseEventArgs& data);
+//    void selfMouseMoved(ofMouseEventArgs& data);
+//    void selfMousePressed(ofMouseEventArgs& data);
+//    void selfMouseReleased(ofMouseEventArgs& data);
 
+    void selfInteractionMoved(CloudsInteractionEventArgs& args);
+	void selfInteractionStarted(CloudsInteractionEventArgs& args);
+	void selfInteractionDragged(CloudsInteractionEventArgs& args);
+	void selfInteractionEnded(CloudsInteractionEventArgs& args);
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 //	ofCamera& getCameraRef(){
@@ -106,7 +110,7 @@ protected:
     ofShader blenderShader;
     ofFbo texFbo, outFbo;
     ofVboMesh mesh;
-    
+    ofVec2f currentInput;
     ofDirectory seedDir;
     int selectedSeedIdx;
     
