@@ -1615,7 +1615,7 @@ void CloudsFCPParser::parseSpeakersVolume(){
         
         for(it = speakerVolumes.begin(); it != speakerVolumes.end(); it++){
         
-            if (allClips[i].getSpeakerFullName() == it->first) {
+            if (allClips[i].person== it->first) {
                 allClips[i].setSpeakerVolume(it->second);
                 break;
             }
@@ -1626,7 +1626,7 @@ void CloudsFCPParser::parseSpeakersVolume(){
 void CloudsFCPParser::setSpeakerVolume(string speaker, float vol){
     speakerVolumes[speaker] = vol;
     for(int i =0; i<allClips.size(); i++){
-        if(allClips[i].getSpeakerFullName() == speaker){
+        if(allClips[i].person == speaker){
             allClips[i].setSpeakerVolume(vol);
 
         }

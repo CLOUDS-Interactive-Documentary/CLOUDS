@@ -47,7 +47,7 @@ CloudsRGBDVideoPlayer::~CloudsRGBDVideoPlayer(){
 
 //---------------------------------------------------------------
 //SURYA TODO: Add new end time
-bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, float offsetTime){
+bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, float offsetTime,float clipVolume ){
 	
 	if(!bEventRegistered){
 		ofAddListener(ofEvents().update, this, &CloudsRGBDVideoPlayer::update);
@@ -65,6 +65,7 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, f
 	cout << "prerolled clip " << videoPath << " to time " << offsetTime << endl;
 	clipPrerolled = true;
 	nextClipIsVO = false;
+    nextClipVolumeAdjustment = clipVolume;
 	
 	return true;
 }
@@ -196,7 +197,8 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 
 	currentVoiceoverPlayer->stop();
 	currentPlayer->stop();
-	
+	currentClipVolumeAdjustment = nextClipVolumeAdjustment;
+    currentMaxVolume = maxVolume * currentClipVolumeAdjustment;
 	swap(currentPlayer,nextPlayer);
 	swap(currentVoiceoverPlayer, nextVoiceoverPlayer);
 	
@@ -289,7 +291,9 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		nextPlayer->update();
 	}
 	
-	float audioVolume = maxVolume;
+
+
+    float  audioVolume = currentMaxVolume;
 	if(playingVO){
 		currentVoiceoverPlayer->setVolume(audioVolume);
 	}
@@ -318,14 +322,6 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		}
 	}
 }
-
-void CloudsRGBDVideoPlayer::setVolume(float volume){
-        if(playingVO){
-            currentVoiceoverPlayer->setVolume(volume);
-        }else{
-            getPlayer().setVolume(volume);
-        }
-    }
 
 bool CloudsRGBDVideoPlayer::isPlaying(){
 	return playingVO ? currentVoiceoverPlayer->getIsPlaying() : (getPlayer().isLoaded() && getPlayer().isPlaying());
