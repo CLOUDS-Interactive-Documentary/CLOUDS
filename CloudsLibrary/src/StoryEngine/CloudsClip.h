@@ -15,6 +15,7 @@ class CloudsClip {
 
 	string getSpeakerLastName();
 	string getSpeakerFirstName();
+    string getSpeakerFullName();
 	string getSpeakerGender();
     float getSpeakerVolume();
 	

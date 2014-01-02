@@ -37,6 +37,10 @@ string CloudsClip::getSpeakerFirstName(){
 	return CloudsSpeaker::speakers[person].firstName;
 }
 
+string CloudsClip::getSpeakerFullName(){
+    return CloudsSpeaker::speakers[person].firstName + " "+ CloudsSpeaker::speakers[person].lastName;
+}
+
 string CloudsClip::getSpeakerLastName(){
 	return CloudsSpeaker::speakers[person].lastName;
 }
