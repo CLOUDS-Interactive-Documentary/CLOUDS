@@ -22,7 +22,16 @@ bool clipsort(CloudsClip a, CloudsClip b){
 //	currentVisualSystem = NULL;
 	selectedPreset = NULL;
 	
-	parser.loadFromFiles();
+    parser.loadFromFiles();
+    
+	
+	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
+		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
+        cout<<"Clouds Directory is pointing to "<<ofBufferFromFile(GetCloudsDataPath	() + "CloudsMovieDirectory.txt").getText()<<endl;
+	}
+	else{
+		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
+	}
 	
 //	visualSystems.populateVisualSystems();
 	visualSystems.loadPresets();
@@ -50,11 +59,24 @@ bool clipsort(CloudsClip a, CloudsClip b){
     [presetTable setTarget:self];
 	[presetTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	[presetTable reloadData];
-	
-	[allClipTable reloadData];
+    
+    [allClipTable reloadData];
 	[allKeywordTable reloadData];
+    
+    [clipTable setDoubleAction:@selector(loadClipFromTable:)];
+	[allClipTable setDoubleAction:@selector(loadClipFromTable:)];
 	
-	
+    rgbdVisualSystem.setup();
+	rgbdVisualSystem.setDrawToScreen(false);
+
+    
+    
+	rgbdVisualSystem.playSystem();
+#ifdef OCULUS_RIFT
+	rgbdVisualSystem.loadPresetGUISFromName("RGBDOC");
+#else
+	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
+#endif
 	[self updateCounts];
 
 	//TEST FACTORY
@@ -162,10 +184,55 @@ bool clipsort(CloudsClip a, CloudsClip b){
     }
 }
 
+- (void) loadClipFromTable:(id)sender
+{
+    if(sender == clipTable){
+        cout<<"Sender for this was clipTable"<<endl;
+        if(clipTable.selectedRow >= 0){
+            cout<<associatedClips[ clipTable.selectedRow ].getLinkName()<<endl;
+            [self loadClip: associatedClips[ clipTable.selectedRow ] ];
+            
+        }
+    }
+    else if(sender == allClipTable){
+        if(allClipTable.selectedRow >= 0){
+            cout<<"Sender for this was clipTable"<<endl;
+            cout<<parser.getAllClips()[ allClipTable.selectedRow ].getLinkName()<<endl;
+            [self loadClip: parser.getAllClips()[ allClipTable.selectedRow ] ];
+            
+        }
+    }
+
+}
+
+- (IBAction)loadClip:(CloudsClip&)clip
+{
+	if(clip.hasMediaAsset && clip.voiceOverAudio && rgbdVisualSystem.getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath) ){
+		
+		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
+		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
+									  CloudsSpeaker::speakers[clip.person].lastName,
+									  clip.name );
+		
+		currentClip = clip;
+	}
+	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath,1,clip.speakerVolume) ){
+		cout<<"clip.speakerVolume : "<<clip.speakerVolume<<endl;
+		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
+		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
+                                      CloudsSpeaker::speakers[clip.person].lastName,
+                                      clip.name );
+		currentClip = clip;
+		
+	}
+	else{
+		ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";
+	}	
+}
 
 - (void)draw
 {
-    
+
 }
 
 - (void)exit
@@ -314,8 +381,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
         [clipTable selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
 
 		[allClipTable reloadData];
-//		[suppressedClipTable reloadData];
-		
+//		[suppressedClipTable reloadData];	
     }
 }
 
@@ -684,12 +750,9 @@ completionsForSubstring:(NSString *)substring
 				associatedClips.erase(associatedClips.begin() + i);
 			}
 		}
-		
 		sort(associatedClips.begin(),associatedClips.end(), clipsort);
 		sort(suppressedClips.begin(),suppressedClips.end(), clipsort);
-
 	}
-	
 	
 	[clipTable reloadData];
 	[suppressedClipTable reloadData];
