@@ -1,6 +1,7 @@
 #import "testView.h"
 #include "CloudsVisualSystem.h"
 #include "CloudsInputKinectOSC.h"
+#include "CloudsRGBDVideoPlayer.h"
 
 struct sortObject {
 	CloudsFCPParser* parser;
@@ -66,17 +67,6 @@ bool clipsort(CloudsClip a, CloudsClip b){
     [clipTable setDoubleAction:@selector(loadClipFromTable:)];
 	[allClipTable setDoubleAction:@selector(loadClipFromTable:)];
 	
-    rgbdVisualSystem.setup();
-	rgbdVisualSystem.setDrawToScreen(false);
-
-    
-    
-	rgbdVisualSystem.playSystem();
-#ifdef OCULUS_RIFT
-	rgbdVisualSystem.loadPresetGUISFromName("RGBDOC");
-#else
-	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
-#endif
 	[self updateCounts];
 
 	//TEST FACTORY
@@ -202,26 +192,25 @@ bool clipsort(CloudsClip a, CloudsClip b){
             
         }
     }
-
 }
 
 - (IBAction)loadClip:(CloudsClip&)clip
 {
-	if(clip.hasMediaAsset && clip.voiceOverAudio && rgbdVisualSystem.getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath) ){
+	if(clip.hasMediaAsset && clip.voiceOverAudio && CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath) ){
 		
-		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
-		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
-									  CloudsSpeaker::speakers[clip.person].lastName,
-									  clip.name );
+		CloudsVisualSystem::getRGBDVideoPlayer().swapAndPlay();
+//		CloudsVisualSystem::setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
+//									  CloudsSpeaker::speakers[clip.person].lastName,
+//									  clip.name );
 		
 		currentClip = clip;
 	}
-	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath,1,clip.speakerVolume) ){
+	else if(clip.hasMediaAsset && CloudsVisualSystem::getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath,1,clip.speakerVolume) ){
 		cout<<"clip.speakerVolume : "<<clip.speakerVolume<<endl;
-		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
-		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
-                                      CloudsSpeaker::speakers[clip.person].lastName,
-                                      clip.name );
+		CloudsVisualSystem::getRGBDVideoPlayer().swapAndPlay();
+//		CloudsVisualSystem::setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
+//                                      CloudsSpeaker::speakers[clip.person].lastName,
+//                                      clip.name );
 		currentClip = clip;
 		
 	}
