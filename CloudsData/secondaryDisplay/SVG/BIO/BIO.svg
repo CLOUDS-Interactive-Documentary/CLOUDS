@@ -7,21 +7,20 @@
 	<rect x="47.875" y="882.528" opacity="0.16" enable-background="new    " width="1824.875" height="150"/>
 </g>
 <g id="BOX_x5F_DETAILS">
-	<rect x="46.438" y="881.229" fill="#FFFFFF" width="2.801" height="2.806"/>
-	<rect x="46.438" y="1030.804" fill="#FFFFFF" width="2.801" height="2.802"/>
-	<rect x="1871.164" y="881.229" fill="#FFFFFF" width="2.802" height="2.806"/>
-	<rect x="1871.164" y="1031.068" fill="#FFFFFF" width="2.802" height="2.802"/>
-	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="47.812" y1="882" x2="47.812" y2="1033"/>
-	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1872.812" y1="882" x2="1872.812" y2="1033"/>
-	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1873.312" y1="882.5" x2="48.312" y2="882.5"/>
-	<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M1494.684,1051.289"/>
-	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="48.312" y1="1032.5" x2="1873.312" y2="1032.5"/>
+	<rect x="46.438" y="881.229" opacity="0.26" fill="#FFFFFF" width="2.801" height="2.807"/>
+	<rect x="46.438" y="1030.804" opacity="0.26" fill="#FFFFFF" width="2.801" height="2.802"/>
+	<rect x="1871.164" y="881.229" opacity="0.26" fill="#FFFFFF" width="2.802" height="2.807"/>
+	<rect x="1871.164" y="1031.068" opacity="0.26" fill="#FFFFFF" width="2.802" height="2.802"/>
+	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="47.812" y1="882" x2="47.812" y2="1033"/>
+	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1872.812" y1="882" x2="1872.812" y2="1033"/>
+	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="1873.312" y1="882.5" x2="48.312" y2="882.5"/>
+	<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="48.312" y1="1032.5" x2="1873.312" y2="1032.5"/>
 </g>
 <g id="TEXTBOX_x5F_TITLE_1_" opacity="0">
-	<rect id="_x3C_Path_x3E__4_" x="670.495" y="909.656" fill="none" width="336.062" height="14.25"/>
+	<rect id="_x3C_Path_x3E__4_" x="690.512" y="922.695" fill="none" width="231.517" height="14.25"/>
 </g>
 <g id="TEXTBOX_x5F_LOC_1_" opacity="0">
-	<rect id="_x3C_Path_x3E__3_" x="670.479" y="941.027" fill="none" width="238.189" height="14.25"/>
+	<rect id="_x3C_Path_x3E__3_" x="690.512" y="975.131" fill="none" width="238.189" height="14.25"/>
 </g>
 <g id="TEXTBOX_x5F_BIO" opacity="0">
 	<rect id="_x3C_Path_x3E__2_" x="1099.164" y="909.656" fill="none" width="740.35" height="16.312"/>
@@ -30,6 +29,12 @@
 	<rect id="_x3C_Path_x3E__1_" x="85.249" y="909.656" fill="none" width="541.944" height="31.452"/>
 </g>
 <g id="TEXTBOX_x5F_LASTNAME_1_" opacity="0">
-	<rect id="_x3C_Path_x3E_" x="84.749" y="960.74" fill="none" width="541.777" height="43.201"/>
+	<rect id="_x3C_Path_x3E_" x="84.749" y="960.655" fill="none" width="541.777" height="43.201"/>
+</g>
+<g id="BOX_x5F_LOC" opacity="0.36">
+	<rect x="670.346" y="962.256" opacity="0.36" fill="#101010" width="275" height="40"/>
+</g>
+<g id="BOX_x5F_TITLE" opacity="0.36">
+	<rect x="670.346" y="909.745" opacity="0.36" fill="#101010" width="275" height="40"/>
 </g>
 </svg>
