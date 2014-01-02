@@ -73,8 +73,8 @@ namespace itg
         
         drawInner = true;
         
-        float w = randomGauss(params.widthAverage, params.widthStdDeviation);
-        float l = randomGauss(params.lengthAverage, params.lengthStdDeviation);
+        float w = ofRandom(params.widthMin, params.widthMax);//randomGauss(params.widthAverage, params.widthStdDeviation);
+        float l = ofRandom(params.lengthMin, params.lengthMax);//randomGauss(params.lengthAverage, params.lengthStdDeviation);
         
         size = ofVec3f(w, w, l);
         

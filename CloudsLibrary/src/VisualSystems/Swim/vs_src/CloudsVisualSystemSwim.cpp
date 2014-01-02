@@ -233,11 +233,13 @@ void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& para
     gui->addRangeSlider("pulse amt (range)", 0.f, 0.4f, &params.pulseAmtMin, &params.pulseAmtMax);
     
     gui->addLabel("Size");
-    gui->addMinimalSlider("width average", 10, 200, &params.widthAverage);
+    gui->addRangeSlider("width range", 10.f, 200.f, &params.widthMin, &params.widthMax);
+    gui->addRangeSlider("length range", 10.f, 200.f, &params.lengthMin, &params.lengthMax);
+    /*gui->addMinimalSlider("width average", 10, 200, &params.widthAverage);
     gui->addMinimalSlider("width std dev", 0, 200, &params.widthStdDeviation);
     
     gui->addMinimalSlider("length average", 10, 200, &params.lengthAverage);
-    gui->addMinimalSlider("length std dev", 0, 200, &params.lengthStdDeviation);
+    gui->addMinimalSlider("length std dev", 0, 200, &params.lengthStdDeviation);*/
     
     gui->addLabel("Shape");
     gui->addRangeSlider("spherical segment (range)", .5f * HALF_PI, PI, &params.segmentMin, &params.segmentMax);
