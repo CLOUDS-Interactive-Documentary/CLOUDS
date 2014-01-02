@@ -178,7 +178,7 @@ void CloudsVisualSystemClusterMap::populateTopicPoints(){
 	
 	vector<string>& keywords = parser->getContentKeywords();
 	int numClips = parser->getNumberOfClipsWithKeyword(keywords[0]);
-	ofRange clipCountRange = ofRange(numClips,numClips);
+	clipCountRange = ofRange(numClips,numClips);
 	for(int i = 0; i < keywords.size(); i++){
 		TopicPoint tp;
 		tp.keyword  = keywords[i];
@@ -476,9 +476,13 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
     typeGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
     typeGui->addWidgetToHeader(toggle);
 
-	typeGui->addIntSlider("SIZE", 8, 14, &baseFontSize);
-	typeGui->addRangeSlider("SCALE RANGE", 50, 200, &typeScaleRange.min, &typeScaleRange.max);
-
+	typeGui->addIntSlider("SIZE MIN", 5, 20, &typeSizeRange.min);
+	typeGui->addIntSlider("SIZE MAX", 5, 20, &typeSizeRange.max);
+	//("SCALE RANGE", .1, 10, &typeScaleRange.min, &typeScaleRange.max);
+	typeGui->addRangeSlider("FADE RANGE", 0, 300, &typeDistanceRange.min, &typeDistanceRange.max);
+	typeGui->addIntSlider("MIN CLIP NUM", 1, 60, &clipsShowTopic.min);
+	typeGui->addIntSlider("MAX CLIP SCALE", 1, 60, &clipsShowTopic.max);
+	
 	ofAddListener(typeGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(typeGui);
 	guimap[typeGui->getName()] = typeGui;
@@ -547,12 +551,13 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	drawOptionPaths = true;
 	drawTraversalPoints = false;
 	drawHomingDistanceDebug = false;
-	
+
+	clipsShowTopic = ofIntRange(20, 40);
 	drawType = true;
 	baseFontSize = 12;
-	currentFontSize = -1;
-	typeScaleRange = ofRange(8, 40);
-
+	currentTypeSizeRange.min = currentTypeSizeRange.max = -1;
+	typeSizeRange.min = 5;
+	typeSizeRange.max = 14;
 	lineDensity = 200;
 }
 
@@ -587,8 +592,7 @@ void CloudsVisualSystemClusterMap::reloadShaders(){
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemClusterMap::selfPresetLoaded(string presetPath){
-	timeline->setLoopType(OF_LOOP_NONE);
-	
+	timeline->setLoopType(OF_LOOP_NONE);	
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -680,10 +684,25 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	optionColorRGB.a = optionColorHSV.a;
 	
 	
-	if(baseFontSize != currentFontSize){
-        topicFont.loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", baseFontSize);
-		currentFontSize = baseFontSize;
+	if(currentTypeSizeRange != typeSizeRange && typeSizeRange.span() > 0){
+		topicFont.clear();
+		topicFont.resize(typeSizeRange.span());
+		int fontIndex = 0;
+		for(int i = typeSizeRange.min; i < typeSizeRange.max; i++){
+			topicFont[fontIndex++].loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i);
+		}
+		currentTypeSizeRange = typeSizeRange;
 	}
+	
+	if(drawType){
+		for(int i = 0; i < topicPoints.size(); i++){
+			if(topicPoints[i].numClips >= clipsShowTopic.min){
+				topicPoints[i].screenPosition = getCameraRef().worldToScreen(topicPoints[i].position*meshExpansion,
+																			 ofRectangle(0,0,getCanvasWidth(),getCanvasHeight()));
+			}
+		}
+	}
+
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -803,22 +822,18 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	/////END OPTIONS	
 	ofPopMatrix();
 
-	////DRAW TYPE
-	if(drawType){
-		for(int i = 0; i < topicPoints.size(); i++){
-//			ofPushMatrix();
-			glDisable(GL_LIGHTING);
-			if(topicPoints[i].numClips > 40){
-				//ofxBillboardBeginSphericalObvious(getCameraRef().getPosition(),topicPoints[i].position*meshExpansion);
-				ofxBillboardBeginSphericalCheat(topicPoints[i].position*meshExpansion);
-//				ofTranslate(topicPoints[i].position);
-				ofScale(.1,-.1, .1);
-				topicFont.drawString( ofToUpper(topicPoints[i].keyword), 0, 0) ;
-				ofxBillboardEnd();
-			}
-//			ofPopMatrix();
-		}
-	}
+	////DRAW TYPE 3D
+//	if(drawType){
+//		for(int i = 0; i < topicPoints.size(); i++){
+//			glDisable(GL_LIGHTING);
+//			if(topicPoints[i].numClips > 40){
+//				ofxBillboardBeginSphericalCheat(topicPoints[i].position*meshExpansion);
+//				ofScale(.1,-.1, .1);
+//				topicFont.drawString( ofToUpper(topicPoints[i].keyword), 0, 0) ;
+//				ofxBillboardEnd();
+//			}
+//		}
+//	}
 	
 	///END TYPE
 	ofPopStyle();
@@ -832,8 +847,31 @@ void CloudsVisualSystemClusterMap::selfDrawDebug(){
 
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemClusterMap::selfDrawBackground(){
+
+}
+
+void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 	//turn the background refresh off
-	//bClearBackground = false;
+	if(drawType){
+		ofRectangle screenRect(0,0,getCanvasWidth(), getCanvasHeight());
+		for(int i = 0; i < topicPoints.size(); i++){
+			//			glDisable(GL_LIGHTING);
+			TopicPoint& p = topicPoints[i];
+			if(p.numClips >= clipsShowTopic.min){
+//				int fontIndex = p.normalizedTopicScale * topicFont.size();
+				int fontIndex = ofMap(p.numClips, clipsShowTopic.min, clipsShowTopic.max,
+									  0, topicFont.size()-1,true);
+//				cout << "Font index is " << fontIndex << " from " << topicFont.size() << endl;
+				if(fontIndex > 0 && fontIndex < topicFont.size()){
+					ofPushMatrix();
+					ofTranslate(p.screenPosition.x,p.screenPosition.y);
+					ofxFTGLFont& font = topicFont[ fontIndex ];
+					font.drawString( ofToUpper(p.keyword), 0, 0);
+					ofPopMatrix();
+				}
+			}
+		}
+	}
 }
 
 // this is called when your system is no longer drawing.

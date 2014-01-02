@@ -16,6 +16,7 @@ typedef struct{
 typedef struct{
 	string keyword;
 	ofVec3f position;
+	ofVec2f screenPosition;
 	int numClips;
 	float normalizedTopicScale;
 } TopicPoint;
@@ -91,6 +92,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	// or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 	void selfDrawBackground();
 
+	void selfDrawOverlay();
+	
 	// this is called when your system is no longer drawing.
 	// Right after this selfUpdate() and selfDraw() won't be called any more
 	void selfEnd();
@@ -222,12 +225,16 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	//type vars
 	void populateTopicPoints();
 	vector<TopicPoint> topicPoints;
-	ofxFTGLFont topicFont;
+	vector<ofxFTGLFont> topicFont;
 	bool drawType;
 	int baseFontSize;
-	int currentFontSize;
-	int topicCutoff;
-	ofRange typeScaleRange;
+	ofIntRange clipsShowTopic;
+	ofRange clipCountRange;
+	ofRange typeDistanceRange;
+	ofIntRange typeSizeRange;
+	ofIntRange currentTypeSizeRange;
+	//int currentFontSize;
+	//ofRange typeScaleRange;
 	
 	ofVec3f randomDirection();
 	

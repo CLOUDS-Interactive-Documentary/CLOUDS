@@ -12,12 +12,27 @@
 </Widget>
 <Widget>
     <Kind>44</Kind>
-    <Name>SIZE</Name>
-    <Value>12</Value>
+    <Name>SIZE MIN</Name>
+    <Value>5</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>SIZE MAX</Name>
+    <Value>15</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
-    <Name>SCALE RANGE</Name>
-    <HighValue>50.000000000</HighValue>
-    <LowValue>50.000000000</LowValue>
+    <Name>FADE RANGE</Name>
+    <HighValue>0.000000000</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>MIN CLIP NUM</Name>
+    <Value>19</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>MAX CLIP SCALE</Name>
+    <Value>41</Value>
 </Widget>
