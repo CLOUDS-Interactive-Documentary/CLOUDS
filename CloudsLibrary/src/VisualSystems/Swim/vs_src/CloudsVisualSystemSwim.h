@@ -111,22 +111,29 @@ class CloudsVisualSystemSwim : public CloudsVisualSystem {
 
 protected:
     
-    //  Your Stuff
-    //
     ofxUISuperCanvas* createCustomGui(const string& name);
     void addSliders(ofxUISuperCanvas* gui, JellyParams& params);
     void generate();
     
+    // cam
     float camSpeed;
     ofVec2f currentLookAngle;
-    bool regenerate;
+    
+    // creatures
     itg::Creatures creatures;
+	ofxUISuperCanvas* jellyOneGui;
+    ofxUISuperCanvas* jellyTwoGui;
+    
+    // seed positions
+    ofxUISuperCanvas* seedGui;
+    ofxUIRadio* seedRadio;
+    bool loadSeed, saveSeed;
+    
+    // misc
     itg::Bubbles bubbles;
     itg::MarineSnow snow;
     ofxPostProcessing post;
-    
-	ofxUISuperCanvas* jellyOneGui;
-    ofxUISuperCanvas* jellyTwoGui;
+    bool regenerate;
 	
 	// Sound
     ofxUISuperCanvas* soundGui;

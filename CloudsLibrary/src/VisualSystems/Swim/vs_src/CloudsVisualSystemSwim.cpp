@@ -12,7 +12,7 @@
 
 const float CloudsVisualSystemSwim::CAM_DAMPING = .08f;
 
-CloudsVisualSystemSwim::CloudsVisualSystemSwim() : camSpeed(-600.f), regenerate(false)
+CloudsVisualSystemSwim::CloudsVisualSystemSwim() : camSpeed(-600.f), regenerate(false), loadSeed(false), saveSeed(false)
 {
 }
 
@@ -56,6 +56,12 @@ void CloudsVisualSystemSwim::generate()
 {
     snow.generate();
     creatures.generate();
+    if (seedRadio->getActive() != NULL)
+    {
+        ostringstream oss(getVisualSystemDataPath());
+        oss << "seed/" << seedRadio->getActive()->getName();
+        creatures.loadSeed(oss.str());
+    }
 }
 
 //normal update call
@@ -71,6 +77,21 @@ void CloudsVisualSystemSwim::selfUpdate()
         regenerate = false;
     }
     
+    if (saveSeed)
+    {
+        ofFileDialogResult result = ofSystemSaveDialog("positions.seed", "Save creature positions");
+        ofLogNotice() << "Saving creature positions to " << result.getPath();
+        creatures.saveSeed(result.getPath());
+        saveSeed = false;
+    }
+    
+    if (loadSeed)
+    {
+        ofFileDialogResult result = ofSystemLoadDialog("Load creature positions", false, getVisualSystemDataPath() + "seed");
+        creatures.loadSeed(result.getPath());
+        loadSeed = false;
+    }
+    
     // cam
     ofVec2f targetLookAngle;
     targetLookAngle.x = ofMap(GetCloudsInputY(), 0, ofGetHeight(), 10.f, -10.f, true);
@@ -81,17 +102,9 @@ void CloudsVisualSystemSwim::selfUpdate()
     ry.makeRotate(currentLookAngle.y, 0, 1, 0);
     getCameraRef().setOrientation(rx * ry);
     getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
-    
-    /*
-    camYRot += CAM_DAMPING * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20, true) - camYRot);
-    camSpeed += CAM_DAMPING * (ofMap(GetCloudsInputY(), 0, ofGetHeight(), -maxCamSpeed, 0.f, true) - camSpeed);
-    getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
-    getCameraRef().setOrientation(ofVec3f(0, camYRot, 0.f));
-    getCameraRef().setFarClip(Creature::fogEnd);
-     */
-    
+
     //bubbles.update();
-    creatures.update();//getCameraRef().getPosition() + 1000.f * getCameraRef().getLookAtDir().normalized());
+    creatures.update();
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -181,6 +194,16 @@ void CloudsVisualSystemSwim::selfSetupGui()
     jellyTwoGui = createCustomGui("Jellyus Twous");
     addSliders(jellyTwoGui, creatures.jellyTwoParams);
     
+    seedGui = createCustomGui("Seed positions");
+    ofDirectory dir;
+    dir.listDir(getVisualSystemDataPath() + "seed");
+    vector<string> fileNames;
+    for (unsigned i = 0; i < dir.size(); ++i)
+    {
+        fileNames.push_back(dir.getName(i));
+    }
+    seedRadio = seedGui->addRadio("seed", fileNames);
+    
     soundGui = createCustomGui("Sound");
     // sound
     soundGui->addToggle(soundFiles[0], &playSample[0]);
@@ -232,7 +255,23 @@ void CloudsVisualSystemSwim::selfPresetLoaded(string presetPath)
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemSwim::selfKeyPressed(ofKeyEventArgs & args)
 {
-	if (args.key == 'R') regenerate = true;
+    switch (args.key)
+    {
+        case 'R':
+            regenerate = true;
+            break;
+            
+        case 'S':
+            saveSeed = true;
+            break;
+            
+        case 'l':
+            loadSeed = true;
+            break;
+            
+        default:
+            break;
+    }
 }
 
 ofxUISuperCanvas* CloudsVisualSystemSwim::createCustomGui(const string& name)
