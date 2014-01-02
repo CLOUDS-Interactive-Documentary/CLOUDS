@@ -5,6 +5,7 @@
 @implementation testView
 @synthesize clipTable;
 @synthesize interventionTextBox;
+@synthesize speakerVolTextBox;
 - (void)setup
 {
 
@@ -29,7 +30,8 @@
 	[clipTable setDoubleAction:@selector(loadClipFromTable:)];
 	[clipTable reloadData];
     [interventionTextBox setTarget:self];   
-	
+	[speakerVolTextBox setTarget:self];
+    
 	rgbdVisualSystem.setup();
 	rgbdVisualSystem.setDrawToScreen(false);
 	hud.setup();
@@ -182,10 +184,11 @@
     return cppString;
 }
 
--(void)addIntervention:(id)sender{
+-(IBAction)addIntervention:(id)sender{
 
     const char* interventionName =[interventionTextBox.stringValue UTF8String ];
     string name = interventionName;
+
     if(clipTable.selectedRow >= 0){
         CloudsClip& clip =parser.getAllClips()[[clipTable selectedRow]];
         cout<<" Adding intervention : "<<name<<" to clip "<<clip.getLinkName()<<endl;
@@ -194,7 +197,17 @@
 
 - (IBAction)updateSpeakerVolume:(id)sender{
 
-    cout<<"IM IN UPDATE SPEAKER VOLUME"<<endl;  
+//    string interventionName =[speakerVolTextBox.stringValue UTF8String ];
+//    string name = interventi÷onName;
+//    cout<<interventionName<<endl;
+    float speakerVol =speakerVolTextBox.floatValue;
+    cout<<speakerVol<<endl;
+
+    if(clipTable.selectedRow >= 0){
+        CloudsClip& clip =parser.getAllClips()[[clipTable selectedRow]];
+        cout<<" Updating vol for speaker : "<<clip.getSpeakerFirstName()<<" "<<clip.getSpeakerLastName()<<" on clip "<<clip.getLinkName()<<endl;
+    }
+    
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex

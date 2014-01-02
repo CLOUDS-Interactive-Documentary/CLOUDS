@@ -26,7 +26,7 @@ CloudsClip::CloudsClip(){
     keywordsDirty = true;
 	networkPosition = ofVec3f(-1,-1,-1);
 	hasProjectExample = false;
-    speakerVolume = 1;
+    speakerVolume = 1.0;
 }
 
 string CloudsClip::getLinkName(){
@@ -55,6 +55,13 @@ void CloudsClip::addOverlappingClip(CloudsClip& clip){
 
 void CloudsClip::addOverlappingClipID(string clipID){
 	overlappingClipIDs.push_back(clipID);
+}
+void CloudsClip::setSpeakerVolume(float vol){
+    speakerVolume = vol;
+}
+
+float CloudsClip::getSpeakerVolume(){
+    return speakerVolume;
 }
 
 //void CloudsClip::removeOverlappingClipName(string clipName) {
