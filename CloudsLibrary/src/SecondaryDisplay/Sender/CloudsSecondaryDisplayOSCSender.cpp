@@ -46,11 +46,17 @@ void CloudsSecondaryDisplayOSCSender::actCreated(CloudsActEventArgs& args){
 }
 
 void CloudsSecondaryDisplayOSCSender::actBegan(CloudsActEventArgs& args){
-	
+	ofxOscMessage m;
+	m.setAddress("/actBegan");
+	m.addStringArg("began");
+	sender.sendMessage(m);
 }
 
 void CloudsSecondaryDisplayOSCSender::actEnded(CloudsActEventArgs& args){
-	
+	ofxOscMessage m;
+	m.setAddress("/actEnded");
+	m.addStringArg("ended");
+	sender.sendMessage(m);
 }
 
 void CloudsSecondaryDisplayOSCSender::clipBegan(CloudsClipEventArgs& args){
