@@ -12,7 +12,7 @@
 
 const float CloudsVisualSystemSwim::CAM_DAMPING = .08f;
 
-CloudsVisualSystemSwim::CloudsVisualSystemSwim() : camYRot(0), camSpeed(0), maxCamSpeed(600.f)
+CloudsVisualSystemSwim::CloudsVisualSystemSwim() : camYRot(0), camSpeed(0), maxCamSpeed(600.f), regenerate(false)
 {
 }
 
@@ -39,9 +39,8 @@ void CloudsVisualSystemSwim::selfSetup()
 void CloudsVisualSystemSwim::selfBegin()
 {
     // adding this here as custom gui data is loaded after setup
-	creatures.generate();
-    snow.generate();
-
+	generate();
+    
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemSwim::audioRequested);
     
@@ -53,12 +52,24 @@ void CloudsVisualSystemSwim::selfBegin()
     }
 }
 
+void CloudsVisualSystemSwim::generate()
+{
+    snow.generate();
+    creatures.generate();
+}
+
 //normal update call
 void CloudsVisualSystemSwim::selfUpdate()
 {
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
     
     if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
+    
+    if (regenerate)
+    {
+        generate();
+        regenerate = false;
+    }
     
     // cam
     camYRot += CAM_DAMPING * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20, true) - camYRot);
@@ -92,7 +103,7 @@ void CloudsVisualSystemSwim::selfPostDraw()
 //use render gui for display settings, like changing colors
 void CloudsVisualSystemSwim::selfSetupRenderGui()
 {    
-    rdrGui->addToggle("regenerate", false);
+    rdrGui->addToggle("regenerate", &regenerate);
     //rdrGui->addMinimalSlider("creatureFogStart", 0.f, 10000.f, &Creature::fogStart);
     //rdrGui->addMinimalSlider("creatureFogEnd", 0.f, 10000.f, &Creature::fogEnd);
     
@@ -202,8 +213,14 @@ void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& para
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemSwim::selfPresetLoaded(string presetPath)
 {
-    creatures.generate();
-    snow.generate();
+    regenerate = true;
+}
+
+//events are called when the system is active
+//Feel free to make things interactive for you, and for the user!
+void CloudsVisualSystemSwim::selfKeyPressed(ofKeyEventArgs & args)
+{
+	if (args.key == 'R') regenerate = true;
 }
 
 ofxUISuperCanvas* CloudsVisualSystemSwim::createCustomGui(const string& name)
@@ -220,20 +237,6 @@ ofxUISuperCanvas* CloudsVisualSystemSwim::createCustomGui(const string& name)
     return newGui;
 }
 
-void CloudsVisualSystemSwim::guiRenderEvent(ofxUIEventArgs &e)
-{
-	if (e.widget->getName() == "regenerate")
-    {
-        ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-        if (toggle->getValue())
-        {
-            snow.generate();
-            creatures.generate();
-            toggle->setValue(false);
-        }
-    }
-}
-
 void CloudsVisualSystemSwim::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "Custom Button"){
 		cout << "Button pressed!" << endl;
@@ -248,6 +251,9 @@ void CloudsVisualSystemSwim::selfGuiEvent(ofxUIEventArgs &e){
             }
         }
     }
+}
+
+void CloudsVisualSystemSwim::guiRenderEvent(ofxUIEventArgs &e) {
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -288,11 +294,6 @@ void CloudsVisualSystemSwim::selfExit(){
 	
 }
 
-//events are called when the system is active
-//Feel free to make things interactive for you, and for the user!
-void CloudsVisualSystemSwim::selfKeyPressed(ofKeyEventArgs & args){
-	
-}
 void CloudsVisualSystemSwim::selfKeyReleased(ofKeyEventArgs & args){
 	
 }

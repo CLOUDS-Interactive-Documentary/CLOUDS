@@ -115,10 +115,10 @@ protected:
     //
     ofxUISuperCanvas* createCustomGui(const string& name);
     void addSliders(ofxUISuperCanvas* gui, JellyParams& params);
+    void generate();
     
-    // cam
     float camYRot, camSpeed, maxCamSpeed;
-    
+    bool regenerate;
     itg::Creatures creatures;
     itg::Bubbles bubbles;
     itg::MarineSnow snow;
