@@ -39,6 +39,7 @@
 - (void)mouseReleased:(NSPoint)p button:(int)button;
 - (void)windowResized:(NSSize)size;
 
+- (void)updateSpeakerVolumeTextField;
 - (IBAction)addIntervention:(id)sender;
 - (IBAction)updateSpeakerVolume:(id)sender;
 - (IBAction)loadClipFromTable:(id)sender;

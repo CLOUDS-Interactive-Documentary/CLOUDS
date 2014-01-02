@@ -210,7 +210,19 @@
     }
     
 }
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification
+{
+    if (aNotification.object == clipTable) {
+        [self updateSpeakerVolumeTextField];
+    }
+}
 
+- (void) updateSpeakerVolumeTextField{
+        if(clipTable.selectedRow >= 0){
+            CloudsClip& clip =parser.getAllClips()[[clipTable selectedRow]];
+            speakerVolTextBox.floatValue = clip.getSpeakerVolume();
+        }
+}
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
 

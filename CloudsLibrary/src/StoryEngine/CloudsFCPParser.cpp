@@ -1625,6 +1625,12 @@ void CloudsFCPParser::parseSpeakersVolume(){
 }
 void CloudsFCPParser::setSpeakerVolume(string speaker, float vol){
     speakerVolumes[speaker] = vol;
+    for(int i =0; i<allClips.size(); i++){
+        if(allClips[i].getSpeakerFullName() == speaker){
+            allClips[i].setSpeakerVolume(vol);
+
+        }
+    }
 }
 
 float CloudsFCPParser::getSpeakerVolume(string speakerFullName){
