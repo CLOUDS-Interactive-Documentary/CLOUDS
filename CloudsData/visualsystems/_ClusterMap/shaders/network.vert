@@ -1,13 +1,18 @@
+
 uniform float focalPlane;
 uniform float focalRange;
-uniform float lineFade;
-uniform vec3 color;
 uniform vec3 attractor;
+
+varying float colorMix;
+varying float handleHide;
 
 void main() {
 	gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;
-	//gl_Color.rgb = color;
-	
+	//normal varies across the edges 0 -> 1,
+	//so let's convert it to is 1, middle is 0
+	colorMix = (abs(gl_Normal.x - .5) * 2.);
+	handleHide = gl_Normal.z;
+	//colorMix = gl_Normal.s;
 	/*
 	float radius = 15.0;
 	float flashRadius = 200.0;
