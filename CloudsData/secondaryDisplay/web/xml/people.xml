@@ -6,17 +6,17 @@
 			<twitter>@aaronkoblin</twitter>
 			<location1>Santa Monica CA</location1>
 			<location2>San Francisco CA</location2>
-			<byline1>As creative director of the Data Arts Team at Google, he develops innovative uses of data visualization, crowdsourcing, and web-based storytelling. </byline1>
+			<byline1>As creative director of the Data Arts Team at Google, he develops innovative uses of data visualization, crowdsourcing, and web-based storytelling.</byline1>
 			<byline2>As creative director of the Data Arts Team at Google, Aaron Koblin develops innovative uses of data visualization, crowdsourcing, and web-based storytelling. He works with community generated data to reflect on cultural trends and the changing relationship between humans and the systems they create.
 			</byline2>
 			<gender>male</gender>
 		</person>
-	<person id="Andres">
+		<person id="Andres">
 			<first>Andres</first>
 			<last>Colubri</last>
 			<title>Artist, Programmer</title>
 			<twitter>@codeanticode</twitter>
-			<location1>Buenos Aires AR</location1>
+			<location1>b Buenos Aires AR</location1>
 			<location2>Cambridge MA</location2>
 			<byline1>Develops computer applications for visualization in biology and media arts. He currently works as a developer of Processing, a java-based open source programming language, in Cambridge MA. 
 </byline1>
@@ -28,7 +28,7 @@
 			<last>Sterling</last>
 			<title>Futurist, Design Critic</title>
 			<twitter>@bruces</twitter>
-			<location1>Austin TX</location1>
+			<location1>b Austin TX</location1>
 			<location2></location2>
 			<byline1>Futurist, science fiction writer and design critic, internationally recognized as a cyberspace theorist who is also still based there. His writing can be found on 'Beyond the Beyond', published by Wired magazine. 
 </byline1>
@@ -42,7 +42,7 @@
 			<title>Data Visualizer</title>
 			<twitter>@rachelbinx</twitter>
 
-			<location1>Albuquerque NM</location1>
+			<location1>b Albuquerque NM</location1>
 			<location2>San Francisco CA</location2>
 			<byline1>By encoding GPS information in images and objects, she engages with personal location data, and takes an innovative approach to mapping people’s global journeys. Lives in Brooklyn NY. 
 </byline1>
@@ -56,8 +56,8 @@
 			<last>Reas</last>
 			<title>Artist</title>
 			<twitter>@Reas</twitter>
-			<location1>Troy Ohio</location1>
-			<location2>Los Angeles, California</location2>
+			<location1>Troy OH</location1>
+			<location2>Los Angeles, CA</location2>
 			<byline1>Writes software that explores the simple rules underlying complex systems. His short text instructions create images through the results of emergent processes. Teaches in Los Angeles. 
 </byline1>
 			<byline2>He studied in the Aesthetics and Computation Group at the MIT Media lab from 1999 to 2001. With Ben Fry, Reas initiated Processing in 2001. Processing is a java-based open source programming language and environment now used by thousands of artists and designers worldwide.
@@ -70,7 +70,7 @@
 			<title>Artist, Designer, Programmer</title>
 			<twitter>@chrissugrue</twitter>
 			<location1>New Haven CT</location1>
-			<location2> Madrid, Spain</location2>
+			<location2>Madrid, Spain</location2>
 			<byline1>As a creative engineer at the Ars Electronica Futurelab, her artworks experiment with technology in playful and curious ways and investigate topics such as artificial life, eye-tracking and optical illusions. Lives in Madrid.</byline1>
 			<byline2>She has worked as a creative engineer at the Ars Electronica Futurelab, and a fellow at the Eyebeam Art and Technology Center. 
 </byline2>
@@ -83,7 +83,7 @@
 			<twitter>@roxlu</twitter>
 			<location1>Amsterdam NL</location1>
 			<location2></location2>
-			<byline1>A non-stop physics based visualization programmer who strongly believes in working with others and sharing knowledge and skills.
+			<byline1>Creates physics-based visualizations using code. He strongly believes in working with others and sharing knowledge and skills.
 </byline1>
 			<byline2>He has a background in art, 3D, hardware, interaction design. In Amsterdam, he organizes a creative coding meetup in Amsterdam and contributes to Open Frameworks, an open source toolkit for creative coding. 
 </byline2>
@@ -93,7 +93,7 @@
 			<first>Elliot</first>
 			<last>Woods
 </last>
-			<title>Digital Media Artist, Technologist
+			<title>Digital Media Artist
 </title>
 			<twitter>@elliotwoods</twitter>
 			<location1>Manchester UK</location1>
@@ -106,7 +106,7 @@
 	<person id="Elliot_UK">
 			<first>Elliot</first>
 			<last>Woods</last>
-			<title>Title</title>
+			<title>Digital Media Artist</title>
 			<twitter>@elliotwoods</twitter>
 			<location1>Manchester UK</location1>
 			<location2>Seoul, SK</location2>
@@ -194,18 +194,19 @@
 </byline2>
 			<gender>male</gender>
 		</person>
-	<person id="Jen">
+		<person id="Jen">
 			<first>Jen</first>
 			<last>Lowe</last>
 			<title>Data Artist</title>
 			<twitter>@datatelling</twitter>
 <location1>location</location1>
 			<location2>Brooklyn NY</location2>
-			<byline1>Creates visualizations that tell stories and move people. Her research focuses on the implications of data in society, and communicating information through pictures. 
-</byline1>
-			<byline2>Her research focuses on the implications of data in society, and communicating information through pictures. She is interested in creating visualizations that tell stories and move people.
-</byline1>She is passionate about open data and open source tools. In her work with technology, she brings an education in applied math and information science, and a love of literature to her work. She is a founder of the School for Poetic Compuation, with Zach Lieberman.
-</byline2>
+			<byline1>
+				Creates visualizations that tell stories and move people. Her research focuses on the implications of data in society, and communicating information through pictures. 
+			</byline1>
+			<byline2>
+				Her research focuses on the implications of data in society, and communicating information through pictures. She is interested in creating visualizations that tell stories and move people. She is passionate about open data and open source tools. In her work with technology, she brings an education in applied math and information science, and a love of literature to her work. She is a founder of the School for Poetic Computation, with Zach Lieberman.
+			</byline2>
 			<gender>female</gender>
 		</person>
 	<person id="Jer">
@@ -479,56 +480,121 @@
 			<byline2>His work applies mathematical principles underlying physics to create digital worlds, which he develops through tutorials, examples, and libraries for Processing, an open source programming language and environment.</byline2>
 			<gender>male</gender>
 		</person>
-	<person id="Sophy">
+		<person id="Sophy">
 			<first>Sophy</first>
 			<last>Yuditskaya</last>
 			<title>Researcher, Practitioner</title>
 			<twitter>@horusVacui</twitter>
 			<location1>New York NY</location1>
 			<location2></location2>
-			<byline1>Sophy examines the nature of objects and human action in relationship to their fragmented digital representations. 
-</byline1>
+			<byline1>Sophy examines the nature of objects and human action in relationship to their fragmented digital representations. </byline1>
 			<byline2>Her practice coils together a variety of performance types, including musical performance with electronic instruments, spoken word, dance, techno-futuristic rituals, and site specific social experiments.</byline2>
 			<gender>female</gender>
 		</person>
+		
 	<person id="Theo">
 			<first>Theo</first>
 			<last>Watson</last>
 			<title>Artist, Designer</title>
 			<twitter>@theowatson</twitter>
 			<location1>London UK</location1>
-<location2>Cambridge MA</location2>
-			<byline1>Develops playful interactive systems and software tools. He is the the co-founder of openFrameworks with Zach Lieberman and Arturo Castro, an open source library for writing creative code in C++.</byline1>
-			<byline2>His company Design IO, with partner Emily Gobeille, creates immersive environments that engage full-body interaction.
-</byline2>
+			<location2>Cambridge MA</location2>
+			<byline1>
+				Develops playful interactive systems and software tools. He is the the co-founder of openFrameworks with Zach Lieberman and Arturo Castro, an open source library for writing creative code in C++.
+			</byline1>
+			<byline2>
+				His company Design IO, with partner Emily Gobeille, creates immersive environments that engage full-body interaction.
+			</byline2>
 			<gender>male</gender>
 		</person>
-	<person id="Vera">
+		
+		<person id="Vera">
 			<first>Vera</first>
 			<last>Glahn</last>
 			<title>Designer, Project Manager</title>
 			<twitter>@veraglahn</twitter>
 			<location1>London UK</location1>
-			<location2></location1>
-			<byline1>Her company Field IO, with partner Marcus Wendt, designs interactive installations, audiovisual performances, and videos.</byline1>
-			<byline2>Field recently produced a non-linear film, Energy Flow, consisting of 10 animated story lines exploring themes of complexity, chaos and interconnectivity. 
-</byline2>
+			<location2></location2>
+			<byline1>
+				Her company Field IO, with partner Marcus Wendt, designs interactive installations, audiovisual performances, and videos.
+			</byline1>
+			<byline2>
+				Field recently produced a non-linear film, Energy Flow, consisting of 10 animated story lines exploring themes of complexity, chaos and interconnectivity. 
+			</byline2>
 			<gender>female</gender>
 		</person>
-	<person id="Zach">
+		<person id="Zach">
 			<first>Zach</first>
 			<last>Lieberman</last>
 			<title>Artist, Educator</title>
 			<twitter>@zachlieberman</twitter>
 			<location1>Brooklyn NY</location1>
 			<location2></location2>
-			<byline1>Explores new modes of expression and play. He develops openFrameworks, a c++ library for creative coding, and co-founded the School for Poetic Computation in Brookly NY.
-</byline1>
-			<byline2>He co-founded and develops open Frameworks, a c++ library for creative coding. He recently founded The School for Poetic Computation in Brooklyn, to bridge the gap between computer programming, engineering, design and art.
-
-</byline2>
+			<byline1>
+				Explores new modes of expression and play. He develops openFrameworks, a c++ library for creative coding, and co-founded the School for Poetic Computation in Brookly NY.
+			</byline1>
+			<byline2>
+				He co-founded and develops open Frameworks, a c++ library for creative coding. He recently founded The School for Poetic Computation in Brooklyn, to bridge the gap between computer programming, engineering, design and art.
+			</byline2>
 			<gender>male</gender>
 		</person>
 
+
+		<person id="Patricio">
+			<first>Patricio</first>
+			<last>Gonzalez Vivo</last>
+			<title>Artist</title>
+			<twitter>@patriciogv</twitter>
+			<location1>b Buenos Aires AR</location1>
+			<location2></location2>
+			<byline1>He focuses on bringing cutting-edge technologies to spaces where creativity and play can transform people. Lives in Brooklyn NY.</byline1>
+			<byline2></byline2>
+			<gender>male</gender>
+		</person>
+
+		<person id="Higa">
+			<first>Satoru</first>
+			<last>Higa</last>
+			<title>Artist, Programmer</title>
+			<twitter>@satoruhiga</twitter>
+			<location1>Tokyo JP</location1>
+			<location2></location2>
+			<byline1>
+				A creative coder who develops interactive art, games and apps. He has been an artist-in-residence at Yamaguchi Center for Arts and Media (YCAM), a collaborator with Daito Manabe.
+			</byline1>
+			<byline2>
+				Higasan has contributed numerous add-ons to open Frameworks, a c++ library for artists.
+			</byline2>
+			<gender>male</gender>
+		</person>
+		
+		<person id="LIA">
+			<first>LIA</first>
+			<last></last>
+			<title>Software artist</title>
+			<twitter>@liasomething</twitter>
+			<location1>Vienna AU</location1>
+			<location2></location2>
+			<byline1>
+				An anonymous software artist active in early net art sites re-move.org, turux.at, and processing.org. She develops generative visual systems, apps, installations, and live audioreactive performances.
+			</byline1>
+			<byline2></byline2>
+			<gender>female</gender>
+		</person>
+		
+		<person id="Damion">
+			<first>Damian</first>
+			<last>Stewart</last>
+			<title>Sound Artist, Engineer</title>
+			<twitter>@damian0815</twitter>
+			<location1>b Aukland NZ</location1>
+			<location2>
+				Works with sound, code, light, and electronics to create immersive environments that alter the viewer's sense of time and space.
+			</location2>
+			<byline1></byline1>
+			<byline2></byline2>
+			<gender>male</gender>
+		</person>
+		
 </clouds>
 

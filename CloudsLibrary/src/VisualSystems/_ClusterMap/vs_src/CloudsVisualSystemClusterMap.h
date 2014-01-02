@@ -166,7 +166,6 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofVec3f trailHead;
 
 	float nodePopLength;
-	float lineAlpha;
 	float lineFocalDistance;
 	float lineFocalRange;
 	float lineDissolve;
@@ -179,6 +178,13 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float traverseHomingMinDistance;
 	float traverseMinSolvedDistance;
 	
+	//colors~
+	bool matchLineColor;
+	ofFloatColor lineNodeColorHSV;
+	ofFloatColor lineNodeColorRGB;
+	ofFloatColor lineEdgeColorHSV;
+	ofFloatColor lineEdgeColorRGB;
+	float lineColorMixExponent;
 	//animate params
 	float traverseAnimationDuration;
 	float optionsAnimationDuration;

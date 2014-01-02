@@ -8,6 +8,7 @@
 
 CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	run = NULL;
+	matchLineColor = false;
 }
 
 //called once from start up of the app
@@ -144,7 +145,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 				arc.makeRotate(dirToStart,dirToDest);
 				
 				//handle
-				networkMesh.addColor(ofFloatColor(0,0));
+//				networkMesh.addColor(ofFloatColor(0,0));
 				networkMesh.addNormal(ofVec3f(0.0, 0.0, 0.0));
 				networkMesh.addVertex(clip.networkPosition);
 
@@ -157,13 +158,13 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 					float arcRad = ofLerp(radStart, radDest, stepPercent);
 					ofVec3f arcPoint = arcDir * arcRad + centroid;
 					
-					networkMesh.addColor(ofFloatColor(1,1));
-					networkMesh.addNormal(ofVec3f(stepPercent, 0.0, 0.0));
+//					networkMesh.addColor(ofFloatColor(1,1));
+					networkMesh.addNormal(ofVec3f(stepPercent, 0.0, 1.0));
 					networkMesh.addVertex(arcPoint);
 				}
 				
 				//handle
-				networkMesh.addColor(ofFloatColor(0,0));
+//				networkMesh.addColor(ofFloatColor(0,0));
 				networkMesh.addNormal(ofVec3f(1.0, 0.0, 0.0));
 				networkMesh.addVertex(meta[j].networkPosition);
 				
@@ -448,11 +449,30 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
     linesGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
     linesGui->addWidgetToHeader(toggle);
 	
-	linesGui->addSlider("LINE ALPHA", 0.0, 1.0, &lineAlpha);
+	float length = (linesGui->getGlobalCanvasWidth()-linesGui->getWidgetSpacing()*5)/3.;
+    float dim = linesGui->getGlobalSliderHeight();
+
 	linesGui->addSlider("LINE FOCAL DISTANCE", 0, sqrt(3000.0f), &lineFocalDistance);
 	linesGui->addSlider("LINE FOCAL RANGE", 0, sqrt(3000.0f), &lineFocalRange);
-	//TODO: line color A
-	//TODO: line color B
+	linesGui->addLabel("LINE NODE COLOR");
+    linesGui->addMinimalSlider("LN_HUE", 0.0, 1.0, &lineNodeColorHSV.r, length, dim)->setShowValue(false);
+    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    linesGui->addMinimalSlider("LN_SAT", 0.0, 1.0, &lineNodeColorHSV.g, length, dim)->setShowValue(false);
+    linesGui->addMinimalSlider("LN_BRI", 0.0, 1.0, &lineNodeColorHSV.b, length, dim)->setShowValue(false);
+    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+	linesGui->addMinimalSlider("LN_A", 0.0, 1.0, &lineNodeColorHSV.a);
+	linesGui->addLabel("LINE EDGE COLOR");
+    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+	linesGui->addButton("MATCH", &matchLineColor);
+    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    linesGui->addMinimalSlider("LE_HUE", 0.0, 1.0, &lineEdgeColorHSV.r, length, dim)->setShowValue(false);
+    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    linesGui->addMinimalSlider("LE_SAT", 0.0, 1.0, &lineEdgeColorHSV.g, length, dim)->setShowValue(false);
+    linesGui->addMinimalSlider("LE_BRI", 0.0, 1.0, &lineEdgeColorHSV.b, length, dim)->setShowValue(false);
+    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+	linesGui->addMinimalSlider("LE_A", 0.0, 1.0, &lineEdgeColorHSV.a);
+	linesGui->addMinimalSlider("COLOR MIX EXPONENT", 0, 7.0, &lineColorMixExponent);
+    //linesGui->addSpacer();
 	
 	ofAddListener(linesGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(linesGui);
@@ -553,8 +573,8 @@ void CloudsVisualSystemClusterMap::guiRenderEvent(ofxUIEventArgs &e){
 }
 
 void CloudsVisualSystemClusterMap::selfSetupTimeline(){
-	lineColor = timeline->addColors("line color", "LineColor.xml");
-	nodeColor = timeline->addColorsWithPalette("node color","NodeColor.xml", getVisualSystemDataPath() + "images/nerve_palette.png");
+//	lineColor = timeline->addColors("line color", "LineColor.xml");
+//	nodeColor = timeline->addColorsWithPalette("node color","NodeColor.xml", getVisualSystemDataPath() + "images/nerve_palette.png");
 }
 
 void CloudsVisualSystemClusterMap::selfSetDefaults(){
@@ -640,6 +660,19 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 								   traverseStartTime+traverseAnimationDuration+optionsAnimationDuration,
 								   0.0, 1.0, true);
 
+	if(matchLineColor){
+		lineEdgeColorHSV = lineNodeColorHSV;
+		matchLineColor = false;
+	}
+	lineNodeColorRGB = ofFloatColor::fromHsb(lineNodeColorHSV.r,
+											 lineNodeColorHSV.g,
+											 lineNodeColorHSV.b);
+	lineNodeColorRGB.a = lineNodeColorHSV.a;
+	lineEdgeColorRGB = ofFloatColor::fromHsb(lineEdgeColorHSV.r,
+											 lineEdgeColorHSV.g,
+											 lineEdgeColorHSV.b);
+	lineEdgeColorRGB.a = lineEdgeColorHSV.a;
+	
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -676,10 +709,21 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 		networkShader.begin();
 		networkShader.setUniform1f("focalPlane", powf(lineFocalDistance,2));
 		networkShader.setUniform1f("focalRange", powf(lineFocalRange,2));
-		networkShader.setUniform1f("lineFade", lineAlpha);
 		networkShader.setUniform3f("attractor", trailHead.x, trailHead.y, trailHead.z);
 		networkShader.setUniform1f("radius", 300.);
-		networkShader.setUniform3f("lineColor", 100/255., 150/255., 200/255.);
+		
+		networkShader.setUniform4f("lineColorNode",
+								   lineNodeColorRGB.r,
+								   lineNodeColorRGB.g,
+								   lineNodeColorRGB.b,
+								   lineNodeColorRGB.a);
+		networkShader.setUniform4f("lineColorEdge",
+								   lineEdgeColorRGB.r,
+								   lineEdgeColorRGB.g,
+								   lineEdgeColorRGB.b,
+								   lineEdgeColorRGB.a);
+		networkShader.setUniform1f("colorMixExponent", lineColorMixExponent);
+//		networkShader.setUniform3f("", 100/255., 150/255., 200/255.);
 		networkMesh.draw();
 		networkShader.end();
 	}

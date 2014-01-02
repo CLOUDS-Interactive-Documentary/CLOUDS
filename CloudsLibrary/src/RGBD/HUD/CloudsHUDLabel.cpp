@@ -56,6 +56,7 @@ void CloudsHUDLabel::draw(){
 }
 
 void CloudsHUDLabel::setText( string newText ){
+    cout << "CloudsHUDLabel::setText: " << newText;
     text = newText;
     playhead = 0;
     
