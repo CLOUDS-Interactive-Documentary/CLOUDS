@@ -5,7 +5,7 @@ void testApp::setup()
 {
  
     ofSetVerticalSync(true);
-    SetCloudsInputKinect();
+//    SetCloudsInputKinect();
 	vs.setup();
 	vs.playSystem();
 }
