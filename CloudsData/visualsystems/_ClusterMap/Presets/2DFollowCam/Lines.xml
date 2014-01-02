@@ -1,0 +1,72 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Lines</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>49.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DENSITY</Name>
+    <Value>500.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FOCAL DISTANCE</Name>
+    <Value>18.381711960</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FOCAL RANGE</Name>
+    <Value>10.748628616</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LN_HUE</Name>
+    <Value>0.612565458</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LN_SAT</Name>
+    <Value>0.586388052</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LN_BRI</Name>
+    <Value>0.513088346</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LN_A</Name>
+    <Value>0.344827592</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LE_HUE</Name>
+    <Value>0.643979073</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LE_SAT</Name>
+    <Value>0.523560822</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LE_BRI</Name>
+    <Value>0.513088346</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LE_A</Name>
+    <Value>0.522167504</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR MIX EXPONENT</Name>
+    <Value>4.551724434</Value>
+</Widget>
