@@ -29,6 +29,7 @@ CloudsFCPParser::CloudsFCPParser(){
 void CloudsFCPParser::loadFromFiles(){
     setup(GetCloudsDataPath() + "fcpxml");
 	parseVOClips();
+    parseSpeakersVolume();
     parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
 //    parseClusterMap(GetCloudsDataPath() + "gephi/2013_7_25_Clouds_conversation.SVG");
 	//parseClusterMap(GetCloudsDataPath() + "gephi/CLOUDSClusterMap.svg");
@@ -1581,6 +1582,81 @@ bool CloudsFCPParser::clipHasIntervention(string clipName){
 	return clipInterventions.find(clipName) != clipInterventions.end();
 }
 
+void CloudsFCPParser::parseSpeakersVolume(){
+    string speakersVolFilename =GetCloudsDataPath()+"sound/SpeakersVolume.txt";
+    
+	bool volFileExists = ofFile(speakersVolFilename).exists() ;
+
+    //Populate speaker vol map
+	if(volFileExists){
+        speakerVolumes.clear();
+        
+		ofBuffer speakerVolBuf = ofBufferFromFile(speakersVolFilename);
+		while(!speakerVolBuf.isLastLine()){
+			string line = speakerVolBuf.getNextLine();
+			if(line == ""){
+				continue;
+			}
+			vector<string> split = ofSplitString(line, ":", true, true);
+			if(split.size() != 2){
+				continue;
+			}
+			speakerVolumes[split[0]] = ofToFloat(split[1]);
+		}
+	}
+    else{
+        ofLogError()<<"Speakers Volume file not found"<<endl;
+    }
+    
+    map<string, float>::iterator it;
+    
+    //update clips
+    for(int i =0; i<allClips.size(); i++){
+        
+        for(it = speakerVolumes.begin(); it != speakerVolumes.end(); it++){
+        
+            if (allClips[i].getSpeakerFullName() == it->first) {
+                allClips[i].setSpeakerVolume(it->second);
+                break;
+            }
+        }
+    }
+
+}
+void CloudsFCPParser::setSpeakerVolume(string speaker, float vol){
+    speakerVolumes[speaker] = vol;
+}
+
+float CloudsFCPParser::getSpeakerVolume(string speakerFullName){
+    
+    if ( speakerVolumes.find(speakerFullName) == speakerVolumes.end() ) {
+        return -1;
+    }
+    
+    return speakerVolumes[speakerFullName];
+}
+
+void CloudsFCPParser::saveSpeakersVolume(string speakerVolFile){
+    int numClips = 0;
+    stringstream ss;
+
+    map<string, float>::iterator it;
+    
+    for(it = speakerVolumes.begin(); it!=speakerVolumes.end(); it++){
+        ss<<it->first<<":"<<it->second<<endl;
+    }
+    
+    ofBuffer buffer = ofBuffer(ss);
+    //GetCloudsDataPath()+"sound/SpeakersVolume.txt"
+    if( ofBufferToFile(speakerVolFile, buffer) ){
+        cout<<"Saved Speaker volumed to "<<speakerVolFile<<" successfully"<<endl;
+    }
+    else{
+        ofLogError()<<"Problem saving Cloud Speakers volumes file"<<endl;
+    }
+    
+}
+
 void CloudsFCPParser::saveInterventions(string interventionsFile){
     int numClips = 0;
     ofxXmlSettings linksXML;
@@ -1610,7 +1686,6 @@ void CloudsFCPParser::saveInterventions(string interventionsFile){
 			linksXML.popTag();
 		}
 	}
-    
     if(! linksXML.saveFile(interventionsFile) ){
 		if(printErrors) ofSystemAlertDialog("UNABLE TO SAVE LINKS. DO NOT PROCEED");
 	}

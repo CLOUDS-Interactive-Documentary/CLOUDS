@@ -35,6 +35,7 @@ class CloudsFCPParser {
 
 #pragma mark Links
 	void parseVOClips();
+    void parseSpeakersVolume();
     void parseLinks(string linkFile);
 //    void parseClusterMap(string mapFile); //SVG
 	void parseClusterNetwork(string fileName);
@@ -57,7 +58,9 @@ class CloudsFCPParser {
 	void addLink(string sourceName, string targetName);
 	void addLink(CloudsClip& source, CloudsClip& target);
     void addLink(CloudsLink& link);
-	
+	void setSpeakerVolume(string speaker, float vol);
+    float getSpeakerVolume(string speakerFullName);
+    
     void removeLink(string linkName, int linkIndex);
 	void removeLink(string linkName, string targetName);
 	void saveLinks(string linkFile);
@@ -137,7 +140,9 @@ class CloudsFCPParser {
     vector<string>& getContentKeywords();
 	vector<string>& getKeywordFamily(string keyword);
     
-	
+    void saveInterventions(string interventionsFile);
+	void saveSpeakersVolume(string speakerVolFile);
+    
 #pragma mark key themes
 	string closestKeyThemeToTag(string searchTag);
 	
@@ -186,6 +191,7 @@ class CloudsFCPParser {
 	map<string, vector<CloudsLink> > suppressedConnections;
 	map<string, vector<string> > sourceSupression;
     map<string, string> clipInterventions;
+    map<string, float> speakerVolumes;
     
 	//PROJECT EXAMPLES
 	vector<CloudsProjectExample> projectExamples;
@@ -203,8 +209,8 @@ class CloudsFCPParser {
     int getCentroidMapIndex(string keyword);
 	void calculateKeywordAdjascency();
 	void calculateKeywordFamilies();
-    void saveInterventions(string interventionsFile);
-	
+
+    
 	CloudsProjectExample dummyProjectExample;
     CloudsClip dummyClip; // for failed reference returns
 	float lastBackupTime;
