@@ -11,7 +11,7 @@
 			</byline2>
 			<gender>male</gender>
 		</person>
-	<person id="Andres">
+		<person id="Andres">
 			<first>Andres</first>
 			<last>Colubri</last>
 			<title>Artist, Programmer</title>
@@ -194,18 +194,19 @@
 </byline2>
 			<gender>male</gender>
 		</person>
-	<person id="Jen">
+		<person id="Jen">
 			<first>Jen</first>
 			<last>Lowe</last>
 			<title>Data Artist</title>
 			<twitter>@datatelling</twitter>
 <location1>location</location1>
 			<location2>Brooklyn NY</location2>
-			<byline1>Creates visualizations that tell stories and move people. Her research focuses on the implications of data in society, and communicating information through pictures. 
-</byline1>
-			<byline2>Her research focuses on the implications of data in society, and communicating information through pictures. She is interested in creating visualizations that tell stories and move people.
-</byline1>She is passionate about open data and open source tools. In her work with technology, she brings an education in applied math and information science, and a love of literature to her work. She is a founder of the School for Poetic Compuation, with Zach Lieberman.
-</byline2>
+			<byline1>
+				Creates visualizations that tell stories and move people. Her research focuses on the implications of data in society, and communicating information through pictures. 
+			</byline1>
+			<byline2>
+				Her research focuses on the implications of data in society, and communicating information through pictures. She is interested in creating visualizations that tell stories and move people. She is passionate about open data and open source tools. In her work with technology, she brings an education in applied math and information science, and a love of literature to her work. She is a founder of the School for Poetic Computation, with Zach Lieberman.
+			</byline2>
 			<gender>female</gender>
 		</person>
 	<person id="Jer">
@@ -490,6 +491,7 @@
 			<byline2>Her practice coils together a variety of performance types, including musical performance with electronic instruments, spoken word, dance, techno-futuristic rituals, and site specific social experiments.</byline2>
 			<gender>female</gender>
 		</person>
+		
 	<person id="Theo">
 			<first>Theo</first>
 			<last>Watson</last>
@@ -505,13 +507,14 @@
 			</byline2>
 			<gender>male</gender>
 		</person>
+		
 		<person id="Vera">
 			<first>Vera</first>
 			<last>Glahn</last>
 			<title>Designer, Project Manager</title>
 			<twitter>@veraglahn</twitter>
 			<location1>London UK</location1>
-			<location2></location1>
+			<location2></location2>
 			<byline1>
 				Her company Field IO, with partner Marcus Wendt, designs interactive installations, audiovisual performances, and videos.
 			</byline1>
@@ -565,8 +568,7 @@
 			<gender>male</gender>
 		</person>
 		
-		</person>
-			<person id="LIA">
+		<person id="LIA">
 			<first>LIA</first>
 			<last></last>
 			<title>Software artist</title>
