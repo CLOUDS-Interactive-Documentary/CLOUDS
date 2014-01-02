@@ -25,6 +25,7 @@ void CloudsSecondaryDisplayController::setup(){
 	
     
 	clusterMap.forceScreenResolution(1920, 1080);
+	clusterMap.setNumSamples(4);
 	clusterMap.setDrawToScreen(false);
 
 	clusterMap.setup();
