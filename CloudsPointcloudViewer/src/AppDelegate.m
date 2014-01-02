@@ -15,6 +15,6 @@
 
 - (IBAction)addIntervention:(id)sender{
 //    NSLog("Im here");
-    [ofApp addIntervention:self];
+//    [ofApp addIntervention:self];
 }
 @end

@@ -1,0 +1,3 @@
+Bruce Sterling:1.1
+Daniel Shiffman:0.9
+Greg Borenstein:0.5

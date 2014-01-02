@@ -15,13 +15,17 @@ class CloudsClip {
 
 	string getSpeakerLastName();
 	string getSpeakerFirstName();
+    string getSpeakerFullName();
 	string getSpeakerGender();
+    float getSpeakerVolume();
 	
 	string fcpFileId;
     string sourceVideoFilePath;
 	
 	ofVec3f networkPosition;
 	
+
+    float speakerVolume;
 	bool voiceOverAudio;
     float currentScore;
     int startFrame;
@@ -39,6 +43,7 @@ class CloudsClip {
     bool hasSpecialKeyword(string keyword);
     bool hasKeyword(string keyword);
     void setProjectExample(string projectExample);
+    void setSpeakerVolume(float vol);
 	
     vector<string>& getOriginalKeywords();
     //used to save out links

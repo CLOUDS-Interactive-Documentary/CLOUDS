@@ -26,6 +26,7 @@ CloudsClip::CloudsClip(){
     keywordsDirty = true;
 	networkPosition = ofVec3f(-1,-1,-1);
 	hasProjectExample = false;
+    speakerVolume = 1.0;
 }
 
 string CloudsClip::getLinkName(){
@@ -34,6 +35,10 @@ string CloudsClip::getLinkName(){
 
 string CloudsClip::getSpeakerFirstName(){
 	return CloudsSpeaker::speakers[person].firstName;
+}
+
+string CloudsClip::getSpeakerFullName(){
+    return CloudsSpeaker::speakers[person].firstName + " "+ CloudsSpeaker::speakers[person].lastName;
 }
 
 string CloudsClip::getSpeakerLastName(){
@@ -54,6 +59,13 @@ void CloudsClip::addOverlappingClip(CloudsClip& clip){
 
 void CloudsClip::addOverlappingClipID(string clipID){
 	overlappingClipIDs.push_back(clipID);
+}
+void CloudsClip::setSpeakerVolume(float vol){
+    speakerVolume = vol;
+}
+
+float CloudsClip::getSpeakerVolume(){
+    return speakerVolume;
 }
 
 //void CloudsClip::removeOverlappingClipName(string clipName) {

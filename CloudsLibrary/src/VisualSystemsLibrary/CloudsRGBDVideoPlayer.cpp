@@ -319,6 +319,14 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	}
 }
 
+void CloudsRGBDVideoPlayer::setVolume(float volume){
+        if(playingVO){
+            currentVoiceoverPlayer->setVolume(volume);
+        }else{
+            getPlayer().setVolume(volume);
+        }
+    }
+
 bool CloudsRGBDVideoPlayer::isPlaying(){
 	return playingVO ? currentVoiceoverPlayer->getIsPlaying() : (getPlayer().isLoaded() && getPlayer().isPlaying());
 }

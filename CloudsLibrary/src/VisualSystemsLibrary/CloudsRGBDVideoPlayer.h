@@ -27,6 +27,7 @@ public:
 	bool setupVO(string audioPath);
 	void swapAndPlay();
 	
+    void setVolume(float volume);
 	void setupProjectionUniforms(ofShader& shader);
     
 	//  CYCLE

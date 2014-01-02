@@ -11,6 +11,8 @@
 #include "ofMain.h"
 #include "ofxOsc.h"
 #include "CloudsEvents.h"
+#include "ofxXmlSettings.h"
+#include "CloudsGlobal.h"
 
 class CloudsSecondaryDisplayOSCSender
 {
