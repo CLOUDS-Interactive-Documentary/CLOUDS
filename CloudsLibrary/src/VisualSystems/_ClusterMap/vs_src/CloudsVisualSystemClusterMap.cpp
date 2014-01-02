@@ -463,7 +463,7 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
     linesGui->addMinimalSlider("LE_BRI", 0.0, 1.0, &lineEdgeColorHSV.b, length, dim)->setShowValue(false);
     linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
 	linesGui->addMinimalSlider("LE_A", 0.0, 1.0, &lineEdgeColorHSV.a);
-	linesGui->addMinimalSlider("COLOR MIX EXPONENT", 0, 7.0, &lineColorMixExponent);
+	linesGui->addMinimalSlider("COLOR MIX EXPONENT", 0, 20.0, &lineColorMixExponent);
 
 	ofAddListener(linesGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(linesGui);
@@ -680,7 +680,10 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 									 traversalPath.back().startIndex, traversalPath.back().endIndex-1,true);
 		trailHead = traversalMesh.getVertex(curIndex);
 		if(lockCameraAxis){
-			axisCamera.setPosition(trailHead*meshExpansion + ofVec3f(0,0,traversCameraDistance));
+			ofVec3f curPosition = axisCamera.getPosition();
+			ofVec3f curTarget = trailHead*meshExpansion + ofVec3f(0,0,traversCameraDistance);
+			ofVec3f newPos = curPosition + (curTarget - curPosition) * .06;
+			axisCamera.setPosition(newPos);
 			axisCamera.lookAt(trailHead*meshExpansion,ofVec3f(0,1,0));
 		}
 		else{

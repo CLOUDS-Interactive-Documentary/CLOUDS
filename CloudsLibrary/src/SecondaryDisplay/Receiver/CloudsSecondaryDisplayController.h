@@ -36,14 +36,12 @@ class CloudsSecondaryDisplayController {
     void draw();
     
     bool debug, color;
-
+	void respondToClip(CloudsClip& clip);
+	CloudsFCPParser parser;
+	
   protected:
 	
 	CloudsVisualSystemClusterMap clusterMap;
-	//CloudsRun run;
-	CloudsFCPParser parser;
-	//CloudsStoryEngine storyEngine;
-	//CloudsVisualSystemManager visualSystems;
 
 	void loadSVGs();
     void hideQuestionBox();
