@@ -6,7 +6,7 @@
 			<twitter>@aaronkoblin</twitter>
 			<location1>Santa Monica CA</location1>
 			<location2>San Francisco CA</location2>
-			<byline1>As creative director of the Data Arts Team at Google, he develops innovative uses of data visualization, crowdsourcing, and web-based storytelling. </byline1>
+			<byline1>As creative director of the Data Arts Team at Google, he develops innovative uses of data visualization, crowdsourcing, and web-based storytelling.</byline1>
 			<byline2>As creative director of the Data Arts Team at Google, Aaron Koblin develops innovative uses of data visualization, crowdsourcing, and web-based storytelling. He works with community generated data to reflect on cultural trends and the changing relationship between humans and the systems they create.
 			</byline2>
 			<gender>male</gender>
@@ -16,7 +16,7 @@
 			<last>Colubri</last>
 			<title>Artist, Programmer</title>
 			<twitter>@codeanticode</twitter>
-			<location1>Buenos Aires AR</location1>
+			<location1>b Buenos Aires AR</location1>
 			<location2>Cambridge MA</location2>
 			<byline1>Develops computer applications for visualization in biology and media arts. He currently works as a developer of Processing, a java-based open source programming language, in Cambridge MA. 
 </byline1>
@@ -28,7 +28,7 @@
 			<last>Sterling</last>
 			<title>Futurist, Design Critic</title>
 			<twitter>@bruces</twitter>
-			<location1>Austin TX</location1>
+			<location1>b Austin TX</location1>
 			<location2></location2>
 			<byline1>Futurist, science fiction writer and design critic, internationally recognized as a cyberspace theorist who is also still based there. His writing can be found on 'Beyond the Beyond', published by Wired magazine. 
 </byline1>
@@ -42,7 +42,7 @@
 			<title>Data Visualizer</title>
 			<twitter>@rachelbinx</twitter>
 
-			<location1>Albuquerque NM</location1>
+			<location1>b Albuquerque NM</location1>
 			<location2>San Francisco CA</location2>
 			<byline1>By encoding GPS information in images and objects, she engages with personal location data, and takes an innovative approach to mapping people’s global journeys. Lives in Brooklyn NY. 
 </byline1>
@@ -56,8 +56,8 @@
 			<last>Reas</last>
 			<title>Artist</title>
 			<twitter>@Reas</twitter>
-			<location1>Troy Ohio</location1>
-			<location2>Los Angeles, California</location2>
+			<location1>Troy OH</location1>
+			<location2>Los Angeles, CA</location2>
 			<byline1>Writes software that explores the simple rules underlying complex systems. His short text instructions create images through the results of emergent processes. Teaches in Los Angeles. 
 </byline1>
 			<byline2>He studied in the Aesthetics and Computation Group at the MIT Media lab from 1999 to 2001. With Ben Fry, Reas initiated Processing in 2001. Processing is a java-based open source programming language and environment now used by thousands of artists and designers worldwide.
@@ -70,7 +70,7 @@
 			<title>Artist, Designer, Programmer</title>
 			<twitter>@chrissugrue</twitter>
 			<location1>New Haven CT</location1>
-			<location2> Madrid, Spain</location2>
+			<location2>Madrid, Spain</location2>
 			<byline1>As a creative engineer at the Ars Electronica Futurelab, her artworks experiment with technology in playful and curious ways and investigate topics such as artificial life, eye-tracking and optical illusions. Lives in Madrid.</byline1>
 			<byline2>She has worked as a creative engineer at the Ars Electronica Futurelab, and a fellow at the Eyebeam Art and Technology Center. 
 </byline2>
@@ -83,7 +83,7 @@
 			<twitter>@roxlu</twitter>
 			<location1>Amsterdam NL</location1>
 			<location2></location2>
-			<byline1>A non-stop physics based visualization programmer who strongly believes in working with others and sharing knowledge and skills.
+			<byline1>Creates physics-based visualizations using code. He strongly believes in working with others and sharing knowledge and skills.
 </byline1>
 			<byline2>He has a background in art, 3D, hardware, interaction design. In Amsterdam, he organizes a creative coding meetup in Amsterdam and contributes to Open Frameworks, an open source toolkit for creative coding. 
 </byline2>
@@ -93,7 +93,7 @@
 			<first>Elliot</first>
 			<last>Woods
 </last>
-			<title>Digital Media Artist, Technologist
+			<title>Digital Media Artist
 </title>
 			<twitter>@elliotwoods</twitter>
 			<location1>Manchester UK</location1>
@@ -106,7 +106,7 @@
 	<person id="Elliot_UK">
 			<first>Elliot</first>
 			<last>Woods</last>
-			<title>Title</title>
+			<title>Digital Media Artist</title>
 			<twitter>@elliotwoods</twitter>
 			<location1>Manchester UK</location1>
 			<location2>Seoul, SK</location2>
@@ -529,6 +529,54 @@
 </byline2>
 			<gender>male</gender>
 		</person>
+
+
+		<person id="Patricio">
+			<first>Patricio</first>
+			<last>Gonzalez Vivo</last>
+			<title>Artist</title>
+			<twitter>@patriciogv</twitter>
+			<location1>b Buenos Aires AR</location1>
+			<location2></location2>
+			<byline1>He focuses on bringing cutting-edge technologies to spaces where creativity and play can transform people. Lives in Brooklyn NY.
+</byline1>
+			<byline2>
+
+</byline2>
+			<gender>male</gender>
+		</person>
+
+		<person id="Higa">
+			<first>Satoru</first>
+			<last>Higa</last>
+			<title>Artist, Programmer</title>
+			<twitter>@satoruhiga</twitter>
+			<location1>Tokyo JP</location1>
+			<location2></location2>
+			<byline1>A creative coder who develops interactive art, games and apps. He has been an artist-in-residence at Yamaguchi Center for Arts and Media (YCAM), a collaborator with Daito Manabe.
+
+</byline1>
+			<byline2> Saturo has contributed numerous add-ons to open Frameworks, a c++ library for artists.
+
+
+</byline2>
+			<gender>male</gender>
+		</person>
+
+			<person id="LIA">
+			<first>LIA</first>
+			<last></last>
+			<title>Software artist</title>
+			<twitter>@satoruhiga</twitter>
+			<location1>Vienna AU</location1>
+			<location2></location2>
+			<byline1>An anonymous software artist active in early net art sites re-move.org, turux.at, and processing.org. She develops generative visual systems, apps, installations, and live audioreactive performances.
+
+</byline1>
+			<byline2></byline2>
+			<gender>female</gender>
+		</person>
+
 
 </clouds>
 
