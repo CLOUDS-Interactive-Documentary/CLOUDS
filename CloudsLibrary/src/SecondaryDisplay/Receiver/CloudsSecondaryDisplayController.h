@@ -93,6 +93,17 @@ class CloudsSecondaryDisplayController {
             *meshProjectArtist,
             *meshProjectDescription;
     
+    ofxFTGLSimpleLayout     *layoutQuestion,
+                            *layoutBioLastName,
+                            *layoutBioFirstName,
+                            *layoutBioLocation,
+                            *layoutBioTitle,
+                            *layoutBioDescription,
+                            *layoutProjectVideo,
+                            *layoutProjectTitle,
+                            *layoutProjectArtist,
+                            *layoutProjectDescription;
+    
     int stringCounter;
 
     map<string, CloudsHUDLabel*>    hudLabelMap;
