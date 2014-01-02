@@ -4,7 +4,7 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="1920px" height="1080px" viewBox="0 0 1920 1080" enable-background="new 0 0 1920 1080" xml:space="preserve">
 <g id="BOX_x5F_INFO">
-	<rect x="48.045" y="882.504" opacity="0.16" fill="#101010" width="1824.711" height="150.083"/>
+	<rect x="48.045" y="882.504" opacity="0.9" fill="#101010" width="1824.711" height="150.083"/>
 </g>
 <g id="BOX_x5F_DETAILS">
 	<rect x="46.438" y="881.229" opacity="0.26" fill="#FFFFFF" width="2.801" height="2.807"/>
@@ -31,10 +31,8 @@
 <g id="TEXTBOX_x5F_LASTNAME_1_" opacity="0">
 	<rect id="_x3C_Path_x3E_" x="84.749" y="960.655" fill="none" width="541.777" height="43.201"/>
 </g>
-<g id="BOX_x5F_LOC">
-	<rect x="670.346" y="962.256" opacity="0.36" fill="#101010" width="275" height="40"/>
-</g>
+<rect id="BOX_x5F_LOC" x="670.346" y="962.256" opacity="0.9" fill="#101010" width="275" height="40"/>
 <g id="BOX_x5F_TITLE">
-	<rect x="670.346" y="909.745" opacity="0.36" fill="#101010" width="275" height="40"/>
+	<rect x="670.346" y="909.745" opacity="0.9" fill="#101010" width="275" height="40"/>
 </g>
 </svg>
