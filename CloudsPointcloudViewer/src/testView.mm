@@ -91,8 +91,8 @@
 		
 		currentClip = clip;
 	}
-	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
-		
+	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath,1,clip.speakerVolume) ){
+		cout<<"clip.speakerVolume : "<<clip.speakerVolume<<endl;
 		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
 		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
 									   CloudsSpeaker::speakers[clip.person].lastName,

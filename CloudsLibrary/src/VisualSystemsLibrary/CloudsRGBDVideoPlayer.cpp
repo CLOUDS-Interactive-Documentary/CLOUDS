@@ -20,7 +20,8 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	minDepth = 400;
 	maxDepth = 2000;
 	maxVolume = 1.5;
-	
+	currentMaxVolume = 1.5;
+    currentClipVolumeAdjustment = 1;
 	nextClipIsVO = false;
 	playingVO = false;
 
@@ -63,10 +64,11 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, f
 
 	nextCalibrationXML = calibrationXMLPath;
 	cout << "prerolled clip " << videoPath << " to time " << offsetTime << endl;
+
 	clipPrerolled = true;
 	nextClipIsVO = false;
     nextClipVolumeAdjustment = clipVolume;
-	
+
 	return true;
 }
 
@@ -199,6 +201,8 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 	currentPlayer->stop();
 	currentClipVolumeAdjustment = nextClipVolumeAdjustment;
     currentMaxVolume = maxVolume * currentClipVolumeAdjustment;
+    
+    cout<<"Current Max Vol: "<<currentMaxVolume<<endl;
 	swap(currentPlayer,nextPlayer);
 	swap(currentVoiceoverPlayer, nextVoiceoverPlayer);
 	
