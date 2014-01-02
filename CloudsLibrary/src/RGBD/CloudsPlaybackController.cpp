@@ -657,14 +657,14 @@ void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
 		clipLoadSuccessfullyLoaded = rgbdVisualSystem->getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath);
 	}
 	else{
-		clipLoadSuccessfullyLoaded = rgbdVisualSystem->getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, toTime);
+		clipLoadSuccessfullyLoaded = rgbdVisualSystem->getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, toTime,clip.getSpeakerVolume());
 	}
-	
+
 	if(!clipLoadSuccessfullyLoaded){
 		ofLogError("CloudsPlaybackController::prerollClip") << "Error loading clip " << clip.getLinkName() << " file path " << clip.combinedVideoPath;
 		return;
 	}
-
+    
 	prerolledClipID = clip.getID();
 }
 
