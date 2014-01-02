@@ -231,10 +231,8 @@ void CloudsVisualSystemRipples::selfUpdate()
             ofNoFill();
 #ifdef OCULUS_RIFT
             // I don't know why everything is flipped, but it is.
-            ofCircle(getCanvasHeight()() - GetCloudsInputY(), getCanvasWidth() - GetCloudsInputX(), radius);
+            ofCircle(getCanvasHeight() - GetCloudsInputY(), getCanvasWidth() - GetCloudsInputX(), radius);
 #else
-
-
             ofCircle(currentUserInput.x, currentUserInput.y , radius);
 #endif
         }

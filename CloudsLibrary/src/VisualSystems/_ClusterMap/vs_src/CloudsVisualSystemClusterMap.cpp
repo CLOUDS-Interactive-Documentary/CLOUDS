@@ -5,7 +5,6 @@
 #include "CloudsVisualSystemClusterMap.h"
 #include "CloudsGlobal.h"
 #include "CloudsFCPParser.h"
-#include "ofxBillboard.h"
 
 CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	run = NULL;
@@ -66,8 +65,6 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	for(int i = 0; i < parser->getAllClips().size(); i++){
 		maxDistance = MAX(maxDistance, parser->getAllClips()[i].networkPosition.distance(centroid));
 	}
-	
-	cout << "CENTROID " << centroid << " MAX D " << maxDistance << endl;
 	
 	//add all connections to connection mesh
 	set< pair<string,string> > connections;
@@ -819,23 +816,9 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 
 		optionsShader.end();
 	}
-	/////END OPTIONS	
-	ofPopMatrix();
-
-	////DRAW TYPE 3D
-//	if(drawType){
-//		for(int i = 0; i < topicPoints.size(); i++){
-//			glDisable(GL_LIGHTING);
-//			if(topicPoints[i].numClips > 40){
-//				ofxBillboardBeginSphericalCheat(topicPoints[i].position*meshExpansion);
-//				ofScale(.1,-.1, .1);
-//				topicFont.drawString( ofToUpper(topicPoints[i].keyword), 0, 0) ;
-//				ofxBillboardEnd();
-//			}
-//		}
-//	}
+	/////END OPTIONS
 	
-	///END TYPE
+	ofPopMatrix();
 	ofPopStyle();
 
 }
