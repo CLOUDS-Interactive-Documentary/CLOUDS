@@ -456,12 +456,13 @@ void CloudsVisualSystemCubeCraft::drawVoxelGrid()
 	
 	glDisable(GL_CULL_FACE);
 	
+	glDisable( GL_DEPTH_TEST );
+	
 	glPopAttrib();
 }
 
 void CloudsVisualSystemCubeCraft::drawCubeCraft()
 {
-	
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	
 	glEnable( GL_DEPTH_TEST );
@@ -565,7 +566,10 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	
 	glDisable(GL_CULL_FACE);
 	
+	glDisable( GL_DEPTH_TEST );
+	
 	glPopAttrib();
+	
 }
 
 void CloudsVisualSystemCubeCraft::resizeVoxelGrid()
