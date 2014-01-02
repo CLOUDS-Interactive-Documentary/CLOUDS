@@ -19,6 +19,7 @@
 #include "ofxOsc.h"
 #include "CloudsSpeaker.h"
 #include "CloudsSVGMesh.h"
+#include "CloudsHUDLabel.h"
 
 class CloudsSecondaryDisplayController {
   public:
@@ -91,6 +92,10 @@ class CloudsSecondaryDisplayController {
             *meshProjectTitle,
             *meshProjectArtist,
             *meshProjectDescription;
+    
+    int stringCounter;
+
+    map<string, CloudsHUDLabel*>    hudLabelMap;
 
 
 };

@@ -10,6 +10,7 @@
 		185CE9B1184A5FC800F43977 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 185CE996184A5FC800F43977 /* libftgl.a */; };
 		185CE9B5184A5FC800F43977 /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185CE99F184A5FC800F43977 /* ofxFTGLFont.cpp */; };
 		185CE9B6184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9A1184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp */; };
+		235C96A91874F97E004523AB /* CloudsHUDLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235C96A81874F97E004523AB /* CloudsHUDLabel.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -205,6 +206,8 @@
 		185CE9A0184A5FC800F43977 /* ofxFTGLFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLFont.h; sourceTree = "<group>"; };
 		185CE9A1184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFTGLSimpleLayout.cpp; sourceTree = "<group>"; };
 		185CE9A2184A5FC800F43977 /* ofxFTGLSimpleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLSimpleLayout.h; sourceTree = "<group>"; };
+		235C96A71874F97E004523AB /* CloudsHUDLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsHUDLabel.h; path = ../../RGBD/HUD/CloudsHUDLabel.h; sourceTree = "<group>"; };
+		235C96A81874F97E004523AB /* CloudsHUDLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsHUDLabel.cpp; path = ../../RGBD/HUD/CloudsHUDLabel.cpp; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1167,6 +1170,8 @@
 		E70CEC6A18696B5400955691 /* Receiver */ = {
 			isa = PBXGroup;
 			children = (
+				235C96A71874F97E004523AB /* CloudsHUDLabel.h */,
+				235C96A81874F97E004523AB /* CloudsHUDLabel.cpp */,
 				E70CEC6E18696B5400955691 /* CloudsSecondaryDisplayController.h */,
 				E70CEC6D18696B5400955691 /* CloudsSecondaryDisplayController.cpp */,
 			);
@@ -1672,6 +1677,7 @@
 				E704D37617B3BBA900F77528 /* ofxRParticleSystem.cpp in Sources */,
 				E704D37717B3BBA900F77528 /* ofxSolver.cpp in Sources */,
 				E704D37817B3BBA900F77528 /* ofxSphericalAttractionBehavior.cpp in Sources */,
+				235C96A91874F97E004523AB /* CloudsHUDLabel.cpp in Sources */,
 				E704D37917B3BBA900F77528 /* ofxSwarmBehavior.cpp in Sources */,
 				E704D37A17B3BBA900F77528 /* ofxVerletSolver.cpp in Sources */,
 				E7176E2F17D3DABA00C8DC38 /* CloudsQuestion.cpp in Sources */,
