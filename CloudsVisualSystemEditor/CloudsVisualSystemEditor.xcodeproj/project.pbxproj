@@ -721,8 +721,6 @@
 		E7D9D4D4182AFBBF00AD56C1 /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7D9D4D3182AFBBF00AD56C1 /* opencv.a */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
-		E7F0511018712C9700017521 /* ofxAnimationPrimitivesTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F0510018712C9700017521 /* ofxAnimationPrimitivesTimer.cpp */; };
-		E7F0511118712C9700017521 /* ofxAnimationPrimitivesTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F0510018712C9700017521 /* ofxAnimationPrimitivesTimer.cpp */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
 		E7FB28541830D9E2009EBD0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		E7FB28551830D9E2009EBD0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -2298,14 +2296,6 @@
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F050F818712C9700017521 /* coroutine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = coroutine.hpp; sourceTree = "<group>"; };
 		E7F050F918712C9700017521 /* ofxAnimationPrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitives.h; sourceTree = "<group>"; };
-		E7F050FA18712C9700017521 /* ofxAnimationPrimitivesConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesConstants.h; sourceTree = "<group>"; };
-		E7F050FB18712C9700017521 /* ofxAnimationPrimitivesEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesEasing.h; sourceTree = "<group>"; };
-		E7F050FC18712C9700017521 /* ofxAnimationPrimitivesGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesGenerator.h; sourceTree = "<group>"; };
-		E7F050FD18712C9700017521 /* ofxAnimationPrimitivesInstanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesInstanceManager.h; sourceTree = "<group>"; };
-		E7F050FE18712C9700017521 /* ofxAnimationPrimitivesPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesPattern.h; sourceTree = "<group>"; };
-		E7F050FF18712C9700017521 /* ofxAnimationPrimitivesReplicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesReplicator.h; sourceTree = "<group>"; };
-		E7F0510018712C9700017521 /* ofxAnimationPrimitivesTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAnimationPrimitivesTimer.cpp; sourceTree = "<group>"; };
-		E7F0510118712C9700017521 /* ofxAnimationPrimitivesTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAnimationPrimitivesTimer.h; sourceTree = "<group>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7FB29B01830D9E2009EBD0E /* CloudsVisualSystemEditorOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudsVisualSystemEditorOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7FB29B11830D9E3009EBD0E /* CloudsVisualSystemEditor copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CloudsVisualSystemEditor copy-Info.plist"; path = "/Users/focus/Documents/Xcode/oF/of_gitRelease_obviousjim/openFrameworks/apps/CLOUDS/CloudsVisualSystemEditor/CloudsVisualSystemEditor copy-Info.plist"; sourceTree = "<absolute>"; };
@@ -6508,14 +6498,6 @@
 			children = (
 				E7F050F818712C9700017521 /* coroutine.hpp */,
 				E7F050F918712C9700017521 /* ofxAnimationPrimitives.h */,
-				E7F050FA18712C9700017521 /* ofxAnimationPrimitivesConstants.h */,
-				E7F050FB18712C9700017521 /* ofxAnimationPrimitivesEasing.h */,
-				E7F050FC18712C9700017521 /* ofxAnimationPrimitivesGenerator.h */,
-				E7F050FD18712C9700017521 /* ofxAnimationPrimitivesInstanceManager.h */,
-				E7F050FE18712C9700017521 /* ofxAnimationPrimitivesPattern.h */,
-				E7F050FF18712C9700017521 /* ofxAnimationPrimitivesReplicator.h */,
-				E7F0510018712C9700017521 /* ofxAnimationPrimitivesTimer.cpp */,
-				E7F0510118712C9700017521 /* ofxAnimationPrimitivesTimer.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -7508,7 +7490,6 @@
 				E70CEC651869649200955691 /* GestureRendererInPlace.cpp in Sources */,
 				F37C7E95186EB28C00FCDA79 /* ControlTriggerFilter.cpp in Sources */,
 				E70CEC671869649200955691 /* GestureRendererTraveling.cpp in Sources */,
-				E7F0511018712C9700017521 /* ofxAnimationPrimitivesTimer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8012,7 +7993,6 @@
 				E70CEC661869649200955691 /* GestureRendererInPlace.cpp in Sources */,
 				F37C7EAA186EB28C00FCDA79 /* LFNoise.cpp in Sources */,
 				E70CEC681869649200955691 /* GestureRendererTraveling.cpp in Sources */,
-				E7F0511118712C9700017521 /* ofxAnimationPrimitivesTimer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8045,6 +8025,7 @@
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "AVF_PLAYER=1";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
@@ -8085,6 +8066,7 @@
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = "AVF_PLAYER=1";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
