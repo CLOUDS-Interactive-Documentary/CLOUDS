@@ -6,11 +6,20 @@
 #include "CloudsClusterNode.h"
 #include "CloudsQuestion.h"
 #include "CloudsRun.h"
+#include "ofxFTGLFont.h"
 
 typedef struct{
 	ofIndexType startIndex;
 	ofIndexType endIndex;
 } TraversalSegment;
+
+typedef struct{
+	string keyword;
+	ofVec3f position;
+	ofVec2f screenPosition;
+	int numClips;
+	float normalizedTopicScale;
+} TopicPoint;
 
 class CloudsFCPParser;
 class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
@@ -83,6 +92,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	// or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 	void selfDrawBackground();
 
+	void selfDrawOverlay();
+	
 	// this is called when your system is no longer drawing.
 	// Right after this selfUpdate() and selfDraw() won't be called any more
 	void selfEnd();
@@ -119,6 +130,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofxUISuperCanvas* optionPathsGui;
 	ofxUISuperCanvas* traversalGui;
 	ofxUISuperCanvas* followCamGui;
+	ofxUISuperCanvas* typeGui;
 	
 	ofEasyCam easyCamera;
 	ofCamera axisCamera;
@@ -132,9 +144,6 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	bool drawLines;
 	bool drawTraversal;
 	bool drawOptionPaths;
-	
-	ofxTLColorTrack* lineColor;
-	ofxTLColorTrack* nodeColor;
 	
 	vector<CloudsClusterNode> nodes;
 	map<string,int> clipIdToNodeIndex;
@@ -202,6 +211,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofFloatColor optionColorHSV;
 	ofFloatColor optionColorRGB;
 
+	
 	//animate params
 	float traverseAnimationDuration;
 	float optionsAnimationDuration;
@@ -211,6 +221,20 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float traverseStartTime;
 	float percentTraversed;
 	float percentOptionsRevealed;
+	
+	//type vars
+	void populateTopicPoints();
+	vector<TopicPoint> topicPoints;
+	vector<ofxFTGLFont> topicFont;
+	bool drawType;
+	int baseFontSize;
+	ofIntRange clipsShowTopic;
+	ofRange clipCountRange;
+	ofRange typeDistanceRange;
+	ofIntRange typeSizeRange;
+	ofIntRange currentTypeSizeRange;
+	//int currentFontSize;
+	//ofRange typeScaleRange;
 	
 	ofVec3f randomDirection();
 	

@@ -2,21 +2,21 @@
     <Kind>42</Kind>
     <Name>FollowCam</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>329.000000000</XPosition>
-    <YPosition>478.000000000</YPosition>
+    <XPosition>824.000000000</XPosition>
+    <YPosition>304.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>CAMERA DISTANCE</Name>
-    <Value>157.931030273</Value>
+    <Value>288.571441650</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>LOCK AXIS</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FOV</Name>
-    <Value>17.556650162</Value>
+    <Value>11.625616074</Value>
 </Widget>

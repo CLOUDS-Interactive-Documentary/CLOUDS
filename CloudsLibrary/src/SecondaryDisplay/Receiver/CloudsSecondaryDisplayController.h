@@ -12,9 +12,6 @@
 #include "ofxOsc.h"
 
 #include "CloudsVisualSystemClusterMap.h"
-//#include "CloudsRun.h"
-//#include "CloudsStoryEngine.h"
-//#include "CloudsAct.h"
 #include "CloudsFCPParser.h"
 #include "ofxOsc.h"
 #include "CloudsSpeaker.h"
@@ -36,14 +33,12 @@ class CloudsSecondaryDisplayController {
     void draw();
     
     bool debug, color;
-
+	void respondToClip(CloudsClip& clip);
+	CloudsFCPParser parser;
+	
   protected:
 	
 	CloudsVisualSystemClusterMap clusterMap;
-	//CloudsRun run;
-	CloudsFCPParser parser;
-	//CloudsStoryEngine storyEngine;
-	//CloudsVisualSystemManager visualSystems;
 
 	void loadSVGs();
     void hideQuestionBox();
