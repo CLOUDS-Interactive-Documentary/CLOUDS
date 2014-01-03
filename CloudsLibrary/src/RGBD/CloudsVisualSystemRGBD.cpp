@@ -322,10 +322,18 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 	transitionEditorGui->addButton("transition", true);
 	
+	transitionEditorGui->addSpacer();
+	
+	transitionEditorGui->addButton("lookThoughIN", true );
+	transitionEditorGui->addButton("lookThoughOUT", true );
+	
+	
 	CloudsQuestion::addQuestionVariables( transitionEditorGui );
 	
 	guis.push_back(transitionEditorGui);
 	guimap[meshGui->getName()] = transitionEditorGui;
+	
+	ofAddListener(globalMeshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
 	
 //	connectorGui = new ofxUISuperCanvas("CONNECTORS", gui);
 //	connectorGui->copyCanvasStyle(gui);
