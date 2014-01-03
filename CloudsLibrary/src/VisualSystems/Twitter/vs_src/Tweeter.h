@@ -36,6 +36,7 @@ public:
     int nodeVertexIndex;
     int edgeVertexIndex;
 	int refreshNum;
+    float textDecayRate;
 	
     bool hasTweetOnDate(string tweetDate);
     vector<Tweet>& getTweetsByDate(string t);

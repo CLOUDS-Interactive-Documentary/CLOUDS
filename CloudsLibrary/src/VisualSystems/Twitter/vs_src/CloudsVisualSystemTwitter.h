@@ -129,7 +129,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void updateActiveTweeters(int index);
     void setActiveTweeters(int index );
     void updateMesh();
-    void drawText(string text, ofVec3f pos);
+    void drawText(string text, ofVec3f pos, float alpha);
     void drawText2D(string text, ofVec2f pos);
 
     //helpers 

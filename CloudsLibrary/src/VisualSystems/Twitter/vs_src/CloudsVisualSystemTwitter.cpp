@@ -127,7 +127,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	clusterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     clusterGui->addToggle("RENDER MESH", &bRenderMesh);
     clusterGui->addIntSlider("REFRESH RATE", 1, 500, &refreshRate);
-    clusterGui->addIntSlider("REFRESH RATE", 1, 100, &activeTweeterRefreshRate);
+//    clusterGui->addIntSlider("REFRESH RATE", 1, 100, &activeTweeterRefreshRate);
     clusterGui->addRangeSlider("DATE RANGE", 1,  (dateIndex.size()), &dateIndexMin, & dateIndexMax);
     clusterGui->addToggle("ROTATE", &rotateModel);
     clusterGui->addMinimalSlider("ROTATION AMT", 0.1, 1, &rotationAmount);
@@ -452,6 +452,7 @@ void CloudsVisualSystemTwitter::setActiveTweeters(int index){
         }
 
         activeTweeters[i]->refreshNum = 0;
+        activeTweeters[i]->textDecayRate = 1.0;
         vector<Tweet>&  tweetsOnDate = tweeters[i].getTweetsByDate(currentDate);
 		int activityMapIndex = tweeters[i].activityMapCoord.y * activityMap.getWidth() + tweeters[i].activityMapCoord.x;
 		activityMap.getPixels()[activityMapIndex] = 1.0;
@@ -900,11 +901,16 @@ void CloudsVisualSystemTwitter::selfUpdate()
 
     }
     updateMesh();
-    //  
-    if(ofGetFrameNum() % activeTweeterRefreshRate == 0 && bAnimate){
+    //
+//    if(ofGetFrameNum() % activeTweeterRefreshRate == 0 && bAnimate){
         setActiveTweeters(currentDateIndex);
-    }
+//    }
 
+    if(bRenderText){
+        for(int i = 0; i < activeTweeters.size(); i++){
+            activeTweeters[i]->textDecayRate *= activityMapDamping;
+        }
+    }
     
 	for(int i = 0; i < activityMap.getWidth()*activityMap.getHeight(); i++){
 		activityMap.getPixels()[i] *= activityMapDamping;
@@ -933,7 +939,7 @@ void CloudsVisualSystemTwitter::selfDraw()
     ofSetBackgroundColor(0,0,0);
     glDisable(GL_DEPTH_TEST);
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
-    
+    ofEnableSmoothing();
 	ofFloatColor lineNodeBase = getRGBfromHSV(lineNodeBaseHSV);
 	ofFloatColor lineEdgeBase = getRGBfromHSV(lineEdgeBaseHSV);
 	ofFloatColor lineNodePop = getRGBfromHSV(lineNodePopHSV);
@@ -1002,7 +1008,8 @@ void CloudsVisualSystemTwitter::selfDraw()
     
     if(bRenderText){
         for(int i = 0; i < activeTweeters.size(); i++){
-            drawText(activeTweeters[i]->name,activeTweeters[i]->position);
+//            activeTweeters[i]->textDecayRate *= edgeDecayRate;
+            drawText(activeTweeters[i]->name,activeTweeters[i]->position,activeTweeters[i]->textDecayRate);
         }
     }
     ofPopMatrix();
@@ -1287,11 +1294,13 @@ void CloudsVisualSystemTwitter::drawText2D(string text, ofVec2f pos){
     ofPopStyle();
 }
 
-void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
+void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos, float alpha){
     ofFloatColor  col = getRGBfromHSV(textColorHSV);
+    col.a = alpha;
     ofxBillboardBeginSphericalCheat(pos);
     ofPushStyle();
     ofSetColor(col);
+//    ofSetColor(col.r,col.g,col.b,col.a);
     ofScale(0.01,-0.01,0.01);
     ofTranslate(pos.x,pos.y,pos.z);
     font.drawString(ofToUpper(text),0,0);
