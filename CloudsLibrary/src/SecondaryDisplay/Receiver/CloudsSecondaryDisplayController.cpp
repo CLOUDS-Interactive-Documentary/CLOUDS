@@ -17,6 +17,7 @@ CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
     darkBlue = ofColor::fromHex(0x439ced);
     color = false;
     stringCounter = 0;
+    tx = .1;
 }
 
 void CloudsSecondaryDisplayController::setup(){
@@ -72,16 +73,17 @@ void CloudsSecondaryDisplayController::setup(){
     meshProjectDescription = projectLayout.getMeshByID("TEXTBOX_x5F_DESC_1_");
     
     //setup all font layout objects
-    layoutQuestion = getLayoutForLayer(meshQuestion, "Blender-BOOK");
-    layoutBioLastName = getLayoutForLayer(meshBioLastName, "Blender-BOOK");
-    layoutBioFirstName = getLayoutForLayer(meshBioFirstName, "Blender-THIN");
-    layoutBioLocation = getLayoutForLayer(meshBioLocation, "Blender-BOOK");
-    layoutBioTitle = getLayoutForLayer(meshBioTitle, "Blender-BOOK");
-    layoutBioDescription = getLayoutForLayer(meshBioDescription, "Blender-BOOK");
-    layoutProjectVideo = getLayoutForLayer(meshProjectVideo, "Blender-BOOK");
-    layoutProjectTitle = getLayoutForLayer(meshProjectTitle, "Blender-THIN");
-    layoutProjectArtist = getLayoutForLayer(meshProjectArtist, "Blender-BOOK");
-    layoutProjectDescription = getLayoutForLayer(meshProjectDescription, "Blender-BOOK");
+    layoutQuestion = getLayoutForLayer(meshQuestion, "Blender-BOOK", .04);
+    
+    fontBioLastName = getFontForLayer(meshBioLastName, "Blender-BOOK", 45);
+    fontBioFirstName = getFontForLayer(meshBioFirstName, "Blender-THIN", 45);
+    fontBioLocation = getFontForLayer(meshBioLocation, "Blender-BOOK", 65);
+    fontBioTitle = getFontForLayer(meshBioTitle, "Blender-BOOK", 65);
+    
+    layoutBioDescription = getLayoutForLayer(meshBioDescription, "Blender-BOOK", .04);
+    layoutProjectTitle = getLayoutForLayer(meshProjectTitle, "Blender-THIN", .045);
+    layoutProjectArtist = getLayoutForLayer(meshProjectArtist, "Blender-BOOK", .065);
+    layoutProjectDescription = getLayoutForLayer(meshProjectDescription, "Blender-BOOK", .04);
     
 	displayTarget.allocate(1920, 1080, GL_RGB);
     // cleanup!
@@ -104,7 +106,7 @@ void CloudsSecondaryDisplayController::loadSVGs(){
     questionLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/QUESTION/QUESTION.svg");
 }
 
-ofxFTGLSimpleLayout* CloudsSecondaryDisplayController::getLayoutForLayer( SVGMesh* textMesh, string font) {
+ofxFTGLSimpleLayout* CloudsSecondaryDisplayController::getLayoutForLayer( SVGMesh* textMesh, string font, float kerning) {
     
     if( textMesh != NULL ){
         
@@ -112,7 +114,9 @@ ofxFTGLSimpleLayout* CloudsSecondaryDisplayController::getLayoutForLayer( SVGMes
         // make a layout
         ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
         newLayout->loadFont( GetCloudsDataPath() + "font/"+font+".ttf", fontSize );
+      //  newLayout->setTracking(kerning);
         newLayout->setLineLength( textMesh->bounds.width );
+        //newLayout->set
         
         // make a label
         CloudsHUDLabel *newLabel = new CloudsHUDLabel();
@@ -120,6 +124,27 @@ ofxFTGLSimpleLayout* CloudsSecondaryDisplayController::getLayoutForLayer( SVGMes
         hudLabelMap[textMesh->id] = newLabel;
         
         return newLayout;
+    }
+    
+    return NULL;
+}
+
+ofxFTGLFont* CloudsSecondaryDisplayController::getFontForLayer( SVGMesh* textMesh, string font, float kerning) {
+    
+    if( textMesh != NULL ){
+        
+        int fontSize = getFontSizeForMesh( textMesh, font );
+        // make a layout
+        ofxFTGLFont *newFont = new ofxFTGLFont();
+        newFont->loadFont( GetCloudsDataPath() + "font/"+font+".ttf", fontSize );
+        newFont->setTracking(kerning * .1);
+        
+        // make a label
+        CloudsHUDLabel *newLabel = new CloudsHUDLabel();
+        newLabel->setup( newFont, textMesh->bounds );
+        hudLabelMap[textMesh->id] = newLabel;
+        
+        return newFont;
     }
     
     return NULL;
@@ -302,8 +327,8 @@ void CloudsSecondaryDisplayController::draw(){
             ////last name
             lastName = ofToUpper(lastName);
             
-            float firstNameWidth = layoutBioFirstName->getStringBoundingBox(firstName, 0, 0).width;
-            float lastNameWidth = layoutBioLastName->getStringBoundingBox(lastName, 0, 0).width;
+            float firstNameWidth = fontBioFirstName->getStringBoundingBox(firstName, 0, 0).width;
+            float lastNameWidth = fontBioLastName->getStringBoundingBox(lastName, 0, 0).width;
             float longestNameWidth;
             if(firstNameWidth > lastNameWidth)
                 longestNameWidth = firstNameWidth;

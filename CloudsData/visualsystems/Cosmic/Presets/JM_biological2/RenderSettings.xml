@@ -1,0 +1,27 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>382.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RADIUS</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>COLOR PALETTE</Name>
+    <Value>141.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SHADOW SCALE</Name>
+    <Value>15.605911255</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SHADOW OPACITY</Name>
+    <Value>0.428571433</Value>
+</Widget>
