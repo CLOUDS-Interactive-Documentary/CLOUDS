@@ -8,44 +8,19 @@
 
 #include "CloudsTransitionController.h"
 
-
-//void CloudsTransitionController::addControllerTween( string name, float startTime, float span, float startVal, float endVal, float *value ){
-//	
-//	CloudsPlaybackControllerTween t;
-//	t.setup( name, startTime, span, startVal, endVal, value );
-//	
-//	controllerTweens.push_back( t );
-//}
-//
-
-//void CloudsTransitionController::setup( string _name, float _startTime, float _span, float _startVal, float _endVal, float *_value){
-//	name = _name;
-//	
-//	startTime = _startTime;
-//	span = _span;
-//	endTime = startTime + span;
-//	
-//	startVal = _startVal;
-//	endVal = _endVal;
-//	
-//	value = _value;
-//	
-//	bStarted = false;
-//	bEnded = false;
-//	autoDelete = true;
-//}
-
 CloudsTransitionController::CloudsTransitionController(){
 	transitioning = false;
 	triggeredMidpoint = false;
 	newState = false;
+	currentState = TRANSITION_INTERVIEW_IDLE;
 }
 
 void CloudsTransitionController::transitionToVisualSystem(float outDuration, float inDuration){
-	
+
+	currentState = TRANSITION_INTERVIEW_OUT;
+
 	transitioning = true;
 	triggeredMidpoint = false;
-	currentState = TRANSITION_INTERVIEW_OUT;
 	newState = true;
 	
 	transitionStartTime = ofGetElapsedTimef();
@@ -54,10 +29,11 @@ void CloudsTransitionController::transitionToVisualSystem(float outDuration, flo
 }
 
 void CloudsTransitionController::transitionToInterview(float outDuration, float inDuration){
-	
+
+	currentState = TRANSITION_VISUALSYSTEM_OUT;
+
 	transitioning = true;
 	triggeredMidpoint = false;
-	currentState = TRANSITION_VISUALSYSTEM_OUT;
 	newState = true;
 	
 	transitionStartTime = ofGetElapsedTimef();
@@ -76,23 +52,47 @@ float CloudsTransitionController::getFadeValue(){
 
 void CloudsTransitionController::update() {
 	if(transitioning){
-		percentTransitionOut = ofMap(ofGetElapsedTimef(), transitionStartTime, transitionOutCompleteTime, 0, 1.0, true);
-		percentTransitionIn  = ofMap(ofGetElapsedTimef(), transitionOutCompleteTime, transitionInCompleteTime, 0, 1.0, true);
-		if(!triggeredMidpoint && percentTransitionIn >= 1.0){
+		
+		percentTransitionOut = ofMap(ofGetElapsedTimef(), transitionStartTime, transitionOutCompleteTime, 0.0, 1.0, true);
+		percentTransitionIn  = ofMap(ofGetElapsedTimef(), transitionOutCompleteTime, transitionInCompleteTime, 0.0, 1.0, true);
+		
+//		cout << "	OUT PERCENT " << percentTransitionOut << " IN PERCENT " << percentTransitionIn << endl;
+		
+		if(!triggeredMidpoint && percentTransitionOut >= 1.0){
 			//TRIGGER MIDPOINT
 			newState = true;
 			triggeredMidpoint = true;
+			getNextState();
 		}
-		if(percentTransitionOut >= 0){
+		if(percentTransitionIn >= 1.0){
 			//TRIGGER FINISHED
 			newState = true;
 			transitioning = false;
+			getNextState();
 		}
 	}
 }
 
 CloudsTransitionState CloudsTransitionController::getCurrentState(){
 	return currentState;
+}
+
+string CloudsTransitionController::getCurrentStateDescription(){
+	switch(currentState){
+		case TRANSITION_INTERVIEW_IDLE:
+			return "TransitionIdle";
+		case TRANSITION_INTERVIEW_OUT:
+			return "TransitionInterviewOut";
+		case TRANSITION_VISUALSYSTEM_IN:
+			return "TransitionVisualSystemIn";
+		case TRANSITION_VISUALSYSTEM_OUT:
+			return "TransitionVisualSystemOut";
+		case TRANSITION_INTERVIEW_IN:			
+			return "TransitionInterviewIn";
+		default:
+			return "UNKNOWN STATE " + ofToString(int(currentState));
+	}
+	
 }
 
 bool CloudsTransitionController::isStateNew(){
@@ -102,10 +102,27 @@ bool CloudsTransitionController::isStateNew(){
 }
 
 bool CloudsTransitionController::fadingOut(){
-	return currentState == TRANSITION_VISUALSYSTEM_OUT || currentState == TRANSITION_VISUALSYSTEM_OUT;
+	return currentState == TRANSITION_VISUALSYSTEM_OUT || currentState == TRANSITION_INTERVIEW_OUT;
 }
 
 //move to the next state
 CloudsTransitionState CloudsTransitionController::getNextState(){
-	return CloudsTransitionState( (int(currentState) + 1) % 4);
+
+	switch(currentState){
+		case TRANSITION_INTERVIEW_IDLE:
+			break;
+		case TRANSITION_INTERVIEW_OUT:
+			currentState = TRANSITION_VISUALSYSTEM_IN;
+			break;
+		case TRANSITION_VISUALSYSTEM_IN:
+			currentState = TRANSITION_INTERVIEW_IDLE;
+			break;
+		case TRANSITION_VISUALSYSTEM_OUT:
+			currentState = TRANSITION_INTERVIEW_IN;
+			break;
+		case TRANSITION_INTERVIEW_IN:
+			currentState = TRANSITION_INTERVIEW_IDLE;
+			break;
+	}
+
 }

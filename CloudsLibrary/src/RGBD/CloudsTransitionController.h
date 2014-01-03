@@ -11,17 +11,16 @@
 #include "ofMain.h"
 
 typedef enum {
-	TRANSITION_INTERVIEW_OUT = 0,
-	TRANSITION_VISUALSYSTEM_IN = 1,
-	TRANSITION_VISUALSYSTEM_OUT = 2,
-	TRANSITION_INTERVIEW_IN = 3
+	TRANSITION_INTERVIEW_IDLE = 0,
+	TRANSITION_INTERVIEW_OUT = 1,
+	TRANSITION_VISUALSYSTEM_IN = 2,
+	TRANSITION_VISUALSYSTEM_OUT = 3,
+	TRANSITION_INTERVIEW_IN = 4
 } CloudsTransitionState;
 
 class CloudsTransitionController {
   public:
 	CloudsTransitionController();
-
-	void setup();
 	
 	void transitionToVisualSystem(float transitionOutDuration, float transitionInDuration);
 	void transitionToInterview(float transitionOutDuration, float transitionInDuration);
@@ -41,6 +40,7 @@ class CloudsTransitionController {
 	
 	bool isStateNew();
 	CloudsTransitionState getCurrentState();
+	string getCurrentStateDescription();
 	//ofEvent<CloudsPlaybackControllerEvent> CloudsPlaybackControllerEvent::events;
   protected:
 	
