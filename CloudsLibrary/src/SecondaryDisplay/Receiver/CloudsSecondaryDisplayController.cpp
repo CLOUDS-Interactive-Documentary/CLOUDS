@@ -61,10 +61,10 @@ void CloudsSecondaryDisplayController::setup(){
     ////for bio
     meshBioFirstName = bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME_2_");
     meshBioLastName = bioLayout.getMeshByID("TEXTBOX_x5F_LASTNAME_1_");
-    meshBioTitle = bioLayout.getMeshByID("TEXTBOX_x5F_TITLE_1_");
+    meshBioTitle = bioLayout.getMeshByID("TEXTBOX_x5F_TITLE");
     meshBioTitle->bounds.width = 1000;
     meshBioTitleBG = bioLayout.getMeshByID("BOX_x5F_TITLE");
-    meshBioLocation = bioLayout.getMeshByID("TEXTBOX_x5F_LOC_1_");
+    meshBioLocation = bioLayout.getMeshByID("TEXTBOX_x5F_LOC");
     meshBioLocation->bounds.width = 1000;
     meshBioLocationBG = bioLayout.getMeshByID("BOX_x5F_LOC");
     meshBioDescription = bioLayout.getMeshByID("TEXTBOX_x5F_BIO");
