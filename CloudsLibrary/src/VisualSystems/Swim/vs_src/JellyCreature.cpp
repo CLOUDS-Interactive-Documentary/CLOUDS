@@ -192,7 +192,7 @@ namespace itg
         
         shader.setUniform1f("texAmount", 0.f);
         shader.setUniform1f("lightingAmount", 1.f);
-        shader.setUniform4f("colour", bodyColour.r, bodyColour.g, bodyColour.b, bodyAlpha + pulseAmt * sin(ofGetElapsedTimef() * frequency));
+        shader.setUniform4f("colour", bodyColour.r, bodyColour.g, bodyColour.b, bodyAlpha + pulseAmt * cos(ofGetElapsedTimef() * frequency));
         if (drawInner) innerMesh.draw();
         
         shader.setUniform1f("texAmount", 0.f);

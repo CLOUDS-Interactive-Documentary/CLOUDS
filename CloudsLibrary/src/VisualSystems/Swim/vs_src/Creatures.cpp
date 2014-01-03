@@ -356,6 +356,12 @@ namespace itg
             }
         }
         
+        ofSetColor(0, 255, 0);
+        for (unsigned i = 0; i < tentaclePosns.size(); ++i)
+        {
+            ofCircle(tentaclePosns[i].x, tentaclePosns[i].y, tentaclePosns[i].z, 20.f);
+        }
+        
         // tentacles
         ofPushStyle();
         ofSetColor(255);

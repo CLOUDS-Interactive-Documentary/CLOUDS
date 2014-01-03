@@ -102,7 +102,8 @@ void CloudsVisualSystemSwim::selfUpdate()
     ry.makeRotate(currentLookAngle.y, 0, 1, 0);
     getCameraRef().setOrientation(rx * ry);
     //getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
-    getCameraRef().move(0, 0, ofMap(GetCloudsInputY(), 0, ofGetHeight(), -50.f, 0.f));
+    //getCameraRef().move(0, 0, ofMap(GetCloudsInputY(), 0, ofGetHeight(), -50.f, 0.f));
+    getCameraRef().setPosition(0, 0, 2000);
     
     //bubbles.update();
     creatures.update();
