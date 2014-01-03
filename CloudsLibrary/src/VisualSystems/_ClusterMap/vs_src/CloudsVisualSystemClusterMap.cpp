@@ -11,10 +11,216 @@ CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
 	matchLineColor = false;
 }
 
+void CloudsVisualSystemClusterMap::selfSetDefaults(){
+	
+	drawNodes = true;
+	drawLines = true;
+	drawTraversal = true;
+	drawOptionPaths = true;
+	drawTraversalPoints = false;
+	drawHomingDistanceDebug = false;
+	drawLineFlickerDebug = false;
+	
+	clipsShowTopic = ofIntRange(20, 40);
+	drawType = true;
+	baseFontSize = 12;
+	currentTypeSizeRange.min = currentTypeSizeRange.max = -1;
+	typeSizeRange.min = 5;
+	typeSizeRange.max = 14;
+	lineDensity = 200;
+	
+	lineFlickerIntensity = 7.;
+	lineFlickerFrequency = 100;
+	lineFlickerDampening = .05;
+}
+
+//These methods let us add custom GUI parameters and respond to their events
+void CloudsVisualSystemClusterMap::selfSetupGui(){
+	
+	followCamGui = new ofxUISuperCanvas("FOLLOW CAM", gui);
+	followCamGui->copyCanvasStyle(gui);
+	followCamGui->copyCanvasProperties(gui);
+	followCamGui->setName("FollowCam");
+	followCamGui->addSlider("CAMERA DISTANCE", 10, 400, &traversCameraDistance);
+	followCamGui->addToggle("LOCK AXIS", &lockCameraAxis);
+	followCamGui->addSlider("FOV", 4, 90, &traverseCamFOV);
+	
+	ofAddListener(followCamGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
+	guis.push_back(followCamGui);
+	guimap[followCamGui->getName()] = followCamGui;
+	
+	ofxUIToggle* toggle;
+	nodesGui = new ofxUISuperCanvas("NODES", gui);
+	nodesGui->copyCanvasStyle(gui);
+	nodesGui->copyCanvasProperties(gui);
+	nodesGui->setName("Nodes");
+	toggle = nodesGui->addToggle("ENABLE", &drawNodes);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    nodesGui->resetPlacer();
+    nodesGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    nodesGui->addWidgetToHeader(toggle);
+	nodesGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	nodesGui->addSlider("MESH SCALE", 100, 1000, &meshExpansion);
+	nodesGui->addLabel("POINTS");
+	nodesGui->addRangeSlider("POINT SIZE RANGE", .5, 4., &pointSize.min, &pointSize.max);
+	nodesGui->addSlider("TRAVERSED NODE SIZE", 1, 10, &traversedNodeSize);
+	nodesGui->addSlider("NODE POP LENGTH", 50, 2000, &nodePopLength);
+	
+	ofAddListener(nodesGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
+	guis.push_back(nodesGui);
+	guimap[nodesGui->getName()] = nodesGui;
+	
+	linesGui = new ofxUISuperCanvas("LINES", gui);
+	linesGui->copyCanvasStyle(gui);
+	linesGui->copyCanvasProperties(gui);
+	linesGui->setName("Lines");
+	toggle = linesGui->addToggle("ENABLE", &drawLines);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    linesGui->resetPlacer();
+    linesGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    linesGui->addWidgetToHeader(toggle);
+	
+	float length = (linesGui->getGlobalCanvasWidth()-linesGui->getWidgetSpacing()*5)/3.;
+    float dim = linesGui->getGlobalSliderHeight();
+	linesGui->addSlider("DENSITY", 100, 1000., &lineDensity);
+	linesGui->addSlider("FOCAL DISTANCE", 0, sqrt(1000.0f), &lineFocalDistance);
+	linesGui->addSlider("FOCAL RANGE", 0, sqrt(1000.0f), &lineFocalRange);
+	linesGui->addSlider("FLICKER FREQUENCY", 10, 100, &lineFlickerFrequency);
+	linesGui->addSlider("FLICKER INTENSITY", 3, 40, &lineFlickerIntensity);
+	linesGui->addSlider("FLICKER DAMPENING", 0.0, 1.0, &lineFlickerDampening);
+	linesGui->addToggle("FLICKER DEBUG", &drawLineFlickerDebug);
+	linesGui->addLabel("NODE COLOR");
+    linesGui->addMinimalSlider("LN_HUE", 0.0, 1.0, &lineNodeColorHSV.r, length, dim)->setShowValue(false);
+    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    linesGui->addMinimalSlider("LN_SAT", 0.0, 1.0, &lineNodeColorHSV.g, length, dim)->setShowValue(false);
+    linesGui->addMinimalSlider("LN_BRI", 0.0, 1.0, &lineNodeColorHSV.b, length, dim)->setShowValue(false);
+    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+	linesGui->addMinimalSlider("LN_A", 0.0, 1.0, &lineNodeColorHSV.a);
+	linesGui->addLabel("EDGE COLOR");
+    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+	linesGui->addButton("MATCH", &matchLineColor);
+    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    linesGui->addMinimalSlider("LE_HUE", 0.0, 1.0, &lineEdgeColorHSV.r, length, dim)->setShowValue(false);
+    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    linesGui->addMinimalSlider("LE_SAT", 0.0, 1.0, &lineEdgeColorHSV.g, length, dim)->setShowValue(false);
+    linesGui->addMinimalSlider("LE_BRI", 0.0, 1.0, &lineEdgeColorHSV.b, length, dim)->setShowValue(false);
+    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+	linesGui->addMinimalSlider("LE_A", 0.0, 1.0, &lineEdgeColorHSV.a);
+	linesGui->addMinimalSlider("COLOR MIX EXPONENT", 0, 20.0, &lineColorMixExponent);
+	linesGui->addSlider("LINE WIDTH", .5, 3, &networkLineWidth);
+	
+	ofAddListener(linesGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
+	guis.push_back(linesGui);
+	guimap[linesGui->getName()] = linesGui;
+	
+	traversalGui = new ofxUISuperCanvas("TRAVERSAL", gui);
+	traversalGui->copyCanvasStyle(gui);
+	traversalGui->copyCanvasProperties(gui);
+	traversalGui->setName("Traversal");
+	traversalGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	toggle = traversalGui->addToggle("ENABLE", &drawTraversal);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    traversalGui->resetPlacer();
+    traversalGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    traversalGui->addWidgetToHeader(toggle);
+	
+	traversalGui->addLabel("HEAD COLOR");
+    traversalGui->addMinimalSlider("TH_HUE", 0.0, 1.0, &traverseHeadColorHSV.r, length, dim)->setShowValue(false);
+    traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    traversalGui->addMinimalSlider("TH_SAT", 0.0, 1.0, &traverseHeadColorHSV.g, length, dim)->setShowValue(false);
+    traversalGui->addMinimalSlider("TH_BRI", 0.0, 1.0, &traverseHeadColorHSV.b, length, dim)->setShowValue(false);
+    traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+	traversalGui->addMinimalSlider("TH_A", 0.0, 1.0, &traverseHeadColorHSV.a);
+	traversalGui->addLabel("TAIL COLOR");
+    traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+	traversalGui->addButton("MATCH", &matchTraversalColor);
+    traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    traversalGui->addMinimalSlider("TT_HUE", 0.0, 1.0, &traverseTailColorHSV.r, length, dim)->setShowValue(false);
+    traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    traversalGui->addMinimalSlider("TT_SAT", 0.0, 1.0, &traverseTailColorHSV.g, length, dim)->setShowValue(false);
+    traversalGui->addMinimalSlider("TT_BRI", 0.0, 1.0, &traverseTailColorHSV.b, length, dim)->setShowValue(false);
+    traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+	traversalGui->addMinimalSlider("TT_A", 0.0, 1.0, &traverseTailColorHSV.a);
+	traversalGui->addMinimalSlider("FALLOFF", 0, 7.0, &traverseFalloff);
+	traversalGui->addSpacer();
+	traversalGui->addSlider("ANGLE DAMPEN", 0.01, .5, &traverseAngleDampen);
+	traversalGui->addSlider("STEP SIZE", .2, 10, &traverseStepSize);
+	traversalGui->addSlider("MIN HOMING DISTANCE", 1.0, 100.0, &traverseHomingMinDistance);
+	traversalGui->addSlider("MIN SOLVE DISTANCE", .1, 5, &traverseMinSolvedDistance);
+	traversalGui->addToggle("DRAW POINTS", &drawTraversalPoints);
+	traversalGui->addToggle("DRAW DISTANCE DEBUG", &drawHomingDistanceDebug);
+	traversalGui->addLabel("ANIMATE");
+	traversalGui->addSlider("ANIMATE DURATION", 1, 4, &traverseAnimationDuration);
+	traversalGui->addSlider("LINE WIDTH", .5, 3, &traverseLineWidth);
+	
+	ofAddListener(traversalGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
+	guis.push_back(traversalGui);
+	guimap[traversalGui->getName()] = traversalGui;
+	
+	optionPathsGui = new ofxUISuperCanvas("OPTION PATHS", gui);
+	optionPathsGui->copyCanvasStyle(gui);
+	optionPathsGui->copyCanvasProperties(gui);
+	optionPathsGui->setName("Option Paths");
+	optionPathsGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	toggle = optionPathsGui->addToggle("ENABLE", &drawOptionPaths);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    optionPathsGui->resetPlacer();
+    optionPathsGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    optionPathsGui->addWidgetToHeader(toggle);
+	
+	optionPathsGui->addLabel("ANIMATE");
+	optionPathsGui->addSlider("ANIMATE DURATION", 1, 4, &optionsAnimationDuration);
+	optionPathsGui->addSlider("LINE WIDTH", .5, 3, &optionLineWidth);
+	optionPathsGui->addLabel("COLOR");
+    optionPathsGui->addMinimalSlider("OP_HUE", 0.0, 1.0, &optionColorHSV.r, length, dim)->setShowValue(false);
+    optionPathsGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    optionPathsGui->addMinimalSlider("OP_SAT", 0.0, 1.0, &optionColorHSV.g, length, dim)->setShowValue(false);
+    optionPathsGui->addMinimalSlider("OP_BRI", 0.0, 1.0, &optionColorHSV.b, length, dim)->setShowValue(false);
+    optionPathsGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+	optionPathsGui->addMinimalSlider("OP_A", 0.0, 1.0, &optionColorHSV.a);
+	
+	ofAddListener(optionPathsGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
+	guis.push_back(optionPathsGui);
+	guimap[optionPathsGui->getName()] = optionPathsGui;
+	
+	typeGui = new ofxUISuperCanvas("TOPIC TYPE", gui);
+	typeGui->copyCanvasStyle(gui);
+	typeGui->copyCanvasProperties(gui);
+	typeGui->setName("TopicType");
+	typeGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	toggle = typeGui->addToggle("ENABLE", &drawType);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    typeGui->resetPlacer();
+    typeGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    typeGui->addWidgetToHeader(toggle);
+	
+	typeGui->addIntSlider("SIZE MIN", 5, 20, &typeSizeRange.min);
+	typeGui->addIntSlider("SIZE MAX", 5, 20, &typeSizeRange.max);
+	//	typeGui->addRangeSlider("FADE RANGE", 0, 300, &typeDistanceRange.min, &typeDistanceRange.max);
+	typeGui->addIntSlider("MIN CLIP NUM", 1, 60, &clipsShowTopic.min);
+	typeGui->addIntSlider("MAX CLIP SCALE", 1, 60, &clipsShowTopic.max);
+	
+	ofAddListener(typeGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
+	guis.push_back(typeGui);
+	guimap[typeGui->getName()] = typeGui;
+	
+}
+
+void CloudsVisualSystemClusterMap::selfGuiEvent(ofxUIEventArgs &e){
+	if(e.widget->getName() == "Custom Button"){
+		cout << "Button pressed!" << endl;
+	}
+}
+
 //called once from start up of the app
 void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 	this->parser = &parser;
 	resetGeometry();
+}
+
+void CloudsVisualSystemClusterMap::setRun(CloudsRun& newRun){
+	run = &newRun;
 }
 
 void CloudsVisualSystemClusterMap::resetGeometry(){
@@ -37,6 +243,8 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	ofVec3f maxBounds(0,0,0);
 	ofVec3f minBounds(0,0,0);
 	
+	ofVec2f flickerCoord = ofVec2f(0,0);
+	int flickerWidth = 100;
 	for(int i = 0; i < parser->getAllClips().size(); i++){
 		CloudsClusterNode n;
 		CloudsClip& clip = parser->getAllClips()[i];
@@ -46,7 +254,14 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 		n.networkPosition = clip.networkPosition;
 		clipIdToNodeIndex[clip.getID()] = nodes.size();
 		nodeMesh.addVertex( n.networkPosition );
+		n.flickerTextureCoord = flickerCoord;
+		n.luckyNumber = ofRandomuf();
 		
+		flickerCoord.x++;
+		if(flickerCoord.x >= flickerWidth){
+			flickerCoord.x = 0;
+			flickerCoord.y++;
+		}
 		centroid += clip.networkPosition;
 		maxBounds = ofVec3f(MAX(maxBounds.x,clip.networkPosition.x),
 							MAX(maxBounds.y,clip.networkPosition.y),
@@ -59,6 +274,11 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 		nodes.push_back(n);
 	}
 	nodeMesh.setMode(OF_PRIMITIVE_POINTS);
+	
+	flickerNoise.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
+	flickerNoiseTarget.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
+	flickerNoise.getPixelsRef().set(0);
+	flickerNoiseTarget.set(0);
 	
 	centroid /= nodes.size();
 	float maxDistance = 0;
@@ -129,6 +349,11 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 				arc.makeRotate(dirToStart,dirToDest);
 				
 				//handle
+				ofFloatColor flickermix = ofFloatColor(n1.flickerTextureCoord.x,
+													   n1.flickerTextureCoord.y,
+													   n2.flickerTextureCoord.x,
+													   n2.flickerTextureCoord.y);
+				networkMesh.addColor(flickermix);
 				networkMesh.addNormal(ofVec3f(0.0, 0.0, 0.0));
 				networkMesh.addVertex(clip.networkPosition);
 
@@ -143,12 +368,13 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 					ofVec3f arcDir = step * dirToStart;
 					float arcRad = ofLerp(radStart, radDest, stepPercent);
 					ofVec3f arcPoint = arcDir * arcRad + centroid;
-					
+					networkMesh.addColor(flickermix);					
 					networkMesh.addNormal(ofVec3f(stepPercent, 0.0, 1.0));
 					networkMesh.addVertex(arcPoint);
 				}
 				
 				//handle
+				networkMesh.addColor(flickermix);
 				networkMesh.addNormal(ofVec3f(1.0, 0.0, 0.0));
 				networkMesh.addVertex(meta[j].networkPosition);
 				
@@ -317,185 +543,6 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip& clip){
 	firstClip = false;
 }
 
-//These methods let us add custom GUI parameters and respond to their events
-void CloudsVisualSystemClusterMap::selfSetupGui(){
-	
-	followCamGui = new ofxUISuperCanvas("FOLLOW CAM", gui);
-	followCamGui->copyCanvasStyle(gui);
-	followCamGui->copyCanvasProperties(gui);
-	followCamGui->setName("FollowCam");
-	followCamGui->addSlider("CAMERA DISTANCE", 10, 400, &traversCameraDistance);
-	followCamGui->addToggle("LOCK AXIS", &lockCameraAxis);
-	followCamGui->addSlider("FOV", 4, 90, &traverseCamFOV);
-	
-	ofAddListener(followCamGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
-	guis.push_back(followCamGui);
-	guimap[followCamGui->getName()] = followCamGui;
-
-	ofxUIToggle* toggle;
-	nodesGui = new ofxUISuperCanvas("NODES", gui);
-	nodesGui->copyCanvasStyle(gui);
-	nodesGui->copyCanvasProperties(gui);
-	nodesGui->setName("Nodes");
-	toggle = nodesGui->addToggle("ENABLE", &drawNodes);
-    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
-    nodesGui->resetPlacer();
-    nodesGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
-    nodesGui->addWidgetToHeader(toggle);
-	nodesGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	nodesGui->addSlider("MESH SCALE", 100, 1000, &meshExpansion);
-	nodesGui->addLabel("POINTS");
-	nodesGui->addRangeSlider("POINT SIZE RANGE", .5, 4., &pointSize.min, &pointSize.max);
-	nodesGui->addSlider("TRAVERSED NODE SIZE", 1, 10, &traversedNodeSize);
-	nodesGui->addSlider("NODE POP LENGTH", 50, 2000, &nodePopLength);
-
-	ofAddListener(nodesGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
-	guis.push_back(nodesGui);
-	guimap[nodesGui->getName()] = nodesGui;
- 
-	linesGui = new ofxUISuperCanvas("LINES", gui);
-	linesGui->copyCanvasStyle(gui);
-	linesGui->copyCanvasProperties(gui);
-	linesGui->setName("Lines");
-	toggle = linesGui->addToggle("ENABLE", &drawLines);
-    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
-    linesGui->resetPlacer();
-    linesGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
-    linesGui->addWidgetToHeader(toggle);
-	
-	float length = (linesGui->getGlobalCanvasWidth()-linesGui->getWidgetSpacing()*5)/3.;
-    float dim = linesGui->getGlobalSliderHeight();
-	linesGui->addSlider("DENSITY", 500., 5000., &lineDensity);
-	linesGui->addSlider("FOCAL DISTANCE", 0, sqrt(1000.0f), &lineFocalDistance);
-	linesGui->addSlider("FOCAL RANGE", 0, sqrt(1000.0f), &lineFocalRange);
-	linesGui->addLabel("NODE COLOR");
-    linesGui->addMinimalSlider("LN_HUE", 0.0, 1.0, &lineNodeColorHSV.r, length, dim)->setShowValue(false);
-    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    linesGui->addMinimalSlider("LN_SAT", 0.0, 1.0, &lineNodeColorHSV.g, length, dim)->setShowValue(false);
-    linesGui->addMinimalSlider("LN_BRI", 0.0, 1.0, &lineNodeColorHSV.b, length, dim)->setShowValue(false);
-    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-	linesGui->addMinimalSlider("LN_A", 0.0, 1.0, &lineNodeColorHSV.a);
-	linesGui->addLabel("EDGE COLOR");
-    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-	linesGui->addButton("MATCH", &matchLineColor);
-    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    linesGui->addMinimalSlider("LE_HUE", 0.0, 1.0, &lineEdgeColorHSV.r, length, dim)->setShowValue(false);
-    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    linesGui->addMinimalSlider("LE_SAT", 0.0, 1.0, &lineEdgeColorHSV.g, length, dim)->setShowValue(false);
-    linesGui->addMinimalSlider("LE_BRI", 0.0, 1.0, &lineEdgeColorHSV.b, length, dim)->setShowValue(false);
-    linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-	linesGui->addMinimalSlider("LE_A", 0.0, 1.0, &lineEdgeColorHSV.a);
-	linesGui->addMinimalSlider("COLOR MIX EXPONENT", 0, 20.0, &lineColorMixExponent);
-
-	ofAddListener(linesGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
-	guis.push_back(linesGui);
-	guimap[linesGui->getName()] = linesGui;
-
-	traversalGui = new ofxUISuperCanvas("TRAVERSAL", gui);
-	traversalGui->copyCanvasStyle(gui);
-	traversalGui->copyCanvasProperties(gui);
-	traversalGui->setName("Traversal");
-	traversalGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	toggle = traversalGui->addToggle("ENABLE", &drawTraversal);
-    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
-    traversalGui->resetPlacer();
-    traversalGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
-    traversalGui->addWidgetToHeader(toggle);
-
-	traversalGui->addLabel("HEAD COLOR");
-    traversalGui->addMinimalSlider("TH_HUE", 0.0, 1.0, &traverseHeadColorHSV.r, length, dim)->setShowValue(false);
-    traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    traversalGui->addMinimalSlider("TH_SAT", 0.0, 1.0, &traverseHeadColorHSV.g, length, dim)->setShowValue(false);
-    traversalGui->addMinimalSlider("TH_BRI", 0.0, 1.0, &traverseHeadColorHSV.b, length, dim)->setShowValue(false);
-    traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-	traversalGui->addMinimalSlider("TH_A", 0.0, 1.0, &traverseHeadColorHSV.a);	
-	traversalGui->addLabel("TAIL COLOR");
-    traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-	traversalGui->addButton("MATCH", &matchTraversalColor);
-    traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    traversalGui->addMinimalSlider("TT_HUE", 0.0, 1.0, &traverseTailColorHSV.r, length, dim)->setShowValue(false);
-    traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    traversalGui->addMinimalSlider("TT_SAT", 0.0, 1.0, &traverseTailColorHSV.g, length, dim)->setShowValue(false);
-    traversalGui->addMinimalSlider("TT_BRI", 0.0, 1.0, &traverseTailColorHSV.b, length, dim)->setShowValue(false);
-    traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-	traversalGui->addMinimalSlider("TT_A", 0.0, 1.0, &traverseTailColorHSV.a);
-	traversalGui->addMinimalSlider("FALLOFF", 0, 7.0, &traverseFalloff);
-
-	traversalGui->addSpacer();
-
-	traversalGui->addSlider("ANGLE DAMPEN", 0.01, .5, &traverseAngleDampen);
-	traversalGui->addSlider("STEP SIZE", .2, 10, &traverseStepSize);
-	traversalGui->addSlider("MIN HOMING DISTANCE", 1.0, 100.0, &traverseHomingMinDistance);
-	traversalGui->addSlider("MIN SOLVE DISTANCE", .1, 5, &traverseMinSolvedDistance);
-	traversalGui->addToggle("DRAW POINTS", &drawTraversalPoints);
-	traversalGui->addToggle("DRAW DISTANCE DEBUG", &drawHomingDistanceDebug);
-	traversalGui->addLabel("ANIMATE");
-	traversalGui->addSlider("ANIMATE DURATION", 1, 4, &traverseAnimationDuration);
-
-	ofAddListener(traversalGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
-	guis.push_back(traversalGui);
-	guimap[traversalGui->getName()] = traversalGui;
-	
-	optionPathsGui = new ofxUISuperCanvas("OPTION PATHS", gui);
-	optionPathsGui->copyCanvasStyle(gui);
-	optionPathsGui->copyCanvasProperties(gui);
-	optionPathsGui->setName("Option Paths");
-	optionPathsGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	toggle = optionPathsGui->addToggle("ENABLE", &drawOptionPaths);
-    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
-    optionPathsGui->resetPlacer();
-    optionPathsGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
-    optionPathsGui->addWidgetToHeader(toggle);
-	
-	optionPathsGui->addLabel("ANIMATE");
-	optionPathsGui->addSlider("ANIMATE DURATION", 1, 4, &optionsAnimationDuration);
-	optionPathsGui->addLabel("COLOR");
-    optionPathsGui->addMinimalSlider("OP_HUE", 0.0, 1.0, &optionColorHSV.r, length, dim)->setShowValue(false);
-    optionPathsGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    optionPathsGui->addMinimalSlider("OP_SAT", 0.0, 1.0, &optionColorHSV.g, length, dim)->setShowValue(false);
-    optionPathsGui->addMinimalSlider("OP_BRI", 0.0, 1.0, &optionColorHSV.b, length, dim)->setShowValue(false);
-    optionPathsGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-	optionPathsGui->addMinimalSlider("OP_A", 0.0, 1.0, &optionColorHSV.a);
-
-	ofAddListener(optionPathsGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
-	guis.push_back(optionPathsGui);
-	guimap[optionPathsGui->getName()] = optionPathsGui;
-	
-	typeGui = new ofxUISuperCanvas("TOPIC TYPE", gui);
-	typeGui->copyCanvasStyle(gui);
-	typeGui->copyCanvasProperties(gui);
-	typeGui->setName("TopicType");
-	typeGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	toggle = typeGui->addToggle("ENABLE", &drawType);
-    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
-    typeGui->resetPlacer();
-    typeGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
-    typeGui->addWidgetToHeader(toggle);
-
-	typeGui->addIntSlider("SIZE MIN", 5, 20, &typeSizeRange.min);
-	typeGui->addIntSlider("SIZE MAX", 5, 20, &typeSizeRange.max);
-	//("SCALE RANGE", .1, 10, &typeScaleRange.min, &typeScaleRange.max);
-	typeGui->addRangeSlider("FADE RANGE", 0, 300, &typeDistanceRange.min, &typeDistanceRange.max);
-	typeGui->addIntSlider("MIN CLIP NUM", 1, 60, &clipsShowTopic.min);
-	typeGui->addIntSlider("MAX CLIP SCALE", 1, 60, &clipsShowTopic.max);
-	
-	ofAddListener(typeGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
-	guis.push_back(typeGui);
-	guimap[typeGui->getName()] = typeGui;
-	
-}
-
-void CloudsVisualSystemClusterMap::selfGuiEvent(ofxUIEventArgs &e){
-	if(e.widget->getName() == "Custom Button"){
-		cout << "Button pressed!" << endl;
-	}
-}
-
-void CloudsVisualSystemClusterMap::setRun(CloudsRun& newRun){
-	run = &newRun;
-}
-
 void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip>& questionClips){
 	selectedQuestion = NULL;
 	questions.clear();
@@ -539,23 +586,6 @@ void CloudsVisualSystemClusterMap::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemClusterMap::selfSetupTimeline(){
 //	lineColor = timeline->addColors("line color", "LineColor.xml");
 //	nodeColor = timeline->addColorsWithPalette("node color","NodeColor.xml", getVisualSystemDataPath() + "images/nerve_palette.png");
-}
-
-void CloudsVisualSystemClusterMap::selfSetDefaults(){
-	drawNodes = true;
-	drawLines = true;
-	drawTraversal = true;
-	drawOptionPaths = true;
-	drawTraversalPoints = false;
-	drawHomingDistanceDebug = false;
-
-	clipsShowTopic = ofIntRange(20, 40);
-	drawType = true;
-	baseFontSize = 12;
-	currentTypeSizeRange.min = currentTypeSizeRange.max = -1;
-	typeSizeRange.min = 5;
-	typeSizeRange.max = 14;
-	lineDensity = 200;
 }
 
 // selfSetup is called when the visual system is first instantiated
@@ -608,6 +638,7 @@ void CloudsVisualSystemClusterMap::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemClusterMap::selfUpdate(){
 	
+	///UPDATE ANIMATION
 	percentTraversed = ofMap(ofGetElapsedTimef(),
 							 traverseStartTime, traverseStartTime+traverseAnimationDuration,
 							 0, 1.0, true);
@@ -616,6 +647,8 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 								   traverseStartTime+traverseAnimationDuration+optionsAnimationDuration,
 								   0.0, 1.0, true);
 	
+	
+	//UPDATE CAMERA
 	gameCamera.applyRotation = gameCamera.applyTranslation = !cursorIsOverGUI();
 	if(cursorIsOverGUI()){
 		easyCamera.disableMouseInput();
@@ -643,12 +676,12 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 			ofVec3f curTarget = (trailHead*meshExpansion);
 			ofVec3f newPos = curPosition + (curTarget - curPosition) * .1;
 			easyCamera.setTarget(newPos);
-//			percentToDest = (newPos - cameraStartPosition).length() / (curTarget - cameraStartPosition).length();
 		}
 		
 		getCameraRef().setFov(traverseCamFOV);
 	}
 
+	/////UPDATE COLOR
 	if(matchLineColor){
 		lineEdgeColorHSV = lineNodeColorHSV;
 		matchLineColor = false;
@@ -681,6 +714,28 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	optionColorRGB.a = optionColorHSV.a;
 	
 	
+	//UPDATE FLICKER
+	bool updateTarget = ofGetFrameNum() % 10 == 0;
+	float dice = ofRandomuf();
+	for(int i = 0; i < nodes.size(); i++){
+		int flickerIndex = nodes[i].flickerTextureCoord.y*flickerNoise.getWidth() + nodes[i].flickerTextureCoord.x;
+		float* fT = flickerNoiseTarget.getPixels() + flickerIndex;
+		float* fD = flickerNoise.getPixels() + flickerIndex;
+		if(*fT > .9){
+			if(*fD > .7){
+				*fT = 0.;
+			}
+		}
+		else if(updateTarget){
+			//set to one if we roll the dice
+			*fT = abs(nodes[i].luckyNumber - dice) < lineFlickerFrequency*.0001 ? 1.0 : 0.0;
+		}
+		*fD += (*fT - *fD) * powf(lineFlickerDampening,2.);
+	}
+	
+	flickerNoise.update();
+	
+	///UPDATE TYPE
 	if(currentTypeSizeRange != typeSizeRange && typeSizeRange.span() > 0){
 		topicFont.clear();
 		topicFont.resize(typeSizeRange.span());
@@ -706,6 +761,10 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemClusterMap::selfDraw(){
 
+	
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+	glEnable(GL_LINE_SMOOTH);
 	glDisable(GL_DEPTH_TEST);
 
 	ofPushStyle();
@@ -714,6 +773,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 	ofScale(meshExpansion,meshExpansion,meshExpansion);
 	
+
 	////POINTS
 	if(drawNodes){
 		nodesShader.begin();
@@ -749,8 +809,10 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 								   lineEdgeColorRGB.g,
 								   lineEdgeColorRGB.b,
 								   lineEdgeColorRGB.a);
+		networkShader.setUniformTexture("flickerTex", flickerNoise, 1);
+		networkShader.setUniform1f("flickerIntensity", lineFlickerIntensity);
+		ofSetLineWidth(networkLineWidth);
 		networkShader.setUniform1f("colorMixExponent", lineColorMixExponent);
-//		networkShader.setUniform3f("", 100/255., 150/255., 200/255.);
 		networkMesh.draw();
 		networkShader.end();
 	}
@@ -779,6 +841,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 		traversalShader.setUniform1f("colorFalloff", traverseFalloff);
 		traversalShader.setUniform1f("trailVertCount", traversalMesh.getNumVertices());
 		traversalShader.setUniform1f("segemntVertCount", traversalPath.back().endIndex - traversalPath.back().startIndex);
+		ofSetLineWidth(traverseLineWidth);
 		traversalMesh.draw();
 		traversalShader.end();
 	}
@@ -812,6 +875,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 		
 		optionsShader.setUniform1f("percentOptionsRevealed", percentOptionsRevealed);
 		optionsShader.setUniform1i("fadeIn", 1);
+		ofSetLineWidth(optionLineWidth);
 		optionsMeshNext.draw();
 
 		optionsShader.end();
@@ -820,7 +884,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	
 	ofPopMatrix();
 	ofPopStyle();
-
+	glPopAttrib();
 }
 
 // draw any debug stuff here
@@ -836,9 +900,10 @@ void CloudsVisualSystemClusterMap::selfDrawBackground(){
 void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 	//turn the background refresh off
 	if(drawType){
+		glDisable(GL_LIGHTING);
 		ofRectangle screenRect(0,0,getCanvasWidth(), getCanvasHeight());
 		for(int i = 0; i < topicPoints.size(); i++){
-			//			glDisable(GL_LIGHTING);
+
 			TopicPoint& p = topicPoints[i];
 			if(p.numClips >= clipsShowTopic.min){
 //				int fontIndex = p.normalizedTopicScale * topicFont.size();
@@ -854,6 +919,11 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 				}
 			}
 		}
+		glEnable(GL_LIGHTING);
+	}
+	
+	if(drawLineFlickerDebug){
+		flickerNoise.draw(0,0,getCanvasWidth(),getCanvasHeight());
 	}
 }
 
