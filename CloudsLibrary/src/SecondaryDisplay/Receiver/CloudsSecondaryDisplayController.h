@@ -12,9 +12,6 @@
 #include "ofxOsc.h"
 
 #include "CloudsVisualSystemClusterMap.h"
-//#include "CloudsRun.h"
-//#include "CloudsStoryEngine.h"
-//#include "CloudsAct.h"
 #include "CloudsFCPParser.h"
 #include "ofxOsc.h"
 #include "CloudsSpeaker.h"
@@ -36,19 +33,21 @@ class CloudsSecondaryDisplayController {
     void draw();
     
     bool debug, color;
-
+	void respondToClip(CloudsClip& clip);
+	CloudsFCPParser parser;
+    
+    float tx;
+	
   protected:
 	
 	CloudsVisualSystemClusterMap clusterMap;
-	//CloudsRun run;
-	CloudsFCPParser parser;
-	//CloudsStoryEngine storyEngine;
-	//CloudsVisualSystemManager visualSystems;
 
 	void loadSVGs();
     void hideQuestionBox();
     void showQuestionBox();
-    ofxFTGLSimpleLayout* getLayoutForLayer( SVGMesh* textMesh, string font);
+    ofxFTGLSimpleLayout* getLayoutForLayer( SVGMesh* textMesh, string font, float kerning);
+    ofxFTGLFont* getFontForLayer( SVGMesh* textMesh, string font, float kerning);
+
     int getFontSizeForMesh( SVGMesh* textMesh, string font);
     void drawTextToMesh(ofxFTGLSimpleLayout* font, string text, SVGMesh* mesh);
     void onActBegan();
@@ -86,18 +85,21 @@ class CloudsSecondaryDisplayController {
             *meshBioLastName,
             *meshBioFirstName,
             *meshBioLocation,
+            *meshBioLocationBG,
             *meshBioTitle,
+            *meshBioTitleBG,
             *meshBioDescription,
             *meshProjectVideo,
             *meshProjectTitle,
             *meshProjectArtist,
             *meshProjectDescription;
     
+    ofxFTGLFont             *fontBioLastName,
+                            *fontBioFirstName,
+                            *fontBioLocation,
+                            *fontBioTitle;
+    
     ofxFTGLSimpleLayout     *layoutQuestion,
-                            *layoutBioLastName,
-                            *layoutBioFirstName,
-                            *layoutBioLocation,
-                            *layoutBioTitle,
                             *layoutBioDescription,
                             *layoutProjectVideo,
                             *layoutProjectTitle,

@@ -37,7 +37,10 @@ namespace itg
 {
     struct JellyParams
     {
-        ofVec3f tentacleHsb, bodyHsb;
+        float tentaclesHMin, tentaclesHMax, tentaclesS, tentaclesB;
+        float bodyHMin, bodyHMax, bodyS, bodyB;
+        //ofVec3f tentacleHsb, bodyHsb;
+        
         float bodyAlpha;
         float widthAverage, widthStdDeviation, lengthAverage, lengthStdDeviation;
         float segmentMin, segmentMax;

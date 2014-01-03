@@ -85,10 +85,15 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
     void selfKeyPressed(int key);
     void selfKeyReleased(ofKeyEventArgs & args);
     
-    void selfMouseDragged(int x, int y, int button);
-    void selfMouseMoved(int x, int y, int button);
-    void selfMousePressed(int x, int y, int button);
-    void selfMouseReleased(int x, int y, int button);
+//    void selfMouseDragged(int x, int y, int button);
+//    void selfMouseMoved(int x, int y, int button);
+//    void selfMousePressed(int x, int y, int button);
+//    void selfMouseReleased(int x, int y, int button);
+    
+    void selfInteractionMoved(CloudsInteractionEventArgs& args);
+	void selfInteractionStarted(CloudsInteractionEventArgs& args);
+	void selfInteractionDragged(CloudsInteractionEventArgs& args);
+	void selfInteractionEnded(CloudsInteractionEventArgs& args);
     
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -105,6 +110,7 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
     ofShader ripplesShader;
     ofFbo ripplesSrcFbo, ripplesDstFbo;
     ofVboMesh renderMesh;
+    ofVec2f currentUserInput;
     
     float minDropHue, maxDropHue;
     float minDropSat, maxDropSat;

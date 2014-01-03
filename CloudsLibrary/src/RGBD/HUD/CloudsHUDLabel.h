@@ -15,18 +15,23 @@ class CloudsHUDLabel {
   public:
     CloudsHUDLabel();
     void setup( ofxFTGLSimpleLayout *textLayout, ofRectangle textBounds );
+    void setup( ofxFTGLFont *textFont, ofRectangle textBounds );
+
     void draw();
     
     void setText( string newText );
     
     ofxFTGLSimpleLayout *layout;
+    ofxFTGLFont *font;
     ofRectangle bounds;
     
     void animateIn();
     void animateOut();
     
+    bool caps;
+    
   protected:
-    string  text;
+    string  text, type;
     
     ofRange animationClamp;
     

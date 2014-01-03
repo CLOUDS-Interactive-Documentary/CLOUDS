@@ -3,16 +3,31 @@ uniform float focalPlane;
 uniform float focalRange;
 uniform vec3 attractor;
 
+uniform sampler2DRect flickerTex;
+
+varying float distanceAttenuate;
 varying float colorMix;
 varying float handleHide;
 
+varying float flickerSample1;
+varying float flickerSample2;
+
+float map(float value, float inputMin, float inputMax, float outputMin, float outputMax) {;
+	return clamp(((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin), outputMin,outputMax);
+}
+
 void main() {
-	gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;
+	vec4 eyeCoord = gl_ModelViewMatrix * gl_Vertex;
+	gl_Position = gl_ProjectionMatrix * eyeCoord;
+	distanceAttenuate = 1.0 - map(abs(gl_Position.z - focalPlane), 0.0, focalRange, 0.0, 1.0);
+
 	//normal varies across the edges 0 -> 1,
 	//so let's convert it to is 1, middle is 0
-	colorMix = (abs(gl_Normal.x - .5) * 2.);
+	colorMix = 1.-(abs(gl_Normal.x - .5) * 2.);
 	handleHide = gl_Normal.z;
-	//colorMix = gl_Normal.s;
+	
+	flickerSample1 = texture2DRect(flickerTex, gl_Color.rg).r;
+	flickerSample2 = texture2DRect(flickerTex, gl_Color.ba).r;
 	/*
 	float radius = 15.0;
 	float flashRadius = 200.0;

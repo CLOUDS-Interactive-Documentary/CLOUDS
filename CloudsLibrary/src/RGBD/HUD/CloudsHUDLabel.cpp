@@ -13,6 +13,7 @@ CloudsHUDLabel::CloudsHUDLabel(){
     
     bIsAnimatingIn = false;
     bIsAnimatingOut = false;
+    caps = true;
     
     animationClamp.min = 0.3;
     animationClamp.max = 3.0;
@@ -30,6 +31,13 @@ CloudsHUDLabel::CloudsHUDLabel(){
 void CloudsHUDLabel::setup( ofxFTGLSimpleLayout *textLayout, ofRectangle textBounds ){
     layout = textLayout;
     bounds = textBounds;
+    type = "LAYOUT";
+}
+
+void CloudsHUDLabel::setup( ofxFTGLFont *textFont, ofRectangle textBounds ){
+    font = textFont;
+    bounds = textBounds;
+    type = "FONT";
 }
 
 void CloudsHUDLabel::draw(){
@@ -47,10 +55,24 @@ void CloudsHUDLabel::draw(){
         textAlpha = floor( 255. * pct );
     }
     
+    if(type == "LAYOUT"){
     if( layout ){
         ofPushStyle();{
             ofSetColor(255, 255, 255, textAlpha);
-            layout->drawString( ofToUpper(text.substr(0, playhead )), bounds.x, bounds.y + layout->getStringBoundingBox("W", 0, 0).height );
+            string t = text.substr(0, playhead );
+            if(caps)
+                t = ofToUpper(t);
+            layout->drawString( t, bounds.x, bounds.y + layout->getStringBoundingBox("W", 0, 0).height );
+        }ofPopStyle();
+    }
+    }
+    else if (type == "FONT"){
+        ofPushStyle();{
+            ofSetColor(255, 255, 255, textAlpha);
+            string t = text.substr(0, playhead );
+            if(caps)
+                t = ofToUpper(t);
+            font->drawString( t, bounds.x, bounds.y + font->getStringBoundingBox("W", 0, 0).height );
         }ofPopStyle();
     }
 }
