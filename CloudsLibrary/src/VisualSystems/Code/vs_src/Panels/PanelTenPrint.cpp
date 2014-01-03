@@ -17,44 +17,23 @@ PanelTenPrint::PanelTenPrint(){
 void PanelTenPrint::selfSetup(){
 	
 //	curString = ofBufferFromFile(GetCloudsVisualSystemDataPath("Code") + "newline.txt").getText();
-	float dice = ofRandomuf();
-	int numTypes = 3;
-	float step = 1.0/numTypes;
-	//TEN PRINT
-	if(dice < step){
-		lineHeight = sharedFont->stringHeight("/");
-		for(int l = lineHeight; l < drawRect.height; l += lineHeight){
-			int charWidth = sharedFont->stringWidth("/");
-			string curline;
-			for(int c = 0; c < drawRect.width; c+=charWidth){
-				curline += (ofRandomuf() > .5 ? "\\" : "/");
-			}
-			lines.push_back(curline);
+	pairs.push_back( make_pair("\\", "/"));
+	pairs.push_back( make_pair(".", " ") );
+	pairs.push_back( make_pair("_", "|") );
+//	pairs.push_back( make_pair("o", " ") );
+
+	pair<string,string>& curpair = pairs[ ofRandom(pairs.size()) ];
+				
+												   
+	float lineHeight = sharedFont->stringHeight("/");
+	for(int l = lineHeight; l < drawRect.height; l += lineHeight){
+		int charWidth = sharedFont->stringWidth("/");
+		string curline;
+		for(int c = 0; c < drawRect.width; c+=charWidth){
+			curline += (ofRandomuf() > .5 ? curpair.first : curpair.second );
 		}
-	}
-	else if(dice < step*2){
-		lineHeight = sharedFont->stringHeight(".");
-		for(int l = lineHeight; l < drawRect.height; l += lineHeight){
-			int charWidth = sharedFont->stringWidth(".");
-			string curline;
-			for(int c = 0; c < drawRect.width; c+=charWidth){
-				curline += (ofRandomuf() > .4 ? " " : ".");
-			}
-			lines.push_back(curline);
-		}
-	}
-	else {
-		lineHeight = sharedFont->stringHeight(".");
-		for(int l = lineHeight; l < drawRect.height; l += lineHeight){
-			int charWidth = sharedFont->stringWidth(".");
-			string curline;
-			for(int c = 0; c < drawRect.width; c+=charWidth){
-				curline += (ofRandomuf() > .3 ? "_" : "|");
-			}
-			lines.push_back(curline);
-		}		
-	}
-	
+		lines.push_back(curline);
+	}	
 }
 
 void PanelTenPrint::selfUpdate(){
@@ -69,7 +48,7 @@ void PanelTenPrint::selfUpdate(){
 
 void PanelTenPrint::selfDraw(){
 	int line = 0;
-	lineHeight = sharedFont->stringHeight("/");
+	float lineHeight = sharedFont->stringHeight("/");
 	int charsConsumed = 0;
 	for(int l = lineHeight; l < drawRect.height; l += lineHeight){
 		string& curLine = lines[line%lines.size()];

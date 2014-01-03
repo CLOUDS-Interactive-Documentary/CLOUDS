@@ -10,10 +10,10 @@
 
 #include "Panel.h"
 
-class PanelTenPrint : public Panel {
+class PanelConsole : public Panel {
 public:
 	
-	PanelTenPrint();
+	PanelConsole();
 	
 	void selfSetup();
 	void selfUpdate();
@@ -22,7 +22,9 @@ public:
 	float charsPerSecond;
 	float maxChars;
   protected:
-	vector< pair<string,string> > pairs;
-	
+	float lineHeight;
+	string curString;
+	ofBuffer curbuf;
+
 	
 };
