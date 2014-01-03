@@ -76,6 +76,8 @@ namespace itg
         
         unsigned getNumTentacles() const { return numTentacles; }
         
+        vector<ofVec3f> getDeformedTentaclePosns();
+        
         vector<ofVec3f>& getTentaclePosnsRef() { return tentaclePosns; }
         
         //void setFrequency(const float frequency) { this->frequency = frequency; }
@@ -94,6 +96,7 @@ namespace itg
         ofVboMesh lineMesh;
         
         vector<ofVec3f> tentaclePosns;
+        vector<float> tentacleAngles;
        
         int texRepeatS;
         

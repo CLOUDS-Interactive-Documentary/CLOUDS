@@ -359,15 +359,12 @@ namespace itg
         ofSetColor(0, 255, 0);
         for (unsigned i = 0; i < jellies.size(); ++i)
         {
-            for (unsigned j = 0; j < jellies[i]->getNumTentacles(); ++j)
+            vector<ofVec3f> deformed = jellies[i]->getDeformedTentaclePosns();
+            for (unsigned j = 0; j < deformed.size(); ++j)
             {
-                ofCircle(jellies[i]->getTentaclePosnsRef()[j] * jellies[i]->getGlobalTransformMatrix(), 4.f);
+                ofCircle(deformed[j] * jellies[i]->getGlobalTransformMatrix(), 4.f);
             }
         }
-        /*for (unsigned i = 0; i < tentaclePosns.size(); ++i)
-        {
-            ofCircle(tentaclePosns[i].x, tentaclePosns[i].y, tentaclePosns[i].z, 20.f);
-        }*/
         
         // tentacles
         ofPushStyle();
