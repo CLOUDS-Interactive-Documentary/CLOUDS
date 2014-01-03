@@ -99,6 +99,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofVec3f bottomRight;
 
   protected:
+	
+	ofxUISuperCanvas *transitionEditorGui;
 
 	ofxUISuperCanvas *globalMeshGui;
 	bool drawRGBD;
