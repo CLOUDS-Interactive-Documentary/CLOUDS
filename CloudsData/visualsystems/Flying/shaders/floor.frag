@@ -22,9 +22,13 @@ vec3 hsvToRgb(vec3 hsv) { return mix(vec3(1.),clamp((abs(fract(hsv.x+vec3(3.,2.,
 void main()
 {
     vec3 bright = hsvToRgb(mix(hsv0, hsv1, depth));
+    
     vec3 wireframe = texture2D(tex, resolution * gl_TexCoord[0].st).rgb;
     
     vec3 col = step(distFromFloorLookAt, growDist) * bright + step(growDist, distFromFloorLookAt) * wireframe;
+    
+    // fade sides
+    col *= clamp(gl_TexCoord[0].s / 0.1, 0.0, 1.0) * clamp((1.0 - gl_TexCoord[0].s) / 0.1, 0.0, 1.0);
     
     vec3 l = normalize(lEye - vEye);
 	

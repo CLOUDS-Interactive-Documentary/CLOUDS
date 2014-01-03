@@ -269,7 +269,6 @@ void CloudsVisualSystemFlying::selfDraw()
     plantsShader.end();
     
     // FLOOR
-    
     floorShader.begin();
     floorShader.setUniform3fv("hsv0", hsv0.getPtr());
     floorShader.setUniform3fv("hsv1", hsv1.getPtr());
