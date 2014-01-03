@@ -200,6 +200,10 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
     
     ofDirectory dir(getVisualSystemDataPath(true)+folderName+"/");
     dir.listDir();
+	
+	ofVec2f curActivityMapCoord(0,0);
+	int activityMapCoordWidth = 100;
+	
     if(dir.exists()){
         int size = dir.size();
         vector<ofFile>files= dir.getFiles();
@@ -279,7 +283,12 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
                         userTweets.push_back(t);
                     }
                     cur.tweets= userTweets;
-                    
+                    cur.activityMapCoord = curActivityMapCoord;
+					curActivityMapCoord.x++;
+					if(curActivityMapCoord.x >= activityMapCoordWidth){
+						curActivityMapCoord.x = 0;
+						curActivityMapCoord.y++;
+					}
                     tweeters.push_back(cur);
                 } else {
                     cout  << "Failed to parse JSON" << endl;
@@ -287,6 +296,13 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
             }
         }
     }
+	
+	activityMap.allocate(activityMapCoordWidth, curActivityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
+//	activityMapDampened.allocate(activityMapCoordWidth, curActivityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
+//	activityMap.allocate(activityMapCoordWidth, curActivityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
+//	activityMapDampened.getPixelsRef().set(0);
+//	activityMap.set(0);
+	
     addUsersFromMentions();
 }
 
@@ -440,6 +456,8 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
         
 		activeTweeters.push_back(&tweeters[i]);
 		vector<Tweet>&  tweetsOnDate = tweeters[i].getTweetsByDate(currentDate);
+		int activityMapIndex = tweeters[i].activityMapCoord.y * activityMap.getWidth() + tweeters[i].activityMapCoord.x;
+		activityMap.getPixels()[activityMapIndex] = 1.0;
 		
 		//pop the active tweeter node
 		nodeMesh.getNormals()[tweeters[i].nodeVertexIndex].y = 1.0;
@@ -516,23 +534,27 @@ void CloudsVisualSystemTwitter::loadMesh(){
             
 			edgeMesh.addVertex(tweeters[j].position);
 			edgeMesh.addNormal(ofVec3f(1,0,0));
-			tweeters[j].edgeVertexIndex = currentIndex;
+			edgeMesh.addTexCoord(ofVec2f(tweeters[j].activityMapCoord.x,tweeters[j].activityMapCoord.y));
+//			tweeters[j].edgeVertexIndex = currentIndex;
 			currentIndex++;
 			
 			//adding midpoint
 			ofVec3f midpoint = tweeters[j].position.getInterpolated(t.position, .5);
 			edgeMesh.addVertex(midpoint);
 			edgeMesh.addNormal(ofVec3f(0,0,0));
+			edgeMesh.addTexCoord(ofVec2f(tweeters[j].activityMapCoord.x,tweeters[j].activityMapCoord.y));
 			currentIndex++;
 			
 			//adding midpoint
 			edgeMesh.addVertex(midpoint);
 			edgeMesh.addNormal(ofVec3f(0,0,0));
+			edgeMesh.addTexCoord(ofVec2f(t.activityMapCoord.x,t.activityMapCoord.y));
 			currentIndex++;
 			
 			edgeMesh.addVertex(t.position);
 			edgeMesh.addNormal(ofVec3f(1,0,0));
-			t.edgeVertexIndex = currentIndex;
+			edgeMesh.addTexCoord(ofVec2f(t.activityMapCoord.x,t.activityMapCoord.y));
+//			t.edgeVertexIndex = currentIndex;
 			
 			links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
 			lineIndexPairs[make_pair(tweeters[j].name, t.name) ] = make_pair(currentIndex-3, currentIndex);
@@ -798,7 +820,6 @@ void CloudsVisualSystemTwitter::selfPresetLoaded(string presetPath)
     ofxUILabel* l =(ofxUILabel*)clusterGui->getWidget("MESH FILE");
     currentMeshFileName = l->getLabel();
     
-    
     string presetMeshPath = getVisualSystemDataPath() + "graphs/" + currentMeshFileName;
     if(presetMeshPath == currentMeshFilePath){
         
@@ -850,6 +871,10 @@ void CloudsVisualSystemTwitter::selfUpdate()
         updateMesh();
     }
     
+	for(int i = 0; i < activityMap.getWidth()*activityMap.getHeight(); i++){
+		activityMap.getPixels()[i] *= .9;
+	}
+	activityMap.update();
 }
 
 ofFloatColor CloudsVisualSystemTwitter::getRGBfromHSV(ofFloatColor hsv){
@@ -923,6 +948,7 @@ void CloudsVisualSystemTwitter::selfDraw()
                                 lineEdgePop.a);
 		lineShader.setUniform1f("edgeInterpolateExponent",
 								edgeInterpolateExponent);
+		lineShader.setUniformTexture("activityMap", activityMap, 1);
 		
         edgeMesh.draw();
 		lineShader.end();
