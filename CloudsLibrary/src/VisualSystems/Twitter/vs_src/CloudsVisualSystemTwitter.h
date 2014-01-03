@@ -153,8 +153,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bAnimateFeed;
     
 
-    
-protected:
+  protected:
     ofColor listColor;
     vector<Tweeter> tweeters;
 
@@ -174,7 +173,8 @@ protected:
     float meshExpansion;
     float pointSize;
     float activityMapDamping;
-    
+    float synapseLevel;
+    float normalDecay;
     ofxUISuperCanvas* clusterGui;
     ofxUISuperCanvas* textGui;
     ofxUISuperCanvas* twitterFeedGui;
@@ -188,9 +188,10 @@ protected:
 
     void loadAvatars();
     void addColorToGui(ofxUISuperCanvas* gui, string prefix, ofFloatColor& col, bool doAlpha = true);
-	
+    map< ofFloatColor*, ofxUILabel*> labelColors;
+
 	float edgeInterpolateExponent;
-	ofFloatColor getRGBfromHSV(ofFloatColor hsv);
+	ofFloatColor getRGBfromHSV(ofFloatColor& hsv);
 	//this is the base color of the lines close to the nodes
 	ofFloatColor lineNodeBaseHSV;
 	//this is the base color of the lines at the midpoint
@@ -199,8 +200,11 @@ protected:
 	//this is the pop color of the lines close to the nodes
 	ofFloatColor lineNodePopHSV;
 	//this is the pop color of the lines at the midpoint
-	ofFloatColor lineEdgePopHSV;
-    
+    ofFloatColor lineEdgePopHSV;
+
+    //synapse color
+    ofFloatColor synapseColorHSV;
+
 	//this is the base color of the node
 	ofFloatColor nodeBaseColorHSV;
 	//this is the pop color of the node

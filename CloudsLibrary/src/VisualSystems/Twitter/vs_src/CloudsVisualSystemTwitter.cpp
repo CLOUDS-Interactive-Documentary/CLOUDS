@@ -88,13 +88,32 @@ void CloudsVisualSystemTwitter::selfBegin()
 }
 
 void CloudsVisualSystemTwitter::addColorToGui(ofxUISuperCanvas* gui,string prefix,ofFloatColor& col, bool doAlpha){
-    gui->addSpacer();
-    gui->addMinimalSlider(prefix + " HUE", 0.0, 1.0, &col.r);
-    gui->addMinimalSlider(prefix + " SAT", 0.0, 1.0, &col.g);
-    gui->addMinimalSlider(prefix + " BRI", 0.0, 1.0, &col.b);
-	if(doAlpha){
-		gui->addMinimalSlider(prefix + " ALPHA", 0.0, 1.0, &col.a);
-	}
+//  gui->addSpacer();
+//    gui->addMinimalSlider(prefix + " HUE", 0.0, 1.0, &col.r);
+//    gui->addMinimalSlider(prefix + " SAT", 0.0, 1.0, &col.g);
+//    gui->addMinimalSlider(prefix + " BRI", 0.0, 1.0, &col.b);
+//	if(doAlpha){
+//		gui->addMinimalSlider(prefix + " ALPHA", 0.0, 1.0, &col.a);
+//	}
+    
+   	float length = (gui->getGlobalCanvasWidth() - gui->getWidgetSpacing()*5)/3.;
+    float dim    = gui->getGlobalSliderHeight();
+ 
+    string shortprefix;
+    vector<string> comps = ofSplitString(prefix, " ", true,true);
+    for(int i = 0; i < comps.size(); i++) shortprefix += comps[i].at(0);
+    
+    ofxUILabel* label = gui->addLabel(prefix);
+    labelColors[&col] = label;
+    
+    gui->addMinimalSlider(shortprefix + " HUE", 0.0, 1.0, &col.r, length, dim)->setShowValue(false);
+    gui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    gui->addMinimalSlider(shortprefix + " SAT", 0.0, 1.0, &col.g, length, dim)->setShowValue(false);
+    gui->addMinimalSlider(shortprefix + " BRI", 0.0, 1.0, &col.b, length, dim)->setShowValue(false);
+    gui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    if(doAlpha){
+        gui->addMinimalSlider(shortprefix + " ALPHA", 0.0, 1.0, &col.a);
+    }
 }
 
 void CloudsVisualSystemTwitter::selfSetupGui()
@@ -113,12 +132,15 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addMinimalSlider("ROTATION AMT", 0.1, 1, &rotationAmount);
     clusterGui->addLabel("MESH FILE",currentMeshFileName);
     clusterGui->addMinimalSlider("EDGE DECAY", 0.2, 1.0, &activityMapDamping);
+    clusterGui->addMinimalSlider("NORMALS DECAY", 0.2, 1.0, &normalDecay);
+    clusterGui->addMinimalSlider("SYNAPSE LEVEL", 0.0, 1.0, &synapseLevel);
 	
 	//TWEET POP
 	addColorToGui(clusterGui,"LINE NODE BASE",lineNodeBaseHSV);
 	addColorToGui(clusterGui,"LINE EDGE BASE",lineEdgeBaseHSV);
 	addColorToGui(clusterGui,"LINE NODE POP",lineNodePopHSV);
 	addColorToGui(clusterGui,"LINE EDGE POP",lineEdgePopHSV);
+	addColorToGui(clusterGui,"SYNAPSE",synapseColorHSV);
 	clusterGui->addSlider("EDGE COLOR EXPONENT", 1.0, 5., &edgeInterpolateExponent);
     
 	addColorToGui(clusterGui,"NODE BASE",nodeBaseColorHSV);
@@ -128,7 +150,6 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addMinimalSlider("Y POS", 1, 500, &yScale);
     clusterGui->addMinimalSlider("Z POS", 1, 500, &zScale);
     clusterGui->addButton("RELOAD MESH", false);
-    
     
 	ofAddListener(clusterGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(clusterGui);
@@ -306,9 +327,9 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
 	
 
     
-    for(int i =0; i< tweeters.size(); i++){
-        cout<<tweeters[i].name<<" : "<<tweeters[i].tweets.size()<<endl;
-    }
+//    for(int i =0; i< tweeters.size(); i++){
+//        cout<<tweeters[i].name<<" : "<<tweeters[i].tweets.size()<<endl;
+//    }
 }
 
 void CloudsVisualSystemTwitter::loadAvatars(){
@@ -424,7 +445,7 @@ void CloudsVisualSystemTwitter::setActiveTweeters(int index){
     string currentDate = getDateAsString(dateIndex[index]);
     
     for (int i = 0 ; i<activeTweeters.size(); i++) {
-        cout<<ofGetFrameNum() % refreshRate<< " : "<<activeTweeters[i]->refreshNum<<endl;
+//        cout<<ofGetFrameNum() % refreshRate<< " : "<<activeTweeters[i]->refreshNum<<endl;
         if (ofGetFrameNum() % refreshRate  != activeTweeters[i]->refreshNum) {
             continue;
         }
@@ -503,11 +524,11 @@ void CloudsVisualSystemTwitter::updateActiveTweeters(int index){
 
 void CloudsVisualSystemTwitter::updateMesh(){
 	for(int i = 0; i < nodeMesh.getVertices().size(); i++){
-		nodeMesh.getNormals()[i].y *= .95;
+		nodeMesh.getNormals()[i].y *= normalDecay;
 	}
 	
 	for(int i = 0; i < edgeMesh.getVertices().size(); i++){
-		edgeMesh.getNormals()[i].y *= .95;
+		edgeMesh.getNormals()[i].y *= normalDecay;
 	}
 }
 
@@ -875,9 +896,9 @@ void CloudsVisualSystemTwitter::selfUpdate()
         }
 
         updateActiveTweeters(currentDateIndex);
-        updateMesh();
+
     }
-    
+    updateMesh();
     setActiveTweeters(currentDateIndex);
 	for(int i = 0; i < activityMap.getWidth()*activityMap.getHeight(); i++){
 		activityMap.getPixels()[i] *= activityMapDamping;
@@ -885,11 +906,14 @@ void CloudsVisualSystemTwitter::selfUpdate()
 	activityMap.update();
 }
 
-ofFloatColor CloudsVisualSystemTwitter::getRGBfromHSV(ofFloatColor hsv){
-	return ofFloatColor::fromHsb(hsv.r,
-								 hsv.g,
-								 hsv.b,
-								 hsv.a);
+ofFloatColor CloudsVisualSystemTwitter::getRGBfromHSV(ofFloatColor& hsv){
+    ofFloatColor col = ofFloatColor::fromHsb(hsv.r,hsv.g,hsv.b,hsv.a);
+    if(labelColors.find(&hsv) != labelColors.end()){
+        ofFloatColor colcpy = col;
+        colcpy.a = .5 + colcpy.a*.5;
+        labelColors[&hsv]->setColorFill(colcpy);
+    }
+    return col;
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -910,7 +934,8 @@ void CloudsVisualSystemTwitter::selfDraw()
 	ofFloatColor lineEdgePop = getRGBfromHSV(lineEdgePopHSV);
 	ofFloatColor nodeBaseColor = getRGBfromHSV(nodeBaseColorHSV);
 	ofFloatColor nodePopColor = getRGBfromHSV(nodePopColorHSV);
-	
+	ofFloatColor synapseColor = getRGBfromHSV(synapseColorHSV);
+
     if(bRenderMesh){
 		pointsShader.begin();
 		
@@ -954,9 +979,16 @@ void CloudsVisualSystemTwitter::selfDraw()
                                 lineEdgePop.g,
                                 lineEdgePop.b,
                                 lineEdgePop.a);
+		lineShader.setUniform4f("synapse",
+                                synapseColor.r,
+                                synapseColor.g,
+                                synapseColor.b,
+                                synapseColor.a);
+        
 		lineShader.setUniform1f("edgeInterpolateExponent",
 								edgeInterpolateExponent);
 		lineShader.setUniformTexture("activityMap", activityMap, 1);
+        lineShader.setUniform1f("synapseLevel",synapseLevel);
 		
         edgeMesh.draw();
 		lineShader.end();
