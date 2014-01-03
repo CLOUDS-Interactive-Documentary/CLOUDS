@@ -74,6 +74,8 @@ namespace itg
         
         ofFloatColor getColour() const { return bodyColour; }
         
+        ofFloatColor getTentacleColour() const { return tentacleColour; }
+        
         unsigned getNumTentacles() const { return numTentacles; }
         
         vector<ofVec3f> getDeformedTentaclePosns();

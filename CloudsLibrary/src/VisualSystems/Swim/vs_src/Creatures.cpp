@@ -153,6 +153,9 @@ namespace itg
                     particlePosns[idx * 4 + 1] = deformed[j].y - x * TENTACLE_SECTION_LENGTH;
                     particlePosns[idx * 4 + 2] = deformed[j].z;
                     particlePosns[idx * 4 + 3] = 0.f;
+                    ofFloatColor col = jellies[i]->getTentacleColour();
+                    col.a = 1.f - x / (float)TENTACLE_NUM_SECTIONS;
+                    tentacleMesh.addColor(col);
                     if (x > 0)
                     {
                         tentacleMesh.addIndex(TENTACLE_NUM_SECTIONS * tentacleIdx + x - 1);
@@ -387,6 +390,8 @@ namespace itg
         
         // tentacles
         ofPushStyle();
+        ofEnableBlendMode(OF_BLENDMODE_ADD);
+        glDepthMask(GL_FALSE);
         ofSetColor(255);
         tentacles.getDrawShaderRef().begin();
         tentacles.getDrawShaderRef().setUniform1f("fogStart", Creature::fogStart);
@@ -394,6 +399,8 @@ namespace itg
         tentacles.getDrawShaderRef().setUniform1f("camZ", cam.getZ());
         tentacles.getDrawShaderRef().end();
         tentacles.draw();
+        glDepthMask(GL_TRUE);
+        ofDisableBlendMode();
         ofPopStyle();
         
         
