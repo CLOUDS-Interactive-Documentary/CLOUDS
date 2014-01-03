@@ -11,6 +11,7 @@ uniform float nearClip;
 uniform float camZ;
 uniform float innerFogStart;
 uniform float innerFogEnd;
+uniform float time;
 
 varying float innerFogAmount;
 varying float fogAmount;
@@ -20,6 +21,7 @@ void main()
 {
     vec3 vWorld = gl_Vertex.xyz;
     vWorld.z = camZ - mod(camZ - vWorld.z, fogEnd);
+    vWorld.y += time * gl_MultiTexCoord0.s;
     vec3 vEye = (gl_ModelViewMatrix * vec4(vWorld, 1.0)).xyz;
     fogAmount = clamp((length(vEye) - fogStart) / (fogEnd - fogStart), 0.0, 1.0);
     innerFogAmount = 1.0 - clamp((length(vEye) - innerFogStart) / (innerFogEnd - innerFogStart), 0.0, 1.0);

@@ -43,7 +43,6 @@ namespace itg
     
     void MarineSnow::init(const string& dataPath)
     {
-        //this->numParticles = numParticles;
         mesh.setMode(OF_PRIMITIVE_POINTS);
         shader.load(dataPath + "shaders/snow");
         ofDisableArbTex();
@@ -68,6 +67,9 @@ namespace itg
             
             // stick texture offset and size into normal
             mesh.addNormal(ofVec3f((rand() % 2) * .5f, (rand() % 2) * .5f, ofRandom(sizeMin, sizeMax)));
+         
+            // stick speed in tex coord
+            mesh.addTexCoord(ofVec2f(ofRandom(-5.f, 5.f), 0.f));
         }
     }
     
@@ -85,6 +87,7 @@ namespace itg
         shader.setUniform1f("fogEnd", fogEnd);
         shader.setUniform1f("nearClip", cam.getNearClip());
         shader.setUniform1f("camZ", cam.getPosition().z);
+        shader.setUniform1f("time", ofGetElapsedTimef());
         shader.setUniformTexture("tex", tex, 1);
         mesh.draw();
         shader.end();
