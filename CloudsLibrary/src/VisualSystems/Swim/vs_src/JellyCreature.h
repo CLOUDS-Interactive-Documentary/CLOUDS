@@ -74,11 +74,17 @@ namespace itg
         
         ofFloatColor getColour() const { return bodyColour; }
         
+        unsigned getNumTentacles() const { return numTentacles; }
+        
+        vector<ofVec3f>& getTentaclePosnsRef() { return tentaclePosns; }
+        
         //void setFrequency(const float frequency) { this->frequency = frequency; }
         
     private:
         static ofImage tex;
         static ofShader shader;
+        
+        unsigned numTentacles;
         
         void genMeshes();
         ofVec3f superVertex(float phi, float theta);
@@ -86,6 +92,8 @@ namespace itg
         ofVboMesh outerMesh;
         ofVboMesh innerMesh;
         ofVboMesh lineMesh;
+        
+        vector<ofVec3f> tentaclePosns;
        
         int texRepeatS;
         

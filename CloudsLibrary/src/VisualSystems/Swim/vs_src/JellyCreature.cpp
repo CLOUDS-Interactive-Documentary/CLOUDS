@@ -109,11 +109,13 @@ namespace itg
         lineMesh.clear();
         lineMesh.setMode(OF_PRIMITIVE_LINES);
         const unsigned numLines = 4;
+        numTentacles = 0.5 * round(m1);
         for (unsigned k = 0; k < numLines; ++k)
         {
-            for (unsigned i = 0; i < 0.5 * round(m1); ++i)
+            for (unsigned i = 0; i < numTentacles; ++i)
             {
                 float phi = 2 * (i + 0.5) * TWO_PI / (float)round(m1);
+                tentaclePosns.push_back(size * superVertex(phi, segment));
                 for (unsigned j = 0; j < resolution; ++j)
                 {
                     float theta = 1.4 * j * segment / (float)resolution;
