@@ -4,7 +4,7 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="1920px" height="1080px" viewBox="0 0 1920 1080" enable-background="new 0 0 1920 1080" xml:space="preserve">
 <g id="BOX_x5F_INFO">
-	<rect x="48.5" y="882.5" opacity="0.7" fill="#101010" enable-background="new    " width="1824" height="150"/>
+	<rect x="48.5" y="882.5" opacity="0.7" fill="#010101" enable-background="new    " width="1824" height="150"/>
 </g>
 <g id="BOX_x5F_DETAILS">
 	<rect x="47.5" y="881.5" opacity="0.26" fill="#FFFFFF" enable-background="new    " width="3" height="3"/>
@@ -27,7 +27,7 @@
 	<rect x="726.5" y="973.5" fill="none" width="12" height="18"/>
 </g>
 <g id="TEXTBOX_x5F_BIO" opacity="0">
-	<rect x="1099.5" y="909.5" fill="none" width="736" height="18"/>
+	<rect x="1075.5" y="909.5" fill="none" width="760" height="18"/>
 </g>
 <g id="TEXTBOX_x5F_FIRSTNAME_2_" opacity="0">
 	<rect id="_x3C_Path_x3E__1_" x="85.5" y="909.5" fill="none" width="542" height="32"/>
