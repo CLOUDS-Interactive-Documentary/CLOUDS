@@ -75,26 +75,15 @@ void CloudsSecondaryDisplayController::setup(){
     meshProjectArtist->bounds.width = 1000;
     meshProjectDescription = projectLayout.getMeshByID("TEXTBOX_x5F_DESC_1_");
     
-    //load all fonts
-    ////last name
-   // h1 = getLayoutForLayer(meshBioLastName, "Blender-BOOK");
-    ////first name
-   // h2 = getLayoutForLayer(meshBioFirstName, "Blender-THIN");
-    ////question
-   // h3 = getLayoutForLayer(meshQuestion, "Blender-BOOK");
-    ////locations
-   // h4 = getLayoutForLayer(meshBioLocation, "Blender-BOOK");
-    ////byline / description
-   // p = getLayoutForLayer(meshBioDescription, "Blender-BOOK");
-    
+    //setup all font layout objects
     layoutQuestion = getLayoutForLayer(meshQuestion, "Blender-BOOK");
     layoutBioLastName = getLayoutForLayer(meshBioLastName, "Blender-BOOK");
-    layoutBioFirstName = getLayoutForLayer(meshBioFirstName, "Blender-BOOK");
+    layoutBioFirstName = getLayoutForLayer(meshBioFirstName, "Blender-THIN");
     layoutBioLocation = getLayoutForLayer(meshBioLocation, "Blender-BOOK");
     layoutBioTitle = getLayoutForLayer(meshBioTitle, "Blender-BOOK");
     layoutBioDescription = getLayoutForLayer(meshBioDescription, "Blender-BOOK");
     layoutProjectVideo = getLayoutForLayer(meshProjectVideo, "Blender-BOOK");
-    layoutProjectTitle = getLayoutForLayer(meshProjectTitle, "Blender-BOOK");
+    layoutProjectTitle = getLayoutForLayer(meshProjectTitle, "Blender-THIN");
     layoutProjectArtist = getLayoutForLayer(meshProjectArtist, "Blender-BOOK");
     layoutProjectDescription = getLayoutForLayer(meshProjectDescription, "Blender-BOOK");
     
