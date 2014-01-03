@@ -14,7 +14,7 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
     numPlantMeshes(100), floorW(2000), floorD(2000), floorHalfW(.5f * floorW), floorHalfD(.5f * floorD),
     noiseAmp(20.f), noiseFreq(5.f), xResolution(100), zResolution(100), xStep(floorW / (float)xResolution), zStep(floorD / (float)zResolution),
     cameraControl(true), fogStart(200.f), fogEnd(500.f), growDist(300.f), drawPlantPosns(false), numNearbyPlants(200),
-    camSpeed(-500.f), currentLookAngle(-20.f, 0.f), camAvoidDist(500.f), regenerate(false)
+    camSpeed(-500.f), currentLookAngle(-20.f, 0.f), camAvoidDist(500.f), regenerate(false), hsv0(48.f / 360.f, 1.f, 1.f), hsv1(349.f / 360.f, 0.598f, 0.984f)
 {
     ofDirectory dir;
     dir.listDir(getVisualSystemDataPath() + "rules");
@@ -269,8 +269,7 @@ void CloudsVisualSystemFlying::selfDraw()
     plantsShader.end();
     
     // FLOOR
-    hsv0.set(48.f / 360.f, 1.f, 1.f);
-    hsv1.set(349.f / 360.f, 0.598f, 0.984f);
+    
     floorShader.begin();
     floorShader.setUniform3fv("hsv0", hsv0.getPtr());
     floorShader.setUniform3fv("hsv1", hsv1.getPtr());
@@ -318,6 +317,8 @@ void CloudsVisualSystemFlying::selfSetupRenderGui()
     rdrGui->addSlider("camAvoidDist", 0.f, 1000.f, &camAvoidDist);
     rdrGui->addToggle("drawPlantPosns", &drawPlantPosns);
     rdrGui->addLabel("Floor");
+    rdrGui->addRangeSlider("hueRange", 0.f, 1.f, &hsv0.x, &hsv1.x);
+    rdrGui->addRangeSlider("satRange", 0.f, 1.f, &hsv0.y, &hsv1.y);
     rdrGui->addSlider("noiseFreq", 0.001, 0.01, &noiseFreq);
     rdrGui->addSlider("noiseAmp", 0.f, 150.f, &noiseAmp);
     rdrGui->addLabel("Post");
