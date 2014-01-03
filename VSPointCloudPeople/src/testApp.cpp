@@ -30,10 +30,10 @@ void testApp::draw(){
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 	if(key == 'O'){
-		transitionController.transitionToVisualSystem(10.0, 10.0);
+		transitionController.transitionToVisualSystem(1.0, 1.0);
 	}
 	if(key == 'I'){
-		transitionController.transitionToInterview(10.0, 10.0);
+		transitionController.transitionToInterview(1.0, 1.0);
 	}
 }
 
@@ -67,11 +67,11 @@ void testApp::updateTransitions(){
 	float crossfadeValue = transitionController.getFadeValue();
 	rgbd.visualSystemFadeValue = crossfadeValue;
 	if(transitionController.transitioning){
-		rgbd.updateTransition(crossfadeValue);
-		ofLogNotice("testApp::updateTransitions") << transitionController.getCurrentStateDescription() << " TRANSITIONING: " << crossfadeValue;
+		ofLogNotice("testApp::updateTransitions") << transitionController.getCurrentStateDescription() << " TRANSITIONING: " << transitionController.getInterviewTransitionPoint();
 	}
 	
-
+	rgbd.updateTransition( transitionController.getInterviewTransitionPoint() );
+	
 	if(transitionController.isStateNew()){
 		
 		if(transitionController.getCurrentState() == TRANSITION_INTERVIEW_OUT){
@@ -99,6 +99,9 @@ void testApp::updateTransitions(){
 			rgbd.startTransitionIn( type );
 		}
 		else if(transitionController.getCurrentState() == TRANSITION_INTERVIEW_IDLE){
+			
+			ofLogNotice("testApp::updateTransitions") << "Going to IDLE";
+			
 			rgbd.transtionFinished();
 		}
 	}

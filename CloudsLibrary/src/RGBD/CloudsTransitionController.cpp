@@ -50,6 +50,21 @@ float CloudsTransitionController::getFadeValue(){
 	}
 }
 
+float CloudsTransitionController::getInterviewTransitionPoint(){
+	if(currentState == TRANSITION_INTERVIEW_OUT){
+		return percentTransitionOut;
+	}
+	else if(currentState == TRANSITION_INTERVIEW_IN){
+		return percentTransitionIn;
+	}
+	else if(currentState == TRANSITION_VISUALSYSTEM_IN){
+		return 1.0;
+	}
+	else if(currentState == TRANSITION_VISUALSYSTEM_OUT){
+		return 0.0;
+	}
+	return 0.0;
+}
 void CloudsTransitionController::update() {
 	if(transitioning){
 		

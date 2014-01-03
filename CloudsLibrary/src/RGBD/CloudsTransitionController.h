@@ -30,6 +30,8 @@ class CloudsTransitionController {
 	float percentTransitionIn;
 	float percentTransitionOut;
 
+	float getInterviewTransitionPoint();
+	
 	bool transitioning;
 	bool triggeredMidpoint;
 	bool fadingOut();
