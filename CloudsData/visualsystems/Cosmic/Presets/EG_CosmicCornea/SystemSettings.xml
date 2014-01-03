@@ -1,0 +1,52 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SystemSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>284.000000000</XPosition>
+    <YPosition>117.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>UPDATE RADIUS</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>UPDATE ACCELERATION</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>UPDATE VELOCITY</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>UPDATE POSITION</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TIMESTEP</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DAMPING</Name>
+    <Value>0.428571433</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ACCLIMIT</Name>
+    <Value>3.990147591</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>VELLIMIT</Name>
+    <Value>2.216748714</Value>
+</Widget>
