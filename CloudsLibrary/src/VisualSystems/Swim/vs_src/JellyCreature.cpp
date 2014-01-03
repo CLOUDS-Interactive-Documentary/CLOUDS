@@ -47,8 +47,8 @@ namespace itg
     {
         type = JELLY;
         
-        bodyColour = ofFloatColor::fromHsb(params.bodyHsb.x, params.bodyHsb.y, params.bodyHsb.z);
-        tentacleColour = ofFloatColor::fromHsb(params.tentacleHsb.x, params.tentacleHsb.y, params.tentacleHsb.z);
+        bodyColour = ofFloatColor::fromHsb(ofRandom(params.bodyHMin, params.bodyHMax), params.bodyS, params.bodyB);
+        tentacleColour = ofFloatColor::fromHsb(ofRandom(params.tentaclesHMin, params.tentaclesHMax), params.tentaclesS, params.tentaclesB);
         
         bodyAlpha = params.bodyAlpha;
         

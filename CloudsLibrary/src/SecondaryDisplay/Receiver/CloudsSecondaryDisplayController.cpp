@@ -23,14 +23,18 @@ void CloudsSecondaryDisplayController::setup(){
     
 	parser.loadFromFiles();
 	
-	clusterMap.buildEntireCluster(parser);
     
 	clusterMap.forceScreenResolution(1920, 1080);
+	clusterMap.setNumSamples(4);
 	clusterMap.setDrawToScreen(false);
-	
+
 	clusterMap.setup();
 	clusterMap.playSystem();
-    
+
+	clusterMap.loadPresetGUISFromName("2DFollowCam");
+	clusterMap.buildEntireCluster(parser);
+
+
 	receiver.setup(123456);
 	
     
@@ -195,67 +199,85 @@ void CloudsSecondaryDisplayController::update(){
         
 		if(m.getAddress() == "/clip"){
             stringCounter = 0;
-			currentSpeaker = CloudsSpeaker::speakers[m.getArgAsString(0)];
+//			currentSpeaker = CloudsSpeaker::speakers[m.getArgAsString(0)];
             
-            //if the speaker has no name, there is no speaker
-            //cout << "currentSpeaker: " << currentSpeaker << endl;
-            cout << "currentSpeaker.lastName: "<< currentSpeaker.lastName << endl;
-            if(currentSpeaker.lastName == "")
-                hasSpeaker = false;
-            else
-                hasSpeaker = true;
-            
+			lastQuestion = m.getArgAsString(5);
 			currentClip = parser.getClipWithID(m.getArgAsString(1));
-			
-			clusterMap.traverseToClip(currentClip);
-			
-			string exampleId = m.getArgAsString(4);
-			if(exampleId != ""){
-                displayMode = "PROJECT";
-				//need to do something smarter here
-				currentExample = parser.getProjectExampleWithTitle(exampleId);
-				if(currentExample.exampleVideos.size() > 0){
-					playingMovie = archivePlayer.loadMovie(currentExample.exampleVideos[0]);
-					if(playingMovie){
-						archivePlayer.setLoopState(OF_LOOP_NONE);
-						archivePlayer.play();
-					}
-				}
-                
-                //setup project text
-                hudLabelMap[meshProjectArtist->id]->setText( currentExample.creatorName );
-                hudLabelMap[meshProjectTitle->id]->setText( currentExample.title );
-                hudLabelMap[meshProjectDescription->id]->setText( currentExample.description );
-
-			}
-			else{
-                displayMode = "BIO";
-				playingMovie = false;
-				archivePlayer.stop();
-                
-                //setup all bio data
-                lastQuestion = m.getArgAsString(5);
-                hudLabelMap[meshQuestion->id]->setText( lastQuestion );
-                
-                hudLabelMap[meshBioFirstName->id]->setText( currentSpeaker.firstName );
-                hudLabelMap[meshBioLastName->id]->setText( currentSpeaker.lastName );
-                hudLabelMap[meshBioTitle->id]->setText( currentSpeaker.title );
-                hudLabelMap[meshBioLocation->id]->setText( currentSpeaker.location2 );
-                hudLabelMap[meshBioDescription->id]->setText( currentSpeaker.byline1 );
-			}
 		}
-        else if(m.getAddress() == "/actBegan"){
-            onActBegan();
-        }
-        else if(m.getAddress() == "/actEnded"){
-            onActEnded();
-        }
+		else if(m.getAddress() == "/actBegan"){
+			onActBegan();
+		}
+		else if(m.getAddress() == "/actEnded"){
+			onActEnded();
+		}
 	}
 	
 	
 	if(playingMovie){
 		archivePlayer.update();
 	}
+}
+
+void CloudsSecondaryDisplayController::respondToClip(CloudsClip& clip){
+	
+	currentClip = clip;
+	currentSpeaker = CloudsSpeaker::speakers[currentClip.person];
+	//if the speaker has no name, there is no speaker
+	//cout << "currentSpeaker: " << currentSpeaker << endl;
+	cout << "currentSpeaker.lastName: "<< currentSpeaker.lastName << endl;
+	if(currentSpeaker.lastName == "")
+		hasSpeaker = false;
+	else
+		hasSpeaker = true;
+	
+
+	//TEMP HACK TO REVEAL ALL QUESTIONS!!
+	if(currentClip.hasQuestion()){
+		lastQuestion = currentClip.getQuestionForTopic(currentClip.getTopicsWithQuestions()[0]);
+	}
+	else{
+		lastQuestion = ofRandomuf() > .5 ? "IS THIS A SHORT TEST QUESTION?" : "OR A LONGER ONE TO TEST WHAT IT LOOKS LIKE WHEN TEXT WRAPS?";
+	}
+	///JG END TEMP HACK
+
+	//	string exampleId = m.getArgAsString(4);
+	if(currentClip.hasProjectExample){
+		displayMode = "PROJECT";
+		//need to do something smarter here
+//		currentExample = parser.getProjectExampleWithTitle(currentClip.projectExampleTitle);
+		currentExample = currentClip.projectExample;
+		if(currentExample.exampleVideos.size() > 0){
+			playingMovie = archivePlayer.loadMovie(currentExample.exampleVideos[0]);
+			if(playingMovie){
+				archivePlayer.setLoopState(OF_LOOP_NONE);
+				archivePlayer.play();
+			}
+		}
+		
+		//setup project text
+		hudLabelMap[meshProjectArtist->id]->setText( currentExample.creatorName );
+		hudLabelMap[meshProjectTitle->id]->setText( currentExample.title );
+		hudLabelMap[meshProjectDescription->id]->setText( currentExample.description );
+		
+	}
+	else{
+		displayMode = "BIO";
+		playingMovie = false;
+		archivePlayer.stop();
+		
+		//setup all bio data
+		hudLabelMap[meshQuestion->id]->setText( lastQuestion );
+		
+		hudLabelMap[meshBioFirstName->id]->setText( currentSpeaker.firstName );
+		hudLabelMap[meshBioLastName->id]->setText( currentSpeaker.lastName );
+		hudLabelMap[meshBioTitle->id]->setText( currentSpeaker.title );
+		hudLabelMap[meshBioLocation->id]->setText( currentSpeaker.location2 );
+		hudLabelMap[meshBioDescription->id]->setText( currentSpeaker.byline1 );
+	}
+
+	//bust a move
+	clusterMap.traverseToClip(currentClip);
+
 }
 
 void CloudsSecondaryDisplayController::onActBegan(){

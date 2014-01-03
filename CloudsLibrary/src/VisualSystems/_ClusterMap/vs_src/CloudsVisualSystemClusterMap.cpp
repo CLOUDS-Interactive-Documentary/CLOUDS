@@ -3,7 +3,7 @@
 //
 
 #include "CloudsVisualSystemClusterMap.h"
-
+#include "CloudsGlobal.h"
 #include "CloudsFCPParser.h"
 
 CloudsVisualSystemClusterMap::CloudsVisualSystemClusterMap(){
@@ -66,8 +66,6 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 		maxDistance = MAX(maxDistance, parser->getAllClips()[i].networkPosition.distance(centroid));
 	}
 	
-	cout << "CENTROID " << centroid << " MAX D " << maxDistance << endl;
-	
 	//add all connections to connection mesh
 	set< pair<string,string> > connections;
 	
@@ -78,12 +76,6 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 		string nameA = clip.getID();
 		CloudsClusterNode& n1 = nodes[ clipIdToNodeIndex[nameA] ];
 		
-//		for(int l = meta.size()-1; l >= 0; l--){
-//			if( parser.linkIsSuppressed(nameA, meta[l].getLinkName()) ){
-//				meta.erase(meta.begin() + l);
-//			}
-//		}
-
 		for(int l = 0; l < links.size(); l++){
 			meta.push_back(parser->getClipWithLinkName(links[l].targetName));
 		}
@@ -123,14 +115,6 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 					continue;
 				}
 				
-//				n1.connectionMeshVertexIds.push_back( connectionMesh.getNumVertices() );
-//				connectionMesh.addVertex(clip.networkPosition);
-//				connectionMesh.addNormal(ofVec3f(0,0,0));
-				
-//				n2.connectionMeshVertexIds.push_back( connectionMesh.getNumVertices() );
-//				connectionMesh.addVertex(meta[j].networkPosition);
-//				connectionMesh.addNormal(ofVec3f(0,0,0));
-
 				NetworkEdge connectionEdge;
 				//create curved connection mesh
 				//naive simple spherical interpolation over 10 steps
@@ -145,7 +129,6 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 				arc.makeRotate(dirToStart,dirToDest);
 				
 				//handle
-//				networkMesh.addColor(ofFloatColor(0,0));
 				networkMesh.addNormal(ofVec3f(0.0, 0.0, 0.0));
 				networkMesh.addVertex(clip.networkPosition);
 
@@ -161,13 +144,11 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 					float arcRad = ofLerp(radStart, radDest, stepPercent);
 					ofVec3f arcPoint = arcDir * arcRad + centroid;
 					
-//					networkMesh.addColor(ofFloatColor(1,1));
 					networkMesh.addNormal(ofVec3f(stepPercent, 0.0, 1.0));
 					networkMesh.addVertex(arcPoint);
 				}
 				
 				//handle
-//				networkMesh.addColor(ofFloatColor(0,0));
 				networkMesh.addNormal(ofVec3f(1.0, 0.0, 0.0));
 				networkMesh.addVertex(meta[j].networkPosition);
 				
@@ -180,12 +161,35 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 		}
 	}
 	
-//	connectionMesh.setMode(OF_PRIMITIVE_LINES);
 	networkMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
 	traversalMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
 	optionsMeshNext.setMode(OF_PRIMITIVE_LINE_STRIP);
 	optionsMeshPrev.setMode(OF_PRIMITIVE_LINE_STRIP);
 	
+	populateTopicPoints();
+}
+
+void CloudsVisualSystemClusterMap::populateTopicPoints(){
+	
+	topicPoints.clear();
+	
+	vector<string>& keywords = parser->getContentKeywords();
+	int numClips = parser->getNumberOfClipsWithKeyword(keywords[0]);
+	clipCountRange = ofRange(numClips,numClips);
+	for(int i = 0; i < keywords.size(); i++){
+		TopicPoint tp;
+		tp.keyword  = keywords[i];
+		tp.position = parser->getKeywordCentroid(keywords[i]);
+		tp.numClips = parser->getNumberOfClipsWithKeyword(keywords[i]);
+		clipCountRange.growToInclude(tp.numClips);
+//		cout << "num clips " << tp.numClips << " current range " << clipCountRange << endl;
+		topicPoints.push_back(tp);
+	}
+//	cout << "clip size range is " << clipCountRange << endl;
+	for(int i = 0; i < topicPoints.size(); i++){
+		topicPoints[i].normalizedTopicScale =  clipCountRange.getNormalized(topicPoints[i].numClips);
+//		cout << "Normal for num clips " << topicPoints[i].numClips << " " << topicPoints[i].normalizedTopicScale << endl;
+	}
 }
 
 void CloudsVisualSystemClusterMap::traverse(){
@@ -197,20 +201,11 @@ void CloudsVisualSystemClusterMap::traverse(){
 		return;
 	}
 	
-//	traversalMesh.clear();
-//	cout << "CloudsVisualSystemClusterMap::traverse TRAVERSING 2 " << run->topicHistory.size() << endl;
-//	for(int  i = 0; i < run->topicHistory.size(); i++){
-//		cout << "CloudsVisualSystemClusterMap::traverse -- traversed to topic " << run->topicHistory[i] << endl;
-//	}
-	
-	///BEGIN OLD LINEAR TRAVERSAL
-//	ofVec3f lastPos;
 	if(currentTraversalIndex < run->clipHistory.size()){
 		CloudsClip& clip = run->clipHistory[currentTraversalIndex];
 		traverseToClip( clip );
 		currentTraversalIndex++;
 	}
-
 }
 
 void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip& clip){
@@ -220,7 +215,6 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip& clip){
 		return;
 	}
 	
-
 	ofIndexType newNodeIndex = clipIdToNodeIndex[ clip.getID() ];
 	CloudsClusterNode& n = nodes[ newNodeIndex ];
 	if(firstClip){
@@ -309,88 +303,17 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip& clip){
 			else{
 				percentComplete = ofMap(i,edge.startIndex,edge.endIndex-1, 0.0, 1.0);
 			}
-//			optionsMeshNext.addColor( networkMesh.getColor(i));
 			//z attenuates the handles
 			optionsMeshNext.addNormal(ofVec3f(percentComplete,0,networkMesh.getNormal(i).z) );
 			optionsMeshNext.addVertex(networkMesh.getVertex(i));
 		}
 	}
 	
-	/*
-	for(int i = 0; i < n.adjascentClipIds.size(); i++){
-		CloudsClusterNode& destNode = nodes[ clipIdToNodeIndex[ n.adjascentClipIds[i] ] ];
-		ofVec3f currentPosition = clip.networkPosition;
-		
-		ofVec3f currentDirection = startDirection;
-		ofVec3f toNodeDirection  = (destNode.networkPosition - currentPosition).normalized();
-		ofQuaternion nodeCorrectionRot;
-		nodeCorrectionRot.makeRotate(currentDirection, toNodeDirection);
-		nodeCorrectionRot.slerp(0.0, ofQuaternion(), nodeCorrectionRot);
-		currentDirection = nodeCorrectionRot * currentDirection;
-		
-		float percentTraversed = 0;
-		float stepPercent = .05;
-
-		TraversalCurve curve;
-		curve.destinationClipId = destNode.clipId;
-		curve.startIndx = optionsMeshNext.getNumVertices();
-		
-		//HANDLE
-		optionsMeshNext.addNormal(ofVec3f(0,0,0));
-		optionsMeshNext.addColor(ofFloatColor(0,0));
-		optionsMeshNext.addVertex(currentPosition);
-
-		//start node
-		optionsMeshNext.addNormal(ofVec3f(0,0,0));
-		optionsMeshNext.addColor(ofFloatColor(1.0,1.0));
-		optionsMeshNext.addVertex(currentPosition);
-
-		do {
-			ofVec3f vectorToNode = destNode.networkPosition - currentPosition;
-			float distanceToNode = vectorToNode.length();
-			ofVec3f directionToNode = vectorToNode/distanceToNode;
-			
-			ofQuaternion rotToNode, incrementalRotate;
-			rotToNode.makeRotate(currentDirection, directionToNode);
-			incrementalRotate.slerp(percentTraversed, ofQuaternion(), rotToNode);
-			currentDirection = incrementalRotate * currentDirection;
-			currentPosition += currentDirection * (distanceToNode * stepPercent);
-			
-			optionsMeshNext.addNormal(ofVec3f(percentTraversed,0,0));
-			optionsMeshNext.addVertex(currentPosition);
-			optionsMeshNext.addColor(ofFloatColor(1.0, 0.0, 0.0, 1.0));
-			
-			percentTraversed += stepPercent;
-			
-		} while(percentTraversed < 1.0);
-
-		//end node
-		optionsMeshNext.addNormal(ofVec3f(1.0,0.0,0.0));
-		optionsMeshNext.addColor(ofFloatColor(1.0,1.0));
-		optionsMeshNext.addVertex(destNode.networkPosition);
-
-		//handle
-		optionsMeshNext.addNormal(ofVec3f(1.0,0.0,0.0));
-		optionsMeshNext.addColor(ofFloatColor(0.0,0.0));
-		optionsMeshNext.addVertex(destNode.networkPosition);
-		
-		curve.endIndx = optionsMeshNext.getNumVertices();
-		
-		n.connectionCurves[curve.destinationClipId] = curve;
-	}
-	 */
-	
 	optionsMeshPrev.setMode(OF_PRIMITIVE_LINE_STRIP);
 	
 	currentNodeIndex  = newNodeIndex;
 	traverseStartTime = ofGetElapsedTimef();
-//	traversalMesh.addVertex(clip.networkPosition);
-//	traversalMesh.addColor(ofFloatColor());
-//	cout << ("CloudsVisualSystemClusterMap::traverseToClip") << "After traversing node we have " << traversalMesh.getNumVertices() << " verts" << endl;
-//	for(int c = 0; c < n.connectionMeshVertexIds.size(); c++){
-//		connectionMesh.setNormal(n.connectionMeshVertexIds[c], ofVec3f(1.0,0.0,0.0));
-//	}
-	
+
 	firstClip = false;
 }
 
@@ -463,7 +386,7 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
     linesGui->addMinimalSlider("LE_BRI", 0.0, 1.0, &lineEdgeColorHSV.b, length, dim)->setShowValue(false);
     linesGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
 	linesGui->addMinimalSlider("LE_A", 0.0, 1.0, &lineEdgeColorHSV.a);
-	linesGui->addMinimalSlider("COLOR MIX EXPONENT", 0, 7.0, &lineColorMixExponent);
+	linesGui->addMinimalSlider("COLOR MIX EXPONENT", 0, 20.0, &lineColorMixExponent);
 
 	ofAddListener(linesGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(linesGui);
@@ -524,9 +447,9 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
     optionPathsGui->resetPlacer();
     optionPathsGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
     optionPathsGui->addWidgetToHeader(toggle);
+	
 	optionPathsGui->addLabel("ANIMATE");
 	optionPathsGui->addSlider("ANIMATE DURATION", 1, 4, &optionsAnimationDuration);
-
 	optionPathsGui->addLabel("COLOR");
     optionPathsGui->addMinimalSlider("OP_HUE", 0.0, 1.0, &optionColorHSV.r, length, dim)->setShowValue(false);
     optionPathsGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
@@ -538,6 +461,29 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	ofAddListener(optionPathsGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(optionPathsGui);
 	guimap[optionPathsGui->getName()] = optionPathsGui;
+	
+	typeGui = new ofxUISuperCanvas("TOPIC TYPE", gui);
+	typeGui->copyCanvasStyle(gui);
+	typeGui->copyCanvasProperties(gui);
+	typeGui->setName("TopicType");
+	typeGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	toggle = typeGui->addToggle("ENABLE", &drawType);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    typeGui->resetPlacer();
+    typeGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    typeGui->addWidgetToHeader(toggle);
+
+	typeGui->addIntSlider("SIZE MIN", 5, 20, &typeSizeRange.min);
+	typeGui->addIntSlider("SIZE MAX", 5, 20, &typeSizeRange.max);
+	//("SCALE RANGE", .1, 10, &typeScaleRange.min, &typeScaleRange.max);
+	typeGui->addRangeSlider("FADE RANGE", 0, 300, &typeDistanceRange.min, &typeDistanceRange.max);
+	typeGui->addIntSlider("MIN CLIP NUM", 1, 60, &clipsShowTopic.min);
+	typeGui->addIntSlider("MAX CLIP SCALE", 1, 60, &clipsShowTopic.max);
+	
+	ofAddListener(typeGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
+	guis.push_back(typeGui);
+	guimap[typeGui->getName()] = typeGui;
+	
 }
 
 void CloudsVisualSystemClusterMap::selfGuiEvent(ofxUIEventArgs &e){
@@ -602,7 +548,13 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	drawOptionPaths = true;
 	drawTraversalPoints = false;
 	drawHomingDistanceDebug = false;
-	
+
+	clipsShowTopic = ofIntRange(20, 40);
+	drawType = true;
+	baseFontSize = 12;
+	currentTypeSizeRange.min = currentTypeSizeRange.max = -1;
+	typeSizeRange.min = 5;
+	typeSizeRange.max = 14;
 	lineDensity = 200;
 }
 
@@ -637,8 +589,7 @@ void CloudsVisualSystemClusterMap::reloadShaders(){
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemClusterMap::selfPresetLoaded(string presetPath){
-	timeline->setLoopType(OF_LOOP_NONE);
-	
+	timeline->setLoopType(OF_LOOP_NONE);	
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -680,7 +631,10 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 									 traversalPath.back().startIndex, traversalPath.back().endIndex-1,true);
 		trailHead = traversalMesh.getVertex(curIndex);
 		if(lockCameraAxis){
-			axisCamera.setPosition(trailHead*meshExpansion + ofVec3f(0,0,traversCameraDistance));
+			ofVec3f curPosition = axisCamera.getPosition();
+			ofVec3f curTarget = trailHead*meshExpansion + ofVec3f(0,0,traversCameraDistance);
+			ofVec3f newPos = curPosition + (curTarget - curPosition) * .06;
+			axisCamera.setPosition(newPos);
 			axisCamera.lookAt(trailHead*meshExpansion,ofVec3f(0,1,0));
 		}
 		else{
@@ -725,6 +679,27 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 												 optionColorHSV.g,
 												 optionColorHSV.b);
 	optionColorRGB.a = optionColorHSV.a;
+	
+	
+	if(currentTypeSizeRange != typeSizeRange && typeSizeRange.span() > 0){
+		topicFont.clear();
+		topicFont.resize(typeSizeRange.span());
+		int fontIndex = 0;
+		for(int i = typeSizeRange.min; i < typeSizeRange.max; i++){
+			topicFont[fontIndex++].loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", i);
+		}
+		currentTypeSizeRange = typeSizeRange;
+	}
+	
+	if(drawType){
+		for(int i = 0; i < topicPoints.size(); i++){
+			if(topicPoints[i].numClips >= clipsShowTopic.min){
+				topicPoints[i].screenPosition = getCameraRef().worldToScreen(topicPoints[i].position*meshExpansion,
+																			 ofRectangle(0,0,getCanvasWidth(),getCanvasHeight()));
+			}
+		}
+	}
+
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -843,8 +818,6 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	}
 	/////END OPTIONS
 	
-	//TEST CURVE MESH
-
 	ofPopMatrix();
 	ofPopStyle();
 
@@ -857,8 +830,31 @@ void CloudsVisualSystemClusterMap::selfDrawDebug(){
 
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemClusterMap::selfDrawBackground(){
+
+}
+
+void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 	//turn the background refresh off
-	//bClearBackground = false;
+	if(drawType){
+		ofRectangle screenRect(0,0,getCanvasWidth(), getCanvasHeight());
+		for(int i = 0; i < topicPoints.size(); i++){
+			//			glDisable(GL_LIGHTING);
+			TopicPoint& p = topicPoints[i];
+			if(p.numClips >= clipsShowTopic.min){
+//				int fontIndex = p.normalizedTopicScale * topicFont.size();
+				int fontIndex = ofMap(p.numClips, clipsShowTopic.min, clipsShowTopic.max,
+									  0, topicFont.size()-1,true);
+//				cout << "Font index is " << fontIndex << " from " << topicFont.size() << endl;
+				if(fontIndex > 0 && fontIndex < topicFont.size()){
+					ofPushMatrix();
+					ofTranslate(p.screenPosition.x,p.screenPosition.y);
+					ofxFTGLFont& font = topicFont[ fontIndex ];
+					font.drawString( ofToUpper(p.keyword), 0, 0);
+					ofPopMatrix();
+				}
+			}
+		}
+	}
 }
 
 // this is called when your system is no longer drawing.
