@@ -31,11 +31,6 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		E703CD12185D186B00547738 /* src_colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CD09185D186B00547738 /* src_colors.cpp */; };
-		E703CD13185D186B00547738 /* svgtiny.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CD0A185D186B00547738 /* svgtiny.cpp */; };
-		E703CD14185D186B00547738 /* svgtiny_gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CD0C185D186B00547738 /* svgtiny_gradient.cpp */; };
-		E703CD15185D186B00547738 /* svgtiny_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CD0E185D186B00547738 /* svgtiny_list.cpp */; };
-		E703CD16185D186B00547738 /* ofxSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CD10185D186B00547738 /* ofxSvg.cpp */; };
 		E703CD1A185D187800547738 /* CloudsHUDController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CD18185D187800547738 /* CloudsHUDController.cpp */; };
 		E703CD1E185D419800547738 /* CloudsHUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CD1C185D419700547738 /* CloudsHUDLayer.cpp */; };
 		E703CD23185D6B3200547738 /* CloudsHUDHomeButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CD21185D6B3100547738 /* CloudsHUDHomeButton.cpp */; };
@@ -231,14 +226,6 @@
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		E703C708185BB2A400547738 /* CloudsProjectExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsProjectExample.h; sourceTree = "<group>"; };
-		E703CD09185D186B00547738 /* src_colors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = src_colors.cpp; sourceTree = "<group>"; };
-		E703CD0A185D186B00547738 /* svgtiny.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny.cpp; sourceTree = "<group>"; };
-		E703CD0B185D186B00547738 /* svgtiny.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svgtiny.h; sourceTree = "<group>"; };
-		E703CD0C185D186B00547738 /* svgtiny_gradient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny_gradient.cpp; sourceTree = "<group>"; };
-		E703CD0D185D186B00547738 /* svgtiny_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svgtiny_internal.h; sourceTree = "<group>"; };
-		E703CD0E185D186B00547738 /* svgtiny_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny_list.cpp; sourceTree = "<group>"; };
-		E703CD10185D186B00547738 /* ofxSvg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSvg.cpp; sourceTree = "<group>"; };
-		E703CD11185D186B00547738 /* ofxSvg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSvg.h; sourceTree = "<group>"; };
 		E703CD18185D187800547738 /* CloudsHUDController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDController.cpp; sourceTree = "<group>"; };
 		E703CD19185D187800547738 /* CloudsHUDController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDController.h; sourceTree = "<group>"; };
 		E703CD1C185D419700547738 /* CloudsHUDLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDLayer.cpp; sourceTree = "<group>"; };
@@ -654,7 +641,6 @@
 			children = (
 				E7F051381873690D00017521 /* ofxAVFVideoPlayer */,
 				CB50195E1870FBD50057E844 /* ofxFTGL */,
-				E703CD05185D186B00547738 /* ofxSvg */,
 				E72D3A23179458B60079254B /* ofxCameraSaveLoad */,
 				E7D3309C1751D4A3006706ED /* ofxExtras */,
 				E7D330961751D493006706ED /* ofxColorPalettes */,
@@ -847,54 +833,6 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
-			sourceTree = "<group>";
-		};
-		E703CD05185D186B00547738 /* ofxSvg */ = {
-			isa = PBXGroup;
-			children = (
-				E703CD06185D186B00547738 /* libs */,
-				E703CD0F185D186B00547738 /* src */,
-			);
-			name = ofxSvg;
-			path = ../CloudsLibrary/addons/ofxSvg;
-			sourceTree = "<group>";
-		};
-		E703CD06185D186B00547738 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				E703CD07185D186B00547738 /* svgTiny */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		E703CD07185D186B00547738 /* svgTiny */ = {
-			isa = PBXGroup;
-			children = (
-				E703CD08185D186B00547738 /* src */,
-			);
-			path = svgTiny;
-			sourceTree = "<group>";
-		};
-		E703CD08185D186B00547738 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				E703CD09185D186B00547738 /* src_colors.cpp */,
-				E703CD0A185D186B00547738 /* svgtiny.cpp */,
-				E703CD0B185D186B00547738 /* svgtiny.h */,
-				E703CD0C185D186B00547738 /* svgtiny_gradient.cpp */,
-				E703CD0D185D186B00547738 /* svgtiny_internal.h */,
-				E703CD0E185D186B00547738 /* svgtiny_list.cpp */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		E703CD0F185D186B00547738 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				E703CD10185D186B00547738 /* ofxSvg.cpp */,
-				E703CD11185D186B00547738 /* ofxSvg.h */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		E703CD17185D187800547738 /* HUD */ = {
@@ -1836,6 +1774,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsHUDDesigner" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1987,11 +1927,6 @@
 				E746194917DB716F002FC464 /* CloudsSpeaker.cpp in Sources */,
 				186B68AF17EA34110020C952 /* CloudsVisualSystemManager.cpp in Sources */,
 				CB5019E21870FBD60057E844 /* ofxFTGLFont.cpp in Sources */,
-				E703CD12185D186B00547738 /* src_colors.cpp in Sources */,
-				E703CD13185D186B00547738 /* svgtiny.cpp in Sources */,
-				E703CD14185D186B00547738 /* svgtiny_gradient.cpp in Sources */,
-				E703CD15185D186B00547738 /* svgtiny_list.cpp in Sources */,
-				E703CD16185D186B00547738 /* ofxSvg.cpp in Sources */,
 				E703CD1A185D187800547738 /* CloudsHUDController.cpp in Sources */,
 				E703CD1E185D419800547738 /* CloudsHUDLayer.cpp in Sources */,
 				E703CD23185D6B3200547738 /* CloudsHUDHomeButton.cpp in Sources */,
@@ -2114,7 +2049,7 @@
 		E4B69B600A3A1757003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2219,7 +2154,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
-				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsHUDDesignerDebug;
 				SDKROOT = macosx10.8;
@@ -2230,7 +2165,7 @@
 		E4B69B610A3A1757003C02F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2334,7 +2269,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
-				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsHUDDesigner;
 				SDKROOT = macosx10.8;

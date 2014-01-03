@@ -23,7 +23,6 @@ void CloudsSecondaryDisplayController::setup(){
     
 	parser.loadFromFiles();
 	
-    
 	clusterMap.forceScreenResolution(1920, 1080);
 	clusterMap.setNumSamples(4);
 	clusterMap.setDrawToScreen(false);
@@ -34,11 +33,8 @@ void CloudsSecondaryDisplayController::setup(){
 	clusterMap.loadPresetGUISFromName("2DFollowCam");
 	clusterMap.buildEntireCluster(parser);
 
-
+    //setup OSC reciever
 	receiver.setup(123456);
-	
-    
-    
 	loadSVGs();
     
     //FONT SIZES ARE IN POINTS
@@ -61,10 +57,10 @@ void CloudsSecondaryDisplayController::setup(){
     ////for bio
     meshBioFirstName = bioLayout.getMeshByID("TEXTBOX_x5F_FIRSTNAME_2_");
     meshBioLastName = bioLayout.getMeshByID("TEXTBOX_x5F_LASTNAME_1_");
-    meshBioTitle = bioLayout.getMeshByID("TEXTBOX_x5F_TITLE_1_");
+    meshBioTitle = bioLayout.getMeshByID("TEXTBOX_x5F_TITLE");
     meshBioTitle->bounds.width = 1000;
     meshBioTitleBG = bioLayout.getMeshByID("BOX_x5F_TITLE");
-    meshBioLocation = bioLayout.getMeshByID("TEXTBOX_x5F_LOC_1_");
+    meshBioLocation = bioLayout.getMeshByID("TEXTBOX_x5F_LOC");
     meshBioLocation->bounds.width = 1000;
     meshBioLocationBG = bioLayout.getMeshByID("BOX_x5F_LOC");
     meshBioDescription = bioLayout.getMeshByID("TEXTBOX_x5F_BIO");
@@ -75,26 +71,15 @@ void CloudsSecondaryDisplayController::setup(){
     meshProjectArtist->bounds.width = 1000;
     meshProjectDescription = projectLayout.getMeshByID("TEXTBOX_x5F_DESC_1_");
     
-    //load all fonts
-    ////last name
-   // h1 = getLayoutForLayer(meshBioLastName, "Blender-BOOK");
-    ////first name
-   // h2 = getLayoutForLayer(meshBioFirstName, "Blender-THIN");
-    ////question
-   // h3 = getLayoutForLayer(meshQuestion, "Blender-BOOK");
-    ////locations
-   // h4 = getLayoutForLayer(meshBioLocation, "Blender-BOOK");
-    ////byline / description
-   // p = getLayoutForLayer(meshBioDescription, "Blender-BOOK");
-    
+    //setup all font layout objects
     layoutQuestion = getLayoutForLayer(meshQuestion, "Blender-BOOK");
     layoutBioLastName = getLayoutForLayer(meshBioLastName, "Blender-BOOK");
-    layoutBioFirstName = getLayoutForLayer(meshBioFirstName, "Blender-BOOK");
+    layoutBioFirstName = getLayoutForLayer(meshBioFirstName, "Blender-THIN");
     layoutBioLocation = getLayoutForLayer(meshBioLocation, "Blender-BOOK");
     layoutBioTitle = getLayoutForLayer(meshBioTitle, "Blender-BOOK");
     layoutBioDescription = getLayoutForLayer(meshBioDescription, "Blender-BOOK");
     layoutProjectVideo = getLayoutForLayer(meshProjectVideo, "Blender-BOOK");
-    layoutProjectTitle = getLayoutForLayer(meshProjectTitle, "Blender-BOOK");
+    layoutProjectTitle = getLayoutForLayer(meshProjectTitle, "Blender-THIN");
     layoutProjectArtist = getLayoutForLayer(meshProjectArtist, "Blender-BOOK");
     layoutProjectDescription = getLayoutForLayer(meshProjectDescription, "Blender-BOOK");
     
@@ -113,20 +98,10 @@ void CloudsSecondaryDisplayController::setup(){
 
 /*LOADING SVG LAYOUT files from Sarah*/
 void CloudsSecondaryDisplayController::loadSVGs(){
-	/*ofDirectory svgs(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/");
-     svgs.allowExt("svg");
-     svgs.listDir();
-     //loading all the SVG files in the BIO dir, but why?
-     for(int i = 0; i < svgs.numFiles(); i++){
-     testAllLayout.push_back(CloudsSVGMesh());
-     testAllLayout.back().load(svgs.getPath(i));
-     }*/
-    
     //load the three different layouts
     bioLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/BIO.svg");
     projectLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/PROJECTEX/PROJECTEX.svg");
     questionLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/QUESTION/QUESTION.svg");
-    
 }
 
 ofxFTGLSimpleLayout* CloudsSecondaryDisplayController::getLayoutForLayer( SVGMesh* textMesh, string font) {
@@ -223,7 +198,6 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip& clip){
 	currentClip = clip;
 	currentSpeaker = CloudsSpeaker::speakers[currentClip.person];
 	//if the speaker has no name, there is no speaker
-	//cout << "currentSpeaker: " << currentSpeaker << endl;
 	cout << "currentSpeaker.lastName: "<< currentSpeaker.lastName << endl;
 	if(currentSpeaker.lastName == "")
 		hasSpeaker = false;
@@ -243,8 +217,6 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip& clip){
 	//	string exampleId = m.getArgAsString(4);
 	if(currentClip.hasProjectExample){
 		displayMode = "PROJECT";
-		//need to do something smarter here
-//		currentExample = parser.getProjectExampleWithTitle(currentClip.projectExampleTitle);
 		currentExample = currentClip.projectExample;
 		if(currentExample.exampleVideos.size() > 0){
 			playingMovie = archivePlayer.loadMovie(currentExample.exampleVideos[0]);
@@ -258,7 +230,6 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip& clip){
 		hudLabelMap[meshProjectArtist->id]->setText( currentExample.creatorName );
 		hudLabelMap[meshProjectTitle->id]->setText( currentExample.title );
 		hudLabelMap[meshProjectDescription->id]->setText( currentExample.description );
-		
 	}
 	else{
 		displayMode = "BIO";
@@ -267,7 +238,6 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip& clip){
 		
 		//setup all bio data
 		hudLabelMap[meshQuestion->id]->setText( lastQuestion );
-		
 		hudLabelMap[meshBioFirstName->id]->setText( currentSpeaker.firstName );
 		hudLabelMap[meshBioLastName->id]->setText( currentSpeaker.lastName );
 		hudLabelMap[meshBioTitle->id]->setText( currentSpeaker.title );
@@ -306,15 +276,13 @@ void CloudsSecondaryDisplayController::draw(){
             questionLayout.draw();
             //find the text box
             lastQuestion = ofToUpper(lastQuestion);
-            //drawTextToMesh(h3, lastQuestion, meshQuestion);
             hudLabelMap[meshQuestion->id]->draw();
         }
         
         //only draw speaker info if there is a speaker, duh
-        //cout << "hasSpeaker: " << hasSpeaker << endl;
-
         if(hasSpeaker){
             //DRAW BIO LAYOUT, need to draw this first, text goes over it
+            
             bioLayout.draw();
             
             ////speaker name
@@ -331,11 +299,8 @@ void CloudsSecondaryDisplayController::draw(){
             //DRAW SPEAKER NAME
             ////first name
             firstName = ofToUpper(firstName);
-         //   drawTextToMesh(h2, firstName, meshBioFirstName);
-            
             ////last name
             lastName = ofToUpper(lastName);
-          //  drawTextToMesh(h1, lastName, meshBioLastName);
             
             float firstNameWidth = layoutBioFirstName->getStringBoundingBox(firstName, 0, 0).width;
             float lastNameWidth = layoutBioLastName->getStringBoundingBox(lastName, 0, 0).width;
@@ -350,8 +315,6 @@ void CloudsSecondaryDisplayController::draw(){
             
             ////title
             string title = ofToUpper(currentSpeaker.title);
-           // meshBioTitle->bounds.width = 9999;
-            //hudLabelMap[meshBioTitle->id]->bounds.width = 9999;
             //reposition title to float left
             hudLabelMap[meshBioTitle->id]->bounds.x = titleX;
             
@@ -362,26 +325,21 @@ void CloudsSecondaryDisplayController::draw(){
             if(color)
                 ofSetColor(lightBlue);
             
-           // drawTextToMesh(h4, title, meshBioTitle);
-            
                 ////location
                 if(color)
                     ofSetColor(darkBlue);
             
             string loc = ofToUpper(currentSpeaker.location2);
-            //meshBioLocation->bounds.x = titleX;
+            //float left
             hudLabelMap[meshBioLocation->id]->bounds.x = titleX;
             hudLabelMap[meshBioLocation->id]->bounds.width = 9999;
-           // meshBioLocation->bounds.width = 9999;
             hudLabelMap[meshBioLocation->id]->draw();
-           // drawTextToMesh(h4, loc, meshBioLocation);
             
             if(color)
                 ofSetColor(255);
             
             ////byline / bio / description
             hudLabelMap[meshBioDescription->id]->draw();
-            //drawTextToMesh(p, currentSpeaker.byline1, meshBioDescription);
         }
         
         
@@ -402,17 +360,14 @@ void CloudsSecondaryDisplayController::draw(){
         string title = ofToUpper(currentExample.title);
         hudLabelMap[meshProjectTitle->id]->draw();
         
-        //drawTextToMesh(h2, title, meshProjectTitle);
         
         ////artist name
         string name = currentExample.creatorName;
         hudLabelMap[meshProjectArtist->id]->draw();
         
-        //drawTextToMesh(h4, name, meshProjectArtist);
         
         ////project description
         hudLabelMap[meshProjectDescription->id]->draw();
-        //drawTextToMesh(p, currentExample.description, meshProjectDescription);
         
     }
 	
@@ -430,10 +385,10 @@ void CloudsSecondaryDisplayController::draw(){
  
  }*/
 
-void CloudsSecondaryDisplayController::drawTextToMesh(ofxFTGLSimpleLayout* font, string text, SVGMesh* mesh){
+/*void CloudsSecondaryDisplayController::drawTextToMesh(ofxFTGLSimpleLayout* font, string text, SVGMesh* mesh){
     //update line length
     font->setLineLength(mesh->bounds.width);
     //draw the text
     font->drawString(text.substr(0), mesh->bounds.x, mesh->bounds.y + font->getStringBoundingBox("M", 0, 0).height);
-}
+}*/
 
