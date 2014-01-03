@@ -9,6 +9,6 @@ float map(float value, float inputMin, float inputMax, float outputMin, float ou
 void main() {
 
 	gl_FragColor = gl_Color;
-	gl_FragColor.a = 1.- pow(normalizedDist,2.0);
+	gl_FragColor.a = 1.0;//1.- pow(normalizedDist,2.0);
 	
 }	
