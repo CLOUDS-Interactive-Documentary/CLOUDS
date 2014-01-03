@@ -37,7 +37,7 @@ namespace itg
     MarineSnow::MarineSnow() :
         alphaMin(.2f), alphaMax(.8f), innerFogStart(100.f), innerFogEnd(400.f),
         sizeMin(0.1f), sizeMax(400.f), numParticles(100000), hueMin(.1f), hueMax(.3f),
-        saturationMin(0.f), saturationMax(.8f)
+        saturationMin(0.f), saturationMax(.8f), yMin(-1500.f), yMax(1500.f)
     {
     }
     
@@ -60,7 +60,7 @@ namespace itg
         for (unsigned i = 0; i < numParticles; ++i)
         {
             mesh.addVertex(ofVec3f(ofRandom(-1500.f, 1500.f),
-                                   ofRandom(-1500.f, 1500.f),
+                                   ofRandom(yMin, yMax),
                                    ofRandom(-fogEnd, 0)));
             
             mesh.addColor(ofFloatColor::fromHsb(ofRandom(hueMin, hueMax), ofRandom(saturationMin, saturationMax), 1.f, ofRandom(alphaMin, alphaMax)));
@@ -69,7 +69,7 @@ namespace itg
             mesh.addNormal(ofVec3f((rand() % 2) * .5f, (rand() % 2) * .5f, ofRandom(sizeMin, sizeMax)));
          
             // stick speed in tex coord
-            mesh.addTexCoord(ofVec2f(ofRandom(-5.f, 5.f), 0.f));
+            mesh.addTexCoord(ofVec2f(ofRandom(-10.f, 10.f), 0.f));
         }
     }
     
@@ -88,6 +88,8 @@ namespace itg
         shader.setUniform1f("nearClip", cam.getNearClip());
         shader.setUniform1f("camZ", cam.getPosition().z);
         shader.setUniform1f("time", ofGetElapsedTimef());
+        shader.setUniform1f("yMin", yMin);
+        shader.setUniform1f("yRange", yMax - yMin);
         shader.setUniformTexture("tex", tex, 1);
         mesh.draw();
         shader.end();
