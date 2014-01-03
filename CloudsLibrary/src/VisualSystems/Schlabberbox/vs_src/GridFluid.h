@@ -2,6 +2,7 @@
 #define GRIDFLUID_H
 
 #include "ofMain.h"
+#include "ofxNearestNeighbour.h"
 //#include "Fluid.h"
 //#include "haganlib.h"
 //#include "Vector3.h"
@@ -9,21 +10,32 @@
 #include <cmath>
 #include <cstdlib>
 #include <vector>
+#include "ofxNearestNeighbour.h"
 
+class FluidParticle: public ofVec3f {
+public:
+	FluidParticle(float x, float y, float z) {
+		set(x, y, z);
+		startPos.set(*this);
+	}
 
-/**
- * A fluid simulator that simulates a cube (NxNxN) over time.
- * Works by solving a Poisson equation for the density,
- * and advection of the velocity field to determine how velocity changes.
- */
+	void update(float amount){
+		set(*this + (startPos - *this) * amount);
+	}
+	ofVec3f startPos;
+};
+
+//typedef ofVec3f FluidParticle;
+
 class FluidBox {
 public:
+	//typedef  kdTreeType;
 
 	/** Size n for each dimension of the cube. */
 	unsigned int size;
 
 	/** Location of "marker particles" that represent the fluid. */
-	std::vector<ofVec3f> particles;
+	std::vector<FluidParticle> particles;
 
 	FluidBox();
 
@@ -38,7 +50,7 @@ public:
 	ofVec3f getVelocityAt(int x, int y, int z);
 
 	void addParticles(int numParticlesX, int numParticlesY, int numParticlesZ,
-		float x, float y, float z, float width, float height, float depth);
+	                  float x, float y, float z, float width, float height, float depth);
 	void addParticle(float x, float y, float z);
 
 	void addForceLeft(ofVec3f force);
@@ -50,10 +62,13 @@ public:
 
 	bool drawLines;
 	bool drawForceField;
-	bool drawCorners;
+	bool drawParticles;
 
 	float viscosity;
 	float particleSpeed;
+	float boxSize;
+	float particleConnectDistance;
+	float particlesMoveBack;
 
 private:
 	void floatsToVec();
@@ -134,8 +149,12 @@ private:
 	ofMesh meshVelocity;
 	ofMesh box;
 
-	float cornerSize;
 	ofVec3f gravity;
+
+	itg::NearestNeighbour<FluidParticle> nn;
+	vector<pair<NNIndex, float> > nnMatches;
+
+	//KDTree::KDTree<3,FluidParticle> tree;
 };
 
 

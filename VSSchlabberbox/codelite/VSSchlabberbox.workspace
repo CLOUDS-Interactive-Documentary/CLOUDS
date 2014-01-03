@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeLite_Workspace Name="schlabberbox" Database="./schlabberbox.tags">
+  <Environment>
+    <![CDATA[
+  
+  
+  ]]>
+  </Environment>
+  <Project Name="VSSchlabberbox" Path="VSSchlabberbox.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="no">
+      <Project Name="linux" ConfigName="Debug"/>
+      <Project Name="schlabberbox" ConfigName="Debug"/>
+      <Project Name="VSSchlabberbox" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Project Name="linux" ConfigName="Release"/>
+      <Project Name="schlabberbox" ConfigName="Release"/>
+      <Project Name="VSSchlabberbox" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>
