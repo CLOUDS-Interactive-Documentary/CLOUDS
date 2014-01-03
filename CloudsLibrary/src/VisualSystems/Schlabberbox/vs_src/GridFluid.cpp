@@ -71,7 +71,7 @@ void FluidBox::setup(int s, float v) {
 
 	//box = ofMesh::box(1, 1, 1);
 	box.load("box.ply");
-	cornerSize = 3;
+	boxSize = 3;
 
 	particleSpeed = 80;
 
@@ -84,9 +84,11 @@ ofVec3f FluidBox::getVelocityAt(int x, int y, int z) {
 }
 
 void FluidBox::update() {
-
 	//vecToFloats();
 
+	for(vector<FluidParticle>::iterator it = particles.begin(); it<particles.end(); it++) {
+		(*it).update(particlesMoveBack);
+	}
 	advanceParticles();
 
 	long time = ofGetElapsedTimeMillis();
@@ -107,11 +109,11 @@ void FluidBox::update() {
 
 	convect(velX, velY, velZ, velXOld, velYOld, 4, size);
 
-	floatsToVec();
+	//floatsToVec();
 
-	for(vector<ofVec3f>::iterator it = velocity.begin(); it<velocity.end(); it++) {
-		//*it += (gravity - *it)*.001;
-	}
+
+
+	nn.buildIndex(particles);
 }
 
 void FluidBox::draw() {
@@ -159,20 +161,29 @@ void FluidBox::draw() {
 
 	ofSetColor(255);
 
+	std::vector<FluidParticle> skip;
+
 	//TODO: optimize this for performance
-	for(std::vector<ofVec3f>::iterator it = particles.begin(); it<particles.end(); it++) {
-		if(drawLines) {
-			for(std::vector<ofVec3f>::iterator jt = it; jt<particles.end(); jt++) {
-				if((*it).squareDistance(*jt) < 5) {
-					ofLine(*it * scaleMulti, *jt * scaleMulti);
-				}
+
+	if(drawLines) {
+		for(std::vector<FluidParticle>::iterator it = particles.begin(); it<particles.end(); it+=2) {
+
+			vector<FluidParticle> close;
+
+			nn.findPointsWithinRadius(*it, particleConnectDistance, nnMatches);
+
+			for (unsigned i = 0; i < nnMatches.size(); ++i) {
+				ofLine(*it * scaleMulti, particles[nnMatches[i].first] * scaleMulti);
 			}
 		}
+	}
 
-		if(drawCorners) {
+	if(drawParticles) {
+		for(std::vector<FluidParticle>::iterator it = particles.begin(); it<particles.end(); it++) {
+
 			ofPushMatrix();
 			ofTranslate(*it * scaleMulti);
-			ofScale(cornerSize, cornerSize, cornerSize);
+			ofScale(boxSize, boxSize, boxSize);
 			box.draw();
 			ofPopMatrix();
 		}
@@ -221,15 +232,20 @@ void FluidBox::addParticles(int numParticlesX, int numParticlesY, int numParticl
 	for (float xi = (width / (numParticlesX)) / 2; xi <= width; xi += width / (numParticlesX)) {
 		for (float yi = (height / (numParticlesY)) / 2; yi <= height; yi += height / (numParticlesY)) {
 			for (float zi = (depth / (numParticlesZ)) / 2; zi <= depth; zi += depth / (numParticlesZ)) {
-				particles.push_back(ofVec3f(xi, yi, zi));
+				addParticle(xi, yi, zi);
 			}
 		}
 	}
+
+	nn.buildIndex(particles);
+
+	//tree.optimize();
 }
 
 
 void FluidBox::addParticle(float x, float y, float z) {
-	particles.push_back(ofVec3f(x, y, z));
+	particles.push_back(FluidParticle(x, y, z));
+	//tree.insert(particles.back());
 }
 
 void FluidBox::advanceParticles() {
