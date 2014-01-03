@@ -673,6 +673,21 @@ void CloudsVisualSystemRGBD::clearQuestions(){
 
 }
 
+//JG NEW TRANSITION STUBS
+void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType){
+	
+}
+void CloudsVisualSystemRGBD::startTransitionIn(RGBDTransitionType transitionType){
+	
+}
+void CloudsVisualSystemRGBD::updateTransition(float percentComplete){
+	
+}
+void CloudsVisualSystemRGBD::transtionFinished(){
+	
+}
+//JG END TRANSITION STUBES
+
 void CloudsVisualSystemRGBD::updateTransition(){
 	
 	if(transitioning){

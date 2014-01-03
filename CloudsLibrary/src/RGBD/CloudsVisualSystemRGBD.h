@@ -78,10 +78,16 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 		}
 		return cloudsCamera;
 	}
-
+	
+	//TODO
+	void startTransitionOut(RGBDTransitionType transitionType);
+	void startTransitionIn(RGBDTransitionType transitionType);
+	void updateTransition(float percentComplete);
+	void transtionFinished();
+	
+	//DEPRECATED
 	void transitionIn( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
 	void transitionOut( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
-	
 	void transition( float duration=3, float startTime=ofGetElapsedTimef() );
 	
 	ofNode* transitionTarget;
