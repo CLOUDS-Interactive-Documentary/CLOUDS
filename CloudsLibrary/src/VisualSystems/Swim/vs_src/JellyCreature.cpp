@@ -115,8 +115,11 @@ namespace itg
             for (unsigned i = 0; i < numTentacles; ++i)
             {
                 float phi = 2 * (i + 0.5) * TWO_PI / (float)round(m1);
-                tentaclePosns.push_back(size * superVertex(phi, segment));
-                tentacleAngles.push_back(phi);
+                if (k == 0)
+                {
+                    tentaclePosns.push_back(size * superVertex(phi, segment));
+                    tentacleAngles.push_back(phi);
+                }
                 for (unsigned j = 0; j < resolution; ++j)
                 {
                     float theta = 1.4 * j * segment / (float)resolution;
@@ -161,6 +164,7 @@ namespace itg
             deformed[i].x = tentaclePosns[i].x + sin(frequency * time) * deformAmount * sin(HALF_PI + tentacleAngles[i]);
             deformed[i].y = tentaclePosns[i].y - sin(frequency * time) * deformAmount * cos(HALF_PI + tentacleAngles[i]);
             deformed[i].z = tentaclePosns[i].z;
+            deformed[i] = deformed[i] * getGlobalTransformMatrix();
         }
         return deformed;
     }

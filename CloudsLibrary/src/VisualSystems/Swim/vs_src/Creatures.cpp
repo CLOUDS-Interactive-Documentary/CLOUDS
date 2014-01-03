@@ -135,9 +135,31 @@ namespace itg
         }
         
         // tentacles
-        tentacles.init(TENTACLE_NUM_SECTIONS, numJellyOne + numJellyTwo, OF_PRIMITIVE_POINTS, false);
-        if (jellies.size() * TENTACLE_NUM_SECTIONS * 4 != tentacles.getSize()) ofLogFatalError() << "tentacle texture size error";
+        unsigned numTentacles = 0;
+        for (unsigned i = 0; i < jellies.size(); ++i) numTentacles += jellies[i]->getNumTentacles();
+        tentacles.init(TENTACLE_NUM_SECTIONS, numTentacles, OF_PRIMITIVE_POINTS, false);
+        if (numTentacles * TENTACLE_NUM_SECTIONS * 4 != tentacles.getSize()) ofLogFatalError() << "tentacle texture size error";
         float* particlePosns = new float[tentacles.getSize()];
+        
+        unsigned tentacleIdx = 0;
+        for (unsigned i = 0; i < jellies.size(); ++i)
+        {
+            vector<ofVec3f> deformed = jellies[i]->getDeformedTentaclePosns();
+            for (unsigned j = 0; j < deformed.size(); ++j)
+            {
+                for (unsigned x = 0; x < TENTACLE_NUM_SECTIONS; ++x)
+                {
+                    unsigned idx = tentacleIdx * TENTACLE_NUM_SECTIONS + x;
+                    particlePosns[idx * 4] = deformed[j].x;
+                    particlePosns[idx * 4 + 1] = deformed[j].y - x * TENTACLE_SECTION_LENGTH;
+                    particlePosns[idx * 4 + 2] = deformed[j].z;
+                    particlePosns[idx * 4 + 3] = 0.f;
+                }
+                ++tentacleIdx;
+            }
+        }
+        
+        /*
         for (unsigned y = 0; y < jellies.size(); ++y)
         {
             ofVec3f pos = jellies[y]->getPosition();
@@ -149,11 +171,11 @@ namespace itg
                 particlePosns[idx * 4 + 2] = pos.z;
                 particlePosns[idx * 4 + 3] = 0.f;
             }
-        }
+        }*/
         tentacles.loadDataTexture(ofxGpuParticles::POSITION, particlePosns);
         delete[] particlePosns;
         tentacles.zeroDataTexture(ofxGpuParticles::VELOCITY);
-        tentaclePosns.resize(numJellyOne + numJellyTwo);
+        tentaclePosns.resize(numTentacles);
     }
     
     void Creatures::addPointFish(unsigned number, float hue)
@@ -328,9 +350,15 @@ namespace itg
             }
         }
         
+        unsigned tentacleIdx = 0;
         for (unsigned i = 0; i < jellies.size(); ++i)
         {
-            tentaclePosns[i] = jellies[i]->getPosition();
+            vector<ofVec3f> deformed = jellies[i]->getDeformedTentaclePosns();
+            for (unsigned j = 0; j < deformed.size(); ++j)
+            {
+                tentaclePosns[tentacleIdx] = deformed[j];
+                ++tentacleIdx;
+            }
         }
         tentacles.loadDataTexture(ofxGpuParticles::POSITION, tentaclePosns[0].getPtr(), 0, 0, 1, tentacles.getHeight());
         tentacles.getUpdateShaderRef().begin();
@@ -362,7 +390,7 @@ namespace itg
             vector<ofVec3f> deformed = jellies[i]->getDeformedTentaclePosns();
             for (unsigned j = 0; j < deformed.size(); ++j)
             {
-                ofCircle(deformed[j] * jellies[i]->getGlobalTransformMatrix(), 4.f);
+                ofCircle(deformed[j], 4.f);
             }
         }
         

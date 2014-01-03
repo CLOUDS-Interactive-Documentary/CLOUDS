@@ -78,10 +78,6 @@ namespace itg
         
         vector<ofVec3f> getDeformedTentaclePosns();
         
-        vector<ofVec3f>& getTentaclePosnsRef() { return tentaclePosns; }
-        
-        //void setFrequency(const float frequency) { this->frequency = frequency; }
-        
     private:
         static ofImage tex;
         static ofShader shader;
