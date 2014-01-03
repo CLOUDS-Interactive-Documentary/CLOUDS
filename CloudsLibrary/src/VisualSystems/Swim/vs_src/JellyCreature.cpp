@@ -120,7 +120,7 @@ namespace itg
                     tentaclePosns.push_back(size * superVertex(phi, segment));
                     tentacleAngles.push_back(phi);
                 }
-                for (unsigned j = 0; j < resolution; ++j)
+                for (unsigned j = 0; j <= resolution; ++j)
                 {
                     float theta = 1.f * j * segment / (float)resolution;
                     lineMesh.addVertex(size * superVertex(phi + 0.08 * ofNoise(2.f * theta, phi) * k / (float)numLines, theta));

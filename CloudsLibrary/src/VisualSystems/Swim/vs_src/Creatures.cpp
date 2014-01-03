@@ -154,7 +154,7 @@ namespace itg
                     particlePosns[idx * 4 + 2] = deformed[j].z;
                     particlePosns[idx * 4 + 3] = 0.f;
                     ofFloatColor col = jellies[i]->getTentacleColour();
-                    col.a = 1.f - x / (float)TENTACLE_NUM_SECTIONS;
+                    col.a = .5f * (1.f - x / (float)TENTACLE_NUM_SECTIONS);
                     tentacleMesh.addColor(col);
                     if (x > 0)
                     {
