@@ -93,10 +93,13 @@ void Panel::setup(string codeFile){
 		
 	}
 	
-	animationStartTime = ofGetElapsedTimef() + ofRandom(.3);
-	animationEndTime = animationStartTime + .8;
 	
 	selfSetup();
+}
+
+void Panel::startAnimation(){
+	animationStartTime = ofGetElapsedTimef() + ofRandom(.3);
+	animationEndTime = animationStartTime + .8;	
 }
 
 void Panel::update(){

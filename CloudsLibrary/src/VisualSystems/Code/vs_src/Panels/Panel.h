@@ -25,6 +25,7 @@ class Panel {
   public:
 	Panel();
 	void setup(string codeFile);
+	void startAnimation();
 	
 	void update();
 	void draw(float screenHeight);
