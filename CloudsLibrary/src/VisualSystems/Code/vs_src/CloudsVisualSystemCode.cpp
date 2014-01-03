@@ -41,7 +41,6 @@ void CloudsVisualSystemCode::selfSetupGui(){
 	boxGui->addIntSlider("box gen seed", 1, 300, &boxSeed);
 	boxGui->addSlider("outline alpha", 0, 1.0, &outlineAlpha);
 	
-	
 	ofAddListener(boxGui->newGUIEvent, this, &CloudsVisualSystemCode::selfGuiEvent);
 	guis.push_back(boxGui);
 	guimap[boxGui->getName()] = boxGui;
@@ -64,7 +63,6 @@ void CloudsVisualSystemCode::selfSetupGui(){
 	colorNames[2] = "base types";
 	colorNames[3] = "preprocessors";
 	colorNames[4] = "keywords";
-	
 
 	for(int i = 0; i < MATCH_TYPES; i++){
 		ofxUILabel* lb = colorGui->addLabel("color " + ofToString(i+1) + " " +colorNames[i] );
@@ -123,18 +121,21 @@ void CloudsVisualSystemCode::generatePanels(){
 	for(int i = 0; i < rectTests.size(); i++){
 		Panel* p;
 		if(MIN(rectTests[i].height, rectTests[i].width) < minTextboxSize){
-			p = new PanelGraph();
+			p = new PanelTenPrint();
 		}
 		else{
-			PanelCode* code = new PanelCode();
-			code->sharedFont = &sharedFont;
-			p = code;
+			p = new PanelCode();
 		}
-		p->setup( getVisualSystemDataPath() + "code_test.txt" );
+		
+		p->dataPath = getVisualSystemDataPath();
+		p->sharedFont = &sharedFont;
+		p->sharedLayout = &sharedLayout;
 
 		p->outlineAlpha = &outlineAlpha;
 		p->scanSpeed = powf(ofRandom(speedRange.min,speedRange.max),2);
 		p->drawRect = rectTests[i];
+		p->setup();
+
 		panels.push_back(p);
 	}
 	
@@ -217,6 +218,7 @@ void CloudsVisualSystemCode::updateColors(){
 void CloudsVisualSystemCode::selfUpdate(){
 	if(currentFontSize != fontSize){
 		sharedFont.loadFont(GetCloudsDataPath() + "font/Consolas.ttf", fontSize);
+		sharedLayout.loadFont(GetCloudsDataPath() + "font/Consolas.ttf", fontSize);
 		currentFontSize = fontSize;
 	}
 	
@@ -275,7 +277,7 @@ void CloudsVisualSystemCode::selfExit(){
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemCode::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
-		generatePanels();
+		regeneratePanels = true;
 	}
 }
 void CloudsVisualSystemCode::selfKeyReleased(ofKeyEventArgs & args){

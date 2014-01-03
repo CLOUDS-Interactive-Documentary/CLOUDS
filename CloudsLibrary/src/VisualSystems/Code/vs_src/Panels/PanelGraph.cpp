@@ -28,7 +28,7 @@ void PanelGraph::selfDraw(){
 		}
 	}
 	
-	int col=0;
+	int col = 0;
 	int numLines = charPolies.size();
 	map<unsigned char, ofPolyline>::iterator it;
 	for(it = charPolies.begin(); it != charPolies.end(); it++){
@@ -38,6 +38,5 @@ void PanelGraph::selfDraw(){
 		it->second.draw();
 		col++;
 	}
-	
 	
 }

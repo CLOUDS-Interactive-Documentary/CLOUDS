@@ -14,6 +14,7 @@
 #include "Panel.h"
 #include "PanelCode.h"
 #include "PanelGraph.h"
+#include "PanelTenPrint.h"
 
 class CloudsVisualSystemCode : public CloudsVisualSystem {
   public:
@@ -103,10 +104,10 @@ protected:
 	
 	ofxUISuperCanvas* typeGui;
 	ofxUISuperCanvas* colorGui;
-	ofRange speedRange;
-	
+	ofRange speedRange;	
 	
 	ofxFTGLFont sharedFont;
+	ofxFTGLSimpleLayout sharedLayout;
 	float typeTracking;
 	int currentFontSize;
 	int fontSize;
