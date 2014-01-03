@@ -135,6 +135,10 @@ void STREAMSOUND_DYNAMIC(double outskip, string file, double amp, string pvar, i
     bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)pvar.c_str(), updatenr);
     parse_score(thebuf, bx);
 
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", updatenr);
+    parse_score(thebuf, bx);
+    
     // load file
     bx = snprintf(thebuf, 256, "rtinput(\"%s\")", (char*)f.c_str());
     parse_score(thebuf, bx);
