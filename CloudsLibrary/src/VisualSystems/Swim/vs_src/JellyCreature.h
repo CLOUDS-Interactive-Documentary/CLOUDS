@@ -44,8 +44,6 @@ namespace itg
         
         float bodyAlpha;
         
-        //float widthAverage, widthStdDeviation, lengthAverage, lengthStdDeviation;
-        
         float widthMin, widthMax;
         float lengthMin, lengthMax;
         
@@ -60,6 +58,10 @@ namespace itg
         
     public:
         typedef shared_ptr<JellyCreature> Ptr;
+        
+        static float undulationAmt;
+        static float undulationFreqMin;
+        static float undulationFreqMax;
         
         JellyCreature(const JellyParams& params);
         
@@ -96,7 +98,7 @@ namespace itg
         float bodyAlpha;
         ofFloatColor bodyColour;
         ofFloatColor tentacleColour;
-        float deformAmount;
+        //float deformAmount;
         float pulseAmt;
         bool drawInner;
     };

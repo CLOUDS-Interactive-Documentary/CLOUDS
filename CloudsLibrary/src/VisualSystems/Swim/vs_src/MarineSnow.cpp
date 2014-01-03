@@ -69,7 +69,7 @@ namespace itg
             mesh.addNormal(ofVec3f((rand() % 2) * .5f, (rand() % 2) * .5f, ofRandom(sizeMin, sizeMax)));
          
             // stick speed in tex coord
-            mesh.addTexCoord(ofVec2f(ofRandom(-10.f, 10.f), 0.f));
+            mesh.addTexCoord(ofVec2f(ofRandom(-20.f, 20.f), 0.f));
         }
     }
     
