@@ -59,7 +59,11 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	meshRetractionFalloff = 1.0;
 	meshForceGeoRectraction = .0;
 	
+	
+	//transition editing
 	placingTransitionNodes = false;
+	bSaveTransition = false;
+	transitionCamTargetNode = NULL;
 
 }
 
@@ -83,7 +87,14 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	transitionCam.setup();
 	
+	transitionCam.applyTranslation = true;
+	transitionCam.applyRotation = true;
+	
 //    rebuildCaptionFont();
+	
+	bTransitionIn = bTransitionOut = false;
+	
+	loadTransitionSettings("Transitions");
 }
 
 void CloudsVisualSystemRGBD::playTestVideo(){
@@ -318,20 +329,34 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     transitionEditorGui->setName("TransitionEditor");
     transitionEditorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	transitionEditorGui->addButton("transition", true);
+	transitionEditorGui->addToggle("placingTransitionNodes", &placingTransitionNodes);
+	transitionEditorGui->addToggle("drawTransitionNodes", &drawTransitionNodes);
 	
 	transitionEditorGui->addSpacer();
 	
-	transitionEditorGui->addButton("lookThoughIN", true );
-	transitionEditorGui->addButton("lookThoughOUT", true );
+	transitionEditorGui->addToggle("lookThoughIN", &bLookThourghIn )->setColorBack(ofColor(0,255,255));
+	transitionEditorGui->addToggle("lookThoughOUT", &bLookThourghOut )->setColorBack(ofColor(255,255,0));
+	transitionEditorGui->addSpacer();
+	
+	transitionEditorGui->addToggle("saveTransition", &bSaveTransition);
+	transitionEditorGui->addSpacer();
+	
+	vector<string> transitionNames;
+	for(auto &cur_pair: transitionMap) { transitionNames.push_back((cur_pair.first)); }
+	
+	transitionEditorGui->addLabel("transitionTypes")->setColorFill(ofColor(100));
+	transitionEditorGui->addRadio("loadTransition", transitionNames);
+	
+	
+//	translatedHeadPosition
 	
 	
 	CloudsQuestion::addQuestionVariables( transitionEditorGui );
 	
 	guis.push_back(transitionEditorGui);
-	guimap[meshGui->getName()] = transitionEditorGui;
+	guimap[transitionEditorGui->getName()] = transitionEditorGui;
 	
-	ofAddListener(globalMeshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
+	ofAddListener(transitionEditorGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
 	
 //	connectorGui = new ofxUISuperCanvas("CONNECTORS", gui);
 //	connectorGui->copyCanvasStyle(gui);
@@ -384,14 +409,141 @@ void CloudsVisualSystemRGBD::selfUpdate(){
     
 //    cloudsCaption.update();
 	
-	if(currentCamera == &transitionCam){
-		transitionCamTargetNode->setPosition( transitionCam.getPosition() );
-		transitionCamTargetNode->setOrientation( transitionCam.getOrientationQuat() );
+	if( placingTransitionNodes )
+	{	
+		if(bLookThourghIn)
+		{
+			lookThroughTransitionIn();
+			bLookThourghIn = false;
+		}
+		else if(bLookThourghOut)
+		{
+			lookThroughTransitionOut();
+			bLookThourghOut = false;
+		}
+		
+		if(transitionCamTargetNode)
+		{
+			transitionCamTargetNode->setPosition( transitionCam.getPosition() );
+			transitionCamTargetNode->setOrientation( transitionCam.getOrientationQuat() );
+		}
+
 	}
 	else{
 		cloudsCamera.driftNoiseSpeed = caughtQuestion ? 0 : attenuatedCameraDrift;
 	}
+	
+	
+	if(bSaveTransition)
+	{
+		bSaveTransition = false;
+	
+		saveTransitionSettings( ofSystemTextBoxDialog("save transition", "transitionType") );
+	}
+}
 
+//save and load transitions
+//------------------------------------------------------------------------
+void CloudsVisualSystemRGBD::loadTransitionSettings(string filename)
+{	
+	transitionMap.clear();
+	
+	ofxXmlSettings *XML = new ofxXmlSettings();
+	XML->loadFile( GetCloudsDataPath() + "transitions/" + filename + ".xml" );
+	
+	int numTransitions = XML->getNumTags("TRANSITION");
+	for(int i = 0; i < numTransitions; i++)
+	{
+		XML->pushTag("TRANSITION", i);
+		string name = XML->getValue("Name", "NULL", 0);
+		
+		transitionMap[name].name = name;
+		
+		XML->pushTag("InStartPos");
+		transitionMap[name].inStartPos.set( XML->getValue("x", 0. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ) );
+		XML->popTag();
+		
+		XML->pushTag("InStartQuat");
+		transitionMap[name].inStartQuat.set( XML->getValue("x", 0. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ), XML->getValue("w", 0. ) );
+		XML->popTag();
+		
+		XML->pushTag("OutTargetPos");
+		transitionMap[name].inStartPos.set( XML->getValue("x", 0. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ) );
+		XML->popTag();
+		
+		XML->pushTag("OutTargetQuat");
+		transitionMap[name].inStartQuat.set( XML->getValue("x", 0. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ), XML->getValue("w", 0. ) );
+		XML->popTag();
+		
+		XML->popTag();
+	}
+	
+	delete XML;
+}
+
+void CloudsVisualSystemRGBD::saveTransitionSettings(string transitionName)
+{
+	//save positions relative to head position
+	transitionMap[transitionName].name = transitionName;
+	
+	transitionMap[transitionName].inStartPos = transitionInStart.getPosition() - translatedHeadPosition;
+	transitionMap[transitionName].inStartQuat = transitionInStart.getOrientationQuat();
+	
+	transitionMap[transitionName].outTargetPos = transitionOutTarget.getPosition() - translatedHeadPosition;
+	transitionMap[transitionName].outTargetQuat = transitionOutTarget.getOrientationQuat().asVec4();
+	
+	
+	//cout << "saving transitions settings " + transitionName << endl;
+	ofxXmlSettings *XML = new ofxXmlSettings();
+	
+	int transitionIndex = 0;
+	for(map<string, TransitionInfo>::iterator it=transitionMap.begin(); it != transitionMap.end(); it++)
+	{	
+		ofVec4f inQ = it->second.inStartQuat.asVec4();
+		ofVec4f outQ = it->second.outTargetQuat.asVec4();
+		
+		XML->addTag("TRANSITION");
+		XML->pushTag("TRANSITION", transitionIndex);
+		transitionIndex++;
+		
+		XML->setValue("Name", it->second.name );
+
+		XML->addTag("InStartPos");
+		XML->pushTag("InStartPos");
+		XML->setValue("x", it->second.inStartPos.x);
+		XML->setValue("y", it->second.inStartPos.y);
+		XML->setValue("z", it->second.inStartPos.z);
+		XML->popTag();
+
+		XML->addTag("InStartQuat");
+		XML->pushTag("InStartQuat");
+		XML->setValue("x", inQ.x);
+		XML->setValue("y", inQ.y);
+		XML->setValue("z", inQ.z);
+		XML->setValue("w", inQ.w);
+		XML->popTag();
+
+		XML->addTag("OutTargetPos");
+		XML->pushTag("OutTargetPos");
+		XML->setValue("x", it->second.outTargetPos.x);
+		XML->setValue("y", it->second.outTargetPos.y);
+		XML->setValue("z", it->second.outTargetPos.z);
+		XML->popTag();
+
+		XML->addTag("OutTargetQuat");
+		XML->pushTag("OutTargetQuat");
+		XML->setValue("x", outQ.x);
+		XML->setValue("y", outQ.y);
+		XML->setValue("z", outQ.z);
+		XML->setValue("w", outQ.w);
+		XML->popTag();
+		
+		XML->popTag();
+	}
+
+	XML->saveFile(GetCloudsDataPath() + "transitions/Transitions.xml" );
+	delete XML;
+	
 }
 
 //--------------------------------------------------------------
@@ -1180,7 +1332,27 @@ void CloudsVisualSystemRGBD::selfPresetLoaded( string presetName ){
 }
 
 //--------------------------------------------------------------
-void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e)
+{
+	string name = e.getName();
+	int kind = e.getKind();
+	
+	if(kind == OFX_UI_WIDGET_TOGGLE && e.getToggle()->getValue())
+	{
+		for(auto &it: transitionMap)
+		{
+			if(it.first == name)
+			{
+				transitionInStart.setPosition( it.second.inStartPos + translatedHeadPosition );
+				transitionInStart.setOrientation( it.second.inStartQuat );
+				
+				transitionOutTarget.setPosition( it.second.outTargetPos + translatedHeadPosition );
+				transitionOutTarget.setOrientation( it.second.outTargetQuat );
+			}
+		}
+	}
+	
+	
 	if(e.widget->getName() == "Line Spacing" || e.widget->getName() == "Line Granularity") {
 		refreshLines = true;
 	}
