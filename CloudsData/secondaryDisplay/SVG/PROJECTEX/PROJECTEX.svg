@@ -24,10 +24,10 @@
 	<rect x="308.5" y="88.5" fill="none" width="1280" height="720"/>
 </g>
 <g id="TEXTBOX_x5F_NAME" opacity="0">
-	<rect x="84.5" y="910.5" fill="none" width="543" height="50"/>
+	<rect x="84.5" y="910.5" fill="none" width="543" height="32"/>
 </g>
 <g id="TEXTBOX_x5F_ARTIST_1_" opacity="0">
-	<rect id="_x3C_Path_x3E__1_" x="674.5" y="928.5" fill="none" width="342" height="14"/>
+	<rect id="_x3C_Path_x3E__1_" x="674.5" y="917.5" fill="none" width="342" height="18"/>
 </g>
 <g id="TEXTBOX_x5F_DESC_1_" opacity="0">
 	<rect id="_x3C_Path_x3E__2_" x="1093.5" y="910.5" fill="none" width="741" height="18"/>
