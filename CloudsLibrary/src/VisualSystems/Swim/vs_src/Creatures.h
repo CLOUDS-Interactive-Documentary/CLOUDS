@@ -80,7 +80,7 @@ namespace itg
         void addJellyFish(unsigned number, const JellyParams& params);
         
         static const unsigned TENTACLE_NUM_SECTIONS = 20;
-        static const unsigned TENTACLE_SECTION_LENGTH = 2;
+        static const float TENTACLE_SECTION_LENGTH = 4.f;
         
         vector<Creature::Ptr> creatures;
         vector<vector<Creature::Ptr> > creaturesByType;

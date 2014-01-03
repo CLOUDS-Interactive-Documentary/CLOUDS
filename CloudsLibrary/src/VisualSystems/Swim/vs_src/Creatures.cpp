@@ -144,14 +144,15 @@ namespace itg
         for (unsigned i = 0; i < jellies.size(); ++i)
         {
             vector<ofVec3f> deformed = jellies[i]->getDeformedTentaclePosns();
+            ofVec3f step = -1.5f * TENTACLE_SECTION_LENGTH * jellies[i]->getZAxis();
             for (unsigned j = 0; j < deformed.size(); ++j)
             {
                 for (unsigned x = 0; x < TENTACLE_NUM_SECTIONS; ++x)
                 {
                     unsigned idx = tentacleIdx * TENTACLE_NUM_SECTIONS + x;
-                    particlePosns[idx * 4] = deformed[j].x;
-                    particlePosns[idx * 4 + 1] = deformed[j].y - x * TENTACLE_SECTION_LENGTH;
-                    particlePosns[idx * 4 + 2] = deformed[j].z;
+                    particlePosns[idx * 4] = deformed[j].x + x * step.x;
+                    particlePosns[idx * 4 + 1] = deformed[j].y + x * step.y;
+                    particlePosns[idx * 4 + 2] = deformed[j].z + x * step.z;
                     particlePosns[idx * 4 + 3] = 0.f;
                     ofFloatColor col = jellies[i]->getTentacleColour();
                     col.a = .5f * (1.f - x / (float)TENTACLE_NUM_SECTIONS);
@@ -313,20 +314,7 @@ namespace itg
             creatures[i]->integrate();
             creatures[i]->updateNormalisedVelocity();
             ofVec3f toMove = creatures[i]->getVelocity() * Creature::getElapsed();
-#ifndef _DEBUG
             creatures[i]->move(toMove + sin(ofGetElapsedTimef() * creatures[i]->getFrequency()) * toMove * 0.4);
-            
-            /*
-            if (abs(creatures[i]->getPosition().z - cam.getPosition().z) > Creature::fogEnd)
-            {
-                //cout << cam.getPosition().z << " " << creatures[i]->getPosition().z << " " << cam.getPosition().z - fmod(creatures[i]->getPosition().z, Creature::fogEnd) << endl;
-                creatures[i]->setPosition(creatures[i]->getPosition().x, creatures[i]->getPosition().y, cam.getPosition().z - fmod(creatures[i]->getPosition().z, Creature::fogEnd));
-            }*/
-#endif
-            /*ofQuaternion quat;
-            quat.makeRotate(ofVec3f(0, 0, 1), creatures[i]->getNormalisedVelocity());
-            creatures[i]->setOrientation(quat);
-            */
             creatures[i]->slerp(creatures[i]->getPosition() - creatures[i]->getNormalisedVelocity(), ofVec3f(0, 1, 0));
 
 			creatures[i]->update();
