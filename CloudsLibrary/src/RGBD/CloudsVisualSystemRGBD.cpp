@@ -4,9 +4,6 @@
 #include "CloudsGlobal.h"
 
 //--------------------------------------------------------------
-//map<string, int> CloudsVisualSystemRGBD::appearances;
-
-//--------------------------------------------------------------
 string CloudsVisualSystemRGBD::getSystemName(){
 	return "RGBD";
 }
@@ -29,7 +26,7 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	transitionTarget = &transitionOutTarget;
 	drawTransitionNodes = false;
 	
-	captionFontSize = 12;
+//	captionFontSize = 12;
 	
 	edgeAttenuate = 0.;
 	skinBrightness = 0.;
@@ -52,8 +49,6 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	linesFlowUp = false;
 	refreshLines = true;
 	
-	
-	
 	drawMesh = true;
 	xSimplify = 2.0;
 	ySimplify = 2.0;
@@ -63,6 +58,8 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	meshFaceFalloff = 0.0;
 	meshRetractionFalloff = 1.0;
 	meshForceGeoRectraction = .0;
+	
+	placingTransitionNodes = false;
 
 }
 
@@ -75,22 +72,22 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	generatePoints();
 	generateMesh();
 		
-	particulateController.setParticleCount(20000);
-	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-	particulateController.setup();
+//	particulateController.setParticleCount(20000);
+//	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+//	particulateController.setup();
 	
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
-	setCurrentCamera(cloudsCamera);
-		
+			
 	displayFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", 14);
 	
 	transitionCam.setup();
 	
-    rebuildCaptionFont();
+//    rebuildCaptionFont();
 }
 
 void CloudsVisualSystemRGBD::playTestVideo(){
+
 	if(ofFile::doesFileExist("TestVideo/Lindsay_memes_2.mov")){
 		getRGBDVideoPlayer().setup("TestVideo/Lindsay_memes_2.mov",
 								   "TestVideo/Lindsay_memes_2.xml", 0, 0  );
@@ -108,16 +105,17 @@ void CloudsVisualSystemRGBD::loadShader(){
 //	CloudsQuestion::reloadShader();
 }
 
-void CloudsVisualSystemRGBD::rebuildCaptionFont(){
-    if(bUseOculusRift){
-        captionFont.loadFont(GetCloudsDataPath() + "font/MateriaPro_Regular.ttf", captionFontSize);
-    }
-    else{
-        captionFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", captionFontSize);
-    }
-}
+//void CloudsVisualSystemRGBD::rebuildCaptionFont(){
+//    if(bUseOculusRift){
+//        captionFont.loadFont(GetCloudsDataPath() + "font/MateriaPro_Regular.ttf", captionFontSize);
+//    }
+//    else{
+//        captionFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", captionFontSize);
+//    }
+//}
 
 void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionType ){
+	//TODO: SAVE THESE VALUES TO getVisualSystemDataPath()/transitionTargets/
 	switch (transitionType) {
 		case CloudsVisualSystem::TWO_DIMENSIONAL:
 			transitionInStart.setPosition(-1.61592, -80.692, 36.2162);
@@ -371,14 +369,14 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	if(drawParticulate){
 		
-		particulateController.birthPlace = translatedHeadPosition;
+//		particulateController.birthPlace = translatedHeadPosition;
 		
 		glDisable(GL_LIGHTING);
 		glDisable(GL_DEPTH_TEST);
-		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
-		particulateController.getPoints().color.a = pointColor.w;
-		
-		particulateController.update();
+//		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
+//		particulateController.getPoints().color.a = pointColor.w;
+//		
+//		particulateController.update();
 	}
 	
 	updateQuestions();
@@ -531,7 +529,7 @@ void CloudsVisualSystemRGBD::updateTransition(){
 		float x = ofxTween::map(t, transitionStartTime, transitionEndTime, 0, 1, true, transitionEase );
 		
 		if(t >= transitionEndTime ){
-			cout <<"CloudsVisualSystemRGBD: transition ended "<< ofGetElapsedTimef() << endl << endl;
+			cout << "CloudsVisualSystemRGBD: transition ended " << ofGetElapsedTimef() << endl << endl;
 			transitioning = false;
 			cloudsCamera.targetNode = NULL;
 			cloudsCamera.startNode = NULL;
@@ -601,7 +599,7 @@ void CloudsVisualSystemRGBD::lookThroughTransitionIn(){
 	transitionCam.setPosition( transitionInStart.getPosition() );
 	transitionCam.setOrientation( transitionInStart.getOrientationQuat() );
 	
-	setCurrentCamera( transitionCam );
+//	setCurrentCamera( transitionCam );
 	
 }
 
@@ -612,7 +610,7 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOut(){
 	transitionCam.setPosition( transitionOutTarget.getPosition() );
 	transitionCam.setOrientation( transitionOutTarget.getOrientationQuat() );
 	
-	setCurrentCamera( transitionCam );
+//	setCurrentCamera( transitionCam );
 }
 
 //--------------------------------------------------------------
@@ -834,7 +832,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
 		
 			meshShader.setUniform1f("meshAlpha", meshAlpha);
-			meshShader.setUniform1f("triangleExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+			meshShader.setUniform1f("triangleExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() * visualSystemFadeValue);
 			meshShader.setUniform1f("meshRetractionFalloff",meshRetractionFalloff);
 			meshShader.setUniform1f("headMinRadius", meshFaceMinRadius);
 			meshShader.setUniform1f("headFalloff", meshFaceFalloff);
@@ -856,7 +854,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			getRGBDVideoPlayer().flowPosition = lineFlowPosition * (linesFlowUp?-1:1);
 			getRGBDVideoPlayer().setupProjectionUniforms(lineShader);
 			
-			lineShader.setUniform1f("lineExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+			lineShader.setUniform1f("lineExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() * visualSystemFadeValue);
 			lineShader.setUniform1f("headMinRadius", meshFaceMinRadius);
 			lineShader.setUniform1f("headFalloff", meshFaceFalloff);
 			lineShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
@@ -892,7 +890,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	if(drawParticulate){
 		glEnable(GL_DEPTH_TEST);
-		particulateController.draw();
+//		particulateController.draw();
 	}
 	
 	glPopAttrib();
@@ -1034,7 +1032,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 //	ofPopMatrix();
 	
-
+	//LARS TODO: add drawTransitionNodes to GUI
 	if(drawTransitionNodes){
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		ofPushStyle();
@@ -1125,7 +1123,8 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 		
 		loadShader();
 		
-		particulateController.reloadShaders();
+//		particulateController.reloadShaders();
+		
 //		CloudsQuestion::reloadShader();
 //		rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	}
@@ -1145,7 +1144,7 @@ void CloudsVisualSystemRGBD::selfKeyReleased(ofKeyEventArgs & args){
 		
 		printTransitionNodes();
 		
-		setCurrentCamera(cloudsCamera);
+//		setCurrentCamera(cloudsCamera);
 	}
 	
 

@@ -258,10 +258,11 @@ class CloudsVisualSystem {
     void toggleGuiAndPosition(ofxUISuperCanvas *g);
     void deleteGUIS();
 
-	void setCurrentCamera( ofCamera& cam );
-	void setCurrentCamera( ofCamera* swappedInCam );
+//	void setCurrentCamera( ofCamera& cam );
+//	void setCurrentCamera( ofCamera* swappedInCam );
+//	ofCamera* getCurrentCamera();
 	virtual ofCamera& getCameraRef();
-	ofCamera* getCurrentCamera();
+
 	
 	ofVec3f translatedHeadPosition;
 	float pointcloudScale;
