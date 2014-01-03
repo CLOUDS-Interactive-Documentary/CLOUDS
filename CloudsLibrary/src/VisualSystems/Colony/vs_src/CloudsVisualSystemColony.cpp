@@ -7,6 +7,7 @@ string CloudsVisualSystemColony::getSystemName()
 
 void CloudsVisualSystemColony::selfSetup()
 {
+    
     numInitialCells = 100;
     kernel_maxValue = 0.8;
     vbo.setMode(OF_PRIMITIVE_POINTS);
@@ -16,8 +17,8 @@ void CloudsVisualSystemColony::selfSetup()
     ofEnableArbTex();
     
     grunge.setCompression(OF_COMPRESS_ARB);
-    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/dirt_square.jpg");
-
+    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/grime_square.png");
+    
 	loadShaders();
  
     // sound
@@ -181,7 +182,8 @@ void CloudsVisualSystemColony::selfUpdate()
         
         billboard.begin();
         sprite.bind();
-        
+
+        billboard.setUniform3fv("light", (*(*lights.begin()).second).light.getPosition().getPtr());
         billboard.setUniform1f("kernel_maxValue", kernel_maxValue);
         vbo.draw();
         
