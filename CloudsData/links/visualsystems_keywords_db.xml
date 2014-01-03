@@ -2498,6 +2498,16 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Cosmic_EG_CosmicCornea">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Cosmic_JM_biological">
     <keywords></keywords>
     <links></links>
@@ -2505,6 +2515,46 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Cosmic_JM_biological2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Cosmic_jm_galaxy">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Cosmic_jm_swells">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Cosmic_jm_swells2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -2765,6 +2815,36 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="CubeCraft_j_05_blue">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="CubeCraft_j_work_03a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="CubeCraft_j_work_05a_bluegreen">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -2793,7 +2873,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
