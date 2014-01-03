@@ -149,6 +149,7 @@ void CloudsVisualSystemRipples::selfSetup()
     baseNote = 0;
     setScaleByName("Scale Pentatonic");
     mainSynth.setOutputGen(buildSynth());
+    currentUserInput = ofVec2f(-1, -1);
 }
 
 void CloudsVisualSystemRipples::restart()
@@ -233,7 +234,8 @@ void CloudsVisualSystemRipples::selfUpdate()
             // I don't know why everything is flipped, but it is.
             ofCircle(getCanvasHeight() - GetCloudsInputY(), getCanvasWidth() - GetCloudsInputX(), radius);
 #else
-            ofCircle(currentUserInput.x, currentUserInput.y , radius);
+            if(currentUserInput.x != -1) ofCircle(currentUserInput.x, currentUserInput.y , radius);
+            
 #endif
         }
         ripplesSrcFbo.end();
