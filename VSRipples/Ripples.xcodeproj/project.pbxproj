@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1835BF481875E82B002B025D /* CloudsInputKinectOSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1835BF461875E82B002B025D /* CloudsInputKinectOSC.cpp */; };
 		2AAEF500180F12D7005F33D3 /* ofxBox2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF4AC180F12D7005F33D3 /* ofxBox2d.cpp */; };
 		2AAEF501180F12D7005F33D3 /* ofxBox2dBaseShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF4AE180F12D7005F33D3 /* ofxBox2dBaseShape.cpp */; };
 		2AAEF502180F12D7005F33D3 /* ofxBox2dCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF4B0180F12D7005F33D3 /* ofxBox2dCircle.cpp */; };
@@ -478,6 +479,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1835BF461875E82B002B025D /* CloudsInputKinectOSC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputKinectOSC.cpp; sourceTree = "<group>"; };
+		1835BF471875E82B002B025D /* CloudsInputKinectOSC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputKinectOSC.h; sourceTree = "<group>"; };
 		2AAEF4AC180F12D7005F33D3 /* ofxBox2d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBox2d.cpp; sourceTree = "<group>"; };
 		2AAEF4AD180F12D7005F33D3 /* ofxBox2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBox2d.h; sourceTree = "<group>"; };
 		2AAEF4AE180F12D7005F33D3 /* ofxBox2dBaseShape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBox2dBaseShape.cpp; sourceTree = "<group>"; };
@@ -1612,6 +1615,8 @@
 		E79E6FE4185562BF00406535 /* Input */ = {
 			isa = PBXGroup;
 			children = (
+				1835BF461875E82B002B025D /* CloudsInputKinectOSC.cpp */,
+				1835BF471875E82B002B025D /* CloudsInputKinectOSC.h */,
 				E79E6FE5185562BF00406535 /* CloudsInput.cpp */,
 				E79E6FE6185562BF00406535 /* CloudsInput.h */,
 				E79E6FE7185562BF00406535 /* CloudsInputEvents.h */,
@@ -2208,8 +2213,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Ripples" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -2671,6 +2674,7 @@
 				F302F5A5185584D500EE514A /* ofxOscSender.cpp in Sources */,
 				2ACA6BE418725AC40029603B /* TableLookupOsc.cpp in Sources */,
 				2ACA6BA418725AC40029603B /* ControlParameter.cpp in Sources */,
+				1835BF481875E82B002B025D /* CloudsInputKinectOSC.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

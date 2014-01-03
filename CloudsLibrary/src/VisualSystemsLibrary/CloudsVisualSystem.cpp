@@ -8,34 +8,6 @@
 #include "ofxAVFVideoPlayer.h"
 #endif
 
-
-//#define GLSL(version, shader)  "#version " #version "\n" #shader
-//
-//static const char*
-//BackgroundVert =
-//GLSL(140,
-//varying vec2 oTexCoord;
-//void main()
-//{
-//	oTexCoord = gl_MultiTexCoord0.xy;
-//	gl_Position = ftransform();
-//});
-//
-//
-//static const char*
-//BackgroundFrag =
-//GLSL(140,
-//	 
-//uniform sampler2DRect image;
-//uniform vec3 colorOne;
-//uniform vec3 colorTwo;
-//varying vec2 oTexCoord;
-//
-//void main()
-//{
-//	gl_FragColor = vec4(mix(colorTwo,colorOne, texture2DRect(image,oTexCoord).r), 1.0);
-//});
-
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
 static CloudsRGBDVideoPlayer rgbdPlayer;
@@ -46,7 +18,7 @@ static ofImage backgroundGradientBar;
 static bool screenResolutionForced = false;
 static int forcedScreenWidth;
 static int forcedScreenHeight;
-
+static int numSamples = 0;
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
 	return staticRenderTarget;
@@ -56,6 +28,10 @@ void CloudsVisualSystem::forceScreenResolution(int screenWidth, int screenHeight
 	screenResolutionForced = true;
 	forcedScreenWidth = screenWidth;
 	forcedScreenHeight = screenHeight;
+}
+
+void CloudsVisualSystem::setNumSamples(int samples){
+	numSamples = samples;
 }
 
 ofImage& CloudsVisualSystem::getCursor(){
@@ -80,9 +56,6 @@ CloudsRGBDVideoPlayer& CloudsVisualSystem::getRGBDVideoPlayer(){
 void CloudsVisualSystem::loadBackgroundShader(){
 	backgroundGradientBar.loadImage(GetCloudsDataPath() + "backgrounds/bar.png");
 	backgroundGradientCircle.loadImage(GetCloudsDataPath() + "backgrounds/circle.png");
-//	backgroundShader.setupShaderFromSource(GL_VERTEX_SHADER, BackgroundVert);
-//	backgroundShader.setupShaderFromSource(GL_FRAGMENT_SHADER, BackgroundFrag);
-//	backgroundShader.linkProgram();
 	backgroundShader.load(GetCloudsDataPath() + "shaders/background");
 	backgroundShaderLoaded = true;
 }
@@ -183,10 +156,10 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 
 	if(reallocateTarget){
 		if(screenResolutionForced){
-			renderTarget.allocate(forcedScreenWidth, forcedScreenHeight, GL_RGB);
+			renderTarget.allocate(forcedScreenWidth, forcedScreenHeight, GL_RGB, numSamples);
 		}
 		else{
-			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
+			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
 		}
 		renderTarget.begin();
 		ofClear(0,0,0,1.0);
@@ -471,9 +444,8 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			
 			ofPushStyle();
 			ofPushMatrix();
-			ofTranslate(0, ofGetHeight());
+			ofTranslate(0, getCanvasHeight() );
 			ofScale(1,-1,1);
-			
 			
 			selfDrawOverlay();
 			
@@ -3239,3 +3211,7 @@ void CloudsVisualSystem::checkOpenGLError(string function){
         ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " : " << gluErrorString(err) << " in " << function;
     }
 }
+
+//#ifdef UInt32
+//#undef UInt32
+//#endif

@@ -3,7 +3,10 @@
 #include "ofMain.h"
 #include "ofxCocoaGLView.h"
 #include "CloudsFCPParser.h"
+#include "CloudsRGBDVideoPlayer.h"
 #include "CloudsVisualSystemManager.h"
+#include "CloudsSpeaker.h"
+#include "CloudsGlobal.h"
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
 	IBOutlet NSTokenField* currentKeywords;
@@ -31,6 +34,11 @@
 	bool shouldPlaySelectedRow;
 	
 	CloudsFCPParser parser;
+
+    //RGBD PLAYER
+//	CloudsVisualSystemRGBD rgbdVisualSystem;
+	CloudsClip currentClip;
+    
 	CloudsVisualSystemManager visualSystems;
 	ofPtr<CloudsVisualSystem> currentVisualSystem;
 	CloudsVisualSystemPreset* selectedPreset;
@@ -93,12 +101,15 @@
 - (IBAction) playPreviousPreset:(id)sender;
 - (IBAction) playNextPreset:(id)sender;
 
+- (IBAction)loadClip:(CloudsClip&)clip;
+
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification;
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors;
 
 - (void)playDoubleClickedRow:(id)sender;
+- (void)loadClipFromTable:(id)sender;
 
 - (NSArray *)tokenField:(NSTokenField *)tokenField
 completionsForSubstring:(NSString *)substring

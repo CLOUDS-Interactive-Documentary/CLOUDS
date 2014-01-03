@@ -149,6 +149,7 @@ void CloudsVisualSystemRipples::selfSetup()
     baseNote = 0;
     setScaleByName("Scale Pentatonic");
     mainSynth.setOutputGen(buildSynth());
+    currentUserInput = ofVec2f(-1, -1);
 }
 
 void CloudsVisualSystemRipples::restart()
@@ -231,9 +232,10 @@ void CloudsVisualSystemRipples::selfUpdate()
             ofNoFill();
 #ifdef OCULUS_RIFT
             // I don't know why everything is flipped, but it is.
-            ofCircle(getCanvasHeight()() - GetCloudsInputY(), getCanvasWidth() - GetCloudsInputX(), radius);
+            ofCircle(getCanvasHeight() - GetCloudsInputY(), getCanvasWidth() - GetCloudsInputX(), radius);
 #else
-            ofCircle(GetCloudsInputX(), GetCloudsInputY(), radius);
+            if(currentUserInput.x != -1) ofCircle(currentUserInput.x, currentUserInput.y , radius);
+            
 #endif
         }
         ripplesSrcFbo.end();
@@ -244,12 +246,11 @@ void CloudsVisualSystemRipples::selfUpdate()
         if (dontTriggerSoundCounter == 0) {
             dontTriggerSoundCounter = 20;
             if (bEnableSounds) {
-                playNote(GetCloudsInputX()/40+50);
+                playNote(currentUserInput.x/40+50);
             }
         }
     }
     
-
     ripplesDstFbo.begin();
     ripplesShader.begin();
     ripplesShader.setUniformTexture("backbuffer", ripplesDstFbo.getTextureReference(), 1);
@@ -318,20 +319,20 @@ void CloudsVisualSystemRipples::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
 
-void CloudsVisualSystemRipples::selfMouseDragged(int x, int y, int button){
+void CloudsVisualSystemRipples::selfInteractionDragged(CloudsInteractionEventArgs& args){
+    currentUserInput = ofVec2f(args.position.x, args.position.y);
+}
+
+void CloudsVisualSystemRipples::selfInteractionMoved(CloudsInteractionEventArgs& args){
 
 }
 
-void CloudsVisualSystemRipples::selfMouseMoved(int x, int y, int button){
-	
+void CloudsVisualSystemRipples::selfInteractionStarted(CloudsInteractionEventArgs& args){
+    currentUserInput = ofVec2f(args.position.x, args.position.y);
 }
 
-void CloudsVisualSystemRipples::selfMousePressed(int x, int y, int button){
-	
-}
-
-void CloudsVisualSystemRipples::selfMouseReleased(int x, int y, int button){
-	
+void CloudsVisualSystemRipples::selfInteractionEnded(CloudsInteractionEventArgs& args){
+//    currentUserInput = ofVec2f(args.position.x, args.position.y);
 }
 
 Generator CloudsVisualSystemRipples::buildSynth()

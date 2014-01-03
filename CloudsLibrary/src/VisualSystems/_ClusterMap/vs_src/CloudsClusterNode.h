@@ -16,6 +16,9 @@ class CloudsClusterNode {
 	CloudsClusterNode();
 
 	ofVec3f networkPosition;
+	ofVec2f flickerTextureCoord;
+	
+	float luckyNumber;
 	
 	string clipId;
 	//clip ID's that are connected to us

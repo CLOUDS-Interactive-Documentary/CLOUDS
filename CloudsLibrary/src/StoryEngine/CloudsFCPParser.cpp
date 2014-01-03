@@ -31,8 +31,6 @@ void CloudsFCPParser::loadFromFiles(){
 	parseVOClips();
     parseSpeakersVolume();
     parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
-//    parseClusterMap(GetCloudsDataPath() + "gephi/2013_7_25_Clouds_conversation.SVG");
-	//parseClusterMap(GetCloudsDataPath() + "gephi/CLOUDSClusterMap.svg");
 	parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
 	parseProjectExamples(GetCloudsDataPath() + "secondaryDisplay/web/xml/projects.xml");
 	
@@ -66,25 +64,18 @@ void CloudsFCPParser::refreshXML(){
         }
     }
 	
-	//printSpeakerList();
     getOverlappingClipIDs();
-//    autolinkSequentialClips();
 	CloudsSpeaker::populateSpeakers();
     refreshAllKeywords();
 }
-
-void CloudsFCPParser::saveClusterMap(map<string, ofVec2f> centroidMap ){
-    float maxCx=6124.1;
-    float maxCy=6008.18;
-    float minCx=-7113.02;
-    float minCy=-5992.12;
-    map<string, ofVec2f> ::iterator it;
-    
-    for(it = centroidMap.begin(); it != centroidMap.end(); it++){
-        
-        cout<<"<text transform=\"matrix(1 0 0 1 "<<it->second.x<<" "<<it->second.y<<")\" font-family=\"'MyriadPro-Regular'\" font-size=\"12\">"<<it->first<<"</text>"<<endl;
-    }
-}
+//
+//void CloudsFCPParser::saveClusterMap(map<string, ofVec2f> centroidMap ){
+//    map<string, ofVec2f> ::iterator it;
+//    for(it = centroidMap.begin(); it != centroidMap.end(); it++){
+//        
+//        cout<<"<text transform=\"matrix(1 0 0 1 "<<it->second.x<<" "<<it->second.y<<")\" font-family=\"'MyriadPro-Regular'\" font-size=\"12\">"<<it->first<<"</text>"<<endl;
+//    }
+//}
 
 void CloudsFCPParser::parseVOClips(){
 	
@@ -272,21 +263,7 @@ void CloudsFCPParser::parseLinks(string linkFile){
 				suppressedConnections[newLink.sourceName].push_back( newLink );
 			}
 		}
-		
-//		if(startQuestion > 0){
-//			string question = linksXML.getValue("startingQuestion", "");
-//			bool hasQuestionClip;
-//			CloudsClip& c = getClipWithLinkName(clipName,hasQuestionClip);
-//			if(hasQuestionClip){
-//				c.setStartingQuestion(question);
-//				questionIds.push_back( c.getID() );
-//                //				cout << c.getID() << " has question: " << c.getStartingQuestion() << endl;
-//			}
-//			else{
-//				ofLogError("CloudsFCPParser::parseLinks") << clipName << " not found! has question " << question;
-//			}
-//		}
-        
+
 		//add revoked and additional keywords
         if(numRevoked > 0){
             string revokedKeywordsString = linksXML.getValue("revokedKeywords", "");
@@ -356,10 +333,9 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 		}
 	}
 	
-//	populateKeywordCentroids();
+	populateKeywordCentroids();
 //	calculateCohesionMedianForKeywords();
 //	calculateKeywordAdjascency();
-	//TODO CACHE::
 	calculateKeywordFamilies();
 }
 
@@ -451,25 +427,60 @@ void CloudsFCPParser::populateKeywordCentroids(){
 
 	keywordCentroids.clear();
 	keywordCentroidIndex.clear();
-	vector<string>& keywords = getContentKeywords();
-    for(int k = 0; k < keywords.size(); k++){
-        vector<CloudsClip> clips = getClipsWithKeyword(keywords[k]);
-        
-        float numClips = 0;
-        ofVec3f centroid(0,0,0);
-        
-        for( int i = 0; i < clips.size(); i++){
-            if( clips[i].networkPosition != ofVec3f(-1, -1, -1) ){
-                centroid += clips[i].networkPosition;
-                numClips++;
-            }
-        }
-        
-        centroid /= numClips;
-		
-        keywordCentroids.push_back( make_pair(keywords[k], centroid) );
-        keywordCentroidIndex[keywords[k]] = k;
-    }
+	
+	ofBuffer keywordCentroidBuffer;
+	string keywordCentroidPath = GetCloudsDataPath() + "pajek/keyword_centroids.txt";
+	
+	//look for keyword centroid cache
+	if( ofFile(keywordCentroidPath).exists() ){
+		keywordCentroidBuffer = ofBufferFromFile(keywordCentroidPath);
+		while(!keywordCentroidBuffer.isLastLine()){
+			string line  = keywordCentroidBuffer.getNextLine();
+			vector<string> components = ofSplitString(line, "|",true,true);
+			if(components.size() != 2){
+				continue;
+			}
+			vector<string> vecComponents = ofSplitString(components[1], ",");
+			if(vecComponents.size() != 3){
+				ofLogError("CloudsFCPParser::populateKeywordCentroids") << "Keyword centroid does not have 3 components";
+				continue;
+			}
+			string keyword = components[0];
+			keywordCentroidIndex[keyword] = keywordCentroids.size();
+
+			keywordCentroids.push_back(make_pair(keyword, ofVec3f(ofToFloat(vecComponents[0]),
+																  ofToFloat(vecComponents[1]),
+																  ofToFloat(vecComponents[2]))));
+		}
+	}
+	//create centroid cache
+	else{
+		vector<string>& keywords = getContentKeywords();
+		for(int k = 0; k < keywords.size(); k++){
+			vector<CloudsClip> clips = getClipsWithKeyword(keywords[k]);
+			
+			float numClips = 0;
+			ofVec3f centroid(0,0,0);
+			for( int i = 0; i < clips.size(); i++){
+				if( clips[i].networkPosition != ofVec3f(-1, -1, -1) ){
+					centroid += clips[i].networkPosition;
+					numClips++;
+				}
+			}
+			
+			centroid /= numClips;
+			
+			keywordCentroids.push_back( make_pair(keywords[k], centroid) );
+			keywordCentroidIndex[keywords[k]] = k;
+			
+			keywordCentroidBuffer.append(keywords[k] + "|" +
+										 ofToString(centroid.x,10) + "," +
+										 ofToString(centroid.y,10) + "," +
+										 ofToString(centroid.z,10) + "\n");
+		}
+		//cache it
+		ofBufferToFile(keywordCentroidPath, keywordCentroidBuffer);
+	}
 }
 
 void CloudsFCPParser::calculateKeywordAdjascency(){
@@ -636,14 +647,12 @@ void CloudsFCPParser::calculateCohesionMedianForKeywords(){
 }
 
 ofVec2f CloudsFCPParser::getKeywordCentroid(string keyword){
-    
     int index = getCentroidMapIndex(keyword);
-    if(index != -1){
-        return keywordCentroids[index].second;
+    if(index == -1){
+		ofLogError("CloudsFCPParser::getKeywordCentroid") << "No centroid found for keyword: " << keyword << endl;
+		return ofVec2f(-1, -1);
     }
-    //ofLogError("CloudsFCPParser::getKeywordCentroid")<<"No centroid found for keyword: "<< keyword<<endl;
-    
-    return ofVec2f(-1, -1);
+	return keywordCentroids[index].second;
 }
 
 int CloudsFCPParser::getCentroidMapIndex(string keyword){

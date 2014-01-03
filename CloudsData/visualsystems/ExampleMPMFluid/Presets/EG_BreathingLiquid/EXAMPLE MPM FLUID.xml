@@ -1,0 +1,82 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>EXAMPLE MPM FLUID</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>392.000000000</XPosition>
+    <YPosition>148.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PARTICLES</Name>
+    <Value>13618.689453125</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DENSITY</Name>
+    <Value>17.090263367</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>STIFFNESS</Name>
+    <Value>0.263134569</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>VISCOSITY</Name>
+    <Value>1.852216721</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BULK VISCOSITY</Name>
+    <Value>2.019704342</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ELASTICITY</Name>
+    <Value>1.098815680</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GRAVITY</Name>
+    <Value>0.132273391</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>H</Name>
+    <Value>121.125007629</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S</Name>
+    <Value>73.429237366</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>B</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PARTICLE LINE</Name>
+    <Value>2.118226528</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Mouse as force</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Mouse as obstacle</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>OBSTACLE SIZE</Name>
+    <Value>4.433497429</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MOUSE FORCE</Name>
+    <Value>8.866994858</Value>
+</Widget>
