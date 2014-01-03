@@ -17,7 +17,7 @@ varying float activityValue;
 varying float synapseMix;
 
 void main(){
-    float fakeSynapse = 1.0;
+
   gl_FragColor = mix(mix(mix(lineNodeBase, lineEdgeBase, 1.0-pow(edgePositionMix, edgeInterpolateExponent)),
 					     mix(lineNodePop,  lineEdgePop, 1.0-pow(edgePositionMix, edgeInterpolateExponent)),
 					     activityValue), synapse, synapseMix*synapseLevel);

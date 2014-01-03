@@ -165,6 +165,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     ofVec3f min,max;
     
     int refreshRate;
+    int activeTweeterRefreshRate;
     float edgeDecayRate;
 
     ofImage sprite;

@@ -127,6 +127,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	clusterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     clusterGui->addToggle("RENDER MESH", &bRenderMesh);
     clusterGui->addIntSlider("REFRESH RATE", 1, 500, &refreshRate);
+    clusterGui->addIntSlider("REFRESH RATE", 1, 100, &activeTweeterRefreshRate);
     clusterGui->addRangeSlider("DATE RANGE", 1,  (dateIndex.size()), &dateIndexMin, & dateIndexMax);
     clusterGui->addToggle("ROTATE", &rotateModel);
     clusterGui->addMinimalSlider("ROTATION AMT", 0.1, 1, &rotationAmount);
@@ -899,7 +900,12 @@ void CloudsVisualSystemTwitter::selfUpdate()
 
     }
     updateMesh();
-    setActiveTweeters(currentDateIndex);
+    //  
+    if(ofGetFrameNum() % activeTweeterRefreshRate == 0 && bAnimate){
+        setActiveTweeters(currentDateIndex);
+    }
+
+    
 	for(int i = 0; i < activityMap.getWidth()*activityMap.getHeight(); i++){
 		activityMap.getPixels()[i] *= activityMapDamping;
 	}
