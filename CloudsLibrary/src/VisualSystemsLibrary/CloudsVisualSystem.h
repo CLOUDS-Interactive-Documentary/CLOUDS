@@ -53,6 +53,7 @@ class CloudsVisualSystem {
 	
 	static ofFbo& getStaticRenderTarget(); //default
 	static void forceScreenResolution(int screenWidth, int screenHeight);
+	static void setNumSamples(int samples = 0);
 	static void loadBackgroundShader();
 	static CloudsRGBDVideoPlayer& getRGBDVideoPlayer();
 	static void getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height);
@@ -257,10 +258,11 @@ class CloudsVisualSystem {
     void toggleGuiAndPosition(ofxUISuperCanvas *g);
     void deleteGUIS();
 
-	void setCurrentCamera( ofCamera& cam );
-	void setCurrentCamera( ofCamera* swappedInCam );
+//	void setCurrentCamera( ofCamera& cam );
+//	void setCurrentCamera( ofCamera* swappedInCam );
+//	ofCamera* getCurrentCamera();
 	virtual ofCamera& getCameraRef();
-	ofCamera* getCurrentCamera();
+
 	
 	ofVec3f translatedHeadPosition;
 	float pointcloudScale;

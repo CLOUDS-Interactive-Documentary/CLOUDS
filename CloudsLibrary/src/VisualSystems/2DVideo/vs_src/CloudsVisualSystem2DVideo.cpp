@@ -141,9 +141,13 @@ void CloudsVisualSystem2DVideo::selfSetup()
     movieStrings.push_back("JapaneseSlow2.mov");
     movieStrings.push_back("TeensSlow.mov");
     
+    movieStrings.push_back("Kittenstep.mov");
     movieStrings.push_back("Code_Screenflow3.mov");
     movieStrings.push_back("networkFlow2.mov");
     movieStrings.push_back("DesignByNumbers.mov");
+    movieStrings.push_back("TweakMode.mov");
+    movieStrings.push_back("Logo1.mov");
+    movieStrings.push_back("Logo2.mov");
     
     movieStrings.push_back("Reas_network1.mov");
     movieStrings.push_back("Reas_Process13.mov");
@@ -276,12 +280,12 @@ void CloudsVisualSystem2DVideo::render()
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystem2DVideo::selfEnd(){
-    
+       player->stop();
 	
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystem2DVideo::selfExit(){
-    player->stop();
+ 
 }
 
 //events are called when the system is active

@@ -31,19 +31,19 @@ uniform vec4 stippleColor;
 //    return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453);
 //}
 
-mat3 kernel = mat3(0.0625, 0.125,  0.0625,
-                   0.125,  0.250,  0.125,
-                   0.0625, 0.125,  0.0625);
-
-vec4 convolution(in sampler2DRect screen,in vec2 coord){
-    vec4 t = vec4(0.);
-    for (float i = -1. ; i < 2.; i += 1.){
-        for (float j = -1. ; j < 2.; j += 1.){
-            t += texture2DRect(screen, coord+vec2(i, j)) * kernel[int(1. + i)][int(1. + j)];
-        }
-    }
-    return t;
-}
+//mat3 kernel = mat3(0.0625, 0.125,  0.0625,
+//                   0.125,  0.250,  0.125,
+//                   0.0625, 0.125,  0.0625);
+//
+//vec4 convolution(in sampler2DRect screen,in vec2 coord){
+//    vec4 t = vec4(0.);
+//    for (float i = -1. ; i < 2.; i += 1.){
+//        for (float j = -1. ; j < 2.; j += 1.){
+//            t += texture2DRect(screen, coord+vec2(i, j)) * kernel[int(1. + i)][int(1. + j)];
+//        }
+//    }
+//    return t;
+//}
 
 vec4 premult(in vec4 source){
     return vec4(source.rgb * source.a, source.a);
@@ -52,6 +52,11 @@ vec4 premult(in vec4 source){
 vec4 over(vec4 a, vec4 b){
     //a over b
     return clamp(a + b * (1. - a.a), 0., 1.);
+}
+
+vec4 screen (vec4 a, vec4 b){
+    vec4 one = vec4(1.);
+    return one - (one - a) * (one - b);
 }
 
 float bump(float t, float center, float width){
@@ -81,7 +86,7 @@ float getLightIntensity(float elevation, vec2 light){
     vec2 normal = vec2(dFdx(elevation),dFdy(elevation));
     float reflection = dot(normalize(normal), normalize(light));
     float amplitude = clamp(length(light) * length(normal),0.001, 1.);
-    float amplitude_smoothed = smoothstep(0., 0.1, amplitude);
+    float amplitude_smoothed = smoothstep(0.01, 0.2, amplitude);
     return mix(0., reflection, amplitude_smoothed);
 }
 
@@ -91,7 +96,7 @@ float getLightIntensity(float elevation, vec2 light){
 vec4 getLevelSet(vec4 fg){
     float a = PI * (.5 + log(.25 + fg.b) * 6.);
     float b = (-.5 + (levelSetBg ? heightMap(gl_TexCoord[0].xy) : 0. )) * 18. * PI;
-    float g = fg.g + .1;
+    float g = fg.g * fg.r;// + .1;
     g *= g * g;
     float levl = mix (a + b, max(a, b), .5);
     float set = (.5 * (1. + sin(levl)) + g/2.);
@@ -111,32 +116,48 @@ vec4 getMicroscope(vec4 fg){
     
     //see if you're in the right range to be a border
     b *= fg.b * fg.b;
+    //inner cell
     float innerCellAlpha = bump(b, .8, .8);
-    float stippleAlpha = .5 * (1. + sin((gl_FragCoord.x + gl_FragCoord.y) * stippleScale)) * innerCellAlpha;
     innerCellAlpha = clamp(innerCellAlpha, 0., translucenseCell);
-    vec4 stipple = stippleColor * stippleAlpha;
+    //Shell
     float shellAlpha = clamp(bump(b, .3, .2), 0., .90);
-    vec4 kernel = clamp(fg.g/kernel_maxValue, 0., 1.)
-                * mix(kernelColor_low, kernelColor_high, fg.g/kernel_maxValue);
     
+    //Stipple
+    float stippleAlpha = .5
+            * innerCellAlpha * innerCellAlpha
+            * (1. + sin(dot(gl_FragCoord.xy, vec2(stippleScale))));
+    vec4 stipple = stippleColor * stippleAlpha;
+
+    //kernel
+    float kernelPhase = clamp(fg.g/kernel_maxValue, 0., 1.);
+    vec4 kernel = kernelPhase
+                * mix(kernelColor_low, kernelColor_high, kernelPhase);
+    // Add Lights
+    kernel.rgb *= fg.r;
+    
+    //cell floor
     vec2 normalizedCoords = gl_TexCoord[0].xy * imgRes / resolution;
-    float distortion = fg.b - .25 * fg.g +shellAlpha;
+    float distortion = fg.b + sqrt(shellAlpha);
     vec4 bg = texture2DRect(grunge, normalizedCoords * .5
-                            + vec2(dFdx(distortion),dFdy(distortion)) * 150.0
+                            + vec2(dFdx(distortion),dFdy(distortion)) * 100.0
                             + imgRes * .25 ); //enlarged
-    vec4 shell = vec4(mix(vec3(1.),bg.rgb ,0.6),pow(shellAlpha, 1.5));
+    vec4 shell = vec4(
+                      mix(vec3(1.), bg.rgb, innerCellAlpha * 0.5),
+                      shellAlpha);
     
     //COMPOSITING STAGE
     vec4 ret = over(premult(shell), premult(kernel)); //top
-    ret = over(ret, premult(stipple)); //no need to premult?
-    ret = over(premult(ret), premult(vec4(bg.rgb, bg.a*innerCellAlpha)));
+    ret = over(ret, premult(stipple));
+    ret = over(ret, premult(vec4(bg * vec2(1.,innerCellAlpha).xxxy)));
     return ret;
 }
+
+
 
 void main(){
     vec4 color;
     vec4 fg = texture2DRect(tex, gl_TexCoord[0].xy);
-    fg.g = sqrt(fg.g);
+    fg.rg = sqrt(fg.rg);
     if (levelSet) {
             color = getLevelSet(fg);
     } else {

@@ -11,11 +11,12 @@ uniform float edgeInterpolateExponent;
 
 varying float edgePositionMix;
 varying float popMix;
+varying float activityValue;
 
 void main(){
     gl_FragColor = mix(mix(lineNodeBase, lineEdgeBase, 1.0-pow(edgePositionMix, edgeInterpolateExponent)),
 					   mix(lineNodePop, lineEdgePop, 1.0-pow(edgePositionMix, edgeInterpolateExponent)),
-					   popMix);
-
+					   popMix) * activityValue;
+//	gl_FragColor.rgb = vec3(activityValue);
 }
 

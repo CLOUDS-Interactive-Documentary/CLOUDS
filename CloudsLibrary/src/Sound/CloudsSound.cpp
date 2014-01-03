@@ -99,8 +99,11 @@ void CloudsSound::actCreated(CloudsActEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsSound::actBegan(CloudsActEventArgs& args){
 	//Happens at the very beginning of a sequence
-
+    ofxTimeline& actTimeLine = currentAct->getTimeline();
     
+    actTimeLine.addPage("sound",true);
+    ofxTLFlags * presetFlags = actTimeLine.addFlags("Presets");
+
     int rigged = 0; // set to '1' for slowwaves all the time
     float totalduration = args.act->getTimeline().getDurationInSeconds(); // how long
     bool isHighEnergy = false;
@@ -144,7 +147,11 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                 {
                     if(presets[j].name==thecues[i].riggedPresetName) // match
                     {
+                        
+
                         valid_presets.push_back(j);
+                        
+                        
                     }
                 }
             }
@@ -155,6 +162,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                 {
                     if(presets[j].start_question==thecues[i].soundQuestionKey&&presets[j].disabled==0) // match
                     {
+                        
                         valid_presets.push_back(j);
                     }
                 }                
@@ -184,6 +192,8 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                     //if all 8 dichos matched
                     if(pscore==8&&presets[j].highEnergy==isHighEnergy&&presets[j].disabled==0){
                         //if(presets[j].slotnumber<250) { // temporary
+
+                        
                         valid_presets.push_back(j);
                         //}
                     }
@@ -194,19 +204,19 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
             
             // emergency check
             if(valid_presets.size()==0)
-            {
+            {       
                 valid_presets.push_back(0);
             }
             
             // MAKE THE MUSIC
             int GOPRESET = valid_presets[ ofRandom(valid_presets.size()) ];
-            
+            presetFlags->addFlagAtTime(presets[GOPRESET].name + " : "+ ofToString(presets[GOPRESET].slotnumber), thecues[i].startTime *1000 );
             if(LUKEDEBUG) cout << "   preset: " << presets[GOPRESET].slotnumber << endl;
             schedulePreset(presets[GOPRESET], thecues[i].startTime, thecues[i].duration, thecues[i].mixLevel);
 
         }
     }
-    
+    actTimeLine.setCurrentPage(0);
     if(LUKEDEBUG) cout << "====================" << endl;
     if(LUKEDEBUG) cout << "DONE MAKING MUSIC!!!" << endl;
     if(LUKEDEBUG) cout << "====================" << endl;

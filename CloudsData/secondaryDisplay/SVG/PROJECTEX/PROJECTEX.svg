@@ -4,7 +4,7 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="1920px" height="1080px" viewBox="0 0 1920 1080" enable-background="new 0 0 1920 1080" xml:space="preserve">
 <g id="BOX_x5F_INFO">
-	<rect x="48.5" y="882.5" opacity="0.9" fill="#101010" enable-background="new    " width="1824" height="150"/>
+	<rect x="48.5" y="882.5" opacity="0.7" fill="#010101" enable-background="new    " width="1824" height="150"/>
 </g>
 <g id="BOX_x5F_DETAILS">
 	<rect x="47.5" y="881.5" opacity="0.26" fill="#FFFFFF" enable-background="new    " width="3" height="3"/>
@@ -21,18 +21,15 @@
 		<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" enable-background="new    " x1="48.5" y1="1032" x2="1872.5" y2="1032"/>
 </g>
 <g id="BOX_x5F_VIDEO" opacity="0">
-	<rect x="308.799" y="88.046" fill="none" width="1280" height="720"/>
-</g>
-<g id="BOX_x5F_NAME">
-	<rect x="654.498" y="909.614" opacity="0.9" fill="#101010" enable-background="new    " width="275" height="40"/>
+	<rect x="308.5" y="88.5" fill="none" width="1280" height="720"/>
 </g>
 <g id="TEXTBOX_x5F_NAME" opacity="0">
-	<rect x="85.049" y="909.594" fill="none" width="492.925" height="50.186"/>
+	<rect x="84.5" y="910.5" fill="none" width="543" height="32"/>
 </g>
 <g id="TEXTBOX_x5F_ARTIST_1_" opacity="0">
-	<rect id="_x3C_Path_x3E__1_" x="674.502" y="922.508" fill="none" width="341.521" height="14.213"/>
+	<rect id="_x3C_Path_x3E__1_" x="674.5" y="917.5" fill="none" width="342" height="18"/>
 </g>
 <g id="TEXTBOX_x5F_DESC_1_" opacity="0">
-	<rect id="_x3C_Path_x3E__2_" x="1099.164" y="909.609" fill="none" width="740.35" height="16.312"/>
+	<rect id="_x3C_Path_x3E__2_" x="1093.5" y="910.5" fill="none" width="741" height="18"/>
 </g>
 </svg>

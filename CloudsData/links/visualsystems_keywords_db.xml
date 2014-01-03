@@ -596,6 +596,215 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="2DVideo_Logo1">
+    <keywords>code|instructions|learning</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Aaron - Mini-Artificial Intelligences</clip>
+        <clip>Andres - examples of the impossible</clip>
+        <clip>Andres - sharing code</clip>
+        <clip>Binx - Background</clip>
+        <clip>Binx - hybridity</clip>
+        <clip>Binx - learning</clip>
+        <clip>Binx - learning with others</clip>
+        <clip>Binx - skillshare</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Binx - there was no degree</clip>
+        <clip>Bruce - Simulation Replication Recursion</clip>
+        <clip>Bruce - beauty of code 1</clip>
+        <clip>Bruce - beauty of code 2</clip>
+        <clip>Bruce - beauty of code 3</clip>
+        <clip>Bruce - fanciful metaphors 1</clip>
+        <clip>Casey - Birth of processing</clip>
+        <clip>Casey - Programming at 26</clip>
+        <clip>Casey - Software is what i love the most</clip>
+        <clip>Casey - teaching at UCLA</clip>
+        <clip>Greg - makematics1</clip>
+        <clip>Higa - beginnings</clip>
+        <clip>Higa - language barriers</clip>
+        <clip>Higa - not sharing its a backup</clip>
+        <clip>Higa - sharing accidently 1</clip>
+        <clip>Higa - sharing accidently 2</clip>
+        <clip>Higa - thick wall</clip>
+        <clip>Intro - Computers</clip>
+        <clip>Intro - Learning</clip>
+        <clip>JTNimoy - evolution</clip>
+        <clip>Jen - MathMajor 1</clip>
+        <clip>Jen - hated computer science</clip>
+        <clip>Joel - Bicycles2</clip>
+        <clip>Karsten - Paul Burke</clip>
+        <clip>Karsten - code as way of knowing</clip>
+        <clip>Karsten - code has nothing to do with machines</clip>
+        <clip>Karsten - code is information</clip>
+        <clip>Karsten - demo scene 3</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Karsten - why don&apos;t we learn?</clip>
+        <clip>Kevin - from code to magazines to code</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>Maeda - own the tool</clip>
+        <clip>Maeda - playful systems</clip>
+        <clip>Maeda - sharing for collective advancement</clip>
+        <clip>Marcus - gurus</clip>
+        <clip>Martin - deeper learning</clip>
+        <clip>Martin - language and infinity</clip>
+        <clip>Martin - language is like code</clip>
+        <clip>Nervous_Jesse - Open source education</clip>
+        <clip>Nervous_Jessica - John Maeda</clip>
+        <clip>Nervous_Jessica - MIT beginning</clip>
+        <clip>Paola - changes the way you think</clip>
+        <clip>Paola - code changes your thinking</clip>
+        <clip>Paola - code is a language</clip>
+        <clip>Patricio - Alchemy 3</clip>
+        <clip>Patricio - CopyPaste</clip>
+        <clip>Patricio - Learning through others</clip>
+        <clip>Patricio - Mentors</clip>
+        <clip>Patricio - Theory of Play 1</clip>
+        <clip>Patricio - infinity of projects on google</clip>
+        <clip>Philip - changes your thinking</clip>
+        <clip>Philip - learn through programming</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Ramsey - a piece of my mind</clip>
+        <clip>Ramsey - beauty of code</clip>
+        <clip>Ramsey - beauty of the score</clip>
+        <clip>Ramsey - cloud 1</clip>
+        <clip>Ramsey - cloud 2</clip>
+        <clip>Ramsey - complacency 1</clip>
+        <clip>Ramsey - complacency 2</clip>
+        <clip>Ramsey - complicated C++</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Ramsey - language self expression</clip>
+        <clip>Ramsey - traditional engineering</clip>
+        <clip>Ramsey - why code is special</clip>
+        <clip>Shiffman - Carl Sims</clip>
+        <clip>Shiffman - Magnets</clip>
+        <clip>Shiffman - Maybe I&apos;d like that</clip>
+        <clip>Shiffman - Not a visual thinker</clip>
+        <clip>Shiffman - advanced environment</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Theo - learning</clip>
+        <clip>Zach - Open Frameworks 3</clip>
+        <clip>Zach - action script</clip>
+        <clip>Zach - action script shorter</clip>
+        <clip>Zach - hide the tech</clip>
+        <clip>Zach - programming 2</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>B</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="2DVideo_Logo2">
+    <keywords>code|instructions|learning</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Aaron - Mini-Artificial Intelligences</clip>
+        <clip>Andres - examples of the impossible</clip>
+        <clip>Andres - sharing code</clip>
+        <clip>Binx - Background</clip>
+        <clip>Binx - hybridity</clip>
+        <clip>Binx - learning</clip>
+        <clip>Binx - learning with others</clip>
+        <clip>Binx - skillshare</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Binx - there was no degree</clip>
+        <clip>Bruce - Simulation Replication Recursion</clip>
+        <clip>Bruce - beauty of code 1</clip>
+        <clip>Bruce - beauty of code 2</clip>
+        <clip>Bruce - beauty of code 3</clip>
+        <clip>Bruce - fanciful metaphors 1</clip>
+        <clip>Casey - Birth of processing</clip>
+        <clip>Casey - Programming at 26</clip>
+        <clip>Casey - Software is what i love the most</clip>
+        <clip>Casey - teaching at UCLA</clip>
+        <clip>Greg - makematics1</clip>
+        <clip>Higa - beginnings</clip>
+        <clip>Higa - language barriers</clip>
+        <clip>Higa - not sharing its a backup</clip>
+        <clip>Higa - sharing accidently 1</clip>
+        <clip>Higa - sharing accidently 2</clip>
+        <clip>Higa - thick wall</clip>
+        <clip>Intro - Computers</clip>
+        <clip>Intro - Learning</clip>
+        <clip>JTNimoy - evolution</clip>
+        <clip>Jen - MathMajor 1</clip>
+        <clip>Jen - hated computer science</clip>
+        <clip>Joel - Bicycles2</clip>
+        <clip>Karsten - Paul Burke</clip>
+        <clip>Karsten - code as way of knowing</clip>
+        <clip>Karsten - code has nothing to do with machines</clip>
+        <clip>Karsten - code is information</clip>
+        <clip>Karsten - demo scene 3</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Karsten - why don&apos;t we learn?</clip>
+        <clip>Kevin - learning to code</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>Maeda - own the tool</clip>
+        <clip>Maeda - playful systems</clip>
+        <clip>Maeda - sharing for collective advancement</clip>
+        <clip>Marcus - gurus</clip>
+        <clip>Martin - deeper learning</clip>
+        <clip>Martin - language and infinity</clip>
+        <clip>Martin - language is like code</clip>
+        <clip>Martin - revelatory learning</clip>
+        <clip>Nervous_Jesse - Open source education</clip>
+        <clip>Nervous_Jessica - John Maeda</clip>
+        <clip>Nervous_Jessica - MIT beginning</clip>
+        <clip>Paola - changes the way you think</clip>
+        <clip>Paola - code changes your thinking</clip>
+        <clip>Paola - code is a language</clip>
+        <clip>Patricio - Alchemy 3</clip>
+        <clip>Patricio - CopyPaste</clip>
+        <clip>Patricio - Learning through others</clip>
+        <clip>Patricio - Mentors</clip>
+        <clip>Patricio - Theory of Play 1</clip>
+        <clip>Patricio - infinity of projects on google</clip>
+        <clip>Philip - changes your thinking</clip>
+        <clip>Philip - learn through programming</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Ramsey - a piece of my mind</clip>
+        <clip>Ramsey - beauty of code</clip>
+        <clip>Ramsey - beauty of the score</clip>
+        <clip>Ramsey - cloud 1</clip>
+        <clip>Ramsey - cloud 2</clip>
+        <clip>Ramsey - code specifies behavior</clip>
+        <clip>Ramsey - complacency 1</clip>
+        <clip>Ramsey - complacency 2</clip>
+        <clip>Ramsey - complicated C++</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - language self expression</clip>
+        <clip>Ramsey - traditional engineering</clip>
+        <clip>Ramsey - why code is special</clip>
+        <clip>Shiffman - Carl Sims</clip>
+        <clip>Shiffman - Magnets</clip>
+        <clip>Shiffman - Maybe I&apos;d like that</clip>
+        <clip>Shiffman - Not a visual thinker</clip>
+        <clip>Shiffman - advanced environment</clip>
+        <clip>Shiffman - sketching with code</clip>
+        <clip>Zach - Open Frameworks 3</clip>
+        <clip>Zach - action script</clip>
+        <clip>Zach - action script shorter</clip>
+        <clip>Zach - hide the tech</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Theo - learning</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="2DVideo_OpenPaths">
     <keywords></keywords>
     <links>
@@ -648,6 +857,85 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="2DVideo_TweakMode">
+    <keywords>coding|emergence|NOC|nature of code</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Andres - soft systems 1</clip>
+        <clip>Bruce - beauty of code 4</clip>
+        <clip>Bruce - beauty of code 5</clip>
+        <clip>Casey - You need noise</clip>
+        <clip>Diederick - allprogrammershavethat</clip>
+        <clip>Greg - Creative Coder</clip>
+        <clip>Higa - collaboration with machines 1</clip>
+        <clip>Higa - collaboration with machines 2</clip>
+        <clip>Higa - language barriers</clip>
+        <clip>Higa - simplicity of self made tools</clip>
+        <clip>Higa - thick wall</clip>
+        <clip>Higa - working all night</clip>
+        <clip>Intro - CodingSketching</clip>
+        <clip>Intro - LogicOfPixels</clip>
+        <clip>Intro - Programming</clip>
+        <clip>JTNimoy - I addicted myself</clip>
+        <clip>Jen - hated computer science</clip>
+        <clip>Jen - necessity of code 1</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Joel - Amiga500</clip>
+        <clip>Joel - Bicycles1</clip>
+        <clip>Karsten - 256 bytes part 1</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Kyle_CH - alter language 1</clip>
+        <clip>Kyle_CH - coding, magic</clip>
+        <clip>Kyle_CH - coding 2</clip>
+        <clip>Kyle_CH - coding is 1</clip>
+        <clip>Kyle_MC - code as a theme 2</clip>
+        <clip>LIA - IdeaToCode</clip>
+        <clip>LIA - LTree</clip>
+        <clip>LIA - NonVerbalWay</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>Maeda - not a big deal</clip>
+        <clip>Marcus - Sims</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marcus - energy flow_riot</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Nervous_Jesse - organic process</clip>
+        <clip>Nervous_Jesse - reaction lamp</clip>
+        <clip>Nervous_Jessica - RNA and Viruses</clip>
+        <clip>Nervous_Jessica - biocomputer</clip>
+        <clip>Patricio - Magic Spells 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - Ramsey Intro</clip>
+        <clip>Ramsey - complacency 1</clip>
+        <clip>Ramsey - complacency 2</clip>
+        <clip>Ramsey - designing languages</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - elegant system</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - wizardry 1</clip>
+        <clip>Ramsey - wizardry 2</clip>
+        <clip>Shantell - Coding: what does it feel like?</clip>
+        <clip>Shantell - Coding gesturally</clip>
+        <clip>Shiffman - offers me a way to think</clip>
+        <clip>Shiffman - programming the universe</clip>
+        <clip>Damion - ReadableCode</clip>
+        <clip>Patricio - Imaginative technologies 2</clip>
+        <clip>Patricio - Imaginative technologies 1</clip>
+        <clip>Damion - CodingAndCommunication</clip>
+        <clip>Diederick - hackathon1</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Shiffman - NOC 3</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="2DVideo_Zipcode">
     <keywords></keywords>
     <links>
@@ -656,7 +944,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -2235,7 +2523,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -2498,6 +2786,16 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Cosmic_EG_CosmicCornea">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Cosmic_JM_biological">
     <keywords></keywords>
     <links></links>
@@ -2505,6 +2803,46 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Cosmic_JM_biological2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Cosmic_jm_galaxy">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Cosmic_jm_swells">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Cosmic_jm_swells2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -2765,6 +3103,36 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="CubeCraft_j_05_blue">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="CubeCraft_j_work_03a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="CubeCraft_j_work_05a_bluegreen">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -2793,7 +3161,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -3989,6 +4357,36 @@
     <sound>0</sound>
 </system>
 <system name="Histogram_Test">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Histogram_Waveform1">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Histogram_Waveform2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Histogram_Waveform3">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -8792,12 +9190,59 @@
     <sound>0</sound>
 </system>
 <system name="RGBDVideo_ShinyLab">
-    <keywords></keywords>
+    <keywords>hackers|hackathon|tribe</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Binx - Background</clip>
+        <clip>Binx - ar&amp;&amp;code</clip>
+        <clip>Binx - brogrammers</clip>
+        <clip>Bruce - FFFFFAT Lab</clip>
+        <clip>Bruce - kinect hacking</clip>
+        <clip>Golan - people like myself</clip>
+        <clip>Greg - Sharpening spears</clip>
+        <clip>Higa - only meets pure geeks</clip>
+        <clip>Intro - Programming</clip>
+        <clip>JTNimoy - geek culture</clip>
+        <clip>Javier - hacker critique</clip>
+        <clip>Javier - hackers 2</clip>
+        <clip>Jen - grouping people</clip>
+        <clip>Jer - makerthons</clip>
+        <clip>Julian - hacker</clip>
+        <clip>Julian - ideology of seamlessness</clip>
+        <clip>Julian - lulzSec</clip>
+        <clip>Karsten - 256 bytes part 1</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - malware</clip>
+        <clip>Karsten - users</clip>
+        <clip>Karsten - virus</clip>
+        <clip>Kevin - algo trading 1</clip>
+        <clip>Kyle_MC - Anonymous</clip>
+        <clip>Kyle_MC - Dangerous to conflate</clip>
+        <clip>Kyle_MC - Hackers</clip>
+        <clip>Kyle_MC - People staring at screens 3</clip>
+        <clip>Kyle_MC - they all wear the same glasses</clip>
+        <clip>LIA - helldotcom</clip>
+        <clip>Lindsay - hackers</clip>
+        <clip>Lindsay - memes 2</clip>
+        <clip>Marcus - new tricks</clip>
+        <clip>Marius - I hate the word nerd</clip>
+        <clip>Marius - cross discplines</clip>
+        <clip>Paola - generosity</clip>
+        <clip>Paola - the tribe</clip>
+        <clip>Ramsey - google&apos;s business model 2</clip>
+        <clip>Regine - Hackers</clip>
+        <clip>Regine - Hacking</clip>
+        <clip>Shantell - doingwithothers</clip>
+        <clip>Sophy - Strange cultures</clip>
+        <clip>Vera - What I like about this field</clip>
+        <clip>Zach - decompiling</clip>
+        <clip>Zach - nerd art center</clip>
+        <clip>Golan - STUDIO art and code</clip>
+        <clip>Golan - finding a community</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
