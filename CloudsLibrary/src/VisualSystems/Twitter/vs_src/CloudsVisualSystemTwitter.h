@@ -63,7 +63,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     //i/o stuff
     void loadJSONData(string folderName);
-    void addUsersFromMentions();
+    void addUsersFromMentions(ofVec2f& curActivityMapCoord, int activityMapWidth );
     void createPajekNetwork(string outputFileName);
     void parseClusterNetwork(string fileName);
     void createNewGraph(string outputFileName, string inputDataFolder);
@@ -126,7 +126,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     //draw stuff
     void loadMesh();
-    void updateMeshFromTweets(int index);
+    void updateActiveTweeters(int index);
+    void setActiveTweeters(int index );
     void updateMesh();
     void drawText(string text, ofVec3f pos);
     void drawText2D(string text, ofVec2f pos);
@@ -172,6 +173,8 @@ protected:
     ofShader pointsShader;
     float meshExpansion;
     float pointSize;
+    float activityMapDamping;
+    
     ofxUISuperCanvas* clusterGui;
     ofxUISuperCanvas* textGui;
     ofxUISuperCanvas* twitterFeedGui;

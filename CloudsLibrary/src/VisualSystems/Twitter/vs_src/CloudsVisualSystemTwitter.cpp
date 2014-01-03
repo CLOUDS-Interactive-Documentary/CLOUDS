@@ -112,7 +112,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addToggle("ROTATE", &rotateModel);
     clusterGui->addMinimalSlider("ROTATION AMT", 0.1, 1, &rotationAmount);
     clusterGui->addLabel("MESH FILE",currentMeshFileName);
-    clusterGui->addMinimalSlider("EDGE DECAY", 0.01, 0.9, &edgeDecayRate);
+    clusterGui->addMinimalSlider("EDGE DECAY", 0.2, 1.0, &activityMapDamping);
 	
 	//TWEET POP
 	addColorToGui(clusterGui,"LINE NODE BASE",lineNodeBaseHSV);
@@ -296,6 +296,7 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
             }
         }
     }
+    addUsersFromMentions(curActivityMapCoord, activityMapCoordWidth);
 	
 	activityMap.allocate(activityMapCoordWidth, curActivityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
 //	activityMapDampened.allocate(activityMapCoordWidth, curActivityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
@@ -303,7 +304,11 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
 //	activityMapDampened.getPixelsRef().set(0);
 //	activityMap.set(0);
 	
-    addUsersFromMentions();
+
+    
+    for(int i =0; i< tweeters.size(); i++){
+        cout<<tweeters[i].name<<" : "<<tweeters[i].tweets.size()<<endl;
+    }
 }
 
 void CloudsVisualSystemTwitter::loadAvatars(){
@@ -414,57 +419,26 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
         }
 	}
 }
-
-void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
+void CloudsVisualSystemTwitter::setActiveTweeters(int index){
     
-    activeTweeters.clear();
-    activeTweets.clear();
-    activeTweetPairs.clear();
     string currentDate = getDateAsString(dateIndex[index]);
     
-    for(int i = 0; i < tweeters.size(); i++){
-		//pop their connections
-        if(!tweeters[i].hasTweetOnDate(currentDate)){
-			continue;
-		}
-        
-        
-        //Highlighting all links when tweeter activated
-        
-        //        for (int l= 0; l<tweeters[i].linksById.size(); l++) {
-        //            Tweeter& t = getTweeterByID(tweeters[i].linksById[l]);
-        //
-        //            pair<int, int> currentIndeces;
-        //            if(lineIndexPairs.find(make_pair(tweeters[i].name, t.name)) != lineIndexPairs.end()){
-        //                currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
-        //            }
-        //            else if(lineIndexPairs.find(make_pair(t.name,tweeters[i].name)) != lineIndexPairs.end()){
-        //                pair<int, int> currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
-        //            }
-        //            else{
-        //                //error!!
-        //                continue;
-        //            }
-        //            //set the edges
-        //            edgeMesh.getNormals()[currentIndeces.first].y = 1.0;
-        ////            edgeMesh.getNormals()[currentIndeces.second].y = 1.0;
-        //            int ind = MIN(currentIndeces.first,currentIndeces.second) + 1;
-        ////            edgeMesh.getNormals()[ind++].y = 1.0;
-        ////            edgeMesh.getNormals()[ind  ].y = 1.0;
-        //
-        //        }
-        
-		activeTweeters.push_back(&tweeters[i]);
-		vector<Tweet>&  tweetsOnDate = tweeters[i].getTweetsByDate(currentDate);
+    for (int i = 0 ; i<activeTweeters.size(); i++) {
+        cout<<ofGetFrameNum() % refreshRate<< " : "<<activeTweeters[i]->refreshNum<<endl;
+        if (ofGetFrameNum() % refreshRate  != activeTweeters[i]->refreshNum) {
+            continue;
+        }
+
+        activeTweeters[i]->refreshNum = 0;
+        vector<Tweet>&  tweetsOnDate = tweeters[i].getTweetsByDate(currentDate);
 		int activityMapIndex = tweeters[i].activityMapCoord.y * activityMap.getWidth() + tweeters[i].activityMapCoord.x;
 		activityMap.getPixels()[activityMapIndex] = 1.0;
 		
-		//pop the active tweeter node
+		// pop the active tweeter node
 		nodeMesh.getNormals()[tweeters[i].nodeVertexIndex].y = 1.0;
         
 		for(int k = 0; k < tweetsOnDate.size(); k ++){
             
-			activeTweets.push_back(&tweetsOnDate[k].tweet);
             activeTweetPairs.push_back(make_pair(&tweeters[i].name, &tweetsOnDate[k].tweet));
             
 			for(int l = 0; l < tweetsOnDate[k].mentionedUsers.size(); l++){
@@ -474,6 +448,8 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
 				}
 				
 				Tweeter& t = getTweeterByID(user);
+                int activityMapIndex = t.activityMapCoord.y * activityMap.getWidth() + t.activityMapCoord.x;
+                activityMap.getPixels()[activityMapIndex] = 1.0;
                 //                activeTweetPairs.push_back(make_pair(&tweeters[i].name, &tweetsOnDate[k].tweet));
 				//find the nodes
 				pair<int, int> currentIndeces;
@@ -498,6 +474,31 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
             }
         }
     }
+}
+
+void CloudsVisualSystemTwitter::updateActiveTweeters(int index){
+    
+    activeTweeters.clear();
+    activeTweetPairs.clear();
+    string currentDate = getDateAsString(dateIndex[index]);
+    int frameNum = 0;
+    for(int i = 0; i < tweeters.size(); i++){
+        if(!tweeters[i].hasTweetOnDate(currentDate)){
+			continue;
+		}
+
+		activeTweeters.push_back(&tweeters[i]);
+
+    }
+    
+    for(int i = 0; i < activeTweeters.size(); i++){
+
+        
+        activeTweeters[i]->refreshNum = ofMap(i, 0, activeTweeters.size(),0, refreshRate );
+        
+    }
+    
+    
 }
 
 void CloudsVisualSystemTwitter::updateMesh(){
@@ -581,7 +582,7 @@ void CloudsVisualSystemTwitter::loadMesh(){
     nodeMesh.setMode(OF_PRIMITIVE_POINTS);
 }
 
-void CloudsVisualSystemTwitter::addUsersFromMentions(){
+void CloudsVisualSystemTwitter::addUsersFromMentions(ofVec2f& curActivityMapCoord, int activityMapWidth ){
     
     vector<string> names;
     
@@ -602,8 +603,14 @@ void CloudsVisualSystemTwitter::addUsersFromMentions(){
     for(it = numberOfMentions.begin() ; it != numberOfMentions.end() ; it++){
         //Filter mentioned users by times mentioned
         if(it->second > minUserMentions){
-            Tweeter t = Tweeter(it->first, tweeters.size());
-            tweeters.push_back(t);
+            Tweeter cur = Tweeter(it->first, tweeters.size());
+            cur.activityMapCoord = curActivityMapCoord;
+            curActivityMapCoord.x++;
+            if(curActivityMapCoord.x >= activityMapWidth){
+                curActivityMapCoord.x = 0;
+                curActivityMapCoord.y++;
+            }
+            tweeters.push_back(cur);
         }
     }
 }
@@ -766,7 +773,7 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     loadMesh();
     std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
     currentDateIndex = dateIndex.size() -1;
-    updateMeshFromTweets(currentDateIndex);
+    updateActiveTweeters(currentDateIndex);
     
     if(bRenderFeed){
         updateCurrentSelection(currentDateIndex, true);
@@ -857,8 +864,8 @@ void CloudsVisualSystemTwitter::selfUpdate()
             updateCurrentSelection(currentDateIndex,false);
         }
     }
-    
-    if(ofGetFrameNum() % refreshRate < 1 && bAnimate){
+
+    if(ofGetFrameNum() % refreshRate == 0 && bAnimate){
         
         if (currentDateIndex >= dateIndexMax){
             currentDateIndex = (int)dateIndexMin;
@@ -866,13 +873,14 @@ void CloudsVisualSystemTwitter::selfUpdate()
         else{
             currentDateIndex++;
         }
-        
-        updateMeshFromTweets(currentDateIndex);
+
+        updateActiveTweeters(currentDateIndex);
         updateMesh();
     }
     
+    setActiveTweeters(currentDateIndex);
 	for(int i = 0; i < activityMap.getWidth()*activityMap.getHeight(); i++){
-		activityMap.getPixels()[i] *= .9;
+		activityMap.getPixels()[i] *= activityMapDamping;
 	}
 	activityMap.update();
 }
