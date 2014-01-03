@@ -87,9 +87,10 @@ void CloudsVisualSystemRGBD::selfSetup(){
 }
 
 void CloudsVisualSystemRGBD::playTestVideo(){
-	if(ofFile::doesFileExist("TestVideo/Elliot_UK_wiremape_description.mov")){
-		getRGBDVideoPlayer().setup("TestVideo/Elliot_UK_wiremape_description.mov",
-								   "TestVideo/Elliot_UK_wiremape_description.xml",0,0);
+
+	if(ofFile::doesFileExist("TestVideo/Lindsay_memes_2.mov")){
+		getRGBDVideoPlayer().setup("TestVideo/Lindsay_memes_2.mov",
+								   "TestVideo/Lindsay_memes_2.xml", 0, 0  );
 		getRGBDVideoPlayer().swapAndPlay();
 	}
 }
@@ -114,6 +115,7 @@ void CloudsVisualSystemRGBD::loadShader(){
 //}
 
 void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionType ){
+	//TODO: SAVE THESE VALUES TO getVisualSystemDataPath()/transitionTargets/
 	switch (transitionType) {
 		case CloudsVisualSystem::TWO_DIMENSIONAL:
 			transitionInStart.setPosition(-1.61592, -80.692, 36.2162);
@@ -308,6 +310,20 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guis.push_back(questionGui);
 	guimap[meshGui->getName()] = questionGui;
 	
+	
+	//transitionEditorGui
+	transitionEditorGui = new ofxUISuperCanvas("TRANSITIONEDITOR", gui);
+	transitionEditorGui->copyCanvasStyle(gui);
+    transitionEditorGui->copyCanvasProperties(gui);
+    transitionEditorGui->setName("TransitionEditor");
+    transitionEditorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	transitionEditorGui->addButton("transition", true);
+	
+	CloudsQuestion::addQuestionVariables( transitionEditorGui );
+	
+	guis.push_back(transitionEditorGui);
+	guimap[meshGui->getName()] = transitionEditorGui;
 	
 //	connectorGui = new ofxUISuperCanvas("CONNECTORS", gui);
 //	connectorGui->copyCanvasStyle(gui);
