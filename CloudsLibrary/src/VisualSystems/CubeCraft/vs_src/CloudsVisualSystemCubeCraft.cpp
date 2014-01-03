@@ -100,10 +100,13 @@ void CloudsVisualSystemCubeCraft::selfSetupGui()
 	
 	fogGui->addSpacer();
 	
-	fogGui->addLabel("FogColor");
-	fogGui->addMinimalSlider("fogHue", 0, 255, &fogHue)->setIncrement(1);
-	fogGui->addMinimalSlider("fogSaturation", 0, 255, &fogSaturation)->setIncrement(1);
-	fogGui->addMinimalSlider("fogBrightness", 0, 255, &fogBrightness)->setIncrement(1);
+	fogGui->addLabel("FOG_Color");
+//	fogGui->addMinimalSlider("fogHue", 0, 255, &fogHue)->setIncrement(1);
+//	fogGui->addMinimalSlider("fogSaturation", 0, 255, &fogSaturation)->setIncrement(1);
+//	fogGui->addMinimalSlider("fogBrightness", 0, 255, &fogBrightness)->setIncrement(1);
+	fogGui->addIntSlider("fogHue", 0, 255, &fogHue);
+	fogGui->addIntSlider("fogSaturation", 0, 255, &fogSaturation);
+	fogGui->addIntSlider("fogBrightness", 0, 255, &fogBrightness);
 	
 	fogGui->addSpacer();
 	fogGui->addSlider("fogDist", 10, 200, &fogDist);
@@ -179,17 +182,21 @@ void CloudsVisualSystemCubeCraft::selfGuiEvent(ofxUIEventArgs &e)
 		fillColor2 = sampler->getColor();
 	}
 	
-	else if(name == "fogSaturation" || name == "fogHue" || name == "fogSaturation" )
+	else if(name == "fogSaturation" || name == "fogHue" || name == "fogBrightness" )
 	{
-		fogColor.setHue(fogHue);
-		fogColor.setSaturation(fogSaturation);
-		fogColor.setBrightness(fogBrightness);
-
-		//DON'T NKOW WHY THIS DOESN'T WORK. UBT IT DOESN'T
-//		fogGui->getWidget("FogColor")->setColorFill(fogColor);
-//		fogGui->getWidget("fogHue")->setColorFill(fogColor);
-//		fogGui->getWidget("fogSaturation")->setColorFill(fogColor);
-//		fogGui->getWidget("fogSaturation")->setColorFill(fogColor);
+		fogColor.setHsb(fogHue, fogSaturation, fogBrightness);
+		
+		fogGui->getWidget("FOG_Color")->setColorFill( fogColor);
+		fogGui->getWidget("fogHue")->setColorFill( fogColor);
+		fogGui->getWidget("fogSaturation")->setColorFill(fogColor);
+		fogGui->getWidget("fogBrightness")->setColorFill(fogColor);
+		
+//		fogGui->setColorBack( fogColor );
+		
+		bgHue = fogHue;
+		bgSat = fogSaturation;
+		bgBri = fogBrightness;
+	
 	}
 	
 	else if(name == "groundHue" || name == "groundSaturation" || name == "groundBrightness")
@@ -449,12 +456,13 @@ void CloudsVisualSystemCubeCraft::drawVoxelGrid()
 	
 	glDisable(GL_CULL_FACE);
 	
+	glDisable( GL_DEPTH_TEST );
+	
 	glPopAttrib();
 }
 
 void CloudsVisualSystemCubeCraft::drawCubeCraft()
 {
-	
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	
 	glEnable( GL_DEPTH_TEST );
@@ -469,7 +477,7 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	ofScale(scale,scale,scale);
 	
 	mineCraftGroundShader.begin();
-	
+
 	mineCraftGroundShader.begin();
 	mineCraftGroundShader.setUniform1f("cameraCutoffDistance", 3);
 	
@@ -482,7 +490,7 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	mineCraftGroundShader.setUniform1f("fogExpo", fogExpo );
 
 	mineCraftGroundShader.setUniform1f("useFog", bUseFog);
-	
+
 	fc = fillColor2;
 	mineCraftGroundShader.setUniform4f("specularColor", fc.r, fc.g, fc.b, fc.a );
 
@@ -493,14 +501,8 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	mineCraftGroundShader.setUniform4f("undergroundColor", fc.r, fc.g, fc.b, fc.a );
 
 	fc = cloudShadowColor;
-	cubeCraftShader.setUniform4f("cloudShadowColor", fc.r, fc.g, fc.b, fc.a );
-//
-//	cubeCraftShader.setUniform1f("dimX", dimX );
-//	cubeCraftShader.setUniform1f("dimY", dimY );
-//	cubeCraftShader.setUniform1f("dimZ", dimZ );
-//	cubeCraftShader.setUniform3f("minBound", -.5 * dimX, -.5 * dimY, -.5 * dimZ);
-//	cubeCraftShader.setUniform3f("maxBound", .5 * dimX, .5 * dimY, .5 * dimZ);
-//	
+	mineCraftGroundShader.setUniform4f("cloudShadowColor", fc.r, fc.g, fc.b, fc.a );
+
 	ofVec3f cp = getCameraRef().getPosition() / scale;
 	mineCraftGroundShader.setUniform3f("cameraPos", cp.x, cp.y, cp.z );
 	
@@ -513,8 +515,6 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	mineCraftGroundShader.setUniform3f("cameraOffset", -cameraOffset.x, 0., -cameraOffset.z);
 	
 	mineCraftGroundShader.setUniform3f("cubeScale", 1,1,1 );
-	
-	
 
 	voxelVbo.draw(GL_TRIANGLES, 0, voxelIndexCount );
 
@@ -522,8 +522,6 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	
 	
 	//CLOUDS
-	mineCraftCloudsShader.begin();
-	
 	mineCraftCloudsShader.begin();
 	mineCraftCloudsShader.setUniform1f("cameraCutoffDistance", 3);
 	
@@ -561,14 +559,17 @@ void CloudsVisualSystemCubeCraft::drawCubeCraft()
 	
 	voxelVbo.draw(GL_TRIANGLES, 0, voxelIndexCount );
 	
-	mineCraftGroundShader.end();
+	mineCraftCloudsShader.end();
 	
 	
 	ofPopMatrix();
 	
 	glDisable(GL_CULL_FACE);
 	
+	glDisable( GL_DEPTH_TEST );
+	
 	glPopAttrib();
+	
 }
 
 void CloudsVisualSystemCubeCraft::resizeVoxelGrid()

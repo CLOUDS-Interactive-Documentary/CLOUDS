@@ -8,34 +8,6 @@
 #include "ofxAVFVideoPlayer.h"
 #endif
 
-
-#define GLSL(version, shader)  "#version " #version "\n" #shader
-
-static const char*
-BackgroundVert =
-GLSL(120,
-varying vec2 oTexCoord;
-void main()
-{
-	oTexCoord = gl_MultiTexCoord0.xy;
-	gl_Position = ftransform();
-});
-
-
-static const char*
-BackgroundFrag =
-GLSL(120,
-	 
-uniform sampler2DRect image;
-uniform vec3 colorOne;
-uniform vec3 colorTwo;
-varying vec2 oTexCoord;
-
-void main()
-{
-	gl_FragColor = vec4(mix(colorTwo,colorOne, texture2DRect(image,oTexCoord).r), 1.0);
-});
-
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
 static CloudsRGBDVideoPlayer rgbdPlayer;
@@ -46,7 +18,7 @@ static ofImage backgroundGradientBar;
 static bool screenResolutionForced = false;
 static int forcedScreenWidth;
 static int forcedScreenHeight;
-
+static int numSamples = 0;
 //default render target is a statically shared FBO
 ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
 	return staticRenderTarget;
@@ -56,6 +28,10 @@ void CloudsVisualSystem::forceScreenResolution(int screenWidth, int screenHeight
 	screenResolutionForced = true;
 	forcedScreenWidth = screenWidth;
 	forcedScreenHeight = screenHeight;
+}
+
+void CloudsVisualSystem::setNumSamples(int samples){
+	numSamples = samples;
 }
 
 ofImage& CloudsVisualSystem::getCursor(){
@@ -80,10 +56,7 @@ CloudsRGBDVideoPlayer& CloudsVisualSystem::getRGBDVideoPlayer(){
 void CloudsVisualSystem::loadBackgroundShader(){
 	backgroundGradientBar.loadImage(GetCloudsDataPath() + "backgrounds/bar.png");
 	backgroundGradientCircle.loadImage(GetCloudsDataPath() + "backgrounds/circle.png");
-	backgroundShader.setupShaderFromSource(GL_VERTEX_SHADER, BackgroundVert);
-	backgroundShader.setupShaderFromSource(GL_FRAGMENT_SHADER, BackgroundFrag);
-	backgroundShader.linkProgram();
-	
+	backgroundShader.load(GetCloudsDataPath() + "shaders/background");
 	backgroundShaderLoaded = true;
 }
 
@@ -154,7 +127,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
     bMatchBackgrounds = false;
 	bIs2D = false;
 	bDrawCursor = true;
-	
+	updateCyclced = false;
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
 #else
@@ -183,10 +156,10 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 
 	if(reallocateTarget){
 		if(screenResolutionForced){
-			renderTarget.allocate(forcedScreenWidth, forcedScreenHeight, GL_RGB);
+			renderTarget.allocate(forcedScreenWidth, forcedScreenHeight, GL_RGB, numSamples);
 		}
 		else{
-			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
+			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
 		}
 		renderTarget.begin();
 		ofClear(0,0,0,1.0);
@@ -256,7 +229,6 @@ void CloudsVisualSystem::setup(){
 	hideGUIS();
 
 	bIsSetup = true;
-	
 }
 
 bool CloudsVisualSystem::isSetup(){
@@ -362,12 +334,13 @@ void CloudsVisualSystem::speakerEnded()
 
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
-    if(bEnableTimeline)
+    if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack)
     {
         updateTimelineUIParams();
     }
     
-    if(bUpdateSystem)
+	//JG Never skip the update loop this is causing lots of problems
+//    if(bUpdateSystem)
     {
         for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it)
         {
@@ -398,14 +371,20 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 		timeline->setOffset(ofVec2f(4, ofGetHeight() - timeline->getHeight() - 4 ));
 		timeline->setWidth(ofGetWidth() - 8);
 	}
+	
+	checkOpenGLError(getSystemName() + ":: UPDATE");
+	
+	updateCyclced = true;
 }
 
 void CloudsVisualSystem::draw(ofEventArgs & args)
 {
-    ofPushStyle();
-	
 
+	if(!updateCyclced)
+		return;
 	
+	ofPushStyle();
+
     if(bRenderSystem)
     {
 	  
@@ -418,6 +397,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 
 			getOculusRift().beginOverlay(-230, 320,240);
 			selfDrawOverlay();
+			checkOpenGLError(getSystemName() + ":: DRAW OVERLAY");
 			getOculusRift().endOverlay();
 			
             if(bIs2D){
@@ -426,6 +406,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
                     ofClear(0, 0, 0, 1.0);
                 }                
                 selfDrawBackground();
+				checkOpenGLError(getSystemName() + ":: DRAW BACKGROUND");
                 CloudsVisualSystem::getSharedRenderTarget().end();
                 
                 getOculusRift().baseCamera = &getCameraRef();
@@ -463,9 +444,8 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			
 			ofPushStyle();
 			ofPushMatrix();
-			ofTranslate(0, ofGetHeight());
+			ofTranslate(0, getCanvasHeight() );
 			ofScale(1,-1,1);
-			
 			
 			selfDrawOverlay();
 			
@@ -527,6 +507,7 @@ void CloudsVisualSystem::drawScene(){
 	
 	ofPushStyle();
 	drawDebug();
+	checkOpenGLError(getSystemName() + ":: DRAW DEBUG");
 	ofPopStyle();
 	
 	lightsBegin();
@@ -534,6 +515,7 @@ void CloudsVisualSystem::drawScene(){
 	//draw this visual system
 	ofPushStyle();
 	selfDraw();
+	checkOpenGLError(getSystemName() + ":: DRAW");
 	ofPopStyle();
 	
 	lightsEnd();
@@ -1050,11 +1032,9 @@ vector<string> CloudsVisualSystem::getPresets()
 	vector<string> presets;
 	string presetPath = getVisualSystemDataPath() + "Presets/";
 	ofDirectory presetsFolder = ofDirectory(presetPath);
-	cout << "PRESET PATH AT " << presetPath << endl;
 	
 	if(presetsFolder.exists()){
 		presetsFolder.listDir();
-		cout << " found " << presetsFolder.size() << " files " << endl;
 		for(int i = 0; i < presetsFolder.size(); i++){
 			if(presetsFolder.getFile(i).isDirectory() &&
                ofFilePath::removeTrailingSlash(presetsFolder.getName(i)) != "Working" &&
@@ -1315,6 +1295,26 @@ void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
             bgGui->autoSizeToFitWidgets();
         }
     }
+	
+	//change the gui color on slider change
+	if(name == "HUE" || name == "SAT" || name == "BRI")
+	{
+		ofColor backgrounfFillColor;
+		backgrounfFillColor.setHsb(bgHue, bgSat, bgBri);
+		
+		bgGui->getWidget("HUE")->setColorFill(backgrounfFillColor);
+		bgGui->getWidget("SAT")->setColorFill(backgrounfFillColor);
+		bgGui->getWidget("BRI")->setColorFill(backgrounfFillColor);
+	}
+	else if(name == "HUE2" || name == "SAT2" || name == "BRI2")
+	{
+		ofColor backgrounfFillColor;
+		backgrounfFillColor.setHsb(bgHue2, bgSat2, bgBri2);
+		
+		bgGui->getWidget("HUE2")->setColorFill(backgrounfFillColor);
+		bgGui->getWidget("SAT2")->setColorFill(backgrounfFillColor);
+		bgGui->getWidget("BRI2")->setColorFill(backgrounfFillColor);
+	}
 }
 
 void CloudsVisualSystem::setupLightingGui()
@@ -1648,7 +1648,7 @@ void CloudsVisualSystem::setupMaterial(string name, ofxMaterial *m)
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     g->addSpacer();
     
-    g->addMinimalSlider("SHINY", 0.0, 128.0, m->matShininess)->setShowValue(false);
+    g->addMinimalSlider("SHINY", 0.0, 128.0, &m->matShininess)->setShowValue(false);
     
     g->autoSizeToFitWidgets();
     g->setPosition(ofGetWidth()*.5-g->getRect()->getHalfWidth(), ofGetHeight()*.5 - g->getRect()->getHalfHeight());
@@ -2611,19 +2611,9 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	
 	selfSetDefaults();
 	
-	//custom colors
-//    cb = ofxUIColor(128,255);
-//    co = ofxUIColor(255, 255, 255, 100);
-//    coh = ofxUIColor(255, 255, 255, 200);
-//    cf = ofxUIColor(255, 255, 255, 200);
-//    cfh = ofxUIColor(255, 255, 255, 255);
-//    cp = ofxUIColor(0, 100);
-//    cpo =  ofxUIColor(255, 200);
-	
     for(int i = 0; i < guis.size(); i++) {
 		string presetPathName = presetPath+"/"+guis[i]->getName()+".xml";
         guis[i]->loadSettings(presetPathName);
-//		guis[i]->setUIColors(cb,co,coh,cf,cfh,cp, cpo);
     }
 	
     cam.reset();
@@ -2776,20 +2766,20 @@ void CloudsVisualSystem::toggleGuiAndPosition(ofxUISuperCanvas *g)
     }
 }
 
-void CloudsVisualSystem::setCurrentCamera(ofCamera& swappedInCam)
-{
-	currentCamera = &swappedInCam;
-}
+//void CloudsVisualSystem::setCurrentCamera(ofCamera& swappedInCam)
+//{
+//	currentCamera = &swappedInCam;
+//}
 
-ofCamera* CloudsVisualSystem::getCurrentCamera()
-{
-	return currentCamera;
-}
+//ofCamera* CloudsVisualSystem::getCurrentCamera()
+//{
+//	return currentCamera;
+//}
 
-void CloudsVisualSystem::setCurrentCamera( ofCamera* swappedInCam )
-{
-	setCurrentCamera(*swappedInCam);
-}
+//void CloudsVisualSystem::setCurrentCamera( ofCamera* swappedInCam )
+//{
+//	setCurrentCamera(*swappedInCam);
+//}
 
 ofCamera& CloudsVisualSystem::getCameraRef(){
 	return cam;
@@ -2886,25 +2876,25 @@ void CloudsVisualSystem::billBoard(ofVec3f globalCamPosition, ofVec3f globelObje
 //    glEnd ();
 //}
 
-void CloudsVisualSystem::drawNormalizedTexturedQuad()
-{
-    glBegin (GL_QUADS);
-    
-    glTexCoord2f (0.0, 0.0);
-    glVertex3f (0.0, 0.0, 0.0);
-    
-    glTexCoord2f (1.0, 0.0);
-    glVertex3f (ofGetWidth(), 0.0, 0.0);
-    
-    
-    glTexCoord2f (1.0, 1.0);
-    glVertex3f (ofGetWidth(), ofGetHeight(), 0.0);
-    
-    glTexCoord2f (0.0, 1.0);
-    glVertex3f (0.0, ofGetHeight(), 0.0);
-    
-    glEnd ();
-}
+//void CloudsVisualSystem::drawNormalizedTexturedQuad()
+//{
+//    glBegin (GL_QUADS);
+//    
+//    glTexCoord2f (0.0, 0.0);
+//    glVertex3f (0.0, 0.0, 0.0);
+//    
+//    glTexCoord2f (1.0, 0.0);
+//    glVertex3f (ofGetWidth(), 0.0, 0.0);
+//    
+//    
+//    glTexCoord2f (1.0, 1.0);
+//    glVertex3f (ofGetWidth(), ofGetHeight(), 0.0);
+//    
+//    glTexCoord2f (0.0, 1.0);
+//    glVertex3f (0.0, ofGetHeight(), 0.0);
+//    
+//    glEnd ();
+//}
 
 void CloudsVisualSystem::drawBackground()
 {
@@ -2916,6 +2906,7 @@ void CloudsVisualSystem::drawBackground()
 	ofTranslate(0, ofGetHeight());
 	ofScale(1,-1,1);
 	selfDrawBackground();
+	checkOpenGLError(getSystemName() + ":: DRAW BACKGROUND");		
 	ofPopMatrix();
 	ofPopStyle();
 }
@@ -3050,11 +3041,6 @@ ofVec3f CloudsVisualSystem::getCameraPosition()
 void CloudsVisualSystem::selfDraw()
 {
 	
-//    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-//    mat->begin();
-//    ofSetColor(ofColor(255));
-//    ofFill();
-//    mat->end();
 }
 
 void CloudsVisualSystem::selfDrawOverlay(){
@@ -3169,8 +3155,7 @@ void CloudsVisualSystem::selfInteractionEnded(CloudsInteractionEventArgs& args){
 }
 
 
-void CloudsVisualSystem::selfSetupGui()
-{
+void CloudsVisualSystem::selfSetupGui(){
 
 }
 
@@ -3218,3 +3203,15 @@ void CloudsVisualSystem::selfTimelineGuiEvent(ofxUIEventArgs &e)
 {
     
 }
+
+void CloudsVisualSystem::checkOpenGLError(string function){
+	
+    GLuint err = glGetError();
+    if (err != GL_NO_ERROR){
+        ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " : " << gluErrorString(err) << " in " << function;
+    }
+}
+
+//#ifdef UInt32
+//#undef UInt32
+//#endif

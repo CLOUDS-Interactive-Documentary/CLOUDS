@@ -12,13 +12,11 @@
 #include "ofxOsc.h"
 
 #include "CloudsVisualSystemClusterMap.h"
-//#include "CloudsRun.h"
-//#include "CloudsStoryEngine.h"
-//#include "CloudsAct.h"
 #include "CloudsFCPParser.h"
 #include "ofxOsc.h"
 #include "CloudsSpeaker.h"
 #include "CloudsSVGMesh.h"
+#include "CloudsHUDLabel.h"
 
 class CloudsSecondaryDisplayController {
   public:
@@ -30,26 +28,35 @@ class CloudsSecondaryDisplayController {
     
     void saveGuiSettings();
 	void toggleGuis();
-    
-    void drawNextLayout();
-    void drawPrevLayout();
 	
 	ofxUISuperCanvas *SDGui;
     void draw();
-
+    
+    bool debug, color;
+	void respondToClip(CloudsClip& clip);
+	CloudsFCPParser parser;
+    
+    float tx;
+	
   protected:
 	
 	CloudsVisualSystemClusterMap clusterMap;
-	//CloudsRun run;
-	CloudsFCPParser parser;
-	//CloudsStoryEngine storyEngine;
-	//CloudsVisualSystemManager visualSystems;
 
 	void loadSVGs();
+    void hideQuestionBox();
+    void showQuestionBox();
+    ofxFTGLSimpleLayout* getLayoutForLayer( SVGMesh* textMesh, string font, float kerning);
+    ofxFTGLFont* getFontForLayer( SVGMesh* textMesh, string font, float kerning);
+
+    int getFontSizeForMesh( SVGMesh* textMesh, string font);
+    void drawTextToMesh(ofxFTGLSimpleLayout* font, string text, SVGMesh* mesh);
+    void onActBegan();
+    void onActEnded();
+
 	//TODO: make separate layer sets for Project Example vs Person
 	vector<CloudsSVGMesh> testAllLayout;
     
-    CloudsSVGMesh bioLayout, projectLayout, systemLayout;
+    CloudsSVGMesh bioLayout, projectLayout, questionLayout;
 	
 	bool playingMovie;
 	bool hasSpeaker;
@@ -57,7 +64,7 @@ class CloudsSecondaryDisplayController {
 	CloudsClip currentClip;
 	CloudsProjectExample currentExample;
 
-	ofxFTGLSimpleLayout exampleType, h1, h2, h3, h4, h5, p;
+	ofxFTGLSimpleLayout  *h1, *h2, *h3, *h4, *h5, *p;
 
 	ofVideoPlayer archivePlayer;
 
@@ -65,7 +72,43 @@ class CloudsSecondaryDisplayController {
 
 	ofFbo displayTarget;
     
-    int pFontSize, h3FontSize;
+    float pFontSize, h3FontSize;
     
     string displayMode, lastQuestion;
+    
+    //colors
+    ofColor lightBlue, darkBlue;
+    
+    vector<ofxFTGLFont*>    tempFontListThin, tempFontListBook;
+    
+    SVGMesh *meshQuestion,
+            *meshBioLastName,
+            *meshBioFirstName,
+            *meshBioLocation,
+            *meshBioLocationBG,
+            *meshBioTitle,
+            *meshBioTitleBG,
+            *meshBioDescription,
+            *meshProjectVideo,
+            *meshProjectTitle,
+            *meshProjectArtist,
+            *meshProjectDescription;
+    
+    ofxFTGLFont             *fontBioLastName,
+                            *fontBioFirstName,
+                            *fontBioLocation,
+                            *fontBioTitle;
+    
+    ofxFTGLSimpleLayout     *layoutQuestion,
+                            *layoutBioDescription,
+                            *layoutProjectVideo,
+                            *layoutProjectTitle,
+                            *layoutProjectArtist,
+                            *layoutProjectDescription;
+    
+    int stringCounter;
+
+    map<string, CloudsHUDLabel*>    hudLabelMap;
+
+
 };

@@ -16,6 +16,7 @@ varying float fogAmount;
 varying vec3 vEye;
 varying float depth;
 varying float distFromFloorLookAt;
+varying float edgeFade;
 
 //
 // Description : Array and textureless GLSL 2D/3D/4D simplex
@@ -138,5 +139,6 @@ void main()
     // gl_Normal is actually average position for face
     depth = noise(gl_Normal.xy + offset.xz) * 0.5 + 1;
     fogAmount = clamp((length(vEye) - fogStart) / (fogEnd - fogStart), 0.0, 1.0);
+    edgeFade = clamp(gl_TexCoord[0].s / 0.1, 0.0, 1.0) * clamp((1.0 - gl_TexCoord[0].s) / 0.1, 0.0, 1.0);
     gl_Position = gl_ModelViewProjectionMatrix * deformed;
 }

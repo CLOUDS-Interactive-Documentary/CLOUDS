@@ -6,11 +6,27 @@
 #include "CloudsClusterNode.h"
 #include "CloudsQuestion.h"
 #include "CloudsRun.h"
+#include "ofxFTGLFont.h"
+
+typedef struct{
+	ofIndexType startIndex;
+	ofIndexType endIndex;
+} TraversalSegment;
+
+typedef struct{
+	string keyword;
+	ofVec3f position;
+	ofVec2f screenPosition;
+	int numClips;
+	float normalizedTopicScale;
+} TopicPoint;
 
 class CloudsFCPParser;
 class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
   public:
     
+	CloudsVisualSystemClusterMap();
+	
 	void buildEntireCluster(CloudsFCPParser& parser);
 
 	void setRun(CloudsRun& run);
@@ -76,6 +92,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	// or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 	void selfDrawBackground();
 
+	void selfDrawOverlay();
+	
 	// this is called when your system is no longer drawing.
 	// Right after this selfUpdate() and selfDraw() won't be called any more
 	void selfEnd();
@@ -93,66 +111,141 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 	ofCamera& getCameraRef(){
-//		return cam;
-		return easeCamera;
+		if(lockCameraAxis){
+			return axisCamera;
+		}
+		return easyCamera;
 	}
 
 	void reloadShaders();
 	
-	//this is for the secondary display
-	bool incrementalTraversalMode;
 
   protected:
-    
-    //  Your Stuff
-    //
-	ofEasyCam easeCamera;
-	ofxUISuperCanvas* generatorGui;
-	ofxUISuperCanvas* displayGui;
-	
-	ofxGameCamera cam;
-	CloudsRun* run;
-	
-	ofxTLColorTrack* lineColor;
-	ofxTLColorTrack* nodeColor;
 
-	//TODO pick a better font renderer
-	ofTrueTypeFont font;
-	vector<CloudsQuestion> questions;
-	CloudsQuestion* selectedQuestion;
-	ofShader clusterShader;
-	ofShader lineShader;
-	ofShader traversalShader;
+	ofxUISuperCanvas* nodesGui;
+	ofxUISuperCanvas* linesGui;
+	ofxUISuperCanvas* optionPathsGui;
+	ofxUISuperCanvas* traversalGui;
+	ofxUISuperCanvas* followCamGui;
+	ofxUISuperCanvas* typeGui;
 	
-	bool firstClip;
-	ofVec3f lastClipPosition;
+	ofEasyCam easyCamera;
+	ofCamera axisCamera;
+	ofxGameCamera gameCamera;
 	
-	float currentVertIndex;
+	CloudsFCPParser* parser;
+	CloudsRun* run;
+	void resetGeometry();
 	
-	ofImage sprite;
-	
-	ofVboMesh traversalMesh;
-	ofVboMesh clusterMesh;
-	ofVboMesh connectionMesh;
+	bool drawNodes;
+	bool drawLines;
+	bool drawTraversal;
+	bool drawOptionPaths;
 	
 	vector<CloudsClusterNode> nodes;
 	map<string,int> clipIdToNodeIndex;
+
+	ofVboMesh traversalMesh;
+	ofVboMesh optionsMeshPrev,optionsMeshNext;
+	ofVboMesh nodeMesh;
+	ofVboMesh networkMesh;
 	
-	float maxTraverseAngle;
+	ofShader nodesShader;
+	ofShader networkShader;
+	ofShader traversalShader;
+	ofShader optionsShader;
+	
+	vector<TraversalSegment> traversalPath;
+	ofVec3f currentTraversalPosition;
+	ofVec3f currentTraversalDirection;
+	ofIndexType lastTraverseStartedIndex;
+	
+	bool firstClip;
+	ofVec3f currentNodePosition;
+	ofIndexType currentNodeIndex;
+	int currentTraversalIndex;
+	
+	ofVec3f cameraStartPosition;
+	float percentToDest;
+	
+	ofImage sprite;
 	
 	float meshExpansion;
-	float pointSize;
-	
-	float lineAlpha;
+	ofRange pointSize;
+
+	ofVec3f trailHead;
+
+	float nodePopLength;
+	float lineDensity;
 	float lineFocalDistance;
 	float lineFocalRange;
-	float lineDissolve;
-	ofVec3f trailHead;
+	float networkLineWidth;
 	
-	float nodePopLength;
+	bool drawTraversalPoints;
+	bool lockCameraAxis;
+	float traverseCamFOV;
+	float traversCameraDistance;
 	float traversedNodeSize;
+	float traverseStepSize;
+	float traverseAngleDampen;
+	float traverseHomingMinDistance;
+	float traverseMinSolvedDistance;
+	float traverseLineWidth;
+	
+	//colors~
+	bool matchLineColor;
+	ofFloatColor lineNodeColorHSV;
+	ofFloatColor lineNodeColorRGB;
+	ofFloatColor lineEdgeColorHSV;
+	ofFloatColor lineEdgeColorRGB;
+	float lineColorMixExponent;
+	bool drawLineFlickerDebug;
+	float lineFlickerIntensity;
+	float lineFlickerFrequency;
+	float lineFlickerDampening;
+	
+	bool matchTraversalColor;
+	ofFloatColor traverseHeadColorHSV;
+	ofFloatColor traverseHeadColorRGB;
+	ofFloatColor traverseTailColorHSV;
+	ofFloatColor traverseTailColorRGB;
+	float traverseFalloff;
+
+	ofFloatImage flickerNoise;
+	ofFloatPixels flickerNoiseTarget;
+	ofFloatColor optionColorHSV;
+	ofFloatColor optionColorRGB;
+	
+	//animate params
+	float traverseAnimationDuration;
+	float optionsAnimationDuration;
+	float optionLineWidth;
+	
+	bool drawHomingDistanceDebug;
+	
+	float traverseStartTime;
+	float percentTraversed;
+	float percentOptionsRevealed;
+	
+	//type vars
+	void populateTopicPoints();
+	vector<TopicPoint> topicPoints;
+	vector<ofxFTGLFont> topicFont;
+	bool drawType;
+	int baseFontSize;
+	ofIntRange clipsShowTopic;
+	ofRange clipCountRange;
+	ofRange typeDistanceRange;
+	ofIntRange typeSizeRange;
+	ofIntRange currentTypeSizeRange;
+	
+	
+	ofVec3f randomDirection();
+	
+	vector<CloudsQuestion> questions;
+	CloudsQuestion* selectedQuestion;
+
 };

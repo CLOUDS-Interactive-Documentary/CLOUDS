@@ -1,0 +1,23 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>TopicType</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>124.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>SIZE</Name>
+    <Value>12</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>SCALE RANGE</Name>
+    <HighValue>50.000000000</HighValue>
+    <LowValue>50.000000000</LowValue>
+</Widget>

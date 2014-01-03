@@ -4,9 +4,6 @@
 #include "CloudsGlobal.h"
 
 //--------------------------------------------------------------
-map<string, int> CloudsVisualSystemRGBD::appearances;
-
-//--------------------------------------------------------------
 string CloudsVisualSystemRGBD::getSystemName(){
 	return "RGBD";
 }
@@ -29,7 +26,7 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	transitionTarget = &transitionOutTarget;
 	drawTransitionNodes = false;
 	
-	captionFontSize = 12;
+//	captionFontSize = 12;
 	
 	edgeAttenuate = 0.;
 	skinBrightness = 0.;
@@ -52,8 +49,6 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	linesFlowUp = false;
 	refreshLines = true;
 	
-	
-	
 	drawMesh = true;
 	xSimplify = 2.0;
 	ySimplify = 2.0;
@@ -63,6 +58,12 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	meshFaceFalloff = 0.0;
 	meshRetractionFalloff = 1.0;
 	meshForceGeoRectraction = .0;
+	
+	
+	//transition editing
+	placingTransitionNodes = false;
+	bSaveTransition = false;
+	transitionCamTargetNode = NULL;
 
 }
 
@@ -75,25 +76,32 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	generatePoints();
 	generateMesh();
 		
-	particulateController.setParticleCount(20000);
-	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-	particulateController.setup();
+//	particulateController.setParticleCount(20000);
+//	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+//	particulateController.setup();
 	
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
-	setCurrentCamera(cloudsCamera);
-		
+			
 	displayFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", 14);
 	
 	transitionCam.setup();
 	
-    rebuildCaptionFont();
+	transitionCam.applyTranslation = true;
+	transitionCam.applyRotation = true;
+	
+//    rebuildCaptionFont();
+	
+	bTransitionIn = bTransitionOut = false;
+	
+	loadTransitionSettings("Transitions");
 }
 
 void CloudsVisualSystemRGBD::playTestVideo(){
-	if(ofFile::doesFileExist("TestVideo/Elliot_UK_wiremape_description.mov")){
-		getRGBDVideoPlayer().setup("TestVideo/Elliot_UK_wiremape_description.mov",
-								   "TestVideo/Elliot_UK_wiremape_description.xml" );
+
+	if(ofFile::doesFileExist("TestVideo/Lindsay_memes_2.mov")){
+		getRGBDVideoPlayer().setup("TestVideo/Lindsay_memes_2.mov",
+								   "TestVideo/Lindsay_memes_2.xml", 0, 0  );
 		getRGBDVideoPlayer().swapAndPlay();
 	}
 }
@@ -108,16 +116,17 @@ void CloudsVisualSystemRGBD::loadShader(){
 //	CloudsQuestion::reloadShader();
 }
 
-void CloudsVisualSystemRGBD::rebuildCaptionFont(){
-    if(bUseOculusRift){
-        captionFont.loadFont(GetCloudsDataPath() + "font/MateriaPro_Regular.ttf", captionFontSize);
-    }
-    else{
-        captionFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", captionFontSize);
-    }
-}
+//void CloudsVisualSystemRGBD::rebuildCaptionFont(){
+//    if(bUseOculusRift){
+//        captionFont.loadFont(GetCloudsDataPath() + "font/MateriaPro_Regular.ttf", captionFontSize);
+//    }
+//    else{
+//        captionFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", captionFontSize);
+//    }
+//}
 
 void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionType ){
+	//TODO: SAVE THESE VALUES TO getVisualSystemDataPath()/transitionTargets/
 	switch (transitionType) {
 		case CloudsVisualSystem::TWO_DIMENSIONAL:
 			transitionInStart.setPosition(-1.61592, -80.692, 36.2162);
@@ -313,6 +322,42 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guimap[meshGui->getName()] = questionGui;
 	
 	
+	//transitionEditorGui
+	transitionEditorGui = new ofxUISuperCanvas("TRANSITIONEDITOR", gui);
+	transitionEditorGui->copyCanvasStyle(gui);
+    transitionEditorGui->copyCanvasProperties(gui);
+    transitionEditorGui->setName("TransitionEditor");
+    transitionEditorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	transitionEditorGui->addToggle("placingTransitionNodes", &placingTransitionNodes);
+	transitionEditorGui->addToggle("drawTransitionNodes", &drawTransitionNodes);
+	
+	transitionEditorGui->addSpacer();
+	
+	transitionEditorGui->addToggle("lookThoughIN", &bLookThourghIn )->setColorBack(ofColor(0,255,255));
+	transitionEditorGui->addToggle("lookThoughOUT", &bLookThourghOut )->setColorBack(ofColor(255,255,0));
+	transitionEditorGui->addSpacer();
+	
+	transitionEditorGui->addToggle("saveTransition", &bSaveTransition);
+	transitionEditorGui->addSpacer();
+	
+	vector<string> transitionNames;
+	for(auto &cur_pair: transitionMap) { transitionNames.push_back((cur_pair.first)); }
+	
+	transitionEditorGui->addLabel("transitionTypes")->setColorFill(ofColor(100));
+	transitionEditorGui->addRadio("loadTransition", transitionNames);
+	
+	
+//	translatedHeadPosition
+	
+	
+	CloudsQuestion::addQuestionVariables( transitionEditorGui );
+	
+	guis.push_back(transitionEditorGui);
+	guimap[transitionEditorGui->getName()] = transitionEditorGui;
+	
+	ofAddListener(transitionEditorGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
+	
 //	connectorGui = new ofxUISuperCanvas("CONNECTORS", gui);
 //	connectorGui->copyCanvasStyle(gui);
 //	connectorGui->copyCanvasProperties(gui);
@@ -349,29 +394,156 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	if(drawParticulate){
 		
-		particulateController.birthPlace = translatedHeadPosition;
+//		particulateController.birthPlace = translatedHeadPosition;
 		
 		glDisable(GL_LIGHTING);
 		glDisable(GL_DEPTH_TEST);
-		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
-		particulateController.getPoints().color.a = pointColor.w;
-		
-		particulateController.update();
+//		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
+//		particulateController.getPoints().color.a = pointColor.w;
+//		
+//		particulateController.update();
 	}
 	
 	updateQuestions();
 	updateTransition();
     
-    cloudsCaption.update();
+//    cloudsCaption.update();
 	
-	if(currentCamera == &transitionCam){
-		transitionCamTargetNode->setPosition( transitionCam.getPosition() );
-		transitionCamTargetNode->setOrientation( transitionCam.getOrientationQuat() );
+	if( placingTransitionNodes )
+	{	
+		if(bLookThourghIn)
+		{
+			lookThroughTransitionIn();
+			bLookThourghIn = false;
+		}
+		else if(bLookThourghOut)
+		{
+			lookThroughTransitionOut();
+			bLookThourghOut = false;
+		}
+		
+		if(transitionCamTargetNode)
+		{
+			transitionCamTargetNode->setPosition( transitionCam.getPosition() );
+			transitionCamTargetNode->setOrientation( transitionCam.getOrientationQuat() );
+		}
+
 	}
 	else{
 		cloudsCamera.driftNoiseSpeed = caughtQuestion ? 0 : attenuatedCameraDrift;
 	}
+	
+	
+	if(bSaveTransition)
+	{
+		bSaveTransition = false;
+	
+		saveTransitionSettings( ofSystemTextBoxDialog("save transition", "transitionType") );
+	}
+}
 
+//save and load transitions
+//------------------------------------------------------------------------
+void CloudsVisualSystemRGBD::loadTransitionSettings(string filename)
+{	
+	transitionMap.clear();
+	
+	ofxXmlSettings *XML = new ofxXmlSettings();
+	XML->loadFile( GetCloudsDataPath() + "transitions/" + filename + ".xml" );
+	
+	int numTransitions = XML->getNumTags("TRANSITION");
+	for(int i = 0; i < numTransitions; i++)
+	{
+		XML->pushTag("TRANSITION", i);
+		string name = XML->getValue("Name", "NULL", 0);
+		
+		transitionMap[name].name = name;
+		
+		XML->pushTag("InStartPos");
+		transitionMap[name].inStartPos.set( XML->getValue("x", 0. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ) );
+		XML->popTag();
+		
+		XML->pushTag("InStartQuat");
+		transitionMap[name].inStartQuat.set( XML->getValue("x", 0. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ), XML->getValue("w", 0. ) );
+		XML->popTag();
+		
+		XML->pushTag("OutTargetPos");
+		transitionMap[name].inStartPos.set( XML->getValue("x", 0. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ) );
+		XML->popTag();
+		
+		XML->pushTag("OutTargetQuat");
+		transitionMap[name].inStartQuat.set( XML->getValue("x", 0. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ), XML->getValue("w", 0. ) );
+		XML->popTag();
+		
+		XML->popTag();
+	}
+	
+	delete XML;
+}
+
+void CloudsVisualSystemRGBD::saveTransitionSettings(string transitionName)
+{
+	//save positions relative to head position
+	transitionMap[transitionName].name = transitionName;
+	
+	transitionMap[transitionName].inStartPos = transitionInStart.getPosition() - translatedHeadPosition;
+	transitionMap[transitionName].inStartQuat = transitionInStart.getOrientationQuat();
+	
+	transitionMap[transitionName].outTargetPos = transitionOutTarget.getPosition() - translatedHeadPosition;
+	transitionMap[transitionName].outTargetQuat = transitionOutTarget.getOrientationQuat().asVec4();
+	
+	
+	//cout << "saving transitions settings " + transitionName << endl;
+	ofxXmlSettings *XML = new ofxXmlSettings();
+	
+	int transitionIndex = 0;
+	for(map<string, TransitionInfo>::iterator it=transitionMap.begin(); it != transitionMap.end(); it++)
+	{	
+		ofVec4f inQ = it->second.inStartQuat.asVec4();
+		ofVec4f outQ = it->second.outTargetQuat.asVec4();
+		
+		XML->addTag("TRANSITION");
+		XML->pushTag("TRANSITION", transitionIndex);
+		transitionIndex++;
+		
+		XML->setValue("Name", it->second.name );
+
+		XML->addTag("InStartPos");
+		XML->pushTag("InStartPos");
+		XML->setValue("x", it->second.inStartPos.x);
+		XML->setValue("y", it->second.inStartPos.y);
+		XML->setValue("z", it->second.inStartPos.z);
+		XML->popTag();
+
+		XML->addTag("InStartQuat");
+		XML->pushTag("InStartQuat");
+		XML->setValue("x", inQ.x);
+		XML->setValue("y", inQ.y);
+		XML->setValue("z", inQ.z);
+		XML->setValue("w", inQ.w);
+		XML->popTag();
+
+		XML->addTag("OutTargetPos");
+		XML->pushTag("OutTargetPos");
+		XML->setValue("x", it->second.outTargetPos.x);
+		XML->setValue("y", it->second.outTargetPos.y);
+		XML->setValue("z", it->second.outTargetPos.z);
+		XML->popTag();
+
+		XML->addTag("OutTargetQuat");
+		XML->pushTag("OutTargetQuat");
+		XML->setValue("x", outQ.x);
+		XML->setValue("y", outQ.y);
+		XML->setValue("z", outQ.z);
+		XML->setValue("w", outQ.w);
+		XML->popTag();
+		
+		XML->popTag();
+	}
+
+	XML->saveFile(GetCloudsDataPath() + "transitions/Transitions.xml" );
+	delete XML;
+	
 }
 
 //--------------------------------------------------------------
@@ -501,6 +673,21 @@ void CloudsVisualSystemRGBD::clearQuestions(){
 
 }
 
+//JG NEW TRANSITION STUBS
+void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType){
+	
+}
+void CloudsVisualSystemRGBD::startTransitionIn(RGBDTransitionType transitionType){
+	
+}
+void CloudsVisualSystemRGBD::updateTransition(float percentComplete){
+	
+}
+void CloudsVisualSystemRGBD::transtionFinished(){
+	
+}
+//JG END TRANSITION STUBES
+
 void CloudsVisualSystemRGBD::updateTransition(){
 	
 	if(transitioning){
@@ -509,7 +696,7 @@ void CloudsVisualSystemRGBD::updateTransition(){
 		float x = ofxTween::map(t, transitionStartTime, transitionEndTime, 0, 1, true, transitionEase );
 		
 		if(t >= transitionEndTime ){
-			cout <<"CloudsVisualSystemRGBD: transition ended "<< ofGetElapsedTimef() << endl << endl;
+			cout << "CloudsVisualSystemRGBD: transition ended " << ofGetElapsedTimef() << endl << endl;
 			transitioning = false;
 			cloudsCamera.targetNode = NULL;
 			cloudsCamera.startNode = NULL;
@@ -579,7 +766,7 @@ void CloudsVisualSystemRGBD::lookThroughTransitionIn(){
 	transitionCam.setPosition( transitionInStart.getPosition() );
 	transitionCam.setOrientation( transitionInStart.getOrientationQuat() );
 	
-	setCurrentCamera( transitionCam );
+//	setCurrentCamera( transitionCam );
 	
 }
 
@@ -590,7 +777,7 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOut(){
 	transitionCam.setPosition( transitionOutTarget.getPosition() );
 	transitionCam.setOrientation( transitionOutTarget.getOrientationQuat() );
 	
-	setCurrentCamera( transitionCam );
+//	setCurrentCamera( transitionCam );
 }
 
 //--------------------------------------------------------------
@@ -734,26 +921,26 @@ void CloudsVisualSystemRGBD::speakerChanged(){
 	//	this->quoteName = quoteName;
     
 	// Add an appearance for this speaker.
-    string key = speakerFirstName + " " + speakerLastName;
+//    string key = speakerFirstName + " " + speakerLastName;
+//    
+//    if (appearances.find(key) == appearances.end()) {
+//        appearances[key] = 1;
+//    }
+//    else {
+//        appearances[key]++;
+//    }
+//    
+//    cout << "CloudsVisualSystemRGBD::speakerChanged " << speakerFirstName << " " << speakerLastName << ": " << quoteName << " (" << appearances[key] << ")" << endl;
     
-    if (appearances.find(key) == appearances.end()) {
-        appearances[key] = 1;
-    }
-    else {
-        appearances[key]++;
-    }
-    
-    cout << "CloudsVisualSystemRGBD::speakerChanged " << speakerFirstName << " " << speakerLastName << ": " << quoteName << " (" << appearances[key] << ")" << endl;
-    
-    if (appearances[key] == 1) {
-        cloudsCaption.font = &captionFont;
-        cloudsCaption.caption = key;
-        cloudsCaption.isEnabled = true;
-        cloudsCaption.begin();
-    }
-    else {
-        cloudsCaption.isEnabled = false;
-    }
+//    if (appearances[key] == 1) {
+//        cloudsCaption.font = &captionFont;
+//        cloudsCaption.caption = key;
+//        cloudsCaption.isEnabled = true;
+//        cloudsCaption.begin();
+//    }
+//    else {
+//        cloudsCaption.isEnabled = false;
+//    }
 }
 
 void CloudsVisualSystemRGBD::selfDrawBackground(){
@@ -812,7 +999,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
 		
 			meshShader.setUniform1f("meshAlpha", meshAlpha);
-			meshShader.setUniform1f("triangleExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+			meshShader.setUniform1f("triangleExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() * visualSystemFadeValue);
 			meshShader.setUniform1f("meshRetractionFalloff",meshRetractionFalloff);
 			meshShader.setUniform1f("headMinRadius", meshFaceMinRadius);
 			meshShader.setUniform1f("headFalloff", meshFaceFalloff);
@@ -834,7 +1021,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			getRGBDVideoPlayer().flowPosition = lineFlowPosition * (linesFlowUp?-1:1);
 			getRGBDVideoPlayer().setupProjectionUniforms(lineShader);
 			
-			lineShader.setUniform1f("lineExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+			lineShader.setUniform1f("lineExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() * visualSystemFadeValue);
 			lineShader.setUniform1f("headMinRadius", meshFaceMinRadius);
 			lineShader.setUniform1f("headFalloff", meshFaceFalloff);
 			lineShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
@@ -870,7 +1057,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	if(drawParticulate){
 		glEnable(GL_DEPTH_TEST);
-		particulateController.draw();
+//		particulateController.draw();
 	}
 	
 	glPopAttrib();
@@ -1012,7 +1199,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 //	ofPopMatrix();
 	
-
+	//LARS TODO: add drawTransitionNodes to GUI
 	if(drawTransitionNodes){
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		ofPushStyle();
@@ -1067,7 +1254,7 @@ void CloudsVisualSystemRGBD::selfDrawOverlay() {
 	}
     
 	//This will be replaced with the HUD
-    cloudsCaption.drawOverlay();
+//    cloudsCaption.drawOverlay();
 
 	//test overlay
 //	ofSetColor(0,0,0,0);
@@ -1083,7 +1270,7 @@ void CloudsVisualSystemRGBD::selfBegin(){
 	
 	cloudsCamera.jumpToPosition();
     
-    cloudsCaption.begin();
+//    cloudsCaption.begin();
 }
 
 void CloudsVisualSystemRGBD::selfEnd(){
@@ -1103,7 +1290,8 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 		
 		loadShader();
 		
-		particulateController.reloadShaders();
+//		particulateController.reloadShaders();
+		
 //		CloudsQuestion::reloadShader();
 //		rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	}
@@ -1123,7 +1311,7 @@ void CloudsVisualSystemRGBD::selfKeyReleased(ofKeyEventArgs & args){
 		
 		printTransitionNodes();
 		
-		setCurrentCamera(cloudsCamera);
+//		setCurrentCamera(cloudsCamera);
 	}
 	
 
@@ -1159,7 +1347,27 @@ void CloudsVisualSystemRGBD::selfPresetLoaded( string presetName ){
 }
 
 //--------------------------------------------------------------
-void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e)
+{
+	string name = e.getName();
+	int kind = e.getKind();
+	
+	if(kind == OFX_UI_WIDGET_TOGGLE && e.getToggle()->getValue())
+	{
+		for(auto &it: transitionMap)
+		{
+			if(it.first == name)
+			{
+				transitionInStart.setPosition( it.second.inStartPos + translatedHeadPosition );
+				transitionInStart.setOrientation( it.second.inStartQuat );
+				
+				transitionOutTarget.setPosition( it.second.outTargetPos + translatedHeadPosition );
+				transitionOutTarget.setOrientation( it.second.outTargetQuat );
+			}
+		}
+	}
+	
+	
 	if(e.widget->getName() == "Line Spacing" || e.widget->getName() == "Line Granularity") {
 		refreshLines = true;
 	}

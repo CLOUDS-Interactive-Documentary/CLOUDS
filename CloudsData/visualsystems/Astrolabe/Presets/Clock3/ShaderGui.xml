@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>ShaderGui</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>544.000000000</XPosition>
-    <YPosition>460.000000000</YPosition>
+    <XPosition>425</XPosition>
+    <YPosition>1</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>

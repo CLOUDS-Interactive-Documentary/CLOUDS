@@ -184,6 +184,7 @@ void CloudsVisualSystemAutomata::selfUpdate()
             
             if (bDoInput) {
                 ofSetColor(255);
+//                ofCircle(currentInput.x, currentInput.y, radius);
                 ofCircle(GetCloudsInputX(), GetCloudsInputY(), radius);
             }
         }
@@ -269,18 +270,18 @@ void CloudsVisualSystemAutomata::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
 
-void CloudsVisualSystemAutomata::selfMouseDragged(ofMouseEventArgs& data){
+void CloudsVisualSystemAutomata::selfInteractionEnded(CloudsInteractionEventArgs& args){
 	
 }
 
-void CloudsVisualSystemAutomata::selfMouseMoved(ofMouseEventArgs& data){
+void CloudsVisualSystemAutomata::selfInteractionMoved(CloudsInteractionEventArgs& args){
+	currentInput = ofVec2f(args.position.x, args.position.y);
+}
+
+void CloudsVisualSystemAutomata::selfInteractionStarted(CloudsInteractionEventArgs& args){
 	
 }
 
-void CloudsVisualSystemAutomata::selfMousePressed(ofMouseEventArgs& data){
-	
-}
-
-void CloudsVisualSystemAutomata::selfMouseReleased(ofMouseEventArgs& data){
+void CloudsVisualSystemAutomata::selfInteractionDragged(CloudsInteractionEventArgs& args){
 	
 }

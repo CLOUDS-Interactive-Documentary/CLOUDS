@@ -16,50 +16,6 @@ bool dateSorter(Date const& lhs, Date const& rhs) {
 }
 
 void CloudsVisualSystemTwitter::selfSetDefaults(){
-    // fix default colors
-    //    nodeModifier.r = 1.0;
-    //    nodeModifier.g = 0.65;
-    //    nodeModifier.b = 0.54;
-    //    nodeModifier.a = 1.0;
-    //
-    //    nodeActiveModifier.r = 1.0;
-    //    nodeActiveModifier.g = 0.65;
-    //    nodeActiveModifier.b = 0.54;
-    //    nodeActiveModifier.a = 1.0;
-    //
-    //    nodeMidpointModifier.r = 0.0;
-    //    nodeMidpointModifier.g = 1.;
-    //    nodeMidpointModifier.b = 1.;
-    //    nodeMidpointModifier.a = 1.0;
-    //
-    //    nodeActiveMidpointModifier.r = 0.5f;
-    //    nodeActiveMidpointModifier.g = 0.65;
-    //    nodeActiveMidpointModifier.b = 0.54;
-    //    nodeActiveMidpointModifier.a = 1.0;
-    //
-    //    tweetModifier.r = 1.0;
-    //    tweetModifier.g = 0.65;
-    //    tweetModifier.b = 0.54;
-    //    tweetAlpha = 1.0;
-    //
-    //    textColorModifier.r = 0.0;
-    //    textColorModifier.g = 1.0;
-    //    textColorModifier.b = 1.0;
-    //    textColorModifier.a = 1.0;
-    
-    //    nodeColor.setHsb(nodeModifier.r, nodeModifier.g, nodeModifier.b,nodeModifier.a);
-    //    nodeActiveColor.setHsb(nodeActiveModifier.r, nodeActiveModifier.g, nodeActiveModifier.b,nodeActiveModifier.a);
-    //    nodeMidpointColor.setHsb(nodeMidpointColor.r, nodeMidpointColor.g, nodeMidpointColor.b,nodeMidpointColor.a);
-    //    nodeActiveMidpointColor.setHsb(nodeActiveMidpointColor.r, nodeActiveMidpointColor.g, nodeActiveMidpointColor.b,nodeMidpointColor.a);
-    //    textColor.setHsb(textColorModifier.r, textColorModifier.g, textColorModifier.b,textColorModifier.a);
-    
-    //    baseModifier.r = 0.62;
-    //    baseModifier.g = 0.46;
-    //    baseModifier.b = 0.90;
-    //    baseAlpha = 0.01;
-    //
-    //    baseColor  = ofFloatColor(0.0,0.0,1.0,0.1);
-    //    tweetColor = ofFloatColor(1.0,0.0,0.0,1.0);
     
     refreshRate = 1000;
     edgeDecayRate = 0.8;
@@ -80,15 +36,6 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     minTimeGapForNextTweet =3;
     randomRangeMin = 1;
     randomRangeMax = 10;
-    //    tweetModifier.r = 1.0;
-    //    tweetModifier.g = 0.65;
-    //    tweetModifier.b = 0.54;
-    //    tweetAlpha = 1.0;
-    //
-    //    baseModifier.r = 0.62;
-    //    baseModifier.g = 0.46;
-    //    baseModifier.b = 0.90;
-    //    baseAlpha = 0.01;
     
     xScale = 100;
     yScale = 100;
@@ -99,7 +46,7 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     stringWidth = 10;
     numberOfTweets = 10;
     avatarSize = 10;
-    tweetFeedRect = ofRectangle (0, 0,  ofGetWidth()/2, ofGetHeight());
+    tweetFeedRect = ofRectangle (0, 0,  getCanvasWidth()/2, getCanvasHeight());
     font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
     tweetFont.loadFont(getVisualSystemDataPath() + "fonts/Helvetica.ttf",20);
     tweetFontSmall.loadFont(getVisualSystemDataPath() + "fonts/Helvetica.ttf",8);
@@ -112,8 +59,6 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     tweetDeckHeight = tweetDeckMenu.height;
     tweetDeckWidth = tweetDeckMenu.width;
     
-//    tweetFont.setAlignment(FTGL_ALIGN_RIGHT);
-
     ofEnableSmoothing();
     ofEnableAlphaBlending();
     animationLerpRate = 0.02;
@@ -123,23 +68,23 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
 void CloudsVisualSystemTwitter::selfSetup()
 {
     /*  Use this to create new network for graphinsight
-
+     
      //Minimum num of users to add to tweeter links.
      minUserMentions = 0;
-
+     
      createNewGraph("twitterNewData0Men.net","tweets_");
      cout<<"created new network"<<endl;
      while(1);
+     
      */
+    
     initSystem(getVisualSystemDataPath() +"graphs/NotSimple_Twitter4Men_new.net");
     reloadShaders();
-    
 }
 
 void CloudsVisualSystemTwitter::selfBegin()
 {
     updateLabelWithCurrentMeshName(currentMeshFileName);
- 
 }
 
 void CloudsVisualSystemTwitter::addColorToGui(ofxUISuperCanvas* gui,string prefix,ofFloatColor& col, bool doAlpha){
@@ -196,14 +141,15 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     textGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     textGui->addToggle("RENDER TEXT", &bRenderText);
     textGui->addSpacer();
-    textGui->addMinimalSlider("TEXT HUE", 0.0, 1, &textColorModifier.r);
-    textGui->addMinimalSlider("TEXT SAT", 0.0, 1, &textColorModifier.g);
-    textGui->addMinimalSlider("TEXT BRI", 0.0, 1, &textColorModifier.b);
-    textGui->addMinimalSlider("TEXT ALPHA", 0.0, 1, &textColor.a);
+    addColorToGui(textGui,"TEXT ",textColorHSV,true);
+    addColorToGui(textGui,"TEXT ",tweetDeckColorHSV,true);
+    //    textGui->addMinimalSlider("TEXT HUE", 0.0, 1, &textColorModifier.r);
+    //    textGui->addMinimalSlider("TEXT SAT", 0.0, 1, &textColorModifier.g);
+    //    textGui->addMinimalSlider("TEXT BRI", 0.0, 1, &textColorModifier.b);
+    //    textGui->addMinimalSlider("TEXT ALPHA", 0.0, 1, &textColor.a);
     textGui->addSpacer();
     textGui->addMinimalSlider("STRING WIDTH", 1, 2000, &stringWidth);
     textGui->addMinimalSlider("SET SIZE", 0.1, 100, &fontSize);
-
     
     
     ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
@@ -217,8 +163,8 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     twitterFeedGui->addToggle("RENDER FEEDS", &bRenderFeed);
     twitterFeedGui->addSpacer();
     twitterFeedGui->addLabel("FEED RECT");
-    twitterFeedGui->addMinimalSlider("FEED X", 1, ofGetWidth(), &tweetFeedRect.x);
-    twitterFeedGui->addMinimalSlider("FEED Y", 1, ofGetHeight(), &tweetFeedRect.y);
+    twitterFeedGui->addMinimalSlider("FEED X", 1, getCanvasWidth(), &tweetFeedRect.x);
+    twitterFeedGui->addMinimalSlider("FEED Y", 1, getCanvasHeight(), &tweetFeedRect.y);
     twitterFeedGui->addMinimalSlider("HEIGHT OFFSET", 1, 500, &heightOffset);
     twitterFeedGui->addMinimalSlider("AVATAR TWEET GAP", 1, 100, &avatarTweetGap);
     twitterFeedGui->addMinimalSlider("TEXT HEIGHT OFFSET", 1, 100, &textHeightOffset);
@@ -254,6 +200,10 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
     
     ofDirectory dir(getVisualSystemDataPath(true)+folderName+"/");
     dir.listDir();
+	
+	ofVec2f curActivityMapCoord(0,0);
+	int activityMapCoordWidth = 100;
+	
     if(dir.exists()){
         int size = dir.size();
         vector<ofFile>files= dir.getFiles();
@@ -333,7 +283,12 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
                         userTweets.push_back(t);
                     }
                     cur.tweets= userTweets;
-                    
+                    cur.activityMapCoord = curActivityMapCoord;
+					curActivityMapCoord.x++;
+					if(curActivityMapCoord.x >= activityMapCoordWidth){
+						curActivityMapCoord.x = 0;
+						curActivityMapCoord.y++;
+					}
                     tweeters.push_back(cur);
                 } else {
                     cout  << "Failed to parse JSON" << endl;
@@ -341,6 +296,13 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
             }
         }
     }
+	
+	activityMap.allocate(activityMapCoordWidth, curActivityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
+//	activityMapDampened.allocate(activityMapCoordWidth, curActivityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
+//	activityMap.allocate(activityMapCoordWidth, curActivityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
+//	activityMapDampened.getPixelsRef().set(0);
+//	activityMap.set(0);
+	
     addUsersFromMentions();
 }
 
@@ -359,37 +321,29 @@ void CloudsVisualSystemTwitter::loadAvatars(){
             vector<string> handle = ofSplitString(files[i].getFileName(),".");
             if (handle[0] == "default") {
                 ofImage img;
-                if(img.loadImage(filePath)){
-                    
-                }
-                else{
-                    cout<<filePath<<" not loaded "<<endl;
-                }
+                
+                if ( img.loadImage(filePath) ){}
+                else { cout<<filePath<<" not loaded "<<endl; }
+                
                 avatars["default"] =img;
                 cout<<"Adding default avatar "<< handle[0]<<endl;
             }
+            
             for (int j =0; j<tweeters.size(); j++) {
+                
                 if(tweeters[j].name == "@" +handle[0]){
-                    //                    cout<<"adding avatar for "<<handle[0]<<endl;
                     ofImage img;
-                    if(img.loadImage(filePath)){
-                        
+                    if( img.loadImage(filePath) ){
                     }
                     else{
                         cout<<filePath<<" not loaded "<<endl;
                     }
                     avatars[tweeters[j].name] =img;
                     break;
-                    
                 }
-                
-                
-                
                 if( j == tweeters.size() - 1){
                     cout<<"Avatar not found for "<<handle[0]<<endl;
                 }
-                
-                
             }
         }
     }
@@ -502,11 +456,14 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
         
 		activeTweeters.push_back(&tweeters[i]);
 		vector<Tweet>&  tweetsOnDate = tweeters[i].getTweetsByDate(currentDate);
+		int activityMapIndex = tweeters[i].activityMapCoord.y * activityMap.getWidth() + tweeters[i].activityMapCoord.x;
+		activityMap.getPixels()[activityMapIndex] = 1.0;
 		
 		//pop the active tweeter node
 		nodeMesh.getNormals()[tweeters[i].nodeVertexIndex].y = 1.0;
         
 		for(int k = 0; k < tweetsOnDate.size(); k ++){
+            
 			activeTweets.push_back(&tweetsOnDate[k].tweet);
             activeTweetPairs.push_back(make_pair(&tweeters[i].name, &tweetsOnDate[k].tweet));
             
@@ -577,23 +534,27 @@ void CloudsVisualSystemTwitter::loadMesh(){
             
 			edgeMesh.addVertex(tweeters[j].position);
 			edgeMesh.addNormal(ofVec3f(1,0,0));
-			tweeters[j].edgeVertexIndex = currentIndex;
+			edgeMesh.addTexCoord(ofVec2f(tweeters[j].activityMapCoord.x,tweeters[j].activityMapCoord.y));
+//			tweeters[j].edgeVertexIndex = currentIndex;
 			currentIndex++;
 			
 			//adding midpoint
 			ofVec3f midpoint = tweeters[j].position.getInterpolated(t.position, .5);
 			edgeMesh.addVertex(midpoint);
 			edgeMesh.addNormal(ofVec3f(0,0,0));
+			edgeMesh.addTexCoord(ofVec2f(tweeters[j].activityMapCoord.x,tweeters[j].activityMapCoord.y));
 			currentIndex++;
 			
 			//adding midpoint
 			edgeMesh.addVertex(midpoint);
 			edgeMesh.addNormal(ofVec3f(0,0,0));
+			edgeMesh.addTexCoord(ofVec2f(t.activityMapCoord.x,t.activityMapCoord.y));
 			currentIndex++;
 			
 			edgeMesh.addVertex(t.position);
 			edgeMesh.addNormal(ofVec3f(1,0,0));
-			t.edgeVertexIndex = currentIndex;
+			edgeMesh.addTexCoord(ofVec2f(t.activityMapCoord.x,t.activityMapCoord.y));
+//			t.edgeVertexIndex = currentIndex;
 			
 			links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
 			lineIndexPairs[make_pair(tweeters[j].name, t.name) ] = make_pair(currentIndex-3, currentIndex);
@@ -760,7 +721,7 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
     
     font.setSize(fontSize);
     font.setLineLength(stringWidth);
- 
+    
     tweetFont.setSize(tweetFontSize);
     tweetFont.setLineLength(tweetLineLength);
     
@@ -790,7 +751,6 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     }
     else if (strs[strs.size()-1] =="new.net"){
         cout<<"New data, using tweets clean folder"<<endl;
-        //loadJSONData("tweetsNew");
         loadJSONData("tweetsClean");
         
     }
@@ -860,7 +820,6 @@ void CloudsVisualSystemTwitter::selfPresetLoaded(string presetPath)
     ofxUILabel* l =(ofxUILabel*)clusterGui->getWidget("MESH FILE");
     currentMeshFileName = l->getLabel();
     
-    
     string presetMeshPath = getVisualSystemDataPath() + "graphs/" + currentMeshFileName;
     if(presetMeshPath == currentMeshFilePath){
         
@@ -895,13 +854,10 @@ void CloudsVisualSystemTwitter::selfUpdate()
     if(bRenderFeed){
         if(ofGetElapsedTimef() > timeTillNextUpdate){
             timeTillNextUpdate = ofGetElapsedTimef()+ minTimeGapForNextTweet + ofRandom(randomRangeMin, randomRangeMax);
-            //        cout<<"updated selection at time : "<<ofGetElapsedTimef() <<" next update at "<<timeTillNextUpdate<< endl;
             updateCurrentSelection(currentDateIndex,false);
         }
     }
-
     
-	
     if(ofGetFrameNum() % refreshRate < 1 && bAnimate){
         
         if (currentDateIndex >= dateIndexMax){
@@ -915,6 +871,10 @@ void CloudsVisualSystemTwitter::selfUpdate()
         updateMesh();
     }
     
+	for(int i = 0; i < activityMap.getWidth()*activityMap.getHeight(); i++){
+		activityMap.getPixels()[i] *= .9;
+	}
+	activityMap.update();
 }
 
 ofFloatColor CloudsVisualSystemTwitter::getRGBfromHSV(ofFloatColor hsv){
@@ -988,6 +948,7 @@ void CloudsVisualSystemTwitter::selfDraw()
                                 lineEdgePop.a);
 		lineShader.setUniform1f("edgeInterpolateExponent",
 								edgeInterpolateExponent);
+		lineShader.setUniformTexture("activityMap", activityMap, 1);
 		
         edgeMesh.draw();
 		lineShader.end();
@@ -1008,6 +969,7 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
     if(firstTime) {
         currentSelection.clear();
         while(currentSelection.size() < numberOfTweets){
+            
             for(int i=0; i< numberOfTweets; i++){
                 bool alreadySelected = false;
                 string currentDate = getDateAsString(dateIndex[index]);
@@ -1037,15 +999,16 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
                         
                     }
                     if(currentSelection.size() >=numberOfTweets){
-                        break;  
+                        break;
                     }
                     
                 }
             }
             if(index == 0){
                 index = dateIndex.size() -1;
-            }{
-                index--;    
+            }
+            else{
+                index--;
             }
             cout<<"current size : "<<currentSelection.size()<<" required size : "<<numberOfTweets<<endl;
         }
@@ -1077,40 +1040,50 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
                 currentSelection.insert(currentSelection.begin(), make_pair(&tweeters[i].name, &tweetsOnDate[(int)ofRandom(0,tweetsOnDate.size())].tweet));
                 break;
             }
-
+            
         }
     }
-
+    
     animationLerpAmt = 0;
     bAnimateFeed = true;
-
+    
 }
 
 void CloudsVisualSystemTwitter::drawFeed(){
-    
+    ofFloatColor col = getRGBfromHSV(tweetDeckColorHSV);
     if (currentSelection.size() > 0) {
         
         if(bAnimateFeed){
             for(int i=0;i<currentSelection.size(); i++ ){
                 ofPushStyle();
+                float textX = getCanvasWidth() - tweetFeedRect.x;
+                float avatarX = textX -avatarTweetGap;
+                float menuX = textX + tweetFont.getLineLength() - tweetDeckMenu.width + tweetDeckWidthOffset;
+                float lineX1 = avatarX -3;
+                float lineX2 = textX + tweetFont.getLineLength() ;
                 
-                float avatarX = tweetFeedRect.x -avatarTweetGap;
-                float textX = tweetFeedRect.x;
-                
+                // Only nede to lerp y values
                 float sourceTextY = tweetFeedRect.y + +(i-1)*heightOffset +textHeightOffset;
-                float sourceAvatarY = tweetFeedRect.y +(i-1)*heightOffset;
-                
                 float targetTextY = tweetFeedRect.y + +i*heightOffset +textHeightOffset;
+
+                float sourceAvatarY = tweetFeedRect.y +(i-1)*heightOffset;
                 float targetAvatarY = tweetFeedRect.y +i*heightOffset;
+                                
+                float sourceMenuY = tweetFeedRect.y +(i +1)*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset;
+                float targetMenuY = tweetFeedRect.y +(i +2)*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset;
                 
+                
+                //lerp them lines and text
                 float curTextY = ofLerp(sourceTextY, targetTextY, animationLerpAmt);
                 float curAvatarY = ofLerp(sourceAvatarY, targetAvatarY, animationLerpAmt);
+                float curMenuY = ofLerp(sourceMenuY, targetMenuY, animationLerpAmt);
+                float curLineY = curMenuY - tweetDeckLineOffset;
                 
-                textColor.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1, .1, 1.),2);
-                ofSetColor(textColor);
+                col.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1, .1, 1.),2);
+                ofSetColor(col);
                 
                 //50 is a magic number right now using this to not draw tweets that intersect with the edge of the screen
-                if(tweetFeedRect.y + i*heightOffset + textHeightOffset + 50 < ofGetHeight()){
+                if(tweetFeedRect.y + i*heightOffset + textHeightOffset + 50 < getCanvasHeight()){
                     
                     if (avatars.find(*currentSelection[i].first)== avatars.end() ){
                         cout<<"Cant find avatar for : "<<*currentSelection[i].first<< "  using default"<<endl;
@@ -1122,7 +1095,9 @@ void CloudsVisualSystemTwitter::drawFeed(){
                     
                     tweetFont.drawString(ofToString(*currentSelection[i].first), textX, curTextY );
                     tweetFont.drawString(ofToString(*currentSelection[i].second), textX, curTextY + 15 );
-
+                    tweetDeckMenu.draw(menuX,curMenuY, tweetDeckWidth, tweetDeckHeight);
+                    ofLine( lineX1 ,curLineY,lineX2 , curLineY);
+                    
                 }
                 
                 ofPopStyle();
@@ -1135,41 +1110,32 @@ void CloudsVisualSystemTwitter::drawFeed(){
             else{
                 animationLerpAmt  += animationLerpRate;
             }
-
+            
         }
         else{
             for(int i=0;i<currentSelection.size(); i++ ){
                 ofPushStyle();
                 
-                textColor.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1, .1, 1.),2);
+                col.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1, .1, 1.),2);
                 
-
                 //SM: Local variables for drawings. Apologies to anyone who sees this that isnt me.
-                float avatarX = tweetFeedRect.x -avatarTweetGap;
-                float textX = tweetFeedRect.x;
-                float twitterHandleY = tweetFeedRect.y +i*heightOffset +textHeightOffset;
-
-                //TODO: Add the tweet y offset to the GUI
-                float tweetY = tweetFeedRect.y +i*heightOffset +textHeightOffset + 15;
-                
-                float menuX = tweetFeedRect.x + tweetFont.getLineLength() - tweetDeckMenu.width + tweetDeckWidthOffset;
-                float menuY = tweetFeedRect.y +(i +1)*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset;
-                
+                float textX = getCanvasWidth() - tweetFeedRect.x;
+                float avatarX = textX -avatarTweetGap;
+                float menuX = textX + tweetFont.getLineLength() - tweetDeckMenu.width + tweetDeckWidthOffset;
                 float lineX1 = avatarX -3;
-                float lineY1 = menuY - tweetDeckLineOffset;
-                float lineX2 = tweetFeedRect.x + tweetFont.getLineLength();
-                float lineY2 =  menuY - tweetDeckLineOffset;
-
-                //TODO: Add this with the params
-//                ofSetColor(ofFloatColor(0.2,0.2,0.2,textColor.a - 0.1));
-//                ofFill();
-//                ofRect(tweetFeedRect);
+                float lineX2 = textX + tweetFont.getLineLength() ;
                 
-                ofNoFill();
-                ofSetColor(textColor);
+                
+                float curYpos = tweetFeedRect.y +i*heightOffset + textHeightOffset;
+                float twitterHandleY =  curYpos ;
+                float tweetY = curYpos + 15;
+                float menuY = curYpos + heightOffset  - tweetDeckMenu.height + tweetDeckHeightOffset;
+                float lineY = curYpos + heightOffset - tweetDeckLineOffset;
+
+                ofSetColor(col);
                 
                 //50 is a magic number right now using this to not draw tweets that intersect with the edge of the screen
-                if(tweetFeedRect.y + i*heightOffset + textHeightOffset + 50 < ofGetHeight()){
+                if(tweetFeedRect.y + i*heightOffset + textHeightOffset + 50 < getCanvasHeight()){
                     
                     if (avatars.find(*currentSelection[i].first)== avatars.end() ){
                         cout<<"Cant find avatar for : "<<*currentSelection[i].first<< "  using default"<<endl;
@@ -1181,14 +1147,13 @@ void CloudsVisualSystemTwitter::drawFeed(){
                     
                     twitterHandleFont.drawString(ofToString(*currentSelection[i].first), textX, twitterHandleY);
                     tweetFont.drawString(ofToString(*currentSelection[i].second), textX, tweetY);
-                    
 
-                    ofSetColor(ofFloatColor(0.5,0.5,0.5,textColor.a-0.1));
                     tweetDeckMenu.draw(menuX,menuY, tweetDeckWidth, tweetDeckHeight);
-                    ofLine( lineX1 ,lineY1,lineX2 , lineY2);
-
+                    ofLine( lineX1 ,lineY,lineX2 , lineY);
                 }
                 
+
+
                 ofPopStyle();
                 
             }
@@ -1208,6 +1173,18 @@ void CloudsVisualSystemTwitter::selfDrawDebug()
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemTwitter::selfDrawBackground()
 {
+//    ofFloatColor  col = getRGBfromHSV(textColorHSV);
+//    ofPushMatrix();
+//    ofxBillboardBeginSphericalCheat(ofVec3f(0,0,0));
+//    ofPushStyle();
+//    ofSetColor(col);
+////    ofTranslate(100, -100);
+////    ofScale(0.01,-0.01,0.01);
+//    font.drawString(getDateAsString(dateIndex[currentDateIndex]), 0, 0);
+//    ofPopStyle();
+//    ofxBillboardEnd();
+//    ofPopMatrix();
+    
     
     if(bRenderFeed){
         ofPushStyle();
@@ -1215,24 +1192,12 @@ void CloudsVisualSystemTwitter::selfDrawBackground()
         drawFeed();
         ofPopStyle();
     }
-    
-    ofPushStyle();
-    ofxBillboardBeginSphericalCheat(ofVec3f(100,100,0));
-//    ofScale(0.01,-0.01,0.01);
-    ofSetColor(128,255);
-    ofTranslate(100, 100,0);
-    tweetFont.drawString("TESTING", 0, 0);
-    ofxBillboardEnd();
-    ofPopStyle();
-
-    
 }
 
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemTwitter::selfEnd()
 {
-    
     
 }
 // this is called when you should clear all the memory and delet anything you made in setup
@@ -1252,7 +1217,6 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
 	if (args.key == 'R'){
 		reloadShaders();
     }
-    
     //set in and out points for date range
     if(args.key == 'i'){
         dateIndexMin = currentDateIndex;
@@ -1270,17 +1234,18 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
 
 void CloudsVisualSystemTwitter::drawText2D(string text, ofVec2f pos){
     
+    ofFloatColor  col = getRGBfromHSV(textColorHSV);
     ofPushStyle();
-    ofSetColor(textColor);
+    ofSetColor(col);
     font.drawString(ofToUpper(text),pos.x,pos.y);
     ofPopStyle();
 }
 
 void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
-	
+    ofFloatColor  col = getRGBfromHSV(textColorHSV);
     ofxBillboardBeginSphericalCheat(pos);
     ofPushStyle();
-    ofSetColor(textColor);
+    ofSetColor(col);
     ofScale(0.01,-0.01,0.01);
     ofTranslate(pos.x,pos.y,pos.z);
     font.drawString(ofToUpper(text),0,0);

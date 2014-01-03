@@ -11,9 +11,9 @@ void testApp::setup(){
 	ofBackground(0,0,0);
 //	currentAct = NULL;
 //	rebuildAct = false;
-//	
-//	parser.loadFromFiles();
-//	
+
+	parser.loadFromFiles();
+	
 //	visualSystems.loadPresets();
 //	
 //	storyEngine.parser = &parser;
@@ -126,9 +126,46 @@ void testApp::guiEvent(ofxUIEventArgs &e)
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
     
+	if(key == 'C'){
+		hud.respondToClip( parser.getRandomClip() );
+	}
+	
+	if(key == 'E'){
+		vector<int> projectExampleIndecs;
+		for(int i = 0; i < parser.getAllClips().size(); i++){
+			if(parser.getAllClips()[i].hasProjectExample){
+				projectExampleIndecs.push_back(i);
+			}
+		}
+		
+		if(projectExampleIndecs.size() > 0){
+			int exampleIndex = projectExampleIndecs[ ofRandom(projectExampleIndecs.size()) ];
+			hud.respondToClip( parser.getAllClips()[exampleIndex] );
+			cout << "SENT CLIP " << parser.getAllClips()[exampleIndex].getLinkName() << " WITH EXAMPLE " << parser.getAllClips()[exampleIndex].projectExampleTitle << endl;
+		}
+	}
+	
 	if(key == ' '){
+		hud.animateOn(CLOUDS_HUD_FULL);
+	}
+    
+    if(key == '1'){
+		hud.animateOn(CLOUDS_HUD_LOWER_THIRD);
+	}
+    
+    if(key == '2'){
 		hud.animateOn(CLOUDS_HUD_QUESTION);
 	}
+    
+    if(key == '3'){
+		hud.animateOn(CLOUDS_HUD_MAP);
+	}
+    
+    if(key == '4'){
+		hud.animateOn(CLOUDS_HUD_PROJECT_EXAMPLE);
+	}
+    
+
 	
     if(key == 'h'){
 		hud.toggleGuis();

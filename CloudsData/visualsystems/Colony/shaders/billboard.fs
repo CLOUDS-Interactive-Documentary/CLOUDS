@@ -1,6 +1,10 @@
+#version 120
+#define EPSILON 0.01;
 uniform sampler2D tex;
 uniform float kernel_maxValue;
 varying float size;
+uniform vec3 light;
+
 
 float rand(vec2 co){
     return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453);
@@ -19,10 +23,21 @@ float noise2f( in vec2 p ){
     return res * res;
 }
 
+float getLight(){
+    vec2 direction = gl_TexCoord[0].xy;// - vec2(.5);
+    float l = length(direction);
+    //TODO: Decide about brightness of light being emitted back from no lighitng
+    float reflection = abs(dot(normalize(direction), normalize(light.xy)));
+    //Min value defined here
+    return mix(0.25, reflection, smoothstep(0,0.6,l));
+}
+
 
 void main (void) {
     vec4 c = texture2D(tex, gl_TexCoord[0].xy);
-    c.g += 0.3 * clamp(pow(c.g + 1., size * 0.05) - 1., 0., 1.) * (0.9 + 0.2 * rand(0.0001 * size * gl_TexCoord[0].xy));
-	gl_FragColor = c * kernel_maxValue; //*gl_Color
+  // c.r *= (noise2f(0.01 * size * gl_TexCoord[0].xy));
+    c.r = getLight();
+    c.a = sqrt(c.b);
+	gl_FragColor = c * kernel_maxValue;
     
 }

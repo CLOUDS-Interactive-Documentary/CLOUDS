@@ -7,5 +7,5 @@
 }
 
 @property (assign) IBOutlet NSWindow *window;
-- (IBAction)addIntervention:(id)sender;
+//- (IBAction)addIntervention:(id)sender;
 @end

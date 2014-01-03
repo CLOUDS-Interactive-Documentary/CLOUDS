@@ -80,6 +80,7 @@ class CloudsStoryEngine {
 					   string topic,string& log,
 					   int currentRun,
 					   bool visualSystemRunning,
+					   bool visualSystemHasSound,
 					   bool isPresetIndefinite,
 					   int moreManThanWomen,
 					   int timesOnCurrentTopic,

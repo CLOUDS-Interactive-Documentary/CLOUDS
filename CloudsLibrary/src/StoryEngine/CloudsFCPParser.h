@@ -35,20 +35,19 @@ class CloudsFCPParser {
 
 #pragma mark Links
 	void parseVOClips();
+    void parseSpeakersVolume();
     void parseLinks(string linkFile);
-//    void parseClusterMap(string mapFile); //SVG
 	void parseClusterNetwork(string fileName);
 	void parseProjectExamples(string filename);
 	vector<CloudsProjectExample>& getProjectExamples();
 	CloudsProjectExample& getProjectExampleWithTitle(string title);
 	
 	void getOverlappingClipIDs();
-	//TODO: cache this and don't call it every start up	
     void autolinkSequentialClips();
     
     map<string,string> cloudsClipToFileID;
-    map<string, vector<CloudsClip> > fileIDtoCloudsClips;
-    map<string, vector<string> > overlappingClipsMap;
+    map<string,vector<CloudsClip> > fileIDtoCloudsClips;
+    map<string,vector<string> > overlappingClipsMap;
     
 	vector<CloudsLink>& getLinksForClip(CloudsClip& clip);
     vector<CloudsLink>& getLinksForClip(string clipName);
@@ -58,7 +57,9 @@ class CloudsFCPParser {
 	void addLink(string sourceName, string targetName);
 	void addLink(CloudsClip& source, CloudsClip& target);
     void addLink(CloudsLink& link);
-	
+	void setSpeakerVolume(string speaker, float vol);
+    float getSpeakerVolume(string speakerFullName);
+    
     void removeLink(string linkName, int linkIndex);
 	void removeLink(string linkName, string targetName);
 	void saveLinks(string linkFile);
@@ -137,8 +138,11 @@ class CloudsFCPParser {
     bool operator()(const string& a, const string& b);
     vector<string>& getContentKeywords();
 	vector<string>& getKeywordFamily(string keyword);
-    
+      ofVec2f getKeywordCentroid(string keyword);
 	
+    void saveInterventions(string interventionsFile);
+	void saveSpeakersVolume(string speakerVolFile);
+    
 #pragma mark key themes
 	string closestKeyThemeToTag(string searchTag);
 	
@@ -147,7 +151,7 @@ class CloudsFCPParser {
     float getCohesionIndexForKeyword(string keyword);
     float getDistanceFromAdjacentKeywords(string keyword1, string keyword2);
     
-    void saveClusterMap(map<string, ofVec2f> centroidMap);
+//    void saveClusterMap(map<string, ofVec2f> centroidMap);
   protected:
     
     void reciprocateSuppressions(CloudsClip& clip );
@@ -187,6 +191,7 @@ class CloudsFCPParser {
 	map<string, vector<CloudsLink> > suppressedConnections;
 	map<string, vector<string> > sourceSupression;
     map<string, string> clipInterventions;
+    map<string, float> speakerVolumes;
     
 	//PROJECT EXAMPLES
 	vector<CloudsProjectExample> projectExamples;
@@ -200,12 +205,11 @@ class CloudsFCPParser {
     map<string, float> keywordCohesionMap;
     void populateKeywordCentroids();
     void calculateCohesionMedianForKeywords();
-    ofVec2f getKeywordCentroid(string keyword);
     int getCentroidMapIndex(string keyword);
 	void calculateKeywordAdjascency();
 	void calculateKeywordFamilies();
-    void saveInterventions(string interventionsFile);
-	
+
+    
 	CloudsProjectExample dummyProjectExample;
     CloudsClip dummyClip; // for failed reference returns
 	float lastBackupTime;

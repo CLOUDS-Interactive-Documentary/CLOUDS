@@ -1,0 +1,57 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Rings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>1</YPosition>
+</Canvas>
+<Widget>
+    <Kind>44</Kind>
+    <Name>count</Name>
+    <Value>30</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>innerRadius</Name>
+    <Value>3.70887</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>width</Name>
+    <Value>19.7125</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>thickness</Name>
+    <Value>1.28951</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>lowRadians</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>hiRadians</Name>
+    <Value>6.28319</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Spacing</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>useSpheres</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numSpheresPerArc</Name>
+    <Value>7</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>sphereScale</Name>
+    <Value>2.44089</Value>
+</Widget>

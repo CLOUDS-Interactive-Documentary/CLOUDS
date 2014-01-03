@@ -6,6 +6,12 @@
 #include "ofxOcean.h"
 #include "ofxOceanRenderer.h"
 #include "ofxOceanCamera.h"
+#include "CloudsGlobal.h"
+#include "CloudsAudioEvents.h"
+#include "ofxTonic.h"
+
+using namespace Tonic;
+
 
 class CloudsVisualSystemOcean : public CloudsVisualSystem {
   public:
@@ -56,7 +62,7 @@ class CloudsVisualSystemOcean : public CloudsVisualSystem {
 	
 	ofBlendMode blendMode;
 	
-	void reloadShader();
+	bool needsRegenerate;
 	bool useOceanCam;
 	
 	bool drawPoints;
@@ -92,5 +98,14 @@ class CloudsVisualSystemOcean : public CloudsVisualSystem {
 	float maxLookUpRot;
 	float maxLookDownRot;
 	
-
+	// Sound
+    ofxUISuperCanvas* soundGui;
+    string soundFiles[2] = {
+        "Vocal_harmonic_high_shorter.aif",
+        "vocal_harmony_bass.aif"};
+    bool playSample[2];
+    ControlTrigger soundTriggers[2];
+    ofxTonicSynth synth;
+    Generator buildSynth();
+	void audioRequested(ofAudioEventArgs& args);
 };

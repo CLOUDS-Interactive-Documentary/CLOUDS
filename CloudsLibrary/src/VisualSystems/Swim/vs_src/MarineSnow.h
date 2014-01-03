@@ -45,6 +45,12 @@ namespace itg
         void generate();
         
         // gui
+        float& getSaturationMinRef() { return saturationMin; }
+        float& getSaturationMaxRef() { return saturationMax; }
+        
+        float& getHueMinRef() { return hueMin; }
+        float& getHueMaxRef() { return hueMax; }
+        
         float& getAlphaMinRef() { return alphaMin; }
         float& getAlphaMaxRef() { return alphaMax; }
         
@@ -60,10 +66,13 @@ namespace itg
         int& getNumParticlesRef() { return numParticles; }
         
     private:
+        float saturationMin, saturationMax;
+        float hueMin, hueMax;
         float fogStart, fogEnd;
         float innerFogStart, innerFogEnd;
         float sizeMin, sizeMax;
         float alphaMin, alphaMax;
+        float yMin, yMax;
         int numParticles;
         ofImage tex;
         ofVboMesh mesh;

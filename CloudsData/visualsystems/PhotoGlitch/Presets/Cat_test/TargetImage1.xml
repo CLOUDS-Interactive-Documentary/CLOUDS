@@ -1,13 +1,18 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>TargetImage1</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>598.000000000</YPosition>
+    <YPosition>24.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>START AT</Name>
     <Value>1</Value>
 </Widget>
 <Widget>

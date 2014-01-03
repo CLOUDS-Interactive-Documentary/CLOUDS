@@ -109,9 +109,6 @@ class CloudsVisualSystemFlying : public CloudsVisualSystem
 
 	//
 	ofCamera& getCameraRef(){
-		if(videoLoaded){
-			return cloudsCamera;
-		}
 		return CloudsVisualSystem::getCameraRef();
 	}
 
@@ -122,11 +119,14 @@ protected:
     
     ofxPostProcessing post;
     
+    bool regenerate;
     bool cameraControl;
     float fogStart, fogEnd;
     
     // cam
-    float xRot, yRot, zSpeed;
+    //float xRot, yRot, zSpeed;
+    float camSpeed;
+    ofVec2f currentLookAngle;
     float camAvoidDist;
     
     // plants
@@ -152,7 +152,7 @@ protected:
     float xStep, zStep;
     ofVec3f floorLookAt;
     
-	ofxUISuperCanvas* customGui;
+	/*ofxUISuperCanvas* customGui;
 	bool customToggle;
 	float customFloat1;
 	float customFloat2;
@@ -160,7 +160,7 @@ protected:
 	bool videoLoaded;
 	ofImage someImage;
 	ofShader pointcloudShader;
-	ofVboMesh simplePointcloud;
+	ofVboMesh simplePointcloud;*/
     
 	// Sound
     string soundFiles[3] = {"SriLankaForest.aif",

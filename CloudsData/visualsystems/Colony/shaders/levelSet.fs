@@ -1,41 +1,62 @@
 #version 120
 //#extension GL_ARB_shader_texture_lod: enable
-#extension GL_ARB_texture_rectangle: enable
+//#extension GL_ARB_texture_rectangle: enable
 #define PI 3.14159265359
-#define E 2.71828
 
-uniform float time;
-uniform bool levelSet;
 uniform sampler2DRect tex;
 uniform sampler2DRect grunge;
+
+uniform float time;
+
+uniform bool levelSet;
+uniform bool levelSetBg;
+
 uniform vec2 resolution;
 uniform vec2 imgRes;
+
 uniform float translucenseDish;
 uniform float translucenseCell;
+
 uniform vec4 kernelColor_high;
 uniform vec4 kernelColor_low;
 uniform float kernel_maxValue;
 
-/*
-float rand(vec2 co){
-    return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453);
-}
+uniform vec3 lightDirection;
+uniform vec3 lightColor;
 
-//Hash-Based Noise Func
-float noise2f( in vec2 p ){
-    vec2 ip = vec2(floor(p));
-    vec2 u = fract(p);
-    u = u * u * (3.0 - 2.0 * u);
-    float res = mix(
-                    mix(rand(ip), rand(ip + vec2(1.0,0.0)), u.x),
-                    mix(rand(ip + vec2(0.0, 1.0)), rand(ip + vec2(1.0, 1.0)), u.x),
-                    u.y);
-    return res * res;
-}
-*/
+uniform float stippleScale;
+uniform vec4 stippleColor;
+
+//float rand(vec2 co){
+//    return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453);
+//}
+
+//mat3 kernel = mat3(0.0625, 0.125,  0.0625,
+//                   0.125,  0.250,  0.125,
+//                   0.0625, 0.125,  0.0625);
+//
+//vec4 convolution(in sampler2DRect screen,in vec2 coord){
+//    vec4 t = vec4(0.);
+//    for (float i = -1. ; i < 2.; i += 1.){
+//        for (float j = -1. ; j < 2.; j += 1.){
+//            t += texture2DRect(screen, coord+vec2(i, j)) * kernel[int(1. + i)][int(1. + j)];
+//        }
+//    }
+//    return t;
+//}
 
 vec4 premult(in vec4 source){
     return vec4(source.rgb * source.a, source.a);
+}
+
+vec4 over(vec4 a, vec4 b){
+    //a over b
+    return clamp(a + b * (1. - a.a), 0., 1.);
+}
+
+vec4 screen (vec4 a, vec4 b){
+    vec4 one = vec4(1.);
+    return one - (one - a) * (one - b);
 }
 
 float bump(float t, float center, float width){
@@ -50,53 +71,105 @@ float heightMap(vec2 co){
     float t = time * .01;
     for (float i = 1.; i <= iters; i += 1.) {
         //TODO: optimize this.
-        bumps += (.5 + dot(sin(co),vec2(.25))) * log(1 + i);
+        bumps += (.5 + dot(sin(co),vec2(.25)))
+                * log(1 + i);
         co *= .07;
         co += sin(co.yx + vec2(0.,t*10. + PI/2.));
 //        co += co.yx * (1 - cos(t));
     }
     bumps /= (iters * log(iters));
-    return (-.5 + pow(bumps, 18.)) * PI;
+    return pow(bumps, 18.);
 }
+
+
+float getLightIntensity(float elevation, vec2 light){
+    vec2 normal = vec2(dFdx(elevation),dFdy(elevation));
+    float reflection = dot(normalize(normal), normalize(light));
+    float amplitude = clamp(length(light) * length(normal),0.001, 1.);
+    float amplitude_smoothed = smoothstep(0.01, 0.2, amplitude);
+    return mix(0., reflection, amplitude_smoothed);
+}
+
+
+
 
 vec4 getLevelSet(vec4 fg){
     float a = PI * (.5 + log(.25 + fg.b) * 6.);
-    float b = heightMap(gl_TexCoord[0].xy) * 18.;
-    float g = fg.g + .1;
+    float b = (-.5 + (levelSetBg ? heightMap(gl_TexCoord[0].xy) : 0. )) * 18. * PI;
+    float g = fg.g * fg.r;// + .1;
     g *= g * g;
     float levl = mix (a + b, max(a, b), .5);
-    float set = .5 * (1. + sin(levl)) + g;
-	return vec4(set, set, set, 1.);
+    float set = (.5 * (1. + sin(levl)) + g/2.);
+    float light = clamp(getLightIntensity(levl, lightDirection.xy),0.1,1);
+	return vec4(set
+                * mix(1, light, 0.5)
+                * mix(vec3(1.),lightColor, smoothstep(0.2,0.7,light))
+                + vec3(g),
+                1.);
 }
 
-vec4 getMicroscope(vec4 fg, vec4 bg){
+
+
+vec4 getMicroscope(vec4 fg){
     //Check if you're on an area of change
     float b = 1. - fwidth(fg.b);
     
     //see if you're in the right range to be a border
     b *= fg.b * fg.b;
-    float innerCell = clamp(bump(b, .8, .4), 0., translucenseCell); // * (1. - (.2 + .2 * sin(gl_FragCoord.x + gl_FragCoord.y)));
-    float shell = clamp(bump(b, .3, .2), 0., .95);
-    vec4 kernel = clamp(fg.g * 1.5, 0., 1.) * mix(kernelColor_low, kernelColor_high, fg.g/kernel_maxValue);
-    vec4 envelope = pow(shell, 1.5) * vec4(1.);// * mix(1.,rand(gl_FragCoord.xy * 0.01), 0.15 );
-    return envelope + kernel + (innerCell - fg.g) * bg; //* vec4(0.5,0.,0.,0.3);
+    //inner cell
+    float innerCellAlpha = bump(b, .8, .8);
+    innerCellAlpha = clamp(innerCellAlpha, 0., translucenseCell);
+    //Shell
+    float shellAlpha = clamp(bump(b, .3, .2), 0., .90);
+    
+    //Stipple
+    float stippleAlpha = .5
+            * innerCellAlpha * innerCellAlpha
+            * (1. + sin(dot(gl_FragCoord.xy, vec2(stippleScale))));
+    vec4 stipple = stippleColor * stippleAlpha;
+
+    //kernel
+    float kernelPhase = clamp(fg.g/kernel_maxValue, 0., 1.);
+    vec4 kernel = kernelPhase
+                * mix(kernelColor_low, kernelColor_high, kernelPhase);
+    // Add Lights
+    kernel.rgb *= fg.r;
+    
+    //cell floor
+    vec2 normalizedCoords = gl_TexCoord[0].xy * imgRes / resolution;
+    float distortion = fg.b + sqrt(shellAlpha);
+    vec4 bg = texture2DRect(grunge, normalizedCoords * .5
+                            + vec2(dFdx(distortion),dFdy(distortion)) * 100.0
+                            + imgRes * .25 ); //enlarged
+    vec4 shell = vec4(
+                      mix(vec3(1.), bg.rgb, innerCellAlpha * 0.5),
+                      shellAlpha);
+    
+    //COMPOSITING STAGE
+    vec4 ret = over(premult(shell), premult(kernel)); //top
+    ret = over(ret, premult(stipple));
+    ret = over(ret, premult(vec4(bg * vec2(1.,innerCellAlpha).xxxy)));
+    return ret;
 }
+
+
 
 void main(){
     vec4 color;
     vec4 fg = texture2DRect(tex, gl_TexCoord[0].xy);
-    
+    fg.rg = sqrt(fg.rg);
     if (levelSet) {
             color = getLevelSet(fg);
     } else {
         
-        //FIXME: This is happening because I can only use sampler2dRect
+        //This is happening because I can only use sampler2dRect
         vec2 normalizedCoords = gl_TexCoord[0].xy * imgRes / resolution;
         vec4 bg = texture2DRect(grunge, normalizedCoords);
-        vec4 bg_cu = texture2DRect(grunge, normalizedCoords * .5 + imgRes * .25 ); //enlarged
-        vec4 cells = getMicroscope(fg, bg_cu);
-        color = vec4(bg.rgb * (1. - cells.a), translucenseDish) + cells;
+        vec4 cells = getMicroscope(fg);
+        bg.a *= translucenseDish;
+        color = over(premult(cells), premult(bg));
     }
+    
     gl_FragColor = color;
 }
 

@@ -1,6009 +1,673 @@
-keyword 3d
-	visualization 0.0434783
-keyword 3d printing
-	architecture 0.136364
-	digital meets physical 0.130435
-	design process 0.117647
-	product 0.111111
-	organic 0.111111
-	objects 0.111111
-	growth 0.105263
-	sculpture 0.1
-	design 0.0714286
-	toys 0.0588235
-keyword DNA
-	art and science 0.333333
-	biology 0.0344828
-keyword abstraction
-	logic 0.130435
-	art history 0.117647
-	arabic 0.105263
-	math 0.105263
-	energy 0.0714286
-	art and tech 0.0714286
-	malevich 0.0714286
-	representation 0.0714286
-	generative art 0.0689655
-	multiverse 0.0666667
-keyword accessibility
-	zach lieberman 0.125
-	eyewriter 0.111111
-	fun 0.111111
-	processing 0.107143
-	toolkits 0.0909091
-	assistive technology 0.0833333
-	installation 0.0769231
-	software 0.0625
-	education 0.0588235
-	teaching 0.0454545
-keyword acu
-	aesthetics and computation 0.1875
-	open frameworks 0.166667
-	media lab 0.133333
-	teaching 0.0555556
-	open source 0.0526316
-	toolkit 0.047619
-	sharing 0.0169492
-keyword addiction
-	hacker 0.333333
-	eyewriter 0.166667
-	nerd 0.133333
-	invention 0.111111
-	beginnings 0.047619
-	programming 0.0392157
-	coding 0.0344828
-	process 0.0294118
-keyword advertising
-	commercialism 0.176471
-	software 0.0833333
-	originality 0.0454545
-	open source 0.0344828
-keyword aesthetic experience
-	energy 0.25
-	epiphany 0.2
-	sensation 0.2
-	wonder 0.2
-	feeling 0.166667
-	visual cortex 0.166667
-	abstraction 0.0588235
-	beauty 0.0588235
-	style 0.0555556
-	critique 0.0526316
-keyword aesthetics
-	beauty 0.317073
-	taste 0.0909091
-	design 0.0869565
-	critique 0.0857143
-	subjectivity 0.0769231
-	communication 0.0645161
-	abstraction 0.0588235
-	style 0.0571429
-	representation 0.0555556
-	visual culture 0.0540541
-keyword aesthetics and computation
-	media lab 0.666667
-	john maeda 0.235294
-	acu 0.1875
-	art and code 0.137931
-	open frameworks 0.133333
-	teaching 0.103448
-	hybridity 0.0833333
-	beginnings 0.0769231
-	education 0.0714286
-	toolkit 0.0606061
-keyword afterlife
-	death 0.166667
-	quantified self 0.166667
-	archiving 0.0285714
-	personal data 0.0277778
-keyword algorithm
-	genetics 0.129032
-	cellular automata 0.125
-	rules 0.111111
-	bots 0.111111
-	infinity 0.108108
-	cosmogeny 0.097561
-	artificial life 0.0930233
-	games 0.0888889
-	evolution 0.0888889
-	stock market 0.0857143
-keyword algorithms
-	stock market 0.263158
-	error 0.193548
-	chaos 0.136364
-	bots 0.130435
-	dysfunction 0.0967742
-	experience design 0.08
-	reality 0.0769231
-	artificial intelligence 0.0727273
-	experience 0.0625
-	internet culture 0.0625
-keyword alone together
-	connectivity 0.666667
-	noosphere 0.333333
-	information overload 0.333333
-	balance 0.2
-	focus 0.111111
-	the cloud 0.1
-	interconnectedness 0.0909091
-	distraction 0.0833333
-	zen 0.0769231
-	relationships 0.0769231
-keyword ambiguity
-	presentation 0.5
-	understanding 0.142857
-	struggle with technology 0.1
-	story 0.0909091
-	frustration 0.0833333
-	art 0.0357143
-	cognition 0.0357143
-	thinking with code 0.0357143
-	language 0.0227273
-keyword animation
-	tree 0.5
-	branching 0.2
-	collaboration 0.0196078
-	storytelling 0.0166667
-keyword anonymous
-	snarky 0.25
-	authorship 0.2
-	network security 0.111111
-	crowdsourcing 0.0769231
-	hackers 0.0769231
-	criticality 0.0740741
-	transparency 0.0588235
-	control 0.0434783
-	power 0.0344828
-	creativity 0.0333333
-keyword anthropology
-	curation 0.25
-	memes 0.0714286
-	ideas 0.0625
-	originality 0.05
-	tribe 0.0384615
-	collaboration 0.0196078
-	sharing 0.0175439
-	community 0.0169492
-keyword antihuman
-	digital 1
-	machine aesthetics 0.2
-	cyberpunk 0.166667
-	artificiality 0.125
-	cyborg 0.0769231
-	new aesthetic 0.0357143
-keyword apocalypse
-	survival 0.5
-	death 0.0909091
-	obsolescence 0.0833333
-	future 0.08
-	weird 0.0769231
-	preservation 0.0666667
-	archiving 0.0512821
-	critical engineering 0.05
-	dystopia 0.0434783
-	memory 0.0344828
-keyword apple
-	gadget 0.166667
-	google 0.125
-	devices 0.0769231
-	technology 0.0625
-	facebook 0.0588235
-	users 0.04
-	power 0.0357143
-keyword apporopriation
-	ideas 0.0625
-	originality 0.05
-	newness 0.0333333
-keyword apps
-	fluxus 0.166667
-	performance art 0.166667
-	performance 0.142857
-	technoptimism 0.1
-	solutions 0.0952381
-	datatelling 0.0625
-	critical engineering 0.0526316
-	real and virtual 0.0526316
-	criticality 0.0344828
-	social 0.0333333
-keyword arabic
-	english 0.444444
-	globalization 0.333333
-	abstraction 0.105263
-	math 0.09375
-	language 0.0869565
-	algorithm 0.0571429
-	generative art 0.0434783
-	visual culture 0.0434783
-	pattern 0.04
-	communication 0.02
-keyword architecture
-	organic 0.222222
-	growth 0.2
-	3d printing 0.136364
-	interdisciplinary 0.125
-	data mining 0.111111
-	projection 0.1
-	product 0.1
-	light 0.1
-	immersion 0.1
-	discovery 0.0909091
-keyword archiving
-	memory 0.340909
-	preservation 0.25
-	personal data 0.224138
-	death 0.108108
-	history 0.0735294
-	old media 0.0714286
-	lifetracking 0.0540541
-	apocalypse 0.0512821
-	museums 0.0512821
-	quantified self 0.0512821
-keyword ars electronica
-	generations 0.1
-	mentors 0.0909091
-	new media 0.030303
-	beginnings 0.025
-	collaboration 0.0196078
-keyword art
-	art and tech 0.102564
-	poetry 0.0967742
-	journey 0.0909091
-	tech-demo 0.0714286
-	culture 0.0697674
-	meaning 0.0689655
-	curation 0.0689655
-	art history 0.0666667
-	mastery 0.0625
-	useless 0.0625
-keyword art and code
-	aesthetics and computation 0.137931
-	hybridity 0.111111
-	media lab 0.107143
-	self expression 0.0869565
-	interdisciplinary 0.08
-	beginnings 0.0754717
-	coding 0.075
-	hackathon 0.0740741
-	programming 0.0645161
-	generative art 0.0625
-keyword art and experience
-	heuristics 0.75
-	branching 0.285714
-	touch 0.25
-	intuition 0.25
-	everyday 0.25
-	media 0.2
-	experience 0.1
-	feedback 0.1
-	mind and hand 0.0909091
-	imagination 0.0833333
-keyword art and science
-	DNA 0.333333
-	virus 0.166667
-	biology 0.103448
-	dna 0.0666667
-	emergence 0.037037
-	simulation 0.0166667
-keyword art and security
-	julian oliver 0.333333
-	public/private 0.333333
-	r&d 0.142857
-	network security 0.125
-	control 0.0952381
-	security 0.0833333
-	power 0.0740741
-	privacy 0.0625
-	surveillance 0.0625
-	users 0.04
-keyword art and tech
-	creative coding 0.192308
-	new media 0.113636
-	toolkits 0.105263
-	art 0.102564
-	experience design 0.08
-	abstraction 0.0714286
-	technology 0.0714286
-	open frameworks 0.0625
-	techpositive 0.0625
-	design by numbers 0.0588235
-keyword art history
-	malevich 0.2
-	fluxus 0.166667
-	trendspotting 0.125
-	abstraction 0.117647
-	performance art 0.0769231
-	art 0.0666667
-	experience design 0.0666667
-	style 0.0526316
-	art and tech 0.05
-	algorithms 0.05
-keyword art vs engineering
-	useful 0.1
-	process 0.0980392
-	thinking with code 0.0833333
-	career 0.0816327
-	tech-demo 0.0769231
-	meaning 0.0740741
-	evaluation 0.0714286
-	inexactitude 0.0689655
-	poetry 0.0666667
-	art 0.0612245
-keyword art world
-	thinkerer 0.125
-	maker 0.125
-	how did you get into working with code? 0.125
-	graphic design 0.125
-	concept 0.125
-	video art 0.111111
-	design and art 0.0833333
-	new media 0.0789474
-	cultural value 0.0666667
-	style 0.0454545
-keyword artificial intelligence
-	man vs machine 0.147059
-	consciousness 0.130435
-	cognition 0.129032
-	limitations 0.101695
-	new aesthetic 0.0923077
-	algorithms 0.0727273
-	uncanny 0.0652174
-	collaboration with machines 0.0638298
-	artificiality 0.0625
-	computation 0.0615385
-keyword artificial life
-	cellular automata 0.352941
-	emergence 0.166667
-	cosmogeny 0.142857
-	evolution 0.125
-	infinity 0.12
-	world building 0.115385
-	synthetic biology 0.111111
-	biology 0.0952381
-	algorithm 0.0930233
-	games 0.0909091
-keyword artificiality
-	mind 0.222222
-	machine aesthetics 0.181818
-	utopia 0.166667
-	consciousness 0.133333
-	uture 0.125
-	new aesthetic 0.125
-	digital 0.125
-	antihuman 0.125
-	coevolution 0.125
-	debugging 0.0909091
-keyword assistive technology
-	eyewriter 0.285714
-	prosthetic 0.166667
-	gesture recognition 0.166667
-	zach lieberman 0.142857
-	sensors 0.125
-	humanity 0.0909091
-	accessibility 0.0833333
-	ubiquity 0.0769231
-	embodiment 0.0625
-	fantasy technology 0.0625
-keyword atmosphere
-	flow 0.333333
-	prediction 0.2
-	revelation 0.125
-	gestalt 0.111111
-	phenomena 0.111111
-	pattern 0.105263
-	chaos 0.1
-	complexity 0.0338983
-	perception 0.027027
-	systems 0.0263158
-keyword attention
-	distraction 0.470588
-	focus 0.466667
-	staring at screens 0.190476
-	embodiment 0.181818
-	net.art 0.142857
-	zen 0.130435
-	real and virtual 0.0714286
-	improvization 0.0714286
-	conviction 0.0666667
-	mirror 0.0666667
-keyword audience
-	live 0.333333
-	digital divide 0.166667
-	cultural value 0.1
-	embodiment 0.0769231
-	fantasy technology 0.0769231
-	improvization 0.0588235
-	gesture 0.0555556
-	science fiction 0.0344828
-	new media 0.0285714
-	interactivity 0.027027
-keyword audiovisualization
-	music 0.3125
-	sound 0.272727
-	liveness 0.263158
-	synesthesia 0.181818
-	kids 0.1
-	noise 0.0769231
-	behavior 0.0666667
-	collaboration 0.0517241
-	interactivity 0.0465116
-	systems 0.0444444
-keyword augmented reality
-	ubiquity 0.307692
-	interfaces 0.238095
-	mobile 0.181818
-	fantasy 0.142857
-	devices 0.0967742
-	sensors 0.0909091
-	real and virtual 0.0909091
-	videogames 0.0789474
-	cities 0.0666667
-	staring at screens 0.0555556
-keyword authorship
-	anonymous 0.2
-	gardening 0.111111
-	randomness 0.0714286
-	discovery 0.0588235
-	generative art 0.0555556
-	control 0.047619
-	emergence 0.0384615
-	algorithm 0.0322581
-	process 0.03125
-keyword avatar
-	world building 0.0714286
-	identity 0.0645161
-	privacy 0.0625
-	facebook 0.0588235
-	representation 0.0555556
-	control 0.0454545
-	reality 0.0357143
-	videogames 0.0294118
-	virtual 0.0285714
-	personal data 0.0263158
-keyword awkward
-	performance art 0.111111
-	physicality 0.0588235
-	history 0.0263158
-keyword balance
-	information overload 0.333333
-	connectivity 0.25
-	alone together 0.2
-	work 0.2
-	focus 0.111111
-	distraction 0.0833333
-	embodiment 0.0769231
-	zen 0.0769231
-	simplicity 0.0714286
-	attention 0.0588235
-keyword beautiful exhuberance
-	limits of the computer 0.25
-	taste 0.25
-	formalism 0.2
-	beauty 0.09375
-	critique 0.0555556
-	visual culture 0.0526316
-	originality 0.0454545
-	aesthetics 0.0416667
-	old media 0.037037
-	math 0.0333333
-keyword beauty
-	aesthetics 0.317073
-	truth 0.102564
-	beautiful exhuberance 0.09375
-	critique 0.0909091
-	form 0.0833333
-	elegance 0.0681818
-	visual culture 0.0652174
-	taste 0.0625
-	code 0.0588235
-	aesthetic experience 0.0588235
-keyword beginnings
-	learning 0.131579
-	nerd 0.0816327
-	media lab 0.08
-	aesthetics and computation 0.0769231
-	art and code 0.0754717
-	videogames 0.0746269
-	programming 0.0722892
-	john maeda 0.0714286
-	history 0.0684932
-	code 0.0526316
-keyword behavior
-	uncanny 0.2
-	equilibrium 0.166667
-	synesthesia 0.125
-	text 0.125
-	representation 0.1
-	audiovisualization 0.0666667
-	story 0.0666667
-	interactivity 0.0512821
-	simulation 0.0491803
-	physics 0.0454545
-keyword being
-	gratitude 1
-	journey 0.111111
-	career 0.0357143
-keyword big data
-	data 0.130435
-	facebook 0.125
-	data ownership 0.114286
-	security 0.107143
-	privacy 0.09375
-	prediction 0.0869565
-	futurism 0.0588235
-	pattern 0.0526316
-	social media 0.0491803
-	signals 0.047619
-keyword biology
-	biology and code 0.322581
-	dna 0.272727
-	art and science 0.103448
-	synthetic biology 0.103448
-	artificial life 0.0952381
-	emergence 0.08
-	nature 0.0757576
-	organic 0.0666667
-	growth 0.0645161
-	systems 0.0645161
-keyword biology and code
-	dna 0.388889
-	biology 0.322581
-	synthetic biology 0.153846
-	genetics 0.133333
-	order 0.0769231
-	messiness 0.0769231
-	evolution 0.0689655
-	metaphor 0.0666667
-	code is messy 0.0666667
-	algorithm 0.05
-keyword birth
-	interesting 1
-	creation 0.5
-	evolution 0.0526316
-	process 0.0322581
-keyword book
-	motion 0.333333
-	knowledge 0.142857
-	story 0.1
-	logic 0.0833333
-	cosmogeny 0.0666667
-	teaching 0.0625
-keyword boring
-	staring at screens 0.166667
-	focus 0.1
-	struggle with technology 0.0833333
-	distraction 0.0769231
-	embodiment 0.0714286
-	frustration 0.0714286
-	programming 0.06
-	attention 0.0555556
-	economics 0.0555556
-	pattern 0.0454545
-keyword bots
-	stock market 0.285714
-	chaos 0.1875
-	dystopia 0.166667
-	algorithms 0.130435
-	dysfunction 0.12
-	security 0.111111
-	algorithm 0.111111
-	man vs machine 0.097561
-	power 0.0909091
-	economics 0.0869565
-keyword branching
-	heuristics 0.333333
-	mind and hand 0.3
-	art and experience 0.285714
-	intuition 0.222222
-	animation 0.2
-	tree 0.166667
-	skill 0.166667
-	mastery 0.0909091
-	feedback 0.0909091
-	imagination 0.0769231
-keyword bravado
-	paul rand 1
-	humor 0.2
-	generations 0.1
-	mentors 0.0909091
-	design 0.0357143
-keyword brogrammers
-	gender 0.142857
-	nerd 0.0769231
-	tribe 0.0384615
-keyword bugs
-	dysfunction 0.368421
-	error 0.208333
-	debugging 0.2
-	failure 0.133333
-	things breaking 0.125
-	challenge 0.125
-	stress 0.125
-	confusion 0.111111
-	system 0.1
-	glitch 0.1
-keyword business
-	jewelry 0.333333
-	organizations 0.333333
-	passion 0.333333
-	product 0.2
-	cultural value 0.1
-	social dynamics 0.1
-	career 0.0689655
-	commercialism 0.0526316
-	art vs engineering 0.037037
-	art 0.0344828
-keyword c++
-	operating system 1
-	engineering 0.0714286
-	systems 0.027027
-	language 0.0232558
-	programming 0.0204082
-keyword camera
-	machine vision 0.311111
-	kinect 0.153846
-	sensor 0.147059
-	ubiquitous computing 0.121212
-	ubiquity 0.0789474
-	future of cinema 0.0757576
-	fantasy technology 0.0731707
-	creative misuse 0.0697674
-	surveillance 0.0681818
-	object recognition 0.0606061
-keyword cameras
-	cities 0.125
-	machine vision 0.0769231
-	immersion 0.0666667
-	surveillance 0.0666667
-	power 0.037037
-	interactivity 0.0277778
-	future 0.0204082
-keyword career
-	money 0.142857
-	journey 0.121212
-	life 0.107143
-	generations 0.0857143
-	art vs engineering 0.0816327
-	education 0.0754717
-	teaching 0.0731707
-	passing the baton 0.0714286
-	commercialism 0.0714286
-	work 0.0689655
-keyword carl sims
-	genetics 0.166667
-	collaboration with machines 0.125
-	evolution 0.105263
-	dna 0.0714286
-	artificial life 0.0555556
-	aesthetics 0.0434783
-	new aesthetic 0.0344828
-	beauty 0.030303
-	code 0.0243902
-	artificial intelligence 0.0227273
-keyword cellular automata
-	artificial life 0.352941
-	infinity 0.214286
-	world building 0.2
-	cosmogeny 0.166667
-	universe 0.153846
-	rules 0.142857
-	games 0.136364
-	algorithm 0.125
-	efficiency 0.111111
-	emergence 0.107143
-keyword challenge
-	stress 1
-	uncertainty 0.166667
-	bugs 0.125
-	frustration 0.0909091
-	dysfunction 0.0555556
-keyword challenges
-	rhetoric 0.25
-	dichotomy 0.125
-	critique 0.0909091
-	coding for humanity 0.0769231
-	useless 0.0714286
-	humanism 0.0714286
-	struggle with technology 0.0625
-	videogames 0.0526316
-	datatelling 0.0526316
-	information 0.05
-keyword chance
-	probability 0.384615
-	luck 0.272727
-	randomness 0.263158
-	noise 0.153846
-	serendipity 0.136364
-	gift 0.125
-	random 0.0909091
-	number 0.0909091
-	algorithm 0.0789474
-	organic 0.0769231
-keyword change
-	hope 0.25
-	invention 0.125
-	technoptimism 0.125
-	imagination 0.0909091
-	interconnectedness 0.0909091
-	utopia 0.0666667
-	problem solving 0.047619
-	progress 0.0384615
-	computation 0.0357143
-	math 0.0333333
-keyword chaos
-	stock market 0.214286
-	bots 0.1875
-	prediction 0.181818
-	algorithms 0.136364
-	dysfunction 0.125
-	error 0.111111
-	atmosphere 0.1
-	systems 0.0952381
-	noise 0.0833333
-	pattern 0.0769231
-keyword children
-	play 0.304348
-	interactivity 0.097561
-	life 0.0833333
-	fun 0.0833333
-	gesture 0.0833333
-	success 0.0769231
-	instrument 0.0769231
-	possibility 0.0666667
-	painting 0.0625
-	mastery 0.0625
-keyword choices
-	own the tool 0.5
-	post-digital 0.0666667
-	program or be programmed 0.047619
-	limitations 0.0454545
-	learning 0.0217391
-keyword choosing
-	generative process 1
-	working iteratively generatively in a process that can go on forever? 1
-	iteration 0.25
-	form 0.142857
-	gardening 0.125
-	randomness 0.0769231
-	control 0.05
-	emergence 0.04
-keyword chrome
-	net.art 0.111111
-	videogames 0.03125
-	virtual 0.030303
-keyword cinema
-	narrative 0.25
-	tragedy 0.142857
-	serious 0.111111
-	future of cinema 0.0714286
-	storytelling 0.0634921
-	immersion 0.05
-	experience 0.0416667
-	games 0.04
-	clouds 0.0357143
-	videogames 0.0263158
-keyword cities
-	infrastructure 0.25
-	cameras 0.125
-	open paths 0.111111
-	perspective 0.1
-	network security 0.0833333
-	society 0.0810811
-	zoom 0.0769231
-	revelation 0.0769231
-	ubiquity 0.0714286
-	gestalt 0.0714286
-keyword clock
-	time 0.0666667
-	computer 0.037037
-keyword clouds
-	future of cinema 0.0909091
-	dialogue 0.0833333
-	virtual reality 0.0454545
-	the future 0.0454545
-	meta 0.0454545
-	noosphere 0.0454545
-	recursion 0.0454545
-	infinite conversation 0.0434783
-	diy 0.0434783
-	rendering 0.0434783
-keyword code
-	language 0.121622
-	programming 0.0987654
-	computer 0.0983607
-	computation 0.0819672
-	thinking with code 0.0806452
-	logic 0.0612245
-	beauty 0.0588235
-	beginnings 0.0526316
-	art vs engineering 0.0483871
-	cognition 0.046875
-keyword code is messy
-	parameters 0.25
-	constraints 0.2
-	uncertainty 0.111111
-	thinking by doing 0.0714286
-	biology and code 0.0666667
-	dna 0.0625
-	serendipity 0.0588235
-	elegance 0.0555556
-	exploration 0.0526316
-	physics 0.05
-keyword coding
-	programming 0.153846
-	thinking with code 0.12766
-	god 0.111111
-	magic 0.0789474
-	sketching 0.0769231
-	art and code 0.075
-	learning 0.0746269
-	virtuosity 0.0740741
-	tradition 0.0740741
-	improvement 0.0689655
-keyword coding for humanity
-	survival 0.2
-	solutions 0.142857
-	problem solving 0.136364
-	digital divide 0.111111
-	useless 0.0833333
-	challenges 0.0769231
-	humanity 0.0434783
-	dystopia 0.0434783
-	play 0.04
-	future 0.0384615
-keyword coevolution
-	artificiality 0.125
-	symbiosis 0.111111
-	thinking with code 0.037037
-	new aesthetic 0.0357143
-	man vs machine 0.0285714
-	perception 0.0277778
-keyword cognition
-	thinking 0.2
-	thinking with code 0.173913
-	artificial intelligence 0.129032
-	symbiosis 0.125
-	man vs machine 0.0877193
-	virtuosity 0.0714286
-	invention 0.0645161
-	tools 0.0645161
-	language 0.0606061
-	computation 0.06
-keyword collaboration
-	hackathon 0.166667
-	collective intelligence 0.138889
-	open source 0.08
-	crowdsourcing 0.0701754
-	liveness 0.0655738
-	sharing 0.0588235
-	connections 0.0588235
-	community 0.0576923
-	wikipedia 0.0555556
-	drawing 0.0540541
-keyword collaboration with machines
-	line 0.142857
-	drawing 0.133333
-	carl sims 0.125
-	improvization 0.1
-	machine aesthetics 0.0909091
-	mind and hand 0.0714286
-	failure 0.0666667
-	artificial intelligence 0.0638298
-	software 0.0625
-	zen 0.0588235
-keyword collective intelligence
-	network 0.166667
-	wikipedia 0.15625
-	internet 0.147541
-	collaboration 0.138889
-	progress 0.0576923
-	the cloud 0.0540541
-	ideas 0.0444444
-	twitter 0.0434783
-	communication 0.0416667
-	cognition 0.0357143
-keyword commercial art
-	commercialism 0.190476
-	uncertainty 0.166667
-	work and life 0.125
-	consumer 0.111111
-	creative control 0.111111
-	taste 0.111111
-	money 0.111111
-	struggle 0.1
-	surprise 0.0769231
-	zen 0.0555556
-keyword commercialism
-	commercial art 0.190476
-	advertising 0.176471
-	money 0.16
-	software 0.125
-	career 0.0714286
-	economics 0.0666667
-	passion 0.0588235
-	open source 0.0571429
-	originality 0.0571429
-	business 0.0526316
-keyword communication
-	internet 0.121622
-	data visualization 0.12
-	social media 0.0875
-	language 0.0875
-	globalization 0.0816327
-	information 0.0754717
-	mobile 0.0666667
-	aesthetics 0.0645161
-	simplicity 0.0566038
-	society 0.0547945
-keyword community
-	sharing 0.183673
-	tribe 0.133333
-	open frameworks 0.084507
-	open source 0.0841122
-	social media 0.0625
-	collaboration 0.0576923
-	processing 0.0506329
-	thanks 0.05
-	people 0.0481928
-	society 0.0454545
-keyword completion
-	infinite game 1
-	infinite conversation 0.5
-	evaluation 0.2
-	art vs engineering 0.04
-keyword complexity
-	pattern 0.2
-	data visualization 0.186916
-	emergence 0.150685
-	systems 0.129412
-	perception 0.117647
-	simplicity 0.109375
-	gestalt 0.0983607
-	limitations 0.0945946
-	data 0.0841122
-	nature 0.0631579
-keyword computation
-	computer 0.152174
-	math 0.102041
-	rules 0.0909091
-	limitations 0.0909091
-	logic 0.0857143
-	code 0.0819672
-	systems 0.0677966
-	nature 0.0625
-	artificial intelligence 0.0615385
-	thinking 0.0606061
-keyword computational power
-	futurism 0.0666667
-	technological progress 0.0166667
-keyword computer
-	computation 0.152174
-	code 0.0983607
-	logic 0.0833333
-	math 0.0784314
-	time 0.0769231
-	limitations 0.0652174
-	art vs engineering 0.0612245
-	thinking 0.0588235
-	abstraction 0.0512821
-	discovery 0.0487805
-keyword concept
-	maker 1
-	thinkerer 1
-	art world 0.125
-	career 0.0357143
-keyword confusion
-	public 0.333333
-	glitch 0.25
-	debugging 0.2
-	bugs 0.111111
-	opacity 0.0909091
-	social engagment 0.0714286
-	dysfunction 0.0526316
-	error 0.0454545
-	visualization 0.0416667
-	complexity 0.0338983
-keyword connections
-	synergy 0.25
-	zach lieberman 0.25
-	performance 0.2
-	working with others 0.2
-	thinking by doing 0.0769231
-	drawing 0.0714286
-	hackathon 0.0714286
-	collaboration 0.0588235
-	digital meets physical 0.027027
-keyword connectivity
-	alone together 0.666667
-	information overload 0.5
-	balance 0.25
-	focus 0.125
-	distraction 0.0909091
-	embodiment 0.0833333
-	relationships 0.0833333
-	zen 0.0833333
-	attention 0.0625
-	emotion 0.0384615
-keyword consciousness
-	mind 0.2
-	singularity 0.166667
-	artificiality 0.133333
-	artificial intelligence 0.130435
-	uture 0.111111
-	utopia 0.1
-	cyborg 0.1
-	science fiction 0.0909091
-	identity 0.0833333
-	poetry 0.0666667
-keyword constraints
-	parameters 0.5
-	code is messy 0.2
-	teaching 0.0588235
-	physics 0.0555556
-	nature 0.0232558
-	simulation 0.0169492
-keyword consumer
-	taste 0.333333
-	commercial art 0.111111
-	aesthetics 0.0434783
-	users 0.0416667
-	devices 0.0384615
-	design 0.0344828
-	beauty 0.030303
-keyword control
-	gardening 0.166667
-	power 0.15
-	art and security 0.0952381
-	network security 0.0833333
-	error 0.0789474
-	man vs machine 0.0784314
-	randomness 0.0645161
-	process 0.0625
-	privacy 0.0625
-	algorithms 0.0588235
-keyword conviction
-	focus 0.142857
-	zen 0.0909091
-	simplicity 0.0833333
-	attention 0.0666667
-	drawing 0.037037
-keyword corporate
-	gadget 0.4
-	google 0.285714
-	dystopia 0.105263
-	users 0.0833333
-	devices 0.0769231
-	money 0.0714286
-	engineering 0.0625
-	transparency 0.0625
-	man vs machine 0.0555556
-	commercialism 0.0526316
-keyword cosmogeny
-	world building 0.35
-	god mode 0.277778
-	god 0.1875
-	simulation 0.177419
-	cellular automata 0.166667
-	artificial life 0.142857
-	universe 0.142857
-	rules 0.136364
-	emergence 0.111111
-	algorithm 0.097561
-keyword counterculture
-	esoteric 1
-	hacker 0.25
-	nerd 0.0769231
-	criticality 0.04
-	tribe 0.0384615
-keyword creation
-	birth 0.5
-	interesting 0.5
-	god mode 0.111111
-	world building 0.0769231
-	cosmogeny 0.0625
-	representation 0.0588235
-	evolution 0.05
-	process 0.03125
-	nature 0.0232558
-	simulation 0.0169492
-keyword creative coders
-	knowledge 0.181818
-	interdisciplinary 0.142857
-	virtuosity 0.125
-	hybridity 0.115385
-	creative coding 0.105263
-	tribe 0.103448
-	social dynamics 0.0769231
-	architecture 0.0769231
-	nerd 0.0555556
-	real and virtual 0.05
-keyword creative coding
-	art and tech 0.192308
-	creative coders 0.105263
-	new media 0.0666667
-	generative art 0.0666667
-	design by numbers 0.0625
-	virtuosity 0.0588235
-	hybridity 0.0555556
-	dialogue 0.0555556
-	toolkits 0.0526316
-	tribe 0.0512821
-keyword creative control
-	uncertainty 0.142857
-	commercial art 0.111111
-	surprise 0.047619
-	error 0.0454545
-	new aesthetic 0.0344828
-keyword creative exploration
-	expression 0.25
-	mind and hand 0.125
-	self expression 0.125
-	physicality 0.0588235
-	process 0.0322581
-	archiving 0.0285714
-keyword creative misuse
-	program or be programmed 0.214286
-	critical engineering 0.12
-	obsolescence 0.111111
-	opacity 0.0952381
-	users 0.0909091
-	transparency 0.08
-	gesture recognition 0.0769231
-	subversion 0.0714286
-	diy 0.0714286
-	openness 0.0714286
-keyword creativity
-	intuition 0.1
-	journey 0.0909091
-	sketching 0.075
-	programming 0.0704225
-	branching 0.0666667
-	mind and hand 0.0606061
-	art 0.0588235
-	thinking with code 0.0588235
-	career 0.0576923
-	crowdsourcing 0.0571429
-keyword critical engineering
-	transparency 0.26087
-	criticality 0.212121
-	dystopia 0.178571
-	program or be programmed 0.16129
-	opacity 0.136364
-	openness 0.133333
-	open software 0.133333
-	literacy 0.125
-	creative misuse 0.12
-	symbiosis 0.0909091
-keyword criticality
-	critical engineering 0.212121
-	transparency 0.114286
-	critique 0.108108
-	hackers 0.0888889
-	tech-demo 0.0769231
-	meaning 0.0740741
-	trendspotting 0.0740741
-	anonymous 0.0740741
-	network security 0.0689655
-	poetry 0.0666667
-keyword critique
-	meaning 0.176471
-	rhetoric 0.125
-	tech-demo 0.117647
-	criticality 0.108108
-	poetry 0.0952381
-	beauty 0.0909091
-	challenges 0.0909091
-	aesthetics 0.0857143
-	new media 0.0652174
-	insight 0.0625
-keyword crowdsourcing
-	love 0.125
-	sex 0.111111
-	snarky 0.1
-	anonymous 0.0769231
-	collaboration 0.0701754
-	creativity 0.0571429
-	net.art 0.0555556
-	money 0.047619
-	economics 0.0416667
-	commercialism 0.0384615
-keyword cultural value
-	jewelry 0.125
-	problem of newness 0.125
-	product 0.1
-	audience 0.1
-	business 0.1
-	funny 0.0909091
-	curation 0.0909091
-	evaluation 0.0833333
-	culture 0.08
-	new media 0.0789474
-keyword culture
-	society 0.106383
-	cultural value 0.08
-	art 0.0697674
-	algorithms 0.0606061
-	problem solving 0.0555556
-	invisibility 0.0526316
-	man versus machine 0.0526316
-	popular culture 0.0526316
-	everyday 0.0526316
-	telepathy 0.0526316
-keyword curation
-	anthropology 0.25
-	homogeneity 0.125
-	memes 0.125
-	ideas 0.111111
-	museums 0.111111
-	cultural value 0.0909091
-	originality 0.0909091
-	net.art 0.0833333
-	art 0.0689655
-	visual culture 0.05
-keyword curiosity
-	questions 0.25
-	research 0.166667
-	science 0.1
-keyword cyberpunk
-	antihuman 0.166667
-	digital 0.166667
-	internet culture 0.166667
-	science fiction 0.137931
-	digital culture 0.125
-	gadgets 0.125
-	cyborg 0.117647
-	futurism 0.105263
-	machine aesthetics 0.1
-	google 0.0909091
-keyword cyborg
-	wearables 0.285714
-	gadgets 0.142857
-	singularity 0.125
-	cyberpunk 0.117647
-	consciousness 0.1
-	devices 0.0857143
-	science fiction 0.0810811
-	antihuman 0.0769231
-	prosthetic 0.0769231
-	digital 0.0769231
-keyword darpa
-	drones 1
-	military technology 0.2
-	surveillance 0.0714286
-	camera 0.030303
-	personal data 0.0277778
-	future of cinema 0.0263158
-keyword data
-	data visualization 0.157407
-	big data 0.130435
-	datatelling 0.0952381
-	memory 0.0945946
-	complexity 0.0841122
-	personal data 0.0813954
-	truth 0.0793651
-	gps 0.0625
-	information 0.0606061
-	discovery 0.057971
-keyword data collection
-	sensor 0.333333
-	nature 0.047619
-	camera 0.0294118
-	data 0.0172414
-keyword data mining
-	intuition 0.142857
-	architecture 0.111111
-	immersion 0.0666667
-	futurism 0.0625
-	discovery 0.0588235
-	exploration 0.0588235
-	power 0.037037
-	data 0.0350877
-	network 0.030303
-keyword data ownership
-	gps 0.208333
-	privacy 0.185185
-	maps 0.166667
-	big data 0.114286
-	personal data 0.102041
-	location 0.1
-	users 0.0789474
-	security 0.0769231
-	memory 0.0769231
-	facebook 0.0645161
-keyword data visualization
-	complexity 0.186916
-	data 0.157407
-	communication 0.12
-	perception 0.106383
-	pattern 0.101266
-	legibility 0.0724638
-	social 0.0561798
-	humanity 0.0487805
-	social media 0.0471698
-	microscope 0.0428571
-keyword datatelling
-	journalism 0.153846
-	storytelling 0.125
-	data 0.0952381
-	writing 0.0714286
-	open paths 0.0714286
-	nytimes 0.0714286
-	location 0.0666667
-	apps 0.0625
-	subjectivity 0.0588235
-	memory 0.0588235
-keyword death
-	obsolescence 0.181818
-	afterlife 0.166667
-	archiving 0.108108
-	apocalypse 0.0909091
-	quantified self 0.0909091
-	old media 0.0689655
-	creative misuse 0.0555556
-	futurism 0.05
-	personal data 0.05
-	ideas 0.047619
-keyword debug screen
-	interfaces 0.0588235
-	machine vision 0.0384615
-	new aesthetic 0.0357143
-	algorithm 0.0333333
-	artificial intelligence 0.0232558
-keyword debugging
-	bugs 0.2
-	confusion 0.2
-	imagination 0.181818
-	glitch 0.166667
-	understanding 0.111111
-	artificiality 0.0909091
-	visualization 0.08
-	opacity 0.0769231
-	physics 0.05
-	dysfunction 0.047619
-keyword demo
-	demo scene 0.5
-	hackers 0.0416667
-	computer 0.037037
-	videogames 0.03125
-	history 0.0263158
-	beginnings 0.025
-keyword demo scene
-	demo 0.5
-	history 0.0526316
-	hackers 0.04
-	computer 0.0357143
-	videogames 0.030303
-	beginnings 0.0243902
-keyword design
-	scale 0.111111
-	useful 0.0909091
-	aesthetics 0.0869565
-	3d printing 0.0714286
-	design process 0.0714286
-	product 0.0689655
-	objects 0.0689655
-	problem solving 0.0681818
-	post-digital 0.0487805
-	generative art 0.0465116
-keyword design and art
-	questions 0.285714
-	why? 0.142857
-	art world 0.0833333
-	media lab 0.0555556
-	aesthetics and computation 0.05
-	problem solving 0.0434783
-	design 0.03125
-	interactivity 0.025641
-keyword design by numbers
-	toolkits 0.166667
-	processing 0.0833333
-	creative coding 0.0625
-	aesthetics and computation 0.0588235
-	art and tech 0.0588235
-	open frameworks 0.0526316
-	aesthetics 0.0434783
-	design 0.0344828
-	education 0.0333333
-	tools 0.025
-keyword design fiction
-	science fiction 0.037037
-	tools 0.025641
-keyword design process
-	objects 0.666667
-	product 0.25
-	3d printing 0.117647
-	design 0.0714286
-	digital meets physical 0.0571429
-keyword devices
-	sensors 0.12
-	wearables 0.111111
-	ubiquity 0.1
-	augmented reality 0.0967742
-	users 0.0909091
-	cyborg 0.0857143
-	surveillance 0.0833333
-	gadgets 0.0769231
-	apple 0.0769231
-	corporate 0.0769231
-keyword dialogue
-	the future 0.25
-	clouds 0.0833333
-	social engagment 0.0625
-	creative coding 0.0555556
-	futurism 0.0555556
-	hybridity 0.0384615
-	criticality 0.0357143
-	tribe 0.0344828
-	collective intelligence 0.0294118
-	society 0.0277778
-keyword dichotomy
-	humanism 0.142857
-	challenges 0.125
-	struggle with technology 0.111111
-	engineering 0.0714286
-	technology 0.0714286
-keyword digital
-	antihuman 1
-	machine aesthetics 0.2
-	cyberpunk 0.166667
-	artificiality 0.125
-	cyborg 0.0769231
-	new aesthetic 0.0357143
-keyword digital art
-	museums 0.166667
-	preservation 0.1
-	archiving 0.0285714
-keyword digital culture
-	self reflection 0.333333
-	digital natives 0.333333
-	sadness 0.333333
-	internet culture 0.333333
-	cyberpunk 0.125
-	google 0.125
-	stock market 0.1
-	staring at screens 0.0833333
-	embodiment 0.0769231
-	utopia 0.0666667
-keyword digital divide
-	audience 0.166667
-	coding for humanity 0.111111
-	critical engineering 0.0555556
-	improvization 0.0555556
-	post-digital 0.0555556
-	gesture 0.0526316
-	sketching 0.0526316
-	problem solving 0.0454545
-	criticality 0.0357143
-	devices 0.0357143
-keyword digital meets physical
-	physicality 0.155556
-	3d printing 0.130435
-	post-digital 0.111111
-	objects 0.0857143
-	light 0.0857143
-	installation 0.0769231
-	embodiment 0.0697674
-	sketching 0.0625
-	design process 0.0571429
-	projection 0.0555556
-keyword digital natives
-	sadness 1
-	self reflection 1
-	digital culture 0.333333
-	staring at screens 0.1
-	embodiment 0.0909091
-	emotion 0.04
-	digital meets physical 0.0285714
-keyword discovery
-	exploration 0.142857
-	immersion 0.111111
-	intuition 0.1
-	architecture 0.0909091
-	gardening 0.0909091
-	information 0.0740741
-	serendipity 0.0714286
-	frontier 0.0625
-	systems 0.06
-	epiphany 0.0588235
-keyword distraction
-	attention 0.470588
-	focus 0.307692
-	embodiment 0.166667
-	net.art 0.117647
-	information overload 0.1
-	the present 0.1
-	present shock 0.0909091
-	connectivity 0.0909091
-	skill 0.0909091
-	real and virtual 0.0869565
-keyword diy
-	innovation 0.25
-	creative misuse 0.0714286
-	interfaces 0.0555556
-	clouds 0.0434783
-	hackers 0.04
-	process 0.03125
-	camera 0.0294118
-keyword dna
-	biology and code 0.388889
-	genetics 0.285714
-	biology 0.272727
-	evolution 0.185185
-	algorithm 0.075
-	artificial life 0.0714286
-	carl sims 0.0714286
-	art and science 0.0666667
-	efficiency 0.0625
-	code is messy 0.0625
-keyword documentation
-	human life 1
-	quantified self 0.166667
-	narrative 0.0769231
-	archiving 0.0285714
-	personal data 0.0277778
-	data 0.0175439
-keyword does coding enable you to take risks because there's no physical consequence?
-	serendipity 0.0714286
-	surprise 0.05
-	creativity 0.037037
-	process 0.0322581
-keyword doing with others
-	tools 0.025641
-	learning 0.0217391
-	sharing 0.0175439
-keyword drawing
-	zen 0.151515
-	liveness 0.138889
-	collaboration with machines 0.133333
-	sketching 0.131579
-	mind and hand 0.129032
-	thinking by doing 0.117647
-	gesture 0.102564
-	failure 0.0909091
-	improvization 0.0769231
-	magic 0.0769231
-keyword dreams
-	fantasy 0.25
-	imagination 0.133333
-	interconnectedness 0.133333
-	sex 0.125
-	nano 0.125
-	hallucination 0.111111
-	utopia 0.105263
-	legos 0.0833333
-	weird 0.0714286
-	visualization 0.0689655
-keyword drones
-	darpa 1
-	military technology 0.2
-	surveillance 0.0714286
-	camera 0.030303
-	personal data 0.0277778
-	future of cinema 0.0263158
-keyword dysfunction
-	error 0.444444
-	bugs 0.368421
-	tradition 0.166667
-	engineering 0.142857
-	chaos 0.125
-	bots 0.12
-	system 0.105263
-	algorithms 0.0967742
-	stock market 0.0833333
-	failure 0.08
-keyword dystopia
-	google 0.2
-	critical engineering 0.178571
-	bots 0.166667
-	security 0.166667
-	man vs machine 0.152174
-	users 0.108108
-	corporate 0.105263
-	gadget 0.1
-	future 0.1
-	power 0.1
-keyword economics
-	money 0.285714
-	stock market 0.15
-	thanks 0.117647
-	sharing 0.107692
-	open source 0.0909091
-	bots 0.0869565
-	software 0.0869565
-	internet culture 0.0666667
-	generosity 0.0666667
-	manufacturing 0.0666667
-keyword education
-	processing 0.12766
-	teaching 0.125
-	tools 0.0967742
-	mentors 0.0810811
-	career 0.0754717
-	media lab 0.075
-	open source 0.075
-	sharing 0.075
-	learning 0.0714286
-	aesthetics and computation 0.0714286
-keyword efficiency
-	genetics 0.285714
-	visual effects 0.2
-	rendering 0.2
-	iteration 0.142857
-	cellular automata 0.111111
-	evolution 0.0952381
-	sex 0.0769231
-	rules 0.0769231
-	kinect 0.0666667
-	dna 0.0625
-keyword ego
-	ideas 0.0588235
-	open source 0.0350877
-	sharing 0.0350877
-	tools 0.025
-keyword electronic music
-	music 0.0909091
-keyword elegance
-	order 0.133333
-	messiness 0.133333
-	truth 0.130435
-	simplicity 0.125
-	logic 0.125
-	science 0.0869565
-	rules 0.0869565
-	infinity 0.0833333
-	beauty 0.0681818
-	what do you find beautiful about code? 0.0666667
-keyword embodiment
-	focus 0.2
-	attention 0.181818
-	staring at screens 0.166667
-	distraction 0.166667
-	self reflection 0.0909091
-	sadness 0.0909091
-	gesture recognition 0.0909091
-	mutlisensory 0.0909091
-	mirror 0.0909091
-	live 0.0909091
-keyword emergence
-	artificial life 0.166667
-	complexity 0.150685
-	systems 0.148148
-	universe 0.133333
-	games 0.128205
-	cosmogeny 0.111111
-	cellular automata 0.107143
-	nature 0.0983607
-	surprise 0.097561
-	rules 0.09375
-keyword emotion
-	empathy 0.172414
-	sex 0.09375
-	experience design 0.0909091
-	laughter 0.08
-	sentiment analysis 0.08
-	visual cortex 0.0769231
-	love 0.0645161
-	dreams 0.0645161
-	people 0.06
-	embodiment 0.0588235
-keyword empathy
-	experience design 0.176471
-	emotion 0.172414
-	project examples 0.111111
-	sentiment analysis 0.1
-	feeling 0.0909091
-	humanism 0.0666667
-	god mode 0.0625
-	social 0.0606061
-	interconnectedness 0.0588235
-	fantasy technology 0.0526316
-keyword energy
-	epiphany 0.5
-	aesthetic experience 0.25
-	abstraction 0.0714286
-	style 0.0666667
-keyword engineering
-	tradition 0.214286
-	symbiosis 0.15
-	operating systems 0.142857
-	dysfunction 0.142857
-	improvement 0.117647
-	software 0.0909091
-	opacity 0.0909091
-	technology 0.0769231
-	transparency 0.0769231
-	c++ 0.0714286
-keyword english
-	globalization 0.5
-	arabic 0.444444
-	language 0.139535
-	communication 0.0416667
-	clouds 0.037037
-	data visualization 0.0136986
-keyword epiphany
-	energy 0.5
-	aesthetic experience 0.2
-	abstraction 0.0666667
-	cosmogeny 0.0625
-	style 0.0625
-	discovery 0.0588235
-	artificial life 0.0555556
-	surprise 0.047619
-	emergence 0.0384615
-	systems 0.0263158
-keyword equilibrium
-	behavior 0.166667
-	physics 0.0588235
-	simulation 0.0172414
-keyword error
-	dysfunction 0.444444
-	bugs 0.208333
-	algorithms 0.193548
-	stock market 0.16
-	glitch 0.142857
-	chaos 0.111111
-	opacity 0.107143
-	limitations 0.102564
-	system 0.0909091
-	control 0.0789474
-keyword esoteric
-	counterculture 1
-	hacker 0.25
-	nerd 0.0769231
-	criticality 0.04
-	tribe 0.0384615
-keyword evaluation
-	completion 0.2
-	infinite game 0.2
-	infinite conversation 0.166667
-	visual cortex 0.142857
-	funny 0.125
-	useful 0.0833333
-	cultural value 0.0833333
-	art vs engineering 0.0714286
-	embodiment 0.0666667
-	new media 0.0555556
-keyword everyday
-	media 0.5
-	art and experience 0.25
-	experience 0.0555556
-	culture 0.0526316
-keyword evolution
-	genetics 0.263158
-	dna 0.185185
-	artificial life 0.125
-	carl sims 0.105263
-	old media 0.1
-	efficiency 0.0952381
-	algorithm 0.0888889
-	invention 0.0869565
-	cellular automata 0.0869565
-	biology and code 0.0689655
-keyword existence
-	philsophy 0.6
-	internet of things 0.5
-	things 0.5
-	machine aesthetics 0.285714
-	funny 0.142857
-	philosophy 0.125
-	humanity 0.1
-	god mode 0.0909091
-	new aesthetic 0.0666667
-	man vs machine 0.0540541
-keyword experience
-	experience design 0.208333
-	art and experience 0.1
-	gesture 0.0967742
-	perception 0.08
-	embodiment 0.0740741
-	reality 0.0731707
-	magic 0.0645161
-	improvization 0.0645161
-	algorithms 0.0625
-	everyday 0.0555556
-keyword experience design
-	experience 0.208333
-	empathy 0.176471
-	reality 0.121212
-	emotion 0.0909091
-	algorithms 0.08
-	art and tech 0.08
-	feeling 0.0769231
-	mobile 0.0714286
-	perception 0.0681818
-	art history 0.0666667
-keyword exploration
-	intuition 0.157895
-	discovery 0.142857
-	immersion 0.111111
-	possibility 0.1
-	useful 0.0909091
-	journey 0.0869565
-	zen 0.08
-	generative art 0.0645161
-	iterative 0.0625
-	work and life 0.0625
-keyword expression
-	self expression 0.333333
-	creative exploration 0.25
-	feeling 0.166667
-	instrument 0.142857
-	mind and hand 0.0909091
-	abstraction 0.0588235
-	exploration 0.0526316
-	art and code 0.05
-	physicality 0.05
-	experience 0.047619
-keyword eyebeam
-	video art 0.5
-	r&d 0.2
-	old media 0.04
-	new aesthetic 0.0357143
-	history 0.0263158
-keyword eyeo
-	gender 0.125
-	career 0.0344828
-	community 0.0338983
-keyword eyewriter
-	prosthetic 0.333333
-	assistive technology 0.285714
-	zach lieberman 0.25
-	addiction 0.166667
-	accessibility 0.111111
-	cyborg 0.0666667
-	humanity 0.05
-	drawing 0.0344828
-	people 0.0333333
-keyword face tracking
-	machine vision 0.142857
-	military technology 0.1
-	realness 0.0909091
-	social engagment 0.0555556
-	camera 0.0540541
-	surveillance 0.0526316
-	open frameworks 0.0434783
-	power 0.0322581
-	new aesthetic 0.030303
-	algorithm 0.0285714
-keyword facebook
-	twitter 0.185185
-	social media 0.183673
-	security 0.136364
-	relationships 0.130435
-	big data 0.125
-	privacy 0.115385
-	identity 0.0714286
-	twitter videogames 0.0666667
-	data ownership 0.0645161
-	apple 0.0588235
-keyword failure
-	success 0.181818
-	zen 0.176471
-	bugs 0.133333
-	spiritual 0.111111
-	life 0.0909091
-	drawing 0.0909091
-	dysfunction 0.08
-	error 0.0714286
-	collaboration with machines 0.0666667
-	children 0.0555556
-keyword fantasy
-	dreams 0.25
-	augmented reality 0.142857
-	nano 0.142857
-	hallucination 0.125
-	world building 0.117647
-	mobile 0.1
-	real and virtual 0.1
-	interfaces 0.0909091
-	legos 0.0909091
-	videogames 0.0833333
-keyword fantasy technology
-	live 0.0909091
-	meta 0.0909091
-	recursion 0.0909091
-	science fiction 0.0857143
-	laughter 0.0833333
-	improvization 0.0833333
-	sensors 0.0769231
-	audience 0.0769231
-	writing 0.0769231
-	camera 0.0731707
-keyword fat
-	prank 0.333333
-	street art 0.25
-	statistics 0.166667
-	hack 0.142857
-	humor 0.142857
-	net.art 0.0909091
-	solutions 0.05
-	tribe 0.0357143
-	collaboration 0.0188679
-	data visualization 0.0142857
-keyword fate
-	education 0.0344828
-keyword feedback
-	intuition 0.181818
-	tweaking 0.142857
-	iterative 0.142857
-	how does the work feed into itself? 0.142857
-	thinking by doing 0.125
-	visual cortex 0.111111
-	heuristics 0.111111
-	art and experience 0.1
-	improvization 0.1
-	sketching 0.0952381
-keyword feeling
-	wonder 0.25
-	aesthetic experience 0.166667
-	expression 0.166667
-	self expression 0.1
-	empathy 0.0909091
-	experience design 0.0769231
-	experience 0.05
-	emotion 0.037037
-	beauty 0.0294118
-	nature 0.0227273
-keyword flash
-	nerd 0.0769231
-	tribe 0.0384615
-	beginnings 0.025
-	community 0.0169492
-keyword flocking
-	artificial life 0.0588235
-	emergence 0.04
-	complexity 0.0169492
-keyword flow
-	atmosphere 0.333333
-	revelation 0.125
-	gestalt 0.111111
-	phenomena 0.111111
-	pattern 0.105263
-	perception 0.0555556
-	complexity 0.0338983
-	data visualization 0.0144928
-keyword fluency
-	struggle with technology 0.111111
-	frustration 0.0909091
-	language 0.0232558
-	programming 0.0204082
-keyword fluxus
-	performance 0.25
-	performance art 0.222222
-	apps 0.166667
-	art history 0.166667
-	real and virtual 0.0625
-	social 0.037037
-	art 0.0357143
-	algorithm 0.0322581
-keyword focus
-	attention 0.466667
-	distraction 0.307692
-	net.art 0.230769
-	embodiment 0.2
-	mirror 0.142857
-	conviction 0.142857
-	information overload 0.142857
-	staring at screens 0.133333
-	zen 0.125
-	connectivity 0.125
-keyword food
-	funny 0.166667
-	meaning 0.166667
-	philsophy 0.166667
-	why 0.166667
-	weird 0.136364
-	immersion 0.0625
-	experience 0.05
-	virtual 0.0285714
-keyword foraging
-	gardening 0.125
-	beauty 0.03125
-keyword form
-	working iteratively generatively in a process that can go on forever? 0.142857
-	iterative 0.142857
-	how does the work feed into itself? 0.142857
-	generative process 0.142857
-	choosing 0.142857
-	multiverse 0.125
-	imaginary 0.125
-	projection 0.111111
-	light 0.111111
-	iteration 0.1
-keyword formalism
-	beautiful exhuberance 0.2
-	light 0.2
-	sculpture 0.142857
-	installation 0.111111
-	art and code 0.0526316
-	generative art 0.0526316
-	creativity 0.0344828
-	math 0.0333333
-	beauty 0.0294118
-	digital meets physical 0.027027
-keyword forums
-	teaching 0.0625
-	processing 0.0416667
-	sharing 0.0175439
-	community 0.0169492
-keyword frontier
-	maps 0.1
-	discovery 0.0625
-	ideas 0.0625
-	originality 0.05
-	newness 0.0333333
-keyword frustration
-	struggle with technology 0.333333
-	stress 0.0909091
-	challenge 0.0909091
-	programming 0.0909091
-	fluency 0.0909091
-	ambiguity 0.0833333
-	struggle 0.0769231
-	boring 0.0714286
-	uncertainty 0.0625
-	language 0.0588235
-keyword fun
-	motivational 0.333333
-	toolkits 0.142857
-	accessibility 0.111111
-	children 0.0833333
-	magic 0.0588235
-	art and tech 0.0555556
-	open frameworks 0.05
-	play 0.0454545
-	processing 0.0384615
-	power 0.0357143
-keyword funny
-	food 0.166667
-	existence 0.142857
-	weird 0.130435
-	evaluation 0.125
-	philosophy 0.125
-	cultural value 0.0909091
-	old media 0.0357143
-	new media 0.0277778
-	history 0.0243902
-	collaboration 0.0185185
-keyword future
-	science fiction 0.209677
-	technological progress 0.125
-	survival 0.102041
-	dystopia 0.1
-	apocalypse 0.08
-	fantasy technology 0.0727273
-	futurism 0.0677966
-	devices 0.057971
-	consciousness 0.0555556
-	algorithm 0.0540541
-keyword future of cinema
-	storytelling 0.25641
-	narrative 0.186047
-	clouds 0.0909091
-	story 0.0909091
-	simulation 0.0786517
-	camera 0.0757576
-	cinema 0.0714286
-	kinect 0.0638298
-	virtual 0.0597015
-	visualization 0.0517241
-keyword futurism
-	prediction 0.117647
-	cyberpunk 0.105263
-	science fiction 0.0769231
-	technological progress 0.0714286
-	future 0.0677966
-	the future 0.0666667
-	computational power 0.0666667
-	data mining 0.0625
-	big data 0.0588235
-	trendspotting 0.0555556
-keyword gadget
-	google 0.428571
-	corporate 0.4
-	apple 0.166667
-	dystopia 0.1
-	users 0.08
-	devices 0.0740741
-	engineering 0.0588235
-	technology 0.0588235
-	transparency 0.0588235
-	facebook 0.0555556
-keyword gadgets
-	cyborg 0.142857
-	wearables 0.142857
-	cyberpunk 0.125
-	google 0.125
-	progress 0.08
-	devices 0.0769231
-	social engagment 0.0666667
-	critical engineering 0.0588235
-	man vs machine 0.0555556
-	interfaces 0.0526316
-keyword games
-	cellular automata 0.136364
-	emergence 0.128205
-	videogames 0.108696
-	world building 0.107143
-	cosmogeny 0.0967742
-	artificial life 0.0909091
-	algorithm 0.0888889
-	possibility 0.0869565
-	simulation 0.084507
-	virtual 0.0833333
-keyword gardening
-	control 0.166667
-	generative art 0.136364
-	working iteratively generatively in a process that can go on forever? 0.125
-	generative process 0.125
-	foraging 0.125
-	choosing 0.125
-	authorship 0.111111
-	randomness 0.105263
-	discovery 0.0909091
-	iteration 0.0909091
-keyword gender
-	brogrammers 0.142857
-	texting 0.142857
-	eyeo 0.125
-	sex 0.0625
-	relationships 0.0588235
-	nerd 0.0526316
-	tribe 0.03125
-	virtual 0.025641
-	community 0.0153846
-keyword generations
-	mentors 0.4
-	kill the master 0.181818
-	ars electronica 0.1
-	veterans 0.1
-	bravado 0.1
-	shifts 0.1
-	paul rand 0.1
-	heroes 0.1
-	responsibility 0.0909091
-	passing the baton 0.0909091
-keyword generative
-	parameter space 0.5
-	possibility 0.166667
-	randomness 0.0769231
-	serendipity 0.0714286
-	surprise 0.05
-keyword generative art
-	gardening 0.136364
-	feedback 0.0909091
-	randomness 0.0714286
-	abstraction 0.0689655
-	serendipity 0.0689655
-	creative coding 0.0666667
-	exploration 0.0645161
-	art and code 0.0625
-	iterative 0.0588235
-	how does the work feed into itself? 0.0588235
-keyword generative process
-	choosing 1
-	working iteratively generatively in a process that can go on forever? 1
-	iteration 0.25
-	form 0.142857
-	gardening 0.125
-	randomness 0.0769231
-	control 0.05
-	emergence 0.04
-keyword generosity
-	the gift 1
-	interconnectedness 0.111111
-	economics 0.0666667
-	progress 0.0416667
-	society 0.030303
-	sharing 0.0175439
-	community 0.0169492
-keyword genetics
-	dna 0.285714
-	efficiency 0.285714
-	evolution 0.263158
-	carl sims 0.166667
-	biology and code 0.133333
-	algorithm 0.129032
-	cellular automata 0.1
-	rules 0.0714286
-	sex 0.0714286
-	infinity 0.0666667
-keyword geometry
-	particles 1
-	motion 0.333333
-	storytelling 0.0166667
-keyword gestalt
-	pattern 0.35
-	perception 0.157895
-	zoom 0.153846
-	revelation 0.153846
-	phenomena 0.142857
-	atmosphere 0.111111
-	flow 0.111111
-	complexity 0.0983607
-	perspective 0.0909091
-	vision 0.0833333
-keyword gesture
-	improvization 0.24
-	mastery 0.210526
-	liveness 0.153846
-	magic 0.107143
-	drawing 0.102564
-	experience 0.0967742
-	painting 0.0952381
-	play 0.0909091
-	interactivity 0.0851064
-	children 0.0833333
-keyword gesture recognition
-	assistive technology 0.166667
-	embodiment 0.0909091
-	kinect 0.0833333
-	creative misuse 0.0769231
-keyword gift
-	participation 0.333333
-	luck 0.25
-	social engagment 0.176471
-	heroes 0.142857
-	chance 0.125
-	kill the master 0.111111
-	randomness 0.111111
-	serendipity 0.105263
-	people 0.09375
-	homogeneity 0.0909091
-keyword github
-	improvement 0.125
-	wikipedia 0.111111
-	collaboration 0.0377358
-	coding 0.0344828
-	open source 0.0338983
-	collective intelligence 0.0294118
-	archiving 0.0263158
-	programming 0.0192308
-	community 0.016129
-keyword give everything away
-	education 0.0344828
-	sharing 0.0175439
-keyword glitch
-	confusion 0.25
-	debugging 0.166667
-	error 0.142857
-	bugs 0.1
-	limitations 0.0869565
-	opacity 0.0833333
-	kinect 0.0714286
-	camera 0.0588235
-	dysfunction 0.05
-	control 0.0454545
-keyword globalization
-	english 0.5
-	arabic 0.333333
-	politics 0.2
-	language 0.106383
-	communication 0.0816327
-	humanity 0.08
-	education 0.0555556
-	society 0.05
-	internet 0.0434783
-	visualization 0.0322581
-keyword god
-	god mode 0.2
-	cosmogeny 0.1875
-	magic 0.117647
-	coding 0.111111
-	rules 0.0769231
-	world building 0.0666667
-	simulation 0.0508475
-	reality 0.0344828
-	digital meets physical 0.0263158
-	nature 0.0222222
-keyword god mode
-	cosmogeny 0.277778
-	god 0.2
-	world building 0.111111
-	visual effects 0.111111
-	creation 0.111111
-	simulation 0.1
-	mysticism 0.1
-	philsophy 0.0909091
-	existence 0.0909091
-	physics 0.0869565
-keyword golan levin
-	beginnings 0.025
-	learning 0.0217391
-keyword google
-	gadget 0.428571
-	corporate 0.285714
-	dystopia 0.2
-	internet culture 0.166667
-	apple 0.125
-	gadgets 0.125
-	digital culture 0.125
-	wearables 0.1
-	cyberpunk 0.0909091
-	research 0.0909091
-keyword gps
-	maps 0.615385
-	location 0.25
-	data ownership 0.208333
-	open paths 0.166667
-	personal data 0.119048
-	trace of your life 0.0909091
-	infrastructure 0.0769231
-	data 0.0625
-	memory 0.0606061
-	cities 0.0588235
-keyword graphic design
-	how did you get into working with code? 1
-	art world 0.125
-	beginnings 0.025
-keyword gratitude
-	being 1
-	journey 0.111111
-	career 0.0357143
-keyword growth
-	organic 0.4
-	architecture 0.2
-	media 0.2
-	product 0.166667
-	improvement 0.125
-	3d printing 0.105263
-	biology 0.0645161
-	newness 0.030303
-	new media 0.0277778
-	digital meets physical 0.0263158
-keyword gui
-	inversion 1
-	keyboard 1
-	mouse 1
-	think different 1
-	subversion 0.5
-	why? 0.333333
-	hacking 0.166667
-	sketching 0.0625
-	interfaces 0.0588235
-	play 0.05
-keyword guru
-	knowledge 0.142857
-	mentors 0.0909091
-	learning 0.0217391
-	sharing 0.0175439
-keyword hack
-	prank 0.2
-	surveillance 0.1875
-	fat 0.142857
-	privacy 0.117647
-	humor 0.111111
-	information as weapon 0.111111
-	network security 0.1
-	net.art 0.0769231
-	staring at screens 0.0714286
-	information 0.0588235
-keyword hackathon
-	collaboration 0.166667
-	synergy 0.166667
-	working with others 0.153846
-	art and code 0.0740741
-	connections 0.0714286
-	creativity 0.0540541
-	community 0.0441176
-	kinect 0.0434783
-	creative coding 0.0384615
-	art and tech 0.037037
-keyword hacker
-	addiction 0.333333
-	counterculture 0.25
-	esoteric 0.25
-	nerd 0.214286
-	beginnings 0.047619
-	programming 0.0392157
-	criticality 0.0357143
-	coding 0.0344828
-	social 0.0344828
-	tribe 0.0344828
-keyword hackers
-	criticality 0.0888889
-	transparency 0.0857143
-	anonymous 0.0769231
-	virus 0.0769231
-	information as weapon 0.0740741
-	hacking 0.0714286
-	elegance 0.0540541
-	interfaces 0.0512821
-	control 0.047619
-	users 0.0444444
-keyword hacking
-	think different 0.166667
-	gui 0.166667
-	inversion 0.166667
-	keyboard 0.166667
-	mouse 0.166667
-	subversion 0.142857
-	street art 0.142857
-	why? 0.125
-	infrastructure 0.125
-	symbiosis 0.0714286
-keyword hallucination
-	nano 0.5
-	subjectivity 0.142857
-	fantasy 0.125
-	dreams 0.111111
-	imagination 0.1
-	weird 0.0434783
-	art 0.0357143
-	science fiction 0.0357143
-	future 0.0204082
-keyword heroes
-	kill the master 0.333333
-	gift 0.142857
-	generations 0.1
-	mentors 0.0909091
-	sharing 0.0175439
-	community 0.0169492
-keyword heuristics
-	art and experience 0.75
-	branching 0.333333
-	touch 0.333333
-	intuition 0.285714
-	feedback 0.111111
-	mind and hand 0.1
-	imagination 0.0909091
-	process 0.0625
-	improvization 0.0588235
-	gesture 0.0555556
-keyword history
-	old media 0.340426
-	archiving 0.0735294
-	beginnings 0.0684932
-	preservation 0.0666667
-	newness 0.0625
-	videogames 0.0606061
-	demo scene 0.0526316
-	memory 0.0508475
-	art history 0.0487805
-	computer 0.0483871
-keyword homogeneity
-	originality 0.190476
-	influence 0.166667
-	tech-demo 0.142857
-	curation 0.125
-	meaning 0.125
-	ideas 0.105263
-	visual culture 0.1
-	poetry 0.0909091
-	gift 0.0909091
-	new media 0.0857143
-keyword hope
-	limits of the computer 0.333333
-	change 0.25
-	technoptimism 0.142857
-	utopia 0.0714286
-	problem solving 0.05
-	limitations 0.0434783
-	progress 0.04
-	society 0.0294118
-	future 0.0204082
-	complexity 0.0166667
-keyword how did you get into working with code?
-	graphic design 1
-	art world 0.125
-	beginnings 0.025
-keyword how does the work feed into itself?
-	iterative 1
-	intuition 0.166667
-	feedback 0.142857
-	form 0.142857
-	journey 0.111111
-	exploration 0.0625
-	generative art 0.0588235
-	creativity 0.037037
-	design 0.0357143
-keyword human life
-	documentation 1
-	quantified self 0.166667
-	narrative 0.0769231
-	archiving 0.0285714
-	personal data 0.0277778
-	data 0.0175439
-keyword humanism
-	post-digital 0.157895
-	what does post-digital mean? 0.142857
-	dichotomy 0.142857
-	own the tool 0.125
-	social engagment 0.111111
-	people 0.09375
-	mastery 0.0769231
-	challenges 0.0714286
-	struggle with technology 0.0666667
-	empathy 0.0666667
-keyword humanity
-	politics 0.166667
-	people 0.15
-	internet of things 0.111111
-	things 0.111111
-	society 0.108696
-	social 0.1
-	philsophy 0.1
-	existence 0.1
-	machine aesthetics 0.0952381
-	participation 0.0952381
-keyword humor
-	serious 0.333333
-	bravado 0.2
-	paul rand 0.2
-	prank 0.2
-	fat 0.142857
-	hack 0.111111
-	useful 0.0833333
-	net.art 0.0769231
-	generations 0.0714286
-	mentors 0.0666667
-keyword hybridity
-	interdisciplinary 0.434783
-	creative coders 0.115385
-	tribe 0.113636
-	art and code 0.111111
-	knowledge 0.111111
-	nerd 0.0909091
-	aesthetics and computation 0.0833333
-	architecture 0.0689655
-	science 0.0645161
-	music 0.0625
-keyword ideas
-	originality 0.2
-	memes 0.111111
-	curation 0.111111
-	homogeneity 0.105263
-	visual culture 0.0645161
-	frontier 0.0625
-	anthropology 0.0625
-	apporopriation 0.0625
-	influence 0.0588235
-	ego 0.0588235
-keyword identity
-	personal data 0.157895
-	consciousness 0.0833333
-	social media 0.0735294
-	privacy 0.0731707
-	facebook 0.0714286
-	avatar 0.0645161
-	quantified self 0.0588235
-	subjectivity 0.0588235
-	social 0.0566038
-	performance art 0.0540541
-keyword ignorance
-	network security 0.166667
-	the cloud 0.125
-	program or be programmed 0.047619
-	users 0.0434783
-	criticality 0.04
-	complexity 0.0169492
-keyword illusion
-	project example 1
-	liveness 0.0714286
-	magic 0.0666667
-	gesture 0.0625
-	play 0.05
-	drawing 0.037037
-keyword image
-	noninteractivity 1
-	post-digital 0.0666667
-	design 0.0357143
-	interactivity 0.0285714
-keyword images
-	pleasure 1
-	subjectivity 0.166667
-	aesthetics 0.0454545
-	beauty 0.03125
-keyword imaginary
-	teleportation 0.5
-	multiverse 0.333333
-	form 0.125
-	utopia 0.0714286
-	abstraction 0.0666667
-	science fiction 0.0357143
-	virtual 0.0294118
-	future 0.0204082
-keyword imagination
-	debugging 0.181818
-	dreams 0.133333
-	nano 0.111111
-	hallucination 0.1
-	heuristics 0.0909091
-	change 0.0909091
-	art and experience 0.0833333
-	branching 0.0769231
-	play 0.0740741
-	surprise 0.0740741
-keyword immersion
-	reading 0.117647
-	exploration 0.111111
-	discovery 0.111111
-	architecture 0.1
-	zen 0.0869565
-	information 0.08
-	seamlessness 0.0714286
-	library 0.0714286
-	interfaces 0.0689655
-	cameras 0.0666667
-keyword improvement
-	operating systems 0.166667
-	success 0.125
-	github 0.125
-	growth 0.125
-	engineering 0.117647
-	mastery 0.0909091
-	software 0.0714286
-	opacity 0.0714286
-	coding 0.0689655
-	technology 0.0555556
-keyword improvization
-	gesture 0.24
-	thinking through code 0.133333
-	sketching 0.107143
-	feedback 0.1
-	collaboration with machines 0.1
-	surprise 0.09375
-	fantasy technology 0.0833333
-	embodiment 0.0833333
-	drawing 0.0769231
-	liveness 0.0740741
-keyword in a sense are you running through an evolutionary process?
-keyword inexactitude
-	truth 0.214286
-	playfulness 0.166667
-	memory 0.111111
-	noise 0.111111
-	probability 0.0833333
-	chaos 0.0714286
-	art vs engineering 0.0689655
-	chance 0.0625
-	data 0.05
-	play 0.04
-keyword infinite conversation
-	completion 0.5
-	infinite game 0.5
-	evaluation 0.166667
-	clouds 0.0434783
-	art vs engineering 0.0384615
-	future of cinema 0.025641
-keyword infinite game
-	completion 1
-	infinite conversation 0.5
-	evaluation 0.2
-	art vs engineering 0.04
-keyword infinite in all directions
-	why 0.25
-	post-digital 0.0666667
-	design 0.0357143
-	history 0.0263158
-	technological progress 0.0166667
-keyword infinity
-	cellular automata 0.214286
-	universe 0.176471
-	artificial life 0.12
-	algorithm 0.108108
-	world building 0.0952381
-	emergence 0.0909091
-	cosmogeny 0.0833333
-	elegance 0.0833333
-	games 0.0714286
-	philosophy 0.0666667
-keyword influence
-	homogeneity 0.166667
-	style 0.133333
-	visual culture 0.117647
-	ideas 0.0588235
-	originality 0.047619
-	processing 0.04
-	progress 0.04
-keyword influences
-	research 0.142857
-	interdisciplinary 0.0909091
-	science 0.0909091
-	music 0.0833333
-	culture 0.05
-	hybridity 0.0416667
-	creativity 0.0357143
-	biology 0.0333333
-	process 0.03125
-keyword information
-	reading 0.125
-	serendipity 0.08
-	immersion 0.08
-	library 0.0769231
-	communication 0.0754717
-	discovery 0.0740741
-	problem solving 0.0666667
-	data 0.0606061
-	hack 0.0588235
-	legibility 0.0555556
-keyword information as weapon
-	virus 0.125
-	transparency 0.117647
-	hack 0.111111
-	wikipedia 0.1
-	network security 0.1
-	hackers 0.0740741
-	security 0.0714286
-	memes 0.0555556
-	surveillance 0.0555556
-	big data 0.04
-keyword information overload
-	connectivity 0.5
-	alone together 0.333333
-	balance 0.333333
-	focus 0.142857
-	distraction 0.1
-	embodiment 0.0909091
-	zen 0.0909091
-	attention 0.0666667
-keyword infrastructure
-	cities 0.25
-	open paths 0.2
-	hacking 0.125
-	network security 0.125
-	symbiosis 0.0909091
-	gps 0.0769231
-	power 0.0740741
-	engineering 0.0625
-	transparency 0.0625
-	critical engineering 0.0588235
-keyword innovation
-	diy 0.25
-	generations 0.0833333
-	interfaces 0.0526316
-	evolution 0.047619
-	originality 0.0454545
-	hackers 0.0384615
-	old media 0.037037
-	newness 0.03125
-	process 0.030303
-	history 0.025
-keyword insight
-	meaning 0.25
-	critique 0.0625
-	emotion 0.04
-keyword installation
-	light 0.428571
-	projection 0.25
-	formalism 0.111111
-	sculpture 0.0909091
-	interactivity 0.0769231
-	form 0.0769231
-	digital meets physical 0.0769231
-	accessibility 0.0769231
-	phenomena 0.0714286
-	architecture 0.0714286
-keyword instrument
-	expression 0.142857
-	play 0.142857
-	mastery 0.1
-	mind and hand 0.0909091
-	children 0.0769231
-	thinking by doing 0.0714286
-	interactivity 0.0540541
-	exploration 0.0526316
-	gesture 0.0526316
-	tools 0.0487805
-keyword intelligence
-	thinking 0.1
-	solutions 0.0526316
-	cognition 0.0357143
-	collective intelligence 0.03125
-	internet 0.025
-	collaboration 0.0192308
-	technological progress 0.0163934
-	data visualization 0.0144928
-keyword interactivity
-	play 0.145833
-	children 0.097561
-	gesture 0.0851064
-	installation 0.0769231
-	liveness 0.0652174
-	immersion 0.0652174
-	interfaces 0.0612245
-	instrument 0.0540541
-	participation 0.0526316
-	behavior 0.0512821
-keyword interconnectedness
-	dreams 0.133333
-	the gift 0.111111
-	noosphere 0.111111
-	invisibility 0.111111
-	generosity 0.111111
-	utopia 0.1
-	progress 0.1
-	alone together 0.0909091
-	change 0.0909091
-	metaphor 0.0833333
-keyword interdisciplinary
-	hybridity 0.434783
-	knowledge 0.214286
-	creative coders 0.142857
-	architecture 0.125
-	multimedia 0.1
-	influences 0.0909091
-	art and code 0.08
-	learning 0.0566038
-	education 0.0540541
-	music 0.05
-keyword interesting
-	birth 1
-	creation 0.5
-	evolution 0.0526316
-	process 0.0322581
-keyword interfaces
-	augmented reality 0.238095
-	ubiquity 0.136364
-	wearables 0.1
-	fantasy 0.0909091
-	cyborg 0.0714286
-	immersion 0.0689655
-	real and virtual 0.0666667
-	videogames 0.0652174
-	interactivity 0.0612245
-	gui 0.0588235
-keyword international
-	collaboration 0.0196078
-	open source 0.0175439
-keyword internet
-	network 0.339623
-	collective intelligence 0.147541
-	communication 0.121622
-	social media 0.0933333
-	interconnectedness 0.0666667
-	power 0.0483871
-	network security 0.0465116
-	focus 0.0454545
-	the cloud 0.0444444
-	globalization 0.0434783
-keyword internet culture
-	digital culture 0.333333
-	cyberpunk 0.166667
-	google 0.166667
-	stock market 0.125
-	utopia 0.0769231
-	economics 0.0666667
-	algorithms 0.0625
-	dystopia 0.0555556
-	science fiction 0.037037
-keyword internet of things
-	things 1
-	existence 0.5
-	philsophy 0.5
-	machine aesthetics 0.4
-	humanity 0.111111
-	new aesthetic 0.0714286
-	man vs machine 0.0571429
-keyword intuition
-	heuristics 0.285714
-	art and experience 0.25
-	branching 0.222222
-	feedback 0.181818
-	iterative 0.166667
-	how does the work feed into itself? 0.166667
-	exploration 0.157895
-	data mining 0.142857
-	mysticism 0.125
-	creativity 0.1
-keyword invention
-	change 0.125
-	addiction 0.111111
-	evolution 0.0869565
-	imagination 0.0714286
-	old media 0.0689655
-	cognition 0.0645161
-	transparency 0.0526316
-	magic 0.05
-	computation 0.0322581
-	power 0.0322581
-keyword inversion
-	gui 1
-	keyboard 1
-	mouse 1
-	think different 1
-	subversion 0.5
-	why? 0.333333
-	hacking 0.166667
-	sketching 0.0625
-	interfaces 0.0588235
-	play 0.05
-keyword invisibility
-	metaphor 0.25
-	interconnectedness 0.111111
-	culture 0.0526316
-	scale 0.0454545
-	visualization 0.0434783
-	systems 0.027027
-	complexity 0.0169492
-keyword iphone
-	devices 0.04
-	network 0.03125
-	internet 0.025641
-keyword iteration
-	working iteratively generatively in a process that can go on forever? 0.25
-	choosing 0.25
-	generative process 0.25
-	rendering 0.2
-	efficiency 0.142857
-	form 0.1
-	gardening 0.0909091
-	thinking 0.0833333
-	randomness 0.0625
-	time 0.0555556
-keyword iterative
-	how does the work feed into itself? 1
-	intuition 0.166667
-	feedback 0.142857
-	form 0.142857
-	journey 0.111111
-	exploration 0.0625
-	generative art 0.0588235
-	creativity 0.037037
-	design 0.0357143
-keyword jewelry
-	business 0.333333
-	product 0.333333
-	cultural value 0.125
-	design 0.0357143
-keyword john maeda
-	media lab 0.266667
-	aesthetics and computation 0.235294
-	beginnings 0.0714286
-	art and code 0.047619
-	learning 0.0408163
-	hybridity 0.037037
-	processing 0.0357143
-	career 0.03125
-	design 0.03125
-	new media 0.027027
-keyword journalism
-	nytimes 0.2
-	datatelling 0.153846
-	virality 0.0909091
-	algorithms 0.0555556
-	twitter 0.0526316
-	data 0.0344828
-	storytelling 0.0327869
-	artificial intelligence 0.0222222
-	sharing 0.0169492
-keyword journey
-	career 0.121212
-	being 0.111111
-	iterative 0.111111
-	how does the work feed into itself? 0.111111
-	mortality 0.111111
-	gratitude 0.111111
-	art 0.0909091
-	work 0.0909091
-	creativity 0.0909091
-	life 0.0909091
-keyword julian oliver
-	art and security 0.333333
-	network security 0.166667
-	control 0.05
-	users 0.0434783
-	power 0.0384615
-	internet 0.025641
-keyword keyboard
-	gui 1
-	inversion 1
-	mouse 1
-	think different 1
-	subversion 0.5
-	why? 0.333333
-	hacking 0.166667
-	sketching 0.0625
-	interfaces 0.0588235
-	play 0.05
-keyword kids
-	audiovisualization 0.1
-	interactivity 0.0285714
-keyword kill the master
-	heroes 0.333333
-	mentors 0.272727
-	passing the baton 0.25
-	generations 0.181818
-	gift 0.111111
-	teaching 0.0555556
-	career 0.0333333
-	education 0.0322581
-	sharing 0.0169492
-	community 0.0163934
-keyword kinect
-	camera 0.153846
-	microsoft 0.0833333
-	gesture recognition 0.0833333
-	visual effects 0.0769231
-	glitch 0.0714286
-	efficiency 0.0666667
-	future of cinema 0.0638298
-	research 0.0588235
-	assistive technology 0.0588235
-	machine vision 0.0555556
-keyword knowledge
-	interdisciplinary 0.214286
-	creative coders 0.181818
-	book 0.142857
-	guru 0.142857
-	motion 0.111111
-	hybridity 0.111111
-	r&d 0.0909091
-	research 0.0833333
-	learning 0.0816327
-	architecture 0.0714286
-keyword language
-	english 0.139535
-	code 0.121622
-	globalization 0.106383
-	programming 0.0952381
-	communication 0.0875
-	arabic 0.0869565
-	thinking with code 0.0769231
-	struggle with technology 0.0612245
-	cognition 0.0606061
-	frustration 0.0588235
-keyword laughter
-	fantasy technology 0.0833333
-	emotion 0.08
-	weird 0.0434783
-keyword leadership
-	social engineering 1
-	social dynamics 0.125
-keyword learning
-	beginnings 0.131579
-	programming 0.117647
-	knowledge 0.0816327
-	coding 0.0746269
-	education 0.0714286
-	tradition 0.0652174
-	sharing 0.0618557
-	hybridity 0.0615385
-	processing 0.0606061
-	struggle with technology 0.0576923
-keyword legibility
-	nytimes 0.125
-	data visualization 0.0724638
-	social 0.0666667
-	simplicity 0.0588235
-	information 0.0555556
-	complexity 0.0483871
-	social media 0.0425532
-	communication 0.0416667
-	scale 0.037037
-	design 0.030303
-keyword legos
-	minecraft 0.2
-	toolkit 0.142857
-	world building 0.133333
-	possibility 0.1
-	fantasy 0.0909091
-	dreams 0.0833333
-	program or be programmed 0.0833333
-	opacity 0.0714286
-	cosmogeny 0.0526316
-	open source 0.0508475
-keyword library
-	reading 0.2
-	information 0.0769231
-	immersion 0.0714286
-keyword life
-	mortality 0.333333
-	work 0.2
-	success 0.166667
-	career 0.107143
-	failure 0.0909091
-	journey 0.0909091
-	children 0.0833333
-	generations 0.0833333
-	money 0.0714286
-	time 0.0588235
-keyword lifetracking
-	quantified self 0.25
-	performance art 0.0833333
-	memory 0.0769231
-	relationships 0.0714286
-	archiving 0.0540541
-	twitter 0.05
-	personal data 0.025641
-	social media 0.0217391
-keyword light
-	projection 0.5
-	installation 0.428571
-	formalism 0.2
-	sculpture 0.142857
-	form 0.111111
-	architecture 0.1
-	digital meets physical 0.0857143
-	virtual 0.0285714
-keyword limitations
-	error 0.102564
-	artificial intelligence 0.101695
-	complexity 0.0945946
-	computation 0.0909091
-	glitch 0.0869565
-	man vs machine 0.0754717
-	poetry 0.0740741
-	systems 0.0727273
-	computer 0.0652174
-	logic 0.0625
-keyword limits of the computer
-	hope 0.333333
-	beautiful exhuberance 0.25
-	visual culture 0.0555556
-	originality 0.047619
-	limitations 0.0434783
-	old media 0.0384615
-	newness 0.0322581
-	beauty 0.030303
-	new media 0.0294118
-	future 0.0204082
-keyword line
-	collaboration with machines 0.142857
-	mind and hand 0.125
-	thinking by doing 0.0909091
-	drawing 0.037037
-	process 0.0322581
-	tools 0.025641
-keyword literacy
-	openness 0.25
-	critical engineering 0.125
-	symbiosis 0.0909091
-	opacity 0.0833333
-	transparency 0.0625
-	program or be programmed 0.0434783
-	users 0.04
-	criticality 0.037037
-	computer 0.0344828
-	man vs machine 0.027027
-keyword live
-	audience 0.333333
-	embodiment 0.0909091
-	fantasy technology 0.0909091
-	improvization 0.0666667
-	gesture 0.0625
-	science fiction 0.037037
-	interactivity 0.0285714
-	future 0.0208333
-keyword liveness
-	audiovisualization 0.263158
-	sound 0.2
-	gesture 0.153846
-	thinking through code 0.142857
-	drawing 0.138889
-	music 0.136364
-	magic 0.115385
-	zen 0.0869565
-	time 0.0740741
-	improvization 0.0740741
-keyword location
-	open paths 0.4
-	gps 0.25
-	maps 0.166667
-	data ownership 0.1
-	personal data 0.0810811
-	datatelling 0.0666667
-	privacy 0.0588235
-	memory 0.037037
-	drawing 0.0333333
-	archiving 0.0263158
-keyword logic
-	math 0.176471
-	abstraction 0.130435
-	elegance 0.125
-	computation 0.0857143
-	what do you find beautiful about code? 0.0833333
-	syntax 0.0833333
-	ocd 0.0833333
-	computer 0.0833333
-	book 0.0833333
-	order 0.0769231
-keyword love
-	sex 0.285714
-	relationships 0.1875
-	crowdsourcing 0.125
-	emotion 0.0645161
-	datatelling 0.0526316
-	virtual 0.0512821
-	cyborg 0.05
-	privacy 0.047619
-	physicality 0.0416667
-	twitter 0.0416667
-keyword luck
-	chance 0.272727
-	gift 0.25
-	serendipity 0.214286
-	randomness 0.142857
-	journey 0.0909091
-	art 0.0344828
-	sharing 0.0344828
-keyword machine aesthetics
-	internet of things 0.4
-	things 0.4
-	existence 0.285714
-	philsophy 0.285714
-	antihuman 0.2
-	digital 0.2
-	artificiality 0.181818
-	new aesthetic 0.137931
-	cyberpunk 0.1
-	humanity 0.0952381
-keyword machine vision
-	camera 0.311111
-	new aesthetic 0.173913
-	ubiquitous computing 0.153846
-	face tracking 0.142857
-	sensor 0.103448
-	surveillance 0.0810811
-	cameras 0.0769231
-	object recognition 0.0769231
-	ubiquity 0.0625
-	kinect 0.0555556
-keyword magic
-	god 0.117647
-	liveness 0.115385
-	gesture 0.107143
-	zen 0.0833333
-	coding 0.0789474
-	drawing 0.0769231
-	time 0.0714286
-	illusion 0.0666667
-	motivational 0.0666667
-	project example 0.0666667
-keyword maker
-	concept 1
-	thinkerer 1
-	art world 0.125
-	career 0.0357143
-keyword making things
-	3d printing 0.0588235
-	physicality 0.0588235
-keyword malevich
-	art history 0.2
-	abstraction 0.0714286
-	emotion 0.04
-keyword man versus machine
-	utopia 0.0769231
-	culture 0.0526316
-	society 0.030303
-	future 0.0208333
-	technological progress 0.0166667
-keyword man vs machine
-	symbiosis 0.222222
-	dystopia 0.152174
-	artificial intelligence 0.147059
-	bots 0.097561
-	power 0.0892857
-	cognition 0.0877193
-	machine aesthetics 0.0810811
-	google 0.0789474
-	control 0.0784314
-	perception 0.0757576
-keyword manufacturing
-	economics 0.0666667
-	devices 0.04
-keyword maps
-	gps 0.615385
-	data ownership 0.166667
-	location 0.166667
-	frontier 0.1
-	trace of your life 0.1
-	personal data 0.0952381
-	open paths 0.0833333
-	data 0.046875
-	privacy 0.0434783
-	data visualization 0.04
-keyword mastery
-	gesture 0.210526
-	painting 0.166667
-	skill 0.125
-	success 0.1
-	instrument 0.1
-	branching 0.0909091
-	improvement 0.0909091
-	humanism 0.0769231
-	mind and hand 0.0714286
-	drawing 0.0625
-keyword math
-	logic 0.176471
-	abstraction 0.105263
-	computation 0.102041
-	arabic 0.09375
-	computer 0.0784314
-	algorithm 0.0740741
-	struggle with technology 0.0571429
-	bots 0.0555556
-	infinity 0.0540541
-	beauty 0.0526316
-keyword meaning
-	tech-demo 0.4
-	insight 0.25
-	poetry 0.222222
-	critique 0.176471
-	food 0.166667
-	why 0.142857
-	philsophy 0.142857
-	homogeneity 0.125
-	criticality 0.0740741
-	art vs engineering 0.0740741
-keyword media
-	everyday 0.5
-	art and experience 0.2
-	growth 0.2
-	experience 0.0526316
-	culture 0.05
-	newness 0.0322581
-	new media 0.0294118
-	technological progress 0.0163934
-keyword media lab
-	aesthetics and computation 0.666667
-	john maeda 0.266667
-	acu 0.133333
-	art and code 0.107143
-	beginnings 0.08
-	education 0.075
-	teaching 0.0714286
-	open frameworks 0.0666667
-	working with others 0.0625
-	hybridity 0.0571429
-keyword memes
-	virality 0.210526
-	visual culture 0.192308
-	originality 0.172414
-	youtube 0.142857
-	curation 0.125
-	ideas 0.111111
-	style 0.0740741
-	anthropology 0.0714286
-	virus 0.0588235
-	weird 0.0588235
-keyword memory
-	archiving 0.340909
-	personal data 0.276596
-	preservation 0.133333
-	inexactitude 0.111111
-	data 0.0945946
-	truth 0.09375
-	data ownership 0.0769231
-	lifetracking 0.0769231
-	the cloud 0.0666667
-	gps 0.0606061
-keyword mentors
-	generations 0.4
-	kill the master 0.272727
-	passing the baton 0.181818
-	veterans 0.0909091
-	shifts 0.0909091
-	paul rand 0.0909091
-	paul burke 0.0909091
-	mentorship 0.0909091
-	heroes 0.0909091
-	guru 0.0909091
-keyword mentorship
-	passing the baton 0.5
-	mentors 0.0909091
-	career 0.0357143
-	education 0.0344828
-keyword messiness
-	order 1
-	elegance 0.133333
-	biology and code 0.0769231
-	logic 0.0769231
-	systems 0.0540541
-	biology 0.0333333
-keyword meta
-	recursion 1
-	fantasy technology 0.0909091
-	improvization 0.0666667
-	clouds 0.0454545
-	visualization 0.0434783
-	future of cinema 0.0263158
-keyword metaphor
-	invisibility 0.25
-	space 0.2
-	synthetic biology 0.166667
-	interconnectedness 0.0833333
-	scale 0.0833333
-	universe 0.0833333
-	biology and code 0.0666667
-	artificial life 0.05
-	culture 0.0454545
-	weird 0.04
-keyword methodology
-	art vs engineering 0.04
-	thinking with code 0.037037
-	design 0.0357143
-	process 0.0322581
-keyword microscope
-	vision 0.111111
-	revelation 0.0909091
-	zoom 0.0909091
-	scale 0.08
-	representation 0.05
-	data visualization 0.0428571
-	big data 0.04
-	social 0.0333333
-	camera 0.027027
-	nature 0.0217391
-keyword microsoft
-	research 0.166667
-	kinect 0.0833333
-keyword military technology
-	surveillance 0.266667
-	darpa 0.2
-	drones 0.2
-	face tracking 0.1
-	ubiquity 0.0833333
-	security 0.0714286
-	power 0.0689655
-	camera 0.0555556
-	critical engineering 0.0526316
-	data ownership 0.0454545
-keyword mind
-	uture 0.333333
-	why are you attracted to abstraction?abstraction 0.333333
-	artificiality 0.222222
-	consciousness 0.2
-	why? 0.2
-	utopia 0.142857
-	subjectivity 0.125
-	self expression 0.1
-	artificial intelligence 0.0454545
-	creativity 0.0344828
-keyword mind and hand
-	branching 0.3
-	thinking by doing 0.1875
-	drawing 0.129032
-	line 0.125
-	creative exploration 0.125
-	skill 0.111111
-	heuristics 0.1
-	art and experience 0.0909091
-	instrument 0.0909091
-	expression 0.0909091
-keyword minecraft
-	legos 0.2
-	world building 0.0833333
-	cosmogeny 0.0666667
-	toolkit 0.0526316
-	open source 0.0175439
-keyword mirror
-	focus 0.142857
-	performance art 0.111111
-	staring at screens 0.1
-	embodiment 0.0909091
-	surveillance 0.0714286
-	attention 0.0666667
-keyword mobile
-	augmented reality 0.181818
-	fantasy 0.1
-	staring at screens 0.0769231
-	experience design 0.0714286
-	communication 0.0666667
-	immersion 0.0588235
-	facebook 0.0555556
-	real and virtual 0.0555556
-	representation 0.0526316
-	interfaces 0.05
-keyword money
-	economics 0.285714
-	commercialism 0.16
-	career 0.142857
-	commercial art 0.111111
-	software 0.1
-	work and life 0.0833333
-	open source 0.078125
-	corporate 0.0714286
-	struggle 0.0714286
-	life 0.0714286
-keyword mortality
-	life 0.333333
-	work 0.333333
-	journey 0.111111
-	time 0.0666667
-	career 0.0357143
-keyword motion
-	book 0.333333
-	geometry 0.333333
-	particles 0.333333
-	story 0.181818
-	knowledge 0.111111
-	logic 0.0714286
-	cosmogeny 0.0588235
-	teaching 0.0555556
-	storytelling 0.0327869
-keyword motivation
-	visualization 0.0434783
-	future of cinema 0.0263158
-keyword motivational
-	fun 0.333333
-	magic 0.0666667
-	power 0.0384615
-	programming 0.0204082
-keyword mouse
-	gui 1
-	inversion 1
-	keyboard 1
-	think different 1
-	subversion 0.5
-	why? 0.333333
-	hacking 0.166667
-	sketching 0.0625
-	interfaces 0.0588235
-	play 0.05
-keyword multimedia
-	interdisciplinary 0.1
-	3d printing 0.0588235
-	hybridity 0.0434783
-	process 0.0322581
-keyword multiverse
-	song: fourtet peace for earth 0.5
-	imaginary 0.333333
-	form 0.125
-	phenomena 0.111111
-	utopia 0.0714286
-	abstraction 0.0666667
-	virtual 0.0294118
-	nature 0.0232558
-	simulation 0.0169492
-keyword museums
-	preservation 0.230769
-	digital art 0.166667
-	curation 0.111111
-	focus 0.0833333
-	cultural value 0.0769231
-	net.art 0.0714286
-	distraction 0.0666667
-	immersion 0.0526316
-	archiving 0.0512821
-	attention 0.05
-keyword music
-	audiovisualization 0.3125
-	synesthesia 0.166667
-	sound 0.153846
-	liveness 0.136364
-	techno 0.0909091
-	subliminal 0.0909091
-	electronic music 0.0909091
-	sensation 0.0833333
-	influences 0.0833333
-	hybridity 0.0625
-keyword mutlisensory
-	embodiment 0.0909091
-	improvization 0.0666667
-	gesture 0.0625
-	physicality 0.0588235
-	experience 0.0555556
-	perception 0.0277778
-keyword mysticism
-	intuition 0.125
-	god mode 0.1
-	cosmogeny 0.0588235
-	clouds 0.0416667
-	reality 0.0357143
-	computer 0.0344828
-	creativity 0.0344828
-	science fiction 0.0344828
-	virtual 0.0285714
-	code 0.0238095
-keyword nano
-	hallucination 0.5
-	fantasy 0.142857
-	dreams 0.125
-	imagination 0.111111
-	weird 0.0454545
-	science fiction 0.037037
-	future 0.0208333
-keyword narrative
-	cinema 0.25
-	future of cinema 0.186047
-	storytelling 0.140625
-	documentation 0.0769231
-	human life 0.0769231
-	singularity 0.0588235
-	quantified self 0.0555556
-	social dynamics 0.05
-	consciousness 0.047619
-	journey 0.047619
-keyword nature
-	simulation 0.190476
-	universe 0.159091
-	physics 0.134615
-	emergence 0.0983607
-	cosmogeny 0.0961538
-	phenomena 0.0869565
-	systems 0.0821918
-	biology 0.0757576
-	scale 0.0666667
-	complexity 0.0631579
-keyword nature of code
-	computation 0.0384615
-	computer 0.037037
-	math 0.0357143
-	nature 0.0238095
-keyword nerd
-	tribe 0.258065
-	hacker 0.214286
-	addiction 0.133333
-	hybridity 0.0909091
-	beginnings 0.0816327
-	flash 0.0769231
-	esoteric 0.0769231
-	brogrammers 0.0769231
-	counterculture 0.0769231
-	own the tool 0.0714286
-keyword net.art
-	focus 0.230769
-	attention 0.142857
-	distraction 0.117647
-	prank 0.111111
-	chrome 0.111111
-	fat 0.0909091
-	curation 0.0833333
-	hack 0.0769231
-	humor 0.0769231
-	museums 0.0714286
-keyword network
-	internet 0.339623
-	collective intelligence 0.166667
-	the cloud 0.111111
-	twitter 0.0888889
-	social media 0.0869565
-	interconnectedness 0.0789474
-	collaboration 0.0506329
-	security 0.05
-	relationships 0.0487805
-	biology and code 0.047619
-keyword network security
-	julian oliver 0.166667
-	ignorance 0.166667
-	art and security 0.125
-	infrastructure 0.125
-	anonymous 0.111111
-	power 0.103448
-	hack 0.1
-	information as weapon 0.1
-	cities 0.0833333
-	control 0.0833333
-keyword networks
-	collaboration 0.0196078
-keyword new aesthetic
-	machine vision 0.173913
-	machine aesthetics 0.137931
-	artificiality 0.125
-	artificial intelligence 0.0923077
-	video art 0.0714286
-	internet of things 0.0714286
-	things 0.0714286
-	man vs machine 0.0677966
-	existence 0.0666667
-	trendspotting 0.0666667
-keyword new media
-	newness 0.145455
-	art and tech 0.113636
-	old media 0.0943396
-	homogeneity 0.0857143
-	originality 0.0816327
-	cultural value 0.0789474
-	art world 0.0789474
-	creative coding 0.0666667
-	critique 0.0652174
-	evaluation 0.0555556
-keyword newness
-	originality 0.162791
-	new media 0.145455
-	technological progress 0.111111
-	generations 0.0810811
-	old media 0.0784314
-	history 0.0625
-	obsolescence 0.0571429
-	style 0.0465116
-	ideas 0.0454545
-	discovery 0.0454545
-keyword noise
-	organic 0.166667
-	chance 0.153846
-	sound 0.142857
-	randomness 0.133333
-	inexactitude 0.111111
-	probability 0.1
-	chaos 0.0833333
-	audiovisualization 0.0769231
-	liveness 0.0588235
-	critique 0.0526316
-keyword noninteractivity
-	image 1
-	post-digital 0.0666667
-	design 0.0357143
-	interactivity 0.0285714
-keyword noosphere
-	alone together 0.333333
-	the cloud 0.125
-	interconnectedness 0.111111
-	clouds 0.0454545
-	network 0.03125
-	digital meets physical 0.0285714
-	systems 0.027027
-	internet 0.025641
-keyword nostalgia
-	travel 0.25
-	artificiality 0.0909091
-	old media 0.0740741
-	world building 0.0666667
-	data ownership 0.047619
-	memory 0.037037
-	emotion 0.0357143
-	newness 0.030303
-	videogames 0.0285714
-	new media 0.0277778
-keyword novelty
-	newness 0.0333333
-	technological progress 0.0166667
-keyword number
-	random 1
-	probability 0.142857
-	chance 0.0909091
-	randomness 0.0769231
-	math 0.0357143
-	algorithm 0.0333333
-keyword nytimes
-	journalism 0.2
-	legibility 0.125
-	datatelling 0.0714286
-	complexity 0.0333333
-	data visualization 0.0289855
-	data 0.0169492
-keyword object recognition
-	ubiquitous computing 0.5
-	sensor 0.333333
-	machine vision 0.0769231
-	camera 0.0606061
-	technological progress 0.0333333
-keyword objects
-	design process 0.666667
-	product 0.2
-	3d printing 0.111111
-	digital meets physical 0.0857143
-	design 0.0689655
-	post-digital 0.0588235
-	teaching 0.0555556
-	physicality 0.0526316
-	learning 0.0208333
-keyword obsolescence
-	death 0.181818
-	old media 0.142857
-	creative misuse 0.111111
-	apocalypse 0.0833333
-	devices 0.0666667
-	newness 0.0571429
-	creative coding 0.047619
-	history 0.0465116
-	weird 0.0357143
-	career 0.0294118
-keyword ocd
-	syntax 1
-	what do you find beautiful about code? 1
-	logic 0.0833333
-	elegance 0.0666667
-keyword old history
-	archiving 0.0285714
-	history 0.0263158
-keyword old media
-	history 0.340426
-	obsolescence 0.142857
-	evolution 0.1
-	new media 0.0943396
-	preservation 0.09375
-	newness 0.0784314
-	nostalgia 0.0740741
-	archiving 0.0714286
-	invention 0.0689655
-	death 0.0689655
-keyword opacity
-	critical engineering 0.136364
-	program or be programmed 0.107143
-	error 0.107143
-	creative misuse 0.0952381
-	technology 0.0909091
-	confusion 0.0909091
-	operating systems 0.0909091
-	engineering 0.0909091
-	openness 0.0909091
-	literacy 0.0833333
-keyword open frameworks
-	toolkit 0.193548
-	acu 0.166667
-	toolkits 0.15
-	aesthetics and computation 0.133333
-	open source 0.0869565
-	sharing 0.0869565
-	community 0.084507
-	media lab 0.0666667
-	teaching 0.0625
-	art and tech 0.0625
-keyword open paths
-	location 0.4
-	infrastructure 0.2
-	gps 0.166667
-	cities 0.111111
-	maps 0.0833333
-	datatelling 0.0714286
-	personal data 0.0540541
-	memory 0.0384615
-	drawing 0.0344828
-	network 0.0294118
-keyword open software
-	transparency 0.142857
-	critical engineering 0.133333
-	program or be programmed 0.0952381
-	creative misuse 0.0714286
-	tools 0.0512821
-	future 0.0204082
-	technological progress 0.0163934
-keyword open source
-	sharing 0.1875
-	toolkit 0.151515
-	economics 0.0909091
-	open frameworks 0.0869565
-	community 0.0841122
-	collaboration 0.08
-	tools 0.0786517
-	money 0.078125
-	education 0.075
-	program or be programmed 0.0684932
-keyword openness
-	literacy 0.25
-	toolkits 0.166667
-	critical engineering 0.133333
-	program or be programmed 0.0952381
-	opacity 0.0909091
-	creative misuse 0.0714286
-	transparency 0.0666667
-	power 0.037037
-	programming 0.02
-keyword operating system
-	c++ 1
-	engineering 0.0714286
-	systems 0.027027
-	language 0.0232558
-	programming 0.0204082
-keyword operating systems
-	improvement 0.166667
-	engineering 0.142857
-	opacity 0.0909091
-	software 0.0909091
-	technology 0.0666667
-	dysfunction 0.0526316
-	error 0.0454545
-keyword order
-	messiness 1
-	elegance 0.133333
-	biology and code 0.0769231
-	logic 0.0769231
-	systems 0.0540541
-	biology 0.0333333
-keyword organic
-	growth 0.4
-	architecture 0.222222
-	product 0.2
-	noise 0.166667
-	3d printing 0.111111
-	chance 0.0769231
-	biology 0.0666667
-	randomness 0.0666667
-	emergence 0.037037
-	digital meets physical 0.027027
-keyword organizations
-	business 0.333333
-	social dynamics 0.125
-	career 0.0357143
-	people 0.0357143
-keyword originality
-	ideas 0.2
-	visual culture 0.193548
-	homogeneity 0.190476
-	memes 0.172414
-	newness 0.162791
-	style 0.09375
-	curation 0.0909091
-	new media 0.0816327
-	commercialism 0.0571429
-	apporopriation 0.05
-keyword overview
-	space 0.5
-	perspective 0.25
-	zoom 0.142857
-keyword own the tool
-	choices 0.5
-	humanism 0.125
-	program or be programmed 0.0952381
-	nerd 0.0714286
-	post-digital 0.0625
-	limitations 0.0434783
-	hybridity 0.0416667
-	people 0.0344828
-	learning 0.0212766
-keyword painting
-	mastery 0.166667
-	gesture 0.0952381
-	art 0.0625
-	children 0.0625
-	drawing 0.0625
-	thinking by doing 0.0588235
-	simplicity 0.0555556
-	new media 0.0526316
-	improvization 0.047619
-	sketching 0.0454545
-keyword paola antonelli
-keyword parameter space
-	generative 0.5
-	possibility 0.333333
-	randomness 0.153846
-	serendipity 0.142857
-	surprise 0.1
-	exploration 0.0588235
-	generative art 0.0555556
-keyword parameters
-	constraints 0.5
-	code is messy 0.25
-	physics 0.0588235
-	nature 0.0238095
-	simulation 0.0172414
-keyword participation
-	gift 0.333333
-	social engagment 0.2
-	people 0.178571
-	humanity 0.0952381
-	tools 0.0731707
-	social 0.0689655
-	interactivity 0.0526316
-	interfaces 0.047619
-	storytelling 0.031746
-	personal data 0.025
-keyword particles
-	geometry 1
-	motion 0.333333
-	storytelling 0.0166667
-keyword partnership
-	teams 1
-	processing 0.0416667
-	collaboration 0.0196078
-keyword passing the baton
-	mentorship 0.5
-	kill the master 0.25
-	mentors 0.181818
-	generations 0.0909091
-	career 0.0714286
-	education 0.0689655
-keyword passion
-	business 0.333333
-	commercialism 0.0588235
-	art vs engineering 0.04
-	art 0.037037
-	career 0.0357143
-keyword pattern
-	gestalt 0.35
-	perception 0.222222
-	complexity 0.2
-	phenomena 0.173913
-	atmosphere 0.105263
-	flow 0.105263
-	data visualization 0.101266
-	prediction 0.0952381
-	perspective 0.0952381
-	zoom 0.0833333
-keyword paul burke
-	mentors 0.0909091
-	learning 0.0217391
-	sharing 0.0175439
-keyword paul rand
-	bravado 1
-	humor 0.2
-	generations 0.1
-	mentors 0.0909091
-	design 0.0357143
-keyword people
-	participation 0.178571
-	social 0.173913
-	humanity 0.15
-	relationships 0.114286
-	social engagment 0.108108
-	humanism 0.09375
-	gift 0.09375
-	social media 0.0923077
-	twitter 0.0714286
-	storytelling 0.060241
-keyword perception
-	pattern 0.222222
-	gestalt 0.157895
-	reality 0.127273
-	complexity 0.117647
-	scale 0.115385
-	data visualization 0.106383
-	visual cortex 0.0833333
-	experience 0.08
-	vision 0.0789474
-	man vs machine 0.0757576
-keyword performance
-	fluxus 0.25
-	zach lieberman 0.25
-	connections 0.2
-	apps 0.142857
-	performance art 0.0909091
-	liveness 0.0625
-	real and virtual 0.0588235
-	collaboration 0.0384615
-	social 0.0357143
-	drawing 0.0344828
-keyword performance art
-	fluxus 0.222222
-	apps 0.166667
-	mirror 0.111111
-	awkward 0.111111
-	performance 0.0909091
-	lifetracking 0.0833333
-	art history 0.0769231
-	quantified self 0.0714286
-	focus 0.0666667
-	journey 0.0588235
-keyword personal data
-	memory 0.276596
-	archiving 0.224138
-	identity 0.157895
-	privacy 0.136364
-	gps 0.119048
-	quantified self 0.105263
-	data ownership 0.102041
-	maps 0.0952381
-	data 0.0813954
-	location 0.0810811
-keyword perspective
-	zoom 0.375
-	overview 0.25
-	signals 0.25
-	phenomena 0.2
-	space 0.2
-	cities 0.1
-	revelation 0.1
-	pattern 0.0952381
-	gestalt 0.0909091
-	scale 0.0833333
-keyword phenomena
-	perspective 0.2
-	pattern 0.173913
-	zoom 0.153846
-	gestalt 0.142857
-	song: fourtet peace for earth 0.125
-	atmosphere 0.111111
-	multiverse 0.111111
-	flow 0.111111
-	prediction 0.0909091
-	nature 0.0869565
-keyword philosophy
-	existence 0.125
-	funny 0.125
-	uncanny 0.1
-	chance 0.0666667
-	infinity 0.0666667
-	truth 0.0666667
-	logic 0.0625
-	time 0.0526316
-	weird 0.0384615
-	progress 0.0357143
-keyword philsophy
-	existence 0.6
-	internet of things 0.5
-	things 0.5
-	machine aesthetics 0.285714
-	food 0.166667
-	meaning 0.142857
-	why 0.142857
-	humanity 0.1
-	god mode 0.0909091
-	new aesthetic 0.0666667
-keyword physicality
-	post-digital 0.185185
-	digital meets physical 0.155556
-	uncertainty 0.0952381
-	embodiment 0.0769231
-	drawing 0.0731707
-	sketching 0.0645161
-	the digital divide 0.0588235
-	techno 0.0588235
-	tangibility 0.0588235
-	subliminal 0.0588235
-keyword physics
-	vision 0.157895
-	simulation 0.153846
-	nature 0.134615
-	reality 0.102564
-	god mode 0.0869565
-	universe 0.0833333
-	visualization 0.0810811
-	science 0.08
-	perception 0.06
-	visual thinking 0.0588235
-keyword play
-	children 0.304348
-	interactivity 0.145833
-	instrument 0.142857
-	gesture 0.0909091
-	imagination 0.0740741
-	thinking by doing 0.0689655
-	liveness 0.0625
-	sketching 0.0588235
-	exploration 0.0588235
-	playfulness 0.05
-keyword playfulness
-	inexactitude 0.166667
-	play 0.05
-	art vs engineering 0.04
-	process 0.0322581
-keyword pleasure
-	images 1
-	subjectivity 0.166667
-	aesthetics 0.0454545
-	beauty 0.03125
-keyword poetry
-	tech-demo 0.25
-	meaning 0.222222
-	art 0.0967742
-	critique 0.0952381
-	homogeneity 0.0909091
-	limitations 0.0740741
-	criticality 0.0666667
-	consciousness 0.0666667
-	art vs engineering 0.0666667
-	infinity 0.0588235
-keyword policy
-	statistics 0.2
-	technoptimism 0.142857
-	transparency 0.0666667
-	society 0.0606061
-	data ownership 0.0526316
-	solutions 0.0526316
-	problem solving 0.05
-	devices 0.0384615
-	personal data 0.027027
-	data 0.0172414
-keyword politics
-	globalization 0.2
-	humanity 0.166667
-	society 0.0909091
-	education 0.0666667
-	dystopia 0.05
-	solutions 0.05
-	communication 0.0444444
-	visualization 0.04
-	data visualization 0.0289855
-	perception 0.0263158
-keyword popular culture
-	social engagment 0.0769231
-	visual culture 0.0588235
-	culture 0.0526316
-	social 0.0384615
-keyword possibility
-	parameter space 0.333333
-	surprise 0.238095
-	generative 0.166667
-	randomness 0.117647
-	serendipity 0.111111
-	exploration 0.1
-	legos 0.1
-	games 0.0869565
-	imagination 0.0714286
-	emergence 0.0689655
-keyword post-digital
-	physicality 0.185185
-	humanism 0.157895
-	digital meets physical 0.111111
-	sketching 0.0689655
-	infinite in all directions 0.0666667
-	image 0.0666667
-	what does post-digital mean? 0.0666667
-	choices 0.0666667
-	what comes after digital? 0.0666667
-	noninteractivity 0.0666667
-keyword power
-	security 0.241379
-	control 0.15
-	transparency 0.111111
-	network security 0.103448
-	dystopia 0.1
-	bots 0.0909091
-	man vs machine 0.0892857
-	critical engineering 0.0789474
-	infrastructure 0.0740741
-	art and security 0.0740741
-keyword prank
-	fat 0.333333
-	hack 0.2
-	humor 0.2
-	net.art 0.111111
-keyword prediction
-	atmosphere 0.2
-	chaos 0.181818
-	futurism 0.117647
-	pattern 0.0952381
-	phenomena 0.0909091
-	big data 0.0869565
-	3d printing 0.05
-	complexity 0.0327869
-	systems 0.025
-	data 0.0166667
-keyword present shock
-	the present 0.5
-	toys 0.5
-	technoptimism 0.142857
-	distraction 0.0909091
-	relationships 0.0833333
-	3d printing 0.0555556
-	newness 0.0322581
-	internet 0.025
-	social media 0.0227273
-	communication 0.0222222
-keyword presentation
-	ambiguity 0.5
-	understanding 0.166667
-	story 0.1
-	art 0.037037
-keyword preservation
-	archiving 0.25
-	museums 0.230769
-	memory 0.133333
-	digital art 0.1
-	old media 0.09375
-	apocalypse 0.0666667
-	history 0.0666667
-	videogames 0.05
-	newness 0.025641
-	digital meets physical 0.0227273
-keyword privacy
-	security 0.2
-	data ownership 0.185185
-	personal data 0.136364
-	surveillance 0.12
-	hack 0.117647
-	facebook 0.115385
-	big data 0.09375
-	relationships 0.0869565
-	identity 0.0731707
-	public/private 0.0714286
-keyword probability
-	chance 0.384615
-	randomness 0.176471
-	random 0.142857
-	number 0.142857
-	noise 0.1
-	games 0.0833333
-	inexactitude 0.0833333
-	stock market 0.0714286
-	chaos 0.0666667
-	algorithm 0.0571429
-keyword problem of newness
-	cultural value 0.125
-	old media 0.04
-	history 0.0263158
-keyword problem solving
-	society 0.238095
-	solutions 0.193548
-	useful 0.173913
-	coding for humanity 0.136364
-	progress 0.131579
-	program or be programmed 0.0810811
-	design 0.0681818
-	creative misuse 0.0666667
-	information 0.0666667
-	education 0.0666667
-keyword process
-	art vs engineering 0.0980392
-	serendipity 0.097561
-	mind and hand 0.0833333
-	gardening 0.0833333
-	emergence 0.0769231
-	drawing 0.0740741
-	improvization 0.0697674
-	control 0.0625
-	heuristics 0.0625
-	art and experience 0.0606061
-keyword processing
-	education 0.12766
-	toolkits 0.115385
-	accessibility 0.107143
-	tools 0.0862069
-	design by numbers 0.0833333
-	sketching 0.0810811
-	teaching 0.0810811
-	thinking by doing 0.0606061
-	learning 0.0606061
-	media lab 0.0555556
-keyword product
-	jewelry 0.333333
-	design process 0.25
-	business 0.2
-	objects 0.2
-	organic 0.2
-	growth 0.166667
-	3d printing 0.111111
-	architecture 0.1
-	cultural value 0.1
-	design 0.0689655
-keyword program or be programmed
-	creative misuse 0.214286
-	users 0.189189
-	critical engineering 0.16129
-	opacity 0.107143
-	own the tool 0.0952381
-	openness 0.0952381
-	open software 0.0952381
-	transparency 0.09375
-	legos 0.0833333
-	problem solving 0.0810811
-keyword programming
-	coding 0.153846
-	learning 0.117647
-	code 0.0987654
-	language 0.0952381
-	frustration 0.0909091
-	staring at screens 0.0727273
-	beginnings 0.0722892
-	creativity 0.0704225
-	improvization 0.0666667
-	art and code 0.0645161
-keyword progress
-	problem solving 0.131579
-	society 0.117647
-	interconnectedness 0.1
-	gadgets 0.08
-	collective intelligence 0.0576923
-	utopia 0.0571429
-	cyborg 0.0571429
-	man vs machine 0.0535714
-	interfaces 0.0512821
-	solutions 0.05
-keyword project example
-	illusion 1
-	liveness 0.0714286
-	magic 0.0666667
-	gesture 0.0625
-	play 0.05
-	drawing 0.037037
-keyword project examples
-	empathy 0.111111
-	emotion 0.04
-	new media 0.030303
-	data visualization 0.0147059
-keyword projection
-	light 0.5
-	installation 0.25
-	sculpture 0.142857
-	form 0.111111
-	architecture 0.1
-	digital meets physical 0.0555556
-	art and code 0.0526316
-	virtual 0.0285714
-	beginnings 0.0238095
-keyword prosthetic
-	eyewriter 0.333333
-	assistive technology 0.166667
-	cyborg 0.0769231
-	drawing 0.037037
-keyword public
-	confusion 0.333333
-	social engagment 0.0714286
-	art and code 0.0555556
-	visualization 0.0416667
-	art vs engineering 0.0384615
-	social 0.037037
-	thinking with code 0.0357143
-	education 0.0333333
-	communication 0.0222222
-	complexity 0.0166667
-keyword public/private
-	art and security 0.333333
-	r&d 0.2
-	security 0.1
-	privacy 0.0714286
-	surveillance 0.0714286
-	machine vision 0.0384615
-keyword quantified self
-	lifetracking 0.25
-	afterlife 0.166667
-	documentation 0.166667
-	human life 0.166667
-	personal data 0.105263
-	death 0.0909091
-	the cloud 0.0769231
-	performance art 0.0714286
-	relationships 0.0625
-	identity 0.0588235
-keyword questions
-	design and art 0.285714
-	curiosity 0.25
-	what comes after digital? 0.25
-	why? 0.166667
-	research 0.111111
-	science 0.0769231
-	post-digital 0.0555556
-	problem solving 0.0454545
-	design 0.0322581
-keyword r&d
-	eyebeam 0.2
-	public/private 0.2
-	video art 0.166667
-	art and security 0.142857
-	research 0.1
-	knowledge 0.0909091
-	struggle with technology 0.0769231
-	security 0.0714286
-	algorithm 0.0606061
-	creative misuse 0.0588235
-keyword random
-	number 1
-	probability 0.142857
-	chance 0.0909091
-	randomness 0.0769231
-	math 0.0357143
-	algorithm 0.0333333
-keyword randomness
-	chance 0.263158
-	probability 0.176471
-	serendipity 0.173913
-	parameter space 0.153846
-	luck 0.142857
-	noise 0.133333
-	possibility 0.117647
-	gift 0.111111
-	gardening 0.105263
-	surprise 0.1
-keyword reading
-	library 0.2
-	writing 0.142857
-	information 0.125
-	immersion 0.117647
-	understanding 0.1
-	zen 0.0666667
-	fantasy technology 0.0666667
-	simplicity 0.0625
-	attention 0.0526316
-	exploration 0.05
-keyword real and virtual
-	virtual 0.230769
-	realness 0.166667
-	videogames 0.146341
-	reality 0.108108
-	representation 0.107143
-	fantasy 0.1
-	augmented reality 0.0909091
-	distraction 0.0869565
-	world building 0.08
-	attention 0.0714286
-keyword real world
-	experience 0.0555556
-	social 0.0384615
-	people 0.0357143
-keyword reality
-	virtual 0.156863
-	representation 0.135135
-	perception 0.127273
-	experience design 0.121212
-	real and virtual 0.108108
-	vision 0.107143
-	realness 0.103448
-	physics 0.102564
-	algorithms 0.0769231
-	simulation 0.0769231
-keyword realness
-	visual thinking 0.166667
-	real and virtual 0.166667
-	reality 0.103448
-	vision 0.1
-	face tracking 0.0909091
-	uncertainty 0.0909091
-	imagination 0.0714286
-	distraction 0.0666667
-	embodiment 0.0625
-	social engagment 0.0555556
-keyword realworld
-	uncertainty 0.166667
-	physicality 0.0588235
-keyword recursion
-	meta 1
-	fantasy technology 0.0909091
-	improvization 0.0666667
-	clouds 0.0454545
-	visualization 0.0434783
-	future of cinema 0.0263158
-keyword relationships
-	love 0.1875
-	facebook 0.130435
-	twitter 0.12
-	people 0.114286
-	the present 0.0909091
-	privacy 0.0869565
-	present shock 0.0833333
-	connectivity 0.0833333
-	alone together 0.0769231
-	lifetracking 0.0714286
-keyword rendering
-	rgbd 0.25
-	efficiency 0.2
-	iteration 0.2
-	sketching 0.0588235
-	clouds 0.0434783
-	visualization 0.0416667
-	computation 0.037037
-	technological progress 0.0163934
-keyword representation
-	reality 0.135135
-	virtual 0.113636
-	real and virtual 0.107143
-	simulation 0.104478
-	behavior 0.1
-	world building 0.0769231
-	abstraction 0.0714286
-	videogames 0.0666667
-	games 0.0606061
-	creation 0.0588235
-keyword research
-	curiosity 0.166667
-	microsoft 0.166667
-	science 0.142857
-	influences 0.142857
-	questions 0.111111
-	r&d 0.1
-	google 0.0909091
-	knowledge 0.0833333
-	kinect 0.0588235
-	technology 0.0526316
-keyword responsibility
-	generations 0.0909091
-	teaching 0.0588235
-	career 0.0344828
-	design 0.0344828
-	society 0.0294118
-keyword revelation
-	gestalt 0.153846
-	atmosphere 0.125
-	flow 0.125
-	perspective 0.1
-	microscope 0.0909091
-	pattern 0.0833333
-	cities 0.0769231
-	zoom 0.0769231
-	phenomena 0.0714286
-	perception 0.0487805
-keyword rgbd
-	rendering 0.25
-	physics 0.0526316
-	clouds 0.0416667
-	visualization 0.04
-	camera 0.0285714
-	future of cinema 0.025
-	simulation 0.0166667
-keyword rhetoric
-	challenges 0.25
-	critique 0.125
-	data visualization 0.0294118
-keyword robert hodgin
-	processing 0.0416667
-	community 0.0169492
-keyword rules
-	cellular automata 0.142857
-	cosmogeny 0.136364
-	algorithm 0.111111
-	emergence 0.09375
-	computation 0.0909091
-	elegance 0.0869565
-	artificial life 0.08
-	god 0.0769231
-	efficiency 0.0769231
-	genetics 0.0714286
-keyword sadness
-	digital natives 1
-	self reflection 1
-	digital culture 0.333333
-	staring at screens 0.1
-	embodiment 0.0909091
-	emotion 0.04
-	digital meets physical 0.0285714
-keyword scale
-	zoom 0.208333
-	perception 0.115385
-	design 0.111111
-	universe 0.107143
-	perspective 0.0833333
-	metaphor 0.0833333
-	microscope 0.08
-	pattern 0.0789474
-	gestalt 0.0714286
-	interconnectedness 0.0689655
-keyword science
-	research 0.142857
-	truth 0.105263
-	curiosity 0.1
-	simplicity 0.1
-	influences 0.0909091
-	elegance 0.0869565
-	physics 0.08
-	questions 0.0769231
-	understanding 0.0666667
-	hybridity 0.0645161
-keyword science fiction
-	future 0.209677
-	cyberpunk 0.137931
-	singularity 0.103448
-	dystopia 0.097561
-	consciousness 0.0909091
-	fantasy technology 0.0857143
-	cyborg 0.0810811
-	futurism 0.0769231
-	ubiquity 0.0606061
-	dreams 0.0606061
-keyword sculpture
-	tree 0.166667
-	formalism 0.142857
-	light 0.142857
-	projection 0.142857
-	3d printing 0.1
-	installation 0.0909091
-	digital meets physical 0.0526316
-	exploration 0.05
-	art and code 0.047619
-	evolution 0.0434783
-keyword seamlessness
-	immersion 0.0714286
-	interfaces 0.0588235
-	experience 0.0555556
-	interactivity 0.0285714
-keyword security
-	power 0.241379
-	privacy 0.2
-	dystopia 0.166667
-	facebook 0.136364
-	bots 0.111111
-	big data 0.107143
-	public/private 0.1
-	art and security 0.0833333
-	data ownership 0.0769231
-	r&d 0.0714286
-keyword self
-	identity 0.0333333
-keyword self expression
-	expression 0.333333
-	why are you attracted to abstraction?abstraction 0.125
-	creative exploration 0.125
-	why? 0.1
-	mind 0.1
-	feeling 0.1
-	art and code 0.0869565
-	subjectivity 0.0769231
-	mind and hand 0.0666667
-	coding 0.0625
-keyword self reflection
-	digital natives 1
-	sadness 1
-	digital culture 0.333333
-	staring at screens 0.1
-	embodiment 0.0909091
-	emotion 0.04
-	digital meets physical 0.0285714
-keyword sensation
-	subliminal 0.5
-	techno 0.5
-	synesthesia 0.25
-	visual cortex 0.25
-	aesthetic experience 0.2
-	music 0.0833333
-	perception 0.0555556
-	physicality 0.0555556
-	visualization 0.0416667
-	videogames 0.030303
-keyword sensor
-	ubiquitous computing 0.428571
-	data collection 0.333333
-	object recognition 0.333333
-	camera 0.147059
-	machine vision 0.103448
-	technological progress 0.047619
-	nature 0.0434783
-	reality 0.0322581
-	artificial intelligence 0.0208333
-	data 0.016129
-keyword sensors
-	ubiquity 0.222222
-	wearables 0.142857
-	surveillance 0.133333
-	assistive technology 0.125
-	devices 0.12
-	augmented reality 0.0909091
-	fantasy technology 0.0769231
-	interfaces 0.0526316
-	camera 0.0285714
-	future 0.02
-keyword sentiment analysis
-	empathy 0.1
-	emotion 0.08
-	limitations 0.0434783
-	artificial intelligence 0.0227273
-	language 0.0227273
-keyword serendipity
-	luck 0.214286
-	randomness 0.173913
-	surprise 0.172414
-	parameter space 0.142857
-	chance 0.136364
-	possibility 0.111111
-	gift 0.105263
-	process 0.097561
-	information 0.08
-	discovery 0.0714286
-keyword serious
-	humor 0.333333
-	tragedy 0.333333
-	cinema 0.111111
-	useful 0.1
-	data visualization 0.0289855
-	data 0.0169492
-	storytelling 0.016129
-keyword sex
-	love 0.285714
-	dreams 0.125
-	crowdsourcing 0.111111
-	texting 0.1
-	sex and tech 0.1
-	emotion 0.09375
-	algorithm 0.0810811
-	efficiency 0.0769231
-	genetics 0.0714286
-	cellular automata 0.0666667
-keyword sex and tech
-	sex 0.1
-	devices 0.04
-keyword sharing
-	open source 0.1875
-	community 0.183673
-	economics 0.107692
-	tools 0.0909091
-	open frameworks 0.0869565
-	education 0.075
-	toolkit 0.0704225
-	thanks 0.0701754
-	mentors 0.0625
-	learning 0.0618557
-keyword shifts
-	veterans 1
-	generations 0.1
-	mentors 0.0909091
-	newness 0.0333333
-keyword signals
-	perspective 0.25
-	pattern 0.0526316
-	big data 0.047619
-	scale 0.0454545
-	visualization 0.0434783
-	perception 0.0277778
-keyword simplicity
-	truth 0.15
-	elegance 0.125
-	complexity 0.109375
-	science 0.1
-	conviction 0.0833333
-	balance 0.0714286
-	statistics 0.0666667
-	reading 0.0625
-	understanding 0.0588235
-	legibility 0.0588235
-keyword simulation
-	nature 0.190476
-	cosmogeny 0.177419
-	physics 0.153846
-	representation 0.104478
-	god mode 0.1
-	virtual 0.0963855
-	world building 0.09375
-	emergence 0.0921053
-	games 0.084507
-	future of cinema 0.0786517
-keyword singularity
-	consciousness 0.166667
-	cyborg 0.125
-	wearables 0.111111
-	science fiction 0.103448
-	bots 0.0714286
-	narrative 0.0588235
-	dystopia 0.0454545
-	artificial intelligence 0.0434783
-	future 0.0392157
-	clouds 0.0384615
-keyword sketching
-	drawing 0.131579
-	thinking by doing 0.125
-	improvization 0.107143
-	feedback 0.0952381
-	processing 0.0810811
-	coding 0.0769231
-	creativity 0.075
-	post-digital 0.0689655
-	gesture 0.0666667
-	physicality 0.0645161
-keyword skill
-	wonder 0.333333
-	branching 0.166667
-	mastery 0.125
-	mind and hand 0.111111
-	distraction 0.0909091
-	technology 0.0666667
-	magic 0.0625
-	discovery 0.0588235
-	progress 0.04
-	drawing 0.0357143
-keyword slow
-	zen 0.0909091
-	liveness 0.0714286
-	magic 0.0666667
-	time 0.0666667
-	gesture 0.0625
-	emotion 0.04
-	drawing 0.037037
-	storytelling 0.0166667
-keyword snarky
-	anonymous 0.25
-	crowdsourcing 0.1
-	creativity 0.037037
-	identity 0.0333333
-	collaboration 0.0196078
-	community 0.0169492
-keyword social
-	people 0.173913
-	social media 0.112903
-	humanity 0.1
-	participation 0.0689655
-	legibility 0.0666667
-	empathy 0.0606061
-	relationships 0.0571429
-	identity 0.0566038
-	data visualization 0.0561798
-	social engagment 0.0540541
-keyword social dynamics
-	social engineering 0.125
-	organizations 0.125
-	leadership 0.125
-	business 0.1
-	society 0.0789474
-	creative coders 0.0769231
-	cities 0.0714286
-	interconnectedness 0.0625
-	rules 0.0588235
-	people 0.0588235
-keyword social engagment
-	participation 0.2
-	gift 0.176471
-	humanism 0.111111
-	people 0.108108
-	society 0.0952381
-	popular culture 0.0769231
-	what does post-digital mean? 0.0769231
-	public 0.0714286
-	confusion 0.0714286
-	gadgets 0.0666667
-keyword social engineering
-	leadership 1
-	social dynamics 0.125
-keyword social media
-	twitter 0.276596
-	facebook 0.183673
-	social 0.112903
-	internet 0.0933333
-	people 0.0923077
-	communication 0.0875
-	network 0.0869565
-	identity 0.0735294
-	community 0.0625
-	virality 0.0612245
-keyword society
-	problem solving 0.238095
-	solutions 0.159091
-	progress 0.117647
-	humanity 0.108696
-	culture 0.106383
-	social engagment 0.0952381
-	politics 0.0909091
-	cities 0.0810811
-	social dynamics 0.0789474
-	power 0.0727273
-keyword software
-	commercialism 0.125
-	money 0.1
-	operating systems 0.0909091
-	engineering 0.0909091
-	economics 0.0869565
-	advertising 0.0833333
-	improvement 0.0714286
-	accessibility 0.0625
-	collaboration with machines 0.0625
-	virality 0.0555556
-keyword solutions
-	problem solving 0.193548
-	society 0.159091
-	coding for humanity 0.142857
-	apps 0.0952381
-	survival 0.0909091
-	dystopia 0.0909091
-	technoptimism 0.0909091
-	program or be programmed 0.0540541
-	street art 0.0526316
-	policy 0.0526316
-keyword song: fourtet peace for earth
-	multiverse 0.5
-	phenomena 0.125
-	nature 0.0238095
-	simulation 0.0172414
-keyword songs: fourtet locked
-	thinking by doing 0.0909091
-	coding 0.0384615
-	creativity 0.037037
-	thinking with code 0.037037
-	programming 0.0204082
-keyword sound
-	audiovisualization 0.272727
-	liveness 0.2
-	synesthesia 0.166667
-	music 0.153846
-	noise 0.142857
-	visual culture 0.05
-	collaboration 0.0377358
-	perception 0.025641
-keyword space
-	overview 0.5
-	metaphor 0.2
-	perspective 0.2
-	zoom 0.125
-	universe 0.1
-	scale 0.0434783
-	nature 0.0232558
-keyword spiritual
-	failure 0.111111
-	zen 0.0909091
-	liveness 0.0714286
-	magic 0.0666667
-	time 0.0666667
-	emotion 0.04
-	drawing 0.037037
-	communication 0.0227273
-	storytelling 0.0166667
-keyword staring at screens
-	attention 0.190476
-	boring 0.166667
-	embodiment 0.166667
-	focus 0.133333
-	sadness 0.1
-	self reflection 0.1
-	mirror 0.1
-	digital natives 0.1
-	surveillance 0.0909091
-	digital culture 0.0833333
-keyword statistics
-	policy 0.2
-	street art 0.2
-	fat 0.166667
-	truth 0.0714286
-	simplicity 0.0666667
-	representation 0.0526316
-	humanity 0.047619
-	solutions 0.047619
-	problem solving 0.0454545
-	data 0.0338983
-keyword stock market
-	bots 0.285714
-	algorithms 0.263158
-	chaos 0.214286
-	error 0.16
-	economics 0.15
-	internet culture 0.125
-	digital culture 0.1
-	algorithm 0.0857143
-	dysfunction 0.0833333
-	dystopia 0.0833333
-keyword story
-	motion 0.181818
-	storytelling 0.129032
-	book 0.1
-	presentation 0.1
-	ambiguity 0.0909091
-	future of cinema 0.0909091
-	understanding 0.0666667
-	behavior 0.0666667
-	knowledge 0.0625
-	simulation 0.0625
-keyword storytelling
-	future of cinema 0.25641
-	narrative 0.140625
-	story 0.129032
-	datatelling 0.125
-	cinema 0.0634921
-	simulation 0.0630631
-	people 0.060241
-	videogames 0.0574713
-	representation 0.0555556
-	data 0.0540541
-keyword street art
-	fat 0.25
-	statistics 0.2
-	hacking 0.142857
-	solutions 0.0526316
-	programming 0.02
-	data visualization 0.0144928
-keyword stress
-	challenge 1
-	uncertainty 0.166667
-	bugs 0.125
-	frustration 0.0909091
-	dysfunction 0.0555556
-keyword struggle
-	work and life 0.333333
-	struggle with technology 0.2
-	commercial art 0.1
-	frustration 0.0769231
-	money 0.0714286
-	exploration 0.0555556
-	program or be programmed 0.0434783
-	art vs engineering 0.037037
-	math 0.0333333
-	beginnings 0.0238095
-keyword struggle with technology
-	frustration 0.333333
-	struggle 0.2
-	dichotomy 0.111111
-	fluency 0.111111
-	ambiguity 0.1
-	boring 0.0833333
-	toolkit 0.0769231
-	r&d 0.0769231
-	humanism 0.0666667
-	challenges 0.0625
-keyword style
-	trendspotting 0.1875
-	visual culture 0.185185
-	influence 0.133333
-	tribe 0.108108
-	originality 0.09375
-	memes 0.0740741
-	energy 0.0666667
-	epiphany 0.0625
-	aesthetics 0.0571429
-	aesthetic experience 0.0555556
-keyword subjectivity
-	why are you attracted to abstraction?abstraction 0.166667
-	pleasure 0.166667
-	images 0.166667
-	hallucination 0.142857
-	why? 0.125
-	mind 0.125
-	self expression 0.0769231
-	aesthetics 0.0769231
-	truth 0.0625
-	datatelling 0.0588235
-keyword subliminal
-	techno 1
-	sensation 0.5
-	synesthesia 0.333333
-	music 0.0909091
-	physicality 0.0588235
-	perception 0.0277778
-keyword subversion
-	gui 0.5
-	inversion 0.5
-	keyboard 0.5
-	mouse 0.5
-	think different 0.5
-	system 0.25
-	why? 0.25
-	hacking 0.142857
-	creative misuse 0.0714286
-	sketching 0.0588235
-keyword success
-	failure 0.181818
-	life 0.166667
-	improvement 0.125
-	mastery 0.1
-	children 0.0769231
-	zen 0.0714286
-	career 0.0666667
-	money 0.0666667
-	coding 0.0344828
-	drawing 0.0333333
-keyword surprise
-	possibility 0.238095
-	serendipity 0.172414
-	systems 0.117647
-	parameter space 0.1
-	randomness 0.1
-	emergence 0.097561
-	improvization 0.09375
-	uncertainty 0.0833333
-	commercial art 0.0769231
-	imagination 0.0740741
-keyword surveillance
-	military technology 0.266667
-	hack 0.1875
-	ubiquity 0.157895
-	sensors 0.133333
-	privacy 0.12
-	staring at screens 0.0909091
-	devices 0.0833333
-	machine vision 0.0810811
-	public/private 0.0714286
-	mirror 0.0714286
-keyword survival
-	apocalypse 0.5
-	coding for humanity 0.2
-	future 0.102041
-	dystopia 0.0909091
-	solutions 0.0909091
-	weird 0.0769231
-	critical engineering 0.05
-	criticality 0.0333333
-	technological progress 0.0153846
-keyword symbiosis
-	man vs machine 0.222222
-	engineering 0.15
-	cognition 0.125
-	coevolution 0.111111
-	tools 0.0909091
-	critical engineering 0.0909091
-	infrastructure 0.0909091
-	literacy 0.0909091
-	hacking 0.0714286
-	artificiality 0.0625
-keyword synergy
-	working with others 0.666667
-	connections 0.25
-	hackathon 0.166667
-	collaboration 0.0392157
-keyword synesthesia
-	subliminal 0.333333
-	techno 0.333333
-	sensation 0.25
-	audiovisualization 0.181818
-	music 0.166667
-	sound 0.166667
-	behavior 0.125
-	liveness 0.0625
-	physicality 0.0526316
-	beauty 0.0294118
-keyword syntax
-	ocd 1
-	what do you find beautiful about code? 1
-	logic 0.0833333
-	elegance 0.0666667
-keyword synthetic biology
-	metaphor 0.166667
-	biology and code 0.153846
-	artificial life 0.111111
-	biology 0.103448
-	emergence 0.037037
-	science fiction 0.0344828
-	complexity 0.0163934
-keyword system
-	things breaking 0.333333
-	subversion 0.25
-	dysfunction 0.105263
-	bugs 0.1
-	error 0.0909091
-	creative misuse 0.0666667
-	generative art 0.0526316
-	surprise 0.0454545
-keyword systems
-	emergence 0.148148
-	complexity 0.129412
-	surprise 0.117647
-	chaos 0.0952381
-	nature 0.0821918
-	artificial life 0.08
-	games 0.0769231
-	limitations 0.0727273
-	gardening 0.0714286
-	interconnectedness 0.0697674
-keyword tangibility
-	the digital divide 1
-	post-digital 0.0666667
-	physicality 0.0588235
-	digital meets physical 0.0285714
-keyword taste
-	consumer 0.333333
-	beautiful exhuberance 0.25
-	commercial art 0.111111
-	aesthetics 0.0909091
-	beauty 0.0625
-	critique 0.0588235
-	design 0.0344828
-	communication 0.0222222
-keyword teaching
-	education 0.125
-	aesthetics and computation 0.103448
-	toolkit 0.09375
-	processing 0.0810811
-	mentors 0.08
-	career 0.0731707
-	media lab 0.0714286
-	book 0.0625
-	forums 0.0625
-	open frameworks 0.0625
-keyword teams
-	partnership 1
-	processing 0.0416667
-	collaboration 0.0196078
-keyword tech-demo
-	meaning 0.4
-	poetry 0.25
-	homogeneity 0.142857
-	critique 0.117647
-	art vs engineering 0.0769231
-	criticality 0.0769231
-	art 0.0714286
-	aesthetics 0.0416667
-	newness 0.03125
-	new media 0.0285714
-keyword techno
-	subliminal 1
-	sensation 0.5
-	synesthesia 0.333333
-	music 0.0909091
-	physicality 0.0588235
-	perception 0.0277778
-keyword technological progress
-	future 0.125
-	newness 0.111111
-	utopia 0.0895522
-	technology 0.0882353
-	futurism 0.0714286
-	technoptimism 0.0645161
-	engineering 0.0571429
-	users 0.0506329
-	progress 0.05
-	ubiquitous computing 0.0491803
-keyword technology
-	opacity 0.0909091
-	technological progress 0.0882353
-	engineering 0.0769231
-	techpositive 0.0714286
-	art and tech 0.0714286
-	dichotomy 0.0714286
-	wonder 0.0666667
-	skill 0.0666667
-	operating systems 0.0666667
-	apple 0.0625
-keyword technoptimism
-	toys 0.166667
-	present shock 0.142857
-	hope 0.142857
-	policy 0.142857
-	change 0.125
-	utopia 0.117647
-	apps 0.1
-	solutions 0.0909091
-	technological progress 0.0645161
-	society 0.0540541
-keyword techpositive
-	technology 0.0714286
-	art and tech 0.0625
-	newness 0.0333333
-	new media 0.030303
-keyword telepathy
-	twitter 0.0588235
-	culture 0.0526316
-	collective intelligence 0.0322581
-	internet 0.025641
-	social media 0.0232558
-keyword teleportation
-	imaginary 0.5
-	science fiction 0.037037
-	future 0.0208333
-keyword text
-	writing 0.2
-	behavior 0.125
-	representation 0.0555556
-	twitter 0.0526316
-	clouds 0.0416667
-	data 0.0344828
-	language 0.0222222
-	social media 0.0222222
-	communication 0.0217391
-	simulation 0.0166667
-keyword texting
-	gender 0.142857
-	sex 0.1
-	virtual 0.030303
-keyword thanks
-	economics 0.117647
-	mentors 0.0714286
-	sharing 0.0701754
-	education 0.0645161
-	teaching 0.0526316
-	community 0.05
-	open frameworks 0.047619
-	toolkit 0.0454545
-	open source 0.0166667
-keyword the cloud
-	transience 0.125
-	noosphere 0.125
-	ignorance 0.125
-	network 0.111111
-	alone together 0.1
-	quantified self 0.0769231
-	network security 0.0769231
-	memory 0.0666667
-	criticality 0.0645161
-	interconnectedness 0.0625
-keyword the digital divide
-	tangibility 1
-	post-digital 0.0666667
-	physicality 0.0588235
-	digital meets physical 0.0285714
-keyword the future
-	dialogue 0.25
-	futurism 0.0666667
-	clouds 0.0454545
-	collective intelligence 0.0322581
-keyword the gift
-	generosity 1
-	interconnectedness 0.111111
-	economics 0.0666667
-	progress 0.0416667
-	society 0.030303
-	sharing 0.0175439
-	community 0.0169492
-keyword the present
-	present shock 0.5
-	distraction 0.1
-	relationships 0.0909091
-	internet 0.025641
-	social media 0.0232558
-	communication 0.0227273
-keyword things
-	internet of things 1
-	existence 0.5
-	philsophy 0.5
-	machine aesthetics 0.4
-	humanity 0.111111
-	new aesthetic 0.0714286
-	man vs machine 0.0571429
-keyword things breaking
-	system 0.333333
-	bugs 0.125
-	dysfunction 0.0555556
-	error 0.047619
-keyword think different
-	gui 1
-	inversion 1
-	keyboard 1
-	mouse 1
-	subversion 0.5
-	why? 0.333333
-	hacking 0.166667
-	sketching 0.0625
-	interfaces 0.0588235
-	play 0.05
-keyword thinkerer
-	concept 1
-	maker 1
-	art world 0.125
-	career 0.0357143
-keyword thinking
-	cognition 0.2
-	intelligence 0.1
-	time 0.0909091
-	thinking with code 0.0909091
-	iteration 0.0833333
-	computation 0.0606061
-	computer 0.0588235
-	algorithm 0.0540541
-	code 0.0425532
-	solutions 0.0384615
-keyword thinking by doing
-	mind and hand 0.1875
-	thinking with code 0.151515
-	sketching 0.125
-	feedback 0.125
-	drawing 0.117647
-	tweaking 0.0909091
-	songs: fourtet locked 0.0909091
-	line 0.0909091
-	connections 0.0769231
-	code is messy 0.0714286
-keyword thinking through code
-	liveness 0.142857
-	improvization 0.133333
-	attention 0.0625
-	videogames 0.030303
-	programming 0.02
-keyword thinking with code
-	cognition 0.173913
-	thinking by doing 0.151515
-	coding 0.12766
-	thinking 0.0909091
-	art vs engineering 0.0833333
-	code 0.0806452
-	language 0.0769231
-	virtuosity 0.0714286
-	self expression 0.0606061
-	creativity 0.0588235
-keyword time
-	zen 0.238095
-	thinking 0.0909091
-	computer 0.0769231
-	liveness 0.0740741
-	magic 0.0714286
-	mortality 0.0666667
-	slow 0.0666667
-	spiritual 0.0666667
-	clock 0.0666667
-	work 0.0588235
-keyword toolkit
-	open frameworks 0.193548
-	open source 0.151515
-	legos 0.142857
-	teaching 0.09375
-	struggle with technology 0.0769231
-	sharing 0.0704225
-	aesthetics and computation 0.0606061
-	program or be programmed 0.0526316
-	minecraft 0.0526316
-	processing 0.0487805
-keyword toolkits
-	design by numbers 0.166667
-	openness 0.166667
-	open frameworks 0.15
-	fun 0.142857
-	processing 0.115385
-	art and tech 0.105263
-	accessibility 0.0909091
-	opacity 0.0714286
-	creative misuse 0.0588235
-	creative coding 0.0526316
-keyword tools
-	education 0.0967742
-	symbiosis 0.0909091
-	sharing 0.0909091
-	processing 0.0862069
-	open source 0.0786517
-	participation 0.0731707
-	man vs machine 0.0724638
-	gift 0.0697674
-	cognition 0.0645161
-	social engagment 0.0612245
-keyword touch
-	heuristics 0.333333
-	art and experience 0.25
-	drawing 0.037037
-	process 0.0322581
-keyword toys
-	present shock 0.5
-	technoptimism 0.166667
-	3d printing 0.0588235
-	newness 0.0333333
-	future 0.0208333
-	technological progress 0.0166667
-keyword trace of your life
-	maps 0.1
-	gps 0.0909091
-	data 0.0175439
-	data visualization 0.0147059
-keyword tradition
-	engineering 0.214286
-	dysfunction 0.166667
-	coding 0.0740741
-	learning 0.0652174
-	open source 0.0344828
-	technological progress 0.016129
-keyword tragedy
-	serious 0.333333
-	cinema 0.142857
-	storytelling 0.0166667
-	data visualization 0.0147059
-keyword transience
-	the cloud 0.125
-	data ownership 0.0555556
-	memory 0.0416667
-	archiving 0.0285714
-keyword transparency
-	critical engineering 0.26087
-	open software 0.142857
-	information as weapon 0.117647
-	criticality 0.114286
-	power 0.111111
-	program or be programmed 0.09375
-	hackers 0.0857143
-	creative misuse 0.08
-	engineering 0.0769231
-	policy 0.0666667
-keyword travel
-	nostalgia 0.25
-	data ownership 0.0555556
-	memory 0.0416667
-	emotion 0.04
-	personal data 0.0277778
-keyword tree
-	animation 0.5
-	branching 0.166667
-	sculpture 0.166667
-	evolution 0.05
-	nature 0.0232558
-	collaboration 0.0192308
-	storytelling 0.0163934
-keyword trendspotting
-	style 0.1875
-	art history 0.125
-	criticality 0.0740741
-	new aesthetic 0.0666667
-	futurism 0.0555556
-	history 0.0243902
-keyword tribe
-	nerd 0.258065
-	community 0.133333
-	hybridity 0.113636
-	style 0.108108
-	creative coders 0.103448
-	creative coding 0.0512821
-	visual culture 0.0487805
-	beginnings 0.047619
-	culture 0.0465116
-	hackers 0.0416667
-keyword tron
-	aesthetics 0.0454545
-	simulation 0.0172414
-keyword truth
-	inexactitude 0.214286
-	simplicity 0.15
-	elegance 0.130435
-	science 0.105263
-	beauty 0.102564
-	memory 0.09375
-	data 0.0793651
-	statistics 0.0714286
-	philosophy 0.0666667
-	understanding 0.0625
-keyword tweaking
-	feedback 0.142857
-	thinking by doing 0.0909091
-	sketching 0.0625
-	generative art 0.0588235
-	learning 0.0217391
-keyword twitter
-	social media 0.276596
-	facebook 0.185185
-	relationships 0.12
-	network 0.0888889
-	virality 0.0833333
-	people 0.0714286
-	telepathy 0.0588235
-	writing 0.0526316
-	text 0.0526316
-	journalism 0.0526316
-keyword twitter videogames
-	facebook 0.0666667
-	identity 0.0333333
-	virtual 0.030303
-keyword ubiquitous computing
-	object recognition 0.5
-	sensor 0.428571
-	machine vision 0.153846
-	camera 0.121212
-	ubiquity 0.0909091
-	technological progress 0.0491803
-keyword ubiquity
-	augmented reality 0.307692
-	sensors 0.222222
-	surveillance 0.157895
-	interfaces 0.136364
-	devices 0.1
-	ubiquitous computing 0.0909091
-	military technology 0.0833333
-	camera 0.0789474
-	assistive technology 0.0769231
-	cities 0.0714286
-keyword uncanny
-	behavior 0.2
-	philosophy 0.1
-	reality 0.0666667
-	artificial intelligence 0.0652174
-	logic 0.0588235
-	magic 0.05
-	representation 0.047619
-	artificial life 0.0454545
-	machine vision 0.0322581
-	simulation 0.0322581
-keyword uncertainty
-	challenge 0.166667
-	commercial art 0.166667
-	stress 0.166667
-	realworld 0.166667
-	creative control 0.142857
-	code is messy 0.111111
-	physicality 0.0952381
-	realness 0.0909091
-	surprise 0.0833333
-	bugs 0.0769231
-keyword understanding
-	presentation 0.166667
-	ambiguity 0.142857
-	debugging 0.111111
-	reading 0.1
-	imagination 0.0714286
-	story 0.0666667
-	science 0.0666667
-	truth 0.0625
-	simplicity 0.0588235
-	elegance 0.05
-keyword universe
-	infinity 0.176471
-	nature 0.159091
-	cellular automata 0.153846
-	cosmogeny 0.142857
-	emergence 0.133333
-	scale 0.107143
-	world building 0.105263
-	space 0.1
-	algorithm 0.0833333
-	artificial life 0.0833333
-keyword useful
-	problem solving 0.173913
-	useless 0.153846
-	art vs engineering 0.1
-	serious 0.1
-	design 0.0909091
-	exploration 0.0909091
-	evaluation 0.0833333
-	humor 0.0833333
-	simplicity 0.0526316
-	elegance 0.0454545
-keyword useless
-	useful 0.153846
-	why 0.1
-	coding for humanity 0.0833333
-	challenges 0.0714286
-	art 0.0625
-	career 0.0606061
-	money 0.0555556
-	time 0.047619
-	data visualization 0.0416667
-	humanity 0.0416667
-keyword users
-	program or be programmed 0.189189
-	dystopia 0.108108
-	devices 0.0909091
-	creative misuse 0.0909091
-	corporate 0.0833333
-	gadget 0.08
-	data ownership 0.0789474
-	google 0.0740741
-	man vs machine 0.0740741
-	network security 0.0740741
-keyword utopia
-	artificiality 0.166667
-	mind 0.142857
-	technoptimism 0.117647
-	dreams 0.105263
-	interconnectedness 0.1
-	consciousness 0.1
-	technological progress 0.0895522
-	man versus machine 0.0769231
-	uture 0.0769231
-	internet culture 0.0769231
-keyword uture
-	mind 0.333333
-	artificiality 0.125
-	consciousness 0.111111
-	utopia 0.0769231
-	artificial intelligence 0.0232558
-	simulation 0.0172414
-keyword veterans
-	shifts 1
-	generations 0.1
-	mentors 0.0909091
-	newness 0.0333333
-keyword video art
-	eyebeam 0.5
-	r&d 0.166667
-	art world 0.111111
-	new aesthetic 0.0714286
-	old media 0.0384615
-	machine vision 0.037037
-	history 0.025641
-keyword videogames
-	real and virtual 0.146341
-	virtual 0.140351
-	games 0.108696
-	world building 0.1
-	fantasy 0.0833333
-	augmented reality 0.0789474
-	beginnings 0.0746269
-	representation 0.0666667
-	interfaces 0.0652174
-	history 0.0606061
-keyword virality
-	youtube 0.222222
-	memes 0.210526
-	journalism 0.0909091
-	visual cortex 0.0909091
-	virus 0.0833333
-	twitter 0.0833333
-	feedback 0.0666667
-	social media 0.0612245
-	software 0.0555556
-	visual culture 0.04
-keyword virtual
-	real and virtual 0.230769
-	reality 0.156863
-	videogames 0.140351
-	representation 0.113636
-	simulation 0.0963855
-	games 0.0833333
-	future of cinema 0.0597015
-	realness 0.0540541
-	love 0.0512821
-	experience design 0.047619
-keyword virtual reality
-	clouds 0.0454545
-	digital meets physical 0.0285714
-keyword virtuosity
-	creative coders 0.125
-	coding 0.0740741
-	cognition 0.0714286
-	thinking with code 0.0714286
-	creative coding 0.0588235
-	elegance 0.0588235
-	real and virtual 0.0588235
-	hackers 0.0384615
-	reality 0.0357143
-	virtual 0.0285714
-keyword virus
-	art and science 0.166667
-	information as weapon 0.125
-	virality 0.0833333
-	hackers 0.0769231
-	memes 0.0588235
-	emergence 0.0357143
-	computation 0.0344828
-	biology 0.03125
-	communication 0.0212766
-keyword vision
-	visual thinking 0.2
-	physics 0.157895
-	microscope 0.111111
-	reality 0.107143
-	realness 0.1
-	gestalt 0.0833333
-	perception 0.0789474
-	camera 0.0555556
-	algorithms 0.05
-	representation 0.05
-keyword visual cortex
-	sensation 0.25
-	aesthetic experience 0.166667
-	evaluation 0.142857
-	feedback 0.111111
-	virality 0.0909091
-	perception 0.0833333
-	embodiment 0.0769231
-	emotion 0.0769231
-	experience 0.05
-	visualization 0.04
-keyword visual culture
-	originality 0.193548
-	memes 0.192308
-	style 0.185185
-	influence 0.117647
-	homogeneity 0.1
-	beauty 0.0652174
-	ideas 0.0645161
-	popular culture 0.0588235
-	limits of the computer 0.0555556
-	aesthetics 0.0540541
-keyword visual effects
-	efficiency 0.2
-	god mode 0.111111
-	kinect 0.0769231
-	physics 0.0555556
-	visualization 0.0416667
-	process 0.03125
-	camera 0.0294118
-	future of cinema 0.025641
-	nature 0.0232558
-	simulation 0.0169492
-keyword visual thinking
-	vision 0.2
-	realness 0.166667
-	physics 0.0588235
-	reality 0.0384615
-	perception 0.0277778
-keyword visualization
-	physics 0.0810811
-	debugging 0.08
-	perception 0.0727273
-	dreams 0.0689655
-	imagination 0.0666667
-	sex 0.0645161
-	future of cinema 0.0517241
-	complexity 0.0512821
-	communication 0.046875
-	scale 0.0465116
-keyword wearables
-	cyborg 0.285714
-	gadgets 0.142857
-	sensors 0.142857
-	devices 0.111111
-	singularity 0.111111
-	google 0.1
-	interfaces 0.1
-	surveillance 0.0555556
-	critical engineering 0.0526316
-	man vs machine 0.0526316
-keyword weird
-	food 0.136364
-	funny 0.130435
-	apocalypse 0.0769231
-	survival 0.0769231
-	fantasy 0.0740741
-	dreams 0.0714286
-	memes 0.0588235
-	scale 0.047619
-	nano 0.0454545
-	future 0.0447761
-keyword what comes after digital?
-	questions 0.25
-	post-digital 0.0666667
-keyword what do you find beautiful about code?
-	ocd 1
-	syntax 1
-	logic 0.0833333
-	elegance 0.0666667
-keyword what does post-digital mean?
-	humanism 0.142857
-	social engagment 0.0769231
-	post-digital 0.0666667
-	society 0.030303
-keyword what was it like working with early computers?
-	sketching 0.0625
-	history 0.0263158
-keyword why
-	infinite in all directions 0.25
-	food 0.166667
-	meaning 0.142857
-	philsophy 0.142857
-	useless 0.1
-	post-digital 0.0555556
-	experience 0.047619
-	weird 0.04
-	art 0.0333333
-	design 0.0322581
-keyword why are you attracted to abstraction?abstraction
-	mind 0.333333
-	why? 0.333333
-	subjectivity 0.166667
-	self expression 0.125
-	creativity 0.037037
-	identity 0.0333333
-	process 0.0322581
-keyword why?
-	why are you attracted to abstraction?abstraction 0.333333
-	gui 0.333333
-	think different 0.333333
-	inversion 0.333333
-	keyboard 0.333333
-	mouse 0.333333
-	subversion 0.25
-	mind 0.2
-	questions 0.166667
-	design and art 0.142857
-keyword wikipedia
-	collective intelligence 0.15625
-	github 0.111111
-	information as weapon 0.1
-	collaboration 0.0555556
-	transparency 0.0526316
-	hackers 0.0344828
-	sharing 0.016129
-	data visualization 0.0136986
-keyword wonder
-	skill 0.333333
-	feeling 0.25
-	aesthetic experience 0.2
-	technology 0.0666667
-	magic 0.0625
-	beauty 0.030303
-	nature 0.0232558
-	collaboration 0.0192308
-keyword work
-	mortality 0.333333
-	balance 0.2
-	life 0.2
-	journey 0.0909091
-	career 0.0689655
-	time 0.0588235
-	teaching 0.0555556
-	art vs engineering 0.037037
-	identity 0.03125
-keyword work and life
-	struggle 0.333333
-	commercial art 0.125
-	money 0.0833333
-	exploration 0.0625
-keyword working iteratively generatively in a process that can go on forever?
-	choosing 1
-	generative process 1
-	iteration 0.25
-	form 0.142857
-	gardening 0.125
-	randomness 0.0769231
-	control 0.05
-	emergence 0.04
-keyword working with others
-	synergy 0.666667
-	connections 0.2
-	hackathon 0.153846
-	media lab 0.0625
-	aesthetics and computation 0.0555556
-	collaboration 0.0384615
-	beginnings 0.0238095
-	learning 0.0208333
-	programming 0.0196078
-keyword world building
-	cosmogeny 0.35
-	cellular automata 0.2
-	legos 0.133333
-	fantasy 0.117647
-	artificial life 0.115385
-	god mode 0.111111
-	games 0.107143
-	universe 0.105263
-	videogames 0.1
-	infinity 0.0952381
-keyword writing
-	text 0.2
-	reading 0.142857
-	fantasy technology 0.0769231
-	datatelling 0.0714286
-	data 0.0526316
-	twitter 0.0526316
-	language 0.0454545
-	communication 0.0444444
-	big data 0.0434783
-	storytelling 0.0327869
-keyword youtube
-	virality 0.222222
-	memes 0.142857
-	culture 0.05
-	social media 0.0465116
-keyword zach lieberman
-	connections 0.25
-	eyewriter 0.25
-	performance 0.25
-	assistive technology 0.142857
-	accessibility 0.125
-	humanity 0.0526316
-	drawing 0.0357143
-	people 0.0344828
-	collaboration 0.0192308
-keyword zen
-	time 0.238095
-	failure 0.176471
-	drawing 0.151515
-	attention 0.130435
-	focus 0.125
-	information overload 0.0909091
-	slow 0.0909091
-	conviction 0.0909091
-	spiritual 0.0909091
-	liveness 0.0869565
-keyword zoom
-	perspective 0.375
-	scale 0.208333
-	phenomena 0.153846
-	gestalt 0.153846
-	overview 0.142857
-	space 0.125
-	microscope 0.0909091
-	pattern 0.0833333
-	cities 0.0769231
-	revelation 0.0769231
+ (Alb),english,arabic,globalization,language
+(Alb),english,arabic,globalization,language
+3d printing,architecture,digital meets physical,design process,product,organic,objects,sculpture,growth,design,toys
+DNA,art and science,biology
+abstraction,logic,art history,math,art and tech,arabic,representation,energy,generative art,malevich,new media old media
+accessibility,zach lieberman,eyewriter,fun,processing,toolkits,assistive technology,installation,education,software,teaching
+acu,aesthetics and computation,open frameworks,media lab,teaching,toolkit,open source,sharing
+addiction,hacker,eyewriter,nerd,invention,programming,coding,beginnings,hackers,process
+advertising,commercialism,software,originality,open source
+aesthetic experience,energy,epiphany,sensation,wonder,feeling,visual cortex,beauty,style,abstraction,critique
+aesthetics,beauty,taste,design,critique,subjectivity,communication,style,abstraction,representation,visual culture
+aesthetics and computation,media lab,john maeda,acu,art and code,open frameworks,teaching,hybridity,beginnings,education,toolkit
+afterlife,death,quantified self,personal data,archiving
+algorithm,genetics,cellular automata,bots,infinity,rules,artificial life,evolution,games,cosmogeny,stock market
+algorithms,stock market,error,bots,chaos,dysfunction,experience design,artificial intelligence,reality,stories,internet culture
+alone together,connectivity,noosphere,information overload,balance,focus,the cloud,distraction,relationships,embodiment,interconnectedness
+ambiguity,presentation,understanding,struggle with technology,story,frustration,art,cognition,thinking with code,language
+animation,tree,branching,collaboration,storytelling
+anonymous,snarky,authorship,network security,crowdsourcing,criticality,hackers,transparency,control,power,identity
+anthropology,curation,memes,ideas,originality,tribe,collaboration,sharing,community
+antihuman,digital,machine aesthetics,cyberpunk,artificiality,cyborg,new aesthetic
+apocalypse,survival,death,obsolescence,future,weird,preservation,critical engineering,archiving,dystopia,criticality
+apple,gadget,google,devices,facebook,technology,users,power
+apporopriation,ideas,originality,newness
+apps,fluxus,performance art,performance,technoptimism,solutions,datatelling,real and virtual,critical engineering,criticality,social
+arabic,english,globalization, (Alb),(Alb),abstraction,math,language,algorithm,visual culture,generative art
+architecture,organic,growth,interdisciplinary,3d printing,projection,data mining,product,light,immersion,discovery
+archiving,memory,preservation,personal data,death,old media,history,data,lifetracking,museums,apocalypse
+ars electronica,generations,mentors,new media,beginnings,collaboration
+art,art and tech,poetry,journey,tech-demo,meaning,culture,curation,art history,useless,cultural value
+art and code,expression,aesthetics and computation,self expression,hybridity,media lab,creative coders,interdisciplinary,thinking with code,generative art,coding
+art and experience,heuristics,branching,touch,everyday,media,intuition,feedback,experience,mind and hand,gesture
+art and science,DNA,virus,biology,dna,emergence,simulation
+art and security,julian oliver,public/private,r&d,network security,control,security,power,privacy,surveillance,users
+art and tech,creative coding,new media,art,abstraction,technology,toolkits,experience design,techpositive,open frameworks,new media old media
+art history,malevich,fluxus,trendspotting,abstraction,performance art,art,experience design,style,art and tech,algorithms
+art vs engineering,useful,process,thinking with code,career,tech-demo,meaning,evaluation,inexactitude,poetry,art
+art world,thinkerer,maker,how did you get into working with code?,graphic design,concept,video art,design and art,new media,cultural value,style
+artificial intelligence,man vs machine,consciousness,cognition,limitations,new aesthetic,algorithms,uncanny,artificiality,collaboration with machines,computation
+artificial life,cellular automata,emergence,evolution,cosmogeny,infinity,synthetic biology,world building,biology,games,algorithm
+artificiality,mind,machine aesthetics,utopia,consciousness,uture,new aesthetic,digital,antihuman,coevolution,debugging
+assistive technology,eyewriter,psychology,prosthetic,gesture recognition,zach lieberman,sensors,ubiquity,accessibility,embodiment,fantasy technology
+atmosphere,flow,prediction,revelation,gestalt,phenomena,pattern,chaos,complexity,perception,systems
+attention,distraction,focus,staring at screens,embodiment,net.art,zen,real and virtual,improvization,mirror,conviction
+audience,live,digital divide,cultural value,embodiment,fantasy technology,gesture,improvization,science fiction,new media,future of cinema
+audiovisualization,music,sound,liveness,synesthesia,kids,noise,systems,behavior,collaboration,interactivity
+augmented reality,interfaces,ubiquity,mobile,fantasy,sensors,real and virtual,videogames,cities,devices,staring at screens
+authorship,anonymous,gardening,randomness,discovery,generative art,control,emergence,algorithm,process
+avatar,identity,privacy,world building,facebook,representation,control,reality,videogames,personal data,virtual
+awkward,performance art,physicality,history
+balance,information overload,alone together,connectivity,work,focus,distraction,embodiment,zen,attention,simplicity
+beautiful exhuberance,limits of the computer,taste,formalism,beauty,critique,visual culture,originality,aesthetics,old media,math
+beauty,aesthetics,truth,beautiful exhuberance,critique,form,elegance,visual culture,taste,aesthetic experience,subjectivity
+beginnings,learning,programming,media lab,aesthetics and computation,nerd,videogames,john maeda,history,code,art and code
+behavior,uncanny,equilibrium,text,synesthesia,representation,story,audiovisualization,interactivity,physics,simulation
+being,gratitude,journey,career
+big data,data,facebook,data ownership,security,privacy,prediction,futurism,pattern,social media,signals
+biology,biology and code,dna,art and science,synthetic biology,artificial life,emergence,nature,organic,growth,systems
+biology and code,dna,biology,synthetic biology,genetics,order,messiness,code is messy,evolution,metaphor,algorithm
+birth,interesting,creation,evolution,process
+book,motion,knowledge,teaching,story,logic,open frameworks,cosmogeny,sharing,community
+boring,staring at screens,focus,struggle with technology,distraction,embodiment,frustration,economics,attention,programming,pattern
+bots,stock market,chaos,dystopia,algorithms,security,dysfunction,algorithm,man vs machine,economics,power
+branching,heuristics,mind and hand,art and experience,animation,tree,skill,intuition,mastery,feedback,distraction
+bravado,paul rand,humor,generations,mentors,design
+brogrammers,gender,nerd,tribe
+bugs,dysfunction,error,debugging,failure,things breaking,stress,confusion,challenge,glitch,system
+business,jewelry,organizations,passion,product,cultural value,social dynamics,career,commercialism,art vs engineering,art
+c++,operating system,challenge,understanding,engineering,language,programming,systems
+camera,machine vision,kinect,sensor,ubiquitous computing,ubiquity,future of cinema,fantasy technology,creative misuse,surveillance,object recognition
+cameras,cities,sensor,machine vision,kinect,surveillance,immersion,power,camera,interactivity,future
+career,money,journey,life,commercialism,generations,art vs engineering,teaching,passing the baton,work,business
+carl sims,evolution: How does the computer simulate accelerated evolution?,genetics,evolution,collaboration with machines,dna,artificial life,aesthetics,new aesthetic,beauty,artificial intelligence
+cellular automata,artificial life,infinity,world building,games,cosmogeny,universe,rules,algorithm,efficiency,emergence
+challenge,stress,c++,uncertainty,understanding,bugs,dreams,frustration,dysfunction,solutions,language
+challenges,rhetoric,dichotomy,critique,struggle,questions,coding for humanity,humanism,useless,struggle with technology,videogames
+chance,probability,luck,randomness,noise,serendipity,gift,random,number,organic,algorithm
+change,hope,technoptimism,interconnectedness,invention,utopia,imagination,problem solving,progress,math,computation
+chaos,stock market,bots,prediction,algorithms,dysfunction,error,atmosphere,systems,noise,pattern
+children,play,interactivity,gesture,imagination,success,fun,life,instrument,mastery,possibility
+choices,own the tool,post-digital,program or be programmed,limitations,learning
+chrome,net.art,videogames,virtual
+cinema,narrative,tragedy,serious,future of cinema,storytelling,immersion,games,experience,clouds,videogames
+cities,infrastructure,sublime,cameras,open paths,perspective,network security,society,zoom,ubiquity,revelation
+clock,time,computer
+clouds,future of cinema,narrative,dialogue,immersion,storytelling,science fiction,recursion,noosphere,meta,diy
+clouds has that quality of being approached from different angles....a romantic would say clouds is made of principles very similar to dreams,
+code,language,programming,computer,computation,thinking with code,beginnings,logic,beauty,sharing,art vs engineering
+code is messy,parameters,constraints,biology and code,dna,serendipity,elegance,physics,biology,process,nature
+coding,programming,tradition,thinking with code,magic,learning,engineering,sketching,virtuosity,god,dysfunction
+coding for humanity,survival,problem solving,solutions,digital divide,useless,challenges,humanity,dystopia,future,progress
+coevolution,artificiality,symbiosis,new aesthetic,thinking with code,man vs machine,perception
+cognition,thinking,thinking with code,artificial intelligence,symbiosis,man vs machine,virtuosity,tools,language,computation,invention
+collaboration,hackathon,collective intelligence,community,sharing,open source,github,crowdsourcing,liveness,music,network
+collaboration with machines,thinking by doing,process,intuition,drawing,line,rules,world building,carl sims,improvization,system
+collective intelligence,network,wikipedia,internet,collaboration,progress,the cloud,ideas,twitter,communication,learning
+commercial art,commercialism,work and life,uncertainty,money,zen,consumer,creative control,taste,time,struggle
+commercialism,commercial art,advertising,money,software,career,economics,open source,originality,passion,work and life
+communication,data visualization,internet,language,social media,globalization,information,aesthetics,mobile,society,simplicity
+community,sharing,tribe,open source,collaboration,open frameworks,social media,processing,thanks,people,github
+completion,infinite game,infinite conversation,evaluation,art vs engineering
+complexity,pattern,data visualization,emergence,systems,perception,simplicity,gestalt,limitations,data,nature
+computation,computer,logic,limitations,math,code,rules,thinking through code,systems,artificial intelligence,nature
+computational power,computers,futurism,limitations,learning,technological progress
+computer,computation,code,logic,math,time,art vs engineering,limitations,thinking,abstraction,discovery
+computers,computational power,limitations,computation,creativity,coding,learning
+concept,maker,thinkerer,art world,career
+confusion,public,glitch,debugging,bugs,opacity,social engagment,dysfunction,error,visualization,complexity
+connections,synergy,zach lieberman,performance,working with others,drawing,hackathon,thinking by doing,collaboration,digital meets physical
+connectivity,alone together,information overload,balance,networks,focus,distraction,embodiment,interconnectedness,relationships,zen
+consciousness,mind,singularity,artificiality,artificial intelligence,uture,utopia,cyborg,science fiction,identity,poetry
+constraints,parameters,code is messy,physics,teaching,limitations,nature,simulation
+consumer,taste,commercial art,aesthetics,design,beauty
+control,gardening,power,art and security,generative art,network security,error,man vs machine,randomness,privacy,algorithms
+conviction,focus,zen,attention,simplicity,drawing
+corporate,gadget,google,dystopia,users,devices,money,transparency,engineering,man vs machine,data ownership
+cosmogeny,god mode,world building,simulation,universe,god,cellular automata,artificial life,rules,nature,emergence
+counterculture,esoteric,hacker,nerd,criticality,tribe
+creation,birth,interesting,creative coders,god mode,world building,representation,process,art and code,evolution,cosmogeny
+creative coders,knowledge,interdisciplinary,hybridity,creation,virtuosity,tribe,system,creative coding,art and code,architecture
+creative coding,art and tech,creative coders,new media,generative art,design by numbers,coding,hybridity,dialogue,virtuosity,tribe
+creative control,uncertainty,commercial art,surprise,error,new aesthetic
+creative exploration,expression,mind and hand,self expression,process,physicality,archiving,programming
+creative misuse,program or be programmed,critical engineering,obsolescence,opacity,users,transparency,diy,gesture recognition,subversion,openness
+creativity,imagination,intuition,journey,sketching,coding,branching,art,thinking with code,mind and hand,career
+critical engineering,transparency,criticality,dystopia,program or be programmed,opacity,openness,open software,literacy,creative misuse,symbiosis
+criticality,critical engineering,transparency,critique,hackers,tech-demo,meaning,trendspotting,anonymous,network security,the cloud
+critique,meaning,rhetoric,tech-demo,criticality,poetry,beauty,aesthetics,challenges,new media,insight
+crowdsourcing,love,sex,snarky,anonymous,collaboration,net.art,creativity,money,economics,commercialism
+cultural value,jewelry,problem of newness,product,audience,business,curation,funny,evaluation,culture,museums
+culture,society,cultural value,art,algorithms,problem solving,telepathy,popular culture,man versus machine,invisibility,everyday
+curation,anthropology,homogeneity,memes,ideas,museums,cultural value,originality,net.art,art,visual culture
+curiosity,questions,research,science
+cyberpunk,antihuman,digital,internet culture,science fiction,digital culture,gadgets,cyborg,futurism,machine aesthetics,google
+cyborg,wearables,gadgets,singularity,cyberpunk,consciousness,devices,science fiction,antihuman,prosthetic,digital
+darpa,drones,military technology,surveillance,camera,personal data,future of cinema
+data,data visualization,memory,big data,personal data,datatelling,complexity,truth,archiving,information,gps
+data collection,sensor,nature,camera,data
+data mining,architecture,intuition,exploration,futurism,immersion,discovery,power,data,network
+data ownership,gps,privacy,maps,big data,personal data,location,users,security,memory,facebook
+data visualization,complexity,data,communication,perception,pattern,legibility,social,simplicity,humanity,social media
+datatelling,journalism,storytelling,data,writing,open paths,nytimes,location,apps,subjectivity,memory
+death,obsolescence,afterlife,archiving,apocalypse,quantified self,old media,creative misuse,futurism,personal data,ideas
+debug screen,interfaces,machine vision,new aesthetic,algorithm,artificial intelligence
+debugging,bugs,confusion,glitch,imagination,understanding,artificiality,visualization,opacity,physics,dysfunction
+demo,demo scene,hackers,computer,videogames,history,beginnings
+demo scene,demo,history,hackers,computer,videogames,beginnings
+design,scale,useful,aesthetics,design process,product,objects,3d printing,problem solving,post-digital,generative art
+design and art,questions,why?,art world,media lab,aesthetics and computation,problem solving,design,interactivity
+design by numbers,toolkits,processing,aesthetics and computation,art and tech,creative coding,open frameworks,aesthetics,design,education,tools
+design fiction,science fiction,tools
+design process,objects,product,3d printing,design,digital meets physical
+devices,sensors,wearables,cyborg,surveillance,gadgets,corporate,apple,interfaces,gadget,google
+dialogue,the future,clouds,social engagment,futurism,creative coding,hybridity,criticality,tribe,collective intelligence,society
+dichotomy,humanism,struggle with technology,challenges,engineering,technology
+digital,antihuman,machine aesthetics,cyberpunk,artificiality,cyborg,new aesthetic
+digital art,museums,preservation,archiving
+digital culture,self reflection,digital natives,sadness,internet culture,cyberpunk,google,stock market,staring at screens,embodiment,utopia
+digital divide,audience,coding for humanity,gesture,post-digital,critical engineering,improvization,sketching,problem solving,devices,criticality
+digital meets physical,physicality,3d printing,post-digital,objects,light,installation,embodiment,sketching,projection,design process
+digital natives,sadness,self reflection,digital culture,staring at screens,embodiment,emotion,digital meets physical
+disaster,mobile,social dynamics
+discovery,exploration,immersion,gardening,architecture,intuition,serendipity,information,frontier,surprise,control
+distraction,attention,focus,embodiment,net.art,the present,present shock,skill,information overload,real and virtual,connectivity
+diy,creative misuse,clouds,camera
+dna,biology and code,genetics,biology,evolution,evolution: How does the computer simulate accelerated evolution?,algorithm,artificial life,carl sims,art and science,code is messy
+documentation,human life,quantified self,narrative,personal data,archiving,data
+doing with others,tools,learning,sharing
+dont like projects that try to replace social skills that we should develop,
+drawing,sketching,zen,liveness,mind and hand,collaboration with machines,thinking by doing,gesture,failure,process,improvization
+dreams,fantasy,sex,interconnectedness,weird,utopia,nano,emotion,hallucination,challenge,imagination
+drones,darpa,military technology,surveillance,camera,personal data,future of cinema
+dysfunction,error,bugs,tradition,engineering,bots,chaos,system,algorithms,failure,stock market
+dystopia,google,bots,critical engineering,security,man vs machine,users,corporate,future,gadget,power
+economics,money,stock market,thanks,bots,sharing,open source,software,manufacturing,internet culture,dystopia
+education,processing,teaching,tools,open source,mentors,media lab,aesthetics and computation,humanity,sharing,passing the baton
+efficiency,genetics,visual effects,rendering,iteration,cellular automata,evolution,sex,rules,dna,kinect
+ego,ideas,sharing,open source,tools
+electronic music,music
+elegance,messiness,order,truth,logic,simplicity,science,infinity,rules,beauty,ocd
+embodiment,focus,attention,staring at screens,distraction,self reflection,sadness,mutlisensory,mirror,live,gesture recognition
+emergence,systems,artificial life,rules,complexity,games,universe,simulation,world building,process,cellular automata
+emotion,empathy,sex,experience design,dreams,sentiment analysis,laughter,visual cortex,love,people,embodiment
+empathy,experience design,emotion,project examples,sentiment analysis,feeling,humanism,god mode,social,fantasy technology,interconnectedness
+energy,epiphany,aesthetic experience,style,abstraction
+engineering,tradition,dysfunction,symbiosis,operating systems,improvement,opacity,coding,learning,software,transparency
+english,globalization,arabic, (Alb),(Alb),language,communication,data visualization
+epiphany,energy,aesthetic experience,style,abstraction,artificial life,discovery,cosmogeny,surprise,emergence,systems
+equilibrium,behavior,physics,simulation
+error,dysfunction,bugs,algorithms,stock market,glitch,chaos,opacity,limitations,system,control
+esoteric,counterculture,hacker,nerd,criticality,tribe
+evaluation,completion,infinite game,infinite conversation,visual cortex,funny,cultural value,useful,art vs engineering,embodiment,exploration
+everyday,media,art and experience,culture,experience
+evolution,genetics,dna,artificial life,carl sims,old media,efficiency,cellular automata,algorithm,invention,biology and code
+evolution: How does the computer simulate accelerated evolution?,carl sims,genetics,dna,evolution,aesthetics,beauty,code
+existence,philsophy,internet of things,things,machine aesthetics,funny,philosophy,humanity,god mode,new aesthetic,man vs machine
+experience,experience design,seamlessness,gesture,art and experience,perception,embodiment,reality,improvization,algorithms,magic
+experience design,experience,empathy,reality,emotion,algorithms,feeling,art and tech,art history,perception,humanism
+exploration,intuition,discovery,immersion,possibility,useful,journey,zen,iterative,how does the work feed into itself?,generative art
+expression,self expression,painting,art and code,creative exploration,feeling,instrument,mind and hand,exploration,abstraction,physicality
+eyebeam,video art,r&d,old media,new aesthetic,history
+eyeo,gender,career,community
+eyewriter,prosthetic,zach lieberman,assistive technology,addiction,accessibility,cyborg,humanity,drawing,people
+face tracking,machine vision,military technology,realness,social engagment,camera,surveillance,open frameworks,power,new aesthetic,algorithm
+facebook,twitter,social media,security,relationships,big data,privacy,identity,twitter videogames,data ownership,apple
+failure,success,zen,bugs,spiritual,life,drawing,dysfunction,error,collaboration with machines,children
+fantasy,dreams,augmented reality,nano,hallucination,world building,weird,real and virtual,videogames,interfaces,legos
+fantasy technology,recursion,meta,live,science fiction,laughter,improvization,sensors,writing,audience,future
+fat,prank,street art,statistics,hack,humor,net.art,solutions,tribe,collaboration,data visualization
+fate,education
+feedback,tweaking,iterative,intuition,how does the work feed into itself?,visual cortex,thinking by doing,heuristics,art and experience,improvization,branching
+feeling,wonder,aesthetic experience,expression,empathy,self expression,experience design,experience,emotion,beauty,language
+flash,nerd,tribe,beginnings,community
+flocking,artificial life,emergence,complexity
+flow,atmosphere,revelation,gestalt,phenomena,pattern,perception,complexity,data visualization
+fluency,struggle with technology,frustration,language,programming
+fluxus,performance,performance art,apps,art history,real and virtual,art,social,algorithm
+focus,attention,distraction,net.art,embodiment,mirror,conviction,staring at screens,information overload,zen,connectivity
+food,meaning,philsophy,why,funny,weird,immersion,experience,virtual
+foraging,gardening,beauty
+form,iterative,how does the work feed into itself?,projection,multiverse,imaginary,light,iteration,generative art,beauty,feedback
+formalism,beautiful exhuberance,light,sculpture,installation,art and code,generative art,math,creativity,beauty,digital meets physical
+forums,teaching,processing,sharing,community
+frontier,maps,ideas,discovery,originality,newness
+frustration,struggle with technology,stress,fluency,programming,ambiguity,challenge,boring,struggle,uncertainty,language
+fun,motivational,toolkits,accessibility,children,art and tech,magic,open frameworks,processing,power,play
+funny,weird,food,existence,evaluation,philosophy,cultural value,nerd,old media,tribe,new media
+future,science fiction,technological progress,survival,dystopia,apocalypse,fantasy technology,futurism,consciousness,algorithm,cyborg
+future of cinema,storytelling,narrative,clouds,story,simulation,camera,cinema,kinect,virtual,visualization
+futurism,prediction,cyberpunk,science fiction,technological progress,future,the future,computational power,data mining,big data,trendspotting
+gadget,google,corporate,apple,dystopia,users,devices,transparency,facebook,man vs machine,critique
+gadgets,cyborg,wearables,cyberpunk,google,devices,progress,social engagment,critical engineering,man vs machine,dystopia
+games,cellular automata,emergence,videogames,world building,artificial life,possibility,algorithm,cosmogeny,probability,simulation
+gardening,generative art,control,foraging,authorship,randomness,iteration,discovery,process,form,systems
+gender,brogrammers,texting,eyeo,relationships,sex,nerd,tribe,virtual,community
+generations,mentors,kill the master,ars electronica,veterans,bravado,shifts,paul rand,heroes,responsibility,passing the baton
+generative,parameter space,possibility,randomness,serendipity,surprise
+generative art,gardening,randomness,feedback,form,control,emergence,serendipity,exploration,abstraction,art and code
+generosity,the gift,interconnectedness,progress,sharing,society,network,community,open source
+genetics,efficiency,dna,evolution,evolution: How does the computer simulate accelerated evolution?,carl sims,biology and code,algorithm,cellular automata,sex,infinity
+geometry,particles,motion,storytelling
+gestalt,pattern,zoom,revelation,perception,phenomena,sublime,atmosphere,flow,complexity,perspective
+gesture,improvization,mastery,liveness,magic,drawing,experience,embodiment,interactivity,children,play
+gesture recognition,assistive technology,embodiment,creative misuse,kinect
+gift,participation,luck,social engagment,heroes,chance,randomness,serendipity,kill the master,people,homogeneity
+github,improvement,wikipedia,collaboration,open source,community,code,sharing,collective intelligence,archiving,coding
+give everything away,education,sharing
+glitch,confusion,debugging,error,bugs,opacity,limitations,kinect,camera,control,dysfunction
+globalization,english,arabic,politics, (Alb),(Alb),language,humanity,communication,education,society
+god,god mode,cosmogeny,magic,coding,rules,world building,simulation,reality,digital meets physical,nature
+god mode,cosmogeny,god,simulation,visual effects,world building,creation,mysticism,physics,philsophy,existence
+golan levin,beginnings,learning
+google,gadget,corporate,dystopia,internet culture,apple,gadgets,digital culture,wearables,cyberpunk,research
+gps,maps,location,data ownership,open paths,personal data,trace of your life,infrastructure,data,cities,memory
+graphic design,how did you get into working with code?,art world,beginnings
+gratitude,being,journey,career
+growth,organic,architecture,media,product,improvement,3d printing,biology,newness,digital meets physical,new media
+gui,inversion,keyboard,mouse,think different,subversion,why?,hacking,interfaces,sketching,users
+guru,knowledge,mentors,learning,sharing
+hack,prank,surveillance,fat,privacy,humor,information as weapon,network security,net.art,staring at screens,transparency
+hackathon,collaboration,synergy,working with others,connections,tribe,creativity,community,kinect,abstraction,creative coding
+hacker,addiction,nerd,counterculture,esoteric,social,tribe,beginnings,programming,criticality,weird
+hackers,hacking,criticality,transparency,anonymous,virus,information as weapon,elegance,coding,control,users
+hacking,think different,mouse,keyboard,gui,inversion,subversion,street art,inventor,why?,infrastructure
+hallucination,nano,subjectivity,fantasy,dreams,imagination,weird,art,science fiction,future
+heroes,kill the master,gift,generations,mentors,sharing,community
+heuristics,art and experience,branching,touch,intuition,feedback,mind and hand,gesture,improvization,process,imagination
+history,old media,preservation,archiving,beginnings,videogames,newness,demo scene,memory,art history,computer
+homogeneity,originality,tech-demo,influence,curation,meaning,ideas,visual culture,poetry,gift,new media
+hope,limits of the computer,change,technoptimism,utopia,problem solving,progress,limitations,society,future,complexity
+how did you get into working with code?,graphic design,art world,beginnings
+how does the work feed into itself?,iterative,feedback,form,intuition,journey,exploration,generative art,design,creativity
+human life,documentation,quantified self,narrative,personal data,archiving,data
+humanism,post-digital,dichotomy,own the tool,social engagment,mastery,people,struggle with technology,empathy,staring at screens,challenges
+humanity,politics,people,internet of things,things,society,philsophy,existence,machine aesthetics,participation,social
+humor,serious,bravado,paul rand,prank,fat,hack,net.art,useful,generations,mentors
+hybridity,interdisciplinary,art and code,knowledge,tribe,creative coders,aesthetics and computation,nerd,toolmakers,architecture,science
+ideas,originality,memes,curation,homogeneity,visual culture,frontier,anthropology,apporopriation,ego,influence
+identity,personal data,consciousness,privacy,facebook,social media,avatar,quantified self,performance art,social,cyborg
+ignorance,network security,the cloud,program or be programmed,users,criticality,complexity
+illusion,project example,liveness,gesture,magic,drawing,play
+image,noninteractivity,post-digital,design,interactivity
+images,pleasure,subjectivity,aesthetics,beauty
+imaginary,teleportation,multiverse,form,utopia,abstraction,science fiction,virtual,future
+imagination,creativity,debugging,play,dreams,children,universe,nano,surprise,cosmogeny,hallucination
+immersion,zen,exploration,reading,discovery,architecture,information,time,interfaces,seamlessness,data mining
+improvement,operating systems,growth,engineering,github,opacity,software,technology,dysfunction,error,coding
+improvization,gesture,thinking through code,sketching,feedback,surprise,intuition,collaboration with machines,fantasy technology,embodiment,thinking by doing
+in a sense are you running through an evolutionary process?,
+inexactitude,truth,playfulness,noise,memory,probability,chaos,art vs engineering,chance,data,play
+infinite conversation,completion,infinite game,evaluation,art vs engineering,clouds,future of cinema
+infinite game,completion,infinite conversation,evaluation,art vs engineering
+infinite in all directions,why,post-digital,design,history,technological progress
+infinity,cellular automata,universe,artificial life,algorithm,world building,emergence,elegance,games,cosmogeny,philosophy
+influence,interestingness,homogeneity,style,visual culture,interdisciplinary,music,ideas,culture,originality,hybridity
+influences,research,science,biology,process
+information,library,reading,serendipity,communication,data,immersion,discovery,problem solving,information overload,hack
+information as weapon,virus,transparency,hack,network security,wikipedia,hacking,security,hackers,memes,surveillance
+information overload,library,alone together,balance,connectivity,focus,distraction,embodiment,zen,attention,information
+infrastructure,cities,open paths,network security,hacking,symbiosis,gps,power,transparency,society,critical engineering
+innovation,generations,evolution,originality,old media,newness,history
+insight,meaning,critique,emotion
+installation,light,projection,interactivity,formalism,sculpture,digital meets physical,form,accessibility,phenomena,architecture
+instrument,mastery,play,expression,mind and hand,children,thinking by doing,exploration,gesture,interactivity,tools
+intelligence,thinking,solutions,cognition,collective intelligence,internet,collaboration,technological progress,data visualization
+interactivity,play,installation,children,gesture,liveness,immersion,interfaces,instrument,participation,behavior
+interconnectedness,generosity,dreams,network,progress,invisibility,noosphere,the gift,utopia,internet,connectivity
+interdisciplinary,hybridity,knowledge,architecture,creative coders,multimedia,interestingness,influence,art and code,learning,music
+interesting,birth,creation,useful,evolution,beauty,process
+interestingness,influence,interdisciplinary,music,style,visual culture,culture,hybridity,progress,new aesthetic,newness
+interface,seamlessness,ubiquitous computing,sensor,technology,interfaces,experience,devices
+interfaces,augmented reality,ubiquity,seamlessness,wearables,fantasy,devices,cyborg,real and virtual,immersion,mouse
+internet,network,collective intelligence,communication,social media,interconnectedness,power,network security,focus,the cloud,net.art
+internet culture,digital culture,cyberpunk,google,stock market,utopia,economics,algorithms,dystopia,science fiction
+internet of things,things,existence,philsophy,machine aesthetics,humanity,new aesthetic,man vs machine
+intuition,heuristics,art and experience,branching,thinking by doing,feedback,exploration,collaboration with machines,iterative,how does the work feed into itself?,rules
+invention,toolmakers,inventor,change,evolution,addiction,tools,hybridity,old media,cognition,hacking
+inventor,toolmakers,invention,hacking,hybridity,art vs engineering,tools
+inversion,gui,keyboard,mouse,think different,subversion,why?,hacking,interfaces,sketching,users
+invisibility,metaphor,interconnectedness,culture,visualization,scale,systems,complexity
+iphone,devices,network,internet
+iteration,rendering,efficiency,form,gardening,thinking,randomness,time,sketching,physicality,generative art
+iterative,how does the work feed into itself?,feedback,form,intuition,journey,exploration,generative art,design,creativity
+jewelry,business,product,cultural value,design
+john maeda,media lab,aesthetics and computation,beginnings,art and code,hybridity,processing,learning,design,career,new media
+journalism,nytimes,datatelling,virality,algorithms,twitter,data,storytelling,artificial intelligence,sharing
+journey,career,being,iterative,mortality,how does the work feed into itself?,gratitude,art,exploration,life,luck
+julian oliver,art and security,network security,control,users,power,internet
+keyboard,gui,inversion,mouse,think different,subversion,why?,hacking,interfaces,sketching,users
+kids,audiovisualization,interactivity
+kill the master,heroes,passing the baton,mentors,generations,gift,teaching,career,education,sharing,community
+kinect,camera,microsoft,gesture recognition,visual effects,cameras,glitch,future of cinema,efficiency,research,sensor
+knowledge,interdisciplinary,creative coders,guru,book,motion,hybridity,r&d,research,architecture,learning
+language,english,code,globalization,programming,communication,arabic,thinking with code,struggle with technology,cognition,frustration
+laughter,fantasy technology,emotion,weird
+leadership,social engineering,social dynamics
+learning,beginnings,programming,tradition,coding,engineering,dysfunction,knowledge,sharing,education,hybridity
+legibility,nytimes,data visualization,social,information,simplicity,complexity,communication,social media,scale,design
+legos,minecraft,toolkit,world building,possibility,fantasy,program or be programmed,opacity,dreams,games,open source
+library,information overload,reading,information,immersion,archiving
+life,mortality,success,work,career,failure,generations,journey,children,money,time
+lifetracking,quantified self,performance art,memory,relationships,twitter,archiving,personal data,social media
+light,projection,installation,formalism,sculpture,form,architecture,digital meets physical,virtual
+limitations,computation,artificial intelligence,error,complexity,computers,glitch,man vs machine,poetry,systems,computer
+limits of the computer,hope,beautiful exhuberance,visual culture,originality,limitations,old media,newness,beauty,new media,future
+line,mind and hand,collaboration with machines,thinking by doing,drawing,process,tools
+literacy,openness,critical engineering,symbiosis,opacity,transparency,program or be programmed,users,criticality,computer,man vs machine
+live,audience,embodiment,fantasy technology,gesture,improvization,science fiction,interactivity,future
+liveness,audiovisualization,sound,gesture,drawing,thinking through code,music,magic,zen,spiritual,illusion
+location,open paths,gps,maps,data ownership,personal data,datatelling,privacy,memory,drawing,archiving
+logic,math,elegance,abstraction,computation,computer,syntax,ocd,book,order,messiness
+love,sex,relationships,crowdsourcing,virtuosity,tradition,emotion,datatelling,cyborg,virtual,privacy
+luck,chance,gift,serendipity,randomness,journey,art,sharing
+machine aesthetics,internet of things,things,existence,philsophy,antihuman,digital,artificiality,new aesthetic,cyberpunk,humanity
+machine vision,camera,new aesthetic,ubiquitous computing,face tracking,sensor,surveillance,object recognition,cameras,ubiquity,interfaces
+magic,liveness,god,gesture,coding,drawing,zen,time,spiritual,slow,motivational
+maker,concept,thinkerer,art world,career
+making things,3d printing,physicality
+malevich,art history,abstraction,emotion
+man versus machine,utopia,culture,society,future,technological progress
+man vs machine,symbiosis,dystopia,artificial intelligence,bots,power,cognition,machine aesthetics,google,control,users
+manufacturing,economics,devices
+maps,gps,data ownership,location,frontier,trace of your life,personal data,open paths,data,privacy,data visualization
+mastery,skill,gesture,instrument,branching,humanism,mind and hand,distraction,children,liveness,post-digital
+math,logic,abstraction,computation,arabic,computer,algorithm,bots,struggle with technology,reality,infinity
+meaning,tech-demo,insight,poetry,critique,food,why,philsophy,homogeneity,criticality,art vs engineering
+media,everyday,art and experience,growth,culture,experience,newness,new media,technological progress
+media lab,aesthetics and computation,john maeda,acu,art and code,beginnings,education,teaching,open frameworks,working with others,hybridity
+memes,virality,visual culture,originality,youtube,curation,ideas,style,anthropology,virus,homogeneity
+memory,archiving,personal data,data,preservation,inexactitude,truth,data ownership,lifetracking,the cloud,gps
+mentors,generations,kill the master,teachers,passing the baton,veterans,shifts,paul rand,paul burke,mentorship,heroes
+mentorship,passing the baton,mentors,career,education
+messiness,order,elegance,biology and code,logic,systems,biology
+meta,recursion,fantasy technology,improvization,visualization,clouds,future of cinema
+metaphor,invisibility,space,synthetic biology,scale,interconnectedness,biology and code,universe,artificial life,culture,visualization
+microscope,vision,revelation,zoom,scale,representation,data visualization,big data,social,camera,nature
+microsoft,research,kinect
+military technology,surveillance,darpa,drones,face tracking,ubiquity,security,power,camera,critical engineering,data ownership
+mind,uture,artificiality,consciousness,utopia,artificial intelligence,simulation,future of cinema,future
+mind and hand,branching,thinking by doing,line,drawing,skill,creative exploration,heuristics,art and experience,mastery,instrument
+minecraft,legos,world building,cosmogeny,toolkit,open source
+mirror,focus,performance art,staring at screens,embodiment,surveillance,attention
+mobile,disaster,social dynamics,augmented reality,fantasy,communication,staring at screens,experience design,facebook,real and virtual,immersion
+money,economics,commercialism,career,commercial art,software,work and life,corporate,success,life,struggle
+mortality,life,work,journey,time,career
+motion,geometry,particles,book,story,knowledge,logic,teaching,cosmogeny,storytelling
+motivation,visualization,future of cinema
+motivational,fun,magic,power,programming
+mouse,gui,inversion,keyboard,think different,subversion,why?,hacking,interfaces,sketching,users
+multimedia,interdisciplinary,3d printing,hybridity,process
+multiverse,imaginary,form,phenomena,utopia,abstraction,virtual,nature,simulation
+museums,preservation,digital art,curation,focus,cultural value,net.art,distraction,attention,immersion,archiving
+music,audiovisualization,synesthesia,sound,liveness,techno,subliminal,electronic music,sensation,influence,interestingness
+mutlisensory,embodiment,gesture,improvization,physicality,experience,perception
+mysticism,god mode,intuition,cosmogeny,clouds,science fiction,computer,reality,creativity,virtual,artificial intelligence
+nano,hallucination,fantasy,dreams,imagination,weird,science fiction,future
+narrative,cinema,future of cinema,storytelling,clouds,human life,documentation,singularity,quantified self,consciousness,data
+nature,universe,simulation,physics,phenomena,cosmogeny,scale,emergence,systems,biology,complexity
+nature of code,computer,math,computation,nature
+nature?: What has the greatest influence on your work?,art,emotion,beauty,nature
+nerd,tribe,hacker,addiction,hybridity,beginnings,brogrammers,counterculture,flash,esoteric,own the tool
+net.art,focus,attention,distraction,chrome,prank,fat,curation,hack,humor,museums
+network,internet,collective intelligence,the cloud,interconnectedness,twitter,social media,collaboration,social,security,relationships
+network security,julian oliver,ignorance,art and security,infrastructure,anonymous,power,hack,information as weapon,cities,control
+networks,connectivity,interconnectedness,collaboration,social,collective intelligence,network,perception,internet
+new aesthetic,machine vision,machine aesthetics,artificiality,artificial intelligence,video art,things,internet of things,man vs machine,philsophy,existence
+new media,newness,art and tech,old media,homogeneity,originality,cultural value,art world,critique,creative coding,evaluation
+new media old media,abstraction,art and tech,old media,history
+newness,originality,new media,technological progress,generations,old media,history,obsolescence,style,ideas,discovery
+noise,organic,chance,randomness,sound,inexactitude,probability,chaos,audiovisualization,liveness,critique
+noninteractivity,image,post-digital,design,interactivity
+noosphere,alone together,the cloud,interconnectedness,clouds,network,digital meets physical,internet,systems
+nostalgia,travel,artificiality,old media,world building,data ownership,memory,emotion,newness,videogames,new media
+novelty,newness,technological progress
+number,random,probability,chance,randomness,math,algorithm
+nytimes,journalism,legibility,datatelling,complexity,data visualization,data
+object recognition,ubiquitous computing,sensor,machine vision,camera,technological progress
+objects,design process,product,3d printing,digital meets physical,design,post-digital,teaching,physicality,learning
+obsolescence,death,old media,creative misuse,apocalypse,devices,newness,history,creative coding,weird,career
+ocd,syntax,logic,elegance
+old history,archiving,history
+old media,history,obsolescence,preservation,evolution,new media,archiving,newness,nostalgia,death,cultural value
+opacity,critical engineering,program or be programmed,error,creative misuse,confusion,operating systems,openness,literacy,technology,engineering
+open frameworks,toolkit,toolkits,acu,aesthetics and computation,teaching,open source,community,media lab,sharing,art and tech
+open paths,location,infrastructure,gps,cities,maps,datatelling,personal data,memory,drawing,society
+open software,transparency,critical engineering,program or be programmed,creative misuse,tools,future,technological progress
+open source,sharing,toolkit,community,education,open frameworks,economics,tools,collaboration,money,engineering
+openness,literacy,toolkits,critical engineering,program or be programmed,opacity,creative misuse,transparency,power,programming
+operating system,c++,engineering,systems,language,programming
+operating systems,improvement,engineering,opacity,software,technology,dysfunction,error
+order,messiness,elegance,biology and code,logic,systems,biology
+organic,growth,architecture,product,noise,3d printing,chance,biology,randomness,emergence,digital meets physical
+organizations,business,social dynamics,career,people
+originality,ideas,visual culture,homogeneity,memes,newness,style,curation,new media,commercialism,apporopriation
+overview,space,perspective,zoom
+own the tool,choices,humanism,program or be programmed,post-digital,nerd,hybridity,limitations,people,learning
+painting,expression,drawing,children,thinking by doing,new media,simplicity,gesture,improvization,art and code,sketching
+paola antonelli,
+parameter space,generative,possibility,randomness,serendipity,surprise,exploration,generative art
+parameters,code is messy,constraints,physics,nature,simulation
+participation,gift,social engagment,people,humanity,tools,social,interactivity,interfaces,storytelling,personal data
+particles,geometry,motion,storytelling
+partnership,teams,processing,collaboration
+passing the baton,mentorship,kill the master,mentors,generations,career,education
+passion,business,commercialism,art vs engineering,art,career
+pattern,gestalt,perception,complexity,phenomena,atmosphere,flow,data visualization,prediction,perspective,zoom
+paul burke,mentors,learning,sharing
+paul rand,bravado,humor,generations,mentors,design
+people,participation,social,humanity,relationships,social engagment,humanism,social media,gift,twitter,storytelling
+perception,pattern,gestalt,scale,complexity,reality,data visualization,visual cortex,vision,experience,man vs machine
+performance,fluxus,zach lieberman,connections,apps,performance art,liveness,real and virtual,collaboration,drawing,social
+performance art,fluxus,apps,awkward,mirror,performance,lifetracking,art history,quantified self,focus,art
+personal data,memory,archiving,identity,privacy,gps,quantified self,data ownership,maps,data,location
+perspective,zoom,overview,signals,sublime,phenomena,space,cities,revelation,pattern,gestalt
+phenomena,perspective,pattern,zoom,gestalt,sublime,atmosphere,multiverse,flow,nature,prediction
+philosophy,existence,funny,uncanny,chance,infinity,truth,logic,time,progress,weird
+philsophy,existence,internet of things,things,machine aesthetics,food,meaning,why,humanity,god mode,new aesthetic
+physicality,post-digital,digital meets physical,uncertainty,sex,embodiment,drawing,sketching,the digital divide,techno,tangibility
+physics,vision,simulation,nature,reality,visualization,god mode,science,universe,parameters,equilibrium
+play,children,interactivity,thinking by doing,instrument,imagination,gesture,systems,emergence,intuition,collaboration with machines
+playfulness,inexactitude,art vs engineering,play,process
+pleasure,images,subjectivity,aesthetics,beauty
+poetry,tech-demo,meaning,art,critique,homogeneity,art vs engineering,criticality,limitations,consciousness,infinity
+policy,statistics,technoptimism,transparency,society,data ownership,problem solving,solutions,devices,personal data,data
+politics,globalization,humanity,society,education,dystopia,solutions,communication,visualization,data visualization,perception
+popular culture,social engagment,visual culture,culture,social
+possibility,parameter space,surprise,generative,randomness,serendipity,exploration,legos,games,emergence,children
+post-digital,physicality,humanism,digital meets physical,infinite in all directions,image,the digital divide,noninteractivity,choices,tangibility,sketching
+power,security,control,transparency,network security,dystopia,bots,man vs machine,critical engineering,infrastructure,art and security
+prank,fat,hack,humor,net.art
+prediction,atmosphere,chaos,futurism,pattern,phenomena,big data,3d printing,complexity,systems,data
+present shock,the present,toys,technoptimism,distraction,relationships,3d printing,newness,internet,communication,social media
+presentation,ambiguity,understanding,story,art
+preservation,archiving,museums,memory,old media,digital art,history,apocalypse,videogames,newness,digital meets physical
+privacy,security,data ownership,personal data,surveillance,hack,facebook,big data,relationships,identity,public/private
+probability,chance,randomness,random,number,noise,games,inexactitude,stock market,chaos,algorithm
+problem of newness,cultural value,old media,history
+problem solving,society,solutions,useful,coding for humanity,progress,program or be programmed,design,creative misuse,education,information
+process,collaboration with machines,emergence,art vs engineering,thinking by doing,serendipity,drawing,systems,gardening,mind and hand,intuition
+processing,education,toolkits,accessibility,tools,design by numbers,teaching,sketching,thinking by doing,media lab,aesthetics and computation
+product,jewelry,design process,business,objects,organic,growth,3d printing,architecture,cultural value,design
+program or be programmed,creative misuse,users,critical engineering,opacity,own the tool,openness,open software,transparency,legos,problem solving
+programming,coding,learning,code,language,frustration,beginnings,staring at screens,improvization,boring,addiction
+progress,problem solving,society,interconnectedness,gadgets,cyborg,utopia,collective intelligence,man vs machine,interfaces,technological progress
+project example,illusion,liveness,gesture,magic,emotion,drawing,play,social media
+project examples,empathy,emotion,new media,data visualization
+projection,light,installation,form,architecture,digital meets physical,virtual
+prosthetic,eyewriter,assistive technology,cyborg,drawing
+psychology,assistive technology,interactivity
+public,confusion,social engagment,art and code,visualization,art vs engineering,social,thinking with code,education,communication,complexity
+public/private,art and security,r&d,security,privacy,surveillance,machine vision
+quantified self,lifetracking,afterlife,documentation,human life,personal data,death,the cloud,performance art,relationships,identity
+questions,design and art,curiosity,science,why?,struggle,research,challenges,post-digital,problem solving,hybridity
+r&d,eyebeam,public/private,video art,art and security,research,knowledge,struggle with technology,security,creative misuse,algorithm
+random,number,probability,chance,randomness,math,algorithm
+randomness,chance,probability,serendipity,parameter space,luck,noise,possibility,generative art,gardening,gift
+reading,library,writing,information,immersion,understanding,fantasy technology,zen,simplicity,exploration,attention
+real,reality,virtual
+real and virtual,virtual,realness,videogames,representation,reality,fantasy,augmented reality,distraction,world building,attention
+real world,experience,social,people
+reality,virtual,representation,perception,experience design,real and virtual,vision,physics,realness,simulation,algorithms
+realness,visual thinking,real and virtual,vision,uncertainty,face tracking,reality,distraction,embodiment,social engagment,digital meets physical
+realworld,uncertainty,physicality
+recursion,meta,fantasy technology,improvization,visualization,clouds,future of cinema
+relationships,love,facebook,twitter,people,the present,privacy,present shock,connectivity,alone together,lifetracking
+rendering,rgbd,efficiency,iteration,sketching,visualization,clouds,computation,technological progress
+representation,reality,real and virtual,virtual,behavior,simulation,world building,videogames,abstraction,games,aesthetics
+research,curiosity,influences,microsoft,science,r&d,google,questions,knowledge,kinect,technology
+responsibility,generations,teaching,design,career,society
+revelation,gestalt,sublime,atmosphere,flow,perspective,microscope,pattern,cities,zoom,phenomena
+rgbd,rendering,physics,visualization,clouds,camera,future of cinema,simulation
+rhetoric,challenges,critique,data visualization
+robert hodgin,processing,community
+rules,emergence,world building,cellular automata,intuition,cosmogeny,collaboration with machines,algorithm,thinking by doing,systems,computation
+sadness,digital natives,self reflection,digital culture,staring at screens,embodiment,emotion,digital meets physical
+scale,zoom,perception,universe,design,nature,perspective,metaphor,pattern,microscope,gestalt
+science,research,questions,truth,curiosity,influences,simplicity,elegance,physics,understanding,hybridity
+science fiction,future,cyberpunk,singularity,dystopia,consciousness,fantasy technology,cyborg,futurism,ubiquity,dreams
+sculpture,tree,formalism,light,3d printing,installation,exploration,digital meets physical,evolution,nature
+seamlessness,interface,ubiquitous computing,interfaces,sensor,experience,immersion,technology,devices,interactivity
+security,power,privacy,dystopia,facebook,bots,big data,public/private,art and security,data ownership,r&d
+self,identity
+self expression,expression,art and code,creative exploration,why?,feeling,coding,mind and hand,thinking with code,process,style
+self reflection,digital natives,sadness,digital culture,staring at screens,embodiment,emotion,digital meets physical
+sensation,subliminal,techno,visual cortex,aesthetic experience,synesthesia,music,physicality,perception,visualization,videogames
+sensor,ubiquitous computing,data collection,object recognition,camera,interface,seamlessness,cameras,machine vision,kinect,technological progress
+sensors,ubiquity,wearables,surveillance,devices,assistive technology,augmented reality,fantasy technology,interfaces,camera,future
+sentiment analysis,empathy,emotion,limitations,artificial intelligence,language
+serendipity,luck,randomness,surprise,parameter space,chance,possibility,gift,process,information,generative
+serious,humor,tragedy,cinema,useful,data visualization,data,storytelling
+sex,love,crowdsourcing,dreams,texting,sex and tech,emotion,algorithm,physicality,efficiency,visualization
+sex and tech,sex,devices
+sharing,community,open source,economics,tools,collaboration,education,teaching,open frameworks,toolkit,thanks
+shifts,veterans,generations,mentors,newness
+signals,perspective,pattern,big data,visualization,scale,perception
+simplicity,truth,elegance,complexity,science,conviction,stories,balance,statistics,communication,reading
+simulation,cosmogeny,nature,physics,world building,emergence,god mode,representation,virtual,games,future of cinema
+singularity,consciousness,cyborg,wearables,science fiction,narrative,dystopia,artificial intelligence,future,clouds,memory
+sketching,drawing,thinking by doing,improvization,feedback,processing,coding,gesture,post-digital,creativity,digital meets physical
+skill,wonder,mastery,branching,mind and hand,distraction,technology,discovery,magic,progress,drawing
+slow,zen,liveness,gesture,magic,time,emotion,drawing,storytelling
+snarky,anonymous,crowdsourcing,identity,creativity,collaboration,community
+social,people,social media,humanity,hacker,participation,legibility,empathy,identity,data visualization,relationships
+social dynamics,disaster,mobile,leadership,organizations,social engineering,business,society,cities,creative coders,people
+social engagment,participation,gift,humanism,people,society,popular culture,confusion,public,gadgets,dialogue
+social engineering,leadership,social dynamics
+social media,twitter,facebook,social,internet,people,communication,network,identity,virality,distraction
+society,problem solving,solutions,progress,humanity,culture,social engagment,politics,cities,social dynamics,power
+software,commercialism,money,economics,engineering,operating systems,advertising,improvement,thinking through code,toolkits,open source
+solutions,problem solving,society,coding for humanity,apps,dystopia,technoptimism,survival,program or be programmed,street art,progress
+sound,audiovisualization,synesthesia,liveness,music,noise,visual culture,collaboration,perception,systems
+space,overview,metaphor,perspective,zoom,universe,scale,nature
+spiritual,failure,zen,liveness,magic,time,emotion,drawing,communication,storytelling
+staring at screens,attention,boring,embodiment,focus,mirror,self reflection,digital natives,sadness,surveillance,digital culture
+statistics,policy,street art,fat,truth,simplicity,representation,humanity,problem solving,solutions,data
+stock market,algorithms,bots,chaos,error,economics,stories,internet culture,digital culture,dystopia,algorithm
+storage,memory,archiving,data
+stories,stock market,simplicity,algorithms,data visualization
+story,motion,storytelling,presentation,ambiguity,book,future of cinema,behavior,understanding,knowledge,simulation
+storytelling,future of cinema,narrative,story,datatelling,cinema,simulation,people,videogames,representation,data
+street art,fat,statistics,hacking,solutions,programming,data visualization
+stress,challenge,uncertainty,bugs,frustration,dysfunction
+struggle,work and life,struggle with technology,questions,challenges,commercial art,frustration,money,exploration,program or be programmed,art vs engineering
+struggle with technology,frustration,struggle,dichotomy,fluency,ambiguity,boring,r&d,toolkit,humanism,language
+style,trendspotting,visual culture,influence,tribe,originality,memes,energy,epiphany,interestingness,aesthetics
+subjectivity,images,pleasure,hallucination,aesthetics,truth,datatelling,beauty,representation,time,art
+sublime,perspective,cities,revelation,zoom,gestalt,phenomena,scale,nature
+subliminal,techno,sensation,synesthesia,music,physicality,perception
+subversion,gui,inversion,keyboard,mouse,think different,why?,system,hacking,creative misuse,interfaces
+success,failure,life,children,money,career,zen,drawing,storytelling
+surprise,possibility,serendipity,systems,randomness,parameter space,emergence,improvization,uncertainty,commercial art,exploration
+surveillance,military technology,hack,ubiquity,sensors,privacy,staring at screens,devices,machine vision,public/private,mirror
+survival,apocalypse,coding for humanity,future,dystopia,solutions,weird,critical engineering,criticality,technological progress
+symbiosis,man vs machine,engineering,cognition,coevolution,infrastructure,literacy,tools,critical engineering,artificiality,criticality
+synergy,working with others,connections,hackathon,collaboration
+synesthesia,sound,subliminal,techno,audiovisualization,music,sensation,behavior,liveness,physicality,systems
+syntax,ocd,logic,elegance
+synthetic biology,metaphor,biology and code,artificial life,biology,emergence,science fiction,complexity
+system,things breaking,subversion,bugs,creative coders,dysfunction,error,collaboration with machines,creative misuse,art and code,generative art
+systems,emergence,complexity,surprise,chaos,process,rules,nature,artificial life,games,gardening
+tangibility,the digital divide,post-digital,physicality,digital meets physical
+taste,consumer,beautiful exhuberance,aesthetics,commercial art,beauty,critique,design,communication
+teachers,mentors,learning
+teaching,education,book,aesthetics and computation,open frameworks,toolkit,processing,mentors,career,media lab,sharing
+teams,partnership,processing,collaboration
+tech-demo,meaning,poetry,homogeneity,critique,art vs engineering,criticality,art,aesthetics,newness,new media
+techno,subliminal,sensation,synesthesia,music,physicality,perception
+technological progress,future,newness,utopia,technology,futurism,technoptimism,engineering,users,progress,machine vision
+technology,art and tech,technological progress,opacity,engineering,techpositive,interface,dichotomy,wonder,skill,seamlessness
+technoptimism,toys,present shock,hope,policy,change,utopia,apps,solutions,technological progress,society
+techpositive,technology,art and tech,newness,new media
+telepathy,twitter,culture,collective intelligence,internet,social media
+teleportation,imaginary,science fiction,future
+text,writing,behavior,representation,twitter,clouds,data,communication,language,social media,storytelling
+texting,gender,sex,virtual
+thanks,economics,education,mentors,sharing,teaching,open frameworks,community,toolkit,open source
+the cloud,transience,noosphere,ignorance,network,alone together,quantified self,network security,criticality,memory,security
+the digital divide,tangibility,post-digital,physicality,digital meets physical
+the format of clouds makes me think about a dreams.,
+the future,dialogue,futurism,clouds,collective intelligence
+the gift,generosity,interconnectedness,progress,society,sharing,community
+the present,present shock,distraction,relationships,internet,communication,social media
+things,internet of things,existence,philsophy,machine aesthetics,humanity,new aesthetic,man vs machine
+things breaking,system,bugs,dysfunction,error
+think different,gui,inversion,keyboard,mouse,subversion,why?,hacking,interfaces,sketching,users
+thinkerer,concept,maker,art world,career
+thinking,cognition,intelligence,thinking with code,time,iteration,computer,computation,algorithm,code,future
+thinking by doing,mind and hand,intuition,collaboration with machines,thinking with code,feedback,play,drawing,sketching,process,rules
+thinking through code,liveness,improvization,computation,logic,software,attention,computer,videogames,coding,code
+thinking with code,cognition,thinking by doing,coding,thinking,art vs engineering,language,code,art and code,virtuosity,creative coders
+time,zen,thinking,commercial art,computer,liveness,immersion,magic,spiritual,slow,clock
+toolkit,open frameworks,open source,legos,teaching,struggle with technology,sharing,aesthetics and computation,program or be programmed,minecraft,processing
+toolkits,open frameworks,openness,design by numbers,fun,processing,art and tech,accessibility,opacity,creative misuse,software
+toolmakers,invention,inventor,hacking,hybridity,tools,art vs engineering,beginnings
+tools,education,symbiosis,processing,sharing,man vs machine,toolmakers,participation,open source,gift,cognition
+touch,heuristics,art and experience,drawing,process
+toys,present shock,technoptimism,3d printing,newness,future,technological progress
+trace of your life,maps,gps,data,data visualization
+tradition,engineering,dysfunction,virtuosity,coding,learning,love,open source,technological progress,community
+tragedy,serious,cinema,storytelling,data visualization
+transience,the cloud,data ownership,memory,archiving
+transparency,critical engineering,open software,information as weapon,criticality,power,program or be programmed,hackers,creative misuse,engineering,policy
+travel,nostalgia,data ownership,memory,emotion,personal data
+tree,animation,sculpture,branching,evolution,nature,collaboration,storytelling
+trendspotting,style,art history,criticality,new aesthetic,futurism,history
+tribe,nerd,community,hybridity,style,creative coders,hacker,hackathon,visual culture,creative coding,beginnings
+tron,aesthetics,simulation
+truth,inexactitude,simplicity,elegance,science,beauty,memory,data,statistics,subjectivity,philosophy
+tweaking,feedback,thinking by doing,generative art,sketching,learning
+twitter,social media,facebook,relationships,network,virality,people,telepathy,writing,text,journalism
+twitter videogames,facebook,identity,virtual
+ubiquitous computing,sensor,object recognition,interface,seamlessness,machine vision,camera,ubiquity,technology,technological progress,interfaces
+ubiquity,sensors,augmented reality,surveillance,interfaces,ubiquitous computing,military technology,camera,cities,assistive technology,devices
+uncanny,behavior,philosophy,artificial intelligence,reality,logic,representation,artificial life,magic,machine vision,math
+uncertainty,realworld,stress,creative control,challenge,commercial art,realness,physicality,surprise,bugs,frustration
+understanding,presentation,ambiguity,c++,challenge,debugging,reading,story,science,truth,simplicity
+universe,nature,cosmogeny,infinity,cellular automata,scale,emergence,world building,space,artificial life,physics
+unknown,scale,network,perception,internet
+useful,problem solving,useless,interesting,art vs engineering,design,exploration,serious,evaluation,humor,beauty
+useless,useful,why,coding for humanity,art,challenges,career,money,humanity,time,data visualization
+users,program or be programmed,dystopia,creative misuse,corporate,gadget,data ownership,network security,google,man vs machine,devices
+utopia,artificiality,mind,technoptimism,consciousness,interconnectedness,dreams,technological progress,internet culture,uture,man versus machine
+uture,mind,artificiality,consciousness,utopia,artificial intelligence,simulation
+veterans,shifts,generations,mentors,newness
+video art,eyebeam,r&d,art world,new aesthetic,machine vision,old media,history
+videogames,real and virtual,virtual,games,world building,fantasy,augmented reality,beginnings,representation,history,storytelling
+virality,youtube,memes,journalism,visual cortex,virus,twitter,feedback,social media,software,visual culture
+virtual,real and virtual,reality,videogames,representation,simulation,games,future of cinema,realness,love,relationships
+virtual reality,clouds,digital meets physical
+virtuosity,tradition,creative coders,love,coding,cognition,thinking with code,real and virtual,elegance,engineering,creative coding
+virus,art and science,information as weapon,virality,hackers,memes,emergence,biology,computation,communication
+vision,visual thinking,physics,microscope,realness,reality,gestalt,perception,camera,representation,algorithms
+visual cortex,sensation,aesthetic experience,evaluation,feedback,virality,embodiment,perception,emotion,experience,visualization
+visual culture,originality,memes,style,influence,homogeneity,ideas,beauty,popular culture,limits of the computer,aesthetics
+visual effects,efficiency,god mode,kinect,physics,visualization,camera,process,future of cinema,nature,simulation
+visual thinking,vision,realness,physics,reality,perception
+visualization,debugging,physics,perception,dreams,sex,imagination,future of cinema,complexity,communication,signals
+wearables,cyborg,gadgets,sensors,devices,singularity,google,interfaces,surveillance,man vs machine,critical engineering
+weird,funny,food,fantasy,dreams,apocalypse,survival,memes,nerd,future,scale
+why,infinite in all directions,food,meaning,philsophy,useless,post-digital,experience,weird,art,design
+why?,gui,inversion,keyboard,mouse,think different,subversion,design and art,questions,hacking,self expression
+wikipedia,collective intelligence,information as weapon,github,transparency,collaboration,hackers,sharing,data visualization
+wizardry,magic,coding
+wonder,skill,feeling,aesthetic experience,technology,magic,beauty,nature,collaboration
+work,mortality,balance,life,journey,career,teaching,time,art vs engineering,identity
+work and life,struggle,commercial art,money,exploration,commercialism,career
+working with others,synergy,connections,hackathon,media lab,aesthetics and computation,collaboration,beginnings,programming,learning
+world building,cosmogeny,cellular automata,rules,legos,simulation,emergence,artificial life,games,fantasy,videogames
+writing,text,reading,fantasy technology,datatelling,twitter,data,communication,language,big data,storytelling
+youtube,virality,memes,culture,social media
+zach lieberman,connections,eyewriter,performance,accessibility,assistive technology,humanity,drawing,people,collaboration
+zen,time,failure,drawing,attention,immersion,focus,commercial art,liveness,exploration,spiritual
+zoom,perspective,scale,gestalt,phenomena,sublime,overview,space,microscope,pattern,cities

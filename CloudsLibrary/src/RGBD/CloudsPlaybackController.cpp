@@ -89,7 +89,6 @@ void CloudsPlaybackController::CloudsPlaybackControllerEventHandler( CloudsPlayb
 			//hide the visual system
 			hideVisualSystem();
 			
-			
 		}
 	}
 }
@@ -105,6 +104,7 @@ void CloudsPlaybackController::addControllerTween( string name, float startTime,
 }
 
 CloudsPlaybackController::CloudsPlaybackController(){
+	
 	storyEngine = NULL;
 	eventsRegistered = false;
 	fadingIntro = false;
@@ -120,8 +120,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 }
 
 //--------------------------------------------------------------------
-CloudsPlaybackController::~CloudsPlaybackController(){
-}
+CloudsPlaybackController::~CloudsPlaybackController(){}
 
 void CloudsPlaybackController::clearAct(bool destroyAct){
 	
@@ -136,6 +135,7 @@ void CloudsPlaybackController::clearAct(bool destroyAct){
 		}
 		currentAct->unregisterEvents(this);
         currentAct->unregisterEvents(&introSequence->getSelectedRun());
+		currentAct->unregisterEvents(&hud);
 		if(destroyAct){
 			delete currentAct;
 		}
@@ -158,8 +158,7 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 	if(storyEngine != NULL){
 		ofRemoveListener(storyEngine->getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
 	}
-	
-	
+
 	ofRemoveListener( CloudsPlaybackControllerEvent::events, this, &CloudsPlaybackController::CloudsPlaybackControllerEventHandler );
 }
 
@@ -191,7 +190,6 @@ void CloudsPlaybackController::setup(){
 		introSequence->setDrawToScreen(false);
 		currentVisualSystem = introSequence;
 		
-
 		clusterMapVisualSystem.setup();
 		//clusterMapVisualSystem.setDrawToScreen( false );
 		
@@ -205,6 +203,8 @@ void CloudsPlaybackController::setup(){
 		fadingOut = fadingIn = false;
 		crossfadeValue = 1.;
 		bIsFading = false;
+		
+		hud.setup();
 		
 		//setup scratch tracks
 		
@@ -285,8 +285,6 @@ void CloudsPlaybackController::setRun(CloudsRun &run){
 //    this->currentRun = &run;
 }
 
-
-
 void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
 	introSequence->setStartQuestions(possibleStartQuestions);
 	showIntro();
@@ -331,6 +329,7 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 	
 	currentAct->registerEvents(this);
     currentAct->registerEvents(&introSequence->getSelectedRun());
+	currentAct->registerEvents(&hud);
 	currentAct->play();
 }
 
@@ -459,6 +458,11 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		}
 	}
 	
+	
+	if(!showingIntro && !showingClusterMap){
+		hud.update();
+	}
+	
 	////////////////////
 	// RGBD SYSTEM
 	
@@ -488,36 +492,14 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		//TODO: transition to question selection
 	}
 
-//#ifdef OCULUS_RIFT
-//	if(currentVisualSystem != NULL && currentVisualSystem->getTimeline()->getIsShowing()){
-//		//		cout << "showing cursor for system " << getSystemName() << endl;
-//		ofShowCursor();
-//	}
-//	else{
-//		//		cout << "hiding cursor for system " << getSystemName() << endl;
-//		ofHideCursor();
-//	}
-//#else
-//	//TODO replace with cool cursor animations
-//	if(ofGetElapsedTimef() - cursorMovedTime < 1 || bDrawCursor){
-//		ofShowCursor();
-//	}
-//	else{
-//		ofHideCursor();
-//	}
-//#endif
-//	
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(ofEventArgs & args){
     
-	//turn off depth testing and enable blending
     glDisable( GL_DEPTH_TEST );
-	
 	ofPushStyle();
 	
-	//???: rgbdVisualSystem.getBlendMode()
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	
 	float mixVal = ofClamp( crossfadeValue * 255, 0, 255);
@@ -528,8 +510,10 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	}
 	if(!showingClusterMap && currentVisualSystem != NULL){
 		currentVisualSystem->selfPostDraw();
+		if(numClipsPlayed > 1){
+			hud.draw();
+		}
 	}
-	
     ofPopStyle();
     glEnable( GL_DEPTH_TEST );
 	
@@ -571,11 +555,13 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 #pragma story engine events
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
+	numClipsPlayed = 0;
 	playAct(args.act);
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
+
 }
 
 //--------------------------------------------------------------------
@@ -671,19 +657,22 @@ void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
 		clipLoadSuccessfullyLoaded = rgbdVisualSystem->getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath);
 	}
 	else{
-		clipLoadSuccessfullyLoaded = rgbdVisualSystem->getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, toTime);
+		clipLoadSuccessfullyLoaded = rgbdVisualSystem->getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, toTime,clip.getSpeakerVolume());
 	}
-	
+
 	if(!clipLoadSuccessfullyLoaded){
 		ofLogError("CloudsPlaybackController::prerollClip") << "Error loading clip " << clip.getLinkName() << " file path " << clip.combinedVideoPath;
 		return;
 	}
-
+    
 	prerolledClipID = clip.getID();
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playClip(CloudsClip& clip){
+
+	numClipsPlayed++;
+	
 	rgbdVisualSystem->clearQuestions();
 	if(clip.getID() != prerolledClipID){
 		prerollClip(clip,1);

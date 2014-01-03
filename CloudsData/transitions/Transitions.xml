@@ -1,0 +1,75 @@
+<TRANSITION>
+    <Name>transitionType</Name>
+    <InStartPos>
+        <x>0</x>
+        <y>0</y>
+        <z>-1001</z>
+    </InStartPos>
+    <InStartQuat>
+        <x>0</x>
+        <y>1</y>
+        <z>0</z>
+        <w>-4.37114e-08</w>
+    </InStartQuat>
+    <OutTargetPos>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+    </OutTargetPos>
+    <OutTargetQuat>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+        <w>1</w>
+    </OutTargetQuat>
+</TRANSITION>
+<TRANSITION>
+    <Name>whip</Name>
+    <InStartPos>
+        <x>0</x>
+        <y>0</y>
+        <z>-1001</z>
+    </InStartPos>
+    <InStartQuat>
+        <x>0</x>
+        <y>1</y>
+        <z>0</z>
+        <w>-4.37114e-08</w>
+    </InStartQuat>
+    <OutTargetPos>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+    </OutTargetPos>
+    <OutTargetQuat>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+        <w>1</w>
+    </OutTargetQuat>
+</TRANSITION>
+<TRANSITION>
+    <Name>wtf</Name>
+    <InStartPos>
+        <x>241.376</x>
+        <y>-52.6485</y>
+        <z>-337</z>
+    </InStartPos>
+    <InStartQuat>
+        <x>0</x>
+        <y>1</y>
+        <z>0</z>
+        <w>0</w>
+    </InStartQuat>
+    <OutTargetPos>
+        <x>-158.624</x>
+        <y>-52.6485</y>
+        <z>-568</z>
+    </OutTargetPos>
+    <OutTargetQuat>
+        <x>0</x>
+        <y>1</y>
+        <z>0</z>
+        <w>0</w>
+    </OutTargetQuat>
+</TRANSITION>

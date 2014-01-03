@@ -13,12 +13,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>NUM COLS</Name>
-    <Value>374</Value>
+    <Value>268</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>NUM ROWS</Name>
-    <Value>370</Value>
+    <Value>262</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -38,12 +38,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW BACKGROUND</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>TWEEN DURATION</Name>
-    <Value>1000</Value>
+    <Value>168</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -83,6 +83,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>LOOP BACK TO SOURCE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>ArtGlitch.jpg</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
@@ -107,7 +112,22 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>CodeWindows.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>Desktops.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>FinderWindows.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Friends1.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -117,12 +137,12 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>People.jpg</Name>
+    <Name>QRcodes.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>PeopleComposit.jpg</Name>
+    <Name>Sunsets.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -132,12 +152,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>browser.png</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>catglitch.jpg</Name>
+    <Name>cats.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -148,31 +163,6 @@
 <Widget>
     <Kind>17</Kind>
     <Name>dogs.jpg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>friends.jpg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>glitch.jpg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>glitch2.jpeg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>sexy-desktop.jpg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>sunset.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

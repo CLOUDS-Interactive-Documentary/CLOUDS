@@ -15,13 +15,17 @@ class CloudsClip {
 
 	string getSpeakerLastName();
 	string getSpeakerFirstName();
+    string getSpeakerFullName();
 	string getSpeakerGender();
+    float getSpeakerVolume();
 	
 	string fcpFileId;
     string sourceVideoFilePath;
 	
 	ofVec3f networkPosition;
 	
+
+    float speakerVolume;
 	bool voiceOverAudio;
     float currentScore;
     int startFrame;
@@ -39,6 +43,7 @@ class CloudsClip {
     bool hasSpecialKeyword(string keyword);
     bool hasKeyword(string keyword);
     void setProjectExample(string projectExample);
+    void setSpeakerVolume(float vol);
 	
     vector<string>& getOriginalKeywords();
     //used to save out links
@@ -66,9 +71,14 @@ class CloudsClip {
 	CloudsProjectExample projectExample;
 
     //overlapping clips
-    vector<string> getOverlappingClips();
+    void addOverlappingClip(CloudsClip& clip);
+	void addOverlappingClipID(string clipID);
+//	void removeOverlappingClipName(string clipName);
+    vector<string>& getOverlappingClipIDs();
     bool hasOverlappingClips();
-    
+    bool overlapsWithClip(CloudsClip& clip);
+    bool overlapsWithClipID(string clipID);
+	
 	bool is30FPS();
 	float getDuration();
     string getLinkName();
@@ -81,8 +91,7 @@ class CloudsClip {
 	string getCombinedCalibrationXML();
     string getFFMpegLine(string alternativeVideoPath, string exportFolder);
     
-    void addOverlappingClipName(string clipName);
-	void removeOverlappingClipName(string clipName);
+
 
 	bool hasMediaAsset;
 	string combinedVideoPath;
@@ -124,7 +133,7 @@ class CloudsClip {
     vector<string> specialKeywords;        //special Keywords start with #
     vector<string> topicWithQuestions;
     map<string,string> questionTopicMap; //question-topic pairs
-    vector<string> overlappingClips;
+    vector<string> overlappingClipIDs;
     bool keywordsDirty;
     void collateKeywords();
     vector<string> keywords; //collated

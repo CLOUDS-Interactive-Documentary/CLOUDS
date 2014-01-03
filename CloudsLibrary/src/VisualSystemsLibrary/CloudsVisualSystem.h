@@ -9,6 +9,7 @@
 #include "CloudsInputEvents.h"
 #include "ofxLight.h"
 #include "ofxGenerative.h"
+//#include "ofxMaterial.h"
 
 #ifdef OCULUS_RIFT
 #include "ofxOculusRift.h"
@@ -52,6 +53,7 @@ class CloudsVisualSystem {
 	
 	static ofFbo& getStaticRenderTarget(); //default
 	static void forceScreenResolution(int screenWidth, int screenHeight);
+	static void setNumSamples(int samples = 0);
 	static void loadBackgroundShader();
 	static CloudsRGBDVideoPlayer& getRGBDVideoPlayer();
 	static void getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height);
@@ -183,7 +185,7 @@ class CloudsVisualSystem {
     void drawGrid(float x, float y, float w, float h, float color);
     void billBoard(ofVec3f globalCamPosition, ofVec3f globelObjectPosition);
 
-    void drawNormalizedTexturedQuad();
+//    void drawNormalizedTexturedQuad();
     void drawBackground();
 	void drawBackgroundGradient();
     void draw2dSystemPlane();
@@ -256,10 +258,11 @@ class CloudsVisualSystem {
     void toggleGuiAndPosition(ofxUISuperCanvas *g);
     void deleteGUIS();
 
-	void setCurrentCamera( ofCamera& cam );
-	void setCurrentCamera( ofCamera* swappedInCam );
+//	void setCurrentCamera( ofCamera& cam );
+//	void setCurrentCamera( ofCamera* swappedInCam );
+//	ofCamera* getCurrentCamera();
 	virtual ofCamera& getCameraRef();
-	ofCamera* getCurrentCamera();
+
 	
 	ofVec3f translatedHeadPosition;
 	float pointcloudScale;
@@ -319,14 +322,11 @@ class CloudsVisualSystem {
 	float bgHue2;
 	float bgSat2;
 	float bgBri2;
-
-//	ofx1DExtruder *bgHue;
-//	ofx1DExtruder *bgSat;
-//	ofx1DExtruder *bgBri;
-//	ofx1DExtruder *bgHue2;
-//	ofx1DExtruder *bgSat2;
-//	ofx1DExtruder *bgBri2;
-    
+	
+	//some crashes are being caused by update before draw
+	//this makes sure the draw() command only happens after the first update
+	bool updateCyclced;
+	
     ofxUISlider *hueSlider;
     ofxUISlider *satSlider;
     ofxUISlider *briSlider;
@@ -424,4 +424,7 @@ class CloudsVisualSystem {
 	
 	bool isPlaying;
 	float secondsRemaining;
+	
+	void checkOpenGLError(string function);
+	
 };

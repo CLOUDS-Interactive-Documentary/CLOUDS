@@ -16,6 +16,8 @@ CloudsVisualSystemOcean::CloudsVisualSystemOcean(){
 	currentSteerRot = 0;
 	maxLookUpRot = 90;
 	maxLookDownRot = 90;
+	
+	needsRegenerate = false;
 
 	drawOcean = true;
 	depthTesting = false;
@@ -26,8 +28,10 @@ string CloudsVisualSystemOcean::getSystemName(){
 }
 
 void CloudsVisualSystemOcean::selfSetup(){
-	generateOcean();
-	
+	needsRegenerate = true;
+    
+    // sound
+    synth.setOutputGen(buildSynth());
 }
 
 void CloudsVisualSystemOcean::selfPresetLoaded(string presetPath){
@@ -35,6 +39,7 @@ void CloudsVisualSystemOcean::selfPresetLoaded(string presetPath){
 }
 
 void CloudsVisualSystemOcean::generateOcean(){
+	needsRegenerate = false;
 	ocean.size = ofVec3f(int(oceanTileSizeX), 1.0, int(oceanTileSizeY));
     ocean.windSpeed = windSpeed;
     ocean.setup();
@@ -99,12 +104,28 @@ void CloudsVisualSystemOcean::selfSetupGuis(){
 	oceanCamera.ocean = &ocean;
 	
 	blendMode = OF_BLENDMODE_ALPHA;
-	
-	reloadShader();
+    
+    // sound
+    soundGui = new ofxUISuperCanvas("OCEAN Sound", gui);
+	soundGui->copyCanvasStyle(gui);
+	soundGui->copyCanvasProperties(gui);
+	soundGui->setName("OCEAN Sound");
+	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    soundGui->addToggle(soundFiles[0], &playSample[0]);
+    soundGui->addToggle(soundFiles[1], &playSample[1]);
+    
+	guis.push_back(soundGui);
+	guimap[soundGui->getName()] = soundGui;
+    ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemOcean::selfGuiEvent);
 }
 
 void CloudsVisualSystemOcean::selfUpdate(){
-
+	
+	if(	needsRegenerate){
+		generateOcean();
+	}
+	
 	if(useOceanCam){
 		getCameraRef().dolly(cameraSpeed);
 		ocean.cameraPosition = getCameraRef().getPosition();
@@ -166,7 +187,6 @@ void CloudsVisualSystemOcean::selfSceneTransformation(){
 
 void CloudsVisualSystemOcean::selfDraw(){
 	
-
 	glPushAttrib(GL_POINT_BIT | GL_POLYGON_BIT | GL_FOG_BIT | GL_DEPTH_BITS);
 	glEnable(GL_POINT_SMOOTH);
 	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
@@ -211,15 +231,10 @@ void CloudsVisualSystemOcean::selfDraw(){
 	if(drawOcean){
 		renderer.draw();
 	}
+	
 	mat->end();
 	
-	//oceanShader.end();
-	
 	glPopAttrib();
-	
-	ofEnableAlphaBlending();
-	
-
 }
 
 void CloudsVisualSystemOcean::selfExit(){
@@ -227,10 +242,20 @@ void CloudsVisualSystemOcean::selfExit(){
 }
 
 void CloudsVisualSystemOcean::selfBegin(){
-	
+    // sound
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOcean::audioRequested);
+    
+    for (int i=0; i<2; i++)
+    {
+        if (playSample[i]) {
+            soundTriggers[i].trigger();
+        }
+    }
 }
 
 void CloudsVisualSystemOcean::selfEnd(){
+    // remove sound listener
+    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOcean::audioRequested);
 	
 }
 
@@ -240,9 +265,6 @@ void CloudsVisualSystemOcean::selfKeyPressed(ofKeyEventArgs & args){
 		generateOcean();
 	}
 	
-	if(args.key == 'S'){
-		reloadShader();		
-	}
 }
 
 void CloudsVisualSystemOcean::selfKeyReleased(ofKeyEventArgs & args){
@@ -273,6 +295,17 @@ void CloudsVisualSystemOcean::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "REGENERATE" && ((ofxUIButton*)e.widget)->getValue() ){
 		generateOcean();
 	}
+    
+    for (int i=0; i<2; i++)
+    {
+        if (e.widget->getName() == soundFiles[i]) {
+            ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
+            playSample[i] = toggle->getValue();
+            if (toggle->getValue() == true) {
+                soundTriggers[i].trigger();
+            }
+        }
+    }
 }
 
 void CloudsVisualSystemOcean::selfSetupSystemGui(){
@@ -283,10 +316,10 @@ void CloudsVisualSystemOcean::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
 
-void CloudsVisualSystemOcean::reloadShader(){
-	cout << "Reloading ocean shader" << endl;
-	oceanShader.load(getVisualSystemDataPath() + "shaders/ocean");
-}
+//void CloudsVisualSystemOcean::reloadShader(){
+////	cout << "Reloading ocean shader" << endl;
+////	oceanShader.load(getVisualSystemDataPath() + "shaders/ocean");
+//}
 
 void CloudsVisualSystemOcean::selfSetupRenderGui(){
 	vector<string> modes;
@@ -306,3 +339,31 @@ void CloudsVisualSystemOcean::selfSetupRenderGui(){
 void CloudsVisualSystemOcean::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
+
+Generator CloudsVisualSystemOcean::buildSynth()
+{
+    string strDir = GetCloudsDataPath()+"sound/textures/";
+    ofDirectory sdir(strDir);
+    
+    SampleTable samples[2];
+    
+    int nSounds = sizeof(soundFiles) / sizeof(string);
+    for (int i=0; i<nSounds; i++)
+    {
+        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+        samples[i] = loadAudioFile(strAbsPath);
+    }
+    
+    Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
+    Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(soundTriggers[1]);
+    
+    return sampleGen1 * 1.0f + sampleGen2 * 1.0f;
+}
+
+void CloudsVisualSystemOcean::audioRequested(ofAudioEventArgs& args)
+{
+    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+}
+
+
+

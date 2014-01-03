@@ -106,38 +106,35 @@ class CloudsVisualSystemSwim : public CloudsVisualSystem {
 
 	//
 	ofCamera& getCameraRef(){
-		if(videoLoaded){
-			return cloudsCamera;
-		}
 		return CloudsVisualSystem::getCameraRef();
 	}
 
 protected:
     
-    //  Your Stuff
-    //
     ofxUISuperCanvas* createCustomGui(const string& name);
     void addSliders(ofxUISuperCanvas* gui, JellyParams& params);
+    void generate();
     
     // cam
-    float camYRot, camSpeed, maxCamSpeed;
+    float camSpeed;
+    ofVec2f currentLookAngle;
     
+    // creatures
     itg::Creatures creatures;
-    itg::Bubbles bubbles;
-    itg::MarineSnow snow;
-    ofxPostProcessing post;
-    
 	ofxUISuperCanvas* jellyOneGui;
     ofxUISuperCanvas* jellyTwoGui;
-	
-    bool customToggle;
-	float customFloat1;
-	float customFloat2;
-	
-	bool videoLoaded;
-	ofImage someImage;
-	ofShader pointcloudShader;
-	ofVboMesh simplePointcloud;
+    
+    // seed positions
+    ofxUISuperCanvas* seedGui;
+    ofxUIRadio* seedRadio;
+    bool loadSeed, saveSeed;
+    
+    // misc
+    itg::Bubbles bubbles;
+    ofxPostProcessing post;
+    bool regenerate;
+	itg::MarineSnow snow;
+    ofxUISuperCanvas* snowGui;
     
 	// Sound
     ofxUISuperCanvas* soundGui;

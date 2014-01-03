@@ -9,8 +9,7 @@ void testApp::setup(){
 	
 	secondaryDisplay.setup();
     
-    layoutID = 0;
-
+    debug = false;
 }
 
 //--------------------------------------------------------------
@@ -25,7 +24,41 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+    if(key == 'd'){
+        debug = !debug;
+        secondaryDisplay.debug = debug;
+    }
+    else if(key == 'c'){
+        secondaryDisplay.color = !secondaryDisplay.color;
+    }
+    else if(key == OF_KEY_RIGHT){
+        secondaryDisplay.tx += .1;
+        cout << "tx: "<<secondaryDisplay.tx<<endl;
+    }
+    else if(key == OF_KEY_LEFT){
+        secondaryDisplay.tx -= .1;
+        cout << "tx: "<<secondaryDisplay.tx<<endl;
+    }
+	
+	if(key == 'C'){
+		secondaryDisplay.respondToClip( secondaryDisplay.parser.getRandomClip() );
+	}
+	
+	if(key == 'E'){
+		vector<int> projectExampleIndecs;
+		for(int i = 0; i < secondaryDisplay.parser.getAllClips().size(); i++){
+			if(secondaryDisplay.parser.getAllClips()[i].hasProjectExample){
+				projectExampleIndecs.push_back(i);
+			}
+		}
+		
+		if(projectExampleIndecs.size() > 0){
+			int exampleIndex = projectExampleIndecs[ ofRandom(projectExampleIndecs.size()) ];
+			secondaryDisplay.respondToClip( secondaryDisplay.parser.getAllClips()[exampleIndex] );
+//			cout << "SENT CLIP " << parser.getAllClips()[exampleIndex].getLinkName() << " WITH EXAMPLE " << parser.getAllClips()[exampleIndex].projectExampleTitle << endl;
+		}
+	}
+	
 }
 
 //--------------------------------------------------------------

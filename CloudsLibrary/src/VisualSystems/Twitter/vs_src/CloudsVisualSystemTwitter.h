@@ -154,11 +154,10 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
 
     
 protected:
-    ofTrueTypeFont listFont;
     ofColor listColor;
-        
-    
     vector<Tweeter> tweeters;
+
+	ofFloatImage activityMap;
     stringstream ss;
     
     ofVboMesh nodeMesh;
@@ -204,14 +203,15 @@ protected:
 	//this is the pop color of the node
 	ofFloatColor nodePopColorHSV;
 	   
-    ofFloatColor textColor;
-    ofFloatColor textColorModifier;
+    ofFloatColor textColorHSV;
+    
+    ofFloatColor tweetDeckColorHSV;
     
     string currentMeshFilePath;
     string currentMeshFileName;
     int theme = 0;
     float xScale,yScale, zScale;
-    
+    int currentRefreshRate;
     int rotationRate;
     float rotation ;
     float rotationAmount;

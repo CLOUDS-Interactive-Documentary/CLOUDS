@@ -14,12 +14,12 @@
 #include "CloudsVisualSystem.h"
 #include "ofxBox2d.h"
 #include "CloudsAudioEvents.h"
-
+#include "CloudsGlobal.h"
 #include "ofxTonic.h"
 
 using namespace Tonic;
 
-#define WAVE_GEN_NUM    150
+#define GENERATOR_NUM    60
 class DummyApp;
 
 //TODO: rename this to your own visual system
@@ -162,11 +162,22 @@ protected:
     float rectSizeDev;
     float rectSizeMean;
     
+    // Sound
     ofxTonicSynth synth;
-    ControlTrigger collisionTrigger[WAVE_GEN_NUM];
-    ControlRandom noteControl[WAVE_GEN_NUM];
+    SampleTable boxSamples[7];
+    SampleTable circleSamples[7];
+#ifdef TONIC_WAVES
+    ControlTrigger collisionTrigger[GENERATOR_NUM];
+    ControlRandom noteControl[GENERATOR_NUM];
     float noteMax;
     float noteMin;
+#else
+    ControlTrigger boxTrigger[GENERATOR_NUM];
+    ControlParameter boxVolume[GENERATOR_NUM];
+    
+    ControlTrigger circleTrigger[GENERATOR_NUM];
+    ControlParameter circleVolume[GENERATOR_NUM];
+#endif
     int triggerIndex;
     Generator output;
 

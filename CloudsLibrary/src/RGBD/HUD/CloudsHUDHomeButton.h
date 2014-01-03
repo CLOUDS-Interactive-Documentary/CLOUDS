@@ -11,6 +11,14 @@
 #include "ofMain.h"
 #include "CloudsInput.h"
 
+typedef enum {
+    CLOUDS_HUD_HOVER_IDLE = 0,
+    CLOUDS_HUD_HOVER_ROLLOVER,
+    CLOUDS_HUD_HOVER_OUTRO,
+    CLOUDS_HUD_HOVER_ACTIVE_INTRO,
+    CLOUDS_HUD_HOVER_ACTIVE_LOOP
+} CloudsHUDHomeState;
+
 class CloudsHUDHomeButton {
   public:
 	CloudsHUDHomeButton();
@@ -21,11 +29,39 @@ class CloudsHUDHomeButton {
 	void draw();
 	
 	bool isActive();
-	
-	ofImage sampleImage;
-	ofVec2f homeLocation;
+    bool hitTest( float xPos, float yPos );
+    bool hitTest( ofPoint mousePos );
+    
+    bool wasHomeOpened(){
+        if( bWasOpened ){
+            bWasOpened = false;
+            return true;
+        }
+        return false;
+    }
+    
+    ofRectangle bounds;
+    float hudScale;
+
   protected:
-	
+    void rollover();
+    void rollout();
+    
+    vector<ofTexture*>  loadFramesDir( string dirPath );
+    
+    ofVec2f     buttonSize;
+    
+    float   playhead;
+    float   targetFps;
+    float   lastFrameTime;
+    
+    CloudsHUDHomeState  currentState;
+    
+    bool    bIsHovering;
+    bool    bWasOpened;
+    
 	float maxHoverTime;
 	float hoverStartTime;
+    
+    map<CloudsHUDHomeState, vector<ofTexture*> >    rolloverTextures;
 };

@@ -7,6 +7,12 @@
 #include "CloudsAct.h"
 #include "lukeFuncs.h"
 
+#define PF_INTRO_BUS 1
+#define PF_TUNNEL_BUS 2
+#define PF_LOADER_BUS 3
+#define PF_OUTRO_BUS 4
+#define PF_CLUSTERMAP_BUS 5
+
 class CloudsSound {
   public:
 	CloudsSound();
@@ -34,15 +40,23 @@ class CloudsSound {
 	void questionAsked(CloudsQuestionEventArgs& args);	
 	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
+    
+    // new callbacks
+    void enterTunnel();
+    void exitTunnel();
 	
 	float maxSpeakerVolume; // set between 0. and 1.0 to modulate speaker volume
 	
     // Luke's public stuff
+    void schedulePreset(lukePreset &p, float outskip, float dur, int mixlevel);
     void startMusicFX(float outskip, float musicdur);
-    void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum);
+    void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum, string ampenvelope);
     void stopMusic();
     void reloadPresets();
     void doPrinting();
+
+    // public data structures
+    vector<lukePreset> presets;
 
   protected:
 
@@ -77,11 +91,7 @@ class CloudsSound {
     vector<lukeRhythm> rhythms;
     vector<lukePitchArray> pitches;
     vector<lukeSimpleMelody> simplemelodies;
-    vector<lukePreset> presets;
 
     vector<lukeSample> looperSamples;
 
-    // the backup soundplayer
-    ofSoundPlayer backupsound;
-    
 };

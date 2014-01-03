@@ -1,0 +1,32 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Fog</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>437</XPosition>
+    <YPosition>1</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogDistance</Name>
+    <Value>375.01</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogExpo</Name>
+    <Value>1.85025</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>fogHue</Name>
+    <Value>111</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>fogSaturation</Name>
+    <Value>255</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>fogBrightness</Name>
+    <Value>0</Value>
+</Widget>
