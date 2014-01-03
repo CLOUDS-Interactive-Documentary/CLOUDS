@@ -182,6 +182,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float lineDensity;
 	float lineFocalDistance;
 	float lineFocalRange;
+	float networkLineWidth;
 	
 	bool drawTraversalPoints;
 	bool lockCameraAxis;
@@ -192,6 +193,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float traverseAngleDampen;
 	float traverseHomingMinDistance;
 	float traverseMinSolvedDistance;
+	float traverseLineWidth;
 	
 	//colors~
 	bool matchLineColor;
@@ -200,6 +202,10 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofFloatColor lineEdgeColorHSV;
 	ofFloatColor lineEdgeColorRGB;
 	float lineColorMixExponent;
+	bool drawLineFlickerDebug;
+	float lineFlickerIntensity;
+	float lineFlickerFrequency;
+	float lineFlickerDampening;
 	
 	bool matchTraversalColor;
 	ofFloatColor traverseHeadColorHSV;
@@ -208,13 +214,15 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofFloatColor traverseTailColorRGB;
 	float traverseFalloff;
 
+	ofFloatImage flickerNoise;
+	ofFloatPixels flickerNoiseTarget;
 	ofFloatColor optionColorHSV;
 	ofFloatColor optionColorRGB;
-
 	
 	//animate params
 	float traverseAnimationDuration;
 	float optionsAnimationDuration;
+	float optionLineWidth;
 	
 	bool drawHomingDistanceDebug;
 	
@@ -233,8 +241,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofRange typeDistanceRange;
 	ofIntRange typeSizeRange;
 	ofIntRange currentTypeSizeRange;
-	//int currentFontSize;
-	//ofRange typeScaleRange;
+	
 	
 	ofVec3f randomDirection();
 	

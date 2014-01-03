@@ -31,6 +31,14 @@ void testApp::keyPressed(int key){
     else if(key == 'c'){
         secondaryDisplay.color = !secondaryDisplay.color;
     }
+    else if(key == OF_KEY_RIGHT){
+        secondaryDisplay.tx += .1;
+        cout << "tx: "<<secondaryDisplay.tx<<endl;
+    }
+    else if(key == OF_KEY_LEFT){
+        secondaryDisplay.tx -= .1;
+        cout << "tx: "<<secondaryDisplay.tx<<endl;
+    }
 	
 	if(key == 'C'){
 		secondaryDisplay.respondToClip( secondaryDisplay.parser.getRandomClip() );

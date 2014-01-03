@@ -58,12 +58,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ANGLE DAMPEN</Name>
-    <Value>0.072758622</Value>
+    <Value>0.017241379</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>STEP SIZE</Name>
-    <Value>0.779310346</Value>
+    <Value>1.068965554</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -89,4 +89,9 @@
     <Kind>4</Kind>
     <Name>ANIMATE DURATION</Name>
     <Value>3.157635450</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE WIDTH</Name>
+    <Value>2.002463102</Value>
 </Widget>
