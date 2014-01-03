@@ -121,7 +121,7 @@ void ofxMtlBoxFitting::doOccupy(int col, int row, int w, int h, int value) {
 //--------------------------------------------------------------
 void ofxMtlBoxFitting::make(int s) {
 	seed = s;
-	//ofSeedRandom(seed);
+	ofSeedRandom(seed);
 	wipe();
 	for (int r=0; r<rows; r++) {
 		for (int c=0; c<cols; c++) {

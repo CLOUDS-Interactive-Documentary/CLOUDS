@@ -66,6 +66,9 @@ void testApp::updateTransitions(){
 	
 	float crossfadeValue = transitionController.getFadeValue();
 	rgbd.visualSystemFadeValue = crossfadeValue;
+	
+	//cout << "visual system fade value is " << rgbd.visualSystemFadeValue << endl;
+	
 	if(transitionController.transitioning){
 		ofLogNotice("testApp::updateTransitions") << transitionController.getCurrentStateDescription() << " TRANSITIONING: " << transitionController.getInterviewTransitionPoint();
 	}

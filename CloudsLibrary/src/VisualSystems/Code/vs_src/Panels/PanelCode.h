@@ -20,7 +20,7 @@ class PanelCode : public Panel {
 	void selfSetup();
 	void selfDraw();
 	
-	ofxFTGLFont layout;
+	ofxFTGLFont* sharedFont;
 
   protected:
 	

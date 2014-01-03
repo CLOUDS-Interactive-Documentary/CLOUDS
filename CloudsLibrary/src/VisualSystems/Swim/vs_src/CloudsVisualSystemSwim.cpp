@@ -101,8 +101,9 @@ void CloudsVisualSystemSwim::selfUpdate()
     rx.makeRotate(currentLookAngle.x, 1, 0, 0);
     ry.makeRotate(currentLookAngle.y, 0, 1, 0);
     getCameraRef().setOrientation(rx * ry);
-    getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
-
+    //getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
+    getCameraRef().move(0, 0, ofMap(GetCloudsInputY(), 0, ofGetHeight(), -50.f, 0.f));
+    
     //bubbles.update();
     creatures.update();
 }
@@ -129,15 +130,11 @@ void CloudsVisualSystemSwim::selfPostDraw()
 void CloudsVisualSystemSwim::selfSetupRenderGui()
 {    
     rdrGui->addToggle("regenerate", &regenerate);
-    //rdrGui->addMinimalSlider("creatureFogStart", 0.f, 10000.f, &Creature::fogStart);
-    //rdrGui->addMinimalSlider("creatureFogEnd", 0.f, 10000.f, &Creature::fogEnd);
     
     rdrGui->addMinimalSlider("camSpeed", 0.f, -1500.f, &camSpeed);
     
     rdrGui->addRangeSlider("creatureFogRange", 0.f, 10000.f, &Creature::fogStart, &Creature::fogEnd);
     
-    //rdrGui->addMinimalSlider("snowInnerFogStart", 0, 2000.f, &snow.getInnerFogStartRef());
-    //rdrGui->addMinimalSlider("snowInnerFogEnd", 0, 2000.f, &snow.getInnerFogEndRef());
     rdrGui->addLabel("Flocking");
     rdrGui->addSpacer();
     rdrGui->addMinimalSlider("zoneRadius", 50.f, 2000.f, &creatures.zoneRadius);
@@ -148,19 +145,10 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addMinimalSlider("attractStrength", 0.f, 1.f, &creatures.attractStrength);
     rdrGui->addMinimalSlider("maxDistFromCentre", 500.f, 4000.f, &creatures.maxDistFromCentre);
     
-    /*
-    rdrGui->addLabel("Points");
-    rdrGui->addSpacer();
-    rdrGui->addIntSlider("numPointOne", 0, 1000, &creatures.numPointOne);
-    rdrGui->addMinimalSlider("huePointOne", 0.f, 1.f, &creatures.huePointOne);
-    rdrGui->addIntSlider("numPointTwo", 0, 1000, &creatures.numPointTwo);
-    rdrGui->addMinimalSlider("huePointTwo", 0.f, 1.f, &creatures.huePointTwo);
-    rdrGui->addIntSlider("numPointThree", 0, 1000, &creatures.numPointThree);
-    rdrGui->addMinimalSlider("huePointThree", 0.f, 1.f, &creatures.huePointThree);
-     */
-    
     rdrGui->addLabel("Jellies (see other menus)");
     rdrGui->addSpacer();
+    rdrGui->addMinimalSlider("undulationAmt", 0.f, 2.f, &JellyCreature::undulationAmt);
+    rdrGui->addRangeSlider("undulationFreqRange", 0.f, 10.f, &JellyCreature::undulationFreqMin, &JellyCreature::undulationFreqMax);
     rdrGui->addIntSlider("numJellyOne", 0, 300, &creatures.numJellyOne);
     rdrGui->addIntSlider("numJellyTwo", 0, 300, &creatures.numJellyTwo);
     
@@ -176,8 +164,16 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addMinimalSlider("yellowSizeAverage", .1f, 3.f, &creatures.fishTwoParams.sizeAverage);
     rdrGui->addMinimalSlider("yellowSizeStdDeviation", 0.f, 1.f, &creatures.fishTwoParams.sizeStdDeviation);
     
-    //rdrGui->addMinimalSlider("fishTexAmt", 0.f, 1.f, &ModelCreature::texAmount);
-    
+    /*
+     rdrGui->addLabel("Points");
+     rdrGui->addSpacer();
+     rdrGui->addIntSlider("numPointOne", 0, 1000, &creatures.numPointOne);
+     rdrGui->addMinimalSlider("huePointOne", 0.f, 1.f, &creatures.huePointOne);
+     rdrGui->addIntSlider("numPointTwo", 0, 1000, &creatures.numPointTwo);
+     rdrGui->addMinimalSlider("huePointTwo", 0.f, 1.f, &creatures.huePointTwo);
+     rdrGui->addIntSlider("numPointThree", 0, 1000, &creatures.numPointThree);
+     rdrGui->addMinimalSlider("huePointThree", 0.f, 1.f, &creatures.huePointThree);
+     */
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -233,11 +229,13 @@ void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& para
     gui->addRangeSlider("pulse amt (range)", 0.f, 0.4f, &params.pulseAmtMin, &params.pulseAmtMax);
     
     gui->addLabel("Size");
-    gui->addMinimalSlider("width average", 10, 200, &params.widthAverage);
+    gui->addRangeSlider("width range", 10.f, 200.f, &params.widthMin, &params.widthMax);
+    gui->addRangeSlider("length range", 10.f, 200.f, &params.lengthMin, &params.lengthMax);
+    /*gui->addMinimalSlider("width average", 10, 200, &params.widthAverage);
     gui->addMinimalSlider("width std dev", 0, 200, &params.widthStdDeviation);
     
     gui->addMinimalSlider("length average", 10, 200, &params.lengthAverage);
-    gui->addMinimalSlider("length std dev", 0, 200, &params.lengthStdDeviation);
+    gui->addMinimalSlider("length std dev", 0, 200, &params.lengthStdDeviation);*/
     
     gui->addLabel("Shape");
     gui->addRangeSlider("spherical segment (range)", .5f * HALF_PI, PI, &params.segmentMin, &params.segmentMax);

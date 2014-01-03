@@ -10,6 +10,14 @@
 #include "ofxDelaunay.h"
 #include "ofxFTGL.h"
 
+struct TransitionInfo{
+	ofVec3f inStartPos;
+	ofVec3f outTargetPos;
+	ofQuaternion inStartQuat;
+	ofQuaternion outTargetQuat;
+	string name;
+};
+
 class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   public:
 
@@ -91,6 +99,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void transitionIn( ofNode& targetNode, float duration, float startTime );
 	void transitionOut( ofNode& startNode, float duration, float startTime );
 	
+	bool bTransitionIn, bTransitionOut;
+	bool bLookThourghIn, bLookThourghOut;
+	bool bSaveTransition;
+	
 	void lookThroughTransitionIn();
 	void lookThroughTransitionOut();
 
@@ -103,10 +115,15 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void playTestVideo();
 	
 	ofVec3f bottomRight;
+	
+	void loadTransitionSettings(string filename = "Transitions");
+	void saveTransitionSettings(string transitionName);
+	
 
   protected:
 	
 	ofxUISuperCanvas *transitionEditorGui;
+	map< string, TransitionInfo> transitionMap;
 
 	ofxUISuperCanvas *globalMeshGui;
 	bool drawRGBD;

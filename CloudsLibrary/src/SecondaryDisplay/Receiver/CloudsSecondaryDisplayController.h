@@ -109,6 +109,7 @@ class CloudsSecondaryDisplayController {
     int stringCounter;
 
     map<string, CloudsHUDLabel*>    hudLabelMap;
-
+    
+    ofShader shader;
 
 };

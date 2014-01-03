@@ -42,6 +42,9 @@ namespace itg
     
     ofShader JellyCreature::shader;
     ofImage JellyCreature::tex;
+    float JellyCreature::undulationAmt = 0.5f;
+    float JellyCreature::undulationFreqMin = .3f;
+    float JellyCreature::undulationFreqMax = 1.f;
     
     JellyCreature::JellyCreature(const JellyParams& params) : Creature()
     {
@@ -73,14 +76,14 @@ namespace itg
         
         drawInner = true;
         
-        float w = randomGauss(params.widthAverage, params.widthStdDeviation);
-        float l = randomGauss(params.lengthAverage, params.lengthStdDeviation);
+        float w = ofRandom(params.widthMin, params.widthMax);//randomGauss(params.widthAverage, params.widthStdDeviation);
+        float l = ofRandom(params.lengthMin, params.lengthMax);//randomGauss(params.lengthAverage, params.lengthStdDeviation);
         
         size = ofVec3f(w, w, l);
         
-        deformAmount = 0.5 * w;
+        //deformAmount = 0.5 * w;
         
-        frequency = ofRandom(0.3, 1.0);
+        frequency = ofRandom(undulationFreqMin, undulationFreqMax);
         
         texRepeatS = 4;
         
@@ -162,7 +165,7 @@ namespace itg
     void JellyCreature::setShaderUniforms()
     {
         const float DEFORM_AMOUNT = 40.f;
-        shader.setUniform1f("deformAmount", deformAmount);
+        shader.setUniform1f("deformAmount", undulationAmt * size.x);
         shader.setUniform1f("time", ofGetElapsedTimef());
         shader.setUniform1f("frequency", frequency);
         shader.setUniformTexture("tex", tex, 0);

@@ -3,7 +3,7 @@
 //
 
 #include "CloudsVisualSystemCode.h"
-#include "CloudsRGBDVideoPlayer.h"
+#include "CloudsGlobal.h"
 #include "ofxMtlBoxFitting.h"
 
 bool rectsort(ofRectangle a, ofRectangle b){
@@ -18,8 +18,11 @@ void CloudsVisualSystemCode::selfSetupGui(){
 	typeGui->copyCanvasProperties(gui);
 	typeGui->setName("Type");
 	typeGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	typeGui->addRangeSlider("speed range", .01, 1, &speedRange.min, &speedRange.max);
-
+	
+	typeGui->addRangeSlider("SPEED RANGE", .01, 1, &speedRange.min, &speedRange.max);
+	typeGui->addIntSlider("FONT SIZE", 4, 12, &fontSize);
+	typeGui->addSlider("TRACKING", 0., 3.0, &typeTracking);
+	
 	ofAddListener(typeGui->newGUIEvent, this, &CloudsVisualSystemCode::selfGuiEvent);
 	guis.push_back(typeGui);
 	guimap[typeGui->getName()] = typeGui;
@@ -29,8 +32,8 @@ void CloudsVisualSystemCode::selfSetupGui(){
 	boxGui->copyCanvasStyle(gui);
 	boxGui->copyCanvasProperties(gui);
 	
-	boxGui->addSlider("max width", 40, 300, &maxwidth);
-	boxGui->addSlider("max height", 40, 500, &maxheight);
+	boxGui->addSlider("WIDTH", 40, 300, &maxwidth);
+	boxGui->addSlider("HEIGHT", 40, 500, &maxheight);
 	
 	//any width/height smaller thin this will become a widget
 	boxGui->addIntSlider("min subdivision size", 4, 200, &minsize);
@@ -50,10 +53,10 @@ void CloudsVisualSystemCode::selfSetupGui(){
 	colorGui->setName("Color");
 	colorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	colorGui->addLabel("tint");
-	colorGui->addMinimalSlider("color ting h", 0, 1.0, &tintColorHSV.r);
-	colorGui->addMinimalSlider("color ting s", 0, 1.0, &tintColorHSV.g);
-	colorGui->addMinimalSlider("color ting v", 0, 1.0, &tintColorHSV.b);
+	baseColorLabel = colorGui->addLabel("TEXT");
+	colorGui->addMinimalSlider("TEXT COLOR H", 0, .999, &tintColorHSV.r);
+	colorGui->addMinimalSlider("TEXT COLOR S", 0, .999, &tintColorHSV.g);
+	colorGui->addMinimalSlider("TEXT COLOR B", 0, .999, &tintColorHSV.b);
 
 	string colorNames[MATCH_TYPES];
 	colorNames[0] = "comments";
@@ -62,11 +65,13 @@ void CloudsVisualSystemCode::selfSetupGui(){
 	colorNames[3] = "preprocessors";
 	colorNames[4] = "keywords";
 	
+
 	for(int i = 0; i < MATCH_TYPES; i++){
-		colorGui->addLabel("color " + ofToString(i+1) + " " +colorNames[i] );
-		colorGui->addMinimalSlider("color " + ofToString(i+1) + " h", 0, 1.0, &matchColorTypesHSV[i].r);
-		colorGui->addMinimalSlider("color " + ofToString(i+1) + " s", 0, 1.0, &matchColorTypesHSV[i].g);
-		colorGui->addMinimalSlider("color " + ofToString(i+1) + " v", 0, 1.0, &matchColorTypesHSV[i].b);
+		ofxUILabel* lb = colorGui->addLabel("color " + ofToString(i+1) + " " +colorNames[i] );
+		colorGui->addMinimalSlider("COLOR " + ofToString(i+1) + " H", 0, .999, &matchColorTypesHSV[i].r);
+		colorGui->addMinimalSlider("COLOR " + ofToString(i+1) + " S", 0, .999, &matchColorTypesHSV[i].g);
+		colorGui->addMinimalSlider("COLOR " + ofToString(i+1) + " B", 0, .999, &matchColorTypesHSV[i].b);
+		textColorLabels.push_back(lb);
 	}
 	
 	ofAddListener(colorGui->newGUIEvent, this, &CloudsVisualSystemCode::selfGuiEvent);
@@ -75,8 +80,14 @@ void CloudsVisualSystemCode::selfSetupGui(){
 }
 
 void CloudsVisualSystemCode::selfGuiEvent(ofxUIEventArgs &e){
-	if(e.widget->getName() == "Custom Button"){
-		cout << "Button pressed!" << endl;
+	//change the gui color on slider change
+	
+	if(e.widget->getName().find("COLOR") != string::npos) {
+		updateColors();
+		for(int i = 0; i < textColorLabels.size(); i++){
+			textColorLabels[i]->setColorFill( matchColorTypes[i] );
+		}
+		baseColorLabel->setColorFill(tintColor);
 	}
 }
 
@@ -84,8 +95,8 @@ void CloudsVisualSystemCode::generatePanels(){
 	rectTests.clear();
 	
 	ofxMtlBoxFitting boxFitting;
-	boxFitting.setup(getSharedRenderTarget().getWidth(),
-					 getSharedRenderTarget().getHeight(), maxwidth, maxheight, minsize);
+	boxFitting.setup(getCanvasWidth(),getCanvasHeight(),
+					 maxwidth, maxheight, minsize);
 
 	boxFitting.generate(boxSeed);
 	
@@ -104,6 +115,9 @@ void CloudsVisualSystemCode::generatePanels(){
 	
 	sort(rectTests.begin(),rectTests.end(), rectsort);
 	
+	for(int i = 0; i < panels.size(); i++){
+		delete panels[i];
+	}
 	panels.clear();
 	
 	for(int i = 0; i < rectTests.size(); i++){
@@ -112,19 +126,23 @@ void CloudsVisualSystemCode::generatePanels(){
 			p = new PanelGraph();
 		}
 		else{
-			p = new PanelCode;
+			PanelCode* code = new PanelCode();
+			code->sharedFont = &sharedFont;
+			p = code;
 		}
 		p->setup( getVisualSystemDataPath() + "code_test.txt" );
-		
+
 		p->outlineAlpha = &outlineAlpha;
 		p->scanSpeed = powf(ofRandom(speedRange.min,speedRange.max),2);
 		p->drawRect = rectTests[i];
 		panels.push_back(p);
-	
-	
 	}
 	
-	panelsGenerated = true;
+	generatedPanelWidth = getCanvasWidth();
+	generatedPanelHeight = getCanvasHeight();
+	regeneratePanels = false;
+	
+	cout << "generating panels" << endl;
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -145,29 +163,35 @@ void CloudsVisualSystemCode::guiRenderEvent(ofxUIEventArgs &e){
 }
 
 void CloudsVisualSystemCode::selfSetDefaults(){
+	regeneratePanels = false;
+	fontSize = 5;
+	currentFontSize = -1;
+	generatedPanelWidth = -1;
+	generatedPanelHeight = -1;
 	
 }
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemCode::selfSetup(){
-//	testPanel.setup(getVisualSystemDataPath() + "code_test.txt");	
 	matchColorTypes.resize(MATCH_TYPES);
-//	matchColorTypesHSV.resize(MATCH_TYPES);
+	regeneratePanels = true;
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemCode::selfPresetLoaded(string presetPath){
-	generatePanels();
+	regeneratePanels = true;
 }
 
 // selfBegin is called when the system is ready to be shown
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemCode::selfBegin(){
-	
+	for(int i = 0; i < panels.size(); i++){
+		panels[i]->startAnimation();
+	}
 }
 
 //do things like ofRotate/ofTranslate here
@@ -176,8 +200,8 @@ void CloudsVisualSystemCode::selfSceneTransformation(){
 	
 }
 
-//normal update call
-void CloudsVisualSystemCode::selfUpdate(){
+void CloudsVisualSystemCode::updateColors(){
+	
 	for(int i = 0; i < MATCH_TYPES; i++){
 		matchColorTypes[i] = ofFloatColor::fromHsb(matchColorTypesHSV[i].r,
 												   matchColorTypesHSV[i].g,
@@ -187,19 +211,40 @@ void CloudsVisualSystemCode::selfUpdate(){
 	tintColor = ofFloatColor::fromHsb(tintColorHSV.r,
 									  tintColorHSV.g,
 									  tintColorHSV.b);
+}
+
+//normal update call
+void CloudsVisualSystemCode::selfUpdate(){
+	if(currentFontSize != fontSize){
+		sharedFont.loadFont(GetCloudsDataPath() + "font/Consolas.ttf", fontSize);
+		currentFontSize = fontSize;
+	}
+	
+	sharedFont.setTracking(typeTracking);
+	
+	if(regeneratePanels ||
+	   getCanvasWidth() != generatedPanelWidth ||
+	   getCanvasHeight() != generatedPanelHeight )
+	{
+		generatePanels();
+		for(int i = 0; i < panels.size(); i++){
+			panels[i]->startAnimation();
+		}
+	}
+	
+	updateColors();
 	
 	for(int i = 0; i < panels.size(); i++){
 		panels[i]->tint = tintColor;
 		panels[i]->matchColorTypes = matchColorTypes;
 		panels[i]->update();
 	}
-
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemCode::selfDraw(){
-//	testPanel.draw();
+	//TODO: draw 3d
 }
 
 // draw any debug stuff here
@@ -210,21 +255,9 @@ void CloudsVisualSystemCode::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemCode::selfDrawBackground(){
 
-//	ofPushStyle();
-//	ofNoFill();
-//	for(int i = 0; i < rectTests.size(); i++){
-////		ofSetColor( ofColor::fromHsb(ofRandom(255), 255,255) );
-//		ofRect(rectTests[i]);
-//	}
-//	ofPopStyle();
-
 	for(int i = 0; i < panels.size(); i++){
-		panels[i]->draw( getSharedRenderTarget().getHeight() );
+		panels[i]->draw( getCanvasHeight() );
 	}
-	
-//	testPanel.draw();
-	//turn the background refresh off
-	//bClearBackground = false;
 }
 
 // this is called when your system is no longer drawing.

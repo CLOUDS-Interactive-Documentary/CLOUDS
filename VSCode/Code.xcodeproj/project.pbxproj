@@ -1506,9 +1506,9 @@
 		E7E442C4185EB9DB00CD1953 /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				E7E442C5185EB9DB00CD1953 /* CloudsInput.cpp */,
-				E7E442C6185EB9DB00CD1953 /* CloudsInput.h */,
 				E7E442C7185EB9DB00CD1953 /* CloudsInputEvents.h */,
+				E7E442C6185EB9DB00CD1953 /* CloudsInput.h */,
+				E7E442C5185EB9DB00CD1953 /* CloudsInput.cpp */,
 				E7E442CA185EB9DB00CD1953 /* CloudsInputMouse.cpp */,
 				E7E442CB185EB9DB00CD1953 /* CloudsInputMouse.h */,
 			);
