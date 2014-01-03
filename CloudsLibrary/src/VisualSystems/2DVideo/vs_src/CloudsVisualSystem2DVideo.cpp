@@ -141,9 +141,13 @@ void CloudsVisualSystem2DVideo::selfSetup()
     movieStrings.push_back("JapaneseSlow2.mov");
     movieStrings.push_back("TeensSlow.mov");
     
+    movieStrings.push_back("Kittenstep.mov");
     movieStrings.push_back("Code_Screenflow3.mov");
     movieStrings.push_back("networkFlow2.mov");
     movieStrings.push_back("DesignByNumbers.mov");
+    movieStrings.push_back("TweakMode.mov");
+    movieStrings.push_back("Logo1.mov");
+    movieStrings.push_back("Logo2.mov");
     
     movieStrings.push_back("Reas_network1.mov");
     movieStrings.push_back("Reas_Process13.mov");

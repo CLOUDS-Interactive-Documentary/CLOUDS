@@ -232,11 +232,11 @@ void CloudsAct::populateTime(){
 		ofLogError("CloudsAct::populateTime") << "Not enough clips to create section markers";
 	}
 
-	//create sound cue timeline debug
-	ofxTLFlags* soundQueues = timeline.addFlags("Sound Cues");
-	for(int i = 0; i < cues.size(); i++){
-		soundQueues->addFlagAtTime( "cue: " + cues[i].soundQuestionKey, cues[i].startTime*1000 );
-	}
+//	//create sound cue timeline debug
+//	ofxTLFlags* soundQueues = timeline.addFlags("Sound Cues");
+//	for(int i = 0; i < cues.size(); i++){
+//		soundQueues->addFlagAtTime( "cue: " + cues[i].soundQuestionKey, cues[i].startTime*1000 );
+//	}
 	
 	timeline.setCurrentPage(0);
 	

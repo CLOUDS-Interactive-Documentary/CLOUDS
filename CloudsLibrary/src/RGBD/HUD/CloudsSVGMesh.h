@@ -22,6 +22,7 @@ typedef struct {
 class CloudsSVGMesh
 {
   public:
+    CloudsSVGMesh();
 	bool loadDirectory(string file);
 	bool load(string file);
 	void draw();
@@ -36,6 +37,8 @@ class CloudsSVGMesh
 	
 	//will be null if ID isnt present
 	SVGMesh* getMeshByID(string meshId);
+    
+    float alpha;
 	
   protected:
 	void recurseSVGTag(ofxXmlSettings& xml, string parentId, float parentOpacity);

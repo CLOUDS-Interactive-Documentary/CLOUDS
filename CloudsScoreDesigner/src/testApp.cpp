@@ -68,14 +68,12 @@ void testApp::actCreated(CloudsActEventArgs& args){
 	if(currentAct != NULL){
 		currentAct->getTimeline().stop();
 		currentAct->unregisterEvents(this);
-//		currentAct->unregisterEvents(&websockets);
 		delete currentAct;
 	}
 
 	
 	currentAct = args.act;
 	currentAct->registerEvents(this);
-//	currentAct->registerEvents(&websockets);
 	
 	currentAct->play();
     currentAct->getTimeline().enableEvents();

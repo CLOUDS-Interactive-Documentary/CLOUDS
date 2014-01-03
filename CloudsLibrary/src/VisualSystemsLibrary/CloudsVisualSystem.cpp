@@ -2766,20 +2766,20 @@ void CloudsVisualSystem::toggleGuiAndPosition(ofxUISuperCanvas *g)
     }
 }
 
-void CloudsVisualSystem::setCurrentCamera(ofCamera& swappedInCam)
-{
-	currentCamera = &swappedInCam;
-}
+//void CloudsVisualSystem::setCurrentCamera(ofCamera& swappedInCam)
+//{
+//	currentCamera = &swappedInCam;
+//}
 
-ofCamera* CloudsVisualSystem::getCurrentCamera()
-{
-	return currentCamera;
-}
+//ofCamera* CloudsVisualSystem::getCurrentCamera()
+//{
+//	return currentCamera;
+//}
 
-void CloudsVisualSystem::setCurrentCamera( ofCamera* swappedInCam )
-{
-	setCurrentCamera(*swappedInCam);
-}
+//void CloudsVisualSystem::setCurrentCamera( ofCamera* swappedInCam )
+//{
+//	setCurrentCamera(*swappedInCam);
+//}
 
 ofCamera& CloudsVisualSystem::getCameraRef(){
 	return cam;

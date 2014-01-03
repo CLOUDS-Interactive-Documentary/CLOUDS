@@ -40,9 +40,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     bool isQuestionSelectedAndClipDone();
     CloudsQuestion* getSelectedQuestion();
     
-    ofxFTGLFont captionFont;
-    void rebuildCaptionFont();
-    int captionFontSize;
+//    ofxFTGLFont captionFont;
+//    void rebuildCaptionFont();
+//    int captionFontSize;
 	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
@@ -63,15 +63,23 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 
 	float visualSystemFadeValue;
 	
-	//???: LB- I changed this so that we could use the "transitionCam" to position our in and out nodes
 	ofCamera& getCameraRef(){
-		if(currentCamera != NULL)	return  *currentCamera;
+//		if(currentCamera != NULL)	return  *currentCamera;
+		if(placingTransitionNodes){
+			return transitionCam;
+		}
 		return cloudsCamera;
 	}
-
+	
+	//TODO
+	void startTransitionOut(RGBDTransitionType transitionType);
+	void startTransitionIn(RGBDTransitionType transitionType);
+	void updateTransition(float percentComplete);
+	void transtionFinished();
+	
+	//DEPRECATED
 	void transitionIn( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
 	void transitionOut( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
-	
 	void transition( float duration=3, float startTime=ofGetElapsedTimef() );
 	
 	ofNode* transitionTarget;
@@ -82,8 +90,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	void transitionIn( ofNode& targetNode, float duration, float startTime );
 	void transitionOut( ofNode& startNode, float duration, float startTime );
-	
-	bool drawTransitionNodes;
 	
 	void lookThroughTransitionIn();
 	void lookThroughTransitionOut();
@@ -99,6 +105,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofVec3f bottomRight;
 
   protected:
+	
+	ofxUISuperCanvas *transitionEditorGui;
 
 	ofxUISuperCanvas *globalMeshGui;
 	bool drawRGBD;
@@ -173,19 +181,22 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	CloudsQuestion* caughtQuestion;
     CloudsQuestion* selectedQuestion;
 	ofVec4f pointColor;
-    
-//    CloudsCaption cloudsCaption;
+	
+	bool placingTransitionNodes;
+	bool drawTransitionNodes;
 
 	bool drawParticulate;
-
-	
 	float attenuatedCameraDrift;
 	
 	//transition
 	void updateTransition();
 	bool transitioning, transitioningIn, transitioningOut;
 	float transitionStartTime, transitionEndTime, transitionStartVal, transitionTargetVal;
-		
+	RGBDTransitionType transitionType;
+	ofxEasingSine transitionEase;
+	
+	float transitionVal;
+	
 	ofVec3f questionXZ;
 	float questionDriftRange;
 	float questionYCenter;
@@ -195,17 +206,5 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	ofFloatColor questionBaseHSB;
 	ofFloatColor questionHoverHSB;
-	
-	//???: maybe we should combine these into a struct?
-	ofVec3f transitionStartPos, transitionEndPos;
-	ofQuaternion transitionStartRot, transitionEndRot;
-	ofxEasingQuint transitionEase;
-	
-	RGBDTransitionType transitionType;
-	
-	float transitionVal;
-	
-    //caption
-//    static map<string, int> appearances;
 	
 };

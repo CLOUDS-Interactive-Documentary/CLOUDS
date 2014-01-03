@@ -21,12 +21,6 @@
     <Value>15</Value>
 </Widget>
 <Widget>
-    <Kind>6</Kind>
-    <Name>FADE RANGE</Name>
-    <HighValue>0.000000000</HighValue>
-    <LowValue>0.000000000</LowValue>
-</Widget>
-<Widget>
     <Kind>44</Kind>
     <Name>MIN CLIP NUM</Name>
     <Value>19</Value>

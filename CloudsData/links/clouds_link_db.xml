@@ -135,7 +135,17 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#easy,#logical,#tech</additionalKeywords>
+    <link>
+        <target>Bruce - Anthropomorphism</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - machines don&apos;t think 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#tech,#logical,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - mini-brains 2</name>
@@ -627,6 +637,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Building Universes 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Seduced by Play 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Network perception</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Karsten - DarkNet</target>
         <startFrame>-1</startFrame>
@@ -814,6 +839,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Anthropomorphism</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - machines don&apos;t think 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Kevin - computer perception</target>
         <startFrame>-1</startFrame>
@@ -932,6 +967,11 @@
     </link>
     <link>
         <target>Martin - ubiquitous connectivity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Alchemy 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1130,6 +1170,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Rethinking education systems</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Bruce - Github Tarball</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>?crowdsourcing: How does the crowd become a collaborator?,#art,#fun,#inspiring</additionalKeywords>
 </clip>
 <clip>
@@ -1198,6 +1248,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <revokedKeywords>clouds</revokedKeywords>
 </clip>
 <clip>
     <name>Aaron - code, story, communication</name>
@@ -1362,6 +1413,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>fantasy technology,dreams,#mindblowing,#surreal,#easy,?technological progress: How do artists influence the future?</additionalKeywords>
 </clip>
 <clip>
@@ -1519,6 +1575,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - aborted projects</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Greg - AI 1</target>
         <startFrame>-1</startFrame>
@@ -1583,6 +1644,11 @@
     <name>Andres - protein folding 1</name>
     <link>
         <target>Andres - protein folding 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - small fuzzy things</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1750,6 +1816,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - small fuzzy things</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>?dna: How do computer systems imitate biological systems?,#mindblowing,#logical,#fixed</additionalKeywords>
 </clip>
 <clip>
@@ -1818,6 +1889,11 @@
     </link>
     <link>
         <target>Marius - It&apos;s dirtier than that</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - small fuzzy things</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2065,6 +2141,11 @@
     </suppress>
     <suppress>
         <target>Damion - BeingOnDrugs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Bruce - Age of the universe, really weird</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -2514,6 +2595,11 @@
 </clip>
 <clip>
     <name>Andres - Less beautiful than it could be</name>
+    <link>
+        <target>Patricio - Information 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>?science: Why isn&apos;t science more invested in aesthetics?,#logical,#obstacle,#discouraging</additionalKeywords>
 </clip>
 <clip>
@@ -2545,6 +2631,11 @@
     </link>
     <link>
         <target>Bruce - Truth is unstable</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Discovering Mathematical Reality</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2601,6 +2692,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - future camera 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - camera of future 25 years</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Karolina - uncanny/sniff</target>
         <startFrame>-1</startFrame>
@@ -2613,6 +2714,11 @@
     <name>Andres - camera distorts reality</name>
     <link>
         <target>Elliot_UK - 2D vision in a 3D world</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - camera of future 25 years</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2872,6 +2978,11 @@
     </link>
     <link>
         <target>Marius - 3D printing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Alchemy 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -3672,6 +3783,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - digital status quo</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Javier - Data ownership</target>
         <startFrame>-1</startFrame>
@@ -3708,6 +3824,11 @@
     </link>
     <link>
         <target>Lauren - toward greater consciousness</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - digital status quo</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -4140,6 +4261,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Maeda - Digital media evolving</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Karsten - obsolescence</target>
         <startFrame>-1</startFrame>
@@ -4149,11 +4275,101 @@
 </clip>
 <clip>
     <name>Bruce - cyberpunk dictum long</name>
+    <link>
+        <target>Marius - Living in a state of newness since age 10</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - old media</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Maeda - do not resuscitate</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Maeda - Isn&apos;t it supposed to be new?</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - VeryFirstArtworks</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - keeping you stuff working</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - preserving history</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - creative agglomeration</name>
-    <additionalKeywords>#hard</additionalKeywords>
+    <link>
+        <target>LIA - NeedTheInternet</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - helldotcom</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - FFFFAT</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Chris - RemoteCollaboration</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Paola - code ant farm</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>JTNimoy - 100 artists versus One</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - Networked intelligence</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Fernanda - History flow 4</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Fernanda - History flow 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Fernanda - History flow 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Shantell - doingwithothers</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>collective intelligence,#hard,community</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - All of a sudden...</name>
@@ -4172,6 +4388,39 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Chris - EthicOfSharing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Zach - processing, publishing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Bruce - Tidepools</name>
+    <link>
+        <target>Jer - Desire to get together</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Zach - nerd art center</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - Strange cultures</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - finding a community</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Bruce - Geeks with style</name>
@@ -4186,15 +4435,31 @@
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Golan - people like myself</target>
+        <target>Kyle_MC - they all wear the same glasses</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Julian - toolkit culture</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#ironic</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Wikipedia and Github</name>
     <link>
         <target>Fernanda - History flow 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - Networked intelligence</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - Getting smarter together</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -4207,7 +4472,32 @@
 </clip>
 <clip>
     <name>Bruce - Github Tarball</name>
-    <additionalKeywords>#hard</additionalKeywords>
+    <link>
+        <target>Chris - EthicOfSharing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - Open Source Contract</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - limits to sharing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Patricio - Rethinking education systems</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Aaron - exquisite forest</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>#hard,people</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Constant improvement</name>
@@ -4220,11 +4510,66 @@
 </clip>
 <clip>
     <name>Bruce - aborted projects</name>
+    <link>
+        <target>Golan - limits to sharing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - open frameworks</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Zach - at a festival</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - development feedback,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Volition</name>
-    <additionalKeywords>#hard</additionalKeywords>
+    <link>
+        <target>Julian - Shapes the way we think</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - algo culture 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jesse - understanding to control 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jesse - understanding to control 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - would be boring</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - MalleableMath</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - CircleFormula1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#discouraging,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Gardening 1</name>
@@ -4238,7 +4583,27 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#hard</additionalKeywords>
+    <link>
+        <target>LIA - NotInventingAnything1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - parameter space</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - CircleFormula1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - would be boring</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#ironic</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Gardening 2</name>
@@ -4247,11 +4612,46 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Nervous_Jesse - organic process</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jesse - our explorations are random</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>weird,#ironic,#surreal,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Anthropomorphism</name>
-    <additionalKeywords>#hard</additionalKeywords>
+    <link>
+        <target>Damion - OOO</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Greg - Object Oriented Ontology 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - cognition vs computation 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - modeling consciousness 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - MachineIntelligence</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>new aesthetic,#ironic</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Digital humanities technology</name>
@@ -4270,7 +4670,43 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>writing,#transcript,#hard</additionalKeywords>
+    <link>
+        <target>Fernanda - mainstreaming of data viz</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Information 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jen - library</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Martin - all the words</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Martin - words and numbers</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - code is information</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Shantell - sharing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <revokedKeywords>data,big data</revokedKeywords>
+    <additionalKeywords>writing,data visualization,#hard,#transcript,library</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Textual technologies</name>
@@ -4280,17 +4716,7 @@
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Kyle_CH - Polygons</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
         <target>Kyle_CH - storytelling</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Kyle_CH - Cloud atlas</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -4321,12 +4747,42 @@
 </clip>
 <clip>
     <name>Bruce - beauty of code 1</name>
+    <link>
+        <target>LIA - IdeaToCode</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - Aesthetic with no references,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - beauty of code 2</name>
     <link>
         <target>Bruce - beauty of code 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - 10Print</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - Bicycles1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jer - Generative Art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - VisualizeAnIdea</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -4339,11 +4795,76 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Maeda - a computer is a clock</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - software is a brain</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - a hundred million</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - thinking previously unthinkable thoughts</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - blows my mind</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - beauty of math</name>
-    <additionalKeywords>#hard</additionalKeywords>
+    <link>
+        <target>Patricio - Discovering Mathematical Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - MathAnotherLanguage</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - Circle1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - Number20</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - does nature compute? 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jen - Math simulating reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jen - a different mathematics</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - Aesthetic with no references,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - beauty of code 4</name>
@@ -4352,6 +4873,70 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>JTNimoy - I addicted myself</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - programming is...</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Imaginative technologies 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_MC - code as a theme 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Diederick - programmingWithFeeling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - 256 bytes part 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - New modes of expression</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Intro - CodingSketching</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Greg - Creative Coder</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>#easy</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - beauty of code 5</name>
+    <link>
+        <target>Ramsey - designing languages</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jessica - I create the work that I love</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - Aesthetic with no references,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Intro - CodingSketching</target>
         <startFrame>-1</startFrame>
@@ -4360,13 +4945,17 @@
     <additionalKeywords>#easy</additionalKeywords>
 </clip>
 <clip>
-    <name>Bruce - beauty of code 5</name>
-    <suppress>
-        <target>Intro - CodingSketching</target>
+    <name>Bruce - Marius</name>
+    <link>
+        <target>Marius - aesthetic experience</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
-    </suppress>
-    <additionalKeywords>#easy</additionalKeywords>
+    </link>
+    <link>
+        <target>Marius - Digi meets physical</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Bruce - Parametric vs Generative</name>
@@ -4375,14 +4964,140 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#pe?Cell Cycle,#example</additionalKeywords>
+    <link>
+        <target>Marius - jumping from medium to medium</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jessica - Growing buildings</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - hybridity2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Casey - Borrowing from culture</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Golan - hybridity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>#example,#pe?Cell Cycle,design</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Digital fabrication</name>
+    <link>
+        <target>Patricio - Alchemy 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - 3DTchotchkes</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jessica - Design process 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Bruce - Design vs Art</name>
-    <additionalKeywords>#hard</additionalKeywords>
+    <link>
+        <target>Regine - new media ghetto</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - art world</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - Art2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - HopePeopleCanEnjoyMyArt</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Damion - FrustratedArtists</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Paola - museum collections</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - Art world gave up on beauty</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#hard,#obstacle</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - 3D printed buildings</name>
+    <link>
+        <target>Nervous_Jessica - Growing buildings</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jessica - Big 3D printers Long quote</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - color 3D printing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - 3D printing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Bruce - digital status quo</name>
+    <link>
+        <target>Binx - technoutopian</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julian - change the way we see tech</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julian - Critical engineering</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - Google glass</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - dystopia</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard</additionalKeywords>
 </clip>
 <clip>
@@ -4397,20 +5112,90 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Julian - Critical engineering</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Javier - Hummingbird drone</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Don&apos;t care about design</name>
-    <additionalKeywords>#hard</additionalKeywords>
-</clip>
-<clip>
-    <name>Bruce - Age of the universe, really weird</name>
+    <link>
+        <target>Paola - should be useful</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - easy beauty</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Regine - Boring beauty</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jessica - knowing it&apos;s beautiful</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - aesthetic experience</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - culturally biased aesthetic</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - reach your visual cortex</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
-        <target>Patricio - Building Universes 2</target>
+        <target>Casey - Design by numbers to processing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Shiffman - Carl Sims</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
     <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Age of the universe, really weird</name>
+    <link>
+        <target>LIA - Circle1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - evolution</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Andres - soft systems 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Martin - starry night</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>#hard,time</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Gay sex, not that weird</name>
@@ -4418,18 +5203,121 @@
 </clip>
 <clip>
     <name>Bruce - Fax machine</name>
+    <link>
+        <target>Maeda - Isn&apos;t it supposed to be new?</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lindsay - death of technology</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - old media</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - obsolescence</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Golan - raytraced spheres</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#fun,#hard,#ironic</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Infinity in a grain of sand</name>
+    <link>
+        <target>Damion - ShortCircuit</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Damion - BeingOnDrugs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Martin - language and infinity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - million monkeys</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>poetry,#hard,#mindblowing,math</additionalKeywords>
 </clip>
 <clip>
+    <name>Bruce - Fractal graphics</name>
+    <link>
+        <target>Golan - raytraced spheres</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - art hallucination</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Bruce - New media Wow</name>
+    <link>
+        <target>Joel - MythOfArtAndTech1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Maeda - not a big deal</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - New modes of expression</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#easy,?new media: What&apos;s the medium of our time?,#ironic,#fun</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Eno 2</name>
+    <link>
+        <target>Higa - sound and video</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Zach - Time slows down</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Damion - ShortCircuit</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Damion - loseSenseofTime</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - InTheNow2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - AntiInteractivity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard</additionalKeywords>
 </clip>
 <clip>
@@ -4459,7 +5347,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#hard,?new aesthetic: What is the new aesthetic?</additionalKeywords>
+    <additionalKeywords>?new aesthetic: What is the new aesthetic?</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - new aesthetic 2</name>
@@ -4482,6 +5370,16 @@
 </clip>
 <clip>
     <name>Bruce - new aesthetic artists</name>
+    <link>
+        <target>Marius - New Aesthetic</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_MC - Debug screen</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard</additionalKeywords>
 </clip>
 <clip>
@@ -4533,6 +5431,16 @@
 </clip>
 <clip>
     <name>Bruce - 7 year lifespan of novelty</name>
+    <link>
+        <target>Theo - newness</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - Becoming mid-career</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard,?new media: Is software art more transient than other mediums?</additionalKeywords>
 </clip>
 <clip>
@@ -4555,10 +5463,60 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Elliot_UK - aesthetic of error</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - Aesthetic with no references,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - Machines change the way we see</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_MC - uncanny</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_MC - Debug screen</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Popular installation art</name>
+    <link>
+        <target>LIA - AntiInteractivity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - Kids interacting</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - funky forest</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Maeda - lost interest in interactivity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - observation of users</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#example,#pe?Funky Forest,#hard</additionalKeywords>
 </clip>
 <clip>
@@ -4567,6 +5525,21 @@
 </clip>
 <clip>
     <name>Bruce - camera of future 25 years</name>
+    <link>
+        <target>Andres - seeing molecules</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Andres - Computational lens</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Greg - camera scaling up</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>?machine vision: What&apos;s the camera of the future?</additionalKeywords>
 </clip>
 <clip>
@@ -4600,6 +5573,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Sophy - made of photons</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_MC - kinect 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard</additionalKeywords>
 </clip>
 <clip>
@@ -4616,6 +5599,16 @@
     </link>
     <link>
         <target>Bruce - future camera 4</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Andres - Computational lens</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Greg - camera scaling up</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -4648,12 +5641,22 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Andres - Computational lens</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - lashup 1</name>
     <link>
         <target>Bruce - lashup 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - RGBD</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -4666,10 +5669,20 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Lindsay - death of technology</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard,creative misuse</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - lashup 3</name>
+    <link>
+        <target>Lindsay - death of technology</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard,creative misuse</additionalKeywords>
 </clip>
 <clip>
@@ -4697,6 +5710,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Intro - Interfaces</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard</additionalKeywords>
 </clip>
 <clip>
@@ -4706,12 +5724,37 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Elliot - AugementedReality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Kevin - area code 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Kevin - Area code 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#hard,?interface: What makes an effective interface?</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Pointcloud world</name>
     <link>
         <target>Kyle_MC - imagining your pointcloud</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - CLOUDS 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Philip - all the points can flush</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -4826,6 +5869,56 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Ramsey - language self expression</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Imaginative technologies 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Diederick - PaintingLikeCoding</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Diederick - programmingWithFeeling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - InTheNow1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - InTheNow2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Zach - Time slows down</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Damion - loseSenseofTime</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jessica - Why is it beautiful</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - PatternsIntheBrain</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard,journey</additionalKeywords>
 </clip>
 <clip>
@@ -4842,6 +5935,21 @@
     </link>
     <link>
         <target>Shantell - create your own luck</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - PatternsIntheBrain</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Building Universes 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Imaginative technologies 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -4874,6 +5982,16 @@
     </link>
     <link>
         <target>Bruce - machines don&apos;t think 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - MachineIntelligence</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - Singularity</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -4930,7 +6048,7 @@
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Golan_AMA - World becoming one mind</target>
+        <target>Golan - Network2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -4940,6 +6058,11 @@
     <name>Bruce - A sappy Singularity</name>
     <link>
         <target>Kyle_CH - modeling consciousness 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - Singularity</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -5006,6 +6129,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Golan - Network2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Sophy - the Cloud</target>
         <startFrame>-1</startFrame>
@@ -5015,6 +6143,11 @@
 </clip>
 <clip>
     <name>Bruce - past and future</name>
+    <link>
+        <target>Marius - We&apos;ve embraced Dystopia</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#conclusion,#hard,death</additionalKeywords>
 </clip>
 <clip>
@@ -5023,6 +6156,16 @@
 </clip>
 <clip>
     <name>Bruce - relating to history through networks</name>
+    <link>
+        <target>Martin - what the world is thinking</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - Networked intelligence</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard</additionalKeywords>
 </clip>
 <clip>
@@ -5160,12 +6303,67 @@
 </clip>
 <clip>
     <name>Bruce - small fuzzy things</name>
+    <link>
+        <target>Andres - protein folding 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Andres - DNA computing 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Andres - fuzzy systems</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - synthetic biology</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jessica - RNA and Viruses</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jessica - biocomputer</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#hard,#surreal</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Computer art takes flight</name>
+    <link>
+        <target>Theo - newness</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - new media</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - don&apos;t underestimate traditional art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Karsten - obsolescence</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Maeda - old and new</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Shiffman - what do you archive?</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -5233,6 +6431,11 @@
     </link>
     <link>
         <target>LIA - IdeaToCode</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of code 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -5321,6 +6524,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Techno in Berlin</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Binx - there was no degree</target>
         <startFrame>-1</startFrame>
@@ -5328,6 +6536,11 @@
     </suppress>
     <suppress>
         <target>Binx - hybridity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Bruce - Parametric vs Generative</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -5609,6 +6822,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - small fuzzy things</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#tech,#hard</additionalKeywords>
 </clip>
 <clip>
@@ -5758,6 +6976,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Bruce - Don&apos;t care about design</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>visual language,visual thinking</revokedKeywords>
     <additionalKeywords>design,aesthetics,design by numbers,#example,#pe?Design by Numbers,#tech,#easy</additionalKeywords>
 </clip>
@@ -5827,6 +7050,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Rethinking education systems</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#example,#pe?ToxicLibs,#tech</additionalKeywords>
 </clip>
 <clip>
@@ -5872,6 +7100,11 @@
     </link>
     <link>
         <target>Jer - Thanks</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Transmitting knowledge</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -5979,6 +7212,11 @@
     </link>
     <link>
         <target>Ramsey - conway</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of code 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -6139,6 +7377,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Gardening 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Maeda - Processing toolkit</target>
         <startFrame>-1</startFrame>
@@ -6194,6 +7437,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Gardening 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Maeda - Processing toolkit</target>
         <startFrame>-1</startFrame>
@@ -6241,6 +7489,11 @@
     </suppress>
     <suppress>
         <target>Patricio - Playlist 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Patricio - Play 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -6345,6 +7598,26 @@
     </link>
     <link>
         <target>Kyle_CH - new generation</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Imaginative technologies 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of code 5</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of code 4</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - what gets you out of bed</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -6489,6 +7762,11 @@
     </link>
     <link>
         <target>Casey - old media</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Fax machine</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -7006,6 +8284,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>future of cinema,#gold,#inspiring,#mindblowing,#surreal,?future of cinema: how will we experience movies in the future?</additionalKeywords>
 </clip>
 <clip>
@@ -7168,6 +8451,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - future of the new aesthetic</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#art,#rational,#logical,?new aesthetic: What is the new aesthetic?</additionalKeywords>
 </clip>
 <clip>
@@ -7249,6 +8537,11 @@
     </link>
     <link>
         <target>Theo - 3D sensing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - camera of future 25 years</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -7423,8 +8716,18 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Wikipedia and Github</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Aaron - networked creativity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Bruce - creative agglomeration</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -7501,6 +8804,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Bruce - creative agglomeration</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#inspiring,#emotional,?collective intelligence: How does collective intelligence work?</additionalKeywords>
 </clip>
 <clip>
@@ -7512,6 +8820,11 @@
     </link>
     <suppress>
         <target>Aaron - networked creativity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Bruce - creative agglomeration</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -8495,7 +9808,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#discouraging,#obstacle</additionalKeywords>
+    <revokedKeywords>clouds</revokedKeywords>
+    <additionalKeywords>#obstacle,#discouraging</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - What people are thinking</name>
@@ -8609,6 +9923,11 @@
     </link>
     <link>
         <target>Lauren - swapping perspectives 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Social skills</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -9158,6 +10477,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Physical synchronization</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Binx - actually interesting</target>
         <startFrame>-1</startFrame>
@@ -9165,11 +10489,6 @@
     </suppress>
     <suppress>
         <target>JTNimoy - Dream</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
-    <suppress>
-        <target>JTNimoy - Dream1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -9884,6 +11203,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Theory of Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Seduced by Play 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#easy,#fun,#emotional,#hard</additionalKeywords>
 </clip>
 <clip>
@@ -10041,12 +11370,22 @@
 </clip>
 <clip>
     <name>Golan - would be boring</name>
+    <link>
+        <target>Bruce - Gardening 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Maeda - Processing toolkit</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>imagination,#emotional,#art,#inspiring,?serendipity: What&apos;s the role of serendipity?</additionalKeywords>
+    <suppress>
+        <target>LIA - CircleFormula1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>imagination,?serendipity: What&apos;s the role of serendipity?,#inspiring,#art,#emotional,control</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - this to that</name>
@@ -10213,6 +11552,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#pe?Listening Post,#example,#emotional,#mindblowing,#hard,?data: How can data be emotionally evokative?</additionalKeywords>
 </clip>
 <clip>
@@ -10237,6 +11581,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Bruce - Parametric vs Generative</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>interdisciplinary,#hard,#serious,#obstacle</additionalKeywords>
 </clip>
 <clip>
@@ -10625,6 +11974,11 @@
     </link>
     <link>
         <target>Patricio - Rethinking education systems</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Transmitting knowledge</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -11324,6 +12678,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Bruce - Fax machine</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>new media old media</revokedKeywords>
     <additionalKeywords>new media,old media,#ironic,#hard,?new media: Is software art more transient than other mediums?</additionalKeywords>
 </clip>
@@ -11424,12 +12783,52 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Infinity in a grain of sand</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Greg - human augmentation</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
     <additionalKeywords>#conclusion,#mindblowing,#breakthrough,#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Golan_AMA - machines and human intelligence</name>
+    <revokedKeywords>cognition,symbiosis,tools,man vs machine,artificial intelligence</revokedKeywords>
+    <additionalKeywords>#dud</additionalKeywords>
+</clip>
+<clip>
+    <name>Golan_AMA - singularity</name>
+    <suppress>
+        <target>Golan - Singularity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <revokedKeywords>singularity,technological progress,artificial intelligence</revokedKeywords>
+    <additionalKeywords>#dud</additionalKeywords>
+</clip>
+<clip>
+    <name>Golan_AMA - World becoming one mind</name>
+    <revokedKeywords>internet,network,cognition,artificial intelligence</revokedKeywords>
+    <additionalKeywords>#dud</additionalKeywords>
+</clip>
+<clip>
+    <name>Golan_AMA - abstraction</name>
+    <revokedKeywords>beauty,aesthetics,abstraction,representation</revokedKeywords>
+    <additionalKeywords>#dud</additionalKeywords>
+</clip>
+<clip>
+    <name>Golan_AMA - aesthetics and abstraction</name>
+    <revokedKeywords>representation,abstraction,aesthetics</revokedKeywords>
+    <additionalKeywords>#dud</additionalKeywords>
+</clip>
+<clip>
+    <name>Golan_AMA - first computer art</name>
+    <revokedKeywords>new media old media,history,old media,art and tech,abstraction</revokedKeywords>
+    <additionalKeywords>#dud</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - camera getting cheaper</name>
@@ -11440,6 +12839,16 @@
     </link>
     <link>
         <target>Kyle_MC - vision</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Future camera 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - camera of future 25 years</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -11496,6 +12905,16 @@
 </clip>
 <clip>
     <name>Greg - camera scaling up</name>
+    <link>
+        <target>Bruce - future camera 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - camera of future 25 years</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Jen - Lidar 1</target>
         <startFrame>-1</startFrame>
@@ -11974,6 +13393,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Making tools</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Martin - useful only</target>
         <startFrame>-1</startFrame>
@@ -12039,6 +13463,11 @@
     </suppress>
     <suppress>
         <target>Intro - CodingSketching</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Bruce - beauty of code 4</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -12274,6 +13703,10 @@
     <additionalKeywords>#obstacle,#hard,#tech,#logical</additionalKeywords>
 </clip>
 <clip>
+    <name>Higa - difficult question</name>
+    <revokedKeywords>clouds</revokedKeywords>
+</clip>
+<clip>
     <name>Higa - beginnings</name>
     <additionalKeywords>#dud</additionalKeywords>
 </clip>
@@ -12391,6 +13824,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Making tools</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Higa - sharpness of decisions</name>
@@ -12439,6 +13877,14 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+</clip>
+<clip>
+    <name>Higa - sharing accidently 2</name>
+    <suppress>
+        <target>Patricio - Rethinking education systems</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
 </clip>
 <clip>
     <name>Javier - behavior change</name>
@@ -14568,6 +16014,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Marcus - energy flow_riot</target>
         <startFrame>-1</startFrame>
@@ -14919,6 +16370,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Digital humanities technology</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#inspiring,#example,#hard</additionalKeywords>
 </clip>
 <clip>
@@ -14965,6 +16421,11 @@
     </link>
     <link>
         <target>Patricio - Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Eno 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -15975,6 +17436,11 @@
     </link>
     <link>
         <target>Bruce - what gets you out of bed</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of code 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -17479,7 +18945,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#easy,#rational,#inspiring,#emotional</additionalKeywords>
+    <additionalKeywords>#emotional,#inspiring,#rational,#easy,#dud</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - scale of universe</name>
@@ -17495,6 +18961,16 @@
     </link>
     <link>
         <target>Martin - Zooming is critical</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Discovering Mathematical Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Age of the universe, really weird</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -17514,6 +18990,11 @@
     </link>
     <link>
         <target>Jen - deep interaction</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Eno 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -17730,6 +19211,26 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - future camera 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - kinect hacking</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - lashup 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - future camera 4</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Elliot_UK - limitations 2</target>
         <startFrame>-1</startFrame>
@@ -17757,6 +19258,11 @@
     </link>
     <link>
         <target>Bruce - lashup 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - future camera 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -17902,6 +19408,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - A sappy Singularity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Sophy - made of photons</target>
         <startFrame>-1</startFrame>
@@ -17947,11 +19458,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <suppress>
+    <link>
         <target>Fernanda - fleshmap1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
-    </suppress>
+    </link>
     <revokedKeywords>visualization,algorithm</revokedKeywords>
     <additionalKeywords>#surreal,#sincere</additionalKeywords>
 </clip>
@@ -18466,6 +19977,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Social skills</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Greg - Sharpening spears</target>
         <startFrame>-1</startFrame>
@@ -18542,6 +20058,11 @@
     </link>
     <link>
         <target>Maeda - recording appalachian music</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Physical synchronization</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -19434,6 +20955,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - CLOUDS</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Julia - CLOUDS</name>
@@ -19506,6 +21032,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Network perception</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Physical synchronization</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>social,#sincere,#emotional</additionalKeywords>
 </clip>
 <clip>
@@ -19574,6 +21110,11 @@
     </link>
     <link>
         <target>Fernanda - Social dynamics</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Fernanda - fleshmap1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -19722,6 +21263,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Golan - Network1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>social control,network security</revokedKeywords>
     <additionalKeywords>personal data,the cloud,criticality,#hard,#serious,#rational,#tech</additionalKeywords>
 </clip>
@@ -19739,6 +21285,11 @@
     </link>
     <link>
         <target>Lindsay - desire for closeness to work</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Fernanda - fleshmap1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -19827,6 +21378,11 @@
     </link>
     <link>
         <target>Lauren - desires to connect</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Fernanda - fleshmap1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -19974,6 +21530,11 @@
     </link>
     <link>
         <target>Lauren - desires to connect</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Physical synchronization</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -20161,6 +21722,11 @@
     </link>
     <link>
         <target>Karsten - becoming insular</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Geeks with style</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -20578,6 +22144,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - digital status quo</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>perception,literacy,users,#gold,opacity,#hard,#tech</additionalKeywords>
 </clip>
 <clip>
@@ -20762,6 +22333,11 @@
     </link>
     <link>
         <target>Patricio - infinity of projects on google</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Alchemy 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -20963,6 +22539,11 @@
     </link>
     <link>
         <target>Kevin - Distributable perceptual model</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Volition</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -21232,8 +22813,23 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Paola - bach mozart coders</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Patricio - Play 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Patricio - Reality</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -21515,6 +23111,11 @@
     </link>
     <link>
         <target>Ramsey - a piece of my mind</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Alchemy 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -21968,6 +23569,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Tidepools</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Binx - learning with others</target>
         <startFrame>-1</startFrame>
@@ -22356,6 +23962,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Information 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Shiffman - offers me a way to think</target>
         <startFrame>-1</startFrame>
@@ -22402,6 +24013,11 @@
     </link>
     <link>
         <target>Zach - Joshua Davis</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Digital humanities technology</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -22995,6 +24611,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Seduced by Play 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>visual thinking</revokedKeywords>
     <additionalKeywords>thinking by doing,play,#tech,#inspiring,#easy</additionalKeywords>
 </clip>
@@ -23177,6 +24798,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Network perception</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>scale,perception,#mindblowing,#gold,#hard,#serious,?network: How big is the internet?,unknown</additionalKeywords>
 </clip>
 <clip>
@@ -23208,6 +24834,11 @@
     </link>
     <link>
         <target>Julia - what clouds is about</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - CLOUDS</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -23306,6 +24937,11 @@
     </link>
     <link>
         <target>Bruce - relating to history through networks</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Fax machine</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -23793,6 +25429,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Patricio - Play 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>representation,virtual,real and virtual,#logical,#breakthrough</additionalKeywords>
 </clip>
 <clip>
@@ -24037,6 +25678,11 @@
     </link>
     <link>
         <target>LIA - TinyButtons2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Building Universes 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -24562,6 +26208,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Alchemy 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - Network1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - Network2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>collective intelligence,?collective intelligence: Is the internet forming a global brain?</additionalKeywords>
 </clip>
 <clip>
@@ -24603,6 +26264,11 @@
     </link>
     <link>
         <target>LIA - NeedTheInternet</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Alchemy 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -24710,6 +26376,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>art and experience</revokedKeywords>
     <additionalKeywords>experience,experience design,abstraction,#hard,?perception: How do algorithms alter perception?</additionalKeywords>
 </clip>
@@ -24760,6 +26431,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Seduced by Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#hard,#gold,?perception: What is the Gesamtkunstwerk - the ultimate work of art?</additionalKeywords>
 </clip>
 <clip>
@@ -24801,6 +26477,11 @@
     </link>
     <link>
         <target>Jen - objective subjective</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Reality</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -24910,6 +26591,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Play 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Jen - objective subjective</target>
         <startFrame>-1</startFrame>
@@ -24939,6 +26625,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Bruce - Hand dryer</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#emotional,#mindblowing,#hard</additionalKeywords>
 </clip>
 <clip>
@@ -24965,6 +26656,16 @@
     </suppress>
     <suppress>
         <target>Regine - virtual</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Patricio - Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Bruce - Hand dryer</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -25698,6 +27399,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - CLOUDS 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Elliot_UK - limitations 2</target>
         <startFrame>-1</startFrame>
@@ -25708,7 +27414,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#tech,clouds</additionalKeywords>
+    <additionalKeywords>clouds,#tech,RGBD</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_CH - Social media performance</name>
@@ -26878,6 +28584,12 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Golan - WhenComputersSurpass</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <revokedKeywords>clouds</revokedKeywords>
     <additionalKeywords>artificial intelligence</additionalKeywords>
 </clip>
 <clip>
@@ -26924,6 +28636,16 @@
     </link>
     <link>
         <target>Jen - life chapters</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Library of Babel</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - CLOUDS</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -27031,6 +28753,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - twitter is not your friend</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>consciousness,personal data,#hard,#mindblowing,#surreal</additionalKeywords>
 </clip>
 <clip>
@@ -27116,6 +28843,16 @@
     </link>
     <link>
         <target>Bruce - A sappy Singularity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Anthropomorphism</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - machines don&apos;t think 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -27330,6 +29067,16 @@
     </link>
     <link>
         <target>Bruce - new aesthetic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - future of the new aesthetic</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - new aesthetic artists</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -27594,6 +29341,11 @@
     </link>
     <link>
         <target>Lauren - virtual relationships</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Social skills</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -28086,6 +29838,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Reverse-engineered</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - kinect hacking</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Elliot_UK - limitations 2</target>
         <startFrame>-1</startFrame>
@@ -28121,6 +29883,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Marius</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#inspiring,#hard,#emotional</additionalKeywords>
 </clip>
 <clip>
@@ -28152,6 +29919,11 @@
     </link>
     <link>
         <target>Patricio - InteractiveTable 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Reverse-engineered</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -28465,6 +30237,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Anthropomorphism</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>uncanny,#mindblowing,#hard,#surreal</additionalKeywords>
 </clip>
 <clip>
@@ -28692,6 +30469,16 @@
     </link>
     <link>
         <target>Jen - in the movie</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - CLOUDS 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - CLOUDS 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -29365,6 +31152,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Physical synchronization</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Fernanda - social network hairballs</target>
         <startFrame>-1</startFrame>
@@ -29771,6 +31563,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Making tools</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>creative misuse,#rational,#tech</additionalKeywords>
 </clip>
 <clip>
@@ -29822,6 +31619,16 @@
     </link>
     <link>
         <target>Patricio - Social skills</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Play 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Dreams</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -30641,6 +32448,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - creative agglomeration</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Andres - Reaching higher</target>
         <startFrame>-1</startFrame>
@@ -30927,6 +32739,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Fax machine</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - lashup 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#gold</additionalKeywords>
 </clip>
 <clip>
@@ -30978,6 +32800,11 @@
     </link>
     <link>
         <target>Shiffman - mysterious box</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of code 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -31203,6 +33030,11 @@
     </link>
     <link>
         <target>LIA - TinyButtons2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Seduced by Play 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -31725,6 +33557,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Popular installation art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Jen - rafael&apos;s cardiogram</target>
         <startFrame>-1</startFrame>
@@ -31806,6 +33643,16 @@
     </link>
     <link>
         <target>Golan - yellow tail</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Fax machine</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - 7 year lifespan of novelty</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -31970,6 +33817,11 @@
     </link>
     <link>
         <target>Golan - yellow tail</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - New media Wow</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -33088,6 +34940,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Bruce - Computer art takes flight</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>digital media is no longer new: so what is its cultural value?,is it good or now?,old,new</revokedKeywords>
     <additionalKeywords>new media,old media,#hard,#fun,#example</additionalKeywords>
 </clip>
@@ -33254,6 +35111,16 @@
     </link>
     <link>
         <target>Zach - processing, publishing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Github Tarball</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Tidepools</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -33716,6 +35583,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Jam session</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>?audiovisualization: How does music influence vision?,#tech,#inspiring</additionalKeywords>
 </clip>
 <clip>
@@ -33929,6 +35801,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Discovering Mathematical Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#hard,#example,#mindblowing,#breakthrough</additionalKeywords>
 </clip>
 <clip>
@@ -34035,6 +35912,11 @@
     </suppress>
     <suppress>
         <target>Casey - Systems theory</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Patricio - Discovering Mathematical Reality</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -35161,6 +37043,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Discovering Mathematical Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#mindblowing,#logical,#easy</additionalKeywords>
 </clip>
 <clip>
@@ -35202,6 +37089,11 @@
     </link>
     <suppress>
         <target>Philip - all the points can flush</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Patricio - Play 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -35507,6 +37399,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Gardening 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Gardening 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>how do you choose what to display,working iteratively generatively in a process that can go on forever?,generative process,choosing</revokedKeywords>
     <additionalKeywords>iteration,generative art,?gardening: Does a generative artwork ever reach a state of completion?</additionalKeywords>
 </clip>
@@ -35581,6 +37483,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Gardening 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Ramsey - arab abstraction 2</target>
         <startFrame>-1</startFrame>
@@ -35649,6 +37556,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Marius</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#emotional,#art,#fun,#ironic,#easy</additionalKeywords>
 </clip>
 <clip>
@@ -35683,7 +37595,12 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#easy,#serious,#discouraging</additionalKeywords>
+    <link>
+        <target>Bruce - Design vs Art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>#discouraging,#serious,#easy,art world</additionalKeywords>
 </clip>
 <clip>
     <name>Marius - aesthetic experience</name>
@@ -35781,6 +37698,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Techno in Berlin</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>visual cortex,josh nimoy,link:jtnimoy - cortex2</revokedKeywords>
     <additionalKeywords>#art,#inspiring,#mindblowing,#pe?Syn_,#example</additionalKeywords>
 </clip>
@@ -35862,6 +37784,26 @@
     </link>
     <link>
         <target>Maeda - Isn&apos;t it supposed to be new?</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - future of the new aesthetic</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of math</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of code 5</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of code 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -35989,6 +37931,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - new aesthetic 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - new aesthetic 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - new aesthetic artists</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#serious,#rational</additionalKeywords>
 </clip>
 <clip>
@@ -36055,6 +38012,11 @@
     </link>
     <link>
         <target>Kyle_MC - devices</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - cyberpunk dictum long</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -36190,6 +38152,26 @@
     </link>
     <link>
         <target>Casey - Scale 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Imaginative technologies 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Alchemy 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Marius</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Digital fabrication</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -36427,6 +38409,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - past and future</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - talking about the future as history</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Kevin - printing code</target>
         <startFrame>-1</startFrame>
@@ -36555,6 +38547,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - talking about the future as history</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - past and future</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Casey - understanding future</target>
         <startFrame>-1</startFrame>
@@ -36635,6 +38637,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Digital fabrication</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Elliot_UK - points in space</target>
         <startFrame>-1</startFrame>
@@ -36703,8 +38710,18 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Gardening 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Marcus - Sims</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>LIA - CircleFormula1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -37953,6 +39970,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Bruce - Age of the universe, really weird</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#mindblowing,#inspiring,#easy</additionalKeywords>
 </clip>
 <clip>
@@ -38031,6 +40053,11 @@
     </link>
     <link>
         <target>Damion - ReadableCode</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Information 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -38572,6 +40599,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Gardening 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Casey - Systems theory</target>
         <startFrame>-1</startFrame>
@@ -38745,6 +40777,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Volition</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>JTNimoy - Unplugging</target>
         <startFrame>-1</startFrame>
@@ -38799,6 +40836,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Volition</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#rational,#obstacle,#logical,#tech</additionalKeywords>
 </clip>
 <clip>
@@ -38848,8 +40890,18 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Gardening 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Patricio - Discovering Mathematical Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>link: marius &quot;code can be messy&quot; and &quot;constraining randomness&quot;</revokedKeywords>
-    <additionalKeywords>#rational,#obstacle,#logical</additionalKeywords>
+    <additionalKeywords>random,#rational,#obstacle,#logical,randomess</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jesse - Time in the universe</name>
@@ -38885,6 +40937,11 @@
     </link>
     <link>
         <target>LIA - TimeStamps1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Infinity in a grain of sand</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -38979,6 +41036,11 @@
     </link>
     <link>
         <target>Damion - ReadableCode</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Information 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -39091,6 +41153,11 @@
     </link>
     <link>
         <target>Marius - jumping from medium to medium</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Digital fabrication</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -39403,6 +41470,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - small fuzzy things</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Jer - fireflies</target>
         <startFrame>-1</startFrame>
@@ -39427,6 +41499,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Digital fabrication</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Casey - teaching at UCLA</target>
         <startFrame>-1</startFrame>
@@ -39443,6 +41520,16 @@
     </link>
     <link>
         <target>Marius - color 3D printing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Parametric vs Generative</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - 3D printed buildings</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -39610,6 +41697,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - small fuzzy things</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Andres - soft systems 2</target>
         <startFrame>-1</startFrame>
@@ -39719,6 +41811,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Parametric vs Generative</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - 3D printed buildings</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>3d printing,#mundane,#mindblowing,#breakthrough</additionalKeywords>
 </clip>
 <clip>
@@ -39790,6 +41892,11 @@
     </link>
     <link>
         <target>Marius - if it&apos;s not interesting I abandon it</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Don&apos;t care about design</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -41105,6 +43212,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#logical,#tech</additionalKeywords>
 </clip>
 <clip>
@@ -41144,6 +43256,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <revokedKeywords>clouds</revokedKeywords>
+    <additionalKeywords>#dud</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Playlist 2</name>
@@ -41172,7 +43286,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>narrative,future of cinema</additionalKeywords>
+    <revokedKeywords>clouds</revokedKeywords>
+    <additionalKeywords>narrative,future of cinema,#dud</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - CopyPaste</name>
@@ -41231,6 +43346,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#dud</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - InteractiveTable 1</name>
@@ -41284,7 +43400,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>installation</additionalKeywords>
+    <additionalKeywords>installation,#easy,#mundane</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - InteractiveTable 2</name>
@@ -41309,17 +43425,37 @@
 <clip>
     <name>Patricio - Play 1</name>
     <link>
-        <target>Golan - observation of users</target>
+        <target>Vera - having a protagonist</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Jen - deep interaction</target>
+        <target>Karolina - Journey</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Patricio - Play 2</target>
+        <target>Aaron - lego creatures</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jen - telling stories to engage</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Zach - drawn2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Zach - Time slows down</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karolina - system metaphor</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -41328,13 +43464,98 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <revokedKeywords>importance of play</revokedKeywords>
-    <additionalKeywords>play,interactivity</additionalKeywords>
+    <suppress>
+        <target>Vera - Energy Flow2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Vera - Energy Flow1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Marcus - code for storytelling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Kevin - Area code 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Casey - Tree of Life</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Golan - listening post</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Casey - Something new, totally engrossing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Sophy - nanobots</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Aaron - progress</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <revokedKeywords>importance of play,#gold</revokedKeywords>
+    <additionalKeywords>fantasy,storytelling,psychology,emotion,narrative,dreams,#hard,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Play 2</name>
+    <link>
+        <target>Kevin - no consequences 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Intro - VirtualReality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lauren - altering reality of users</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - non-mimetic reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Kevin - game designers</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Karolina - system metaphor</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Philip - bits and bytes</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Damion - ShortCircuit</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>intermediary between reality and fiction</revokedKeywords>
-    <additionalKeywords>reality,virtual</additionalKeywords>
+    <additionalKeywords>reality,virtual,fiction,narrative,fantasy,time,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Theory of Play 1</name>
@@ -41353,8 +43574,18 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Theo - leaving a mark</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - Play</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>more hours of play a child has the more robust his psyche</revokedKeywords>
-    <additionalKeywords>play,children,learning</additionalKeywords>
+    <additionalKeywords>play,children,learning,#easy,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Rethinking education systems</name>
@@ -41368,6 +43599,52 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Philip - if I had Processing in school</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - sharing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - Open Source Contract</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Bruce - Github Tarball</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Higa - sharing accidently 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Shiffman - Not a visual thinker</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Ramsey - complacency 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Casey - Processing addons</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Aaron - exquisite forest</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>collaboration,learning</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Zeitgeist of open source</name>
@@ -41381,6 +43658,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Philip - if I had Processing in school</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>open source</additionalKeywords>
 </clip>
 <clip>
@@ -41400,6 +43682,17 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>LIA - TinyButtons2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Kevin - Distributable perceptual model</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>art,#easy,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Making tools</name>
@@ -41413,8 +43706,28 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Elliot - ToolmakerArtist1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lauren - using tools in unexpected ways</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Higa - simplicity of self made tools</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Greg - engage with research</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>making tools is more important than art projects in themselves</revokedKeywords>
-    <additionalKeywords>toolmakers,invention,tools</additionalKeywords>
+    <additionalKeywords>toolmakers,invention,tools,#easy,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Seduced by Play 3</name>
@@ -41423,8 +43736,48 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Golan - Play</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - immediate feedback</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Maeda - playful systems</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shantell - big kid</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - Kids interacting</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - TinyButtons2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - dreaming together</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - what gets you out of bed</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>everything has a meaning and goes back to play.... working with other people</revokedKeywords>
-    <additionalKeywords>play,imagination</additionalKeywords>
+    <additionalKeywords>play,imagination,#easy,#gold,#inspiring,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Building Universes 1</name>
@@ -41433,13 +43786,23 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Theo - leaving a mark</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Golan - piano and pencil,</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Shantell - big kid</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>played a lot as a kid,now can let others play as well</revokedKeywords>
-    <additionalKeywords>play,imagination,children,universe,cosmogeny</additionalKeywords>
+    <additionalKeywords>play,imagination,children,universe,cosmogeny,#easy,#inspiring,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Building Universes 2</name>
@@ -41458,18 +43821,43 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <suppress>
-        <target>Bruce - Age of the universe, really weird</target>
+    <link>
+        <target>Marius - my work exists in a utopian space,</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
-    </suppress>
+    </link>
+    <link>
+        <target>Aaron - dreaming together</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - no consequences 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Philip - image is in your brain</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - VisualizeAnIdea</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - find the inner wellspring</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Martin - starry night</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>universes on the screen have a tangibility</revokedKeywords>
-    <additionalKeywords>universe,cosmogeny,nature,imagination</additionalKeywords>
+    <additionalKeywords>universe,cosmogeny,nature,imagination,#inspiring,#gold,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Jam session</name>
@@ -41479,17 +43867,32 @@
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Shantell - Live performance,</target>
+        <target>JTNimoy - enough cooks</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>JTNimoy - enough cooks</target>
+        <target>LIA - NeedTheInternet</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
     <suppress>
         <target>Lindsay - memes 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Marcus - Audiovisual glue</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Philip - audiovisual gigs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Shantell - Live performance,</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -41521,8 +43924,23 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Kyle_MC - beauty</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - Digi meets physical</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - IdeaToCode</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>the fantastic things about code</revokedKeywords>
-    <additionalKeywords>coding,imagination,creativity</additionalKeywords>
+    <additionalKeywords>coding,imagination,creativity,#gold,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Imaginative technologies 2</name>
@@ -41531,8 +43949,48 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>LIA - PatternsIntheBrain</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - Continuous process of exploration</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Diederick - programmingWithFeeling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - Watercolors</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Maeda - self expression</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - New modes of expression</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Zach - more poetry, less demo</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - find the inner wellspring</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>applications all have this expressive property and come from the same universe of the imagination</revokedKeywords>
-    <additionalKeywords>coding,imagination,creativity</additionalKeywords>
+    <additionalKeywords>coding,imagination,creativity,process,#gold,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Alchemy 1</name>
@@ -41551,13 +44009,68 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Karolina - ideas into things</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Philip - with programming you can do whatever</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Digital fabrication</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>from this idea that alchemy - going from something abstract to something real and that&apos;s very invigorating/inspiring</revokedKeywords>
     <additionalKeywords>abstraction,creativity,imagination</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Reality</name>
+    <link>
+        <target>Damion - ShortCircuit</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Damion - HumanChemicalMachine</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Elliot_UK - 2D vision in a 3D world</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - Distributable perceptual model</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - human perception</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Karolina - system metaphor</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Kevin - Tools of perception</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Paola - bach mozart coders</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>whatever your brain perceives as real ends up becoming your reality</revokedKeywords>
-    <additionalKeywords>reality,virtual</additionalKeywords>
+    <additionalKeywords>reality,virtual,perception,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Alchemy 2</name>
@@ -41573,6 +44086,21 @@
     </link>
     <link>
         <target>Patricio - Alchemy 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jessica - Design process</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - 3DPrintingProcess</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - 3DTchotchkes</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -41596,36 +44124,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Theo - hidden technology</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>wizards casting spells as metaphor</revokedKeywords>
     <additionalKeywords>wizardry,magic,coding</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - infinity of projects on google</name>
-    <link>
-        <target>Julian - mixing code</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Aaron - networked creativity</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Kevin - Networked intelligence</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Kyle_MC - the comment thread</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Martin - spread ideas</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
     <link>
         <target>Martin - Are we getting smarter?</target>
         <startFrame>-1</startFrame>
@@ -41636,13 +44144,53 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <revokedKeywords>projects that you can find for linking eeg to something toolkits</revokedKeywords>
-    <additionalKeywords>learning</additionalKeywords>
+    <link>
+        <target>Kevin - human perception</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Damion - ShortCircuit</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <revokedKeywords>projects that you can find for linking eeg to something toolkits,open source</revokedKeywords>
+    <additionalKeywords>perception,cognition</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Alchemy 3</name>
     <link>
         <target>Martin - deeper learning</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Binx - skillshare</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - networked creativity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - Getting smarter together</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - Networked intelligence</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Martin - rapid dissemination of info</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julian - mixing code</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -41671,8 +44219,38 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Julia - net friends</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julia - lives online</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>JTNimoy - relating</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Fernanda - fleshmap1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>JTNimoy - Dream1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julia - emotional</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>when people are apart,it&apos;s difficult... you meet in person and get in sync</revokedKeywords>
-    <additionalKeywords>physicality,sex</additionalKeywords>
+    <additionalKeywords>physicality,sex,intimacy,emotion,love</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Discovering Mathematical Reality</name>
@@ -41686,6 +44264,107 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Jen - a different mathematics</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karolina - Ocean as metaphor</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Philip - first time computation</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - Number20</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>LIA - MathAnotherLanguage</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Andres - modeling complex systems</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - scale of universe</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - computation is unnatural</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Philip - programming the river</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - does nature compute? 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - a mystical quality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - programming the universe</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shiffman - NOC 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of math</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Infinity in a grain of sand</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Marcus - emergence</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Marcus - Sims</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Marcus - lego bricks</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Nervous_Jesse - our explorations are random</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>LIA - VisualizeAnIdea</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>systems,complexity,#mindblowing,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Network perception</name>
@@ -41704,6 +44383,41 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Julian - I love networks</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - networks vs robots</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - the Cloud</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - Network1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Fernanda - Social dynamics</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julia - we feel fine</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Karsten - DarkNet</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>connectivity</additionalKeywords>
 </clip>
 <clip>
@@ -41738,6 +44452,28 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Kyle_MC - socially acceptable</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>JTNimoy - geek culture</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lauren - desires to connect</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Fernanda - Sentiment analysis</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <revokedKeywords>dont like projects that try to replace social skills that we should develop</revokedKeywords>
+    <additionalKeywords>social,social media,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Learning through others</name>
@@ -41757,7 +44493,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>i have no background to speak of and learned through other people&apos;s code and am very aware of that. helps me to think in different ways</revokedKeywords>
-    <additionalKeywords>learning,sharing</additionalKeywords>
+    <additionalKeywords>learning,sharing,#dud</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Cryptic code</name>
@@ -41771,8 +44507,18 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Damion - ReadableCode</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - language as expression</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>it makes me angry to read cryptic,hard-to-read code</revokedKeywords>
-    <additionalKeywords>frustration</additionalKeywords>
+    <additionalKeywords>frustration,legibility,elegance,coding</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Transmitting knowledge</name>
@@ -41791,23 +44537,28 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <revokedKeywords>i admire people who not only have the knowledge but find an elegant way to transmit it.</revokedKeywords>
-    <additionalKeywords>teachers,mentors</additionalKeywords>
-</clip>
-<clip>
-    <name>Patricio - Information 1</name>
     <link>
-        <target>Jen - library</target>
+        <target>Casey - group teaching</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <revokedKeywords>i admire people who not only have the knowledge but find an elegant way to transmit it.</revokedKeywords>
+    <additionalKeywords>teachers,mentors,guru</additionalKeywords>
+</clip>
+<clip>
+    <name>Patricio - Information 1</name>
     <link>
         <target>Patricio - Information 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Digital humanities technology</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>absurd aggregation of information</revokedKeywords>
-    <additionalKeywords>archiving,information,information overload,library</additionalKeywords>
+    <additionalKeywords>archiving,information,information overload,library,memory</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Information 2</name>
@@ -41828,6 +44579,31 @@
     </link>
     <link>
         <target>Patricio - Information 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - 256 bytes part 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Andres - Less beautiful than it could be</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Martin - simple elegant prose</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - elegant system</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Damion - ReadableCode</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -41901,16 +44677,41 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Kyle_CH - old server farms</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - Future life storage</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Karsten - atari emulation</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>in borgesian terms that&apos;s what we&apos;re doing,building this infinite library. for the mind it&apos;s flavorful but it&apos;s absurd</revokedKeywords>
-    <additionalKeywords>archiving,memory,data,storage</additionalKeywords>
+    <additionalKeywords>archiving,memory,data,storage,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - CLOUDS</name>
+    <link>
+        <target>Julia - what clouds is about</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - infinite conversation</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - Future life storage</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>the dream i have for clouds.... historical snapshot cross section</revokedKeywords>
     <additionalKeywords>clouds,history</additionalKeywords>
 </clip>
@@ -41946,6 +44747,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Kyle_CH - Future life storage</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_MC - imagining your pointcloud</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - RGBD</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>we&apos;re all enmeshed in these technologies being used for the documentary and i think this will be a great time capsule for what was happening at this moment</revokedKeywords>
     <additionalKeywords>clouds,technological progress,archiving</additionalKeywords>
 </clip>
@@ -41956,6 +44772,18 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Pointcloud world</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_MC - imagining your pointcloud</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <revokedKeywords>the format of clouds makes me think about a dreams.</revokedKeywords>
+    <additionalKeywords>clouds,dreams</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Dreams</name>
@@ -41969,8 +44797,18 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Lauren - altering reality of users</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>dreams like a crystal projected onto</revokedKeywords>
     <additionalKeywords>dreams,emotion</additionalKeywords>
+</clip>
+<clip>
+    <name>Patricio - CLOUDS 4</name>
+    <revokedKeywords>clouds has that quality of being approached from different angles....a romantic would say clouds is made of principles very similar to dreams</revokedKeywords>
+    <additionalKeywords></additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Dream of eggs</name>
@@ -42038,6 +44876,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Techno in Berlin</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Patricio - Jam session</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#example,#mundane,#pe?Syn_</additionalKeywords>
 </clip>
 <clip>
@@ -42094,6 +44942,11 @@
     </link>
     <link>
         <target>Karolina - system metaphor</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Discovering Mathematical Reality</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -42187,6 +45040,11 @@
     </link>
     <link>
         <target>Diederick - allprogrammershavethat</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Alchemy 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -42404,6 +45262,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Play 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#logical,#tech,#hard</additionalKeywords>
 </clip>
 <clip>
@@ -42474,6 +45337,11 @@
     </link>
     <link>
         <target>Marius - these things are in my head</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Building Universes 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -42597,6 +45465,11 @@
     </suppress>
     <suppress>
         <target>Martin - Are we getting smarter 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Golan - Network1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -42796,6 +45669,11 @@
     </suppress>
     <suppress>
         <target>Shiffman - problem solving</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Patricio - Zeitgeist of open source</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -43586,6 +46464,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Infinity in a grain of sand</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>speed</revokedKeywords>
     <additionalKeywords>#easy,?thinking: How does programming change the way you think?</additionalKeywords>
 </clip>
@@ -43643,6 +46526,11 @@
     </link>
     <link>
         <target>LIA - TimeStamps1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of code 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -43726,6 +46614,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - beauty of code 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Shiffman - Maybe I&apos;d like that</target>
         <startFrame>-1</startFrame>
@@ -43782,6 +46675,11 @@
     </link>
     <link>
         <target>LIA - MathAnotherLanguage</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Cryptic code</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -44026,6 +46924,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Rethinking education systems</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#obstacle,#logical,#tech,#hard</additionalKeywords>
 </clip>
 <clip>
@@ -44128,6 +47031,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>LIA - CircleFormula1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>absraction</revokedKeywords>
     <additionalKeywords>abstraction,#inspiring,#logical</additionalKeywords>
 </clip>
@@ -44163,6 +47071,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>LIA - CircleFormula1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#logical,#tech,#hard,#sincere</additionalKeywords>
 </clip>
 <clip>
@@ -44189,6 +47102,16 @@
     </link>
     <link>
         <target>Ramsey - does nature compute? 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Discovering Mathematical Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of code 3</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -44506,6 +47429,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - relating to history through networks</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Aaron - dreaming together</target>
         <startFrame>-1</startFrame>
@@ -44527,6 +47455,11 @@
     </link>
     <link>
         <target>Kyle_MC - We don&apos;t understand the thing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - relating to history through networks</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -44662,6 +47595,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - digital status quo</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Maeda - Processing toolkit</target>
         <startFrame>-1</startFrame>
@@ -44767,6 +47705,11 @@
     </link>
     <link>
         <target>Javier - Data ownership</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - digital status quo</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -45625,6 +48568,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Information 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Andres - modeling complex systems</target>
         <startFrame>-1</startFrame>
@@ -45990,6 +48938,11 @@
 </clip>
 <clip>
     <name>Regine - new media ghetto</name>
+    <link>
+        <target>Bruce - Design vs Art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#serious,#discouraging,#obstacle,#hard,?art world: Why does media art remain outside the mainstream?</additionalKeywords>
 </clip>
 <clip>
@@ -46759,6 +49712,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Seduced by Play 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Theo - leaving a mark</target>
         <startFrame>-1</startFrame>
@@ -46776,6 +49734,11 @@
     </suppress>
     <suppress>
         <target>Maeda - playful systems</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Patricio - Building Universes 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -47124,6 +50087,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Jam session</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#breakthrough,#inspiring</additionalKeywords>
 </clip>
 <clip>
@@ -47456,6 +50424,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Bruce - Digital humanities technology</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>self-knowledge</revokedKeywords>
     <additionalKeywords>language,?sharing: What is open source all about?</additionalKeywords>
 </clip>
@@ -47483,6 +50456,11 @@
     </link>
     <suppress>
         <target>Golan - hackathon</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Bruce - creative agglomeration</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -47755,6 +50733,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Rethinking education systems</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>how does visual feedback help you to learn programming?,visual thinking</revokedKeywords>
     <additionalKeywords>sketching,#easy,?sketching: what can you make with a computer that you can&apos;t accomplish by hand?,#art</additionalKeywords>
 </clip>
@@ -47899,6 +50882,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Discovering Mathematical Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Andres - modeling the human being</target>
         <startFrame>-1</startFrame>
@@ -47914,6 +50902,11 @@
 </clip>
 <clip>
     <name>Shiffman - NOC 3</name>
+    <link>
+        <target>Patricio - Discovering Mathematical Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#easy,nature of code</additionalKeywords>
 </clip>
 <clip>
@@ -48048,6 +51041,11 @@
     </link>
     <link>
         <target>Martin - starry night</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Discovering Mathematical Reality</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -48415,6 +51413,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Bruce - Don&apos;t care about design</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>galapagos,link:marius - artificial life,coding aesthetics</revokedKeywords>
     <additionalKeywords>code,dna,evolution: How does the computer simulate accelerated evolution?,#example,#pe?Galapagos</additionalKeywords>
 </clip>
@@ -48532,6 +51535,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Rethinking education systems</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Zeitgeist of open source</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Karsten - becoming insular</target>
         <startFrame>-1</startFrame>
@@ -48559,6 +51572,11 @@
     </link>
     <link>
         <target>Paola - code ant farm</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Rethinking education systems</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -48663,6 +51681,11 @@
     </suppress>
     <suppress>
         <target>Theo - eyebeam R&amp;D</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Bruce - Computer art takes flight</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -48964,8 +51987,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <revokedKeywords>song: four tet peace for earth,mood: mystical,happy</revokedKeywords>
-    <additionalKeywords>?simulation: How do we capture the emergent properties of nature in software?,#inspiring,#mindblowing,nature of code</additionalKeywords>
+    <revokedKeywords>clouds,song: four tet peace for earth,mood: mystical,happy</revokedKeywords>
+    <additionalKeywords>nature of code,#mindblowing,#inspiring,?simulation: How do we capture the emergent properties of nature in software?</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - gambling 1</name>
@@ -49069,6 +52092,11 @@
 </clip>
 <clip>
     <name>Sophy - art hallucination</name>
+    <link>
+        <target>Bruce - Fractal graphics</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#art,#surreal</additionalKeywords>
 </clip>
 <clip>
@@ -49235,6 +52263,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>#surreal</additionalKeywords>
 </clip>
 <clip>
@@ -49368,6 +52401,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Tidepools</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Paola - code is a language</target>
         <startFrame>-1</startFrame>
@@ -49461,6 +52499,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <revokedKeywords>clouds</revokedKeywords>
     <additionalKeywords>interconnectedness</additionalKeywords>
 </clip>
 <clip>
@@ -49472,6 +52511,11 @@
     </link>
     <link>
         <target>Ramsey - emergence from simple rules</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Age of the universe, really weird</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -49627,6 +52671,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Popular installation art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Maeda - reactive square</target>
         <startFrame>-1</startFrame>
@@ -49697,6 +52746,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Seduced by Play 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Popular installation art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Golan - playable image</target>
         <startFrame>-1</startFrame>
@@ -49727,6 +52786,16 @@
     <name>Theo - leaving a mark</name>
     <link>
         <target>Joel - interactivity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Theory of Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Building Universes 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -49860,6 +52929,11 @@
     </link>
     <link>
         <target>Joel - FirstMover</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - 7 year lifespan of novelty</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -50043,6 +53117,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - aborted projects</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Karsten - becoming insular</target>
         <startFrame>-1</startFrame>
@@ -50212,6 +53291,11 @@
     </link>
     <link>
         <target>LIA - Art2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Design vs Art</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -50392,6 +53476,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Magic Spells 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#inspiring</additionalKeywords>
 </clip>
 <clip>
@@ -50413,6 +53502,11 @@
     </link>
     <link>
         <target>Shiffman - genetics short 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Age of the universe, really weird</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -50682,6 +53776,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>project example</revokedKeywords>
     <additionalKeywords>#pe?Energy Flow,#example</additionalKeywords>
 </clip>
@@ -50729,6 +53828,11 @@
     </suppress>
     <suppress>
         <target>Marcus - simulation to stories</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Patricio - Play 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -51288,6 +54392,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Infinity in a grain of sand</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - what gets you out of bed</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Jen - data viz challenges</target>
         <startFrame>-1</startFrame>
@@ -51469,6 +54588,11 @@
     </link>
     <link>
         <target>Kyle_MC - they all wear the same glasses</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Tidepools</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -51864,6 +54988,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Play 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Golan - yellow tail</target>
         <startFrame>-1</startFrame>
@@ -52076,6 +55210,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Github Tarball</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Karsten - becoming insular</target>
         <startFrame>-1</startFrame>
@@ -52108,6 +55247,11 @@
     </link>
     <link>
         <target>Kyle_MC - art versus engineering 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Imaginative technologies 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -52161,7 +55305,17 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>sharing,generosity,#vo,open source</additionalKeywords>
+    <link>
+        <target>Patricio - Zeitgeist of open source</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Github Tarball</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>sharing,generosity,open source,#vo,github</additionalKeywords>
 </clip>
 <clip>
     <name>Chris - Eyewriter1</name>
@@ -52246,7 +55400,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>time,perception,gestalt,zen,#mindblowing</additionalKeywords>
+    <additionalKeywords>time,perception,gestalt,zen,#mindblowing,drugs,hallucination</additionalKeywords>
 </clip>
 <clip>
     <name>Damion - CodingAndCommunication</name>
@@ -52269,10 +55423,20 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>art,art and code,creative coders,art vs engineering,#obstacle</additionalKeywords>
+    <link>
+        <target>Bruce - Design vs Art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>art,art and code,creative coders,art vs engineering,#obstacle,art world</additionalKeywords>
 </clip>
 <clip>
     <name>Damion - HumanChemicalMachine</name>
+    <link>
+        <target>Patricio - Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>perception,vision,visual cortex,cyborg,#mindblowing</additionalKeywords>
 </clip>
 <clip>
@@ -52284,6 +55448,11 @@
     </link>
     <link>
         <target>Greg - Object Oriented Ontology 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Anthropomorphism</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -52321,7 +55490,12 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>coding,elegance</additionalKeywords>
+    <link>
+        <target>Patricio - Information 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>coding,elegance,legibility</additionalKeywords>
 </clip>
 <clip>
     <name>Damion - ShortCircuit</name>
@@ -52350,6 +55524,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - infinity of projects on google</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Infinity in a grain of sand</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Elliot_UK - 2D vision in a 3D world</target>
         <startFrame>-1</startFrame>
@@ -52360,16 +55544,36 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Play 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>perception,time,real and virtual,reality,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Damion - loseSenseofTime</name>
+    <link>
+        <target>Bruce - Infinity in a grain of sand</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - what gets you out of bed</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>time,perception,zen</additionalKeywords>
 </clip>
 <clip>
     <name>Diederick - MoreADeveloper</name>
     <link>
         <target>Elliot - ToolmakerArtist1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Making tools</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -52394,6 +55598,16 @@
     </link>
     <link>
         <target>Casey - sketching with code</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of code 5</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - what gets you out of bed</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -52493,6 +55707,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Zeitgeist of open source</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Maeda - ACU part 1</target>
         <startFrame>-1</startFrame>
@@ -52519,6 +55738,21 @@
     </link>
     <link>
         <target>Casey - sketching with code</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Imaginative technologies 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of code 5</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - what gets you out of bed</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -52554,12 +55788,42 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - future camera 4</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - future camera 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - lashup 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - lashup 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Reverse-engineered</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>kinect,sensor,cameras,#vo,camera</additionalKeywords>
 </clip>
 <clip>
     <name>Elliot - ToolmakerArtist1</name>
     <link>
         <target>Elliot - ToolmakerArtist2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Making tools</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -52611,6 +55875,11 @@
 </clip>
 <clip>
     <name>Intro - Collaboration</name>
+    <link>
+        <target>Patricio - Jam session</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>?community: How does the network accelerate creativity?,#start,collaboration,sharing,community</additionalKeywords>
 </clip>
 <clip>
@@ -52633,10 +55902,25 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Augmented Ubiquity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Hand dryer</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>interfaces,technology,devices,ubiquitous computing,interface,experience,seamlessness,sensor,?interface: What&apos;s the ultimate interface?,#start</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - KinectFutureCamera</name>
+    <link>
+        <target>Bruce - future camera 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>?machine vision: What&apos;s the camera of the future?,kinect,camera</additionalKeywords>
 </clip>
 <clip>
@@ -52743,7 +56027,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>computation,creativity,coding,limitations,#vo,computers</additionalKeywords>
+    <additionalKeywords>computation,creativity,coding,limitations,computers,#vo,symbiosis,man vs machine,tools,computer,#emotional,#inspiring,#rational</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - Bicycles2</name>
@@ -52785,6 +56069,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - 7 year lifespan of novelty</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Computer art takes flight</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>newness,#vo,new media</additionalKeywords>
 </clip>
 <clip>
@@ -52814,12 +56108,37 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Infinity in a grain of sand</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Eno 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - what gets you out of bed</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#emotional,#vo,time,zen</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - InTheNow2</name>
     <link>
         <target>Golan - jolted into the NOW</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Eno 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - what gets you out of bed</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -52856,6 +56175,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Reverse-engineered</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>#vo,kinect</additionalKeywords>
 </clip>
 <clip>
@@ -52867,6 +56191,11 @@
     </link>
     <link>
         <target>Regine - doesn&apos;t matter as long as it&apos;s good</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - New media Wow</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -52901,6 +56230,11 @@
     </link>
     <link>
         <target>Diederick - programmingWithFeeling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Imaginative technologies 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -52965,6 +56299,11 @@
 </clip>
 <clip>
     <name>LIA - 3DTchotchkes</name>
+    <link>
+        <target>Patricio - Alchemy 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>3d printing,design,#mundane,#art</additionalKeywords>
 </clip>
 <clip>
@@ -52976,6 +56315,11 @@
     </link>
     <link>
         <target>Jen - deep interaction</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Eno 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -53095,11 +56439,46 @@
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Marius - parameter space</target>
+        <target>Nervous_Jesse - understanding to control 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>math,algorithm,process,generative art,surprise,#art</additionalKeywords>
+    <link>
+        <target>Nervous_Jesse - understanding to control 4</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jesse - our explorations are random</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Gardening 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Ramsey - arab abstraction 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Ramsey - algorithm comes from arabic</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Marius - parameter space</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Golan - would be boring</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>math,algorithm,process,generative art,surprise,#art,control</additionalKeywords>
 </clip>
 <clip>
     <name>LIA - ExplanatoryText1</name>
@@ -53175,6 +56554,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Design vs Art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Theo - relating to nature</target>
         <startFrame>-1</startFrame>
@@ -53196,6 +56580,11 @@
     </link>
     <link>
         <target>Karsten - immediate feedback</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of code 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -53281,7 +56670,12 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>feedback,surprise,process,#inspiring,#art</additionalKeywords>
+    <link>
+        <target>Bruce - Volition</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>feedback,surprise,process,#art,#inspiring,control</additionalKeywords>
 </clip>
 <clip>
     <name>LIA - MathAnotherLanguage</name>
@@ -53302,6 +56696,16 @@
     </link>
     <link>
         <target>Ramsey - language as expression</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Discovering Mathematical Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of math</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -53382,6 +56786,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Gardening 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>invention,ideas,discovery</additionalKeywords>
 </clip>
 <clip>
@@ -53391,12 +56800,27 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - Gardening 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>ideas,invention,discovery</additionalKeywords>
 </clip>
 <clip>
     <name>LIA - Number20</name>
     <link>
         <target>Bruce - Trendspotting</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Discovering Mathematical Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - beauty of math</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -53421,6 +56845,16 @@
     </link>
     <link>
         <target>Julia - how it makes me feel</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Imaginative technologies 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - what gets you out of bed</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -53658,6 +57092,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Seduced by Play 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Seduced by Play 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Kevin - printing code</target>
         <startFrame>-1</startFrame>
@@ -53683,6 +57127,11 @@
     </link>
     <link>
         <target>Theo - magic</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Building Universes 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -53721,6 +57170,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Patricio - Discovering Mathematical Reality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <additionalKeywords>code,imagination,algorithm,tree,nature of code,complexity,nature,math,simulation</additionalKeywords>
 </clip>
 <clip>
@@ -53730,4 +57184,144 @@
 <clip>
     <name>LIA - helldotcom</name>
     <additionalKeywords>community,internet,tribe,sharing</additionalKeywords>
+</clip>
+<clip>
+    <name>Golan - MachineIntelligence</name>
+    <link>
+        <target>Kevin - cognition vs computation 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - Modeling consciousness</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - machines don&apos;t think 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - machines don&apos;t think 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - Anthropomorphism</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>artificial intelligence,man versus machine,science fiction,consciousness,cognition,#ironic</additionalKeywords>
+</clip>
+<clip>
+    <name>Golan - Network1</name>
+    <link>
+        <target>Aaron - dreaming together</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julian - I love networks</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - Getting smarter together</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - Networked intelligence</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - twitter is not your friend</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Julia - Who owns the internet?</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Philip - in touch all the time</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>network,internet,singularity,technological progress,?network: How big is the internet?</additionalKeywords>
+</clip>
+<clip>
+    <name>Golan - Network2</name>
+    <link>
+        <target>Bruce - networks vs robots</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - dreaming together</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - twitter is not your friend</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Greg - human augmentation</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - Networked intelligence</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <additionalKeywords>internet,network,cognition,?internet: What will the internet become?</additionalKeywords>
+</clip>
+<clip>
+    <name>Golan - Singularity</name>
+    <link>
+        <target>Bruce - A sappy Singularity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Golan_AMA - singularity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>singularity,technological progress,artificial intelligence</additionalKeywords>
+</clip>
+<clip>
+    <name>Golan - WhenComputersSurpass</name>
+    <link>
+        <target>Bruce - A sappy Singularity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - Modeling consciousness</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - cognition vs computation 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - machines don&apos;t think 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Kyle_CH - Cloud atlas</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>artificial intelligence,man versus machine,singularity,science fiction,?artificial intelligence: When will machines become smarter than humans?</additionalKeywords>
 </clip>

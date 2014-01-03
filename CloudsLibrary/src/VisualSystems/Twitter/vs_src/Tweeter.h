@@ -35,7 +35,8 @@ public:
     ofVec3f position;
     int nodeVertexIndex;
     int edgeVertexIndex;
-
+	int refreshNum;
+	
     bool hasTweetOnDate(string tweetDate);
     vector<Tweet>& getTweetsByDate(string t);
     vector<Tweet> sortTweetsByDate(Date d);
@@ -47,6 +48,7 @@ public:
     vector<Tweet> tweets;
     vector<string> userLinks;
     vector<int> linksById;
+	ofVec2f activityMapCoord;
     map<string, vector<Tweet> >tweetDateMap;
 
 };

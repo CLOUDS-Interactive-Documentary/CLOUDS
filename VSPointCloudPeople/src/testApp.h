@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystemRGBD.h"
+#include "CloudsTransitionController.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -19,6 +20,10 @@ class testApp : public ofBaseApp{
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 	void exit();
-		
+	
+	void updateTransitions();
+	
 	CloudsVisualSystemRGBD rgbd;
+	CloudsVisualSystem::RGBDTransitionType type;
+	CloudsTransitionController transitionController;
 };

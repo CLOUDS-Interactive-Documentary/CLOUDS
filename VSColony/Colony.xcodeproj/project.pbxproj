@@ -202,6 +202,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		170C09F71876851A00E74010 /* blend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = blend.h; sourceTree = "<group>"; };
 		17BC7DF41867DC5700F4E8D8 /* billboard.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = billboard.fs; sourceTree = "<group>"; };
 		17BC7DF51867DC5700F4E8D8 /* billboard.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = billboard.vs; sourceTree = "<group>"; };
 		17C0BDE718674BFA0082014A /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
@@ -667,6 +668,7 @@
 				17BC7DF51867DC5700F4E8D8 /* billboard.vs */,
 				17C0BDF81867542C0082014A /* levelSet.fs */,
 				17C0BDF91867542C0082014A /* levelSet.vs */,
+				170C09F71876851A00E74010 /* blend.h */,
 			);
 			name = shaders;
 			path = ../../../../CloudsData/visualsystems/Colony/shaders;
