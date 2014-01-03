@@ -20,8 +20,8 @@ void testApp::setup(){
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	
-    storyEngine.combinedClipsOnly = true; // true if using a clips drive
-    withVideo = true; // draw video?
+    storyEngine.combinedClipsOnly = false; // true if using a clips drive
+    withVideo = false; // draw video?
 
 	
     storyEngine.setup();
@@ -68,14 +68,12 @@ void testApp::actCreated(CloudsActEventArgs& args){
 	if(currentAct != NULL){
 		currentAct->getTimeline().stop();
 		currentAct->unregisterEvents(this);
-//		currentAct->unregisterEvents(&websockets);
 		delete currentAct;
 	}
 
 	
 	currentAct = args.act;
 	currentAct->registerEvents(this);
-//	currentAct->registerEvents(&websockets);
 	
 	currentAct->play();
     currentAct->getTimeline().enableEvents();
@@ -247,6 +245,12 @@ void testApp::keyPressed(int key){
     }
     if(key == 'p') {
         sound.doPrinting();
+    }
+    if(key == 's') {
+        sound.enterTunnel();
+    }
+    if(key == 'a') {
+        sound.exitTunnel();
     }
 }
 

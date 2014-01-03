@@ -63,5 +63,11 @@ float GetCloudsPreviousInputY();
 float GetCloudsPreviousInputZ();
 ofVec3f GetCloudsPreviousInputPosition();
 
+//TODIZZLE
+//float GetCloudsPreviousInputX(int playerId = 0);
+//float GetCloudsPreviousInputY(int playerId = 0);
+//float GetCloudsPreviousInputZ(int playerId = 0);
+//ofVec3f GetCloudsPreviousInputPosition(int playerId = 0);
+
 map<int, CloudsInteractionEventArgs>& GetCloudsInputPoints();
 

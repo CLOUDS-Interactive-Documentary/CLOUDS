@@ -39,7 +39,7 @@ void CloudsInput::interactionMoved(ofVec3f pos, bool primary, int actionType, in
 
 void CloudsInput::interactionStarted(ofVec3f pos, bool primary, int actionType, int playerId){
 	
-    if (primary) {
+    if(primary) {
         currentPosition = pos;
         dragging = true;
     }
@@ -49,9 +49,6 @@ void CloudsInput::interactionStarted(ofVec3f pos, bool primary, int actionType, 
 }
 
 void CloudsInput::interactionDragged(ofVec3f pos, bool primary, int actionType, int playerId){
-//	if(!dragging)
-//		ofLogError("CloudsInput::interactionDragged") << "Dragging logic inconsistent. calld Drag before start";
-	
     if (primary) {
         currentPosition = pos;	
     }
@@ -60,10 +57,7 @@ void CloudsInput::interactionDragged(ofVec3f pos, bool primary, int actionType, 
 	ofNotifyEvent(getEvents().interactionDragged, args, this);
 }
 
-void CloudsInput::interactionEnded(ofVec3f pos, bool primary, int actionType, int playerId){
-//	if(!dragging)
-//		ofLogError("CloudsInput::interactionEnded") << "Dragging logic inconsistent. calld End while not Dragging";
-	
+void CloudsInput::interactionEnded(ofVec3f pos, bool primary, int actionType, int playerId){	
     if (primary) {
         dragging = false;
         currentPosition = pos;

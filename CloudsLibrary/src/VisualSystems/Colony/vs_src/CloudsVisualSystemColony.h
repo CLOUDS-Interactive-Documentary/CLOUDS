@@ -1,6 +1,7 @@
 /* 
  WOW SUCH VISUAL
- VERY COPYRIGHT
+ VERY SYSTEM
+ MUCH COPYRIGHT
  */
 
 
@@ -9,6 +10,11 @@
 #include "CloudsVisualSystem.h"
 
 #include "gCell.h"
+#include "CloudsGlobal.h"
+#include "CloudsAudioEvents.h"
+#include "ofxTonic.h"
+
+using namespace Tonic;
 
 class CloudsVisualSystemColony : public CloudsVisualSystem {
 public:
@@ -51,12 +57,17 @@ public:
     
 private:
     
-    /*  SUCH PARAMS */
+    /* SUCH PARAMS */
     cellParams params;
-    bool levelSetMode;
+    bool levelSetMode, levelSetBG;
     int numInitialCells;
+    
     float translucenseCell, translucenseDish;
     ofVec4f kernelColor_high, kernelColor_low;
+
+    float stippleScale;
+    ofVec4f stippleColor;
+
 
     /* MUCH PRIVATE */
     float kernel_maxValue;
@@ -86,4 +97,18 @@ private:
     
     void clear();
     void populate();
+    
+    /* VERY DEBUG */
+    ofImage img_debug;
+    
+    // Sound
+    ofxUISuperCanvas* soundGui;
+    string soundFiles[3] = {"granular_water2.aif",
+        "granular_water2_slow.aif",
+        "Grains1_slow_low.aif"};
+    bool playSample[3];
+    ControlTrigger soundTriggers[3];
+    ofxTonicSynth synth;
+    Generator buildSynth();
+	void audioRequested(ofAudioEventArgs& args);
 };

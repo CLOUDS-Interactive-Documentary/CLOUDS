@@ -296,7 +296,7 @@ namespace itg
             
             creatures[i]->integrate();
             creatures[i]->updateNormalisedVelocity();
-            ofVec3f toMove = creatures[i]->getVelocity() * ofGetLastFrameTime();
+            ofVec3f toMove = creatures[i]->getVelocity() * Creature::getElapsed();
 #ifndef _DEBUG
             creatures[i]->move(toMove + sin(ofGetElapsedTimef() * creatures[i]->getFrequency()) * toMove * 0.4);
             
@@ -377,5 +377,40 @@ namespace itg
             creatures[i]->draw();
         }*/
         glPopAttrib();
+    }
+    
+    void Creatures::loadSeed(const string& path)
+    {
+        ifstream fileStream(path.c_str());
+        string data((istreambuf_iterator<char>(fileStream)), std::istreambuf_iterator<char>());
+        vector<string> creatureData = ofSplitString(data, "|");
+        for (unsigned i = 0; i < creatureData.size() && i < creatures.size(); ++i)
+        {
+            vector<string> creatureDatum = ofSplitString(creatureData[i], "#");
+            
+            istringstream iss(creatureDatum[0]);
+            ofVec3f pos;
+            iss >> pos;
+            creatures[i]->setGlobalPosition(pos);
+            
+            iss.str(creatureDatum[1]);
+            ofVec3f vel;
+            iss >> vel;
+            creatures[i]->setVelocity(vel);
+            creatures[i]->updateNormalisedVelocity();
+        }
+    }
+    
+    void Creatures::saveSeed(const string& path)
+    {
+        ofstream fileStream(path.c_str());
+        for (unsigned i = 0; i < creatures.size(); ++i)
+        {
+            fileStream << creatures[i]->getGlobalPosition();
+            fileStream << "#";
+            fileStream << creatures[i]->getVelocity();
+            fileStream << "|";
+        }
+        fileStream.close();
     }
 }

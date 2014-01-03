@@ -1,0 +1,64 @@
+<Map>
+    <Bangs>
+        <Mapping>
+            <Widget>
+                <WidgetName>RANDOMIZE</WidgetName>
+                <WidgetID>7</WidgetID>
+                <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>RESET</WidgetName>
+                <WidgetID>5</WidgetID>
+                <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </Bangs>
+    <Switches></Switches>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPH1 RADIUS</WidgetName>
+                <WidgetID>12</WidgetID>
+                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPH1 LIMIT</WidgetName>
+                <WidgetID>14</WidgetID>
+                <WidgetCanvasParent>SPH1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPH0 RADIUS</WidgetName>
+                <WidgetID>12</WidgetID>
+                <WidgetCanvasParent>SPH0Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPH0 LIMIT</WidgetName>
+                <WidgetID>14</WidgetID>
+                <WidgetCanvasParent>SPH0Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>ELE LIMIT</WidgetName>
+                <WidgetID>5</WidgetID>
+                <WidgetCanvasParent>ELESettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>

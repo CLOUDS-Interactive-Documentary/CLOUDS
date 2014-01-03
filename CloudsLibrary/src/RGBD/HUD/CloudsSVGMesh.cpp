@@ -13,6 +13,11 @@ string strrephack(string input, string searchStr, string replaceStr){
 	return input;
 }
 
+//constructor
+CloudsSVGMesh::CloudsSVGMesh(){
+    alpha = 1;
+}
+
 bool CloudsSVGMesh::loadDirectory(string file){
 	ofDirectory dir(file);
 	dir.allowExt("svg");
@@ -44,7 +49,7 @@ bool CloudsSVGMesh::load(string file){
 	recurseSVGTag(svg, "", 1.0);
 	svg.popTag();//svg
 	
-	cout << "Loading SVG file: " << file << endl;
+//	cout << "Loading SVG file: " << file << endl;
 
 	//calculate various bounds
 	int totalVerts = 0;
@@ -62,7 +67,7 @@ bool CloudsSVGMesh::load(string file){
 				meshes[i].bounds.growToInclude(meshes[i].mesh.getVertices()[v]);
 				totalVerts++;
 			}
-			cout << "	Found Layer " << meshes[i].id << endl;
+//			cout << "	Found Layer " << meshes[i].id << endl;
 		}
 //		cout << "Bounds for SVG " << file << " is " << bounds.getMin() << " - " << bounds.getMax() << endl;
 //		cout << "Found " << meshes.size() << " meshes with " << totalVerts << " vertices" << endl;
@@ -160,6 +165,7 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId, float pa
 	//if we added go throw it in the group, and give it a name
 	if(strokeMesh.getNumVertices() > 0){
 		SVGMesh m;
+        m.visible = true;
 		m.id = parentId;
 		if(m.id != ""){
 			meshIdIndex[m.id] = meshes.size();
@@ -173,6 +179,7 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId, float pa
 	
 	if(fillMesh.getNumVertices() > 0){
 		SVGMesh m;
+        m.visible = true;
 		m.id = parentId;
 		if(m.id != ""){
 			meshIdIndex[m.id] = meshes.size();
@@ -207,9 +214,20 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId, float pa
 	}
 }
 
+
+
 void CloudsSVGMesh::draw(){
 	for(int i = 0; i < meshes.size(); i++){
-		meshes[i].mesh.draw();
+        if(meshes[i].visible){
+            ofMesh m = meshes[i].mesh;
+            //update the color using the alpha value
+            vector< ofFloatColor > colors = m.getColors();
+            for( int i=0; i<colors.size(); i++){
+               // colors[i].
+            }
+            m.draw();
+
+        }
 	}
 }
 
@@ -217,9 +235,10 @@ vector<SVGMesh>& CloudsSVGMesh::getMeshes(){
 	return meshes;
 }
 
+//return a pointer to the mesh with the matching ID
 SVGMesh* CloudsSVGMesh::getMeshByID(string meshId){
 	if(meshIdIndex.find(meshId) == meshIdIndex.end()){
-		ofLogError("CloudsSVGMesh::getMeshByID") << "Couldn't find mesh: " << meshId;
+//		ofLogError("CloudsSVGMesh::getMeshByID") << "Couldn't find mesh: " << meshId;
 		return NULL;
 	}
 	return &meshes[ meshIdIndex[meshId] ];

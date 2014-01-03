@@ -9,10 +9,14 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxSvg.h"
 #include "ofxUI.h"
+#include "ofxFTGL.h"
+#include "ofxAVFVideoPlayer.h"
+
 #include "CloudsHUDLayer.h"
 #include "CloudsHUDHomeButton.h"
+#include "CloudsHUDLabel.h"
+#include "CloudsEvents.h"
 
 typedef enum {
 	CLOUDS_HUD_FULL = 0,
@@ -24,7 +28,7 @@ typedef enum {
 
 class CloudsClip;
 class CloudsHUDController {
-public:
+  public:
 	
 	CloudsHUDController();
 	
@@ -33,13 +37,14 @@ public:
 	void draw();
 
 	void buildLayerSets();
-	
-	void clipBegan(CloudsClip& clip);
+    void calculateFontSizes();
+    int getFontSizeForMesh( SVGMesh* textMesh );
 	
 	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
-	void animateOff();
+	void animateOff(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	
 	ofImage testImage;
+	void respondToClip(CloudsClip& clip);
 	
 	map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> > layerSets;
 	vector<CloudsHUDLayer*> allLayers;
@@ -50,9 +55,48 @@ public:
 	ofxUISuperCanvas *hudGui;
 	CloudsHUDHomeButton home;
 	
+	void actBegan(CloudsActEventArgs& args);
+	void actEnded(CloudsActEventArgs& args);
+	void clipBegan(CloudsClipEventArgs& args);
+	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
+	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
+	void questionAsked(CloudsQuestionEventArgs& args);
+	void topicChanged(CloudsTopicEventArgs& args);
+	void preRollRequested(CloudsPreRollEventArgs& args);
+
   protected:
-	void drawLayer(CloudsHUDLayerSet layer);
-	
+    void populateLowerThird( string firstName="", string lastName="", string title="", string location="", string textbox="", bool forceOn=false );
+    void populateProjectExample(string videoPath="", string textLeft="", string textRight="", string textTop="", bool forceOn=false);
+    void populateQuestion( string question="", bool forceOn=false);
+    void populateMap( string leftBox="", string rightBox="", bool forceOn=false);
+    
+    ofxAVFVideoPlayer       videoPlayer;
+    ofRectangle             svgVideoBounds, videoBounds;
+    
+    bool    bIsHudOpen;
+    bool    bDrawHud;
+    bool    bSkipAVideoFrame;
+    
+    void drawLayer(CloudsHUDLayerSet layer);
+    ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath );
+    
+    vector<ofxFTGLFont*>    tempFontList;
+    ofxFTGLSimpleLayout     *BylineBodyCopyTextBox,
+                            *BylineFirstNameTextBox,
+                            *BylineLastNameTextBox,
+                            *BylineTopicTextBoxBottom,
+                            *BylineTopicTextBoxTop,
+                            *ResetButtonTextBox,
+                            *QuestionTextBox,
+                            *TopicTextBoxLeft,
+                            *TopicTextBoxRight,
+                            *ProjectExampleTextboxLeft,
+                            *ProjectExampleTextboxRight,
+                            *ProjectExampleTextBoxTop;
+    
+    map<string, CloudsHUDLabel*>    hudLabelMap;
+    ofRectangle hudBounds;
+    float scaleAmt;
 };
 
 

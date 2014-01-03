@@ -30,8 +30,8 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	meshGui->setName("Mesh");
 	meshGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	meshGui->addToggle("FacetMesh", &bFacetMesh);
-	meshGui->addToggle("SmoothMesh", &bSmoothMesh);
+//	meshGui->addToggle("FacetMesh", &bFacetMesh);
+//	meshGui->addToggle("SmoothMesh", &bSmoothMesh);
 	
 	meshGui->addSpacer();
 	meshGui->addLabel("mesh files");
@@ -97,19 +97,65 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	shaderGui->addSpacer();
 	shaderGui->addRadio("shaders", shaderNames);
 	shaderGui->addSpacer();
+	shaderGui->addSlider("facingRatioExpo", .6, 64, &facingRatioExpo);
 	shaderGui->addSlider("shininess", .6, 64, &shininess);
 	
 	shaderGui->addSpacer();
 	shaderGui->addLabel("color1");
-	shaderGui->addImageSampler("c1", &colorSampleImage, 100, 100);
-	shaderGui->addMinimalSlider("c1_alpha", 0, 1, &c1.a);
+	shaderGui->addIntSlider("c1Hue", 0, 255, &c1Hue);
+	shaderGui->addIntSlider("c1Saturation", 0, 255, &c1Sat);
+	shaderGui->addIntSlider("c1Brightness", 0, 255, &c1Bri);
+	
 	shaderGui->addLabel("color2");
-	shaderGui->addImageSampler("c2", &colorSampleImage, 100, 100);
-	shaderGui->addMinimalSlider("c2_alpha", 0, 1, &c2.a);
+	shaderGui->addIntSlider("c2Hue", 0, 255, &c2Hue);
+	shaderGui->addIntSlider("c2Saturation", 0, 255, &c2Sat);
+	shaderGui->addIntSlider("c2Brightness", 0, 255, &c2Bri);
 	
 	ofAddListener(shaderGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 	guis.push_back(shaderGui);
 	guimap[shaderGui->getName()] = shaderGui;
+	
+	
+	fogGui = new ofxUISuperCanvas("FOG", gui);
+	fogGui->copyCanvasStyle(gui);
+	fogGui->copyCanvasProperties(gui);
+	fogGui->setName("Fog");
+	fogGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	//fogHue, fogSaturation, fogBrightness;
+	fogGui->addSlider("fogDistance", 1, 1000, &fogDist)->setIncrement(1);
+	fogGui->addSlider("fogExpo", .6, 10, &fogExpo);
+	
+	fogGui->addSpacer();
+	fogGui->addIntSlider("fogHue", 0, 255, &fogHue);
+	fogGui->addIntSlider("fogSaturation", 0, 255, &fogSaturation);
+	fogGui->addIntSlider("fogBrightness", 0, 255, &fogBrightness);
+	
+	ofAddListener(fogGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	guis.push_back(fogGui);
+	guimap[fogGui->getName()] = fogGui;
+
+		
+	wormholeLightGui = new ofxUISuperCanvas("WH_light", gui);
+	wormholeLightGui->copyCanvasStyle(gui);
+	wormholeLightGui->copyCanvasProperties(gui);
+	wormholeLightGui->setName("w_h_light");
+	wormholeLightGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	//fogHue, fogSaturation, fogBrightness;
+	wormholeLightGui->addSlider("pathOffset", 0, .5, &lightPathOffset)->setIncrement(.001);
+	wormholeLightGui->addSpacer();
+	wormholeLightGui->addSlider("constantAttenuation", 0, 2, &lightConstantAttenuation)->setIncrement(.01);
+	wormholeLightGui->addSlider("linearAttenuation", 0, 1, &lightLinearAttenuation)->setIncrement(.01);
+	wormholeLightGui->addSlider("quadraticAttenuation", 0, 1, &lightQuadraticAttenuation)->setIncrement(.01);
+	wormholeLightGui->addIntSlider("lightHue", 0, 255, &lightHue);
+	wormholeLightGui->addIntSlider("lightSaturation", 0, 255, &lightSaturation);
+	wormholeLightGui->addIntSlider("lightBrightness", 0, 255, &lightBrightness);
+	
+	
+	ofAddListener(wormholeLightGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	guis.push_back(wormholeLightGui);
+	guimap[wormholeLightGui->getName()] = wormholeLightGui;
 	
 	//displacement
 	displacementGui = new ofxUISuperCanvas("Displacement", gui);
@@ -137,6 +183,23 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	ofAddListener(displacementGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 	guis.push_back(displacementGui);
 	guimap[displacementGui->getName()] = displacementGui;
+    
+    
+    // sound
+    soundGui = new ofxUISuperCanvas("WORMHOLE Sound", gui);
+	soundGui->copyCanvasStyle(gui);
+	soundGui->copyCanvasProperties(gui);
+	soundGui->setName("WORMHOLE Sound");
+	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+
+    for (int i=0; i<nSamples; i++)
+    {
+        soundGui->addToggle(soundFiles[i], &playSample[i]);
+    }
+    
+	guis.push_back(soundGui);
+	guimap[soundGui->getName()] = soundGui;
+    ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 }
 
 void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
@@ -178,11 +241,6 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 				if(name == meshNames[i])
 				{
 					loadMesh( meshNames[i] );
-					
-					if(bFacetMesh && !bMeshHasBeenFaceted)
-					{
-						facetMesh(mesh, mesh);
-					}
 				}
 			}
 		}
@@ -194,65 +252,93 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 				if(name == it->first)
 				{
 					currentBlendMode = it->second;
-					
-					cout << "WTF" << endl;
 				}
-			}
-		}
-		
-		else if(name == "FacetMesh" )
-		{
-			if(!bMeshHasBeenFaceted)
-			{
-				facetMesh(mesh, mesh);
-				bSmoothMesh = false;
-			}
-		}
-		else if(name == "SmoothMesh" )
-		{
-			if(!bMeshHasBeenSmoothed)
-			{
-				smoothMesh(mesh, mesh);
-				bFacetMesh = false;
 			}
 		}
 	}
 	
 	if(name == "c1")
-	{
-		cout << "GUI event" << name << endl;
-		
+	{	
 		ofFloatColor tempColor = ((ofxUIImageSampler *) e.widget)->getColor();
 		c1.r = tempColor.r;
 		c1.g = tempColor.g;
 		c1.b = tempColor.b;
 	}
 	
-	else if(name == "c2")
+	else if( name == "c1Hue"|| name == "c1Saturation"|| name == "c1Brightness")
 	{
-		cout << "GUI event" << name << endl;
-		ofFloatColor tempColor = ((ofxUIImageSampler *) e.widget)->getColor();
-		c2.r = tempColor.r;
-		c2.g = tempColor.g;
-		c2.b = tempColor.b;
+		c1.setHue(c1Hue);
+		c1.setSaturation(c1Sat);
+		c1.setBrightness(c1Bri);
+		
+		shaderGui->getWidget("c1Hue")->setColorFill(c1);
+		shaderGui->getWidget("c1Saturation")->setColorFill(c1);
+		shaderGui->getWidget("c1Brightness")->setColorFill(c1);
 	}
+	
+	else if( name == "c2Hue"|| name == "c2Saturation"|| name == "c2Brightness")
+	{
+		c2.setHue(c2Hue);
+		c2.setSaturation(c2Sat);
+		c2.setBrightness(c2Bri);
+		
+		shaderGui->getWidget("c2Hue")->setColorFill(c2);
+		shaderGui->getWidget("c2Saturation")->setColorFill(c2);
+		shaderGui->getWidget("c2Brightness")->setColorFill(c2);
+	}
+	
+	else if( name == "fogHue"|| name == "fogSaturation"|| name == "fogBrightness")
+	{
+		fogColor.setHue(fogHue);
+		fogColor.setSaturation(fogSaturation);
+		fogColor.setBrightness(fogBrightness);
+		
+		fogGui->getWidget("fogHue")->setColorFill(fogColor);
+		fogGui->getWidget("fogSaturation")->setColorFill(fogColor);
+		fogGui->getWidget("fogBrightness")->setColorFill(fogColor);
+		
+		bgHue = fogHue;
+		bgSat = fogSaturation;
+		bgBri = fogBrightness;
+		
+		//??? would it be better to set the fog to the background color
+	}
+	else if( name == "lightHue"|| name == "lightSaturation"|| name == "lightBrightness")
+	{
+		lightColor.setHue(lightHue);
+		lightColor.setSaturation(lightSaturation);
+		lightColor.setBrightness(lightBrightness);
+		
+		wormholeLightGui->getWidget("lightHue")->setColorFill(lightColor);
+		wormholeLightGui->getWidget("lightSaturation")->setColorFill(lightColor);
+		wormholeLightGui->getWidget("lightBrightness")->setColorFill(lightColor);
+	}
+
+    for (int i=0; i<nSamples; i++)
+    {
+        if (e.widget->getName() == soundFiles[i]) {
+            ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
+            playSample[i] = toggle->getValue();
+            if (toggle->getValue() == true) {
+                soundTriggers[i].trigger();
+            }
+        }
+    }
 }
 
 void CloudsVisualSystemWormHole::loadMesh(string name)
 {
 	if(name != currentMeshName)
 	{
+		float startTime = ofGetElapsedTimeMillis();
 		currentMeshName = name;
 		
 		mesh.clear();
 		
 		ofxObjLoader::load( modelPath + name, mesh, false );
 		
-		bMeshHasBeenFaceted = bMeshHasBeenSmoothed = false;
-		
-		if(bFacetMesh)	facetMesh(mesh, mesh);
-		else if(bSmoothMesh)	smoothMesh(mesh, mesh);
-	}	
+		cout << name + " loaded in " << ofGetElapsedTimeMillis() - startTime << " milliseconds" << endl;
+	}
 }
 
 void CloudsVisualSystemWormHole::loadShaders()
@@ -260,6 +346,7 @@ void CloudsVisualSystemWormHole::loadShaders()
 	loadShader("normalShader");
 	loadShader("facingRatio");
 	loadShader("XRayShader");
+	loadShader("WormholeShader");
 }
 
 void CloudsVisualSystemWormHole::loadShader( string shaderName )
@@ -300,10 +387,10 @@ void CloudsVisualSystemWormHole::guiRenderEvent(ofxUIEventArgs &e){
 }
 
 
-void CloudsVisualSystemWormHole::selfSetup()
+void CloudsVisualSystemWormHole::selfSetDefaults()
 {
 	//defaults
-	currentShader = NULL;
+	currentShader = shaderMap.find("WormholeShader") != shaderMap.end() ? shaderMap["WormholeShader"] : NULL;
 	bUseCameraPath = false;
 	cameraPathPosition = 0;
 	speed = .1;
@@ -314,13 +401,24 @@ void CloudsVisualSystemWormHole::selfSetup()
 	shininess = 16;
 	bDepthTest = true;
 	
-	bFacetMesh = true;
-	bMeshHasBeenFaceted = false;
-	
 	currentBlendMode = OF_BLENDMODE_DISABLED;
 	
+	fogColor.set(0,0,0, 255);
+	fogDist = 70;
+	
+	lightPathOffset = .05;
+	
+	lightConstantAttenuation = .7;
+	lightLinearAttenuation = .01;
+	lightQuadraticAttenuation = .01;
+}
+
+void CloudsVisualSystemWormHole::selfSetup()
+{
+	currentShader = NULL;
+	
 	//meshes
-	modelPath = getVisualSystemDataPath() + "models/";
+	modelPath = getVisualSystemDataPath(true) + "models/";
 	cameraPathPath = getVisualSystemDataPath() + "cameraPaths/";
 	
 	cout << modelPath << endl;
@@ -357,18 +455,27 @@ void CloudsVisualSystemWormHole::selfSetup()
 	//gui
 	colorSampleImage.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png" );
 	
+    // sound
+    synth.setOutputGen(buildSynth());
 }
 
 void CloudsVisualSystemWormHole::selfBegin(){
-	
+    // sound
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemWormHole::audioRequested);
+    
+    for (int i=0; i<nSamples; i++)
+    {
+        if (playSample[i]) {
+            soundTriggers[i].trigger();
+        }
+    }
 }
 
 
 //normal update call
 void CloudsVisualSystemWormHole::selfUpdate()
 {
-	//lights
-	lightPos = getCameraRef().getPosition();\
+	//light(s)	
     
     getCameraRef().setNearClip(nearClipPlane);
 	
@@ -380,7 +487,17 @@ void CloudsVisualSystemWormHole::selfUpdate()
 		getCameraRef().setPosition(pathCamera.getPosition());
 		getCameraRef().lookAt(pathCamera.getLookAtDir() + pathCamera.getPosition());
 		
+		//light on path
+		lightPos = pathCamera.getPositionSpline().getPoint( ofClamp(pathCamera.u + lightPathOffset, 0, 1) );
+		
 	}
+	else
+	{
+		lightPos = getCameraRef().getPosition() + getCameraRef().getLookAtDir() * 10;
+	}
+	
+	//transform light to modelview space
+//	lightPos = lightPos * getCameraRef().getModelViewMatrix();
 	
 	//action
 	float t = ofGetElapsedTimef();
@@ -394,7 +511,8 @@ void CloudsVisualSystemWormHole::selfUpdate()
 
 void CloudsVisualSystemWormHole::selfDraw()
 {
-	
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
 	
 	//alpha blending
 	if(currentBlendMode == OF_BLENDMODE_DISABLED)
@@ -412,16 +530,32 @@ void CloudsVisualSystemWormHole::selfDraw()
 	{
 		currentShader->begin();
 		currentShader->setUniform1f("time", ofGetElapsedTimef());
-		currentShader->setUniform1f("shininess", shininess );
-		currentShader->setUniform4f("c1", c1.r, c1.g, c1.b, c1.a );
-		currentShader->setUniform4f("c2", c2.r, c2.g, c2.b, c2.a );
+
+		ofFloatColor lc = lightColor;
+		currentShader->setUniform4f("lightColor", lc.r, lc.g, lc.b, lc.a);
+		currentShader->setUniform3f("lightPosition", lightPos.x, lightPos.y, lightPos.z );
+		currentShader->setUniform1f("lightConstantAttenuation", lightConstantAttenuation);
+		currentShader->setUniform1f("lightLinearAttenuation", lightLinearAttenuation * lightLinearAttenuation);
+		currentShader->setUniform1f("lightQuadraticAttenuation", lightQuadraticAttenuation * lightQuadraticAttenuation);
+
+		ofFloatColor fc = fogColor;
+		currentShader->setUniform4f("fogColor", fc.r, fc.g, fc.b, fc.a);
+		currentShader->setUniform1f("fogDistance", fogDist );
+		currentShader->setUniform1f("fogExpo", fogExpo );
 		
-		currentShader->setUniform1i("useNoiseDisplacement", bUseNoiseDisplacement );
-		currentShader->setUniform3f("noiseOffset", noiseDir.x * noiseTime, noiseDir.y * noiseTime, noiseDir.z * noiseTime);
-		currentShader->setUniform1f("noiseScale", noiseScale );
-		currentShader->setUniform1f("noiseDisplacement", noiseDisplacement );
+		currentShader->setUniform1f("facingRatioExpo", facingRatioExpo );
+		currentShader->setUniform1f("shininess", shininess );
+		ofFloatColor c1f = c1;
+		ofFloatColor c2f = c2;
+		currentShader->setUniform4f("c1", c1f.r, c1f.g, c1f.b, c1f.a );
+		currentShader->setUniform4f("c2", c2f.r, c2f.g, c2f.b, c2f.a );
+
+//		currentShader->setUniform1i("useNoiseDisplacement", bUseNoiseDisplacement );
+//		currentShader->setUniform3f("noiseOffset", noiseDir.x * noiseTime, noiseDir.y * noiseTime, noiseDir.z * noiseTime);
+//		currentShader->setUniform1f("noiseScale", noiseScale );
+//		currentShader->setUniform1f("noiseDisplacement", noiseDisplacement );
 	}
-	
+
 	//draw mesh
 	ofPushMatrix();
 	ofMultMatrix( meshNode.getGlobalTransformMatrix() );
@@ -441,13 +575,17 @@ void CloudsVisualSystemWormHole::selfDraw()
 		mat->end();
 	}
 	
-	ofPopMatrix();
-	
 	//unbind shade
 	if (bDoShader && currentShader != NULL)	currentShader->end();
 	
+	ofPopMatrix();
+	
+	
 	//disable depth testing
 	glDisable(GL_DEPTH_TEST);
+	
+	
+	glDisable(GL_CULL_FACE);
 
 	//disable alpha blending
 	ofDisableAlphaBlending();
@@ -473,8 +611,8 @@ void CloudsVisualSystemWormHole::selfDrawBackground(){
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemWormHole::selfEnd()
 {
-
-	
+    // sound
+    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemWormHole::audioRequested);
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemWormHole::selfExit()
@@ -491,8 +629,6 @@ void CloudsVisualSystemWormHole::selfExit()
 		delete shader;
 	}
 	shaderMap.clear();
-	
-	
 }
 
 //events are called when the system is active
@@ -603,9 +739,6 @@ void CloudsVisualSystemWormHole::smoothMesh( ofMesh& facetedMesh, ofMesh& target
 	if(hasTC)	targetMesh.addTexCoords( smoothTexCoords );
 	targetMesh.addIndices( smoothIndices );
 	
-	bMeshHasBeenSmoothed = true;
-	bMeshHasBeenFaceted = false;
-	
 	cout << "smoothed mesh in "<< ofToString((ofGetElapsedTimeMillis() - startTime)) << " milli seconds" << endl;
 }
 
@@ -650,7 +783,38 @@ void CloudsVisualSystemWormHole::facetMesh( ofMesh& smoothedMesh, ofMesh& target
 	if(hasTC)	targetMesh.addTexCoords( facetedTexCoords );
 	targetMesh.addIndices( facetedIndices );
 	
-	bMeshHasBeenFaceted = true;
-	bMeshHasBeenSmoothed = false;
-	cout << "smoothed mesh in "<< ofToString((ofGetElapsedTimeMillis() - startTime)) << " milli seconds" << endl;
+	cout << "faceted mesh in "<< ofToString((ofGetElapsedTimeMillis() - startTime)) << " milli seconds" << endl;
 }
+
+
+Generator CloudsVisualSystemWormHole::buildSynth()
+{
+    string strDir = GetCloudsDataPath()+"sound/textures/";
+    ofDirectory sdir(strDir);
+    
+    SampleTable samples[4];
+    
+    for (int i=0; i<nSamples; i++)
+    {
+        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+        samples[i] = loadAudioFile(strAbsPath);
+    }
+    
+    Generator sampleGen[4];
+    for (int i=0; i<nSamples; i++)
+    {
+        sampleGen[i] = BufferPlayer().setBuffer(samples[i]).loop(1).trigger(soundTriggers[i]);
+    }
+    
+    return sampleGen[0] * 1.0f +
+        sampleGen[1] * 1.0f +
+        sampleGen[2] * 1.0f +
+        sampleGen[3] * 1.0f;
+}
+
+void CloudsVisualSystemWormHole::audioRequested(ofAudioEventArgs& args)
+{
+    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+}
+
+

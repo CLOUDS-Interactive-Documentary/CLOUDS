@@ -553,7 +553,7 @@ void CloudsVisualSystemCities::selfDraw()
 		bool bAlphaBlending = true;
 		if(bPassTwo)
 		{
-			glClear( GL_DEPTH_BITS );
+			glClear( GL_DEPTH_BUFFER_BIT );
 			bPassTwoDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
 			ofEnableBlendMode( passTwoBlendMode );
 			if(passOneBlendMode == OF_BLENDMODE_DISABLED )

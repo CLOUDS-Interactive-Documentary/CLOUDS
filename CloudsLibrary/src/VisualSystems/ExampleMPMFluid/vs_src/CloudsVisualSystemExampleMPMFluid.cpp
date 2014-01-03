@@ -32,7 +32,7 @@ void CloudsVisualSystemExampleMPMFluid::selfSetupGui(){
     
     float length = (customGui->getGlobalCanvasWidth()-customGui->getWidgetSpacing()*5)/3.;
     float dim = customGui->getGlobalSliderHeight();
-
+    
     /* Particle color */
     //customGui->addSpacer();
     customGui->addSpacer();
@@ -44,7 +44,7 @@ void CloudsVisualSystemExampleMPMFluid::selfSetupGui(){
     customGui->addMinimalSlider("B", 0.0, 255, &pColor.b, length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     customGui->addSlider("PARTICLE LINE", 0, 5, &lineWidth);
-
+    
     customGui->addSpacer();
     customGui->addLabel("INTERACTIVITY");
     vector<string> modes;
@@ -57,11 +57,27 @@ void CloudsVisualSystemExampleMPMFluid::selfSetupGui(){
     ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemExampleMPMFluid::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
+    
+
+    // sound gui
+    soundGui = new ofxUISuperCanvas("MPM FLUID Sound", gui);
+    soundGui->copyCanvasStyle(gui);
+    soundGui->copyCanvasProperties(gui);
+	soundGui->setName("MPM FLUID Sound");
+	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    soundGui->addSlider("Volume 0", 0, 3, &volume[0]);
+    soundGui->addSlider("Volume 1", 0, 3, &volume[1]);
+    soundGui->addSlider("Volume 2", 0, 3, &volume[2]);
+    soundGui->addSlider("Volume 3", 0, 3, &volume[3]);
+	guis.push_back(soundGui);
+	guimap[customGui->getName()] = soundGui;
+
 }
 
 void CloudsVisualSystemExampleMPMFluid::selfGuiEvent(ofxUIEventArgs &e)
 {
-
+    
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -108,6 +124,9 @@ void CloudsVisualSystemExampleMPMFluid::selfSetup()
     // add obstacle
     obstacle = new ofxMPMObstacle(0, 0, obstacleSize);
     fluid.addObstacle(obstacle);
+    
+    // sound
+    synth.setOutputGen(buildSynth());
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -115,7 +134,7 @@ void CloudsVisualSystemExampleMPMFluid::selfSetup()
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemExampleMPMFluid::selfPresetLoaded(string presetPath)
 {
-
+    
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -124,6 +143,7 @@ void CloudsVisualSystemExampleMPMFluid::selfPresetLoaded(string presetPath)
 void CloudsVisualSystemExampleMPMFluid::selfBegin()
 {
 
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemExampleMPMFluid::audioRequested);
 }
 
 //do things like ofRotate/ofTranslate here
@@ -162,7 +182,35 @@ void CloudsVisualSystemExampleMPMFluid::selfUpdate()
         obstacle->radius2 = obstacleSize * obstacleSize;
     }
     
+
     fluid.update(GetCloudsInputX(),GetCloudsInputY());
+    
+    // sound
+    // calc total speed
+    float parSpeed = 0;
+    vector<ofxMPMParticle*> particles = fluid.getParticles();
+    for (int i=0; i<particles.size(); i++)
+    {
+        parSpeed += (float)sqrt(pow(particles[i]->u, 2) + pow(particles[i]->v, 2));
+    }
+    parSpeed /= particles.size();
+    parSpeed = (float)pow(parSpeed, 2);
+//    cout<<parSpeed<<endl;
+    
+    totalSpeed.value(ofMap(parSpeed, 0, 0.5, 0, 0.8, true));
+    
+    float speed = (float)sqrt(pow(prevMouseX - GetCloudsInputX(), 2) + pow(prevMouseY - GetCloudsInputY(), 2));
+    mouseSpeed.value(mouseSpeed.getValue() + (speed - mouseSpeed.getValue()) * 0.05);
+    mouseX.value(ofMap(GetCloudsInputX(), 0, ofGetWidth(), 0, 1));
+    mouseY.value(ofMap(GetCloudsInputY(), 0, ofGetHeight(), 0, 1));
+    prevMouseX = GetCloudsInputX();
+    prevMouseY = GetCloudsInputY();
+    for (int i=0; i<4; i++)
+    {
+        volumeControl[i].value(volume[i]);
+    }
+    
+
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -187,13 +235,13 @@ void CloudsVisualSystemExampleMPMFluid::selfDrawBackground()
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	// These improve the appearance of small lines and/or points.
 	glDisable(GL_LIGHTING);
-//	glDisable(GL_DEPTH_TEST);
+    //	glDisable(GL_DEPTH_TEST);
 	glEnable (GL_LINE_SMOOTH);
 	glEnable (GL_POINT_SMOOTH); // in case you want it
-//	glEnable (GL_MULTISAMPLE);
-//	glEnable (GL_BLEND);
-//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
+    //	glEnable (GL_MULTISAMPLE);
+    //	glEnable (GL_BLEND);
+    //	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
 	ofColor c = ofColor::fromHsb(pColor.r, pColor.g, pColor.b);
     c.a = 200;
 	ofSetColor(c);
@@ -221,13 +269,15 @@ void CloudsVisualSystemExampleMPMFluid::selfDrawBackground()
 	
 	glPopAttrib();
 	ofPopStyle();
+    
+
 }
 
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemExampleMPMFluid::selfEnd()
 {
-	
+    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemExampleMPMFluid::audioRequested);
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemExampleMPMFluid::selfExit()
@@ -238,6 +288,41 @@ void CloudsVisualSystemExampleMPMFluid::selfExit()
 
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
+void CloudsVisualSystemExampleMPMFluid:: selfInteractionMoved(CloudsInteractionEventArgs& args){
+    
+    if (currentPlayers.find(args.playerId) == currentPlayers.end()) {
+        fluid.addTouch(args.playerId, args.position);
+        currentPlayers[args.playerId] = 0;
+//        cout<<"Adding : "<< args.playerId<<endl;
+    }
+    else{
+//        cout<<"Updating : "<< args.playerId<<endl;
+        currentPlayers[args.playerId]++;
+        fluid.updateTouch(args.playerId, args.position);
+    }
+}
+
+void CloudsVisualSystemExampleMPMFluid :: selfInteractionStarted(CloudsInteractionEventArgs& args){
+    
+}
+
+void CloudsVisualSystemExampleMPMFluid:: selfInteractionDragged(CloudsInteractionEventArgs& args){
+    
+}
+
+void CloudsVisualSystemExampleMPMFluid:: selfInteractionEnded(CloudsInteractionEventArgs& args){
+
+    map<int, int >::iterator it;
+    for(it = currentPlayers.begin(); it != currentPlayers.end(); it++){
+        
+        if (it->first == args.playerId) {
+            currentPlayers.erase(it);
+//            cout<<"removing from map "<<it->first<<endl;
+         
+        }
+    }
+    fluid.removeTouch(args.playerId);
+}
 void CloudsVisualSystemExampleMPMFluid::selfKeyPressed(ofKeyEventArgs & args)
 {
 	
@@ -249,7 +334,7 @@ void CloudsVisualSystemExampleMPMFluid::selfKeyReleased(ofKeyEventArgs & args)
 
 void CloudsVisualSystemExampleMPMFluid::selfMouseDragged(ofMouseEventArgs& data)
 {
-
+    
 }
 
 void CloudsVisualSystemExampleMPMFluid::selfMouseMoved(ofMouseEventArgs& data)
@@ -263,3 +348,33 @@ void CloudsVisualSystemExampleMPMFluid::selfMousePressed(ofMouseEventArgs& data)
 void CloudsVisualSystemExampleMPMFluid::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
+
+Generator CloudsVisualSystemExampleMPMFluid::buildSynth()
+{
+    string strDir = GetCloudsDataPath()+"sound/textures/";
+    ofDirectory sdir(strDir);
+    string strAbsPath = sdir.getAbsolutePath() + "/slowchimes.aif";
+    SampleTable sample = loadAudioFile(strAbsPath);
+    
+    Generator low = SineWave().freq(70) * 0.2;
+    Generator sampPlayer = BufferPlayer().setBuffer(sample).loop(1).trigger(1);
+    Generator highElec = SawtoothWave().freq(mouseSpeed*200) * totalSpeed;
+    
+    Generator highElec1 = SineWave().freq(0.2+mouseSpeed*10) * Noise() * totalSpeed / 2;
+    
+    Generator highElec2 = LFNoise().setFreq(800+mouseX*500) * totalSpeed;
+    
+    
+    Generator highElec3 = SineWave().freq(100) * SineWave().freq(1) *totalSpeed;
+    
+    return (sampPlayer * highElec) * volumeControl[0] +
+            highElec2 * volumeControl[1] +
+            highElec3 * volumeControl[2] +
+            highElec1 * volumeControl[3];
+}
+
+void CloudsVisualSystemExampleMPMFluid::audioRequested(ofAudioEventArgs& args)
+{
+    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+}
+

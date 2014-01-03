@@ -321,9 +321,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     
     int moreMenThanWomen = 0;
     int timeForNewQuesiton = 0;
-//    float preRollFlagTime  = 0;
     float clipHandleDuration = getHandleForClip(clip);
-//    act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
+	bool systemHasSound = false;
     totalSecondsEnqueued = preRollDuration;
     act->addClip(clip, topic, totalSecondsEnqueued, clipHandleDuration, getCurrentDichotomyBalance());
     cout << "CLIP START DURATION IS " << clip.getDuration() << endl;
@@ -348,7 +347,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     
     vsScoreStream << topic <<","<< clip.getLinkName() <<","<< currentPreset.getID() << endl;
     vsScoreStream << log << endl;
-    
+
     systemRunning = true;
     ////
     
@@ -391,6 +390,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
         vector<CloudsClip> nextOptions = parser->getClipsWithKeyword(topic);
         
         //add all manual links
+		//JG CONVERTED TO UNIFIED LINK QUESTION FUNCTION
         vector<CloudsLink>& links = parser->getLinksForClip( clip );
         for(int i = 0; i < links.size(); i++){
             
@@ -417,7 +417,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
                 }
             }
         }
-        
+        ///END UNIFIED TEST
+		
         /////////////////SELECTION
         vector<pair<float,string> > scoreLogPairs;
         float topScore = 0;
@@ -426,8 +427,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
             string log = "";
             
             float score = scoreForClip(localClipHistory, nextClipOption, topic,log,
-									   systemRunning, isPresetIndefinite,
-									   run.actCount,
+									   systemRunning, systemHasSound,
+									   isPresetIndefinite, run.actCount,
 									   moreMenThanWomen, timesOnCurrentTopic,
 									   localTimesOnCurrentTopicHistory[topic]);
             
@@ -516,8 +517,48 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
         //check to see if we want to add a visual system
         float clipStartTime = act->getItemForClip(clip).startTime;
         float clipEndTime = act->getItemForClip(clip).endTime;
+		if(!systemRunning){
+			
+			//NO system running, check to see if we want a system
+			float timeSinceLastVisualSystem = clipEndTime - lastVisualSystemEnded;
+			if(timeSinceLastVisualSystem > maxVisualSystemGapTime /*&& clip.getDuration() > longClipThreshold*/){
+				
+				visualSystemStartTime = clipStartTime + clip.getDuration() * longClipFadeInPercent;
+				maxTimeRemainingForVisualSystem = systemMaxRunTime;
+				
+				string log;
+				currentPreset = getVisualSystemPreset(topic, clip, localPresetHistory, log);
+				cout << "visual system preset is selected : " << currentPreset.getID() << " for topic : " << topic << " and clip " << clip.getLinkName() << endl;
+				systemHasSound = currentPreset.hasSound;
+				
+				//The run now listens to act events and is updated via them
+				localPresetHistory.push_back(currentPreset.getID());
+				
+				isPresetIndefinite = currentPreset.indefinite;
+				if (!isPresetIndefinite) {
+					definitePresetEndTime = visualSystemStartTime + currentPreset.duration;
+				}
+				
+				vsScoreStream << topic <<","<< clip.getLinkName() <<","<< currentPreset.getID() << endl;
+				vsScoreStream << log << endl;
+				
+				systemRunning = true;
+			}
+		}
+		
         if( systemRunning ) {
-            visualSystemDuration = clipStartTime - visualSystemStartTime;
+			
+			if(systemHasSound){
+				if(isPresetIndefinite){
+					visualSystemDuration = systemMaxRunTime*.75;
+				}
+				else {
+					visualSystemDuration = currentPreset.duration;
+				}
+			}
+			else {
+				visualSystemDuration = clipStartTime - visualSystemStartTime;
+			}
             
             if(isPresetIndefinite){
                 //if the indefinite visual system has gone greater than the max run time end the system
@@ -531,7 +572,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
                     systemRunning = false;
                     lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
                 }
-                
                 //if the topic has changed and the system is still running extend the visual system, push back the clip start time
                 //and then start the new topic after that
                 else if(topic != previousTopic && systemRunning ){
@@ -540,7 +580,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
                     
                     cout<<"Adding gap to respect topic change: "<< clip.getLinkName()<<endl;
                     //updating totalSecondsEnqueued here may not be the best way to do this
-                    totalSecondsEnqueued +=cadenceForTopicChangeMultiplier;
+                    totalSecondsEnqueued += cadenceForTopicChangeMultiplier;
                     
                     //pushing back clip start time to account for new gap
                     act->updateClipStartTime(clip, totalSecondsEnqueued,clipHandleDuration, topic);
@@ -549,7 +589,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
                     cout<<" indefinite visual system preset is loaded : "<< currentPreset.getID()<<" for duration : "<< visualSystemDuration<<endl;
                     act->addVisualSystem(currentPreset, visualSystemStartTime, visualSystemDuration );
                     act->addGapForCadence(currentPreset,visualSystemStartTime + visualSystemDuration,  gapTimeForTopicChange);
-                    //                    act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
                     systemRunning = false;
                     lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
                     
@@ -562,37 +601,10 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
                     definitePresetEndTime = visualSystemStartTime + currentPreset.duration;
                     cout<<" definite visual system preset is loaded : "<< currentPreset.getID()<<" for duration : "<< visualSystemDuration<<endl;
                     act->addVisualSystem(currentPreset, visualSystemStartTime, definitePresetEndTime);
-                    //                    act->removeQuestionAtTime(visualSystemStartTime, definitePresetEndTime);
                     systemRunning = false;
                     isPresetIndefinite = true;
                     lastVisualSystemEnded = visualSystemStartTime + definitePresetEndTime;
                 }
-            }
-        }
-        else {
-            float timeSinceLastVisualSystem = clipEndTime - lastVisualSystemEnded;
-            
-            if(timeSinceLastVisualSystem > maxVisualSystemGapTime /*&& clip.getDuration() > longClipThreshold*/){
-                
-                visualSystemStartTime = clipStartTime + clip.getDuration() * longClipFadeInPercent;
-                maxTimeRemainingForVisualSystem = systemMaxRunTime;
-                
-                string log;
-                currentPreset = getVisualSystemPreset(topic, clip, localPresetHistory, log);
-                cout<<"visual system preset is selected : "<< currentPreset.getID()<<" for topic : "<< topic<<" and clip "<<clip.getLinkName()<<endl;
-                
-                //The run now listens to act events and is updated via them
-                localPresetHistory.push_back(currentPreset.getID());
-                
-                isPresetIndefinite = currentPreset.indefinite;
-                if (!isPresetIndefinite) {
-                    definitePresetEndTime = visualSystemStartTime + currentPreset.duration;
-                }
-                
-                vsScoreStream << topic <<","<< clip.getLinkName() <<","<< currentPreset.getID() << endl;
-                vsScoreStream << log << endl;
-                
-                systemRunning = true;
             }
         }
         
@@ -897,6 +909,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history,
 									  string topic, string& log,
 									  int currentRun,
 									  bool visualSystemRunning,
+									  bool visualSystemHasSound,
 									  bool isPresetIndefinite,
 									  int moreMenThanWomen,
 									  int timesOnCurrentTopic,
@@ -1112,28 +1125,19 @@ float CloudsStoryEngine::getHandleForClip(CloudsClip& clip){
 }
 
 bool CloudsStoryEngine::historyContainsClip(CloudsClip& m, vector<CloudsClip>& history){
-    string clipLinkName = m.getLinkName();
-    
-    vector<string> overlappingClips;
-    if(m.hasOverlappingClips() ){
-        overlappingClips = m.getOverlappingClips();
-    }
+    string clipID = m.getID();
     
     for(int i = 0; i < history.size(); i++){
-        if(clipLinkName == history[i].getLinkName()){
+		
+        if(clipID == history[i].getID()){
             return true;
         }
         
-        if (! overlappingClips.empty()) {
-            if(ofContains(overlappingClips, history[i].getID())){
-                
-                cout << "        REJECTED Clip " << m.getLinkName() << ": it overlaps with clip " <<history[i].getLinkName()<<" which has already been visited"<<endl;
-                return true;
-            }
+        if (m.overlapsWithClip(history[i])) {
+			cout << "        REJECTED Clip " << m.getLinkName() << ": it overlaps with clip " <<history[i].getLinkName()<<" which has already been visited"<<endl;
+			return true;
         }
     }
-    
-    
     return false;
 }
 

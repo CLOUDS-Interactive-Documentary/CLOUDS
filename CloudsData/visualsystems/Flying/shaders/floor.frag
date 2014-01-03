@@ -16,12 +16,14 @@ varying float fogAmount;
 varying vec3 vEye;
 varying float depth;
 varying float distFromFloorLookAt;
+varying float edgeFade;
 
 vec3 hsvToRgb(vec3 hsv) { return mix(vec3(1.),clamp((abs(fract(hsv.x+vec3(3.,2.,1.)/3.)*6.-3.)-1.),0.,1.),hsv.y)*hsv.z; }
 
 void main()
 {
     vec3 bright = hsvToRgb(mix(hsv0, hsv1, depth));
+    
     vec3 wireframe = texture2D(tex, resolution * gl_TexCoord[0].st).rgb;
     
     vec3 col = step(distFromFloorLookAt, growDist) * bright + step(growDist, distFromFloorLookAt) * wireframe;
@@ -39,5 +41,5 @@ void main()
 	float specular = pow(nDotH, 64);
     
     //gl_FragColor = vec4(gl_TexCoord[0].t / maxDepth, gl_TexCoord[0].t / maxDepth, gl_TexCoord[0].t / maxDepth, 1.0);//gl_Color;//vec4(gl_TexCoord[0].s, gl_TexCoord[0].s, gl_TexCoord[0].s, 1.0) * diffuse;//
-    gl_FragColor = (1.0 - fogAmount) * vec4(col * (diffuse + specular), 1.0);//gl_Color;//vec4(gl_TexCoord[0].s, gl_TexCoord[0].s, gl_TexCoord[0].s, 1.0) * diffuse;//
+    gl_FragColor = edgeFade * (1.0 - fogAmount) * vec4(col * (diffuse + specular), 1.0);//gl_Color;//vec4(gl_TexCoord[0].s, gl_TexCoord[0].s, gl_TexCoord[0].s, 1.0) * diffuse;//
 }

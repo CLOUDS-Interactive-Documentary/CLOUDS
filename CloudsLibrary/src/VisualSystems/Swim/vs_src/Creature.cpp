@@ -98,4 +98,10 @@ namespace itg
         while (r2 > 1.0 || r2 == 0);
         return mean + x * stdDev * sqrt(-2.f * log(r2) / r2);
     }
+    
+    double Creature::getElapsed()
+    {
+        if (ofGetLastFrameTime() > 0.25) return 0.02;
+        else return ofGetLastFrameTime();
+    }
 }

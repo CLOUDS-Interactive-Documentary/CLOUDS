@@ -26,6 +26,7 @@ CloudsClip::CloudsClip(){
     keywordsDirty = true;
 	networkPosition = ofVec3f(-1,-1,-1);
 	hasProjectExample = false;
+    speakerVolume = 1.0;
 }
 
 string CloudsClip::getLinkName(){
@@ -34,6 +35,10 @@ string CloudsClip::getLinkName(){
 
 string CloudsClip::getSpeakerFirstName(){
 	return CloudsSpeaker::speakers[person].firstName;
+}
+
+string CloudsClip::getSpeakerFullName(){
+    return CloudsSpeaker::speakers[person].firstName + " "+ CloudsSpeaker::speakers[person].lastName;
 }
 
 string CloudsClip::getSpeakerLastName(){
@@ -48,37 +53,42 @@ float CloudsClip::getDuration(){
 	return (endFrame - startFrame) / (is30FPS() ? 29.97 : 23.976); //TODO: HigaSan was recorded @ 30.0, need to compensate
 }
 
-//string CloudsClip::getStartingQuestion(){
-//    if(startingQuestion.empty()){
-//        return "-";
-//    }
-//    else{
-//		return startingQuestion;
-//    }
+void CloudsClip::addOverlappingClip(CloudsClip& clip){
+    overlappingClipIDs.push_back(clip.getID());
+}
+
+void CloudsClip::addOverlappingClipID(string clipID){
+	overlappingClipIDs.push_back(clipID);
+}
+void CloudsClip::setSpeakerVolume(float vol){
+    speakerVolume = vol;
+}
+
+float CloudsClip::getSpeakerVolume(){
+    return speakerVolume;
+}
+
+//void CloudsClip::removeOverlappingClipName(string clipName) {
+//    if(ofContains(overlappingClips, clipName)){
+//        overlappingClips.erase(overlappingClips.begin()+ofFind(overlappingClips, clipName));
+//        
+//        cout<<"removing clip "<<clipName <<" from overlapping vector of clip "<< getLinkName()<<endl;
+//     }
 //}
-
-void CloudsClip::addOverlappingClipName( string clipName){
-    overlappingClips.push_back(clipName);
-}
-
-void CloudsClip::removeOverlappingClipName(string clipName) {
-    if(ofContains(overlappingClips, clipName)){
-        overlappingClips.erase(overlappingClips.begin()+ofFind(overlappingClips, clipName));
-        
-        cout<<"removing clip "<<clipName <<" from overlapping vector of clip "<< getLinkName()<<endl;
-     }
-}
 
 bool CloudsClip::hasOverlappingClips(){
-    return !overlappingClips.empty();
+    return !overlappingClipIDs.empty();
 }
 
-vector<string> CloudsClip::getOverlappingClips(){
-    return overlappingClips;
+vector<string>& CloudsClip::getOverlappingClipIDs(){
+    return overlappingClipIDs;
 }
-//void CloudsClip::setStartingQuestion(string question){
-//    startingQuestion = question;
-//}
+bool CloudsClip::overlapsWithClip(CloudsClip& clip){
+	return ofContains(overlappingClipIDs, clip.getID());
+}
+bool CloudsClip::overlapsWithClipID(string clipID){
+	return ofContains(overlappingClipIDs, clipID);
+}
 bool CloudsClip::hasStartingQuestion(){
 	return hasQuestion() && hasSpecialKeyword("#start");
 }
@@ -266,7 +276,7 @@ void CloudsClip::collateKeywords(){
 			else {
 				projectExampleTitle = exampleProject[1];
 				hasProjectExample = true;
-				cout << "Found project example " << projectExampleTitle << " for clip " << getLinkName() << endl;
+//				cout << "Found project example " << projectExampleTitle << " for clip " << getLinkName() << endl;
 			}
 			break;
 		}

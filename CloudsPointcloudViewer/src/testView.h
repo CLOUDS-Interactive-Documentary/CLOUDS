@@ -11,7 +11,7 @@
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
 	IBOutlet NSTableView* clipTable;
     IBOutlet NSTextField* interventionTextBox;
-    
+    IBOutlet NSTextField* speakerVolTextBox;
 	
 	CloudsFCPParser parser;
 	CloudsHUDController hud;
@@ -24,6 +24,7 @@
 
 @property (assign) IBOutlet NSTableView *clipTable;
 @property (assign) IBOutlet NSTextField *interventionTextBox;
+@property (assign) IBOutlet NSTextField *speakerVolTextBox;
 
 - (void)setup;
 - (void)update;
@@ -37,7 +38,10 @@
 - (void)mousePressed:(NSPoint)p button:(int)button;
 - (void)mouseReleased:(NSPoint)p button:(int)button;
 - (void)windowResized:(NSSize)size;
-- (void)addIntervention:(id)sender;
+
+- (void)updateSpeakerVolumeTextField;
+- (IBAction)addIntervention:(id)sender;
+- (IBAction)updateSpeakerVolume:(id)sender;
 - (IBAction)loadClipFromTable:(id)sender;
 
 

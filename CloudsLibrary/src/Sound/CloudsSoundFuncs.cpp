@@ -80,6 +80,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         mel = simplemelodies[a];
     }
     
+    // SINE WAVE TEST
     if (mo=="testsine")
     {
         PATCHSYNTH("WAVETABLE", "out 0-1");
@@ -441,26 +442,55 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     if (mo=="kissmyarpsynch")
     {
         SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
-        melodySolver m(arg_a, pitches[mh], mel);
-        int curpitch;
-        float freq;
-        
-        for(i = 0;i<musicdur;i+=tempo*2)
+        if(arg_a=="sequencer")
         {
-            if(rhythms[mr].beats[bcount]>0.) {
+            vector<lukeNote> n;
+            cloudsSequencer(arg_b, n);
+            float t = 0.;
+            int i=0;
+            float freq;
+            while(t+n[i].starttime<musicdur)
+            {
                 int oct = ofRandom(0., 1.)*12;
-                curpitch = m.tick();
-                if(curpitch>-1) {
-                    int pitch = curpitch % 12;
-                    pitch+=pitches[mh].basenote;
-                    pitch+=oct;
-                    pitch = scale(pitch, pitches[mh].scale);
-                    freq = mtof(pitch);
-                    WAVETABLE(outskip+i, tempo*1.5, 0.05*instGain, freq, ofRandom(0.,1.), "wf_tri", "amp_sharphold");
-                    WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025*instGain, freq, ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+                int pitch = n[i].pitch % 12;
+                pitch+=pitches[mh].basenote;
+                pitch+=oct;
+                pitch = scale(pitch, pitches[mh].scale);
+                freq = mtof(pitch);
+                WAVETABLE(t+outskip+n[i].starttime*seqrate, tempo*1.5, 0.05*instGain, freq, ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+                WAVETABLE(t+outskip+n[i].starttime*seqrate+tempo*6, tempo*1.5, 0.025*instGain, freq, ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+                
+                i++;
+                if(i>=n.size())
+                {
+                    t+=n[i-1].starttime;
+                    i = 0;
                 }
             }
-            bcount = (bcount+1)%rhythms[mr].beats.size();
+        }
+        else
+        {
+            melodySolver m(arg_a, pitches[mh], mel);
+            int curpitch;
+            float freq;
+            
+            for(i = 0;i<musicdur;i+=tempo*2)
+            {
+                if(rhythms[mr].beats[bcount]>0.) {
+                    int oct = ofRandom(0., 1.)*12;
+                    curpitch = m.tick();
+                    if(curpitch>-1) {
+                        int pitch = curpitch % 12;
+                        pitch+=pitches[mh].basenote;
+                        pitch+=oct;
+                        pitch = scale(pitch, pitches[mh].scale);
+                        freq = mtof(pitch);
+                        WAVETABLE(outskip+i, tempo*1.5, 0.05*instGain, freq, ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+                        WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025*instGain, freq, ofRandom(0.,1.), "wf_tri", "amp_sharphold");
+                    }
+                }
+                bcount = (bcount+1)%rhythms[mr].beats.size();
+            }
         }
     }
     
@@ -468,26 +498,55 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     if (mo=="kissmysinesynch")
     {
         SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0, "WAVETABLE", instnum, ampenvelope);
-        melodySolver m(arg_a, pitches[mh], mel);
-        int curpitch;
-        float freq;
-        
-        for(i = 0;i<musicdur;i+=tempo*2)
+        if(arg_a=="sequencer")
         {
-            if(rhythms[mr].beats[bcount]>0.) {
-                int oct = ofRandom(0., 1.)*12;
-                curpitch = m.tick();
-                if(curpitch>-1) {
-                    int pitch = curpitch % 12;
-                    pitch+=pitches[mh].basenote;
-                    pitch+=oct;
-                    pitch = scale(pitch, pitches[mh].scale);
-                    freq = mtof(pitch);
-                    WAVETABLE(outskip+i, tempo*1.5, 0.05*instGain, freq, ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
-                    WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025*instGain, freq, ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
+            vector<lukeNote> n;
+            cloudsSequencer(arg_b, n);
+            float t = 0.;
+            int i=0;
+            float freq;
+            while(t+n[i].starttime<musicdur)
+            {
+                int oct = ofRandom(-1., 2.)*12;
+                int pitch = n[i].pitch % 12;
+                pitch+=pitches[mh].basenote;
+                pitch+=oct;
+                pitch = scale(pitch, pitches[mh].scale);
+                freq = mtof(pitch);
+                WAVETABLE(t+outskip+n[i].starttime*seqrate, tempo*1.5, 0.05*instGain, freq, ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
+                WAVETABLE(t+outskip+n[i].starttime*seqrate+tempo*6, tempo*1.5, 0.025*instGain, freq, ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
+                
+                i++;
+                if(i>=n.size())
+                {
+                    t+=n[i-1].starttime;
+                    i = 0;
                 }
             }
-            bcount = (bcount+1)%rhythms[mr].beats.size();
+        }
+        else
+        {
+            melodySolver m(arg_a, pitches[mh], mel);
+            int curpitch;
+            float freq;
+            
+            for(i = 0;i<musicdur;i+=tempo*2)
+            {
+                if(rhythms[mr].beats[bcount]>0.) {
+                    int oct = ofRandom(0., 1.)*12;
+                    curpitch = m.tick();
+                    if(curpitch>-1) {
+                        int pitch = curpitch % 12;
+                        pitch+=pitches[mh].basenote;
+                        pitch+=oct;
+                        pitch = scale(pitch, pitches[mh].scale);
+                        freq = mtof(pitch);
+                        WAVETABLE(outskip+i, tempo*1.5, 0.05*instGain, freq, ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
+                        WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025*instGain, freq, ofRandom(0.,1.), "wf_puresine", "amp_sharpadsr");
+                    }
+                }
+                bcount = (bcount+1)%rhythms[mr].beats.size();
+            }
         }
     }
     

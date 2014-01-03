@@ -18,12 +18,13 @@ public:
 	};
 	~TweenInfo(){};
 	
-	void set( float _step, float _duration, float _delay )
+	void set( float _step, float _duration, float _delay, float _scale = 1 )
 	{
 		step = _step;
 		duration = _duration;
 		delay = _delay;
 		reverse = false;
+		scale = _scale;
 	}
 	
 	void operator = (TweenInfo ti)
@@ -53,8 +54,8 @@ public:
 	
 	void updateRotations();
 	
-	void addRotationTween( string axis, float startVal, float step, float duration, float delay, float increment );
-	void setRotationTween( string axis, float startVal, float step, float duration, float delay, float increment );
+	void addRotationTween( string axis, float startVal, float step, float duration, float delay, float increment, float _scale=1 );
+	void setRotationTween( string axis, float startVal, float step, float duration, float delay, float increment, float _scale=1 );
 	
 	void draw();
 	
@@ -74,11 +75,12 @@ public:
 	
 	void getTweenReverse( string axis );
 	
+	void setEase( ofxEasing& e );
+	void setEase( ofxEasing* e );
+	
 //protected:
 	ofxEasing* ease;
-	ofxEasingQuint 	easingquint;
-	ofxEasingBounce easebounce;
-	ofxEasingSine easesine;
+	ofxEasingLinear easelinear;
 	
 	
 	ofVec3f eularAngels;

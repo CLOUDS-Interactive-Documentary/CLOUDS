@@ -140,13 +140,15 @@ void colonyCell::doScanAndFlock(neighbor_iterator& iter){
 //==========================================================================================
 
 void colonyCell::doFeedCellNoise(){
-    lastFeedValue = powf(ofNoise(position.x, position.y, position.z, ofGetElapsedTimef() * _params.nutrientTimeCoef), 1./_params.nutrientFalloff )* _params.nutrientAmount;
+    lastFeedValue = getCellNoise(position.x, position.y, _params.nutrientTimeCoef, _params.nutrientFalloff, _params.nutrientAmount, _params.nutrientScale);
 }
 
-void colonyCell::doFeedCellNoise(const ofFbo& texture){
-    //TODO: Implement
+float colonyCell::getCellNoise(int x, int y, float nutrientTimeCoef, float nutrientFalloff, float nutrientAmount, float nutrientScale){
+    return powf(ofNoise(x * nutrientScale,
+                        y * nutrientScale,
+                        ofGetElapsedTimef() * nutrientTimeCoef),
+                nutrientFalloff ) * nutrientAmount;
 }
-
 
 void colonyCell::doAddTurbulence(){
     float changeRate = 0.001 * _params.spdTurbulence;

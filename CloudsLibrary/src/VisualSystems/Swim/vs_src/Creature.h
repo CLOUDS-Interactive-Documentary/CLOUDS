@@ -61,6 +61,8 @@ namespace itg
         
         static float fogStart, fogEnd;
         
+        static double getElapsed();
+        
 		Creature();
         ~Creature() {}
         

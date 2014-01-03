@@ -149,7 +149,8 @@ protected:
 	float edgeSmoothing, cubeScale, specExpo, specScale;
 	ofImage colorMap;
 	ofColor edgeColor, fillColor, fillColor2, fogColor;
-	float fogDist, fogExpo, fogSaturation, fogHue, fogBrightness;
+	float fogDist, fogExpo;
+	int fogSaturation, fogHue, fogBrightness;
 	bool bUseFog;
 	
 	bool bDrawVoxels, bDrawCubeCraft;

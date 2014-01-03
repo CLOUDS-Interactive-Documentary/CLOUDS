@@ -36,6 +36,8 @@
 @property(nonatomic,readonly) int clipEndFrame;
 @property(nonatomic,readonly) ofVideoPlayer& preview;
 
+
+
 - (void) setup;
 - (void) update;
 - (void) draw;
@@ -53,6 +55,8 @@
 - (IBAction)linkFromLeftToRight:(id)sender;
 - (IBAction)linkFromRightToLeft:(id)sender;
 - (IBAction)suppressClips:(id)sender;
+
+- (IBAction) autolinkByNumber:(id)sender;
 
 - (float) clipPercentComplete;
 

@@ -1,0 +1,42 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>ART1Settings</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>343.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ART1 ACTIVE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>ART1 POS-X</Name>
+    <Value>-83.862068176</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>ART1 POS-Y</Name>
+    <Value>-71.251235962</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>ART1 POS-Z</Name>
+    <Value>-59.901481628</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ART1 POWER</Name>
+    <Value>-0.290640414</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ART1 EXPFACTOR</Name>
+    <Value>0.256157637</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ART1 LIMIT</Name>
+    <Value>5.467980385</Value>
+</Widget>

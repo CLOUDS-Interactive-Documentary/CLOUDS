@@ -1,10 +1,11 @@
 #include "testApp.h"
-
+#include "CloudsInputKinectOSC.h"
 //--------------------------------------------------------------
 void testApp::setup()
 {
+ 
     ofSetVerticalSync(true);
-    
+//    SetCloudsInputKinect();
 	vs.setup();
 	vs.playSystem();
 }

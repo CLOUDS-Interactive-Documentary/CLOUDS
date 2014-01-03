@@ -9,7 +9,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxSvg.h"
 #include "ofxTween.h"
 #include "CloudsSVGMesh.h"
 
@@ -26,9 +25,12 @@ class CloudsHUDLayer
 	CloudsSVGMesh svg;
 	
 	void start();
+    void close();
 	void update();
 	void draw();
 	
+    bool isOpen();
+    
 	bool animating;
 	float delayTime;
 	float startTime;
@@ -44,5 +46,7 @@ class CloudsHUDLayer
 	ofRectangle drawRect;
 	ofVec2f startPoint;
 	ofVec2f endPoint;
-	
+    
+  protected:
+    bool bIsOpen;
 };

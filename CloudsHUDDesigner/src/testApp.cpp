@@ -127,7 +127,7 @@ void testApp::guiEvent(ofxUIEventArgs &e)
 void testApp::keyPressed(int key){
     
 	if(key == 'C'){
-		hud.clipBegan( parser.getRandomClip() );
+		hud.respondToClip( parser.getRandomClip() );
 	}
 	
 	if(key == 'E'){
@@ -140,10 +140,9 @@ void testApp::keyPressed(int key){
 		
 		if(projectExampleIndecs.size() > 0){
 			int exampleIndex = projectExampleIndecs[ ofRandom(projectExampleIndecs.size()) ];
-			hud.clipBegan( parser.getAllClips()[exampleIndex] );
+			hud.respondToClip( parser.getAllClips()[exampleIndex] );
 			cout << "SENT CLIP " << parser.getAllClips()[exampleIndex].getLinkName() << " WITH EXAMPLE " << parser.getAllClips()[exampleIndex].projectExampleTitle << endl;
 		}
-		
 	}
 	
 	if(key == ' '){

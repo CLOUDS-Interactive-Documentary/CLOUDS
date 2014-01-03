@@ -16,30 +16,41 @@ void testApp::setup(){
 	storyEngine.combinedClipsOnly = false;
 	storyEngine.setup();
 	
+	srand(ofGetSeconds());
 	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
 	CloudsAct* act = storyEngine.buildAct(run, startingNodes[ ofRandom(startingNodes.size()) ]);
 	
 	//act->triggerAllEvents();	
 	run.topicHistory = act->getAllTopics();
 	run.clipHistory = act->getAllClips();
-	
+	cout << "** TRAVERSAL INCLUDES:" << endl;
+	for(int i = 0; i < run.clipHistory.size(); i++){
+		cout << "	** " << run.clipHistory[i].getID() << endl;
+	}
 	clusterMap.buildEntireCluster(parser);
 	clusterMap.setRun(run);
 	clusterMap.traverse();
 	
 	clusterMap.setup();
 	clusterMap.playSystem();
+	
+//	for(int i = 0; i < parser.getAllClips().size(); i++){
+//		cout << parser.getAllClips()[i].getID() << endl;
+//	}
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-	
 
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
 
+}
+//--------------------------------------------------------------
+void testApp::exit(){
+	clusterMap.exit();
 }
 
 //--------------------------------------------------------------

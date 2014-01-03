@@ -414,28 +414,33 @@ void CloudsVisualSystemHistogram::addSoundPoint()
             soundPlayer.setLogAverages(88, numRows);
         }
         vector<float> allLevels = getFFT();
-        for (int i = 0; i < numRows; i++) {
-            float currLevel = allLevels[i] * levelAdjust;
-            float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax);
-            
-            // move everything back one position
-            int last  = MIN(dataPoints.size() - 1, (i + 1) * colsPerRow - 1);
-            int first = MIN(last, i * colsPerRow + 1);
-            for (int j = first; j <= last; j++) {
-                dataPoints[j - 1] = dataPoints[j];
+        if(allLevels.size() == numRows){
+            for (int i = 0; i < numRows; i++) {
+                float currLevel = allLevels[i] * levelAdjust;
+                float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax);
+                
+                // move everything back one position
+                int last  = MIN(dataPoints.size() - 1, (i + 1) * colsPerRow - 1);
+                int first = MIN(last, i * colsPerRow + 1);
+                for (int j = first; j <= last; j++) {
+                    dataPoints[j - 1] = dataPoints[j];
+                }
+                
+                // add the new value at the end
+                dataPoints[last] = newValue;
             }
-            
-            // add the new value at the end
-            dataPoints[last] = newValue;
         }
     }
     else {
         if (soundPlayer.getBandsPerOctave() != 1) {
             soundPlayer.setLogAverages(88, 1);
         }
-        float currLevel = getFFT()[0] * levelAdjust;
-        float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax);
-        dataPoints.push_back(newValue);
+        if(getFFT().size() > 0){
+            float currLevel = getFFT()[0] * levelAdjust;
+            float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax);
+            dataPoints.push_back(newValue);
+        }
+
     }
 }
 

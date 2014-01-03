@@ -13,7 +13,11 @@
 #include "CloudsVisualSystem.h"
 #include "ofxMPMFluid.h"
 
+#include "ofxTonic.h"
+#include "CloudsAudioEvents.h"
+#include "CloudsGlobal.h"
 
+using namespace Tonic;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemExampleMPMFluid : public CloudsVisualSystem {
@@ -89,6 +93,10 @@ class CloudsVisualSystemExampleMPMFluid : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
+    void selfInteractionMoved(CloudsInteractionEventArgs& args);
+	void selfInteractionStarted(CloudsInteractionEventArgs& args);
+	void selfInteractionDragged(CloudsInteractionEventArgs& args);
+	void selfInteractionEnded(CloudsInteractionEventArgs& args);
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -100,6 +108,8 @@ protected:
     
     ofxMPMFluid fluid;
     ofxMPMObstacle* obstacle;
+    
+    map<int, int> currentPlayers;
     
     float scaleFactor;
     
@@ -117,4 +127,15 @@ protected:
     ofFloatColor pColor;
     float lineWidth;
     float mouseForce;
+
+	// Sound
+    ofxUISuperCanvas* soundGui;
+    float volume[4] = {0};
+    ControlParameter volumeControl[4];
+    ControlTrigger soundTriggers[3];
+    ControlParameter mouseX, mouseY, mouseSpeed, totalSpeed;
+    int prevMouseX, prevMouseY;
+    ofxTonicSynth synth;
+    Generator buildSynth();
+	void audioRequested(ofAudioEventArgs& args);
 };

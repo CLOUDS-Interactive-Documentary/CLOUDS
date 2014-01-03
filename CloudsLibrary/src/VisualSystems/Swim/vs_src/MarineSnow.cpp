@@ -36,13 +36,13 @@ namespace itg
 {
     MarineSnow::MarineSnow() :
         alphaMin(.2f), alphaMax(.8f), innerFogStart(100.f), innerFogEnd(400.f),
-        sizeMin(0.1f), sizeMax(400.f), numParticles(100000)
+        sizeMin(0.1f), sizeMax(400.f), numParticles(100000), hueMin(.1f), hueMax(.3f),
+        saturationMin(0.f), saturationMax(.8f), yMin(-1500.f), yMax(1500.f)
     {
     }
     
     void MarineSnow::init(const string& dataPath)
     {
-        //this->numParticles = numParticles;
         mesh.setMode(OF_PRIMITIVE_POINTS);
         shader.load(dataPath + "shaders/snow");
         ofDisableArbTex();
@@ -60,13 +60,16 @@ namespace itg
         for (unsigned i = 0; i < numParticles; ++i)
         {
             mesh.addVertex(ofVec3f(ofRandom(-1500.f, 1500.f),
-                                   ofRandom(-1500.f, 1500.f),
+                                   ofRandom(yMin, yMax),
                                    ofRandom(-fogEnd, 0)));
             
-            mesh.addColor(ofFloatColor::fromHsb(ofRandom(0.1f, 0.3f), ofRandom(0.f, 0.8f), 1.f, ofRandom(alphaMin, alphaMax)));
+            mesh.addColor(ofFloatColor::fromHsb(ofRandom(hueMin, hueMax), ofRandom(saturationMin, saturationMax), 1.f, ofRandom(alphaMin, alphaMax)));
             
             // stick texture offset and size into normal
             mesh.addNormal(ofVec3f((rand() % 2) * .5f, (rand() % 2) * .5f, ofRandom(sizeMin, sizeMax)));
+         
+            // stick speed in tex coord
+            mesh.addTexCoord(ofVec2f(ofRandom(-20.f, 20.f), 0.f));
         }
     }
     
@@ -84,6 +87,9 @@ namespace itg
         shader.setUniform1f("fogEnd", fogEnd);
         shader.setUniform1f("nearClip", cam.getNearClip());
         shader.setUniform1f("camZ", cam.getPosition().z);
+        shader.setUniform1f("time", ofGetElapsedTimef());
+        shader.setUniform1f("yMin", yMin);
+        shader.setUniform1f("yRange", yMax - yMin);
         shader.setUniformTexture("tex", tex, 1);
         mesh.draw();
         shader.end();

@@ -1,0 +1,132 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>OffsetMesh</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>637.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>draw offsetMesh</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>c0</Name>
+    <XValue>0.312500000</XValue>
+    <YValue>0.179688007</YValue>
+    <RColor>169</RColor>
+    <GColor>130</GColor>
+    <BColor>255</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>c0_alpha</Name>
+    <Value>0.389162570</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>c1</Name>
+    <XValue>0.085937500</XValue>
+    <YValue>0.523437977</YValue>
+    <RColor>197</RColor>
+    <GColor>255</GColor>
+    <BColor>255</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>c1_alpha</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>colorMixScale</Name>
+    <Value>6.157635689</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>faceScale</Name>
+    <Value>0.901477814</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>faceOffset</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseOctaveScale</Name>
+    <Value>1.929261088</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseExpo</Name>
+    <Value>1.585219979</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseExpoScale</Name>
+    <Value>1.200000048</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>meshNoiseScale</Name>
+    <Value>0.046359099</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>diaSphere.txt</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>geometric_hi.txt</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>geometric_mid.txt</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>geometric_too.txt</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>geometric.txt</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>hexSphere_mid.txt</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>hexSphere.txt</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>organicDense.txt</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>organicSphere.txt</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>orgo.txt</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>organic_heavy.txt</Name>
+    <Value>0</Value>
+</Widget>
