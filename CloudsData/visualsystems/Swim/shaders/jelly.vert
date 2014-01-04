@@ -28,15 +28,13 @@ void main()
 {
     gl_TexCoord[0] = gl_MultiTexCoord0;
     
-    vec4 vertex = deform(gl_Vertex);
+    vec4 vWorld = deform(gl_Vertex);
     
-    vec4 vertexEye = gl_ModelViewMatrix * vertex;
-    
-    vEye = vertexEye.xyz;
+    vEye = (gl_ModelViewMatrix * vWorld).xyz;
     
     nEye = gl_NormalMatrix * gl_Normal;
     
     fogAmount = clamp((length(vEye) - fogStart) / (fogEnd - fogStart), 0.0, 1.0);
     
-    gl_Position = gl_ProjectionMatrix * vertexEye;
+    gl_Position = gl_ProjectionMatrix * vec4(vEye, 1.0);
 }

@@ -79,6 +79,7 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	}
 	shaderGui->addSpacer();
 	shaderGui->addToggle("depthTest", &bDepthTest);
+	shaderGui->addToggle("backface culling", &bCullBackface);
 	shaderGui->addSpacer();
 	shaderGui->addLabel("ALPHA_BLENDING");
 	shaderGui->addRadio("blendModes", blendNames);
@@ -411,6 +412,8 @@ void CloudsVisualSystemWormHole::selfSetDefaults()
 	lightConstantAttenuation = .7;
 	lightLinearAttenuation = .01;
 	lightQuadraticAttenuation = .01;
+	
+	bCullBackface = true;
 }
 
 void CloudsVisualSystemWormHole::selfSetup()

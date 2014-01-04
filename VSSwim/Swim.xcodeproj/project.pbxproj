@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282EC28418719ABE0013108B /* GpuParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282EC28118719ABE0013108B /* GpuParticles.cpp */; };
+		282EC28918719AED0013108B /* tentaclesDraw.frag in Sources */ = {isa = PBXBuildFile; fileRef = 282EC28518719AED0013108B /* tentaclesDraw.frag */; };
+		282EC28A18719AED0013108B /* tentaclesDraw.vert in Sources */ = {isa = PBXBuildFile; fileRef = 282EC28618719AED0013108B /* tentaclesDraw.vert */; };
+		282EC28B18719AED0013108B /* tentaclesUpdate.frag in Sources */ = {isa = PBXBuildFile; fileRef = 282EC28718719AED0013108B /* tentaclesUpdate.frag */; };
+		282EC28C18719AED0013108B /* tentaclesUpdate.vert in Sources */ = {isa = PBXBuildFile; fileRef = 282EC28818719AED0013108B /* tentaclesUpdate.vert */; };
 		282FEBF5182FFE6600519D79 /* Bubbles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282FEBD9182FFE6500519D79 /* Bubbles.cpp */; };
 		282FEBF6182FFE6600519D79 /* CloudsVisualSystemSwim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282FEBDB182FFE6500519D79 /* CloudsVisualSystemSwim.cpp */; };
 		282FEBF7182FFE6600519D79 /* Creature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282FEBDD182FFE6500519D79 /* Creature.cpp */; };
@@ -248,6 +253,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		282EC28118719ABE0013108B /* GpuParticles.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GpuParticles.cpp; sourceTree = "<group>"; };
+		282EC28218719ABE0013108B /* GpuParticles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GpuParticles.h; sourceTree = "<group>"; };
+		282EC28318719ABE0013108B /* ofxGpuParticles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxGpuParticles.h; sourceTree = "<group>"; };
+		282EC28518719AED0013108B /* tentaclesDraw.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = tentaclesDraw.frag; sourceTree = "<group>"; };
+		282EC28618719AED0013108B /* tentaclesDraw.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = tentaclesDraw.vert; sourceTree = "<group>"; };
+		282EC28718719AED0013108B /* tentaclesUpdate.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = tentaclesUpdate.frag; sourceTree = "<group>"; };
+		282EC28818719AED0013108B /* tentaclesUpdate.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = tentaclesUpdate.vert; sourceTree = "<group>"; };
 		282FEBD9182FFE6500519D79 /* Bubbles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bubbles.cpp; sourceTree = "<group>"; };
 		282FEBDA182FFE6500519D79 /* Bubbles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bubbles.h; sourceTree = "<group>"; };
 		282FEBDB182FFE6500519D79 /* CloudsVisualSystemSwim.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = CloudsVisualSystemSwim.cpp; sourceTree = "<group>"; };
@@ -810,6 +822,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		282EC27F18719ABE0013108B /* ofxGpuParticles */ = {
+			isa = PBXGroup;
+			children = (
+				282EC28018719ABE0013108B /* src */,
+			);
+			name = ofxGpuParticles;
+			sourceTree = "<group>";
+		};
+		282EC28018719ABE0013108B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				282EC28118719ABE0013108B /* GpuParticles.cpp */,
+				282EC28218719ABE0013108B /* GpuParticles.h */,
+				282EC28318719ABE0013108B /* ofxGpuParticles.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxGpuParticles/src;
+			sourceTree = "<group>";
+		};
 		282FEBC1182FFE6500519D79 /* Swim */ = {
 			isa = PBXGroup;
 			children = (
@@ -962,6 +993,10 @@
 				284AE67C1859FFE500780DBB /* fish.vert */,
 				284AE67D1859FFE500780DBB /* jelly.frag */,
 				284AE67E1859FFE500780DBB /* jelly.vert */,
+				282EC28518719AED0013108B /* tentaclesDraw.frag */,
+				282EC28618719AED0013108B /* tentaclesDraw.vert */,
+				282EC28718719AED0013108B /* tentaclesUpdate.frag */,
+				282EC28818719AED0013108B /* tentaclesUpdate.vert */,
 			);
 			name = shaders;
 			path = ../../../../../CloudsData/visualsystems/Swim/shaders;
@@ -1361,6 +1396,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				282EC27F18719ABE0013108B /* ofxGpuParticles */,
 				2A56706B186E6D2000E7C982 /* ofxTonic */,
 				284AE5F71859D42200780DBB /* ofxOsc */,
 				285C20ED183000670065BCAE /* ofxNearestNeighbour */,
@@ -2092,6 +2128,7 @@
 				284AE6281859D42200780DBB /* OscPrintReceivedElements.cpp in Sources */,
 				E7D32FA11751C626006706ED /* ofxBufferEffectorBehavior.cpp in Sources */,
 				E7D32FA21751C626006706ED /* ofxDamperBehavior.cpp in Sources */,
+				282EC28C18719AED0013108B /* tentaclesUpdate.vert in Sources */,
 				E7D32FA31751C626006706ED /* ofxDistorterBehavior.cpp in Sources */,
 				E7D32FA41751C626006706ED /* ofxElectroStaticBehavior.cpp in Sources */,
 				284AE6231859D42200780DBB /* ofxOscSender.cpp in Sources */,
@@ -2135,6 +2172,7 @@
 				E7CF78481753FEA1006B7D41 /* ofxTimeline.cpp in Sources */,
 				2A567129186E6D2300E7C982 /* CombFilter.cpp in Sources */,
 				2A567128186E6D2300E7C982 /* BufferPlayer.cpp in Sources */,
+				282EC28A18719AED0013108B /* tentaclesDraw.vert in Sources */,
 				E7CF78491753FEA1006B7D41 /* ofxTLAudioTrack.cpp in Sources */,
 				E7CF784A1753FEA1006B7D41 /* ofxTLBangs.cpp in Sources */,
 				2A567138186E6D2300E7C982 /* ControlParameter.cpp in Sources */,
@@ -2155,6 +2193,7 @@
 				284AE6291859D42200780DBB /* OscReceivedElements.cpp in Sources */,
 				E7CF78541753FEA1006B7D41 /* ofxTLImageTrack.cpp in Sources */,
 				E7CF78551753FEA1006B7D41 /* ofxTLInOut.cpp in Sources */,
+				282EC28918719AED0013108B /* tentaclesDraw.frag in Sources */,
 				E7CF78561753FEA1006B7D41 /* ofxTLKeyframes.cpp in Sources */,
 				2A56714C186E6D2300E7C982 /* Mixer.cpp in Sources */,
 				E7CF78571753FEA1006B7D41 /* ofxTLLFO.cpp in Sources */,
@@ -2214,9 +2253,11 @@
 				285C209A182FFFEE0065BCAE /* BloomPass.cpp in Sources */,
 				284AE62A1859D42200780DBB /* OscTypes.cpp in Sources */,
 				2A56712B186E6D2300E7C982 /* ControlArithmetic.cpp in Sources */,
+				282EC28B18719AED0013108B /* tentaclesUpdate.frag in Sources */,
 				2A567144186E6D2300E7C982 /* DelayUtils.cpp in Sources */,
 				2A56713A186E6D2300E7C982 /* ControlPulse.cpp in Sources */,
 				284AE6201859D42200780DBB /* ofxOscBundle.cpp in Sources */,
+				282EC28418719ABE0013108B /* GpuParticles.cpp in Sources */,
 				284AE681185A06B200780DBB /* snow.frag in Sources */,
 				285C209B182FFFEE0065BCAE /* ContrastPass.cpp in Sources */,
 				285C209C182FFFEE0065BCAE /* ConvolutionPass.cpp in Sources */,

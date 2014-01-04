@@ -42,12 +42,15 @@ void CloudsTransitionController::transitionToInterview(float outDuration, float 
 }
 
 float CloudsTransitionController::getFadeValue(){
-	if(fadingOut()){
-		return 1. - percentTransitionOut;
+	if(transitioning){
+		if(fadingOut()){
+			return 1. - percentTransitionOut;
+		}
+		else{
+			return percentTransitionIn;
+		}
 	}
-	else{
-		return percentTransitionIn;
-	}
+	return 1.0;
 }
 
 float CloudsTransitionController::getInterviewTransitionPoint(){

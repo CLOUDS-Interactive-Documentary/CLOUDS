@@ -198,6 +198,8 @@
 		185CE9A2184A5FC800F43977 /* ofxFTGLSimpleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLSimpleLayout.h; sourceTree = "<group>"; };
 		235C96A71874F97E004523AB /* CloudsHUDLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsHUDLabel.h; path = ../../RGBD/HUD/CloudsHUDLabel.h; sourceTree = "<group>"; };
 		235C96A81874F97E004523AB /* CloudsHUDLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsHUDLabel.cpp; path = ../../RGBD/HUD/CloudsHUDLabel.cpp; sourceTree = "<group>"; };
+		235C96C11877A20E004523AB /* secondaryDisplay.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = secondaryDisplay.frag; path = ../../CloudsData/shaders/secondaryDisplay.frag; sourceTree = "<group>"; };
+		235C96C21877A20E004523AB /* secondaryDisplay.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = secondaryDisplay.vert; path = ../../CloudsData/shaders/secondaryDisplay.vert; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -512,6 +514,8 @@
 		E7B3C7F717EF75BA00581ACD /* CloudsVisualSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemManager.h; sourceTree = "<group>"; };
 		E7B3C7F817EF75BA00581ACD /* CloudsVisualSystemPreset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPreset.cpp; sourceTree = "<group>"; };
 		E7B3C7F917EF75BA00581ACD /* CloudsVisualSystemPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPreset.h; sourceTree = "<group>"; };
+		E7C289BC1877963E00A0C07F /* secondaryDisplay.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; name = secondaryDisplay.frag; path = ../../../shaders/secondaryDisplay.frag; sourceTree = "<group>"; };
+		E7C289BD1877963E00A0C07F /* secondaryDisplay.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; name = secondaryDisplay.vert; path = ../../../shaders/secondaryDisplay.vert; sourceTree = "<group>"; };
 		E7D483691860C5D000BE9BF8 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
 		E7D4836A1860C5D000BE9BF8 /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
 		E7D4836B1860C5D000BE9BF8 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
@@ -662,6 +666,15 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		235C96B8187784CB004523AB /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				235C96C11877A20E004523AB /* secondaryDisplay.frag */,
+				235C96C21877A20E004523AB /* secondaryDisplay.vert */,
+			);
+			name = shaders;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -750,6 +763,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				235C96B8187784CB004523AB /* shaders */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
@@ -1453,6 +1467,8 @@
 		E7FEFD2A187538A2009533A7 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				E7C289BD1877963E00A0C07F /* secondaryDisplay.vert */,
+				E7C289BC1877963E00A0C07F /* secondaryDisplay.frag */,
 				E7FEFD2B187538A2009533A7 /* gaussianblur.frag */,
 				E7FEFD2C187538A2009533A7 /* gaussianblur.vert */,
 				E7FEFD2D187538A2009533A7 /* network.frag */,
@@ -1515,6 +1531,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsSecondaryDisplay" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;

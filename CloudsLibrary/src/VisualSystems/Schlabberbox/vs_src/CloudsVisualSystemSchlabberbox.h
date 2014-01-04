@@ -16,7 +16,7 @@
 
 class CloudsVisualSystemSchlabberbox : public CloudsVisualSystem {
   public:
-    
+
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
@@ -26,11 +26,11 @@ class CloudsVisualSystemSchlabberbox : public CloudsVisualSystem {
 	//These methods let us add custom GUI parameters and respond to their events
     void selfSetupGui();
     void selfGuiEvent(ofxUIEventArgs &e);
-    
+
 	//Use system gui for global or logical settings, for exmpl
     void selfSetupSystemGui();
     void guiSystemEvent(ofxUIEventArgs &e);
-    
+
 	//use render gui for display settings, like changing colors
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
@@ -39,7 +39,7 @@ class CloudsVisualSystemSchlabberbox : public CloudsVisualSystem {
 	//use it to ensure all your simple variables are initialized to an
 	//acceptable default state
 	void selfSetDefaults();
-	
+
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
@@ -54,18 +54,18 @@ class CloudsVisualSystemSchlabberbox : public CloudsVisualSystem {
 	// it'll be called right before selfBegin() and you may wish to
 	// refresh anything that a preset may offset, such as stored colors or particles
 	void selfPresetLoaded(string presetPath);
-    
+
 	//do things like ofRotate/ofTranslate here
 	//any type of transformation that doesn't have to do with the camera
     void selfSceneTransformation();
-	
+
 	//normal update call
 	void selfUpdate();
 
 	// selfDraw draws in 3D using the default ofEasyCamera
 	// you can change the camera by returning getCameraRef()
     void selfDraw();
-		
+
     // draw any debug stuff here
 	void selfDrawDebug();
 
@@ -83,12 +83,12 @@ class CloudsVisualSystemSchlabberbox : public CloudsVisualSystem {
 	//Feel free to make things interactive for you, and for the user!
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
-    
+
     void selfMouseDragged(ofMouseEventArgs& data);
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
-	
+
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -99,16 +99,19 @@ class CloudsVisualSystemSchlabberbox : public CloudsVisualSystem {
 	//
 
 protected:
-    
+
     //  Your Stuff
     //
-	
+
 	ofxUISuperCanvas* customGui;
 	bool customToggle;
 	float customFloat1;
 	float customFloat2;
 
-	FluidBox fluids;	
+	float drawingForce;
+	float drawingHeight;
 	bool inForceDrawMode;
+
+	FluidBox fluids;
 
 };

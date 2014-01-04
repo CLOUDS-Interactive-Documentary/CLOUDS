@@ -42,7 +42,7 @@ void CloudsVisualSystemOscillations::selfSetupGui(){
     curveControls->addMinimalSlider("Blue", 0, 1, &curveColor.b, length, dim)->setShowValue(false);
     curveControls->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     curveControls->addMinimalSlider("Alpha", 0, 1, &curveColor.a);
-    curveControls->addMinimalSlider("Width", 0, 20, &CurveLineWidth, length * 3./2., dim)->setShowValue(false);
+    curveControls->addMinimalSlider("Width", 0.01, 20, &CurveLineWidth, length * 3./2., dim)->setShowValue(false);
     curveControls->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     curveControls->addToggle("Render Lines", &renderLines);
     

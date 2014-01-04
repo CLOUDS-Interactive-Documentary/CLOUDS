@@ -3063,8 +3063,8 @@
 			children = (
 				E70CE3AC1869648900955691 /* CloudsOrthoCamera.cpp */,
 				E70CE3AD1869648900955691 /* CloudsOrthoCamera.h */,
-				E70CE3AE1869648900955691 /* CloudsVisualSystem3DModelLoader.cpp */,
 				E70CE3AF1869648900955691 /* CloudsVisualSystem3DModelLoader.h */,
+				E70CE3AE1869648900955691 /* CloudsVisualSystem3DModelLoader.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -4594,10 +4594,10 @@
 		E70CE79D1869649100955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE79E1869649100955691 /* CloudsPathCamera.cpp */,
 				E70CE79F1869649100955691 /* CloudsPathCamera.h */,
-				E70CE7A01869649100955691 /* CloudsVisualSystemWormHole.cpp */,
+				E70CE79E1869649100955691 /* CloudsPathCamera.cpp */,
 				E70CE7A11869649100955691 /* CloudsVisualSystemWormHole.h */,
+				E70CE7A01869649100955691 /* CloudsVisualSystemWormHole.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";

@@ -26,10 +26,9 @@ void PanelGraph::selfDraw(){
 			logs.max = MAX(logs.max,logGraphPoint);
 			charPolies[it->first].addVertex( ofPoint(i,ofMap(logGraphPoint,0,drawRect.height,drawRect.getMaxY(), drawRect.getMinY())) );
 		}
-		cout << "min & max " << logs << endl;
 	}
 	
-	int col=0;
+	int col = 0;
 	int numLines = charPolies.size();
 	map<unsigned char, ofPolyline>::iterator it;
 	for(it = charPolies.begin(); it != charPolies.end(); it++){
@@ -39,6 +38,5 @@ void PanelGraph::selfDraw(){
 		it->second.draw();
 		col++;
 	}
-	
 	
 }
