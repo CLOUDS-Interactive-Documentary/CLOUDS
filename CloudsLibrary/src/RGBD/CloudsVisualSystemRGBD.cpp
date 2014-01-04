@@ -461,7 +461,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		{
 			if(ofGetFrameNum()%30 == 0)
 			{
-				cout << "wTF" << endl;
+//				cout << "wTF" << endl;
 			}
 			transitionCamTargetNode->setPosition( transitionCam.getPosition() );
 			transitionCamTargetNode->setOrientation( transitionCam.getOrientationQuat() );
@@ -821,11 +821,11 @@ void CloudsVisualSystemRGBD::lookThroughTransitionIn(){
 	
 	transitionCam.setPosition( transitionInStart.getPosition() );
 	transitionCam.setOrientation( transitionInStart.getOrientationQuat() );
+	transitionCam.movedManually();
+	//transitionCam.positionChanged = transitionCam.rotationChanged = true;
 	
-	transitionCam.positionChanged = transitionCam.rotationChanged = true;
-	
-	ofEventArgs args;
-	transitionCam.update(args);
+//	ofEventArgs args;
+//	transitionCam.update(args);
 }
 
 void CloudsVisualSystemRGBD::lookThroughTransitionOut(){
@@ -834,8 +834,9 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOut(){
 	
 	transitionCam.setPosition( transitionOutTarget.getPosition() );
 	transitionCam.setOrientation( transitionOutTarget.getOrientationQuat() );
+	transitionCam.movedManually();
 	
-	transitionCam.positionChanged = transitionCam.rotationChanged = true;
+//	transitionCam.positionChanged = transitionCam.rotationChanged = true;
 	
 	ofEventArgs args;
 	transitionCam.update(args);

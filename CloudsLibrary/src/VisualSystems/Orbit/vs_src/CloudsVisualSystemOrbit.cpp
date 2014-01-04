@@ -20,20 +20,13 @@ void CloudsVisualSystemOrbit::selfSetup()
     drawAcc = false;
     drawLine = false;
     drawMesh = true;
-    multiplePaths = false;
+    //multiplePaths = false;
     additiveBlending = false;
     motion = WAVY;
     lastPathTime = 0;
     fogStart = 200.f;
     fogEnd = 500.f;
     speed = 1.f;
-    
-    /*
-    drawEllipses = false;
-    ellipseW = 80;
-    ellipseH = 30;
-    ellipseAlpha = 20;
-    */
     
     Path::maxLineLength = 10;
     Path::maxMeshLength = 10;
@@ -42,6 +35,8 @@ void CloudsVisualSystemOrbit::selfSetup()
     post.init(ofGetWidth(), ofGetHeight(), true);
     post.createPass<FxaaPass>();
     post.createPass<BloomPass>();
+    
+    path.init(meshRadius, getVisualSystemDataPath());
     
     for (unsigned i = 0; i < post.size(); ++i)
     {
@@ -56,11 +51,6 @@ void CloudsVisualSystemOrbit::selfUpdate()
 {
     if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
 
-    if (multiplePaths && (paths.empty() || ofGetElapsedTimeMillis() - lastPathTime > PATH_INTERVAL))
-    {
-        paths.push_back(itg::Path(meshRadius));
-        lastPathTime = ofGetElapsedTimeMillis();
-    }
     switch (motion)
     {
         case WAVY:
@@ -70,7 +60,7 @@ void CloudsVisualSystemOrbit::selfUpdate()
                       60.f * ofSignedNoise(20.f + t),
                       60.f * ofSignedNoise(t) + 100.f * cos(t)
                       );
-            paths.back().addVertex(v);
+            path.addVertex(v);
             break;
         }
             
@@ -83,12 +73,12 @@ void CloudsVisualSystemOrbit::selfUpdate()
             
             for (unsigned i = 0; i < speed; ++i)
             {
-                ofVec3f prev = paths.back().back().getPos();
+                ofVec3f prev = path.back().getPos();
                 ofVec3f v = prev + h * ofVec3f(
                                             a * (prev.y - prev.x),
                                             (prev.x * (b - prev.z) - prev.y),
                                             (prev.x * prev.y - c * prev.z));
-                paths.back().addVertex(v);
+                path.addVertex(v);
             }
             break;
         }
@@ -97,9 +87,8 @@ void CloudsVisualSystemOrbit::selfUpdate()
             break;
     }
     
-    if (lockCam && paths.size())
+    if (lockCam)
     {
-        itg::Path& path = paths.back();
         ofxPtf& ptf = path.getPtfRef();
         const int cameraPositionLag = 8;
         lockedCam.setNearClip(0.1f);
@@ -123,24 +112,20 @@ void CloudsVisualSystemOrbit::selfDraw()
     //ofPushStyle();
     if (additiveBlending) ofEnableBlendMode(OF_BLENDMODE_ADD);
     if (lockCam) lockedCam.begin();
+    
+    ofSetColor(255);
     shader.begin();
     shader.setUniform1f("fogStart", fogStart);
     shader.setUniform1f("fogEnd", fogEnd);
-    shader.setUniform3f("fogColour", 0, 0, 0);
     shader.setUniform1f("litAmount", litAmount);
-    shader.setUniform3f("lEye", 1000, 1000, 1000);
-    
-    for (unsigned i = 0; i < paths.size(); ++i)
-    {
-        ofSetColor(255);
-        if (drawMesh) paths[i].drawMesh();
-        if (drawLine) paths[i].drawLine();
-        if (drawNormals) paths[i].drawNormals(10);
-        if (drawInflections) paths[i].drawInflections();
-        if (drawAcc) paths[i].drawAcc();
-    }
-    
+    //if (drawNormals) path.drawNormals(10);
+    if (drawInflections) path.drawInflections();
+    if (drawAcc) path.drawAcc();
     shader.end();
+    
+    if (drawMesh) path.drawMesh(fogStart, fogEnd, litAmount);
+    if (drawLine) path.drawLine(fogStart, fogEnd);
+    
     if (additiveBlending)
     {
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -181,14 +166,14 @@ void CloudsVisualSystemOrbit::selfSetupRenderGui()
     
     rdrGui->addLabel("Line");
     rdrGui->addToggle("drawLine", &drawLine);
-    rdrGui->addSlider("maxLineLength", 10, 5000, &Path::maxLineLength);
+    rdrGui->addIntSlider("maxLineLength", 10, 5000, &Path::maxLineLength);
     rdrGui->addSlider("lineFadeLength", 0, 1, &Path::lineFadeLength);
     rdrGui->addSlider("lineWidth", .1f, 5.f, &Path::lineWidth);
     rdrGui->addRangeSlider("hueRange", 0.f, 1.f, &Path::hueMin, &Path::hueMax);
     
     rdrGui->addLabel("Mesh");
     rdrGui->addToggle("drawMesh", &drawMesh);
-    rdrGui->addSlider("maxMeshLength", 10, 5000, &Path::maxMeshLength);
+    rdrGui->addIntSlider("maxMeshLength", 10, 5000, &Path::maxMeshLength);
     rdrGui->addSlider("meshRadius", 0.1f, 4.f, &meshRadius);
     
     //rdrGui->addLabel("Ellipses");
@@ -205,7 +190,7 @@ void CloudsVisualSystemOrbit::selfSetupRenderGui()
     rdrGui->addSlider("fogStart", 0, 2000, &fogStart);
     rdrGui->addSlider("fogEnd", 0, 2000, &fogEnd);
     rdrGui->addSlider("litAmount", 0, 1, &litAmount);
-    rdrGui->addSlider("speed", 1, 100, &speed);
+    rdrGui->addSlider("speed", 0.f, 100.f, &speed);
     
 }
 
@@ -213,21 +198,18 @@ void CloudsVisualSystemOrbit::guiRenderEvent(ofxUIEventArgs &e)
 {
     if (e.widget->getName() == "meshRadius")
     {
-        if (!paths.empty()) paths.back().setMeshRadius(meshRadius);
+        path.setMeshRadius(meshRadius);
     }
     else if (e.widget->getName() == "lorenz" && ((ofxUIToggle*)e.widget)->getValue())
     {
-        multiplePaths = false;
-        paths.clear();
-        paths.push_back(itg::Path(meshRadius));
-        paths.back().addVertex(ofVec3f(0.1, 0, 0));
+        path.clear();
+        path.addVertex(ofVec3f(0.1, 0, 0));
         motion = LORENZ;
     }
     else if (e.widget->getName() == "wavy" && ((ofxUIToggle*)e.widget)->getValue())
     {
         lastPathTime = ofGetElapsedTimeMillis();
-        paths.clear();
-        paths.push_back(itg::Path(meshRadius));
+        path.clear();
         motion = WAVY;
     }
 }

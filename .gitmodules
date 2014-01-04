@@ -1,0 +1,3 @@
+[submodule "CloudsLibrary/src/VisualSystemsPrivate"]
+	path = CloudsLibrary/src/VisualSystemsPrivate
+	url = git@github.com:obviousjim/VisualSystemsPrivate

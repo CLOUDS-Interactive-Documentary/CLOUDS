@@ -110,6 +110,7 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
         bool bRestart;
     
         bool bTextCloudMode;
+        bool bRenderCenterNodeText;
     
         float fogDensity;
         float currSpin;
