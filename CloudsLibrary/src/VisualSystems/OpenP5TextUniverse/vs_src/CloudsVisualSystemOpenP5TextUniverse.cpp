@@ -21,6 +21,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     
     customGui->addSpacer();
     customGui->addToggle("TEXT CLOUD", &bTextCloudMode);
+    customGui->addToggle("CENTER NODE TEXT", &bRenderCenterNodeText);
     customGui->addSlider("SPIN SPEED", 0, 5, &spinSpeed);
 #ifdef OCULUS_RIFT
     customGui->addSlider("OCULUS SPEED", 0, 5, &oculusSpeed);
@@ -164,7 +165,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
 {
-    if (e.widget->getName() == "TEXT CLOUD") {
+    if (e.widget->getName() == "TEXT CLOUD" || e.widget->getName() == "CENTER NODE TEXT") {
         rebuildText();
     }
     
@@ -350,7 +351,9 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     mouseSpeed = 1.0f;
 #endif
     fogDensity = 0.025f;
+    
     bTextCloudMode = false;
+    bRenderCenterNodeText = true;
     
     orbital = NULL;
 
@@ -558,7 +561,7 @@ void CloudsVisualSystemOpenP5TextUniverse::rebuildText()
     else {
         // Render nodes for paragraphs, sentences, and words.
         orbital->text = text->paragraphs[0].sentences[0].str;
-        orbital->bRenderText = true;
+        orbital->bRenderText = bRenderCenterNodeText;
         
         for (int i = 0; i < text->paragraphs.size(); i++) {
             if (text->paragraphs[i].sentences.size() > 1) {
