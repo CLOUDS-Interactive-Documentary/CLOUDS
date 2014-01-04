@@ -160,8 +160,8 @@ void CloudsVisualSystemVerletForm::mwUpdate() {
 	}
 
 	if(ofGetFrameNum()%100==0 || dead.size()>0) {
-		printf("dead %d pp %d/%d >> %s\n",
-			dead.size(),pp.size(),ppActive.size(),s);
+//		printf("dead %d pp %d/%d >> %s\n", 
+//			dead.size(),pp.size(),ppActive.size(),);
 	}
 
 	while(dead.size()>0) {
@@ -221,8 +221,7 @@ ofVec3f CloudsVisualSystemVerletForm::mwOutlineShape(ofVec3f &v) {
 
 MWParticle & CloudsVisualSystemVerletForm::mwGetParticle(signed int id,bool fromEdge,bool addToActive) {
 	MWParticle& pt=pp.at(0);
-
-	if(id>-1) {
+	if(id>-1 && id < pp.size()) {
 //		printf("mwGetParticle id=%d/%d\n",id,pp.size());
 		pt=pp[id];
 	}
@@ -693,7 +692,9 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 	
 	updateNormals();
 
-	mwGridSticky();
+	if(pp.size() > 0){
+		mwGridSticky();
+	}
 
 }
 
