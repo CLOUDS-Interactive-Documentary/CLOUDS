@@ -16,8 +16,11 @@ CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
     lightBlue = ofColor::fromHex(0x97d7fb);
     darkBlue = ofColor::fromHex(0x439ced);
     color = false;
-    stringCounter = 0;
+  //  stringCounter = 0;
     tx = .1;
+    animatingIn = false;
+    animatingOut = false;
+    animationSpeed = .5;
 }
 
 void CloudsSecondaryDisplayController::setup(){
@@ -106,12 +109,39 @@ void CloudsSecondaryDisplayController::loadSVGs(){
     bioLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/BIO.svg");
     projectLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/PROJECTEX/PROJECTEX.svg");
     questionLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/QUESTION/QUESTION.svg");
+    
+    setNormalsOn(&bioLayout);
+    setNormalsOn(&projectLayout);
+    setNormalsOn(&questionLayout);
 	
-	for(int i = 0; i < bioLayout.getMeshes().size(); i++){
+	/*for(int i = 0; i < bioLayout.getMeshes().size(); i++){
 		SVGMesh& mesh = bioLayout.getMeshes()[i];
 		if(!mesh.fill){
 			for(int v = 0; v < mesh.mesh.getNumVertices(); v++){
 				mesh.mesh.addNormal( ofVec3f( (ofRandomuf() > .5 ? 0. : 1.0), 0, 0) ); //flag as lines, with random for now
+			}
+		}
+		else{
+			for(int v = 0; v < mesh.mesh.getNumVertices(); v++){
+				mesh.mesh.addNormal( ofVec3f( 0.0, 1.0, 0.0) ); //flag as filled
+			}
+		}
+		
+	}*/
+}
+
+void CloudsSecondaryDisplayController::setNormalsOn(CloudsSVGMesh* cm){
+    for(int i = 0; i < cm->getMeshes().size(); i++){
+		SVGMesh& mesh = cm->getMeshes()[i];
+		if(!mesh.fill){
+			for(int v = 0; v < mesh.mesh.getNumVertices(); v++){
+                
+                if(v%2)
+                    mesh.mesh.addNormal(ofVec3f(0.,0,0));
+                else
+                    mesh.mesh.addNormal(ofVec3f(1.,0,0));
+
+				//mesh.mesh.addNormal( ofVec3f( (ofRandomuf() > .5 ? 0. : 1.0), 0, 0) ); //flag as lines, with random for now
 			}
 		}
 		else{
@@ -154,7 +184,7 @@ ofxFTGLFont* CloudsSecondaryDisplayController::getFontForLayer( SVGMesh* textMes
         // make a layout
         ofxFTGLFont *newFont = new ofxFTGLFont();
         newFont->loadFont( GetCloudsDataPath() + "font/"+font+".ttf", fontSize );
-        newFont->setTracking(kerning * .1);
+        newFont->setTracking(kerning * .08);
         
         // make a label
         CloudsHUDLabel *newLabel = new CloudsHUDLabel();
@@ -196,11 +226,16 @@ int CloudsSecondaryDisplayController::getFontSizeForMesh( SVGMesh* textMesh, str
 }
 
 void CloudsSecondaryDisplayController::update(){
+   // cout << "CloudsSecondaryDisplayController::update()" <<endl;
 	
+    //calculate animation location
+   // cout << "animatingIn: " << animatingIn << endl;
+    
+    
 	//TODO: fix with perma preset
 	//clusterMap.incrementalTraversalMode = true;
 	
-    stringCounter++;
+   // stringCounter++;
     
 	while(receiver.hasWaitingMessages()){
 		ofxOscMessage m;
@@ -215,17 +250,21 @@ void CloudsSecondaryDisplayController::update(){
         //5		m.addStringArg(lastQuestionAsked); //question
         
 		if(m.getAddress() == "/clip"){
-            stringCounter = 0;
+          //  stringCounter = 0;
 //			currentSpeaker = CloudsSpeaker::speakers[m.getArgAsString(0)];
             
 			lastQuestion = m.getArgAsString(5);
 			currentClip = parser.getClipWithID(m.getArgAsString(1));
+            
+            animateIn();
 		}
 		else if(m.getAddress() == "/actBegan"){
 			onActBegan();
+            animateIn();
 		}
 		else if(m.getAddress() == "/actEnded"){
 			onActEnded();
+            animateOut();
 		}
 	}
 	
@@ -233,9 +272,29 @@ void CloudsSecondaryDisplayController::update(){
 	if(playingMovie){
 		archivePlayer.update();
 	}
+    
+    if( animatingIn ){
+       // cout << "animatingIn" <<endl;
+        playhead = ofMap( ofGetElapsedTimef(), beginTime, beginTime+animationSpeed, 0., 1. );
+       // cout << "playhead: " << playhead << endl;
+        // playhead = floor(text.length() * pct);
+        if( playhead >= 1.0 ){
+            animatingIn = false;
+        }
+    }
+    
+    if( animatingOut ){
+        playhead = ofMap( ofGetElapsedTimef(), beginTime, beginTime+animationSpeed, 1., 0. );
+        // textAlpha = floor( 255. * pct );
+        if( playhead <= 0 ){
+            animatingOut = false;
+        }
+    }
+    
 }
 
 void CloudsSecondaryDisplayController::respondToClip(CloudsClip& clip){
+    animateIn();
 	
 	currentClip = clip;
 	currentSpeaker = CloudsSpeaker::speakers[currentClip.person];
@@ -301,8 +360,20 @@ void CloudsSecondaryDisplayController::onActEnded(){
     displayMode = "NONE";
 }
 
+void CloudsSecondaryDisplayController::animateIn(){
+    cout << "CloudsSecondaryDisplayController::animateIn()" << endl;
+    animatingIn = true;
+    beginTime = ofGetElapsedTimef();
+    cout << "beginTime: " << beginTime << endl;
+}
+
+void CloudsSecondaryDisplayController::animateOut(){
+    animatingOut = true;
+    beginTime = ofGetElapsedTimef();
+}
+
 void CloudsSecondaryDisplayController::draw(){
-	
+    
 	displayTarget.begin();
     ofEnableAlphaBlending();
 	
@@ -310,12 +381,17 @@ void CloudsSecondaryDisplayController::draw(){
     
     SVGMesh* t;
     
+    shader.setUniform1f("alphaAmt", playhead);
+    
     if(displayMode == "BIO"){
         ////question
         ////// don't display if not avilable
         if(lastQuestion != ""){
             //show the question box
+            shader.begin();
+            shader.setUniform1f("alphaAmt", playhead);
             questionLayout.draw();
+            shader.end();
             //find the text box
             lastQuestion = ofToUpper(lastQuestion);
             hudLabelMap[meshQuestion->id]->draw();
@@ -326,8 +402,10 @@ void CloudsSecondaryDisplayController::draw(){
             //DRAW BIO LAYOUT, need to draw this first, text goes over it
             //use shader to animate the alpha
 			
+            //cout << "playhead: "<<playhead<<endl;
+            
 			shader.begin();
-			shader.setUniform1f("alphaAmt", tx);
+            shader.setUniform1f("alphaAmt", playhead);
 			bioLayout.draw();
 			shader.end();
 
@@ -392,7 +470,10 @@ void CloudsSecondaryDisplayController::draw(){
         
     }else if(displayMode == "PROJECT"){
         //DISPLAY PROJECT LAYOUT
+        shader.begin();
+        shader.setUniform1f("alphaAmt", playhead);
         projectLayout.draw();
+        shader.end();
         
         //video
         if(playingMovie){
@@ -435,10 +516,4 @@ void CloudsSecondaryDisplayController::reloadShader(){
  
  }*/
 
-/*void CloudsSecondaryDisplayController::drawTextToMesh(ofxFTGLSimpleLayout* font, string text, SVGMesh* mesh){
-    //update line length
-    font->setLineLength(mesh->bounds.width);
-    //draw the text
-    font->drawString(text.substr(0), mesh->bounds.x, mesh->bounds.y + font->getStringBoundingBox("M", 0, 0).height);
-}*/
 
