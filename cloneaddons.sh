@@ -50,6 +50,7 @@ git clone https://github.com/neilmendoza/ofxPtf
 git clone https://github.com/neilmendoza/ofxNearestNeighbour
 git clone https://github.com/neilmendoza/ofxPostProcessing
 git clone https://github.com/kylemcdonald/ofxCv
+git clone https://github.com/neilmendoza/ofxGpuParticles.git
 
 cd ofxPostProcessing
 git checkout -b develop --track origin/develop

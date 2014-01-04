@@ -108,9 +108,6 @@ class CloudsVisualSystemOrbit : public CloudsVisualSystem
 
 	//
 	ofCamera& getCameraRef(){
-		if(videoLoaded){
-			return cloudsCamera;
-		}
 		return CloudsVisualSystem::getCameraRef();
 	}
 
@@ -136,14 +133,4 @@ protected:
     float fogStart, fogEnd;
     float litAmount;
     bool additiveBlending;
-    
-	ofxUISuperCanvas* customGui;
-	bool customToggle;
-	float customFloat1;
-	float customFloat2;
-	
-	bool videoLoaded;
-	ofImage someImage;
-	ofShader pointcloudShader;
-	ofVboMesh simplePointcloud;
 };

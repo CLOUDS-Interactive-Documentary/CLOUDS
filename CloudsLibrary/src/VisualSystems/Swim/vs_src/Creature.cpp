@@ -59,7 +59,7 @@ namespace itg
     
     void Creature::integrate()
     {
-        velocity += accumulated;
+        velocity += accumulated * getElapsed() * 60.f;
         //velocity *= (1.0 + fear );
         //fear -= 0.2f * fear;
     }
@@ -74,7 +74,7 @@ namespace itg
         ofPushMatrix();
         if (cam.getPosition().z - getPosition().z > Creature::fogEnd)
         {
-            ofTranslate(0, 0, Creature::fogEnd * floor(abs(cam.getPosition().z - getPosition().z) / Creature::fogEnd));
+            ofTranslate(0, 0, Creature::fogEnd * floor((cam.getPosition().z - getPosition().z) / Creature::fogEnd));
         }
         else if (getPosition().z > cam.getPosition().z)
         {
