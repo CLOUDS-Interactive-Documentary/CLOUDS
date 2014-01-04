@@ -87,7 +87,7 @@ vec4 getLevelSet(vec4 fg){
     float light = clamp(getLightIntensity(levl, lightDirection.xy),0.1,1);
 	return vec4(set
                 * mix(1, light, 0.5)
-                * mix(vec3(1.),lightColor, smoothstep(0.2,0.7,light))
+//                * mix(vec3(1.),lightColor, smoothstep(0.2,0.7,light))
                 + vec3(g),
                 1.);
 }
