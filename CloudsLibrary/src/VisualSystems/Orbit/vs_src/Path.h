@@ -43,8 +43,8 @@ namespace itg
     {
     public:
         // floats only so can add them to gui
-        static float maxLineLength;
-        static float maxMeshLength;
+        static int maxLineLength;
+        static int maxMeshLength;
         static float lineFadeLength;
         static float lineWidth;
         static float hueMin, hueMax;
@@ -73,7 +73,7 @@ namespace itg
         void clear();
         
     private:
-        void initMeshParticles();
+        void initMesh();
         void updateSlice();
         
         deque<PathPoint> points;

@@ -28,13 +28,6 @@ void CloudsVisualSystemOrbit::selfSetup()
     fogEnd = 500.f;
     speed = 1.f;
     
-    /*
-    drawEllipses = false;
-    ellipseW = 80;
-    ellipseH = 30;
-    ellipseAlpha = 20;
-    */
-    
     Path::maxLineLength = 10;
     Path::maxMeshLength = 10;
     Path::lineWidth = 1.f;
@@ -58,11 +51,6 @@ void CloudsVisualSystemOrbit::selfUpdate()
 {
     if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
 
-    /*if (multiplePaths && (paths.empty() || ofGetElapsedTimeMillis() - lastPathTime > PATH_INTERVAL))
-    {
-        paths.push_back(itg::Path(meshRadius, getVisualSystemDataPath()));
-        lastPathTime = ofGetElapsedTimeMillis();
-    }*/
     switch (motion)
     {
         case WAVY:
@@ -101,7 +89,6 @@ void CloudsVisualSystemOrbit::selfUpdate()
     
     if (lockCam)
     {
-        //itg::Path& path = paths.back();
         ofxPtf& ptf = path.getPtfRef();
         const int cameraPositionLag = 8;
         lockedCam.setNearClip(0.1f);
@@ -179,14 +166,14 @@ void CloudsVisualSystemOrbit::selfSetupRenderGui()
     
     rdrGui->addLabel("Line");
     rdrGui->addToggle("drawLine", &drawLine);
-    rdrGui->addSlider("maxLineLength", 10, 5000, &Path::maxLineLength);
+    rdrGui->addIntSlider("maxLineLength", 10, 5000, &Path::maxLineLength);
     rdrGui->addSlider("lineFadeLength", 0, 1, &Path::lineFadeLength);
     rdrGui->addSlider("lineWidth", .1f, 5.f, &Path::lineWidth);
     rdrGui->addRangeSlider("hueRange", 0.f, 1.f, &Path::hueMin, &Path::hueMax);
     
     rdrGui->addLabel("Mesh");
     rdrGui->addToggle("drawMesh", &drawMesh);
-    rdrGui->addSlider("maxMeshLength", 10, 5000, &Path::maxMeshLength);
+    rdrGui->addIntSlider("maxMeshLength", 10, 5000, &Path::maxMeshLength);
     rdrGui->addSlider("meshRadius", 0.1f, 4.f, &meshRadius);
     
     //rdrGui->addLabel("Ellipses");
@@ -203,7 +190,7 @@ void CloudsVisualSystemOrbit::selfSetupRenderGui()
     rdrGui->addSlider("fogStart", 0, 2000, &fogStart);
     rdrGui->addSlider("fogEnd", 0, 2000, &fogEnd);
     rdrGui->addSlider("litAmount", 0, 1, &litAmount);
-    rdrGui->addSlider("speed", 1, 100, &speed);
+    rdrGui->addSlider("speed", 0.f, 100.f, &speed);
     
 }
 
@@ -211,14 +198,10 @@ void CloudsVisualSystemOrbit::guiRenderEvent(ofxUIEventArgs &e)
 {
     if (e.widget->getName() == "meshRadius")
     {
-        //if (!paths.empty()) paths.back().setMeshRadius(meshRadius);
         path.setMeshRadius(meshRadius);
     }
     else if (e.widget->getName() == "lorenz" && ((ofxUIToggle*)e.widget)->getValue())
     {
-        //multiplePaths = false;
-        //paths.clear();
-        //paths.push_back(itg::Path(meshRadius, getVisualSystemDataPath()));
         path.clear();
         path.addVertex(ofVec3f(0.1, 0, 0));
         motion = LORENZ;
@@ -226,8 +209,6 @@ void CloudsVisualSystemOrbit::guiRenderEvent(ofxUIEventArgs &e)
     else if (e.widget->getName() == "wavy" && ((ofxUIToggle*)e.widget)->getValue())
     {
         lastPathTime = ofGetElapsedTimeMillis();
-        //paths.clear();
-        //paths.push_back(itg::Path(meshRadius, getVisualSystemDataPath()));
         path.clear();
         motion = WAVY;
     }

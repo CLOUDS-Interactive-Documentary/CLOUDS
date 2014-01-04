@@ -33,8 +33,8 @@
 
 namespace itg
 {
-    float Path::maxLineLength = 100;
-    float Path::maxMeshLength = 100;
+    int Path::maxLineLength = 100;
+    int Path::maxMeshLength = 100;
     float Path::lineFadeLength = 1.f;
     float Path::lineWidth = 1.f;
     float Path::hueMin = 0.f;
@@ -47,8 +47,6 @@ namespace itg
         
         // set max frames so we don't end up using up all memory
         ptf.setMaxFrames(1000);
-        //lineMesh.setUsage(GL_DYNAMIC_DRAW);
-        //lineMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
         
         lineParticles.init(maxLineLength, 1, OF_PRIMITIVE_LINE_STRIP, false, 1);
         lineParticles.getDrawShaderRef().load(dataPath + "shaders/line");
@@ -63,22 +61,11 @@ namespace itg
         
         updateSlice();
         
-        initMeshParticles();
         meshParticles.getDrawShaderRef().load(dataPath + "shaders/mesh");
-        meshVertices.reserve(resolution * maxMeshLength);
-        meshNormals.reserve(resolution * maxMeshLength);
-        
-        for (unsigned k = 0; k < maxMeshLength; ++k)
-        {
-            for (unsigned j = 0; j < resolution; ++j)
-            {
-                meshVertices.push_back(sliceVertices[j]);
-                meshNormals.push_back(sliceNormals[j]);
-            }
-        }
+        initMesh();
     }
     
-    void Path::initMeshParticles()
+    void Path::initMesh()
     {
         meshParticles.init(resolution, maxMeshLength, OF_PRIMITIVE_TRIANGLES, false, 2);
         for (unsigned k = 1; k < maxMeshLength; ++k)
@@ -94,6 +81,18 @@ namespace itg
                 meshParticles.getMeshRef().addIndex(currLayerIdx + i);
                 meshParticles.getMeshRef().addIndex(prevLayerIdx + (i + 1) % resolution);
                 meshParticles.getMeshRef().addIndex(currLayerIdx + (i + 1) % resolution);
+            }
+        }
+        
+        meshVertices.resize(resolution * maxMeshLength);
+        meshNormals.resize(resolution * maxMeshLength);
+        
+        for (unsigned k = 0; k < maxMeshLength; ++k)
+        {
+            for (unsigned j = 0; j < resolution; ++j)
+            {
+                meshVertices[k * resolution + j] = sliceVertices[j];
+                meshNormals[k * resolution + j] = sliceNormals[j];
             }
         }
     }
@@ -171,7 +170,8 @@ namespace itg
             while (meshVertices.size() > resolution * maxMeshLength) meshVertices.erase(meshVertices.begin(), meshVertices.begin() + resolution);
             while (meshNormals.size() > resolution * maxMeshLength) meshNormals.erase(meshNormals.begin(), meshNormals.begin() + resolution);
             
-            if (maxMeshLength * resolution != meshParticles.getSize()) initMeshParticles();
+            if ((unsigned)maxMeshLength * (unsigned)resolution != meshParticles.getWidth() * meshParticles.getHeight()) initMesh();
+            
             meshParticles.loadDataTexture(0, meshVertices[0].getPtr());
             meshParticles.loadDataTexture(1, meshNormals[0].getPtr());
         }
@@ -245,11 +245,7 @@ namespace itg
     
     void Path::clear()
     {
-        /*vertices.clear();
-        normals.clear();
-        indices.clear();
-		mesh.clear();
-        lineMesh.clear();*/
+        initMesh();
         ptf.clear();
         points.clear();
         inflections.clear();
