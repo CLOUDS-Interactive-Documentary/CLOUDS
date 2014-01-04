@@ -11,8 +11,7 @@
 	
 	<project title="Sheep Market">
 			<creator_name>Aaron Koblin</creator_name>
-			<description>TheSheepMarket.com is a collection of 10,000 sheep made by workers on Amazon's Mechanical Turk.
-Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description>
+			<description>TheSheepMarket.com is a collection of 10,000 sheep made by workers on Amazon's Mechanical Turk. Workers were paid 0.02 ($USD) to "draw a sheep facing to the left."</description>
             <videos>
 				<file>Sheepmarket_720_30p.mov</file>
 			</videos>
