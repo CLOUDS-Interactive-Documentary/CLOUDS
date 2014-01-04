@@ -18,7 +18,6 @@ CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
     color = false;
     stringCounter = 0;
     tx = .1;
-	shader.load("shaders/animation");
 }
 
 void CloudsSecondaryDisplayController::setup(){
@@ -97,6 +96,8 @@ void CloudsSecondaryDisplayController::setup(){
     
     hudLabelMap[meshProjectDescription->id]->caps = false;
     hudLabelMap[meshBioDescription->id]->caps = false;
+	
+	reloadShader();
 }
 
 /*LOADING SVG LAYOUT files from Sarah*/
@@ -105,6 +106,21 @@ void CloudsSecondaryDisplayController::loadSVGs(){
     bioLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/BIO/BIO.svg");
     projectLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/PROJECTEX/PROJECTEX.svg");
     questionLayout.load(GetCloudsDataPath() + "secondaryDisplay/SVG/QUESTION/QUESTION.svg");
+	
+	for(int i = 0; i < bioLayout.getMeshes().size(); i++){
+		SVGMesh& mesh = bioLayout.getMeshes()[i];
+		if(!mesh.fill){
+			for(int v = 0; v < mesh.mesh.getNumVertices(); v++){
+				mesh.mesh.addNormal( ofVec3f( (ofRandomuf() > .5 ? 0. : 1.0), 0, 0) ); //flag as lines, with random for now
+			}
+		}
+		else{
+			for(int v = 0; v < mesh.mesh.getNumVertices(); v++){
+				mesh.mesh.addNormal( ofVec3f( 0.0, 1.0, 0.0) ); //flag as filled
+			}
+		}
+		
+	}
 }
 
 ofxFTGLSimpleLayout* CloudsSecondaryDisplayController::getLayoutForLayer( SVGMesh* textMesh, string font, float kerning) {
@@ -309,10 +325,11 @@ void CloudsSecondaryDisplayController::draw(){
         if(hasSpeaker){
             //DRAW BIO LAYOUT, need to draw this first, text goes over it
             //use shader to animate the alpha
-            //shader.begin();
-			//shader.setUniform1f("alphaAmt", tx);
-            bioLayout.draw();
-            //shader.end();
+			
+			shader.begin();
+			shader.setUniform1f("alphaAmt", tx);
+			bioLayout.draw();
+			shader.end();
 
             
             ////speaker name
@@ -410,7 +427,8 @@ void CloudsSecondaryDisplayController::draw(){
 }
 
 void CloudsSecondaryDisplayController::reloadShader(){
-    shader.load("shaders/animation");
+    GLuint err = glGetError();
+    shader.load( GetCloudsDataPath() + "shaders/secondaryDisplay");
 }
 
 /*void CloudsSecondaryDisplayController::drawBioLayout(){
