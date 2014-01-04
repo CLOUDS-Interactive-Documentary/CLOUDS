@@ -529,6 +529,11 @@
 		E7AC388A18700FAA00C1DB40 /* CloudsVisualSystemSchlabberbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemSchlabberbox.h; sourceTree = "<group>"; };
 		E7AC388D1870118700C1DB40 /* GridFluid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridFluid.cpp; sourceTree = "<group>"; };
 		E7AC388E1870118700C1DB40 /* GridFluid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridFluid.h; sourceTree = "<group>"; };
+		E7C289961877660300A0C07F /* nanoflann.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = nanoflann.hpp; sourceTree = "<group>"; };
+		E7C289971877660300A0C07F /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
+		E7C289991877660300A0C07F /* NearestNeighbour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearestNeighbour.h; sourceTree = "<group>"; };
+		E7C2899A1877660300A0C07F /* ofxNearestNeighbour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxNearestNeighbour.h; sourceTree = "<group>"; };
+		E7C2899B1877660300A0C07F /* PointCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointCloud.h; sourceTree = "<group>"; };
 		E7DD71F217DBC08D00AFB2DD /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		E7DD846317DBC0A500AFB2DD /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
 		E7DD846417DBC0A500AFB2DD /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
@@ -1139,6 +1144,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E7C289731877660200A0C07F /* ofxNearestNeighbour */,
 				E738FFE3183C87180018AB96 /* ofxOculusRift */,
 				3D5B9697175308FE00F558AC /* ofxTimecode */,
 				3D5B9605175308CF00F558AC /* ofxMSATimer */,
@@ -1317,6 +1323,51 @@
 				E7AC388918700FAA00C1DB40 /* CloudsVisualSystemSchlabberbox.cpp */,
 			);
 			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E7C289731877660200A0C07F /* ofxNearestNeighbour */ = {
+			isa = PBXGroup;
+			children = (
+				E7C289931877660300A0C07F /* libs */,
+				E7C289971877660300A0C07F /* readme.md */,
+				E7C289981877660300A0C07F /* src */,
+			);
+			name = ofxNearestNeighbour;
+			path = ../../../addons/ofxNearestNeighbour;
+			sourceTree = "<group>";
+		};
+		E7C289931877660300A0C07F /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				E7C289941877660300A0C07F /* nanoflann */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		E7C289941877660300A0C07F /* nanoflann */ = {
+			isa = PBXGroup;
+			children = (
+				E7C289951877660300A0C07F /* include */,
+			);
+			path = nanoflann;
+			sourceTree = "<group>";
+		};
+		E7C289951877660300A0C07F /* include */ = {
+			isa = PBXGroup;
+			children = (
+				E7C289961877660300A0C07F /* nanoflann.hpp */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		E7C289981877660300A0C07F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E7C289991877660300A0C07F /* NearestNeighbour.h */,
+				E7C2899A1877660300A0C07F /* ofxNearestNeighbour.h */,
+				E7C2899B1877660300A0C07F /* PointCloud.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		E7DD71F017DBC08D00AFB2DD /* CloudsLibrary */ = {

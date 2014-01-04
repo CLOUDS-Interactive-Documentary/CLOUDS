@@ -24,7 +24,8 @@ typedef struct {
 class Panel {
   public:
 	Panel();
-	void setup(string codeFile);
+	void setup();
+	void startAnimation();
 	
 	void update();
 	void draw(float screenHeight);
@@ -37,7 +38,9 @@ class Panel {
 	
 	float offset;
 	float scanSpeed;
-		
+	
+	string dataPath;
+	
 	ofRectangle drawRect;
 	string code;
 	vector<string> lines;
@@ -52,6 +55,8 @@ class Panel {
 	ofFloatColor tint;
 	vector<ofFloatColor> matchColorTypes;
 	
+	ofxFTGLFont* sharedFont;
+	ofxFTGLSimpleLayout* sharedLayout;
   protected:
 	void myReplace(string& str, const string& oldStr, const string& newStr);
 	int indexOf(string s, string f, int startIndex);
