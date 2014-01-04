@@ -22,11 +22,11 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     customGui->addSpacer();
     customGui->addToggle("TEXT CLOUD", &bTextCloudMode);
     customGui->addToggle("CENTER NODE TEXT", &bRenderCenterNodeText);
-    customGui->addSlider("SPIN SPEED", 0, 5, &spinSpeed);
+    customGui->addSlider("SPIN SPEED", 0, 1, &spinSpeed);
 #ifdef OCULUS_RIFT
-    customGui->addSlider("OCULUS SPEED", 0, 5, &oculusSpeed);
+    customGui->addSlider("OCULUS SPEED", 0, 1, &oculusSpeed);
 #else
-    customGui->addSlider("MOUSE SPEED", 0, 5, &mouseSpeed);
+    customGui->addSlider("MOUSE SPEED", 0, 1, &mouseSpeed);
 #endif
     customGui->addSlider("FOG DENSITY", 0.0f, 0.1f, &fogDensity);
     
@@ -86,8 +86,8 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     
     revealGui->addSpacer();
     revealGui->addToggle("RESTART", &bRestart);
-    revealGui->addRangeSlider("FADE TIME", 100, 5000, &TUOrbital::minFadeTime, &TUOrbital::maxFadeTime);
-    revealGui->addRangeSlider("LINE TIME", 100, 5000, &TUOrbital::minLineTime, &TUOrbital::maxLineTime);
+    revealGui->addRangeSlider("FADE TIME", 100, 2000, &TUOrbital::minFadeTime, &TUOrbital::maxFadeTime);
+    revealGui->addRangeSlider("LINE TIME", 100, 2000, &TUOrbital::minLineTime, &TUOrbital::maxLineTime);
     
     revealGui->addSpacer();
     vector<string> modes;
