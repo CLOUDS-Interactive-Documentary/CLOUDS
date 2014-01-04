@@ -133,7 +133,6 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	clusterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     clusterGui->addToggle("RENDER MESH", &bRenderMesh);
     clusterGui->addIntSlider("REFRESH RATE", 1, 500, &refreshRate);
-    clusterGui->addRangeSlider("SPRITE SIZE RANGE", 1,  100, &minSize, & maxSize);
 //    clusterGui->addIntSlider("REFRESH RATE", 1, 100, &activeTweeterRefreshRate);
     clusterGui->addRangeSlider("DATE RANGE", 1,  (dateIndex.size()), &dateIndexMin, & dateIndexMax);
     clusterGui->addToggle("ROTATE", &rotateModel);
@@ -143,7 +142,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addMinimalSlider("NORMALS DECAY", 0.2, 1.0, &normalDecay);
     clusterGui->addMinimalSlider("SYNAPSE LEVEL", 0.0, 1.0, &synapseLevel);
     clusterGui->addMinimalSlider("SPRITE SIZE", 0, 30, &sizeMultiplier);
-	addColorToGui(clusterGui,"SPRITE COLOR",&spriteColorHSV);
+	
     //TWEET POP
 	addColorToGui(clusterGui,"LINE NODE BASE",lineNodeBaseHSV);
 	addColorToGui(clusterGui,"LINE EDGE BASE",lineEdgeBaseHSV);
@@ -152,6 +151,17 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	addColorToGui(clusterGui,"SYNAPSE",synapseColorHSV);
 	clusterGui->addSlider("EDGE COLOR EXPONENT", 1.0, 5., &edgeInterpolateExponent);
     
+
+    spriteGui = new ofxUISuperCanvas("SPRITE PARAMS", gui);
+    spriteGui->copyCanvasStyle(gui);
+	spriteGui->copyCanvasProperties(gui);
+    spriteGui->setName("Sprite");
+    spriteGui->addRangeSlider("SPRITE SIZE RANGE", 1,  100, &minSize, & maxSize);
+    addColorToGui(spriteGui,"SPRITE BASE COLOR",spriteBaseColorHSV);
+    addColorToGui(spriteGui,"SPRITE POP COLOR",spritePopColorHSV);
+    ofAddListener(spriteGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
+	guis.push_back(spriteGui);
+	guimap[spriteGui->getName()] = spriteGui;
 //	addColorToGui(clusterGui,"NODE BASE",nodeBaseColorHSV);
 //	addColorToGui(clusterGui,"NODE POP",nodePopColorHSV);
 	
@@ -458,16 +468,18 @@ void CloudsVisualSystemTwitter::setActiveTweeters(int index){
 
         activeTweeters[i]->refreshNum = 0;
         activeTweeters[i]->textDecayRate = 1.0;
-        vector<Tweet>&  tweetsOnDate = tweeters[i].getTweetsByDate(currentDate);
-		int activityMapIndex = tweeters[i].activityMapCoord.y * activityMap.getWidth() + tweeters[i].activityMapCoord.x;
+        vector<Tweet>&  tweetsOnDate = activeTweeters[i]->getTweetsByDate(currentDate);
+        ///
+		int activityMapIndex = activeTweeters[i]->activityMapCoord.y * activityMap.getWidth() + activeTweeters[i]->activityMapCoord.x;
 		activityMap.getPixels()[activityMapIndex] = 1.0;
 		
-		// pop the active tweeter node
-		nodeMesh.getNormals()[tweeters[i].nodeVertexIndex].y = 1.0;
         
+		// pop the active tweeter node
+		nodeMesh.getNormals()[activeTweeters[i]->nodeVertexIndex].y = 1.0;
+//        cout<<		nodeMesh.getNormals()[activeTweeters[i]->nodeVertexIndex].y<<endl;
 		for(int k = 0; k < tweetsOnDate.size(); k ++){
             
-            activeTweetPairs.push_back(make_pair(&tweeters[i].name, &tweetsOnDate[k].tweet));
+            activeTweetPairs.push_back(make_pair(&activeTweeters[i]->name, &tweetsOnDate[k].tweet));
             
 			for(int l = 0; l < tweetsOnDate[k].mentionedUsers.size(); l++){
 				int user = getUserIdByName(tweetsOnDate[k].mentionedUsers[l]);
@@ -481,11 +493,11 @@ void CloudsVisualSystemTwitter::setActiveTweeters(int index){
                 //                activeTweetPairs.push_back(make_pair(&tweeters[i].name, &tweetsOnDate[k].tweet));
 				//find the nodes
 				pair<int, int> currentIndeces;
-				
-				if(lineIndexPairs.find(make_pair(tweeters[i].name, t.name)) != lineIndexPairs.end()){
+                
+				if(lineIndexPairs.find(make_pair(activeTweeters[i]->name, t.name)) != lineIndexPairs.end()){
 					currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
 				}
-				else if(lineIndexPairs.find(make_pair(t.name,tweeters[i].name)) != lineIndexPairs.end()){
+				else if(lineIndexPairs.find(make_pair(t.name,activeTweeters[i]->name)) != lineIndexPairs.end()){
 					pair<int, int> currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
 				}
 				else{
@@ -499,6 +511,50 @@ void CloudsVisualSystemTwitter::setActiveTweeters(int index){
 				int ind = MIN(currentIndeces.first,currentIndeces.second) + 1;
 				edgeMesh.getNormals()[ind++].y = 1.0;
 				edgeMesh.getNormals()[ind  ].y = 1.0;
+                
+                nodeMesh.getNormals()[t.nodeVertexIndex].y = 1.0;
+
+        ////
+//		int activityMapIndex = tweeters[i].activityMapCoord.y * activityMap.getWidth() + tweeters[i].activityMapCoord.x;
+//		activityMap.getPixels()[activityMapIndex] = 1.0;
+//		
+//		// pop the active tweeter node
+//		nodeMesh.getNormals()[tweeters[i].nodeVertexIndex].y = 1.0;
+//        
+//		for(int k = 0; k < tweetsOnDate.size(); k ++){
+//            
+//            activeTweetPairs.push_back(make_pair(&tweeters[i].name, &tweetsOnDate[k].tweet));
+//            
+//			for(int l = 0; l < tweetsOnDate[k].mentionedUsers.size(); l++){
+//				int user = getUserIdByName(tweetsOnDate[k].mentionedUsers[l]);
+//				if(user == -1){
+//					continue;
+//				}
+//				
+//				Tweeter& t = getTweeterByID(user);
+//                int activityMapIndex = t.activityMapCoord.y * activityMap.getWidth() + t.activityMapCoord.x;
+//                activityMap.getPixels()[activityMapIndex] = 1.0;
+//                //                activeTweetPairs.push_back(make_pair(&tweeters[i].name, &tweetsOnDate[k].tweet));
+//				//find the nodes
+//				pair<int, int> currentIndeces;
+//
+//				if(lineIndexPairs.find(make_pair(tweeters[i].name, t.name)) != lineIndexPairs.end()){
+//					currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
+//				}
+//				else if(lineIndexPairs.find(make_pair(t.name,tweeters[i].name)) != lineIndexPairs.end()){
+//					pair<int, int> currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
+//				}
+//				else{
+//					//error!!
+//					continue;
+//				}
+//                
+//				//set the edges
+//				edgeMesh.getNormals()[currentIndeces.first].y = 1.0;
+//				edgeMesh.getNormals()[currentIndeces.second].y = 1.0;
+//				int ind = MIN(currentIndeces.first,currentIndeces.second) + 1;
+//				edgeMesh.getNormals()[ind++].y = 1.0;
+//				edgeMesh.getNormals()[ind  ].y = 1.0;
             }
         }
     }
@@ -531,7 +587,7 @@ void CloudsVisualSystemTwitter::updateActiveTweeters(int index){
 
 void CloudsVisualSystemTwitter::updateMesh(){
 	for(int i = 0; i < nodeMesh.getVertices().size(); i++){
-		nodeMesh.getNormals()[i].y *= normalDecay;
+		nodeMesh.getNormals()[i].y *= activityMapDamping;
 	}
 	
 	for(int i = 0; i < edgeMesh.getVertices().size(); i++){
@@ -601,7 +657,7 @@ void CloudsVisualSystemTwitter::loadMesh(){
         float userLinkFactor = ofMap(tweeters[j].userLinks.size(), 0, maxUserLinks, 0, 1);
 
         nodeMesh.addVertex(tweeters[j].position);
-        nodeMesh.addNormal(ofVec3f(userLinkFactor,0,0));
+        nodeMesh.addNormal(ofVec3f(userLinkFactor,1.0,0));
         tweeters[j].nodeVertexIndex = currentIndex;
         currentIndex++;
     }
@@ -954,8 +1010,8 @@ void CloudsVisualSystemTwitter::selfDraw()
 	ofFloatColor nodeBaseColor = getRGBfromHSV(nodeBaseColorHSV);
 	ofFloatColor nodePopColor = getRGBfromHSV(nodePopColorHSV);
 	ofFloatColor synapseColor = getRGBfromHSV(synapseColorHSV);
-	ofFloatColor spriteColor = getRGBfromHSV(spriteColorHSV);
-    
+	ofFloatColor spriteBaseColor = getRGBfromHSV(spriteBaseColorHSV);
+    ofFloatColor spritePopColor = getRGBfromHSV(spritePopColorHSV);
     if(bRenderMesh){
         
 ////POINTS
@@ -981,14 +1037,19 @@ void CloudsVisualSystemTwitter::selfDraw()
 
         pointsShader.setUniform1f("maxSize", maxSize);
         pointsShader.setUniform1f("minSize", minSize);
-        pointsShader.setUniform1f("sizeMultiplier", sizeMultiplier);
-        pointsShader.setUniform3f("attractor", 0, 0, 0);
-        pointsShader.setUniform1f("radius", 300.);
-		pointsShader.setUniform4f("spriteColor",
-								spriteColor.r,
-								spriteColor.g,
-								spriteColor.b,
-								spriteColor.a);
+//        pointsShader.setUniform1f("sizeMultiplier", sizeMultiplier);
+//        pointsShader.setUniform3f("attractor", 0, 0, 0);
+//        pointsShader.setUniform1f("radius", 300.);
+		pointsShader.setUniform4f("spriteBaseColor",
+								spriteBaseColor.r,
+								spriteBaseColor.g,
+								spriteBaseColor.b,
+								spriteBaseColor.a);
+        pointsShader.setUniform4f("spritePopColor",
+                                  spritePopColor.r,
+                                  spriteBaseColor.g,
+                                  spritePopColor.b,
+                                  spritePopColor.a);
         
         ofEnablePointSprites();
         ofDisableArbTex();

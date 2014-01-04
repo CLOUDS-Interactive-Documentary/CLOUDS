@@ -165,8 +165,9 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     float maxSize;
     
 	ofFloatImage activityMap;
-    ofFloatColor spriteColor;
-    ofFloatColor spriteColorHSV;
+
+    ofFloatColor spriteBaseColorHSV;
+    ofFloatColor spritePopColorHSV;
     stringstream ss;
     
     ofVboMesh nodeMesh;
@@ -189,6 +190,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     float synapseLevel;
     float normalDecay;
     ofxUISuperCanvas* clusterGui;
+    ofxUISuperCanvas* spriteGui;
     ofxUISuperCanvas* textGui;
     ofxUISuperCanvas* twitterFeedGui;
     
