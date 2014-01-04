@@ -26,7 +26,7 @@ using namespace msa::physics;
 typedef struct{
 	int id;
 	int state;
-	int stateCnt;
+	signed int stateCnt;
 	int gridx;
 	int gridy;
 	bool isEdge;
@@ -35,6 +35,11 @@ typedef struct{
 	ofVec3f vD;
 	Particle3D* p;
 } MWParticle;
+
+typedef struct{
+	int type;
+	float h[4];
+} MWTerrain;
 
 
 class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
@@ -81,7 +86,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 
 
   protected:
-	static const int FREE=0,FIXEDSTATIC=1,FIXEDMOVING=2;
+	static const int FREE=0,FIXEDSTATIC=2,FIXEDMOVING=1;
 	static const int GRIDRECT=1,GRIDCIRC=0,GRIDCYL=2;
 
   	vector<MWParticle> pp;
@@ -92,6 +97,8 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	float colorIndex;
 	float gridSizeF;
 
+	bool gridDoStitch;
+
 	float lastFixY;
 
 	int gridSize;
@@ -100,6 +107,9 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 
 	void mwUpdate();
 	void mwLights();
+
+	ofVec3f mwNewMove(MWParticle& pt);
+
 
 	ofVec3f mwOutlineShape(ofVec3f &v);
 	bool mwIsEdge(MWParticle &pt);
@@ -114,6 +124,9 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	void mwCreateLights();
 	void mwGridSticky();
 
+	float rndSigned(float a,float b);
+	float bezierPoint(float a, float b, float c, float d, float t);
+	float terrainMod(float x,float y);
 
 	ofxUISuperCanvas* clothGui;
 	ofxUISuperCanvas* auxLightGuis[4];
