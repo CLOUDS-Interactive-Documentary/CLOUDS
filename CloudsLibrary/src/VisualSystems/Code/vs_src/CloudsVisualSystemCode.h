@@ -15,6 +15,7 @@
 #include "PanelCode.h"
 #include "PanelGraph.h"
 #include "PanelTenPrint.h"
+#include "PanelConsole.h"
 
 class CloudsVisualSystemCode : public CloudsVisualSystem {
   public:

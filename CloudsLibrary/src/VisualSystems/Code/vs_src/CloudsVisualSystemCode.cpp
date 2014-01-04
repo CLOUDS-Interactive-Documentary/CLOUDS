@@ -122,6 +122,7 @@ void CloudsVisualSystemCode::generatePanels(){
 		Panel* p;
 		if(MIN(rectTests[i].height, rectTests[i].width) < minTextboxSize){
 			p = new PanelTenPrint();
+//			p = new PanelConsole();
 		}
 		else{
 			p = new PanelCode();
