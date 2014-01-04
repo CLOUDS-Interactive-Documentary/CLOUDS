@@ -6,14 +6,15 @@
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
-    <Kind>25</Kind>
-    <Name>body h</Name>
-    <Value>0.817734003</Value>
+    <Kind>6</Kind>
+    <Name>body h range</Name>
+    <HighValue>0.418719202</HighValue>
+    <LowValue>0.103448287</LowValue>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>body s</Name>
-    <Value>0.719211817</Value>
+    <Value>0.541871905</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -26,9 +27,10 @@
     <Value>0.113300495</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>tentacles h</Name>
-    <Value>0.467980295</Value>
+    <Kind>6</Kind>
+    <Name>tentacles h range</Name>
+    <HighValue>0.635467768</HighValue>
+    <LowValue>0.315270931</LowValue>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -43,28 +45,20 @@
 <Widget>
     <Kind>6</Kind>
     <Name>pulse amt (range)</Name>
-    <HighValue>0.364532053</HighValue>
-    <LowValue>0.230541989</LowValue>
+    <HighValue>0.179310426</HighValue>
+    <LowValue>0.045320328</LowValue>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>width average</Name>
-    <Value>26.847290039</Value>
+    <Kind>6</Kind>
+    <Name>width range</Name>
+    <HighValue>58.669952393</HighValue>
+    <LowValue>18.423645020</LowValue>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>width std dev</Name>
-    <Value>36.453201294</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>length average</Name>
-    <Value>63.349754333</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>length std dev</Name>
-    <Value>66.009849548</Value>
+    <Kind>6</Kind>
+    <Name>length range</Name>
+    <HighValue>163.497543335</HighValue>
+    <LowValue>111.822639465</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>

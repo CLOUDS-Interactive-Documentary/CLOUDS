@@ -344,7 +344,7 @@ namespace itg
         tentacles.loadDataTexture(ofxGpuParticles::POSITION, tentaclePosns[0].getPtr(), 0, 0, 1, tentacles.getHeight());
         tentacles.getUpdateShaderRef().begin();
         tentacles.getUpdateShaderRef().setUniform1f("restLength", TENTACLE_SECTION_LENGTH);
-        tentacles.getUpdateShaderRef().setUniform1f("elapsed", ofGetLastFrameTime());
+        tentacles.getUpdateShaderRef().setUniform1f("elapsed", Creature::getElapsed());
         tentacles.getUpdateShaderRef().end();
         tentacles.update();
     }

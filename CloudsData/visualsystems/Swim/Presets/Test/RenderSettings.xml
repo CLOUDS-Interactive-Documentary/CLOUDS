@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>445.000000000</XPosition>
+    <XPosition>673.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -12,43 +12,14 @@
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>maxCamSpeed</Name>
-    <Value>600.000000000</Value>
+    <Name>camSpeed</Name>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>creatureFogRange</Name>
     <HighValue>6256.159667969</HighValue>
     <LowValue>3054.187255859</LowValue>
-</Widget>
-<Widget>
-    <Kind>6</Kind>
-    <Name>snowFogRange</Name>
-    <HighValue>10000.000000000</HighValue>
-    <LowValue>6650.246582031</LowValue>
-</Widget>
-<Widget>
-    <Kind>6</Kind>
-    <Name>snowInnerFogRange</Name>
-    <HighValue>271.921142578</HighValue>
-    <LowValue>0.000000000</LowValue>
-</Widget>
-<Widget>
-    <Kind>6</Kind>
-    <Name>snowAlphaRange</Name>
-    <HighValue>0.800000012</HighValue>
-    <LowValue>0.200000003</LowValue>
-</Widget>
-<Widget>
-    <Kind>6</Kind>
-    <Name>snowSizeRange</Name>
-    <HighValue>400.000000000</HighValue>
-    <LowValue>0.100000001</LowValue>
-</Widget>
-<Widget>
-    <Kind>44</Kind>
-    <Name>numSnowParticles</Name>
-    <Value>60009</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -86,14 +57,25 @@
     <Value>1500.000000000</Value>
 </Widget>
 <Widget>
+    <Kind>25</Kind>
+    <Name>undulationAmt</Name>
+    <Value>0.423645318</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>undulationFreqRange</Name>
+    <HighValue>3.645320415</HighValue>
+    <LowValue>1.773398161</LowValue>
+</Widget>
+<Widget>
     <Kind>44</Kind>
     <Name>numJellyOne</Name>
-    <Value>94</Value>
+    <Value>31</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>numJellyTwo</Name>
-    <Value>93</Value>
+    <Value>29</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>

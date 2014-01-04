@@ -14,8 +14,9 @@ void main()
     gl_FrontColor = gl_Color;
     
     vec3 vWorld = texture2DRect(particles0, gl_TexCoord[0].st).xyz;
-    vWorld.z += step(fogEnd, camZ - vWorld.z) * fogEnd * floor((camZ - vWorld.z) / fogEnd);
-    vWorld.z -= step(camZ, vWorld.z) * fogEnd * ceil((vWorld.z - camZ) / fogEnd);
+    vec3 v0World = texture2DRect(particles0, vec2(0.0, gl_TexCoord[0].t)).xyz;
+    vWorld.z += step(fogEnd, camZ - v0World.z) * fogEnd * floor((camZ - v0World.z) / fogEnd);
+    vWorld.z -= step(camZ, v0World.z) * fogEnd * ceil((v0World.z - camZ) / fogEnd);
     
     vec3 vEye = (gl_ModelViewMatrix * vec4(vWorld, 1.0)).xyz;
     
