@@ -35,6 +35,7 @@
 #include "ofxPtf.h"
 #include "PathPoint.h"
 #include "Path.h"
+#include "ofxGpuParticles.h"
 
 namespace itg
 {
@@ -48,13 +49,13 @@ namespace itg
         static float lineWidth;
         static float hueMin, hueMax;
         
-        Path(float radius);
+        void init(float meshRadius, const string& dataPath);
         
         void addVertex(const ofVec3f& vertex);
         void addVertex(float x, float y, float z);
         
         void drawMesh();
-        void drawLine();
+        void drawLine(float fogStart, float fogEnd);
         void drawNormals(float size);
         void drawInflections();
         void drawAcc();
@@ -77,6 +78,9 @@ namespace itg
         
     private:
         void updateSlice();
+        
+        vector<ofVec4f> linePosns;
+        ofxGpuParticles lineParticles;
         
         deque<PathPoint> points;
         deque<ofVec3f> inflections;

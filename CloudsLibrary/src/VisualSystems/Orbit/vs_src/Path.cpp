@@ -40,12 +40,29 @@ namespace itg
     float Path::hueMin = 0.f;
     float Path::hueMax = 1.f;
     
-    Path::Path(float meshRadius) : resolution(10), meshRadius(meshRadius)
+    void Path::init(float meshRadius, const string& dataPath)// : resolution(10), meshRadius(meshRadius)
     {
+        this->resolution = 10;
+        this->meshRadius = meshRadius;
+        
         // set max frames so we don't end up using up all memory
         ptf.setMaxFrames(1000);
         lineMesh.setUsage(GL_DYNAMIC_DRAW);
         lineMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+        
+        lineParticles.init(maxLineLength, 1, OF_PRIMITIVE_LINE_STRIP, false, 1);
+        lineParticles.getDrawShaderRef().load(dataPath + "shaders/line");
+        
+        linePosns.resize(maxLineLength);
+        
+        unsigned fadeIdx = lineFadeLength * maxLineLength;
+        for (unsigned i = 0; i < maxLineLength; ++i)
+        {
+            lineMesh.addVertex(ofVec3f());
+            float alpha = ofMap(i, 0, fadeIdx, 0.f, 1.f, true);
+            lineMesh.addColor(ofFloatColor::fromHsb(ofMap(abs(points[i].getPos().x) + abs(points[i].getPos().y), 0, 50, hueMin, hueMax, true), 0.5, 1.0, alpha));
+        }
+        
         updateSlice();
     }
     
@@ -82,6 +99,9 @@ namespace itg
     
     void Path::addVertex(const ofVec3f& vertex)
     {
+        linePosns.push_back(vertex);
+        while (linePosns.size() > maxLineLength) linePosns.erase(linePosns.begin());
+        
         points.push_back(vertex);
         while (points.size() > maxLineLength) points.pop_front();
         
@@ -102,15 +122,17 @@ namespace itg
         }
         
         // line
-        lineMesh.clear();
-        unsigned lineLength = fmin(maxLineLength, points.size());
-        unsigned fadeIdx = lineFadeLength * lineLength;
-        for (unsigned i = 0; i < lineLength; ++i)
+        if (maxLineLength != lineParticles.getWidth()) lineParticles.init(maxLineLength, 1, OF_PRIMITIVE_LINE_STRIP, false, 1);
+        lineParticles.loadDataTexture(ofxGpuParticles::POSITION, linePosns[0].getPtr());
+        //lineMesh.clear();
+        //unsigned lineLength = fmin(maxLineLength, points.size());
+        //unsigned fadeIdx = lineFadeLength * lineLength;
+        /*for (unsigned i = 0; i < lineLength; ++i)
         {
             lineMesh.addVertex(points[i].getPos());
             float alpha = ofMap(i, 0, fadeIdx, 0.f, 1.f, true);
             lineMesh.addColor(ofFloatColor::fromHsb(ofMap(abs(points[i].getPos().x) + abs(points[i].getPos().y), 0, 50, hueMin, hueMax, true), 0.5, 1.0, alpha));
-        }
+        }*/
         
         // mesh
         ptf.addPoint(vertex);
@@ -127,6 +149,7 @@ namespace itg
                 mesh.addNormal(normals.back());
             }
             
+            /*
             if (!firstLayer)
             {
                 unsigned prevLayerIdx = mesh.getNumVertices() - 2 * resolution;
@@ -171,7 +194,7 @@ namespace itg
                     mesh.getIndices().clear();
                     for (unsigned i = 0; i < indices.size(); ++i) mesh.addIndex(indices[i]);
                 }
-            }
+            }*/
         }
     }
     
@@ -195,12 +218,19 @@ namespace itg
         mesh.draw();
     }
     
-    void Path::drawLine()
+    void Path::drawLine(float fogStart, float fogEnd)
     {
         ofPushStyle();
         ofEnableAlphaBlending();
         ofSetLineWidth(lineWidth);
-        lineMesh.draw();
+        lineParticles.getDrawShaderRef().begin();
+        lineParticles.getDrawShaderRef().setUniform1f("fogStart", fogStart);
+        lineParticles.getDrawShaderRef().setUniform1f("fogEnd", fogEnd);
+        lineParticles.getDrawShaderRef().setUniform1f("hueMin", hueMin);
+        lineParticles.getDrawShaderRef().setUniform1f("hueMax", hueMax);
+        lineParticles.getDrawShaderRef().end();
+        lineParticles.draw();
+        //lineMesh.draw();
         ofPopStyle();
         /*
         ofPushStyle();

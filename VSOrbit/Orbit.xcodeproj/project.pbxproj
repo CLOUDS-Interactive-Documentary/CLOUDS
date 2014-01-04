@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28154D40187838FB005B0817 /* GpuParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28154D3D187838FB005B0817 /* GpuParticles.cpp */; };
+		28154D43187853A9005B0817 /* line.frag in Sources */ = {isa = PBXBuildFile; fileRef = 28154D41187853A9005B0817 /* line.frag */; };
+		28154D44187853A9005B0817 /* line.vert in Sources */ = {isa = PBXBuildFile; fileRef = 28154D42187853A9005B0817 /* line.vert */; };
 		284AE6351859D54800780DBB /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE62E1859D54800780DBB /* CloudsInput.cpp */; };
 		284AE6361859D54800780DBB /* CloudsInputKinectOSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE6311859D54800780DBB /* CloudsInputKinectOSC.cpp */; };
 		284AE6371859D54800780DBB /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE6331859D54800780DBB /* CloudsInputMouse.cpp */; };
@@ -177,6 +180,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		28154D3D187838FB005B0817 /* GpuParticles.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GpuParticles.cpp; sourceTree = "<group>"; };
+		28154D3E187838FB005B0817 /* GpuParticles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GpuParticles.h; sourceTree = "<group>"; };
+		28154D3F187838FB005B0817 /* ofxGpuParticles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxGpuParticles.h; sourceTree = "<group>"; };
+		28154D41187853A9005B0817 /* line.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = line.frag; path = ../../../../CloudsData/visualsystems/Orbit/shaders/line.frag; sourceTree = "<group>"; };
+		28154D42187853A9005B0817 /* line.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = line.vert; path = ../../../../CloudsData/visualsystems/Orbit/shaders/line.vert; sourceTree = "<group>"; };
 		284AE62E1859D54800780DBB /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInput.cpp; path = src/Input/CloudsInput.cpp; sourceTree = "<group>"; };
 		284AE62F1859D54800780DBB /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInput.h; path = src/Input/CloudsInput.h; sourceTree = "<group>"; };
 		284AE6301859D54800780DBB /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputEvents.h; path = src/Input/CloudsInputEvents.h; sourceTree = "<group>"; };
@@ -544,6 +552,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28154D3B187838FB005B0817 /* ofxGpuParticles */ = {
+			isa = PBXGroup;
+			children = (
+				28154D3C187838FB005B0817 /* src */,
+			);
+			name = ofxGpuParticles;
+			sourceTree = "<group>";
+		};
+		28154D3C187838FB005B0817 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				28154D3D187838FB005B0817 /* GpuParticles.cpp */,
+				28154D3E187838FB005B0817 /* GpuParticles.h */,
+				28154D3F187838FB005B0817 /* ofxGpuParticles.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxGpuParticles/src;
+			sourceTree = "<group>";
+		};
 		284AE62D1859D53400780DBB /* Input */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,6 +683,8 @@
 		284AE68C185A25D600780DBB /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				28154D41187853A9005B0817 /* line.frag */,
+				28154D42187853A9005B0817 /* line.vert */,
 				284AE68D185A25E300780DBB /* orbit.frag */,
 				284AE68E185A25E300780DBB /* orbit.vert */,
 			);
@@ -772,6 +801,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				28154D3B187838FB005B0817 /* ofxGpuParticles */,
 				284AE6381859D56E00780DBB /* ofxOsc */,
 				285185B81837B8F8009D8339 /* ofxPtf */,
 				285C2052182FFFED0065BCAE /* ofxPostProcessing */,
@@ -1534,6 +1564,7 @@
 				E7CF784C1753FEA1006B7D41 /* ofxTLColors.cpp in Sources */,
 				E7CF784D1753FEA1006B7D41 /* ofxTLColorTrack.cpp in Sources */,
 				E7CF784E1753FEA1006B7D41 /* ofxTLCurves.cpp in Sources */,
+				28154D40187838FB005B0817 /* GpuParticles.cpp in Sources */,
 				E7CF784F1753FEA1006B7D41 /* ofxTLEmptyKeyframes.cpp in Sources */,
 				E7CF78501753FEA1006B7D41 /* ofxTLEmptyTrack.cpp in Sources */,
 				E7CF78511753FEA1006B7D41 /* ofxTLFlags.cpp in Sources */,
@@ -1582,6 +1613,7 @@
 				285C209C182FFFEE0065BCAE /* ConvolutionPass.cpp in Sources */,
 				285C209D182FFFEE0065BCAE /* DofAltPass.cpp in Sources */,
 				285C209E182FFFEE0065BCAE /* DofPass.cpp in Sources */,
+				28154D43187853A9005B0817 /* line.frag in Sources */,
 				285C209F182FFFEE0065BCAE /* EdgePass.cpp in Sources */,
 				285C20A0182FFFEE0065BCAE /* FakeSSSPass.cpp in Sources */,
 				285C20A1182FFFEE0065BCAE /* FxaaPass.cpp in Sources */,
@@ -1595,6 +1627,7 @@
 				285C20A8182FFFEE0065BCAE /* PixelatePass.cpp in Sources */,
 				285C20A9182FFFEE0065BCAE /* PostProcessing.cpp in Sources */,
 				284AE6631859D56E00780DBB /* ofxOscReceiver.cpp in Sources */,
+				28154D44187853A9005B0817 /* line.vert in Sources */,
 				285C20AA182FFFEE0065BCAE /* RenderPass.cpp in Sources */,
 				285C20AB182FFFEE0065BCAE /* RGBShiftPass.cpp in Sources */,
 				285C20AC182FFFEE0065BCAE /* RimHighlightingPass.cpp in Sources */,
