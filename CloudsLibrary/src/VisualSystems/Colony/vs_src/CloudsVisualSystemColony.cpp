@@ -27,7 +27,9 @@ void CloudsVisualSystemColony::selfSetup()
 
 void CloudsVisualSystemColony::loadShaders(){
     string path = getVisualSystemDataPath() + "shaders/";
+    cout << "Loading levelset." << endl;
 	levelSet.load(path + "levelSet.vs", path + "levelSet.fs");
+    cout << "Loading billboard." << endl;
     billboard.load(path + "billboard.vs", path + "billboard.fs");
 }
 
