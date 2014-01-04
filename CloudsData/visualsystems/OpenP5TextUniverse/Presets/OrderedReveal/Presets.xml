@@ -2,9 +2,14 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>2333.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1061.000000000</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Babel</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>basic2</Name>
@@ -13,6 +18,16 @@
 <Widget>
     <Kind>2</Kind>
     <Name>BasicPreset</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Borges_random</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Borges_randomOC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -37,6 +52,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>OrderedReveal</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>simple2</Name>
     <Value>0</Value>
 </Widget>
@@ -47,6 +67,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>OrderedReveal</Name>
-    <Value>1</Value>
+    <Name>twitter</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>twitter_sphere</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>twitterOC</Name>
+    <Value>0</Value>
 </Widget>
