@@ -20,7 +20,7 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     refreshRate = 1000;
     edgeDecayRate = 0.8;
     meshExpansion = 100;
-    pointSize =10;
+//    pointSize =10;
     
     dateIndexMin = 0;
     dateIndexMax = 100;
@@ -135,8 +135,9 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addMinimalSlider("EDGE DECAY", 0.2, 1.0, &activityMapDamping);
     clusterGui->addMinimalSlider("NORMALS DECAY", 0.2, 1.0, &normalDecay);
     clusterGui->addMinimalSlider("SYNAPSE LEVEL", 0.0, 1.0, &synapseLevel);
+    clusterGui->addRangeSlider("POINT SIZE RANGE", .5, 4., &pointsSize.min, &pointsSize.max);
 	
-	//TWEET POP
+    //TWEET POP
 	addColorToGui(clusterGui,"LINE NODE BASE",lineNodeBaseHSV);
 	addColorToGui(clusterGui,"LINE EDGE BASE",lineEdgeBaseHSV);
 	addColorToGui(clusterGui,"LINE NODE POP",lineNodePopHSV);
@@ -144,8 +145,8 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	addColorToGui(clusterGui,"SYNAPSE",synapseColorHSV);
 	clusterGui->addSlider("EDGE COLOR EXPONENT", 1.0, 5., &edgeInterpolateExponent);
     
-	addColorToGui(clusterGui,"NODE BASE",nodeBaseColorHSV);
-	addColorToGui(clusterGui,"NODE POP",nodePopColorHSV);
+//	addColorToGui(clusterGui,"NODE BASE",nodeBaseColorHSV);
+//	addColorToGui(clusterGui,"NODE POP",nodePopColorHSV);
 	
     clusterGui->addMinimalSlider("X POS", 1, 500, &xScale);
     clusterGui->addMinimalSlider("Y POS", 1, 500, &yScale);
@@ -950,26 +951,40 @@ void CloudsVisualSystemTwitter::selfDraw()
 	ofFloatColor synapseColor = getRGBfromHSV(synapseColorHSV);
 
     if(bRenderMesh){
+        
+////POINTS
 		pointsShader.begin();
 		
 		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
 		glEnable(GL_POINT_SMOOTH);
 		
-		pointsShader.setUniform1f("pointSize", ofRandom(4));
-		pointsShader.setUniform4f("nodeBaseColor",
-								  nodeBaseColor.r,
-								  nodeBaseColor.g,
-								  nodeBaseColor.b,
-								  nodeBaseColor.a);
-		pointsShader.setUniform4f("nodePopColor",
-								  nodePopColor.r,
-								  nodePopColor.g,
-								  nodePopColor.b,
-								  nodePopColor.a);
+//		pointsShader.setUniform1f("pointSize", ofRandom(4));
+//		pointsShader.setUniform4f("nodeBaseColor",
+//								  nodeBaseColor.r,
+//								  nodeBaseColor.g,
+//								  nodeBaseColor.b,
+//								  nodeBaseColor.a);
+//		pointsShader.setUniform4f("nodePopColor",
+//								  nodePopColor.r,
+//								  nodePopColor.g,
+//								  nodePopColor.b,
+//								  nodePopColor.a);
         
+        pointsShader.setUniformTexture("tex", sprite, 1);
+        pointsShader.setUniform1f("minSize", pointsSize.min);
+        pointsShader.setUniform1f("maxSize", pointsSize.max);
+        pointsShader.setUniform3f("attractor", 0, 0, 0);
+        pointsShader.setUniform1f("radius", 300.);
+        
+        ofEnablePointSprites();
+        ofDisableArbTex();
         nodeMesh.draw();
+        ofEnableArbTex();
+        ofDisablePointSprites();
 		pointsShader.end();
+/////END POINTS
+        
         
 		lineShader.begin();
 		lineShader.setUniform4f("lineNodeBase",
@@ -1051,7 +1066,6 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
                         }
                         //add a new tweet to the start
                         Tweet& randTweet = tweetsOnDate[ofRandom(tweetsOnDate.size())];
-                        cout<<tweeters[i].name<<" : "<<tweetsOnDate.size()<<endl;
                         
                         currentSelection.push_back(make_pair(&tweeters[i].name, &randTweet.tweet));
                         
@@ -1083,7 +1097,6 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
 
                 continue;
             }
-            cout<<tweeters[i].name<<" Does have tweets on date : "<<currentDate<<endl;
             //if tweeter is already in the current selection ignore them
             for( it = currentSelection.begin(); it != currentSelection.end(); it++){
                 
@@ -1103,7 +1116,6 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
                 int index = int(ofRandom(tweetsOnDate.size()));
                 Tweet& randTweet =tweetsOnDate[index];
 
-                cout<<tweeters[i].name<<" : "<<tweetsOnDate[index].tweet<<endl;
                 currentSelection.pop_back();
                 //add a new tweet to the start
                 currentSelection.insert(currentSelection.begin(), make_pair(&tweeters[i].name,&tweetsOnDate[index].tweet ));
@@ -1276,6 +1288,11 @@ void CloudsVisualSystemTwitter::selfExit()
 }
 
 void CloudsVisualSystemTwitter::reloadShaders(){
+    
+    ofDisableArbTex();
+	sprite.loadImage(getVisualSystemDataPath() + "images/dot.png");
+	ofEnableArbTex();
+    
     lineShader.load(getVisualSystemDataPath() + "/shaders/linesShader");
     pointsShader.load(getVisualSystemDataPath() + "/shaders/pointsShader");
 }

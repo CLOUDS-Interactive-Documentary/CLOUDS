@@ -122,7 +122,6 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     int minUserMentions;
 
-
     
     //draw stuff
     void loadMesh();
@@ -168,8 +167,11 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     int activeTweeterRefreshRate;
     float edgeDecayRate;
 
+    //point sprite stuff
     ofImage sprite;
     ofShader lineShader;
+    ofRange pointsSize;
+    
     ofShader pointsShader;
     float meshExpansion;
     float pointSize;
