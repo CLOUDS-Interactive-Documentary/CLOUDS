@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="VSSchlabberbox" InternalType="">
+  <VirtualDirectory Name="ofxNearestNeighbour">
+    <VirtualDirectory Name="example-closest">
+      <VirtualDirectory Name="src">
+        <File Name="../../../../addons/ofxNearestNeighbour/example-closest/src/testApp.cpp"/>
+        <File Name="../../../../addons/ofxNearestNeighbour/example-closest/src/testApp.h"/>
+        <File Name="../../../../addons/ofxNearestNeighbour/example-closest/src/main.cpp"/>
+      </VirtualDirectory>
+      <File Name="../../../../addons/ofxNearestNeighbour/example-closest/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="libs">
+      <VirtualDirectory Name="nanoflann">
+        <VirtualDirectory Name="include">
+          <File Name="../../../../addons/ofxNearestNeighbour/libs/nanoflann/include/nanoflann.hpp"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="example-radius">
+      <VirtualDirectory Name="src">
+        <File Name="../../../../addons/ofxNearestNeighbour/example-radius/src/testApp.cpp"/>
+        <File Name="../../../../addons/ofxNearestNeighbour/example-radius/src/testApp.h"/>
+        <File Name="../../../../addons/ofxNearestNeighbour/example-radius/src/main.cpp"/>
+      </VirtualDirectory>
+      <File Name="../../../../addons/ofxNearestNeighbour/example-radius/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="src">
+      <File Name="../../../../addons/ofxNearestNeighbour/src/PointCloud.h"/>
+      <File Name="../../../../addons/ofxNearestNeighbour/src/ofxNearestNeighbour.h"/>
+      <File Name="../../../../addons/ofxNearestNeighbour/src/NearestNeighbour.h"/>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
+    </Plugin>
+  </Plugins>
+  <Description/>
+  <Dependencies/>
+  <VirtualDirectory Name="src">
+    <File Name="../src/main.cpp"/>
+    <File Name="../src/testApp.h"/>
+    <File Name="../src/testApp.cpp"/>
+    <VirtualDirectory Name="VSSchlabberbox">
+      <File Name="../../CloudsLibrary/src/VisualSystems/Schlabberbox/vs_src/GridFluid.h"/>
+      <File Name="../../CloudsLibrary/src/VisualSystems/Schlabberbox/vs_src/GridFluid.cpp"/>
+      <File Name="../../CloudsLibrary/src/VisualSystems/Schlabberbox/vs_src/CloudsVisualSystemSchlabberbox.h"/>
+      <File Name="../../CloudsLibrary/src/VisualSystems/Schlabberbox/vs_src/CloudsVisualSystemSchlabberbox.cpp"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="kdtree++">
+      <File Name="../../CloudsLibrary/src/VisualSystems/Schlabberbox/vs_src/kdtree++/region.hpp"/>
+      <File Name="../../CloudsLibrary/src/VisualSystems/Schlabberbox/vs_src/kdtree++/node.hpp"/>
+      <File Name="../../CloudsLibrary/src/VisualSystems/Schlabberbox/vs_src/kdtree++/kdtree.hpp"/>
+      <File Name="../../CloudsLibrary/src/VisualSystems/Schlabberbox/vs_src/kdtree++/iterator.hpp"/>
+      <File Name="../../CloudsLibrary/src/VisualSystems/Schlabberbox/vs_src/kdtree++/function.hpp"/>
+      <File Name="../../CloudsLibrary/src/VisualSystems/Schlabberbox/vs_src/kdtree++/allocator.hpp"/>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <VirtualDirectory Name="config">
+    <File Name="../Makefile"/>
+    <File Name="../config.make"/>
+    <File Name="../addons.make"/>
+  </VirtualDirectory>
+  <Settings Type="Dynamic Library">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Dynamic Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g" C_Options="-g" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" UseDifferentPCHFlags="no" PCHFlags="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="" IntermediateDirectory="./Debug" Command="./$(ProjectName)_debug" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(WorkspacePath)/../bin" PauseExecWhenProcTerminates="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="yes">
+        <RebuildCommand/>
+        <CleanCommand>make clean Debug</CleanCommand>
+        <BuildCommand>make Debug</BuildCommand>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory>$(WorkspacePath)/..</WorkingDirectory>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Dynamic Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="" C_Options="" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" UseDifferentPCHFlags="no" PCHFlags="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="-O2" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="" IntermediateDirectory="./Release" Command="./VSSchlabberbox" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(WorkspacePath)/../bin" PauseExecWhenProcTerminates="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="yes">
+        <RebuildCommand/>
+        <CleanCommand>make clean Release</CleanCommand>
+        <BuildCommand>make Release</BuildCommand>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory>$(WorkspacePath)/..</WorkingDirectory>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+</CodeLite_Project>

@@ -14,8 +14,9 @@
 #include "Panel.h"
 #include "PanelCode.h"
 #include "PanelGraph.h"
+#include "PanelTenPrint.h"
+#include "PanelConsole.h"
 
-//TODO: rename this to your own visual system
 class CloudsVisualSystemCode : public CloudsVisualSystem {
   public:
     
@@ -88,9 +89,6 @@ class CloudsVisualSystemCode : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-
-	void generatePanels();
-	
 	vector<Panel*> panels;
 	
     // if you use a custom camera to fly through the scene
@@ -107,8 +105,17 @@ protected:
 	
 	ofxUISuperCanvas* typeGui;
 	ofxUISuperCanvas* colorGui;
-	ofRange speedRange;
+	ofRange speedRange;	
 	
+	ofxFTGLFont sharedFont;
+	ofxFTGLSimpleLayout sharedLayout;
+	float typeTracking;
+	int currentFontSize;
+	int fontSize;
+	
+	void updateColors();
+	ofxUILabel* baseColorLabel;
+	vector<ofxUILabel*> textColorLabels;
 	vector<ofFloatColor> matchColorTypes;
 	ofFloatColor matchColorTypesHSV[MATCH_TYPES];
 	ofFloatColor tintColorHSV;
@@ -121,8 +128,10 @@ protected:
 	int boxSeed;
 	float outlineAlpha;
 	
-	bool panelsGenerated;
-	
+	void generatePanels();
+	bool regeneratePanels;
 
+	float generatedPanelWidth;
+	float generatedPanelHeight;
 
 };

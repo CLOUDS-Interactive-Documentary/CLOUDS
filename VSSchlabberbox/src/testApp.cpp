@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	ofSetVerticalSync(true);
-  
+
 	schlabberbox.setup();
 	schlabberbox.playSystem();
 }
@@ -17,7 +17,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	
+
 }
 
 //--------------------------------------------------------------
@@ -66,6 +66,6 @@ void testApp::gotMessage(ofMessage msg){
 }
 
 //--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo dragInfo){ 
+void testApp::dragEvent(ofDragInfo dragInfo){
 
 }

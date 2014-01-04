@@ -72,6 +72,7 @@ namespace itg
         float innerFogStart, innerFogEnd;
         float sizeMin, sizeMax;
         float alphaMin, alphaMax;
+        float yMin, yMax;
         int numParticles;
         ofImage tex;
         ofVboMesh mesh;

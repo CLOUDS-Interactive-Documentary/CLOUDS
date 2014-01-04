@@ -37,12 +37,16 @@ namespace itg
 {
     struct JellyParams
     {
+        JellyParams() : widthMin(80.f), widthMax(100.f), lengthMin(80.f), lengthMax(100.f) {}
+        
         float tentaclesHMin, tentaclesHMax, tentaclesS, tentaclesB;
         float bodyHMin, bodyHMax, bodyS, bodyB;
-        //ofVec3f tentacleHsb, bodyHsb;
         
         float bodyAlpha;
-        float widthAverage, widthStdDeviation, lengthAverage, lengthStdDeviation;
+        
+        float widthMin, widthMax;
+        float lengthMin, lengthMax;
+        
         float segmentMin, segmentMax;
         float m1Min, m1Max, m2Min, m2Max;
         float pulseAmtMin, pulseAmtMax;
@@ -54,6 +58,10 @@ namespace itg
         
     public:
         typedef shared_ptr<JellyCreature> Ptr;
+        
+        static float undulationAmt;
+        static float undulationFreqMin;
+        static float undulationFreqMax;
         
         JellyCreature(const JellyParams& params);
         
@@ -90,7 +98,7 @@ namespace itg
         float bodyAlpha;
         ofFloatColor bodyColour;
         ofFloatColor tentacleColour;
-        float deformAmount;
+        //float deformAmount;
         float pulseAmt;
         bool drawInner;
     };
