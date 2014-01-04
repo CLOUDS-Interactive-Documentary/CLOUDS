@@ -76,12 +76,12 @@ void CloudsSecondaryDisplayController::setup(){
     meshProjectDescription = projectLayout.getMeshByID("TEXTBOX_x5F_DESC_1_");
     
     //setup all font layout objects
-    layoutQuestion = getLayoutForLayer(meshQuestion, "Blender-BOOK", 550);
+    layoutQuestion = getLayoutForLayer(meshQuestion, "Blender-BOOK", 55);
     
-    fontBioLastName = getFontForLayer(meshBioLastName, "Blender-BOOK", 550);
-    fontBioFirstName = getFontForLayer(meshBioFirstName, "Blender-THIN", 55);
-    fontBioLocation = getFontForLayer(meshBioLocation, "Blender-BOOK", 40);
-    fontBioTitle = getFontForLayer(meshBioTitle, "Blender-BOOK", 40);
+    fontBioLastName = getFontForLayer(meshBioLastName, "Blender-BOOK", 50);
+    fontBioFirstName = getFontForLayer(meshBioFirstName, "Blender-THIN", 50);
+    fontBioLocation = getFontForLayer(meshBioLocation, "Blender-BOOK", 35);
+    fontBioTitle = getFontForLayer(meshBioTitle, "Blender-BOOK", 35);
     layoutBioDescription = getLayoutForLayer(meshBioDescription, "Blender-BOOK", 40);
     
     layoutProjectTitle = getLayoutForLayer(meshProjectTitle, "Blender-THIN", 55);
