@@ -104,6 +104,8 @@ protected:
     
     ofMesh gravityLine;
     
+    ofDirectory spriteDir;
+    
     GLfloat * data;
     ofImage tex;
     ofVbo vbo;
@@ -112,10 +114,10 @@ protected:
     ofxUISuperCanvas* customGui;
     bool videoLoaded;
     bool bShouldRegenerate;
-    bool bShouldExplode;
-    bool bShouldFreeze;
-    bool bShouldFall;
-    bool bShouldRise;
+    bool bShouldExplode, bDidExplode;
+    bool bShouldFreeze, bDidFreeze;
+    bool bShouldFall, bDidFall;
+    bool bShouldRise, bDidRise;
     
     bool bBounceOffWalls;
     bool bDrawBox;

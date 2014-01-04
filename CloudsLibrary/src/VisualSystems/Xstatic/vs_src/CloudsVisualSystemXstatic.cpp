@@ -30,13 +30,21 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
     customGui->addToggle("REGENERATE", &bShouldRegenerate);
     customGui->addIntSlider("NUM PARTICLES", 0, 2000, &nParticles);
     customGui->addToggle("BOUNCE OFF WALLS", &bBounceOffWalls);
+    
+    customGui->addSpacer();
+    customGui->addLabel("SPRITE IMAGE");
+    vector<string> spriteNames;
+    for (int i = 0; i < spriteDir.size(); i++) {
+        spriteNames.push_back(spriteDir.getName(i));
+    }
+    customGui->addRadio("SPRITES", spriteNames);
 
+    customGui->addSpacer();
     customGui->addToggle("FREEZE", &bShouldFreeze);
     customGui->addToggle("RISE", &bShouldRise);
     customGui->addToggle("FALL", &bShouldFall);
     customGui->addMinimalSlider("RISE/FALL SPEED", 0, 200, &riseFallSpeed);
     
-
     customGui->addToggle("EXPLODE", &bShouldExplode);
     customGui->addMinimalSlider("EXPLODE SPEED", 0, 200, &explodeSpeed);
     
@@ -45,15 +53,12 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
     customGui->addMinimalSlider("GRAVITY Y", -1, 1, &gravity.y);
     customGui->addMinimalSlider("GRAVITY Z", -1, 1, &gravity.z);
     
-   
     customGui->addSlider("ROTATE ANGLE", 45, 135, &rotateAngle);
     customGui->addSlider("ROTATE SPEED", 0, 10, &rotateSpeed);
     customGui->addSlider("PULL SPEED", 0, 10, &pullSpeed);
     
-
     customGui->addMinimalSlider("WIND SPEED", 0, 10, &windSpeed);
     
-
     customGui->addMinimalSlider("DRAG", 0, 1, &drag);
     
     customGui->addRangeSlider("SIZE", 0, 20, &XParticle::minSize, &XParticle::maxSize);
@@ -86,7 +91,30 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
 
 void CloudsVisualSystemXstatic::selfGuiEvent(ofxUIEventArgs &e)
 {
-
+    string name = e.widget->getName();
+    if (name == "FREEZE") {
+        bDidFreeze = false;
+    }
+    else if (name == "FALL") {
+        bDidFall = false;
+    }
+    else if (name == "RISE") {
+        bDidRise = false;
+    }
+    else if (name == "EXPLODE") {
+        bDidExplode = false;
+    }
+    else {
+        // Let's look through the files dropdown for a match.
+        for (int i = 0; i < spriteDir.numFiles(); i++) {
+            if (name == spriteDir.getName(i) && ((ofxUIToggle *)e.widget)->getValue()) {
+                ofDisableArbTex();
+                tex.loadImage(spriteDir.getPath(i));
+                ofEnableArbTex();
+                break;
+            }
+        }
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -130,13 +158,20 @@ void CloudsVisualSystemXstatic::selfSetup()
     color2.setHsb(1.0f, 0.0f, 1.0f);
     colorWeight = 1.0f;
     
-    explodeSpeed = 1.0;
-    bShouldExplode = true;
-
+    explodeSpeed  = 1.0;
     riseFallSpeed = 1.0;
-    bShouldFreeze = false;
-    bShouldFall = false;
-    bShouldRise = false;
+
+    bShouldExplode = true;
+    bShouldFreeze  = false;
+    bShouldFall    = false;
+    bShouldRise    = false;
+    
+    // Use extra flags so that initial conditions can stay
+    // set and used in presets.
+    bDidExplode = false;
+    bDidFreeze  = false;
+    bDidFall    = false;
+    bDidRise    = false;
     
     bBounceOffWalls = true;
     
@@ -145,8 +180,10 @@ void CloudsVisualSystemXstatic::selfSetup()
     regenerate();
     bShouldRegenerate = true;
     
+    spriteDir.listDir(getVisualSystemDataPath() + "spriteImages");
+    spriteDir.sort();
+    
     ofDisableArbTex();
-    tex.loadImage(getVisualSystemDataPath() + "spark.png");
     shader.load(getVisualSystemDataPath() + "shaders/particles");
     ofEnableArbTex();
 }
@@ -189,14 +226,14 @@ void CloudsVisualSystemXstatic::selfUpdate()
     
     XParticle::dt = ofGetLastFrameTime();
     
-    if (bShouldFreeze) {
+    if (bShouldFreeze && !bDidFreeze) {
         rotateSpeed = 0;
         pullSpeed = 0;
         windSpeed = 0;
         gravity = ofVec3f::zero();
     }
     
-    if (bShouldRise || bShouldFall) {
+    if ((bShouldRise && !bDidRise) || (bShouldFall || !bDidFall)) {
         drag = 0;
         rotateSpeed = 0;
         pullSpeed = 0;
@@ -205,21 +242,21 @@ void CloudsVisualSystemXstatic::selfUpdate()
     }
     
     for (int i = 0; i < nParticles; i++) {
-        if (bShouldExplode) {
+        if (bShouldExplode && !bDidExplode) {
             ofVec3f explodeForce(ofRandom(-1, 1), ofRandom(-1, 1), ofRandom(-1, 1));
             explodeForce.scale(explodeSpeed);
             particles[i].applyForce(explodeForce);
         }
         
-        if (bShouldFreeze) {
+        if (bShouldFreeze && !bDidFreeze) {
             particles[i].velocity = ofVec3f::zero();
             particles[i].acceleration = ofVec3f::zero();
         }
-        else if (bShouldRise) {
+        else if (bShouldRise && !bDidRise) {
             particles[i].velocity.set(0, riseFallSpeed, 0);
             particles[i].acceleration = ofVec3f::zero();
         }
-        else if (bShouldFall) {
+        else if (bShouldFall && !bDidFall) {
             particles[i].velocity.set(0, -riseFallSpeed, 0);
             particles[i].acceleration = ofVec3f::zero();
         }
@@ -273,10 +310,10 @@ void CloudsVisualSystemXstatic::selfUpdate()
     gravityLine.addVertex(ofVec3f::zero());
     gravityLine.addVertex(gravity * 10);
 
-    bShouldExplode = false;
-    bShouldFreeze = false;
-    bShouldRise = false;
-    bShouldFall = false;
+    bDidExplode = true;
+    bDidFreeze  = true;
+    bDidRise    = true;
+    bDidFall    = true;
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera

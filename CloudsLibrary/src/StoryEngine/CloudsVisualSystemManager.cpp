@@ -4,7 +4,6 @@
 #include "CloudsGlobal.h"
 
 #ifndef CLOUDS_NO_VS
-#include "CloudsVisualSystemClusterMap.h"
 #include "CloudsVisualSystem2DVideo.h"
 #include "CloudsVisualSystem3DModelLoader.h"
 #include "CloudsVisualSystemAstrolabe.h"
@@ -62,7 +61,8 @@
 #include "CloudsVisualSystemPages.h"
 #include "CloudsVisualSystemPaintBrush.h"
 #include "CloudsVisualSystemPhotoGlitch.h"
-//#include "CloudsVisualSystemQuineVisualSystem.h"
+#include "CloudsVisualSystemProcess11.h"
+#include "CloudsVisualSystemProcess18.h"
 #include "CloudsVisualSystemRGBDVideo.h"
 #include "CloudsVisualSystemRandomDigits.h"
 #include "CloudsVisualSystemReplicator.h"
@@ -104,7 +104,6 @@ struct Mapping {
 		return map<string,tConstructor>::value_type(classname, constructor);
 	}
 } mapping[] = {
-	{ "_ClusterMap", &fCreate<CloudsVisualSystemClusterMap> },
 	{ "2DVideo", &fCreate<CloudsVisualSystem2DVideo> },
 	{ "3DModelLoader", &fCreate<CloudsVisualSystem3DModelLoader> },
 	{ "Astrolabe", &fCreate<CloudsVisualSystemAstrolabe> },
@@ -162,7 +161,8 @@ struct Mapping {
 	{ "Pages", &fCreate<CloudsVisualSystemPages> },
 	{ "PaintBrush", &fCreate<CloudsVisualSystemPaintBrush> },
 	{ "PhotoGlitch", &fCreate<CloudsVisualSystemPhotoGlitch> },
-//	{ "QuineVisualSystem", &fCreate<CloudsVisualSystemQuineVisualSystem> },
+	{ "Process11", &fCreate<CloudsVisualSystemProcess11> },
+	{ "Process18", &fCreate<CloudsVisualSystemProcess18> },
 	{ "RGBDVideo", &fCreate<CloudsVisualSystemRGBDVideo> },
 	{ "RandomDigits", &fCreate<CloudsVisualSystemRandomDigits> },
 	{ "Replicator", &fCreate<CloudsVisualSystemReplicator> },
