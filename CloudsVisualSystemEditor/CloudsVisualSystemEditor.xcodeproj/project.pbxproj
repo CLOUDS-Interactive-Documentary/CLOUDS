@@ -204,16 +204,6 @@
 		E70CEB5C1869649200955691 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE6311869648E00955691 /* CloudsVisualSystemLaplacianTunnel.cpp */; };
 		E70CEB5D1869649200955691 /* ofVboByteColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE6331869648E00955691 /* ofVboByteColor.cpp */; };
 		E70CEB5E1869649200955691 /* ofVboByteColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE6331869648E00955691 /* ofVboByteColor.cpp */; };
-		E70CEB5F1869649200955691 /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE6371869648E00955691 /* CloudsVisualSystemLia.cpp */; };
-		E70CEB601869649200955691 /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE6371869648E00955691 /* CloudsVisualSystemLia.cpp */; };
-		E70CEB611869649200955691 /* ColorPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE6391869648E00955691 /* ColorPalette.cpp */; };
-		E70CEB621869649200955691 /* ColorPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE6391869648E00955691 /* ColorPalette.cpp */; };
-		E70CEB631869649200955691 /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE63B1869648E00955691 /* Globals.cpp */; };
-		E70CEB641869649200955691 /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE63B1869648E00955691 /* Globals.cpp */; };
-		E70CEB651869649200955691 /* Module.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE63D1869648E00955691 /* Module.cpp */; };
-		E70CEB661869649200955691 /* Module.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE63D1869648E00955691 /* Module.cpp */; };
-		E70CEB671869649200955691 /* RandomMover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE63F1869648E00955691 /* RandomMover.cpp */; };
-		E70CEB681869649200955691 /* RandomMover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE63F1869648E00955691 /* RandomMover.cpp */; };
 		E70CEB691869649200955691 /* CloudsVisualSystemLSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE6431869648E00955691 /* CloudsVisualSystemLSystem.cpp */; };
 		E70CEB6A1869649200955691 /* CloudsVisualSystemLSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE6431869648E00955691 /* CloudsVisualSystemLSystem.cpp */; };
 		E70CEB6B1869649200955691 /* LNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE6451869648E00955691 /* LNode.cpp */; };
@@ -670,6 +660,34 @@
 		E79E6FC61855529600406535 /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6FA71855529600406535 /* ofxOscSender.cpp */; };
 		E79EAD5B187877A600B8B8F0 /* GpuParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD3E187877A600B8B8F0 /* GpuParticles.cpp */; };
 		E79EAD5C187877A600B8B8F0 /* GpuParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD3E187877A600B8B8F0 /* GpuParticles.cpp */; };
+		E79EAD7D1878812300B8B8F0 /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD641878812300B8B8F0 /* CloudsVisualSystemLia.cpp */; };
+		E79EAD7E1878812300B8B8F0 /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD641878812300B8B8F0 /* CloudsVisualSystemLia.cpp */; };
+		E79EAD7F1878812300B8B8F0 /* ColorPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD661878812300B8B8F0 /* ColorPalette.cpp */; };
+		E79EAD801878812300B8B8F0 /* ColorPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD661878812300B8B8F0 /* ColorPalette.cpp */; };
+		E79EAD811878812300B8B8F0 /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD681878812300B8B8F0 /* Globals.cpp */; };
+		E79EAD821878812300B8B8F0 /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD681878812300B8B8F0 /* Globals.cpp */; };
+		E79EAD831878812300B8B8F0 /* Module.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD6A1878812300B8B8F0 /* Module.cpp */; };
+		E79EAD841878812300B8B8F0 /* Module.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD6A1878812300B8B8F0 /* Module.cpp */; };
+		E79EAD851878812300B8B8F0 /* RandomMover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD6C1878812300B8B8F0 /* RandomMover.cpp */; };
+		E79EAD861878812300B8B8F0 /* RandomMover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD6C1878812300B8B8F0 /* RandomMover.cpp */; };
+		E79EAD871878812300B8B8F0 /* CloudsVisualSystemProcess11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD701878812300B8B8F0 /* CloudsVisualSystemProcess11.cpp */; };
+		E79EAD881878812300B8B8F0 /* CloudsVisualSystemProcess11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD701878812300B8B8F0 /* CloudsVisualSystemProcess11.cpp */; };
+		E79EAD891878812300B8B8F0 /* E2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD721878812300B8B8F0 /* E2.cpp */; };
+		E79EAD8A1878812300B8B8F0 /* E2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD721878812300B8B8F0 /* E2.cpp */; };
+		E79EAD8B1878812300B8B8F0 /* CloudsVisualSystemProcess18.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD761878812300B8B8F0 /* CloudsVisualSystemProcess18.cpp */; };
+		E79EAD8C1878812300B8B8F0 /* CloudsVisualSystemProcess18.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD761878812300B8B8F0 /* CloudsVisualSystemProcess18.cpp */; };
+		E79EAD8D1878812300B8B8F0 /* E5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD781878812300B8B8F0 /* E5.cpp */; };
+		E79EAD8E1878812300B8B8F0 /* E5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD781878812300B8B8F0 /* E5.cpp */; };
+		E79EADCB187883F100B8B8F0 /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EADC1187883F100B8B8F0 /* Panel.cpp */; };
+		E79EADCC187883F100B8B8F0 /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EADC1187883F100B8B8F0 /* Panel.cpp */; };
+		E79EADCD187883F100B8B8F0 /* PanelCode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EADC3187883F100B8B8F0 /* PanelCode.cpp */; };
+		E79EADCE187883F100B8B8F0 /* PanelCode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EADC3187883F100B8B8F0 /* PanelCode.cpp */; };
+		E79EADCF187883F100B8B8F0 /* PanelConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EADC5187883F100B8B8F0 /* PanelConsole.cpp */; };
+		E79EADD0187883F100B8B8F0 /* PanelConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EADC5187883F100B8B8F0 /* PanelConsole.cpp */; };
+		E79EADD1187883F100B8B8F0 /* PanelGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EADC7187883F100B8B8F0 /* PanelGraph.cpp */; };
+		E79EADD2187883F100B8B8F0 /* PanelGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EADC7187883F100B8B8F0 /* PanelGraph.cpp */; };
+		E79EADD3187883F100B8B8F0 /* PanelTenPrint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EADC9187883F100B8B8F0 /* PanelTenPrint.cpp */; };
+		E79EADD4187883F100B8B8F0 /* PanelTenPrint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EADC9187883F100B8B8F0 /* PanelTenPrint.cpp */; };
 		E7BBB4BE179FA288007D7EC1 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4AF179FA288007D7EC1 /* Controller.cpp */; };
 		E7BBB4BF179FA288007D7EC1 /* Force.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4B1179FA288007D7EC1 /* Force.cpp */; };
 		E7BBB4C0179FA288007D7EC1 /* ForceSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4B3179FA288007D7EC1 /* ForceSet.cpp */; };
@@ -964,12 +982,6 @@
 		E7FC551C185293B80017A3F2 /* ofxAssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC54F8185293B80017A3F2 /* ofxAssimpModelLoader.cpp */; };
 		E7FC5562185293F30017A3F2 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = E7FC553F185293F30017A3F2 /* readme.md */; };
 		E7FC5563185293F30017A3F2 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = E7FC553F185293F30017A3F2 /* readme.md */; };
-		F37C7D42186EAF9800FCDA79 /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7D3C186EAF9800FCDA79 /* Panel.cpp */; };
-		F37C7D43186EAF9800FCDA79 /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7D3C186EAF9800FCDA79 /* Panel.cpp */; };
-		F37C7D44186EAF9800FCDA79 /* PanelCode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7D3E186EAF9800FCDA79 /* PanelCode.cpp */; };
-		F37C7D45186EAF9800FCDA79 /* PanelCode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7D3E186EAF9800FCDA79 /* PanelCode.cpp */; };
-		F37C7D46186EAF9800FCDA79 /* PanelGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7D40186EAF9800FCDA79 /* PanelGraph.cpp */; };
-		F37C7D47186EAF9800FCDA79 /* PanelGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7D40186EAF9800FCDA79 /* PanelGraph.cpp */; };
 		F37C7E55186EB28C00FCDA79 /* ofxTonicSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7DAE186EB28B00FCDA79 /* ofxTonicSynth.cpp */; };
 		F37C7E56186EB28C00FCDA79 /* ofxTonicSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7DAE186EB28B00FCDA79 /* ofxTonicSynth.cpp */; };
 		F37C7E57186EB28C00FCDA79 /* ADSR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7DB1186EB28B00FCDA79 /* ADSR.cpp */; };
@@ -1340,16 +1352,6 @@
 		E70CE6321869648E00955691 /* CloudsVisualSystemLaplacianTunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLaplacianTunnel.h; sourceTree = "<group>"; };
 		E70CE6331869648E00955691 /* ofVboByteColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofVboByteColor.cpp; sourceTree = "<group>"; };
 		E70CE6341869648E00955691 /* ofVboByteColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVboByteColor.h; sourceTree = "<group>"; };
-		E70CE6371869648E00955691 /* CloudsVisualSystemLia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLia.cpp; sourceTree = "<group>"; };
-		E70CE6381869648E00955691 /* CloudsVisualSystemLia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLia.h; sourceTree = "<group>"; };
-		E70CE6391869648E00955691 /* ColorPalette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorPalette.cpp; sourceTree = "<group>"; };
-		E70CE63A1869648E00955691 /* ColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPalette.h; sourceTree = "<group>"; };
-		E70CE63B1869648E00955691 /* Globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Globals.cpp; sourceTree = "<group>"; };
-		E70CE63C1869648E00955691 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
-		E70CE63D1869648E00955691 /* Module.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Module.cpp; sourceTree = "<group>"; };
-		E70CE63E1869648E00955691 /* Module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Module.h; sourceTree = "<group>"; };
-		E70CE63F1869648E00955691 /* RandomMover.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomMover.cpp; sourceTree = "<group>"; };
-		E70CE6401869648E00955691 /* RandomMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomMover.h; sourceTree = "<group>"; };
 		E70CE6431869648E00955691 /* CloudsVisualSystemLSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLSystem.cpp; sourceTree = "<group>"; };
 		E70CE6441869648E00955691 /* CloudsVisualSystemLSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLSystem.h; sourceTree = "<group>"; };
 		E70CE6451869648E00955691 /* LNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LNode.cpp; sourceTree = "<group>"; };
@@ -2072,6 +2074,34 @@
 		E79EAD3E187877A600B8B8F0 /* GpuParticles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GpuParticles.cpp; sourceTree = "<group>"; };
 		E79EAD3F187877A600B8B8F0 /* GpuParticles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpuParticles.h; sourceTree = "<group>"; };
 		E79EAD40187877A600B8B8F0 /* ofxGpuParticles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGpuParticles.h; sourceTree = "<group>"; };
+		E79EAD641878812300B8B8F0 /* CloudsVisualSystemLia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLia.cpp; sourceTree = "<group>"; };
+		E79EAD651878812300B8B8F0 /* CloudsVisualSystemLia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLia.h; sourceTree = "<group>"; };
+		E79EAD661878812300B8B8F0 /* ColorPalette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorPalette.cpp; sourceTree = "<group>"; };
+		E79EAD671878812300B8B8F0 /* ColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPalette.h; sourceTree = "<group>"; };
+		E79EAD681878812300B8B8F0 /* Globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Globals.cpp; sourceTree = "<group>"; };
+		E79EAD691878812300B8B8F0 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		E79EAD6A1878812300B8B8F0 /* Module.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Module.cpp; sourceTree = "<group>"; };
+		E79EAD6B1878812300B8B8F0 /* Module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Module.h; sourceTree = "<group>"; };
+		E79EAD6C1878812300B8B8F0 /* RandomMover.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomMover.cpp; sourceTree = "<group>"; };
+		E79EAD6D1878812300B8B8F0 /* RandomMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomMover.h; sourceTree = "<group>"; };
+		E79EAD701878812300B8B8F0 /* CloudsVisualSystemProcess11.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemProcess11.cpp; sourceTree = "<group>"; };
+		E79EAD711878812300B8B8F0 /* CloudsVisualSystemProcess11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemProcess11.h; sourceTree = "<group>"; };
+		E79EAD721878812300B8B8F0 /* E2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E2.cpp; sourceTree = "<group>"; };
+		E79EAD731878812300B8B8F0 /* E2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E2.h; sourceTree = "<group>"; };
+		E79EAD761878812300B8B8F0 /* CloudsVisualSystemProcess18.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemProcess18.cpp; sourceTree = "<group>"; };
+		E79EAD771878812300B8B8F0 /* CloudsVisualSystemProcess18.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemProcess18.h; sourceTree = "<group>"; };
+		E79EAD781878812300B8B8F0 /* E5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E5.cpp; sourceTree = "<group>"; };
+		E79EAD791878812300B8B8F0 /* E5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E5.h; sourceTree = "<group>"; };
+		E79EADC1187883F100B8B8F0 /* Panel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Panel.cpp; sourceTree = "<group>"; };
+		E79EADC2187883F100B8B8F0 /* Panel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Panel.h; sourceTree = "<group>"; };
+		E79EADC3187883F100B8B8F0 /* PanelCode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelCode.cpp; sourceTree = "<group>"; };
+		E79EADC4187883F100B8B8F0 /* PanelCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelCode.h; sourceTree = "<group>"; };
+		E79EADC5187883F100B8B8F0 /* PanelConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelConsole.cpp; sourceTree = "<group>"; };
+		E79EADC6187883F100B8B8F0 /* PanelConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelConsole.h; sourceTree = "<group>"; };
+		E79EADC7187883F100B8B8F0 /* PanelGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelGraph.cpp; sourceTree = "<group>"; };
+		E79EADC8187883F100B8B8F0 /* PanelGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelGraph.h; sourceTree = "<group>"; };
+		E79EADC9187883F100B8B8F0 /* PanelTenPrint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelTenPrint.cpp; sourceTree = "<group>"; };
+		E79EADCA187883F100B8B8F0 /* PanelTenPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelTenPrint.h; sourceTree = "<group>"; };
 		E7BBB4AF179FA288007D7EC1 /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		E7BBB4B0179FA288007D7EC1 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		E7BBB4B1179FA288007D7EC1 /* Force.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Force.cpp; sourceTree = "<group>"; };
@@ -2355,12 +2385,6 @@
 		E7FC5541185293F30017A3F2 /* NearestNeighbour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearestNeighbour.h; sourceTree = "<group>"; };
 		E7FC5542185293F30017A3F2 /* ofxNearestNeighbour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxNearestNeighbour.h; sourceTree = "<group>"; };
 		E7FC5543185293F30017A3F2 /* PointCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointCloud.h; sourceTree = "<group>"; };
-		F37C7D3C186EAF9800FCDA79 /* Panel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Panel.cpp; sourceTree = "<group>"; };
-		F37C7D3D186EAF9800FCDA79 /* Panel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Panel.h; sourceTree = "<group>"; };
-		F37C7D3E186EAF9800FCDA79 /* PanelCode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelCode.cpp; sourceTree = "<group>"; };
-		F37C7D3F186EAF9800FCDA79 /* PanelCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelCode.h; sourceTree = "<group>"; };
-		F37C7D40186EAF9800FCDA79 /* PanelGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelGraph.cpp; sourceTree = "<group>"; };
-		F37C7D41186EAF9800FCDA79 /* PanelGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelGraph.h; sourceTree = "<group>"; };
 		F37C7DAD186EB28B00FCDA79 /* ofxTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTonic.h; sourceTree = "<group>"; };
 		F37C7DAE186EB28B00FCDA79 /* ofxTonicSynth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTonicSynth.cpp; sourceTree = "<group>"; };
 		F37C7DAF186EB28B00FCDA79 /* ofxTonicSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTonicSynth.h; sourceTree = "<group>"; };
@@ -2975,7 +2999,6 @@
 				E70CE6271869648E00955691 /* GPUParticles */,
 				E70CE62B1869648E00955691 /* Histogram */,
 				E70CE62F1869648E00955691 /* LaplacianTunnel */,
-				E70CE6351869648E00955691 /* LIA */,
 				E70CE6411869648E00955691 /* LSystem */,
 				E70CE6491869648E00955691 /* Mandala */,
 				E70CE6521869648E00955691 /* MarchingCubes */,
@@ -3216,7 +3239,7 @@
 		E70CE5D21869648D00955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				F37C7D3B186EAF9800FCDA79 /* Panels */,
+				E79EADC0187883F100B8B8F0 /* Panels */,
 				E70CE5D31869648D00955691 /* CloudsVisualSystemCode.cpp */,
 				E70CE5D41869648D00955691 /* CloudsVisualSystemCode.h */,
 			);
@@ -3560,31 +3583,6 @@
 				E70CE6321869648E00955691 /* CloudsVisualSystemLaplacianTunnel.h */,
 				E70CE6331869648E00955691 /* ofVboByteColor.cpp */,
 				E70CE6341869648E00955691 /* ofVboByteColor.h */,
-			);
-			path = vs_src;
-			sourceTree = "<group>";
-		};
-		E70CE6351869648E00955691 /* LIA */ = {
-			isa = PBXGroup;
-			children = (
-				E70CE6361869648E00955691 /* vs_src */,
-			);
-			path = LIA;
-			sourceTree = "<group>";
-		};
-		E70CE6361869648E00955691 /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				E70CE6371869648E00955691 /* CloudsVisualSystemLia.cpp */,
-				E70CE6381869648E00955691 /* CloudsVisualSystemLia.h */,
-				E70CE6391869648E00955691 /* ColorPalette.cpp */,
-				E70CE63A1869648E00955691 /* ColorPalette.h */,
-				E70CE63B1869648E00955691 /* Globals.cpp */,
-				E70CE63C1869648E00955691 /* Globals.h */,
-				E70CE63D1869648E00955691 /* Module.cpp */,
-				E70CE63E1869648E00955691 /* Module.h */,
-				E70CE63F1869648E00955691 /* RandomMover.cpp */,
-				E70CE6401869648E00955691 /* RandomMover.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -4928,6 +4926,7 @@
 		E737691C1778DC4500892646 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E79EAD601878812300B8B8F0 /* VisualSystemsPrivate */,
 				E70CE3A21869648900955691 /* VisualSystems */,
 				2A4F33DC1863CDD00070C0ED /* Sound */,
 				E79E6F481855302B00406535 /* Input */,
@@ -5868,6 +5867,96 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E79EAD601878812300B8B8F0 /* VisualSystemsPrivate */ = {
+			isa = PBXGroup;
+			children = (
+				E79EAD621878812300B8B8F0 /* LIA */,
+				E79EAD6E1878812300B8B8F0 /* Process11 */,
+				E79EAD741878812300B8B8F0 /* Process18 */,
+			);
+			path = VisualSystemsPrivate;
+			sourceTree = "<group>";
+		};
+		E79EAD621878812300B8B8F0 /* LIA */ = {
+			isa = PBXGroup;
+			children = (
+				E79EAD631878812300B8B8F0 /* vs_src */,
+			);
+			path = LIA;
+			sourceTree = "<group>";
+		};
+		E79EAD631878812300B8B8F0 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E79EAD641878812300B8B8F0 /* CloudsVisualSystemLia.cpp */,
+				E79EAD651878812300B8B8F0 /* CloudsVisualSystemLia.h */,
+				E79EAD661878812300B8B8F0 /* ColorPalette.cpp */,
+				E79EAD671878812300B8B8F0 /* ColorPalette.h */,
+				E79EAD681878812300B8B8F0 /* Globals.cpp */,
+				E79EAD691878812300B8B8F0 /* Globals.h */,
+				E79EAD6A1878812300B8B8F0 /* Module.cpp */,
+				E79EAD6B1878812300B8B8F0 /* Module.h */,
+				E79EAD6C1878812300B8B8F0 /* RandomMover.cpp */,
+				E79EAD6D1878812300B8B8F0 /* RandomMover.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E79EAD6E1878812300B8B8F0 /* Process11 */ = {
+			isa = PBXGroup;
+			children = (
+				E79EAD6F1878812300B8B8F0 /* vs_src */,
+			);
+			path = Process11;
+			sourceTree = "<group>";
+		};
+		E79EAD6F1878812300B8B8F0 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E79EAD701878812300B8B8F0 /* CloudsVisualSystemProcess11.cpp */,
+				E79EAD711878812300B8B8F0 /* CloudsVisualSystemProcess11.h */,
+				E79EAD721878812300B8B8F0 /* E2.cpp */,
+				E79EAD731878812300B8B8F0 /* E2.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E79EAD741878812300B8B8F0 /* Process18 */ = {
+			isa = PBXGroup;
+			children = (
+				E79EAD751878812300B8B8F0 /* vs_src */,
+			);
+			path = Process18;
+			sourceTree = "<group>";
+		};
+		E79EAD751878812300B8B8F0 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E79EAD761878812300B8B8F0 /* CloudsVisualSystemProcess18.cpp */,
+				E79EAD771878812300B8B8F0 /* CloudsVisualSystemProcess18.h */,
+				E79EAD781878812300B8B8F0 /* E5.cpp */,
+				E79EAD791878812300B8B8F0 /* E5.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E79EADC0187883F100B8B8F0 /* Panels */ = {
+			isa = PBXGroup;
+			children = (
+				E79EADC1187883F100B8B8F0 /* Panel.cpp */,
+				E79EADC2187883F100B8B8F0 /* Panel.h */,
+				E79EADC3187883F100B8B8F0 /* PanelCode.cpp */,
+				E79EADC4187883F100B8B8F0 /* PanelCode.h */,
+				E79EADC5187883F100B8B8F0 /* PanelConsole.cpp */,
+				E79EADC6187883F100B8B8F0 /* PanelConsole.h */,
+				E79EADC7187883F100B8B8F0 /* PanelGraph.cpp */,
+				E79EADC8187883F100B8B8F0 /* PanelGraph.h */,
+				E79EADC9187883F100B8B8F0 /* PanelTenPrint.cpp */,
+				E79EADCA187883F100B8B8F0 /* PanelTenPrint.h */,
+			);
+			path = Panels;
+			sourceTree = "<group>";
+		};
 		E7BBB4AE179FA288007D7EC1 /* GPUParticles */ = {
 			isa = PBXGroup;
 			children = (
@@ -6698,19 +6787,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		F37C7D3B186EAF9800FCDA79 /* Panels */ = {
-			isa = PBXGroup;
-			children = (
-				F37C7D3C186EAF9800FCDA79 /* Panel.cpp */,
-				F37C7D3D186EAF9800FCDA79 /* Panel.h */,
-				F37C7D3E186EAF9800FCDA79 /* PanelCode.cpp */,
-				F37C7D3F186EAF9800FCDA79 /* PanelCode.h */,
-				F37C7D40186EAF9800FCDA79 /* PanelGraph.cpp */,
-				F37C7D41186EAF9800FCDA79 /* PanelGraph.h */,
-			);
-			path = Panels;
-			sourceTree = "<group>";
-		};
 		F37C7D77186EB28700FCDA79 /* ofxTonic */ = {
 			isa = PBXGroup;
 			children = (
@@ -7119,7 +7195,6 @@
 				E7BBB4C0179FA288007D7EC1 /* ForceSet.cpp in Sources */,
 				E7BBB4C1179FA288007D7EC1 /* Gravity.cpp in Sources */,
 				E7BBB4C2179FA288007D7EC1 /* Points.cpp in Sources */,
-				F37C7D44186EAF9800FCDA79 /* PanelCode.cpp in Sources */,
 				E7BBB4C3179FA288007D7EC1 /* State.cpp in Sources */,
 				E73676F817C67E6700CC6EC8 /* CloudsRGBDCamera.cpp in Sources */,
 				E73676F917C67E6700CC6EC8 /* CloudsRGBDVideoPlayer.cpp in Sources */,
@@ -7209,7 +7284,6 @@
 				E7C8B411182AE3C500AAD6E8 /* ofxMPMObstacle.cpp in Sources */,
 				E7C8B412182AE3C500AAD6E8 /* ofxMPMParticle.cpp in Sources */,
 				E7C8B481182AE3F400AAD6E8 /* Camera.cpp in Sources */,
-				F37C7D46186EAF9800FCDA79 /* PanelGraph.cpp in Sources */,
 				F37C7E75186EB28C00FCDA79 /* ControlDbToLinear.cpp in Sources */,
 				E7C8B482182AE3F400AAD6E8 /* Clock.cpp in Sources */,
 				E7C8B483182AE3F400AAD6E8 /* Color.cpp in Sources */,
@@ -7368,11 +7442,6 @@
 				F37C7E57186EB28C00FCDA79 /* ADSR.cpp in Sources */,
 				E70CEB5B1869649200955691 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
 				E70CEB5D1869649200955691 /* ofVboByteColor.cpp in Sources */,
-				E70CEB5F1869649200955691 /* CloudsVisualSystemLia.cpp in Sources */,
-				E70CEB611869649200955691 /* ColorPalette.cpp in Sources */,
-				E70CEB631869649200955691 /* Globals.cpp in Sources */,
-				E70CEB651869649200955691 /* Module.cpp in Sources */,
-				E70CEB671869649200955691 /* RandomMover.cpp in Sources */,
 				E70CEB691869649200955691 /* CloudsVisualSystemLSystem.cpp in Sources */,
 				E70CEB6B1869649200955691 /* LNode.cpp in Sources */,
 				E70CEB6D1869649200955691 /* LSystem.cpp in Sources */,
@@ -7405,7 +7474,6 @@
 				E70CEB9B1869649200955691 /* CloudsVisualSystemOpenP5Machine.cpp in Sources */,
 				E70CEB9D1869649200955691 /* CloudsVisualSystemOpenP5NoiseSphere.cpp in Sources */,
 				E70CEB9F1869649200955691 /* fft.cpp in Sources */,
-				F37C7D42186EAF9800FCDA79 /* Panel.cpp in Sources */,
 				E70CEBA11869649200955691 /* fftOctaveAnalyzer.cpp in Sources */,
 				E70CEBA31869649200955691 /* CloudsVisualSystemOpenP5SeaOfLines.cpp in Sources */,
 				E70CEBA51869649200955691 /* CloudsVisualSystemOpenP5Sixteen.cpp in Sources */,
@@ -7516,6 +7584,20 @@
 				F37C7E95186EB28C00FCDA79 /* ControlTriggerFilter.cpp in Sources */,
 				E70CEC671869649200955691 /* GestureRendererTraveling.cpp in Sources */,
 				E79EAD5B187877A600B8B8F0 /* GpuParticles.cpp in Sources */,
+				E79EAD7D1878812300B8B8F0 /* CloudsVisualSystemLia.cpp in Sources */,
+				E79EAD7F1878812300B8B8F0 /* ColorPalette.cpp in Sources */,
+				E79EAD811878812300B8B8F0 /* Globals.cpp in Sources */,
+				E79EAD831878812300B8B8F0 /* Module.cpp in Sources */,
+				E79EAD851878812300B8B8F0 /* RandomMover.cpp in Sources */,
+				E79EAD871878812300B8B8F0 /* CloudsVisualSystemProcess11.cpp in Sources */,
+				E79EAD891878812300B8B8F0 /* E2.cpp in Sources */,
+				E79EAD8B1878812300B8B8F0 /* CloudsVisualSystemProcess18.cpp in Sources */,
+				E79EAD8D1878812300B8B8F0 /* E5.cpp in Sources */,
+				E79EADCB187883F100B8B8F0 /* Panel.cpp in Sources */,
+				E79EADCD187883F100B8B8F0 /* PanelCode.cpp in Sources */,
+				E79EADCF187883F100B8B8F0 /* PanelConsole.cpp in Sources */,
+				E79EADD1187883F100B8B8F0 /* PanelGraph.cpp in Sources */,
+				E79EADD3187883F100B8B8F0 /* PanelTenPrint.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7627,7 +7709,6 @@
 				E7FB28D51830D9E2009EBD0E /* Gravity.cpp in Sources */,
 				E7FB28D61830D9E2009EBD0E /* Points.cpp in Sources */,
 				F37C7EB6186EB28C00FCDA79 /* Reverb.cpp in Sources */,
-				F37C7D45186EAF9800FCDA79 /* PanelCode.cpp in Sources */,
 				E7FB28D71830D9E2009EBD0E /* State.cpp in Sources */,
 				E7FB28D91830D9E2009EBD0E /* CloudsRGBDCamera.cpp in Sources */,
 				E7FB28DA1830D9E2009EBD0E /* CloudsRGBDVideoPlayer.cpp in Sources */,
@@ -7712,7 +7793,6 @@
 				F37C7E84186EB28C00FCDA79 /* ControlParameter.cpp in Sources */,
 				E7FB294D1830D9E2009EBD0E /* Color.cpp in Sources */,
 				E7FB294E1830D9E2009EBD0E /* Draw.cpp in Sources */,
-				F37C7D47186EAF9800FCDA79 /* PanelGraph.cpp in Sources */,
 				E7FB294F1830D9E2009EBD0E /* lq.c in Sources */,
 				E7FB29501830D9E2009EBD0E /* Obstacle.cpp in Sources */,
 				E7FB29511830D9E2009EBD0E /* OldPathway.cpp in Sources */,
@@ -7871,12 +7951,7 @@
 				E70CEB5A1869649200955691 /* CloudsVisualSystemHistogram.cpp in Sources */,
 				E70CEB5C1869649200955691 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
 				E70CEB5E1869649200955691 /* ofVboByteColor.cpp in Sources */,
-				E70CEB601869649200955691 /* CloudsVisualSystemLia.cpp in Sources */,
-				E70CEB621869649200955691 /* ColorPalette.cpp in Sources */,
 				F37C7E94186EB28C00FCDA79 /* ControlTrigger.cpp in Sources */,
-				E70CEB641869649200955691 /* Globals.cpp in Sources */,
-				E70CEB661869649200955691 /* Module.cpp in Sources */,
-				E70CEB681869649200955691 /* RandomMover.cpp in Sources */,
 				E70CEB6A1869649200955691 /* CloudsVisualSystemLSystem.cpp in Sources */,
 				E70CEB6C1869649200955691 /* LNode.cpp in Sources */,
 				E70CEB6E1869649200955691 /* LSystem.cpp in Sources */,
@@ -7905,7 +7980,6 @@
 				E70CEB9A1869649200955691 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */,
 				E70CEB9C1869649200955691 /* CloudsVisualSystemOpenP5Machine.cpp in Sources */,
 				E70CEB9E1869649200955691 /* CloudsVisualSystemOpenP5NoiseSphere.cpp in Sources */,
-				F37C7D43186EAF9800FCDA79 /* Panel.cpp in Sources */,
 				E70CEBA01869649200955691 /* fft.cpp in Sources */,
 				F37C7E98186EB28C00FCDA79 /* ControlValue.cpp in Sources */,
 				E70CEBA21869649200955691 /* fftOctaveAnalyzer.cpp in Sources */,
@@ -8020,6 +8094,20 @@
 				F37C7EAA186EB28C00FCDA79 /* LFNoise.cpp in Sources */,
 				E70CEC681869649200955691 /* GestureRendererTraveling.cpp in Sources */,
 				E79EAD5C187877A600B8B8F0 /* GpuParticles.cpp in Sources */,
+				E79EAD7E1878812300B8B8F0 /* CloudsVisualSystemLia.cpp in Sources */,
+				E79EAD801878812300B8B8F0 /* ColorPalette.cpp in Sources */,
+				E79EAD821878812300B8B8F0 /* Globals.cpp in Sources */,
+				E79EAD841878812300B8B8F0 /* Module.cpp in Sources */,
+				E79EAD861878812300B8B8F0 /* RandomMover.cpp in Sources */,
+				E79EAD881878812300B8B8F0 /* CloudsVisualSystemProcess11.cpp in Sources */,
+				E79EAD8A1878812300B8B8F0 /* E2.cpp in Sources */,
+				E79EAD8C1878812300B8B8F0 /* CloudsVisualSystemProcess18.cpp in Sources */,
+				E79EAD8E1878812300B8B8F0 /* E5.cpp in Sources */,
+				E79EADCC187883F100B8B8F0 /* Panel.cpp in Sources */,
+				E79EADCE187883F100B8B8F0 /* PanelCode.cpp in Sources */,
+				E79EADD0187883F100B8B8F0 /* PanelConsole.cpp in Sources */,
+				E79EADD2187883F100B8B8F0 /* PanelGraph.cpp in Sources */,
+				E79EADD4187883F100B8B8F0 /* PanelTenPrint.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
