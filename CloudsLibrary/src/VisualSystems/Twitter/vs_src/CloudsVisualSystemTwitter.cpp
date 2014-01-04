@@ -181,13 +181,11 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     textGui->setName("text");
     textGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     textGui->addToggle("RENDER TEXT", &bRenderText);
+    textGui->addToggle("DRAW SPEAKER NAMES ", &bStaticNameDraw);
     textGui->addSpacer();
     addColorToGui(textGui,"TEXT ",textColorHSV,true);
     addColorToGui(textGui,"TEXT ",tweetDeckColorHSV,true);
-    //    textGui->addMinimalSlider("TEXT HUE", 0.0, 1, &textColorModifier.r);
-    //    textGui->addMinimalSlider("TEXT SAT", 0.0, 1, &textColorModifier.g);
-    //    textGui->addMinimalSlider("TEXT BRI", 0.0, 1, &textColorModifier.b);
-    //    textGui->addMinimalSlider("TEXT ALPHA", 0.0, 1, &textColor.a);
+
     textGui->addSpacer();
     textGui->addMinimalSlider("STRING WIDTH", 1, 2000, &stringWidth);
     textGui->addMinimalSlider("SET SIZE", 0.1, 100, &fontSize);
@@ -1102,6 +1100,14 @@ void CloudsVisualSystemTwitter::selfDraw()
         for(int i = 0; i < activeTweeters.size(); i++){
 //            activeTweeters[i]->textDecayRate *= edgeDecayRate;
             drawText(activeTweeters[i]->name,activeTweeters[i]->position,activeTweeters[i]->textDecayRate);
+        }
+        
+        if (bStaticNameDraw) {
+            for (int i= 0 ; i<tweeters.size(); i++) {
+                if(tweeters[i].tweets.size() > 0){
+                    drawText(tweeters[i].name,tweeters[i].position,1.0);
+                }
+            }
         }
     }
     ofPopMatrix();

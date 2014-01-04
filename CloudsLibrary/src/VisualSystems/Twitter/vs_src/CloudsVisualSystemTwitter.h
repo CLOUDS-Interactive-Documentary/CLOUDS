@@ -151,7 +151,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool rotateModel;
     bool bAnimateFeed;
     bool bAnimateSpriteSize;
-
+    bool bStaticNameDraw;
   protected:
     int maxUserLinks;
     ofColor listColor;
