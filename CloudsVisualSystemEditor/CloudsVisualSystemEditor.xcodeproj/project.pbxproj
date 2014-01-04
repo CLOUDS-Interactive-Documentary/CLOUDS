@@ -668,6 +668,8 @@
 		E79E6FC41855529600406535 /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6FA51855529600406535 /* ofxOscReceiver.cpp */; };
 		E79E6FC51855529600406535 /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6FA71855529600406535 /* ofxOscSender.cpp */; };
 		E79E6FC61855529600406535 /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6FA71855529600406535 /* ofxOscSender.cpp */; };
+		E79EAD5B187877A600B8B8F0 /* GpuParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD3E187877A600B8B8F0 /* GpuParticles.cpp */; };
+		E79EAD5C187877A600B8B8F0 /* GpuParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD3E187877A600B8B8F0 /* GpuParticles.cpp */; };
 		E7BBB4BE179FA288007D7EC1 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4AF179FA288007D7EC1 /* Controller.cpp */; };
 		E7BBB4BF179FA288007D7EC1 /* Force.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4B1179FA288007D7EC1 /* Force.cpp */; };
 		E7BBB4C0179FA288007D7EC1 /* ForceSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4B3179FA288007D7EC1 /* ForceSet.cpp */; };
@@ -962,10 +964,6 @@
 		E7FC551C185293B80017A3F2 /* ofxAssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC54F8185293B80017A3F2 /* ofxAssimpModelLoader.cpp */; };
 		E7FC5562185293F30017A3F2 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = E7FC553F185293F30017A3F2 /* readme.md */; };
 		E7FC5563185293F30017A3F2 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = E7FC553F185293F30017A3F2 /* readme.md */; };
-		E7FEFDE11876179E009533A7 /* CloudsClusterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFDDD1876179E009533A7 /* CloudsClusterNode.cpp */; };
-		E7FEFDE21876179E009533A7 /* CloudsClusterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFDDD1876179E009533A7 /* CloudsClusterNode.cpp */; };
-		E7FEFDE31876179E009533A7 /* CloudsVisualSystemClusterMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFDDF1876179E009533A7 /* CloudsVisualSystemClusterMap.cpp */; };
-		E7FEFDE41876179E009533A7 /* CloudsVisualSystemClusterMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FEFDDF1876179E009533A7 /* CloudsVisualSystemClusterMap.cpp */; };
 		F37C7D42186EAF9800FCDA79 /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7D3C186EAF9800FCDA79 /* Panel.cpp */; };
 		F37C7D43186EAF9800FCDA79 /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7D3C186EAF9800FCDA79 /* Panel.cpp */; };
 		F37C7D44186EAF9800FCDA79 /* PanelCode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7D3E186EAF9800FCDA79 /* PanelCode.cpp */; };
@@ -2071,6 +2069,9 @@
 		E79E6FA61855529600406535 /* ofxOscReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscReceiver.h; sourceTree = "<group>"; };
 		E79E6FA71855529600406535 /* ofxOscSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscSender.cpp; sourceTree = "<group>"; };
 		E79E6FA81855529600406535 /* ofxOscSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscSender.h; sourceTree = "<group>"; };
+		E79EAD3E187877A600B8B8F0 /* GpuParticles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GpuParticles.cpp; sourceTree = "<group>"; };
+		E79EAD3F187877A600B8B8F0 /* GpuParticles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpuParticles.h; sourceTree = "<group>"; };
+		E79EAD40187877A600B8B8F0 /* ofxGpuParticles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGpuParticles.h; sourceTree = "<group>"; };
 		E7BBB4AF179FA288007D7EC1 /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		E7BBB4B0179FA288007D7EC1 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		E7BBB4B1179FA288007D7EC1 /* Force.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Force.cpp; sourceTree = "<group>"; };
@@ -2354,10 +2355,6 @@
 		E7FC5541185293F30017A3F2 /* NearestNeighbour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearestNeighbour.h; sourceTree = "<group>"; };
 		E7FC5542185293F30017A3F2 /* ofxNearestNeighbour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxNearestNeighbour.h; sourceTree = "<group>"; };
 		E7FC5543185293F30017A3F2 /* PointCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointCloud.h; sourceTree = "<group>"; };
-		E7FEFDDD1876179E009533A7 /* CloudsClusterNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClusterNode.cpp; sourceTree = "<group>"; };
-		E7FEFDDE1876179E009533A7 /* CloudsClusterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClusterNode.h; sourceTree = "<group>"; };
-		E7FEFDDF1876179E009533A7 /* CloudsVisualSystemClusterMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemClusterMap.cpp; sourceTree = "<group>"; };
-		E7FEFDE01876179E009533A7 /* CloudsVisualSystemClusterMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemClusterMap.h; sourceTree = "<group>"; };
 		F37C7D3C186EAF9800FCDA79 /* Panel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Panel.cpp; sourceTree = "<group>"; };
 		F37C7D3D186EAF9800FCDA79 /* Panel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Panel.h; sourceTree = "<group>"; };
 		F37C7D3E186EAF9800FCDA79 /* PanelCode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelCode.cpp; sourceTree = "<group>"; };
@@ -2810,6 +2807,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E79EAD26187877A600B8B8F0 /* ofxGpuParticles */,
 				E7F050E618712C9700017521 /* ofxAnimationPrimitives */,
 				F37C7D77186EB28700FCDA79 /* ofxTonic */,
 				28927C8F18591B9F00640B50 /* ofxOcean */,
@@ -2948,7 +2946,6 @@
 		E70CE3A21869648900955691 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
-				E7FEFDDB1876179E009533A7 /* _ClusterMap */,
 				E70CE3A31869648900955691 /* 2DVideo */,
 				E70CE3A71869648900955691 /* 3DModelLoader */,
 				E70CE5A11869648D00955691 /* Astrolabe */,
@@ -5852,6 +5849,25 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E79EAD26187877A600B8B8F0 /* ofxGpuParticles */ = {
+			isa = PBXGroup;
+			children = (
+				E79EAD3D187877A600B8B8F0 /* src */,
+			);
+			name = ofxGpuParticles;
+			path = ../../../addons/ofxGpuParticles;
+			sourceTree = "<group>";
+		};
+		E79EAD3D187877A600B8B8F0 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E79EAD3E187877A600B8B8F0 /* GpuParticles.cpp */,
+				E79EAD3F187877A600B8B8F0 /* GpuParticles.h */,
+				E79EAD40187877A600B8B8F0 /* ofxGpuParticles.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		E7BBB4AE179FA288007D7EC1 /* GPUParticles */ = {
 			isa = PBXGroup;
 			children = (
@@ -6682,25 +6698,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		E7FEFDDB1876179E009533A7 /* _ClusterMap */ = {
-			isa = PBXGroup;
-			children = (
-				E7FEFDDC1876179E009533A7 /* vs_src */,
-			);
-			path = _ClusterMap;
-			sourceTree = "<group>";
-		};
-		E7FEFDDC1876179E009533A7 /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				E7FEFDDD1876179E009533A7 /* CloudsClusterNode.cpp */,
-				E7FEFDDE1876179E009533A7 /* CloudsClusterNode.h */,
-				E7FEFDDF1876179E009533A7 /* CloudsVisualSystemClusterMap.cpp */,
-				E7FEFDE01876179E009533A7 /* CloudsVisualSystemClusterMap.h */,
-			);
-			path = vs_src;
-			sourceTree = "<group>";
-		};
 		F37C7D3B186EAF9800FCDA79 /* Panels */ = {
 			isa = PBXGroup;
 			children = (
@@ -7518,8 +7515,7 @@
 				E70CEC651869649200955691 /* GestureRendererInPlace.cpp in Sources */,
 				F37C7E95186EB28C00FCDA79 /* ControlTriggerFilter.cpp in Sources */,
 				E70CEC671869649200955691 /* GestureRendererTraveling.cpp in Sources */,
-				E7FEFDE11876179E009533A7 /* CloudsClusterNode.cpp in Sources */,
-				E7FEFDE31876179E009533A7 /* CloudsVisualSystemClusterMap.cpp in Sources */,
+				E79EAD5B187877A600B8B8F0 /* GpuParticles.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8023,8 +8019,7 @@
 				E70CEC661869649200955691 /* GestureRendererInPlace.cpp in Sources */,
 				F37C7EAA186EB28C00FCDA79 /* LFNoise.cpp in Sources */,
 				E70CEC681869649200955691 /* GestureRendererTraveling.cpp in Sources */,
-				E7FEFDE21876179E009533A7 /* CloudsClusterNode.cpp in Sources */,
-				E7FEFDE41876179E009533A7 /* CloudsVisualSystemClusterMap.cpp in Sources */,
+				E79EAD5C187877A600B8B8F0 /* GpuParticles.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

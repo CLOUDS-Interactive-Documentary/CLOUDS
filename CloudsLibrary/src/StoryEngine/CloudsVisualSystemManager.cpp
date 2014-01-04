@@ -4,7 +4,6 @@
 #include "CloudsGlobal.h"
 
 #ifndef CLOUDS_NO_VS
-#include "CloudsVisualSystemClusterMap.h"
 #include "CloudsVisualSystem2DVideo.h"
 #include "CloudsVisualSystem3DModelLoader.h"
 #include "CloudsVisualSystemAstrolabe.h"
@@ -104,7 +103,6 @@ struct Mapping {
 		return map<string,tConstructor>::value_type(classname, constructor);
 	}
 } mapping[] = {
-	{ "_ClusterMap", &fCreate<CloudsVisualSystemClusterMap> },
 	{ "2DVideo", &fCreate<CloudsVisualSystem2DVideo> },
 	{ "3DModelLoader", &fCreate<CloudsVisualSystem3DModelLoader> },
 	{ "Astrolabe", &fCreate<CloudsVisualSystemAstrolabe> },
