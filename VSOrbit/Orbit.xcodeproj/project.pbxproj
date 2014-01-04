@@ -10,6 +10,8 @@
 		28154D40187838FB005B0817 /* GpuParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28154D3D187838FB005B0817 /* GpuParticles.cpp */; };
 		28154D43187853A9005B0817 /* line.frag in Sources */ = {isa = PBXBuildFile; fileRef = 28154D41187853A9005B0817 /* line.frag */; };
 		28154D44187853A9005B0817 /* line.vert in Sources */ = {isa = PBXBuildFile; fileRef = 28154D42187853A9005B0817 /* line.vert */; };
+		28154D4918786078005B0817 /* mesh.frag in Sources */ = {isa = PBXBuildFile; fileRef = 28154D4718786078005B0817 /* mesh.frag */; };
+		28154D4A18786078005B0817 /* mesh.vert in Sources */ = {isa = PBXBuildFile; fileRef = 28154D4818786078005B0817 /* mesh.vert */; };
 		284AE6351859D54800780DBB /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE62E1859D54800780DBB /* CloudsInput.cpp */; };
 		284AE6361859D54800780DBB /* CloudsInputKinectOSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE6311859D54800780DBB /* CloudsInputKinectOSC.cpp */; };
 		284AE6371859D54800780DBB /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE6331859D54800780DBB /* CloudsInputMouse.cpp */; };
@@ -185,6 +187,8 @@
 		28154D3F187838FB005B0817 /* ofxGpuParticles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxGpuParticles.h; sourceTree = "<group>"; };
 		28154D41187853A9005B0817 /* line.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = line.frag; path = ../../../../CloudsData/visualsystems/Orbit/shaders/line.frag; sourceTree = "<group>"; };
 		28154D42187853A9005B0817 /* line.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = line.vert; path = ../../../../CloudsData/visualsystems/Orbit/shaders/line.vert; sourceTree = "<group>"; };
+		28154D4718786078005B0817 /* mesh.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = mesh.frag; path = ../../../../CloudsData/visualsystems/Orbit/shaders/mesh.frag; sourceTree = "<group>"; };
+		28154D4818786078005B0817 /* mesh.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = mesh.vert; path = ../../../../CloudsData/visualsystems/Orbit/shaders/mesh.vert; sourceTree = "<group>"; };
 		284AE62E1859D54800780DBB /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInput.cpp; path = src/Input/CloudsInput.cpp; sourceTree = "<group>"; };
 		284AE62F1859D54800780DBB /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInput.h; path = src/Input/CloudsInput.h; sourceTree = "<group>"; };
 		284AE6301859D54800780DBB /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputEvents.h; path = src/Input/CloudsInputEvents.h; sourceTree = "<group>"; };
@@ -683,6 +687,8 @@
 		284AE68C185A25D600780DBB /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				28154D4718786078005B0817 /* mesh.frag */,
+				28154D4818786078005B0817 /* mesh.vert */,
 				28154D41187853A9005B0817 /* line.frag */,
 				28154D42187853A9005B0817 /* line.vert */,
 				284AE68D185A25E300780DBB /* orbit.frag */,
@@ -1539,6 +1545,7 @@
 				E7D32FA71751C626006706ED /* ofxPerlinBehavior.cpp in Sources */,
 				E7D32FA81751C626006706ED /* ofxRParticle.cpp in Sources */,
 				284AE66A1859D56E00780DBB /* OscReceivedElements.cpp in Sources */,
+				28154D4A18786078005B0817 /* mesh.vert in Sources */,
 				E7D32FA91751C626006706ED /* ofxRParticleGlowieRenderer.cpp in Sources */,
 				E7D32FAA1751C626006706ED /* ofxRParticleRenderer.cpp in Sources */,
 				E7D32FAB1751C626006706ED /* ofxRParticleSystem.cpp in Sources */,
@@ -1607,6 +1614,7 @@
 				E72FF12217E688FE0007780D /* CloudsRGBDCamera.cpp in Sources */,
 				E72FF12317E688FE0007780D /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				E72FF12417E688FE0007780D /* CloudsVisualSystem.cpp in Sources */,
+				28154D4918786078005B0817 /* mesh.frag in Sources */,
 				285C2099182FFFEE0065BCAE /* BleachBypassPass.cpp in Sources */,
 				285C209A182FFFEE0065BCAE /* BloomPass.cpp in Sources */,
 				285C209B182FFFEE0065BCAE /* ContrastPass.cpp in Sources */,

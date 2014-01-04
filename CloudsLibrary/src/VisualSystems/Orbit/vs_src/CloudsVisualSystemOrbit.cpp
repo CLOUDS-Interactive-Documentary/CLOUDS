@@ -130,22 +130,14 @@ void CloudsVisualSystemOrbit::selfDraw()
     shader.begin();
     shader.setUniform1f("fogStart", fogStart);
     shader.setUniform1f("fogEnd", fogEnd);
-    shader.setUniform3f("fogColour", 0, 0, 0);
     shader.setUniform1f("litAmount", litAmount);
-    shader.setUniform3f("lEye", 1000, 1000, 1000);
-    //for (unsigned i = 0; i < paths.size(); ++i)
-    {
-        if (drawMesh) path.drawMesh();
-        if (drawNormals) path.drawNormals(10);
-        if (drawInflections) path.drawInflections();
-        if (drawAcc) path.drawAcc();
-    }
+    //if (drawNormals) path.drawNormals(10);
+    if (drawInflections) path.drawInflections();
+    if (drawAcc) path.drawAcc();
     shader.end();
     
-    //for (unsigned i = 0; i < paths.size(); ++i)
-    {
-        if (drawLine) path.drawLine(fogStart, fogEnd);
-    }
+    if (drawMesh) path.drawMesh(fogStart, fogEnd, litAmount);
+    if (drawLine) path.drawLine(fogStart, fogEnd);
     
     if (additiveBlending)
     {

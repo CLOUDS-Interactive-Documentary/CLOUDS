@@ -47,23 +47,55 @@ namespace itg
         
         // set max frames so we don't end up using up all memory
         ptf.setMaxFrames(1000);
-        lineMesh.setUsage(GL_DYNAMIC_DRAW);
-        lineMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+        //lineMesh.setUsage(GL_DYNAMIC_DRAW);
+        //lineMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
         
         lineParticles.init(maxLineLength, 1, OF_PRIMITIVE_LINE_STRIP, false, 1);
         lineParticles.getDrawShaderRef().load(dataPath + "shaders/line");
-        
-        linePosns.resize(maxLineLength);
-        
+        lineVertices.resize(maxLineLength);
         unsigned fadeIdx = lineFadeLength * maxLineLength;
         for (unsigned i = 0; i < maxLineLength; ++i)
         {
-            lineMesh.addVertex(ofVec3f());
+            //lineMesh.addVertex(ofVec3f());
             float alpha = ofMap(i, 0, fadeIdx, 0.f, 1.f, true);
-            lineMesh.addColor(ofFloatColor::fromHsb(ofMap(abs(points[i].getPos().x) + abs(points[i].getPos().y), 0, 50, hueMin, hueMax, true), 0.5, 1.0, alpha));
+            lineParticles.getMeshRef().addColor(ofFloatColor::fromHsb(ofMap(abs(points[i].getPos().x) + abs(points[i].getPos().y), 0, 50, hueMin, hueMax, true), 0.5, 1.0, alpha));
         }
         
         updateSlice();
+        
+        initMeshParticles();
+        meshParticles.getDrawShaderRef().load(dataPath + "shaders/mesh");
+        meshVertices.reserve(resolution * maxMeshLength);
+        meshNormals.reserve(resolution * maxMeshLength);
+        
+        for (unsigned k = 0; k < maxMeshLength; ++k)
+        {
+            for (unsigned j = 0; j < resolution; ++j)
+            {
+                meshVertices.push_back(sliceVertices[j]);
+                meshNormals.push_back(sliceNormals[j]);
+            }
+        }
+    }
+    
+    void Path::initMeshParticles()
+    {
+        meshParticles.init(resolution, maxMeshLength, OF_PRIMITIVE_TRIANGLES, false, 2);
+        for (unsigned k = 1; k < maxMeshLength; ++k)
+        {
+            unsigned prevLayerIdx = (k - 1) * resolution;
+            unsigned currLayerIdx = k * resolution;
+            for (unsigned i = 0; i < resolution; ++i)
+            {
+                meshParticles.getMeshRef().addIndex(prevLayerIdx + i);
+                meshParticles.getMeshRef().addIndex(prevLayerIdx + (i + 1) % resolution);
+                meshParticles.getMeshRef().addIndex(currLayerIdx + i);
+                
+                meshParticles.getMeshRef().addIndex(currLayerIdx + i);
+                meshParticles.getMeshRef().addIndex(prevLayerIdx + (i + 1) % resolution);
+                meshParticles.getMeshRef().addIndex(currLayerIdx + (i + 1) % resolution);
+            }
+        }
     }
     
     void Path::setMeshRadius(float meshRadius)
@@ -99,9 +131,6 @@ namespace itg
     
     void Path::addVertex(const ofVec3f& vertex)
     {
-        linePosns.push_back(vertex);
-        while (linePosns.size() > maxLineLength) linePosns.erase(linePosns.begin());
-        
         points.push_back(vertex);
         while (points.size() > maxLineLength) points.pop_front();
         
@@ -122,82 +151,33 @@ namespace itg
         }
         
         // line
+        lineVertices.push_back(vertex);
+        while (lineVertices.size() > maxLineLength) lineVertices.erase(lineVertices.begin());
         if (maxLineLength != lineParticles.getWidth()) lineParticles.init(maxLineLength, 1, OF_PRIMITIVE_LINE_STRIP, false, 1);
-        lineParticles.loadDataTexture(ofxGpuParticles::POSITION, linePosns[0].getPtr());
-        //lineMesh.clear();
-        //unsigned lineLength = fmin(maxLineLength, points.size());
-        //unsigned fadeIdx = lineFadeLength * lineLength;
-        /*for (unsigned i = 0; i < lineLength; ++i)
-        {
-            lineMesh.addVertex(points[i].getPos());
-            float alpha = ofMap(i, 0, fadeIdx, 0.f, 1.f, true);
-            lineMesh.addColor(ofFloatColor::fromHsb(ofMap(abs(points[i].getPos().x) + abs(points[i].getPos().y), 0, 50, hueMin, hueMax, true), 0.5, 1.0, alpha));
-        }*/
+        lineParticles.loadDataTexture(0, lineVertices[0].getPtr());
         
         // mesh
         ptf.addPoint(vertex);
         if (ptf.getFrames().size())
         {
-            bool firstLayer = mesh.getVertices().empty();
             ofMatrix4x4 transform = ptf.transformMatrix();
             ofMatrix4x4 normalMatrix = ptf.normalMatrix();
+            
             for (unsigned i = 0; i < resolution; ++i)
             {
-                vertices.push_back(sliceVertices[i] * transform);
-                normals.push_back(sliceNormals[i] * normalMatrix);
-                mesh.addVertex(vertices.back());
-                mesh.addNormal(normals.back());
+                meshVertices.push_back(sliceVertices[i] * transform);
+                meshNormals.push_back(sliceNormals[i] * normalMatrix);
             }
+            while (meshVertices.size() > resolution * maxMeshLength) meshVertices.erase(meshVertices.begin(), meshVertices.begin() + resolution);
+            while (meshNormals.size() > resolution * maxMeshLength) meshNormals.erase(meshNormals.begin(), meshNormals.begin() + resolution);
             
-            /*
-            if (!firstLayer)
-            {
-                unsigned prevLayerIdx = mesh.getNumVertices() - 2 * resolution;
-                unsigned currLayerIdx = mesh.getNumVertices() - resolution;
-                for (unsigned i = 0; i < resolution; ++i)
-                {
-                    indices.push_back(prevLayerIdx + i);
-                    indices.push_back(prevLayerIdx + (i + 1) % resolution);
-                    indices.push_back(currLayerIdx + i);
-                    
-                    indices.push_back(currLayerIdx + i);
-                    indices.push_back(prevLayerIdx + (i + 1) % resolution);
-                    indices.push_back(currLayerIdx + (i + 1) % resolution);
-                }
-                
-                for (unsigned i = 0; i < 6 * resolution; ++i)
-                {
-                    mesh.addIndex(indices[indices.size() - 6 * resolution + i]);
-                }
-                
-                unsigned removed = 0;
-                while (vertices.size() > resolution * Path::maxMeshLength)
-                {
-                    for (unsigned i = 0; i < resolution; ++i)
-                    {
-                        vertices.pop_front();
-                        normals.pop_front();
-                        for (unsigned j = 0; j < 6; ++j) indices.pop_front();
-                    }
-                    removed += resolution;
-                }
-                if (removed != 0)
-                {
-                    for (unsigned i = 0; i < indices.size(); ++i) indices[i] -= removed;
-                    
-                    mesh.getVertices().clear();
-                    for (unsigned i = 0; i < vertices.size(); ++i) mesh.addVertex(vertices[i]);
-                    
-                    mesh.getNormals().clear();
-                    for (unsigned i = 0; i < normals.size(); ++i) mesh.addNormal(normals[i]);
-                    
-                    mesh.getIndices().clear();
-                    for (unsigned i = 0; i < indices.size(); ++i) mesh.addIndex(indices[i]);
-                }
-            }*/
+            if (maxMeshLength * resolution != meshParticles.getSize()) initMeshParticles();
+            meshParticles.loadDataTexture(0, meshVertices[0].getPtr());
+            meshParticles.loadDataTexture(1, meshNormals[0].getPtr());
         }
     }
     
+    /*
     void Path::drawNormals(float size)
     {
         unsigned step = 8;
@@ -212,10 +192,17 @@ namespace itg
             }
         }
     }
+     */
     
-    void Path::drawMesh()
+    void Path::drawMesh(float fogStart, float fogEnd, float litAmount)
     {
-        mesh.draw();
+        meshParticles.getDrawShaderRef().begin();
+        meshParticles.getDrawShaderRef().setUniform1f("fogStart", fogStart);
+        meshParticles.getDrawShaderRef().setUniform1f("fogEnd", fogEnd);
+        meshParticles.getDrawShaderRef().setUniform1f("litAmount", litAmount);
+        meshParticles.getDrawShaderRef().setUniform3f("lEye", 1000.f, 1000.f, 1000.f);
+        meshParticles.getDrawShaderRef().end();
+        meshParticles.draw();
     }
     
     void Path::drawLine(float fogStart, float fogEnd)
@@ -230,20 +217,7 @@ namespace itg
         lineParticles.getDrawShaderRef().setUniform1f("hueMax", hueMax);
         lineParticles.getDrawShaderRef().end();
         lineParticles.draw();
-        //lineMesh.draw();
         ofPopStyle();
-        /*
-        ofPushStyle();
-        ofNoFill();
-        ofBeginShape();
-        for (unsigned i = 0; i < points.size(); ++i)
-        {
-            ofVec3f v = points[i].getPos();
-            ofVertex(v);
-        }
-        ofEndShape();
-        ofPopStyle();
-         */
     }
     
     void Path::drawInflections()
@@ -271,11 +245,11 @@ namespace itg
     
     void Path::clear()
     {
-        vertices.clear();
+        /*vertices.clear();
         normals.clear();
         indices.clear();
 		mesh.clear();
-        lineMesh.clear();
+        lineMesh.clear();*/
         ptf.clear();
         points.clear();
         inflections.clear();
