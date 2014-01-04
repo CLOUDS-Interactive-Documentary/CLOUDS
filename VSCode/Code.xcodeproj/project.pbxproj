@@ -210,6 +210,9 @@
 		E797326C184C5A1E00372333 /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7973257184C5A1E00372333 /* ofxFTGLSimpleLayout.cpp */; };
 		E797327F184C756600372333 /* ofxMtlBoxFitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E797327D184C756600372333 /* ofxMtlBoxFitting.cpp */; };
 		E7973280184C772600372333 /* ofxMtlBoxFitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E797327D184C756600372333 /* ofxMtlBoxFitting.cpp */; };
+		E7C289B0187768AC00A0C07F /* PanelTenPrint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C289AE187768AB00A0C07F /* PanelTenPrint.cpp */; };
+		E7C289B318777E8600A0C07F /* PanelConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C289B118777E8600A0C07F /* PanelConsole.cpp */; };
+		E7C289B418777E8600A0C07F /* PanelConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C289B118777E8600A0C07F /* PanelConsole.cpp */; };
 		E7DD854717DBC0A500AFB2DD /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DD846317DBC0A500AFB2DD /* CloudsRGBDCamera.cpp */; };
 		E7DD854817DBC0A500AFB2DD /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DD846517DBC0A500AFB2DD /* CloudsRGBDVideoPlayer.cpp */; };
 		E7DD854917DBC0A500AFB2DD /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DD846717DBC0A500AFB2DD /* CloudsVisualSystem.cpp */; };
@@ -573,6 +576,10 @@
 		E7973258184C5A1E00372333 /* ofxFTGLSimpleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLSimpleLayout.h; sourceTree = "<group>"; };
 		E797327D184C756600372333 /* ofxMtlBoxFitting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxMtlBoxFitting.cpp; path = ../../Scrape/vs_src/ofxMtlBoxFitting.cpp; sourceTree = "<group>"; };
 		E797327E184C756600372333 /* ofxMtlBoxFitting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxMtlBoxFitting.h; path = ../../Scrape/vs_src/ofxMtlBoxFitting.h; sourceTree = "<group>"; };
+		E7C289AE187768AB00A0C07F /* PanelTenPrint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelTenPrint.cpp; sourceTree = "<group>"; };
+		E7C289AF187768AC00A0C07F /* PanelTenPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelTenPrint.h; sourceTree = "<group>"; };
+		E7C289B118777E8600A0C07F /* PanelConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelConsole.cpp; sourceTree = "<group>"; };
+		E7C289B218777E8600A0C07F /* PanelConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelConsole.h; sourceTree = "<group>"; };
 		E7DD71F217DBC08D00AFB2DD /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		E7DD846317DBC0A500AFB2DD /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
 		E7DD846417DBC0A500AFB2DD /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
@@ -1316,6 +1323,10 @@
 			children = (
 				E75BC31E186CF5F500582E19 /* Panel.h */,
 				E75BC31D186CF5F500582E19 /* Panel.cpp */,
+				E7C289B218777E8600A0C07F /* PanelConsole.h */,
+				E7C289B118777E8600A0C07F /* PanelConsole.cpp */,
+				E7C289AF187768AC00A0C07F /* PanelTenPrint.h */,
+				E7C289AE187768AB00A0C07F /* PanelTenPrint.cpp */,
 				E75BC316186CF5DD00582E19 /* PanelCode.h */,
 				E75BC315186CF5DD00582E19 /* PanelCode.cpp */,
 				E75BC318186CF5DD00582E19 /* PanelGraph.h */,
@@ -1509,8 +1520,8 @@
 				E7E442C7185EB9DB00CD1953 /* CloudsInputEvents.h */,
 				E7E442C6185EB9DB00CD1953 /* CloudsInput.h */,
 				E7E442C5185EB9DB00CD1953 /* CloudsInput.cpp */,
-				E7E442CA185EB9DB00CD1953 /* CloudsInputMouse.cpp */,
 				E7E442CB185EB9DB00CD1953 /* CloudsInputMouse.h */,
+				E7E442CA185EB9DB00CD1953 /* CloudsInputMouse.cpp */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -1726,6 +1737,8 @@
 				E75BC319186CF5DD00582E19 /* PanelCode.cpp in Sources */,
 				E75BC31B186CF5DD00582E19 /* PanelGraph.cpp in Sources */,
 				E75BC31F186CF5F500582E19 /* Panel.cpp in Sources */,
+				E7C289B0187768AC00A0C07F /* PanelTenPrint.cpp in Sources */,
+				E7C289B318777E8600A0C07F /* PanelConsole.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1818,6 +1831,7 @@
 				E75BC31A186CF5DD00582E19 /* PanelCode.cpp in Sources */,
 				E75BC31C186CF5DD00582E19 /* PanelGraph.cpp in Sources */,
 				E75BC320186CF5F500582E19 /* Panel.cpp in Sources */,
+				E7C289B418777E8600A0C07F /* PanelConsole.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

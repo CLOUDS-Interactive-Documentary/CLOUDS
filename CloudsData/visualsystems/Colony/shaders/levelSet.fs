@@ -27,23 +27,6 @@ uniform vec3 lightColor;
 uniform float stippleScale;
 uniform vec4 stippleColor;
 
-//float rand(vec2 co){
-//    return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453);
-//}
-
-//mat3 kernel = mat3(0.0625, 0.125,  0.0625,
-//                   0.125,  0.250,  0.125,
-//                   0.0625, 0.125,  0.0625);
-//
-//vec4 convolution(in sampler2DRect screen,in vec2 coord){
-//    vec4 t = vec4(0.);
-//    for (float i = -1. ; i < 2.; i += 1.){
-//        for (float j = -1. ; j < 2.; j += 1.){
-//            t += texture2DRect(screen, coord+vec2(i, j)) * kernel[int(1. + i)][int(1. + j)];
-//        }
-//    }
-//    return t;
-//}
 
 vec4 premult(in vec4 source){
     return vec4(source.rgb * source.a, source.a);
@@ -75,6 +58,7 @@ float heightMap(vec2 co){
                 * log(1 + i);
         co *= .07;
         co += sin(co.yx + vec2(0.,t*10. + PI/2.));
+        // This is also chaotic, with less effort
 //        co += co.yx * (1 - cos(t));
     }
     bumps /= (iters * log(iters));
@@ -96,14 +80,14 @@ float getLightIntensity(float elevation, vec2 light){
 vec4 getLevelSet(vec4 fg){
     float a = PI * (.5 + log(.25 + fg.b) * 6.);
     float b = (-.5 + (levelSetBg ? heightMap(gl_TexCoord[0].xy) : 0. )) * 18. * PI;
-    float g = fg.g * fg.r;// + .1;
+    float g = fg.g * fg.r;
     g *= g * g;
     float levl = mix (a + b, max(a, b), .5);
     float set = (.5 * (1. + sin(levl)) + g/2.);
     float light = clamp(getLightIntensity(levl, lightDirection.xy),0.1,1);
 	return vec4(set
                 * mix(1, light, 0.5)
-                * mix(vec3(1.),lightColor, smoothstep(0.2,0.7,light))
+//                * mix(vec3(1.),lightColor, smoothstep(0.2,0.7,light))
                 + vec3(g),
                 1.);
 }
@@ -137,7 +121,7 @@ vec4 getMicroscope(vec4 fg){
     
     //cell floor
     vec2 normalizedCoords = gl_TexCoord[0].xy * imgRes / resolution;
-    float distortion = fg.b + sqrt(shellAlpha);
+    float distortion = fg.b + sqrt(shellAlpha) * .5;
     vec4 bg = texture2DRect(grunge, normalizedCoords * .5
                             + vec2(dFdx(distortion),dFdy(distortion)) * 100.0
                             + imgRes * .25 ); //enlarged
@@ -167,6 +151,7 @@ void main(){
         vec4 bg = texture2DRect(grunge, normalizedCoords);
         vec4 cells = getMicroscope(fg);
         bg.a *= translucenseDish;
+//        bg += 0.1 * sin(time * 10.);
         color = over(premult(cells), premult(bg));
     }
     

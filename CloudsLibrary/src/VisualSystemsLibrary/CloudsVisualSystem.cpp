@@ -156,10 +156,12 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 
 	if(reallocateTarget){
 		if(screenResolutionForced){
+//			renderTarget.allocate(forcedScreenWidth, forcedScreenHeight, GL_RGB, numSamples);
 			renderTarget.allocate(forcedScreenWidth, forcedScreenHeight, GL_RGB, numSamples);
 		}
 		else{
-			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
+//			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
+			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);			
 		}
 		renderTarget.begin();
 		ofClear(0,0,0,1.0);
@@ -1115,20 +1117,6 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
     selfGuiEvent(e);
 }
 
-//void CloudsVisualSystem::setColors(){
-//
-//     cb = ofxUIColor(128,255);
-//     co = ofxUIColor(255, 255, 255, 100);
-//     coh = ofxUIColor(255, 255, 255, 200);
-//     cf = ofxUIColor(255, 255, 255, 200);
-//     cfh = ofxUIColor(255, 255, 255, 255);
-//     cp = ofxUIColor(0, 100);
-//     cpo =  ofxUIColor(255, 200);
-//    for(int i = 0; i < guis.size(); i++){
-//            guis[i]->setUIColors(cb,co,coh,cf,cfh,cp, cpo);
-//    }
-//
-//}
 void CloudsVisualSystem::setupSystemGui()
 {
     sysGui = new ofxUISuperCanvas("SYSTEM", gui);
@@ -1244,33 +1232,11 @@ void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
        // bgBri->setPosAndHome(bgBri->getPos());
         for(int i = 0; i < guis.size(); i++)
         {
-//            guis[i]->setWidgetColor(OFX_UI_WIDGET_COLOR_BACK, ofColor(bgBri,OFX_UI_COLOR_BACK_ALPHA*REZANATOR_GUI_ALPHA_MULTIPLIER));
-//            guis[i]->setColorBack(ofColor(255 - bgBri, OFX_UI_COLOR_BACK_ALPHA*REZANATOR_GUI_ALPHA_MULTIPLIER));
-//            guis[i]->setWidgetColor(OFX_UI_WIDGET_COLOR_BACK, ofColor(bgBri,255));
             guis[i]->setColorBack(ofColor(255*.2, 255*.9));
 			
         }
     }
-//    else if(name == "SAT")
-//    {
-//        bgSat->setPosAndHome(bgSat->getPos());
-//    }
-//    else if(name == "HUE")
-//    {
-//        bgHue->setPosAndHome(bgHue->getPos());
-//    }
-//    else if(name == "BRI2")
-//    {
-//        bgBri2->setPosAndHome(bgBri2->getPos());
-//    }
-//    else if(name == "SAT2")
-//    {
-//        bgSat2->setPosAndHome(bgSat2->getPos());
-//    }
-//    else if(name == "HUE2")
-//    {
-//        bgHue2->setPosAndHome(bgHue2->getPos());
-//    }
+
     else if(name == "GRAD")
     {
         ofxUIToggle *t = (ofxUIToggle *) e.widget;
