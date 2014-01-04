@@ -109,14 +109,20 @@ namespace itg
         lineMesh.clear();
         lineMesh.setMode(OF_PRIMITIVE_LINES);
         const unsigned numLines = 4;
+        numTentacles = 0.5 * round(m1);
         for (unsigned k = 0; k < numLines; ++k)
         {
-            for (unsigned i = 0; i < 0.5 * round(m1); ++i)
+            for (unsigned i = 0; i < numTentacles; ++i)
             {
                 float phi = 2 * (i + 0.5) * TWO_PI / (float)round(m1);
-                for (unsigned j = 0; j < resolution; ++j)
+                if (k == 0)
                 {
-                    float theta = 1.4 * j * segment / (float)resolution;
+                    tentaclePosns.push_back(size * superVertex(phi, segment));
+                    tentacleAngles.push_back(phi);
+                }
+                for (unsigned j = 0; j <= resolution; ++j)
+                {
+                    float theta = 1.f * j * segment / (float)resolution;
                     lineMesh.addVertex(size * superVertex(phi + 0.08 * ofNoise(2.f * theta, phi) * k / (float)numLines, theta));
                     lineMesh.addTexCoord(ofVec2f(phi / TWO_PI, theta / segment));
                     if (j != 0)
@@ -145,6 +151,22 @@ namespace itg
     
     void JellyCreature::update()
     {
+    }
+    
+    vector<ofVec3f> JellyCreature::getDeformedTentaclePosns()
+    {
+        vector<ofVec3f> deformed;
+        deformed.resize(tentaclePosns.size());
+        float time = ofGetElapsedTimef();
+        float deformAmount = undulationAmt * size.x;
+        for (unsigned i = 0; i < tentaclePosns.size(); ++i)
+        {
+            deformed[i].x = tentaclePosns[i].x + sin(frequency * time) * deformAmount * sin(HALF_PI + tentacleAngles[i]);
+            deformed[i].y = tentaclePosns[i].y - sin(frequency * time) * deformAmount * cos(HALF_PI + tentacleAngles[i]);
+            deformed[i].z = tentaclePosns[i].z;
+            deformed[i] = deformed[i] * getGlobalTransformMatrix();
+        }
+        return deformed;
     }
     
     ofVec3f JellyCreature::superVertex(float phi, float theta)
@@ -192,7 +214,7 @@ namespace itg
         
         shader.setUniform1f("texAmount", 0.f);
         shader.setUniform1f("lightingAmount", 1.f);
-        shader.setUniform4f("colour", bodyColour.r, bodyColour.g, bodyColour.b, bodyAlpha + pulseAmt * sin(ofGetElapsedTimef() * frequency));
+        shader.setUniform4f("colour", bodyColour.r, bodyColour.g, bodyColour.b, bodyAlpha + pulseAmt * cos(ofGetElapsedTimef() * frequency));
         if (drawInner) innerMesh.draw();
         
         shader.setUniform1f("texAmount", 0.f);

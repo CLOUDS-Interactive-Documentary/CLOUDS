@@ -37,6 +37,8 @@ namespace itg
     float Path::maxMeshLength = 100;
     float Path::lineFadeLength = 1.f;
     float Path::lineWidth = 1.f;
+    float Path::hueMin = 0.f;
+    float Path::hueMax = 1.f;
     
     Path::Path(float meshRadius) : resolution(10), meshRadius(meshRadius)
     {
@@ -107,7 +109,7 @@ namespace itg
         {
             lineMesh.addVertex(points[i].getPos());
             float alpha = ofMap(i, 0, fadeIdx, 0.f, 1.f, true);
-            lineMesh.addColor(ofFloatColor::fromHsb(ofMap(abs(points[i].getPos().x) + abs(points[i].getPos().y), 0, 50, 0, 1, true), 0.5, 1.0, alpha));
+            lineMesh.addColor(ofFloatColor::fromHsb(ofMap(abs(points[i].getPos().x) + abs(points[i].getPos().y), 0, 50, hueMin, hueMax, true), 0.5, 1.0, alpha));
         }
         
         // mesh
