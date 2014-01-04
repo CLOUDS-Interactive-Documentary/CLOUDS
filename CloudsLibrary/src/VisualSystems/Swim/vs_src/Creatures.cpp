@@ -139,8 +139,8 @@ namespace itg
         unsigned numTentacles = 0;
         for (unsigned i = 0; i < jellies.size(); ++i) numTentacles += jellies[i]->getNumTentacles();
         tentacles.init(TENTACLE_NUM_SECTIONS, numTentacles, OF_PRIMITIVE_LINES, false);
-        if (numTentacles * TENTACLE_NUM_SECTIONS * 4 != tentacles.getSize()) ofLogFatalError() << "tentacle texture size error";
-        float* particlePosns = new float[tentacles.getSize()];
+        if (numTentacles * TENTACLE_NUM_SECTIONS * 4 != tentacles.getNumFloats()) ofLogFatalError() << "tentacle texture size error";
+        float* particlePosns = new float[tentacles.getNumFloats()];
         unsigned tentacleIdx = 0;
         ofVboMesh& tentacleMesh = tentacles.getMeshRef();
         for (unsigned i = 0; i < jellies.size(); ++i)
