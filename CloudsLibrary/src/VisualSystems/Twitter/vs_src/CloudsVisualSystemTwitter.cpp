@@ -156,6 +156,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     spriteGui->copyCanvasStyle(gui);
 	spriteGui->copyCanvasProperties(gui);
     spriteGui->setName("Sprite");
+    spriteGui->addToggle("ANIMATE SPRITES ON TWEETS",&bAnimateSpriteSize);
     spriteGui->addRangeSlider("SPRITE SIZE RANGE", 1,  100, &minSize, & maxSize);
     addColorToGui(spriteGui,"SPRITE BASE COLOR",spriteBaseColorHSV);
     addColorToGui(spriteGui,"SPRITE POP COLOR",spritePopColorHSV);
@@ -1050,6 +1051,7 @@ void CloudsVisualSystemTwitter::selfDraw()
                                   spriteBaseColor.g,
                                   spritePopColor.b,
                                   spritePopColor.a);
+        pointsShader.setUniform1f("animateSpriteSize", (float)bAnimateSpriteSize);
         
         ofEnablePointSprites();
         ofDisableArbTex();

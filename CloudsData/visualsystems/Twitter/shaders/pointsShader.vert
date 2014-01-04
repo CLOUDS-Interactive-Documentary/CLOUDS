@@ -10,7 +10,7 @@ uniform float minSize;
 //varying float activityValue;
 uniform vec4 spriteBaseColor;
 uniform vec4 spritePopColor;
-
+uniform bool animateSpriteSize;
 float map(float value, float inputMin, float  inputMax, float  outputMin,float  outputMax ){
     
     float outVal = ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
@@ -18,22 +18,18 @@ float map(float value, float inputMin, float  inputMax, float  outputMin,float  
 }
 
 void main(void){
-//    gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
-//	gl_FrontColor = gl_Color;
-//	//gl_PointSize = 1.0 + (gl_Normal.y * pointSize);
-//	gl_PointSize = gl_Normal.y*pointSize;
 
-//    gl_PointSize = map(gl_Normal.x,0.,1.,5.,15.) ;
-	gl_PointSize = map(gl_Normal.x,0.,1.,minSize    ,maxSize) ;
-//    activityValue = 1.;
+    if(animateSpriteSize){
+        gl_PointSize = map(gl_Normal.y,0.,1.,minSize,maxSize) ;
+    }
+    else{
+        gl_PointSize = map(gl_Normal.x,0.,1.,minSize,maxSize) ;
+    }
+	
+
     vec4 mixed = mix(spriteBaseColor, spritePopColor, gl_Normal.y)  ;
-
-    //gl_PointSize = gl_Normal.x *sizeMultiplier;//7.0;
     gl_FrontColor = mixed ;
-//    gl_FrontColor.rgb =vec4( 1.0,1.0,1.0,1.0);
-//    gl_FrontColor.rgb =vec3( gl_Normal.y,gl_Normal.y,gl_Normal.y);
-//	gl_FrontColor = vec4(1.0,0.0,1.0,1.0);
-//    gl_FrontColor = spritePop;//*nearAttenuate;
+
 	gl_TexCoord[0] = gl_MultiTexCoord0;
 	gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;
 }
