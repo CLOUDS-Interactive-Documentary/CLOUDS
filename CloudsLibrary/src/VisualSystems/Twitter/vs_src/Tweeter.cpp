@@ -55,23 +55,13 @@ void Tweeter::indexTweetsByDate(vector<Date> dates){
 }
 
 void Tweeter::addTweetsToDate(Tweet t){
-    
     tweetDateMap[t.dateString].push_back(t);
 }
 bool Tweeter::hasTweetOnDate(string tweetDate){
-    //    for(int i =0; i< tweets.size(); i++){
-    //        if(tweets[i].tweetDate.day == d.day &&
-    //           tweets[i].tweetDate.month == d.month &&
-    //           tweets[i].tweetDate.year== d.year){
-    //            return true;
-    //        }
-    //    }
     
     if(tweetDateMap.find(tweetDate) != tweetDateMap.end()){
-        
         return true;
     }
-//    cout<<name <<" has no tweets on date : "<<tweetDate<<endl;
     
     return false;
 }

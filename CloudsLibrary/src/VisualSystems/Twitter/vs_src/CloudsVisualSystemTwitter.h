@@ -153,9 +153,10 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
 
   protected:
+    int maxUserLinks;
     ofColor listColor;
     vector<Tweeter> tweeters;
-
+    float sizeMultiplier;
 	ofFloatImage activityMap;
     stringstream ss;
     

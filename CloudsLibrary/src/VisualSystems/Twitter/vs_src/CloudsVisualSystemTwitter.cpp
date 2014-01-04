@@ -135,7 +135,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addMinimalSlider("EDGE DECAY", 0.2, 1.0, &activityMapDamping);
     clusterGui->addMinimalSlider("NORMALS DECAY", 0.2, 1.0, &normalDecay);
     clusterGui->addMinimalSlider("SYNAPSE LEVEL", 0.0, 1.0, &synapseLevel);
-    clusterGui->addRangeSlider("POINT SIZE RANGE", .5, 4., &pointsSize.min, &pointsSize.max);
+    clusterGui->addMinimalSlider("SPRITE SIZE", 0, 30, &sizeMultiplier);
 	
     //TWEET POP
 	addColorToGui(clusterGui,"LINE NODE BASE",lineNodeBaseHSV);
@@ -226,7 +226,7 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
 	
 	ofVec2f curActivityMapCoord(0,0);
 	int activityMapCoordWidth = 100;
-	
+    maxUserLinks = 0;
     if(dir.exists()){
         int size = dir.size();
         vector<ofFile>files= dir.getFiles();
@@ -312,6 +312,7 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
 						curActivityMapCoord.x = 0;
 						curActivityMapCoord.y++;
 					}
+                    maxUserLinks = MAX(maxUserLinks,cur.userLinks.size());
                     tweeters.push_back(cur);
                 } else {
                     cout  << "Failed to parse JSON" << endl;
@@ -319,6 +320,8 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
             }
         }
     }
+    
+    cout<<"Max no. of user links = "<<maxUserLinks<<endl;
     addUsersFromMentions(curActivityMapCoord, activityMapCoordWidth);
 	
 	activityMap.allocate(activityMapCoordWidth, curActivityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
@@ -594,9 +597,10 @@ void CloudsVisualSystemTwitter::loadMesh(){
     cout<<"No of vertices in edges "<< edgeMesh.getVertices().size()<<endl;
     currentIndex = 0;
     for(int j=0; j<tweeters.size(); j++){
-        
+        float userLinkFactor = ofMap(tweeters[j].userLinks.size(), 0, maxUserLinks, 0, 1);
+
         nodeMesh.addVertex(tweeters[j].position);
-        nodeMesh.addNormal(ofVec3f(0,0,0));
+        nodeMesh.addNormal(ofVec3f(userLinkFactor,0,0));
         tweeters[j].nodeVertexIndex = currentIndex;
         currentIndex++;
     }
@@ -972,8 +976,7 @@ void CloudsVisualSystemTwitter::selfDraw()
 //								  nodePopColor.a);
         
         pointsShader.setUniformTexture("tex", sprite, 1);
-        pointsShader.setUniform1f("minSize", pointsSize.min);
-        pointsShader.setUniform1f("maxSize", pointsSize.max);
+        pointsShader.setUniform1f("sizeMultiplier", sizeMultiplier);
         pointsShader.setUniform3f("attractor", 0, 0, 0);
         pointsShader.setUniform1f("radius", 300.);
         
