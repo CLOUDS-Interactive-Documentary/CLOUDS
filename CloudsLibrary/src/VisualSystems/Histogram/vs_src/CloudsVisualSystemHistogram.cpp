@@ -33,7 +33,7 @@ void CloudsVisualSystemHistogram::selfSetupGui(){
     
     customGui->addSpacer();
     customGui->addToggle("SEPARATE FEEDS", &bSeparateFeeds);
-    customGui->addSlider("SAMPLE OFFSET", 0.5, 1.0, &sampleOffset);
+    customGui->addSlider("SAMPLE OFFSET", 0.1, 1.0, &sampleOffset);
     
     customGui->addSpacer();
     vector<string> sources;
