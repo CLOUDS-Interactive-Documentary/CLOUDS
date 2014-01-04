@@ -7,16 +7,17 @@
 ofVec3f bMin,bMax,bCenter;
 ofVec3f axisY=ofVec3f(0,1,0);
 ofVec3f axisX=ofVec3f(1,0,0);
+MWTerrain terrain;
+float radMin=0.1f;
 
 void CloudsVisualSystemVerletForm::mwPreset() {
 	lastFixY=0;
 
 	gridType=(int)(ofRandom(GRIDCYL+1));
-//	gridType=(ofRandom(100)<50 ? GRIDCIRC : GRIDRECT);
-
-//	gridType=GRIDCIRC;//GRIDRECT;
 	gridSize = (int)ofRandom(35,60);
 	gridSize = gridSizeF;
+
+	gridDoStitch=(gridType!=GRIDRECT && ofRandom(100)>30);
 
 	colorIndex=ofRandom(900);
 
@@ -40,7 +41,38 @@ void CloudsVisualSystemVerletForm::mwPreset() {
 	stickyNum=(int)(stickyNum*(ofRandom(0.5f,5)/100.0f));
 
 	mwCreateLights();
+
+	terrain.type=(int)ofRandom(3);
+	for(int i=0; i<4; i++) terrain.h[i]=rndSigned(0.2f,0.5f);
+
+//	terrain.h=*new float[4];
+
+
+
 }
+
+float CloudsVisualSystemVerletForm::terrainMod(float x,float y) {
+	float d=sqrt(x*x+y*y)/clothWidth/2;
+	if(d>1) d=1;
+	return bezierPoint(terrain.h[0],terrain.h[1],terrain.h[2],terrain.h[3],d);
+}
+
+	float CloudsVisualSystemVerletForm::rndSigned(float a,float b) {
+		float v=ofRandom(a,b);
+		return ofRandom(100)<50 ? v : -v;
+	}
+
+  float CloudsVisualSystemVerletForm::bezierPoint(float a, float b, float c, float d, float t) {
+    float t1 = 1.0f - t;
+    return a*t1*t1*t1 + 3*b*t*t1*t1 + 3*c*t*t*t1 + d*t*t*t;
+  }
+
+ofVec3f CloudsVisualSystemVerletForm::mwNewMove(MWParticle& pt) {
+	ofVec3f v=ofVec3f(0,0,0);
+	return v;
+}
+
+
 
 void CloudsVisualSystemVerletForm::mwLights() {
 	ofFloatColor black=ofFloatColor(0,0,0);
@@ -74,10 +106,21 @@ void CloudsVisualSystemVerletForm::mwUpdate() {
 	vector<int> dead;
 
 	float fpsModNow=ofGetFrameRate();
-	fpsMod=fpsMod*0.9f+(fpsModNow/60.0f)*0.1f;
+	fpsMod=fpsMod*0.9f+((1.f/(fpsModNow/60.0f))*0.1f);
+
+	if(ofGetFrameNum()%500==0) printf("%d fpsMod %1.2f\n",
+			ofGetFrameNum(),fpsMod);
 
 	activityCnt--;
-	//if(activityCnt<0 && ppActive.size()<100) mwNewActivity(-1,1);
+
+	if(activityCnt<0 && ppActive.size()<100) {
+		MWParticle& pt=mwGetParticle(-1,
+						ofRandom(100)>70,true);
+		mwNewActivity(pt,pt.state>FREE && ofRandom(100)>30
+				? FREE :
+				(ofRandom(100)>70 ? FIXEDMOVING : FIXEDSTATIC));
+		activityCnt=ofRandom(50,160)*fpsMod;
+	}
 
 	int nn=gridSize/5;
 	for(int i=0; i<pp.size(); i+=nn) {
@@ -96,41 +139,57 @@ void CloudsVisualSystemVerletForm::mwUpdate() {
 	ofVec3f c=bMin+bMax;
 	c*=0.5;
 
+	string s="";
+
 	for(int i=0; i<ppActive.size(); i++) {
+
 		MWParticle& pt=ppActive.at(i);
-		pt.stateCnt--;
+		if(i%100==0) printf("%d|%d  \n",pt.stateCnt,pt.state);
+		
+		if(pt.stateCnt>-1) {
+			pt.stateCnt--;
+			if(pt.stateCnt>0 && pt.state>FREE) {
+				pt.p->moveBy(pt.vD,true);
+			}
 
-		if(pt.state==FIXEDMOVING) {
-			pt.p->moveBy(pt.vD,true);
+			if(i%50==0 && ofGetFrameNum()%500==0) printf(
+				"id=%d stateCnt %d / %d | %1.2f\n",
+				pt.id,pt.stateCnt,ppActive.at(i).stateCnt,fpsMod);
 		}
-
-		if(ofGetFrameNum()%1000==0 && i%50==0)
-			printf("%d pt.stateCnt %d\n",
-				i,pt.stateCnt);
-
-		if(pt.stateCnt<0) {
-			dead.push_back(i);
-//			printf("DEAD: %d %d %d\n",i,pt.stateCnt,(pt.p->isFixed() ? 1 : 0));
-//			if(pt.p->isFixed()) pt.p->makeFree();
-//			else pt.p->makeFixed();
-		}
+		if(pt.stateCnt<1) dead.push_back(i);
 	}
 
 	if(ofGetFrameNum()%100==0 || dead.size()>0) {
-		printf("dead %d pp %d ppActive %d >> ",
-			dead.size(),pp.size(),ppActive.size());
+		printf("dead %d pp %d/%d >> %s\n",
+			dead.size(),pp.size(),ppActive.size(),s);
 	}
 
-	while(dead.size()>0 && ppActive.size()>10) {
+	while(dead.size()>0) {
 		int id=dead.back();
 		dead.pop_back();
+
 		MWParticle& pt=ppActive.at(id);
-		ppActive.erase(ppActive.begin()+id);
-		pp.push_back(pt);
+		if(pt.state==FIXEDMOVING && ofRandom(100)>70) {
+			mwNewActivity(pt,FIXEDSTATIC);
+		}
+		else {
+			pt.state=FREE;
+			pt.p->makeFree();
+//			if(pt.state==FIXEDSTATIC) {
+//			}
+
+			ppActive.erase(ppActive.begin()+id);
+			pp.push_back(pt);
+
+			mwNewActivity(
+					mwGetParticle(-1,ofRandom(100)>70,true),
+					ofRandom(100)<50 ? FIXEDSTATIC : FIXEDMOVING);
+		}
+
 	}
 
 	if(ofGetFrameNum()%1000==0) {
-		printf("pp %d ppActive %d\n",pp.size(),ppActive.size());
+		printf("pp %d/%d\n",pp.size(),ppActive.size());
 	}
 }
 
@@ -140,13 +199,20 @@ ofVec3f CloudsVisualSystemVerletForm::mwOutlineShape(ofVec3f &v) {
 	if(gridType<GRIDCYL) {
 		a=atan2(-v.z,v.x)/PI+1;
 		a=ofNoise(a*10)*2.5f+0.3f;
-		return v*a;
+		v=v*a;
+//		v.y*=terrainMod(v.x,v.z);
+
 	}
 	else {
 		a=v.x/clothWidth;
-		a=ofNoise(a*10);
-		a=a*a*1.5f+0.1f;
-		v.set(v.x,v.y*a,v.z*a);
+		float sineMod=sin(a*2*HALF_PI+colorIndex/900.f*HALF_PI)+0.15f;
+		float b=atan2(-v.z,v.y);
+		a=ofNoise(a*25,b*25)*sineMod;
+		a=a*a*2.5f+0.1f;
+		v.set(v.x*a,v.y*a,v.z);
+
+
+//		v.rotate(90,axisX);
 		return v;
 	}
 
@@ -157,7 +223,7 @@ MWParticle & CloudsVisualSystemVerletForm::mwGetParticle(signed int id,bool from
 	MWParticle& pt=pp.at(0);
 
 	if(id>-1) {
-		printf("mwGetParticle id=%d/%d\n",id,pp.size());
+//		printf("mwGetParticle id=%d/%d\n",id,pp.size());
 		pt=pp[id];
 	}
 	else {
@@ -181,12 +247,16 @@ MWParticle & CloudsVisualSystemVerletForm::mwGetParticle(signed int id,bool from
 }
 
 void CloudsVisualSystemVerletForm::mwNewActivity(MWParticle& pt,signed int state) {
-	activityCnt=ofRandom(150,500);//*fpsMod;
+	ofVec3f v2=ofVec3f(
+			pt.p->getPosition().x,
+			pt.p->getPosition().y,
+			pt.p->getPosition().z);
+
+	pt.stateCnt=ofRandom(60,120)*15*fpsMod;
 
 	if(state==FREE) {
 		pt.p->makeFree();
 		pt.vD.set(0,0,0);
-		pt.stateCnt=ofRandom(60,180)*25;//*fpsMod;
 	}
 	else if(state==FIXEDSTATIC) {
 		pt.p->makeFixed();
@@ -203,7 +273,7 @@ void CloudsVisualSystemVerletForm::mwNewActivity(MWParticle& pt,signed int state
 					pt.p->getPosition().z);
 		}
 		else {
-			y/=clothHeight;
+			y=2*y/clothHeight;
 			y=(ofRandom(100)>70 ? 1-y : 1+y);
 
 			pt.orig.set(
@@ -220,28 +290,43 @@ void CloudsVisualSystemVerletForm::mwNewActivity(MWParticle& pt,signed int state
 			pt.orig.rotate(ofRandom(-30,30),axisY);
 		}
 
-		pt.p->moveTo(pt.orig,true);
+//		pt.p->moveTo(pt.orig,true);
 
-		pt.vD.set(0,0,0);
-		pt.stateCnt=ofRandom(60,180)*50;//*fpsMod;
+		pt.vD=ofVec3f(ofRandom(0.05f,0.1f)*clothHeight,ofRandom(0.15f,0.2f)*clothWidth,0);
+		float mx=pt.vD.length();
+		if(v2.y>0) pt.vD.y*=-1;
+
+		pt.vD.rotate(ofRandom(-15,15), axisX);
+		pt.vD.rotate(ofRandom(-15,15), axisY);
+		pt.vD=pt.vD+pt.orig-v2;
+		mx=mx/pt.vD.length();
+		if(mx<1) pt.vD*=mx;
+
+		pt.vD/=pt.stateCnt;
+
 	}
 	else {
-		pt.stateCnt=ofRandom(60,180)*5;//*fpsMod;
 		pt.p->makeFixed();
 
-		pt.vD=ofVec3f(0,ofRandom(0.1f,0.2f)*clothWidth,0)*0.5f;
-		if(pt.p->getPosition().y>0) pt.vD.y*=-1;
+		float m=1;
+		if(ofRandom(100)>90) m=ofRandom(3,6);
+		pt.vD=ofVec3f(ofRandom(0.05f,0.1f)*m*clothHeight,ofRandom(0.15f,0.2f)*clothWidth,0);
 
-		pt.vD.rotate(ofRandom(-30,30), axisY);
-		axisY.set(0,1,0);
-		pt.vD.rotate(ofRandom(-30,30), axisY);
+		float mx=pt.vD.length();
+		if(v2.y>0) pt.vD.y*=-1;
 
+		pt.vD.rotate(ofRandom(-15,15), axisX);
+		pt.vD.rotate(ofRandom(-15,15), axisY);
+		pt.vD=pt.vD+pt.orig-v2;
+		mx=mx/pt.vD.length();
+		if(mx<1) pt.vD*=mx;
 		pt.vD/=pt.stateCnt;
 	}
 
 	pt.state=state;
-	printf("%d mwNewActivity - pp %d ppActive %d\n",
-		ofGetFrameNum(),pp.size(),ppActive.size());
+	if(ppActive.size()%25==0) printf("%d mwNewActivity - pp %d/%d state %d stateCnt=%d\n",
+		ofGetFrameNum(),pp.size(),ppActive.size(),
+		pt.state,pt.stateCnt);
 
 }
 
@@ -258,6 +343,7 @@ void CloudsVisualSystemVerletForm::mwMakeParticle(int x,int y,ofVec3f &o) {
 
 	ppt.orig=ofVec3f(o.x,o.y,o.z);
 	ppt.state=FREE;
+	ppt.stateCnt=0;
 	ppt.vD=ofVec3f(0,0,0);
 
 	ppt.isEdge=((ppt.gridx==0 || ppt.gridx==gridSize-1 ||
@@ -265,39 +351,39 @@ void CloudsVisualSystemVerletForm::mwMakeParticle(int x,int y,ofVec3f &o) {
 
 	pp.push_back(ppt);
 
-	if(pp.size()%gridSize==0) printf("%d %d | %d / %d | mwMakeParticle id=%d x=%d i=%d |  %1.2f, %1.2f, %1.2f \n",
-		x,ppt.gridx,
-		pp.size(),gridSize,
-		ppt.id,x,y,
-		ppt.orig.x,ppt.orig.y,ppt.orig.z);
+//	if(pp.size()%gridSize==0) printf("%d %d | %d / %d | mwMakeParticle id=%d x=%d i=%d |  %1.2f, %1.2f, %1.2f \n",
+//		x,ppt.gridx,
+//		pp.size(),gridSize,
+//		ppt.id,x,y,
+//		ppt.orig.x,ppt.orig.y,ppt.orig.z);
 }
 
 void CloudsVisualSystemVerletForm::mwCreateLights() {
-	printf("========\nmwCreateLights pp=%d / gridSize=%d\n",
-		pp.size(),gridSize);
+//	printf("========\nmwCreateLights pp=%d / gridSize=%d\n",
+//		pp.size(),gridSize);
 
 	ofColor c[]= {
-			ofColor(255,255,255),
-			ofColor(255,255,255),
-			ofColor(255,255,255)
+			ofColor(colors.at(ofRandom(colors.size()-1))),
+			ofColor(colors.at(ofRandom(colors.size()-1))),
+			ofColor(colors.at(ofRandom(colors.size()-1)))
 	};
+
+	float bSum=c[0].getBrightness()+
+			c[1].getBrightness()+
+			c[2].getBrightness();
+	bSum=500.f/bSum;
 
 	for(int i = 0; i < 4; i++){
 		ofVec3f v=ofVec3f(
-				ofRandom(0.5f, 0.8f)*2*clothWidth,
-				-ofRandom(0.25, 0.5)*clothHeight,
+				ofRandom(0.75f, 1.f)*2*clothWidth,
+				-ofRandom(0.25, 0.75)*clothHeight,
 				0);
-		v.rotate(ofRandom(-180,180), axisY);
+		v.rotate(i*120+ofRandom(-15,15), axisY);
+
+		if(gridType==GRIDCYL) v.rotate(90,axisX);
 
 		auxLights[i].position=v;
 		auxLights[i].enabled=true;
-
-		ofColor cc=ofColor(colors.at(ofRandom(colors.size()-1)));
-		int b=cc.getBrightness()*ofRandom(1.0f,1.5f)*0.75f;
-		cc.setBrightness(b>255 ? 255 : b);
-		cc.setSaturation(cc.getSaturation()*ofRandom(0.75f,1.25f));
-
-		auxLights[i].color=ofFloatColor(cc);
 
 		if(i==0) {
 			auxLights[i].position.set(0,clothHeight*5,0);
@@ -308,6 +394,13 @@ void CloudsVisualSystemVerletForm::mwCreateLights() {
 			auxLights[i].light.setOrientation( ofVec3f(0, -0.8f, 0.2f) );
 		}
 		else {
+			ofColor cc=c[i+1];
+			int b=cc.getBrightness()*ofRandom(1.0f,1.5f)*bSum;
+			cc.setBrightness(b>255 ? 255 : (b<80 ? 80 : b));
+			cc.setSaturation(cc.getSaturation()*ofRandom(0.75f,1.25f));
+
+			auxLights[i].color=ofFloatColor(cc);
+
 			if(i==2) v.y*=-1;
 			auxLights[i].light.setPointLight();
 			auxLights[i].light.setPosition(auxLights[i].position);
@@ -335,9 +428,17 @@ void CloudsVisualSystemVerletForm::mwGenerate() {
 	float clothWidthHalf=clothWidth*0.5f;
 
 	float degRange=ofRandom(0.6f,1);
+	float degTwist=ofRandom(-90,90),degTwistD=ofRandom(1,3);
+
+	radMin=ofRandom(0.1f,0.3f);
 
 	for(int i=0; i<gridSize; i++) {
 		degRange=ofRandom(0.6f,1)*0.2f+degRange*0.8f;
+
+		degTwistD=ofClamp(
+				degTwistD+(ofRandom(100)<50 ? ofRandom(0.25,1) : -ofRandom(0.25,1)),
+				-3,3);
+		degTwist+=degTwistD;
 
 		for(int j=0; j<gridSize; j++) {
 
@@ -350,15 +451,19 @@ void CloudsVisualSystemVerletForm::mwGenerate() {
 
 			if(gridType==GRIDCIRC) { // circular
 				float a=(tz-0.5f)*360.0f;
-				v.set(tx*0.95+0.05f*clothWidth,ty,0);
+				if(ofRandom(100)<50) ty=-ty;
+				v.set(tx*(1-radMin)+radMin*clothWidth,
+						ty*ofRandom(2,4),0);
 				v.rotate(a, axisY);
+				float m=ofRandom(0.8f,1.2f);
+				v.set(v.x*m,v.y,v.z*m);
 			}
 			else if(gridType==GRIDCYL) { // circular
-				float a=(tz-0.5f)*360.0f*degRange;
-				v.set(
-						-(tx-clothWidthHalf)*1.5f,
-						ty+0.1f*clothHeight,
-						ty+0.1f*clothHeight);//tz*clothWidth);
+				float a=(tz-0.5f)*360.0f+degTwist;//+90*(1-degRange);
+				ty=ofRandom(0.1f,0.4f)+radMin;
+				ty=ty*clothHeight;
+				v.set(-(tx-clothWidthHalf)*1.5f,
+						ty,ty);//tz*clothWidth);
 
 				v.rotate(-a, axisX);
 			}
@@ -383,12 +488,15 @@ void CloudsVisualSystemVerletForm::mwGridSticky() {
 	int nhalf=ofRandom(n/2,n*0.9f);
 
 	if(gridType==GRIDRECT) {
-		int corners[] = {0, gridSize-1, 
+		int corners[] = {
+				ofRandom(5),
+				gridSize-1-ofRandom(5),
 			pp.size()/2,
-			pp.size()-1, pp.size()-(gridSize)};
+			pp.size()-1-ofRandom(5),
+			pp.size()-(gridSize)+ofRandom(5)};
 
-		for(int i=0; i<5; i++) if(ofRandom(100)>50) {
-			MWParticle &pt=mwGetParticle(corners[i],false,false);
+		for(int i=4; i>-1; i++) if(ofRandom(100)>50) {
+			MWParticle &pt=mwGetParticle(corners[i],false,true);
 			mwNewActivity(pt,FIXEDSTATIC);
 
 		}
@@ -396,19 +504,8 @@ void CloudsVisualSystemVerletForm::mwGridSticky() {
 
 	while((n--)>0) {
 		bool onEdge=(n>nhalf);
-		mwNewActivity(mwGetParticle(-1,onEdge,false),FIXEDSTATIC);
-
-		printf("%d mwGridSticky - pp %d ppActive %d | n=%d onEdge=%d\n",
-		ofGetFrameNum(),pp.size(),ppActive.size(),n,
-		(onEdge ? 1 : 0));
-
-//		pp.at(id).p->makeFixed();
+		mwNewActivity(mwGetParticle(-1,onEdge,true),FIXEDSTATIC);
 	}
-
-
-
-	printf("%d mwGridSticky - pp %d ppActive %d\n",
-		ofGetFrameNum(),pp.size(),ppActive.size());
 }
 
 
@@ -522,14 +619,14 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 		}
 	}
 
-	if(gridType==GRIDCYL) {
+	if(gridType!=GRIDRECT && gridDoStitch) {
 		int y1=gridSize-1,y2=0;
 
-		for (int i = 0; i < gridSize; i++){
-//						physics.makeSpring(
-//								particles[i][y2],
-//								particles[i][y1], str,
-//								ext*ofRandom(0.5f,1.25f));
+		for (int i = 0; i < gridSize; i++) if(ofRandom(100)>20){
+						physics.makeSpring(
+								particles[i][y2],
+								particles[i][y1], str,
+								ext*ofRandom(0.5f,1.25f));
 		}
 	}
 
@@ -542,20 +639,25 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 	//mesh.clearIndices();;
 	int w = gridSize;
 	int h = gridSize;
+
+	int xn=(gridDoStitch ? gridSize : gridSize-1);
+
 	for (int y = 0; y < gridSize-1; y++){
-		for (int x = 0; x < gridSize-1; x++){
+		for (int x = 0; x < xn; x++){
+
+			int x2=(x+1)%gridSize;
 			
 			ofIndexType a,b,c;
 			a = x+y*w;
-			b = (x+1)+y*w;
+			b = x2+y*w;
 			c = x+(y+1)*w;
 			baseMesh.addIndex(a);
 			baseMesh.addIndex(b);
 			baseMesh.addIndex(c);
 			
-			a = (x+1)+(y+1)*w;
+			a = x2+(y+1)*w;
 			b = x+(y+1)*w;
-			c = (x+1)+(y)*w;
+			c = x2+(y)*w;
 			baseMesh.addIndex(a);
 			baseMesh.addIndex(b);
 			baseMesh.addIndex(c);
@@ -702,6 +804,7 @@ void CloudsVisualSystemVerletForm::selfSceneTransformation(){
 void CloudsVisualSystemVerletForm::selfDraw(){
 	ofEnableAlphaBlending();
 	
+	mwUpdate();
 	mwLights();
 	
 	mat->begin();

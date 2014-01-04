@@ -98,7 +98,7 @@ class CloudsVisualSystemAutomata : public CloudsVisualSystem
 
     void restart();
     void render();
-
+    
 protected:
     ofxUISuperCanvas * customGui;
 
@@ -115,6 +115,8 @@ protected:
     int selectedSeedIdx;
     
     bool bDoInput;
+    
+    float scale2D;
     
     float radius;
     bool bRestart;

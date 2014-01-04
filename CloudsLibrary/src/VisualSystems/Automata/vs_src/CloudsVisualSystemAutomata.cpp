@@ -16,6 +16,7 @@ void CloudsVisualSystemAutomata::selfSetupGui()
     customGui->addSpacer();
     customGui->addToggle("RESTART", &bRestart);
     customGui->addToggle("2D", &bIs2D);
+    customGui->addSlider("2D SCALE", 1, 10, &scale2D);
     customGui->addToggle("USE INPUT", &bDoInput);
     customGui->addSlider("RADIUS", 1.0, 50.0, &radius);
     
@@ -167,7 +168,7 @@ void CloudsVisualSystemAutomata::selfUpdate()
     fgColor1.setHsb(fgParams1[0], fgParams1[1], fgParams1[2]);
     fgColor2.setHsb(fgParams2[0], fgParams2[1], fgParams2[2]);
     
-    if (bRestart || outFbo.getWidth() != ofGetWidth() || outFbo.getHeight() != ofGetHeight()) {
+    if (bRestart || outFbo.getWidth() != getSharedRenderTarget().getWidth() || outFbo.getHeight() != getSharedRenderTarget().getHeight()) {
         restart();
         bRestart = false;
     }
@@ -183,9 +184,13 @@ void CloudsVisualSystemAutomata::selfUpdate()
             outFbo.draw(0, 0);
             
             if (bDoInput) {
+                // Map the coords to the 2D scale.
+                float inputX = ofMap(GetCloudsInputX(), 0, getSharedRenderTarget().getWidth(),
+                                     getSharedRenderTarget().getWidth() * (0.5f - 0.5f / scale2D), getSharedRenderTarget().getWidth() * (0.5f + 0.5f / scale2D));
+                float inputY = ofMap(GetCloudsInputY(), 0, getSharedRenderTarget().getHeight(),
+                                     getSharedRenderTarget().getHeight() * (0.5f - 0.5f / scale2D), getSharedRenderTarget().getHeight() * (0.5f + 0.5f / scale2D));
                 ofSetColor(255);
-//                ofCircle(currentInput.x, currentInput.y, radius);
-                ofCircle(GetCloudsInputX(), GetCloudsInputY(), radius);
+                ofCircle(inputX, inputY, radius);
             }
         }
         texFbo.end();
@@ -227,7 +232,12 @@ void CloudsVisualSystemAutomata::selfDrawDebug(){
 void CloudsVisualSystemAutomata::selfDrawBackground()
 {
     if (bIs2D) {
+        ofPushMatrix();
+        ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2);
+        ofScale(scale2D, scale2D, 1);
+        ofTranslate(-ofGetWidth() / 2, -ofGetHeight() / 2);
         render();
+        ofPopMatrix();
     }
 }
 
