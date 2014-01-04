@@ -746,6 +746,7 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
         }
     }
     else if(e.getName() == "RENDER FEEDS"){
+        cout<<"Updating selection from gui event"<<endl;
         updateCurrentSelection(currentDateIndex, true);
     }
     
@@ -1018,7 +1019,7 @@ void CloudsVisualSystemTwitter::selfDraw()
 }
 void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime){
     // trigger for updating the current selecition
-    
+
     if(firstTime) {
         currentSelection.clear();
         while(currentSelection.size() < numberOfTweets){
@@ -1028,7 +1029,6 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
                 string currentDate = getDateAsString(dateIndex[index]);
                 
                 vector<pair<string*, string*> > :: iterator it;
-                
                 for(int i = 0; i < tweeters.size(); i++){
                     
                     if( ! tweeters[i].hasTweetOnDate(currentDate) ){
@@ -1045,9 +1045,14 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
                     
                     if (! alreadySelected) {
                         vector<Tweet>&  tweetsOnDate = tweeters[i].getTweetsByDate(currentDate);
-                        
+                        if(tweetsOnDate.size() == 0){
+                            ofLogError()<<"hasTweetOnDate returned true for "<<tweeters[i].name<<" even thought no. of tweets on that date = 0"<<endl;
+                            continue;
+                        }
                         //add a new tweet to the start
-                        Tweet& randTweet = tweetsOnDate[ofRandom(0,tweetsOnDate.size()-1)];
+                        Tweet& randTweet = tweetsOnDate[ofRandom(tweetsOnDate.size())];
+                        cout<<tweeters[i].name<<" : "<<tweetsOnDate.size()<<endl;
+                        
                         currentSelection.push_back(make_pair(&tweeters[i].name, &randTweet.tweet));
                         
                     }
@@ -1067,16 +1072,18 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
         }
     }
     else{
-        
+  
         string currentDate = getDateAsString(dateIndex[index]);
         vector<pair<string*, string*> > :: iterator it;
+
         for(int i = 0; i < tweeters.size(); i++){
             bool alreadySelected = false;
-            
+
             if( ! tweeters[i].hasTweetOnDate(currentDate)){
+
                 continue;
             }
-            
+            cout<<tweeters[i].name<<" Does have tweets on date : "<<currentDate<<endl;
             //if tweeter is already in the current selection ignore them
             for( it = currentSelection.begin(); it != currentSelection.end(); it++){
                 
@@ -1088,9 +1095,18 @@ void CloudsVisualSystemTwitter::updateCurrentSelection(int index, bool firstTime
             if (! alreadySelected ) {
                 vector<Tweet>&  tweetsOnDate = tweeters[i].getTweetsByDate(currentDate);
                 
+                if(tweetsOnDate.size() == 0){
+                    ofLogError()<<"hasTweetOnDate returned true for "<<tweeters[i].name<<" even thought no. of tweets on that date = 0"<<endl;
+                    continue;
+                }
+                
+                int index = int(ofRandom(tweetsOnDate.size()));
+                Tweet& randTweet =tweetsOnDate[index];
+
+                cout<<tweeters[i].name<<" : "<<tweetsOnDate[index].tweet<<endl;
                 currentSelection.pop_back();
                 //add a new tweet to the start
-                currentSelection.insert(currentSelection.begin(), make_pair(&tweeters[i].name, &tweetsOnDate[(int)ofRandom(0,tweetsOnDate.size())].tweet));
+                currentSelection.insert(currentSelection.begin(), make_pair(&tweeters[i].name,&tweetsOnDate[index].tweet ));
                 break;
             }
             
@@ -1145,9 +1161,9 @@ void CloudsVisualSystemTwitter::drawFeed(){
                     else{
                         avatars[*currentSelection[i].first].draw(avatarX,curAvatarY, avatarSize, avatarSize);
                     }
-                    
-                    tweetFont.drawString(ofToString(*currentSelection[i].first), textX, curTextY );
-                    tweetFont.drawString(ofToString(*currentSelection[i].second), textX, curTextY + 15 );
+//                    cout<<*currentSelection[i].first<<" : "<<*currentSelection[i].second<<endl;
+                    //tweetFont.drawString(ofToString(*currentSelection[i].first), textX, curTextY );
+                    //tweetFont.drawString(ofToString(*currentSelection[i].second), textX, curTextY + 15 );
                     tweetDeckMenu.draw(menuX,curMenuY, tweetDeckWidth, tweetDeckHeight);
                     ofLine( lineX1 ,curLineY,lineX2 , curLineY);
                     
@@ -1281,7 +1297,7 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
         updateCurrentSelection(currentDateIndex,false);
     }
     if(args.key == 'd'){
-        cout<<ofGetElapsedTimef()<<endl;
+ 
     }
 }
 

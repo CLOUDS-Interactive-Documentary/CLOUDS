@@ -21,8 +21,12 @@ Tweeter::Tweeter(string _name, int _id){
 }
 
 vector<Tweet>& Tweeter::getTweetsByDate(string t){
+//    if(tweetDateMap.find(t) != tweetDateMap.end()){
+            return tweetDateMap[t];
+//    }
     
-    return tweetDateMap[t];
+//    return dummyTweets;
+    
 }
 
 vector<Tweet> Tweeter::sortTweetsByDate(Date d){
@@ -64,9 +68,11 @@ bool Tweeter::hasTweetOnDate(string tweetDate){
     //    }
     
     if(tweetDateMap.find(tweetDate) != tweetDateMap.end()){
+        
         return true;
     }
 //    cout<<name <<" has no tweets on date : "<<tweetDate<<endl;
+    
     return false;
 }
 
