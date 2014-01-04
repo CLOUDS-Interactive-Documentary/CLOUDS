@@ -4,8 +4,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>WIND SPEED</WidgetName>
-                <WidgetID>44</WidgetID>
+                <WidgetName>ROTATE SPEED</WidgetName>
+                <WidgetID>40</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
