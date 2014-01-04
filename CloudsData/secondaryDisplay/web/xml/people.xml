@@ -82,9 +82,8 @@
 			<twitter>@roxlu</twitter>
 			<location1>Amsterdam NL</location1>
 			<location2>Amsterdam</location2>
-			<byline1>Creates physics-based visualizations using code. He strongly believes in working with others and sharing knowledge and skills.
-</byline1>
-			<byline2>He has a background in art, 3D, hardware, interaction design. In Amsterdam, he organizes a creative coding meetup in Amsterdam and contributes to Open Frameworks, an open source toolkit for creative coding. 
+			<byline1>He has a background in art, 3D, hardware, interaction design. Creates physics-based visualizations using code. He strongly believes in working with others and sharing knowledge and skills.</byline1>
+			<byline2>In Amsterdam, he organizes a creative coding meetup in Amsterdam and contributes to Open Frameworks, an open source toolkit for creative coding.
 </byline2>
 			<gender>male</gender>
 		</person>
@@ -95,8 +94,7 @@
 			<twitter>@elliotwoods</twitter>
 			<location1>Manchester UK</location1>
 			<location2>Manchester - Seoul</location2>
-			<byline1>Prototypes future interfaces between humans, cameras and projectors. He is known for transforming a tree into an array of voxels, and performing other optical magic tricks with light and code.
-</byline1>
+			<byline1>Prototypes future interfaces between humans, cameras and projectors. He is known for transforming a tree into an array of voxels, and performing other optical magic tricks with light and code.</byline1>
 			<byline2>He is known for transforming a tree into an array of voxels and for throwing augmented fireballs. He is a curator of the ScreenLab Residency in Manchester, co-founder of design company Kimchi and Chips based in Korea, and contributor to OpenFrameworks and VVVV, open source toolkits for creative coding.  </byline2>
 			<gender>male</gender>
 		</person>
@@ -482,7 +480,7 @@
 			<twitter>@horusVacui</twitter>
 			<location1>New York NY</location1>
 			<location2>Moscow - New York</location2>
-			<byline1>Sophy examines the nature of objects and human action in relationship to their fragmented digital representations. </byline1>
+			<byline1>Sophy examines the nature of objects and human action in relationship to their fragmented digital representations. Her work connects the artifacts of technological culture to universal human symbols and iconography. </byline1>
 			<byline2>Her practice coils together a variety of performance types, including musical performance with electronic instruments, spoken word, dance, techno-futuristic rituals, and site specific social experiments.</byline2>
 			<gender>female</gender>
 		</person>
