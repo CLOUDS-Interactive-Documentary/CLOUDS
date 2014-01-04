@@ -56,11 +56,20 @@ void CloudsVisualSystemSwim::generate()
 {
     snow.generate();
     creatures.generate();
-    if (seedRadio->getActive() != NULL)
+    // ofxUIRadio getActive doesn't seem to work
+    for (unsigned i = 0; i < seedRadio->getToggles().size(); ++i)
     {
-        ostringstream oss(getVisualSystemDataPath());
-        oss << "seed/" << seedRadio->getActive()->getName();
-        creatures.loadSeed(oss.str());
+        if (seedRadio->getToggles()[i]->getValue())
+        {
+            string name = seedRadio->getToggles()[i]->getName();
+            if (name != "no seed data")
+            {
+                ostringstream oss;
+                oss << getVisualSystemDataPath() << "seed/" << name;
+                creatures.loadSeed(oss.str());
+                break;
+            }
+        }
     }
 }
 
@@ -199,6 +208,7 @@ void CloudsVisualSystemSwim::selfSetupGui()
     ofDirectory dir;
     dir.listDir(getVisualSystemDataPath() + "seed");
     vector<string> fileNames;
+    fileNames.push_back("no seed data");
     for (unsigned i = 0; i < dir.size(); ++i)
     {
         fileNames.push_back(dir.getName(i));
@@ -250,7 +260,8 @@ void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& para
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemSwim::selfPresetLoaded(string presetPath)
 {
-    regenerate = true;
+    
+    //regenerate = true;
 }
 
 //events are called when the system is active

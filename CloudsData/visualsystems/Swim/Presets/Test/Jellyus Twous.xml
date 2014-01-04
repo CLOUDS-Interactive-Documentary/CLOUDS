@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Jellyus Twous</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>233.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>24.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>6</Kind>
@@ -51,26 +51,26 @@
 <Widget>
     <Kind>6</Kind>
     <Name>width range</Name>
-    <HighValue>102.660102844</HighValue>
+    <HighValue>53.054187775</HighValue>
     <LowValue>16.551725388</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>length range</Name>
-    <HighValue>156.009857178</HighValue>
-    <LowValue>79.261085510</LowValue>
+    <HighValue>111.083740234</HighValue>
+    <LowValue>17.487689972</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>spherical segment (range)</Name>
-    <HighValue>1.876441479</HighValue>
-    <LowValue>1.226458907</LowValue>
+    <HighValue>2.712137461</HighValue>
+    <LowValue>1.969297647</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>superformula m1 (range)</Name>
     <HighValue>12.906404495</HighValue>
-    <LowValue>7.763546944</LowValue>
+    <LowValue>5.458127975</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>

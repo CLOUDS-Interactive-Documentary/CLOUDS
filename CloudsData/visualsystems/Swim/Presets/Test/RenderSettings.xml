@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>673.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>164.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -70,12 +70,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>numJellyOne</Name>
-    <Value>31</Value>
+    <Value>94</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>numJellyTwo</Name>
-    <Value>29</Value>
+    <Value>96</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>

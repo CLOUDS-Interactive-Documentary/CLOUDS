@@ -35,6 +35,8 @@
 
 namespace itg
 {
+    const float Creatures::TENTACLE_SECTION_LENGTH = 4.f;
+    
     void Creatures::init(const string& dataPath)
     {
         numGreyFish = 125;
@@ -405,7 +407,7 @@ namespace itg
     
     void Creatures::loadSeed(const string& path)
     {
-        ifstream fileStream(path.c_str());
+        ifstream fileStream(ofToDataPath(path, true).c_str());
         string data((istreambuf_iterator<char>(fileStream)), std::istreambuf_iterator<char>());
         vector<string> creatureData = ofSplitString(data, "|");
         for (unsigned i = 0; i < creatureData.size() && i < creatures.size(); ++i)

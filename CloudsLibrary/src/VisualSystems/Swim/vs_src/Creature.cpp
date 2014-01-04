@@ -59,7 +59,7 @@ namespace itg
     
     void Creature::integrate()
     {
-        velocity += accumulated;
+        velocity += accumulated * getElapsed() * 60.f;
         //velocity *= (1.0 + fear );
         //fear -= 0.2f * fear;
     }

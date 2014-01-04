@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Jellyus Oneus</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -51,19 +51,19 @@
 <Widget>
     <Kind>6</Kind>
     <Name>width range</Name>
-    <HighValue>58.669952393</HighValue>
+    <HighValue>40.886699677</HighValue>
     <LowValue>18.423645020</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>length range</Name>
-    <HighValue>163.497543335</HighValue>
-    <LowValue>111.822639465</LowValue>
+    <HighValue>42.758621216</HighValue>
+    <LowValue>19.162578583</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>spherical segment (range)</Name>
-    <HighValue>2.143399715</HighValue>
+    <HighValue>2.050546885</HighValue>
     <LowValue>1.586270094</LowValue>
 </Widget>
 <Widget>
