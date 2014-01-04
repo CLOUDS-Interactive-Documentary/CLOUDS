@@ -104,6 +104,8 @@ protected:
     
     ofMesh gravityLine;
     
+    ofDirectory spriteDir;
+    
     GLfloat * data;
     ofImage tex;
     ofVbo vbo;
