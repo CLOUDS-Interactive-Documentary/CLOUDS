@@ -12,7 +12,21 @@ CloudsTransitionController::CloudsTransitionController(){
 	transitioning = false;
 	triggeredMidpoint = false;
 	newState = false;
+	previousState = TRANSITION_INTERVIEW_IDLE;
 	currentState = TRANSITION_INTERVIEW_IDLE;
+}
+
+void CloudsTransitionController::transitionFromIntro(float outDuration, float inDuration){
+	
+	currentState = TRANSITION_INTRO_OUT;
+	
+	transitioning = true;
+	triggeredMidpoint = false;
+	newState = true;
+	
+	transitionStartTime = ofGetElapsedTimef();
+	transitionOutCompleteTime = transitionStartTime + outDuration;
+	transitionInCompleteTime  = transitionStartTime + outDuration + inDuration;
 }
 
 void CloudsTransitionController::transitionToVisualSystem(float outDuration, float inDuration){
@@ -68,6 +82,7 @@ float CloudsTransitionController::getInterviewTransitionPoint(){
 	}
 	return 0.0;
 }
+
 void CloudsTransitionController::update() {
 	if(transitioning){
 		
@@ -94,6 +109,9 @@ void CloudsTransitionController::update() {
 CloudsTransitionState CloudsTransitionController::getCurrentState(){
 	return currentState;
 }
+CloudsTransitionState CloudsTransitionController::getPreviousState(){
+	return previousState;
+}
 
 string CloudsTransitionController::getCurrentStateDescription(){
 	switch(currentState){
@@ -105,12 +123,14 @@ string CloudsTransitionController::getCurrentStateDescription(){
 			return "TransitionVisualSystemIn";
 		case TRANSITION_VISUALSYSTEM_OUT:
 			return "TransitionVisualSystemOut";
-		case TRANSITION_INTERVIEW_IN:			
+		case TRANSITION_INTERVIEW_IN:
 			return "TransitionInterviewIn";
+		case TRANSITION_INTRO_OUT:
+			return "TransitionIntroOut";
+			
 		default:
 			return "UNKNOWN STATE " + ofToString(int(currentState));
 	}
-	
 }
 
 bool CloudsTransitionController::isStateNew(){
@@ -120,12 +140,14 @@ bool CloudsTransitionController::isStateNew(){
 }
 
 bool CloudsTransitionController::fadingOut(){
-	return currentState == TRANSITION_VISUALSYSTEM_OUT || currentState == TRANSITION_INTERVIEW_OUT;
+	return currentState == TRANSITION_VISUALSYSTEM_OUT ||
+		   currentState == TRANSITION_INTERVIEW_OUT ||
+		   currentState == TRANSITION_INTRO_OUT;
 }
 
 //move to the next state
 CloudsTransitionState CloudsTransitionController::getNextState(){
-
+	previousState = currentState;
 	switch(currentState){
 		case TRANSITION_INTERVIEW_IDLE:
 			break;
@@ -140,6 +162,9 @@ CloudsTransitionState CloudsTransitionController::getNextState(){
 			break;
 		case TRANSITION_INTERVIEW_IN:
 			currentState = TRANSITION_INTERVIEW_IDLE;
+			break;
+		case TRANSITION_INTRO_OUT:
+			currentState = TRANSITION_INTERVIEW_IDLE; //This is where a TUNNEL will go - maybe make a loading screen here too?
 			break;
 	}
 

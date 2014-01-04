@@ -15,13 +15,15 @@ typedef enum {
 	TRANSITION_INTERVIEW_OUT = 1,
 	TRANSITION_VISUALSYSTEM_IN = 2,
 	TRANSITION_VISUALSYSTEM_OUT = 3,
-	TRANSITION_INTERVIEW_IN = 4
+	TRANSITION_INTERVIEW_IN = 4,
+	TRANSITION_INTRO_OUT = 5
 } CloudsTransitionState;
 
 class CloudsTransitionController {
   public:
 	CloudsTransitionController();
 	
+	void transitionFromIntro(float transitionOutDuration, float transitionInDuration);
 	void transitionToVisualSystem(float transitionOutDuration, float transitionInDuration);
 	void transitionToInterview(float transitionOutDuration, float transitionInDuration);
 	
@@ -42,12 +44,13 @@ class CloudsTransitionController {
 	
 	bool isStateNew();
 	CloudsTransitionState getCurrentState();
+	CloudsTransitionState getPreviousState();
 	string getCurrentStateDescription();
 	//ofEvent<CloudsPlaybackControllerEvent> CloudsPlaybackControllerEvent::events;
   protected:
 	
 	CloudsTransitionState currentState;
-	
+	CloudsTransitionState previousState;
 	float transitionStartTime;
 	
 	float transitionInCompleteTime;
