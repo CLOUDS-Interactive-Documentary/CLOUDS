@@ -93,7 +93,6 @@ void CloudsVisualSystemHistogram::selfGuiEvent(ofxUIEventArgs &e)
     
     else if (e.widget->getName() == "RANDOM" && ((ofxUIToggle *)e.widget)->getValue()) {
         source = HISTOGRAM_SOURCE_RANDOM;
-        
         stopSound();
 	}
     else if (e.widget->getName() == "AUDIO" && ((ofxUIToggle *)e.widget)->getValue()) {
@@ -106,7 +105,7 @@ void CloudsVisualSystemHistogram::selfGuiEvent(ofxUIEventArgs &e)
         for (int i = 0; i < soundsDir.numFiles(); i++) {
             if (name == soundsDir.getName(i) && ((ofxUIToggle *)e.widget)->getValue()) {
                 selectedSoundsIdx = i;
-                reloadSound();
+                stopSound();
                 break;
             }
         }
@@ -212,8 +211,11 @@ void CloudsVisualSystemHistogram::selfUpdate()
     if (source == HISTOGRAM_SOURCE_RANDOM) {
         addRandomPoint();
     }
-    else {
+    else if (soundPlayer.isLoaded()) {
         addSoundPoint();
+    }
+    else {
+        reloadSound();
     }
     
     while (dataPoints.size() > maxNumDataPoints) {
@@ -237,7 +239,6 @@ void CloudsVisualSystemHistogram::selfUpdate()
     int col = 0;
     int row = 0;
     
-//    for (int j = dataPoints.size() - 1; j >= 0 ; j--) {
     for (int j = 0; j < dataPoints.size(); j++) {
         float offsetX = col * (colWidth + colSpacer);
         float val = dataPoints[j];
@@ -386,8 +387,6 @@ void CloudsVisualSystemHistogram::stopSound()
 
 void CloudsVisualSystemHistogram::reloadSound()
 {
-    stopSound();
-    
     ofFile file = soundsDir.getFile(selectedSoundsIdx);
     if (soundPlayer.loadSound(file.getAbsolutePath())) {
         soundPlayer.play();
