@@ -33,6 +33,7 @@ void CloudsVisualSystemHistogram::selfSetupGui(){
     
     customGui->addSpacer();
     customGui->addToggle("SEPARATE FEEDS", &bSeparateFeeds);
+    customGui->addSlider("SAMPLE OFFSET", 0.5, 1.0, &sampleOffset);
     
     customGui->addSpacer();
     vector<string> sources;
@@ -142,6 +143,7 @@ void CloudsVisualSystemHistogram::selfSetup()
     mode = HISTOGRAM_MODE_BARS;
     source = HISTOGRAM_SOURCE_RANDOM;
     bSeparateFeeds = false;
+    sampleOffset = 1.0f;
     
     colorClear.set(0, 0, 0, 0);
     
@@ -413,22 +415,20 @@ void CloudsVisualSystemHistogram::addSoundPoint()
             soundPlayer.setLogAverages(88, numRows);
         }
         vector<float> allLevels = getFFT();
-//        cout << allLevels.size() << " vs. " << numRows << endl;
-        if (allLevels.size() >= numRows){
-            for (int i = 0; i < numRows; i++) {
-                float currLevel = allLevels[i] * levelAdjust;
-                float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax);
-                
-                // move everything back one position
-                int last  = MIN(dataPoints.size() - 1, (i + 1) * colsPerRow - 1);
-                int first = MIN(last, i * colsPerRow + 1);
-                for (int j = first; j <= last; j++) {
-                    dataPoints[j - 1] = dataPoints[j];
-                }
-                
-                // add the new value at the end
-                dataPoints[last] = newValue;
+        for (int i = 0; i < numRows; i++) {
+            int levelIdx = ofMap(i, 0, numRows, 0, allLevels.size() * sampleOffset);
+            float currLevel = allLevels[levelIdx] * levelAdjust;
+            float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax);
+            
+            // move everything back one position
+            int last  = MIN(dataPoints.size() - 1, (i + 1) * colsPerRow - 1);
+            int first = MIN(last, i * colsPerRow + 1);
+            for (int j = first; j <= last; j++) {
+                dataPoints[j - 1] = dataPoints[j];
             }
+            
+            // add the new value at the end
+            dataPoints[last] = newValue;
         }
     }
     else {
@@ -451,7 +451,7 @@ vector<float>& CloudsVisualSystemHistogram::getFFT()
 	float fftPosition = soundPlayer.getPosition();
 	if (soundPlayer.isLoaded() && lastFFTPosition != fftPosition){
         
-        vector<float>& fftAverages = soundPlayer.getAverages();
+        vector<float>& fftAverages = soundPlayer.getSpectrum(numRows);
         averageSize = fftAverages.size();
         if(envelope.size() != averageSize){
             generateEnvelope(averageSize);
