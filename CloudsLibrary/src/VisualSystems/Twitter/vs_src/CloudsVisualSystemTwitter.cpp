@@ -26,14 +26,7 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     dateIndexMax = 100;
     
     rotation = 0;
-    currentTweetFeedIndex = 0;
     
-    avatarTweetGap = 50;
-    heightOffset = 50;
-    textHeightOffset = 10;
-    
-    timeTillNextUpdate = 0;
-    minTimeGapForNextTweet =3;
     randomRangeMin = 1;
     randomRangeMax = 10;
     
@@ -44,8 +37,9 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     bRenderMesh = true;
     bRenderText = false;
     stringWidth = 10;
-    numberOfTweets = 10;
+
     avatarSize = 10;
+    
     tweetFeedRect = ofRectangle (0, 0,  getCanvasWidth()/2, getCanvasHeight());
     font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
     tweetFont.loadFont(getVisualSystemDataPath() + "fonts/Helvetica.ttf",20);
@@ -58,6 +52,18 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     }
     tweetDeckHeight = tweetDeckMenu.height;
     tweetDeckWidth = tweetDeckMenu.width;
+    numberOfTweets = 10;
+    currentTweetFeedIndex =0;
+    heightOffset = 50;
+    avatarTweetGap = 50;
+    textHeightOffset = 10;
+    timeTillNextUpdate = 0;
+    minTimeGapForNextTweet =3;
+
+    avatarSize = 10;
+    tweetDeckHeightOffset = 10;
+    tweetDeckWidthOffset= 10;
+    tweetDeckLineOffset = 10;
     
     ofEnableSmoothing();
     ofEnableAlphaBlending();
@@ -127,6 +133,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	clusterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     clusterGui->addToggle("RENDER MESH", &bRenderMesh);
     clusterGui->addIntSlider("REFRESH RATE", 1, 500, &refreshRate);
+    clusterGui->addRangeSlider("SPRITE SIZE RANGE", 1,  100, &minSize, & maxSize);
 //    clusterGui->addIntSlider("REFRESH RATE", 1, 100, &activeTweeterRefreshRate);
     clusterGui->addRangeSlider("DATE RANGE", 1,  (dateIndex.size()), &dateIndexMin, & dateIndexMax);
     clusterGui->addToggle("ROTATE", &rotateModel);
@@ -136,7 +143,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addMinimalSlider("NORMALS DECAY", 0.2, 1.0, &normalDecay);
     clusterGui->addMinimalSlider("SYNAPSE LEVEL", 0.0, 1.0, &synapseLevel);
     clusterGui->addMinimalSlider("SPRITE SIZE", 0, 30, &sizeMultiplier);
-	
+	addColorToGui(clusterGui,"SPRITE COLOR",&spriteColorHSV);
     //TWEET POP
 	addColorToGui(clusterGui,"LINE NODE BASE",lineNodeBaseHSV);
 	addColorToGui(clusterGui,"LINE EDGE BASE",lineEdgeBaseHSV);
@@ -196,7 +203,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     twitterFeedGui->addLabel("OTHER PARAMS");
     twitterFeedGui->addIntSlider("NUM TWEETS",1, 20, &numberOfTweets);
     twitterFeedGui->addIntSlider("AVATAR SIZE", 10, 50, &avatarSize);
-    twitterFeedGui->addMinimalSlider("ANIMATION LERP RATE", 0.1, 1.0, &animationLerpRate);
+    twitterFeedGui->addMinimalSlider("ANIMATION LERP RATE", 0.01    , 1.0, &animationLerpRate);
     twitterFeedGui->addLabel("FONT PARAMS");
     twitterFeedGui->addMinimalSlider("FONT SIZE", 1, 20, &tweetFontSize);
     twitterFeedGui->addMinimalSlider("LINE LENGTH", 1, 1000, &tweetLineLength);
@@ -209,6 +216,9 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     twitterFeedGui->addMinimalSlider("ICON WIDTH", 100, 200, &tweetDeckWidth);
     twitterFeedGui->addMinimalSlider("ICON HEIGHT", 10, 200, &tweetDeckHeight);
     twitterFeedGui->addMinimalSlider("LINE OFFSET", -100, 100, &tweetDeckLineOffset);
+    twitterFeedGui->addMinimalSlider("MAX ALPHA",0.1,1.0,&maxAlphaTweetFeed);
+    twitterFeedGui->addMinimalSlider("LINE ALPHA", 0, 1, &lineAlpha);
+    twitterFeedGui->addMinimalSlider("AVATAR ALPHA", 0, 1, &avatarAlpha);
     ofAddListener(twitterFeedGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(twitterFeedGui);
 	guimap[textGui->getName()] = twitterFeedGui;
@@ -321,20 +331,11 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
         }
     }
     
-    cout<<"Max no. of user links = "<<maxUserLinks<<endl;
+//    cout<<"Max no. of user links = "<<maxUserLinks<<endl;
     addUsersFromMentions(curActivityMapCoord, activityMapCoordWidth);
 	
 	activityMap.allocate(activityMapCoordWidth, curActivityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
-//	activityMapDampened.allocate(activityMapCoordWidth, curActivityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
-//	activityMap.allocate(activityMapCoordWidth, curActivityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
-//	activityMapDampened.getPixelsRef().set(0);
-//	activityMap.set(0);
-	
 
-    
-//    for(int i =0; i< tweeters.size(); i++){
-//        cout<<tweeters[i].name<<" : "<<tweeters[i].tweets.size()<<endl;
-//    }
 }
 
 void CloudsVisualSystemTwitter::loadAvatars(){
@@ -953,7 +954,8 @@ void CloudsVisualSystemTwitter::selfDraw()
 	ofFloatColor nodeBaseColor = getRGBfromHSV(nodeBaseColorHSV);
 	ofFloatColor nodePopColor = getRGBfromHSV(nodePopColorHSV);
 	ofFloatColor synapseColor = getRGBfromHSV(synapseColorHSV);
-
+	ofFloatColor spriteColor = getRGBfromHSV(spriteColorHSV);
+    
     if(bRenderMesh){
         
 ////POINTS
@@ -976,9 +978,17 @@ void CloudsVisualSystemTwitter::selfDraw()
 //								  nodePopColor.a);
         
         pointsShader.setUniformTexture("tex", sprite, 1);
+
+        pointsShader.setUniform1f("maxSize", maxSize);
+        pointsShader.setUniform1f("minSize", minSize);
         pointsShader.setUniform1f("sizeMultiplier", sizeMultiplier);
         pointsShader.setUniform3f("attractor", 0, 0, 0);
         pointsShader.setUniform1f("radius", 300.);
+		pointsShader.setUniform4f("spriteColor",
+								spriteColor.r,
+								spriteColor.g,
+								spriteColor.b,
+								spriteColor.a);
         
         ofEnablePointSprites();
         ofDisableArbTex();
@@ -1140,6 +1150,7 @@ void CloudsVisualSystemTwitter::drawFeed(){
         if(bAnimateFeed){
             for(int i=0;i<currentSelection.size(); i++ ){
                 ofPushStyle();
+
                 float textX = getCanvasWidth() - tweetFeedRect.x;
                 float avatarX = textX -avatarTweetGap;
                 float menuX = textX + tweetFont.getLineLength() - tweetDeckMenu.width + tweetDeckWidthOffset;
@@ -1153,18 +1164,23 @@ void CloudsVisualSystemTwitter::drawFeed(){
                 float sourceAvatarY = tweetFeedRect.y +(i-1)*heightOffset;
                 float targetAvatarY = tweetFeedRect.y +i*heightOffset;
                                 
-                float sourceMenuY = tweetFeedRect.y +(i +1)*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset;
-                float targetMenuY = tweetFeedRect.y +(i +2)*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset;
-                
-                
+                float sourceMenuY = tweetFeedRect.y +(i -1)*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset;
+                float targetMenuY = tweetFeedRect.y +(i )*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset;
+
+                float sourceLineY = tweetFeedRect.y +(i -1)*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset- tweetDeckLineOffset;
+                float targetLineY = tweetFeedRect.y +(i )*heightOffset +textHeightOffset - tweetDeckMenu.height + tweetDeckHeightOffset - tweetDeckLineOffset;
+
+//                float curYpos = tweetFeedRect.y +i*heightOffset + textHeightOffset;
+//                float menuY = curYpos + heightOffset  - tweetDeckMenu.height + tweetDeckHeightOffset;
+//                float lineY = curYpos + heightOffset - tweetDeckLineOffset;
                 //lerp them lines and text
                 float curTextY = ofLerp(sourceTextY, targetTextY, animationLerpAmt);
                 float curAvatarY = ofLerp(sourceAvatarY, targetAvatarY, animationLerpAmt);
                 float curMenuY = ofLerp(sourceMenuY, targetMenuY, animationLerpAmt);
-                float curLineY = curMenuY - tweetDeckLineOffset;
+                float curLineY = ofLerp(sourceLineY, targetLineY, animationLerpAmt);
                 
-                col.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1, .1, 1.),2);
-                ofSetColor(col);
+                col.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1,  maxAlphaTweetFeed,1.0),2);
+//                ofSetColor(col);
                 
                 //50 is a magic number right now using this to not draw tweets that intersect with the edge of the screen
                 if(tweetFeedRect.y + i*heightOffset + textHeightOffset + 50 < getCanvasHeight()){
@@ -1174,12 +1190,19 @@ void CloudsVisualSystemTwitter::drawFeed(){
                         avatars["default"].draw(avatarX,curAvatarY, avatarSize, avatarSize);
                     }
                     else{
+                        ofFloatColor imgcol = col;
+                        imgcol.a = avatarAlpha;
+                        ofSetColor(imgcol);
                         avatars[*currentSelection[i].first].draw(avatarX,curAvatarY, avatarSize, avatarSize);
                     }
 //                    cout<<*currentSelection[i].first<<" : "<<*currentSelection[i].second<<endl;
-                    //tweetFont.drawString(ofToString(*currentSelection[i].first), textX, curTextY );
-                    //tweetFont.drawString(ofToString(*currentSelection[i].second), textX, curTextY + 15 );
+                    ofSetColor(col);
+                    twitterHandleFont.drawString(ofToString(*currentSelection[i].first), textX, curTextY );
+                    tweetFont.drawString(ofToString(*currentSelection[i].second), textX, curTextY + 15 );
                     tweetDeckMenu.draw(menuX,curMenuY, tweetDeckWidth, tweetDeckHeight);
+                    col.a = lineAlpha;
+                    ofSetColor(col);
+                    ofSetLineWidth(1);
                     ofLine( lineX1 ,curLineY,lineX2 , curLineY);
                     
                 }
@@ -1199,9 +1222,8 @@ void CloudsVisualSystemTwitter::drawFeed(){
         else{
             for(int i=0;i<currentSelection.size(); i++ ){
                 ofPushStyle();
-                
-                col.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1, .1, 1.),2);
-                
+
+                col.a = 1.0 -powf(ofMap(i, 0, currentSelection.size()-1, maxAlphaTweetFeed, 1.),2);                
                 //SM: Local variables for drawings. Apologies to anyone who sees this that isnt me.
                 float textX = getCanvasWidth() - tweetFeedRect.x;
                 float avatarX = textX -avatarTweetGap;
@@ -1214,9 +1236,9 @@ void CloudsVisualSystemTwitter::drawFeed(){
                 float twitterHandleY =  curYpos ;
                 float tweetY = curYpos + 15;
                 float menuY = curYpos + heightOffset  - tweetDeckMenu.height + tweetDeckHeightOffset;
-                float lineY = curYpos + heightOffset - tweetDeckLineOffset;
+                float lineY = menuY  - tweetDeckLineOffset;
 
-                ofSetColor(col);
+//                ofSetColor(col);
                 
                 //50 is a magic number right now using this to not draw tweets that intersect with the edge of the screen
                 if(tweetFeedRect.y + i*heightOffset + textHeightOffset + 50 < getCanvasHeight()){
@@ -1226,13 +1248,19 @@ void CloudsVisualSystemTwitter::drawFeed(){
                         avatars["default"].draw(avatarX,tweetFeedRect.y +i*heightOffset, avatarSize, avatarSize);
                     }
                     else{
+                        ofFloatColor imgcol = col;
+                        imgcol.a = avatarAlpha;
+                        ofSetColor(imgcol);
                         avatars[*currentSelection[i].first].draw(avatarX,tweetFeedRect.y +i*heightOffset, avatarSize, avatarSize);
                     }
-                    
+                    ofSetColor(col);
                     twitterHandleFont.drawString(ofToString(*currentSelection[i].first), textX, twitterHandleY);
                     tweetFont.drawString(ofToString(*currentSelection[i].second), textX, tweetY);
-
+                    
                     tweetDeckMenu.draw(menuX,menuY, tweetDeckWidth, tweetDeckHeight);
+                    ofSetLineWidth(1);
+                    col.a = lineAlpha;
+                    ofSetColor(col);
                     ofLine( lineX1 ,lineY,lineX2 , lineY);
                 }
                 

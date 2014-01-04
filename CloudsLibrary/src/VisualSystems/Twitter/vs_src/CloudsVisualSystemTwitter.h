@@ -157,7 +157,16 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     ofColor listColor;
     vector<Tweeter> tweeters;
     float sizeMultiplier;
+    float maxAlphaTweetFeed;
+    float lineAlpha;
+    float avatarAlpha;
+    
+    float minSize;
+    float maxSize;
+    
 	ofFloatImage activityMap;
+    ofFloatColor spriteColor;
+    ofFloatColor spriteColorHSV;
     stringstream ss;
     
     ofVboMesh nodeMesh;
