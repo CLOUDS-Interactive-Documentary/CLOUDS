@@ -234,20 +234,6 @@ void CloudsVisualSystemOrbit::guiRenderEvent(ofxUIEventArgs &e)
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOrbit::selfSetupGui(){
 
-	customGui = new ofxUISuperCanvas("CUSTOM", gui);
-	customGui->copyCanvasStyle(gui);
-	customGui->copyCanvasProperties(gui);
-	customGui->setName("Custom");
-	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-	customGui->addButton("Custom Button", false);
-	customGui->addToggle("Custom Toggle", &customToggle);
-	
-	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOrbit::selfGuiEvent);
-	guis.push_back(customGui);
-	guimap[customGui->getName()] = customGui;
 }
 
 void CloudsVisualSystemOrbit::selfGuiEvent(ofxUIEventArgs &e){
@@ -305,10 +291,9 @@ void CloudsVisualSystemOrbit::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemOrbit::selfEnd(){
-	
-	simplePointcloud.clear();
-	
+    
 }
+
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemOrbit::selfExit(){
 	
