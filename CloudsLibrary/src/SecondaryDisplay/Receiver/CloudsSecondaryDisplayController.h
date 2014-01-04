@@ -53,9 +53,12 @@ class CloudsSecondaryDisplayController {
     void drawTextToMesh(ofxFTGLSimpleLayout* font, string text, SVGMesh* mesh);
     void onActBegan();
     void onActEnded();
+    void animateIn();
+    void animateOut();
+    void setNormalsOn(CloudsSVGMesh* m);
 
 	//TODO: make separate layer sets for Project Example vs Person
-	vector<CloudsSVGMesh> testAllLayout;
+	//vector<CloudsSVGMesh*> allLayouts;
     
     CloudsSVGMesh bioLayout, projectLayout, questionLayout;
 	
@@ -65,7 +68,7 @@ class CloudsSecondaryDisplayController {
 	CloudsClip currentClip;
 	CloudsProjectExample currentExample;
 
-	ofxFTGLSimpleLayout  *h1, *h2, *h3, *h4, *h5, *p;
+	//ofxFTGLSimpleLayout  *h1, *h2, *h3, *h4, *h5, *p;
 
 	ofVideoPlayer archivePlayer;
 
@@ -73,7 +76,7 @@ class CloudsSecondaryDisplayController {
 
 	ofFbo displayTarget, gui;
     
-    float pFontSize, h3FontSize;
+    float playhead, animationSpeed;
     
     string displayMode, lastQuestion;
     
@@ -107,7 +110,7 @@ class CloudsSecondaryDisplayController {
                             *layoutProjectArtist,
                             *layoutProjectDescription;
     
-    int stringCounter;
+    float beginTime;
 
     map<string, CloudsHUDLabel*>    hudLabelMap;
     
@@ -115,6 +118,6 @@ class CloudsSecondaryDisplayController {
     
     ofShader lineAnimate;
 
-    
+    bool animatingIn, animatingOut;
 
 };
