@@ -515,7 +515,7 @@ void CloudsPlaybackController::updateTransition(){
 			rgbdVisualSystem->playSystem();
 			rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
 		}
-		else if(transitionController.getCurrentState() == TRANSITION_INTERVIEW_IDLE){
+		else if(transitionController.getCurrentState() == TRANSITION_IDLE){
 			//we just finished fading out of the intro
 			
 			if(transitionController.getPreviousState() == TRANSITION_INTRO_OUT){
