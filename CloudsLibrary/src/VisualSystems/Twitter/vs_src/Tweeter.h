@@ -24,6 +24,8 @@ struct Tweet{
     string dateString;
     vector<string> hashtags;
     vector<string> mentionedUsers;
+    
+    Tweet():tweet(""){}
 };
 
 class Tweeter{
@@ -36,6 +38,7 @@ public:
     int nodeVertexIndex;
     int edgeVertexIndex;
 	int refreshNum;
+    float textDecayRate;
 	
     bool hasTweetOnDate(string tweetDate);
     vector<Tweet>& getTweetsByDate(string t);
@@ -50,6 +53,7 @@ public:
     vector<int> linksById;
 	ofVec2f activityMapCoord;
     map<string, vector<Tweet> >tweetDateMap;
+    vector<Tweet> dummyTweets;
 
 };
 

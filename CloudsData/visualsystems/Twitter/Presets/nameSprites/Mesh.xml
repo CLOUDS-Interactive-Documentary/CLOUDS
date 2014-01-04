@@ -1,0 +1,184 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Mesh</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ANIMATE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RENDER MESH</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>REFRESH RATE</Name>
+    <Value>315</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>SPRITE SIZE RANGE</Name>
+    <HighValue>14.655172348</HighValue>
+    <LowValue>1.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>DATE RANGE</Name>
+    <HighValue>2025.039428711</HighValue>
+    <LowValue>1624.448242188</LowValue>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ROTATE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>ROTATION AMT</Name>
+    <Value>0.148768470</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>EDGE DECAY</Name>
+    <Value>0.960591137</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NORMALS DECAY</Name>
+    <Value>0.972413778</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SYNAPSE LEVEL</Name>
+    <Value>0.995073915</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SPRITE SIZE</Name>
+    <Value>25.270936966</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNB HUE</Name>
+    <Value>0.534031391</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNB SAT</Name>
+    <Value>0.554974437</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNB BRI</Name>
+    <Value>0.198952243</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNB ALPHA</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEB HUE</Name>
+    <Value>0.612565458</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEB SAT</Name>
+    <Value>0.712042511</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEB BRI</Name>
+    <Value>0.089004591</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEB ALPHA</Name>
+    <Value>0.088669948</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP HUE</Name>
+    <Value>0.596858621</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP SAT</Name>
+    <Value>0.335079163</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP BRI</Name>
+    <Value>0.560208797</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP ALPHA</Name>
+    <Value>0.246305421</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEP HUE</Name>
+    <Value>0.219895288</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEP SAT</Name>
+    <Value>0.397906393</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEP BRI</Name>
+    <Value>0.340313494</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEP ALPHA</Name>
+    <Value>0.073891625</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S HUE</Name>
+    <Value>0.863874316</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S SAT</Name>
+    <Value>0.947644591</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S BRI</Name>
+    <Value>0.591622412</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S ALPHA</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>EDGE COLOR EXPONENT</Name>
+    <Value>5.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>X POS</Name>
+    <Value>100.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Y POS</Name>
+    <Value>100.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Z POS</Name>
+    <Value>100.000000000</Value>
+</Widget>
