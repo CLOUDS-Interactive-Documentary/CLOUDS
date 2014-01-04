@@ -33,6 +33,7 @@ class CloudsVisualSystemPreset {
 	string conjureKeyword;
 	vector<string> allKeywords; // only filled out when the preset is scheduled
 	bool randomlySelected;
+	bool missingContent;
 	
 	bool stillPresent;
 	float currentScore;

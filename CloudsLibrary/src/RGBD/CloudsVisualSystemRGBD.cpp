@@ -1358,13 +1358,13 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 //		rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	}
 	
-	if(args.key == 'v' && currentCamera != &transitionCam ){
-		lookThroughTransitionIn();
-	}
-	
-	if(args.key == 'V' && currentCamera != &transitionCam ){
-		lookThroughTransitionOut();
-	}
+//	if(args.key == 'v' && currentCamera != &transitionCam ){
+//		lookThroughTransitionIn();
+//	}
+//	
+//	if(args.key == 'V' && currentCamera != &transitionCam ){
+//		lookThroughTransitionOut();
+//	}
 	
 }
 

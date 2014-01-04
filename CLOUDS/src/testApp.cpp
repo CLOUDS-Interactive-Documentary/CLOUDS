@@ -72,7 +72,6 @@ void testApp::setup(){
 	//temp sound stuff
 	//sound.setMasterAmp(1.0);
 	useScratch = false;
-	
 }
 
 //--------------------------------------------------------------

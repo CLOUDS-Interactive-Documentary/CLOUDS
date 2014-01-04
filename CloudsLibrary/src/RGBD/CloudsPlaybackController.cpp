@@ -835,7 +835,7 @@ void CloudsPlaybackController::playNextVisualSystem()
 		rgbdVisualSystem->stopSystem();
 		
 		nextSystem->setDrawToScreen( false );
-		nextSystem->setCurrentTopic( currentTopic );
+//		nextSystem->setCurrentTopic( currentTopic );
 		nextSystem->loadPresetGUISFromName( nextPresetName );
 		nextSystem->playSystem();
 		currentVisualSystem = nextSystem;
