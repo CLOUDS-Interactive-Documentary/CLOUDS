@@ -86,7 +86,6 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	displayFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", 14);
 	
 	transitionCam.setup();
-	
 	transitionCam.applyTranslation = true;
 	transitionCam.applyRotation = true;
 	
@@ -330,12 +329,17 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     transitionEditorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 	transitionEditorGui->addToggle("placingTransitionNodes", &placingTransitionNodes);
-	transitionEditorGui->addToggle("drawTransitionNodes", &drawTransitionNodes);
 	
 	transitionEditorGui->addSpacer();
 	
-	transitionEditorGui->addToggle("lookThoughIN", &bLookThourghIn )->setColorBack(ofColor(0,255,255));
-	transitionEditorGui->addToggle("lookThoughOUT", &bLookThourghOut )->setColorBack(ofColor(255,255,0));
+	transitionEditorGui->addToggle("drawTransitionNodes", &drawTransitionNodes);
+	
+	transitionEditorGui->addSpacer();
+		
+	transitionEditorGui->addToggle("lookThoughIN", &bLookThroughIn )->setColorBack(ofColor(0,255,255));
+	transitionEditorGui->addToggle("lookThoughOUT", &bLookThroughOut )->setColorBack(ofColor(255,255,0));
+//	transitionEditorGui->addToggle("resetNodes", &bResetLookThoughs);
+	
 	transitionEditorGui->addSpacer();
 	
 	transitionEditorGui->addToggle("saveTransition", &bSaveTransition);
@@ -346,9 +350,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 	transitionEditorGui->addLabel("transitionTypes")->setColorFill(ofColor(100));
 	transitionEditorGui->addRadio("loadTransition", transitionNames);
-	
-	
-//	translatedHeadPosition
 	
 	
 	CloudsQuestion::addQuestionVariables( transitionEditorGui );
@@ -372,6 +373,31 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 //	guis.push_back(connectorGui);
 //	guimap[connectorGui->getName()] = connectorGui;
+}
+
+void CloudsVisualSystemRGBD::updateTransitionGui()
+{
+	//add any newly saved transitions to out radio
+	ofxUIRadio* transitionRadio = (ofxUIRadio*)transitionEditorGui->getWidget("loadTransition");
+
+	vector <string> existingNames;
+	for(auto &it: transitionRadio->getToggles() )
+	{
+		existingNames.push_back( it->getName() );
+	}
+	
+	int yPos = transitionRadio->getRect()->getMaxY();
+	for(auto &it: transitionMap)
+	{
+		if( find(existingNames.begin(), existingNames.end(), it.first) == existingNames.end())
+		{
+			//cout << "add a new toggle here " << it.first << endl;
+			ofxUIToggle* t = transitionEditorGui->addToggle(it.first, true);
+			transitionRadio->addToggle(t);
+			
+			transitionEditorGui->autoSizeToFitWidgets();
+		}
+	}
 }
 
 //--------------------------------------------------------------
@@ -410,20 +436,33 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 //    cloudsCaption.update();
 	
 	if( placingTransitionNodes )
-	{	
-		if(bLookThourghIn)
+	{
+		transitionCam.applyTranslation = transitionCam.applyRotation = !cursorIsOverGUI();
+		
+		if(bLookThroughIn)
 		{
 			lookThroughTransitionIn();
-			bLookThourghIn = false;
+			bLookThroughIn = false;
 		}
-		else if(bLookThourghOut)
+		else if(bLookThroughOut)
 		{
 			lookThroughTransitionOut();
-			bLookThourghOut = false;
+			bLookThroughOut = false;
 		}
+		
+		if (bResetLookThoughs)
+		{
+			bResetLookThoughs = false;
+			setTransitionNodes(activeTransition);
+		}
+		
 		
 		if(transitionCamTargetNode)
 		{
+			if(ofGetFrameNum()%30 == 0)
+			{
+//				cout << "wTF" << endl;
+			}
 			transitionCamTargetNode->setPosition( transitionCam.getPosition() );
 			transitionCamTargetNode->setOrientation( transitionCam.getOrientationQuat() );
 		}
@@ -439,6 +478,8 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		bSaveTransition = false;
 	
 		saveTransitionSettings( ofSystemTextBoxDialog("save transition", "transitionType") );
+		
+		updateTransitionGui();
 	}
 }
 
@@ -481,15 +522,27 @@ void CloudsVisualSystemRGBD::loadTransitionSettings(string filename)
 	delete XML;
 }
 
+void CloudsVisualSystemRGBD::setTransitionNodes( string transitionName )
+{
+	if(transitionMap.find(activeTransition) != transitionMap.end())
+	{
+		transitionInStart.setPosition( transitionMap[activeTransition].inStartPos);// + translatedHeadPosition );
+		transitionInStart.setOrientation( transitionMap[activeTransition].inStartQuat );
+		
+		transitionOutTarget.setPosition( transitionMap[activeTransition].outTargetPos);// + translatedHeadPosition );
+		transitionOutTarget.setOrientation( transitionMap[activeTransition].outTargetQuat );
+	}
+}
+
 void CloudsVisualSystemRGBD::saveTransitionSettings(string transitionName)
 {
 	//save positions relative to head position
 	transitionMap[transitionName].name = transitionName;
 	
-	transitionMap[transitionName].inStartPos = transitionInStart.getPosition() - translatedHeadPosition;
+	transitionMap[transitionName].inStartPos = transitionInStart.getPosition();// - translatedHeadPosition;
 	transitionMap[transitionName].inStartQuat = transitionInStart.getOrientationQuat();
 	
-	transitionMap[transitionName].outTargetPos = transitionOutTarget.getPosition() - translatedHeadPosition;
+	transitionMap[transitionName].outTargetPos = transitionOutTarget.getPosition();// - translatedHeadPosition;
 	transitionMap[transitionName].outTargetQuat = transitionOutTarget.getOrientationQuat().asVec4();
 	
 	
@@ -501,6 +554,9 @@ void CloudsVisualSystemRGBD::saveTransitionSettings(string transitionName)
 	{	
 		ofVec4f inQ = it->second.inStartQuat.asVec4();
 		ofVec4f outQ = it->second.outTargetQuat.asVec4();
+		
+		cout << "inQ: " << inQ << endl;
+		cout << "outQ: " << outQ << endl;
 		
 		XML->addTag("TRANSITION");
 		XML->pushTag("TRANSITION", transitionIndex);
@@ -765,9 +821,11 @@ void CloudsVisualSystemRGBD::lookThroughTransitionIn(){
 	
 	transitionCam.setPosition( transitionInStart.getPosition() );
 	transitionCam.setOrientation( transitionInStart.getOrientationQuat() );
+	transitionCam.movedManually();
+	//transitionCam.positionChanged = transitionCam.rotationChanged = true;
 	
-//	setCurrentCamera( transitionCam );
-	
+//	ofEventArgs args;
+//	transitionCam.update(args);
 }
 
 void CloudsVisualSystemRGBD::lookThroughTransitionOut(){
@@ -776,8 +834,12 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOut(){
 	
 	transitionCam.setPosition( transitionOutTarget.getPosition() );
 	transitionCam.setOrientation( transitionOutTarget.getOrientationQuat() );
+	transitionCam.movedManually();
 	
-//	setCurrentCamera( transitionCam );
+//	transitionCam.positionChanged = transitionCam.rotationChanged = true;
+	
+	ofEventArgs args;
+	transitionCam.update(args);
 }
 
 //--------------------------------------------------------------
@@ -1349,6 +1411,7 @@ void CloudsVisualSystemRGBD::selfPresetLoaded( string presetName ){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e)
 {
+	//transtions gui
 	string name = e.getName();
 	int kind = e.getKind();
 	
@@ -1358,13 +1421,23 @@ void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e)
 		{
 			if(it.first == name)
 			{
-				transitionInStart.setPosition( it.second.inStartPos + translatedHeadPosition );
-				transitionInStart.setOrientation( it.second.inStartQuat );
+				activeTransition = name;
+				 
+				setTransitionNodes(name);
 				
-				transitionOutTarget.setPosition( it.second.outTargetPos + translatedHeadPosition );
-				transitionOutTarget.setOrientation( it.second.outTargetQuat );
+				transitionCamTargetNode = NULL;
 			}
 		}
+	}
+	else if(name == "lookThoughIN" && e.getToggle()->getValue())
+	{
+		bLookThroughIn = true;
+		bLookThroughOut = false;
+	}
+	else if(name == "lookThoughOUT" && e.getToggle()->getValue())
+	{
+		bLookThroughIn = false;
+		bLookThroughOut = true;
 	}
 	
 	

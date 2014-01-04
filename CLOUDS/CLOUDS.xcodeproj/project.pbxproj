@@ -640,7 +640,11 @@
 		E79E6F3E18551DE300406535 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6F3B18551DE300406535 /* CloudsInput.cpp */; };
 		E79E6F4118551DF000406535 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6F3F18551DF000406535 /* CloudsInputMouse.cpp */; };
 		E79E6F4218551DF000406535 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6F3F18551DF000406535 /* CloudsInputMouse.cpp */; };
+		E79EAD201878772600B8B8F0 /* GpuParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD111878772600B8B8F0 /* GpuParticles.cpp */; };
+		E79EAD211878772600B8B8F0 /* GpuParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79EAD111878772600B8B8F0 /* GpuParticles.cpp */; };
 		E7BBB4E717A02BB5007D7EC1 /* CloudsDichotomy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4E517A02BB5007D7EC1 /* CloudsDichotomy.cpp */; };
+		E7C289C71877CA6C00A0C07F /* PanelConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C289C31877CA6C00A0C07F /* PanelConsole.cpp */; };
+		E7C289C81877CA6C00A0C07F /* PanelTenPrint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C289C51877CA6C00A0C07F /* PanelTenPrint.cpp */; };
 		E7D26E4E17A2C52D00652876 /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D26E4C17A2C52D00652876 /* CloudsRGBDCamera.cpp */; };
 		E7D26E5317A2E14000652876 /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D26E5117A2E14000652876 /* CloudsRGBDVideoPlayer.cpp */; };
 		E7D3306B1751D446006706ED /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330371751D446006706ED /* ofxBehavior.cpp */; };
@@ -2059,8 +2063,15 @@
 		E79E6F3F18551DF000406535 /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
 		E79E6F4018551DF000406535 /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
 		E79E6F44185525F500406535 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
+		E79EAD111878772600B8B8F0 /* GpuParticles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GpuParticles.cpp; sourceTree = "<group>"; };
+		E79EAD121878772600B8B8F0 /* GpuParticles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpuParticles.h; sourceTree = "<group>"; };
+		E79EAD131878772600B8B8F0 /* ofxGpuParticles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGpuParticles.h; sourceTree = "<group>"; };
 		E7BBB4E517A02BB5007D7EC1 /* CloudsDichotomy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsDichotomy.cpp; sourceTree = "<group>"; };
 		E7BBB4E617A02BB5007D7EC1 /* CloudsDichotomy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsDichotomy.h; sourceTree = "<group>"; };
+		E7C289C31877CA6C00A0C07F /* PanelConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelConsole.cpp; sourceTree = "<group>"; };
+		E7C289C41877CA6C00A0C07F /* PanelConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelConsole.h; sourceTree = "<group>"; };
+		E7C289C51877CA6C00A0C07F /* PanelTenPrint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelTenPrint.cpp; sourceTree = "<group>"; };
+		E7C289C61877CA6C00A0C07F /* PanelTenPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelTenPrint.h; sourceTree = "<group>"; };
 		E7D26E4C17A2C52D00652876 /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
 		E7D26E4D17A2C52D00652876 /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
 		E7D26E5117A2E14000652876 /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
@@ -2601,6 +2612,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E79EACF91878772600B8B8F0 /* ofxGpuParticles */,
 				E7E17448186E630D007D1EDC /* ofxTonic */,
 				E734A00C18556E92002E615C /* ofxOsc */,
 				E79E6EC418551AFE00406535 /* ofxNearestNeighbour */,
@@ -5982,6 +5994,25 @@
 			path = Input;
 			sourceTree = "<group>";
 		};
+		E79EACF91878772600B8B8F0 /* ofxGpuParticles */ = {
+			isa = PBXGroup;
+			children = (
+				E79EAD101878772600B8B8F0 /* src */,
+			);
+			name = ofxGpuParticles;
+			path = ../../../addons/ofxGpuParticles;
+			sourceTree = "<group>";
+		};
+		E79EAD101878772600B8B8F0 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E79EAD111878772600B8B8F0 /* GpuParticles.cpp */,
+				E79EAD121878772600B8B8F0 /* GpuParticles.h */,
+				E79EAD131878772600B8B8F0 /* ofxGpuParticles.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		E7D330321751D446006706ED /* ofxGenerative */ = {
 			isa = PBXGroup;
 			children = (
@@ -6696,6 +6727,10 @@
 		E7E1743B186E6199007D1EDC /* Panels */ = {
 			isa = PBXGroup;
 			children = (
+				E7C289C31877CA6C00A0C07F /* PanelConsole.cpp */,
+				E7C289C41877CA6C00A0C07F /* PanelConsole.h */,
+				E7C289C51877CA6C00A0C07F /* PanelTenPrint.cpp */,
+				E7C289C61877CA6C00A0C07F /* PanelTenPrint.h */,
 				E7E1743C186E6199007D1EDC /* Panel.cpp */,
 				E7E1743D186E6199007D1EDC /* Panel.h */,
 				E7E1743E186E6199007D1EDC /* PanelCode.cpp */,
@@ -7580,6 +7615,9 @@
 				E7FEFC881873BB61009533A7 /* CloudsHUDLayer.cpp in Sources */,
 				E7FEFC8A1873BB61009533A7 /* CloudsSVGMesh.cpp in Sources */,
 				E700BC3D18768EA7003A8167 /* CloudsTransitionController.cpp in Sources */,
+				E7C289C71877CA6C00A0C07F /* PanelConsole.cpp in Sources */,
+				E7C289C81877CA6C00A0C07F /* PanelTenPrint.cpp in Sources */,
+				E79EAD201878772600B8B8F0 /* GpuParticles.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8095,6 +8133,7 @@
 				E7FEFC891873BB61009533A7 /* CloudsHUDLayer.cpp in Sources */,
 				E7FEFC8B1873BB61009533A7 /* CloudsSVGMesh.cpp in Sources */,
 				E700BC3E18768EA7003A8167 /* CloudsTransitionController.cpp in Sources */,
+				E79EAD211878772600B8B8F0 /* GpuParticles.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
