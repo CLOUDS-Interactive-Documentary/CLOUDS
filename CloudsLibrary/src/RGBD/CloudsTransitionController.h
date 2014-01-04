@@ -11,13 +11,20 @@
 #include "ofMain.h"
 
 typedef enum {
-	TRANSITION_INTERVIEW_IDLE = 0,
+	TRANSITION_IDLE = 0,
 	TRANSITION_INTERVIEW_OUT = 1,
 	TRANSITION_VISUALSYSTEM_IN = 2,
 	TRANSITION_VISUALSYSTEM_OUT = 3,
 	TRANSITION_INTERVIEW_IN = 4,
 	TRANSITION_INTRO_OUT = 5
 } CloudsTransitionState;
+
+//NOT USED YET
+typedef struct {
+	float startTime;
+	float endTime;
+	CloudsTransitionState state;
+} CloudsTransitionQueueEntry;
 
 class CloudsTransitionController {
   public:
@@ -26,11 +33,13 @@ class CloudsTransitionController {
 	void transitionFromIntro(float transitionOutDuration, float transitionInDuration);
 	void transitionToVisualSystem(float transitionOutDuration, float transitionInDuration);
 	void transitionToInterview(float transitionOutDuration, float transitionInDuration);
+	void transitionToClusterMap(float transitionOutDuration, float transitionInDuration);
 	
 	void update();
 	
-	float percentTransitionIn;
-	float percentTransitionOut;
+	float transitionPercent;
+//	float percentTransitionIn;
+//	float percentTransitionOut;
 
 	float getInterviewTransitionPoint();
 	
@@ -46,8 +55,14 @@ class CloudsTransitionController {
 	CloudsTransitionState getCurrentState();
 	CloudsTransitionState getPreviousState();
 	string getCurrentStateDescription();
-	//ofEvent<CloudsPlaybackControllerEvent> CloudsPlaybackControllerEvent::events;
+	
   protected:
+	
+	deque<CloudsTransitionQueueEntry> stateQueue;
+	void queueState(CloudsTransitionState state, float transitionDuration);
+	CloudsTransitionQueueEntry currentQueue;
+//	void startTransition(float transitionOutDuration, float transitionInDuration);
+	void startTransition();
 	
 	CloudsTransitionState currentState;
 	CloudsTransitionState previousState;
@@ -55,9 +70,9 @@ class CloudsTransitionController {
 	
 	float transitionInCompleteTime;
 	float transitionOutCompleteTime;
+	void confirmEmpty();
 	
 	bool newState;
 	CloudsTransitionState getNextState();
 	
-
 };
