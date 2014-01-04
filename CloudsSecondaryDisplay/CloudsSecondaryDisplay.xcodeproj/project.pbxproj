@@ -516,6 +516,8 @@
 		E7B3C7F717EF75BA00581ACD /* CloudsVisualSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemManager.h; sourceTree = "<group>"; };
 		E7B3C7F817EF75BA00581ACD /* CloudsVisualSystemPreset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPreset.cpp; sourceTree = "<group>"; };
 		E7B3C7F917EF75BA00581ACD /* CloudsVisualSystemPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPreset.h; sourceTree = "<group>"; };
+		E7C289BC1877963E00A0C07F /* secondaryDisplay.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; name = secondaryDisplay.frag; path = ../../../shaders/secondaryDisplay.frag; sourceTree = "<group>"; };
+		E7C289BD1877963E00A0C07F /* secondaryDisplay.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; name = secondaryDisplay.vert; path = ../../../shaders/secondaryDisplay.vert; sourceTree = "<group>"; };
 		E7D483691860C5D000BE9BF8 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
 		E7D4836A1860C5D000BE9BF8 /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
 		E7D4836B1860C5D000BE9BF8 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
@@ -1467,6 +1469,8 @@
 		E7FEFD2A187538A2009533A7 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				E7C289BD1877963E00A0C07F /* secondaryDisplay.vert */,
+				E7C289BC1877963E00A0C07F /* secondaryDisplay.frag */,
 				E7FEFD2B187538A2009533A7 /* gaussianblur.frag */,
 				E7FEFD2C187538A2009533A7 /* gaussianblur.vert */,
 				E7FEFD2D187538A2009533A7 /* network.frag */,
@@ -1529,8 +1533,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsSecondaryDisplay" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;

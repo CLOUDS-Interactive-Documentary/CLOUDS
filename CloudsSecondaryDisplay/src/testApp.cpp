@@ -59,7 +59,7 @@ void testApp::keyPressed(int key){
 		}
 	}
     
-    if(key == 'R'){
+    if(key == 'S'){
         //reload shader
         secondaryDisplay.reloadShader();
     }
