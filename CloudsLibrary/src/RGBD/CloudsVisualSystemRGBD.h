@@ -100,7 +100,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void transitionOut( ofNode& startNode, float duration, float startTime );
 	
 	bool bTransitionIn, bTransitionOut;
-	bool bLookThourghIn, bLookThourghOut;
+	bool bLookThroughIn, bLookThroughOut;
 	bool bSaveTransition;
 	
 	void lookThroughTransitionIn();
@@ -118,7 +118,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	void loadTransitionSettings(string filename = "Transitions");
 	void saveTransitionSettings(string transitionName);
-	
+	void setTransitionNodes( string transitionName );
+	void updateTransition();
+	void updateTransitionGui();
+
 
   protected:
 	
@@ -206,9 +209,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float attenuatedCameraDrift;
 	
 	//transition
-	void updateTransition();
-	bool transitioning, transitioningIn, transitioningOut;
+	bool transitioning, transitioningIn, transitioningOut, bResetLookThoughs;
 	float transitionStartTime, transitionEndTime, transitionStartVal, transitionTargetVal;
+	string activeTransition;
+	
 	RGBDTransitionType transitionType;
 	ofxEasingSine transitionEase;
 	
