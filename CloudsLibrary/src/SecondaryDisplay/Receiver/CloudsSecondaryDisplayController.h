@@ -25,6 +25,7 @@ class CloudsSecondaryDisplayController {
 	void setup();
 	void update();
 	void drawOverlay();
+    void reloadShader();
     
     void saveGuiSettings();
 	void toggleGuis();
@@ -70,7 +71,7 @@ class CloudsSecondaryDisplayController {
 
 	ofxOscReceiver receiver;
 
-	ofFbo displayTarget;
+	ofFbo displayTarget, gui;
     
     float pFontSize, h3FontSize;
     
@@ -111,5 +112,9 @@ class CloudsSecondaryDisplayController {
     map<string, CloudsHUDLabel*>    hudLabelMap;
     
     ofShader shader;
+    
+    ofShader lineAnimate;
+
+    
 
 };

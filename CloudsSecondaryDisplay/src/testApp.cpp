@@ -58,6 +58,11 @@ void testApp::keyPressed(int key){
 //			cout << "SENT CLIP " << parser.getAllClips()[exampleIndex].getLinkName() << " WITH EXAMPLE " << parser.getAllClips()[exampleIndex].projectExampleTitle << endl;
 		}
 	}
+    
+    if(key == 'R'){
+        //reload shader
+        secondaryDisplay.reloadShader();
+    }
 	
 }
 

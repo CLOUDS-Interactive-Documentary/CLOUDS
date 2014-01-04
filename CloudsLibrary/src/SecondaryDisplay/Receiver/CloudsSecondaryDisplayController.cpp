@@ -18,6 +18,7 @@ CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
     color = false;
     stringCounter = 0;
     tx = .1;
+	shader.load("shaders/animation");
 }
 
 void CloudsSecondaryDisplayController::setup(){
@@ -307,8 +308,12 @@ void CloudsSecondaryDisplayController::draw(){
         //only draw speaker info if there is a speaker, duh
         if(hasSpeaker){
             //DRAW BIO LAYOUT, need to draw this first, text goes over it
-            
+            //use shader to animate the alpha
+            //shader.begin();
+			//shader.setUniform1f("alphaAmt", tx);
             bioLayout.draw();
+            //shader.end();
+
             
             ////speaker name
             string firstName, lastName;
@@ -385,11 +390,9 @@ void CloudsSecondaryDisplayController::draw(){
         string title = ofToUpper(currentExample.title);
         hudLabelMap[meshProjectTitle->id]->draw();
         
-        
         ////artist name
         string name = currentExample.creatorName;
         hudLabelMap[meshProjectArtist->id]->draw();
-        
         
         ////project description
         hudLabelMap[meshProjectDescription->id]->draw();
@@ -404,6 +407,10 @@ void CloudsSecondaryDisplayController::draw(){
 	displayTarget.getTextureReference().draw(targetRect);
 	
 	
+}
+
+void CloudsSecondaryDisplayController::reloadShader(){
+    shader.load("shaders/animation");
 }
 
 /*void CloudsSecondaryDisplayController::drawBioLayout(){
