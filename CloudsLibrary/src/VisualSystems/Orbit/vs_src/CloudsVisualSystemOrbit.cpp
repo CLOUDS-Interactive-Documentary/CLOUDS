@@ -184,6 +184,7 @@ void CloudsVisualSystemOrbit::selfSetupRenderGui()
     rdrGui->addSlider("maxLineLength", 10, 5000, &Path::maxLineLength);
     rdrGui->addSlider("lineFadeLength", 0, 1, &Path::lineFadeLength);
     rdrGui->addSlider("lineWidth", .1f, 5.f, &Path::lineWidth);
+    rdrGui->addRangeSlider("hueRange", 0.f, 1.f, &Path::hueMin, &Path::hueMax);
     
     rdrGui->addLabel("Mesh");
     rdrGui->addToggle("drawMesh", &drawMesh);

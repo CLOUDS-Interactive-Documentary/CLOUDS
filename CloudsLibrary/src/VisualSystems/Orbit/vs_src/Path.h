@@ -46,6 +46,7 @@ namespace itg
         static float maxMeshLength;
         static float lineFadeLength;
         static float lineWidth;
+        static float hueMin, hueMax;
         
         Path(float radius);
         
