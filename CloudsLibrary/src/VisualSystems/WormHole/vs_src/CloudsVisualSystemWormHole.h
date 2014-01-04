@@ -131,7 +131,7 @@ protected:
 	ofxUISuperCanvas* displacementGui;
 	
 	ofImage colorSampleImage;
-
+	bool bCullBackface;
 	bool bDoShader;
 	ofShader normalShader;
 	ofShader facingRatio;
