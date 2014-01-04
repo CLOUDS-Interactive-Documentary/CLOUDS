@@ -153,6 +153,7 @@ protected:
     HistogramSource source;
 
     bool bSeparateFeeds;
+    float sampleOffset;
     
     vector<float>& getFFT();
     void generateEnvelope(int size);
