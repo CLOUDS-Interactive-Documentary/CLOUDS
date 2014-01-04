@@ -408,13 +408,13 @@ void CloudsVisualSystemHistogram::addRandomPoint()
 
 void CloudsVisualSystemHistogram::addSoundPoint()
 {
-    ofSoundUpdate();
     if (bSeparateFeeds) {
         if (soundPlayer.getBandsPerOctave() != numRows) {
             soundPlayer.setLogAverages(88, numRows);
         }
         vector<float> allLevels = getFFT();
-        if(allLevels.size() == numRows){
+//        cout << allLevels.size() << " vs. " << numRows << endl;
+        if (allLevels.size() >= numRows){
             for (int i = 0; i < numRows; i++) {
                 float currLevel = allLevels[i] * levelAdjust;
                 float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax);

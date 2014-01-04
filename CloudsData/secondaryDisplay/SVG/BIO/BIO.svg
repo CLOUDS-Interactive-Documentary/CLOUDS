@@ -21,13 +21,13 @@
 		<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" enable-background="new    " x1="48.5" y1="1032" x2="1872.5" y2="1032"/>
 </g>
 <g id="TEXTBOX_x5F_LOC" opacity="0">
-	<rect x="726.5" y="916.5" fill="none" width="12" height="18"/>
-</g>
-<g id="TEXTBOX_x5F_TITLE" opacity="0">
 	<rect x="726.5" y="973.5" fill="none" width="12" height="18"/>
 </g>
+<g id="TEXTBOX_x5F_TITLE" opacity="0">
+	<rect x="726.5" y="916.5" fill="none" width="12" height="18"/>
+</g>
 <g id="TEXTBOX_x5F_BIO" opacity="0">
-	<rect x="955.5" y="909.5" fill="none" width="880" height="18"/>
+	<rect x="935.5" y="909.5" fill="none" width="900" height="18"/>
 </g>
 <g id="TEXTBOX_x5F_FIRSTNAME_2_" opacity="0">
 	<rect id="_x3C_Path_x3E__1_" x="85.5" y="909.5" fill="none" width="542" height="32"/>
