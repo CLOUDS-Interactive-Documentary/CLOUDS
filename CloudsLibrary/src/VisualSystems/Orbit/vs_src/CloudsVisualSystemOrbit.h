@@ -115,7 +115,8 @@ protected:
     
     //  Your Stuff
     //
-    deque<itg::Path> paths;
+    //deque<itg::Path> paths;
+    itg::Path path;
     ofxPostProcessing post;
     ofShader shader;
     unsigned lastPathTime;
@@ -127,7 +128,7 @@ protected:
     //float ellipseW, ellipseH, ellipseAlpha;
     float meshRadius;
     float speed;
-    bool multiplePaths;
+    //bool multiplePaths;
     bool lockCam;
     float lockedCamLag;
     float fogStart, fogEnd;
