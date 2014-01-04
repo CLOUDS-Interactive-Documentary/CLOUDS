@@ -1,53 +1,18 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>920.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>264.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>basic</Name>
+    <Name>basicNameCloud</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>constellation</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>constellation2</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>constellationNew</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>creature</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>flashes</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>latestWithDeckIcons</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>lights</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>links</Name>
+    <Name>latestDeckWithIcons</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -57,12 +22,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>nameLinks</Name>
+    <Name>nameCloudsWithLines</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>shaderPreset</Name>
+    <Name>nameCloudWithLinesFlickering</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>presetWithSprites</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -72,16 +42,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>socialNetworking2</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>textDebug</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>tweetDeck</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>

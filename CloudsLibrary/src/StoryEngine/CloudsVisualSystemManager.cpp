@@ -61,7 +61,8 @@
 #include "CloudsVisualSystemPages.h"
 #include "CloudsVisualSystemPaintBrush.h"
 #include "CloudsVisualSystemPhotoGlitch.h"
-//#include "CloudsVisualSystemQuineVisualSystem.h"
+#include "CloudsVisualSystemProcess11.h"
+#include "CloudsVisualSystemProcess18.h"
 #include "CloudsVisualSystemRGBDVideo.h"
 #include "CloudsVisualSystemRandomDigits.h"
 #include "CloudsVisualSystemReplicator.h"
@@ -160,7 +161,8 @@ struct Mapping {
 	{ "Pages", &fCreate<CloudsVisualSystemPages> },
 	{ "PaintBrush", &fCreate<CloudsVisualSystemPaintBrush> },
 	{ "PhotoGlitch", &fCreate<CloudsVisualSystemPhotoGlitch> },
-//	{ "QuineVisualSystem", &fCreate<CloudsVisualSystemQuineVisualSystem> },
+	{ "Process11", &fCreate<CloudsVisualSystemProcess11> },
+	{ "Process18", &fCreate<CloudsVisualSystemProcess18> },
 	{ "RGBDVideo", &fCreate<CloudsVisualSystemRGBDVideo> },
 	{ "RandomDigits", &fCreate<CloudsVisualSystemRandomDigits> },
 	{ "Replicator", &fCreate<CloudsVisualSystemReplicator> },

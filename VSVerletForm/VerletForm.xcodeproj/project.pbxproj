@@ -202,8 +202,6 @@
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		F302F68E1856DF6100EE514A /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F302F6871856DF6100EE514A /* CloudsInput.cpp */; };
 		F302F68F1856DF6100EE514A /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F302F6871856DF6100EE514A /* CloudsInput.cpp */; };
-		F302F6901856DF6100EE514A /* CloudsInputKinectOSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F302F68A1856DF6100EE514A /* CloudsInputKinectOSC.cpp */; };
-		F302F6911856DF6100EE514A /* CloudsInputKinectOSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F302F68A1856DF6100EE514A /* CloudsInputKinectOSC.cpp */; };
 		F302F6921856DF6100EE514A /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F302F68C1856DF6100EE514A /* CloudsInputMouse.cpp */; };
 		F302F6931856DF6100EE514A /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F302F68C1856DF6100EE514A /* CloudsInputMouse.cpp */; };
 /* End PBXBuildFile section */
@@ -536,8 +534,6 @@
 		F302F6871856DF6100EE514A /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
 		F302F6881856DF6100EE514A /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
 		F302F6891856DF6100EE514A /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
-		F302F68A1856DF6100EE514A /* CloudsInputKinectOSC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputKinectOSC.cpp; sourceTree = "<group>"; };
-		F302F68B1856DF6100EE514A /* CloudsInputKinectOSC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputKinectOSC.h; sourceTree = "<group>"; };
 		F302F68C1856DF6100EE514A /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
 		F302F68D1856DF6100EE514A /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
 		F302F6D81856DFCC00EE514A /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../../CloudsLibrary/src/CloudsGlobal.h; sourceTree = "<group>"; };
@@ -1340,8 +1336,6 @@
 				F302F6871856DF6100EE514A /* CloudsInput.cpp */,
 				F302F6881856DF6100EE514A /* CloudsInput.h */,
 				F302F6891856DF6100EE514A /* CloudsInputEvents.h */,
-				F302F68A1856DF6100EE514A /* CloudsInputKinectOSC.cpp */,
-				F302F68B1856DF6100EE514A /* CloudsInputKinectOSC.h */,
 				F302F68C1856DF6100EE514A /* CloudsInputMouse.cpp */,
 				F302F68D1856DF6100EE514A /* CloudsInputMouse.h */,
 			);
@@ -1545,7 +1539,6 @@
 				851183D318304579003D4F58 /* CloudsVisualSystemVerletForm.cpp in Sources */,
 				8511862718304821003D4F58 /* ofxOculusRift.cpp in Sources */,
 				F302F68F1856DF6100EE514A /* CloudsInput.cpp in Sources */,
-				F302F6911856DF6100EE514A /* CloudsInputKinectOSC.cpp in Sources */,
 				F302F6931856DF6100EE514A /* CloudsInputMouse.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1632,7 +1625,6 @@
 				E72FF18917E6A7970007780D /* CloudsVisualSystem.cpp in Sources */,
 				E72FF1BC17E6A7BA0007780D /* CloudsVisualSystemVerletForm.cpp in Sources */,
 				F302F68E1856DF6100EE514A /* CloudsInput.cpp in Sources */,
-				F302F6901856DF6100EE514A /* CloudsInputKinectOSC.cpp in Sources */,
 				F302F6921856DF6100EE514A /* CloudsInputMouse.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
