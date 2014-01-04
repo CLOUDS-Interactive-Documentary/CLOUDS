@@ -2,6 +2,9 @@
 #pragma once
 
 #include "ofMain.h"
+#include <string>
+#include <map>
+#include <vector>
 
 #include "CloudsVisualSystem.h"
 #include "MSAPhysics3D.h"
@@ -9,20 +12,26 @@
 typedef struct{
 	bool enabled;
 	ofLight light;
+	ofFloatColor color;
 	float currentRot;
 	float spinRadius;
 	ofVec3f spinAxis;
 	float spinSpeed;
 	ofVec3f position;
+	ofVec3f dir;
 } AuxLight;
 
 using namespace msa::physics;
 
 typedef struct{
+	int id;
 	int state;
 	int stateCnt;
 	int gridx;
 	int gridy;
+	bool isEdge;
+
+	ofVec3f orig;
 	ofVec3f vD;
 	Particle3D* p;
 } MWParticle;
@@ -70,52 +79,56 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
     void selfSetupTimelineGui();
     void selfTimelineGuiEvent(ofxUIEventArgs &e);
 
-	float currentRotAngle;
-	float currentCamDistance;
-	//this makes it work with clouds!
-	ofCamera& getCameraRef(){
-		return cam;
-	}
-	
+
   protected:
+	static const int FREE=0,FIXEDSTATIC=1,FIXEDMOVING=2;
+	static const int GRIDRECT=1,GRIDCIRC=0,GRIDCYL=2;
 
-	ofCamera cam;
-  	vector<MWParticle*> pp;
-	vector<MWParticle*> ppActive;
-	float fpsMod,activityCnt;
-
-	void mwUpdate();
-	void mwNewActivity(int id,int state);
-	void mwFix(MWParticle &pt);
-	void mwMakeParticle(Particle3D* pt,int x,int y);
-
-	std::vector< std::vector<ofVec3f> > mwGrid(int type);
-	void mwGridSticky();
-	void mwGridPt (ofVec3f &o,int type);
-	int mwGetRndID(int edge);
-
-	float rndExtend ();
-
-
-	ofxUISuperCanvas* clothGui;
-	ofxUISuperCanvas* auxLightGuis[3];
-	
-	
+  	vector<MWParticle> pp;
+	vector<MWParticle> ppActive;
+	float fpsMod,activityCnt,stickyNum;
 	float clothWidth;
 	float clothHeight;
 	float colorIndex;
-	float gridSize;
+	float gridSizeF;
+
+	float lastFixY;
+
+	int gridSize;
+	int gridType;
+	
+
+	void mwUpdate();
+	void mwLights();
+
+	ofVec3f mwOutlineShape(ofVec3f &v);
+	bool mwIsEdge(MWParticle &pt);
+	void mwNewActivity(MWParticle& pt,signed int state);
+	void mwFix(MWParticle &pt);
+
+	void mwMakeParticle(int x,int y,ofVec3f &o);
+	MWParticle &mwGetParticle(signed int id,bool fromEdge,bool addToActive);
+	void mwPreset();
+
+	void mwGenerate();
+	void mwCreateLights();
+	void mwGridSticky();
+
+
+	ofxUISuperCanvas* clothGui;
+	ofxUISuperCanvas* auxLightGuis[4];
+	
 	
 	void clearElements();
 	
 	bool shouldRegenerateMesh;
 	void generateMesh();
-	
+
 	float springStrength;
 	float springDampening;
 	float springExtend;
 	
-	AuxLight auxLights[3];
+	AuxLight auxLights[4];
 	
 	ofVboMesh mesh;
 	World3D physics;
@@ -126,7 +139,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	
 
 
-	vector< vector<Particle3D*> > particles;
+	vector<vector<Particle3D*>> particles;
 	
 	//color generators
 	vector<ofColor> initColors(int row);
