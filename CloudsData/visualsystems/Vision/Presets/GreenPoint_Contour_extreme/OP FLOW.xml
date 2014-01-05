@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>OP FLOW</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>289.000000000</XPosition>
+    <YPosition>132.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,22 +13,22 @@
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW FLOW WINDOW</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW TINT</Name>
-    <Value>28.891626358</Value>
+    <Value>77.881774902</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>FLOW DENSITY</Name>
-    <Value>3</Value>
+    <Value>2</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW ALPHA</Name>
-    <Value>0.832512319</Value>
+    <Value>0.167487681</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -63,12 +63,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>PYRSCALE</Name>
-    <Value>0.500000000</Value>
+    <Value>0.557142854</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LEVELS</Name>
-    <Value>4.000000000</Value>
+    <Value>2.103448391</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -78,7 +78,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ITERATIONS</Name>
-    <Value>2.000000000</Value>
+    <Value>2.310344696</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

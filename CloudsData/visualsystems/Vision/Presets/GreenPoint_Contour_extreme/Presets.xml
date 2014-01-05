@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>272.000000000</YPosition>
+    <XPosition>408.000000000</XPosition>
+    <YPosition>97.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -72,11 +72,31 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>UnionSqGhost</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>UnionSqGhosts</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>UnionSqGhost</Name>
+    <Name>Soho_HeatMap</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>TokyoEscalator</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>TokyoEscalatorFlow</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GreenPoint_Contour_extreme</Name>
     <Value>1</Value>
 </Widget>

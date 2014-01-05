@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>OP FLOW</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>668.000000000</XPosition>
+    <YPosition>40.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW TINT</Name>
-    <Value>28.891626358</Value>
+    <Value>64.064041138</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>

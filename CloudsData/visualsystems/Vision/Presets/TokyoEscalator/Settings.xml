@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>Settings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>404.000000000</XPosition>
-    <YPosition>495.000000000</YPosition>
+    <XPosition>834.000000000</XPosition>
+    <YPosition>126.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>UPDATE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

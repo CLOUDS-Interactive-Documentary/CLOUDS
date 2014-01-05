@@ -1,24 +1,24 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>OP FLOW</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>1136.000000000</XPosition>
+    <YPosition>80.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>ENABLE</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW FLOW WINDOW</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW TINT</Name>
-    <Value>28.891626358</Value>
+    <Value>67.832511902</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -28,62 +28,62 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW ALPHA</Name>
-    <Value>0.832512319</Value>
+    <Value>0.167487681</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW WIDTH</Name>
-    <Value>0.100000001</Value>
+    <Value>0.384236455</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW HEIGHT</Name>
-    <Value>0.100000001</Value>
+    <Value>0.906403959</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW LINE LENGTH</Name>
-    <Value>1.000000000</Value>
+    <Value>0.573891640</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW COLOUR MAP RANGE</Name>
-    <Value>50.000000000</Value>
+    <Value>209.950744629</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW LINE WIDTH</Name>
-    <Value>2.000000000</Value>
+    <Value>1.798029542</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW LINE DAMP</Name>
-    <Value>1.000000000</Value>
+    <Value>0.522167504</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>PYRSCALE</Name>
-    <Value>0.500000000</Value>
+    <Value>0.519704461</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LEVELS</Name>
-    <Value>4.000000000</Value>
+    <Value>3.034482718</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WINSIZE</Name>
-    <Value>8.000000000</Value>
+    <Value>9.320197105</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ITERATIONS</Name>
-    <Value>2.000000000</Value>
+    <Value>3.137931108</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>POLYN</Name>
-    <Value>7.000000000</Value>
+    <Value>5.285714149</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
