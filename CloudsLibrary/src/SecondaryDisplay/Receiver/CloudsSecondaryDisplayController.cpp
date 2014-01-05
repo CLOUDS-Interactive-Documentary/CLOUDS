@@ -369,6 +369,8 @@ void CloudsSecondaryDisplayController::draw(){
     SVGMesh* t;
     
     shader.setUniform1f("alphaAmt", playhead);
+    float margin = 60;
+
     
     if(displayMode == "BIO"){
         ////question
@@ -422,7 +424,6 @@ void CloudsSecondaryDisplayController::draw(){
             else
                 longestNameWidth = lastNameWidth;
             
-            float margin = 60;
             float titleX = meshBioFirstName->bounds.x + longestNameWidth + margin;
             
             ////title
@@ -481,6 +482,9 @@ void CloudsSecondaryDisplayController::draw(){
         hudLabelMap[meshProjectTitle->id]->draw();
         
         ////artist name
+        //////flost left
+        ofRectangle titleRect = layoutProjectTitle->getStringBoundingBox(title, hudLabelMap[meshProjectTitle->id]->bounds.x, 0);
+        hudLabelMap[meshProjectArtist->id]->bounds.x = titleRect.x+titleRect.width+margin;
         string name = currentExample.creatorName;
         hudLabelMap[meshProjectArtist->id]->draw();
         
