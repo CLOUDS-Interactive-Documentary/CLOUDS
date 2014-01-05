@@ -89,12 +89,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>ICON HEIGHT OFFSET </Name>
-    <Value>-30.000000000</Value>
+    <Value>-8.620689392</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>ICON WIDTH OFFSET </Name>
-    <Value>10.000000000</Value>
+    <Value>30.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -109,7 +109,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LINE OFFSET</Name>
-    <Value>-32.019706726</Value>
+    <Value>-23.152709961</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

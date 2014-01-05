@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Mesh</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>231.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>24.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -39,12 +39,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>EDGE DECAY</Name>
-    <Value>0.491625607</Value>
+    <Value>0.905418754</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>NORMALS DECAY</Name>
-    <Value>0.972413778</Value>
+    <Value>0.980295539</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -159,7 +159,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>EDGE COLOR EXPONENT</Name>
-    <Value>2.990147829</Value>
+    <Value>2.832512379</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
