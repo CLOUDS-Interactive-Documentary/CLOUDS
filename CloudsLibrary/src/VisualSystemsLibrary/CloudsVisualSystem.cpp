@@ -254,12 +254,13 @@ void CloudsVisualSystem::playSystem(){
 		bIsPlaying = true;
 		
 		cam.enableMouseInput();
-		for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it)
-		{
-			//JG WHITE DEATH DEBUG
+		for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it) {
 			it->second->light.setup();
 		}
 		
+		getSharedRenderTarget().begin();
+		ofClear(0.0,0.0,0.0,1.0);
+		getSharedRenderTarget().end();
 		selfBegin();
 
 		cloudsCamera.setup();
@@ -2615,9 +2616,9 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 
 	selfPresetLoaded(presetPath);
 	
-	getSharedRenderTarget().begin();
-	ofClear(0,0,0,1.0);
-	getSharedRenderTarget().end();
+//	getSharedRenderTarget().begin();
+//	ofClear(0.0,0.0,0.0,1.0);
+//	getSharedRenderTarget().end();
 		
 	//auto play this preset
 	cameraTrack->lockCameraToTrack = cameraTrack->getKeyframes().size() > 0;
