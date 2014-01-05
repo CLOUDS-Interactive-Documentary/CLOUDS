@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>2333.000000000</XPosition>
+    <XPosition>849.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -32,6 +32,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>desktop2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FinderWindows</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Friends</Name>
     <Value>0</Value>
 </Widget>
@@ -42,22 +52,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>FutureBarnacles</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>glitchTest</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>LifeofNumbers_gray</Name>
-    <Value>0</Value>
+    <Name>GreenMemory</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>SortedGlitch</Name>
+    <Name>LifeofNumbers_gray</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -69,19 +74,4 @@
     <Kind>2</Kind>
     <Name>SortedGlitch3</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>test</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>test2</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>GreenMemory</Name>
-    <Value>1</Value>
 </Widget>

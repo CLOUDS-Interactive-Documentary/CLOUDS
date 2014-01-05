@@ -2,16 +2,16 @@
     <Kind>42</Kind>
     <Name>VideoSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>212.000000000</XPosition>
-    <YPosition>0.000000000</YPosition>
+    <XPosition>425.000061035</XPosition>
+    <YPosition>509.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>12</Kind>
     <Name>VideoPath</Name>
-    <Value>AICmontage.mov</Value>
+    <Value>KoblinMontage.mov</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Offset</Name>
-    <Value>-847.290649414</Value>
+    <Value>-1122.217163086</Value>
 </Widget>

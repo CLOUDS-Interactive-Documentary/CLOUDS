@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>PhotoGlitch</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -83,7 +83,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>LOOP BACK TO SOURCE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>

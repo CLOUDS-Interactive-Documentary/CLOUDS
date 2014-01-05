@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>TargetImage2</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>47.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -42,7 +42,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>GrandPerspective1.jpg</Name>
+    <Name>GrandPerspective1.png</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -72,7 +72,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>desktopclutter.jpg</Name>
+    <Name>desktopclutter_target.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

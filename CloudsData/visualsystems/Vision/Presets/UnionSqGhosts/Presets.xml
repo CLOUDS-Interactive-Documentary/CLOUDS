@@ -1,10 +1,15 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>219.000000000</XPosition>
-    <YPosition>215.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>272.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>AppleStore2_short</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>BridgePreset</Name>
@@ -68,5 +73,10 @@
 <Widget>
     <Kind>2</Kind>
     <Name>UnionSqGhosts</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>UnionSqGhost</Name>
     <Value>1</Value>
 </Widget>

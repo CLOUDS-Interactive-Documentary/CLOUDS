@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>370.000000000</XPosition>
-    <YPosition>241.000000000</YPosition>
+    <XPosition>1273.000122070</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -32,6 +32,21 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Bruce_DigitalHumanities</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Bruce_TextualTechnologies</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FavoriteWords</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Grey_space</Name>
     <Value>0</Value>
 </Widget>
@@ -48,6 +63,31 @@
 <Widget>
     <Kind>2</Kind>
     <Name>j_simple</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Kevin_CognitionSphere</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Kyle_Storytelling</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Lauren_LanguagesAsTools</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Lauren_SentimentAnalysis</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Martin_AlltheWords</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -79,14 +119,4 @@
     <Kind>2</Kind>
     <Name>twitterOC</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Bruce_DigitalHumanities</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Bruce_TextualTechnologies</Name>
-    <Value>1</Value>
 </Widget>

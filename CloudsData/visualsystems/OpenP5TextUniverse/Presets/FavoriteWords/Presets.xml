@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>670.000000000</XPosition>
-    <YPosition>134.000000000</YPosition>
+    <XPosition>1273.000122070</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -39,6 +39,11 @@
     <Kind>2</Kind>
     <Name>Bruce_TextualTechnologies</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FavoriteWords</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -114,9 +119,4 @@
     <Kind>2</Kind>
     <Name>twitterOC</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>FavoriteWords</Name>
-    <Value>1</Value>
 </Widget>
