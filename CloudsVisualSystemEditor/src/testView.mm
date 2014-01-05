@@ -24,7 +24,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	selectedPreset = NULL;
 	
     parser.loadFromFiles();
-    
+
+    mixer.setup();
+    mixer.setDiageticVolume(1);
 	
 	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
 		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
@@ -781,6 +783,13 @@ completionsForSubstring:(NSString *)substring
 - (void)playDoubleClickedRow:(id)sender
 {
     shouldPlaySelectedRow = true;
+}
+
+//void testView::audioRequested(float *output, int bufferSize, int nChannels)
+- (void)audioRequested: (float*) output bufferSize:(int)bufferSize nChannels:(int)nChannels
+{
+    cout<<"audio requested"<<endl;
+    mixer.fillBuffer(output, bufferSize, nChannels);
 }
 
 @end

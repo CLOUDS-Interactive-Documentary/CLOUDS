@@ -5,7 +5,6 @@
 
 			<videos>
 				<file>drawn_480.mov</file>
-				<file></file>
 			</videos>
 	</project>
 	
@@ -17,13 +16,14 @@
 			</videos>
 	</project>
 
-	<project title="Exquisite Forest">
+<!--	<project title="Exquisite Forest">
 			<creator_name>Chris Milk, Aaron Koblin</creator_name>
 			<description>Exquisite Forest is an online collaborative art project that lets users create short animations that build off one another as they explore a specific theme. The result is a collection of branching narratives resembling trees.</description>
 			<videos>
 				<file></file>
 			</videos>
 	</project>
+-->
 
 	<project title="Flight Patterns">
 			<creator_name>Aaron Koblin</creator_name>
@@ -52,7 +52,9 @@
 	<project title="Tron (1982)">
 			<creator_name>CGI by Ken Perlin</creator_name>
 			<description> One of the earliest feature films to reflect the video-game craze of the 1980s. Stars Jeff Bridges as computer programmer Kevin Flynn, who becomes part of the very game that he's programming</description>
-			<video_file_name></video_file_name>
+			<videos>
+                <file>Tron_480.mov</file>
+            </videos>
 	</project>
     <project title="Eyewriter">
 			<creator_name>Graffiti Research Lab </creator_name>
@@ -86,7 +88,7 @@
 
 	<project title="Manual Input Sessions">
 			<creator_name>Golan Levin, Zach Lieberman</creator_name>
-			<description>a series of audiovisual vignettes which probe the expressive possibilities of hand gestures and finger movements.Our concert is performed on a combination of custom interactive software, analog overhead projectors and digital computer video projectors</description>
+			<description>A series of audiovisual vignettes which probe the expressive possibilities of hand gestures and finger movements.Our concert is performed on a combination of custom interactive software, analog overhead projectors and digital computer video projectors</description>
 			<videos>
 				<file>ManualInput_480.mov</file>
 			</videos>
@@ -102,8 +104,10 @@
 	
 	<project title="The Transfiguration">
 			<creator_name>Matt Pyke - Universal Everything</creator_name>
-			<description>An ever-changing organic costume</description>
-			<video_file_name></video_file_name>
+			<description>An ever-changing organic costume using motion captured walk cycles in a parade of fantastical humanoid characters.</description>
+			<videos>
+				<file></file>
+			</videos>
 	</project>
 
     <project title="Open Paths">
@@ -125,8 +129,11 @@
     <project title="Kepler Exoplanet Candidates">
 			<creator_name>Jer Thorp</creator_name>
 			<description>(2012)- A visualization of the 1236 exoplanet candidates observed by NASA's Kepler mission. </description>
-			<video_file_name></video_file_name>
+			<videos>
+				<file></file>
+			</videos>
 	</project>
+
     
 	<project title="Cascade">
 			<creator_name>Jer Thorp, Mark Hansen, Jake Poroway</creator_name>
@@ -140,7 +147,7 @@
 			<creator_name>Julian Oliver</creator_name>
 			<description>A digital weapon that lets users leak information from closed meetings by just pulling a pin. The device captures network traffic and audio in a location and anonymously streams it to an external server that mines it for information — including e-mail excerpts, web pages, images and voice. The server then uploads that data to a public website and positions it on a map.</description>
 			<videos>
-				<file></file>
+				<file>TransparencyGrenade_720.mov</file>
 			</videos>
 	</project>
     
@@ -148,7 +155,7 @@
 			<creator_name>Karsten Schmidt</creator_name>
 			<description>Toxiclibs is an independent, modular open source library collection for Java and Processing,</description>
 			<videos>
-				<file></file>
+				<file>ToxicLibs_720.mov</file>
 			</videos>
 	</project>
 
@@ -165,7 +172,7 @@
 			<creator_name>Robert Hodgin</creator_name>
 			<description>Audio-responsive application created for the V&amp;A Museum. Created with Processing.</description>
 			<videos>
-				<file></file>
+				<file>Flight404_720.mov</file>
 			</videos>
 	</project>
                 
@@ -174,7 +181,7 @@
 			<creator_name>Cory Arcangel</creator_name>
 			<description>An old Mario Brothers cartridge modified to erase everything but the clouds.</description>
 			<videos>
-				<file></file>
+				<file>SuperMario_480.mov</file>
 			</videos>
 	</project>
         
@@ -183,7 +190,7 @@
 			<description>A crowdsourced dating project in which the artist streamed videos of herself on a series of dates for an audience on Amazon Mechanical Turk, and paid them to offer feedback on what she should do, say or ask. 
             </description>
 			<videos>
-				<file></file>
+				<file>SocialTurkers_720.mov</file>
 			</videos>
 	</project>
 
@@ -191,7 +198,8 @@
 			<creator_name>John Maeda</creator_name>
 			<description>The calendars were made for purely aesthetic reasons and represent no intent to advance the state of the art in digital time management. They were in fact, designed for you to waste time instead of save time. - 2005 </description>
 			<videos>
-				<file></file>
+				<file>Calendar1_480.mov</file>
+                <file>Calendar2_480.mov</file>
 			</videos>
 	</project>
 	
@@ -207,7 +215,7 @@
 			<creator_name>John Maeda</creator_name>
 			<description>10 squares that respond to input from the microphone - 1995 </description>
 			<videos>
-				<file>ReactiveBook_480.mov</file>
+				<file>ReactiveSquare_480.mov</file>
 			</videos>
 	</project>
 
@@ -240,7 +248,7 @@
 			<creator_name>Martin Wattenberg, Marek Walczak</creator_name>
 			<description>Play chess against an artificial intelligence program, and watch as the computer's thought process is sketched on screen as it plays. A map is created from the traces of literally thousands of possible futures as the program tries to decide its best move.</description>
 			<videos>
-				<file></file>
+				<file>ThinkingMachine_720.mov</file>
 			</videos>
 	</project>
 
@@ -249,7 +257,7 @@
 			<description>A large-scale digital installation
 and sonic landscape that explore the concept of infinity, rationality, and the beauty of data. Ikeda's first work in the united states, exhibited at the Park Avenue Armory in NYC. -2011</description>
 			<videos>
-				<file></file>
+				<file>Transfinite_720.mov</file>
 			</videos>
 	</project>
 
@@ -280,13 +288,14 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 			</videos>
 	</project>
 	
-	<project title="Portal">
+<!--	<project title="Portal">
 			<creator_name>Valve</creator_name>
 			<description>A first-person-puzzle videogame developed for Xbox. The player solves puzzles using a teleportation device called the "the Aperture Science Handheld Portal Device" </description>
 			<videos>
 				<file></file>
 			</videos>
 	</project>
+-->
 
 	<project title="Funky Forest">
 			<creator_name>Emily Gobeille, Theo Watson</creator_name>
@@ -326,7 +335,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 			<creator_name>Kyle McDonald</creator_name>
 			<description>Kyle wrote a simple application that took one picture every minute. If it found a face, it uploaded the photo to a server. He installed the app around NYC over three days, collecting more than a thousand photos. When the 14th street Apple Store discovered the application on their computers, they called the Secret Service. - 2011</description>
 			<videos>
-				<file></file>
+				<file>PeopleStaring_720.mov</file>
 			</videos>
 	</project>
 	
@@ -338,7 +347,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 			</videos>
 	</project>
 
-    <project title="Face OSC">
+   <project title="Face OSC">
 			<creator_name>Kyle McDonald</creator_name>
 			<description>FaceOSC is a tool for prototyping face-based interaction. FaceOSC was based on the work of Jason Saragih, a research scientist at CSIRO.</description>
 			<videos>
@@ -353,20 +362,12 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 				<file></file>
 			</videos>
 	</project>
-    
-    <project title="FaceShiftOSC">
-			<creator_name>Kyle McDonald</creator_name>
-			<description></description>
-			<videos>
-				<file></file>
-			</videos>
-	</project>
 	
     <project title="Sniff">
 			<creator_name>Karolina Sobecka, James George</creator_name>
 			<description>Sniff is an interactive projection in a storefront window. A CG dog follows the viewer and dynamically responds to his gestures and changes his behavior based on the state of engagement with the viewer.</description>
 			<videos>
-				<file></file>
+				<file>Sniff_720.mov</file>
 			</videos>
 	</project>
 
@@ -396,8 +397,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 			<creator_name>Ryoichi Kurokawa</creator_name>
 			<description>Kurokawa performs audiovisual compositions designed to overload the senses.</description>
 			<videos>
-				<file></file>
-				<file></file>
+				<file>Syn_720.mov</file>
 			</videos>
 	</project>
 
@@ -413,7 +413,6 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 	<project title="Particle Dreams">
 			<creator_name>Carl Sims</creator_name>
 			<description>A collection of dream sequences created using 3D particle systems techniques. - 1988</description>
-
 			<videos>
 				<file>Particle_Dreams_480.mov</file>
 			</videos>
