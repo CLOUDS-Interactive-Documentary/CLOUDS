@@ -75,7 +75,7 @@ void CloudsVisualSystemVision::selfSetDefaults(){
 	
 	currentFlowDensity = -1;
 	flowDensity = 3;
-	differenceHueShift = .7;
+	hueShift = .2;
 
 }
 
@@ -409,7 +409,7 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
     rdrGui->addSlider("THRESHOLD TINT", 0, 255, &thresholdAlpha);
     rdrGui->addSlider("DIFF TINT", 0, 255, &diffAlpha);
     rdrGui->addSlider("FLOW WINDOW TINT", 0, 255, &windowAlpha);
-	rdrGui->addSlider("DIFFERENCE HUE",	0, 1.0, &differenceHueShift);
+	rdrGui->addSlider("DIFFERENCE HUE",	0, 1.0, &hueShift);
     rdrGui->addDropDownList("VIDEO", movieStrings);
     rdrGui->autoSizeToFitWidgets();
     ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
@@ -604,7 +604,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
 		//shader.setUniformTexture("thresholdedImage", thresholded, 0);
 		shader.setUniformTexture("previousFrame", prev, 1);
 		shader.setUniformTexture("currentFrame", player->getTextureReference(), 2);
-		
+		shader.setUniform1f("hueShift", hueShift);
 		m.draw();
 		
 		shader.end();
