@@ -21,6 +21,8 @@ CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
     animatingIn = false;
     animatingOut = false;
     animationSpeed = .5;
+    
+    
 }
 
 void CloudsSecondaryDisplayController::setup(){
@@ -72,7 +74,7 @@ void CloudsSecondaryDisplayController::setup(){
     meshProjectVideo = projectLayout.getMeshByID("BOX_x5F_VIDEO");
     meshProjectTitle = projectLayout.getMeshByID("TEXTBOX_x5F_NAME");
     meshProjectArtist = projectLayout.getMeshByID("TEXTBOX_x5F_ARTIST_1_");
-    meshProjectArtist->bounds.width = 1000;
+    //meshProjectArtist->bounds.width = 1000;
     meshProjectDescription = projectLayout.getMeshByID("TEXTBOX_x5F_DESC_1_");
     
     //setup all font layout objects
@@ -113,21 +115,6 @@ void CloudsSecondaryDisplayController::loadSVGs(){
     setNormalsOn(&bioLayout);
     setNormalsOn(&projectLayout);
     setNormalsOn(&questionLayout);
-	
-	/*for(int i = 0; i < bioLayout.getMeshes().size(); i++){
-		SVGMesh& mesh = bioLayout.getMeshes()[i];
-		if(!mesh.fill){
-			for(int v = 0; v < mesh.mesh.getNumVertices(); v++){
-				mesh.mesh.addNormal( ofVec3f( (ofRandomuf() > .5 ? 0. : 1.0), 0, 0) ); //flag as lines, with random for now
-			}
-		}
-		else{
-			for(int v = 0; v < mesh.mesh.getNumVertices(); v++){
-				mesh.mesh.addNormal( ofVec3f( 0.0, 1.0, 0.0) ); //flag as filled
-			}
-		}
-		
-	}*/
 }
 
 void CloudsSecondaryDisplayController::setNormalsOn(CloudsSVGMesh* cm){
@@ -480,7 +467,12 @@ void CloudsSecondaryDisplayController::draw(){
             //scale and preserve the aspect ratio
             ofRectangle playerRect(0,0,archivePlayer.getWidth(), archivePlayer.getHeight());
             playerRect.scaleTo(meshProjectVideo->bounds);
+            
+            //draw video
+            ofSetColor(255, 255, 255, 255*playhead);
             archivePlayer.draw(playerRect);
+            ofSetColor(255, 255, 255, 255);
+            
             playingMovie = archivePlayer.isPlaying();
         }
         
