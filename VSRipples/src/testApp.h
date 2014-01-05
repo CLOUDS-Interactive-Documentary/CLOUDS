@@ -22,7 +22,7 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 		
-    void audioRequested(float *output, int bufferSize, int nChannels);
+//    void audioRequested(float *output, int bufferSize, int nChannels);
     
 	CloudsVisualSystemRipples vs;
     CloudsMixer mixer;
