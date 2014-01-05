@@ -10257,6 +10257,16 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="PhotoGlitch_FinderWindows">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -10272,9 +10282,48 @@
     <sound>0</sound>
 </system>
 <system name="PhotoGlitch_Friends_2">
-    <keywords></keywords>
+    <keywords>memory|archiving</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - exciting time</clip>
+        <clip>Binx - meaningful shape1</clip>
+        <clip>Binx - trips</clip>
+        <clip>Bruce - Dead sea scrolls</clip>
+        <clip>Bruce - Digital humanities technology</clip>
+        <clip>Bruce - Github Tarball</clip>
+        <clip>Bruce - aborted projects</clip>
+        <clip>Fernanda - email storytelling</clip>
+        <clip>Golan - keeping you stuff working</clip>
+        <clip>Higa - not sharing its a backup</clip>
+        <clip>JTNimoy - data loss</clip>
+        <clip>Jen - data autobiography</clip>
+        <clip>Jen - data memory 1</clip>
+        <clip>Jen - data memory 2</clip>
+        <clip>Jen - data truth</clip>
+        <clip>Jen - life chapters</clip>
+        <clip>Jen - twitter friends</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Jer - spoken word</clip>
+        <clip>Jer - storage</clip>
+        <clip>Karsten - archiving</clip>
+        <clip>Karsten - atari emulation</clip>
+        <clip>Karsten - preserving history</clip>
+        <clip>Kyle_CH - Twitter archive</clip>
+        <clip>Kyle_CH - coral reefs</clip>
+        <clip>LIA - VeryFirstArtworks</clip>
+        <clip>Lauren - inheriting digital property</clip>
+        <clip>Maeda - recording appalachian music</clip>
+        <clip>Maeda - self expression</clip>
+        <clip>Paola - Moma games</clip>
+        <clip>Paola - museum collections</clip>
+        <clip>Patricio - CLOUDS 2</clip>
+        <clip>Patricio - Information 1</clip>
+        <clip>Patricio - Information 3</clip>
+        <clip>Ramsey - cloud 2</clip>
+        <clip>Ramsey - unmaintainable code</clip>
+        <clip>Shiffman - what do you archive?</clip>
+        <clip>Zach - Joshua Davis</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -10297,14 +10346,33 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="PhotoGlitch_LifeofNumbers_gray">
-    <keywords></keywords>
+    <keywords>data collection|memory|storage</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - digital trace</clip>
+        <clip>Binx - meaningful shape1</clip>
+        <clip>Binx - trips</clip>
+        <clip>Fernanda - email storytelling</clip>
+        <clip>Jen - Lidar 1</clip>
+        <clip>Jen - Lidar 2</clip>
+        <clip>Jen - Personal archive 2</clip>
+        <clip>Jen - data autobiography</clip>
+        <clip>Jen - data truth</clip>
+        <clip>Jen - keeping pictures</clip>
+        <clip>Jen - life chapters</clip>
+        <clip>Jen - twitter friends</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Karsten - atari emulation</clip>
+        <clip>Karsten - preserving history</clip>
+        <clip>Kyle_CH - Future life storage</clip>
+        <clip>Kyle_CH - old server farms</clip>
+        <clip>Ramsey - cloud 2</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -10327,7 +10395,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -10357,7 +10425,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -10397,7 +10465,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -10407,7 +10475,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -11570,6 +11638,206 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Twitter_HeartOftheInternet">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_InsideTheNet">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_JM_TheCloud">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_JM_TheCloud_a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_JM_TheCloud_b">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_JM_TheCloud_c_Massive">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_JM_basic">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_TweetDeck_NameCloud_Lines">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_basicNameCloud">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_jonathanAndSuryasBogusAdventure">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_latestDeckWithIcons">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_moreFlickeringNameClouds">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_nameCloud">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_nameCloudWithLinesFlickering">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_nameCloudsWithLines">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_nameCloudsWithLinesFlickering">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_nameSprites">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_presetWithSprites">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_socialNetwork">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Twitter_tweetDeck">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="VectorFlow_Electromagetique">
     <keywords>electronic music|physics</keywords>
     <links></links>
@@ -11781,6 +12049,16 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="VerletForm_MWDark">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="VerletForm_SimpleBalloon">
     <keywords>generative art|formalism|form</keywords>
     <links></links>
@@ -11817,6 +12095,16 @@
     <sound>0</sound>
 </system>
 <system name="Vision_BridgePreset">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Vision_CV_DISCO">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -11907,6 +12195,47 @@
     <sound>0</sound>
 </system>
 <system name="Vision_UnionFlow_JG">
+    <keywords>vision|machine aesthetics|new aesthetic|machine vision</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Aaron - curiosity</clip>
+        <clip>Andres - seeing molecules</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Bruce - new aesthetic 2</clip>
+        <clip>Bruce - new aesthetic artists</clip>
+        <clip>Damion - HumanChemicalMachine</clip>
+        <clip>Damion - OOO</clip>
+        <clip>Elliot_UK - 2D vision in a 3D world</clip>
+        <clip>Elliot_UK - limitations 2</clip>
+        <clip>Fernanda - seeing patterns 2</clip>
+        <clip>Greg - AI 1</clip>
+        <clip>Greg - AI 2</clip>
+        <clip>Greg - Gaze tracking</clip>
+        <clip>Greg - Object Oriented Ontology 2</clip>
+        <clip>Greg - object oriented ontology 1</clip>
+        <clip>Greg - ubiquitous computing</clip>
+        <clip>Kyle_CH - RGBD</clip>
+        <clip>Kyle_CH - face OSC</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Kyle_MC - faceOSC 2</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Marius - Aesthetic with no references,</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Marius - new tools change perception</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Shantell - Drawing with machines</clip>
+        <clip>Sophy - made of photons</clip>
+        <clip>Theo - eyebeam R&amp;D</clip>
+        <clip>Zach - Open CV</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Vision_UnionSqGhosts">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -11936,6 +12265,16 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Voro_BluePrint_a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Voro_Gray">
     <keywords></keywords>
     <links></links>
@@ -11947,6 +12286,135 @@
     <sound>0</sound>
 </system>
 <system name="Voro_OrganicTissue">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Voro_Parametric_a_flickery">
+    <keywords>parameter space|architecture|interdisciplinary</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Binx - Background</clip>
+        <clip>Binx - hybridity</clip>
+        <clip>Casey - Borrowing from culture</clip>
+        <clip>Elliot_UK - lightscape</clip>
+        <clip>Golan - hybridity</clip>
+        <clip>Golan - hybridity2</clip>
+        <clip>Jen - information cave</clip>
+        <clip>Jen - intuitive spelunking</clip>
+        <clip>Maeda - Artist coders coder artists</clip>
+        <clip>Marius - algorithms as parameter space</clip>
+        <clip>Marius - jumping from medium to medium</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Voro_Parametric_b">
+    <keywords>parameter space|architecture</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Elliot_UK - lightscape</clip>
+        <clip>Jen - information cave</clip>
+        <clip>Jen - intuitive spelunking</clip>
+        <clip>Marius - algorithms as parameter space</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Voro_Parametric_c_wires">
+    <keywords>3d printing|formalism|form|imagination</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Bruce - Marius</clip>
+        <clip>Bruce - digital status quo</clip>
+        <clip>Elliot_UK - points in space</clip>
+        <clip>Elliot_UK - wiremape_description</clip>
+        <clip>Golan - formalism</clip>
+        <clip>Jer - Generative Art</clip>
+        <clip>Kyle_MC - beauty</clip>
+        <clip>Marius - Art world gave up on beauty</clip>
+        <clip>Marius - Continuous process of exploration</clip>
+        <clip>Marius - Thoroughly enjoying it at the moment</clip>
+        <clip>Marius - color 3D printing</clip>
+        <clip>Marius - culturally biased aesthetic</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Marius - jumping from medium to medium</clip>
+        <clip>Marius - my work exists in a utopian space,</clip>
+        <clip>Nervous_Jessica - Design process</clip>
+        <clip>Nervous_Jessica - Design process 2</clip>
+        <clip>Nervous_Jessica - Growing buildings</clip>
+        <clip>Nervous_Jessica - Marker 2</clip>
+        <clip>Philip - first time computation</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Shantell - Kids</clip>
+        <clip>Sophy - nanobots</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Voro_Parametric_d_wires">
+    <keywords>architecture|parametric space|interdisciplinary|3d printing</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Elliot_UK - lightscape</clip>
+        <clip>Jen - information cave</clip>
+        <clip>Jen - intuitive spelunking</clip>
+        <clip>Maeda - Artist coders coder artists</clip>
+        <clip>Golan - hybridity2</clip>
+        <clip>Golan - hybridity</clip>
+        <clip>Casey - Borrowing from culture</clip>
+        <clip>Marius - color 3D printing</clip>
+        <clip>Marius - Thoroughly enjoying it at the moment</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Voro_SpaceBoulders_B">
+    <keywords>generative art|parameter space|parametric|architecture</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Binx - there was no degree</clip>
+        <clip>Elliot_UK - lightscape</clip>
+        <clip>Jen - information cave</clip>
+        <clip>Jen - intuitive spelunking</clip>
+        <clip>Kevin - algo culture 4</clip>
+        <clip>Kyle_CH - abstraction</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>LIA - TimeStamps1</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Marius - parameter space</clip>
+        <clip>Nervous_Jesse - Marker 2</clip>
+        <clip>Nervous_Jesse - organic process</clip>
+        <clip>Ramsey - arab abstraction 2</clip>
+        <clip>Theo - favorite projects</clip>
+        <clip>Theo - generative and pre-rendered</clip>
+        <clip>Zach - action script shorter</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Voro_SpaceBoulders_a">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -13281,12 +13749,134 @@
     <sound>0</sound>
 </system>
 <system name="Xstatic_fireflies">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
+    <keywords>nature|community|magic</keywords>
+    <links>
+        <clip>Joel - in the now</clip>
+    </links>
+    <suppressions>
+        <clip>Andres - modeling complex systems</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - seeing molecules</clip>
+        <clip>Andres - soft systems 2</clip>
+        <clip>Binx - Programming is a superpower</clip>
+        <clip>Binx - hybridity</clip>
+        <clip>Binx - learning</clip>
+        <clip>Binx - learning with others</clip>
+        <clip>Binx - programming is a superpower</clip>
+        <clip>Binx - skillshare</clip>
+        <clip>Binx - women in tech</clip>
+        <clip>Bruce - Age of the universe, really weird</clip>
+        <clip>Bruce - All of a sudden...</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Bruce - Tidepools</clip>
+        <clip>Bruce - creative agglomeration</clip>
+        <clip>Casey - People would pop up</clip>
+        <clip>Casey - Processing open</clip>
+        <clip>Casey - group teaching</clip>
+        <clip>Casey - pushing software beyond</clip>
+        <clip>Chris - RemoteCollaboration</clip>
+        <clip>Elliot_UK - Ideaspace</clip>
+        <clip>Elliot_UK - tree sculpture</clip>
+        <clip>Fernanda - hybrid community</clip>
+        <clip>Golan - Kyle</clip>
+        <clip>Golan - finding a community</clip>
+        <clip>Golan - project example</clip>
+        <clip>Greg - community</clip>
+        <clip>Higa - committed to community</clip>
+        <clip>Higa - only meets pure geeks</clip>
+        <clip>Higa - sharing accidently 1</clip>
+        <clip>Higa - sharing accidently 2</clip>
+        <clip>Higa - thick wall</clip>
+        <clip>Intro - Collaboration</clip>
+        <clip>Intro - Sharing</clip>
+        <clip>JTNimoy - one of us</clip>
+        <clip>JTNimoy - open source mensch</clip>
+        <clip>Jen - Big data</clip>
+        <clip>Jen - Lidar 1</clip>
+        <clip>Jen - Lidar 2</clip>
+        <clip>Jen - building community</clip>
+        <clip>Jen - life chapters</clip>
+        <clip>Jen - right choice 1</clip>
+        <clip>Jen - right choice 2</clip>
+        <clip>Jen - self and other</clip>
+        <clip>Jen - twitter friends</clip>
+        <clip>Jer - Thanks</clip>
+        <clip>Jer - spoken word</clip>
+        <clip>Joel - scale of universe</clip>
+        <clip>Joel - scaleofUniverse</clip>
+        <clip>Julia - community</clip>
+        <clip>Julia - make us more compassionate</clip>
+        <clip>Julia - net friends</clip>
+        <clip>Julia - toward greater generosity 1</clip>
+        <clip>Karsten - always improved</clip>
+        <clip>Karsten - becoming insular</clip>
+        <clip>Kevin - computation is unnatural</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kyle_CH - coding, magic</clip>
+        <clip>Kyle_CH - coding is 1</clip>
+        <clip>Kyle_CH - coral reefs</clip>
+        <clip>Kyle_CH - nature is complex</clip>
+        <clip>Kyle_CH - new generation</clip>
+        <clip>Kyle_CH - virtual space online</clip>
+        <clip>LIA - Circle1</clip>
+        <clip>LIA - Circle2</clip>
+        <clip>LIA - MathAnotherLanguage</clip>
+        <clip>LIA - NeedTheInternet</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>LIA - helldotcom</clip>
+        <clip>Lauren - desire to get together</clip>
+        <clip>Lindsay - 319 scholes</clip>
+        <clip>Lindsay - meeting IRL</clip>
+        <clip>Lindsay - memes 2</clip>
+        <clip>Maeda - Processing community</clip>
+        <clip>Marcus - community styles</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marcus - new tricks</clip>
+        <clip>Marcus - simulation to stories</clip>
+        <clip>Martin - birds eye view</clip>
+        <clip>Martin - data revleation</clip>
+        <clip>Martin - starry night</clip>
+        <clip>Nervous_Jessica - Why is it beautiful</clip>
+        <clip>Paola - code ant farm</clip>
+        <clip>Paola - mutant ants</clip>
+        <clip>Paola - sharing</clip>
+        <clip>Patricio - Building Universes 2</clip>
+        <clip>Patricio - Magic Spells 1</clip>
+        <clip>Philip - couldn&apos;t do this with actual water</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - toxi&apos;s physics</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Shantell - doingwithothers</clip>
+        <clip>Shiffman - Constraints,</clip>
+        <clip>Shiffman - Magnets</clip>
+        <clip>Shiffman - NOC 1</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Shiffman - NOC 3</clip>
+        <clip>Shiffman - how far could we get?</clip>
+        <clip>Shiffman - problem solving</clip>
+        <clip>Shiffman - programming the universe</clip>
+        <clip>Shiffman - sharing</clip>
+        <clip>Sophy - Evolution</clip>
+        <clip>Theo - evolution</clip>
+        <clip>Theo - inspired by nature shorter</clip>
+        <clip>Vera - What I like about this field</clip>
+        <clip>Zach - Drawn1</clip>
+        <clip>Zach - Open Frameworks 4</clip>
+        <clip>Zach - at a festival</clip>
+        <clip>Zach - drawn2</clip>
+        <clip>Zach - emailing the communnity</clip>
+        <clip>Zach - hide the tech</clip>
+        <clip>Zach - nerd art center</clip>
+        <clip>Zach - open source challenge</clip>
+        <clip>Zach - printshop</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -13301,9 +13891,65 @@
     <sound>0</sound>
 </system>
 <system name="YellowTail_YellowTail">
-    <keywords>gesture</keywords>
+    <keywords>gesture|drawing|playfulness|play</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Casey - branching off branching</clip>
+        <clip>Casey - sketching with code</clip>
+        <clip>Golan - Play</clip>
+        <clip>Golan - instruments</clip>
+        <clip>Golan - piano and pencil,</clip>
+        <clip>Golan - twitching in a room</clip>
+        <clip>Golan - what&apos;s an instrument?</clip>
+        <clip>Higa - collaboration with machines 1</clip>
+        <clip>Higa - collaboration with machines 2</clip>
+        <clip>Intro - interactivity1</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Jen - rafael&apos;s cardiogram</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Joel - Watercolors</clip>
+        <clip>Karsten - immediate feedback</clip>
+        <clip>Kevin - no consequences 2</clip>
+        <clip>Kyle_MC - Eyewriter</clip>
+        <clip>Kyle_MC - new aesthetic 2</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>Lauren - Lifelong project</clip>
+        <clip>Maeda - I can still draw</clip>
+        <clip>Maeda - last trick</clip>
+        <clip>Maeda - playful systems</clip>
+        <clip>Maeda - thinking about interfaces</clip>
+        <clip>Nervous_Jessica - Can&apos;t draw</clip>
+        <clip>Patricio - Building Universes 1</clip>
+        <clip>Patricio - Theory of Play 1</clip>
+        <clip>Shantell - Coding: what does it feel like?</clip>
+        <clip>Shantell - Drawing with machines</clip>
+        <clip>Shantell - Future gesture</clip>
+        <clip>Shantell - Kids</clip>
+        <clip>Shantell - Live performance,</clip>
+        <clip>Shantell - Markmaking software</clip>
+        <clip>Shantell - big kid</clip>
+        <clip>Shantell - circularity</clip>
+        <clip>Shantell - drawing with computers</clip>
+        <clip>Shantell - drawing with the computer</clip>
+        <clip>Shantell - every line is a mistake</clip>
+        <clip>Shantell - full circle</clip>
+        <clip>Shantell - group improvisation</clip>
+        <clip>Shantell - live drawing</clip>
+        <clip>Shantell - meeting zach</clip>
+        <clip>Shantell - simple</clip>
+        <clip>Shantell - take the line further</clip>
+        <clip>Shantell - work with zach</clip>
+        <clip>Shiffman - Not a visual thinker</clip>
+        <clip>Shiffman - inexactitude</clip>
+        <clip>Shiffman - what computers can do</clip>
+        <clip>Theo - Kids interacting</clip>
+        <clip>Vera - Playing with a system</clip>
+        <clip>Zach - Drawn1</clip>
+        <clip>Zach - Time slows down</clip>
+        <clip>Zach - drawing with Tayoon</clip>
+        <clip>Zach - drawn2</clip>
+        <clip>Zach - hide the tech</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -13318,5 +13964,15 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
+    <sound>0</sound>
+</system>
+<system name="YellowTail_YellowTail_AfterDark">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
     <sound>0</sound>
 </system>

@@ -1,0 +1,87 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>CONTOUR</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>26.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW LINES</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW NUMBERS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LIFESPAN COLOR</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW BOXES</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW CONTOURS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BOX H</Name>
+    <Value>0.679802954</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BOX S</Name>
+    <Value>0.472906411</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BOX B</Name>
+    <Value>0.261083752</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BOX LINE WIDTH</Name>
+    <Value>2.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIFETIME COLOUR RANGE</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PERSISTANCE</Name>
+    <Value>3.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAXDISTANCE</Name>
+    <Value>80.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MIN AREA RADIUS</Name>
+    <Value>1.477832556</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX AREA RADIUS</Name>
+    <Value>22.610836029</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>THRESHOLD VALUE</Name>
+    <Value>25.000000000</Value>
+</Widget>
