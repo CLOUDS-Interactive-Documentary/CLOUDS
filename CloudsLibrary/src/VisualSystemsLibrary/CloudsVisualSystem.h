@@ -156,7 +156,8 @@ class CloudsVisualSystem {
 	void stopSystem();
 	
 	bool isSetup();
-
+	bool isPlaying();
+	
 //	void setRenderer(CloudsRGBDVideoPlayer& newRenderer);
 
 	void setupSpeaker(string speakerFirstName,
@@ -334,8 +335,10 @@ class CloudsVisualSystem {
     map<string, ofxMaterial *> materials;
     map<string, ofxUISuperCanvas *> materialGuis;
 
+	bool bIsPlaying;
 	bool bIsSetup;
 	bool bIs2D;
+	
 	//some crashes are being caused by update before draw
 	//this makes sure the draw() command only happens after the first update
 	bool updateCyclced;
@@ -392,7 +395,7 @@ class CloudsVisualSystem {
     bool bDeleteTimelineTrack;
     bool bShowTimeline;
     bool bEnableTimelineTrackCreation;
-	bool isPlaying;
+
 	//background stuff
 	bool bMatchBackgrounds;
 		

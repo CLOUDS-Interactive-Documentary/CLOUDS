@@ -113,7 +113,7 @@ ofxOculusRift& CloudsVisualSystem::getOculusRift(){
 #endif
 
 CloudsVisualSystem::CloudsVisualSystem(){
-	isPlaying = false;
+	bIsPlaying = false;
 	timeline = NULL;
 	bIsSetup = false;
 	bClearBackground = true;
@@ -236,9 +236,13 @@ bool CloudsVisualSystem::isSetup(){
 	return bIsSetup;
 }
 
+bool CloudsVisualSystem::isPlaying(){
+	return bIsPlaying;
+}
+
 void CloudsVisualSystem::playSystem(){
 
-	if(!isPlaying){
+	if(!bIsPlaying){
 		cout << "**** PLAYING " << getSystemName() << endl;
 		//ofRegisterMouseEvents(this);
 		CloudsRegisterInputEvents(this);
@@ -247,7 +251,7 @@ void CloudsVisualSystem::playSystem(){
 		ofAddListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofAddListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
 		
-		isPlaying = true;
+		bIsPlaying = true;
 		
 		cam.enableMouseInput();
 		for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it)
@@ -265,7 +269,7 @@ void CloudsVisualSystem::playSystem(){
 }
 
 void CloudsVisualSystem::stopSystem(){
-	if(isPlaying){
+	if(bIsPlaying){
 		cout << "**** STOPPING " << getSystemName() << endl;
 
 		selfEnd();
@@ -286,7 +290,7 @@ void CloudsVisualSystem::stopSystem(){
 			
 		timeline->stop();
 		cameraTrack->lockCameraToTrack = false;
-		isPlaying = false;
+		bIsPlaying = false;
 	}
 }
 
