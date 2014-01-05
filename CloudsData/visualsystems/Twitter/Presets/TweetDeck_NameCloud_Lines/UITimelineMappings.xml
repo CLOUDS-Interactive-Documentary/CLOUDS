@@ -4,41 +4,25 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>LNP SAT</WidgetName>
-                <WidgetID>46</WidgetID>
-                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>LNP BRI</WidgetName>
-                <WidgetID>48</WidgetID>
-                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>LNP ALPHA</WidgetName>
-                <WidgetID>50</WidgetID>
-                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>LNB SAT</WidgetName>
-                <WidgetID>28</WidgetID>
-                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>LNB ALPHA</WidgetName>
                 <WidgetID>32</WidgetID>
                 <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPRITE SIZE Min</WidgetName>
+                <WidgetID>4</WidgetID>
+                <WidgetCanvasParent>Sprite</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPRITE SIZE max</WidgetName>
+                <WidgetID>6</WidgetID>
+                <WidgetCanvasParent>Sprite</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
@@ -68,17 +52,33 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>SPRITE SIZE Min</WidgetName>
-                <WidgetID>4</WidgetID>
-                <WidgetCanvasParent>Sprite</WidgetCanvasParent>
+                <WidgetName>LNP SAT</WidgetName>
+                <WidgetID>46</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>SPRITE SIZE max</WidgetName>
-                <WidgetID>6</WidgetID>
-                <WidgetCanvasParent>Sprite</WidgetCanvasParent>
+                <WidgetName>LNP BRI</WidgetName>
+                <WidgetID>48</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LNP ALPHA</WidgetName>
+                <WidgetID>50</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LNB SAT</WidgetName>
+                <WidgetID>28</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
