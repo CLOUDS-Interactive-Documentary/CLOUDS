@@ -152,7 +152,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	
 
 
-	vector<vector<Particle3D*>> particles;
+	vector<vector<Particle3D*> > particles;
 	
 	//color generators
 	vector<ofColor> initColors(int row);

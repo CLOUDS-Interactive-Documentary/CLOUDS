@@ -20,7 +20,6 @@ typedef enum {
 	TRANSITION_INTRO_OUT = 5
 } CloudsTransitionState;
 
-//NOT USED YET
 typedef struct {
 	float startTime;
 	float endTime;
@@ -32,16 +31,16 @@ class CloudsTransitionController {
   public:
 	CloudsTransitionController();
 	
-	void transitionFromIntro(float transitionOutDuration, float transitionInDuration);
+	void transitionFromIntro(float transitionOutDuration);
+	void transitionToFirstVisualSystem(float transitionOutDuration);
 	void transitionToVisualSystem(float transitionOutDuration, float transitionInDuration);
 	void transitionToInterview(float transitionOutDuration, float transitionInDuration);
 	void transitionToClusterMap(float transitionOutDuration, float transitionInDuration);
+	void transitionFromClusterMap(float transitionOutDuration, float transitionInDuration);
 	
 	void update();
 	
 	float transitionPercent;
-//	float percentTransitionIn;
-//	float percentTransitionOut;
 
 	float getInterviewTransitionPoint();
 	

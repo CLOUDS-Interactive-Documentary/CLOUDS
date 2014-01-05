@@ -147,6 +147,8 @@ class CloudsPlaybackController {
 	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem, float transitionDuration=3);
 	//remove the current visual system
 	void hideVisualSystem();
+	void showRGBDVisualSystem();
+	
 	void playNextVisualSystem();
 	
 	float rgbdVisualSystemFadeInDuration, rgbdVisualSystemFadeOutDuration;
