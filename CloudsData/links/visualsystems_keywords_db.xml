@@ -9786,6 +9786,36 @@
     <oculus>1</oculus>
     <sound>0</sound>
 </system>
+<system name="OpenP5TextUniverse_Bruce_DigitalHumanities">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5TextUniverse_Bruce_TextualTechnologies">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5TextUniverse_FavoriteWords">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="OpenP5TextUniverse_Grey_space">
     <keywords></keywords>
     <links></links>
@@ -9797,6 +9827,56 @@
     <sound>0</sound>
 </system>
 <system name="OpenP5TextUniverse_INSIDE_THE_CLOUD">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5TextUniverse_Kevin_CognitionSphere">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5TextUniverse_Kyle_Storytelling">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5TextUniverse_Lauren_LanguagesAsTools">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5TextUniverse_Lauren_SentimentAnalysis">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5TextUniverse_Martin_AlltheWords">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -10511,18 +10591,8 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="RGBDVideo_AICmontage">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
 <system name="RGBDVideo_ITP_1">
-    <keywords>learning</keywords>
+    <keywords>learning|open source</keywords>
     <links></links>
     <suppressions>
         <clip>Karsten - 256 bytes part 1</clip>
@@ -10751,11 +10821,36 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="RGBDVideo_ShinyLab">
-    <keywords>hackers|hackathon|tribe</keywords>
+<system name="RGBDVideo_Koblin">
+    <keywords>interface|interfaces</keywords>
     <links></links>
     <suppressions>
-        <clip>Binx - Background</clip>
+        <clip>Bruce - Hand dryer</clip>
+        <clip>Bruce - future camera 5</clip>
+        <clip>Jer - active not interactive</clip>
+        <clip>Joel - Interactivity</clip>
+        <clip>Julian - ideology of seamlessness</clip>
+        <clip>Kevin - Area code 2</clip>
+        <clip>Kevin - area code 1</clip>
+        <clip>Kyle_MC - Debug screen</clip>
+        <clip>LIA - TinyButtons1</clip>
+        <clip>Lauren - wearables 1</clip>
+        <clip>Maeda - thinking about interfaces</clip>
+        <clip>Martin - evolution of interfaces</clip>
+        <clip>Martin - spiral interface</clip>
+        <clip>Ramsey - Google glass</clip>
+        <clip>Theo - hide the technology,</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="RGBDVideo_ShinyLab">
+    <keywords>hackers|hackathon|tribe|open source</keywords>
+    <links></links>
+    <suppressions>
         <clip>Binx - ar&amp;&amp;code</clip>
         <clip>Binx - brogrammers</clip>
         <clip>Bruce - FFFFFAT Lab</clip>
@@ -10801,6 +10896,42 @@
         <clip>Zach - nerd art center</clip>
         <clip>Golan - STUDIO art and code</clip>
         <clip>Golan - finding a community</clip>
+        <clip>Ramsey - legos 1</clip>
+        <clip>Ramsey - legos 2</clip>
+        <clip>Ramsey - minecraft 1</clip>
+        <clip>Shiffman - problem solving</clip>
+        <clip>Shiffman - sharing</clip>
+        <clip>Zach - venn diagrams of interest</clip>
+        <clip>Paola - code ant farm</clip>
+        <clip>Philip - if I had Processing in school</clip>
+        <clip>Ramsey - complacency 1</clip>
+        <clip>Ramsey - complacency 2</clip>
+        <clip>Ramsey - dystopia</clip>
+        <clip>Ramsey - emoji is restricted</clip>
+        <clip>Joel - CocaCola</clip>
+        <clip>Joel - CocoCola</clip>
+        <clip>Joel - WrongToSell</clip>
+        <clip>Joel - advertising</clip>
+        <clip>Casey - Processing addons</clip>
+        <clip>Casey - Processing open</clip>
+        <clip>Golan - limits to sharing</clip>
+        <clip>Higa - </clip>
+        <clip>Higa - language barriers</clip>
+        <clip>Aaron - exquisite forest</clip>
+        <clip>Bruce - All of a sudden...</clip>
+        <clip>Bruce - Geeks with style</clip>
+        <clip>Bruce - Github Tarball</clip>
+        <clip>Shiffman - Open Source Contract</clip>
+        <clip>Nervous_Jesse - Getting Ripped off</clip>
+        <clip>Nervous_Jesse - Open source education</clip>
+        <clip>Nervous_Jesse - limiting open source</clip>
+        <clip>Marcus - economics question</clip>
+        <clip>Maeda - ACU p 2</clip>
+        <clip>Maeda - ACU part 1</clip>
+        <clip>Maeda - Processing community</clip>
+        <clip>Maeda - Processing toolkit</clip>
+        <clip>LIA - Sandcastles</clip>
+        <clip>LIA - SkepticismAboutOpenSource</clip>
     </suppressions>
     <comments></comments>
     <grade>B</grade>

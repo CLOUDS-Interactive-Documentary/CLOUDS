@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>543.000000000</XPosition>
-    <YPosition>279.000000000</YPosition>
+    <XPosition>848.999938965</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -52,11 +52,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>FutureBarnacles</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>glitchTest</Name>
     <Value>0</Value>
 </Widget>
@@ -72,26 +67,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>SortedGlitch</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>SortedGlitch2</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>SortedGlitch3</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>test</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>test2</Name>
     <Value>0</Value>
 </Widget>
