@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>CONTOUR</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>842.000000000</XPosition>
-    <YPosition>50.000000000</YPosition>
+    <XPosition>392.000000000</XPosition>
+    <YPosition>25.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>ENABLE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW NUMBERS</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -28,42 +28,42 @@
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW BOXES</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW CONTOURS</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BOX H</Name>
-    <Value>0.413793117</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BOX S</Name>
-    <Value>0.862068951</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BOX B</Name>
-    <Value>0.600985229</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BOX LINE WIDTH</Name>
-    <Value>3.837438345</Value>
+    <Value>2.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LIFETIME COLOUR RANGE</Name>
-    <Value>115.566505432</Value>
+    <Value>110.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>PERSISTANCE</Name>
-    <Value>16.748767853</Value>
+    <Value>3.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -73,7 +73,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>MIN AREA RADIUS</Name>
-    <Value>23.891626358</Value>
+    <Value>15.000000954</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -83,5 +83,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>THRESHOLD VALUE</Name>
-    <Value>151.995071411</Value>
+    <Value>25.000000000</Value>
 </Widget>

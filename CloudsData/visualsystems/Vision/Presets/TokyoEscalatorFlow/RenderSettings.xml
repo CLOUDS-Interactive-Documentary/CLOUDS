@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>307.000000000</XPosition>
-    <YPosition>204.000000000</YPosition>
+    <XPosition>189.000000000</XPosition>
+    <YPosition>110.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,27 +18,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>VIDEO TINT</Name>
-    <Value>90.443344116</Value>
+    <Value>8.793103218</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>THRESHOLD TINT</Name>
-    <Value>198.472915649</Value>
+    <Value>71.600990295</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>DIFF TINT</Name>
-    <Value>179.630538940</Value>
+    <Value>22.610836029</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW WINDOW TINT</Name>
-    <Value>28.891626358</Value>
+    <Value>67.832511902</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>DIFFERENCE HUE</Name>
-    <Value>0.231527090</Value>
+    <Value>0.187192112</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -68,7 +68,7 @@
 <Widget>
     <Kind>17</Kind>
     <Name>Soho2_short.mov</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -108,7 +108,7 @@
 <Widget>
     <Kind>17</Kind>
     <Name>TokyoEscalator.mov</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>

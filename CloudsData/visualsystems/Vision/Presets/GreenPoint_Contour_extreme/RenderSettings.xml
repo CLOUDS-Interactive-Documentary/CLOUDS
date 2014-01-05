@@ -1,44 +1,44 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>307.000000000</XPosition>
-    <YPosition>204.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>124.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>PLAYER</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>ABS DIFF HEAT MAP</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>VIDEO TINT</Name>
-    <Value>90.443344116</Value>
+    <Value>27.635469437</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>THRESHOLD TINT</Name>
-    <Value>198.472915649</Value>
+    <Value>57.783252716</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>DIFF TINT</Name>
-    <Value>179.630538940</Value>
+    <Value>56.527091980</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW WINDOW TINT</Name>
-    <Value>28.891626358</Value>
+    <Value>77.881774902</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>DIFFERENCE HUE</Name>
-    <Value>0.231527090</Value>
+    <Value>0.152709365</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -58,7 +58,7 @@
 <Widget>
     <Kind>17</Kind>
     <Name>GreenPoint_bike_crop.mov</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -68,7 +68,7 @@
 <Widget>
     <Kind>17</Kind>
     <Name>Soho2_short.mov</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>

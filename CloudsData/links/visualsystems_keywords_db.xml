@@ -10915,7 +10915,7 @@
         <clip>Casey - Processing addons</clip>
         <clip>Casey - Processing open</clip>
         <clip>Golan - limits to sharing</clip>
-        <clip>Higa - </clip>
+        <clip>Higa -</clip>
         <clip>Higa - language barriers</clip>
         <clip>Aaron - exquisite forest</clip>
         <clip>Bruce - All of a sudden...</clip>
@@ -12225,6 +12225,16 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Vision_AppleStore2_short">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Vision_BridgePreset">
     <keywords></keywords>
     <links></links>
@@ -12246,6 +12256,16 @@
     <sound>0</sound>
 </system>
 <system name="Vision_GreenPoint_Contour">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Vision_GreenPoint_Contour_extreme">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -12295,6 +12315,16 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Vision_Soho_HeatMap">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Vision_Tokyo1_boxes">
     <keywords></keywords>
     <links></links>
@@ -12306,6 +12336,26 @@
     <sound>0</sound>
 </system>
 <system name="Vision_TokyoCrossing_flow">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Vision_TokyoEscalator">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Vision_TokyoEscalatorFlow">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -12366,13 +12416,13 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Vision_UnionSqGhosts">
+<system name="Vision_UnionSqGhost">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
