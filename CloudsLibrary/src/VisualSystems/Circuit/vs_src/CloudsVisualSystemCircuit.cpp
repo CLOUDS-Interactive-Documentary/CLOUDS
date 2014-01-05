@@ -36,8 +36,8 @@ void CloudsVisualSystemCircuit::selfGuiEvent(ofxUIEventArgs &e){
 }
 
 ofCamera& CloudsVisualSystemCircuit::getCameraRef(){
-//	return cam;
-	return CloudsVisualSystem::getCameraRef();
+	return cam;
+//	return CloudsVisualSystem::getCameraRef();
 }
 
 void CloudsVisualSystemCircuit::generateCircuit(){
@@ -165,7 +165,9 @@ void CloudsVisualSystemCircuit::generateCircuit(){
 }
 
 void CloudsVisualSystemCircuit::reloadShaders(){
+	cout << "reload shaders" << endl;
 	blipShader.load(getVisualSystemDataPath() + "shaders/blips");
+	lineShader.load(getVisualSystemDataPath() + "shaders/lines");
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -198,6 +200,7 @@ void CloudsVisualSystemCircuit::selfSetDefaults(){
 void CloudsVisualSystemCircuit::selfSetup(){
 	cam.autosavePosition = true;
 	cam.loadCameraPosition();
+	
 	cam.speed = .5;
 	cam.setup();
 	
@@ -256,7 +259,11 @@ void CloudsVisualSystemCircuit::selfDraw(){
 	
     ofSetColor(255);
     ofEnableAlphaBlending();
+	lineShader.begin();
+	lineShader.setUniform1f("distanceMin", pointDistanceRange.min);
+	lineShader.setUniform1f("distanceMax", pointDistanceRange.max);
 	lineMesh.draw();
+	lineShader.end();
 	
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	
@@ -264,12 +271,7 @@ void CloudsVisualSystemCircuit::selfDraw(){
     float blipAlpha = 1.0;
 	
 	glPointSize(4);
-	
-//    for(int i = 0; i < blips.size(); i++){
-//        blipMesh.se(blips[i].pos);
-//        blipMesh.addColor(blips[i].color);
-//    }
-	
+		
 	//Enable smooth lines and screen blending
 	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size

@@ -125,6 +125,8 @@ protected:
 	float nearClippingPlane;
 	
 	ofShader blipShader;
+	ofShader lineShader;
+	
 	void reloadShaders();
 	void generateCircuit();
 	
