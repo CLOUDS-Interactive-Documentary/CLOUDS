@@ -92,6 +92,16 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>Blue.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>BronzeGreen.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>Cells.jpg</Name>
     <Value>0</Value>
 </Widget>
@@ -137,6 +147,26 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>Gold.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Gray.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Green.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Memory.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>QRcodes.jpg</Name>
     <Value>0</Value>
 </Widget>
@@ -163,6 +193,11 @@
 <Widget>
     <Kind>17</Kind>
     <Name>dogs.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>memory_bw.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
