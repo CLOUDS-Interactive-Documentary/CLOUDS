@@ -30,7 +30,7 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	
 	customGui->addSlider("particleSpread", 0, 60., &particleSpread);
 	
-	customGui->addSlider("explosionFrequency", .1, 1, &explosionFrequencey);
+	customGui->addSlider("explosionFrequency", .001, 1, &explosionFrequencey);
 	customGui->addIntSlider("emissonRate", 1, 5, &emissonRate);
 	customGui->addSlider("spawnDistance", 10, 400, &spawnDistance);
 	
