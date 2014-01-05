@@ -96,7 +96,7 @@ protected:
     bool bContours;
     int flowDensity;
 	int currentFlowDensity;
-	float differenceHueShift;
+	float hueShift;
 	float flowLineAlpha;
 	
     //Contour tracking stuff

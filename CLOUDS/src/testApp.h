@@ -1,12 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsStoryEngine.h"
-#include "CloudsFCPParser.h"
+//#include "CloudsStoryEngine.h"
+//#include "CloudsFCPParser.h"
 #include "CloudsPlaybackController.h"
-#include "CloudsSound.h"
-#include "CloudsMixer.h"
-#include "CloudsSecondaryDisplayOSCSender.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -24,20 +21,11 @@ class testApp : public ofBaseApp{
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 	
-	CloudsFCPParser parser;
-	CloudsVisualSystemManager visualSystems;
 	CloudsPlaybackController player;
-	CloudsStoryEngine storyEngine;
-	CloudsMixer mixer;
-	CloudsSound sound;
-	CloudsRun run; //temp
-	CloudsAct* currentAct;
 	
-	CloudsSecondaryDisplayOSCSender oscSender;
-	
-	void actCreated(CloudsActEventArgs& args);
-	
-	bool useScratch;
+//	void actCreated(CloudsActEventArgs& args);
+//	
+//	bool useScratch;
 	
 	
 //	void audioRequested(float * output, int bufferSize, int nChannels);
