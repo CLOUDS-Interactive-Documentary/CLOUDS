@@ -84,7 +84,7 @@ void CloudsSecondaryDisplayController::setup(){
     fontBioTitle = getFontForLayer(meshBioTitle, "Blender-BOOK", 35);
     layoutBioDescription = getLayoutForLayer(meshBioDescription, "Blender-BOOK", 40);
     
-    layoutProjectTitle = getLayoutForLayer(meshProjectTitle, "Blender-THIN", 55);
+    layoutProjectTitle = getLayoutForLayer(meshProjectTitle, "Blender-BOOK", 55);
     layoutProjectArtist = getLayoutForLayer(meshProjectArtist, "Blender-BOOK", 40);
     layoutProjectDescription = getLayoutForLayer(meshProjectDescription, "Blender-BOOK", 40);
     

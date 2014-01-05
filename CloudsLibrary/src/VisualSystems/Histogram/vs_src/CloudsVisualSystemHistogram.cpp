@@ -33,6 +33,7 @@ void CloudsVisualSystemHistogram::selfSetupGui(){
     
     customGui->addSpacer();
     customGui->addToggle("SEPARATE FEEDS", &bSeparateFeeds);
+    customGui->addSlider("SAMPLE OFFSET", 0.1, 1.0, &sampleOffset);
     
     customGui->addSpacer();
     vector<string> sources;
@@ -92,7 +93,6 @@ void CloudsVisualSystemHistogram::selfGuiEvent(ofxUIEventArgs &e)
     
     else if (e.widget->getName() == "RANDOM" && ((ofxUIToggle *)e.widget)->getValue()) {
         source = HISTOGRAM_SOURCE_RANDOM;
-        
         stopSound();
 	}
     else if (e.widget->getName() == "AUDIO" && ((ofxUIToggle *)e.widget)->getValue()) {
@@ -105,7 +105,7 @@ void CloudsVisualSystemHistogram::selfGuiEvent(ofxUIEventArgs &e)
         for (int i = 0; i < soundsDir.numFiles(); i++) {
             if (name == soundsDir.getName(i) && ((ofxUIToggle *)e.widget)->getValue()) {
                 selectedSoundsIdx = i;
-                reloadSound();
+                stopSound();
                 break;
             }
         }
@@ -142,6 +142,7 @@ void CloudsVisualSystemHistogram::selfSetup()
     mode = HISTOGRAM_MODE_BARS;
     source = HISTOGRAM_SOURCE_RANDOM;
     bSeparateFeeds = false;
+    sampleOffset = 1.0f;
     
     colorClear.set(0, 0, 0, 0);
     
@@ -210,8 +211,11 @@ void CloudsVisualSystemHistogram::selfUpdate()
     if (source == HISTOGRAM_SOURCE_RANDOM) {
         addRandomPoint();
     }
-    else {
+    else if (soundPlayer.isLoaded()) {
         addSoundPoint();
+    }
+    else {
+        reloadSound();
     }
     
     while (dataPoints.size() > maxNumDataPoints) {
@@ -235,7 +239,6 @@ void CloudsVisualSystemHistogram::selfUpdate()
     int col = 0;
     int row = 0;
     
-//    for (int j = dataPoints.size() - 1; j >= 0 ; j--) {
     for (int j = 0; j < dataPoints.size(); j++) {
         float offsetX = col * (colWidth + colSpacer);
         float val = dataPoints[j];
@@ -384,8 +387,6 @@ void CloudsVisualSystemHistogram::stopSound()
 
 void CloudsVisualSystemHistogram::reloadSound()
 {
-    stopSound();
-    
     ofFile file = soundsDir.getFile(selectedSoundsIdx);
     if (soundPlayer.loadSound(file.getAbsolutePath())) {
         soundPlayer.play();
@@ -413,22 +414,20 @@ void CloudsVisualSystemHistogram::addSoundPoint()
             soundPlayer.setLogAverages(88, numRows);
         }
         vector<float> allLevels = getFFT();
-//        cout << allLevels.size() << " vs. " << numRows << endl;
-        if (allLevels.size() >= numRows){
-            for (int i = 0; i < numRows; i++) {
-                float currLevel = allLevels[i] * levelAdjust;
-                float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax);
-                
-                // move everything back one position
-                int last  = MIN(dataPoints.size() - 1, (i + 1) * colsPerRow - 1);
-                int first = MIN(last, i * colsPerRow + 1);
-                for (int j = first; j <= last; j++) {
-                    dataPoints[j - 1] = dataPoints[j];
-                }
-                
-                // add the new value at the end
-                dataPoints[last] = newValue;
+        for (int i = 0; i < numRows; i++) {
+            int levelIdx = ofMap(i, 0, numRows, 0, allLevels.size() * sampleOffset);
+            float currLevel = allLevels[levelIdx] * levelAdjust;
+            float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax);
+            
+            // move everything back one position
+            int last  = MIN(dataPoints.size() - 1, (i + 1) * colsPerRow - 1);
+            int first = MIN(last, i * colsPerRow + 1);
+            for (int j = first; j <= last; j++) {
+                dataPoints[j - 1] = dataPoints[j];
             }
+            
+            // add the new value at the end
+            dataPoints[last] = newValue;
         }
     }
     else {
@@ -451,7 +450,7 @@ vector<float>& CloudsVisualSystemHistogram::getFFT()
 	float fftPosition = soundPlayer.getPosition();
 	if (soundPlayer.isLoaded() && lastFFTPosition != fftPosition){
         
-        vector<float>& fftAverages = soundPlayer.getAverages();
+        vector<float>& fftAverages = soundPlayer.getSpectrum(numRows);
         averageSize = fftAverages.size();
         if(envelope.size() != averageSize){
             generateEnvelope(averageSize);
