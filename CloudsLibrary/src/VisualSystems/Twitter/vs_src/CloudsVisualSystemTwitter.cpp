@@ -61,9 +61,9 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     minTimeGapForNextTweet =3;
 
     avatarSize = 10;
-    tweetDeckHeightOffset = -30;
+    tweetDeckHeightOffset = -10;
     tweetDeckWidthOffset= 30;
-    tweetDeckLineOffset = -15;
+    tweetDeckLineOffset = -27;
     
     ofEnableSmoothing();
     ofEnableAlphaBlending();
