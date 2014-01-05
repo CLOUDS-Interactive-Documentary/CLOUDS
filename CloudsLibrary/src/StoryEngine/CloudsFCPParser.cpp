@@ -95,6 +95,7 @@ void CloudsFCPParser::parseVOClips(){
 				continue;
 			}
 			voiceoverDuration[split[0]] = ofToFloat(split[1]);
+			cout << "duration for " << split[0] << " is " << ofToFloat(split[1]) << endl;
 		}
 	}
 
@@ -104,6 +105,7 @@ void CloudsFCPParser::parseVOClips(){
 	while(!voiceOverData.isLastLine()){
 		string line = voiceOverData.getNextLine();
 		if(line == ""){
+			ofLogError("CloudsFCPParser::parseVOClips") << "VO data contains a blank line";
 			continue;
 		}
 		if(line.at(0) == '#'){
@@ -118,7 +120,6 @@ void CloudsFCPParser::parseVOClips(){
 		string fileName = components[0];
 		CloudsClip clip;
 		clip.voiceOverAudio = true;
-		
 		clip.voiceOverAudioPath = GetCloudsDataPath() + "VO/" + fileName;
 		clip.sourceVideoFilePath = clip.voiceOverAudioPath;
 		clip.hasMediaAsset = ofFile(clip.voiceOverAudioPath).exists();
@@ -129,6 +130,8 @@ void CloudsFCPParser::parseVOClips(){
 			clip.startFrame = 0;
 			if(voCacheExists){
 				clip.endFrame = voiceoverDuration[ ofFilePath::getBaseName(clip.voiceOverAudioPath) ] * 24.;
+//				clip.endFrame = voiceoverDuration[ clip.getID() ] * 24.;
+				cout << "computed end frame is " << clip.endFrame << endl;
 			}
 			else{
 				ofVideoPlayer p;
@@ -143,8 +146,8 @@ void CloudsFCPParser::parseVOClips(){
 		
 		string name = ofFilePath::getBaseName( fileName );
 		//remove weird final cut track name
-		ofStringReplace(name, "_1-2", "");
-		ofStringReplace(name, "1-2", "");
+//		ofStringReplace(name, "_1-2", "");
+//		ofStringReplace(name, "1-2", "");
 		vector<string> clipComponents = ofSplitString(name,"_");
         //validate
 		if(clipComponents.size() != 2){

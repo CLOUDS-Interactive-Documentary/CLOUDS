@@ -84,10 +84,25 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
     void selfSetupTimelineGui();
     void selfTimelineGuiEvent(ofxUIEventArgs &e);
 
+    float currentRotAngle;
+	float currentCamDistance;
+	//this makes it work with clouds!
+	ofCamera& getCameraRef(){
+			return cam;
+	}
 
   protected:
+
+    ofCamera cam;
+    ofVec3f camCenterOffs;
+    ofVec3f modelRot,modelRotD;
+    float modelRotMax;
+	bool camEnabled;
+
+
 	static const int FREE=0,FIXEDSTATIC=2,FIXEDMOVING=1;
 	static const int GRIDRECT=1,GRIDCIRC=0,GRIDCYL=2;
+	static const int LIGHTS=5;
 
   	vector<MWParticle> pp;
 	vector<MWParticle> ppActive;
@@ -95,17 +110,17 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	float clothWidth;
 	float clothHeight;
 	float colorIndex;
-	float gridSizeF;
+
+
 
 	bool gridDoStitch;
-
-	float lastFixY;
-
 	int gridSize;
+	float gridSizeF;
 	int gridType;
 	
 
 	void mwUpdate();
+	void mwUpdateCamera();
 	void mwLights();
 
 	ofVec3f mwNewMove(MWParticle& pt);
@@ -129,7 +144,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	ofVec3f terrainMod(ofVec3f &v);
 
 	ofxUISuperCanvas* clothGui;
-	ofxUISuperCanvas* auxLightGuis[4];
+	ofxUISuperCanvas* auxLightGuis[LIGHTS];
 	
 	
 	void clearElements();
@@ -141,7 +156,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	float springDampening;
 	float springExtend;
 	
-	AuxLight auxLights[4];
+	AuxLight auxLights[LIGHTS];
 	
 	ofVboMesh mesh;
 	World3D physics;
@@ -152,7 +167,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	
 
 
-	vector<vector<Particle3D*> > particles;
+	vector< vector<Particle3D*> > particles;
 	
 	//color generators
 	vector<ofColor> initColors(int row);
