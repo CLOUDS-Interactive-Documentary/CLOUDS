@@ -13,17 +13,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>FEED X</Name>
-    <Value>284.157623291</Value>
+    <Value>350.428588867</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>FEED Y</Name>
-    <Value>16.113300323</Value>
+    <Value>46.339900970</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>HEIGHT OFFSET</Name>
-    <Value>136.197036743</Value>
+    <Value>96.866996765</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -33,12 +33,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>TEXT HEIGHT OFFSET</Name>
-    <Value>7.827586174</Value>
+    <Value>9.778325081</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>GAP BETWEEN UPDATES</Name>
-    <Value>1.017241359</Value>
+    <Value>1.113793135</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -54,7 +54,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>AVATAR SIZE</Name>
-    <Value>35</Value>
+    <Value>30</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -64,7 +64,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>FONT SIZE</Name>
-    <Value>12.044334412</Value>
+    <Value>12.512314796</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -74,42 +74,42 @@
 <Widget>
     <Kind>25</Kind>
     <Name>HANDLE FONT SIZE</Name>
-    <Value>12.325122833</Value>
+    <Value>12.231527328</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>HANDLE LINE LENGTH</Name>
-    <Value>414.379333496</Value>
+    <Value>370.088684082</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>STRING WIDTH CAP</Name>
-    <Value>13.679802895</Value>
+    <Value>12.704433441</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>ICON HEIGHT OFFSET </Name>
-    <Value>-25.862068176</Value>
+    <Value>-18.965517044</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>ICON WIDTH OFFSET </Name>
-    <Value>10.000000000</Value>
+    <Value>-23.201969147</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>ICON WIDTH</Name>
-    <Value>114.285713196</Value>
+    <Value>106.896553040</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>ICON HEIGHT</Name>
-    <Value>31.527093887</Value>
+    <Value>26.847290039</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LINE OFFSET</Name>
-    <Value>-33.004928589</Value>
+    <Value>-32.019706726</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -119,10 +119,10 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LINE ALPHA</Name>
-    <Value>0.492610842</Value>
+    <Value>0.394088656</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AVATAR ALPHA</Name>
-    <Value>0.325123161</Value>
+    <Value>0.527093589</Value>
 </Widget>

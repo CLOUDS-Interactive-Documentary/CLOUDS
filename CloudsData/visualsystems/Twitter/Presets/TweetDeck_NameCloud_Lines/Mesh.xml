@@ -18,7 +18,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>REFRESH RATE</Name>
-    <Value>5</Value>
+    <Value>187</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -39,7 +39,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>EDGE DECAY</Name>
-    <Value>0.491625607</Value>
+    <Value>0.909359574</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -59,22 +59,22 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNB HUE</Name>
-    <Value>0.534031391</Value>
+    <Value>0.596858621</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LNB SAT</Name>
-    <Value>0.554974437</Value>
+    <Value>0.774999976</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LNB BRI</Name>
-    <Value>0.340313494</Value>
+    <Value>0.308900356</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LNB ALPHA</Name>
-    <Value>0.064039409</Value>
+    <Value>0.370185882</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -84,17 +84,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LEB SAT</Name>
-    <Value>0.554973483</Value>
+    <Value>0.570680320</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LEB BRI</Name>
-    <Value>0.748690903</Value>
+    <Value>0.478349507</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LEB ALPHA</Name>
-    <Value>0.029556651</Value>
+    <Value>0.127486005</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -104,22 +104,22 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNP SAT</Name>
-    <Value>0.335079163</Value>
+    <Value>0.617800713</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LNP BRI</Name>
-    <Value>0.544502437</Value>
+    <Value>0.232301176</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LNP ALPHA</Name>
-    <Value>0.344827592</Value>
+    <Value>0.090081796</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LEP HUE</Name>
-    <Value>0.989528775</Value>
+    <Value>0.675392628</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -129,50 +129,50 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LEP BRI</Name>
-    <Value>0.371727586</Value>
+    <Value>0.261779934</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LEP ALPHA</Name>
-    <Value>0.147783250</Value>
+    <Value>0.325123161</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>S HUE</Name>
-    <Value>0.643979073</Value>
+    <Value>0.628272235</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>S SAT</Name>
-    <Value>0.947644591</Value>
+    <Value>0.774868786</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>S BRI</Name>
-    <Value>0.591622412</Value>
+    <Value>0.764397740</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>S ALPHA</Name>
-    <Value>0.472906411</Value>
+    <Value>0.862068951</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>EDGE COLOR EXPONENT</Name>
-    <Value>2.990147829</Value>
+    <Value>2.950738907</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>X POS</Name>
-    <Value>100.000000000</Value>
+    <Value>45.246303558</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>Y POS</Name>
-    <Value>100.000000000</Value>
+    <Value>42.788177490</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>Z POS</Name>
-    <Value>96.866996765</Value>
+    <Value>45.246303558</Value>
 </Widget>
