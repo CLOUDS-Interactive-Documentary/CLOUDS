@@ -26,20 +26,20 @@ void main()
 {
     vec3 pos = texture2DRect(particles0, gl_TexCoord[0].st).xyz;
     vec3 vel = texture2DRect(particles1, gl_TexCoord[0].st).xyz;
-    vec3 parentPos = texture2DRect(particles0, vec2(gl_TexCoord[0].s - 1.0, gl_TexCoord[0].t)).xyz;
-    vec3 childPos = texture2DRect(particles0, vec2(gl_TexCoord[0].s + 1.0, gl_TexCoord[0].t)).xyz;
     
-    vec3 springForce0 = step(0.5, gl_TexCoord[0].s) * springForce(pos, parentPos);
-    //vec3 springForce1 = step(gl_TexCoord[0].t, numSections - 1.5) * springForce(pos, childPos);
+    vec3 parentPos = texture2DRect(particles0, vec2(gl_TexCoord[0].s - 1.0, gl_TexCoord[0].t)).xyz;
+    
+    vec3 forceDirection = parentPos - pos;
     
     vec3 oldVel = vel;
     
-    vel += springForce0 * elapsed;
+    // for some reason nvidia 9600 osx driver is freaking
+    // out if I try and get the length of or normalize forceDirection
+    vel += 120.0 * elapsed * forceDirection;
     
-    vel *= 1.0 - (0.15 * elapsed * 60.0);
+    vel *= clamp(1.0 - (9.0 * elapsed), 0.0, 1.0);
     
-    // first particle stays locked to jelly
-    pos += step(0.5, gl_TexCoord[0].s) * 0.5 * (vel + oldVel) * elapsed;
+    pos += 0.5 * (oldVel + vel) * elapsed;//step(0.5, gl_TexCoord[0].s) * 0.5 * (vel + oldVel) * elapsed;
     
     gl_FragData[0] = vec4(pos, 1.0);
     gl_FragData[1] = vec4(vel, 0.0);
