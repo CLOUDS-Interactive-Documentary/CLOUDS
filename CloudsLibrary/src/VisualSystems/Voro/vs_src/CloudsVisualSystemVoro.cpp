@@ -19,15 +19,19 @@ string CloudsVisualSystemVoro::getSystemName()
 	return "Voro";
 }
 
+void CloudsVisualSystemVoro::selfSetDefaults()
+{
+	bUseMaterial = false;
+	
+	cellsWireThickness = 1.0;
+	cellsWireAlpha = 1.0;
+	cellsVertexAlpha = 1.0;
+	cellsVertexSize = 1.0;
+}
+
 void CloudsVisualSystemVoro::selfSetup()
 {
-    background.load("", getVisualSystemDataPath()+"shaders/cosmos.fs");
-//    background.load("",getVisualSystemDataPath()+"shaders/edgeDetection.fs");
-    
-//    noiseDisplacement.load(getVisualSystemDataPath()+"shaders/noiseDisplacement");
-//    noiseAmplitud = 0.0;
-//    noiseDensity = 0.0;
-//    noisePosition = 1.0;
+	
 }
 
 void CloudsVisualSystemVoro::selfSetupGuis()
@@ -46,8 +50,6 @@ void CloudsVisualSystemVoro::selfSetupSystemGui()
     sysGui->addSlider("Z_Move", 0.0, 1.0, &zMove);
     sysGui->addSlider("Atraction", 0.0, 0.3, &atractionPct);
     sysGui->addSlider("Repulsion", 0.0, 1.0, &repulsionPct);
-//    sysGui->addToggle("Glow",& bDrawGlow);
-//    sysGui->addToggle("Nucles",& bDrawNucles);
     sysGui->addSlider("texture_Size", 0.0, 1.0, &tSize);
     sysGui->addButton("Clear", &bClear);
     
@@ -61,24 +63,15 @@ void CloudsVisualSystemVoro::selfSetupSystemGui()
     sysGui->addSlider("Cell_Wall", 0.0, 2.0, &wallThikness);
     sysGui->addSlider("Cell_Alpha", 0.0, 1.0, &cellsAlpha);
     sysGui->addSlider("Cell_Wires_Alpha", 0.0, 1.0, &cellsWireAlpha);
+    sysGui->addSlider("Cell_Wires_Thickness", 0.0, 4.0, &cellsWireThickness);
     sysGui->addSlider("Cell_Vertex_Alpha", 0.0, 1.0, &cellsVertexAlpha);
-    
-//    sysGui->addLabel("Cosmic Dust Particles");
-//    sysGui->addSlider("max_number", 0.0, 1000, &nMaxPoints);
-//    sysGui->addSlider("density", 0.5, 1.0, &density);
-//    sysGui->addSlider("gravity", 0.0, 1.0, &gravity);
-//    sysGui->addSlider("repulsion", 0.0, 1.0, &repulsion);
-//    sysGui->addSlider("turbulence", 0.0, 0.09, &turbulence);
-//    sysGui->addSlider("neigbordhood", 1, 300, &neigbordhood);
-//    sysGui->addSlider("independence", 0, 0.01, &independence);
+    sysGui->addSlider("Cell_Vertex_Size", 0.0, 4.0, &cellsVertexSize);
+	sysGui->addToggle("Cell_Use_Material", &bUseMaterial);
+	
 }
 
 void CloudsVisualSystemVoro::selfSetupRenderGui()
 {
-//    rdrGui->addSlider("noise_amplitud", 0.0, 2.0, &noiseAmplitud);
-//    rdrGui->addSlider("noise_density", 0.0, 2.0, &noiseDensity);
-//    rdrGui->addSlider("noise_position", 0.0, 10.0, &noisePosition);
-    
 }
 
 void CloudsVisualSystemVoro::selfBegin()
@@ -239,112 +232,34 @@ void CloudsVisualSystemVoro::selfUpdate()
 
     fps++;
     
-    //  Cosmic Dust Particles
-    //
-//    if ( (seedParticles.size() > 2) && (particles.size() < nMaxPoints-2) ){
-//        int randomIndex = ofRandom(seedParticles.size()-1);
-//        
-//        vParticle *newParticle = new vParticle();
-//        newParticle->set( (*seedParticles[randomIndex])*1.01 );
-//        newParticle->loc = *newParticle;
-//        particles.push_back(newParticle);
-//    }
-    
-    //  Delete if they are to much
-    //
-//    while (particles.size() > nMaxPoints) {
-//        delete particles[0];
-//        particles.erase(particles.begin());
-//    }
-    
-    //  Update
-    //
-//    for(int i = 0; i < particles.size(); i++){
-//        for (int j = 0; j < i; j++){
-//            particles[i]->addRepulsionForce( (ofPoint)(*particles[j]), 10.0, repulsion);
-//        }
-//        
-//        for (int j = 0; j < seedParticles.size(); j++){
-//            particles[i]->addRepulsionForce( *seedParticles[j], seedParticles[j]->size*2.0, repulsion);
-//            particles[i]->addAttractionForce( *seedParticles[j], seedParticles[j]->size*10.0, gravity);
-//        }
-//        particles[i]->applyFlockingForce(&globalOffset,neigbordhood,independence);
-//        particles[i]->update(density);
-//    }
-//    
-//    globalOffset += ofPoint(turbulence/neigbordhood,
-//							turbulence/neigbordhood,
-//							turbulence/neigbordhood);
+
 }
 
 void CloudsVisualSystemVoro::selfDraw()
 {
-//    mat->begin();
+
+	if(bUseMaterial){
+		mat->begin();
+	}
     
     ofPushMatrix();
-    
+    ofPushStyle();
     glEnable(GL_DEPTH_TEST);
-    
-//    if (bDrawGlow || bDrawNucles){
-//        glDepthMask(GL_FALSE);
-//        ofEnableBlendMode(OF_BLENDMODE_ADD);
-//    }
-//    
-//    if (bDrawGlow || bDrawNucles){
-//        for (int i = 0; i < seedParticles.size(); i++){
-//            
-//            ofSetColor(255);
-//            ofPushMatrix();
-//            ofSetRectMode(OF_RECTMODE_CENTER);
-//            
-//            ofTranslate(*seedParticles[i]*(float)(1.0+wallThikness));
-//            billBoard();
-//            
-//            ofSetColor(255, 255*(seedParticles[i]->size/MaxSize));
-//
-//            if (bDrawGlow){
-//                dot.draw(0,0,
-//                         seedParticles[i]->size*tSize,
-//                         seedParticles[i]->size*tSize);
-//            } else {
-//                
-//                if (seedParticles[i]->nucle != NULL){
-//                    seedParticles[i]->nucle->draw(0,0,
-//                                                  seedParticles[i]->size*tSize,
-//                                                  seedParticles[i]->size*tSize);
-//                }
-//
-//            }
-//            
-//            ofSetRectMode(OF_RECTMODE_CORNER);
-//            ofPopMatrix();
-//        }
-//    }
-    
+
     if (cellsVertexAlpha > 0.0){
+		glPointSize(cellsVertexSize);
         for(int i = 0; i < cellMeshes.size(); i++){
             ofSetColor(155,cellsVertexAlpha*255.0);
             cellMeshes[i].drawVertices();
         }
     }
     
-//    if (bDrawGlow || bDrawNucles){
-//        glDepthMask(GL_TRUE);
-//        ofEnableAlphaBlending();
-//    }
     
-//    //  Cosmic Dust Particles
-//    //
-//    for(int i = 0; i < particles.size(); i++){
-//        particles[i]->draw();
-//    }
-    
-//    noiseDisplacement.begin();
-//    noiseDisplacement.setUniform1f("noiseAmplitude", noiseAmplitud);
-//    noiseDisplacement.setUniform1f("noiseDensity", noiseDensity);
-//    noiseDisplacement.setUniform1f("noisePosition", noisePosition);
-    
-    if(cellsAlpha>0.0 || cellsWireAlpha>0.0){
+    if(cellsAlpha > 0.0 || cellsWireAlpha > 0.0){
+		ofSetLineWidth(cellsWireThickness);
+		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+		glEnable(GL_LINE_SMOOTH);
+		
         for(int i = 0; i < cellMeshes.size(); i++){
             ofSetColor(255,cellsAlpha*255.0);
             
@@ -360,25 +275,18 @@ void CloudsVisualSystemVoro::selfDraw()
         }
     }
     
-//    noiseDisplacement.end();
+
     
     glDisable(GL_DEPTH_TEST);
+	ofPopStyle();
     ofPopMatrix();
     
-	
- //   mat->end();
+
+	if(bUseMaterial){
+		mat->end();
+	}
 }
 
-//void CloudsVisualSystemVoro::selfPostDraw(){
-//    background.begin();
-//    background.setUniform2f("resolution", ofGetWidth(), ofGetHeight());
-//    getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
-//                                 CloudsVisualSystem::getSharedRenderTarget().getWidth(),
-//                                 -CloudsVisualSystem::getSharedRenderTarget().getHeight());
-//
-//    
-//    background.end();
-//}
 
 void CloudsVisualSystemVoro::billBoard()
 {
@@ -444,11 +352,6 @@ void CloudsVisualSystemVoro::guiSystemEvent(ofxUIEventArgs &e)
 }
 
 void CloudsVisualSystemVoro::guiRenderEvent(ofxUIEventArgs &e)
-{
-    
-}
-
-void CloudsVisualSystemVoro::selfAutoMode()
 {
     
 }

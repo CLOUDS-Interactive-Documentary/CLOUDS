@@ -218,7 +218,7 @@ class CloudsVisualSystem {
     void setupMaterial(string name, ofxMaterial *m);
     void guiMaterialEvent(ofxUIEventArgs &e);
 	
-    void setupPointLight(string name);
+    void setupPointLight(string name, ofxLight* light = NULL);
     void setupSpotLight(string name);
     void setupBeamLight(string name);
     void setupGenericLightProperties(ofxUISuperCanvas *g, ofxLight *l);
@@ -242,7 +242,7 @@ class CloudsVisualSystem {
     
     //UI Helpers
 	vector<string> getPresets();
-	
+	string currentPresetName;
     void loadGUIS();
 	void loadPresetGUISFromName(string presetName);
     void loadPresetGUISFromPath(string presetPath);
@@ -349,6 +349,7 @@ class CloudsVisualSystem {
     bool bEnableLights;
 	
     //LIGHTS
+	ofxLight* light;
     map<string, ofxLight *> lights;
     map<string, ofxUISuperCanvas *> lightGuis;
 	
