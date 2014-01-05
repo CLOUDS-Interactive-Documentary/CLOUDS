@@ -22,6 +22,9 @@ CloudsTransitionController::CloudsTransitionController(){
 	
 	fadeInStates.push_back(TRANSITION_VISUALSYSTEM_IN);
 	fadeInStates.push_back(TRANSITION_INTERVIEW_IN);
+
+    fadeInStates.push_back(TRANSITION_CLUSTERMAP_IN);
+    fadeInStates.push_back(TRANSITION_CLUSTERMAP_OUT);
 }
 
 void CloudsTransitionController::confirmEmpty(){
@@ -54,7 +57,7 @@ void CloudsTransitionController::transitionFromIntro(float outDuration){
 void CloudsTransitionController::transitionToFirstVisualSystem(float duration){
 
 	confirmEmpty();
-	
+
 	queueState(TRANSITION_VISUALSYSTEM_IN, duration);
 
 	startTransition();
@@ -85,25 +88,40 @@ void CloudsTransitionController::transitionToInterview(float outDuration, float 
 	
 }
 
-void CloudsTransitionController::transitionToClusterMap(float outDuration, float inDuration){
+void CloudsTransitionController::transitionToClusterMap(float inDuration,float outDuration){
 	
 	confirmEmpty();
 	
 	//we are in a visual system
 	if(getPreviousState() == TRANSITION_VISUALSYSTEM_IN){
+        cout<<"VISUAL SYSTEM --> CLUSTER MAP"<<endl;
 		currentState = TRANSITION_VISUALSYSTEM_IN;
 		queueState(TRANSITION_VISUALSYSTEM_OUT, outDuration);
+        queueState(TRANSITION_CLUSTERMAP_IN, inDuration);
 	}
 	//we are in an interview
 	else if(getPreviousState() == TRANSITION_INTERVIEW_IN){
+        cout<<"INTERVIEW --> CLUSTER MAP"<<endl;
 		queueState(TRANSITION_INTERVIEW_OUT, outDuration);
+        queueState(TRANSITION_CLUSTERMAP_IN, inDuration);
 	}
 	
 	startTransition();
 }
 
-void CloudsTransitionController::transitionFromClusterMap(float transitionOutDuration, float transitionInDuration){
-	//TODO: !!
+void CloudsTransitionController::transitionFromClusterMap(float inDuration){
+	//TODO:!!!
+
+    confirmEmpty();
+
+    queueState(TRANSITION_CLUSTERMAP_OUT, inDuration);
+    
+    startTransition();
+
+    cout<<"IM TRANSITIONING OUT OF CLUSTER MAP"<<endl;
+    //See if we are playing a VS or Clip?
+    //Queue the state
+    //start transition
 }
 
 void CloudsTransitionController::startTransition(){
@@ -231,6 +249,10 @@ string CloudsTransitionController::getStateDescription(CloudsTransitionState sta
 			return "TransitionInterviewIn";
 		case TRANSITION_INTRO_OUT:
 			return "TransitionIntroOut";
+        case TRANSITION_CLUSTERMAP_IN:
+            return "TransitionClusterIn";
+        case TRANSITION_CLUSTERMAP_OUT:
+            return "TransitionClusterOut";
 			
 		default:
 			return "UNKNOWN STATE " + ofToString(int(currentState));
