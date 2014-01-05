@@ -5,5 +5,23 @@ OF_PATH = ../../..
 //THIS HAS ALL THE HEADER AND LIBS FOR OF CORE
 #include "../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig"
 
-OTHER_LDFLAGS = $(OF_CORE_LIBS) 
-HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS)
+///////////////////////////////////////////
+// ADDONS
+
+// path to the addons dir
+ADDONS_PATH = $(OF_PATH)/addons
+
+// ofxOculusRift
+OFX_OCULUSRIFT_HEADERS = $(ADDONS_PATH)/ofxOculusRift/src $(ADDONS_PATH)/ofxOculusRift/libs/LibOVR/Include
+OFX_OCULUSRIFT_LIBS = "$(ADDONS_PATH)/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release/libovr.a"
+
+// all addons
+OF_ADDON_HEADERS = $(OFX_OCULUSRIFT_HEADERS)
+OF_ADDON_LIBS = $(OFX_OCULUSRIFT_LIBS)
+
+///////////////////////////////////////////
+// MAIN
+
+HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS) $(OF_ADDON_HEADERS)
+OTHER_LDFLAGS = $(OF_CORE_LIBS) $(OF_ADDON_LIBS)
+

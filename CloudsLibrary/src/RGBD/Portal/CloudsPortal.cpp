@@ -45,6 +45,7 @@ void CloudsPortal::setup(){
 }
 
 void CloudsPortal::update(){
+#ifndef OCULUS_RIFT
 	if(cam != NULL){
 		screenPosition = cam->worldToScreen(hoverPosition);
 		if( screenPosition.distance( ofVec2f(GetCloudsInputX(),GetCloudsInputY())) < minSelectDistance ){
@@ -59,7 +60,7 @@ void CloudsPortal::update(){
 			hoverPercentComplete = 0;
 		}
 	}
-	
+#endif
 
 	for(int i = 0; i < rings.size(); i++){
 		rings[i].hoverPercentComplete = hoverPercentComplete;
