@@ -1,7 +1,6 @@
 
 uniform float distanceMin;
 uniform float distanceMax;
-
 varying float normalizedDist;
 
 float map(float value, float inputMin, float inputMax, float outputMin, float outputMax) {;
@@ -9,10 +8,8 @@ float map(float value, float inputMin, float inputMax, float outputMin, float ou
 }
 
 void main() {
-//	distanceMin
 	float distanceAttenuate = pow(1. - normalizedDist,4.);
-//	gl_FragColor = gl_Color * distanceMin;
-	gl_FragColor = gl_Color;
-	gl_FragColor.a = distanceAttenuate*gl_Color.a;
+	gl_FragColor.rgb = gl_Color.rgb * distanceAttenuate*gl_Color.a;
+	gl_FragColor.a = 1.0;
 //	gl_FragColor.rgb = vec3(distanceAttenuate);
 }
