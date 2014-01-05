@@ -3,7 +3,10 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
 #include "CloudsInput.h"
+
+#ifdef TARGET_OSX
 #include "ofxSystemTextbox.h"
+#endif
 
 #ifdef AVF_PLAYER
 #include "ofxAVFVideoPlayer.h"
@@ -1095,7 +1098,11 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
         ofxUIButton *b = (ofxUIButton *) e.widget;
         if(b->getValue())
         {
+			#ifdef TARGET_OSX
             string presetName = ofxSystemTextBoxDialog("Save Preset As", currentPresetName);
+			#else
+			string presetName = ofSystemTextBoxDialog("Save Preset As", currentPresetName);
+			#endif
             if(presetName != "")
             {
                 savePresetGUIS(presetName);
