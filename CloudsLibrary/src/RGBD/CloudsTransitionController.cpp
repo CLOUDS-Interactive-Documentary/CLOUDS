@@ -14,16 +14,30 @@ CloudsTransitionController::CloudsTransitionController(){
 	newState = false;
 	previousState = TRANSITION_IDLE;
 	currentState = TRANSITION_IDLE;
+	
+	fadeOutStates.push_back(TRANSITION_INTERVIEW_OUT);
+	fadeOutStates.push_back(TRANSITION_VISUALSYSTEM_OUT);
+	fadeOutStates.push_back(TRANSITION_INTRO_OUT);
+	
+	fadeInStates.push_back(TRANSITION_VISUALSYSTEM_IN);
+	fadeInStates.push_back(TRANSITION_INTERVIEW_IN);
 }
 
 void CloudsTransitionController::confirmEmpty(){
+	if(currentState != TRANSITION_IDLE){
+		for(int i = 0; i < queueHistory.size(); i++){
+			ofLogError("TRANSITION QUEUE HISTORY") << getStateDescription(queueHistory[i].state) << " : " << queueHistory[i].timeRange;
+		}
+		ofLogError("CloudsTransitionController::confirmEmpty") << "Current state is not IDLE on new transition: " << getStateDescription(currentState) ;
+		for(int i = 0; i < stateQueue.size(); i++){
+			ofLogError("TRANSITION QUEUE REMAINING") << getStateDescription(stateQueue[i].state);
+		}
+	}
 	if(!stateQueue.empty()){
 		ofLogError("CloudsTransitionController::confirmEmpty") << "State Queue is not empty";
 		stateQueue.clear();
 	}
-	if(currentState != TRANSITION_IDLE){
-		ofLogError("CloudsTransitionController::confirmEmpty") << "Current state is not IDLE on new transition";
-	}	
+	
 }
 
 void CloudsTransitionController::transitionFromIntro(float outDuration, float inDuration){
@@ -122,7 +136,8 @@ float CloudsTransitionController::getFadeValue(){
 			return transitionPercent;
 		}
 	}
-	return 1.0;
+
+	return fadedOut() ? 0.0 : 1.0;
 }
 
 float CloudsTransitionController::getInterviewTransitionPoint(){
@@ -183,12 +198,17 @@ void CloudsTransitionController::queueState(CloudsTransitionState state, float t
 CloudsTransitionState CloudsTransitionController::getCurrentState(){
 	return currentState;
 }
+
 CloudsTransitionState CloudsTransitionController::getPreviousState(){
 	return previousState;
 }
 
 string CloudsTransitionController::getCurrentStateDescription(){
-	switch(currentState){
+	getStateDescription(currentState);
+}
+
+string CloudsTransitionController::getStateDescription(CloudsTransitionState state){
+	switch(state){
 		case TRANSITION_IDLE:
 			return "TransitionIdle";
 		case TRANSITION_INTERVIEW_OUT:
@@ -214,17 +234,22 @@ bool CloudsTransitionController::isStateNew(){
 }
 
 bool CloudsTransitionController::fadingOut(){
-	return currentState == TRANSITION_VISUALSYSTEM_OUT ||
-		   currentState == TRANSITION_INTERVIEW_OUT ||
-		   currentState == TRANSITION_INTRO_OUT;
+	return ofContains(fadeOutStates, currentState);
+}
+
+bool CloudsTransitionController::fadedOut(){
+	return ofContains(fadeOutStates, previousState);
 }
 
 //move to the next state
 CloudsTransitionState CloudsTransitionController::getNextState(){
 
+	currentQueue.timeRange.max = ofGetElapsedTimef();
+	queueHistory.push_back(currentQueue);
 	previousState = currentState;
-	
+
 	if(stateQueue.empty()){
+		currentQueue.state = TRANSITION_IDLE;
 		currentState = TRANSITION_IDLE;
 		transitioning = false;
 	}
@@ -233,6 +258,9 @@ CloudsTransitionState CloudsTransitionController::getNextState(){
 		currentState = stateQueue.front().state;
 		stateQueue.pop_front();
 	}
+	
+	currentQueue.timeRange.min = ofGetElapsedTimef();
+
 	newState = true;
 	
 	/*

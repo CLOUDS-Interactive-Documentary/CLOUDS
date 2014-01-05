@@ -168,17 +168,12 @@ class CloudsVisualSystem {
 	
 	//how much time left to show this visual system?
 	//once seconds is set to zero the end() event will be called by the controller
-	float getSecondsRemaining();
-	void setSecondsRemaining(float seconds);
+//	float getSecondsRemaining();
+//	void setSecondsRemaining(float seconds);
 		
 	//this will always match what you offered in relevant keywords
-	void setCurrentKeyword(string theme);
-	string getCurrentKeyword();
+	void setKeywords(string mainKeyword, vector<string> allKeywords);
 	
-	//set before calling begin so the class can react to the topic
-	void setCurrentTopic(string keyword);
-	string getCurrentTopic();
-
     //Drawing Helpers
     void drawDebug();
     void drawAxis(float size, float color);
@@ -294,14 +289,14 @@ class CloudsVisualSystem {
     ofxUISuperCanvas *presetGui;
     ofxUISuperCanvas *tlGui;
     
-    //UI Colours
-    ofxUIColor cb;
-    ofxUIColor co;
-    ofxUIColor coh;
-    ofxUIColor cf;
-    ofxUIColor cfh;
-    ofxUIColor cp;
-    ofxUIColor cpo;
+//    //UI Colours
+//    ofxUIColor cb;
+//    ofxUIColor co;
+//    ofxUIColor coh;
+//    ofxUIColor cf;
+//    ofxUIColor cfh;
+//    ofxUIColor cp;
+//    ofxUIColor cpo;
 	
 	void stackGuiWindows();
 	void drawScene();
@@ -323,9 +318,6 @@ class CloudsVisualSystem {
 	float bgSat2;
 	float bgBri2;
 	
-	//some crashes are being caused by update before draw
-	//this makes sure the draw() command only happens after the first update
-	bool updateCyclced;
 	
     ofxUISlider *hueSlider;
     ofxUISlider *satSlider;
@@ -344,9 +336,11 @@ class CloudsVisualSystem {
 
 	bool bIsSetup;
 	bool bIs2D;
-	
+	//some crashes are being caused by update before draw
+	//this makes sure the draw() command only happens after the first update
+	bool updateCyclced;
+
     //LIGHTING
-//float *globalAmbientColor;
 	ofFloatColor globalAmbientColorHSV;
     bool bSmoothLighting;
     bool bEnableLights;
@@ -368,12 +362,11 @@ class CloudsVisualSystem {
     float camDistance;
     float camFOV;
     ofxViewType view;
-	ofCamera* currentCamera;
+//	ofCamera* currentCamera;
     ofEasyCam cam;
     ofx1DExtruder *xRot;
     ofx1DExtruder *yRot;
     ofx1DExtruder *zRot;
-	
 	
     //TIMELINE
     void resetTimeline();
@@ -399,13 +392,13 @@ class CloudsVisualSystem {
     bool bDeleteTimelineTrack;
     bool bShowTimeline;
     bool bEnableTimelineTrackCreation;
-
+	bool isPlaying;
 	//background stuff
 	bool bMatchBackgrounds;
 		
 	//these variables are set by the playback controller when displaying
 	//ways to interact with the pointcloud data
-	CloudsRGBDVideoPlayer* sharedRenderer;
+//	CloudsRGBDVideoPlayer* sharedRenderer;
 	//set to true if the pointcloud renderer has valid speaker
 	bool hasSpeaker;
 	bool confirmedDataPath;
@@ -418,12 +411,13 @@ class CloudsVisualSystem {
 	string quoteName;
 	
 	//keyword is the topic of conversation
-	string currentTopic;
+//	string currentTopic;
 	//theme is the topic chosen
-	string currentKeyword;
 	
-	bool isPlaying;
-	float secondsRemaining;
+	string mainKeyword;
+	vector<string> keywords;
+	
+//	float secondsRemaining;
 	
 	void checkOpenGLError(string function);
 	

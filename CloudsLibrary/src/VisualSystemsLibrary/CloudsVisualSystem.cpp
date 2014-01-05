@@ -115,7 +115,6 @@ ofxOculusRift& CloudsVisualSystem::getOculusRift(){
 CloudsVisualSystem::CloudsVisualSystem(){
 	isPlaying = false;
 	timeline = NULL;
-	sharedRenderer = NULL;
 	bIsSetup = false;
 	bClearBackground = true;
 	bDrawToScreen = true;
@@ -198,7 +197,7 @@ void CloudsVisualSystem::setup(){
 		loadBackgroundShader();
 	}
 
-	currentCamera = &cam;
+//	currentCamera = &cam;
 	
     ofDirectory dir;
     string directoryName = getVisualSystemDataPath()+"Presets/";
@@ -291,29 +290,31 @@ void CloudsVisualSystem::stopSystem(){
 	}
 }
 
-float CloudsVisualSystem::getSecondsRemaining(){
-	return secondsRemaining;
+void CloudsVisualSystem::setKeywords(string main, vector<string> allKeywords){
+	main = mainKeyword;
+	keywords = allKeywords;
 }
 
-void CloudsVisualSystem::setSecondsRemaining(float seconds){
-	secondsRemaining = seconds;
-}
+//float CloudsVisualSystem::getSecondsRemaining(){
+//	return secondsRemaining;
+//}
+//
+//void CloudsVisualSystem::setSecondsRemaining(float seconds){
+//	secondsRemaining = seconds;
+//}
 
-void CloudsVisualSystem::setCurrentKeyword(string keyword){
-	currentKeyword = keyword;
-}
 
-string CloudsVisualSystem::getCurrentKeyword(){
-	return currentKeyword;
-}
+//string CloudsVisualSystem::getCurrentKeyword(){
+//	return currentKeyword;
+//}
 
-void CloudsVisualSystem::setCurrentTopic(string topic){
-	currentTopic = topic;
-}
-
-string CloudsVisualSystem::getCurrentTopic(){
-	return currentTopic;
-}
+//void CloudsVisualSystem::setCurrentTopic(string topic){
+//	currentTopic = topic;
+//}
+//
+//string CloudsVisualSystem::getCurrentTopic(){
+//	return currentTopic;
+//}
 
 void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
 									  string speakerLastName,

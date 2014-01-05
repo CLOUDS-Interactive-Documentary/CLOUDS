@@ -35,7 +35,7 @@
 
 namespace itg
 {
-    const float Creatures::TENTACLE_SECTION_LENGTH = 4.f;
+    const float Creatures::TENTACLE_SECTION_LENGTH = 2.f;
     
     void Creatures::init(const string& dataPath)
     {
@@ -346,6 +346,7 @@ namespace itg
         tentacles.loadDataTexture(ofxGpuParticles::POSITION, tentaclePosns[0].getPtr(), 0, 0, 1, tentacles.getHeight());
         tentacles.getUpdateShaderRef().begin();
         tentacles.getUpdateShaderRef().setUniform1f("restLength", TENTACLE_SECTION_LENGTH);
+        tentacles.getUpdateShaderRef().setUniform1f("numSections", (float)TENTACLE_NUM_SECTIONS);
         tentacles.getUpdateShaderRef().setUniform1f("elapsed", Creature::getElapsed());
         tentacles.getUpdateShaderRef().end();
         tentacles.update();
@@ -366,17 +367,6 @@ namespace itg
                 creaturesByType[i][j]->draw(cam);
             }
         }
-        
-        /*
-        ofSetColor(0, 255, 0);
-        for (unsigned i = 0; i < jellies.size(); ++i)
-        {
-            vector<ofVec3f> deformed = jellies[i]->getDeformedTentaclePosns();
-            for (unsigned j = 0; j < deformed.size(); ++j)
-            {
-                ofCircle(deformed[j], 4.f);
-            }
-        }*/
         
         // tentacles
         ofPushStyle();

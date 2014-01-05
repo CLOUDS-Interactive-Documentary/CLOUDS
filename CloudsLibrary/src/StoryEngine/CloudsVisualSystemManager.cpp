@@ -309,6 +309,18 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 	#endif
 }
 
+
+//--------------------------------------------------------------------
+ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::getEmptySystem(string mainKeyword, vector<string> keywords){
+	#ifdef CLOUDS_NO_VS
+	return NULL;
+	#else
+	ofPtr<CloudsVisualSystem> ptr(new CloudsVisualSystemEmpty() );
+	ptr->setKeywords(mainKeyword, keywords);
+	return ptr;
+	#endif
+}
+
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::deletePreset(int i){
 	
@@ -594,11 +606,13 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 		}
 	}
 	
-	//add linked clips
-	if(clipToPresetLinks.find(clipName) != clipToPresetLinks.end()){
-		for(int i = 0; i < clipToPresetLinks[clipName].size(); i++){
-			if( !ofContains(presetIds, clipToPresetLinks[clipName][i]) ){
-				presetsWithKeywords.push_back( getPresetWithID(clipToPresetLinks[clipName][i]) );
+	if(clipName != ""){
+		//add linked clips
+		if(clipToPresetLinks.find(clipName) != clipToPresetLinks.end()){
+			for(int i = 0; i < clipToPresetLinks[clipName].size(); i++){
+				if( !ofContains(presetIds, clipToPresetLinks[clipName][i]) ){
+					presetsWithKeywords.push_back( getPresetWithID(clipToPresetLinks[clipName][i]) );
+				}
 			}
 		}
 	}
