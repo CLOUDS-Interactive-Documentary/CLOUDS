@@ -35,6 +35,8 @@
 
 namespace itg
 {
+    const float Creatures::TENTACLE_SECTION_LENGTH = 2.f;
+    
     void Creatures::init(const string& dataPath)
     {
         numGreyFish = 125;
@@ -97,13 +99,17 @@ namespace itg
         ofEnableArbTex();
         JellyCreature::shader.load(dataPath + "shaders/jelly");
         
-        //generate();
+        tentacles.getUpdateShaderRef().load(dataPath + "shaders/tentaclesUpdate");
+        tentacles.getDrawShaderRef().load(dataPath + "shaders/tentaclesDraw");
+        tentacles.setTextureLocation(1);
+        
         pointCreatureMesh.setUsage(GL_DYNAMIC_DRAW);
         pointCreatureMesh.setMode(OF_PRIMITIVE_POINTS);
     }
     
     void Creatures::generate()
     {
+        jellies.clear();
         creatures.clear();
         creaturesByType.clear();
         
@@ -125,9 +131,47 @@ namespace itg
         
         for (unsigned i = 0; i < creatures.size(); ++i)
         {
-            creatures[i]->setPosition(ofRandom(-startArea, startArea), ofRandom(-startArea, startArea), ofRandom(-startArea, 0));
+            creatures[i]->setPosition(ofRandom(-startArea, startArea), ofRandom(-startArea, startArea), ofRandom(startArea, 0));
             creatures[i]->setOrientation(ofVec3f(ofRandom(-180.f, 180.f), ofRandom(-180.f, 180.f), ofRandom(-180.f, 180.f)));
         }
+        
+        // tentacles
+        unsigned numTentacles = 0;
+        for (unsigned i = 0; i < jellies.size(); ++i) numTentacles += jellies[i]->getNumTentacles();
+        tentacles.init(TENTACLE_NUM_SECTIONS, numTentacles, OF_PRIMITIVE_LINES, false);
+        if (numTentacles * TENTACLE_NUM_SECTIONS * 4 != tentacles.getNumFloats()) ofLogFatalError() << "tentacle texture size error";
+        float* particlePosns = new float[tentacles.getNumFloats()];
+        unsigned tentacleIdx = 0;
+        ofVboMesh& tentacleMesh = tentacles.getMeshRef();
+        for (unsigned i = 0; i < jellies.size(); ++i)
+        {
+            vector<ofVec3f> deformed = jellies[i]->getDeformedTentaclePosns();
+            ofVec3f step = -1.5f * TENTACLE_SECTION_LENGTH * jellies[i]->getZAxis();
+            for (unsigned j = 0; j < deformed.size(); ++j)
+            {
+                for (unsigned x = 0; x < TENTACLE_NUM_SECTIONS; ++x)
+                {
+                    unsigned idx = tentacleIdx * TENTACLE_NUM_SECTIONS + x;
+                    particlePosns[idx * 4] = deformed[j].x + x * step.x;
+                    particlePosns[idx * 4 + 1] = deformed[j].y + x * step.y;
+                    particlePosns[idx * 4 + 2] = deformed[j].z + x * step.z;
+                    particlePosns[idx * 4 + 3] = 0.f;
+                    ofFloatColor col = jellies[i]->getTentacleColour();
+                    col.a = .5f * (1.f - x / (float)TENTACLE_NUM_SECTIONS);
+                    tentacleMesh.addColor(col);
+                    if (x > 0)
+                    {
+                        tentacleMesh.addIndex(TENTACLE_NUM_SECTIONS * tentacleIdx + x - 1);
+                        tentacleMesh.addIndex(TENTACLE_NUM_SECTIONS * tentacleIdx + x);
+                    }
+                }
+                ++tentacleIdx;
+            }
+        }
+        tentacles.loadDataTexture(ofxGpuParticles::POSITION, particlePosns);
+        delete[] particlePosns;
+        tentacles.zeroDataTexture(ofxGpuParticles::VELOCITY);
+        tentaclePosns.resize(numTentacles);
     }
     
     void Creatures::addPointFish(unsigned number, float hue)
@@ -159,7 +203,9 @@ namespace itg
         creaturesByType.push_back(vector<Creature::Ptr>());
         for (int i = 0; i < number; ++i)
         {
-            creatures.push_back(JellyCreature::Ptr(new JellyCreature(params)));
+            JellyCreature::Ptr jelly = JellyCreature::Ptr(new JellyCreature(params));
+            jellies.push_back(jelly);
+            creatures.push_back(jelly);
             creatures.back()->setVelocity(ofRandom(-50, 50), ofRandom(-50, 50), ofRandom(-50, 50));
             creaturesByType.back().push_back(creatures.back());
         }
@@ -270,20 +316,7 @@ namespace itg
             creatures[i]->integrate();
             creatures[i]->updateNormalisedVelocity();
             ofVec3f toMove = creatures[i]->getVelocity() * Creature::getElapsed();
-#ifndef _DEBUG
             creatures[i]->move(toMove + sin(ofGetElapsedTimef() * creatures[i]->getFrequency()) * toMove * 0.4);
-            
-            /*
-            if (abs(creatures[i]->getPosition().z - cam.getPosition().z) > Creature::fogEnd)
-            {
-                //cout << cam.getPosition().z << " " << creatures[i]->getPosition().z << " " << cam.getPosition().z - fmod(creatures[i]->getPosition().z, Creature::fogEnd) << endl;
-                creatures[i]->setPosition(creatures[i]->getPosition().x, creatures[i]->getPosition().y, cam.getPosition().z - fmod(creatures[i]->getPosition().z, Creature::fogEnd));
-            }*/
-#endif
-            /*ofQuaternion quat;
-            quat.makeRotate(ofVec3f(0, 0, 1), creatures[i]->getNormalisedVelocity());
-            creatures[i]->setOrientation(quat);
-            */
             creatures[i]->slerp(creatures[i]->getPosition() - creatures[i]->getNormalisedVelocity(), ofVec3f(0, 1, 0));
 
 			creatures[i]->update();
@@ -299,21 +332,61 @@ namespace itg
                 pointCreatureMesh.addColor(creaturesByType[i][j]->getColour());
             }
         }
+        
+        unsigned tentacleIdx = 0;
+        for (unsigned i = 0; i < jellies.size(); ++i)
+        {
+            vector<ofVec3f> deformed = jellies[i]->getDeformedTentaclePosns();
+            for (unsigned j = 0; j < deformed.size(); ++j)
+            {
+                tentaclePosns[tentacleIdx] = deformed[j];
+                ++tentacleIdx;
+            }
+        }
+        tentacles.loadDataTexture(ofxGpuParticles::POSITION, tentaclePosns[0].getPtr(), 0, 0, 1, tentacles.getHeight());
+        tentacles.getUpdateShaderRef().begin();
+        tentacles.getUpdateShaderRef().setUniform1f("restLength", TENTACLE_SECTION_LENGTH);
+        tentacles.getUpdateShaderRef().setUniform1f("numSections", (float)TENTACLE_NUM_SECTIONS);
+        tentacles.getUpdateShaderRef().setUniform1f("elapsed", Creature::getElapsed());
+        tentacles.getUpdateShaderRef().end();
+        tentacles.update();
     }
     
     void Creatures::draw(const ofCamera& cam)
     {
         glPushAttrib(GL_ENABLE_BIT);
         glEnable(GL_DEPTH_TEST);
+        
+        // draw all creatures except point creatures
         for (unsigned i = 0; i < creaturesByType.size(); ++i)
         {
+            if (!creaturesByType[i].empty() && creaturesByType[i][0]->getType() == Creature::POINT) break;
+            
             for (unsigned j = 0; j < creaturesByType[i].size(); ++j)
             {
-                if (creaturesByType[i][j]->getType() == Creature::POINT) break;
                 creaturesByType[i][j]->draw(cam);
             }
         }
+        
+        // tentacles
+        ofPushStyle();
+        ofEnableBlendMode(OF_BLENDMODE_ADD);
+        glDepthMask(GL_FALSE);
+        ofSetColor(255);
+        tentacles.getDrawShaderRef().begin();
+        tentacles.getDrawShaderRef().setUniform1f("fogStart", Creature::fogStart);
+        tentacles.getDrawShaderRef().setUniform1f("fogEnd", Creature::fogEnd);
+        tentacles.getDrawShaderRef().setUniform1f("camZ", cam.getZ());
+        tentacles.getDrawShaderRef().end();
+        tentacles.draw();
+        glDepthMask(GL_TRUE);
+        ofDisableBlendMode();
+        ofPopStyle();
+        
+        
+        // point creatures
         pointCreatureMesh.draw();
+        
         /*
         for (int i = 0; i < creatures.size(); ++i)
         {
@@ -324,7 +397,7 @@ namespace itg
     
     void Creatures::loadSeed(const string& path)
     {
-        ifstream fileStream(path.c_str());
+        ifstream fileStream(ofToDataPath(path, true).c_str());
         string data((istreambuf_iterator<char>(fileStream)), std::istreambuf_iterator<char>());
         vector<string> creatureData = ofSplitString(data, "|");
         for (unsigned i = 0; i < creatureData.size() && i < creatures.size(); ++i)

@@ -115,7 +115,6 @@ ofxOculusRift& CloudsVisualSystem::getOculusRift(){
 CloudsVisualSystem::CloudsVisualSystem(){
 	isPlaying = false;
 	timeline = NULL;
-	sharedRenderer = NULL;
 	bIsSetup = false;
 	bClearBackground = true;
 	bDrawToScreen = true;
@@ -156,10 +155,12 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 
 	if(reallocateTarget){
 		if(screenResolutionForced){
+//			renderTarget.allocate(forcedScreenWidth, forcedScreenHeight, GL_RGB, numSamples);
 			renderTarget.allocate(forcedScreenWidth, forcedScreenHeight, GL_RGB, numSamples);
 		}
 		else{
-			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
+//			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
+			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);			
 		}
 		renderTarget.begin();
 		ofClear(0,0,0,1.0);
@@ -196,7 +197,7 @@ void CloudsVisualSystem::setup(){
 		loadBackgroundShader();
 	}
 
-	currentCamera = &cam;
+//	currentCamera = &cam;
 	
     ofDirectory dir;
     string directoryName = getVisualSystemDataPath()+"Presets/";
@@ -289,29 +290,31 @@ void CloudsVisualSystem::stopSystem(){
 	}
 }
 
-float CloudsVisualSystem::getSecondsRemaining(){
-	return secondsRemaining;
+void CloudsVisualSystem::setKeywords(string main, vector<string> allKeywords){
+	main = mainKeyword;
+	keywords = allKeywords;
 }
 
-void CloudsVisualSystem::setSecondsRemaining(float seconds){
-	secondsRemaining = seconds;
-}
+//float CloudsVisualSystem::getSecondsRemaining(){
+//	return secondsRemaining;
+//}
+//
+//void CloudsVisualSystem::setSecondsRemaining(float seconds){
+//	secondsRemaining = seconds;
+//}
 
-void CloudsVisualSystem::setCurrentKeyword(string keyword){
-	currentKeyword = keyword;
-}
 
-string CloudsVisualSystem::getCurrentKeyword(){
-	return currentKeyword;
-}
+//string CloudsVisualSystem::getCurrentKeyword(){
+//	return currentKeyword;
+//}
 
-void CloudsVisualSystem::setCurrentTopic(string topic){
-	currentTopic = topic;
-}
-
-string CloudsVisualSystem::getCurrentTopic(){
-	return currentTopic;
-}
+//void CloudsVisualSystem::setCurrentTopic(string topic){
+//	currentTopic = topic;
+//}
+//
+//string CloudsVisualSystem::getCurrentTopic(){
+//	return currentTopic;
+//}
 
 void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
 									  string speakerLastName,
@@ -1115,20 +1118,6 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
     selfGuiEvent(e);
 }
 
-//void CloudsVisualSystem::setColors(){
-//
-//     cb = ofxUIColor(128,255);
-//     co = ofxUIColor(255, 255, 255, 100);
-//     coh = ofxUIColor(255, 255, 255, 200);
-//     cf = ofxUIColor(255, 255, 255, 200);
-//     cfh = ofxUIColor(255, 255, 255, 255);
-//     cp = ofxUIColor(0, 100);
-//     cpo =  ofxUIColor(255, 200);
-//    for(int i = 0; i < guis.size(); i++){
-//            guis[i]->setUIColors(cb,co,coh,cf,cfh,cp, cpo);
-//    }
-//
-//}
 void CloudsVisualSystem::setupSystemGui()
 {
     sysGui = new ofxUISuperCanvas("SYSTEM", gui);
@@ -1244,33 +1233,11 @@ void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
        // bgBri->setPosAndHome(bgBri->getPos());
         for(int i = 0; i < guis.size(); i++)
         {
-//            guis[i]->setWidgetColor(OFX_UI_WIDGET_COLOR_BACK, ofColor(bgBri,OFX_UI_COLOR_BACK_ALPHA*REZANATOR_GUI_ALPHA_MULTIPLIER));
-//            guis[i]->setColorBack(ofColor(255 - bgBri, OFX_UI_COLOR_BACK_ALPHA*REZANATOR_GUI_ALPHA_MULTIPLIER));
-//            guis[i]->setWidgetColor(OFX_UI_WIDGET_COLOR_BACK, ofColor(bgBri,255));
             guis[i]->setColorBack(ofColor(255*.2, 255*.9));
 			
         }
     }
-//    else if(name == "SAT")
-//    {
-//        bgSat->setPosAndHome(bgSat->getPos());
-//    }
-//    else if(name == "HUE")
-//    {
-//        bgHue->setPosAndHome(bgHue->getPos());
-//    }
-//    else if(name == "BRI2")
-//    {
-//        bgBri2->setPosAndHome(bgBri2->getPos());
-//    }
-//    else if(name == "SAT2")
-//    {
-//        bgSat2->setPosAndHome(bgSat2->getPos());
-//    }
-//    else if(name == "HUE2")
-//    {
-//        bgHue2->setPosAndHome(bgHue2->getPos());
-//    }
+
     else if(name == "GRAD")
     {
         ofxUIToggle *t = (ofxUIToggle *) e.widget;

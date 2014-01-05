@@ -108,9 +108,6 @@ class CloudsVisualSystemOrbit : public CloudsVisualSystem
 
 	//
 	ofCamera& getCameraRef(){
-		if(videoLoaded){
-			return cloudsCamera;
-		}
 		return CloudsVisualSystem::getCameraRef();
 	}
 
@@ -118,7 +115,8 @@ protected:
     
     //  Your Stuff
     //
-    deque<itg::Path> paths;
+    //deque<itg::Path> paths;
+    itg::Path path;
     ofxPostProcessing post;
     ofShader shader;
     unsigned lastPathTime;
@@ -130,20 +128,10 @@ protected:
     //float ellipseW, ellipseH, ellipseAlpha;
     float meshRadius;
     float speed;
-    bool multiplePaths;
+    //bool multiplePaths;
     bool lockCam;
     float lockedCamLag;
     float fogStart, fogEnd;
     float litAmount;
     bool additiveBlending;
-    
-	ofxUISuperCanvas* customGui;
-	bool customToggle;
-	float customFloat1;
-	float customFloat2;
-	
-	bool videoLoaded;
-	ofImage someImage;
-	ofShader pointcloudShader;
-	ofVboMesh simplePointcloud;
 };

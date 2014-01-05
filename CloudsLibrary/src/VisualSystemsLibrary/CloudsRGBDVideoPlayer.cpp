@@ -224,7 +224,7 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
     
-	if(!getPlayer().isLoaded()){
+	if(!getPlayer().isLoaded() || !getPlayer().getTextureReference().isAllocated()){
 		//ofLogWarning() << " CloudsRGBDVideoPlayer::setupProjectionUniforms -- player is not ready";
 		return;
 	}
@@ -287,6 +287,7 @@ ofVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	
+	//TODO: Optimize these!
 	if(!playingVO){
 		currentPlayer->update();
 	}
@@ -306,6 +307,10 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		float duration = getPlayer().getDuration();
 		float handleLength = 1.1;
 		
+		//sometimes NAN comes back from position.
+		if(position != position){
+			return;
+		}
 		//cout << "position is " << position << " " << duration << " duration " << endl;
 		
 		fadeInValue = MIN(position, 1.0);
@@ -316,8 +321,6 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		else if(position > duration - 1.0){
 			audioVolume = ofMap(position, duration - 1.1, duration - 1.0, maxVolume, 0.0, true);
 		}
-		
-		//audioVolume = 0.0;
 		
 		getPlayer().setVolume(audioVolume);
 

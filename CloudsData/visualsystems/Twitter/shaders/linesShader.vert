@@ -6,7 +6,7 @@
 
 uniform sampler2DRect activityMap;
 varying float edgePositionMix;
-varying float popMix;
+varying float synapseMix;
 varying float activityValue;
 
 void main(){
@@ -14,7 +14,7 @@ void main(){
 	gl_FrontColor = gl_Color;
 	
 	edgePositionMix = gl_Normal.x;
-	popMix = gl_Normal.y;
+	synapseMix = gl_Normal.y;
 	
 	activityValue = texture2DRect(activityMap, gl_MultiTexCoord0.st).r;
 	

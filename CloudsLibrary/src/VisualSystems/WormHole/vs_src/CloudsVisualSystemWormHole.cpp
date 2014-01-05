@@ -5,11 +5,6 @@
 #include "CloudsVisualSystemWormHole.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemWormHole::selfSetupGui(){
 	
@@ -79,6 +74,7 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	}
 	shaderGui->addSpacer();
 	shaderGui->addToggle("depthTest", &bDepthTest);
+	shaderGui->addToggle("backface culling", &bCullBackface);
 	shaderGui->addSpacer();
 	shaderGui->addLabel("ALPHA_BLENDING");
 	shaderGui->addRadio("blendModes", blendNames);
@@ -411,6 +407,8 @@ void CloudsVisualSystemWormHole::selfSetDefaults()
 	lightConstantAttenuation = .7;
 	lightLinearAttenuation = .01;
 	lightQuadraticAttenuation = .01;
+	
+	bCullBackface = true;
 }
 
 void CloudsVisualSystemWormHole::selfSetup()

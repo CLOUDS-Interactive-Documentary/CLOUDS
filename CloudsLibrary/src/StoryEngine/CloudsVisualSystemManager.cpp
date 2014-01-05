@@ -4,7 +4,6 @@
 #include "CloudsGlobal.h"
 
 #ifndef CLOUDS_NO_VS
-#include "CloudsVisualSystemClusterMap.h"
 #include "CloudsVisualSystem2DVideo.h"
 #include "CloudsVisualSystem3DModelLoader.h"
 #include "CloudsVisualSystemAstrolabe.h"
@@ -62,7 +61,8 @@
 #include "CloudsVisualSystemPages.h"
 #include "CloudsVisualSystemPaintBrush.h"
 #include "CloudsVisualSystemPhotoGlitch.h"
-//#include "CloudsVisualSystemQuineVisualSystem.h"
+#include "CloudsVisualSystemProcess11.h"
+#include "CloudsVisualSystemProcess18.h"
 #include "CloudsVisualSystemRGBDVideo.h"
 #include "CloudsVisualSystemRandomDigits.h"
 #include "CloudsVisualSystemReplicator.h"
@@ -70,7 +70,7 @@
 #include "CloudsVisualSystemRulez.h"
 #include "CloudsVisualSystemSatoruhiga.h"
 #include "CloudsVisualSystemScrape.h"
-#include "CloudsVisualSystemSwim.h"
+//#include "CloudsVisualSystemSwim.h" //TEMP
 #include "CloudsVisualSystemTerrain.h"
 #include "CloudsVisualSystemThingsInTheDark.h"
 #include "CloudsVisualSystemTunnelDrawing.h"
@@ -104,7 +104,6 @@ struct Mapping {
 		return map<string,tConstructor>::value_type(classname, constructor);
 	}
 } mapping[] = {
-	{ "_ClusterMap", &fCreate<CloudsVisualSystemClusterMap> },
 	{ "2DVideo", &fCreate<CloudsVisualSystem2DVideo> },
 	{ "3DModelLoader", &fCreate<CloudsVisualSystem3DModelLoader> },
 	{ "Astrolabe", &fCreate<CloudsVisualSystemAstrolabe> },
@@ -162,7 +161,8 @@ struct Mapping {
 	{ "Pages", &fCreate<CloudsVisualSystemPages> },
 	{ "PaintBrush", &fCreate<CloudsVisualSystemPaintBrush> },
 	{ "PhotoGlitch", &fCreate<CloudsVisualSystemPhotoGlitch> },
-//	{ "QuineVisualSystem", &fCreate<CloudsVisualSystemQuineVisualSystem> },
+	{ "Process11", &fCreate<CloudsVisualSystemProcess11> },
+	{ "Process18", &fCreate<CloudsVisualSystemProcess18> },
 	{ "RGBDVideo", &fCreate<CloudsVisualSystemRGBDVideo> },
 	{ "RandomDigits", &fCreate<CloudsVisualSystemRandomDigits> },
 	{ "Replicator", &fCreate<CloudsVisualSystemReplicator> },
@@ -170,7 +170,7 @@ struct Mapping {
 	{ "Rulez", &fCreate<CloudsVisualSystemRulez> },
 	{ "Satoruhiga", &fCreate<CloudsVisualSystemSatoruhiga> },
 	{ "Scrape", &fCreate<CloudsVisualSystemScrape> },
-	{ "Swim", &fCreate<CloudsVisualSystemSwim> },
+//	{ "Swim", &fCreate<CloudsVisualSystemSwim> }, TEMP
 	{ "Terrain", &fCreate<CloudsVisualSystemTerrain> },
 	{ "ThingsInTheDark", &fCreate<CloudsVisualSystemThingsInTheDark> },
 	{ "TunnelDrawing", &fCreate<CloudsVisualSystemTunnelDrawing> },
@@ -306,6 +306,18 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 	
 	savePresets();
 	
+	#endif
+}
+
+
+//--------------------------------------------------------------------
+ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::getEmptySystem(string mainKeyword, vector<string> keywords){
+	#ifdef CLOUDS_NO_VS
+	return NULL;
+	#else
+	ofPtr<CloudsVisualSystem> ptr(new CloudsVisualSystemEmpty() );
+	ptr->setKeywords(mainKeyword, keywords);
+	return ptr;
 	#endif
 }
 
@@ -594,11 +606,13 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 		}
 	}
 	
-	//add linked clips
-	if(clipToPresetLinks.find(clipName) != clipToPresetLinks.end()){
-		for(int i = 0; i < clipToPresetLinks[clipName].size(); i++){
-			if( !ofContains(presetIds, clipToPresetLinks[clipName][i]) ){
-				presetsWithKeywords.push_back( getPresetWithID(clipToPresetLinks[clipName][i]) );
+	if(clipName != ""){
+		//add linked clips
+		if(clipToPresetLinks.find(clipName) != clipToPresetLinks.end()){
+			for(int i = 0; i < clipToPresetLinks[clipName].size(); i++){
+				if( !ofContains(presetIds, clipToPresetLinks[clipName][i]) ){
+					presetsWithKeywords.push_back( getPresetWithID(clipToPresetLinks[clipName][i]) );
+				}
 			}
 		}
 	}

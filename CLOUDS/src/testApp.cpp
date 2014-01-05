@@ -72,7 +72,6 @@ void testApp::setup(){
 	//temp sound stuff
 	//sound.setMasterAmp(1.0);
 	useScratch = false;
-	
 }
 
 //--------------------------------------------------------------
@@ -97,18 +96,17 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-	if(key == 'p'){
-		useScratch = !useScratch;
-		if(useScratch){
-			player.setUseScratch( true );
-//			sound.setMasterAmp(0.0);
-		}
-		else{
-			player.setUseScratch( false );
-//			sound.setMasterAmp(1.0);
-		}
-	}
-    
+//	if(key == 'p'){
+//		useScratch = !useScratch;
+//		if(useScratch){
+//			player.setUseScratch( true );
+////			sound.setMasterAmp(0.0);
+//		}
+//		else{
+//			player.setUseScratch( false );
+////			sound.setMasterAmp(1.0);
+//		}
+//	}    
 //    if( key == 'T'){
 //        CloudsClip& clip = parser.getRandomClip(true,true);
 //        player.setRandomQuestion(clip);
@@ -117,12 +115,10 @@ void testApp::keyPressed(int key){
     
 }
 
-//--------------------------------------------------------------
-void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
-
-	mixer.fillBuffer(output,bufferSize,nChannels);
-	
-}
+////--------------------------------------------------------------
+//void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
+//	mixer.fillBuffer(output,bufferSize,nChannels);
+//}
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){

@@ -717,9 +717,13 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
         preset.randomlySelected = false;
     }
     else{
-        preset = visualSystems->getRandomEnabledPreset();
-        log += ",ERROR,no presets found! " + preset.getID() + " enabled staus : "+ ofToString(preset.enabled) +"\n";
+//        preset = visualSystems->getRandomEnabledPreset();
+		preset.system = visualSystems->getEmptySystem(keyword, currentClip.getKeywords());
+		preset.systemName = "MISSING";
+		preset.presetName = keyword;
         preset.randomlySelected = true;
+		preset.missingContent = true;
+        log += ",ERROR,no presets found! " + keyword + "\n";
     }
     preset.defaultedToFamily = triedFamily;
     preset.conjureKeyword = keyword;

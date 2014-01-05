@@ -6,7 +6,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>art versus engineering</revokedKeywords>
-    <additionalKeywords>art vs engineering,?career: Can work and fun be one in the same?</additionalKeywords>
+    <additionalKeywords>art vs engineering,?career: How do tech-artists approach engineering?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - exciting time</name>
@@ -51,7 +51,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>storage</revokedKeywords>
-    <additionalKeywords>archiving,new media,personal data,#easy,?technology: What is new and innovative in new media?</additionalKeywords>
+    <additionalKeywords>archiving,new media,personal data,#easy,?technology: What is 'new' in new media?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - mini-brains</name>
@@ -229,7 +229,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#logical,#art,?future of cinema: What will movies become in the future?</additionalKeywords>
+    <additionalKeywords>#logical,#art,?future of cinema: What's the future of cinema?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - story medium</name>
@@ -303,7 +303,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>?future of cinema: What happens when videogames and cinema converge?</additionalKeywords>
+    <additionalKeywords>?future of cinema: What happens when games and cinema converge?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - stories make our lives worth living</name>
@@ -332,7 +332,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#emotional,#sincere,#conclusion,#gold,#serious,#inspiring,?storytelling: What&apos;s the purpose of storytelling?</additionalKeywords>
+    <additionalKeywords>#emotional,#sincere,#conclusion,#gold,#serious,#inspiring,?storytelling: Why do humans create stories?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - stories through our brains</name>
@@ -583,7 +583,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>digital meets physical,?digital meets physical: What are the advantages of virtual communication?,#inspiring,#emotional,#fun,#sincere,#mindblowing</additionalKeywords>
+    <additionalKeywords>digital meets physical,?digital meets physical: How do people communicate now?,#inspiring,#emotional,#fun,#sincere,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - dreaming together</name>
@@ -737,7 +737,7 @@
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Philip - young medium</target>
+        <target>Philip - young medium</target> 
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -751,7 +751,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>?technological progress: What&apos;s driving the rapid pace of progress?,#easy,#logical,#rational,#sincere</additionalKeywords>
+    <additionalKeywords>?technological progress: What&apos;s drives technological progress?,#easy,#logical,#rational,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - autonomous storytellers</name>
@@ -902,7 +902,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>#pe?Sheep Market,#example,#sincere,#breakthrough,?crowdsourcing: How does a creative project employ crowdsourcing?</additionalKeywords>
+    <additionalKeywords>#pe?Sheep Market,#example,#sincere,#breakthrough,?crowdsourcing: How 10,000 people collaborate on one project?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - sheep market 2</name>
@@ -985,7 +985,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>collective intelligence,#serious,#logical,#easy,?network: How has the internet changed everything?</additionalKeywords>
+    <additionalKeywords>collective intelligence,#serious,#logical,#easy,?network: Has the internet made us more creative?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - data experience</name>
@@ -995,7 +995,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>big data</revokedKeywords>
-    <additionalKeywords>cinema,narrative,#inspiring,#gold,?narrative: How do we bring narrative meaning to large data sets?</additionalKeywords>
+    <additionalKeywords>cinema,narrative,#inspiring,#gold,?narrative: How is meaning extracted from big data sets?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - data storytelling</name>
@@ -1024,7 +1024,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>datatelling,#emotional,#inspiring,#sincere,#mindblowing,?storytelling: How do we use data to tell stories in new ways?</additionalKeywords>
+    <additionalKeywords>datatelling,#emotional,#inspiring,#sincere,#mindblowing,?storytelling: What can data tell us about ourselves?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - webGL</name>
@@ -1053,7 +1053,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#mundane,#breakthrough,#logical,#tech,?virtual: What&apos;s the current state of virtual reality?</additionalKeywords>
+    <additionalKeywords>#mundane,#breakthrough,#logical,#tech,?virtual: Why don't we surf the web in 3D?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - lego creatures</name>
@@ -1316,7 +1316,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#gold,#conclusion,#mindblowing,?experience design: How does digital design apply to everyday life?</additionalKeywords>
+    <additionalKeywords>#gold,#conclusion,#mindblowing,?experience design: How can software enhance real world experiences?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - the best games are great stories</name>
@@ -2600,7 +2600,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?science: Why isn&apos;t science more invested in aesthetics?,#logical,#obstacle,#discouraging</additionalKeywords>
+    <additionalKeywords>?science: Why isn&apos;t science more concerned with aesthetics?,#logical,#obstacle,#discouraging</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - correct is beautiful</name>
@@ -3463,7 +3463,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>gender gap,women</revokedKeywords>
-    <additionalKeywords>gender,eyeo,community,?gender: Does the prevalance of men in technology tend to crowd out females?,#obstacle,#mundane</additionalKeywords>
+    <additionalKeywords>gender,eyeo,community,?gender: Does the field of technology remain male dominated?,#obstacle,#mundane</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - glass ceiling</name>
@@ -3478,7 +3478,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>women,gender gap</revokedKeywords>
-    <additionalKeywords>gender,?gender: Does the prevalance of men in technology tend to crowd out females?,#mundane</additionalKeywords>
+    <additionalKeywords>gender,?gender: Does the field of technology remain male dominated?,#mundane</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - Significant othered</name>
@@ -3759,7 +3759,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>useless,?data visualization: What&apos;s the purpose of data visualization?,#obstacle,#tech,#easy</additionalKeywords>
+    <additionalKeywords>useless,?data visualization: What can data visualization teach us?,#obstacle,#tech,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - technoutopian</name>
@@ -4720,7 +4720,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#transcript,?writing: How do we use data to tell stories in new ways?</additionalKeywords>
+    <additionalKeywords>#transcript,?writing: How do we use data to tell stories?</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Dead sea scrolls</name>
@@ -5441,7 +5441,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#hard,?new media: Is software art more transient than other mediums?</additionalKeywords>
+    <additionalKeywords>#hard,?new media: What's the shelf life of new media?</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Art history vs Trendspotting</name>
@@ -5521,7 +5521,7 @@
 </clip>
 <clip>
     <name>Bruce - Future art</name>
-    <additionalKeywords>#hard,?fantasy technology: What form of technology can you imagine which doesn&apos;t yet exist?</additionalKeywords>
+    <additionalKeywords>#hard,?fantasy technology: What's the future of art and technology?</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - camera of future 25 years</name>
@@ -5540,7 +5540,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?machine vision: What&apos;s the camera of the future?</additionalKeywords>
+    <additionalKeywords>?machine vision: How will the camera of the future work?</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Future camera 1</name>
@@ -5758,7 +5758,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#hard,?virtual reality: What does augmented reality look like?</additionalKeywords>
+    <additionalKeywords>#hard,?virtual reality: What does it feel like to be made of voxels</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - future city 1</name>
@@ -5789,7 +5789,7 @@
 </clip>
 <clip>
     <name>Bruce - not one cyberpunk idea</name>
-    <additionalKeywords>#hard,?cyberpunk: Are we living in a cyberpunk world?</additionalKeywords>
+    <additionalKeywords>#hard,?cyberpunk: Do we live in the future that Cyberpunk predicted?</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Not one idea of the future</name>
@@ -5953,7 +5953,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>journey,#sincere,#inspiring,#hard,?creativity: What drives us to be creative?</additionalKeywords>
+    <additionalKeywords>journey,#sincere,#inspiring,#hard,?creativity: What sustains our creativity?</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - obsessed with tactics</name>
@@ -6052,7 +6052,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#hard,?twitter: Is the internet becoming a global brain?</additionalKeywords>
+    <additionalKeywords>#hard,?twitter: Is the net becoming a global brain?</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - A sappy Singularity</name>
@@ -6076,7 +6076,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#serious,#discouraging,#emotional,#hard,#tech,?singularity: What will happen when we reach the Singularity?</additionalKeywords>
+    <additionalKeywords>#serious,#discouraging,#emotional,#hard,#tech,?singularity: What happens when the Singularity arrives?</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Hi I&apos;m conscious</name>
@@ -6490,7 +6490,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>code is messy,exploration,uncertainty</revokedKeywords>
-    <additionalKeywords>?thinking by doing: How does the form of a design emerge?,#art,#easy,improvization,intuition</additionalKeywords>
+    <additionalKeywords>?thinking by doing: How does a design emerge?,#art,#easy,improvization,intuition</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Borrowing from culture</name>
@@ -6545,7 +6545,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>where does the creative process begin?&#x0D;influences</revokedKeywords>
-    <additionalKeywords>creativity,hybridity,music,influence,#fun,#easy,#art,?creativity: What&apos;s the key to being creative?,interestingness</additionalKeywords>
+    <additionalKeywords>creativity,hybridity,music,influence,#fun,#easy,#art,?creativity: What nourishes creativity?,interestingness</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Systems theory</name>
@@ -6620,7 +6620,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>how do you build serendipity into your systems?&#x0D;emergence</revokedKeywords>
-    <additionalKeywords>emergence,#mindblowing,?systems: How can simple rules have complex results?</additionalKeywords>
+    <additionalKeywords>emergence,#mindblowing,?systems: How can a simple set of rules have complex results?</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - emergence</name>
@@ -7089,7 +7089,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?community: When did the community&apos;s creative strength become apparent?,#breakthrough,#tech</additionalKeywords>
+    <additionalKeywords>?community: How did the Processing community take shape?,#breakthrough,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - group teaching</name>
@@ -7137,7 +7137,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#example,#pe?Coronal Mass Ejection,#inspiring,#breakthrough</additionalKeywords>
+    <additionalKeywords>?community: Who were the first serious users of Processing?,#example,#pe?Coronal Mass Ejection,#inspiring,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Style diffuses</name>
@@ -7230,7 +7230,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>rules,?algorithm: What&apos;s the tiniest algorithm?,#mindblowing,#easy,#logical</additionalKeywords>
+    <additionalKeywords>rules,?algorithm: What's the algorithmic equivalent of haiku?,#mindblowing,#easy,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - randomness</name>
@@ -7244,7 +7244,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>?randomness: What is randomness?,#tech,#logical</additionalKeywords>
+    <additionalKeywords>?randomness: What generates randomness?,#tech,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Software is what i love the most</name>
@@ -7273,7 +7273,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>creativity,#emotional,#sincere,#easy,?software: How did you choose the code as a medium?</additionalKeywords>
+    <additionalKeywords>creativity,#emotional,#sincere,#easy,?software: Why use code as a design tool?</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - teaching at UCLA</name>
@@ -7795,7 +7795,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>?history: What&apos;s the relevance of art history?,#sincere,#art</additionalKeywords>
+    <additionalKeywords>?history: What's the history of generative art?,#sincere,#art</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - ideas of art history</name>
@@ -7818,7 +7818,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>new media,beginnings,?time: How is time essential to your work?</additionalKeywords>
+    <additionalKeywords>new media,beginnings</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Programming at 26</name>
@@ -8042,7 +8042,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#easy,?emergence: How do lifelike behaviors emerge from an artificial system?,#mindblowing,#gold</additionalKeywords>
+    <additionalKeywords>#easy,?emergence: How do lifelike behaviors emerge from code?,#mindblowing,#gold</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Developing a microworld</name>
@@ -8122,7 +8122,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>abstraction</revokedKeywords>
-    <additionalKeywords>representation,cosmogeny,?cosmogeny:How do you build a universe?,#mindblowing,?world building: Why attempt to recreate the world inside a computer?,#easy</additionalKeywords>
+    <additionalKeywords>representation,cosmogeny,?cosmogeny:How do you build a universe?,#mindblowing,?world building: Why recreate the world inside a computer?,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Massive parallel systems</name>
@@ -8289,7 +8289,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>future of cinema,#gold,#inspiring,#mindblowing,#surreal,?future of cinema: how will we experience movies in the future?</additionalKeywords>
+    <additionalKeywords>future of cinema,#gold,#inspiring,#mindblowing,#surreal,?future of cinema: What's the future of cinema?</additionalKeywords>
 </clip>
 <clip>
     <name>Elliot_UK - wiremape_description</name>
@@ -8555,7 +8555,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#mindblowing,#gold,#art,?vision: What does the world look like through a computational lens?</additionalKeywords>
+    <additionalKeywords>#mindblowing,#gold,#art,?vision: How does the world appear in the eyes of a computer?</additionalKeywords>
 </clip>
 <clip>
     <name>Elliot_UK - Ideaspace</name>
@@ -8614,7 +8614,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#inspiring,#surreal,#serious,#hard,?ideas: Can someone claim ownership of an idea?</additionalKeywords>
+    <additionalKeywords>#inspiring,#surreal,#serious,#hard,?ideas: Can one person claim ownership of an idea?</additionalKeywords>
 </clip>
 <clip>
     <name>Elliot_UK - Laying claim on ideas</name>
@@ -8790,7 +8790,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>microscopic</revokedKeywords>
-    <additionalKeywords>microscope,#easy,#mindblowing,?social: What is facebook if not a psychology experiment?</additionalKeywords>
+    <additionalKeywords>microscope,#easy,#mindblowing,?social: How do social scientists use Facebook?</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - History flow 3</name>
@@ -8809,7 +8809,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#inspiring,#emotional,?collective intelligence: How does collective intelligence work?</additionalKeywords>
+    <additionalKeywords>#inspiring,#emotional,?collective intelligence: How do groups of people think together?</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - History flow 4</name>
@@ -8932,7 +8932,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#gold,#sincere,#inspiring,#easy,?data visualization: What is gained by visualizing data?</additionalKeywords>
+    <additionalKeywords>#gold,#sincere,#inspiring,#easy,?data visualization: How does the eye process information?</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - seeing patterns 2</name>
@@ -9070,7 +9070,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#logical,?pattern: How does data reveal the bigger picture?</additionalKeywords>
+    <additionalKeywords>#logical,?pattern: How does data reveal about the big picture?</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - Wind visualization 2</name>
@@ -9358,7 +9358,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#rational,#breakthrough,#hard,?complexity: Why do visualizations need to look so complex?</additionalKeywords>
+    <additionalKeywords>#rational,#breakthrough,#hard,?complexity: Why do data visualization always look so complex?</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - defense of complexity 2</name>
@@ -9690,7 +9690,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#obstacle,#example,#hard,?viral: How do memes spread through the network?</additionalKeywords>
+    <additionalKeywords>#obstacle,#example,#hard,?viral: How do memes spread?</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - Googe plus 2</name>
@@ -10087,7 +10087,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>people,#emotional,#gold,#sincere,#inspiring,#easy,?social: What does social media reveal about human behavior?</additionalKeywords>
+    <additionalKeywords>people,#emotional,#gold,#sincere,#inspiring,#easy,?social: How social media reflect human nature?</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - mainstreaming of data viz</name>
@@ -10135,7 +10135,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#easy,#inspiring,#sincere,questions,?science: How can scientific inquiry inform the creative process?</additionalKeywords>
+    <additionalKeywords>#easy,#inspiring,#sincere,questions,?science: How does the scientific method apply to creativity?</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - hybrid community</name>
@@ -10468,7 +10468,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#easy,?data: How can we make data more relatable?</additionalKeywords>
+    <additionalKeywords>#easy,?data: How can data become more accessible?</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - fleshmap1</name>
@@ -10492,15 +10492,15 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#emotional,#hard,?data: What&apos;s difficult to visualize?</additionalKeywords>
+    <additionalKeywords>#emotional,#hard,?data: How does data reflect desire?</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - fleshmap2</name>
-    <additionalKeywords>#hard,#emotional,?sex: How can data provide insights on human sexuality?</additionalKeywords>
+    <additionalKeywords>#hard,#emotional,?sex: How does data reflect desire?</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - fleshmap 3</name>
-    <additionalKeywords>?data visualization: How can data offer a window into the subconscious?,#hard</additionalKeywords>
+    <additionalKeywords>#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - what is data</name>
@@ -10690,7 +10690,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>?truth: How do you perceive truth?,#hard,#sincere,#rational,#art</additionalKeywords>
+    <additionalKeywords>?truth: What does truth look like?,#hard,#sincere,#rational,#art</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - Data questions</name>
@@ -10787,7 +10787,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>art versus engineering</revokedKeywords>
-    <additionalKeywords>art vs engineering,useless,useful,#fun,#art,?useless: If the art needn&apos;t have a function then what is its value?,#hard</additionalKeywords>
+    <additionalKeywords>art vs engineering,useless,useful,#fun,#art,?useless: What's the value of art?,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - wide open field</name>
@@ -11385,7 +11385,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>imagination,?serendipity: What&apos;s the role of serendipity?,#inspiring,#art,#emotional,control</additionalKeywords>
+    <additionalKeywords>imagination,?serendipity: Does result need to follow intention?,#inspiring,#art,#emotional,control</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - this to that</name>
@@ -12332,7 +12332,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#mundane,#logical,#hard,?data ownership: How do API&apos;s make data more open and accessible?</additionalKeywords>
+    <additionalKeywords>#mundane,#logical,#hard,?data ownership: How can data become more accessible?</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - hackathon</name>
@@ -12684,7 +12684,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>new media old media</revokedKeywords>
-    <additionalKeywords>new media,old media,#ironic,#hard,?new media: Is software art more transient than other mediums?</additionalKeywords>
+    <additionalKeywords>new media,old media,#ironic,#hard,?new media: What's the shelf life of new media?</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - laughter</name>
@@ -13062,7 +13062,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>new aesthetic,?artificial intelligence: How advanced is artificial intelligence currently?,#hard,#tech,#rational,#mindblowing</additionalKeywords>
+    <additionalKeywords>new aesthetic,?artificial intelligence: What's the current state of artificial intelligence?,#hard,#tech,#rational,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - AI 2</name>
@@ -13116,7 +13116,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>weird,?artificial intelligence: How does artificial intelligence compare to human intelligence?,#mindblowing,#hard,#surreal</additionalKeywords>
+    <additionalKeywords>weird,?artificial intelligence: What happens when machines become smarter than humans?,#mindblowing,#hard,#surreal</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - object oriented ontology 1</name>
@@ -13166,7 +13166,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>link:greg - object oriented ontology 2</revokedKeywords>
-    <additionalKeywords>#hard,#mindblowing,#tech,?man vs machine: What is object oriented ontology?</additionalKeywords>
+    <additionalKeywords>#hard,#mindblowing,#tech,?man vs machine: Do machines have a 'existence'?</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - object oriented ontology 3</name>
@@ -14672,7 +14672,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>attention,boring,?staring at screens: Does staring at screens have side effects?,#obstacle,#discouraging,#serious</additionalKeywords>
+    <additionalKeywords>attention,boring,?staring at screens: How much time do you spend in front of a computer?,#obstacle,#discouraging,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - struggle with programming</name>
@@ -15751,7 +15751,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?play: Does art have to be serious?,#serious,#obstacle,#easy</additionalKeywords>
+    <additionalKeywords>?play: Why does most art take itself seriously?,#serious,#obstacle,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - rafael&apos;s cardiogram</name>
@@ -16307,7 +16307,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>?truth: How do you navigate around truth?,#hard,#serious</additionalKeywords>
+    <additionalKeywords>?truth: How does one find truth?,#hard,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - numbers and words</name>
@@ -17106,7 +17106,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#sincere,#mundane,#hard,?solutions: What problems are you trying to solve?</additionalKeywords>
+    <additionalKeywords>#sincere,#mundane,#hard,?solutions: What societal issues can designers address?</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - right choice 1</name>
@@ -18470,7 +18470,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>maps,#discouraging,#serious,#tech,#hard,?gps: What happens to the location histories stored on our phones?</additionalKeywords>
+    <additionalKeywords>maps,#discouraging,#serious,#tech,#hard,?gps:Can the NSA track your location?</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Thanks</name>
@@ -18633,7 +18633,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#inspiring,#serious,#tech,#hard,?software: What does open source mean?</additionalKeywords>
+    <additionalKeywords>#inspiring,#serious,#tech,#hard,?software: Why is commercial software so expensive?</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Post-capitalism</name>
@@ -18911,7 +18911,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>collective intelligence,social,#inspiring,#breakthrough,#mindblowing,?collective intelligence: What does the ideal network of creativity look like?</additionalKeywords>
+    <additionalKeywords>collective intelligence,social,#inspiring,#breakthrough,#mindblowing,?collective intelligence: What does the ideal creative network look like?</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - Bicycles for the Mind</name>
@@ -19242,7 +19242,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>what is this camera rig,describe rgbd?</revokedKeywords>
-    <additionalKeywords>?kinect: How does this camera work?,#logical,#mindblowing,#easy</additionalKeywords>
+    <additionalKeywords>?kinect: How does a depth camera work?,#logical,#mindblowing,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - increased the bandwidth</name>
@@ -19379,7 +19379,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>coding,#sincere,#mindblowing,#tech,#easy,?coding: How did you become interested in programming?</additionalKeywords>
+    <additionalKeywords>coding,#sincere,#mindblowing,#tech,#easy,?coding: How do you become a hacker?</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - be a robot</name>
@@ -19838,7 +19838,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#gold,#ironic,#fun,?collaboration: What does an ideal network of creativity look like?</additionalKeywords>
+    <additionalKeywords>#gold,#ironic,#fun,?collaboration: Who is the Anonymous genius?</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - enough cooks</name>
@@ -19903,7 +19903,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>open source</revokedKeywords>
-    <additionalKeywords>#fun,#rational,?collaboration: Are groups of people working together more creative than individuals?</additionalKeywords>
+    <additionalKeywords>#fun,#rational,?collaboration: Are collectives more creative than individuals working alone?</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - originality</name>
@@ -20077,7 +20077,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>post digital,link:maeda - about relationships</revokedKeywords>
-    <additionalKeywords>post-digital,#inspiring,#sincere,?post-digital: Can computers help us to be better human beings?</additionalKeywords>
+    <additionalKeywords>post-digital,#inspiring,#sincere,?post-digital: Are we alone together?</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - immersion</name>
@@ -20162,7 +20162,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>funny</revokedKeywords>
-    <additionalKeywords>#fun,#ironic,?immersion: How can technology create an immersive experience?</additionalKeywords>
+    <additionalKeywords>#fun,#ironic,?immersion: Where do you find immersion?</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - immersion2</name>
@@ -20236,7 +20236,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>?immersion: How can technology create an immersive experience?,#mindblowing,#tech,#fun</additionalKeywords>
+    <additionalKeywords>?immersion: What is immersive?,#mindblowing,#tech,#fun</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - they will learn</name>
@@ -20626,7 +20626,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#easy,?communty: What definies this community?</additionalKeywords>
+    <additionalKeywords>#easy,?communty: What defines this community?</additionalKeywords>
 </clip>
 <clip>
     <name>Julia - tech to pop culture</name>
@@ -21179,7 +21179,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>link:marius - new tools change perception</revokedKeywords>
-    <additionalKeywords>perception,staring at screens,attention,critical engineering,#gold,#sincere,?attenion: Does technology have negative side effects?</additionalKeywords>
+    <additionalKeywords>perception,staring at screens,attention,critical engineering,#gold,#sincere,?attenion: How are we shaped by technology?</additionalKeywords>
 </clip>
 <clip>
     <name>Julia - million facebook</name>
@@ -21618,7 +21618,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>link: marius - new aesthetic</revokedKeywords>
-    <additionalKeywords>engineering,transparency,#rational,#tech,#logical,#hard,?critical engineering: What is the job description of a critical engineer?</additionalKeywords>
+    <additionalKeywords>engineering,transparency,#rational,#tech,#logical,#hard,?critical engineering: What's the idea behind critical engineering?</additionalKeywords>
 </clip>
 <clip>
     <name>Julian - Transparency</name>
@@ -21701,7 +21701,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#hard,#ironic,?elegance: How can designers improve user experience?</additionalKeywords>
+    <additionalKeywords>#hard,#ironic,?opacity: What are the side effects of seamlessness?</additionalKeywords>
 </clip>
 <clip>
     <name>Julian - toolkit culture</name>
@@ -23511,7 +23511,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>processing power</revokedKeywords>
-    <additionalKeywords>computation,the cloud,?computer: What is a computer?,#rational,#mindblowing</additionalKeywords>
+    <additionalKeywords>computation,the cloud,?computer: What's the future of computing?,#rational,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Karsten - Educational tools</name>
@@ -23689,7 +23689,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#obstacle,#sincere,#hard,?open source: What are the limits of open source?</additionalKeywords>
+    <additionalKeywords>#obstacle,#sincere,#hard,?open source: What's the limit of open source?</additionalKeywords>
 </clip>
 <clip>
     <name>Karsten - always improved</name>
@@ -23908,7 +23908,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?history: What&apos;s the connection between videogame culture and creative coding?,#tech</additionalKeywords>
+    <additionalKeywords>?demo scene: How did 8-bit games influence this generation?,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Karsten - 256 bytes part 1</name>
@@ -24460,7 +24460,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#hard,#tech,#rational,#mindblowing,?hackers: Do hackers pose a real threat to the function of society?</additionalKeywords>
+    <additionalKeywords>#hard,#tech,#rational,#mindblowing,?hackers: Do hackers pose a real threat?</additionalKeywords>
 </clip>
 <clip>
     <name>Karsten - literacy issues&apos;</name>
@@ -24803,7 +24803,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>scale,perception,#mindblowing,#gold,#hard,#serious,?network: How big is the internet?,unknown</additionalKeywords>
+    <additionalKeywords>scale,perception,#mindblowing,#gold,#hard,#serious,?network: What's the size of the internet?,unknown</additionalKeywords>
 </clip>
 <clip>
     <name>Karsten - infinite conversation</name>
@@ -26223,7 +26223,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>collective intelligence,?collective intelligence: Is the internet forming a global brain?</additionalKeywords>
+    <additionalKeywords>collective intelligence,?collective intelligence: Is the net becoming a global brain?</additionalKeywords>
 </clip>
 <clip>
     <name>Kevin - Getting smarter together</name>
@@ -26273,7 +26273,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>networked intelligence</revokedKeywords>
-    <additionalKeywords>collective intelligence,#conclusion,#hard,?collective intelligence: Is the network greater than the sum of the nodes?</additionalKeywords>
+    <additionalKeywords>collective intelligence,#conclusion,#hard,?collective intelligence: Are we getting smarter?</additionalKeywords>
 </clip>
 <clip>
     <name>Kevin - tracking rendition flights</name>
@@ -26382,7 +26382,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>art and experience</revokedKeywords>
-    <additionalKeywords>experience,experience design,abstraction,#hard,?perception: How do algorithms alter perception?</additionalKeywords>
+    <additionalKeywords>experience,experience design,abstraction,#hard,?perception: How have algorithms tranformed the experience of art?</additionalKeywords>
 </clip>
 <clip>
     <name>Kevin - Distributable perceptual model</name>
@@ -26436,7 +26436,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#hard,#gold,?perception: What is the Gesamtkunstwerk - the ultimate work of art?</additionalKeywords>
+    <additionalKeywords>#hard,#gold,?perception: What is the ultimate artform?</additionalKeywords>
 </clip>
 <clip>
     <name>Kevin - human perception</name>
@@ -26925,7 +26925,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>consciousness,#transcript,#conclusion,#hard,?consciousness: When will computers become conscious?</additionalKeywords>
+    <additionalKeywords>consciousness,#transcript,#conclusion,#hard,?consciousness: When will computers attain self-awareness?</additionalKeywords>
 </clip>
 <clip>
     <name>Kevin - cognition vs computation 2</name>
@@ -27243,7 +27243,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>trendspotting,style,?new aesthetic: What is the new aesthetic?</additionalKeywords>
+    <additionalKeywords>trendspotting,style,?new aesthetic: What is the New Aesthetic?</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_CH - new aesthetic 2</name>
@@ -27731,7 +27731,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#hard,?future: How will archaeologists in the future learn about our civilization?</additionalKeywords>
+    <additionalKeywords>#hard,?future: How will future archaeologists learn about our civilization?</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_CH - Cory Arcangel</name>
@@ -27775,7 +27775,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#hard,#fun,?videogames: How have videogames influenced the upcoming generation of artists?</additionalKeywords>
+    <additionalKeywords>#hard,#fun,?videogames: How have multiplayer games shaped the next generation of artists?</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_CH - net galleries</name>
@@ -28285,7 +28285,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?digital meets physical: How do algorithms become tangible?,#mindblowing,#inspiring,#easy</additionalKeywords>
+    <additionalKeywords>?digital meets physical: How do algorithms alter reality?,#mindblowing,#inspiring,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_CH - blows my mind</name>
@@ -29086,7 +29086,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>why is machine vision uncanny?,interface</revokedKeywords>
-    <additionalKeywords>interfaces,new aesthetic,machine vision,#tech,#emotional,?new aesthetic: Why do we find intelligent cameras spooky?</additionalKeywords>
+    <additionalKeywords>interfaces,new aesthetic,machine vision,#tech,#emotional,?new aesthetic: Why do we find smart sensors spooky?</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_MC - new aesthetic 1</name>
@@ -29130,7 +29130,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>cyberpunk,#hard,?machine vision: When did machine vision become fashionable?</additionalKeywords>
+    <additionalKeywords>cyberpunk,#hard,?machine vision: When did machine vision become cool?</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_MC - new aesthetic 2</name>
@@ -29388,7 +29388,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>attention,#serious,#hard,#mindblowing,#sincere,?staring at screens: Does staring at screens have side effects?</additionalKeywords>
+    <additionalKeywords>attention,#serious,#hard,#mindblowing,#sincere,?staring at screens: If you stare at the screen will you go blind?</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_MC - People staring at screens 2</name>
@@ -29499,7 +29499,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?hackers: Do hackers pose a real threat to the function of society?,#serious,#sincere,#rational,#tech</additionalKeywords>
+    <additionalKeywords>?hackers: Do hackers pose a real threat to society?,#serious,#sincere,#rational,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_MC - devices</name>
@@ -30582,7 +30582,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?social media: How does human interaction rely on networks?</additionalKeywords>
+    <additionalKeywords>?social media: How do people communicate now?</additionalKeywords>
 </clip>
 <clip>
     <name>Lauren - virtual relationships</name>
@@ -30823,7 +30823,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#emotional,#hard,#tech,?wearables: How can designers improve user experience?</additionalKeywords>
+    <additionalKeywords>#emotional,#hard,#tech,?wearables: Where do fashion and technology meet?</additionalKeywords>
 </clip>
 <clip>
     <name>Lauren - wearables 2</name>
@@ -31054,7 +31054,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>attention,digital meets physical,?distraction: How can design address the problems of distraction?</additionalKeywords>
+    <additionalKeywords>attention,digital meets physical,?distraction: How can design address problems of distraction?</additionalKeywords>
 </clip>
 <clip>
     <name>Lauren - Virtual tension 2</name>
@@ -31128,7 +31128,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>people,?connectivity: Why do we feel alone despite being constantly connected?,#sincere,#hard,#emotional</additionalKeywords>
+    <additionalKeywords>people,?connectivity: Are we alone together?,#sincere,#hard,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Lauren - desire to get together</name>
@@ -31225,7 +31225,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?identity: How does your online identity differ from your everyday self?,#easy</additionalKeywords>
+    <additionalKeywords>?identity: How does your avatar differ from your real world self?,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Lauren - identity and interaction</name>
@@ -31789,7 +31789,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>spiritual</revokedKeywords>
-    <additionalKeywords>zen,journey,dreams,#emotional,#art,#mindblowing,#inspiring,#breakthrough,?interconnectedness: What does technology aspire toward?</additionalKeywords>
+    <additionalKeywords>zen,journey,dreams,#emotional,#art,#mindblowing,#inspiring,#breakthrough,?interconnectedness: What's the highest aim of software?</additionalKeywords>
 </clip>
 <clip>
     <name>Lauren - swapping perspectives 1</name>
@@ -31919,7 +31919,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#rational,#sincere,#hard,?privacy: Should we take better care to protect our personal data?</additionalKeywords>
+    <additionalKeywords>#rational,#sincere,#hard,?privacy: Should we take better care to secure personal data?</additionalKeywords>
 </clip>
 <clip>
     <name>Lauren - data ownership 2</name>
@@ -32080,7 +32080,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?memory: What&apos;s the difference between digital data and biological memory?,#mindblowing,#serious,#sincere</additionalKeywords>
+    <additionalKeywords>?memory: What&apos;s the difference between data and biological memory?,#mindblowing,#serious,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Lauren - sentiment anaylsis</name>
@@ -32347,7 +32347,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#inspiring,#sincere,?net.art: Is internet art shown in galleries?</additionalKeywords>
+    <additionalKeywords>#inspiring,#sincere,?net.art: Is internet art exhibited in galleries?</additionalKeywords>
 </clip>
 <clip>
     <name>Lindsay - desire for closeness to work</name>
@@ -32424,7 +32424,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#obstacle,#serious,#art,?originality: When ideas develop in communities who gets credit?</additionalKeywords>
+    <additionalKeywords>#obstacle,#serious,#art,?originality: When ideas develop in communities does everyone get credit?</additionalKeywords>
 </clip>
 <clip>
     <name>Lindsay - memes 2</name>
@@ -33132,7 +33132,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>mood: epiphany</revokedKeywords>
-    <additionalKeywords>?meaning: How does the meaning of the work transcend the medium?,#art,#serious,#discouraging</additionalKeywords>
+    <additionalKeywords>?meaning: Does meaning transcend medium?,#art,#serious,#discouraging</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - Inexactitude,</name>
@@ -33696,7 +33696,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#discouraging,#sincere,#obstacle,?new media: What is innovative in new media?</additionalKeywords>
+    <additionalKeywords>#discouraging,#sincere,#obstacle,?new media: What's new in new media?</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - Aesthetics and Computation group</name>
@@ -34381,7 +34381,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>who are your mentors?&#x0D;influences</revokedKeywords>
-    <additionalKeywords>mentors,career,?mentors: Do you belong to a tradition?</additionalKeywords>
+    <additionalKeywords>mentors,career,?mentors: How does one pay homage to mentors?</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - Forever</name>
@@ -34456,7 +34456,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>do you try to make your work humorous?&#x0D;existential</revokedKeywords>
-    <additionalKeywords>career,?career: Where does the motivation to make art come from?,journey,#serious,#emotional,#hard</additionalKeywords>
+    <additionalKeywords>career,?career: Where does ambition come from?,journey,#serious,#emotional,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - Life in four quarters</name>
@@ -34531,7 +34531,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>do you still have a daily practice of making art?&#x0D;post-digital</revokedKeywords>
-    <additionalKeywords>art,?art: Do you ever stop making art?,#fun</additionalKeywords>
+    <additionalKeywords>art,?art: Are you still an artist if you stop making things?,#fun</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - How do I balance these personas?</name>
@@ -34651,7 +34651,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>how do you manage distraction?,how do you find balance?</revokedKeywords>
-    <additionalKeywords>attention,#hard,#fun,#ironic,?connectivity: How do we cope with being constantly connected?</additionalKeywords>
+    <additionalKeywords>attention,#hard,#fun,#ironic,?connectivity: Do we suffer from being constantly connected?</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - Design in the foreground</name>
@@ -34751,7 +34751,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>what are the questions you&apos;re interested in?</revokedKeywords>
-    <additionalKeywords>questions,problem solving,design and art,design,#logical,?design: What&apos;s the distinction between design and art?</additionalKeywords>
+    <additionalKeywords>questions,problem solving,design and art,design,#logical,?design: Where's the line between design and art?</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - Digital divide</name>
@@ -35588,7 +35588,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>?audiovisualization: How does music influence vision?,#tech,#inspiring</additionalKeywords>
+    <additionalKeywords>?audiovisualization: How does music influence visual expression?,#tech,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Marcus - gurus</name>
@@ -36489,7 +36489,7 @@
 </clip>
 <clip>
     <name>Marcus - global conversation</name>
-    <additionalKeywords>?consciousness: What will happen when we reach the Singularity?</additionalKeywords>
+    <additionalKeywords>?consciousness: What will happen when the Singularity arrives?</additionalKeywords>
 </clip>
 <clip>
     <name>Marcus - modeling consciousness</name>
@@ -37106,7 +37106,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#easy,?randomness: How is randomness useful as a tool?</additionalKeywords>
+    <additionalKeywords>#easy,?randomness: How is randomness a useful tool?</additionalKeywords>
 </clip>
 <clip>
     <name>Marius - dropped out of computer science</name>
@@ -37410,7 +37410,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>how do you choose what to display,working iteratively generatively in a process that can go on forever?,generative process,choosing</revokedKeywords>
-    <additionalKeywords>iteration,generative art,?gardening: Does a generative artwork ever reach a state of completion?</additionalKeywords>
+    <additionalKeywords>iteration,generative art,?gardening: Is a generative artwork ever truly done?</additionalKeywords>
 </clip>
 <clip>
     <name>Marius - It&apos;s dirtier than that</name>
@@ -38224,7 +38224,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?hybridity: Has technology helped break down barriers between the creative disciplines?,creative coding,#easy,#art,#breakthrough</additionalKeywords>
+    <additionalKeywords>?hybridity: Has technology made traditional disciplines irrelevant?,creative coding,#easy,#art,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Marius - I hate the word nerd</name>
@@ -39750,7 +39750,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#fun,#ironic,?memes: What&apos;s with Lolcats?</additionalKeywords>
+    <additionalKeywords>#fun,#ironic,?memes: What&apos;s with Lolz?</additionalKeywords>
 </clip>
 <clip>
     <name>Martin - rapid dissemination of info</name>
@@ -39863,7 +39863,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>?net.art: Does lightweight content travel farther?,#rational,#obstacle,#art</additionalKeywords>
+    <additionalKeywords>?net.art: How does content go viral?,#rational,#obstacle,#art</additionalKeywords>
 </clip>
 <clip>
     <name>Martin - looking at art</name>
@@ -40571,7 +40571,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>solutions,?data visualization: How can data visualization help people understand complexity?,#mundane,#rational,#logical,#conclusion</additionalKeywords>
+    <additionalKeywords>solutions,?data visualization: How can visualization help us understand complexity?,#mundane,#rational,#logical,#conclusion</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jesse - Marker 2</name>
@@ -40946,7 +40946,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>computational power</revokedKeywords>
-    <additionalKeywords>computation,#mindblowing,#easy,#logical,?infinity: How does the computer bring us closer to infinity?</additionalKeywords>
+    <additionalKeywords>computation,#mindblowing,#easy,#logical,?infinity: How does the computer help us grasp infinity?</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jesse - doing something new with a system</name>
@@ -41132,7 +41132,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>open source,#conclusion,#hard,#discouraging,?originality: Where&apos;s the line between borrowing and stealing?</additionalKeywords>
+    <additionalKeywords>open source,#conclusion,#hard,#discouraging,?originality: Where&apos;s the line between creative appropriation and theft?</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jesse - making things</name>
@@ -41738,7 +41738,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>life and code</revokedKeywords>
-    <additionalKeywords>biology and code,#mindblowing,#logical,#hard,?biology and code: What do living systems and computational processes have in common?</additionalKeywords>
+    <additionalKeywords>biology and code,#mindblowing,#logical,#hard,?biology and code: What do living systems and computers have in common?</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jessica - Design process</name>
@@ -44105,7 +44105,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>taking something abstract to something physical</revokedKeywords>
-    <additionalKeywords>3d printing,creativity,imagination</additionalKeywords>
+    <additionalKeywords>?3D printing: How does code become tangible?, 3d printing,creativity,imagination</additionalKeywords>
 </clip>
 <clip>
     <name>Patricio - Magic Spells 1</name>
@@ -46115,7 +46115,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>code,?self expression: When does code turn into poetry?,#easy,#sincere,#inspiring,#tech</additionalKeywords>
+    <additionalKeywords>code,?self expression: When does code become poetry?,#easy,#sincere,#inspiring,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Ramsey - why code is special</name>
@@ -48943,7 +48943,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#serious,#discouraging,#obstacle,#hard,?art world: Why does media art remain outside the mainstream?</additionalKeywords>
+    <additionalKeywords>#serious,#discouraging,#obstacle,#hard,?art world: Will media art ever go mainstream?</additionalKeywords>
 </clip>
 <clip>
     <name>Regine - doesn&apos;t matter as long as it&apos;s good</name>
@@ -49530,7 +49530,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#sincere,#mundane,#serious,#discouraging,#hard,?dystopia: Does technology point to a brighter future?</additionalKeywords>
+    <additionalKeywords>#sincere,#mundane,#serious,#discouraging,#hard,?dystopia: Does technology lead to a brighter future?</additionalKeywords>
 </clip>
 <clip>
     <name>Regine - ineffectual art</name>
@@ -49870,7 +49870,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>attention,staring at screens,?coding: What is it like to sketch with code?,#obstacle,#tech,#easy</additionalKeywords>
+    <additionalKeywords>attention,staring at screens,?coding: How do you sketch with code?,#obstacle,#tech,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Shantell - full circle</name>
@@ -50694,7 +50694,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>epiphany,drawing,visual thinking,mood: excitement,mood: inspiring</revokedKeywords>
-    <additionalKeywords>sketching,thinking by doing,#easy,#inspiring,#breakthrough,?feedback: How does feedback become addictive?</additionalKeywords>
+    <additionalKeywords>sketching,thinking by doing,#easy,#inspiring,#breakthrough,?feedback: How does programming become addictive?</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - Not a visual thinker</name>
@@ -50739,7 +50739,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>how does visual feedback help you to learn programming?,visual thinking</revokedKeywords>
-    <additionalKeywords>sketching,#easy,?sketching: what can you make with a computer that you can&apos;t accomplish by hand?,#art</additionalKeywords>
+    <additionalKeywords>sketching,#easy,?sketching: what can you make with a computer that's impossible by hand?,#art</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - what computers can do</name>
@@ -50799,7 +50799,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>what do computers offer artists that they cannot accomplish by other means?,what is a computer?</revokedKeywords>
-    <additionalKeywords>#easy,?sketching: what can you make with a computer that you can&apos;t accomplish by hand?,#obstacle,?process: what do computers offer artists that they cannot accomplish by other means?</additionalKeywords>
+    <additionalKeywords>#easy,?sketching: what can you make with a computer that you can&apos;t accomplish by hand?,#obstacle,?process: How do computers speed up the creative process?</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - There&apos;s an element of surprise</name>
@@ -50898,7 +50898,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>song: fourtet peace for earth</revokedKeywords>
-    <additionalKeywords>#easy,?simulation: How do we use the math underlying natural phenomena to create simulations?,#mindblowing</additionalKeywords>
+    <additionalKeywords>#easy,?simulation: How can math simulate natural phenomena?,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - NOC 3</name>
@@ -51317,7 +51317,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>dna,probability,#logical,?evolution: How does the computer accelerate evolution?</additionalKeywords>
+    <additionalKeywords>dna,probability,#logical,?evolution: How do computer programs simulate evolution?</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - genetics short 1</name>
@@ -51419,7 +51419,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>galapagos,link:marius - artificial life,coding aesthetics</revokedKeywords>
-    <additionalKeywords>code,dna,evolution: How does the computer simulate accelerated evolution?,#example,#pe?Galapagos</additionalKeywords>
+    <additionalKeywords>code,dna,evolution: How do computer programs simulate evolution?,#example,#pe?Galapagos</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - evolution</name>
@@ -51443,7 +51443,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?evolution: How does the computer accelerate evolution?</additionalKeywords>
+    <additionalKeywords>?evolution: How do computer programs simulate evolution?</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - advanced environment</name>
@@ -51635,7 +51635,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>what do you find beautiful about code?</revokedKeywords>
-    <additionalKeywords>#easy,?code: What do you find beautiful about code?</additionalKeywords>
+    <additionalKeywords>#easy,?code: How is code beautiful?</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - what do you archive?</name>
@@ -51849,7 +51849,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>thinking through code,what it&apos;s like to program,songs: dan deacon pink batman,songs: fourtet locked,link: casey &quot;clumsy&quot;</revokedKeywords>
-    <additionalKeywords>thinking with code,programming,coding,#mundane,#obstacle,#discouraging,#easy,?thinking with code: How does the computer assist creative thinking?</additionalKeywords>
+    <additionalKeywords>thinking with code,programming,coding,#mundane,#obstacle,#discouraging,#easy,?thinking with code: How does the computer enhance creativity?</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - inexactitude</name>
@@ -51988,7 +51988,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>clouds,song: four tet peace for earth,mood: mystical,happy</revokedKeywords>
-    <additionalKeywords>nature of code,#mindblowing,#inspiring,?simulation: How do we capture the emergent properties of nature in software?</additionalKeywords>
+    <additionalKeywords>nature of code,#mindblowing,#inspiring,?simulation: How does software simulate nature?</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - gambling 1</name>
@@ -52039,7 +52039,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>algorithms,algorithm,dna,biology and code,#logical,#mindblowing,?genetics: How does a genetic algorithm work?</additionalKeywords>
+    <additionalKeywords>algorithms,algorithm,dna,biology and code,#logical,#mindblowing,?genetics: How do genetic algorithms work?</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - genetic algos 2</name>
@@ -52088,7 +52088,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>infinity,algorithm,dna,?infinity: How long does it take for a monkey to rewrite shakespeare?,#mindblowing,#logical</additionalKeywords>
+    <additionalKeywords>infinity,algorithm,dna,?infinity: How long does it take a monkey to rewrite shakespeare?,#mindblowing,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Sophy - art hallucination</name>
@@ -52618,7 +52618,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>phenomena,?nature: What is your wellspring?</additionalKeywords>
+    <additionalKeywords>phenomena,?nature: What inspires you?</additionalKeywords>
 </clip>
 <clip>
     <name>Theo - relating to nature</name>
@@ -52652,7 +52652,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>beauty,nature?: What has the greatest influence on your work?,#easy,#sincere,#mindblowing,#emotional</additionalKeywords>
+    <additionalKeywords>beauty,nature?: What inspires your work?,#easy,#sincere,#mindblowing,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Theo - funky forest</name>
@@ -52908,7 +52908,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>bugs,#easy,?stress: What&apos;s most stressful in the process?,#obstacle</additionalKeywords>
+    <additionalKeywords>bugs,#easy,?stress: What's most frustrating in the process?,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Theo - newness</name>
@@ -52937,7 +52937,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?novelty: What&apos;s the problem with perpretual newness?</additionalKeywords>
+    <additionalKeywords>?novelty: Do new and shiny things ever get old?</additionalKeywords>
 </clip>
 <clip>
     <name>Theo - 3D sensing</name>
@@ -53187,7 +53187,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>toolkit,?toolkit: How does creative experimentation lead to useful innovation?</additionalKeywords>
+    <additionalKeywords>toolkit,?toolkit: How does experimentation lead to innovation?</additionalKeywords>
 </clip>
 <clip>
     <name>Theo - generative and pre-rendered</name>
@@ -53355,7 +53355,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>classificiation</revokedKeywords>
-    <additionalKeywords>transparency,#easy,?future: What&apos;s the best way to predict the future?,#tech,#logical</additionalKeywords>
+    <additionalKeywords>transparency,#easy,?future: What's the secret to predicting the future?,#tech,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Theo - eyebeam R&amp;D</name>
@@ -53639,7 +53639,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#breakthrough,#easy,?play: How does playful interaction guide the process?</additionalKeywords>
+    <additionalKeywords>#breakthrough,#easy,?play: How is play essential to the process?</additionalKeywords>
 </clip>
 <clip>
     <name>Vera - Digital life forms</name>
@@ -53932,7 +53932,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>#emotional,?storytelling: What is powerful about narrative?,#example</additionalKeywords>
+    <additionalKeywords>#emotional,?storytelling: Why do humans create stories?,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Vera - What I like about this field</name>
@@ -54032,7 +54032,7 @@
 </clip>
 <clip>
     <name>Zach - open source challenge</name>
-    <additionalKeywords>?community: What&apos;s the challenge of maintaining a community of toolmakers?</additionalKeywords>
+    <additionalKeywords>?community: What's holds the community together?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - Open CV</name>
@@ -54168,7 +54168,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>open source</revokedKeywords>
-    <additionalKeywords>?sharing: Does the open source ethos exist in non-digital communities?</additionalKeywords>
+    <additionalKeywords>?sharing: How does open source apply to non-digital culture ?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - action script</name>
@@ -54261,7 +54261,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>generations,?mentors: How did you find your mentor?</additionalKeywords>
+    <additionalKeywords>generations,?mentors: How did you become a media artist?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - working with golan 2</name>
@@ -54314,7 +54314,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>hackathon,connections,?working with others: Why collaborate over working alone?</additionalKeywords>
+    <additionalKeywords>hackathon,connections,?working with others: Why collaborate?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - Drawn1</name>
@@ -54432,7 +54432,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#easy,?zen: How do you get into the zone?,#gold,#inspiring</additionalKeywords>
+    <additionalKeywords>#easy,?zen: How do you know when it's working?,#gold,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - Fucking boring</name>
@@ -54466,7 +54466,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>struggle with technology,frustration,staring at screens,#ironic,?programming: Do you like programmming?</additionalKeywords>
+    <additionalKeywords>struggle with technology,frustration,staring at screens,#ironic,?programming: What's enjoyable about programmming?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - on the street</name>
@@ -54621,7 +54621,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>nerd,tribe,#ironic,#fun,?community: What&apos;s the origin of this community?</additionalKeywords>
+    <additionalKeywords>nerd,tribe,#ironic,#fun,?community: How did this community originate?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - decompiling</name>
@@ -54690,7 +54690,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#logical,#tech,?open source: How did people learn to code before open source?</additionalKeywords>
+    <additionalKeywords>#logical,#tech,?open source: Before the internet existed, how did people learn to code?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - less demo</name>
@@ -54745,7 +54745,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>art versus engineering</revokedKeywords>
-    <additionalKeywords>homogeneity,new media,art vs engineering,#discouraging,#obstacle,?tech-demo: Where&apos;s the line between demo and poem?</additionalKeywords>
+    <additionalKeywords>homogeneity,new media,art vs engineering,#discouraging,#obstacle,?tech-demo: When does code become poetry?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - Open Frameworks 1</name>
@@ -54903,7 +54903,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>struggle with technology,frustration,hybridity,#tech,#logical,#obstacle,?struggle with technology: Why don&apos;t more artists learn to code?</additionalKeywords>
+    <additionalKeywords>struggle with technology,frustration,hybridity,#tech,#logical,#obstacle,?struggle with technology: What barriers stand in the way of learning to code?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - emailing the communnity</name>
@@ -55087,7 +55087,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>code,staring at screens,?programming: What&apos;s the value of programming as a practice and process?</additionalKeywords>
+    <additionalKeywords>code,staring at screens,?programming: What&apos;s the value of programming as an art practice?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - Live coding</name>
@@ -55176,7 +55176,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>project example,give everything away</revokedKeywords>
-    <additionalKeywords>personal data,#example,?sharing: Who were the pioneers of sharing source-code?</additionalKeywords>
+    <additionalKeywords>personal data,#example,?sharing: Who were the pioneers of sharing code?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - processing, publishing</name>
@@ -55221,7 +55221,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>open source</revokedKeywords>
-    <additionalKeywords>sharing,#tech,#gold,?sharing: When and how did people start sharing more?</additionalKeywords>
+    <additionalKeywords>sharing,#tech,#gold,?sharing: When did sharing code become popular?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - more poetry, less demo</name>
@@ -57251,7 +57251,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>network,internet,singularity,technological progress,?network: How big is the internet?</additionalKeywords>
+    <additionalKeywords>network,internet,singularity,technological progress,?network: What's the size of the internet?</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - Network2</name>
