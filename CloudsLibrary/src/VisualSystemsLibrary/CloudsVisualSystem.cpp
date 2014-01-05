@@ -2630,6 +2630,7 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 void CloudsVisualSystem::savePresetGUIS(string presetName)
 {
     ofDirectory dir;
+	presetName = trim(presetName);
     string presetDirectory = getVisualSystemDataPath()+"Presets/"+presetName+"/";
     if(!dir.doesDirectoryExist(presetDirectory))
     {
