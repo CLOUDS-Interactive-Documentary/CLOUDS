@@ -39,7 +39,7 @@ void main()
     
     vel *= clamp(1.0 - (9.0 * elapsed), 0.0, 1.0);
     
-    pos += 0.5 * (oldVel + vel) * elapsed;//step(0.5, gl_TexCoord[0].s) * 0.5 * (vel + oldVel) * elapsed;
+    pos += vel * elapsed;//step(0.5, gl_TexCoord[0].s) * 0.5 * (vel + oldVel) * elapsed;
     
     gl_FragData[0] = vec4(pos, 1.0);
     gl_FragData[1] = vec4(vel, 0.0);
