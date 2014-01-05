@@ -10257,6 +10257,16 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="PhotoGlitch_FinderWindows">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -10341,9 +10351,28 @@
     <sound>0</sound>
 </system>
 <system name="PhotoGlitch_LifeofNumbers_gray">
-    <keywords></keywords>
+    <keywords>data collection|memory|storage</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - digital trace</clip>
+        <clip>Binx - meaningful shape1</clip>
+        <clip>Binx - trips</clip>
+        <clip>Fernanda - email storytelling</clip>
+        <clip>Jen - Lidar 1</clip>
+        <clip>Jen - Lidar 2</clip>
+        <clip>Jen - Personal archive 2</clip>
+        <clip>Jen - data autobiography</clip>
+        <clip>Jen - data truth</clip>
+        <clip>Jen - keeping pictures</clip>
+        <clip>Jen - life chapters</clip>
+        <clip>Jen - twitter friends</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Karsten - atari emulation</clip>
+        <clip>Karsten - preserving history</clip>
+        <clip>Kyle_CH - Future life storage</clip>
+        <clip>Kyle_CH - old server farms</clip>
+        <clip>Ramsey - cloud 2</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -10366,7 +10395,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -10396,7 +10425,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -10436,7 +10465,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -10446,7 +10475,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>

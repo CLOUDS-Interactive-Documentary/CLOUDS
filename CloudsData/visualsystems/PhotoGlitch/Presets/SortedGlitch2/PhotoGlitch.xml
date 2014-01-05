@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>PhotoGlitch</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>NUM ROWS</Name>
-    <Value>122</Value>
+    <Value>73</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -43,12 +43,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>TWEEN DURATION</Name>
-    <Value>389</Value>
+    <Value>419</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>TWEEN DELAY</Name>
-    <Value>1</Value>
+    <Value>2</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -89,6 +89,16 @@
     <Kind>17</Kind>
     <Name>ArtGlitch.jpg</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blue.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>BronzeGreen.jpg</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -137,6 +147,26 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>Gold.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Gray.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Green.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Memory.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>QRcodes.jpg</Name>
     <Value>0</Value>
 </Widget>
@@ -157,12 +187,17 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>desktop.png</Name>
+    <Name>desktop.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
     <Name>dogs.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>memory_bw.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
