@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>TWITTER FEED</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>484.000000000</XPosition>
+    <XPosition>714.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -38,12 +38,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>GAP BETWEEN UPDATES</Name>
-    <Value>0.100000001</Value>
+    <Value>1.017241359</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>RANDOM OFFSET RANGE</Name>
-    <HighValue>2.440886021</HighValue>
+    <HighValue>3.074876785</HighValue>
     <LowValue>0.100000001</LowValue>
 </Widget>
 <Widget>
@@ -89,12 +89,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>ICON HEIGHT OFFSET </Name>
-    <Value>-16.896553040</Value>
+    <Value>-25.862068176</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>ICON WIDTH OFFSET </Name>
-    <Value>0.000000000</Value>
+    <Value>10.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -109,5 +109,20 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LINE OFFSET</Name>
-    <Value>22.167495728</Value>
+    <Value>-33.004928589</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>MAX ALPHA</Name>
+    <Value>0.100000001</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LINE ALPHA</Name>
+    <Value>0.492610842</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AVATAR ALPHA</Name>
+    <Value>0.325123161</Value>
 </Widget>

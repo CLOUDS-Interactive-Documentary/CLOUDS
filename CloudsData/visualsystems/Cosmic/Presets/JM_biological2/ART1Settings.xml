@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>ART1Settings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>849.000000000</XPosition>
-    <YPosition>208.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>343.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ART1 POWER</Name>
-    <Value>0.999023438</Value>
+    <Value>0.999511719</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,5 +38,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ART1 LIMIT</Name>
-    <Value>0.000000001</Value>
+    <Value>0.000000000</Value>
 </Widget>

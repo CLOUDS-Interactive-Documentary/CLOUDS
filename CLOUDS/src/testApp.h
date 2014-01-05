@@ -40,5 +40,5 @@ class testApp : public ofBaseApp{
 	bool useScratch;
 	
 	
-	void audioRequested(float * output, int bufferSize, int nChannels);
+//	void audioRequested(float * output, int bufferSize, int nChannels);
 };

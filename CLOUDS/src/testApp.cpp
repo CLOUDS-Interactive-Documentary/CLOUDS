@@ -72,7 +72,6 @@ void testApp::setup(){
 	//temp sound stuff
 	//sound.setMasterAmp(1.0);
 	useScratch = false;
-	
 }
 
 //--------------------------------------------------------------
@@ -116,10 +115,10 @@ void testApp::keyPressed(int key){
     
 }
 
-//--------------------------------------------------------------
-void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
-	mixer.fillBuffer(output,bufferSize,nChannels);
-}
+////--------------------------------------------------------------
+//void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
+//	mixer.fillBuffer(output,bufferSize,nChannels);
+//}
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){

@@ -7,6 +7,7 @@
 #include "CloudsVisualSystemManager.h"
 #include "CloudsSpeaker.h"
 #include "CloudsGlobal.h"
+#include "CloudsMixer.h"
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
 	IBOutlet NSTokenField* currentKeywords;
@@ -34,7 +35,7 @@
 	bool shouldPlaySelectedRow;
 	
 	CloudsFCPParser parser;
-
+    CloudsMixer mixer;
     //RGBD PLAYER
 //	CloudsVisualSystemRGBD rgbdVisualSystem;
 	CloudsClip currentClip;
@@ -66,6 +67,7 @@
 
 }
 
+//- (void)audioRequested:(float*)output bufferSize:(int)bufferSize nChannels:(int)nChannels;
 - (int)selectedPresetIndex;
 - (void)updateAssociatedClips;
 - (void)updateCurrentClipPresets;

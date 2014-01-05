@@ -90,20 +90,6 @@ class CloudsVisualSystemEmpty : public CloudsVisualSystem {
     void selfMouseReleased(ofMouseEventArgs& data);
 	
 
-    // if you use a custom camera to fly through the scene
-	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
-
-	//
-	ofCamera& getCameraRef(){
-		if(videoLoaded){
-			return cloudsCamera;
-		}
-		return CloudsVisualSystem::getCameraRef();
-	}
-
 protected:
     
     //  Your Stuff
@@ -114,8 +100,4 @@ protected:
 	float customFloat1;
 	float customFloat2;
 	
-	bool videoLoaded;
-	ofImage someImage;
-	ofShader pointcloudShader;
-	ofVboMesh simplePointcloud;
 };

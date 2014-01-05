@@ -426,7 +426,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 			if(questionsAndTopics.size() > 0){
 				//addControllerTween( fadeOutVisualSystem, ofGetElapsedTimef(), fadeDuration, 1, 0, NULL );
 				//transitionController.transitionToVisualSystem(1.0, 1.0);
-				transitionController.transitionFromIntro(1.0, 1.0);
+				transitionController.transitionFromIntro(1.0);
 //				storyEngine->buildAct(introSequence->getSelectedRun(), currentClip, currentTopic);
 			}
 			else{
@@ -494,26 +494,41 @@ void CloudsPlaybackController::updateTransition(){
 	
 	transitionController.update();
 	
+	crossfadeValue = transitionController.getFadeValue();
+	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
+	if(transitionController.transitioning){
+		rgbdVisualSystem->updateTransition( transitionController.getInterviewTransitionPoint() );
+	}
+
 	if(transitionController.isStateNew()){
 		
 		if(transitionController.getCurrentState() == TRANSITION_INTERVIEW_OUT){
+			
 			rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
 //			rgbdVisualSystem->selfUpdate(); //still necessary?
+
 		}
 		else if(transitionController.getCurrentState() == TRANSITION_INTRO_OUT){
+			//intro just started fading out
 			showingIntro = false;
+			
 		}
 		else if(transitionController.getCurrentState() == TRANSITION_VISUALSYSTEM_IN){
-			rgbdVisualSystem->transtionFinished();
+			if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
+				rgbdVisualSystem->transtionFinished();
+			}
 			playNextVisualSystem();
 		}
 		else if(transitionController.getCurrentState() == TRANSITION_VISUALSYSTEM_OUT){
 			// no need to do anything special, the crossfade value will take care of this
 		}
 		else if(transitionController.getCurrentState() == TRANSITION_INTERVIEW_IN){
+			
 			hideVisualSystem();
-			rgbdVisualSystem->playSystem();
-			rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
+			showRGBDVisualSystem();
+			
+//			rgbdVisualSystem->playSystem();
+//			rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
 		}
 		else if(transitionController.getCurrentState() == TRANSITION_IDLE){
 			//we just finished fading out of the intro
@@ -524,25 +539,15 @@ void CloudsPlaybackController::updateTransition(){
 				
 				showingVisualSystem = false;
 				introSequence->stopSystem();
-				
-//				rgbdVisualSystem->visualSystemFadeValue = 0.0;
-//				rgbdVisualSystem->selfUpdate();
-				
+								
 				storyEngine->buildAct(introSequence->getSelectedRun(), clip, q->topic );
 			}
-			//we just finished fading out of the intreview
-			else{
+			//we just finished fading out of the interview
+			else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_IN){
 				rgbdVisualSystem->transtionFinished();
 			}
 		}
-
-	}
-		
-	crossfadeValue = transitionController.getFadeValue();
-	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
-	if(transitionController.transitioning){
-		rgbdVisualSystem->updateTransition(crossfadeValue);
-	}
+	}		
 }
 
 //--------------------------------------------------------------------
@@ -651,7 +656,7 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 		showVisualSystem( args.preset, 1.0	);
 	}
 	else{
-		ofLogError() << "Triggered visual system while still showing one";
+		ofLogError("CloudsPlaybackController::visualSystemBegan") << "Triggered visual system while still showing one";
 	}
 }
 
@@ -663,9 +668,9 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 		//JG: Timing thing. If the system is indefinite, and has an outro then it most likely was created with
 		//a "middle" flag, which would stop the timeline. so when the system is ready to fade out let's play it again to
 		//watch the outro		
-		if(args.preset.outroDuration > 0 && args.preset.indefinite){
-			args.preset.system->getTimeline()->play();
-		}
+//		if(args.preset.outroDuration > 0 && args.preset.indefinite){
+//			args.preset.system->getTimeline()->play();
+//		}
 	
 		float fadeDuration = 1; //(args.preset.outroDuration != 0)? args.preset.outroDuration : 1;
 //		addControllerTween( fadeOutVisualSystem, ofGetElapsedTimef(), fadeDuration, 1, 0, NULL );
@@ -673,7 +678,7 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 		
 	}
 	else{
-		ofLogError() << "Hiding visual system while none is showing";
+		ofLogError("CloudsPlaybackController::visualSystemEnded") << "Hiding visual system while none is showing";
 	}
 }
 
@@ -742,10 +747,6 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem, float transitionDuration) {
-	if(showingVisualSystem){
-		ofLogError("CloudsPlaybackController::showVisualSystem") << "Still showing last system";
-		hideVisualSystem();
-	}
 	
 	rgbdVisualSystem->clearQuestions();
 	//store the preset name for loading later in playNextVisualSystem()
@@ -781,17 +782,17 @@ void CloudsPlaybackController::hideVisualSystem()
 	if(showingVisualSystem){
 		
 		//HACK for demo!!!
-		if(revertToIntroAfter1Act && actFinished){
-			actFinished = false;
-//			playScratchTrack("00 Parallel Stripes.aif");
-			rgbdVisualSystem->stopSystem();
-			currentVisualSystem = introSequence;
-			showIntro();
-			float fadeInDuration = 1;
-			//fade in the next system
-//			addControllerTween( fadeInVisualSystem, ofGetElapsedTimef(), fadeInDuration, 0, 1, NULL );
-			transitionController.transitionToVisualSystem(1.0, 1.0);
-		}
+//		if(revertToIntroAfter1Act && actFinished){
+//			actFinished = false;
+////			playScratchTrack("00 Parallel Stripes.aif");
+//			rgbdVisualSystem->stopSystem();
+//			currentVisualSystem = introSequence;
+//			showIntro();
+//			float fadeInDuration = 1;
+//			//fade in the next system
+////			addControllerTween( fadeInVisualSystem, ofGetElapsedTimef(), fadeInDuration, 0, 1, NULL );
+//			transitionController.transitionToVisualSystem(1.0, 1.0);
+//		}
 //		else if(currentVisualSystem == introSequence){
 //			CloudsQuestion* q = introSequence->getSelectedQuestion();
 //			CloudsClip& clip = q->clip;
@@ -806,38 +807,41 @@ void CloudsPlaybackController::hideVisualSystem()
 ////			scratchPlayer.stop();
 ////			scratchPlayer.unloadSound();
 //		}
-		else{
+//		else{
 			currentVisualSystem->stopSystem();
-#ifdef OCULUS_RIFT
-			rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
-#else
-			rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
-#endif
-			rgbdVisualSystem->playSystem();
-			currentVisualSystem = rgbdVisualSystem;
-			
-			//fade in the RGBD
-			float duration = 1;
-//			addControllerTween( fadeInRGBD, ofGetElapsedTimef(), duration, 0, 1, NULL );
-			transitionController.transitionToInterview(1.0, 1.0);
-		}
-		
+//			transitionController.transitionToInterview(1.0, 1.0);
+//		}		
 		showingVisualSystem = false;
-		
 	}
 }
 
 
+void CloudsPlaybackController::showRGBDVisualSystem(){
+#ifdef OCULUS_RIFT
+	rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
+#else
+	rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
+#endif
+	rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
+	rgbdVisualSystem->playSystem();
+	currentVisualSystem = rgbdVisualSystem;
+	
+	//fade in the RGBD
+//	float duration = 1;
+}
+
 void CloudsPlaybackController::playNextVisualSystem()
 {
 	if(nextSystem != NULL){
-
-		rgbdVisualSystem->stopSystem();
+		
+		if(rgbdVisualSystem->isPlaying()){
+			rgbdVisualSystem->stopSystem();
+		}
 		
 		nextSystem->setDrawToScreen( false );
-		nextSystem->setCurrentTopic( currentTopic );
 		nextSystem->loadPresetGUISFromName( nextPresetName );
 		nextSystem->playSystem();
+		
 		currentVisualSystem = nextSystem;
 		
 		showingVisualSystem = true;

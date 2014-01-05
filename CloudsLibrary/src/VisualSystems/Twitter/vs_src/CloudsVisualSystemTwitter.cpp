@@ -157,7 +157,8 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	spriteGui->copyCanvasProperties(gui);
     spriteGui->setName("Sprite");
     spriteGui->addToggle("ANIMATE SPRITES ON TWEETS",&bAnimateSpriteSize);
-    spriteGui->addRangeSlider("SPRITE SIZE RANGE", 1,  100, &minSize, & maxSize);
+    spriteGui->addMinimalSlider("SPRITE SIZE Min", 0, 25, &minSize);
+    spriteGui->addMinimalSlider("SPRITE SIZE max", 0, 100, &maxSize);
     addColorToGui(spriteGui,"SPRITE BASE COLOR",spriteBaseColorHSV);
     addColorToGui(spriteGui,"SPRITE POP COLOR",spritePopColorHSV);
     ofAddListener(spriteGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);

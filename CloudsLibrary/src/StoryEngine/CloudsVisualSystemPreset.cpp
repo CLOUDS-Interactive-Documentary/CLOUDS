@@ -16,6 +16,7 @@ CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 	
 	defaultedToFamily = false;
 	randomlySelected = false;
+	missingContent = false;
 	oculusCompatible = false;
 	hasSound = false;
 	duration = 60;

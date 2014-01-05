@@ -113,9 +113,8 @@ ofxOculusRift& CloudsVisualSystem::getOculusRift(){
 #endif
 
 CloudsVisualSystem::CloudsVisualSystem(){
-	isPlaying = false;
+	bIsPlaying = false;
 	timeline = NULL;
-	sharedRenderer = NULL;
 	bIsSetup = false;
 	bClearBackground = true;
 	bDrawToScreen = true;
@@ -198,7 +197,7 @@ void CloudsVisualSystem::setup(){
 		loadBackgroundShader();
 	}
 
-	currentCamera = &cam;
+//	currentCamera = &cam;
 	
     ofDirectory dir;
     string directoryName = getVisualSystemDataPath()+"Presets/";
@@ -237,9 +236,13 @@ bool CloudsVisualSystem::isSetup(){
 	return bIsSetup;
 }
 
+bool CloudsVisualSystem::isPlaying(){
+	return bIsPlaying;
+}
+
 void CloudsVisualSystem::playSystem(){
 
-	if(!isPlaying){
+	if(!bIsPlaying){
 		cout << "**** PLAYING " << getSystemName() << endl;
 		//ofRegisterMouseEvents(this);
 		CloudsRegisterInputEvents(this);
@@ -248,7 +251,7 @@ void CloudsVisualSystem::playSystem(){
 		ofAddListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofAddListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
 		
-		isPlaying = true;
+		bIsPlaying = true;
 		
 		cam.enableMouseInput();
 		for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it)
@@ -266,7 +269,7 @@ void CloudsVisualSystem::playSystem(){
 }
 
 void CloudsVisualSystem::stopSystem(){
-	if(isPlaying){
+	if(bIsPlaying){
 		cout << "**** STOPPING " << getSystemName() << endl;
 
 		selfEnd();
@@ -287,33 +290,35 @@ void CloudsVisualSystem::stopSystem(){
 			
 		timeline->stop();
 		cameraTrack->lockCameraToTrack = false;
-		isPlaying = false;
+		bIsPlaying = false;
 	}
 }
 
-float CloudsVisualSystem::getSecondsRemaining(){
-	return secondsRemaining;
+void CloudsVisualSystem::setKeywords(string main, vector<string> allKeywords){
+	main = mainKeyword;
+	keywords = allKeywords;
 }
 
-void CloudsVisualSystem::setSecondsRemaining(float seconds){
-	secondsRemaining = seconds;
-}
+//float CloudsVisualSystem::getSecondsRemaining(){
+//	return secondsRemaining;
+//}
+//
+//void CloudsVisualSystem::setSecondsRemaining(float seconds){
+//	secondsRemaining = seconds;
+//}
 
-void CloudsVisualSystem::setCurrentKeyword(string keyword){
-	currentKeyword = keyword;
-}
 
-string CloudsVisualSystem::getCurrentKeyword(){
-	return currentKeyword;
-}
+//string CloudsVisualSystem::getCurrentKeyword(){
+//	return currentKeyword;
+//}
 
-void CloudsVisualSystem::setCurrentTopic(string topic){
-	currentTopic = topic;
-}
-
-string CloudsVisualSystem::getCurrentTopic(){
-	return currentTopic;
-}
+//void CloudsVisualSystem::setCurrentTopic(string topic){
+//	currentTopic = topic;
+//}
+//
+//string CloudsVisualSystem::getCurrentTopic(){
+//	return currentTopic;
+//}
 
 void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
 									  string speakerLastName,

@@ -31,14 +31,14 @@ typedef struct{
 	int gridy;
 	bool isEdge;
 
-	ofVec3f orig;
+	ofVec3f orig,goal;
 	ofVec3f vD;
 	Particle3D* p;
 } MWParticle;
 
 typedef struct{
 	int type;
-	float h[4];
+	float h[7];
 } MWTerrain;
 
 
@@ -117,7 +117,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	void mwFix(MWParticle &pt);
 
 	void mwMakeParticle(int x,int y,ofVec3f &o);
-	MWParticle &mwGetParticle(signed int id,bool fromEdge,bool addToActive);
+	MWParticle &mwGetParticle(bool fromEdge);
 	void mwPreset();
 
 	void mwGenerate();
@@ -126,7 +126,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 
 	float rndSigned(float a,float b);
 	float bezierPoint(float a, float b, float c, float d, float t);
-	float terrainMod(float x,float y);
+	ofVec3f terrainMod(ofVec3f &v);
 
 	ofxUISuperCanvas* clothGui;
 	ofxUISuperCanvas* auxLightGuis[4];
@@ -152,7 +152,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	
 
 
-	vector< vector<Particle3D*> > particles;
+	vector<vector<Particle3D*> > particles;
 	
 	//color generators
 	vector<ofColor> initColors(int row);

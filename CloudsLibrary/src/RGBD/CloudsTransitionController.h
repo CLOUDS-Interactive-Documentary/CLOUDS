@@ -9,6 +9,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofRange.h"
 
 typedef enum {
 	TRANSITION_IDLE = 0,
@@ -19,10 +20,10 @@ typedef enum {
 	TRANSITION_INTRO_OUT = 5
 } CloudsTransitionState;
 
-//NOT USED YET
 typedef struct {
 	float startTime;
 	float endTime;
+	ofRange timeRange; //set when the queue is done, used to DEBUG
 	CloudsTransitionState state;
 } CloudsTransitionQueueEntry;
 
@@ -30,23 +31,24 @@ class CloudsTransitionController {
   public:
 	CloudsTransitionController();
 	
-	void transitionFromIntro(float transitionOutDuration, float transitionInDuration);
+	void transitionFromIntro(float transitionOutDuration);
+	void transitionToFirstVisualSystem(float transitionOutDuration);
 	void transitionToVisualSystem(float transitionOutDuration, float transitionInDuration);
 	void transitionToInterview(float transitionOutDuration, float transitionInDuration);
 	void transitionToClusterMap(float transitionOutDuration, float transitionInDuration);
+	void transitionFromClusterMap(float transitionOutDuration, float transitionInDuration);
 	
 	void update();
 	
 	float transitionPercent;
-//	float percentTransitionIn;
-//	float percentTransitionOut;
 
 	float getInterviewTransitionPoint();
 	
 	bool transitioning;
 	bool triggeredMidpoint;
-	bool fadingOut();
 	
+	bool fadingOut(); ///are we fading out?
+	bool fadedOut(); //did we just fade out?
 	//returns 0 - 1.0 for use in alpha on the visual system texture
 	//ramps down when fading out, then up when fading in
 	float getFadeValue();
@@ -55,14 +57,19 @@ class CloudsTransitionController {
 	CloudsTransitionState getCurrentState();
 	CloudsTransitionState getPreviousState();
 	string getCurrentStateDescription();
+	string getStateDescription(CloudsTransitionState state);
 	
   protected:
 	
 	deque<CloudsTransitionQueueEntry> stateQueue;
+	vector<CloudsTransitionQueueEntry> queueHistory;
+	
 	void queueState(CloudsTransitionState state, float transitionDuration);
 	CloudsTransitionQueueEntry currentQueue;
-//	void startTransition(float transitionOutDuration, float transitionInDuration);
 	void startTransition();
+	
+	vector<CloudsTransitionState> fadeOutStates;
+	vector<CloudsTransitionState> fadeInStates;
 	
 	CloudsTransitionState currentState;
 	CloudsTransitionState previousState;

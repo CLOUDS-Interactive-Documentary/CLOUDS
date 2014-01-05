@@ -1,0 +1,22 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>cameraMotion</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>364.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>bAnimateCamera</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>camSpeed</Name>
+    <Value>2.311822653</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cameraMotionScale</Name>
+    <Value>0.596059084</Value>
+</Widget>

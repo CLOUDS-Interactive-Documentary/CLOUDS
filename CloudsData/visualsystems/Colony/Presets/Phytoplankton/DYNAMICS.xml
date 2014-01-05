@@ -38,28 +38,28 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Fertility Rate</Name>
-    <Value>0.714285433</Value>
+    <Value>0.748768151</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Lifespan Range</Name>
-    <HighValue>177.239868164</HighValue>
+    <HighValue>767.781738281</HighValue>
     <LowValue>30.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Nutrient Amount</Name>
-    <Value>267.241271973</Value>
+    <Value>304.925964355</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Nutrient Change Ratio</Name>
-    <Value>0.054186892</Value>
+    <Value>0.024630241</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Nutrient Contrast</Name>
-    <Value>3.783247471</Value>
+    <Value>3.014774799</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

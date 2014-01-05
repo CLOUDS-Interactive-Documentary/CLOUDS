@@ -1,0 +1,128 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>TWITTER FEED</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>714.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RENDER FEEDS</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>FEED X</Name>
+    <Value>350.428588867</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>FEED Y</Name>
+    <Value>46.339900970</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>HEIGHT OFFSET</Name>
+    <Value>96.866996765</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AVATAR TWEET GAP</Name>
+    <Value>45.379310608</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TEXT HEIGHT OFFSET</Name>
+    <Value>9.778325081</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>GAP BETWEEN UPDATES</Name>
+    <Value>1.113793135</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>RANDOM OFFSET RANGE</Name>
+    <HighValue>3.074876785</HighValue>
+    <LowValue>0.100000001</LowValue>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>NUM TWEETS</Name>
+    <Value>10</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>AVATAR SIZE</Name>
+    <Value>30</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>ANIMATION LERP RATE</Name>
+    <Value>0.131034479</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>FONT SIZE</Name>
+    <Value>12.512314796</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LINE LENGTH</Name>
+    <Value>335.640380859</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>HANDLE FONT SIZE</Name>
+    <Value>12.231527328</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>HANDLE LINE LENGTH</Name>
+    <Value>370.088684082</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>STRING WIDTH CAP</Name>
+    <Value>12.704433441</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>ICON HEIGHT OFFSET </Name>
+    <Value>-18.965517044</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>ICON WIDTH OFFSET </Name>
+    <Value>-23.201969147</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>ICON WIDTH</Name>
+    <Value>106.896553040</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>ICON HEIGHT</Name>
+    <Value>26.847290039</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LINE OFFSET</Name>
+    <Value>-32.019706726</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>MAX ALPHA</Name>
+    <Value>0.100000001</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LINE ALPHA</Name>
+    <Value>0.394088656</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AVATAR ALPHA</Name>
+    <Value>0.527093589</Value>
+</Widget>

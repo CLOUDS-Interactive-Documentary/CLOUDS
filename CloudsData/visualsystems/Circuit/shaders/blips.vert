@@ -17,6 +17,6 @@ void main(void)
 	gl_Position = gl_ProjectionMatrix * pos;
 	normalizedDist = map(-pos.z,pointDistanceMin,pointDistanceMax,0.,1.);
 	//normalizedDist = -pos.z / pointDistanceMax;
-	gl_PointSize = map(pow(1. - normalizedDist,4.), 0.0, 1.0, pointSizeMin, pointSizeMax*4.);
+	gl_PointSize = map(pow(1. - normalizedDist,4.), 0.0, 1.0, pointSizeMin, pointSizeMax*3.);
 	gl_FrontColor = gl_Color;
 }
