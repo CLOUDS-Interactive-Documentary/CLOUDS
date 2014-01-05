@@ -336,9 +336,20 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 //			CloudsQuestion* q = clusterMapVisualSystem.getSelectedQuestion();
 //			CloudsClip& clip = q->clip;
 			
-			showingClusterMap = false;
-			clusterMapVisualSystem.stopSystem();
-			storyEngine->buildAct(introSequence->getSelectedRun(), currentClip, currentTopic);
+            //SM: UPDATING
+            
+//            if (transitionController.getPreviousState() == TRANSITION_CLUSTERMAP_IN) {
+                transitionController.transitionFromClusterMap(1.0);
+                cout<<"TRANSITIONING FROM CLUSTER MAP IN UPDATE"<<endl;
+//            }
+//            else{
+//                cout<<"OLD WAY OF ACT BUILDING"<<endl;
+//                showingClusterMap = false;
+//                clusterMapVisualSystem.stopSystem();
+//                storyEngine->buildAct(introSequence->getSelectedRun(), currentClip, currentTopic);
+//            }
+            //SM: UPDATING
+            
 		}
 	}
 	
@@ -392,7 +403,98 @@ void CloudsPlaybackController::updateTransition(){
 	}
 
 	if(transitionController.isStateNew()){
-		
+        
+        switch (transitionController.getCurrentState()) {
+            
+            case TRANSITION_INTERVIEW_OUT:
+                
+                rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
+                break;
+            
+            case TRANSITION_INTRO_OUT:
+                
+                showingIntro = false;
+                break;
+            
+            case TRANSITION_VISUALSYSTEM_IN:
+                
+                if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
+                    rgbdVisualSystem->transtionFinished();
+                }
+                
+                playNextVisualSystem();
+                break;
+            
+            case TRANSITION_VISUALSYSTEM_OUT:
+                
+                // no need to do anything special, the crossfade value will take care of this
+                
+                break;
+            
+            case TRANSITION_INTERVIEW_IN:
+                
+                hideVisualSystem();
+                showRGBDVisualSystem();
+                
+                //			rgbdVisualSystem->playSystem();
+                //			rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
+                break;
+            
+            case TRANSITION_CLUSTERMAP_OUT:
+                showingClusterMap = false;
+                clusterMapVisualSystem.stopSystem();
+                cout<<"TRANSITION OUT OF CLUSTER MAP"<<endl;
+                //dont need to do anything, cross fade should sort it out.
+                break;
+
+            case TRANSITION_CLUSTERMAP_IN:
+                
+                if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
+                    rgbdVisualSystem->transtionFinished();
+                    rgbdVisualSystem->stopSystem();
+                }
+                else if(transitionController.getPreviousState() == TRANSITION_VISUALSYSTEM_OUT){
+                    hideVisualSystem();
+                }
+                
+                
+                clusterMapVisualSystem.setRun(introSequence->getSelectedRun());
+                clusterMapVisualSystem.traverse();
+                
+                clusterMapVisualSystem.loadPresetGUISFromName("DefaultCluster");
+                clusterMapVisualSystem.playSystem();
+                
+                showingClusterMap = true;
+                break;
+                
+            case TRANSITION_IDLE:
+                
+                if(transitionController.getPreviousState() == TRANSITION_INTRO_OUT){
+                    CloudsQuestion* q = introSequence->getSelectedQuestion();
+                    CloudsClip& clip = q->clip;
+                    
+                    showingVisualSystem = false;
+                    introSequence->stopSystem();
+                    
+                    storyEngine->buildAct(introSequence->getSelectedRun(), clip, q->topic );
+                }
+                else if(transitionController.getPreviousState() == TRANSITION_CLUSTERMAP_OUT){
+
+                    storyEngine->buildAct(introSequence->getSelectedRun(), currentClip, currentTopic);
+                    cout<<"IDLE POST TRANSITION CLUSTERMAP OUT"<<endl;
+                }
+                //we just finished fading out of the interview
+                else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_IN){
+                    rgbdVisualSystem->transtionFinished();
+                }
+                
+                break;
+                
+            default:
+                break;
+        }
+		/////*****///////
+/*
 		if(transitionController.getCurrentState() == TRANSITION_INTERVIEW_OUT){
 			
 			rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
@@ -433,11 +535,17 @@ void CloudsPlaybackController::updateTransition(){
 								
 				storyEngine->buildAct(introSequence->getSelectedRun(), clip, q->topic );
 			}
+            else if(transitionController.getPreviousState() == TRANSITION_CLUSTERMAP_OUT){
+                //				rgbdVisualSystem->transtionFinished();
+                cout<<"IDLE POST TRANSITION CLUSTERMAP OUT"<<endl;
+			}
 			//we just finished fading out of the interview
 			else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_IN){
 				rgbdVisualSystem->transtionFinished();
 			}
 		}
+*/
+		/////*****///////
 	}		
 }
 
@@ -523,15 +631,17 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 		actFinished = true;
 	}
 	else{
-		rgbdVisualSystem->stopSystem();
-		
-		clusterMapVisualSystem.setRun(introSequence->getSelectedRun());
-		clusterMapVisualSystem.traverse();
-		
-		clusterMapVisualSystem.loadPresetGUISFromName("DefaultCluster");
-		clusterMapVisualSystem.playSystem();
-		
-		showingClusterMap = true;
+//		rgbdVisualSystem->stopSystem();
+//		
+//		clusterMapVisualSystem.setRun(introSequence->getSelectedRun());
+//		clusterMapVisualSystem.traverse();
+//		
+//		clusterMapVisualSystem.loadPresetGUISFromName("DefaultCluster");
+//		clusterMapVisualSystem.playSystem();
+//		
+//		showingClusterMap = true;
+        transitionController.transitionToClusterMap(1.0,1.0);
+//        trans
 	}
 }
 
