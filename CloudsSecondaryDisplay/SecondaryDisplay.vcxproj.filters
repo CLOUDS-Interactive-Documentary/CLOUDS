@@ -304,6 +304,9 @@
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.cpp">
       <Filter>src\StoryEngine\Question</Filter>
     </ClCompile>
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.cpp">
+      <Filter>src\StoryEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -1108,6 +1111,9 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.h">
       <Filter>src\StoryEngine\Question</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.h">
+      <Filter>src\StoryEngine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
