@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>49.000000000</XPosition>
-    <YPosition>-12.000000000</YPosition>
+    <XPosition>735.000000000</XPosition>
+    <YPosition>-13.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,12 +18,22 @@
 <Widget>
     <Kind>44</Kind>
     <Name>NUM PARTICLES</Name>
-    <Value>1241</Value>
+    <Value>1556</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>BOUNCE OFF WALLS</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>circle.png</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>spark.png</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -38,12 +48,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>FALL</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>RISE/FALL SPEED</Name>
-    <Value>53.201969147</Value>
+    <Value>21.674877167</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -86,12 +96,12 @@
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>WIND SPEED</Name>
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>DRAG</Name>
     <Value>0.000000000</Value>
 </Widget>
@@ -102,14 +112,14 @@
     <LowValue>0.591132998</LowValue>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>HEIGHT TO SIZE</Name>
-    <Value>0.512315273</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>VEL TO SIZE</Name>
-    <Value>0.000000000</Value>
+    <Value>0.064039409</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -118,7 +128,7 @@
     <LowValue>0.655172467</LowValue>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>OSC SPEED</Name>
     <Value>0.325123161</Value>
 </Widget>
@@ -133,39 +143,39 @@
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>TRIGGER DURATION</Name>
-    <Value>729.334960938</Value>
+    <Value>527.566467285</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>TRIGGER RANGE</Name>
     <Value>166.059112549</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>HUE 1</Name>
-    <Value>1.000000000</Value>
+    <Value>0.330049247</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SAT 1</Name>
-    <Value>0.029556651</Value>
+    <Value>0.467980295</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>BRI 1</Name>
-    <Value>1.000000000</Value>
+    <Value>0.822660089</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>HUE 2</Name>
-    <Value>1.000000000</Value>
+    <Value>0.231527090</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SAT 2</Name>
-    <Value>1.000000000</Value>
+    <Value>0.251231521</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

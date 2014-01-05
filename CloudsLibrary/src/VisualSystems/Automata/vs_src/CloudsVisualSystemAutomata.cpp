@@ -16,7 +16,7 @@ void CloudsVisualSystemAutomata::selfSetupGui()
     customGui->addSpacer();
     customGui->addToggle("RESTART", &bRestart);
     customGui->addToggle("2D", &bIs2D);
-    customGui->addSlider("2D SCALE", 1, 10, &scale2D);
+    customGui->addSlider("2D SCALE", 1, 18, &scale2D);
     customGui->addToggle("USE INPUT", &bDoInput);
     customGui->addSlider("RADIUS", 1.0, 50.0, &radius);
     

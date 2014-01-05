@@ -15,7 +15,7 @@ float map(float value, float inputMin, float  inputMax, float  outputMin,float  
 void main(void){
 
     if(animateSpriteSize){
-        gl_PointSize = map(gl_Normal.y,0.0,1.,0.,maxSize) ;
+        gl_PointSize = map(gl_Normal.y,0.0,1.,minSize,maxSize) ;
     }
     else{
         gl_PointSize = map(gl_Normal.x,0.1,1.,minSize,maxSize) ;

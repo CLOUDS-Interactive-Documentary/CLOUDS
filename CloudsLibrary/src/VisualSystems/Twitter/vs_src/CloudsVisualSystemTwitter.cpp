@@ -61,8 +61,8 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     minTimeGapForNextTweet =3;
 
     avatarSize = 10;
-    tweetDeckHeightOffset = -15;
-    tweetDeckWidthOffset= 30;
+    tweetDeckHeightOffset = 10;
+    tweetDeckWidthOffset= 10;
     tweetDeckLineOffset = 10;
     
     ofEnableSmoothing();
@@ -133,6 +133,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	clusterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     clusterGui->addToggle("RENDER MESH", &bRenderMesh);
     clusterGui->addIntSlider("REFRESH RATE", 1, 500, &refreshRate);
+//    clusterGui->addIntSlider("REFRESH RATE", 1, 100, &activeTweeterRefreshRate);
     clusterGui->addRangeSlider("DATE RANGE", 1,  (dateIndex.size()), &dateIndexMin, & dateIndexMax);
     clusterGui->addToggle("ROTATE", &rotateModel);
     clusterGui->addMinimalSlider("ROTATION AMT", 0.1, 1, &rotationAmount);
@@ -140,6 +141,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addMinimalSlider("EDGE DECAY", 0.2, 1.0, &activityMapDamping);
     clusterGui->addMinimalSlider("NORMALS DECAY", 0.2, 1.0, &normalDecay);
     clusterGui->addMinimalSlider("SYNAPSE LEVEL", 0.0, 1.0, &synapseLevel);
+    clusterGui->addMinimalSlider("SPRITE SIZE", 0, 30, &sizeMultiplier);
 	
     //TWEET POP
 	addColorToGui(clusterGui,"LINE NODE BASE",lineNodeBaseHSV);
@@ -155,12 +157,15 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	spriteGui->copyCanvasProperties(gui);
     spriteGui->setName("Sprite");
     spriteGui->addToggle("ANIMATE SPRITES ON TWEETS",&bAnimateSpriteSize);
-    spriteGui->addRangeSlider("SPRITE SIZE RANGE", 0,  100, &minSize, & maxSize);
+    spriteGui->addMinimalSlider("SPRITE SIZE Min", 0, 25, &minSize);
+    spriteGui->addMinimalSlider("SPRITE SIZE max", 0, 100, &maxSize);
     addColorToGui(spriteGui,"SPRITE BASE COLOR",spriteBaseColorHSV);
     addColorToGui(spriteGui,"SPRITE POP COLOR",spritePopColorHSV);
     ofAddListener(spriteGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(spriteGui);
 	guimap[spriteGui->getName()] = spriteGui;
+//	addColorToGui(clusterGui,"NODE BASE",nodeBaseColorHSV);
+//	addColorToGui(clusterGui,"NODE POP",nodePopColorHSV);
 	
     clusterGui->addMinimalSlider("X POS", 1, 500, &xScale);
     clusterGui->addMinimalSlider("Y POS", 1, 500, &yScale);
@@ -649,8 +654,8 @@ void CloudsVisualSystemTwitter::loadMesh(){
     cout<<"No of vertices in edges "<< edgeMesh.getVertices().size()<<endl;
     currentIndex = 0;
     for(int j=0; j<tweeters.size(); j++){
-        float userLinkFactor = ofMap(tweeters[j].userLinks.size(), 0, maxUserLinks, 0.1, 1,true);
-        cout<<tweeters[j].userLinks.size()<<endl;
+        float userLinkFactor = ofMap(tweeters[j].userLinks.size(), 0, maxUserLinks, 0, 1);
+
         nodeMesh.addVertex(tweeters[j].position);
         nodeMesh.addNormal(ofVec3f(userLinkFactor,1.0,0));
         tweeters[j].nodeVertexIndex = currentIndex;
@@ -1095,8 +1100,6 @@ void CloudsVisualSystemTwitter::selfDraw()
     if(bRenderText){
         for(int i = 0; i < activeTweeters.size(); i++){
 //            activeTweeters[i]->textDecayRate *= edgeDecayRate;
-//            string test = ofToString(activeTweeters[i]->position.x) + " , "+ ofToString(activeTweeters[i]->position.y) +" , "+ofToString(activeTweeters[i]->position.z);
-//            drawText(test,activeTweeters[i]->position,activeTweeters[i]->textDecayRate);
             drawText(activeTweeters[i]->name,activeTweeters[i]->position,activeTweeters[i]->textDecayRate);
         }
         

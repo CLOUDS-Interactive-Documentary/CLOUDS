@@ -212,7 +212,7 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 			{
 				if(name == cameraPathNames[i])
 				{
-					bUseCameraPath = true;
+					//hbUseCameraPath = true;
 					pathCamera.loadPathFromFile(cameraPathPath + name);
 				}
 			}
@@ -509,8 +509,11 @@ void CloudsVisualSystemWormHole::selfUpdate()
 
 void CloudsVisualSystemWormHole::selfDraw()
 {
-	glEnable(GL_CULL_FACE);
+	
+    if (bCullBackface == true){
+    glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
+    }
 	
 	//alpha blending
 	if(currentBlendMode == OF_BLENDMODE_DISABLED)

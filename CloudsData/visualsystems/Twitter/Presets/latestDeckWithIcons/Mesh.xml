@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Mesh</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>41.000000000</XPosition>
-    <YPosition>-12.000000000</YPosition>
+    <XPosition>231.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,8 +23,8 @@
 <Widget>
     <Kind>6</Kind>
     <Name>DATE RANGE</Name>
-    <HighValue>2141.000000000</HighValue>
-    <LowValue>1.000000000</LowValue>
+    <HighValue>1740.408813477</HighValue>
+    <LowValue>991.935974121</LowValue>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -39,132 +39,127 @@
 <Widget>
     <Kind>25</Kind>
     <Name>EDGE DECAY</Name>
-    <Value>0.027536945</Value>
+    <Value>0.491625607</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE NODE BASE HUE</Name>
-    <Value>0.546798050</Value>
+    <Name>NORMALS DECAY</Name>
+    <Value>0.972413778</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE NODE BASE SAT</Name>
-    <Value>0.300492615</Value>
+    <Name>SYNAPSE LEVEL</Name>
+    <Value>0.995073915</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE NODE BASE BRI</Name>
-    <Value>0.280788183</Value>
+    <Name>SPRITE SIZE</Name>
+    <Value>25.270936966</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE NODE BASE ALPHA</Name>
-    <Value>0.000000000</Value>
+    <Name>LNB HUE</Name>
+    <Value>0.534031391</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE EDGE BASE HUE</Name>
-    <Value>0.620689631</Value>
+    <Name>LNB SAT</Name>
+    <Value>0.554974437</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE EDGE BASE SAT</Name>
-    <Value>0.403940886</Value>
+    <Name>LNB BRI</Name>
+    <Value>0.340313494</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE EDGE BASE BRI</Name>
-    <Value>0.334975362</Value>
+    <Name>LNB ALPHA</Name>
+    <Value>0.064039409</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE EDGE BASE ALPHA</Name>
-    <Value>0.004926108</Value>
+    <Name>LEB HUE</Name>
+    <Value>0.612565458</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE NODE POP HUE</Name>
-    <Value>0.625615776</Value>
+    <Name>LEB SAT</Name>
+    <Value>0.554973483</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE NODE POP SAT</Name>
+    <Name>LEB BRI</Name>
+    <Value>0.748690903</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEB ALPHA</Name>
+    <Value>0.029556651</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP HUE</Name>
+    <Value>0.596858621</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP SAT</Name>
+    <Value>0.335079163</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP BRI</Name>
+    <Value>0.544502437</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP ALPHA</Name>
+    <Value>0.344827592</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEP HUE</Name>
+    <Value>0.989528775</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEP SAT</Name>
     <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE NODE POP BRI</Name>
-    <Value>1.000000000</Value>
+    <Name>LEP BRI</Name>
+    <Value>0.371727586</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE NODE POP ALPHA</Name>
-    <Value>0.000000000</Value>
+    <Name>LEP ALPHA</Name>
+    <Value>0.147783250</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE EDGE POP HUE</Name>
-    <Value>0.881773412</Value>
+    <Name>S HUE</Name>
+    <Value>0.643979073</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE EDGE POP SAT</Name>
-    <Value>1.000000000</Value>
+    <Name>S SAT</Name>
+    <Value>0.947644591</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE EDGE POP BRI</Name>
-    <Value>1.000000000</Value>
+    <Name>S BRI</Name>
+    <Value>0.591622412</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>LINE EDGE POP ALPHA</Name>
-    <Value>0.295566499</Value>
+    <Name>S ALPHA</Name>
+    <Value>0.472906411</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>EDGE COLOR EXPONENT</Name>
-    <Value>3.266009808</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>NODE BASE HUE</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>NODE BASE SAT</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>NODE BASE BRI</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>NODE BASE ALPHA</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>NODE POP HUE</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>NODE POP SAT</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>NODE POP BRI</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>NODE POP ALPHA</Name>
-    <Value>0.000000000</Value>
+    <Value>2.990147829</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
