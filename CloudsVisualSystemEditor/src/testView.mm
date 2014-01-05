@@ -141,6 +141,11 @@ bool clipsort(CloudsClip a, CloudsClip b){
 				
 				testBatchIndex++;
 				currentTestPresetIndex++;
+                if(currentTestPresetIndex == testPresetIndeces.size()-1){
+                    cout<<"TEST COMPLETE : Reshufling and looping test"<<endl;
+                    currentTestPresetIndex = 0;
+                    random_shuffle(testPresetIndeces.begin(), testPresetIndeces.end());
+                }
 			}
 			
 		}
