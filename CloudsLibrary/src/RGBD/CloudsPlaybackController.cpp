@@ -1,96 +1,11 @@
 
 #include "CloudsPlaybackController.h"
 
-//if( e.name == fadeOutRGBD )
-//{
-//	if(e.message == "started")
-//	{
-//		
-//		ofLog(OF_LOG_VERBOSE) << "RGBD fading out: " << ofGetElapsedTimef();
-//		//JG TEMP HACKING OUT TRANSITIONS
-//		//			rgbdVisualSystem->transitionOut( currentVisualSystem->getTransitionType(), e.span );
-//		rgbdVisualSystem->selfUpdate();
-//	}
-//	if(e.message == "updated"){
-//		crossfadeValue = e.value;
-//		rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
-//	}
-//	if(e.message == "ended")
-//	{
-//		ofLog(OF_LOG_VERBOSE) << "RGBD faded out: " << ofGetElapsedTimef();
-//		
-//		//play our ext visual system & stop the rgbd
-//		playNextVisualSystem();
-//		
-//		//fade in nextVisual system
-//		float fadeInDuration = 1;
-//		
-//		//fade in the next system
-//		addControllerTween( fadeInVisualSystem, ofGetElapsedTimef(), fadeInDuration, 0, 1, NULL );
-//	}
-//}
-//
-//if( e.name == fadeInRGBD )
-//{
-//	if(e.message == "started")
-//	{
-//		ofLog(OF_LOG_VERBOSE) << "RGBD FADING IN: " << ofGetElapsedTimef() ;
-//		
-//		// play & transition in the RGBD so that we see as we fade in
-//		//JG TEMP HACKING OUT TRANSITIONS
-//		//			rgbdVisualSystem->transitionIn( currentVisualSystem->getTransitionType(), e.span );
-//		rgbdVisualSystem->playSystem();
-//		rgbdVisualSystem->selfUpdate();
-//	}
-//	if(e.message == "updated"){
-//		crossfadeValue = e.value;
-//		rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
-//	}
-//	if(e.message == "ended")
-//	{
-//		ofLog(OF_LOG_VERBOSE) << "RGBD FADED IN: " << ofGetElapsedTimef() ;
-//		
-//	}
-//}
-//
-//if( e.name == fadeInVisualSystem){
-//	if(e.message == "started")
-//	{
-//		ofLog(OF_LOG_VERBOSE) << "fading in next visual system: " << ofGetElapsedTimef();
-//	}
-//	if(e.message == "updated"){
-//		crossfadeValue = e.value;
-//	}
-//	if(e.message == "ended")
-//	{
-//		ofLog(OF_LOG_VERBOSE) << "faded in next visual system: " << ofGetElapsedTimef();
-//	}
-//}
-//
-//
-//if( e.name == fadeOutVisualSystem){
-//	if(e.message == "started")
-//	{
-//		ofLog(OF_LOG_VERBOSE) << "fading out next visual system" << ofGetElapsedTimef();
-//	}
-//	if(e.message == "updated"){
-//		crossfadeValue = e.value;
-//	}
-//	if(e.message == "ended")
-//	{
-//		ofLog(OF_LOG_VERBOSE) << "faded out next visual system" << ofGetElapsedTimef();
-//		
-//		//hide the visual system
-//		hideVisualSystem();
-//		
-//	}
-//}
 
 CloudsPlaybackController::CloudsPlaybackController(){
 	
 	storyEngine = NULL;
 	eventsRegistered = false;
-//	fadingIntro = false;
 	
 	revertToIntroAfter1Act = false;
 	actFinished = false;
@@ -99,13 +14,13 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	currentAct = NULL;
 	showingClusterMap = false;
 	showingCursor = false;
-//	targetScratchVolume = currentVolume = 1.0;
 }
 
 //--------------------------------------------------------------------
 CloudsPlaybackController::~CloudsPlaybackController(){
 }
 
+//--------------------------------------------------------------------
 void CloudsPlaybackController::clearAct(bool destroyAct){
 	
 	if(currentAct != NULL){
@@ -143,7 +58,6 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 		ofRemoveListener(storyEngine->getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
 	}
 
-//	ofRemoveListener( CloudsPlaybackControllerEvent::events, this, &CloudsPlaybackController::CloudsPlaybackControllerEventHandler );
 }
 
 //--------------------------------------------------------------------
@@ -175,36 +89,13 @@ void CloudsPlaybackController::setup(){
 		currentVisualSystem = introSequence;
 		
 		clusterMapVisualSystem.setup();
-		//clusterMapVisualSystem.setDrawToScreen( false );
-		
-		//start an initila fade... and set our fade variables
-//		fadeDuration = 1;
-//		fadeStartTime = ofGetElapsedTimef();
-//		fadeEndTime = fadeStartTime + fadeDuration;
-//		fadeStartVal = 0;
-//		fadeTargetVal = 1.;
-//		
-//		fadingOut = fadingIn = false;
-//		crossfadeValue = 1.;
-//		bIsFading = false;
-		
+
 		hud.setup();
-		
-		//setup scratch tracks
 		
 	}
 	
 	ofHideCursor();
 	
-//	CloudsPlaybackControllerTween t;
-//	t.setup("testTween", ofGetElapsedTimef(), 5, 0, 100);
-//	controllerTweens.push_back( t );
-//	ofAddListener( CloudsPlaybackControllerEvent::events, this, &CloudsPlaybackController::CloudsPlaybackControllerEventHandler );
-//	
-//	fadeOutRGBD = "fadeOutRGBD";
-//	fadeInRGBD = "fadeInRGBD";
-//	fadeOutVisualSystem = "fadeOutVisualSystem";
-//	fadeInVisualSystem = "fadeInVisualSystem";
 }
 
 //void CloudsPlaybackController::addControllerTween( string name, float startTime, float span, float startVal, float endVal, float *value ){
