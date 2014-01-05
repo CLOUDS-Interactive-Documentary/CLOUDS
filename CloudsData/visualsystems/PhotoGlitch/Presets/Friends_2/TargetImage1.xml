@@ -13,17 +13,17 @@
 <Widget>
     <Kind>2</Kind>
     <Name>START AT</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>SORT BY HUE</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>SORT BY BRI</Name>
+    <Name>SORT BY HUE</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SORT BY BRI</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -42,7 +42,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>GrandPerspective1.jpg</Name>
+    <Name>GrandPerspective1.png</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -53,16 +53,11 @@
 <Widget>
     <Kind>17</Kind>
     <Name>Grand_Perspective.jpg</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
     <Name>Grid.jpg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>Screen Shot 2013-12-04 at 11.32.15 AM.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -82,6 +77,11 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>finder.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>friends.jpg</Name>
     <Value>0</Value>
 </Widget>
@@ -92,7 +92,17 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>glitch.jpeg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>glitch2.jpeg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>gradient2.jpeg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -109,16 +119,6 @@
     <Kind>17</Kind>
     <Name>grandperspectiveLowRes.jpg</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>images (1).jpeg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>images.jpeg</Name>
-    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>

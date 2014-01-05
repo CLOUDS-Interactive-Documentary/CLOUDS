@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>TargetImage1</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>217.000000000</XPosition>
-    <YPosition>-2.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -42,7 +42,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>GrandPerspective1.jpg</Name>
+    <Name>GrandPerspective1.png</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -62,11 +62,6 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>Screen Shot 2013-12-04 at 11.32.15 AM.jpg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
     <Name>browser.jpg</Name>
     <Value>0</Value>
 </Widget>
@@ -82,6 +77,11 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>finder.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>friends.jpg</Name>
     <Value>0</Value>
 </Widget>
@@ -92,7 +92,17 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>glitch.jpeg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>glitch2.jpeg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>gradient2.jpeg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -108,16 +118,6 @@
 <Widget>
     <Kind>17</Kind>
     <Name>grandperspectiveLowRes.jpg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>images (1).jpeg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>images.jpeg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
