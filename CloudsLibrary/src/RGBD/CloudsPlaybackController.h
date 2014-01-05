@@ -62,8 +62,8 @@ class CloudsPlaybackController {
 	
 	void exit(ofEventArgs & args);
 	
-	bool revertToIntroAfter1Act;//demo hack
-	bool actFinished;
+	//bool revertToIntroAfter1Act;//demo hack
+	//bool actFinished;
 	
 	vector<CloudsClip> fakeQuestions;
 
@@ -121,7 +121,6 @@ class CloudsPlaybackController {
 	bool showingVisualSystem;
 	bool showingClusterMap;
 	
-//	bool fadingIntro;
 	void clearAct(bool destroy = true);
 			
 	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
@@ -131,7 +130,4 @@ class CloudsPlaybackController {
 	void showRGBDVisualSystem();
 	void playNextVisualSystem();
 	
-//	void transitionRgbdSystemOut( float transitionDuration=0, float fadeDuration=3 );
-//	void transitionRgbdSystemIn( float transitionDuration=0, float fadeDuration=3 );
-//	bool bIsFading;
 };
