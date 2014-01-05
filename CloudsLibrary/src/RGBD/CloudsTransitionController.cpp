@@ -19,12 +19,12 @@ CloudsTransitionController::CloudsTransitionController(){
 	fadeOutStates.push_back(TRANSITION_INTERVIEW_OUT);
 	fadeOutStates.push_back(TRANSITION_VISUALSYSTEM_OUT);
 	fadeOutStates.push_back(TRANSITION_INTRO_OUT);
+    fadeOutStates.push_back(TRANSITION_CLUSTERMAP_OUT);
 	
 	fadeInStates.push_back(TRANSITION_VISUALSYSTEM_IN);
 	fadeInStates.push_back(TRANSITION_INTERVIEW_IN);
-
     fadeInStates.push_back(TRANSITION_CLUSTERMAP_IN);
-    fadeInStates.push_back(TRANSITION_CLUSTERMAP_OUT);
+
 }
 
 void CloudsTransitionController::confirmEmpty(){
@@ -41,7 +41,6 @@ void CloudsTransitionController::confirmEmpty(){
 		ofLogError("CloudsTransitionController::confirmEmpty") << "State Queue is not empty";
 		stateQueue.clear();
 	}
-	
 }
 
 void CloudsTransitionController::transitionFromIntro(float outDuration){

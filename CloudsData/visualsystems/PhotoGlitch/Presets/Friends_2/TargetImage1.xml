@@ -42,12 +42,12 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>GrandPerspective1.png</Name>
+    <Name>GrandPerspective1.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>GrandPerspectiveRedish.png</Name>
+    <Name>GrandPerspectiveRedish.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -57,12 +57,17 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>Screen Shot 2013-12-04 at 11.32.15 AM.png</Name>
+    <Name>Grid.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>browser.png</Name>
+    <Name>Screen Shot 2013-12-04 at 11.32.15 AM.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>browser.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -72,7 +77,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>desktopclutter_target.png</Name>
+    <Name>desktopclutter_target.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -92,7 +97,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>gradient_target.png</Name>
+    <Name>gradient_target.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -122,7 +127,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>qrcode_wwd.png</Name>
+    <Name>qrcode_wwd.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -142,7 +147,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>xcode.png</Name>
+    <Name>xcode.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

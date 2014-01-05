@@ -164,7 +164,7 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 		}
 		else{
 //			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
-			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);			
+			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
 		}
 		renderTarget.begin();
 		ofClear(0,0,0,1.0);
