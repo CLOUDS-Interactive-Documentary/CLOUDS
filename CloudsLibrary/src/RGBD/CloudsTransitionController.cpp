@@ -175,7 +175,7 @@ CloudsTransitionState CloudsTransitionController::getPreviousState(){
 }
 
 string CloudsTransitionController::getCurrentStateDescription(){
-	getStateDescription(currentState);
+	return getStateDescription(currentState);
 }
 
 bool CloudsTransitionController::isStateNew(){

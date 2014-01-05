@@ -8,13 +8,13 @@ cd ../../addons
 
 #passing no arguments means read only
 if [ -z $1 ]; then
-    PREFIX="git clone https://github.com/"
-    NEWPREFIX="git clone https://github.com/CLOUDS-Interactive-Documentary/"
-	echo "Cloning read-only"
-else
     PREFIX="git clone git@github.com:"
     NEWPREFIX="git clone git@github.com:CLOUDS-Interactive-Documentary/"
 	echo "Cloning writable"
+else
+    PREFIX="git clone https://github.com/"
+    NEWPREFIX="git clone https://github.com/CLOUDS-Interactive-Documentary/"
+	echo "Cloning read-only"
 fi
 
 
