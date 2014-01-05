@@ -67,8 +67,7 @@
 
 }
 
-//void audioRequested(float *output, int bufferSize, int nChannels);
-- (void)audioRequested:(float*)output bufferSize:(int)bufferSize nChannels:(int)nChannels;
+//- (void)audioRequested:(float*)output bufferSize:(int)bufferSize nChannels:(int)nChannels;
 - (int)selectedPresetIndex;
 - (void)updateAssociatedClips;
 - (void)updateCurrentClipPresets;
