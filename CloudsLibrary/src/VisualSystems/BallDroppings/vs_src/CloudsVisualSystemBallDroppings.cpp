@@ -5,11 +5,6 @@
 #include "CloudsVisualSystemBallDroppings.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
 //These methods let us add custom GUI parameters and respond to their events
 //statics
 
@@ -77,7 +72,7 @@ void CloudsVisualSystemBallDroppings::selfSetup()
 	clickCount=0;
 	ball_drop_rate = 800;
 	emptyBalls=0;
-	closestLine=0;
+	closestLine = NULL;
 	closestLineVertex=0;
 	closestLine_maxPickingDistance = 20;
 	closestLineDistance = 0;
@@ -254,11 +249,15 @@ void CloudsVisualSystemBallDroppings::selfMousePressed(ofMouseEventArgs& data)
 {
 	if(closestLineDistance < closestLine_maxPickingDistance){
 		mousestate_draggingvert=1;
-        
-		//taking some notes for the undoable later on.
-		if(closestLineVertex==0) closestLine_beginMove.copyFrom( closestLine->x1 , closestLine->y1 , 0);
-		else closestLine_beginMove.copyFrom( closestLine->x2 , closestLine->y2 , 0);
-		
+        if(closestLine!=NULL){
+			//taking some notes for the undoable later on.
+			if(closestLineVertex==0){
+				closestLine_beginMove.copyFrom( closestLine->x1 , closestLine->y1 , 0);
+			}
+			else{
+				closestLine_beginMove.copyFrom( closestLine->x2 , closestLine->y2 , 0);
+			}
+		}
 	} else {
 		clickCount++;
 		if(clickCount%2==0){ //only draw something every 2 clicks.

@@ -10,6 +10,7 @@
 
 void CloudsRun::actBegan(CloudsActEventArgs &args){
     actCount++;
+	cout << "ACT COUNT IS NOW: " << actCount << endl;
 }
 
 void CloudsRun::actEnded(CloudsActEventArgs &args){

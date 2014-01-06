@@ -255,7 +255,7 @@ void CloudsStoryEngine::setCustomAct(CloudsAct* act){
 }
 
 #pragma mark INIT ACT
-CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed){
+CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed){
 	if(seed.getKeywords().size() == 0){
 		ofLogError("CloudsStoryEngine::buildAct") << seed.getLinkName() << " contains no keywords!";
 		return NULL;
@@ -263,7 +263,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed){
     return buildAct(run, seed, seed.getKeywords()[ ofRandom(seed.getKeywords().size()) ]);
 }
 
-CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string topic){
+CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string topic, bool playSeed){
 	
 	//this hack let's us inject custom apps 
 	if(customAct != NULL){
@@ -321,13 +321,15 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     
     int moreMenThanWomen = 0;
     int timeForNewQuesiton = 0;
-    float clipHandleDuration = getHandleForClip(clip);
 	bool systemHasSound = false;
-    totalSecondsEnqueued = preRollDuration;
-    act->addClip(clip, topic, totalSecondsEnqueued, clipHandleDuration, getCurrentDichotomyBalance());
-    cout << "CLIP START DURATION IS " << clip.getDuration() << endl;
-    localClipHistory.push_back(clip);
-    localTopicHistory.push_back(topic);
+    float clipHandleDuration;
+	if(playSeed){
+		cout << "CLIP START DURATION IS " << clip.getDuration() << endl;	clipHandleDuration = getHandleForClip(clip);
+		totalSecondsEnqueued = preRollDuration;
+		act->addClip(clip, topic, totalSecondsEnqueued, clipHandleDuration, getCurrentDichotomyBalance());
+		localClipHistory.push_back(clip);
+		localTopicHistory.push_back(topic);
+	}
     
     ///
     visualSystemStartTime = 0;
@@ -426,11 +428,29 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
             CloudsClip& nextClipOption = nextOptions[ i ];
             string log = "";
             
-            float score = scoreForClip(localClipHistory, nextClipOption, topic,log,
-									   systemRunning, systemHasSound,
-									   isPresetIndefinite, run.actCount,
-									   moreMenThanWomen, timesOnCurrentTopic,
-									   localTimesOnCurrentTopicHistory[topic]);
+//			scoreForClip(vector<CloudsClip>& history,
+//						 CloudsClip& potentialNextClip,
+//						 string topic,
+//						string& log,
+//						 int currentRun,
+//						 bool visualSystemRunning,
+//						 bool visualSystemHasSound,
+//						 bool isPresetIndefinite,
+//						 int moreMenThanWomen,
+//						 int timesOnCurrentTopic,
+//						 int numTopicHistoryOccurrences)
+			
+            float score = scoreForClip(localClipHistory, //history
+									   nextClipOption, //next topic
+									   topic, //topic
+									   log, //log
+									   run.actCount, // current act ccount
+									   systemRunning, //is the system running?
+									   systemHasSound, //does the system have sound?
+									   isPresetIndefinite, //is the system indef?
+									   moreMenThanWomen, //what is the gender ratio?
+									   timesOnCurrentTopic, //how many times we've hit the current topic
+									   localTimesOnCurrentTopicHistory[topic]); //
             
             scoreLogPairs.push_back( make_pair(score,log) );
             //            totalPoints += score;
@@ -655,8 +675,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     ofBuffer visualSystemBuffer;
     visualSystemBuffer.set(vsScoreStream);
     ofBufferToFile(GetCloudsDataPath() + "logs/visualSystemScores.csv", visualSystemBuffer);
-    
-//    run.actCount++;
     
     CloudsActEventArgs args(act);
     ofNotifyEvent(events.actCreated, args);
@@ -997,7 +1015,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history,
 		return 0;//<@_@>
 	}
 
-	if( currentRun < 2 && clipDifficulty == "hard" ){
+	if(currentRun < 2 && clipDifficulty == "hard" ){
         if (printDecisions) cout<< "         REJECTED Clip "<<potentialNextClip.getLinkName()<<" : hard clips come 3rd act" << endl;
 		return 0;//<@_@>
 	}
