@@ -70,6 +70,7 @@ void CloudsSecondaryDisplayController::setup(){
     meshBioLocation->bounds.width = 1000;
     meshBioLocationBG = bioLayout.getMeshByID("BOX_x5F_LOC");
     meshBioDescription = bioLayout.getMeshByID("TEXTBOX_x5F_BIO");
+    
     ////for project example
     meshProjectVideo = projectLayout.getMeshByID("BOX_x5F_VIDEO");
     meshProjectTitle = projectLayout.getMeshByID("TEXTBOX_x5F_NAME");
@@ -470,9 +471,10 @@ void CloudsSecondaryDisplayController::draw(){
             playerRect.scaleTo(meshProjectVideo->bounds);
             
             //draw video
-            ofSetColor(255, 255, 255, 255*playhead);
+            ofSetColor(255, 255, 255, 255*playhead); //alpha fade on video
             archivePlayer.draw(playerRect);
             ofSetColor(255, 255, 255, 255);
+            //draw video bounding mesh
             
             playingMovie = archivePlayer.isPlaying();
         }
