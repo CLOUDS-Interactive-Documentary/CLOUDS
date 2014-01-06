@@ -1246,7 +1246,9 @@ void CloudsVisualSystemVerletForm::clearElements(){
 }
 
 void CloudsVisualSystemVerletForm::selfKeyPressed(ofKeyEventArgs & args){
+#ifdef TARGET_WIN32
 	if(args.key=='n' && ((GetKeyState( VK_CONTROL) & 0x80) > 0)) shouldRegenerateMesh=true;
+#endif
 }
 
 void CloudsVisualSystemVerletForm::selfKeyReleased(ofKeyEventArgs & args){
