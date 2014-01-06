@@ -4,16 +4,12 @@
 
 #include "CloudsVisualSystemOpenP5Spaghetti.h"
 
-float CloudsVisualSystemOpenP5Spaghetti::NWalkers = 100;
-bool CloudsVisualSystemOpenP5Spaghetti::smooth = true;
+
 //bool CloudsVisualSystemOpenP5Spaghetti::drawTriangles = false;
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
 
-    // Set defaults.
-    currSpin = 0.0f;
-    spinSpeed = 0.5f;
 
 	customGui = new ofxUISuperCanvas("CUSTOM", gui);
 	customGui->copyCanvasStyle(gui);
@@ -25,7 +21,7 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
     customGui->addSpacer();
     customGui->addLabel("SIMULATION");
     customGui->addButton("REGENERATE", &shouldRegenerate);
-    customGui->addIntSlider("Preloads", 0, 50000, &numPreloads);
+    customGui->addIntSlider("Preloads", 0, 5000, &numPreloads);
     vector<string> modes;
     modes.push_back("SMOOTH");
     modes.push_back("GNARLY");
@@ -73,7 +69,13 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
  
   
 }
-
+void CloudsVisualSystemOpenP5Spaghetti::selfSetDefaults(){
+    // Set defaults.
+    currSpin = 0.0f;
+    spinSpeed = 0.5f;
+    NWalkers = 100;
+    smooth = true;
+}
 void CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent(ofxUIEventArgs &e){
 //	if(e.widget->getName() == "Custom Button"){
 //		cout << "Button pressed!" << endl;
@@ -117,9 +119,9 @@ void CloudsVisualSystemOpenP5Spaghetti::regenerate(){
         walkers[i].position.x = 0;
         walkers[i].position.y = 0;
         walkers[i].position.z = 0;
-        
+
         // COLOR MODES
-        
+
         if(rainbow){ //if rainbow mode is selected, choose a random hue between 0 and 255
             dichromatic = false; oscillate = false;
             newColor.setHsb(ofRandom(255),saturation, brightness);
@@ -142,7 +144,6 @@ void CloudsVisualSystemOpenP5Spaghetti::regenerate(){
     
     //shouldn't PRELOADS should happen in regenerate...?
     for (int j = 0; j<numPreloads; j++){
-        
         selfUpdate();
         cout << "preloaded " << j << "times" << endl;
         //selfDraw();
@@ -241,10 +242,10 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
         else {
             walkers[i].gnarlyTrails();
         }
-     //   if (drawTriangles){ smooth = false;  walkers[i].doubleTrails(); }
-        }
-       
+        //   if (drawTriangles){ smooth = false;  walkers[i].doubleTrails(); }
     }
+       
+}
 
 
 // selfDraw draws in 3D using the default ofEasyCamera

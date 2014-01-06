@@ -332,44 +332,14 @@ void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
 
 	ofxUIDropDownList* d = (ofxUIDropDownList*)rdrGui->getWidget("VIDEO");
     cout<<"IM in self preset loaded"<<endl;
-//	vector<int>& selected = d->getSelectedIndeces();
-//    for (int i =0 ; i<selected.size(); i++) {
-//        cout<<"name of videos : "<< selected[i]<<endl;
-//    }
     vector<ofxUILabelToggle*> t =  d->getToggles();
-//	if(selected.size() > 0){
-//        
-//		loadMovieWithName( d->getToggles()[ selected[0] ]->getName() );
-//	}
-    
     for (int i =0; i<t.size(); i++) {
         if (t[i]->getValue()) {
             cout<<"LOADING MOVIE : "<<t[i]->getName()<<endl;
             loadMovieWithName( t[i]->getName() );
         }
     }
-	
-    
-//    //LOADING MOVIE
-//    ofxUIRadio* r = (ofxUIRadio*)rdrGui->getWidget("VIDEO");
-//    
-//    vector<ofxUIToggle*> t = r->getToggles();
-//    string movieName;
-//    for(int j = 0; j < t.size(); j++){
-//        if(t[j]->getValue()) {
-//            movieName = t[j]->getName();
-//            
-//			cout << "LOADING MOVIE :"<<movieName<<endl;
-//			
-//			for(int i = 0; i < movieStrings.size(); i++){
-//				if (movieStrings[i] == movieName) {
-//					loadMovieAtIndex(i);
-//					break;
-//				}
-//			}
-//			break;
-//        }
-//    }
+
 }
 
 
