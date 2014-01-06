@@ -225,7 +225,7 @@ float CloudsVisualSystemVectorFlow::sampleField(float x, float y){
 void CloudsVisualSystemVectorFlow::getSincSourceAngle(int x, int y, float& angle, float& weight){
 	ofVec2f pos(x,y);
 //	ofVec2f sincToPos = sincPosition - pos;
-	ofVec2f mousePos(ofGetMouseX(),ofGetMouseY());
+	ofVec2f mousePos(GetCloudsInputX(),GetCloudsInputY());
 	ofVec2f sincToPos = mousePos - pos;
 	float distSq = sincToPos.lengthSquared();
 //	if( distSq < powf(sincRadius, 2) ){

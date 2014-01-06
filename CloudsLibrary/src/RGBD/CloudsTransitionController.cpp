@@ -20,11 +20,12 @@ CloudsTransitionController::CloudsTransitionController(){
 	fadeOutStates.push_back(TRANSITION_VISUALSYSTEM_OUT);
 	fadeOutStates.push_back(TRANSITION_INTRO_OUT);
     fadeOutStates.push_back(TRANSITION_CLUSTERMAP_OUT);
+	fadeOutStates.push_back(TRANSITION_QUESTION_OUT);
 	
 	fadeInStates.push_back(TRANSITION_VISUALSYSTEM_IN);
 	fadeInStates.push_back(TRANSITION_INTERVIEW_IN);
     fadeInStates.push_back(TRANSITION_CLUSTERMAP_IN);
-
+	fadeInStates.push_back(TRANSITION_QUESTION_IN);
 }
 
 void CloudsTransitionController::confirmEmpty(){
@@ -117,6 +118,10 @@ void CloudsTransitionController::transitionFromClusterMap(float inDuration){
     startTransition();
 
     cout<<"IM TRANSITIONING OUT OF CLUSTER MAP"<<endl;
+}
+
+void CloudsTransitionController::transitionToQuestion(float outDuration, float portalDuration, float inDuration){
+	//TODO:
 }
 
 void CloudsTransitionController::startTransition(){

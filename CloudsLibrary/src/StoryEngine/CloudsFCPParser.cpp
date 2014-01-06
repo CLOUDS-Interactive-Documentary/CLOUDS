@@ -95,7 +95,7 @@ void CloudsFCPParser::parseVOClips(){
 				continue;
 			}
 			voiceoverDuration[split[0]] = ofToFloat(split[1]);
-			cout << "duration for " << split[0] << " is " << ofToFloat(split[1]) << endl;
+//			cout << "duration for " << split[0] << " is " << ofToFloat(split[1]) << endl;
 		}
 	}
 
@@ -171,7 +171,7 @@ void CloudsFCPParser::parseVOClips(){
 //			}
 //			else {
 				clip.addOverlappingClipID(components[i]);
-				cout << " *** overlapping clip is " << components[i] << endl;
+//				cout << " *** overlapping clip is " << components[i] << endl;
 //			}
 		}
 	}
