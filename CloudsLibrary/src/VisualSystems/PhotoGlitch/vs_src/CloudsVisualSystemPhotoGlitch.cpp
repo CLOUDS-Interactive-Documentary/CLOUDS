@@ -333,11 +333,19 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     sourceParams.mode = SOURCE_MODE;
     gp1.mode = TARGET_MODE;
     gp2.mode = TARGET_MODE;
-    
+
     imagesDir.listDir(getVisualSystemDataPath(true) + "sourceImages" );
+    if (! imagesDir.exists()) {
+        ofLogError("[ CloudsVisualSystemPhotoGlitch::selfSetup ]")<<" Image folder : "<<getVisualSystemDataPath(true) + "sourceImages/"<<" Not found"<<endl;
+        return;
+    }
     imagesDir.sort();
     
     targetImagesDir.listDir(getVisualSystemDataPath(true) + "targetImages" );
+    if (! targetImagesDir.exists()) {
+        ofLogError("[ CloudsVisualSystemPhotoGlitch::selfSetup ]")<<" Image folder : "<<getVisualSystemDataPath(true) + "targetImages/"<<" Not found"<<endl;
+        return;
+    }
     targetImagesDir.sort();
     selectedSrcImageIdx = 0;
     selectedTargetImageIdx = 0;
@@ -384,10 +392,16 @@ void CloudsVisualSystemPhotoGlitch::generate(PhotoGlitch& pg,int imgIndex, bool 
     pg.clear();
     if(isSource) {
         cout<<"Im a source " <<"loading : "<<imagesDir.getPath(imgIndex)<<endl;
-        pg.tex.loadImage(imagesDir.getPath(imgIndex));
+        if(! pg.tex.loadImage(imagesDir.getPath(imgIndex))){
+            ofLogError("[ CloudsVisualSystemPhotoGlitch::generate ]")<<"Image not found"<<endl;
+         return;
+        }
     }
     else{
-        pg.tex.loadImage(targetImagesDir.getPath(imgIndex));
+        if(! pg.tex.loadImage(imagesDir.getPath(imgIndex))){
+            ofLogError("[ CloudsVisualSystemPhotoGlitch::generate ]")<<"Image not found"<<endl;
+            return;
+        }
     }
     
     
