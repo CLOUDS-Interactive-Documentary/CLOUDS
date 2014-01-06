@@ -18,8 +18,10 @@ void CloudsPortal::reloadShader(){
 }
 
 CloudsPortal::CloudsPortal(){
+
+	scale = 1.0f;
 	
-	ringStartRadius = 100;
+    ringStartRadius = 100;
 	ringSegments = 360/30.;
 	ringRadiusStep = 10;
 	ringThickness = 10;
