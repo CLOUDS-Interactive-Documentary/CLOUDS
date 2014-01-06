@@ -73,15 +73,12 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	bool isStartQuestionSelected();
 	void autoSelectQuestion();
 	CloudsQuestion* getSelectedQuestion();
-	CloudsRun& getSelectedRun(){
-		return currentRun;
-	};
+//	CloudsRun& getSelectedRun(){
+//		return currentRun;
+//	};
 	
   protected:
-	
-	//TODO: when the title scene is added this will be selectable
-	CloudsRun currentRun;
-	
+		
 	ofxUISuperCanvas* questionGui;
 	ofxUISuperCanvas* tunnelGui;
 	ofxUISuperCanvas* typeGui;
@@ -97,8 +94,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float questionTunnelInnerRadius;
 	
 	bool startedOnclick;
-	
-
 	
 	ofxFTGLFont extrudedTitleText; //for the title
 	float currentTitleOpacity;
@@ -118,7 +113,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float titleRectHeight;
 	ofRectangle titleRect;
 	bool hoveringTitle;
-	
 	
 	ofxFTGLSimpleLayout questionFont;
     void rebuildQuestionFont();
@@ -142,7 +136,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void reloadShaders();
 	bool paused;
 
-	
 	ofMesh blocksMesh;
 	ofMesh tunnelMeshTight;
 	ofMesh tunnelMeshLoose;
@@ -158,7 +151,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofShader questionShader;
 	ofShader chroma;
 	ofShader typeShader;
-	
 	
 	ofRange pointSize;	
 	ofRange distanceRange;
@@ -183,9 +175,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofFloatColor tint;
 	ofFloatColor questionNodeTint;
 	
-//	ofMesh thickTypeMesh;
-//	ofMesh thinTypeMesh;
-
 	ofImage sprite;
 
     ofVec3f cursor;

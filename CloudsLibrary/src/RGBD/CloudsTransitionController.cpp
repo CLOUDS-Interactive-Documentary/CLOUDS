@@ -109,7 +109,6 @@ void CloudsTransitionController::transitionToClusterMap(float inDuration,float o
 }
 
 void CloudsTransitionController::transitionFromClusterMap(float inDuration){
-	//TODO:!!!
 
     confirmEmpty();
 
@@ -118,9 +117,6 @@ void CloudsTransitionController::transitionFromClusterMap(float inDuration){
     startTransition();
 
     cout<<"IM TRANSITIONING OUT OF CLUSTER MAP"<<endl;
-    //See if we are playing a VS or Clip?
-    //Queue the state
-    //start transition
 }
 
 void CloudsTransitionController::startTransition(){
@@ -252,7 +248,6 @@ string CloudsTransitionController::getStateDescription(CloudsTransitionState sta
             return "TransitionClusterIn";
         case TRANSITION_CLUSTERMAP_OUT:
             return "TransitionClusterOut";
-			
 		default:
 			return "UNKNOWN STATE " + ofToString(int(currentState));
 	}

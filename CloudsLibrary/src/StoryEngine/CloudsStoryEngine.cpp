@@ -656,7 +656,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     visualSystemBuffer.set(vsScoreStream);
     ofBufferToFile(GetCloudsDataPath() + "logs/visualSystemScores.csv", visualSystemBuffer);
     
-    run.actCount++;
+//    run.actCount++;
     
     CloudsActEventArgs args(act);
     ofNotifyEvent(events.actCreated, args);
@@ -987,17 +987,17 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history,
         clipDifficulty = "hard";
     }
 	
-	if(currentRun == 1 && clipDifficulty != "easy"){
+	if(currentRun == 0 && clipDifficulty != "easy"){
         if (printDecisions) cout<< "         REJECTED Clip "<<potentialNextClip.getLinkName()<<" : easy clips in the intro please!!" << endl;
 		return 0; //<@_@> 4:AM JG: don't actually get rid of this plz
 	}
 	
-	if(currentRun <= 2 && clipDifficulty == "medium"){
+	if(currentRun < 1 && clipDifficulty == "medium"){
         if (printDecisions) cout<< "         REJECTED Clip "<<potentialNextClip.getLinkName()<<" : medium clips in the second act please!!" << endl;
 		return 0;//<@_@>
 	}
 
-	if( currentRun <= 3 && clipDifficulty == "hard" ){
+	if( currentRun < 2 && clipDifficulty == "hard" ){
         if (printDecisions) cout<< "         REJECTED Clip "<<potentialNextClip.getLinkName()<<" : hard clips come 3rd act" << endl;
 		return 0;//<@_@>
 	}
