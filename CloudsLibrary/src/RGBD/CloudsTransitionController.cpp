@@ -9,41 +9,58 @@
 #include "CloudsTransitionController.h"
 
 CloudsTransitionController::CloudsTransitionController(){
+	
 	transitioning = false;
 	triggeredMidpoint = false;
 	newState = false;
 	previousState = TRANSITION_IDLE;
 	currentState = TRANSITION_IDLE;
+	
+	fadeOutStates.push_back(TRANSITION_INTERVIEW_OUT);
+	fadeOutStates.push_back(TRANSITION_VISUALSYSTEM_OUT);
+	fadeOutStates.push_back(TRANSITION_INTRO_OUT);
+    fadeOutStates.push_back(TRANSITION_CLUSTERMAP_OUT);
+	fadeOutStates.push_back(TRANSITION_QUESTION_OUT);
+	
+	fadeInStates.push_back(TRANSITION_VISUALSYSTEM_IN);
+	fadeInStates.push_back(TRANSITION_INTERVIEW_IN);
+    fadeInStates.push_back(TRANSITION_CLUSTERMAP_IN);
+	fadeInStates.push_back(TRANSITION_QUESTION_IN);
 }
 
 void CloudsTransitionController::confirmEmpty(){
+	if(currentState != TRANSITION_IDLE){
+		for(int i = 0; i < queueHistory.size(); i++){
+			ofLogError("TRANSITION QUEUE HISTORY") << getStateDescription(queueHistory[i].state) << " : " << queueHistory[i].timeRange;
+		}
+		ofLogError("CloudsTransitionController::confirmEmpty") << "Current state is not IDLE on new transition: " << getStateDescription(currentState);
+		for(int i = 0; i < stateQueue.size(); i++){
+			ofLogError("TRANSITION QUEUE REMAINING") << getStateDescription(stateQueue[i].state);
+		}
+	}
 	if(!stateQueue.empty()){
 		ofLogError("CloudsTransitionController::confirmEmpty") << "State Queue is not empty";
 		stateQueue.clear();
 	}
-	if(currentState != TRANSITION_IDLE){
-		ofLogError("CloudsTransitionController::confirmEmpty") << "Current state is not IDLE on new transition";
-	}	
 }
 
-void CloudsTransitionController::transitionFromIntro(float outDuration, float inDuration){
+void CloudsTransitionController::transitionFromIntro(float outDuration){
 
 	confirmEmpty();
-	
+
 	queueState(TRANSITION_INTRO_OUT, outDuration);
 	
 	startTransition();
-	
-	//currentState = TRANSITION_INTRO_OUT;
-	//startTransition(outDuration, inDuration);
-	
-//	transitioning = true;
-//	triggeredMidpoint = false;
-//	newState = true;
-	
-//	transitionStartTime = ofGetElapsedTimef();
-//	transitionOutCompleteTime = transitionStartTime + outDuration;
-//	transitionInCompleteTime  = transitionStartTime + outDuration + inDuration;
+
+}
+
+void CloudsTransitionController::transitionToFirstVisualSystem(float duration){
+
+	confirmEmpty();
+
+	queueState(TRANSITION_VISUALSYSTEM_IN, duration);
+
+	startTransition();
 }
 
 void CloudsTransitionController::transitionToVisualSystem(float outDuration, float inDuration){
@@ -56,10 +73,6 @@ void CloudsTransitionController::transitionToVisualSystem(float outDuration, flo
 	queueState(TRANSITION_VISUALSYSTEM_IN, inDuration);
 
 	startTransition();
-//	startTransition(outDuration, inDuration);
-//	transitionStartTime = ofGetElapsedTimef();
-//	transitionOutCompleteTime = transitionStartTime + outDuration;
-//	transitionInCompleteTime  = transitionStartTime + outDuration + inDuration;
 }
 
 void CloudsTransitionController::transitionToInterview(float outDuration, float inDuration){
@@ -73,45 +86,48 @@ void CloudsTransitionController::transitionToInterview(float outDuration, float 
 	
 	startTransition();
 	
-//	transitionStartTime = ofGetElapsedTimef();
-//	transitionOutCompleteTime = transitionStartTime + outDuration;
-//	transitionInCompleteTime  = transitionStartTime + outDuration + inDuration;
 }
 
-void CloudsTransitionController::transitionToClusterMap(float outDuration, float inDuration){
+void CloudsTransitionController::transitionToClusterMap(float inDuration,float outDuration){
 	
 	confirmEmpty();
 	
 	//we are in a visual system
 	if(getPreviousState() == TRANSITION_VISUALSYSTEM_IN){
+        cout<<"VISUAL SYSTEM --> CLUSTER MAP"<<endl;
 		currentState = TRANSITION_VISUALSYSTEM_IN;
 		queueState(TRANSITION_VISUALSYSTEM_OUT, outDuration);
+        queueState(TRANSITION_CLUSTERMAP_IN, inDuration);
 	}
 	//we are in an interview
 	else if(getPreviousState() == TRANSITION_INTERVIEW_IN){
+        cout<<"INTERVIEW --> CLUSTER MAP"<<endl;
 		queueState(TRANSITION_INTERVIEW_OUT, outDuration);
+        queueState(TRANSITION_CLUSTERMAP_IN, inDuration);
 	}
 	
 	startTransition();
+}
+
+void CloudsTransitionController::transitionFromClusterMap(float inDuration){
+
+    confirmEmpty();
+
+    queueState(TRANSITION_CLUSTERMAP_OUT, inDuration);
+    
+    startTransition();
+
+    cout<<"IM TRANSITIONING OUT OF CLUSTER MAP"<<endl;
+}
+
+void CloudsTransitionController::transitionToQuestion(float outDuration, float portalDuration, float inDuration){
+	//TODO:
 }
 
 void CloudsTransitionController::startTransition(){
 	transitioning = true;
 	getNextState();
 }
-
-/*
-void CloudsTransitionController::startTransition(float transitionOutDuration, float transitionInDuration){
-	
-	transitioning = true;
-	triggeredMidpoint = false;
-	newState = true;
-
-	transitionStartTime = ofGetElapsedTimef();
-	transitionOutCompleteTime = transitionStartTime + transitionOutDuration;
-	transitionInCompleteTime  = transitionStartTime + transitionOutDuration + transitionInDuration;
-}
-*/
 
 float CloudsTransitionController::getFadeValue(){
 	if(transitioning){
@@ -122,7 +138,8 @@ float CloudsTransitionController::getFadeValue(){
 			return transitionPercent;
 		}
 	}
-	return 1.0;
+
+	return fadedOut() ? 0.0 : 1.0;
 }
 
 float CloudsTransitionController::getInterviewTransitionPoint(){
@@ -145,24 +162,11 @@ void CloudsTransitionController::update() {
 	if(transitioning){
 		
 		transitionPercent = ofMap(ofGetElapsedTimef(), currentQueue.startTime, currentQueue.endTime, 0.0, 1.0, true);
-//		percentTransitionOut = ofMap(ofGetElapsedTimef(), transitionStartTime, transitionOutCompleteTime, 0.0, 1.0, true);
-//		percentTransitionIn  = ofMap(ofGetElapsedTimef(), transitionOutCompleteTime, transitionInCompleteTime, 0.0, 1.0, true);
 		
-//		cout << "	OUT PERCENT " << percentTransitionOut << " IN PERCENT " << percentTransitionIn << endl;
-		
-		//started this state
+		//started next state
 		if(transitionPercent >= 1.0){
-			//TRIGGER MIDPOINT
-//			newState = true;
-//			triggeredMidpoint = true;
 			getNextState();
 		}
-//		if(percentTransitionIn >= 1.0){
-//			//TRIGGER FINISHED
-//			newState = true;
-//			transitioning = false;
-//			getNextState();
-//		}
 	}
 }
 
@@ -183,12 +187,56 @@ void CloudsTransitionController::queueState(CloudsTransitionState state, float t
 CloudsTransitionState CloudsTransitionController::getCurrentState(){
 	return currentState;
 }
+
 CloudsTransitionState CloudsTransitionController::getPreviousState(){
 	return previousState;
 }
 
 string CloudsTransitionController::getCurrentStateDescription(){
-	switch(currentState){
+	return getStateDescription(currentState);
+}
+
+bool CloudsTransitionController::isStateNew(){
+	bool s = newState;
+	newState = false;
+	return s;
+}
+
+bool CloudsTransitionController::fadingOut(){
+	return ofContains(fadeOutStates, currentState);
+}
+
+bool CloudsTransitionController::fadedOut(){
+	return ofContains(fadeOutStates, previousState);
+}
+
+//move to the next state
+CloudsTransitionState CloudsTransitionController::getNextState(){
+
+	//push back the current time
+	currentQueue.timeRange.max = ofGetElapsedTimef();
+	queueHistory.push_back(currentQueue);
+	previousState = currentState;
+
+	if(stateQueue.empty()){
+		currentQueue.state = TRANSITION_IDLE;
+		currentState = TRANSITION_IDLE;
+		transitioning = false;
+	}
+	else{
+		currentQueue = stateQueue.front();
+		currentState = stateQueue.front().state;
+		stateQueue.pop_front();
+	}
+
+	//the next one
+	currentQueue.timeRange.min = ofGetElapsedTimef();
+
+	newState = true;
+}
+
+string CloudsTransitionController::getStateDescription(CloudsTransitionState state){
+	switch(state){
 		case TRANSITION_IDLE:
 			return "TransitionIdle";
 		case TRANSITION_INTERVIEW_OUT:
@@ -201,60 +249,11 @@ string CloudsTransitionController::getCurrentStateDescription(){
 			return "TransitionInterviewIn";
 		case TRANSITION_INTRO_OUT:
 			return "TransitionIntroOut";
-			
+        case TRANSITION_CLUSTERMAP_IN:
+            return "TransitionClusterIn";
+        case TRANSITION_CLUSTERMAP_OUT:
+            return "TransitionClusterOut";
 		default:
 			return "UNKNOWN STATE " + ofToString(int(currentState));
 	}
-}
-
-bool CloudsTransitionController::isStateNew(){
-	bool s = newState;
-	newState = false;
-	return s;
-}
-
-bool CloudsTransitionController::fadingOut(){
-	return currentState == TRANSITION_VISUALSYSTEM_OUT ||
-		   currentState == TRANSITION_INTERVIEW_OUT ||
-		   currentState == TRANSITION_INTRO_OUT;
-}
-
-//move to the next state
-CloudsTransitionState CloudsTransitionController::getNextState(){
-
-	previousState = currentState;
-	
-	if(stateQueue.empty()){
-		currentState = TRANSITION_IDLE;
-		transitioning = false;
-	}
-	else{
-		currentQueue = stateQueue.front();
-		currentState = stateQueue.front().state;
-		stateQueue.pop_front();
-	}
-	newState = true;
-	
-	/*
-	switch(currentState){
-		case TRANSITION_INTERVIEW_IDLE:
-			break;
-		case TRANSITION_INTERVIEW_OUT:
-			currentState = TRANSITION_VISUALSYSTEM_IN;
-			break;
-		case TRANSITION_VISUALSYSTEM_IN:
-			currentState = TRANSITION_INTERVIEW_IDLE;
-			break;
-		case TRANSITION_VISUALSYSTEM_OUT:
-			currentState = TRANSITION_INTERVIEW_IN;
-			break;
-		case TRANSITION_INTERVIEW_IN:
-			currentState = TRANSITION_INTERVIEW_IDLE;
-			break;
-		case TRANSITION_INTRO_OUT:
-			currentState = TRANSITION_INTERVIEW_IDLE; //This is where a TUNNEL will go - maybe make a loading screen here too?
-			break;
-	}
-	 */
-
 }

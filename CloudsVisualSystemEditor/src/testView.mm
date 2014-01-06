@@ -25,8 +25,6 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	
     parser.loadFromFiles();
 
-    mixer.setup();
-    mixer.setDiageticVolume(1);
 	
 	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
 		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
@@ -71,6 +69,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	
 	[self updateCounts];
 
+//    cout << " APP POINTER NULL? " << (ofGetAppPtr() == NULL ? "YES" : "NO") << endl;
 	//TEST FACTORY
 //	vector<string> systemNames;
 //	systemNames.push_back("ExampleVectorMath");
@@ -80,6 +79,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 //		cout << "*** SYSTEM TEST " << systems[i]->getSystemName() << endl;
 //	}
 	
+    mixer.setup();
+    mixer.setDiageticVolume(1);
+
 }
 
 - (void)update
@@ -139,6 +141,11 @@ bool clipsort(CloudsClip a, CloudsClip b){
 				
 				testBatchIndex++;
 				currentTestPresetIndex++;
+                if(currentTestPresetIndex == testPresetIndeces.size()-1){
+                    cout<<"TEST COMPLETE : Reshufling and looping test"<<endl;
+                    currentTestPresetIndex = 0;
+                    random_shuffle(testPresetIndeces.begin(), testPresetIndeces.end());
+                }
 			}
 			
 		}
@@ -785,11 +792,11 @@ completionsForSubstring:(NSString *)substring
     shouldPlaySelectedRow = true;
 }
 
-//void testView::audioRequested(float *output, int bufferSize, int nChannels)
-- (void)audioRequested: (float*) output bufferSize:(int)bufferSize nChannels:(int)nChannels
-{
-    cout<<"audio requested"<<endl;
-    mixer.fillBuffer(output, bufferSize, nChannels);
-}
+////void testView::audioRequested(float *output, int bufferSize, int nChannels)
+//- (void)audioRequested: (float*) output bufferSize:(int)bufferSize nChannels:(int)nChannels
+//{
+//    cout<<"audio requested"<<endl;
+//    mixer.fillBuffer(output, bufferSize, nChannels);
+//}
 
 @end

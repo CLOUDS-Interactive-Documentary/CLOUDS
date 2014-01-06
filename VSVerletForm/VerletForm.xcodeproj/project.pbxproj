@@ -187,6 +187,8 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E7167108187A9BA40047B7DC /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7167107187A9BA40047B7DC /* ofxSystemTextbox.mm */; };
+		E7167109187A9BA40047B7DC /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7167107187A9BA40047B7DC /* ofxSystemTextbox.mm */; };
 		E72FF18717E6A7970007780D /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF17F17E6A7970007780D /* CloudsRGBDCamera.cpp */; };
 		E72FF18817E6A7970007780D /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF18117E6A7970007780D /* CloudsRGBDVideoPlayer.cpp */; };
 		E72FF18917E6A7970007780D /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF18317E6A7970007780D /* CloudsVisualSystem.cpp */; };
@@ -489,6 +491,8 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E7167106187A9BA40047B7DC /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		E7167107187A9BA40047B7DC /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		E72FF17F17E6A7970007780D /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
 		E72FF18017E6A7970007780D /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
 		E72FF18117E6A7970007780D /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
@@ -1183,6 +1187,8 @@
 		E72FF17D17E6A7970007780D /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E7167106187A9BA40047B7DC /* ofxSystemTextbox.h */,
+				E7167107187A9BA40047B7DC /* ofxSystemTextbox.mm */,
 				E72FF17F17E6A7970007780D /* CloudsRGBDCamera.cpp */,
 				E72FF18017E6A7970007780D /* CloudsRGBDCamera.h */,
 				E72FF18117E6A7970007780D /* CloudsRGBDVideoPlayer.cpp */,
@@ -1540,6 +1546,7 @@
 				8511862718304821003D4F58 /* ofxOculusRift.cpp in Sources */,
 				F302F68F1856DF6100EE514A /* CloudsInput.cpp in Sources */,
 				F302F6931856DF6100EE514A /* CloudsInputMouse.cpp in Sources */,
+				E7167109187A9BA40047B7DC /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1626,6 +1633,7 @@
 				E72FF1BC17E6A7BA0007780D /* CloudsVisualSystemVerletForm.cpp in Sources */,
 				F302F68E1856DF6100EE514A /* CloudsInput.cpp in Sources */,
 				F302F6921856DF6100EE514A /* CloudsInputMouse.cpp in Sources */,
+				E7167108187A9BA40047B7DC /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

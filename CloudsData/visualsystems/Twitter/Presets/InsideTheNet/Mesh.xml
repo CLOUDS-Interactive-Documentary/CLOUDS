@@ -3,7 +3,7 @@
     <Name>Mesh</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <YPosition>24.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -69,7 +69,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNB BRI</Name>
-    <Value>0.324999988</Value>
+    <Value>0.528789580</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -109,7 +109,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNP BRI</Name>
-    <Value>0.800008357</Value>
+    <Value>0.413663179</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -134,7 +134,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LEP ALPHA</Name>
-    <Value>0.036260929</Value>
+    <Value>0.119744793</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

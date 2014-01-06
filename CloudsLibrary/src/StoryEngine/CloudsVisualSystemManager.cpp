@@ -56,7 +56,7 @@
 #include "CloudsVisualSystemOpenP5Spaghetti.h"
 #include "CloudsVisualSystemOpenP5SpinningSolids.h"
 #include "CloudsVisualSystemOpenP5TextUniverse.h"
-#include "CloudsVisualSystemOrbit.h"
+//#include "CloudsVisualSystemOrbit.h"
 #include "CloudsVisualSystemOscillations.h"
 #include "CloudsVisualSystemPages.h"
 #include "CloudsVisualSystemPaintBrush.h"
@@ -156,7 +156,7 @@ struct Mapping {
 	{ "OpenP5Spaghetti", &fCreate<CloudsVisualSystemOpenP5Spaghetti> },
 	{ "OpenP5SpinningSolids", &fCreate<CloudsVisualSystemOpenP5SpinningSolids> },
 	{ "OpenP5TextUniverse", &fCreate<CloudsVisualSystemOpenP5TextUniverse> },
-	{ "Orbit", &fCreate<CloudsVisualSystemOrbit> },
+//	{ "Orbit", &fCreate<CloudsVisualSystemOrbit> },
 	{ "Oscillations", &fCreate<CloudsVisualSystemOscillations> },
 	{ "Pages", &fCreate<CloudsVisualSystemPages> },
 	{ "PaintBrush", &fCreate<CloudsVisualSystemPaintBrush> },
@@ -205,8 +205,7 @@ vector< ofPtr<CloudsVisualSystem> > CloudsVisualSystemManager::InstantiateSystem
 		if(constructors.find(systemPresets[i].systemName) != constructors.end()){
 			cout << "INSTANTIATING SYSTEM " << systemPresets[i].systemName << " WITH PRESET " << systemPresets[i].presetName << endl;
 			systemPresets[i].system = InstantiateSystem( systemPresets[i].systemName );
-			cout << "CloudsVisualSystemManager::InstantiateSystems - SYSTEM NULL? " << (systemPresets[i].system == NULL ? "YES" : "NO") << endl;
-			
+//			cout << "CloudsVisualSystemManager::InstantiateSystems - SYSTEM NULL? " << (systemPresets[i].system == NULL ? "YES" : "NO") << endl;
 			systems.push_back( systemPresets[i].system );
 		}
 		else{
@@ -306,6 +305,18 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 	
 	savePresets();
 	
+	#endif
+}
+
+
+//--------------------------------------------------------------------
+ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::getEmptySystem(string mainKeyword, vector<string> keywords){
+	#ifdef CLOUDS_NO_VS
+	return ofPtr<CloudsVisualSystem>();
+	#else
+	ofPtr<CloudsVisualSystem> ptr(new CloudsVisualSystemEmpty() );
+	ptr->setKeywords(mainKeyword, keywords);
+	return ptr;
 	#endif
 }
 
@@ -594,11 +605,13 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 		}
 	}
 	
-	//add linked clips
-	if(clipToPresetLinks.find(clipName) != clipToPresetLinks.end()){
-		for(int i = 0; i < clipToPresetLinks[clipName].size(); i++){
-			if( !ofContains(presetIds, clipToPresetLinks[clipName][i]) ){
-				presetsWithKeywords.push_back( getPresetWithID(clipToPresetLinks[clipName][i]) );
+	if(clipName != ""){
+		//add linked clips
+		if(clipToPresetLinks.find(clipName) != clipToPresetLinks.end()){
+			for(int i = 0; i < clipToPresetLinks[clipName].size(); i++){
+				if( !ofContains(presetIds, clipToPresetLinks[clipName][i]) ){
+					presetsWithKeywords.push_back( getPresetWithID(clipToPresetLinks[clipName][i]) );
+				}
 			}
 		}
 	}

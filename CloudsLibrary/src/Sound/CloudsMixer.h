@@ -13,7 +13,7 @@
 #include "ofEvents.h"
 #include "CloudsAudioEvents.h"
 
-class CloudsMixer
+class CloudsMixer : public ofBaseApp //extends base app to become the sound stream
 {
 public:
     CloudsMixer();
@@ -22,8 +22,15 @@ public:
     
     void setMusicVolume(float vol);
     void setDiageticVolume(float vol);
-    void fillBuffer(float *output, int bufferSize, int nChannels);
+
+    //legacy
+    void fillBuffer(float *output, int bufferSize, int nChannels){
+        audioOut(output,bufferSize,nChannels);
+    }
+    //*****
     
+    void audioOut(float * output, int bufferSize, int nChannels );
+
     CloudsAudioEvents& getEvents() { return events; };
     
     bool showCompressor;

@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
-    <YPosition>445.000000000</YPosition>
+    <XPosition>849.000122070</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -12,12 +12,42 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>DeFrag</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Fire</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>GhostInTheShell</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Glitch</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Hall</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>interestingSorting</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>lines</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>NoisePixels</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -42,6 +72,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>SortingAtari</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>sortingThunder</Name>
     <Value>0</Value>
 </Widget>
@@ -52,21 +87,31 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Glitch</Name>
+    <Name>ThinBlueRows</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>GhostInTheShell</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>SortingAtari</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>DeFrag</Name>
+    <Name>ThinBlueRows_CU</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ThinTealRows</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>vert</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Vert2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>WideLEDCells</Name>
+    <Value>0</Value>
 </Widget>

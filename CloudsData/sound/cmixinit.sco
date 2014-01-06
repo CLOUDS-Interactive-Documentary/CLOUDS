@@ -40,7 +40,6 @@ ramp_21 = maketable("line", "nonorm", 1000, 0, 2.0, 1, 1.0)
 ramp_101 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 0.0, 2, 1.0)
 ramp_212 = maketable("line", "nonorm", 1000, 0, 2.0, 1, 1.0, 2, 2.0)
 
-
 e_DECLICK = maketable("line", "nonorm", 1000, 0, 0., 1, 1.0, 998, 1.0, 1000, 0.0)
 
 e_CONSTANT = maketable("line", "nonorm", 1000, 0, 1., 1, 1.)
@@ -82,8 +81,7 @@ e_FADEOUTBY33 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 0.0, 2, 0.0)
 e_FADEOUTBY50 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 1.0, 2, 0.0, 3, 0.0)
 e_FADEOUTBY66 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 1.0, 2, 0.0)
 e_FADEOUTBY75 = maketable("line", "nonorm", 1000, 0, 1.0, 1, 1.0, 2, 1.0, 3, 0.0)
-
-  
+ 
 bus_config("NOISE", "aux 8-9 out");
 bus_config("FILTERBANK", "aux 8-9 in", "aux 0-1 out");
 bus_config("SPLITTER", "aux 0-1 in", "aux 2-3 out", "aux 4-5 out", "aux 6-7 out")

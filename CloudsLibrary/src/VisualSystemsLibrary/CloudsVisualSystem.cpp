@@ -4,6 +4,10 @@
 #include "CloudsGlobal.h"
 #include "CloudsInput.h"
 
+#ifdef TARGET_OSX
+#include "ofxSystemTextbox.h"
+#endif
+
 #ifdef AVF_PLAYER
 #include "ofxAVFVideoPlayer.h"
 #endif
@@ -113,9 +117,8 @@ ofxOculusRift& CloudsVisualSystem::getOculusRift(){
 #endif
 
 CloudsVisualSystem::CloudsVisualSystem(){
-	isPlaying = false;
+	bIsPlaying = false;
 	timeline = NULL;
-	sharedRenderer = NULL;
 	bIsSetup = false;
 	bClearBackground = true;
 	bDrawToScreen = true;
@@ -161,7 +164,7 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 		}
 		else{
 //			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
-			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);			
+			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
 		}
 		renderTarget.begin();
 		ofClear(0,0,0,1.0);
@@ -198,7 +201,7 @@ void CloudsVisualSystem::setup(){
 		loadBackgroundShader();
 	}
 
-	currentCamera = &cam;
+//	currentCamera = &cam;
 	
     ofDirectory dir;
     string directoryName = getVisualSystemDataPath()+"Presets/";
@@ -237,9 +240,13 @@ bool CloudsVisualSystem::isSetup(){
 	return bIsSetup;
 }
 
+bool CloudsVisualSystem::isPlaying(){
+	return bIsPlaying;
+}
+
 void CloudsVisualSystem::playSystem(){
 
-	if(!isPlaying){
+	if(!bIsPlaying){
 		cout << "**** PLAYING " << getSystemName() << endl;
 		//ofRegisterMouseEvents(this);
 		CloudsRegisterInputEvents(this);
@@ -248,15 +255,16 @@ void CloudsVisualSystem::playSystem(){
 		ofAddListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofAddListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
 		
-		isPlaying = true;
+		bIsPlaying = true;
 		
 		cam.enableMouseInput();
-		for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it)
-		{
-			//JG WHITE DEATH DEBUG
+		for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it) {
 			it->second->light.setup();
 		}
 		
+		getSharedRenderTarget().begin();
+		ofClear(0.0,0.0,0.0,1.0);
+		getSharedRenderTarget().end();
 		selfBegin();
 
 		cloudsCamera.setup();
@@ -266,7 +274,7 @@ void CloudsVisualSystem::playSystem(){
 }
 
 void CloudsVisualSystem::stopSystem(){
-	if(isPlaying){
+	if(bIsPlaying){
 		cout << "**** STOPPING " << getSystemName() << endl;
 
 		selfEnd();
@@ -287,33 +295,35 @@ void CloudsVisualSystem::stopSystem(){
 			
 		timeline->stop();
 		cameraTrack->lockCameraToTrack = false;
-		isPlaying = false;
+		bIsPlaying = false;
 	}
 }
 
-float CloudsVisualSystem::getSecondsRemaining(){
-	return secondsRemaining;
+void CloudsVisualSystem::setKeywords(string main, vector<string> allKeywords){
+	main = mainKeyword;
+	keywords = allKeywords;
 }
 
-void CloudsVisualSystem::setSecondsRemaining(float seconds){
-	secondsRemaining = seconds;
-}
+//float CloudsVisualSystem::getSecondsRemaining(){
+//	return secondsRemaining;
+//}
+//
+//void CloudsVisualSystem::setSecondsRemaining(float seconds){
+//	secondsRemaining = seconds;
+//}
 
-void CloudsVisualSystem::setCurrentKeyword(string keyword){
-	currentKeyword = keyword;
-}
 
-string CloudsVisualSystem::getCurrentKeyword(){
-	return currentKeyword;
-}
+//string CloudsVisualSystem::getCurrentKeyword(){
+//	return currentKeyword;
+//}
 
-void CloudsVisualSystem::setCurrentTopic(string topic){
-	currentTopic = topic;
-}
-
-string CloudsVisualSystem::getCurrentTopic(){
-	return currentTopic;
-}
+//void CloudsVisualSystem::setCurrentTopic(string topic){
+//	currentTopic = topic;
+//}
+//
+//string CloudsVisualSystem::getCurrentTopic(){
+//	return currentTopic;
+//}
 
 void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
 									  string speakerLastName,
@@ -341,6 +351,8 @@ void CloudsVisualSystem::update(ofEventArgs & args)
         updateTimelineUIParams();
     }
     
+	cloudsCamera.setCanvasWidthHeight(getCanvasWidth(), getCanvasHeight());
+	
 	//JG Never skip the update loop this is causing lots of problems
 //    if(bUpdateSystem)
     {
@@ -959,6 +971,7 @@ void CloudsVisualSystem::setupLightingParams()
 	globalAmbientColorHSV.b = 0.5; //bri
 	globalAmbientColorHSV.a = 1.0;
 	
+	light = new ofxLight();
 //    globalAmbientColor = new float[4];
 //    globalAmbientColor[0] = 0.5;
 //    globalAmbientColor[1] = 0.5;
@@ -992,7 +1005,7 @@ void CloudsVisualSystem::setupCoreGuis()
     setupLightingGui();
     setupCameraGui();
     setupMaterial("MATERIAL 1", mat);
-    setupPointLight("POINT LIGHT 1");
+    setupPointLight("POINT LIGHT 1", light);
     setupPresetGui();
 }
 
@@ -1087,14 +1100,18 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
         ofxUIButton *b = (ofxUIButton *) e.widget;
         if(b->getValue())
         {
-            string presetName = ofSystemTextBoxDialog("Save Preset As");
-            if(presetName.length())
+			#ifdef TARGET_OSX
+            string presetName = ofxSystemTextBoxDialog("Save Preset As", currentPresetName);
+			#else
+			string presetName = ofSystemTextBoxDialog("Save Preset As", currentPresetName);
+			#endif
+            if(presetName != "")
             {
                 savePresetGUIS(presetName);
             }
-            else{
-                saveGUIS();
-            }
+//            else{
+//                saveGUIS();
+//            }
         }
     }
     else if(name == "LOAD")
@@ -1333,6 +1350,9 @@ void CloudsVisualSystem::guiLightingEvent(ofxUIEventArgs &e)
 		};
 		
         glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbientColor);
+		lgtGui->getWidget("H")->setColorFill(globalAmbientColorRGB);
+		lgtGui->getWidget("S")->setColorFill(globalAmbientColorRGB);
+		lgtGui->getWidget("V")->setColorFill(globalAmbientColorRGB);
     }
 }
 
@@ -1626,12 +1646,32 @@ void CloudsVisualSystem::setupMaterial(string name, ofxMaterial *m)
 
 void CloudsVisualSystem::guiMaterialEvent(ofxUIEventArgs &e)
 {
-    
+	if(e.widget->getName() == "EH" ||
+	   e.widget->getName() == "ES" ||
+	   e.widget->getName() == "EV")
+	{
+		mat->updateColors();
+		guimap[e.widget->getParent()->getName()]->getWidget("EH")->setColorFill(mat->matEmissive);
+		guimap[e.widget->getParent()->getName()]->getWidget("ES")->setColorFill(mat->matEmissive);
+		guimap[e.widget->getParent()->getName()]->getWidget("EV")->setColorFill(mat->matEmissive);
+	}
+	if(e.widget->getName() == "SH" ||
+	   e.widget->getName() == "SS" ||
+	   e.widget->getName() == "SV")
+	{
+		mat->updateColors();
+		guimap[e.widget->getParent()->getName()]->getWidget("SH")->setColorFill(mat->matSpecular);
+		guimap[e.widget->getParent()->getName()]->getWidget("SS")->setColorFill(mat->matSpecular);
+		guimap[e.widget->getParent()->getName()]->getWidget("SV")->setColorFill(mat->matSpecular);
+	}
 }
 
-void CloudsVisualSystem::setupPointLight(string name)
+void CloudsVisualSystem::setupPointLight(string name, ofxLight* l)
 {
-    ofxLight *l = new ofxLight();
+	if(l == NULL){
+		l = new ofxLight();
+	}
+	
     l->light.setPointLight();
 	//removes light until we are active
 	l->light.destroy();
@@ -1725,7 +1765,7 @@ void CloudsVisualSystem::setupBeamLight(string name)
     
     g->autoSizeToFitWidgets();
     g->setPosition(ofGetWidth()*.5 - g->getRect()->getHalfWidth(), ofGetHeight()*.5 - g->getRect()->getHalfHeight());
-    
+	
     ofAddListener(g->newGUIEvent,this, &CloudsVisualSystem::guiLightEvent);
     guis.push_back(g);
     guimap[g->getName()] = g;
@@ -1810,7 +1850,33 @@ void CloudsVisualSystem::setupGenericLightProperties(ofxUISuperCanvas *g, ofxLig
 
 void CloudsVisualSystem::guiLightEvent(ofxUIEventArgs &e)
 {
-    
+	if(e.widget->getName() == "AH" ||
+	   e.widget->getName() == "AS" ||
+	   e.widget->getName() == "AV")
+	{
+		light->updateColors();
+		guimap[e.widget->getParent()->getName()]->getWidget("AH")->setColorFill(light->lightAmbient);
+		guimap[e.widget->getParent()->getName()]->getWidget("AS")->setColorFill(light->lightAmbient);
+		guimap[e.widget->getParent()->getName()]->getWidget("AV")->setColorFill(light->lightAmbient);
+	}
+	if(e.widget->getName() == "DH" ||
+	   e.widget->getName() == "DS" ||
+	   e.widget->getName() == "DV")
+	{
+		light->updateColors();
+		guimap[e.widget->getParent()->getName()]->getWidget("DH")->setColorFill(light->lightDiffuse);
+		guimap[e.widget->getParent()->getName()]->getWidget("DS")->setColorFill(light->lightDiffuse);
+		guimap[e.widget->getParent()->getName()]->getWidget("DV")->setColorFill(light->lightDiffuse);
+	}
+	if(e.widget->getName() == "SH" ||
+	   e.widget->getName() == "SS" ||
+	   e.widget->getName() == "SV")
+	{
+		light->updateColors();
+		guimap[e.widget->getParent()->getName()]->getWidget("SH")->setColorFill(light->lightSpecular);
+		guimap[e.widget->getParent()->getName()]->getWidget("SS")->setColorFill(light->lightSpecular);
+		guimap[e.widget->getParent()->getName()]->getWidget("SV")->setColorFill(light->lightSpecular);
+	}
 }
 
 void CloudsVisualSystem::setupTimeline()
@@ -2609,15 +2675,18 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	stackGuiWindows();
 
 	selfPresetLoaded(presetPath);
-	
-	getSharedRenderTarget().begin();
-	ofClear(0,0,0,1.0);
-	getSharedRenderTarget().end();
+	currentPresetName = ofFilePath::getBaseName(presetPath);
+//	getSharedRenderTarget().begin();
+//	ofClear(0.0,0.0,0.0,1.0);
+//	getSharedRenderTarget().end();
 		
 	//auto play this preset
 	cameraTrack->lockCameraToTrack = cameraTrack->getKeyframes().size() > 0;
 	timeline->setCurrentTimeMillis(0);
 	timeline->play();
+	
+	mat->updateColors();
+	light->updateColors();
 	
 	bEnableTimeline = true;
 }
@@ -2625,6 +2694,7 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 void CloudsVisualSystem::savePresetGUIS(string presetName)
 {
     ofDirectory dir;
+	presetName = trim(presetName);
     string presetDirectory = getVisualSystemDataPath()+"Presets/"+presetName+"/";
     if(!dir.doesDirectoryExist(presetDirectory))
     {
@@ -3035,7 +3105,7 @@ void CloudsVisualSystem::selfPostDraw(){
             //	ofSetColor(255, 50);
             //	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
             if(it->second.actionType == 0){
-                ofSetColor(ofColor::steelBlue, 175);
+                ofSetColor(ofColor::steelBlue, 255);
             }
             else if (it->second.primary) {
                 ofSetColor(240,240,100, 175);

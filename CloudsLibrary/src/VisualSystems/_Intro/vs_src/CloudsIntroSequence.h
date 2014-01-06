@@ -10,10 +10,10 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
-#include "ofxGameCamera.h"
+//#include "ofxGameCamera.h"
 #include "CloudsClip.h"
-#include "CloudsQuestion.h"
-#include "CloudsRun.h"
+#include "CloudsPortal.h"
+//#include "CloudsRun.h"
 #include "ofxFTGL.h"
 
 class CloudsIntroSequence : public CloudsVisualSystem {
@@ -59,12 +59,12 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void selfSetupCameraGui();
 	
 	ofCamera& getCameraRef(){
-		if(useDebugCamera){
-			return camera;
-		}
-		else{
+//		if(useDebugCamera){
+//			return camera;
+//		}
+//		else{
 			return warpCamera;
-		}
+//		}
 	}
 	
 	void selfPresetLoaded(string presetPath);
@@ -72,16 +72,13 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void setStartQuestions(vector<CloudsClip>& possibleStartQuestions);
 	bool isStartQuestionSelected();
 	void autoSelectQuestion();
-	CloudsQuestion* getSelectedQuestion();
-	CloudsRun& getSelectedRun(){
-		return currentRun;
-	};
+	CloudsPortal* getSelectedQuestion();
+//	CloudsRun& getSelectedRun(){
+//		return currentRun;
+//	};
 	
   protected:
-	
-	//TODO: when the title scene is added this will be selectable
-	CloudsRun currentRun;
-	
+		
 	ofxUISuperCanvas* questionGui;
 	ofxUISuperCanvas* tunnelGui;
 	ofxUISuperCanvas* typeGui;
@@ -93,12 +90,10 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float questionTugMinDepth;
 	float questionTugMinDistance;
 	float questionTugMaxDistance;
-	float questionSize;
+	float questionScale;
 	float questionTunnelInnerRadius;
 	
 	bool startedOnclick;
-	
-
 	
 	ofxFTGLFont extrudedTitleText; //for the title
 	float currentTitleOpacity;
@@ -119,7 +114,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofRectangle titleRect;
 	bool hoveringTitle;
 	
-	
 	ofxFTGLSimpleLayout questionFont;
     void rebuildQuestionFont();
     int questionFontSize;
@@ -131,9 +125,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float currentFontExtrusion;
 
 	void positionStartQuestions();
-	vector<CloudsQuestion> startQuestions;
-	CloudsQuestion* selectedQuestion;
-	CloudsQuestion* caughtQuestion;
+	vector<CloudsPortal> startQuestions;
+	CloudsPortal* selectedQuestion;
+	CloudsPortal* caughtQuestion;
 
 	vector<string> loadedQuestions;
 	float perlinOffset;
@@ -142,13 +136,12 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void reloadShaders();
 	bool paused;
 
-	
 	ofMesh blocksMesh;
 	ofMesh tunnelMeshTight;
 	ofMesh tunnelMeshLoose;
 	
 	bool useDebugCamera;
-	ofxGameCamera camera;
+//	ofxGameCamera camera;
 	ofCamera warpCamera;
 	
 	float camWobbleRange;
@@ -158,7 +151,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofShader questionShader;
 	ofShader chroma;
 	ofShader typeShader;
-	
 	
 	ofRange pointSize;	
 	ofRange distanceRange;
@@ -183,9 +175,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofFloatColor tint;
 	ofFloatColor questionNodeTint;
 	
-//	ofMesh thickTypeMesh;
-//	ofMesh thinTypeMesh;
-
 	ofImage sprite;
 
     ofVec3f cursor;

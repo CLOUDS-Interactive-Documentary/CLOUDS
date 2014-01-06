@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1838CE7B187A61A000FD5F2B /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1838CE74187A61A000FD5F2B /* CloudsInput.cpp */; };
+		1838CE7D187A61A000FD5F2B /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1838CE79187A61A000FD5F2B /* CloudsInputMouse.cpp */; };
+		1838CE80187A61E600FD5F2B /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1838CE7F187A61E600FD5F2B /* ofxSystemTextbox.mm */; };
 		2AAEF500180F12D7005F33D3 /* ofxBox2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF4AC180F12D7005F33D3 /* ofxBox2d.cpp */; };
 		2AAEF501180F12D7005F33D3 /* ofxBox2dBaseShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF4AE180F12D7005F33D3 /* ofxBox2dBaseShape.cpp */; };
 		2AAEF502180F12D7005F33D3 /* ofxBox2dCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF4B0180F12D7005F33D3 /* ofxBox2dCircle.cpp */; };
@@ -332,6 +335,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1838CE74187A61A000FD5F2B /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
+		1838CE75187A61A000FD5F2B /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
+		1838CE76187A61A000FD5F2B /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
+		1838CE79187A61A000FD5F2B /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		1838CE7A187A61A000FD5F2B /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
+		1838CE7E187A61E600FD5F2B /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		1838CE7F187A61E600FD5F2B /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		2AAEF4AC180F12D7005F33D3 /* ofxBox2d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBox2d.cpp; sourceTree = "<group>"; };
 		2AAEF4AD180F12D7005F33D3 /* ofxBox2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBox2d.h; sourceTree = "<group>"; };
 		2AAEF4AE180F12D7005F33D3 /* ofxBox2dBaseShape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBox2dBaseShape.cpp; sourceTree = "<group>"; };
@@ -739,6 +749,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1838CE73187A61A000FD5F2B /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				1838CE74187A61A000FD5F2B /* CloudsInput.cpp */,
+				1838CE75187A61A000FD5F2B /* CloudsInput.h */,
+				1838CE76187A61A000FD5F2B /* CloudsInputEvents.h */,
+				1838CE79187A61A000FD5F2B /* CloudsInputMouse.cpp */,
+				1838CE7A187A61A000FD5F2B /* CloudsInputMouse.h */,
+			);
+			name = Input;
+			path = src/Input;
+			sourceTree = "<group>";
+		};
 		2AAEF348180F12D0005F33D3 /* ofxBox2d */ = {
 			isa = PBXGroup;
 			children = (
@@ -1578,6 +1601,8 @@
 		E7E5EC601817C01400CA4196 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				1838CE7E187A61E600FD5F2B /* ofxSystemTextbox.h */,
+				1838CE7F187A61E600FD5F2B /* ofxSystemTextbox.mm */,
 				E7E5EC611817C01400CA4196 /* CloudsRGBDCamera.cpp */,
 				E7E5EC621817C01400CA4196 /* CloudsRGBDCamera.h */,
 				E7E5EC631817C01400CA4196 /* CloudsRGBDVideoPlayer.cpp */,
@@ -1594,6 +1619,7 @@
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				1838CE73187A61A000FD5F2B /* Input */,
 				E7A3F20B1832198200EADD94 /* CloudsGlobal.h */,
 				E759EFB4181E271300FA1E90 /* OpenP5Spaghetti */,
 				E7E5EC601817C01400CA4196 /* VisualSystemsLibrary */,
@@ -1963,6 +1989,9 @@
 				E7E5EC6B1817C01400CA4196 /* CloudsVisualSystem.cpp in Sources */,
 				E759EFE5181E271300FA1E90 /* CloudsVisualSystemOpenP5Spaghetti.cpp in Sources */,
 				E759EFE6181E271300FA1E90 /* Walker.cpp in Sources */,
+				1838CE7B187A61A000FD5F2B /* CloudsInput.cpp in Sources */,
+				1838CE7D187A61A000FD5F2B /* CloudsInputMouse.cpp in Sources */,
+				1838CE80187A61E600FD5F2B /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

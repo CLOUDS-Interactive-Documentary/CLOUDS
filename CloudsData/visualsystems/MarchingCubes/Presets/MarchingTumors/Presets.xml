@@ -2,19 +2,9 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000061035</XPosition>
+    <XPosition>637.000122070</XPosition>
     <YPosition>213.000000000</YPosition>
 </Canvas>
-<Widget>
-    <Kind>2</Kind>
-    <Name>SineWire1</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>SineWire2</Name>
-    <Value>0</Value>
-</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>AbstractNightclub</Name>
@@ -24,4 +14,14 @@
     <Kind>2</Kind>
     <Name>MarchingTumors</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SineWire1</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SineWire2</Name>
+    <Value>0</Value>
 </Widget>

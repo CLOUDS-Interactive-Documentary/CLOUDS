@@ -10,23 +10,22 @@
 #include "CloudsVisualSystem.h"
 #include "Voro.h"
 #include "VoroParticle.h"
-//#include "vParticle.h"
 
 class CloudsVisualSystemVoro : public CloudsVisualSystem {
-public:
+  public:
     
     string getSystemName();
-    
+	
+	void selfSetDefaults();
     void selfSetup();
     void selfSetupGuis();
     
-    void selfAutoMode();
     void selfUpdate();
     void selfDrawBackground();
     void selfDrawDebug();
     void selfSceneTransformation();
     void selfDraw();
-//    void selfPostDraw();
+
     void selfExit();
     void selfBegin();
 	void selfEnd();
@@ -53,9 +52,7 @@ public:
 protected:
     vector<VoroParticle *> seedParticles;
     vector<ofMesh>  cellMeshes;
-    
-    ofShader    background;
-    
+        
     ofTexture   dot;
     ofTexture   nucles[28];
     ofVec3f     objectLookAt;
@@ -80,23 +77,13 @@ protected:
     float   containerSize,containerHeight;
     float   cellsAlpha;
     float   cellsWireAlpha;
+	float	cellsWireThickness;
     float   cellsVertexAlpha;
+    float   cellsVertexSize;
+	
     bool    containerPeriodic;
     bool    bSphere;
     bool    bCyllinder;
     
-    //  Cosmic Dust Particles
-    //
-//    vector<vParticle*> particles;
-//    ofPoint globalOffset;
-//    float   nMaxPoints;
-//    float   density,gravity,repulsion;
-//    float   turbulence,neigbordhood,independence;
-    
-    //  Displacement
-    //
-//    ofShader noiseDisplacement;
-//    float   noiseAmplitud;
-//    float   noiseDensity;
-//    float   noisePosition;
+	bool	bUseMaterial;
 };

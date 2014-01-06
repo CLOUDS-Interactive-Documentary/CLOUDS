@@ -5,11 +5,6 @@
 #include "CloudsVisualSystemEmpty.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemEmpty::selfSetupGui(){
 
@@ -56,7 +51,7 @@ void CloudsVisualSystemEmpty::guiRenderEvent(ofxUIEventArgs &e){
 //use it to ensure all your simple variables are initialized to an
 //acceptable default state
 void CloudsVisualSystemEmpty::selfSetDefaults(){
-	videoLoaded = false;
+
 }
 
 // selfSetup is called when the visual system is first instantiated
@@ -64,25 +59,6 @@ void CloudsVisualSystemEmpty::selfSetDefaults(){
 // geometry should be loaded here
 void CloudsVisualSystemEmpty::selfSetup(){
 		
-	if(ofFile::doesFileExist(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov")){
-		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov",
-								   getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.xml" );
-		
-		getRGBDVideoPlayer().swapAndPlay();
-		
-		for(int i = 0; i < 640; i += 2){
-			for(int j = 0; j < 480; j+=2){
-				simplePointcloud.addVertex(ofVec3f(i,j,0));
-			}
-		}
-		
-		pointcloudShader.load(getVisualSystemDataPath() + "shaders/rgbdcombined");
-		videoLoaded = true;
-	}
-	
-	
-//	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
-	
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -113,16 +89,7 @@ void CloudsVisualSystemEmpty::selfUpdate(){
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemEmpty::selfDraw(){
-	
-	if(videoLoaded){
-		ofPushMatrix();
-		setupRGBDTransforms();
-		pointcloudShader.begin();
-		getRGBDVideoPlayer().setupProjectionUniforms(pointcloudShader);
-		simplePointcloud.drawVertices();
-		pointcloudShader.end();
-		ofPopMatrix();
-	}
+
 	
 }
 
@@ -133,15 +100,20 @@ void CloudsVisualSystemEmpty::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemEmpty::selfDrawBackground(){
 
-	//turn the background refresh off
-	//bClearBackground = false;
+	//we are using this to draw what keywords are missing content
+	if(mainKeyword != ""){
+		string keystodraw = "PICKED RANDOM PRESET\n";
+		keystodraw += mainKeyword + "\n" + ofJoinString(keywords, ",");
+		ofPushMatrix();
+		ofScale(5,5);
+		ofDrawBitmapString(keystodraw, 20,20);
+		ofPopMatrix();
+	}
 	
 }
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
-void CloudsVisualSystemEmpty::selfEnd(){
-	
-	simplePointcloud.clear();
+void CloudsVisualSystemEmpty::selfEnd(){	
 	
 }
 // this is called when you should clear all the memory and delet anything you made in setup

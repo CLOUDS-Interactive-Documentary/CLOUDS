@@ -13,7 +13,12 @@
 #include "CloudsIntroSequence.h"
 #include "CloudsVisualSystemClusterMap.h"
 #include "CloudsVisualSystemRGBD.h"
+
 #include "CloudsHUDController.h"
+
+#include "CloudsSound.h"
+#include "CloudsMixer.h"
+#include "CloudsSecondaryDisplayOSCSender.h"
 
 #include "CloudsTransitionController.h"
 
@@ -29,12 +34,8 @@ class CloudsPlaybackController {
 
 	//set it up with an existing story engine that will register the events
 	void setup();
-	void setStoryEngine(CloudsStoryEngine& storyEngine);
-    void setRun(CloudsRun& run);
-	void showIntro(vector<CloudsClip>& possibleStartQuestions);
-	
+//	void setStoryEngine(CloudsStoryEngine& storyEngine);	
 	void playAct(CloudsAct* act);
-	CloudsVisualSystemClusterMap& getClusterMap();
 	CloudsRGBDVideoPlayer& getSharedVideoPlayer();
 	
 	//update and draw to the screen, this will always
@@ -61,71 +62,47 @@ class CloudsPlaybackController {
 	
 	void exit(ofEventArgs & args);
 	
-	CloudsTransitionController transitionController;
-	void updateTransition();
-	
-	string nextPresetName;
-	ofPtr<CloudsVisualSystem> currentVisualSystem;
-	CloudsVisualSystemPreset currentVisualSystemPreset;
-	
-	bool revertToIntroAfter1Act;//demo hack
-	bool actFinished;
+	//bool revertToIntroAfter1Act;//demo hack
+	//bool actFinished;
 	
 	vector<CloudsClip> fakeQuestions;
 
-	//crossfading CloudsVisualSystems
-//	float crossfadeValue, fadeStartTime, fadeEndTime, fadeDuration, fadeStartVal, fadeTargetVal;
-//	bool fadingOut, fadingIn;
-	
-//	ofxEasingQuint fadeEase;
-//	void updateVisualSystemFade();
-	
-//	ofCamera superCamera;
-//	ofCamera* rgbdCamera;
-//	ofCamera* nextCamera;
-//	ofVec3f cameraStartPos, camDelta;
-//	ofMatrix4x4 accumulatedTransform;
-//	void mixCameras(ofCamera* targetCam, ofCamera* c0, ofCamera* c1, float x );
-//	void CloudsPlaybackControllerEventHandler( CloudsPlaybackControllerEvent &e );
-//	void addControllerTween( string name, float startTime, float span, float startVal, float endVal, float *value );
-//	vector<CloudsPlaybackControllerTween> controllerTweens;
-	
-//	string fadeOutRGBD;
-//	string fadeInRGBD;
-//	string fadeOutVisualSystem;
-//	string fadeInVisualSystem;
-	
-//	void playScratchTrack(string track);
-//	vector<string> scratchTracks;
-//	ofSoundPlayer scratchPlayer;
-	
-//	int currentScratch;
-//	float currentVolume;
-//	float scratchVolumeAttenuate;
-//	float targetScratchVolume;
-//	void setUseScratch(bool useScratch);
-	//    void setRandomQuestion(CloudsClip& clip);
   protected:
 
-	CloudsStoryEngine* storyEngine;
-	CloudsClip currentClip;
+	//*** CORE CLOUDS STUFF
+	CloudsFCPParser parser;
+	CloudsVisualSystemManager visualSystems;
+	CloudsStoryEngine storyEngine;
+	CloudsMixer mixer;
+	CloudsSound sound;
+	CloudsSecondaryDisplayOSCSender oscSender;
+	CloudsHUDController hud;
+
+	//STATE STUFF
+	CloudsRun run;
 	CloudsAct* currentAct;
+	CloudsClip currentClip;
+	int numClipsPlayed;
+	string currentTopic;
+	bool shouldPlayAct;
 	
 	//RGBD STUFF
 	ofPtr<CloudsVisualSystemRGBD> rgbdVisualSystem;
 	//if there is a system playing this wil be non-null
-	ofPtr<CloudsVisualSystem> nextSystem;
 	ofPtr<CloudsIntroSequence> introSequence;
-	CloudsVisualSystemClusterMap clusterMapVisualSystem;
-	CloudsHUDController hud;
+	ofPtr<CloudsVisualSystemClusterMap> clusterMap;
+	
+	CloudsVisualSystemPreset nextVisualSystemPreset;	
+	CloudsVisualSystemPreset currentVisualSystemPreset;
+	ofPtr<CloudsVisualSystem> currentVisualSystem;
+		
+	CloudsTransitionController transitionController;
+	void updateTransition();
 
 	float crossfadeValue;
 	float cursorMovedTime;
 	bool showingCursor;
-	int numClipsPlayed;
-	
 	string combinedMoviesFolder;
-	string currentTopic;
 	
 	bool eventsRegistered;
 	void actCreated(CloudsActEventArgs& args);
@@ -137,21 +114,19 @@ class CloudsPlaybackController {
 	//VISUAL SYSTEMS
 	//
 	void showIntro();
+	void showIntro(vector<CloudsClip>& possibleStartQuestions);
+
 	bool showingIntro;
 	bool showingVisualSystem;
 	bool showingClusterMap;
-//	bool fadingIntro;
+	
 	void clearAct(bool destroy = true);
 			
 	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
-	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem, float transitionDuration=3);
+//	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem);
 	//remove the current visual system
 	void hideVisualSystem();
+	void showRGBDVisualSystem();
 	void playNextVisualSystem();
 	
-	float rgbdVisualSystemFadeInDuration, rgbdVisualSystemFadeOutDuration;
-	
-	void transitionRgbdSystemOut( float transitionDuration=0, float fadeDuration=3 );
-	void transitionRgbdSystemIn( float transitionDuration=0, float fadeDuration=3 );
-	bool bIsFading;
 };

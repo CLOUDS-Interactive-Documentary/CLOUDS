@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1838CE68187A01A100FD5F2B /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1838CE67187A01A100FD5F2B /* ofxSystemTextbox.mm */; };
 		184CB5B9181E123400B14025 /* ETF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB547181E123400B14025 /* ETF.cpp */; };
 		184CB5BA181E123400B14025 /* fdog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB548181E123400B14025 /* fdog.cpp */; };
 		184CB5BB181E123400B14025 /* Calibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB557181E123400B14025 /* Calibration.cpp */; };
@@ -162,6 +163,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1838CE66187A01A100FD5F2B /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		1838CE67187A01A100FD5F2B /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		184CB542181E123400B14025 /* ETF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETF.h; sourceTree = "<group>"; };
 		184CB543181E123400B14025 /* fdog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fdog.h; sourceTree = "<group>"; };
 		184CB544181E123400B14025 /* imatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imatrix.h; sourceTree = "<group>"; };
@@ -1149,6 +1152,8 @@
 		E704D00A17B3BB3600F77528 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				1838CE66187A01A100FD5F2B /* ofxSystemTextbox.h */,
+				1838CE67187A01A100FD5F2B /* ofxSystemTextbox.mm */,
 				E704D01217B3BB3600F77528 /* ofxLight.h */,
 				E704D00D17B3BB3600F77528 /* CloudsRGBDCamera.h */,
 				E704D00C17B3BB3600F77528 /* CloudsRGBDCamera.cpp */,
@@ -1841,6 +1846,7 @@
 				E7AF94AE1858D1C60057411D /* CloudsInputMouse.cpp in Sources */,
 				189C7600186D131000508F34 /* ofxAVFVideoPlayer.mm in Sources */,
 				189C7601186D131000508F34 /* ofxAVFVideoRenderer.m in Sources */,
+				1838CE68187A01A100FD5F2B /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

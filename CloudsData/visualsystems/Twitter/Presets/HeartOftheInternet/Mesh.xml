@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Mesh</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1000.000000000</XPosition>
-    <YPosition>24.000000000</YPosition>
+    <XPosition>993.000000000</XPosition>
+    <YPosition>4.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -39,7 +39,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>EDGE DECAY</Name>
-    <Value>0.620000064</Value>
+    <Value>0.562140346</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -50,11 +50,6 @@
     <Kind>25</Kind>
     <Name>SYNAPSE LEVEL</Name>
     <Value>0.640394092</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SPRITE SIZE</Name>
-    <Value>21.280788422</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -69,7 +64,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNB BRI</Name>
-    <Value>0.545434654</Value>
+    <Value>0.339144111</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -109,7 +104,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNP BRI</Name>
-    <Value>0.099955022</Value>
+    <Value>0.242574424</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -134,7 +129,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LEP ALPHA</Name>
-    <Value>0.029254485</Value>
+    <Value>0.008666443</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -162,17 +157,77 @@
     <Value>5.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>X POS</Name>
-    <Value>100.000000000</Value>
+    <Kind>17</Kind>
+    <Name>BigSphere1_1_old.net</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>Y POS</Name>
-    <Value>100.000000000</Value>
+    <Kind>17</Kind>
+    <Name>BigSphere_1_old.net</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>Z POS</Name>
-    <Value>100.000000000</Value>
+    <Kind>17</Kind>
+    <Name>Circular_4_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Circular_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Galaxy2_Max_old.net</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Galaxy3_Max_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Galaxy_Max_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NS_4_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Pointy_4_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Simple_Twitter_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Spiky2_1_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Spiky_1_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterMax.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterOld.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterOneUserMen_old.net</Name>
+    <Value>0</Value>
 </Widget>

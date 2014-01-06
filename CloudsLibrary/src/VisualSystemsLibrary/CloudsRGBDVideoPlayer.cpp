@@ -20,7 +20,7 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	minDepth = 400;
 	maxDepth = 2000;
 	maxVolume = 1.5;
-	currentMaxVolume = 1.5;
+	currentMaxVolume = 1.0;
     currentClipVolumeAdjustment = 1;
 	nextClipIsVO = false;
 	playingVO = false;
@@ -185,7 +185,7 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 		skinThreshold.min = XML.getValue("skin:lowerThreshold", .0);
 		skinThreshold.max = XML.getValue("skin:upperThreshold", 1.0);
 		
-		cout << "HAS SKIN? " << hasSkinSettings << endl;
+//		cout << "HAS SKIN? " << hasSkinSettings << endl;
 
 		//	float colorWidth  = getPlayer().getWidth();
 		//	float colorHeight = getPlayer().getHeight();
@@ -202,7 +202,7 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 	currentClipVolumeAdjustment = nextClipVolumeAdjustment;
     currentMaxVolume = maxVolume * currentClipVolumeAdjustment;
     
-    cout<<"Current Max Vol: "<<currentMaxVolume<<endl;
+//    cout<<"Current Max Vol: "<<currentMaxVolume<<endl;
 	swap(currentPlayer,nextPlayer);
 	swap(currentVoiceoverPlayer, nextVoiceoverPlayer);
 	
