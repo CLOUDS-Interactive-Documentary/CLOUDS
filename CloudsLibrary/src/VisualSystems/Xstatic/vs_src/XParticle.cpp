@@ -35,6 +35,7 @@ XParticle::XParticle()
     
     bTriggered = false;
     luckyNumber = int(ofRandom(10));
+    //mass = 1;
  
     brightness = minBri;
     
@@ -43,6 +44,21 @@ XParticle::XParticle()
     colorPicker = ofRandomuf();
 }
 
+XParticle::XParticle(ofVec3f pos){
+    location.set(pos.x,pos.y,pos.z);
+    velocity.set(0, 0, 0);
+    acceleration.set(0, 0, 0);
+    lumocity.set(1,1);
+    
+    bTriggered = false;
+    luckyNumber = int(ofRandom(10));
+    
+    brightness = minBri;
+    
+    oscPos = ofRandom(100);
+    
+    colorPicker = ofRandomuf();
+}
 
 void XParticle::applyForce(ofVec3f force)
 {    
@@ -184,6 +200,6 @@ void XParticle::lottery()
 
 float XParticle::mappedSize()
 {
-    float sz = (size * (1.0f - heightToSize) + size * ofMap(location.y, lowerBounds.y, upperBounds.y, 0, 1) * heightToSize);
-    return (sz * (1.0f - velToSize) + sz * ofMap(velocity.lengthSquared(), 0, diagonalSquared, 0, 1) * velToSize);
+    float sz = (size * (1.0f - heightToSize) + size * ofMap(location.y, lowerBounds.y, upperBounds.y, 0, 1,true) * heightToSize);
+    return (sz * (1.0f - velToSize) + sz * ofMap(velocity.lengthSquared(), 0, diagonalSquared, 0, 1,true) * velToSize);
 }

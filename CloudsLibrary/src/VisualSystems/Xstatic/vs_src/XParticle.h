@@ -14,6 +14,7 @@ class XParticle
 { 
 public:
     XParticle();
+    XParticle(ofVec3f pos);
     
     void applyForce(ofVec3f force);
     void update(float drag);

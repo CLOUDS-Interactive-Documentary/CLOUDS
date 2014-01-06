@@ -27,7 +27,9 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
     
     customGui->addSpacer();
     customGui->addToggle("DRAW BOX", &bDrawBox);
+    //customGui->addSlider("BOX SIZE", 10, 300, &kBoxSize);
     customGui->addToggle("REGENERATE", &bShouldRegenerate);
+    customGui->addToggle("BIG BANG MODE", &bBigBang);
     customGui->addIntSlider("NUM PARTICLES", 0, 2000, &nParticles);
     customGui->addToggle("BOUNCE OFF WALLS", &bBounceOffWalls);
     customGui->addToggle("WRAP EDGES", &bWrapEdges);
@@ -139,8 +141,8 @@ void CloudsVisualSystemXstatic::guiRenderEvent(ofxUIEventArgs &e){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemXstatic::selfSetup()
-{	
-    bDrawBox = false;
+{
+    
     
     gravity.set(0);
     drag = 0.0;
@@ -179,7 +181,7 @@ void CloudsVisualSystemXstatic::selfSetup()
     
     nParticles = 500;
     data = new GLfloat[kMaxParticles * kStrideData];
-    regenerate();
+    regenerate(bBigBang);
     bShouldRegenerate = true;
     
     spriteDir.listDir(getVisualSystemDataPath() + "spriteImages");
@@ -190,12 +192,22 @@ void CloudsVisualSystemXstatic::selfSetup()
     ofEnableArbTex();
 }
 
-void CloudsVisualSystemXstatic::regenerate()
+void CloudsVisualSystemXstatic::regenerate(bool bBigBang)
 {
     particles.clear();
-    for (int i = 0; i < kMaxParticles; i++) {
-        particles.push_back(XParticle());
+    if(bBigBang){
+        for (int i = 0; i < kMaxParticles; i++) {
+            particles.push_back(XParticle(ofVec3f(0,0,0)));
+        }
     }
+    else{
+        for (int i = 0; i < kMaxParticles; i++) {
+            particles.push_back(XParticle());
+        }
+    }
+
+    
+
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -222,7 +234,7 @@ void CloudsVisualSystemXstatic::selfSceneTransformation(){
 void CloudsVisualSystemXstatic::selfUpdate()
 {
     if (bShouldRegenerate) {
-        regenerate();
+        regenerate(bBigBang);
         bShouldRegenerate = false;
     }
     
@@ -262,6 +274,12 @@ void CloudsVisualSystemXstatic::selfUpdate()
             particles[i].velocity.set(0, -riseFallSpeed, 0);
             particles[i].acceleration = ofVec3f::zero();
         }
+        if (bBounceOffWalls) {
+            particles[i].bounceEdges();
+        }
+        if (bWrapEdges) {
+            particles[i].wrapEdges();
+        }
         
         ofVec3f rotateForce = particles[i].location.getRotated(rotateAngle, ofVec3f(0, 1, 0));//(particles[i].location.x, 0, particles[i].location.z);
         rotateForce -= particles[i].location;
@@ -282,13 +300,7 @@ void CloudsVisualSystemXstatic::selfUpdate()
         
         particles[i].update(drag);
         
-        if (bBounceOffWalls) {
-            particles[i].bounceEdges();
-        }
-        if (bWrapEdges) {
-            particles[i].wrapEdges();
-        }
-        
+       
         ofFloatColor pColor;
         pColor.setHsb(ofMap(powf(particles[i].colorPicker, colorWeight), 0, 1, color1.r, color2.r),
                       ofMap(powf(particles[i].colorPicker, colorWeight), 0, 1, color1.g, color2.g),

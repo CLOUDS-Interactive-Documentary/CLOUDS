@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
+    <XPosition>1212.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -16,9 +16,14 @@
     <Value>0</Value>
 </Widget>
 <Widget>
+    <Kind>2</Kind>
+    <Name>BIG BANG MODE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
     <Kind>44</Kind>
     <Name>NUM PARTICLES</Name>
-    <Value>1103</Value>
+    <Value>1517</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -33,12 +38,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>circle.png</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>spark.png</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -63,12 +68,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>EXPLODE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>EXPLODE SPEED</Name>
-    <Value>17.733989716</Value>
+    <Value>93.103454590</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -88,32 +93,32 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ROTATE ANGLE</Name>
-    <Value>96.871917725</Value>
+    <Value>92.368423462</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROTATE SPEED</Name>
-    <Value>0.246305406</Value>
+    <Value>4.390244007</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>PULL SPEED</Name>
-    <Value>5.862069130</Value>
+    <Value>9.500000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>WIND SPEED</Name>
-    <Value>0.000000000</Value>
+    <Value>10.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>DRAG</Name>
-    <Value>0.029556651</Value>
+    <Value>0.593750000</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>SIZE</Name>
-    <HighValue>1.379310369</HighValue>
+    <HighValue>4.532019615</HighValue>
     <LowValue>0.492610812</LowValue>
 </Widget>
 <Widget>
@@ -124,7 +129,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>VEL TO SIZE</Name>
-    <Value>0.059113301</Value>
+    <Value>0.034482758</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -135,27 +140,27 @@
 <Widget>
     <Kind>25</Kind>
     <Name>OSC SPEED</Name>
-    <Value>0.000000000</Value>
+    <Value>0.068965517</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>OSCILLATE SIZE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>OSCILLATE BRI</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>TRIGGER DURATION</Name>
-    <Value>404.536956787</Value>
+    <Value>370.088684082</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>TRIGGER RANGE</Name>
-    <Value>263.596069336</Value>
+    <Value>39.261085510</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

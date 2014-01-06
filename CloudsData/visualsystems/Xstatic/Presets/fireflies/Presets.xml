@@ -17,7 +17,22 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>BigPingPong</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BigPong</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>BouncingBalls</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Circle</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -29,6 +44,11 @@
     <Kind>2</Kind>
     <Name>fireflies</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Galaxy</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
