@@ -279,5 +279,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     bool bStartAnimating;
     bool bDoPerpendicular;
     bool bShouldGenerate;
+    bool bSourceFolderExists;
+    bool bTargetFolderExists;
 //    bool bShouldGenerateTargetOnly;
 };

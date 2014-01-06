@@ -37,17 +37,32 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
     customGui->addSpacer();
+    
     vector<string> imageNames;
-    for (int i = 0; i < imagesDir.size(); i++) {
-        imageNames.push_back(imagesDir.getName(i));
+    if(bSourceFolderExists){
+        for (int i = 0; i < imagesDir.size(); i++) {
+            imageNames.push_back(imagesDir.getName(i));
+        }
     }
+    else{
+        imageNames.push_back("SRC FOLDER DOESNT EXIST");
+    }
+
     
     vector<string> targetImageNames;
-    for(int i =0; i<targetImagesDir.size(); i++){
-        targetImageNames.push_back(targetImagesDir.getName(i));
-        gp1.targetImageNames.push_back(targetImagesDir.getName(i));
-        gp2.targetImageNames.push_back(targetImagesDir.getName(i));
+    if (bTargetFolderExists) {
+        for(int i =0; i<targetImagesDir.size(); i++){
+            targetImageNames.push_back(targetImagesDir.getName(i));
+            gp1.targetImageNames.push_back(targetImagesDir.getName(i));
+            gp2.targetImageNames.push_back(targetImagesDir.getName(i));
+        }
     }
+    else{
+        targetImageNames.push_back("TRGT FOLDER DOES NOT EXIST. ");
+        gp1.targetImageNames.push_back("TRGT FOLDER DOES NOT EXIST. ");
+        gp2.targetImageNames.push_back("TRGT FOLDER DOES NOT EXIST. ");
+    }
+
     customGui->addSpacer();
     customGui->addButton("ANIMATE", false);
     customGui->addIntSlider("DELAY B/W TWEENS", 1, 10, &delayParameter);
@@ -182,6 +197,10 @@ void CloudsVisualSystemPhotoGlitch::beginAnimation(){
     bStartAnimating = true;
 }
 void CloudsVisualSystemPhotoGlitch::updateAnimation(){
+    if(! bSourceFolderExists || !bTargetFolderExists){
+        ofLogError("[ CloudsVisualSystemPhotoGlitch::updateSequence ]")<<" Image folders not found"<<endl;        
+        return;
+    }
     if(currentTargetParams->mode == SOURCE_MODE){
         
         //if Source photo animation is enabled do a slow tween, otherwise do it fast.
@@ -339,6 +358,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
         ofLogError("[ CloudsVisualSystemPhotoGlitch::selfSetup ]")<<" Image folder : "<<getVisualSystemDataPath(true) + "sourceImages/"<<" Not found"<<endl;
         return;
     }
+    bSourceFolderExists = true;
     imagesDir.sort();
     
     targetImagesDir.listDir(getVisualSystemDataPath(true) + "targetImages" );
@@ -346,6 +366,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
         ofLogError("[ CloudsVisualSystemPhotoGlitch::selfSetup ]")<<" Image folder : "<<getVisualSystemDataPath(true) + "targetImages/"<<" Not found"<<endl;
         return;
     }
+    bTargetFolderExists = true;
     targetImagesDir.sort();
     selectedSrcImageIdx = 0;
     selectedTargetImageIdx = 0;
@@ -390,19 +411,25 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
 void CloudsVisualSystemPhotoGlitch::generate(PhotoGlitch& pg,int imgIndex, bool isSource){
     
     pg.clear();
-    if(isSource) {
-        cout<<"Im a source " <<"loading : "<<imagesDir.getPath(imgIndex)<<endl;
-        if(! pg.tex.loadImage(imagesDir.getPath(imgIndex))){
-            ofLogError("[ CloudsVisualSystemPhotoGlitch::generate ]")<<"Image not found"<<endl;
-         return;
+    if(bSourceFolderExists){
+        if(isSource ) {
+            cout<<"Im a source " <<"loading : "<<imagesDir.getPath(imgIndex)<<endl;
+            if(! pg.tex.loadImage(imagesDir.getPath(imgIndex))){
+                ofLogError("[ CloudsVisualSystemPhotoGlitch::generate ]")<<"Image not found"<<endl;
+                return;
+            }
+        }
+        else{
+            if(! pg.tex.loadImage(imagesDir.getPath(imgIndex))){
+                ofLogError("[ CloudsVisualSystemPhotoGlitch::generate ]")<<"Image not found"<<endl;
+                return;
+            }
         }
     }
     else{
-        if(! pg.tex.loadImage(imagesDir.getPath(imgIndex))){
-            ofLogError("[ CloudsVisualSystemPhotoGlitch::generate ]")<<"Image not found"<<endl;
-            return;
-        }
+        return;
     }
+
     
     
     ofPixels pixels = pg.tex.getPixelsRef();
@@ -707,6 +734,10 @@ void CloudsVisualSystemPhotoGlitch::selfSceneTransformation(){
 
 void CloudsVisualSystemPhotoGlitch::updateSequence(){
     
+    if(! bSourceFolderExists || !bTargetFolderExists){
+        ofLogError("[ CloudsVisualSystemPhotoGlitch::updateSequence ]")<<" Image folders not found"<<endl;
+        return;
+    }
     
     if (bLoopBack) {
         if (currentTargetParams->mode == SOURCE_MODE && gp1.enable ) {
@@ -773,6 +804,11 @@ void CloudsVisualSystemPhotoGlitch::updateSequence(){
 //normal update call
 void CloudsVisualSystemPhotoGlitch::selfUpdate()
 {
+    if(! bSourceFolderExists || !bTargetFolderExists){
+        ofLogError("[ CloudsVisualSystemPhotoGlitch::updateSequence ]")<<" Image folders not found"<<endl;
+        return;
+    }
+    
     if(bIsFirstTime){
         bIsFirstTime = false;
         if(sourceParams.shuffle){
@@ -858,6 +894,11 @@ void CloudsVisualSystemPhotoGlitch::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
 {
+    if(! bSourceFolderExists || !bTargetFolderExists){
+        ofLogError("[ CloudsVisualSystemPhotoGlitch::updateSequence ]")<<" Image folders not found"<<endl;
+        return;
+    }
+    
     if (bUseColors) {
         sourcePhoto.vbo.enableColors();
         if(currentTarget != NULL){
