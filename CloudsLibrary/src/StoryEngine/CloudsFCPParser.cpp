@@ -130,9 +130,9 @@ void CloudsFCPParser::parseVOClips(){
 			clip.startFrame = 0;
 			if(voCacheExists){
 				clip.endFrame = voiceoverDuration[ ofFilePath::getBaseName(clip.voiceOverAudioPath) ] * 24.;
-				if(clip.endFrame == 0)
-//				clip.endFrame = voiceoverDuration[ clip.getID() ] * 24.;
-//				cout << "computed end frame is " << clip.endFrame << endl;
+				if(clip.endFrame == 0){
+					ofLogError("CloudsFCPParser::parseVOClips") << "Voiceover duration not found for " << fileName;
+				}
 			}
 			else{
 				ofVideoPlayer p;

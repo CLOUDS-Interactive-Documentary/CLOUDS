@@ -10,10 +10,10 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
-#include "ofxGameCamera.h"
+//#include "ofxGameCamera.h"
 #include "CloudsClip.h"
 #include "CloudsQuestion.h"
-#include "CloudsRun.h"
+//#include "CloudsRun.h"
 #include "ofxFTGL.h"
 
 class CloudsIntroSequence : public CloudsVisualSystem {
@@ -59,12 +59,12 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void selfSetupCameraGui();
 	
 	ofCamera& getCameraRef(){
-		if(useDebugCamera){
-			return camera;
-		}
-		else{
+//		if(useDebugCamera){
+//			return camera;
+//		}
+//		else{
 			return warpCamera;
-		}
+//		}
 	}
 	
 	void selfPresetLoaded(string presetPath);
@@ -141,7 +141,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofMesh tunnelMeshLoose;
 	
 	bool useDebugCamera;
-	ofxGameCamera camera;
+//	ofxGameCamera camera;
 	ofCamera warpCamera;
 	
 	float camWobbleRange;
