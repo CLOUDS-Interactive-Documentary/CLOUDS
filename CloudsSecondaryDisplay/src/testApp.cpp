@@ -25,6 +25,7 @@ void testApp::update(){
         //goto next clip
         timer = false;
         startTime = ofGetElapsedTimef();
+        cout<<"Secondary Display::currentTestClip = "<<currentTestClip<<endl;
     }
     
     if(testAllClips && ofGetElapsedTimef() - startTime >= 3.5f){
@@ -32,6 +33,8 @@ void testApp::update(){
         if(currentTestClip == secondaryDisplay.parser.getAllClips().size()-1)currentTestClip=0;
         else currentTestClip++;
     }
+
+    
 }
 
 //--------------------------------------------------------------
@@ -58,6 +61,8 @@ void testApp::keyPressed(int key){
     }
     
     if(key == 'a') testAllClips = true;
+    if(key == 's') secondaryDisplay.respondToClip( secondaryDisplay.parser.getAllClips()[0] );
+    
 	
 	if(key == 'C'){
 		secondaryDisplay.respondToClip( secondaryDisplay.parser.getRandomClip() );
