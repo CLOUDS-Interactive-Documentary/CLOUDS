@@ -8,7 +8,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>Preloads</Name>
-    <Value>48275</Value>
+    <Value>1059</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Number of Walkers</Name>
-    <Value>73.665023804</Value>
+    <Value>32.211822510</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -36,62 +36,62 @@
     <Value>0.394088656</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>STEP SIZE X</Name>
     <Value>0.541871905</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>STEP SIZE Y</Name>
     <Value>0.073891625</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>STEP SIZE Z</Name>
     <Value>0.467980266</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>NOISE SPEED X</Name>
     <Value>0.098522164</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>NOISE SPEED Y</Name>
     <Value>0.197044328</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>NOISE SPEED Z</Name>
     <Value>0.197044328</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>Hue1</Name>
     <Value>97.980293274</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>Saturation1</Name>
     <Value>194.088668823</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>Brightness1</Name>
     <Value>228.620697021</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>Hue2</Name>
     <Value>195.960586548</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>Saturation2</Name>
     <Value>32.512317657</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>Brightness2</Name>
     <Value>255.000000000</Value>
 </Widget>
@@ -99,11 +99,6 @@
     <Kind>2</Kind>
     <Name>Oscillator Mode</Name>
     <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Oscilator Period (in frames)</Name>
-    <Value>128.078811646</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -117,11 +112,16 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>Oscilator Period (in frames)</Name>
+    <Value>128.078811646</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
     <Name>Saturation</Name>
     <Value>111.330047607</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
     <Name>Brightness</Name>
     <Value>170.837432861</Value>
 </Widget>
@@ -133,5 +133,10 @@
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW LINES</Name>
-    <Value>1</Value>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE WIDTH</Name>
+    <Value>1.611822724</Value>
 </Widget>
