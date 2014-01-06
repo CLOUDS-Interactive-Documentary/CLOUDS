@@ -8,13 +8,30 @@ void testApp::setup(){
 	ofEnableAlphaBlending();
 	
 	secondaryDisplay.setup();
-    
+    testAllClips = false;
+    timer = true;
     debug = false;
+    currentTestClip = 0;
+    startTime = 0;
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 	secondaryDisplay.update();
+    
+    if(testAllClips && timer){
+        //wait for 3 seconds
+        secondaryDisplay.respondToClip( secondaryDisplay.parser.getAllClips()[currentTestClip] );
+        //goto next clip
+        timer = false;
+        startTime = ofGetElapsedTimef();
+    }
+    
+    if(testAllClips && ofGetElapsedTimef() - startTime >= 3.5f){
+        timer = true;
+        if(currentTestClip == secondaryDisplay.parser.getAllClips().size()-1)currentTestClip=0;
+        else currentTestClip++;
+    }
 }
 
 //--------------------------------------------------------------
@@ -39,6 +56,8 @@ void testApp::keyPressed(int key){
         secondaryDisplay.tx -= .1;
         cout << "tx: "<<secondaryDisplay.tx<<endl;
     }
+    
+    if(key == 'a') testAllClips = true;
 	
 	if(key == 'C'){
 		secondaryDisplay.respondToClip( secondaryDisplay.parser.getRandomClip() );
