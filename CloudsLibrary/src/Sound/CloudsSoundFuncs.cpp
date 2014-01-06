@@ -1311,11 +1311,13 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
 
 void CloudsSound::stopMusic()
 {
-    //flush_sched();
+
     float fadedur = 10.;
     
     PFIELD_SCHED(0., fadedur, abn[ACTBUS], "ramp_10");
 
     cout << "STOP MUSIC on " << ab[ACTBUS]<< endl;
     ACTBUS = (ACTBUS+1)%ab.size();
+    
+    flush_sched();
 }

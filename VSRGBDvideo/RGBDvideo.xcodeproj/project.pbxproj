@@ -77,6 +77,8 @@
 		4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AA17512E45003001E2 /* ofxSwarmBehavior.cpp */; };
 		4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
+		8501645B187B39EE003F302A /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8501645A187B39EE003F302A /* ofxSystemTextbox.mm */; };
+		8501645C187B39EE003F302A /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8501645A187B39EE003F302A /* ofxSystemTextbox.mm */; };
 		8585029618557B500088352E /* CloudsVisualSystemRGBDVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8585029418557B500088352E /* CloudsVisualSystemRGBDVideo.cpp */; };
 		8585029718557B500088352E /* CloudsVisualSystemRGBDVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8585029418557B500088352E /* CloudsVisualSystemRGBDVideo.cpp */; };
 		858502D018557C7A0088352E /* ofxAVFVideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 858502C118557C7A0088352E /* ofxAVFVideoPlayer.mm */; };
@@ -493,6 +495,8 @@
 		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		85016459187B39EE003F302A /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxSystemTextbox.h; path = ../../CloudsLibrary/src/VisualSystemsLibrary/ofxSystemTextbox.h; sourceTree = "<group>"; };
+		8501645A187B39EE003F302A /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ofxSystemTextbox.mm; path = ../../CloudsLibrary/src/VisualSystemsLibrary/ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		8585029418557B500088352E /* CloudsVisualSystemRGBDVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRGBDVideo.cpp; sourceTree = "<group>"; };
 		8585029518557B500088352E /* CloudsVisualSystemRGBDVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRGBDVideo.h; sourceTree = "<group>"; };
 		8585029818557BA20088352E /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../../CloudsLibrary/src/CloudsGlobal.h; sourceTree = "<group>"; };
@@ -1278,6 +1282,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				85016459187B39EE003F302A /* ofxSystemTextbox.h */,
+				8501645A187B39EE003F302A /* ofxSystemTextbox.mm */,
 				858502E1185583F00088352E /* CloudsInput.cpp */,
 				858502E2185583F00088352E /* CloudsInput.h */,
 				858502E3185583F00088352E /* CloudsInputEvents.h */,
@@ -1580,6 +1586,7 @@
 				858502D218557C7A0088352E /* ofxAVFVideoRenderer.m in Sources */,
 				858502E6185583F00088352E /* CloudsInput.cpp in Sources */,
 				858502E8185583F00088352E /* CloudsInputMouse.cpp in Sources */,
+				8501645B187B39EE003F302A /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1667,6 +1674,7 @@
 				858502D318557C7A0088352E /* ofxAVFVideoRenderer.m in Sources */,
 				858502E7185583F00088352E /* CloudsInput.cpp in Sources */,
 				858502E9185583F00088352E /* CloudsInputMouse.cpp in Sources */,
+				8501645C187B39EE003F302A /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
