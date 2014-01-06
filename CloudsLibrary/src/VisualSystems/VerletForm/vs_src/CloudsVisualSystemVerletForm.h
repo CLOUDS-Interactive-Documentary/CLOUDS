@@ -120,7 +120,9 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	float colorIndex,colorMod;
 
 
-
+	bool colorLightEnabled;
+	int colorStrategy;
+	
 	bool gridDoStitch;
 	int gridSize;
 	float gridSizeF;
