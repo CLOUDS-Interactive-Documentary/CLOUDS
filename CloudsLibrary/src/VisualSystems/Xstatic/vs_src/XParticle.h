@@ -52,6 +52,7 @@ public:
     static bool bOscillateSize;
     static bool bOscillateBri;
     
+    float mass;
     float size;
     float colorPicker;
     float brightness;

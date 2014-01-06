@@ -35,7 +35,7 @@ XParticle::XParticle()
     
     bTriggered = false;
     luckyNumber = int(ofRandom(10));
-    //mass = 1;
+    mass = 1;
  
     brightness = minBri;
     
@@ -49,6 +49,7 @@ XParticle::XParticle(ofVec3f pos){
     velocity.set(0, 0, 0);
     acceleration.set(0, 0, 0);
     lumocity.set(1,1);
+    mass = ofRandom(5);
     
     bTriggered = false;
     luckyNumber = int(ofRandom(10));
@@ -62,9 +63,9 @@ XParticle::XParticle(ofVec3f pos){
 
 void XParticle::applyForce(ofVec3f force)
 {    
-    //ofVec3f f = force / *mass; << the right way of calculating Newton's 2nd takes mass into consideration in calculating force
-//    ofVec3f f = force / 1.5; //let's pretend all the masses are the same
-    acceleration += force;
+    ofVec3f f = force / mass; // << the right way of calculating Newton's 2nd takes mass into consideration in calculating force
+   // ofVec3f f = force / 1.5; //let's pretend all the masses are the same
+    acceleration += f;
 }
 
 void XParticle::update(float drag)

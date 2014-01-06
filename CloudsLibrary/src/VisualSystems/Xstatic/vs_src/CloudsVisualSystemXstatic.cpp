@@ -56,9 +56,9 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
     customGui->addMinimalSlider("GRAVITY Y", -1, 1, &gravity.y);
     customGui->addMinimalSlider("GRAVITY Z", -1, 1, &gravity.z);
     
-    customGui->addSlider("ROTATE ANGLE", 45, 135, &rotateAngle);
-    customGui->addSlider("ROTATE SPEED", 0, 10, &rotateSpeed);
-    customGui->addSlider("PULL SPEED", 0, 10, &pullSpeed);
+    customGui->addMinimalSlider("ROTATE ANGLE", 45, 135, &rotateAngle);
+    customGui->addMinimalSlider("ROTATE SPEED", 0, 10, &rotateSpeed);
+    customGui->addMinimalSlider("PULL SPEED", 0, 30, &pullSpeed);
     
     customGui->addMinimalSlider("WIND SPEED", 0, 10, &windSpeed);
     
