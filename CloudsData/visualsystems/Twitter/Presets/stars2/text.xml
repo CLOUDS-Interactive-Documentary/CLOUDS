@@ -18,17 +18,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>T HUE</Name>
-    <Value>0.000000000</Value>
+    <Value>128.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>T SAT</Name>
-    <Value>0.000000000</Value>
+    <Value>128.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>T BRI</Name>
-    <Value>0.921465814</Value>
+    <Value>128.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -58,10 +58,10 @@
 <Widget>
     <Kind>25</Kind>
     <Name>STRING WIDTH</Name>
-    <Value>769.088684082</Value>
+    <Value>1182.674804688</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SET SIZE</Name>
-    <Value>41.930046082</Value>
+    <Value>63.583251953</Value>
 </Widget>
