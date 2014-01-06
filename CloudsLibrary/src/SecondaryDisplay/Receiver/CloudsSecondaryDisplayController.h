@@ -98,6 +98,8 @@ class CloudsSecondaryDisplayController {
             *meshProjectArtist,
             *meshProjectDescription;
     
+    ofMesh  videoBox;
+    
     ofxFTGLFont             *fontBioLastName,
                             *fontBioFirstName,
                             *fontBioLocation,

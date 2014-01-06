@@ -37,17 +37,32 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
     customGui->addSpacer();
+    
     vector<string> imageNames;
-    for (int i = 0; i < imagesDir.size(); i++) {
-        imageNames.push_back(imagesDir.getName(i));
+    if(bSourceFolderExists){
+        for (int i = 0; i < imagesDir.size(); i++) {
+            imageNames.push_back(imagesDir.getName(i));
+        }
     }
+    else{
+        imageNames.push_back("SRC FOLDER DOESNT EXIST");
+    }
+
     
     vector<string> targetImageNames;
-    for(int i =0; i<targetImagesDir.size(); i++){
-        targetImageNames.push_back(targetImagesDir.getName(i));
-        gp1.targetImageNames.push_back(targetImagesDir.getName(i));
-        gp2.targetImageNames.push_back(targetImagesDir.getName(i));
+    if (bTargetFolderExists) {
+        for(int i =0; i<targetImagesDir.size(); i++){
+            targetImageNames.push_back(targetImagesDir.getName(i));
+            gp1.targetImageNames.push_back(targetImagesDir.getName(i));
+            gp2.targetImageNames.push_back(targetImagesDir.getName(i));
+        }
     }
+    else{
+        targetImageNames.push_back("TRGT FOLDER DOES NOT EXIST. ");
+        gp1.targetImageNames.push_back("TRGT FOLDER DOES NOT EXIST. ");
+        gp2.targetImageNames.push_back("TRGT FOLDER DOES NOT EXIST. ");
+    }
+
     customGui->addSpacer();
     customGui->addButton("ANIMATE", false);
     customGui->addIntSlider("DELAY B/W TWEENS", 1, 10, &delayParameter);
@@ -126,15 +141,26 @@ int CloudsVisualSystemPhotoGlitch::getTargetFileName(ofxUISuperCanvas * gui, int
     vector<ofxUILabelToggle*> files = menu->getToggles();
     
     for (int i=0 ; i<files.size(); i++) {
-        for (int j =0; j < targetImagesDir.numFiles(); j++){
             ofxUILabel* l = files[i]->getLabel();
+        for (int j =0; j < targetImagesDir.numFiles(); j++){
+
             
             if (l->getLabel() == targetImagesDir.getName(j) && files[i]->getValue()) {
                 cout<<"current file for target : "<<targetId<<" is "<< targetImagesDir.getName(j)<<endl;
+                bTargetImageExists = true;
                 return j;
             }
+            
+            if(files[i]->getValue()){
+                ofLogError(" CloudsVisualSystemPhotoGlitch::getTargetFileName")<<l->getLabel()<<" : file not found"<<endl;
+                
+            }
         }
+        
+        
     }
+    bTargetImageExists =      false;
+
     return -1;
 }
 
@@ -157,17 +183,23 @@ void CloudsVisualSystemPhotoGlitch::beginAnimation(){
             cout<<"No image selected or image not found for image 2"<<endl;
         }
     }
+    else{
+        cout<<"Target 2 is not enabled"<<endl;
+    }
     
     if(gp1.enable){
         int imgIdx = getTargetFileName(target1Gui, 1);
         if( imgIdx != -1){
             generate(target1, imgIdx);
             target1.ID = 1;
-            
+            cout<<"Target 1 updated"<<endl;
         }
         else{
-            cout<<"No image selected or image not found for image 1"<<endl;
+            cout<<"Image not found for image 1"<<endl;
         }
+    }
+    else{
+        cout<<"Target 1 is not enabled"<<endl;
     }
     
     //Start animation with the source
@@ -182,6 +214,10 @@ void CloudsVisualSystemPhotoGlitch::beginAnimation(){
     bStartAnimating = true;
 }
 void CloudsVisualSystemPhotoGlitch::updateAnimation(){
+    if(! bSourceFolderExists || !bTargetFolderExists || !bSourceImageExists || !bTargetImageExists){
+//        ofLogError("[ CloudsVisualSystemPhotoGlitch::updateAnimation ]")<<" Image folders not found"<<endl;
+        return;
+    }
     if(currentTargetParams->mode == SOURCE_MODE){
         
         //if Source photo animation is enabled do a slow tween, otherwise do it fast.
@@ -333,14 +369,26 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     sourceParams.mode = SOURCE_MODE;
     gp1.mode = TARGET_MODE;
     gp2.mode = TARGET_MODE;
-    
+
     imagesDir.listDir(getVisualSystemDataPath(true) + "sourceImages" );
+    if (! imagesDir.exists()) {
+        ofLogError("[ CloudsVisualSystemPhotoGlitch::selfSetup ]")<<" Image folder : "<<getVisualSystemDataPath(true) + "sourceImages/"<<" Not found"<<endl;
+        return;
+    }
+    bSourceFolderExists = true;
     imagesDir.sort();
     
     targetImagesDir.listDir(getVisualSystemDataPath(true) + "targetImages" );
+    if (! targetImagesDir.exists()) {
+        ofLogError("[ CloudsVisualSystemPhotoGlitch::selfSetup ]")<<" Image folder : "<<getVisualSystemDataPath(true) + "targetImages/"<<" Not found"<<endl;
+        return;
+    }
+    bTargetFolderExists = true;
     targetImagesDir.sort();
     selectedSrcImageIdx = 0;
     selectedTargetImageIdx = 0;
+    bSourceImageExists = false;
+    bTargetImageExists = false;
     
     screenRect = ofRectangle(0, 0, ofGetWidth(), ofGetHeight());
     bShouldGenerate = true;
@@ -382,13 +430,29 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
 void CloudsVisualSystemPhotoGlitch::generate(PhotoGlitch& pg,int imgIndex, bool isSource){
     
     pg.clear();
-    if(isSource) {
-        cout<<"Im a source " <<"loading : "<<imagesDir.getPath(imgIndex)<<endl;
-        pg.tex.loadImage(imagesDir.getPath(imgIndex));
+    if(bSourceFolderExists && bTargetFolderExists){
+        if(isSource ) {
+            cout<<"Im a source " <<"loading : "<<imagesDir.getPath(imgIndex)<<endl;
+            if(! pg.tex.loadImage(imagesDir.getPath(imgIndex))){
+                ofLogError("[ CloudsVisualSystemPhotoGlitch::generate ]")<<"Image not found"<<endl;
+                bSourceImageExists = false;
+                return;
+            }
+            bSourceImageExists = true;
+        }
+        else{
+            if(! pg.tex.loadImage(targetImagesDir.getPath(imgIndex))){
+                ofLogError("[ CloudsVisualSystemPhotoGlitch::generate ]")<<"Image not found"<<endl;
+                bTargetImageExists = false;
+                return;
+            }
+            bTargetFolderExists = true;
+        }
     }
     else{
-        pg.tex.loadImage(targetImagesDir.getPath(imgIndex));
+        return;
     }
+
     
     
     ofPixels pixels = pg.tex.getPixelsRef();
@@ -651,6 +715,8 @@ void CloudsVisualSystemPhotoGlitch::generate(PhotoGlitch& pg,int imgIndex, bool 
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemPhotoGlitch::selfPresetLoaded(string presetPath)
 {
+    bSourceImageExists = false;
+    bTargetImageExists = false;
     
     cout<<"Im in preset loaded"<<endl;
     ofxUIDropDownList* r = (ofxUIDropDownList*) customGui->getWidget("SOURCE IMAGES");
@@ -693,6 +759,10 @@ void CloudsVisualSystemPhotoGlitch::selfSceneTransformation(){
 
 void CloudsVisualSystemPhotoGlitch::updateSequence(){
     
+    if(! bSourceFolderExists || !bTargetFolderExists || !bSourceImageExists || !bTargetImageExists){
+//        ofLogError("[ CloudsVisualSystemPhotoGlitch::updateSequence ]")<<" Image folders not found"<<endl;
+        return;
+    }
     
     if (bLoopBack) {
         if (currentTargetParams->mode == SOURCE_MODE && gp1.enable ) {
@@ -759,6 +829,11 @@ void CloudsVisualSystemPhotoGlitch::updateSequence(){
 //normal update call
 void CloudsVisualSystemPhotoGlitch::selfUpdate()
 {
+    if(! bSourceFolderExists || !bTargetFolderExists || !bSourceImageExists || !bTargetImageExists ){
+//        ofLogError("CloudsVisualSystemPhotoGlitch::selfUpdate ")<<" Image folders not found"<<endl;
+        return;
+    }
+    
     if(bIsFirstTime){
         bIsFirstTime = false;
         if(sourceParams.shuffle){
@@ -779,7 +854,6 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
         bStartAnimating = false;
         
     }
-    
     
     // tween them cells!
     for (int i = 0; i < numCells; i++) {
@@ -844,6 +918,11 @@ void CloudsVisualSystemPhotoGlitch::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
 {
+    if(! bSourceFolderExists || !bTargetFolderExists || !bSourceImageExists || !bTargetImageExists){
+//        ofLogError("[ CloudsVisualSystemPhotoGlitch::selfDrawBackground ]")<<" Image folders not found"<<endl;
+        return;
+    }
+    
     if (bUseColors) {
         sourcePhoto.vbo.enableColors();
         if(currentTarget != NULL){
