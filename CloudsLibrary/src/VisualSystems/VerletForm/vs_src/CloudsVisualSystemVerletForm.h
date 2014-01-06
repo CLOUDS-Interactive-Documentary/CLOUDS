@@ -34,7 +34,7 @@ typedef struct{
 	int vertID;
 
 	bool isEdge;
-
+	float speed;
 	ofVec3f orig,goal,gridV;
 	ofVec3f vD;
 	Particle3D* p;
@@ -117,7 +117,8 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 
   	vector<MWParticle> pp;
 	vector<MWParticle> ppActive;
-	float fpsMod,activityCnt,stickyNum;
+	float fpsMod,stickyNum;
+	int activityCnt;
 	float clothWidth;
 	float clothHeight;
 	float colorIndex,colorMod;
@@ -128,12 +129,16 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	int gridSize;
 	float gridSizeF;
 	int gridType;
+	int fixCnt;
 	
 
 	void mwUpdate();
 	void mwUpdateCamera();
 	void mwLights();
 	void mwNewLightColor();
+
+	void mwFix(MWParticle &pt,bool fix);
+
 
 	ofVec3f mwNewMove(MWParticle& pt);
 	void mwNewGravity();
@@ -143,7 +148,6 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	bool mwIsEdge(MWParticle &pt);
 	void mwNewActivity(MWParticle& pt,signed int state);
 
-	void mwFix(MWParticle &pt);
 
 	void mwMakeParticle(int x,int y,ofVec3f &o);
 	MWParticle &mwGetParticle(bool fromEdge);
