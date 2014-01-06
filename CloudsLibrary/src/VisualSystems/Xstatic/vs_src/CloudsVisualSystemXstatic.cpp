@@ -30,6 +30,7 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
     customGui->addToggle("REGENERATE", &bShouldRegenerate);
     customGui->addIntSlider("NUM PARTICLES", 0, 2000, &nParticles);
     customGui->addToggle("BOUNCE OFF WALLS", &bBounceOffWalls);
+    customGui->addToggle("WRAP EDGES", &bWrapEdges);
     
     customGui->addSpacer();
     customGui->addLabel("SPRITE IMAGE");
@@ -46,7 +47,7 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
     customGui->addMinimalSlider("RISE/FALL SPEED", 0, 200, &riseFallSpeed);
     
     customGui->addToggle("EXPLODE", &bShouldExplode);
-    customGui->addMinimalSlider("EXPLODE SPEED", 0, 200, &explodeSpeed);
+    customGui->addMinimalSlider("EXPLODE SPEED", 0, 450, &explodeSpeed);
     
     customGui->addLabel("GRAVITY");
     customGui->addMinimalSlider("GRAVITY X", -1, 1, &gravity.x);
@@ -174,6 +175,7 @@ void CloudsVisualSystemXstatic::selfSetup()
     bDidRise    = false;
     
     bBounceOffWalls = true;
+    bWrapEdges = false;
     
     nParticles = 500;
     data = new GLfloat[kMaxParticles * kStrideData];
@@ -283,7 +285,7 @@ void CloudsVisualSystemXstatic::selfUpdate()
         if (bBounceOffWalls) {
             particles[i].bounceEdges();
         }
-        else {
+        if (bWrapEdges) {
             particles[i].wrapEdges();
         }
         

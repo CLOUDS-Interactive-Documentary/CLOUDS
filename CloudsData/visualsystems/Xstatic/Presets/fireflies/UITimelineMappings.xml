@@ -4,17 +4,17 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>ROT-Y</WidgetName>
-                <WidgetID>11</WidgetID>
-                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+                <WidgetName>WIND SPEED</WidgetName>
+                <WidgetID>46</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>WIND SPEED</WidgetName>
-                <WidgetID>44</WidgetID>
-                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+                <WidgetName>ROT-Y</WidgetName>
+                <WidgetID>11</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>

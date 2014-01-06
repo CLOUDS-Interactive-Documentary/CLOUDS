@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>68.000000000</XPosition>
-    <YPosition>268.000000000</YPosition>
+    <XPosition>637.000061035</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,6 +13,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>basic_debug</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BouncingBalls</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

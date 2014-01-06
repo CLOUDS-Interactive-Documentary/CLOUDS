@@ -238,17 +238,6 @@
         <clip>Kyle_MC - Face Tracking military</clip>
         <clip>Kyle_MC - box on your face</clip>
         <clip>Kyle_MC - face algos</clip>
-    </suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
-<system name="2DVideo_FaceShift_noisy">
-    <keywords>face tracking</keywords>
-    <links></links>
-    <suppressions>
         <clip>Kyle_MC - Face Tracking military</clip>
         <clip>Kyle_MC - box on your face</clip>
         <clip>Kyle_MC - face algos</clip>
@@ -2673,7 +2662,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -2683,14 +2672,41 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="Colony_Phytoplankton">
-    <keywords></keywords>
+    <keywords>artificial life|biology</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - protein folding 1</clip>
+        <clip>Andres - protein folding 2</clip>
+        <clip>Andres - soft systems 2</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Casey - Computer as collaborator</clip>
+        <clip>Casey - Massive parallel systems</clip>
+        <clip>Casey - Systems theory</clip>
+        <clip>Casey - What is emergence?</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Kyle_CH - Polygons</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Nervous_Jesse - reaction lamp</clip>
+        <clip>Nervous_Jessica - Big 3D printers Long quote</clip>
+        <clip>Nervous_Jessica - Growing buildings</clip>
+        <clip>Nervous_Jessica - RNA and Viruses</clip>
+        <clip>Nervous_Jessica - Science papers</clip>
+        <clip>Paola - mutant ants</clip>
+        <clip>Ramsey - Alan Kay biocomputing</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - DNA and code</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Ramsey - resilient internet</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -2698,9 +2714,65 @@
     <sound>0</sound>
 </system>
 <system name="Colony_QuantumDecoherence">
-    <keywords></keywords>
+    <keywords>biology|biology and code|artificial life|weird</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - DNA computing 2</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - protein folding 1</clip>
+        <clip>Andres - protein folding 2</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Casey - Computer as collaborator</clip>
+        <clip>Casey - Craig Venter</clip>
+        <clip>Casey - Massive parallel systems</clip>
+        <clip>Casey - Systems theory</clip>
+        <clip>Casey - What is emergence?</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Kevin - Biological computation 1</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kyle_CH - Polygons</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Nervous_Jesse - Biology is messy</clip>
+        <clip>Nervous_Jesse - reaction lamp</clip>
+        <clip>Nervous_Jessica - Big 3D printers Long quote</clip>
+        <clip>Nervous_Jessica - Biology</clip>
+        <clip>Nervous_Jessica - Growing buildings</clip>
+        <clip>Nervous_Jessica - RNA and Viruses</clip>
+        <clip>Nervous_Jessica - Science papers</clip>
+        <clip>Nervous_Jessica - biocomputer</clip>
+        <clip>Paola - mutant ants</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - DNA and code</clip>
+        <clip>Ramsey - biology and the internet</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Ramsey - resilient internet</clip>
+        <clip>Shiffman - evolution</clip>
+        <clip>Shiffman - genetic algos 1</clip>
+        <clip>Shiffman - genetic algos 2</clip>
+        <clip>Shiffman - genetics short 2</clip>
+        <clip>Theo - evolution</clip>
+        <clip>Bruce - Gardening 2</clip>
+        <clip>Bruce - Fax machine</clip>
+        <clip>Bruce - Gay sex, not that weird</clip>
+        <clip>Bruce - Age of the universe, really weird</clip>
+        <clip>Golan - kessler</clip>
+        <clip>Golan - laughter</clip>
+        <clip>Golan - kerrington</clip>
+        <clip>Golan - useless, whimsical</clip>
+        <clip>Greg - AI 2</clip>
+        <clip>Greg - object oriented ontology 3</clip>
+        <clip>Higa - only meets pure geeks</clip>
+        <clip>JTNimoy - immersion</clip>
+        <clip>Maeda - Slurpies and pizza</clip>
+        <clip>Maeda - old and new</clip>
+        <clip>Martin - getting weirder</clip>
+        <clip>Martin - lolcats</clip>
+        <clip>Patricio - Dream of eggs</clip>
+        <clip>Sophy - Where&apos;s the best hamburger?</clip>
+        <clip>Sophy - computer dream</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -2730,17 +2802,51 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="Colony_SyntheticBlack">
-    <keywords></keywords>
+    <keywords>biology|biology and code|artificial life|synthetic biology</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - protein folding 1</clip>
+        <clip>Andres - protein folding 2</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Casey - Computer as collaborator</clip>
+        <clip>Casey - Massive parallel systems</clip>
+        <clip>Casey - Systems theory</clip>
+        <clip>Casey - What is emergence?</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Kevin - Biological computation 1</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kyle_CH - Polygons</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Nervous_Jesse - Biology is messy</clip>
+        <clip>Nervous_Jesse - reaction lamp</clip>
+        <clip>Nervous_Jessica - Big 3D printers Long quote</clip>
+        <clip>Nervous_Jessica - Growing buildings</clip>
+        <clip>Nervous_Jessica - RNA and Viruses</clip>
+        <clip>Nervous_Jessica - Science papers</clip>
+        <clip>Paola - mutant ants</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - DNA and code</clip>
+        <clip>Ramsey - biology and the internet</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - resilient internet</clip>
+        <clip>Shiffman - evolution</clip>
+        <clip>Shiffman - genetic algos 2</clip>
+        <clip>Shiffman - genetics short 2</clip>
+        <clip>Theo - evolution</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -2750,7 +2856,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -2840,36 +2946,6 @@
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
-<system name="Connectors_TestingCrap">
-    <keywords>connectivity|internet</keywords>
-    <links></links>
-    <suppressions>
-        <clip>Aaron - different ways of communicating</clip>
-        <clip>Bruce - Everted Cyberspace</clip>
-        <clip>Bruce - relating to history through networks</clip>
-        <clip>Fernanda - had to explain that the web was social</clip>
-        <clip>Kyle_CH - coral reefs</clip>
-        <clip>Kyle_CH - MMORPGs</clip>
-        <clip>Kyle_MC - Julian Oliver</clip>
-        <clip>Lauren - desires to connect</clip>
-        <clip>Marius - Predicting the internet</clip>
-        <clip>Martin - what the world is thinking</clip>
-        <clip>Martin - Are we getting smarter?</clip>
-        <clip>Martin - Are we getting smarter 2</clip>
-        <clip>Martin - Net art</clip>
-        <clip>Martin - short attention span</clip>
-        <clip>Philip - in touch all the time</clip>
-        <clip>Ramsey - biology and the internet</clip>
-        <clip>Ramsey - resilient internet</clip>
-        <clip>Regine - Internet doesn&apos;t change things</clip>
-        <clip>Regine - not everyone wants that</clip>
-    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
@@ -3019,7 +3095,7 @@
         <clip>Vera - Digital life forms</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -3060,7 +3136,7 @@
         <clip>Sophy - Evolution</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -3137,7 +3213,7 @@
         <clip>Theo - magic</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -5977,7 +6053,7 @@
     <sound>0</sound>
 </system>
 <system name="Mandala_JM_AlienFusionReactor2">
-    <keywords>formalism</keywords>
+    <keywords>formalism|weird</keywords>
     <links></links>
     <suppressions>
         <clip>Casey - New modes of expression</clip>
@@ -5997,6 +6073,17 @@
         <clip>Ramsey - arab abstraction 1</clip>
         <clip>Ramsey - arab abstraction 2</clip>
         <clip>Golan - formalism</clip>
+        <clip>Bruce - Fax machine</clip>
+        <clip>Bruce - Gardening 2</clip>
+        <clip>Bruce - Gay sex, not that weird</clip>
+        <clip>Bruce - Age of the universe, really weird</clip>
+        <clip>Higa - only meets pure geeks</clip>
+        <clip>Maeda - Slurpies and pizza</clip>
+        <clip>Martin - getting weirder</clip>
+        <clip>Martin - lolcats</clip>
+        <clip>Patricio - Dream of eggs</clip>
+        <clip>Sophy - techno-fungus</clip>
+        <clip>Sophy - nanobots</clip>
     </suppressions>
     <comments></comments>
     <grade>C</grade>
@@ -14443,7 +14530,37 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Xstatic_BouncingBalls">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Xstatic_Circle">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Xstatic_CloudChamber">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Xstatic_RisingBalls">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -14464,6 +14581,16 @@
     <sound>0</sound>
 </system>
 <system name="Xstatic_StarChurn">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Xstatic_StarColumn">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -14630,7 +14757,7 @@
         <clip>Zach - printshop</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>

@@ -83,6 +83,8 @@
 		8505E49018569A08007FD42D /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8505E48818569A08007FD42D /* CloudsInput.cpp */; };
 		8505E49318569A08007FD42D /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8505E48D18569A08007FD42D /* CloudsInputMouse.cpp */; };
 		8505E49418569A08007FD42D /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8505E48D18569A08007FD42D /* CloudsInputMouse.cpp */; };
+		851A105B187A33FF004197C5 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 851A105A187A33FF004197C5 /* ofxSystemTextbox.mm */; };
+		851A105C187A33FF004197C5 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 851A105A187A33FF004197C5 /* ofxSystemTextbox.mm */; };
 		85398335184D766400B78AFF /* CloudsVisualSystemXstatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85398333184D766400B78AFF /* CloudsVisualSystemXstatic.cpp */; };
 		85398336184D766400B78AFF /* CloudsVisualSystemXstatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85398333184D766400B78AFF /* CloudsVisualSystemXstatic.cpp */; };
 		8539835A184D960000B78AFF /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85398354184D960000B78AFF /* ofxBillboard.cpp */; };
@@ -497,6 +499,8 @@
 		8505E48A18569A08007FD42D /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
 		8505E48D18569A08007FD42D /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
 		8505E48E18569A08007FD42D /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
+		851A1059187A33FF004197C5 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxSystemTextbox.h; path = src/VisualSystemsLibrary/ofxSystemTextbox.h; sourceTree = "<group>"; };
+		851A105A187A33FF004197C5 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ofxSystemTextbox.mm; path = src/VisualSystemsLibrary/ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		85398333184D766400B78AFF /* CloudsVisualSystemXstatic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemXstatic.cpp; sourceTree = "<group>"; };
 		85398334184D766400B78AFF /* CloudsVisualSystemXstatic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemXstatic.h; sourceTree = "<group>"; };
 		8539833E184D960000B78AFF /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -1379,6 +1383,8 @@
 		E7DD71F017DBC08D00AFB2DD /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				851A1059187A33FF004197C5 /* ofxSystemTextbox.h */,
+				851A105A187A33FF004197C5 /* ofxSystemTextbox.mm */,
 				E7DD71F117DBC08D00AFB2DD /* src */,
 			);
 			name = CloudsLibrary;
@@ -1605,6 +1611,7 @@
 				6436E6E81853FA6B0002E5FC /* XParticle.cpp in Sources */,
 				8505E48F18569A08007FD42D /* CloudsInput.cpp in Sources */,
 				8505E49318569A08007FD42D /* CloudsInputMouse.cpp in Sources */,
+				851A105B187A33FF004197C5 /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1692,6 +1699,7 @@
 				6436E6E91853FA6B0002E5FC /* XParticle.cpp in Sources */,
 				8505E49018569A08007FD42D /* CloudsInput.cpp in Sources */,
 				8505E49418569A08007FD42D /* CloudsInputMouse.cpp in Sources */,
+				851A105C187A33FF004197C5 /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

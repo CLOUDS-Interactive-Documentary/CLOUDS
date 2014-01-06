@@ -120,6 +120,7 @@ protected:
     bool bShouldRise, bDidRise;
     
     bool bBounceOffWalls;
+    bool bWrapEdges;
     bool bDrawBox;
 
     float windSpeed;
