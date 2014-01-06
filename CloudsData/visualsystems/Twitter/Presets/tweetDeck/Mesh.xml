@@ -3,7 +3,7 @@
     <Name>Mesh</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>24.000000000</YPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -50,11 +50,6 @@
     <Kind>25</Kind>
     <Name>SYNAPSE LEVEL</Name>
     <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SPRITE SIZE</Name>
-    <Value>25.270936966</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -162,17 +157,77 @@
     <Value>5.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>X POS</Name>
-    <Value>100.000000000</Value>
+    <Kind>17</Kind>
+    <Name>BigSphere1_TwitterOneUser_old.net</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>Y POS</Name>
-    <Value>100.000000000</Value>
+    <Kind>17</Kind>
+    <Name>BigSphere_TwitterOneUser_old.net</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>Z POS</Name>
-    <Value>100.000000000</Value>
+    <Kind>17</Kind>
+    <Name>Circular_Data4Men_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NestedGalaxy2_TwitterMax_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NestedGalaxy3_TwitterMax_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NestedGalaxy_TwitterMax_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NotSimple_Twitter4Men_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>PointyNetwork_4Men_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Simple_Twitter_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Spiky2_TwitterOneuser_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Spiky_TwitterOneUser_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterMax.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterOld.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterOneUserMenCircular_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterOneUserMen_old.net</Name>
+    <Value>0</Value>
 </Widget>

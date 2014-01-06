@@ -4,57 +4,9 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>LNB SAT</WidgetName>
-                <WidgetID>28</WidgetID>
-                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>LNB ALPHA</WidgetName>
-                <WidgetID>32</WidgetID>
-                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>LEB SAT</WidgetName>
-                <WidgetID>37</WidgetID>
-                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>LEB ALPHA</WidgetName>
-                <WidgetID>41</WidgetID>
-                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>LNP BRI</WidgetName>
-                <WidgetID>48</WidgetID>
-                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>LNP SAT</WidgetName>
-                <WidgetID>46</WidgetID>
-                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>LNP ALPHA</WidgetName>
-                <WidgetID>50</WidgetID>
-                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+                <WidgetName>SPRITE SIZE Min</WidgetName>
+                <WidgetID>4</WidgetID>
+                <WidgetCanvasParent>Sprite</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
@@ -69,16 +21,64 @@
         <Mapping>
             <Widget>
                 <WidgetName>LEB BRI</WidgetName>
-                <WidgetID>39</WidgetID>
+                <WidgetID>35</WidgetID>
                 <WidgetCanvasParent>Mesh</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>SPRITE SIZE Min</WidgetName>
-                <WidgetID>4</WidgetID>
-                <WidgetCanvasParent>Sprite</WidgetCanvasParent>
+                <WidgetName>LEB ALPHA</WidgetName>
+                <WidgetID>37</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LNB SAT</WidgetName>
+                <WidgetID>24</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LNB ALPHA</WidgetName>
+                <WidgetID>28</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LEB SAT</WidgetName>
+                <WidgetID>33</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LNP SAT</WidgetName>
+                <WidgetID>42</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LNP BRI</WidgetName>
+                <WidgetID>44</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LNP ALPHA</WidgetName>
+                <WidgetID>46</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
