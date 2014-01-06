@@ -30,8 +30,8 @@ class CloudsStoryEngine {
 	//will send this act instead of generating one when buildAct is called
 	void setCustomAct(CloudsAct* customAct);
 	
-	CloudsAct* buildAct(CloudsRun run, CloudsClip& seed);
-	CloudsAct* buildAct(CloudsRun run, CloudsClip& seed, string topic);
+	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed);
+	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed, string topic, bool playSeed = true);
 	
     void initGui();
     void saveGuiSettings();

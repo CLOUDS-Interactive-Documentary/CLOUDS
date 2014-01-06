@@ -30,7 +30,7 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
-  
+    void selfSetDefaults();
     void selfSetupGui();
     void selfGuiEvent(ofxUIEventArgs &e);
     
@@ -102,8 +102,8 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
     
 	vector<Walker> walkers;
     
-    static float NWalkers;
-    static bool smooth;
+    float NWalkers;
+    bool smooth;
 //    static bool drawTriangles;
     bool shouldRegenerate;
     bool rainbow;

@@ -104,7 +104,7 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 		}
 	}
 	
-	
+	//JG: REMOVE MOUSE CALLS
 	if( bExploreMode && !ofGetMousePressed() && viewport.inside( ofGetMouseX(), ofGetMouseY() ) )
 	{
 //		float mouseScl = .5;
@@ -113,6 +113,7 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 //		float pitchScale = .005;
 		
 		//convert mouse coords in to somethin we can work with
+		//JG: REMOVE MOUSE CALLS
 		float mx = ofMap( ofGetMouseX(), viewport.getLeft(), viewport.getRight(), 1., -1., true );
 		float my = ofMap( ofGetMouseY(), viewport.getTop(), viewport.getBottom(), 1., -1., true );
 		float dist = ofVec2f(mx, my).length();
@@ -144,6 +145,7 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 	{	
 		//convert mouse coords in to somethin we can work with
 		float mx = -1;
+		//JG: REMOVE MOUSE CALLS
 		if(viewport.getLeft() != viewport.getRight()){
 			mx = ofMap( ofGetMouseX(), viewport.getLeft(), viewport.getRight(), -1., 1., true );
 		}
@@ -184,6 +186,7 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 		float invAtt = 1. - orbitVelAttenuation;
 		
 		//mouse input
+		//JG: REMOVE MOUSE CALLS
 		if(dist > deadZone && viewport.inside( ofGetMouseX(), ofGetMouseY() ) )
 		{
 			//the deadzone is an area in the center of the screen where we don't rotate
@@ -409,6 +412,7 @@ void CloudsOrthoCamera::updateRotation(){
 }
 //----------------------------------------
 void CloudsOrthoCamera::updateMouse(){
+	//JG: REMOVE MOUSE CALLS
 	mouse = ofVec2f(ofGetMouseX(), ofGetMouseY());
 	if(viewport.inside(mouse.x, mouse.y) && !bValidClick && ofGetMousePressed()){
 		unsigned long curTap = ofGetElapsedTimeMillis();

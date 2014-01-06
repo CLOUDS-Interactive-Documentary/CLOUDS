@@ -46,6 +46,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 
     void clearQuestions();
     bool isQuestionSelectedAndClipDone();
+	bool isQuestionSelected();
     CloudsQuestion* getSelectedQuestion();
     
 //    ofxFTGLFont captionFont;

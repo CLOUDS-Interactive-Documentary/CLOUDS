@@ -20,11 +20,12 @@ CloudsTransitionController::CloudsTransitionController(){
 	fadeOutStates.push_back(TRANSITION_VISUALSYSTEM_OUT);
 	fadeOutStates.push_back(TRANSITION_INTRO_OUT);
     fadeOutStates.push_back(TRANSITION_CLUSTERMAP_OUT);
+	fadeOutStates.push_back(TRANSITION_QUESTION_OUT);
 	
 	fadeInStates.push_back(TRANSITION_VISUALSYSTEM_IN);
 	fadeInStates.push_back(TRANSITION_INTERVIEW_IN);
     fadeInStates.push_back(TRANSITION_CLUSTERMAP_IN);
-
+	fadeInStates.push_back(TRANSITION_QUESTION_IN);
 }
 
 void CloudsTransitionController::confirmEmpty(){
@@ -109,7 +110,6 @@ void CloudsTransitionController::transitionToClusterMap(float inDuration,float o
 }
 
 void CloudsTransitionController::transitionFromClusterMap(float inDuration){
-	//TODO:!!!
 
     confirmEmpty();
 
@@ -118,9 +118,10 @@ void CloudsTransitionController::transitionFromClusterMap(float inDuration){
     startTransition();
 
     cout<<"IM TRANSITIONING OUT OF CLUSTER MAP"<<endl;
-    //See if we are playing a VS or Clip?
-    //Queue the state
-    //start transition
+}
+
+void CloudsTransitionController::transitionToQuestion(float outDuration, float portalDuration, float inDuration){
+	//TODO:
 }
 
 void CloudsTransitionController::startTransition(){
@@ -252,7 +253,6 @@ string CloudsTransitionController::getStateDescription(CloudsTransitionState sta
             return "TransitionClusterIn";
         case TRANSITION_CLUSTERMAP_OUT:
             return "TransitionClusterOut";
-			
 		default:
 			return "UNKNOWN STATE " + ofToString(int(currentState));
 	}

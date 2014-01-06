@@ -10,6 +10,7 @@
 
 void CloudsRun::actBegan(CloudsActEventArgs &args){
     actCount++;
+	cout << "ACT COUNT IS NOW: " << actCount << endl;
 }
 
 void CloudsRun::actEnded(CloudsActEventArgs &args){
@@ -18,15 +19,6 @@ void CloudsRun::actEnded(CloudsActEventArgs &args){
 
 void CloudsRun::clipBegan(CloudsClipEventArgs &args){
     
-//    for(int i=0; i< clipHistory.size(); i++){
-//        if( clipHistory[i].getLinkName() == args.chosenClip.getLinkName() ){
-//            break;
-//        }
-//        else if( i == clipHistory.size() -1){
-//          clipHistory.push_back(args.chosenClip);
-//        }
-//    }
-	
 	cout << "CloudsRun::clipBegan ADDING CLIP TO HISTORY " << args.chosenClip.getLinkName() << endl;
 
 	clipHistory.push_back(args.chosenClip);
@@ -56,7 +48,6 @@ void CloudsRun::topicChanged(CloudsTopicEventArgs& args){
     if(! ofContains(topicHistory, args.topic)){
         topicHistory.push_back(args.topic);
     }
-    
 }
 
 void CloudsRun::preRollRequested(CloudsPreRollEventArgs& args){

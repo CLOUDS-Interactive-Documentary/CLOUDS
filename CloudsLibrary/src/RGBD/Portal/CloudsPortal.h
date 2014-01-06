@@ -9,22 +9,37 @@
 
 #pragma once
 
+#include "ofxFTGL.h"
+#include "CloudsClip.h"
 #include "CloudsPortalRing.h"
 
 class CloudsPortal {
   public:
+	static void reloadShader();
+    static ofShader shader;
+    
 	CloudsPortal();
 	~CloudsPortal();	
 	
 	void setup();
 	void update();
 	void draw();
-	
-	bool hovering;
+    void drawOverlay(bool anchorToScreen = false);
+    
+    CloudsClip clip; //must have a question
+	string topic;
+	string question;
+    
+    void startHovering();
+	void stopHovering();
+    bool hovering;
 	float hoverStartTime;
 	
-	bool selected;
+	bool isSelected();
+    bool selected;
 	float selectedTime;
+    
+    float charsPerSecond;
 
 	//GUI VARIABLES
 	float ringSegments;
@@ -36,17 +51,16 @@ class CloudsPortal {
 	
 	float minSelectDistance;
 	float maxHoverTime;
-	
-	//GUI VARIABLES
-	
+		
 	float hoverPercentComplete;
 	ofVec3f hoverPosition;
 	ofVec2f screenPosition;//filled out on update
+    
+    float scale;
 	
 	ofCamera* cam;
-	void reloadShader();
-	
-	ofShader portalShader;
+	ofxFTGLSimpleLayout* font;
+
 	vector<CloudsPortalRing> rings;
 	void toggleFakeSelection();
 	ofVboMesh portalGeo;
