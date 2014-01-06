@@ -101,7 +101,7 @@ void CloudsPortal::draw(){
 	ofPushStyle();
 	ofPushMatrix();
     ofTranslate(hoverPosition);
-    ofScale(0.1, 0.1, 0.1);
+    ofScale(scale, scale, scale);
 	ofEnableAlphaBlending();
 //	shader.begin();
 	shader.setUniform1f("rotate", ofGetElapsedTimef()*2.);

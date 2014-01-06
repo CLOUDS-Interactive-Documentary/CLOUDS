@@ -55,6 +55,8 @@ class CloudsPortal {
 	float hoverPercentComplete;
 	ofVec3f hoverPosition;
 	ofVec2f screenPosition;//filled out on update
+    
+    float scale;
 	
 	ofCamera* cam;
 	ofxFTGLSimpleLayout* font;

@@ -90,7 +90,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float questionTugMinDepth;
 	float questionTugMinDistance;
 	float questionTugMaxDistance;
-	float questionSize;
+	float questionScale;
 	float questionTunnelInnerRadius;
 	
 	bool startedOnclick;

@@ -36,6 +36,7 @@ string CloudsIntroSequence::getSystemName(){
 void CloudsIntroSequence::selfSetup(){
     
     // Set question defaults.
+    questionScale = 0.1f;
     questionFontSize = 12;
     questionLineLength = 300.0f;
     questionLineSpacing = 1.0f;
@@ -133,7 +134,7 @@ void CloudsIntroSequence::selfUpdate(){
 	
 	for(int i = 0; i < startQuestions.size(); i++){
 		
-//		startQuestions[i].radius = questionSize;
+		startQuestions[i].scale = questionScale;
 		startQuestions[i].update();
 		
 		if(startQuestions[i].hoverPosition.z < warpCamera.getPosition().z){
@@ -624,7 +625,7 @@ void CloudsIntroSequence::selfSetupGuis(){
 	questionGui->setName("Questions");
 	questionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	questionGui->addSlider("Size", 1, 5, &questionSize);
+	questionGui->addSlider("Scale", 0, 1, &questionScale);
 	questionGui->addSlider("Wrap Distance", 100, 4000, &questionWrapDistance);
 	questionGui->addSlider("Inner Radius", 2, 20, &questionTunnelInnerRadius);
 	questionGui->addSlider("Tug Min Distance", 10, 300, &questionTugMinDistance);
