@@ -4,18 +4,18 @@ Trial version             Type RAR -? for help
 
 Evaluation copy. Please register.
 
-Creating archive VerletForm06-Jan-1435825.rar
+Creating archive VerletForm06-Jan-14105825.rar
 
-Adding    VerletForm06-Jan-1435825\log.txt                                 2%  OK 
-Adding    VerletForm06-Jan-1435825\VerletForm06-Jan-1435825\log.txt        5%  OK 
-Adding    VerletForm06-Jan-1435825\vs_src\CloudsVisualSystemVerletForm.cpp      89%  OK 
-Adding    VerletForm06-Jan-1435825\vs_src\CloudsVisualSystemVerletForm.h     100%  OK 
-Adding    VerletForm06-Jan-1435825\VerletForm06-Jan-1435825                OK 
-Adding    VerletForm06-Jan-1435825\vs_src                                  OK 
-Deleting VerletForm06-Jan-1435825\vs_src\CloudsVisualSystemVerletForm.h    deleted
-Deleting VerletForm06-Jan-1435825\vs_src\CloudsVisualSystemVerletForm.cpp    deleted
-Deleting directory VerletForm06-Jan-1435825\vs_src    deleted
-Deleting VerletForm06-Jan-1435825\VerletForm06-Jan-1435825\log.txt    deleted
-Deleting directory VerletForm06-Jan-1435825\VerletForm06-Jan-1435825    deleted
-Deleting VerletForm06-Jan-1435825\log.txt    deleted
+Adding    VerletForm06-Jan-14105825\log.txt                                2%  OK 
+Adding    VerletForm06-Jan-14105825\VerletForm06-Jan-14105825\log.txt       5%  OK 
+Adding    VerletForm06-Jan-14105825\vs_src\CloudsVisualSystemVerletForm.cpp      89%  OK 
+Adding    VerletForm06-Jan-14105825\vs_src\CloudsVisualSystemVerletForm.h     100%  OK 
+Adding    VerletForm06-Jan-14105825\VerletForm06-Jan-14105825              OK 
+Adding    VerletForm06-Jan-14105825\vs_src                                 OK 
+Deleting VerletForm06-Jan-14105825\vs_src\CloudsVisualSystemVerletForm.h    deleted
+Deleting VerletForm06-Jan-14105825\vs_src\CloudsVisualSystemVerletForm.cpp    deleted
+Deleting directory VerletForm06-Jan-14105825\vs_src    deleted
+Deleting VerletForm06-Jan-14105825\VerletForm06-Jan-14105825\log.txt    deleted
+Deleting directory VerletForm06-Jan-14105825\VerletForm06-Jan-14105825    deleted
+Deleting VerletForm06-Jan-14105825\log.txt    deleted
 Done
