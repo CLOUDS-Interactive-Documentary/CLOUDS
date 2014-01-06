@@ -77,8 +77,8 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     synapseColorHSV  = ofFloatColor(0,0,0);
     nodeBaseColorHSV  = ofFloatColor(0,0,0);
     nodePopColorHSV  = ofFloatColor(0,0,0);
-    textColorHSV = ofFloatColor(0,0,0);
-    tweetDeckColorHSV  = ofFloatColor(0,0,0);
+    textColorHSV = ofFloatColor(128,128,128);
+    tweetDeckColorHSV  = ofFloatColor(128,128,128);
 
     
 //    ofEnableSmoothing();
@@ -105,8 +105,8 @@ void CloudsVisualSystemTwitter::selfSetup()
     for (int i = 0; i < meshDir.size(); i++) {
         meshStrings.push_back(meshDir.getName(i));
     }
-    currentMeshIndex = 7;
-    initSystem(getVisualSystemDataPath() +"graphs/"+meshStrings[7]);
+    currentMeshIndex = 8;
+    initSystem(getVisualSystemDataPath() +"graphs/"+meshStrings[currentMeshIndex]);
 //    initSystem(getVisualSystemDataPath() +"graphs/NotSimple_Twitter4Men_new.net");
     reloadShaders();
 }
@@ -457,7 +457,8 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
             int id = ofToInt(components[0]);
             //428 4 8 9 11 15 17 18
             Tweeter& tweeter = getTweeterByID(id);
-            if(tweeter.ID > 0){
+            if(tweeter.name != " "){
+            //            if(tweeter.ID > 0){
                 for(int i =1; i< components.size()-1; i++){
                     if(tweeter.ID != ofToInt(components[i]) ){
                         tweeter.linksById.push_back(ofToInt(components[i]));
@@ -584,8 +585,11 @@ void CloudsVisualSystemTwitter::updateActiveTweeters(int index){
         if(!tweeters[i].hasTweetOnDate(currentDate)){
 			continue;
 		}
+        
+        if(tweeters[i].position != ofVec3f(-1,-1,-1)){
+                activeTweeters.push_back(&tweeters[i]);
+        }
 
-		activeTweeters.push_back(&tweeters[i]);
 
     }
     
@@ -701,7 +705,7 @@ void CloudsVisualSystemTwitter::addUsersFromMentions(ofVec2f& curActivityMapCoor
     map<string,int>::iterator it;
     for(it = numberOfMentions.begin() ; it != numberOfMentions.end() ; it++){
         //Filter mentioned users by times mentioned
-        if(it->second > minUserMentions){
+//        if(it->second > minUserMentions){
             Tweeter cur = Tweeter(it->first, tweeters.size());
             cur.activityMapCoord = curActivityMapCoord;
             curActivityMapCoord.x++;
@@ -710,7 +714,7 @@ void CloudsVisualSystemTwitter::addUsersFromMentions(ofVec2f& curActivityMapCoor
                 curActivityMapCoord.y++;
             }
             tweeters.push_back(cur);
-        }
+//        }
     }
 }
 
@@ -844,7 +848,8 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     
     vector<string> strs =ofSplitString(filePath, "_");
     vector<string> strs1 =ofSplitString(filePath, "/");
-    cout<<strs1[strs1.size()-1]<<endl;
+    cout<<strs1[strs1.size()-1]<<" num user mentions = "<<strs[1] <<endl;
+//    minUserMentions = ofToInt(strs[1]);
     float startTime = ofGetElapsedTimeMillis();
     currentMeshFilePath = filePath;
     clearData();
@@ -1108,7 +1113,12 @@ void CloudsVisualSystemTwitter::selfDraw()
     if(bRenderText){
         for(int i = 0; i < activeTweeters.size(); i++){
 //            activeTweeters[i]->textDecayRate *= edgeDecayRate;
-            drawText(activeTweeters[i]->name,activeTweeters[i]->position,activeTweeters[i]->textDecayRate);
+//            string test  = " : " + ofToString(activeTweeters[i]->position);
+//            drawText(test,activeTweeters[i]->position,activeTweeters[i]->textDecayRate);
+            if(activeTweeters[i]->position != ofVec3f(-1,-1,-1)){
+                drawText(activeTweeters[i]->name,activeTweeters[i]->position,activeTweeters[i]->textDecayRate);                
+            }
+
         }
         
         if (bStaticNameDraw) {
