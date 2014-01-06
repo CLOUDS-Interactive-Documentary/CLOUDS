@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>text</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>-40.000000000</XPosition>
-    <YPosition>57.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>47.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>RENDER TEXT</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>T BRI</Name>
-    <Value>0.000000000</Value>
+    <Value>0.921465814</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -38,17 +38,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>T HUE</Name>
-    <Value>0.000000000</Value>
+    <Value>128.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>T SAT</Name>
-    <Value>0.000000000</Value>
+    <Value>128.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>T BRI</Name>
-    <Value>0.000000000</Value>
+    <Value>128.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -63,5 +63,5 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SET SIZE</Name>
-    <Value>25.690149307</Value>
+    <Value>41.930046082</Value>
 </Widget>

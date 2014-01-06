@@ -102,6 +102,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>stars2</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>tweetDeck</Name>
     <Value>0</Value>
 </Widget>
@@ -109,9 +114,4 @@
     <Kind>2</Kind>
     <Name>TweetDeck_NameCloud_Lines</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>stars2</Name>
-    <Value>1</Value>
 </Widget>
