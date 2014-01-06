@@ -1,14 +1,19 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>text</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>275.000000000</XPosition>
-    <YPosition>93.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>-2.000000000</XPosition>
+    <YPosition>48.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>RENDER TEXT</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW SPEAKER NAMES </Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -33,17 +38,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>T HUE</Name>
-    <Value>1.000000000</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>T SAT</Name>
-    <Value>1.000000000</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>T BRI</Name>
-    <Value>1.000000000</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -53,10 +58,10 @@
 <Widget>
     <Kind>25</Kind>
     <Name>STRING WIDTH</Name>
-    <Value>769.088684082</Value>
+    <Value>1379.620727539</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SET SIZE</Name>
-    <Value>100.000000000</Value>
+    <Value>78.838912964</Value>
 </Widget>

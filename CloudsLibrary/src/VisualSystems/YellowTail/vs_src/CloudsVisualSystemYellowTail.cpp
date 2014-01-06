@@ -250,7 +250,7 @@ void CloudsVisualSystemYellowTail::selfInteractionDragged(CloudsInteractionEvent
     map<int,Gesture *>::iterator G = gestureForTouch.find(touchId);
 	//JG removed asserts as they are a stability problem
 //    assert(G != gestureForTouch.end());
-	if(G != gestureForTouch.end()){
+	if(G == gestureForTouch.end()){
 		return;
 	}
     Gesture *gesture = G->second;
@@ -273,7 +273,7 @@ void CloudsVisualSystemYellowTail::selfInteractionEnded(CloudsInteractionEventAr
     map<int,Gesture *>::iterator G = gestureForTouch.find(touchId);
     	//JG removed asserts as they are a stability problem
 	//assert(G != gestureForTouch.end());
-	if(G != gestureForTouch.end()){
+	if(G == gestureForTouch.end()){
 		return;
 	}
     

@@ -176,6 +176,7 @@ void CloudsVisualSystemExampleMPMFluid::selfUpdate()
     else {
         fluid.bDoMouse = false;
         fluid.bDoObstacles = true;
+		//JG: REMOVE MOUSE INTERACTION?
         obstacle->cx = (float)ofGetMouseX()/scaleFactor;
         obstacle->cy = (float)ofGetMouseY()/scaleFactor;
         obstacle->radius = obstacleSize;

@@ -62,6 +62,9 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 		ofRemoveListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
 		ofRemoveListener(storyEngine.getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
 	
+		ofRemoveListener(ofEvents().update, this, &CloudsPlaybackController::update);
+		ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+
 	}
 	clearAct();
 }
@@ -100,15 +103,11 @@ void CloudsPlaybackController::setup(){
 		
 		eventsRegistered = true;
 		
-		ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
-		ofRemoveListener(ofEvents().update, this, &CloudsPlaybackController::update);
-
 		ofAddListener(ofEvents().update, this, &CloudsPlaybackController::update);
 		ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
 		
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
-		
 		
 		rgbdVisualSystem = ofPtr<CloudsVisualSystemRGBD>( new CloudsVisualSystemRGBD() );
 		rgbdVisualSystem->setup();
@@ -127,7 +126,6 @@ void CloudsPlaybackController::setup(){
 		currentVisualSystem = introSequence;
 		
 		hud.setup();
-		
 	}
 	
 	//////////////SHOW INTRO
@@ -151,7 +149,6 @@ void CloudsPlaybackController::setup(){
 	//////////////SHOW INTRO
 	
 	showIntro( startingNodes );
-
 }
 
 //--------------------------------------------------------------------
@@ -302,7 +299,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 
 	////////////////////
 	// RGBD SYSTEM
-	if(rgbdVisualSystem->isQuestionSelectedAndClipDone()){
+//	if(rgbdVisualSystem->isQuestionSelectedAndClipDone()){
+	if(rgbdVisualSystem->isQuestionSelected()){	
+		
 		CloudsQuestion* q = rgbdVisualSystem->getSelectedQuestion();
 		CloudsClip clip = q->clip;
 		string topic = q->topic;
@@ -313,6 +312,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		
 		rgbdVisualSystem->stopSystem();
 		run.questionTopicHistory.insert(topic);
+		
 		storyEngine.buildAct(run, clip, topic);
 	}
 	

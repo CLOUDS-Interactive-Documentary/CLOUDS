@@ -156,7 +156,7 @@ void CloudsIntroSequence::selfUpdate(){
 //			float distanceToQuestion = getOculusRift().distanceFromMouse(startQuestions[i].hoverPosition);
 //			cout << "Distance " << distanceToQuestion << endl;
 #else
-			ofVec2f mouseNode(ofGetMouseX(),ofGetMouseY());			
+			ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
 			float distanceToQuestion = startQuestions[i].screenPosition.distance(mouseNode);
 #endif
 			if(caughtQuestion == NULL){
@@ -171,7 +171,7 @@ void CloudsIntroSequence::selfUpdate(){
 			//we have a caught question make sure it's still close
 			else if(caughtQuestion == &startQuestions[i]){
 				startQuestions[i].hoverPosition.z += cameraForwardSpeed;
-				if( caughtQuestion->isSelected() && ofGetMousePressed()){
+				if( caughtQuestion->isSelected() /* && ofGetMousePressed() */){
 					selectedQuestion = caughtQuestion;
 				}
 				else if(distanceToQuestion > questionTugMinDistance){
@@ -191,8 +191,8 @@ void CloudsIntroSequence::selfUpdate(){
 	}
 	
 	titleRect = ofRectangle(0,0,titleRectWidth*ofGetWidth(),titleRectHeight*ofGetHeight());
-	titleRect.alignTo( ofPoint(ofGetWidth()/2,ofGetHeight()/2) );
-	hoveringTitle = titleRect.inside(ofGetMouseX(), ofGetMouseY());
+	titleRect.alignTo( ofPoint(getCanvasWidth()/2, getCanvasHeight()/2) );
+	hoveringTitle = titleRect.inside(GetCloudsInputX(), GetCloudsInputY());
 	
 //	cout << "title rect is " << titleRect.getTopLeft() << " " << titleRect.getBottomLeft() << endl;
 //	cout << "hovering? " << (hoveringTitle ? "YES" : "NO" ) << endl;
