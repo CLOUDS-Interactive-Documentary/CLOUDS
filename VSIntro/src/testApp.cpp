@@ -6,6 +6,7 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	
 	//////////////SHOW INTRO
+    parser.loadFromFiles();
 	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
 	//safe guard delete any starters that don't have questions
 	for(int i = startingNodes.size()-1; i >= 0; i--){
