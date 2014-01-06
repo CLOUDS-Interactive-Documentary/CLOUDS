@@ -1,4 +1,5 @@
 #include "testApp.h"
+#include "CloudsInput.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -24,16 +25,19 @@ void testApp::update(){
     float gazeDist = ofDist(screenPos.x, screenPos.y,
                             viewport.getCenter().x, viewport.getCenter().y);
     if (gazeDist < portal.minSelectDistance) {
-        if(!portal.hovering){
-            portal.hoverStartTime = ofGetElapsedTimef();
-        }
-        portal.hovering = true;
-        portal.hoverPercentComplete = ofClamp((ofGetElapsedTimef() - portal.hoverStartTime) / portal.maxHoverTime, 0,1.0);
+        portal.startHovering();
     }
     else{
-        portal.hovering = false;
-        portal.hoverPercentComplete = 0;
+        portal.stopHovering();
     }
+#else
+    if(portal.screenPosition.distance( ofVec2f(GetCloudsInputX(),GetCloudsInputY())) < portal.minSelectDistance ){
+        portal.startHovering();
+    }
+    else{
+        portal.stopHovering();
+    }
+
 #endif
 }
 

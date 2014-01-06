@@ -10,6 +10,10 @@
 		1892A3561878B5F100B4B474 /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1892A2A51878B5F000B4B474 /* opencv.a */; };
 		1892A3571878B5F100B4B474 /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1892A2A51878B5F000B4B474 /* opencv.a */; };
 		3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
+		64323E88187A4DAE00316058 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64323E84187A4DAE00316058 /* CloudsPortal.cpp */; };
+		64323E89187A4DAE00316058 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64323E84187A4DAE00316058 /* CloudsPortal.cpp */; };
+		64323E8A187A4DAE00316058 /* CloudsPortalRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */; };
+		64323E8B187A4DAE00316058 /* CloudsPortalRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		C1644D3F186F92020024E091 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1644D17186F92020024E091 /* json_reader.cpp */; };
 		C1644D40186F92020024E091 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1644D17186F92020024E091 /* json_reader.cpp */; };
@@ -1200,6 +1204,10 @@
 		1892A2A51878B5F000B4B474 /* opencv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = opencv.a; sourceTree = "<group>"; };
 		3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
 		3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
+		64323E84187A4DAE00316058 /* CloudsPortal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortal.cpp; sourceTree = "<group>"; };
+		64323E85187A4DAE00316058 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortal.h; sourceTree = "<group>"; };
+		64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortalRing.cpp; sourceTree = "<group>"; };
+		64323E87187A4DAE00316058 /* CloudsPortalRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortalRing.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		C1644CBB186F92010024E091 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C1644D0B186F92020024E091 /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autolink.h; sourceTree = "<group>"; };
@@ -2809,6 +2817,17 @@
 				3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		64323E83187A4DAE00316058 /* Portal */ = {
+			isa = PBXGroup;
+			children = (
+				64323E84187A4DAE00316058 /* CloudsPortal.cpp */,
+				64323E85187A4DAE00316058 /* CloudsPortal.h */,
+				64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */,
+				64323E87187A4DAE00316058 /* CloudsPortalRing.h */,
+			);
+			path = Portal;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
@@ -5455,8 +5474,9 @@
 		E7637D5E1734DE8A008ADC62 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
-				E7637D601734DE8A008ADC62 /* CloudsPlaybackController.h */,
-				E7637D5F1734DE8A008ADC62 /* CloudsPlaybackController.cpp */,
+				E7FEFC771873BB61009533A7 /* HUD */,
+				E7402E93178F459000FEABED /* GPUParticles */,
+				64323E83187A4DAE00316058 /* Portal */,
 				E700BC3C18768EA6003A8167 /* CloudsTransitionController.h */,
 				E700BC3B18768EA6003A8167 /* CloudsTransitionController.cpp */,
 				E7F7773F177394CD0096AEF7 /* CloudsVisualSystemRGBD.h */,
@@ -7576,6 +7596,8 @@
 				E79EADBC1878829E00B8B8F0 /* CloudsVisualSystemProcess18.cpp in Sources */,
 				E79EADBE1878829E00B8B8F0 /* E5.cpp in Sources */,
 				E7FA0B801879FBF7002477DF /* ofxSystemTextbox.mm in Sources */,
+				64323E88187A4DAE00316058 /* CloudsPortal.cpp in Sources */,
+				64323E8A187A4DAE00316058 /* CloudsPortalRing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8084,6 +8106,8 @@
 				E79EADBD1878829E00B8B8F0 /* CloudsVisualSystemProcess18.cpp in Sources */,
 				E79EADBF1878829E00B8B8F0 /* E5.cpp in Sources */,
 				E7FA0B811879FBF7002477DF /* ofxSystemTextbox.mm in Sources */,
+				64323E89187A4DAE00316058 /* CloudsPortal.cpp in Sources */,
+				64323E8B187A4DAE00316058 /* CloudsPortalRing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
