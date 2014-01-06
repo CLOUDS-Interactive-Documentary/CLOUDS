@@ -412,7 +412,8 @@ void CloudsPlaybackController::updateTransition(){
             case TRANSITION_IDLE:
                 
                 if(transitionController.getPreviousState() == TRANSITION_INTRO_OUT){
-                    CloudsQuestion* q = introSequence->getSelectedQuestion();
+//                    CloudsQuestion* q = introSequence->getSelectedQuestion();
+					CloudsPortal* q = introSequence->getSelectedQuestion();
                     CloudsClip& clip = q->clip;
 					
 					run.questionTopicHistory.insert(q->topic);
