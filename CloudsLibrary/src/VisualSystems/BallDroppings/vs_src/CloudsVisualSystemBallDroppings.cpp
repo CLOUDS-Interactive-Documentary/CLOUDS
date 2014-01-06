@@ -304,6 +304,7 @@ void CloudsVisualSystemBallDroppings::selfMouseReleased(ofMouseEventArgs& data)
 	} else {
 		if ( sqrt(xd*xd+yd*yd) > 10 ){//10 is the mouse drag movement margin for nondraggers
             ofMouseEventArgs args;
+			//JG: REMOVE MOUSE CALLS
             args.x = ofGetMouseX();
             args.y = ofGetMouseY();
             args.button = 0;
@@ -594,6 +595,7 @@ void CloudsVisualSystemBallDroppings::updateClosestPickingLine(){
 		closestLineVertex = closeLV;
 		closestLineDistance = closeDist;
 	} else {
+		//JG: REMOVE MOUSE INTERACTION
 		//set vertex to mouse position.
 		if(closestLineVertex==0){//which side of the line?
 			closestLine->set1(ofGetMouseX(),ofGetMouseY());

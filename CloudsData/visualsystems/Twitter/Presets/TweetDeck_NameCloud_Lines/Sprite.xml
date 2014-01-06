@@ -3,7 +3,7 @@
     <Name>Sprite</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <YPosition>24.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,12 +13,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SPRITE SIZE Min</Name>
-    <Value>12.195246696</Value>
+    <Value>8.025186539</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SPRITE SIZE max</Name>
-    <Value>79.390495300</Value>
+    <Value>47.401741028</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

@@ -3,7 +3,7 @@
     <Name>Mesh</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>24.000000000</YPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -53,11 +53,6 @@
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>SPRITE SIZE</Name>
-    <Value>25.270936966</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
     <Name>LNB HUE</Name>
     <Value>0.596858621</Value>
 </Widget>
@@ -74,7 +69,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNB ALPHA</Name>
-    <Value>0.283852398</Value>
+    <Value>0.373026669</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -89,12 +84,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LEB BRI</Name>
-    <Value>0.574999988</Value>
+    <Value>0.447871387</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LEB ALPHA</Name>
-    <Value>0.127099648</Value>
+    <Value>0.125711560</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -109,12 +104,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNP BRI</Name>
-    <Value>0.387623608</Value>
+    <Value>0.226473272</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LNP ALPHA</Name>
-    <Value>0.078469917</Value>
+    <Value>0.095538333</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -162,17 +157,77 @@
     <Value>2.950738907</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>X POS</Name>
-    <Value>45.246303558</Value>
+    <Kind>17</Kind>
+    <Name>BigSphere1_TwitterOneUser_old.net</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>Y POS</Name>
-    <Value>42.788177490</Value>
+    <Kind>17</Kind>
+    <Name>BigSphere_TwitterOneUser_old.net</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>Z POS</Name>
-    <Value>45.246303558</Value>
+    <Kind>17</Kind>
+    <Name>Circular_Data4Men_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NestedGalaxy2_TwitterMax_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NestedGalaxy3_TwitterMax_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NestedGalaxy_TwitterMax_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NotSimple_Twitter4Men_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>PointyNetwork_4Men_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Simple_Twitter_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Spiky2_TwitterOneuser_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Spiky_TwitterOneUser_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterMax.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterOld.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterOneUserMenCircular_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterOneUserMen_old.net</Name>
+    <Value>0</Value>
 </Widget>
