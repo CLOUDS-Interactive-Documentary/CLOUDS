@@ -431,6 +431,8 @@
 		E7156FA318106F1B00410646 /* ofxBox2dJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F5318106F1B00410646 /* ofxBox2dJoint.cpp */; };
 		E7156FA418106F1B00410646 /* ofxBox2dPolygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F5518106F1B00410646 /* ofxBox2dPolygon.cpp */; };
 		E7156FA518106F1B00410646 /* ofxBox2dRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F5818106F1B00410646 /* ofxBox2dRect.cpp */; };
+		E7167103187A7A700047B7DC /* CloudsPlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7167101187A7A700047B7DC /* CloudsPlaybackController.cpp */; };
+		E7167104187A7A700047B7DC /* CloudsPlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7167101187A7A700047B7DC /* CloudsPlaybackController.cpp */; };
 		E7176E2B17D3C07500C8DC38 /* CloudsRun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2917D3C07500C8DC38 /* CloudsRun.cpp */; };
 		E730A4C617DCC5520088335A /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4BE17DCC5520088335A /* Delaunay.cpp */; };
 		E730A4C717DCC5520088335A /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4C217DCC5520088335A /* ofxDelaunay.cpp */; };
@@ -491,7 +493,6 @@
 		E7637D4D1734DE68008ADC62 /* CloudsFCPParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D441734DE68008ADC62 /* CloudsFCPParser.cpp */; };
 		E7637D4F1734DE68008ADC62 /* CloudsLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D481734DE68008ADC62 /* CloudsLink.cpp */; };
 		E7637D501734DE68008ADC62 /* CloudsStoryEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D4A1734DE68008ADC62 /* CloudsStoryEngine.cpp */; };
-		E7637D651734DE8A008ADC62 /* CloudsPlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D5F1734DE8A008ADC62 /* CloudsPlaybackController.cpp */; };
 		E779BD98173D4EFD006357EF /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = E779BD24173D4EFD006357EF /* kiss_fft.c */; };
 		E779BD99173D4EFD006357EF /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = E779BD25173D4EFD006357EF /* kiss_fftr.c */; };
 		E779BD9A173D4EFD006357EF /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD28173D4EFD006357EF /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
@@ -832,7 +833,6 @@
 		E7FB24D71830D4C0009EBD0E /* CloudsFCPParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D441734DE68008ADC62 /* CloudsFCPParser.cpp */; };
 		E7FB24D81830D4C0009EBD0E /* CloudsLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D481734DE68008ADC62 /* CloudsLink.cpp */; };
 		E7FB24D91830D4C0009EBD0E /* CloudsStoryEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D4A1734DE68008ADC62 /* CloudsStoryEngine.cpp */; };
-		E7FB24DA1830D4C0009EBD0E /* CloudsPlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D5F1734DE8A008ADC62 /* CloudsPlaybackController.cpp */; };
 		E7FB24DB1830D4C0009EBD0E /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = E779BD24173D4EFD006357EF /* kiss_fft.c */; };
 		E7FB24DC1830D4C0009EBD0E /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = E779BD25173D4EFD006357EF /* kiss_fftr.c */; };
 		E7FB24DD1830D4C0009EBD0E /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD28173D4EFD006357EF /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
@@ -1714,6 +1714,8 @@
 		E7156F5918106F1B00410646 /* ofxBox2dRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBox2dRect.h; sourceTree = "<group>"; };
 		E7156F5A18106F1B00410646 /* ofxBox2dRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBox2dRender.h; sourceTree = "<group>"; };
 		E7156F5B18106F1B00410646 /* ofxBox2dUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBox2dUtils.h; sourceTree = "<group>"; };
+		E7167101187A7A700047B7DC /* CloudsPlaybackController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPlaybackController.cpp; sourceTree = "<group>"; };
+		E7167102187A7A700047B7DC /* CloudsPlaybackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPlaybackController.h; sourceTree = "<group>"; };
 		E7176E2917D3C07500C8DC38 /* CloudsRun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRun.cpp; sourceTree = "<group>"; };
 		E7176E2A17D3C07500C8DC38 /* CloudsRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRun.h; sourceTree = "<group>"; };
 		E730A4BE17DCC5520088335A /* Delaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Delaunay.cpp; sourceTree = "<group>"; };
@@ -1835,8 +1837,6 @@
 		E7637D491734DE68008ADC62 /* CloudsLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsLink.h; sourceTree = "<group>"; };
 		E7637D4A1734DE68008ADC62 /* CloudsStoryEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsStoryEngine.cpp; sourceTree = "<group>"; };
 		E7637D4B1734DE68008ADC62 /* CloudsStoryEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsStoryEngine.h; sourceTree = "<group>"; };
-		E7637D5F1734DE8A008ADC62 /* CloudsPlaybackController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPlaybackController.cpp; sourceTree = "<group>"; };
-		E7637D601734DE8A008ADC62 /* CloudsPlaybackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPlaybackController.h; sourceTree = "<group>"; };
 		E7637FDD17359DF5008ADC62 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		E7637FDE17359DF5008ADC62 /* ofxUI2DGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DGraph.h; sourceTree = "<group>"; };
 		E7637FDF17359DF5008ADC62 /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -2822,8 +2822,8 @@
 		64323E83187A4DAE00316058 /* Portal */ = {
 			isa = PBXGroup;
 			children = (
-				64323E84187A4DAE00316058 /* CloudsPortal.cpp */,
 				64323E85187A4DAE00316058 /* CloudsPortal.h */,
+				64323E84187A4DAE00316058 /* CloudsPortal.cpp */,
 				64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */,
 				64323E87187A4DAE00316058 /* CloudsPortalRing.h */,
 			);
@@ -5477,6 +5477,8 @@
 				E7FEFC771873BB61009533A7 /* HUD */,
 				E7402E93178F459000FEABED /* GPUParticles */,
 				64323E83187A4DAE00316058 /* Portal */,
+				E7167102187A7A700047B7DC /* CloudsPlaybackController.h */,
+				E7167101187A7A700047B7DC /* CloudsPlaybackController.cpp */,
 				E700BC3C18768EA6003A8167 /* CloudsTransitionController.h */,
 				E700BC3B18768EA6003A8167 /* CloudsTransitionController.cpp */,
 				E7F7773F177394CD0096AEF7 /* CloudsVisualSystemRGBD.h */,
@@ -7103,7 +7105,6 @@
 				E7637D4D1734DE68008ADC62 /* CloudsFCPParser.cpp in Sources */,
 				E7637D4F1734DE68008ADC62 /* CloudsLink.cpp in Sources */,
 				E7637D501734DE68008ADC62 /* CloudsStoryEngine.cpp in Sources */,
-				E7637D651734DE8A008ADC62 /* CloudsPlaybackController.cpp in Sources */,
 				E779BD98173D4EFD006357EF /* kiss_fft.c in Sources */,
 				E779BD99173D4EFD006357EF /* kiss_fftr.c in Sources */,
 				E779BD9A173D4EFD006357EF /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
@@ -7598,6 +7599,7 @@
 				E7FA0B801879FBF7002477DF /* ofxSystemTextbox.mm in Sources */,
 				64323E88187A4DAE00316058 /* CloudsPortal.cpp in Sources */,
 				64323E8A187A4DAE00316058 /* CloudsPortalRing.cpp in Sources */,
+				E7167103187A7A700047B7DC /* CloudsPlaybackController.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7615,7 +7617,6 @@
 				E7FB24D71830D4C0009EBD0E /* CloudsFCPParser.cpp in Sources */,
 				E7FB24D81830D4C0009EBD0E /* CloudsLink.cpp in Sources */,
 				E7FB24D91830D4C0009EBD0E /* CloudsStoryEngine.cpp in Sources */,
-				E7FB24DA1830D4C0009EBD0E /* CloudsPlaybackController.cpp in Sources */,
 				E7FB24DB1830D4C0009EBD0E /* kiss_fft.c in Sources */,
 				E7FB24DC1830D4C0009EBD0E /* kiss_fftr.c in Sources */,
 				E7FB24DD1830D4C0009EBD0E /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
@@ -8108,6 +8109,7 @@
 				E7FA0B811879FBF7002477DF /* ofxSystemTextbox.mm in Sources */,
 				64323E89187A4DAE00316058 /* CloudsPortal.cpp in Sources */,
 				64323E8B187A4DAE00316058 /* CloudsPortalRing.cpp in Sources */,
+				E7167104187A7A700047B7DC /* CloudsPlaybackController.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
