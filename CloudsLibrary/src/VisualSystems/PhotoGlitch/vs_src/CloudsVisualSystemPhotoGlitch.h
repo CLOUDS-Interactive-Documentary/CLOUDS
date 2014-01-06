@@ -281,5 +281,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     bool bShouldGenerate;
     bool bSourceFolderExists;
     bool bTargetFolderExists;
+    bool bTargetImageExists;
+    bool bSourceImageExists;
 //    bool bShouldGenerateTargetOnly;
 };
