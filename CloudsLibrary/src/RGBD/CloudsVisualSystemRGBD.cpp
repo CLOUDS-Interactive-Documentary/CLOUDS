@@ -718,7 +718,7 @@ void CloudsVisualSystemRGBD::setSelectedQuestion(){
 
 void CloudsVisualSystemRGBD::clearQuestions(){
 	
-	cout << "Clearing questions!" << endl;
+//	cout << "Clearing questions!" << endl;
 	
     selectedQuestion = NULL;
 	caughtQuestion = NULL;

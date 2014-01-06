@@ -89,14 +89,13 @@ class CloudsPlaybackController {
 	//RGBD STUFF
 	ofPtr<CloudsVisualSystemRGBD> rgbdVisualSystem;
 	//if there is a system playing this wil be non-null
-	ofPtr<CloudsVisualSystem> nextSystem;
 	ofPtr<CloudsIntroSequence> introSequence;
-	ofPtr<CloudsVisualSystemClusterMap> clusterMapVisualSystem;
+	ofPtr<CloudsVisualSystemClusterMap> clusterMap;
 	
-	string nextPresetName;
-	ofPtr<CloudsVisualSystem> currentVisualSystem;
+	CloudsVisualSystemPreset nextVisualSystemPreset;	
 	CloudsVisualSystemPreset currentVisualSystemPreset;
-	
+	ofPtr<CloudsVisualSystem> currentVisualSystem;
+		
 	CloudsTransitionController transitionController;
 	void updateTransition();
 
@@ -124,7 +123,7 @@ class CloudsPlaybackController {
 	void clearAct(bool destroy = true);
 			
 	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
-	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem);
+//	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem);
 	//remove the current visual system
 	void hideVisualSystem();
 	void showRGBDVisualSystem();
