@@ -65,8 +65,24 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     tweetDeckWidthOffset= 30;
     tweetDeckLineOffset = -27;
     
-    ofEnableSmoothing();
-    ofEnableAlphaBlending();
+    bAnimateSpriteSize = false;
+    minSize = 1;
+    maxSize =  10;
+    spriteBaseColorHSV = ofFloatColor(0,0,0);
+    spritePopColorHSV =ofFloatColor(0,0,0);
+    lineNodeBaseHSV = ofFloatColor(0,0,0);
+    lineEdgeBaseHSV  = ofFloatColor(0,0,0);
+    lineNodePopHSV  = ofFloatColor(0,0,0);
+    lineEdgePopHSV  = ofFloatColor(0,0,0);
+    synapseColorHSV  = ofFloatColor(0,0,0);
+    nodeBaseColorHSV  = ofFloatColor(0,0,0);
+    nodePopColorHSV  = ofFloatColor(0,0,0);
+    textColorHSV = ofFloatColor(0,0,0);
+    tweetDeckColorHSV  = ofFloatColor(0,0,0);
+
+    
+//    ofEnableSmoothing();
+//    ofEnableAlphaBlending();
     animationLerpRate = 0.02;
     
 }
@@ -84,23 +100,23 @@ void CloudsVisualSystemTwitter::selfSetup()
      
      */
     
-    initSystem(getVisualSystemDataPath() +"graphs/NotSimple_Twitter4Men_new.net");
+    meshDir.listDir(getVisualSystemDataPath() + "graphs" );
+    meshDir.sort();
+    for (int i = 0; i < meshDir.size(); i++) {
+        meshStrings.push_back(meshDir.getName(i));
+    }
+    currentMeshIndex = 7;
+    initSystem(getVisualSystemDataPath() +"graphs/"+meshStrings[7]);
+//    initSystem(getVisualSystemDataPath() +"graphs/NotSimple_Twitter4Men_new.net");
     reloadShaders();
 }
 
 void CloudsVisualSystemTwitter::selfBegin()
 {
-    updateLabelWithCurrentMeshName(currentMeshFileName);
+
 }
 
 void CloudsVisualSystemTwitter::addColorToGui(ofxUISuperCanvas* gui,string prefix,ofFloatColor& col, bool doAlpha){
-//  gui->addSpacer();
-//    gui->addMinimalSlider(prefix + " HUE", 0.0, 1.0, &col.r);
-//    gui->addMinimalSlider(prefix + " SAT", 0.0, 1.0, &col.g);
-//    gui->addMinimalSlider(prefix + " BRI", 0.0, 1.0, &col.b);
-//	if(doAlpha){
-//		gui->addMinimalSlider(prefix + " ALPHA", 0.0, 1.0, &col.a);
-//	}
     
    	float length = (gui->getGlobalCanvasWidth() - gui->getWidgetSpacing()*5)/3.;
     float dim    = gui->getGlobalSliderHeight();
@@ -129,7 +145,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	clusterGui->copyCanvasProperties(gui);
     clusterGui->setName("Mesh");
     clusterGui->addToggle("ANIMATE", &bAnimate);
-    clusterGui->addButton("LOAD GRAPH", false);
+//    clusterGui->addButton("LOAD GRAPH", false);
 	clusterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     clusterGui->addToggle("RENDER MESH", &bRenderMesh);
     clusterGui->addIntSlider("REFRESH RATE", 1, 500, &refreshRate);
@@ -137,11 +153,10 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addRangeSlider("DATE RANGE", 1,  (dateIndex.size()), &dateIndexMin, & dateIndexMax);
     clusterGui->addToggle("ROTATE", &rotateModel);
     clusterGui->addMinimalSlider("ROTATION AMT", 0.1, 1, &rotationAmount);
-    clusterGui->addLabel("MESH FILE",currentMeshFileName);
     clusterGui->addMinimalSlider("EDGE DECAY", 0.2, 1.0, &activityMapDamping);
     clusterGui->addMinimalSlider("NORMALS DECAY", 0.2, 1.0, &normalDecay);
     clusterGui->addMinimalSlider("SYNAPSE LEVEL", 0.0, 1.0, &synapseLevel);
-    clusterGui->addMinimalSlider("SPRITE SIZE", 0, 30, &sizeMultiplier);
+    clusterGui->addSpacer();
 	
     //TWEET POP
 	addColorToGui(clusterGui,"LINE NODE BASE",lineNodeBaseHSV);
@@ -150,6 +165,12 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	addColorToGui(clusterGui,"LINE EDGE POP",lineEdgePopHSV);
 	addColorToGui(clusterGui,"SYNAPSE",synapseColorHSV);
 	clusterGui->addSlider("EDGE COLOR EXPONENT", 1.0, 5., &edgeInterpolateExponent);
+    clusterGui->addDropDownList("MESH FILES", meshStrings);
+    
+	ofAddListener(clusterGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
+	guis.push_back(clusterGui);
+	guimap[clusterGui->getName()] = clusterGui;
+
     
 
     spriteGui = new ofxUISuperCanvas("SPRITE PARAMS", gui);
@@ -167,14 +188,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 //	addColorToGui(clusterGui,"NODE BASE",nodeBaseColorHSV);
 //	addColorToGui(clusterGui,"NODE POP",nodePopColorHSV);
 	
-    clusterGui->addMinimalSlider("X POS", 1, 500, &xScale);
-    clusterGui->addMinimalSlider("Y POS", 1, 500, &yScale);
-    clusterGui->addMinimalSlider("Z POS", 1, 500, &zScale);
-    clusterGui->addButton("RELOAD MESH", false);
-    
-	ofAddListener(clusterGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
-	guis.push_back(clusterGui);
-	guimap[clusterGui->getName()] = clusterGui;
+
     
     textGui = new ofxUISuperCanvas("TEXT PARAMS", gui);
     textGui->copyCanvasStyle(gui);
@@ -185,7 +199,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     textGui->addToggle("DRAW SPEAKER NAMES ", &bStaticNameDraw);
     textGui->addSpacer();
     addColorToGui(textGui,"TEXT ",textColorHSV,true);
-    addColorToGui(textGui,"TEXT ",tweetDeckColorHSV,true);
+    addColorToGui(textGui,"TWEET ",tweetDeckColorHSV,true);
 
     textGui->addSpacer();
     textGui->addMinimalSlider("STRING WIDTH", 1, 2000, &stringWidth);
@@ -787,19 +801,17 @@ void CloudsVisualSystemTwitter::CompareDates(Date d1,Date d2){
 //--------------------------------------------------------------
 void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
 {
-    if(e.getName() == "LOAD GRAPH"){
-        ofxUIButton* t  = (ofxUIButton*) e.widget;
-        if (t->getValue()) {
-            ofFileDialogResult result = ofSystemLoadDialog("Load Images From Folder", false, getVisualSystemDataPath() +"graphs/");
-            if(result.bSuccess && result.fileName.length())
-            {
-                loadGraphFromPath(result.filePath);
-            }
-        }
-    }
-    else if (e.getName() == "RELOAD MESH")
-    {
-        initSystem(currentMeshFilePath);
+    if(e.widget->getParent()->getName() == "MESH FILES"){
+       ofxUIButton* t  = (ofxUIButton*) e.widget;
+       if (t->getValue()) {
+           string presetMeshPath = getVisualSystemDataPath() + "graphs/" + t->getName();
+           if (presetMeshPath != currentMeshFilePath) {
+               initSystem(presetMeshPath);
+           }
+           else{
+               cout<<"Mesh : "<<presetMeshPath<<" already loaded"<<endl;
+           }
+       }
     }
 	else if(e.getName() == "ROTATE"){
         ofxUIToggle* t = (ofxUIToggle*)e.widget;
@@ -833,9 +845,7 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     vector<string> strs =ofSplitString(filePath, "_");
     vector<string> strs1 =ofSplitString(filePath, "/");
     cout<<strs1[strs1.size()-1]<<endl;
-    currentMeshFileName  =  strs1[strs1.size()-1];
-    
-    
+    float startTime = ofGetElapsedTimeMillis();
     currentMeshFilePath = filePath;
     clearData();
     if(strs[strs.size()-1] =="old.net"){
@@ -865,7 +875,7 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
         updateCurrentSelection(currentDateIndex, true);
     }
     
-    
+    cout<<"Time taken to load mesh : "<<ofGetElapsedTimeMillis() - startTime<<" ms."<<endl;
 }
 
 void CloudsVisualSystemTwitter::createNewGraph(string outputFileName, string inputDataFolder){
@@ -910,19 +920,21 @@ void CloudsVisualSystemTwitter::guiRenderEvent(ofxUIEventArgs &e){
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemTwitter::selfPresetLoaded(string presetPath)
 {
-    ofxUILabel* l =(ofxUILabel*)clusterGui->getWidget("MESH FILE");
-    currentMeshFileName = l->getLabel();
     
-    string presetMeshPath = getVisualSystemDataPath() + "graphs/" + currentMeshFileName;
-    if(presetMeshPath == currentMeshFilePath){
-        
-        cout<<currentMeshFileName<<" was already loaded "<<endl;
-    }
-    else{
-        cout<<"loading mesh from : "<<presetMeshPath<<endl;
-        
-        initSystem(presetMeshPath);
-        updateLabelWithCurrentMeshName(currentMeshFileName);
+    ofxUIDropDownList* d = (ofxUIDropDownList*)clusterGui->getWidget("MESH FILES");
+
+    vector<ofxUILabelToggle*> t =  d->getToggles();
+    for (int i =0; i<t.size(); i++) {
+        if (t[i]->getValue()) {
+            cout<<"LOADING MESH : "<<t[i]->getName()<<endl;
+            string presetMeshPath = getVisualSystemDataPath() + "graphs/" + t[i]->getName();
+            if (presetMeshPath != currentMeshFilePath) {
+                initSystem(presetMeshPath);
+            }
+            else{
+                cout<<"Mesh : "<<presetMeshPath<<" already loaded"<<endl;
+            }
+        }
     }
 }
 
@@ -931,7 +943,6 @@ void CloudsVisualSystemTwitter::selfPresetLoaded(string presetPath)
 void CloudsVisualSystemTwitter::selfSceneTransformation(){
     
     if(rotateModel){
-        
         ofRotateZ(rotation );
         rotation += rotationAmount;
     }
@@ -964,10 +975,7 @@ void CloudsVisualSystemTwitter::selfUpdate()
 
     }
     updateMesh();
-    //
-//    if(ofGetFrameNum() % activeTweeterRefreshRate == 0 && bAnimate){
-        setActiveTweeters(currentDateIndex);
-//    }
+    setActiveTweeters(currentDateIndex);
 
     if(bRenderText){
         for(int i = 0; i < activeTweeters.size(); i++){
