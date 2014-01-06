@@ -38,7 +38,6 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         // launch initial setup score
         RTcmixParseScoreFile("cmixinit.sco");
         first_vec = true; // we haven't had audio yet
-        rtc_playing = false; // engine is idle
         
         // load samples
         loadRTcmixSamples();
@@ -58,6 +57,14 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         AUTORUN = 0;
         DOCLEAR = true;
         DOCMIXPRINT = false;
+        ACTBUS = 0;
+        ab.clear();
+        abn.clear();
+        for(int i = 0;i<PF_NUMBUSES;i++)
+        {
+        ab.push_back("ACTBUS"+ofToString(i));
+        abn.push_back(PF_MAINACT_BUS_START+i);
+        }
         
 		ofAddListener(GetCloudsAudioEvents()->musicAudioRequested, this, &CloudsSound::audioRequested);
 
@@ -244,11 +251,11 @@ void CloudsSound::enterTunnel()
 
 void CloudsSound::exitTunnel()
 {
-    float fadedur = 5.0; // change to adjust fade time
+    float fd = 5.0; // change to adjust fade time
 
     if(LUKEDEBUG) cout << "sound: exitTunnel()" << endl;
 
-    PFIELD_SCHED(0., fadedur, PF_TUNNEL_BUS, "ramp_10");
+    PFIELD_SCHED(0., fd, PF_TUNNEL_BUS, "ramp_10");
 }
 
 
