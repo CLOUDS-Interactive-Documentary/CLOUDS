@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>TWITTER FEED</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>714.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>70.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>FEED X</Name>
-    <Value>350.428588867</Value>
+    <Value>338.379302979</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -89,12 +89,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>ICON HEIGHT OFFSET </Name>
-    <Value>-18.965517044</Value>
+    <Value>-8.620689392</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>ICON WIDTH OFFSET </Name>
-    <Value>-23.201969147</Value>
+    <Value>30.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -109,7 +109,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LINE OFFSET</Name>
-    <Value>-32.019706726</Value>
+    <Value>-23.152709961</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

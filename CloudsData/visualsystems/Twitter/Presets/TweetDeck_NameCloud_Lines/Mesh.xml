@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Mesh</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>231.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>24.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>REFRESH RATE</Name>
-    <Value>187</Value>
+    <Value>59</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -74,7 +74,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNB ALPHA</Name>
-    <Value>0.370185882</Value>
+    <Value>0.283852398</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -89,12 +89,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LEB BRI</Name>
-    <Value>0.478349507</Value>
+    <Value>0.574999988</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LEB ALPHA</Name>
-    <Value>0.127486005</Value>
+    <Value>0.127099648</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -109,12 +109,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNP BRI</Name>
-    <Value>0.232301176</Value>
+    <Value>0.387623608</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LNP ALPHA</Name>
-    <Value>0.090081796</Value>
+    <Value>0.078469917</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

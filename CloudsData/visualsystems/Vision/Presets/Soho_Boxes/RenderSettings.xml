@@ -2,38 +2,38 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>453.000000000</XPosition>
-    <YPosition>114.000000000</YPosition>
+    <XPosition>307.000000000</XPosition>
+    <YPosition>204.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>PLAYER</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>ABS DIFF HEAT MAP</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>VIDEO TINT</Name>
-    <Value>48.990146637</Value>
+    <Value>90.443344116</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>THRESHOLD TINT</Name>
-    <Value>37.684730530</Value>
+    <Value>198.472915649</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>DIFF TINT</Name>
-    <Value>189.679809570</Value>
+    <Value>179.630538940</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW WINDOW TINT</Name>
-    <Value>37.684730530</Value>
+    <Value>28.891626358</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

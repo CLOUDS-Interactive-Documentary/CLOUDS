@@ -7,6 +7,11 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
+    <Name>AppleStore2_short</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>BridgePreset</Name>
     <Value>0</Value>
 </Widget>
@@ -67,6 +72,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>UnionSqGhost</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>UnionSqGhosts</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>tokyoCrossingHeatMap</Name>
+    <Value>0</Value>
 </Widget>

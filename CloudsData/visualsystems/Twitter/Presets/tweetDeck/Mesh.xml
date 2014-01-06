@@ -3,7 +3,7 @@
     <Name>Mesh</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <YPosition>24.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>REFRESH RATE</Name>
-    <Value>79</Value>
+    <Value>121</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
