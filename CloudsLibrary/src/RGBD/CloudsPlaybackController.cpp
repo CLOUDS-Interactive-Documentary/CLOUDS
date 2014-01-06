@@ -271,7 +271,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	if(showingIntro){
 		if(introSequence->isStartQuestionSelected()){
 			
-			CloudsQuestion* q = introSequence->getSelectedQuestion();
+			CloudsPortal* q = introSequence->getSelectedQuestion();
 			CloudsClip& clip = q->clip;
 			
 			map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
@@ -477,7 +477,7 @@ void CloudsPlaybackController::updateTransition(){
 			//we just finished fading out of the intro
 			
 			if(transitionController.getPreviousState() == TRANSITION_INTRO_OUT){
-				CloudsQuestion* q = introSequence->getSelectedQuestion();
+				CloudsPortal* q = introSequence->getSelectedQuestion();
 				CloudsClip& clip = q->clip;
 				
 				showingVisualSystem = false;

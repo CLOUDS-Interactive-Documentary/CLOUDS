@@ -12,7 +12,7 @@
 #include "CloudsVisualSystem.h"
 //#include "ofxGameCamera.h"
 #include "CloudsClip.h"
-#include "CloudsQuestion.h"
+#include "CloudsPortal.h"
 //#include "CloudsRun.h"
 #include "ofxFTGL.h"
 
@@ -72,7 +72,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void setStartQuestions(vector<CloudsClip>& possibleStartQuestions);
 	bool isStartQuestionSelected();
 	void autoSelectQuestion();
-	CloudsQuestion* getSelectedQuestion();
+	CloudsPortal* getSelectedQuestion();
 //	CloudsRun& getSelectedRun(){
 //		return currentRun;
 //	};
@@ -125,9 +125,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float currentFontExtrusion;
 
 	void positionStartQuestions();
-	vector<CloudsQuestion> startQuestions;
-	CloudsQuestion* selectedQuestion;
-	CloudsQuestion* caughtQuestion;
+	vector<CloudsPortal> startQuestions;
+	CloudsPortal* selectedQuestion;
+	CloudsPortal* caughtQuestion;
 
 	vector<string> loadedQuestions;
 	float perlinOffset;
