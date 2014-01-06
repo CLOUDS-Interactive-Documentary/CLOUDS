@@ -13,6 +13,6 @@ void main() {
 	float distanceAttenuate = pow(1. - normalizedDist,4.);
 //	gl_FragColor = gl_Color * distanceMin;
 	gl_FragColor = gl_Color;
-	gl_FragColor.a = distanceAttenuate;
+	gl_FragColor.a = distanceAttenuate*gl_Color.a;
 //	gl_FragColor.rgb = vec3(distanceAttenuate);
 }

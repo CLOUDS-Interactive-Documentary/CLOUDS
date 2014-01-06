@@ -58,6 +58,7 @@ class CloudsVisualSystem {
 	static CloudsRGBDVideoPlayer& getRGBDVideoPlayer();
 	static void getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height);
     static void get2dMesh(ofMesh& mesh, float width, float height);
+	
 #ifdef OCULUS_RIFT
 	static ofxOculusRift& getOculusRift();
 #endif
@@ -158,7 +159,6 @@ class CloudsVisualSystem {
 	bool isSetup();
 	bool isPlaying();
 	
-//	void setRenderer(CloudsRGBDVideoPlayer& newRenderer);
 
 	void setupSpeaker(string speakerFirstName,
 					  string speakerLastName,
@@ -167,11 +167,6 @@ class CloudsVisualSystem {
 	virtual void speakerChanged(){};
 	void speakerEnded();
 	
-	//how much time left to show this visual system?
-	//once seconds is set to zero the end() event will be called by the controller
-//	float getSecondsRemaining();
-//	void setSecondsRemaining(float seconds);
-		
 	//this will always match what you offered in relevant keywords
 	void setKeywords(string mainKeyword, vector<string> allKeywords);
 	
@@ -181,7 +176,6 @@ class CloudsVisualSystem {
     void drawGrid(float x, float y, float w, float h, float color);
     void billBoard(ofVec3f globalCamPosition, ofVec3f globelObjectPosition);
 
-//    void drawNormalizedTexturedQuad();
     void drawBackground();
 	void drawBackgroundGradient();
     void draw2dSystemPlane();
@@ -218,7 +212,7 @@ class CloudsVisualSystem {
     void setupMaterial(string name, ofxMaterial *m);
     void guiMaterialEvent(ofxUIEventArgs &e);
 	
-    void setupPointLight(string name);
+    void setupPointLight(string name, ofxLight* light = NULL);
     void setupSpotLight(string name);
     void setupBeamLight(string name);
     void setupGenericLightProperties(ofxUISuperCanvas *g, ofxLight *l);
@@ -242,7 +236,7 @@ class CloudsVisualSystem {
     
     //UI Helpers
 	vector<string> getPresets();
-	
+	string currentPresetName;
     void loadGUIS();
 	void loadPresetGUISFromName(string presetName);
     void loadPresetGUISFromPath(string presetPath);
@@ -349,6 +343,7 @@ class CloudsVisualSystem {
     bool bEnableLights;
 	
     //LIGHTS
+	ofxLight* light;
     map<string, ofxLight *> lights;
     map<string, ofxUISuperCanvas *> lightGuis;
 	

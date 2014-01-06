@@ -6,23 +6,72 @@
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemCircuit::selfSetupGui(){
-
+	ofxUIToggle* toggle;
+	
 	blipGui = new ofxUISuperCanvas("BLIPS", gui);
 	blipGui->copyCanvasStyle(gui);
 	blipGui->copyCanvasProperties(gui);
 	blipGui->setName("Blips");
 	blipGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	blipGui->addSlider("Blip Speed", 0, 10, &blipSpeed);
-	blipGui->addRangeSlider("Blip Size", 0., 2.0, &pointSizeRange.min, &pointSizeRange.max);
-	blipGui->addRangeSlider("Blip Distance", 0, 1200.,
+	blipGui->addSlider("BLIP SPEED", 0, 10, &blipSpeed);
+	blipGui->addRangeSlider("BLIP SIZE", 0., 2.0, &pointSizeRange.min, &pointSizeRange.max);
+	blipGui->addRangeSlider("BLIP DISTANCE", 0, 1200.,
 							  &pointDistanceRange.min,
 							  &pointDistanceRange.max);
+	
+	//enable toggle
+	toggle = blipGui->addToggle("ENABLE", &bDrawBlips);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    blipGui->resetPlacer();
+    blipGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    blipGui->addWidgetToHeader(toggle);
+	//end enable
 	
 	ofAddListener(blipGui->newGUIEvent, this, &CloudsVisualSystemCircuit::selfGuiEvent);
 	guis.push_back(blipGui);
 	guimap[blipGui->getName()] = blipGui;
 	
+	
+	lineGui = new ofxUISuperCanvas("LINE", gui);
+	lineGui->copyCanvasStyle(gui);
+	lineGui->copyCanvasProperties(gui);
+	lineGui->setName("line");
+	lineGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	//enable toggle
+	toggle = lineGui->addToggle("ENABLE", &bDrawLine);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    lineGui->resetPlacer();
+    lineGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    lineGui->addWidgetToHeader(toggle);
+	//end enable
+	
+	ofAddListener(lineGui->newGUIEvent, this, &CloudsVisualSystemCircuit::selfGuiEvent);
+	guis.push_back(lineGui);
+	guimap[lineGui->getName()] = lineGui;
+	
+	
+	meshGui = new ofxUISuperCanvas("MESH", gui);
+	meshGui->copyCanvasStyle(gui);
+	meshGui->copyCanvasProperties(gui);
+	meshGui->setName("mesh");
+	meshGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+
+	//enable toggle
+	toggle = meshGui->addToggle("ENABLE", &bDrawMesh);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    meshGui->resetPlacer();
+    meshGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    meshGui->addWidgetToHeader(toggle);
+	//end enable
+	
+	meshGui->addSlider("ELEVATION", 0, 100, &currentElevation);
+	
+	ofAddListener(meshGui->newGUIEvent, this, &CloudsVisualSystemCircuit::selfGuiEvent);
+	guis.push_back(meshGui);
+	guimap[meshGui->getName()] = meshGui;
+
 }
 
 void CloudsVisualSystemCircuit::selfSetupCameraGui(){
@@ -99,13 +148,13 @@ void CloudsVisualSystemCircuit::generateCircuit(){
 		lineMesh.addColor(ofFloatColor(0,0));
 		int numVertices = contourLines[i].getVertices().size();
 		lineMesh.addVertex(contourLines[i].getVertices()[0]);
-		for(int v = 0; v < contourLines[i].getVertices().size(); v++){
+		for(int v = 0; v < numVertices; v++){
 			lineMesh.addColor(ofFloatColor(1,1));
 			lineMesh.addVertex(contourLines[i].getVertices()[v]);
 		}
 		//set the handle
 		lineMesh.addColor(ofFloatColor(0,0));
-		lineMesh.addVertex(contourLines[i].getVertices()[numVertices-1]);
+		lineMesh.addVertex( contourLines[i].getVertices().back() );
     }
 	
     lineMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
@@ -122,7 +171,7 @@ void CloudsVisualSystemCircuit::generateCircuit(){
                 elevated.push_back(heightMesh.getVertices().size());
             }
 			
-			heightMesh.addVertex(ofVec3f(x,0,y));
+			heightMesh.addVertex(ofVec3f(x,-.5,y));
             // this replicates the pixel array within the camera bitmap...
             heightMesh.addTexCoord(ofVec2f(x,y));
             float brightUp = brightness;
@@ -148,11 +197,13 @@ void CloudsVisualSystemCircuit::generateCircuit(){
             ofVec3f rightPos = ofVec3f(x+1,brightRight*.05,y);
             
             heightMesh.addNormal((upPos - downPos).getCrossed(leftPos-rightPos).normalize());
+			heightMesh.addColor( heightMap.getPixelsRef().getColor(x, y) );
 		}
 	}
 	
 	for (int y = 0; y<height-1; y++){
 		for (int x=0; x<width-1; x++){
+			
 			heightMesh.addIndex(x+y*width);				// 0
 			heightMesh.addIndex((x+1)+y*width);			// 1
 			heightMesh.addIndex(x+(y+1)*width);			// 10
@@ -168,6 +219,7 @@ void CloudsVisualSystemCircuit::reloadShaders(){
 	cout << "reload shaders" << endl;
 	blipShader.load(getVisualSystemDataPath() + "shaders/blips");
 	lineShader.load(getVisualSystemDataPath() + "shaders/lines");
+	meshShader.load(getVisualSystemDataPath() + "shaders/mesh");
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -192,12 +244,19 @@ void CloudsVisualSystemCircuit::guiRenderEvent(ofxUIEventArgs &e){
 //acceptable default state
 void CloudsVisualSystemCircuit::selfSetDefaults(){
 	blipSpeed = 3.0;
+	lastElevation = 0;
+	currentElevation = 0;
+	nearClippingPlane = .1;
+	bDrawMesh = false;
+	bDrawLine = true;
+	bDrawBlips = true;
 }
 
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemCircuit::selfSetup(){
+	
 	cam.autosavePosition = true;
 	cam.loadCameraPosition();
 	
@@ -231,65 +290,78 @@ void CloudsVisualSystemCircuit::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemCircuit::selfUpdate(){
 	
+	cam.applyRotation = cam.applyTranslation = !cursorIsOverGUI();
+	
 	getCameraRef().setNearClip( nearClippingPlane );
 	
-    for(int i = 0; i < blips.size(); i++){
-        ofPolyline& line = contourLines[ blips[i].lineIndex ];
-        int numVerts = line.getVertices().size();
-        blips[i].vertIndex = fmod(blips[i].vertIndex + blipSpeed, numVerts);
-        int up = int(ceil(blips[i].vertIndex)) % numVerts;
-        int dn = int(floor(blips[i].vertIndex)) % numVerts;
-        float alpha = blips[i].vertIndex - dn;
-        blips[i].pos = line.getVertices()[dn].getInterpolated(line.getVertices()[up], alpha);
-		blipMesh.getVertices()[blips[i].meshIndex].set(blips[i].pos);
-    }
+	if(bDrawBlips){
+		for(int i = 0; i < blips.size(); i++){
+			ofPolyline& line = contourLines[ blips[i].lineIndex ];
+			int numVerts = line.getVertices().size();
+			blips[i].vertIndex = fmod(blips[i].vertIndex + blipSpeed, numVerts);
+			int up = int(ceil(blips[i].vertIndex)) % numVerts;
+			int dn = int(floor(blips[i].vertIndex)) % numVerts;
+			float alpha = blips[i].vertIndex - dn;
+			blips[i].pos = line.getVertices()[dn].getInterpolated(line.getVertices()[up], alpha);
+			blipMesh.getVertices()[blips[i].meshIndex].set(blips[i].pos);
+		}
+	}
     
-//    if(lastElevation  != currentElevation){
-//        for(int i = 0; i < elevated.size(); i++){
-//            heightMesh.getVertices()[ elevated[i] ].y = -currentElevation;
-//        }
-//        lastElevation = currentElevation;
-//    }
-
+    if(lastElevation != currentElevation && bDrawMesh){
+        for(int i = 0; i < elevated.size(); i++){
+            heightMesh.getVertices()[ elevated[i] ].y = -currentElevation;
+        }
+        lastElevation = currentElevation;
+    }
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemCircuit::selfDraw(){
 	
-    ofSetColor(255);
-    ofEnableAlphaBlending();
-	lineShader.begin();
-	lineShader.setUniform1f("distanceMin", pointDistanceRange.min);
-	lineShader.setUniform1f("distanceMax", pointDistanceRange.max);
-	lineMesh.draw();
-	lineShader.end();
-	
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	
-    glDisable(GL_DEPTH_TEST);
-    float blipAlpha = 1.0;
-	
-	glPointSize(4);
-		
-	//Enable smooth lines and screen blending
-	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
-	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
-	glEnable(GL_POINT_SMOOTH);
-	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-	glEnable(GL_LINE_SMOOTH);
-	
-	blipShader.begin();
-	
-	blipShader.setUniform1f("pointSizeMin", pointSizeRange.min);
-	blipShader.setUniform1f("pointSizeMax", pointSizeRange.max);
-	blipShader.setUniform1f("pointDistanceMin", pointDistanceRange.min);
-	blipShader.setUniform1f("pointDistanceMax", pointDistanceRange.max);
-	
-    blipMesh.drawVertices();
+	if(bDrawMesh){
+		glEnable(GL_DEPTH_TEST);
+		meshShader.begin();
+		meshShader.setUniform1f("distanceMin", pointDistanceRange.min);
+		meshShader.setUniform1f("distanceMax", pointDistanceRange.max);
+		heightMesh.draw();
+		meshShader.end();
+	}
 
-	blipShader.end();
+    glDisable(GL_DEPTH_TEST);
+	if(bDrawLine){
+		ofSetColor(255);
+		ofEnableAlphaBlending();
+		lineShader.begin();
+		lineShader.setUniform1f("distanceMin", pointDistanceRange.min);
+		lineShader.setUniform1f("distanceMax", pointDistanceRange.max);
+		lineMesh.draw();
+		lineShader.end();
+	}
+
+	if(bDrawBlips){
+	    float blipAlpha = 1.0;
 	
+		//Enable smooth lines and screen blending
+		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
+		glEnable(GL_POINT_SMOOTH);
+		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+		glEnable(GL_LINE_SMOOTH);
+		
+		blipShader.begin();
+		
+		blipShader.setUniform1f("pointSizeMin", pointSizeRange.min);
+		blipShader.setUniform1f("pointSizeMax", pointSizeRange.max);
+		blipShader.setUniform1f("pointDistanceMin", pointDistanceRange.min);
+		blipShader.setUniform1f("pointDistanceMax", pointDistanceRange.max);
+		
+		blipMesh.drawVertices();
+
+		blipShader.end();
+	}
 	glPopAttrib();
 }
 

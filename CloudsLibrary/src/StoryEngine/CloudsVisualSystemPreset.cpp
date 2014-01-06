@@ -11,7 +11,7 @@
 #include "CloudsGlobal.h"
 
 CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
-	enabled = true;
+	enabled = false;
 	indefinite = true;
 	
 	defaultedToFamily = false;
@@ -34,7 +34,7 @@ void CloudsVisualSystemPreset::loadTimeInfo(){
 	
 
 	ofxXmlSettings timeInfo;
-	string directory = GetCloudsVisualSystemDataPath(systemName) + "Presets/" + presetName;
+	string directory = GetCloudsVisualSystemDataPath(systemName) + "Presets/" + trim(presetName);
 
 	if(!ofDirectory(directory).exists()){
 		ofLogError() << "Preset " << systemName << " / " << presetName << " has no directory";

@@ -718,7 +718,7 @@ void CloudsVisualSystemRGBD::setSelectedQuestion(){
 
 void CloudsVisualSystemRGBD::clearQuestions(){
 	
-	cout << "Clearing questions!" << endl;
+//	cout << "Clearing questions!" << endl;
 	
     selectedQuestion = NULL;
 	caughtQuestion = NULL;
@@ -1329,10 +1329,7 @@ void CloudsVisualSystemRGBD::selfExit(){
 }
 
 void CloudsVisualSystemRGBD::selfBegin(){
-	
 	cloudsCamera.jumpToPosition();
-    
-//    cloudsCaption.begin();
 }
 
 void CloudsVisualSystemRGBD::selfEnd(){
@@ -1340,7 +1337,11 @@ void CloudsVisualSystemRGBD::selfEnd(){
 }
 
 bool CloudsVisualSystemRGBD::isQuestionSelectedAndClipDone(){
-    return  selectedQuestion != NULL && getRGBDVideoPlayer().isDone();
+    return selectedQuestion != NULL && getRGBDVideoPlayer().isDone();
+}
+
+bool CloudsVisualSystemRGBD::isQuestionSelected(){
+	return selectedQuestion != NULL;
 }
 
 CloudsQuestion* CloudsVisualSystemRGBD::getSelectedQuestion(){

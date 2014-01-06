@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1138.000000000</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <XPosition>300.000000000</XPosition>
+    <YPosition>173.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,11 +18,6 @@
 <Widget>
     <Kind>2</Kind>
     <Name>InsideTheNet</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>JM_basic</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -98,5 +93,10 @@
 <Widget>
     <Kind>2</Kind>
     <Name>tweetDeck</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>TweetDeck_NameCloud_Lines</Name>
     <Value>0</Value>
 </Widget>

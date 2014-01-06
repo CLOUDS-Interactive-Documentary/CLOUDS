@@ -2,9 +2,12 @@
 #include "CloudsSound.h"
 
 CloudsSound::CloudsSound(){
+	
+	currentAct = NULL;
 	storyEngine = NULL;
 	eventsRegistered = false;
 	maxSpeakerVolume = 1;
+	
 }
 
 //--------------------------------------------------------------------
@@ -92,6 +95,9 @@ void CloudsSound::drawDebug(){
 
 //--------------------------------------------------------------------
 void CloudsSound::actCreated(CloudsActEventArgs& args){
+	if(currentAct != NULL){
+		currentAct->unregisterEvents(this);
+	}
 	currentAct = args.act;
 	currentAct->registerEvents(this);
 }
@@ -275,8 +281,14 @@ void CloudsSound::preRollRequested(CloudsPreRollEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsSound::actEnded(CloudsActEventArgs& args){
+	if(currentAct != args.act){
+		ofLogError("CloudsSound::actEnded") << "Inconsistent acts in Clouds Sound";
+	}
 	args.act->unregisterEvents(this);
-    // stopMusic();
+	currentAct = NULL;
+
+	//JG added in stop music here in case we jumped ahead.
+    stopMusic();
 }
 
 //--------------------------------------------------------------------

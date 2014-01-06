@@ -205,8 +205,7 @@ vector< ofPtr<CloudsVisualSystem> > CloudsVisualSystemManager::InstantiateSystem
 		if(constructors.find(systemPresets[i].systemName) != constructors.end()){
 			cout << "INSTANTIATING SYSTEM " << systemPresets[i].systemName << " WITH PRESET " << systemPresets[i].presetName << endl;
 			systemPresets[i].system = InstantiateSystem( systemPresets[i].systemName );
-			cout << "CloudsVisualSystemManager::InstantiateSystems - SYSTEM NULL? " << (systemPresets[i].system == NULL ? "YES" : "NO") << endl;
-			
+//			cout << "CloudsVisualSystemManager::InstantiateSystems - SYSTEM NULL? " << (systemPresets[i].system == NULL ? "YES" : "NO") << endl;
 			systems.push_back( systemPresets[i].system );
 		}
 		else{
@@ -313,7 +312,7 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 //--------------------------------------------------------------------
 ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::getEmptySystem(string mainKeyword, vector<string> keywords){
 	#ifdef CLOUDS_NO_VS
-	return NULL;
+	return ofPtr<CloudsVisualSystem>();
 	#else
 	ofPtr<CloudsVisualSystem> ptr(new CloudsVisualSystemEmpty() );
 	ptr->setKeywords(mainKeyword, keywords);

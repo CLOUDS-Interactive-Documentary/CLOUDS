@@ -19,9 +19,13 @@ CloudsTransitionController::CloudsTransitionController(){
 	fadeOutStates.push_back(TRANSITION_INTERVIEW_OUT);
 	fadeOutStates.push_back(TRANSITION_VISUALSYSTEM_OUT);
 	fadeOutStates.push_back(TRANSITION_INTRO_OUT);
+    fadeOutStates.push_back(TRANSITION_CLUSTERMAP_OUT);
+	fadeOutStates.push_back(TRANSITION_QUESTION_OUT);
 	
 	fadeInStates.push_back(TRANSITION_VISUALSYSTEM_IN);
 	fadeInStates.push_back(TRANSITION_INTERVIEW_IN);
+    fadeInStates.push_back(TRANSITION_CLUSTERMAP_IN);
+	fadeInStates.push_back(TRANSITION_QUESTION_IN);
 }
 
 void CloudsTransitionController::confirmEmpty(){
@@ -38,7 +42,6 @@ void CloudsTransitionController::confirmEmpty(){
 		ofLogError("CloudsTransitionController::confirmEmpty") << "State Queue is not empty";
 		stateQueue.clear();
 	}
-	
 }
 
 void CloudsTransitionController::transitionFromIntro(float outDuration){
@@ -54,7 +57,7 @@ void CloudsTransitionController::transitionFromIntro(float outDuration){
 void CloudsTransitionController::transitionToFirstVisualSystem(float duration){
 
 	confirmEmpty();
-	
+
 	queueState(TRANSITION_VISUALSYSTEM_IN, duration);
 
 	startTransition();
@@ -85,25 +88,40 @@ void CloudsTransitionController::transitionToInterview(float outDuration, float 
 	
 }
 
-void CloudsTransitionController::transitionToClusterMap(float outDuration, float inDuration){
+void CloudsTransitionController::transitionToClusterMap(float inDuration,float outDuration){
 	
 	confirmEmpty();
 	
 	//we are in a visual system
 	if(getPreviousState() == TRANSITION_VISUALSYSTEM_IN){
+        cout<<"VISUAL SYSTEM --> CLUSTER MAP"<<endl;
 		currentState = TRANSITION_VISUALSYSTEM_IN;
 		queueState(TRANSITION_VISUALSYSTEM_OUT, outDuration);
+        queueState(TRANSITION_CLUSTERMAP_IN, inDuration);
 	}
 	//we are in an interview
 	else if(getPreviousState() == TRANSITION_INTERVIEW_IN){
+        cout<<"INTERVIEW --> CLUSTER MAP"<<endl;
 		queueState(TRANSITION_INTERVIEW_OUT, outDuration);
+        queueState(TRANSITION_CLUSTERMAP_IN, inDuration);
 	}
 	
 	startTransition();
 }
 
-void CloudsTransitionController::transitionFromClusterMap(float transitionOutDuration, float transitionInDuration){
-	//TODO: !!
+void CloudsTransitionController::transitionFromClusterMap(float inDuration){
+
+    confirmEmpty();
+
+    queueState(TRANSITION_CLUSTERMAP_OUT, inDuration);
+    
+    startTransition();
+
+    cout<<"IM TRANSITIONING OUT OF CLUSTER MAP"<<endl;
+}
+
+void CloudsTransitionController::transitionToQuestion(float outDuration, float portalDuration, float inDuration){
+	//TODO:
 }
 
 void CloudsTransitionController::startTransition(){
@@ -231,7 +249,10 @@ string CloudsTransitionController::getStateDescription(CloudsTransitionState sta
 			return "TransitionInterviewIn";
 		case TRANSITION_INTRO_OUT:
 			return "TransitionIntroOut";
-			
+        case TRANSITION_CLUSTERMAP_IN:
+            return "TransitionClusterIn";
+        case TRANSITION_CLUSTERMAP_OUT:
+            return "TransitionClusterOut";
 		default:
 			return "UNKNOWN STATE " + ofToString(int(currentState));
 	}

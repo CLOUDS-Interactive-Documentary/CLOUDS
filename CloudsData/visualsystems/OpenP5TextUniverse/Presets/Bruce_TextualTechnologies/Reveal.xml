@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Reveal</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>708.000000000</XPosition>
-    <YPosition>187.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>24.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>6</Kind>
     <Name>FADE TIME</Name>
-    <HighValue>246.305419922</HighValue>
+    <HighValue>212.315277100</HighValue>
     <LowValue>100.000000000</LowValue>
 </Widget>
 <Widget>

@@ -75,7 +75,7 @@ void CloudsVisualSystemVision::selfSetDefaults(){
 	
 	currentFlowDensity = -1;
 	flowDensity = 3;
-	differenceHueShift = .7;
+	hueShift = .2;
 
 }
 
@@ -331,31 +331,15 @@ void CloudsVisualSystemVision::updateCVParameters(){
 void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
 
 	ofxUIDropDownList* d = (ofxUIDropDownList*)rdrGui->getWidget("VIDEO");
-	vector<int>& selected = d->getSelectedIndeces();
-	if(selected.size() > 0){
-		loadMovieWithName( d->getToggles()[ selected[0] ]->getName() );
-	}
-	
-//    //LOADING MOVIE
-//    ofxUIRadio* r = (ofxUIRadio*)rdrGui->getWidget("VIDEO");
-//    
-//    vector<ofxUIToggle*> t = r->getToggles();
-//    string movieName;
-//    for(int j = 0; j < t.size(); j++){
-//        if(t[j]->getValue()) {
-//            movieName = t[j]->getName();
-//            
-//			cout << "LOADING MOVIE :"<<movieName<<endl;
-//			
-//			for(int i = 0; i < movieStrings.size(); i++){
-//				if (movieStrings[i] == movieName) {
-//					loadMovieAtIndex(i);
-//					break;
-//				}
-//			}
-//			break;
-//        }
-//    }
+    cout<<"IM in self preset loaded"<<endl;
+    vector<ofxUILabelToggle*> t =  d->getToggles();
+    for (int i =0; i<t.size(); i++) {
+        if (t[i]->getValue()) {
+            cout<<"LOADING MOVIE : "<<t[i]->getName()<<endl;
+            loadMovieWithName( t[i]->getName() );
+        }
+    }
+
 }
 
 
@@ -395,7 +379,7 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
     rdrGui->addSlider("THRESHOLD TINT", 0, 255, &thresholdAlpha);
     rdrGui->addSlider("DIFF TINT", 0, 255, &diffAlpha);
     rdrGui->addSlider("FLOW WINDOW TINT", 0, 255, &windowAlpha);
-	rdrGui->addSlider("DIFFERENCE HUE",	0, 1.0, &differenceHueShift);
+	rdrGui->addSlider("DIFFERENCE HUE",	0, 1.0, &hueShift);
     rdrGui->addDropDownList("VIDEO", movieStrings);
     rdrGui->autoSizeToFitWidgets();
     ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
@@ -590,7 +574,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
 		//shader.setUniformTexture("thresholdedImage", thresholded, 0);
 		shader.setUniformTexture("previousFrame", prev, 1);
 		shader.setUniformTexture("currentFrame", player->getTextureReference(), 2);
-		
+		shader.setUniform1f("hueShift", hueShift);
 		m.draw();
 		
 		shader.end();
@@ -745,8 +729,7 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
         updateImagesForNewVideo();
 		
         ofxUIToggle* t = (ofxUIToggle*)e.widget;
-		loadMovieWithName( t->getName() );
-		
+        if(t->getValue())loadMovieWithName( t->getName() );
     }
 }
 
@@ -758,7 +741,7 @@ void CloudsVisualSystemVision::loadMovieWithName(string name){
 
 	for(int i = 0; i < movieStrings.size(); i++){
 		if (movieStrings[i] == name) {
-			cout << "Loading movie from GUI " << movieStrings[i] << endl;
+			cout << "Loading movie from GUI " << movieStrings[i] <<" : "<<name<< endl;
 			loadMovieAtIndex(i);
 			break;
 		}
