@@ -1,3 +1,11 @@
+//
+//  CloudsCamera.h
+//  CLOUDS
+//
+//  Created by James George on 6/14/13.
+//
+//
+
 #pragma once
 
 #include "ofMain.h"
@@ -19,6 +27,9 @@ class CloudsRGBDCamera : public ofCamera {
 	float liftAmount;
 	//y params range --
 	float liftRange;
+	
+	//updated every frame with canvas dimensions
+	void setCanvasWidthHeight(float width, float height );
 
 	//looking and dampening params
 	ofVec3f lookTarget;
@@ -32,7 +43,8 @@ class CloudsRGBDCamera : public ofCamera {
 	void setTransitionStartNode( ofNode* _startNode );
 	void setTransitionTargetNode( ofNode* _targetNode );
 	void setTransitionPercent( float t );
-
+	
+	
 	void jumpToPosition();
 	
 	//up vector drift
@@ -54,7 +66,8 @@ class CloudsRGBDCamera : public ofCamera {
 	ofVec3f currentPosition;
 	ofVec3f currentLookTarget;
 	ofNode startTransform;
-	
+	float canvasWidth;
+	float canvasHeight;
 	
 	void setPositionFromMouse();
 	

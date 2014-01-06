@@ -3,7 +3,7 @@
     <Name>Seed positions</Name>
     <IsMinified>0</IsMinified>
     <XPosition>461.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <YPosition>281.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -12,6 +12,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>mmmm.seed</Name>
+    <Name>2014gp_1.seed</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>2014gp_2.seed</Name>
     <Value>1</Value>
 </Widget>

@@ -351,6 +351,8 @@ void CloudsVisualSystem::update(ofEventArgs & args)
         updateTimelineUIParams();
     }
     
+	cloudsCamera.setCanvasWidthHeight(getCanvasWidth(), getCanvasHeight());
+	
 	//JG Never skip the update loop this is causing lots of problems
 //    if(bUpdateSystem)
     {
@@ -3103,7 +3105,7 @@ void CloudsVisualSystem::selfPostDraw(){
             //	ofSetColor(255, 50);
             //	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
             if(it->second.actionType == 0){
-                ofSetColor(ofColor::steelBlue, 175);
+                ofSetColor(ofColor::steelBlue, 255);
             }
             else if (it->second.primary) {
                 ofSetColor(240,240,100, 175);

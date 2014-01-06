@@ -30,13 +30,23 @@ void RTcmixParseScoreFile(string f)
     parse_score((char*)thescore.c_str(), thescore.length());
 }
 
+void BUS_ON(string ampbus, int abn)
+{
+    char thebuf [256];
+    int bx;
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    
+}
+
 void INITMIX()
 {
     RTcmixParseScoreFile("cmixclear.sco");
 }
 
 // use the SPLITTER() instrument to configure effects path
-void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus, string ampcurve)
+void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus, string ampcurve, string ampbus, int abn)
 {
     char thebuf [256];
     int bx;
@@ -65,27 +75,57 @@ void SETUPMIX(double outskip, double time, double amp, double dry, double verb, 
     // do the SPLITTER bus_config()
     bx = snprintf(thebuf, 256, "bus_config(\"SPLITTER\", \"%s\", \"aux 2-3 out\", \"aux 4-5 out\", \"aux 6-7 out\")", (char*)input.c_str());
     parse_score(thebuf, bx);
-
-    // do the SPLITTER() calls
-    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*%s*e_DECLICK, 0, %f, 0., %f, 0., %f, 0.)", outskip, time, amp, (char*)ampcurve.c_str(), dry, verb, echo);
+    
+    // do the SPLITTER notes
+    
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*%s*e_DECLICK, 1, 0., %f, %f, 0., 0., %f)", outskip, time, amp, (char*)ampcurve.c_str(), dry, verb, echo);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*%s*e_DECLICK*%s, 0, %f, 0., %f, 0., %f, 0.)", outskip, time, amp, (char*)ampcurve.c_str(), (char*)ampbus.c_str(), dry, verb, echo);
+    parse_score(thebuf, bx);
+    
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, %f*%s*e_DECLICK*%s, 1, 0., %f, %f, 0., 0., %f)", outskip, time, amp, (char*)ampcurve.c_str(), (char*)ampbus.c_str(), dry, verb, echo);
     parse_score(thebuf, bx);
     
 }
 
 // uses the SPLITTER() and MIX() and GVERB() instruments
-void REVERB(double outskip, double time)
+void REVERB(double outskip, double time, string ampbus, int abn)
 {
     char thebuf [256];
     int bx;
     
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    
     // DRY MIX
-    bx = snprintf(thebuf, 256, "MIX(%f, 0.0, %f, 1., 0, 1)", outskip, time);
+    bx = snprintf(thebuf, 256, "MIX(%f, 0.0, %f, 1.*%s, 0, 1)", outskip, time, (char*)ampbus.c_str());
+    parse_score(thebuf, bx);
+    
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
     parse_score(thebuf, bx);
     
     // WET MIX
-    bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 75., 8., 0.2, 1., -90., -15., -12., 3.0)", outskip, time);
+    bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0*%s, 75., 8., 0.2, 1., -90., -15., -12., 3.0)", outskip, time, (char*)ampbus.c_str());
     parse_score(thebuf, bx);
 }
 
@@ -99,7 +139,7 @@ void SCHEDULEBANG(double time)
 }
 
 // play an audio file from DISK
-void STREAMSOUND(double outskip, string file, double dur, double amp)
+void STREAMSOUND(double outskip, string file, double dur, double amp, string ampbus, int abn)
 {
     
     char thebuf [256];
@@ -108,15 +148,23 @@ void STREAMSOUND(double outskip, string file, double dur, double amp)
     ofDirectory sdir(p);
     
     string f = sdir.getAbsolutePath()+"/"+file;
+    
+    
     bx = snprintf(thebuf, 256, "rtinput(\"%s\")", (char*)f.c_str());
+    parse_score(thebuf, bx);
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
     parse_score(thebuf, bx);
     if(dur<0)
     {
-        bx = snprintf(thebuf, 256, "STEREO(%f, 0., DUR(), %f*amp_declick, 0, 1)", outskip, amp);
+        bx = snprintf(thebuf, 256, "STEREO(%f, 0., DUR(), %f*amp_declick*%s, 0, 1)", outskip, amp, (char*)ampbus.c_str());
     }
     else
     {
-        bx = snprintf(thebuf, 256, "STEREO(%f, 0., %f, %f*amp_declick, 0, 1)", outskip, dur, amp);
+        bx = snprintf(thebuf, 256, "STEREO(%f, 0., %f, %f*amp_declick*%s, 0, 1)", outskip, dur, amp, (char*)ampbus.c_str());
     }
     parse_score(thebuf, bx);
 }
@@ -130,23 +178,23 @@ void STREAMSOUND_DYNAMIC(double outskip, string file, double amp, string pvar, i
     ofDirectory sdir(p);
     
     string f = sdir.getAbsolutePath()+"/"+file;
-
+    
     // establish handle
     bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)pvar.c_str(), updatenr);
-    parse_score(thebuf, bx);
-
-    // start bus link
-    bx = snprintf(thebuf, 256, "bus_link(%d)", updatenr);
     parse_score(thebuf, bx);
     
     // load file
     bx = snprintf(thebuf, 256, "rtinput(\"%s\")", (char*)f.c_str());
     parse_score(thebuf, bx);
     
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", updatenr);
+    parse_score(thebuf, bx);
+    
     // start sound
     bx = snprintf(thebuf, 256, "STEREO(%f, 0., DUR(), %f*%s, 0, 1)", outskip, amp, (char*)pvar.c_str());
     parse_score(thebuf, bx);
-   
+    
 }
 
 // loads an audio file into RAM as a buffer handle
@@ -161,37 +209,49 @@ float LOADSOUND(string file, string handle)
     // you can now use the buffer name (bname) in rtinput("MMBUF", "buffername")
     
     if(LUKEDEBUG) printf("LOADED SOUND %s: file: %s  duration: %f\n", (char*)handle.c_str(),
-           (char*)file.c_str(), duration);
+                         (char*)file.c_str(), duration);
     return(duration);
 }
 
 // basic soundfile mixing interface
-void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle)
+void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle, string ampbus, int abn)
 {
     char thebuf [256];
     int bx;
     bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "STEREO(%f, %f*DUR(), %f, %f*amp_declick, %f)", outskip, inskip, dur, amp, pan);
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "STEREO(%f, %f*DUR(), %f, %f*amp_declick*%s, %f)", outskip, inskip, dur, amp, (char*)ampbus.c_str(), pan);
     parse_score(thebuf, bx);
     
 }
 
 // soundfile mixing with TRANS3
-void STEREO3(double outskip, double inskip, double dur, double amp, double pan, string handle)
+void STEREO3(double outskip, double inskip, double dur, double amp, double pan, string handle, string ampbus, int abn)
 {
     char thebuf [256];
     int bx;
     bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "TRANS3(%f, %f, %f, %f*amp_declick, 0., 0, %f)", outskip, inskip, dur, amp, pan);
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, %f, %f, %f*amp_declick*%s, 0., 0, %f)", outskip, inskip, dur, amp, (char*)ampbus.c_str(), pan);
     parse_score(thebuf, bx);
     
 }
 
 
 // loop a sound (transposition auto-corrected based on ideal length)
-void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, double amp, string handle)
+void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, double amp, string handle, string ampbus, int abn)
 {
     float incr = loopdur/looplen;
     float freq = mtof(60);
@@ -206,15 +266,27 @@ void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, do
     int bx;
     bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "TRANS3(%f, %f, %f, %f*amp_declick, %f, 0, 0)", outskip, inskip, looplen, amp, transp);
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "TRANS3(%f, %f, %f, %f*amp_declick, %f, 1, 1)", outskip, inskip, looplen, amp, transp);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, %f, %f, %f*amp_declick*%s, %f, 0, 0)", outskip, inskip, looplen, amp, (char*)ampbus.c_str(), transp);
+    parse_score(thebuf, bx);
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, %f, %f, %f*amp_declick*%s, %f, 1, 1)", outskip, inskip, looplen, amp, (char*)ampbus.c_str(), transp);
     parse_score(thebuf, bx);
     
 }
 
 // loop a sound in, well, mono
-void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan)
+void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan, string ampbus, int abn)
 {
     float incr = loopdur/looplen;
     float freq = mtof(60);
@@ -229,118 +301,202 @@ void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, s
     int bx;
     bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f*amp_declick, %f, 0, %f)", outskip, looplen, amp, transp, pan);
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f*amp_declick*%s, %f, 0, %f)", outskip, looplen, amp, (char*)ampbus.c_str(), transp, pan);
     parse_score(thebuf, bx);
     
 }
 
 
-void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown)
+void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown, string ampbus, int abn)
 {
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "PANECHO(%f, %f, %f, %f, %f, %f, %f, %f, 0)", outskip, inskip, dur, amp, leftdelay, rightdelay, feedback, ringdown);
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "PANECHO(%f, %f, %f, %f, %f, %f, %f, %f, 1)", outskip, inskip, dur, amp, rightdelay, leftdelay, feedback, ringdown);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "PANECHO(%f, %f, %f, %f*%s, %f, %f, %f, %f, 0)", outskip, inskip, dur, amp, (char*)ampbus.c_str(), leftdelay, rightdelay, feedback, ringdown);
+    parse_score(thebuf, bx);
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "PANECHO(%f, %f, %f, %f*%s, %f, %f, %f, %f, 1)", outskip, inskip, dur, amp, (char*)ampbus.c_str(), rightdelay, leftdelay, feedback, ringdown);
     parse_score(thebuf, bx);
     
 }
 
 // basic wavetable interface
-void WAVETABLE(double outskip, double dur, double amp, double freq, double pan, string waveform, string ampenvelope)
+void WAVETABLE(double outskip, double dur, double amp, double freq, double pan, string waveform, string ampenvelope, string ampbus, int abn)
 {
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "WAVETABLE(%f, %f, %f*%s, %f, %f, %s)", outskip, dur, amp*MAXAMP, (char*)ampenvelope.c_str(), freq, pan, (char*)waveform.c_str());
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "WAVETABLE(%f, %f, %f*%s*%s, %f, %f, %s)", outskip, dur, amp*MAXAMP, (char*)ampenvelope.c_str(), (char*)ampbus.c_str(), freq, pan, (char*)waveform.c_str());
     parse_score(thebuf, bx);
 }
 
 // granular synth
-void GRANSYNTH(double outskip, double dur, double amp, double freq, double freq_jitter, double grate, double grate_var, double gdur_min, double gdur_max, double gamp_min, double gamp_max, double gpan_min, double gpan_max, string waveform, string ampenvelope, string transphandle)
+void GRANSYNTH(double outskip, double dur, double amp, double freq, double freq_jitter, double grate, double grate_var, double gdur_min, double gdur_max, double gamp_min, double gamp_max, double gpan_min, double gpan_max, string waveform, string ampenvelope, string transphandle, string ampbus, int abn)
 {
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "GRANSYNTH(%f, %f, %f*amp_declick, %s, %s, %f, %f, %f, %f, %f, %f, %f, %s, %f, %f, %f, %f)", outskip, dur, amp*MAXAMP, (char*)waveform.c_str(), (char*)ampenvelope.c_str(), grate, grate_var, gdur_min, gdur_max, gamp_min, gamp_max, octcps(freq), (char*)transphandle.c_str(), freq_jitter, ofRandom(0, 1000.), gpan_min, gpan_max);
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "GRANSYNTH(%f, %f, %f*amp_declick*%s, %s, %s, %f, %f, %f, %f, %f, %f, %f, %s, %f, %f, %f, %f)", outskip, dur, amp*MAXAMP, (char*)ampbus.c_str(), (char*)waveform.c_str(), (char*)ampenvelope.c_str(), grate, grate_var, gdur_min, gdur_max, gamp_min, gamp_max, octcps(freq), (char*)transphandle.c_str(), freq_jitter, ofRandom(0, 1000.), gpan_min, gpan_max);
     parse_score(thebuf, bx);
     
 }
 
 // granular synth, overloaded
-void GRANSYNTH(double outskip, double dur, double amp, double freq, double freq_jitter, double grate, double grate_var, double gdur_min, double gdur_max, double gamp_min, double gamp_max, double gpan_min, double gpan_max, string waveform, string ampenvelope, string transphandle, string pitchhandle, string ratehandle, string durhandle)
+void GRANSYNTH(double outskip, double dur, double amp, double freq, double freq_jitter, double grate, double grate_var, double gdur_min, double gdur_max, double gamp_min, double gamp_max, double gpan_min, double gpan_max, string waveform, string ampenvelope, string transphandle, string pitchhandle, string ratehandle, string durhandle, string ampbus, int abn)
 {
-    char thebuf [256];
+    char thebuf [512];
     int bx;
-    bx = snprintf(thebuf, 256, "GRANSYNTH(%f, %f, %f*amp_declick, %s, %s, %f*%s, %f*%s, %f*%s, %f*%s, %f, %f, %f, %s, %f*%s, %f, %f, %f)", outskip, dur, amp*MAXAMP, (char*)waveform.c_str(), (char*)ampenvelope.c_str(), grate, (char*)ratehandle.c_str(), grate_var, (char*)ratehandle.c_str(), gdur_min, (char*)durhandle.c_str(), gdur_max, (char*)durhandle.c_str(), gamp_min, gamp_max, octcps(freq), (char*)transphandle.c_str(), freq_jitter, (char*)pitchhandle.c_str(), ofRandom(RAND_MAX), gpan_min, gpan_max);
+    // establish handle
+    bx = snprintf(thebuf, 512, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 512, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 512, "GRANSYNTH(%f, %f, %f*amp_declick*%s, %s, %s, %f*%s, %f*%s, %f*%s, %f*%s, %f, %f, %f, %s, %f*%s, %f, %f, %f)", outskip, dur, amp*MAXAMP, (char*)ampbus.c_str(), (char*)waveform.c_str(), (char*)ampenvelope.c_str(), grate, (char*)ratehandle.c_str(), grate_var, (char*)ratehandle.c_str(), gdur_min, (char*)durhandle.c_str(), gdur_max, (char*)durhandle.c_str(), gamp_min, gamp_max, octcps(freq), (char*)transphandle.c_str(), freq_jitter, (char*)pitchhandle.c_str(), ofRandom(RAND_MAX), gpan_min, gpan_max);
     parse_score(thebuf, bx);
 }
 
 // waveshaper
-void WAVESHAPE(double outskip, double dur, double amp, double freq, double pan, string waveform, string ampenvelope, string xferfunc, string controlenv)
+void WAVESHAPE(double outskip, double dur, double amp, double freq, double pan, string waveform, string ampenvelope, string xferfunc, string controlenv, string ampbus, int abn)
 {
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "WAVESHAPE(%f, %f, %f, 0., 1., %f*%s, %f, %s, %s, %s)", outskip, dur, freq, amp*MAXAMP, (char*)ampenvelope.c_str(), pan, (char*)waveform.c_str(), (char*)xferfunc.c_str(), (char*)controlenv.c_str());
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "WAVESHAPE(%f, %f, %f, 0., 1., %f*%s*%s, %f, %s, %s, %s)", outskip, dur, freq, amp*MAXAMP, (char*)ampenvelope.c_str(), (char*)ampbus.c_str(), pan, (char*)waveform.c_str(), (char*)xferfunc.c_str(), (char*)controlenv.c_str());
     parse_score(thebuf, bx);
     
 }
 
 // helmholtz resonator
-void MBLOWBOTL(double outskip, double dur, double amp, double freq, double noiseamp, double maxpressure, double pan, string pressureenv, string ampenvelope)
+void MBLOWBOTL(double outskip, double dur, double amp, double freq, double noiseamp, double maxpressure, double pan, string pressureenv, string ampenvelope, string ampbus, int abn)
 {
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "MBLOWBOTL(%f, %f, %f*%s, %f, %f, %f, %f, %s)", outskip, dur, amp*MAXAMP, (char*)ampenvelope.c_str(), freq, noiseamp, maxpressure, pan, (char*)pressureenv.c_str());
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "MBLOWBOTL(%f, %f, %f*%s*%s, %f, %f, %f, %f, %s)", outskip, dur, amp*MAXAMP, (char*)ampbus.c_str(), (char*)ampenvelope.c_str(), freq, noiseamp, maxpressure, pan, (char*)pressureenv.c_str());
     parse_score(thebuf, bx);
 }
 
 // 2D mesh from the STK
-void MMESH2D(double outskip, double dur, double amp, int nxpoints, int nypoints, double xpos, double ypos, double decay, double strike, double pan)
+void MMESH2D(double outskip, double dur, double amp, int nxpoints, int nypoints, double xpos, double ypos, double decay, double strike, double pan, string ampbus, int abn)
 {
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "MMESH2D(%f, %f, %f, %i, %i, %f, %f, %f, %f, %f)", outskip, dur, amp*MAXAMP, nxpoints, nypoints, xpos, ypos, decay, strike, pan);
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "MMESH2D(%f, %f, %f*%s, %i, %i, %f, %f, %f, %f, %f)", outskip, dur, amp*MAXAMP, (char*)ampbus.c_str(), nxpoints, nypoints, xpos, ypos, decay, strike, pan);
     parse_score(thebuf, bx);
 }
 
 // modal bars from the STK
-void MMODALBAR(double outskip, double dur, double amp, double freq, double hardness, double pos, int instrument)
+void MMODALBAR(double outskip, double dur, double amp, double freq, double hardness, double pos, int instrument, string ampbus, int abn)
 {
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "MMODALBAR(%f, %f, %f, %f, %f, %f, %i)", outskip, dur, amp*MAXAMP, freq, hardness, pos, instrument);
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "MMODALBAR(%f, %f, %f*%s, %f, %f, %f, %i)", outskip, dur, amp*MAXAMP, (char*)ampbus.c_str(), freq, hardness, pos, instrument);
     parse_score(thebuf, bx);
 }
 
 // karplus-strong algorithm
-void STRUM(double outskip, double dur, double amp, double freq, double squish, double decay, double pan)
+void STRUM(double outskip, double dur, double amp, double freq, double squish, double decay, double pan, string ampbus, int abn)
 {
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "STRUM2(%f, %f, %f, %f, %f, %f, %f)", outskip, dur, amp*MAXAMP, freq, squish, decay, pan);
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "STRUM2(%f, %f, %f*%s, %f, %f, %f, %f)", outskip, dur, amp*MAXAMP, (char*)ampbus.c_str(), freq, squish, decay, pan);
     parse_score(thebuf, bx);
 }
 
 // three-pitch filtered noise
-void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan, double f1, double f2, double f3, double Q, string ampenvelope)
+void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan, double f1, double f2, double f3, double Q, string ampenvelope, string ampbus, int abn)
 {
     double bw1 = 1.0/Q;
     double bw2 = 1.0/Q;
     double bw3 = 1.0/Q;
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "NOISE(%f, %f, %f*%s, 1)", outskip, dur, MAXAMP*amp, (char*)ampenvelope.c_str());
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "FILTERBANK(%f, 0, %f, %f, %f, 0, %f, %f, %f, 1., %f, %f, 1., %f, %f, 1.)", outskip, dur, 0.1, ringdown, pan, f1, bw1, f2, bw2, f3, bw3);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "NOISE(%f, %f, %f*%s*%s, 1)", outskip, dur, MAXAMP*amp, (char*)ampenvelope.c_str(), (char*)ampbus.c_str());
+    parse_score(thebuf, bx);
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "FILTERBANK(%f, 0, %f, %f*%s, %f, 0, %f, %f, %f, 1., %f, %f, 1., %f, %f, 1.)", outskip, dur, 0.1, (char*)ampbus.c_str(), ringdown, pan, f1, bw1, f2, bw2, f3, bw3);
     parse_score(thebuf, bx);
     
 }
 
 // banded waveguide
-void MBANDEDWG(double outskip, double dur, double amp, double freq, double strikepos, int pluckflag, double maxvel, int preset, double bowpressure, double resonance, double integration, double pan, string velocityenvelope)
+void MBANDEDWG(double outskip, double dur, double amp, double freq, double strikepos, int pluckflag, double maxvel, int preset, double bowpressure, double resonance, double integration, double pan, string velocityenvelope, string ampbus, int abn)
 {
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "MBANDEDWG(%f, %f, %f, %f, %f, %i, %f, %i, %f, %f, %f, %f, %s)", outskip, dur, amp*MAXAMP, freq, strikepos, pluckflag, maxvel, preset, bowpressure, resonance, integration, pan, (char*)velocityenvelope.c_str());
+    // establish handle
+    bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
+    parse_score(thebuf, bx);
+    // start bus link
+    bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "MBANDEDWG(%f, %f, %f*%s, %f, %f, %i, %f, %i, %f, %f, %f, %f, %s)", outskip, dur, amp*MAXAMP, (char*)ampbus.c_str(), freq, strikepos, pluckflag, maxvel, preset, bowpressure, resonance, integration, pan, (char*)velocityenvelope.c_str());
     parse_score(thebuf, bx);
 }
 
@@ -363,12 +519,12 @@ void PATCHFX(string inst, string input, string output)
 }
 
 // p-field updating
-void PFIELD_SCHED(float outskip, float duration, int nr, string action)
+void PFIELD_SCHED(float outskip, float duration, int abn, string action)
 {
     char thebuf [256];
     int bx;
     // BUG - the de-queue flag doesn't work as advertised; brad is investigating
-    bx = snprintf(thebuf, 256, "PFSCHED(%f, %f, %d, %s, 1)", outskip, duration, nr, (char*)action.c_str());
+    bx = snprintf(thebuf, 256, "PFSCHED(%f, %f, %d, %s, 1)", outskip, duration, abn, (char*)action.c_str());
     parse_score(thebuf, bx);
 }
 

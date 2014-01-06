@@ -359,7 +359,8 @@ void CloudsVisualSystemTwitter::loadJSONData(string folderName){
     addUsersFromMentions(curActivityMapCoord, activityMapCoordWidth);
 	
 	activityMap.allocate(activityMapCoordWidth, curActivityMapCoord.y+1, OF_IMAGE_GRAYSCALE);
-
+	activityMap.getPixelsRef().set(0);
+	activityMap.update();
 }
 
 void CloudsVisualSystemTwitter::loadAvatars(){
@@ -372,7 +373,7 @@ void CloudsVisualSystemTwitter::loadAvatars(){
         vector<ofFile>files= dir.getFiles();
         
         for(int i = 0; i< files.size(); i++){
-            string filePath =getVisualSystemDataPath()+"avatars/"+files[i].getFileName();
+            string filePath = getVisualSystemDataPath()+"avatars/"+files[i].getFileName();
             
             vector<string> handle = ofSplitString(files[i].getFileName(),".");
             if (handle[0] == "default") {
