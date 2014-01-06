@@ -1,7 +1,7 @@
 <clouds>
 	<project title="Drawn">
 			<creator_name>Zach Lieberman</creator_name>
-			<description>In the installation drawn, figures drawn with pen and ink take on a life of their own and interact with their creators. They seem to arise from the sheet of drawing paper and start to move in with the hand motions of the person who drew them.</description>
+			<description>Figures drawn with pen and ink take on a life of their own and interact with their creators, appearing to swim on the paper's surface.</description>
 
 			<videos>
 				<file>drawn_480.mov</file>
@@ -43,7 +43,7 @@
 	</project>
 	<project title="Processing">
 			<creator_name>Casey Reas, Ben Fry</creator_name>
-			<description>An open-source language and environment for learning the fundamentals of electronic art and computer programming.</description>
+			<description>An open-source language and environment for learning the fundamentals of electronic art and computer programming, developed at the MIT Media Lab's Aesthetics and Computation Group.</description>
 			<videos>
 				<file>Element1_480.mov</file>
 				<file>Element2_480.mov</file>
@@ -58,7 +58,7 @@
 	</project>
     <project title="Eyewriter">
 			<creator_name>Graffiti Research Lab </creator_name>
-			<description>The EyeWriter is a low-cost eyetracking system originally designed for paralyzed graffiti artist TEMPT1. The EyeWriter system uses inexpensive cameras and open-source computer vision software to that allows a user to draw with eye-movement.</description>
+			<description>A low-cost eyetracking system originally designed for paralyzed graffiti artist TEMPT1. It uses inexpensive cameras and computer vision enabling a user to draw with eye-movement.</description>
 			<videos>
 				<file>Eyewriter2_720.mov</file>
 			</videos>
@@ -88,7 +88,7 @@
 
 	<project title="Manual Input Sessions">
 			<creator_name>Golan Levin, Zach Lieberman</creator_name>
-			<description>A series of audiovisual vignettes which probe the expressive possibilities of hand gestures and finger movements.Our concert is performed on a combination of custom interactive software, analog overhead projectors and digital computer video projectors</description>
+			<description>A series of audiovisual vignettes which probe the expressive possibilities of hand gestures and finger movements. Performed using a combination of custom software and overhead projectors.</description>
 			<videos>
 				<file>ManualInput_480.mov</file>
 			</videos>
@@ -112,7 +112,7 @@
 
     <project title="Open Paths">
 			<creator_name>Brian House, Jer Thorp, Jake Poroway</creator_name>
-			<description>A model for personal engagement with data that lets people track their locations and visualize where they've been.</description>
+			<description>A model for personal engagement with data that lets people track their locations and visualize where they've been using a simple smartphone app.</description>
 			<videos>
 				<file>OpenPaths_720.mov</file>
 			</videos>
@@ -145,7 +145,7 @@
 
     <project title="Transparency Grenade">
 			<creator_name>Julian Oliver</creator_name>
-			<description>A digital weapon that lets users leak information from closed meetings by just pulling a pin. The device captures network traffic and audio in a location and anonymously streams it to an external server that mines it for information — including e-mail excerpts, web pages, images and voice. The server then uploads that data to a public website and positions it on a map.</description>
+			<description>A digital weapon for leaking information from closed meetings by pulling a pin. The device captures network traffic and audio in a location and anonymously streams it to an external server that mines it for information.</description>
 			<videos>
 				<file>TransparencyGrenade_720.mov</file>
 			</videos>
@@ -153,7 +153,7 @@
     
 	<project title="ToxicLibs">
 			<creator_name>Karsten Schmidt</creator_name>
-			<description>Toxiclibs is an independent, modular open source library collection for Java and Processing,</description>
+			<description>Toxiclibs is an independent, modular open source library collection for Java and Processing, widely used by artists for 3D visualization and interactive art.</description>
 			<videos>
 				<file>ToxicLibs_720.mov</file>
 			</videos>
@@ -162,7 +162,7 @@
 
 	<project title="Coronal Mass Ejection">
 			<creator_name>Robert Hodgin</creator_name>
-			<description>Generative Coronal Mass Ejection, created for the Written Images project</description>
+			<description>Generative Coronal Mass Ejection, created for the Written Images project. It was developed in Cinder, a powerful C++ library for art, design and visual effects.</description>
 			<videos>
 				<file>Flight404_720.mov</file>
 			</videos>
@@ -187,7 +187,7 @@
         
 	<project title="Social Turkers">
 			<creator_name>Lauren McCarthy</creator_name>
-			<description>A crowdsourced dating project in which the artist streamed videos of herself on a series of dates for an audience on Amazon Mechanical Turk, and paid them to offer feedback on what she should do, say or ask. 
+			<description>A crowdsourced performance in which the artist streamed videos of herself on a series of dates for an online audience and paid them to tell her what to do, say or ask. 
             </description>
 			<videos>
 				<file>SocialTurkers_720.mov</file>
@@ -213,7 +213,7 @@
 
 	<project title="Reactive Squares">
 			<creator_name>John Maeda</creator_name>
-			<description>10 squares that respond to input from the microphone - 1995 </description>
+			<description>10 squares that respond to input from the microphone. This sketch was the first in a series, later published within Maeda's Reactive Book - 1995 </description>
 			<videos>
 				<file>ReactiveSquare_480.mov</file>
 			</videos>
@@ -221,7 +221,7 @@
 
     <project title="Design by Numbers">
 			<creator_name></creator_name>
-			<description>An influential experiment in teaching programming initiated at the MIT Media Lab during the 1990s.=</description>
+			<description>A minimal programming enviornment for artists and designers, created by John Maeda in the 1990s. Its simple, intuitive approach inspired Processing by Reas and Fry.=</description>
 			<videos>
 				<file>DesignByNumbers_720.mov</file>
 			</videos>
@@ -237,7 +237,7 @@
 
     <project title="Energy Flow">
 			<creator_name>Vera Glahn, Marcus Wendt - Field IO</creator_name>
-			<description>A non-linear film experience weaving 10 animated story lines into a filmic dream rush of paintings in motion. Energy Flow explores the complexity of how things are connected in our lives today – the fragile equilibrium between physical, political, and cultural tensions.</description>
+			<description>A non-linear film exploreing complexity and interconnectivity. Ten animated story lines flow together in a dream of paintings in motion.</description>
 			<videos>
 				<file>EnergyFlowGravity_720.mov</file>
 				<file>EnergyFlowHadron_720.mov</file>
@@ -254,8 +254,7 @@
 
     <project title="Transfinite">
 			<creator_name>Ryoji Ikeda</creator_name>
-			<description>A large-scale digital installation
-and sonic landscape that explore the concept of infinity, rationality, and the beauty of data. Ikeda's first work in the united states, exhibited at the Park Avenue Armory in NYC. -2011</description>
+			<description>An audiovisual landscape exploring the concept of infinity and the beauty of data. Ikeda's first work in the united states, exhibited at NYC's Park Avenue Armory. -2011</description>
 			<videos>
 				<file>Transfinite_720.mov</file>
 			</videos>
@@ -272,7 +271,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 
 	<project title="Cell Cycle">
 			<creator_name>N-E-R-V-O-U-S System</creator_name>
-			<description>A WEBGL design app that lets you create your own 3d-printed jewelry using a physics simulation to form unique cellular designs.</description>
+			<description>An interactive WEBGL design app that lets you create your own 3d-printed jewelry using a physics simulation to form unique cellular designs.</description>
 			<videos>
 				<file>CellCycle1_720.mov</file>
 				<file>CellCycle2_720.mov</file>
@@ -299,7 +298,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 
 	<project title="Funky Forest">
 			<creator_name>Emily Gobeille, Theo Watson</creator_name>
-			<description>An interactive ecosystem where children create trees with their body and then divert the water flowing from the waterfall to the trees to keep them alive. The health of the trees contributes to the overall health of the forest and the types of creatures that inhabit it.</description>
+			<description>An interactive ecosystem where children create trees with their body and  divert  water flowing from a waterfall keep the trees alive, contributing to the overall health of the forest.</description>
 			<videos>
 				<file></file>
 			</videos>
@@ -316,7 +315,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 
 	<project title="Galapagos">
 			<creator_name>Carl Sims</creator_name>
-			<description></description>
+			<description>Viewers help evolve 3D animated creatures by selecting which ones will be allowed to live and produce new, mutated offspring.</description>
 			<videos>
 				<file>CarlSims2_480.mov</file>
 				<file>CarlSims3_480.mov</file>
@@ -325,7 +324,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 	
 	<project title="Evolved Virtual Creatures">
 			<creator_name>Carl Sims</creator_name>
-			<description></description>
+			<description>A population of several hundred creatures is created within a supercomputer, and each creature is tested for their ability to perform a given task.</description>
 			<videos>
 				<file>CarlSims_480.mov</file>
 			</videos>
@@ -333,7 +332,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 
     <project title="People Staring at Computers">
 			<creator_name>Kyle McDonald</creator_name>
-			<description>Kyle wrote a simple application that took one picture every minute. If it found a face, it uploaded the photo to a server. He installed the app around NYC over three days, collecting more than a thousand photos. When the 14th street Apple Store discovered the application on their computers, they called the Secret Service. - 2011</description>
+			<description>A simple application to takes a picture every minute, finds faces, and uploads them to a server. Kyle installed it in public places, such as the Apple Store, to secretly gather portraits of people staring at computers.</description>
 			<videos>
 				<file>PeopleStaring_720.mov</file>
 			</videos>
@@ -349,7 +348,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 
    <project title="Face OSC">
 			<creator_name>Kyle McDonald</creator_name>
-			<description>FaceOSC is a tool for prototyping face-based interaction. FaceOSC was based on the work of Jason Saragih, a research scientist at CSIRO.</description>
+			<description>FaceOSC is a tool for prototyping face-based interaction, released as an addon for openFrameworks. It applies facetracking algorithms by researcher Jason Saragih.</description>
 			<videos>
 				<file>FaceOSC_720.mov</file>
 			</videos>
@@ -365,7 +364,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 	
     <project title="Sniff">
 			<creator_name>Karolina Sobecka, James George</creator_name>
-			<description>Sniff is an interactive projection in a storefront window. A CG dog follows the viewer and dynamically responds to his gestures and changes his behavior based on the state of engagement with the viewer.</description>
+			<description>A CG dog projected on a storefront follows the viewer and responds to his gestures, behaving according to the person's state of engagement.</description>
 			<videos>
 				<file>Sniff_720.mov</file>
 			</videos>
@@ -374,7 +373,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 
 	<project title="Aesthetics and Computation Group">
 			<creator_name>Directed by Prof. John Maeda</creator_name>
-			<description>Work by Peter Cho '99, Jared Schiffman '01, Axel Kilian '00, Ben Fry '00, Tom White '98, Elise Co '00, Casey Reas '01, Golan Levin '00</description>
+			<description>A lab at MIT that helped establish the field of computational art and design. Alumni include Golan Levin, Casey Reas, Ben Fry, Elise Co, Peter Cho, Jared Schiffman, Axel Kilian and Tom White.</description>
 			<videos>
 				<file>ACU_1_480.mov</file>
 				<file>ACU_2_480.mov</file>
@@ -395,7 +394,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 
 	<project title="Syn_">
 			<creator_name>Ryoichi Kurokawa</creator_name>
-			<description>Kurokawa performs audiovisual compositions designed to overload the senses.</description>
+			<description>Kurokawa performs audiovisual compositions designed to overload the senses, combining aesthetics of nature and technology.</description>
 			<videos>
 				<file>Syn_720.mov</file>
 			</videos>
