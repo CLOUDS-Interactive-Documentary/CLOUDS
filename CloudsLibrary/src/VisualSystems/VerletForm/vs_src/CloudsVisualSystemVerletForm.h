@@ -31,6 +31,7 @@ typedef struct{
 	int gridx;
 	int gridy;
 	int colID;
+	int vertID;
 
 	bool isEdge;
 
@@ -96,14 +97,16 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 
   protected:
 
+	bool doAutoGenerate;
+
     ofCamera cam;
     ofVec3f grav,gravGoal;
     int gravCnt,gravCntGoal;
 
-    ofVec3f camCenterOffs;
+    ofVec3f camCenterOffs,mousePos;
     ofVec3f modelRot,modelRotD;
     float modelRotMax;
-	bool camEnabled;
+	bool camEnabled,colorLightEnabled;
 
 	ofFloatColor cWhite,cBlack;
 
@@ -118,11 +121,9 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	float clothWidth;
 	float clothHeight;
 	float colorIndex,colorMod;
-
-
-	bool colorLightEnabled;
 	int colorStrategy;
-	
+
+
 	bool gridDoStitch;
 	int gridSize;
 	float gridSizeF;
@@ -189,7 +190,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	
 
 
-	vector< vector<Particle3D*> > particles;
+	vector<vector<Particle3D*>> particles;
 	
 	//color generators
 	void initColors(int row);
