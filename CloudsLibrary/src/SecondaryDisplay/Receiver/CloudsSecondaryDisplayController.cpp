@@ -70,6 +70,7 @@ void CloudsSecondaryDisplayController::setup(){
     meshBioLocation->bounds.width = 1000;
     meshBioLocationBG = bioLayout.getMeshByID("BOX_x5F_LOC");
     meshBioDescription = bioLayout.getMeshByID("TEXTBOX_x5F_BIO");
+    
     ////for project example
     meshProjectVideo = projectLayout.getMeshByID("BOX_x5F_VIDEO");
     meshProjectTitle = projectLayout.getMeshByID("TEXTBOX_x5F_NAME");
@@ -369,6 +370,8 @@ void CloudsSecondaryDisplayController::draw(){
     SVGMesh* t;
     
     shader.setUniform1f("alphaAmt", playhead);
+    float margin = 60;
+
     
     if(displayMode == "BIO"){
         ////question
@@ -422,7 +425,6 @@ void CloudsSecondaryDisplayController::draw(){
             else
                 longestNameWidth = lastNameWidth;
             
-            float margin = 60;
             float titleX = meshBioFirstName->bounds.x + longestNameWidth + margin;
             
             ////title
@@ -469,9 +471,10 @@ void CloudsSecondaryDisplayController::draw(){
             playerRect.scaleTo(meshProjectVideo->bounds);
             
             //draw video
-            ofSetColor(255, 255, 255, 255*playhead);
+            ofSetColor(255, 255, 255, 255*playhead); //alpha fade on video
             archivePlayer.draw(playerRect);
             ofSetColor(255, 255, 255, 255);
+            //draw video bounding mesh
             
             playingMovie = archivePlayer.isPlaying();
         }
@@ -481,6 +484,9 @@ void CloudsSecondaryDisplayController::draw(){
         hudLabelMap[meshProjectTitle->id]->draw();
         
         ////artist name
+        //////flost left
+        ofRectangle titleRect = layoutProjectTitle->getStringBoundingBox(title, hudLabelMap[meshProjectTitle->id]->bounds.x, 0);
+        hudLabelMap[meshProjectArtist->id]->bounds.x = titleRect.x+titleRect.width+margin;
         string name = currentExample.creatorName;
         hudLabelMap[meshProjectArtist->id]->draw();
         
