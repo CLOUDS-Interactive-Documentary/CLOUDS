@@ -7,7 +7,7 @@
 //
 
 #include "CloudsIntroSequence.h"
-#include "ofxObjLoader.h"
+//#include "ofxObjLoader.h"
 #include "CloudsGlobal.h"
 
 CloudsIntroSequence::CloudsIntroSequence(){
@@ -48,9 +48,9 @@ void CloudsIntroSequence::selfSetup(){
 	
 	perlinOffset = 0;
 	
-	camera.setup();
-	camera.autosavePosition = true;
-	camera.loadCameraPosition();
+//	camera.setup();
+//	camera.autosavePosition = true;
+//	camera.loadCameraPosition();
 	
 //	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_supertight.obj", tunnelMeshTight);
 //	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_loose.obj", tunnelMeshLoose);
@@ -111,7 +111,7 @@ void CloudsIntroSequence::rebuildQuestionFont(){
 
 void CloudsIntroSequence::selfUpdate(){
 	
-	camera.applyRotation = camera.applyTranslation = useDebugCamera && !cursorIsOverGUI();
+//	camera.applyRotation = camera.applyTranslation = useDebugCamera && !cursorIsOverGUI();
 	
 	if(!startedOnclick && timeline->getIsPlaying()){
 		timeline->stop();
@@ -570,7 +570,7 @@ void CloudsIntroSequence::selfSetupSystemGui(){
 
 void CloudsIntroSequence::selfSetupCameraGui(){
 	camGui->addToggle("use debug camera", &useDebugCamera);
-	camGui->addSlider("debug camera speed", 1, 20, &camera.speed);
+//	camGui->addSlider("debug camera speed", 1, 20, &camera.speed);
 	camGui->addSlider("camera fwd force", 0, 2, &cameraForwardSpeed);
 	camGui->addSlider("camera wobble range", 0, 10, &camWobbleRange);
 	camGui->addSlider("camera wobble speed", 0, 1., &camWobbleSpeed);
@@ -586,9 +586,9 @@ void CloudsIntroSequence::guiSystemEvent(ofxUIEventArgs &e){
 		reloadShaders();
 	}
 	else if(e.widget->getName() == "reset debug camera" && ((ofxUIButton*)e.widget)->getValue()){
-		camera.setPosition(0, 0, 0);
-		camera.setOrientation(ofQuaternion());
-		camera.rotate(180, ofVec3f(0,1,0));
+//		camera.setPosition(0, 0, 0);
+//		camera.setOrientation(ofQuaternion());
+//		camera.rotate(180, ofVec3f(0,1,0));
 		//camera.setAnglesFromOrientation();
 	}
 }

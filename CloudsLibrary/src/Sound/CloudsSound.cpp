@@ -286,8 +286,9 @@ void CloudsSound::actEnded(CloudsActEventArgs& args){
 	}
 	args.act->unregisterEvents(this);
 	currentAct = NULL;
-	
-    // stopMusic();
+
+	//JG added in stop music here in case we jumped ahead.
+    stopMusic();
 }
 
 //--------------------------------------------------------------------

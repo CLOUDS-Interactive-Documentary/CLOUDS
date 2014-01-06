@@ -31,6 +31,10 @@ void CloudsPlaybackController::clearAct(bool destroyAct){
 	for(int i = 0; i < currentPresets.size(); i++){
 		//flag them done!
 		if(currentPresets[i].system != NULL){
+			if(currentPresets[i].system->isPlaying()){
+				currentPresets[i].system->stopSystem();
+				ofLogError("CloudsPlaybackController::clearAct") << "System " << currentPresets[i].getID() << " Was still playing!";
+			}
 			currentPresets[i].system->exit();
 		}
 		
@@ -209,11 +213,7 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 //		combinedRenderer.reloadShader();
 		CloudsQuestion::reloadShader();
 	}
-	
-//	if(args.key == 'P'){
-//		currentAct->getTimeline().togglePlay();
-//	}
-	
+		
 	if(args.key == 'Q'){
 		for(int i = 0; i < fakeQuestions.size(); i++){
 			rgbdVisualSystem->addQuestion(fakeQuestions[i],
@@ -288,11 +288,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	////////////////////
 	//CLUSTER MAP
 	else if(showingClusterMap){
-		//TODO add questions to cluster map
+		
+		//TODO add questions or something to the cluster map
 		//right now we can just have a canned animation and stop it when we are done
 		if(!clusterMap->getTimeline()->getIsPlaying()){
 			
 			transitionController.transitionFromClusterMap(1.0);
+			
 			cout << "TRANSITIONING FROM CLUSTER MAP IN UPDATE" << endl;
    
 		}
@@ -312,8 +314,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		rgbdVisualSystem->stopSystem();
 		run.questionTopicHistory.insert(topic);
 		storyEngine.buildAct(run, clip, topic);
-		
-		//TODO: transition to question selection
 	}
 	
 	if(!showingIntro && !showingClusterMap){
@@ -336,7 +336,9 @@ void CloudsPlaybackController::updateTransition(){
 	crossfadeValue = transitionController.getFadeValue();
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 	
-	cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " CROSSFADE IS " << crossfadeValue << endl;
+	if(transitionController.getCurrentState() != TRANSITION_IDLE){
+		cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " CROSSFADE IS " << crossfadeValue << endl;
+	}
 	
 	if(transitionController.transitioning){
 		rgbdVisualSystem->updateTransition( transitionController.getInterviewTransitionPoint() );
@@ -381,10 +383,10 @@ void CloudsPlaybackController::updateTransition(){
                 break;
             
             case TRANSITION_CLUSTERMAP_OUT:
-                showingClusterMap = false;
-                clusterMap->stopSystem();
-                cout<<"TRANSITION OUT OF CLUSTER MAP"<<endl;
-                //dont need to do anything, cross fade should sort it out.
+				
+				/// wait for it to fade out...
+				showingClusterMap = false;
+				
                 break;
 
             case TRANSITION_CLUSTERMAP_IN:
@@ -396,12 +398,15 @@ void CloudsPlaybackController::updateTransition(){
                 else if(transitionController.getPreviousState() == TRANSITION_VISUALSYSTEM_OUT){
                     hideVisualSystem();
                 }
-                
+				
                 clusterMap->traverse();
                 clusterMap->loadPresetGUISFromName("DefaultCluster");
                 clusterMap->playSystem();
-                
+
+				currentVisualSystem = clusterMap;
+
                 showingClusterMap = true;
+				
                 break;
                 
             case TRANSITION_IDLE:
@@ -414,13 +419,18 @@ void CloudsPlaybackController::updateTransition(){
 					
                     showingVisualSystem = false;
                     introSequence->stopSystem();
-                    sound.exitTunnel();
 					
-                    storyEngine.buildAct(run, clip, q->topic );
+                    storyEngine.buildAct(run, clip, q->topic, true);
+				
+					sound.exitTunnel();
                 }
                 else if(transitionController.getPreviousState() == TRANSITION_CLUSTERMAP_OUT){
 
-                    storyEngine.buildAct(run, currentClip, currentTopic);
+					showingVisualSystem = false;
+					clusterMap->stopSystem();
+					
+					storyEngine.buildAct(run, currentClip, currentTopic, false);
+					
                     cout<<"IDLE POST TRANSITION CLUSTERMAP OUT"<<endl;
                 }
                 //we just finished fading out of the interview
@@ -533,7 +543,8 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 				"Preset's keywords " + ofJoinString(currentVisualSystemPreset.allKeywords, ", ") + "\n" +
 				"current clip's keywords " + ofJoinString(currentClip.getKeywords(), ", ") + "\n" +
 				"Had to default to keyword family? " + (currentVisualSystemPreset.defaultedToFamily ? "YES" : "NO") + "\n" +
-				"Had to pick a random preset? " + (currentVisualSystemPreset.randomlySelected ? "YES" : "NO");
+				"Had to pick a random preset? " + (currentVisualSystemPreset.randomlySelected ? "YES" : "NO") + "\n" +
+				"Act #? " + ofToString(run.actCount);
 			//cout << "DRAWING DEBUGG STRING " << debugString << endl;
 			
 			ofDrawBitmapString(debugString, 0,0);

@@ -312,7 +312,7 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 //--------------------------------------------------------------------
 ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::getEmptySystem(string mainKeyword, vector<string> keywords){
 	#ifdef CLOUDS_NO_VS
-	return NULL;
+	return ofPtr<CloudsVisualSystem>();
 	#else
 	ofPtr<CloudsVisualSystem> ptr(new CloudsVisualSystemEmpty() );
 	ptr->setKeywords(mainKeyword, keywords);
