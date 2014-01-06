@@ -45,7 +45,7 @@ void CloudsVisualSystemVerletForm::mwPreset() {
 	modelRot=ofVec3f(0.5f,0,0);
 	modelRot.rotate(ofRandom(360),axisY);
 	modelRot.rotate(ofRandom(-90,90),axisX);
-	modelRotMax=0.2f;
+	modelRotMax=0.1f;
 
 	modelRotD=modelRot;
 
@@ -165,11 +165,11 @@ void CloudsVisualSystemVerletForm::mwLights() {
 	ofSetGlobalAmbientColor(ofColor(0,0,0));
 	ofSetSmoothLighting(false);
 
-	for(int i = 0; i < LIGHTS; i++) if(i<4) {
+	for(int i = 0; i < LIGHTS; i++) {
 		AuxLight &a=auxLights[i];
-		ofColor c=a.color;
+		ofColor c=(colorLightEnabled ? a.color : ofColor::white);
 
-		if(i>1) {
+		if(i>1 && colorLightEnabled) {
 			a.cnt++;
 
 			if(a.cnt>-1) {
@@ -181,10 +181,12 @@ void CloudsVisualSystemVerletForm::mwLights() {
 			a.position.rotate(
 					auxLights[2].spinSpeed,auxLights[2].spinAxis);
 		}
-		a.light.setPosition(a.position);
-		a.light.setDiffuseColor(ofFloatColor(c));
 
-		a.light.setSpecularColor(c);
+		a.light.setPosition(a.position);
+
+		ofFloatColor cf=ofFloatColor(c);
+		a.light.setDiffuseColor(cf);
+		a.light.setSpecularColor(cWhite);
 		a.light.setAmbientColor(cBlack);
 //
 //		if(i>1) {
@@ -204,21 +206,14 @@ void CloudsVisualSystemVerletForm::mwUpdateCamera() {
 	//compute the center of mesh
 	ofVec3f meshCenter = mesh.getCentroid();
 
-	float min=modelRotMax*0.005f;
-	float max=modelRotMax*0.015f;
-
-	modelRotD.x=ofClamp(modelRotD.x+rndSigned(min,max),-modelRotMax,modelRotMax);
-	modelRotD.y=ofClamp(modelRotD.y+rndSigned(min,max),-modelRotMax,modelRotMax);
-	modelRotD.z=ofClamp(modelRotD.z+rndSigned(min,max),-modelRotMax,modelRotMax);
-
-	modelRot+=modelRotD;
-
-
-	camCenterOffsD=ofClamp(camCenterOffsD+rndSigned(0.1f,0.3f), -1,1);
-	camCenterOffs.rotate(camCenterOffsD,axisY);
-//	meshCenter+=camCenterOffs;
 
 	if(!cursorIsOverGUI()) {
+
+
+		camCenterOffsD=ofClamp(camCenterOffsD+rndSigned(0.1f,0.3f), -1,1);
+		camCenterOffs.rotate(camCenterOffsD,axisY);
+
+	//	meshCenter+=camCenterOffs;
 		//set the position to the middle plus some rotation around the center
 		ofVec2f pos=ofVec2f(
 				GetCloudsInputX()-getCanvasWidth()/2,
@@ -235,9 +230,6 @@ void CloudsVisualSystemVerletForm::mwUpdateCamera() {
 		camAngle = ofMap(GetCloudsInputX(), 0, getCanvasWidth(), -180, 180,true);
 		currentRotAngle.y += (camAngle - currentRotAngle.y)*.1;
 
-
-		float camTmp=ofGetFrameNum()%1000-500;
-
 		ofVec3f camTargetPosition  = meshCenter +
 				camCenterOffs+
 				ofVec3f(0,0,currentCamDistance).
@@ -245,9 +237,33 @@ void CloudsVisualSystemVerletForm::mwUpdateCamera() {
 		// ofVec3f(0.5f,1,0));
 		ofVec3f camCurrentPosition = cam.getPosition();
 
-		cam.setPosition( camCurrentPosition + (camTargetPosition - camCurrentPosition) * .4);
+		cam.setPosition( camCurrentPosition + (camTargetPosition - camCurrentPosition) * .1);
 		cam.lookAt(meshCenter);
 	}
+
+
+	modelRotMax=0.2f/fpsMod;
+	float min=modelRotMax*0.005f;
+	float max=modelRotMax*0.015f;
+
+	do {
+		modelRotD.x=modelRotD.x+rndSigned(min,max);
+	} while(abs(modelRotD.x)<max);
+
+	do {
+		modelRotD.y=modelRotD.y+rndSigned(min,max);
+	} while(abs(modelRotD.y)<max);
+
+	do {
+		modelRotD.z=modelRotD.z+rndSigned(min,max);
+	} while(abs(modelRotD.z)<max);
+
+	modelRotD.x=(modelRotD.x>modelRotMax ? modelRotMax : (modelRotD.x<-modelRotMax ? -modelRotMax : modelRotD.x));
+	modelRotD.y=(modelRotD.y>modelRotMax ? modelRotMax : (modelRotD.y<-modelRotMax ? -modelRotMax : modelRotD.y));
+	modelRotD.z=(modelRotD.z>modelRotMax ? modelRotMax : (modelRotD.z<-modelRotMax ? -modelRotMax : modelRotD.z));
+	modelRot+=modelRotD;
+
+
 }
 
 void CloudsVisualSystemVerletForm::mwUpdate() {
@@ -858,15 +874,19 @@ void CloudsVisualSystemVerletForm::selfSetup(){
 	currentRotAngle = ofVec3f(0,0,0);
 	currentCamDistance = 800;
 	camEnabled=true;
+	colorLightEnabled=true;
+
 	gridSizeF=10;
 	lastGenerated=-100;
 	colorMod=ofRandom(0.5f,15.f);
+
+	colorStrategy=ofRandom(3);
 
 	grav=ofVec3f();
 	gravGoal=ofVec3f();
 
 	cBlack=ofFloatColor(0,0,0);
-	cWhite=ofFloatColor(1,1,1);
+	cWhite=ofFloatColor(0.2f,0.2f,0.2f);
 
 	for(int i=0; i<LIGHTS; i++) {
 		auxLights[i].light=ofLight();
@@ -1017,7 +1037,13 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 
 	//now we split it up and add colors	for(int)
 
+	colorStrategy=(colorStrategy+1)%3;
+
+	if(MWDEBUG) printf("colorStrategy=%d | indices=%d\n",
+			colorStrategy,baseMesh.getNumIndices());
+
 	int partID=0;
+	float rgb[3];
 	for(int i = 0; i < baseMesh.getNumIndices(); i+=3){
 		index[0]=meshIndexToMWParticle[ baseMesh.getIndex(i+0) ];
 		index[1]=meshIndexToMWParticle[ baseMesh.getIndex(i+1) ];
@@ -1031,8 +1057,30 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 		mesh.addVertex( baseMesh.getVertices()[ baseMesh.getIndex(i+1) ] );
 		mesh.addVertex( baseMesh.getVertices()[ baseMesh.getIndex(i+2) ] );
 
-		ofColor c=colors[index[0].colID];
-		if((partID++)%2==1) c=colors[index[2].colID];
+		ofColor c=colors[
+		                 index[colorStrategy==2 ? 0 :
+							 (int)ofRandom(999)%3].colID];
+
+		if(colorStrategy==0) {
+			c=colors[index[0].colID];
+			rgb[0]=c.r;
+			rgb[1]=c.g;
+			rgb[2]=c.b;
+
+			for(int j=1; j<3; j++) {
+				c=colors[index[j].colID];
+				rgb[0]+=c.r;
+				rgb[1]+=c.g;
+				rgb[2]+=c.b;
+			}
+			c=ofColor(rgb[0]*0.33333f,rgb[1]*0.333333f,rgb[2]*0.33333f);
+			float b=(float)c.getBrightness()/255.f;
+			b=(b<0.5f ? b*b : 1-(1-b)*(1-b));
+			c.setBrightness(b*255);
+		}
+//		else c=
+
+//		if((partID++)%2==1) c=colors[index[2].colID];
 
 		mesh.addColor(c);
 		mesh.addColor(c);
@@ -1075,6 +1123,7 @@ void CloudsVisualSystemVerletForm::selfSetupGuis(){
 
 	clothGui->addButton("REGENERATE", &shouldRegenerateMesh);
 	clothGui->addToggle("CAM ENABLED", &camEnabled);
+	clothGui->addToggle("COLOR LIGHTS", &colorLightEnabled);
 
 	ofAddListener(clothGui->newGUIEvent, this, &CloudsVisualSystemVerletForm::selfGuiEvent);
 	
