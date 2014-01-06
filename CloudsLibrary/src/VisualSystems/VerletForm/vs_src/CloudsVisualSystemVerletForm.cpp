@@ -16,7 +16,10 @@ ofVec3f axisZ=ofVec3f(0,0,1);
 MWTerrain terrain;
 float radMin=0.1f;
 int fixChance=40;
+
 float lastNMod=0.1f;
+float lastTMod=1.f;
+
 float camCenterOffsD=0;
 
 ofVec3f meshCenter;
@@ -108,10 +111,10 @@ ofVec3f CloudsVisualSystemVerletForm::terrainMod(ofVec3f &v) {
 		d=bezierPoint(terrain.h,a);
 
 		a=2*ofNoise(5*d);
-		v.y*=1+a*0.2f;;
+		v.z*=1+a*0.2f;;
 		a=1+a;
 		v.x*=a;
-		v.z*=a;
+		v.y*=a;
 
 
 		v.y=1+ofNoise(d*5);
@@ -119,11 +122,13 @@ ofVec3f CloudsVisualSystemVerletForm::terrainMod(ofVec3f &v) {
 	}
 	else {
 		a=v.x/clothWidth;
+		a=(atan2(-v.z,v.x)/PI+1)*0.5f;
+		d=bezierPoint(terrain.h,a);
 		float sineMod=sin(a*HALF_PI+colorIndex/900.f*HALF_PI*0.5f)+0.15f;
 		float b=atan2(-v.z,v.y);
 		a=ofNoise(a*25,b*25)*sineMod;
 		a=a*a*2.5f+0.75f;
-		v.set(v.x,v.y*a,v.z*a);
+		v.set(v.x*a,v.y*a,v.z);
 
 
 //		v.rotate(90,axisX);
@@ -579,7 +584,7 @@ void CloudsVisualSystemVerletForm::mwNewActivity(MWParticle& pt,signed int state
 
 	float val=ofRandom(1);
 
-	lastNMod=lastNMod*0.9f+ofRandom(0.4f)*0.1f;
+	lastNMod=lastNMod*0.9f+ofRandom(0.6f)*0.1f;
 
 	vD2=vn*(ofMap(val*val, 0,1, 0.1f,0.11f+lastNMod)*
 			(rndBool(70) ? -0.25f : 1)*clothHeight);
@@ -588,7 +593,9 @@ void CloudsVisualSystemVerletForm::mwNewActivity(MWParticle& pt,signed int state
 	vD2.rotate(rndSigned(15,30), axisX);
 	vD2.rotate(rndSigned(15,30), axisY);
 
-	pt.stateCnt=(int)(ofRandom(60,120)*3*fpsMod);
+	lastTMod=lastTMod*0.9f+ofRandom(1,3)*0.1f;
+
+	pt.stateCnt=(int)(ofRandom(60,120)*lastTMod*fpsMod);
 
 
 	if(state==FIXEDSTATIC) {
@@ -864,9 +871,9 @@ void CloudsVisualSystemVerletForm::mwGenerate() {
 				a=bezierPoint(terrain.h,tx+0.5f);
 				v.set(tx*clothWidth,ty*clothWidth,tz*clothHeight);
 				v*=1+a;
+//				v=terrainMod(v);
 			}
 
-//			v=terrainMod(v);
 			mwMakeParticle(i,j,v);
 		}
 
@@ -960,7 +967,7 @@ void CloudsVisualSystemVerletForm::mwGridSticky() {
 
 		for(int i=4; i>-1; i--) if(ofRandom(100)>60) {
 			MWParticle &pt=pp[corners[i]];
-			mwNewActivity(pt,ofRandom(100)>30 ? FIXEDSTATIC : FIXEDMOVING);
+			mwNewActivity(pt,ofRandom(100)>60 ? FIXEDSTATIC : FIXEDMOVING);
 			n--;
 		}
 	}
@@ -968,7 +975,7 @@ void CloudsVisualSystemVerletForm::mwGridSticky() {
 	while((n--)>0) {
 		bool onEdge=(n>nhalf);
 		mwNewActivity(mwGetParticle(onEdge),
-			ofRandom(100)>30 ? FIXEDSTATIC : FIXEDMOVING);
+			ofRandom(100)>60 ? FIXEDSTATIC : FIXEDMOVING);
 	}
 }
 
