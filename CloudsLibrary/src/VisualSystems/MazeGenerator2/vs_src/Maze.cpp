@@ -8,7 +8,7 @@
 
 #include "Maze.h"
 
-#define SIDE_WALLS
+//#define SIDE_WALLS
 
 Maze::Maze(float cSize, float wThickness, float wHeight, ofVec3f p)
 {

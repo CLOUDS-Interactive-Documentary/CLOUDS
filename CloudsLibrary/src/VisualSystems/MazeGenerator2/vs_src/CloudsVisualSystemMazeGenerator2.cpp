@@ -28,8 +28,8 @@ void CloudsVisualSystemMazeGenerator2::selfSetupGui()
 
     customGui->addSpacer();
     customGui->addLabel("CAMERA");
-    customGui->addSlider("CAM SPEED", 0, 100, &pm->cameraSpeed);
-    customGui->addSlider("CAM HEIGHT", 0, 1000, &pm->cameraHeight);
+    customGui->addSlider("CAM SPEED", 0, 20, &pm->cameraSpeed);
+    customGui->addSlider("CAM HEIGHT", 0, 1500, &pm->cameraHeight);
     customGui->addSlider("CAM ANGLE", 0, 360, &pm->cameraAngle);
 
     customGui->addSlider("SHOW AHEAD", 10, 150, &pm->showAhead);
