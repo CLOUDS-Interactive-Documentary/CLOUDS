@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>TWITTER FEED</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>-1.000000000</XPosition>
-    <YPosition>47.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>70.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -89,7 +89,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>ICON HEIGHT OFFSET </Name>
-    <Value>-16.551725388</Value>
+    <Value>-10.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -110,4 +110,19 @@
     <Kind>25</Kind>
     <Name>LINE OFFSET</Name>
     <Value>-31.034484863</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>MAX ALPHA</Name>
+    <Value>0.100000001</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LINE ALPHA</Name>
+    <Value>0.492610842</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AVATAR ALPHA</Name>
+    <Value>0.325123161</Value>
 </Widget>
