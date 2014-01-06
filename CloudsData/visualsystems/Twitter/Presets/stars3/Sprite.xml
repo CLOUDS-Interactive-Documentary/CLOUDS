@@ -1,0 +1,62 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Sprite</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>24.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ANIMATE SPRITES ON TWEETS</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SPRITE SIZE Min</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SPRITE SIZE max</Name>
+    <Value>10.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SBC HUE</Name>
+    <Value>0.895287931</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SBC SAT</Name>
+    <Value>0.617801666</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SBC BRI</Name>
+    <Value>0.277486265</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SBC ALPHA</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SPC HUE</Name>
+    <Value>0.769633472</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SPC SAT</Name>
+    <Value>0.586388052</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SPC BRI</Name>
+    <Value>0.685863197</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SPC ALPHA</Name>
+    <Value>1.000000000</Value>
+</Widget>

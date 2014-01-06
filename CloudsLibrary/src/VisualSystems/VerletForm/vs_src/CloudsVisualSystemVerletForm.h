@@ -13,6 +13,8 @@ typedef struct{
 	bool enabled;
 	ofLight light;
 	ofColor color,colorGoal;
+	ofFloatColor cDiff,cSpec;
+
 	int cnt,cntGoal;
 	float currentRot;
 	float spinRadius;
@@ -34,7 +36,7 @@ typedef struct{
 	int vertID;
 
 	bool isEdge;
-
+	float speed;
 	ofVec3f orig,goal,gridV;
 	ofVec3f vD;
 	Particle3D* p;
@@ -108,16 +110,18 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
     float modelRotMax;
 	bool camEnabled,colorLightEnabled;
 
-	ofFloatColor cWhite,cBlack;
+	ofFloatColor cWhite,cBlack,cGray;
+	ofColor cWhiteRGB,cBlackRGB,cGrayRGB;
 
 	static const bool MWDEBUG=true;
 	static const int FREE=0,FIXEDSTATIC=2,FIXEDMOVING=1;
 	static const int GRIDRECT=1,GRIDCIRC=0,GRIDCYL=2;
-	static const int LIGHTS=5;
+	static const int LIGHTS=3;
 
   	vector<MWParticle> pp;
 	vector<MWParticle> ppActive;
-	float fpsMod,activityCnt,stickyNum;
+	float fpsMod,stickyNum;
+	int activityCnt;
 	float clothWidth;
 	float clothHeight;
 	float colorIndex,colorMod;
@@ -128,12 +132,16 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	int gridSize;
 	float gridSizeF;
 	int gridType;
+	int fixCnt;
 	
 
 	void mwUpdate();
 	void mwUpdateCamera();
 	void mwLights();
 	void mwNewLightColor();
+
+	void mwFix(MWParticle &pt,bool fix);
+
 
 	ofVec3f mwNewMove(MWParticle& pt);
 	void mwNewGravity();
@@ -143,7 +151,6 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	bool mwIsEdge(MWParticle &pt);
 	void mwNewActivity(MWParticle& pt,signed int state);
 
-	void mwFix(MWParticle &pt);
 
 	void mwMakeParticle(int x,int y,ofVec3f &o);
 	MWParticle &mwGetParticle(bool fromEdge);
@@ -190,10 +197,10 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	
 
 
-	vector<vector<Particle3D*>> particles;
+	vector< vector<Particle3D*> > particles;
 	
 	//color generators
-	void initColors(int row);
+	void initColors(int row,int cnt);
 	vector<ofColor> colors;
 
 	ofPixels colorPalettes;

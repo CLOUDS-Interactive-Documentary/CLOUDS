@@ -135,7 +135,49 @@ namespace itg
             creatures[i]->setOrientation(ofVec3f(ofRandom(-180.f, 180.f), ofRandom(-180.f, 180.f), ofRandom(-180.f, 180.f)));
         }
         
+        generateTentacles();
+        /*
         // tentacles
+        unsigned numTentacles = 0;
+        for (unsigned i = 0; i < jellies.size(); ++i) numTentacles += jellies[i]->getNumTentacles();
+        tentacles.init(TENTACLE_NUM_SECTIONS, numTentacles, OF_PRIMITIVE_LINES, false);
+        if (numTentacles * TENTACLE_NUM_SECTIONS * 4 != tentacles.getNumFloats()) ofLogFatalError() << "tentacle texture size error";
+        float* particlePosns = new float[tentacles.getNumFloats()];
+        unsigned tentacleIdx = 0;
+        ofVboMesh& tentacleMesh = tentacles.getMeshRef();
+        for (unsigned i = 0; i < jellies.size(); ++i)
+        {
+            vector<ofVec3f> deformed = jellies[i]->getDeformedTentaclePosns();
+            ofVec3f step = -1.5f * TENTACLE_SECTION_LENGTH * jellies[i]->getZAxis();
+            for (unsigned j = 0; j < deformed.size(); ++j)
+            {
+                for (unsigned x = 0; x < TENTACLE_NUM_SECTIONS; ++x)
+                {
+                    unsigned idx = tentacleIdx * TENTACLE_NUM_SECTIONS + x;
+                    particlePosns[idx * 4] = deformed[j].x + x * step.x;
+                    particlePosns[idx * 4 + 1] = deformed[j].y + x * step.y;
+                    particlePosns[idx * 4 + 2] = deformed[j].z + x * step.z;
+                    particlePosns[idx * 4 + 3] = 0.f;
+                    ofFloatColor col = jellies[i]->getTentacleColour();
+                    col.a = .5f * (1.f - x / (float)TENTACLE_NUM_SECTIONS);
+                    tentacleMesh.addColor(col);
+                    if (x > 0)
+                    {
+                        tentacleMesh.addIndex(TENTACLE_NUM_SECTIONS * tentacleIdx + x - 1);
+                        tentacleMesh.addIndex(TENTACLE_NUM_SECTIONS * tentacleIdx + x);
+                    }
+                }
+                ++tentacleIdx;
+            }
+        }
+        tentacles.loadDataTexture(ofxGpuParticles::POSITION, particlePosns);
+        delete[] particlePosns;
+        tentacles.zeroDataTexture(ofxGpuParticles::VELOCITY);
+        tentaclePosns.resize(numTentacles);*/
+    }
+    
+    void Creatures::generateTentacles()
+    {
         unsigned numTentacles = 0;
         for (unsigned i = 0; i < jellies.size(); ++i) numTentacles += jellies[i]->getNumTentacles();
         tentacles.init(TENTACLE_NUM_SECTIONS, numTentacles, OF_PRIMITIVE_LINES, false);
@@ -398,35 +440,48 @@ namespace itg
     void Creatures::loadSeed(const string& path)
     {
         ifstream fileStream(ofToDataPath(path, true).c_str());
-        string data((istreambuf_iterator<char>(fileStream)), std::istreambuf_iterator<char>());
-        vector<string> creatureData = ofSplitString(data, "|");
-        for (unsigned i = 0; i < creatureData.size() && i < creatures.size(); ++i)
+        if (fileStream.is_open())
         {
-            vector<string> creatureDatum = ofSplitString(creatureData[i], "#");
-            
-            istringstream iss(creatureDatum[0]);
-            ofVec3f pos;
-            iss >> pos;
-            creatures[i]->setGlobalPosition(pos);
-            
-            iss.str(creatureDatum[1]);
-            ofVec3f vel;
-            iss >> vel;
-            creatures[i]->setVelocity(vel);
-            creatures[i]->updateNormalisedVelocity();
+            string data((istreambuf_iterator<char>(fileStream)), std::istreambuf_iterator<char>());
+            vector<string> creatureData = ofSplitString(data, "|");
+            for (unsigned i = 0; i < creatureData.size() && i < creatures.size(); ++i)
+            {
+                vector<string> creatureDatum = ofSplitString(creatureData[i], "#");
+                
+                istringstream iss(creatureDatum[0]);
+                ofVec3f pos;
+                iss >> pos;
+                creatures[i]->setGlobalPosition(pos);
+                
+                iss.str(creatureDatum[1]);
+                iss.clear();
+                ofVec3f vel;
+                iss >> vel;
+                creatures[i]->setVelocity(vel);
+                creatures[i]->updateNormalisedVelocity();
+                
+                creatures[i]->zeroAccumulated();
+            }
+            fileStream.close();
         }
+        else ofLogError() << "Could not load creature data from " << ofToDataPath(path + "/creatures.swim", true);
+        generateTentacles();
     }
     
     void Creatures::saveSeed(const string& path)
     {
-        ofstream fileStream(path.c_str());
-        for (unsigned i = 0; i < creatures.size(); ++i)
+        ofstream fileStream((path).c_str());
+        if (fileStream.is_open())
         {
-            fileStream << creatures[i]->getGlobalPosition();
-            fileStream << "#";
-            fileStream << creatures[i]->getVelocity();
-            fileStream << "|";
+            for (unsigned i = 0; i < creatures.size(); ++i)
+            {
+                if (i) fileStream << "|";
+                fileStream << creatures[i]->getGlobalPosition();
+                fileStream << "#";
+                fileStream << creatures[i]->getVelocity();
+            }
+            fileStream.close();
         }
-        fileStream.close();
+        else ofLogError() << "Cloud not save data to " << path << "/creatures.swim";
     }
 }

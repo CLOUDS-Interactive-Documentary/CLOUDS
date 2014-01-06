@@ -13,7 +13,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>WIND SPEED</WidgetName>
-                <WidgetID>44</WidgetID>
+                <WidgetID>48</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>

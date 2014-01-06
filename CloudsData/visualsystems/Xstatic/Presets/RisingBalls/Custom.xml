@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>793.000000000</XPosition>
-    <YPosition>37.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -24,6 +24,11 @@
     <Kind>2</Kind>
     <Name>BOUNCE OFF WALLS</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>WRAP EDGES</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -98,7 +103,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>WIND SPEED</Name>
-    <Value>5.270936012</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
