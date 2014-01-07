@@ -346,7 +346,7 @@ void CloudsSecondaryDisplayController::onActBegan(){
 
 void CloudsSecondaryDisplayController::onActEnded(){
     //hide the secondary display hud
-    displayMode = "NONE";
+    animateOut();
 }
 
 void CloudsSecondaryDisplayController::animateIn(){
@@ -359,6 +359,20 @@ void CloudsSecondaryDisplayController::animateIn(){
 void CloudsSecondaryDisplayController::animateOut(){
     animatingOut = true;
     beginTime = ofGetElapsedTimef();
+    
+    if(displayMode == "BIO"){
+        hudLabelMap[meshQuestion->id]->animateOut();
+		hudLabelMap[meshBioFirstName->id]->animateOut();
+		hudLabelMap[meshBioLastName->id]->animateOut();
+		hudLabelMap[meshBioTitle->id]->animateOut();
+		hudLabelMap[meshBioLocation->id]->animateOut();
+		hudLabelMap[meshBioDescription->id]->animateOut();
+    }
+    else if (displayMode == "PROJECT"){
+        hudLabelMap[meshProjectArtist->id]->animateOut();
+		hudLabelMap[meshProjectTitle->id]->animateOut();
+		hudLabelMap[meshProjectDescription->id]->animateOut();
+    }
 }
 
 void CloudsSecondaryDisplayController::draw(){
@@ -524,6 +538,10 @@ void CloudsSecondaryDisplayController::draw(){
 void CloudsSecondaryDisplayController::reloadShader(){
     GLuint err = glGetError();
     shader.load( GetCloudsDataPath() + "shaders/secondaryDisplay");
+}
+
+void CloudsSecondaryDisplayController::hideGUI(){
+    animateOut();
 }
 
 /*void CloudsSecondaryDisplayController::drawBioLayout(){
