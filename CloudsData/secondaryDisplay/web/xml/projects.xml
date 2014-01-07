@@ -145,7 +145,7 @@
 
     <project title="Transparency Grenade">
 			<creator_name>Julian Oliver</creator_name>
-			<description>A digital weapon that lets users leak information from closed meetings by just pulling a pin. The device captures network traffic and audio in a location and anonymously streams it to an external server that mines it for information — including e-mail excerpts, web pages, images and voice. The server then uploads that data to a public website and positions it on a map.</description>
+			<description>A digital weapon that lets users leak information from closed meetings by just pulling a pin. The device captures network traffic and audio in a location and anonymously streams it to an external server that mines it for information a including e-mail excerpts, web pages, images and voice. The server then uploads that data to a public website and positions it on a map.</description>
 			<videos>
 				<file>TransparencyGrenade_720.mov</file>
 			</videos>
@@ -237,7 +237,7 @@
 
     <project title="Energy Flow">
 			<creator_name>Vera Glahn, Marcus Wendt - Field IO</creator_name>
-			<description>A non-linear film experience weaving 10 animated story lines into a filmic dream rush of paintings in motion. Energy Flow explores the complexity of how things are connected in our lives today – the fragile equilibrium between physical, political, and cultural tensions.</description>
+			<description>A non-linear film experience weaving 10 animated story lines into a filmic dream rush of paintings in motion. Energy Flow explores the complexity of how things are connected in our lives today a the fragile equilibrium between physical, political, and cultural tensions.</description>
 			<videos>
 				<file>EnergyFlowGravity_720.mov</file>
 				<file>EnergyFlowHadron_720.mov</file>
@@ -385,7 +385,7 @@ and sonic landscape that explore the concept of infinity, rationality, and the b
 			</videos>
 	</project>
 
-	<project title="قلب, (Alb)">
+	<project title="UUO", (Alb)">
 			<creator_name>Ramsey Nasser</creator_name>
 			<description>A fully-functional programming language based on Arabic script.</description>
 			<videos>
