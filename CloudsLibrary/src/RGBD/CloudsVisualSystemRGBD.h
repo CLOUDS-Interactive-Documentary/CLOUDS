@@ -16,6 +16,7 @@ struct TransitionInfo{
 	ofQuaternion inStartQuat;
 	ofQuaternion outTargetQuat;
 	string name;
+	string transitionType;
 };
 
 class CloudsVisualSystemRGBD : public CloudsVisualSystem {
@@ -117,7 +118,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofVec3f bottomRight;
 	
 	void loadTransitionSettings(string filename = "Transitions");
-	void saveTransitionSettings(string transitionName);
+	void saveTransitionSettings(string _transitionType,string _transitionOptionName);
 	void setTransitionNodes( string transitionName );
 	void updateTransition();
 	void updateTransitionGui();
@@ -126,7 +127,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   protected:
 	
 	ofxUISuperCanvas *transitionEditorGui;
-	map< string, TransitionInfo> transitionMap;
+	map< string, TransitionInfo> transitionOptionMap;
+	map<string, string> transitionTypes;
+	string currentTransitionType;
 
 	ofxUISuperCanvas *globalMeshGui;
 	bool drawRGBD;
