@@ -14974,7 +14974,10 @@
 </system>
 <system name="YellowTail_YellowTail_AfterDark">
     <keywords></keywords>
-    <links></links>
+    <links>
+        <clip>Golan - yellow tail</clip>
+        <clip>Golan - playable image</clip>
+    </links>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
