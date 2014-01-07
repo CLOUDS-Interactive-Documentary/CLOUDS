@@ -95,10 +95,6 @@ void CloudsVisualSystemOscillations::selfSetupCameraGui(){
 }
 
 void CloudsVisualSystemOscillations::selfGuiEvent(ofxUIEventArgs &e){
-//	if(e.widget->getName() == "Custom Button"){
-//		cout << "Button pressed!" << endl;
-//	}
-
     //Check if the grid was updated
     if (e.widget->getName() == "Grid"){
         BuildGrid();
@@ -138,13 +134,34 @@ void CloudsVisualSystemOscillations::selfSetup(){
     //TODO: Find way to update on every resize
     offsetX = offsetY = 0;
     BuildGrid();
-
-    oscillator.load(getVisualSystemDataPath() +"shaders/oscillationsShader");
-    crtShader.load(getVisualSystemDataPath() +"shaders/chromaticAbberation");
-	
+    loadShader();
 }
 
-// selfPresetLoaded is called whenever a new preset is triggered
+void CloudsVisualSystemOscillations::loadShader(){
+    
+    oscillator.load(getVisualSystemDataPath() + "shaders/oscillationsShader");
+    crtShader.load(getVisualSystemDataPath() + "shaders/chromaticAbberation");
+
+}
+
+void CloudsVisualSystemOscillations::selfSetDefaults(){
+    curveWidth = 2000;
+    curveHeight = 2000;
+    curveDepth = 7000;
+    speed = 0.02;
+    renderLines = true;
+    bgColor = curveColor.getInverted();
+    CurveLineWidth = 0.1;
+    displayGrid = false;
+    clipPlanes.min = 0.01;
+    clipPlanes.max = 5000;
+    curveProgress = NUMPOINTS;
+    
+
+}
+
+
+// selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemOscillations::selfPresetLoaded(string presetPath){
@@ -177,21 +194,9 @@ void CloudsVisualSystemOscillations::selfUpdate(){
         mesh.setMode(OF_PRIMITIVE_POINTS);
     }
     
-    oscillator.begin();
     
-    oscillator.setUniform1f("numPoints", (float) NUMPOINTS);
-    oscillator.setUniform4fv("targetColor", curveColor.v); //FIXME: needs to be on color and off color
-    oscillator.setUniform1f("curveProgress",curveProgress);
-    oscillator.setUniform1f("selfPrecision", precision);
-    oscillator.setUniform1f("offsetX", offsetX);
-    oscillator.setUniform1f("offsetY", offsetY);
-    oscillator.setUniform1f("curveWidth", curveWidth);
-    oscillator.setUniform1f("curveHeight", curveHeight);
-    oscillator.setUniform1f("curveZPos", curveZPos);
-    oscillator.setUniform1f("curveDepth", curveDepth);
-    oscillator.setUniform2f("resolution",width,height);
-	
-    oscillator.end();
+    
+    
     
     
     //FIXME: This shouldn't happen unprovoked. It needs to be a callback to the UI.
@@ -221,6 +226,19 @@ void CloudsVisualSystemOscillations::selfDraw(){
 
 
     oscillator.begin();
+    
+    oscillator.setUniform1f("numPoints", (float) NUMPOINTS);
+    oscillator.setUniform4fv("targetColor", curveColor.v); //FIXME: needs to be on color and off color
+    oscillator.setUniform1f("curveProgress",curveProgress);
+    oscillator.setUniform1f("selfPrecision", precision);
+    oscillator.setUniform1f("offsetX", offsetX);
+    oscillator.setUniform1f("offsetY", offsetY);
+    oscillator.setUniform1f("curveWidth", curveWidth);
+    oscillator.setUniform1f("curveHeight", curveHeight);
+    oscillator.setUniform1f("curveZPos", curveZPos);
+    oscillator.setUniform1f("curveDepth", curveDepth);
+    oscillator.setUniform2f("resolution",width,height);
+	
     ofSetLineWidth(CurveLineWidth);
 	mesh.draw();
     oscillator.end();

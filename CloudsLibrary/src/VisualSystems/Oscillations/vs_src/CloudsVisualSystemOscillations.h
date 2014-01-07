@@ -11,7 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ofxAutoReloadedShader.h"
+//#include "ofxAutoReloadedShader.h"
 
 
 //TODO: rename this to your own visual system
@@ -27,6 +27,7 @@ class CloudsVisualSystemOscillations : public CloudsVisualSystem {
 
 	//These methods let us add custom GUI parameters and respond to their events
     void selfSetupGui();
+    void selfSetDefaults();
     void selfGuiEvent(ofxUIEventArgs &e);
     
 	//Use system gui for global or logical settings, for exmpl
@@ -126,10 +127,11 @@ protected:
     float GridLineWidth;
     float GridPattern;
     void BuildGrid();
+    void loadShader();
     
 	ofRange clipPlanes;
     //Shader
     float chromaAbbr, lensDistortion;
     //TODO: Change back to just a shader after building
-    ofxAutoReloadedShader crtShader, oscillator;
+    ofShader crtShader, oscillator;
 };
