@@ -210,8 +210,10 @@ void CloudsVisualSystemOscillations::selfUpdate(){
 void CloudsVisualSystemOscillations::selfDraw(){
     
 	ofPushStyle();
-    
-//    ofEnableBlendMode(OF_BLENDMODE_ADD);    
+    glPushAttrib(GL_LINE_SMOOTH | GL_DEPTH_TEST | GL_POINT_SIZE);
+    glEnable( GL_LINE_SMOOTH );
+    glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
+//    ofEnableBlendMode(OF_BLENDMODE_ADD);
     if (displayGrid) {
         glLineStipple((int)GridPattern, 0x8888);
         ofSetLineWidth(GridLineWidth);
@@ -223,7 +225,9 @@ void CloudsVisualSystemOscillations::selfDraw(){
     }
     
 	glDisable(GL_DEPTH_TEST);
-
+    
+    //TODO: Customize
+    glPointSize(2.0);
 
     oscillator.begin();
     
@@ -242,7 +246,7 @@ void CloudsVisualSystemOscillations::selfDraw(){
     ofSetLineWidth(CurveLineWidth);
 	mesh.draw();
     oscillator.end();
-	
+    glPopAttrib();
 	ofPopStyle();
 }
 
