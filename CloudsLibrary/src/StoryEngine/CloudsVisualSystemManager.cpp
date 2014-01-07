@@ -273,6 +273,7 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 			preset.presetName = systemPresets[ p ];
 			preset.systemName = system->getSystemName();
 			preset.loadTimeInfo();
+			preset.hasFiles = true;
 			preset.stillPresent = true;
 			presets.push_back(preset);
 			nameToPresets[preset.systemName].push_back( preset );
