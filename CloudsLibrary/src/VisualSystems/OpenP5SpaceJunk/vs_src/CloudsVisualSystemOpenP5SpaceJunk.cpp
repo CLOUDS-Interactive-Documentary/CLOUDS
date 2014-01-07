@@ -65,31 +65,36 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetup(){
     shouldRegenerate = true;
 	ofMesh combinedBox;
 
-	ofxObjLoader::load(getVisualSystemDataPath() + "geometry/box.obj", combinedBox);
+//	ofxObjLoader::load_oldway(getVisualSystemDataPath() + "geometry/box.obj", combinedBox);
+	ofxObjLoader::load(getVisualSystemDataPath() + "geometry/box.obj", baseBox);
 	
-	for(int i = 0; i < combinedBox.getNumIndices(); i+=3){
-		ofIndexType indxA = combinedBox.getIndices()[i+0];
-		ofIndexType indxB = combinedBox.getIndices()[i+1];
-		ofIndexType indxC = combinedBox.getIndices()[i+2];
-		
-		ofVec3f& vA = combinedBox.getVertices()[indxA];
-		ofVec3f& vB = combinedBox.getVertices()[indxB];
-		ofVec3f& vC = combinedBox.getVertices()[indxC];
-		baseBox.addVertex(vA);
-		baseBox.addVertex(vB);
-		baseBox.addVertex(vC);
-		
-		ofVec3f normal = (vB - vA).getCrossed(vC - vA).normalized();
-		baseBox.addNormal(normal);
-		baseBox.addNormal(normal);
-		baseBox.addNormal(normal);
-		
-		baseBox.addIndex(i+0);
-		baseBox.addIndex(i+1);
-		baseBox.addIndex(i+2);
-		
-	}
-	
+	baseBox.setMode(OF_PRIMITIVE_TRIANGLES);
+//	
+//	return;
+//	
+//	for(int i = 0; i < combinedBox.getNumIndices(); i+=3){
+//		ofIndexType indxA = combinedBox.getIndices()[i+0];
+//		ofIndexType indxB = combinedBox.getIndices()[i+1];
+//		ofIndexType indxC = combinedBox.getIndices()[i+2];
+//		
+//		ofVec3f& vA = combinedBox.getVertices()[indxA];
+//		ofVec3f& vB = combinedBox.getVertices()[indxB];
+//		ofVec3f& vC = combinedBox.getVertices()[indxC];
+//		baseBox.addVertex(vA);
+//		baseBox.addVertex(vB);
+//		baseBox.addVertex(vC);
+//		
+//		ofVec3f normal = (vB - vA).getCrossed(vC - vA).normalized();
+//		baseBox.addNormal(normal);
+//		baseBox.addNormal(normal);
+//		baseBox.addNormal(normal);
+//		
+//		baseBox.addIndex(i+0);
+//		baseBox.addIndex(i+1);
+//		baseBox.addIndex(i+2);
+//		
+//	}
+//	
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
