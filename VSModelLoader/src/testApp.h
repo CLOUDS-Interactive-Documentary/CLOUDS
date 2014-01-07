@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxUI.h"
-#include "3DModelVisualSystem.h"
+#include "CloudsVisualSystem3DModelLoader.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -21,5 +21,5 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 		
-	CloudsVisualSystem3DModel exampleVectorMath;
+	CloudsVisualSystem3DModelLoader model;
 };
