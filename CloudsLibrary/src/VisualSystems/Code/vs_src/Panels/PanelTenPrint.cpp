@@ -53,11 +53,11 @@ void PanelTenPrint::selfDraw(){
 	for(int l = lineHeight; l < drawRect.height; l += lineHeight){
 		string& curLine = lines[line%lines.size()];
 		if(charsConsumed + curLine.length() > maxChars){
-			sharedFont->drawString(curLine.substr(0, maxChars - charsConsumed), drawRect.x, drawRect.y+l);
+			sharedFont->drawString(curLine.substr(0, maxChars - charsConsumed), drawRect.x + *marginLeft, drawRect.y+l);
 			break;
 		}
 		else{
-			sharedFont->drawString(curLine, drawRect.x, drawRect.y+l);
+			sharedFont->drawString(curLine, drawRect.x + *marginLeft, drawRect.y+l);
 		}
 		charsConsumed += curLine.length();
 		line++;

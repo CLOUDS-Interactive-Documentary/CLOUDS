@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>1061.000122070</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>264.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -12,7 +12,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>BigDial_Linear</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>BigDial_PanZoomout</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BigDial_ZoomIn</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -62,21 +72,21 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>SolarMandala</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SolarSystem_ZoomOut</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>tentacles</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>variedSpeed</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BigDial_Linear</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BigDial_ZoomIn</Name>
     <Value>0</Value>
 </Widget>

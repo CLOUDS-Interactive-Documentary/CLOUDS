@@ -391,10 +391,16 @@ void CloudsSecondaryDisplayController::draw(){
     ofEnableAlphaBlending();
 	clusterMap.selfPostDraw();
     
+<<<<<<< HEAD
+    SVGMesh* t;
+    
+    shader.setUniform1f("alphaAmt", playhead);
+=======
 //
 //don't set uniforms if 
 //    shader.setUniform1f("alphaAmt", playhead);
     float margin = 60;
+>>>>>>> 0641e1a2ee04b3cd3bfab1323afc5674a60de662
     
     if(displayMode == "BIO"){
         ////question
@@ -460,8 +466,17 @@ void CloudsSecondaryDisplayController::draw(){
             hudLabelMap[meshBioTitle->id]->draw();
 
             
+<<<<<<< HEAD
             ////location
 
+=======
+            if(color)
+                ofSetColor(lightBlue);
+            
+			////location
+			if(color)
+				ofSetColor(darkBlue);
+>>>>>>> 0641e1a2ee04b3cd3bfab1323afc5674a60de662
             
             string loc = ofToUpper(currentSpeaker.location2);
             //float left

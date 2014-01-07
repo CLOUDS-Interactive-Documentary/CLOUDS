@@ -6,22 +6,42 @@
 #include "CloudsGlobal.h"
 #include "ofxMtlBoxFitting.h"
 
+bool rectareasort(ofRectangle a, ofRectangle b){
+	return a.getArea() > b.getArea();
+}
+
 bool rectsort(ofRectangle a, ofRectangle b){
-	return a.x < b.x;
+	return a.x > b.x;
 }
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemCode::selfSetupGui(){
+
+	panelsGui = new ofxUISuperCanvas("PANELS", gui);
+	panelsGui->copyCanvasStyle(gui);
+	panelsGui->copyCanvasProperties(gui);
+	panelsGui->setName("Panels");
+	panelsGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	panelsGui->addToggle("Enable CODE", &bEnableCode);
+	panelsGui->addToggle("Enable CONSOLE", &bEnableConsole);
+	panelsGui->addToggle("Enable TENPRINT", &bEnableTenPrint);
+	
+	ofAddListener(panelsGui->newGUIEvent, this, &CloudsVisualSystemCode::selfGuiEvent);
+	guis.push_back(panelsGui);
+	guimap[panelsGui->getName()] = panelsGui;
 
 	typeGui = new ofxUISuperCanvas("TYPE", gui);
 	typeGui->copyCanvasStyle(gui);
 	typeGui->copyCanvasProperties(gui);
 	typeGui->setName("Type");
 	typeGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
+
+
 	typeGui->addRangeSlider("SPEED RANGE", .01, 1, &speedRange.min, &speedRange.max);
 	typeGui->addIntSlider("FONT SIZE", 4, 12, &fontSize);
 	typeGui->addSlider("TRACKING", 0., 3.0, &typeTracking);
+	typeGui->addSlider("LEFT MARGIN", 0, 20, &typeMarginLeft);
 	
 	ofAddListener(typeGui->newGUIEvent, this, &CloudsVisualSystemCode::selfGuiEvent);
 	guis.push_back(typeGui);
@@ -90,6 +110,11 @@ void CloudsVisualSystemCode::selfGuiEvent(ofxUIEventArgs &e){
 }
 
 void CloudsVisualSystemCode::generatePanels(){
+	for(int i = 0; i < panels.size(); i++){
+		delete panels[i];
+	}
+	
+	panels.clear();
 	rectTests.clear();
 	
 	ofxMtlBoxFitting boxFitting;
@@ -112,27 +137,35 @@ void CloudsVisualSystemCode::generatePanels(){
 	}
 	
 	sort(rectTests.begin(),rectTests.end(), rectsort);
+	vector<ofRectangle> rectCopies = rectTests;
+	sort(rectCopies.begin(), rectCopies.end(), rectareasort);
 	
-	for(int i = 0; i < panels.size(); i++){
-		delete panels[i];
-	}
-	panels.clear();
-	
+	bool canHasCode = bEnableCode;
 	for(int i = 0; i < rectTests.size(); i++){
 		Panel* p;
-		if(MIN(rectTests[i].height, rectTests[i].width) < minTextboxSize){
-			p = new PanelTenPrint();
-//			p = new PanelConsole();
+		if(canHasCode && rectTests[i].getArea() >= rectCopies[0].getArea()){
+			p = new PanelCode();
+			canHasCode = false;
 		}
 		else{
-			p = new PanelCode();
+			if(bEnableConsole && bEnableTenPrint){
+				p = (ofRandomuf() > .5) ? (Panel*)new PanelConsole() : (Panel*)new PanelTenPrint();
+			}
+			else if(bEnableConsole){
+				p = new PanelConsole();
+			}
+			else{
+				p = new PanelTenPrint();
+			}
 		}
-		
+
 		p->dataPath = getVisualSystemDataPath();
 		p->sharedFont = &sharedFont;
 		p->sharedLayout = &sharedLayout;
 
 		p->outlineAlpha = &outlineAlpha;
+		p->marginLeft = &typeMarginLeft;
+		
 		p->scanSpeed = powf(ofRandom(speedRange.min,speedRange.max),2);
 		p->drawRect = rectTests[i];
 		p->setup();
@@ -170,6 +203,12 @@ void CloudsVisualSystemCode::selfSetDefaults(){
 	currentFontSize = -1;
 	generatedPanelWidth = -1;
 	generatedPanelHeight = -1;
+	
+	bEnableCode = true;
+	bEnableConsole = true;
+	bEnableTenPrint = true;
+	
+	typeMarginLeft = 5;
 	
 }
 // selfSetup is called when the visual system is first instantiated
@@ -269,7 +308,7 @@ void CloudsVisualSystemCode::selfEnd(){
 	
 	
 }
-// this is called when you should clear all the memory and delet anything you made in setup
+// this is called when you should clear all the memory and delete anything you made in setup
 void CloudsVisualSystemCode::selfExit(){
 	
 }
