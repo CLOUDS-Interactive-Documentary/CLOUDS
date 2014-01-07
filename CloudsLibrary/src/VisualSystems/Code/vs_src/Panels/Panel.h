@@ -50,6 +50,7 @@ class Panel {
 	float animationEndTime;
 
 	float* outlineAlpha;
+	float* marginLeft;
 	int maxCharsOnLine;
 	
 	ofFloatColor tint;

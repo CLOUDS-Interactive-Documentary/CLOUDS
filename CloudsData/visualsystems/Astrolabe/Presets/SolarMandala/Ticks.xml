@@ -1,24 +1,24 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Ticks</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>24.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>delayOffsetScale</Name>
-    <Value>1.241379261</Value>
+    <Value>0.394088656</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>innerSpeed</Name>
-    <Value>0.739842296</Value>
+    <Value>0.986123085</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>outerSpeed</Name>
-    <Value>5.960994244</Value>
+    <Value>8.177522659</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -38,12 +38,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>LINEAR</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>QUADRATIC</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -78,12 +78,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>YRot</Name>
-    <Value>-180</Value>
+    <Value>25</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>yTickSpeed</Name>
-    <Value>853</Value>
+    <Value>29</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>

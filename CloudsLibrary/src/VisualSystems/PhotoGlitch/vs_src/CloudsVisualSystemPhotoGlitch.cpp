@@ -136,51 +136,60 @@ void CloudsVisualSystemPhotoGlitch::addTargetToUI(ofxUISuperCanvas* gui,string s
     
 }
 
-int CloudsVisualSystemPhotoGlitch::getTargetFileName(ofxUISuperCanvas * gui, int targetId){
-    ofxUIDropDownList* menu = (ofxUIDropDownList*) gui->getWidget("TARGET IMAGES "+ ofToString(targetId));
-    vector<ofxUILabelToggle*> files = menu->getToggles();
+string CloudsVisualSystemPhotoGlitch::getTargetFileName(ofxUISuperCanvas * gui, int targetId){
+//    ofxUIDropDownList* menu = (ofxUIDropDownList*) gui->getWidget("TARGET IMAGES "+ ofToString(targetId));
+//    vector<ofxUILabelToggle*> files = menu->getToggles();
+//    string fileName  =  " ";
+//    for (int i=0 ; i<files.size(); i++) {
+//            ofxUILabel* l = files[i]->getLabel();
+//        for (int j =0; j < targetImagesDir.numFiles(); j++){
+//            if(files[i]->getValue()){
+//                fileName =l->getLabel();
+//            }
+//            if (l->getLabel() == targetImagesDir.getName(j) && files[i]->getValue()) {
+//                cout<<"current file for target : "<<targetId<<" is "<< targetImagesDir.getName(j)<<endl;
+//                bTargetImageExists = true;
+//                return j;
+//            }
+//        }
+//    }
+//
+//    ofLogError()<<"Cant file file : "<<fileName<<endl;
+//    bTargetImageExists =      false;
     
-    for (int i=0 ; i<files.size(); i++) {
-            ofxUILabel* l = files[i]->getLabel();
-        for (int j =0; j < targetImagesDir.numFiles(); j++){
-
-            
-            if (l->getLabel() == targetImagesDir.getName(j) && files[i]->getValue()) {
-                cout<<"current file for target : "<<targetId<<" is "<< targetImagesDir.getName(j)<<endl;
-                bTargetImageExists = true;
-                return j;
-            }
-            
-            if(files[i]->getValue()){
-                ofLogError(" CloudsVisualSystemPhotoGlitch::getTargetFileName")<<l->getLabel()<<" : file not found"<<endl;
-                
-            }
+    
+    ofxUIDropDownList* menu = (ofxUIDropDownList*) gui->getWidget("TARGET IMAGES "+ ofToString(targetId));
+    vector<ofxUILabelToggle*> t = menu->getToggles();
+    
+    for (int i =0; i<t.size(); i++) {
+        if (t[i]->getValue()) {
+            string path = getVisualSystemDataPath(true) + "targetImages/" + t[i]->getName();
+            return path;
         }
-        
-        
     }
-    bTargetImageExists =      false;
-
-    return -1;
+    return " ";
 }
 
 void CloudsVisualSystemPhotoGlitch::beginAnimation(){
-    
-    //clearing in the generate function now
-    //    target1.clear();
-    //    target2.clear();
-    //    sourcePhoto.clear();
-    generate(sourcePhoto, selectedSrcImageIdx, true);
+
+//    bSourceImageExists = false;
+//    bSourceImageExists = true;
+//    bTargetImageExists = false;
+//    bTargetImageExists = true;
+    bSourceImageExists =generate(sourcePhoto, srcImagePath, true);
+    cout<<"Source state : "<<bSourceImageExists<<endl;
     bOneCycleComplete = false;
     if (gp2.enable) {
-        int imgIdx = getTargetFileName(target2Gui, 2);
-        if( imgIdx != -1){
-            generate(target2, imgIdx);
+        string imgPath = getTargetFileName(target2Gui, 2);
+        if( imgPath != " "){
+            bTargetImageExists = generate(target2, imgPath);
             target2.ID = 2;
+            
             cout<<"Target 2 updated"<<endl;
         }
         else{
-            cout<<"No image selected or image not found for image 2"<<endl;
+            bTargetImageExists = false;
+            cout<<"Image not found for image 2"<<endl;
         }
     }
     else{
@@ -188,13 +197,28 @@ void CloudsVisualSystemPhotoGlitch::beginAnimation(){
     }
     
     if(gp1.enable){
-        int imgIdx = getTargetFileName(target1Gui, 1);
-        if( imgIdx != -1){
-            generate(target1, imgIdx);
-            target1.ID = 1;
-            cout<<"Target 1 updated"<<endl;
+        string imgPath = getTargetFileName(target1Gui, 1);
+        if( imgPath != " "){
+            
+            if (! gp2.enable ) {
+
+                bTargetImageExists = generate(target1, imgPath);
+                target1.ID = 1;
+                cout<<"Target 1 updated and Target 2 disabled : "<<bTargetImageExists<<endl;
+            }
+            else if (gp2.enable){
+                if (bTargetImageExists) {
+
+                    bTargetImageExists = generate(target1, imgPath);
+                    target1.ID = 1;
+                    cout<<"Target 1 and Target 2 updated : "<<bTargetImageExists<<endl;
+                }
+            }
+
+
         }
         else{
+            bTargetImageExists = false;
             cout<<"Image not found for image 1"<<endl;
         }
     }
@@ -317,8 +341,8 @@ void CloudsVisualSystemPhotoGlitch::selfGuiEvent(ofxUIEventArgs &e)
                 if (name == imagesDir.getName(i) && ((ofxUIToggle *)e.widget)->getValue()) {
                     cout<<"source img name : "<<name<<endl;
                     selectedSrcImageIdx = i;
-                    generate(sourcePhoto, selectedSrcImageIdx,true);
-                    //                    bShouldGenerate = true;
+                    srcImagePath =imagesDir.getPath(i);
+                    generate(sourcePhoto, srcImagePath,true);
                     break;
                 }
             }
@@ -390,7 +414,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     bSourceImageExists = false;
     bTargetImageExists = false;
     
-    screenRect = ofRectangle(0, 0, ofGetWidth(), ofGetHeight());
+    screenRect = ofRectangle(0, 0, getCanvasWidth(), getCanvasHeight());
     bShouldGenerate = true;
     
 }
@@ -427,30 +451,28 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
 ////    tex.clear();
 //}
 
-void CloudsVisualSystemPhotoGlitch::generate(PhotoGlitch& pg,int imgIndex, bool isSource){
+bool CloudsVisualSystemPhotoGlitch::generate(PhotoGlitch& pg,string imgPath, bool isSource){
     
     pg.clear();
     if(bSourceFolderExists && bTargetFolderExists){
         if(isSource ) {
-            cout<<"Im a source " <<"loading : "<<imagesDir.getPath(imgIndex)<<endl;
-            if(! pg.tex.loadImage(imagesDir.getPath(imgIndex))){
+            if(! pg.tex.loadImage(imgPath)){
                 ofLogError("[ CloudsVisualSystemPhotoGlitch::generate ]")<<"Image not found"<<endl;
-                bSourceImageExists = false;
-                return;
+
+                return false;
             }
-            bSourceImageExists = true;
+
         }
         else{
-            if(! pg.tex.loadImage(targetImagesDir.getPath(imgIndex))){
+            if(! pg.tex.loadImage(imgPath)){
                 ofLogError("[ CloudsVisualSystemPhotoGlitch::generate ]")<<"Image not found"<<endl;
-                bTargetImageExists = false;
-                return;
+                return false;
             }
-            bTargetFolderExists = true;
+
         }
     }
     else{
-        return;
+        return false;
     }
 
     
@@ -461,8 +483,8 @@ void CloudsVisualSystemPhotoGlitch::generate(PhotoGlitch& pg,int imgIndex, bool 
     
     pg.cells = new PGCell[numCells];
     
-    screenSliceWidth = ofGetWidth() / (float)numDivCols;
-    screenSliceHeight = ofGetHeight() / (float)numDivRows;
+    screenSliceWidth = getCanvasWidth() / (float)numDivCols;
+    screenSliceHeight = getCanvasHeight() / (float)numDivRows;
     texSliceWidth = pg.tex.getWidth() / (float)numDivCols;
     texSliceHeight = pg.tex.getHeight() / (float)numDivRows;
     
@@ -574,10 +596,9 @@ void CloudsVisualSystemPhotoGlitch::generate(PhotoGlitch& pg,int imgIndex, bool 
         bgVbo.setColorData(pg.colors, pg.numVerts, GL_STATIC_DRAW, 4 * sizeof(GLfloat));
         bgVbo.setIndexData(pg.indices, pg.numIndices, GL_STATIC_DRAW);
         bIsFirstTime = true;
-        
     }
     
-    
+    return true;
 }
 
 
@@ -593,8 +614,8 @@ void CloudsVisualSystemPhotoGlitch::generate(PhotoGlitch& pg,int imgIndex, bool 
 //    cells = new PGCell[numCells];
 //    //    targetCells = new PGCell[numCells];
 //
-//    screenSliceWidth = ofGetWidth() / (float)numDivCols;
-//    screenSliceHeight = ofGetHeight() / (float)numDivRows;
+//    screenSliceWidth = getCanvasWidth() / (float)numDivCols;
+//    screenSliceHeight = getCanvasHeight() / (float)numDivRows;
 //    texSliceWidth = tex.getWidth() / (float)numDivCols;
 //    texSliceHeight = tex.getHeight() / (float)numDivRows;
 //
@@ -717,21 +738,29 @@ void CloudsVisualSystemPhotoGlitch::selfPresetLoaded(string presetPath)
 {
     bSourceImageExists = false;
     bTargetImageExists = false;
-    
-    cout<<"Im in preset loaded"<<endl;
+
     ofxUIDropDownList* r = (ofxUIDropDownList*) customGui->getWidget("SOURCE IMAGES");
     
     vector<ofxUILabelToggle*> toggles = r->getToggles();
     
     // Look through the files dropdown for a match.
     for (int i = 0; i < imagesDir.numFiles(); i++) {
+        string fileName = " ";
         for ( int j =0; j<toggles.size(); j++){
+            
+            if (toggles[i]->getValue()) {
+                fileName =toggles[i]->getName();
+            }
             if (toggles[i]->getName() == imagesDir.getName(i) && toggles[i]->getValue()) {
-                cout<<"source img name : "<<toggles[i]->getName()<<endl;
+                cout<<"source img name : "<<imagesDir.getPath(i)<<endl;
                 selectedSrcImageIdx = i;
-                //                    bShouldGenerate = true;
+                srcImagePath =imagesDir.getPath(i);
                 break;
             }
+        }
+        
+        if (i == imagesDir.numFiles() - 1) {
+            cout<<"SelfPreset Loaded: Source File not found in "<<fileName<<endl;
         }
     }
     
@@ -1160,7 +1189,8 @@ void CloudsVisualSystemPhotoGlitch::sortTargetBrightness(bool tweenCells){
         targetObj.index = i;
         targetCompare.push_back(targetObj);
     }
-    
+    cout<<"targetCompare : "<<targetCompare.size()<<endl;
+    cout<<"sourceCompare : "<<sourceCompare.size()<<endl;
     sort(targetCompare.begin(), targetCompare.end(),sortIdxForBrightnessTargetNew);
     sort(sourceCompare.begin(), sourceCompare.end(),sortIdxForBrightnessTargetNew);
     

@@ -3095,6 +3095,7 @@ void CloudsVisualSystem::selfPostDraw(){
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
     
+	//TODO REPLACE WITH REAL CURSOR SYSTEM
     if(bDrawCursor){
         ofPushMatrix();
         ofPushStyle();
@@ -3120,9 +3121,8 @@ void CloudsVisualSystem::selfPostDraw(){
         }
         ofPopStyle();
         ofPopMatrix();
-
     }
-	
+	///END TODO
 	
 #endif
 
@@ -3247,7 +3247,3 @@ void CloudsVisualSystem::checkOpenGLError(string function){
         ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " : " << gluErrorString(err) << " in " << function;
     }
 }
-
-//#ifdef UInt32
-//#undef UInt32
-//#endif

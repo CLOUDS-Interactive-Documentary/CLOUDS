@@ -8,13 +8,35 @@ void testApp::setup(){
 	ofEnableAlphaBlending();
 	
 	secondaryDisplay.setup();
-    
+    testAllClips = false;
+    timer = true;
     debug = false;
+    currentTestClip = 1200;
+    currentProjEx = 0;
+    testProjEx = false;
+    startTime = 0;
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 	secondaryDisplay.update();
+    
+    if(testAllClips && timer){
+        //wait for 3 seconds
+        secondaryDisplay.respondToClip( secondaryDisplay.parser.getAllClips()[currentTestClip] );
+        //goto next clip
+        timer = false;
+        startTime = ofGetElapsedTimef();
+        cout<<"Secondary Display::currentTestClip = "<<currentTestClip<<endl;
+    }
+    
+    if(testAllClips && ofGetElapsedTimef() - startTime >= 3.5f){
+        timer = true;
+        if(currentTestClip == secondaryDisplay.parser.getAllClips().size()-1)currentTestClip=0;
+        else currentTestClip++;
+    }
+
+    
 }
 
 //--------------------------------------------------------------
@@ -39,31 +61,69 @@ void testApp::keyPressed(int key){
         secondaryDisplay.tx -= .1;
         cout << "tx: "<<secondaryDisplay.tx<<endl;
     }
+    
+    if(key == 'a') testAllClips = true;
+    if(key == 's') secondaryDisplay.respondToClip( secondaryDisplay.parser.getAllClips()[0] );
+    
 	
 	if(key == 'C'){
 		secondaryDisplay.respondToClip( secondaryDisplay.parser.getRandomClip() );
 	}
 	
 	if(key == 'E'){
-		vector<int> projectExampleIndecs;
+		projectExampleIndecs.clear();
 		for(int i = 0; i < secondaryDisplay.parser.getAllClips().size(); i++){
 			if(secondaryDisplay.parser.getAllClips()[i].hasProjectExample){
 				projectExampleIndecs.push_back(i);
 			}
 		}
+        
+        testProjEx = !testProjEx;
+        testAllClips = false;
+        
+        if(testProjEx){
+            CloudsClip& clip = secondaryDisplay.parser.getAllClips()[projectExampleIndecs[currentProjEx]];
+            secondaryDisplay.respondToClip( clip );
+            cout<<"Current Project Example Clip ID: "<<clip.getID()<<endl;
+        }
+        
 		
-		if(projectExampleIndecs.size() > 0){
-			int exampleIndex = projectExampleIndecs[ ofRandom(projectExampleIndecs.size()) ];
-			secondaryDisplay.respondToClip( secondaryDisplay.parser.getAllClips()[exampleIndex] );
-//			cout << "SENT CLIP " << parser.getAllClips()[exampleIndex].getLinkName() << " WITH EXAMPLE " << parser.getAllClips()[exampleIndex].projectExampleTitle << endl;
-		}
+//		if(projectExampleIndecs.size() > 0){
+//			int exampleIndex = projectExampleIndecs[ ofRandom(projectExampleIndecs.size()) ];
+//			secondaryDisplay.respondToClip( secondaryDisplay.parser.getAllClips()[exampleIndex] );
+////			cout << "SENT CLIP " << parser.getAllClips()[exampleIndex].getLinkName() << " WITH EXAMPLE " << parser.getAllClips()[exampleIndex].projectExampleTitle << endl;
+//		}
 	}
     
     if(key == 'S'){
         //reload shader
         secondaryDisplay.reloadShader();
     }
+    
+    if(key == 'H'){
+        //reload shader
+        secondaryDisplay.hideGUI();
+    }
 	
+    if(key == OF_KEY_RIGHT){
+        if(testProjEx){
+            if(currentProjEx >= projectExampleIndecs.size()-1) currentProjEx = 0;
+            else currentProjEx++;
+            CloudsClip& clip = secondaryDisplay.parser.getAllClips()[projectExampleIndecs[currentProjEx]];
+            secondaryDisplay.respondToClip( clip );
+            cout<<"Current Project Example Clip ID: "<<clip.getID()<<endl;
+        }
+    }
+    
+    if(key == OF_KEY_LEFT){
+        if(testProjEx){
+            if(currentProjEx <= 0) currentProjEx = projectExampleIndecs.size()-1;
+            else currentProjEx--;
+            CloudsClip& clip = secondaryDisplay.parser.getAllClips()[projectExampleIndecs[currentProjEx]];
+            secondaryDisplay.respondToClip( clip );
+            cout<<"Current Project Example Clip ID: "<<clip.getID()<<endl;
+        }
+    }
 }
 
 //--------------------------------------------------------------

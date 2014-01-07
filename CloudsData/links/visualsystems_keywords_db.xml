@@ -2179,6 +2179,16 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Circuit_JG_AggregiousSweep">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Cities_Archiving">
     <keywords>Big data|memory|data ownership|data mining|big data</keywords>
     <links></links>

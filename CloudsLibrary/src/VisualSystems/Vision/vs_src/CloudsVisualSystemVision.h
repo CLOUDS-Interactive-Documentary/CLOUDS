@@ -180,7 +180,8 @@ protected:
     float boxSat;
     float boxBright;
     ofFloatColor boxColor;
-    
+    float satShift;
+    float briShift;
     //SHADER
     ofShader shader;
     
@@ -188,7 +189,7 @@ protected:
     ofxUISuperCanvas* soundGui;
     int nSamples = 2;
     string soundFiles[2] = {"distorted_drones.aif",
-        "slowgrains.aif"};
+        "slowgrains_short.aif"};
     bool playSample[2];
     ControlTrigger soundTriggers[2];
     ofxTonicSynth synth;
