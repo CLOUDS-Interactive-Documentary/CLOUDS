@@ -38,7 +38,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Helix-Inverted</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -84,4 +84,14 @@
     <Kind>2</Kind>
     <Name>o_Helix</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>o_Helix-Inverted</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>o_Waves</Name>
+    <Value>1</Value>
 </Widget>
