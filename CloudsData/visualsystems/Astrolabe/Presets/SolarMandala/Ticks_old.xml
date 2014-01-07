@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Ticks</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>24.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -13,17 +13,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>innerSpeed</Name>
-    <Value>0.148768470</Value>
+    <Value>0.739842296</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>outerSpeed</Name>
-    <Value>9.211901665</Value>
+    <Value>5.960994244</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>skipAheadOnCreation</Name>
-    <Value>7</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>LINEAR</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -48,7 +48,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>QUINTIC</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -83,12 +83,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>yTickSpeed</Name>
-    <Value>1235</Value>
+    <Value>853</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>yTickDelay</Name>
-    <Value>400</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
