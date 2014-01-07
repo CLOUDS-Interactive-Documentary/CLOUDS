@@ -1,0 +1,72 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>POINT LIGHT 1Settings</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>354.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>X</Name>
+    <Value>382.198974609</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Y</Name>
+    <Value>-15.705505371</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Z</Name>
+    <Value>246.072021484</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AH</Name>
+    <Value>0.663559794</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AS</Name>
+    <Value>0.508524299</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AV</Name>
+    <Value>0.366583854</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>DH</Name>
+    <Value>0.623135865</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>DS</Name>
+    <Value>0.429320008</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>DV</Name>
+    <Value>0.544501960</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SH</Name>
+    <Value>0.565445006</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SS</Name>
+    <Value>0.602094889</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SV</Name>
+    <Value>0.261779457</Value>
+</Widget>

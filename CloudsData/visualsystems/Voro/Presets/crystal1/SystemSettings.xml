@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>82.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -51,16 +51,6 @@
     <Value>1.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>2</Kind>
-    <Name>Glow</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Nucles</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
     <Kind>4</Kind>
     <Name>texture_Size</Name>
     <Value>0.137931034</Value>
@@ -93,20 +83,35 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Wall</Name>
-    <Value>0.315270931</Value>
+    <Value>1.178769112</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Alpha</Name>
-    <Value>0.216748774</Value>
+    <Value>0.157635465</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Wires_Alpha</Name>
-    <Value>0.423645318</Value>
+    <Value>0.551724136</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Wires_Thickness</Name>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Vertex_Alpha</Name>
     <Value>0.068965517</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Vertex_Size</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Cell_Use_Material</Name>
+    <Value>1</Value>
 </Widget>

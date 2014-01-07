@@ -14,6 +14,7 @@ class XParticle
 { 
 public:
     XParticle();
+    XParticle(ofVec3f pos);
     
     void applyForce(ofVec3f force);
     void update(float drag);
@@ -51,6 +52,7 @@ public:
     static bool bOscillateSize;
     static bool bOscillateBri;
     
+    float mass;
     float size;
     float colorPicker;
     float brightness;

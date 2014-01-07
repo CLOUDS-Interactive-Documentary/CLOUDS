@@ -7,7 +7,7 @@
 //
 
 #include "CloudsIntroSequence.h"
-#include "ofxObjLoader.h"
+//#include "ofxObjLoader.h"
 #include "CloudsGlobal.h"
 
 CloudsIntroSequence::CloudsIntroSequence(){
@@ -36,6 +36,7 @@ string CloudsIntroSequence::getSystemName(){
 void CloudsIntroSequence::selfSetup(){
     
     // Set question defaults.
+    questionScale = 0.1f;
     questionFontSize = 12;
     questionLineLength = 300.0f;
     questionLineSpacing = 1.0f;
@@ -48,9 +49,9 @@ void CloudsIntroSequence::selfSetup(){
 	
 	perlinOffset = 0;
 	
-	camera.setup();
-	camera.autosavePosition = true;
-	camera.loadCameraPosition();
+//	camera.setup();
+//	camera.autosavePosition = true;
+//	camera.loadCameraPosition();
 	
 //	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_supertight.obj", tunnelMeshTight);
 //	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_loose.obj", tunnelMeshLoose);
@@ -95,7 +96,7 @@ void CloudsIntroSequence::reloadShaders(){
 	chroma.load("",getVisualSystemDataPath() + "shaders/BarrelChromaAb.fs");
 	typeShader.load(getVisualSystemDataPath() + "shaders/IntroType");
 	
-	CloudsQuestion::reloadShader();
+	CloudsPortal::reloadShader();
 }
 
 void CloudsIntroSequence::rebuildQuestionFont(){
@@ -111,7 +112,7 @@ void CloudsIntroSequence::rebuildQuestionFont(){
 
 void CloudsIntroSequence::selfUpdate(){
 	
-	camera.applyRotation = camera.applyTranslation = useDebugCamera && !cursorIsOverGUI();
+//	camera.applyRotation = camera.applyTranslation = useDebugCamera && !cursorIsOverGUI();
 	
 	if(!startedOnclick && timeline->getIsPlaying()){
 		timeline->stop();
@@ -126,27 +127,41 @@ void CloudsIntroSequence::selfUpdate(){
 		warpCamera.setPosition(wobble.x, wobble.y, 0);
 	}
 	warpCamera.lookAt( ofVec3f(0, 0, warpCamera.getPosition().z + 50) );
+    
+#ifdef OCULUS_RIFT
+    ofRectangle viewport = getOculusRift().getOculusViewport();
+#endif
 	
 	for(int i = 0; i < startQuestions.size(); i++){
 		
-		startQuestions[i].radius = questionSize;
+		startQuestions[i].scale = questionScale;
 		startQuestions[i].update();
 		
-		if(startQuestions[i].position.z < warpCamera.getPosition().z){
-			startQuestions[i].position.z += questionWrapDistance;
+		if(startQuestions[i].hoverPosition.z < warpCamera.getPosition().z){
+			startQuestions[i].hoverPosition.z += questionWrapDistance;
 		}
 		
-		if(startQuestions[i].position.z - warpCamera.getPosition().z < questionTugMinDepth){
-#ifdef OCULUS_RFIT
-			float distanceToQuestion = getOculusRift().distanceFromMouse(startQuestions[i].position);
+		if(startQuestions[i].hoverPosition.z - warpCamera.getPosition().z < questionTugMinDepth){
+#ifdef OCULUS_RIFT
+            ofVec3f screenPos = getOculusRift().worldToScreen(startQuestions[i].hoverPosition, true);
+            float distanceToQuestion = ofDist(screenPos.x, screenPos.y,
+                                              viewport.getCenter().x, viewport.getCenter().y);
+//            if (distanceToQuestion < portal.minSelectDistance) {
+//                portal.startHovering();
+//            }
+//            else{
+//                portal.stopHovering();
+//            }
+//            
+//			float distanceToQuestion = getOculusRift().distanceFromMouse(startQuestions[i].hoverPosition);
 //			cout << "Distance " << distanceToQuestion << endl;
 #else
-			ofVec2f mouseNode(ofGetMouseX(),ofGetMouseY());			
-			float distanceToQuestion = startQuestions[i].currentScreenPoint.distance(mouseNode);
+			ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
+			float distanceToQuestion = startQuestions[i].screenPosition.distance(mouseNode);
 #endif
 			if(caughtQuestion == NULL){
 				if( distanceToQuestion < questionTugMaxDistance ){
-					startQuestions[i].position.z += ofMap(distanceToQuestion, questionTugMaxDistance, questionTugMinDistance, 0, cameraForwardSpeed);
+					startQuestions[i].hoverPosition.z += ofMap(distanceToQuestion, questionTugMaxDistance, questionTugMinDistance, 0, cameraForwardSpeed);
 					if(distanceToQuestion < questionTugMinDistance){
 						caughtQuestion = &startQuestions[i];
 						caughtQuestion->startHovering();
@@ -155,8 +170,8 @@ void CloudsIntroSequence::selfUpdate(){
 			}
 			//we have a caught question make sure it's still close
 			else if(caughtQuestion == &startQuestions[i]){
-				startQuestions[i].position.z += cameraForwardSpeed;
-				if( caughtQuestion->isSelected() && ofGetMousePressed()){
+				startQuestions[i].hoverPosition.z += cameraForwardSpeed;
+				if( caughtQuestion->isSelected() /* && ofGetMousePressed() */){
 					selectedQuestion = caughtQuestion;
 				}
 				else if(distanceToQuestion > questionTugMinDistance){
@@ -176,8 +191,8 @@ void CloudsIntroSequence::selfUpdate(){
 	}
 	
 	titleRect = ofRectangle(0,0,titleRectWidth*ofGetWidth(),titleRectHeight*ofGetHeight());
-	titleRect.alignTo( ofPoint(ofGetWidth()/2,ofGetHeight()/2) );
-	hoveringTitle = titleRect.inside(ofGetMouseX(), ofGetMouseY());
+	titleRect.alignTo( ofPoint(getCanvasWidth()/2, getCanvasHeight()/2) );
+	hoveringTitle = titleRect.inside(GetCloudsInputX(), GetCloudsInputY());
 	
 //	cout << "title rect is " << titleRect.getTopLeft() << " " << titleRect.getBottomLeft() << endl;
 //	cout << "hovering? " << (hoveringTitle ? "YES" : "NO" ) << endl;
@@ -202,7 +217,7 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQue
 	
 	for(int i = 0; i < possibleStartQuestions.size(); i++){
 		
-		CloudsQuestion q;
+		CloudsPortal q;
 		q.cam = &warpCamera;
 		q.font = &questionFont;
 		q.clip = possibleStartQuestions[i];
@@ -285,10 +300,11 @@ void CloudsIntroSequence::positionStartQuestions(){
 
 	//set the start questions along a random tunnel
 	for(int i = 0; i < startQuestions.size(); i++){
-		startQuestions[i].position = ofVec3f(0, ofRandom(questionTunnelInnerRadius, tunnelMax.y), 0);
-		startQuestions[i].position.rotate(ofRandom(360), ofVec3f(0,0,1));
-		startQuestions[i].position.z = tunnelMax.z*.5 + ofRandom(questionWrapDistance);
-		startQuestions[i].orientToCenter();
+		startQuestions[i].hoverPosition = ofVec3f(0, ofRandom(questionTunnelInnerRadius, tunnelMax.y), 0);
+		startQuestions[i].hoverPosition.rotate(ofRandom(360), ofVec3f(0,0,1));
+		startQuestions[i].hoverPosition.z = tunnelMax.z*.5 + ofRandom(questionWrapDistance);
+        // TODO: Figure out if orientToCenter() is still necessary
+//		startQuestions[i].orientToCenter();
 	}
 	
 }
@@ -301,12 +317,18 @@ void CloudsIntroSequence::autoSelectQuestion(){
 	selectedQuestion = &startQuestions[ ofRandom(startQuestions.size()) ];
 }
 
-CloudsQuestion* CloudsIntroSequence::getSelectedQuestion(){
+CloudsPortal* CloudsIntroSequence::getSelectedQuestion(){
 	return selectedQuestion;
 }
 
 void CloudsIntroSequence::selfDrawBackground(){
-	
+    ofPushStyle();
+    ofNoFill();
+    for(int i = 0; i < startQuestions.size(); i++){
+        ofSetColor(startQuestions[i].hovering ? ofColor::green : ofColor::yellow);
+        ofCircle(startQuestions[i].screenPosition, 20);
+    }
+    ofPopStyle();
 }
 
 void CloudsIntroSequence::selfDrawDebug(){
@@ -385,36 +407,18 @@ void CloudsIntroSequence::selfDraw(){
 	ofPopStyle();
 	
 	ofPushStyle();
-	ofFloatColor questionTint = ofFloatColor::fromHsb(questionNodeTint.r, questionNodeTint.g, questionNodeTint.b);
-	ofFloatColor loadedQuestionTint = ofFloatColor::fromHsb(questionNodeTint.r, questionNodeTint.g*1.2, questionNodeTint.b*1.3);
+    ofEnableAlphaBlending();
 
-	CloudsQuestion::startShader();
-	CloudsQuestion::shader.setUniform1f("minDistance", distanceRange.min);	
-	CloudsQuestion::shader.setUniform1f("maxDistance", distanceRange.max);
-	CloudsQuestion::shader.setUniform1f("attenuateFade", 1.0);
-	CloudsQuestion::shader.setUniform4f("selectedColor", 1.0, loadedQuestionTint.g, 1.0, 1.0);
-	CloudsQuestion::shader.setUniform4f("color",questionTint.r, questionTint.g, questionTint.b, 1.0);
+	CloudsPortal::shader.begin();
 
+    ofSetColor(255);
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].draw();
 	}
 		
-	//highlight specific questions
-//	for(int i = 0; i < startQuestions.size(); i++){
-//		if( ofContains(loadedQuestions,startQuestions[i].clip.getID()) ){
-//			CloudsQuestion::shader.setUniform4f("color",1.0, loadedQuestionTint.g, 1.0, 1.0);
-//		}
-//		else{
-//		   CloudsQuestion::shader.setUniform4f("color",questionTint.r, questionTint.g, questionTint.b, 1.0);
-//		}
-//		startQuestions[i].draw();
-//	}
-
-	CloudsQuestion::endShader();
+	CloudsPortal::shader.end();
 	
 	ofPopStyle();
-    
-
 }
 
 void CloudsIntroSequence::drawCloudsType(){
@@ -570,7 +574,7 @@ void CloudsIntroSequence::selfSetupSystemGui(){
 
 void CloudsIntroSequence::selfSetupCameraGui(){
 	camGui->addToggle("use debug camera", &useDebugCamera);
-	camGui->addSlider("debug camera speed", 1, 20, &camera.speed);
+//	camGui->addSlider("debug camera speed", 1, 20, &camera.speed);
 	camGui->addSlider("camera fwd force", 0, 2, &cameraForwardSpeed);
 	camGui->addSlider("camera wobble range", 0, 10, &camWobbleRange);
 	camGui->addSlider("camera wobble speed", 0, 1., &camWobbleSpeed);
@@ -586,9 +590,9 @@ void CloudsIntroSequence::guiSystemEvent(ofxUIEventArgs &e){
 		reloadShaders();
 	}
 	else if(e.widget->getName() == "reset debug camera" && ((ofxUIButton*)e.widget)->getValue()){
-		camera.setPosition(0, 0, 0);
-		camera.setOrientation(ofQuaternion());
-		camera.rotate(180, ofVec3f(0,1,0));
+//		camera.setPosition(0, 0, 0);
+//		camera.setOrientation(ofQuaternion());
+//		camera.rotate(180, ofVec3f(0,1,0));
 		//camera.setAnglesFromOrientation();
 	}
 }
@@ -621,7 +625,7 @@ void CloudsIntroSequence::selfSetupGuis(){
 	questionGui->setName("Questions");
 	questionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	questionGui->addSlider("Size", 1, 5, &questionSize);
+	questionGui->addSlider("Scale", 0, 1, &questionScale);
 	questionGui->addSlider("Wrap Distance", 100, 4000, &questionWrapDistance);
 	questionGui->addSlider("Inner Radius", 2, 20, &questionTunnelInnerRadius);
 	questionGui->addSlider("Tug Min Distance", 10, 300, &questionTugMinDistance);

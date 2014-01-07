@@ -152,7 +152,12 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bAnimateFeed;
     bool bAnimateSpriteSize;
     bool bStaticNameDraw;
+    bool bOldData;
   protected:
+    ofDirectory meshDir;
+    vector<string> meshStrings;
+    int currentMeshIndex;
+    
     int maxUserLinks;
     ofColor listColor;
     vector<Tweeter> tweeters;

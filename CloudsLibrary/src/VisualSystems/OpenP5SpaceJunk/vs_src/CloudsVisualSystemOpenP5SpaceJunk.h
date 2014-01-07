@@ -37,14 +37,7 @@ class Cube {
         rotX = _rotX;
         rotY = _rotY;
         rotZ = _rotZ;
-    
-		//ofPushMatrix();
-//		ofTranslate(shiftX, shiftY, shiftZ);
-//      ofRotateX(rotX);
-//      ofRotateY(rotY);
-//      ofRotateZ(rotZ);
-//      ofScale(w,h,d);
-		
+
 		ofMatrix4x4 transform;
 		ofMatrix4x4 rotate;
 		transform.scale(w,h,d);
@@ -63,20 +56,8 @@ class Cube {
 			mesh.addIndex(initialIndex + baseBox.getIndices()[i] );
 		}
 		
-		//ofBox(1, 1, 1);
-        //ofPopMatrix();
 	}
 	
-	void draw() {
-//        ofPushMatrix();
-//        ofTranslate(shiftX, shiftY, shiftZ);
-//        ofRotateX(rotX);
-//        ofRotateY(rotY);
-//        ofRotateZ(rotZ);
-//        ofScale(w, h, d); 
-//        ofBox(1, 1, 1);
-//        ofPopMatrix();
-	}
 };
 
 //TODO: rename this to your own visual system
@@ -151,14 +132,6 @@ class CloudsVisualSystemOpenP5SpaceJunk : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-	
-
-    // if you use a custom camera to fly through the scene
-	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
-
 
 protected:
     

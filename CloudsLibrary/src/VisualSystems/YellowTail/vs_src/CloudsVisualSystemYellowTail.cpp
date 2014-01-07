@@ -248,7 +248,11 @@ void CloudsVisualSystemYellowTail::selfInteractionDragged(CloudsInteractionEvent
     int touchId = args.playerId;
 	
     map<int,Gesture *>::iterator G = gestureForTouch.find(touchId);
-    assert(G != gestureForTouch.end());
+	//JG removed asserts as they are a stability problem
+//    assert(G != gestureForTouch.end());
+	if(G == gestureForTouch.end()){
+		return;
+	}
     Gesture *gesture = G->second;
     
     if (gesture->distanceToLastPoint((float)args.position.x, (float)args.position.y) > minimumTravelForNewPoint) {
@@ -267,8 +271,11 @@ void CloudsVisualSystemYellowTail::selfInteractionEnded(CloudsInteractionEventAr
     int touchId = args.playerId;
 	
     map<int,Gesture *>::iterator G = gestureForTouch.find(touchId);
-    
-	assert(G != gestureForTouch.end());
+    	//JG removed asserts as they are a stability problem
+	//assert(G != gestureForTouch.end());
+	if(G == gestureForTouch.end()){
+		return;
+	}
     
 	Gesture *gesture = G->second;
     

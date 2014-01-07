@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>TargetImage2</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>47.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>17</Kind>
     <Name>Cells_target.jpg</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -47,7 +47,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>GrandPerspectiveRedish.png</Name>
+    <Name>GrandPerspectiveRedish.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -57,12 +57,12 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>Screen Shot 2013-12-04 at 11.32.15 AM.png</Name>
+    <Name>Grid.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>browser.png</Name>
+    <Name>browser.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -72,7 +72,12 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>desktopclutter_target.png</Name>
+    <Name>desktopclutter_target.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>finder.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -87,12 +92,22 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>glitch.jpeg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>glitch2.jpeg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>gradient_target.png</Name>
+    <Name>gradient2.jpeg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>gradient_target.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -107,22 +122,12 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>images (1).jpeg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>images.jpeg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
     <Name>people_target.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>qrcode_wwd.png</Name>
+    <Name>qrcode_wwd.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -142,11 +147,11 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>xcode.png</Name>
+    <Name>xcode.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
     <Name>xyzMap.jpg</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>

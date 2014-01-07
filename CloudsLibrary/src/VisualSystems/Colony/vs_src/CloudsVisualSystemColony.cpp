@@ -15,7 +15,7 @@ void CloudsVisualSystemColony::selfSetup()
     ofEnableArbTex();
     
     grunge.setCompression(OF_COMPRESS_ARB);
-    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/grime_square.png");
+    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/blur_square3.png");
     
 	loadShaders();
  

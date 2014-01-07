@@ -1,0 +1,82 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Terrain</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise_zoom</Name>
+    <Value>9.507389069</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise_speed</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Feed</Name>
+    <Value>0.026860509</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Loops</Name>
+    <Value>2.418719292</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DiffV</Name>
+    <Value>0.231527090</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DiffU</Name>
+    <Value>0.324999988</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>k</Name>
+    <Value>0.152870074</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>t</Name>
+    <Value>0.019704433</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>enable</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Terrain_Size</Name>
+    <Value>170.985214233</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Terrain_Altitud</Name>
+    <Value>1.389162540</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Terrain_Resolution</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Hex</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Stripes</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Dots</Name>
+    <Value>1.000000000</Value>
+</Widget>

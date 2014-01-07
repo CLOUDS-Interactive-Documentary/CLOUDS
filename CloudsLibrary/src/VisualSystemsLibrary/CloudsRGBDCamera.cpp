@@ -7,6 +7,7 @@
 //
 
 #include "CloudsRGBDCamera.h"
+#include "CloudsInput.h"
 
 CloudsRGBDCamera::CloudsRGBDCamera(){
 	
@@ -23,6 +24,9 @@ CloudsRGBDCamera::CloudsRGBDCamera(){
 	damp = .1;
 	driftNoisePosition = 0;
 	
+	canvasWidth = ofGetWidth();
+	canvasHeight = ofGetHeight();
+
 	maxDriftAngle = 0;
 //	driftNoiseDensity = 0;
 //	driftNoiseSpeed = ;
@@ -75,9 +79,14 @@ void CloudsRGBDCamera::jumpToPosition(){
 	mouseBasedNode.lookAt(currentLookTarget);	
 }
 
+void CloudsRGBDCamera::setCanvasWidthHeight(float width, float height ){
+	canvasWidth = width;
+	canvasHeight = height;
+}
+
 void CloudsRGBDCamera::setPositionFromMouse(){
 	
-	float percentOnCurve = ofMap(ofGetMouseX(), ofGetWidth()*.2, ofGetWidth()*.8, 0, 1, true);
+	float percentOnCurve = ofMap(GetCloudsInputX(), canvasWidth*.2, canvasWidth*.8, 0, 1, true);
 	ofVec3f sidePositionLeft = lookTarget + ofVec3f(-sideDistance,0,sidePullback);
 	ofVec3f sidePositionRight = lookTarget + ofVec3f(sideDistance,0,sidePullback);
 	ofVec3f frontPosition = lookTarget + ofVec3f(0,0,-frontDistance);
@@ -89,7 +98,7 @@ void CloudsRGBDCamera::setPositionFromMouse(){
 		position = sidePositionLeft.getInterpolated(frontPosition, ofMap(percentOnCurve, 0, .5, 0, 1.0) );
 	}
 	
-	float liftDrift = ofMap(ofGetMouseY(), ofGetHeight()*.2, ofGetHeight()*.8, -liftRange,liftRange, true);
+	float liftDrift = ofMap(GetCloudsInputY(), canvasHeight*.2, canvasHeight*.8, -liftRange,liftRange, true);
 	position.y += ofMap(abs(.5 - percentOnCurve), 0, .5, (liftDrift + liftAmount), (liftDrift-liftAmount)*.5);
 	position.z -= MAX(liftDrift,0) * .5; // zoom in on mouse up
 

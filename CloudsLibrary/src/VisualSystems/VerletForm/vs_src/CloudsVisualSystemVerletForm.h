@@ -12,7 +12,10 @@
 typedef struct{
 	bool enabled;
 	ofLight light;
-	ofFloatColor color;
+	ofColor color,colorGoal;
+	ofFloatColor cDiff,cSpec;
+
+	int cnt,cntGoal;
 	float currentRot;
 	float spinRadius;
 	ofVec3f spinAxis;
@@ -26,15 +29,23 @@ using namespace msa::physics;
 typedef struct{
 	int id;
 	int state;
-	int stateCnt;
+	signed int stateCnt;
 	int gridx;
 	int gridy;
-	bool isEdge;
+	int colID;
+	int vertID;
 
-	ofVec3f orig;
+	bool isEdge;
+	float speed;
+	ofVec3f orig,goal,gridV;
 	ofVec3f vD;
 	Particle3D* p;
 } MWParticle;
+
+typedef struct{
+	int type;
+	float h[7];
+} MWTerrain;
 
 
 class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
@@ -79,59 +90,106 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
     void selfSetupTimelineGui();
     void selfTimelineGuiEvent(ofxUIEventArgs &e);
 
+    ofVec3f currentRotAngle;
+	float currentCamDistance;
+	//this makes it work with clouds!
+	ofCamera& getCameraRef(){
+			return cam;
+	}
 
   protected:
-	static const int FREE=0,FIXEDSTATIC=1,FIXEDMOVING=2;
+
+	bool doAutoGenerate;
+
+    ofCamera cam;
+    ofVec3f grav,gravGoal;
+    int gravCnt,gravCntGoal;
+
+    ofVec3f camCenterOffs,mousePos;
+    ofVec3f modelRot,modelRotD;
+    float modelRotMax;
+	bool camEnabled,colorLightEnabled;
+
+	ofFloatColor cWhite,cBlack,cGray;
+	ofColor cWhiteRGB,cBlackRGB,cGrayRGB;
+
+	static const bool MWDEBUG=true;
+	static const int FREE=0,FIXEDSTATIC=2,FIXEDMOVING=1;
 	static const int GRIDRECT=1,GRIDCIRC=0,GRIDCYL=2;
+	static const int LIGHTS=3;
 
   	vector<MWParticle> pp;
 	vector<MWParticle> ppActive;
-	float fpsMod,activityCnt,stickyNum;
+	float fpsMod,stickyNum;
+	int activityCnt;
 	float clothWidth;
 	float clothHeight;
-	float colorIndex;
-	float gridSizeF;
+	float colorIndex,colorMod;
+	int colorStrategy;
 
-	float lastFixY;
 
+	bool gridDoStitch;
 	int gridSize;
+	float gridSizeF;
 	int gridType;
+	int fixCnt;
 	
 
 	void mwUpdate();
+	void mwUpdateCamera();
 	void mwLights();
+	void mwNewLightColor();
+
+	void mwFix(MWParticle &pt,bool fix);
+
+
+	ofVec3f mwNewMove(MWParticle& pt);
+	void mwNewGravity();
+	void mwNewLightColor(AuxLight &a);
 
 	ofVec3f mwOutlineShape(ofVec3f &v);
 	bool mwIsEdge(MWParticle &pt);
 	void mwNewActivity(MWParticle& pt,signed int state);
-	void mwFix(MWParticle &pt);
+
 
 	void mwMakeParticle(int x,int y,ofVec3f &o);
-	MWParticle &mwGetParticle(signed int id,bool fromEdge,bool addToActive);
+	MWParticle &mwGetParticle(bool fromEdge);
 	void mwPreset();
 
 	void mwGenerate();
 	void mwCreateLights();
 	void mwGridSticky();
 
+	string hexStr(ofColor &c);
+
+	ofColor rndColor();
+	void shiftHue(ofColor &cc,float mod);
+	bool rndBool(float prob);
+	float rndSigned(float a,float b);
+	float bezierPoint(float a, float b, float c, float d, float t);
+	float bezierPoint(float a[], float t);
+	ofVec3f terrainMod(ofVec3f &v);
 
 	ofxUISuperCanvas* clothGui;
-	ofxUISuperCanvas* auxLightGuis[4];
+	ofxUISuperCanvas* auxLightGuis[LIGHTS];
 	
 	
 	void clearElements();
 	
 	bool shouldRegenerateMesh;
+	unsigned int lastGenerated;
+
 	void generateMesh();
 
 	float springStrength;
 	float springDampening;
 	float springExtend;
 	
-	AuxLight auxLights[4];
+	AuxLight auxLights[LIGHTS];
 	
 	ofVboMesh mesh;
 	World3D physics;
+	map<ofIndexType, MWParticle> meshIndexToMWParticle;
 	map<ofIndexType, Particle3D*> meshIndexToParticle;
 	map<Particle3D*, vector<ofIndexType> > particleToMeshIndices;
 	
@@ -142,7 +200,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	vector< vector<Particle3D*> > particles;
 	
 	//color generators
-	vector<ofColor> initColors(int row);
+	void initColors(int row,int cnt);
 	vector<ofColor> colors;
 
 	ofPixels colorPalettes;

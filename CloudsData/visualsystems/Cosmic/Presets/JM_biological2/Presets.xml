@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000061035</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>305.000000000</XPosition>
+    <YPosition>109.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -27,8 +27,13 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>nBody</Name>
-    <Value>0</Value>
+    <Name>JM_biological2</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>jm_galaxy</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -42,6 +47,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>JM_biological2</Name>
-    <Value>1</Value>
+    <Name>nBody</Name>
+    <Value>0</Value>
 </Widget>

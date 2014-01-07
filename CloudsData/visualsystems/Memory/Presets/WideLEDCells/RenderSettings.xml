@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
+    <XPosition>213.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -23,7 +23,18 @@
 <Widget>
     <Kind>4</Kind>
     <Name>block_scale</Name>
-    <Value>5.226601124</Value>
+    <Value>5.647783279</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>block_value_range</Name>
+    <HighValue>0.763546824</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>block_border_base</Name>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,7 +49,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>border_green</Name>
-    <Value>0.201970443</Value>
+    <Value>0.093596056</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

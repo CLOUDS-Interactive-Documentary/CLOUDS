@@ -6,6 +6,11 @@
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
+    <Kind>2</Kind>
+    <Name>Level Set BG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>Cell Floor Translusence</Name>
     <Value>0.600984931</Value>
@@ -13,12 +18,37 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Dish Floor Translusence</Name>
-    <Value>0.374383926</Value>
+    <Value>0.137930736</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>R</Name>
+    <Value>0.125000000</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>G</Name>
+    <Value>0.687500000</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>B</Name>
+    <Value>0.500000000</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>A</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Stipple Scale</Name>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>R1</Name>
-    <Value>0.662500024</Value>
+    <Value>0.912500024</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>

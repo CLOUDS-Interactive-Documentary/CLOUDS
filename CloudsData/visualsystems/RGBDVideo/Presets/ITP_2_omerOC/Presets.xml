@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1273.000122070</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -22,12 +22,32 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>ITP_2_omerOC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>ITP_3</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>ITP_3OC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>ITP_4</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Koblin</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ShinyLab</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -39,9 +59,4 @@
     <Kind>2</Kind>
     <Name>Subway_1</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>ITP_2_omerOC</Name>
-    <Value>1</Value>
 </Widget>

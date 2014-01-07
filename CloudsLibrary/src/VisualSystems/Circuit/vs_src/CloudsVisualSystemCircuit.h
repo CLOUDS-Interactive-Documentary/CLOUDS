@@ -115,16 +115,27 @@ protected:
     //
 	
 	ofxUISuperCanvas* blipGui;
+	bool bDrawBlips;
 	ofRange pointSizeRange;
 	ofRange pointDistanceRange;
 	float blipScaleExponent;
 	float blipSpeed;
 
 	ofxUISuperCanvas* lineGui;
+	bool bDrawLine;
+	
+	ofxUISuperCanvas* meshGui;
+	float lastElevation;
+	float currentElevation;
+	bool bDrawMesh;
 	
 	float nearClippingPlane;
 	
 	ofShader blipShader;
+	ofShader lineShader;
+	ofShader fastBlipShader;
+	ofShader meshShader;
+	
 	void reloadShaders();
 	void generateCircuit();
 	
@@ -139,6 +150,7 @@ protected:
 	
     vector<ofIndexType> elevated;
     
+
     ofImage heightMap;
     ofVboMesh heightMesh;
 	ofVboMesh lineMesh;

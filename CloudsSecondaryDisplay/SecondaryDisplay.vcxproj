@@ -114,6 +114,7 @@
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\SecondaryDisplay\Receiver\CloudsSecondaryDisplayController.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.cpp" />
@@ -254,6 +255,7 @@
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h" />
     <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\CloudsQuestion.h" />
+    <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.h" />
     <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsSVGMesh.h" />
     <ClInclude Include="..\CloudsLibrary\src\SecondaryDisplay\Receiver\CloudsSecondaryDisplayController.h" />
     <ClInclude Include="..\CloudsLibrary\src\StoryEngine\CloudsClip.h" />

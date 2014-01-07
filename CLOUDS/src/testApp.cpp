@@ -1,5 +1,6 @@
 #include "testApp.h"
 #include "CloudsGlobal.h"
+#include "CloudsInputKinectOSC.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -8,117 +9,22 @@ void testApp::setup(){
 	ofSetFrameRate(60);
 	ofBackground(0);
 	ofToggleFullscreen();
-	currentAct = NULL;
-    parser.loadFromFiles();
 	
-	if(!ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
-		ofSystemAlertDialog("Could not find movie file path. \
-							Create a file called CloudsMovieDirectory.txt \
-							that contains one line, the path to your movies folder");
-	}
-
-	parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
-	
-	//visualSystems.populateVisualSystems();
-	visualSystems.loadPresets();
-	
-	storyEngine.parser = &parser;
-	storyEngine.visualSystems = &visualSystems;
-	storyEngine.printDecisions = false;
-	storyEngine.combinedClipsOnly = true;
-	storyEngine.setup();
+	//SetCloudsInputKinect();
 	
 	player.setup();
-    player.setRun(run);
-	player.getClusterMap().buildEntireCluster(parser);
-	
-	mixer.setup();
-
-	sound.setup(storyEngine);
-
-	player.setStoryEngine(storyEngine);
-
-	oscSender.setup();
-	
-	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
-	
-	////////SEED WITH RANDOM CLIP
-//	srand( ofGetSeconds()*1000 );
-//	CloudsClip& clip = parser.getRandomClip(false,false);
-//	storyEngine.buildAct(run, clip, clip.getKeywords()[0] );
-	////////SEED WITH RANDOM CLIP
-	
-	//////////////SHOW INTRO
-	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
-	//safe guard delete any starters that don't have questions
-	for(int i = startingNodes.size()-1; i >= 0; i--){
-		if(!startingNodes[i].hasQuestion() ) {
-			ofLogError() << "Clip " << startingNodes[i].getID() << " is labeled as #start but has no question, removing.";
-			startingNodes.erase(startingNodes.begin() + i);
-		}
-		else if(!startingNodes[i].hasMediaAsset){
-			ofLogError() << "Clip " << startingNodes[i].getID() << " has no media asset, removing.";
-			startingNodes.erase(startingNodes.begin() + i);
-		}
-		else{
-			cout << " Adding Clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
-		}
-	}
-	
-	cout << "Starting with " << startingNodes.size() << endl;
-	player.showIntro(startingNodes);
-	//////////////SHOW INTRO
-	
-	//temp sound stuff
-	//sound.setMasterAmp(1.0);
-	useScratch = false;
-	
-}
-
-//--------------------------------------------------------------
-void testApp::actCreated(CloudsActEventArgs& args){
-	if(currentAct != NULL){
-		currentAct->unregisterEvents(&oscSender);
-	}
-	currentAct = args.act;
-	currentAct->registerEvents(&oscSender);
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-	player.getSharedVideoPlayer().maxVolume = sound.maxSpeakerVolume;
-	sound.update();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-//	sound.drawDebug();
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-//	if(key == 'p'){
-//		useScratch = !useScratch;
-//		if(useScratch){
-//			player.setUseScratch( true );
-////			sound.setMasterAmp(0.0);
-//		}
-//		else{
-//			player.setUseScratch( false );
-////			sound.setMasterAmp(1.0);
-//		}
-//	}    
-//    if( key == 'T'){
-//        CloudsClip& clip = parser.getRandomClip(true,true);
-//        player.setRandomQuestion(clip);
-//        
-//    }
-    
-}
-
-//--------------------------------------------------------------
-void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
-	mixer.fillBuffer(output,bufferSize,nChannels);
 }
 
 //--------------------------------------------------------------

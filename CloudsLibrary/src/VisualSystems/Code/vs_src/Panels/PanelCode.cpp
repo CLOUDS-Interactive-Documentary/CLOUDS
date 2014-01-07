@@ -29,9 +29,8 @@ void PanelCode::selfSetup(){
 		while(!initialBuffer.isLastLine()){
 			string line = initialBuffer.getNextLine();
 			myReplace(line, "\n", "\\n");
-			myReplace(line, "\"", "\\\"");
-			myReplace(line, "\t", "\\t");
-			
+//			myReplace(line, "\"", "\\\"");
+//			myReplace(line, "\t", "\\t");			
 			lines.push_back(line);
 		}
 		
@@ -109,11 +108,11 @@ void PanelCode::selfDraw(){
 		ofPushStyle();
 		
 		ofSetColor(tint);
-		sharedFont->drawString( syntaxLines[curline].baseLine, drawRect.x, drawRect.y + l);
+		sharedFont->drawString( syntaxLines[curline].baseLine, drawRect.x + *marginLeft, drawRect.y + l);
 		
 		for(int c = 0; c < MATCH_TYPES; c++){
 			ofSetColor( matchColorTypes[c] );
-			sharedFont->drawString( syntaxLines[curline].colored[c], drawRect.x, drawRect.y + l);
+			sharedFont->drawString( syntaxLines[curline].colored[c], drawRect.x + *marginLeft, drawRect.y + l);
 		}
 		ofPopStyle();
 		

@@ -5,7 +5,9 @@
 
 uniform sampler2DRect previousFrame;
 uniform sampler2DRect currentFrame;
-//uniform float hueShift;
+uniform float hueShift;
+uniform float satShift;
+uniform float briShift;
 
 float map(float value, float inputMin, float  inputMax, float  outputMin,float  outputMax ){
     
@@ -42,12 +44,12 @@ void main (void)
     //st is the same as xy or rg
     //so instead of doing myVec.x and myVec.y
     //you cam do myVec.xy
-	float hueShift = .2;
+//	float hueShift = .2;
     vec3 colorSample = abs(texture2DRect(currentFrame, gl_TexCoord[0].st).rgb - texture2DRect(previousFrame, gl_TexCoord[0].st).rgb);
 	colorSample = 1.0 - pow(vec3(1.0) - colorSample,vec3(1.5));
 	
     vec3 hsv = rgb2hsv(colorSample.xyz);
-	vec3 newHSV = vec3(mod(hsv.z+hueShift,1.0), 1.0, 1.0);
+	vec3 newHSV = vec3(mod(hsv.z+hueShift,1.0), satShift, briShift);
 	vec3 newRGB  = hsv2rgb(newHSV);
 
 	gl_FragColor.rgb = newRGB;

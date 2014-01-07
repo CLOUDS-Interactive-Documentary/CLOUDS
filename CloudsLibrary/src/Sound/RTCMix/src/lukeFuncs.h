@@ -142,33 +142,34 @@ void loadpresets_xml(string f, vector<lukePreset>& p);
 
 // luke's audio functions
 void RTcmixParseScoreFile(string f);
-void WAVETABLE(double outskip, double dur, double amp, double freq, double pan, string waveform, string ampenvelope);
-void GRANSYNTH(double outskip, double dur, double amp, double freq, double freq_jitter, double grate, double grate_var, double gdur_min, double gdur_max, double gamp_min, double gamp_max, double gpan_min, double gpan_max, string waveform, string ampenvelope, string transphandle);
-void GRANSYNTH(double outskip, double dur, double amp, double freq, double freq_jitter, double grate, double grate_var, double gdur_min, double gdur_max, double gamp_min, double gamp_max, double gpan_min, double gpan_max, string waveform, string ampenvelope, string transphandle, string pitchhandle, string ratehandle, string durhandle);
-void MMODALBAR(double outskip, double dur, double amp, double freq, double hardness, double pos, int instrument);
-void STRUM(double outskip, double dur, double amp, double freq, double squish, double decay, double pan);
-void MBLOWBOTL(double outskip, double dur, double amp, double freq, double noiseamp, double maxpressure, double pan, string pressureenv, string ampenvelope);
-void MMESH2D(double outskip, double dur, double amp, int nxpoints, int nypoints, double xpos, double ypos, double decay, double strike, double pan);
-void MBANDEDWG(double outskip, double dur, double amp, double freq, double strikepos, int pluckflag, double maxvel, int preset, double bowpressure, double resonance, double integration, double pan, string velocityenvelope);
-void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan, double f1, double f2, double f3, double Q, string ampenvelope);
-void WAVESHAPE(double outskip, double dur, double amp, double freq, double pan, string waveform, string ampenvelope, string xferfunc, string controlenv);
+void WAVETABLE(double outskip, double dur, double amp, double freq, double pan, string waveform, string ampenvelope, string ampbus, int abn);
+void GRANSYNTH(double outskip, double dur, double amp, double freq, double freq_jitter, double grate, double grate_var, double gdur_min, double gdur_max, double gamp_min, double gamp_max, double gpan_min, double gpan_max, string waveform, string ampenvelope, string transphandle, string ampbus, int abn);
+void GRANSYNTH(double outskip, double dur, double amp, double freq, double freq_jitter, double grate, double grate_var, double gdur_min, double gdur_max, double gamp_min, double gamp_max, double gpan_min, double gpan_max, string waveform, string ampenvelope, string transphandle, string pitchhandle, string ratehandle, string durhandle, string ampbus, int abn);
+void MMODALBAR(double outskip, double dur, double amp, double freq, double hardness, double pos, int instrument, string ampbus, int abn);
+void STRUM(double outskip, double dur, double amp, double freq, double squish, double decay, double pan, string ampbus, int abn);
+void MBLOWBOTL(double outskip, double dur, double amp, double freq, double noiseamp, double maxpressure, double pan, string pressureenv, string ampenvelope, string ampbus, int abn);
+void MMESH2D(double outskip, double dur, double amp, int nxpoints, int nypoints, double xpos, double ypos, double decay, double strike, double pan, string ampbus, int abn);
+void MBANDEDWG(double outskip, double dur, double amp, double freq, double strikepos, int pluckflag, double maxvel, int preset, double bowpressure, double resonance, double integration, double pan, string velocityenvelope, string ampbus, int abn);
+void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan, double f1, double f2, double f3, double Q, string ampenvelope, string ampbus, int abn);
+void WAVESHAPE(double outskip, double dur, double amp, double freq, double pan, string waveform, string ampenvelope, string xferfunc, string controlenv, string ampbus, int abn);
 
-void REVERB(double outskip, double time);
+void REVERB(double outskip, double time, string ampbus, int abn);
 float LOADSOUND(string file, string handle);
-void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle);
-void STEREO3(double outskip, double inskip, double dur, double amp, double pan, string handle);
-void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, double amp, string handle);
-void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan);
-void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
+void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle, string ampbus, int abn);
+void STEREO3(double outskip, double inskip, double dur, double amp, double pan, string handle, string ampbus, int abn);
+void SOUNDLOOP(double outskip, double inskip, double loopdur, double looplen, double amp, string handle, string ampbus, int abn);
+void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan, string ampbus, int abn);
+void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown, string ampbus, int abn);
 void SCHEDULEBANG(double time);
-void STREAMSOUND(double outskip, string file, double dur, double amp);
+void STREAMSOUND(double outskip, string file, double dur, double amp, string ampbus, int abn);
 void STREAMSOUND_DYNAMIC(double outskip, string file, double amp, string pvar, int updatenr);
 
-void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus, string ampcurve);
+void SETUPMIX(double outskip, double time, double amp, double dry, double verb, double echo, string inst, int auxbus, string ampcurve, string ampbus, int abn);
 void INITMIX();
+void BUS_ON(string ampbus, int abn);
 
 void PATCHSYNTH(string inst, string output);
 void PATCHFX(string inst, string input, string output);
-void PFIELD_SCHED(float outskip, float duration, int nr, string action);
+void PFIELD_SCHED(float outskip, float duration, int abn, string action);
 
 #endif

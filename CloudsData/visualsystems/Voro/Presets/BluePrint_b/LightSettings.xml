@@ -1,0 +1,32 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>LightSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>477.000000000</XPosition>
+    <YPosition>142.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SMOOTH</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>H</Name>
+    <Value>0.744898260</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S</Name>
+    <Value>0.365671515</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>V</Name>
+    <Value>0.701570034</Value>
+</Widget>

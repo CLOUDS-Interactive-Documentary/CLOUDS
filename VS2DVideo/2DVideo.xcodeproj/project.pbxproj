@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1838CE6C187A04B700FD5F2B /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1838CE6B187A04B700FD5F2B /* ofxSystemTextbox.mm */; };
 		18A36D37185EAB740032FD7C /* CloudsVisualSystem2DVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18A36D35185EAB740032FD7C /* CloudsVisualSystem2DVideo.cpp */; };
 		18A36D69185EACB30032FD7C /* ofxAVFVideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18A36D60185EACB30032FD7C /* ofxAVFVideoPlayer.mm */; };
 		18A36D6A185EACB30032FD7C /* ofxAVFVideoRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A36D62185EACB30032FD7C /* ofxAVFVideoRenderer.m */; };
@@ -155,6 +156,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1838CE6A187A04B700FD5F2B /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		1838CE6B187A04B700FD5F2B /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		18A36D35185EAB740032FD7C /* CloudsVisualSystem2DVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem2DVideo.cpp; sourceTree = "<group>"; };
 		18A36D36185EAB740032FD7C /* CloudsVisualSystem2DVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem2DVideo.h; sourceTree = "<group>"; };
 		18A36D5F185EACB30032FD7C /* ofxAVFVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoPlayer.h; sourceTree = "<group>"; };
@@ -811,6 +814,8 @@
 		E72FF11817E688FE0007780D /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				1838CE6A187A04B700FD5F2B /* ofxSystemTextbox.h */,
+				1838CE6B187A04B700FD5F2B /* ofxSystemTextbox.mm */,
 				E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */,
 				E72FF11B17E688FE0007780D /* CloudsRGBDCamera.h */,
 				E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */,
@@ -1435,6 +1440,7 @@
 				18A36DFC185EAD9D0032FD7C /* ofxOscMessage.cpp in Sources */,
 				18A36DFD185EAD9D0032FD7C /* ofxOscReceiver.cpp in Sources */,
 				18A36DFE185EAD9D0032FD7C /* ofxOscSender.cpp in Sources */,
+				1838CE6C187A04B700FD5F2B /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

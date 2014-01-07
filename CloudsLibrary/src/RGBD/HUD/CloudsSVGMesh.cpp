@@ -219,14 +219,8 @@ void CloudsSVGMesh::recurseSVGTag(ofxXmlSettings& xml, string parentId, float pa
 void CloudsSVGMesh::draw(){
 	for(int i = 0; i < meshes.size(); i++){
         if(meshes[i].visible){
-            ofMesh m = meshes[i].mesh;
-            //update the color using the alpha value
-            vector< ofFloatColor > colors = m.getColors();
-            for( int i=0; i<colors.size(); i++){
-               // colors[i].
-            }
+            ofMesh& m = meshes[i].mesh;
             m.draw();
-
         }
 	}
 }

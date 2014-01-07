@@ -1,53 +1,78 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>2412.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>287.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>basic</Name>
+    <Name>basicNameCloud</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>constellation</Name>
+    <Name>greenLantern</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>constellation2</Name>
+    <Name>HeartOftheInternet</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>constellationNew</Name>
+    <Name>InsideTheNet</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>creature</Name>
+    <Name>JM_basic</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>flashes</Name>
+    <Name>JM_TheCloud</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>latestWithDeckIcons</Name>
+    <Name>JM_TheCloud_a</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>lights</Name>
+    <Name>JM_TheCloud_b</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>links</Name>
+    <Name>JM_TheCloud_c_Massive</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_TheCloud_d</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_TheCloud_e_Massive</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>jonathanAndSuryasBogusAdventure</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>latestDeckWithIcons</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>moreFlickeringNameClouds</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -57,12 +82,27 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>nameLinks</Name>
+    <Name>nameCloudsWithLines</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>shaderPreset</Name>
+    <Name>nameCloudsWithLinesFlickering</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>nameCloudWithLinesFlickering</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>nameSprites</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>presetWithSprites</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -72,12 +112,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>socialNetworking2</Name>
+    <Name>stars</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>textDebug</Name>
+    <Name>stars2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>stars3</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -87,6 +132,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>latestDeckWithIcons</Name>
-    <Value>1</Value>
+    <Name>TweetDeck_NameCloud_Lines</Name>
+    <Value>0</Value>
 </Widget>

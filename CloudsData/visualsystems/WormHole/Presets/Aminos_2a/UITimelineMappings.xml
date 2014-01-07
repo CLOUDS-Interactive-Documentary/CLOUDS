@@ -1,0 +1,63 @@
+<Map>
+    <Bangs></Bangs>
+    <Switches></Switches>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>pathPosition</WidgetName>
+                <WidgetID>4</WidgetID>
+                <WidgetCanvasParent>CameraPath</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>FOV</WidgetName>
+                <WidgetID>7</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>ROT-X</WidgetName>
+                <WidgetID>9</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>AH</WidgetName>
+                <WidgetID>14</WidgetID>
+                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>AS</WidgetName>
+                <WidgetID>16</WidgetID>
+                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>AV</WidgetName>
+                <WidgetID>18</WidgetID>
+                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>DH</WidgetName>
+                <WidgetID>22</WidgetID>
+                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>

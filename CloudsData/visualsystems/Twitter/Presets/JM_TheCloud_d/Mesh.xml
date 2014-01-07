@@ -1,0 +1,233 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Mesh</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ANIMATE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RENDER MESH</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>REFRESH RATE</Name>
+    <Value>10</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>DATE RANGE</Name>
+    <HighValue>1951.246337891</HighValue>
+    <LowValue>1455.778320312</LowValue>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ROTATE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>ROTATION AMT</Name>
+    <Value>0.556650400</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>EDGE DECAY</Name>
+    <Value>0.200000003</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NORMALS DECAY</Name>
+    <Value>0.300000012</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SYNAPSE LEVEL</Name>
+    <Value>0.640394092</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNB HUE</Name>
+    <Value>0.565445006</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNB SAT</Name>
+    <Value>0.743456125</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNB BRI</Name>
+    <Value>0.100000024</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNB ALPHA</Name>
+    <Value>0.049261082</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEB HUE</Name>
+    <Value>0.612565458</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEB SAT</Name>
+    <Value>0.602094889</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEB BRI</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEB ALPHA</Name>
+    <Value>0.054187194</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP HUE</Name>
+    <Value>0.675392628</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP SAT</Name>
+    <Value>0.649214327</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP BRI</Name>
+    <Value>0.149999976</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP ALPHA</Name>
+    <Value>0.100000024</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEP HUE</Name>
+    <Value>0.643979073</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEP SAT</Name>
+    <Value>0.303664595</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEP BRI</Name>
+    <Value>0.591622412</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEP ALPHA</Name>
+    <Value>0.100000024</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S HUE</Name>
+    <Value>0.691099465</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S SAT</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S BRI</Name>
+    <Value>0.481674731</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S ALPHA</Name>
+    <Value>0.857142866</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>EDGE COLOR EXPONENT</Name>
+    <Value>5.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>BigSphere1_1_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>BigSphere_1_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Circular_0_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Circular_4_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Galaxy2_0_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Galaxy3_0_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Galaxy_0_old.net</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NS_4_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Pointy_4_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Simple_0_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Spiky2_1_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Spiky_1_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterOld_0_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitter_0_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitter_1_old.net</Name>
+    <Value>0</Value>
+</Widget>

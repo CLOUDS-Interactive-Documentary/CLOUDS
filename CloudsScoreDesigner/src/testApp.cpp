@@ -86,7 +86,7 @@ void testApp::actBegan(CloudsActEventArgs& args){
 
 //--------------------------------------------------------------
 void testApp::actEnded(CloudsActEventArgs& args){
-	cout << "ACT ENDED" << endl;
+	//cout << "ACT ENDED" << endl;
 }
 
 //--------------------------------------------------------------
@@ -168,8 +168,9 @@ void testApp::update(){
             }
 		}
 		else if(m.getAddress() == "/stopMusic"){
-            sound.stopMusic();
             cout << "STOPPING MUSIC" << endl;
+            sound.stopMusic();
+            //flush_sched();
 		}
         else if(m.getAddress() == "/reloadPresets") {
             sound.reloadPresets();

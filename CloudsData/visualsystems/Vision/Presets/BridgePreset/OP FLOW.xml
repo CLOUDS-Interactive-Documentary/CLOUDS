@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>OP FLOW</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>691.000000000</XPosition>
+    <YPosition>50.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -11,9 +11,24 @@
     <Value>1</Value>
 </Widget>
 <Widget>
+    <Kind>2</Kind>
+    <Name>DRAW FLOW WINDOW</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>WINDOW TINT</Name>
     <Value>170.837432861</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>FLOW DENSITY</Name>
+    <Value>3</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FLOW ALPHA</Name>
+    <Value>0.822660089</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

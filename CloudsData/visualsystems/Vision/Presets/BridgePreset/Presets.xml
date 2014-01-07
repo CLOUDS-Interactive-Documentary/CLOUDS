@@ -2,9 +2,19 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>2167.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1070.000000000</XPosition>
+    <YPosition>108.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BridgePreset</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CV_DISCO</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>GreenPoint_Contour</Name>
@@ -47,11 +57,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>UnionFlow_JG</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>unionsq3_diff_contours</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>BridgePreset</Name>
+    <Name>UnionSqGhosts</Name>
     <Value>1</Value>
 </Widget>

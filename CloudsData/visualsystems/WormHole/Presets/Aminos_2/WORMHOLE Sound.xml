@@ -1,0 +1,27 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>WORMHOLE Sound</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>162.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>EchoVortex.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>wormholeZoom.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>wormholeZoom2.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>slowgrains.aif</Name>
+    <Value>0</Value>
+</Widget>

@@ -1,0 +1,117 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SystemSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max_Number</Name>
+    <Value>190.443344116</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BornSecRate</Name>
+    <Value>3.374709368</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max_Size</Name>
+    <Value>2.483798504</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GrowRate</Name>
+    <Value>0.015270936</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>InitialForce</Name>
+    <Value>0.261083752</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Z_Move</Name>
+    <Value>0.216748774</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Atraction</Name>
+    <Value>0.038899418</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Repulsion</Name>
+    <Value>0.202332348</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>texture_Size</Name>
+    <Value>0.246305421</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Container_Periodic</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Conteiner_Size</Name>
+    <Value>15.924997330</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Conteiner_Height</Name>
+    <Value>16.091995239</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Cylinder</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Sphere</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Wall</Name>
+    <Value>0.574344993</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Alpha</Name>
+    <Value>0.125000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Wires_Alpha</Name>
+    <Value>0.778325140</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Wires_Thickness</Name>
+    <Value>1.517241359</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Vertex_Alpha</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Vertex_Size</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Cell_Use_Material</Name>
+    <Value>0</Value>
+</Widget>
