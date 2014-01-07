@@ -113,7 +113,9 @@ class CloudsSecondaryDisplayController {
                             *layoutProjectArtist,
                             *layoutProjectDescription;
     
-    float beginTime;
+    ofRectangle             defaultBioBounds;
+    
+    float beginTime, margin;
 
     map<string, CloudsHUDLabel*>    hudLabelMap;
     

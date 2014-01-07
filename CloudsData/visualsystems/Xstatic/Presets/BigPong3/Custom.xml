@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>965.000000000</XPosition>
-    <YPosition>-7.000000000</YPosition>
+    <XPosition>1110.000000000</XPosition>
+    <YPosition>15.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -113,7 +113,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>DRAG</Name>
-    <Value>0.562500000</Value>
+    <Value>0.593750000</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>

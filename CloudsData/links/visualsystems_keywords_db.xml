@@ -14567,6 +14567,36 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Xstatic_BigPong2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Xstatic_BigPong3">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Xstatic_BigPong4">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Xstatic_BouncingBalls">
     <keywords>physics|simulation</keywords>
     <links></links>
@@ -14954,7 +14984,10 @@
 </system>
 <system name="YellowTail_YellowTail_AfterDark">
     <keywords></keywords>
-    <links></links>
+    <links>
+        <clip>Golan - yellow tail</clip>
+        <clip>Golan - playable image</clip>
+    </links>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
