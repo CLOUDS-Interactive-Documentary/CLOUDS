@@ -11,7 +11,9 @@ void testApp::setup(){
     testAllClips = false;
     timer = true;
     debug = false;
-    currentTestClip = 0;
+    currentTestClip = 1200;
+    currentProjEx = 0;
+    testProjEx = false;
     startTime = 0;
 }
 
@@ -69,18 +71,28 @@ void testApp::keyPressed(int key){
 	}
 	
 	if(key == 'E'){
-		vector<int> projectExampleIndecs;
+		projectExampleIndecs.clear();
 		for(int i = 0; i < secondaryDisplay.parser.getAllClips().size(); i++){
 			if(secondaryDisplay.parser.getAllClips()[i].hasProjectExample){
 				projectExampleIndecs.push_back(i);
 			}
 		}
+        
+        testProjEx = !testProjEx;
+        testAllClips = false;
+        
+        if(testProjEx){
+            CloudsClip& clip = secondaryDisplay.parser.getAllClips()[projectExampleIndecs[currentProjEx]];
+            secondaryDisplay.respondToClip( clip );
+            cout<<"Current Project Example Clip ID: "<<clip.getID()<<endl;
+        }
+        
 		
-		if(projectExampleIndecs.size() > 0){
-			int exampleIndex = projectExampleIndecs[ ofRandom(projectExampleIndecs.size()) ];
-			secondaryDisplay.respondToClip( secondaryDisplay.parser.getAllClips()[exampleIndex] );
-//			cout << "SENT CLIP " << parser.getAllClips()[exampleIndex].getLinkName() << " WITH EXAMPLE " << parser.getAllClips()[exampleIndex].projectExampleTitle << endl;
-		}
+//		if(projectExampleIndecs.size() > 0){
+//			int exampleIndex = projectExampleIndecs[ ofRandom(projectExampleIndecs.size()) ];
+//			secondaryDisplay.respondToClip( secondaryDisplay.parser.getAllClips()[exampleIndex] );
+////			cout << "SENT CLIP " << parser.getAllClips()[exampleIndex].getLinkName() << " WITH EXAMPLE " << parser.getAllClips()[exampleIndex].projectExampleTitle << endl;
+//		}
 	}
     
     if(key == 'S'){
@@ -93,6 +105,25 @@ void testApp::keyPressed(int key){
         secondaryDisplay.hideGUI();
     }
 	
+    if(key == OF_KEY_RIGHT){
+        if(testProjEx){
+            if(currentProjEx >= projectExampleIndecs.size()-1) currentProjEx = 0;
+            else currentProjEx++;
+            CloudsClip& clip = secondaryDisplay.parser.getAllClips()[projectExampleIndecs[currentProjEx]];
+            secondaryDisplay.respondToClip( clip );
+            cout<<"Current Project Example Clip ID: "<<clip.getID()<<endl;
+        }
+    }
+    
+    if(key == OF_KEY_LEFT){
+        if(testProjEx){
+            if(currentProjEx <= 0) currentProjEx = projectExampleIndecs.size()-1;
+            else currentProjEx--;
+            CloudsClip& clip = secondaryDisplay.parser.getAllClips()[projectExampleIndecs[currentProjEx]];
+            secondaryDisplay.respondToClip( clip );
+            cout<<"Current Project Example Clip ID: "<<clip.getID()<<endl;
+        }
+    }
 }
 
 //--------------------------------------------------------------

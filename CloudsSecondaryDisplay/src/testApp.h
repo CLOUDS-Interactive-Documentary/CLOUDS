@@ -25,8 +25,9 @@ class testApp : public ofBaseApp {
     
     bool debug;
     
-    bool testAllClips;
-    int currentTestClip;
+    bool testAllClips, testProjEx;
+    int currentTestClip, currentProjEx;
     bool timer;
     float startTime;
+    vector<int> projectExampleIndecs;
 };
