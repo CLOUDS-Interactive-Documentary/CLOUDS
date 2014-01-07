@@ -312,7 +312,6 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip& clip){
 		if(currentExample.exampleVideos.size() > 0){
 			playingMovie = archivePlayer.loadMovie(currentExample.exampleVideos[0]);
 			if(playingMovie){
-				archivePlayer.setLoopState(OF_LOOP_NONE);
 				archivePlayer.play();
 			}
 		}
