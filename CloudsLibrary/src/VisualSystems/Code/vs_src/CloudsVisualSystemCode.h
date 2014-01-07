@@ -89,37 +89,44 @@ class CloudsVisualSystemCode : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-	vector<Panel*> panels;
+	vector<Panel*> panelsFront;
+	vector<Panel*> panelsBack;
 	
-    // if you use a custom camera to fly through the scene
-	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
 
 protected:
     
     //  Your Stuff
     //
-	vector<ofRectangle> rectTests;
-	
 	ofxUISuperCanvas* typeGui;
 	ofxUISuperCanvas* colorGui;
 	ofxUISuperCanvas* panelsGui;
+	ofxUISuperCanvas* boxGui;
+	ofxUISuperCanvas* animationGUi;
 	
-	ofRange speedRange;	
+	
+	//float animation params
+	float startTimeDelay;
+	ofRange expandSpeed;
+	ofRange speedRange;
 	
 	bool bEnableCode;
 	bool bEnableConsole;
 	bool bEnableTenPrint;
 	
-	float typeMarginLeft;
+	bool bCascadeMode;
+
+	void populatePanels(vector<Panel*>& panels, int seed);
 	
 	ofxFTGLFont sharedFont;
 	ofxFTGLSimpleLayout sharedLayout;
+						
 	float typeTracking;
 	int currentFontSize;
+	float typeMarginLeft;
 	int fontSize;
+
+	bool bContinuousMode;
+	float tenPrintSpeedBoost;
 	
 	void updateColors();
 	ofxUILabel* baseColorLabel;
@@ -128,12 +135,15 @@ protected:
 	ofFloatColor matchColorTypesHSV[MATCH_TYPES];
 	ofFloatColor tintColorHSV;
 	ofFloatColor tintColor;
-	ofxUISuperCanvas* boxGui;
+
 	int minsize;
 	float minTextboxSize;
 	float maxwidth;
 	float maxheight;
+	
 	int boxSeed;
+	int boxSeed2;
+	
 	float outlineAlpha;
 	
 	void generatePanels();

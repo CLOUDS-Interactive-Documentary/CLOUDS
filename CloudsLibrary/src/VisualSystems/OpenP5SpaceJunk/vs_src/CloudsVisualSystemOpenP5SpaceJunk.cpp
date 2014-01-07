@@ -69,9 +69,8 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetup(){
 	ofxObjLoader::load(getVisualSystemDataPath() + "geometry/box.obj", baseBox);
 	
 	baseBox.setMode(OF_PRIMITIVE_TRIANGLES);
-//	
+
 //	return;
-//	
 //	for(int i = 0; i < combinedBox.getNumIndices(); i+=3){
 //		ofIndexType indxA = combinedBox.getIndices()[i+0];
 //		ofIndexType indxB = combinedBox.getIndices()[i+1];

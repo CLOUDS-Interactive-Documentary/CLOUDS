@@ -1105,13 +1105,10 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
 			#else
 			string presetName = ofSystemTextBoxDialog("Save Preset As", currentPresetName);
 			#endif
-            if(presetName != "")
-            {
+            if(presetName != ""){
                 savePresetGUIS(presetName);
+				currentPresetName = presetName;
             }
-//            else{
-//                saveGUIS();
-//            }
         }
     }
     else if(name == "LOAD")
