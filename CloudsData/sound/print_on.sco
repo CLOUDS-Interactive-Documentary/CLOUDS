@@ -1,1 +1,1 @@
-print_on(4)
+print_on(5)

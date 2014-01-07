@@ -29,6 +29,7 @@ class CloudsSecondaryDisplayController {
     
     void saveGuiSettings();
 	void toggleGuis();
+    void hideGUI();
 	
 	ofxUISuperCanvas *SDGui;
     void draw();
@@ -98,6 +99,8 @@ class CloudsSecondaryDisplayController {
             *meshProjectArtist,
             *meshProjectDescription;
     
+    ofMesh  videoBox;
+    
     ofxFTGLFont             *fontBioLastName,
                             *fontBioFirstName,
                             *fontBioLocation,
@@ -110,7 +113,9 @@ class CloudsSecondaryDisplayController {
                             *layoutProjectArtist,
                             *layoutProjectDescription;
     
-    float beginTime;
+    ofRectangle             defaultBioBounds;
+    
+    float beginTime, margin;
 
     map<string, CloudsHUDLabel*>    hudLabelMap;
     

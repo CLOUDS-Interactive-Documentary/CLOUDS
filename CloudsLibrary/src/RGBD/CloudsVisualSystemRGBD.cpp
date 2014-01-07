@@ -479,7 +479,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		{
 			if(ofGetFrameNum()%30 == 0)
 			{
-				cout << "wTF" << endl;
+//				cout << "wTF" << endl;
 			}
 			transitionCamTargetNode->setPosition( transitionCam.getPosition() );
 			transitionCamTargetNode->setOrientation( transitionCam.getOrientationQuat() );
@@ -745,7 +745,7 @@ void CloudsVisualSystemRGBD::setSelectedQuestion(){
 
 void CloudsVisualSystemRGBD::clearQuestions(){
 	
-	cout << "Clearing questions!" << endl;
+//	cout << "Clearing questions!" << endl;
 	
     selectedQuestion = NULL;
 	caughtQuestion = NULL;
@@ -848,9 +848,12 @@ void CloudsVisualSystemRGBD::lookThroughTransitionIn(){
 	
 	transitionCam.setPosition( transitionInStart.getPosition() );
 	transitionCam.setOrientation( transitionInStart.getOrientationQuat() );
+	transitionCam.movedManually();
+	//transitionCam.positionChanged = transitionCam.rotationChanged = true;
 	
 //	transitionCam.positionChanged = transitionCam.rotationChanged = true;
 	
+
 //	ofEventArgs args;
 //	transitionCam.update(args);
 }
@@ -861,6 +864,7 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOut(){
 	
 	transitionCam.setPosition( transitionOutTarget.getPosition() );
 	transitionCam.setOrientation( transitionOutTarget.getOrientationQuat() );
+	transitionCam.movedManually();
 	
 //	transitionCam.positionChanged = transitionCam.rotationChanged = true;
 	
@@ -1355,10 +1359,7 @@ void CloudsVisualSystemRGBD::selfExit(){
 }
 
 void CloudsVisualSystemRGBD::selfBegin(){
-	
 	cloudsCamera.jumpToPosition();
-    
-//    cloudsCaption.begin();
 }
 
 void CloudsVisualSystemRGBD::selfEnd(){
@@ -1366,7 +1367,11 @@ void CloudsVisualSystemRGBD::selfEnd(){
 }
 
 bool CloudsVisualSystemRGBD::isQuestionSelectedAndClipDone(){
-    return  selectedQuestion != NULL && getRGBDVideoPlayer().isDone();
+    return selectedQuestion != NULL && getRGBDVideoPlayer().isDone();
+}
+
+bool CloudsVisualSystemRGBD::isQuestionSelected(){
+	return selectedQuestion != NULL;
 }
 
 CloudsQuestion* CloudsVisualSystemRGBD::getSelectedQuestion(){
@@ -1384,13 +1389,13 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 //		rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	}
 	
-	if(args.key == 'v' && currentCamera != &transitionCam ){
-		lookThroughTransitionIn();
-	}
-	
-	if(args.key == 'V' && currentCamera != &transitionCam ){
-		lookThroughTransitionOut();
-	}
+//	if(args.key == 'v' && currentCamera != &transitionCam ){
+//		lookThroughTransitionIn();
+//	}
+//	
+//	if(args.key == 'V' && currentCamera != &transitionCam ){
+//		lookThroughTransitionOut();
+//	}
 	
 }
 

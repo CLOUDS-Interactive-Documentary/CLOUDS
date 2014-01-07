@@ -1,4 +1,4 @@
-
+//varying vars get passed from the vertex shader to the fragment shader
 varying float normPos;
 varying float filled;
 void main() {

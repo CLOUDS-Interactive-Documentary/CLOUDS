@@ -188,7 +188,7 @@ protected:
     string soundFiles[4] = {"EchoVortex.aif",
         "wormholeZoom.aif",
         "wormholeZoom2.aif",
-        "slowgrains.aif"};
+        "slowgrains_short.aif"};
     bool playSample[4];
     ControlTrigger soundTriggers[4];
     ofxTonicSynth synth;

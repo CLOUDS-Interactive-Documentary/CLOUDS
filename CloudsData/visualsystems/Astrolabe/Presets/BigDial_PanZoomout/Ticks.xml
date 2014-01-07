@@ -22,6 +22,41 @@
 </Widget>
 <Widget>
     <Kind>44</Kind>
+    <Name>skipAheadOnCreation</Name>
+    <Value>7</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BOUNCE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CUBIC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LINEAR</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>QUADRATIC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>QUINTIC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SINE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
     <Name>XRot</Name>
     <Value>0</Value>
 </Widget>
@@ -43,7 +78,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>YRot</Name>
-    <Value>-180</Value>
+    <Value>9</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>

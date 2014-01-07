@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>PhotoGlitch</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -187,7 +187,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>desktop.png</Name>
+    <Name>desktop.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

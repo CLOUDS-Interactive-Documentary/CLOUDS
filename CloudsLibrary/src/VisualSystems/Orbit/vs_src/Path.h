@@ -35,6 +35,7 @@
 #include "ofxPtf.h"
 #include "PathPoint.h"
 #include "Path.h"
+#include "ofxGpuParticles.h"
 
 namespace itg
 {
@@ -42,20 +43,20 @@ namespace itg
     {
     public:
         // floats only so can add them to gui
-        static float maxLineLength;
-        static float maxMeshLength;
+        static int maxLineLength;
+        static int maxMeshLength;
         static float lineFadeLength;
         static float lineWidth;
         static float hueMin, hueMax;
         
-        Path(float radius);
+        void init(float meshRadius, const string& dataPath);
         
         void addVertex(const ofVec3f& vertex);
         void addVertex(float x, float y, float z);
         
-        void drawMesh();
-        void drawLine();
-        void drawNormals(float size);
+        void drawMesh(float fogStart, float fogEnd, float litAmount);
+        void drawLine(float fogStart, float fogEnd);
+        //void drawNormals(float size);
         void drawInflections();
         void drawAcc();
         
@@ -63,36 +64,33 @@ namespace itg
 		unsigned size() const { return points.size(); }
 		PathPoint operator[](unsigned idx) const { return points[idx]; }
         
-        deque<ofVec3f>& getVerticesRef() { return vertices; }
-        
         ofxPtf& getPtfRef() { return ptf; }
         
-        ofVboMesh& getLineMeshRef() { return lineMesh; }
-        
-		void setMeshRadius(float meshRadius);
+        void setMeshRadius(float meshRadius);
         
 		void setResolution(unsigned resolution);
         
         void clear();
         
     private:
+        void initMesh();
         void updateSlice();
         
         deque<PathPoint> points;
+        
         deque<ofVec3f> inflections;
         
         // line stuff
-        ofVboMesh lineMesh;
-        unsigned resolution;
-        ofxPtf ptf;        
+        vector<ofVec4f> lineVertices;
+        ofxGpuParticles lineParticles;
         
         // mesh stuff
+        ofxPtf ptf;
+        unsigned resolution;
         vector<ofVec3f> sliceVertices;
         vector<ofVec3f> sliceNormals;
-        deque<ofVec3f> vertices;
-        deque<ofVec3f> normals;
-        deque<unsigned> indices;
-		ofVboMesh mesh;
-        float meshRadius;
+        float meshRadius;vector<ofVec4f> meshVertices;
+        vector<ofVec4f> meshNormals;
+        ofxGpuParticles meshParticles;
     };
 }

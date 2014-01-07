@@ -101,7 +101,7 @@ void testApp::updateTransitions(){
 			rgbd.playSystem();
 			rgbd.startTransitionIn( type );
 		}
-		else if(transitionController.getCurrentState() == TRANSITION_INTERVIEW_IDLE){
+		else if(transitionController.getCurrentState() == TRANSITION_IDLE){
 			
 			ofLogNotice("testApp::updateTransitions") << "Going to IDLE";
 			

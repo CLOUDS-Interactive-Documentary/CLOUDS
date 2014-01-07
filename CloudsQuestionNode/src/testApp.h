@@ -2,6 +2,9 @@
 
 #include "ofMain.h"
 #include "CloudsPortal.h"
+#ifdef OCULUS_RIFT
+#include "ofxOculusRift.h"
+#endif
 
 class testApp : public ofBaseApp{
   public:
@@ -22,4 +25,8 @@ class testApp : public ofBaseApp{
 		
 	ofEasyCam easyCam;
 	CloudsPortal portal;
+    
+#ifdef OCULUS_RIFT
+    ofxOculusRift oculusRift;
+#endif
 };

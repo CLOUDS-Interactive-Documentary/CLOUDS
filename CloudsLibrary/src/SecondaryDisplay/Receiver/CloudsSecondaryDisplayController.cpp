@@ -21,6 +21,8 @@ CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
     animatingIn = false;
     animatingOut = false;
     animationSpeed = .5;
+    margin = 60;
+    
 }
 
 void CloudsSecondaryDisplayController::setup(){
@@ -36,6 +38,8 @@ void CloudsSecondaryDisplayController::setup(){
 
 	clusterMap.loadPresetGUISFromName("2DFollowCam");
 	clusterMap.buildEntireCluster(parser);
+    
+    archivePlayer.setLoopState(OF_LOOP_NORMAL);
 
     //setup OSC reciever
 	receiver.setup(123456);
@@ -68,25 +72,27 @@ void CloudsSecondaryDisplayController::setup(){
     meshBioLocation->bounds.width = 1000;
     meshBioLocationBG = bioLayout.getMeshByID("BOX_x5F_LOC");
     meshBioDescription = bioLayout.getMeshByID("TEXTBOX_x5F_BIO");
+    
     ////for project example
     meshProjectVideo = projectLayout.getMeshByID("BOX_x5F_VIDEO");
     meshProjectTitle = projectLayout.getMeshByID("TEXTBOX_x5F_NAME");
     meshProjectArtist = projectLayout.getMeshByID("TEXTBOX_x5F_ARTIST_1_");
-    meshProjectArtist->bounds.width = 1000;
+    //meshProjectArtist->bounds.width = 1000;
     meshProjectDescription = projectLayout.getMeshByID("TEXTBOX_x5F_DESC_1_");
     
     //setup all font layout objects
-    layoutQuestion = getLayoutForLayer(meshQuestion, "Blender-BOOK", .04);
+    layoutQuestion = getLayoutForLayer(meshQuestion, "Blender-BOOK", 55);
     
-    fontBioLastName = getFontForLayer(meshBioLastName, "Blender-BOOK", 45);
-    fontBioFirstName = getFontForLayer(meshBioFirstName, "Blender-THIN", 45);
-    fontBioLocation = getFontForLayer(meshBioLocation, "Blender-BOOK", 65);
-    fontBioTitle = getFontForLayer(meshBioTitle, "Blender-BOOK", 65);
+    fontBioLastName = getFontForLayer(meshBioLastName, "Blender-BOOK", 50);
+    fontBioFirstName = getFontForLayer(meshBioFirstName, "Blender-THIN", 50);
+    fontBioLocation = getFontForLayer(meshBioLocation, "Blender-BOOK", 35);
+    fontBioTitle = getFontForLayer(meshBioTitle, "Blender-BOOK", 35);
+    layoutBioDescription = getLayoutForLayer(meshBioDescription, "Blender-BOOK", 40);
+    defaultBioBounds = meshBioDescription->bounds;
     
-    layoutBioDescription = getLayoutForLayer(meshBioDescription, "Blender-BOOK", .04);
-    layoutProjectTitle = getLayoutForLayer(meshProjectTitle, "Blender-THIN", .045);
-    layoutProjectArtist = getLayoutForLayer(meshProjectArtist, "Blender-BOOK", .065);
-    layoutProjectDescription = getLayoutForLayer(meshProjectDescription, "Blender-BOOK", .04);
+    layoutProjectTitle = getLayoutForLayer(meshProjectTitle, "Blender-BOOK", 55);
+    layoutProjectArtist = getLayoutForLayer(meshProjectArtist, "Blender-BOOK", 40);
+    layoutProjectDescription = getLayoutForLayer(meshProjectDescription, "Blender-BOOK", 40);
     
 	displayTarget.allocate(1920, 1080, GL_RGB);
     // cleanup!
@@ -113,21 +119,6 @@ void CloudsSecondaryDisplayController::loadSVGs(){
     setNormalsOn(&bioLayout);
     setNormalsOn(&projectLayout);
     setNormalsOn(&questionLayout);
-	
-	/*for(int i = 0; i < bioLayout.getMeshes().size(); i++){
-		SVGMesh& mesh = bioLayout.getMeshes()[i];
-		if(!mesh.fill){
-			for(int v = 0; v < mesh.mesh.getNumVertices(); v++){
-				mesh.mesh.addNormal( ofVec3f( (ofRandomuf() > .5 ? 0. : 1.0), 0, 0) ); //flag as lines, with random for now
-			}
-		}
-		else{
-			for(int v = 0; v < mesh.mesh.getNumVertices(); v++){
-				mesh.mesh.addNormal( ofVec3f( 0.0, 1.0, 0.0) ); //flag as filled
-			}
-		}
-		
-	}*/
 }
 
 void CloudsSecondaryDisplayController::setNormalsOn(CloudsSVGMesh* cm){
@@ -161,9 +152,7 @@ ofxFTGLSimpleLayout* CloudsSecondaryDisplayController::getLayoutForLayer( SVGMes
         // make a layout
         ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
         newLayout->loadFont( GetCloudsDataPath() + "font/"+font+".ttf", fontSize );
-      //  newLayout->setTracking(kerning);
         newLayout->setLineLength( textMesh->bounds.width );
-        //newLayout->set
         
         // make a label
         CloudsHUDLabel *newLabel = new CloudsHUDLabel();
@@ -277,7 +266,6 @@ void CloudsSecondaryDisplayController::update(){
        // cout << "animatingIn" <<endl;
         playhead = ofMap( ofGetElapsedTimef(), beginTime, beginTime+animationSpeed, 0., 1. );
        // cout << "playhead: " << playhead << endl;
-        // playhead = floor(text.length() * pct);
         if( playhead >= 1.0 ){
             animatingIn = false;
         }
@@ -285,7 +273,6 @@ void CloudsSecondaryDisplayController::update(){
     
     if( animatingOut ){
         playhead = ofMap( ofGetElapsedTimef(), beginTime, beginTime+animationSpeed, 1., 0. );
-        // textAlpha = floor( 255. * pct );
         if( playhead <= 0 ){
             animatingOut = false;
         }
@@ -317,20 +304,30 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip& clip){
 
 	//	string exampleId = m.getArgAsString(4);
 	if(currentClip.hasProjectExample){
-		displayMode = "PROJECT";
-		currentExample = currentClip.projectExample;
-		if(currentExample.exampleVideos.size() > 0){
+        
+		if(currentClip.projectExample.exampleVideos.size() > 0){
+            currentExample = currentClip.projectExample;
 			playingMovie = archivePlayer.loadMovie(currentExample.exampleVideos[0]);
 			if(playingMovie){
-				archivePlayer.setLoopState(OF_LOOP_NONE);
 				archivePlayer.play();
+                
+                displayMode = "PROJECT";
+                
+                ////artist name
+                //////float left
+                string title = ofToUpper(currentExample.title);
+                ofRectangle titleRect = layoutProjectTitle->getStringBoundingBox(title, hudLabelMap[meshProjectTitle->id]->bounds.x, 0);
+                hudLabelMap[meshProjectArtist->id]->bounds.x = titleRect.x+titleRect.width+margin;
+
+                //setup project text
+                hudLabelMap[meshProjectArtist->id]->setText( currentExample.creatorName );
+                hudLabelMap[meshProjectTitle->id]->setText( currentExample.title );
+                hudLabelMap[meshProjectDescription->id]->setText( currentExample.description );
 			}
+            
 		}
 		
-		//setup project text
-		hudLabelMap[meshProjectArtist->id]->setText( currentExample.creatorName );
-		hudLabelMap[meshProjectTitle->id]->setText( currentExample.title );
-		hudLabelMap[meshProjectDescription->id]->setText( currentExample.description );
+		
 	}
 	else{
 		displayMode = "BIO";
@@ -357,7 +354,7 @@ void CloudsSecondaryDisplayController::onActBegan(){
 
 void CloudsSecondaryDisplayController::onActEnded(){
     //hide the secondary display hud
-    displayMode = "NONE";
+    animateOut();
 }
 
 void CloudsSecondaryDisplayController::animateIn(){
@@ -370,18 +367,34 @@ void CloudsSecondaryDisplayController::animateIn(){
 void CloudsSecondaryDisplayController::animateOut(){
     animatingOut = true;
     beginTime = ofGetElapsedTimef();
+    
+    if(displayMode == "BIO"){
+        hudLabelMap[meshQuestion->id]->animateOut();
+		hudLabelMap[meshBioFirstName->id]->animateOut();
+		hudLabelMap[meshBioLastName->id]->animateOut();
+		hudLabelMap[meshBioTitle->id]->animateOut();
+		hudLabelMap[meshBioLocation->id]->animateOut();
+		hudLabelMap[meshBioDescription->id]->animateOut();
+    }
+    else if (displayMode == "PROJECT"){
+        hudLabelMap[meshProjectArtist->id]->animateOut();
+		hudLabelMap[meshProjectTitle->id]->animateOut();
+		hudLabelMap[meshProjectDescription->id]->animateOut();
+    }
 }
 
 void CloudsSecondaryDisplayController::draw(){
-    
+
+    //return;
+	
 	displayTarget.begin();
     ofEnableAlphaBlending();
-	
 	clusterMap.selfPostDraw();
     
-    SVGMesh* t;
-    
-    shader.setUniform1f("alphaAmt", playhead);
+//
+//don't set uniforms if 
+//    shader.setUniform1f("alphaAmt", playhead);
+    float margin = 60;
     
     if(displayMode == "BIO"){
         ////question
@@ -405,7 +418,7 @@ void CloudsSecondaryDisplayController::draw(){
             //cout << "playhead: "<<playhead<<endl;
             
 			shader.begin();
-            shader.setUniform1f("alphaAmt", playhead);
+			shader.setUniform1f("alphaAmt", playhead);
 			bioLayout.draw();
 			shader.end();
 
@@ -435,7 +448,6 @@ void CloudsSecondaryDisplayController::draw(){
             else
                 longestNameWidth = lastNameWidth;
             
-            float margin = 60;
             float titleX = meshBioFirstName->bounds.x + longestNameWidth + margin;
             
             ////title
@@ -446,50 +458,78 @@ void CloudsSecondaryDisplayController::draw(){
             hudLabelMap[meshBioFirstName->id]->draw();
             hudLabelMap[meshBioLastName->id]->draw();
             hudLabelMap[meshBioTitle->id]->draw();
+
             
-            if(color)
-                ofSetColor(lightBlue);
-            
-                ////location
-                if(color)
-                    ofSetColor(darkBlue);
+            ////location
+
             
             string loc = ofToUpper(currentSpeaker.location2);
             //float left
-            hudLabelMap[meshBioLocation->id]->bounds.x = titleX;
-            hudLabelMap[meshBioLocation->id]->bounds.width = 9999;
-            hudLabelMap[meshBioLocation->id]->draw();
+            CloudsHUDLabel* locLabel = hudLabelMap[meshBioLocation->id];
+            locLabel->bounds.x = titleX;
+            locLabel->bounds.width = 9999;
+            locLabel->draw();
             
-            if(color)
-                ofSetColor(255);
+            CloudsHUDLabel* descLabel = hudLabelMap[meshBioDescription->id];
+
+            //check if location is running into description
+            if(locLabel->bounds.x+fontBioLocation->getStringBoundingBox(currentSpeaker.location2, 0, 0).width+margin >= meshBioDescription->bounds.getLeft()){
+                cout << "location text is running into description text" << endl;
+                descLabel->bounds.x = locLabel->bounds.x+fontBioLocation->getStringBoundingBox(currentSpeaker.location2, 0, 0).width+margin*1.5;
+                descLabel->layout->setLineLength(defaultBioBounds.width - (descLabel->bounds.x - defaultBioBounds.x));
+            }
+            else{
+                descLabel->bounds = defaultBioBounds;
+                descLabel->layout->setLineLength(defaultBioBounds.width);
+            }
             
             ////byline / bio / description
-            hudLabelMap[meshBioDescription->id]->draw();
+            descLabel->draw();
         }
         
         
     }else if(displayMode == "PROJECT"){
         //DISPLAY PROJECT LAYOUT
-        shader.begin();
-        shader.setUniform1f("alphaAmt", playhead);
-        projectLayout.draw();
-        shader.end();
-        
+        //video first
         //video
         if(playingMovie){
             //scale and preserve the aspect ratio
             ofRectangle playerRect(0,0,archivePlayer.getWidth(), archivePlayer.getHeight());
             playerRect.scaleTo(meshProjectVideo->bounds);
+            
+            //draw video
+            ofSetColor(255, 255, 255, 255*playhead); //alpha fade on video
             archivePlayer.draw(playerRect);
+            ofSetColor(255, 255, 255, 255);
+            
+            //scale the video outline mesh to fit the playerRect
+            //a -> b
+            meshProjectVideo->mesh.setVertex(0, playerRect.getTopLeft());
+            meshProjectVideo->mesh.setVertex(1, playerRect.getTopRight());
+            //b -> c
+            meshProjectVideo->mesh.setVertex(2, playerRect.getTopRight());
+            meshProjectVideo->mesh.setVertex(3, playerRect.getBottomRight());
+            //c -> d
+            meshProjectVideo->mesh.setVertex(4, playerRect.getBottomRight());
+            meshProjectVideo->mesh.setVertex(5, playerRect.getBottomLeft());
+            //d -> a
+            meshProjectVideo->mesh.setVertex(6, playerRect.getBottomLeft());
+            meshProjectVideo->mesh.setVertex(7, playerRect.getTopLeft());
+            
+            
             playingMovie = archivePlayer.isPlaying();
         }
         
+        shader.begin();
+        shader.setUniform1f("alphaAmt", playhead);
+        projectLayout.draw();
+        shader.end();
+        
         ////project title
-        string title = ofToUpper(currentExample.title);
         hudLabelMap[meshProjectTitle->id]->draw();
         
-        ////artist name
-        string name = currentExample.creatorName;
+       
+       // string name = currentExample.creatorName;
         hudLabelMap[meshProjectArtist->id]->draw();
         
         ////project description
@@ -498,7 +538,8 @@ void CloudsSecondaryDisplayController::draw(){
     }
 	
 	displayTarget.end();
-	
+
+
 	ofRectangle screenRect(0,0,ofGetWidth(), ofGetHeight());
 	ofRectangle targetRect(0,0,displayTarget.getWidth(),displayTarget.getHeight());
 	targetRect.scaleTo(screenRect);
@@ -510,6 +551,10 @@ void CloudsSecondaryDisplayController::draw(){
 void CloudsSecondaryDisplayController::reloadShader(){
     GLuint err = glGetError();
     shader.load( GetCloudsDataPath() + "shaders/secondaryDisplay");
+}
+
+void CloudsSecondaryDisplayController::hideGUI(){
+    animateOut();
 }
 
 /*void CloudsSecondaryDisplayController::drawBioLayout(){

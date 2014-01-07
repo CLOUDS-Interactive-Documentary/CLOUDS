@@ -46,7 +46,7 @@ void CloudsMixer::setup(int nChannels, int sampleRate, int bufferSize, int nBuff
     diageticArgs.nChannels = nChannels;
     
     // initialize OF audio streaming
-    ofSoundStreamSetup(nChannels, 0, sampleRate, bufferSize, nBuffers);
+    ofSoundStreamSetup(nChannels, 0, this, sampleRate, bufferSize, nBuffers);
     ofSoundStreamStart();
 }
 
@@ -61,7 +61,8 @@ void CloudsMixer::setDiageticVolume(float vol)
     diageticVol = vol;
 }
 
-void CloudsMixer::fillBuffer(float *output, int bufferSize, int nChannels)
+//void CloudsMixer::fillBuffer(float *output, int bufferSize, int nChannels)
+void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
 {
     // check for buffer size mismatch
     if (bufferSize != musicArgs.bufferSize ||

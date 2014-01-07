@@ -8,49 +8,57 @@ cd ../../addons
 
 #passing no arguments means read only
 if [ -z $1 ]; then
-    PREFIX="git clone https://github.com/"
-	echo "Cloning read-only"
-else
     PREFIX="git clone git@github.com:"
+    NEWPREFIX="git clone git@github.com:CLOUDS-Interactive-Documentary/"
 	echo "Cloning writable"
+else
+    PREFIX="git clone https://github.com/"
+    NEWPREFIX="git clone https://github.com/CLOUDS-Interactive-Documentary/"
+	echo "Cloning read-only"
 fi
 
-#private, must be read
-git clone git@github.com:rezaali/ofxExtras
 
-git clone https://github.com/rezaali/ofxUI
+#private, must be read
+# git clone git@github.com:rezaali/ofxExtras
+git clone git@github.com:CLOUDS-Interactive-Documentary/ofxExtras
+
+# git clone https://github.com/rezaali/ofxUI
+git clone https://github.com/CLOUDS-Interactive-Documentary/ofxUI
 cd ofxUI
-git checkout -b develop --track origin/develop
-git pull origin develop
+git checkout -b 'clouds-develop' --track 'origin/clouds-develop'
+git pull origin 'clouds-develop'
 cd ..
 
-git clone https://github.com/satoruhiga/ofxCocoaGLView
-git clone https://github.com/satoruhiga/ofxPCL
-git clone https://github.com/memo/ofxMSAObjCPointer
-git clone https://github.com/obviousjim/ofxMSACore #temp obviousjim for windows
-git clone https://github.com/roymacdonald/ofxCameraSaveLoad
-git clone https://github.com/memo/ofxMSAPhysics
-git clone https://github.com/memo/ofxMSAObjCPointer
-git clone https://github.com/Larsberg/ofxMarchingCubes
-git clone https://github.com/andreasmuller/ofxAutoReloadedShader
-git clone https://github.com/obviousjim/ofxDelaunay
-git clone https://github.com/prisonerjohn/ofxSQLite
-git clone https://github.com/prisonerjohn/ofxTextWriter
-git clone https://github.com/prisonerjohn/ofxBillboard
-git clone https://github.com/quinkennedy/ofxRegex
-git clone https://github.com/satoruhiga/ofxAnimationPrimitives
-git clone https://github.com/obviousjim/ofxBox2d.git
-git clone https://github.com/obviousjim/ofxOpenSteer.git
-git clone https://github.com/Larsberg/ofxSimpleSpline
-git clone https://github.com/Larsberg/ofxSimpleSurface
-git clone https://github.com/labatrockwell/ofxLibwebsockets
-git clone https://github.com/jefftimesten/ofxJSON.git
-git clone https://github.com/galsasson/ofxTonic
-git clone https://github.com/neilmendoza/ofxPtf
-git clone https://github.com/neilmendoza/ofxNearestNeighbour
-git clone https://github.com/neilmendoza/ofxPostProcessing
-git clone https://github.com/kylemcdonald/ofxCv
-git clone https://github.com/neilmendoza/ofxGpuParticles.git
+${NEWPREFIX}ofxCocoaGLView
+${NEWPREFIX}ofxPCL
+${NEWPREFIX}ofxMSAObjCPointer
+${NEWPREFIX}ofxMSACore
+${NEWPREFIX}ofxCameraSaveLoad
+${NEWPREFIX}ofxMSAPhysics
+${NEWPREFIX}ofxMarchingCubes
+${NEWPREFIX}ofxAutoReloadedShader
+${NEWPREFIX}ofxDelaunay
+${NEWPREFIX}ofxSQLite
+${NEWPREFIX}ofxTextWriter
+${NEWPREFIX}ofxBillboard
+${NEWPREFIX}ofxRegex
+${NEWPREFIX}ofxAnimationPrimitives
+${NEWPREFIX}ofxBox2d
+${NEWPREFIX}ofxOpenSteer
+${NEWPREFIX}ofxSimpleSpline
+${NEWPREFIX}ofxSimpleSurface
+${NEWPREFIX}ofxLibwebsockets
+${NEWPREFIX}ofxJSON
+${NEWPREFIX}ofxTonic
+${NEWPREFIX}ofxPtf
+${NEWPREFIX}ofxNearestNeighbour
+${NEWPREFIX}ofxPostProcessing
+
+# git clone https://github.com/kylemcdonald/ofxCv
+${NEWPREFIX}ofxCv
+
+# git clone https://github.com/neilmendoza/ofxGpuParticles.git
+${NEWPREFIX}ofxGpuParticles
 
 cd ofxPostProcessing
 git checkout -b develop --track origin/develop
@@ -58,41 +66,79 @@ git pull origin develop
 cd ..
 
 
-${PREFIX}obviousjim/ofxGenerative #temp obviousjim for windows fix
-${PREFIX}obviousjim/ofxAVFVideoPlayer
-${PREFIX}obviousjim/ofxOculusRift
-${PREFIX}rezaali/ofxColorPalettes
-${PREFIX}obviousjim/ofxOcean
-${PREFIX}Flightphase/ofxGameCamera
-${PREFIX}Flightphase/ofxRange
-${PREFIX}Flightphase/ofxTween
-${PREFIX}Flightphase/ofxMSAInteractiveObject
-${PREFIX}Flightphase/ofxFTGL
-${PREFIX}obviousjim/ofxMPMFluid
+${NEWPREFIX}ofxGenerative #temp obviousjim for windows fix
+${NEWPREFIX}ofxAVFVideoPlayer
+${NEWPREFIX}ofxOculusRift
+${NEWPREFIX}ofxColorPalettes
+${NEWPREFIX}ofxOcean
+${NEWPREFIX}ofxGameCamera
+${NEWPREFIX}ofxRange
+${NEWPREFIX}ofxTween
+${NEWPREFIX}ofxMSAInteractiveObject
+${NEWPREFIX}ofxFTGL
+${NEWPREFIX}ofxMPMFluid
 
-${PREFIX}Flightphase/ofxTextInputField
+${NEWPREFIX}ofxTextInputField
 cd ofxTextInputField
 git checkout -b develop --track origin/develop
 git pull origin develop
 cd ..
 
-${PREFIX}obviousjim/ofxRGBDepth
+${NEWPREFIX}ofxRGBDepth
 cd ofxRGBDepth
 git checkout -b develop --track origin/develop
 git pull origin develop
 cd ..
 
 
-${PREFIX}obviousjim/ofxKinect
-${PREFIX}obviousjim/ofxOpenNI
-${PREFIX}obviousjim/ofxMSATimer
+${NEWPREFIX}ofxKinect
+${NEWPREFIX}ofxOpenNI
+${NEWPREFIX}ofxMSATimer
 
-${PREFIX}YCAMInterlab/ofxTimecode
-${PREFIX}YCAMInterlab/ofxTimeline
+${NEWPREFIX}ofxTimecode
+${NEWPREFIX}ofxTimeline
 
 cd ofxTimeline
 git checkout -b develop --track origin/develop
 git pull origin develop
 cd ..
 
-${PREFIX}obviousjim/ofxObjLoader		
+${NEWPREFIX}ofxObjLoader		
+
+# git clone https://github.com/satoruhiga/ofxCocoaGLView
+# git clone https://github.com/satoruhiga/ofxPCL
+# git clone https://github.com/memo/ofxMSAObjCPointer
+# git clone https://github.com/obviousjim/ofxMSACore #temp obviousjim for windows
+# git clone https://github.com/roymacdonald/ofxCameraSaveLoad
+# git clone https://github.com/memo/ofxMSAPhysics
+# git clone https://github.com/memo/ofxMSAObjCPointer
+# git clone https://github.com/Larsberg/ofxMarchingCubes
+# git clone https://github.com/andreasmuller/ofxAutoReloadedShader
+# git clone https://github.com/obviousjim/ofxDelaunay
+# git clone https://github.com/prisonerjohn/ofxSQLite
+# git clone https://github.com/prisonerjohn/ofxTextWriter
+# git clone https://github.com/prisonerjohn/ofxBillboard
+# git clone https://github.com/quinkennedy/ofxRegex
+# git clone https://github.com/satoruhiga/ofxAnimationPrimitives
+# git clone https://github.com/obviousjim/ofxBox2d.git
+# git clone https://github.com/obviousjim/ofxOpenSteer.git
+# git clone https://github.com/Larsberg/ofxSimpleSpline
+# git clone https://github.com/Larsberg/ofxSimpleSurface
+# git clone https://github.com/labatrockwell/ofxLibwebsockets
+# git clone https://github.com/jefftimesten/ofxJSON.git
+# git clone https://github.com/galsasson/ofxTonic
+# git clone https://github.com/neilmendoza/ofxPtf
+# git clone https://github.com/neilmendoza/ofxNearestNeighbour
+# git clone https://github.com/neilmendoza/ofxPostProcessing
+
+# ${NEWPREFIX}obviousjim/ofxGenerative #temp obviousjim for windows fix
+# ${NEWPREFIX}obviousjim/ofxAVFVideoPlayer
+# ${NEWPREFIX}obviousjim/ofxOculusRift
+# ${NEWPREFIX}rezaali/ofxColorPalettes
+# ${NEWPREFIX}obviousjim/ofxOcean
+# ${NEWPREFIX}Flightphase/ofxGameCamera
+# ${NEWPREFIX}Flightphase/ofxRange
+# ${NEWPREFIX}Flightphase/ofxTween
+# ${NEWPREFIX}Flightphase/ofxMSAInteractiveObject
+# ${NEWPREFIX}Flightphase/ofxFTGL
+# ${NEWPREFIX}obviousjim/ofxMPMFluid

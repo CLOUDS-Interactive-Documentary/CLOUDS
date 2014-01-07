@@ -63,7 +63,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     //i/o stuff
     void loadJSONData(string folderName);
-    void addUsersFromMentions();
+    void addUsersFromMentions(ofVec2f& curActivityMapCoord, int activityMapWidth );
     void createPajekNetwork(string outputFileName);
     void parseClusterNetwork(string fileName);
     void createNewGraph(string outputFileName, string inputDataFolder);
@@ -122,13 +122,13 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     int minUserMentions;
 
-
     
     //draw stuff
     void loadMesh();
-    void updateMeshFromTweets(int index);
+    void updateActiveTweeters(int index);
+    void setActiveTweeters(int index );
     void updateMesh();
-    void drawText(string text, ofVec3f pos);
+    void drawText(string text, ofVec3f pos, float alpha);
     void drawText2D(string text, ofVec2f pos);
 
     //helpers 
@@ -150,14 +150,29 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bAnimate;
     bool rotateModel;
     bool bAnimateFeed;
+    bool bAnimateSpriteSize;
+    bool bStaticNameDraw;
+    bool bOldData;
+  protected:
+    ofDirectory meshDir;
+    vector<string> meshStrings;
+    int currentMeshIndex;
     
-
-    
-protected:
+    int maxUserLinks;
     ofColor listColor;
     vector<Tweeter> tweeters;
-
+    float sizeMultiplier;
+    float maxAlphaTweetFeed;
+    float lineAlpha;
+    float avatarAlpha;
+    
+    float minSize;
+    float maxSize;
+    
 	ofFloatImage activityMap;
+
+    ofFloatColor spriteBaseColorHSV;
+    ofFloatColor spritePopColorHSV;
     stringstream ss;
     
     ofVboMesh nodeMesh;
@@ -165,14 +180,22 @@ protected:
     ofVec3f min,max;
     
     int refreshRate;
+    int activeTweeterRefreshRate;
     float edgeDecayRate;
 
+    //point sprite stuff
     ofImage sprite;
     ofShader lineShader;
+    ofRange pointsSize;
+    
     ofShader pointsShader;
     float meshExpansion;
     float pointSize;
+    float activityMapDamping;
+    float synapseLevel;
+    float normalDecay;
     ofxUISuperCanvas* clusterGui;
+    ofxUISuperCanvas* spriteGui;
     ofxUISuperCanvas* textGui;
     ofxUISuperCanvas* twitterFeedGui;
     
@@ -185,9 +208,10 @@ protected:
 
     void loadAvatars();
     void addColorToGui(ofxUISuperCanvas* gui, string prefix, ofFloatColor& col, bool doAlpha = true);
-	
+    map< ofFloatColor*, ofxUILabel*> labelColors;
+
 	float edgeInterpolateExponent;
-	ofFloatColor getRGBfromHSV(ofFloatColor hsv);
+	ofFloatColor getRGBfromHSV(ofFloatColor& hsv);
 	//this is the base color of the lines close to the nodes
 	ofFloatColor lineNodeBaseHSV;
 	//this is the base color of the lines at the midpoint
@@ -196,8 +220,11 @@ protected:
 	//this is the pop color of the lines close to the nodes
 	ofFloatColor lineNodePopHSV;
 	//this is the pop color of the lines at the midpoint
-	ofFloatColor lineEdgePopHSV;
-    
+    ofFloatColor lineEdgePopHSV;
+
+    //synapse color
+    ofFloatColor synapseColorHSV;
+
 	//this is the base color of the node
 	ofFloatColor nodeBaseColorHSV;
 	//this is the pop color of the node

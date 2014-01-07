@@ -1,0 +1,22 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>THRESHOLD</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>149.000000000</XPosition>
+    <YPosition>53.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEARNING TIME</Name>
+    <Value>16.256158829</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>THRESHOLD VALUE</Name>
+    <Value>51.502464294</Value>
+</Widget>

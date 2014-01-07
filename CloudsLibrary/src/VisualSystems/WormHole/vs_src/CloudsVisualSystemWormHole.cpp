@@ -5,11 +5,6 @@
 #include "CloudsVisualSystemWormHole.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemWormHole::selfSetupGui(){
 	
@@ -217,7 +212,7 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
 			{
 				if(name == cameraPathNames[i])
 				{
-					bUseCameraPath = true;
+					//hbUseCameraPath = true;
 					pathCamera.loadPathFromFile(cameraPathPath + name);
 				}
 			}
@@ -514,8 +509,11 @@ void CloudsVisualSystemWormHole::selfUpdate()
 
 void CloudsVisualSystemWormHole::selfDraw()
 {
-	glEnable(GL_CULL_FACE);
+	
+    if (bCullBackface == true){
+    glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
+    }
 	
 	//alpha blending
 	if(currentBlendMode == OF_BLENDMODE_DISABLED)

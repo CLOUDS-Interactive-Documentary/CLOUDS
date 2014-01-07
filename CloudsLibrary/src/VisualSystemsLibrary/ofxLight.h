@@ -54,6 +54,12 @@ public:
         
     }
     
+	void updateColors(){
+		lightAmbient  = ofFloatColor::fromHsb(lightAmbientHSV.r, lightAmbientHSV.g, lightAmbientHSV.b);
+		lightDiffuse  = ofFloatColor::fromHsb(lightDiffuseHSV.r, lightDiffuseHSV.g, lightDiffuseHSV.b);
+		lightSpecular = ofFloatColor::fromHsb(lightSpecularHSV.r, lightSpecularHSV.g, lightSpecularHSV.b);
+	}
+	
     void enable()
     {
         if(bEnabled)
@@ -81,9 +87,7 @@ public:
                     break;
             }
 
-			ofFloatColor lightAmbient  = ofFloatColor::fromHsb(lightAmbientHSV.r, lightAmbientHSV.g, lightAmbientHSV.b);
-			ofFloatColor lightDiffuse  = ofFloatColor::fromHsb(lightDiffuseHSV.r, lightDiffuseHSV.g, lightDiffuseHSV.b);
-			ofFloatColor lightSpecular = ofFloatColor::fromHsb(lightSpecularHSV.r, lightSpecularHSV.g, lightSpecularHSV.b);
+			updateColors();
 			
             light.setAmbientColor(lightAmbient);
             light.setDiffuseColor(lightDiffuse);
@@ -109,6 +113,11 @@ public:
     ofLight light;
     ofVec3f lightPos;
     ofVec3f lightOrientation;
+	
+	ofFloatColor lightAmbient;
+	ofFloatColor lightDiffuse;
+	ofFloatColor lightSpecular;
+
     ofFloatColor lightAmbientHSV;
     ofFloatColor lightDiffuseHSV;
     ofFloatColor lightSpecularHSV;
@@ -123,13 +132,22 @@ public:
 	ofFloatColor matEmissiveHSV;
 	ofFloatColor matAmbientHSV;
 	float matShininess;
+	
+	ofFloatColor matAmbient;
+	ofFloatColor matDiffuse;
+	ofFloatColor matEmissive;
+	ofFloatColor matSpecular;
 
+	void updateColors(){
+		matAmbient  = ofFloatColor::fromHsb(matAmbientHSV.r,  matAmbientHSV.g,  matAmbientHSV.b);
+		matDiffuse  = ofFloatColor::fromHsb(matDiffuseHSV.r,  matDiffuseHSV.g,  matDiffuseHSV.b);
+		matEmissive = ofFloatColor::fromHsb(matEmissiveHSV.r, matEmissiveHSV.g, matEmissiveHSV.b);
+		matSpecular = ofFloatColor::fromHsb(matSpecularHSV.r, matSpecularHSV.g, matSpecularHSV.b);
+	}
+	
 	virtual void begin(){
 		
-		ofFloatColor matAmbient  = ofFloatColor::fromHsb(matAmbientHSV.r,  matAmbientHSV.g,  matAmbientHSV.b);
-		ofFloatColor matDiffuse  = ofFloatColor::fromHsb(matDiffuseHSV.r,  matDiffuseHSV.g,  matDiffuseHSV.b);
-		ofFloatColor matEmissive = ofFloatColor::fromHsb(matEmissiveHSV.r, matEmissiveHSV.g, matEmissiveHSV.b);
-		ofFloatColor matSpecular = ofFloatColor::fromHsb(matSpecularHSV.r, matSpecularHSV.g, matSpecularHSV.b);
+		updateColors();
 		
 		glGetMaterialfv(GL_FRONT,GL_DIFFUSE, &prev_diffuse_front.r);
 		glGetMaterialfv(GL_FRONT,GL_SPECULAR, &prev_specular_front.r);

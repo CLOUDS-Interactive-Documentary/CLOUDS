@@ -22,6 +22,41 @@
 </Widget>
 <Widget>
     <Kind>44</Kind>
+    <Name>skipAheadOnCreation</Name>
+    <Value>7</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BOUNCE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CUBIC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LINEAR</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>QUADRATIC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>QUINTIC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SINE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
     <Name>XRot</Name>
     <Value>0</Value>
 </Widget>
@@ -48,12 +83,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>yTickSpeed</Name>
-    <Value>1470</Value>
+    <Value>1235</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>yTickDelay</Name>
-    <Value>0</Value>
+    <Value>400</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

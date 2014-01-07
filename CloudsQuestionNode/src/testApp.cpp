@@ -1,4 +1,5 @@
 #include "testApp.h"
+#include "CloudsInput.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -7,26 +8,73 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	portal.cam = &easyCam;
 	portal.setup();
+    
+#ifdef OCULUS_RIFT
+    oculusRift.baseCamera = &easyCam;
+    oculusRift.setup();
+#endif
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 	portal.update();
+    
+#ifdef OCULUS_RIFT
+    ofRectangle viewport = oculusRift.getOculusViewport();
+    ofVec3f screenPos = oculusRift.worldToScreen(portal.hoverPosition, true);
+    float gazeDist = ofDist(screenPos.x, screenPos.y,
+                            viewport.getCenter().x, viewport.getCenter().y);
+    if (gazeDist < portal.minSelectDistance) {
+        portal.startHovering();
+    }
+    else{
+        portal.stopHovering();
+    }
+#else
+    if(portal.screenPosition.distance( ofVec2f(GetCloudsInputX(),GetCloudsInputY())) < portal.minSelectDistance ){
+        portal.startHovering();
+    }
+    else{
+        portal.stopHovering();
+    }
+
+#endif
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    glDisable(GL_DEPTH_TEST);
 
-	easyCam.begin();
-	glDisable(GL_DEPTH_TEST);
+#ifdef OCULUS_RIFT
+    ofRectangle viewport = oculusRift.getOculusViewport();
+    
+    oculusRift.beginOverlay();
+    ofPushStyle();
+    ofNoFill();
+    ofSetColor(255, 0, 0);
+    ofCircle(oculusRift.getOverlayRectangle().getCenter(), 10);
+    ofPopStyle();
+    oculusRift.endOverlay();
+
+    oculusRift.beginLeftEye();
 	portal.draw();
-	
+    oculusRift.endLeftEye();
+    
+    oculusRift.beginRightEye();
+    portal.draw();
+    oculusRift.endRightEye();
+    
+    oculusRift.draw();
+#else
+	easyCam.begin();
+	portal.draw();
 	easyCam.end();
-	
-	ofPushStyle();
+    
+    ofPushStyle();
 	ofSetColor(portal.hovering ? ofColor::yellow : ofColor::white);
 	ofCircle(portal.screenPosition, 10);
 	ofPopStyle();
+#endif
 }
 
 //--------------------------------------------------------------
@@ -34,6 +82,14 @@ void testApp::keyPressed(int key){
 	if(key == 'R'){
 		portal.reloadShader();
 	}
+    else if(key == 'f'){
+        ofToggleFullscreen();
+    }
+#ifdef OCULUS_RIFT
+    else if(key == ' '){
+        oculusRift.reset();
+    }
+#endif
 }
 
 //--------------------------------------------------------------

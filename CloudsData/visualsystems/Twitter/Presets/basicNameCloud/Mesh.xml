@@ -1,0 +1,233 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Mesh</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ANIMATE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RENDER MESH</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>REFRESH RATE</Name>
+    <Value>79</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>DATE RANGE</Name>
+    <HighValue>2141.000000000</HighValue>
+    <LowValue>1750.950805664</LowValue>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ROTATE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>ROTATION AMT</Name>
+    <Value>0.148768470</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>EDGE DECAY</Name>
+    <Value>0.952709317</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NORMALS DECAY</Name>
+    <Value>0.598029554</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SYNAPSE LEVEL</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNB HUE</Name>
+    <Value>0.534031391</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNB SAT</Name>
+    <Value>0.193717912</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNB BRI</Name>
+    <Value>0.136125013</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNB ALPHA</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEB HUE</Name>
+    <Value>0.612565458</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEB SAT</Name>
+    <Value>0.287958741</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEB BRI</Name>
+    <Value>0.089004591</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEB ALPHA</Name>
+    <Value>0.029556651</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP HUE</Name>
+    <Value>0.596858621</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP SAT</Name>
+    <Value>0.633508503</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP BRI</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LNP ALPHA</Name>
+    <Value>0.049261082</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEP HUE</Name>
+    <Value>0.816753924</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEP SAT</Name>
+    <Value>0.382199585</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEP BRI</Name>
+    <Value>0.607329190</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>LEP ALPHA</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S HUE</Name>
+    <Value>0.863874316</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S SAT</Name>
+    <Value>0.947644591</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S BRI</Name>
+    <Value>0.591622412</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S ALPHA</Name>
+    <Value>0.349753708</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>EDGE COLOR EXPONENT</Name>
+    <Value>5.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>BigSphere1_TwitterOneUser_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>BigSphere_TwitterOneUser_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Circular_Data4Men_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NestedGalaxy2_TwitterMax_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NestedGalaxy3_TwitterMax_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NestedGalaxy_TwitterMax_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NotSimple_Twitter4Men_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>PointyNetwork_4Men_new.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Simple_Twitter_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Spiky2_TwitterOneuser_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Spiky_TwitterOneUser_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterMax.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterOld.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterOneUserMenCircular_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>twitterOneUserMen_old.net</Name>
+    <Value>0</Value>
+</Widget>

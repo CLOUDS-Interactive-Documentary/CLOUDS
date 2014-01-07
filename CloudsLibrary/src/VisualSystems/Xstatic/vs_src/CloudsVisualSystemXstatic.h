@@ -95,7 +95,7 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
 		return CloudsVisualSystem::getCameraRef();
 	}
     
-    void regenerate();
+    void regenerate(bool bBigBang = false);
     void explode();
 
 protected:
@@ -103,6 +103,8 @@ protected:
     vector<XParticle> particles;
     
     ofMesh gravityLine;
+    
+    ofDirectory spriteDir;
     
     GLfloat * data;
     ofImage tex;
@@ -112,14 +114,17 @@ protected:
     ofxUISuperCanvas* customGui;
     bool videoLoaded;
     bool bShouldRegenerate;
-    bool bShouldExplode;
-    bool bShouldFreeze;
-    bool bShouldFall;
-    bool bShouldRise;
+    bool bShouldExplode, bDidExplode;
+    bool bShouldFreeze, bDidFreeze;
+    bool bShouldFall, bDidFall;
+    bool bShouldRise, bDidRise;
     
     bool bBounceOffWalls;
+    bool bWrapEdges;
     bool bDrawBox;
-
+    bool bBigBang;
+    
+   // float kBoxSize;
     float windSpeed;
     float explodeSpeed;
     float riseFallSpeed;

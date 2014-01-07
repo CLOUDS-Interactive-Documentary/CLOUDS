@@ -129,7 +129,7 @@ void CloudsVisualSystemOcean::selfUpdate(){
 	if(useOceanCam){
 		getCameraRef().dolly(cameraSpeed);
 		ocean.cameraPosition = getCameraRef().getPosition();
-		float mouseXPercent = 1.*ofGetMouseX() / ofGetWidth();
+		float mouseXPercent = 1.*GetCloudsInputX() / getCanvasWidth();
 		if(mouseXPercent > .6){
 			float rotateAmount = .6 - mouseXPercent;
 			currentSteerRot += (rotateAmount - currentSteerRot)*.01;

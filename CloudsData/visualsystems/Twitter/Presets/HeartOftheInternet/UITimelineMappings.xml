@@ -1,0 +1,63 @@
+<Map>
+    <Bangs></Bangs>
+    <Switches></Switches>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>NORMALS DECAY</WidgetName>
+                <WidgetID>16</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>EDGE DECAY</WidgetName>
+                <WidgetID>14</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LNB BRI</WidgetName>
+                <WidgetID>26</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LEP ALPHA</WidgetName>
+                <WidgetID>55</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LEB BRI</WidgetName>
+                <WidgetID>35</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LNP BRI</WidgetName>
+                <WidgetID>44</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LEB ALPHA</WidgetName>
+                <WidgetID>37</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>

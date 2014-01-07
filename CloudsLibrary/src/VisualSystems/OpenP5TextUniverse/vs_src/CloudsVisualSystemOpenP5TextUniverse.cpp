@@ -21,11 +21,12 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     
     customGui->addSpacer();
     customGui->addToggle("TEXT CLOUD", &bTextCloudMode);
-    customGui->addSlider("SPIN SPEED", 0, 5, &spinSpeed);
+    customGui->addToggle("CENTER NODE TEXT", &bRenderCenterNodeText);
+    customGui->addSlider("SPIN SPEED", 0, 1, &spinSpeed);
 #ifdef OCULUS_RIFT
-    customGui->addSlider("OCULUS SPEED", 0, 5, &oculusSpeed);
+    customGui->addSlider("OCULUS SPEED", 0, 1, &oculusSpeed);
 #else
-    customGui->addSlider("MOUSE SPEED", 0, 5, &mouseSpeed);
+    customGui->addSlider("MOUSE SPEED", 0, 1, &mouseSpeed);
 #endif
     customGui->addSlider("FOG DENSITY", 0.0f, 0.1f, &fogDensity);
     
@@ -85,8 +86,8 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     
     revealGui->addSpacer();
     revealGui->addToggle("RESTART", &bRestart);
-    revealGui->addRangeSlider("FADE TIME", 100, 5000, &TUOrbital::minFadeTime, &TUOrbital::maxFadeTime);
-    revealGui->addRangeSlider("LINE TIME", 100, 5000, &TUOrbital::minLineTime, &TUOrbital::maxLineTime);
+    revealGui->addRangeSlider("FADE TIME", 100, 2000, &TUOrbital::minFadeTime, &TUOrbital::maxFadeTime);
+    revealGui->addRangeSlider("LINE TIME", 100, 2000, &TUOrbital::minLineTime, &TUOrbital::maxLineTime);
     
     revealGui->addSpacer();
     vector<string> modes;
@@ -164,7 +165,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
 {
-    if (e.widget->getName() == "TEXT CLOUD") {
+    if (e.widget->getName() == "TEXT CLOUD" || e.widget->getName() == "CENTER NODE TEXT") {
         rebuildText();
     }
     
@@ -350,7 +351,9 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     mouseSpeed = 1.0f;
 #endif
     fogDensity = 0.025f;
+    
     bTextCloudMode = false;
+    bRenderCenterNodeText = true;
     
     orbital = NULL;
 
@@ -558,7 +561,7 @@ void CloudsVisualSystemOpenP5TextUniverse::rebuildText()
     else {
         // Render nodes for paragraphs, sentences, and words.
         orbital->text = text->paragraphs[0].sentences[0].str;
-        orbital->bRenderText = true;
+        orbital->bRenderText = bRenderCenterNodeText;
         
         for (int i = 0; i < text->paragraphs.size(); i++) {
             if (text->paragraphs[i].sentences.size() > 1) {
