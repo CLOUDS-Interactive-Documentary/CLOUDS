@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>text</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>841.000000000</XPosition>
-    <YPosition>-11.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>239.000000000</XPosition>
+    <YPosition>60.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,17 +18,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>T HUE</Name>
-    <Value>0.000000000</Value>
+    <Value>128.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>T SAT</Name>
-    <Value>0.000000000</Value>
+    <Value>128.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>T BRI</Name>
-    <Value>0.000000000</Value>
+    <Value>128.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

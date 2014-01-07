@@ -1,20 +1,10 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>849.000061035</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>195.000000000</YPosition>
 </Canvas>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BluePrint</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BluePrint_a</Name>
-    <Value>1</Value>
-</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>cells</Name>
@@ -52,6 +42,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Gray_2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>grow</Name>
     <Value>0</Value>
 </Widget>
@@ -68,7 +63,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Parametric_b</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -88,5 +83,10 @@
 <Widget>
     <Kind>2</Kind>
     <Name>SpaceBoulders_B</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BluePrint_a</Name>
     <Value>1</Value>
 </Widget>

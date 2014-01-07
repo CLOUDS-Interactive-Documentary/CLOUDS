@@ -26,7 +26,7 @@ public:
     void draw(bool _a, bool _b, bool _c);
     
     float width, height, padding, xcenter, ycenter;
-    vector <Circle> circles; // vector
+    list <Circle> circles; // vector
     
 protected:
     
