@@ -20,7 +20,7 @@
 	
 		<line opacity="0.26" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" enable-background="new    " x1="48.5" y1="1032" x2="1872.5" y2="1032"/>
 </g>
-<g id="BOX_x5F_VIDEO">
+<g id="BOX_x5F_VIDEO" opacity=".5">
 	<rect x="308.5" y="88.5" fill="none" stroke="#51CCED" stroke-miterlimit="10" width="1280" height="720"/>
 </g>
 <g id="TEXTBOX_x5F_NAME" opacity="0">

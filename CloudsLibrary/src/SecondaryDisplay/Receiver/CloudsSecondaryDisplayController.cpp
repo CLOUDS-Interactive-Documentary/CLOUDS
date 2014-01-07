@@ -38,6 +38,8 @@ void CloudsSecondaryDisplayController::setup(){
 
 	clusterMap.loadPresetGUISFromName("2DFollowCam");
 	clusterMap.buildEntireCluster(parser);
+    
+    archivePlayer.setLoopState(OF_LOOP_NORMAL);
 
     //setup OSC reciever
 	receiver.setup(123456);
@@ -459,11 +461,7 @@ void CloudsSecondaryDisplayController::draw(){
         
     }else if(displayMode == "PROJECT"){
         //DISPLAY PROJECT LAYOUT
-        shader.begin();
-        shader.setUniform1f("alphaAmt", playhead);
-        projectLayout.draw();
-        shader.end();
-        
+        //video first
         //video
         if(playingMovie){
             //scale and preserve the aspect ratio
@@ -474,17 +472,36 @@ void CloudsSecondaryDisplayController::draw(){
             ofSetColor(255, 255, 255, 255*playhead); //alpha fade on video
             archivePlayer.draw(playerRect);
             ofSetColor(255, 255, 255, 255);
-            //draw video bounding mesh
+            
+            //scale the video outline mesh to fit the playerRect
+            //a -> b
+            meshProjectVideo->mesh.setVertex(0, playerRect.getTopLeft());
+            meshProjectVideo->mesh.setVertex(1, playerRect.getTopRight());
+            //b -> c
+            meshProjectVideo->mesh.setVertex(2, playerRect.getTopRight());
+            meshProjectVideo->mesh.setVertex(3, playerRect.getBottomRight());
+            //c -> d
+            meshProjectVideo->mesh.setVertex(4, playerRect.getBottomRight());
+            meshProjectVideo->mesh.setVertex(5, playerRect.getBottomLeft());
+            //d -> a
+            meshProjectVideo->mesh.setVertex(6, playerRect.getBottomLeft());
+            meshProjectVideo->mesh.setVertex(7, playerRect.getTopLeft());
+            
             
             playingMovie = archivePlayer.isPlaying();
         }
+        
+        shader.begin();
+        shader.setUniform1f("alphaAmt", playhead);
+        projectLayout.draw();
+        shader.end();
         
         ////project title
         string title = ofToUpper(currentExample.title);
         hudLabelMap[meshProjectTitle->id]->draw();
         
         ////artist name
-        //////flost left
+        //////float left
         ofRectangle titleRect = layoutProjectTitle->getStringBoundingBox(title, hudLabelMap[meshProjectTitle->id]->bounds.x, 0);
         hudLabelMap[meshProjectArtist->id]->bounds.x = titleRect.x+titleRect.width+margin;
         string name = currentExample.creatorName;
