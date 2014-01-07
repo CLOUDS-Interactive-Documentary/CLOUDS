@@ -44,7 +44,7 @@
             t</twitter>
 			<location1>Albuquerque, New Mexico</location1>
 			<location2>San Francisco, California</location2>
-			<byline1>Rachel Binx’s projects engage with personal location data, and take an innovative approach to mapping people’s global journeys.
+			<byline1>Rachel Binx's projects engage with personal location data, and take an innovative approach to mapping people's global journeys.
             </byline1>
 			<byline2>By encoding GPS information in images and objects, she designs mementos that embody the latent associations between memory and place.
             </byline2>
@@ -71,7 +71,7 @@
 			<twitter>@chrissugrue</twitter>
 			<location1>Connecticut</location1>
 			<location2> Madrid, Spain</location2>
-			<byline1>Sugrue’s artworks experiment with technology in playful and curious ways and investigate topics such as artificial life, eye-tracking and optical illusions.</byline1>
+			<byline1>Sugrue's artworks experiment with technology in playful and curious ways and investigate topics such as artificial life, eye-tracking and optical illusions.</byline1>
 			<byline2>She has worked as a creative engineer at the Ars Electronica Futurelab, and a fellow at the Eyebeam Art and Technology Center.
             </byline2>
 			<resume> ... </resume>
@@ -117,13 +117,13 @@
 		</person>
         <person id="Fernanda">
 			<first>Fernanda</first>
-			<last>Viégas</last>
+			<last>Viegas</last>
 			<title>Computational Designer
             </title>
 			<twitter>@viegasf</twitter>
 			<location1>Rio de Janeiro, Brazil,</location1>
             <location2>Cambridge, Massachusetts</location2>
-			<byline1>Fernanda Viégas is a computational designer whose work focuses on the social, collaborative, and artistic aspects of information visualization. She is known for her pioneering work on depicting chat histories, email archives, and Wikipedia activity
+			<byline1>Fernanda Viegas is a computational designer whose work focuses on the social, collaborative, and artistic aspects of information visualization. She is known for her pioneering work on depicting chat histories, email archives, and Wikipedia activity
             </byline1>
 			<byline2>She earned a PhD from the MIT Media Lab, focussing on the visualization of online communities. After founding Flowing Media, she and collaborator, Martin Wattenberg, now lead Google's "Big Picture" data visualization group.
             </byline2>
@@ -167,7 +167,7 @@
             <location2>Cambridge, Massachusetts</location2>
 			<byline1>Greg creates illusions for humans and machines. As a researcher in the Playful Systems Group at the MIT Media Lab with Kevin Slavin, he explores computer vision, machine learning, game design, and visual effects.
             </byline1>
-			<byline2>He is the author of the O’Reilly Book :Making Things See: 3D vision with Kinect.</byline2>
+			<byline2>He is the author of the O'Reilly Book :Making Things See: 3D vision with Kinect.</byline2>
 			<resume> ... </resume>
 		</person>
         <person id="JTNimoy">
@@ -201,9 +201,9 @@
 			<twitter>@datatelling</twitter>
             <location1>location</location1>
 			<location2>Brooklyn, New York</location2>
-			<byline1>Jen’s research focuses on the implications of data in society, and communicating information through pictures. She is interested in creating visualizations that tell stories and move people.
+			<byline1>Jen's research focuses on the implications of data in society, and communicating information through pictures. She is interested in creating visualizations that tell stories and move people.
             </byline1>
-			<byline2>She is passionate about open data and open source tools. In her work with technology, she brings an education in applied math and information science, and a love of literature to her work. She is a founder of the School for Poetic Compuation, with Zach Lieberman.
+			<byline2>She is passionate about open data and open source tools. In her work with technology, she brings an education in applied math and information science, and a love of literature to her work. She is a founder of the School for Poetic Computation, with Zach Lieberman.
             </byline2>
 			<resume> ... </resume>
 		</person>
@@ -238,7 +238,7 @@
 			<twitter>@juliaxgulia</twitter>
 			<location1>Kiev, Ukraine</location1>
 			<location2>Brooklyn, New York</location2>
-			<byline1>Julia is editor at large for The Creators Project, and founded New York’s #ArtsTech meetup, a monthly event series exploring the intersection of art and technology.
+			<byline1>Julia is editor at large for The Creators Project, and founded New York's #ArtsTech meetup, a monthly event series exploring the intersection of art and technology.
             </byline1>
 			<byline2>Julia is passionate about technology's potential as an artistic medium as well as its ability to increase access to and engagement with the arts.
             </byline2>
@@ -264,7 +264,7 @@
 			<location1>Warsaw, Poland</location1>
 			<location2>Brooklyn, New York</location2>
 			<byline1> Karolina works with animation, design, interactivity, computer games and other media and formats. Her work often engages public space and explores the way we interact with the world we create. </byline1>
-			<byline2> She has also studied and taught in the University of Washington’s Digital Arts and Experimental Media PhD program. Her company, FlightPhase, creates large interactive installations in public spaces. </byline2>
+			<byline2> She has also studied and taught in the University of Washington's Digital Arts and Experimental Media PhD program. Her company, FlightPhase, creates large interactive installations in public spaces. </byline2>
 			<resume> ... </resume>
 		</person>
         <person id="Karsten">
@@ -277,7 +277,7 @@
 			<location2>location</location2>
 			<byline1>From his origins in the East German 8-bit demo scene, Karsten, aka, Toxi, has risen to the status of a creative software guru, as one of the most active contributors of open source libraries for 3D graphics.
             </byline1>
-			<byline2>The structure of software informs all aspects of Karsten’s designs. When not creating, he travels the world consulting and teaching workshops on generative design approaches employing open source code as creative tool. </byline2>
+			<byline2>The structure of software informs all aspects of Karsten's designs. When not creating, he travels the world consulting and teaching workshops on generative design approaches employing open source code as creative tool. </byline2>
 			<resume> ... </resume>
 		</person>
         <person id="Kevin">
@@ -289,7 +289,7 @@
 			<location2>Cambridge, MA</location2>
 			<byline1>As an entrepreneur, Kevin Slavin has successfully integrated digital media, game development, technology, and design. In 2005 he co-founded Area/Code (acquired by Zynga in 2011), where he developed large-scale, real-world games using mobile, pervasive, and location-aware technologies.
             </byline1>
-			<byline2>Slavin argues that we’re living in a world designed for–and increasingly controlled by–algorithms. His very popular TED talk, “How Algorithms Shape Our World,” has received over 2 million views. He now leads the Playful Systems group at the MIT Media Lab.
+			<byline2>Slavin argues that we're living in a world designed for–and increasingly controlled by–algorithms. His very popular TED talk, “How Algorithms Shape Our World,” has received over 2 million views. He now leads the Playful Systems group at the MIT Media Lab.
             </byline2>
 			<resume> ... </resume>
 		</person>
@@ -338,7 +338,7 @@
                 <twitter>@Lindsay_Howard</twitter>
                 <location1>location</location1>
                 <location2>Brooklyn, NY</location2>
-                <byline1>Lindsay’s work as a curator explores how the Internet is shaping art and culture.
+                <byline1>Lindsay's work as a curator explores how the Internet is shaping art and culture.
                 </byline1>
                 <byline2>Her experimental approach reflects a shift toward collaborative creativity, open source philosophy, and unlimited access to information. She founded 319 Scholes, a gallery dedicated to internet art, and hosts hackathons encouraging artist and technologists to collaborate.</byline2>
                 <resume> ... </resume>
@@ -387,7 +387,7 @@
                 <location1>location</location1>
                 <location2>location</location2>
                 <byline1>Martin focuses on visual explorations of culturally significant data. He has a particular interest is using visual tools to foster collaboration and discovery.</byline1>
-                <byline2> He and collaborator, Fernanda Viégas, lead Google's "Big Picture" data visualization group in Cambridge, MA.</byline2>
+                <byline2> He and collaborator, Fernanda Viegas, lead Google's "Big Picture" data visualization group in Cambridge, MA.</byline2>
                 <resume> ... </resume>
                 </person>
                 <person id="Nervous_Jesse">
@@ -420,7 +420,7 @@
                 <location1>location</location1>
                 <location2>location</location2>
                 <byline1>Paola is a senior curator in the Department of Architecture and Design at The Museum of Modern Art (MoMA), New York City. As a longtime proponent of humanized technology and advocate for interdisciplinary thinking, her curation focuses on innovative and emerging approaches to design.</byline1>
-                <byline2>Her MOMA exhibitions, “Design and the Elastic Mind," and "Talk to Me", have featured the work of software artists, engineers and scientists. She recently established the museum’s first collection of videogames.</byline2>
+                <byline2>Her MOMA exhibitions, “Design and the Elastic Mind," and "Talk to Me", have featured the work of software artists, engineers and scientists. She recently established the museum's first collection of videogames.</byline2>
                 <resume> ... </resume>
                 </person>
                 <person id="Philip">
@@ -474,7 +474,7 @@
                 <twitter>@shiffman</twitter>
 				<location1>Baltimore</location1>
                 <location2>New York</location2>
-                <byline1> Daniel Shiffman teaches programming to artists at NYU’s Interactive Telecommunications Program. He is the author of The Nature of Code a self published, open source book about simulating natural phenomena in software.</byline1>
+                <byline1> Daniel Shiffman teaches programming to artists at NYU's Interactive Telecommunications Program. He is the author of The Nature of Code a self published, open source book about simulating natural phenomena in software.</byline1>
                 <byline2>His work applies mathematical principles underlying physics to create digital worlds, which he develops through tutorials, examples, and libraries for Processing, an open source programming language and environment.</byline2>
                 <resume> ... </resume>
                 </person>
