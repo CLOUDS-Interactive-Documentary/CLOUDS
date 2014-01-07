@@ -180,7 +180,8 @@ protected:
     float boxSat;
     float boxBright;
     ofFloatColor boxColor;
-    
+    float satShift;
+    float briShift;
     //SHADER
     ofShader shader;
     
