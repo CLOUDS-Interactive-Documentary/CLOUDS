@@ -43,9 +43,9 @@
 			<twitter>@rachelbinx</twitter>
 			<location1>b Albuquerque NM</location1>
 			<location2>San Francisco - Brooklyn</location2>
-			<byline1>By encoding GPS information in images and objects, she engages with personal location data, and takes an innovative approach to mapping people’s global journeys.
+			<byline1>By encoding GPS information in images and objects, she engages with personal location data, and takes an innovative approach to mapping people's global journeys.
 </byline1>
-			<byline2>Rachel Binx’s projects engage with personal location data, and take an innovative approach to mapping people’s global journeys. By encoding GPS information in images and objects, she designs mementos that embody the latent associations between memory and place. 
+			<byline2>Rachel Binx's projects engage with personal location data, and take an innovative approach to mapping people's global journeys. By encoding GPS information in images and objects, she designs mementos that embody the latent associations between memory and place. 
 </byline2>
 			<gender>female</gender>
 		</person>
@@ -160,7 +160,7 @@
             <location2>Portland - Cambridge</location2>
 			<byline1>Creates illusions for humans and machines. As a researcher in the Playful Systems Group at the MIT Media Lab, he explores computer vision, machine learning, game design, and visual effects.
 </byline1>
-			<byline2>He is the author of the O’Reilly Book :Making Things See: 3D vision with Kinect.</byline2>
+			<byline2>He is the author of the O'Reilly Book :Making Things See: 3D vision with Kinect.</byline2>
 			<gender>male</gender>
 		</person>
 	<person id="JTNimoy">
@@ -233,7 +233,7 @@
 			<twitter>@juliaxgulia</twitter>
 			<location1>Brooklyn NY</location1>
 			<location2>Kiev - Brooklyn</location2>
-			<byline1>Julia is editor at large for The Creators Project, and founded New York’s #ArtsTech meetup, a monthly event series exploring the intersection of art and technology.
+			<byline1>Julia is editor at large for The Creators Project, and founded New York's #ArtsTech meetup, a monthly event series exploring the intersection of art and technology.
 </byline1>
 			<byline2>Julia is passionate about technology's potential as an artistic medium as well as its ability to increase access to and engagement with the arts. 
 </byline2>
@@ -259,7 +259,7 @@
 			<location1>Warsaw PL</location1>
 			<location2>Warsaw - Brooklyn</location2>
 			<byline1>Karolina works with animation, design, interactivity, computer games and other media and formats. Her work often engages public space and explores the way we interact with the world we create.</byline1>
-			<byline2> She has also studied and taught in the University of Washington’s Digital Arts and Experimental Media PhD program. Her company, FlightPhase, creates large interactive installations in public spaces. </byline2>
+			<byline2> She has also studied and taught in the University of Washington's Digital Arts and Experimental Media PhD program. Her company, FlightPhase, creates large interactive installations in public spaces. </byline2>
 			<gender>female</gender>
 		</person>
 	<person id="Karsten">
@@ -272,7 +272,7 @@
 			<location2>Berlin - London</location2>
 			<byline1>From his origins in the East German 8-bit demo scene, Toxi has risen to the status of a creative software guru, as one of the most active contributors of open source libraries for 3D graphics.
 </byline1>
-			<byline2>The structure of software informs all aspects of Karsten’s designs. When not creating, he travels the world consulting and teaching workshops on generative design approaches employing open source code as creative tool. </byline2>
+			<byline2>The structure of software informs all aspects of Karsten's designs. When not creating, he travels the world consulting and teaching workshops on generative design approaches employing open source code as creative tool. </byline2>
 			<gender>male</gender>
 		</person>
 	<person id="Kevin">
@@ -284,7 +284,7 @@
 			<location2>New York - Cambridge</location2>
 			<byline1>As an entrepreneur he has successfully integrated digital media, game development, technology, and design. He co-founded Area/Code, where he developed real-world games using mobile, location-aware technologies.
 </byline1>
-			<byline2>Slavin argues that we’re living in a world designed for–and increasingly controlled by–algorithms. His very popular TED talk, “How Algorithms Shape Our World,” has received over 2 million views. He now leads the Playful Systems group at the MIT Media Lab. 
+			<byline2>Slavin argues that we're living in a world designed for–and increasingly controlled by–algorithms. His very popular TED talk, “How Algorithms Shape Our World,” has received over 2 million views. He now leads the Playful Systems group at the MIT Media Lab. 
 </byline2>
 			<gender>male</gender>
 		</person>
@@ -382,7 +382,7 @@
 			<location1>Cambridge MA</location1>
 			<location2>Cambridge</location2>
 			<byline1>His work explores cultural and natural phenomena through the lends of data. He and collaborator Fernanda Viegas lead Google's 'Big Picture' data visualization group.</byline1>
-			<byline2>Martin focuses on visual explorations of culturally significant data. He has a particular interest is using visual tools to foster collaboration and discovery. He and collaborator, Fernanda Viégas, lead Google's 'Big Picture' data visualization group in Cambridge, MA. Exploring topics such as social networks and collaboration.</byline2>
+			<byline2>Martin focuses on visual explorations of culturally significant data. He has a particular interest is using visual tools to foster collaboration and discovery. He and collaborator, Fernanda Viegas, lead Google's 'Big Picture' data visualization group in Cambridge, MA. Exploring topics such as social networks and collaboration.</byline2>
 			<gender>male</gender>
 		</person>
 	<person id="Nervous_Jesse">
@@ -415,7 +415,7 @@
 			<location1>b Milan IT</location1>
 			<location2>Milan - New York</location2>
 			<byline1>A senior curator in the Department of Architecture and Design at MoMA. As a longtime advocate for humanized technology and interdisciplinary thinking, her curation focuses on emerging approaches to design.</byline1>
-			<byline2>Her MOMA exhibitions, “Design and the Elastic Mind," and "Talk to Me", have featured the work of software artists, engineers and scientists. She recently established the museum’s first collection of videogames.</byline2>
+			<byline2>Her MOMA exhibitions, “Design and the Elastic Mind," and "Talk to Me", have featured the work of software artists, engineers and scientists. She recently established the museum's first collection of videogames.</byline2>
 			<gender>female</gender>
 		</person>
 	<person id="Philip">
@@ -469,7 +469,7 @@
 			<twitter>@shiffman</twitter>
 				<location1>New York NY</location1>
 			<location2>New York</location2>
-			<byline1>Teaches programming to artists at NYU’s Interactive Telecommunications Program. He is the author of The Nature of Code, a self published, open source book about simulating natural phenomena in software.</byline1>
+			<byline1>Teaches programming to artists at NYU's Interactive Telecommunications Program. He is the author of The Nature of Code, a self published, open source book about simulating natural phenomena in software.</byline1>
 			<byline2>His work applies mathematical principles underlying physics to create digital worlds, which he develops through tutorials, examples, and libraries for Processing, an open source programming language and environment.</byline2>
 			<gender>male</gender>
 		</person>
