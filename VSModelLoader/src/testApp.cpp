@@ -2,8 +2,8 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	exampleVectorMath.setup();
-	exampleVectorMath.playSystem();
+	model.setup();
+	model.playSystem();
 }
 
 //--------------------------------------------------------------
@@ -22,6 +22,7 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::exit(){
+	model.exit();
 }
 
 //--------------------------------------------------------------
