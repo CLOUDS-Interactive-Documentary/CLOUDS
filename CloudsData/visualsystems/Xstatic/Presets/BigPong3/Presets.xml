@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>218.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>290.000000000</XPosition>
+    <YPosition>186.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,6 +28,16 @@
 <Widget>
     <Kind>2</Kind>
     <Name>BigPong2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BigPong3</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BigPong4</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -79,9 +89,4 @@
     <Kind>2</Kind>
     <Name>StarNursery1</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BigPong3</Name>
-    <Value>1</Value>
 </Widget>
