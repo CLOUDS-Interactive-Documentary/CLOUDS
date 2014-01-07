@@ -22,7 +22,7 @@ CirclePacker::CirclePacker(float _width, float _height, float _padding)
     xcenter = width/2;
     ycenter = height/2;
     padding = _padding;
-    damping = 0.01;
+    damping = 0.001;
     iterations = 1;
 }
 
@@ -33,14 +33,15 @@ float CirclePacker::fast_distance(float _x1, float _y1, float _x2, float _y2)
 
 void CirclePacker::pack()
 {
-    
-    for (int i = 0; i < circles.size(); i++)
+    if(circles.size()>2){
+    for (list<Circle>::iterator i = circles.begin(); i != circles.end();)
     {
-        Circle& c1 = circles[i];
+        Circle& c1 = *i;
+        i++;
         
-        for (int j = i+1; j < circles.size(); j++)
+        for (list<Circle>::iterator j = i; j != circles.end(); j++)
         {
-            Circle& c2 = circles[j];   // Circle& c2 = circles[j]
+            Circle& c2 = *j;   // Circle& c2 = circles[j]
             
             float d = fast_distance(c1.x, c1.y, c2.x, c2.y);
             float r = c1.r + c2.r + padding;
@@ -62,19 +63,20 @@ void CirclePacker::pack()
                 float vx = (dx/droot) * (r-droot);
                 float vy = (dy/droot) * (r-droot);
                 
-                c1.x -= vx * cd1/(cd1+cd2);
-                c1.y -= vy * cd1/(cd1+cd2);
-                c2.x += vx * cd2/(cd1+cd2);
-                c2.y += vy * cd2/(cd1+cd2);
+                c1.x -= vx * cd1/(cd1+cd2) * ofClamp(ofMap(c1.r, 100., 0., .3, 1.),.3,1.);
+                c1.y -= vy * cd1/(cd1+cd2) * ofClamp(ofMap(c1.r, 100., 0., .3, 1.),.3,1.);
+                c2.x += vx * cd2/(cd1+cd2) * ofClamp(ofMap(c2.r, 100., 0., .3, 1.),.3,1.);
+                c2.y += vy * cd2/(cd1+cd2) * ofClamp(ofMap(c2.r, 100., 0., .3, 1.),.3,1.);
             }
         }
+    }
     }
     
     // contraction...
     //
 
-     for (int i = 0; i < circles.size(); i++) {
-		 Circle& c = circles[i];
+    for (list<Circle>::iterator i = circles.begin(); i != circles.end(); i++) {
+		 Circle& c = *i;
 		 float vx = (c.x - xcenter) * damping;
 		 float vy = (c.y - ycenter) * damping;
 		 c.x -= vx;
@@ -95,55 +97,56 @@ void CirclePacker::update() {
 
 void CirclePacker::draw(bool _nasdaq, bool _blanks, bool _hashtags)
 {
-    if (_blanks == true){
-    for (int i = 0; i < circles.size(); i++)
+    if (_blanks == true && !circles.empty()){
+        for (list<Circle>::iterator i = circles.begin();i != circles.end();)
     {
-        Circle& c = circles[i];
+        Circle& c = *i;
         if (c.r < 4)
         {
-          circles.erase(circles.begin() + i);
+          i = circles.erase(i);
         }
         else
         {
             c.draw();
+            i++;
         }
         }
     }
     
-    if (_nasdaq == true){
-        for (int i = 0; i < circles.size(); i++)
-        {
-            Circle& c = circles[i];
-            if (c.r < 1)
-            {
-                circles.erase(circles.begin() + i);
-            }
-            else
-            {
-                c.drawCompanies();
-            }
-        }
-        
-    }
-    
-    if (_hashtags == true){
-        for (int i = 0; i < circles.size(); i++)
-        {
-            Circle& c = circles[i];
-            if (circles.size() > 25 )
-            {
-                circles[0].r -= .5;
-            }
-            if (c.r < 1)
-            {
-                circles.erase(circles.begin() + i);
-            }
-            else
-            {
-                c.drawHashtags();
-            }
-        }
-    }
+//    if (_nasdaq == true){
+//        for (int i = 0; i < circles.size(); i++)
+//        {
+//            Circle& c = circles[i];
+//            if (c.r < 1)
+//            {
+//                circles.erase(circles.begin() + i);
+//            }
+//            else
+//            {
+//                c.drawCompanies();
+//            }
+//        }
+//        
+//    }
+//    
+//    if (_hashtags == true){
+//        for (int i = 0; i < circles.size(); i++)
+//        {
+//            Circle& c = circles[i];
+//            if (circles.size() > 25 )
+//            {
+//                circles[0].r -= .5;
+//            }
+//            if (c.r < 1)
+//            {
+//                circles.erase(circles.begin() + i);
+//            }
+//            else
+//            {
+//                c.drawHashtags();
+//            }
+//        }
+   // }
     
 }
 

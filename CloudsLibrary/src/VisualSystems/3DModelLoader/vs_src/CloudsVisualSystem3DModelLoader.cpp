@@ -892,7 +892,7 @@ void CloudsVisualSystem3DModelLoader::loadModel( string fileName, bool bSmoothMe
 	else{
 		cout << "Found path " << filePath << " to exist" << endl;
 	}
-	ofxObjLoader::load(filePath, modelMesh, true );
+	ofxObjLoader::load_oldway(filePath, modelMesh, true );
 	cout << "*** FULL PATH " << filePath << " FOUND " << modelMesh.getNumVertices() << " verts " <<  endl;
 
 	calcBoundingBox();
