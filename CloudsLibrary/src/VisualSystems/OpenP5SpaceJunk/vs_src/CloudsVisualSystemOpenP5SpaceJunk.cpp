@@ -218,7 +218,9 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfExit(){
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemOpenP5SpaceJunk::selfKeyPressed(ofKeyEventArgs & args){
-	
+	if(args.key == 'R'){
+		shouldRegenerate = true;
+	}
 }
 void CloudsVisualSystemOpenP5SpaceJunk::selfKeyReleased(ofKeyEventArgs & args){
 	
