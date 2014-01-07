@@ -3095,6 +3095,7 @@ void CloudsVisualSystem::selfPostDraw(){
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
     
+	//TODO REPLACE WITH REAL CURSOR SYSTEM
     if(bDrawCursor){
         ofPushMatrix();
         ofPushStyle();
@@ -3120,9 +3121,8 @@ void CloudsVisualSystem::selfPostDraw(){
         }
         ofPopStyle();
         ofPopMatrix();
-
     }
-	
+	///END TODO
 	
 #endif
 

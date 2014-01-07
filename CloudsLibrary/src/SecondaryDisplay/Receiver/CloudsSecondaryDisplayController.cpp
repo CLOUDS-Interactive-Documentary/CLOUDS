@@ -376,17 +376,17 @@ void CloudsSecondaryDisplayController::animateOut(){
 }
 
 void CloudsSecondaryDisplayController::draw(){
-    
+
+    //return;
+	
 	displayTarget.begin();
     ofEnableAlphaBlending();
-	
 	clusterMap.selfPostDraw();
     
-    SVGMesh* t;
-    
-    shader.setUniform1f("alphaAmt", playhead);
+//
+//don't set uniforms if 
+//    shader.setUniform1f("alphaAmt", playhead);
     float margin = 60;
-
     
     if(displayMode == "BIO"){
         ////question
@@ -410,7 +410,7 @@ void CloudsSecondaryDisplayController::draw(){
             //cout << "playhead: "<<playhead<<endl;
             
 			shader.begin();
-            shader.setUniform1f("alphaAmt", playhead);
+			shader.setUniform1f("alphaAmt", playhead);
 			bioLayout.draw();
 			shader.end();
 
@@ -454,9 +454,9 @@ void CloudsSecondaryDisplayController::draw(){
             if(color)
                 ofSetColor(lightBlue);
             
-                ////location
-                if(color)
-                    ofSetColor(darkBlue);
+			////location
+			if(color)
+				ofSetColor(darkBlue);
             
             string loc = ofToUpper(currentSpeaker.location2);
             //float left
@@ -526,7 +526,8 @@ void CloudsSecondaryDisplayController::draw(){
     }
 	
 	displayTarget.end();
-	
+
+
 	ofRectangle screenRect(0,0,ofGetWidth(), ofGetHeight());
 	ofRectangle targetRect(0,0,displayTarget.getWidth(),displayTarget.getHeight());
 	targetRect.scaleTo(screenRect);
