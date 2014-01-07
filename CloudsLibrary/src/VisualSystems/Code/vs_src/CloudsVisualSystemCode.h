@@ -105,7 +105,15 @@ protected:
 	
 	ofxUISuperCanvas* typeGui;
 	ofxUISuperCanvas* colorGui;
+	ofxUISuperCanvas* panelsGui;
+	
 	ofRange speedRange;	
+	
+	bool bEnableCode;
+	bool bEnableConsole;
+	bool bEnableTenPrint;
+	
+	float typeMarginLeft;
 	
 	ofxFTGLFont sharedFont;
 	ofxFTGLSimpleLayout sharedLayout;

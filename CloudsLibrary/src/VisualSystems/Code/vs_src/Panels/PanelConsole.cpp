@@ -112,7 +112,7 @@ void PanelConsole::selfDraw(){
 		int curline = (line + int(offset)) % lines.size();
 		char timestamp[1024];
 		sprintf(timestamp, "$ %02d:%04d: ", ofGetSeconds(), int(ofGetElapsedTimeMillis()));
-		sharedFont->drawString( timestamp + lines[curline], drawRect.x, drawRect.y + l);
+		sharedFont->drawString( timestamp + lines[curline], drawRect.x + *marginLeft, drawRect.y + l);
 		line++;
 	}
 }

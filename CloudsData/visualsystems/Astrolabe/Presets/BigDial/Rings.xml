@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Rings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>246.000000000</XPosition>
-    <YPosition>224.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>44</Kind>
@@ -39,4 +39,34 @@
     <Kind>4</Kind>
     <Name>Spacing</Name>
     <Value>13.300493240</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>useSpheres</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numSpheresPerArc</Name>
+    <Value>5</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>sphereScale</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>drawCircles</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>circleLinewidth</Name>
+    <Value>0.100000001</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>circleOpacity</Name>
+    <Value>30.000000000</Value>
 </Widget>

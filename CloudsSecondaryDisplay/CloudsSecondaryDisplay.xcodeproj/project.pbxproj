@@ -11,6 +11,7 @@
 		185CE9B5184A5FC800F43977 /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185CE99F184A5FC800F43977 /* ofxFTGLFont.cpp */; };
 		185CE9B6184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9A1184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp */; };
 		235C96A91874F97E004523AB /* CloudsHUDLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235C96A81874F97E004523AB /* CloudsHUDLabel.cpp */; };
+		4FC938D8187B6D9D000D92EE /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FC938D7187B6D9D000D92EE /* ofxSystemTextbox.mm */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -200,6 +201,8 @@
 		235C96A81874F97E004523AB /* CloudsHUDLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsHUDLabel.cpp; path = ../../RGBD/HUD/CloudsHUDLabel.cpp; sourceTree = "<group>"; };
 		235C96C11877A20E004523AB /* secondaryDisplay.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = secondaryDisplay.frag; path = ../../CloudsData/shaders/secondaryDisplay.frag; sourceTree = "<group>"; };
 		235C96C21877A20E004523AB /* secondaryDisplay.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = secondaryDisplay.vert; path = ../../CloudsData/shaders/secondaryDisplay.vert; sourceTree = "<group>"; };
+		4FC938D6187B6D9D000D92EE /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		4FC938D7187B6D9D000D92EE /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -783,6 +786,8 @@
 		E704D00A17B3BB3600F77528 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				4FC938D6187B6D9D000D92EE /* ofxSystemTextbox.h */,
+				4FC938D7187B6D9D000D92EE /* ofxSystemTextbox.mm */,
 				E704D01217B3BB3600F77528 /* ofxLight.h */,
 				E704D00D17B3BB3600F77528 /* CloudsRGBDCamera.h */,
 				E704D00C17B3BB3600F77528 /* CloudsRGBDCamera.cpp */,
@@ -1649,6 +1654,7 @@
 				E704D36C17B3BBA900F77528 /* ofxBufferEffectorBehavior.cpp in Sources */,
 				E704D36D17B3BBA900F77528 /* ofxDamperBehavior.cpp in Sources */,
 				E704D36E17B3BBA900F77528 /* ofxDistorterBehavior.cpp in Sources */,
+				4FC938D8187B6D9D000D92EE /* ofxSystemTextbox.mm in Sources */,
 				E704D36F17B3BBA900F77528 /* ofxElectroStaticBehavior.cpp in Sources */,
 				E704D37017B3BBA900F77528 /* ofxField2D.cpp in Sources */,
 				E704D37117B3BBA900F77528 /* ofxHomingBehavior.cpp in Sources */,

@@ -29,6 +29,7 @@ class CloudsSecondaryDisplayController {
     
     void saveGuiSettings();
 	void toggleGuis();
+    void hideGUI();
 	
 	ofxUISuperCanvas *SDGui;
     void draw();
@@ -97,6 +98,8 @@ class CloudsSecondaryDisplayController {
             *meshProjectTitle,
             *meshProjectArtist,
             *meshProjectDescription;
+    
+    ofMesh  videoBox;
     
     ofxFTGLFont             *fontBioLastName,
                             *fontBioFirstName,

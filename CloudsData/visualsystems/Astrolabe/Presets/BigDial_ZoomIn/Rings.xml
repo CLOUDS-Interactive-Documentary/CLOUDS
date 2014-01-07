@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Rings</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -54,4 +54,19 @@
     <Kind>4</Kind>
     <Name>sphereScale</Name>
     <Value>8.829556465</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>drawCircles</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>circleLinewidth</Name>
+    <Value>0.100000001</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>circleOpacity</Name>
+    <Value>30.000000000</Value>
 </Widget>

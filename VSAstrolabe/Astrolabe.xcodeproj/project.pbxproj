@@ -77,6 +77,7 @@
 		4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AA17512E45003001E2 /* ofxSwarmBehavior.cpp */; };
 		4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
+		4FC938DC187B95F0000D92EE /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FC938DB187B95F0000D92EE /* ofxSystemTextbox.mm */; };
 		50193793187200CE000F22E6 /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 50193789187200CE000F22E6 /* glm.c */; };
 		50193794187200CE000F22E6 /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5019378D187200CE000F22E6 /* ofxObjLoader.cpp */; };
 		503FDBD0186642740040C651 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503FD2EE1866426D0040C651 /* CloudsInput.cpp */; };
@@ -490,6 +491,8 @@
 		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		4FC938DA187B95F0000D92EE /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		4FC938DB187B95F0000D92EE /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		50193789187200CE000F22E6 /* glm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glm.c; sourceTree = "<group>"; };
 		5019378A187200CE000F22E6 /* glm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glm.h; sourceTree = "<group>"; };
 		5019378D187200CE000F22E6 /* ofxObjLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxObjLoader.cpp; sourceTree = "<group>"; };
@@ -1209,6 +1212,8 @@
 		503FDBC6186642740040C651 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				4FC938DA187B95F0000D92EE /* ofxSystemTextbox.h */,
+				4FC938DB187B95F0000D92EE /* ofxSystemTextbox.mm */,
 				503FDBC7186642740040C651 /* CloudsRGBDCamera.cpp */,
 				503FDBC8186642740040C651 /* CloudsRGBDCamera.h */,
 				503FDBC9186642740040C651 /* CloudsRGBDVideoPlayer.cpp */,
@@ -1463,6 +1468,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Astrolabe" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1563,6 +1570,7 @@
 				3D5B95D3175308AE00F558AC /* ofxHotKeys_impl_linux.cpp in Sources */,
 				3D5B95D4175308AE00F558AC /* ofxHotKeys_impl_mac.mm in Sources */,
 				3D5B95D5175308AE00F558AC /* ofxHotKeys_impl_win.cpp in Sources */,
+				4FC938DC187B95F0000D92EE /* ofxSystemTextbox.mm in Sources */,
 				3D5B95D6175308AE00F558AC /* ofxRemoveCocoaMenu.mm in Sources */,
 				3D5B95D7175308AE00F558AC /* ofxTimeline.cpp in Sources */,
 				3D5B95D8175308AE00F558AC /* ofxTLAudioTrack.cpp in Sources */,
