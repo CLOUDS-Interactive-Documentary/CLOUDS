@@ -145,10 +145,10 @@ void CloudsVisualSystemOscillations::loadShader(){
 }
 
 void CloudsVisualSystemOscillations::selfSetDefaults(){
-    curveWidth = 2000;
-    curveHeight = 2000;
+    curveWidth = 400;
+    curveHeight = 400;
     curveDepth = 7000;
-    speed = 0.02;
+    speed = 0.015;
     renderLines = true;
     bgColor = curveColor.getInverted();
     CurveLineWidth = 0.1;
@@ -213,6 +213,7 @@ void CloudsVisualSystemOscillations::selfDraw(){
     glPushAttrib(GL_LINE_SMOOTH | GL_DEPTH_TEST | GL_POINT_SIZE);
     glEnable( GL_LINE_SMOOTH );
     glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
+    glDisable(GL_DEPTH_TEST);
 //    ofEnableBlendMode(OF_BLENDMODE_ADD);
     if (displayGrid) {
         glLineStipple((int)GridPattern, 0x8888);
@@ -224,7 +225,7 @@ void CloudsVisualSystemOscillations::selfDraw(){
         glDisable(GL_LINE_STIPPLE);
     }
     
-	glDisable(GL_DEPTH_TEST);
+	
     
     //TODO: Customize
     glPointSize(2.0);
