@@ -85,6 +85,7 @@
 #include "CloudsVisualSystemWormHole.h"
 #include "CloudsVisualSystemXstatic.h"
 #include "CloudsVisualSystemYellowTail.h"
+#include "CloudsVisualSystemSchlabberbox.h"
 
 // register a mapping of visual system constructors
 // so it's easy to instantiate them in groups when needed
@@ -170,6 +171,7 @@ struct Mapping {
 	{ "Rulez", &fCreate<CloudsVisualSystemRulez> },
 	{ "Satoruhiga", &fCreate<CloudsVisualSystemSatoruhiga> },
 	{ "Scrape", &fCreate<CloudsVisualSystemScrape> },
+    { "Schlabberbox", &fCreate<CloudsVisualSystemSchlabberbox> },
 //	{ "Swim", &fCreate<CloudsVisualSystemSwim> }, TEMP
 	{ "Terrain", &fCreate<CloudsVisualSystemTerrain> },
 	{ "ThingsInTheDark", &fCreate<CloudsVisualSystemThingsInTheDark> },
