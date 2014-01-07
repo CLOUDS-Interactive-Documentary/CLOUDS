@@ -87,6 +87,11 @@ void testApp::keyPressed(int key){
         //reload shader
         secondaryDisplay.reloadShader();
     }
+    
+    if(key == 'H'){
+        //reload shader
+        secondaryDisplay.hideGUI();
+    }
 	
 }
 

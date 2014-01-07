@@ -29,6 +29,7 @@ class CloudsSecondaryDisplayController {
     
     void saveGuiSettings();
 	void toggleGuis();
+    void hideGUI();
 	
 	ofxUISuperCanvas *SDGui;
     void draw();

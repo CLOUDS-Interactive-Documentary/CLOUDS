@@ -24,6 +24,9 @@ CloudsRGBDCamera::CloudsRGBDCamera(){
 	damp = .1;
 	driftNoisePosition = 0;
 	
+	canvasWidth = ofGetWidth();
+	canvasHeight = ofGetHeight();
+
 	maxDriftAngle = 0;
 //	driftNoiseDensity = 0;
 //	driftNoiseSpeed = ;

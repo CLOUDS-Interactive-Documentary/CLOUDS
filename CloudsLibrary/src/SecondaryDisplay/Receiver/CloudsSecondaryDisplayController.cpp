@@ -312,7 +312,6 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip& clip){
 		if(currentExample.exampleVideos.size() > 0){
 			playingMovie = archivePlayer.loadMovie(currentExample.exampleVideos[0]);
 			if(playingMovie){
-				archivePlayer.setLoopState(OF_LOOP_NONE);
 				archivePlayer.play();
 			}
 		}
@@ -347,7 +346,7 @@ void CloudsSecondaryDisplayController::onActBegan(){
 
 void CloudsSecondaryDisplayController::onActEnded(){
     //hide the secondary display hud
-    displayMode = "NONE";
+    animateOut();
 }
 
 void CloudsSecondaryDisplayController::animateIn(){
@@ -360,20 +359,34 @@ void CloudsSecondaryDisplayController::animateIn(){
 void CloudsSecondaryDisplayController::animateOut(){
     animatingOut = true;
     beginTime = ofGetElapsedTimef();
+    
+    if(displayMode == "BIO"){
+        hudLabelMap[meshQuestion->id]->animateOut();
+		hudLabelMap[meshBioFirstName->id]->animateOut();
+		hudLabelMap[meshBioLastName->id]->animateOut();
+		hudLabelMap[meshBioTitle->id]->animateOut();
+		hudLabelMap[meshBioLocation->id]->animateOut();
+		hudLabelMap[meshBioDescription->id]->animateOut();
+    }
+    else if (displayMode == "PROJECT"){
+        hudLabelMap[meshProjectArtist->id]->animateOut();
+		hudLabelMap[meshProjectTitle->id]->animateOut();
+		hudLabelMap[meshProjectDescription->id]->animateOut();
+    }
 }
 
 void CloudsSecondaryDisplayController::draw(){
-    
+
+    //return;
+	
 	displayTarget.begin();
     ofEnableAlphaBlending();
-	
 	clusterMap.selfPostDraw();
     
-    SVGMesh* t;
-    
-    shader.setUniform1f("alphaAmt", playhead);
+//
+//don't set uniforms if 
+//    shader.setUniform1f("alphaAmt", playhead);
     float margin = 60;
-
     
     if(displayMode == "BIO"){
         ////question
@@ -397,7 +410,7 @@ void CloudsSecondaryDisplayController::draw(){
             //cout << "playhead: "<<playhead<<endl;
             
 			shader.begin();
-            shader.setUniform1f("alphaAmt", playhead);
+			shader.setUniform1f("alphaAmt", playhead);
 			bioLayout.draw();
 			shader.end();
 
@@ -441,9 +454,9 @@ void CloudsSecondaryDisplayController::draw(){
             if(color)
                 ofSetColor(lightBlue);
             
-                ////location
-                if(color)
-                    ofSetColor(darkBlue);
+			////location
+			if(color)
+				ofSetColor(darkBlue);
             
             string loc = ofToUpper(currentSpeaker.location2);
             //float left
@@ -513,7 +526,8 @@ void CloudsSecondaryDisplayController::draw(){
     }
 	
 	displayTarget.end();
-	
+
+
 	ofRectangle screenRect(0,0,ofGetWidth(), ofGetHeight());
 	ofRectangle targetRect(0,0,displayTarget.getWidth(),displayTarget.getHeight());
 	targetRect.scaleTo(screenRect);
@@ -525,6 +539,10 @@ void CloudsSecondaryDisplayController::draw(){
 void CloudsSecondaryDisplayController::reloadShader(){
     GLuint err = glGetError();
     shader.load( GetCloudsDataPath() + "shaders/secondaryDisplay");
+}
+
+void CloudsSecondaryDisplayController::hideGUI(){
+    animateOut();
 }
 
 /*void CloudsSecondaryDisplayController::drawBioLayout(){
