@@ -1165,8 +1165,8 @@
 		850D80D0187BA67200BB3A84 /* CloudsVisualSystemSchlabberbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemSchlabberbox.h; sourceTree = "<group>"; };
 		850D80D1187BA67200BB3A84 /* GridFluid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridFluid.cpp; sourceTree = "<group>"; };
 		850D80D2187BA67200BB3A84 /* GridFluid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridFluid.h; sourceTree = "<group>"; };
-		851A1052187A09E0004197C5 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxSystemTextbox.h; path = src/VisualSystemsLibrary/ofxSystemTextbox.h; sourceTree = "<group>"; };
-		851A1053187A09E0004197C5 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ofxSystemTextbox.mm; path = src/VisualSystemsLibrary/ofxSystemTextbox.mm; sourceTree = "<group>"; };
+		851A1052187A09E0004197C5 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		851A1053187A09E0004197C5 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		859A45C7181C684700B9F251 /* ofxSimpleSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleSpline.cpp; sourceTree = "<group>"; };
 		859A45C8181C684700B9F251 /* ofxSimpleSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleSpline.h; sourceTree = "<group>"; };
 		85D98A6218381E4300D7065D /* ofxPtf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPtf.h; sourceTree = "<group>"; };
@@ -4810,6 +4810,8 @@
 		E73676ED17C67E6700CC6EC8 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				851A1052187A09E0004197C5 /* ofxSystemTextbox.h */,
+				851A1053187A09E0004197C5 /* ofxSystemTextbox.mm */,
 				E73676F017C67E6700CC6EC8 /* CloudsRGBDCamera.h */,
 				E73676EF17C67E6700CC6EC8 /* CloudsRGBDCamera.cpp */,
 				E73676F217C67E6700CC6EC8 /* CloudsRGBDVideoPlayer.h */,
@@ -4842,8 +4844,6 @@
 		E737691B1778DC4500892646 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				851A1052187A09E0004197C5 /* ofxSystemTextbox.h */,
-				851A1053187A09E0004197C5 /* ofxSystemTextbox.mm */,
 				E7402DBF178F3FA400FEABED /* CloudsGlobal.h */,
 				E737691C1778DC4500892646 /* src */,
 			);

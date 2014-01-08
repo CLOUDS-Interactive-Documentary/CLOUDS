@@ -16,6 +16,34 @@
  * based on the keyword connectivity and rules.
  * It has state history for each story sequence
  */
+
+typedef struct {
+	
+	CloudsAct* act;
+	int currentRun;
+	string currentTopic;
+	CloudsVisualSystemPreset currentPreset;
+	CloudsClip currentClip;
+	
+	vector<string> topicHistory;
+	vector<string> presetHistory;
+	vector<CloudsClip> clipHistory;
+
+	bool freeTopic;
+	
+	float currentDuration;
+	int currentTopicNum;
+	int timesOnCurrentTopic;
+
+	bool visualSystemRunning;
+	float visualSystemStartTime;
+	float visualSystemEndTime;	
+	int moreMenThanWomen;
+	
+	stringstream log; //....
+	
+} CloudsStoryState;
+
 class CloudsAct;
 class CloudsStoryEngine {
   public:
@@ -40,7 +68,6 @@ class CloudsStoryEngine {
     void updateRunData();
 	
     //after this many clips the topic opens up again
-	float maxTimesOnTopic;
 	bool printDecisions;
 	bool printCriticalDecisions;
 	bool atDeadEnd();
@@ -49,9 +76,6 @@ class CloudsStoryEngine {
 	bool combinedClipsOnly;
 	
 	CloudsStoryEvents& getEvents();
-	
-    void updateDichotomies(CloudsClip& clip);
-	void clearDichotomiesBalance();
 
     vector<CloudsDichotomy> getCurrentDichotomyBalance();
     
@@ -66,33 +90,36 @@ class CloudsStoryEngine {
     ofxUISuperCanvas *vsGui;
 	ofxUISuperCanvas *topicGui;
 	ofxUISuperCanvas *runGui;
+	
     void guiEvent(ofxUIEventArgs &e);
 
 	CloudsStoryEvents events;
 	bool isSetup;
 	CloudsAct* customAct;
 	
+	string log;
     vector<string> runTopicCount;
-	vector<CloudsDichotomy> dichotomies;
     int dichotomyThreshold;
-	string selectTopic(CloudsAct* act, CloudsClip& clip, vector<string>& topicHistory, string topic, string& log);
-    float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip,
-					   string topic,string& log,
-					   int currentRun,
-					   bool visualSystemRunning,
-					   bool visualSystemHasSound,
-					   bool isPresetIndefinite,
-					   int moreManThanWomen,
-					   int timesOnCurrentTopic,
-					   int numTopicHistoryOccurrences); //queue based
+	int minTimesOnTopic;
 	
-    float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic, string& log);
-	float scoreForVisualSystem(CloudsVisualSystemPreset& preset, CloudsClip& clip,vector<string>& presetHistory, string currentTopic, vector<string>& seconardyTopics, string& log);
+	string selectTopic(CloudsStoryState& currentState);
+	float scoreForTopic(CloudsStoryState& currentState, string potentialNextTopic);
 	
+    CloudsVisualSystemPreset selectVisualSystem(CloudsStoryState& currentState, bool allowSound);
+	float scoreForVisualSystem(CloudsStoryState& currentState, CloudsVisualSystemPreset& potentialNextPreset);
+
+	CloudsClip selectClip(CloudsStoryState& currentState, vector<CloudsClip>& questionClips);
+    float scoreForClip(CloudsStoryState& currentState, CloudsClip& potentialNextClip);
+    
 	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
 	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
-    CloudsVisualSystemPreset getVisualSystemPreset(string keyword, CloudsClip& currentClip, vector<string>& presetHistory, string& log);
+	
+	void addQuestions(CloudsStoryState& currentState, vector<CloudsClip>& questionClips);
+    void updateDichotomies(CloudsClip& clip);
+	void clearDichotomiesBalance();
 
+	vector<CloudsDichotomy> dichotomies;
+	
 	
     //Act Builder Parameters
     float actLength;
@@ -104,13 +131,25 @@ class CloudsStoryEngine {
     //VS Story Engine Parameters
 	float visualSystemPrimaryTopicBoost;
 	float visualSystemSecondaryTopicBoost;
-    float systemMaxRunTime;
-    float maxVisualSystemGapTime;
+	
     float longClipThreshold;
     float longClipFadeInPercent;
-	float getHandleForClip(CloudsClip& clip);
+//	float getHandleForClip(CloudsClip& clip);
     float cadenceForTopicChangeMultiplier;
-    
+	float clipGapTime;
+    float voClipGapTime;
+	
+	//max time to watch visuals
+    float maxVisualSystemRunTime;
+	//max time between visuals
+    float maxVisualSystemGapTime;
+	//how long to extend visual systems over the end of topics
+	float visualSystemTopicEndExtend;
+
+	//TIMING PARAMS
+	int maxTopicsPerAct;
+	int maxTimesOnTopic;
+
     //Story engine decision making parameters
     float topicsInCommonMultiplier;
     float topicsinCommonWithPreviousMultiplier;
@@ -123,8 +162,8 @@ class CloudsStoryEngine {
 	float offTopicFactor;//deprecated
 	int digressionDenialCount;
 	int numTopicHistoryOccurrences;
-	float distantClipSuppressionFactor;
 
+	float distantClipSuppressionFactor;
 
 	//Topic selection parameters
 	float topicRelevancyMultiplier;
