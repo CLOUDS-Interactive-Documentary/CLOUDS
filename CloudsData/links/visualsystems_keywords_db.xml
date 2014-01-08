@@ -10462,7 +10462,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="OpenP5NoiseSphere_InYourFace">
     <keywords></keywords>
@@ -10497,7 +10497,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="OpenP5NoiseSphere_Nervous_Colors">
     <keywords>emotion|music</keywords>
@@ -10532,7 +10532,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="OpenP5NoiseSphere_SPACE">
     <keywords></keywords>
@@ -10708,7 +10708,7 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="OpenP5NoiseSphere_gx_work_05">
     <keywords></keywords>
@@ -10914,7 +10914,7 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="OpenP5NoiseSphere_jm_03a_things3">
     <keywords>hallucination|cortex|science fiction|singularity|dreams|artificial intelligence</keywords>
@@ -10988,7 +10988,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="OpenP5NoiseSphere_jm_work_03a">
     <keywords></keywords>
@@ -11381,12 +11381,59 @@
     <sound>0</sound>
 </system>
 <system name="OpenP5SpaceJunk_gx_work_01a">
-    <keywords></keywords>
+    <keywords>architecture|design|abstraction|sculpture</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Binx - Mesh-U business</clip>
+        <clip>Binx - there was no degree</clip>
+        <clip>Bruce - 3D printed buildings</clip>
+        <clip>Bruce - Digital fabrication</clip>
+        <clip>Casey - Design by numbers to processing</clip>
+        <clip>Casey - Started small</clip>
+        <clip>Casey - beginnings</clip>
+        <clip>Elliot_UK - lightscape</clip>
+        <clip>Jen - information cave</clip>
+        <clip>Jen - intuitive spelunking</clip>
+        <clip>Jen - visual communication</clip>
+        <clip>Julian - journey to the moon</clip>
+        <clip>LIA - 3DTchotchkes</clip>
+        <clip>Maeda - Art is asking questions, design is making solutions</clip>
+        <clip>Maeda - Forever</clip>
+        <clip>Maeda - lost interest in interactivity</clip>
+        <clip>Marius - Continuous process of exploration</clip>
+        <clip>Martin - spiral interface</clip>
+        <clip>Nervous_Jessica - Design process 2</clip>
+        <clip>Paola - Design and science</clip>
+        <clip>Paola - Designers</clip>
+        <clip>Paola - Paola&apos;s Republic</clip>
+        <clip>Paola - designer of the future</clip>
+        <clip>Paola - should be useful</clip>
+        <clip>Regine - ineffectual art</clip>
+        <clip>Theo - generative and pre-rendered</clip>
+        <clip>Casey - New modes of expression</clip>
+        <clip>Casey - ideas of art history</clip>
+        <clip>Kevin - Tools of perception</clip>
+        <clip>Kevin - invented as opposed to discovered 1</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Kyle_CH - abstraction</clip>
+        <clip>Kyle_CH - new generation</clip>
+        <clip>LIA - MathAnotherLanguage</clip>
+        <clip>LIA - NonVerbalWay</clip>
+        <clip>Marcus - call to action</clip>
+        <clip>Nervous_Jesse - theoretical</clip>
+        <clip>Patricio - Alchemy 1</clip>
+        <clip>Ramsey - arab abstraction 1</clip>
+        <clip>Ramsey - arab abstraction 2</clip>
+        <clip>Bruce - Don&apos;t care about design</clip>
+        <clip>Elliot_UK - points in space</clip>
+        <clip>Elliot_UK - tree sculpture</clip>
+        <clip>Nervous_Jesse - making things</clip>
+        <clip>Nervous_Jessica - Design process</clip>
+        <clip>Nervous_Jessica - Growing buildings</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -11401,12 +11448,66 @@
     <sound>0</sound>
 </system>
 <system name="OpenP5SpaceJunk_gx_work_03a">
-    <keywords></keywords>
+    <keywords>future|vision|cinema|apocalypse</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - data experience</clip>
+        <clip>Andres - camera distorts reality</clip>
+        <clip>Andres - seeing molecules</clip>
+        <clip>Bruce - 2060s (Lashup 5)</clip>
+        <clip>Bruce - A sappy Singularity</clip>
+        <clip>Bruce - Augmented Ubiquity</clip>
+        <clip>Bruce - future camera 3</clip>
+        <clip>Bruce - future city 2</clip>
+        <clip>Bruce - not one cyberpunk idea</clip>
+        <clip>Bruce - talking about the future as history</clip>
+        <clip>Casey - It&apos;s not cinema not a game</clip>
+        <clip>Casey - Tree of Life</clip>
+        <clip>Casey - futurist</clip>
+        <clip>Casey - passionate about cinema</clip>
+        <clip>Damion - HumanChemicalMachine</clip>
+        <clip>Fernanda - seeing patterns 2</clip>
+        <clip>Golan - apocalypse3</clip>
+        <clip>Golan - kerrington</clip>
+        <clip>Golan - staring down the barrel</clip>
+        <clip>Jen - data viz noire</clip>
+        <clip>Jen - in the movie</clip>
+        <clip>Julian - science fiction</clip>
+        <clip>Karsten - parallel processing</clip>
+        <clip>Kevin - cognition vs computation 1</clip>
+        <clip>Kevin - collaboration with machines</clip>
+        <clip>Kyle_CH - Future life storage</clip>
+        <clip>Kyle_CH - old server farms</clip>
+        <clip>Kyle_MC - Grab them ASAP</clip>
+        <clip>Kyle_MC - Transparent tech 2</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Kyle_MC - shaping the direction</clip>
+        <clip>Lindsay - death of technology</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marius - Living in a state of newness since age 10</clip>
+        <clip>Marius - Thoroughly enjoying it at the moment</clip>
+        <clip>Paola - Integrating with technology</clip>
+        <clip>Paola - designer of the future</clip>
+        <clip>Paola - teleportation</clip>
+        <clip>Philip - limitations</clip>
+        <clip>Ramsey - Google glass</clip>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Ramsey - dystopia</clip>
+        <clip>Ramsey - thinking previously unthinkable thoughts</clip>
+        <clip>Regine - commercial appropriation</clip>
+        <clip>Regine - elitist and their gadgets</clip>
+        <clip>Regine - looking forward to problems</clip>
+        <clip>Regine - teleportation</clip>
+        <clip>Regine - twitter, future</clip>
+        <clip>Shantell - group improvisation</clip>
+        <clip>Sophy - distributed culture</clip>
+        <clip>Sophy - made of photons</clip>
+        <clip>Sophy - nanobots</clip>
+        <clip>Theo - crazy researcher</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
