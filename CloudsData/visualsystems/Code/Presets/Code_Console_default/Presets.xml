@@ -17,6 +17,21 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Code_Console_default</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Code_default</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Cryptic</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>JG_10PRINT_Cascade</Name>
     <Value>0</Value>
 </Widget>
@@ -32,26 +47,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>SimpleCode</Name>
+    <Name>JG_TenPrintCascade</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Teletype</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Code_default</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Code_Console_default</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Cryptic</Name>
+    <Name>TenPrint</Name>
     <Value>0</Value>
 </Widget>
