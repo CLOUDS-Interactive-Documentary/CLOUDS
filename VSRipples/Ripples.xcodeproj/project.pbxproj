@@ -323,6 +323,8 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E7302C2F187E085C0079C5B8 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7302C2E187E085C0079C5B8 /* ofxSystemTextbox.mm */; };
+		E7302C30187E085C0079C5B8 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7302C2E187E085C0079C5B8 /* ofxSystemTextbox.mm */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
 		E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB81714899C00705E7A /* tinyxmlerror.cpp */; };
@@ -725,6 +727,8 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E7302C2D187E085C0079C5B8 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		E7302C2E187E085C0079C5B8 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7846F411714887E00705E7A /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		E7846F421714887E00705E7A /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -2039,6 +2043,8 @@
 		E7E5EC601817C01400CA4196 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E7302C2D187E085C0079C5B8 /* ofxSystemTextbox.h */,
+				E7302C2E187E085C0079C5B8 /* ofxSystemTextbox.mm */,
 				E7E5EC611817C01400CA4196 /* CloudsRGBDCamera.cpp */,
 				E7E5EC621817C01400CA4196 /* CloudsRGBDCamera.h */,
 				E7E5EC631817C01400CA4196 /* CloudsRGBDVideoPlayer.cpp */,
@@ -2476,6 +2482,7 @@
 				F302F5A2185584D500EE514A /* ofxOscMessage.cpp in Sources */,
 				F302F5A4185584D500EE514A /* ofxOscReceiver.cpp in Sources */,
 				F302F5A6185584D500EE514A /* ofxOscSender.cpp in Sources */,
+				E7302C30187E085C0079C5B8 /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2675,6 +2682,7 @@
 				2ACA6BE418725AC40029603B /* TableLookupOsc.cpp in Sources */,
 				2ACA6BA418725AC40029603B /* ControlParameter.cpp in Sources */,
 				1835BF481875E82B002B025D /* CloudsInputKinectOSC.cpp in Sources */,
+				E7302C2F187E085C0079C5B8 /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
