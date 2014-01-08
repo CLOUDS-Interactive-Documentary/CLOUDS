@@ -1,0 +1,102 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>ShaderGui</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>depthTest</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c0_hue</Name>
+    <Value>168</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c0_brightness</Name>
+    <Value>77</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c0_saturation</Name>
+    <Value>125</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c0_alpha</Name>
+    <Value>255</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c1_hue</Name>
+    <Value>159</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c1_brightness</Name>
+    <Value>135</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c1_saturation</Name>
+    <Value>118</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c1_alpha</Name>
+    <Value>255</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c2_hue</Name>
+    <Value>139</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c2_brightness</Name>
+    <Value>155</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c2_saturation</Name>
+    <Value>128</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c2_alpha</Name>
+    <Value>255</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_ADD</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_ALPHA</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_DISABLED</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_MULTIPLY</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_SCREEN</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_SUBTRACT</Name>
+    <Value>0</Value>
+</Widget>

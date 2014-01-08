@@ -1,0 +1,15 @@
+<Map>
+    <Bangs></Bangs>
+    <Switches></Switches>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>Dark Color</WidgetName>
+                <WidgetID>22</WidgetID>
+                <WidgetCanvasParent>RANDOM DIGITS 2</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>

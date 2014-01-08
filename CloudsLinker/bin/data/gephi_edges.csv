@@ -113,6 +113,7 @@ Aaron - Mini-Artificial Intelligences,Martin - limits of computation
 Aaron - Mini-Artificial Intelligences,Ramsey - independent of any human
 Aaron - Mini-Artificial Intelligences,Ramsey - a hundred million
 Aaron - Mini-Artificial Intelligences,Intro - Computers
+Aaron - Mini-Artificial Intelligences,Joel - Bicycles1
 Aaron - Mini-Artificial Intelligences,Golan - MachineIntelligence
 Aaron - Tailored Stories,Kevin - algo stories 3
 Aaron - Tailored Stories,Kevin - cognition vs computation 1
@@ -381,7 +382,6 @@ Andres - soft systems 1,Nervous_Jesse - organic process
 Andres - soft systems 1,Ramsey - emergence from simple rules
 Andres - soft systems 1,Ramsey - elegant system
 Andres - soft systems 1,Vera - Playing with a system
-Andres - soft systems 2,Bruce - Age of the universe, really weird
 Andres - soft systems 2,Casey - Scale 1
 Andres - soft systems 2,Fernanda - seeing patterns 1
 Andres - soft systems 2,Fernanda - defense of complexity 2
@@ -953,7 +953,6 @@ Bruce - beauty of math,Jen - Math simulating reality
 Bruce - beauty of math,Kevin - invented as opposed to discovered 1
 Bruce - beauty of math,Kevin - invented as opposed to discovered 2
 Bruce - beauty of math,Martin - language and infinity
-Bruce - beauty of code 4,Greg - Creative Coder
 Bruce - beauty of code 4,Higa - thick wall
 Bruce - beauty of code 4,Karsten - 256 bytes part 1
 Bruce - beauty of code 5,Greg - Creative Coder
@@ -966,11 +965,13 @@ Bruce - beauty of code 5,Shiffman - offers me a way to think
 Bruce - Parametric vs Generative,Binx - hybridity
 Bruce - Parametric vs Generative,Binx - Background
 Bruce - Parametric vs Generative,Binx - there was no degree
-Bruce - Parametric vs Generative,Casey - Borrowing from culture
-Bruce - Parametric vs Generative,Golan - hybridity
+Bruce - Parametric vs Generative,Casey - Design by numbers to processing
 Bruce - Parametric vs Generative,Golan - hybridity2
 Bruce - Parametric vs Generative,Maeda - Artist coders coder artists
+Bruce - Parametric vs Generative,Marius - Continuous process of exploration
 Bruce - Parametric vs Generative,Marius - jumping from medium to medium
+Bruce - Parametric vs Generative,Paola - designer of the future
+Bruce - Parametric vs Generative,Theo - generative and pre-rendered
 Bruce - Digital fabrication,Nervous_Jessica - Design process 2
 Bruce - Digital fabrication,Nervous_Jessica - Design process
 Bruce - Digital fabrication,LIA - 3DTchotchkes
@@ -996,7 +997,6 @@ Bruce - military,Ramsey - dystopia
 Bruce - military,Ramsey - Google glass
 Bruce - military,Ramsey - legos 3
 Bruce - military,Regine - dark future
-Bruce - Don't care about design,Casey - Design by numbers to processing
 Bruce - Don't care about design,Fernanda - beautiful evidence 2
 Bruce - Don't care about design,Fernanda - aesthetics as communication
 Bruce - Don't care about design,Golan - easy beauty
@@ -1011,11 +1011,9 @@ Bruce - Don't care about design,Paola - beauty in exile
 Bruce - Don't care about design,Paola - Paola's Republic
 Bruce - Don't care about design,Regine - Boring beauty
 Bruce - Don't care about design,Regine - ineffectual art
-Bruce - Don't care about design,Shiffman - Carl Sims
-Bruce - Age of the universe, really weird,Andres - soft systems 2
 Bruce - Age of the universe, really weird,Joel - scale of universe
 Bruce - Age of the universe, really weird,Martin - birds eye view
-Bruce - Age of the universe, really weird,Martin - starry night
+Bruce - Age of the universe, really weird,Patricio - Building Universes 2
 Bruce - Age of the universe, really weird,Ramsey - Conway 2
 Bruce - Age of the universe, really weird,Ramsey - emergence from simple rules
 Bruce - Age of the universe, really weird,Ramsey - New Kind of Science
@@ -1024,7 +1022,6 @@ Bruce - Age of the universe, really weird,Joel - scaleofUniverse
 Bruce - Age of the universe, really weird,LIA - Circle1
 Bruce - Fax machine,Casey - old media
 Bruce - Fax machine,Casey - learning from precursors
-Bruce - Fax machine,Golan - raytraced spheres
 Bruce - Fax machine,Higa - not sharing its a backup
 Bruce - Fax machine,JTNimoy - based on human mind
 Bruce - Fax machine,Karsten - new media
@@ -1140,8 +1137,6 @@ Bruce - Augmented Ubiquity,Regine - teleportation
 Bruce - Augmented Ubiquity,Regine - future camera
 Bruce - Augmented Ubiquity,Regine - elitist and their gadgets
 Bruce - Augmented Ubiquity,Shantell - group improvisation
-Bruce - Hand dryer,Kevin - area code 1
-Bruce - Hand dryer,Kevin - Area code 2
 Bruce - Hand dryer,Lauren - Sensors
 Bruce - Hand dryer,Lauren - wearables 1
 Bruce - Hand dryer,Lauren - wearables 2
@@ -1410,8 +1405,6 @@ Bruce - Computer art takes flight,Karsten - new media
 Bruce - Computer art takes flight,Karsten - atari emulation
 Bruce - Computer art takes flight,Maeda - do not resuscitate
 Bruce - Computer art takes flight,Maeda - New media
-Bruce - Computer art takes flight,Maeda - old and new
-Bruce - Computer art takes flight,Shiffman - what do you archive?
 Bruce - Computer art takes flight,Theo - eyebeam R&D
 Casey - beginnings,Golan - 
 Casey - beginnings,Golan - MIT
@@ -1448,7 +1441,6 @@ Casey - tangle,Paola - Thinking by doing
 Casey - tangle,Shiffman - offers me a way to think
 Casey - tangle,Zach - drawing with Tayoon
 Casey - Borrowing from culture,Binx - Background
-Casey - Borrowing from culture,Bruce - Parametric vs Generative
 Casey - Borrowing from culture,Golan - eno
 Casey - Borrowing from culture,Golan - hybridity
 Casey - Borrowing from culture,Golan - hybridity2
@@ -1528,7 +1520,7 @@ Casey - Birth of processing,Maeda - sharing for collective advancement
 Casey - Birth of processing,Patricio - Rethinking education systems
 Casey - Birth of processing,Ramsey - designing languages
 Casey - Birth of processing,Shiffman - advanced environment
-Casey - Design by numbers to processing,Bruce - Don't care about design
+Casey - Design by numbers to processing,Bruce - Parametric vs Generative
 Casey - Design by numbers to processing,Karsten - Educational tools
 Casey - Design by numbers to processing,Kyle_CH - history of computational art
 Casey - Design by numbers to processing,Shiffman - advanced environment
@@ -1804,6 +1796,7 @@ Casey - Computer as collaborator,Julian - Shapes the way we think
 Casey - Computer as collaborator,Marius - Machines change the way we see
 Casey - Computer as collaborator,Patricio - Discovering Mathematical Reality
 Casey - Computer as collaborator,Ramsey - elegant system
+Casey - Computer as collaborator,Joel - Bicycles1
 Casey - What is emergence?,Marcus - emergence
 Casey - What is emergence?,Marcus - Sims
 Casey - What is emergence?,Nervous_Jessica - biocomputer
@@ -2415,7 +2408,6 @@ Golan - listening post,Maeda - people are best communicators
 Golan - hybridity,Binx - hybridity
 Golan - hybridity,Binx - Background
 Golan - hybridity,Binx - there was no degree
-Golan - hybridity,Bruce - Parametric vs Generative
 Golan - hybridity,Casey - Borrowing from culture
 Golan - hybridity,Maeda - Artist coders coder artists
 Golan - hybridity,Marius - jumping from medium to medium
@@ -2637,7 +2629,6 @@ Golan - easy beauty,Regine - aesthetic experience
 Golan - easy beauty,Shiffman - Carl Sims
 Golan - easy beauty,Zach - more poetry, less demo
 Golan - raytraced spheres,Bruce - It's an old thing
-Golan - raytraced spheres,Bruce - Fax machine
 Golan - raytraced spheres,Bruce - Fractal graphics
 Golan - raytraced spheres,Bruce - 7 year lifespan of novelty
 Golan - raytraced spheres,Bruce - unstable mileau of media art
@@ -2706,6 +2697,7 @@ Greg - Doug Engelbart part 1,Kevin - cognition vs computation 1
 Greg - Doug Engelbart part 1,Marius - Machines change the way we see
 Greg - Doug Engelbart part 1,Philip - its a tool
 Greg - Doug Engelbart part 1,Ramsey - google's business model 2
+Greg - Doug Engelbart part 1,Joel - Bicycles1
 Greg - human augmentation,Aaron - Mini-Artificial Intelligences
 Greg - human augmentation,Bruce - machines don't think 1
 Greg - human augmentation,Bruce - machines don't think 2
@@ -2724,6 +2716,7 @@ Greg - human augmentation,Kevin - algo culture 4
 Greg - human augmentation,Marius - Machines change the way we see
 Greg - human augmentation,Philip - its a tool
 Greg - human augmentation,Ramsey - cloud 1
+Greg - human augmentation,Joel - Bicycles1
 Greg - human augmentation,Golan - MachineIntelligence
 Greg - AI 1,Binx - technoutopian
 Greg - AI 1,Bruce - Anthropomorphism
@@ -2789,7 +2782,6 @@ Greg - engage with research,Kyle_MC - Transparent tech 2
 Greg - engage with research,Ramsey - dystopia
 Greg - Sharpening spears,Julia - program or be programmed
 Greg - Sharpening spears,Kyle_MC - Transparent tech 2
-Greg - Creative Coder,Bruce - beauty of code 4
 Greg - Creative Coder,Bruce - beauty of code 5
 Greg - Creative Coder,Casey - sketching with code
 Greg - Creative Coder,Higa - create a system 2
@@ -3148,6 +3140,7 @@ Higa - sound and video,LIA - audiovisualization
 Higa - simplicity of self made tools,Casey - Birth of processing
 Higa - simplicity of self made tools,Martin - useful only
 Higa - simplicity of self made tools,Intro - LogicOfPixels
+Higa - simplicity of self made tools,Joel - Bicycles1
 Higa - beautiful-useful-interesting,Bruce - Don't care about design
 Higa - understanding pointers,Jen - struggle with programming
 Higa - understanding pointers,Martin - verbal programming debate
@@ -5058,6 +5051,7 @@ Julian - change the way we see tech,Ramsey - google's business model 2
 Julian - change the way we see tech,Ramsey - legos 3
 Julian - change the way we see tech,Regine - dark future
 Julian - change the way we see tech,Regine - not everyone wants that
+Julian - change the way we see tech,Joel - Bicycles1
 Julian - change the way we see tech,LIA - TinyButtons1
 Julian - what's inside this thing,Bruce - military
 Julian - what's inside this thing,Javier - Data ownership
@@ -5131,6 +5125,7 @@ Julian - Shapes the way we think,Joel - Bicycles for the Mind
 Julian - Shapes the way we think,Kevin - algo culture 2
 Julian - Shapes the way we think,Marius - Machines change the way we see
 Julian - Shapes the way we think,Ramsey - google's business model 2
+Julian - Shapes the way we think,Joel - Bicycles1
 Julian - Transparency grenade,Kyle_MC - People staring at screens 3
 Julian - Transparency grenade,Kyle_MC - People staring at screens 4
 Karolina - motion story,,Jen - telling stories to engage
@@ -5244,6 +5239,7 @@ Karolina - stasis,Philip - all the points can flush
 Karolina - stasis,Shiffman - NOC 3
 Karolina - stasis,Shiffman - Constraints,
 Karolina - Panel discussion,Kyle_MC - the comment thread
+Karolina - making tools2,Joel - Bicycles1
 Karolina - collaboration,Bruce - Textual technologies
 Karolina - collaboration,Jer - spoken word
 Karolina - collaboration,Paola - the tribe
@@ -5330,6 +5326,7 @@ Karsten - parallel processing,Regine - twitter, future
 Karsten - parallel processing,Regine - imagining the future
 Karsten - parallel processing,Sophy - distributed culture
 Karsten - parallel processing,Intro - Computers
+Karsten - parallel processing,Joel - Bicycles1
 Karsten - Educational tools,Casey - Birth of processing
 Karsten - Educational tools,Casey - Design by numbers to processing
 Karsten - Educational tools,Casey - Processing open
@@ -5468,6 +5465,7 @@ Karsten - programming is...,Diederick - hackathon1
 Karsten - programming is...,Intro - Learning
 Karsten - programming is...,Intro - Programming
 Karsten - programming is...,Joel - Amiga500
+Karsten - programming is...,Joel - Bicycles1
 Karsten - solving complex problems,Binx - changing the world
 Karsten - solving complex problems,Fernanda - Policy and data
 Karsten - solving complex problems,Golan - Anxious about the future
@@ -5908,6 +5906,7 @@ Kevin - machines crash,Nervous_Jesse - understanding to control 3
 Kevin - machines crash,Nervous_Jesse - error
 Kevin - machines crash,Ramsey - the curse of 60s tech
 Kevin - machines crash,Ramsey - trapese 2
+Kevin - machines crash,Joel - Bicycles1
 Kevin - autonomous machines crash,Greg - AI 2
 Kevin - autonomous machines crash,JTNimoy - Unplugging
 Kevin - autonomous machines crash,Nervous_Jesse - breaking the system
@@ -6026,6 +6025,7 @@ Kevin - human perception,Patricio - Reality
 Kevin - human perception,Patricio - infinity of projects on google
 Kevin - human perception,Sophy - made of photons
 Kevin - human perception,Damion - ShortCircuit
+Kevin - computer perception,Joel - Bicycles1
 Kevin - reality in the eyes of data,Aaron - infinity
 Kevin - reality in the eyes of data,Elliot_UK - 2D vision in a 3D world
 Kevin - reality in the eyes of data,Fernanda - defense of complexity 1
@@ -6061,7 +6061,6 @@ Kevin - non-mimetic reality,Philip - bits and bytes
 Kevin - non-mimetic reality,Regine - virtual
 Kevin - non-mimetic reality,Shiffman - reality will only get you so far
 Kevin - non-mimetic reality,Intro - VirtualReality
-Kevin - area code 1,Bruce - Hand dryer
 Kevin - area code 1,Bruce - future city 1
 Kevin - area code 1,Bruce - Everted Cyberspace
 Kevin - area code 1,Kyle_CH - coral reefs
@@ -6071,7 +6070,6 @@ Kevin - area code 1,Regine - virtual
 Kevin - area code 1,Elliot - AugementedReality
 Kevin - Area code 2,Aaron - exquisite forest 2
 Kevin - Area code 2,Aaron - the best games are great stories
-Kevin - Area code 2,Bruce - Hand dryer
 Kevin - Area code 2,Bruce - future city 1
 Kevin - Area code 2,Bruce - Everted Cyberspace
 Kevin - Area code 2,Bruce - Fountain pen
@@ -6202,6 +6200,7 @@ Kevin - cognition vs computation 1,Ramsey - elegant system
 Kevin - cognition vs computation 1,Sophy - nanobots
 Kevin - cognition vs computation 1,Theo - crazy researcher
 Kevin - cognition vs computation 1,Vera - Energy Flow2
+Kevin - cognition vs computation 1,Joel - Bicycles1
 Kevin - cognition vs computation 1,LIA - LTree
 Kevin - cognition vs computation 1,Golan - MachineIntelligence
 Kevin - cognition vs computation 1,Golan - WhenComputersSurpass
@@ -6209,17 +6208,20 @@ Kevin - cognition vs computation 2,Aaron - software is a brain
 Kevin - cognition vs computation 2,Lauren - sentiment anaylsis
 Kevin - cognition vs computation 2,Martin - limits of computation
 Kevin - cognition vs computation 2,Ramsey - independent of any human
+Kevin - cognition vs computation 2,Joel - Bicycles1
 Kevin - algo culture 4,Aaron - Mini-Artificial Intelligences
 Kevin - algo culture 4,Greg - human augmentation
 Kevin - algo culture 4,Lauren - sentiment anaylsis
 Kevin - algo culture 4,Regine - doesn't matter as long as it's good
 Kevin - algo culture 4,Theo - favorite projects
 Kevin - algo culture 4,Zach - more poetry, less demo
+Kevin - algo culture 4,Joel - Bicycles1
 Kevin - crash and burn,Elliot_UK - limitation 1
 Kevin - crash and burn,Elliot_UK - limitations 2
 Kevin - crash and burn,Julian - change the way we see tech
 Kevin - crash and burn,Nervous_Jesse - understanding to control 3
 Kevin - crash and burn,Ramsey - the curse of 60s tech
+Kevin - crash and burn,Joel - Bicycles1
 Kyle_CH - history of computational art,Casey - Design by numbers to processing
 Kyle_CH - history of computational art,Greg - Creative Coder
 Kyle_CH - history of computational art,Higa - beginnings
@@ -7493,7 +7495,6 @@ Maeda - New media,Shiffman - what do you archive?
 Maeda - New media,Theo - eyebeam R&D
 Maeda - old and new,Bruce - It's an old thing
 Maeda - old and new,Bruce - Fax machine
-Maeda - old and new,Bruce - Computer art takes flight
 Maeda - old and new,Casey - learning from precursors
 Maeda - old and new,Higa - not sharing its a backup
 Maeda - old and new,Julia - new and interesting
@@ -7798,6 +7799,7 @@ Marius - these things are in my head,Patricio - Imaginative technologies 2
 Marius - these things are in my head,Patricio - Alchemy 1
 Marius - these things are in my head,Patricio - Alchemy 2
 Marius - these things are in my head,LIA - IdeaToCode
+Marius - Continuous process of exploration,Bruce - Parametric vs Generative
 Marius - Continuous process of exploration,Bruce - what gets you out of bed
 Marius - Continuous process of exploration,Bruce - find the inner wellspring
 Marius - Continuous process of exploration,Casey - branching off branching
@@ -7893,6 +7895,7 @@ Marius - Machines change the way we see,JTNimoy - be a robot
 Marius - Machines change the way we see,Julian - Critical engineering
 Marius - Machines change the way we see,Julian - change the way we see tech
 Marius - Machines change the way we see,Julian - Shapes the way we think
+Marius - Machines change the way we see,Joel - Bicycles1
 Marius - Living in a state of newness since age 10,Aaron - curiosity
 Marius - Living in a state of newness since age 10,Bruce - aborted projects
 Marius - Living in a state of newness since age 10,Bruce - New media Wow
@@ -8263,7 +8266,6 @@ Martin - short attention span,Jen - sitting in front of a computer
 Martin - short attention span,Kyle_MC - People staring at screens 1
 Martin - short attention span,Maeda - distraction and focus
 Martin - short attention span,Shantell - simple
-Martin - starry night,Bruce - Age of the universe, really weird
 Martin - starry night,Joel - scale of universe
 Martin - starry night,Karolina - Ocean as metaphor
 Martin - starry night,Joel - scaleofUniverse
@@ -8678,6 +8680,7 @@ Paola - museum collections,Kyle_CH - digital museums
 Paola - museum collections,Kyle_CH - old server farms
 Paola - museum collections,Ramsey - unmaintainable code
 Paola - museum collections,Shiffman - what do you archive?
+Paola - should be useful,Bruce - Parametric vs Generative
 Paola - should be useful,Bruce - Digital fabrication
 Paola - should be useful,Bruce - Don't care about design
 Paola - should be useful,Casey - Scale 1
@@ -8754,6 +8757,7 @@ Paola - Design and science,Jen - prisons
 Paola - Design and science,Karsten - solving complex problems
 Paola - Design and science,Regine - looking forward to problems
 Paola - Design and science,Regine - ineffectual art
+Paola - designer of the future,Bruce - Parametric vs Generative
 Paola - social media quicksand,Jen - sitting in front of a computer
 Paola - social media quicksand,Julia - strength of weak ties
 Paola - social media quicksand,Julia - net friends
@@ -8920,6 +8924,7 @@ Patricio - Building Universes 1,Ramsey - Conway 3
 Patricio - Building Universes 1,Shantell - Kids
 Patricio - Building Universes 1,Theo - Kids interacting
 Patricio - Building Universes 1,Theo - leaving a mark
+Patricio - Building Universes 2,Bruce - Age of the universe, really weird
 Patricio - Building Universes 2,Casey - Developing a microworld
 Patricio - Building Universes 2,Joel - scale of universe
 Patricio - Building Universes 2,Marcus - emergence
@@ -9244,6 +9249,7 @@ Philip - its a tool,Greg - human augmentation
 Philip - its a tool,Greg - object oriented ontology 1
 Philip - its a tool,Greg - Object Oriented Ontology 2
 Philip - its a tool,Joel - Bicycles for the Mind
+Philip - its a tool,Joel - Bicycles1
 Philip - in touch all the time,Aaron - dreaming together
 Philip - in touch all the time,Bruce - Everted Cyberspace
 Philip - in touch all the time,Bruce - relating to history through networks
@@ -9465,6 +9471,7 @@ Ramsey - a hundred million,Philip - first time computation
 Ramsey - a hundred million,Philip - limitations
 Ramsey - a hundred million,Zach - programming 2
 Ramsey - a hundred million,Intro - Computers
+Ramsey - a hundred million,Joel - Bicycles1
 Ramsey - a hundred million,LIA - VisualizeAnIdea
 Ramsey - thinking previously unthinkable thoughts,Joel - Bicycles for the Mind
 Ramsey - thinking previously unthinkable thoughts,Karsten - parallel processing
@@ -9546,6 +9553,7 @@ Ramsey - does nature compute? 1,Kevin - invented as opposed to discovered 1
 Ramsey - does nature compute? 1,Kevin - invented as opposed to discovered 2
 Ramsey - does nature compute? 1,Theo - evolution
 Ramsey - does nature compute? 1,Intro - Computers
+Ramsey - does nature compute? 1,Joel - Bicycles1
 Ramsey - does nature compute? 2,Jen - a different mathematics
 Ramsey - does nature compute? 2,Karsten - parallel processing
 Ramsey - does nature compute? 2,Kevin - computation was invented
@@ -9557,6 +9565,7 @@ Ramsey - does nature compute? 2,Shiffman - programming the universe
 Ramsey - does nature compute? 2,Shiffman - NOC 1
 Ramsey - does nature compute? 2,Shiffman - NOC 2
 Ramsey - does nature compute? 2,Intro - Computers
+Ramsey - does nature compute? 2,Joel - Bicycles1
 Ramsey - does nature compute? 2,LIA - Circle1
 Ramsey - does nature compute? 2,LIA - Circle2
 Ramsey - does nature compute? 2,LIA - MathAnotherLanguage
@@ -9575,6 +9584,7 @@ Ramsey - computation is interpretation of rules,Karsten - parallel processing
 Ramsey - computation is interpretation of rules,Kevin - invented as opposed to discovered 1
 Ramsey - computation is interpretation of rules,Kevin - invented as opposed to discovered 2
 Ramsey - computation is interpretation of rules,Intro - Computers
+Ramsey - computation is interpretation of rules,Joel - Bicycles1
 Ramsey - DNA and code,Andres - protein folding 1
 Ramsey - DNA and code,Andres - protein folding 2
 Ramsey - DNA and code,Andres - DNA computing 1
@@ -10022,6 +10032,7 @@ Regine - new media ghetto,Binx - art for money
 Regine - new media ghetto,Theo - new media and old media,
 Regine - new media ghetto,Theo - art world
 Regine - new media ghetto,Zach - less demo
+Regine - new media ghetto,Damion - FrustratedArtists
 Regine - new media ghetto,LIA - Art2
 Regine - doesn't matter as long as it's good,Julia - medium of our time
 Regine - doesn't matter as long as it's good,Kevin - Tools of perception
@@ -10595,7 +10606,6 @@ Shiffman - genetics short 2,Ramsey - Conway 2
 Shiffman - genetics short 2,Ramsey - Conway 3
 Shiffman - genetics short 2,Ramsey - emergence from simple rules
 Shiffman - genetics short 2,Theo - evolution
-Shiffman - Carl Sims,Bruce - Don't care about design
 Shiffman - Carl Sims,Golan - easy beauty
 Shiffman - Carl Sims,Julia - aesthetic value
 Shiffman - Carl Sims,Marius - aesthetic experience
@@ -10709,7 +10719,6 @@ Shiffman - Desire for order,Nervous_Jesse - theoretical
 Shiffman - what do you archive?,Bruce - It's an old thing
 Shiffman - what do you archive?,Bruce - Dead sea scrolls
 Shiffman - what do you archive?,Bruce - Fax machine
-Shiffman - what do you archive?,Bruce - Computer art takes flight
 Shiffman - what do you archive?,Casey - old media
 Shiffman - what do you archive?,Casey - learning from precursors
 Shiffman - what do you archive?,Golan - keeping you stuff working
@@ -10990,6 +10999,7 @@ Theo - development feedback,,Maeda - Processing toolkit
 Theo - development feedback,,Diederick - openFrameworks
 Theo - favorite projects,Bruce - Simulation Replication Recursion
 Theo - favorite projects,Kevin - algo culture 4
+Theo - generative and pre-rendered,Bruce - Parametric vs Generative
 Theo - generative and pre-rendered,Marius - Continuous process of exploration
 Theo - new media and old media,,Maeda - old and new
 Theo - new media and old media,,Regine - new media ghetto
@@ -11525,8 +11535,10 @@ Damion - FrustratedArtists,Greg - Creative Coder
 Damion - FrustratedArtists,Higa - create a system
 Damion - FrustratedArtists,Higa - create a system 2
 Damion - FrustratedArtists,Kyle_MC - code as a theme 1
+Damion - FrustratedArtists,Regine - new media ghetto
 Damion - FrustratedArtists,Zach - less demo
 Damion - FrustratedArtists,Zach - more poetry, less demo
+Damion - FrustratedArtists,LIA - Art2
 Damion - HumanChemicalMachine,Elliot_UK - 2D vision in a 3D world
 Damion - HumanChemicalMachine,Fernanda - seeing patterns 2
 Damion - HumanChemicalMachine,JTNimoy - be a robot
@@ -11716,6 +11728,7 @@ Intro - Computers,Ramsey - a hundred million
 Intro - Computers,Ramsey - does nature compute? 1
 Intro - Computers,Ramsey - does nature compute? 2
 Intro - Computers,Ramsey - computation is interpretation of rules
+Intro - Computers,Joel - Bicycles1
 Intro - Interfaces,Bruce - Hand dryer
 Intro - Interfaces,Greg - camera getting cheaper
 Intro - Interfaces,Greg - camera scaling up
@@ -11827,14 +11840,37 @@ Joel - Amiga500,Shiffman - Maybe I'd like that
 Joel - Amiga500,Shiffman - Magnets
 Joel - Amiga500,Theo - learning
 Joel - Amiga500,Zach - action script
+Joel - Bicycles1,Aaron - Mini-Artificial Intelligences
 Joel - Bicycles1,Bruce - beauty of code 1
+Joel - Bicycles1,Casey - Computer as collaborator
+Joel - Bicycles1,Greg - Doug Engelbart part 1
+Joel - Bicycles1,Greg - human augmentation
+Joel - Bicycles1,Higa - simplicity of self made tools
+Joel - Bicycles1,Julian - change the way we see tech
+Joel - Bicycles1,Julian - Shapes the way we think
+Joel - Bicycles1,Karolina - making tools2
+Joel - Bicycles1,Karsten - parallel processing
+Joel - Bicycles1,Karsten - programming is...
 Joel - Bicycles1,Kevin - invented as opposed to discovered 1
 Joel - Bicycles1,Kevin - invented as opposed to discovered 2
+Joel - Bicycles1,Kevin - machines crash
+Joel - Bicycles1,Kevin - computer perception
+Joel - Bicycles1,Kevin - cognition vs computation 1
+Joel - Bicycles1,Kevin - cognition vs computation 2
+Joel - Bicycles1,Kevin - algo culture 4
+Joel - Bicycles1,Kevin - crash and burn
+Joel - Bicycles1,Marius - Machines change the way we see
 Joel - Bicycles1,Martin - limits of computation
 Joel - Bicycles1,Nervous_Jesse - Time in the universe
 Joel - Bicycles1,Patricio - Imaginative technologies 1
 Joel - Bicycles1,Patricio - Imaginative technologies 2
+Joel - Bicycles1,Philip - its a tool
+Joel - Bicycles1,Ramsey - a hundred million
+Joel - Bicycles1,Ramsey - does nature compute? 1
+Joel - Bicycles1,Ramsey - does nature compute? 2
+Joel - Bicycles1,Ramsey - computation is interpretation of rules
 Joel - Bicycles1,Shiffman - offers me a way to think
+Joel - Bicycles1,Intro - Computers
 Joel - Bicycles1,Intro - LogicOfPixels
 Joel - Bicycles1,LIA - IdeaToCode
 Joel - Bicycles2,Maeda - own the tool
@@ -11908,6 +11944,7 @@ LIA - Art2,Bruce - Design vs Art
 LIA - Art2,Bruce - Criticism
 LIA - Art2,Regine - new media ghetto
 LIA - Art2,Regine - more concerned with socially engaged work
+LIA - Art2,Damion - FrustratedArtists
 LIA - Circle1,Bruce - Age of the universe, really weird
 LIA - Circle1,Joel - scale of universe
 LIA - Circle1,Martin - starry night
