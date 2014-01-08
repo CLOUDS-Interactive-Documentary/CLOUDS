@@ -18,6 +18,12 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 : activeThresholdY(activeThresholdY)
 , activeThresholdZ(activeThresholdZ)
 , primaryIdx(-1)
+, jointLerpPct(0.3f)
+, posResetLerpPct(0.1f)
+, posSetLerpPct(0.01f)
+, posSetInstantThreshold(10)
+, posOutOfBoundsStart(0)
+, posOutOfBoundsThreshold(2000)
 {
 
 }
@@ -74,56 +80,54 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 bodies[idx]->idx = idx;
             }
             
-            float loip = 0.3f;
-            
             // update the head joint
             bodies[idx]->headJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->headJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
             bodies[idx]->headJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
                                                                      m.getArgAsFloat(i++), 
-                                                                     m.getArgAsFloat(i++)), loip);
+                                                                     m.getArgAsFloat(i++)), jointLerpPct);
             
             // update the neck joint
             bodies[idx]->neckJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->neckJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
             bodies[idx]->neckJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                     m.getArgAsFloat(i++), 
-                                                     m.getArgAsFloat(i++)), loip);
+                                                                     m.getArgAsFloat(i++),
+                                                                     m.getArgAsFloat(i++)), jointLerpPct);
             
             // update the spine shoulder joint
             bodies[idx]->spineShoulderJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->spineShoulderJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
             bodies[idx]->spineShoulderJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                              m.getArgAsFloat(i++), 
-                                                              m.getArgAsFloat(i++)), loip);
+                                                                              m.getArgAsFloat(i++),
+                                                                              m.getArgAsFloat(i++)), jointLerpPct);
             
             // update the spine mid joint
             bodies[idx]->spineMidJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->spineMidJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
             bodies[idx]->spineMidJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                         m.getArgAsFloat(i++), 
-                                                         m.getArgAsFloat(i++)), loip);
+                                                                         m.getArgAsFloat(i++),
+                                                                         m.getArgAsFloat(i++)), jointLerpPct);
             
             // update the spine base joint
             bodies[idx]->spineBaseJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->spineBaseJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
             bodies[idx]->spineBaseJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                          m.getArgAsFloat(i++), 
-                                                          m.getArgAsFloat(i++)), loip);
+                                                                          m.getArgAsFloat(i++),
+                                                                          m.getArgAsFloat(i++)), jointLerpPct);
             
             // update the left shoulder joint
             bodies[idx]->shoulderLeftJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->shoulderLeftJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
             bodies[idx]->shoulderLeftJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                             m.getArgAsFloat(i++), 
-                                                             m.getArgAsFloat(i++)), loip);
+                                                                             m.getArgAsFloat(i++),
+                                                                             m.getArgAsFloat(i++)), jointLerpPct);
             
             // update the right shoulder joint
             bodies[idx]->shoulderRightJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->shoulderRightJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
             bodies[idx]->shoulderRightJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                              m.getArgAsFloat(i++), 
-                                                              m.getArgAsFloat(i++)), loip);
+                                                                              m.getArgAsFloat(i++),
+                                                                              m.getArgAsFloat(i++)), jointLerpPct);
             
             // calculate the head to spine base length for mapping height
             float mappingWidth = MAX(bodies[idx]->spineShoulderJoint.inputPosition.distance(bodies[idx]->shoulderLeftJoint.inputPosition), 
@@ -160,7 +164,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 hands[handIdx]->handJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
                 hands[handIdx]->handJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
                                                                             m.getArgAsFloat(i++), 
-                                                                            m.getArgAsFloat(i++)), loip);
+                                                                            m.getArgAsFloat(i++)), jointLerpPct);
                 
                 // set the custom origin and map the hand coords
                 ofVec3f origin = bodies[idx]->neckJoint.inputPosition;
@@ -336,10 +340,23 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
     
     // set the current position to the designated hand
     if (primaryIdx == -1) {
-        currentPosition.set(ofGetWidth() * 0.5, ofGetHeight() * 0.5);
+        if (posOutOfBoundsStart == 0) {
+            posOutOfBoundsStart = ofGetElapsedTimeMillis();
+        }
+        if (ofGetElapsedTimeMillis() - posOutOfBoundsStart > posOutOfBoundsThreshold) {
+            // waited long enough, start heading back
+            currentPosition.interpolate(ofVec3f(ofGetWidth() * 0.5, ofGetHeight() * 0.5), posResetLerpPct);
+        }
+        // else: keep waiting for it to come back
     }
     else {
-        currentPosition.set(hands[primaryIdx]->handJoint.screenPosition);
+        posOutOfBoundsStart = 0;
+        if (currentPosition.distance(hands[primaryIdx]->handJoint.screenPosition) <= posSetInstantThreshold) {
+            currentPosition.set(hands[primaryIdx]->handJoint.screenPosition);
+        }
+        else {
+            currentPosition.interpolate(hands[primaryIdx]->handJoint.screenPosition, posSetLerpPct);
+        }
     }
 }
 

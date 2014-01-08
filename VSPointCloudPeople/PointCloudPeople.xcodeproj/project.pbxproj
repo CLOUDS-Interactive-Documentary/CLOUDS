@@ -77,6 +77,8 @@
 		4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AA17512E45003001E2 /* ofxSwarmBehavior.cpp */; };
 		4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
+		AEB14D01187DB39B00C5284D /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEB14D00187DB39B00C5284D /* ofxSystemTextbox.mm */; };
+		AEB14D02187DB39B00C5284D /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEB14D00187DB39B00C5284D /* ofxSystemTextbox.mm */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -541,6 +543,8 @@
 		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		AEB14CFF187DB39B00C5284D /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		AEB14D00187DB39B00C5284D /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1734,6 +1738,8 @@
 				E7DD846717DBC0A500AFB2DD /* CloudsVisualSystem.cpp */,
 				E7DD846817DBC0A500AFB2DD /* CloudsVisualSystem.h */,
 				E7DD846917DBC0A500AFB2DD /* ofxLight.h */,
+				AEB14CFF187DB39B00C5284D /* ofxSystemTextbox.h */,
+				AEB14D00187DB39B00C5284D /* ofxSystemTextbox.mm */,
 				E7DD846A17DBC0A500AFB2DD /* README.md */,
 			);
 			path = VisualSystemsLibrary;
@@ -1785,6 +1791,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "PointCloudPeople" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1955,6 +1963,7 @@
 				E703D1D3185E812500547738 /* CloudsRun.cpp in Sources */,
 				E703D1D5185E812500547738 /* CloudsSpeaker.cpp in Sources */,
 				E703D1FB185E81D400547738 /* ofxGameCamera.cpp in Sources */,
+				AEB14D01187DB39B00C5284D /* ofxSystemTextbox.mm in Sources */,
 				E703D219185E81ED00547738 /* Delaunay.cpp in Sources */,
 				E703D21B185E81ED00547738 /* ofxDelaunay.cpp in Sources */,
 				E700BC411876A818003A8167 /* CloudsTransitionController.cpp in Sources */,
@@ -2056,6 +2065,7 @@
 				E703D0B4185E7EB400547738 /* CloudsInputMouse.cpp in Sources */,
 				E703D0EC185E7F2600547738 /* ofxAVFVideoPlayer.mm in Sources */,
 				E703D0EE185E7F2600547738 /* ofxAVFVideoRenderer.m in Sources */,
+				AEB14D02187DB39B00C5284D /* ofxSystemTextbox.mm in Sources */,
 				E703D18C185E809000547738 /* ofxFTGLFont.cpp in Sources */,
 				E703D18E185E809000547738 /* ofxFTGLSimpleLayout.cpp in Sources */,
 				E703D1C8185E812500547738 /* CloudsClip.cpp in Sources */,

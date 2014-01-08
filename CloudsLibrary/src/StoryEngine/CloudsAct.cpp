@@ -338,7 +338,6 @@ vector<CloudsVisualSystemPreset>& CloudsAct::getAllVisualSystemPresets(){
 }
 
 void CloudsAct::drawDebug(){
-	
     timeline.setOffset(ofVec2f(0,ofGetHeight()*.5));
     timeline.draw();
 }
@@ -448,8 +447,6 @@ float CloudsAct::addVisualSystem(CloudsVisualSystemPreset& preset, float startTi
     visualSystemIndeces[preset.getID()] = visualSystems.size();
     visualSystems.push_back(preset);
     
-    //cout<<"added " <<preset.getID()<< " to VS map "<<endl;
-    
 	float outroLeadTime = 1.0;
 	float introLeadTime = 1.0;
 	ActTimeItem item;
@@ -458,7 +455,6 @@ float CloudsAct::addVisualSystem(CloudsVisualSystemPreset& preset, float startTi
     item.key = preset.getID();
     item.startTime = startTime;
     item.endTime = endTime;
-//    item.introEndTime = vsStartTime + preset.introDuration;
 	item.introEndTime = startTime + introLeadTime;
     item.outroStartTime = item.endTime - outroLeadTime;
     
