@@ -45,6 +45,8 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
     customGui->addButton("clean", &bCleanGrayscott);
     customGui->addToggle("Draw", &bDoDraw);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    customGui->addSlider("Blur Radius", 0, 5., &blurRadius);
+	customGui->addSlider("Dry Rate", .000, .01, &dryRate);
     customGui->addLabel("Colors");
     customGui->addMinimalSlider("High R", 0, 1, &mHighColor.r, length, dim)->setShowValue(false);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
@@ -113,14 +115,22 @@ void CloudsVisualSystemTerrain::selfSetup()
     patternShader.load("", getVisualSystemDataPath()+"shaders/pattern.fs");
     grayscottShader.load("", getVisualSystemDataPath()+"shaders/grayscott.fs");
     colorShader.load(getVisualSystemDataPath()+"shaders/color.vs", getVisualSystemDataPath()+"shaders/color.fs");
-    circleShader.load("", getVisualSystemDataPath()+"shaders/circle.fs");
+    circleShader.load(getVisualSystemDataPath()+"shaders/circle.vs", getVisualSystemDataPath()+"shaders/circle.fs");
+    vBlurShader.load(getVisualSystemDataPath()+"shaders/vblur.vs", getVisualSystemDataPath()+"shaders/blur.fs");
+    hBlurShader.load(getVisualSystemDataPath()+"shaders/hblur.vs", getVisualSystemDataPath()+"shaders/blur.fs");
 
+    
     patternScale = 50.0;
     
     stripeAlpha = 1.0;
     hexAlpha = 1.0;
     dotsAlpha = 1.0;
     mTexMix = 0.;
+    
+    blurRadius = 1.;
+	dryRate = .001;
+    
+    mDepositScale = 40.f;
     
     noiseSpeed = 0.0;
     
@@ -136,14 +146,47 @@ void CloudsVisualSystemTerrain::selfSetup()
     mBalance = .5f;
     mouse = ofVec2f(0,0);
     
-    canvas.allocate(200, 200, OF_IMAGE_COLOR);
-    for(int x = 0;x<canvas.getWidth();x++){
-        for(int y=0; y<canvas.getHeight();y++){
-            canvas.setColor(x, y, ofColor(0,0,0));
-        }
-    }
+    
+//    for(int x = 0;x<canvas.getWidth();x++){
+//        for(int y=0; y<canvas.getHeight();y++){
+//            canvas.setColor(x, y, ofColor(0,0,0));
+//        }
+//    }
+//    
+    resizeBrush();
+    
+    blurMesh.clear();
+	blurMesh.addVertex(ofVec3f(0,0,0));
+	blurMesh.addVertex(ofVec3f(200,0,0));
+	blurMesh.addVertex(ofVec3f(0,200,0));
+	blurMesh.addVertex(ofVec3f(200,200,0));
+	
+	blurMesh.addTexCoord(ofVec2f(0,0));
+	blurMesh.addTexCoord(ofVec2f(200,0));
+	blurMesh.addTexCoord(ofVec2f(0,200));
+	blurMesh.addTexCoord(ofVec2f(200,200));
+	
+	blurMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+    
 }
 
+void CloudsVisualSystemTerrain::resizeBrush(){
+    
+    brushMesh.clear();
+	brushMesh.addVertex(ofVec3f(0,0,0));
+	brushMesh.addVertex(ofVec3f(mDepositScale,0,0));
+	brushMesh.addVertex(ofVec3f(0,mDepositScale,0));
+	brushMesh.addVertex(ofVec3f(mDepositScale,mDepositScale,0));
+	
+	brushMesh.addTexCoord(ofVec2f(-1,-1));
+	brushMesh.addTexCoord(ofVec2f(1,-1));
+	brushMesh.addTexCoord(ofVec2f(-1,1));
+	brushMesh.addTexCoord(ofVec2f(1,1));
+	
+	brushMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+	
+	mCurDepositScale = mDepositScale;
+}
 
 void CloudsVisualSystemTerrain::selfBegin()
 {
@@ -176,25 +219,10 @@ void CloudsVisualSystemTerrain::guiSystemEvent(ofxUIEventArgs &e)
         setResolution(size, size);
     }
     
+    if(name == "Brush Size") resizeBrush();
+    
     bChange = true;
     
-     if(name == "fogSaturation" || name == "fogHue" || name == "fogBrightness" )
-	{
-		fc.setHsb(fogHue, fogSaturation, fogBrightness);
-		
-		fogGui->getWidget("FOG_Color")->setColorFill( fc);
-		fogGui->getWidget("fogHue")->setColorFill( fc);
-		fogGui->getWidget("fogSaturation")->setColorFill(fc);
-		fogGui->getWidget("fogBrightness")->setColorFill(fc);
-		
-        //		fogGui->setColorBack( fogColor );
-		
-		bgHue = fogHue;
-		bgSat = fogSaturation;
-		bgBri = fogBrightness;
-        
-	}
-
     
 }
 
@@ -213,8 +241,15 @@ void CloudsVisualSystemTerrain::setResolution( int _width, int _height ){
         grayscottFbo[i].end();
     }
     
+    canvasSrc.allocate(width, height);
+    canvasSrc.begin();
+    ofClear(0, 0, 0);
+    canvasSrc.end();
     
-
+    canvasDest.allocate(width, height);
+    canvasDest.begin();
+    ofClear(0, 0, 0);
+    canvasDest.end();
 }
 
 void CloudsVisualSystemTerrain::selfKeyPressed(ofKeyEventArgs & args){
@@ -233,6 +268,8 @@ void CloudsVisualSystemTerrain::selfKeyPressed(ofKeyEventArgs & args){
 
 void CloudsVisualSystemTerrain::selfUpdate()
 {
+    
+    ofFbo& canvas = (ofGetFrameNum()%2==0) ? canvasSrc : canvasDest;
     
     if ( bChange || noiseSpeed > 0.0){
     
@@ -356,10 +393,50 @@ void CloudsVisualSystemTerrain::selfUpdate()
 //        }
 //    }
 //    canvas.update();
+        canvasDest.begin();
+        
+        ofDisableAlphaBlending();
+        ofClear(0, 0, 0, 0);
         
         
+        hBlurShader.begin();
+        hBlurShader.setUniformTexture("s_texture", canvasSrc.getTextureReference(), 1);
+        hBlurShader.setUniform2f("dimensions", canvasDest.getWidth(), canvasDest.getHeight());
+        hBlurShader.setUniform1f("dryRate", dryRate);
+        hBlurShader.setUniform1f("blurRadius", blurRadius);
+        blurMesh.draw();
+        hBlurShader.end();
         
+        canvasDest.end();
         
+        swap(canvasSrc, canvasDest);
+        
+        canvasDest.begin();
+        
+        ofDisableAlphaBlending();
+        ofClear(0, 0, 0, 0);
+        
+        vBlurShader.begin();
+        vBlurShader.setUniformTexture("s_texture", canvasSrc.getTextureReference(), 1);
+        vBlurShader.setUniform2f("dimensions", canvasDest.getWidth(), canvasDest.getHeight());
+        vBlurShader.setUniform1f("dryRate", dryRate);
+        vBlurShader.setUniform1f("blurRadius", blurRadius);
+        blurMesh.draw();
+        vBlurShader.end();
+        
+        ofEnableAlphaBlending();
+
+        circleShader.begin();
+        ofVec2f centerTranslate = ofVec2f(mDepositScale*.5,mDepositScale*.5);
+        ofPushMatrix();
+        ofTranslate(ofVec2f(ofMap(mouse.x,0,ofGetWidth(), 0,canvasDest.getWidth()),ofMap(mouse.y,0,ofGetHeight(), 0,canvasDest.getHeight()))-centerTranslate);
+        brushMesh.draw();
+        ofPopMatrix();
+        circleShader.end();
+        canvasDest.end();
+        ofDisableAlphaBlending();
+        
+        swap(canvasSrc, canvasDest);
     }
     
 //    fc.setHue(fogHue);
@@ -466,6 +543,8 @@ void CloudsVisualSystemTerrain::makeTerrain( ofTexture &_heightMap ){
 
 void CloudsVisualSystemTerrain::selfDraw()
 {
+    ofFbo& canvas = (ofGetFrameNum()%2==0) ? canvasSrc : canvasDest;
+    
     mat->begin();
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_NORMALIZE);
