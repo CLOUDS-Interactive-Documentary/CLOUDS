@@ -27,12 +27,14 @@ void CloudsVisualSystemRandomDigits2::selfSetupGui(){
     customGui->addIntSlider("X Spacing", 1, 200, &xSpacing);
     customGui->addIntSlider("Y Spacing", 1, 200, &ySpacing);
     customGui->addIntSlider("Z Spacing", 1, 1000, &zSpacing);
+    
     customGui->addSlider("X Noise", 0, 200, &xNoise);
     customGui->addSlider("Y Noise", 0, 200, &yNoise);
     customGui->addSlider("Z Noise", 0, 500, &zNoise);
     customGui->addButton("Update Number Placing", true);
     customGui->addSlider("Dark Color", 0, 2, &dark);
     customGui->addSlider("Light Color", 0, 2, &light);
+    customGui->addSlider("FOG DENSITY", 0.0f, 0.1f, &fogDensity);
     
      ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemRandomDigits2::selfGuiEvent);
      guis.push_back(customGui);
@@ -84,6 +86,7 @@ void CloudsVisualSystemRandomDigits2::selfSetup()
     zNoise = 0;
     dark = 0.6;
     light = 2;
+    fogDensity = 0.025f;
 }
 
 
@@ -135,6 +138,17 @@ void CloudsVisualSystemRandomDigits2::selfUpdate()
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemRandomDigits2::selfDraw(){
+    
+    glPushAttrib(GL_FOG_BIT);
+    
+    glEnable(GL_FOG);
+	glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
+	glFogi(GL_FOG_MODE, GL_EXP);
+	glFogf(GL_FOG_DENSITY, powf(fogDensity, 2));
+    GLfloat fogColor[4] = { bgColor.r / 255.,bgColor.g / 255.,bgColor.b / 255., 1.0 };
+    glFogfv(GL_FOG_COLOR, fogColor);
+    glEnable(GL_DEPTH_TEST);
+    ofEnableAlphaBlending();
     
     ofPushStyle();
     cam.begin();
