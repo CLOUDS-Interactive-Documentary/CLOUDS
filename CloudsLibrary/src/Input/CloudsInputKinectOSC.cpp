@@ -19,6 +19,11 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , activeThresholdZ(activeThresholdZ)
 , primaryIdx(-1)
 , jointLerpPct(0.3f)
+, posResetLerpPct(0.1f)
+, posSetLerpPct(0.01f)
+, posSetInstantThreshold(10)
+, posOutOfBoundsStart(0)
+, posOutOfBoundsThreshold(2000)
 {
 
 }
@@ -335,10 +340,23 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
     
     // set the current position to the designated hand
     if (primaryIdx == -1) {
-        currentPosition.set(ofGetWidth() * 0.5, ofGetHeight() * 0.5);
+        if (posOutOfBoundsStart == 0) {
+            posOutOfBoundsStart = ofGetElapsedTimeMillis();
+        }
+        if (ofGetElapsedTimeMillis() - posOutOfBoundsStart > posOutOfBoundsThreshold) {
+            // waited long enough, start heading back
+            currentPosition.interpolate(ofVec3f(ofGetWidth() * 0.5, ofGetHeight() * 0.5), posResetLerpPct);
+        }
+        // else: keep waiting for it to come back
     }
     else {
-        currentPosition.set(hands[primaryIdx]->handJoint.screenPosition);
+        posOutOfBoundsStart = 0;
+        if (currentPosition.distance(hands[primaryIdx]->handJoint.screenPosition) <= posSetInstantThreshold) {
+            currentPosition.set(hands[primaryIdx]->handJoint.screenPosition);
+        }
+        else {
+            currentPosition.interpolate(hands[primaryIdx]->handJoint.screenPosition, posSetLerpPct);
+        }
     }
 }
 
