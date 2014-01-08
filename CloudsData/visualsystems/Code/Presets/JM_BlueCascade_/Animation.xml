@@ -1,0 +1,34 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Animation</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>476.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>START TIME RANGE</Name>
+    <Value>1.871921182</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>EXPAND SPEED RANGE</Name>
+    <HighValue>1.014778376</HighValue>
+    <LowValue>0.492610872</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>SPEED RANGE</Name>
+    <HighValue>0.629359603</HighValue>
+    <LowValue>0.010000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>10PRINT SPEED</Name>
+    <Value>36.206893921</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CASCADE</Name>
+    <Value>1</Value>
+</Widget>

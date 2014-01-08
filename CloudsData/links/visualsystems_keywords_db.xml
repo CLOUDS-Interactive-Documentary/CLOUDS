@@ -3349,12 +3349,12 @@
     <sound>0</sound>
 </system>
 <system name="Code_Code_Console_default">
-    <keywords></keywords>
+    <keywords>programming</keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -3369,12 +3369,101 @@
     <sound>0</sound>
 </system>
 <system name="Code_Cryptic">
-    <keywords></keywords>
+    <keywords>code|control|computational power|computation|programming</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - examples of the impossible</clip>
+        <clip>Andres - sharing code</clip>
+        <clip>Bruce - Constant improvement</clip>
+        <clip>Bruce - Future camera 1</clip>
+        <clip>Bruce - Gardening 2</clip>
+        <clip>Bruce - Volition</clip>
+        <clip>Bruce - fanciful metaphors 1</clip>
+        <clip>Casey - Programming at 26</clip>
+        <clip>Casey - Software is what i love the most</clip>
+        <clip>Damion - CodingAndCommunication</clip>
+        <clip>Diederick - allprogrammershavethat</clip>
+        <clip>Diederick - hackathon1</clip>
+        <clip>Elliot_UK - limitations 2</clip>
+        <clip>Golan - would be boring</clip>
+        <clip>Higa - beginnings</clip>
+        <clip>Higa - not sharing its a backup</clip>
+        <clip>Higa - process of working alone</clip>
+        <clip>Higa - sharing accidently 1</clip>
+        <clip>Higa - sharing accidently 2</clip>
+        <clip>Higa - understanding pointers</clip>
+        <clip>Intro - Learning</clip>
+        <clip>Intro - LogicOfPixels</clip>
+        <clip>Intro - Programming</clip>
+        <clip>Julian - mixing code</clip>
+        <clip>Karsten - code has nothing to do with machines</clip>
+        <clip>Karsten - demo scene 3</clip>
+        <clip>Karsten - parallel processing</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Karsten - virus</clip>
+        <clip>Binx - Programming is a superpower</clip>
+        <clip>Binx - programming is a superpower</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Bruce - Simulation Replication Recursion</clip>
+        <clip>JTNimoy - Pickle</clip>
+        <clip>Javier - behavior change</clip>
+        <clip>Jen - a different mathematics</clip>
+        <clip>Jen - necessity of code 1</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jen - sitting in front of a computer</clip>
+        <clip>Jen - struggle with programming</clip>
+        <clip>Jen - to program or not to program</clip>
+        <clip>Joel - Bicycles1</clip>
+        <clip>Joel - Bicycles2</clip>
+        <clip>Kyle_MC - Anonymous</clip>
+        <clip>Kyle_MC - Dangerous to conflate</clip>
+        <clip>Kyle_MC - Julian Oliver</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>LIA - HandCopyingCode</clip>
+        <clip>LIA - Lingo</clip>
+        <clip>LIA - MalleableMath</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>Lauren - Limits of self 2</clip>
+        <clip>Lauren - computer self 1</clip>
+        <clip>Lauren - data ownership 1</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Martin - language and infinity</clip>
+        <clip>Martin - verbal programming debate</clip>
+        <clip>Nervous_Jesse - Time in the universe</clip>
+        <clip>Nervous_Jesse - our explorations are random</clip>
+        <clip>Philip - build the whole universe</clip>
+        <clip>Philip - first time computation</clip>
+        <clip>Philip - get an idea</clip>
+        <clip>Philip - image is in your brain</clip>
+        <clip>Philip - learn through programming</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Philip - with programming you can do whatever</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Ramsey - designing languages</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - language as expression</clip>
+        <clip>Ramsey - language self expression</clip>
+        <clip>Ramsey - literacy</clip>
+        <clip>Ramsey - social computer</clip>
+        <clip>Ramsey - trapese 1</clip>
+        <clip>Ramsey - trapese 2</clip>
+        <clip>Ramsey - why code is special</clip>
+        <clip>Shantell - Coding gesturally</clip>
+        <clip>Shiffman - Carl Sims</clip>
+        <clip>Zach - action script</clip>
+        <clip>Zach - action script shorter</clip>
+        <clip>Zach - minecraft livecode</clip>
+        <clip>Zach - on the street</clip>
+        <clip>Zach - programming 2</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
