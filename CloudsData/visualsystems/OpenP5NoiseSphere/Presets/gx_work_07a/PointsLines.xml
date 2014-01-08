@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>PointsLines</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>686.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW POINTS</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>POINT SIZE</Name>
-    <Value>2.000000000</Value>
+    <Value>3.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
