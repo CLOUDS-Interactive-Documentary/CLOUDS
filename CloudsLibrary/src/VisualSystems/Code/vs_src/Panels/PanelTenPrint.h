@@ -19,8 +19,8 @@ public:
 	void selfUpdate();
 	void selfDraw();
 	
-	float charsPerSecond;
 	float maxChars;
+
   protected:
 	vector< pair<string,string> > pairs;
 	

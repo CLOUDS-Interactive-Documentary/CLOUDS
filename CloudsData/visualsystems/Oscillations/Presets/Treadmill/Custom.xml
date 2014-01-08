@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Width</Name>
-    <Value>788.177307129</Value>
+    <Value>640.394104004</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -41,12 +41,32 @@
     <Value>0.014778325</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
+    <Name>Red</Name>
+    <Value>0.895287931</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Green</Name>
+    <Value>0.869109869</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Blue</Name>
+    <Value>0.921465814</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Alpha</Name>
+    <Value>0.103448279</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
     <Name>Line Width</Name>
-    <Value>1.970443249</Value>
+    <Value>0.100000001</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Black on white</Name>
-    <Value>0</Value>
+    <Name>Render Lines</Name>
+    <Value>1</Value>
 </Widget>

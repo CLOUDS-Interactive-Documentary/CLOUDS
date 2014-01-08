@@ -42,7 +42,7 @@ void CloudsVisualSystemOscillations::selfSetupGui(){
     curveControls->addMinimalSlider("Blue", 0, 1, &curveColor.b, length, dim)->setShowValue(false);
     curveControls->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     curveControls->addMinimalSlider("Alpha", 0, 1, &curveColor.a);
-    curveControls->addMinimalSlider("Width", 0.01, 20, &CurveLineWidth, length * 3./2., dim)->setShowValue(false);
+    curveControls->addMinimalSlider("Line Width", 0.01, 20, &CurveLineWidth, length * 3./2., dim)->setShowValue(false);
     curveControls->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     curveControls->addToggle("Render Lines", &renderLines);
     
@@ -60,7 +60,7 @@ void CloudsVisualSystemOscillations::selfSetupGui(){
     gridControls->addRangeSlider("Range", -5000, 5000, &(GridClipping.low), &(GridClipping.high));
     gridControls->addSlider("Spacing", 100, 2000, &GridPointSpacing);
     gridControls->addNumberDialer("Pattern", 0, 5, &GridPattern, 0);
-    gridControls->addSlider("Line Width",0,10, &GridLineWidth);
+    gridControls->addSlider("Line Width",0.01, 10, &GridLineWidth);
     
     gridControls->addSpacer("Color");
     gridControls->addMinimalSlider("Red", 0, 1, &gridColor.r, length, dim)->setShowValue(false);
@@ -95,10 +95,6 @@ void CloudsVisualSystemOscillations::selfSetupCameraGui(){
 }
 
 void CloudsVisualSystemOscillations::selfGuiEvent(ofxUIEventArgs &e){
-//	if(e.widget->getName() == "Custom Button"){
-//		cout << "Button pressed!" << endl;
-//	}
-
     //Check if the grid was updated
     if (e.widget->getName() == "Grid"){
         BuildGrid();
@@ -139,13 +135,33 @@ void CloudsVisualSystemOscillations::selfSetup(){
     //TODO: Find way to update on every resize
     offsetX = offsetY = 0;
     BuildGrid();
-
-    oscillator.load(getVisualSystemDataPath() +"shaders/oscillationsShader");
-    crtShader.load(getVisualSystemDataPath() +"shaders/chromaticAbberation");
-	
+    loadShader();
 }
 
-// selfPresetLoaded is called whenever a new preset is triggered
+void CloudsVisualSystemOscillations::loadShader(){
+    
+    oscillator.load(getVisualSystemDataPath() + "shaders/oscillationsShader");
+    crtShader.load(getVisualSystemDataPath() + "shaders/chromaticAbberation");
+
+}
+
+void CloudsVisualSystemOscillations::selfSetDefaults(){
+    curveWidth = 400;
+    curveHeight = 400;
+    curveDepth = 7000;
+    speed = 0.015;
+    renderLines = true;
+    bgColor = curveColor.getInverted();
+    CurveLineWidth = 0.1;
+    displayGrid = false;
+    curveProgress = NUMPOINTS;
+    
+    clipPlanes.min = 0.01;
+    clipPlanes.max = 5000;
+}
+
+
+// selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemOscillations::selfPresetLoaded(string presetPath){
@@ -178,6 +194,37 @@ void CloudsVisualSystemOscillations::selfUpdate(){
         mesh.setMode(OF_PRIMITIVE_POINTS);
     }
     
+    //FIXME: This shouldn't happen unprovoked. It needs to be a callback to the UI.
+    BuildGrid();
+	
+	getCameraRef().setNearClip(clipPlanes.min);
+	getCameraRef().setFarClip(clipPlanes.max);
+}
+// selfDraw draws in 3D using the default ofEasyCamera
+// you can change the camera by returning getCameraRef()
+void CloudsVisualSystemOscillations::selfDraw(){
+    
+	ofPushStyle();
+    glPushAttrib(GL_LINE_SMOOTH | GL_DEPTH_TEST | GL_POINT_SIZE);
+    glEnable( GL_LINE_SMOOTH );
+    glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
+    glDisable(GL_DEPTH_TEST);
+//    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    if (displayGrid) {
+        glLineStipple((int)GridPattern, 0x8888);
+        ofSetLineWidth(GridLineWidth);
+        
+        glEnable(GL_LINE_STIPPLE);
+        grid.setMode(OF_PRIMITIVE_LINES);
+        grid.drawWireframe();
+        glDisable(GL_LINE_STIPPLE);
+    }
+    
+	
+    
+    //TODO: Customize
+    glPointSize(2.0);
+
     oscillator.begin();
     
     oscillator.setUniform1f("numPoints", (float) NUMPOINTS);
@@ -192,40 +239,10 @@ void CloudsVisualSystemOscillations::selfUpdate(){
     oscillator.setUniform1f("curveDepth", curveDepth);
     oscillator.setUniform2f("resolution",width,height);
 	
-    oscillator.end();
-    
-    
-    //FIXME: This shouldn't happen unprovoked. It needs to be a callback to the UI.
-    BuildGrid();
-	
-	getCameraRef().setNearClip(clipPlanes.min);
-	getCameraRef().setFarClip(clipPlanes.max);
-}
-// selfDraw draws in 3D using the default ofEasyCamera
-// you can change the camera by returning getCameraRef()
-void CloudsVisualSystemOscillations::selfDraw(){
-    
-	ofPushStyle();
-    
-//    ofEnableBlendMode(OF_BLENDMODE_ADD);    
-    if (displayGrid) {
-        glLineStipple((int)GridPattern, 0x8888);
-        ofSetLineWidth(GridLineWidth);
-        
-        glEnable(GL_LINE_STIPPLE);
-        grid.setMode(OF_PRIMITIVE_LINES);
-        grid.drawWireframe();
-        glDisable(GL_LINE_STIPPLE);
-    }
-    
-	glDisable(GL_DEPTH_TEST);
-
-
-    oscillator.begin();
     ofSetLineWidth(CurveLineWidth);
 	mesh.draw();
     oscillator.end();
-	
+    glPopAttrib();
 	ofPopStyle();
 }
 
@@ -247,7 +264,6 @@ void CloudsVisualSystemOscillations::selfDrawBackground(){
 void CloudsVisualSystemOscillations::selfPostDraw(){
 
     crtShader.begin();
-//    crtShader.setUniform1i("screen", GL_TEXTURE0);
     crtShader.setUniformTexture("screen", getSharedRenderTarget(), 1 );
     crtShader.setUniform2f("resolution",
 						   float(getSharedRenderTarget().getWidth()),

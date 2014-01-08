@@ -7,15 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1736F1F3187CC89B0045637B /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1736F1F2187CC89B0045637B /* ofxSystemTextbox.mm */; };
 		17BC7E00186C8A3A00F4E8D8 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC7DF9186C8A3A00F4E8D8 /* CloudsInput.cpp */; };
 		17BC7E01186C8A3A00F4E8D8 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC7DF9186C8A3A00F4E8D8 /* CloudsInput.cpp */; };
 		17BC7E04186C8A3A00F4E8D8 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC7DFE186C8A3A00F4E8D8 /* CloudsInputMouse.cpp */; };
 		17BC7E05186C8A3A00F4E8D8 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC7DFE186C8A3A00F4E8D8 /* CloudsInputMouse.cpp */; };
-		4FC938EF187C6635000D92EE /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FC938EE187C6635000D92EE /* ofxSystemTextbox.mm */; };
-		4FC938F4187C67AF000D92EE /* chromaticAbberation.frag in Sources */ = {isa = PBXBuildFile; fileRef = 4FC938F0187C67AF000D92EE /* chromaticAbberation.frag */; };
-		4FC938F5187C67AF000D92EE /* chromaticAbberation.vert in Sources */ = {isa = PBXBuildFile; fileRef = 4FC938F1187C67AF000D92EE /* chromaticAbberation.vert */; };
-		4FC938F6187C67AF000D92EE /* oscillationsShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 4FC938F2187C67AF000D92EE /* oscillationsShader.frag */; };
-		4FC938F7187C67AF000D92EE /* oscillationsShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 4FC938F3187C67AF000D92EE /* oscillationsShader.vert */; };
 		850EDC7018305AB3004411A3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		850EDC7118305AB3004411A3 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */; };
 		850EDC7218305AB3004411A3 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
@@ -257,18 +253,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1736F1F1187CC89B0045637B /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		1736F1F2187CC89B0045637B /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		17BC7DF9186C8A3A00F4E8D8 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
 		17BC7DFA186C8A3A00F4E8D8 /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
 		17BC7DFB186C8A3A00F4E8D8 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
 		17BC7DFE186C8A3A00F4E8D8 /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
 		17BC7DFF186C8A3A00F4E8D8 /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
 		17BC7E06186CF22300F4E8D8 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../../CloudsLibrary/src/CloudsGlobal.h; sourceTree = "<group>"; };
-		4FC938ED187C6635000D92EE /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
-		4FC938EE187C6635000D92EE /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
-		4FC938F0187C67AF000D92EE /* chromaticAbberation.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = chromaticAbberation.frag; sourceTree = "<group>"; };
-		4FC938F1187C67AF000D92EE /* chromaticAbberation.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = chromaticAbberation.vert; sourceTree = "<group>"; };
-		4FC938F2187C67AF000D92EE /* oscillationsShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = oscillationsShader.frag; sourceTree = "<group>"; };
-		4FC938F3187C67AF000D92EE /* oscillationsShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = oscillationsShader.vert; sourceTree = "<group>"; };
+		17BFC68C1872055A00514ED5 /* chromaticAbberation.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = chromaticAbberation.frag; sourceTree = "<group>"; };
+		17BFC68D1872055A00514ED5 /* chromaticAbberation.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = chromaticAbberation.vert; sourceTree = "<group>"; };
+		17BFC68E1872055A00514ED5 /* oscillationsShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = oscillationsShader.frag; sourceTree = "<group>"; };
+		17BFC68F1872055A00514ED5 /* oscillationsShader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = oscillationsShader.vert; sourceTree = "<group>"; };
 		850EDCD918305AB3004411A3 /* Oscillations copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oscillations copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		850EDCDA18305AB4004411A3 /* Oscillations copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Oscillations copy-Info.plist"; path = "/Users/jonathanminard/Documents/Development/openFrameworks/apps/CLOUDS/VSOscillations/Oscillations copy-Info.plist"; sourceTree = "<absolute>"; };
 		850EDDA118305BFB004411A3 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
@@ -587,10 +583,10 @@
 		17BFC68B1872055A00514ED5 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
-				4FC938F0187C67AF000D92EE /* chromaticAbberation.frag */,
-				4FC938F1187C67AF000D92EE /* chromaticAbberation.vert */,
-				4FC938F2187C67AF000D92EE /* oscillationsShader.frag */,
-				4FC938F3187C67AF000D92EE /* oscillationsShader.vert */,
+				17BFC68C1872055A00514ED5 /* chromaticAbberation.frag */,
+				17BFC68D1872055A00514ED5 /* chromaticAbberation.vert */,
+				17BFC68E1872055A00514ED5 /* oscillationsShader.frag */,
+				17BFC68F1872055A00514ED5 /* oscillationsShader.vert */,
 			);
 			name = shaders;
 			path = ../../../../../../CloudsData/visualsystems/Oscillations/shaders;
@@ -723,8 +719,8 @@
 		E72FF11817E688FE0007780D /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				4FC938ED187C6635000D92EE /* ofxSystemTextbox.h */,
-				4FC938EE187C6635000D92EE /* ofxSystemTextbox.mm */,
+				1736F1F1187CC89B0045637B /* ofxSystemTextbox.h */,
+				1736F1F2187CC89B0045637B /* ofxSystemTextbox.mm */,
 				E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */,
 				E72FF11B17E688FE0007780D /* CloudsRGBDCamera.h */,
 				E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */,
@@ -1528,13 +1524,12 @@
 				E7D32FAA1751C626006706ED /* ofxRParticleRenderer.cpp in Sources */,
 				E7D32FAB1751C626006706ED /* ofxRParticleSystem.cpp in Sources */,
 				E7D32FAC1751C626006706ED /* ofxSolver.cpp in Sources */,
-				4FC938F7187C67AF000D92EE /* oscillationsShader.vert in Sources */,
 				E7D32FAD1751C626006706ED /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				E7D32FAE1751C626006706ED /* ofxSwarmBehavior.cpp in Sources */,
 				E7D32FAF1751C626006706ED /* ofxVerletSolver.cpp in Sources */,
 				E7D3302D1751C69E006706ED /* ofxCameraSaveLoad.cpp in Sources */,
 				E7CF783C1753FEA0006B7D41 /* kiss_fft.c in Sources */,
-				4FC938EF187C6635000D92EE /* ofxSystemTextbox.mm in Sources */,
+				1736F1F3187CC89B0045637B /* ofxSystemTextbox.mm in Sources */,
 				E7CF783D1753FEA0006B7D41 /* kiss_fftr.c in Sources */,
 				E7CF783E1753FEA0006B7D41 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				E7CF78441753FEA1006B7D41 /* ofxHotKeys_impl_linux.cpp in Sources */,
@@ -1553,7 +1548,6 @@
 				E7CF78511753FEA1006B7D41 /* ofxTLFlags.cpp in Sources */,
 				E7CF78521753FEA1006B7D41 /* ofxTLImageSequence.cpp in Sources */,
 				E7CF78531753FEA1006B7D41 /* ofxTLImageSequenceFrame.cpp in Sources */,
-				4FC938F6187C67AF000D92EE /* oscillationsShader.frag in Sources */,
 				E7CF78541753FEA1006B7D41 /* ofxTLImageTrack.cpp in Sources */,
 				E7CF78551753FEA1006B7D41 /* ofxTLInOut.cpp in Sources */,
 				E7CF78561753FEA1006B7D41 /* ofxTLKeyframes.cpp in Sources */,
@@ -1565,8 +1559,6 @@
 				E7CF785B1753FEA1006B7D41 /* ofxTLTicker.cpp in Sources */,
 				E7CF785C1753FEA1006B7D41 /* ofxTLTrack.cpp in Sources */,
 				E7CF785D1753FEA1006B7D41 /* ofxTLTrackHeader.cpp in Sources */,
-				4FC938F5187C67AF000D92EE /* chromaticAbberation.vert in Sources */,
-				4FC938F4187C67AF000D92EE /* chromaticAbberation.frag in Sources */,
 				E7CF785E1753FEA1006B7D41 /* ofxTLVideoThumb.cpp in Sources */,
 				E7CF785F1753FEA1006B7D41 /* ofxTLVideoTrack.cpp in Sources */,
 				E7CF78601753FEA1006B7D41 /* ofxTLZoomer.cpp in Sources */,

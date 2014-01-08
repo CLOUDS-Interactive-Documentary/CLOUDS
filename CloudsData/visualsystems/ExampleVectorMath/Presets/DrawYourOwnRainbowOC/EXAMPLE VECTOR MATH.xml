@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>EXAMPLE VECTOR MATH</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -33,7 +33,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LINE WIDTH</Name>
-    <Value>3.901477814</Value>
+    <Value>6.802955627</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>COLOR SHIFT SPEED</Name>
-    <Value>0.197044328</Value>
+    <Value>0.073891625</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -63,7 +63,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>R</Name>
-    <Value>0.498837769</Value>
+    <Value>0.516398787</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -73,5 +73,5 @@
 <Widget>
     <Kind>25</Kind>
     <Name>B</Name>
-    <Value>0.595051825</Value>
+    <Value>0.882008195</Value>
 </Widget>

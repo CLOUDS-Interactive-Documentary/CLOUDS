@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1061.000122070</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>283.000000000</XPosition>
+    <YPosition>263.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -22,6 +22,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Borges_ordered</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Borges_random</Name>
     <Value>0</Value>
 </Widget>
@@ -29,6 +34,21 @@
     <Kind>2</Kind>
     <Name>Borges_randomOC</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Bruce_DigitalHumanities</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Bruce_TextualTechnologies</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FavoriteWords</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -48,6 +68,31 @@
 <Widget>
     <Kind>2</Kind>
     <Name>j_simple</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Kevin_CognitionSphere</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Kyle_Storytelling</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Lauren_LanguagesAsTools</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Lauren_SentimentAnalysis</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Martin_AlltheWords</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -79,29 +124,4 @@
     <Kind>2</Kind>
     <Name>twitterOC</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Bruce_DigitalHumanities</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Bruce_TextualTechnologies</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Kevin_CognitionSphere</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Kyle_Storytelling</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Lauren_LanguagesAsTools</Name>
-    <Value>1</Value>
 </Widget>

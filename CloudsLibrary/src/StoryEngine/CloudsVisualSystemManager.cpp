@@ -38,6 +38,7 @@
 #include "CloudsVisualSystemMandala.h"
 #include "CloudsVisualSystemMarchingCubes.h"
 #include "CloudsVisualSystemMazeGenerator.h"
+//#include "CloudsVisualSystemMazeGenerator2.h"
 #include "CloudsVisualSystemMemory.h"
 #include "CloudsVisualSystemMetaballs.h"
 #include "CloudsVisualSystemNbody.h"
@@ -64,7 +65,8 @@
 #include "CloudsVisualSystemProcess11.h"
 #include "CloudsVisualSystemProcess18.h"
 #include "CloudsVisualSystemRGBDVideo.h"
-#include "CloudsVisualSystemRandomDigits.h"
+//#include "CloudsVisualSystemRandomDigits.h"
+#include "CloudsVisualSystemRandomDigits2.h"
 #include "CloudsVisualSystemReplicator.h"
 #include "CloudsVisualSystemRipples.h"
 #include "CloudsVisualSystemRulez.h"
@@ -139,6 +141,7 @@ struct Mapping {
 	{ "Mandala", &fCreate<CloudsVisualSystemMandala> },
 	{ "MarchingCubes", &fCreate<CloudsVisualSystemMarchingCubes> },
 	{ "MazeGenerator", &fCreate<CloudsVisualSystemMazeGenerator> },
+//    { "MazeGenerator2", &fCreate<CloudsVisualSystemMazeGenerator2> },
 	{ "Memory", &fCreate<CloudsVisualSystemMemory> },
 //	{ "Metaballs", &fCreate<CloudsVisualSystemMetaballs> },
 //	{ "Nbody", &fCreate<CloudsVisualSystemNbody> },
@@ -165,7 +168,8 @@ struct Mapping {
 	{ "Process11", &fCreate<CloudsVisualSystemProcess11> },
 	{ "Process18", &fCreate<CloudsVisualSystemProcess18> },
 	{ "RGBDVideo", &fCreate<CloudsVisualSystemRGBDVideo> },
-	{ "RandomDigits", &fCreate<CloudsVisualSystemRandomDigits> },
+	//{ "RandomDigits", &fCreate<CloudsVisualSystemRandomDigits> },
+    { "RandomDigits2", &fCreate<CloudsVisualSystemRandomDigits2> },
 	{ "Replicator", &fCreate<CloudsVisualSystemReplicator> },
 	{ "Ripples", &fCreate<CloudsVisualSystemRipples> },
 	{ "Rulez", &fCreate<CloudsVisualSystemRulez> },
@@ -273,6 +277,7 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 			preset.presetName = systemPresets[ p ];
 			preset.systemName = system->getSystemName();
 			preset.loadTimeInfo();
+			preset.hasFiles = true;
 			preset.stillPresent = true;
 			presets.push_back(preset);
 			nameToPresets[preset.systemName].push_back( preset );

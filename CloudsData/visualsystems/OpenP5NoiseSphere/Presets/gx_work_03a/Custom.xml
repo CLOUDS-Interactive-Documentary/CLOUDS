@@ -6,11 +6,6 @@
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
-    <Kind>44</Kind>
-    <Name>HAIR COUNT</Name>
-    <Value>10000</Value>
-</Widget>
-<Widget>
     <Kind>4</Kind>
     <Name>SPHERE SCALE</Name>
     <Value>33.620689392</Value>

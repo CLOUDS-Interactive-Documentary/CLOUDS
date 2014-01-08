@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Sprite</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>690.000000000</XPosition>
-    <YPosition>57.000000000</YPosition>
+    <XPosition>810.000000000</XPosition>
+    <YPosition>164.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,12 +13,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SPRITE SIZE Min</Name>
-    <Value>6.694471836</Value>
+    <Value>3.762814522</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SPRITE SIZE max</Name>
-    <Value>7.499999046</Value>
+    <Value>14.999998093</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SBC ALPHA</Name>
-    <Value>0.280788183</Value>
+    <Value>0.500000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

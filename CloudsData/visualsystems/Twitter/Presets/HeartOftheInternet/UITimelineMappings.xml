@@ -12,16 +12,8 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>LNP BRI</WidgetName>
-                <WidgetID>44</WidgetID>
-                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>LEP ALPHA</WidgetName>
-                <WidgetID>55</WidgetID>
+                <WidgetName>EDGE DECAY</WidgetName>
+                <WidgetID>14</WidgetID>
                 <WidgetCanvasParent>Mesh</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -36,8 +28,32 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>EDGE DECAY</WidgetName>
-                <WidgetID>14</WidgetID>
+                <WidgetName>LEP ALPHA</WidgetName>
+                <WidgetID>55</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LEB BRI</WidgetName>
+                <WidgetID>35</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LNP BRI</WidgetName>
+                <WidgetID>44</WidgetID>
+                <WidgetCanvasParent>Mesh</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LEB ALPHA</WidgetName>
+                <WidgetID>37</WidgetID>
                 <WidgetCanvasParent>Mesh</WidgetCanvasParent>
             </Widget>
             <Track></Track>

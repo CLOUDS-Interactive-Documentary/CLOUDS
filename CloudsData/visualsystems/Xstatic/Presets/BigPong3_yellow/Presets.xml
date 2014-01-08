@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
-    <YPosition>355.000000000</YPosition>
+    <XPosition>637.000122070</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -37,12 +37,27 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>BigPong3_lavendar</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BigPong3_yellow</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>BigPong4</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>BouncingBalls</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BouncingBalls_TumblingBox</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -89,14 +104,4 @@
     <Kind>2</Kind>
     <Name>StarNursery1</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BigPong3_lavendar</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BigPong3_yellow</Name>
-    <Value>1</Value>
 </Widget>

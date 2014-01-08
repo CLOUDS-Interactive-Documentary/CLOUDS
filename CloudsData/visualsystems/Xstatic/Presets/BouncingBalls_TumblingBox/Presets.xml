@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>390.000000000</XPosition>
-    <YPosition>37.000000000</YPosition>
+    <XPosition>360.000000000</XPosition>
+    <YPosition>215.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -57,8 +57,8 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Circle</Name>
-    <Value>0</Value>
+    <Name>BouncingBalls_TumblingBox</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -99,9 +99,4 @@
     <Kind>2</Kind>
     <Name>StarNursery1</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BouncingBalls_TumblingBox</Name>
-    <Value>1</Value>
 </Widget>

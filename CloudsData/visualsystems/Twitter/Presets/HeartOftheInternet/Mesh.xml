@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Mesh</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>993.000000000</XPosition>
-    <YPosition>4.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -39,7 +39,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>EDGE DECAY</Name>
-    <Value>0.562140346</Value>
+    <Value>0.689207852</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -64,7 +64,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNB BRI</Name>
-    <Value>0.339144111</Value>
+    <Value>0.370789319</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -84,12 +84,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LEB BRI</Name>
-    <Value>0.000000000</Value>
+    <Value>0.199999988</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LEB ALPHA</Name>
-    <Value>0.098522164</Value>
+    <Value>0.050000012</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -104,7 +104,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNP BRI</Name>
-    <Value>0.242574424</Value>
+    <Value>0.673888087</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -124,12 +124,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LEP BRI</Name>
-    <Value>0.528795183</Value>
+    <Value>0.858638585</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LEP ALPHA</Name>
-    <Value>0.008666443</Value>
+    <Value>0.268002063</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -168,27 +168,27 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>Circular_0_old.net</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>Circular_4_new.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>Circular_old.net</Name>
+    <Name>Galaxy2_0_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>Galaxy2_Max_old.net</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>Galaxy3_Max_old.net</Name>
+    <Name>Galaxy3_0_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>Galaxy_Max_old.net</Name>
+    <Name>Galaxy_0_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -203,7 +203,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>Simple_Twitter_old.net</Name>
+    <Name>Simple_0_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -218,16 +218,16 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>twitterMax.net</Name>
+    <Name>twitterOld_0_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>twitterOld.net</Name>
+    <Name>twitter_0_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>twitterOneUserMen_old.net</Name>
+    <Name>twitter_1_old.net</Name>
     <Value>0</Value>
 </Widget>

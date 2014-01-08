@@ -21,14 +21,6 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>DRAG</WidgetName>
-                <WidgetID>50</WidgetID>
-                <WidgetCanvasParent>Custom</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>ROTATE ANGLE</WidgetName>
                 <WidgetID>42</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
@@ -55,6 +47,14 @@
             <Widget>
                 <WidgetName>WIND SPEED</WidgetName>
                 <WidgetID>48</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>DRAG</WidgetName>
+                <WidgetID>50</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>

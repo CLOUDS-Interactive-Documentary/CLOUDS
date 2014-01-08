@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>CamSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>849.000061035</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>387.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -18,22 +18,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-X</Name>
-    <Value>12.413792610</Value>
+    <Value>138.425186157</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Y</Name>
-    <Value>120.591133118</Value>
+    <Value>82.322608948</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Z</Name>
-    <Value>40.788177490</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>LOCK TO TRACK</Name>
-    <Value>0</Value>
+    <Value>26.333904266</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

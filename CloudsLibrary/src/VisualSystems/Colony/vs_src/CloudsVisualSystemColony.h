@@ -22,6 +22,7 @@ public:
     string getSystemName();
     
     void selfSetup();
+    void selfSetDefaults();
     void selfSetupGuis();
     
     void selfAutoMode();
@@ -60,17 +61,19 @@ private:
     /* SUCH PARAMS */
     cellParams params;
     bool levelSetMode, levelSetBG;
+    float levelSetShadowAmt;
     int numInitialCells;
     
     float translucenseCell, translucenseDish;
     ofVec4f kernelColor_high, kernelColor_low;
+    float kernelShadowAmt;
 
     float stippleScale;
     ofVec4f stippleColor;
 
 
     /* MUCH PRIVATE */
-    float kernel_maxValue;
+    float kernelMaxValue;
     
     /* MUCH GEOMETRY */
     ofVboMesh   vbo;

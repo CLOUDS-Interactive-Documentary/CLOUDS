@@ -119,6 +119,8 @@ protected:
     int xSpacing, ySpacing, zSpacing;
     float xNoise, yNoise, zNoise;
     float dark, light;
+    
+    float fogDensity;
 
     // Sound
     ofxUISuperCanvas* soundGui;

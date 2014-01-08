@@ -1,0 +1,22 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Type</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>95.000000000</XPosition>
+    <YPosition>462.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>44</Kind>
+    <Name>FONT SIZE</Name>
+    <Value>7</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TRACKING</Name>
+    <Value>0.295566499</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEFT MARGIN</Name>
+    <Value>10.640393257</Value>
+</Widget>

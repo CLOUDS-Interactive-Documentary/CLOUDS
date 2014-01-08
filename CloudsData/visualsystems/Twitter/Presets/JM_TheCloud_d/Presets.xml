@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1241.000000000</XPosition>
-    <YPosition>175.000000000</YPosition>
+    <XPosition>1138.000000000</XPosition>
+    <YPosition>198.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -49,6 +49,16 @@
     <Kind>2</Kind>
     <Name>JM_TheCloud_c_Massive</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_TheCloud_d</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_TheCloud_e_Massive</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -124,9 +134,4 @@
     <Kind>2</Kind>
     <Name>TweetDeck_NameCloud_Lines</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>JM_TheCloud_d</Name>
-    <Value>1</Value>
 </Widget>

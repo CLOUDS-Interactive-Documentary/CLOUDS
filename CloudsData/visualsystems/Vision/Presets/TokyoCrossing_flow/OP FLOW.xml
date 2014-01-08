@@ -1,0 +1,92 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>OP FLOW</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>390.000000000</XPosition>
+    <YPosition>229.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW FLOW WINDOW</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WINDOW TINT</Name>
+    <Value>153.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>FLOW DENSITY</Name>
+    <Value>4</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FLOW ALPHA</Name>
+    <Value>0.290640384</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WINDOW WIDTH</Name>
+    <Value>0.307969451</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WINDOW HEIGHT</Name>
+    <Value>0.282298803</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FLOW LINE LENGTH</Name>
+    <Value>0.500000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FLOW COLOUR MAP RANGE</Name>
+    <Value>50.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FLOW LINE WIDTH</Name>
+    <Value>1.576354742</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FLOW LINE DAMP</Name>
+    <Value>0.256157637</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PYRSCALE</Name>
+    <Value>0.500000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEVELS</Name>
+    <Value>4.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WINSIZE</Name>
+    <Value>11.684728622</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ITERATIONS</Name>
+    <Value>2.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>POLYN</Name>
+    <Value>6.517241478</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>POLYSIGMA</Name>
+    <Value>1.100000024</Value>
+</Widget>
