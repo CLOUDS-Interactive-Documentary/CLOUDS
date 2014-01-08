@@ -26,7 +26,11 @@ class Cube {
     int rotZ;
 
 	
-	Cube(ofVboMesh& mesh, ofMesh& baseBox, int _w, int _h, int _d, int _shiftX, int _shiftY, int _shiftZ, int _rotX, int _rotY, int _rotZ ){
+	Cube(ofVboMesh& mesh, ofMesh& baseBox,
+		 ofVboMesh& stroke, ofMesh& baseStroke,
+		 int _w, int _h, int _d,
+		 int _shiftX, int _shiftY, int _shiftZ,
+		 int _rotX, int _rotY, int _rotZ ){
 		
         w = _w;
         h = _h;
@@ -56,6 +60,9 @@ class Cube {
 			mesh.addIndex(initialIndex + baseBox.getIndices()[i] );
 		}
 		
+		for(int i = 0; i < baseStroke.getNumVertices(); i++){
+			stroke.addVertex(baseStroke.getVertex(i) * transform);
+		}
 	}
 	
 };
@@ -83,6 +90,7 @@ class CloudsVisualSystemOpenP5SpaceJunk : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
+	void selfSetDefaults();
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
@@ -144,9 +152,12 @@ protected:
 	ofFloatColor color2HSB;
 	
 	ofVboMesh mesh;
+	ofVboMesh stroke;
 	ofMesh baseBox;
+	ofMesh baseStroke;
 	
-	int limit = 500;
+	int limit;
+	int spread;
     float ang;
     float speed_ = 10; //a number that increments ang
     

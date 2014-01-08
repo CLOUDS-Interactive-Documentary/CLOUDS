@@ -1,0 +1,62 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>FireworkBehavior</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>particleSpeed</Name>
+    <Value>0.230935961</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>particleSpread</Name>
+    <Value>23.054187775</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>explosionFrequency</Name>
+    <Value>0.074817739</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>emissonRate</Name>
+    <Value>3</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>spawnDistance</Name>
+    <Value>148.325119019</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maxFireworkVelocity</Name>
+    <Value>74.645317078</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>gravity</Name>
+    <Value>83.251220703</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>burst</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>octahedron</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>tetrahedron</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>dodecagedron</Name>
+    <Value>0</Value>
+</Widget>
