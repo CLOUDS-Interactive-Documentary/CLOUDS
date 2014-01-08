@@ -48,6 +48,8 @@ public:
     void guiRenderEvent(ofxUIEventArgs &e);
     
     void billBoard();
+    
+    void resizeBrush();
 
         // if you use a custom camera to fly through the scene
     // you must implement this method for the transitions to work properly
@@ -120,12 +122,14 @@ protected:
     
     ofShader   colorShader;
     ofShader   circleShader;
+    ofShader   vBlurShader, hBlurShader;
     ofFloatColor  mHighColor;
     ofFloatColor  mLowColor;
     float          mAtten;
     float         mBalance;
     ofVec2f mouse;
-    ofImage canvas;
+    ofFbo canvasSrc;
+    ofFbo canvasDest;
     
     bool bShowDebug;
     bool bDoNoise;
@@ -142,4 +146,9 @@ protected:
 	float bgSat;
 	float bgBri;
     float mTexMix;
+    
+    ofMesh brushMesh, blurMesh;
+    float mDepositScale, mCurDepositScale, dryRate, blurRadius;
+    
+    
 };

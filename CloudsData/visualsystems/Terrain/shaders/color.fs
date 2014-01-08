@@ -100,7 +100,9 @@ void main()
 	
     color *= mix( highColor*balance, lowColor*(1.-balance) ,fsColor.r);
     
-    gl_FragColor = color * mix(vec4(1.,1.,1.,1.), vec4(0.,texture2DRect(drawMap, gl_TexCoord[0].st).gba) ,texMix);
+    vec4 tc = texture2DRect(drawMap, gl_TexCoord[0].st);
+    
+    gl_FragColor = color * mix(vec4(1.,1.,1.,1.), tc*2. ,texMix);
 	gl_FragColor = mix( gl_FragColor, fogColor, min(1., pow( 1.25 * camDelta / (fogDist*fogDist), fogExpo) ) );;
 }
 
