@@ -58,12 +58,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>Alpha</Name>
-    <Value>0.133004919</Value>
+    <Value>0.275862068</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>hf</Name>
-    <Value>1.684554935</Value>
+    <Name>Line Width</Name>
+    <Value>0.100000001</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

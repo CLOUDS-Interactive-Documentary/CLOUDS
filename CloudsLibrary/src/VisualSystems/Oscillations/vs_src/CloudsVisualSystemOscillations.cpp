@@ -60,7 +60,7 @@ void CloudsVisualSystemOscillations::selfSetupGui(){
     gridControls->addRangeSlider("Range", -5000, 5000, &(GridClipping.low), &(GridClipping.high));
     gridControls->addSlider("Spacing", 100, 2000, &GridPointSpacing);
     gridControls->addNumberDialer("Pattern", 0, 5, &GridPattern, 0);
-    gridControls->addSlider("Line Width",0,10, &GridLineWidth);
+    gridControls->addSlider("Line Width",0.01, 10, &GridLineWidth);
     
     gridControls->addSpacer("Color");
     gridControls->addMinimalSlider("Red", 0, 1, &gridColor.r, length, dim)->setShowValue(false);
@@ -153,11 +153,10 @@ void CloudsVisualSystemOscillations::selfSetDefaults(){
     bgColor = curveColor.getInverted();
     CurveLineWidth = 0.1;
     displayGrid = false;
-    clipPlanes.min = 0.01;
-    clipPlanes.max = 5000;
     curveProgress = NUMPOINTS;
     
-
+    clipPlanes.min = 0.01;
+    clipPlanes.max = 5000;
 }
 
 
@@ -193,11 +192,6 @@ void CloudsVisualSystemOscillations::selfUpdate(){
     } else {
         mesh.setMode(OF_PRIMITIVE_POINTS);
     }
-    
-    
-    
-    
-    
     
     //FIXME: This shouldn't happen unprovoked. It needs to be a callback to the UI.
     BuildGrid();
@@ -269,7 +263,6 @@ void CloudsVisualSystemOscillations::selfDrawBackground(){
 void CloudsVisualSystemOscillations::selfPostDraw(){
 
     crtShader.begin();
-//    crtShader.setUniform1i("screen", GL_TEXTURE0);
     crtShader.setUniformTexture("screen", getSharedRenderTarget(), 1 );
     crtShader.setUniform2f("resolution",
 						   float(getSharedRenderTarget().getWidth()),

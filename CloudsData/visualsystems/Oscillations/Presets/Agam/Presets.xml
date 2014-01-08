@@ -42,6 +42,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>jm_default</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>laser blast</Name>
     <Value>0</Value>
 </Widget>
@@ -63,6 +68,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Treadmill</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Tunnel Pottery</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
