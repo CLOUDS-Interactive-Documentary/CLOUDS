@@ -178,6 +178,8 @@ public:
     float activeThresholdY;
     float activeThresholdZ;
     
+    float jointLerpPct;
+    
     map<int, k4w::Body *> bodies;
     map<int, k4w::Hand *> hands;
 };
