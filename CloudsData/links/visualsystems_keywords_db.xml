@@ -14174,6 +14174,66 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="RandomDigits2_Matrix">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="RandomDigits2_Matrix_2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="RandomDigits2_Matrix_3_slower">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="RandomDigits2_Matrix_4_dense">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="RandomDigits2_Matrix_5">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="RandomDigits2_Matrix_5_dense">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="RandomDigits2_galtest">
     <keywords></keywords>
     <links></links>
@@ -14672,7 +14732,7 @@
     <sound>0</sound>
 </system>
 <system name="Satoruhiga_confettistorm">
-    <keywords>digital culture|digital art|aesthetic experience</keywords>
+    <keywords>digital culture|digital art|aesthetic experience|weird|playfulness|play</keywords>
     <links></links>
     <suppressions>
         <clip>Kyle_MC - People staring at screens 2</clip>
@@ -14680,6 +14740,46 @@
         <clip>Marius - We&apos;ve embraced Dystopia</clip>
         <clip>Paola - museum collections</clip>
         <clip>JTNimoy - Cortex</clip>
+        <clip>Bruce - Age of the universe, really weird</clip>
+        <clip>Bruce - Gardening 2</clip>
+        <clip>Bruce - Gay sex, not that weird</clip>
+        <clip>Bruce - Infinity in a grain of sand</clip>
+        <clip>Bruce - fanciful metaphors 1</clip>
+        <clip>Golan - kerrington</clip>
+        <clip>Golan - kessler</clip>
+        <clip>Greg - object oriented ontology 3</clip>
+        <clip>Higa - only meets pure geeks</clip>
+        <clip>JTNimoy - immersion</clip>
+        <clip>LIA - Art1</clip>
+        <clip>Maeda - Slurpies and pizza</clip>
+        <clip>Maeda - old and new</clip>
+        <clip>Martin - getting weirder</clip>
+        <clip>Martin - lolcats</clip>
+        <clip>Nervous_Jessica - Why is it beautiful</clip>
+        <clip>Patricio - Dream of eggs</clip>
+        <clip>Sophy - Where&apos;s the best hamburger?</clip>
+        <clip>Sophy - nanobots</clip>
+        <clip>Sophy - techno-fungus</clip>
+        <clip>Bruce - Fax machine</clip>
+        <clip>Golan - laughter</clip>
+        <clip>Golan - instruments</clip>
+        <clip>Golan - piano and pencil,</clip>
+        <clip>Golan - playable image</clip>
+        <clip>Golan - what&apos;s an instrument?</clip>
+        <clip>Greg - AI 2</clip>
+        <clip>Higa - collaboration with machines 2</clip>
+        <clip>Intro - interactivity1</clip>
+        <clip>Jen - rafael&apos;s cardiogram</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>Maeda - thinking about interfaces</clip>
+        <clip>Patricio - Seduced by Play 1</clip>
+        <clip>Patricio - Theory of Play 1</clip>
+        <clip>Regine - digital technology</clip>
+        <clip>Shiffman - inexactitude</clip>
+        <clip>Sophy - computer dream</clip>
+        <clip>Zach - Drawn1</clip>
+        <clip>Theo - leaving a mark</clip>
     </suppressions>
     <comments></comments>
     <grade>B</grade>
@@ -14698,18 +14798,23 @@
     <sound>0</sound>
 </system>
 <system name="Satoruhiga_plasticbeast">
-    <keywords></keywords>
+    <keywords>fun|imagination|weird|dreams</keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="Satoruhiga_stuff">
     <keywords>abstraction|formalism|form</keywords>
-    <links></links>
+    <links>
+        <clip>Higa - collaboration with machines 1</clip>
+        <clip>Higa - beautiful-useful-interesting</clip>
+        <clip>Higa - dreaming of problems</clip>
+        <clip>Higa - process of working alone</clip>
+    </links>
     <suppressions>
         <clip>Casey - ideas of art history</clip>
         <clip>Elliot_UK - points in space</clip>
@@ -14729,9 +14834,11 @@
         <clip>Patricio - Alchemy 1</clip>
         <clip>Ramsey - arab abstraction 1</clip>
         <clip>Ramsey - arab abstraction 2</clip>
+        <clip>Golan - formalism</clip>
+        <clip>LIA - MathAnotherLanguage</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -15990,29 +16097,6 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="VerletForm_SimpleBalloon">
-    <keywords>generative art|formalism|form</keywords>
-    <links></links>
-    <suppressions>
-        <clip>Bruce - Gardening 1</clip>
-        <clip>Bruce - Gardening 2</clip>
-        <clip>Bruce - Simulation Replication Recursion</clip>
-        <clip>Elliot_UK - wiremape_description</clip>
-        <clip>Elliot_UK - points in space</clip>
-        <clip>Jer - Generative Art</clip>
-        <clip>Kevin - algo culture 4</clip>
-        <clip>Marius - gardening</clip>
-        <clip>Nervous_Jesse - Marker 2</clip>
-        <clip>Nervous_Jesse - organic process</clip>
-        <clip>Ramsey - arab abstraction 2</clip>
-        <clip>Zach - action script shorter</clip>
-    </suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
 <system name="VerletForm_Tower">
     <keywords>form</keywords>
     <links></links>
@@ -16066,12 +16150,66 @@
     <sound>0</sound>
 </system>
 <system name="Vision_GreenPoint_Contour_extreme">
-    <keywords></keywords>
+    <keywords>camera|machine vision|new aesthetic|vision</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - curiosity</clip>
+        <clip>Andres - camera distorts reality</clip>
+        <clip>Andres - seeing molecules</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Bruce - Augmented Ubiquity</clip>
+        <clip>Bruce - lashup 1</clip>
+        <clip>Bruce - lashup 2</clip>
+        <clip>Bruce - new aesthetic 1</clip>
+        <clip>Bruce - new aesthetic 2</clip>
+        <clip>Bruce - new aesthetic artists</clip>
+        <clip>Damion - HumanChemicalMachine</clip>
+        <clip>Damion - OOO</clip>
+        <clip>Elliot - Kinect</clip>
+        <clip>Elliot_UK - 2D vision in a 3D world</clip>
+        <clip>Elliot_UK - limitation 1</clip>
+        <clip>Elliot_UK - limitations 2</clip>
+        <clip>Greg - AI 1</clip>
+        <clip>Greg - AI 2</clip>
+        <clip>Greg - Object Oriented Ontology 2</clip>
+        <clip>Greg - object oriented ontology 1</clip>
+        <clip>Greg - ubiquitous computing</clip>
+        <clip>Intro - KinectFutureCamera</clip>
+        <clip>JTNimoy - Describe the Kinect</clip>
+        <clip>JTNimoy - increased the bandwidth</clip>
+        <clip>Jen - Lidar 1</clip>
+        <clip>Kyle_CH - RGBD</clip>
+        <clip>Kyle_CH - face OSC</clip>
+        <clip>Kyle_CH - tribe of New media</clip>
+        <clip>Kyle_MC - Debug screen</clip>
+        <clip>Kyle_MC - Kinect</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Kyle_MC - faceOSC 2</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - folowing the finger</clip>
+        <clip>Kyle_MC - kinect 2</clip>
+        <clip>Kyle_MC - new aesthetic confession</clip>
+        <clip>Marius - Aesthetic with no references,</clip>
+        <clip>Marius - Machines change the way we see</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Marius - new tools change perception</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Regine - future camera</clip>
+        <clip>Sophy - made of photons</clip>
+        <clip>Theo - 3D sensing</clip>
+        <clip>Theo - eyebeam R&amp;D</clip>
+        <clip>Andres - Computational lens</clip>
+        <clip>Zach - Open CV</clip>
+        <clip>Bruce - future camera 3</clip>
+        <clip>Bruce - future camera 4</clip>
+        <clip>Greg - Gaze tracking</clip>
+        <clip>Kyle_MC - Camera doesn&apos;t care if you&apos;re human</clip>
+        <clip>Kyle_MC - vision</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -16106,19 +16244,75 @@
     <sound>0</sound>
 </system>
 <system name="Vision_Soho_Boxes">
-    <keywords></keywords>
+    <keywords>new aesthetic|face tracking|machine vision</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - curiosity</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Bruce - camera of future 25 years</clip>
+        <clip>Bruce - camera technician vs explorer</clip>
+        <clip>Bruce - digital status quo</clip>
+        <clip>Bruce - future camera 5</clip>
+        <clip>Bruce - future of the new aesthetic</clip>
+        <clip>Damion - OOO</clip>
+        <clip>Greg - AI 1</clip>
+        <clip>Greg - AI 2</clip>
+        <clip>Greg - Gaze tracking</clip>
+        <clip>Greg - Object Oriented Ontology 2</clip>
+        <clip>Greg - object oriented ontology 1</clip>
+        <clip>Greg - ubiquitous computing</clip>
+        <clip>Kyle_CH - RGBD</clip>
+        <clip>Kyle_CH - face OSC</clip>
+        <clip>Kyle_CH - new aesthetic 1</clip>
+        <clip>Kyle_CH - new aesthetic 2</clip>
+        <clip>Kyle_MC - Camera doesn&apos;t care if you&apos;re human</clip>
+        <clip>Kyle_MC - Debug screen</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - faceOSC 1</clip>
+        <clip>Kyle_MC - faceOSC 2</clip>
+        <clip>Kyle_MC - vision</clip>
+        <clip>Marius - Aesthetic with no references,</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Theo - 3D sensing</clip>
+        <clip>Theo - eyebeam R&amp;D</clip>
+        <clip>Zach - Open CV</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="Vision_Soho_HeatMap">
-    <keywords></keywords>
+    <keywords>new aesthetic</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - curiosity</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Bruce - camera technician vs explorer</clip>
+        <clip>Bruce - future of the new aesthetic</clip>
+        <clip>Damion - OOO</clip>
+        <clip>Elliot_UK - aesthetic of error</clip>
+        <clip>Elliot_UK - limitations 2</clip>
+        <clip>Greg - AI 1</clip>
+        <clip>Greg - AI 2</clip>
+        <clip>Greg - Object Oriented Ontology 2</clip>
+        <clip>Greg - object oriented ontology 1</clip>
+        <clip>Kyle_CH - new aesthetic 1</clip>
+        <clip>Kyle_CH - new aesthetic 2</clip>
+        <clip>Kyle_MC - Debug screen</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - new aesthetic 1</clip>
+        <clip>Kyle_MC - new aesthetic 2</clip>
+        <clip>Kyle_MC - new aesthetic confession</clip>
+        <clip>Marius - Aesthetic with no references,</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Marius - new tools change perception</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Theo - eyebeam R&amp;D</clip>
+    </suppressions>
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
@@ -16126,19 +16320,70 @@
     <sound>0</sound>
 </system>
 <system name="Vision_Tokyo1_boxes">
-    <keywords></keywords>
+    <keywords>surveillance|cities</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Bruce - Augmented Ubiquity</clip>
+        <clip>Bruce - Hand dryer</clip>
+        <clip>Javier - Drones can help</clip>
+        <clip>Javier - Hummingbird drone</clip>
+        <clip>Julian - Transparency grenade</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - People staring at screens 1</clip>
+        <clip>Kyle_MC - People staring at screens 3</clip>
+        <clip>Kyle_MC - People staring at screens 4</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Lauren - swapping perspectives 1</clip>
+        <clip>Lauren - swapping perspectives 2</clip>
+        <clip>Martin - birds eye view</clip>
+        <clip>Regine - future camera</clip>
+        <clip>Sophy - city</clip>
+        <clip>Ramsey - social computer</clip>
+        <clip>Bruce - future city 2</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="Vision_TokyoCrossing_flow">
-    <keywords></keywords>
+    <keywords>machine vision|surveillance|new aesthetic</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Bruce - Augmented Ubiquity</clip>
+        <clip>Bruce - Hand dryer</clip>
+        <clip>Bruce - camera of future 25 years</clip>
+        <clip>Bruce - camera technician vs explorer</clip>
+        <clip>Bruce - future camera 5</clip>
+        <clip>Greg - AI 1</clip>
+        <clip>Greg - Gaze tracking</clip>
+        <clip>Greg - camera getting cheaper</clip>
+        <clip>Greg - camera scaling up</clip>
+        <clip>Greg - cameras scaling up</clip>
+        <clip>Javier - Drones can help</clip>
+        <clip>Javier - Hummingbird drone</clip>
+        <clip>Julian - Transparency grenade</clip>
+        <clip>Kyle_CH - RGBD</clip>
+        <clip>Kyle_CH - face OSC</clip>
+        <clip>Kyle_MC - Camera doesn&apos;t care if you&apos;re human</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - People staring at screens 1</clip>
+        <clip>Kyle_MC - People staring at screens 3</clip>
+        <clip>Kyle_MC - People staring at screens 4</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Kyle_MC - faceOSC 2</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Lauren - swapping perspectives 1</clip>
+        <clip>Lauren - swapping perspectives 2</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Damion - OOO</clip>
+        <clip>Marius - Aesthetic with no references,</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Theo - eyebeam R&amp;D</clip>
+        <clip>Theo - 3D sensing</clip>
+    </suppressions>
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
@@ -16146,12 +16391,44 @@
     <sound>0</sound>
 </system>
 <system name="Vision_TokyoEscalator">
-    <keywords></keywords>
+    <keywords>surveillance|new aesthetic|cameras</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - curiosity</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Bruce - Augmented Ubiquity</clip>
+        <clip>Bruce - Hand dryer</clip>
+        <clip>Bruce - camera technician vs explorer</clip>
+        <clip>Damion - OOO</clip>
+        <clip>Greg - AI 1</clip>
+        <clip>Greg - AI 2</clip>
+        <clip>Greg - Gaze tracking</clip>
+        <clip>Greg - Object Oriented Ontology 2</clip>
+        <clip>Greg - object oriented ontology 1</clip>
+        <clip>Javier - Drones can help</clip>
+        <clip>Javier - Hummingbird drone</clip>
+        <clip>Julian - Transparency grenade</clip>
+        <clip>Kyle_CH - new aesthetic 1</clip>
+        <clip>Kyle_CH - new aesthetic 2</clip>
+        <clip>Kyle_MC - Debug screen</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - People staring at screens 1</clip>
+        <clip>Kyle_MC - People staring at screens 3</clip>
+        <clip>Kyle_MC - People staring at screens 4</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Lauren - swapping perspectives 1</clip>
+        <clip>Lauren - swapping perspectives 2</clip>
+        <clip>Marius - Aesthetic with no references,</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Marius - new tools change perception</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Theo - eyebeam R&amp;D</clip>
+        <clip>Theo - 3D sensing</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -16183,10 +16460,11 @@
         <clip>Marius - artificial creativity</clip>
         <clip>Philip - system in your head</clip>
         <clip>Theo - eyebeam R&amp;D</clip>
+        <clip>Bruce - camera technician vs explorer</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -16287,22 +16565,51 @@
     <sound>0</sound>
 </system>
 <system name="Vision_flowDancer">
-    <keywords></keywords>
+    <keywords>new aesthetic</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Bruce - camera technician vs explorer</clip>
+        <clip>Bruce - digital status quo</clip>
+        <clip>Kyle_MC - box on your face</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="Vision_tokyoCrossingHeatMap">
-    <keywords></keywords>
+    <keywords>machine vision|surveillance|cameras</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Bruce - Augmented Ubiquity</clip>
+        <clip>Bruce - Hand dryer</clip>
+        <clip>Bruce - camera of future 25 years</clip>
+        <clip>Bruce - camera technician vs explorer</clip>
+        <clip>Bruce - future camera 5</clip>
+        <clip>Elliot - Kinect</clip>
+        <clip>Greg - AI 1</clip>
+        <clip>Javier - Drones can help</clip>
+        <clip>Javier - Hummingbird drone</clip>
+        <clip>Julian - Transparency grenade</clip>
+        <clip>Kyle_CH - RGBD</clip>
+        <clip>Kyle_CH - face OSC</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - People staring at screens 1</clip>
+        <clip>Kyle_MC - People staring at screens 3</clip>
+        <clip>Kyle_MC - People staring at screens 4</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Kyle_MC - faceOSC 2</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Lauren - swapping perspectives 1</clip>
+        <clip>Lauren - swapping perspectives 2</clip>
+        <clip>Theo - 3D sensing</clip>
+        <clip>Zach - Open CV</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -16336,6 +16643,44 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Voro_Dream_Crystal1">
+    <keywords>dreams|generative art</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Aaron - dreaming together</clip>
+        <clip>Aaron - lego creatures</clip>
+        <clip>Aaron - progress</clip>
+        <clip>Bruce - Gardening 1</clip>
+        <clip>Bruce - Gardening 2</clip>
+        <clip>Bruce - Parametric vs Generative</clip>
+        <clip>Bruce - Simulation Replication Recursion</clip>
+        <clip>Higa - dreaming of problems</clip>
+        <clip>JTNimoy - Dream</clip>
+        <clip>JTNimoy - Dream1</clip>
+        <clip>Jer - Generative Art</clip>
+        <clip>Kevin - algo culture 4</clip>
+        <clip>Kyle_CH - abstraction</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>LIA - TimeStamps1</clip>
+        <clip>Lauren - toward greater consciousness</clip>
+        <clip>Marius - Continuous process of exploration</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Marius - parameter space</clip>
+        <clip>Nervous_Jesse - Marker 2</clip>
+        <clip>Ramsey - arab abstraction 2</clip>
+        <clip>Shiffman - sketching with code</clip>
+        <clip>Sophy - computer dream</clip>
+        <clip>Theo - favorite projects</clip>
+        <clip>Theo - generative and pre-rendered</clip>
+        <clip>Zach - action script shorter</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>C</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17274,7 +17619,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17284,7 +17629,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17294,7 +17639,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17304,7 +17649,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17314,7 +17659,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17324,7 +17669,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17334,7 +17679,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17344,7 +17689,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17354,7 +17699,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17364,7 +17709,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17374,7 +17719,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17384,7 +17729,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17394,7 +17739,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17404,7 +17749,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17414,7 +17759,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17424,7 +17769,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17434,7 +17779,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17444,7 +17789,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17454,7 +17799,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17464,7 +17809,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17474,7 +17819,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17484,7 +17829,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17494,7 +17839,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17504,7 +17849,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17514,7 +17859,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17524,7 +17869,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17534,7 +17879,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17544,7 +17889,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17554,7 +17899,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17564,7 +17909,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17574,7 +17919,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17584,7 +17929,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17594,7 +17939,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17604,7 +17949,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17614,7 +17959,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17624,7 +17969,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17634,7 +17979,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17644,7 +17989,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17654,7 +17999,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17664,7 +18009,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17674,7 +18019,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17684,7 +18029,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17694,7 +18039,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17704,7 +18049,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17714,7 +18059,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17724,7 +18069,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17734,7 +18079,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17744,7 +18089,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17754,7 +18099,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17764,7 +18109,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17774,7 +18119,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17784,7 +18129,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
