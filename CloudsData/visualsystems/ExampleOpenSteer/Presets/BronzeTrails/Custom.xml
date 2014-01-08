@@ -47,8 +47,33 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>DRAW TRAIL</Name>
+    <Name>NO TRAIL</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DASHED LINE TRAIL</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SOLID LINE TRAIL</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RIBBON TRAIL</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RIBBON SIZE</Name>
+    <Value>16.162561417</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TRAIL COLOR MIX</Name>
+    <Value>0.532019675</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -104,6 +129,21 @@
     <Kind>25</Kind>
     <Name>TRAIL_B</Name>
     <Value>0.513088822</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TRAIL_2_R</Name>
+    <Value>0.424083769</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TRAIL_2_G</Name>
+    <Value>0.397906393</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TRAIL_2_B</Name>
+    <Value>0.685863197</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
