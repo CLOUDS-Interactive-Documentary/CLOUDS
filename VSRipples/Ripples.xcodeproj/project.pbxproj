@@ -306,6 +306,8 @@
 		642CF54E18327E5D007394FF /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		642CF61018327ED2007394FF /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642CF5DC18327ED2007394FF /* ofxOculusRift.cpp */; };
 		859B6DF0182C59EA007A321A /* CloudsVisualSystemRipples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 859B6DEE182C59EA007A321A /* CloudsVisualSystemRipples.cpp */; };
+		AEB14CFC187DB02C00C5284D /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEB14CFB187DB02C00C5284D /* ofxSystemTextbox.mm */; };
+		AEB14CFD187DB02C00C5284D /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEB14CFB187DB02C00C5284D /* ofxSystemTextbox.mm */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -706,6 +708,8 @@
 		642CF5DD18327ED2007394FF /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		859B6DEE182C59EA007A321A /* CloudsVisualSystemRipples.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRipples.cpp; sourceTree = "<group>"; };
 		859B6DEF182C59EA007A321A /* CloudsVisualSystemRipples.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRipples.h; sourceTree = "<group>"; };
+		AEB14CFA187DB02C00C5284D /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		AEB14CFB187DB02C00C5284D /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -2052,6 +2056,8 @@
 				E7E5EC651817C01400CA4196 /* CloudsVisualSystem.cpp */,
 				E7E5EC661817C01400CA4196 /* CloudsVisualSystem.h */,
 				E7E5EC671817C01400CA4196 /* ofxLight.h */,
+				AEB14CFA187DB02C00C5284D /* ofxSystemTextbox.h */,
+				AEB14CFB187DB02C00C5284D /* ofxSystemTextbox.mm */,
 				E7E5EC681817C01400CA4196 /* README.md */,
 			);
 			name = VisualSystemsLibrary;
@@ -2219,6 +2225,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Ripples" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -2461,6 +2469,7 @@
 				642CF53518327E5D007394FF /* CloudsRGBDCamera.cpp in Sources */,
 				642CF53618327E5D007394FF /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				642CF53718327E5D007394FF /* CloudsVisualSystem.cpp in Sources */,
+				AEB14CFD187DB02C00C5284D /* ofxSystemTextbox.mm in Sources */,
 				642CF53818327E5D007394FF /* CloudsVisualSystemRipples.cpp in Sources */,
 				2ACA6BE718725AC40029603B /* TonicFrames.cpp in Sources */,
 				642CF61018327ED2007394FF /* ofxOculusRift.cpp in Sources */,
@@ -2661,6 +2670,7 @@
 				F302F58D185584D500EE514A /* IpEndpointName.cpp in Sources */,
 				2ACA6BD018725AC40029603B /* Noise.cpp in Sources */,
 				F302F58F185584D500EE514A /* NetworkingUtils.cpp in Sources */,
+				AEB14CFC187DB02C00C5284D /* ofxSystemTextbox.mm in Sources */,
 				F302F591185584D500EE514A /* UdpSocket.cpp in Sources */,
 				2ACA6B9018725AC40029603B /* ControlComparison.cpp in Sources */,
 				2ACA6B7818725AC40029603B /* ADSR.cpp in Sources */,
