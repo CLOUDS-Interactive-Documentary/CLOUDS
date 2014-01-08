@@ -38,6 +38,7 @@
 #include "CloudsVisualSystemMandala.h"
 #include "CloudsVisualSystemMarchingCubes.h"
 #include "CloudsVisualSystemMazeGenerator.h"
+#include "CloudsVisualSystemMazeGenerator2.h"
 #include "CloudsVisualSystemMemory.h"
 #include "CloudsVisualSystemMetaballs.h"
 #include "CloudsVisualSystemNbody.h"
@@ -65,6 +66,7 @@
 #include "CloudsVisualSystemProcess18.h"
 #include "CloudsVisualSystemRGBDVideo.h"
 #include "CloudsVisualSystemRandomDigits.h"
+#include "CloudsVisualSystemRandomDigits2.h"
 #include "CloudsVisualSystemReplicator.h"
 #include "CloudsVisualSystemRipples.h"
 #include "CloudsVisualSystemRulez.h"
@@ -139,6 +141,7 @@ struct Mapping {
 	{ "Mandala", &fCreate<CloudsVisualSystemMandala> },
 	{ "MarchingCubes", &fCreate<CloudsVisualSystemMarchingCubes> },
 	{ "MazeGenerator", &fCreate<CloudsVisualSystemMazeGenerator> },
+    { "MazeGenerator2", &fCreate<CloudsVisualSystemMazeGenerator2> },
 	{ "Memory", &fCreate<CloudsVisualSystemMemory> },
 //	{ "Metaballs", &fCreate<CloudsVisualSystemMetaballs> },
 //	{ "Nbody", &fCreate<CloudsVisualSystemNbody> },
@@ -166,6 +169,7 @@ struct Mapping {
 	{ "Process18", &fCreate<CloudsVisualSystemProcess18> },
 	{ "RGBDVideo", &fCreate<CloudsVisualSystemRGBDVideo> },
 	{ "RandomDigits", &fCreate<CloudsVisualSystemRandomDigits> },
+    { "RandomDigits2", &fCreate<CloudsVisualSystemRandomDigits> },
 	{ "Replicator", &fCreate<CloudsVisualSystemReplicator> },
 	{ "Ripples", &fCreate<CloudsVisualSystemRipples> },
 	{ "Rulez", &fCreate<CloudsVisualSystemRulez> },

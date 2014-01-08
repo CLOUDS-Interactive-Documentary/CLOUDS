@@ -17,6 +17,16 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>2D SCALE</Name>
+    <Value>13.705273628</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>USE INPUT</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>RADIUS</Name>
     <Value>1.000000000</Value>
 </Widget>
@@ -54,4 +64,14 @@
     <Kind>4</Kind>
     <Name>FADE</Name>
     <Value>0.500000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>e.gif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>mem.gif</Name>
+    <Value>1</Value>
 </Widget>

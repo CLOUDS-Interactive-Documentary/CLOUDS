@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Histogram</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>7.000000000</XPosition>
-    <YPosition>-10.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>1255.000000000</XPosition>
+    <YPosition>-9.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -36,6 +36,11 @@
     <Value>1</Value>
 </Widget>
 <Widget>
+    <Kind>4</Kind>
+    <Name>SAMPLE OFFSET</Name>
+    <Value>0.516748786</Value>
+</Widget>
+<Widget>
     <Kind>2</Kind>
     <Name>RANDOM</Name>
     <Value>0</Value>
@@ -49,6 +54,16 @@
     <Kind>2</Kind>
     <Name>BloodFlow.aif</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GTHappen.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GTNonStop.aif</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -103,7 +118,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL ADJUST</Name>
-    <Value>6.551723957</Value>
+    <Value>10.000000000</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>

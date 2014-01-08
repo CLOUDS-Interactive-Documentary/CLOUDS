@@ -1,0 +1,84 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BlankCircles</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Nasdaq</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Hashtags</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Regenerate</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>filled</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>num circles</Name>
+    <Value>50</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>hero percent</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>small size</Name>
+    <HighValue>5.000000000</HighValue>
+    <LowValue>5.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>large size</Name>
+    <HighValue>18.571430206</HighValue>
+    <LowValue>5.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>primary color H</Name>
+    <Value>0.270935953</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>primary color S</Name>
+    <Value>0.290640384</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>primary color V</Name>
+    <Value>0.325123161</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>secondary color H</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>secondary color S</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>secondary color V</Name>
+    <Value>1.000000000</Value>
+</Widget>

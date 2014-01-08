@@ -205,7 +205,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (IBAction)loadClip:(CloudsClip&)clip
 {
-	
+	cout<<"Im in load clip"<<endl;
 	if(clip.hasMediaAsset && clip.voiceOverAudio && CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath) ){
 		
 		CloudsVisualSystem::getRGBDVideoPlayer().swapAndPlay();
