@@ -20,8 +20,8 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , primaryIdx(-1)
 , jointLerpPct(0.3f)
 , posResetLerpPct(0.1f)
-, posSetLerpPct(0.01f)
-, posSetInstantThreshold(10)
+, posSetLerpPct(0.3f)
+, posSetInstantThreshold(20)
 , posOutOfBoundsStart(0)
 , posOutOfBoundsThreshold(2000)
 {
