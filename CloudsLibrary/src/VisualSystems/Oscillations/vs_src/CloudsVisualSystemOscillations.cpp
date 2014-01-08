@@ -133,6 +133,7 @@ void CloudsVisualSystemOscillations::selfSetup(){
     for (int i = 0; i < NUMPOINTS ; i++){
         //the Zpos serves as an index
         mesh.addVertex(ofPoint(0,0,i));
+        mesh.addColor(ofFloatColor(1.,1.,1.,1.));
     }
     
     //TODO: Find way to update on every resize
