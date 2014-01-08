@@ -1,0 +1,15 @@
+<Map>
+    <Bangs>
+        <Mapping>
+            <Widget>
+                <WidgetName>Quatumble</WidgetName>
+                <WidgetID>50</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </Bangs>
+    <Switches></Switches>
+    <SliderCurves></SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>

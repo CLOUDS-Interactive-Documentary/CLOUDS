@@ -12,6 +12,7 @@ uniform float curveHeight;
 uniform float curveZPos;
 uniform float curveDepth;
 
+varying vec4 fColor;
 /**
  * Gets the point in 3-space. 
  */
@@ -29,8 +30,8 @@ void main(){
 	gl_TexCoord[0] = gl_MultiTexCoord0;
 	vec4 v = vec4(getThePoint(pointID) , 1.); //infer position from z
 	gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * v;
-	float progressFalloff = float(pointID/numPoints < curveProgress); //TODO: make continuous;
-	gl_FrontColor = vec4(targetColor.xyz, progressFalloff * targetColor.w); 
+	float progressFalloff = float(pointID/numPoints < curveProgress) * float(pointID != 0.); //TODO: make continuous;
+	fColor = vec4(targetColor.xyz, progressFalloff * targetColor.w); 
 
 }
 

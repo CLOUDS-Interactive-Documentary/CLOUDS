@@ -1105,13 +1105,10 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
 			#else
 			string presetName = ofSystemTextBoxDialog("Save Preset As", currentPresetName);
 			#endif
-            if(presetName != "")
-            {
+            if(presetName != ""){
                 savePresetGUIS(presetName);
+				currentPresetName = presetName;
             }
-//            else{
-//                saveGUIS();
-//            }
         }
     }
     else if(name == "LOAD")
@@ -3095,6 +3092,7 @@ void CloudsVisualSystem::selfPostDraw(){
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
     
+	//TODO REPLACE WITH REAL CURSOR SYSTEM
     if(bDrawCursor){
         ofPushMatrix();
         ofPushStyle();
@@ -3120,9 +3118,8 @@ void CloudsVisualSystem::selfPostDraw(){
         }
         ofPopStyle();
         ofPopMatrix();
-
     }
-	
+	///END TODO
 	
 #endif
 

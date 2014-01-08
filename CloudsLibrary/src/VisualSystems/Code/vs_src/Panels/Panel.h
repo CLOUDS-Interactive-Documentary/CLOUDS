@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "ofxFTGL.h"
+#include "ofRange.h"
 
 #define MATCH_TYPES 5
 
@@ -26,9 +27,11 @@ class Panel {
 	Panel();
 	void setup();
 	void startAnimation();
-	
+	void resetAnimation();
 	void update();
 	void draw(float screenHeight);
+	
+	bool isDone();
 	
 	virtual void selfSetup();
 	virtual void selfUpdate();
@@ -38,6 +41,12 @@ class Panel {
 	
 	float offset;
 	float scanSpeed;
+	
+	ofColor* bgColor;
+	
+	float* speedBoost; //individualized speed boost
+	ofRange* expandSpeed;
+	float* startTimeDelay;
 	
 	string dataPath;
 	
@@ -50,6 +59,7 @@ class Panel {
 	float animationEndTime;
 
 	float* outlineAlpha;
+	float* marginLeft;
 	int maxCharsOnLine;
 	
 	ofFloatColor tint;
@@ -58,6 +68,8 @@ class Panel {
 	ofxFTGLFont* sharedFont;
 	ofxFTGLSimpleLayout* sharedLayout;
   protected:
+	
+	bool animationStarted;
 	void myReplace(string& str, const string& oldStr, const string& newStr);
 	int indexOf(string s, string f, int startIndex);
 

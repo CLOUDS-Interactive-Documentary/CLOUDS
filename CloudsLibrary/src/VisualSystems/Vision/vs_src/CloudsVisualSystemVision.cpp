@@ -407,6 +407,8 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
     rdrGui->addSlider("DIFF TINT", 0, 255, &diffAlpha);
     rdrGui->addSlider("FLOW WINDOW TINT", 0, 255, &windowAlpha);
 	rdrGui->addSlider("DIFFERENCE HUE",	0, 1.0, &hueShift);
+	rdrGui->addSlider("DIFFERENCE SAT",	0, 1.0, &satShift);
+	rdrGui->addSlider("DIFFERENCE BRI",	0, 1.0, &briShift);
     rdrGui->addDropDownList("VIDEO", movieStrings);
     rdrGui->autoSizeToFitWidgets();
     ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
@@ -602,6 +604,8 @@ void CloudsVisualSystemVision::selfDrawBackground()
 		shader.setUniformTexture("previousFrame", prev, 1);
 		shader.setUniformTexture("currentFrame", player->getTextureReference(), 2);
 		shader.setUniform1f("hueShift", hueShift);
+        shader.setUniform1f("satShift", satShift);
+        shader.setUniform1f("briShift", briShift);
 		m.draw();
 		
 		shader.end();

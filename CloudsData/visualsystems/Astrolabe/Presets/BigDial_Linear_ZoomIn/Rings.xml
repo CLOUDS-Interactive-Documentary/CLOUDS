@@ -1,0 +1,72 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Rings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1249.000000000</XPosition>
+    <YPosition>20.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>44</Kind>
+    <Name>count</Name>
+    <Value>30</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>innerRadius</Name>
+    <Value>10.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>width</Name>
+    <Value>1.980246186</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>thickness</Name>
+    <Value>4.980394363</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>lowRadians</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>hiRadians</Name>
+    <Value>3.373730183</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Spacing</Name>
+    <Value>13.300493240</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>useSpheres</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numSpheresPerArc</Name>
+    <Value>5</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>sphereScale</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>drawCircles</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>circleLinewidth</Name>
+    <Value>0.100000001</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>circleOpacity</Name>
+    <Value>30.000000000</Value>
+</Widget>

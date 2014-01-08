@@ -254,7 +254,7 @@ void CloudsVisualSystemAstrolabe::selfGuiEvent(ofxUIEventArgs &e)
 	//TICKS
 	else if(parentName == "Ticks" || parentName == "EASE_TYPES")
 	{
-		if(e.getKind() == OFX_UI_WIDGET_TOGGLE && e.getToggle()->getValue() )
+        if(e.getKind() == OFX_UI_WIDGET_TOGGLE && e.getToggle()->getValue() )
 		{
 			for (map<string, ofxEasing*>::iterator it = easeMap.begin(); it!=easeMap.end(); it++)
 			{

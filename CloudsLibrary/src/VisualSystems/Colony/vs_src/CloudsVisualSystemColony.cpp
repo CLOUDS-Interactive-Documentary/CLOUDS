@@ -8,8 +8,6 @@ string CloudsVisualSystemColony::getSystemName()
 void CloudsVisualSystemColony::selfSetup()
 {
     
-    numInitialCells = 100;
-    kernel_maxValue = 0.8;
     vbo.setMode(OF_PRIMITIVE_POINTS);
     
 	ofDisableArbTex();
@@ -23,6 +21,39 @@ void CloudsVisualSystemColony::selfSetup()
  
     // sound
     synth.setOutputGen(buildSynth());
+}
+
+void CloudsVisualSystemColony::selfSetDefaults(){
+    
+    numInitialCells = 100;
+    kernelMaxValue = 0.8;
+    levelSetShadowAmt = 0.5;
+    kernelShadowAmt = 0.5;
+    
+    params.dynamicFrictionCoeff = 0.1;
+    params.deathThreshold = .002;
+    params.amtTurbulence = .5;
+    params.amtAlign = 2;
+    params.amtSeparate = 80;
+    params.amtCohere = .5;
+    params.lifespanMin = 30;
+    params.lifespanMax = 200;
+    params.spdTurbulence = 10;
+    params.fertilityRate = .8;
+    
+    params.nutrientAmount = 350;
+    params.nutrientTimeCoef = 100;
+    params.nutrientFalloff = 0.5;
+    params.nutrientScale = 0.01;
+    
+    params.maxSpeed_min = 0.3;
+    params.maxSpeed_max = 0.6;
+    
+    params.maxForce_min = 0.6;
+    params.maxForce_max = 1.0;
+    
+    params.maxSize_min = 3;
+    params.maxSize_max = 8;
 }
 
 void CloudsVisualSystemColony::loadShaders(){
@@ -77,6 +108,7 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     guiLooks->copyCanvasProperties(gui);
     guiLooks->setName("LOOKS");
     guiLooks->addToggle("Level Set BG", &levelSetBG);
+    guiLooks->addSlider("Level Set Shadow", 0, 1, &levelSetShadowAmt);
     guiLooks->setWidgetFontSize(OFX_UI_FONT_SMALL);
     guiLooks->addSlider("Cell Floor Translusence", 0., 1., &translucenseCell);
     guiLooks->addSlider("Dish Floor Translusence", 0., 1., &translucenseDish);
@@ -106,6 +138,7 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     guiLooks->addSlider("B2", 0, 1., &(kernelColor_low.z), hDim, vDim);
     guiLooks->addSlider("A2", 0, 1., &(kernelColor_low.w), hDim, vDim);
     guiLooks->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    guiLooks->addSlider("Shadow", 0, 1., &kernelShadowAmt);
 
     guis.push_back(guiDynamics);
     guis.push_back(guiLooks);
@@ -186,7 +219,7 @@ void CloudsVisualSystemColony::selfUpdate()
         sprite.bind();
 
         billboard.setUniform3fv("light", (*(*lights.begin()).second).light.getPosition().getPtr());
-        billboard.setUniform1f("kernel_maxValue", kernel_maxValue);
+        billboard.setUniform1f("kernelMaxValue", kernelMaxValue);
         vbo.draw();
         
         sprite.unbind();
@@ -240,13 +273,15 @@ void CloudsVisualSystemColony::selfDrawBackground()
         levelSet.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
         levelSet.setUniform1i("levelSet", levelSetMode);
         levelSet.setUniform1i("levelSetBg", levelSetBG);
+        levelSet.setUniform1f("levelSetShadowAmt", levelSetShadowAmt);
         levelSet.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
         levelSet.setUniform2f("imgRes", grunge.getWidth(), grunge.getHeight());
         levelSet.setUniform1f("translucenseCell", translucenseCell);
         levelSet.setUniform1f("translucenseDish", translucenseDish);
         levelSet.setUniform4fv("kernelColor_high", kernelColor_high.getPtr());
         levelSet.setUniform4fv("kernelColor_low", kernelColor_low.getPtr());
-        levelSet.setUniform1f("kernel_maxValue", kernel_maxValue);
+        levelSet.setUniform1f("kernelShadowAmt", kernelShadowAmt);
+        levelSet.setUniform1f("kernelMaxValue", kernelMaxValue);
         
         ofxLight& l = (*(*lights.begin()).second);
         levelSet.setUniform3fv("lightDirection", l.lightPos.getPtr());

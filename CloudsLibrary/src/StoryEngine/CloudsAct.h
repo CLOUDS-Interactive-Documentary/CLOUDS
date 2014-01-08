@@ -18,9 +18,10 @@
 typedef enum {
     Clip =0,
     VS,
-    Gap,
+//    Gap,
     Question,
-    PreRoll
+    PreRoll,
+	Note
 }ActItemType;
 
 struct ActTimeItem{
@@ -93,15 +94,17 @@ class CloudsAct{
 
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
     float addClip(CloudsClip& clip, string topic, float startTime);
-    float addClip(CloudsClip& clip, string topic, float startTime, float handleLength, vector<CloudsDichotomy> currentDichotomiesBalance);
-    float addVisualSystem(CloudsVisualSystemPreset& preset, float startTime, float duration);
-    void addGapForCadence(CloudsVisualSystemPreset& preset,float startTime, float duration);
-    void updateClipStartTime(CloudsClip clip, float startTime, float handleLength,string topic);
-    void addQuestion(CloudsClip clip, string topic, float startTime);
-    void addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName);
+    float addClip(CloudsClip& clip, string topic, float startTime, vector<CloudsDichotomy> currentDichotomiesBalance);
+    float addVisualSystem(CloudsVisualSystemPreset& preset, float startTime, float endTime);
+    void addQuestion(CloudsClip& clip, string topic, float startTime);
+	void addNote(string note, float time);
 	
-    void removeActItem(ActTimeItem item);
-    void updateVsEndTime(CloudsVisualSystemPreset& preset, float newEndTime);
+//    void updateClipStartTime(CloudsClip clip, float startTime, float handleLength,string topic);
+//    void addGapForCadence(CloudsVisualSystemPreset& preset,float startTime, float duration);
+//    void addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName);
+//    void removeActItem(ActTimeItem item);
+//    void updateVsEndTime(CloudsVisualSystemPreset& preset, float newEndTime);
+	
     ActTimeItem& getItemForClip(CloudsClip& clip);
     ActTimeItem& getItemForVisualSystem(CloudsVisualSystemPreset& preset);
     float getClipStartTime(CloudsClip& clip);
@@ -127,7 +130,9 @@ class CloudsAct{
     ofxTLFlags* topicsTrack;
     ofxTLFlags* questionsTrack;
     ofxTLFlags* difficultyTrack;
-    ofxTLFlags* vsGapsTrack;
+	
+    ofxTLFlags* notesTrack;
+//    ofxTLFlags* vsGapsTrack;
 	
     ActItemType itemType;
 	
@@ -162,9 +167,11 @@ class CloudsAct{
     map<string, vector<CloudsDichotomy> > dichotomiesMap;
 	ofxTLFlags* dichotomyClips;
 	map<string, ofxTLCurves*> dichotomyTracks;
+
+	vector< pair<string,float> > notes;
 	
 	vector<CloudsSoundCue> cues;
-	
+
     float duration;
     int currentPlayIndex;
     void loadNextClip();

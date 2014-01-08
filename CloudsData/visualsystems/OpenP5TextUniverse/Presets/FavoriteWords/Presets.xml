@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1273.000122070</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>322.000000000</XPosition>
+    <YPosition>343.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,6 +18,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>BasicPreset</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Borges_ordered</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

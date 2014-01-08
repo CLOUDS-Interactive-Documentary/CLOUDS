@@ -1,5 +1,18 @@
 <keyframes>
     <key>
+        <px>-29.549030304</px>
+        <py>117.599510193</py>
+        <pz>108.721099854</pz>
+        <ox>-0.345356524</ox>
+        <oy>-0.216657847</oy>
+        <oz>-0.282130033</oz>
+        <ow>0.868443906</ow>
+        <easein>0</easein>
+        <easeout>0</easeout>
+        <time>00:00:03:519</time>
+        <value>0.050000012</value>
+    </key>
+    <key>
         <px>-29.549037933</px>
         <py>117.599571228</py>
         <pz>108.721168518</pz>
@@ -9,20 +22,46 @@
         <ow>0.868444026</ow>
         <easein>0</easein>
         <easeout>0</easeout>
-        <time>00:00:06:088</time>
-        <value>0.147273242</value>
+        <time>00:00:08:564</time>
+        <value>0.047273278</value>
     </key>
     <key>
-        <px>-11.698495865</px>
-        <py>46.557682037</py>
-        <pz>43.042705536</pz>
-        <ox>-0.345356375</ox>
-        <oy>-0.216657937</oy>
-        <oz>-0.282130152</oz>
-        <ow>0.868444026</ow>
-        <easein>2</easein>
+        <px>-35.583427429</px>
+        <py>39.115818024</py>
+        <pz>50.734401703</pz>
+        <ox>-0.345356524</ox>
+        <oy>-0.216657832</oy>
+        <oz>-0.282130003</oz>
+        <ow>0.868443906</ow>
+        <easein>0</easein>
         <easeout>0</easeout>
-        <time>00:00:20:526</time>
-        <value>0.004773283</value>
+        <time>00:00:15:179</time>
+        <value>0.000000000</value>
+    </key>
+    <key>
+        <px>-32.392135620</px>
+        <py>26.415031433</py>
+        <pz>38.992481232</pz>
+        <ox>-0.345356524</ox>
+        <oy>-0.216657832</oy>
+        <oz>-0.282130003</oz>
+        <ow>0.868443906</ow>
+        <easein>0</easein>
+        <easeout>0</easeout>
+        <time>00:00:23:454</time>
+        <value>0.000000000</value>
+    </key>
+    <key>
+        <px>-29.549030304</px>
+        <py>117.599510193</py>
+        <pz>108.721099854</pz>
+        <ox>-0.345356524</ox>
+        <oy>-0.216657847</oy>
+        <oz>-0.282130033</oz>
+        <ow>0.868443906</ow>
+        <easein>0</easein>
+        <easeout>0</easeout>
+        <time>00:00:30:637</time>
+        <value>0.050000012</value>
     </key>
 </keyframes>

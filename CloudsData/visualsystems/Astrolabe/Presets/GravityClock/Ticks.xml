@@ -1,0 +1,117 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Ticks</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>delayOffsetScale</Name>
+    <Value>0.250000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>innerSpeed</Name>
+    <Value>1.429428577</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>outerSpeed</Name>
+    <Value>10.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>skipAheadOnCreation</Name>
+    <Value>7</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BOUNCE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CUBIC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LINEAR</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>QUADRATIC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>QUINTIC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SINE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>XRot</Name>
+    <Value>59</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>xTickSpeed</Name>
+    <Value>215</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>xTickDelay</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>xReverse</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>YRot</Name>
+    <Value>165</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>yTickSpeed</Name>
+    <Value>88</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>yTickDelay</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>yReverse</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>ZRot</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>zTickSpeed</Name>
+    <Value>804</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>zTickDelay</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>zReverse</Name>
+    <Value>0</Value>
+</Widget>

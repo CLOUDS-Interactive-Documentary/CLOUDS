@@ -10,7 +10,6 @@
 #include "CloudsGlobal.h"
 
 PanelTenPrint::PanelTenPrint(){
-	charsPerSecond = 1;
 	maxChars = 0;
 }
 
@@ -43,7 +42,7 @@ void PanelTenPrint::selfUpdate(){
 //	if(ofGetFrameNum() % 100 == 0){
 //		cout << endl;
 //	}
-	maxChars = offset*20.;
+	maxChars = offset * (*speedBoost);
 }
 
 void PanelTenPrint::selfDraw(){
