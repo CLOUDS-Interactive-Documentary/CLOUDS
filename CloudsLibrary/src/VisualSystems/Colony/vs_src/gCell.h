@@ -90,32 +90,7 @@ public:
     nutrientAmount, nutrientTimeCoef, nutrientFalloff, nutrientScale, maxSpeed_min,
     maxSpeed_max, maxSize_min, maxSize_max, maxForce_min, maxForce_max;
     
-    cellParams(){
-        dynamicFrictionCoeff = 0.1;
-        deathThreshold = .002;
-        amtTurbulence = .5;
-        amtAlign = 2;
-        amtSeparate = 80;
-        amtCohere = .5;
-        lifespanMin = 30;
-        lifespanMax = 200;
-        spdTurbulence = 10;
-        fertilityRate = .8;
-        
-        nutrientAmount = 350;
-        nutrientTimeCoef = 100;
-        nutrientFalloff = 0.5;
-        nutrientScale = 0.01;
-        
-        maxSpeed_min = 0.3;
-        maxSpeed_max = 0.6;
-        
-        maxForce_min = 0.6;
-        maxForce_max = 1.0;
-        
-        maxSize_min = 3;
-        maxSize_max = 8;
-    }
+    cellParams(){}
 };
 
 class coord2i {

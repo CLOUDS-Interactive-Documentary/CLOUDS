@@ -68,6 +68,7 @@
 		285C213A183002390065BCAE /* MeshUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2131183002390065BCAE /* MeshUtils.cpp */; };
 		285C213B183002390065BCAE /* SphericalGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2134183002390065BCAE /* SphericalGenerator.cpp */; };
 		285C213C183002390065BCAE /* SuperFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2136183002390065BCAE /* SuperFormula.cpp */; };
+		28AC9E92187C64B800D3C175 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28AC9E91187C64B800D3C175 /* ofxSystemTextbox.mm */; };
 		2A567062186E6D0100E7C982 /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A567050186E6D0100E7C982 /* CloudsAudioEvents.cpp */; };
 		2A567063186E6D0100E7C982 /* CloudsMixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A567052186E6D0100E7C982 /* CloudsMixer.cpp */; };
 		2A567121186E6D2300E7C982 /* ofxTonicSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A5670A2186E6D2300E7C982 /* ofxTonicSynth.cpp */; };
@@ -429,6 +430,8 @@
 		285C2135183002390065BCAE /* SphericalGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphericalGenerator.h; sourceTree = "<group>"; };
 		285C2136183002390065BCAE /* SuperFormula.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SuperFormula.cpp; sourceTree = "<group>"; };
 		285C2137183002390065BCAE /* SuperFormula.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperFormula.h; sourceTree = "<group>"; };
+		28AC9E90187C64B800D3C175 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		28AC9E91187C64B800D3C175 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		2A567050186E6D0100E7C982 /* CloudsAudioEvents.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsAudioEvents.cpp; sourceTree = "<group>"; };
 		2A567051186E6D0100E7C982 /* CloudsAudioEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsAudioEvents.h; sourceTree = "<group>"; };
 		2A567052186E6D0100E7C982 /* CloudsMixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMixer.cpp; sourceTree = "<group>"; };
@@ -1509,6 +1512,8 @@
 				E72FF11E17E688FE0007780D /* CloudsVisualSystem.cpp */,
 				E72FF11F17E688FE0007780D /* CloudsVisualSystem.h */,
 				E72FF12017E688FE0007780D /* ofxLight.h */,
+				28AC9E90187C64B800D3C175 /* ofxSystemTextbox.h */,
+				28AC9E91187C64B800D3C175 /* ofxSystemTextbox.mm */,
 			);
 			name = VisualSystemsLibrary;
 			path = src/VisualSystemsLibrary;
@@ -2275,6 +2280,7 @@
 				2A56713C186E6D2300E7C982 /* ControlRecorder.cpp in Sources */,
 				285C20A1182FFFEE0065BCAE /* FxaaPass.cpp in Sources */,
 				285C20A2182FFFEE0065BCAE /* GodRaysPass.cpp in Sources */,
+				28AC9E92187C64B800D3C175 /* ofxSystemTextbox.mm in Sources */,
 				285C20A3182FFFEE0065BCAE /* HorizontalTiltShifPass.cpp in Sources */,
 				285C20A4182FFFEE0065BCAE /* KaleidoscopePass.cpp in Sources */,
 				285C20A5182FFFEE0065BCAE /* LimbDarkeningPass.cpp in Sources */,
