@@ -12,6 +12,8 @@ uniform float fade; //0.00 - 0.2
 float kernel[9];
 vec2 offset[9];
 
+uniform vec2 mouse;
+
 void main(void){
     vec2 st   = gl_TexCoord[0].st;
     
@@ -36,9 +38,9 @@ void main(void){
     offset[8] = vec2(  1.0, 1.0);
     
     vec2 texColor		= texture2DRect( backbuffer, st ).rb;
-    float srcTexColor   = texture2DRect( tex0, st ).r*abs(sin(time*0.01))*fade
-    ;
-    
+    float srcTexColor   = texture2DRect( tex0, st ).r*abs(sin(time*0.01))*fade;
+   // float srcTexColor   = vec2(texture2DRect( tex0, st )*mouse).r;
+
     vec2 lap            = vec2( 0.0, 0.0 );
     
     for( int i=0; i < 9; i++ ){

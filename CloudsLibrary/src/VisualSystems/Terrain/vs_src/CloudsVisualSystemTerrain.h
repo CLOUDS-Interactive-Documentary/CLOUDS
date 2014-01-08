@@ -37,6 +37,8 @@ public:
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
     
+    void selfInteractionMoved(CloudsInteractionEventArgs& args);
+    
     void selfSetupGui();
  
     void selfSetupSystemGui();
@@ -60,6 +62,8 @@ protected:
     void     setResolution( int _width, int _height );
     
     ofxUISuperCanvas* customGui;
+    ofxUISuperCanvas* fogGui;
+
     bool customToggle;
     
     // Noise
@@ -96,6 +100,7 @@ protected:
         ofVec3f*    pNormals;
     ofVec3f*    pVertices;          // Vertex Data
     ofVec2f*    pTexCoords;         // Texture Coordinates
+    ofFloatColor*    pColors; //colors
         int         nVertexCount;       // Vertex Count
     bool        bChange;
     
@@ -112,4 +117,29 @@ protected:
     //
     ofVec2f     camPosition;
     float       camAltitud;
+    
+    ofShader   colorShader;
+    ofShader   circleShader;
+    ofFloatColor  mHighColor;
+    ofFloatColor  mLowColor;
+    float          mAtten;
+    float         mBalance;
+    ofVec2f mouse;
+    ofImage canvas;
+    
+    bool bShowDebug;
+    bool bDoNoise;
+    bool bDoDraw;
+    ofFloatColor fc;
+    float fogDist;
+    float fogExpo;
+    bool bUseFog;
+    int fogHue;
+    int fogSaturation;
+    int fogBrightness;
+    
+    float bgHue;
+	float bgSat;
+	float bgBri;
+    float mTexMix;
 };

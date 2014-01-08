@@ -622,6 +622,7 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 			}
 		}
 	}
+	
 	return presetsWithKeywords;
 }
 
@@ -803,7 +804,7 @@ void CloudsVisualSystemManager::unsuppressClip(string presetID, string clip){
 }
 
 //--------------------------------------------------------------------
-bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip){
+bool CloudsVisualSystemManager::isClipSuppressed(string presetID, string clip){
     int deadIndex;
     return isClipSuppressed(presetID, clip, deadIndex);
 }
