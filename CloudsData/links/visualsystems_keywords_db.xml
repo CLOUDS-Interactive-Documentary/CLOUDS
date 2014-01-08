@@ -3348,6 +3348,36 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Code_Code_Console_default">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Code_Code_default">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Code_Cryptic">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Code_JG_10PRINT_Cascade">
     <keywords></keywords>
     <links></links>
@@ -3359,6 +3389,235 @@
     <sound>0</sound>
 </system>
 <system name="Code_JG_BlueCascade">
+    <keywords>code is messy|code|programming|program or be programmed|man vs machine</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Aaron - Mini-Artificial Intelligences</clip>
+        <clip>Andres - DNA computing 2</clip>
+        <clip>Andres - examples of the impossible</clip>
+        <clip>Andres - sharing code</clip>
+        <clip>Binx - Programming is a superpower</clip>
+        <clip>Binx - programming is a superpower</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Bruce - Constant improvement</clip>
+        <clip>Bruce - Simulation Replication Recursion</clip>
+        <clip>Bruce - Volition</clip>
+        <clip>Bruce - beauty of code 1</clip>
+        <clip>Bruce - beauty of code 2</clip>
+        <clip>Bruce - beauty of code 3</clip>
+        <clip>Bruce - fanciful metaphors 1</clip>
+        <clip>Casey - Computer as collaborator</clip>
+        <clip>Casey - Programming at 26</clip>
+        <clip>Casey - Software is what i love the most</clip>
+        <clip>Damion - CodingAndCommunication</clip>
+        <clip>Diederick - allprogrammershavethat</clip>
+        <clip>Diederick - hackathon1</clip>
+        <clip>Greg - Doug Engelbart part 1</clip>
+        <clip>Greg - Object Oriented Ontology 2</clip>
+        <clip>Greg - human augmentation</clip>
+        <clip>Greg - object oriented ontology 1</clip>
+        <clip>Higa - beginnings</clip>
+        <clip>Higa - not sharing its a backup</clip>
+        <clip>Higa - process of working alone</clip>
+        <clip>Higa - sharing accidently 1</clip>
+        <clip>Higa - sharing accidently 2</clip>
+        <clip>Higa - understanding pointers</clip>
+        <clip>Intro - Computers</clip>
+        <clip>Intro - Learning</clip>
+        <clip>Intro - Programming</clip>
+        <clip>JTNimoy - I addicted myself</clip>
+        <clip>JTNimoy - Pickle</clip>
+        <clip>JTNimoy - be a robot</clip>
+        <clip>JTNimoy - evolution</clip>
+        <clip>Javier - behavior change</clip>
+        <clip>Jen - hated computer science</clip>
+        <clip>Jen - necessity of code 1</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jen - sitting in front of a computer</clip>
+        <clip>Jen - struggle with programming</clip>
+        <clip>Jen - to program or not to program</clip>
+        <clip>Joel - Bicycles1</clip>
+        <clip>Joel - Bicycles for the Mind</clip>
+        <clip>Julia - human in tech</clip>
+        <clip>Julia - program or be programmed</clip>
+        <clip>Julian - Shapes the way we think</clip>
+        <clip>Julian - change the way we see tech</clip>
+        <clip>Julian - mixing code</clip>
+        <clip>Julian - open source</clip>
+        <clip>Karsten - code as way of knowing</clip>
+        <clip>Karsten - code has nothing to do with machines</clip>
+        <clip>Karsten - code is information</clip>
+        <clip>Karsten - demo scene 3</clip>
+        <clip>Karsten - power point vs programming</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Karsten - users</clip>
+        <clip>Karsten - why don&apos;t we learn?</clip>
+        <clip>Kevin - algo chess 1</clip>
+        <clip>Kevin - algo chess 2</clip>
+        <clip>Kevin - algo culture 2</clip>
+        <clip>Kevin - algo culture 4</clip>
+        <clip>Kevin - cognition vs computation 1</clip>
+        <clip>Kevin - computer perception</clip>
+        <clip>Kevin - crash and burn</clip>
+        <clip>Kevin - from code to magazines to code</clip>
+        <clip>Kevin - learning to code</clip>
+        <clip>Kevin - machines crash</clip>
+        <clip>Kevin - math havoc 1</clip>
+        <clip>Kevin - math havoc 2</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kevin - tracking rendition flights</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>Kyle_MC - Grab them ASAP</clip>
+        <clip>Kyle_MC - Transparent Tech</clip>
+        <clip>Kyle_MC - Transparent tech 2</clip>
+        <clip>Kyle_MC - We don&apos;t understand the thing</clip>
+        <clip>LIA - Formulas</clip>
+        <clip>LIA - HandCopyingCode</clip>
+        <clip>LIA - Lingo</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>Maeda - Coding for humanity</clip>
+        <clip>Maeda - own the tool</clip>
+        <clip>Marius - Machines change the way we see</clip>
+        <clip>Marius - code can be messy</clip>
+        <clip>Marius - cyperpunk history</clip>
+        <clip>Marius - new tools change perception</clip>
+        <clip>Martin - language and infinity</clip>
+        <clip>Martin - language is like code</clip>
+        <clip>Martin - verbal programming debate</clip>
+        <clip>Paola - changes the way you think</clip>
+        <clip>Paola - code changes your thinking</clip>
+        <clip>Paola - code is a language</clip>
+        <clip>Patricio - CopyPaste</clip>
+        <clip>Philip - get an idea</clip>
+        <clip>Philip - image is in your brain</clip>
+        <clip>Philip - its a tool</clip>
+        <clip>Philip - learn through programming</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Philip - with programming you can do whatever</clip>
+        <clip>Ramsey - C++ built the modern world</clip>
+        <clip>Ramsey - Google glass</clip>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Ramsey - a piece of my mind</clip>
+        <clip>Ramsey - algorithms run wild</clip>
+        <clip>Ramsey - beauty of code</clip>
+        <clip>Ramsey - beauty of the score</clip>
+        <clip>Ramsey - cloud 1</clip>
+        <clip>Ramsey - cloud 2</clip>
+        <clip>Ramsey - code specifies behavior</clip>
+        <clip>Ramsey - complicated C++</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Ramsey - dating algorithms</clip>
+        <clip>Ramsey - designing languages</clip>
+        <clip>Ramsey - dystopia</clip>
+        <clip>Ramsey - google&apos;s business model 1</clip>
+        <clip>Ramsey - google&apos;s business model 2</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Ramsey - language as expression</clip>
+        <clip>Ramsey - language self expression</clip>
+        <clip>Ramsey - legos 1</clip>
+        <clip>Ramsey - legos 2</clip>
+        <clip>Ramsey - legos 3</clip>
+        <clip>Ramsey - literacy</clip>
+        <clip>Ramsey - ownership and programming</clip>
+        <clip>Ramsey - trapese 1</clip>
+        <clip>Ramsey - trapese 2</clip>
+        <clip>Ramsey - why code is special</clip>
+        <clip>Shantell - Coding: what does it feel like?</clip>
+        <clip>Shantell - Coding gesturally</clip>
+        <clip>Shiffman - Carl Sims</clip>
+        <clip>Shiffman - Constraints,</clip>
+        <clip>Shiffman - Maybe I&apos;d like that</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Shiffman - offers me a way to think</clip>
+        <clip>Zach - Fucking boring</clip>
+        <clip>Zach - action script</clip>
+        <clip>Zach - action script shorter</clip>
+        <clip>Zach - hide the tech</clip>
+        <clip>Zach - minecraft livecode</clip>
+        <clip>Zach - on the street</clip>
+        <clip>Zach - programming 2</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Code_JG_Spreadsheet">
+    <keywords>code|error|dysfunction|control</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>LIA - HandCopyingCode</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>Martin - language is like code</clip>
+        <clip>Casey - Software is what i love the most</clip>
+        <clip>Andres - sharing code</clip>
+        <clip>Bruce - Gardening 2</clip>
+        <clip>Bruce - Simulation Replication Recursion</clip>
+        <clip>Bruce - beauty of code 1</clip>
+        <clip>Bruce - beauty of code 2</clip>
+        <clip>Bruce - beauty of code 3</clip>
+        <clip>Bruce - fanciful metaphors 1</clip>
+        <clip>Aaron - Mini-Artificial Intelligences</clip>
+        <clip>Higa - beginnings</clip>
+        <clip>Higa - not sharing its a backup</clip>
+        <clip>Higa - sharing accidently 1</clip>
+        <clip>Higa - sharing accidently 2</clip>
+        <clip>Higa - thick wall</clip>
+        <clip>Intro - Computers</clip>
+        <clip>JTNimoy - evolution</clip>
+        <clip>Javier - behavior change</clip>
+        <clip>Julian - Shapes the way we think</clip>
+        <clip>Karsten - code has nothing to do with machines</clip>
+        <clip>Karsten - code is information</clip>
+        <clip>Karsten - demo scene 3</clip>
+        <clip>Kevin - from code to magazines to code</clip>
+        <clip>Kevin - learning to code</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>LIA - Formulas</clip>
+        <clip>LIA - MalleableMath</clip>
+        <clip>Lauren - Limits of self 2</clip>
+        <clip>Lauren - computer self 1</clip>
+        <clip>Lauren - data ownership 1</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Martin - language and infinity</clip>
+        <clip>Paola - changes the way you think</clip>
+        <clip>Paola - code changes your thinking</clip>
+        <clip>Paola - code is a language</clip>
+        <clip>Patricio - CopyPaste</clip>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Ramsey - a piece of my mind</clip>
+        <clip>Ramsey - beauty of code</clip>
+        <clip>Ramsey - beauty of the score</clip>
+        <clip>Ramsey - cloud 1</clip>
+        <clip>Ramsey - cloud 2</clip>
+        <clip>Ramsey - code specifies behavior</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Ramsey - dystopia</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Ramsey - language self expression</clip>
+        <clip>Ramsey - why code is special</clip>
+        <clip>Shantell - drawing with computers</clip>
+        <clip>Shiffman - Carl Sims</clip>
+        <clip>Sophy - are we having fun?</clip>
+        <clip>Theo - struggle with technology</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Code_JG_TenPrintCascade">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -3368,7 +3627,7 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Code_JG_Spreadsheet">
+<system name="Code_basic1">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -7966,6 +8225,28 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Memory_DataOverload">
+    <keywords>information overload|big data</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Binx - geodata</clip>
+        <clip>Fernanda - Policy and data</clip>
+        <clip>Fernanda - live data</clip>
+        <clip>Javier - Julian Oliver</clip>
+        <clip>Jen - data crystal ball 1</clip>
+        <clip>Jen - data crystal ball 3</clip>
+        <clip>Julian - data viz endorsement</clip>
+        <clip>Kevin - computer perception</clip>
+        <clip>Lauren - data ownership 1</clip>
+        <clip>Maeda - distraction and focus</clip>
+        <clip>Martin - Big data 1</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Memory_DeFrag">
     <keywords>error</keywords>
     <links></links>
@@ -7986,8 +8267,8 @@
         <clip>Shantell - drawing with computers</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -8011,8 +8292,8 @@
         <clip>Ramsey - computation is interpretation of rules</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -8036,6 +8317,16 @@
         <clip>Kevin - invented as opposed to discovered 2</clip>
         <clip>Kevin - computer perception</clip>
         <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Bruce - beauty of code 3</clip>
+        <clip>Bruce - machines don&apos;t think 1</clip>
+        <clip>Bruce - machines don&apos;t think 2</clip>
+        <clip>Casey - Massive parallel systems</clip>
+        <clip>Philip - build the whole universe</clip>
+        <clip>Philip - first time computation</clip>
+        <clip>Ramsey - computation is interpretation of rules</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - social computer</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
@@ -8221,7 +8512,9 @@
 </system>
 <system name="Memory_ThinBlueRows_wide">
     <keywords>computational power|memory|information|information overload|storage</keywords>
-    <links></links>
+    <links>
+        <clip>Greg - the &quot;Like&quot; button cascade</clip>
+    </links>
     <suppressions>
         <clip>Binx - meaningful shape1</clip>
         <clip>Binx - trips</clip>
@@ -8254,7 +8547,7 @@
         <clip>Ramsey - cloud 2</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -8270,9 +8563,32 @@
     <sound>0</sound>
 </system>
 <system name="Memory_ThinTealRows">
-    <keywords></keywords>
+    <keywords>computer</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Intro - Computers</clip>
+        <clip>Joel - Bicycles1</clip>
+        <clip>Joel - Bicycles for the Mind</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - literacy issues&apos;</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Kevin - cognition vs computation 2</clip>
+        <clip>Kevin - invented as opposed to discovered 1</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>Maeda - a computer is a clock</clip>
+        <clip>Ramsey - code specifies behavior</clip>
+        <clip>Ramsey - computation is interpretation of rules</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Ramsey - thinking previously unthinkable thoughts</clip>
+        <clip>Ramsey - what is a computer</clip>
+        <clip>Sophy - computer dream</clip>
+    </suppressions>
     <comments></comments>
     <grade>C</grade>
     <enabled>1</enabled>
@@ -8280,9 +8596,33 @@
     <sound>0</sound>
 </system>
 <system name="Memory_ThinTealRows2">
-    <keywords></keywords>
+    <keywords>computer</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - software is a brain</clip>
+        <clip>Joel - Bicycles1</clip>
+        <clip>Joel - Bicycles for the Mind</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - literacy issues&apos;</clip>
+        <clip>Karsten - parallel processing</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>Maeda - a computer is a clock</clip>
+        <clip>Philip - bits and bytes</clip>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Ramsey - code specifies behavior</clip>
+        <clip>Ramsey - computation is interpretation of rules</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Ramsey - thinking previously unthinkable thoughts</clip>
+        <clip>Ramsey - what is a computer</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Sophy - computer dream</clip>
+    </suppressions>
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
@@ -8385,17 +8725,95 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Memory_interestingSorting">
+<system name="Memory_gx_work_01a">
+    <keywords>data collection|memory|information</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Aaron - digital trace</clip>
+        <clip>Binx - meaningful shape1</clip>
+        <clip>Binx - trips</clip>
+        <clip>Fernanda - Personal data</clip>
+        <clip>Fernanda - email storytelling</clip>
+        <clip>Jen - Lidar 1</clip>
+        <clip>Jen - Lidar 2</clip>
+        <clip>Jen - browsing</clip>
+        <clip>Jen - data autobiography</clip>
+        <clip>Jen - data truth</clip>
+        <clip>Jen - data viz challenges</clip>
+        <clip>Jen - information cave</clip>
+        <clip>Jen - keeping pictures</clip>
+        <clip>Jen - library</clip>
+        <clip>Jen - life chapters</clip>
+        <clip>Jen - twitter friends</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Julian - Transparency</clip>
+        <clip>Karsten - atari emulation</clip>
+        <clip>Karsten - changing behavior</clip>
+        <clip>Karsten - data visualization</clip>
+        <clip>Karsten - demo scene 3</clip>
+        <clip>Karsten - preserving history</clip>
+        <clip>Kyle_CH - Future life storage</clip>
+        <clip>Kyle_CH - old server farms</clip>
+        <clip>Lauren - digital memory</clip>
+        <clip>Maeda - people are best communicators</clip>
+        <clip>Martin - rapid dissemination of info</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>B</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Memory_gx_work_02a">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Memory_gx_work_03a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Memory_gx_work_03b">
+    <keywords>data collection|big data</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Aaron - digital trace</clip>
+        <clip>Aaron - infinity</clip>
+        <clip>Binx - geodata</clip>
+        <clip>Fernanda - Policy and data</clip>
+        <clip>Fernanda - live data</clip>
+        <clip>Greg - the &quot;Like&quot; button cascade</clip>
+        <clip>Javier - Julian Oliver</clip>
+        <clip>Jen - Lidar 1</clip>
+        <clip>Jen - Lidar 2</clip>
+        <clip>Jen - data crystal ball 1</clip>
+        <clip>Jen - data crystal ball 3</clip>
+        <clip>Jen - facebook data</clip>
+        <clip>Jer - Data ownership</clip>
+        <clip>Julian - data viz endorsement</clip>
+        <clip>Kevin - computer perception</clip>
+        <clip>Kevin - reality in the eyes of data</clip>
+        <clip>Lauren - data ownership 1</clip>
+        <clip>Martin - Big data 1</clip>
+    </suppressions>
     <comments></comments>
     <grade>B</grade>
     <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Memory_lines">
+<system name="Memory_gx_work_04a">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -8405,7 +8823,7 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Memory_pixelsThunder">
+<system name="Memory_gx_work_05a">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -8415,42 +8833,12 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Memory_randomCaos">
-    <keywords>dysfunction</keywords>
+<system name="Memory_interestingSorting">
+    <keywords></keywords>
     <links></links>
-    <suppressions>
-        <clip>Kevin - learning to code</clip>
-        <clip>Ramsey - dystopia</clip>
-        <clip>Ramsey - trapese 1</clip>
-        <clip>Nervous_Jesse - understanding to control 1</clip>
-        <clip>Nervous_Jesse - understanding to control 3</clip>
-        <clip>Nervous_Jesse - error</clip>
-        <clip>Ramsey - traditional engineering</clip>
-        <clip>Ramsey - complacency 1</clip>
-        <clip>Ramsey - complacency 2</clip>
-    </suppressions>
+    <suppressions></suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
-<system name="Memory_randomDeFragWar">
-    <keywords>dysfunction</keywords>
-    <links></links>
-    <suppressions>
-        <clip>JTNimoy - Unplugging</clip>
-        <clip>Kevin - machines crash</clip>
-        <clip>Nervous_Jesse - error</clip>
-        <clip>Ramsey - traditional engineering</clip>
-        <clip>Ramsey - dystopia</clip>
-        <clip>Theo - struggle with technology</clip>
-        <clip>Kevin - learning to code</clip>
-        <clip>Ramsey - complacency 1</clip>
-        <clip>Ramsey - complacency 2</clip>
-    </suppressions>
-    <comments></comments>
-    <grade></grade>
+    <grade>D</grade>
     <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -8847,6 +9235,26 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Ocean_DayNight">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Ocean_DayNight_2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Ocean_DunesAtNight">
     <keywords>journey|narrative|storytelling</keywords>
     <links></links>
@@ -9193,6 +9601,16 @@
         <clip>Jen - data crystal ball 1</clip>
         <clip>Jer - Big Data Security</clip>
     </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Ocean_RisingTerrain">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
@@ -9619,12 +10037,81 @@
     <sound>0</sound>
 </system>
 <system name="OpenP5Hackpact_JM_1_blue">
-    <keywords></keywords>
+    <keywords>processing|generative art|history|abstraction</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - examples of the impossible</clip>
+        <clip>Casey - People would pop up</clip>
+        <clip>Casey - Processing addons</clip>
+        <clip>Casey - Processing open</clip>
+        <clip>Casey - Style diffuses</clip>
+        <clip>Casey - group teaching</clip>
+        <clip>Casey - pushing software beyond</clip>
+        <clip>Golan - make a mark</clip>
+        <clip>Kyle_CH - fun accessible art</clip>
+        <clip>Maeda - Batman superman</clip>
+        <clip>Maeda - Processing</clip>
+        <clip>Ramsey - designing languages</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Shiffman - advanced environment</clip>
+        <clip>Shiffman - make it random</clip>
+        <clip>Bruce - Gardening 1</clip>
+        <clip>Bruce - Gardening 2</clip>
+        <clip>Bruce - Simulation Replication Recursion</clip>
+        <clip>Jer - Generative Art</clip>
+        <clip>Kevin - algo culture 4</clip>
+        <clip>LIA - TimeStamps1</clip>
+        <clip>Marius - Continuous process of exploration</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Marius - parameter space</clip>
+        <clip>Nervous_Jesse - Marker 2</clip>
+        <clip>Nervous_Jesse - organic process</clip>
+        <clip>Shiffman - sketching with code</clip>
+        <clip>Theo - favorite projects</clip>
+        <clip>Theo - generative and pre-rendered</clip>
+        <clip>Zach - action script shorter</clip>
+        <clip>Bruce - Art history vs Trendspotting</clip>
+        <clip>Bruce - Computer art takes flight</clip>
+        <clip>Bruce - Dead sea scrolls</clip>
+        <clip>Bruce - Fax machine</clip>
+        <clip>Bruce - Parametric vs Generative</clip>
+        <clip>Bruce - Truth is unstable</clip>
+        <clip>Bruce - past and future</clip>
+        <clip>Bruce - relating to history through networks</clip>
+        <clip>Bruce - talking about the future as history</clip>
+        <clip>Casey - Design by numbers to processing</clip>
+        <clip>Casey - Processing, what is it?</clip>
+        <clip>Casey - learning from precursors</clip>
+        <clip>Casey - old media</clip>
+        <clip>Golan - raytraced spheres</clip>
+        <clip>Higa - not sharing its a backup</clip>
+        <clip>JTNimoy - based on human mind</clip>
+        <clip>JTNimoy - evolution</clip>
+        <clip>Jer - Software1</clip>
+        <clip>Jer - Software2</clip>
+        <clip>Jer - storage</clip>
+        <clip>Karolina - awkward performances</clip>
+        <clip>Karsten - atari emulation</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - demo scene 2</clip>
+        <clip>Karsten - east german hardware 1</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Karsten - new media</clip>
+        <clip>Karsten - obsolescence</clip>
+        <clip>Karsten - preserving history</clip>
+        <clip>Kevin - from code to magazines to code</clip>
+        <clip>Kevin - no consequences 2</clip>
+        <clip>Kyle_CH - history of computational art</clip>
+        <clip>Maeda - Design in the foreground</clip>
+        <clip>Maeda - do not resuscitate</clip>
+        <clip>Marius - Predicting the internet</clip>
+        <clip>Patricio - CLOUDS</clip>
+        <clip>Theo - eyebeam R&amp;D</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -10145,6 +10632,26 @@
     <sound>0</sound>
 </system>
 <system name="OpenP5NoiseSphere_gx_work_05a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5NoiseSphere_gx_work_06a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5NoiseSphere_gx_work_07a">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -10782,6 +11289,36 @@
     <grade></grade>
     <enabled>0</enabled>
     <oculus>1</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5SpaceJunk_gx_work_01a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5SpaceJunk_gx_work_02a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5SpaceJunk_gx_work_03a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="OpenP5SpaceJunk_jg_BlueSweep">

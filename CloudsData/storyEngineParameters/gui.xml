@@ -6,14 +6,29 @@
     <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
-    <Kind>4</Kind>
-    <Name>GAP LENGTH MULTIPLIER</Name>
-    <Value>0.049458131</Value>
+    <Kind>44</Kind>
+    <Name>MAX TOPICS PER ACT</Name>
+    <Value>3</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>MIN TIMES ON TOPIC</Name>
+    <Value>2</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>MAX TIMES ON TOPIC</Name>
+    <Value>5</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>ACT LENGTH</Name>
-    <Value>441.871917725</Value>
+    <Name>CLIP GAP</Name>
+    <Value>0.381280780</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>VO CLIP GAP</Name>
+    <Value>4.544827461</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -22,6 +37,16 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>MIN CLIP DURATION FOR START OFFSET</Name>
-    <Value>30.000001907</Value>
+    <Name>MAX VS RUNTIME</Name>
+    <Value>8.275861740</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX VS GAPTIME</Name>
+    <Value>2.955664873</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TOPIC END VISUAL EXTEND</Name>
+    <Value>20.556650162</Value>
 </Widget>
