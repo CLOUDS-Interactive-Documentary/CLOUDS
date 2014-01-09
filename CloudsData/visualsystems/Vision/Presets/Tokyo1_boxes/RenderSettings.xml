@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>124.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>453.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -41,6 +41,16 @@
     <Value>0.364532024</Value>
 </Widget>
 <Widget>
+    <Kind>4</Kind>
+    <Name>DIFFERENCE SAT</Name>
+    <Value>0.443349749</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DIFFERENCE BRI</Name>
+    <Value>0.467980295</Value>
+</Widget>
+<Widget>
     <Kind>17</Kind>
     <Name>AppleStore1_short.mov</Name>
     <Value>0</Value>
@@ -73,6 +83,11 @@
 <Widget>
     <Kind>17</Kind>
     <Name>Soho3_short1.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Swarm_EindhovenTest_Watec_two-visitors.mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

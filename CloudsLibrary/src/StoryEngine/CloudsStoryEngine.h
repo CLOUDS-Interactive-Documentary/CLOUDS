@@ -90,12 +90,18 @@ class CloudsStoryEngine {
     ofxUISuperCanvas *vsGui;
 	ofxUISuperCanvas *topicGui;
 	ofxUISuperCanvas *runGui;
+	ofxUISuperCanvas *logGui;
 	
     void guiEvent(ofxUIEventArgs &e);
 
 	CloudsStoryEvents events;
 	bool isSetup;
 	CloudsAct* customAct;
+	
+	bool bCreateLog;
+	bool bLogTopicDetails;
+	bool bLogClipDetails;
+	bool bLogVisualSystemDetails;
 	
 	string log;
     vector<string> runTopicCount;
@@ -109,7 +115,7 @@ class CloudsStoryEngine {
 	float scoreForVisualSystem(CloudsStoryState& currentState, CloudsVisualSystemPreset& potentialNextPreset);
 
 	CloudsClip selectClip(CloudsStoryState& currentState, vector<CloudsClip>& questionClips);
-    float scoreForClip(CloudsStoryState& currentState, CloudsClip& potentialNextClip);
+    float scoreForClip(CloudsStoryState& currentState, CloudsClip& potentialNextClip, stringstream& cliplog);
     
 	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
 	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
