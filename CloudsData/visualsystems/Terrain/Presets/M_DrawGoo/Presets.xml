@@ -32,6 +32,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>M_LiquidTerrain</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>M_Terraformer</Name>
     <Value>0</Value>
 </Widget>

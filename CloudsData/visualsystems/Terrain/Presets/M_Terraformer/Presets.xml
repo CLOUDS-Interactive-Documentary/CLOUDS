@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>849.000061035</XPosition>
+    <XPosition>849.000122070</XPosition>
     <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -17,12 +17,22 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>M_DrawGoo</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>M_ferroFluid</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>M_LandscapeTV</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>M_LiquidTerrain</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

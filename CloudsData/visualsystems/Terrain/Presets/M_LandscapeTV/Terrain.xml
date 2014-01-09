@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>Terrain</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1028.000000000</XPosition>
-    <YPosition>25.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>4.679933071</Value>
+    <Value>2.213133335</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -19,6 +19,11 @@
     <Kind>2</Kind>
     <Name>Show Debug</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Height Scale</Name>
+    <Value>30.000001907</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,7 +48,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>k</Name>
-    <Value>0.097092584</Value>
+    <Value>0.081966534</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -59,6 +64,16 @@
     <Kind>2</Kind>
     <Name>Draw</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Blur Radius</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Dry Rate</Name>
+    <Value>0.010000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -101,9 +116,34 @@
     <Value>1.000000000</Value>
 </Widget>
 <Widget>
+    <Kind>25</Kind>
+    <Name>Trace R</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace G</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace B</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace A</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>Balance</Name>
     <Value>0.709359586</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Texture Mix</Name>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
