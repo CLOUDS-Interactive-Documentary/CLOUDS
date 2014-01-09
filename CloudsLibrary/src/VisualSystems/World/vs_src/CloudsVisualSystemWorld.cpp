@@ -530,7 +530,7 @@ void CloudsVisualSystemWorld::selfDraw()
 void CloudsVisualSystemWorld::selfPostDraw(){
     postShader.begin();
     postShader.setUniformTexture("tex1", postTexture, 1);
-    postShader.setUniform2f("resolution", ofGetWidth(), ofGetHeight());
+    postShader.setUniform2f("resolution", getCanvasWidth(), getCanvasHeight());
     postShader.setUniform2f("textureResolution", postTexture.getWidth(), postTexture.getHeight());
     postShader.setUniform1f("chromaDist", postChromaDist);
     postShader.setUniform1f("grainDist", postGrainDist);
