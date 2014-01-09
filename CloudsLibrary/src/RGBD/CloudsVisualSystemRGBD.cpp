@@ -99,8 +99,6 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	leftPortal.bLookAtCamera = true;
 	rightPortal.bLookAtCamera = true;
-	
-	transitionEditorGui = NULL;
 
 	loadShader();
 	
@@ -370,31 +368,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 }
 
-void CloudsVisualSystemRGBD::updateTransitionGui()
-{
-//	//add any newly saved transitions to out radio
-//	ofxUIRadio* transitionRadio = (ofxUIRadio*)transitionEditorGui->getWidget("loadTransition");
-//
-//	vector <string> existingNames;
-//	for(auto &it: transitionRadio->getToggles() )
-//	{
-//		existingNames.push_back( it->getName() );
-//	}
-//	
-//	int yPos = transitionRadio->getRect()->getMaxY();
-//	for(auto &it: transitionOptionMap)
-//	{
-//		if( find(existingNames.begin(), existingNames.end(), it.first) == existingNames.end())
-//		{
-//			//cout << "add a new toggle here " << it.first << endl;
-//			ofxUIToggle* t = transitionEditorGui->addToggle(it.first, true);
-//			transitionRadio->addToggle(t);
-//			
-//			transitionEditorGui->autoSizeToFitWidgets();
-//		}
-//	}
-}
-
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfUpdate(){
 	
@@ -485,8 +458,6 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		bSaveTransition = false;
 	
 		saveTransitionSettings(ofSystemTextBoxDialog("Saving " + currentTransitionType + ": ", "option name") );
-		
-		updateTransitionGui();
 	}
 }
 
@@ -1635,7 +1606,7 @@ void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e)
 		if(r == parent && e.getToggle()->getValue() )
 		{
 			transitionCamTargetNode = NULL;
-			setTransitionNodes(currentTransitionType, name);
+			setTransitionNodes(guiIt.first, name);
 			
 			ofxUIToggle* in = (ofxUIToggle*)guiIt.second->getWidget("DriveIn");
 			in->setColorBack(ofColor(0,155,155));

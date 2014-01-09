@@ -122,7 +122,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void saveTransitionSettings(string filename = "Transitions");
 	void setTransitionNodes( string transitionName );
 	void updateTransition();
-	void updateTransitionGui();
 	
 	void addTransitionGui(string guiName);
 	void clearTransitionMap();
@@ -138,7 +137,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   protected:
 	
 	//TRANSITIONS
-	ofxUISuperCanvas *transitionEditorGui;
 	map< string, TransitionInfo> transitionOptionMap;
 	map<string, string> transitionTypes;
 	map<string, map<string, TransitionInfo> > transitionMap;
