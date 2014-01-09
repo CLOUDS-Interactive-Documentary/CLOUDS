@@ -77,6 +77,10 @@
 		4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AA17512E45003001E2 /* ofxSwarmBehavior.cpp */; };
 		4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
+		640E8D0C187E624A007BCBD7 /* CloudsInputOculus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 640E8D0B187E624A007BCBD7 /* CloudsInputOculus.cpp */; };
+		640E8D0D187E64B6007BCBD7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E442A7185E89E200CD1953 /* QuartzCore.framework */; };
+		640E8D0E187E64B6007BCBD7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E442A5185E89DD00CD1953 /* CoreMedia.framework */; };
+		640E8D0F187E64B6007BCBD7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E442A3185E89D500CD1953 /* AVFoundation.framework */; };
 		AE6FFE71187F403600677B60 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		AE6FFE72187F403600677B60 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */; };
 		AE6FFE73187F403600677B60 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
@@ -219,10 +223,8 @@
 		AE6FFEFD187F403600677B60 /* libsndfile-1.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5B9575175308AD00F558AC /* libsndfile-1.lib */; };
 		AE6FFEFE187F403600677B60 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E703D15A185E808F00547738 /* libftgl.a */; };
 		AE6FFF01187F403600677B60 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		640E8D0C187E624A007BCBD7 /* CloudsInputOculus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 640E8D0B187E624A007BCBD7 /* CloudsInputOculus.cpp */; };
-		640E8D0D187E64B6007BCBD7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E442A7185E89E200CD1953 /* QuartzCore.framework */; };
-		640E8D0E187E64B6007BCBD7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E442A5185E89DD00CD1953 /* CoreMedia.framework */; };
-		640E8D0F187E64B6007BCBD7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E442A3185E89D500CD1953 /* AVFoundation.framework */; };
+		AE6FFF09187F4A0700677B60 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C7A187F2C470079C5B8 /* CloudsPortal.cpp */; };
+		AE6FFF0A187F4A0A00677B60 /* CloudsPortalRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C7C187F2C470079C5B8 /* CloudsPortalRing.cpp */; };
 		AEB14D01187DB39B00C5284D /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEB14D00187DB39B00C5284D /* ofxSystemTextbox.mm */; };
 		AEB14D02187DB39B00C5284D /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEB14D00187DB39B00C5284D /* ofxSystemTextbox.mm */; };
 		AEB14D32187DB5D300C5284D /* IpEndpointName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB14D0D187DB5D300C5284D /* IpEndpointName.cpp */; };
@@ -721,9 +723,9 @@
 		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
-		AE6FFF05187F403600677B60 /* PointCloudPeopleKinect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PointCloudPeopleKinect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		640E8D0A187E623A007BCBD7 /* CloudsInputOculus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputOculus.h; sourceTree = "<group>"; };
 		640E8D0B187E624A007BCBD7 /* CloudsInputOculus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputOculus.cpp; sourceTree = "<group>"; };
+		AE6FFF05187F403600677B60 /* PointCloudPeopleKinect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PointCloudPeopleKinect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB14CFF187DB39B00C5284D /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
 		AEB14D00187DB39B00C5284D /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		AEB14D03187DB5BA00C5284D /* CloudsInputKinectOSC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputKinectOSC.cpp; sourceTree = "<group>"; };
@@ -2177,6 +2179,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "PointCloudPeople" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -2287,6 +2291,7 @@
 				AE6FFE87187F403600677B60 /* ofxSwarmBehavior.cpp in Sources */,
 				AE6FFE88187F403600677B60 /* ofxVerletSolver.cpp in Sources */,
 				AE6FFE89187F403600677B60 /* ofxCameraSaveLoad.cpp in Sources */,
+				AE6FFF0A187F4A0A00677B60 /* CloudsPortalRing.cpp in Sources */,
 				AE6FFE8A187F403600677B60 /* kiss_fft.c in Sources */,
 				AE6FFE8B187F403600677B60 /* kiss_fftr.c in Sources */,
 				AE6FFE8C187F403600677B60 /* ofxOscBundle.cpp in Sources */,
@@ -2339,6 +2344,7 @@
 				AE6FFEBB187F403600677B60 /* ofxEasingQuad.cpp in Sources */,
 				AE6FFEBC187F403600677B60 /* ofxEasingQuart.cpp in Sources */,
 				AE6FFEBD187F403600677B60 /* ofxEasingQuint.cpp in Sources */,
+				AE6FFF09187F4A0700677B60 /* CloudsPortal.cpp in Sources */,
 				AE6FFEBE187F403600677B60 /* ofxEasingSine.cpp in Sources */,
 				AE6FFEBF187F403600677B60 /* ofxTween.cpp in Sources */,
 				AE6FFEC0187F403600677B60 /* ofxTimecode.cpp in Sources */,
