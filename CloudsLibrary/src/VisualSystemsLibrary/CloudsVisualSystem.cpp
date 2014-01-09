@@ -1033,6 +1033,12 @@ void CloudsVisualSystem::setupGui()
     gui->addWidgetNorthOf(loadbtn, "RENDER", true);
     gui->setPlacer(updatebtn);
     gui->addSpacer();
+    vector<string> cursorModeNames;
+    cursorModeNames.push_back("NO CURSOR");
+    cursorModeNames.push_back("PRIMARY CURSOR");
+    cursorModeNames.push_back("ALL CURSORS");
+    gui->addRadio("CURSOR MODES", cursorModeNames)->activateToggle(cursorModeNames[DRAW_CURSOR_NONE]);
+    gui->addSpacer();
     selfSetupGui();
     gui->autoSizeToFitWidgets();
 
@@ -1128,6 +1134,31 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
                 loadGUIS();
             }
             
+        }
+    }
+
+    else if(name == "NO CURSOR")
+    {
+        ofxUIButton *b = (ofxUIButton *) e.widget;
+        if(b->getValue())
+        {
+            drawCursorMode = DRAW_CURSOR_NONE;
+        }
+    }
+    else if(name == "PRIMARY CURSOR")
+    {
+        ofxUIButton *b = (ofxUIButton *) e.widget;
+        if(b->getValue())
+        {
+            drawCursorMode = DRAW_CURSOR_PRIMARY;
+        }
+    }
+    else if(name == "ALL CURSORS")
+    {
+        ofxUIButton *b = (ofxUIButton *) e.widget;
+        if(b->getValue())
+        {
+            drawCursorMode = DRAW_CURSOR_ALL;
         }
     }
 	
