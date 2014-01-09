@@ -588,22 +588,18 @@ void CloudsVisualSystemExampleBox2D::contactStart(ofxBox2dContactArgs &e)
     int sIndex = type;
     
     float maxVel = max(aVel, bVel);
-    if (maxVel > 3)
+    if (maxVel > 6)
     {
         int index = sIndex*7 + (int)ofRandom(7);
-        float vol = maxVel / 70;
+        float vol = maxVel / 200;
         vol = (vol<1) ? pow(vol, 2) : 1;
 
-        if (ofGetElapsedTimeMillis() > lastSampleTime+15) {
-            lastSampleTime = ofGetElapsedTimeMillis();
+        if (ofRandom(maxRects) < (float)rects.size()*0.8) {
+            return;
         }
-        else {
-            vol *= 0.01;
-        }
-        
+
         samplePlayer[index].setVolume(vol * masterVolume);
         samplePlayer[index].play();
-        
     }
 }
 
