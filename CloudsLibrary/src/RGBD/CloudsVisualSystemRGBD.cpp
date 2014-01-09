@@ -727,10 +727,10 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 	t->addToggle("Edit", placingTransitionNodes);
 	t->addToggle("save", &bSaveTransition );
 	
-	//Left/Right toggles
-	t->addSpacer();
-	t->addToggle("LEFT", true);
-	t->addToggle("RIGHT", false);
+//	//Left/Right toggles
+//	t->addSpacer();
+//	t->addToggle("LEFT", true);
+//	t->addToggle("RIGHT", false);
 
 	//ADD OUR OPTION TOGGLES
 	t->addSpacer();
@@ -905,6 +905,13 @@ void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionTyp
 {
 	cout << "startTransitionOut(RGBDTransitionType transitionType)" << endl;
 	
+	if(cloudsCamera.getPosition().x - translatedHeadPosition.x > 0)
+	{
+		setOutOption(OutLeft);
+	}else{
+		setOutOption(OutRight);
+	}
+	
 	//transitionEase = ofxTween::easeOut;
 	transitionEase = ofxTween::easeIn;
 	transitioning = true;
@@ -929,7 +936,7 @@ void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
 {
 	if(transitioning)
 	{
-		float easedPercent = ofxTween::map(percentComplete, 0, 1, 0.001, .999, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
+		float easedPercent = ofxTween::map(percentComplete, 0, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
 		cloudsCamera.setTransitionPercent( easedPercent );
 		
 		cout <<"TRANSITIONING : easedValue = "<< easedPercent << endl;
