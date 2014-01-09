@@ -8,12 +8,7 @@
 
 #include "CloudsVisualSystemWorld.h"
 
-string CloudsVisualSystemWorld::getSystemName()
-{
-	return "World";
-}
-
-void CloudsVisualSystemWorld::selfSetup()
+void CloudsVisualSystemWorld::selfSetDefaults()
 {
     nMaxPoints = 1000;
     pointNoisePeaks = 0.0;
@@ -41,18 +36,25 @@ void CloudsVisualSystemWorld::selfSetup()
     nMaxSatellites = 10;
     satLinksDist = 0;
     satLinksAlpha = 1.0;
-    
-//    ofSetSphereResolution(32);f
+}
+
+string CloudsVisualSystemWorld::getSystemName()
+{
+	return "World";
+}
+
+void CloudsVisualSystemWorld::selfSetup()
+{
     
     haloShader.load(getVisualSystemDataPath()+"shaders/backlight");
     
     postShader.load("",getVisualSystemDataPath()+"shaders/postprocess.fs");
     ofLoadImage(postTexture, getVisualSystemDataPath()+"images/7.jpg");
-}
 
-void CloudsVisualSystemWorld::selfBegin()
-{
-    //  Load Globe paths
+	citiesMesh.clear();
+	citiesMesh.setMode(OF_PRIMITIVE_POINTS);
+
+	//  Load Globe paths
     //
     loadVbo(coastVbo, "simple-coast.txt");
     loadVbo(riversVbo, "simple-rivers.txt");
@@ -66,16 +68,34 @@ void CloudsVisualSystemWorld::selfBegin()
     //
     loadStarts( "constelations.txt" );
     
-    for(int i = 0; i < nMaxSatellites; i++ ){
+	//	satellitesMesh.clear();
+	//	satellitesMesh.setMode(OF_PRIMITIVE_LINES);
+	
+    for(int i = 0; i < 1000; i++ ){
         wSatellite *newSat = new wSatellite();
-        newSat->place(400, ofVec3f(ofRandom(-0.01,0.01),ofRandom(-0.01,0.01),0.0));
+		//		newSat->satelliteMesh = &satellitesMesh;
+		
+		ofVec3f position = ofVec3f(ofRandom(-0.01,0.01),ofRandom(-0.01,0.01),0.0);
+        newSat->place(400, position);
+		
         satellites.push_back( newSat );
+		
     }
     
     globalOffset.set(0,0,0);
 }
 
+void CloudsVisualSystemWorld::selfBegin()
+{
+	cam.reset();	
+}
+
 void CloudsVisualSystemWorld::selfEnd()
+{
+
+}
+
+void CloudsVisualSystemWorld::selfExit()
 {
     coastVbo.clear();
     riversVbo.clear();
@@ -96,11 +116,6 @@ void CloudsVisualSystemWorld::selfEnd()
         delete satellites[i];
         satellites.erase(satellites.begin()+i);
     }
-}
-
-void CloudsVisualSystemWorld::selfExit()
-{
-    
 }
 
 void CloudsVisualSystemWorld::loadVbo(ofVboMesh &_vbo, string _file){
@@ -156,6 +171,7 @@ void CloudsVisualSystemWorld::loadCities(string _file){
             vector<string> values = ofSplitString(temp, "|");
             
             wCity city;
+			city.citiesMesh = &citiesMesh;
             city.place(ofToFloat(values[1]),ofToFloat(values[2]));
             city.noisePeaks = &pointNoisePeaks;
             city.noiseThreshold = &rippleThreshold;
@@ -176,6 +192,7 @@ void CloudsVisualSystemWorld::loadSecCities(string _file){
             vector<string> values = ofSplitString(temp, "|");
             
             wCity city;
+			city.citiesMesh = &citiesMesh;
             city.place(ofToFloat(values[5]),ofToFloat(values[6]));
             city.size = ofMap(ofToFloat(values[4]), 0, 10000, 0.1, 5.0);
             
@@ -281,18 +298,19 @@ void CloudsVisualSystemWorld::guiSystemEvent(ofxUIEventArgs &e)
     
     string name = e.widget->getName();
     
-    if ( name == "Satelites_ammount" ){
-        for(int i = satellites.size()-1; i >= 0; i--){
-            delete satellites[i];
-            satellites.erase(satellites.begin()+i);
-        }
-        
-        for(int i = 0; i < nMaxSatellites; i++ ){
-            wSatellite *newSat = new wSatellite();
-            newSat->place(400, ofVec3f(ofRandom(-0.01,0.01),ofRandom(-0.05,0.05),0.0));
-            satellites.push_back( newSat );
-        }
-    }
+//    if ( name == "Satelites_ammount" ){
+//        for(int i = satellites.size()-1; i >= 0; i--){
+//            delete satellites[i];
+//            satellites.erase(satellites.begin()+i);
+//        }
+//        
+//        for(int i = 0; i < 1000; i++ ){
+//            wSatellite *newSat = new wSatellite();
+//			newSat->satelliteMesh = &satellitesMesh;
+//            newSat->place(400, ofVec3f(ofRandom(-0.01,0.01),ofRandom(-0.05,0.05),0.0));
+//            satellites.push_back( newSat );
+//        }
+//    }
 }
 
 void CloudsVisualSystemWorld::selfKeyPressed(ofKeyEventArgs & args){
@@ -358,15 +376,26 @@ void CloudsVisualSystemWorld::selfUpdate()
     
     //  Update satellites
     //    
-    for(int i = 0; i < satellites.size(); i++){
+    for(int i = 0; i < nMaxSatellites; i++){
         satellites[i]->update();
     }
     
-    
-    //  Update Arcs
+	linkMesh.clear();
+	linkMesh.setMode(OF_PRIMITIVE_LINES);
+	for(int i = 0; i < nMaxSatellites; i++){
+        for(int j = i+1; j < nMaxSatellites; j++){
+			if (satellites[i]->distanceSquared( *satellites[j] ) <= satLinksDist*satLinksDist ){
+				linkMesh.addVertex(*satellites[i]);
+				linkMesh.addVertex(*satellites[j]);
+			}
+		}
+    }
+	
+	//  Update Arcs
     //
     if ( (arcs.size() == 0 ) && (arcsMax > 0) ){
         wArc arc;
+//		arc.arcMesh = &arcMesh;
         arc.init(cities[ofRandom(cities.size())], cities[ofRandom(cities.size())]);
         arcs.push_back(arc);
 
@@ -380,11 +409,13 @@ void CloudsVisualSystemWorld::selfUpdate()
         
         if ( arcs[i].doesDie() ){
             arcs.erase(arcs.begin()+i);
-        } else if ( arcs[i].doesArrive() && arcs[i].bActive && arcs.size() < arcsMax){
+        }
+		else if ( arcs[i].doesArrive() && arcs[i].bActive && arcs.size() < arcsMax){
             arcs[i].bActive = false;
             
             wArc arc;
-    
+//    		arc.arcMesh = &arcMesh;
+			
             arc.init( arcs[ i ].getDst() , cities[ofRandom(cities.size())]);
             arcs.push_back(arc);
             
@@ -392,7 +423,6 @@ void CloudsVisualSystemWorld::selfUpdate()
             arcs.push_back(arc);
         }
     }
-
 }
 
 void CloudsVisualSystemWorld::selfDraw()
@@ -450,6 +480,7 @@ void CloudsVisualSystemWorld::selfDraw()
         for(int i = 0; i < cities.size(); i++){
             cities[i].draw(citiesAlpha);
         }
+		citiesMesh.draw();
     }
     
     //  Particles
@@ -460,26 +491,21 @@ void CloudsVisualSystemWorld::selfDraw()
     
     //  Satellites
     //
-    for(int i = 0; i < satellites.size(); i++){
+    for(int i = 0; i < nMaxSatellites; i++){
         satellites[i]->draw();
-        
-        for(int j = i; j >= 0 ; j--){
-            if (satellites[i]->distance( *satellites[j] ) <= satLinksDist ){
-                ofSetColor(255,satLinksAlpha*255.0);
-                ofLine(*satellites[i], *satellites[j]);
-            }
-        }
     }
+	
+	ofSetColor(255,satLinksAlpha*255.0);
+	linkMesh.draw();
     
     //  Arcs
     //
+	ofSetColor(255,255*arcsAlpha);
     for(int i = 0; i < arcs.size(); i++){
         ofSetColor(255,255*arcsAlpha);
         arcs[i].draw();
     }
     glPointSize(1.0);
-    
-//    mat->end();
     
     ofPopStyle();
     ofPopMatrix();
@@ -504,11 +530,13 @@ void CloudsVisualSystemWorld::selfDraw()
 void CloudsVisualSystemWorld::selfPostDraw(){
     postShader.begin();
     postShader.setUniformTexture("tex1", postTexture, 1);
-    postShader.setUniform2f("resolution", ofGetWidth(), ofGetHeight());
+    postShader.setUniform2f("resolution", getCanvasWidth(), getCanvasHeight());
     postShader.setUniform2f("textureResolution", postTexture.getWidth(), postTexture.getHeight());
     postShader.setUniform1f("chromaDist", postChromaDist);
     postShader.setUniform1f("grainDist", postGrainDist);
+	
     CloudsVisualSystem::selfPostDraw();
+	
     postShader.end();
 }
 
@@ -517,12 +545,6 @@ void CloudsVisualSystemWorld::selfSetupGuis()
 {
     
 }
-
-void CloudsVisualSystemWorld::selfAutoMode()
-{
-    
-}
-
 
 void CloudsVisualSystemWorld::selfDrawBackground()
 {

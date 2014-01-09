@@ -24,17 +24,24 @@ void CloudsInputMouse::disable(){
 }
 
 void CloudsInputMouse::mouseMoved(ofMouseEventArgs& data){
-	interactionMoved(ofVec3f(data.x,data.y,0),true, data.button);
+    lastPosition = currentPosition;
+    currentPosition = ofVec3f(data.x, data.y, 0);
+	interactionMoved(currentPosition, true, data.button);
 }
 
 void CloudsInputMouse::mousePressed(ofMouseEventArgs& data){
-	interactionStarted(ofVec3f(data.x,data.y,0),true, data.button);
+    currentPosition = ofVec3f(data.x, data.y, 0);
+    dragging = true;
+	interactionStarted(currentPosition, true, data.button);
 }
 
 void CloudsInputMouse::mouseDragged(ofMouseEventArgs& data){
-	interactionDragged(ofVec3f(data.x,data.y,0),true, data.button);
+    currentPosition = ofVec3f(data.x, data.y, 0);
+	interactionDragged(currentPosition, true, data.button);
 }
 
 void CloudsInputMouse::mouseReleased(ofMouseEventArgs& data){
-	interactionEnded(ofVec3f(data.x,data.y,0),true, data.button);
+    dragging = false;
+    currentPosition = ofVec3f(data.x, data.y, 0);
+	interactionEnded(currentPosition, true, data.button);
 }

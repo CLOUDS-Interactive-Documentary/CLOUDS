@@ -300,8 +300,6 @@
 		E70CE32C18695CCC00955691 /* CloudsVisualSystemScrape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE14518695CCB00955691 /* CloudsVisualSystemScrape.cpp */; };
 		E70CE32D18695CCC00955691 /* ofxMtlBoxFitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE14718695CCB00955691 /* ofxMtlBoxFitting.cpp */; };
 		E70CE32E18695CCC00955691 /* ofxMtlBoxFitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE14718695CCB00955691 /* ofxMtlBoxFitting.cpp */; };
-		E70CE34918695CCC00955691 /* CloudsVisualSystemTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE16918695CCB00955691 /* CloudsVisualSystemTerrain.cpp */; };
-		E70CE34A18695CCC00955691 /* CloudsVisualSystemTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE16918695CCB00955691 /* CloudsVisualSystemTerrain.cpp */; };
 		E70CE34B18695CCC00955691 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE16D18695CCB00955691 /* CloudsVisualSystemThingsInTheDark.cpp */; };
 		E70CE34C18695CCC00955691 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE16D18695CCB00955691 /* CloudsVisualSystemThingsInTheDark.cpp */; };
 		E70CE34D18695CCD00955691 /* CloudsVisualSystemTunnelDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE17118695CCB00955691 /* CloudsVisualSystemTunnelDrawing.cpp */; };
@@ -460,6 +458,8 @@
 		E7302C29187DF4C30079C5B8 /* Points.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C1C187DF4C30079C5B8 /* Points.cpp */; };
 		E7302C2A187DF4C30079C5B8 /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C1E187DF4C30079C5B8 /* State.cpp */; };
 		E7302C2B187DF4C30079C5B8 /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C1E187DF4C30079C5B8 /* State.cpp */; };
+		E7302C55187E5A3C0079C5B8 /* CloudsVisualSystemTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C53187E5A3C0079C5B8 /* CloudsVisualSystemTerrain.cpp */; };
+		E7302C56187E5A3C0079C5B8 /* CloudsVisualSystemTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C53187E5A3C0079C5B8 /* CloudsVisualSystemTerrain.cpp */; };
 		E730A4C617DCC5520088335A /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4BE17DCC5520088335A /* Delaunay.cpp */; };
 		E730A4C717DCC5520088335A /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4C217DCC5520088335A /* ofxDelaunay.cpp */; };
 		E732FCD31863CC2300643061 /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E732FCCF1863CC2300643061 /* CloudsAudioEvents.cpp */; };
@@ -1526,8 +1526,6 @@
 		E70CE14618695CCB00955691 /* CloudsVisualSystemScrape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemScrape.h; sourceTree = "<group>"; };
 		E70CE14718695CCB00955691 /* ofxMtlBoxFitting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMtlBoxFitting.cpp; sourceTree = "<group>"; };
 		E70CE14818695CCB00955691 /* ofxMtlBoxFitting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMtlBoxFitting.h; sourceTree = "<group>"; };
-		E70CE16918695CCB00955691 /* CloudsVisualSystemTerrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemTerrain.cpp; sourceTree = "<group>"; };
-		E70CE16A18695CCB00955691 /* CloudsVisualSystemTerrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemTerrain.h; sourceTree = "<group>"; };
 		E70CE16D18695CCB00955691 /* CloudsVisualSystemThingsInTheDark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemThingsInTheDark.cpp; sourceTree = "<group>"; };
 		E70CE16E18695CCB00955691 /* CloudsVisualSystemThingsInTheDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemThingsInTheDark.h; sourceTree = "<group>"; };
 		E70CE17118695CCB00955691 /* CloudsVisualSystemTunnelDrawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemTunnelDrawing.cpp; sourceTree = "<group>"; };
@@ -1748,6 +1746,8 @@
 		E7302C1D187DF4C30079C5B8 /* Points.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Points.h; sourceTree = "<group>"; };
 		E7302C1E187DF4C30079C5B8 /* State.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = State.cpp; sourceTree = "<group>"; };
 		E7302C1F187DF4C30079C5B8 /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
+		E7302C53187E5A3C0079C5B8 /* CloudsVisualSystemTerrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemTerrain.cpp; sourceTree = "<group>"; };
+		E7302C54187E5A3C0079C5B8 /* CloudsVisualSystemTerrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemTerrain.h; sourceTree = "<group>"; };
 		E730A4BE17DCC5520088335A /* Delaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Delaunay.cpp; sourceTree = "<group>"; };
 		E730A4BF17DCC5520088335A /* Delaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Delaunay.h; sourceTree = "<group>"; };
 		E730A4C017DCC5520088335A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -3165,6 +3165,7 @@
 		E70CDDCA18695CC800955691 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				E7302C51187E5A3C0079C5B8 /* Terrain */,
 				E7302BF4187DF33D0079C5B8 /* Schlabberbox */,
 				E7302BE6187DF2AB0079C5B8 /* RandomDigits2 */,
 				E70CDDCB18695CC800955691 /* 2DVideo */,
@@ -3232,7 +3233,6 @@
 				E70CE11818695CCB00955691 /* Rulez */,
 				E70CE13E18695CCB00955691 /* Satoruhiga */,
 				E70CE14318695CCB00955691 /* Scrape */,
-				E70CE16718695CCB00955691 /* Terrain */,
 				E70CE16B18695CCB00955691 /* ThingsInTheDark */,
 				E70CE16F18695CCB00955691 /* TunnelDrawing */,
 				E70CE17318695CCB00955691 /* Twitter */,
@@ -4501,23 +4501,6 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
-		E70CE16718695CCB00955691 /* Terrain */ = {
-			isa = PBXGroup;
-			children = (
-				E70CE16818695CCB00955691 /* vs_src */,
-			);
-			path = Terrain;
-			sourceTree = "<group>";
-		};
-		E70CE16818695CCB00955691 /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				E70CE16918695CCB00955691 /* CloudsVisualSystemTerrain.cpp */,
-				E70CE16A18695CCB00955691 /* CloudsVisualSystemTerrain.h */,
-			);
-			path = vs_src;
-			sourceTree = "<group>";
-		};
 		E70CE16B18695CCB00955691 /* ThingsInTheDark */ = {
 			isa = PBXGroup;
 			children = (
@@ -5089,6 +5072,23 @@
 				E7302C1F187DF4C30079C5B8 /* State.h */,
 			);
 			path = GPUParticles;
+			sourceTree = "<group>";
+		};
+		E7302C51187E5A3C0079C5B8 /* Terrain */ = {
+			isa = PBXGroup;
+			children = (
+				E7302C52187E5A3C0079C5B8 /* vs_src */,
+			);
+			path = Terrain;
+			sourceTree = "<group>";
+		};
+		E7302C52187E5A3C0079C5B8 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E7302C53187E5A3C0079C5B8 /* CloudsVisualSystemTerrain.cpp */,
+				E7302C54187E5A3C0079C5B8 /* CloudsVisualSystemTerrain.h */,
+			);
+			path = vs_src;
 			sourceTree = "<group>";
 		};
 		E730A4AA17DCC5520088335A /* ofxDelaunay */ = {
@@ -7490,7 +7490,6 @@
 				E70CE32918695CCC00955691 /* CloudsVisualSystemSatoruhiga.cpp in Sources */,
 				E70CE32B18695CCC00955691 /* CloudsVisualSystemScrape.cpp in Sources */,
 				E70CE32D18695CCC00955691 /* ofxMtlBoxFitting.cpp in Sources */,
-				E70CE34918695CCC00955691 /* CloudsVisualSystemTerrain.cpp in Sources */,
 				E70CE34B18695CCC00955691 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */,
 				E70CE34D18695CCD00955691 /* CloudsVisualSystemTunnelDrawing.cpp in Sources */,
 				E70CE34F18695CCD00955691 /* CloudsVisualSystemTwitter.cpp in Sources */,
@@ -7628,6 +7627,7 @@
 				E7302C26187DF4C30079C5B8 /* Gravity.cpp in Sources */,
 				E7302C28187DF4C30079C5B8 /* Points.cpp in Sources */,
 				E7302C2A187DF4C30079C5B8 /* State.cpp in Sources */,
+				E7302C55187E5A3C0079C5B8 /* CloudsVisualSystemTerrain.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8004,7 +8004,6 @@
 				E70CE32A18695CCC00955691 /* CloudsVisualSystemSatoruhiga.cpp in Sources */,
 				E70CE32C18695CCC00955691 /* CloudsVisualSystemScrape.cpp in Sources */,
 				E70CE32E18695CCC00955691 /* ofxMtlBoxFitting.cpp in Sources */,
-				E70CE34A18695CCC00955691 /* CloudsVisualSystemTerrain.cpp in Sources */,
 				E70CE34C18695CCC00955691 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */,
 				E70CE34E18695CCD00955691 /* CloudsVisualSystemTunnelDrawing.cpp in Sources */,
 				E70CE35018695CCD00955691 /* CloudsVisualSystemTwitter.cpp in Sources */,
@@ -8140,6 +8139,7 @@
 				E7302C27187DF4C30079C5B8 /* Gravity.cpp in Sources */,
 				E7302C29187DF4C30079C5B8 /* Points.cpp in Sources */,
 				E7302C2B187DF4C30079C5B8 /* State.cpp in Sources */,
+				E7302C56187E5A3C0079C5B8 /* CloudsVisualSystemTerrain.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

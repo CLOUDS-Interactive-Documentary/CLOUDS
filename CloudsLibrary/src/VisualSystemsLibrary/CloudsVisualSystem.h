@@ -36,6 +36,13 @@ enum ofxViewType
     OFX_VIEW_3D
 };
 
+enum CloudsDrawCursorMode
+{
+    DRAW_CURSOR_NONE = 0,
+    DRAW_CURSOR_PRIMARY,
+    DRAW_CURSOR_ALL
+};
+
 class CloudsVisualSystem {
   public:
 	   
@@ -354,8 +361,9 @@ class CloudsVisualSystem {
     float debugGridSize;
 	bool bClearBackground;
 	bool bDrawToScreen;
-	bool bDrawCursor; //temp fix to hide cursor on some systems where it feels wrong
 	bool bUseOculusRift;
+    CloudsDrawCursorMode drawCursorMode;
+    
     //CAM
     float camDistance;
     float camFOV;
