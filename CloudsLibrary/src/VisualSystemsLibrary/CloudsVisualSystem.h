@@ -230,6 +230,15 @@ class CloudsVisualSystem {
     void saveTimelineUIMappings(string path);
     void loadTimelineUIMappings(string path);
     
+#ifdef KINECT_INPUT
+    void setupKinectGui();
+	void guiKinectEvent(ofxUIEventArgs &e);
+#endif
+#ifdef OCULUS_RIFT
+    void setupOculusGui();
+	void guiOculusEvent(ofxUIEventArgs &e);
+#endif
+    
     //Lighting Helpers
     void lightsBegin();
     void lightsEnd();
@@ -283,6 +292,12 @@ class CloudsVisualSystem {
     ofxUISuperCanvas *camGui;
     ofxUISuperCanvas *presetGui;
     ofxUISuperCanvas *tlGui;
+#ifdef KINECT_INPUT
+    ofxUISuperCanvas *kinectGui;
+#endif
+#ifdef OCULUS_RIFT
+    ofxUISuperCanvas *oculusGui;
+#endif
     
 //    //UI Colours
 //    ofxUIColor cb;
