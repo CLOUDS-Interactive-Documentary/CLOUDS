@@ -1,0 +1,42 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Boxes</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>215.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WIDTH</Name>
+    <Value>143.743835449</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>HEIGHT</Name>
+    <Value>182.758621216</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>min subdivision size</Name>
+    <Value>163</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>min code window size</Name>
+    <Value>216.748764038</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>box gen seed</Name>
+    <Value>173</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>box gen seed 2</Name>
+    <Value>242</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>outline alpha</Name>
+    <Value>0.635468006</Value>
+</Widget>

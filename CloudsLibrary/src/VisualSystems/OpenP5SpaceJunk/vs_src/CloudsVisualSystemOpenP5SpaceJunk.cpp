@@ -17,9 +17,12 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetupGui(){
     customGui->addButton("REGENERATE", &shouldRegenerate);
 	
     customGui->addSlider("Rotation Speed", 0, 25, &speed_);
+	customGui->addIntSlider("Num Cubes", 0, 20000, &limit);
+	customGui->addIntSlider("Spread", 0, 1000, &spread);
 	customGui->addRangeSlider("X Scale", 0, 50, &XrandMin, &XrandMax);
     customGui->addRangeSlider("Y Scale", 0, 50, &YrandMin, &YrandMax);
     customGui->addRangeSlider("Z Scale", 0, 50, &ZrandMin, &ZrandMax);
+	
     customGui->addRangeSlider("X Rotate", 0, 90, &XrotMin, &XrotMax);
     customGui->addRangeSlider("Y Rotate", 0, 90, &YrotMin, &YrotMax);
     customGui->addRangeSlider("Z Rotate", 0, 90, &ZrotMin, &ZrotMax);
@@ -28,6 +31,11 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetupGui(){
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5SpaceJunk::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
+}
+
+void CloudsVisualSystemOpenP5SpaceJunk::selfSetDefaults(){
+	limit = 500;
+	spread = 140;
 }
 
 void CloudsVisualSystemOpenP5SpaceJunk::selfGuiEvent(ofxUIEventArgs &e){
@@ -61,16 +69,14 @@ void CloudsVisualSystemOpenP5SpaceJunk::guiRenderEvent(ofxUIEventArgs &e){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemOpenP5SpaceJunk::selfSetup(){
+	
     ang = 0;
     shouldRegenerate = true;
-	ofMesh combinedBox;
-
-//	ofxObjLoader::load_oldway(getVisualSystemDataPath() + "geometry/box.obj", combinedBox);
 	ofxObjLoader::load(getVisualSystemDataPath() + "geometry/box.obj", baseBox);
-	
-	baseBox.setMode(OF_PRIMITIVE_TRIANGLES);
 
-//	return;
+	baseBox.setMode(OF_PRIMITIVE_TRIANGLES);
+	//	ofxObjLoader::load_oldway(getVisualSystemDataPath() + "geometry/box.obj", combinedBox);
+//
 //	for(int i = 0; i < combinedBox.getNumIndices(); i+=3){
 //		ofIndexType indxA = combinedBox.getIndices()[i+0];
 //		ofIndexType indxB = combinedBox.getIndices()[i+1];
@@ -94,6 +100,7 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetup(){
 //		
 //	}
 //	
+	
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -121,7 +128,13 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfUpdate(){
 	if(shouldRegenerate){
 		shouldRegenerate = false;
 		list.clear();
+		
 		mesh.clear();
+		mesh.setUsage(GL_STATIC_DRAW);
+		
+//		stroke.clear();
+//		stroke.setUsage(GL_STATIC_DRAW);
+//		stroke.setMode(OF_PRIMITIVE_LINES);
 		
 		cout << "REGENERATING" << endl;
 		
@@ -129,13 +142,14 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfUpdate(){
 
 			if(ofRandomuf() > .8){
 				list.push_back( Cube(mesh,baseBox,
+									 stroke, baseStroke,
 									 ofRandom(XrandMin*1.5, XrandMax*1.5), //scale
 									 ofRandom(YrandMin*1.5, YrandMax*1.5),
 									 ofRandom(ZrandMin*1.5, ZrandMax*1.5),  // 4,20 4,20, 2,20
 									 
-									 ofRandom(-140, 140), //pose
-									 ofRandom(-140, 140),
-									 ofRandom(-140, 140),
+									 ofRandom(-spread, spread), //pose
+									 ofRandom(-spread, spread),
+									 ofRandom(-spread, spread),
 									 
 									 ofRandom(XrotMin*1.5, XrotMax*1.5), //rot
 									 ofRandom(YrotMin*1.5, YrotMax*1.5),
@@ -143,22 +157,19 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfUpdate(){
 				}
 				else {
 					list.push_back( Cube(mesh,baseBox,
+										 stroke, baseStroke,
 										 ofRandom(XrandMin, XrandMax), //scale
 										 ofRandom(YrandMin, YrandMax),
 										 ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
 										 
-										 ofRandom(-140, 140), //pose
-										 ofRandom(-140, 140),
-										 ofRandom(-140, 140),
+										 ofRandom(-spread, spread), //pose
+										 ofRandom(-spread, spread),
+										 ofRandom(-spread, spread),
 										 
 										 ofRandom(XrotMin, XrotMax), //rot
 										 ofRandom(YrotMin, YrotMax),
 										 ofRandom(ZrotMin, ZrotMax) ) );
-			}
-			
-//			list.push_back( Cube(ofRandom(XrandMin, XrandMax), ofRandom(YrandMin, YrandMax), ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
-//								 ofRandom(-140, 140), ofRandom(-140, 140), ofRandom(-140, 140),
-//								 ofRandom(XrotMin, XrotMax), ofRandom(YrotMin, YrotMax), ofRandom(ZrotMin, ZrotMax) ) );
+			}			
 		}
 	}
 	
@@ -182,8 +193,10 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfDraw(){
     ofRotateY(ofRadToDeg(ang));     //Y rotation
 	
     mat->begin();
-
 	mesh.draw();
+	//someday...
+//	ofSetLineWidth(3);
+//	stroke.draw();
     mat->end(); //enables material
 	
     ofPopStyle();

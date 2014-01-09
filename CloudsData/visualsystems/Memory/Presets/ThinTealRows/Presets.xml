@@ -2,13 +2,18 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000000000</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <XPosition>637.000122070</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>conflictForces</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DataOverload</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -32,6 +37,41 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>GlitchSort</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_01a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_02a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_03a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_03b</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_04a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_05a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Hall</Name>
     <Value>0</Value>
 </Widget>
@@ -42,27 +82,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>lines</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>NoisePixels</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>pixelsThunder</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>randomCaos</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>randomDeFragWar</Name>
+    <Name>NoisePixels2</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -92,7 +117,32 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>ThinBlueRows_2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>ThinBlueRows_CU</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ThinBlueRows_wide</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ThinGrayRows</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ThinTealRows</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ThinTealRows2</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -112,6 +162,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>ThinTealRows</Name>
-    <Value>1</Value>
+    <Name>WideLEDCells2</Name>
+    <Value>0</Value>
 </Widget>

@@ -3,7 +3,7 @@
     <Name>Grid</Name>
     <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>318.000000000</YPosition>
+    <YPosition>335.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -29,10 +29,25 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Line Width</Name>
-    <Value>0.000000000</Value>
+    <Value>0.010000000</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>25</Kind>
+    <Name>Red</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Green</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Blue</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
     <Name>Alpha</Name>
     <Value>0.000000000</Value>
 </Widget>

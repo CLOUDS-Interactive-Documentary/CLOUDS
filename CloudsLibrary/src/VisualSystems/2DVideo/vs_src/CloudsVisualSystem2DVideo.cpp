@@ -130,9 +130,17 @@ void CloudsVisualSystem2DVideo::selfSetup()
     movieStrings.push_back("D3_AAPL.mov");
     movieStrings.push_back("D3_Dial.mov");
     movieStrings.push_back("D3_Radial.mov");
-    movieStrings.push_back("zipcode.mov");
     movieStrings.push_back("OpenPaths.mov");
     movieStrings.push_back("Exoplanets.mp4");
+    movieStrings.push_back("Cascade.mov");
+    movieStrings.push_back("DataTimeline.mov");
+    movieStrings.push_back("CordDiagram_videogames.mov");
+    movieStrings.push_back("zipcode.mov");
+    movieStrings.push_back("USMap.mov");
+
+    movieStrings.push_back("GitHub2.mov");
+    movieStrings.push_back("Gource.mov");
+
     
     movieStrings.push_back("FaceSub_lowSat.mov");
     movieStrings.push_back("PeopleStaring.mp4");
@@ -143,11 +151,15 @@ void CloudsVisualSystem2DVideo::selfSetup()
     
     movieStrings.push_back("Kittenstep.mov");
     movieStrings.push_back("Code_Screenflow3.mov");
+    
     movieStrings.push_back("networkFlow2.mov");
     movieStrings.push_back("DesignByNumbers.mov");
     movieStrings.push_back("TweakMode.mov");
     movieStrings.push_back("Logo1.mov");
     movieStrings.push_back("Logo2.mov");
+    movieStrings.push_back("Flow_1.mov");
+    movieStrings.push_back("Flow2_Blue.mov");
+    movieStrings.push_back("Flow5_Blue.mov");
     
     movieStrings.push_back("Reas_network1.mov");
     movieStrings.push_back("Reas_Process13.mov");

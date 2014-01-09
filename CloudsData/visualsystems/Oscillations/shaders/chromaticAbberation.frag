@@ -1,5 +1,5 @@
-// #version 120
- // #extension GL_ARB_texture_rectangle : enable
+#version 120
+#extension GL_ARB_texture_rectangle : enable
 
  uniform sampler2DRect screen;
  uniform vec2 resolution;
@@ -23,6 +23,10 @@ vec4 convolution(in vec2 coord){
 	}
 	return t;
 }
+
+//vec4 convolution(in vec2 coord){
+//    return texture2DRect(screen, coord);
+//}
 
 void main(){
 	vec2 coord = gl_TexCoord[0].st;

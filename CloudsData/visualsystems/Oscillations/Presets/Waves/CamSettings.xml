@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>CamSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000061035</XPosition>
+    <XPosition>1061.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -89,4 +89,14 @@
     <Kind>17</Kind>
     <Name>DISABLE</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>near plane</Name>
+    <Value>0.010000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>far plane</Name>
+    <Value>5000.000000000</Value>
 </Widget>

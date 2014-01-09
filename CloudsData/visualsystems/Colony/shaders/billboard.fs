@@ -1,7 +1,7 @@
 #version 120
 #define EPSILON 0.05
 uniform sampler2D tex;
-uniform float kernel_maxValue;
+uniform float kernelMaxValue;
 varying float size;
 uniform vec3 light;
 
@@ -27,6 +27,6 @@ void main (void) {
     vec4 c = texture2D(tex, gl_TexCoord[0].xy);
     c.r = getLight();
     c.a = sqrt(c.b);
-	gl_FragColor = c * kernel_maxValue;
+	gl_FragColor = c * kernelMaxValue;
     
 }

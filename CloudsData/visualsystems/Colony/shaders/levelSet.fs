@@ -10,6 +10,7 @@ uniform float time;
 
 uniform bool levelSet;
 uniform bool levelSetBg;
+uniform float levelSetShadowAmt;
 
 uniform vec2 resolution;
 uniform vec2 imgRes;
@@ -19,10 +20,10 @@ uniform float translucenseCell;
 
 uniform vec4 kernelColor_high;
 uniform vec4 kernelColor_low;
-uniform float kernel_maxValue;
+uniform float kernelShadowAmt;
+uniform float kernelMaxValue;
 
 uniform vec3 lightDirection;
-uniform vec3 lightColor;
 
 uniform float stippleScale;
 uniform vec4 stippleColor;
@@ -42,6 +43,7 @@ vec4 screen (vec4 a, vec4 b){
     return one - (one - a) * (one - b);
 }
 
+
 float bump(float t, float center, float width){
     float f = (t - center) / width;
     return 1. - clamp(f * f, 0., 1.);
@@ -53,7 +55,7 @@ float heightMap(vec2 co){
     float iters = 3.;
     float t = time * .01;
     for (float i = 1.; i <= iters; i += 1.) {
-        //TODO: optimize this.
+        //FIXME: This is the main slowdown
         bumps += (.5 + dot(sin(co),vec2(.25)))
                 * log(1 + i);
         co *= .07;
@@ -86,8 +88,7 @@ vec4 getLevelSet(vec4 fg){
     float set = (.5 * (1. + sin(levl)) + g/2.);
     float light = clamp(getLightIntensity(levl, lightDirection.xy),0.1,1);
 	return vec4(set
-                * mix(1, light, 0.5)
-//                * mix(vec3(1.),lightColor, smoothstep(0.2,0.7,light))
+                * mix(1., light, levelSetShadowAmt)
                 + vec3(g),
                 1.);
 }
@@ -113,11 +114,11 @@ vec4 getMicroscope(vec4 fg){
     vec4 stipple = stippleColor * stippleAlpha;
 
     //kernel
-    float kernelPhase = clamp(fg.g/kernel_maxValue, 0., 1.);
+    float kernelPhase = clamp(fg.g/kernelMaxValue, 0., 1.);
     vec4 kernel = kernelPhase
                 * mix(kernelColor_low, kernelColor_high, kernelPhase);
     // Add Lights
-    kernel.rgb *= fg.r;
+    kernel.rgb *= mix(1.,fg.r, kernelShadowAmt);
     
     //cell floor
     vec2 normalizedCoords = gl_TexCoord[0].xy * imgRes / resolution;

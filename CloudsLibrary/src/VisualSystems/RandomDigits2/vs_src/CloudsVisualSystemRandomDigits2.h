@@ -19,8 +19,6 @@
 
 using namespace Tonic;
 
-
-
 //TODO: rename this to your own visual system
 class CloudsVisualSystemRandomDigits2 : public CloudsVisualSystem {
   public:
@@ -119,6 +117,8 @@ protected:
     int xSpacing, ySpacing, zSpacing;
     float xNoise, yNoise, zNoise;
     float dark, light;
+    
+    float fogDensity;
 
     // Sound
     ofxUISuperCanvas* soundGui;

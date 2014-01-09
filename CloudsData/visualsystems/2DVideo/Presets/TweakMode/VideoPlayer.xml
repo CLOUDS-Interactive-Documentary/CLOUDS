@@ -27,17 +27,37 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>zipcode.mov</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>OpenPaths.mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Exoplanets.mp4</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Cascade.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DataTimeline.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CordDiagram_videogames.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>zipcode.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>USMap.mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -103,6 +123,21 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Logo2.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Flow_1.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Flow2_Blue.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Flow5_Blue.mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

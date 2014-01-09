@@ -182,6 +182,8 @@ void CloudsVisualSystemRipples::restart()
     renderMesh.addTexCoord(ofVec2f(width, 0));
     renderMesh.addTexCoord(ofVec2f(width, height));
     renderMesh.addTexCoord(ofVec2f(0, height));
+	
+	bRestart = false;
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -215,19 +217,22 @@ void CloudsVisualSystemRipples::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemRipples::selfUpdate()
 {    
-    if (bRestart || ripplesSrcFbo.getWidth() != getCanvasWidth() || ripplesSrcFbo.getHeight() != getCanvasHeight()) {
+    if (bRestart ||
+		ripplesSrcFbo.getWidth() != getCanvasWidth() ||
+		ripplesSrcFbo.getHeight() != getCanvasHeight())
+	{
         restart();
-        bRestart = false;
     }
     
     tintColor.setHsb(tintHue->getPos(), tintSat->getPos(), tintBri->getPos(), tintAlpha->getPos());
     dropColor.setHsb(ofRandom(minDropHue, maxDropHue), ofRandom(minDropSat, maxDropSat), ofRandom(minDropBri, maxDropBri));
     
     if ((bDropOnPress && GetCloudsInputPressed()) || (!bDropOnPress && ofGetFrameNum() % dropRate == 0)) {
+
         ofPushStyle();
         ofPushMatrix();
         ripplesSrcFbo.begin();
-        {
+		{
             ofSetColor(dropColor);
             ofNoFill();
 #ifdef OCULUS_RIFT
@@ -239,6 +244,7 @@ void CloudsVisualSystemRipples::selfUpdate()
 #endif
         }
         ripplesSrcFbo.end();
+		
         ofPopMatrix();
         ofPopStyle();
         
@@ -262,8 +268,6 @@ void CloudsVisualSystemRipples::selfUpdate()
     ripplesShader.end();
     ripplesDstFbo.end();
 
-    ofPopStyle();
-    
     // sound
     if (dontTriggerSoundCounter > 0)
     {
