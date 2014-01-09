@@ -13,10 +13,10 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Level Set Mode</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>Initial Cells</Name>
-    <Value>8</Value>
+    <Value>5</Value>
 </Widget>
