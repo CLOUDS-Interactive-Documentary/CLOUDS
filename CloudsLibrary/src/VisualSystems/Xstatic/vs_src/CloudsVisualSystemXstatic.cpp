@@ -29,7 +29,9 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
     customGui->addToggle("DRAW BOX", &bDrawBox);
     //customGui->addSlider("BOX SIZE", 10, 300, &kBoxSize);
     customGui->addToggle("REGENERATE", &bShouldRegenerate);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     customGui->addToggle("BIG BANG MODE", &bBigBang);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     customGui->addIntSlider("NUM PARTICLES", 0, 2000, &nParticles);
     customGui->addToggle("BOUNCE OFF WALLS", &bBounceOffWalls);
     customGui->addToggle("WRAP EDGES", &bWrapEdges);
@@ -45,13 +47,14 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
     customGui->addSpacer();
     customGui->addToggle("FREEZE", &bShouldFreeze);
     customGui->addToggle("RISE", &bShouldRise);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     customGui->addToggle("FALL", &bShouldFall);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     customGui->addMinimalSlider("RISE/FALL SPEED", 0, 200, &riseFallSpeed);
     
     customGui->addToggle("EXPLODE", &bShouldExplode);
     customGui->addMinimalSlider("EXPLODE SPEED", 0, 450, &explodeSpeed);
     
-    customGui->addLabel("GRAVITY");
     customGui->addMinimalSlider("GRAVITY X", -1, 1, &gravity.x);
     customGui->addMinimalSlider("GRAVITY Y", -1, 1, &gravity.y);
     customGui->addMinimalSlider("GRAVITY Z", -1, 1, &gravity.z);
