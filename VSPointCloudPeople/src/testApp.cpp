@@ -18,7 +18,7 @@ void testApp::setup(){
 #ifdef OCULUS_RIFT
     SetCloudsInputOculus();
 #else
-    SetCloudsInputKinect();
+//    SetCloudsInputKinect();
 #endif
 	
 	rgbd.setup();

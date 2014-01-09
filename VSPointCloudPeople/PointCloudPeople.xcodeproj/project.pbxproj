@@ -182,6 +182,10 @@
 		E703D21A185E81ED00547738 /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703D20F185E81ED00547738 /* Delaunay.cpp */; };
 		E703D21B185E81ED00547738 /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703D213185E81ED00547738 /* ofxDelaunay.cpp */; };
 		E703D21C185E81ED00547738 /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703D213185E81ED00547738 /* ofxDelaunay.cpp */; };
+		E7302C7E187F2C470079C5B8 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C7A187F2C470079C5B8 /* CloudsPortal.cpp */; };
+		E7302C7F187F2C470079C5B8 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C7A187F2C470079C5B8 /* CloudsPortal.cpp */; };
+		E7302C80187F2C470079C5B8 /* CloudsPortalRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C7C187F2C470079C5B8 /* CloudsPortalRing.cpp */; };
+		E7302C81187F2C470079C5B8 /* CloudsPortalRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C7C187F2C470079C5B8 /* CloudsPortalRing.cpp */; };
 		E73801FA183C871B0018AB96 /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7380142183C871A0018AB96 /* ofxOculusRift.cpp */; };
 		E738FF7A183C86F50018AB96 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E738FF7B183C86F50018AB96 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */; };
@@ -716,6 +720,10 @@
 		E703D211185E81ED00547738 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E703D213185E81ED00547738 /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
 		E703D214185E81ED00547738 /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelaunay.h; sourceTree = "<group>"; };
+		E7302C7A187F2C470079C5B8 /* CloudsPortal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortal.cpp; sourceTree = "<group>"; };
+		E7302C7B187F2C470079C5B8 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortal.h; sourceTree = "<group>"; };
+		E7302C7C187F2C470079C5B8 /* CloudsPortalRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortalRing.cpp; sourceTree = "<group>"; };
+		E7302C7D187F2C470079C5B8 /* CloudsPortalRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortalRing.h; sourceTree = "<group>"; };
 		E7380142183C871A0018AB96 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		E7380143183C871A0018AB96 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		E738FFE1183C86F50018AB96 /* PointCloudPeopleOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PointCloudPeopleOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1558,6 +1566,7 @@
 		E703D06B185E7EA800547738 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
+				E7302C79187F2C460079C5B8 /* Portal */,
 				E700BC401876A818003A8167 /* CloudsTransitionController.h */,
 				E700BC3F1876A818003A8167 /* CloudsTransitionController.cpp */,
 				E703D06D185E7EA800547738 /* CloudsCaption.h */,
@@ -1810,6 +1819,17 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E7302C79187F2C460079C5B8 /* Portal */ = {
+			isa = PBXGroup;
+			children = (
+				E7302C7A187F2C470079C5B8 /* CloudsPortal.cpp */,
+				E7302C7B187F2C470079C5B8 /* CloudsPortal.h */,
+				E7302C7C187F2C470079C5B8 /* CloudsPortalRing.cpp */,
+				E7302C7D187F2C470079C5B8 /* CloudsPortalRing.h */,
+			);
+			path = Portal;
+			sourceTree = "<group>";
+		};
 		E7380141183C871A0018AB96 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -1957,8 +1977,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "PointCloudPeople" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -2145,6 +2163,8 @@
 				E703D219185E81ED00547738 /* Delaunay.cpp in Sources */,
 				E703D21B185E81ED00547738 /* ofxDelaunay.cpp in Sources */,
 				E700BC411876A818003A8167 /* CloudsTransitionController.cpp in Sources */,
+				E7302C7E187F2C470079C5B8 /* CloudsPortal.cpp in Sources */,
+				E7302C80187F2C470079C5B8 /* CloudsPortalRing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2269,6 +2289,8 @@
 				E703D21A185E81ED00547738 /* Delaunay.cpp in Sources */,
 				E703D21C185E81ED00547738 /* ofxDelaunay.cpp in Sources */,
 				E700BC421876A818003A8167 /* CloudsTransitionController.cpp in Sources */,
+				E7302C7F187F2C470079C5B8 /* CloudsPortal.cpp in Sources */,
+				E7302C81187F2C470079C5B8 /* CloudsPortalRing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
