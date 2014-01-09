@@ -444,8 +444,7 @@ void CloudsVisualSystemColony::mouseReleased(ofMouseEventArgs &args){}
 void CloudsVisualSystemColony::selfSetupGui(){}
 void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e)
 {
-    cout << "name : " << e.getName() <<" , type : "<< (e.widget->getParent())->getName() << " ... "<< e.getButton()->getName()<<endl ;
-    
+
     string parent = (e.widget->getParent())->getName();
     
     if (parent == "COLONY Sound"){
