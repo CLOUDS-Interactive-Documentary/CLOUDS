@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>0.500000119</Value>
+    <Value>0.013335161</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>k</Name>
-    <Value>0.128488243</Value>
+    <Value>0.122446269</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
