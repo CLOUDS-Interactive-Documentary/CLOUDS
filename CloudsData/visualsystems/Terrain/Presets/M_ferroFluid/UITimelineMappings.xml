@@ -5,7 +5,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>k</WidgetName>
-                <WidgetID>16</WidgetID>
+                <WidgetID>18</WidgetID>
                 <WidgetCanvasParent>Terrain</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -13,7 +13,15 @@
         <Mapping>
             <Widget>
                 <WidgetName>t</WidgetName>
-                <WidgetID>18</WidgetID>
+                <WidgetID>20</WidgetID>
+                <WidgetCanvasParent>Terrain</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>noise_zoom</WidgetName>
+                <WidgetID>3</WidgetID>
                 <WidgetCanvasParent>Terrain</WidgetCanvasParent>
             </Widget>
             <Track></Track>

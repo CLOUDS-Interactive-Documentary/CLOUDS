@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Terrain</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>213.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>1.474980116</Value>
+    <Value>0.006049620</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>k</Name>
-    <Value>0.177339897</Value>
+    <Value>0.076032341</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -68,7 +68,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Dry Rate</Name>
-    <Value>0.001000000</Value>
+    <Value>0.010000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -108,6 +108,26 @@
 <Widget>
     <Kind>25</Kind>
     <Name>Low A</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace R</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace G</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace B</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace A</Name>
     <Value>1.000000000</Value>
 </Widget>
 <Widget>

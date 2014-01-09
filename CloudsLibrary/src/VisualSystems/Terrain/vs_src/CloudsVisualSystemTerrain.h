@@ -10,6 +10,7 @@
 
 #include "CloudsVisualSystem.h"
 
+
 class CloudsVisualSystemTerrain : public CloudsVisualSystem {
 public:
     
@@ -146,9 +147,14 @@ protected:
 	float bgSat;
 	float bgBri;
     float mTexMix;
+    float brushSize;
+    
+    ofFloatColor mTraceColor;
     
     ofMesh brushMesh, blurMesh;
     float mDepositScale, mCurDepositScale, dryRate, blurRadius;
-    
-    
+    map<int, vector<ofVec2f> > playerHistoryMap;
+    map<int, vector<ofVec2f> > playerDepositPoints;
+    vector<ofVec2f> depositPoints;
+
 };

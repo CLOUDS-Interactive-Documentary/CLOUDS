@@ -11,12 +11,15 @@ uniform vec4 highColor;
 uniform vec4 lowColor;
 uniform float _atten;
 uniform float balance;
+uniform vec4 traceColor;
 
 varying float camDelta;
 uniform vec4 fogColor;
 uniform float fogDist;
 uniform float fogExpo;
 uniform float texMix;
+
+uniform float doDraw;
 
 uniform sampler2DRect drawMap;
 
@@ -66,7 +69,9 @@ void PointLight(in int i,
 }
 
 
-
+float map(float value, float inputMin, float inputMax, float outputMin, float outputMax){
+    return ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
+}
 
 
 
@@ -97,12 +102,19 @@ void main()
 	
 	color += atten * gl_FrontMaterial.emission * ppFresnell * 1.0;
 	color += pow( atten, 3.0 ) * gl_FrontMaterial.emission;
-	
+    
     color *= mix( highColor*balance, lowColor*(1.-balance) ,fsColor.r);
     
-    vec4 tc = texture2DRect(drawMap, gl_TexCoord[0].st);
+    if(doDraw==1.){
+        vec4 tc = texture2DRect(drawMap, gl_TexCoord[0].st);
+        color += mix(vec4(0.),traceColor, clamp(map(tc.r,0.2,1.,0.,1.),0.,1.) );
+       // color.g -= mix(traceColor.g ,1., clamp(map(tc.r,0.2,1.,0.,1.),0.,1.) );
+       // color.b -= mix(traceColor.b ,1., clamp(map(tc.r,0.2,1.,0.,1.),0.,1.) );
+    }else{
+        
+    }
     
-    gl_FragColor = color * mix(vec4(1.,1.,1.,1.), tc*2. ,texMix);
+    gl_FragColor = color;
 	gl_FragColor = mix( gl_FragColor, fogColor, min(1., pow( 1.25 * camDelta / (fogDist*fogDist), fogExpo) ) );;
 }
 
