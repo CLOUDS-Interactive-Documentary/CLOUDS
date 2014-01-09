@@ -31,7 +31,12 @@ void CloudsVisualSystemVoro::selfSetDefaults()
 
 void CloudsVisualSystemVoro::selfSetup()
 {
-	
+    objectLookAt = ofVec3f(0,0,1);
+    ofLoadImage(dot, getVisualSystemDataPath()+"images/dot.png");
+    
+    for(int i = 0; i < 28; i++){
+        ofLoadImage(nucles[i], getVisualSystemDataPath()+"images/Cell"+ofToString(i,2,'0')+".png");
+    }	
 }
 
 void CloudsVisualSystemVoro::selfSetupGuis()
@@ -70,20 +75,12 @@ void CloudsVisualSystemVoro::selfSetupSystemGui()
 	
 }
 
-void CloudsVisualSystemVoro::selfSetupRenderGui()
-{
-}
+void CloudsVisualSystemVoro::selfSetupRenderGui(){}
 
 void CloudsVisualSystemVoro::selfBegin()
 {
-    objectLookAt = ofVec3f(0,0,1);
-    ofLoadImage(dot, getVisualSystemDataPath()+"images/dot.png");
-    
-    for(int i = 0; i < 28; i++){
-        ofLoadImage(nucles[i], getVisualSystemDataPath()+"images/Cell"+ofToString(i,2,'0')+".png");
-    }
-    
-    
+	cam.reset();
+	
 }
 
 void CloudsVisualSystemVoro::selfEnd()
@@ -231,8 +228,6 @@ void CloudsVisualSystemVoro::selfUpdate()
     }
 
     fps++;
-    
-
 }
 
 void CloudsVisualSystemVoro::selfDraw()
@@ -288,19 +283,19 @@ void CloudsVisualSystemVoro::selfDraw()
 }
 
 
-void CloudsVisualSystemVoro::billBoard()
-{
-    ofVec3f objToCam = cam.getGlobalPosition();
-    objToCam.normalize();
-    float theta = objectLookAt.angle(objToCam);
-    ofVec3f axisOfRotation = objToCam.crossed(objectLookAt);
-    axisOfRotation.normalize();
-    
-    glRotatef(-zRot->getPos(), 0.0, 0.0, 1.0);
-    glRotatef(-yRot->getPos(), 0.0, 1.0, 0.0);
-    glRotatef(-xRot->getPos(), 1.0, 0.0, 0.0);
-    glRotatef(-theta, axisOfRotation.x, axisOfRotation.y, axisOfRotation.z);
-}
+//void CloudsVisualSystemVoro::billBoard()
+//{
+//    ofVec3f objToCam = cam.getGlobalPosition();
+//    objToCam.normalize();
+//    float theta = objectLookAt.angle(objToCam);
+//    ofVec3f axisOfRotation = objToCam.crossed(objectLookAt);
+//    axisOfRotation.normalize();
+//    
+//    glRotatef(-zRot->getPos(), 0.0, 0.0, 1.0);
+//    glRotatef(-yRot->getPos(), 0.0, 1.0, 0.0);
+//    glRotatef(-xRot->getPos(), 1.0, 0.0, 0.0);
+//    glRotatef(-theta, axisOfRotation.x, axisOfRotation.y, axisOfRotation.z);
+//}
 
 void CloudsVisualSystemVoro::selfExit()
 {

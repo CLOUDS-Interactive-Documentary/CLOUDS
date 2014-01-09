@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>318.000000000</XPosition>
-    <YPosition>-7.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>379.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -14,6 +14,21 @@
     <Kind>2</Kind>
     <Name>Aminos_1</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Aminos_2</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Aminos_2a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Aminos_3a</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -269,9 +284,4 @@
     <Kind>2</Kind>
     <Name>xray2</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Aminos_2</Name>
-    <Value>1</Value>
 </Widget>

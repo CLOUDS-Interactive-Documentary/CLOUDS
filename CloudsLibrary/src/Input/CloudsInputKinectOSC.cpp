@@ -18,6 +18,12 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 : activeThresholdY(activeThresholdY)
 , activeThresholdZ(activeThresholdZ)
 , primaryIdx(-1)
+, jointLerpPct(0.3f)
+, posResetLerpPct(0.1f)
+, posSetLerpPct(0.3f)
+, posSetInstantThreshold(20)
+, posOutOfBoundsStart(0)
+, posOutOfBoundsThreshold(2000)
 {
 
 }
@@ -74,56 +80,54 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 bodies[idx]->idx = idx;
             }
             
-            float loip = 0.3f;
-            
             // update the head joint
             bodies[idx]->headJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->headJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
             bodies[idx]->headJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
                                                                      m.getArgAsFloat(i++), 
-                                                                     m.getArgAsFloat(i++)), loip);
+                                                                     m.getArgAsFloat(i++)), jointLerpPct);
             
             // update the neck joint
             bodies[idx]->neckJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->neckJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
             bodies[idx]->neckJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                     m.getArgAsFloat(i++), 
-                                                     m.getArgAsFloat(i++)), loip);
+                                                                     m.getArgAsFloat(i++),
+                                                                     m.getArgAsFloat(i++)), jointLerpPct);
             
             // update the spine shoulder joint
             bodies[idx]->spineShoulderJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->spineShoulderJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
             bodies[idx]->spineShoulderJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                              m.getArgAsFloat(i++), 
-                                                              m.getArgAsFloat(i++)), loip);
+                                                                              m.getArgAsFloat(i++),
+                                                                              m.getArgAsFloat(i++)), jointLerpPct);
             
             // update the spine mid joint
             bodies[idx]->spineMidJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->spineMidJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
             bodies[idx]->spineMidJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                         m.getArgAsFloat(i++), 
-                                                         m.getArgAsFloat(i++)), loip);
+                                                                         m.getArgAsFloat(i++),
+                                                                         m.getArgAsFloat(i++)), jointLerpPct);
             
             // update the spine base joint
             bodies[idx]->spineBaseJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->spineBaseJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
             bodies[idx]->spineBaseJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                          m.getArgAsFloat(i++), 
-                                                          m.getArgAsFloat(i++)), loip);
+                                                                          m.getArgAsFloat(i++),
+                                                                          m.getArgAsFloat(i++)), jointLerpPct);
             
             // update the left shoulder joint
             bodies[idx]->shoulderLeftJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->shoulderLeftJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
             bodies[idx]->shoulderLeftJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                             m.getArgAsFloat(i++), 
-                                                             m.getArgAsFloat(i++)), loip);
+                                                                             m.getArgAsFloat(i++),
+                                                                             m.getArgAsFloat(i++)), jointLerpPct);
             
             // update the right shoulder joint
             bodies[idx]->shoulderRightJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
             bodies[idx]->shoulderRightJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
             bodies[idx]->shoulderRightJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
-                                                              m.getArgAsFloat(i++), 
-                                                              m.getArgAsFloat(i++)), loip);
+                                                                              m.getArgAsFloat(i++),
+                                                                              m.getArgAsFloat(i++)), jointLerpPct);
             
             // calculate the head to spine base length for mapping height
             float mappingWidth = MAX(bodies[idx]->spineShoulderJoint.inputPosition.distance(bodies[idx]->shoulderLeftJoint.inputPosition), 
@@ -160,7 +164,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 hands[handIdx]->handJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
                 hands[handIdx]->handJoint.inputPosition.interpolate(ofVec3f(m.getArgAsFloat(i++), 
                                                                             m.getArgAsFloat(i++), 
-                                                                            m.getArgAsFloat(i++)), loip);
+                                                                            m.getArgAsFloat(i++)), jointLerpPct);
                 
                 // set the custom origin and map the hand coords
                 ofVec3f origin = bodies[idx]->neckJoint.inputPosition;
@@ -334,12 +338,26 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
         primaryIdx = candidateIdx;
     }
     
-    // set the current position to the designated hand
+    // set the current position using magic
+    lastPosition = currentPosition;
     if (primaryIdx == -1) {
-        currentPosition.set(ofGetWidth() * 0.5, ofGetHeight() * 0.5);
+        if (posOutOfBoundsStart == 0) {
+            posOutOfBoundsStart = ofGetElapsedTimeMillis();
+        }
+        if (ofGetElapsedTimeMillis() - posOutOfBoundsStart > posOutOfBoundsThreshold) {
+            // waited long enough, start heading back
+            currentPosition.interpolate(ofVec3f(ofGetWidth() * 0.5, ofGetHeight() * 0.5), posResetLerpPct);
+        }
+        // else: keep waiting for it to come back
     }
     else {
-        currentPosition.set(hands[primaryIdx]->handJoint.screenPosition);
+        posOutOfBoundsStart = 0;
+        if (currentPosition.distance(hands[primaryIdx]->handJoint.screenPosition) <= posSetInstantThreshold) {
+            currentPosition.set(hands[primaryIdx]->handJoint.screenPosition);
+        }
+        else {
+            currentPosition.interpolate(hands[primaryIdx]->handJoint.screenPosition, posSetLerpPct);
+        }
     }
 }
 
@@ -360,46 +378,52 @@ void CloudsInputKinectOSC::mapCoords(ofVec3f& origin, float zRef, float width, f
 //--------------------------------------------------------------
 void CloudsInputKinectOSC::processHandEvent(int handIdx, k4w::Hand * hand, k4w::HandState newState)
 {    
+    bool primary = (handIdx == primaryIdx);
     if (newState == k4w::HandState_Lasso) {
         if (hand->actionState == k4w::ActionState_Lasso) {
             // matching state: continue
-            interactionDragged(hand->handJoint.screenPosition, handIdx == primaryIdx, k4w::ActionState_Lasso, handIdx);
+            interactionDragged(hand->handJoint.screenPosition, primary, k4w::ActionState_Lasso, handIdx);
         }
         else if (hand->actionState == k4w::ActionState_Closed) {
             // state mismatch: end previous
-            interactionEnded(hand->handJoint.screenPosition, handIdx == primaryIdx, k4w::ActionState_Closed, handIdx);
+            if (primary) dragging = false;
+            interactionEnded(hand->handJoint.screenPosition, primary, k4w::ActionState_Closed, handIdx);
             hand->actionState = k4w::ActionState_Idle;
         }
         else {
             // idle state: start
-            interactionStarted(hand->handJoint.screenPosition, handIdx == primaryIdx, k4w::ActionState_Lasso, handIdx);
+            if (primary) dragging = true;
+            interactionStarted(hand->handJoint.screenPosition, primary, k4w::ActionState_Lasso, handIdx);
             hand->actionState = k4w::ActionState_Lasso;
         }
     }  
     else if (newState == k4w::HandState_Closed) {
         if (hand->actionState == k4w::ActionState_Closed) {
             // matching state: continue
-            interactionDragged(hand->handJoint.screenPosition, handIdx == primaryIdx, k4w::ActionState_Closed, handIdx);
+            interactionDragged(hand->handJoint.screenPosition, primary, k4w::ActionState_Closed, handIdx);
         }
         else if (hand->actionState == k4w::ActionState_Lasso) {
             // state mismatch: end previous
-            interactionEnded(hand->handJoint.screenPosition, handIdx == primaryIdx, k4w::ActionState_Lasso, handIdx);
+            if (primary) dragging = false;
+            interactionEnded(hand->handJoint.screenPosition, primary, k4w::ActionState_Lasso, handIdx);
             hand->actionState = k4w::ActionState_Idle;
         }
         else {
             // idle state: start
-            interactionStarted(hand->handJoint.screenPosition, handIdx == primaryIdx, k4w::ActionState_Closed, handIdx);
+            if (primary) dragging = true;
+            interactionStarted(hand->handJoint.screenPosition, primary, k4w::ActionState_Closed, handIdx);
             hand->actionState = k4w::ActionState_Closed;
         }
     }
     else if (newState <= k4w::HandState_Open) {
         if (hand->actionState == k4w::ActionState_Idle) {
             // matching state: continue
-            interactionMoved(hand->handJoint.screenPosition, handIdx == primaryIdx, k4w::ActionState_Idle, handIdx);
+            interactionMoved(hand->handJoint.screenPosition, primary, k4w::ActionState_Idle, handIdx);
         }
         else {
             // state mismatch: end previous
-            interactionEnded(hand->handJoint.screenPosition, handIdx == primaryIdx, hand->actionState, handIdx);
+            if (primary) dragging = false;
+            interactionEnded(hand->handJoint.screenPosition, primary, hand->actionState, handIdx);
             hand->actionState = k4w::ActionState_Idle;
         }
     }

@@ -2,16 +2,16 @@
     <Kind>42</Kind>
     <Name>Color</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>559.000000000</YPosition>
+    <XPosition>213.000015259</XPosition>
+    <YPosition>225.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Chromatic Abberation</Name>
-    <Value>0.453201979</Value>
+    <Value>0.315270782</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>CRT Distortion</Name>
-    <Value>0.847290635</Value>
+    <Value>0.394088507</Value>
 </Widget>

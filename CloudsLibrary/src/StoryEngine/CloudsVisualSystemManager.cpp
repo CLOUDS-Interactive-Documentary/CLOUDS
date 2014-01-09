@@ -38,6 +38,7 @@
 #include "CloudsVisualSystemMandala.h"
 #include "CloudsVisualSystemMarchingCubes.h"
 #include "CloudsVisualSystemMazeGenerator.h"
+//#include "CloudsVisualSystemMazeGenerator2.h"
 #include "CloudsVisualSystemMemory.h"
 #include "CloudsVisualSystemMetaballs.h"
 #include "CloudsVisualSystemNbody.h"
@@ -56,7 +57,7 @@
 #include "CloudsVisualSystemOpenP5Spaghetti.h"
 #include "CloudsVisualSystemOpenP5SpinningSolids.h"
 #include "CloudsVisualSystemOpenP5TextUniverse.h"
-//#include "CloudsVisualSystemOrbit.h"
+#include "CloudsVisualSystemOrbit.h"
 #include "CloudsVisualSystemOscillations.h"
 #include "CloudsVisualSystemPages.h"
 #include "CloudsVisualSystemPaintBrush.h"
@@ -64,7 +65,8 @@
 #include "CloudsVisualSystemProcess11.h"
 #include "CloudsVisualSystemProcess18.h"
 #include "CloudsVisualSystemRGBDVideo.h"
-#include "CloudsVisualSystemRandomDigits.h"
+//#include "CloudsVisualSystemRandomDigits.h"
+#include "CloudsVisualSystemRandomDigits2.h"
 #include "CloudsVisualSystemReplicator.h"
 #include "CloudsVisualSystemRipples.h"
 #include "CloudsVisualSystemRulez.h"
@@ -139,6 +141,7 @@ struct Mapping {
 	{ "Mandala", &fCreate<CloudsVisualSystemMandala> },
 	{ "MarchingCubes", &fCreate<CloudsVisualSystemMarchingCubes> },
 	{ "MazeGenerator", &fCreate<CloudsVisualSystemMazeGenerator> },
+//    { "MazeGenerator2", &fCreate<CloudsVisualSystemMazeGenerator2> },
 	{ "Memory", &fCreate<CloudsVisualSystemMemory> },
 //	{ "Metaballs", &fCreate<CloudsVisualSystemMetaballs> },
 //	{ "Nbody", &fCreate<CloudsVisualSystemNbody> },
@@ -157,7 +160,7 @@ struct Mapping {
 	{ "OpenP5Spaghetti", &fCreate<CloudsVisualSystemOpenP5Spaghetti> },
 	{ "OpenP5SpinningSolids", &fCreate<CloudsVisualSystemOpenP5SpinningSolids> },
 	{ "OpenP5TextUniverse", &fCreate<CloudsVisualSystemOpenP5TextUniverse> },
-//	{ "Orbit", &fCreate<CloudsVisualSystemOrbit> },
+	{ "Orbit", &fCreate<CloudsVisualSystemOrbit> },
 	{ "Oscillations", &fCreate<CloudsVisualSystemOscillations> },
 	{ "Pages", &fCreate<CloudsVisualSystemPages> },
 	{ "PaintBrush", &fCreate<CloudsVisualSystemPaintBrush> },
@@ -165,7 +168,8 @@ struct Mapping {
 	{ "Process11", &fCreate<CloudsVisualSystemProcess11> },
 	{ "Process18", &fCreate<CloudsVisualSystemProcess18> },
 	{ "RGBDVideo", &fCreate<CloudsVisualSystemRGBDVideo> },
-	{ "RandomDigits", &fCreate<CloudsVisualSystemRandomDigits> },
+	//{ "RandomDigits", &fCreate<CloudsVisualSystemRandomDigits> },
+    { "RandomDigits2", &fCreate<CloudsVisualSystemRandomDigits2> },
 	{ "Replicator", &fCreate<CloudsVisualSystemReplicator> },
 	{ "Ripples", &fCreate<CloudsVisualSystemRipples> },
 	{ "Rulez", &fCreate<CloudsVisualSystemRulez> },
@@ -618,6 +622,7 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 			}
 		}
 	}
+	
 	return presetsWithKeywords;
 }
 
@@ -799,7 +804,7 @@ void CloudsVisualSystemManager::unsuppressClip(string presetID, string clip){
 }
 
 //--------------------------------------------------------------------
-bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip){
+bool CloudsVisualSystemManager::isClipSuppressed(string presetID, string clip){
     int deadIndex;
     return isClipSuppressed(presetID, clip, deadIndex);
 }
