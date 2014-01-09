@@ -185,7 +185,7 @@ public:
     float posSetLerpPct;
     float posSetInstantThreshold;
     unsigned long long posOutOfBoundsStart;
-    unsigned long posOutOfBoundsThreshold;
+    int posOutOfBoundsDelay;
     
     map<int, k4w::Body *> bodies;
     map<int, k4w::Hand *> hands;

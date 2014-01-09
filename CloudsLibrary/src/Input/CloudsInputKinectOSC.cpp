@@ -23,7 +23,7 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , posSetLerpPct(0.3f)
 , posSetInstantThreshold(20)
 , posOutOfBoundsStart(0)
-, posOutOfBoundsThreshold(2000)
+, posOutOfBoundsDelay(2000)
 {
 
 }
@@ -344,7 +344,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
         if (posOutOfBoundsStart == 0) {
             posOutOfBoundsStart = ofGetElapsedTimeMillis();
         }
-        if (ofGetElapsedTimeMillis() - posOutOfBoundsStart > posOutOfBoundsThreshold) {
+        if (ofGetElapsedTimeMillis() - posOutOfBoundsStart > posOutOfBoundsDelay) {
             // waited long enough, start heading back
             currentPosition.interpolate(ofVec3f(ofGetWidth() * 0.5, ofGetHeight() * 0.5), posResetLerpPct);
         }
