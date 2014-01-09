@@ -177,7 +177,8 @@ public:
     int primaryIdx;
     float activeThresholdY;
     float activeThresholdZ;
-    
+    ofVec3f boundsMin;
+    ofVec3f boundsMax;
     float jointLerpPct;
     
     // current position attributes
@@ -185,7 +186,7 @@ public:
     float posSetLerpPct;
     float posSetInstantThreshold;
     unsigned long long posOutOfBoundsStart;
-    unsigned long posOutOfBoundsThreshold;
+    int posOutOfBoundsDelay;
     
     map<int, k4w::Body *> bodies;
     map<int, k4w::Hand *> hands;

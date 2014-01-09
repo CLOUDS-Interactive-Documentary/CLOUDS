@@ -4,6 +4,10 @@
 #include "CloudsGlobal.h"
 #include "CloudsInput.h"
 
+#ifdef KINECT_INPUT
+#include "CloudsInputKinectOSC.h"
+#endif
+
 #ifdef TARGET_OSX
 #include "ofxSystemTextbox.h"
 #endif
@@ -639,6 +643,16 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
         case '5':
             toggleGuiAndPosition(lgtGui);
             break;
+#ifdef KINECT_INPUT
+        case '8':
+            toggleGuiAndPosition(kinectGui);
+            break;
+#endif
+#ifdef OCULUS_RIFT
+        case '9':
+            toggleGuiAndPosition(oculusGui8);
+            break;
+#endif
 //        case '0':
 //            toggleGuiAndPosition(camGui);
 //            break;
@@ -1007,6 +1021,12 @@ void CloudsVisualSystem::setupCoreGuis()
     setupMaterial("MATERIAL 1", mat);
     setupPointLight("POINT LIGHT 1", light);
     setupPresetGui();
+#ifdef KINECT_INPUT
+    setupKinectGui();
+#endif
+#ifdef OCULUS_RIFT
+    setupOculusGui();
+#endif
 }
 
 void CloudsVisualSystem::setupGui()
@@ -2601,6 +2621,63 @@ void CloudsVisualSystem::loadTimelineUIMappings(string path)
 	timeline->setCurrentPage(0);
 }
 
+#ifdef KINECT_INPUT
+void CloudsVisualSystem::setupKinectGui()
+{
+    kinectGui = new ofxUISuperCanvas("KINECT", gui);
+    kinectGui->copyCanvasStyle(gui);
+    kinectGui->copyCanvasProperties(gui);
+    kinectGui->setName("Kinect");
+    kinectGui->setPosition(guis[guis.size() - 1]->getRect()->x + guis[guis.size() - 1]->getRect()->getWidth() + 1, 0);
+    kinectGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
+    
+    kinectGui->addSpacer();
+    kinectGui->addRangeSlider("BODY RANGE X", -1.0f, 1.0f, &kinectInput->boundsMin.x, &kinectInput->boundsMax.x);
+    kinectGui->addRangeSlider("BODY RANGE Y", -1.0f, 1.0f, &kinectInput->boundsMin.y, &kinectInput->boundsMax.y);
+    kinectGui->addRangeSlider("BODY RANGE Z",  0.5f, 4.5f, &kinectInput->boundsMin.z, &kinectInput->boundsMax.z);
+    
+    kinectGui->addSpacer();
+    kinectGui->addSlider("RESET LERP", 0, 1, &kinectInput->posResetLerpPct);
+    kinectGui->addSlider("MOVE LERP", 0, 1, &kinectInput->posSetLerpPct);
+    kinectGui->addSlider("MOVE THRESHOLD", 0, 100, &kinectInput->posSetInstantThreshold);
+    kinectGui->addIntSlider("OUT OF BOUNDS DELAY", 0, 5000, &kinectInput->posOutOfBoundsDelay);
+    
+    kinectGui->autoSizeToFitWidgets();
+    ofAddListener(kinectGui->newGUIEvent, this, &CloudsVisualSystem::guiKinectEvent);
+    guis.push_back(kinectGui);
+    guimap[kinectGui->getName()] = kinectGui;
+}
+
+void CloudsVisualSystem::guiKinectEvent(ofxUIEventArgs &e)
+{
+
+}
+#endif
+
+#ifdef OCULUS_RIFT
+void CloudsVisualSystem::setupOculusGui()
+{
+    oculusGui = new ofxUISuperCanvas("OCULUS RIFT", gui);
+    oculusGui->copyCanvasStyle(gui);
+    oculusGui->copyCanvasProperties(gui);
+    oculusGui->setName("OculusRift");
+    oculusGui->setPosition(guis[guis.size() - 1]->getRect()->x + guis[guis.size() - 1]->getRect()->getWidth() + 1, 0);
+    oculusGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    oculusGui->autoSizeToFitWidgets();
+    ofAddListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
+    guis.push_back(oculusGui);
+    guimap[oculusGui->getName()] = oculusGui;
+}
+
+void CloudsVisualSystem::guiOculusEvent(ofxUIEventArgs &e)
+{
+    
+}
+#endif
+
 void CloudsVisualSystem::lightsBegin()
 {
     ofSetSmoothLighting(bSmoothLighting);
@@ -2774,6 +2851,12 @@ void CloudsVisualSystem::deleteGUIS()
 	{
 		ofRemoveListener(it->second->newGUIEvent,this,&CloudsVisualSystem::guiLightEvent);
 	}
+#ifdef KINECT_INPUT
+    ofRemoveListener(kinectGui->newGUIEvent, this, &CloudsVisualSystem::guiKinectEvent);
+#endif
+#ifdef OCULUS_RIFT
+    ofRemoveListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
+#endif
 	
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
     {
