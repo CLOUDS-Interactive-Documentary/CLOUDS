@@ -1,13 +1,17 @@
 #include "testApp.h"
 
+#ifdef KINECT_INPUT
 #include "CloudsInputKinectOSC.h"
+#endif
 
 //--------------------------------------------------------------
 void testApp::setup()
 {
 	ofSetVerticalSync(true);
     
+#ifdef KINECT_INPUT
     SetCloudsInputKinect();
+#endif
     
 	yellowTail.setup();
 	yellowTail.playSystem();

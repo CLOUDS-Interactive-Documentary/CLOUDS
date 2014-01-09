@@ -2,7 +2,9 @@
 #include "testApp.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
+#ifdef KINECT_INPUT
 #include "CloudsInputKinectOSC.h"
+#endif
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -11,7 +13,9 @@ void testApp::setup(){
   
 	ofSetLogLevel(OF_LOG_NOTICE);
     
+#ifdef KINECT_INPUT
     SetCloudsInputKinect();
+#endif
 	
 	rgbd.setup();
 	rgbd.playSystem();
