@@ -5,74 +5,111 @@
         <INDEX>1</INDEX>
         <NAME>OverShoulder</NAME>
         <InStartPos>
-            <x>-6</x>
-            <y>-59.3204</y>
-            <z>-356.771</z>
+            <x>-26.4247</x>
+            <y>-397.251</y>
+            <z>-1918.89</z>
         </InStartPos>
         <OutRightPos>
-            <x>-249.182</x>
-            <y>-48.8526</y>
-            <z>222.766</z>
+            <x>-375.227</x>
+            <y>-0.656849</y>
+            <z>516.129</z>
         </OutRightPos>
         <OutLeftPos>
-            <x>63.1358</x>
-            <y>-52.2241</y>
-            <z>319.157</z>
+            <x>288.22</x>
+            <y>25.7048</y>
+            <z>417.171</z>
         </OutLeftPos>
         <InStartQuat>
-            <x>0.0166903</x>
-            <y>0.999461</y>
-            <z>-0.0332871</z>
-            <w>0.00613031</w>
+            <x>0.000497661</x>
+            <y>-0.997051</y>
+            <z>0.0811234</z>
+            <w>0.00485066</w>
         </InStartQuat>
         <OutLeftQuat>
-            <x>-0.0357694</x>
-            <y>0.995414</y>
-            <z>0.0198619</z>
-            <w>0.0864997</w>
+            <x>0.0110115</x>
+            <y>-0.97316</y>
+            <z>0.0509572</z>
+            <w>0.224146</w>
         </OutLeftQuat>
         <OutRightQuat>
-            <x>0.00640952</x>
-            <y>-0.986699</y>
-            <z>-0.0521326</z>
-            <w>0.153836</w>
+            <x>0.0110705</x>
+            <y>0.9431</y>
+            <z>0.008893</z>
+            <w>0.332207</w>
         </OutRightQuat>
     </OPTION>
     <OPTION>
         <INDEX>2</INDEX>
-        <NAME>default</NAME>
+        <NAME>SwoopIn</NAME>
         <InStartPos>
-            <x>-6</x>
-            <y>-49.6653</y>
-            <z>-976.296</z>
+            <x>-46.9401</x>
+            <y>467.966</y>
+            <z>-907.556</z>
         </InStartPos>
         <OutRightPos>
-            <x>-100</x>
-            <y>0</y>
-            <z>230</z>
+            <x>-375.227</x>
+            <y>-0.656849</y>
+            <z>516.129</z>
         </OutRightPos>
         <OutLeftPos>
-            <x>110</x>
-            <y>0</y>
-            <z>230</z>
+            <x>288.22</x>
+            <y>25.7048</y>
+            <z>417.171</z>
         </OutLeftPos>
         <InStartQuat>
-            <x>0.000701965</x>
-            <y>-0.997392</y>
-            <z>0.0732393</z>
-            <w>0.00914387</w>
+            <x>-0.00263073</x>
+            <y>-0.838007</y>
+            <z>-0.545241</z>
+            <w>0.0193888</w>
         </InStartQuat>
         <OutLeftQuat>
-            <x>0.000300252</x>
-            <y>0.975314</y>
-            <z>-0.00782672</z>
-            <w>0.220685</w>
+            <x>0.0110115</x>
+            <y>-0.97316</y>
+            <z>0.0509572</z>
+            <w>0.224146</w>
         </OutLeftQuat>
         <OutRightQuat>
-            <x>-0.000391153</x>
-            <y>-0.984874</y>
-            <z>-0.00390138</z>
-            <w>0.173225</w>
+            <x>0.0110705</x>
+            <y>0.9431</y>
+            <z>0.008893</z>
+            <w>0.332207</w>
+        </OutRightQuat>
+    </OPTION>
+    <OPTION>
+        <INDEX>3</INDEX>
+        <NAME>default</NAME>
+        <InStartPos>
+            <x>-26.4247</x>
+            <y>-397.251</y>
+            <z>-1918.89</z>
+        </InStartPos>
+        <OutRightPos>
+            <x>-375.227</x>
+            <y>-0.656849</y>
+            <z>516.129</z>
+        </OutRightPos>
+        <OutLeftPos>
+            <x>288.22</x>
+            <y>25.7048</y>
+            <z>417.171</z>
+        </OutLeftPos>
+        <InStartQuat>
+            <x>0.000497661</x>
+            <y>-0.997051</y>
+            <z>0.0811234</z>
+            <w>0.00485066</w>
+        </InStartQuat>
+        <OutLeftQuat>
+            <x>0.0110115</x>
+            <y>-0.97316</y>
+            <z>0.0509572</z>
+            <w>0.224146</w>
+        </OutLeftQuat>
+        <OutRightQuat>
+            <x>0.0110705</x>
+            <y>0.9431</y>
+            <z>0.008893</z>
+            <w>0.332207</w>
         </OutRightQuat>
     </OPTION>
 </TRANSITION_TYPE>
@@ -198,7 +235,7 @@
         <INDEX>3</INDEX>
         <NAME>InFromRight</NAME>
         <InStartPos>
-            <x>-425.271</x>
+            <x>-425</x>
             <y>-31.2893</y>
             <z>-91.6992</z>
         </InStartPos>
@@ -235,7 +272,7 @@
         <INDEX>4</INDEX>
         <NAME>default</NAME>
         <InStartPos>
-            <x>-425.271</x>
+            <x>-425</x>
             <y>-31.2893</y>
             <z>-91.6992</z>
         </InStartPos>
