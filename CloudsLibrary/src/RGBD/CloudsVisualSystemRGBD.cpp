@@ -74,7 +74,9 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	bSaveTransition = false;
 	transitionCamTargetNode = NULL;
 	
-	currentTransitionType = "3DFlyThrough";
+	currentTransitionType = "FlyThrough";
+	
+	bMoveTransitionCameraUp = bMoveTransitionCameraDown = false;
 	
 }
 
@@ -458,6 +460,17 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 			resetTransitionNodes();
 		}
 		
+		if(bMoveTransitionCameraUp)
+		{
+			bMoveTransitionCameraUp = false;
+			transitionCam.move(0, 5, 0);
+		}
+		else if(bMoveTransitionCameraDown)
+		{
+			bMoveTransitionCameraDown = false;
+			transitionCam.move(0, -5, 0);
+		}
+		
 		if(transitionCamTargetNode)
 		{
 			transitionCamTargetNode->setPosition( transitionCam.getPosition() );
@@ -726,6 +739,10 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 	t->addButton("DriveOutRight", false )->setColorBack(ofColor(155,0,155));
 	t->addButton("resetNodes", &bResetLookThoughs );
 	
+	t->addSpacer();
+	t->addToggle("moveUp", &bMoveTransitionCameraUp);
+	t->addToggle("moveDown", &bMoveTransitionCameraDown);
+	
 	//saving & edit
 	t->addSpacer();
 	t->addToggle("Edit", placingTransitionNodes);
@@ -900,7 +917,7 @@ void CloudsVisualSystemRGBD::startTransitionIn(RGBDTransitionType transitionType
 	cout << "startTransitionIn(RGBDTransitionType transitionType)" << endl;
 	
 	//transitionEase = ofxTween::easeIn;
-	transitionEase = ofxTween::easeOut;
+	transitionEase = ofxTween::easeOut;//are we sure we don't want easeInOut?
 	transitioning = true;
 	
 	cloudsCamera.setTransitionStartNode( &transitionInStart );
@@ -912,7 +929,7 @@ void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
 	if(transitioning)
 	{
 		//cout <<"TRANSITIONING" << endl;
-		float easedPercent = ofxTween::map(percentComplete, 0, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
+		float easedPercent = ofxTween::map(percentComplete, 0, 1, 0.001, .999, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
 		cloudsCamera.setTransitionPercent( easedPercent );
 	}
 }

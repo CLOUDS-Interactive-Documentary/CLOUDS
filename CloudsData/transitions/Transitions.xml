@@ -5,7 +5,7 @@
         <INDEX>1</INDEX>
         <NAME>OverShoulder</NAME>
         <InStartPos>
-            <x>-26.4247</x>
+            <x>-26</x>
             <y>-397.251</y>
             <z>-1918.89</z>
         </InStartPos>
@@ -42,7 +42,7 @@
         <INDEX>2</INDEX>
         <NAME>SwoopIn</NAME>
         <InStartPos>
-            <x>-46.9401</x>
+            <x>-46</x>
             <y>467.966</y>
             <z>-907.556</z>
         </InStartPos>
@@ -79,7 +79,7 @@
         <INDEX>3</INDEX>
         <NAME>default</NAME>
         <InStartPos>
-            <x>-26.4247</x>
+            <x>-26</x>
             <y>-397.251</y>
             <z>-1918.89</z>
         </InStartPos>
@@ -118,6 +118,154 @@
     <NAME>TWO_DIMENSIONAL</NAME>
     <OPTION>
         <INDEX>1</INDEX>
+        <NAME>InFromBelow</NAME>
+        <InStartPos>
+            <x>2</x>
+            <y>-265</y>
+            <z>-150</z>
+        </InStartPos>
+        <OutRightPos>
+            <x>-370</x>
+            <y>-50</y>
+            <z>-150</z>
+        </OutRightPos>
+        <OutLeftPos>
+            <x>280</x>
+            <y>-50</y>
+            <z>-150</z>
+        </OutLeftPos>
+        <InStartQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>0</w>
+        </InStartQuat>
+        <OutLeftQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>-4.37114e-08</w>
+        </OutLeftQuat>
+        <OutRightQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>-4.37114e-08</w>
+        </OutRightQuat>
+    </OPTION>
+    <OPTION>
+        <INDEX>2</INDEX>
+        <NAME>InFromLeft</NAME>
+        <InStartPos>
+            <x>250</x>
+            <y>-50</y>
+            <z>-150</z>
+        </InStartPos>
+        <OutRightPos>
+            <x>-370</x>
+            <y>-50</y>
+            <z>-150</z>
+        </OutRightPos>
+        <OutLeftPos>
+            <x>280</x>
+            <y>-50</y>
+            <z>-150</z>
+        </OutLeftPos>
+        <InStartQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>-4.37114e-08</w>
+        </InStartQuat>
+        <OutLeftQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>-4.37114e-08</w>
+        </OutLeftQuat>
+        <OutRightQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>-4.37114e-08</w>
+        </OutRightQuat>
+    </OPTION>
+    <OPTION>
+        <INDEX>3</INDEX>
+        <NAME>InFromRight</NAME>
+        <InStartPos>
+            <x>-320</x>
+            <y>-50</y>
+            <z>-150</z>
+        </InStartPos>
+        <OutRightPos>
+            <x>-370</x>
+            <y>-50</y>
+            <z>-150</z>
+        </OutRightPos>
+        <OutLeftPos>
+            <x>280</x>
+            <y>-50</y>
+            <z>-150</z>
+        </OutLeftPos>
+        <InStartQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>-4.37114e-08</w>
+        </InStartQuat>
+        <OutLeftQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>-4.37114e-08</w>
+        </OutLeftQuat>
+        <OutRightQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>-4.37114e-08</w>
+        </OutRightQuat>
+    </OPTION>
+    <OPTION>
+        <INDEX>4</INDEX>
+        <NAME>InFromTop</NAME>
+        <InStartPos>
+            <x>0</x>
+            <y>160</y>
+            <z>-150</z>
+        </InStartPos>
+        <OutRightPos>
+            <x>0</x>
+            <y>160</y>
+            <z>-150</z>
+        </OutRightPos>
+        <OutLeftPos>
+            <x>0</x>
+            <y>-240</y>
+            <z>-150</z>
+        </OutLeftPos>
+        <InStartQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>-4.37114e-08</w>
+        </InStartQuat>
+        <OutLeftQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>-4.37114e-08</w>
+        </OutLeftQuat>
+        <OutRightQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>-4.37114e-08</w>
+        </OutRightQuat>
+    </OPTION>
+    <OPTION>
+        <INDEX>5</INDEX>
         <NAME>SidewaysOut</NAME>
         <InStartPos>
             <x>0</x>
@@ -151,6 +299,43 @@
             <y>-0.986699</y>
             <z>-0.0521326</z>
             <w>0.153836</w>
+        </OutRightQuat>
+    </OPTION>
+    <OPTION>
+        <INDEX>6</INDEX>
+        <NAME>default</NAME>
+        <InStartPos>
+            <x>250</x>
+            <y>-50</y>
+            <z>-150</z>
+        </InStartPos>
+        <OutRightPos>
+            <x>-370</x>
+            <y>-50</y>
+            <z>-150</z>
+        </OutRightPos>
+        <OutLeftPos>
+            <x>280</x>
+            <y>-50</y>
+            <z>-150</z>
+        </OutLeftPos>
+        <InStartQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>-4.37114e-08</w>
+        </InStartQuat>
+        <OutLeftQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>-4.37114e-08</w>
+        </OutLeftQuat>
+        <OutRightQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>-4.37114e-08</w>
         </OutRightQuat>
     </OPTION>
 </TRANSITION_TYPE>
