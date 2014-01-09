@@ -30,6 +30,7 @@ CloudsPortal::CloudsPortal(){
 	
 	selected = false;
 	hovering = false;
+	bLookAtCamera = false;
 	
 	hoverPercentComplete = 0.;
 	
@@ -103,7 +104,20 @@ void CloudsPortal::draw(){
 	ofPushStyle();
 	ofPushMatrix();
     ofTranslate(hoverPosition);
+	if(bLookAtCamera && cam != NULL){
+		ofNode n;
+		n.setPosition(hoverPosition);
+		n.lookAt(cam->getPosition());
+		
+		ofQuaternion rot = n.getOrientationQuat();
+		float angle;
+		ofVec3f axis;
+		rot.getRotate(angle, axis);
+		ofRotate(angle, axis.x, axis.y, axis.z);
+	}
+	
     ofScale(scale, scale, scale);
+	
 	ofEnableAlphaBlending();
 //	shader.begin();
 	shader.setUniform1f("rotate", ofGetElapsedTimef()*2.);
