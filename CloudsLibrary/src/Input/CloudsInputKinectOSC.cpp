@@ -193,6 +193,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 if (bBodyOutOfBounds ||
                     hands[handIdx]->handJoint.trackingState != k4w::TrackingState_Tracked ||
                     !hands[handIdx]->trackingBounds.inside(hands[handIdx]->handJoint.inputPosition)) {
+                    
                     // out of bounds or inactive, discard
                     hands[handIdx]->activeFrames = MAX(0, MIN(kPollThreshold, hands[handIdx]->activeFrames - 1));
                     
