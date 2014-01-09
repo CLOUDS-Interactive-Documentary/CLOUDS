@@ -51,17 +51,10 @@ void CloudsVisualSystemWorld::selfSetup()
     postShader.load("",getVisualSystemDataPath()+"shaders/postprocess.fs");
     ofLoadImage(postTexture, getVisualSystemDataPath()+"images/7.jpg");
 
-}
-
-void CloudsVisualSystemWorld::selfBegin()
-{
-
-	cam.reset();
-	
 	citiesMesh.clear();
 	citiesMesh.setMode(OF_PRIMITIVE_POINTS);
-	
-    //  Load Globe paths
+
+	//  Load Globe paths
     //
     loadVbo(coastVbo, "simple-coast.txt");
     loadVbo(riversVbo, "simple-rivers.txt");
@@ -75,24 +68,34 @@ void CloudsVisualSystemWorld::selfBegin()
     //
     loadStarts( "constelations.txt" );
     
-//	satellitesMesh.clear();
-//	satellitesMesh.setMode(OF_PRIMITIVE_LINES);
+	//	satellitesMesh.clear();
+	//	satellitesMesh.setMode(OF_PRIMITIVE_LINES);
 	
     for(int i = 0; i < 1000; i++ ){
         wSatellite *newSat = new wSatellite();
-//		newSat->satelliteMesh = &satellitesMesh;
+		//		newSat->satelliteMesh = &satellitesMesh;
 		
 		ofVec3f position = ofVec3f(ofRandom(-0.01,0.01),ofRandom(-0.01,0.01),0.0);
         newSat->place(400, position);
 		
         satellites.push_back( newSat );
-
+		
     }
     
     globalOffset.set(0,0,0);
 }
 
+void CloudsVisualSystemWorld::selfBegin()
+{
+	cam.reset();	
+}
+
 void CloudsVisualSystemWorld::selfEnd()
+{
+
+}
+
+void CloudsVisualSystemWorld::selfExit()
 {
     coastVbo.clear();
     riversVbo.clear();
@@ -113,11 +116,6 @@ void CloudsVisualSystemWorld::selfEnd()
         delete satellites[i];
         satellites.erase(satellites.begin()+i);
     }
-}
-
-void CloudsVisualSystemWorld::selfExit()
-{
-    
 }
 
 void CloudsVisualSystemWorld::loadVbo(ofVboMesh &_vbo, string _file){
@@ -300,7 +298,7 @@ void CloudsVisualSystemWorld::guiSystemEvent(ofxUIEventArgs &e)
     
     string name = e.widget->getName();
     
-    if ( name == "Satelites_ammount" ){
+//    if ( name == "Satelites_ammount" ){
 //        for(int i = satellites.size()-1; i >= 0; i--){
 //            delete satellites[i];
 //            satellites.erase(satellites.begin()+i);
@@ -312,7 +310,7 @@ void CloudsVisualSystemWorld::guiSystemEvent(ofxUIEventArgs &e)
 //            newSat->place(400, ofVec3f(ofRandom(-0.01,0.01),ofRandom(-0.05,0.05),0.0));
 //            satellites.push_back( newSat );
 //        }
-    }
+//    }
 }
 
 void CloudsVisualSystemWorld::selfKeyPressed(ofKeyEventArgs & args){
@@ -378,58 +376,10 @@ void CloudsVisualSystemWorld::selfUpdate()
     
     //  Update satellites
     //    
-    for(int i = 0; i < satellites.size(); i++){
+    for(int i = 0; i < nMaxSatellites; i++){
         satellites[i]->update();
     }
     
-	for(int i = 0; i < nMaxSatellites; i++){
-        for(int j = i+1; j < nMaxSatellites; j++){
-//			int connectIndex = ofContains(satellites[i]->connectedIndeces, j) ?
-//									ofFind(satellites[i]->connectedIndeces, j) : -1;
-//			
-//			bool linked = connectIndex >= 0;
-//			bool shouldBeLinked = satellites[i]->distanceSquared( *satellites[j] ) <= satLinksDist*satLinksDist;
-//			
-//            if (!linked && shouldBeLinked){
-//				satellites[i]->connectedIndecesIndedeces.push_back( satellitesMesh.getNumIndices() );
-//				satellites[i]->connectedIndeces.push_back(j);
-//				satellitesMesh.addIndex(i);
-//				satellitesMesh.addIndex(j);
-//			}
-//			else if(linked && !shouldBeLinked){
-//				int vertexIndex = satellites[i]->connectedIndeces[connectIndex];
-//				int indexIndex = satellites[i]->connectedIndecesIndedeces[connectIndex];
-//
-//				satellitesMesh.getIndices().erase( satellitesMesh.getIndices().begin()+indexIndex+1);
-//				satellitesMesh.getIndices().erase( satellitesMesh.getIndices().begin()+indexIndex  );
-//				
-//				satellites[i]->connectedIndeces.erase(satellites[i]->connectedIndeces.begin()+connectIndex);
-//				satellites[i]->connectedIndecesIndedeces.erase(satellites[i]->connectedIndecesIndedeces.begin()+connectIndex);
-//									  
-//				for(int s = 0; s < nMaxSatellites; s++){
-//					for(int sind = 0; sind < satellites[s]->connectedIndecesIndedeces.size(); sind++){
-//						if(satellites[s]->connectedIndecesIndedeces[sind] > indexIndex+2){
-//							satellites[s]->connectedIndecesIndedeces[sind] -= 2;
-//						}
-//					}
-//				}
-//									  
-//				for(int ind = 0; ind < satellitesMesh.getNumIndices()-1; ind++){
-//					if(satellitesMesh.getIndex(ind)   == i &&
-//					   satellitesMesh.getIndex(ind+1) == j)
-//					{
-//						
-//						satellitesMesh.getIndices().erase( satellitesMesh.getIndices().begin()+ind+1);
-//						satellitesMesh.getIndices().erase( satellitesMesh.getIndices().begin()+ind  );
-//						
-//						satellites[i]->connectedIndeces.erase(satellites[i]->connectedIndeces.begin() + locindex);
-//						
-//						break;
-//					}
-//				}
-			}
-		}
-
 	linkMesh.clear();
 	linkMesh.setMode(OF_PRIMITIVE_LINES);
 	for(int i = 0; i < nMaxSatellites; i++){
@@ -441,10 +391,7 @@ void CloudsVisualSystemWorld::selfUpdate()
 		}
     }
 	
-//	for(int i = nMaxSatellites; i < 1000; i++){
-//		//kill any connections on these satellites
-//	}
-    //  Update Arcs
+	//  Update Arcs
     //
     if ( (arcs.size() == 0 ) && (arcsMax > 0) ){
         wArc arc;
@@ -544,25 +491,12 @@ void CloudsVisualSystemWorld::selfDraw()
     
     //  Satellites
     //
-//	ofMesh linkMesh;
-    for(int i = 0; i < satellites.size(); i++){
+    for(int i = 0; i < nMaxSatellites; i++){
         satellites[i]->draw();
-//        for(int j = i+1; j < satellites.size() ; j++){
-//            if (satellites[i]->distanceSquared( *satellites[j] ) <= satLinksDist*satLinksDist ){
-//				linkMesh.addVertex(*satellites[i]);
-//				linkMesh.addVertex(*satellites[j]);
-//            }
-//        }
     }
 	
 	ofSetColor(255,satLinksAlpha*255.0);
 	linkMesh.draw();
-	//satellitesMesh.draw();
-	
-//	linkMesh.setMode(OF_PRIMITIVE_LINES);
-//	ofSetColor(255,satLinksAlpha*255.0);
-	
-//	linkMesh.draw();
     
     //  Arcs
     //
