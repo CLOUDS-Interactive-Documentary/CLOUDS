@@ -34,6 +34,7 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
     customGui->addSlider("noise_speed", 0.0, 1.0, &noiseSpeed);
     customGui->addToggle("Show Debug", &bShowDebug);
     customGui->addLabel("GrayScott");
+    customGui->addSlider("Height Scale", 0.0, 100.f, &mHeightScale);
     customGui->addSlider("Feed", 0.0, 0.1, &grayscottFade);
     customGui->addSlider("Loops", 1.0, 25, &grayscottLoops);
     customGui->addSlider("DiffV", 0.0, 1.0, &diffV);
@@ -143,6 +144,8 @@ void CloudsVisualSystemTerrain::selfSetup()
     
     noiseSpeed = 0.0;
     
+    mHeightScale = 30.f;
+    
     bChange = true;
     
     bDoNoise = false;
@@ -170,6 +173,9 @@ void CloudsVisualSystemTerrain::selfSetup()
 	blurMesh.addTexCoord(ofVec2f(200,200));
 	
 	blurMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+    
+    makeTerrain(grayscottFbo[0].getTextureReference());
+
     
 }
 
@@ -349,11 +355,11 @@ void CloudsVisualSystemTerrain::selfUpdate()
         normalsShader.end();
         normalsFbo.end();
         
-        if(bGrayscott){
-            makeTerrain(grayscottFbo[nPingPong%2].getTextureReference());
-        } else {
-            makeTerrain(noiseFbo.getTextureReference());
-        }
+//        if(bGrayscott){
+//            makeTerrain(grayscottFbo[nPingPong%2].getTextureReference());
+//        } else {
+//            makeTerrain(noiseFbo.getTextureReference());
+//        }
         
         //  Pattern
         //
@@ -568,6 +574,8 @@ void CloudsVisualSystemTerrain::selfDraw()
     }
     
     colorShader.setUniformTexture("drawMap", canvas, 1);
+    colorShader.setUniformTexture("normalMap", normalsFbo, 2);
+    colorShader.setUniformTexture("noiseMap", noiseFbo, 3);
 
     colorShader.setUniform4fv("highColor", mHighColor.v);
     colorShader.setUniform4fv("lowColor", mLowColor.v);
@@ -575,7 +583,8 @@ void CloudsVisualSystemTerrain::selfDraw()
     colorShader.setUniform1f("balance", mBalance);
     colorShader.setUniform1f("texMix", mTexMix);
     colorShader.setUniform4fv("traceColor", mTraceColor.v);
-
+    
+	colorShader.setUniform1f("heightScale", mHeightScale );
     colorShader.setUniform4f("fogColor", fc.r, fc.g, fc.g, fc.a );
 	colorShader.setUniform1f("fogDist", fogDist );
 	colorShader.setUniform1f("fogExpo", fogExpo );

@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>7.131376266</Value>
+    <Value>2.213133335</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -19,6 +19,11 @@
     <Kind>2</Kind>
     <Name>Show Debug</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Height Scale</Name>
+    <Value>30.000001907</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,7 +48,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>k</Name>
-    <Value>0.111810572</Value>
+    <Value>0.081966534</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -68,7 +73,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Dry Rate</Name>
-    <Value>0.001000000</Value>
+    <Value>0.010000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -108,6 +113,26 @@
 <Widget>
     <Kind>25</Kind>
     <Name>Low A</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace R</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace G</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace B</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace A</Name>
     <Value>1.000000000</Value>
 </Widget>
 <Widget>

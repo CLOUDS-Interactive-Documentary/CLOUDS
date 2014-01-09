@@ -22,6 +22,7 @@ uniform float texMix;
 uniform float doDraw;
 
 uniform sampler2DRect drawMap;
+uniform sampler2DRect noiseMap;
 
 void PointLight(in int i,
                 in vec3 eye,
@@ -73,6 +74,16 @@ float map(float value, float inputMin, float inputMax, float outputMin, float ou
     return ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
 }
 
+float sampleBrightness(vec3 color){
+	vec3 grayWeight = vec3(0.3, 0.59, 0.11);
+	return dot(grayWeight, color);
+}
+
+vec4 rand(vec2 A,vec2 B,vec2 C,vec2 D){
+	vec2 s=vec2(12.9898,78.233);
+	vec4 tmp=vec4(dot(A,s),dot(B,s),dot(C,s),dot(D,s));
+	return fract(sin(tmp) * 43758.5453)* 2.0 - 1.0;
+}
 
 
 void main()
@@ -98,6 +109,24 @@ void main()
 	color += amb * gl_FrontMaterial.ambient +
     diff * gl_FrontMaterial.diffuse;
     
+    if(doDraw==0.){
+        vec4 noise = texture2DRect(noiseMap, gl_TexCoord[0].st);
+        color = mix(color,
+                    vec4(
+                         vec3(
+                              sampleBrightness(rand(gl_TexCoord[0].st,
+                                                    gl_TexCoord[0].yx,
+                                                    noise.rg,
+                                                    noise.ba
+                                                    ).rgb
+                                               )
+                              )
+                         ,1.)
+                    ,.05
+                    );
+        color = mix(color,vec4(vec3(sampleBrightness(fsColor.rgb)),1.),.05);
+    }
+    
 	color += spec * gl_FrontMaterial.specular;
 	
 	color += atten * gl_FrontMaterial.emission * ppFresnell * 1.0;
@@ -110,12 +139,11 @@ void main()
         color += mix(vec4(0.),traceColor, clamp(map(tc.r,0.2,1.,0.,1.),0.,1.) );
        // color.g -= mix(traceColor.g ,1., clamp(map(tc.r,0.2,1.,0.,1.),0.,1.) );
        // color.b -= mix(traceColor.b ,1., clamp(map(tc.r,0.2,1.,0.,1.),0.,1.) );
-    }else{
-        
     }
     
     gl_FragColor = color;
 	gl_FragColor = mix( gl_FragColor, fogColor, min(1., pow( 1.25 * camDelta / (fogDist*fogDist), fogExpo) ) );;
+   // gl_FragColor = fsColor;
 }
 
 

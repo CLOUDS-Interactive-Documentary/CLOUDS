@@ -148,6 +148,7 @@ protected:
 	float bgBri;
     float mTexMix;
     float brushSize;
+    float mHeightScale;
     
     ofFloatColor mTraceColor;
     
