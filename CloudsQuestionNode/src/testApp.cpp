@@ -67,7 +67,9 @@ void testApp::draw(){
     oculusRift.draw();
 #else
 	easyCam.begin();
+	CloudsPortal::shader.begin();
 	portal.draw();
+	CloudsPortal::shader.end();
 	easyCam.end();
     
     ofPushStyle();

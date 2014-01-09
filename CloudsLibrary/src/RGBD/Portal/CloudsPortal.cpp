@@ -27,6 +27,10 @@ CloudsPortal::CloudsPortal(){
 	ringThickness = 10;
 	ringThicknessMultiplier = 1.2;
 	ringDensity = 10; //geo per segment
+	ringCount = 20;
+	
+	selectedPercentComplete = 0.0;
+	selectAnimationDuration = 3.0;
 	
 	selected = false;
 	hovering = false;
@@ -35,7 +39,7 @@ CloudsPortal::CloudsPortal(){
 	hoverPercentComplete = 0.;
 	
 	minSelectDistance = 20.; //screenspace distance from node to hover
-	maxHoverTime = 10.; //how long to hover before select
+	maxHoverTime = 1.0; //how long to hover before select
     
     charsPerSecond = 45;
 }
@@ -45,12 +49,23 @@ CloudsPortal::~CloudsPortal(){
 }
 
 void CloudsPortal::setup(){
-	for(int i = 0; i < 3; i++){
+	for(int i = 0; i < ringCount; i++){
 		CloudsPortalRing r;
-		r.setup(this, portalGeo, i);
+		r.setup(this, portalGeo, i, true);
 		rings.push_back(r);
 	}
+	
+	innerTimerRing.setup(this, timerGeo, 0, false);
+	outerTimerRing.setup(this, timerGeo, 1, false);
+	for(int i = 0; i < portalGeo.getNumVertices(); i++){
+		portalGeo.addTexCoord(ofVec2f(0.0,0.0)); //NOT A TIMER
+	}
+	for(int i = 0; i < timerGeo.getNumVertices(); i++){
+		timerGeo.addTexCoord(ofVec2f(1.0,0.0)); //IS A TIMER
+	}
+	
 	portalGeo.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+	timerGeo.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 	
 	reloadShader();
 }
@@ -80,24 +95,30 @@ void CloudsPortal::update(){
             
             if(!selected && hoverPercentComplete == 1.0){
                 selected = true;
-                selectedTime = ofGetLastFrameTime();
+                selectedTime = ofGetElapsedTimef();
             }
+
         }
         else if(selected){
             selected = false;
         }
 	}
-
-	for(int i = 0; i < rings.size(); i++){
-		rings[i].hoverPercentComplete = hoverPercentComplete;
-		rings[i].update();
+	
+	if(selected){
+		selectedPercentComplete = ofClamp((ofGetElapsedTimef() - selectedTime) / selectAnimationDuration, 0,1.0);
 	}
+
+//	cout << "selectedPercent " << selectedPercentComplete << endl;
+//	for(int i = 0; i < rings.size(); i++){
+//		rings[i].hoverPercentComplete = hoverPercentComplete;
+//		rings[i].update();
+//	}
 
 }
 
 void CloudsPortal::toggleFakeSelection(){
-	selected = !selected;
-	selectedTime = ofGetLastFrameTime();
+//	selected = !selected;
+//	selectedTime = ofGetLastFrameTime();
 }
 
 void CloudsPortal::draw(){
@@ -119,11 +140,16 @@ void CloudsPortal::draw(){
     ofScale(scale, scale, scale);
 	
 	ofEnableAlphaBlending();
-//	shader.begin();
+	shader.setUniform1i("selected", selected ? 1 : 0);
+	shader.setUniform1f("maxRingPosition", ringCount);
 	shader.setUniform1f("rotate", ofGetElapsedTimef()*2.);
 	shader.setUniform1f("hoverPercent", hoverPercentComplete);
+	shader.setUniform1f("selectionAnimationPercent", selectedPercentComplete);
+	shader.setUniform1i("drawingTimer", 0);
 	portalGeo.draw();
-//	shader.end();
+	shader.setUniform1i("drawingTimer", 1);
+	timerGeo.draw();
+				
 	ofPopMatrix();
 	ofPopStyle();
 }
