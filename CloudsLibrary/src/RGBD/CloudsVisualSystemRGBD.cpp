@@ -17,17 +17,22 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 
 	drawRGBD = true;
 	
+	transitionOutOption = OutLeft;
+	
 	questionLifeSpan = 3;
 	transitioning = transitioningIn = transitioningOut = false;
 	
 	transitionInStart.setPosition( 0, 0, -1000 );
 	transitionInStart.rotate( 180, ofVec3f(0, 1, 0 ) );
 	
-	transitionOutTarget.setPosition( 0, 0, -1001 );
-	transitionOutTarget.rotate( 180, ofVec3f(0, 1, 0 ) );
+	transitionOutLeft.setPosition( 0, 0, -1001 );
+	transitionOutLeft.rotate( 180, ofVec3f(0, 1, 0 ) );
+	
+	transitionOutRight.setPosition( 0, 0, -1001 );
+	transitionOutRight.rotate( 180, ofVec3f(0, 1, 0 ) );
 	
 	transitionCam.useArrowKeys = true;
-	transitionTarget = &transitionOutTarget;
+	transitionTarget = &transitionOutLeft;
 	drawTransitionNodes = false;
 	
 //	captionFontSize = 12;
@@ -142,17 +147,18 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 		{
 			ofQuaternion q;
 			
-			cout << transitionMap[type][option].inStartPos << endl;
-			cout << transitionMap[type][option].outTargetPos << endl;
-			
 			//??? when do we get the translated head position? we need to make sure this happens at the correct time
 			transitionInStart.setPosition( transitionMap[type][option].inStartPos + translatedHeadPosition );
-			q.set( transitionMap[type][option].inStartQuat );
+			q.set( transitionMap[type][option].inQuat );
 			transitionInStart.setOrientation( q );
 			
-			transitionOutTarget.setPosition( transitionMap[type][option].outTargetPos + translatedHeadPosition);
-			q.set( transitionMap[type][option].outTargetQuat );
-			transitionOutTarget.setOrientation( q );
+			transitionOutLeft.setPosition( transitionMap[type][option].outLeftPos + translatedHeadPosition);
+			q.set( transitionMap[type][option].outLeftQuat );
+			transitionOutLeft.setOrientation( q );
+			
+			transitionOutRight.setPosition( transitionMap[type][option].outRightPos + translatedHeadPosition);
+			q.set( transitionMap[type][option].outRightQuat );
+			transitionOutRight.setOrientation( q );
 			
 			cout << "transitions set to: " + type + " : "+ option << endl;
 			return;
@@ -164,37 +170,22 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 
 void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionType )
 {
-	//TODO: SAVE THESE VALUES TO getVisualSystemDataPath()/transitionTargets/
+	//TODO: dow we want to use more then one option per type? if so, should we pass in a string(or enum) to identify it?
 	switch (transitionType) {
 		case CloudsVisualSystem::TWO_DIMENSIONAL:
-			transitionInStart.setPosition(-1.61592, -80.692, 36.2162);
-			transitionInStart.setOrientation( ofQuaternion( 0.0497688, 0.837992, 0.542999, -0.0213495) );
-			
-			transitionOutTarget.setPosition(-1.61592, -80.692, 36.2162);
-			transitionOutTarget.setOrientation(ofQuaternion( 0.0497688, 0.837992, 0.542999, -0.0213495) );
-			
+			setTransitionNodes("TWO_DIMENSIONAL", "default");
 			break;
 			
 		case CloudsVisualSystem::WHIP_PAN:
-			transitionInStart.setPosition(8.48001e-05, 0, -30);
-			transitionInStart.setOrientation( ofQuaternion( -0.0344557, -0.751671, -0.0393931, 0.657458) );
-			
-			transitionOutTarget.setPosition(8.48001e-05, 0, -31);
-			transitionOutTarget.setOrientation( ofQuaternion( -0.0278925, -0.613558, 0.0216942, -0.788858) );
-			
+			setTransitionNodes("WHIP_PAN", "default");
 			break;
 			
-			
 		case CloudsVisualSystem::FLY_THROUGH:
-			transitionInStart.setPosition(-334.72, 1.57074, -941.388);
-			transitionInStart.setOrientation( ofQuaternion( -0.00373021, -0.990374, -0.135664, 0.0272313) );
-			
-			transitionOutTarget.setPosition(618.12, 1.75281, 614.075);
-			transitionOutTarget.setOrientation( ofQuaternion( 0.0769274, -0.91773, 0.219058, 0.322284) );
-			
+			setTransitionNodes("FLY_THROUGH", "default");
 			break;
 			
 		default:
+			setTransitionNodes("FLY_THROUGH", "default");
 			break;
 	}
 }
@@ -446,26 +437,29 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		
 		if(bLookThroughIn)
 		{
-			cout << "bLookThroughIn == true" << endl;
 			lookThroughTransitionIn();
 			bLookThroughIn = false;
 		}
-		else if(bLookThroughOut)
+		else if(bLookThroughOutLeft)
 		{
-			lookThroughTransitionOut();
-			bLookThroughOut = false;
+			lookThroughTransitionOutLeft();
+			bLookThroughOutLeft = false;
+		}
+		else if(bLookThroughOutRight)
+		{
+			lookThroughTransitionOutRight();
+			bLookThroughOutRight = false;
 		}
 		
-		if (bResetLookThoughs)
+		else if(bResetLookThoughs)
 		{
 			bResetLookThoughs = false;
-//			setTransitionNodes(activeTransition);
+			transitionCamTargetNode = NULL;
+			resetTransitionNodes();
 		}
-		
 		
 		if(transitionCamTargetNode)
 		{
-			//if(ofGetFrameNum()%30 == 0)	cout << "wTF" << endl;
 			transitionCamTargetNode->setPosition( transitionCam.getPosition() );
 			transitionCamTargetNode->setOrientation( transitionCam.getOrientationQuat() );
 		}
@@ -488,16 +482,32 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 
 //save and load transitions
 //------------------------------------------------------------------------
+
+void CloudsVisualSystemRGBD::resetTransitionNodes()
+{
+	transitionInStart.resetTransform();
+	transitionOutLeft.resetTransform();
+	transitionOutRight.resetTransform();
+	
+	ofVec3f offset(0,0,-200);
+	
+	transitionInStart.rotate(180, 0, 1, 0);
+	transitionOutLeft.rotate(180, 0, 1, 0);
+	transitionOutRight.rotate(180, 0, 1, 0);
+	
+	transitionInStart.setPosition(translatedHeadPosition + offset);
+	transitionOutLeft.setPosition(translatedHeadPosition + offset);
+	transitionOutRight.setPosition(translatedHeadPosition + offset);
+	
+}
+
 void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
 {
 	//we want to clear here, right?
 	clearTransitionMap();
 	
 	//load the option data
-	cout << "loadTransitionOptions: "  <<  filename << endl;
-
 	string path =GetCloudsDataPath() + "transitions/" + filename + ".xml";
-	cout << "path: " << path << endl;
 	
 	ofxXmlSettings *XML = new ofxXmlSettings();
 	XML->loadFile( path );
@@ -511,14 +521,12 @@ void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
 		
 		string typeName = XML->getValue("NAME", "NULL", 0);
 		transitionMap[typeName];
-		cout <<"typeName: " << typeName << endl;
 		
 		int numOptions = XML->getNumTags("OPTION");
 		for(int j=0; j<numOptions; j++)
 		{
 			XML->pushTag("OPTION", j);
 			string optionName = XML->getValue("NAME", "NULL", 0);
-			//cout << "optionName: " << optionName << endl;
 			
 			transitionMap[typeName][optionName];
 			TransitionInfo* ti = &transitionMap[typeName][optionName];
@@ -529,21 +537,28 @@ void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
 			XML->pushTag("InStartPos");
 			ti->inStartPos.set( XML->getValue("x", 1 ), XML->getValue("y", 0. ), XML->getValue("z", 0. ) );
 			XML->popTag();
-			
-			cout << "ti->inStartPos: "<<ti->inStartPos<<endl;
 
 			XML->pushTag("InStartQuat");
-			ti->inStartQuat.set( XML->getValue("x", 0. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ), XML->getValue("w", 0. ) );
+			ti->inQuat.set( XML->getValue("x", 0. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ), XML->getValue("w", 0. ) );
+			XML->popTag();
+			
+			XML->pushTag("OutLeftPos");
+			ti->outLeftPos.set( XML->getValue("x", 1. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ) );
 			XML->popTag();
 
-			XML->pushTag("OutTargetPos");
-			ti->outTargetPos.set( XML->getValue("x", 1. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ) );
+			XML->pushTag("OutLeftQuat");
+			ti->outLeftQuat.set( XML->getValue("x", 0. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ), XML->getValue("w", 0. ) );
 			XML->popTag();
 
-			XML->pushTag("OutTargetQuat");
-			ti->outTargetQuat.set( XML->getValue("x", 0. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ), XML->getValue("w", 0. ) );
+			XML->pushTag("OutRightPos");
+			ti->outRightPos.set( XML->getValue("x", 1. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ) );
 			XML->popTag();
 
+			XML->pushTag("OutRightQuat");
+			ti->outRightQuat.set( XML->getValue("x", 0. ), XML->getValue("y", 0. ), XML->getValue("z", 0. ), XML->getValue("w", 0. ) );
+			XML->popTag();
+
+			
 			XML->popTag();
 		}
 		
@@ -570,23 +585,21 @@ void CloudsVisualSystemRGBD::saveTransitionSettings(string optionName )
 	
 	transitionMap[currentTransitionType][optionName];
 	transitionMap[currentTransitionType][optionName].inStartPos = transitionInStart.getPosition() - translatedHeadPosition;
-	transitionMap[currentTransitionType][optionName].inStartQuat = transitionInStart.getOrientationQuat();
-	transitionMap[currentTransitionType][optionName].outTargetPos = transitionOutTarget.getPosition() - translatedHeadPosition;
-	transitionMap[currentTransitionType][optionName].outTargetQuat = transitionOutTarget.getOrientationQuat().asVec4();
+	transitionMap[currentTransitionType][optionName].inQuat = transitionInStart.getOrientationQuat();
 	
-	cout << transitionMap[currentTransitionType][optionName].inStartPos << endl;
-	cout << transitionMap[currentTransitionType][optionName].outTargetPos << endl;
+	transitionMap[currentTransitionType][optionName].outLeftPos = transitionOutLeft.getPosition() - translatedHeadPosition;
+	transitionMap[currentTransitionType][optionName].outLeftQuat = transitionOutLeft.getOrientationQuat().asVec4();
+	
+	transitionMap[currentTransitionType][optionName].outRightPos = transitionOutRight.getPosition() - translatedHeadPosition;
+	transitionMap[currentTransitionType][optionName].outRightQuat = transitionOutRight.getOrientationQuat().asVec4();
 	
 	//loop through the transitionMap and build our XML
-	cout << "saveTransitionOptions: "  <<  optionName << endl;
 	ofxXmlSettings *XML = new ofxXmlSettings();
 	ofVec4f q;
 	int transitionTypeIndex = 0;
 	for (auto &it: transitionMap)
 	{
 		//save info for eac option type
-		cout << "WRITING TRANSISITION TYPE: " + it.first <<  endl;
-		
 		XML->addTag("TRANSITION_TYPE");
 		XML->pushTag("TRANSITION_TYPE", transitionTypeIndex);
 		XML->setValue("INDEX", transitionTypeIndex );
@@ -613,18 +626,21 @@ void CloudsVisualSystemRGBD::saveTransitionSettings(string optionName )
 			XML->setValue("z", option.second.inStartPos.z);
 			XML->popTag();
 			
-			cout << "option.second.inStartPos: " << option.second.inStartPos << endl;
-			
-			XML->addTag("OutTargetPos");
-			XML->pushTag("OutTargetPos");
-			XML->setValue("x", option.second.outTargetPos.x);
-			XML->setValue("y", option.second.outTargetPos.y);
-			XML->setValue("z", option.second.outTargetPos.z);
+			XML->addTag("OutRightPos");
+			XML->pushTag("OutRightPos");
+			XML->setValue("x", option.second.outRightPos.x);
+			XML->setValue("y", option.second.outRightPos.y);
+			XML->setValue("z", option.second.outRightPos.z);
 			XML->popTag();
 			
-			cout << "option.second.outTargetPos: " << option.second.outTargetPos << endl;
+			XML->addTag("OutLeftPos");
+			XML->pushTag("OutLeftPos");
+			XML->setValue("x", option.second.outLeftPos.x);
+			XML->setValue("y", option.second.outLeftPos.y);
+			XML->setValue("z", option.second.outLeftPos.z);
+			XML->popTag();
 			
-			q = option.second.inStartQuat.asVec4();
+			q = option.second.inQuat.asVec4();
 			XML->addTag("InStartQuat");
 			XML->pushTag("InStartQuat");
 			XML->setValue("x", q.x);
@@ -633,9 +649,18 @@ void CloudsVisualSystemRGBD::saveTransitionSettings(string optionName )
 			XML->setValue("w", q.w);
 			XML->popTag();
 			
-			q = option.second.outTargetQuat.asVec4();
-			XML->addTag("OutTargetQuat");
-			XML->pushTag("OutTargetQuat");
+			q = option.second.outLeftQuat.asVec4();
+			XML->addTag("OutLeftQuat");
+			XML->pushTag("OutLeftQuat");
+			XML->setValue("x", q.x);
+			XML->setValue("y", q.y);
+			XML->setValue("z", q.z);
+			XML->setValue("w", q.w);
+			XML->popTag();
+			
+			q = option.second.outRightQuat.asVec4();
+			XML->addTag("OutRightQuat");
+			XML->pushTag("OutRightQuat");
 			XML->setValue("x", q.x);
 			XML->setValue("y", q.y);
 			XML->setValue("z", q.z);
@@ -649,6 +674,11 @@ void CloudsVisualSystemRGBD::saveTransitionSettings(string optionName )
 	
 	XML->saveFile( GetCloudsDataPath() +  "transitions/Transitions.xml" );
 	delete XML;
+}
+
+void CloudsVisualSystemRGBD::StopEditTransitionMode()
+{
+	placingTransitionNodes = false;
 }
 
 
@@ -678,9 +708,10 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 {
 	cout << "addTransitionGui: " << guiName<< endl;
 	
+	//get out transition info
 	map<string, TransitionInfo>* ti = &transitionMap[guiName];
-	cout << ti->size() << endl;
 	
+	//create the canvas
 	ofxUISuperCanvas* t = new ofxUISuperCanvas(guiName, gui);
 	t->copyCanvasStyle(gui);
 	t->copyCanvasProperties(gui);
@@ -690,15 +721,22 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 	
 	//look through IN/OUT
 	t->addToggle("drawTransitionNodes", &drawTransitionNodes);
-	t->addButton("lookThroughIN", false )->setColorBack(ofColor(0,255,255));
-	t->addButton("lookThroughOUT", false )->setColorBack(ofColor(255,255,0));
+	t->addButton("DriveIn", false )->setColorBack(ofColor(0,155,155));
+	t->addButton("DriveOutLeft", false )->setColorBack(ofColor(155,155,0));
+	t->addButton("DriveOutRight", false )->setColorBack(ofColor(155,0,155));
+	t->addToggle("resetNodes", &bResetLookThoughs );
 	
+	//saving & edit
 	t->addSpacer();
-//	t->addToggle("UseThisType", false);
 	t->addToggle("Edit", placingTransitionNodes);
 	t->addToggle("save", &bSaveTransition );
+	
+	//Left/Right toggles
+	t->addSpacer();
+	t->addToggle("LEFT", true);
+	t->addToggle("RIGHT", false);
 
-	//ADD OUR OPTION TOGGLES( LEFT, RIGHT, OVER_LEFT_SHOULDER, etc.)
+	//ADD OUR OPTION TOGGLES
 	t->addSpacer();
 	t->addLabel("OPTIONS");
 	vector<string> tempNames;
@@ -707,7 +745,6 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 	{
 		r->addToggle(t->addToggle(it.first, false));
 	}
-	
 	
 	//ADD LISTENERS ETC.
 	transitionsGuis[guiName] = t;
@@ -844,125 +881,86 @@ void CloudsVisualSystemRGBD::clearQuestions(){
 
 
 
-
-
-
-
-
-
-//JG NEW TRANSITION STUBS<----- James, I love these! thanks, Lars
-
+//JG NEW TRANSITION STUBS<----- James, I love these! thank you, Lars
 
 void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType)
 {
 	cout << "startTransitionOut(RGBDTransitionType transitionType)" << endl;
 	
-	transitionOut( transitionType, 1);
+	transitionEase = ofxTween::easeOut;
+	transitioning = true;
+	
+	cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
+	cloudsCamera.setTransitionTargetNode( transitionOutOption == OutLeft? &transitionOutLeft : &transitionOutRight );
 }
-
-
 
 void CloudsVisualSystemRGBD::startTransitionIn(RGBDTransitionType transitionType)
 {
 	cout << "startTransitionIn(RGBDTransitionType transitionType)" << endl;
 	
-	transitionIn( transitionType, 1);
+	transitionEase = ofxTween::easeIn;
 	transitioning = true;
-}
-
-
-void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
-{
-	cloudsCamera.setTransitionPercent( percentComplete );
-}
-
-
-void CloudsVisualSystemRGBD::transtionFinished()
-{
-	cout << "transtionFinished()" <<endl;
-	
-}
-
-
-//JG END TRANSITION STUBES
-
-
-
-
-
-
-
-
-
-void CloudsVisualSystemRGBD::updateTransition(){
-	
-	if(transitioning){
-		//get our mixing value by mapping currentTime to the transition start and end time
-		float t = ofGetElapsedTimef();
-		float x = ofxTween::map(t, transitionStartTime, transitionEndTime, 0, 1, true, transitionEase );
-		
-		if(t >= transitionEndTime ){
-			cout << "CloudsVisualSystemRGBD: transition ended " << ofGetElapsedTimef() << endl << endl;
-			transitioning = false;
-			cloudsCamera.targetNode = NULL;
-			cloudsCamera.startNode = NULL;
-		}
-		
-		transitionVal = x;
-		cloudsCamera.setTransitionPercent( transitionVal );
-	}
-}
-
-void CloudsVisualSystemRGBD::transition( float duration, float startTime )
-{
-	transitionStartTime = startTime;
-	transitionEndTime = transitionStartTime + duration;
-	
-	transitioning = true;
-}
-
-void CloudsVisualSystemRGBD::transitionIn( ofNode& targetNode, float duration, float startTime )
-{
-	cout << "CloudsVisualSystemRGBD::TRANSITION In:: " << ofGetElapsedTimef() << endl;
-	transition( duration, startTime );
 	
 	cloudsCamera.setTransitionStartNode( &transitionInStart );
 	cloudsCamera.setTransitionTargetNode( &cloudsCamera.mouseBasedNode );
 }
 
-void CloudsVisualSystemRGBD::transitionOut( ofNode& startNode, float duration, float startTime ) {
-	cout << "CloudsVisualSystemRGBD::TRANSITION OUT:: " << ofGetElapsedTimef() << endl;
-	
-	cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
-	cloudsCamera.setTransitionTargetNode( &transitionOutTarget );
-	
-	transition( duration, startTime );
+void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
+{
+	if(transitioning)
+	{
+		//cout <<"TRANSITIONING" << endl;
+		float easedPercent = ofxTween::map(percentComplete, 0, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
+		cloudsCamera.setTransitionPercent( easedPercent );
+	}
 }
 
-void CloudsVisualSystemRGBD::transitionIn( RGBDTransitionType transitionType, float duration, float startTime ) {
-//	setTransitionNodes(transitionType );
-	transitionIn( transitionInStart, duration, startTime );
+void CloudsVisualSystemRGBD::transtionFinished()
+{
+	cout << "transtionFinished()" <<endl;
+	
+	cloudsCamera.targetNode = NULL;
+	cloudsCamera.startNode = NULL;
+	transitioning = false;
 }
 
-void CloudsVisualSystemRGBD::transitionOut( RGBDTransitionType transitionType, float duration, float startTime ) {
-	
-//	setTransitionNodes( transitionType );
-	transitionOut( transitionOutTarget, duration, startTime );
+void CloudsVisualSystemRGBD::setOutOption( OutOption outOption )
+{
+	switch (outOption) {
+		case OutLeft:
+			cout << "setOutOption: OutLeft" << endl;
+			transitionOutOption = OutLeft;
+			break;
+			
+		case OutRight:
+			cout << "setOutOption: OutRight" << endl;
+			transitionOutOption = OutRight;
+			break;
+			
+		default:
+			break;
+	}
 }
 
-void CloudsVisualSystemRGBD::printTransitionNodes(){
+
+
+void CloudsVisualSystemRGBD::updateTransition(){
 	
-	ofVec4f strtQuat = transitionInStart.getOrientationQuat()._v;
-	
-	ofVec4f endQuat = transitionOutTarget.getOrientationQuat()._v;
-	
-	cout << endl<<endl<<endl<<endl;
-	cout << "case TRANSITION_TYPE:" << endl;
-	cout << "	transitionInStart.setPosition(" << transitionInStart.getPosition() << ");"<< endl ;
-	cout << "	transitionInStart.setOrientation( ofQuaternion( " << strtQuat << ") );"<< endl << endl;
-	cout << "	transitionOutTarget.setPosition(" << transitionOutTarget.getPosition() << ");"<< endl ;
-	cout << "	transitionOutTarget.setOrientation( ofQuaternion( " << endQuat << ") );"<< endl ;
-	cout <<endl<<"	break;" << endl << endl<< endl<< endl;
+//	if(transitioning){
+//		//get our mixing value by mapping currentTime to the transition start and end time
+//		float t = ofGetElapsedTimef();
+//		float x = ofxTween::map(t, transitionStartTime, transitionEndTime, 0, 1, true, transitionEase );
+//		
+//		if(t >= transitionEndTime ){
+//			cout << "CloudsVisualSystemRGBD: transition ended " << ofGetElapsedTimef() << endl << endl;
+//			transitioning = false;
+//			cloudsCamera.targetNode = NULL;
+//			cloudsCamera.startNode = NULL;
+//		}
+//		
+//		transitionVal = x;
+//		cloudsCamera.setTransitionPercent( transitionVal );
+//	}
 }
 
 void CloudsVisualSystemRGBD::lookThroughTransitionIn(){
@@ -982,18 +980,22 @@ void CloudsVisualSystemRGBD::lookThroughTransitionIn(){
 //	transitionCam.update(args);
 }
 
-void CloudsVisualSystemRGBD::lookThroughTransitionOut(){
+void CloudsVisualSystemRGBD::lookThroughTransitionOutLeft(){
 	
-	transitionCamTargetNode = &transitionOutTarget;
+	transitionCamTargetNode = &transitionOutLeft;
 	
-	transitionCam.setPosition( transitionOutTarget.getPosition() );
-	transitionCam.setOrientation( transitionOutTarget.getOrientationQuat() );
+	transitionCam.setPosition( transitionOutLeft.getPosition() );
+	transitionCam.setOrientation( transitionOutLeft.getOrientationQuat() );
 	transitionCam.movedManually();
+}
+
+void CloudsVisualSystemRGBD::lookThroughTransitionOutRight()
+{
+	transitionCamTargetNode = &transitionOutRight;
 	
-//	transitionCam.positionChanged = transitionCam.rotationChanged = true;
-	
-//	ofEventArgs args;
-//	transitionCam.update(args);
+	transitionCam.setPosition( transitionOutRight.getPosition() );
+	transitionCam.setOrientation( transitionOutRight.getOrientationQuat() );
+	transitionCam.movedManually();
 }
 
 //--------------------------------------------------------------
@@ -1255,7 +1257,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			getRGBDVideoPlayer().flowPosition = pointFlowPosition * (pointsFlowUp?-1:1);
 			getRGBDVideoPlayer().setupProjectionUniforms(pointShader);
 			
-			
 			pointShader.setUniform1f("headMinRadius", meshFaceMinRadius);
 			pointShader.setUniform1f("headFalloff", meshFaceFalloff);
 			pointShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
@@ -1422,7 +1423,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		ofSetColor( 255, 255, 0 );
 		ofPushMatrix();
 		
-		ofMultMatrix( transitionOutTarget.getLocalTransformMatrix() );
+		ofMultMatrix( transitionOutLeft.getLocalTransformMatrix() );
 		ofScale( .25, .25, 1 );
 		ofBox(0, 0, 0, 100);
 		
@@ -1433,6 +1434,16 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		ofPushMatrix();
 		
 		ofMultMatrix( transitionInStart.getLocalTransformMatrix() );
+		ofScale( .25, .25, 1.);
+		ofBox(0, 0, 0, 100);
+		
+		ofPopMatrix();
+		
+		
+		ofSetColor( 255, 0, 255 );
+		ofPushMatrix();
+		
+		ofMultMatrix( transitionOutRight.getLocalTransformMatrix() );
 		ofScale( .25, .25, 1.);
 		ofBox(0, 0, 0, 100);
 		
@@ -1512,25 +1523,9 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 //		CloudsQuestion::reloadShader();
 //		rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	}
-	
-//	if(args.key == 'v' && currentCamera != &transitionCam ){
-//		lookThroughTransitionIn();
-//	}
-//	
-//	if(args.key == 'V' && currentCamera != &transitionCam ){
-//		lookThroughTransitionOut();
-//	}
-	
 }
 
 void CloudsVisualSystemRGBD::selfKeyReleased(ofKeyEventArgs & args){
-	if(args.key == 'V' || args.key == 'v' ){
-		
-		printTransitionNodes();
-		
-//		setCurrentCamera(cloudsCamera);
-	}
-	
 
 }
 
@@ -1571,75 +1566,148 @@ void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e)
 	string parentName = e.widget->getParent()->getName();
 	int kind = e.getKind();
 	
+	ofxUIWidget* parent = e.widget->getParent();
+	
 	
 	for(auto &guiIt: transitionsGuis)
 	{
 		
 		//TRANSITION OPTIONS
-		//ofxUIRadio* r = (ofxUIRadio*)guiIt.second->getWidget("optionRadio");
-		if(guiIt.second->getWidget("optionRadio")->getName() == parentName && e.getToggle()->getValue() ){
+		ofxUIWidget* r = guiIt.second->getWidget("optionRadio");
+		if(r == parent && e.getToggle()->getValue() )
+		{
 			transitionCamTargetNode = NULL;
 			setTransitionNodes(currentTransitionType, name);
 			
-			
-			ofxUIToggle* in = (ofxUIToggle*)guiIt.second->getWidget("lookThroughIN");
+			ofxUIToggle* in = (ofxUIToggle*)guiIt.second->getWidget("DriveIn");
 			in->setColorBack(ofColor(0,155,155));
 			in->setColorFill(ofColor(0,155,155));
 			
-			ofxUIToggle* out = (ofxUIToggle*)guiIt.second->getWidget("lookThroughOUT");
+			ofxUIToggle* out = (ofxUIToggle*)guiIt.second->getWidget("DriveOutLeft");
 			out->setColorBack(ofColor(155,155,0));
 			out->setColorFill(ofColor(155,155,0));
+			
+			
+			ofxUIToggle* outRight = (ofxUIToggle*)guiIt.second->getWidget("DriveOutRight");
+			outRight->setColorBack(ofColor(155,0,155));
+			outRight->setColorFill(ofColor(155,0,155));
 		}
 		
 		//used to switch which type we're editing
-		if(name == "Edit" && parentName == guiIt.first)
+		if(parent == guiIt.second || parent == r )
 		{
-			guiIt.second->setColorBack(ofColor(55,55,55));
 			currentTransitionType = guiIt.first;
-			placingTransitionNodes = e.getToggle()->getValue();
+			guiIt.second->setColorBack(ofColor(55,55,55));
 		}
-		else if(parentName != guiIt.first && currentTransitionType != guiIt.first)
+		else
 		{
 			guiIt.second->setColorBack(ofColor(100,0,0));
 			ofxUIToggle* t = (ofxUIToggle*)guiIt.second->getWidget("Edit");
 			t->setValue(false);
 		}
 		
+		if( name == "Edit" && parent == guiIt.second)
+		{
+			guiIt.second->setColorBack(ofColor(55,55,55));
+			currentTransitionType = guiIt.first;
+			placingTransitionNodes = e.getToggle()->getValue();
+		}
+		else if(parent != guiIt.second && currentTransitionType != guiIt.first)
+		{
+			guiIt.second->setColorBack(ofColor(100,0,0));
+			((ofxUIToggle*)guiIt.second->getWidget("Edit"))->setValue(false);
+		}
+		
 		//saving and loading 
 		if(currentTransitionType == guiIt.first)
 		{
-			if(parentName == guiIt.first)
+			if(parent == guiIt.second)
 			{
 				if(name == "save" && e.getToggle()->getValue() == true)
 				{
 					bSaveTransition = true;
 				}
+				else if(name == "LEFT" && e.getToggle()->getValue())
+				{
+					setOutOption( OutLeft );
+					((ofxUIToggle*)guiIt.second->getWidget("RIGHT"))->setValue( false );
+				}
+				else if(name == "RIGHT" && e.getToggle()->getValue())
+				{
+					setOutOption( OutRight );
+					((ofxUIToggle*)guiIt.second->getWidget("LEFT"))->setValue( false );
+				}
 
-				else if( name == "lookThroughIN"){
-					cout <<"lookThroughIN"<<endl;
-					bLookThroughIn = true;
-					bLookThroughOut = false;
+				else if( name == "DriveIn")
+				{
+					//enter edit mode
+					((ofxUIToggle*)guiIt.second->getWidget("Edit"))->setValue(true);
+					placingTransitionNodes = true;
 					
+					//set look though bools
+					bLookThroughIn = true;
+					bLookThroughOutLeft = false;
+					bLookThroughOutRight = false;
+					
+					//update gui colors
 					e.widget->setColorFill(ofColor(0,255,255));
 					e.widget->setColorBack(ofColor(0,255,255));
 					
-					ofxUIToggle* out = (ofxUIToggle*)guiIt.second->getWidget("lookThroughOUT");
-					out->setColorBack(ofColor(155,155,0));
-					out->setColorFill(ofColor(155,155,0));
-				}
-				else if( name == "lookThroughOUT")
-				{
-					cout <<"lookThroughOUT"<<endl;
-					bLookThroughIn = false;
-					bLookThroughOut = true;
+					ofxUIToggle* outLeft = (ofxUIToggle*)guiIt.second->getWidget("DriveOutLeft");
+					outLeft->setColorBack(ofColor(155,155,0));
+					outLeft->setColorFill(ofColor(155,155,0));
 					
+					ofxUIToggle* outRight = (ofxUIToggle*)guiIt.second->getWidget("DriveOutRight");
+					outRight->setColorBack(ofColor(155,0,155));
+					outRight->setColorFill(ofColor(155,0,155));
+				}
+				else if( name == "DriveOutLeft")
+				{
+					//enter edit mode
+					((ofxUIToggle*)guiIt.second->getWidget("Edit"))->setValue(true);
+					placingTransitionNodes = true;
+					
+					//set look though bools
+					bLookThroughIn = false;
+					bLookThroughOutLeft = true;
+					bLookThroughOutRight = false;
+					
+					//update gui colors
 					e.widget->setColorFill(ofColor(255,255,0));
 					e.widget->setColorBack(ofColor(255,255,0));
 					
-					ofxUIToggle* in = (ofxUIToggle*)guiIt.second->getWidget("lookThroughIN");
+					ofxUIToggle* in = (ofxUIToggle*)guiIt.second->getWidget("DriveIn");
 					in->setColorBack(ofColor(0,155,155));
 					in->setColorFill(ofColor(0,155,155));
-				}		
+					
+					ofxUIToggle* outRight = (ofxUIToggle*)guiIt.second->getWidget("DriveOutRight");
+					outRight->setColorBack(ofColor(155,0,155));
+					outRight->setColorFill(ofColor(155,0,155));
+				}
+				
+				else if( name == "DriveOutRight")
+				{
+					//enter edit mode
+					((ofxUIToggle*)guiIt.second->getWidget("Edit"))->setValue(true);
+					placingTransitionNodes = true;
+					
+					//set look though bools
+					bLookThroughIn = false;
+					bLookThroughOutLeft = false;
+					bLookThroughOutRight = true;
+					
+					//update gui colors
+					e.widget->setColorFill(ofColor(255,0,255));
+					e.widget->setColorBack(ofColor(255,0,255));
+					
+					ofxUIToggle* in = (ofxUIToggle*)guiIt.second->getWidget("DriveIn");
+					in->setColorBack(ofColor(0,155,155));
+					in->setColorFill(ofColor(0,155,155));
+					
+					ofxUIToggle* outLeft = (ofxUIToggle*)guiIt.second->getWidget("DriveOutLeft");
+					outLeft->setColorBack(ofColor(155,155,0));
+					outLeft->setColorFill(ofColor(155,155,0));
+				}
 			}
 		}
 	}

@@ -12,15 +12,25 @@
 
 struct TransitionInfo{
 	ofVec3f inStartPos;
-	ofVec3f outTargetPos;
-	ofQuaternion inStartQuat;
-	ofQuaternion outTargetQuat;
+	ofQuaternion inQuat;
+	
+	ofVec3f outRightPos;
+	ofQuaternion outRightQuat;
+	
+	ofVec3f outLeftPos;
+	ofQuaternion outLeftQuat;
+	
 	string optionName;
 	string transitionName;
 };
 
 class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   public:
+	
+	enum OutOption{
+		OutLeft,
+		OutRight
+	};
 
 	string getSystemName();
     
@@ -81,42 +91,32 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 		return cloudsCamera;
 	}
 	
-	//TODO
 	void startTransitionOut(RGBDTransitionType transitionType);
 	void startTransitionIn(RGBDTransitionType transitionType);
 	void updateTransition(float percentComplete);
 	void transtionFinished();
 	
-	//DEPRECATED
-	void transitionIn( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
-	void transitionOut( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
-	void transition( float duration=3, float startTime=ofGetElapsedTimef() );
-	
 	ofNode* transitionTarget;
 	ofNode transitionInStart;
-	ofNode transitionOutTarget;
+	ofNode transitionOutLeft;
+	ofNode transitionOutRight;
 	ofVec3f transitionEndPosition;
 	ofQuaternion transitionEndRotation;
 	
-	void transitionIn( ofNode& targetNode, float duration, float startTime );
-	void transitionOut( ofNode& startNode, float duration, float startTime );
-	
 	bool bTransitionIn, bTransitionOut;
-	bool bLookThroughIn, bLookThroughOut;
+	bool bLookThroughIn, bLookThroughOutLeft, bLookThroughOutRight;
 	bool bSaveTransition;
 	
 	void lookThroughTransitionIn();
-	void lookThroughTransitionOut();
+	void lookThroughTransitionOutLeft();
+	void lookThroughTransitionOutRight();
 
 	ofxGameCamera transitionCam;
 	ofNode* transitionCamTargetNode;
 	
-	void printTransitionNodes();
 	void setTransitionNodes( RGBDTransitionType transitionType );
-	
 	void playTestVideo();
 	
-	ofVec3f bottomRight;
 	
 	void loadTransitionOptions(string filename );
 	void saveTransitionSettings(string filename = "Transitions");
@@ -129,22 +129,26 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	void addTransionEditorsToGui();
 	void setTransitionNodes( string type, string option );
+	void setOutOption( OutOption outOption );
 	
-	//TODO: delete this
-	void tester(string s){	cout<<"tester: " + s<<endl;}
+	void resetTransitionNodes();
+	
+	void StopEditTransitionMode();
 
   protected:
 	
+	//TRANSITIONS
 	ofxUISuperCanvas *transitionEditorGui;
 	map< string, TransitionInfo> transitionOptionMap;
 	map<string, string> transitionTypes;
-	
 	map<string, map<string, TransitionInfo> > transitionMap;
 	map<string, ofxUISuperCanvas*> transitionsGuis;
 	bool bTransitionsAddedToGui;
-	
 	string currentTransitionType;
+	ofxTween::ofxEasingType transitionEase;
+	OutOption transitionOutOption;
 	
+	//MESH
 	ofxUISuperCanvas *globalMeshGui;
 	bool drawRGBD;
 	float edgeAttenuate;
@@ -231,7 +235,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	string activeTransition;
 	
 	RGBDTransitionType transitionType;
-	ofxEasingSine transitionEase;
 	
 	float transitionVal;
 	

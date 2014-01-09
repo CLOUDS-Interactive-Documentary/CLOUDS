@@ -32,9 +32,11 @@ void testApp::draw(){
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 	if(key == 'O'){
+		rgbd.StopEditTransitionMode();
 		transitionController.transitionToVisualSystem(1.0, 1.0);
 	}
 	if(key == 'I'){
+		rgbd.StopEditTransitionMode();
 		transitionController.transitionToInterview(1.0, 1.0);
 	}
 }
@@ -82,6 +84,9 @@ void testApp::updateTransitions(){
 		if(transitionController.getCurrentState() == TRANSITION_INTERVIEW_OUT){
 			
 			ofLogNotice("testApp::updateTransitions") << "Going to INTERVIEW OUT";
+			
+			////Dear James, you can use this to tell it to go left or right on transition out.
+			//rgbd.setOutOption( CloudsVisualSystemRGBD::OutRight or CloudsVisualSystemRGBD::OutLeft );
 			
 			rgbd.startTransitionOut( type );
 		}
