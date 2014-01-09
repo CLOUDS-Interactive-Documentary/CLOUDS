@@ -1,0 +1,57 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Apply Force</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Force At Y</Name>
+    <Value>6.098522186</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Force Amount</Name>
+    <Value>1.906477809</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Particle Speed</Name>
+    <Value>67.415687561</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Particles Return</Name>
+    <Value>0.036275145</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Render Forces</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Render Particles</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Box Size</Name>
+    <Value>1.385714293</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Render Lines</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Box Connect Distance</Name>
+    <Value>1.939864874</Value>
+</Widget>

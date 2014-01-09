@@ -445,7 +445,7 @@ Generator CloudsVisualSystemVectorFlow::buildSynth()
     
     SampleTable sample = loadAudioFile(strAbsPath);
     
-    string strAbsPath2 = sdir.getAbsolutePath() + "/slowgrains.aif"; //slowgrains.aif
+    string strAbsPath2 = sdir.getAbsolutePath() + "/slowgrains_short.aif"; //slowgrains.aif
     
     SampleTable sample2 = loadAudioFile(strAbsPath2);
     

@@ -13,6 +13,11 @@
 #include "ofxAVFVideoPlayer.h"
 
 
+#include "CloudsGlobal.h"
+#include "CloudsAudioEvents.h"
+#include "ofxTonic.h"
+
+using namespace Tonic;
 
 class CloudsVisualSystemVision : public CloudsVisualSystem {
 public:
@@ -175,9 +180,19 @@ protected:
     float boxSat;
     float boxBright;
     ofFloatColor boxColor;
-    
+    float satShift;
+    float briShift;
     //SHADER
     ofShader shader;
     
-    
+    // Sound
+    ofxUISuperCanvas* soundGui;
+    int nSamples = 2;
+    string soundFiles[2] = {"distorted_drones.aif",
+        "slowgrains_short.aif"};
+    bool playSample[2];
+    ControlTrigger soundTriggers[2];
+    ofxTonicSynth synth;
+    Generator buildSynth();
+	void audioRequested(ofAudioEventArgs& args);
 };

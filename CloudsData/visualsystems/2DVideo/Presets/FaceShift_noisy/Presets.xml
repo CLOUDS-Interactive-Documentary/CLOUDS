@@ -2,12 +2,22 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1485.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>Alice_TextArc</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Cascade</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>D3_Cord</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -27,6 +37,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>D3_Timeline</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Exoplanets</Name>
     <Value>0</Value>
 </Widget>
@@ -42,6 +57,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>FaceShift_noisy</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>FaceShift_noisy </Name>
     <Value>0</Value>
 </Widget>
@@ -52,7 +72,22 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>LiveCode1_gesturepaint</Name>
+    <Name>Flow1_gesture</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Flow2_Blue</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Flow3_Closeup</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Kittenstep</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -63,6 +98,16 @@
 <Widget>
     <Kind>2</Kind>
     <Name>LiveCode3_DesignByNumbers</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Logo1</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Logo2</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -87,21 +132,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>test</Name>
+    <Name>TweakMode</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>test2</Name>
+    <Name>USMap</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Zipcode</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>FaceShift_noisy</Name>
-    <Value>1</Value>
 </Widget>

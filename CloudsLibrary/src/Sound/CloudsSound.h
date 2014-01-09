@@ -12,6 +12,8 @@
 #define PF_LOADER_BUS 3
 #define PF_OUTRO_BUS 4
 #define PF_CLUSTERMAP_BUS 5
+#define PF_MAINACT_BUS_START 6
+#define PF_NUMBUSES 100
 
 class CloudsSound {
   public:
@@ -54,6 +56,7 @@ class CloudsSound {
     void stopMusic();
     void reloadPresets();
     void doPrinting();
+    int ACTBUS; // needs to be public for UDP shit in the scoredesigner
 
     // public data structures
     vector<lukePreset> presets;
@@ -79,7 +82,6 @@ class CloudsSound {
     int framesize; // sigvs (512 seems ok)
 
     bool first_vec;
-    bool rtc_playing;
 
     float MASTERTEMPO;
     int AUTORUN;
@@ -87,6 +89,8 @@ class CloudsSound {
     float cleartime;
     float instGain; // master multiplier per instrument
     bool DOCMIXPRINT;
+    vector<string> ab; // act bus strings for RTCMIX
+    vector<int> abn; // act bus numbers for RTCMIX
 	
     vector<lukeRhythm> rhythms;
     vector<lukePitchArray> pitches;

@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>637.000061035</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>218.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -27,6 +27,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Waveform1_Happen</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Waveform2</Name>
     <Value>0</Value>
 </Widget>
@@ -37,6 +42,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Waveform1_Happen</Name>
-    <Value>1</Value>
+    <Name>Waveform3_GTNonStop</Name>
+    <Value>0</Value>
 </Widget>

@@ -1,0 +1,48 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Rotation Speed</Name>
+    <Value>25.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>X Scale</Name>
+    <HighValue>21.182266235</HighValue>
+    <LowValue>2.463054180</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Y Scale</Name>
+    <HighValue>34.729064941</HighValue>
+    <LowValue>21.182264328</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Z Scale</Name>
+    <HighValue>23.891626358</HighValue>
+    <LowValue>5.418719292</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>X Rotate</Name>
+    <HighValue>0.000000000</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Y Rotate</Name>
+    <HighValue>0.000000000</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Z Rotate</Name>
+    <HighValue>0.000000000</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>

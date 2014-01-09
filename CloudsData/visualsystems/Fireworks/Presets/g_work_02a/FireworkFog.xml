@@ -1,0 +1,32 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>FireworkFog</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>975.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>28</Kind>
+    <Name>fogColor</Name>
+    <XValue>0.519999981</XValue>
+    <YValue>0.479999989</YValue>
+    <RColor>28</RColor>
+    <GColor>0</GColor>
+    <BColor>27</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogSaturation</Name>
+    <Value>1.100000024</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FogDistance</Name>
+    <Value>1628.570068359</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogAttenuation</Name>
+    <Value>1.881770015</Value>
+</Widget>

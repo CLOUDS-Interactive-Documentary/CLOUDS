@@ -1,0 +1,203 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		850D80C2187BA5C000BB3A84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 850D80BC187BA5C000BB3A84 /* Schlabberbox.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4B69B5B0A3A1756003C02F2;
+			remoteInfo = Schlabberbox;
+		};
+		850D80C4187BA5C000BB3A84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 850D80BC187BA5C000BB3A84 /* Schlabberbox.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E738FFE1183C86F50018AB96;
+			remoteInfo = SchlabberboxOculus;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		850D80B3187BA5C000BB3A84 /* .DS_Store */ = {isa = PBXFileReference; lastKnownFileType = file; path = .DS_Store; sourceTree = "<group>"; };
+		850D80B4187BA5C000BB3A84 /* addons.make */ = {isa = PBXFileReference; lastKnownFileType = text; path = addons.make; sourceTree = "<group>"; };
+		850D80B5187BA5C000BB3A84 /* bin */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bin; sourceTree = "<group>"; };
+		850D80B6187BA5C000BB3A84 /* codelite */ = {isa = PBXFileReference; lastKnownFileType = folder; path = codelite; sourceTree = "<group>"; };
+		850D80B7187BA5C000BB3A84 /* config.make */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.make; sourceTree = "<group>"; };
+		850D80B8187BA5C000BB3A84 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		850D80B9187BA5C000BB3A84 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
+		850D80BA187BA5C000BB3A84 /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		850D80BB187BA5C000BB3A84 /* Schlabberbox copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Schlabberbox copy-Info.plist"; sourceTree = "<group>"; };
+		850D80BC187BA5C000BB3A84 /* Schlabberbox.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Schlabberbox.xcodeproj; sourceTree = "<group>"; };
+		850D80BF187BA5C000BB3A84 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = src; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		850D80AD187BA5C000BB3A84 = {
+			isa = PBXGroup;
+			children = (
+				850D80B3187BA5C000BB3A84 /* .DS_Store */,
+				850D80B4187BA5C000BB3A84 /* addons.make */,
+				850D80B5187BA5C000BB3A84 /* bin */,
+				850D80B6187BA5C000BB3A84 /* codelite */,
+				850D80B7187BA5C000BB3A84 /* config.make */,
+				850D80B8187BA5C000BB3A84 /* Makefile */,
+				850D80B9187BA5C000BB3A84 /* openFrameworks-Info.plist */,
+				850D80BA187BA5C000BB3A84 /* Project.xcconfig */,
+				850D80BB187BA5C000BB3A84 /* Schlabberbox copy-Info.plist */,
+				850D80BC187BA5C000BB3A84 /* Schlabberbox.xcodeproj */,
+				850D80BF187BA5C000BB3A84 /* src */,
+			);
+			sourceTree = "<group>";
+		};
+		850D80BD187BA5C000BB3A84 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				850D80C3187BA5C000BB3A84 /* SchlabberboxDebug.app */,
+				850D80C5187BA5C000BB3A84 /* SchlabberboxOculus.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		850D80B2187BA5C000BB3A84 /* VSSchlabberbox */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 850D80C6187BA5C000BB3A84 /* Build configuration list for PBXLegacyTarget "VSSchlabberbox" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = /Users/jonathanminard/Documents/Development/openFrameworks/apps/CLOUDS/VSSchlabberbox;
+			dependencies = (
+			);
+			name = VSSchlabberbox;
+			passBuildSettingsInEnvironment = 1;
+			productName = VSSchlabberbox;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		850D80AE187BA5C000BB3A84 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 850D80B1187BA5C000BB3A84 /* Build configuration list for PBXProject "VSSchlabberbox" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 850D80AD187BA5C000BB3A84;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 850D80BD187BA5C000BB3A84 /* Products */;
+					ProjectRef = 850D80BC187BA5C000BB3A84 /* Schlabberbox.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				850D80B2187BA5C000BB3A84 /* VSSchlabberbox */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		850D80C3187BA5C000BB3A84 /* SchlabberboxDebug.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SchlabberboxDebug.app;
+			remoteRef = 850D80C2187BA5C000BB3A84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		850D80C5187BA5C000BB3A84 /* SchlabberboxOculus.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SchlabberboxOculus.app;
+			remoteRef = 850D80C4187BA5C000BB3A84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin XCBuildConfiguration section */
+		850D80AF187BA5C000BB3A84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		850D80B0187BA5C000BB3A84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+		850D80C7187BA5C000BB3A84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = VSSchlabberbox;
+			};
+			name = Debug;
+		};
+		850D80C8187BA5C000BB3A84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = VSSchlabberbox;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		850D80B1187BA5C000BB3A84 /* Build configuration list for PBXProject "VSSchlabberbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				850D80AF187BA5C000BB3A84 /* Debug */,
+				850D80B0187BA5C000BB3A84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		850D80C6187BA5C000BB3A84 /* Build configuration list for PBXLegacyTarget "VSSchlabberbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				850D80C7187BA5C000BB3A84 /* Debug */,
+				850D80C8187BA5C000BB3A84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 850D80AE187BA5C000BB3A84 /* Project object */;
+}

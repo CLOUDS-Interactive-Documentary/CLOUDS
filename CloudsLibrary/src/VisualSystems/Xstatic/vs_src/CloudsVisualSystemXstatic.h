@@ -95,7 +95,7 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
 		return CloudsVisualSystem::getCameraRef();
 	}
     
-    void regenerate();
+    void regenerate(bool bBigBang = false);
     void explode();
 
 protected:
@@ -120,8 +120,11 @@ protected:
     bool bShouldRise, bDidRise;
     
     bool bBounceOffWalls;
+    bool bWrapEdges;
     bool bDrawBox;
-
+    bool bBigBang;
+    
+   // float kBoxSize;
     float windSpeed;
     float explodeSpeed;
     float riseFallSpeed;

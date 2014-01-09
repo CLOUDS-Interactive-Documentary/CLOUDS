@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>926.000000000</XPosition>
+    <XPosition>841.000000000</XPosition>
     <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -14,29 +14,4 @@
     <Kind>4</Kind>
     <Name>SECONDARY TOPIC BOOST</Name>
     <Value>5.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>MAX VS RUNTIME</Name>
-    <Value>16.551723480</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>MAX VS GAPTIME</Name>
-    <Value>16.847290039</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>LONG CLIP THRESHOLD</Name>
-    <Value>30.000001907</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>LONG CLIP FAD IN %</Name>
-    <Value>0.500000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>CADENCE FOR TOPIC CHANGE</Name>
-    <Value>10.000000000</Value>
 </Widget>

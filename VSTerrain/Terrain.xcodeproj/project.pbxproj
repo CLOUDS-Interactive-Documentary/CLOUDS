@@ -81,6 +81,8 @@
 		8508EC441863902A00A73AB5 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC3C1863902A00A73AB5 /* CloudsInput.cpp */; };
 		8508EC471863902A00A73AB5 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC411863902A00A73AB5 /* CloudsInputMouse.cpp */; };
 		8508EC481863902A00A73AB5 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8508EC411863902A00A73AB5 /* CloudsInputMouse.cpp */; };
+		850D80A6187B87D200BB3A84 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 850D80A5187B87D200BB3A84 /* ofxSystemTextbox.mm */; };
+		850D80A7187B87D200BB3A84 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 850D80A5187B87D200BB3A84 /* ofxSystemTextbox.mm */; };
 		8585026F185523B60088352E /* CloudsVisualSystemTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8585026D185523B60088352E /* CloudsVisualSystemTerrain.cpp */; };
 		85850270185523B60088352E /* CloudsVisualSystemTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8585026D185523B60088352E /* CloudsVisualSystemTerrain.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -491,6 +493,8 @@
 		8508EC3E1863902A00A73AB5 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
 		8508EC411863902A00A73AB5 /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
 		8508EC421863902A00A73AB5 /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
+		850D80A4187B87D200BB3A84 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxSystemTextbox.h; path = src/VisualSystemsLibrary/ofxSystemTextbox.h; sourceTree = "<group>"; };
+		850D80A5187B87D200BB3A84 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ofxSystemTextbox.mm; path = src/VisualSystemsLibrary/ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		8585026D185523B60088352E /* CloudsVisualSystemTerrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemTerrain.cpp; sourceTree = "<group>"; };
 		8585026E185523B60088352E /* CloudsVisualSystemTerrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemTerrain.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -1318,6 +1322,8 @@
 		E7DD71F017DBC08D00AFB2DD /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				850D80A4187B87D200BB3A84 /* ofxSystemTextbox.h */,
+				850D80A5187B87D200BB3A84 /* ofxSystemTextbox.mm */,
 				E7DD71F117DBC08D00AFB2DD /* src */,
 			);
 			name = CloudsLibrary;
@@ -1394,6 +1400,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Terrain" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1542,6 +1550,7 @@
 				8585026F185523B60088352E /* CloudsVisualSystemTerrain.cpp in Sources */,
 				8508EC431863902A00A73AB5 /* CloudsInput.cpp in Sources */,
 				8508EC471863902A00A73AB5 /* CloudsInputMouse.cpp in Sources */,
+				850D80A6187B87D200BB3A84 /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1627,6 +1636,7 @@
 				85850270185523B60088352E /* CloudsVisualSystemTerrain.cpp in Sources */,
 				8508EC441863902A00A73AB5 /* CloudsInput.cpp in Sources */,
 				8508EC481863902A00A73AB5 /* CloudsInputMouse.cpp in Sources */,
+				850D80A7187B87D200BB3A84 /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

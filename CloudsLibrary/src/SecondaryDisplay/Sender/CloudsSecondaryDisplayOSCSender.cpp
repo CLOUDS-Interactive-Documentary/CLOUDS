@@ -60,22 +60,24 @@ void CloudsSecondaryDisplayOSCSender::actEnded(CloudsActEventArgs& args){
 }
 
 void CloudsSecondaryDisplayOSCSender::clipBegan(CloudsClipEventArgs& args){
-    ofxOscMessage m;
-	m.setAddress("/clip");
-    
-	m.addStringArg(args.chosenClip.person);//final cut person id
-	m.addStringArg(args.chosenClip.getID());//clip id
-	m.addFloatArg(args.chosenClip.getDuration());//duraiton
-	m.addStringArg(currentTopic); //topic
-	m.addStringArg(args.chosenClip.projectExampleTitle); //example
-	//m.addStringArg(lastQuestionAsked); //question
-	if(args.chosenClip.hasQuestion()){
-		m.addStringArg( args.chosenClip.getQuestionForTopic(args.chosenClip.getTopicsWithQuestions()[0]) );
-	}
-	else{
-		m.addStringArg(lastQuestionAsked); //question
-	}
-	sender.sendMessage(m);
+	sendClip(args.chosenClip);
+	
+//    ofxOscMessage m;
+//	m.setAddress("/clip");
+//    
+//	m.addStringArg(args.chosenClip.person);//final cut person id
+//	m.addStringArg(args.chosenClip.getID());//clip id
+//	m.addFloatArg(args.chosenClip.getDuration());//duraiton
+//	m.addStringArg(currentTopic); //topic
+//	m.addStringArg(args.chosenClip.projectExampleTitle); //example
+//	//m.addStringArg(lastQuestionAsked); //question
+//	if(args.chosenClip.hasQuestion()){
+//		m.addStringArg( args.chosenClip.getQuestionForTopic(args.chosenClip.getTopicsWithQuestions()[0]) );
+//	}
+//	else{
+//		m.addStringArg(lastQuestionAsked); //question
+//	}
+//	sender.sendMessage(m);
 }
 
 void CloudsSecondaryDisplayOSCSender::visualSystemBegan(CloudsVisualSystemEventArgs& args){

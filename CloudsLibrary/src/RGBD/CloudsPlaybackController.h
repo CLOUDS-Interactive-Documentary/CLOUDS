@@ -33,8 +33,7 @@ class CloudsPlaybackController {
 	~CloudsPlaybackController();
 
 	//set it up with an existing story engine that will register the events
-	void setup();
-//	void setStoryEngine(CloudsStoryEngine& storyEngine);	
+	void setup();	
 	void playAct(CloudsAct* act);
 	CloudsRGBDVideoPlayer& getSharedVideoPlayer();
 	
@@ -61,9 +60,6 @@ class CloudsPlaybackController {
 	void preRollRequested(CloudsPreRollEventArgs& args);
 	
 	void exit(ofEventArgs & args);
-	
-	//bool revertToIntroAfter1Act;//demo hack
-	//bool actFinished;
 	
 	vector<CloudsClip> fakeQuestions;
 

@@ -1,0 +1,108 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>44</Kind>
+    <Name>HAIR COUNT</Name>
+    <Value>1093</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPHERE SCALE</Name>
+    <Value>47.290637970</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE SPEED</Name>
+    <Value>9.655172348</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>NOISE SCALE</Name>
+    <HighValue>1.123152733</HighValue>
+    <LowValue>0.500000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPHERE HUE</Name>
+    <Value>0.896551728</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPHERE SAT</Name>
+    <Value>0.118226603</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPHERE BRI</Name>
+    <Value>0.500000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPHERE ALPHA</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>HAIR LENGTH</Name>
+    <HighValue>2.266009808</HighValue>
+    <LowValue>0.689655662</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>HAIR LINE WIDTH</Name>
+    <HighValue>0.392610818</HighValue>
+    <LowValue>0.100000001</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>BASE HUE</Name>
+    <HighValue>0.610837460</HighValue>
+    <LowValue>0.379310340</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>BASE SAT</Name>
+    <HighValue>1.000000000</HighValue>
+    <LowValue>0.709359646</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>BASE BRI</Name>
+    <HighValue>0.990147769</HighValue>
+    <LowValue>0.788177311</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>BASE ALPHA</Name>
+    <HighValue>1.000000000</HighValue>
+    <LowValue>0.778325081</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>TIP HUE</Name>
+    <HighValue>0.935960591</HighValue>
+    <LowValue>0.807881773</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>TIP SAT</Name>
+    <HighValue>1.000000000</HighValue>
+    <LowValue>0.630541861</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>TIP BRI</Name>
+    <HighValue>1.000000000</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>TIP ALPHA</Name>
+    <HighValue>1.000000000</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>

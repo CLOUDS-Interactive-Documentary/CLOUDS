@@ -78,6 +78,7 @@ namespace itg
         void addPointFish(unsigned number, float hue);
         void addModelFish(unsigned number, const ModelParams& params);
         void addJellyFish(unsigned number, const JellyParams& params);
+        void generateTentacles();
         
         static const unsigned TENTACLE_NUM_SECTIONS = 20;
         static const float TENTACLE_SECTION_LENGTH;

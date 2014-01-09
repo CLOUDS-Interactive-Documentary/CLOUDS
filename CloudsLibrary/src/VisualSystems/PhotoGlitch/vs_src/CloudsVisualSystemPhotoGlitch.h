@@ -62,7 +62,7 @@ public:
     PGCell* cells;
     
     void clear(){
-        
+            tex.clear();
         if (cells != NULL) {
             delete [] cells;
             cells = NULL;
@@ -173,7 +173,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void clearTarget();
     void generateSource();
     void generateTarget();
-    void generate(PhotoGlitch& pg, int imageIndex,bool isSource= false);
+    bool generate(PhotoGlitch& pg, string imgPath,bool isSource= false);
     void beginAnimation();
     void updateAnimation();
     
@@ -189,7 +189,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     void tweenTarget(int i, int j = -1);
     void tweenFast(int i);
     void updateSequence();
-    int getTargetFileName(ofxUISuperCanvas * gui, int targetId);
+    string getTargetFileName(ofxUISuperCanvas * gui, int targetId);
 
 //    PGCell * cells;
 
@@ -219,6 +219,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     int numDivRows;
     int numDivCols;
     int numCells;
+    string srcImagePath;
 //    int currentTargetIndex;    
 //    int numVerts;
 //    GLfloat * verts;
@@ -279,5 +280,9 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     bool bStartAnimating;
     bool bDoPerpendicular;
     bool bShouldGenerate;
+    bool bSourceFolderExists;
+    bool bTargetFolderExists;
+    bool bTargetImageExists;
+    bool bSourceImageExists;
 //    bool bShouldGenerateTargetOnly;
 };

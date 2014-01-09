@@ -24,4 +24,10 @@ class testApp : public ofBaseApp {
 	CloudsSecondaryDisplayController secondaryDisplay;
     
     bool debug;
+    
+    bool testAllClips, testProjEx;
+    int currentTestClip, currentProjEx;
+    bool timer;
+    float startTime;
+    vector<int> projectExampleIndecs;
 };

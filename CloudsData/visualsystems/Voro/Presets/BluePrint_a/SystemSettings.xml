@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1410.000000000</XPosition>
+    <YPosition>10.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,47 +13,47 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Max_Number</Name>
-    <Value>195.320190430</Value>
+    <Value>29.507389069</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BornSecRate</Name>
-    <Value>2.365492582</Value>
+    <Value>1.059901476</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Max_Size</Name>
-    <Value>3.660098553</Value>
+    <Value>4.599999905</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>GrowRate</Name>
-    <Value>0.007881774</Value>
+    <Value>0.009852217</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>InitialForce</Name>
-    <Value>0.320197046</Value>
+    <Value>0.108374387</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Z_Move</Name>
-    <Value>0.000000000</Value>
+    <Value>0.133004919</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Atraction</Name>
-    <Value>0.053201970</Value>
+    <Value>0.097500004</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Repulsion</Name>
-    <Value>0.507389188</Value>
+    <Value>0.300000012</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>texture_Size</Name>
-    <Value>0.142857149</Value>
+    <Value>0.192118227</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -63,12 +63,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Conteiner_Size</Name>
-    <Value>13.743842125</Value>
+    <Value>10.950002670</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Conteiner_Height</Name>
-    <Value>20.779310226</Value>
+    <Value>16.091995239</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -78,25 +78,40 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Sphere</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Wall</Name>
-    <Value>0.191516787</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Alpha</Name>
-    <Value>0.438423634</Value>
+    <Value>0.541871905</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Wires_Alpha</Name>
-    <Value>0.073891625</Value>
+    <Value>0.660098493</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Wires_Thickness</Name>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Vertex_Alpha</Name>
-    <Value>0.068965517</Value>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Vertex_Size</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Cell_Use_Material</Name>
+    <Value>1</Value>
 </Widget>

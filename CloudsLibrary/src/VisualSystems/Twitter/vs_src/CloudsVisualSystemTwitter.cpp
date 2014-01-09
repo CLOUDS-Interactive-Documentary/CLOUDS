@@ -79,7 +79,7 @@ void CloudsVisualSystemTwitter::selfSetDefaults(){
     nodePopColorHSV  = ofFloatColor(0,0,0);
     textColorHSV = ofFloatColor(128,128,128);
     tweetDeckColorHSV  = ofFloatColor(128,128,128);
-
+    bOldData = false;
     
 //    ofEnableSmoothing();
 //    ofEnableAlphaBlending();
@@ -857,10 +857,12 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     if(strs[strs.size()-1] =="old.net"){
         cout<<"old data, using tweetsOld folder"<<endl;
         loadJSONData("tweetsOld");
+        bOldData = true;
     }
     else if (strs[strs.size()-1] =="new.net"){
         cout<<"New data, using tweets clean folder"<<endl;
         loadJSONData("tweetsClean");
+        bOldData = false;
         
     }
     else{
@@ -1387,7 +1389,7 @@ void CloudsVisualSystemTwitter::selfDrawBackground()
 //    ofPopMatrix();
     
     
-    if(bRenderFeed){
+    if(bRenderFeed && ! bOldData){
         ofPushStyle();
         ofNoFill();
         drawFeed();

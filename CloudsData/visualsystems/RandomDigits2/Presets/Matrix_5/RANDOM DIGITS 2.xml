@@ -1,0 +1,67 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RANDOM DIGITS 2</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>297.000000000</XPosition>
+    <YPosition>61.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>44</Kind>
+    <Name>X Count</Name>
+    <Value>50</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Y Count</Name>
+    <Value>50</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Z Count</Name>
+    <Value>6</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>X Spacing</Name>
+    <Value>78</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Y Spacing</Name>
+    <Value>71</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Z Spacing</Name>
+    <Value>266</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>X Noise</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Y Noise</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Z Noise</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Dark Color</Name>
+    <Value>0.500000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Light Color</Name>
+    <Value>1.871921182</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FOG DENSITY</Name>
+    <Value>0.000000000</Value>
+</Widget>

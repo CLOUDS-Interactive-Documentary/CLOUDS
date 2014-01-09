@@ -2,6 +2,7 @@
 #include "testApp.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
+#include "CloudsInputKinectOSC.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -9,6 +10,8 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
   
 	ofSetLogLevel(OF_LOG_NOTICE);
+    
+    SetCloudsInputKinect();
 	
 	rgbd.setup();
 	rgbd.playSystem();

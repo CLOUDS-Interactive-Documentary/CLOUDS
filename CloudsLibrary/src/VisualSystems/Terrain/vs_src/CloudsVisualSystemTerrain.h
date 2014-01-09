@@ -10,6 +10,7 @@
 
 #include "CloudsVisualSystem.h"
 
+
 class CloudsVisualSystemTerrain : public CloudsVisualSystem {
 public:
     
@@ -37,6 +38,8 @@ public:
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
     
+    void selfInteractionMoved(CloudsInteractionEventArgs& args);
+    
     void selfSetupGui();
  
     void selfSetupSystemGui();
@@ -46,6 +49,8 @@ public:
     void guiRenderEvent(ofxUIEventArgs &e);
     
     void billBoard();
+    
+    void resizeBrush();
 
         // if you use a custom camera to fly through the scene
     // you must implement this method for the transitions to work properly
@@ -60,6 +65,8 @@ protected:
     void     setResolution( int _width, int _height );
     
     ofxUISuperCanvas* customGui;
+    ofxUISuperCanvas* fogGui;
+
     bool customToggle;
     
     // Noise
@@ -96,6 +103,7 @@ protected:
         ofVec3f*    pNormals;
     ofVec3f*    pVertices;          // Vertex Data
     ofVec2f*    pTexCoords;         // Texture Coordinates
+    ofFloatColor*    pColors; //colors
         int         nVertexCount;       // Vertex Count
     bool        bChange;
     
@@ -112,4 +120,42 @@ protected:
     //
     ofVec2f     camPosition;
     float       camAltitud;
+    
+    ofShader   colorShader;
+    ofShader   circleShader;
+    ofShader   vBlurShader, hBlurShader;
+    ofFloatColor  mHighColor;
+    ofFloatColor  mLowColor;
+    float          mAtten;
+    float         mBalance;
+    ofVec2f mouse;
+    ofFbo canvasSrc;
+    ofFbo canvasDest;
+    
+    bool bShowDebug;
+    bool bDoNoise;
+    bool bDoDraw;
+    ofFloatColor fc;
+    float fogDist;
+    float fogExpo;
+    bool bUseFog;
+    int fogHue;
+    int fogSaturation;
+    int fogBrightness;
+    
+    float bgHue;
+	float bgSat;
+	float bgBri;
+    float mTexMix;
+    float brushSize;
+    float mHeightScale;
+    
+    ofFloatColor mTraceColor;
+    
+    ofMesh brushMesh, blurMesh;
+    float mDepositScale, mCurDepositScale, dryRate, blurRadius;
+    map<int, vector<ofVec2f> > playerHistoryMap;
+    map<int, vector<ofVec2f> > playerDepositPoints;
+    vector<ofVec2f> depositPoints;
+
 };

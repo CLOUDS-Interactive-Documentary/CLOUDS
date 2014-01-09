@@ -178,6 +178,15 @@ public:
     float activeThresholdY;
     float activeThresholdZ;
     
+    float jointLerpPct;
+    
+    // current position attributes
+    float posResetLerpPct;
+    float posSetLerpPct;
+    float posSetInstantThreshold;
+    unsigned long long posOutOfBoundsStart;
+    unsigned long posOutOfBoundsThreshold;
+    
     map<int, k4w::Body *> bodies;
     map<int, k4w::Hand *> hands;
 };

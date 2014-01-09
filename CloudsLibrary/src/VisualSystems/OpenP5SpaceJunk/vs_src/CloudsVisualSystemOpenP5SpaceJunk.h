@@ -26,7 +26,11 @@ class Cube {
     int rotZ;
 
 	
-	Cube(ofVboMesh& mesh, ofMesh& baseBox, int _w, int _h, int _d, int _shiftX, int _shiftY, int _shiftZ, int _rotX, int _rotY, int _rotZ ){
+	Cube(ofVboMesh& mesh, ofMesh& baseBox,
+		 ofVboMesh& stroke, ofMesh& baseStroke,
+		 int _w, int _h, int _d,
+		 int _shiftX, int _shiftY, int _shiftZ,
+		 int _rotX, int _rotY, int _rotZ ){
 		
         w = _w;
         h = _h;
@@ -37,14 +41,7 @@ class Cube {
         rotX = _rotX;
         rotY = _rotY;
         rotZ = _rotZ;
-    
-		//ofPushMatrix();
-//		ofTranslate(shiftX, shiftY, shiftZ);
-//      ofRotateX(rotX);
-//      ofRotateY(rotY);
-//      ofRotateZ(rotZ);
-//      ofScale(w,h,d);
-		
+
 		ofMatrix4x4 transform;
 		ofMatrix4x4 rotate;
 		transform.scale(w,h,d);
@@ -63,20 +60,11 @@ class Cube {
 			mesh.addIndex(initialIndex + baseBox.getIndices()[i] );
 		}
 		
-		//ofBox(1, 1, 1);
-        //ofPopMatrix();
+		for(int i = 0; i < baseStroke.getNumVertices(); i++){
+			stroke.addVertex(baseStroke.getVertex(i) * transform);
+		}
 	}
 	
-	void draw() {
-//        ofPushMatrix();
-//        ofTranslate(shiftX, shiftY, shiftZ);
-//        ofRotateX(rotX);
-//        ofRotateY(rotY);
-//        ofRotateZ(rotZ);
-//        ofScale(w, h, d); 
-//        ofBox(1, 1, 1);
-//        ofPopMatrix();
-	}
 };
 
 //TODO: rename this to your own visual system
@@ -102,6 +90,7 @@ class CloudsVisualSystemOpenP5SpaceJunk : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
+	void selfSetDefaults();
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
@@ -151,14 +140,6 @@ class CloudsVisualSystemOpenP5SpaceJunk : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-	
-
-    // if you use a custom camera to fly through the scene
-	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
-
 
 protected:
     
@@ -171,9 +152,12 @@ protected:
 	ofFloatColor color2HSB;
 	
 	ofVboMesh mesh;
+	ofVboMesh stroke;
 	ofMesh baseBox;
+	ofMesh baseStroke;
 	
-	int limit = 500;
+	int limit;
+	int spread;
     float ang;
     float speed_ = 10; //a number that increments ang
     

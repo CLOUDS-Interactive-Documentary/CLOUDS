@@ -1,6 +1,39 @@
 <Map>
     <Bangs></Bangs>
     <Switches></Switches>
-    <SliderCurves></SliderCurves>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>WINDOW TINT</WidgetName>
+                <WidgetID>7</WidgetID>
+                <WidgetCanvasParent>OP FLOW</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>WINDOW HEIGHT</WidgetName>
+                <WidgetID>15</WidgetID>
+                <WidgetCanvasParent>OP FLOW</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>WINDOW WIDTH</WidgetName>
+                <WidgetID>13</WidgetID>
+                <WidgetCanvasParent>OP FLOW</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>FLOW LINE LENGTH</WidgetName>
+                <WidgetID>17</WidgetID>
+                <WidgetCanvasParent>OP FLOW</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
     <NumberDialerCurves></NumberDialerCurves>
 </Map>

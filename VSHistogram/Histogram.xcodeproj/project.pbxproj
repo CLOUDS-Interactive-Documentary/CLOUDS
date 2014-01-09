@@ -83,6 +83,8 @@
 		6471CA8C1856D6FC000DC9AB /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6471CA841856D6FC000DC9AB /* CloudsInput.cpp */; };
 		6471CA8F1856D6FC000DC9AB /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6471CA891856D6FC000DC9AB /* CloudsInputMouse.cpp */; };
 		6471CA901856D6FC000DC9AB /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6471CA891856D6FC000DC9AB /* CloudsInputMouse.cpp */; };
+		85016460187B4400003F302A /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8501645F187B4400003F302A /* ofxSystemTextbox.mm */; };
+		85016461187B4400003F302A /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8501645F187B4400003F302A /* ofxSystemTextbox.mm */; };
 		85BBDE8418414117001305AE /* CloudsVisualSystemHistogram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85BBDE8218414117001305AE /* CloudsVisualSystemHistogram.cpp */; };
 		85BBDE8518414117001305AE /* CloudsVisualSystemHistogram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85BBDE8218414117001305AE /* CloudsVisualSystemHistogram.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -494,6 +496,8 @@
 		6471CA861856D6FC000DC9AB /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
 		6471CA891856D6FC000DC9AB /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
 		6471CA8A1856D6FC000DC9AB /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
+		8501645E187B4400003F302A /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxSystemTextbox.h; path = src/VisualSystemsLibrary/ofxSystemTextbox.h; sourceTree = "<group>"; };
+		8501645F187B4400003F302A /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ofxSystemTextbox.mm; path = src/VisualSystemsLibrary/ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		85BBDE8218414117001305AE /* CloudsVisualSystemHistogram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemHistogram.cpp; sourceTree = "<group>"; };
 		85BBDE8318414117001305AE /* CloudsVisualSystemHistogram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemHistogram.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -1346,6 +1350,8 @@
 		E7DD71F017DBC08D00AFB2DD /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				8501645E187B4400003F302A /* ofxSystemTextbox.h */,
+				8501645F187B4400003F302A /* ofxSystemTextbox.mm */,
 				E7DD71F117DBC08D00AFB2DD /* src */,
 			);
 			name = CloudsLibrary;
@@ -1571,6 +1577,7 @@
 				85BBDE8418414117001305AE /* CloudsVisualSystemHistogram.cpp in Sources */,
 				6471CA8B1856D6FC000DC9AB /* CloudsInput.cpp in Sources */,
 				6471CA8F1856D6FC000DC9AB /* CloudsInputMouse.cpp in Sources */,
+				85016460187B4400003F302A /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1656,6 +1663,7 @@
 				85BBDE8518414117001305AE /* CloudsVisualSystemHistogram.cpp in Sources */,
 				6471CA8C1856D6FC000DC9AB /* CloudsInput.cpp in Sources */,
 				6471CA901856D6FC000DC9AB /* CloudsInputMouse.cpp in Sources */,
+				85016461187B4400003F302A /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

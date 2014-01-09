@@ -95,6 +95,9 @@ void CloudsVisualSystemVision::selfSetup()
     }
     frameIsNew = false;
     loadCurrentMovie();
+
+    // sound
+    synth.setOutputGen(buildSynth());
 }
 
 void CloudsVisualSystemVision::selfSetupGui()
@@ -199,6 +202,22 @@ void CloudsVisualSystemVision::selfSetupGui()
     ofAddListener(contourTrackingGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
     guis.push_back(thresholdGui);
     guimap[thresholdGui->getName()] = thresholdGui;
+    
+    // sound
+    soundGui = new ofxUISuperCanvas("VISION Sound", gui);
+	soundGui->copyCanvasStyle(gui);
+	soundGui->copyCanvasProperties(gui);
+	soundGui->setName("VISION Sound");
+	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    for (int i=0; i<nSamples; i++)
+    {
+        soundGui->addToggle(soundFiles[i], &playSample[i]);
+    }
+    
+	guis.push_back(soundGui);
+	guimap[soundGui->getName()] = soundGui;
+    ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
 }
 
 
@@ -345,13 +364,21 @@ void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
 
 void CloudsVisualSystemVision::selfBegin()
 {
+    // sound
+    ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVision::audioRequested);
     
-    
+    for (int i=0; i<nSamples; i++)
+    {
+        if (playSample[i]) {
+            soundTriggers[i].trigger();
+        }
+    }
 }
 
 void CloudsVisualSystemVision::selfEnd()
 {
-    
+    // sound
+    ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemVision::audioRequested);
 }
 
 void CloudsVisualSystemVision::selfExit()
@@ -380,6 +407,8 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
     rdrGui->addSlider("DIFF TINT", 0, 255, &diffAlpha);
     rdrGui->addSlider("FLOW WINDOW TINT", 0, 255, &windowAlpha);
 	rdrGui->addSlider("DIFFERENCE HUE",	0, 1.0, &hueShift);
+	rdrGui->addSlider("DIFFERENCE SAT",	0, 1.0, &satShift);
+	rdrGui->addSlider("DIFFERENCE BRI",	0, 1.0, &briShift);
     rdrGui->addDropDownList("VIDEO", movieStrings);
     rdrGui->autoSizeToFitWidgets();
     ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
@@ -575,6 +604,8 @@ void CloudsVisualSystemVision::selfDrawBackground()
 		shader.setUniformTexture("previousFrame", prev, 1);
 		shader.setUniformTexture("currentFrame", player->getTextureReference(), 2);
 		shader.setUniform1f("hueShift", hueShift);
+        shader.setUniform1f("satShift", satShift);
+        shader.setUniform1f("briShift", briShift);
 		m.draw();
 		
 		shader.end();
@@ -731,6 +762,18 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
         ofxUIToggle* t = (ofxUIToggle*)e.widget;
         if(t->getValue())loadMovieWithName( t->getName() );
     }
+    
+    for (int i=0; i<nSamples; i++)
+    {
+        if (e.widget->getName() == soundFiles[i]) {
+            ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
+            playSample[i] = toggle->getValue();
+            if (toggle->getValue() == true) {
+                soundTriggers[i].trigger();
+            }
+        }
+    }
+    
 }
 
 void CloudsVisualSystemVision::loadCurrentMovie(){
@@ -779,3 +822,34 @@ void CloudsVisualSystemVision::guiRenderEvent(ofxUIEventArgs &e)
 {
     
 }
+
+
+Generator CloudsVisualSystemVision::buildSynth()
+{
+    string strDir = GetCloudsDataPath()+"sound/textures/";
+    ofDirectory sdir(strDir);
+    
+    SampleTable samples[2];
+    
+    for (int i=0; i<nSamples; i++)
+    {
+        string strAbsPath = sdir.getAbsolutePath() + "/" + soundFiles[i];
+        samples[i] = loadAudioFile(strAbsPath);
+    }
+    
+    Generator sampleGen[2];
+    for (int i=0; i<nSamples; i++)
+    {
+        sampleGen[i] = BufferPlayer().setBuffer(samples[i]).loop(1).trigger(soundTriggers[i]);
+    }
+    
+    return sampleGen[0] * 1.0f +
+        sampleGen[1] * 1.0f;
+}
+
+void CloudsVisualSystemVision::audioRequested(ofAudioEventArgs& args)
+{
+    synth.fillBufferOfFloats(args.buffer, args.bufferSize, args.nChannels);
+}
+
+

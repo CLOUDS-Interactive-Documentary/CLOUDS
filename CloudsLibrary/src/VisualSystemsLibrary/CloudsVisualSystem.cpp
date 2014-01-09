@@ -1111,13 +1111,10 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
 			#else
 			string presetName = ofSystemTextBoxDialog("Save Preset As", currentPresetName);
 			#endif
-            if(presetName != "")
-            {
+            if(presetName != ""){
                 savePresetGUIS(presetName);
+				currentPresetName = presetName;
             }
-//            else{
-//                saveGUIS();
-//            }
         }
     }
     else if(name == "LOAD")
@@ -3155,9 +3152,8 @@ void CloudsVisualSystem::selfPostDraw(){
         }
         ofPopStyle();
         ofPopMatrix();
-
     }
-	
+	///END TODO
 	
 #endif
 
@@ -3282,7 +3278,3 @@ void CloudsVisualSystem::checkOpenGLError(string function){
         ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " : " << gluErrorString(err) << " in " << function;
     }
 }
-
-//#ifdef UInt32
-//#undef UInt32
-//#endif

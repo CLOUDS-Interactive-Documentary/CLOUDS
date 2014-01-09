@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>POINT LIGHT 1Settings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1273.000000000</XPosition>
+    <XPosition>425.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -23,82 +23,37 @@
 <Widget>
     <Kind>25</Kind>
     <Name>Z</Name>
-    <Value>-319.372985840</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AR</Name>
-    <Value>0.282722503</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AG</Name>
-    <Value>0.602094889</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AB</Name>
-    <Value>0.356020302</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DR</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DG</Name>
-    <Value>0.476440430</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DB</Name>
-    <Value>0.497381538</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SR</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SG</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SB</Name>
-    <Value>0.000000000</Value>
+    <Value>-36.650512695</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AH</Name>
-    <Value>0.371584296</Value>
+    <Value>0.329842925</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AS</Name>
-    <Value>0.530435324</Value>
+    <Value>0.256544173</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AV</Name>
-    <Value>0.602094889</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DH</Name>
-    <Value>0.507017136</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DS</Name>
     <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
+    <Name>DH</Name>
+    <Value>0.392670155</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>DS</Name>
+    <Value>0.225130573</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
     <Name>DV</Name>
-    <Value>0.497381538</Value>
+    <Value>0.214659035</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

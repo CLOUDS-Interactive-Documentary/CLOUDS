@@ -10,7 +10,7 @@ void testApp::setup(){
 	ofBackground(0);
 	ofToggleFullscreen();
 	
-	SetCloudsInputKinect();
+	//SetCloudsInputKinect();
 	
 	player.setup();
 }
