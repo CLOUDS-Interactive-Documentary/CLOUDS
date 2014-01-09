@@ -54,8 +54,11 @@ class CloudsPortal {
 		
 	float hoverPercentComplete;
 	ofVec3f hoverPosition;
-	ofVec2f screenPosition;//filled out on update
-    
+	ofVec2f screenPosition; //filled out on update
+
+	bool bLookAtCamera;
+	ofVec3f lookTarget; //billboards the tunnel
+	
     float scale;
 	
 	ofCamera* cam;

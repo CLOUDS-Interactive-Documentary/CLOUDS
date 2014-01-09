@@ -26,6 +26,22 @@
             </Widget>
             <Track></Track>
         </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Feed</WidgetName>
+                <WidgetID>10</WidgetID>
+                <WidgetCanvasParent>Terrain</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Loops</WidgetName>
+                <WidgetID>12</WidgetID>
+                <WidgetCanvasParent>Terrain</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
     </SliderCurves>
     <NumberDialerCurves></NumberDialerCurves>
 </Map>

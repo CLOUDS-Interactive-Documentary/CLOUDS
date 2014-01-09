@@ -174,6 +174,7 @@ void CloudsIntroSequence::selfUpdate(){
 				if( caughtQuestion->isSelected() /* && ofGetMousePressed() */){
 					selectedQuestion = caughtQuestion;
 				}
+				//TODO consider MAX distance here.....
 				else if(distanceToQuestion > questionTugMinDistance){
 					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
@@ -448,8 +449,8 @@ void CloudsIntroSequence::drawCloudsType(){
 	typeShader.setUniform1f("glowMin", titleMinGlow);
 	typeShader.setUniform1f("glowMax", titleMaxGlow);
 
-	
 	extrudedTitleText.drawString("CLOUDS", -width/2, height/2);
+	
 	typeShader.end();
 
 	ofPopStyle();

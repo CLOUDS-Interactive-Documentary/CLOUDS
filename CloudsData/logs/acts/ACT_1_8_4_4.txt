@@ -1,0 +1,112 @@
+Notes - 
+
+
+
+SEED TOPIC:  collaboration
+SEED CLIP: Zach - Time slows down
+First visual system preset is selected : Ripples_Violet for topic : collaboration and clip Zach - Time slows down
+0	CHOOSING NEW CLIP 
+0		Chose Clip "Shantell - magic and tech" for topic "collaboration" (1/5)
+39.8291	VISUALS Currently running "Ripples_Violet" time [0 - 8.27586] indefinite
+39.8291		Passed predicted time 8.27586 - moving end time to middle of Shantell - magic and tech, time 22.687
+39.8291	CHOOSING NEW CLIP 
+39.8291		Chose Clip "Aaron - exquisite forest" for topic "collaboration" (2/5)
+77.163	VISUALS Not run in 54.476 seconds
+77.163		Chose new Preset RGBDVideo_ITP_1 time [59.1867 - 67.4626] indefinite
+77.163	CHOOSING NEW CLIP 
+77.163		Chose Clip "Casey - Something new, totally engrossing" for topic "collaboration" (3/5)
+77.163			ERROR: We took a digression! Freeing topic
+96.2631	VISUALS Currently running "RGBDVideo_ITP_1" time [59.1867 - 67.4626] indefinite
+96.2631		Passed predicted time 67.4626 - FREE TOPIC Extending VS end time to 116.82 past the end of Casey - Something new, totally engrossing
+116.82	CHOOSING NEW TOPIC 2/4
+116.82		Selecting from 5 potential next topics on clip Casey - Something new, totally engrossing
+116.82			Considering narrative
+116.82				Score for shared topic	narrative : 0
+116.82			Considering cinema
+116.82				Score for shared topic	cinema : 0
+116.82			Considering videogames
+116.82				Score for shared topic	videogames : 0
+116.82			Considering storytelling
+116.82				Score for shared topic	storytelling : 13.1253
+116.82			Considering future of cinema
+116.82				Score for shared topic	future of cinema : 12.5148
+116.82		TOPIC storytelling won with score 13.1253
+116.82		Picked new topic: STORYTELLING
+116.82	CHOOSING NEW CLIP 
+116.82		Chose Clip "Marcus - code for storytelling" for topic "storytelling" (1/5)
+153.153	VISUALS Not run in 36.3329 seconds
+153.153		Chose new Preset Ocean_DunesAtNight time [135.677 - 143.953] indefinite
+153.153	CHOOSING NEW CLIP 
+153.153		Chose Clip "Kyle_CH - storytelling" for topic "storytelling" (2/5)
+224.513	VISUALS Currently running "Ocean_DunesAtNight" time [135.677 - 143.953] indefinite
+224.513		Passed predicted time 143.953 - moving end time to middle of Kyle_CH - storytelling, time 191.605
+224.513	CHOOSING NEW CLIP 
+224.513		Chose Clip "Marcus - energy flow" for topic "storytelling" (3/5)
+282.451	VISUALS Not run in 90.8457 seconds
+282.451		Chose new Preset Cosmic_jm_swells2 time [254.173 - 262.449] definite
+282.451	CHOOSING NEW CLIP 
+282.451		Chose Clip "Vera - Energy Flow2" for topic "storytelling" (4/5)
+345.595	VISUALS Currently running "Cosmic_jm_swells2" time [254.173 - 262.449] definite
+345.595		Passed predicted time 262.449 - moving end time to middle of Vera - Energy Flow2, time 316.796
+345.595	CHOOSING NEW CLIP 
+345.595		Chose Clip "Lauren - toward greater consciousness" for topic "storytelling" (5/5)
+345.595			ERROR: We took a digression! Freeing topic
+345.595			Last clip in topic! Freeing topic
+379.342	VISUALS Not run in 62.5466 seconds
+379.342		Chose new Preset Satoruhiga_plasticbeast time [363.159 - 371.435] definite
+379.342	CHOOSING NEW TOPIC 3/4
+379.342		Selecting from 7 potential next topics on clip Lauren - toward greater consciousness
+379.342			Considering identity
+379.342				Score for shared topic	identity : 0
+379.342			Considering progress
+379.342				Score for shared topic	progress : 0
+379.342			Considering interconnectedness
+379.342				Score for shared topic	interconnectedness : 19.0416
+379.342			Considering utopia
+379.342				Score for shared topic	utopia : 0
+379.342			Considering zen
+379.342				Score for shared topic	zen : 13.3333
+379.342			Considering journey
+379.342				Score for shared topic	journey : 20
+379.342			Considering dreams
+379.342				Score for shared topic	dreams : 15.3846
+379.342		TOPIC journey won with score 20
+379.342		Picked new topic: JOURNEY
+379.342	CHOOSING NEW CLIP 
+379.342		Chose Clip "Karolina - Journey" for topic "journey" (1/5)
+416.419	VISUALS Currently running "Satoruhiga_plasticbeast" time [363.159 - 371.435] definite
+416.419		Passed predicted time 371.435 - moving end time to middle of Karolina - Journey, time 400.653
+416.419	CHOOSING NEW CLIP 
+416.419		Chose Clip "Shantell - create your own luck" for topic "journey" (2/5)
+456.088	VISUALS Not run in 55.4354 seconds
+456.088		ERROR Failed to find preset on current topic journey with clip Shantell - create your own luck
+456.088	CHOOSING NEW CLIP 
+456.088		Chose Clip "Theo - relating to nature" for topic "journey" (3/5)
+456.088			ERROR: We took a digression! Freeing topic
+505.184	VISUALS Not run in 104.531 seconds
+505.184		Chose new Preset Xstatic_fireflies time [481.327 - 489.602] indefinite
+505.184	CHOOSING NEW TOPIC 4/4
+505.184		going back to seed topic collaboration
+505.184		Picked new topic: COLLABORATION
+505.184	CHOOSING NEW CLIP 
+505.184		Chose Clip "Julian - mixing code" for topic "collaboration" (1/5)
+536.963	VISUALS Currently running "Xstatic_fireflies" time [481.327 - 489.602] indefinite
+536.963		Passed predicted time 489.602 - moving end time to middle of Julian - mixing code, time 523.846
+536.963	CHOOSING NEW CLIP 
+536.963		Chose Clip "Fernanda - History flow 4" for topic "collaboration" (2/5)
+554.235	VISUALS Not run in 30.3895 seconds
+554.235		ERROR Failed to find preset on current topic collaboration with clip Fernanda - History flow 4
+554.235	CHOOSING NEW CLIP 
+554.235		Chose Clip "Jer - makerthons" for topic "collaboration" (3/5)
+562.04	VISUALS Not run in 38.1938 seconds
+562.04		ERROR Failed to find preset on current topic collaboration with clip Jer - makerthons
+562.04	CHOOSING NEW CLIP 
+562.04		Chose Clip "Binx - hackathon" for topic "collaboration" (4/5)
+578.019	VISUALS Not run in 54.173 seconds
+578.019		Chose new Preset RGBDVideo_ShinyLab time [570.72 - 578.996] indefinite
+578.019	CHOOSING NEW CLIP 
+578.019		Chose Clip "JTNimoy - one of us" for topic "collaboration" (5/5)
+578.019			Last clip in topic! Freeing topic
+620.225	VISUALS Currently running "RGBDVideo_ShinyLab" time [570.72 - 578.996] indefinite
+620.225		Passed predicted time 578.996 - FREE TOPIC Extending VS end time to 640.782 past the end of JTNimoy - one of us
+640.782	ACT ENDED on clip JTNimoy - one of us explored topics 4/4 with 5 clips on final topic "collaboration"

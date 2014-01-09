@@ -219,6 +219,10 @@
 		AE6FFEFD187F403600677B60 /* libsndfile-1.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5B9575175308AD00F558AC /* libsndfile-1.lib */; };
 		AE6FFEFE187F403600677B60 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E703D15A185E808F00547738 /* libftgl.a */; };
 		AE6FFF01187F403600677B60 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		640E8D0C187E624A007BCBD7 /* CloudsInputOculus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 640E8D0B187E624A007BCBD7 /* CloudsInputOculus.cpp */; };
+		640E8D0D187E64B6007BCBD7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E442A7185E89E200CD1953 /* QuartzCore.framework */; };
+		640E8D0E187E64B6007BCBD7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E442A5185E89DD00CD1953 /* CoreMedia.framework */; };
+		640E8D0F187E64B6007BCBD7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E442A3185E89D500CD1953 /* AVFoundation.framework */; };
 		AEB14D01187DB39B00C5284D /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEB14D00187DB39B00C5284D /* ofxSystemTextbox.mm */; };
 		AEB14D02187DB39B00C5284D /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEB14D00187DB39B00C5284D /* ofxSystemTextbox.mm */; };
 		AEB14D32187DB5D300C5284D /* IpEndpointName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB14D0D187DB5D300C5284D /* IpEndpointName.cpp */; };
@@ -307,6 +311,10 @@
 		E703D21A185E81ED00547738 /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703D20F185E81ED00547738 /* Delaunay.cpp */; };
 		E703D21B185E81ED00547738 /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703D213185E81ED00547738 /* ofxDelaunay.cpp */; };
 		E703D21C185E81ED00547738 /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703D213185E81ED00547738 /* ofxDelaunay.cpp */; };
+		E7302C7E187F2C470079C5B8 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C7A187F2C470079C5B8 /* CloudsPortal.cpp */; };
+		E7302C7F187F2C470079C5B8 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C7A187F2C470079C5B8 /* CloudsPortal.cpp */; };
+		E7302C80187F2C470079C5B8 /* CloudsPortalRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C7C187F2C470079C5B8 /* CloudsPortalRing.cpp */; };
+		E7302C81187F2C470079C5B8 /* CloudsPortalRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7302C7C187F2C470079C5B8 /* CloudsPortalRing.cpp */; };
 		E73801FA183C871B0018AB96 /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7380142183C871A0018AB96 /* ofxOculusRift.cpp */; };
 		E738FF7A183C86F50018AB96 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E738FF7B183C86F50018AB96 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */; };
@@ -714,6 +722,8 @@
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
 		AE6FFF05187F403600677B60 /* PointCloudPeopleKinect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PointCloudPeopleKinect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		640E8D0A187E623A007BCBD7 /* CloudsInputOculus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputOculus.h; sourceTree = "<group>"; };
+		640E8D0B187E624A007BCBD7 /* CloudsInputOculus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputOculus.cpp; sourceTree = "<group>"; };
 		AEB14CFF187DB39B00C5284D /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
 		AEB14D00187DB39B00C5284D /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		AEB14D03187DB5BA00C5284D /* CloudsInputKinectOSC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputKinectOSC.cpp; sourceTree = "<group>"; };
@@ -857,6 +867,10 @@
 		E703D211185E81ED00547738 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E703D213185E81ED00547738 /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
 		E703D214185E81ED00547738 /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelaunay.h; sourceTree = "<group>"; };
+		E7302C7A187F2C470079C5B8 /* CloudsPortal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortal.cpp; sourceTree = "<group>"; };
+		E7302C7B187F2C470079C5B8 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortal.h; sourceTree = "<group>"; };
+		E7302C7C187F2C470079C5B8 /* CloudsPortalRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortalRing.cpp; sourceTree = "<group>"; };
+		E7302C7D187F2C470079C5B8 /* CloudsPortalRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortalRing.h; sourceTree = "<group>"; };
 		E7380142183C871A0018AB96 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		E7380143183C871A0018AB96 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		E738FFE1183C86F50018AB96 /* PointCloudPeopleOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PointCloudPeopleOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -960,6 +974,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				640E8D0D187E64B6007BCBD7 /* QuartzCore.framework in Frameworks */,
+				640E8D0E187E64B6007BCBD7 /* CoreMedia.framework in Frameworks */,
+				640E8D0F187E64B6007BCBD7 /* AVFoundation.framework in Frameworks */,
 				E738FFC5183C86F50018AB96 /* Accelerate.framework in Frameworks */,
 				E738FFC6183C86F50018AB96 /* QTKit.framework in Frameworks */,
 				E738FFC7183C86F50018AB96 /* GLUT.framework in Frameworks */,
@@ -1730,6 +1747,7 @@
 		E703D06B185E7EA800547738 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
+				E7302C79187F2C460079C5B8 /* Portal */,
 				E700BC401876A818003A8167 /* CloudsTransitionController.h */,
 				E700BC3F1876A818003A8167 /* CloudsTransitionController.cpp */,
 				E703D06D185E7EA800547738 /* CloudsCaption.h */,
@@ -1786,6 +1804,8 @@
 				AEB14D04187DB5BA00C5284D /* CloudsInputKinectOSC.h */,
 				E703D0AD185E7EB400547738 /* CloudsInputMouse.cpp */,
 				E703D0AE185E7EB400547738 /* CloudsInputMouse.h */,
+				640E8D0B187E624A007BCBD7 /* CloudsInputOculus.cpp */,
+				640E8D0A187E623A007BCBD7 /* CloudsInputOculus.h */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -1980,6 +2000,17 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E7302C79187F2C460079C5B8 /* Portal */ = {
+			isa = PBXGroup;
+			children = (
+				E7302C7A187F2C470079C5B8 /* CloudsPortal.cpp */,
+				E7302C7B187F2C470079C5B8 /* CloudsPortal.h */,
+				E7302C7C187F2C470079C5B8 /* CloudsPortalRing.cpp */,
+				E7302C7D187F2C470079C5B8 /* CloudsPortalRing.h */,
+			);
+			path = Portal;
+			sourceTree = "<group>";
+		};
 		E7380141183C871A0018AB96 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -2146,8 +2177,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "PointCloudPeople" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -2458,6 +2487,8 @@
 				E703D219185E81ED00547738 /* Delaunay.cpp in Sources */,
 				E703D21B185E81ED00547738 /* ofxDelaunay.cpp in Sources */,
 				E700BC411876A818003A8167 /* CloudsTransitionController.cpp in Sources */,
+				E7302C7E187F2C470079C5B8 /* CloudsPortal.cpp in Sources */,
+				E7302C80187F2C470079C5B8 /* CloudsPortalRing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2500,6 +2531,7 @@
 				E738FF97183C86F50018AB96 /* ofxRemoveCocoaMenu.mm in Sources */,
 				E738FF98183C86F50018AB96 /* ofxTimeline.cpp in Sources */,
 				E738FF99183C86F50018AB96 /* ofxTLAudioTrack.cpp in Sources */,
+				640E8D0C187E624A007BCBD7 /* CloudsInputOculus.cpp in Sources */,
 				E738FF9A183C86F50018AB96 /* ofxTLBangs.cpp in Sources */,
 				E738FF9B183C86F50018AB96 /* ofxTLCameraTrack.cpp in Sources */,
 				E738FF9C183C86F50018AB96 /* ofxTLColors.cpp in Sources */,
@@ -2580,6 +2612,8 @@
 				E703D21A185E81ED00547738 /* Delaunay.cpp in Sources */,
 				E703D21C185E81ED00547738 /* ofxDelaunay.cpp in Sources */,
 				E700BC421876A818003A8167 /* CloudsTransitionController.cpp in Sources */,
+				E7302C7F187F2C470079C5B8 /* CloudsPortal.cpp in Sources */,
+				E7302C81187F2C470079C5B8 /* CloudsPortalRing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3148,6 +3182,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3164,7 +3199,7 @@
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/include",
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/src/**",
 				);
-				INFOPLIST_FILE = "Empty copy-Info.plist";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3257,12 +3292,8 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/i386\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/x86_64\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux64\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
@@ -3289,6 +3320,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -3304,7 +3336,7 @@
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/include",
 					"$(OF_PATH)/addons/ofxOsc/libs/oscpack/src/**",
 				);
-				INFOPLIST_FILE = "Empty copy-Info.plist";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3397,12 +3429,8 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/i386\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/x86_64\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux64\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";

@@ -24,7 +24,7 @@ public:
     void selfSetup();
     void selfSetupGuis();
     
-    void selfAutoMode();
+	void selfSetDefaults();
     void selfUpdate();
     void selfDrawBackground();
     void selfDrawDebug();
@@ -75,7 +75,7 @@ protected:
     
     float   pointNoisePeaks;
     float   rippleThreshold;
-    
+    ofVboMesh citiesMesh;
     
     //  Flocking particles
     //
@@ -85,7 +85,7 @@ protected:
     float   initialForce;
     float   density,gravity,repulsion;
     float   turbulence,neigbordhood,independence;
-    
+
     //  Stars/constelations
     //
     void loadStarts( string _file);
@@ -102,13 +102,15 @@ protected:
     float   nMaxSatellites;
     float   blinkingAlpha;
     float   blinkingSpeed;
-    
+    //ofVboMesh satellitesMesh;
+	ofMesh linkMesh;
+	
     //  Arcs
     //
     vector<wArc>    arcs;
     float           arcsAlpha;
     float           arcsMax;
-    
+
     //  Post
     //
     ofShader    postShader;

@@ -19,8 +19,6 @@
 
 using namespace Tonic;
 
-
-
 //TODO: rename this to your own visual system
 class CloudsVisualSystemRandomDigits2 : public CloudsVisualSystem {
   public:

@@ -7,6 +7,16 @@ string CloudsVisualSystemColony::getSystemName()
 
 void CloudsVisualSystemColony::selfSetup()
 {
+    ofDirectory textureDir(getVisualSystemDataPath() + "textures");
+    textureDir.listDir();
+    //TODO: Maybe the reason you can't see anythign in texture2d is becasue you haven't disabled abrtexture?
+    vector<ofFile> fileList = textureDir.getFiles();
+    for (int i = 0 ; i < fileList.size() ; ++i){
+        ofFile& f = fileList[i];
+        string extension = f.getExtension();
+        if (extension == "png" || extension == "jpg")
+            backgroundFilenames.push_back(f.getFileName());
+    }
     
     vbo.setMode(OF_PRIMITIVE_POINTS);
     
@@ -14,11 +24,9 @@ void CloudsVisualSystemColony::selfSetup()
     ofLoadImage(sprite, getVisualSystemDataPath() + "sprites/marker_dot.png");
     ofEnableArbTex();
     
-    grunge.setCompression(OF_COMPRESS_ARB);
-    ofLoadImage(grunge, getVisualSystemDataPath() + "textures/blur_square3.png");
     
 	loadShaders();
- 
+    
     // sound
     synth.setOutputGen(buildSynth());
 }
@@ -54,6 +62,12 @@ void CloudsVisualSystemColony::selfSetDefaults(){
     
     params.maxSize_min = 3;
     params.maxSize_max = 8;
+    
+    if (backgroundFilenames.size() > 0){
+        loadTexture(backgroundFilenames[0]);
+    } else {
+        ofLog(OF_LOG_ERROR, "[Colony] no textures in texture directory");
+    }
 }
 
 void CloudsVisualSystemColony::loadShaders(){
@@ -66,13 +80,13 @@ void CloudsVisualSystemColony::loadShaders(){
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
 {
-
+    
     sysGui->addToggle("Level Set Mode", &levelSetMode);
     
     sysGui->addSpacer("Immutables");
     sysGui->addIntSlider("Initial Cells", 0, 300, &numInitialCells);
     
-   }
+}
 
 void CloudsVisualSystemColony::selfSetupGuis(){
     float length = (gui->getGlobalCanvasWidth()-gui->getWidgetSpacing()*5)/3.;
@@ -100,9 +114,6 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     guiDynamics->addRangeSlider("Max Force", 0.0, 10.0, &params.maxForce_min, &params.maxForce_max);
     guiDynamics->addRangeSlider("Max Size", 0.0, 30.0, &params.maxSize_min, &params.maxSize_max);
     
-    ofAddListener(guiDynamics->newGUIEvent, this, &CloudsVisualSystemColony::selfGuiEvent);
-    
-    
     guiLooks = new ofxUISuperCanvas("LOOK", gui);
     guiLooks->copyCanvasStyle(gui);
     guiLooks->copyCanvasProperties(gui);
@@ -115,14 +126,14 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     
     float hDim = 16;
     float vDim = 80;
-
+    
     guiLooks->addWidgetDown(new ofxUILabel("STIPPLE", OFX_UI_FONT_MEDIUM));
     guiLooks->addSlider("R", 0, 1., &(stippleColor.x), hDim, vDim);
     guiLooks->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     guiLooks->addSlider("G", 0, 1., &(stippleColor.y), hDim, vDim);
     guiLooks->addSlider("B", 0, 1., &(stippleColor.z), hDim, vDim);
     guiLooks->addSlider("A", 0, 1., &(stippleColor.w), hDim, vDim);
-
+    
     guiLooks->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     guiLooks->addSlider("Stipple Scale", 0,2, &stippleScale);
     
@@ -139,11 +150,14 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     guiLooks->addSlider("A2", 0, 1., &(kernelColor_low.w), hDim, vDim);
     guiLooks->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     guiLooks->addSlider("Shadow", 0, 1., &kernelShadowAmt);
-
-    guis.push_back(guiDynamics);
-    guis.push_back(guiLooks);
-    guimap[guiDynamics->getName()] = guiDynamics;
-    guimap[guiLooks->getName()] = guiLooks;
+    
+    guiBackground = new ofxUISuperCanvas("BACKGROUND", gui);
+    guiBackground->setName("BACKGROUND");
+    guiBackground->copyCanvasStyle(gui);
+    guiBackground->copyCanvasProperties(gui);
+    ofxUITextInput* txt = guiBackground->addTextInput("Background File", backgroundFilename);
+    txt->setAutoClear(false);
+    ofxUIDropDownList* list = guiBackground->addDropDownList("Background File Menu", backgroundFilenames);
     
     // sound
     soundGui = new ofxUISuperCanvas("COLONY Sound", gui);
@@ -156,8 +170,18 @@ void CloudsVisualSystemColony::selfSetupGuis(){
     soundGui->addToggle(soundFiles[1], &playSample[1]);
     soundGui->addToggle(soundFiles[2], &playSample[2]);
     
-	guis.push_back(soundGui);
+    guis.push_back(guiDynamics);
+    guis.push_back(guiLooks);
+    guis.push_back(soundGui);
+    guis.push_back(guiBackground);
+    
+    guimap[guiDynamics->getName()] = guiDynamics;
+    guimap[guiLooks->getName()] = guiLooks;
 	guimap[soundGui->getName()] = soundGui;
+    guimap[guiBackground->getName()] = guiBackground;
+
+    ofAddListener(guiDynamics->newGUIEvent, this, &CloudsVisualSystemColony::selfGuiEvent);
+    ofAddListener(guiBackground->newGUIEvent, this, &CloudsVisualSystemColony::selfGuiEvent);
     ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemColony::selfGuiEvent);
 }
 
@@ -217,14 +241,14 @@ void CloudsVisualSystemColony::selfUpdate()
         
         billboard.begin();
         sprite.bind();
-
+        
         billboard.setUniform3fv("light", (*(*lights.begin()).second).light.getPosition().getPtr());
         billboard.setUniform1f("kernelMaxValue", kernelMaxValue);
         vbo.draw();
         
         sprite.unbind();
         billboard.end();
-
+        
         ofDisableBlendMode();
         ofDisablePointSprites();
         ofPopStyle();
@@ -265,30 +289,30 @@ void CloudsVisualSystemColony::selfDrawBackground()
     }
     
     //FIXME: This is a safety check if FBOs are not allocated, in order to avoid calling an empty one
-
-        ofEnableAlphaBlending();
-        
-        levelSet.begin();
-        levelSet.setUniformTexture("grunge", grunge, 1);
-        levelSet.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
-        levelSet.setUniform1i("levelSet", levelSetMode);
-        levelSet.setUniform1i("levelSetBg", levelSetBG);
-        levelSet.setUniform1f("levelSetShadowAmt", levelSetShadowAmt);
-        levelSet.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
-        levelSet.setUniform2f("imgRes", grunge.getWidth(), grunge.getHeight());
-        levelSet.setUniform1f("translucenseCell", translucenseCell);
-        levelSet.setUniform1f("translucenseDish", translucenseDish);
-        levelSet.setUniform4fv("kernelColor_high", kernelColor_high.getPtr());
-        levelSet.setUniform4fv("kernelColor_low", kernelColor_low.getPtr());
-        levelSet.setUniform1f("kernelShadowAmt", kernelShadowAmt);
-        levelSet.setUniform1f("kernelMaxValue", kernelMaxValue);
-        
-        ofxLight& l = (*(*lights.begin()).second);
-        levelSet.setUniform3fv("lightDirection", l.lightPos.getPtr());
-        levelSet.setUniform3f("lightColor", l.lightSpecularHSV.r,l.lightSpecularHSV.g,l.lightSpecularHSV.b);
-        
-        levelSet.setUniform1f("stippleScale", stippleScale);
-        levelSet.setUniform4fv("stippleColor", stippleColor.getPtr());
+    
+    ofEnableAlphaBlending();
+    
+    levelSet.begin();
+    levelSet.setUniformTexture("grunge", backgroundTexture, 1);
+    levelSet.setUniform1f("time", ofGetElapsedTimeMillis()/100.0);
+    levelSet.setUniform1i("levelSet", levelSetMode);
+    levelSet.setUniform1i("levelSetBg", levelSetBG);
+    levelSet.setUniform1f("levelSetShadowAmt", levelSetShadowAmt);
+    levelSet.setUniform2f("resolution", getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
+    levelSet.setUniform2f("imgRes", backgroundTexture.getWidth(), backgroundTexture.getHeight());
+    levelSet.setUniform1f("translucenseCell", translucenseCell);
+    levelSet.setUniform1f("translucenseDish", translucenseDish);
+    levelSet.setUniform4fv("kernelColor_high", kernelColor_high.getPtr());
+    levelSet.setUniform4fv("kernelColor_low", kernelColor_low.getPtr());
+    levelSet.setUniform1f("kernelShadowAmt", kernelShadowAmt);
+    levelSet.setUniform1f("kernelMaxValue", kernelMaxValue);
+    
+    ofxLight& l = (*(*lights.begin()).second);
+    levelSet.setUniform3fv("lightDirection", l.lightPos.getPtr());
+    levelSet.setUniform3f("lightColor", l.lightSpecularHSV.r,l.lightSpecularHSV.g,l.lightSpecularHSV.b);
+    
+    levelSet.setUniform1f("stippleScale", stippleScale);
+    levelSet.setUniform4fv("stippleColor", stippleColor.getPtr());
     
     if (areFbosAllocatedAndSized()){
         fbo_main.draw(0, 0, getSharedRenderTarget().getWidth(),
@@ -297,12 +321,12 @@ void CloudsVisualSystemColony::selfDrawBackground()
         ofRect(0, 0, getSharedRenderTarget().getWidth(), getSharedRenderTarget().getHeight());
         ofLog(OF_LOG_ERROR, "Colony : selfDrawBackground() being called before fbos were allocated. Drawing empty background instead");
     };
-        levelSet.end();
+    levelSet.end();
     
 }
 
 void CloudsVisualSystemColony::selfDraw(){
-
+    
 }
 
 
@@ -313,7 +337,7 @@ void CloudsVisualSystemColony::updateFoodTexture(){
 void CloudsVisualSystemColony::selfBegin()
 {
     populate();
-
+    
     // sound
     ofAddListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemColony::audioRequested);
     
@@ -328,7 +352,7 @@ void CloudsVisualSystemColony::selfBegin()
 void CloudsVisualSystemColony::selfEnd()
 {
     clear();
-
+    
     // sound
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemColony::audioRequested);
 }
@@ -346,6 +370,7 @@ void CloudsVisualSystemColony::selfPresetLoaded(string presetPath){
     clear();
     //TODO: use timeline->getCurrentTimeXX()
     populate();
+    loadTextureAndUpdateUI(backgroundFilename);
 }
 
 void CloudsVisualSystemColony::clear(){
@@ -369,10 +394,25 @@ bool CloudsVisualSystemColony::areFbosAllocatedAndSized(){
     && fbo_main.getHeight() == getSharedRenderTarget().getHeight();
 }
 
+void CloudsVisualSystemColony::loadTexture(string s){
+    backgroundTexture.setCompression(OF_COMPRESS_ARB);
+    ofLoadImage(backgroundTexture, getVisualSystemDataPath() + "textures/" + s);
+}
+
+void CloudsVisualSystemColony::loadTextureAndUpdateUI(string s){
+    ofxUICanvas * c = guimap["BACKGROUND"];
+    ofxUITextInput * textInput = (ofxUITextInput *) c->getWidget("Background File");
+    if (textInput != NULL){
+        textInput->setTextString(backgroundFilename);
+    }
+    loadTexture(backgroundFilename);
+}
+
+
 void CloudsVisualSystemColony::reallocateFramebuffers(){
     int w = getSharedRenderTarget().getWidth();
     int h = getSharedRenderTarget().getHeight();
-
+    
     fbo_main.allocate(w,h,GL_RGBA);
     
     fbo_main.begin();
@@ -393,7 +433,7 @@ void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){
 }
 
 void CloudsVisualSystemColony::selfDrawDebug(){
-
+    
 }
 void CloudsVisualSystemColony::selfSceneTransformation(){}
 void CloudsVisualSystemColony::selfKeyReleased(ofKeyEventArgs & args){}
@@ -404,16 +444,30 @@ void CloudsVisualSystemColony::mouseReleased(ofMouseEventArgs &args){}
 void CloudsVisualSystemColony::selfSetupGui(){}
 void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e)
 {
-    for (int i=0; i<3; i++)
-    {
-        if (e.widget->getName() == soundFiles[i]) {
-            ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
-            playSample[i] = toggle->getValue();
-            if (toggle->getValue() == true) {
-                soundTriggers[i].trigger();
+
+    string parent = (e.widget->getParent())->getName();
+    
+    if (parent == "COLONY Sound"){
+        for (int i=0; i<3; i++)
+        {
+            if (e.widget->getName() == soundFiles[i]) {
+                ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
+                playSample[i] = toggle->getValue();
+                if (toggle->getValue() == true) {
+                    soundTriggers[i].trigger();
+                }
             }
         }
     }
+    if (parent == "Background File Menu"){
+        backgroundFilename = e.getName();
+        loadTextureAndUpdateUI(backgroundFilename);
+    }
+    if (e.getName() == "Background File"){
+        ofxUITextInput *textinput = (ofxUITextInput *) e.widget;
+        loadTexture(textinput->getTextString());
+    }
+    
 }
 
 Generator CloudsVisualSystemColony::buildSynth()
