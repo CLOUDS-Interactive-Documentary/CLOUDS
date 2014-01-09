@@ -43,11 +43,11 @@ void testApp::draw(){
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 	if(key == 'O'){
-		rgbd.StopEditTransitionMode();
+		rgbd.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
 		transitionController.transitionToVisualSystem(1.0, 1.0);
 	}
 	if(key == 'I'){
-		rgbd.StopEditTransitionMode();
+		rgbd.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
 		transitionController.transitionToInterview(1.0, 1.0);
 	}
 }

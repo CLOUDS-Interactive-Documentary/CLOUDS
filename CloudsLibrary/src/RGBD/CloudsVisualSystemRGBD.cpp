@@ -489,7 +489,7 @@ void CloudsVisualSystemRGBD::resetTransitionNodes()
 	transitionOutLeft.resetTransform();
 	transitionOutRight.resetTransform();
 	
-	ofVec3f offset(0,0,-200);
+	ofVec3f offset(0,-50,-150);
 	
 	transitionInStart.rotate(180, 0, 1, 0);
 	transitionOutLeft.rotate(180, 0, 1, 0);
@@ -724,7 +724,7 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 	t->addButton("DriveIn", false )->setColorBack(ofColor(0,155,155));
 	t->addButton("DriveOutLeft", false )->setColorBack(ofColor(155,155,0));
 	t->addButton("DriveOutRight", false )->setColorBack(ofColor(155,0,155));
-	t->addToggle("resetNodes", &bResetLookThoughs );
+	t->addButton("resetNodes", &bResetLookThoughs );
 	
 	//saving & edit
 	t->addSpacer();
@@ -887,7 +887,8 @@ void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionTyp
 {
 	cout << "startTransitionOut(RGBDTransitionType transitionType)" << endl;
 	
-	transitionEase = ofxTween::easeOut;
+	//transitionEase = ofxTween::easeOut;
+	transitionEase = ofxTween::easeIn;
 	transitioning = true;
 	
 	cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
@@ -898,7 +899,8 @@ void CloudsVisualSystemRGBD::startTransitionIn(RGBDTransitionType transitionType
 {
 	cout << "startTransitionIn(RGBDTransitionType transitionType)" << endl;
 	
-	transitionEase = ofxTween::easeIn;
+	//transitionEase = ofxTween::easeIn;
+	transitionEase = ofxTween::easeOut;
 	transitioning = true;
 	
 	cloudsCamera.setTransitionStartNode( &transitionInStart );
