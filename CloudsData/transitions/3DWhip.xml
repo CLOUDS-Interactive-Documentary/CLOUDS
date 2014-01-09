@@ -1,5 +1,6 @@
-<TRANSITION>
+<OPTION>
     <Name>2D</Name>
+    <TransitionType>2D</TransitionType>
     <InStartPos>
         <x>0</x>
         <y>0</y>
@@ -22,8 +23,8 @@
         <z>0</z>
         <w>-4.37114e-08</w>
     </OutTargetQuat>
-</TRANSITION>
-<TRANSITION>
+</OPTION>
+<OPTION>
     <Name>3DFlyThrough</Name>
     <InStartPos>
         <x>0</x>
@@ -47,8 +48,8 @@
         <z>0</z>
         <w>1</w>
     </OutTargetQuat>
-</TRANSITION>
-<TRANSITION>
+</OPTION>
+<OPTION>
     <Name>3DWhipPan</Name>
     <InStartPos>
         <x>0</x>
@@ -72,8 +73,8 @@
         <z>0</z>
         <w>1</w>
     </OutTargetQuat>
-</TRANSITION>
-<TRANSITION>
+</OPTION>
+<OPTION>
     <Name>FLY_OVER_RIGHT_SHOULDER</Name>
     <InStartPos>
         <x>0</x>
@@ -97,8 +98,8 @@
         <z>0</z>
         <w>1</w>
     </OutTargetQuat>
-</TRANSITION>
-<TRANSITION>
+</OPTION>
+<OPTION>
     <Name>origin</Name>
     <InStartPos>
         <x>0</x>
@@ -122,4 +123,4 @@
         <z>0</z>
         <w>1</w>
     </OutTargetQuat>
-</TRANSITION>
+</OPTION>

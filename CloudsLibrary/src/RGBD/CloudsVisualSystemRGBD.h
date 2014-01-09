@@ -15,8 +15,8 @@ struct TransitionInfo{
 	ofVec3f outTargetPos;
 	ofQuaternion inStartQuat;
 	ofQuaternion outTargetQuat;
-	string name;
-	string transitionType;
+	string optionName;
+	string transitionName;
 };
 
 class CloudsVisualSystemRGBD : public CloudsVisualSystem {
@@ -118,20 +118,33 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	ofVec3f bottomRight;
 	
-	void loadTransitionSettings(string filename = "Transitions");
-	void saveTransitionSettings(string _transitionType,string _transitionOptionName);
+	void loadTransitionOptions(string filename );
+	void saveTransitionSettings(string filename = "Transitions");
 	void setTransitionNodes( string transitionName );
 	void updateTransition();
 	void updateTransitionGui();
-
+	
+	void addTransitionGui(string guiName);
+	void clearTransitionMap();
+	
+	void addTransionEditorsToGui();
+	void setTransitionNodes( string type, string option );
+	
+	//TODO: delete this
+	void tester(string s){	cout<<"tester: " + s<<endl;}
 
   protected:
 	
 	ofxUISuperCanvas *transitionEditorGui;
 	map< string, TransitionInfo> transitionOptionMap;
 	map<string, string> transitionTypes;
+	
+	map<string, map<string, TransitionInfo> > transitionMap;
+	map<string, ofxUISuperCanvas*> transitionsGuis;
+	bool bTransitionsAddedToGui;
+	
 	string currentTransitionType;
-
+	
 	ofxUISuperCanvas *globalMeshGui;
 	bool drawRGBD;
 	float edgeAttenuate;

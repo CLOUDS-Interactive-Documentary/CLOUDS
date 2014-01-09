@@ -11,7 +11,9 @@ void testApp::setup(){
 	ofSetLogLevel(OF_LOG_NOTICE);
 	
 	rgbd.setup();
+	//rgbd.addTransionEditorsToGui();
 	rgbd.playSystem();
+	
 	
 	type = CloudsVisualSystem::FLY_THROUGH;
 }

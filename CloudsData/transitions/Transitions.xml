@@ -1,0 +1,38 @@
+<TRANSITION_TYPE>
+    <INDEX>0</INDEX>
+    <NAME>2D</NAME>
+</TRANSITION_TYPE>
+<TRANSITION_TYPE>
+    <INDEX>1</INDEX>
+    <NAME>3DFlyThrough</NAME>
+    <OPTION>
+        <INDEX>0</INDEX>
+        <NAME>option name</NAME>
+        <InStartPos>
+            <x>-265.309</x>
+            <y>-164.929</y>
+            <z>-708.49</z>
+        </InStartPos>
+        <OutTargetPos>
+            <x>346.028</x>
+            <y>-39.4017</y>
+            <z>1068.43</z>
+        </OutTargetPos>
+        <InStartQuat>
+            <x>0.0131112</x>
+            <y>-0.988114</y>
+            <z>0.0440076</z>
+            <w>0.146708</w>
+        </InStartQuat>
+        <OutTargetQuat>
+            <x>-0.0473552</x>
+            <y>-0.984639</y>
+            <z>0.0247163</z>
+            <w>0.166234</w>
+        </OutTargetQuat>
+    </OPTION>
+</TRANSITION_TYPE>
+<TRANSITION_TYPE>
+    <INDEX>2</INDEX>
+    <NAME>3DWhipPan</NAME>
+</TRANSITION_TYPE>
