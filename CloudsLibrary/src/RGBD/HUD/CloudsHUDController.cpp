@@ -50,7 +50,7 @@ void CloudsHUDController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 }
 
 void CloudsHUDController::questionAsked(CloudsQuestionEventArgs& args){
-    populateQuestion( args.question, true);
+//    populateQuestion( args.question, true);
 }
 
 void CloudsHUDController::topicChanged(CloudsTopicEventArgs& args){
