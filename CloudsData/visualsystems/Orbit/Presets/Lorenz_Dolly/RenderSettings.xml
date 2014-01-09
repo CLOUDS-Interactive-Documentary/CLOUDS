@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>72.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -31,9 +31,9 @@
     <Value>1</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>44</Kind>
     <Name>maxLineLength</Name>
-    <Value>1239.064086914</Value>
+    <Value>1239</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -46,14 +46,20 @@
     <Value>2.537930965</Value>
 </Widget>
 <Widget>
+    <Kind>6</Kind>
+    <Name>hueRange</Name>
+    <HighValue>1.000000000</HighValue>
+    <LowValue>0.561576366</LowValue>
+</Widget>
+<Widget>
     <Kind>2</Kind>
     <Name>drawMesh</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>44</Kind>
     <Name>maxMeshLength</Name>
-    <Value>231.231521606</Value>
+    <Value>231</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
