@@ -129,7 +129,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	bBarGradient = false;
     bMatchBackgrounds = false;
 	bIs2D = false;
-	bDrawCursor = true;
+	drawCursorMode = DRAW_CURSOR_NONE;
 	updateCyclced = false;
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
@@ -1033,6 +1033,12 @@ void CloudsVisualSystem::setupGui()
     gui->addWidgetNorthOf(loadbtn, "RENDER", true);
     gui->setPlacer(updatebtn);
     gui->addSpacer();
+    vector<string> cursorModeNames;
+    cursorModeNames.push_back("NO CURSOR");
+    cursorModeNames.push_back("PRIMARY CURSOR");
+    cursorModeNames.push_back("ALL CURSORS");
+    gui->addRadio("CURSOR MODES", cursorModeNames)->activateToggle(cursorModeNames[DRAW_CURSOR_NONE]);
+    gui->addSpacer();
     selfSetupGui();
     gui->autoSizeToFitWidgets();
 
@@ -1125,6 +1131,31 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
                 loadGUIS();
             }
             
+        }
+    }
+
+    else if(name == "NO CURSOR")
+    {
+        ofxUIButton *b = (ofxUIButton *) e.widget;
+        if(b->getValue())
+        {
+            drawCursorMode = DRAW_CURSOR_NONE;
+        }
+    }
+    else if(name == "PRIMARY CURSOR")
+    {
+        ofxUIButton *b = (ofxUIButton *) e.widget;
+        if(b->getValue())
+        {
+            drawCursorMode = DRAW_CURSOR_PRIMARY;
+        }
+    }
+    else if(name == "ALL CURSORS")
+    {
+        ofxUIButton *b = (ofxUIButton *) e.widget;
+        if(b->getValue())
+        {
+            drawCursorMode = DRAW_CURSOR_ALL;
         }
     }
 	
@@ -3092,13 +3123,16 @@ void CloudsVisualSystem::selfPostDraw(){
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
     
-	//TODO REPLACE WITH REAL CURSOR SYSTEM
-    if(bDrawCursor){
+    if(drawCursorMode > DRAW_CURSOR_NONE){
         ofPushMatrix();
         ofPushStyle();
         ofSetLineWidth(2);
         map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
         for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
+            if (drawCursorMode == DRAW_CURSOR_PRIMARY && !it->second.primary) {
+                continue;
+            }
+            
             //	ofNoFill();
             //	ofSetColor(255, 50);
             //	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
