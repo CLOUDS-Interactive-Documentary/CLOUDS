@@ -538,7 +538,7 @@ void CloudsVisualSystem::drawScene(){
 	
 
 #ifdef OCULUS_RIFT
-	if(bDrawCursor){
+	if(drawCursorMode > DRAW_CURSOR_NONE){
 		ofPushMatrix();
 		ofPushStyle();
 		oculusRift.multBillboardMatrix();
