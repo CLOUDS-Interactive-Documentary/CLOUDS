@@ -47,7 +47,7 @@ class CloudsVisualSystemVoro : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
     
-    void billBoard();
+//    void billBoard();
     
 protected:
     vector<VoroParticle *> seedParticles;

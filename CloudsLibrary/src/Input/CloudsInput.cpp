@@ -122,6 +122,7 @@ float GetCloudsInputZ(){
 ofVec3f GetCloudsInputPosition(){
 	return GetCloudsInput()->getPosition();
 }
+
 map<int, CloudsInteractionEventArgs>& GetCloudsInputPoints(){
     return GetCloudsInput()->getInputPoints();
 }
