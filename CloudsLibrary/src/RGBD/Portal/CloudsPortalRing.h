@@ -31,7 +31,7 @@ class CloudsPortalRing {
 	
 	//updated by update function in CloudsPortal;
 	float hoverPercentComplete;
-	
+
   protected:
 	vector<PortalShard> shards;
 	void addVertsAtAngle(PortalShard& shard, float angle, float segmentPercent, bool endCap = false);

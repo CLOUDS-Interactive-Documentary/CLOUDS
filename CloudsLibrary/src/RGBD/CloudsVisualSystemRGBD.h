@@ -2,12 +2,12 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
+#include "CloudsPortal.h"
 //#include "ParticleConnectionGenerator.h"
 //#include "CloudsCaption.h"
 #include "CloudsQuestion.h"
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
-#include "ofxDelaunay.h"
 #include "ofxFTGL.h"
 
 struct TransitionInfo{
@@ -51,14 +51,15 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     
 	void speakerChanged();
 	
-	void addFakeQuestion(vector<string> testPngFilePaths);
+	//TODO REMOVE
+	void addFakeQuestion(vector<string> testPngFilePaths){}
 	void addQuestion(CloudsClip& q,string topic, string question);
     void setSelectedQuestion();
 
     void clearQuestions();
     bool isQuestionSelectedAndClipDone();
 	bool isQuestionSelected();
-    CloudsQuestion* getSelectedQuestion();
+    CloudsPortal* getSelectedQuestion();
     
 //    ofxFTGLFont captionFont;
 //    void rebuildCaptionFont();
@@ -84,7 +85,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float visualSystemFadeValue;
 	
 	ofCamera& getCameraRef(){
-//		if(currentCamera != NULL)	return  *currentCamera;
 		if(placingTransitionNodes){
 			return transitionCam;
 		}
@@ -218,10 +218,24 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	void updateQuestions();
 	void drawQuestions();
+
+	float portalScale;
+	float portalTugMaxDistance;
+	float portalTugMinDistance;
+	float distanceToQuestion;
+
 	
-	vector<CloudsQuestion*> questions;
-	CloudsQuestion* caughtQuestion;
-    CloudsQuestion* selectedQuestion;
+	bool bPortalDebugOn;
+	ofVec3f portalBaseHover;
+	CloudsPortal leftPortal;
+	CloudsPortal rightPortal;
+	
+//	void addPortalPositionParams(CloudsPortal& portal, string side);
+	
+	vector<CloudsPortal*> portals;
+	CloudsPortal* caughtPortal;
+    CloudsPortal* selectedPortal;
+
 	ofVec4f pointColor;
 	
 	bool placingTransitionNodes;

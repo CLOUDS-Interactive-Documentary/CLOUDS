@@ -69,6 +69,9 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	meshForceGeoRectraction = .0;
 	
 	
+	caughtPortal = NULL;
+	selectedPortal = NULL;
+	
 	//transition editing
 	placingTransitionNodes = false;
 	bSaveTransition = false;
@@ -81,9 +84,22 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 }
 
 //--------------------------------------------------------------
-void CloudsVisualSystemRGBD::selfSetup()
-{
+void CloudsVisualSystemRGBD::selfSetup(){
+	
+	portals.push_back(&leftPortal);
+	portals.push_back(&rightPortal);
+	
+	leftPortal.setup();
+	rightPortal.setup();
+	
+	leftPortal.cam = &cloudsCamera;
+	rightPortal.cam = &cloudsCamera;
+	
+	leftPortal.bLookAtCamera = true;
+	rightPortal.bLookAtCamera = true;
+	
 	transitionEditorGui = NULL;
+
 	loadShader();
 	
 	generateLines();
@@ -330,47 +346,33 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     questionGui->copyCanvasProperties(gui);
     questionGui->setName("Questions");
     questionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	//center point, max drift
-	//questionGui->add2DPad("XZ",	ofVec3f(0, -400), ofVec3f(-200, 200), &questionXZ);
-	questionGui->addSlider("Position X", 0, -400, &questionXZ.x);
-	questionGui->addSlider("Position Z", -200, 200, &questionXZ.z);
-	questionGui->addSlider("Drift Range", 40, 200, &questionDriftRange);
-	questionGui->addSlider("Y Range", 40, 200, &questionYRange);
-	questionGui->addSlider("Y Start", -50, 50, &questionYCenter);
-	
-	questionGui->addSlider("Base Color H", 0, 1., &questionBaseHSB.r);
-	questionGui->addSlider("Base Color S", 0, 1., &questionBaseHSB.g);
-	questionGui->addSlider("Base Color B", 0, 1., &questionBaseHSB.b);
-	
-	questionGui->addSlider("Hover Color H", 0, 1., &questionHoverHSB.r);
-	questionGui->addSlider("Hover Color S", 0, 1., &questionHoverHSB.g);
-	questionGui->addSlider("Hover Color B", 0, 1., &questionHoverHSB.b);
 
-	CloudsQuestion::addQuestionVariables( questionGui );
+	questionGui->addToggle("DEBUG PORTALS", &bPortalDebugOn);
+	questionGui->addSlider("PORTAL SCALE", .01, .5, &portalScale);
+	
+	questionGui->addSlider("HOVER X",    0, 500, &portalBaseHover.x);
+	questionGui->addSlider("HOVER Y", -500, 500, &portalBaseHover.y);
+	questionGui->addSlider("HOVER Z",    -200, 200, &portalBaseHover.z);
+	//in pixels
+	questionGui->addRangeSlider("PORTAL SELECT DISTANCE", 20, 200,
+								&portalTugMinDistance, &portalTugMaxDistance);
+
 	
 	guis.push_back(questionGui);
 	guimap[meshGui->getName()] = questionGui;
 	
-	//this is here becuase it needs to be loaded to add the transitions to the gui before setup(if we want)
-	loadTransitionOptions( "Transitions" );
-	addTransionEditorsToGui();
+	//JG: Lars why is this NULL? where do you assign this?
+	if(transitionEditorGui != NULL){
+	
+		//this is here becuase it needs to be loaded to add the transitions to the gui before setup(if we want)
+		loadTransitionOptions( "Transitions" );
+		addTransionEditorsToGui();
 	
 	
-//	connectorGui = new ofxUISuperCanvas("CONNECTORS", gui);
-//	connectorGui->copyCanvasStyle(gui);
-//	connectorGui->copyCanvasProperties(gui);
-//	connectorGui->setName("connectors");
-//	connectorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-//	connectorGui->addSlider("Num Particles", 50, 64*64, &generator.numParticles);
-//	connectorGui->addToggle("Draw Connections", &generator.drawConnections);
-//	connectorGui->addSlider("Min Connection Distance", 1, 100, &generator.minDistance);
-//	connectorGui->addSlider("Boundary Size", 100, 1000, &generator.boundarySize);
-//	connectorGui->addSlider("Max Connections", 1, 10, &generator.maxConnections);
-	
-//	guis.push_back(connectorGui);
-//	guimap[connectorGui->getName()] = connectorGui;
+		guis.push_back(transitionEditorGui);
+		guimap[transitionEditorGui->getName()] = transitionEditorGui;
+		ofAddListener(transitionEditorGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
+	}
 }
 
 void CloudsVisualSystemRGBD::updateTransitionGui()
@@ -479,7 +481,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 
 	}
 	else{
-		cloudsCamera.driftNoiseSpeed = caughtQuestion ? 0 : attenuatedCameraDrift;
+		cloudsCamera.driftNoiseSpeed = caughtPortal ? 0 : attenuatedCameraDrift;
 	}
 	
 	
@@ -771,30 +773,10 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 }
 
 //--------------------------------------------------------------
-void CloudsVisualSystemRGBD::addFakeQuestion(vector<string> testPngFilePaths){
-	CloudsQuestion* q = new CloudsQuestion();
-	q->cam = &cloudsCamera;
-	q->font = &displayFont;
-	q->topic = "no topic";
-	q->question = testPngFilePaths[0];
-	q->testFiles = testPngFilePaths;
-	
-	ofVec3f startPosition = ofVec3f(questionXZ.x, questionYCenter, questionXZ.z)
-	+ ofVec3f(ofRandom(-questionDriftRange,questionDriftRange),
-			  ofRandom(-questionYRange,questionYRange),
-			  ofRandom(-questionDriftRange,questionDriftRange));
-	
-	q->position = translatedHeadPosition + startPosition;
-	q->birthTime = ofGetElapsedTimef();
-	
-	q->setup();
-	
-	questions.push_back(q);
-}
-
-//--------------------------------------------------------------
 void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic, string question){
-	
+
+	/*
+	 //TODO RE ADD
 	for(int i = 0; i < questions.size(); i++){
 		if(questionClip.getID() == questions[i]->clip.getID()){
 			//don't add duplicate questions
@@ -821,79 +803,121 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic,
 	q->birthTime = ofGetElapsedTimef();
 	
 	q->setup();
+	*/
 	
-	questions.push_back(q);
+//	questions.push_back(q);
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::updateQuestions(){
-
-	for(int i = questions.size()-1; i >= 0; i--){
 	
-		questions[i]->update();
+	leftPortal.hoverPosition  = portalBaseHover + translatedHeadPosition;
+	rightPortal.hoverPosition = portalBaseHover*ofVec3f(-1,0,0) + translatedHeadPosition;
+
+	leftPortal.scale = portalScale;
+	rightPortal.scale = portalScale;
+	leftPortal.lookTarget = cloudsCamera.getPosition();
+	rightPortal.lookTarget = cloudsCamera.getPosition();
+
+	for(int i = 0; i < portals.size(); i++){
 		
-        if(selectedQuestion == NULL && questions[i]->isSelected() && GetCloudsInputPressed()){
-            selectedQuestion = questions[i];
-			selectedQuestion->lockHover = true;
+		portals[i]->update();
+		
+		#ifdef OCULUS_RIFT
+		ofVec3f screenPos = getOculusRift().worldToScreen(startQuestions[i].hoverPosition, true);
+		float distanceToQuestion = ofDist(screenPos.x, screenPos.y,
+										  viewport.getCenter().x, viewport.getCenter().y);
+		#else
+		ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
+		float distanceToQuestion = portals[i]->screenPosition.distance(mouseNode);
+		#endif
+		
+		if(caughtPortal == NULL){
+			if( distanceToQuestion < portalTugMaxDistance) {
+				if(distanceToQuestion < portalTugMinDistance) {
+					caughtPortal = portals[i];
+					caughtPortal->startHovering();
+				}
+			}
+		}
+		//we have a caught question make sure it's still close
+		else if(caughtPortal == portals[i]){
+			//we went over the timer distance! zoooom!!!
+			if(caughtPortal->isSelected() ){
+				selectedPortal = caughtPortal;
+			}
+			//let it go
+			else if(distanceToQuestion > portalTugMaxDistance){
+				caughtPortal->stopHovering();
+				caughtPortal = NULL;
+			}
+		}
+	}
+		/*
+        if( selectedPortal == NULL && portals[i]->isSelected() ){
+            selectedPortal = portals[i];
+//			selectedPortal->lockHover = true;
 			break;
         }
 
-		if(caughtQuestion == NULL){
-			questions[i]->enableHover();
+		if(caughtPortal == NULL){
+			portals[i]->enableHover();
 		
 			if(questions[i]->hovering){
-				caughtQuestion = questions[i];
+				caughtPortal = portals[i];
 			}
 		}
 		
-		if(caughtQuestion != NULL) {
-			if(questions[i] == caughtQuestion){
-				if(!caughtQuestion->hovering){
-					caughtQuestion = NULL;
+		if(caughtPortal != NULL) {
+			if(portals[i] == caughtPortal){
+				if(!caughtPortal->hovering){
+					caughtPortal = NULL;
 				}
 			}
 			else {
-				questions[i]->disableHover();
+				portals[i]->disableHover();
 			}
 		}
-	}
-	
-	if(selectedQuestion != NULL){
-		for(int i = questions.size()-1; i >= 0; i--){
-			if(selectedQuestion != questions[i]){
-				if(!questions[i]->isDestroyed){
-					questions[i]->destroy();
-				}
-				else if(questions[i]->destroyFadeoutTime < ofGetElapsedTimef()){
-					delete questions[i];
-					questions.erase(questions.begin() + i);
-				}
-			}
-		}
-	}
+		 */
+//	}
+
+	//TODO reconsider destroying portals
+//	if(selectedPortal != NULL){
+//		for(int i = questions.size()-1; i >= 0; i--){
+//			if(selectedQuestion != questions[i]){
+//				if(!questions[i]->isDestroyed){
+//					questions[i]->destroy();
+//				}
+//				else if(questions[i]->destroyFadeoutTime < ofGetElapsedTimef()){
+//					delete questions[i];
+//					questions.erase(questions.begin() + i);
+//				}
+//			}
+//		}
+//	}
 }
 
 void CloudsVisualSystemRGBD::setSelectedQuestion(){
 
-    if(questions.size() > 0){
-        selectedQuestion = questions[0];
-    }
-    else{
-        cout << "No questions!" << endl;
-    }
+//    if(questions.size() > 0){
+//        selectedQuestion = questions[0];
+//    }
+//    else{
+//        cout << "No questions!" << endl;
+//    }
 }
 
 void CloudsVisualSystemRGBD::clearQuestions(){
 	
 //	cout << "Clearing questions!" << endl;
 	
-    selectedQuestion = NULL;
-	caughtQuestion = NULL;
-    for (int i = 0; i<questions.size(); i++) {
-        delete questions[i];
-    }
-    questions.clear();
-
+//    selectedQuestion = NULL;
+//	caughtQuestion = NULL;
+//    for (int i = 0; i<questions.size(); i++) {
+//        delete questions[i];
+//    }
+//    questions.clear();
+//
 }
 
 
@@ -1196,9 +1220,10 @@ void CloudsVisualSystemRGBD::selfDrawDebug(){
 	ofPushStyle();
 	ofPushMatrix();
 	
-	for(int i = 0; i < questions.size(); i++){
-		ofBox( questions[i]->position, 3);
-	}
+//	for(int i = 0; i < questions.size(); i++){
+//		ofBox( questions[i]->position, 3);
+//	}
+	
 	ofNoFill();
 	ofTranslate(questionXZ.x, questionYCenter, questionXZ.y);
 	ofRotate(90, 1, 0, 0);
@@ -1219,8 +1244,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glDisable(GL_LIGHTING);
 	
-
-
 	if(!getRGBDVideoPlayer().playingVO && getRGBDVideoPlayer().getPlayer().isLoaded() && drawRGBD){
 		
 		//Enable smooth lines and screen blending
@@ -1478,27 +1501,36 @@ void CloudsVisualSystemRGBD::selfDraw(){
 }
 
 void CloudsVisualSystemRGBD::drawQuestions(){
-	//TODO parameterize stuff
-	glPointSize(3);
 
-	CloudsQuestion::startShader();
-	CloudsQuestion::shader.setUniform1f("attenuateFade", 0.0);
-	ofFloatColor baseColor  = ofFloatColor::fromHsb(questionBaseHSB.r, questionBaseHSB.g, questionBaseHSB.b);
-	ofFloatColor hoverColor = ofFloatColor::fromHsb(questionHoverHSB.r, questionHoverHSB.g, questionHoverHSB.b);
-	CloudsQuestion::shader.setUniform4f("color",baseColor.r,baseColor.g,baseColor.b,.7);
-	CloudsQuestion::shader.setUniform4f("selectedColor",hoverColor.r,hoverColor.g,hoverColor.b,.7);
-	for(int i = 0; i < questions.size(); i++){
-		questions[i]->draw();
-	}
-	CloudsQuestion::endShader();
-	glPointSize(1);
+
+	glDisable(GL_DEPTH_TEST);
+	CloudsPortal::shader.begin();
+    ofSetColor(255);
+	leftPortal.draw();
+	rightPortal.draw();
+	CloudsPortal::shader.end();
+	
+	glEnable(GL_DEPTH_TEST);
+
+//	CloudsQuestion::startShader();
+//	CloudsQuestion::shader.setUniform1f("attenuateFade", 0.0);
+//	ofFloatColor baseColor  = ofFloatColor::fromHsb(questionBaseHSB.r, questionBaseHSB.g, questionBaseHSB.b);
+//	ofFloatColor hoverColor = ofFloatColor::fromHsb(questionHoverHSB.r, questionHoverHSB.g, questionHoverHSB.b);
+//	CloudsQuestion::shader.setUniform4f("color",baseColor.r,baseColor.g,baseColor.b,.7);
+//	CloudsQuestion::shader.setUniform4f("selectedColor",hoverColor.r,hoverColor.g,hoverColor.b,.7);
+//	for(int i = 0; i < questions.size(); i++){
+//		questions[i]->draw();
+//	}
+//	CloudsQuestion::endShader();
+//	glPointSize(1);
 }
 
 void CloudsVisualSystemRGBD::selfDrawOverlay() {
 	ofPushStyle();
-	for(int i = 0; i < questions.size(); i++){
-		questions[i]->drawOverlay();
-	}
+	
+//	for(int i = 0; i < questions.size(); i++){
+//		questions[i]->drawOverlay();
+//	}
     
 	//This will be replaced with the HUD
 //    cloudsCaption.drawOverlay();
@@ -1522,15 +1554,15 @@ void CloudsVisualSystemRGBD::selfEnd(){
 }
 
 bool CloudsVisualSystemRGBD::isQuestionSelectedAndClipDone(){
-    return selectedQuestion != NULL && getRGBDVideoPlayer().isDone();
+    return selectedPortal != NULL && getRGBDVideoPlayer().isDone();
 }
 
 bool CloudsVisualSystemRGBD::isQuestionSelected(){
-	return selectedQuestion != NULL;
+	return selectedPortal != NULL;
 }
 
-CloudsQuestion* CloudsVisualSystemRGBD::getSelectedQuestion(){
-    return selectedQuestion;
+CloudsPortal* CloudsVisualSystemRGBD::getSelectedQuestion(){
+ //   return selectedQuestion;
 }
 
 void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
