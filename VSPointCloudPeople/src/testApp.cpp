@@ -2,7 +2,11 @@
 #include "testApp.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
+#ifdef OCULUS_RIFT
+#include "CloudsInputOculus.h"
+#else
 #include "CloudsInputKinectOSC.h"
+#endif
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -11,7 +15,11 @@ void testApp::setup(){
   
 	ofSetLogLevel(OF_LOG_NOTICE);
     
+#ifdef OCULUS_RIFT
+    SetCloudsInputOculus();
+#else
     SetCloudsInputKinect();
+#endif
 	
 	rgbd.setup();
 	rgbd.playSystem();
