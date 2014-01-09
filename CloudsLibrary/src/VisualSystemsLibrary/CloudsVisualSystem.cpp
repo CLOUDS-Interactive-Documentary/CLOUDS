@@ -129,7 +129,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	bBarGradient = false;
     bMatchBackgrounds = false;
 	bIs2D = false;
-	bDrawCursor = true;
+	drawCursorMode = DRAW_CURSOR_NONE;
 	updateCyclced = false;
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
@@ -3095,12 +3095,16 @@ void CloudsVisualSystem::selfPostDraw(){
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
     
-    if(bDrawCursor){
+    if(drawCursorMode > DRAW_CURSOR_NONE){
         ofPushMatrix();
         ofPushStyle();
         ofSetLineWidth(2);
         map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
         for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
+            if (drawCursorMode == DRAW_CURSOR_PRIMARY && !it->second.primary) {
+                continue;
+            }
+            
             //	ofNoFill();
             //	ofSetColor(255, 50);
             //	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
