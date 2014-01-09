@@ -18,11 +18,13 @@ void testApp::setup(){
 #ifdef OCULUS_RIFT
     SetCloudsInputOculus();
 #else
-    SetCloudsInputKinect();
+//    SetCloudsInputKinect();
 #endif
 	
 	rgbd.setup();
+	//rgbd.addTransionEditorsToGui();
 	rgbd.playSystem();
+	
 	
 	type = CloudsVisualSystem::FLY_THROUGH;
 }
@@ -41,9 +43,11 @@ void testApp::draw(){
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 	if(key == 'O'){
+		rgbd.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
 		transitionController.transitionToVisualSystem(1.0, 1.0);
 	}
 	if(key == 'I'){
+		rgbd.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
 		transitionController.transitionToInterview(1.0, 1.0);
 	}
 }
@@ -91,6 +95,9 @@ void testApp::updateTransitions(){
 		if(transitionController.getCurrentState() == TRANSITION_INTERVIEW_OUT){
 			
 			ofLogNotice("testApp::updateTransitions") << "Going to INTERVIEW OUT";
+			
+			////Dear James, you can use this to tell it to go left or right on transition out.
+			//rgbd.setOutOption( CloudsVisualSystemRGBD::OutRight or CloudsVisualSystemRGBD::OutLeft );
 			
 			rgbd.startTransitionOut( type );
 		}
