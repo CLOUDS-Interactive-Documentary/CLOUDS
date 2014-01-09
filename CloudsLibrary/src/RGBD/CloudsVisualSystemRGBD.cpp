@@ -81,6 +81,8 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	
 	bMoveTransitionCameraUp = bMoveTransitionCameraDown = false;
 	
+	//IF we move this before setup(NOT selfSetup) we can have the option of whether or not to load it to the gui
+	loadTransitionOptions("Transitions");
 }
 
 //--------------------------------------------------------------
@@ -361,18 +363,11 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guis.push_back(questionGui);
 	guimap[meshGui->getName()] = questionGui;
 	
-	//JG: Lars why is this NULL? where do you assign this?
-	if(transitionEditorGui != NULL){
 	
-		//this is here becuase it needs to be loaded to add the transitions to the gui before setup(if we want)
-		loadTransitionOptions( "Transitions" );
-		addTransionEditorsToGui();
+	//this is here becuase it needs to be loaded to add the transitions to the gui before setup(if we want)
+	loadTransitionOptions( "Transitions" );
+	addTransionEditorsToGui();
 	
-	
-		guis.push_back(transitionEditorGui);
-		guimap[transitionEditorGui->getName()] = transitionEditorGui;
-		ofAddListener(transitionEditorGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
-	}
 }
 
 void CloudsVisualSystemRGBD::updateTransitionGui()
@@ -524,6 +519,8 @@ void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
 	//load the option data
 	string path =GetCloudsDataPath() + "transitions/" + filename + ".xml";
 	
+	cout << path << endl;
+	
 	ofxXmlSettings *XML = new ofxXmlSettings();
 	XML->loadFile( path );
 	
@@ -537,11 +534,17 @@ void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
 		string typeName = XML->getValue("NAME", "NULL", 0);
 		transitionMap[typeName];
 		
+		
+		cout << typeName << endl;
+		
 		int numOptions = XML->getNumTags("OPTION");
 		for(int j=0; j<numOptions; j++)
 		{
 			XML->pushTag("OPTION", j);
 			string optionName = XML->getValue("NAME", "NULL", 0);
+			
+			
+			cout << optionName << endl;
 			
 			transitionMap[typeName][optionName];
 			TransitionInfo* ti = &transitionMap[typeName][optionName];
@@ -576,6 +579,8 @@ void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
 			
 			XML->popTag();
 		}
+		
+		cout << "--------" << endl;
 		
 		XML->popTag();
 	}
@@ -702,6 +707,7 @@ void CloudsVisualSystemRGBD::addTransionEditorsToGui()
 	//add/update the guis for our transitions
 	for (auto &it: transitionMap)
 	{
+		cout << it.first << endl;
 		if(transitionsGuis.find(it.first) == transitionsGuis.end())
 		{
 			addTransitionGui(it.first);
