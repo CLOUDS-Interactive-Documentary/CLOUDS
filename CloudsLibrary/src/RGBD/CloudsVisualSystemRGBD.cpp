@@ -495,7 +495,7 @@ void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
 	//load the option data
 	string path =GetCloudsDataPath() + "transitions/" + filename + ".xml";
 	
-	cout << path << endl;
+	//cout << path << endl;
 	
 	ofxXmlSettings *XML = new ofxXmlSettings();
 	XML->loadFile( path );
@@ -511,7 +511,7 @@ void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
 		transitionMap[typeName];
 		
 		
-		cout << typeName << endl;
+		//cout << typeName << endl;
 		
 		int numOptions = XML->getNumTags("OPTION");
 		for(int j=0; j<numOptions; j++)
@@ -520,7 +520,7 @@ void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
 			string optionName = XML->getValue("NAME", "NULL", 0);
 			
 			
-			cout << optionName << endl;
+			//cout << optionName << endl;
 			
 			transitionMap[typeName][optionName];
 			TransitionInfo* ti = &transitionMap[typeName][optionName];
@@ -556,7 +556,7 @@ void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
 			XML->popTag();
 		}
 		
-		cout << "--------" << endl;
+		//cout << "--------" << endl;
 		
 		XML->popTag();
 	}
