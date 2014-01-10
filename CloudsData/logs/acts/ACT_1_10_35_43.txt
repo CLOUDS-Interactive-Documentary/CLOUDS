@@ -1,0 +1,77 @@
+SEED TOPIC:  cosmogeny
+SEED CLIP: Intro - BuildingWorlds
+	Playing seed
+First visual system preset is selected : Cosmic_EG_CosmicCornea for topic : cosmogeny and clip Intro - BuildingWorlds
+45.1692	CHOOSING NEW CLIP 
+45.1692		Chose Clip "Shiffman - how far could we get?" for topic "cosmogeny" (2/5)
+77.1988	VISUALS Currently running "Cosmic_EG_CosmicCornea" time [0 - 51] definite
+77.1988		Passed predicted time 51 - moving end time to middle of Shiffman - how far could we get?, time 63.9564
+77.1988	CHOOSING NEW CLIP 
+77.1988		Chose Clip "Ramsey - Conway 1" for topic "cosmogeny" (3/5)
+150.36	VISUALS Not run in 86.4038 seconds
+150.36		Chose new Preset Automata_SlimeMold_zoomOut time [114.47 - 122.746] indefinite
+150.36	CHOOSING NEW CLIP 
+150.36		Chose Clip "Ramsey - Conway 2" for topic "cosmogeny" (4/5)
+198.865	VISUALS Currently running "Automata_SlimeMold_zoomOut" time [114.47 - 122.746] indefinite
+198.865		Passed predicted time 122.746 - moving end time to middle of Ramsey - Conway 2, time 177.385
+198.865	CHOOSING NEW CLIP 
+198.865		Chose Clip "Ramsey - Conway 3" for topic "cosmogeny" (5/5)
+198.865			Last clip in topic! Freeing topic
+216.053	VISUALS Not run in 38.6686 seconds
+216.053		Chose new Preset Automata_jm_Conway_2DZoom time [208.15 - 216.426] definite
+216.053	CHOOSING NEW TOPIC 2/3
+216.053		Selecting from 10 potential next topics on clip Ramsey - Conway 3
+216.053			Considering games
+216.053				Score for shared topic	games : 36.3806
+216.053			Considering artificial life
+216.053				Score for shared topic	artificial life : 44.1205
+216.053			Considering cosmogeny
+216.053				REJECTED Topic cosmogeny, same as current topic
+216.053				Score for shared topic	cosmogeny : 0
+216.053			Considering world building
+216.053				Score for shared topic	world building : 70.5911
+216.053			Considering simulation
+216.053				Score for shared topic	simulation : 38.7729
+216.053			Considering algorithm
+216.053				Score for shared topic	algorithm : 31.7022
+216.053			Considering universe
+216.053				Score for shared topic	universe : 48.4123
+216.053			Considering emergence
+216.053				Score for shared topic	emergence : 24.7656
+216.053			Considering infinity
+216.053				Score for shared topic	infinity : 28.1326
+216.053			Considering cellular automata
+216.053				Score for shared topic	cellular automata : 70.5911
+216.053		TOPIC cellular automata won with score 70.5911
+216.053		Picked new topic: CELLULAR AUTOMATA
+216.053	CHOOSING NEW CLIP 
+216.053		Chose Clip "Vera - Digital life forms" for topic "cellular automata" (1/5)
+247.916	VISUALS Currently running "Automata_jm_Conway_2DZoom" time [208.15 - 216.426] definite
+247.916		Passed predicted time 216.426 - moving end time to middle of Vera - Digital life forms, time 234.757
+247.916	CHOOSING NEW CLIP 
+247.916		Chose Clip "Ramsey - conway" for topic "cellular automata" (2/5)
+288.086	VISUALS Not run in 53.3291 seconds
+288.086		Chose new Preset Automata_ConwayClassic_ZoomUp time [268.692 - 276.968] indefinite
+288.086	CHOOSING NEW CLIP 
+288.086		Chose Clip "LIA - VisualizeAnIdea" for topic "cellular automata" (3/5)
+288.086			ERROR: We took a digression! Freeing topic
+339.302	VISUALS Currently running "Automata_ConwayClassic_ZoomUp" time [268.692 - 276.968] indefinite
+339.302		Passed predicted time 276.968 - FREE TOPIC Extending VS end time to 359.858 past the end of LIA - VisualizeAnIdea
+359.858	CHOOSING NEW TOPIC 3/3
+359.858		going back to seed topic cosmogeny
+359.858		Picked new topic: COSMOGENY
+359.858	CHOOSING NEW CLIP 
+359.858		Chose Clip "Patricio - Building Universes 2" for topic "cosmogeny" (1/5)
+382.636	VISUALS Not run in 22.7777 seconds
+382.636		Chose new Preset Xstatic_BigPong2 time [371.938 - 380.214] indefinite
+382.636	CHOOSING NEW CLIP 
+382.636		Chose Clip "Marcus - emergence" for topic "cosmogeny" (2/5)
+462.213	VISUALS Currently running "Xstatic_BigPong2" time [371.938 - 380.214] indefinite
+462.213		Passed predicted time 380.214 - moving end time to middle of Marcus - emergence, time 425.197
+462.213	CHOOSING NEW CLIP 
+462.213		Chose Clip "Theo - magic" for topic "cosmogeny" (3/5)
+462.213			ERROR: We took a digression! Freeing topic
+489.537	VISUALS Not run in 64.3401 seconds
+489.537		Chose new Preset Xstatic_fireflies time [476.566 - 484.842] indefinite
+489.537	ACT ENDED on clip Theo - magic explored topics 3/3 with 3 clips on final topic "cosmogeny"
+489.537 Commiting final preset Xstatic_fireflies at the end of the act 

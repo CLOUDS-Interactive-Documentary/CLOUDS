@@ -1,0 +1,74 @@
+SEED TOPIC:  coding
+SEED CLIP: Intro - LogicOfPixels
+	Playing seed
+First visual system preset is selected : DataCascade_DoubleTunnel for topic : coding and clip Intro - LogicOfPixels
+15.3894	CHOOSING NEW CLIP 
+15.3894		Chose Clip "Bruce - beauty of code 1" for topic "coding" (2/5)
+41.6216	VISUALS Currently running "DataCascade_DoubleTunnel" time [0 - 8.27586] indefinite
+41.6216		Passed predicted time 8.27586 - moving end time to middle of Bruce - beauty of code 1, time 31.2779
+41.6216	CHOOSING NEW CLIP 
+41.6216		Chose Clip "Ramsey - a hundred million" for topic "coding" (3/5)
+41.6216			ERROR: We took a digression! Freeing topic
+67.5691	VISUALS Not run in 36.2912 seconds
+67.5691		Chose new Preset DataCascade_gx_work_02b time [55.286 - 63.5618] indefinite
+67.5691	CHOOSING NEW TOPIC 2/3
+67.5691		Selecting from 9 potential next topics on clip Ramsey - a hundred million
+67.5691			Considering computer
+67.5691				Score for shared topic	computer : 6.89655
+67.5691			Considering complexity
+67.5691				Score for shared topic	complexity : 0
+67.5691			Considering time
+67.5691				Score for shared topic	time : 0
+67.5691			Considering future
+67.5691				Score for shared topic	future : 0
+67.5691			Considering algorithm
+67.5691				Score for shared topic	algorithm : 0
+67.5691			Considering code
+67.5691				Score for shared topic	code : 14.0324
+67.5691			Considering computation
+67.5691				Score for shared topic	computation : 30.936
+67.5691			Considering thinking
+67.5691				Score for shared topic	thinking : 0
+67.5691			Considering thinking with code
+67.5691				Score for shared topic	thinking with code : 21.4286
+67.5691		TOPIC computation won with score 30.936
+67.5691		Picked new topic: COMPUTATION
+67.5691	CHOOSING NEW CLIP 
+67.5691		Chose Clip "Nervous_Jesse - Time in the universe" for topic "computation" (1/5)
+103.227	VISUALS Currently running "DataCascade_gx_work_02b" time [55.286 - 63.5618] indefinite
+103.227		Passed predicted time 63.5618 - moving end time to middle of Nervous_Jesse - Time in the universe, time 88.1706
+103.227	CHOOSING NEW CLIP 
+103.227		Chose Clip "Martin - limits of computation" for topic "computation" (2/5)
+141.521	VISUALS Not run in 53.3499 seconds
+141.521		Chose new Preset DataCascade_DataCascade time [123.065 - 131.34] indefinite
+141.521	CHOOSING NEW CLIP 
+141.521		Chose Clip "LIA - VisualizeAnIdea" for topic "computation" (3/5)
+141.521			ERROR: We took a digression! Freeing topic
+192.736	VISUALS Currently running "DataCascade_DataCascade" time [123.065 - 131.34] indefinite
+192.736		Passed predicted time 131.34 - FREE TOPIC Extending VS end time to 213.293 past the end of LIA - VisualizeAnIdea
+213.293	CHOOSING NEW TOPIC 3/3
+213.293		going back to seed topic coding
+213.293		Picked new topic: CODING
+213.293	CHOOSING NEW CLIP 
+213.293		Chose Clip "Kyle_CH - coding is 1" for topic "coding" (1/5)
+221.055	VISUALS Not run in 7.76266 seconds
+221.055		Chose new Preset Cosmic_EG_CosmicCornea time [217.865 - 226.141] definite
+221.055	CHOOSING NEW CLIP 
+221.055		Chose Clip "Shantell - Coding: what does it feel like?" for topic "coding" (2/5)
+295.252	VISUALS Currently running "Cosmic_EG_CosmicCornea" time [217.865 - 226.141] definite
+295.252		Passed predicted time 226.141 - moving end time to middle of Shantell - Coding: what does it feel like?, time 260.926
+295.252	CHOOSING NEW CLIP 
+295.252		Chose Clip "Karsten - programming is..." for topic "coding" (3/5)
+316.695	VISUALS Not run in 55.769 seconds
+316.695		Chose new Preset Code_Code_Console_default time [306.664 - 314.94] indefinite
+316.695	CHOOSING NEW CLIP 
+316.695		Chose Clip "LIA - IdeaToCode" for topic "coding" (4/5)
+344.053	VISUALS Currently running "Code_Code_Console_default" time [306.664 - 314.94] indefinite
+344.053		Passed predicted time 314.94344.053- moving end time over top of VO LIA - IdeaToCode
+344.053	CHOOSING NEW CLIP 
+344.053		Chose Clip "Ramsey - wizardry 1" for topic "coding" (5/5)
+344.053			Last clip in topic! Freeing topic
+357.113	VISUALS Not run in 13.0596 seconds
+357.113		Chose new Preset Xstatic_fireflies time [351.274 - 359.55] indefinite
+357.113	ACT ENDED on clip Ramsey - wizardry 1 explored topics 3/3 with 5 clips on final topic "coding"
+359.55 Commiting final preset Xstatic_fireflies at the end of the act 
