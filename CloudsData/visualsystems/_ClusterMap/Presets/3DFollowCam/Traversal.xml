@@ -1,0 +1,97 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Traversal</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>74.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TH_HUE</Name>
+    <Value>0.753926694</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TH_SAT</Name>
+    <Value>0.633508503</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TH_BRI</Name>
+    <Value>0.654449582</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TH_A</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TT_HUE</Name>
+    <Value>0.753926694</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TT_SAT</Name>
+    <Value>0.633508503</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TT_BRI</Name>
+    <Value>0.654449582</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TT_A</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>FALLOFF</Name>
+    <Value>3.965517044</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ANGLE DAMPEN</Name>
+    <Value>0.055862069</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>STEP SIZE</Name>
+    <Value>1.020689726</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MIN HOMING DISTANCE</Name>
+    <Value>21.970443726</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MIN SOLVE DISTANCE</Name>
+    <Value>1.982758641</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW POINTS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW DISTANCE DEBUG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ANIMATE DURATION</Name>
+    <Value>3.157635450</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE WIDTH</Name>
+    <Value>2.002463102</Value>
+</Widget>
