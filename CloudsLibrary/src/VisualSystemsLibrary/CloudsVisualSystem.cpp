@@ -2777,6 +2777,12 @@ void CloudsVisualSystem::loadGUIS()
 
     for(int i = 0; i < guis.size(); i++)
     {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+#endif
         guis[i]->loadSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
 		guis[i]->setColorBack(ofColor(255*.2, 255*.9));
 //        setColors();
@@ -2788,12 +2794,24 @@ void CloudsVisualSystem::loadGUIS()
     loadTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/UITimelineMappings.xml");
     timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 
+#ifdef KINECT_INPUT
+    kinectGui->loadSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
+#endif
+#ifdef OCULUS_RIFT
+    oculusGui->loadSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+#endif
 }
 
 void CloudsVisualSystem::saveGUIS()
 {
     for(int i = 0; i < guis.size(); i++)
     {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+#endif
         guis[i]->saveSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
     }
     ofxSaveCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
@@ -2802,6 +2820,13 @@ void CloudsVisualSystem::saveGUIS()
     if(timeline != NULL){
 		timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 	}
+    
+#ifdef KINECT_INPUT
+    kinectGui->saveSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
+#endif
+#ifdef OCULUS_RIFT
+    oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+#endif
 }
 
 void CloudsVisualSystem::loadPresetGUISFromName(string presetName)
@@ -2818,6 +2843,12 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	selfSetDefaults();
 	
     for(int i = 0; i < guis.size(); i++) {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+#endif
 		string presetPathName = presetPath+"/"+guis[i]->getName()+".xml";
         guis[i]->loadSettings(presetPathName);
     }
@@ -2877,6 +2908,12 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
     
     for(int i = 0; i < guis.size(); i++)
     {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+#endif
         guis[i]->saveSettings(presetDirectory+guis[i]->getName()+".xml");
     }
     ofxSaveCamera(cam, getVisualSystemDataPath()+"Presets/"+presetName+"/ofEasyCamSettings");
