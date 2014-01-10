@@ -175,13 +175,14 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 	{
 		q.set( getCameraRef().getOrientationQuat() );
 		
+		
 		transitionInStart.setPosition( ti.inStartPos + translatedHeadPosition );
 		transitionInStart.setOrientation( q );
-
-		transitionOutLeft.setPosition( ti.outLeftPos + translatedHeadPosition);
+		
+		transitionOutLeft.setPosition(rightPortal.hoverPosition);
 		transitionOutLeft.setOrientation( q );
-
-		transitionOutRight.setPosition( ti.outRightPos + translatedHeadPosition);
+		
+		transitionOutRight.setPosition(leftPortal.hoverPosition);
 		transitionOutRight.setOrientation( q );
 	}
 	else if(transitionMap.find(type) != transitionMap.end())
@@ -944,6 +945,9 @@ void CloudsVisualSystemRGBD::startCurrentTransitionOut()
 	{
 		transitionOutLeft.setOrientation( getCameraRef().getOrientationQuat() );
 		transitionOutRight.setOrientation( getCameraRef().getOrientationQuat() );
+		
+		transitionOutRight.setPosition(leftPortal.hoverPosition);
+		transitionOutLeft.setPosition(rightPortal.hoverPosition);
 	}
 	
 	//transition to the left or right based on relative posiiton
