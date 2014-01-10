@@ -186,20 +186,20 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 	cout << "couldn't find ["+type+"]["+option+"] inf the transitionMap" << endl;
 }
 
-void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionType )
+void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionType, string option)
 {
 	//TODO: dow we want to use more then one option per type? if so, should we pass in a string(or enum) to identify it?
 	switch (transitionType) {
 		case CloudsVisualSystem::TWO_DIMENSIONAL:
-			setTransitionNodes("TWO_DIMENSIONAL", "default");
+			setTransitionNodes("TWO_DIMENSIONAL", option);
 			break;
 			
 		case CloudsVisualSystem::WHIP_PAN:
-			setTransitionNodes("WHIP_PAN", "default");
+			setTransitionNodes("WHIP_PAN", option);
 			break;
 			
 		case CloudsVisualSystem::FLY_THROUGH:
-			setTransitionNodes("FLY_THROUGH", "default");
+			setTransitionNodes("FLY_THROUGH", option);
 			break;
 			
 		default:
@@ -905,9 +905,10 @@ void CloudsVisualSystemRGBD::clearQuestions(){
 
 //JG NEW TRANSITION STUBS<----- James, I love these! thank you, Lars
 
-void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType)
+void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType, string option)
 {
-	cout << "startTransitionOut(RGBDTransitionType transitionType)" << endl;
+	//set the in/out nodes
+	setTransitionNodes( transitionType, option );
 	
 	//transition to the left or right based on relative posiiton
 	setOutOption((cloudsCamera.getPosition().x - translatedHeadPosition.x) > 0 ? OutLeft : OutRight);
@@ -920,9 +921,10 @@ void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionTyp
 	cloudsCamera.setTransitionTargetNode( transitionOutOption == OutLeft? &transitionOutLeft : &transitionOutRight );
 }
 
-void CloudsVisualSystemRGBD::startTransitionIn(RGBDTransitionType transitionType)
+void CloudsVisualSystemRGBD::startTransitionIn(RGBDTransitionType transitionType, string option)
 {
-	cout << "startTransitionIn(RGBDTransitionType transitionType)" << endl;
+	//set the in/out nodes
+	setTransitionNodes(transitionType, option);
 	
 	//transitionEase = ofxTween::easeIn;
 	transitionEase = ofxTween::easeOut;//are we sure we don't want easeInOut?

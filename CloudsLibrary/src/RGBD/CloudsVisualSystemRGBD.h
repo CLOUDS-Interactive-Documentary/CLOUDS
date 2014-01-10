@@ -91,8 +91,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 		return cloudsCamera;
 	}
 	
-	void startTransitionOut(RGBDTransitionType transitionType);
-	void startTransitionIn(RGBDTransitionType transitionType);
+	void startTransitionOut(RGBDTransitionType transitionType, string option="default");
+	void startTransitionIn(RGBDTransitionType transitionType, string option="default");
 	void updateTransition(float percentComplete);
 	void transtionFinished();
 	
@@ -114,7 +114,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxGameCamera transitionCam;
 	ofNode* transitionCamTargetNode;
 	
-	void setTransitionNodes( RGBDTransitionType transitionType );
+	void setTransitionNodes( RGBDTransitionType transitionType, string option="default" );
 	void playTestVideo();
 	
 	
