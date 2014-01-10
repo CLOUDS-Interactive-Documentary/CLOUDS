@@ -1,0 +1,22 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>OCEAN Sound</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>22.700958252</XPosition>
+    <YPosition>433.723419189</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Gain</Name>
+    <Value>0.499010056</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Vocal_harmonic_high_shorter.aif</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>vocal_harmony_bass.aif</Name>
+    <Value>1</Value>
+</Widget>
