@@ -26,6 +26,8 @@ void CloudsVisualSystemConnectors::selfSetupGui(){
 	
 	connectorGui->addSlider("Max Connections", 1, 10, &generator.maxConnections);
 	
+    connectorGui->addSlider("Particle speed", 0, 10, &generator.connectorsSpeed);
+    
 	guis.push_back(connectorGui);
 	guimap[connectorGui->getName()] = connectorGui;
     
