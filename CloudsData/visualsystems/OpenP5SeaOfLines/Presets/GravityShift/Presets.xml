@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>577.000000000</XPosition>
-    <YPosition>138.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>218.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -12,16 +12,26 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>FallingFireweb</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>FireWeb</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Mellow</Name>
-    <Value>0</Value>
+    <Name>FireWeb_mellow</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>GravityShift</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Mellow</Name>
+    <Value>0</Value>
 </Widget>

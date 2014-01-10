@@ -28,12 +28,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL</Name>
-    <Value>0.050573390</Value>
+    <Value>0.126100570</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL ADJUST</Name>
-    <Value>11.623644829</Value>
+    <Value>12.284236908</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -74,4 +74,9 @@
     <Kind>4</Kind>
     <Name>LEVEL TO NOISE RATIO</Name>
     <Value>0.500000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Main Gain</Name>
+    <Value>0.256901473</Value>
 </Widget>
