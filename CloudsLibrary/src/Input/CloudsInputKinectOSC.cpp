@@ -59,9 +59,11 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
         
-        bool bRecognized = true;
+        bool bRecognized = false;
         
 		if (m.getAddress() == "/playerData") {
+            bRecognized = true;
+            
             // set up all the working vars
             k4w::HandState newHandState;
             lastOscFrame = ofGetFrameNum();
@@ -235,7 +237,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                     // boom! new state achieved
                     processHandEvent(handIdx, hands[handIdx], newHandState);
                     hands[handIdx]->handJoint.handState = newHandState;
-                        
+                    
                     for (int k = 0; k < k4w::HandState_Count; k++) {
                         if (k != newHandState) {
                             hands[handIdx]->poll[k] = 0;
@@ -251,9 +253,6 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 hands[handIdx]->lastUpdateFrame = lastOscFrame;
             }
 		}
-		else {
-            bRecognized = false;
-        }
         
         if (!bRecognized) {
 			// display in the console
