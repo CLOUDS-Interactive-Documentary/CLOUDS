@@ -293,7 +293,7 @@ string CloudsIntroSequence::getQuestionText(){
 }
 
 bool CloudsIntroSequence::isStartQuestionSelected(){
-	return false && selectedQuestion != NULL;
+	return selectedQuestion != NULL;
 }
 
 void CloudsIntroSequence::autoSelectQuestion(){
