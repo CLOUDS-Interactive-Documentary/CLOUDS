@@ -298,7 +298,7 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip& clip){
 		lastQuestion = currentClip.getQuestionForTopic(currentClip.getTopicsWithQuestions()[0]);
 	}
 	else{
-		lastQuestion = ofRandomuf() > .5 ? "IS THIS A SHORT TEST QUESTION?" : "OR A LONGER ONE TO TEST WHAT IT LOOKS LIKE WHEN TEXT WRAPS?";
+		lastQuestion = "";
 	}
 	///JG END TEMP HACK
 
