@@ -3,6 +3,12 @@
 uniform float hoverPercent;
 uniform int drawingTimer;
 
+//for attenuation
+uniform int doAttenuate;
+uniform float minDistance;
+uniform float maxDistance;
+varying float zDist;
+
 uniform int selected;
 uniform float selectionAnimationPercent;
 uniform float maxRingPosition;
@@ -56,29 +62,9 @@ void main() {
 		gl_FragColor.a = gl_Color.a*hoverfade;
 		
 	}
-
-//	gl_FragColor.rgb = vec3();
-//	gl_FragColor.a = gl_Color.a;
-	//TURN TIMERS RED TEST
-//	if(timerGeoFlag > .8){
-//		gl_FragColor.rgb = vec3(hoverfade, 0.0, 0.0);
-//	}
-//	if(ringPosition < 0.0){
-//	}
-//	//middle ring
-//	else if(ringPosition < 1.0){
-//	}
-//	else{
-//	}
 	
-	
-//	if(ringPosition < 1.0){
-//		gl_FragColor.r *= hoverPercent;
-//	}
-//	else if(ringPosition < 2.0){
-//		gl_FragColor.g *= hoverPercent;
-//	}
-//	else if(ringPosition < 3.0){
-//		gl_FragColor.b *= hoverPercent;
-//	}
+	if(doAttenuate == 1){
+		gl_FragColor.a *= smoothstep(maxDistance, minDistance, zDist);
+//		gl_FragColor.a *= zDist/100.0;
+	}
 }

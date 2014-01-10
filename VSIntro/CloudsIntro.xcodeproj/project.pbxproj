@@ -582,6 +582,13 @@
 		E71670F0187A4EEE0047B7DC /* IntroOculus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IntroOculus.plist; sourceTree = "<group>"; };
 		E71670F1187A505E0047B7DC /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxSystemTextbox.h; path = ../../VisualSystemsLibrary/ofxSystemTextbox.h; sourceTree = "<group>"; };
 		E71670F2187A505E0047B7DC /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ofxSystemTextbox.mm; path = ../../VisualSystemsLibrary/ofxSystemTextbox.mm; sourceTree = "<group>"; };
+		E7302C8C187F6B6E0079C5B8 /* BarrelChromaAb.fs */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = BarrelChromaAb.fs; sourceTree = "<group>"; };
+		E7302C8D187F6B6E0079C5B8 /* IntroTunnel.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = IntroTunnel.frag; sourceTree = "<group>"; };
+		E7302C8E187F6B6E0079C5B8 /* IntroTunnel.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = IntroTunnel.vert; sourceTree = "<group>"; };
+		E7302C8F187F6B6E0079C5B8 /* IntroType.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = IntroType.frag; sourceTree = "<group>"; };
+		E7302C90187F6B6E0079C5B8 /* IntroType.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = IntroType.vert; sourceTree = "<group>"; };
+		E7302C93187F6B840079C5B8 /* portal.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; name = portal.frag; path = ../../RGBD/shaders/portal.frag; sourceTree = "<group>"; };
+		E7302C94187F6B840079C5B8 /* portal.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; name = portal.vert; path = ../../RGBD/shaders/portal.vert; sourceTree = "<group>"; };
 		E7380142183C871A0018AB96 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		E7380143183C871A0018AB96 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		E738FFE1183C86F50018AB96 /* CloudsIntroOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudsIntroOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1346,6 +1353,7 @@
 		E716702F187A4CAD0047B7DC /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
+				E7302C8B187F6B6E0079C5B8 /* shaders */,
 				E7167031187A4CAD0047B7DC /* CloudsIntroSequence.h */,
 				E7167030187A4CAD0047B7DC /* CloudsIntroSequence.cpp */,
 			);
@@ -1442,6 +1450,21 @@
 				E71670BB187A4E630047B7DC /* ofxFTGLSimpleLayout.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		E7302C8B187F6B6E0079C5B8 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E7302C93187F6B840079C5B8 /* portal.frag */,
+				E7302C94187F6B840079C5B8 /* portal.vert */,
+				E7302C8C187F6B6E0079C5B8 /* BarrelChromaAb.fs */,
+				E7302C8D187F6B6E0079C5B8 /* IntroTunnel.frag */,
+				E7302C8E187F6B6E0079C5B8 /* IntroTunnel.vert */,
+				E7302C8F187F6B6E0079C5B8 /* IntroType.frag */,
+				E7302C90187F6B6E0079C5B8 /* IntroType.vert */,
+			);
+			name = shaders;
+			path = ../../../../../CloudsData/visualsystems/_Intro/shaders;
 			sourceTree = "<group>";
 		};
 		E7380141183C871A0018AB96 /* src */ = {

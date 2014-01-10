@@ -155,12 +155,13 @@ void CloudsPortal::draw(){
 }
 
 void CloudsPortal::drawOverlay(bool anchorToScreen){
+
+	//TODO MOVE TO HUDD
 	if(hovering){
 		
-		glDisable(GL_DEPTH_TEST);
-        
+        ofPushStyle();
+		
 		float width = font->stringWidth(question);
-		//ofVec2f screenPosition(ofGetWidth()/2 - width/2, ofGetHeight() * .66);
 		ofVec2f textPosition;
 		if(anchorToScreen){
 			textPosition = ofVec2f(20,20);
@@ -173,64 +174,16 @@ void CloudsPortal::drawOverlay(bool anchorToScreen){
 				textPosition = screenPosition;
 			}
 		}
-		
-		//DRAW BACKBOX
-        //		ofPushStyle();
-        //		ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
-        //		ofSetColor(255,20);
-        //		ofRect(screenPosition.x, screenPosition.y-25, width+40, 50);
-        //		ofPopStyle();
-		
 		float secondsToWriteQuestion = question.size() / charsPerSecond;
 		int charactersToType = ofMap(ofGetElapsedTimef() - hoverStartTime, 0, secondsToWriteQuestion, 0, question.size(), true);
+		
 		string substring = question.substr(0, charactersToType);
-        //		if(font != NULL){
-        //			ofPushStyle();
-        //			ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
-        //			ofSetColor(50);
-        //			font->drawString(substring, screenPosition.x+12, screenPosition.y+2);
-        //			ofSetColor(255);
-        //			ofEnableBlendMode(OF_BLENDMODE_ADD);
         font->drawString(substring, textPosition.x+10, textPosition.y);
         font->drawString(substring, textPosition.x+10, textPosition.y);
-        //			ofPopStyle();
-        //		}
-        //		else{
-        //			ofDrawBitmapString(substring, screenPosition);
-        //		}
-		
-        /* EZ: Disabled all that for now
-		//DRAW PROGRESS BAR
-		ofPushStyle();
-		ofMesh progress;
-		progress.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-		
-		progress.addVertex(ofVec3f(screenPosition.x+10,screenPosition.y+5,0));
-		progress.addVertex(ofVec3f(screenPosition.x+10,screenPosition.y+10,0));
-		
-		float percentToSelection = ofMap(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToConsiderSelected, 0, 1.0, true);
-		progress.addVertex(ofVec3f(screenPosition.x+10 + width*percentToSelection + 5, screenPosition.y+5,0));
-		progress.addVertex(ofVec3f(screenPosition.x+10 + width*percentToSelection, screenPosition.y+10,0));
-        
-		progress.addColor(ofFloatColor::white * .7);
-		progress.addColor(ofFloatColor::white * .7);
-		
-		float oscatten = sin(ofGetElapsedTimef()*10)*.5+.5;
-		ofFloatColor flash = ofFloatColor::white.getLerped(ofFloatColor::crimson, percentToSelection*oscatten);
-		progress.addColor(flash);
-		progress.addColor(flash);
-		//progress.draw(); //disabling for now
-         */
-		
 		
 		ofPopStyle();
-		glEnable(GL_DEPTH_TEST);
+
 	}
     
-	ofPushStyle();
-	//debug
-    //	ofSetColor(255, 0, 0, 100);
-    //	ofCircle(currentScreenPoint, screenRadius);
-	ofPopStyle();
 }
 

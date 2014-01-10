@@ -73,9 +73,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	bool isStartQuestionSelected();
 	void autoSelectQuestion();
 	CloudsPortal* getSelectedQuestion();
-//	CloudsRun& getSelectedRun(){
-//		return currentRun;
-//	};
 	
   protected:
 		
@@ -87,11 +84,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float questionWrapDistance;
 	float cameraForwardSpeed;
 	
-	float questionTugMinDepth;
-	float questionTugMinDistance;
-	float questionTugMaxDistance;
-	float questionScale;
-	float questionTunnelInnerRadius;
 	
 	bool startedOnclick;
 	
@@ -117,10 +109,16 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofxFTGLSimpleLayout questionFont;
     void rebuildQuestionFont();
     int questionFontSize;
+	
+	float questionScale;
+	ofRange questionTugDistance;
+	ofRange questionAttenuateDistance;
+	
+	bool bQuestionDebug;
 	float questionLineLength;
     float questionLineSpacing;
-
-	
+	float questionTunnelInnerRadius;
+	float questionMinZDistance;
 	float currentFontSize;
 	float currentFontExtrusion;
 
@@ -168,6 +166,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float tunnelDistance;
 	float tunnelStartZ;
 	
+	bool regenerateTunnel;
 	void generateTunnel();
 	float looseTunnelResolutionX;
 	float looseTunnelResolutionZ;

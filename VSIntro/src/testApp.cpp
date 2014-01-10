@@ -3,6 +3,8 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
+	ofBackground(0);
+	
 	ofSetVerticalSync(true);
 	
 	//////////////SHOW INTRO
@@ -29,10 +31,12 @@ void testApp::setup(){
 
 	intro.setup();
 #ifdef OCULUS_RIFT
-	intro.loadPresetGUISFromName("Oculus");
+//	intro.loadPresetGUISFromName("Oculus");
 #else
-	intro.loadPresetGUISFromName("TunnelWarp");
+//	intro.loadPresetGUISFromName("TunnelWarp");
 #endif
+	//temp
+	intro.loadPresetGUISFromName("Working");
 	intro.playSystem();
 	//////////////SHOW INTRO
 
