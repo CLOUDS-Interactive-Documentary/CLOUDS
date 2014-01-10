@@ -541,7 +541,7 @@ void CloudsVisualSystem::drawScene(){
         ofEnableAlphaBlending();
         
         ofVec3f cursorPt = ofVec3f(0, 0, -150);
-        selfDrawCursor(cursorPt, true);
+        selfDrawCursor(cursorPt, 0);
         
         glPopAttrib();
         ofPopMatrix();
@@ -3226,7 +3226,7 @@ void CloudsVisualSystem::drawCursor()
                 continue;
             }
             
-            selfDrawCursor(it->second.position, it->second.actionType == 0);
+            selfDrawCursor(it->second.position, it->second.actionType != 0);
         }
     }
 }
