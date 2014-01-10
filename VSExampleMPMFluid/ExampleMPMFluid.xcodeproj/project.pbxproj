@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A316F85187F84E700662636 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A316F84187F84E700662636 /* ofxSystemTextbox.mm */; };
+		2A316F86187F84E700662636 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A316F84187F84E700662636 /* ofxSystemTextbox.mm */; };
 		2ACA6A131872190C0029603B /* ofxTonicSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2ACA698C1872190C0029603B /* ofxTonicSynth.cpp */; };
 		2ACA6A141872190C0029603B /* ofxTonicSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2ACA698C1872190C0029603B /* ofxTonicSynth.cpp */; };
 		2ACA6A151872190C0029603B /* ADSR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2ACA698F1872190C0029603B /* ADSR.cpp */; };
@@ -376,6 +378,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A316F83187F84E700662636 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		2A316F84187F84E700662636 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		2ACA698B1872190C0029603B /* ofxTonic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTonic.h; sourceTree = "<group>"; };
 		2ACA698C1872190C0029603B /* ofxTonicSynth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTonicSynth.cpp; sourceTree = "<group>"; };
 		2ACA698D1872190C0029603B /* ofxTonicSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTonicSynth.h; sourceTree = "<group>"; };
@@ -1137,6 +1141,8 @@
 		E72FF11817E688FE0007780D /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				2A316F83187F84E700662636 /* ofxSystemTextbox.h */,
+				2A316F84187F84E700662636 /* ofxSystemTextbox.mm */,
 				E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */,
 				E72FF11B17E688FE0007780D /* CloudsRGBDCamera.h */,
 				E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */,
@@ -1883,6 +1889,7 @@
 				85732B3618307AD3002B53D9 /* ofxTLInOut.cpp in Sources */,
 				2ACA6A6E1872190C0029603B /* Noise.cpp in Sources */,
 				85732B3718307AD3002B53D9 /* ofxTLKeyframes.cpp in Sources */,
+				2A316F86187F84E700662636 /* ofxSystemTextbox.mm in Sources */,
 				2ACA6A3C1872190C0029603B /* ControlMetro.cpp in Sources */,
 				85732B3818307AD3002B53D9 /* ofxTLLFO.cpp in Sources */,
 				85732B3918307AD3002B53D9 /* ofxTLPage.cpp in Sources */,
@@ -1973,6 +1980,7 @@
 				2ACA6A171872190C0029603B /* Arithmetic.cpp in Sources */,
 				E7D32FA71751C626006706ED /* ofxPerlinBehavior.cpp in Sources */,
 				E7D32FA81751C626006706ED /* ofxRParticle.cpp in Sources */,
+				2A316F85187F84E700662636 /* ofxSystemTextbox.mm in Sources */,
 				E7D32FA91751C626006706ED /* ofxRParticleGlowieRenderer.cpp in Sources */,
 				2ACA6A351872190C0029603B /* ControlDelay.cpp in Sources */,
 				E7D32FAA1751C626006706ED /* ofxRParticleRenderer.cpp in Sources */,
