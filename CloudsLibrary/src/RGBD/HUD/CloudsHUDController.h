@@ -36,14 +36,14 @@ class CloudsHUDController {
 	void update();
 	void draw();
 
+	void setHomeEnabled(bool enable);
+	
 	void buildLayerSets();
     void calculateFontSizes();
     int getFontSizeForMesh( SVGMesh* textMesh );
 	
 	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void animateOff(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
-	
-	ofImage testImage;
 	void respondToClip(CloudsClip& clip);
 	
 	map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> > layerSets;
@@ -51,6 +51,9 @@ class CloudsHUDController {
 	
 	void saveGuiSettings();
 	void toggleGuis();
+	
+	void questionHoverOn(string question);
+	void questionHoverOff();
 	
 	ofxUISuperCanvas *hudGui;
 	CloudsHUDHomeButton home;
@@ -65,6 +68,7 @@ class CloudsHUDController {
 	void preRollRequested(CloudsPreRollEventArgs& args);
 
   protected:
+	
     void populateLowerThird( string firstName="", string lastName="", string title="", string location="", string textbox="", bool forceOn=false );
     void populateProjectExample(string videoPath="", string textLeft="", string textRight="", string textTop="", bool forceOn=false);
     void populateQuestion( string question="", bool forceOn=false);
@@ -73,6 +77,7 @@ class CloudsHUDController {
     ofxAVFVideoPlayer       videoPlayer;
     ofRectangle             svgVideoBounds, videoBounds;
     
+	bool	bDrawHome;
     bool    bIsHudOpen;
     bool    bDrawHud;
     bool    bSkipAVideoFrame;

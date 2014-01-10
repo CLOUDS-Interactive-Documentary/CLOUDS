@@ -1,14 +1,9 @@
 
 #include "CloudsPlaybackController.h"
 
-
+//--------------------------------------------------------------------
 CloudsPlaybackController::CloudsPlaybackController(){
-	
 	eventsRegistered = false;
-	
-//	revertToIntroAfter1Act = false;
-//	actFinished = false;
-	
 	showingVisualSystem = false;
 	currentAct = NULL;
 	showingClusterMap = false;
@@ -37,8 +32,8 @@ void CloudsPlaybackController::clearAct(bool destroyAct){
 			}
 			currentPresets[i].system->exit();
 		}
-		
 	}
+	
 	currentAct->unregisterEvents(this);
 	currentAct->unregisterEvents(&run);
 	currentAct->unregisterEvents(&hud);
@@ -72,6 +67,7 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setup(){
 	
+	///START THREADED
     parser.loadFromFiles();
 	
 	if(!ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
@@ -98,7 +94,8 @@ void CloudsPlaybackController::setup(){
 
 	////COMMUNICATION
 	oscSender.setup();
-		
+	//END THREADED
+	
 	if(!eventsRegistered){
 		
 		eventsRegistered = true;
@@ -108,25 +105,24 @@ void CloudsPlaybackController::setup(){
 		
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
-		
-		rgbdVisualSystem = ofPtr<CloudsVisualSystemRGBD>( new CloudsVisualSystemRGBD() );
-		rgbdVisualSystem->setup();
-		rgbdVisualSystem->setDrawToScreen( false );
-
-
-		clusterMap = ofPtr<CloudsVisualSystemClusterMap>( new CloudsVisualSystemClusterMap() );
-		clusterMap->buildEntireCluster(parser);
-		clusterMap->setRun(run);
-		clusterMap->setup();
-
-		
-		introSequence = ofPtr<CloudsIntroSequence>( new CloudsIntroSequence() );
-		introSequence->setup();
-		introSequence->setDrawToScreen(false);
-		currentVisualSystem = introSequence;
-		
-		hud.setup();
 	}
+	
+	rgbdVisualSystem = ofPtr<CloudsVisualSystemRGBD>( new CloudsVisualSystemRGBD() );
+	rgbdVisualSystem->setup();
+	rgbdVisualSystem->setDrawToScreen(false);
+	
+	
+	clusterMap = ofPtr<CloudsVisualSystemClusterMap>( new CloudsVisualSystemClusterMap() );
+	clusterMap->buildEntireCluster(parser);
+	clusterMap->setRun(run);
+	clusterMap->setup();
+	clusterMap->setDrawToScreen(false);
+	
+	introSequence = ofPtr<CloudsIntroSequence>( new CloudsIntroSequence() );
+	introSequence->setup();
+	introSequence->setDrawToScreen(false);
+	
+	hud.setup();
 	
 	//////////////SHOW INTRO
 	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
@@ -141,11 +137,11 @@ void CloudsPlaybackController::setup(){
 			startingNodes.erase(startingNodes.begin() + i);
 		}
 		else{
-			cout << " Adding Clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
+//			cout << " Adding Clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
 		}
 	}
 	
-	cout << "Starting with " << startingNodes.size() << endl;
+	
 	//////////////SHOW INTRO
 	
 	showIntro( startingNodes );
@@ -171,10 +167,13 @@ void CloudsPlaybackController::showIntro(){
 #endif
 	introSequence->playSystem();
 	
+	currentVisualSystem = introSequence;
+	
 	sound.enterTunnel();
 	
 	showingVisualSystem = true;
-	showingIntro = true;	
+	showingIntro = true;
+	hud.setHomeEnabled(false);
 }
 
 //--------------------------------------------------------------------
@@ -302,7 +301,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		transitionController.transitionWithQuestion(1.0, 1.0);		
 	}
 	
-	if(!showingIntro && !showingClusterMap){
+	if(!showingClusterMap){
 		hud.update();
 	}
 	
@@ -391,6 +390,8 @@ void CloudsPlaybackController::updateTransition(){
                     hideVisualSystem();
                 }
 				
+				hud.setHomeEnabled(false);
+				
                 clusterMap->traverse();
                 clusterMap->loadPresetGUISFromName("3DFreeCam");
                 clusterMap->playSystem();
@@ -464,60 +465,65 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glDisable( GL_DEPTH_TEST );
+	
+	if(currentVisualSystem != NULL){
+		ofPushStyle();
 
-	ofPushStyle();
-	//ofEnableBlendMode(OF_BLENDMODE_ADD);
-	
-	float mixVal = ofClamp( crossfadeValue * 255, 0, 255);
-	
-	//cout << "crosffade value is " << crossfadeValue << " showing intro? " << showingIntro << endl;
-	
-	ofSetColor( 255, 255, 255, mixVal );
-	if(!showingClusterMap && currentVisualSystem != NULL){
+		//cout << "crosffade value is " << crossfadeValue << " showing intro? " << showingIntro << endl;
+		ofSetColor(255, crossfadeValue*255 );
+		
 		currentVisualSystem->selfPostDraw();
+		
 		if(numClipsPlayed > 1){
 			hud.draw();
 		}
-	}
-    ofPopStyle();
-    glEnable( GL_DEPTH_TEST );
-	
-	if(currentAct != NULL){
-		if(ofGetKeyPressed('-')){
-			currentAct->getTimeline().enableEvents();
-			currentAct->drawDebug();
-		}
-		else{
-			currentAct->getTimeline().disableEvents();
-		}
 		
-		if(showingVisualSystem && ofGetKeyPressed('k')){
-			ofPushMatrix();
-			ofPushStyle();
-			ofEnableAlphaBlending();
-			ofTranslate(ofGetWidth()*.5, ofGetHeight()*.5);
-			ofScale(7,7);
-			ofSetColor(255);
-			string debugString =
-				currentVisualSystemPreset.presetName + " was associated with keyword " + currentVisualSystemPreset.conjureKeyword + "\n" +
+		ofPopStyle();
+		
+	}
+	
+	drawDebugOverlay();
+	
+	glPopAttrib();
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::drawDebugOverlay(){
+	if(currentAct == NULL){
+		return;
+	}
+	
+	if(ofGetKeyPressed('-')){
+		currentAct->getTimeline().enableEvents();
+		currentAct->drawDebug();
+	}
+	else{
+		currentAct->getTimeline().disableEvents();
+	}
+	
+	if(showingVisualSystem && ofGetKeyPressed('k')){
+		ofPushMatrix();
+		ofPushStyle();
+		ofEnableAlphaBlending();
+		ofTranslate(ofGetWidth()*.5, ofGetHeight()*.5);
+		ofScale(7,7);
+		ofSetColor(255);
+		string debugString =
+		currentVisualSystemPreset.presetName + " was associated with keyword " + currentVisualSystemPreset.conjureKeyword + "\n" +
 				"Preset's keywords " + ofJoinString(currentVisualSystemPreset.allKeywords, ", ") + "\n" +
 				"current clip's keywords " + ofJoinString(currentClip.getKeywords(), ", ") + "\n" +
 				"Had to default to keyword family? " + (currentVisualSystemPreset.defaultedToFamily ? "YES" : "NO") + "\n" +
 				"Had to pick a random preset? " + (currentVisualSystemPreset.randomlySelected ? "YES" : "NO") + "\n" +
 				"Act #? " + ofToString(run.actCount);
-			//cout << "DRAWING DEBUGG STRING " << debugString << endl;
-			
-			ofDrawBitmapString(debugString, 0,0);
-			
-			ofSetColor(0,0,0,255);
-			ofRect(-5,-5,300, 50);
-			
-			ofPopStyle();
-			ofPopMatrix();
-		}
+		
+		ofDrawBitmapString(debugString, 0,0);
+		
+		ofSetColor(0,0,0,255);
+		ofRect(-5,-5,300, 50);
+		
+		ofPopStyle();
+		ofPopMatrix();
 	}
-	
-	glPopAttrib();
 }
 
 #pragma story engine events
@@ -629,10 +635,12 @@ void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
 	
 	bool clipLoadSuccessfullyLoaded = false;
 	if(clip.voiceOverAudio){
-		clipLoadSuccessfullyLoaded = rgbdVisualSystem->getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath);
+		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setupVO(clip.voiceOverAudioPath);
 	}
 	else{
-		clipLoadSuccessfullyLoaded = rgbdVisualSystem->getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, toTime,clip.getSpeakerVolume());
+		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setup(clip.combinedVideoPath,
+																					clip.combinedCalibrationXMLPath,
+																					toTime,clip.getSpeakerVolume());
 	}
 
 	if(!clipLoadSuccessfullyLoaded){
@@ -650,7 +658,7 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 	
 	rgbdVisualSystem->clearQuestions();
 	if(clip.getID() != prerolledClipID){
-		prerollClip(clip,1);
+		prerollClip(clip, 1);
 	}
 	
 	rgbdVisualSystem->setupSpeaker( clip.getSpeakerFirstName(),clip.getSpeakerLastName(), clip.name);
@@ -678,7 +686,9 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
 	rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
 	rgbdVisualSystem->playSystem();
 	
-	currentVisualSystem = rgbdVisualSystem;	
+	hud.setHomeEnabled(true);
+	
+	currentVisualSystem = rgbdVisualSystem;
 }
 
 void CloudsPlaybackController::playNextVisualSystem()

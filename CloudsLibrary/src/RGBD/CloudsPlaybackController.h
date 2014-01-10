@@ -97,6 +97,7 @@ class CloudsPlaybackController {
 
 	float crossfadeValue;
 	string combinedMoviesFolder;
+	void drawDebugOverlay();
 	
 	bool eventsRegistered;
 	void actCreated(CloudsActEventArgs& args);
