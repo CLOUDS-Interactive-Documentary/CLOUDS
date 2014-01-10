@@ -100,11 +100,19 @@ void CloudsHUDController::populateMap( string leftBox, string rightBox, bool for
 }
 
 void CloudsHUDController::populateQuestion( string question, bool forceOn ){
-    hudLabelMap["QuestionTextBox"]->setText( question );
-    
-    if( forceOn ){
-        animateOn( CLOUDS_HUD_QUESTION );
-    }
+	if(hudLabelMap["QuestionTextBox"]->getText() == question){
+		return;
+	}
+	else if(question == ""){
+		animateOff( CLOUDS_HUD_QUESTION );
+	}
+	else{
+		hudLabelMap["QuestionTextBox"]->setText( question );
+		
+		if( forceOn ){
+			animateOn( CLOUDS_HUD_QUESTION );
+		}
+	}
 }
 
 void CloudsHUDController::populateLowerThird( string firstName, string lastName, string title, string location, string textbox, bool forceOn ) {
@@ -331,8 +339,10 @@ void CloudsHUDController::draw(){
         ofSetColor(255, 255, 255, 255);
     }
     
-//	ofSetColor(255,255,255,ofGetMouseX());
 	drawLayer(CLOUDS_HUD_QUESTION);
+	
+//	cout << "drawing question: " << hudLabelMap["QuestionTextBox"]->getText() << endl;
+	
 	drawLayer(CLOUDS_HUD_LOWER_THIRD);
 	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
 	drawLayer(CLOUDS_HUD_MAP);
@@ -356,25 +366,37 @@ void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
 }
 
 void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
-    bIsHudOpen = true;
-    
+    //bIsHudOpen = true;
+	
+    if(hudOpenMap[layer]){
+		return;
+	}
+	
     if( layer == CLOUDS_HUD_FULL ){
         for( int i=0; i<layerSets.size(); i++ ){
             for(int k = 0; k < layerSets[(CloudsHUDLayerSet)i].size(); i++){
                 layerSets[(CloudsHUDLayerSet)i][k]->start();
+				hudOpenMap[(CloudsHUDLayerSet)i] = true;
             }
         }
     }
-    else{
+    else {
         for(int i = 0; i < layerSets[layer].size(); i++){
             layerSets[layer][i]->start();
+			hudOpenMap[layer] = true;
         }
+		hudOpenMap[layer] = true;	
     }
+	
+	
 }
 
 void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
-	bIsHudOpen = false;
-    
+	//bIsHudOpen = false;
+	if(!hudOpenMap[layer]){
+		return;
+	}
+
     if( videoPlayer.isPlaying() ){
         videoPlayer.stop();
         videoPlayer.close();
@@ -384,12 +406,14 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
         for( int i=0; i<layerSets.size(); i++ ){
             for(int k = 0; k < layerSets[(CloudsHUDLayerSet)i].size(); i++){
                 layerSets[(CloudsHUDLayerSet)i][k]->close();
+				hudOpenMap[(CloudsHUDLayerSet)i] = false;
             }
         }
     }
     else{
         for(int i = 0; i < layerSets[layer].size(); i++){
             layerSets[layer][i]->close();
+			hudOpenMap[layer] = false;
         }
     }
     
@@ -411,7 +435,7 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
     }else if( layer == CLOUDS_HUD_MAP ){
         
     }else if( layer == CLOUDS_HUD_QUESTION ){
-        
+        hudLabelMap["QuestionTextBox"]->animateOut();
     }
 }
 

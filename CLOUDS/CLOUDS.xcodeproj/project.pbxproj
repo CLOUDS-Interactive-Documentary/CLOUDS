@@ -2885,8 +2885,8 @@
 			children = (
 				64323E85187A4DAE00316058 /* CloudsPortal.h */,
 				64323E84187A4DAE00316058 /* CloudsPortal.cpp */,
-				64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */,
 				64323E87187A4DAE00316058 /* CloudsPortalRing.h */,
+				64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */,
 			);
 			path = Portal;
 			sourceTree = "<group>";
@@ -3370,8 +3370,8 @@
 		E70CDFC518695CCA00955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CDFC618695CCA00955691 /* CloudsIntroSequence.cpp */,
 				E70CDFC718695CCA00955691 /* CloudsIntroSequence.h */,
+				E70CDFC618695CCA00955691 /* CloudsIntroSequence.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";

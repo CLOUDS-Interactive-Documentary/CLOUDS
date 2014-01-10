@@ -82,6 +82,8 @@ class CloudsHUDController {
     bool    bDrawHud;
     bool    bSkipAVideoFrame;
     
+	
+	
     void drawLayer(CloudsHUDLayerSet layer);
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath );
     
@@ -98,7 +100,8 @@ class CloudsHUDController {
                             *ProjectExampleTextboxLeft,
                             *ProjectExampleTextboxRight,
                             *ProjectExampleTextBoxTop;
-    
+	
+    map<CloudsHUDLayerSet,bool>		hudOpenMap;
     map<string, CloudsHUDLabel*>    hudLabelMap;
     ofRectangle hudBounds;
     float scaleAmt;

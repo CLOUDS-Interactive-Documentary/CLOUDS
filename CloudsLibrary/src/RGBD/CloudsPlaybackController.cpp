@@ -140,8 +140,6 @@ void CloudsPlaybackController::setup(){
 //			cout << " Adding Clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
 		}
 	}
-	
-	
 	//////////////SHOW INTRO
 	
 	showIntro( startingNodes );
@@ -261,6 +259,14 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	////////////////////
 	//INTRO
 	if(showingIntro){
+		string questionText = introSequence->getQuestionText();
+		if(questionText != ""){
+			hud.questionHoverOn(questionText);
+		}
+		else{
+			hud.questionHoverOff();
+		}
+		
 		if(introSequence->isStartQuestionSelected()){
 			
 			CloudsPortal* q = introSequence->getSelectedQuestion();
@@ -456,7 +462,6 @@ void CloudsPlaybackController::updateTransition(){
             default:
                 break;
         }
-
 	}		
 }
 
@@ -474,12 +479,11 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 		
 		currentVisualSystem->selfPostDraw();
 		
-		if(numClipsPlayed > 1){
+//		if(){
 			hud.draw();
-		}
+//		}
 		
 		ofPopStyle();
-		
 	}
 	
 	drawDebugOverlay();
@@ -567,19 +571,12 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 	
 	nextVisualSystemPreset = args.preset;
 	
-	//store the preset name for loading later in playNextVisualSystem()
-//	nextPresetName = nextVisualSystem.presetName;
-//	nextSystem = nextVisualSystem.system;
 	
 	//	cout << "CloudsPlaybackController::showVisualSystem SETTING NEXT SYSTEM TO " << nextVisualSystem.presetName << endl;
 	if(nextVisualSystemPreset.system == NULL){
 		ofLogError("CloudsPlaybackController::showVisualSystem") << "Incoming system is NULL";
 	}
 	
-	//most of the time we will be looking at the RGBDVisualSystem
-//	if(currentVisualSystem != rgbdVisualSystem){
-//		playNextVisualSystem();
-//	}
 	if(currentVisualSystem == introSequence ||
 	   currentVisualSystem == clusterMap)
 	{
@@ -594,8 +591,7 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& args)
-{
+void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 	if(showingVisualSystem){
 		float fadeDuration = 1; 
 		transitionController.transitionToInterview(fadeDuration, 1.0);
