@@ -31,13 +31,13 @@ class Ball: public V3{
 		unsigned long tooMuchBouncingThreshold;
 
 		void setPos(float x,float y);
-    Ball(V3 v,int channel, std::string soundfile);
-    Ball(V3 v,float oldX_,float oldY_,float forceX_,float forceY_,float jitter, std::string soundfile);
-    Ball(std::string soundfile);
+    Ball(V3 v,int channel, std::string soundfile, float gain);
+    Ball(V3 v,float oldX_,float oldY_,float forceX_,float forceY_,float jitter, std::string soundfile, float gain);
+    Ball(std::string soundfile, float gain);
 		~Ball();
 		void stepPhysics(float friction);
 		void applyForce(float x,float y);
-    void initMem(std::string soundfile);
+    void initMem(std::string soundfile, float volume);
 		void bounce(float x1,float y1,float x2,float y2, float freqRange);
 		void amnesia();
 };

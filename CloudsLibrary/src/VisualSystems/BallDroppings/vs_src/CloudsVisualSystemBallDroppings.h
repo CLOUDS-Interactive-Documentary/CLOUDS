@@ -160,4 +160,5 @@ protected:
     
     // preset stuff
     ofxUISuperCanvas* customGui;
+    float mainGain;
 };

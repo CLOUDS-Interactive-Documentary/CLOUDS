@@ -10,6 +10,7 @@
 
 CloudsVisualSystemBallDroppings::CloudsVisualSystemBallDroppings()
 {
+
 }
 
 void CloudsVisualSystemBallDroppings::selfSetupGui()
@@ -30,6 +31,8 @@ void CloudsVisualSystemBallDroppings::selfSetupGui()
     customGui->addSlider("BALL BRIGHTNESS", 0, 1, &ballcolor);
     customGui->addSlider("EMITTER BRIGHTNESS", 0, 1, &emitterColor);
     customGui->addSlider("LINES BRIGHTNESS", 0, 1, &linesColor);
+    
+    customGui->addSlider("GAIN", 0, 1, &mainGain);
     
     ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemBallDroppings::selfGuiEvent);
 	guis.push_back(customGui);
@@ -95,9 +98,11 @@ void CloudsVisualSystemBallDroppings::selfSetup()
 	balls = new LinkedList();
 	lines = new LinkedList();
 	emptyBalls = new LinkedList(); //make a new queue for recyclable ball spots.
-	
+
+    mainGain = 0.3f;
+    
 	//load a new ball.
-	Ball *b = new Ball(hole, balls->size(), getVisualSystemDataPath() + "sine.wav");
+	Ball *b = new Ball(hole, balls->size(), getVisualSystemDataPath() + "sine.wav", mainGain);
 	balls->push((long)b);
 	
 	font.loadFont("Verdana.ttf",8);
@@ -366,18 +371,20 @@ void CloudsVisualSystemBallDroppings::step(){
 //--------------------------------------------------------------
 
 void CloudsVisualSystemBallDroppings::createBall(){
-    
+    if (balls->size() - emptyBalls->size() > 10) {
+        return;
+    }
 	//load a new ball.
-	Ball *b = new Ball(hole, balls->size(), getVisualSystemDataPath() + "sine.wav");
+    cout<<"creating ball with gain: "<<mainGain<<endl;
+	Ball *b = new Ball(hole, balls->size(), getVisualSystemDataPath() + "sine.wav", mainGain);
 	b->applyForce(0.0001,0);//give it an initial push
     
-	//search for an empty spot in the list
+//	//search for an empty spot in the list
 	if(emptyBalls->size()>0){
 		balls->set( emptyBalls->unshift(),(long)b);
 	} else {//else, you have to make a new one.
 		balls->push((long)b);
 	}
-	
 }
 
 //--------------------------------------------------------------
