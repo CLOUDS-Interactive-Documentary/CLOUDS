@@ -15,3 +15,8 @@
     <Name>EchoVortex.aif</Name>
     <Value>0</Value>
 </Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Gain</Name>
+    <Value>0.083743840</Value>
+</Widget>

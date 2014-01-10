@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
+    <XPosition>637.000061035</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -22,8 +22,18 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>DayNight2_SND</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>DayNight_2</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DayNight_SND</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -112,7 +122,7 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>NightOcean</Name>
+    <Name>NightOcean_SND</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

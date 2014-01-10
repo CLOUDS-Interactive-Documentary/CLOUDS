@@ -30,7 +30,9 @@ string CloudsVisualSystemOcean::getSystemName(){
 void CloudsVisualSystemOcean::selfSetup(){
 	needsRegenerate = true;
     
+    
     // sound
+    gain = 0;
     synth.setOutputGen(buildSynth());
 }
 

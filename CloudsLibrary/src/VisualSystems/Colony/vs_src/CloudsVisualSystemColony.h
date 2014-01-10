@@ -118,5 +118,7 @@ private:
     ControlTrigger soundTriggers[3];
     ofxTonicSynth synth;
     Generator buildSynth();
+    ControlParameter volumeControl;
+    float gain;
 	void audioRequested(ofAudioEventArgs& args);
 };

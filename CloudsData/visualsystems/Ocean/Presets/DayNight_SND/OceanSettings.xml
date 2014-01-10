@@ -2,18 +2,18 @@
     <Kind>42</Kind>
     <Name>OceanSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1485.000000000</XPosition>
+    <XPosition>849.000061035</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>OCEAN SIZE X</Name>
-    <Value>127.043739319</Value>
+    <Value>239.211517334</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>OCEAN SIZE Y</Name>
-    <Value>141.674285889</Value>
+    <Value>234.334976196</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,17 +23,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>WAVE SPEED</Name>
-    <Value>1.231521130</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WAVE SCALE</Name>
-    <Value>16.256097794</Value>
+    <Value>10.447204590</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WAVE CHOPPINESS</Name>
-    <Value>2.660098314</Value>
+    <Value>1.970437288</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -68,7 +68,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>OCEAN ALPHA</Name>
-    <Value>0.807881176</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -78,5 +78,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FOG DENSITY</Name>
-    <Value>0.112315185</Value>
+    <Value>0.107881688</Value>
 </Widget>

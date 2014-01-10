@@ -95,38 +95,3 @@
     <Name>Shadow</Name>
     <Value>0.500000000</Value>
 </Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>blur_square3.jpg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>darkpointy_square.png</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>dirt.jpg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>dirt2.jpg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>dirt_square.jpg</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>grime_square.png</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>pointy_square.png</Name>
-    <Value>0</Value>
-</Widget>

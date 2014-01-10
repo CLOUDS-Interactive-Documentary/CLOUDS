@@ -9811,7 +9811,27 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Ocean_DayNight2_SND">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Ocean_DayNight_2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Ocean_DayNight_SND">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -10060,16 +10080,6 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Ocean_NightOcean">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
 <system name="Ocean_NightOceanOC">
     <keywords>simulation|nature</keywords>
     <links></links>
@@ -10149,6 +10159,16 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Ocean_NightOcean_SND">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
