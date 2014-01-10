@@ -2704,6 +2704,10 @@ void CloudsVisualSystem::setupKinectGui()
     kinectGui->addRangeSlider("BODY RANGE Z",  0.5f, 4.5f, &kinectInput->boundsMin.z, &kinectInput->boundsMax.z);
     
     kinectGui->addSpacer();
+    kinectGui->addSlider("ACTIVE THRESHOLD Y", 0.0f, 1.0f, &kinectInput->activeThresholdY);
+    kinectGui->addSlider("ACTIVE THRESHOLD Z", 0.0f, 1.0f, &kinectInput->activeThresholdZ);
+    
+    kinectGui->addSpacer();
     kinectGui->addSlider("RESET LERP", 0, 1, &kinectInput->posResetLerpPct);
     kinectGui->addSlider("MOVE LERP", 0, 1, &kinectInput->posSetLerpPct);
     kinectGui->addSlider("MOVE THRESHOLD", 0, 100, &kinectInput->posSetInstantThreshold);
