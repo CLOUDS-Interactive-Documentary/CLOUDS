@@ -186,20 +186,20 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 	cout << "couldn't find ["+type+"]["+option+"] inf the transitionMap" << endl;
 }
 
-void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionType )
+void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionType, string option)
 {
 	//TODO: dow we want to use more then one option per type? if so, should we pass in a string(or enum) to identify it?
 	switch (transitionType) {
 		case CloudsVisualSystem::TWO_DIMENSIONAL:
-			setTransitionNodes("TWO_DIMENSIONAL", "default");
+			setTransitionNodes("TWO_DIMENSIONAL", option);
 			break;
 			
 		case CloudsVisualSystem::WHIP_PAN:
-			setTransitionNodes("WHIP_PAN", "default");
+			setTransitionNodes("WHIP_PAN", option);
 			break;
 			
 		case CloudsVisualSystem::FLY_THROUGH:
-			setTransitionNodes("FLY_THROUGH", "default");
+			setTransitionNodes("FLY_THROUGH", option);
 			break;
 			
 		default:
@@ -727,10 +727,14 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 	t->addToggle("Edit", placingTransitionNodes);
 	t->addToggle("save", &bSaveTransition );
 	
-	//Left/Right toggles
-	t->addSpacer();
-	t->addToggle("LEFT", true);
-	t->addToggle("RIGHT", false);
+	//slider for scrubbing animation
+	t->addSlider("scrubIn", 0, 1, &transitionScrubIn);
+	t->addSlider("scrubOut", 0, 1, &transitionScrubOut);
+	
+//	//Left/Right toggles
+//	t->addSpacer();
+//	t->addToggle("LEFT", true);
+//	t->addToggle("RIGHT", false);
 
 	//ADD OUR OPTION TOGGLES
 	t->addSpacer();
@@ -901,9 +905,13 @@ void CloudsVisualSystemRGBD::clearQuestions(){
 
 //JG NEW TRANSITION STUBS<----- James, I love these! thank you, Lars
 
-void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType)
+void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType, string option)
 {
-	cout << "startTransitionOut(RGBDTransitionType transitionType)" << endl;
+	//set the in/out nodes
+	setTransitionNodes( transitionType, option );
+	
+	//transition to the left or right based on relative posiiton
+	setOutOption((cloudsCamera.getPosition().x - translatedHeadPosition.x) > 0 ? OutLeft : OutRight);
 	
 	//transitionEase = ofxTween::easeOut;
 	transitionEase = ofxTween::easeIn;
@@ -913,9 +921,10 @@ void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionTyp
 	cloudsCamera.setTransitionTargetNode( transitionOutOption == OutLeft? &transitionOutLeft : &transitionOutRight );
 }
 
-void CloudsVisualSystemRGBD::startTransitionIn(RGBDTransitionType transitionType)
+void CloudsVisualSystemRGBD::startTransitionIn(RGBDTransitionType transitionType, string option)
 {
-	cout << "startTransitionIn(RGBDTransitionType transitionType)" << endl;
+	//set the in/out nodes
+	setTransitionNodes(transitionType, option);
 	
 	//transitionEase = ofxTween::easeIn;
 	transitionEase = ofxTween::easeOut;//are we sure we don't want easeInOut?
@@ -929,7 +938,7 @@ void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
 {
 	if(transitioning)
 	{
-		float easedPercent = ofxTween::map(percentComplete, 0, 1, 0.001, .999, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
+		float easedPercent = ofxTween::map(percentComplete, 0, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
 		cloudsCamera.setTransitionPercent( easedPercent );
 		
 		cout <<"TRANSITIONING : easedValue = "<< easedPercent << endl;
@@ -1665,6 +1674,39 @@ void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e)
 				{
 					setOutOption( OutRight );
 					((ofxUIToggle*)guiIt.second->getWidget("LEFT"))->setValue( false );
+				}
+				
+				else if(name == "scrubIn")
+				{
+					StopEditTransitionMode();
+					
+					//transitionEase = ofxTween::easeIn;
+					transitionEase = ofxTween::easeOut;//are we sure we don't want easeInOut?
+					transitioning = true;
+					
+					cloudsCamera.setTransitionStartNode( &transitionInStart );
+					cloudsCamera.setTransitionTargetNode( &cloudsCamera.mouseBasedNode );
+					
+					updateTransition(transitionScrubIn);
+					transitioning = false;
+				}
+				
+				else if(name == "scrubOut")
+				{
+					StopEditTransitionMode();
+					
+					//transition to the left or right based on relative posiiton
+					setOutOption((cloudsCamera.getPosition().x - translatedHeadPosition.x) > 0 ? OutLeft : OutRight);
+					
+					//transitionEase = ofxTween::easeOut;
+					transitionEase = ofxTween::easeIn;
+					transitioning = true;
+					
+					cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
+					cloudsCamera.setTransitionTargetNode( transitionOutOption == OutLeft? &transitionOutLeft : &transitionOutRight );
+					
+					updateTransition(transitionScrubOut);
+					transitioning = false;
 				}
 
 				else if( name == "DriveIn")
