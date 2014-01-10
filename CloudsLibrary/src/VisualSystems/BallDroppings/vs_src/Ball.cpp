@@ -8,11 +8,11 @@
 
 
 //----------------------------------------------------
-Ball::Ball(std::string soundfile){
-    initMem(soundfile);
+Ball::Ball(std::string soundfile, float gain){
+    initMem(soundfile, volume);
 }
 //----------------------------------------------------
-void Ball::initMem(std::string soundfile){
+void Ball::initMem(std::string soundfile, float gain){
   oldPos.copyFrom(0,0,0);
   force.copyFrom(0,0,0);
   netstr = new char[16];
@@ -20,7 +20,7 @@ void Ball::initMem(std::string soundfile){
   volume = 0;
   
   sound.loadSound(soundfile);
-  sound.setVolume(0.75f);
+  sound.setVolume(gain);
   
   lastBounceTimes = new long[16];
   jitter = 0;
@@ -28,14 +28,14 @@ void Ball::initMem(std::string soundfile){
   tooMuchBouncingThreshold = 300;
 }
 //----------------------------------------------------
-Ball::Ball(V3 v, int _channel, std::string soundfile):V3(v.x,v.y,0){
-  initMem(soundfile);
+Ball::Ball(V3 v, int _channel, std::string soundfile, float gain):V3(v.x,v.y,0){
+  initMem(soundfile, gain);
   oldPos.copyFrom(v.x,v.y,0);
   channel = _channel;
 }
 //------------------------------------------------------------------------------
-Ball::Ball(V3 v,float oldX_,float oldY_,float forceX_,float forceY_,float jitter, std::string soundfile):V3(v.x,v.y,0){
-  initMem(soundfile);
+Ball::Ball(V3 v,float oldX_,float oldY_,float forceX_,float forceY_,float jitter, std::string soundfile, float gain):V3(v.x,v.y,0){
+  initMem(soundfile, gain);
   copyFrom(v);
   oldPos.copyFrom(oldX_,oldY_,0);
   force.copyFrom(forceX_,forceY_);
@@ -101,7 +101,7 @@ void Ball::bounce(float x1,float y1,float x2,float y2, float freqRange){
   if (bounceTimeDelta<tooMuchBouncingThreshold){ //softeners for the balls
     force.copyFrom(0,0);//make it still
   } else { 
-      unsigned long freq = force.getLength() * freqRange;
+      unsigned long freq = 60 + force.getLength() * freqRange;
 	sound.setSpeed(freq/44100.0);
 	sound.play();
     jitter = force.getLength()/2;
