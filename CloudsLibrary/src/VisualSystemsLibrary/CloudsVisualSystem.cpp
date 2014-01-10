@@ -16,6 +16,8 @@
 #include "ofxAVFVideoPlayer.h"
 #endif
 
+static bool bShowMouseCursor = false;
+
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
 static CloudsRGBDVideoPlayer rgbdPlayer;
@@ -197,6 +199,13 @@ void CloudsVisualSystem::setup(){
 	if(bIsSetup){
 		return;
 	}
+    
+    if (bShowMouseCursor) {
+        ofShowCursor();
+    }
+    else {
+        ofHideCursor();
+    }
 	
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 	
@@ -766,6 +775,16 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
             }
         }
 		break;
+            
+        case 'C':
+            bShowMouseCursor ^= true;
+            if (bShowMouseCursor) {
+                ofShowCursor();
+            }
+            else {
+                ofHideCursor();
+            }
+            break;
 		
 		case 'T':
 			cameraTrack->addKeyframe();
