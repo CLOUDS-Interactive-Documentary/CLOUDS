@@ -481,7 +481,9 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			selfPostDraw();
 		}
 		
-        selfDrawCursor();
+#ifndef OCULUS_RIFT
+        drawCursor();
+#endif
 	}
     
 	if(timeline != NULL && timeline->getIsShowing())
@@ -543,19 +545,32 @@ void CloudsVisualSystem::drawScene(){
 	
 
 #ifdef OCULUS_RIFT
-	if(drawCursorMode > DRAW_CURSOR_NONE){
-		ofPushMatrix();
-		ofPushStyle();
-		oculusRift.multBillboardMatrix();
-	//	ofNoFill();
-	//	ofSetColor(255, 50);
-	//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
-		ofSetColor(240,240,255, 175);
-//		ofSetLineWidth(2);
-//		ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, .15, .1, true, ofxEasingQuad()));
-		ofPopStyle();
-		ofPopMatrix();
-	}
+    if(drawCursorMode > DRAW_CURSOR_NONE){
+        ofPushStyle();
+        ofPushMatrix();
+        glPushAttrib(GL_ALL_ATTRIB_BITS);
+        glDisable(GL_LIGHTING);
+        glDisable(GL_DEPTH_TEST);
+        
+        ofTranslate(getCameraRef().getPosition());
+        ofMatrix4x4 baseRotation;
+        baseRotation.makeRotationMatrix(getCameraRef().getOrientationQuat());
+        if(getOculusRift().lockView){
+            ofMultMatrix(baseRotation);
+        }
+        else {
+            ofMultMatrix(getOculusRift().getOrientationMat() * baseRotation);
+        }
+        
+        ofEnableAlphaBlending();
+        
+        ofVec3f cursorPt = ofVec3f(0, 0, -150);
+        selfDrawCursor(cursorPt, true);
+        
+        glPopAttrib();
+        ofPopMatrix();
+        ofPopStyle();
+    }
 #endif
 	
 }
@@ -3320,39 +3335,46 @@ void CloudsVisualSystem::selfPostDraw(){
 
 }
 
-void CloudsVisualSystem::selfDrawCursor()
+void CloudsVisualSystem::drawCursor()
 {
     if (drawCursorMode > DRAW_CURSOR_NONE) {
-        ofPushMatrix();
-        ofPushStyle();
-        ofNoFill();
-        ofSetLineWidth(2);
         map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
         for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
             if (drawCursorMode == DRAW_CURSOR_PRIMARY && !it->second.primary) {
                 continue;
             }
             
-            if (it->second.actionType == 0) {
-                ofSetColor(213, 69, 62, 255);
-                ofCircle(it->second.position.x, it->second.position.y,
-                         ofMap(it->second.position.z, 2, -2, 3, 10, true));
-            }
-//            else if (it->second.primary) {
-//                ofSetColor(240, 240, 100, 175);
-//            }
-            else {
-                ofSetColor(255, 255, 255, 175);
-                ofCircle(it->second.position.x, it->second.position.y,
-                         ofMap(it->second.position.z, 2, -2, 3, 6, true));
-            }
-//            cout << " z pos " << it->second.position.z << endl;
+            selfDrawCursor(it->second.position, it->second.actionType == 0);
         }
-        ofPopStyle();
-        ofPopMatrix();
     }
 }
-	
+
+void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
+{
+    ofPushStyle();
+    ofNoFill();
+    ofSetLineWidth(2);
+    if (bDragged) {
+        ofSetColor(213, 69, 62, 255);
+#ifdef OCULUS_RIFT
+        ofCircle(pos, 6);
+#else
+        ofCircle(pos.x, pos.y,
+                 ofMap(pos.z, 2, -2, 3, 6, true));
+#endif
+    }
+    else {
+        ofSetColor(255, 255, 255, 175);
+#ifdef OCULUS_RIFT
+        ofCircle(pos, 10);
+#else
+        ofCircle(pos.x, pos.y,
+                 ofMap(pos.z, 2, -2, 3, 10, true));
+#endif
+    }
+    ofPopStyle();
+}
+
 void CloudsVisualSystem::selfExit()
 {
     

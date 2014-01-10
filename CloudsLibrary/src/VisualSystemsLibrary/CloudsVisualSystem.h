@@ -87,7 +87,7 @@ class CloudsVisualSystem {
     virtual void selfDraw();
 	virtual void selfDrawOverlay();
 	virtual void selfPostDraw();
-    virtual void selfDrawCursor();
+    virtual void selfDrawCursor(ofVec3f& pos, bool bDragged);
 	virtual void selfPresetLoaded(string presetPath);
 	
     virtual void selfExit();
@@ -189,6 +189,8 @@ class CloudsVisualSystem {
 	void drawBackgroundGradient();
     void draw2dSystemPlane();
     void ofLayerGradient(const ofColor& start, const ofColor& end);
+    
+    void drawCursor();
 	
     //Core Param Setup
     void setupAppParams();
