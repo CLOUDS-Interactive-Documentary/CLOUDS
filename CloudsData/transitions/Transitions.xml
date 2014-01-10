@@ -79,9 +79,9 @@
         <INDEX>3</INDEX>
         <NAME>default</NAME>
         <InStartPos>
-            <x>-26</x>
-            <y>-397.251</y>
-            <z>-1918.89</z>
+            <x>-11.631</x>
+            <y>-154.764</y>
+            <z>-438.688</z>
         </InStartPos>
         <OutRightPos>
             <x>-375.227</x>
@@ -94,10 +94,10 @@
             <z>417.171</z>
         </OutLeftPos>
         <InStartQuat>
-            <x>0.000497661</x>
-            <y>-0.997051</y>
-            <z>0.0811234</z>
-            <w>0.00485066</w>
+            <x>0.000500282</x>
+            <y>-0.996969</y>
+            <z>0.0811167</z>
+            <w>0.00484759</w>
         </InStartQuat>
         <OutLeftQuat>
             <x>0.0110115</x>

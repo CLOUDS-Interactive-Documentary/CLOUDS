@@ -921,6 +921,29 @@ void CloudsVisualSystemRGBD::clearQuestions(){
 
 //JG NEW TRANSITION STUBS<----- James, I love these! thank you, Lars
 
+void CloudsVisualSystemRGBD::startCurrentTransitionOut()
+{
+	//transition to the left or right based on relative posiiton
+	setOutOption((cloudsCamera.getPosition().x - translatedHeadPosition.x) > 0 ? OutLeft : OutRight);
+	
+	//transitionEase = ofxTween::easeOut;
+	transitionEase = ofxTween::easeIn;
+	transitioning = true;
+	
+	cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
+	cloudsCamera.setTransitionTargetNode( transitionOutOption == OutLeft? &transitionOutLeft : &transitionOutRight );
+}
+
+void CloudsVisualSystemRGBD::startCurrentTransitionIn()
+{
+	//transitionEase = ofxTween::easeIn;
+	transitionEase = ofxTween::easeOut;//are we sure we don't want easeInOut?
+	transitioning = true;
+	
+	cloudsCamera.setTransitionStartNode( &transitionInStart );
+	cloudsCamera.setTransitionTargetNode( &cloudsCamera.mouseBasedNode );
+}
+
 void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType, string option)
 {
 	//set the in/out nodes
