@@ -1533,10 +1533,10 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 	glDisable(GL_DEPTH_TEST);
 	CloudsPortal::shader.begin();
 	CloudsPortal::shader.setUniform1i("doAttenuate", 0);
-	if(leftPortal.question != ""){
+	if(leftPortal.question != "" || bPortalDebugOn){
 		leftPortal.draw();
 	}
-	if(rightPortal.question != ""){
+	if(rightPortal.question != "" || bPortalDebugOn){
 		rightPortal.draw();
 	}
 	CloudsPortal::shader.end();

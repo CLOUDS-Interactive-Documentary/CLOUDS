@@ -36,7 +36,7 @@ void main(void)
 	timerGeoFlag    = gl_MultiTexCoord0.s; //are we part of the timer mesh
 	
 	vec4 pos = gl_Vertex*rotationMatrix(vec3(0.,0.,1.), rotate * gl_Normal.x);
-	pos.z += pow(ringPosition, 1.2) * 20.0;
+	pos.z -= pow(ringPosition, 1.2) * 20.0;
 	vec4 eyePos = gl_ModelViewMatrix * pos;
 	zDist = -eyePos.z;
 	
