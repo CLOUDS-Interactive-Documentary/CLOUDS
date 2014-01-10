@@ -159,19 +159,32 @@ void CloudsVisualSystemRGBD::loadShader(){
 
 void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 {
-	if(transitionMap.find(type) != transitionMap.end())
+	TransitionInfo ti;
+	ofQuaternion q;
+	
+	//just in case... maybe this fails a little more gracefully
+	if(transitionMap[type].find( option ) != transitionMap[type].end())
 	{
-		TransitionInfo ti;
-		ofQuaternion q;
+		ti = transitionMap[type][option];
+	}else{
+		ti = transitionMap[type]["default"];
+	}
+	
+	if(type == "QUESTION")
+	{
+		q.set( getCameraRef().getOrientationQuat() );
 		
-		//just in case... maybe this fails a little more gracefully
-		if(transitionMap[type].find( option ) != transitionMap[type].end())
-		{
-			ti = transitionMap[type][option];
-		}else{
-			ti = transitionMap[type]["default"];
-		}
-		
+		transitionInStart.setPosition( ti.inStartPos + translatedHeadPosition );
+		transitionInStart.setOrientation( q );
+
+		transitionOutLeft.setPosition( ti.outLeftPos + translatedHeadPosition);
+		transitionOutLeft.setOrientation( q );
+
+		transitionOutRight.setPosition( ti.outRightPos + translatedHeadPosition);
+		transitionOutRight.setOrientation( q );
+	}
+	else if(transitionMap.find(type) != transitionMap.end())
+	{	
 		transitionInStart.setPosition( ti.inStartPos + translatedHeadPosition );
 		q.set( ti.inQuat );
 		transitionInStart.setOrientation( q );
