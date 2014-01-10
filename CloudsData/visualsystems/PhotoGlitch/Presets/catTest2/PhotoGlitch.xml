@@ -8,17 +8,17 @@
 <Widget>
     <Kind>44</Kind>
     <Name>DELAY B/W TWEENS</Name>
-    <Value>2</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>NUM COLS</Name>
-    <Value>172</Value>
+    <Value>48</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>NUM ROWS</Name>
-    <Value>173</Value>
+    <Value>48</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -38,17 +38,17 @@
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW BACKGROUND</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>TWEEN DURATION</Name>
-    <Value>562</Value>
+    <Value>463</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>TWEEN DELAY</Name>
-    <Value>0</Value>
+    <Value>5</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -88,6 +88,16 @@
 <Widget>
     <Kind>17</Kind>
     <Name>ArtGlitch.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blue.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>BronzeGreen.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -137,6 +147,26 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>Gold.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Gray.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Green.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Memory.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>QRcodes.jpg</Name>
     <Value>0</Value>
 </Widget>
@@ -163,6 +193,11 @@
 <Widget>
     <Kind>17</Kind>
     <Name>dogs.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>memory_bw.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
