@@ -969,11 +969,13 @@ void CloudsVisualSystemRGBD::startCurrentTransitionIn()
 
 void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType, string option)
 {
-	if( transitionType == QUESTION)
-	{
-		transitionOutLeft.setOrientation( getCameraRef().getOrientationQuat() );
-		transitionOutRight.setOrientation( getCameraRef().getOrientationQuat() );
-	}
+	//I think this'll happen in setTransitionNodes
+	//if( transitionType == QUESTION)
+	//{
+	//	transitionOutLeft.setOrientation( getCameraRef().getOrientationQuat() );
+	//	transitionOutRight.setOrientation( getCameraRef().getOrientationQuat() );
+	//}
+	
 	//set the in/out nodes
 	setTransitionNodes( transitionType, option );
 	
