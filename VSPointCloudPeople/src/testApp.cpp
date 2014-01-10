@@ -97,10 +97,8 @@ void testApp::updateTransitions(){
 			
 			ofLogNotice("testApp::updateTransitions") << "Going to INTERVIEW OUT";
 			
-			////Dear James, you can use this to tell it to go left or right on transition out.
-			//rgbd.setOutOption( CloudsVisualSystemRGBD::OutRight or CloudsVisualSystemRGBD::OutLeft );
-			
-			rgbd.startTransitionOut( type );
+			//rgbd.startTransitionOut( type );
+			rgbd.startCurrentTransitionOut();
 		}
 		else if(transitionController.getCurrentState() == TRANSITION_VISUALSYSTEM_IN){
 			
@@ -118,7 +116,8 @@ void testApp::updateTransitions(){
 			ofLogNotice("testApp::updateTransitions") << "Going to INTERVIEW IN";
 			
 			rgbd.playSystem();
-			rgbd.startTransitionIn( type );
+			//rgbd.startTransitionIn( type );
+			rgbd.startCurrentTransitionIn();
 		}
 		else if(transitionController.getCurrentState() == TRANSITION_IDLE){
 			

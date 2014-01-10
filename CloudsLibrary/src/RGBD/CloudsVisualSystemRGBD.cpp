@@ -161,26 +161,31 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 {
 	if(transitionMap.find(type) != transitionMap.end())
 	{
+		TransitionInfo ti;
+		ofQuaternion q;
+		
+		//just in case... maybe this fails a little more gracefully
 		if(transitionMap[type].find( option ) != transitionMap[type].end())
 		{
-			ofQuaternion q;
-			
-			//??? when do we get the translated head position? we need to make sure this happens at the correct time
-			transitionInStart.setPosition( transitionMap[type][option].inStartPos + translatedHeadPosition );
-			q.set( transitionMap[type][option].inQuat );
-			transitionInStart.setOrientation( q );
-			
-			transitionOutLeft.setPosition( transitionMap[type][option].outLeftPos + translatedHeadPosition);
-			q.set( transitionMap[type][option].outLeftQuat );
-			transitionOutLeft.setOrientation( q );
-			
-			transitionOutRight.setPosition( transitionMap[type][option].outRightPos + translatedHeadPosition);
-			q.set( transitionMap[type][option].outRightQuat );
-			transitionOutRight.setOrientation( q );
-			
-			cout << "transitions set to: " + type + " : "+ option << endl;
-			return;
+			ti = transitionMap[type][option];
+		}else{
+			ti = transitionMap[type]["default"];
 		}
+		
+		transitionInStart.setPosition( ti.inStartPos + translatedHeadPosition );
+		q.set( ti.inQuat );
+		transitionInStart.setOrientation( q );
+		
+		transitionOutLeft.setPosition( ti.outLeftPos + translatedHeadPosition);
+		q.set( ti.outLeftQuat );
+		transitionOutLeft.setOrientation( q );
+		
+		transitionOutRight.setPosition( ti.outRightPos + translatedHeadPosition);
+		q.set( ti.outRightQuat );
+		transitionOutRight.setOrientation( q );
+		
+		cout << "transitions set to: " + type + " : "+ option << endl;
+		return;
 	}
 	
 	cout << "couldn't find ["+type+"]["+option+"] inf the transitionMap" << endl;
@@ -203,7 +208,7 @@ void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionTy
 			break;
 			
 		default:
-			setTransitionNodes("FLY_THROUGH", "default");
+			setTransitionNodes("WHIP_PAN", "default");
 			break;
 	}
 }
@@ -400,8 +405,6 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	updateQuestions();
 	updateTransition();
-    
-//    cloudsCaption.update();
 	
 	if( placingTransitionNodes )
 	{
@@ -490,7 +493,7 @@ void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
 	//load the option data
 	string path =GetCloudsDataPath() + "transitions/" + filename + ".xml";
 	
-	cout << path << endl;
+	//cout << path << endl;
 	
 	ofxXmlSettings *XML = new ofxXmlSettings();
 	XML->loadFile( path );
@@ -506,7 +509,7 @@ void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
 		transitionMap[typeName];
 		
 		
-		cout << typeName << endl;
+		//cout << typeName << endl;
 		
 		int numOptions = XML->getNumTags("OPTION");
 		for(int j=0; j<numOptions; j++)
@@ -515,7 +518,7 @@ void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
 			string optionName = XML->getValue("NAME", "NULL", 0);
 			
 			
-			cout << optionName << endl;
+			//cout << optionName << endl;
 			
 			transitionMap[typeName][optionName];
 			TransitionInfo* ti = &transitionMap[typeName][optionName];
@@ -551,7 +554,7 @@ void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
 			XML->popTag();
 		}
 		
-		cout << "--------" << endl;
+		//cout << "--------" << endl;
 		
 		XML->popTag();
 	}
@@ -816,7 +819,8 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 		portals[i]->update();
 		
 		#ifdef OCULUS_RIFT
-		ofVec3f screenPos = getOculusRift().worldToScreen(startQuestions[i].hoverPosition, true);
+		ofVec3f screenPos = getOculusRift().worldToScreen(portals[i]->hoverPosition, true);
+        ofRectangle viewport = getOculusRift().getOculusViewport();
 		float distanceToQuestion = ofDist(screenPos.x, screenPos.y,
 										  viewport.getCenter().x, viewport.getCenter().y);
 		#else
@@ -915,6 +919,29 @@ void CloudsVisualSystemRGBD::clearQuestions(){
 
 
 //JG NEW TRANSITION STUBS<----- James, I love these! thank you, Lars
+
+void CloudsVisualSystemRGBD::startCurrentTransitionOut()
+{
+	//transition to the left or right based on relative posiiton
+	setOutOption((cloudsCamera.getPosition().x - translatedHeadPosition.x) > 0 ? OutLeft : OutRight);
+	
+	//transitionEase = ofxTween::easeOut;
+	transitionEase = ofxTween::easeIn;
+	transitioning = true;
+	
+	cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
+	cloudsCamera.setTransitionTargetNode( transitionOutOption == OutLeft? &transitionOutLeft : &transitionOutRight );
+}
+
+void CloudsVisualSystemRGBD::startCurrentTransitionIn()
+{
+	//transitionEase = ofxTween::easeIn;
+	transitionEase = ofxTween::easeOut;//are we sure we don't want easeInOut?
+	transitioning = true;
+	
+	cloudsCamera.setTransitionStartNode( &transitionInStart );
+	cloudsCamera.setTransitionTargetNode( &cloudsCamera.mouseBasedNode );
+}
 
 void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType, string option)
 {
