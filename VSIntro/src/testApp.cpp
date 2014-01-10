@@ -1,9 +1,23 @@
 #include "testApp.h"
+#ifdef KINECT_INPUT
+#include "CloudsInputKinectOSC.h"
+#endif
+#ifdef OCULUS_RIFT
+#include "CloudsInputOculus.h"
+#endif
 
 //--------------------------------------------------------------
 void testApp::setup(){
 	
+	ofBackground(0);
+	
 	ofSetVerticalSync(true);
+    
+#if defined(KINECT_INPUT)
+    SetCloudsInputKinect();
+#elif defined(OCULUS_RIFT)
+    SetCloudsInputOculus();
+#endif
 	
 	//////////////SHOW INTRO
     parser.loadFromFiles();
@@ -29,10 +43,12 @@ void testApp::setup(){
 
 	intro.setup();
 #ifdef OCULUS_RIFT
-	intro.loadPresetGUISFromName("Oculus");
+//	intro.loadPresetGUISFromName("Oculus");
 #else
-	intro.loadPresetGUISFromName("TunnelWarp");
+//	intro.loadPresetGUISFromName("TunnelWarp");
 #endif
+	//temp
+	intro.loadPresetGUISFromName("Working");
 	intro.playSystem();
 	//////////////SHOW INTRO
 
@@ -77,7 +93,15 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-
+#ifdef OCULUS_RIFT
+    // EZ: Override CloudsInputSystem just to get the thing started
+    // since we can't click with Oculus input.
+    ofMouseEventArgs args;
+    args.x = x;
+    args.y = y;
+    args.button = button;
+    intro.selfMousePressed(args);
+#endif
 }
 
 //--------------------------------------------------------------

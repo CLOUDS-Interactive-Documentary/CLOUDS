@@ -131,6 +131,8 @@ protected:
 	// Sound
     ofxUISuperCanvas* soundGui;
     float volume[4] = {0};
+    float fMainGain;
+    ControlParameter mainGain;
     ControlParameter volumeControl[4];
     ControlTrigger soundTriggers[3];
     ControlParameter mouseX, mouseY, mouseSpeed, totalSpeed;

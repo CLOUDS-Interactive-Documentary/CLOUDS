@@ -6,81 +6,75 @@
     <YPosition>24.000000000</YPosition>
 </Canvas>
 <Widget>
-    <Kind>25</Kind>
-    <Name>body h</Name>
-    <Value>0.645320177</Value>
+    <Kind>6</Kind>
+    <Name>body h range</Name>
+    <HighValue>0.635468006</HighValue>
+    <LowValue>0.551724136</LowValue>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>body s</Name>
-    <Value>0.857142866</Value>
+    <Value>0.448275864</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>body b</Name>
-    <Value>0.645320177</Value>
+    <Value>0.275862068</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>body alpha</Name>
-    <Value>0.182266012</Value>
+    <Value>0.413793117</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>tentacles h</Name>
-    <Value>0.645320177</Value>
+    <Kind>6</Kind>
+    <Name>tentacles h range</Name>
+    <HighValue>0.635468006</HighValue>
+    <LowValue>0.561576366</LowValue>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>tentacles s</Name>
-    <Value>0.748768449</Value>
+    <Value>0.970443368</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>tentacles b</Name>
-    <Value>0.857142866</Value>
+    <Value>0.615763545</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>pulse amt (range)</Name>
-    <HighValue>0.356650263</HighValue>
-    <LowValue>0.149753690</LowValue>
+    <HighValue>0.273891687</HighValue>
+    <LowValue>0.208867058</LowValue>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>width average</Name>
-    <Value>21.231527328</Value>
+    <Kind>6</Kind>
+    <Name>width range</Name>
+    <HighValue>51.182266235</HighValue>
+    <LowValue>33.399017334</LowValue>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>width std dev</Name>
-    <Value>13.793103218</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>length average</Name>
-    <Value>19.359605789</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>length std dev</Name>
-    <Value>9.852216721</Value>
+    <Kind>6</Kind>
+    <Name>length range</Name>
+    <HighValue>70.837440491</HighValue>
+    <LowValue>51.182266235</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>spherical segment (range)</Name>
-    <HighValue>1.876441479</HighValue>
-    <LowValue>1.226458907</LowValue>
+    <HighValue>2.282684326</HighValue>
+    <LowValue>1.969298840</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>superformula m1 (range)</Name>
-    <HighValue>12.197046280</HighValue>
-    <LowValue>7.054187775</LowValue>
+    <HighValue>6.965518475</HighValue>
+    <LowValue>5.901477814</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>superformula m2 (range)</Name>
-    <HighValue>7.054186821</HighValue>
-    <LowValue>4.305418968</LowValue>
+    <HighValue>7.231526852</HighValue>
+    <LowValue>5.901477814</LowValue>
 </Widget>

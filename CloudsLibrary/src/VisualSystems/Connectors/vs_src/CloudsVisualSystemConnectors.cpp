@@ -36,6 +36,7 @@ void CloudsVisualSystemConnectors::selfSetupGui(){
 	soundGui->copyCanvasProperties(gui);
 	soundGui->setName("CONNECTORS Sound");
 	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    soundGui->addSlider("gain", 0.0, 1.0, &gain);
 
     soundGui->addToggle(soundFiles[0], &playSample[0]);
 
@@ -83,7 +84,10 @@ void CloudsVisualSystemConnectors::guiRenderEvent(ofxUIEventArgs &e){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemConnectors::selfSetup(){
-	
+    
+    
+    gain = 0;
+    
 	videoLoaded = false;
 	
 	if(ofFile::doesFileExist(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov")){
@@ -142,6 +146,7 @@ void CloudsVisualSystemConnectors::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemConnectors::selfUpdate(){
+    volumeControl.value(gain);
 	generator.update();
 
 }
@@ -181,7 +186,10 @@ void CloudsVisualSystemConnectors::selfEnd(){
 	
 	simplePointcloud.clear();
 	
+    volumeControl.value(0);
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemConnectors::audioRequested);
+    
+    
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemConnectors::selfExit(){
@@ -229,7 +237,7 @@ Generator CloudsVisualSystemConnectors::buildSynth()
     
     Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
     
-    return sampleGen1 * 1.0f;
+    return sampleGen1 * volumeControl;
 }
 
 void CloudsVisualSystemConnectors::audioRequested(ofAudioEventArgs& args)

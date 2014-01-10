@@ -59,23 +59,20 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void selfSetupCameraGui();
 	
 	ofCamera& getCameraRef(){
-//		if(useDebugCamera){
-//			return camera;
-//		}
-//		else{
-			return warpCamera;
-//		}
+		return warpCamera;
 	}
 	
 	void selfPresetLoaded(string presetPath);
 	
 	void setStartQuestions(vector<CloudsClip>& possibleStartQuestions);
+
 	bool isStartQuestionSelected();
+	bool istStartQuestionHovering();
+	
+	string getQuestionText();
+	
 	void autoSelectQuestion();
 	CloudsPortal* getSelectedQuestion();
-//	CloudsRun& getSelectedRun(){
-//		return currentRun;
-//	};
 	
   protected:
 		
@@ -87,11 +84,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float questionWrapDistance;
 	float cameraForwardSpeed;
 	
-	float questionTugMinDepth;
-	float questionTugMinDistance;
-	float questionTugMaxDistance;
-	float questionScale;
-	float questionTunnelInnerRadius;
 	
 	bool startedOnclick;
 	
@@ -117,14 +109,21 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofxFTGLSimpleLayout questionFont;
     void rebuildQuestionFont();
     int questionFontSize;
+	
+	float questionScale;
+	ofRange questionTugDistance;
+	ofRange questionAttenuateDistance;
+	
+	bool bQuestionDebug;
 	float questionLineLength;
     float questionLineSpacing;
-
-	
+	float questionTunnelInnerRadius;
+	float questionMinZDistance;
 	float currentFontSize;
 	float currentFontExtrusion;
 
 	void positionStartQuestions();
+	
 	vector<CloudsPortal> startQuestions;
 	CloudsPortal* selectedQuestion;
 	CloudsPortal* caughtQuestion;
@@ -141,7 +140,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofMesh tunnelMeshLoose;
 	
 	bool useDebugCamera;
-//	ofxGameCamera camera;
 	ofCamera warpCamera;
 	
 	float camWobbleRange;
@@ -168,6 +166,12 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float tunnelDistance;
 	float tunnelStartZ;
 	
+    
+    //hack with get input not working
+    ofVec2f inputPosition;
+    
+    
+	bool regenerateTunnel;
 	void generateTunnel();
 	float looseTunnelResolutionX;
 	float looseTunnelResolutionZ;

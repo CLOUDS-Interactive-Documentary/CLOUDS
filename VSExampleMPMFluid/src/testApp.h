@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "ofxUI.h"
 #include "CloudsVisualSystemExampleMPMFluid.h"
-#include "CloudsInputKinectOSC.h"
+//#include "CloudsInputKinectOSC.h"
 #include "CloudsMixer.h"
 
 

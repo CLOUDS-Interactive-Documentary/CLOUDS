@@ -194,6 +194,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float traverseHomingMinDistance;
 	float traverseMinSolvedDistance;
 	float traverseLineWidth;
+	bool autoTraversePoints;
 	
 	//colors~
 	bool matchLineColor;
@@ -206,6 +207,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float lineFlickerIntensity;
 	float lineFlickerFrequency;
 	float lineFlickerDampening;
+	bool bSmoothLines;
 	
 	bool matchTraversalColor;
 	ofFloatColor traverseHeadColorHSV;
@@ -213,7 +215,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofFloatColor traverseTailColorHSV;
 	ofFloatColor traverseTailColorRGB;
 	float traverseFalloff;
-
+	
+	
 	ofFloatImage flickerNoise;
 	ofFloatPixels flickerNoiseTarget;
 	ofFloatColor optionColorHSV;

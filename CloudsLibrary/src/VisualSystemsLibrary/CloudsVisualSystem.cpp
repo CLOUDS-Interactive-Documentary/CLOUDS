@@ -4,6 +4,10 @@
 #include "CloudsGlobal.h"
 #include "CloudsInput.h"
 
+#ifdef KINECT_INPUT
+#include "CloudsInputKinectOSC.h"
+#endif
+
 #ifdef TARGET_OSX
 #include "ofxSystemTextbox.h"
 #endif
@@ -129,7 +133,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	bBarGradient = false;
     bMatchBackgrounds = false;
 	bIs2D = false;
-	bDrawCursor = true;
+	drawCursorMode = DRAW_CURSOR_NONE;
 	updateCyclced = false;
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
@@ -304,27 +308,6 @@ void CloudsVisualSystem::setKeywords(string main, vector<string> allKeywords){
 	keywords = allKeywords;
 }
 
-//float CloudsVisualSystem::getSecondsRemaining(){
-//	return secondsRemaining;
-//}
-//
-//void CloudsVisualSystem::setSecondsRemaining(float seconds){
-//	secondsRemaining = seconds;
-//}
-
-
-//string CloudsVisualSystem::getCurrentKeyword(){
-//	return currentKeyword;
-//}
-
-//void CloudsVisualSystem::setCurrentTopic(string topic){
-//	currentTopic = topic;
-//}
-//
-//string CloudsVisualSystem::getCurrentTopic(){
-//	return currentTopic;
-//}
-
 void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
 									  string speakerLastName,
 									  string quoteName)
@@ -471,12 +454,12 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		
 		//draw the fbo to the screen as a full screen quad
 		if(bDrawToScreen){
-//			if(getSystemName() != "_Intro"){
-//				cout << "Post draw should not have happened";
-//			}
 			selfPostDraw();
 		}
 		
+#ifndef OCULUS_RIFT
+        drawCursor();
+#endif
 	}
     
 	if(timeline != NULL && timeline->getIsShowing())
@@ -538,19 +521,32 @@ void CloudsVisualSystem::drawScene(){
 	
 
 #ifdef OCULUS_RIFT
-	if(bDrawCursor){
-		ofPushMatrix();
-		ofPushStyle();
-		oculusRift.multBillboardMatrix();
-	//	ofNoFill();
-	//	ofSetColor(255, 50);
-	//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
-		ofSetColor(240,240,255, 175);
-//		ofSetLineWidth(2);
-//		ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, .15, .1, true, ofxEasingQuad()));
-		ofPopStyle();
-		ofPopMatrix();
-	}
+    if(drawCursorMode > DRAW_CURSOR_NONE){
+        ofPushStyle();
+        ofPushMatrix();
+        glPushAttrib(GL_ALL_ATTRIB_BITS);
+        glDisable(GL_LIGHTING);
+        glDisable(GL_DEPTH_TEST);
+        
+        ofTranslate(getCameraRef().getPosition());
+        ofMatrix4x4 baseRotation;
+        baseRotation.makeRotationMatrix(getCameraRef().getOrientationQuat());
+        if(getOculusRift().lockView){
+            ofMultMatrix(baseRotation);
+        }
+        else {
+            ofMultMatrix(getOculusRift().getOrientationMat() * baseRotation);
+        }
+        
+        ofEnableAlphaBlending();
+        
+        ofVec3f cursorPt = ofVec3f(0, 0, -150);
+        selfDrawCursor(cursorPt, 0);
+        
+        glPopAttrib();
+        ofPopMatrix();
+        ofPopStyle();
+    }
 #endif
 	
 }
@@ -639,6 +635,16 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
         case '5':
             toggleGuiAndPosition(lgtGui);
             break;
+#ifdef KINECT_INPUT
+        case '8':
+            toggleGuiAndPosition(kinectGui);
+            break;
+#endif
+#ifdef OCULUS_RIFT
+        case '9':
+            toggleGuiAndPosition(oculusGui);
+            break;
+#endif
 //        case '0':
 //            toggleGuiAndPosition(camGui);
 //            break;
@@ -652,8 +658,7 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
         case ' ':
         {
 			timeline->togglePlay();
-//            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->setValue(timeline->getIsPlaying());
-//            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->triggerSelf();
+
         }
             break;
 			
@@ -947,9 +952,7 @@ void CloudsVisualSystem::setupCameraParams()
     camDistance = 200;
     cam.setDistance(camDistance);
     cam.setFov(camFOV);
-	//    cam.setForceAspectRatio(true);
-	//    bgAspectRatio = (float)ofGetWidth()/(float)ofGetHeight();
-	//    cam.setAspectRatio(bgAspectRatio);
+
     xRot = new ofx1DExtruder(0);
     yRot = new ofx1DExtruder(0);
     zRot = new ofx1DExtruder(0);
@@ -972,11 +975,7 @@ void CloudsVisualSystem::setupLightingParams()
 	globalAmbientColorHSV.a = 1.0;
 	
 	light = new ofxLight();
-//    globalAmbientColor = new float[4];
-//    globalAmbientColor[0] = 0.5;
-//    globalAmbientColor[1] = 0.5;
-//    globalAmbientColor[2] = 0.5;
-//    globalAmbientColor[3] = 1.0;
+
 }
 
 void CloudsVisualSystem::setupMaterialParams()
@@ -1007,6 +1006,12 @@ void CloudsVisualSystem::setupCoreGuis()
     setupMaterial("MATERIAL 1", mat);
     setupPointLight("POINT LIGHT 1", light);
     setupPresetGui();
+#ifdef KINECT_INPUT
+    setupKinectGui();
+#endif
+#ifdef OCULUS_RIFT
+    setupOculusGui();
+#endif
 }
 
 void CloudsVisualSystem::setupGui()
@@ -1032,6 +1037,12 @@ void CloudsVisualSystem::setupGui()
     gui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     gui->addWidgetNorthOf(loadbtn, "RENDER", true);
     gui->setPlacer(updatebtn);
+    gui->addSpacer();
+    vector<string> cursorModeNames;
+    cursorModeNames.push_back("NO CURSOR");
+    cursorModeNames.push_back("PRIMARY CURSOR");
+    cursorModeNames.push_back("ALL CURSORS");
+    gui->addRadio("CURSOR MODES", cursorModeNames)->activateToggle(cursorModeNames[DRAW_CURSOR_NONE]);
     gui->addSpacer();
     selfSetupGui();
     gui->autoSizeToFitWidgets();
@@ -1127,6 +1138,31 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
             
         }
     }
+
+    else if(name == "NO CURSOR")
+    {
+        ofxUIButton *b = (ofxUIButton *) e.widget;
+        if(b->getValue())
+        {
+            drawCursorMode = DRAW_CURSOR_NONE;
+        }
+    }
+    else if(name == "PRIMARY CURSOR")
+    {
+        ofxUIButton *b = (ofxUIButton *) e.widget;
+        if(b->getValue())
+        {
+            drawCursorMode = DRAW_CURSOR_PRIMARY;
+        }
+    }
+    else if(name == "ALL CURSORS")
+    {
+        ofxUIButton *b = (ofxUIButton *) e.widget;
+        if(b->getValue())
+        {
+            drawCursorMode = DRAW_CURSOR_ALL;
+        }
+    }
 	
     selfGuiEvent(e);
 }
@@ -1173,40 +1209,10 @@ void CloudsVisualSystem::setupRenderGui()
 
 void CloudsVisualSystem::setupBackgroundGui()
 {
-//    bgHue = new ofx1DExtruder(0);
-//	bgSat = new ofx1DExtruder(0);
-//	bgBri = new ofx1DExtruder(0);
-	
-//	bgHue->setPhysics(.95, 5.0, 25.0);
-//	bgSat->setPhysics(.95, 5.0, 25.0);
-//	bgBri->setPhysics(.95, 5.0, 25.0);
-	
-//    bgHue2 = new ofx1DExtruder(0);
-//	bgSat2 = new ofx1DExtruder(0);
-//	bgBri2 = new ofx1DExtruder(0);
-	
-//	bgHue2->setPhysics(.95, 5.0, 25.0);
-//	bgSat2->setPhysics(.95, 5.0, 25.0);
-//	bgBri2->setPhysics(.95, 5.0, 25.0);
     
 	gradientMode = 0;
-//    bgHue->setHome((330.0/360.0)*255.0);
-//	bgSat->setHome(0);
-//	bgBri->setHome(0);
-//    bgColor = new ofColor(0,0,0);
     bgColor = ofColor(0,0,0);
-//    bgHue2->setHome((330.0/360.0)*255.0);
-//	bgSat2->setHome(0);
-//	bgBri2->setHome(0);
-//	bgColor2 = new ofColor(0,0,0);
     bgColor2 = ofColor(0,0,0);
-//    extruders.push_back(bgHue);
-//    extruders.push_back(bgSat);
-//    extruders.push_back(bgBri);
-//    
-//    extruders.push_back(bgHue2);
-//    extruders.push_back(bgSat2);
-//    extruders.push_back(bgBri2);
     
     bgGui = new ofxUISuperCanvas("BACKGROUND", gui);
     bgGui->copyCanvasStyle(gui);
@@ -1235,6 +1241,8 @@ void CloudsVisualSystem::setupBackgroundGui()
     ofAddListener(bgGui->newGUIEvent, this, &CloudsVisualSystem::guiBackgroundEvent);
     guis.push_back(bgGui);
     guimap[bgGui->getName()] = bgGui;
+	
+	
 }
 
 void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
@@ -1406,11 +1414,59 @@ void CloudsVisualSystem::setupCameraGui()
     guis.push_back(camGui);
     guimap[camGui->getName()] = camGui;
 	
+	
+//	//load transitions.xml into our transitionOptionMap
+//	loadTransitionOptions();
+//	transitionOptionGui = new ofxUISuperCanvas("TRANSITION_OPTIONS", gui);
+//    transitionOptionGui->copyCanvasStyle(gui);
+//    transitionOptionGui->copyCanvasProperties(gui);
+//    transitionOptionGui->setName("TransitionOpitons");
+//    transitionOptionGui->setPosition(guis[guis.size()-1]->getRect()->x+guis[guis.size()-1]->getRect()->getWidth()+1, 0);
+//    transitionOptionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+//	
+//	transitionOptionGui->autoSizeToFitWidgets();
+//    ofAddListener(transitionOptionGui->newGUIEvent,this,&CloudsVisualSystem::guiCameraEvent);
+//    guis.push_back(transitionOptionGui);
+//    guimap[transitionOptionGui->getName()] = transitionOptionGui;
+//	
+//	transitionOptionGui->setVisible(false);
 }
+
+////load our Transitions.xml into a map of vectors used for saving transition option name
+//void CloudsVisualSystem::loadTransitionOptions()
+//{
+//	ofxXmlSettings *XML = new ofxXmlSettings();
+//	XML->loadFile( GetCloudsDataPath() + "transitions/Transitions.xml" );
+//	
+//	for(int i=0; i<XML->getNumTags("TRANSITION_TYPE"); i++)
+//	{
+//		XML->pushTag("TRANSITION_TYPE", i);
+//		
+//		string typeName = XML->getValue("NAME", "NULL", 0);
+//		transitionOptionMap[typeName];
+//		transitionOptionMap[typeName].clear();
+//		
+//		int numOptions = XML->getNumTags("OPTION");
+//		
+//		for(int j=0; j<numOptions; j++)
+//		{
+//			XML->pushTag("OPTION", j);
+//			
+//			string optionName = XML->getValue("NAME", "NULL", 0);
+//			
+//			transitionOptionMap[typeName].push_back(optionName);
+//			
+//			XML->popTag();
+//		}
+//		XML->popTag();
+//	}
+//	delete XML;
+//}
 
 CloudsVisualSystem::RGBDTransitionType CloudsVisualSystem::getTransitionType()
 {
-	if(transitionRadio->getActive() == NULL) return WHIP_PAN;
+	if(transitionRadio->getActive() == NULL)
+		return WHIP_PAN;
 	
 	string activeTransitionType = transitionRadio->getActive()->getName();
 	if(activeTransitionType == "2D"){
@@ -1539,7 +1595,67 @@ void CloudsVisualSystem::guiCameraEvent(ofxUIEventArgs &e)
 	else if(name == "ADD KEYFRAME"){
 		cameraTrack->addKeyframe();
 	}
+	
+//	//TRANSITION OPTIONS
+//	if(name == "2D")
+//	{
+//		setTransitionOptionGui("TWO_DIMENSIONAL", "2D", e);
+//	}
+//	else if(name == "3D FLY THROUGH")
+//	{
+//		setTransitionOptionGui( "FLY_THROUGH", "3D FLY THROUGH", e);
+//	}
+//	else if(name == "3D WHIP PAN")
+//	{
+//		setTransitionOptionGui( "WHIP_PAN", "3D WHIP PAN", e);
+//	}
+//	else if(e.widget->getParent() == transitionOptionGui->getWidget("optionsRadio"))
+//	{
+//		cout << "getTransitionOption() = "<< getTransitionOption() << endl;
+//	}
+//	else{
+//		transitionOptionGui->setVisible(false);
+//	}
 }
+
+//void CloudsVisualSystem::setTransitionOptionGui(string transitionType, string screenName, ofxUIEventArgs &e)
+//{
+//	if(transitionOptionMap[transitionType].size()>0)
+//	{
+//		transitionOptionGui->setVisible(true);
+//		if(transitionOptionGui->getWidget(screenName) == NULL)
+//		{
+//			//clear then fill the gui with stuff
+//			transitionOptionGui->removeWidgets();
+//			transitionOptionGui->addLabel(screenName);
+//			transitionOptionGui->addSpacer();
+//			transitionOptionGui->addRadio("optionsRadio", transitionOptionMap[transitionType]);
+//			transitionOptionGui->autoSizeToFitWidgets();
+//		}
+//		
+//		transitionOptionGui->setPosition( e.widget->getRect()->getX() + transitionOptionGui->getRect()->getWidth(), e.widget->getRect()->getY());
+//	}
+//}
+
+//string CloudsVisualSystem::getTransitionOption()
+//{
+//	if(transitionOptionGui != NULL)
+//	{
+//		ofxUIRadio* r = (ofxUIRadio*)transitionOptionGui->getWidget("optionsRadio");
+//		if( r != NULL)
+//		{
+//			for (auto &t: r->getToggles())
+//			{
+//				if(t->getValue())
+//				{
+//					return t->getName();
+//				}
+//			}
+//		}
+//	}
+//	
+//	return "default";
+//}
 
 void CloudsVisualSystem::setupPresetGui()
 {
@@ -2570,6 +2686,63 @@ void CloudsVisualSystem::loadTimelineUIMappings(string path)
 	timeline->setCurrentPage(0);
 }
 
+#ifdef KINECT_INPUT
+void CloudsVisualSystem::setupKinectGui()
+{
+    kinectGui = new ofxUISuperCanvas("KINECT", gui);
+    kinectGui->copyCanvasStyle(gui);
+    kinectGui->copyCanvasProperties(gui);
+    kinectGui->setName("Kinect");
+    kinectGui->setPosition(guis[guis.size() - 1]->getRect()->x + guis[guis.size() - 1]->getRect()->getWidth() + 1, 0);
+    kinectGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
+    
+    kinectGui->addSpacer();
+    kinectGui->addRangeSlider("BODY RANGE X", -1.0f, 1.0f, &kinectInput->boundsMin.x, &kinectInput->boundsMax.x);
+    kinectGui->addRangeSlider("BODY RANGE Y", -1.0f, 1.0f, &kinectInput->boundsMin.y, &kinectInput->boundsMax.y);
+    kinectGui->addRangeSlider("BODY RANGE Z",  0.5f, 4.5f, &kinectInput->boundsMin.z, &kinectInput->boundsMax.z);
+    
+    kinectGui->addSpacer();
+    kinectGui->addSlider("RESET LERP", 0, 1, &kinectInput->posResetLerpPct);
+    kinectGui->addSlider("MOVE LERP", 0, 1, &kinectInput->posSetLerpPct);
+    kinectGui->addSlider("MOVE THRESHOLD", 0, 100, &kinectInput->posSetInstantThreshold);
+    kinectGui->addIntSlider("OUT OF BOUNDS DELAY", 0, 5000, &kinectInput->posOutOfBoundsDelay);
+    
+    kinectGui->autoSizeToFitWidgets();
+    ofAddListener(kinectGui->newGUIEvent, this, &CloudsVisualSystem::guiKinectEvent);
+    guis.push_back(kinectGui);
+    guimap[kinectGui->getName()] = kinectGui;
+}
+
+void CloudsVisualSystem::guiKinectEvent(ofxUIEventArgs &e)
+{
+
+}
+#endif
+
+#ifdef OCULUS_RIFT
+void CloudsVisualSystem::setupOculusGui()
+{
+    oculusGui = new ofxUISuperCanvas("OCULUS RIFT", gui);
+    oculusGui->copyCanvasStyle(gui);
+    oculusGui->copyCanvasProperties(gui);
+    oculusGui->setName("OculusRift");
+    oculusGui->setPosition(guis[guis.size() - 1]->getRect()->x + guis[guis.size() - 1]->getRect()->getWidth() + 1, 0);
+    oculusGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    oculusGui->autoSizeToFitWidgets();
+    ofAddListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
+    guis.push_back(oculusGui);
+    guimap[oculusGui->getName()] = oculusGui;
+}
+
+void CloudsVisualSystem::guiOculusEvent(ofxUIEventArgs &e)
+{
+    
+}
+#endif
+
 void CloudsVisualSystem::lightsBegin()
 {
     ofSetSmoothLighting(bSmoothLighting);
@@ -2673,9 +2846,7 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 
 	selfPresetLoaded(presetPath);
 	currentPresetName = ofFilePath::getBaseName(presetPath);
-//	getSharedRenderTarget().begin();
-//	ofClear(0.0,0.0,0.0,1.0);
-//	getSharedRenderTarget().end();
+
 		
 	//auto play this preset
 	cameraTrack->lockCameraToTrack = cameraTrack->getKeyframes().size() > 0;
@@ -2743,6 +2914,12 @@ void CloudsVisualSystem::deleteGUIS()
 	{
 		ofRemoveListener(it->second->newGUIEvent,this,&CloudsVisualSystem::guiLightEvent);
 	}
+#ifdef KINECT_INPUT
+    ofRemoveListener(kinectGui->newGUIEvent, this, &CloudsVisualSystem::guiKinectEvent);
+#endif
+#ifdef OCULUS_RIFT
+    ofRemoveListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
+#endif
 	
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
     {
@@ -2798,21 +2975,6 @@ void CloudsVisualSystem::toggleGuiAndPosition(ofxUISuperCanvas *g)
         g->setMinified(true);
     }
 }
-
-//void CloudsVisualSystem::setCurrentCamera(ofCamera& swappedInCam)
-//{
-//	currentCamera = &swappedInCam;
-//}
-
-//ofCamera* CloudsVisualSystem::getCurrentCamera()
-//{
-//	return currentCamera;
-//}
-
-//void CloudsVisualSystem::setCurrentCamera( ofCamera* swappedInCam )
-//{
-//	setCurrentCamera(*swappedInCam);
-//}
 
 ofCamera& CloudsVisualSystem::getCameraRef(){
 	return cam;
@@ -2888,46 +3050,6 @@ void CloudsVisualSystem::billBoard(ofVec3f globalCamPosition, ofVec3f globelObje
     axisOfRotation.normalize();
     glRotatef(-theta, axisOfRotation.x, axisOfRotation.y, axisOfRotation.z);
 }
-
-//void CloudsVisualSystem::drawTexturedQuad()
-//{
-//    glBegin (GL_QUADS);
-//    
-//    glTexCoord2f (0.0, 0.0);
-//    glVertex3f (0.0, 0.0, 0.0);
-//    
-//    glTexCoord2f (ofGetWidth(), 0.0);
-//    glVertex3f (ofGetWidth(), 0.0, 0.0);
-//    
-//    
-//    glTexCoord2f (ofGetWidth(), ofGetHeight());
-//    glVertex3f (ofGetWidth(), ofGetHeight(), 0.0);
-//    
-//    glTexCoord2f (0.0, ofGetHeight());
-//    glVertex3f (0.0, ofGetHeight(), 0.0);
-//    
-//    glEnd ();
-//}
-
-//void CloudsVisualSystem::drawNormalizedTexturedQuad()
-//{
-//    glBegin (GL_QUADS);
-//    
-//    glTexCoord2f (0.0, 0.0);
-//    glVertex3f (0.0, 0.0, 0.0);
-//    
-//    glTexCoord2f (1.0, 0.0);
-//    glVertex3f (ofGetWidth(), 0.0, 0.0);
-//    
-//    
-//    glTexCoord2f (1.0, 1.0);
-//    glVertex3f (ofGetWidth(), ofGetHeight(), 0.0);
-//    
-//    glTexCoord2f (0.0, 1.0);
-//    glVertex3f (0.0, ofGetHeight(), 0.0);
-//    
-//    glEnd ();
-//}
 
 void CloudsVisualSystem::drawBackground()
 {
@@ -3091,41 +3213,50 @@ void CloudsVisualSystem::selfPostDraw(){
     CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
-    
-	//TODO REPLACE WITH REAL CURSOR SYSTEM
-    if(bDrawCursor){
-        ofPushMatrix();
-        ofPushStyle();
-        ofSetLineWidth(2);
-        map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
-        for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
-            //	ofNoFill();
-            //	ofSetColor(255, 50);
-            //	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
-            if(it->second.actionType == 0){
-                ofSetColor(ofColor::steelBlue, 255);
-            }
-            else if (it->second.primary) {
-                ofSetColor(240,240,100, 175);
-            }
-            else {
-                ofSetColor(240,240,255, 175);
-            }
-            ofCircle(it->second.position.x,
-					 it->second.position.y,
-					 ofMap(it->second.position.z, 2, -2, 3, 10, true) );
-//            cout << " z pos " << it->second.position.z << endl;
-        }
-        ofPopStyle();
-        ofPopMatrix();
-    }
-	///END TODO
-	
 #endif
 
 }
 
-	
+void CloudsVisualSystem::drawCursor()
+{
+    if (drawCursorMode > DRAW_CURSOR_NONE) {
+        map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
+        for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
+            if (drawCursorMode == DRAW_CURSOR_PRIMARY && !it->second.primary) {
+                continue;
+            }
+            
+            selfDrawCursor(it->second.position, it->second.actionType != 0);
+        }
+    }
+}
+
+void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
+{
+    ofPushStyle();
+    ofNoFill();
+    ofSetLineWidth(2);
+    if (bDragged) {
+        ofSetColor(213, 69, 62, 255);
+#ifdef OCULUS_RIFT
+        ofCircle(pos, 6);
+#else
+        ofCircle(pos.x, pos.y,
+                 ofMap(pos.z, 2, -2, 3, 6, true));
+#endif
+    }
+    else {
+        ofSetColor(255, 255, 255, 175);
+#ifdef OCULUS_RIFT
+        ofCircle(pos, 10);
+#else
+        ofCircle(pos.x, pos.y,
+                 ofMap(pos.z, 2, -2, 3, 10, true));
+#endif
+    }
+    ofPopStyle();
+}
+
 void CloudsVisualSystem::selfExit()
 {
     

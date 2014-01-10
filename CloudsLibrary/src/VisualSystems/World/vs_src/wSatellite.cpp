@@ -18,6 +18,9 @@ void wSatellite::place( float _alt, ofVec3f _orbit ){
     altitud.set(0,0,_alt);
     orbit = _orbit;//.normalize();
     freq = ofNoise(lat*0.01,lon*0.01);
+	
+//	meshIndex = satelliteMesh->getNumVertices();
+//	satelliteMesh->addVertex(*this);
 }
 
 void wSatellite::update(){
@@ -44,9 +47,11 @@ void wSatellite::update(){
     longRot.makeRotate( lon, 0, 1, 0);
     
     set(latRot * longRot * altitud);
+//	satelliteMesh->setVertex(meshIndex, *this);
 }
 
 void wSatellite::draw(){
+	
     ofPoint vectorToCenter = ofPoint(0,0,0)-*this;
     vectorToCenter.normalize();
     ofPoint objectLookAt = ofVec3f(0,0,1);

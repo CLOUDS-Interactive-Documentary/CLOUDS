@@ -22,6 +22,7 @@ ofQuaternion wCity::getQuaternion(){
 }
 
 void wCity::place(float _lat, float _long){
+	
     ofVec3f displacementFromCenter = ofVec3f(0,0,-300);
     
     ofQuaternion latRot;
@@ -31,13 +32,16 @@ void wCity::place(float _lat, float _long){
     longRot.makeRotate( _long, 0, 1, 0);
     
     quaternion = latRot * longRot;
+	meshIndex = citiesMesh->getNumVertices();
     set(latRot * longRot * displacementFromCenter);
-    
+	citiesMesh->addVertex(*this);
+
     color.set(255,0,0);
     color.setHue(20+ofNoise(x*0.1,y*0.1,z*0.4)*30);
     color.setBrightness(100+ofNoise(x*0.1,y*0.1,z*0.1)*155);
     color.a = 200;
-    
+    citiesMesh->addColor(color);
+	
     freq = ofNoise(_lat*0.1,_long*0.1);
 }
 
@@ -46,10 +50,10 @@ void wCity::update(){
     
     if ( noisePeaks != NULL){
         if ( *noisePeaks > 0.0){
-        noise = powf( *noisePeaks ,ofNoise( sin(pos.x),pos.y,pos.z*0.1));
-        nNoise = ofMap(noise,0.001,*noisePeaks,0.0,1.0,true);
-        color.setHue( 20+nNoise*30 );
-        size = nNoise*5.0;
+			noise = powf( *noisePeaks ,ofNoise( sin(pos.x),pos.y,pos.z*0.1));
+			nNoise = ofMap(noise,0.001,*noisePeaks,0.0,1.0,true);
+			color.setHue( 20+nNoise*30 );
+			size = nNoise*5.0;
         }
     } else {
         float blink = abs(sin(ofGetElapsedTimef()*freq));
@@ -73,6 +77,7 @@ void wCity::update(){
             bRipple = false;
         }
     }
+	
 }
 
 void wCity::draw(float _alpha){
@@ -92,12 +97,17 @@ void wCity::draw(float _alpha){
         ofSetColor(color,_alpha*255);
     }
     
-    ofSetColor(color,_alpha*255);
-    glPointSize(size);
-    glBegin(GL_POINTS);
-    glVertex3f(x,y,z);
-    glEnd();
-    
+
+//    ofSetColor(color,_alpha*255);
+//    glPointSize(size); //TODO bring size back
+//    glBegin(GL_POINTS);
+//    glVertex3f(x,y,z);
+//    glEnd();
+	
+	ofFloatColor newColor = color;
+	newColor.a = _alpha;
+	citiesMesh->setColor(meshIndex, newColor);
+	
     if (bRipple){
         drawRipple(ripplePct*0.61);
         drawRipple(ripplePct);

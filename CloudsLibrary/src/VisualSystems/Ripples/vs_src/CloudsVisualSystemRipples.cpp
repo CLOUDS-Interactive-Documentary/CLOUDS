@@ -72,6 +72,7 @@ void CloudsVisualSystemRipples::selfSetupGui()
     items.push_back("Scale Blues");
     items.push_back("Scale Pentatonic");
     soundGui->addDropDownList("Scale", items);
+    soundGui->addSlider("Main gain", 0, 1, &fMainGain);
     
 	ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemRipples::selfGuiEvent);
 	guis.push_back(soundGui);
@@ -148,7 +149,9 @@ void CloudsVisualSystemRipples::selfSetup()
     noteIndex = 0;
     baseNote = 0;
     setScaleByName("Scale Pentatonic");
-    mainSynth.setOutputGen(buildSynth());
+    fMainGain = 0;
+    mainGain.value(0);
+    mainSynth.setOutputGen(buildSynth() * mainGain);
     currentUserInput = ofVec2f(-1, -1);
 }
 
@@ -275,6 +278,7 @@ void CloudsVisualSystemRipples::selfUpdate()
     }
     volumeControl[0].value(volume[0]);
     volumeControl[1].value(volume[1]);
+    mainGain.value(fMainGain);
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera

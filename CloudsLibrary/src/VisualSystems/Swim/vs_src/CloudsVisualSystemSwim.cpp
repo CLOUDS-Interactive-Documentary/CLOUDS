@@ -30,6 +30,7 @@ void CloudsVisualSystemSwim::selfSetup()
     post.createPass<BloomPass>();
     
     // sound
+    volumeControl.value(0);
     synth.setOutputGen(buildSynth());
 }
 
@@ -76,7 +77,7 @@ void CloudsVisualSystemSwim::generate()
 //normal update call
 void CloudsVisualSystemSwim::selfUpdate()
 {
-    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
+    volumeControl.value(gain);
     
     if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
     
@@ -219,6 +220,7 @@ void CloudsVisualSystemSwim::selfSetupGui()
     // sound
     soundGui->addToggle(soundFiles[0], &playSample[0]);
     soundGui->addToggle(soundFiles[1], &playSample[1]);
+    soundGui->addSlider("Gain", 0, 1, &gain);
     
     ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemSwim::selfGuiEvent);
 }
@@ -278,9 +280,9 @@ void CloudsVisualSystemSwim::selfKeyPressed(ofKeyEventArgs & args)
             saveSeed = true;
             break;
             
-        case 'l':
+        /*case 'l':
             loadSeed = true;
-            break;
+            break;*/
             
         default:
             break;
@@ -351,6 +353,7 @@ void CloudsVisualSystemSwim::selfDrawBackground(){
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemSwim::selfEnd(){
 	
+    volumeControl.value(0); 
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemSwim::audioRequested);
 	
 }
@@ -396,7 +399,7 @@ Generator CloudsVisualSystemSwim::buildSynth()
     Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
     Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(soundTriggers[1]);
     
-    return sampleGen1 * 1.0f + sampleGen2 * 1.0f;
+    return (sampleGen1 * 1.0f + sampleGen2 * 1.0f) * volumeControl;
 }
 
 void CloudsVisualSystemSwim::audioRequested(ofAudioEventArgs& args)

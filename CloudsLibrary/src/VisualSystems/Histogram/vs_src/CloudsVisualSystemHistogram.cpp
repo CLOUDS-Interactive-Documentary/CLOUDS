@@ -50,6 +50,7 @@ void CloudsVisualSystemHistogram::selfSetupGui(){
     }
     customGui->addRadio("SOUNDS", soundNames);
     
+    customGui->addSlider("MAIN GAIN", 0.0001, 1, &fMainGain);
     customGui->addSlider("LEVEL ADJUST", 0.0f, 10.0f, &levelAdjust);
     
     customGui->addSpacer();
@@ -173,6 +174,8 @@ void CloudsVisualSystemHistogram::selfSetup()
     dampening = 0.1f;
     
     fogDensity = 0.3;
+    
+    fMainGain = 1;
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -212,6 +215,7 @@ void CloudsVisualSystemHistogram::selfUpdate()
         addRandomPoint();
     }
     else if (soundPlayer.isLoaded()) {
+        soundPlayer.setVolume(fMainGain);
         addSoundPoint();
     }
     else {

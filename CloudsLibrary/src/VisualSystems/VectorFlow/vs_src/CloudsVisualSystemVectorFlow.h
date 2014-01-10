@@ -107,6 +107,8 @@ protected:
     ofFbo fboInitial, fboBlurX, fboFinal;
     
     // Sound
+    float fMainGain;
+    ControlParameter mainGain;
     int prevInputX, prevInputY;
     ofxTonicSynth synth;
     ControlParameter lpfCutoff;

@@ -20,10 +20,10 @@
 typedef struct {
 	
 	CloudsAct* act;
-	int currentRun;
-	string currentTopic;
-	CloudsVisualSystemPreset currentPreset;
-	CloudsClip currentClip;
+	int run;
+	string topic;
+	CloudsVisualSystemPreset preset;
+	CloudsClip clip;
 	
 	vector<string> topicHistory;
 	vector<string> presetHistory;
@@ -31,8 +31,8 @@ typedef struct {
 
 	bool freeTopic;
 	
-	float currentDuration;
-	int currentTopicNum;
+	float duration;
+	int topicNum;
 	int timesOnCurrentTopic;
 
 	bool visualSystemRunning;

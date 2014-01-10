@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BG ALPHA</Name>
-    <Value>0.192118227</Value>
+    <Value>0.669950724</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -30,17 +30,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LINE HUE 1</Name>
-    <Value>0.024630295</Value>
+    <Value>0.083742999</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LINE SAT 1</Name>
-    <Value>0.591132998</Value>
+    <Value>0.724137902</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LINE BRI 1</Name>
-    <Value>0.418719202</Value>
+    <Value>0.394088656</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -60,7 +60,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LINE BRI 2</Name>
-    <Value>0.477832526</Value>
+    <Value>0.763546824</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

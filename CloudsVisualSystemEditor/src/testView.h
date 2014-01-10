@@ -87,7 +87,7 @@
 - (void)windowResized:(NSSize)size;
 
 - (IBAction) runTests:(id)sender;
-
+- (IBAction) runTestsOnPresets:(id)sender;
 - (IBAction) updateFilters:(id)sender;
 - (IBAction) updatePresets:(id)sender;
 - (IBAction) deletePreset:(id)sender;

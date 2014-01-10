@@ -1,14 +1,19 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Questions</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>849.000061035</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>241.000000000</YPosition>
 </Canvas>
 <Widget>
+    <Kind>2</Kind>
+    <Name>Debug Tug</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
-    <Name>Size</Name>
-    <Value>1.945812821</Value>
+    <Name>Scale</Name>
+    <Value>0.014778325</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -17,51 +22,23 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>Question Min Z</Name>
+    <Value>50.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>Inner Radius</Name>
     <Value>7.054187298</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
-    <Name>Tug Min Distance</Name>
-    <Value>32.857143402</Value>
+    <Kind>6</Kind>
+    <Name>Tug Distance</Name>
+    <HighValue>134.285705566</HighValue>
+    <LowValue>74.285713196</LowValue>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
-    <Name>Tug Max Distance</Name>
-    <Value>165.714202881</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Tug Min Depth</Name>
-    <Value>126.600982666</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Question Tint H</Name>
-    <Value>0.541871607</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Question Tint S</Name>
-    <Value>0.344827294</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Question Tint B</Name>
-    <Value>0.522167206</Value>
-</Widget>
-<Widget>
-    <Kind>44</Kind>
-    <Name>Question Font Size</Name>
-    <Value>12</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Question Line Length</Name>
-    <Value>300.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Question Line Spacing</Name>
-    <Value>1.000000000</Value>
+    <Kind>6</Kind>
+    <Name>Attenuate Distance</Name>
+    <HighValue>87.142852783</HighValue>
+    <LowValue>21.428558350</LowValue>
 </Widget>

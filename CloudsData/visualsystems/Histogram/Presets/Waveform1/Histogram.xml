@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Histogram</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>564.000000000</XPosition>
+    <YPosition>-1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -36,6 +36,11 @@
     <Value>1</Value>
 </Widget>
 <Widget>
+    <Kind>4</Kind>
+    <Name>SAMPLE OFFSET</Name>
+    <Value>0.516748786</Value>
+</Widget>
+<Widget>
     <Kind>2</Kind>
     <Name>RANDOM</Name>
     <Value>0</Value>
@@ -48,6 +53,16 @@
 <Widget>
     <Kind>2</Kind>
     <Name>BloodFlow.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GTHappen.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GTNonStop.aif</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -99,6 +114,11 @@
     <Kind>2</Kind>
     <Name>underwaterembers.aif</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAIN GAIN</Name>
+    <Value>0.241455168</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

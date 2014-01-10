@@ -28,7 +28,7 @@ public:
     void selfDraw();
     void selfExit();
     void selfBegin();
-        void selfEnd();
+	void selfEnd();
     
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
@@ -51,6 +51,10 @@ public:
     void billBoard();
     
     void resizeBrush();
+	
+	ofVec2f hermiteInterpolate(ofVec2f y0, ofVec2f y1,
+							   ofVec2f y2, ofVec2f y3,
+							   float pct, float tension, float bias);
 
         // if you use a custom camera to fly through the scene
     // you must implement this method for the transitions to work properly

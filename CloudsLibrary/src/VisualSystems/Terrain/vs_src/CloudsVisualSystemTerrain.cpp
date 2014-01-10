@@ -11,9 +11,8 @@
 
 string CloudsVisualSystemTerrain::getSystemName()
 {
-        return "Terrain";
+	return "Terrain";
 }
-
 
 void CloudsVisualSystemTerrain::selfSetupSystemGui()
 {
@@ -648,7 +647,7 @@ void CloudsVisualSystemTerrain::selfExit()
     
 }
 
-ofVec2f ofHermiteInterpolate(ofVec2f y0, ofVec2f y1, ofVec2f y2, ofVec2f y3, float pct, float tension, float bias){
+ofVec2f CloudsVisualSystemTerrain::hermiteInterpolate(ofVec2f y0, ofVec2f y1, ofVec2f y2, ofVec2f y3, float pct, float tension, float bias){
 	ofVec2f m0,m1;
 	float pct2,pct3;
 	float a0,a1,a2,a3;
@@ -700,10 +699,10 @@ void CloudsVisualSystemTerrain::selfInteractionMoved(CloudsInteractionEventArgs&
         float stepsize = ofMap(brushSize, 2, 200, .005, .1, true);
         
         for(float a = 0; a < 1.; a+=stepsize){
-            playerDepositPoints[args.playerId].push_back(ofHermiteInterpolate(splineHandles[0],
-                                                                              splineHandles[1],
-                                                                              splineHandles[2],
-                                                                              splineHandles[3], a, 0, 0));
+            playerDepositPoints[args.playerId].push_back(hermiteInterpolate(splineHandles[0],
+																			splineHandles[1],
+																			splineHandles[2],
+																			splineHandles[3], a, 0, 0));
         }
         
         if(playerHistoryMap[args.playerId].size() > 4){

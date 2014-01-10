@@ -21,7 +21,9 @@ void CloudsVisualSystemMemory::selfSetup()
     generate();
     
     // sound
-    synth.setOutputGen(buildSynth());
+    fMainGain = 0;
+    mainGain.value(0);
+    synth.setOutputGen(buildSynth() * mainGain);
 }
 
 void CloudsVisualSystemMemory::selfSetDefaults(){
@@ -58,6 +60,8 @@ void CloudsVisualSystemMemory::selfSetupSystemGui()
     sysGui->addSlider("Random_Up", 0.0, 100, &randomUp);
     sysGui->addSlider("Random_Down", 0.0, 100, &randomDown);
     sysGui->addSlider("Noise_Lerp", 0.0, 1.0, &noiseLerp);
+    
+    sysGui->addSlider("Main Gain", 0, 1, &fMainGain);
 }
 
 void CloudsVisualSystemMemory::selfSetupRenderGui()
@@ -317,7 +321,10 @@ void CloudsVisualSystemMemory::selfUpdate()
 	
     for (int i = 0; i < blocks.size(); i++) {
         blocks[i].update();
-  }
+    }
+    
+    // sound
+    mainGain.value(fMainGain);
 
 }
 

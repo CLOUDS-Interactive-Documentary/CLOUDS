@@ -163,6 +163,8 @@ void CloudsVisualSystemFlying::selfBegin()
 //normal update call
 void CloudsVisualSystemFlying::selfUpdate()
 {
+    
+    volumeControl.value(gain);
     if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
  
     if (regenerate)
@@ -330,6 +332,7 @@ void CloudsVisualSystemFlying::selfSetupRenderGui()
     rdrGui->addToggle(soundFiles[0], &playSample[0]);
     rdrGui->addToggle(soundFiles[1], &playSample[1]);
     rdrGui->addToggle(soundFiles[2], &playSample[2]);
+    rdrGui->addSlider("Gain", 0, 1, &gain);
 }
 
 //events are called when the system is active
@@ -407,6 +410,7 @@ void CloudsVisualSystemFlying::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemFlying::selfEnd(){
+    volumeControl.value(0);
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemFlying::audioRequested);
 }
 // this is called when you should clear all the memory and delet anything you made in setup
@@ -453,7 +457,7 @@ Generator CloudsVisualSystemFlying::buildSynth()
     Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).trigger(soundTriggers[1]).loop(1);
     Generator sampleGen3 = BufferPlayer().setBuffer(samples[2]).trigger(soundTriggers[2]).loop(1);
     
-    return sampleGen1 * 1.0f + sampleGen2 * 0.35f + sampleGen3 * 0.6f;
+    return (sampleGen1 * 1.0f + sampleGen2 * 0.35f + sampleGen3 * 0.6f) * volumeControl;
 }
 
 void CloudsVisualSystemFlying::audioRequested(ofAudioEventArgs& args)

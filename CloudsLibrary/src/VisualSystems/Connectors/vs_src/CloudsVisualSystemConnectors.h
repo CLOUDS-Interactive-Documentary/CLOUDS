@@ -128,4 +128,6 @@ protected:
     ofxTonicSynth synth;
     Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);
+    ControlParameter volumeControl;
+    float gain;
 };
