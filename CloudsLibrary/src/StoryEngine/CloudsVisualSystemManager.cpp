@@ -263,9 +263,11 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 	if(system == NULL) return;
 
 	#ifndef CLOUDS_NO_VS
-	vector<CloudsVisualSystemPreset>& currentPresets = getPresetsForSystem(system->getSystemName());
+//	vector<CloudsVisualSystemPreset>& currentPresets = getPresetsForSystem(system->getSystemName());
+    vector<int> currentPresets = getPresetIndicesForSystem( system->getSystemName() );
+    
 	for(int i = 0; i < currentPresets.size(); i++){
-		currentPresets[i].stillPresent = false;
+		presets[ currentPresets[i] ].stillPresent = false;
 	}
 
 	//load all actual presets
@@ -276,38 +278,40 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 			CloudsVisualSystemPreset preset;
 			preset.presetName = systemPresets[ p ];
 			preset.systemName = system->getSystemName();
-			preset.loadTimeInfo();
 			preset.hasFiles = true;
 			preset.stillPresent = true;
+            preset.loadTimeInfo();
 			presets.push_back(preset);
-			nameToPresets[preset.systemName].push_back( preset );
+//			nameToPresets[preset.systemName].push_back( preset );
 		}
 		else{
 			cout << "FOUND EXISTING PRESET " << system->getSystemName() << " " << systemPresets[p]  << endl;
 			CloudsVisualSystemPreset& preset = getPresetForSystem( system->getSystemName(), systemPresets[p] );
+            preset.loadTimeInfo();
 			preset.stillPresent = true;
 		}
 	}
-	
+
 	for(int i = currentPresets.size()-1;  i >= 0; i--){
-		if(!currentPresets[i].stillPresent){
-			cout << "ERASING " << system->getSystemName() << " " << currentPresets[i].presetName << endl;
+        int presetIndex = currentPresets[i];
+        CloudsVisualSystemPreset& preset = presets[ presetIndex ];
+		if(!preset.stillPresent){
+			cout << "ERASING " << system->getSystemName() << " " << preset.presetName << endl;
 			for(int p = presets.size()-1; p >= 0; p--){
 				if(presets[p].systemName == system->getSystemName() &&
-				   presets[p].presetName == currentPresets[i].presetName)
+				   presets[p].presetName == preset.presetName)
 				{
-					cout << "found side-by-side preset " << endl;
-					presets.erase(presets.begin() + p);
+					presets.erase(presets.begin() + presetIndex);
 					break;
 				}
 			}
-			currentPresets.erase(currentPresets.begin() + i);			
 		}
 	}
 
 	addDefaultPresetForSystem( system->getSystemName() );
 
 	sort(presets.begin(), presets.end(), preset_sort);
+    
 	populateEnabledSystemIndeces();
 	
 	savePresets();
@@ -315,6 +319,29 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 	#endif
 }
 
+//--------------------------------------------------------------------
+bool CloudsVisualSystemManager::hasPresetWithID(string presetID){
+    int dummy;
+    return hasPresetWithID(presetID, dummy);
+}
+
+//--------------------------------------------------------------------
+bool CloudsVisualSystemManager::hasPresetWithID(string presetID, int& index){
+    for(int i = 0; i < presets.size(); i++){
+        if(presets[i].getID() == presetID){
+            return true;
+        }
+    }
+    index = -1;
+    return false;
+}
+
+//--------------------------------------------------------------------
+int CloudsVisualSystemManager::indexForPreset(string presetID){
+    int index;
+    hasPresetWithID(presetID, index);
+    return index;
+}
 
 //--------------------------------------------------------------------
 ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::getEmptySystem(string mainKeyword, vector<string> keywords){
@@ -332,7 +359,7 @@ void CloudsVisualSystemManager::deletePreset(int i){
 	
 //	cout << "ERASING " << system->getSystemName() << " " << currentPresets[i].presetName << endl;
 	
-	if(i >= presets.size()){
+	if(i < 0 || i >= presets.size()){
 		return;	
 	}
 
@@ -340,20 +367,25 @@ void CloudsVisualSystemManager::deletePreset(int i){
 	if(preset.presetName.at(0) == '+'){
 		return;
 	}
-	
-	vector<CloudsVisualSystemPreset>& presetMap = getPresetsForSystem( preset.systemName );
-	
-	for(int p = 0; p < presetMap.size(); p++){
-		if(presetMap[p].presetName == preset.presetName){
-			presetMap.erase(presetMap.begin() + p);
-			cout << "Found side by side to delete" << endl;
-			break;
-		}
-	}
+  
+
 	preset.eraseFiles();
-	presets.erase(presets.begin() + i);
+    presets.erase( presets.begin() + i );
+    
+	//vector<CloudsVisualSystemPreset>& presetMap = getPresetsForSystem( preset.systemName );
+//	vector<int> presetIndeces = getPresetIndicesForSystem( preset.systemName );
+//	for(int p = 0; p < presetIndeces.size(); p++){
+//		if(presets[ presetIndeces[p] ].presetName == preset.presetName){
+////			presetMap.erase(presetMap.begin() + p);
+//            presets.erase( presets.begin() + presetIndeces[p] );
+//			break;
+//		}
+//	}
+    
+//	presets.erase(presets.begin() + i);
 	
 	sort(presets.begin(), presets.end(), preset_sort);
+    
 	populateEnabledSystemIndeces();
 
 	savePresets();
@@ -371,7 +403,8 @@ void CloudsVisualSystemManager::registerVisualSystem(ofPtr<CloudsVisualSystem> s
 void CloudsVisualSystemManager::loadPresets(){
 	cout << "Loading presets " << endl;
 	presets.clear();
-	nameToPresets.clear();
+//	nameToPresets.clear();
+//    nameToPresetsIndex.clear();
 	keywords.clear();
 	suppressedClips.clear();
 	
@@ -448,8 +481,9 @@ void CloudsVisualSystemManager::loadPresets(){
 			}
 		}
 		else{
+//			nameToPresetsIndex[preset->systemName].insert(presets.size());
 			presets.push_back(*preset);
-			nameToPresets[preset->systemName].push_back(*preset);
+//			nameToPresets[preset->systemName].push_back(*preset);
 		}
         keywordXml.popTag(); //system
 	}
@@ -471,14 +505,16 @@ void CloudsVisualSystemManager::addDefaultPresetForSystem(string systemName){
 	newPreset.systemName = systemName;
 	newPreset.presetName = "+New Preset";
 	newPreset.enabled = false;
-	nameToPresets[newPreset.systemName].push_back(newPreset);
+//	nameToPresets[newPreset.systemName].push_back(newPreset);
+//    nameToPresetsIndex[newPreset.systemName].push_back(presets.size());
 	presets.push_back(newPreset);
 
 	CloudsVisualSystemPreset currentState;
 	currentState.systemName = systemName;
 	currentState.presetName = "+Current State";
 	currentState.enabled = false;
-	nameToPresets[currentState.systemName].push_back(currentState);
+//	nameToPresets[currentState.systemName].push_back(currentState);
+//    nameToPresetsIndex[currentState.systemName].push_back(presets.size());
 	presets.push_back(currentState);
 }
 
@@ -626,16 +662,38 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 	return presetsWithKeywords;
 }
 
-//--------------------------------------------------------------------
-vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresetsForSystem(string systemName){
-	return nameToPresets[systemName];
+vector<int> CloudsVisualSystemManager::getPresetIndicesForSystem(string systemName){
+    vector<int> indices;
+    for(int i = 0; i < presets.size(); i++){
+        if(presets[i].systemName == systemName){
+            indices.push_back( i );
+        }
+    }
+    return indices;
 }
 
 //--------------------------------------------------------------------
+//vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForSystem(string systemName){
+//    vector<CloudsVisualSystemPreset> systemPresets;
+//    for(int i = 0; i < presets.size(); i++){
+//        if(presets[i].systemName == systemName){
+//            systemPresets.push_back(presets[i]
+//        }
+//    }
+//    for(int i = 0; i = nameToPresetsIndex[systemName].size(); i++){
+//        presets.push_back( presets[ ] )
+//    }
+//	return nameToPresets[systemName];
+//}
+
+//--------------------------------------------------------------------
 bool CloudsVisualSystemManager::systemHasPreset(string systemName, string presetName){
-	vector<CloudsVisualSystemPreset>& presets = getPresetsForSystem(systemName);
+    
+//	vector<CloudsVisualSystemPreset>& presets = getPresetsForSystem(systemName);
 	for(int i = 0; i < presets.size(); i++){
-		if(presets[i].presetName == presetName){
+		if(presets[i].presetName == presetName &&
+           presets[i].systemName == systemName)
+        {
 			return true;
 		}
 	}
@@ -644,13 +702,17 @@ bool CloudsVisualSystemManager::systemHasPreset(string systemName, string preset
 
 //--------------------------------------------------------------------
 CloudsVisualSystemPreset& CloudsVisualSystemManager::getPresetForSystem(string systemName, string presetName){
-	vector<CloudsVisualSystemPreset>& presets = getPresetsForSystem(systemName);
+//	vector<CloudsVisualSystemPreset>& presets = getPresetsForSystem(systemName);
 	for(int i = 0; i < presets.size(); i++){
-		if(presets[i].presetName == presetName){
+		if(presets[i].presetName == presetName &&
+           presets[i].systemName == systemName)
+        {
 			return presets[i];
 		}
 	}
-	ofLogError("CloudsVisualSystemManager::getPresetForSystem") << "Couldn't find preset " << systemName << " " << presetName;
+	
+    ofLogError("CloudsVisualSystemManager::getPresetForSystem") << "Couldn't find preset " << systemName << " " << presetName;
+    
 	return dummyPreset;
 }
 
@@ -679,12 +741,13 @@ set<string> CloudsVisualSystemManager::getAllKeywords(){
 }
 
 //--------------------------------------------------------------------
-vector<int> CloudsVisualSystemManager::getFilteredPresetIndeces(bool enabled, bool oculus, bool gradeA){
+vector<int> CloudsVisualSystemManager::getFilteredPresetIndeces(bool enabled, bool oculus, bool gradeA, string systemName){
 	vector<int> filtered;
 	for(int i = 0; i < presets.size(); i++){
 		if((!enabled || (enabled && presets[i].enabled)) &&
 		   (!oculus  || (oculus  && presets[i].oculusCompatible)) &&
-		   (!gradeA  || (gradeA  && presets[i].grade == "A")))
+		   (!gradeA  || (gradeA  && presets[i].grade == "A")) &&
+           (systemName == "" || (systemName == presets[i].systemName)))
 		{
 			filtered.push_back( i );
 		}
@@ -692,25 +755,26 @@ vector<int> CloudsVisualSystemManager::getFilteredPresetIndeces(bool enabled, bo
 	return filtered;
 }
 
-vector<int> CloudsVisualSystemManager::getFilteredPresetIndecesForSystem(string systemName,bool enabled, bool oculus, bool gradeA){
+//vector<int> CloudsVisualSystemManager::getFilteredPresetIndecesForSystem(string systemName, bool enabled, bool oculus, bool gradeA){
+//
+////	vector<CloudsVisualSystemPreset>& currentPresets = getPresetsForSystem(systemName);
+//	vector<int> filtered;
+//	for(int i = 0; i < presets.size(); i++){
+//        for(int j = 0; j< currentPresets.size(); j++){
+//            
+//            if((presets[i].presetName == currentPresets[j].presetName) &&
+//               (!enabled || (enabled && presets[i].enabled)) &&
+//               (!oculus  || (oculus  && presets[i].oculusCompatible)) &&
+//               (!gradeA  || (gradeA  && presets[i].grade == "A")))
+//            {
+//                filtered.push_back( i );
+//            }
+//        }
+//	}
+//	return filtered;
+//    
+//}
 
-	vector<CloudsVisualSystemPreset>& currentPresets = getPresetsForSystem(systemName);    
-	vector<int> filtered;
-	for(int i = 0; i < presets.size(); i++){
-        for(int j=0; j<currentPresets.size(); j++){
-            
-            if((presets[i]. presetName == currentPresets[j].presetName) &&
-               (!enabled || (enabled && presets[i].enabled)) &&
-               (!oculus  || (oculus  && presets[i].oculusCompatible)) &&
-               (!gradeA  || (gradeA  && presets[i].grade == "A")))
-            {
-                filtered.push_back( i );
-            }
-        }
-	}
-	return filtered;
-    
-}
 //--------------------------------------------------------------------
 vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
 	return presets;

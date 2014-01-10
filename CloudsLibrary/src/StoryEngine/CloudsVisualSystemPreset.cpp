@@ -44,7 +44,7 @@ void CloudsVisualSystemPreset::loadTimeInfo(){
 	string path = directory + "/TimeInfo.xml";
 	if(timeInfo.loadFile(path) ){
 		timeInfo.pushTag("timeinfo");
-		indefinite = timeInfo.getValue("indefinite", true);
+		indefinite = timeInfo.getValue("indefinite", false);
 		duration = timeInfo.getValue("duration", 60);
 		introDuration = timeInfo.getValue("introDuration", 0);
 		outroDuration = timeInfo.getValue("outroDuration", 0);
@@ -59,7 +59,6 @@ void CloudsVisualSystemPreset::loadTimeInfo(){
 		timeInfo.addValue("outroDuration", outroDuration);
 		timeInfo.saveFile(path);
 	}
-
 }
 
 void CloudsVisualSystemPreset::checkHasFiles(){

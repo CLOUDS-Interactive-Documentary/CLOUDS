@@ -295,7 +295,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
         visualSystems.updatePresetsForSystem( system );
         
         string refreshFlagPath = GetCloudsVisualSystemDataPath(systemName) + "Presets/Working/_refreshme.txt";
-        ofFile::removeFile(refreshFlagPath);
+        if(ofFile::doesFileExist(refreshFlagPath)){
+            ofFile::removeFile(refreshFlagPath);
+        }
         
     }
     
@@ -592,8 +594,10 @@ bool clipsort(CloudsClip a, CloudsClip b){
 - (IBAction) runTestsOnPresets:(id)sender{
 
     string systemName = visualSystems.getPresets()[ self.selectedPresetIndex ].systemName ;
+    
     cout << "loading system " << systemName<< endl;
-    testPresetIndeces = visualSystems.getFilteredPresetIndecesForSystem(systemName, true, false, false);
+    
+    testPresetIndeces = visualSystems.getFilteredPresetIndeces(true, false, false, systemName);
     
     random_shuffle( testPresetIndeces.begin(),testPresetIndeces.end() );
 	
