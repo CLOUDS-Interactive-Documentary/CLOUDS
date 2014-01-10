@@ -192,6 +192,8 @@ private:
     bool    bTexture;
     
     // Sound
+    float fMainGain;
+    ControlParameter mainGain;
     ofxTonicSynth synth;
     Generator buildSynth();
 	void audioRequested(ofAudioEventArgs& args);

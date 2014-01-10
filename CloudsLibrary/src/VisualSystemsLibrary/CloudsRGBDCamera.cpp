@@ -24,8 +24,8 @@ CloudsRGBDCamera::CloudsRGBDCamera(){
 	damp = .1;
 	driftNoisePosition = 0;
 	
-	canvasWidth = ofGetWidth();
-	canvasHeight = ofGetHeight();
+	canvasWidth = 1920;
+	canvasHeight = 1080;
 
 	maxDriftAngle = 0;
 //	driftNoiseDensity = 0;
@@ -58,13 +58,11 @@ void CloudsRGBDCamera::update(ofEventArgs& args){
 		//cout << " transitioning" << endl;
 		
 		//update transition
-		float t = transitionAmount;
-		
 		ofQuaternion rotQuat;
-		rotQuat.slerp( t, startNode->getOrientationQuat(), targetNode->getOrientationQuat() );
+		rotQuat.slerp( transitionAmount, startNode->getOrientationQuat(), targetNode->getOrientationQuat() );
 		
 		setOrientation( ofQuaternion() );
-		setPosition( targetNode->getPosition()*t + startNode->getPosition()*(1.-t) );
+		setPosition( targetNode->getPosition()*transitionAmount + startNode->getPosition()*(1.-transitionAmount) );
 		setOrientation( rotQuat );
 	}
 	else{
@@ -142,5 +140,6 @@ void CloudsRGBDCamera::setTransitionTargetNode( ofNode* _targetNode ){
 }
 
 void CloudsRGBDCamera::setTransitionPercent( float t ){
-	transitionAmount = t;
+	//transitionAmount = t;
+	transitionAmount = ofClamp(t, 0, 1);
 }

@@ -13,14 +13,8 @@
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
 #include "ofxBox2d.h"
-#include "CloudsAudioEvents.h"
+#include "ofSoundPlayer.h"
 #include "CloudsGlobal.h"
-#include "ofxTonic.h"
-
-using namespace Tonic;
-
-#define GENERATOR_NUM    60
-class DummyApp;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemExampleBox2D : public CloudsVisualSystem {
@@ -162,24 +156,7 @@ protected:
     float rectSizeDev;
     float rectSizeMean;
     
-    // Sound
-    ofxTonicSynth synth;
-    SampleTable boxSamples[7];
-    SampleTable circleSamples[7];
-#ifdef TONIC_WAVES
-    ControlTrigger collisionTrigger[GENERATOR_NUM];
-    ControlRandom noteControl[GENERATOR_NUM];
-    float noteMax;
-    float noteMin;
-#else
-    ControlTrigger boxTrigger[GENERATOR_NUM];
-    ControlParameter boxVolume[GENERATOR_NUM];
-    
-    ControlTrigger circleTrigger[GENERATOR_NUM];
-    ControlParameter circleVolume[GENERATOR_NUM];
-#endif
-    int triggerIndex;
-    Generator output;
-
-	void audioRequested(ofAudioEventArgs& args);
+    float masterVolume;
+    ofSoundPlayer samplePlayer[16];
+    unsigned long long lastSampleTime;
 };

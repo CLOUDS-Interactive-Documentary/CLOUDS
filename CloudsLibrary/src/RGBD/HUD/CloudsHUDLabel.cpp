@@ -89,6 +89,10 @@ void CloudsHUDLabel::setText( string newText ){
     }
 }
 
+string CloudsHUDLabel::getText(){
+	return text;
+}
+
 void CloudsHUDLabel::animateIn() {
     beginTime = ofGetElapsedTimef();
     bIsAnimatingIn = true;

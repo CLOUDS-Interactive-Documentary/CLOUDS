@@ -186,6 +186,8 @@ protected:
     ofShader shader;
     
     // Sound
+    float fMainGain;
+    ControlParameter mainGain;
     ofxUISuperCanvas* soundGui;
     int nSamples = 2;
     string soundFiles[2] = {"distorted_drones.aif",

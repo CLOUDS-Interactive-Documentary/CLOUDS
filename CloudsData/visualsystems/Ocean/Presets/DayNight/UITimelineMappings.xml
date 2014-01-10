@@ -4,16 +4,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>SAT2</WidgetName>
-                <WidgetID>18</WidgetID>
-                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>BRI</WidgetName>
-                <WidgetID>11</WidgetID>
+                <WidgetName>HUE</WidgetName>
+                <WidgetID>7</WidgetID>
                 <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -28,22 +20,6 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>HUE2</WidgetName>
-                <WidgetID>16</WidgetID>
-                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>HUE</WidgetName>
-                <WidgetID>7</WidgetID>
-                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>SAT</WidgetName>
                 <WidgetID>9</WidgetID>
                 <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
@@ -52,9 +28,25 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>WAVE SCALE</WidgetName>
-                <WidgetID>12</WidgetID>
-                <WidgetCanvasParent>OceanSettings</WidgetCanvasParent>
+                <WidgetName>BRI</WidgetName>
+                <WidgetID>11</WidgetID>
+                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SAT2</WidgetName>
+                <WidgetID>18</WidgetID>
+                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>HUE2</WidgetName>
+                <WidgetID>16</WidgetID>
+                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>

@@ -187,11 +187,13 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	soundGui->copyCanvasProperties(gui);
 	soundGui->setName("WORMHOLE Sound");
 	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-
+    
     for (int i=0; i<nSamples; i++)
     {
         soundGui->addToggle(soundFiles[i], &playSample[i]);
     }
+    
+    soundGui->addSlider("Main Gain", 0, 1, &fMainGain);
     
 	guis.push_back(soundGui);
 	guimap[soundGui->getName()] = soundGui;
@@ -454,7 +456,9 @@ void CloudsVisualSystemWormHole::selfSetup()
 	colorSampleImage.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png" );
 	
     // sound
-    synth.setOutputGen(buildSynth());
+    fMainGain = 0;
+    mainGain.value(0);
+    synth.setOutputGen(buildSynth() * mainGain);
 }
 
 void CloudsVisualSystemWormHole::selfBegin(){
@@ -505,6 +509,8 @@ void CloudsVisualSystemWormHole::selfUpdate()
 	
 	noiseTime += timeDelta * noiseSpeed;
     
+    // sound
+    mainGain.value(fMainGain);
 }
 
 void CloudsVisualSystemWormHole::selfDraw()

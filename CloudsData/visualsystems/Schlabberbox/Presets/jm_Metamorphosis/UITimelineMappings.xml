@@ -4,6 +4,22 @@
     <SliderCurves>
         <Mapping>
             <Widget>
+                <WidgetName>Particle Speed</WidgetName>
+                <WidgetID>8</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Particles Return</WidgetName>
+                <WidgetID>10</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
                 <WidgetName>Box Connect Distance</WidgetName>
                 <WidgetID>20</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
@@ -22,22 +38,6 @@
             <Widget>
                 <WidgetName>Force Amount</WidgetName>
                 <WidgetID>6</WidgetID>
-                <WidgetCanvasParent>Custom</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>Particle Speed</WidgetName>
-                <WidgetID>8</WidgetID>
-                <WidgetCanvasParent>Custom</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>Particles Return</WidgetName>
-                <WidgetID>10</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>

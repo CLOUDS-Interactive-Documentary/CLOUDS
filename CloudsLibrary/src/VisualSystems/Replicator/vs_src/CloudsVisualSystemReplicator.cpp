@@ -12,6 +12,7 @@ void CloudsVisualSystemReplicator::selfSetup(){
 	local_time = ofGetElapsedTimef() + ofRandom(10000);
     
     // sound
+    gain = 0; 
     synth.setOutputGen(buildSynth());
 }
 
@@ -20,6 +21,7 @@ void CloudsVisualSystemReplicator::selfSetupGuis(){
 
 
 void CloudsVisualSystemReplicator::selfUpdate(){
+    volumeControl.value(gain);
 	Replicator::Grid2D(100, 100, 2000, 2000).apply(repl);
 	
 	// centering
@@ -155,6 +157,7 @@ void CloudsVisualSystemReplicator::selfBegin(){
 
 void CloudsVisualSystemReplicator::selfEnd(){
     
+    volumeControl.value(0);
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemReplicator::audioRequested);
     
 }
@@ -195,10 +198,11 @@ void CloudsVisualSystemReplicator::selfSetupGui(){
     
     soundGui->addToggle(soundFiles[0], &playSample[0]);
     soundGui->addToggle(soundFiles[1], &playSample[1]);
-    
+    soundGui->addSlider("Gain", 0, 1, &gain);
     guis.push_back(soundGui);
 	guimap[soundGui->getName()] = soundGui;
     ofAddListener(soundGui->newGUIEvent, this, &CloudsVisualSystemReplicator::selfGuiEvent);
+    
 }
 
 void CloudsVisualSystemReplicator::selfGuiEvent(ofxUIEventArgs &e){
@@ -249,7 +253,7 @@ Generator CloudsVisualSystemReplicator::buildSynth()
     Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
     Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(soundTriggers[1]);
     
-    return sampleGen1 * 0.7f + sampleGen2 * 1.0f;
+    return (sampleGen1 * 0.7f + sampleGen2 * 1.0f) * volumeControl;
 }
 
 void CloudsVisualSystemReplicator::audioRequested(ofAudioEventArgs& args)

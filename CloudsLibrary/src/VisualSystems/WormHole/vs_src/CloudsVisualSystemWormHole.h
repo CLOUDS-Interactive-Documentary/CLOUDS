@@ -183,6 +183,8 @@ protected:
     float nearClipPlane;
 
     // Sound
+    float fMainGain;
+    ControlParameter mainGain;
     ofxUISuperCanvas* soundGui;
     int nSamples = 4;
     string soundFiles[4] = {"EchoVortex.aif",

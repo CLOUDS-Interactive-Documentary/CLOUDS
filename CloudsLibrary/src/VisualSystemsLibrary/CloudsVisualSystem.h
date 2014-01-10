@@ -51,10 +51,11 @@ class CloudsVisualSystem {
 	
 	enum RGBDTransitionType
 	{
-	  TWO_DIMENSIONAL = 0,
-	  FLY_THROUGH = 1,
-	  WHIP_PAN = 2,
-	  RGBD = 3
+		TWO_DIMENSIONAL = 0,
+		FLY_THROUGH = 1,
+		WHIP_PAN = 2,
+		RGBD = 3,
+		QUESTION = 4
 	};
 	
 	
@@ -86,6 +87,7 @@ class CloudsVisualSystem {
     virtual void selfDraw();
 	virtual void selfDrawOverlay();
 	virtual void selfPostDraw();
+    virtual void selfDrawCursor(ofVec3f& pos, bool bDragged);
 	virtual void selfPresetLoaded(string presetPath);
 	
     virtual void selfExit();
@@ -187,6 +189,8 @@ class CloudsVisualSystem {
 	void drawBackgroundGradient();
     void draw2dSystemPlane();
     void ofLayerGradient(const ofColor& start, const ofColor& end);
+    
+    void drawCursor();
 	
     //Core Param Setup
     void setupAppParams();
@@ -236,6 +240,15 @@ class CloudsVisualSystem {
     void updateTimelineUIParams();
     void saveTimelineUIMappings(string path);
     void loadTimelineUIMappings(string path);
+    
+#ifdef KINECT_INPUT
+    void setupKinectGui();
+	void guiKinectEvent(ofxUIEventArgs &e);
+#endif
+#ifdef OCULUS_RIFT
+    void setupOculusGui();
+	void guiOculusEvent(ofxUIEventArgs &e);
+#endif
     
     //Lighting Helpers
     void lightsBegin();
@@ -290,6 +303,12 @@ class CloudsVisualSystem {
     ofxUISuperCanvas *camGui;
     ofxUISuperCanvas *presetGui;
     ofxUISuperCanvas *tlGui;
+#ifdef KINECT_INPUT
+    ofxUISuperCanvas *kinectGui;
+#endif
+#ifdef OCULUS_RIFT
+    ofxUISuperCanvas *oculusGui;
+#endif
     
 //    //UI Colours
 //    ofxUIColor cb;
@@ -368,7 +387,6 @@ class CloudsVisualSystem {
     float camDistance;
     float camFOV;
     ofxViewType view;
-//	ofCamera* currentCamera;
     ofEasyCam cam;
     ofx1DExtruder *xRot;
     ofx1DExtruder *yRot;
@@ -423,8 +441,15 @@ class CloudsVisualSystem {
 	string mainKeyword;
 	vector<string> keywords;
 	
-//	float secondsRemaining;
+
 	
 	void checkOpenGLError(string function);
 	
+	
+	//TRANSITION OPTIONS
+	void loadTransitionOptions();
+	void setTransitionOptionGui(string type, string screenName, ofxUIEventArgs &e);
+	string getTransitionOption();
+//	map<string, vector<string> > transitionOptionMap;
+//	ofxUISuperCanvas* transitionOptionGui;
 };

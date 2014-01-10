@@ -4,8 +4,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>AV</WidgetName>
-                <WidgetID>18</WidgetID>
+                <WidgetName>Y</WidgetName>
+                <WidgetID>8</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -20,30 +20,6 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>BRI</WidgetName>
-                <WidgetID>11</WidgetID>
-                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>DH</WidgetName>
-                <WidgetID>22</WidgetID>
-                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>DS</WidgetName>
-                <WidgetID>24</WidgetID>
-                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>BRI2</WidgetName>
                 <WidgetID>20</WidgetID>
                 <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
@@ -52,8 +28,16 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>HUE2</WidgetName>
-                <WidgetID>16</WidgetID>
+                <WidgetName>AV</WidgetName>
+                <WidgetID>18</WidgetID>
+                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>BRI</WidgetName>
+                <WidgetID>11</WidgetID>
                 <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -68,25 +52,17 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>SAT</WidgetName>
-                <WidgetID>9</WidgetID>
-                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>WAVE SCALE</WidgetName>
-                <WidgetID>12</WidgetID>
-                <WidgetCanvasParent>OceanSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>Y</WidgetName>
-                <WidgetID>8</WidgetID>
+                <WidgetName>DS</WidgetName>
+                <WidgetID>24</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>HUE2</WidgetName>
+                <WidgetID>16</WidgetID>
+                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
@@ -100,9 +76,25 @@
         </Mapping>
         <Mapping>
             <Widget>
+                <WidgetName>DH</WidgetName>
+                <WidgetID>22</WidgetID>
+                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
                 <WidgetName>AS</WidgetName>
                 <WidgetID>16</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SAT</WidgetName>
+                <WidgetID>9</WidgetID>
+                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>

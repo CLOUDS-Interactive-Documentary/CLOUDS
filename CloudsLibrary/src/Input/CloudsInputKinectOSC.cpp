@@ -19,11 +19,13 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , activeThresholdZ(activeThresholdZ)
 , primaryIdx(-1)
 , jointLerpPct(0.3f)
+, boundsMin(-0.5f, -0.7f, 1.0f)
+, boundsMax( 0.5f, -0.2f, 2.0f)
 , posResetLerpPct(0.1f)
 , posSetLerpPct(0.3f)
 , posSetInstantThreshold(20)
 , posOutOfBoundsStart(0)
-, posOutOfBoundsThreshold(2000)
+, posOutOfBoundsDelay(2000)
 {
 
 }
@@ -144,6 +146,14 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             //mapCoords(bodies[idx]->spineShoulderJoint.inputPosition, mappingLength, bodies[idx]->spineMidJoint);
             mapCoords(bodies[idx]->spineShoulderJoint.inputPosition, zRef, mappingWidth, mappingHeight, bodies[idx]->spineBaseJoint);
             
+            // check if the body is within the tracked bounds
+            bool bBodyOutOfBounds = (bodies[idx]->spineBaseJoint.inputPosition.x < boundsMin.x ||
+                                     bodies[idx]->spineBaseJoint.inputPosition.y < boundsMin.y ||
+                                     bodies[idx]->spineBaseJoint.inputPosition.z < boundsMin.z ||
+                                     bodies[idx]->spineBaseJoint.inputPosition.x > boundsMax.x ||
+                                     bodies[idx]->spineBaseJoint.inputPosition.y > boundsMax.y ||
+                                     bodies[idx]->spineBaseJoint.inputPosition.z > boundsMax.z);
+            
             // refresh the update frame and age
             bodies[idx]->lastUpdateFrame = lastOscFrame;
             bodies[idx]->age++;
@@ -179,12 +189,18 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 
                 hands[handIdx]->trackingBounds.setFromCenter(origin, mappingWidth * 2, mappingHeight * 2);
                 
-//                if ((hands[handIdx]->handJoint.localPosition.y > activeThresholdPosY) && 
-//                    (hands[handIdx]->handJoint.localPosition.y > bodies[idx]->spineBaseJoint.localPosition.y)) {
-
                 // set the new hand state, and calculate active frames while we're at it
-                if ((hands[handIdx]->handJoint.trackingState == k4w::TrackingState_Tracked) &&
-                    (hands[handIdx]->trackingBounds.inside(hands[handIdx]->handJoint.inputPosition))) {
+                if (bBodyOutOfBounds ||
+                    hands[handIdx]->handJoint.trackingState != k4w::TrackingState_Tracked ||
+                    !hands[handIdx]->trackingBounds.inside(hands[handIdx]->handJoint.inputPosition)) {
+                    
+                    // out of bounds or inactive, discard
+                    hands[handIdx]->activeFrames = MAX(0, MIN(kPollThreshold, hands[handIdx]->activeFrames - 1));
+                    
+                    newHandState = k4w::HandState_NotTracked;
+                }
+                else {
+                    // in bounds and active
                     hands[handIdx]->activeFrames++;
                     
                     // process the event
@@ -211,12 +227,6 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                     else {
                         newHandState = (k4w::HandState)m.getArgAsInt32(i);
                     }
-                }
-                else {
-                    hands[handIdx]->activeFrames = MAX(0, MIN(kPollThreshold, hands[handIdx]->activeFrames - 1));
-
-                    // out of bounds or inactive, discard
-                    newHandState = k4w::HandState_NotTracked;
                 }
                 i++;  // bump the message index
                 
@@ -344,7 +354,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
         if (posOutOfBoundsStart == 0) {
             posOutOfBoundsStart = ofGetElapsedTimeMillis();
         }
-        if (ofGetElapsedTimeMillis() - posOutOfBoundsStart > posOutOfBoundsThreshold) {
+        if (ofGetElapsedTimeMillis() - posOutOfBoundsStart > posOutOfBoundsDelay) {
             // waited long enough, start heading back
             currentPosition.interpolate(ofVec3f(ofGetWidth() * 0.5, ofGetHeight() * 0.5), posResetLerpPct);
         }

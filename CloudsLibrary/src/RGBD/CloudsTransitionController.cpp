@@ -114,14 +114,21 @@ void CloudsTransitionController::transitionFromClusterMap(float inDuration){
     confirmEmpty();
 
     queueState(TRANSITION_CLUSTERMAP_OUT, inDuration);
-    
+	
     startTransition();
 
     cout<<"IM TRANSITIONING OUT OF CLUSTER MAP"<<endl;
 }
 
-void CloudsTransitionController::transitionToQuestion(float outDuration, float portalDuration, float inDuration){
-	//TODO:
+void CloudsTransitionController::transitionWithQuestion(float outDuration, float portalDuration){
+	
+	confirmEmpty();
+	
+	queueState(TRANSITION_INTERVIEW_OUT, outDuration);
+	
+	queueState(TRANSITION_QUESTION_IN, portalDuration);
+	
+	startTransition();
 }
 
 void CloudsTransitionController::startTransition(){

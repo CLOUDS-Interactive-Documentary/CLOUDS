@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>2545.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>639.000000000</XPosition>
+    <YPosition>84.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -29,6 +29,21 @@
     <Kind>2</Kind>
     <Name>g_work_02a</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>j_05_blue</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>j_work_03a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>j_work_05a_bluegreen</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -142,16 +157,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>j_work_03a</Name>
+    <Name>uppity</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>j_05_blue</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>j_work_05a_bluegreen</Name>
-    <Value>1</Value>
 </Widget>

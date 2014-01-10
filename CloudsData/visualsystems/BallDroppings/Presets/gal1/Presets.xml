@@ -2,11 +2,16 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>26.000000000</XPosition>
-    <YPosition>305.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>218.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>gal1</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>jm</Name>
     <Value>1</Value>
 </Widget>

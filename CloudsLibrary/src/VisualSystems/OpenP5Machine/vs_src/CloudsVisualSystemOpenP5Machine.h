@@ -129,6 +129,9 @@ protected:
 	// Sound
     ofxTonicSynth synth;
     Generator buildSynth();
+    ControlParameter volumeControl;
+    float gain;
 	void audioRequested(ofAudioEventArgs& args);
-
+    
+    
 };

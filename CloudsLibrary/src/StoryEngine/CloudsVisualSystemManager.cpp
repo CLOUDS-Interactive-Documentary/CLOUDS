@@ -72,7 +72,7 @@
 #include "CloudsVisualSystemRulez.h"
 #include "CloudsVisualSystemSatoruhiga.h"
 #include "CloudsVisualSystemScrape.h"
-//#include "CloudsVisualSystemSwim.h" //TEMP
+#include "CloudsVisualSystemSwim.h" 
 #include "CloudsVisualSystemTerrain.h"
 #include "CloudsVisualSystemThingsInTheDark.h"
 #include "CloudsVisualSystemTunnelDrawing.h"
@@ -176,7 +176,7 @@ struct Mapping {
 	{ "Satoruhiga", &fCreate<CloudsVisualSystemSatoruhiga> },
 	{ "Scrape", &fCreate<CloudsVisualSystemScrape> },
     { "Schlabberbox", &fCreate<CloudsVisualSystemSchlabberbox> },
-//	{ "Swim", &fCreate<CloudsVisualSystemSwim> }, TEMP
+	{ "Swim", &fCreate<CloudsVisualSystemSwim> }, // TEMP
 	{ "Terrain", &fCreate<CloudsVisualSystemTerrain> },
 	{ "ThingsInTheDark", &fCreate<CloudsVisualSystemThingsInTheDark> },
 	{ "TunnelDrawing", &fCreate<CloudsVisualSystemTunnelDrawing> },
@@ -692,6 +692,25 @@ vector<int> CloudsVisualSystemManager::getFilteredPresetIndeces(bool enabled, bo
 	return filtered;
 }
 
+vector<int> CloudsVisualSystemManager::getFilteredPresetIndecesForSystem(string systemName,bool enabled, bool oculus, bool gradeA){
+
+	vector<CloudsVisualSystemPreset>& currentPresets = getPresetsForSystem(systemName);    
+	vector<int> filtered;
+	for(int i = 0; i < presets.size(); i++){
+        for(int j=0; j<currentPresets.size(); j++){
+            
+            if((presets[i]. presetName == currentPresets[j].presetName) &&
+               (!enabled || (enabled && presets[i].enabled)) &&
+               (!oculus  || (oculus  && presets[i].oculusCompatible)) &&
+               (!gradeA  || (gradeA  && presets[i].grade == "A")))
+            {
+                filtered.push_back( i );
+            }
+        }
+	}
+	return filtered;
+    
+}
 //--------------------------------------------------------------------
 vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
 	return presets;

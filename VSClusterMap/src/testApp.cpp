@@ -27,11 +27,10 @@ void testApp::setup(){
 	for(int i = 0; i < run.clipHistory.size(); i++){
 		cout << "	** " << run.clipHistory[i].getID() << endl;
 	}
-	clusterMap.buildEntireCluster(parser);
-	clusterMap.setRun(run);
-	clusterMap.traverse();
 	
 	clusterMap.setup();
+	clusterMap.setRun(run);
+	clusterMap.buildEntireCluster(parser);
 	clusterMap.playSystem();
 	
 //	for(int i = 0; i < parser.getAllClips().size(); i++){

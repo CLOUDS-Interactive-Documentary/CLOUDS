@@ -5,6 +5,14 @@
         <Mapping>
             <Widget>
                 <WidgetName>t</WidgetName>
+                <WidgetID>22</WidgetID>
+                <WidgetCanvasParent>Terrain</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>k</WidgetName>
                 <WidgetID>20</WidgetID>
                 <WidgetCanvasParent>Terrain</WidgetCanvasParent>
             </Widget>
@@ -14,14 +22,6 @@
             <Widget>
                 <WidgetName>noise_zoom</WidgetName>
                 <WidgetID>3</WidgetID>
-                <WidgetCanvasParent>Terrain</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>k</WidgetName>
-                <WidgetID>18</WidgetID>
                 <WidgetCanvasParent>Terrain</WidgetCanvasParent>
             </Widget>
             <Track></Track>

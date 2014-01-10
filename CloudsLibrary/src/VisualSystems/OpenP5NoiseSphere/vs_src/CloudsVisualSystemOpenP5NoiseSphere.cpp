@@ -111,6 +111,8 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupAudioGui()
     audioGui->addSlider("LEVEL TO NOISE SCALE", 0, 100, &levelToNoiseScale);
     audioGui->addSlider("LEVEL TO NOISE RATIO", 0, 1, &levelToNoiseRatio);
     
+    audioGui->addSlider("Main Gain", 0.001, 1, &fMainGain);
+    
 	ofAddListener(audioGui->newGUIEvent, this, &CloudsVisualSystemOpenP5NoiseSphere::guiAudioEvent);
 	guis.push_back(audioGui);
 	guimap[audioGui->getName()] = audioGui;
@@ -191,6 +193,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetDefaults(){
 	soundPlayerReady = false;
 	videoPlayerReady = false;
 
+    fMainGain = 1;
 }
 
 // selfSetup is called when the visual system is first instantiated
@@ -245,6 +248,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfBegin(){
 	else {
 		soundPlayer.play();
 		soundPlayer.setLoop(true);
+        soundPlayer.setVolume(fMainGain);
 	}
 	
 }
@@ -287,7 +291,9 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
         ofSoundUpdate();
         bAudioBuffered = true;
 
-        currLevel = ofSoundGetSpectrum(1)[0] * levelAdjust;
+        soundPlayer.setVolume(fMainGain);
+        
+        currLevel = ofSoundGetSpectrum(1)[0] * levelAdjust * (1/fMainGain);
     }
     
     if (bAudioBuffered) {

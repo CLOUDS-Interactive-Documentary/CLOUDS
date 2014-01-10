@@ -137,7 +137,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -1656,7 +1656,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -2763,9 +2763,24 @@
     <sound>0</sound>
 </system>
 <system name="Astrolabe_notTick">
-    <keywords></keywords>
+    <keywords>machine|technology</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - exciting time</clip>
+        <clip>Bruce - pinheaded geekdom</clip>
+        <clip>Greg - Trickle down</clip>
+        <clip>Intro - Interfaces</clip>
+        <clip>Joel - MythOfArtAndTech1</clip>
+        <clip>Karsten - parallel processing</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kyle_MC - shaping the direction</clip>
+        <clip>LIA - TinyButtons1</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>Martin - ubiquitous connectivity</clip>
+        <clip>Paola - Integrating with technology</clip>
+        <clip>Shantell - magic and tech</clip>
+        <clip>Ramsey - the curse of 60s tech</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -2778,14 +2793,32 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="Astrolabe_variedSpeed">
-    <keywords></keywords>
+    <keywords>clock|technology</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - exciting time</clip>
+        <clip>Bruce - pinheaded geekdom</clip>
+        <clip>Greg - Trickle down</clip>
+        <clip>Intro - Interfaces</clip>
+        <clip>Joel - MythOfArtAndTech1</clip>
+        <clip>Joel - myth of art and technology</clip>
+        <clip>Julia - medium of our time</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kyle_MC - shaping the direction</clip>
+        <clip>LIA - TinyButtons1</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>Lauren - Metaphors</clip>
+        <clip>Maeda - technology is made by people</clip>
+        <clip>Martin - ubiquitous connectivity</clip>
+        <clip>Paola - Integrating with technology</clip>
+        <clip>Ramsey - the curse of 60s tech</clip>
+        <clip>Shantell - magic and tech</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -3090,7 +3123,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -3100,7 +3133,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -3265,9 +3298,15 @@
     <sound>0</sound>
 </system>
 <system name="CirclePacking_Blank">
-    <keywords></keywords>
+    <keywords>social dynamics|social engineering</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Higa - tiny riot 2</clip>
+        <clip>Higa - tiny riot 3</clip>
+        <clip>Higa - tiny riot 4</clip>
+        <clip>Karsten - code has nothing to do with machines</clip>
+        <clip>Paola - mutant ants</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -3284,7 +3323,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -3309,12 +3348,32 @@
     <sound>0</sound>
 </system>
 <system name="CirclePacking_Circles_LitePurple">
-    <keywords></keywords>
+    <keywords>social dynamics|social</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Higa - tiny riot 2</clip>
+        <clip>Higa - tiny riot 3</clip>
+        <clip>Higa - tiny riot 4</clip>
+        <clip>Karsten - code has nothing to do with machines</clip>
+        <clip>Paola - mutant ants</clip>
+        <clip>Greg - the &quot;Like&quot; button cascade</clip>
+        <clip>JTNimoy - geek culture</clip>
+        <clip>Jer - everyday experience</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Kyle_MC - code as a theme 1</clip>
+        <clip>Kyle_MC - socially acceptable</clip>
+        <clip>Lauren - Fluxus App</clip>
+        <clip>Lauren - Hack my way out</clip>
+        <clip>Lauren - dream device</clip>
+        <clip>Lauren - social turkers</clip>
+        <clip>Patricio - Social skills</clip>
+        <clip>Vera - Energy Flow2</clip>
+        <clip>Higa - only meets pure geeks</clip>
+        <clip>Fernanda - social network hairballs</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -3329,12 +3388,105 @@
     <sound>0</sound>
 </system>
 <system name="CirclePacking_Circles_Watery">
-    <keywords></keywords>
+    <keywords>social|community|social dynamics</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Binx - hybridity</clip>
+        <clip>Binx - learning</clip>
+        <clip>Binx - skillshare</clip>
+        <clip>Binx - women in tech</clip>
+        <clip>Bruce - All of a sudden...</clip>
+        <clip>Bruce - creative agglomeration short</clip>
+        <clip>Casey - Processing open</clip>
+        <clip>Casey - group teaching</clip>
+        <clip>Casey - pushing software beyond</clip>
+        <clip>Chris - RemoteCollaboration</clip>
+        <clip>Elliot_UK - Ideaspace</clip>
+        <clip>Fernanda - A social lens</clip>
+        <clip>Fernanda - hybrid community</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Golan - Kyle</clip>
+        <clip>Golan - finding a community</clip>
+        <clip>Greg - community</clip>
+        <clip>Greg - the &quot;Like&quot; button cascade</clip>
+        <clip>Higa - committed to community</clip>
+        <clip>Higa - only meets pure geeks</clip>
+        <clip>Higa - sharing accidently 1</clip>
+        <clip>Higa - sharing accidently 2</clip>
+        <clip>Higa - thick wall</clip>
+        <clip>Higa - tiny riot 2</clip>
+        <clip>Higa - tiny riot 3</clip>
+        <clip>Higa - tiny riot 4</clip>
+        <clip>Intro - Collaboration</clip>
+        <clip>Intro - Sharing</clip>
+        <clip>JTNimoy - 100 artists versus One</clip>
+        <clip>JTNimoy - geek culture</clip>
+        <clip>JTNimoy - one of us</clip>
+        <clip>JTNimoy - open source mensch</clip>
+        <clip>JTNimoy - relating</clip>
+        <clip>Jen - life chapters</clip>
+        <clip>Jen - right choice 1</clip>
+        <clip>Jen - right choice 2</clip>
+        <clip>Jen - self and other</clip>
+        <clip>Jen - twitter friends</clip>
+        <clip>Jer - Thanks</clip>
+        <clip>Jer - active not interactive</clip>
+        <clip>Jer - everyday experience</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Jer - spoken word</clip>
+        <clip>Julia - community</clip>
+        <clip>Julia - human in tech</clip>
+        <clip>Julia - lives online</clip>
+        <clip>Julia - make us more compassionate</clip>
+        <clip>Julia - million facebook</clip>
+        <clip>Julia - tech to pop culture</clip>
+        <clip>Julia - toward greater generosity 1</clip>
+        <clip>Karsten - always improved</clip>
+        <clip>Karsten - becoming insular</clip>
+        <clip>Karsten - code has nothing to do with machines</clip>
+        <clip>Kyle_CH - coral reefs</clip>
+        <clip>Kyle_CH - new generation</clip>
+        <clip>Kyle_CH - virtual space online</clip>
+        <clip>Kyle_MC - code as a theme 1</clip>
+        <clip>Kyle_MC - socially acceptable</clip>
+        <clip>Kyle_MC - who I am 1</clip>
+        <clip>LIA - NeedTheInternet</clip>
+        <clip>LIA - helldotcom</clip>
+        <clip>Lauren - Fluxus App</clip>
+        <clip>Lauren - Hack my way out</clip>
+        <clip>Lauren - desires to connect</clip>
+        <clip>Lauren - dream device</clip>
+        <clip>Lauren - social turkers</clip>
+        <clip>Lindsay - 319 scholes</clip>
+        <clip>Lindsay - meeting IRL</clip>
+        <clip>Lindsay - memes 2</clip>
+        <clip>Maeda - People</clip>
+        <clip>Maeda - People you&apos;re meeting,</clip>
+        <clip>Maeda - Processing community</clip>
+        <clip>Maeda - applying design to leadership</clip>
+        <clip>Marcus - community styles</clip>
+        <clip>Marcus - new tricks</clip>
+        <clip>Paola - code ant farm</clip>
+        <clip>Paola - mutant ants</clip>
+        <clip>Paola - sharing</clip>
+        <clip>Paola - the tribe</clip>
+        <clip>Patricio - Social skills</clip>
+        <clip>Ramsey - social computer</clip>
+        <clip>Shantell - doingwithothers</clip>
+        <clip>Shiffman - problem solving</clip>
+        <clip>Shiffman - sharing</clip>
+        <clip>Vera - Energy Flow2</clip>
+        <clip>Vera - What I like about this field</clip>
+        <clip>Zach - Open Frameworks 4</clip>
+        <clip>Zach - at a festival</clip>
+        <clip>Zach - emailing the communnity</clip>
+        <clip>Zach - nerd art center</clip>
+        <clip>Zach - open source challenge</clip>
+        <clip>Zach - printshop</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -3344,7 +3496,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -4245,10 +4397,10 @@
         <clip>Ramsey - resilient internet</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="Colony_QuantumDecoherence">
     <keywords>biology|biology and code|artificial life|weird</keywords>
@@ -4311,13 +4463,13 @@
         <clip>Sophy - computer dream</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="Colony_RapidCulture">
-    <keywords>biology and code|artificial life</keywords>
+    <keywords>biology and code|artificial life|microscope</keywords>
     <links></links>
     <suppressions>
         <clip>Nervous_Jessica - biocomputer</clip>
@@ -4336,15 +4488,18 @@
         <clip>Ramsey - Conway 3</clip>
         <clip>Ramsey - conway</clip>
         <clip>Shiffman - evolution</clip>
+        <clip>Fernanda - A social lens</clip>
+        <clip>Julian - data viz endorsement</clip>
+        <clip>Fernanda - zooming in</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="Colony_SyntheticBlack">
-    <keywords>biology|biology and code|artificial life|synthetic biology</keywords>
+    <keywords>biology|biology and code|artificial life|synthetic biology|microscope</keywords>
     <links></links>
     <suppressions>
         <clip>Andres - modeling the human being</clip>
@@ -4380,10 +4535,13 @@
         <clip>Shiffman - genetic algos 2</clip>
         <clip>Shiffman - genetics short 2</clip>
         <clip>Theo - evolution</clip>
+        <clip>Fernanda - A social lens</clip>
+        <clip>Fernanda - zooming in</clip>
+        <clip>Julian - data viz endorsement</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -4407,6 +4565,26 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Colony_We_are_stars">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Colony_Worms">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Connectors_Rotating_Box">
     <keywords>interconnectedness|connectivity|form|systems</keywords>
     <links></links>
@@ -4424,9 +4602,9 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="Connectors_Rotating_BoxOC">
     <keywords>interconnectedness|systems</keywords>
@@ -5038,12 +5216,34 @@
     <sound>0</sound>
 </system>
 <system name="CubeCraft_Tetris">
-    <keywords></keywords>
+    <keywords>cortex|videogames</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - experience design</clip>
+        <clip>Aaron - the best games are great stories</clip>
+        <clip>Casey - Indie Game movement</clip>
+        <clip>Casey - Something new, totally engrossing</clip>
+        <clip>Casey - radically different from a videogame</clip>
+        <clip>JTNimoy - evolution</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Kevin - No consequences 1</clip>
+        <clip>Kevin - immersive games</clip>
+        <clip>Kyle_CH - Avatars</clip>
+        <clip>Kyle_CH - Cory Arcangel</clip>
+        <clip>Kyle_CH - MMORPGs</clip>
+        <clip>Kyle_CH - virtual and identity</clip>
+        <clip>Paola - Moma games</clip>
+        <clip>Paola - Portal</clip>
+        <clip>Ramsey - a piece of my mind</clip>
+        <clip>Ramsey - videogame development</clip>
+        <clip>Regine - virtual</clip>
+        <clip>Kevin - Big games 1</clip>
+        <clip>Kevin - Area code 2</clip>
+        <clip>Kevin - area code 1</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -5088,11 +5288,60 @@
     <sound>0</sound>
 </system>
 <system name="CubeCraft_j_05_blue">
-    <keywords></keywords>
+    <keywords>technological progress</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - curiosity</clip>
+        <clip>Aaron - progress</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Bruce - Future camera 1</clip>
+        <clip>Bruce - aborted projects</clip>
+        <clip>Bruce - hamster herding</clip>
+        <clip>Casey - Massive parallel systems</clip>
+        <clip>Golan - Network1</clip>
+        <clip>Golan - staring down the barrel</clip>
+        <clip>Greg - AI 1</clip>
+        <clip>Greg - Sharpening spears</clip>
+        <clip>Greg - Trickle down</clip>
+        <clip>Greg - camera getting cheaper</clip>
+        <clip>Greg - camera scaling up</clip>
+        <clip>Greg - cameras scaling up</clip>
+        <clip>Greg - engage with research</clip>
+        <clip>JTNimoy - immersion2</clip>
+        <clip>Javier - Data ownership</clip>
+        <clip>Jer - storage</clip>
+        <clip>Joel - myth of art and technology</clip>
+        <clip>Julia - program or be programmed</clip>
+        <clip>Julia - what is it doing to us</clip>
+        <clip>Julian - change the way we see tech</clip>
+        <clip>Julian - journey to the moon</clip>
+        <clip>Julian - science fiction</clip>
+        <clip>Julian - toolkit culture</clip>
+        <clip>Karsten - always improved</clip>
+        <clip>Karsten - illusion of original thought</clip>
+        <clip>Karsten - parallel processing</clip>
+        <clip>Karsten - why don&apos;t we learn?</clip>
+        <clip>Kevin - Getting smarter together</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kyle_MC - Transparent tech 2</clip>
+        <clip>Lauren - connect or push apart</clip>
+        <clip>Maeda - Design in the foreground</clip>
+        <clip>Maeda - Digital media evolving</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Marius - Living in a state of newness since age 10</clip>
+        <clip>Marius - Predicting the internet</clip>
+        <clip>Marius - Thoroughly enjoying it at the moment</clip>
+        <clip>Martin - getting weirder</clip>
+        <clip>Paola - Integrating with technology</clip>
+        <clip>Patricio - CLOUDS 2</clip>
+        <clip>Philip - young medium</clip>
+        <clip>Ramsey - traditional engineering</clip>
+        <clip>Regine - twitter, future</clip>
+        <clip>Shantell - comes around</clip>
+        <clip>Sophy - distributed culture</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -5103,29 +5352,101 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="CubeCraft_j_work_05a_bluegreen">
-    <keywords></keywords>
+    <keywords>surreal|dreams|form|technological progress</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - curiosity</clip>
+        <clip>Aaron - lego creatures</clip>
+        <clip>Aaron - progress</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Binx - technoutopian</clip>
+        <clip>Bruce - A sappy Singularity</clip>
+        <clip>Bruce - Future camera 1</clip>
+        <clip>Bruce - aborted projects</clip>
+        <clip>Bruce - digital status quo</clip>
+        <clip>Bruce - hamster herding</clip>
+        <clip>Casey - Massive parallel systems</clip>
+        <clip>Elliot_UK - wiremape_description</clip>
+        <clip>Golan - Network1</clip>
+        <clip>Golan - staring down the barrel</clip>
+        <clip>Greg - AI 1</clip>
+        <clip>Greg - Sharpening spears</clip>
+        <clip>Greg - Trickle down</clip>
+        <clip>Greg - camera getting cheaper</clip>
+        <clip>Greg - camera scaling up</clip>
+        <clip>Greg - cameras scaling up</clip>
+        <clip>Greg - engage with research</clip>
+        <clip>Higa - dreaming of problems</clip>
+        <clip>JTNimoy - Comes from the human mind</clip>
+        <clip>JTNimoy - Dream</clip>
+        <clip>JTNimoy - Dream1</clip>
+        <clip>JTNimoy - based on human mind</clip>
+        <clip>JTNimoy - immersion2</clip>
+        <clip>Javier - Data ownership</clip>
+        <clip>Jer - storage</clip>
+        <clip>Joel - myth of art and technology</clip>
+        <clip>Julia - program or be programmed</clip>
+        <clip>Julia - what is it doing to us</clip>
+        <clip>Julian - change the way we see tech</clip>
+        <clip>Julian - journey to the moon</clip>
+        <clip>Julian - science fiction</clip>
+        <clip>Julian - toolkit culture</clip>
+        <clip>Karsten - always improved</clip>
+        <clip>Karsten - illusion of original thought</clip>
+        <clip>Karsten - parallel processing</clip>
+        <clip>Karsten - why don&apos;t we learn?</clip>
+        <clip>Kevin - Getting smarter together</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kyle_MC - Transparent tech 2</clip>
+        <clip>Kyle_MC - beauty</clip>
+        <clip>Lauren - connect or push apart</clip>
+        <clip>Lauren - toward greater consciousness</clip>
+        <clip>Maeda - Design in the foreground</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marius - Art world gave up on beauty</clip>
+        <clip>Marius - Living in a state of newness since age 10</clip>
+        <clip>Marius - Predicting the internet</clip>
+        <clip>Marius - Thoroughly enjoying it at the moment</clip>
+        <clip>Marius - color 3D printing</clip>
+        <clip>Marius - culturally biased aesthetic</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Martin - getting weirder</clip>
+        <clip>Paola - Integrating with technology</clip>
+        <clip>Patricio - CLOUDS 2</clip>
+        <clip>Patricio - CLOUDS 3</clip>
+        <clip>Patricio - Dream of eggs</clip>
+        <clip>Patricio - Dreams</clip>
+        <clip>Patricio - Play 1</clip>
+        <clip>Philip - young medium</clip>
+        <clip>Ramsey - traditional engineering</clip>
+        <clip>Regine - imagining the future</clip>
+        <clip>Regine - twitter, future</clip>
+        <clip>Shantell - comes around</clip>
+        <clip>Sophy - computer dream</clip>
+        <clip>Sophy - distributed culture</clip>
+        <clip>Sophy - nanobots</clip>
+        <clip>Theo - newness</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="CubeCraft_lewitt">
-    <keywords>generative art</keywords>
+    <keywords>generative art|history</keywords>
     <links></links>
     <suppressions>
         <clip>Bruce - Gardening 1</clip>
         <clip>Bruce - Gardening 2</clip>
         <clip>Jer - Generative Art</clip>
         <clip>Kevin - Tools of perception</clip>
-        <clip>Kevin - algo culture 4</clip>
         <clip>Kyle_CH - abstraction</clip>
         <clip>Marius - Continuous process of exploration</clip>
         <clip>Marius - constraining randomness</clip>
@@ -5138,9 +5459,40 @@
         <clip>Theo - favorite projects</clip>
         <clip>Theo - generative and pre-rendered</clip>
         <clip>Zach - action script shorter</clip>
+        <clip>Bruce - 7 year lifespan of novelty</clip>
+        <clip>Bruce - Dead sea scrolls</clip>
+        <clip>Bruce - Fax machine</clip>
+        <clip>Bruce - Truth is unstable</clip>
+        <clip>Bruce - relating to history through networks</clip>
+        <clip>Bruce - talking about the future as history</clip>
+        <clip>Golan - raytraced spheres</clip>
+        <clip>Higa - not sharing its a backup</clip>
+        <clip>JTNimoy - based on human mind</clip>
+        <clip>JTNimoy - evolution</clip>
+        <clip>Jer - Software1</clip>
+        <clip>Jer - Software2</clip>
+        <clip>Jer - storage</clip>
+        <clip>Karolina - awkward performances</clip>
+        <clip>Karsten - atari emulation</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - demo scene 2</clip>
+        <clip>Karsten - new media</clip>
+        <clip>Karsten - obsolescence</clip>
+        <clip>Kevin - from code to magazines to code</clip>
+        <clip>Kevin - no consequences 2</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>LIA - TimeStamps1</clip>
+        <clip>LIA - TimeStamps2</clip>
+        <clip>Maeda - Design in the foreground</clip>
+        <clip>Maeda - New media</clip>
+        <clip>Maeda - do not resuscitate</clip>
+        <clip>Marius - Predicting the internet</clip>
+        <clip>Patricio - CLOUDS</clip>
+        <clip>Shiffman - what do you archive?</clip>
+        <clip>Theo - eyebeam R&amp;D</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -5296,6 +5648,16 @@
     <oculus>1</oculus>
     <sound>0</sound>
 </system>
+<system name="DataCascade_DataCascade_JG_Intro_Sweept">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="DataCascade_DoubleTunnel">
     <keywords>computation|virtual</keywords>
     <links></links>
@@ -5353,6 +5715,16 @@
     <oculus>1</oculus>
     <sound>0</sound>
 </system>
+<system name="DataCascade_DoubleTunnel_JG_Sweep">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="DataCascade_RGBDCascade">
     <keywords></keywords>
     <links></links>
@@ -5360,6 +5732,185 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="DataCascade_gx_work_01c">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="DataCascade_gx_work_02a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="DataCascade_gx_work_02b">
+    <keywords>data|computational power|computation|future</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Aaron - Mini-Artificial Intelligences</clip>
+        <clip>Aaron - data experience</clip>
+        <clip>Aaron - data storytelling</clip>
+        <clip>Binx - actually interesting</clip>
+        <clip>Binx - making a map</clip>
+        <clip>Binx - maps</clip>
+        <clip>Binx - meaningful shape1</clip>
+        <clip>Bruce - 2060s (Lashup 5)</clip>
+        <clip>Bruce - Augmented Ubiquity</clip>
+        <clip>Bruce - Future camera 1</clip>
+        <clip>Bruce - Textual technologies</clip>
+        <clip>Bruce - cyberpunk dictum long</clip>
+        <clip>Bruce - cyberpunk dictum short</clip>
+        <clip>Bruce - future camera 3</clip>
+        <clip>Bruce - future city 2</clip>
+        <clip>Bruce - machines don&apos;t think 1</clip>
+        <clip>Bruce - machines don&apos;t think 2</clip>
+        <clip>Bruce - not one cyberpunk idea</clip>
+        <clip>Bruce - talking about the future as history</clip>
+        <clip>Casey - Massive parallel systems</clip>
+        <clip>Casey - futurist</clip>
+        <clip>Fernanda - Data questions</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - Policy and data</clip>
+        <clip>Fernanda - Social dynamics</clip>
+        <clip>Fernanda - Tag clouds</clip>
+        <clip>Fernanda - defense of complexity 1</clip>
+        <clip>Fernanda - defense of complexity 2</clip>
+        <clip>Fernanda - fleshmap1</clip>
+        <clip>Fernanda - live data</clip>
+        <clip>Fernanda - non numerical visualization</clip>
+        <clip>Fernanda - nytimes graphics</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Fernanda - what do we mean by data</clip>
+        <clip>Fernanda - what is data</clip>
+        <clip>Golan - Anxious about the future</clip>
+        <clip>Golan - apocalypse3</clip>
+        <clip>Golan - kerrington</clip>
+        <clip>Golan - kessler</clip>
+        <clip>Golan - listening post</clip>
+        <clip>Golan - open data</clip>
+        <clip>Golan - staring down the barrel</clip>
+        <clip>Intro - LogicOfPixels</clip>
+        <clip>Javier - Julian Oliver</clip>
+        <clip>Jen - Lidar 1</clip>
+        <clip>Jen - a different mathematics</clip>
+        <clip>Jen - a gravity to the work</clip>
+        <clip>Jen - all about complexity</clip>
+        <clip>Jen - browsing</clip>
+        <clip>Jen - data autobiography</clip>
+        <clip>Jen - data crystal ball 2</clip>
+        <clip>Jen - data crystal ball 3</clip>
+        <clip>Jen - data essay 1</clip>
+        <clip>Jen - data memory 1</clip>
+        <clip>Jen - data memory 2</clip>
+        <clip>Jen - data truth</clip>
+        <clip>Jen - facebook data</clip>
+        <clip>Jen - information cave</clip>
+        <clip>Jen - intuitive spelunking</clip>
+        <clip>Jen - objective subjective</clip>
+        <clip>Jen - oversimplified circles 1</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Jer - lives being documented through data</clip>
+        <clip>Jer - storage</clip>
+        <clip>Julian - science fiction</clip>
+        <clip>Karsten - code is information</clip>
+        <clip>Karsten - database</clip>
+        <clip>Karsten - parallel processing</clip>
+        <clip>Karsten - virus</clip>
+        <clip>Kevin - algo stories 3</clip>
+        <clip>Kevin - cognition vs computation 1</clip>
+        <clip>Kevin - collaboration with machines</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kevin - computer perception</clip>
+        <clip>Kevin - invented as opposed to discovered 1</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Kevin - reality in the eyes of data</clip>
+        <clip>Kyle_CH - Future life storage</clip>
+        <clip>Kyle_CH - old server farms</clip>
+        <clip>Kyle_MC - Grab them ASAP</clip>
+        <clip>Kyle_MC - Transparent tech 2</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Kyle_MC - shaping the direction</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marius - Living in a state of newness since age 10</clip>
+        <clip>Marius - Thoroughly enjoying it at the moment</clip>
+        <clip>Martin - Inflation not that interesting</clip>
+        <clip>Martin - Revelation</clip>
+        <clip>Martin - Statistics</clip>
+        <clip>Martin - limits of computation</clip>
+        <clip>Martin - seeing thought 1</clip>
+        <clip>Martin - useful only</clip>
+        <clip>Paola - Integrating with technology</clip>
+        <clip>Paola - designer of the future</clip>
+        <clip>Paola - teleportation</clip>
+        <clip>Patricio - Information 3</clip>
+        <clip>Patricio - Library of Babel</clip>
+        <clip>Philip - build the whole universe</clip>
+        <clip>Philip - first time computation</clip>
+        <clip>Philip - limitations</clip>
+        <clip>Ramsey - Google glass</clip>
+        <clip>Ramsey - computation is interpretation of rules</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - dystopia</clip>
+        <clip>Ramsey - social computer</clip>
+        <clip>Regine - commercial appropriation</clip>
+        <clip>Regine - elitist and their gadgets</clip>
+        <clip>Regine - imagining the future</clip>
+        <clip>Regine - looking forward to problems</clip>
+        <clip>Regine - teleportation</clip>
+        <clip>Regine - twitter, future</clip>
+        <clip>Shantell - group improvisation</clip>
+        <clip>Sophy - distributed culture</clip>
+        <clip>Sophy - information overload</clip>
+        <clip>Sophy - nanobots</clip>
+        <clip>Theo - crazy researcher</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="DataCascade_gx_work_03a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="DataCascade_gx_work_04a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="DataCascade_gx_work_05a">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -6832,7 +7383,134 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Flying_2014Weighted">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Flying_DenseForest_1">
+    <keywords>tree|nature|magic|children</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Andres - modeling complex systems</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - seeing molecules</clip>
+        <clip>Andres - soft systems 2</clip>
+        <clip>Binx - Programming is a superpower</clip>
+        <clip>Binx - programming is a superpower</clip>
+        <clip>Bruce - Age of the universe, really weird</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Casey - Developing a microworld</clip>
+        <clip>Casey - emergence</clip>
+        <clip>Elliot_UK - tree sculpture</clip>
+        <clip>Elliot - Wiremap1</clip>
+        <clip>Golan - Play</clip>
+        <clip>Golan - my mother the abstract painter</clip>
+        <clip>Golan - piano and pencil,</clip>
+        <clip>Golan - project example</clip>
+        <clip>Jen - Big data</clip>
+        <clip>Jen - Lidar 1</clip>
+        <clip>Jen - Lidar 2</clip>
+        <clip>Joel - scale of universe</clip>
+        <clip>Joel - scaleofUniverse</clip>
+        <clip>Kevin - computation is unnatural</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kyle_CH - nature is complex</clip>
+        <clip>LIA - Circle1</clip>
+        <clip>LIA - Circle2</clip>
+        <clip>LIA - LTree</clip>
+        <clip>LIA - MathAnotherLanguage</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>Maeda - playful systems</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marcus - simulation to stories</clip>
+        <clip>Martin - birds eye view</clip>
+        <clip>Martin - data revleation</clip>
+        <clip>Martin - starry night</clip>
+        <clip>Nervous_Jessica - Why is it beautiful</clip>
+        <clip>Philip - couldn&apos;t do this with actual water</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - toxi&apos;s physics</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Shantell - Goals</clip>
+        <clip>Shantell - Kids</clip>
+        <clip>Shantell - big kid</clip>
+        <clip>Shantell - magic and tech</clip>
+        <clip>Shiffman - Constraints,</clip>
+        <clip>Shiffman - Magnets</clip>
+        <clip>Shiffman - NOC 1</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Shiffman - NOC 3</clip>
+        <clip>Shiffman - a mystical quality</clip>
+        <clip>Shiffman - how far could we get?</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Shiffman - programming the universe</clip>
+        <clip>Theo - evolution</clip>
+        <clip>Theo - hidden technology</clip>
+        <clip>Theo - inspired by nature</clip>
+        <clip>Theo - inspired by nature shorter</clip>
+        <clip>Theo - leaving a mark</clip>
+        <clip>Zach - Drawn1</clip>
+        <clip>Zach - Time slows down</clip>
+        <clip>Zach - drawn2</clip>
+        <clip>Zach - hide the tech</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Flying_Forest_2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Flying_SpiralyForest_1">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Flying_Test">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Flying_Weighted">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Flying_lush">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -6926,7 +7604,7 @@
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -6946,7 +7624,7 @@
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -8267,12 +8945,30 @@
     <sound>0</sound>
 </system>
 <system name="Mandala_gx_work_01a">
-    <keywords></keywords>
+    <keywords>pattern</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - soft systems 2</clip>
+        <clip>Fernanda - Replaying the moment of discovery</clip>
+        <clip>Fernanda - Wind visualization 1</clip>
+        <clip>Fernanda - Wind visualization 2</clip>
+        <clip>Jen - Predicting weather</clip>
+        <clip>Jen - data crystal ball 3</clip>
+        <clip>Jer - Pattern</clip>
+        <clip>Kevin - tracking rendition flights</clip>
+        <clip>LIA - Number20</clip>
+        <clip>Martin - Big data</clip>
+        <clip>Martin - Inflation not that interesting</clip>
+        <clip>Martin - Seeing the whole 1</clip>
+        <clip>Martin - Zooming is critical</clip>
+        <clip>Martin - data revleation</clip>
+        <clip>Martin - limits of computation</clip>
+        <clip>Martin - seeing the whole 2</clip>
+        <clip>Ramsey - arab abstraction 2</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -9751,7 +10447,27 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Ocean_DayNight2_SND">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Ocean_DayNight_2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Ocean_DayNight_SND">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -10000,16 +10716,6 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Ocean_NightOcean">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
 <system name="Ocean_NightOceanOC">
     <keywords>simulation|nature</keywords>
     <links></links>
@@ -10089,6 +10795,16 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Ocean_NightOcean_SND">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -10785,6 +11501,16 @@
     <oculus>1</oculus>
     <sound>0</sound>
 </system>
+<system name="OpenP5Machine_JM_clockwork_SND">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="OpenP5NoiseSphere_BALDING">
     <keywords></keywords>
     <links></links>
@@ -10879,7 +11605,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="OpenP5NoiseSphere_InYourFace">
     <keywords></keywords>
@@ -10912,9 +11638,9 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="OpenP5NoiseSphere_Nervous_Colors">
     <keywords>emotion|music</keywords>
@@ -10949,7 +11675,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="OpenP5NoiseSphere_SPACE">
     <keywords></keywords>
@@ -11125,7 +11851,7 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="OpenP5NoiseSphere_gx_work_05">
     <keywords></keywords>
@@ -11213,7 +11939,7 @@
         <clip>Theo - crazy researcher</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -11269,10 +11995,10 @@
         <clip>Sophy - made of photons</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="OpenP5NoiseSphere_jm_03a_things2">
     <keywords>audiovisualization|perception</keywords>
@@ -11331,7 +12057,7 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="OpenP5NoiseSphere_jm_03a_things3">
     <keywords>hallucination|cortex|science fiction|singularity|dreams|artificial intelligence</keywords>
@@ -11405,7 +12131,7 @@
     <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="OpenP5NoiseSphere_jm_work_03a">
     <keywords></keywords>
@@ -11987,7 +12713,7 @@
         <clip>Theo - crazy researcher</clip>
     </suppressions>
     <comments></comments>
-    <grade>A</grade>
+    <grade>B</grade>
     <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -13424,9 +14150,60 @@
     <sound>0</sound>
 </system>
 <system name="Orbit_Lorenz_Dolly">
-    <keywords></keywords>
+    <keywords>physics|imagination|math</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - dreaming together</clip>
+        <clip>Andres - camera distorts reality</clip>
+        <clip>Andres - probability</clip>
+        <clip>Casey - pseudo-science</clip>
+        <clip>Golan - would be boring</clip>
+        <clip>Karolina - stasis</clip>
+        <clip>Kevin - no consequences 2</clip>
+        <clip>LIA - IdeaToCode</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>Marius - these things are in my head</clip>
+        <clip>Patricio - Alchemy 1</clip>
+        <clip>Patricio - Alchemy 2</clip>
+        <clip>Patricio - Building Universes 1</clip>
+        <clip>Patricio - Building Universes 2</clip>
+        <clip>Patricio - Imaginative technologies 1</clip>
+        <clip>Patricio - Imaginative technologies 2</clip>
+        <clip>Patricio - Seduced by Play 3</clip>
+        <clip>Philip - all the points can flush</clip>
+        <clip>Philip - build the whole universe</clip>
+        <clip>Philip - couldn&apos;t do this with actual water</clip>
+        <clip>Philip - first time computation</clip>
+        <clip>Philip - image is in your brain</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Philip - toxi&apos;s physics</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Shantell - Kids</clip>
+        <clip>Shiffman - Constraints,</clip>
+        <clip>Shiffman - NOC 3</clip>
+        <clip>Sophy - nanobots</clip>
+        <clip>Binx - Background</clip>
+        <clip>Casey - randomness</clip>
+        <clip>Greg - makematics1</clip>
+        <clip>Jen - MathMajor 1</clip>
+        <clip>Jen - Math shapes the world</clip>
+        <clip>Jen - numbers and words</clip>
+        <clip>Kevin - math havoc 1</clip>
+        <clip>Kevin - math havoc 2</clip>
+        <clip>LIA - Circle1</clip>
+        <clip>LIA - Circle2</clip>
+        <clip>LIA - MathAnotherLanguage</clip>
+        <clip>Martin - Math getting better</clip>
+        <clip>Martin - language and infinity</clip>
+        <clip>Martin - words and numbers</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - arab abstraction 1</clip>
+        <clip>Ramsey - arab abstraction 2</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+    </suppressions>
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
@@ -13956,16 +14733,6 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="PhotoGlitch_FutureBarnacles">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
 <system name="PhotoGlitch_GreenMemory">
     <keywords></keywords>
     <links></links>
@@ -14002,16 +14769,6 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
-<system name="PhotoGlitch_SortedGlitch">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -14118,26 +14875,6 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
-<system name="PhotoGlitch_test">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
-<system name="PhotoGlitch_test2">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -14357,12 +15094,100 @@
     <sound>0</sound>
 </system>
 <system name="RGBDVideo_Hangar">
-    <keywords></keywords>
+    <keywords>open source|rgbd|kinect</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - exquisite forest</clip>
+        <clip>Aaron - sharing</clip>
+        <clip>Bruce - 2060s (Lashup 5)</clip>
+        <clip>Bruce - Github Tarball</clip>
+        <clip>Bruce - kinect hacking</clip>
+        <clip>Casey - Processing addons</clip>
+        <clip>Casey - Processing open</clip>
+        <clip>Chris - EthicOfSharing</clip>
+        <clip>Diederick - openFrameworks</clip>
+        <clip>Diederick - worldwillbecomebetter</clip>
+        <clip>Elliot - Kinect</clip>
+        <clip>Elliot_UK - limitations 2</clip>
+        <clip>Golan - STUDIO art and code</clip>
+        <clip>Golan - closed source mistake</clip>
+        <clip>Golan - hackathons2</clip>
+        <clip>Golan - limits to sharing</clip>
+        <clip>Higa -</clip>
+        <clip>Higa - language barriers</clip>
+        <clip>Higa - not sharing its a backup</clip>
+        <clip>Higa - sharing accidently 1</clip>
+        <clip>Higa - sharing accidently 2</clip>
+        <clip>Higa - thick wall</clip>
+        <clip>Intro - KinectFutureCamera</clip>
+        <clip>JTNimoy - Describe the Kinect</clip>
+        <clip>JTNimoy - increased the bandwidth</clip>
+        <clip>JTNimoy - open source mensch</clip>
+        <clip>Jer - Desire to get together</clip>
+        <clip>Jer - Making a tool</clip>
+        <clip>Jer - Post-capitalism</clip>
+        <clip>Jer - Software1</clip>
+        <clip>Jer - Software2</clip>
+        <clip>Jer - post-capitalism2</clip>
+        <clip>Joel - CocaCola</clip>
+        <clip>Joel - CocoCola</clip>
+        <clip>Joel - MicrosoftResearch</clip>
+        <clip>Joel - WrongToSell</clip>
+        <clip>Joel - advertising</clip>
+        <clip>Joel - microsoft research</clip>
+        <clip>Julia - can&apos;t be solitary</clip>
+        <clip>Julia - open source and ego</clip>
+        <clip>Julian - mixing code</clip>
+        <clip>Julian - open source</clip>
+        <clip>Karsten - becoming insular</clip>
+        <clip>Karsten - processing</clip>
+        <clip>Karsten - toxiclibs</clip>
+        <clip>Kevin - Networked intelligence</clip>
+        <clip>Kevin - immersive games</clip>
+        <clip>Kyle_CH - RGBD</clip>
+        <clip>Kyle_CH - open source</clip>
+        <clip>Kyle_MC - Grab them ASAP</clip>
+        <clip>Kyle_MC - Kinect</clip>
+        <clip>Kyle_MC - imagining your pointcloud</clip>
+        <clip>Kyle_MC - kinect 2</clip>
+        <clip>Kyle_MC - kinect was meant for</clip>
+        <clip>LIA - Sandcastles</clip>
+        <clip>LIA - SkepticismAboutOpenSource</clip>
+        <clip>Maeda - ACU p 2</clip>
+        <clip>Maeda - ACU part 1</clip>
+        <clip>Maeda - Processing community</clip>
+        <clip>Maeda - Processing toolkit</clip>
+        <clip>Marcus - economics question</clip>
+        <clip>Nervous_Jesse - Getting Ripped off</clip>
+        <clip>Nervous_Jesse - Open source education</clip>
+        <clip>Nervous_Jesse - limiting open source</clip>
+        <clip>Paola - code ant farm</clip>
+        <clip>Paola - generosity</clip>
+        <clip>Patricio - Rethinking education systems</clip>
+        <clip>Patricio - Zeitgeist of open source</clip>
+        <clip>Philip - all the points can flush</clip>
+        <clip>Philip - if I had Processing in school</clip>
+        <clip>Ramsey - complacency 1</clip>
+        <clip>Ramsey - complacency 2</clip>
+        <clip>Ramsey - dystopia</clip>
+        <clip>Ramsey - emoji is restricted</clip>
+        <clip>Ramsey - google&apos;s business model 2</clip>
+        <clip>Ramsey - legos 1</clip>
+        <clip>Ramsey - legos 2</clip>
+        <clip>Ramsey - minecraft 1</clip>
+        <clip>Shiffman - Open Source Contract</clip>
+        <clip>Shiffman - problem solving</clip>
+        <clip>Shiffman - sharing</clip>
+        <clip>Theo - development feedback,</clip>
+        <clip>Theo - open frameworks</clip>
+        <clip>Zach - Open Frameworks 1</clip>
+        <clip>Zach - debugging</clip>
+        <clip>Zach - decompiling</clip>
+        <clip>Zach - open source challenge</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -15175,6 +16000,26 @@
     <oculus>1</oculus>
     <sound>0</sound>
 </system>
+<system name="Replicator_Replicator_echoVortex">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Replicator_Replicator_organ">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Ripples_BadTrip">
     <keywords></keywords>
     <links></links>
@@ -15677,12 +16522,34 @@
     <sound>0</sound>
 </system>
 <system name="Schlabberbox_jm_Metamorphosis">
-    <keywords></keywords>
+    <keywords>generative art</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Bruce - Gardening 1</clip>
+        <clip>Bruce - Gardening 2</clip>
+        <clip>Bruce - Parametric vs Generative</clip>
+        <clip>Bruce - Simulation Replication Recursion</clip>
+        <clip>Bruce - beauty of code 1</clip>
+        <clip>Kevin - algo culture 4</clip>
+        <clip>Kyle_CH - abstraction</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>LIA - TimeStamps1</clip>
+        <clip>LIA - TimeStamps2</clip>
+        <clip>Marius - Continuous process of exploration</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Marius - parameter space</clip>
+        <clip>Nervous_Jesse - Marker 2</clip>
+        <clip>Nervous_Jesse - organic process</clip>
+        <clip>Ramsey - arab abstraction 2</clip>
+        <clip>Shiffman - sketching with code</clip>
+        <clip>Theo - favorite projects</clip>
+        <clip>Theo - generative and pre-rendered</clip>
+        <clip>Zach - action script shorter</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -15822,7 +16689,27 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Swim_CombJellies">
+<system name="Swim_2014BlueyPinkSeed1">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Swim_2014GreenyPinkSeed1">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Swim_2014GreenyPinkSeed2">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -15842,6 +16729,81 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Swim_Deepsea3_SND">
+    <keywords>artificial life|nature</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Casey - Computer as collaborator</clip>
+        <clip>Casey - Craig Venter</clip>
+        <clip>Casey - Systems theory</clip>
+        <clip>Casey - What is emergence?</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - seeing molecules</clip>
+        <clip>Bruce - Age of the universe, really weird</clip>
+        <clip>Elliot_UK - tree sculpture</clip>
+        <clip>Jen - Big data</clip>
+        <clip>Jen - Lidar 1</clip>
+        <clip>Jen - Lidar 2</clip>
+        <clip>Kyle_CH - nature is complex</clip>
+        <clip>LIA - Circle1</clip>
+        <clip>LIA - Circle2</clip>
+        <clip>LIA - MathAnotherLanguage</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marcus - simulation to stories</clip>
+        <clip>Martin - birds eye view</clip>
+        <clip>Martin - data revleation</clip>
+        <clip>Martin - starry night</clip>
+        <clip>Nervous_Jessica - Why is it beautiful</clip>
+        <clip>Philip - couldn&apos;t do this with actual water</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - toxi&apos;s physics</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Shiffman - Constraints,</clip>
+        <clip>Shiffman - Magnets</clip>
+        <clip>Shiffman - NOC 1</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Shiffman - NOC 3</clip>
+        <clip>Shiffman - a mystical quality</clip>
+        <clip>Shiffman - genetics short 2</clip>
+        <clip>Shiffman - programming the universe</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Swim_Snowy">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Swim_Test">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Swim_whatevz">
     <keywords></keywords>
     <links></links>
@@ -15852,22 +16814,298 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Terrain_JM_Terraformer">
-    <keywords></keywords>
+<system name="Terrain_JM_DrawGoo_rotation">
+    <keywords>artificial life|emergence|sketching|simulation|systems</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - fuzzy systems</clip>
+        <clip>Andres - make an egg</clip>
+        <clip>Andres - modeling complex systems</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - protein folding 1</clip>
+        <clip>Andres - protein folding 2</clip>
+        <clip>Andres - soft systems 1</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Bruce - Simulation Replication Recursion</clip>
+        <clip>Bruce - beauty of code 2</clip>
+        <clip>Bruce - beauty of code 3</clip>
+        <clip>Casey - Computer as collaborator</clip>
+        <clip>Casey - Craig Venter</clip>
+        <clip>Casey - Developing a microworld</clip>
+        <clip>Casey - Tron</clip>
+        <clip>Casey - What is emergence?</clip>
+        <clip>Casey - You need noise</clip>
+        <clip>Casey - emergence</clip>
+        <clip>Casey - pseudo-science</clip>
+        <clip>Casey - synthetic biology</clip>
+        <clip>Casey - thinking about time</clip>
+        <clip>Golan - audiovisual concept</clip>
+        <clip>Higa - create a system 2</clip>
+        <clip>Higa - sound and video</clip>
+        <clip>Intro - BuildingWorlds</clip>
+        <clip>Intro - BuildingWorlds2</clip>
+        <clip>Intro - CodingSketching</clip>
+        <clip>Intro - interactivity1</clip>
+        <clip>Jen - Math shapes the world</clip>
+        <clip>Jen - Math simulating reality</clip>
+        <clip>Jen - Predicting weather</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Karolina - Everything</clip>
+        <clip>Karolina - Ocean as metaphor</clip>
+        <clip>Karolina - stasis</clip>
+        <clip>Karolina - suspension of disbelief</clip>
+        <clip>Karolina - system metaphor</clip>
+        <clip>Karolina - uncanny/sniff</clip>
+        <clip>Karsten - immediate feedback</clip>
+        <clip>Kevin - Draft mode</clip>
+        <clip>Kevin - algo trading 1</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kevin - invented as opposed to discovered 1</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kyle_CH - Casey Reas Music Visualizations</clip>
+        <clip>Kyle_CH - Modeling consciousness</clip>
+        <clip>Kyle_CH - Polygons</clip>
+        <clip>Kyle_CH - Sentience of digital art</clip>
+        <clip>Kyle_CH - coding 2</clip>
+        <clip>Kyle_CH - storytelling</clip>
+        <clip>LIA - IdeaToCode</clip>
+        <clip>LIA - LTree</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Maeda - early computer graphics</clip>
+        <clip>Maeda - thinking about interfaces</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marcus - Sims</clip>
+        <clip>Marcus - code for storytelling</clip>
+        <clip>Marcus - energy flow</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Marcus - modeling consciousness</clip>
+        <clip>Marcus - simulation to stories</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Nervous_Jesse - doing something new with a system</clip>
+        <clip>Nervous_Jesse - organic process</clip>
+        <clip>Nervous_Jesse - our explorations are random</clip>
+        <clip>Nervous_Jesse - reaction lamp</clip>
+        <clip>Nervous_Jessica - Can&apos;t draw</clip>
+        <clip>Nervous_Jessica - RNA and Viruses</clip>
+        <clip>Nervous_Jessica - Science papers</clip>
+        <clip>Nervous_Jessica - biocomputer</clip>
+        <clip>Philip - bits and bytes</clip>
+        <clip>Philip - build the whole universe</clip>
+        <clip>Philip - couldn&apos;t do this with actual water</clip>
+        <clip>Philip - learn through programming</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - toxi&apos;s physics</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Philip - with programming you can do whatever</clip>
+        <clip>Ramsey - C++ built the modern world</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Ramsey - elegant system</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - minecraft 2</clip>
+        <clip>Shantell - Coding: what does it feel like?</clip>
+        <clip>Shantell - Coding gesturally</clip>
+        <clip>Shantell - circularity</clip>
+        <clip>Shantell - full circle</clip>
+        <clip>Shiffman - Constraints,</clip>
+        <clip>Shiffman - Games</clip>
+        <clip>Shiffman - NOC 1</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Shiffman - NOC 3</clip>
+        <clip>Shiffman - Not a visual thinker</clip>
+        <clip>Shiffman - a mystical quality</clip>
+        <clip>Shiffman - evolution</clip>
+        <clip>Shiffman - genetics short 2</clip>
+        <clip>Shiffman - how far could we get?</clip>
+        <clip>Shiffman - make it random</clip>
+        <clip>Shiffman - mutation</clip>
+        <clip>Shiffman - programming the universe</clip>
+        <clip>Shiffman - reality will only get you so far</clip>
+        <clip>Sophy - the Cloud</clip>
+        <clip>Theo - funky forest</clip>
+        <clip>Theo - magic</clip>
+        <clip>Vera - Digital life forms</clip>
+        <clip>Vera - Playing with a system</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Terrain_JM_Terraformer">
+    <keywords>microscope|world building|creative control|surprise</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Aaron - lego creatures</clip>
+        <clip>Andres - seeing molecules</clip>
+        <clip>Binx - actually interesting</clip>
+        <clip>Casey - Developing a microworld</clip>
+        <clip>Elliot_UK - aesthetic of error</clip>
+        <clip>Fernanda - A social lens</clip>
+        <clip>Fernanda - zooming in</clip>
+        <clip>Golan - project example</clip>
+        <clip>Golan - would be boring</clip>
+        <clip>Higa - collaboration with machines 1</clip>
+        <clip>Higa - collaboration with machines 2</clip>
+        <clip>Julian - data viz endorsement</clip>
+        <clip>Kevin - area code 1</clip>
+        <clip>Kevin - non-mimetic reality</clip>
+        <clip>Kyle_CH - coding is 1</clip>
+        <clip>Kyle_CH - coral reefs</clip>
+        <clip>Kyle_CH - videogame world</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>Marcus - Sims</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Marius - algorithms as parameter space</clip>
+        <clip>Marius - keeping the door open</clip>
+        <clip>Marius - parameter space</clip>
+        <clip>Nervous_Jesse - breaking the system</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - minecraft 1</clip>
+        <clip>Ramsey - minecraft 2</clip>
+        <clip>Vera - commisions,</clip>
+        <clip>Vera - working for clients</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="Terrain_M_DrawGoo">
-    <keywords></keywords>
+    <keywords>artificial life|emergence|sketching|system|simulation</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - make an egg</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - protein folding 1</clip>
+        <clip>Andres - protein folding 2</clip>
+        <clip>Andres - soft systems 1</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Bruce - Fountain pen</clip>
+        <clip>Bruce - Simulation Replication Recursion</clip>
+        <clip>Bruce - beauty of code 2</clip>
+        <clip>Bruce - beauty of code 3</clip>
+        <clip>Casey - Computer as collaborator</clip>
+        <clip>Casey - Craig Venter</clip>
+        <clip>Casey - Developing a microworld</clip>
+        <clip>Casey - Systems theory</clip>
+        <clip>Casey - Tron</clip>
+        <clip>Casey - What is emergence?</clip>
+        <clip>Casey - You need noise</clip>
+        <clip>Casey - emergence</clip>
+        <clip>Casey - pseudo-science</clip>
+        <clip>Casey - sketching with code</clip>
+        <clip>Casey - synthetic biology</clip>
+        <clip>Golan - make a mark</clip>
+        <clip>Higa - collaboration with machines 1</clip>
+        <clip>Higa - collaboration with machines 2</clip>
+        <clip>Higa - create a system</clip>
+        <clip>Intro - BuildingWorlds</clip>
+        <clip>Intro - BuildingWorlds2</clip>
+        <clip>Intro - CodingSketching</clip>
+        <clip>Jen - Math simulating reality</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jer - Generative Art</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Joel - Watercolors</clip>
+        <clip>Karolina - stasis</clip>
+        <clip>Karolina - suspension of disbelief</clip>
+        <clip>Karolina - system metaphor</clip>
+        <clip>Karolina - uncanny/sniff</clip>
+        <clip>Karsten - immediate feedback</clip>
+        <clip>Kevin - Draft mode</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kyle_CH - Modeling consciousness</clip>
+        <clip>Kyle_CH - Polygons</clip>
+        <clip>Kyle_CH - coding 2</clip>
+        <clip>Kyle_CH - coding is 1</clip>
+        <clip>Kyle_CH - modeling consciousness 2</clip>
+        <clip>Kyle_CH - storytelling</clip>
+        <clip>LIA - IdeaToCode</clip>
+        <clip>LIA - LTree</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Maeda - early computer graphics</clip>
+        <clip>Maeda - thinking about interfaces</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marcus - Sims</clip>
+        <clip>Marcus - code for storytelling</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marcus - energy flow</clip>
+        <clip>Marcus - energy flow_riot</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Marcus - modeling consciousness</clip>
+        <clip>Marcus - simulation to stories</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Nervous_Jesse - Marker 2</clip>
+        <clip>Nervous_Jesse - breaking the system</clip>
+        <clip>Nervous_Jesse - error</clip>
+        <clip>Nervous_Jesse - organic process</clip>
+        <clip>Nervous_Jesse - reaction lamp</clip>
+        <clip>Nervous_Jesse - simulation</clip>
+        <clip>Nervous_Jessica - Can&apos;t draw</clip>
+        <clip>Nervous_Jessica - RNA and Viruses</clip>
+        <clip>Nervous_Jessica - Science papers</clip>
+        <clip>Nervous_Jessica - biocomputer</clip>
+        <clip>Philip - all the points can flush</clip>
+        <clip>Philip - bits and bytes</clip>
+        <clip>Philip - build the whole universe</clip>
+        <clip>Philip - couldn&apos;t do this with actual water</clip>
+        <clip>Philip - learn through programming</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - toxi&apos;s physics</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Philip - with programming you can do whatever</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Ramsey - elegant system</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - minecraft 2</clip>
+        <clip>Shantell - Coding: what does it feel like?</clip>
+        <clip>Shantell - Coding gesturally</clip>
+        <clip>Shantell - circularity</clip>
+        <clip>Shantell - full circle</clip>
+        <clip>Shiffman - Constraints,</clip>
+        <clip>Shiffman - Games</clip>
+        <clip>Shiffman - NOC 1</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Shiffman - NOC 3</clip>
+        <clip>Shiffman - Not a visual thinker</clip>
+        <clip>Shiffman - a mystical quality</clip>
+        <clip>Shiffman - evolution</clip>
+        <clip>Shiffman - genetics short 2</clip>
+        <clip>Shiffman - how far could we get?</clip>
+        <clip>Shiffman - make it random</clip>
+        <clip>Shiffman - mutation</clip>
+        <clip>Shiffman - programming the universe</clip>
+        <clip>Shiffman - reality will only get you so far</clip>
+        <clip>Shiffman - sketching with code</clip>
+        <clip>Theo - funky forest</clip>
+        <clip>Theo - magic</clip>
+        <clip>Vera - Digital life forms</clip>
+        <clip>Vera - Playing with a system</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
@@ -16029,22 +17267,230 @@
     <sound>0</sound>
 </system>
 <system name="Terrain_M_Terraformer">
-    <keywords></keywords>
+    <keywords>weird|simulation|artificial life|biology|biology and code|behavior</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - DNA computing 1</clip>
+        <clip>Andres - DNA computing 2</clip>
+        <clip>Andres - fuzzy systems</clip>
+        <clip>Andres - make an egg</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - protein folding 1</clip>
+        <clip>Andres - protein folding 2</clip>
+        <clip>Andres - soft systems 2</clip>
+        <clip>Bruce - Age of the universe, really weird</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Bruce - Fax machine</clip>
+        <clip>Bruce - Fountain pen</clip>
+        <clip>Bruce - Gardening 2</clip>
+        <clip>Bruce - Gay sex, not that weird</clip>
+        <clip>Bruce - Infinity in a grain of sand</clip>
+        <clip>Bruce - beauty of code 2</clip>
+        <clip>Bruce - beauty of code 3</clip>
+        <clip>Bruce - fanciful metaphors 1</clip>
+        <clip>Casey - Computer as collaborator</clip>
+        <clip>Casey - Craig Venter</clip>
+        <clip>Casey - Massive parallel systems</clip>
+        <clip>Casey - Systems theory</clip>
+        <clip>Casey - Tron</clip>
+        <clip>Casey - What is emergence?</clip>
+        <clip>Casey - You need noise</clip>
+        <clip>Casey - emergence</clip>
+        <clip>Golan - audiovisual concept</clip>
+        <clip>Golan - kerrington</clip>
+        <clip>Golan - kessler</clip>
+        <clip>Golan - laughter</clip>
+        <clip>Golan - useless, whimsical</clip>
+        <clip>Greg - AI 2</clip>
+        <clip>Greg - object oriented ontology 3</clip>
+        <clip>Higa - collaboration with machines 1</clip>
+        <clip>Higa - collaboration with machines 2</clip>
+        <clip>Higa - only meets pure geeks</clip>
+        <clip>Intro - BuildingWorlds2</clip>
+        <clip>Jen - Math simulating reality</clip>
+        <clip>Jer - Generative Art</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Joel - Watercolors</clip>
+        <clip>Karolina - interactive tableau</clip>
+        <clip>Karolina - stasis</clip>
+        <clip>Karolina - suspension of disbelief</clip>
+        <clip>Karolina - system metaphor</clip>
+        <clip>Karolina - uncanny/sniff</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kyle_CH - Modeling consciousness</clip>
+        <clip>Kyle_CH - Polygons</clip>
+        <clip>Kyle_CH - coding 2</clip>
+        <clip>Kyle_CH - coding is 1</clip>
+        <clip>Kyle_CH - interactivity 2</clip>
+        <clip>Kyle_CH - modeling consciousness 2</clip>
+        <clip>Kyle_CH - storytelling</clip>
+        <clip>LIA - LTree</clip>
+        <clip>Maeda - old and new</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marcus - code for storytelling</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marcus - energy flow</clip>
+        <clip>Marcus - energy flow_riot</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marcus - modeling consciousness</clip>
+        <clip>Marcus - simulation to stories</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Martin - lolcats</clip>
+        <clip>Nervous_Jesse - reaction lamp</clip>
+        <clip>Nervous_Jesse - simulation</clip>
+        <clip>Nervous_Jessica - Big 3D printers Long quote</clip>
+        <clip>Nervous_Jessica - Biology</clip>
+        <clip>Nervous_Jessica - Growing buildings</clip>
+        <clip>Nervous_Jessica - RNA and Viruses</clip>
+        <clip>Paola - mutant ants</clip>
+        <clip>Patricio - Dream of eggs</clip>
+        <clip>Philip - all the points can flush</clip>
+        <clip>Philip - bits and bytes</clip>
+        <clip>Philip - learn through programming</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - toxi&apos;s physics</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - DNA and code</clip>
+        <clip>Ramsey - biology and the internet</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - minecraft 2</clip>
+        <clip>Ramsey - resilient internet</clip>
+        <clip>Shiffman - Constraints,</clip>
+        <clip>Shiffman - Games</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Shiffman - a mystical quality</clip>
+        <clip>Shiffman - evolution</clip>
+        <clip>Shiffman - genetic algos 1</clip>
+        <clip>Shiffman - genetic algos 2</clip>
+        <clip>Shiffman - genetics short 2</clip>
+        <clip>Shiffman - mutation</clip>
+        <clip>Shiffman - programming the universe</clip>
+        <clip>Sophy - RainbowSpaceCats</clip>
+        <clip>Sophy - Where&apos;s the best hamburger?</clip>
+        <clip>Sophy - computer dream</clip>
+        <clip>Sophy - nanobots</clip>
+        <clip>Sophy - techno-fungus</clip>
+        <clip>Theo - funky forest</clip>
+        <clip>Theo - magic</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="Terrain_M_ferroFluid">
-    <keywords></keywords>
+    <keywords>complexity|emergence|simulation</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - make an egg</clip>
+        <clip>Andres - modeling complex systems</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - protein folding 1</clip>
+        <clip>Andres - protein folding 2</clip>
+        <clip>Binx - big data</clip>
+        <clip>Binx - digestibility</clip>
+        <clip>Binx - frustrated about visualization</clip>
+        <clip>Bruce - beauty of code 2</clip>
+        <clip>Casey - Computer as collaborator</clip>
+        <clip>Casey - Systems theory</clip>
+        <clip>Casey - Tron</clip>
+        <clip>Fernanda - Googe plus 2</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - Wind visualization 1</clip>
+        <clip>Fernanda - Wind visualization 2</clip>
+        <clip>Fernanda - defense of complexity 1</clip>
+        <clip>Fernanda - defense of complexity 2</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Fernanda - visualized data doesn&apos;t seem complex</clip>
+        <clip>Higa - collaboration with machines 1</clip>
+        <clip>Higa - collaboration with machines 2</clip>
+        <clip>Intro - BuildingWorlds</clip>
+        <clip>Intro - BuildingWorlds2</clip>
+        <clip>Jen - Predicting weather</clip>
+        <clip>Jen - all about complexity</clip>
+        <clip>Jen - data crystal ball 3</clip>
+        <clip>Jen - oversimplified circles 1</clip>
+        <clip>Jen - truthiness</clip>
+        <clip>Jer - Generative Art</clip>
+        <clip>Jer - Good at understanding complexity</clip>
+        <clip>Jer - data visualization</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Jer - people don&apos;t read these things</clip>
+        <clip>Jer - reading the complexity</clip>
+        <clip>Jer - take advantage of this thing we can do</clip>
+        <clip>Joel - Watercolors</clip>
+        <clip>Karolina - stasis</clip>
+        <clip>Karolina - suspension of disbelief</clip>
+        <clip>Karolina - system metaphor</clip>
+        <clip>Karolina - uncanny/sniff</clip>
+        <clip>Karsten - database</clip>
+        <clip>Kevin - cognition vs computation 1</clip>
+        <clip>Kyle_CH - Polygons</clip>
+        <clip>Kyle_CH - abstraction</clip>
+        <clip>Kyle_CH - coding 2</clip>
+        <clip>Kyle_CH - coding is 1</clip>
+        <clip>Kyle_CH - don&apos;t underestimate traditional art</clip>
+        <clip>Kyle_CH - modeling consciousness 2</clip>
+        <clip>Kyle_CH - storytelling</clip>
+        <clip>Kyle_MC - We don&apos;t understand the thing</clip>
+        <clip>LIA - LTree</clip>
+        <clip>Maeda - simplicity and complexity</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marcus - Sims</clip>
+        <clip>Marcus - code for storytelling</clip>
+        <clip>Marcus - energy flow_riot</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Marcus - modeling consciousness</clip>
+        <clip>Marcus - simulation to stories</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Martin - Seeing the whole 1</clip>
+        <clip>Martin - Zooming is critical</clip>
+        <clip>Martin - limits of computation</clip>
+        <clip>Martin - seeing the whole 2</clip>
+        <clip>Nervous_Jesse - reaction lamp</clip>
+        <clip>Nervous_Jesse - understanding to control 3</clip>
+        <clip>Nervous_Jessica - RNA and Viruses</clip>
+        <clip>Nervous_Jessica - Science papers</clip>
+        <clip>Patricio - Discovering Mathematical Reality</clip>
+        <clip>Philip - all the points can flush</clip>
+        <clip>Philip - bits and bytes</clip>
+        <clip>Philip - build the whole universe</clip>
+        <clip>Philip - couldn&apos;t do this with actual water</clip>
+        <clip>Philip - first time computation</clip>
+        <clip>Philip - learn through programming</clip>
+        <clip>Philip - limitations</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - toxi&apos;s physics</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Philip - with programming you can do whatever</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Ramsey - minecraft 2</clip>
+        <clip>Shiffman - Constraints,</clip>
+        <clip>Shiffman - Games</clip>
+        <clip>Shiffman - NOC 1</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Shiffman - a mystical quality</clip>
+        <clip>Shiffman - how far could we get?</clip>
+        <clip>Shiffman - million monkeys</clip>
+        <clip>Shiffman - programming the universe</clip>
+        <clip>Shiffman - reality will only get you so far</clip>
+        <clip>Theo - funky forest</clip>
+        <clip>Theo - magic</clip>
+        <clip>Vera - Energy Flow2</clip>
+        <clip>Vera - Playing with a system</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -17658,6 +19104,7 @@
     <suppressions>
         <clip>Elliot_UK - lightscape</clip>
         <clip>Jen - intuitive spelunking</clip>
+        <clip>Jen - information cave</clip>
     </suppressions>
     <comments></comments>
     <grade>B</grade>
@@ -19471,12 +20918,121 @@
     <sound>0</sound>
 </system>
 <system name="Xstatic_BouncingBalls_TumblingBox">
-    <keywords></keywords>
+    <keywords>physics|simulation|programming</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - camera distorts reality</clip>
+        <clip>Andres - make an egg</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - probability</clip>
+        <clip>Andres - protein folding 1</clip>
+        <clip>Andres - protein folding 2</clip>
+        <clip>Binx - Programming is a superpower</clip>
+        <clip>Binx - programming is a superpower</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Bruce - Constant improvement</clip>
+        <clip>Bruce - Fountain pen</clip>
+        <clip>Bruce - beauty of code 3</clip>
+        <clip>Casey - Developing a microworld</clip>
+        <clip>Casey - Programming at 26</clip>
+        <clip>Casey - Software is what i love the most</clip>
+        <clip>Casey - Tron</clip>
+        <clip>Casey - You need noise</clip>
+        <clip>Casey - emergence</clip>
+        <clip>Casey - pseudo-science</clip>
+        <clip>Damion - CodingAndCommunication</clip>
+        <clip>Diederick - allprogrammershavethat</clip>
+        <clip>Diederick - hackathon1</clip>
+        <clip>Higa - beginnings</clip>
+        <clip>Higa - collaboration with machines 2</clip>
+        <clip>Higa - process of working alone</clip>
+        <clip>Higa - understanding pointers</clip>
+        <clip>Intro - BuildingWorlds</clip>
+        <clip>Intro - BuildingWorlds2</clip>
+        <clip>Intro - Programming</clip>
+        <clip>JTNimoy - I addicted myself</clip>
+        <clip>Jen - hated computer science</clip>
+        <clip>Jen - necessity of code 1</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jen - struggle with programming</clip>
+        <clip>Jen - to program or not to program</clip>
+        <clip>Jer - Generative Art</clip>
+        <clip>Joel - Watercolors</clip>
+        <clip>Julian - mixing code</clip>
+        <clip>Karolina - stasis</clip>
+        <clip>Karolina - suspension of disbelief</clip>
+        <clip>Karolina - system metaphor</clip>
+        <clip>Karolina - uncanny/sniff</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Kyle_CH - Modeling consciousness</clip>
+        <clip>Kyle_CH - Polygons</clip>
+        <clip>Kyle_CH - coding 2</clip>
+        <clip>Kyle_CH - coding is 1</clip>
+        <clip>Kyle_CH - modeling consciousness 2</clip>
+        <clip>Kyle_CH - storytelling</clip>
+        <clip>LIA - LTree</clip>
+        <clip>LIA - Lingo</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marcus - code for storytelling</clip>
+        <clip>Marcus - energy flow</clip>
+        <clip>Marcus - energy flow_riot</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marcus - modeling consciousness</clip>
+        <clip>Marcus - simulation to stories</clip>
+        <clip>Martin - verbal programming debate</clip>
+        <clip>Nervous_Jesse - simulation</clip>
+        <clip>Nervous_Jessica - Science papers</clip>
+        <clip>Paola - changes the way you think</clip>
+        <clip>Paola - code changes your thinking</clip>
+        <clip>Patricio - CopyPaste</clip>
+        <clip>Philip - all the points can flush</clip>
+        <clip>Philip - bits and bytes</clip>
+        <clip>Philip - build the whole universe</clip>
+        <clip>Philip - couldn&apos;t do this with actual water</clip>
+        <clip>Philip - get an idea</clip>
+        <clip>Philip - image is in your brain</clip>
+        <clip>Philip - learn through programming</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - toxi&apos;s physics</clip>
+        <clip>Philip - with programming you can do whatever</clip>
+        <clip>Ramsey - C++ built the modern world</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - complicated C++</clip>
+        <clip>Ramsey - designing languages</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - language as expression</clip>
+        <clip>Ramsey - literacy</clip>
+        <clip>Ramsey - minecraft 2</clip>
+        <clip>Ramsey - trapese 1</clip>
+        <clip>Ramsey - trapese 2</clip>
+        <clip>Shantell - Coding: what does it feel like?</clip>
+        <clip>Shantell - Coding gesturally</clip>
+        <clip>Shiffman - Constraints,</clip>
+        <clip>Shiffman - Games</clip>
+        <clip>Shiffman - Magnets</clip>
+        <clip>Shiffman - Maybe I&apos;d like that</clip>
+        <clip>Shiffman - NOC 1</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Shiffman - NOC 3</clip>
+        <clip>Shiffman - how far could we get?</clip>
+        <clip>Shiffman - mutation</clip>
+        <clip>Shiffman - offers me a way to think</clip>
+        <clip>Shiffman - programming the universe</clip>
+        <clip>Shiffman - reality will only get you so far</clip>
+        <clip>Sophy - made of photons</clip>
+        <clip>Theo - magic</clip>
+        <clip>Zach - Fucking boring</clip>
+        <clip>Zach - action script shorter</clip>
+        <clip>Zach - minecraft livecode</clip>
+        <clip>Zach - on the street</clip>
+        <clip>Zach - programming 2</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
