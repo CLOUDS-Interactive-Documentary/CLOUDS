@@ -308,27 +308,6 @@ void CloudsVisualSystem::setKeywords(string main, vector<string> allKeywords){
 	keywords = allKeywords;
 }
 
-//float CloudsVisualSystem::getSecondsRemaining(){
-//	return secondsRemaining;
-//}
-//
-//void CloudsVisualSystem::setSecondsRemaining(float seconds){
-//	secondsRemaining = seconds;
-//}
-
-
-//string CloudsVisualSystem::getCurrentKeyword(){
-//	return currentKeyword;
-//}
-
-//void CloudsVisualSystem::setCurrentTopic(string topic){
-//	currentTopic = topic;
-//}
-//
-//string CloudsVisualSystem::getCurrentTopic(){
-//	return currentTopic;
-//}
-
 void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
 									  string speakerLastName,
 									  string quoteName)
@@ -475,13 +454,12 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		
 		//draw the fbo to the screen as a full screen quad
 		if(bDrawToScreen){
-//			if(getSystemName() != "_Intro"){
-//				cout << "Post draw should not have happened";
-//			}
 			selfPostDraw();
 		}
 		
-        selfDrawCursor();
+#ifndef OCULUS_RIFT
+        drawCursor();
+#endif
 	}
     
 	if(timeline != NULL && timeline->getIsShowing())
@@ -543,19 +521,32 @@ void CloudsVisualSystem::drawScene(){
 	
 
 #ifdef OCULUS_RIFT
-	if(drawCursorMode > DRAW_CURSOR_NONE){
-		ofPushMatrix();
-		ofPushStyle();
-		oculusRift.multBillboardMatrix();
-	//	ofNoFill();
-	//	ofSetColor(255, 50);
-	//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
-		ofSetColor(240,240,255, 175);
-//		ofSetLineWidth(2);
-//		ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, .15, .1, true, ofxEasingQuad()));
-		ofPopStyle();
-		ofPopMatrix();
-	}
+    if(drawCursorMode > DRAW_CURSOR_NONE){
+        ofPushStyle();
+        ofPushMatrix();
+        glPushAttrib(GL_ALL_ATTRIB_BITS);
+        glDisable(GL_LIGHTING);
+        glDisable(GL_DEPTH_TEST);
+        
+        ofTranslate(getCameraRef().getPosition());
+        ofMatrix4x4 baseRotation;
+        baseRotation.makeRotationMatrix(getCameraRef().getOrientationQuat());
+        if(getOculusRift().lockView){
+            ofMultMatrix(baseRotation);
+        }
+        else {
+            ofMultMatrix(getOculusRift().getOrientationMat() * baseRotation);
+        }
+        
+        ofEnableAlphaBlending();
+        
+        ofVec3f cursorPt = ofVec3f(0, 0, -150);
+        selfDrawCursor(cursorPt, 0);
+        
+        glPopAttrib();
+        ofPopMatrix();
+        ofPopStyle();
+    }
 #endif
 	
 }
@@ -651,7 +642,7 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 #endif
 #ifdef OCULUS_RIFT
         case '9':
-            toggleGuiAndPosition(oculusGui8);
+            toggleGuiAndPosition(oculusGui);
             break;
 #endif
 //        case '0':
@@ -667,8 +658,7 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
         case ' ':
         {
 			timeline->togglePlay();
-//            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->setValue(timeline->getIsPlaying());
-//            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->triggerSelf();
+
         }
             break;
 			
@@ -962,9 +952,7 @@ void CloudsVisualSystem::setupCameraParams()
     camDistance = 200;
     cam.setDistance(camDistance);
     cam.setFov(camFOV);
-	//    cam.setForceAspectRatio(true);
-	//    bgAspectRatio = (float)ofGetWidth()/(float)ofGetHeight();
-	//    cam.setAspectRatio(bgAspectRatio);
+
     xRot = new ofx1DExtruder(0);
     yRot = new ofx1DExtruder(0);
     zRot = new ofx1DExtruder(0);
@@ -987,11 +975,7 @@ void CloudsVisualSystem::setupLightingParams()
 	globalAmbientColorHSV.a = 1.0;
 	
 	light = new ofxLight();
-//    globalAmbientColor = new float[4];
-//    globalAmbientColor[0] = 0.5;
-//    globalAmbientColor[1] = 0.5;
-//    globalAmbientColor[2] = 0.5;
-//    globalAmbientColor[3] = 1.0;
+
 }
 
 void CloudsVisualSystem::setupMaterialParams()
@@ -1225,40 +1209,10 @@ void CloudsVisualSystem::setupRenderGui()
 
 void CloudsVisualSystem::setupBackgroundGui()
 {
-//    bgHue = new ofx1DExtruder(0);
-//	bgSat = new ofx1DExtruder(0);
-//	bgBri = new ofx1DExtruder(0);
-	
-//	bgHue->setPhysics(.95, 5.0, 25.0);
-//	bgSat->setPhysics(.95, 5.0, 25.0);
-//	bgBri->setPhysics(.95, 5.0, 25.0);
-	
-//    bgHue2 = new ofx1DExtruder(0);
-//	bgSat2 = new ofx1DExtruder(0);
-//	bgBri2 = new ofx1DExtruder(0);
-	
-//	bgHue2->setPhysics(.95, 5.0, 25.0);
-//	bgSat2->setPhysics(.95, 5.0, 25.0);
-//	bgBri2->setPhysics(.95, 5.0, 25.0);
     
 	gradientMode = 0;
-//    bgHue->setHome((330.0/360.0)*255.0);
-//	bgSat->setHome(0);
-//	bgBri->setHome(0);
-//    bgColor = new ofColor(0,0,0);
     bgColor = ofColor(0,0,0);
-//    bgHue2->setHome((330.0/360.0)*255.0);
-//	bgSat2->setHome(0);
-//	bgBri2->setHome(0);
-//	bgColor2 = new ofColor(0,0,0);
     bgColor2 = ofColor(0,0,0);
-//    extruders.push_back(bgHue);
-//    extruders.push_back(bgSat);
-//    extruders.push_back(bgBri);
-//    
-//    extruders.push_back(bgHue2);
-//    extruders.push_back(bgSat2);
-//    extruders.push_back(bgBri2);
     
     bgGui = new ofxUISuperCanvas("BACKGROUND", gui);
     bgGui->copyCanvasStyle(gui);
@@ -2892,9 +2846,7 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 
 	selfPresetLoaded(presetPath);
 	currentPresetName = ofFilePath::getBaseName(presetPath);
-//	getSharedRenderTarget().begin();
-//	ofClear(0.0,0.0,0.0,1.0);
-//	getSharedRenderTarget().end();
+
 		
 	//auto play this preset
 	cameraTrack->lockCameraToTrack = cameraTrack->getKeyframes().size() > 0;
@@ -3023,21 +2975,6 @@ void CloudsVisualSystem::toggleGuiAndPosition(ofxUISuperCanvas *g)
         g->setMinified(true);
     }
 }
-
-//void CloudsVisualSystem::setCurrentCamera(ofCamera& swappedInCam)
-//{
-//	currentCamera = &swappedInCam;
-//}
-
-//ofCamera* CloudsVisualSystem::getCurrentCamera()
-//{
-//	return currentCamera;
-//}
-
-//void CloudsVisualSystem::setCurrentCamera( ofCamera* swappedInCam )
-//{
-//	setCurrentCamera(*swappedInCam);
-//}
 
 ofCamera& CloudsVisualSystem::getCameraRef(){
 	return cam;
@@ -3280,39 +3217,46 @@ void CloudsVisualSystem::selfPostDraw(){
 
 }
 
-void CloudsVisualSystem::selfDrawCursor()
+void CloudsVisualSystem::drawCursor()
 {
     if (drawCursorMode > DRAW_CURSOR_NONE) {
-        ofPushMatrix();
-        ofPushStyle();
-        ofNoFill();
-        ofSetLineWidth(2);
         map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
         for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
             if (drawCursorMode == DRAW_CURSOR_PRIMARY && !it->second.primary) {
                 continue;
             }
             
-            if (it->second.actionType == 0) {
-                ofSetColor(213, 69, 62, 255);
-                ofCircle(it->second.position.x, it->second.position.y,
-                         ofMap(it->second.position.z, 2, -2, 3, 10, true));
-            }
-//            else if (it->second.primary) {
-//                ofSetColor(240, 240, 100, 175);
-//            }
-            else {
-                ofSetColor(255, 255, 255, 175);
-                ofCircle(it->second.position.x, it->second.position.y,
-                         ofMap(it->second.position.z, 2, -2, 3, 6, true));
-            }
-//            cout << " z pos " << it->second.position.z << endl;
+            selfDrawCursor(it->second.position, it->second.actionType != 0);
         }
-        ofPopStyle();
-        ofPopMatrix();
     }
 }
-	
+
+void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
+{
+    ofPushStyle();
+    ofNoFill();
+    ofSetLineWidth(2);
+    if (bDragged) {
+        ofSetColor(213, 69, 62, 255);
+#ifdef OCULUS_RIFT
+        ofCircle(pos, 6);
+#else
+        ofCircle(pos.x, pos.y,
+                 ofMap(pos.z, 2, -2, 3, 6, true));
+#endif
+    }
+    else {
+        ofSetColor(255, 255, 255, 175);
+#ifdef OCULUS_RIFT
+        ofCircle(pos, 10);
+#else
+        ofCircle(pos.x, pos.y,
+                 ofMap(pos.z, 2, -2, 3, 10, true));
+#endif
+    }
+    ofPopStyle();
+}
+
 void CloudsVisualSystem::selfExit()
 {
     

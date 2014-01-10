@@ -409,8 +409,6 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	updateQuestions();
 	updateTransition();
-    
-//    cloudsCaption.update();
 	
 	if( placingTransitionNodes )
 	{
@@ -825,7 +823,8 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 		portals[i]->update();
 		
 		#ifdef OCULUS_RIFT
-		ofVec3f screenPos = getOculusRift().worldToScreen(startQuestions[i].hoverPosition, true);
+		ofVec3f screenPos = getOculusRift().worldToScreen(portals[i]->hoverPosition, true);
+        ofRectangle viewport = getOculusRift().getOculusViewport();
 		float distanceToQuestion = ofDist(screenPos.x, screenPos.y,
 										  viewport.getCenter().x, viewport.getCenter().y);
 		#else
@@ -1306,8 +1305,9 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		}
 		
 		glDisable(GL_DEPTH_TEST);
-		ofEnableBlendMode(OF_BLENDMODE_ADD);
-			
+//		ofEnableBlendMode(OF_BLENDMODE_ADD);
+        ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+        
 		if(drawLines){
 			lineShader.begin();
 			ofSetLineWidth(lineThickness);
@@ -1538,10 +1538,10 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 	glDisable(GL_DEPTH_TEST);
 	CloudsPortal::shader.begin();
 	CloudsPortal::shader.setUniform1i("doAttenuate", 0);
-	if(leftPortal.question != ""){
+	if(leftPortal.question != "" || bPortalDebugOn){
 		leftPortal.draw();
 	}
-	if(rightPortal.question != ""){
+	if(rightPortal.question != "" || bPortalDebugOn){
 		rightPortal.draw();
 	}
 	CloudsPortal::shader.end();

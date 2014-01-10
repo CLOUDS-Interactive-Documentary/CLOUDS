@@ -78,7 +78,6 @@ void CloudsVisualSystemSwim::generate()
 void CloudsVisualSystemSwim::selfUpdate()
 {
     volumeControl.value(gain);
-    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
     
     if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
     
@@ -281,9 +280,9 @@ void CloudsVisualSystemSwim::selfKeyPressed(ofKeyEventArgs & args)
             saveSeed = true;
             break;
             
-        case 'l':
+        /*case 'l':
             loadSeed = true;
-            break;
+            break;*/
             
         default:
             break;

@@ -345,6 +345,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	state.timesOnCurrentTopic = 0;
 	state.freeTopic = false;
 
+    state.run = 2; //RIGGED TO ACT TWO
 
 	state.log << "SEED TOPIC:  " << seedTopic << endl << "SEED CLIP: " << seed.getLinkName() << endl;
 	//PLAY FIRST CLIP

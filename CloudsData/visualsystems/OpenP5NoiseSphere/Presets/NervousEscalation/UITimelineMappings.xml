@@ -5,7 +5,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>LEVEL ADJUST</WidgetName>
-                <WidgetID>9</WidgetID>
+                <WidgetID>15</WidgetID>
                 <WidgetCanvasParent>Audio</WidgetCanvasParent>
             </Widget>
             <Track></Track>

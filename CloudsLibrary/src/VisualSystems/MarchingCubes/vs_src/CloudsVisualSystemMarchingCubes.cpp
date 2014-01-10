@@ -46,10 +46,32 @@ void CloudsVisualSystemMarchingCubes::selfSetupGui()
     fgAlpha->setPhysics(0.95, 5.0, 25.0);
     extruders.push_back(fgAlpha);
     customGui->addSlider("FG ALPHA", 0.0, 255.0, fgAlpha->getPosPtr());
+    customGui->addSpacer();
+    customGui->addToggle("Motion", &motion);
+    customGui->addToggle("Use Grain", &bNoisy);
+    customGui->addToggle("Use Color Grain", &bColorGrain);
+    customGui->addSlider("Grain Amnt", 0., 1., &noiseAmt);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemMarchingCubes::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
+    
+    //fog gui
+	fogGui = new ofxUISuperCanvas("FOG", gui);
+	fogGui->copyCanvasStyle(gui);
+	fogGui->copyCanvasProperties(gui);
+	fogGui->setName("FOG");
+	fogGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	fogGui->addSpacer();
+	fogGui->addSlider("fogDist", 10, 1000, &fogDist);
+	fogGui->addSlider("fogExpo", .6, 3., &fogExpo);
+	
+    //fogGui->addImageSampler("fogColor", &colorMap, 100, 100);
+	
+	ofAddListener(fogGui->newGUIEvent, this, &CloudsVisualSystemMarchingCubes::selfGuiEvent);
+	guis.push_back(fogGui);
+	guimap[fogGui->getName()] = fogGui;
+
 }
 
 void CloudsVisualSystemMarchingCubes::selfGuiEvent(ofxUIEventArgs &e)
@@ -117,6 +139,12 @@ void CloudsVisualSystemMarchingCubes::selfSetup()
     bDrawGrid = true;
     differentSurfaces = 0;
     
+    noiseAmt = .1;
+    bNoisy = false;
+    bColorGrain = false;
+    
+    motion  = false;
+    
     fgColor.set(128);
 
 	mc.setup();
@@ -124,13 +152,18 @@ void CloudsVisualSystemMarchingCubes::selfSetup()
 	mc.scale.set(500, 250, 500);
     
 	mc.setSmoothing(false);
-    
-	normalShader.load(getVisualSystemDataPath() + "shaders/normalShader");
-    
+    fogDist = 650.f;
+    fogExpo = 2.5f;
+    reloadShaders();
 }
 
 void CloudsVisualSystemMarchingCubes::selfPresetLoaded(string presetPath){
 	
+}
+
+void CloudsVisualSystemMarchingCubes::reloadShaders(){
+    normalShader.load(getVisualSystemDataPath() + "shaders/normalShader");
+    styleShader.load(getVisualSystemDataPath() + "shaders/style");
 }
 
 void CloudsVisualSystemMarchingCubes::selfBegin(){
@@ -151,8 +184,8 @@ void CloudsVisualSystemMarchingCubes::selfUpdate()
 			for(int j=0; j<mc.resY; j++){
 				for(int k=0; k<mc.resZ; k++){
 					//noise
-					float nVal = ofNoise(float(i)*noiseScale, float(j)*noiseScale, float(k)*noiseScale + noiseStep);
-					if(nVal > 0.)	nVal *= ofNoise(float(i)*noiseScale2, float(j)*noiseScale2, float(k)*noiseScale2 + noiseStep);
+					float nVal = ofNoise(float(i)*noiseScale, float(j)*noiseScale, float(k)*noiseScale + (motion ? noiseStep : 0.f) );
+					if(nVal > 0.)	nVal *= ofNoise(float(i)*noiseScale2, float(j)*noiseScale2, float(k)*noiseScale2 + (motion ? noiseStep : 0.f) );
 					mc.setIsoValue( i, j, k, nVal );
 				}
 			}
@@ -183,7 +216,8 @@ void CloudsVisualSystemMarchingCubes::selfUpdate()
 	}
 	
 	//update the mesh
-	mc.update();	
+	mc.update();
+    fc = bgColor;
 }
 
 void CloudsVisualSystemMarchingCubes::selfDraw()
@@ -194,18 +228,33 @@ void CloudsVisualSystemMarchingCubes::selfDraw()
     else {
         glEnable(GL_DEPTH_TEST);
     }
-	
+	mat->begin();
+    glEnable(GL_DEPTH_TEST);
     //draw the mesh
-	normalShader.begin();
-    normalShader.setUniform1i("bRenderNormals", bRenderNormals);
-    normalShader.setUniform4f("fgColor", fgColor.r / 255.0f, fgColor.g / 255.0f, fgColor.b / 255.0f, fgColor.a / 255.0f);
+	styleShader.begin();
+    styleShader.setUniform1i("bRenderNormals", bRenderNormals);
+    styleShader.setUniform4f("fgColor", fgColor.r / 255.0f, fgColor.g / 255.0f, fgColor.b / 255.0f, fgColor.a / 255.0f);
+    
+    styleShader.setUniform4f("fogColor", fc.r, fc.g, fc.g, fc.a );
+	styleShader.setUniform1f("fogDist", fogDist );
+	styleShader.setUniform1f("fogExpo", fogExpo );
+    styleShader.setUniform1f("grainAmnt", noiseAmt );
+	styleShader.setUniform1f("bUseGrain", bNoisy );
+	styleShader.setUniform1f("bUseColorGrain", bColorGrain );
+    
     {
         bWireframe?	mc.drawWireframe() : mc.draw();
 	}
-	normalShader.end();
+    
+	styleShader.end();
 	
+    mat->end();
 	//draw the voxel grid
-	if (bDrawGrid) mc.drawGrid();
+    
+    if (bDrawGrid) mc.drawGrid();
+    
+    glDisable(GL_DEPTH_TEST);
+    
 }
 
 
@@ -225,7 +274,7 @@ void CloudsVisualSystemMarchingCubes::selfExit(){
 }
 
 void CloudsVisualSystemMarchingCubes::selfKeyPressed(ofKeyEventArgs &args){
-	
+	if(args.key == 'r')reloadShaders();
 }
 
 void CloudsVisualSystemMarchingCubes::selfKeyReleased(ofKeyEventArgs &args){

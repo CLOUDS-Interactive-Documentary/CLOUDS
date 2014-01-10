@@ -166,6 +166,11 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float tunnelDistance;
 	float tunnelStartZ;
 	
+    
+    //hack with get input not working
+    ofVec2f inputPosition;
+    
+    
 	bool regenerateTunnel;
 	void generateTunnel();
 	float looseTunnelResolutionX;

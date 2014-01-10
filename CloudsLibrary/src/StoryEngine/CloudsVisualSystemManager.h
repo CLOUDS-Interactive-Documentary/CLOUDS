@@ -28,6 +28,7 @@ class CloudsVisualSystemManager {
 	CloudsVisualSystemPreset& getPresetForSystem(string systemName, string presetName);
 	
 	vector<int> getFilteredPresetIndeces(bool enabled, bool oculus, bool gradeA);
+	vector<int> getFilteredPresetIndecesForSystem(string systemName,bool enabled, bool oculus, bool gradeA);
 	
 	ofPtr<CloudsVisualSystem> visualSystemWithName(string systemName);
 	vector<CloudsVisualSystemPreset>& getPresets();
