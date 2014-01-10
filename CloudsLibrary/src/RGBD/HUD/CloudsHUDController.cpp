@@ -17,12 +17,12 @@ CloudsHUDController::CloudsHUDController(){
     bIsHudOpen = false;
     bSkipAVideoFrame = false;
     bDrawHud = true;
-    
+    bDrawHome = true;
+	
     scaleAmt = 1.0;
 }
 
 void CloudsHUDController::setup(){
-//	testImage.loadImage( GetCloudsDataPath() + "HUD/overlayTest.png" );
 	buildLayerSets();
     calculateFontSizes();
 	
@@ -30,7 +30,7 @@ void CloudsHUDController::setup(){
 }
 
 void CloudsHUDController::actBegan(CloudsActEventArgs& args){
-	bDrawHud = true;
+//	bDrawHud = true;
 }
 
 void CloudsHUDController::actEnded(CloudsActEventArgs& args){
@@ -63,27 +63,31 @@ void CloudsHUDController::preRollRequested(CloudsPreRollEventArgs& args){
 
 void CloudsHUDController::respondToClip(CloudsClip& clip){
 	
-	cout << "ID's on clip " << clip.name << " and fcp id? " << clip.fcpFileId << endl;
-	CloudsSpeaker speaker = CloudsSpeaker::speakers[ clip.person ];
-	cout << "Clip is " <<  clip.getLinkName() << endl;
-	cout << "speaker: " << speaker.firstName << " " << speaker.lastName << endl;
+//	cout << "ID's on clip " << clip.name << " and fcp id? " << clip.fcpFileId << endl;
+//	cout << "Clip is " <<  clip.getLinkName() << endl;
+//	cout << "speaker: " << speaker.firstName << " " << speaker.lastName << endl;
 	
 // LOWER THIRD
+	CloudsSpeaker speaker = CloudsSpeaker::speakers[ clip.person ];
     populateLowerThird(speaker.firstName, speaker.lastName, speaker.location2, speaker.title, speaker.byline1, true );
     
 // PROJECT EXAMPLE
 	if(clip.hasProjectExample && clip.projectExample.exampleVideos.size() ){
 		CloudsProjectExample example = clip.projectExample;
         string videoPath = example.exampleVideos[ (int)ofRandom(0, example.exampleVideos.size()) ];
-//        if( ofRandom(1.0) < 0.5 ){
-//            videoPath = "/Volumes/MERCURY/HUDVideos/OpenPaths_720.mov";
-//        }else{
-//            videoPath = "/Volumes/MERCURY/HUDVideos/Particle_Dreams_480.mov";
-//        }
         populateProjectExample( videoPath, example.creatorName, "", example.title, true );
-	}else{
+	}
+	else{
         animateOff(CLOUDS_HUD_PROJECT_EXAMPLE);
     }
+}
+
+void CloudsHUDController::questionHoverOn(string question){
+	populateQuestion(question,true);
+}
+
+void CloudsHUDController::questionHoverOff(){
+	animateOff( CLOUDS_HUD_QUESTION );
 }
 
 void CloudsHUDController::populateMap( string leftBox, string rightBox, bool forceOn){
@@ -96,11 +100,19 @@ void CloudsHUDController::populateMap( string leftBox, string rightBox, bool for
 }
 
 void CloudsHUDController::populateQuestion( string question, bool forceOn ){
-    hudLabelMap["QuestionTextBox"]->setText( question );
-    
-    if( forceOn ){
-        animateOn( CLOUDS_HUD_QUESTION );
-    }
+	if(hudLabelMap["QuestionTextBox"]->getText() == question){
+		return;
+	}
+	else if(question == ""){
+		animateOff( CLOUDS_HUD_QUESTION );
+	}
+	else{
+		hudLabelMap["QuestionTextBox"]->setText( question );
+		
+		if( forceOn ){
+			animateOn( CLOUDS_HUD_QUESTION );
+		}
+	}
 }
 
 void CloudsHUDController::populateLowerThird( string firstName, string lastName, string title, string location, string textbox, bool forceOn ) {
@@ -142,42 +154,8 @@ void CloudsHUDController::buildLayerSets(){
 	
 	//configure layers
 	CloudsHUDLayerSet currentLayer;
-//	CloudsHUDLayer* layer;
-	
-	//QUESTION LAYER
+
 	currentLayer = CLOUDS_HUD_QUESTION;
-	
-//	layer = new CloudsHUDLayer(GetCloudsDataPath() + "HUD/01_MAIN_inner.svg");
-//	layerSets[currentLayer].push_back( layer );
-//	allLayers.push_back(layer);
-//	layer->delayTime = .1;
-//	layer->duration = 1.;
-//	layer->startPoint = ofVec2f(0,layer->svg.getHeight());
-//	layer->endPoint   = ofVec2f(layer->svg.getWidth(),0);
-//
-//	layer = new CloudsHUDLayer(GetCloudsDataPath() + "HUD/01_MAIN_innermost.svg");
-//	layerSets[currentLayer].push_back( layer );
-//	allLayers.push_back(layer);
-//	layer->delayTime = .1;
-//	layer->duration = 1.;
-//	layer->startPoint = ofVec2f(layer->svg.getWidth(),0);
-//	layer->endPoint   = ofVec2f(0,layer->svg.getHeight());
-
-//	layer = new CloudsHUDLayer(GetCloudsDataPath() + "HUD/01_MAIN_Outer.svg");	
-//	layerSets[currentLayer].push_back( layer );
-//	allLayers.push_back(layer);
-//	layer->duration = 1.;
-//	layer->startPoint = ofVec2f(layer->svg.getWidth(),0);
-//	layer->endPoint   = ofVec2f(0,layer->svg.getHeight());
-
-//	layer = new CloudsHUDLayer();
-//	layer->parse(GetCloudsDataPath() + "HUD/CLOUDS_UI_v59-01.svg");
-//	layerSets[currentLayer].push_back( layer );
-//	allLayers.push_back(layer);
-//	layer->duration = 1.;
-//	layer->startPoint = ofVec2f(layer->svg.getWidth(),0);
-//	layer->endPoint   = ofVec2f(0,layer->svg.getHeight());
-
     
     CloudsHUDLayer* lowerThirdLayer = new CloudsHUDLayer();
     lowerThirdLayer->parseDirectory(GetCloudsDataPath() + "HUD/SVG/CLOUDS_HUD_LOWER_THIRD");
@@ -213,9 +191,6 @@ void CloudsHUDController::buildLayerSets(){
     svgVideoBounds = projectExampleLayer->svg.getMeshByID("ProjectExampleFrame")->bounds;
 	videoBounds = svgVideoBounds;
     
-//	layerSets[CLOUDS_HUD_QUESTION].push_back( new CloudsHUDLayer(GetCloudsDataPath() + "HUD/01_MAIN_innermost.svg" ) );
-//	layerSets[CLOUDS_HUD_QUESTION].push_back( new CloudsHUDLayer(GetCloudsDataPath() + "HUD/01_MAIN_Outer.svg" ) );
-    
     hudBounds.set( 0, 0, allLayers[0]->svg.getWidth(), allLayers[0]->svg.getHeight() );
     
 //	cout << "HUD BOUNDS " << hudBounds.width << " / " << hudBounds.height << endl;
@@ -227,7 +202,7 @@ void CloudsHUDController::calculateFontSizes(){
     int minFontSize = 1;
     int maxFontSize = 70;
     
-    for( int i=minFontSize; i<maxFontSize; i++){
+    for(int i = minFontSize; i < maxFontSize; i++){
         ofxFTGLFont *tmp = new ofxFTGLFont();
         tmp->loadFont( GetCloudsDataPath() + "font/Blender-THIN.ttf", i );
         tempFontList.push_back( tmp );
@@ -339,6 +314,10 @@ void CloudsHUDController::update(){
     }
 }
 
+void CloudsHUDController::setHomeEnabled(bool enable){
+	bDrawHome = enable;
+}
+
 void CloudsHUDController::draw(){
     
     if( !bDrawHud )
@@ -360,8 +339,10 @@ void CloudsHUDController::draw(){
         ofSetColor(255, 255, 255, 255);
     }
     
-//	ofSetColor(255,255,255,ofGetMouseX());
 	drawLayer(CLOUDS_HUD_QUESTION);
+	
+//	cout << "drawing question: " << hudLabelMap["QuestionTextBox"]->getText() << endl;
+	
 	drawLayer(CLOUDS_HUD_LOWER_THIRD);
 	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
 	drawLayer(CLOUDS_HUD_MAP);
@@ -370,7 +351,9 @@ void CloudsHUDController::draw(){
         (it->second)->draw();
     }
     
-	home.draw();
+	if(bDrawHome){
+		home.draw();
+	}
 	
 	ofPopMatrix();
 	ofPopStyle();
@@ -383,25 +366,37 @@ void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
 }
 
 void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
-    bIsHudOpen = true;
-    
+    //bIsHudOpen = true;
+	
+    if(hudOpenMap[layer]){
+		return;
+	}
+	
     if( layer == CLOUDS_HUD_FULL ){
         for( int i=0; i<layerSets.size(); i++ ){
             for(int k = 0; k < layerSets[(CloudsHUDLayerSet)i].size(); i++){
                 layerSets[(CloudsHUDLayerSet)i][k]->start();
+				hudOpenMap[(CloudsHUDLayerSet)i] = true;
             }
         }
     }
-    else{
+    else {
         for(int i = 0; i < layerSets[layer].size(); i++){
             layerSets[layer][i]->start();
+			hudOpenMap[layer] = true;
         }
+		hudOpenMap[layer] = true;	
     }
+	
+	
 }
 
 void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
-	bIsHudOpen = false;
-    
+	//bIsHudOpen = false;
+	if(!hudOpenMap[layer]){
+		return;
+	}
+
     if( videoPlayer.isPlaying() ){
         videoPlayer.stop();
         videoPlayer.close();
@@ -411,12 +406,14 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
         for( int i=0; i<layerSets.size(); i++ ){
             for(int k = 0; k < layerSets[(CloudsHUDLayerSet)i].size(); i++){
                 layerSets[(CloudsHUDLayerSet)i][k]->close();
+				hudOpenMap[(CloudsHUDLayerSet)i] = false;
             }
         }
     }
     else{
         for(int i = 0; i < layerSets[layer].size(); i++){
             layerSets[layer][i]->close();
+			hudOpenMap[layer] = false;
         }
     }
     
@@ -438,7 +435,7 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
     }else if( layer == CLOUDS_HUD_MAP ){
         
     }else if( layer == CLOUDS_HUD_QUESTION ){
-        
+        hudLabelMap["QuestionTextBox"]->animateOut();
     }
 }
 

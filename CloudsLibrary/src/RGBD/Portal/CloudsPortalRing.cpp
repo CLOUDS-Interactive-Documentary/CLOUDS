@@ -58,8 +58,7 @@ void CloudsPortalRing::setup(CloudsPortal* parent, ofVboMesh& portalGeo, int ind
 		totalSegments += shard.numSegments;
 		shards.push_back(shard);
 	}
-	
-	cout << "total segments " << totalSegments << "/" << parent->ringSegments << endl;
+		
 	if(totalSegments < parent->ringSegments){
 		shards[0].numSegments++;
 	}

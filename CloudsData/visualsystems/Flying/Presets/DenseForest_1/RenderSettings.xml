@@ -18,12 +18,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>fogStart</Name>
-    <Value>1540.886718750</Value>
+    <Value>522.660095215</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>fogEnd</Name>
-    <Value>1848.275878906</Value>
+    <Value>1002.955627441</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -116,4 +116,9 @@
     <Kind>2</Kind>
     <Name>organ_slower.aif</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Gain</Name>
+    <Value>0.128078818</Value>
 </Widget>
