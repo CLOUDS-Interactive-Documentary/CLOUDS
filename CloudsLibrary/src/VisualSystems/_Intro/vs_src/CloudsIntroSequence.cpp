@@ -122,7 +122,8 @@ void CloudsIntroSequence::selfUpdate(){
             float distanceToQuestion = ofDist(screenPos.x, screenPos.y,
                                               viewport.getCenter().x, viewport.getCenter().y);
 #else
-			ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
+//			ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
+            ofVec2f mouseNode = cursor;
 			float distanceToQuestion = startQuestions[i].screenPosition.distance(mouseNode);
 #endif
 			if(caughtQuestion == NULL){
@@ -507,12 +508,12 @@ void CloudsIntroSequence::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
 		reloadShaders();
 	}
-    if (args.key == 'a') {
-        cursor.z += 0.1;
-    }
-    if (args.key == 'z') {
-        cursor.z -= 0.1;
-    }
+//    if (args.key == 'a') {
+//        cursor.z += 0.1;
+//    }
+//    if (args.key == 'z') {
+//        cursor.z -= 0.1;
+//    }
 
 }
 

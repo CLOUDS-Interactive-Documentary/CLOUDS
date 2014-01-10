@@ -1301,8 +1301,9 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		}
 		
 		glDisable(GL_DEPTH_TEST);
-		ofEnableBlendMode(OF_BLENDMODE_ADD);
-			
+//		ofEnableBlendMode(OF_BLENDMODE_ADD);
+        ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+        
 		if(drawLines){
 			lineShader.begin();
 			ofSetLineWidth(lineThickness);
