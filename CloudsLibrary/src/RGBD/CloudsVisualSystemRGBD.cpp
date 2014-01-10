@@ -1010,6 +1010,10 @@ void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
 		float easedPercent = ofxTween::map(percentComplete, 0, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
 		cloudsCamera.setTransitionPercent( easedPercent );
 		
+		
+		float easedRotPercent = ofxTween::map(percentComplete, .6, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
+		cloudsCamera.setTransitionRotationPercent( easedRotPercent );
+		
 		cout <<"TRANSITIONING : easedValue = "<< easedPercent << endl;
 	}
 }
