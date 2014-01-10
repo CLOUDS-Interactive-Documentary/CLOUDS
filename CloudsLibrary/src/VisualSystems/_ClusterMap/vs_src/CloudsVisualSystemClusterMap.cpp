@@ -439,6 +439,10 @@ void CloudsVisualSystemClusterMap::traverse(){
 		traverseToClip( clip );
 		currentTraversalIndex++;
 	}
+	else if(autoTraversePoints){
+		timeline->stop(); //finished!
+	}
+		
 }
 
 void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip& clip){

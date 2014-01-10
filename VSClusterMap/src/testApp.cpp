@@ -28,8 +28,6 @@ void testApp::setup(){
 		cout << "	** " << run.clipHistory[i].getID() << endl;
 	}
 	
-//	clusterMap.traverse();
-	
 	clusterMap.setup();
 	clusterMap.setRun(run);
 	clusterMap.buildEntireCluster(parser);
