@@ -4314,7 +4314,7 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>1</sound>
+    <sound>0</sound>
 </system>
 <system name="Colony_RapidCulture">
     <keywords>biology and code|artificial life</keywords>
@@ -4405,7 +4405,7 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>1</sound>
+    <sound>0</sound>
 </system>
 <system name="Colony_We_are_stars">
     <keywords></keywords>
@@ -6863,14 +6863,81 @@
     <sound>0</sound>
 </system>
 <system name="Flying_DenseForest_1">
-    <keywords></keywords>
+    <keywords>tree|nature|magic|children</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - modeling complex systems</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Andres - seeing molecules</clip>
+        <clip>Andres - soft systems 2</clip>
+        <clip>Binx - Programming is a superpower</clip>
+        <clip>Binx - programming is a superpower</clip>
+        <clip>Bruce - Age of the universe, really weird</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Casey - Developing a microworld</clip>
+        <clip>Casey - emergence</clip>
+        <clip>Elliot_UK - tree sculpture</clip>
+        <clip>Elliot - Wiremap1</clip>
+        <clip>Golan - Play</clip>
+        <clip>Golan - my mother the abstract painter</clip>
+        <clip>Golan - piano and pencil,</clip>
+        <clip>Golan - project example</clip>
+        <clip>Jen - Big data</clip>
+        <clip>Jen - Lidar 1</clip>
+        <clip>Jen - Lidar 2</clip>
+        <clip>Joel - scale of universe</clip>
+        <clip>Joel - scaleofUniverse</clip>
+        <clip>Kevin - computation is unnatural</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kyle_CH - nature is complex</clip>
+        <clip>LIA - Circle1</clip>
+        <clip>LIA - Circle2</clip>
+        <clip>LIA - LTree</clip>
+        <clip>LIA - MathAnotherLanguage</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>Maeda - playful systems</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marcus - simulation to stories</clip>
+        <clip>Martin - birds eye view</clip>
+        <clip>Martin - data revleation</clip>
+        <clip>Martin - starry night</clip>
+        <clip>Nervous_Jessica - Why is it beautiful</clip>
+        <clip>Philip - couldn&apos;t do this with actual water</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - toxi&apos;s physics</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Shantell - Goals</clip>
+        <clip>Shantell - Kids</clip>
+        <clip>Shantell - big kid</clip>
+        <clip>Shantell - magic and tech</clip>
+        <clip>Shiffman - Constraints,</clip>
+        <clip>Shiffman - Magnets</clip>
+        <clip>Shiffman - NOC 1</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Shiffman - NOC 3</clip>
+        <clip>Shiffman - a mystical quality</clip>
+        <clip>Shiffman - how far could we get?</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Shiffman - programming the universe</clip>
+        <clip>Theo - evolution</clip>
+        <clip>Theo - hidden technology</clip>
+        <clip>Theo - inspired by nature</clip>
+        <clip>Theo - inspired by nature shorter</clip>
+        <clip>Theo - leaving a mark</clip>
+        <clip>Zach - Drawn1</clip>
+        <clip>Zach - Time slows down</clip>
+        <clip>Zach - drawn2</clip>
+        <clip>Zach - hide the tech</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="Flying_Forest_2">
     <keywords></keywords>
@@ -6898,7 +6965,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -6918,7 +6985,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -8347,12 +8414,30 @@
     <sound>0</sound>
 </system>
 <system name="Mandala_gx_work_01a">
-    <keywords></keywords>
+    <keywords>pattern</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - soft systems 2</clip>
+        <clip>Fernanda - Replaying the moment of discovery</clip>
+        <clip>Fernanda - Wind visualization 1</clip>
+        <clip>Fernanda - Wind visualization 2</clip>
+        <clip>Jen - Predicting weather</clip>
+        <clip>Jen - data crystal ball 3</clip>
+        <clip>Jer - Pattern</clip>
+        <clip>Kevin - tracking rendition flights</clip>
+        <clip>LIA - Number20</clip>
+        <clip>Martin - Big data</clip>
+        <clip>Martin - Inflation not that interesting</clip>
+        <clip>Martin - Seeing the whole 1</clip>
+        <clip>Martin - Zooming is critical</clip>
+        <clip>Martin - data revleation</clip>
+        <clip>Martin - limits of computation</clip>
+        <clip>Martin - seeing the whole 2</clip>
+        <clip>Ramsey - arab abstraction 2</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
