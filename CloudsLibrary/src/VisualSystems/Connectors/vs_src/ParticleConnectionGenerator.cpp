@@ -21,6 +21,7 @@ ParticleConnectionGenerator::ParticleConnectionGenerator(){
 	boundarySize = 500;
 	bBinMeshDirty = false;
 	maxTotalConnections = 40000;
+    connectorsSpeed = 1;
 }
 
 void ParticleConnectionGenerator::setup(){
@@ -94,7 +95,7 @@ void ParticleConnectionGenerator::updateConnectors(){
 	}
 	
 	for(int i = 0; i < connectors.size(); i++){
-		connectors[i]->update();
+		connectors[i]->update(connectorsSpeed);
 		connectors[i]->binIndex1 = positionToBinIndex(connectors[i]->position);
 		connectors[i]->binIndex2 = positionToBinIndex(connectors[i]->position);
 	}
