@@ -70,10 +70,10 @@ namespace k4w
     // defined by us
     enum ActionState
     {
-        ActionState_Inactive    = 0,
-        ActionState_Idle        = 1,
-        ActionState_Lasso       = 2,
-        ActionState_Closed      = 3
+        ActionState_Inactive    = -1,
+        ActionState_Idle        =  0,
+        ActionState_Lasso       =  1,
+        ActionState_Closed      =  2
     };
     
     struct Joint 

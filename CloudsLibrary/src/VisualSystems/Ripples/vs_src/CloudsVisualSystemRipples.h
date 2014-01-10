@@ -110,7 +110,6 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
     ofShader ripplesShader;
     ofFbo ripplesSrcFbo, ripplesDstFbo;
     ofVboMesh renderMesh;
-    ofVec2f currentUserInput;
     
     float minDropHue, maxDropHue;
     float minDropSat, maxDropSat;
