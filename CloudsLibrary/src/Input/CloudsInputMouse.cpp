@@ -45,3 +45,8 @@ void CloudsInputMouse::mouseReleased(ofMouseEventArgs& data){
     currentPosition = ofVec3f(data.x, data.y, 0);
 	interactionEnded(currentPosition, true, data.button);
 }
+
+void SetCloudsInputMouse()
+{
+    SetCloudsInput(ofPtr<CloudsInput>(new CloudsInputMouse()));
+}

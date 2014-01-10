@@ -9,6 +9,12 @@
 #include "CloudsInput.h"
 #include "CloudsInputEvents.h"
 #include "CloudsInputMouse.h"
+#ifdef KINECT_INPUT
+#include "CloudsInputKinectOSC.h"
+#endif
+#ifdef OCULUS_RIFT
+#include "CloudsInputOculus.h"
+#endif
 
 CloudsInput::CloudsInput(){
 	enabled = false;
@@ -84,7 +90,13 @@ void SetCloudsInput(ofPtr<CloudsInput> input){
 
 ofPtr<CloudsInput> GetCloudsInput(){
 	if(cloudsInput == NULL){
-		SetCloudsInput( ofPtr<CloudsInput>( new CloudsInputMouse() ));
+#if defined(KINECT_INPUT)
+        SetCloudsInputKinect();
+#elif defined(OCULUS_RIFT)
+        SetCloudsInputOculus();
+#else
+        SetCloudsInputMouse();
+#endif
 	}
 	return cloudsInput;
 }
