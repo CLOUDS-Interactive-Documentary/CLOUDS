@@ -450,6 +450,6 @@ class CloudsVisualSystem {
 	void loadTransitionOptions();
 	void setTransitionOptionGui(string type, string screenName, ofxUIEventArgs &e);
 	string getTransitionOption();
-	map<string, vector<string> > transitionOptionMap;
-	ofxUISuperCanvas* transitionOptionGui;
+//	map<string, vector<string> > transitionOptionMap;
+//	ofxUISuperCanvas* transitionOptionGui;
 };

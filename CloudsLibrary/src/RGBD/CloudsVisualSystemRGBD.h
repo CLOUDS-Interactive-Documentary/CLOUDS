@@ -91,6 +91,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 		return cloudsCamera;
 	}
 	
+	
+	void startCurrentTransitionOut();
+	void startCurrentTransitionIn();
 	void startTransitionOut(RGBDTransitionType transitionType, string option="default");
 	void startTransitionIn(RGBDTransitionType transitionType, string option="default");
 	void updateTransition(float percentComplete);

@@ -177,14 +177,17 @@ void CloudsHUDController::buildLayerSets(){
     layerSets[CLOUDS_HUD_PROJECT_EXAMPLE].push_back( projectExampleLayer );
     allLayers.push_back( projectExampleLayer );
     
+	//////////
+	//TODO REPLACE WITH LINE WIPE SHADERS
     for( int i=0; i<allLayers.size(); i++ ){
         allLayers[i]->duration = 1.5;
-        allLayers[i]->delayTime = ofRandomuf();
+        allLayers[i]->delayTime = 0;
         
         allLayers[i]->startPoint = ofVec2f(allLayers[i]->svg.getWidth(),0);
         allLayers[i]->endPoint   = ofVec2f(0,allLayers[i]->svg.getHeight());
     }
-    
+    ///////////
+	
     home.bounds = lowerThirdLayer->svg.getMeshByID("HomeButtonFrame")->bounds;
     home.bounds.scaleFromCenter(1.5);
     
