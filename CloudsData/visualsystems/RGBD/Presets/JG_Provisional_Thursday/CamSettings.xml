@@ -88,30 +88,5 @@
 <Widget>
     <Kind>17</Kind>
     <Name>DISABLE</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>use debug camera</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>camera fwd force</Name>
-    <Value>0.935999990</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>camera wobble range</Name>
-    <Value>7.142854214</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>camera wobble speed</Name>
-    <Value>0.098521866</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>hold camera</Name>
     <Value>0</Value>
 </Widget>

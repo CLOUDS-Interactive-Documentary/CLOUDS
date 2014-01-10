@@ -2,14 +2,14 @@
 transformMatrix
        1,        0,        0,        0
        0,        1,        0,        0
-       0,        0,        1,        0
+       0,        0, 0.999998,        0
        0,        0,      200,        1
 fov
 60
 near
-0
+6.65107
 far
-0
+6651.07
 lensOffset
 0, 0
 isOrtho
@@ -20,7 +20,7 @@ target
 bEnableMouseMiddleButton
 1
 bMouseInputEnabled
-1
+0
 drag
 0.9
 doTranslationKey
