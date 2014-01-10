@@ -87,6 +87,7 @@ class CloudsVisualSystem {
     virtual void selfDraw();
 	virtual void selfDrawOverlay();
 	virtual void selfPostDraw();
+    virtual void selfDrawCursor();
 	virtual void selfPresetLoaded(string presetPath);
 	
     virtual void selfExit();
@@ -384,7 +385,6 @@ class CloudsVisualSystem {
     float camDistance;
     float camFOV;
     ofxViewType view;
-//	ofCamera* currentCamera;
     ofEasyCam cam;
     ofx1DExtruder *xRot;
     ofx1DExtruder *yRot;
@@ -439,8 +439,15 @@ class CloudsVisualSystem {
 	string mainKeyword;
 	vector<string> keywords;
 	
-//	float secondsRemaining;
+
 	
 	void checkOpenGLError(string function);
 	
+	
+	//TRANSITION OPTIONS
+	void loadTransitionOptions();
+	void setTransitionOptionGui(string type, string screenName, ofxUIEventArgs &e);
+	string getTransitionOption();
+	map<string, vector<string> > transitionOptionMap;
+	ofxUISuperCanvas* transitionOptionGui;
 };
