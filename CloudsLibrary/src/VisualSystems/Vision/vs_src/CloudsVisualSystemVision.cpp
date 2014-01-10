@@ -76,7 +76,9 @@ void CloudsVisualSystemVision::selfSetDefaults(){
 	currentFlowDensity = -1;
 	flowDensity = 3;
 	hueShift = .2;
-
+    
+    fMainGain = 0;
+    mainGain.value(0);
 }
 
 void CloudsVisualSystemVision::selfSetup()
@@ -97,7 +99,7 @@ void CloudsVisualSystemVision::selfSetup()
     loadCurrentMovie();
 
     // sound
-    synth.setOutputGen(buildSynth());
+    synth.setOutputGen(buildSynth() * mainGain);
 }
 
 void CloudsVisualSystemVision::selfSetupGui()
@@ -209,6 +211,8 @@ void CloudsVisualSystemVision::selfSetupGui()
 	soundGui->copyCanvasProperties(gui);
 	soundGui->setName("VISION Sound");
 	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    soundGui->addSlider("Main Gain", 0, 1, &fMainGain);
     
     for (int i=0; i<nSamples; i++)
     {
@@ -470,6 +474,9 @@ void CloudsVisualSystemVision::selfUpdate(){
 			}
 		}
 	}
+    
+    // sound
+    mainGain.value(fMainGain);
 }
 
 void CloudsVisualSystemVision::selfDrawBackground()
