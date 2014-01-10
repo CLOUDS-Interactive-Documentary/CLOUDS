@@ -491,3 +491,44 @@
         </OutRightQuat>
     </OPTION>
 </TRANSITION_TYPE>
+<TRANSITION_TYPE>
+    <INDEX>3</INDEX>
+    <NAME>QUESTION</NAME>
+    <OPTION>
+        <INDEX>1</INDEX>
+        <NAME>default</NAME>
+        <InStartPos>
+            <x>-425</x>
+            <y>-31.2893</y>
+            <z>-91.6992</z>
+        </InStartPos>
+        <OutRightPos>
+            <x>-414.862</x>
+            <y>-32.0289</y>
+            <z>-83.918</z>
+        </OutRightPos>
+        <OutLeftPos>
+            <x>319.794</x>
+            <y>-79.0766</y>
+            <z>-226.72</z>
+        </OutLeftPos>
+        <InStartQuat>
+            <x>0.0705996</x>
+            <y>0.770607</y>
+            <z>0.0255892</z>
+            <w>0.632871</w>
+        </InStartQuat>
+        <OutLeftQuat>
+            <x>0.00377982</x>
+            <y>-0.631264</y>
+            <z>-0.0773921</z>
+            <w>0.771687</w>
+        </OutLeftQuat>
+        <OutRightQuat>
+            <x>0.0617426</x>
+            <y>0.742533</y>
+            <z>0.0227035</z>
+            <w>0.666571</w>
+        </OutRightQuat>
+    </OPTION>
+</TRANSITION_TYPE>

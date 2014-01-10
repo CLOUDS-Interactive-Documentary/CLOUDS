@@ -207,6 +207,10 @@ void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionTy
 			setTransitionNodes("FLY_THROUGH", option);
 			break;
 			
+		case CloudsVisualSystem::QUESTION :
+			setTransitionNodes("QUESTION", option);
+			break;
+			
 		default:
 			setTransitionNodes("WHIP_PAN", "default");
 			break;
