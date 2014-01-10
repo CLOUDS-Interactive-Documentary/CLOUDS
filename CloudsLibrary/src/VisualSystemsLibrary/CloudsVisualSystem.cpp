@@ -1657,6 +1657,7 @@ void CloudsVisualSystem::guiCameraEvent(ofxUIEventArgs &e)
 	}
 	else if(e.widget->getParent() == transitionOptionGui->getWidget("optionsRadio"))
 	{
+		//TODO: DO SOMETHING WITH THIS STRING
 		cout << "getTransitionOption() = "<< getTransitionOption() << endl;
 	}
 	else{
