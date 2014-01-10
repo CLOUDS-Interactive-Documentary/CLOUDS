@@ -481,6 +481,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			selfPostDraw();
 		}
 		
+        selfDrawCursor();
 	}
     
 	if(timeline != NULL && timeline->getIsShowing())
@@ -3315,8 +3316,6 @@ void CloudsVisualSystem::selfPostDraw(){
     CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
-    
-    selfDrawCursor();
 #endif
 
 }
