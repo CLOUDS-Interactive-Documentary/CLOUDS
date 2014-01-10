@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>256.000000000</XPosition>
-    <YPosition>197.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -11,14 +11,9 @@
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
-    <Name>growDist</Name>
-    <Value>853.694580078</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>numNearbyPlants</Name>
-    <Value>429.064025879</Value>
+    <Kind>2</Kind>
+    <Name>cameraControl</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,22 +23,64 @@
 <Widget>
     <Kind>4</Kind>
     <Name>fogEnd</Name>
-    <Value>1848.275878906</Value>
+    <Value>1636.945800781</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>camSpeed</Name>
+    <Value>-497.536956787</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>numNearbyPlants</Name>
+    <Value>429.064025879</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>flower1.xml weighting</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>flower2.xml weighting</Name>
+    <Value>0.167487681</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>tree1.xml weighting</Name>
+    <Value>0.650246322</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>tree2.xml weighting</Name>
+    <Value>0.379310340</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>growDist</Name>
+    <Value>853.694580078</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>camAvoidDist</Name>
-    <Value>49.261081696</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>cameraControl</Name>
-    <Value>1</Value>
+    <Value>497.536956787</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>drawPlantPosns</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>hueRange</Name>
+    <HighValue>0.403940976</HighValue>
+    <LowValue>0.177339911</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>satRange</Name>
+    <HighValue>0.137930945</HighValue>
+    <LowValue>0.054187201</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -64,4 +101,24 @@
     <Kind>2</Kind>
     <Name>bloom</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SriLankaForest.aif</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FOREST.aif</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>organ_slower.aif</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Gain</Name>
+    <Value>0.128078818</Value>
 </Widget>

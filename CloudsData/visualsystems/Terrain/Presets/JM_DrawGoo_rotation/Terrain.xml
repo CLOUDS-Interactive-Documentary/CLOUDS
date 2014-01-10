@@ -1,0 +1,177 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Terrain</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>24.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise_zoom</Name>
+    <Value>10.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise_speed</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Show Debug</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Height Scale</Name>
+    <Value>30.000001907</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Feed</Name>
+    <Value>0.071428575</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Loops</Name>
+    <Value>1.236453176</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DiffV</Name>
+    <Value>0.290640384</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DiffU</Name>
+    <Value>0.305418730</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>k</Name>
+    <Value>0.076032341</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>t</Name>
+    <Value>0.100000024</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>enable</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Draw</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Blur Radius</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Dry Rate</Name>
+    <Value>0.010000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>High R</Name>
+    <Value>0.251308888</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>High G</Name>
+    <Value>0.382198632</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>High B</Name>
+    <Value>0.858638585</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>High A</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Low R</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Low G</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Low B</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Low A</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace R</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace G</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace B</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Trace A</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Balance</Name>
+    <Value>0.674876869</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Texture Mix</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Terrain_Size</Name>
+    <Value>200.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Terrain_Altitud</Name>
+    <Value>1.536945820</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Terrain_Resolution</Name>
+    <Value>1.975369453</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Hex</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Stripes</Name>
+    <Value>0.985221684</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Dots</Name>
+    <Value>0.901477814</Value>
+</Widget>

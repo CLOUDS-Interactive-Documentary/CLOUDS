@@ -278,8 +278,22 @@ void CloudsIntroSequence::positionStartQuestions(){
 	
 }
 
+bool CloudsIntroSequence::istStartQuestionHovering(){
+	caughtQuestion != NULL;
+}
+
+string CloudsIntroSequence::getQuestionText(){
+	if(selectedQuestion != NULL){
+		return selectedQuestion->question;
+	}
+	else if(caughtQuestion != NULL){
+		return caughtQuestion->question;
+	}
+	return "";
+}
+
 bool CloudsIntroSequence::isStartQuestionSelected(){
-	return selectedQuestion != NULL;
+	return false && selectedQuestion != NULL;
 }
 
 void CloudsIntroSequence::autoSelectQuestion(){
@@ -306,6 +320,7 @@ void CloudsIntroSequence::selfDrawBackground(){
 			else{
 				ofNoFill();
 			}
+			
 			ofSetColor(startQuestions[i].hovering ? ofColor::green : ofColor::yellow, alpha*255);
 			ofCircle(startQuestions[i].screenPosition, questionTugDistance.min);
 			ofNoFill();
@@ -454,11 +469,12 @@ void CloudsIntroSequence::selfPostDraw(){
 	CloudsVisualSystem::selfPostDraw();
 	chroma.end();
 	if(!bUseOculusRift){
-		ofPushStyle();
-		for(int i = 0; i < startQuestions.size(); i++){
-			startQuestions[i].drawOverlay();
-		}
-		ofPopStyle();
+		//JG: MOVING TO HUD
+//		ofPushStyle();
+//		for(int i = 0; i < startQuestions.size(); i++){
+//			startQuestions[i].drawOverlay();
+//		}
+//		ofPopStyle();
 	}
 }
 
@@ -482,7 +498,11 @@ void CloudsIntroSequence::selfEnd(){
 void CloudsIntroSequence::selfKeyPressed(ofKeyEventArgs & args){
 
 	if(args.key == 'q'){
-
+		//DEBUG selected question eject
+		if(selectedQuestion != NULL){
+			selectedQuestion->stopHovering();
+		}
+		selectedQuestion = NULL;
 	}
 	if(args.key == 'R'){
 		reloadShaders();
@@ -493,6 +513,7 @@ void CloudsIntroSequence::selfKeyPressed(ofKeyEventArgs & args){
     if (args.key == 'z') {
         cursor.z -= 0.1;
     }
+
 }
 
 void CloudsIntroSequence::selfKeyReleased(ofKeyEventArgs & args){

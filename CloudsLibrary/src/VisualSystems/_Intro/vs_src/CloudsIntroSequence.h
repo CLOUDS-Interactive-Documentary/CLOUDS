@@ -59,18 +59,18 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void selfSetupCameraGui();
 	
 	ofCamera& getCameraRef(){
-//		if(useDebugCamera){
-//			return camera;
-//		}
-//		else{
-			return warpCamera;
-//		}
+		return warpCamera;
 	}
 	
 	void selfPresetLoaded(string presetPath);
 	
 	void setStartQuestions(vector<CloudsClip>& possibleStartQuestions);
+
 	bool isStartQuestionSelected();
+	bool istStartQuestionHovering();
+	
+	string getQuestionText();
+	
 	void autoSelectQuestion();
 	CloudsPortal* getSelectedQuestion();
 	
@@ -123,6 +123,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float currentFontExtrusion;
 
 	void positionStartQuestions();
+	
 	vector<CloudsPortal> startQuestions;
 	CloudsPortal* selectedQuestion;
 	CloudsPortal* caughtQuestion;
@@ -139,7 +140,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofMesh tunnelMeshLoose;
 	
 	bool useDebugCamera;
-//	ofxGameCamera camera;
 	ofCamera warpCamera;
 	
 	float camWobbleRange;

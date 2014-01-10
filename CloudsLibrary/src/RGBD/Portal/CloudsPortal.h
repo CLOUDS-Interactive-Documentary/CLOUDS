@@ -26,9 +26,9 @@ class CloudsPortal {
 	void draw();
     void drawOverlay(bool anchorToScreen = false);
     
-    CloudsClip clip; //must have a question
-	string topic;
 	string question;
+	string topic;
+    CloudsClip clip; //the clip must have a question associated
     
     void startHovering();
 	void stopHovering();

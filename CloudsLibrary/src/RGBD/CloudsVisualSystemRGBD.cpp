@@ -161,26 +161,31 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 {
 	if(transitionMap.find(type) != transitionMap.end())
 	{
+		TransitionInfo ti;
+		ofQuaternion q;
+		
+		//just in case... maybe this fails a little more gracefully
 		if(transitionMap[type].find( option ) != transitionMap[type].end())
 		{
-			ofQuaternion q;
-			
-			//??? when do we get the translated head position? we need to make sure this happens at the correct time
-			transitionInStart.setPosition( transitionMap[type][option].inStartPos + translatedHeadPosition );
-			q.set( transitionMap[type][option].inQuat );
-			transitionInStart.setOrientation( q );
-			
-			transitionOutLeft.setPosition( transitionMap[type][option].outLeftPos + translatedHeadPosition);
-			q.set( transitionMap[type][option].outLeftQuat );
-			transitionOutLeft.setOrientation( q );
-			
-			transitionOutRight.setPosition( transitionMap[type][option].outRightPos + translatedHeadPosition);
-			q.set( transitionMap[type][option].outRightQuat );
-			transitionOutRight.setOrientation( q );
-			
-			cout << "transitions set to: " + type + " : "+ option << endl;
-			return;
+			ti = transitionMap[type][option];
+		}else{
+			ti = transitionMap[type]["default"];
 		}
+		
+		transitionInStart.setPosition( ti.inStartPos + translatedHeadPosition );
+		q.set( ti.inQuat );
+		transitionInStart.setOrientation( q );
+		
+		transitionOutLeft.setPosition( ti.outLeftPos + translatedHeadPosition);
+		q.set( ti.outLeftQuat );
+		transitionOutLeft.setOrientation( q );
+		
+		transitionOutRight.setPosition( ti.outRightPos + translatedHeadPosition);
+		q.set( ti.outRightQuat );
+		transitionOutRight.setOrientation( q );
+		
+		cout << "transitions set to: " + type + " : "+ option << endl;
+		return;
 	}
 	
 	cout << "couldn't find ["+type+"]["+option+"] inf the transitionMap" << endl;
@@ -203,7 +208,7 @@ void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionTy
 			break;
 			
 		default:
-			setTransitionNodes("FLY_THROUGH", "default");
+			setTransitionNodes("WHIP_PAN", "default");
 			break;
 	}
 }
@@ -756,6 +761,17 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic, string question){
 
+	CloudsPortal* rportal = ofRandomuf() ? &leftPortal : &rightPortal;
+	
+	if(rportal->question != ""){
+		//swap and override for certain so we keep the newest!
+		rportal = rportal == &leftPortal ? &rightPortal : &leftPortal;
+	}
+	
+	rportal->question = question;
+	rportal->topic = topic;
+	rportal->clip = questionClip;
+	
 	/*
 	 //TODO RE ADD
 	for(int i = 0; i < questions.size(); i++){
@@ -1163,6 +1179,9 @@ void CloudsVisualSystemRGBD::generateMesh(){
 
 void CloudsVisualSystemRGBD::speakerChanged(){
 	
+	rightPortal.question = "";
+	leftPortal.question = "";
+	
 	//check speaker vars
 	//	this->speakerFirstName = speakerFirstName;
 	//	this->speakerLastName = speakerLastName;
@@ -1491,9 +1510,13 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 
 	glDisable(GL_DEPTH_TEST);
 	CloudsPortal::shader.begin();
-    ofSetColor(255);
-	leftPortal.draw();
-	rightPortal.draw();
+	CloudsPortal::shader.setUniform1i("doAttenuate", 0);
+	if(leftPortal.question != ""){
+		leftPortal.draw();
+	}
+	if(rightPortal.question != ""){
+		rightPortal.draw();
+	}
 	CloudsPortal::shader.end();
 	
 	glEnable(GL_DEPTH_TEST);
@@ -1512,19 +1535,16 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 }
 
 void CloudsVisualSystemRGBD::selfDrawOverlay() {
-	ofPushStyle();
-	
+//	ofPushStyle();	
 //	for(int i = 0; i < questions.size(); i++){
 //		questions[i]->drawOverlay();
 //	}
-    
 	//This will be replaced with the HUD
 //    cloudsCaption.drawOverlay();
-
 	//test overlay
 //	ofSetColor(0,0,0,0);
 //	ofRect(20, 20, 300,300);
-	ofPopStyle();
+//	ofPopStyle();
 }
 
 void CloudsVisualSystemRGBD::selfExit(){
@@ -1557,7 +1577,6 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 		loadShader();
 		
 //		particulateController.reloadShaders();
-		
 //		CloudsQuestion::reloadShader();
 //		rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	}
@@ -1593,7 +1612,7 @@ void CloudsVisualSystemRGBD::selfSetupGui(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfPresetLoaded( string presetName ){
 	refreshLines = true;
-	refreshMesh = true;
+	refreshMesh  = true;
 }
 
 //--------------------------------------------------------------

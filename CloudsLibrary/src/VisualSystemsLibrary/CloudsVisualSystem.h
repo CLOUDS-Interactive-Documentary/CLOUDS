@@ -51,10 +51,11 @@ class CloudsVisualSystem {
 	
 	enum RGBDTransitionType
 	{
-	  TWO_DIMENSIONAL = 0,
-	  FLY_THROUGH = 1,
-	  WHIP_PAN = 2,
-	  RGBD = 3
+		TWO_DIMENSIONAL = 0,
+		FLY_THROUGH = 1,
+		WHIP_PAN = 2,
+		RGBD = 3,
+		QUESTION = 4
 	};
 	
 	
@@ -384,7 +385,6 @@ class CloudsVisualSystem {
     float camDistance;
     float camFOV;
     ofxViewType view;
-//	ofCamera* currentCamera;
     ofEasyCam cam;
     ofx1DExtruder *xRot;
     ofx1DExtruder *yRot;
@@ -439,8 +439,15 @@ class CloudsVisualSystem {
 	string mainKeyword;
 	vector<string> keywords;
 	
-//	float secondsRemaining;
+
 	
 	void checkOpenGLError(string function);
 	
+	
+	//TRANSITION OPTIONS
+	void loadTransitionOptions();
+	void setTransitionOptionGui(string type, string screenName, ofxUIEventArgs &e);
+	string getTransitionOption();
+	map<string, vector<string> > transitionOptionMap;
+	ofxUISuperCanvas* transitionOptionGui;
 };

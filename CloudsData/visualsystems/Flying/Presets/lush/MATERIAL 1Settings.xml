@@ -1,68 +1,38 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>MATERIAL 1Settings</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>170.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>637.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>25</Kind>
-    <Name>AR</Name>
-    <Value>0.200000003</Value>
+    <Name>EH</Name>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>AG</Name>
-    <Value>0.200000003</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AB</Name>
-    <Value>0.200000003</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AR</Name>
-    <Value>0.800000012</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AG</Name>
-    <Value>0.800000012</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AB</Name>
-    <Value>0.800000012</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>ER</Name>
+    <Name>ES</Name>
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>EG</Name>
+    <Name>EV</Name>
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>EB</Name>
+    <Name>SH</Name>
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>SR</Name>
+    <Name>SS</Name>
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>SG</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SB</Name>
+    <Name>SV</Name>
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
