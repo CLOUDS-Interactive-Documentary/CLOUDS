@@ -70,6 +70,9 @@ void CloudsVisualSystemExampleMPMFluid::selfSetupGui(){
     soundGui->addSlider("Volume 1", 0, 3, &volume[1]);
     soundGui->addSlider("Volume 2", 0, 3, &volume[2]);
     soundGui->addSlider("Volume 3", 0, 3, &volume[3]);
+    
+    soundGui->addSlider("Main Gain", 0, 1, &fMainGain);
+    
 	guis.push_back(soundGui);
 	guimap[customGui->getName()] = soundGui;
 
@@ -126,7 +129,9 @@ void CloudsVisualSystemExampleMPMFluid::selfSetup()
     fluid.addObstacle(obstacle);
     
     // sound
-    synth.setOutputGen(buildSynth());
+    fMainGain = 0;
+    mainGain.value(0);
+    synth.setOutputGen(buildSynth() * mainGain);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -211,6 +216,7 @@ void CloudsVisualSystemExampleMPMFluid::selfUpdate()
         volumeControl[i].value(volume[i]);
     }
     
+    mainGain.value(fMainGain);
 
 }
 

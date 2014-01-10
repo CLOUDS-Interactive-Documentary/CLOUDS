@@ -3,8 +3,13 @@
     <Name>COLONY Sound</Name>
     <IsMinified>0</IsMinified>
     <XPosition>849.000061035</XPosition>
-    <YPosition>602.000000000</YPosition>
+    <YPosition>452.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Gain</Name>
+    <Value>0.029556349</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>granular_water2.aif</Name>
@@ -13,7 +18,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>granular_water2_slow.aif</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

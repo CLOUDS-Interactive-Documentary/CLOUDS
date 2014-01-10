@@ -165,6 +165,7 @@ void CloudsVisualSystemColony::selfSetupGuis(){
 	soundGui->copyCanvasProperties(gui);
 	soundGui->setName("COLONY Sound");
 	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    soundGui->addSlider("Gain", 0, 1, &gain); 
     
     soundGui->addToggle(soundFiles[0], &playSample[0]);
     soundGui->addToggle(soundFiles[1], &playSample[1]);
@@ -193,6 +194,9 @@ void CloudsVisualSystemColony::selfSetupGuis(){
 
 void CloudsVisualSystemColony::selfUpdate()
 {
+    //sound
+    volumeControl.value(gain);
+    
     //Video
     if ( !areFbosAllocatedAndSized() ){ reallocateFramebuffers(); }
     
@@ -354,6 +358,7 @@ void CloudsVisualSystemColony::selfEnd()
     clear();
     
     // sound
+    volumeControl.value(0);
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemColony::audioRequested);
 }
 
@@ -488,7 +493,7 @@ Generator CloudsVisualSystemColony::buildSynth()
     Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(soundTriggers[1]);
     Generator sampleGen3 = BufferPlayer().setBuffer(samples[2]).loop(1).trigger(soundTriggers[2]);
     
-    return sampleGen1 * 0.4f + sampleGen2 * 0.4f + sampleGen3 * 0.2f;
+    return (sampleGen1 * 0.8f + sampleGen2 * 0.8f + sampleGen3 * 0.4f) * volumeControl;
 }
 
 void CloudsVisualSystemColony::audioRequested(ofAudioEventArgs& args)

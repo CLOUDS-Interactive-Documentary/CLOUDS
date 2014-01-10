@@ -4314,7 +4314,7 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound>0</sound>
+    <sound>1</sound>
 </system>
 <system name="Colony_RapidCulture">
     <keywords>biology and code|artificial life</keywords>
@@ -4404,6 +4404,26 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>1</sound>
+</system>
+<system name="Colony_We_are_stars">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Colony_Worms">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -6832,6 +6852,46 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Flying_2014Weighted">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Flying_DenseForest_1">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Flying_Forest_2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Flying_SpiralyForest_1">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Flying_Test">
     <keywords></keywords>
     <links></links>
@@ -6839,6 +6899,26 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Flying_Weighted">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Flying_lush">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -9751,7 +9831,27 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Ocean_DayNight2_SND">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Ocean_DayNight_2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Ocean_DayNight_SND">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -10000,16 +10100,6 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Ocean_NightOcean">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
 <system name="Ocean_NightOceanOC">
     <keywords>simulation|nature</keywords>
     <links></links>
@@ -10089,6 +10179,16 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Ocean_NightOcean_SND">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
@@ -10783,6 +10883,16 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
+    <sound>0</sound>
+</system>
+<system name="OpenP5Machine_JM_clockwork_SND">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
     <sound>0</sound>
 </system>
 <system name="OpenP5NoiseSphere_BALDING">
@@ -15175,6 +15285,26 @@
     <oculus>1</oculus>
     <sound>0</sound>
 </system>
+<system name="Replicator_Replicator_echoVortex">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Replicator_Replicator_organ">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Ripples_BadTrip">
     <keywords></keywords>
     <links></links>
@@ -15822,7 +15952,27 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Swim_CombJellies">
+<system name="Swim_2014BlueyPinkSeed1">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Swim_2014GreenyPinkSeed1">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Swim_2014GreenyPinkSeed2">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -15833,6 +15983,36 @@
     <sound>0</sound>
 </system>
 <system name="Swim_Deepsea">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Swim_Deepsea3_SND">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Swim_Snowy">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Swim_Test">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>

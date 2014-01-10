@@ -2,13 +2,18 @@
     <Kind>42</Kind>
     <Name>LOOKS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>849.000061035</XPosition>
+    <XPosition>637.000061035</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>Level Set BG</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Level Set Shadow</Name>
+    <Value>0.500000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -84,4 +89,9 @@
     <Kind>5</Kind>
     <Name>A2</Name>
     <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Shadow</Name>
+    <Value>0.500000000</Value>
 </Widget>

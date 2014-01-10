@@ -1,0 +1,17 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>CONNECTORS Sound</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>182.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>gain</Name>
+    <Value>0.418719202</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>WindChimes1.aif</Name>
+    <Value>1</Value>
+</Widget>

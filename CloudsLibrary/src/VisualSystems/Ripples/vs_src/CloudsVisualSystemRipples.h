@@ -134,6 +134,8 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
     ControlParameter volumeControl[2];
     bool bEnableSounds;
     ofMutex mutex;
+    ControlParameter mainGain;
+    float fMainGain;
     ofxTonicSynth mainSynth;
     ofxTonicSynth notes[5];
     int noteIndex;

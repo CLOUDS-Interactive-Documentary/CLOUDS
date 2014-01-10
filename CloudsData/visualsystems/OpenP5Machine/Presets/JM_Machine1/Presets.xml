@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>11.000000000</XPosition>
-    <YPosition>277.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>637.000122070</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,6 +18,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>JM_clockwork</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_clockwork_SND</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

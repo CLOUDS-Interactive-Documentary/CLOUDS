@@ -32,6 +32,10 @@ void CloudsVisualSystemOpenP5Machine::selfSetupGui(){
     customGui->addSlider("Shift X", 0.0, 5.0, &shiftX);
 	customGui->addSlider("Shift Y", 0.0, 5.0, &shiftY);
 	customGui->addSlider("Shift Z", 0.0, 5.0, &shiftZ);
+    
+    customGui->addWidgetDown(new ofxUILabel("AUDIO", OFX_UI_FONT_MEDIUM));
+    customGui->addSlider("Gain", 0, 1, &gain);
+
 
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5Machine::selfGuiEvent);
 	guis.push_back(customGui);
@@ -73,6 +77,7 @@ void CloudsVisualSystemOpenP5Machine::selfSetup(){
     color2HSB.b = 90;
 
     // sound
+    gain = 0; 
     synth.setOutputGen(buildSynth());
     
 }
@@ -101,7 +106,7 @@ void CloudsVisualSystemOpenP5Machine::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemOpenP5Machine::selfUpdate(){
  
-   
+    volumeControl.value(gain);
 
 }
 
@@ -193,6 +198,7 @@ void CloudsVisualSystemOpenP5Machine::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemOpenP5Machine::selfEnd(){
+    volumeControl.value(0);
 	ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOpenP5Machine::audioRequested);
 }
 
@@ -239,7 +245,7 @@ Generator CloudsVisualSystemOpenP5Machine::buildSynth()
     
     Generator sampleGen = BufferPlayer().setBuffer(sample).trigger(1).loop(1);
     
-    return sampleGen * .07;
+    return sampleGen * volumeControl;
 }
 
 void CloudsVisualSystemOpenP5Machine::audioRequested(ofAudioEventArgs& args)

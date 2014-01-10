@@ -62,7 +62,9 @@ void CloudsVisualSystemVectorFlow::selfSetup(){
     initBlurFilter();
     
     // sound
-    synth.setOutputGen(buildSynth());
+    fMainGain = 0;
+    mainGain.value(0);
+    synth.setOutputGen(buildSynth() * mainGain);
 }
 
 void CloudsVisualSystemVectorFlow::selfSetupGuis(){
@@ -141,6 +143,7 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
 	}
     
     // UPDATE Sound parameters
+    mainGain.value(fMainGain);
     float distX = abs(GetCloudsInputX() - prevInputX);
     float distY = abs(GetCloudsInputY() - prevInputY);
     float mSpeed = sqrt(distX*distX + distY*distY);
@@ -400,6 +403,8 @@ void CloudsVisualSystemVectorFlow::selfSetupRenderGui(){
 	rdrGui->addToggle("Blend Add", &blendAdd);
     
     rdrGui->addSlider("Blur", 0, 10, &blurAmount);
+    
+    sysGui->addSlider("Main Gain", 0, 1, &fMainGain);
 
 }
 
