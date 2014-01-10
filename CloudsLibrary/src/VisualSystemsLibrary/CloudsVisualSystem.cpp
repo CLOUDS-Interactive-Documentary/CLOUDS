@@ -3206,9 +3206,17 @@ void CloudsVisualSystem::selfPostDraw(){
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
     
-    if(drawCursorMode > DRAW_CURSOR_NONE){
+    selfDrawCursor();
+#endif
+
+}
+
+void CloudsVisualSystem::selfDrawCursor()
+{
+    if (drawCursorMode > DRAW_CURSOR_NONE) {
         ofPushMatrix();
         ofPushStyle();
+        ofNoFill();
         ofSetLineWidth(2);
         map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
         for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
@@ -3216,32 +3224,25 @@ void CloudsVisualSystem::selfPostDraw(){
                 continue;
             }
             
-            //	ofNoFill();
-            //	ofSetColor(255, 50);
-            //	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
-            if(it->second.actionType == 0){
-                ofSetColor(ofColor::steelBlue, 255);
+            if (it->second.actionType == 0) {
+                ofSetColor(213, 69, 62, 255);
+                ofCircle(it->second.position.x, it->second.position.y,
+                         ofMap(it->second.position.z, 2, -2, 3, 10, true));
             }
-            else if (it->second.primary) {
-                ofSetColor(240,240,100, 175);
-            }
+//            else if (it->second.primary) {
+//                ofSetColor(240, 240, 100, 175);
+//            }
             else {
-                ofSetColor(240,240,255, 175);
+                ofSetColor(255, 255, 255, 175);
+                ofCircle(it->second.position.x, it->second.position.y,
+                         ofMap(it->second.position.z, 2, -2, 3, 6, true));
             }
-            ofCircle(it->second.position.x,
-					 it->second.position.y,
-					 ofMap(it->second.position.z, 2, -2, 3, 10, true) );
 //            cout << " z pos " << it->second.position.z << endl;
         }
         ofPopStyle();
         ofPopMatrix();
     }
-	///END TODO
-	
-#endif
-
 }
-
 	
 void CloudsVisualSystem::selfExit()
 {

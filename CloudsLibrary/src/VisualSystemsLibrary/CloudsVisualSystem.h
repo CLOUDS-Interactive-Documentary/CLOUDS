@@ -86,6 +86,7 @@ class CloudsVisualSystem {
     virtual void selfDraw();
 	virtual void selfDrawOverlay();
 	virtual void selfPostDraw();
+    virtual void selfDrawCursor();
 	virtual void selfPresetLoaded(string presetPath);
 	
     virtual void selfExit();
