@@ -1286,6 +1286,8 @@ void CloudsVisualSystem::setupBackgroundGui()
     ofAddListener(bgGui->newGUIEvent, this, &CloudsVisualSystem::guiBackgroundEvent);
     guis.push_back(bgGui);
     guimap[bgGui->getName()] = bgGui;
+	
+	
 }
 
 void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
@@ -1457,6 +1459,53 @@ void CloudsVisualSystem::setupCameraGui()
     guis.push_back(camGui);
     guimap[camGui->getName()] = camGui;
 	
+	
+	//load transitions.xml into our transitionOptionMap
+	loadTransitionOptions();
+	transitionOptionGui = new ofxUISuperCanvas("TRANSITION_OPTIONS", gui);
+    transitionOptionGui->copyCanvasStyle(gui);
+    transitionOptionGui->copyCanvasProperties(gui);
+    transitionOptionGui->setName("TransitionOpitons");
+    transitionOptionGui->setPosition(guis[guis.size()-1]->getRect()->x+guis[guis.size()-1]->getRect()->getWidth()+1, 0);
+    transitionOptionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	transitionOptionGui->autoSizeToFitWidgets();
+    ofAddListener(transitionOptionGui->newGUIEvent,this,&CloudsVisualSystem::guiCameraEvent);
+    guis.push_back(transitionOptionGui);
+    guimap[transitionOptionGui->getName()] = transitionOptionGui;
+	
+	transitionOptionGui->setVisible(false);
+}
+
+//load our Transitions.xml into a map of vectors used for saving transition option name
+void CloudsVisualSystem::loadTransitionOptions()
+{
+	ofxXmlSettings *XML = new ofxXmlSettings();
+	XML->loadFile( GetCloudsDataPath() + "transitions/Transitions.xml" );
+	
+	for(int i=0; i<XML->getNumTags("TRANSITION_TYPE"); i++)
+	{
+		XML->pushTag("TRANSITION_TYPE", i);
+		
+		string typeName = XML->getValue("NAME", "NULL", 0);
+		transitionOptionMap[typeName];
+		transitionOptionMap[typeName].clear();
+		
+		int numOptions = XML->getNumTags("OPTION");
+		
+		for(int j=0; j<numOptions; j++)
+		{
+			XML->pushTag("OPTION", j);
+			
+			string optionName = XML->getValue("NAME", "NULL", 0);
+			
+			transitionOptionMap[typeName].push_back(optionName);
+			
+			XML->popTag();
+		}
+		XML->popTag();
+	}
+	delete XML;
 }
 
 CloudsVisualSystem::RGBDTransitionType CloudsVisualSystem::getTransitionType()
@@ -1590,6 +1639,66 @@ void CloudsVisualSystem::guiCameraEvent(ofxUIEventArgs &e)
 	else if(name == "ADD KEYFRAME"){
 		cameraTrack->addKeyframe();
 	}
+	
+	//TRANSITION OPTIONS
+	if(name == "2D")
+	{
+		setTransitionOptionGui("TWO_DIMENSIONAL", "2D", e);
+	}
+	else if(name == "3D FLY THROUGH")
+	{
+		setTransitionOptionGui( "FLY_THROUGH", "3D FLY THROUGH", e);
+	}
+	else if(name == "3D WHIP PAN")
+	{
+		setTransitionOptionGui( "WHIP_PAN", "3D WHIP PAN", e);
+	}
+	else if(e.widget->getParent() == transitionOptionGui->getWidget("optionsRadio"))
+	{
+		cout << "getTransitionOption() = "<< getTransitionOption() << endl;
+	}
+	else{
+		transitionOptionGui->setVisible(false);
+	}
+}
+
+void CloudsVisualSystem::setTransitionOptionGui(string transitionType, string screenName, ofxUIEventArgs &e)
+{
+	if(transitionOptionMap[transitionType].size()>0)
+	{
+		transitionOptionGui->setVisible(true);
+		if(transitionOptionGui->getWidget(screenName) == NULL)
+		{
+			//clear then fill the gui with stuff
+			transitionOptionGui->removeWidgets();
+			transitionOptionGui->addLabel(screenName);
+			transitionOptionGui->addSpacer();
+			transitionOptionGui->addRadio("optionsRadio", transitionOptionMap[transitionType]);
+			transitionOptionGui->autoSizeToFitWidgets();
+		}
+		
+		transitionOptionGui->setPosition( e.widget->getRect()->getX() + transitionOptionGui->getRect()->getWidth(), e.widget->getRect()->getY());
+	}
+}
+
+string CloudsVisualSystem::getTransitionOption()
+{
+	if(transitionOptionGui != NULL)
+	{
+		ofxUIRadio* r = (ofxUIRadio*)transitionOptionGui->getWidget("optionsRadio");
+		if( r != NULL)
+		{
+			for (auto &t: r->getToggles())
+			{
+				if(t->getValue())
+				{
+					return t->getName();
+				}
+			}
+		}
+	}
+	
+	return "default";
 }
 
 void CloudsVisualSystem::setupPresetGui()
