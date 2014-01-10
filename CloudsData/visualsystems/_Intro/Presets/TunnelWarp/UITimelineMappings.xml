@@ -4,7 +4,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>hold camera</WidgetName>
-                <WidgetID>56</WidgetID>
+                <WidgetID>54</WidgetID>
                 <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -13,9 +13,17 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>Perlin Amplitude</WidgetName>
-                <WidgetID>11</WidgetID>
+                <WidgetName>Max Point Size</WidgetName>
+                <WidgetID>3</WidgetID>
                 <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>camera fwd force</WidgetName>
+                <WidgetID>48</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
@@ -29,14 +37,6 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Question Tint B</WidgetName>
-                <WidgetID>18</WidgetID>
-                <WidgetCanvasParent>Questions</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>Max Distance</WidgetName>
                 <WidgetID>7</WidgetID>
                 <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
@@ -45,17 +45,9 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Max Point Size</WidgetName>
-                <WidgetID>3</WidgetID>
+                <WidgetName>Perlin Amplitude</WidgetName>
+                <WidgetID>11</WidgetID>
                 <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>camera fwd force</WidgetName>
-                <WidgetID>50</WidgetID>
-                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>

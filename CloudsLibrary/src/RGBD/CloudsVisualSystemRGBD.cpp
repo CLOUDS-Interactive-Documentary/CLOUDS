@@ -756,6 +756,17 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic, string question){
 
+	CloudsPortal* rportal = ofRandomuf() ? &leftPortal : &rightPortal;
+	
+	if(rportal->question != ""){
+		//swap and override for certain so we keep the newest!
+		rportal = rportal == &leftPortal ? &rightPortal : &leftPortal;
+	}
+	
+	rportal->question = question;
+	rportal->topic = topic;
+	rportal->clip = questionClip;
+	
 	/*
 	 //TODO RE ADD
 	for(int i = 0; i < questions.size(); i++){
@@ -1163,6 +1174,9 @@ void CloudsVisualSystemRGBD::generateMesh(){
 
 void CloudsVisualSystemRGBD::speakerChanged(){
 	
+	rightPortal.question = "";
+	leftPortal.question = "";
+	
 	//check speaker vars
 	//	this->speakerFirstName = speakerFirstName;
 	//	this->speakerLastName = speakerLastName;
@@ -1491,9 +1505,13 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 
 	glDisable(GL_DEPTH_TEST);
 	CloudsPortal::shader.begin();
-    ofSetColor(255);
-	leftPortal.draw();
-	rightPortal.draw();
+	CloudsPortal::shader.setUniform1i("doAttenuate", 0);
+	if(leftPortal.question != ""){
+		leftPortal.draw();
+	}
+	if(rightPortal.question != ""){
+		rightPortal.draw();
+	}
 	CloudsPortal::shader.end();
 	
 	glEnable(GL_DEPTH_TEST);
@@ -1512,19 +1530,16 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 }
 
 void CloudsVisualSystemRGBD::selfDrawOverlay() {
-	ofPushStyle();
-	
+//	ofPushStyle();	
 //	for(int i = 0; i < questions.size(); i++){
 //		questions[i]->drawOverlay();
 //	}
-    
 	//This will be replaced with the HUD
 //    cloudsCaption.drawOverlay();
-
 	//test overlay
 //	ofSetColor(0,0,0,0);
 //	ofRect(20, 20, 300,300);
-	ofPopStyle();
+//	ofPopStyle();
 }
 
 void CloudsVisualSystemRGBD::selfExit(){
@@ -1557,7 +1572,6 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 		loadShader();
 		
 //		particulateController.reloadShaders();
-		
 //		CloudsQuestion::reloadShader();
 //		rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	}
@@ -1593,7 +1607,7 @@ void CloudsVisualSystemRGBD::selfSetupGui(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfPresetLoaded( string presetName ){
 	refreshLines = true;
-	refreshMesh = true;
+	refreshMesh  = true;
 }
 
 //--------------------------------------------------------------

@@ -20,7 +20,8 @@ class CloudsHUDLabel {
     void draw();
     
     void setText( string newText );
-    
+    string getText();
+	
     ofxFTGLSimpleLayout *layout;
     ofxFTGLFont *font;
     ofRectangle bounds;
