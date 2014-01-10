@@ -692,6 +692,25 @@ vector<int> CloudsVisualSystemManager::getFilteredPresetIndeces(bool enabled, bo
 	return filtered;
 }
 
+vector<int> CloudsVisualSystemManager::getFilteredPresetIndecesForSystem(string systemName,bool enabled, bool oculus, bool gradeA){
+
+	vector<CloudsVisualSystemPreset>& currentPresets = getPresetsForSystem(systemName);    
+	vector<int> filtered;
+	for(int i = 0; i < presets.size(); i++){
+        for(int j=0; j<currentPresets.size(); j++){
+            
+            if((presets[i]. presetName == currentPresets[j].presetName) &&
+               (!enabled || (enabled && presets[i].enabled)) &&
+               (!oculus  || (oculus  && presets[i].oculusCompatible)) &&
+               (!gradeA  || (gradeA  && presets[i].grade == "A")))
+            {
+                filtered.push_back( i );
+            }
+        }
+	}
+	return filtered;
+    
+}
 //--------------------------------------------------------------------
 vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
 	return presets;

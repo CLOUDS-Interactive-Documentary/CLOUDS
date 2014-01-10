@@ -575,6 +575,19 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	}
 	return shared;
 }
+- (IBAction) runTestsOnPresets:(id)sender{
+
+    string systemName = visualSystems.getPresets()[ self.selectedPresetIndex ].systemName ;
+    cout << "loading system " << systemName<< endl;
+    testPresetIndeces = visualSystems.getFilteredPresetIndecesForSystem(systemName, true, false, false);
+    
+    random_shuffle( testPresetIndeces.begin(),testPresetIndeces.end() );
+	
+	currentTestPresetIndex = 0;
+	lastSystemStartTime = ofGetElapsedTimef()-5;
+	runningTest = true;
+
+}
 
 - (IBAction) runTests:(id)sender
 {
