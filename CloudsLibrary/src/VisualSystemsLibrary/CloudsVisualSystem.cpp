@@ -3004,46 +3004,6 @@ void CloudsVisualSystem::billBoard(ofVec3f globalCamPosition, ofVec3f globelObje
     glRotatef(-theta, axisOfRotation.x, axisOfRotation.y, axisOfRotation.z);
 }
 
-//void CloudsVisualSystem::drawTexturedQuad()
-//{
-//    glBegin (GL_QUADS);
-//    
-//    glTexCoord2f (0.0, 0.0);
-//    glVertex3f (0.0, 0.0, 0.0);
-//    
-//    glTexCoord2f (ofGetWidth(), 0.0);
-//    glVertex3f (ofGetWidth(), 0.0, 0.0);
-//    
-//    
-//    glTexCoord2f (ofGetWidth(), ofGetHeight());
-//    glVertex3f (ofGetWidth(), ofGetHeight(), 0.0);
-//    
-//    glTexCoord2f (0.0, ofGetHeight());
-//    glVertex3f (0.0, ofGetHeight(), 0.0);
-//    
-//    glEnd ();
-//}
-
-//void CloudsVisualSystem::drawNormalizedTexturedQuad()
-//{
-//    glBegin (GL_QUADS);
-//    
-//    glTexCoord2f (0.0, 0.0);
-//    glVertex3f (0.0, 0.0, 0.0);
-//    
-//    glTexCoord2f (1.0, 0.0);
-//    glVertex3f (ofGetWidth(), 0.0, 0.0);
-//    
-//    
-//    glTexCoord2f (1.0, 1.0);
-//    glVertex3f (ofGetWidth(), ofGetHeight(), 0.0);
-//    
-//    glTexCoord2f (0.0, 1.0);
-//    glVertex3f (0.0, ofGetHeight(), 0.0);
-//    
-//    glEnd ();
-//}
-
 void CloudsVisualSystem::drawBackground()
 {
 	

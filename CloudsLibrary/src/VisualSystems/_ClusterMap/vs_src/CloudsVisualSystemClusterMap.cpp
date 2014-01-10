@@ -20,6 +20,8 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	drawTraversalPoints = false;
 	drawHomingDistanceDebug = false;
 	drawLineFlickerDebug = false;
+	bSmoothLines = false;
+	autoTraversePoints = false;
 	
 	clipsShowTopic = ofIntRange(20, 40);
 	drawType = true;
@@ -28,6 +30,8 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	typeSizeRange.min = 5;
 	typeSizeRange.max = 14;
 	lineDensity = 200;
+	
+//	currentTraversalIndex = -1;
 	
 	lineFlickerIntensity = 7.;
 	lineFlickerFrequency = 100;
@@ -109,6 +113,7 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	linesGui->addMinimalSlider("LE_A", 0.0, 1.0, &lineEdgeColorHSV.a);
 	linesGui->addMinimalSlider("COLOR MIX EXPONENT", 0, 20.0, &lineColorMixExponent);
 	linesGui->addSlider("LINE WIDTH", .5, 3, &networkLineWidth);
+	linesGui->addToggle("SMOOTHING", &bSmoothLines);
 	
 	ofAddListener(linesGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(linesGui);
@@ -125,6 +130,8 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
     traversalGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
     traversalGui->addWidgetToHeader(toggle);
 	
+	//this is for the main cluster map visual
+	traversalGui->addToggle("AUTO TRAVERSE", &autoTraversePoints);
 	traversalGui->addLabel("HEAD COLOR");
     traversalGui->addMinimalSlider("TH_HUE", 0.0, 1.0, &traverseHeadColorHSV.r, length, dim)->setShowValue(false);
     traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
@@ -226,7 +233,7 @@ void CloudsVisualSystemClusterMap::setRun(CloudsRun& newRun){
 void CloudsVisualSystemClusterMap::resetGeometry(){
 	
 	firstClip = true;
-	lastTraverseStartedIndex = -1;
+//	lastTraverseStartedIndex = -1;
 
 	networkMesh.clear();
 	traversalMesh.clear();
@@ -420,7 +427,7 @@ void CloudsVisualSystemClusterMap::populateTopicPoints(){
 
 void CloudsVisualSystemClusterMap::traverse(){
 	
-	cout << " CloudsVisualSystemClusterMap::traverse TRAVERSING 1" << endl;
+	//cout << " CloudsVisualSystemClusterMap::traverse TRAVERSING 1" << endl;
 	
 	if(run == NULL){
 		ofLogError("CloudsVisualSystemClusterMap::traverse") << "Traversed without RUN" << endl;
@@ -647,6 +654,9 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 								   traverseStartTime+traverseAnimationDuration+optionsAnimationDuration,
 								   0.0, 1.0, true);
 	
+	if(autoTraversePoints && (firstClip || percentOptionsRevealed >= 1.0) ){
+		traverse();
+	}
 	
 	//UPDATE CAMERA
 	gameCamera.applyRotation = gameCamera.applyTranslation = !cursorIsOverGUI();
@@ -763,8 +773,13 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 
 	
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-	glEnable(GL_LINE_SMOOTH);
+	if(bSmoothLines){
+		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+		glEnable(GL_LINE_SMOOTH);
+	}
+	else{
+		glEnable(GL_LINE_SMOOTH);
+	}
 	glDisable(GL_DEPTH_TEST);
 
 	ofPushStyle();
