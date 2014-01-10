@@ -146,6 +146,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxTween::ofxEasingType transitionEase;
 	OutOption transitionOutOption;
 	bool bMoveTransitionCameraUp, bMoveTransitionCameraDown;
+	float transitionScrubIn, transitionScrubOut;
 	
 	//MESH
 	ofxUISuperCanvas *globalMeshGui;

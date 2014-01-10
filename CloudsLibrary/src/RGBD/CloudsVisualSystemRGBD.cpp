@@ -727,6 +727,10 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 	t->addToggle("Edit", placingTransitionNodes);
 	t->addToggle("save", &bSaveTransition );
 	
+	//slider for scrubbing animation
+	t->addSlider("scrubIn", 0, 1, &transitionScrubIn);
+	t->addSlider("scrubOut", 0, 1, &transitionScrubOut);
+	
 //	//Left/Right toggles
 //	t->addSpacer();
 //	t->addToggle("LEFT", true);
@@ -905,12 +909,8 @@ void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionTyp
 {
 	cout << "startTransitionOut(RGBDTransitionType transitionType)" << endl;
 	
-	if(cloudsCamera.getPosition().x - translatedHeadPosition.x > 0)
-	{
-		setOutOption(OutLeft);
-	}else{
-		setOutOption(OutRight);
-	}
+	//transition to the left or right based on relative posiiton
+	setOutOption((cloudsCamera.getPosition().x - translatedHeadPosition.x) > 0 ? OutLeft : OutRight);
 	
 	//transitionEase = ofxTween::easeOut;
 	transitionEase = ofxTween::easeIn;
@@ -1672,6 +1672,39 @@ void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e)
 				{
 					setOutOption( OutRight );
 					((ofxUIToggle*)guiIt.second->getWidget("LEFT"))->setValue( false );
+				}
+				
+				else if(name == "scrubIn")
+				{
+					StopEditTransitionMode();
+					
+					//transitionEase = ofxTween::easeIn;
+					transitionEase = ofxTween::easeOut;//are we sure we don't want easeInOut?
+					transitioning = true;
+					
+					cloudsCamera.setTransitionStartNode( &transitionInStart );
+					cloudsCamera.setTransitionTargetNode( &cloudsCamera.mouseBasedNode );
+					
+					updateTransition(transitionScrubIn);
+					transitioning = false;
+				}
+				
+				else if(name == "scrubOut")
+				{
+					StopEditTransitionMode();
+					
+					//transition to the left or right based on relative posiiton
+					setOutOption((cloudsCamera.getPosition().x - translatedHeadPosition.x) > 0 ? OutLeft : OutRight);
+					
+					//transitionEase = ofxTween::easeOut;
+					transitionEase = ofxTween::easeIn;
+					transitioning = true;
+					
+					cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
+					cloudsCamera.setTransitionTargetNode( transitionOutOption == OutLeft? &transitionOutLeft : &transitionOutRight );
+					
+					updateTransition(transitionScrubOut);
+					transitioning = false;
 				}
 
 				else if( name == "DriveIn")
