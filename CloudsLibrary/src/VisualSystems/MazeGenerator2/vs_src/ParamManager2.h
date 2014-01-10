@@ -11,12 +11,12 @@
 
 #include <ofMain.h>
 
-class ParamManager
+class ParamManager2
 {
 public:
-	static ParamManager& getInstance()
+	static ParamManager2& getInstance()
 	{
-		static ParamManager instance;
+		static ParamManager2 instance;
 		return instance;
 	}
     
@@ -36,11 +36,11 @@ public:
     float showAhead;
     
 private:
-    ParamManager();
-    ~ParamManager();
+    ParamManager2();
+    ~ParamManager2();
     
-    ParamManager(ParamManager const&) {cout<<"copy constructor\n";}
-    void operator=(ParamManager const&) {cout<<"assignment operator called\n";}
+    ParamManager2(ParamManager2 const&) {cout<<"copy constructor\n";}
+    void operator=(ParamManager2 const&) {cout<<"assignment operator called\n";}
     
     
 };

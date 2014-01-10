@@ -10,9 +10,9 @@
 #define __MazeGenerator__MazeCell__
 
 #include <ofMain.h>
-#include "ParamManager.h"
+#include "ParamManager2.h"
 
-class MazeCell
+class MazeCell2
 {
 public:
     float size;
@@ -23,7 +23,7 @@ public:
     bool searchStart;
     bool visible;
 
-    MazeCell(int x, int y, float s, float thickness, float height);
+    MazeCell2(int x, int y, float s, float thickness, float height);
     
     void draw(bool isGenerator);
     

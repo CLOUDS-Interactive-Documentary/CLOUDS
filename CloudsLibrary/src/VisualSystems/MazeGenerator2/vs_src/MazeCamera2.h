@@ -10,14 +10,14 @@
 #define __MazeGenerator__MazeCamera__
 
 #include <ofMain.h>
-#include "ParamManager.h"
-#include "Maze.h"
+#include "ParamManager2.h"
+#include "Maze2.h"
 
-class MazeCamera : public ofCamera
+class MazeCamera2 : public ofCamera
 {
 public:
     
-    MazeCamera(float x, float y, float z);
+    MazeCamera2(float x, float y, float z);
     
     void update();
     void draw();
