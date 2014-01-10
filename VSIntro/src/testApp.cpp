@@ -1,10 +1,4 @@
 #include "testApp.h"
-#ifdef KINECT_INPUT
-#include "CloudsInputKinectOSC.h"
-#endif
-#ifdef OCULUS_RIFT
-#include "CloudsInputOculus.h"
-#endif
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -12,12 +6,6 @@ void testApp::setup(){
 	ofBackground(0);
 	
 	ofSetVerticalSync(true);
-    
-#if defined(KINECT_INPUT)
-    SetCloudsInputKinect();
-#elif defined(OCULUS_RIFT)
-    SetCloudsInputOculus();
-#endif
 	
 	//////////////SHOW INTRO
     parser.loadFromFiles();
