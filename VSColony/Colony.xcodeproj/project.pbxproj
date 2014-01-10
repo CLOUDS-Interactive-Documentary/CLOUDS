@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1736F1F6187CEF1C0045637B /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1736F1F5187CEF1C0045637B /* ofxSystemTextbox.mm */; };
 		17C0BDEE18674BFA0082014A /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17C0BDE718674BFA0082014A /* CloudsInput.cpp */; };
 		17C0BDF018674BFA0082014A /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17C0BDEC18674BFA0082014A /* CloudsInputMouse.cpp */; };
 		2AC994D21874C38900492009 /* ofxTonicSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AC994531874C38900492009 /* ofxTonicSynth.cpp */; };
@@ -203,6 +204,8 @@
 
 /* Begin PBXFileReference section */
 		170C09F71876851A00E74010 /* blend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = blend.h; sourceTree = "<group>"; };
+		1736F1F4187CEF1C0045637B /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		1736F1F5187CEF1C0045637B /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		17BC7DF41867DC5700F4E8D8 /* billboard.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = billboard.fs; sourceTree = "<group>"; };
 		17BC7DF51867DC5700F4E8D8 /* billboard.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = billboard.vs; sourceTree = "<group>"; };
 		17C0BDE718674BFA0082014A /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
@@ -1466,6 +1469,8 @@
 		E72FF17D17E6A7970007780D /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				1736F1F4187CEF1C0045637B /* ofxSystemTextbox.h */,
+				1736F1F5187CEF1C0045637B /* ofxSystemTextbox.mm */,
 				E72FF17F17E6A7970007780D /* CloudsRGBDCamera.cpp */,
 				E72FF18017E6A7970007780D /* CloudsRGBDCamera.h */,
 				E72FF18117E6A7970007780D /* CloudsRGBDVideoPlayer.cpp */,
@@ -1759,6 +1764,7 @@
 				4695E35617529F8B003001E2 /* ofxTLLFO.cpp in Sources */,
 				2AC995311874C3BA00492009 /* lukeFuncs.cpp in Sources */,
 				4695E35717529F8B003001E2 /* ofxTLPage.cpp in Sources */,
+				1736F1F6187CEF1C0045637B /* ofxSystemTextbox.mm in Sources */,
 				2AC994FB1874C38900492009 /* Generator.cpp in Sources */,
 				4695E35817529F8B003001E2 /* ofxTLPageTabs.cpp in Sources */,
 				4695E35917529F8B003001E2 /* ofxTLSwitches.cpp in Sources */,

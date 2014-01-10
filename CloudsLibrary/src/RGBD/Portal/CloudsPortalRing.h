@@ -26,15 +26,15 @@ class CloudsPortal;
 class CloudsPortalRing {
   public:
 	CloudsPortalRing();
-	void setup(CloudsPortal* parent, ofVboMesh& portalGeo, int index);
+	void setup(CloudsPortal* parent, ofVboMesh& portalGeo, int index, bool segement = true);
 	void update();
 	
 	//updated by update function in CloudsPortal;
 	float hoverPercentComplete;
-	
+
   protected:
 	vector<PortalShard> shards;
-	void addVertsAtAngle(PortalShard& shard, float angle, float segmentPercent, bool endCap = false);
+	void addVertsAtAngle(PortalShard& shard, float angle, int numSegments, bool endCap = false);
 	
 	int ringIndex;
 	float thickness; 

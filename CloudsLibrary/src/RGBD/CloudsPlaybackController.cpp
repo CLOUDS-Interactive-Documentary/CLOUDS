@@ -400,7 +400,7 @@ void CloudsPlaybackController::updateTransition(){
                 }
 				
                 clusterMap->traverse();
-                clusterMap->loadPresetGUISFromName("DefaultCluster");
+                clusterMap->loadPresetGUISFromName("3DFreeCam");
                 clusterMap->playSystem();
 
 				currentVisualSystem = clusterMap;
@@ -714,7 +714,7 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
 #ifdef OCULUS_RIFT
 	rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
 #else
-	rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
+	rgbdVisualSystem->loadPresetGUISFromName("g_FIN_Style_01");
 #endif
 	rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
 	rgbdVisualSystem->playSystem();

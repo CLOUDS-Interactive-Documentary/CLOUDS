@@ -23,6 +23,7 @@ CloudsIntroSequence::CloudsIntroSequence(){
 	titleNoiseSpeed = 0;
 	hoveringTitle = false;
 	currentTitleOpacity = 0;
+	bQuestionDebug = false;
 }
 
 CloudsIntroSequence::~CloudsIntroSequence(){
@@ -40,26 +41,10 @@ void CloudsIntroSequence::selfSetup(){
     questionFontSize = 12;
     questionLineLength = 300.0f;
     questionLineSpacing = 1.0f;
+	questionMinZDistance = 50;
     rebuildQuestionFont();
-	
-	
-//	loadedQuestions.push_back("Shiffman_NOC_3");
-//	loadedQuestions.push_back("Lauren_how_we_communicate,_shorter");
-//	loadedQuestions.push_back("Ramsey_computation_is_interpretation_of_rules");
-	
 	perlinOffset = 0;
 	
-//	camera.setup();
-//	camera.autosavePosition = true;
-//	camera.loadCameraPosition();
-	
-//	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_supertight.obj", tunnelMeshTight);
-//	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_loose.obj", tunnelMeshLoose);
-//	ofxObjLoader::load(GetCloudsDataPath() + "intro/OBJ/CLOUDS_type_thin_02.obj",thinTypeMesh);
-	
-//	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/CLOUDS_type_thick.obj",thickTypeMesh);
-//	thinTypeMesh.load(getVisualSystemDataPath() + "OBJ/CLOUDS_type_thin_02.ply");
-//	thinTypeMesh.clearColors();
 	
 	ofDisableArbTex();
 	sprite.loadImage(getVisualSystemDataPath() + "images/dot.png");
@@ -73,17 +58,7 @@ void CloudsIntroSequence::selfSetup(){
 }
 
 void CloudsIntroSequence::selfPresetLoaded(string presetPath){
-//	tunnelMax = tunnelMin = tunnelMeshLoose.getVertices()[0];
-//	for(int i = 1; i < tunnelMeshLoose.getVertices().size(); i++){
-//		tunnelMax = ofVec3f(MAX(tunnelMax.x, tunnelMeshLoose.getVertices()[i].x),
-//							MAX(tunnelMax.y, tunnelMeshLoose.getVertices()[i].y),
-//							MAX(tunnelMax.z, tunnelMeshLoose.getVertices()[i].z));
-//		tunnelMin = ofVec3f(MIN(tunnelMin.x, tunnelMeshLoose.getVertices()[i].x),
-//							MIN(tunnelMin.y, tunnelMeshLoose.getVertices()[i].y),
-//							MIN(tunnelMin.z, tunnelMeshLoose.getVertices()[i].z));
-//	}
 
-	
 	generateTunnel();
 	warpCamera.setPosition(0, 0, 0);
 	warpCamera.lookAt(ofVec3f(0,0,tunnelMax.z));
@@ -141,28 +116,21 @@ void CloudsIntroSequence::selfUpdate(){
 			startQuestions[i].hoverPosition.z += questionWrapDistance;
 		}
 		
-		if(startQuestions[i].hoverPosition.z - warpCamera.getPosition().z < questionTugMinDepth){
+		if(startQuestions[i].hoverPosition.z - warpCamera.getPosition().z < questionMinZDistance){
 #ifdef OCULUS_RIFT
             ofVec3f screenPos = getOculusRift().worldToScreen(startQuestions[i].hoverPosition, true);
             float distanceToQuestion = ofDist(screenPos.x, screenPos.y,
                                               viewport.getCenter().x, viewport.getCenter().y);
-//            if (distanceToQuestion < portal.minSelectDistance) {
-//                portal.startHovering();
-//            }
-//            else{
-//                portal.stopHovering();
-//            }
-//            
-//			float distanceToQuestion = getOculusRift().distanceFromMouse(startQuestions[i].hoverPosition);
-//			cout << "Distance " << distanceToQuestion << endl;
 #else
 			ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
 			float distanceToQuestion = startQuestions[i].screenPosition.distance(mouseNode);
 #endif
 			if(caughtQuestion == NULL){
-				if( distanceToQuestion < questionTugMaxDistance ){
-					startQuestions[i].hoverPosition.z += ofMap(distanceToQuestion, questionTugMaxDistance, questionTugMinDistance, 0, cameraForwardSpeed);
-					if(distanceToQuestion < questionTugMinDistance){
+				if( distanceToQuestion < questionTugDistance.max ){
+					startQuestions[i].hoverPosition.z += ofMap(distanceToQuestion,
+															   questionTugDistance.max, questionTugDistance.min,
+															   0, cameraForwardSpeed);
+					if(distanceToQuestion < questionTugDistance.min){
 						caughtQuestion = &startQuestions[i];
 						caughtQuestion->startHovering();
 					}
@@ -171,10 +139,11 @@ void CloudsIntroSequence::selfUpdate(){
 			//we have a caught question make sure it's still close
 			else if(caughtQuestion == &startQuestions[i]){
 				startQuestions[i].hoverPosition.z += cameraForwardSpeed;
-				if( caughtQuestion->isSelected() /* && ofGetMousePressed() */){
+				if( caughtQuestion->isSelected() && !bQuestionDebug){
 					selectedQuestion = caughtQuestion;
 				}
-				else if(distanceToQuestion > questionTugMinDistance){
+				//TODO consider MAX distance here.....
+				else if(distanceToQuestion > questionTugDistance.max){
 					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
 				}
@@ -322,17 +291,33 @@ CloudsPortal* CloudsIntroSequence::getSelectedQuestion(){
 }
 
 void CloudsIntroSequence::selfDrawBackground(){
-    ofPushStyle();
-    ofNoFill();
-    for(int i = 0; i < startQuestions.size(); i++){
-        ofSetColor(startQuestions[i].hovering ? ofColor::green : ofColor::yellow);
-        ofCircle(startQuestions[i].screenPosition, 20);
-    }
-    ofPopStyle();
+	if(bQuestionDebug){
+		ofPushStyle();
+		
+		for(int i = 0; i < startQuestions.size(); i++){
+			float alpha = .1;
+			if(startQuestions[i].hoverPosition.z - warpCamera.getPosition().z < questionMinZDistance){
+				alpha = .8;
+			}
+			
+			if(startQuestions[i].hovering){
+				ofFill();
+			}
+			else{
+				ofNoFill();
+			}
+			ofSetColor(startQuestions[i].hovering ? ofColor::green : ofColor::yellow, alpha*255);
+			ofCircle(startQuestions[i].screenPosition, questionTugDistance.min);
+			ofNoFill();
+			ofSetColor(ofColor::white, alpha*255);
+			ofCircle(startQuestions[i].screenPosition, questionTugDistance.max);
+			
+		}
+		ofPopStyle();
+	}
 }
 
 void CloudsIntroSequence::selfDrawDebug(){
-
 
 }
 
@@ -410,7 +395,11 @@ void CloudsIntroSequence::selfDraw(){
     ofEnableAlphaBlending();
 
 	CloudsPortal::shader.begin();
-
+	
+	CloudsPortal::shader.setUniform1i("doAttenuate", 1);
+	CloudsPortal::shader.setUniform1f("minDistance", questionAttenuateDistance.min);
+	CloudsPortal::shader.setUniform1f("maxDistance", questionAttenuateDistance.max);
+	
     ofSetColor(255);
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].draw();
@@ -423,19 +412,11 @@ void CloudsIntroSequence::selfDraw(){
 
 void CloudsIntroSequence::drawCloudsType(){
 	ofPushMatrix();
+	ofPushStyle();
 	
-	//ofRotate(180, 0, 1, 0);
-//	ofRotate(180, 1, 0, 0);
 	ofRotate(180, 0, 0, 1);
 	
-	//ofScale(fontScale, fontScale, fontScale);
-	
-//	ofTranslate(0, 0, -tunnelMax.z);
-	ofPushStyle();
 	ofEnableAlphaBlending();
-	
-//	cout << currentTitleOpacity << endl;
-	
 	ofSetColor(255, currentTitleOpacity*255);
 	ofTranslate(0, 0, titleTypeOffset );
 	extrudedTitleText.setTracking( titleTypeTracking );
@@ -448,8 +429,8 @@ void CloudsIntroSequence::drawCloudsType(){
 	typeShader.setUniform1f("glowMin", titleMinGlow);
 	typeShader.setUniform1f("glowMax", titleMaxGlow);
 
-	
 	extrudedTitleText.drawString("CLOUDS", -width/2, height/2);
+	
 	typeShader.end();
 
 	ofPopStyle();
@@ -463,7 +444,6 @@ void CloudsIntroSequence::selfDrawOverlay(){
 			startQuestions[i].drawOverlay(true);
 		}
 		ofPopStyle();
-		
 	}
 }
 
@@ -480,13 +460,6 @@ void CloudsIntroSequence::selfPostDraw(){
 		}
 		ofPopStyle();
 	}
-	
-//	if(ofGetKeyPressed('1')){
-//		ofPushStyle();
-//		ofNoFill();
-//		ofRect(titleRect);
-//		ofPopStyle();
-//	}
 }
 
 void CloudsIntroSequence::selfExit(){
@@ -625,21 +598,14 @@ void CloudsIntroSequence::selfSetupGuis(){
 	questionGui->setName("Questions");
 	questionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
+	questionGui->addToggle("Debug Tug", &bQuestionDebug);
 	questionGui->addSlider("Scale", 0, 1, &questionScale);
 	questionGui->addSlider("Wrap Distance", 100, 4000, &questionWrapDistance);
+	questionGui->addSlider("Question Min Z", 10, 100, &questionMinZDistance);
 	questionGui->addSlider("Inner Radius", 2, 20, &questionTunnelInnerRadius);
-	questionGui->addSlider("Tug Min Distance", 10, 300, &questionTugMinDistance);
-	questionGui->addSlider("Tug Max Distance", 10, 300, &questionTugMaxDistance);
-	questionGui->addSlider("Tug Min Depth", 30, 1000, &questionTugMinDepth);
-
-	questionGui->addSlider("Question Tint H",  0, 1.0, &questionNodeTint.r);
-	questionGui->addSlider("Question Tint S",  0, 1.0, &questionNodeTint.g);
-	questionGui->addSlider("Question Tint B",  0, 1.0, &questionNodeTint.b);
-    
-    questionGui->addIntSlider("Question Font Size", 6, 128, &questionFontSize);
-    questionGui->addSlider("Question Line Length", 1, 600, &questionLineLength);
-    questionGui->addSlider("Question Line Spacing", 0, 2, &questionLineSpacing);
-
+	questionGui->addRangeSlider("Tug Distance", 10, 300, &questionTugDistance.min, &questionTugDistance.max);
+	questionGui->addRangeSlider("Attenuate Distance", 10, 300,&questionAttenuateDistance.min,&questionAttenuateDistance.max);
+	
 	questionGui->addButton("arrange questions", false);
 	//	questionGui->addToggle("Custom Toggle", &customToggle);
 	ofAddListener(questionGui->newGUIEvent, this, &CloudsIntroSequence::selfGuiEvent);
@@ -694,11 +660,6 @@ void CloudsIntroSequence::selfSetupGuis(){
 	guis.push_back(typeGui);
 	guimap[typeGui->getName()] = typeGui;
 
-//	int titleFontSize;
-//	int titleFontExtrude;
-//	float titleTypeTracking;
-//	float titleTypeOffset;
-//	typeGui->add("Font Size", 5, 15, &titleFontSize);
 	
 }
 

@@ -2,10 +2,11 @@
 #include "testApp.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
+#ifdef KINECT_INPUT
+#include "CloudsInputKinectOSC.h"
+#endif
 #ifdef OCULUS_RIFT
 #include "CloudsInputOculus.h"
-#else
-#include "CloudsInputKinectOSC.h"
 #endif
 
 //--------------------------------------------------------------
@@ -15,14 +16,16 @@ void testApp::setup(){
   
 	ofSetLogLevel(OF_LOG_NOTICE);
     
-#ifdef OCULUS_RIFT
-    SetCloudsInputOculus();
-#else
+#if defined(KINECT_INPUT)
     SetCloudsInputKinect();
+#elif defined(OCULUS_RIFT)
+    SetCloudsInputOculus();
 #endif
 	
 	rgbd.setup();
+	//rgbd.addTransionEditorsToGui();
 	rgbd.playSystem();
+	
 	
 	type = CloudsVisualSystem::FLY_THROUGH;
 }
@@ -41,9 +44,11 @@ void testApp::draw(){
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 	if(key == 'O'){
+		rgbd.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
 		transitionController.transitionToVisualSystem(1.0, 1.0);
 	}
 	if(key == 'I'){
+		rgbd.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
 		transitionController.transitionToInterview(1.0, 1.0);
 	}
 }
@@ -91,6 +96,9 @@ void testApp::updateTransitions(){
 		if(transitionController.getCurrentState() == TRANSITION_INTERVIEW_OUT){
 			
 			ofLogNotice("testApp::updateTransitions") << "Going to INTERVIEW OUT";
+			
+			////Dear James, you can use this to tell it to go left or right on transition out.
+			//rgbd.setOutOption( CloudsVisualSystemRGBD::OutRight or CloudsVisualSystemRGBD::OutLeft );
 			
 			rgbd.startTransitionOut( type );
 		}

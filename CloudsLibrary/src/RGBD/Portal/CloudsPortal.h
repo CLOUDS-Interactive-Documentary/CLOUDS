@@ -48,20 +48,31 @@ class CloudsPortal {
 	float ringThicknessMultiplier;
 	float ringStartRadius;
 	float ringDensity;
-	
+	int ringCount;
+
 	float minSelectDistance;
 	float maxHoverTime;
-		
+	float selectAnimationDuration;
+	
 	float hoverPercentComplete;
+	float selectedPercentComplete;
 	ofVec3f hoverPosition;
-	ofVec2f screenPosition;//filled out on update
-    
+	ofVec2f screenPosition; //filled out on update
+
+	bool bLookAtCamera;
+	ofVec3f lookTarget; //billboards the tunnel
+	
     float scale;
 	
 	ofCamera* cam;
 	ofxFTGLSimpleLayout* font;
 
 	vector<CloudsPortalRing> rings;
+	CloudsPortalRing innerTimerRing;
+	CloudsPortalRing outerTimerRing;
+	
 	void toggleFakeSelection();
 	ofVboMesh portalGeo;
+	ofVboMesh timerGeo;
+	
 };
