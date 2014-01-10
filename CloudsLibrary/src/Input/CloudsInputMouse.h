@@ -23,3 +23,5 @@ class CloudsInputMouse : public CloudsInput
 	void mouseReleased(ofMouseEventArgs& data);
 
 };
+
+void SetCloudsInputMouse();

@@ -155,7 +155,7 @@ void CloudsVisualSystemBallDroppings::selfDrawDebug()
 void CloudsVisualSystemBallDroppings::selfDrawBackground()
 {
     
-	ofBackground(!ballcolor*255);
+	//ofBackground(!ballcolor*255);
     
 	//draw balldropper
 	ofSetColor(emitterColor*255);

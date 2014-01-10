@@ -59,7 +59,7 @@ void CloudsRGBDCamera::update(ofEventArgs& args){
 		
 		//update transition
 		ofQuaternion rotQuat;
-		rotQuat.slerp( transitionAmount, startNode->getOrientationQuat(), targetNode->getOrientationQuat() );
+		rotQuat.slerp( transitionRotAmount, startNode->getOrientationQuat(), targetNode->getOrientationQuat() );
 		
 		setOrientation( ofQuaternion() );
 		setPosition( targetNode->getPosition()*transitionAmount + startNode->getPosition()*(1.-transitionAmount) );
@@ -137,6 +137,11 @@ void CloudsRGBDCamera::setTransitionStartNode( ofNode* _startNode ){
 void CloudsRGBDCamera::setTransitionTargetNode( ofNode* _targetNode ){
 	cout << "CloudsRGBDCamera::setTargetNode: " << endl;
 	targetNode = _targetNode;
+}
+
+void CloudsRGBDCamera::setTransitionRotationPercent(float t)
+{
+	transitionRotAmount = ofClamp(t, 0, 1);
 }
 
 void CloudsRGBDCamera::setTransitionPercent( float t ){

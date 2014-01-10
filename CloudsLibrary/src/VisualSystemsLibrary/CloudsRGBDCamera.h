@@ -43,6 +43,7 @@ class CloudsRGBDCamera : public ofCamera {
 	void setTransitionStartNode( ofNode* _startNode );
 	void setTransitionTargetNode( ofNode* _targetNode );
 	void setTransitionPercent( float t );
+	void setTransitionRotationPercent(float t);
 	
 	
 	void jumpToPosition();
@@ -75,6 +76,7 @@ class CloudsRGBDCamera : public ofCamera {
 	bool isHovering;
 	
 	float transitionAmount;
+	float transitionRotAmount;
 	bool transitioning;
 	
 	
