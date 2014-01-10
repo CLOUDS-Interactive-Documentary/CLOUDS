@@ -405,8 +405,6 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	updateQuestions();
 	updateTransition();
-    
-//    cloudsCaption.update();
 	
 	if( placingTransitionNodes )
 	{
