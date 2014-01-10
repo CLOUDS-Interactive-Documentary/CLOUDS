@@ -331,6 +331,7 @@
 		AEA300191880AE8D00799DB7 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		AEA3001A1880AE8D00799DB7 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CF77E41753FEA0006B7D41 /* libsndfile.a */; };
 		AEA3001D1880AE8D00799DB7 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		AEA300231880B7B800799DB7 /* Generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2ACA6B4218725AC30029603B /* Generator.cpp */; };
 		AEA3FF471880AE8D00799DB7 /* Filters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2ACA6B3C18725AC30029603B /* Filters.cpp */; };
 		AEA3FF481880AE8D00799DB7 /* b2WeldJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF574180F136F005F33D3 /* b2WeldJoint.cpp */; };
 		AEA3FF491880AE8D00799DB7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
@@ -2947,6 +2948,7 @@
 				2ACA6B8818725AC40029603B /* CompressorLimiter.cpp in Sources */,
 				2AAEF590180F136F005F33D3 /* b2CircleContact.cpp in Sources */,
 				2AAEF593180F136F005F33D3 /* b2PolygonAndCircleContact.cpp in Sources */,
+				AEA300231880B7B800799DB7 /* Generator.cpp in Sources */,
 				E7D32FA31751C626006706ED /* ofxDistorterBehavior.cpp in Sources */,
 				2AAEF588180F136F005F33D3 /* b2Settings.cpp in Sources */,
 				2ACA6BA618725AC40029603B /* ControlPrinter.cpp in Sources */,
