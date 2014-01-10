@@ -3230,7 +3230,12 @@ void CloudsVisualSystem::drawCursor()
                 continue;
             }
             
-            selfDrawCursor(it->second.position, it->second.actionType != 0);
+#ifdef KINECT_INPUT
+            selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle);
+#else
+            // EZ: This ofGetMousePressed() call is ghetto but will do for now
+            selfDrawCursor(it->second.position, ofGetMousePressed());
+#endif
         }
     }
 }
