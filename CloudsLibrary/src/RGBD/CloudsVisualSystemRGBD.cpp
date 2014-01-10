@@ -159,6 +159,7 @@ void CloudsVisualSystemRGBD::loadShader(){
 
 void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 {
+	currentTransitionType = type;
 	TransitionInfo ti;
 	ofQuaternion q;
 	
@@ -939,6 +940,12 @@ void CloudsVisualSystemRGBD::clearQuestions(){
 
 void CloudsVisualSystemRGBD::startCurrentTransitionOut()
 {
+	if(currentTransitionType == "QUESTION")
+	{
+		transitionOutLeft.setOrientation( getCameraRef().getOrientationQuat() );
+		transitionOutRight.setOrientation( getCameraRef().getOrientationQuat() );
+	}
+	
 	//transition to the left or right based on relative posiiton
 	setOutOption((cloudsCamera.getPosition().x - translatedHeadPosition.x) > 0 ? OutLeft : OutRight);
 	
@@ -962,6 +969,11 @@ void CloudsVisualSystemRGBD::startCurrentTransitionIn()
 
 void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType, string option)
 {
+	if( transitionType == QUESTION)
+	{
+		transitionOutLeft.setOrientation( getCameraRef().getOrientationQuat() );
+		transitionOutRight.setOrientation( getCameraRef().getOrientationQuat() );
+	}
 	//set the in/out nodes
 	setTransitionNodes( transitionType, option );
 	
