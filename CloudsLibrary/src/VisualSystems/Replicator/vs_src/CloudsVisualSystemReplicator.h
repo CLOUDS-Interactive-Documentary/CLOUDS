@@ -67,6 +67,8 @@ class CloudsVisualSystemReplicator : public CloudsVisualSystem {
     ControlTrigger soundTriggers[2];
     ofxTonicSynth synth;
     Generator buildSynth();
+    ControlParameter volumeControl;
+    float gain;
 	void audioRequested(ofAudioEventArgs& args);
 };
 

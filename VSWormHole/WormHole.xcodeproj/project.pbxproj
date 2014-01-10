@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A316F94187F8EF600662636 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A316F93187F8EF600662636 /* ofxSystemTextbox.mm */; };
+		2A316F95187F8EF600662636 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A316F93187F8EF600662636 /* ofxSystemTextbox.mm */; };
 		2AC995471874CA4E00492009 /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AC995351874CA4E00492009 /* CloudsAudioEvents.cpp */; };
 		2AC995481874CA4E00492009 /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AC995351874CA4E00492009 /* CloudsAudioEvents.cpp */; };
 		2AC995491874CA4E00492009 /* CloudsMixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AC995371874CA4E00492009 /* CloudsMixer.cpp */; };
@@ -385,6 +387,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A316F92187F8EF600662636 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		2A316F93187F8EF600662636 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		2AC995351874CA4E00492009 /* CloudsAudioEvents.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsAudioEvents.cpp; sourceTree = "<group>"; };
 		2AC995361874CA4E00492009 /* CloudsAudioEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsAudioEvents.h; sourceTree = "<group>"; };
 		2AC995371874CA4E00492009 /* CloudsMixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsMixer.cpp; sourceTree = "<group>"; };
@@ -1837,6 +1841,8 @@
 				E7DD846317DBC0A500AFB2DD /* CloudsRGBDCamera.cpp */,
 				E7DD846417DBC0A500AFB2DD /* CloudsRGBDCamera.h */,
 				E7DD846517DBC0A500AFB2DD /* CloudsRGBDVideoPlayer.cpp */,
+				2A316F92187F8EF600662636 /* ofxSystemTextbox.h */,
+				2A316F93187F8EF600662636 /* ofxSystemTextbox.mm */,
 				E7DD846617DBC0A500AFB2DD /* CloudsRGBDVideoPlayer.h */,
 				E7DD846717DBC0A500AFB2DD /* CloudsVisualSystem.cpp */,
 				E7DD846817DBC0A500AFB2DD /* CloudsVisualSystem.h */,
@@ -2048,6 +2054,7 @@
 				2AC996431874CA8D00492009 /* ControlMidiToFreq.cpp in Sources */,
 				2AC996311874CA8D00492009 /* ControlComparison.cpp in Sources */,
 				3D5B95E8175308AE00F558AC /* ofxTLPageTabs.cpp in Sources */,
+				2A316F94187F8EF600662636 /* ofxSystemTextbox.mm in Sources */,
 				2AC996171874CA8D00492009 /* ofxTonicSynth.cpp in Sources */,
 				3D5B95E9175308AE00F558AC /* ofxTLSwitches.cpp in Sources */,
 				2AC996771874CA8D00492009 /* Reverb.cpp in Sources */,
@@ -2233,6 +2240,7 @@
 				2AC996761874CA8D00492009 /* RectWave.cpp in Sources */,
 				2AC996361874CA8D00492009 /* ControlCounter.cpp in Sources */,
 				2AC996281874CA8D00492009 /* CombFilter.cpp in Sources */,
+				2A316F95187F8EF600662636 /* ofxSystemTextbox.mm in Sources */,
 				2AC996221874CA8D00492009 /* BLEPOscillator.cpp in Sources */,
 				E738FFBE183C86F50018AB96 /* ofxEasingSine.cpp in Sources */,
 				2AC9963C1874CA8D00492009 /* ControlFloor.cpp in Sources */,

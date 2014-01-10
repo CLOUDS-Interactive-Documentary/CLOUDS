@@ -166,4 +166,6 @@ protected:
     vector<float> dampened;
     
     float fogDensity;
+    
+    float fMainGain;
 };
