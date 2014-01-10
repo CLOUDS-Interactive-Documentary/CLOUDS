@@ -651,7 +651,7 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 #endif
 #ifdef OCULUS_RIFT
         case '9':
-            toggleGuiAndPosition(oculusGui8);
+            toggleGuiAndPosition(oculusGui);
             break;
 #endif
 //        case '0':
