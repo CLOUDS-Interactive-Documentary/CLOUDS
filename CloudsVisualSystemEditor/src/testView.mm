@@ -244,9 +244,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)keyPressed:(int)key
 {
-	if(key == 'K'){
-//		SetCloudsInput(ofPtr<CloudsInput>( new CloudsInputKinectOSC() ));
-	}
+
 }
 
 - (void)keyReleased:(int)key
@@ -284,20 +282,28 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	
 	if(self.selectedPresetIndex >= 0){
 
-		ofPtr<CloudsVisualSystem> system = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[self.selectedPresetIndex].systemName );
-		if(system != NULL){
-			cout << "updating presets for " << system->getSystemName() << endl;
-			visualSystems.updatePresetsForSystem( system );
-		}
-		
-		[clipTable reloadData];
-		[suppressedClipTable reloadData];
-		[presetTable reloadData];
-		[allKeywordTable reloadData];
-		[allClipTable reloadData];
-		
+        [self updatePresetsForSystem: visualSystems.getPresets()[self.selectedPresetIndex].systemName ];
+
 	}
-	
+}
+
+- (void) updatePresetsForSystem:(string) systemName
+{
+    ofPtr<CloudsVisualSystem> system = CloudsVisualSystemManager::InstantiateSystem( systemName );
+    if(system != NULL){
+        cout << "updating presets for " << system->getSystemName() << endl;
+        visualSystems.updatePresetsForSystem( system );
+        
+        string refreshFlagPath = GetCloudsVisualSystemDataPath(systemName) + "Presets/Working/_refreshme.txt";
+        ofFile::removeFile(refreshFlagPath);
+        
+    }
+    
+    [clipTable reloadData];
+    [suppressedClipTable reloadData];
+    [presetTable reloadData];
+    [allKeywordTable reloadData];
+    [allClipTable reloadData];
 }
 
 - (IBAction) deletePreset:(id)sender
@@ -468,6 +474,14 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	
 	if(aTableView == presetTable){
 		int presetIndex = filteredPresetInds[ rowIndex ];
+        
+        //check to refresh
+        string refreshFlagPath = GetCloudsVisualSystemDataPath(visualSystems.getPresets()[presetIndex].systemName) + "Presets/Working/_refreshme.txt";
+        ofFile refreshFile(refreshFlagPath);
+        if(refreshFile.exists()){
+            [self updatePresetsForSystem:visualSystems.getPresets()[presetIndex].systemName];
+        }
+        
 		if([@"system" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String: visualSystems.getPresets()[presetIndex].systemName.c_str()];
 		}

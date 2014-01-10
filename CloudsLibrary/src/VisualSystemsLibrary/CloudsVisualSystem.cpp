@@ -980,7 +980,6 @@ void CloudsVisualSystem::setupLightingParams()
 
 void CloudsVisualSystem::setupMaterialParams()
 {
-//    mat = new ofMaterial();
 	mat = new ofxMaterial();
 }
 
@@ -988,7 +987,7 @@ void CloudsVisualSystem::setupTimeLineParams()
 {
 	timeline = NULL;
     bShowTimeline = false;
-	bTimelineIsIndefinite = true;
+	bTimelineIsIndefinite = false;
     bDeleteTimelineTrack = false;
     timelineDuration = 60;
     bEnableTimeline = true;
@@ -2885,7 +2884,6 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 	
 	
 //	cout << "after save range " << timeline->getInOutRange() << endl;
-	
 	timeline->setName("Working");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 
@@ -2898,7 +2896,11 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 	timeInfo.addValue("outroDuration", getOutroDuration());
 	timeInfo.popTag();//timeinfo
 	timeInfo.saveFile(getVisualSystemDataPath()+"Presets/"+presetName+"/TimeInfo.xml");
-	
+    
+    //Add auto refresh file
+    ofBuffer refreshFlag;
+    refreshFlag.append("refreshme");
+    ofBufferToFile(getVisualSystemDataPath()+"Presets/Working/_refreshme.txt", refreshFlag);
 }
 
 void CloudsVisualSystem::deleteGUIS()

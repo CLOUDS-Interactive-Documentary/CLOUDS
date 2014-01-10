@@ -12,7 +12,7 @@
 
 CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 	enabled = false;
-	indefinite = true;
+	indefinite = false;
 	
 	defaultedToFamily = false;
 	randomlySelected = false;

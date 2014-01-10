@@ -1806,7 +1806,7 @@
 		64323E85187A4DAE00316058 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortal.h; sourceTree = "<group>"; };
 		64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortalRing.cpp; sourceTree = "<group>"; };
 		64323E87187A4DAE00316058 /* CloudsPortalRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortalRing.h; sourceTree = "<group>"; };
-		85891D22187FE34100325DD8 /* CLOUDS_OCULUS copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CLOUDS_OCULUS copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		85891D22187FE34100325DD8 /* CLOUDS_KINECTDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_KINECTDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85891D23187FE34200325DD8 /* CLOUDS_OCULUS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CLOUDS_OCULUS copy-Info.plist"; path = "/Users/jonathanminard/Documents/Development/openFrameworks/apps/CLOUDS/CLOUDS/CLOUDS_OCULUS copy-Info.plist"; sourceTree = "<absolute>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		C1644CBB186F92010024E091 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -3683,7 +3683,7 @@
 				E45BE5980E8CC70C009D7055 /* frameworks */,
 				E4B69B5B0A3A1756003C02F2 /* CLOUDSDebug.app */,
 				E7FB262A1830D4C0009EBD0E /* CLOUDS_OCULUSDebug.app */,
-				85891D22187FE34100325DD8 /* CLOUDS_OCULUS copy.app */,
+				85891D22187FE34100325DD8 /* CLOUDS_KINECTDebug.app */,
 				85891D23187FE34200325DD8 /* CLOUDS_OCULUS copy-Info.plist */,
 			);
 			sourceTree = "<group>";
@@ -7732,7 +7732,7 @@
 			);
 			name = CLOUDS_KINECT;
 			productName = myOFApp;
-			productReference = 85891D22187FE34100325DD8 /* CLOUDS_OCULUS copy.app */;
+			productReference = 85891D22187FE34100325DD8 /* CLOUDS_KINECTDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E4B69B5A0A3A1756003C02F2 /* CLOUDS */ = {
@@ -7778,6 +7778,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CLOUDS" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -9636,7 +9638,7 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "CLOUDS_OCULUS copy";
+				PRODUCT_NAME = CLOUDS_KINECTDebug;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -9819,7 +9821,7 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release/libovr.a",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "CLOUDS_OCULUS copy";
+				PRODUCT_NAME = CLOUDS_KINECT;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -9912,7 +9914,7 @@
 		E4B69B600A3A1757003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -10064,7 +10066,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
-				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
+				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = CLOUDSDebug;
 				SDKROOT = macosx10.8;
@@ -10075,7 +10077,7 @@
 		E4B69B610A3A1757003C02F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -10222,7 +10224,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
-				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
+				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = CLOUDS;
 				SDKROOT = macosx10.8;

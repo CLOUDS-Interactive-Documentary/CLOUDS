@@ -73,6 +73,7 @@
 - (void)updateCurrentClipPresets;
 - (void)updateCounts;
 
+
 - (void)setup;
 - (void)update;
 - (void)draw;
@@ -90,6 +91,7 @@
 - (IBAction) runTestsOnPresets:(id)sender;
 - (IBAction) updateFilters:(id)sender;
 - (IBAction) updatePresets:(id)sender;
+- (void)updatePresetsForSystem:(string) systemName;
 - (IBAction) deletePreset:(id)sender;
 - (IBAction) updateKeywords:(id)sender;
 - (IBAction) suppressClip:(id)sender;
