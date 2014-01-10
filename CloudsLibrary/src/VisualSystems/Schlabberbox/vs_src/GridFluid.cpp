@@ -70,7 +70,7 @@ void FluidBox::setup(int s, float v) {
 	}
 
 	//box = ofMesh::box(1, 1, 1);
-	box.load("box.ply");
+	box.load(GetCloudsVisualSystemDataPath("Schlabberbox") + "box.ply");
 	boxSize = 3;
 
 	particleSpeed = 80;

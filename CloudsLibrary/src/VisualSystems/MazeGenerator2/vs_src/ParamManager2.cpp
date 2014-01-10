@@ -6,9 +6,9 @@
 //
 //
 
-#include "ParamManager.h"
+#include "ParamManager2.h"
 
-ParamManager::ParamManager()
+ParamManager2::ParamManager2()
 {
     cameraSpeed = 1;
     cameraAngle = 45;
@@ -17,27 +17,27 @@ ParamManager::ParamManager()
 
 }
 
-ParamManager::~ParamManager()
+ParamManager2::~ParamManager2()
 {
     
 }
 
-ofColor ParamManager::getGroundColor()
+ofColor ParamManager2::getGroundColor()
 {
     return ofColor::fromHsb(groundColor.r, groundColor.g, groundColor.b);
 }
 
-ofColor ParamManager::getWallColor()
+ofColor ParamManager2::getWallColor()
 {
     return ofColor::fromHsb(wallColor.r, wallColor.g, wallColor.b);
 }
 
-ofColor ParamManager::getSideWallsColor()
+ofColor ParamManager2::getSideWallsColor()
 {
     return ofColor::fromHsb(sideWallsColor.r, sideWallsColor.g, sideWallsColor.b);
 }
 
-ofColor ParamManager::getGeneratorColor()
+ofColor ParamManager2::getGeneratorColor()
 {
     return ofColor::fromHsb(generatorColor.r, generatorColor.g, generatorColor.b);
 }
