@@ -72,7 +72,7 @@
 #include "CloudsVisualSystemRulez.h"
 #include "CloudsVisualSystemSatoruhiga.h"
 #include "CloudsVisualSystemScrape.h"
-//#include "CloudsVisualSystemSwim.h" //TEMP
+#include "CloudsVisualSystemSwim.h" 
 #include "CloudsVisualSystemTerrain.h"
 #include "CloudsVisualSystemThingsInTheDark.h"
 #include "CloudsVisualSystemTunnelDrawing.h"
@@ -176,7 +176,7 @@ struct Mapping {
 	{ "Satoruhiga", &fCreate<CloudsVisualSystemSatoruhiga> },
 	{ "Scrape", &fCreate<CloudsVisualSystemScrape> },
     { "Schlabberbox", &fCreate<CloudsVisualSystemSchlabberbox> },
-//	{ "Swim", &fCreate<CloudsVisualSystemSwim> }, TEMP
+	{ "Swim", &fCreate<CloudsVisualSystemSwim> }, // TEMP
 	{ "Terrain", &fCreate<CloudsVisualSystemTerrain> },
 	{ "ThingsInTheDark", &fCreate<CloudsVisualSystemThingsInTheDark> },
 	{ "TunnelDrawing", &fCreate<CloudsVisualSystemTunnelDrawing> },

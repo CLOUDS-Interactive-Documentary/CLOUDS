@@ -1,0 +1,119 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>regenerate</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>cameraControl</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogStart</Name>
+    <Value>1540.886718750</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogEnd</Name>
+    <Value>1848.275878906</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>camSpeed</Name>
+    <Value>-497.536956787</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>numNearbyPlants</Name>
+    <Value>500.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>flower1.xml weighting</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>flower2.xml weighting</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>tree1.xml weighting</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>tree2.xml weighting</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>growDist</Name>
+    <Value>538.916259766</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>camAvoidDist</Name>
+    <Value>768.472900391</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>drawPlantPosns</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>hueRange</Name>
+    <HighValue>0.403940976</HighValue>
+    <LowValue>0.177339911</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>satRange</Name>
+    <HighValue>0.236453205</HighValue>
+    <LowValue>0.083743900</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseFreq</Name>
+    <Value>0.001620690</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseAmp</Name>
+    <Value>33.251232147</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>fxaa</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>bloom</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SriLankaForest.aif</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FOREST.aif</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>organ_slower.aif</Name>
+    <Value>1</Value>
+</Widget>

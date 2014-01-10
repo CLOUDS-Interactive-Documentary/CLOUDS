@@ -54,6 +54,32 @@
 		8510F1B7187DEBF100E34E36 /* RandomNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8510F1B0187DEBF100E34E36 /* RandomNumber.cpp */; };
 		851A1054187A09E0004197C5 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 851A1053187A09E0004197C5 /* ofxSystemTextbox.mm */; };
 		851A1055187A09E0004197C5 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 851A1053187A09E0004197C5 /* ofxSystemTextbox.mm */; };
+		85891AD5187F5E1500325DD8 /* Bubbles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AB9187F5E1500325DD8 /* Bubbles.cpp */; };
+		85891AD6187F5E1500325DD8 /* Bubbles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AB9187F5E1500325DD8 /* Bubbles.cpp */; };
+		85891AD7187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ABB187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp */; };
+		85891AD8187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ABB187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp */; };
+		85891AD9187F5E1500325DD8 /* Creature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ABD187F5E1500325DD8 /* Creature.cpp */; };
+		85891ADA187F5E1500325DD8 /* Creature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ABD187F5E1500325DD8 /* Creature.cpp */; };
+		85891ADB187F5E1500325DD8 /* Creatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ABF187F5E1500325DD8 /* Creatures.cpp */; };
+		85891ADC187F5E1500325DD8 /* Creatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ABF187F5E1500325DD8 /* Creatures.cpp */; };
+		85891ADD187F5E1500325DD8 /* JellyCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AC1187F5E1500325DD8 /* JellyCreature.cpp */; };
+		85891ADE187F5E1500325DD8 /* JellyCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AC1187F5E1500325DD8 /* JellyCreature.cpp */; };
+		85891ADF187F5E1500325DD8 /* MarineSnow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AC3187F5E1500325DD8 /* MarineSnow.cpp */; };
+		85891AE0187F5E1500325DD8 /* MarineSnow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AC3187F5E1500325DD8 /* MarineSnow.cpp */; };
+		85891AE1187F5E1500325DD8 /* ModelCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AC5187F5E1500325DD8 /* ModelCreature.cpp */; };
+		85891AE2187F5E1500325DD8 /* ModelCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AC5187F5E1500325DD8 /* ModelCreature.cpp */; };
+		85891AE3187F5E1500325DD8 /* PointCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AC7187F5E1500325DD8 /* PointCreature.cpp */; };
+		85891AE4187F5E1500325DD8 /* PointCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AC7187F5E1500325DD8 /* PointCreature.cpp */; };
+		85891AE5187F5E1500325DD8 /* CircularFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ACA187F5E1500325DD8 /* CircularFormula.cpp */; };
+		85891AE6187F5E1500325DD8 /* CircularFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ACA187F5E1500325DD8 /* CircularFormula.cpp */; };
+		85891AE7187F5E1500325DD8 /* MeshUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ACC187F5E1500325DD8 /* MeshUtils.cpp */; };
+		85891AE8187F5E1500325DD8 /* MeshUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ACC187F5E1500325DD8 /* MeshUtils.cpp */; };
+		85891AE9187F5E1500325DD8 /* ofxCubeMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ACE187F5E1500325DD8 /* ofxCubeMap.cpp */; };
+		85891AEA187F5E1500325DD8 /* ofxCubeMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ACE187F5E1500325DD8 /* ofxCubeMap.cpp */; };
+		85891AEB187F5E1500325DD8 /* SphericalGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AD1187F5E1500325DD8 /* SphericalGenerator.cpp */; };
+		85891AEC187F5E1500325DD8 /* SphericalGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AD1187F5E1500325DD8 /* SphericalGenerator.cpp */; };
+		85891AED187F5E1500325DD8 /* SuperFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AD3187F5E1500325DD8 /* SuperFormula.cpp */; };
+		85891AEE187F5E1500325DD8 /* SuperFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AD3187F5E1500325DD8 /* SuperFormula.cpp */; };
 		859A45D3181C684700B9F251 /* ofxSimpleSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 859A45C7181C684700B9F251 /* ofxSimpleSpline.cpp */; };
 		85D98A8318381E4300D7065D /* ParallelTransportFrames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98A6318381E4300D7065D /* ParallelTransportFrames.cpp */; };
 		85D98A8418381E4300D7065D /* ParallelTransportFrames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98A6318381E4300D7065D /* ParallelTransportFrames.cpp */; };
@@ -1159,6 +1185,33 @@
 		8510F1B1187DEBF100E34E36 /* RandomNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomNumber.h; sourceTree = "<group>"; };
 		851A1052187A09E0004197C5 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
 		851A1053187A09E0004197C5 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
+		85891AB9187F5E1500325DD8 /* Bubbles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bubbles.cpp; sourceTree = "<group>"; };
+		85891ABA187F5E1500325DD8 /* Bubbles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bubbles.h; sourceTree = "<group>"; };
+		85891ABB187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemSwim.cpp; sourceTree = "<group>"; };
+		85891ABC187F5E1500325DD8 /* CloudsVisualSystemSwim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemSwim.h; sourceTree = "<group>"; };
+		85891ABD187F5E1500325DD8 /* Creature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Creature.cpp; sourceTree = "<group>"; };
+		85891ABE187F5E1500325DD8 /* Creature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Creature.h; sourceTree = "<group>"; };
+		85891ABF187F5E1500325DD8 /* Creatures.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Creatures.cpp; sourceTree = "<group>"; };
+		85891AC0187F5E1500325DD8 /* Creatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Creatures.h; sourceTree = "<group>"; };
+		85891AC1187F5E1500325DD8 /* JellyCreature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JellyCreature.cpp; sourceTree = "<group>"; };
+		85891AC2187F5E1500325DD8 /* JellyCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JellyCreature.h; sourceTree = "<group>"; };
+		85891AC3187F5E1500325DD8 /* MarineSnow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MarineSnow.cpp; sourceTree = "<group>"; };
+		85891AC4187F5E1500325DD8 /* MarineSnow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarineSnow.h; sourceTree = "<group>"; };
+		85891AC5187F5E1500325DD8 /* ModelCreature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModelCreature.cpp; sourceTree = "<group>"; };
+		85891AC6187F5E1500325DD8 /* ModelCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelCreature.h; sourceTree = "<group>"; };
+		85891AC7187F5E1500325DD8 /* PointCreature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PointCreature.cpp; sourceTree = "<group>"; };
+		85891AC8187F5E1500325DD8 /* PointCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointCreature.h; sourceTree = "<group>"; };
+		85891ACA187F5E1500325DD8 /* CircularFormula.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CircularFormula.cpp; sourceTree = "<group>"; };
+		85891ACB187F5E1500325DD8 /* CircularFormula.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularFormula.h; sourceTree = "<group>"; };
+		85891ACC187F5E1500325DD8 /* MeshUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeshUtils.cpp; sourceTree = "<group>"; };
+		85891ACD187F5E1500325DD8 /* MeshUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshUtils.h; sourceTree = "<group>"; };
+		85891ACE187F5E1500325DD8 /* ofxCubeMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCubeMap.cpp; sourceTree = "<group>"; };
+		85891ACF187F5E1500325DD8 /* ofxCubeMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCubeMap.h; sourceTree = "<group>"; };
+		85891AD0187F5E1500325DD8 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		85891AD1187F5E1500325DD8 /* SphericalGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SphericalGenerator.cpp; sourceTree = "<group>"; };
+		85891AD2187F5E1500325DD8 /* SphericalGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphericalGenerator.h; sourceTree = "<group>"; };
+		85891AD3187F5E1500325DD8 /* SuperFormula.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SuperFormula.cpp; sourceTree = "<group>"; };
+		85891AD4187F5E1500325DD8 /* SuperFormula.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperFormula.h; sourceTree = "<group>"; };
 		859A45C7181C684700B9F251 /* ofxSimpleSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleSpline.cpp; sourceTree = "<group>"; };
 		859A45C8181C684700B9F251 /* ofxSimpleSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleSpline.h; sourceTree = "<group>"; };
 		85D98A6218381E4300D7065D /* ofxPtf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPtf.h; sourceTree = "<group>"; };
@@ -2695,6 +2748,56 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
+		85891AB7187F5E1400325DD8 /* Swim */ = {
+			isa = PBXGroup;
+			children = (
+				85891AB8187F5E1500325DD8 /* vs_src */,
+			);
+			path = Swim;
+			sourceTree = "<group>";
+		};
+		85891AB8187F5E1500325DD8 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				85891AB9187F5E1500325DD8 /* Bubbles.cpp */,
+				85891ABA187F5E1500325DD8 /* Bubbles.h */,
+				85891ABB187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp */,
+				85891ABC187F5E1500325DD8 /* CloudsVisualSystemSwim.h */,
+				85891ABD187F5E1500325DD8 /* Creature.cpp */,
+				85891ABE187F5E1500325DD8 /* Creature.h */,
+				85891ABF187F5E1500325DD8 /* Creatures.cpp */,
+				85891AC0187F5E1500325DD8 /* Creatures.h */,
+				85891AC1187F5E1500325DD8 /* JellyCreature.cpp */,
+				85891AC2187F5E1500325DD8 /* JellyCreature.h */,
+				85891AC3187F5E1500325DD8 /* MarineSnow.cpp */,
+				85891AC4187F5E1500325DD8 /* MarineSnow.h */,
+				85891AC5187F5E1500325DD8 /* ModelCreature.cpp */,
+				85891AC6187F5E1500325DD8 /* ModelCreature.h */,
+				85891AC7187F5E1500325DD8 /* PointCreature.cpp */,
+				85891AC8187F5E1500325DD8 /* PointCreature.h */,
+				85891AC9187F5E1500325DD8 /* utils */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		85891AC9187F5E1500325DD8 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				85891ACA187F5E1500325DD8 /* CircularFormula.cpp */,
+				85891ACB187F5E1500325DD8 /* CircularFormula.h */,
+				85891ACC187F5E1500325DD8 /* MeshUtils.cpp */,
+				85891ACD187F5E1500325DD8 /* MeshUtils.h */,
+				85891ACE187F5E1500325DD8 /* ofxCubeMap.cpp */,
+				85891ACF187F5E1500325DD8 /* ofxCubeMap.h */,
+				85891AD0187F5E1500325DD8 /* Singleton.h */,
+				85891AD1187F5E1500325DD8 /* SphericalGenerator.cpp */,
+				85891AD2187F5E1500325DD8 /* SphericalGenerator.h */,
+				85891AD3187F5E1500325DD8 /* SuperFormula.cpp */,
+				85891AD4187F5E1500325DD8 /* SuperFormula.h */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		859A45B2181C684700B9F251 /* ofxSimpleSpline */ = {
 			isa = PBXGroup;
 			children = (
@@ -2939,6 +3042,7 @@
 		E70CE3A21869648900955691 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				85891AB7187F5E1400325DD8 /* Swim */,
 				8510F1AA187DEBF100E34E36 /* RandomDigits2 */,
 				850D80CD187BA67200BB3A84 /* Schlabberbox */,
 				E70CE3A31869648900955691 /* 2DVideo */,
@@ -7451,6 +7555,19 @@
 				8510F1B2187DEBF100E34E36 /* CloudsVisualSystemRandomDigits2.cpp in Sources */,
 				8510F1B4187DEBF100E34E36 /* Rand.cpp in Sources */,
 				8510F1B6187DEBF100E34E36 /* RandomNumber.cpp in Sources */,
+				85891AD5187F5E1500325DD8 /* Bubbles.cpp in Sources */,
+				85891AD7187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp in Sources */,
+				85891AD9187F5E1500325DD8 /* Creature.cpp in Sources */,
+				85891ADB187F5E1500325DD8 /* Creatures.cpp in Sources */,
+				85891ADD187F5E1500325DD8 /* JellyCreature.cpp in Sources */,
+				85891ADF187F5E1500325DD8 /* MarineSnow.cpp in Sources */,
+				85891AE1187F5E1500325DD8 /* ModelCreature.cpp in Sources */,
+				85891AE3187F5E1500325DD8 /* PointCreature.cpp in Sources */,
+				85891AE5187F5E1500325DD8 /* CircularFormula.cpp in Sources */,
+				85891AE7187F5E1500325DD8 /* MeshUtils.cpp in Sources */,
+				85891AE9187F5E1500325DD8 /* ofxCubeMap.cpp in Sources */,
+				85891AEB187F5E1500325DD8 /* SphericalGenerator.cpp in Sources */,
+				85891AED187F5E1500325DD8 /* SuperFormula.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7942,6 +8059,19 @@
 				8510F1B3187DEBF100E34E36 /* CloudsVisualSystemRandomDigits2.cpp in Sources */,
 				8510F1B5187DEBF100E34E36 /* Rand.cpp in Sources */,
 				8510F1B7187DEBF100E34E36 /* RandomNumber.cpp in Sources */,
+				85891AD6187F5E1500325DD8 /* Bubbles.cpp in Sources */,
+				85891AD8187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp in Sources */,
+				85891ADA187F5E1500325DD8 /* Creature.cpp in Sources */,
+				85891ADC187F5E1500325DD8 /* Creatures.cpp in Sources */,
+				85891ADE187F5E1500325DD8 /* JellyCreature.cpp in Sources */,
+				85891AE0187F5E1500325DD8 /* MarineSnow.cpp in Sources */,
+				85891AE2187F5E1500325DD8 /* ModelCreature.cpp in Sources */,
+				85891AE4187F5E1500325DD8 /* PointCreature.cpp in Sources */,
+				85891AE6187F5E1500325DD8 /* CircularFormula.cpp in Sources */,
+				85891AE8187F5E1500325DD8 /* MeshUtils.cpp in Sources */,
+				85891AEA187F5E1500325DD8 /* ofxCubeMap.cpp in Sources */,
+				85891AEC187F5E1500325DD8 /* SphericalGenerator.cpp in Sources */,
+				85891AEE187F5E1500325DD8 /* SuperFormula.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
