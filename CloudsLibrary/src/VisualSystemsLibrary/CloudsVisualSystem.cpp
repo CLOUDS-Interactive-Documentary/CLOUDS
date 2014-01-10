@@ -1461,7 +1461,8 @@ void CloudsVisualSystem::setupCameraGui()
 
 CloudsVisualSystem::RGBDTransitionType CloudsVisualSystem::getTransitionType()
 {
-	if(transitionRadio->getActive() == NULL) return WHIP_PAN;
+	if(transitionRadio->getActive() == NULL)
+		return WHIP_PAN;
 	
 	string activeTransitionType = transitionRadio->getActive()->getName();
 	if(activeTransitionType == "2D"){

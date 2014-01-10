@@ -752,6 +752,17 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic, string question){
 
+	CloudsPortal* rportal = ofRandomuf() ? &leftPortal : &rightPortal;
+	
+	if(rportal->question != ""){
+		//swap and override for certain so we keep the newest!
+		rportal = rportal == &leftPortal ? &rightPortal : &leftPortal;
+	}
+	
+	rportal->question = question;
+	rportal->topic = topic;
+	rportal->clip = questionClip;
+	
 	/*
 	 //TODO RE ADD
 	for(int i = 0; i < questions.size(); i++){

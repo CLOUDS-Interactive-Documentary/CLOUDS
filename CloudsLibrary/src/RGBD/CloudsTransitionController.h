@@ -41,7 +41,7 @@ class CloudsTransitionController {
 	void transitionToInterview(float transitionOutDuration, float transitionInDuration);
 	void transitionToClusterMap(float inDuration,float outDuration);
 	void transitionFromClusterMap(float inDuration);
-	void transitionToQuestion(float outDuration, float portalDuration, float inDuration);
+	void transitionWithQuestion(float outDuration, float portalDuration);
 	
 	void update();
 	

@@ -96,8 +96,6 @@ class CloudsPlaybackController {
 	void updateTransition();
 
 	float crossfadeValue;
-	float cursorMovedTime;
-	bool showingCursor;
 	string combinedMoviesFolder;
 	
 	bool eventsRegistered;
@@ -115,11 +113,10 @@ class CloudsPlaybackController {
 	bool showingIntro;
 	bool showingVisualSystem;
 	bool showingClusterMap;
+	bool bQuestionAsked;
 	
 	void clearAct(bool destroy = true);
 			
-	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
-//	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem);
 	//remove the current visual system
 	void hideVisualSystem();
 	void showRGBDVisualSystem();

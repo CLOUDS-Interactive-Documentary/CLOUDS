@@ -12,8 +12,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	showingVisualSystem = false;
 	currentAct = NULL;
 	showingClusterMap = false;
-	showingCursor = false;
 	shouldPlayAct = false;
+	bQuestionAsked = false;
 }
 
 //--------------------------------------------------------------------
@@ -207,7 +207,6 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	
 	if(args.key == 'R'){
-//		combinedRenderer.reloadShader();
 		CloudsQuestion::reloadShader();
 	}
 		
@@ -219,22 +218,19 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 		}
 	}
 
-	if(args.key == 'C'){
-		if(showingCursor){
-			ofHideCursor();
-		}
-		else{
-			ofShowCursor();
-		}
-		showingCursor = !showingCursor;
-	}
+//	if(args.key == 'C'){
+//		if(showingCursor){
+//			ofHideCursor();
+//		}
+//		else{
+//			ofShowCursor();
+//		}
+//		showingCursor = !showingCursor;
+//	}
 	
 	if(args.key == '\\'){
 		if(currentVisualSystem == introSequence){
 			introSequence->autoSelectQuestion();
-		}
-		else {
-			
 		}
 	}
 }
@@ -249,7 +245,7 @@ void CloudsPlaybackController::mouseDragged(ofMouseEventArgs & args){
 }
 
 void CloudsPlaybackController::mouseMoved(ofMouseEventArgs & args){
-	cursorMovedTime = ofGetElapsedTimef();
+//	cursorMovedTime = ofGetElapsedTimef();
 }
 
 void CloudsPlaybackController::mousePressed(ofMouseEventArgs & args){
@@ -302,18 +298,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 //	if(rgbdVisualSystem->isQuestionSelectedAndClipDone()){
 	if(rgbdVisualSystem->isQuestionSelected()){	
 		
-		CloudsQuestion* q = rgbdVisualSystem->getSelectedQuestion();
-		CloudsClip clip = q->clip;
-		string topic = q->topic;
-		
-		rgbdVisualSystem->clearQuestions();
-		
-		//cout << " *** SELECTED QUESTION Clip : "<<clip.name<<" Staring point for new act. Question: "<< q->question << " topic " << q->topic << endl;
-		
-		rgbdVisualSystem->stopSystem();
-		run.questionTopicHistory.insert(topic);
-		
-		storyEngine.buildAct(run, clip, topic);
+		bQuestionAsked = true;		
+		transitionController.transitionWithQuestion(1.0, 1.0);		
 	}
 	
 	if(!showingIntro && !showingClusterMap){
@@ -343,14 +329,22 @@ void CloudsPlaybackController::updateTransition(){
 	if(transitionController.transitioning){
 		rgbdVisualSystem->updateTransition( transitionController.getInterviewTransitionPoint() );
 	}
-
+	
+	CloudsPortal* q;
+	CloudsClip clip;
+	string topic;
+	
 	if(transitionController.isStateNew()){
         
         switch (transitionController.getCurrentState()) {
             
             case TRANSITION_INTERVIEW_OUT:
-                
-                rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
+                if(bQuestionAsked){
+					rgbdVisualSystem->startTransitionOut( CloudsVisualSystem::QUESTION );
+				}
+				else{
+					rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
+				}
                 break;
             
             case TRANSITION_INTRO_OUT:
@@ -378,8 +372,6 @@ void CloudsPlaybackController::updateTransition(){
                 hideVisualSystem();
                 showRGBDVisualSystem();
                 
-//			rgbdVisualSystem->playSystem();
-//			rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
                 break;
             
             case TRANSITION_CLUSTERMAP_OUT:
@@ -408,13 +400,19 @@ void CloudsPlaybackController::updateTransition(){
                 showingClusterMap = true;
 				
                 break;
-                
+			case TRANSITION_QUESTION_IN:
+				
+				// show question transition over this period
+				rgbdVisualSystem->transtionFinished();
+				rgbdVisualSystem->stopSystem();
+                break;
+				
             case TRANSITION_IDLE:
                 
                 if(transitionController.getPreviousState() == TRANSITION_INTRO_OUT){
-//                    CloudsQuestion* q = introSequence->getSelectedQuestion();
-					CloudsPortal* q = introSequence->getSelectedQuestion();
-                    CloudsClip& clip = q->clip;
+					
+					q = introSequence->getSelectedQuestion();
+                    clip = q->clip;
 					
 					run.questionTopicHistory.insert(q->topic);
 					
@@ -425,6 +423,19 @@ void CloudsPlaybackController::updateTransition(){
 				
 					sound.exitTunnel();
                 }
+				else if(transitionController.getPreviousState() == TRANSITION_QUESTION_IN){
+					
+					q = rgbdVisualSystem->getSelectedQuestion();
+					clip = q->clip;
+					topic = q->topic;
+					
+					bQuestionAsked = false;
+					
+					run.questionTopicHistory.insert(topic);
+					
+					storyEngine.buildAct(run, clip, topic);
+					
+				}
                 else if(transitionController.getPreviousState() == TRANSITION_CLUSTERMAP_OUT){
 
 					showingVisualSystem = false;
@@ -438,65 +449,13 @@ void CloudsPlaybackController::updateTransition(){
                 else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_IN){
                     rgbdVisualSystem->transtionFinished();
                 }
-                
-                break;
-                
+
+                break;				
+				
             default:
                 break;
         }
-		/////*****///////
-/*
-		if(transitionController.getCurrentState() == TRANSITION_INTERVIEW_OUT){
-			
-			rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
-//			rgbdVisualSystem->selfUpdate(); //still necessary?
 
-		}
-		else if(transitionController.getCurrentState() == TRANSITION_INTRO_OUT){
-			//intro just started fading out
-			showingIntro = false;
-			
-		}
-		else if(transitionController.getCurrentState() == TRANSITION_VISUALSYSTEM_IN){
-			if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
-				rgbdVisualSystem->transtionFinished();
-			}
-			playNextVisualSystem();
-		}
-		else if(transitionController.getCurrentState() == TRANSITION_VISUALSYSTEM_OUT){
-			// no need to do anything special, the crossfade value will take care of this
-		}
-		else if(transitionController.getCurrentState() == TRANSITION_INTERVIEW_IN){
-			
-			hideVisualSystem();
-			showRGBDVisualSystem();
-			
-//			rgbdVisualSystem->playSystem();
-//			rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
-		}
-		else if(transitionController.getCurrentState() == TRANSITION_IDLE){
-			//we just finished fading out of the intro
-			
-			if(transitionController.getPreviousState() == TRANSITION_INTRO_OUT){
-				CloudsPortal* q = introSequence->getSelectedQuestion();
-				CloudsClip& clip = q->clip;
-				
-				showingVisualSystem = false;
-				introSequence->stopSystem();
-								
-				storyEngine->buildAct(introSequence->getSelectedRun(), clip, q->topic );
-			}
-            else if(transitionController.getPreviousState() == TRANSITION_CLUSTERMAP_OUT){
-                //				rgbdVisualSystem->transtionFinished();
-                cout<<"IDLE POST TRANSITION CLUSTERMAP OUT"<<endl;
-			}
-			//we just finished fading out of the interview
-			else if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_IN){
-				rgbdVisualSystem->transtionFinished();
-			}
-		}
-*/
-		/////*****///////
 	}		
 }
 
@@ -642,12 +601,12 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::questionAsked(CloudsQuestionEventArgs& args){
-	if(!showingVisualSystem){
-		//don't ask a topic that we've already seen
-		if(run.questionTopicHistory.find(args.topic) == run.questionTopicHistory.end()){
-			rgbdVisualSystem->addQuestion(args.questionClip, args.topic, args.question);
-		}
+		
+	//don't ask a topic that we've already seen
+	if(!ofContains(run.topicHistory, args.topic)) {
+		rgbdVisualSystem->addQuestion(args.questionClip, args.topic, args.question);
 	}
+
 }
 
 //--------------------------------------------------------------------
