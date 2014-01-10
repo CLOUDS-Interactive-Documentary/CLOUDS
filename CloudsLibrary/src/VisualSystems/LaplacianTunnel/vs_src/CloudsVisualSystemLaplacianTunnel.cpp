@@ -212,8 +212,8 @@ void CloudsVisualSystemLaplacianTunnel::selfUpdate(){
 
 	
 	ofVec2f targetLookAngle;
-	targetLookAngle.x = ofMap(GetCloudsInputX(), 0, ofGetWidth(), -maxLookAngle,maxLookAngle);
-	targetLookAngle.y = ofMap(GetCloudsInputY(), 0, ofGetHeight(),-maxLookAngle,maxLookAngle);
+	targetLookAngle.x = ofMap(GetCloudsInputX(), 0, getCanvasWidth(), -maxLookAngle,maxLookAngle);
+	targetLookAngle.y = ofMap(GetCloudsInputY(), 0, getCanvasHeight(),-maxLookAngle,maxLookAngle);
 	
 	currentLookAngle.interpolate(targetLookAngle, .05);
 	

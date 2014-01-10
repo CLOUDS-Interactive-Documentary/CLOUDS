@@ -347,7 +347,7 @@ void CloudsVisualSystemAstrolabe::selfSetup()
 	
 	bUseRings = true;
 	
-	ofxObjLoader::load( getVisualSystemDataPath() + "models/egg90aSmall.obj", sphereMesh );
+	ofxObjLoader::load( getVisualSystemDataPath(true) + "models/egg90aSmall.obj", sphereMesh );
 }
 
 void CloudsVisualSystemAstrolabe::selfSetDefaults()
