@@ -1,0 +1,47 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Particle</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>341</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW PARTICLES</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BIRTH RATE</Name>
+    <Value>9.8522e-05</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BIRTH SPREAD</Name>
+    <Value>797.389</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>POINT SIZE THRESHOLD</Name>
+    <Value>0.001</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>POINT COLOR H</Name>
+    <Value>0.655172</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>POINT COLOR S</Name>
+    <Value>0.137931</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>POINT COLOR V</Name>
+    <Value>0.793103</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>POINT COLOR A</Name>
+    <Value>0.719212</Value>
+</Widget>
