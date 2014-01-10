@@ -112,6 +112,7 @@ void CloudsVisualSystemOcean::selfSetupGuis(){
 	soundGui->setName("OCEAN Sound");
 	soundGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
+    soundGui->addSlider("Gain", 0, 1, &gain);
     soundGui->addToggle(soundFiles[0], &playSample[0]);
     soundGui->addToggle(soundFiles[1], &playSample[1]);
     
@@ -121,6 +122,8 @@ void CloudsVisualSystemOcean::selfSetupGuis(){
 }
 
 void CloudsVisualSystemOcean::selfUpdate(){
+    
+    volumeControl.value(gain);
 	
 	if(	needsRegenerate){
 		generateOcean();
@@ -255,6 +258,7 @@ void CloudsVisualSystemOcean::selfBegin(){
 
 void CloudsVisualSystemOcean::selfEnd(){
     // remove sound listener
+    volumeControl.value(0);
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemOcean::audioRequested);
 	
 }
@@ -357,7 +361,7 @@ Generator CloudsVisualSystemOcean::buildSynth()
     Generator sampleGen1 = BufferPlayer().setBuffer(samples[0]).loop(1).trigger(soundTriggers[0]);
     Generator sampleGen2 = BufferPlayer().setBuffer(samples[1]).loop(1).trigger(soundTriggers[1]);
     
-    return sampleGen1 * 1.0f + sampleGen2 * 1.0f;
+    return (sampleGen1 * 1.0f + sampleGen2 * 1.0f) * volumeControl;
 }
 
 void CloudsVisualSystemOcean::audioRequested(ofAudioEventArgs& args)
