@@ -362,7 +362,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		selectedPreset->oculusCompatible = (oculusBox.state == NSOnState);
 		selectedPreset->soundAllowVO   = (soundAllowVOBox.state == NSOnState);
         selectedPreset->soundExcludeVO = (soundExcludeVOBox.state == NSOnState);
-        selectedPreset->interlude = (interludeBox.state = NSOnState);
+        selectedPreset->interlude = (interludeBox.state == NSOnState);
                                           
 //		selectedPreset->comments = [notesText.stringValue UTF8String];
 		selectedPreset->grade = [grade.stringValue UTF8String];
