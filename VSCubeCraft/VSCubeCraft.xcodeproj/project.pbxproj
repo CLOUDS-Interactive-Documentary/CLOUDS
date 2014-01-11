@@ -78,6 +78,7 @@
 		4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
 		502BFB9A18809EAE00CCC89A /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 502BFB9918809EAE00CCC89A /* ofxSystemTextbox.mm */; };
+		502BFBA71881EB0E00CCC89A /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502BFBA51881EB0E00CCC89A /* ofxSubtitles.cpp */; };
 		504016D8185D8AE00039386C /* voxelShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 504016D6185D8AE00039386C /* voxelShader.frag */; };
 		504016D9185D8AE00039386C /* voxelShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 504016D7185D8AE00039386C /* voxelShader.vert */; };
 		504016E2185D8B090039386C /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 504016DB185D8B090039386C /* CloudsInput.cpp */; };
@@ -496,6 +497,9 @@
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
 		502BFB9818809EAE00CCC89A /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
 		502BFB9918809EAE00CCC89A /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
+		502BFBA31881EB0E00CCC89A /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		502BFBA51881EB0E00CCC89A /* ofxSubtitles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitles.cpp; sourceTree = "<group>"; };
+		502BFBA61881EB0E00CCC89A /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
 		504016D6185D8AE00039386C /* voxelShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = voxelShader.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		504016D7185D8AE00039386C /* voxelShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = voxelShader.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		504016DB185D8B090039386C /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
@@ -1404,6 +1408,25 @@
 			path = ../../../addons/ofxCameraSaveLoad/src;
 			sourceTree = "<group>";
 		};
+		502BFBA21881EB0E00CCC89A /* ofxSubtitles */ = {
+			isa = PBXGroup;
+			children = (
+				502BFBA31881EB0E00CCC89A /* README */,
+				502BFBA41881EB0E00CCC89A /* src */,
+			);
+			name = ofxSubtitles;
+			path = ../../../addons/ofxSubtitles;
+			sourceTree = "<group>";
+		};
+		502BFBA41881EB0E00CCC89A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				502BFBA51881EB0E00CCC89A /* ofxSubtitles.cpp */,
+				502BFBA61881EB0E00CCC89A /* ofxSubtitles.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		504016D1185D8A9F0039386C /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
@@ -1930,6 +1953,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				502BFBA21881EB0E00CCC89A /* ofxSubtitles */,
 				504016E5185D8B340039386C /* ofxObjLoader */,
 				E738FFE3183C87180018AB96 /* ofxOculusRift */,
 				3D5B9697175308FE00F558AC /* ofxTimecode */,
@@ -2331,6 +2355,7 @@
 				50BA4BC31862247C00AC4F48 /* mineCraftClouds.vert in Sources */,
 				50E6EDE3186A20690080EF62 /* CloudsVisualSystemCubeCraft.cpp in Sources */,
 				502BFB9A18809EAE00CCC89A /* ofxSystemTextbox.mm in Sources */,
+				502BFBA71881EB0E00CCC89A /* ofxSubtitles.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

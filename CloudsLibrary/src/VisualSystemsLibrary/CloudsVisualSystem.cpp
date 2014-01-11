@@ -467,13 +467,12 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			//transform for our interactive camera
 			if(bUseInteractiveCamera)
 			{
-				float normalizedX = GetCloudsInputX() / ofGetWidth();
-				float normalizedY = GetCloudsInputY() / ofGetHeight();
+				//need top replace the the dimension getters
 				
 				interactiveCameraRot *= 1. - interactiveCameraDamping;
 				
-				interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, ofGetWidth(), interactiveCameraMinX, interactiveCameraMaxX)*interactiveCameraDamping;
-				interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, ofGetHeight(), interactiveCameraMinY, interactiveCameraMaxY)*interactiveCameraDamping;
+				interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX)*interactiveCameraDamping;
+				interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY)*interactiveCameraDamping;
 				
 				previousinteractiveCameraRot = interactiveCameraRot;
 				
