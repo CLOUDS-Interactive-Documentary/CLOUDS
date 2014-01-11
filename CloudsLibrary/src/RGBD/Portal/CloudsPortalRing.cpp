@@ -129,6 +129,7 @@ void CloudsPortalRing::addVertsAtAngle(PortalShard& shard, float angle, int numS
 	vOuter *= radius+thickness;
 	//divide it up into discreet parts
 	float segmentPercent = int(ofMap(angle, 0, 360, 0, numSegments) - ringIndex) / float(numSegments);
+//	float segmentPercent = (ofMap(angle, 0, 360, 0, numSegments) - ringIndex) / float(numSegments);
 	geo->addColor(endCap ? ofFloatColor(0,0) : shard.innerColor);
 	geo->addNormal(ofVec3f(shard.direction, segmentPercent, ringIndex));
 	geo->addVertex(vInner);

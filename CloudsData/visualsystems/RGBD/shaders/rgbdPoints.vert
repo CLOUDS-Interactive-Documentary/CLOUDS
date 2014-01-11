@@ -51,12 +51,14 @@ uniform float edgeAttenuateExponent;
 varying float positionValid;
 
 //LIGHT
-uniform vec3 lightPosition;
+//uniform vec3 lightPosition;
+uniform vec3 actuatorDirection;
+varying float actuatorAttenuation;
 
-varying vec3 eye;
+//varying vec3 eye;
 varying vec3 normal;
-varying vec3 diffuseLightDirection;
-varying float diffuseAttenuate;
+//varying vec3 diffuseLightDirection;
+//varying float diffuseAttenuate;
 
 varying float headPositionAttenuation;
 varying float edgeAttenuate;
@@ -139,9 +141,12 @@ void main(void){
 	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
 	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
     normal = -normalize(gl_NormalMatrix * surfaceNormal);
+    
+    actuatorAttenuation = dot(normal,actuatorDirection);
+
 	//EYE DIRECTION FOR LIGHTING
-	vec3 vert = vec3(gl_ModelViewMatrix * pos);
-	eye = normalize(-vert);
+//	vec3 vert = vec3(gl_ModelViewMatrix * pos);
+//	eye = normalize(-vert);
 	
 	//soften near the bottom edge
 	edgeAttenuate = (1.0 - max( 0.0, pow( samplePos.y / depthRect.w, edgeAttenuateExponent) + edgeAttenuateBase ));
@@ -164,15 +169,14 @@ void main(void){
 	}
 	
 	//DIFFUSE LIGHT
-	vec3 diffuseLightDirectionFull = vec3(lightPosition.xyz - vert);
-    float d = length(diffuseLightDirectionFull);
-	diffuseAttenuate = 1.0 /(gl_LightSource[0].constantAttenuation  +
-							 gl_LightSource[0].linearAttenuation	* d +
-							 gl_LightSource[0].quadraticAttenuation * d * d);
-	
-	diffuseLightDirection = diffuseLightDirectionFull / d;
+//	vec3 diffuseLightDirectionFull = vec3(lightPosition.xyz - vert);
+//    float d = length(diffuseLightDirectionFull);
+//	diffuseAttenuate = 1.0 /(gl_LightSource[0].constantAttenuation  +
+//							 gl_LightSource[0].linearAttenuation	* d +
+//							 gl_LightSource[0].quadraticAttenuation * d * d);
+//	diffuseLightDirection = diffuseLightDirectionFull / d;
 		
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
-	gl_PointSize = mix(pointSizeMin, pointSizeMax, 1.0-headPositionAttenuation);
+	gl_PointSize = mix(pointSizeMin, pointSizeMax, 1.0- headPositionAttenuation + actuatorAttenuation);
 	
 }

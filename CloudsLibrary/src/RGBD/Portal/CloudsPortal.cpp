@@ -89,6 +89,9 @@ bool CloudsPortal::isSelected(){
 
 void CloudsPortal::update(){
     if(cam != NULL){
+        float dot = ( hoverPosition - cam->getPosition()).dot(cam->getLookAtDir());
+        onScreen = dot > 0;
+
 		screenPosition = cam->worldToScreen(hoverPosition);
         if(hovering){
             hoverPercentComplete = ofClamp((ofGetElapsedTimef() - hoverStartTime) / maxHoverTime, 0,1.0);
