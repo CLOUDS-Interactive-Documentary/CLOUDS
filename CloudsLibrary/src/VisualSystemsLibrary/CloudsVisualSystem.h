@@ -452,4 +452,9 @@ class CloudsVisualSystem {
 	string getTransitionOption();
 //	map<string, vector<string> > transitionOptionMap;
 //	ofxUISuperCanvas* transitionOptionGui;
+	
+	//INTERACTIVE CAMERA
+	bool bUseInteractiveCamera;
+	float interactiveCameraMinX, interactiveCameraMaxX, interactiveCameraMinY, interactiveCameraMaxY,interactiveCameraDamping;
+	ofVec2f interactiveCameraRot, previousinteractiveCameraRot;
 };

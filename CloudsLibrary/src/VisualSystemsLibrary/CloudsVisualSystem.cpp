@@ -238,6 +238,13 @@ void CloudsVisualSystem::setup(){
 	hideGUIS();
 
 	bIsSetup = true;
+	
+	bUseInteractiveCamera = false;
+	interactiveCameraDamping = 0;
+	interactiveCameraMinX = interactiveCameraMaxX = interactiveCameraMinY = interactiveCameraMaxY = 0;
+	interactiveCameraRot = previousinteractiveCameraRot = ofVec2f(0,0);
+	interactiveCameraDamping = 0;
+	interactiveCameraRot.set(0,0);
 }
 
 bool CloudsVisualSystem::isSetup(){
@@ -428,7 +435,10 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			#endif
 		}
 		else {
-		
+			
+			//update the interactive camera data
+			previousinteractiveCameraRot;
+			
 			CloudsVisualSystem::getSharedRenderTarget().begin();
 			if(bClearBackground){
 				ofClear(0, 0, 0, 1.0);
@@ -436,7 +446,38 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			drawBackground();
 			
 			getCameraRef().begin();
+			
+			//transform for our interactive camera
+			if(bUseInteractiveCamera)
+			{
+				float normalizedX = GetCloudsInputX() / ofGetWidth();
+				float normalizedY = GetCloudsInputY() / ofGetHeight();
+				
+				interactiveCameraRot *= 1. - interactiveCameraDamping;
+				
+				interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, ofGetWidth(), interactiveCameraMinX, interactiveCameraMaxX)*interactiveCameraDamping;
+				interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, ofGetHeight(), interactiveCameraMinY, interactiveCameraMaxY)*interactiveCameraDamping;
+				
+				previousinteractiveCameraRot = interactiveCameraRot;
+				
+				ofPushMatrix();
+				
+				ofTranslate( getCameraRef().getPosition());
+				
+				ofRotate( interactiveCameraRot.x, 0, 1, 0);
+				ofRotate( interactiveCameraRot.y, 1, 0, 0);
+				
+				ofTranslate( -getCameraRef().getPosition());
+			}
+			
 			drawScene();
+			
+			//end our interactive camera transform
+			if(bUseInteractiveCamera)
+			{
+				ofPopMatrix();
+			}
+			
 			getCameraRef().end();
 			
 			ofPushStyle();
@@ -1384,6 +1425,17 @@ void CloudsVisualSystem::setupCameraGui()
     camGui->addSlider("ROT-Z", 0, 360.0, zRot->getPosPtr())->setIncrement(1.0);
     camGui->addLabel("TRACK");
     camGui->addButton("ADD KEYFRAME", false);
+	
+	camGui->addSpacer();
+	camGui->addToggle("InteractiveCamera", &bUseInteractiveCamera);
+	camGui->addSlider("damping", 0, 1, &interactiveCameraDamping);
+	
+	camGui->addMinimalSlider("minX", -90	, 90, &interactiveCameraMinX);
+	camGui->addMinimalSlider("maxX", -90	, 90, &interactiveCameraMaxX);
+	camGui->addMinimalSlider("minY", -90	, 90, &interactiveCameraMinY);
+	camGui->addMinimalSlider("maxY", -90	, 90, &interactiveCameraMaxY);
+	camGui->addSpacer();
+	
 	vector<string> transitions;
 	transitions.push_back("2D");
 	transitions.push_back("3D FLY THROUGH");
