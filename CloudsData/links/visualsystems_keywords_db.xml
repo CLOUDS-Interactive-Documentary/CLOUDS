@@ -16852,6 +16852,75 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Swim_Asteroids">
+    <keywords>space|universe|virtual|videogames|journey</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Aaron - lego creatures</clip>
+        <clip>Aaron - webGL</clip>
+        <clip>Bruce - Everted Cyberspace</clip>
+        <clip>Elliot_UK - lightscape</clip>
+        <clip>JTNimoy - Cortex</clip>
+        <clip>JTNimoy - evolution</clip>
+        <clip>Karsten - atari emulation</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Kevin - Acknolwedgement of artifice</clip>
+        <clip>Kevin - Area code 2</clip>
+        <clip>Kevin - Big games 1</clip>
+        <clip>Kevin - Distributable perceptual model</clip>
+        <clip>Kevin - area code 1</clip>
+        <clip>Kevin - game designers</clip>
+        <clip>Kevin - non-mimetic reality</clip>
+        <clip>Kyle_CH - Avatars</clip>
+        <clip>Kyle_CH - Cory Arcangel</clip>
+        <clip>Kyle_CH - MMORPGs</clip>
+        <clip>Kyle_CH - RMB city</clip>
+        <clip>Kyle_CH - coral reefs</clip>
+        <clip>Kyle_CH - storytelling</clip>
+        <clip>Kyle_CH - videogame world</clip>
+        <clip>Kyle_CH - virtual and identity</clip>
+        <clip>LIA - Circle1</clip>
+        <clip>Lauren - rape in cyberspace</clip>
+        <clip>Lauren - real and virtual 1</clip>
+        <clip>Lauren - text based relationships</clip>
+        <clip>Lauren - virtual relationships</clip>
+        <clip>Marius - my work exists in a utopian space,</clip>
+        <clip>Martin - I can see my house from here</clip>
+        <clip>Martin - starry night</clip>
+        <clip>Paola - Moma games</clip>
+        <clip>Paola - Portal</clip>
+        <clip>Paola - bach mozart coders</clip>
+        <clip>Patricio - Building Universes 2</clip>
+        <clip>Patricio - Play 2</clip>
+        <clip>Philip - what we do</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - a piece of my mind</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - games for access</clip>
+        <clip>Ramsey - videogame development</clip>
+        <clip>Regine - virtual</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Sophy - Evolution</clip>
+        <clip>Zach - minecraft livecode</clip>
+        <clip>Aaron - exquisite forest 2</clip>
+        <clip>Bruce - find the inner wellspring</clip>
+        <clip>Bruce - what gets you out of bed</clip>
+        <clip>Lauren - Lifelong project</clip>
+        <clip>Lauren - toward greater consciousness</clip>
+        <clip>Maeda - Glad to be alive,</clip>
+        <clip>Maeda - Life in four quarters</clip>
+        <clip>Marius - Continuous process of exploration</clip>
+        <clip>Shantell - create your own luck</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Swim_Deepsea">
     <keywords></keywords>
     <links></links>
@@ -16927,6 +16996,104 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Swim_Detritus">
+    <keywords>exploration|discovery|journey</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Aaron - exquisite forest 2</clip>
+        <clip>Binx - work for hire</clip>
+        <clip>Bruce - find the inner wellspring</clip>
+        <clip>Bruce - what gets you out of bed</clip>
+        <clip>Elliot_UK - Laying claim on ideas</clip>
+        <clip>Golan - instruments</clip>
+        <clip>Jen - Guesswork</clip>
+        <clip>Jen - browsing</clip>
+        <clip>Jen - immersion of reading</clip>
+        <clip>Julian - journey to the moon</clip>
+        <clip>Kevin - invented as opposed to discovered 1</clip>
+        <clip>Kyle_MC - art versus engineering 2</clip>
+        <clip>Kyle_MC - programmers vs artists</clip>
+        <clip>LIA - NotInventingAnything1</clip>
+        <clip>LIA - NotInventingAnything2</clip>
+        <clip>Lauren - Lifelong project</clip>
+        <clip>Lauren - toward greater consciousness</clip>
+        <clip>Maeda - Aesthetics and Computation group</clip>
+        <clip>Maeda - Glad to be alive,</clip>
+        <clip>Maeda - Life in four quarters</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marius - Continuous process of exploration</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - keeping the door open</clip>
+        <clip>Marius - parameter space</clip>
+        <clip>Nervous_Jesse - doing something new with a system</clip>
+        <clip>Nervous_Jesse - making things</clip>
+        <clip>Nervous_Jesse - our explorations are random</clip>
+        <clip>Patricio - Discovering Mathematical Reality</clip>
+        <clip>Shantell - create your own luck</clip>
+        <clip>Shantell - drawing with computers</clip>
+        <clip>Shantell - take the line further</clip>
+        <clip>Shiffman - Magnets</clip>
+        <clip>Shiffman - mysterious box</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Swim_Detritus_2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Swim_Detritus_3">
+    <keywords>microscope|journey|exploration</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Aaron - exquisite forest 2</clip>
+        <clip>Andres - seeing molecules</clip>
+        <clip>Binx - work for hire</clip>
+        <clip>Bruce - find the inner wellspring</clip>
+        <clip>Bruce - what gets you out of bed</clip>
+        <clip>Fernanda - A social lens</clip>
+        <clip>Golan - instruments</clip>
+        <clip>Jen - Guesswork</clip>
+        <clip>Jen - immersion of reading</clip>
+        <clip>Julian - data viz endorsement</clip>
+        <clip>Kyle_MC - art versus engineering 2</clip>
+        <clip>Kyle_MC - programmers vs artists</clip>
+        <clip>Lauren - Lifelong project</clip>
+        <clip>Lauren - toward greater consciousness</clip>
+        <clip>Maeda - Glad to be alive,</clip>
+        <clip>Maeda - Life in four quarters</clip>
+        <clip>Marius - keeping the door open</clip>
+        <clip>Marius - parameter space</clip>
+        <clip>Nervous_Jesse - doing something new with a system</clip>
+        <clip>Nervous_Jesse - making things</clip>
+        <clip>Shantell - create your own luck</clip>
+        <clip>Shantell - drawing with computers</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Swim_Detritus_4">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Swim_JellyCity">
     <keywords>artificial life|nature</keywords>
     <links></links>
@@ -16984,6 +17151,16 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
+<system name="Swim_MicroDetritus">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
 <system name="Swim_Snowy">
     <keywords></keywords>
     <links></links>
@@ -17001,6 +17178,47 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Swim_Warpspeed">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound>0</sound>
+</system>
+<system name="Swim_invertedOcean">
+    <keywords>flocking|emergence</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Andres - soft systems 1</clip>
+        <clip>Casey - What is emergence?</clip>
+        <clip>Casey - You need noise</clip>
+        <clip>Higa - collaboration with machines 1</clip>
+        <clip>Higa - collaboration with machines 2</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Marcus - energy flow_riot</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Nervous_Jesse - organic process</clip>
+        <clip>Nervous_Jesse - reaction lamp</clip>
+        <clip>Nervous_Jessica - RNA and Viruses</clip>
+        <clip>Nervous_Jessica - biocomputer</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - elegant system</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Vera - Playing with a system</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
