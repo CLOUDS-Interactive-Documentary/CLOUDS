@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1099.000000000</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <XPosition>2391.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -52,17 +52,22 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Detritus_3</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Detritus_4</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>invertedOcean</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>JellyCity</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MicroDetritus</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -84,9 +89,4 @@
     <Kind>2</Kind>
     <Name>whatevz</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Detritus_3</Name>
-    <Value>1</Value>
 </Widget>

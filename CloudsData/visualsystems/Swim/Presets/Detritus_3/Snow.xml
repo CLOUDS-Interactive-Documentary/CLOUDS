@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Snow</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>233.000000000</XPosition>
-    <YPosition>489.000000000</YPosition>
+    <XPosition>461.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>6</Kind>
@@ -26,8 +26,8 @@
 <Widget>
     <Kind>6</Kind>
     <Name>snowSizeRange</Name>
-    <HighValue>935.960571289</HighValue>
-    <LowValue>576.354736328</LowValue>
+    <HighValue>852.216735840</HighValue>
+    <LowValue>463.054168701</LowValue>
 </Widget>
 <Widget>
     <Kind>44</Kind>
