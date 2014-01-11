@@ -3322,8 +3322,6 @@ void CloudsVisualSystem::selfPostDraw(){
     oculusRift.draw();
 #else
     //draws to viewport
-    if(bUsePostPostEffects){
-        cloudsPostShader.begin();
     //use blabalh
     CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
