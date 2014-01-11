@@ -457,6 +457,20 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			ofScale(1,-1,1);
 			
 			selfDrawOverlay();
+            
+#ifdef KINECT_INPUT
+            if (timeline->getIsShowing()) {
+                ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
+                if (kinectInput->bDoDebug) {
+                    static const int kDebugMargin = 0;
+                    static const int kDebugWidth  = 640;
+                    static const int kDebugHeight = 480;
+                    kinectInput->debug(CloudsVisualSystem::getSharedRenderTarget().getWidth()  - kDebugWidth  - kDebugMargin,
+                                       kDebugMargin,
+                                       kDebugWidth, kDebugHeight);
+                }
+            }
+#endif
 			
 			ofPopMatrix();
 			ofPopStyle();
@@ -2720,6 +2734,9 @@ void CloudsVisualSystem::setupKinectGui()
     kinectGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
     ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
+    
+    kinectGui->addSpacer();
+    kinectGui->addToggle("DEBUG", &kinectInput->bDoDebug);
     
     kinectGui->addSpacer();
     kinectGui->addRangeSlider("BODY RANGE X", -1.0f, 1.0f, &kinectInput->boundsMin.x, &kinectInput->boundsMax.x);
