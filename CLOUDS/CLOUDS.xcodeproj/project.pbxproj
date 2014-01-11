@@ -17,6 +17,12 @@
 		85891D24187FE40F00325DD8 /* CloudsSecondaryDisplayOSCSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDC2186958B200955691 /* CloudsSecondaryDisplayOSCSender.cpp */; };
 		85891D27187FE44B00325DD8 /* PanelConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C289C31877CA6C00A0C07F /* PanelConsole.cpp */; };
 		85891D2A187FE45300325DD8 /* PanelTenPrint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C289C51877CA6C00A0C07F /* PanelTenPrint.cpp */; };
+		A600C15A188105C20041787F /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C143188105C10041787F /* ofxSubtitles.cpp */; };
+		A600C15B188105C20041787F /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C143188105C10041787F /* ofxSubtitles.cpp */; };
+		A600C15C188105C20041787F /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C143188105C10041787F /* ofxSubtitles.cpp */; };
+		A600C15D188105C20041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C145188105C10041787F /* ofxSubtitleUnit.cpp */; };
+		A600C15E188105C20041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C145188105C10041787F /* ofxSubtitleUnit.cpp */; };
+		A600C15F188105C20041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C145188105C10041787F /* ofxSubtitleUnit.cpp */; };
 		AE6F00001880716900677B60 /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE52173D6082006357EF /* ofxTimecode.cpp */; };
 		AE6F00011880716900677B60 /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE69173D60A2006357EF /* ofxTextInputField.cpp */; };
 		AE6F00021880716900677B60 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
@@ -1806,6 +1812,10 @@
 		64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortalRing.cpp; sourceTree = "<group>"; };
 		64323E87187A4DAE00316058 /* CloudsPortalRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortalRing.h; sourceTree = "<group>"; };
 		85891D23187FE34200325DD8 /* CLOUDS_OCULUS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CLOUDS_OCULUS copy-Info.plist"; path = "/Users/jonathanminard/Documents/Development/openFrameworks/apps/CLOUDS/CLOUDS/CLOUDS_OCULUS copy-Info.plist"; sourceTree = "<absolute>"; };
+		A600C143188105C10041787F /* ofxSubtitles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitles.cpp; sourceTree = "<group>"; };
+		A600C144188105C10041787F /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
+		A600C145188105C10041787F /* ofxSubtitleUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitleUnit.cpp; sourceTree = "<group>"; };
+		A600C146188105C10041787F /* ofxSubtitleUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitleUnit.h; sourceTree = "<group>"; };
 		AE6F01F11880716900677B60 /* CLOUDS_KINECTDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_KINECTDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE6F01F21880716A00677B60 /* CLOUDS_KINECT.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = CLOUDS_KINECT.plist; path = /Users/dpt/Workspace/CLOUDS/openFrameworks/apps/CLOUDS/CLOUDS/CLOUDS_KINECT.plist; sourceTree = "<absolute>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -3494,9 +3504,30 @@
 			path = Portal;
 			sourceTree = "<group>";
 		};
+		A600C13C188105C10041787F /* ofxSubtitles */ = {
+			isa = PBXGroup;
+			children = (
+				A600C142188105C10041787F /* src */,
+			);
+			name = ofxSubtitles;
+			path = ../../../addons/ofxSubtitles;
+			sourceTree = "<group>";
+		};
+		A600C142188105C10041787F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A600C143188105C10041787F /* ofxSubtitles.cpp */,
+				A600C144188105C10041787F /* ofxSubtitles.h */,
+				A600C145188105C10041787F /* ofxSubtitleUnit.cpp */,
+				A600C146188105C10041787F /* ofxSubtitleUnit.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				A600C13C188105C10041787F /* ofxSubtitles */,
 				E79EACF91878772600B8B8F0 /* ofxGpuParticles */,
 				E7E17448186E630D007D1EDC /* ofxTonic */,
 				E734A00C18556E92002E615C /* ofxOsc */,
@@ -8234,6 +8265,7 @@
 				AE6F01351880716900677B60 /* RuleSet.cpp in Sources */,
 				AE6F01361880716900677B60 /* CloudsVisualSystemSatoruhiga.cpp in Sources */,
 				AE6F01371880716900677B60 /* CloudsVisualSystemScrape.cpp in Sources */,
+				A600C15F188105C20041787F /* ofxSubtitleUnit.cpp in Sources */,
 				AE6F01381880716900677B60 /* ofxMtlBoxFitting.cpp in Sources */,
 				AE6F01391880716900677B60 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */,
 				AE6F013A1880716900677B60 /* CloudsVisualSystemTunnelDrawing.cpp in Sources */,
@@ -8342,6 +8374,7 @@
 				AE6F01A11880716900677B60 /* ofxJSONElement.cpp in Sources */,
 				AE6F01A21880716900677B60 /* CloudsTransitionController.cpp in Sources */,
 				AE6F01A31880716900677B60 /* PanelConsole.cpp in Sources */,
+				A600C15C188105C20041787F /* ofxSubtitles.cpp in Sources */,
 				AE6F01A41880716900677B60 /* PanelTenPrint.cpp in Sources */,
 				AE6F01A51880716900677B60 /* GpuParticles.cpp in Sources */,
 				AE6F01A61880716900677B60 /* CloudsVisualSystemLia.cpp in Sources */,
@@ -8761,6 +8794,7 @@
 				E70CE32718695CCC00955691 /* RuleSet.cpp in Sources */,
 				E70CE32918695CCC00955691 /* CloudsVisualSystemSatoruhiga.cpp in Sources */,
 				E70CE32B18695CCC00955691 /* CloudsVisualSystemScrape.cpp in Sources */,
+				A600C15D188105C20041787F /* ofxSubtitleUnit.cpp in Sources */,
 				E70CE32D18695CCC00955691 /* ofxMtlBoxFitting.cpp in Sources */,
 				E70CE34B18695CCC00955691 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */,
 				E70CE34D18695CCD00955691 /* CloudsVisualSystemTunnelDrawing.cpp in Sources */,
@@ -8869,6 +8903,7 @@
 				C1644D45186F92020024E091 /* ofxJSONElement.cpp in Sources */,
 				E700BC3D18768EA7003A8167 /* CloudsTransitionController.cpp in Sources */,
 				E7C289C71877CA6C00A0C07F /* PanelConsole.cpp in Sources */,
+				A600C15A188105C20041787F /* ofxSubtitles.cpp in Sources */,
 				E7C289C81877CA6C00A0C07F /* PanelTenPrint.cpp in Sources */,
 				E79EAD201878772600B8B8F0 /* GpuParticles.cpp in Sources */,
 				E79EADAE1878829E00B8B8F0 /* CloudsVisualSystemLia.cpp in Sources */,
@@ -9078,6 +9113,7 @@
 				E7FB257A1830D4C0009EBD0E /* ofxSimpleSpline.cpp in Sources */,
 				E7FB25DA1830D4C0009EBD0E /* ofxSimpleSurface.cpp in Sources */,
 				E7FB25DB1830D4C0009EBD0E /* Camera.cpp in Sources */,
+				A600C15B188105C20041787F /* ofxSubtitles.cpp in Sources */,
 				E7FB25DC1830D4C0009EBD0E /* Clock.cpp in Sources */,
 				E7FB25DD1830D4C0009EBD0E /* Color.cpp in Sources */,
 				E7FB25DE1830D4C0009EBD0E /* Draw.cpp in Sources */,
@@ -9255,6 +9291,7 @@
 				E70CE2E218695CCC00955691 /* CloudsVisualSystemOpenP5SpinningSolids.cpp in Sources */,
 				E70CE2E418695CCC00955691 /* Tetra.cpp in Sources */,
 				E70CE2E618695CCC00955691 /* CloudsVisualSystemOpenP5TextUniverse.cpp in Sources */,
+				A600C15E188105C20041787F /* ofxSubtitleUnit.cpp in Sources */,
 				E70CE2E818695CCC00955691 /* TUOrbital.cpp in Sources */,
 				E70CE2EA18695CCC00955691 /* CloudsVisualSystemOrbit.cpp in Sources */,
 				E70CE2EC18695CCC00955691 /* Path.cpp in Sources */,

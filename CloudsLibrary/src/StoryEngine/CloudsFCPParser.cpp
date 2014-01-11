@@ -1218,6 +1218,9 @@ void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 			}
             //			cout << "Clip " << allClips[i].getLinkName() << " combined video found!" << endl;
 		}
+        
+        /* Subtitles */
+        allClips[i].combinedSRTPath = directory + "/" + allClips[i].getCombinedSRTFile();
 	}
 	
 	ofLogNotice("CloudsFCPParser::setCombinedVideoDirectory") << "there are " << hasMediaAssetAndQuestionIndeces.size() << " items with questions & combined " << endl;

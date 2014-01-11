@@ -89,6 +89,7 @@ class CloudsClip {
 	string getCombinedPNGExportFolder();
 	string getCombinedMovieFile();
 	string getCombinedCalibrationXML();
+    string getCombinedSRTFile();
     string getFFMpegLine(string alternativeVideoPath, string exportFolder);
     
 
@@ -97,6 +98,7 @@ class CloudsClip {
 	string combinedVideoPath;
 	string voiceOverAudioPath;
 	string combinedCalibrationXMLPath;
+    string combinedSRTPath;
 	
 	string getRelinkedVideoFilePath();
 	
