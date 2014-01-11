@@ -1,0 +1,65 @@
+SEED TOPIC:  community
+SEED CLIP: Intro - Collaboration
+	Playing seed
+First visual system preset is selected : 2DVideo_GitHubMap for topic : community and clip Intro - Collaboration
+43.4174	CHOOSING NEW CLIP 
+43.4174		Chose Clip "Fernanda - hybrid community" for topic "community" (2/5)
+72.2355	VISUALS Currently running "2DVideo_GitHubMap" time [0 - 8.27586] indefinite
+72.2355		Passed predicted time 8.27586 - moving end time to middle of Fernanda - hybrid community, time 60.5989
+72.2355	CHOOSING NEW CLIP 
+72.2355		Chose Clip "Jer - Desire to get together" for topic "community" (3/5)
+101.728	VISUALS Not run in 41.1294 seconds
+101.728		Chose new Preset Twitter_stars_handles time [87.6725 - 95.9484] indefinite
+101.728	CHOOSING NEW CLIP 
+101.728		Chose Clip "Shantell - work with zach" for topic "community" (4/5)
+101.728			ERROR: We took a digression! Freeing topic
+147.271	VISUALS Currently running "Twitter_stars_handles" time [87.6725 - 95.9484] indefinite
+147.271		Passed predicted time 95.9484 - FREE TOPIC Extending VS end time to 167.828 past the end of Shantell - work with zach
+167.828	CHOOSING NEW TOPIC 2/3
+167.828		Selecting from 5 potential next topics on clip Shantell - work with zach
+167.828			Considering digital meets physical
+167.828				Score for shared topic	digital meets physical : 18.5222
+167.828			Considering drawing
+167.828				Score for shared topic	drawing : 0
+167.828			Considering thinking by doing
+167.828				Score for shared topic	thinking by doing : 0
+167.828			Considering connections
+167.828				Score for shared topic	connections : 0
+167.828			Considering collaboration
+167.828				Score for shared topic	collaboration : 20
+167.828		TOPIC collaboration won with score 20
+167.828		Picked new topic: COLLABORATION
+167.828	CHOOSING NEW CLIP 
+167.828		Chose Clip "Fernanda - art science spectrum" for topic "collaboration" (1/5)
+186.435	VISUALS Not run in 18.6068 seconds
+186.435		ERROR Failed to find preset on current topic collaboration with clip Fernanda - art science spectrum
+186.435	CHOOSING NEW CLIP 
+186.435		Chose Clip "Philip - what we do" for topic "collaboration" (2/5)
+201.58	VISUALS Not run in 33.7519 seconds
+201.58		ERROR Failed to find preset on current topic collaboration with clip Philip - what we do
+201.58	CHOOSING NEW CLIP 
+201.58		Chose Clip "Julian - mixing code" for topic "collaboration" (3/5)
+229.196	VISUALS Not run in 61.3678 seconds
+229.196		Chose new Preset 2DVideo_Gource time [216.079 - 224.354] indefinite
+229.196	CHOOSING NEW CLIP 
+229.196		Chose Clip "Binx - Programming is a superpower" for topic "collaboration" (4/5)
+229.196			ERROR: We took a digression! Freeing topic
+279.953	VISUALS Currently running "2DVideo_Gource" time [216.079 - 224.354] indefinite
+279.953		Passed predicted time 224.354 - FREE TOPIC Extending VS end time to 300.509 past the end of Binx - Programming is a superpower
+300.509	CHOOSING NEW TOPIC 3/3
+300.509		going back to seed topic community
+300.509		Picked new topic: COMMUNITY
+300.509	CHOOSING NEW CLIP 
+300.509		Chose Clip "Bruce - All of a sudden..." for topic "community" (1/5)
+319.45	VISUALS Not run in 18.9405 seconds
+319.45		ERROR Failed to find preset on current topic community with clip Bruce - All of a sudden...
+319.45	CHOOSING NEW CLIP 
+319.45		Chose Clip "Julia - community" for topic "community" (2/5)
+378.263	VISUALS Not run in 77.7542 seconds
+378.263		Chose new Preset Twitter_TweetDeck_NameCloud_Lines time [349.547 - 357.823] indefinite
+378.263	CHOOSING NEW CLIP 
+378.263		Chose Clip "Paola - the tribe" for topic "community" (3/5)
+378.263			ERROR: We took a digression! Freeing topic
+407.999	VISUALS Currently running "Twitter_TweetDeck_NameCloud_Lines" time [349.547 - 357.823] indefinite
+407.999		Passed predicted time 357.823 - FREE TOPIC Extending VS end time to 428.556 past the end of Paola - the tribe
+428.556	ACT ENDED on clip Paola - the tribe explored topics 3/3 with 3 clips on final topic "community"

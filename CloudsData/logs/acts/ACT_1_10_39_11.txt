@@ -1,0 +1,58 @@
+SEED TOPIC:  community
+SEED CLIP: Intro - Collaboration
+	Playing seed
+First visual system preset is selected : 2DVideo_GitHubMap for topic : community and clip Intro - Collaboration
+43.4174	CHOOSING NEW CLIP 
+43.4174		Chose Clip "Shiffman - sharing" for topic "community" (2/5)
+75.1551	VISUALS Currently running "2DVideo_GitHubMap" time [0 - 8.27586] indefinite
+75.1551		Passed predicted time 8.27586 - moving end time to middle of Shiffman - sharing, time 62.0587
+75.1551	CHOOSING NEW CLIP 
+75.1551		Chose Clip "Jer - Thanks" for topic "community" (3/5)
+109.486	VISUALS Not run in 47.4273 seconds
+109.486		ERROR Failed to find preset on current topic community with clip Jer - Thanks
+109.486	CHOOSING NEW CLIP 
+109.486		Chose Clip "Jer - Toxi: gurus" for topic "community" (4/5)
+109.486			ERROR: We took a digression! Freeing topic
+167.841	VISUALS Not run in 105.782 seconds
+167.841		ERROR Failed to find preset on current topic community with clip Jer - Toxi: gurus
+167.841	CHOOSING NEW TOPIC 2/3
+167.841		Selecting from 6 potential next topics on clip Jer - Toxi: gurus
+167.841			Considering economics
+167.841				Score for shared topic	economics : 17.0936
+167.841			Considering sharing
+167.841				Score for shared topic	sharing : 54.4147
+167.841			Considering teaching
+167.841				Score for shared topic	teaching : 11.7647
+167.841			Considering mentors
+167.841				Score for shared topic	mentors : 7.69231
+167.841			Considering education
+167.841				Score for shared topic	education : 20.6404
+167.841			Considering thanks
+167.841				Score for shared topic	thanks : 95.5911
+167.841		TOPIC thanks won with score 95.5911
+167.841		Picked new topic: THANKS
+167.841	CHOOSING NEW CLIP 
+167.841		Chose Clip "Zach - at a festival" for topic "thanks" (1/5)
+215.393	VISUALS Not run in 153.335 seconds
+215.393		ERROR Failed to find preset on current topic thanks with clip Zach - at a festival
+215.393	CHOOSING NEW CLIP 
+215.393		ERROR: Hit dead end with current topic "thanks" out of 133 potential clips.  played 1 times.  Act topic 2/5
+215.393		ERROR: Failed to find a new clip, freeing topic
+215.393	CHOOSING NEW TOPIC 3/3
+215.393		going back to seed topic community
+215.393		Picked new topic: COMMUNITY
+215.393	CHOOSING NEW CLIP 
+215.393		Chose Clip "Binx - hybridity" for topic "community" (1/5)
+237.504	VISUALS Not run in 175.445 seconds
+237.504		Chose new Preset Voro_Parametric_d_wires time [227.139 - 235.415] definite
+237.504	CHOOSING NEW CLIP 
+237.504		Chose Clip "Greg - community" for topic "community" (2/5)
+285.883	VISUALS Currently running "Voro_Parametric_d_wires" time [227.139 - 235.415] definite
+285.883		Passed predicted time 235.415 - moving end time to middle of Greg - community, time 264.466
+285.883	CHOOSING NEW CLIP 
+285.883		Chose Clip "Martin - rapid dissemination of info" for topic "community" (3/5)
+285.883			ERROR: We took a digression! Freeing topic
+338.774	VISUALS Not run in 74.3083 seconds
+338.774		Chose new Preset Neurons_MezzyNeurons time [313.019 - 321.295] indefinite
+338.774	ACT ENDED on clip Martin - rapid dissemination of info explored topics 3/3 with 3 clips on final topic "community"
+338.774 Commiting final preset Neurons_MezzyNeurons at the end of the act 

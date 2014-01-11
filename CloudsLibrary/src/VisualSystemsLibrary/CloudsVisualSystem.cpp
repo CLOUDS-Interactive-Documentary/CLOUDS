@@ -16,6 +16,8 @@
 #include "ofxAVFVideoPlayer.h"
 #endif
 
+static bool bShowMouseCursor = false;
+
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
 static CloudsRGBDVideoPlayer rgbdPlayer;
@@ -197,6 +199,13 @@ void CloudsVisualSystem::setup(){
 	if(bIsSetup){
 		return;
 	}
+    
+    if (bShowMouseCursor) {
+        ofShowCursor();
+    }
+    else {
+        ofHideCursor();
+    }
 	
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 	
@@ -767,6 +776,16 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
             }
         }
 		break;
+            
+        case 'C':
+            bShowMouseCursor ^= true;
+            if (bShowMouseCursor) {
+                ofShowCursor();
+            }
+            else {
+                ofHideCursor();
+            }
+            break;
 		
 		case 'T':
 			cameraTrack->addKeyframe();
@@ -2705,6 +2724,10 @@ void CloudsVisualSystem::setupKinectGui()
     kinectGui->addRangeSlider("BODY RANGE Z",  0.5f, 4.5f, &kinectInput->boundsMin.z, &kinectInput->boundsMax.z);
     
     kinectGui->addSpacer();
+    kinectGui->addSlider("ACTIVE THRESHOLD Y", 0.0f, 1.0f, &kinectInput->activeThresholdY);
+    kinectGui->addSlider("ACTIVE THRESHOLD Z", 0.0f, 1.0f, &kinectInput->activeThresholdZ);
+    
+    kinectGui->addSpacer();
     kinectGui->addSlider("RESET LERP", 0, 1, &kinectInput->posResetLerpPct);
     kinectGui->addSlider("MOVE LERP", 0, 1, &kinectInput->posSetLerpPct);
     kinectGui->addSlider("MOVE THRESHOLD", 0, 100, &kinectInput->posSetInstantThreshold);
@@ -2774,6 +2797,12 @@ void CloudsVisualSystem::loadGUIS()
 
     for(int i = 0; i < guis.size(); i++)
     {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+#endif
         guis[i]->loadSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
 		guis[i]->setColorBack(ofColor(255*.2, 255*.9));
 //        setColors();
@@ -2785,12 +2814,24 @@ void CloudsVisualSystem::loadGUIS()
     loadTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/UITimelineMappings.xml");
     timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 
+#ifdef KINECT_INPUT
+    kinectGui->loadSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
+#endif
+#ifdef OCULUS_RIFT
+    oculusGui->loadSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+#endif
 }
 
 void CloudsVisualSystem::saveGUIS()
 {
     for(int i = 0; i < guis.size(); i++)
     {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+#endif
         guis[i]->saveSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
     }
     ofxSaveCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
@@ -2799,6 +2840,13 @@ void CloudsVisualSystem::saveGUIS()
     if(timeline != NULL){
 		timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 	}
+    
+#ifdef KINECT_INPUT
+    kinectGui->saveSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
+#endif
+#ifdef OCULUS_RIFT
+    oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+#endif
 }
 
 void CloudsVisualSystem::loadPresetGUISFromName(string presetName)
@@ -2815,6 +2863,12 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	selfSetDefaults();
 	
     for(int i = 0; i < guis.size(); i++) {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+#endif
 		string presetPathName = presetPath+"/"+guis[i]->getName()+".xml";
         guis[i]->loadSettings(presetPathName);
     }
@@ -2874,6 +2928,12 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
     
     for(int i = 0; i < guis.size(); i++)
     {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+#endif
         guis[i]->saveSettings(presetDirectory+guis[i]->getName()+".xml");
     }
     ofxSaveCamera(cam, getVisualSystemDataPath()+"Presets/"+presetName+"/ofEasyCamSettings");
@@ -3227,7 +3287,12 @@ void CloudsVisualSystem::drawCursor()
                 continue;
             }
             
-            selfDrawCursor(it->second.position, it->second.actionType != 0);
+#ifdef KINECT_INPUT
+            selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle);
+#else
+            // EZ: This ofGetMousePressed() call is ghetto but will do for now
+            selfDrawCursor(it->second.position, ofGetMousePressed());
+#endif
         }
     }
 }

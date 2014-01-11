@@ -59,9 +59,11 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
         
-        bool bRecognized = true;
+        bool bRecognized = false;
         
 		if (m.getAddress() == "/playerData") {
+            bRecognized = true;
+            
             // set up all the working vars
             k4w::HandState newHandState;
             lastOscFrame = ofGetFrameNum();
@@ -235,7 +237,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                     // boom! new state achieved
                     processHandEvent(handIdx, hands[handIdx], newHandState);
                     hands[handIdx]->handJoint.handState = newHandState;
-                        
+                    
                     for (int k = 0; k < k4w::HandState_Count; k++) {
                         if (k != newHandState) {
                             hands[handIdx]->poll[k] = 0;
@@ -251,9 +253,6 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 hands[handIdx]->lastUpdateFrame = lastOscFrame;
             }
 		}
-		else {
-            bRecognized = false;
-        }
         
         if (!bRecognized) {
 			// display in the console
@@ -295,10 +294,11 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
         bodies.erase(toRemove[i]);
     }
     
-    // remove any dead hands
+    // process any dead or inactive hands
     toRemove.clear();
     for (map<int, k4w::Hand *>::iterator it = hands.begin(); it != hands.end(); ++it) {
-        if (ABS(it->second->lastUpdateFrame - lastOscFrame) > kNumFramesForRemoval) {
+        bool bDead = ABS(it->second->lastUpdateFrame - lastOscFrame) > kNumFramesForRemoval;
+        if (bDead || it->second->actionState == k4w::ActionState_Inactive) {
             // make sure the hand is not mid-action when getting removed
             processHandEvent(it->first, hands[it->first], k4w::HandState_Unknown);
             
@@ -307,17 +307,21 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 primaryIdx = -1;
             }
             
-            toRemove.push_back(it->first);
+            if (inputPoints.find(it->first) != inputPoints.end()) {
+                // remove the matching input point
+                inputPoints.erase(it->first);
+            }
+            
+            if (bDead) {
+                // only remove dead hands
+                // keep inactive hands to continue tracking their state
+                toRemove.push_back(it->first);
+            }
         }
     }
     for (int i = 0; i < toRemove.size(); i++) {
         delete hands[toRemove[i]];
         hands.erase(toRemove[i]);
-        
-        if (inputPoints.find(toRemove[i]) != inputPoints.end()) {
-            // also remove the matching input point
-            inputPoints.erase(toRemove[i]);
-        }
     }
     
     // unlink the primary cursor if it's been inactive for too long
@@ -401,7 +405,7 @@ void CloudsInputKinectOSC::processHandEvent(int handIdx, k4w::Hand * hand, k4w::
             hand->actionState = k4w::ActionState_Idle;
         }
         else {
-            // idle state: start
+            // idle/inactive state: start
             if (primary) dragging = true;
             interactionStarted(hand->handJoint.screenPosition, primary, k4w::ActionState_Lasso, handIdx);
             hand->actionState = k4w::ActionState_Lasso;
@@ -419,13 +423,13 @@ void CloudsInputKinectOSC::processHandEvent(int handIdx, k4w::Hand * hand, k4w::
             hand->actionState = k4w::ActionState_Idle;
         }
         else {
-            // idle state: start
+            // idle/inactive state: start
             if (primary) dragging = true;
             interactionStarted(hand->handJoint.screenPosition, primary, k4w::ActionState_Closed, handIdx);
             hand->actionState = k4w::ActionState_Closed;
         }
     }
-    else if (newState <= k4w::HandState_Open) {
+    else if (newState == k4w::HandState_Open) {
         if (hand->actionState == k4w::ActionState_Idle) {
             // matching state: continue
             interactionMoved(hand->handJoint.screenPosition, primary, k4w::ActionState_Idle, handIdx);
@@ -435,6 +439,14 @@ void CloudsInputKinectOSC::processHandEvent(int handIdx, k4w::Hand * hand, k4w::
             if (primary) dragging = false;
             interactionEnded(hand->handJoint.screenPosition, primary, hand->actionState, handIdx);
             hand->actionState = k4w::ActionState_Idle;
+        }
+    }
+    else {  // (newState == k4w::HandState_NotTracked || newState == k4w::HandState_Unknown)
+        if (hand->actionState != k4w::ActionState_Inactive) {
+            // state mismatch: end previous
+            if (primary) dragging = false;
+            interactionEnded(hand->handJoint.screenPosition, primary, hand->actionState, handIdx);
+            hand->actionState = k4w::ActionState_Inactive;
         }
     }
 }

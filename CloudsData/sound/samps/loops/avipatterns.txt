@@ -18,15 +18,10 @@ avi2a_things_64.wav - - - - - - A B
 avi2a_vshh_64.wav - - A A B B A B
 
 // AVI2b
-avi2b_clak2_32.wav A B -
-avi2b_hh2_32.wav A A - B 
-avi2b_hh2open_32.wav A B A
 avi2b_kick2_32.wav A B B A A B B B
 avi2b_rimz2_32.wav - - A A B
 
 // AVI2c
-avi2c_clak2_32.wav - - A - - B
-avi2c_hh2_32.wav - A - B A A B -
 avi2c_kick2_32.wav A A A A B
 avi2c_rimz2_32.wav - A B - B A
 

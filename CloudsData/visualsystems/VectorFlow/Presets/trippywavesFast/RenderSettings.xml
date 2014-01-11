@@ -1,0 +1,107 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maxVerts</Name>
+    <Value>65418.718750000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>trail length</Name>
+    <Value>22.315271378</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>birthrate</Name>
+    <Value>92.610839844</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>step</Name>
+    <Value>71.453201294</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>chaos</Name>
+    <Value>51.330047607</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>speed</Name>
+    <Value>0.013793103</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>sincRadius</Name>
+    <Value>0.408867002</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>sincStrength</Name>
+    <Value>1.477832556</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fieldAmplitude</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>oscFreq</Name>
+    <Value>0.033004925</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maxLength</Name>
+    <Value>16.748767853</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fieldAlpha</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>startColor</Name>
+    <XValue>0.390625000</XValue>
+    <YValue>0.234375000</YValue>
+    <RColor>111</RColor>
+    <GColor>44</GColor>
+    <BColor>255</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>endColor</Name>
+    <XValue>0.320312500</XValue>
+    <YValue>0.726562500</YValue>
+    <RColor>56</RColor>
+    <GColor>255</GColor>
+    <BColor>72</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Interpolate RGB</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Refresh Bg</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Blend Add</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Blur</Name>
+    <Value>0.000000000</Value>
+</Widget>
