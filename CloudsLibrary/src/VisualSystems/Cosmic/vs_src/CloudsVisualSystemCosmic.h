@@ -25,6 +25,7 @@ class CloudsVisualSystemCosmic : public CloudsVisualSystem {
     void guiSystemEvent(ofxUIEventArgs &e);
     
     void selfSetupRenderGui();
+    void selfSetupCameraGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
 	void selfSetup();
@@ -181,4 +182,6 @@ protected:
     bool bNoiseActive;
     float noiseForceLimit;
     float noiseScale;
+    
+    ofRange clipPlanes;
 };

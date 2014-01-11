@@ -95,6 +95,11 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
 	guimap[customGui->getName()] = customGui;
 }
 
+void CloudsVisualSystemXstatic::selfSetupCameraGui(){
+    camGui->addSlider("near plane", 0.01, 10, &clipPlanes.min);
+	camGui->addSlider("far plane" , 1000, 100000, &clipPlanes.max);
+}
+
 void CloudsVisualSystemXstatic::selfGuiEvent(ofxUIEventArgs &e)
 {
     string name = e.widget->getName();
@@ -146,6 +151,8 @@ void CloudsVisualSystemXstatic::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemXstatic::selfSetup()
 {
     
+    clipPlanes.min = 1.f;
+    clipPlanes.max = 100000.f;
     
     gravity.set(0);
     drag = 0.0;
@@ -236,6 +243,9 @@ void CloudsVisualSystemXstatic::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemXstatic::selfUpdate()
 {
+    getCameraRef().setNearClip(clipPlanes.min);
+    getCameraRef().setFarClip(clipPlanes.max);
+    
     if (bShouldRegenerate) {
         regenerate(bBigBang);
         bShouldRegenerate = false;

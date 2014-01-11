@@ -60,6 +60,11 @@ void CloudsVisualSystemCosmic::setupFloorVbo()
     shadowOpacity = 1.0;
 }
 
+void CloudsVisualSystemCosmic::selfSetupCameraGui(){
+    camGui->addSlider("near plane", 0.01, 10, &clipPlanes.min);
+	camGui->addSlider("far plane" , 1000, 100000, &clipPlanes.max);
+}
+
 void CloudsVisualSystemCosmic::selfSetupTimeline()
 {
     timeline->setBPM(120);
@@ -246,6 +251,10 @@ void CloudsVisualSystemCosmic::selfSetup()
     delete[] rad;
     
     setupFloorVbo();
+    
+    clipPlanes.min = 1.f;
+    clipPlanes.max = 100000.f;
+    
 }
 
 void CloudsVisualSystemCosmic::selfSetupGuis()
@@ -370,7 +379,9 @@ void CloudsVisualSystemCosmic::selfSceneTransformation()
 //EVERYTHING
 void CloudsVisualSystemCosmic::selfUpdate()
 {
-	
+	getCameraRef().setNearClip( clipPlanes.min );
+    getCameraRef().setFarClip( clipPlanes.max );
+
     time = ofGetElapsedTimef();
     
     if(bUpdateRadius)
@@ -485,6 +496,7 @@ void CloudsVisualSystemCosmic::clear(){
     
     delete colorPalettes;
 	vbosAllocated = false;
+    
 }
 
 void CloudsVisualSystemCosmic::selfKeyPressed(ofKeyEventArgs & args)
