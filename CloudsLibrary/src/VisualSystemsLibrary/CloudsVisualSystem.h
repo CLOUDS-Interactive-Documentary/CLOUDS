@@ -439,6 +439,7 @@ class CloudsVisualSystem {
 	string mainKeyword;
 	vector<string> keywords;
 	
+    void drawKinectDebug();
 
 	
 	static void checkOpenGLError(string function);

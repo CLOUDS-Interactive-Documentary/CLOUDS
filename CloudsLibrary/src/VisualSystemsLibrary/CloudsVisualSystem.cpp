@@ -475,11 +475,12 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			ofScale(1,-1,1);
 			
 			selfDrawOverlay();
-			
+
 			ofPopMatrix();
 			ofPopStyle();
 	
 			CloudsVisualSystem::getSharedRenderTarget().end();
+            
 		}
 		
 		//draw the fbo to the screen as a full screen quad
@@ -491,6 +492,8 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 #ifndef OCULUS_RIFT
         drawCursor();
 #endif
+        drawKinectDebug();
+
 	}
     
 	if(timeline != NULL && timeline->getIsShowing())
@@ -502,6 +505,23 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 	}
 	
     ofPopStyle();
+}
+
+
+void CloudsVisualSystem::drawKinectDebug(){
+#ifdef KINECT_INPUT
+    if (timeline->getIsShowing()) {
+        ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
+        if (kinectInput->bDoDebug) {
+            static const int kDebugMargin = 0;
+            static const int kDebugWidth  = 640;
+            static const int kDebugHeight = 480;
+            kinectInput->debug(CloudsVisualSystem::getSharedRenderTarget().getWidth()  - kDebugWidth  - kDebugMargin,
+                               kDebugMargin,
+                               kDebugWidth, kDebugHeight);
+        }
+    }
+#endif
 }
 
 void CloudsVisualSystem::draw2dSystemPlane(){
@@ -1472,22 +1492,7 @@ void CloudsVisualSystem::setupCameraGui()
     guis.push_back(camGui);
     guimap[camGui->getName()] = camGui;
 	
-	
-//	//load transitions.xml into our transitionOptionMap
-//	loadTransitionOptions();
-//	transitionOptionGui = new ofxUISuperCanvas("TRANSITION_OPTIONS", gui);
-//    transitionOptionGui->copyCanvasStyle(gui);
-//    transitionOptionGui->copyCanvasProperties(gui);
-//    transitionOptionGui->setName("TransitionOpitons");
-//    transitionOptionGui->setPosition(guis[guis.size()-1]->getRect()->x+guis[guis.size()-1]->getRect()->getWidth()+1, 0);
-//    transitionOptionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-//	
-//	transitionOptionGui->autoSizeToFitWidgets();
-//    ofAddListener(transitionOptionGui->newGUIEvent,this,&CloudsVisualSystem::guiCameraEvent);
-//    guis.push_back(transitionOptionGui);
-//    guimap[transitionOptionGui->getName()] = transitionOptionGui;
-//	
-//	transitionOptionGui->setVisible(false);
+
 }
 
 ////load our Transitions.xml into a map of vectors used for saving transition option name
@@ -3317,25 +3322,14 @@ void CloudsVisualSystem::selfPostDraw(){
     oculusRift.draw();
 #else
     //draws to viewport
+    if(bUsePostPostEffects){
+        cloudsPostShader.begin();
+    //use blabalh
     CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+    //end
 #endif
-    
-#ifdef KINECT_INPUT
-    if (timeline->getIsShowing()) {
-        ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
-        if (kinectInput->bDoDebug) {
-            static const int kDebugMargin = 0;
-            static const int kDebugWidth  = 640;
-            static const int kDebugHeight = 480;
-            kinectInput->debug(CloudsVisualSystem::getSharedRenderTarget().getWidth()  - kDebugWidth  - kDebugMargin,
-                               kDebugMargin,
-                               kDebugWidth, kDebugHeight);
-        }
-    }
-#endif
-
 }
 
 void CloudsVisualSystem::drawCursor()

@@ -1202,6 +1202,8 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	if(!getRGBDVideoPlayer().playingVO && getRGBDVideoPlayer().getPlayer().isLoaded() && drawRGBD){
 		
+        ofEnableAlphaBlending();
+        
 		//Enable smooth lines and screen blending
 		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
@@ -1239,8 +1241,8 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		}
 		
 		glDisable(GL_DEPTH_TEST);
-//		ofEnableBlendMode(OF_BLENDMODE_ADD);
-        ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+		ofEnableBlendMode(OF_BLENDMODE_ADD);
+//        ofEnableBlendMode(OF_BLENDMODE_SCREEN);
         
 		if(drawLines){
 			ofSetLineWidth(lineThickness);
