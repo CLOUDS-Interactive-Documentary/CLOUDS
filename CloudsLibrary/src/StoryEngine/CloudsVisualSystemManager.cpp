@@ -258,6 +258,15 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 }
 
 //--------------------------------------------------------------------
+void CloudsVisualSystemManager::pastePresetToIndex(CloudsVisualSystemPreset preset, int index){
+
+    linkedClips[ presets[index].getID() ] = linkedClips[ preset.getID() ];
+    suppressedClips[ presets[index].getID() ] = suppressedClips[ preset.getID() ];
+    keywords[ presets[index].getID() ] = keywords[ preset.getID() ];
+    
+}
+
+//--------------------------------------------------------------------
 void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem> system){
 	
 	if(system == NULL) return;
@@ -467,6 +476,9 @@ void CloudsVisualSystemManager::loadPresets(){
 		preset->grade = keywordXml.getValue("grade", "");
 		preset->enabled = keywordXml.getValue("enabled", true );
 		preset->oculusCompatible = keywordXml.getValue("oculus", false );
+        preset->soundAllowVO = keywordXml.getValue("sound_allow_vo", false );
+        preset->soundExcludeVO = keywordXml.getValue("sound_exclude_vo", false );
+        preset->interlude = keywordXml.getValue("interlude", false );
 		preset->checkHasFiles();
 		preset->systemIsRegistered = false;
 #ifndef CLOUDS_NO_VS
@@ -606,7 +618,9 @@ void CloudsVisualSystemManager::savePresets(){
 		keywordXml.addValue("grade", preset.grade);
 		keywordXml.addValue("enabled", preset.enabled);
 		keywordXml.addValue("oculus", preset.oculusCompatible);
-		keywordXml.addValue("sound", preset.hasSound);
+		keywordXml.addValue("sound_exclude_vo", preset.soundExcludeVO);
+        keywordXml.addValue("sound_allow_vo", preset.soundAllowVO);
+        keywordXml.addValue("interlude", preset.interlude);
 		keywordXml.popTag(); // pop system
 		
 		systemIndex++;

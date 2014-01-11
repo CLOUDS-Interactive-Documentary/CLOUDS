@@ -15,19 +15,21 @@
 	IBOutlet NSTableView* presetTable;
 	IBOutlet NSTableView* clipTable;
 	IBOutlet NSTableView* suppressedClipTable;
-	IBOutlet NSTableView* allKeywordTable;
+//	IBOutlet NSTableView* allKeywordTable;
 	IBOutlet NSTableView* allClipTable;
 	IBOutlet NSTableView* clipPresetTable; //presets for the selected clip
 	
 	IBOutlet NSTextField* keywordPercent;
 	IBOutlet NSTextField* clipPercent;
 	
-	IBOutlet NSTextField* notesText;
+//	IBOutlet NSTextField* notesText;
 	IBOutlet NSComboBox* grade;
 	IBOutlet NSButton* enabledBox;
 	IBOutlet NSButton* oculusBox;
-	IBOutlet NSButton* soundBox;
-
+	IBOutlet NSButton* soundAllowVOBox;
+	IBOutlet NSButton* soundExcludeVOBox;
+	IBOutlet NSButton* interludeBox;
+    
 	IBOutlet NSButton* filterEnabledBox;
 	IBOutlet NSButton* filterOculusBox;
 	IBOutlet NSButton* filterGradeABox;
@@ -36,8 +38,6 @@
 	
 	CloudsFCPParser parser;
     CloudsMixer mixer;
-    //RGBD PLAYER
-//	CloudsVisualSystemRGBD rgbdVisualSystem;
 	CloudsClip currentClip;
     
 	CloudsVisualSystemManager visualSystems;
@@ -64,7 +64,9 @@
 	float lastSystemStartTime;
 	vector< ofPtr<CloudsVisualSystem> > testBatch;
 	int testBatchIndex;
-
+    
+    bool hasPasteboardPreset;
+    CloudsVisualSystemPreset pasteboardPreset;
 }
 
 //- (void)audioRequested:(float*)output bufferSize:(int)bufferSize nChannels:(int)nChannels;
@@ -87,6 +89,8 @@
 - (void)mouseReleased:(NSPoint)p button:(int)button;
 - (void)windowResized:(NSSize)size;
 
+- (IBAction) copySelectedPreset:(id)sender;
+- (IBAction) pasteSelectedPreset:(id)sender;
 - (IBAction) runTests:(id)sender;
 - (IBAction) runTestsOnPresets:(id)sender;
 - (IBAction) updateFilters:(id)sender;

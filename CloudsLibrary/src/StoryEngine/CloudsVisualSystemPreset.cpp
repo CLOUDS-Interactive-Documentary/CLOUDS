@@ -18,7 +18,13 @@ CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 	randomlySelected = false;
 	missingContent = false;
 	oculusCompatible = false;
-	hasSound = false;
+//	hasSound = false;
+    
+    soundAllowVO = false;
+    soundExcludeVO = false;
+    
+    interlude = false;
+    
 	duration = 60;
 	introDuration = 0;
 	outroDuration = 0;
@@ -28,6 +34,10 @@ CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 
 string CloudsVisualSystemPreset::getID(){
 	return systemName + "_" + presetName;
+}
+
+bool CloudsVisualSystemPreset::hasSound(){
+    return soundAllowVO || soundExcludeVO;
 }
 
 void CloudsVisualSystemPreset::loadTimeInfo(){

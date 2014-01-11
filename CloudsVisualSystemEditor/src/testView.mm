@@ -37,10 +37,10 @@ bool clipsort(CloudsClip a, CloudsClip b){
 //	visualSystems.populateVisualSystems();
 	visualSystems.loadPresets();
 	
-	for (NSTableColumn *tableColumn in allKeywordTable.tableColumns) {
-        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
-        [tableColumn setSortDescriptorPrototype:sortDescriptor];
-    }
+//	for (NSTableColumn *tableColumn in allKeywordTable.tableColumns) {
+//        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
+//        [tableColumn setSortDescriptorPrototype:sortDescriptor];
+//    }
 	
 	for (NSTableColumn *tableColumn in allClipTable.tableColumns) {
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
@@ -62,7 +62,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	[presetTable reloadData];
     
     [allClipTable reloadData];
-	[allKeywordTable reloadData];
+//	[allKeywordTable reloadData];
     
     [clipTable setDoubleAction:@selector(loadClipFromTable:)];
 	[allClipTable setDoubleAction:@selector(loadClipFromTable:)];
@@ -229,6 +229,33 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	}	
 }
 
+- (IBAction) copySelectedPreset:(id)sender
+{
+    if(self.selectedPresetIndex >= 0){
+        pasteboardPreset = visualSystems.getPresets()[self.selectedPresetIndex];
+        cout << "COPIED " << pasteboardPreset.getID() << " TO CLIP BOARD" << endl;
+        hasPasteboardPreset = true;
+    }
+}
+
+- (IBAction) pasteSelectedPreset:(id)sender
+{
+    if(hasPasteboardPreset && self.selectedPresetIndex >= 0){
+        
+        cout << "Pasting " << pasteboardPreset.getID() << " over " << visualSystems.getPresets()[ self.selectedPresetIndex ].getID() << endl;
+        
+        visualSystems.pastePresetToIndex(pasteboardPreset, self.selectedPresetIndex);
+
+        [self updateAssociatedClips];
+        
+        [clipTable reloadData];
+        [suppressedClipTable reloadData];
+        [presetTable reloadData];
+        [allClipTable reloadData];
+		visualSystems.savePresets();
+    }
+}
+
 - (void)draw
 {
 
@@ -304,7 +331,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
     [clipTable reloadData];
     [suppressedClipTable reloadData];
     [presetTable reloadData];
-    [allKeywordTable reloadData];
+//    [allKeywordTable reloadData];
     [allClipTable reloadData];
 }
 
@@ -316,7 +343,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		[self updateAssociatedClips];
 		
 		[presetTable reloadData];
-		[allKeywordTable reloadData];
+//		[allKeywordTable reloadData];
 		[allClipTable reloadData];
 	}
 }
@@ -333,8 +360,11 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		
 		selectedPreset->enabled = (enabledBox.state == NSOnState);
 		selectedPreset->oculusCompatible = (oculusBox.state == NSOnState);
-		selectedPreset->hasSound = (soundBox.state == NSOnState);
-		selectedPreset->comments = [notesText.stringValue UTF8String];
+		selectedPreset->soundAllowVO   = (soundAllowVOBox.state == NSOnState);
+        selectedPreset->soundExcludeVO = (soundExcludeVOBox.state == NSOnState);
+        selectedPreset->interlude = (interludeBox.state = NSOnState);
+                                          
+//		selectedPreset->comments = [notesText.stringValue UTF8String];
 		selectedPreset->grade = [grade.stringValue UTF8String];
 		
 //		currentKeywords.stringValue = [NSString stringWithUTF8String: ofJoinString(associatedKeywords,",").c_str() ];
@@ -349,7 +379,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		[clipTable reloadData];
 		[suppressedClipTable reloadData];
 		[presetTable reloadData];
-		[allKeywordTable reloadData];
+//		[allKeywordTable reloadData];
 		[allClipTable reloadData];
 	}
 }
@@ -459,9 +489,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	else if(aTableView == suppressedClipTable){
 		return suppressedClips.size();
 	}
-	else if(aTableView == allKeywordTable){
-		return sortedKeywordIndeces.size();
-	}
+//	else if(aTableView == allKeywordTable){
+//		return sortedKeywordIndeces.size();
+//	}
 	else if(aTableView == allClipTable){
 		return parser.getAllClips().size();
 	}
@@ -493,7 +523,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 						   (visualSystems.getPresets()[presetIndex].enabled ? "+" : "-") +
 							visualSystems.getPresets()[presetIndex].grade +
 							(visualSystems.getPresets()[presetIndex].oculusCompatible ? "Oc" : "") +
-							(visualSystems.getPresets()[presetIndex].hasSound ? "Snd" : "")
+							(visualSystems.getPresets()[presetIndex].hasSound() ? "Snd" : "")
 					 ).c_str()];
 		}
 		else if([@"preset" isEqualToString:aTableColumn.identifier]){
@@ -533,26 +563,26 @@ bool clipsort(CloudsClip a, CloudsClip b){
 																   sharedWith:associatedKeywords], ",").c_str() ];
 		}		
 	}
-	else if(aTableView == allKeywordTable){
-		int keywordIndex = sortedKeywordIndeces[rowIndex];
-		if([@"keyword" isEqualToString:aTableColumn.identifier]){
-			return [NSString stringWithUTF8String:parser.getAllKeywords()[ keywordIndex ].c_str() ];
-		}
-		else if([@"cohesion" isEqualToString:aTableColumn.identifier]){
-			return [NSNumber numberWithFloat: parser.getCohesionIndexForKeyword( parser.getAllKeywords()[ keywordIndex ] ) ];
-		}
-		else if([@"numclips" isEqualToString:aTableColumn.identifier]){
-			return [NSNumber numberWithInt: parser.getClipsWithKeyword( parser.getAllKeywords()[ keywordIndex ] ).size() ];
-		}
-		else if([@"presets" isEqualToString:aTableColumn.identifier]){
-			vector<CloudsVisualSystemPreset> presets = visualSystems.getPresetsForKeyword( parser.getAllKeywords()[ keywordIndex ] );
-			vector<string> ids;
-			for(int i = 0; i < presets.size(); i++){
-				ids.push_back(presets[i].getID());
-			}
-			return [NSString stringWithUTF8String: ofJoinString(ids, ", ").c_str()];
-		}
-	}
+//	else if(aTableView == allKeywordTable){
+//		int keywordIndex = sortedKeywordIndeces[rowIndex];
+//		if([@"keyword" isEqualToString:aTableColumn.identifier]){
+//			return [NSString stringWithUTF8String:parser.getAllKeywords()[ keywordIndex ].c_str() ];
+//		}
+//		else if([@"cohesion" isEqualToString:aTableColumn.identifier]){
+//			return [NSNumber numberWithFloat: parser.getCohesionIndexForKeyword( parser.getAllKeywords()[ keywordIndex ] ) ];
+//		}
+//		else if([@"numclips" isEqualToString:aTableColumn.identifier]){
+//			return [NSNumber numberWithInt: parser.getClipsWithKeyword( parser.getAllKeywords()[ keywordIndex ] ).size() ];
+//		}
+//		else if([@"presets" isEqualToString:aTableColumn.identifier]){
+//			vector<CloudsVisualSystemPreset> presets = visualSystems.getPresetsForKeyword( parser.getAllKeywords()[ keywordIndex ] );
+//			vector<string> ids;
+//			for(int i = 0; i < presets.size(); i++){
+//				ids.push_back(presets[i].getID());
+//			}
+//			return [NSString stringWithUTF8String: ofJoinString(ids, ", ").c_str()];
+//		}
+//	}
 	else if(aTableView == allClipTable){
 		if([@"clip" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].getLinkName().c_str() ];
@@ -629,7 +659,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	[clipTable reloadData];
 	[suppressedClipTable reloadData];
 	[presetTable reloadData];
-	[allKeywordTable reloadData];
+//	[allKeywordTable reloadData];
 
 }
 
@@ -642,15 +672,18 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		
 		if(selectedPreset != NULL){
 			currentKeywords.stringValue = [NSString stringWithUTF8String: ofJoinString(associatedKeywords,",").c_str() ];
-			notesText.stringValue = [NSString stringWithUTF8String: selectedPreset->comments.c_str() ];
+//			notesText.stringValue = [NSString stringWithUTF8String: selectedPreset->comments.c_str() ];
 			grade.stringValue = [NSString stringWithUTF8String: selectedPreset->grade.c_str() ];
 			enabledBox.state = (selectedPreset->enabled ? NSOnState : NSOffState);
 			oculusBox.state = (selectedPreset->oculusCompatible ? NSOnState : NSOffState);
-			soundBox.state = (selectedPreset->hasSound ? NSOnState : NSOffState);
+//			soundBox.state = (selectedPreset->hasSound ? NSOnState : NSOffState);
+            soundAllowVOBox.state = (selectedPreset->soundAllowVO ? NSOnState : NSOffState);
+            soundExcludeVOBox.state = (selectedPreset->soundExcludeVO ? NSOnState : NSOffState);
+            interludeBox.state = (selectedPreset->interlude ? NSOnState : NSOffState);
 		}
 		else{
 			currentKeywords.stringValue = @"";
-			notesText.stringValue = @"";
+//			notesText.stringValue = @"";
 			grade.stringValue = @"";
 			enabledBox.state = NSOnState;
 			oculusBox.state = NSOffState;
@@ -691,31 +724,31 @@ bool clipsort(CloudsClip a, CloudsClip b){
     NSLog(@"sort descriptor %@", [newDescriptors objectAtIndex:0]);
 	cohesionSort.parser = &parser;
 
-    if(tableView == allKeywordTable){
-		sortedKeywordIndeces.clear();
-		
-		NSString* descriptor = [[newDescriptors objectAtIndex:0] key];
-		if( [@"cohesion" isEqualToString: descriptor] ){
-			vector< pair<int,string> > keywordIndeces(parser.getAllKeywords().size());
-			for(int i = 0; i < parser.getAllKeywords().size(); i++){
-				keywordIndeces[i] = make_pair(i, parser.getAllKeywords()[i] );
-			}
-			
-			sort(keywordIndeces.begin(), keywordIndeces.end(), cohesionSort);
-			
-			for(int i = 0; i < keywordIndeces.size(); i++){
-				sortedKeywordIndeces.push_back( keywordIndeces[i].first );
-			}
-		}
-		else if( [@"keyword" isEqualToString: descriptor] ){
-			for(int i = 0; i < parser.getAllKeywords().size(); i++){
-				sortedKeywordIndeces.push_back( i );
-			}
-		}
-		else if( [@"clip" isEqualToString: descriptor] ){
-			
-		}
-    }
+//    if(tableView == allKeywordTable){
+//		sortedKeywordIndeces.clear();
+//		
+//		NSString* descriptor = [[newDescriptors objectAtIndex:0] key];
+//		if( [@"cohesion" isEqualToString: descriptor] ){
+//			vector< pair<int,string> > keywordIndeces(parser.getAllKeywords().size());
+//			for(int i = 0; i < parser.getAllKeywords().size(); i++){
+//				keywordIndeces[i] = make_pair(i, parser.getAllKeywords()[i] );
+//			}
+//			
+//			sort(keywordIndeces.begin(), keywordIndeces.end(), cohesionSort);
+//			
+//			for(int i = 0; i < keywordIndeces.size(); i++){
+//				sortedKeywordIndeces.push_back( keywordIndeces[i].first );
+//			}
+//		}
+//		else if( [@"keyword" isEqualToString: descriptor] ){
+//			for(int i = 0; i < parser.getAllKeywords().size(); i++){
+//				sortedKeywordIndeces.push_back( i );
+//			}
+//		}
+//		else if( [@"clip" isEqualToString: descriptor] ){
+//			
+//		}
+//    }
 }
 
 - (NSArray *)tokenField:(NSTokenField *)tokenField
