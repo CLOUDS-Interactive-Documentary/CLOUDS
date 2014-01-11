@@ -9951,6 +9951,83 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
+<system name="MarchingCubes_M_CottonCandy">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="MarchingCubes_M_Default">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="MarchingCubes_M_Grainy">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="MarchingCubes_M_TriBlobs">
+    <keywords>form|aesthetics|generative art</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Bruce - Don&apos;t care about design</clip>
+        <clip>Bruce - future of the new aesthetic</clip>
+        <clip>Casey - Design by numbers to processing</clip>
+        <clip>Casey - Tron</clip>
+        <clip>Elliot_UK - wiremape_description</clip>
+        <clip>Fernanda - aesthetics as communication</clip>
+        <clip>Fernanda - beautiful evidence 2</clip>
+        <clip>Jen - visual communication</clip>
+        <clip>Julia - aesthetic value</clip>
+        <clip>Kevin - algo culture 1</clip>
+        <clip>Kevin - algo culture 4</clip>
+        <clip>Kyle_MC - beauty</clip>
+        <clip>Paola - Paola&apos;s Republic</clip>
+        <clip>Ramsey - arab abstraction 2</clip>
+        <clip>Shiffman - Carl Sims</clip>
+        <clip>Zach - action script shorter</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>1</interlude>
+</system>
+<system name="MarchingCubes_M_TriBlobsSmooth">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>1</interlude>
+</system>
 <system name="MarchingCubes_MarchingTumors">
     <keywords>imagination|dreams|noise|abstraction|form</keywords>
     <links>
@@ -9999,6 +10076,66 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="MarchingCubes_MetaMarch">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="MarchingCubes_MetaMarch_1">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="MarchingCubes_MetaMarch_2">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="MarchingCubes_MetaMarch_3">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="MarchingCubes_MetaMarch_4">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -17304,10 +17441,8 @@
         <clip>Karsten - east german hardware 1</clip>
         <clip>Karsten - east german hardware 2</clip>
         <clip>Karsten - literacy issues&apos;</clip>
-        <clip>Karsten - parallel processing</clip>
         <clip>Karsten - programming is...</clip>
         <clip>Kevin - cognition vs computation 2</clip>
-        <clip>Kevin - invented as opposed to discovered 1</clip>
         <clip>Kevin - invented as opposed to discovered 2</clip>
         <clip>Kyle_CH - blows my mind</clip>
         <clip>Maeda - a computer is a clock</clip>
@@ -17330,10 +17465,10 @@
         <clip>Shantell - Sharing creates luck</clip>
         <clip>Shantell - luck</clip>
         <clip>Shiffman - make it random</clip>
-        <clip>Shiffman - mutation</clip>
         <clip>Shiffman - mysterious box</clip>
         <clip>Shiffman - randomness can be not very thoughtful</clip>
         <clip>Sophy - computer dream</clip>
+        <clip>Shiffman - genetic algos 2</clip>
     </suppressions>
     <comments></comments>
     <grade>A</grade>
@@ -17344,40 +17479,239 @@
     <interlude>1</interlude>
 </system>
 <system name="RandomDigits2_Matrix_4_dense">
-    <keywords></keywords>
+    <keywords>randomness|computational power|computer|infinity</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - software is a brain</clip>
+        <clip>Bruce - Future camera 1</clip>
+        <clip>Casey - 10Print</clip>
+        <clip>Casey - You need noise</clip>
+        <clip>Golan - woah2</clip>
+        <clip>Intro - Computers</clip>
+        <clip>Joel - Bicycles for the Mind</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - east german hardware 1</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Karsten - literacy issues&apos;</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Kevin - cognition vs computation 2</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>Maeda - a computer is a clock</clip>
+        <clip>Marius - algorithms as parameter space</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Nervous_Jesse - doing something new with a system</clip>
+        <clip>Nervous_Jesse - our explorations are random</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - code specifies behavior</clip>
+        <clip>Ramsey - computation is interpretation of rules</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Ramsey - what is a computer</clip>
+        <clip>Shantell - Sharing creates luck</clip>
+        <clip>Shantell - luck</clip>
+        <clip>Shiffman - make it random</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Shiffman - randomness can be not very thoughtful</clip>
+        <clip>Sophy - computer dream</clip>
+        <clip>Shiffman - genetic algos 2</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="RandomDigits2_Matrix_5">
-    <keywords></keywords>
+    <keywords>randomness|computational power|computer|infinity</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - software is a brain</clip>
+        <clip>Bruce - Future camera 1</clip>
+        <clip>Casey - 10Print</clip>
+        <clip>Casey - You need noise</clip>
+        <clip>Golan - woah2</clip>
+        <clip>Intro - Computers</clip>
+        <clip>Joel - Bicycles for the Mind</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - east german hardware 1</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Karsten - literacy issues&apos;</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Kevin - cognition vs computation 2</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>Maeda - a computer is a clock</clip>
+        <clip>Marius - algorithms as parameter space</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Nervous_Jesse - doing something new with a system</clip>
+        <clip>Nervous_Jesse - our explorations are random</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - code specifies behavior</clip>
+        <clip>Ramsey - computation is interpretation of rules</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Ramsey - what is a computer</clip>
+        <clip>Shantell - Sharing creates luck</clip>
+        <clip>Shantell - luck</clip>
+        <clip>Shiffman - make it random</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Shiffman - randomness can be not very thoughtful</clip>
+        <clip>Sophy - computer dream</clip>
+        <clip>Shiffman - genetic algos 2</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="RandomDigits2_Matrix_5_dense">
-    <keywords></keywords>
+    <keywords>randomness|computational power|computer|infinity</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - software is a brain</clip>
+        <clip>Bruce - Future camera 1</clip>
+        <clip>Casey - 10Print</clip>
+        <clip>Casey - You need noise</clip>
+        <clip>Golan - woah2</clip>
+        <clip>Intro - Computers</clip>
+        <clip>Joel - Bicycles for the Mind</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - east german hardware 1</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Karsten - literacy issues&apos;</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Kevin - cognition vs computation 2</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>Maeda - a computer is a clock</clip>
+        <clip>Marius - algorithms as parameter space</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Nervous_Jesse - doing something new with a system</clip>
+        <clip>Nervous_Jesse - our explorations are random</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - code specifies behavior</clip>
+        <clip>Ramsey - computation is interpretation of rules</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Ramsey - what is a computer</clip>
+        <clip>Shantell - Sharing creates luck</clip>
+        <clip>Shantell - luck</clip>
+        <clip>Shiffman - make it random</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Shiffman - randomness can be not very thoughtful</clip>
+        <clip>Sophy - computer dream</clip>
+        <clip>Shiffman - genetic algos 2</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
+</system>
+<system name="RandomDigits2_NoiseField">
+    <keywords>noise|number|math</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Aaron - software is a brain</clip>
+        <clip>Bruce - Future camera 1</clip>
+        <clip>Casey - 10Print</clip>
+        <clip>Golan - woah2</clip>
+        <clip>Intro - Computers</clip>
+        <clip>Joel - Bicycles for the Mind</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - east german hardware 1</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Karsten - literacy issues&apos;</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Kevin - cognition vs computation 2</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>Maeda - a computer is a clock</clip>
+        <clip>Marius - algorithms as parameter space</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Nervous_Jesse - doing something new with a system</clip>
+        <clip>Nervous_Jesse - our explorations are random</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - code specifies behavior</clip>
+        <clip>Ramsey - computation is interpretation of rules</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Ramsey - what is a computer</clip>
+        <clip>Shantell - Sharing creates luck</clip>
+        <clip>Shantell - luck</clip>
+        <clip>Shiffman - make it random</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Shiffman - randomness can be not very thoughtful</clip>
+        <clip>Sophy - computer dream</clip>
+        <clip>Shiffman - genetic algos 2</clip>
+        <clip>Joel - Bicycles1</clip>
+        <clip>Joel - Bicycles2</clip>
+        <clip>Karsten - parallel processing</clip>
+        <clip>Kevin - invented as opposed to discovered 1</clip>
+        <clip>Marius - parameter space</clip>
+        <clip>Martin - language and infinity</clip>
+        <clip>Nervous_Jesse - Time in the universe</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - thinking previously unthinkable thoughts</clip>
+        <clip>Shiffman - million monkeys</clip>
+        <clip>Andres - camera distorts reality</clip>
+        <clip>Kevin - math havoc 1</clip>
+        <clip>Kevin - math havoc 2</clip>
+        <clip>LIA - Circle1</clip>
+        <clip>LIA - Circle2</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>LIA - Formulas</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>Martin - Math getting better</clip>
+        <clip>Martin - words and numbers</clip>
+        <clip>Philip - first time computation</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - algorithm comes from arabic</clip>
+        <clip>Ramsey - arab abstraction 1</clip>
+        <clip>Ramsey - arab abstraction 2</clip>
+        <clip>Shantell - drawing with noise</clip>
+        <clip>Greg - makematics1</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>B</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>1</interlude>
 </system>
 <system name="RandomDigits2_galtest">
     <keywords></keywords>
