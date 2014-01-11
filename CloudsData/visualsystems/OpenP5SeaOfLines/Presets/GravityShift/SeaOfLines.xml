@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>SeaOfLines</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>212.000000000</XPosition>
-    <YPosition>4.000000000</YPosition>
+    <XPosition>741.000000000</XPosition>
+    <YPosition>141.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -25,7 +25,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>GRAVITY</Name>
-    <Value>-0.274615884</Value>
+    <Value>-0.062618256</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

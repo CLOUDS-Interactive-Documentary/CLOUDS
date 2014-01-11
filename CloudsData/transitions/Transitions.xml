@@ -79,9 +79,9 @@
         <INDEX>3</INDEX>
         <NAME>default</NAME>
         <InStartPos>
-            <x>-11.631</x>
-            <y>-154.764</y>
-            <z>-438.688</z>
+            <x>-26</x>
+            <y>-397.251</y>
+            <z>-1918.89</z>
         </InStartPos>
         <OutRightPos>
             <x>-375.227</x>
@@ -94,10 +94,10 @@
             <z>417.171</z>
         </OutLeftPos>
         <InStartQuat>
-            <x>0.000500282</x>
-            <y>-0.996969</y>
-            <z>0.0811167</z>
-            <w>0.00484759</w>
+            <x>0.000497661</x>
+            <y>-0.997051</y>
+            <z>0.0811234</z>
+            <w>0.00485066</w>
         </InStartQuat>
         <OutLeftQuat>
             <x>0.0110115</x>
@@ -115,6 +115,84 @@
 </TRANSITION_TYPE>
 <TRANSITION_TYPE>
     <INDEX>1</INDEX>
+    <NAME>QUESTION</NAME>
+    <OPTION>
+        <INDEX>1</INDEX>
+        <NAME>LarsPortal</NAME>
+        <InStartPos>
+            <x>0</x>
+            <y>-50</y>
+            <z>-150</z>
+        </InStartPos>
+        <OutRightPos>
+            <x>94.9828</x>
+            <y>-4.15207</y>
+            <z>-16.2981</z>
+        </OutRightPos>
+        <OutLeftPos>
+            <x>-88.8892</x>
+            <y>-11.4952</y>
+            <z>-22.6577</z>
+        </OutLeftPos>
+        <InStartQuat>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+            <w>-4.37114e-08</w>
+        </InStartQuat>
+        <OutLeftQuat>
+            <x>0.00838218</x>
+            <y>0.947563</y>
+            <z>-0.124383</z>
+            <w>0.294251</w>
+        </OutLeftQuat>
+        <OutRightQuat>
+            <x>-0.0327837</x>
+            <y>-0.973004</y>
+            <z>-0.033536</z>
+            <w>0.225971</w>
+        </OutRightQuat>
+    </OPTION>
+    <OPTION>
+        <INDEX>2</INDEX>
+        <NAME>default</NAME>
+        <InStartPos>
+            <x>367.538</x>
+            <y>478.196</y>
+            <z>-652.855</z>
+        </InStartPos>
+        <OutRightPos>
+            <x>94.9828</x>
+            <y>-4.15207</y>
+            <z>-16.2981</z>
+        </OutRightPos>
+        <OutLeftPos>
+            <x>-88.8892</x>
+            <y>-11.4952</y>
+            <z>-22.6577</z>
+        </OutLeftPos>
+        <InStartQuat>
+            <x>-0.164177</x>
+            <y>0.758457</y>
+            <z>0.603644</z>
+            <w>0.182767</w>
+        </InStartQuat>
+        <OutLeftQuat>
+            <x>-0.0172122</x>
+            <y>0.967791</y>
+            <z>0.0689735</z>
+            <w>0.24151</w>
+        </OutLeftQuat>
+        <OutRightQuat>
+            <x>-0.0172122</x>
+            <y>0.967791</y>
+            <z>0.0689735</z>
+            <w>0.24151</w>
+        </OutRightQuat>
+    </OPTION>
+</TRANSITION_TYPE>
+<TRANSITION_TYPE>
+    <INDEX>2</INDEX>
     <NAME>TWO_DIMENSIONAL</NAME>
     <OPTION>
         <INDEX>1</INDEX>
@@ -144,13 +222,13 @@
             <x>0</x>
             <y>1</y>
             <z>0</z>
-            <w>-4.37114e-08</w>
+            <w>-4.4e-08</w>
         </OutLeftQuat>
         <OutRightQuat>
             <x>0</x>
             <y>1</y>
             <z>0</z>
-            <w>-4.37114e-08</w>
+            <w>-4.4e-08</w>
         </OutRightQuat>
     </OPTION>
     <OPTION>
@@ -175,19 +253,19 @@
             <x>0</x>
             <y>1</y>
             <z>0</z>
-            <w>-4.37114e-08</w>
+            <w>-4.4e-08</w>
         </InStartQuat>
         <OutLeftQuat>
             <x>0</x>
             <y>1</y>
             <z>0</z>
-            <w>-4.37114e-08</w>
+            <w>-4.4e-08</w>
         </OutLeftQuat>
         <OutRightQuat>
             <x>0</x>
             <y>1</y>
             <z>0</z>
-            <w>-4.37114e-08</w>
+            <w>-4.4e-08</w>
         </OutRightQuat>
     </OPTION>
     <OPTION>
@@ -212,19 +290,19 @@
             <x>0</x>
             <y>1</y>
             <z>0</z>
-            <w>-4.37114e-08</w>
+            <w>-4.4e-08</w>
         </InStartQuat>
         <OutLeftQuat>
             <x>0</x>
             <y>1</y>
             <z>0</z>
-            <w>-4.37114e-08</w>
+            <w>-4.4e-08</w>
         </OutLeftQuat>
         <OutRightQuat>
             <x>0</x>
             <y>1</y>
             <z>0</z>
-            <w>-4.37114e-08</w>
+            <w>-4.4e-08</w>
         </OutRightQuat>
     </OPTION>
     <OPTION>
@@ -249,19 +327,19 @@
             <x>0</x>
             <y>1</y>
             <z>0</z>
-            <w>-4.37114e-08</w>
+            <w>-4.4e-08</w>
         </InStartQuat>
         <OutLeftQuat>
             <x>0</x>
             <y>1</y>
             <z>0</z>
-            <w>-4.37114e-08</w>
+            <w>-4.4e-08</w>
         </OutLeftQuat>
         <OutRightQuat>
             <x>0</x>
             <y>1</y>
             <z>0</z>
-            <w>-4.37114e-08</w>
+            <w>-4.4e-08</w>
         </OutRightQuat>
     </OPTION>
     <OPTION>
@@ -305,42 +383,42 @@
         <INDEX>6</INDEX>
         <NAME>default</NAME>
         <InStartPos>
-            <x>250</x>
-            <y>-50</y>
-            <z>-150</z>
+            <x>159</x>
+            <y>-21.2444</y>
+            <z>-191.75</z>
         </InStartPos>
         <OutRightPos>
-            <x>-370</x>
-            <y>-50</y>
-            <z>-150</z>
+            <x>-257.089</x>
+            <y>-18.0893</y>
+            <z>-81.2158</z>
         </OutRightPos>
         <OutLeftPos>
-            <x>280</x>
-            <y>-50</y>
-            <z>-150</z>
+            <x>163.376</x>
+            <y>-13.3854</y>
+            <z>-197.047</z>
         </OutLeftPos>
         <InStartQuat>
-            <x>0</x>
-            <y>1</y>
-            <z>0</z>
-            <w>-4.37114e-08</w>
+            <x>-0.0122135</x>
+            <y>-0.976586</y>
+            <z>-0.00281687</z>
+            <w>0.214763</w>
         </InStartQuat>
         <OutLeftQuat>
-            <x>0</x>
-            <y>1</y>
-            <z>0</z>
-            <w>-4.37114e-08</w>
+            <x>0.00541423</x>
+            <y>-0.981108</y>
+            <z>-0.0787522</z>
+            <w>0.176626</w>
         </OutLeftQuat>
         <OutRightQuat>
-            <x>0</x>
-            <y>1</y>
-            <z>0</z>
-            <w>-4.37114e-08</w>
+            <x>-0.110975</x>
+            <y>-0.992384</y>
+            <z>0.0421217</z>
+            <w>0.0330071</w>
         </OutRightQuat>
     </OPTION>
 </TRANSITION_TYPE>
 <TRANSITION_TYPE>
-    <INDEX>2</INDEX>
+    <INDEX>3</INDEX>
     <NAME>WHIP_PAN</NAME>
     <OPTION>
         <INDEX>1</INDEX>
@@ -455,6 +533,43 @@
     </OPTION>
     <OPTION>
         <INDEX>4</INDEX>
+        <NAME>PortalTest</NAME>
+        <InStartPos>
+            <x>-433</x>
+            <y>-83.9378</y>
+            <z>-358.699</z>
+        </InStartPos>
+        <OutRightPos>
+            <x>464.022</x>
+            <y>2.47232</y>
+            <z>74.7269</z>
+        </OutRightPos>
+        <OutLeftPos>
+            <x>-484.174</x>
+            <y>-1.15813</y>
+            <z>0.0992737</z>
+        </OutLeftPos>
+        <InStartQuat>
+            <x>0.0705996</x>
+            <y>0.770607</y>
+            <z>0.0255892</z>
+            <w>0.632871</w>
+        </InStartQuat>
+        <OutLeftQuat>
+            <x>-0.0571279</x>
+            <y>0.781242</y>
+            <z>-0.127745</z>
+            <w>0.608342</w>
+        </OutLeftQuat>
+        <OutRightQuat>
+            <x>-0.0411365</x>
+            <y>-0.763239</y>
+            <z>-0.0454373</z>
+            <w>0.643202</w>
+        </OutRightQuat>
+    </OPTION>
+    <OPTION>
+        <INDEX>5</INDEX>
         <NAME>default</NAME>
         <InStartPos>
             <x>-425</x>

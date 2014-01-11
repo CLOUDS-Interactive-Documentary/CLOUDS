@@ -25,7 +25,8 @@ void CloudsVisualSystemSwim::selfSetup()
     bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
     
-    post.init(ofGetWidth(), ofGetHeight(), true);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    post.init(getCanvasWidth(), getCanvasHeight(), true);
     //post.createPass<FxaaPass>();
     post.createPass<BloomPass>();
     
@@ -78,9 +79,8 @@ void CloudsVisualSystemSwim::generate()
 void CloudsVisualSystemSwim::selfUpdate()
 {
     volumeControl.value(gain);
-    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
-    
-    if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    if (post.getWidth() != getCanvasWidth() || post.getHeight() != getCanvasHeight()) post.init(getCanvasWidth(), getCanvasHeight(), true);
     
     if (regenerate)
     {
@@ -105,8 +105,9 @@ void CloudsVisualSystemSwim::selfUpdate()
     
     // cam
     ofVec2f targetLookAngle;
-    targetLookAngle.x = ofMap(GetCloudsInputY(), 0, ofGetHeight(), 10.f, -10.f, true);
-    targetLookAngle.y = ofMap(GetCloudsInputX(), 0, ofGetWidth(), 20.f, -20.f, true);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    targetLookAngle.x = ofMap(GetCloudsInputY(), 0, getCanvasHeight(), 10.f, -10.f, true);
+    targetLookAngle.y = ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 20.f, -20.f, true);
     currentLookAngle.interpolate(targetLookAngle, .05);
     ofQuaternion rx, ry;
     rx.makeRotate(currentLookAngle.x, 1, 0, 0);
@@ -134,7 +135,8 @@ void CloudsVisualSystemSwim::selfPostDraw()
     glPushAttrib(GL_ENABLE_BIT);
     glDisable(GL_DEPTH_TEST);
     post.process(CloudsVisualSystem::getSharedRenderTarget(), false);
-    post.getProcessedTextureReference().draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    post.getProcessedTextureReference().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());
     glPopAttrib();
 }
 
@@ -281,9 +283,9 @@ void CloudsVisualSystemSwim::selfKeyPressed(ofKeyEventArgs & args)
             saveSeed = true;
             break;
             
-        case 'l':
+        /*case 'l':
             loadSeed = true;
-            break;
+            break;*/
             
         default:
             break;

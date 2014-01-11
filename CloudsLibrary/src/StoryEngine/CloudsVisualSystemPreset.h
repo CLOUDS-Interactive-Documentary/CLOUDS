@@ -20,6 +20,8 @@ class CloudsVisualSystemPreset {
 	void loadTimeInfo();
 	void eraseFiles();
 	void checkHasFiles();
+    bool hasSound();
+    
 	bool hasFiles;
 	
 	string getID();
@@ -27,8 +29,11 @@ class CloudsVisualSystemPreset {
 	string grade;
 	bool enabled;
 	bool oculusCompatible;
-	bool hasSound;
-	
+
+    bool soundExcludeVO;
+    bool soundAllowVO;
+	bool interlude;
+    
 	bool defaultedToFamily;
 	string conjureKeyword;
 	vector<string> allKeywords; // only filled out when the preset is scheduled

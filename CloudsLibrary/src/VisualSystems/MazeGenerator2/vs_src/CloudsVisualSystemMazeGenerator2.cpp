@@ -18,7 +18,7 @@ CloudsVisualSystemMazeGenerator2::CloudsVisualSystemMazeGenerator2()
 
 void CloudsVisualSystemMazeGenerator2::selfSetupGui()
 {
-    ParamManager* pm = &ParamManager::getInstance();
+    ParamManager2* pm = &ParamManager2::getInstance();
 
     customGui = new ofxUISuperCanvas("MAZE BUILDER 2", gui);
     customGui->copyCanvasStyle(gui);
@@ -107,10 +107,10 @@ void CloudsVisualSystemMazeGenerator2::guiRenderEvent(ofxUIEventArgs &e)
 void CloudsVisualSystemMazeGenerator2::selfSetup()
 {
 //    maze = new Maze(30, 4, 30);
-    maze[0] = new Maze(60, 8, 40);
+    maze[0] = new Maze2(60, 8, 40);
     maze[0]->generate();
     
-    mazeCam = new MazeCamera(maze[0]->getWidth()/2, ParamManager::getInstance().cameraHeight, 100);
+    mazeCam = new MazeCamera2(maze[0]->getWidth()/2, ParamManager2::getInstance().cameraHeight, 100);
     
     light = new ofLight();
     light->setDirectional();

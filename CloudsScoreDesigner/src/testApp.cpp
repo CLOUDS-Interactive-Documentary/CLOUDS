@@ -130,7 +130,7 @@ void testApp::preRollRequested(CloudsPreRollEventArgs& clip){
 void testApp::update(){
 //	ofShowCursor();
 	//keepin it real
-	storyEngine.maxTimesOnTopic = floor(storyEngine.maxTimesOnTopic);
+	//storyEngine.maxTimesOnTopic = floor(storyEngine.maxTimesOnTopic);
     player.maxVolume = sound.maxSpeakerVolume;
     sound.update();
 	

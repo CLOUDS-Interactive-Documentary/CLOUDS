@@ -4,7 +4,10 @@
 
 #make sure you are in the RGBDToolkit project when you run this script
 
+
 cd ../../addons
+echo existing addons
+ls
 
 #passing no arguments means read only
 if [ -z $1 ]; then
@@ -20,10 +23,10 @@ fi
 
 #private, must be read
 # git clone git@github.com:rezaali/ofxExtras
-git clone git@github.com:CLOUDS-Interactive-Documentary/ofxExtras
+#git clone git@github.com:CLOUDS-Interactive-Documentary/ofxExtras
 
 # git clone https://github.com/rezaali/ofxUI
-git clone https://github.com/CLOUDS-Interactive-Documentary/ofxUI
+${NEWPREFIX}ofxUI
 cd ofxUI
 git checkout -b 'clouds-develop' --track 'origin/clouds-develop'
 git pull origin 'clouds-develop'

@@ -159,19 +159,33 @@ void CloudsVisualSystemRGBD::loadShader(){
 
 void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 {
-	if(transitionMap.find(type) != transitionMap.end())
+	currentTransitionType = type;
+	TransitionInfo ti;
+	ofQuaternion q;
+	
+	//just in case... maybe this fails a little more gracefully
+	if(transitionMap[type].find( option ) != transitionMap[type].end())
 	{
-		TransitionInfo ti;
-		ofQuaternion q;
+		ti = transitionMap[type][option];
+	}else{
+		ti = transitionMap[type]["default"];
+	}
+	
+	if(type == "QUESTION")
+	{
+		q.set( getCameraRef().getOrientationQuat() );
 		
-		//just in case... maybe this fails a little more gracefully
-		if(transitionMap[type].find( option ) != transitionMap[type].end())
-		{
-			ti = transitionMap[type][option];
-		}else{
-			ti = transitionMap[type]["default"];
-		}
-		
+		transitionInStart.setPosition( ti.inStartPos + translatedHeadPosition );
+		transitionInStart.setOrientation( q );
+
+		transitionOutLeft.setPosition( ti.outLeftPos + translatedHeadPosition);
+		transitionOutLeft.setOrientation( q );
+
+		transitionOutRight.setPosition( ti.outRightPos + translatedHeadPosition);
+		transitionOutRight.setOrientation( q );
+	}
+	else if(transitionMap.find(type) != transitionMap.end())
+	{	
 		transitionInStart.setPosition( ti.inStartPos + translatedHeadPosition );
 		q.set( ti.inQuat );
 		transitionInStart.setOrientation( q );
@@ -205,6 +219,10 @@ void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionTy
 			
 		case CloudsVisualSystem::FLY_THROUGH:
 			setTransitionNodes("FLY_THROUGH", option);
+			break;
+			
+		case CloudsVisualSystem::QUESTION :
+			setTransitionNodes("QUESTION", option);
 			break;
 			
 		default:
@@ -405,8 +423,6 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	updateQuestions();
 	updateTransition();
-    
-//    cloudsCaption.update();
 	
 	if( placingTransitionNodes )
 	{
@@ -924,6 +940,12 @@ void CloudsVisualSystemRGBD::clearQuestions(){
 
 void CloudsVisualSystemRGBD::startCurrentTransitionOut()
 {
+	if(currentTransitionType == "QUESTION")
+	{
+		transitionOutLeft.setOrientation( getCameraRef().getOrientationQuat() );
+		transitionOutRight.setOrientation( getCameraRef().getOrientationQuat() );
+	}
+	
 	//transition to the left or right based on relative posiiton
 	setOutOption((cloudsCamera.getPosition().x - translatedHeadPosition.x) > 0 ? OutLeft : OutRight);
 	
@@ -947,6 +969,13 @@ void CloudsVisualSystemRGBD::startCurrentTransitionIn()
 
 void CloudsVisualSystemRGBD::startTransitionOut(RGBDTransitionType transitionType, string option)
 {
+	//I think this'll happen in setTransitionNodes
+	//if( transitionType == QUESTION)
+	//{
+	//	transitionOutLeft.setOrientation( getCameraRef().getOrientationQuat() );
+	//	transitionOutRight.setOrientation( getCameraRef().getOrientationQuat() );
+	//}
+	
 	//set the in/out nodes
 	setTransitionNodes( transitionType, option );
 	
@@ -980,6 +1009,10 @@ void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
 	{
 		float easedPercent = ofxTween::map(percentComplete, 0, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
 		cloudsCamera.setTransitionPercent( easedPercent );
+		
+		
+		float easedRotPercent = ofxTween::map(percentComplete, .6, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
+		cloudsCamera.setTransitionRotationPercent( easedRotPercent );
 		
 		cout <<"TRANSITIONING : easedValue = "<< easedPercent << endl;
 	}
@@ -1303,8 +1336,9 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		}
 		
 		glDisable(GL_DEPTH_TEST);
-		ofEnableBlendMode(OF_BLENDMODE_ADD);
-			
+//		ofEnableBlendMode(OF_BLENDMODE_ADD);
+        ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+        
 		if(drawLines){
 			lineShader.begin();
 			ofSetLineWidth(lineThickness);
@@ -1535,10 +1569,10 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 	glDisable(GL_DEPTH_TEST);
 	CloudsPortal::shader.begin();
 	CloudsPortal::shader.setUniform1i("doAttenuate", 0);
-	if(leftPortal.question != ""){
+	if(leftPortal.question != "" || bPortalDebugOn){
 		leftPortal.draw();
 	}
-	if(rightPortal.question != ""){
+	if(rightPortal.question != "" || bPortalDebugOn){
 		rightPortal.draw();
 	}
 	CloudsPortal::shader.end();

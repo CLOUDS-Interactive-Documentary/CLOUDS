@@ -310,21 +310,13 @@ class CloudsVisualSystem {
     ofxUISuperCanvas *oculusGui;
 #endif
     
-//    //UI Colours
-//    ofxUIColor cb;
-//    ofxUIColor co;
-//    ofxUIColor coh;
-//    ofxUIColor cf;
-//    ofxUIColor cfh;
-//    ofxUIColor cp;
-//    ofxUIColor cpo;
-	
 	void stackGuiWindows();
 	void drawScene();
 	
     vector<ofxUISuperCanvas *> guis;
     map<string, ofxUICanvas *> guimap;
 	
+    
     //Background Props
     float bgAspectRatio;
 	bool bBarGradient;
@@ -405,6 +397,8 @@ class CloudsVisualSystem {
     map<ofxUISlider*, ofxTLCurves*>	tlSliderMap;
     map<ofxUINumberDialer*, ofxTLCurves*> tlDialerMap;
 
+    ofxUILabel* durationLabel;
+    
 	bool bTimelineIsIndefinite;
 	float getIntroDuration();
 	float getOutroDuration();

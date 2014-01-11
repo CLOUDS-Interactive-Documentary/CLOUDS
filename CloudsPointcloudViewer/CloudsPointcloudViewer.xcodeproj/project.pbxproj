@@ -13,6 +13,12 @@
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
 		609133841652CA6600B523AD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6091337C1652C9C900B523AD /* MainMenu.xib */; };
 		609133871652CB3E00B523AD /* testView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 609133861652CB3E00B523AD /* testView.mm */; };
+		85891D2E187FEDD000325DD8 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 85891D2D187FEDD000325DD8 /* ofxSystemTextbox.mm */; };
+		85891D2F187FEDD000325DD8 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 85891D2D187FEDD000325DD8 /* ofxSystemTextbox.mm */; };
+		85891D35187FEDFF00325DD8 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891D31187FEDFF00325DD8 /* CloudsPortal.cpp */; };
+		85891D36187FEDFF00325DD8 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891D31187FEDFF00325DD8 /* CloudsPortal.cpp */; };
+		85891D37187FEDFF00325DD8 /* CloudsPortalRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891D33187FEDFF00325DD8 /* CloudsPortalRing.cpp */; };
+		85891D38187FEDFF00325DD8 /* CloudsPortalRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891D33187FEDFF00325DD8 /* CloudsPortalRing.cpp */; };
 		85FCB765185E262200A9740A /* CloudsHUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85FCB763185E262200A9740A /* CloudsHUDLayer.cpp */; };
 		85FCB766185E262200A9740A /* CloudsHUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85FCB763185E262200A9740A /* CloudsHUDLayer.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -332,6 +338,12 @@
 		6091337C1652C9C900B523AD /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		609133851652CB3E00B523AD /* testView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testView.h; sourceTree = "<group>"; };
 		609133861652CB3E00B523AD /* testView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = testView.mm; sourceTree = "<group>"; };
+		85891D2C187FEDD000325DD8 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		85891D2D187FEDD000325DD8 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
+		85891D31187FEDFF00325DD8 /* CloudsPortal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortal.cpp; sourceTree = "<group>"; };
+		85891D32187FEDFF00325DD8 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortal.h; sourceTree = "<group>"; };
+		85891D33187FEDFF00325DD8 /* CloudsPortalRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortalRing.cpp; sourceTree = "<group>"; };
+		85891D34187FEDFF00325DD8 /* CloudsPortalRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortalRing.h; sourceTree = "<group>"; };
 		85FCB763185E262200A9740A /* CloudsHUDLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDLayer.cpp; sourceTree = "<group>"; };
 		85FCB764185E262200A9740A /* CloudsHUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDLayer.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -742,6 +754,18 @@
 			path = ../../../addons/ofxCocoaGLView;
 			sourceTree = "<group>";
 		};
+		85891D30187FEDFF00325DD8 /* Portal */ = {
+			isa = PBXGroup;
+			children = (
+				85891D31187FEDFF00325DD8 /* CloudsPortal.cpp */,
+				85891D32187FEDFF00325DD8 /* CloudsPortal.h */,
+				85891D33187FEDFF00325DD8 /* CloudsPortalRing.cpp */,
+				85891D34187FEDFF00325DD8 /* CloudsPortalRing.h */,
+			);
+			name = Portal;
+			path = RGBD/Portal;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -921,6 +945,7 @@
 			isa = PBXGroup;
 			children = (
 				E7402DBD178F304700FEABED /* CloudsGlobal.h */,
+				85891D30187FEDFF00325DD8 /* Portal */,
 				E79E6F581855320E00406535 /* Input */,
 				E75DB6B817CDC02A00CD99D9 /* VisualSystemsLibrary */,
 				E731D65117401845006B9650 /* RGBD */,
@@ -1413,6 +1438,8 @@
 		E75DB6B817CDC02A00CD99D9 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				85891D2C187FEDD000325DD8 /* ofxSystemTextbox.h */,
+				85891D2D187FEDD000325DD8 /* ofxSystemTextbox.mm */,
 				E75DB6BB17CDC02A00CD99D9 /* CloudsRGBDCamera.h */,
 				E75DB6BA17CDC02A00CD99D9 /* CloudsRGBDCamera.cpp */,
 				E75DB6BD17CDC02A00CD99D9 /* CloudsRGBDVideoPlayer.h */,
@@ -1818,6 +1845,9 @@
 				E71CEC8018654159004F5547 /* CloudsHUDHomeButton.cpp in Sources */,
 				E7F051311873664C00017521 /* CloudsHUDLabel.cpp in Sources */,
 				E7F051351873667500017521 /* CloudsSVGMesh.cpp in Sources */,
+				85891D2E187FEDD000325DD8 /* ofxSystemTextbox.mm in Sources */,
+				85891D35187FEDFF00325DD8 /* CloudsPortal.cpp in Sources */,
+				85891D37187FEDFF00325DD8 /* CloudsPortalRing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1928,6 +1958,9 @@
 				E71CEC8118654159004F5547 /* CloudsHUDHomeButton.cpp in Sources */,
 				E7F051321873664C00017521 /* CloudsHUDLabel.cpp in Sources */,
 				E7F051361873667500017521 /* CloudsSVGMesh.cpp in Sources */,
+				85891D2F187FEDD000325DD8 /* ofxSystemTextbox.mm in Sources */,
+				85891D36187FEDFF00325DD8 /* CloudsPortal.cpp in Sources */,
+				85891D38187FEDFF00325DD8 /* CloudsPortalRing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

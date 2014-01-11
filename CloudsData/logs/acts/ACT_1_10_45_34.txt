@@ -1,0 +1,70 @@
+SEED TOPIC:  community
+SEED CLIP: Martin - rapid dissemination of info
+First visual system preset is selected : Replicator_Replicator for topic : community and clip Martin - rapid dissemination of info
+0	CHOOSING NEW CLIP 
+0		Chose Clip "LIA - helldotcom" for topic "community" (1/5)
+21.5191	VISUALS Currently running "Replicator_Replicator" time [0 - 8.27586] indefinite
+21.5191		Passed predicted time 8.2758621.5191- moving end time over top of VO LIA - helldotcom
+21.5191	CHOOSING NEW CLIP 
+21.5191		Chose Clip "Lindsay - memes 2" for topic "community" (2/5)
+51.3872	VISUALS Not run in 29.8681 seconds
+51.3872		Chose new Preset 2DVideo_Kittenstep time [37.1438 - 45.4197] indefinite
+51.3872	CHOOSING NEW CLIP 
+51.3872		Chose Clip "Karsten - illusion of original thought" for topic "community" (3/5)
+51.3872			ERROR: We took a digression! Freeing topic
+81.2898	VISUALS Currently running "2DVideo_Kittenstep" time [37.1438 - 45.4197] indefinite
+81.2898		Passed predicted time 45.4197 - FREE TOPIC Extending VS end time to 101.846 past the end of Karsten - illusion of original thought
+101.846	CHOOSING NEW TOPIC 2/3
+101.846		Selecting from 4 potential next topics on clip Karsten - illusion of original thought
+101.846			Considering originality
+101.846				Score for shared topic	originality : 14.9507
+101.846			Considering technological progress
+101.846				Score for shared topic	technological progress : 1.5873
+101.846			Considering sharing
+101.846				Score for shared topic	sharing : 54.4147
+101.846			Considering ideas
+101.846				Score for shared topic	ideas : 21.0618
+101.846		TOPIC sharing won with score 54.4147
+101.846		Picked new topic: SHARING
+101.846	CHOOSING NEW CLIP 
+101.846		Chose Clip "Andres - sharing code" for topic "sharing" (1/5)
+124.541	VISUALS Not run in 22.6943 seconds
+124.541		Chose new Preset 2DVideo_Flow1_gesture time [113.884 - 122.16] definite
+124.541	CHOOSING NEW CLIP 
+124.541		Chose Clip "Marcus - gurus" for topic "sharing" (2/5)
+184.306	VISUALS Currently running "2DVideo_Flow1_gesture" time [113.884 - 122.16] definite
+184.306		Passed predicted time 122.16 - moving end time to middle of Marcus - gurus, time 157.196
+184.306	CHOOSING NEW CLIP 
+184.306		Chose Clip "Karsten - Paul Burke" for topic "sharing" (3/5)
+223.017	VISUALS Not run in 65.8207 seconds
+223.017		Chose new Preset 3DModelLoader_Toxi_Sphere1 time [204.352 - 212.628] indefinite
+223.017	CHOOSING NEW CLIP 
+223.017		Chose Clip "Maeda - sharing for collective advancement" for topic "sharing" (4/5)
+252.252	VISUALS Currently running "3DModelLoader_Toxi_Sphere1" time [204.352 - 212.628] indefinite
+252.252		Passed predicted time 212.628 - moving end time to middle of Maeda - sharing for collective advancement, time 240.407
+252.252	CHOOSING NEW CLIP 
+252.252		Chose Clip "Julia - can't be solitary" for topic "sharing" (5/5)
+252.252			Last clip in topic! Freeing topic
+305.643	VISUALS Not run in 65.2368 seconds
+305.643		Chose new Preset RGBDVideo_ShinyLab time [279.638 - 287.914] indefinite
+305.643	CHOOSING NEW TOPIC 3/3
+305.643		going back to seed topic community
+305.643		Picked new topic: COMMUNITY
+305.643	CHOOSING NEW CLIP 
+305.643		Chose Clip "Casey - Processing open" for topic "community" (1/5)
+326.454	VISUALS Currently running "RGBDVideo_ShinyLab" time [279.638 - 287.914] indefinite
+326.454		Passed predicted time 287.914 - moving end time to middle of Casey - Processing open, time 318.821
+326.454	CHOOSING NEW CLIP 
+326.454		Chose Clip "JTNimoy - open source mensch" for topic "community" (2/5)
+365.915	VISUALS Not run in 47.0937 seconds
+365.915		ERROR Failed to find preset on current topic community with clip JTNimoy - open source mensch
+365.915	CHOOSING NEW CLIP 
+365.915		Chose Clip "Binx - women in tech" for topic "community" (3/5)
+390.527	VISUALS Not run in 71.7065 seconds
+390.527		ERROR Failed to find preset on current topic community with clip Binx - women in tech
+390.527	CHOOSING NEW CLIP 
+390.527		Chose Clip "Lauren - breaking down barriers" for topic "community" (4/5)
+390.527			ERROR: We took a digression! Freeing topic
+409.259	VISUALS Not run in 90.4385 seconds
+409.259		ERROR Failed to find preset on current topic community with clip Lauren - breaking down barriers
+409.259	ACT ENDED on clip Lauren - breaking down barriers explored topics 3/3 with 4 clips on final topic "community"
