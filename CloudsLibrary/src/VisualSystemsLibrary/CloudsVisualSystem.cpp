@@ -357,7 +357,9 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 		bgSat2 = bgSat;
 		bgBri2 = bgBri;
 	}
-	
+    
+    durationLabel->setLabel(ofxTimecode::timecodeForSeconds(timeline->getInOutRange().span() * timeline->getDurationInSeconds()));
+    
 	bgColor = ofColor::fromHsb(MIN(bgHue,254.), bgSat, bgBri, 255);
 	bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
 	
@@ -2091,12 +2093,14 @@ void CloudsVisualSystem::setupTimelineGui()
     tlGui->addWidgetToHeader(toggle);
     tlGui->addSpacer();
     
+    durationLabel = tlGui->addLabel("");
+    
     tlGui->addNumberDialer("DURATION", 0.0, 60*5, &timelineDuration, 0.0)->setDisplayLabel(true);
     tlGui->addToggle("INDEFINITE", &bTimelineIsIndefinite);
     
     tlGui->addToggle("ANIMATE", &bEnableTimelineTrackCreation);
     tlGui->addToggle("DELETE", &bDeleteTimelineTrack);
-
+    
     //tlGui->addToggle("SHOW/HIDE", &bShowTimeline);
     
     selfSetupTimelineGui();
