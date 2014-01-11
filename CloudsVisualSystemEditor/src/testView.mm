@@ -224,7 +224,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		
 		currentClip = clip;
 	}
-	else if(clip.hasMediaAsset && CloudsVisualSystem::getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath,1,clip.speakerVolume) ){
+	else if(clip.hasMediaAsset && CloudsVisualSystem::getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, clip.combinedSRTPath, 1,clip.speakerVolume) ){
 		cout<<"clip.speakerVolume : "<<clip.speakerVolume<<endl;
 		CloudsVisualSystem::getRGBDVideoPlayer().swapAndPlay();
 //		CloudsVisualSystem::setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
