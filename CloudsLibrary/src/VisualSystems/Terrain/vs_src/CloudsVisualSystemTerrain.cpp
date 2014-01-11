@@ -647,6 +647,22 @@ void CloudsVisualSystemTerrain::selfSceneTransformation()
 void CloudsVisualSystemTerrain::selfExit()
 {
     
+    brushMesh.clear();
+    blurMesh.clear();
+    playerHistoryMap.clear();
+    playerDepositPoints.clear();
+    depositPoints.clear();
+    
+    colorShader.unload();
+    circleShader.unload();
+    vBlurShader.unload();
+    hBlurShader.unload();
+    normalsShader.unload();
+    patternShader.unload();
+    
+    terrainVbo.clear();
+    grayscottShader.unload();
+    noiseShader.unload();
 }
 
 ofVec2f CloudsVisualSystemTerrain::hermiteInterpolate(ofVec2f y0, ofVec2f y1, ofVec2f y2, ofVec2f y3, float pct, float tension, float bias){

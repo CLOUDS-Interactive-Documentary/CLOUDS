@@ -478,7 +478,12 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 		ofSetColor(255, crossfadeValue*255 );
 		
 		currentVisualSystem->selfPostDraw();
-		
+        
+        if (CloudsVisualSystem::getRGBDVideoPlayer().haveSubtitles())
+        {
+            CloudsVisualSystem::getRGBDVideoPlayer().getSubtitles().draw(ofGetWidth()/2, ofGetHeight()-60);
+        }
+        
 		hud.draw();
 		
 		ofPopStyle();
@@ -634,6 +639,7 @@ void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
 	else{
 		clipLoadSuccessfullyLoaded = CloudsVisualSystem::getRGBDVideoPlayer().setup(clip.combinedVideoPath,
 																					clip.combinedCalibrationXMLPath,
+                                                                                    clip.combinedSRTPath,
 																					toTime,clip.getSpeakerVolume());
 	}
 

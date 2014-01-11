@@ -66,6 +66,10 @@
 - (void)draw
 {
 	rgbdVisualSystem.selfPostDraw();
+    
+    if (rgbdVisualSystem.getRGBDVideoPlayer().haveSubtitles()) {
+        rgbdVisualSystem.getRGBDVideoPlayer().getSubtitles().draw(ofGetWindowWidth()/2, ofGetWindowHeight()-60);
+    }
 	
 	hud.draw();
 }
@@ -91,7 +95,7 @@
 		
 		currentClip = clip;
 	}
-	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath,1,clip.speakerVolume) ){
+	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, clip.combinedSRTPath, 1,clip.speakerVolume) ){
 		cout<<"clip.speakerVolume : "<<clip.speakerVolume<<endl;
 		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
 		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
