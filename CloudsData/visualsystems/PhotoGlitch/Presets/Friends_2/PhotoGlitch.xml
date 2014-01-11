@@ -43,7 +43,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>TWEEN DURATION</Name>
-    <Value>394</Value>
+    <Value>158</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -68,7 +68,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>SOURCE SORT HUE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -83,7 +83,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>LOOP BACK TO SOURCE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>

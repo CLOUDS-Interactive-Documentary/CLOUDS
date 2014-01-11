@@ -2,9 +2,14 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>265.000000000</XPosition>
-    <YPosition>29.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>44</Kind>
+    <Name>HAIR COUNT</Name>
+    <Value>10000</Value>
+</Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SPHERE SCALE</Name>
@@ -42,15 +47,16 @@
     <Value>0.773398995</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>6</Kind>
     <Name>HAIR LENGTH</Name>
-    <Value>0.985221684</Value>
+    <HighValue>1.009852171</HighValue>
+    <LowValue>1.009852171</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>HAIR LINE WIDTH</Name>
-    <HighValue>7.561575890</HighValue>
-    <LowValue>3.026108027</LowValue>
+    <HighValue>8.244335175</HighValue>
+    <LowValue>3.708867311</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -80,19 +86,19 @@
     <Kind>6</Kind>
     <Name>TIP HUE</Name>
     <HighValue>1.000000000</HighValue>
-    <LowValue>0.532019734</LowValue>
+    <LowValue>0.536945820</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>TIP SAT</Name>
     <HighValue>1.000000000</HighValue>
-    <LowValue>0.389162570</LowValue>
+    <LowValue>0.399014801</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>TIP BRI</Name>
     <HighValue>1.000000000</HighValue>
-    <LowValue>0.635468006</LowValue>
+    <LowValue>0.679803014</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>

@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>TargetImage2</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>47.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>185.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -42,7 +42,7 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>GrandPerspective1.png</Name>
+    <Name>GrandPerspective1.jpg</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

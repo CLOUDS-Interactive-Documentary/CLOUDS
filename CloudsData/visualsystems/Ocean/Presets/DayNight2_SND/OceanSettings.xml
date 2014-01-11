@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>OceanSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>849.000061035</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>847.000000000</XPosition>
+    <YPosition>28.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -33,7 +33,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>WAVE CHOPPINESS</Name>
-    <Value>1.970437288</Value>
+    <Value>1.280782223</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

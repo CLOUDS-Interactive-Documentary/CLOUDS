@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>PhotoGlitch</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -13,12 +13,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>NUM COLS</Name>
-    <Value>158</Value>
+    <Value>217</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>NUM ROWS</Name>
-    <Value>154</Value>
+    <Value>223</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>TWEEN DURATION</Name>
-    <Value>443</Value>
+    <Value>256</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -73,17 +73,17 @@
 <Widget>
     <Kind>2</Kind>
     <Name>SOURCE SORT BRI</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>SOURCE REORDER</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>LOOP BACK TO SOURCE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -98,7 +98,7 @@
 <Widget>
     <Kind>17</Kind>
     <Name>BronzeGreen.jpg</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>

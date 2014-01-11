@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>MarchingCubes</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>0.000000000</XPosition>
-    <YPosition>0.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,12 +13,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW GRID</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>RENDER NORMALS</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -33,12 +33,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>THRESHOLD</Name>
-    <Value>0.014778325</Value>
+    <Value>0.399999976</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>NOISE</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -48,25 +48,45 @@
 <Widget>
     <Kind>2</Kind>
     <Name>SINE^2</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FG HUE</Name>
-    <Value>0.000000000</Value>
+    <Value>204.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FG SAT</Name>
-    <Value>0.000000000</Value>
+    <Value>140.250000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FG BRI</Name>
-    <Value>0.000000000</Value>
+    <Value>223.125000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FG ALPHA</Name>
-    <Value>0.000000000</Value>
+    <Value>133.152709961</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Motion</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Use Grain</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Use Color Grain</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Grain Amnt</Name>
+    <Value>0.128078818</Value>
 </Widget>

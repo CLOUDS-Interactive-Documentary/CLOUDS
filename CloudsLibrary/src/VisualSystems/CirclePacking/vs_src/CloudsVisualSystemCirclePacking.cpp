@@ -34,15 +34,18 @@ void CloudsVisualSystemCirclePacking::selfSetupGui(){
 	customGui->addSlider("hero percent", 0, 1.0, &heroPercent);
 	customGui->addRangeSlider("small size",5, 100, &smallSizeRange.min, &smallSizeRange.max);
 	customGui->addRangeSlider("large size",5, 100, &largeSizeRange.min, &largeSizeRange.max);
-	
-	customGui->addSlider("primary color H", 0., 1.0, &primaryColor.r);
-	customGui->addSlider("primary color S", 0., 1.0, &primaryColor.g);
-	customGui->addSlider("primary color V", 0., 1.0, &primaryColor.b);
+	customGui->addRangeSlider("color H", 0., 1.0, &primaryColor.r, &secondaryColor.r );
+	customGui->addRangeSlider("color S", 0., 1.0, &primaryColor.g, &secondaryColor.g );
+	customGui->addRangeSlider("color V", 0., 1.0, &primaryColor.b, &secondaryColor.b );
+	customGui->addSlider("alpha", 0, 1.0, &alph);
 
-	customGui->addSlider("secondary color H", 0., 1.0, &secondaryColor.r);
-	customGui->addSlider("secondary color S", 0., 1.0, &secondaryColor.g);
-	customGui->addSlider("secondary color V", 0., 1.0, &secondaryColor.b);
+//	customGui->addSlider("secondary color H", 0., 1.0, &secondaryColor.r);
+//	customGui->addSlider("secondary color S", 0., 1.0, &secondaryColor.g);
+//	customGui->addSlider("secondary color V", 0., 1.0, &secondaryColor.b);
 	
+   // customGui->addSlider("Deviation", 0., 1.0, &deviation);
+
+    
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemCirclePacking::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
@@ -76,6 +79,15 @@ void CloudsVisualSystemCirclePacking::selfGuiEvent(ofxUIEventArgs &e){
     else if (e.widget->getName() == "Regenerate" && ((ofxUIToggle *)e.widget)->getValue()) {
         regenerate();
     }
+    
+//    if(e.widget->getName() == "color H" || e.widget->getName() == "color S" || e.widget->getName() == "color V")
+//	{
+//		ofFloatColor col;
+//		col.setHsb(primaryColor.r, primaryColor.g, primaryColor.b);
+//		customGui->getWidget("color H")->setColorFill(col);
+//		customGui->getWidget("color S")->setColorFill(col);
+//		customGui->getWidget("color V")->setColorFill(col);
+//	}
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -143,7 +155,9 @@ void CloudsVisualSystemCirclePacking::selfSetup(){
         
         initializeHashtags();
     }
-
+    
+    alph = 1.f;
+    
 	pack.pack();
 		
 }   
@@ -197,8 +211,12 @@ void CloudsVisualSystemCirclePacking::selfDrawBackground(){
 //	}
     
 	ofPushStyle();
-	ofNoFill();
+    ofEnableAlphaBlending();
+    if(!filled){
+        ofNoFill();
+    }
     pack.draw(NASDAQ, BLANKS, HASHTAGS);
+    ofDisableAlphaBlending();
 	ofPopStyle();
 	
 	//turn the background refresh off
@@ -215,14 +233,14 @@ void CloudsVisualSystemCirclePacking::initializeBlanks(){
 			pack.circles.push_back( Circle(ofRandom(getCanvasWidth()),
 										   ofRandom(getCanvasHeight()),
 										   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
-												 30, 60.), " ") );
+												 30, 60.), " ", primaryColor, secondaryColor, alph ));
 		}
 		else{
             //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
 			pack.circles.push_back( Circle(ofRandom(getCanvasWidth()),
 										   ofRandom(getCanvasHeight()),
 										   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
-                                                 5, 10), " ") );
+                                                 5, 10), " ", primaryColor, secondaryColor, alph  ));
         }
     }
 }
@@ -237,7 +255,7 @@ void CloudsVisualSystemCirclePacking::initializeNasdaq(){
     
     for(int i = 0; i < size; i++){
         //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
-        pack.circles.push_back( Circle(ofRandom(getCanvasWidth()),ofRandom(getCanvasHeight()), (marketCap[i]/2), companies[i]));
+        pack.circles.push_back( Circle(ofRandom(getCanvasWidth()),ofRandom(getCanvasHeight()), (marketCap[i]/2), companies[i], primaryColor, secondaryColor, alph  ));
         
         }
     }
@@ -252,7 +270,7 @@ void CloudsVisualSystemCirclePacking::initializeHashtags(){
     
     for(int i = 0; i < 10; i++){
         //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
-        pack.circles.push_back( Circle(ofRandom(getCanvasWidth()),ofRandom(getCanvasHeight()), ofRandom(40,100), hashtags[i]));
+        pack.circles.push_back( Circle(ofRandom(getCanvasWidth()),ofRandom(getCanvasHeight()), ofRandom(40,100), hashtags[i], primaryColor, secondaryColor, alph ));
         cout << "word " << i << hashtags[i] << endl;
         
     }
@@ -291,7 +309,7 @@ void CloudsVisualSystemCirclePacking::selfMouseMoved(ofMouseEventArgs& data){
     pack.circles.push_back( Circle(data.x,
                                    data.y,
                                    ofMap(powf(ofRandomuf(), 5.), 0. ,1.0,
-                                         10, 80.), "blank") );
+                                         10, 80.), "blank", primaryColor, secondaryColor, alph) );
     }
 }
 
@@ -307,7 +325,7 @@ void CloudsVisualSystemCirclePacking::selfMousePressed(ofMouseEventArgs& data){
         pack.circles.push_back( Circle(data.x,
                                        data.y,
                                        ofMap(powf(ofRandomuf(), 5.), 0. ,1.0,
-                                             70, 200), hashtags[int(ofRandom(size))]));
+                                             70, 200), hashtags[int(ofRandom(size))],primaryColor, secondaryColor, alph));
     }
 
 	
