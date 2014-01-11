@@ -4799,8 +4799,8 @@
 		E70CE6E91869649000955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE6EA1869649000955691 /* CloudsVisualSystemRGBDVideo.cpp */,
 				E70CE6EB1869649000955691 /* CloudsVisualSystemRGBDVideo.h */,
+				E70CE6EA1869649000955691 /* CloudsVisualSystemRGBDVideo.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -9267,6 +9267,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"AVF_PLAYER=1",
 					"KINECT_INPUT=1",
+					"VISUAL_SYSTEM_EDITOR=1",
 				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -9411,6 +9412,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"AVF_PLAYER=1",
 					"KINECT_INPUT=1",
+					"VISUAL_SYSTEM_EDITOR=1",
 				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -9636,6 +9638,10 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"AVF_PLAYER=1",
+					"VISUAL_SYSTEM_EDITOR=1",
+				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -9776,6 +9782,10 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"AVF_PLAYER=1",
+					"VISUAL_SYSTEM_EDITOR=1",
+				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -9920,6 +9930,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"AVF_PLAYER=1",
 					"OCULUS_RIFT=1",
+					"VISUAL_SYSTEM_EDITOR=1",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
@@ -10076,6 +10087,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"AVF_PLAYER=1",
 					"OCULUS_RIFT=1",
+					"VISUAL_SYSTEM_EDITOR=1",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
