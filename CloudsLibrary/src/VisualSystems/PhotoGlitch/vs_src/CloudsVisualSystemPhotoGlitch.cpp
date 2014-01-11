@@ -64,6 +64,8 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
     }
 
     customGui->addSpacer();
+//    customGui->addToggle("2D", &b2D);
+    customGui->addSlider("Scale", 0., 4., &mScale);
     customGui->addButton("ANIMATE", false);
     customGui->addIntSlider("DELAY B/W TWEENS", 1, 10, &delayParameter);
     customGui->addSpacer();
@@ -378,12 +380,15 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     // Set defaults.
     bUseColors  = false;
     bUseTexture = true;
+    bLoopBack = true;
     
     bCurrentlyAnimating = false;
     bOneCycleComplete = false;
     bIsFirstTime = false;
     bDoPerpendicular = false;
     
+//    b2D = true;
+    mScale = 1.;
     tweenDuration = 200;
     tweenDelay = 0;
     
@@ -800,7 +805,7 @@ void CloudsVisualSystemPhotoGlitch::updateSequence(){
             currentTarget = &target1;
             currentTargetParams = &gp1;
             cout<<"Update from source to target"<<endl;
-            if (! bOneCycleComplete) {
+            if (!bOneCycleComplete) {
                 updateAnimation();
             }
             
@@ -910,25 +915,26 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
     // update that data
     sourcePhoto.vbo.setVertexData(sourcePhoto.verts, kCoordsPerVert, sourcePhoto.numVerts, GL_STREAM_DRAW, kCoordsPerVert * sizeof(GLfloat));
     
-    bool isComplete = false;
+    bool isComplete = true;
     for (int i = 0; i < numCells; i++) {
         int vertIdx = sourcePhoto.cells[i].idx * kVertsPerCell * kCoordsPerVert;
         
-        if(sourcePhoto.cells[i].tweenX.isRunning() && sourcePhoto.cells[i].tweenY.isRunning()){
+        if(sourcePhoto.cells[i].tweenX.isRunning() || sourcePhoto.cells[i].tweenY.isRunning()){
             isComplete  = false;
             break;
         }
-        else{
-            isComplete  = true;
-        }
+//        else{
+//            isComplete  = true;
+//        }
     }
     
-    if(isComplete && bCurrentlyAnimating){
+    if(isComplete && bCurrentlyAnimating ){
         
         if(ofGetElapsedTimeMillis() % delayValue < 10){
             
             bCurrentlyAnimating = false;
             updateSequence();
+            cout<<"we done"<<endl;
         }
     }
 }
@@ -937,6 +943,7 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemPhotoGlitch::selfDraw(){
     
+   
 }
 
 // draw any debug stuff here
@@ -947,6 +954,12 @@ void CloudsVisualSystemPhotoGlitch::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
 {
+    ofPushMatrix();
+    ofTranslate(getCanvasWidth()/2, getCanvasHeight()/2);
+    ofPushMatrix();
+    ofScale(mScale, mScale);
+    ofTranslate(-getCanvasWidth()/2, -getCanvasHeight()/2);
+    
     if(! bSourceFolderExists || !bTargetFolderExists || !bSourceImageExists || !bTargetImageExists){
 //        ofLogError("[ CloudsVisualSystemPhotoGlitch::selfDrawBackground ]")<<" Image folders not found"<<endl;
         return;
@@ -1007,6 +1020,8 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
         }
     }
     
+    ofPopMatrix();
+    ofPopMatrix();
 }
 
 // this is called when your system is no longer drawing.
@@ -1024,6 +1039,7 @@ void CloudsVisualSystemPhotoGlitch::selfExit()
     sourcePhoto.clear();
     bgVbo.clear();
     delete currentTarget; currentTarget = NULL;
+    currentTargetParams->targetImageNames.clear();
     delete currentTargetParams; currentTargetParams = NULL;
     
 }
