@@ -310,8 +310,9 @@ void CloudsVisualSystemBallDroppings::selfMouseReleased(ofMouseEventArgs& data)
 		if ( sqrt(xd*xd+yd*yd) > 10 ){//10 is the mouse drag movement margin for nondraggers
             ofMouseEventArgs args;
 			//JG: REMOVE MOUSE CALLS
-            args.x = ofGetMouseX();
-            args.y = ofGetMouseY();
+            //MA: replaced ofGetMouseX() with getCloudsInputx();
+            args.x =  GetCloudsInputX();
+            args.y = GetCloudsInputY();
             args.button = 0;
 			mousePressed(args);//nudge the new line drawing.
 		}
@@ -567,8 +568,9 @@ void CloudsVisualSystemBallDroppings::updateClosestPickingLine(){
 		if ( mousestate_draggingvert==0){
 			//v1
 			//measuring distance from mouse
-			float xd = thisLine->x1 - ofGetMouseX();
-			float yd = thisLine->y1 - ofGetMouseY();
+            //MA: replaced ofGetMouseX() with GetCloudsInputX()
+			float xd = thisLine->x1 - GetCloudsInputX();
+			float yd = thisLine->y1 - GetCloudsInputY();
 			float dist = sqrt(xd*xd+yd*yd);
 			//have we got a winner?
 			if ( dist  < closeDist){
@@ -579,8 +581,9 @@ void CloudsVisualSystemBallDroppings::updateClosestPickingLine(){
             
 			//v2
 			//measuring distance from mouse
-			xd = thisLine->x2 - ofGetMouseX();
-			yd = thisLine->y2 - ofGetMouseY();
+            //MA: replaced ofGetMouseX() with GetCloudsInputX()
+			xd = thisLine->x2 - GetCloudsInputX();
+			yd = thisLine->y2 - GetCloudsInputY();
 			dist = sqrt(xd*xd+yd*yd);
 			//have we got a winner?
 			if ( dist  < closeDist){
@@ -605,9 +608,11 @@ void CloudsVisualSystemBallDroppings::updateClosestPickingLine(){
 		//JG: REMOVE MOUSE INTERACTION
 		//set vertex to mouse position.
 		if(closestLineVertex==0){//which side of the line?
-			closestLine->set1(ofGetMouseX(),ofGetMouseY());
+            //MA: replaced ofGetMouseX() with GetCloudsInputX()
+			closestLine->set1(GetCloudsInputX(),GetCloudsInputY());
 		} else {
-			closestLine->set2(ofGetMouseX(),ofGetMouseY());
+            //MA: replaced ofGetMouseX() with GetCloudsInputX()
+			closestLine->set2(GetCloudsInputX(),GetCloudsInputY());
 		}
 		//fix just in case
 		if(closestLine->fixDirection()){

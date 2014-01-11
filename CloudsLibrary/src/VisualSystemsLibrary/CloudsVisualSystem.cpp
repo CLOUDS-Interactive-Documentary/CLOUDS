@@ -362,6 +362,7 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
 	
 	//Make this happen only when the timeline is modified by the user or when a new track is added.
+    
 	if(!ofGetMousePressed())
     {
 //		ofLogError("TIMELINE UPDATE FOR SYSTEM " + getSystemName());

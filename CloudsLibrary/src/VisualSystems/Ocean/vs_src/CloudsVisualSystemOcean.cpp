@@ -161,7 +161,8 @@ void CloudsVisualSystemOcean::selfUpdate(){
 		
 	//now we can move the camera up and down based on mouse position
 	if(useOceanCam){
-		float mouseYPercent = 1.*ofGetMouseY() / ofGetHeight();
+        //MA: changed ofGetHeight() to getCanvasHeight()
+		float mouseYPercent = 1.*GetCloudsInputY() / getCanvasHeight();
 		if(mouseYPercent > .6){
 			currentLookRot += (ofMap(mouseYPercent, .6, 1.0, 0, -maxLookUpRot, true) - currentLookRot) * .005;
 		}

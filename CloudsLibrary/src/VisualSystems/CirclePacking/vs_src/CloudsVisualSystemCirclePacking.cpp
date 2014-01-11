@@ -99,7 +99,8 @@ void CloudsVisualSystemCirclePacking::regenerate(){
  
     pack.circles.clear();
     
-    pack = CirclePacker(1.0f*ofGetWidth(),1.0f*ofGetHeight(), 12);
+    //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+    pack = CirclePacker(1.0f*getCanvasWidth(),1.0f*getCanvasHeight(), 12);
     
     if (NASDAQ){
         initializeNasdaq();
@@ -126,8 +127,9 @@ void CloudsVisualSystemCirclePacking::selfSetup(){
 	
    // Circle::Font.loadFont(getVisualSystemDataPath() + "Verdana14.ttf", 14, true, true, true);
     Circle::Font.loadFont(getVisualSystemDataPath() + "Verdana14.ttf", 14);
-
-	pack = CirclePacker(1.0f*ofGetWidth(),1.0f*ofGetHeight(), 15);
+    
+    //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+	pack = CirclePacker(1.0f*getCanvasWidth(),1.0f*getCanvasHeight(), 15);
     
     if (NASDAQ){
         initializeNasdaq();
@@ -208,14 +210,17 @@ void CloudsVisualSystemCirclePacking::initializeBlanks(){
     
     for(int i = 0; i < 200; i++){
 		if(ofRandomuf() > .9){
-			pack.circles.push_back( Circle(ofRandom(ofGetWidth()),
-										   ofRandom(ofGetHeight()),
+            
+            //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+			pack.circles.push_back( Circle(ofRandom(getCanvasWidth()),
+										   ofRandom(getCanvasHeight()),
 										   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
 												 30, 60.), " ") );
 		}
 		else{
-			pack.circles.push_back( Circle(ofRandom(ofGetWidth()),
-										   ofRandom(ofGetHeight()),
+            //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+			pack.circles.push_back( Circle(ofRandom(getCanvasWidth()),
+										   ofRandom(getCanvasHeight()),
 										   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
                                                  5, 10), " ") );
         }
@@ -231,7 +236,8 @@ void CloudsVisualSystemCirclePacking::initializeNasdaq(){
     int size = sizeof(marketCap)/sizeof(marketCap[0]);
     
     for(int i = 0; i < size; i++){
-        pack.circles.push_back( Circle(ofRandom(ofGetWidth()),ofRandom(ofGetHeight()), (marketCap[i]/2), companies[i]));
+        //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+        pack.circles.push_back( Circle(ofRandom(getCanvasWidth()),ofRandom(getCanvasHeight()), (marketCap[i]/2), companies[i]));
         
         }
     }
@@ -245,7 +251,8 @@ void CloudsVisualSystemCirclePacking::initializeHashtags(){
     int size = sizeof(hashtags)/sizeof(hashtags[0]);
     
     for(int i = 0; i < 10; i++){
-        pack.circles.push_back( Circle(ofRandom(ofGetWidth()),ofRandom(ofGetHeight()), ofRandom(40,100), hashtags[i]));
+        //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+        pack.circles.push_back( Circle(ofRandom(getCanvasWidth()),ofRandom(getCanvasHeight()), ofRandom(40,100), hashtags[i]));
         cout << "word " << i << hashtags[i] << endl;
         
     }

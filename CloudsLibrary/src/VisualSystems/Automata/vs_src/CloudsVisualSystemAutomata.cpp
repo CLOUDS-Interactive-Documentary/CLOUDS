@@ -217,7 +217,8 @@ void CloudsVisualSystemAutomata::selfDraw()
     if (!bIs2D) {
         ofPushMatrix();
         ofScale(1, -1, 1);
-        ofTranslate(-ofGetWidth() / 2, -ofGetHeight() / 2);
+        //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+        ofTranslate(-getCanvasWidth() / 2, -getCanvasHeight() / 2);
         render();
         ofPopMatrix();
     }
@@ -233,9 +234,10 @@ void CloudsVisualSystemAutomata::selfDrawBackground()
 {
     if (bIs2D) {
         ofPushMatrix();
-        ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2);
+        //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+        ofTranslate(getCanvasWidth() / 2, getCanvasHeight() / 2);
         ofScale(scale2D, scale2D, 1);
-        ofTranslate(-ofGetWidth() / 2, -ofGetHeight() / 2);
+        ofTranslate(-getCanvasWidth() / 2, -getCanvasHeight() / 2);
         render();
         ofPopMatrix();
     }

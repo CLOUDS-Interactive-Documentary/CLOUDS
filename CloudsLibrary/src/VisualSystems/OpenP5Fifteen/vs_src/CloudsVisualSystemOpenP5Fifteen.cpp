@@ -112,8 +112,10 @@ void CloudsVisualSystemOpenP5Fifteen::selfSetup()
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5Fifteen::restart()
 {
-    float width = ofGetWidth();
-    float height = ofGetHeight();
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+
+    float width = getCanvasWidth();
+    float height = getCanvasHeight();
     
     // Update the dimensions in the shader.
     shader.begin();
@@ -205,7 +207,9 @@ void CloudsVisualSystemOpenP5Fifteen::restart()
     
     // Reset variables.
     count = 0;
-    attractor.set(ofGetMouseX(), ofGetMouseY());
+    
+    //MA: replaced ofGetMouseX() with GetCloudsInputX()
+    attractor.set(GetCloudsInputX(), GetCloudsInputY());
 }
 
 //--------------------------------------------------------------
@@ -232,13 +236,16 @@ void CloudsVisualSystemOpenP5Fifteen::selfUpdate()
 {
     fgColor.setHsb(fgHue->getPos(), fgSat->getPos(), fgBri->getPos(), fgAlpha->getPos());
     
-    if (bRestart || srcFbo.getWidth() != ofGetWidth() || srcFbo.getHeight() != ofGetHeight()) {
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    if (bRestart || srcFbo.getWidth() != getCanvasWidth() || srcFbo.getHeight() != getCanvasHeight()) {
         restart();
         bRestart = false;
     }
     
     // Move towards the mouse.
-    ofVec2f toMouse = ofVec2f(ofGetMouseX(), ofGetMouseY()) - attractor;
+    //MA: replaced ofGetMouseX() with GetCloudsInputX()
+
+    ofVec2f toMouse = ofVec2f(GetCloudsInputX(), GetCloudsInputY()) - attractor;
     if (toMouse.length() < speed) {
         attractor += toMouse;
     }

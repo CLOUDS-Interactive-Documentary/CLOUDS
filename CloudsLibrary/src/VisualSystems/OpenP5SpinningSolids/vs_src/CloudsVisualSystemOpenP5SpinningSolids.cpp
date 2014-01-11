@@ -146,8 +146,9 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfMouseDragged(ofMouseEventArgs& 
 
 void CloudsVisualSystemOpenP5SpinningSolids::selfMouseMoved(ofMouseEventArgs& data){
     
-    float x = ofMap(data.x, 0, ofGetWidth(), -(ofGetWidth()/2.0), (ofGetWidth()/2.0));
-    float y = ofMap(data.y, 0, ofGetHeight(), -(ofGetHeight()/2.0), (ofGetHeight()/2.0));
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    float x = ofMap(data.x, 0, getCanvasWidth(), -(getCanvasWidth()/2.0), (getCanvasWidth()/2.0));
+    float y = ofMap(data.y, 0, getCanvasHeight(), -(getCanvasHeight()/2.0), (getCanvasHeight()/2.0));
     
     ofPushStyle();
     //ofSetColor(255,255, 255);
