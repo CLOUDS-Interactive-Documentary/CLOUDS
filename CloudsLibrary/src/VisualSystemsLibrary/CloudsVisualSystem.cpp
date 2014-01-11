@@ -457,9 +457,6 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		}
 		else {
 			
-			//update the interactive camera data
-			previousinteractiveCameraRot;
-			
 			CloudsVisualSystem::getSharedRenderTarget().begin();
 			if(bClearBackground){
 				ofClear(0, 0, 0, 1.0);
@@ -468,35 +465,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			
 			getCameraRef().begin();
 			
-			//transform for our interactive camera
-			if(bUseInteractiveCamera)
-			{
-				//need top replace the the dimension getters
-				
-				interactiveCameraRot *= 1. - interactiveCameraDamping;
-				
-				interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX)*interactiveCameraDamping;
-				interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY)*interactiveCameraDamping;
-				
-				previousinteractiveCameraRot = interactiveCameraRot;
-				
-				ofPushMatrix();
-				
-				ofTranslate( getCameraRef().getPosition());
-				
-				ofRotate( interactiveCameraRot.x, 0, 1, 0);
-				ofRotate( interactiveCameraRot.y, 1, 0, 0);
-				
-				ofTranslate( -getCameraRef().getPosition());
-			}
-			
 			drawScene();
-			
-			//end our interactive camera transform
-			if(bUseInteractiveCamera)
-			{
-				ofPopMatrix();
-			}
 			
 			getCameraRef().end();
 			
@@ -551,16 +520,32 @@ void CloudsVisualSystem::draw2dSystemPlane(){
 
 void CloudsVisualSystem::drawScene(){
 	
-	
-//	//start our 3d scene
+	ofPushMatrix();
+    
+	//start our 3d scene
 	ofRotateX(xRot->getPos());
 	ofRotateY(yRot->getPos());
 	ofRotateZ(zRot->getPos());
-	
+    
 	selfSceneTransformation();
-	
-	//accumulated position offset
-//	ofTranslate( positionOffset );
+
+    if(bUseInteractiveCamera){
+        interactiveCameraRot *= 1. - interactiveCameraDamping;
+        
+        interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX)*interactiveCameraDamping;
+        interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY)*interactiveCameraDamping;
+        
+        previousinteractiveCameraRot = interactiveCameraRot;
+  
+        GLfloat model[16];
+        glGetFloatv(GL_MODELVIEW_MATRIX, model);
+        ofMatrix4x4 curmv;
+        curmv.set(model);
+        ofMultMatrix(curmv.getInverse());
+        ofRotate( interactiveCameraRot.x, 0, 1, 0);
+        ofRotate( interactiveCameraRot.y, 1, 0, 0);
+        ofMultMatrix(curmv);
+    }
 	
 	glEnable(GL_DEPTH_TEST);
 	
@@ -580,7 +565,8 @@ void CloudsVisualSystem::drawScene(){
 	lightsEnd();
 	
 	glDisable(GL_DEPTH_TEST);
-	
+    
+    ofPopMatrix();
 
 #ifdef OCULUS_RIFT
     if(drawCursorMode > DRAW_CURSOR_NONE){
