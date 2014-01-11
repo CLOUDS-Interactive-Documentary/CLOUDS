@@ -115,9 +115,9 @@ void CloudsPlaybackController::setup(){
 	
 	
 	clusterMap = ofPtr<CloudsVisualSystemClusterMap>( new CloudsVisualSystemClusterMap() );
-	clusterMap->buildEntireCluster(parser);
 	clusterMap->setRun(run);
 	clusterMap->setup();
+	clusterMap->buildEntireCluster(parser);
 	clusterMap->setDrawToScreen(false);
 	
 	introSequence = ofPtr<CloudsIntroSequence>( new CloudsIntroSequence() );
@@ -312,9 +312,10 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             hud.questionHoverOff();
         }
 
-        if(rgbdVisualSystem->isQuestionSelected()){	
+        if(!bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
             
-            bQuestionAsked = true;		
+            bQuestionAsked = true;
+//            rgbdVisualSystem->clearQuestions();
             transitionController.transitionWithQuestion(1.0, 1.0);		
         }
     }
@@ -412,7 +413,7 @@ void CloudsPlaybackController::updateTransition(){
 				
 //               	bool destroyAct = currentAct != args.act;
                 clearAct(true);
- 
+
                 clusterMap->traverse();
                 clusterMap->loadPresetGUISFromName("JG_SIMPLECAM");
                 clusterMap->playSystem();
@@ -451,8 +452,10 @@ void CloudsPlaybackController::updateTransition(){
 					clip = q->clip;
 					topic = q->topic;
 					
+                    rgbdVisualSystem->clearQuestions();
+                    
 					bQuestionAsked = false;
-					
+                    
 					run.questionTopicHistory.insert(topic);
 					
 					storyEngine.buildAct(run, clip, topic);
