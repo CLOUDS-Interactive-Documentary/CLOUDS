@@ -113,7 +113,9 @@ static ofxOculusRift oculusRift;
 #include "OVR.h"
 ofxOculusRift& CloudsVisualSystem::getOculusRift(){
 	if(!oculusRift.isSetup()){
+        checkOpenGLError("PRE SETUP OCULUS");
 		oculusRift.setup();
+        checkOpenGLError("POST SETUP OCULUS");
 	}
 
 	return oculusRift;
@@ -412,13 +414,16 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		//bind our fbo, lights, debug
         if(bUseOculusRift){
 			#ifdef OCULUS_RIFT
+			checkOpenGLError(getSystemName() + ":: BEFORE DRAW BACKGROUND");
             getOculusRift().beginBackground();
 			drawBackgroundGradient();
             getOculusRift().endBackground();
+			checkOpenGLError(getSystemName() + ":: AFTER DRAW BACKGROUND");
 
 			getOculusRift().beginOverlay(-230, 320,240);
+			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
 			selfDrawOverlay();
-			checkOpenGLError(getSystemName() + ":: DRAW OVERLAY");
+			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
 			getOculusRift().endOverlay();
 			
             if(bIs2D){
@@ -427,7 +432,6 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
                     ofClear(0, 0, 0, 1.0);
                 }                
                 selfDrawBackground();
-				checkOpenGLError(getSystemName() + ":: DRAW BACKGROUND");
                 CloudsVisualSystem::getSharedRenderTarget().end();
                 
                 getOculusRift().baseCamera = &getCameraRef();
@@ -512,6 +516,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		//draw the fbo to the screen as a full screen quad
 		if(bDrawToScreen){
 			selfPostDraw();
+            checkOpenGLError(getSystemName() + ":: POST DRAW");
 		}
 		
 #ifndef OCULUS_RIFT

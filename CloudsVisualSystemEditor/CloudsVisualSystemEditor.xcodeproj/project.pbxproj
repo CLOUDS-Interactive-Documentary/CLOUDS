@@ -44,6 +44,9 @@
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
 		609133841652CA6600B523AD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6091337C1652C9C900B523AD /* MainMenu.xib */; };
 		609133871652CB3E00B523AD /* testView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 609133861652CB3E00B523AD /* testView.mm */; };
+		64789B6B1881F1A600EAFCC7 /* CloudsInputOculus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64789B691881F1A600EAFCC7 /* CloudsInputOculus.cpp */; };
+		64789B6C1881F35100EAFCC7 /* CloudsVisualSystemSchlabberbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 850D80CF187BA67200BB3A84 /* CloudsVisualSystemSchlabberbox.cpp */; };
+		64789B6D1881F35400EAFCC7 /* GridFluid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 850D80D1187BA67200BB3A84 /* GridFluid.cpp */; };
 		64CE97A01880DB8100491913 /* Filters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37C7DFB186EB28B00FCDA79 /* Filters.cpp */; };
 		64CE97A11880DB8100491913 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		64CE97A21880DB8100491913 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -1736,6 +1739,8 @@
 		6091337C1652C9C900B523AD /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		609133851652CB3E00B523AD /* testView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testView.h; sourceTree = "<group>"; };
 		609133861652CB3E00B523AD /* testView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = testView.mm; sourceTree = "<group>"; };
+		64789B691881F1A600EAFCC7 /* CloudsInputOculus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputOculus.cpp; sourceTree = "<group>"; };
+		64789B6A1881F1A600EAFCC7 /* CloudsInputOculus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputOculus.h; sourceTree = "<group>"; };
 		64CE99C31880DB8100491913 /* CloudsVisualSystemEditorKinect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudsVisualSystemEditorKinect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		850D80CF187BA67200BB3A84 /* CloudsVisualSystemSchlabberbox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemSchlabberbox.cpp; sourceTree = "<group>"; };
 		850D80D0187BA67200BB3A84 /* CloudsVisualSystemSchlabberbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemSchlabberbox.h; sourceTree = "<group>"; };
@@ -6353,6 +6358,8 @@
 				E79E6F4D1855302B00406535 /* CloudsInputMouse.cpp */,
 				E79E6F7A1855522A00406535 /* CloudsInputKinectOSC.h */,
 				E79E6F791855522A00406535 /* CloudsInputKinectOSC.cpp */,
+				64789B6A1881F1A600EAFCC7 /* CloudsInputOculus.h */,
+				64789B691881F1A600EAFCC7 /* CloudsInputOculus.cpp */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -9122,6 +9129,7 @@
 				E70CEB861869649200955691 /* CloudsVisualSystemMetaballs.cpp in Sources */,
 				E70CEB881869649200955691 /* CloudsVisualSystemNbody.cpp in Sources */,
 				E70CEB8A1869649200955691 /* CloudsVisualSystemNeurons.cpp in Sources */,
+				64789B6B1881F1A600EAFCC7 /* CloudsInputOculus.cpp in Sources */,
 				E70CEB8C1869649200955691 /* CloudsVisualSystemOcean.cpp in Sources */,
 				E70CEB8E1869649200955691 /* CloudsVisualSystemAutomata.cpp in Sources */,
 				E70CEB901869649200955691 /* Caster.cpp in Sources */,
@@ -9154,7 +9162,9 @@
 				F37C7E64186EB28C00FCDA79 /* BufferPlayer.cpp in Sources */,
 				E70CEBBE1869649200955691 /* CloudsVisualSystemPages.cpp in Sources */,
 				F37C7E72186EB28C00FCDA79 /* ControlConditioner.cpp in Sources */,
+				64789B6D1881F35400EAFCC7 /* GridFluid.cpp in Sources */,
 				E70CEBC01869649200955691 /* Page.cpp in Sources */,
+				64789B6C1881F35100EAFCC7 /* CloudsVisualSystemSchlabberbox.cpp in Sources */,
 				E70CEBC21869649200955691 /* Brush.cpp in Sources */,
 				E70CEBC41869649200955691 /* CloudsVisualSystemPaintBrush.cpp in Sources */,
 				E70CEBC61869649200955691 /* Particle.cpp in Sources */,

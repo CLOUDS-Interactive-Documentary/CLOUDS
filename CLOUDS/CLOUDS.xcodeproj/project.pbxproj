@@ -14,6 +14,7 @@
 		64323E89187A4DAE00316058 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64323E84187A4DAE00316058 /* CloudsPortal.cpp */; };
 		64323E8A187A4DAE00316058 /* CloudsPortalRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */; };
 		64323E8B187A4DAE00316058 /* CloudsPortalRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */; };
+		64CE99CE1881061800491913 /* CloudsInputOculus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64CE99CC1881061800491913 /* CloudsInputOculus.cpp */; };
 		85891D24187FE40F00325DD8 /* CloudsSecondaryDisplayOSCSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CDDC2186958B200955691 /* CloudsSecondaryDisplayOSCSender.cpp */; };
 		85891D27187FE44B00325DD8 /* PanelConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C289C31877CA6C00A0C07F /* PanelConsole.cpp */; };
 		85891D2A187FE45300325DD8 /* PanelTenPrint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C289C51877CA6C00A0C07F /* PanelTenPrint.cpp */; };
@@ -1811,6 +1812,8 @@
 		64323E85187A4DAE00316058 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortal.h; sourceTree = "<group>"; };
 		64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortalRing.cpp; sourceTree = "<group>"; };
 		64323E87187A4DAE00316058 /* CloudsPortalRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortalRing.h; sourceTree = "<group>"; };
+		64CE99CC1881061800491913 /* CloudsInputOculus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputOculus.cpp; sourceTree = "<group>"; };
+		64CE99CD1881061800491913 /* CloudsInputOculus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputOculus.h; sourceTree = "<group>"; };
 		85891D23187FE34200325DD8 /* CLOUDS_OCULUS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CLOUDS_OCULUS copy-Info.plist"; path = "/Users/jonathanminard/Documents/Development/openFrameworks/apps/CLOUDS/CLOUDS/CLOUDS_OCULUS copy-Info.plist"; sourceTree = "<absolute>"; };
 		A600C143188105C10041787F /* ofxSubtitles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitles.cpp; sourceTree = "<group>"; };
 		A600C144188105C10041787F /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
@@ -6917,6 +6920,8 @@
 		E79E6F3A18551DD100406535 /* Input */ = {
 			isa = PBXGroup;
 			children = (
+				64CE99CC1881061800491913 /* CloudsInputOculus.cpp */,
+				64CE99CD1881061800491913 /* CloudsInputOculus.h */,
 				E79E6F3C18551DE300406535 /* CloudsInput.h */,
 				E79E6F3B18551DE300406535 /* CloudsInput.cpp */,
 				E734A0551855750F002E615C /* CloudsInputKinectOSC.h */,
@@ -9334,6 +9339,7 @@
 				E70CE35618695CCD00955691 /* CloudsVisualSystemVectorFlow.cpp in Sources */,
 				E70CE35818695CCD00955691 /* CloudsVisualSystemVerletForm.cpp in Sources */,
 				E70CE35A18695CCD00955691 /* CloudsVisualSystemVision.cpp in Sources */,
+				64CE99CE1881061800491913 /* CloudsInputOculus.cpp in Sources */,
 				E70CE35E18695CCD00955691 /* MyTracker.cpp in Sources */,
 				E70CE36018695CCD00955691 /* CloudsVisualSystemVoro.cpp in Sources */,
 				E70CE36218695CCD00955691 /* c_loops.cpp in Sources */,
@@ -10238,6 +10244,7 @@
 		E7FB26281830D4C0009EBD0E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -10403,12 +10410,14 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/x86_64\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/android/armeabi\"";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = CLOUDS_OCULUSDebug;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -10416,6 +10425,7 @@
 		E7FB26291830D4C0009EBD0E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -10586,12 +10596,14 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/x86_64\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/android/armeabi\"";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release/libovr.a",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = CLOUDS_OCULUS;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

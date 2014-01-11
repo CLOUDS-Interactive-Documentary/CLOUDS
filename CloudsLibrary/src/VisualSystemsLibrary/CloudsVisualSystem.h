@@ -441,7 +441,7 @@ class CloudsVisualSystem {
 	
 
 	
-	void checkOpenGLError(string function);
+	static void checkOpenGLError(string function);
 	
 	
 	//TRANSITION OPTIONS
