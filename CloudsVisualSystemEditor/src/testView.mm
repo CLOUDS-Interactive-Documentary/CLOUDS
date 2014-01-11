@@ -28,7 +28,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	
 	if(ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
 		parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
-        cout<<"Clouds Directory is pointing to "<<ofBufferFromFile(GetCloudsDataPath	() + "CloudsMovieDirectory.txt").getText()<<endl;
+        cout<<"Clouds Directory is pointing to "<<ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText()<<endl;
 	}
 	else{
 		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
@@ -56,16 +56,22 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	filterGradeABox.state  = NSOffState;
 	
 	[self updateFilters:self];
-	
+
+    NSLog(@"All clip table? %@", allClipTable);
+    
+    [clipTable setTarget:self];
+    [clipTable setDoubleAction:@selector(floadClipFromTable:)];
+    
+    [allClipTable setTarget:self];
+	[allClipTable setDoubleAction:@selector(loadClipFromTable:)];
+    [allClipTable reloadData];
+    
     [presetTable setTarget:self];
 	[presetTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	[presetTable reloadData];
     
-    [allClipTable reloadData];
-//	[allKeywordTable reloadData];
     
-    [clipTable setDoubleAction:@selector(loadClipFromTable:)];
-	[allClipTable setDoubleAction:@selector(loadClipFromTable:)];
+    
 	
 	[self updateCounts];
 

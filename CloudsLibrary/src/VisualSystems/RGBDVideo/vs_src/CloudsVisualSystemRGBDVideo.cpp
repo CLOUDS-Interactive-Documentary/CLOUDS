@@ -95,7 +95,8 @@ void CloudsVisualSystemRGBDVideo::selfDraw(){
 		ofPushMatrix();
 		
 		setupRGBDTransforms();
-		
+//		ofTranslate(0,0,-pointcloudOffsetZ);
+//        	ofScale(-1, -1, 1);
 		//ofTranslate(translatedHeadPosition);
 		
 		rgbdPixelToPixelShader.begin();
@@ -202,8 +203,6 @@ void CloudsVisualSystemRGBDVideo::selfSetupGui(){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBDVideo::selfGuiEvent(ofxUIEventArgs &e){
-	
-	cout << "widget " << e.widget->getName() << endl;
 	
 	if(e.widget->getName() == "Load Video"){
 		
