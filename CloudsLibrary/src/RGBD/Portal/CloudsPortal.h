@@ -57,8 +57,9 @@ class CloudsPortal {
 	float hoverPercentComplete;
 	float selectedPercentComplete;
 	ofVec3f hoverPosition;
-	ofVec2f screenPosition; //filled out on update
-
+	ofVec3f screenPosition; //filled out on update
+    bool onScreen;
+    
 	bool bLookAtCamera;
 	ofVec3f lookTarget; //billboards the tunnel
 	

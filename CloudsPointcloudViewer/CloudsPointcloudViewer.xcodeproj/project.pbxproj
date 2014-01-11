@@ -233,8 +233,6 @@
 		E7A3F26918321B0600EADD94 /* CloudsSpeaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74620C917DB8162002FC464 /* CloudsSpeaker.cpp */; };
 		E7A3F26A18321B0600EADD94 /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A46917DBE3FC0088335A /* ofxDelaunay.cpp */; };
 		E7A3F26B18321B0600EADD94 /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A47B17DBE4D00088335A /* Delaunay.cpp */; };
-		E7A3F26C18321B0600EADD94 /* question.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E2C01812192900CA4196 /* question.frag */; };
-		E7A3F26D18321B0600EADD94 /* question.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E2C11812192900CA4196 /* question.vert */; };
 		E7A3F26F18321B0600EADD94 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73996561787300C00EA5F4D /* CoreMedia.framework */; };
 		E7A3F27018321B0600EADD94 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73996541787300700EA5F4D /* QuartzCore.framework */; };
 		E7A3F27118321B0600EADD94 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739965217872FFC00EA5F4D /* AVFoundation.framework */; };
@@ -274,8 +272,6 @@
 		E7DCAF0E1839C20300A70EAA /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DCAEB51839C20300A70EAA /* ofxFTGLSimpleLayout.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
-		E7E5E2C21812192900CA4196 /* question.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E2C01812192900CA4196 /* question.frag */; };
-		E7E5E2C31812192900CA4196 /* question.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E2C11812192900CA4196 /* question.vert */; };
 		E7F051311873664C00017521 /* CloudsHUDLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F0512F1873664C00017521 /* CloudsHUDLabel.cpp */; };
 		E7F051321873664C00017521 /* CloudsHUDLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F0512F1873664C00017521 /* CloudsHUDLabel.cpp */; };
 		E7F051351873667500017521 /* CloudsSVGMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F051331873667500017521 /* CloudsSVGMesh.cpp */; };
@@ -354,6 +350,12 @@
 		A600C0911880CD320041787F /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
 		A600C0921880CD320041787F /* ofxSubtitleUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitleUnit.cpp; sourceTree = "<group>"; };
 		A600C0931880CD320041787F /* ofxSubtitleUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitleUnit.h; sourceTree = "<group>"; };
+		A6D587B91881C3F40014B5BD /* rgbdLines.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = rgbdLines.frag; path = ../../CloudsData/visualsystems/RGBD/shaders/rgbdLines.frag; sourceTree = "<group>"; };
+		A6D587BA1881C3F40014B5BD /* rgbdLines.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = rgbdLines.vert; path = ../../CloudsData/visualsystems/RGBD/shaders/rgbdLines.vert; sourceTree = "<group>"; };
+		A6D587BB1881C3F40014B5BD /* rgbdMesh.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = rgbdMesh.frag; path = ../../CloudsData/visualsystems/RGBD/shaders/rgbdMesh.frag; sourceTree = "<group>"; };
+		A6D587BC1881C3F40014B5BD /* rgbdMesh.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = rgbdMesh.vert; path = ../../CloudsData/visualsystems/RGBD/shaders/rgbdMesh.vert; sourceTree = "<group>"; };
+		A6D587BD1881C3F40014B5BD /* rgbdPoints.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = rgbdPoints.frag; path = ../../CloudsData/visualsystems/RGBD/shaders/rgbdPoints.frag; sourceTree = "<group>"; };
+		A6D587BE1881C3F40014B5BD /* rgbdPoints.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = rgbdPoints.vert; path = ../../CloudsData/visualsystems/RGBD/shaders/rgbdPoints.vert; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1102,6 +1104,12 @@
 		E7380339183C968A0018AB96 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				A6D587B91881C3F40014B5BD /* rgbdLines.frag */,
+				A6D587BA1881C3F40014B5BD /* rgbdLines.vert */,
+				A6D587BB1881C3F40014B5BD /* rgbdMesh.frag */,
+				A6D587BC1881C3F40014B5BD /* rgbdMesh.vert */,
+				A6D587BD1881C3F40014B5BD /* rgbdPoints.frag */,
+				A6D587BE1881C3F40014B5BD /* rgbdPoints.vert */,
 				E7E5E2C01812192900CA4196 /* question.frag */,
 				E7E5E2C11812192900CA4196 /* question.vert */,
 			);
@@ -1865,8 +1873,6 @@
 				E74620CB17DB8162002FC464 /* CloudsSpeaker.cpp in Sources */,
 				E730A47517DBE3FC0088335A /* ofxDelaunay.cpp in Sources */,
 				E730A47D17DBE4D00088335A /* Delaunay.cpp in Sources */,
-				E7E5E2C21812192900CA4196 /* question.frag in Sources */,
-				E7E5E2C31812192900CA4196 /* question.vert in Sources */,
 				18C070D71836BB2500B58246 /* CloudsIntervention.cpp in Sources */,
 				E7DCAF0B1839C20300A70EAA /* ofxFTGLFont.cpp in Sources */,
 				E7DCAF0D1839C20300A70EAA /* ofxFTGLSimpleLayout.cpp in Sources */,
@@ -1980,8 +1986,6 @@
 				E7A3F26918321B0600EADD94 /* CloudsSpeaker.cpp in Sources */,
 				E7A3F26A18321B0600EADD94 /* ofxDelaunay.cpp in Sources */,
 				E7A3F26B18321B0600EADD94 /* Delaunay.cpp in Sources */,
-				E7A3F26C18321B0600EADD94 /* question.frag in Sources */,
-				E7A3F26D18321B0600EADD94 /* question.vert in Sources */,
 				E7A3F50318321B4300EADD94 /* ofxOculusRift.cpp in Sources */,
 				E7DCAF0C1839C20300A70EAA /* ofxFTGLFont.cpp in Sources */,
 				E7DCAF0E1839C20300A70EAA /* ofxFTGLSimpleLayout.cpp in Sources */,

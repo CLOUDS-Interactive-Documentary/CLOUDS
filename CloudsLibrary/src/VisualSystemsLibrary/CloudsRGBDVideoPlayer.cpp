@@ -208,9 +208,10 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 //    cout<<"Current Max Vol: "<<currentMaxVolume<<endl;
 	swap(currentPlayer,nextPlayer);
 	swap(currentVoiceoverPlayer, nextVoiceoverPlayer);
+#ifdef SHOW_SUBTITLES
     swap(currentSubtitles, nextSubtitles);
 	swap(currentHaveSubtitles, nextHaveSubtitles);
-    
+#endif
 	if(nextClipIsVO){
 		currentVoiceoverPlayer->play();
 		currentVoiceoverPlayer->setLoop(false);
@@ -329,13 +330,13 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		
 		getPlayer().setVolume(audioVolume);
 
-		if(position > duration - .04){
+		if(forceStop && position > duration - .04){
 			getPlayer().stop();
 		}
         
         /* Subtitles */
         if (currentHaveSubtitles) {
-#ifdef AVF_PLAYER
+#ifdef SHOW_SUBTITLES
             currentSubtitles.setTimeInSeconds(getPlayer().getCurrentTime());
 #endif
         }
@@ -350,8 +351,10 @@ bool CloudsRGBDVideoPlayer::isDone(){
 	return playingVO ? !currentVoiceoverPlayer->getIsPlaying() : (getPlayer().isLoaded() && !getPlayer().isPlaying());
 }
 
-bool CloudsRGBDVideoPlayer::loadSubtitles(string path)
-{
+#ifdef SHOW_SUBTITLES
+
+bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
+    
     if (path == "") {
         return false;
     }
@@ -366,19 +369,25 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path)
         fps = 30;
     }
             
-    if (!nextSubtitles.setup(path, GetCloudsDataPath() + "/font/MateriaPro_Regular.ttf", 18, fps, TEXT_JUSTIFICATION_CENTER)) {
+    if(!nextSubtitles.setup(path, GetCloudsDataPath() + "/font/MateriaPro_Regular.ttf", 18, fps, TEXT_JUSTIFICATION_CENTER)) {
         return false;
     }
-
-    return true;
-}
     
-bool CloudsRGBDVideoPlayer::haveSubtitles()
-{
-    return currentHaveSubtitles;
+    return true;
 }
     
 ofxSubtitles& CloudsRGBDVideoPlayer::getSubtitles()
 {
     return currentSubtitles;
 }
+#else
+bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
+    return true;
+}
+#endif
+    
+bool CloudsRGBDVideoPlayer::haveSubtitles()
+{
+    return currentHaveSubtitles;
+}
+    
