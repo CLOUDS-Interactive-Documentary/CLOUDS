@@ -43,6 +43,7 @@ void CloudsHUDController::clipBegan(CloudsClipEventArgs& args){
 
 void CloudsHUDController::visualSystemBegan(CloudsVisualSystemEventArgs& args){
 	bDrawHud = false;
+//    animateOff();
 }
 
 void CloudsHUDController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
@@ -54,7 +55,7 @@ void CloudsHUDController::questionAsked(CloudsQuestionEventArgs& args){
 }
 
 void CloudsHUDController::topicChanged(CloudsTopicEventArgs& args){
-
+    animateOff( CLOUDS_HUD_QUESTION );
 }
 
 void CloudsHUDController::preRollRequested(CloudsPreRollEventArgs& args){

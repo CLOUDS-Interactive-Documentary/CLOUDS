@@ -97,23 +97,20 @@ void CloudsAct::populateTime(){
                 visualSystemsTrack->addFlagAtTime("start :" + item.key, item.startTime * 1000);
             }
             
-            if(item.endTime != item.outroStartTime){
+            if(item.endTime != duration && item.endTime != item.outroStartTime){
                 visualSystemsTrack->addFlagAtTime("outro :" + item.key, item.outroStartTime * 1000);
                 visualSystemsTrack->addFlagAtTime("end :" + item.key, item.endTime * 1000);
             }
-            else{
-                visualSystemsTrack->addFlagAtTime("outro :" + item.key, item.outroStartTime * 1000);
-                visualSystemsTrack->addFlagAtTime("end :" + item.key, item.endTime * 1000);
-            }
+//            if(item.endTime != item.outroStartTime){
+//            }
+//            else{
+//                visualSystemsTrack->addFlagAtTime("outro :" + item.key, item.outroStartTime * 1000);
+//                visualSystemsTrack->addFlagAtTime("end :" + item.key, item.endTime * 1000);
+//            }
         }
         else if(item.type == PreRoll){
             clipPreRollTrack->addFlagAtTime(item.key, item.startTime * 1000);
         }
-//        else if (item.type == Gap){
-//            vsGapsTrack->addFlagAtTime("gap start:" + item.key, item.startTime * 1000);
-//            vsGapsTrack->addFlagAtTime("gap end:" + item.key, item.endTime * 1000);
-//            // SM: Just doing this to display on the timeline. No events sent to the playback controller.
-//        }
         else if(item.type == Question){
             questionsTrack->addFlagAtTime(item.key, item.startTime*1000);
         }

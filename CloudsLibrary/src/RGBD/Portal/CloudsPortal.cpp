@@ -27,7 +27,7 @@ CloudsPortal::CloudsPortal(){
 	ringThickness = 10;
 	ringThicknessMultiplier = 1.2;
 	ringDensity = 10; //geo per segment
-	ringCount = 20;
+	ringCount = 10;
 	
 	selectedPercentComplete = 0.0;
 	selectAnimationDuration = 3.0;

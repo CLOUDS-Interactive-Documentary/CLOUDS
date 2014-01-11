@@ -131,9 +131,9 @@ void CloudsVisualSystemRGBD::selfSetup(){
 
 void CloudsVisualSystemRGBD::playTestVideo(){
 
-	if(ofFile::doesFileExist("TestVideo/Lindsay_memes_2.mov")){
-		getRGBDVideoPlayer().setup("TestVideo/Lindsay_memes_2.mov",
-								   "TestVideo/Lindsay_memes_2.xml", 0, 0  );
+	if(ofFile::doesFileExist("TestVideo/Maeda_ACU_p_2.mov")){
+		getRGBDVideoPlayer().setup("TestVideo/Maeda_ACU_p_2.mov",
+								   "TestVideo/Maeda_ACU_p_2.xml", 0, 0);
 		getRGBDVideoPlayer().swapAndPlay();
 	}
 }
@@ -394,6 +394,13 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfUpdate(){
 	
+    if(getQuestionText() != ""){
+        drawCursorMode =  DRAW_CURSOR_PRIMARY;
+    }
+    else {
+        drawCursorMode =  DRAW_CURSOR_NONE;
+    }
+        
 	if(numRandomPoints != points.getNumVertices()){
 		generatePoints();
 	}
@@ -1239,6 +1246,8 @@ void CloudsVisualSystemRGBD::speakerChanged(){
 	rightPortal.question = "";
 	leftPortal.question = "";
 	
+    timeline->hide();
+    
 	//check speaker vars
 	//	this->speakerFirstName = speakerFirstName;
 	//	this->speakerLastName = speakerLastName;
@@ -1619,6 +1628,19 @@ void CloudsVisualSystemRGBD::selfEnd(){
 
 bool CloudsVisualSystemRGBD::isQuestionSelectedAndClipDone(){
     return selectedPortal != NULL && getRGBDVideoPlayer().isDone();
+}
+
+string CloudsVisualSystemRGBD::getQuestionText(){
+    if(bPortalDebugOn){
+        return "WHAT DOES IT FEEL LIKE TO CODE?";
+    }
+    else if(caughtPortal != NULL){
+        return caughtPortal->question;
+    }
+    else if(selectedPortal != NULL){
+        return selectedPortal->question;
+    }
+    return "";
 }
 
 bool CloudsVisualSystemRGBD::isQuestionSelected(){

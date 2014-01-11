@@ -34,6 +34,8 @@ void CloudsPlaybackController::clearAct(bool destroyAct){
 		}
 	}
 	
+    visualSystems.freeSystemPointers();
+    
 	currentAct->unregisterEvents(this);
 	currentAct->unregisterEvents(&run);
 	currentAct->unregisterEvents(&hud);
@@ -301,12 +303,22 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	////////////////////
 	// RGBD SYSTEM
 //	if(rgbdVisualSystem->isQuestionSelectedAndClipDone()){
-	if(rgbdVisualSystem->isQuestionSelected()){	
-		
-		bQuestionAsked = true;		
-		transitionController.transitionWithQuestion(1.0, 1.0);		
-	}
-	
+    if(currentVisualSystem == rgbdVisualSystem){
+        string questionText = rgbdVisualSystem->getQuestionText();
+        if(questionText != ""){
+            hud.questionHoverOn(questionText);
+        }
+        else{
+            hud.questionHoverOff();
+        }
+
+        if(rgbdVisualSystem->isQuestionSelected()){	
+            
+            bQuestionAsked = true;		
+            transitionController.transitionWithQuestion(1.0, 1.0);		
+        }
+    }
+    
 	if(!showingClusterMap){
 		hud.update();
 	}
@@ -398,8 +410,11 @@ void CloudsPlaybackController::updateTransition(){
 				
 				hud.setHomeEnabled(false);
 				
+//               	bool destroyAct = currentAct != args.act;
+                clearAct(true);
+ 
                 clusterMap->traverse();
-                clusterMap->loadPresetGUISFromName("3DFreeCam");
+                clusterMap->loadPresetGUISFromName("JG_SIMPLECAM");
                 clusterMap->playSystem();
 
 				currentVisualSystem = clusterMap;
@@ -538,10 +553,7 @@ void CloudsPlaybackController::drawDebugOverlay(){
 void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 	
 	numClipsPlayed = 0;
-	
-	bool destroyAct = currentAct != args.act;
-	clearAct(destroyAct);
-	
+		
 	shouldPlayAct = true;
 	currentAct = args.act;
 }
@@ -682,7 +694,8 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
 	rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
 #else
 //	rgbdVisualSystem->loadPresetGUISFromName("g_FIN_Style_01");
-    rgbdVisualSystem->loadPresetGUISFromName("JG_Provisional_Thursday");
+//    rgbdVisualSystem->loadPresetGUISFromName("JG_Provisional_Thursday");
+    rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
 #endif
 	rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
 	rgbdVisualSystem->playSystem();

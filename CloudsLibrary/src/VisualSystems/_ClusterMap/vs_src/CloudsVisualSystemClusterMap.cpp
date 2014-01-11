@@ -782,7 +782,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 		glEnable(GL_LINE_SMOOTH);
 	}
 	else{
-		glEnable(GL_LINE_SMOOTH);
+		glDisable(GL_LINE_SMOOTH);
 	}
 	glDisable(GL_DEPTH_TEST);
 
@@ -830,7 +830,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 								   lineEdgeColorRGB.a);
 		networkShader.setUniformTexture("flickerTex", flickerNoise, 1);
 		networkShader.setUniform1f("flickerIntensity", lineFlickerIntensity);
-		ofSetLineWidth(networkLineWidth);
+//		ofSetLineWidth(networkLineWidth);
 		networkShader.setUniform1f("colorMixExponent", lineColorMixExponent);
 		networkMesh.draw();
 		networkShader.end();
@@ -860,7 +860,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 		traversalShader.setUniform1f("colorFalloff", traverseFalloff);
 		traversalShader.setUniform1f("trailVertCount", traversalMesh.getNumVertices());
 		traversalShader.setUniform1f("segemntVertCount", traversalPath.back().endIndex - traversalPath.back().startIndex);
-		ofSetLineWidth(traverseLineWidth);
+//		ofSetLineWidth(traverseLineWidth);
 		traversalMesh.draw();
 		traversalShader.end();
 	}
@@ -894,7 +894,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 		
 		optionsShader.setUniform1f("percentOptionsRevealed", percentOptionsRevealed);
 		optionsShader.setUniform1i("fadeIn", 1);
-		ofSetLineWidth(optionLineWidth);
+//		ofSetLineWidth(optionLineWidth);
 		optionsMeshNext.draw();
 
 		optionsShader.end();

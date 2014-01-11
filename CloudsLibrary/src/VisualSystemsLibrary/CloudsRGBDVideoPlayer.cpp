@@ -335,7 +335,9 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
         
         /* Subtitles */
         if (currentHaveSubtitles) {
+#ifdef AVF_PLAYER
             currentSubtitles.setTimeInSeconds(getPlayer().getCurrentTime());
+#endif
         }
 	}
 }
