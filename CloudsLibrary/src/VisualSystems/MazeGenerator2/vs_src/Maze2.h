@@ -10,22 +10,22 @@
 #define __MazeGenerator__Maze__
 
 #include <ofMain.h>
-#include "MazeCamera.h"
-#include "MazeCell.h"
-#include "ParamManager.h"
+#include "MazeCamera2.h"
+#include "MazeCell2.h"
+#include "ParamManager2.h"
 
-#define NUM_CELLS_X 61
-#define NUM_CELLS_Y 10000
+#define NUM_CELLS_X2 61
+#define NUM_CELLS_Y2 10000
 
-class Maze
+class Maze2
 {
 public:
     float cellSize;
     float wallThickness;
     float wallHeight;
     
-    Maze(float cSize, float wThick, float wHeight, ofVec3f p = ofVec3f());
-    ~Maze();
+    Maze2(float cSize, float wThick, float wHeight, ofVec3f p = ofVec3f());
+    ~Maze2();
     void generate();
     
     void update(ofCamera* cam);
@@ -40,12 +40,12 @@ protected:
     ofVec3f pos;
     ofVbo geometry;
     
-    MazeCell* cells[NUM_CELLS_X][NUM_CELLS_Y];
-    std::stack<MazeCell*> cellStack;
+    MazeCell2* cells[NUM_CELLS_X2][NUM_CELLS_Y2];
+    std::stack<MazeCell2*> cellStack;
     int step;
     int currentYLimit;
-    MazeCell* currentCell;
-    MazeCell* exitCell;
+    MazeCell2* currentCell;
+    MazeCell2* exitCell;
 
     bool finishedGenerating;
     bool finishedSolving;

@@ -70,9 +70,10 @@ namespace k4w
     // defined by us
     enum ActionState
     {
-        ActionState_Idle   = 0,
-        ActionState_Lasso  = 1,
-        ActionState_Closed = 2
+        ActionState_Inactive    = -1,
+        ActionState_Idle        =  0,
+        ActionState_Lasso       =  1,
+        ActionState_Closed      =  2
     };
     
     struct Joint 
@@ -140,7 +141,7 @@ namespace k4w
             handJoint.handState = HandState_NotTracked;
             
             activeFrames = 0;
-            actionState = ActionState_Idle;
+            actionState = ActionState_Inactive;
             for (int i = 0; i < HandState_Count; i++){
                 poll[i] = 0;
             }

@@ -6,9 +6,9 @@
 //
 //
 
-#include "MazeCell.h"
+#include "MazeCell2.h"
 
-MazeCell::MazeCell(int _x, int _y, float s, float t, float h)
+MazeCell2::MazeCell2(int _x, int _y, float s, float t, float h)
 {
     x = _x;
     y = _y;
@@ -24,7 +24,7 @@ MazeCell::MazeCell(int _x, int _y, float s, float t, float h)
     visible = true;
 }
 
-void MazeCell::draw(bool isGenerator)
+void MazeCell2::draw(bool isGenerator)
 {
     if (!visible) {
         return;
@@ -33,7 +33,7 @@ void MazeCell::draw(bool isGenerator)
     if (isGenerator)
     {
         ofFill();
-        ofSetColor(ParamManager::getInstance().getGeneratorColor());
+        ofSetColor(ParamManager2::getInstance().getGeneratorColor());
         ofPushMatrix();
         ofTranslate(x*size+size/2, 0, y*size+size/2);
         ofScale(size, size, size);
@@ -42,7 +42,7 @@ void MazeCell::draw(bool isGenerator)
     }
     
     ofFill();
-    ofSetColor(ParamManager::getInstance().getWallColor());
+    ofSetColor(ParamManager2::getInstance().getWallColor());
 
     if (top && bottom && right && left) {
 //        ofPushMatrix();

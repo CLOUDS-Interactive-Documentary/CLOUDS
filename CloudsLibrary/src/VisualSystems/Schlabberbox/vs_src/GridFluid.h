@@ -3,6 +3,7 @@
 
 #include "ofMain.h"
 #include "ofxNearestNeighbour.h"
+#include "CloudsGlobal.h"
 //#include "Fluid.h"
 //#include "haganlib.h"
 //#include "Vector3.h"
