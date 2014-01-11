@@ -441,7 +441,7 @@ class CloudsVisualSystem {
 	
 
 	
-	void checkOpenGLError(string function);
+	static void checkOpenGLError(string function);
 	
 	
 	//TRANSITION OPTIONS
@@ -450,4 +450,9 @@ class CloudsVisualSystem {
 	string getTransitionOption();
 //	map<string, vector<string> > transitionOptionMap;
 //	ofxUISuperCanvas* transitionOptionGui;
+	
+	//INTERACTIVE CAMERA
+	bool bUseInteractiveCamera;
+	float interactiveCameraMinX, interactiveCameraMaxX, interactiveCameraMinY, interactiveCameraMaxY,interactiveCameraDamping;
+	ofVec2f interactiveCameraRot, previousinteractiveCameraRot;
 };

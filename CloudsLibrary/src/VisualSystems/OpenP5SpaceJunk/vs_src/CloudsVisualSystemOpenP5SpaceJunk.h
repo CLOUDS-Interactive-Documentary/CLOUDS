@@ -139,7 +139,7 @@ class CloudsVisualSystemOpenP5SpaceJunk : public CloudsVisualSystem {
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
-	
+
 
 protected:
     

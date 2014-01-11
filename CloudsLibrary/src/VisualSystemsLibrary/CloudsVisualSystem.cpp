@@ -113,7 +113,9 @@ static ofxOculusRift oculusRift;
 #include "OVR.h"
 ofxOculusRift& CloudsVisualSystem::getOculusRift(){
 	if(!oculusRift.isSetup()){
+        checkOpenGLError("PRE SETUP OCULUS");
 		oculusRift.setup();
+        checkOpenGLError("POST SETUP OCULUS");
 	}
 
 	return oculusRift;
@@ -240,6 +242,13 @@ void CloudsVisualSystem::setup(){
 	hideGUIS();
 
 	bIsSetup = true;
+	
+	bUseInteractiveCamera = false;
+	interactiveCameraDamping = 0;
+	interactiveCameraMinX = interactiveCameraMaxX = interactiveCameraMinY = interactiveCameraMaxY = 0;
+	interactiveCameraRot = previousinteractiveCameraRot = ofVec2f(0,0);
+	interactiveCameraDamping = 0;
+	interactiveCameraRot.set(0,0);
 }
 
 bool CloudsVisualSystem::isSetup(){
@@ -405,13 +414,16 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		//bind our fbo, lights, debug
         if(bUseOculusRift){
 			#ifdef OCULUS_RIFT
+			checkOpenGLError(getSystemName() + ":: BEFORE DRAW BACKGROUND");
             getOculusRift().beginBackground();
 			drawBackgroundGradient();
             getOculusRift().endBackground();
+			checkOpenGLError(getSystemName() + ":: AFTER DRAW BACKGROUND");
 
 			getOculusRift().beginOverlay(-230, 320,240);
+			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
 			selfDrawOverlay();
-			checkOpenGLError(getSystemName() + ":: DRAW OVERLAY");
+			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
 			getOculusRift().endOverlay();
 			
             if(bIs2D){
@@ -420,7 +432,6 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
                     ofClear(0, 0, 0, 1.0);
                 }                
                 selfDrawBackground();
-				checkOpenGLError(getSystemName() + ":: DRAW BACKGROUND");
                 CloudsVisualSystem::getSharedRenderTarget().end();
                 
                 getOculusRift().baseCamera = &getCameraRef();
@@ -445,7 +456,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			#endif
 		}
 		else {
-		
+			
 			CloudsVisualSystem::getSharedRenderTarget().begin();
 			if(bClearBackground){
 				ofClear(0, 0, 0, 1.0);
@@ -453,7 +464,9 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			drawBackground();
 			
 			getCameraRef().begin();
+			
 			drawScene();
+			
 			getCameraRef().end();
 			
 			ofPushStyle();
@@ -472,6 +485,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		//draw the fbo to the screen as a full screen quad
 		if(bDrawToScreen){
 			selfPostDraw();
+            checkOpenGLError(getSystemName() + ":: POST DRAW");
 		}
 		
 #ifndef OCULUS_RIFT
@@ -506,16 +520,32 @@ void CloudsVisualSystem::draw2dSystemPlane(){
 
 void CloudsVisualSystem::drawScene(){
 	
-	
-//	//start our 3d scene
+	ofPushMatrix();
+    
+	//start our 3d scene
 	ofRotateX(xRot->getPos());
 	ofRotateY(yRot->getPos());
 	ofRotateZ(zRot->getPos());
-	
+    
 	selfSceneTransformation();
-	
-	//accumulated position offset
-//	ofTranslate( positionOffset );
+
+    if(bUseInteractiveCamera){
+        interactiveCameraRot *= 1. - interactiveCameraDamping;
+        
+        interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX)*interactiveCameraDamping;
+        interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY)*interactiveCameraDamping;
+        
+        previousinteractiveCameraRot = interactiveCameraRot;
+  
+        GLfloat model[16];
+        glGetFloatv(GL_MODELVIEW_MATRIX, model);
+        ofMatrix4x4 curmv;
+        curmv.set(model);
+        ofMultMatrix(curmv.getInverse());
+        ofRotate( interactiveCameraRot.x, 0, 1, 0);
+        ofRotate( interactiveCameraRot.y, 1, 0, 0);
+        ofMultMatrix(curmv);
+    }
 	
 	glEnable(GL_DEPTH_TEST);
 	
@@ -535,7 +565,8 @@ void CloudsVisualSystem::drawScene(){
 	lightsEnd();
 	
 	glDisable(GL_DEPTH_TEST);
-	
+    
+    ofPopMatrix();
 
 #ifdef OCULUS_RIFT
     if(drawCursorMode > DRAW_CURSOR_NONE){
@@ -1400,6 +1431,17 @@ void CloudsVisualSystem::setupCameraGui()
     camGui->addSlider("ROT-Z", 0, 360.0, zRot->getPosPtr())->setIncrement(1.0);
     camGui->addLabel("TRACK");
     camGui->addButton("ADD KEYFRAME", false);
+	
+	camGui->addSpacer();
+	camGui->addToggle("InteractiveCamera", &bUseInteractiveCamera);
+	camGui->addSlider("damping", 0, 1, &interactiveCameraDamping);
+	
+	camGui->addMinimalSlider("minX", -90	, 90, &interactiveCameraMinX);
+	camGui->addMinimalSlider("maxX", -90	, 90, &interactiveCameraMaxX);
+	camGui->addMinimalSlider("minY", -90	, 90, &interactiveCameraMinY);
+	camGui->addMinimalSlider("maxY", -90	, 90, &interactiveCameraMaxY);
+	camGui->addSpacer();
+	
 	vector<string> transitions;
 	transitions.push_back("2D");
 	transitions.push_back("3D FLY THROUGH");
