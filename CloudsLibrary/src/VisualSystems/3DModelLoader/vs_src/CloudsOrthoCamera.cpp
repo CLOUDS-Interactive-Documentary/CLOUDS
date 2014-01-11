@@ -105,7 +105,10 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 	}
 	
 	//JG: REMOVE MOUSE CALLS
-	if( bExploreMode && !ofGetMousePressed() && viewport.inside( ofGetMouseX(), ofGetMouseY() ) )
+    //MA: replaced ofGetMousePressed() with GetCloudsMousePressed()
+    //MA: replaced ofGetMouseX() with GetCloudsInputX()
+
+	if( bExploreMode && !GetCloudsInputPressed() && viewport.inside( GetCloudsInputX(), GetCloudsInputY() ) )
 	{
 //		float mouseScl = .5;
 //		float moveZone = .1;
@@ -146,12 +149,14 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 		//convert mouse coords in to somethin we can work with
 		float mx = -1;
 		//JG: REMOVE MOUSE CALLS
+        //MA: replaced ofGetMouseX() with GetCloudsInputX()
+
 		if(viewport.getLeft() != viewport.getRight()){
-			mx = ofMap( ofGetMouseX(), viewport.getLeft(), viewport.getRight(), -1., 1., true );
+			mx = ofMap( GetCloudsInputX(), viewport.getLeft(), viewport.getRight(), -1., 1., true );
 		}
 		float my = -1;
 		if(viewport.getTop() != viewport.getBottom()){
-			my = ofMap( ofGetMouseY(), viewport.getTop(), viewport.getBottom(), -1., 1., true );
+			my = ofMap( GetCloudsInputY(), viewport.getTop(), viewport.getBottom(), -1., 1., true );
 		}
 		
 		float dist = ofVec2f(mx, my).length();
@@ -187,7 +192,9 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 		
 		//mouse input
 		//JG: REMOVE MOUSE CALLS
-		if(dist > deadZone && viewport.inside( ofGetMouseX(), ofGetMouseY() ) )
+        //MA: replaced ofGetMouseX() with GetCloudsInputX()
+
+		if(dist > deadZone && viewport.inside( GetCloudsInputX(), GetCloudsInputY() ) )
 		{
 			//the deadzone is an area in the center of the screen where we don't rotate
 			float weight = ofMap( dist - deadZone, deadZone, 1, 0, 1, true );
@@ -413,12 +420,17 @@ void CloudsOrthoCamera::updateRotation(){
 //----------------------------------------
 void CloudsOrthoCamera::updateMouse(){
 	//JG: REMOVE MOUSE CALLS
-	mouse = ofVec2f(ofGetMouseX(), ofGetMouseY());
-	if(viewport.inside(mouse.x, mouse.y) && !bValidClick && ofGetMousePressed()){
+    //MA: replaced ofGetMousePressed() with GetCloudsMousePressed()
+    //MA: replaced ofGetMouseX() with GetCloudsInputX()
+
+	mouse = ofVec2f(GetCloudsInputX(), GetCloudsInputY());
+	if(viewport.inside(mouse.x, mouse.y) && !bValidClick && GetCloudsInputPressed()){
 		unsigned long curTap = ofGetElapsedTimeMillis();
 		if(lastTap != 0 && curTap - lastTap < doubleclickTime){
 			reset();
 		}
+        
+        //HOW TO REMOVE THESE MOUSE PRESSED CALLS?
 		if ((bEnableMouseMiddleButton && ofGetMousePressed(1)) || ofGetKeyPressed(doTranslationKey)  || ofGetMousePressed(2)){
 			bDoTranslate = true;
 			bDoRotate = false;
@@ -441,7 +453,8 @@ void CloudsOrthoCamera::updateMouse(){
 	}
 	
 	if (bValidClick) {
-		if (!ofGetMousePressed()) {
+        //MA: replaced ofGetMousePressed() with GetCloudsMousePressed()
+		if (!GetCloudsInputPressed()) {
 			bApplyInertia = true;
 			bValidClick = false;
 		}else {

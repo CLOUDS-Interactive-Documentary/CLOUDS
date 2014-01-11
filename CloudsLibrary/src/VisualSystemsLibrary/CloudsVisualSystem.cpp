@@ -16,6 +16,8 @@
 #include "ofxAVFVideoPlayer.h"
 #endif
 
+static bool bShowMouseCursor = false;
+
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
 static CloudsRGBDVideoPlayer rgbdPlayer;
@@ -197,6 +199,13 @@ void CloudsVisualSystem::setup(){
 	if(bIsSetup){
 		return;
 	}
+    
+    if (bShowMouseCursor) {
+        ofShowCursor();
+    }
+    else {
+        ofHideCursor();
+    }
 	
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 	
@@ -364,6 +373,7 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
 	
 	//Make this happen only when the timeline is modified by the user or when a new track is added.
+    
 	if(!ofGetMousePressed())
     {
 //		ofLogError("TIMELINE UPDATE FOR SYSTEM " + getSystemName());
@@ -768,6 +778,16 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
             }
         }
 		break;
+            
+        case 'C':
+            bShowMouseCursor ^= true;
+            if (bShowMouseCursor) {
+                ofShowCursor();
+            }
+            else {
+                ofHideCursor();
+            }
+            break;
 		
 		case 'T':
 			cameraTrack->addKeyframe();

@@ -329,7 +329,8 @@ void CloudsVisualSystemTerrain::selfUpdate()
                 grayscottShader.setUniform1f("f", f);
                 grayscottShader.setUniform1f("time", ofGetElapsedTimef()+500.f);
                 grayscottShader.setUniform1f("fade", grayscottFade);
-                grayscottShader.setUniform2f("mouse", mouse.x/ofGetWidth(), mouse.y/ofGetHeight() );
+                //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+                grayscottShader.setUniform2f("mouse", mouse.x/getCanvasWidth(), mouse.y/getCanvasHeight() );
                 glBegin(GL_QUADS);
                 glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
                 glTexCoord2f(width, 0); glVertex3f(width, 0, 0);
@@ -434,7 +435,8 @@ void CloudsVisualSystemTerrain::selfUpdate()
         for (it = playerDepositPoints.begin(); it != playerDepositPoints.end(); it++) {
             for(int i = 0; i <it->second.size(); i++){
                 ofPushMatrix();
-                ofTranslate(ofVec2f(ofMap(it->second[i].x,0,ofGetWidth(), 0,canvasDest.getWidth()),ofMap(it->second[i].y,0,ofGetHeight(), 0,canvasDest.getHeight())) - centerTranslate);
+                //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+                ofTranslate(ofVec2f(ofMap(it->second[i].x,0,getCanvasWidth(), 0,canvasDest.getWidth()),ofMap(it->second[i].y,0,getCanvasHeight(), 0,canvasDest.getHeight())) - centerTranslate);
                 brushMesh.draw();
                 ofPopMatrix();
             }

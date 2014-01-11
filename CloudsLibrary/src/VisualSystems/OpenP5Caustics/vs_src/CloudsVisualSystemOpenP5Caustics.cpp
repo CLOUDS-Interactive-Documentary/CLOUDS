@@ -110,8 +110,9 @@ void CloudsVisualSystemOpenP5Caustics::guiRenderEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5Caustics::selfSetup()
 {
-    width = ofGetWidth();
-    height = ofGetHeight();
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    width = getCanvasWidth();
+    height = getCanvasHeight();
     numPixels = width * height;
     
     outputTexture.allocate(width, height, GL_RGB);

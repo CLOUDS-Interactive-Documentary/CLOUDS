@@ -467,7 +467,8 @@ void CloudsVisualSystemWebHistory::selfDrawBackground()
     ofSetColor(listColor);
     
     int stringHeight = 20;
-    int maxNumStrings = ofGetHeight() / stringHeight;
+    //MA: changed ofGetHeight() to getCanvasHeight()
+    int maxNumStrings = getCanvasHeight() / stringHeight;
     
     if (bClearScreen) {
         if (searchTermCount > 0 && (ofGetFrameNum() % (int)typeSpeed == 0)) {

@@ -72,8 +72,9 @@ void CloudsVisualSystemVectorFlow::selfSetupGuis(){
 }
 
 void CloudsVisualSystemVectorFlow::selfUpdate(){
-	   
-	if(regenerateFlow || width != ofGetWidth() || height != ofGetHeight()){
+    
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+	if(regenerateFlow || width != getCanvasWidth() || height != getCanvasHeight()){
 		regenerateFlow = false;
 		initFlowField();
 	}
@@ -233,7 +234,8 @@ void CloudsVisualSystemVectorFlow::getSincSourceAngle(int x, int y, float& angle
 	float distSq = sincToPos.lengthSquared();
 //	if( distSq < powf(sincRadius, 2) ){
 //	angle = ofVec2f(0, 1).angle(sincToPos) / 360.0;;
-	float sincRadSq = powf(sincRadius*ofGetWidth(),2);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+	float sincRadSq = powf(sincRadius*getCanvasWidth(),2);
 	if(sincRadius > 0 && distSq < sincRadSq){
 //		angle = ofMap( atan2(y,x) - atan2(mousePos.y,mousePos.x), -PI/2.0, PI/2.0, 0, 1.0 ) ;
 		angle = ofMap( atan2(sincToPos.y,sincToPos.x), -TWO_PI, TWO_PI, -1.0, 1.0 ) ;
@@ -268,7 +270,8 @@ void CloudsVisualSystemVectorFlow::selfDrawBackground(){
 	if(!bClearBackground){
 		ofEnableAlphaBlending();
 		ofSetColor(0,0,0, 5);
-		ofRect(0, 0, ofGetWidth(), ofGetHeight());
+        //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+		ofRect(0, 0, getCanvasWidth(), getCanvasHeight());
 	}
 	ofPopStyle();
 
@@ -425,10 +428,10 @@ void CloudsVisualSystemVectorFlow::guiRenderEvent(ofxUIEventArgs &e){
 
 void CloudsVisualSystemVectorFlow::initBlurFilter()
 {
-    
-    fboBlurX.allocate(ofGetWidth(), ofGetHeight());
-    fboFinal.allocate(ofGetWidth(), ofGetHeight());
-    fboInitial.allocate(ofGetWidth(), ofGetHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    fboBlurX.allocate(getCanvasWidth(), getCanvasHeight());
+    fboFinal.allocate(getCanvasWidth(), getCanvasHeight());
+    fboInitial.allocate(getCanvasWidth(), getCanvasHeight());
     fboBlurX.begin();
     ofClear(0, 0, 0);
     fboBlurX.end();

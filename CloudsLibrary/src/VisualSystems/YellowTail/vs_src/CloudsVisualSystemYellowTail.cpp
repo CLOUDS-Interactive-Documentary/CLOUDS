@@ -13,7 +13,8 @@ string CloudsVisualSystemYellowTail::getSystemName(){
 void CloudsVisualSystemYellowTail::selfSetup(){
 	
     // It'll be 16 & 11 on iPad, 8 & 6 on iPhone
-	float deviceScale = ofClamp(ofGetHeight() / 1024,1, 1024);
+    //MA: changed ofGetHeight() to getCanvasHeight()
+	float deviceScale = ofClamp(getCanvasHeight() / 1024,1, 1024);
 	softMaxGestures = MIN(ceil(16.0 * deviceScale), MAX_GESTURES);
 	softMaxTouches  = MIN(ceil(11.0 * deviceScale), MAX_TOUCHES);
 	
@@ -115,7 +116,8 @@ void CloudsVisualSystemYellowTail::selfExit(){
 
 void CloudsVisualSystemYellowTail::selfBegin(){
 
-    Gesture *introGesture = new Gesture(ofGetWidth(), ofGetHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    Gesture *introGesture = new Gesture(getCanvasWidth(), getCanvasHeight());
     introGesture->fromXMLFile( getVisualSystemDataPath() + "strokes/y_stroke.xml" );
     gestures.push_back(introGesture);
 }
@@ -232,7 +234,8 @@ void CloudsVisualSystemYellowTail::selfInteractionStarted(CloudsInteractionEvent
 //        mNewGestureStyle = GestureStyleInPlace;
 //    } 
     
-	Gesture *newGesture = new Gesture(ofGetWidth(), ofGetHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+	Gesture *newGesture = new Gesture(getCanvasWidth(), getCanvasHeight());
 	newGesture->clear();
 	newGesture->clearPolygons();
 	newGesture->addPoint((float)args.position.x, (float)args.position.y);

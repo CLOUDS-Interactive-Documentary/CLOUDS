@@ -84,8 +84,9 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetup()
     
     // Add the players.
     float step = 20;
-    for (float i = 0; i < (ofGetWidth() / step - 1); i++) {
-        for (float j = 0; j < (ofGetHeight() / step - 1); j++) {
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    for (float i = 0; i < (getCanvasWidth() / step - 1); i++) {
+        for (float j = 0; j < (getCanvasHeight() / step - 1); j++) {
             if (ofRandom(3) > 1) {
                 SOLPlayer * player = new SOLPlayer();
                 
@@ -143,16 +144,18 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
             players[i]->x = 0;
             players[i]->sx *= -1;
         }
-        else if (players[i]->x > ofGetWidth()) {
-            players[i]->x = ofGetWidth();
+        //MA: changed ofGetWidth() to getCanvasWidth()
+        else if (players[i]->x > getCanvasWidth()) {
+            players[i]->x = getCanvasWidth();
             players[i]->sx *= -1;
         }
         if (players[i]->y < 0) {
             players[i]->y = 0;
             players[i]->sy *= -1;
         }
-        else if (players[i]->y > ofGetHeight()) {
-            players[i]->y = ofGetHeight();
+        //MA: changed ofGetHeight() to getCanvasHeight()
+        else if (players[i]->y > getCanvasHeight()) {
+            players[i]->y = getCanvasHeight();
             players[i]->sy *= -1;
         }
         
@@ -196,7 +199,8 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDrawDebug(){
 void CloudsVisualSystemOpenP5SeaOfLines::selfDrawBackground()
 {
     ofSetColor(bgColor, bgAlpha * 255);
-    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    ofRect(0, 0, getCanvasWidth(), getCanvasHeight());
     
     ofSetColor(255);
     mesh.draw();

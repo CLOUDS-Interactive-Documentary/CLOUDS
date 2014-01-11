@@ -147,7 +147,8 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
                   this,
                   &CloudsVisualSystemExampleBox2D::contactStart);
     
-    prevScreenSize = ofVec2f(ofGetWidth(), ofGetHeight());
+    //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+    prevScreenSize = ofVec2f(getCanvasWidth(), getCanvasHeight());
     
     // preset init
     bGravityMod = false;
@@ -240,10 +241,12 @@ void CloudsVisualSystemExampleBox2D::selfSceneTransformation(){
 void CloudsVisualSystemExampleBox2D::selfUpdate(){
     
     // reinit world bound when screen size changes
-    if (prevScreenSize.x != ofGetWidth() ||
-        prevScreenSize.y != ofGetHeight()) {
+    //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+    if (prevScreenSize.x != getCanvasWidth() ||
+        prevScreenSize.y != getCanvasHeight()) {
         reinitBounds();
-        prevScreenSize = ofVec2f(ofGetWidth(), ofGetHeight());
+    
+        prevScreenSize = ofVec2f(getCanvasWidth(), getCanvasHeight());
     }
     
     // remove excessive objects
@@ -350,7 +353,8 @@ void CloudsVisualSystemExampleBox2D::selfDrawBackground()
     
     if (bGravityMod) {
         ofPushMatrix();
-        ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
+        //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+        ofTranslate(getCanvasWidth()/2, getCanvasHeight()/2);
         float angle = (atan2(gravityLine.y, gravityLine.x) * 180 / PI);
         float len = gravityLine.length();
         ofRotate(angle);
@@ -413,8 +417,9 @@ void CloudsVisualSystemExampleBox2D::selfMouseMoved(ofMouseEventArgs& data){
     }
     else {
         // gravity control mode
-        gravityLine = ofVec2f(curMouse.x - ofGetWidth()/2,
-                              curMouse.y - ofGetHeight()/2);
+        //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+        gravityLine = ofVec2f(curMouse.x - getCanvasWidth()/2,
+                              curMouse.y - getCanvasHeight()/2);
         ofVec2f gravityForce = gravityLine / 10;
         box2d.setGravity(gravityForce.x, gravityForce.y);
     }
@@ -453,14 +458,16 @@ void CloudsVisualSystemExampleBox2D::createRandomObjects()
 void CloudsVisualSystemExampleBox2D::addRandomCircle()
 {
     float r = getGaussian()/2*circleSizeDev + circleSizeMean;
-    addCircle(ofVec2f(ofGetWidth()/2, ofGetHeight()/2), ofVec2f(0, 0), r);
+    //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+    addCircle(ofVec2f(getCanvasWidth()/2, getCanvasHeight()/2), ofVec2f(0, 0), r);
 }
 
 void CloudsVisualSystemExampleBox2D::addRandomRect()
 {
     float w = getGaussian()*rectSizeDev + rectSizeMean;
     float h = getGaussian()*rectSizeDev + rectSizeMean;
-    addRect(ofVec2f(ofGetWidth()/2, ofGetHeight()/2), ofVec2f(0, 0), ofVec2f(w, h));
+    //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+    addRect(ofVec2f(getCanvasWidth()/2, getCanvasHeight()/2), ofVec2f(0, 0), ofVec2f(w, h));
 }
 
 void CloudsVisualSystemExampleBox2D::addCircle(ofVec2f pos, ofVec2f vel, float rad)
@@ -495,17 +502,18 @@ void CloudsVisualSystemExampleBox2D::addStaticPlatforms()
     }
     
     ofxBox2dPolygon polyLine;
-    polyLine.addVertex(ofGetWidth()*0.2, ofGetHeight()*0.8);
-    polyLine.addVertex(ofGetWidth()*0.3, ofGetHeight()*0.9);
-    polyLine.addVertex(ofGetWidth()*0.5, ofGetHeight()*0.86);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    polyLine.addVertex(getCanvasWidth()*0.2, getCanvasHeight()*0.8);
+    polyLine.addVertex(getCanvasWidth()*0.3, getCanvasHeight()*0.9);
+    polyLine.addVertex(getCanvasWidth()*0.5, getCanvasHeight()*0.86);
     polyLine.setPhysics(0.0, 0.5, 0.5);
     polyLine.create(box2d.getWorld());
     platforms.push_back(polyLine);
     
     polyLine = ofxBox2dPolygon();
-    polyLine.addVertex(ofGetWidth()*0.8, ofGetHeight()*0.5);
-    polyLine.addVertex(ofGetWidth()*0.7, ofGetHeight()*0.6);
-    polyLine.addVertex(ofGetWidth()*0.5, ofGetHeight()*0.7);
+    polyLine.addVertex(getCanvasWidth()*0.8, getCanvasHeight()*0.5);
+    polyLine.addVertex(getCanvasWidth()*0.7, getCanvasHeight()*0.6);
+    polyLine.addVertex(getCanvasWidth()*0.5, getCanvasHeight()*0.7);
     polyLine.setPhysics(0.0, 0.5, 0.5);
     polyLine.create(box2d.getWorld());
     platforms.push_back(polyLine);
@@ -528,8 +536,9 @@ void CloudsVisualSystemExampleBox2D::addRandomPlatform()
     polygon.addVertex(vec*3);
     polygon.setPhysics(0.0, 0.5, 0.5);
     polygon.create(box2d.getWorld());
-    polygon.setPosition(ofRandom(-100, ofGetWidth()*0.7),
-                        ofRandom(ofGetHeight()/2, ofGetHeight()*0.8));
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    polygon.setPosition(ofRandom(-100, getCanvasWidth()*0.7),
+                        ofRandom(getCanvasHeight()/2, getCanvasHeight()*0.8));
     randomPlatforms.push_back(polygon);
 }
 
