@@ -405,8 +405,8 @@ void CloudsPlaybackController::updateTransition(){
 				currentVisualSystem = clusterMap;
 
                 showingClusterMap = true;
-				
                 break;
+                
 			case TRANSITION_QUESTION_IN:
 				
 				// show question transition over this period
@@ -479,9 +479,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 		
 		currentVisualSystem->selfPostDraw();
 		
-//		if(){
-			hud.draw();
-//		}
+		hud.draw();
 		
 		ofPopStyle();
 	}

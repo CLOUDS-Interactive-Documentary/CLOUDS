@@ -19,6 +19,7 @@ CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeT
 , activeThresholdZ(activeThresholdZ)
 , primaryIdx(-1)
 , jointLerpPct(0.3f)
+, bDoDebug(false)
 , boundsMin(-0.5f, -0.7f, 1.0f)
 , boundsMax( 0.5f, -0.2f, 2.0f)
 , posResetLerpPct(0.1f)
@@ -466,6 +467,7 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
 //        ofSetColor(255, 0, 0);
 //        ofRect(-1, -1, 2, 2);
         
+        // draw bodies
         for (map<int, k4w::Body *>::iterator it = bodies.begin(); it != bodies.end(); ++it) {
             k4w::Body * body = it->second;
             
@@ -493,6 +495,7 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
             ofEndShape();
         }
         
+        // draw hands
         for (map<int, k4w::Hand *>::iterator it = hands.begin(); it != hands.end(); ++it) {
             k4w::Hand * hand = it->second;
             
@@ -531,6 +534,11 @@ void CloudsInputKinectOSC::debug(float x, float y, float width, float height)
             ofSetColor(ofColor::white);
             ofRect(hand->trackingBounds);
         }
+        
+        // draw bounds
+        ofNoFill();
+        ofSetColor(ofColor::cyan);
+        ofRect(boundsMin.x, boundsMin.y, boundsMax.x - boundsMin.x, boundsMax.y - boundsMin.y);
     }
     ofPopMatrix();
     ofPopStyle();

@@ -117,7 +117,7 @@
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors;
 
 - (void)playDoubleClickedRow:(id)sender;
-- (void)loadClipFromTable:(id)sender;
+- (IBAction)loadClipFromTable:(id)sender;
 
 - (NSArray *)tokenField:(NSTokenField *)tokenField
 completionsForSubstring:(NSString *)substring

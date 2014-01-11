@@ -19,6 +19,8 @@ class CloudsVisualSystemManager {
 	static ofPtr<CloudsVisualSystem> InstantiateSystem(string systemName);
 	static vector< ofPtr<CloudsVisualSystem> > InstantiateSystems(vector<CloudsVisualSystemPreset>& systemPresets);
 	
+    void freeSystemPointers();
+    
 	void populateVisualSystems();
     void populateEnabledSystemIndeces();
 	CloudsVisualSystemPreset getRandomVisualSystem();

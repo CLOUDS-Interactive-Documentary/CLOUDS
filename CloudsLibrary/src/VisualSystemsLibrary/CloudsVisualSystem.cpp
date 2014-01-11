@@ -16,8 +16,6 @@
 #include "ofxAVFVideoPlayer.h"
 #endif
 
-static bool bShowMouseCursor = false;
-
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
 static CloudsRGBDVideoPlayer rgbdPlayer;
@@ -142,6 +140,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
 #else
 	bUseOculusRift = false;
 #endif 
+    
+    lastMouseMoveMillis = 0;
 	
 }
 
@@ -200,13 +200,6 @@ void CloudsVisualSystem::setup(){
 		return;
 	}
     
-    if (bShowMouseCursor) {
-        ofShowCursor();
-    }
-    else {
-        ofHideCursor();
-    }
-	
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 	
 	//ofAddListener(ofEvents().exit, this, &CloudsVisualSystem::exit);
@@ -338,6 +331,17 @@ void CloudsVisualSystem::speakerEnded()
 
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
+    // show/hide the mouse cursor
+    currMousePos.set(ofGetMouseX(), ofGetMouseY());
+    if (currMousePos != lastMousePos) {
+        lastMouseMoveMillis = ofGetElapsedTimeMillis();
+        ofShowCursor();
+    }
+    else if ((ofGetElapsedTimeMillis() - lastMouseMoveMillis) > 1000) {
+        ofHideCursor();
+    }
+    lastMousePos = currMousePos;
+	
     if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack)
     {
         updateTimelineUIParams();
@@ -779,17 +783,7 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
         }
 		break;
             
-        case 'C':
-            bShowMouseCursor ^= true;
-            if (bShowMouseCursor) {
-                ofShowCursor();
-            }
-            else {
-                ofHideCursor();
-            }
-            break;
-		
-		case 'T':
+        case 'T':
 			cameraTrack->addKeyframe();
 			break;
 		case 'L':
@@ -882,7 +876,7 @@ void CloudsVisualSystem::interactionStarted(CloudsInteractionEventArgs& args){
 }
 
 void CloudsVisualSystem::interactionDragged(CloudsInteractionEventArgs& args){
-    if(args.primary){    
+    if(args.primary){
         ofMouseEventArgs fakeArgs;
         fakeArgs.x = args.position.x;
         fakeArgs.y = args.position.y;
@@ -2722,6 +2716,9 @@ void CloudsVisualSystem::setupKinectGui()
     ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
     
     kinectGui->addSpacer();
+    kinectGui->addToggle("DEBUG", &kinectInput->bDoDebug);
+    
+    kinectGui->addSpacer();
     kinectGui->addRangeSlider("BODY RANGE X", -1.0f, 1.0f, &kinectInput->boundsMin.x, &kinectInput->boundsMax.x);
     kinectGui->addRangeSlider("BODY RANGE Y", -1.0f, 1.0f, &kinectInput->boundsMin.y, &kinectInput->boundsMax.y);
     kinectGui->addRangeSlider("BODY RANGE Z",  0.5f, 4.5f, &kinectInput->boundsMin.z, &kinectInput->boundsMax.z);
@@ -3280,6 +3277,20 @@ void CloudsVisualSystem::selfPostDraw(){
     CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+#endif
+    
+#ifdef KINECT_INPUT
+    if (timeline->getIsShowing()) {
+        ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
+        if (kinectInput->bDoDebug) {
+            static const int kDebugMargin = 0;
+            static const int kDebugWidth  = 640;
+            static const int kDebugHeight = 480;
+            kinectInput->debug(CloudsVisualSystem::getSharedRenderTarget().getWidth()  - kDebugWidth  - kDebugMargin,
+                               kDebugMargin,
+                               kDebugWidth, kDebugHeight);
+        }
+    }
 #endif
 
 }
