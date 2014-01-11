@@ -13,7 +13,6 @@
 	
 	ofBackground(22);
 
-	
 	parser.loadFromFiles();
 
 	
@@ -36,7 +35,6 @@
 	rgbdVisualSystem.setDrawToScreen(false);
 	hud.setup();
 
-
 	rgbdVisualSystem.playSystem();
 #ifdef OCULUS_RIFT
 	rgbdVisualSystem.loadPresetGUISFromName("RGBDOC");
@@ -45,22 +43,18 @@
 #endif
 	srand(ofGetSeconds());
 	
-	
-	
 	[self loadClip: parser.getRandomClip(true, false)];
 	
 }
 
 - (void)update
 {
-	
+    
+    rgbdVisualSystem.getRGBDVideoPlayer().forceStop = false;
+    rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setLoopState(OF_LOOP_NORMAL);
+    
 	hud.update();
 	
-//	if(rgbdVisualSystem.getRGBDVideoPlayer().isDone()){
-//		cout << "replaying video!" << endl;
-//		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setPosition(0);
-//		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().play();
-//	}
 }
 
 - (void)draw
@@ -68,7 +62,7 @@
 	rgbdVisualSystem.selfPostDraw();
     
     if (rgbdVisualSystem.getRGBDVideoPlayer().haveSubtitles()) {
-        rgbdVisualSystem.getRGBDVideoPlayer().getSubtitles().draw(ofGetWindowWidth()/2, ofGetWindowHeight()-60);
+//        rgbdVisualSystem.getRGBDVideoPlayer().getSubtitles().draw(ofGetWindowWidth()/2, ofGetWindowHeight()-60);
     }
 	
 	hud.draw();

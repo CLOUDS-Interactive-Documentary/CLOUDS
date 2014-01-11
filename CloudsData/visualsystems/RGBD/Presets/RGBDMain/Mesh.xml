@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Mesh</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>293.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>886.000000000</XPosition>
+    <YPosition>184.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,40 +13,40 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Mesh Alpha</Name>
-    <Value>0.261083752</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>X Simplify</Name>
-    <Value>2.000000000</Value>
+    <Value>2.034482718</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Y Simplify</Name>
-    <Value>2.000000000</Value>
+    <Value>1.960591078</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Random Variance</Name>
-    <Value>1.000000000</Value>
+    <Value>0.492610812</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Face Min Radius</Name>
-    <Value>0.000000000</Value>
+    <Value>399.014770508</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Face Falloff</Name>
-    <Value>0.000000000</Value>
+    <Value>366.502471924</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Edge Geo Retraction</Name>
-    <Value>1.000000000</Value>
+    <Value>0.881773412</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Force Geo Retraction</Name>
-    <Value>0.000000000</Value>
+    <Value>0.325123161</Value>
 </Widget>

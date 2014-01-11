@@ -12,23 +12,24 @@ uniform vec2 skinThreshold;
 varying float positionValid;
 
 //LIGHTING
-varying vec3 eye;
+//varying vec3 eye;
 varying vec3 normal;
-varying float diffuseAttenuate;
-varying vec3 diffuseLightDirection;
+//varying float diffuseAttenuate;
+//varying vec3 diffuseLightDirection;
+varying float actuatorAttenuation;
 
 varying float headPositionAttenuation;
 varying float edgeAttenuate;
 
 const float epsilon = 1e-6;
 
-float calculateLight(){
-	vec3 N = normal;
-	vec3 L = diffuseLightDirection;
-	
-	float lambertTerm = dot(N,L) * diffuseAttenuate;
-	return lambertTerm;
-}
+//float calculateLight(){
+//	vec3 N = normal;
+//	vec3 L = diffuseLightDirection;
+//	
+//	float lambertTerm = dot(N,L) * diffuseAttenuate;
+//	return lambertTerm;
+//}
 
 ////START SKIN STUFF
 float map(float value, float inputMin, float inputMax, float outputMin, float outputMax) {;
@@ -101,8 +102,8 @@ void main(){
     vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
 	
 	/////basic coloring
-	gl_FragColor.rgb = col.rgb * edgeAttenuate * (1.0-headPositionAttenuation);
-	gl_FragColor.a = alpha;
+	gl_FragColor.rgb = col.rgb * edgeAttenuate * (1.0-headPositionAttenuation) * alpha * actuatorAttenuation;
+	gl_FragColor.a = 1.0;
 	
 	//apply light to just skin
 //	gl_FragColor = gl_Color * col * attenuate * max( calculateLight(), isSkin() );
