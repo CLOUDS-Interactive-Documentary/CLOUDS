@@ -28,8 +28,6 @@ CloudsRGBDCamera::CloudsRGBDCamera(){
 	canvasHeight = 1080;
 
 	maxDriftAngle = 0;
-//	driftNoiseDensity = 0;
-//	driftNoiseSpeed = ;
 
 }
 

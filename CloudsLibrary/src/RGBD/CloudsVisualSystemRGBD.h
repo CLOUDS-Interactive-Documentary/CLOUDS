@@ -3,8 +3,6 @@
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
 #include "CloudsPortal.h"
-//#include "ParticleConnectionGenerator.h"
-//#include "CloudsCaption.h"
 #include "CloudsQuestion.h"
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
@@ -49,19 +47,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void selfBegin();
 	void selfEnd();
     
-	void speakerChanged();
-	
-	//TODO REMOVE
-	void addFakeQuestion(vector<string> testPngFilePaths){}
-	void addQuestion(CloudsClip& q,string topic, string question);
-    void setSelectedQuestion();
-
-    void clearQuestions();
-    bool isQuestionSelectedAndClipDone();
-	bool isQuestionSelected();
-    CloudsPortal* getSelectedQuestion();
-    string getQuestionText();
-    
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
@@ -79,6 +64,17 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
+	void speakerChanged();
+    
+    ////////QUESTIONS
+    void addQuestion(CloudsClip& questionClip, string topic, string question);
+    void clearQuestions();
+    bool isQuestionSelectedAndClipDone();
+	bool isQuestionSelected();
+    CloudsPortal* getSelectedQuestion();
+    string getQuestionText();
+    ////////QUESTIONS
+
 	float visualSystemFadeValue;
 	
 	ofCamera& getCameraRef(){
@@ -88,7 +84,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 		return cloudsCamera;
 	}
 	
-	
+	/////TRANSITIONS
 	void startCurrentTransitionOut();
 	void startCurrentTransitionIn();
 	void startTransitionOut(RGBDTransitionType transitionType, string option="default");
@@ -115,13 +111,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofNode* transitionCamTargetNode;
 	
 	void setTransitionNodes( RGBDTransitionType transitionType, string option="default" );
-	void playTestVideo();
-	
-	
+    
 	void loadTransitionOptions(string filename );
 	void saveTransitionSettings(string filename = "Transitions");
 	void setTransitionNodes( string transitionName );
-	void updateTransition();
 	
 	void addTransitionGui(string guiName);
 	void clearTransitionMap();
@@ -133,6 +126,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void resetTransitionNodes();
 	
 	void StopEditTransitionMode();
+    //////////TRANSITIONS
+    
+	void playTestVideo();
 
   protected:
 	
@@ -201,6 +197,18 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float meshRetractionFalloff;
 	float meshForceGeoRectraction;
 	
+    
+    ///ACTUATORS
+    float actuatorSpinPosition;
+    float actuatorSpinSpeed;
+    float actuatorShineAngle;
+
+    void updateActuators();
+    ofVec3f pointActuator;
+    ofVec3f lineActuator;
+    ofVec3f meshActuator;
+    
+    
 	bool refreshMesh;
 	void generateMesh();
 	
@@ -209,39 +217,34 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxUISuperCanvas *cameraGui;
 	ofxUISuperCanvas *particleGui;
 	ofxUISuperCanvas *questionGui;
-
+    ofxUISuperCanvas *actuatorGui;
+    
 	//TODO: move to hud
-	ofxFTGLSimpleLayout displayFont;
-
+	//ofxFTGLSimpleLayout displayFont;
+	bool drawParticulate;
+	float attenuatedCameraDrift;
 	GPUParticles::Controller particulateController;
-	
-	void updateQuestions();
-	void drawQuestions();
+    ofVec4f pointColor;
 
+
+    
+    ///PORTALS
 	float portalScale;
-	float portalTugMaxDistance;
-	float portalTugMinDistance;
-	float distanceToQuestion;
-
-	
+    ofRange portalTugDistance;
+	float minDistanceToQuestion;
 	bool bPortalDebugOn;
 	ofVec3f portalBaseHover;
 	CloudsPortal leftPortal;
 	CloudsPortal rightPortal;
-	
-//	void addPortalPositionParams(CloudsPortal& portal, string side);
-	
 	vector<CloudsPortal*> portals;
 	CloudsPortal* caughtPortal;
     CloudsPortal* selectedPortal;
+	void updateQuestions();
+	void drawQuestions();
 
-	ofVec4f pointColor;
 	
 	bool placingTransitionNodes;
 	bool drawTransitionNodes;
-
-	bool drawParticulate;
-	float attenuatedCameraDrift;
 	
 	//transition
 	bool transitioning, transitioningIn, transitioningOut, bResetLookThoughs;
@@ -252,14 +255,14 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	float transitionVal;
 	
-	ofVec3f questionXZ;
-	float questionDriftRange;
-	float questionYCenter;
-	float questionYDriftRange;
-	float questionYRange;
-	float questionLifeSpan; //minutes
+//	ofVec3f questionXZ;
+//	float questionDriftRange;
+//	float questionYCenter;
+//	float questionYDriftRange;
+//	float questionYRange;
+//	float questionLifeSpan; //minutes
 	
-	ofFloatColor questionBaseHSB;
-	ofFloatColor questionHoverHSB;
+//	ofFloatColor questionBaseHSB;
+//	ofFloatColor questionHoverHSB;
 	
 };

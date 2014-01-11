@@ -65,6 +65,5 @@ void main() {
 	
 	if(doAttenuate == 1){
 		gl_FragColor.a *= smoothstep(maxDistance, minDistance, zDist);
-//		gl_FragColor.a *= zDist/100.0;
 	}
 }

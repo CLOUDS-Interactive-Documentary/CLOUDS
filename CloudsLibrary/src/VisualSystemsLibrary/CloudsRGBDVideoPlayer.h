@@ -15,7 +15,10 @@
 #endif
 #include "ofRange.h"
 #include "CloudsGlobal.h"
+
+#ifdef SHOW_SUBTITLES
 #include "ofxSubtitles.h"
+#endif
 
 class CloudsRGBDVideoPlayer {
 public:
@@ -36,7 +39,8 @@ public:
 	
 	bool isPlaying();
 	bool isDone();
-	
+	bool forceStop; //default to true when playin in clouds
+    
 	float getFadeIn(){
 		return fadeInValue;
 	};
@@ -139,12 +143,14 @@ public:
     /* Subtitles */
 public:
     bool haveSubtitles();
-    ofxSubtitles& getSubtitles();
-    
-private:
     bool loadSubtitles(string path);
     bool currentHaveSubtitles;
     bool nextHaveSubtitles;
+    
+#ifdef SHOW_SUBTITLES
+    ofxSubtitles& getSubtitles();
     ofxSubtitles currentSubtitles;
     ofxSubtitles nextSubtitles;
+#endif
+ 
 };

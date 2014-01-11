@@ -87,7 +87,7 @@ public:
             delete [] indices;
             indices = NULL;
         }
-        
+        vbo.clear();
     }
 };
 

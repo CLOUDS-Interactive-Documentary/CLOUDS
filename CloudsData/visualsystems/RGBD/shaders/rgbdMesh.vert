@@ -48,12 +48,14 @@ uniform float edgeAttenuateBase;
 uniform float edgeAttenuateExponent;
 uniform float meshRetractionFalloff;
 uniform float forceGeoRectraction;
-//LIGHT
-uniform vec3 lightPosition;
 
-varying vec3 eye;
+//LIGHT
+//uniform vec3 lightPosition;
+uniform vec3 actuatorDirection;
+
+//varying vec3 eye;
 varying vec3 normal;
-varying vec3 diffuseLightDirection;
+//varying vec3 diffuseLightDirection;
 
 varying float positionValid;
 
@@ -139,8 +141,20 @@ void main(void){
 	//float headRetraction = mix(edgeAttenuate, 1.0, meshRetractionFalloff);
 	float headRetraction = pow(map(headPositionAttenuation, 0.0, meshRetractionFalloff, 0.0, 1.0), 2.0) * (1.0-forceGeoRectraction);
 	
+	vec2 normalPos = samplePos.xy + normalRect.xy;
+	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
+    
+	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
+    normal = -normalize(gl_NormalMatrix * surfaceNormal);
+    float actuatorExtendAttenuate = dot(normal,actuatorDirection);
+    actuatorExtendAttenuate = 0.5;
+    
+    //bring back for view dependent effects
+//	vec3 vert = vec3(gl_ModelViewMatrix * pos);
+//	eye = normalize(-vert);
 //	headRetraction = 1.0;
-	vec2 samplePosExtended = samplePos + gl_Normal.xy * triangleExtend * headRetraction;
+    float accumulatedExtendAttenuation = triangleExtend * headRetraction * actuatorExtendAttenuate;
+	vec2 samplePosExtended = samplePos + gl_Normal.xy * accumulatedExtendAttenuation;
 	
     vec2 depthPos = samplePosExtended + depthRect.xy;
     float depth = depthValueFromSample( depthPos );
@@ -151,18 +165,20 @@ void main(void){
                     depth, 1.0);
     
 //	headPositionAttenuation = map( distance(pos,headPosition), headMinRadius+headFalloff, headMinRadius, .0, 1.0);
-
 	//extract the normal and pass it along to the fragment shader
-	vec2 normalPos = samplePosExtended.xy + normalRect.xy;
-	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
-
-	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
-    normal = -normalize(gl_NormalMatrix * surfaceNormal);
-	vec3 vert = vec3(gl_ModelViewMatrix * pos);
-	eye = normalize(-vert);
-	
-    float neighborA = depthValueFromSample( depthRect.xy + samplePos + gl_Color.xy * depthRect.zw * triangleExtend*headRetraction );
-    float neighborB = depthValueFromSample( depthRect.xy + samplePos + gl_Color.zw * depthRect.zw * triangleExtend*headRetraction );
+    //////OLD NORMAL
+//	vec2 normalPos = samplePosExtended.xy + normalRect.xy;
+//	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
+//
+//	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
+//    normal = -normalize(gl_NormalMatrix * surfaceNormal);
+//	vec3 vert = vec3(gl_ModelViewMatrix * pos);
+//	eye = normalize(-vert);
+	///OLD NORMAL
+    
+    
+    float neighborA = depthValueFromSample( depthRect.xy + samplePos + gl_Color.xy * depthRect.zw * accumulatedExtendAttenuation );
+    float neighborB = depthValueFromSample( depthRect.xy + samplePos + gl_Color.zw * depthRect.zw * accumulatedExtendAttenuation );
 	
 	positionValid = (depth < farClip &&
 					 neighborA < farClip &&
@@ -193,13 +209,13 @@ void main(void){
 	}
 	
 	//DIFFUSE LIGHT
-	vec3 diffuseLightDirectionFull = vec3(lightPosition.xyz - vert);
-    float d = length(diffuseLightDirectionFull);
-	diffuseAttenuate = 1.0 /(gl_LightSource[0].constantAttenuation  +
-							 gl_LightSource[0].linearAttenuation	* d +
-							 gl_LightSource[0].quadraticAttenuation * d * d);
-	
-	diffuseLightDirection = diffuseLightDirectionFull / d;
+//	vec3 diffuseLightDirectionFull = vec3(lightPosition.xyz - vert);
+//    float d = length(diffuseLightDirectionFull);
+//	diffuseAttenuate = 1.0 /(gl_LightSource[0].constantAttenuation  +
+//							 gl_LightSource[0].linearAttenuation	* d +
+//							 gl_LightSource[0].quadraticAttenuation * d * d);
+//	
+//	diffuseLightDirection = diffuseLightDirectionFull / d;
 	
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
     gl_FrontColor = gl_Color;

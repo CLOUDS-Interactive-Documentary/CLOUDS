@@ -88,7 +88,6 @@ void CloudsPlaybackController::setup(){
 	storyEngine.combinedClipsOnly = true;
 	storyEngine.setup();
 	
-	ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
 	
 	///SOUND
 	mixer.setup();
@@ -102,6 +101,8 @@ void CloudsPlaybackController::setup(){
 		
 		eventsRegistered = true;
 		
+        ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
+
 		ofAddListener(ofEvents().update, this, &CloudsPlaybackController::update);
 		ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
 		
@@ -217,16 +218,7 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 		}
 	}
 
-//	if(args.key == 'C'){
-//		if(showingCursor){
-//			ofHideCursor();
-//		}
-//		else{
-//			ofShowCursor();
-//		}
-//		showingCursor = !showingCursor;
-//	}
-	
+
 	if(args.key == '\\'){
 		if(currentVisualSystem == introSequence){
 			introSequence->autoSelectQuestion();
@@ -315,7 +307,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(!bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
             
             bQuestionAsked = true;
-//            rgbdVisualSystem->clearQuestions();
             transitionController.transitionWithQuestion(1.0, 1.0);		
         }
     }
@@ -483,9 +474,11 @@ void CloudsPlaybackController::updateTransition(){
 	}		
 }
 
+//This is where everything in clouds is drawn
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(ofEventArgs & args){
 
+    ofBackground(0);
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glDisable( GL_DEPTH_TEST );
 	
@@ -497,11 +490,11 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 		
 		currentVisualSystem->selfPostDraw();
         
-        if (CloudsVisualSystem::getRGBDVideoPlayer().haveSubtitles())
-        {
+#ifdef SHOW_SUBTITLES
+        if (CloudsVisualSystem::getRGBDVideoPlayer().haveSubtitles()) {
             CloudsVisualSystem::getRGBDVideoPlayer().getSubtitles().draw(ofGetWidth()/2, ofGetHeight()-60);
         }
-        
+#endif
 		hud.draw();
 		
 		ofPopStyle();
@@ -514,6 +507,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::drawDebugOverlay(){
+    
 	if(currentAct == NULL){
 		return;
 	}
@@ -556,14 +550,13 @@ void CloudsPlaybackController::drawDebugOverlay(){
 void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 	
 	numClipsPlayed = 0;
-		
 	shouldPlayAct = true;
 	currentAct = args.act;
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
-
+    
 }
 
 //--------------------------------------------------------------------

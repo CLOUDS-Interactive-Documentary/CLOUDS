@@ -19,7 +19,7 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	
 	transitionOutOption = OutLeft;
 	
-	questionLifeSpan = 3;
+//	questionLifeSpan = 3;
 	transitioning = transitioningIn = transitioningOut = false;
 	
 	transitionInStart.setPosition( 0, 0, -1000 );
@@ -36,7 +36,8 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	drawTransitionNodes = false;
 	
 //	captionFontSize = 12;
-	
+    
+	actuatorSpinPosition = 0;
 	edgeAttenuate = 0.;
 	skinBrightness = 0.;
 	
@@ -83,6 +84,7 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	
 	//IF we move this before setup(NOT selfSetup) we can have the option of whether or not to load it to the gui
 	loadTransitionOptions("Transitions");
+    
 }
 
 //--------------------------------------------------------------
@@ -113,7 +115,7 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
 			
-	displayFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", 14);
+//	displayFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", 14);
 	
 	transitionCam.setup();
 	transitionCam.applyTranslation = true;
@@ -234,6 +236,7 @@ void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionTy
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetupGuis(){
 
+    //////////////////MESH
 	globalMeshGui = new ofxUISuperCanvas("GLOBAL MESH", gui);
 	globalMeshGui->copyCanvasStyle(gui);
     globalMeshGui->copyCanvasProperties(gui);
@@ -253,6 +256,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guis.push_back(globalMeshGui);
 	guimap[globalMeshGui->getName()] = globalMeshGui;
 
+    //////////////////POINTS
 	pointsGui = new ofxUISuperCanvas("POINTS", gui);
 	pointsGui->copyCanvasStyle(gui);
     pointsGui->copyCanvasProperties(gui);
@@ -275,7 +279,9 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	ofAddListener(pointsGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
 	guis.push_back(pointsGui);
 	guimap[pointsGui->getName()] = pointsGui;
-	
+    //////////////////
+    
+    //////////////////LINES
 	linesGui = new ofxUISuperCanvas("LINES", gui);
 	linesGui->copyCanvasStyle(gui);
 	linesGui->copyCanvasProperties(gui);
@@ -295,11 +301,13 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	linesGui->addSlider("Line Granularity", 1., 10.0, &lineGranularity);
 	linesGui->addSlider("Line Flow", 0, 1.0, &lineFlowSpeed);
 	linesGui->addToggle("Lines Flow Up", &linesFlowUp);
+    
 	ofAddListener(linesGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
 	guis.push_back(linesGui);
 	guimap[linesGui->getName()] = linesGui;
-
+    //////////////////
 	
+    //////////////////MESH
 	meshGui = new ofxUISuperCanvas("MESH", gui);
 	meshGui->copyCanvasStyle(gui);
 	meshGui->copyCanvasProperties(gui);
@@ -324,6 +332,23 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guis.push_back(meshGui);
 	guimap[meshGui->getName()] = meshGui;
 	
+    
+    ////////////////// ACTUATORS
+    actuatorGui = new ofxUISuperCanvas("ACTUATORS", gui);
+	actuatorGui->copyCanvasStyle(gui);
+    actuatorGui->copyCanvasProperties(gui);
+    actuatorGui->setName("Actuators");
+    actuatorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+
+    actuatorGui->addSlider("SPIN SPEED",    0,  5.0, &actuatorSpinSpeed);
+    actuatorGui->addSlider("SHINE ANGLE", -90, 90.0, &actuatorShineAngle);
+    
+    guis.push_back(actuatorGui);
+	guimap[actuatorGui->getName()] = actuatorGui;
+    //////////////////
+    
+    
+    //////////////////CAMERA
 	cameraGui = new ofxUISuperCanvas("CAMERA", gui);
 	cameraGui->copyCanvasStyle(gui);
 	cameraGui->copyCanvasProperties(gui);
@@ -342,8 +367,9 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	cameraGui->addSlider("DRIFT SPEED", 0, .01, &attenuatedCameraDrift);
 	
 	guis.push_back(cameraGui);
-	guimap[meshGui->getName()] = cameraGui;
+	guimap[cameraGui->getName()] = cameraGui;
 	
+    ////////////////// BACKGROUND PARTICLES
 	particleGui = new ofxUISuperCanvas("PARTICLE", gui);
 	particleGui->copyCanvasStyle(gui);
 	particleGui->copyCanvasProperties(gui);
@@ -362,8 +388,10 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	particleGui->addSlider("POINT COLOR A", 0, 1.0, &pointColor.w);
 	
 	guis.push_back(particleGui);
-	guimap[meshGui->getName()] = particleGui;
+	guimap[particleGui->getName()] = particleGui;
+    //////////////////
 	
+    ////////////////// QUESTIONS
 	questionGui = new ofxUISuperCanvas("QUESTIONS", gui);
 	questionGui->copyCanvasStyle(gui);
     questionGui->copyCanvasProperties(gui);
@@ -375,16 +403,14 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 	questionGui->addSlider("HOVER X",    0, 500, &portalBaseHover.x);
 	questionGui->addSlider("HOVER Y", -500, 500, &portalBaseHover.y);
-	questionGui->addSlider("HOVER Z",    -200, 200, &portalBaseHover.z);
+	questionGui->addSlider("HOVER Z", -200, 200, &portalBaseHover.z);
 	//in pixels
 	questionGui->addRangeSlider("PORTAL SELECT DISTANCE", 20, 200,
-								&portalTugMinDistance, &portalTugMaxDistance);
+								&portalTugDistance.min, &portalTugDistance.max);
 
-	
 	guis.push_back(questionGui);
-	guimap[meshGui->getName()] = questionGui;
-	
-	
+	guimap[questionGui->getName()] = questionGui;
+    
 	//this is here becuase it needs to be loaded to add the transitions to the gui before setup(if we want)
 	loadTransitionOptions( "Transitions" );
 	addTransionEditorsToGui();
@@ -393,14 +419,15 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfUpdate(){
-	
-    if(getQuestionText() != ""){
-        drawCursorMode =  DRAW_CURSOR_PRIMARY;
-    }
-    else {
-        drawCursorMode =  DRAW_CURSOR_NONE;
-    }
-        
+
+    drawCursorMode =  DRAW_CURSOR_PRIMARY;
+//    if(getQuestionText() != ""){
+//        drawCursorMode =  DRAW_CURSOR_PRIMARY;
+//    }
+//    else {
+//        drawCursorMode =  DRAW_CURSOR_NONE;
+//    }
+    
 	if(numRandomPoints != points.getNumVertices()){
 		generatePoints();
 	}
@@ -427,9 +454,9 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 //		
 //		particulateController.update();
 	}
-	
+    
+	updateActuators();
 	updateQuestions();
-	updateTransition();
 	
 	if( placingTransitionNodes )
 	{
@@ -476,15 +503,15 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		}
 
 	}
-	else{
-		cloudsCamera.driftNoiseSpeed = caughtPortal ? 0 : attenuatedCameraDrift;
+	else {
+        //this stops the camera from drifting around as you move closer tothe question
+		//cloudsCamera.driftNoiseSpeed = caughtPortal ? 0 : attenuatedCameraDrift;
+        cloudsCamera.driftNoiseSpeed = attenuatedCameraDrift * powf(ofMap(minDistanceToQuestion, portalTugDistance.max, portalTugDistance.min,
+                                                                          1.0, 0,true), 2.0);        
 	}
-	
-	
-	if(bSaveTransition)
-	{
+
+	if(bSaveTransition) {
 		bSaveTransition = false;
-	
 		saveTransitionSettings(ofSystemTextBoxDialog("Saving " + currentTransitionType + ": ", "option name") );
 	}
 }
@@ -794,38 +821,21 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic,
 	rportal->question = question;
 	rportal->topic = topic;
 	rportal->clip = questionClip;
-	
-	/*
-	 //TODO RE ADD
-	for(int i = 0; i < questions.size(); i++){
-		if(questionClip.getID() == questions[i]->clip.getID()){
-			//don't add duplicate questions
-            ofLogError()<<"Duplicate question, ignoring"<<endl;
-			return;
-		}
-	}
-	
-	CloudsQuestion* q = new CloudsQuestion();
-	q->cam = &cloudsCamera;
-	q->font = &displayFont;
-	q->clip = questionClip;
-	q->topic = topic;
-	q->question = question;
-	
-	cout << "adding question " << q->clip.getLinkName() << " " << q->question << " " << q->topic << endl;
-	
-	ofVec3f startPosition = ofVec3f(questionXZ.x, questionYCenter, questionXZ.z)
-								+ ofVec3f(ofRandom(-questionDriftRange,questionDriftRange),
-										  ofRandom(-questionYRange,questionYRange),
-										  ofRandom(-questionDriftRange,questionDriftRange));
-	
-	q->position = translatedHeadPosition + startPosition;
-	q->birthTime = ofGetElapsedTimef();
-	
-	q->setup();
-	*/
-	
-//	questions.push_back(q);
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemRGBD::updateActuators(){
+    
+    actuatorSpinPosition += actuatorSpinSpeed;
+    
+    ofVec3f vx = ofVec3f(1,0,0);
+    ofVec3f vy = ofVec3f(0,1,0);
+    ofVec3f vz = ofVec3f(0,0,1);
+    
+    //rotate 3 vecs down to shine angle then spready them out apart evenly, modulated by the spin position
+    pointActuator = vx.getRotated(actuatorShineAngle, vz).getRotated(0 * 360/3.0 + actuatorSpinPosition, vy);
+    lineActuator  = vx.getRotated(actuatorShineAngle, vz).getRotated(1 * 360/3.0 + actuatorSpinPosition, vy);
+    meshActuator  = vx.getRotated(actuatorShineAngle, vz).getRotated(2 * 360/3.0 + actuatorSpinPosition, vy);
 }
 
 //--------------------------------------------------------------
@@ -838,24 +848,29 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 	rightPortal.scale = portalScale;
 	leftPortal.lookTarget = cloudsCamera.getPosition();
 	rightPortal.lookTarget = cloudsCamera.getPosition();
-
+    
+    //default to far away
+    minDistanceToQuestion = portalTugDistance.max;
 	for(int i = 0; i < portals.size(); i++){
 		
 		portals[i]->update();
-		
+        
+        if(!portals[i]->onScreen){
+            continue;
+        }
 		#ifdef OCULUS_RIFT
 		ofVec3f screenPos = getOculusRift().worldToScreen(portals[i]->hoverPosition, true);
         ofRectangle viewport = getOculusRift().getOculusViewport();
 		float distanceToQuestion = ofDist(screenPos.x, screenPos.y,
-										  viewport.getCenter().x, viewport.getCenter().y);
+                                    viewport.getCenter().x, viewport.getCenter().y);
 		#else
 		ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
 		float distanceToQuestion = portals[i]->screenPosition.distance(mouseNode);
 		#endif
 		
 		if(caughtPortal == NULL){
-			if( distanceToQuestion < portalTugMaxDistance) {
-				if(distanceToQuestion < portalTugMinDistance) {
+			if( distanceToQuestion < portalTugDistance.max) {
+				if(distanceToQuestion < portalTugDistance.min) {
 					caughtPortal = portals[i];
 					caughtPortal->startHovering();
 				}
@@ -868,83 +883,22 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 				selectedPortal = caughtPortal;
 			}
 			//let it go
-			else if(distanceToQuestion > portalTugMaxDistance){
+			else if(distanceToQuestion > portalTugDistance.max){
 				caughtPortal->stopHovering();
 				caughtPortal = NULL;
 			}
 		}
+        minDistanceToQuestion = MIN(distanceToQuestion, minDistanceToQuestion);
 	}
-		/*
-        if( selectedPortal == NULL && portals[i]->isSelected() ){
-            selectedPortal = portals[i];
-//			selectedPortal->lockHover = true;
-			break;
-        }
 
-		if(caughtPortal == NULL){
-			portals[i]->enableHover();
-		
-			if(questions[i]->hovering){
-				caughtPortal = portals[i];
-			}
-		}
-		
-		if(caughtPortal != NULL) {
-			if(portals[i] == caughtPortal){
-				if(!caughtPortal->hovering){
-					caughtPortal = NULL;
-				}
-			}
-			else {
-				portals[i]->disableHover();
-			}
-		}
-		 */
-//	}
-
-	//TODO reconsider destroying portals
-//	if(selectedPortal != NULL){
-//		for(int i = questions.size()-1; i >= 0; i--){
-//			if(selectedQuestion != questions[i]){
-//				if(!questions[i]->isDestroyed){
-//					questions[i]->destroy();
-//				}
-//				else if(questions[i]->destroyFadeoutTime < ofGetElapsedTimef()){
-//					delete questions[i];
-//					questions.erase(questions.begin() + i);
-//				}
-//			}
-//		}
-//	}
-}
-
-void CloudsVisualSystemRGBD::setSelectedQuestion(){
-
-//    if(questions.size() > 0){
-//        selectedQuestion = questions[0];
-//    }
-//    else{
-//        cout << "No questions!" << endl;
-//    }
 }
 
 void CloudsVisualSystemRGBD::clearQuestions(){
-	
-//	cout << "Clearing questions!" << endl;
-	
-//    selectedQuestion = NULL;
-//	caughtQuestion = NULL;
-//    for (int i = 0; i<questions.size(); i++) {
-//        delete questions[i];
-//    }
-//    questions.clear();
-//
+	rightPortal.question = "";
+	leftPortal.question = "";
 }
 
-
-
 //JG NEW TRANSITION STUBS<----- James, I love these! thank you, Lars
-
 void CloudsVisualSystemRGBD::startCurrentTransitionOut()
 {
 	if(currentTransitionType == "QUESTION")
@@ -966,8 +920,7 @@ void CloudsVisualSystemRGBD::startCurrentTransitionOut()
 
 void CloudsVisualSystemRGBD::startCurrentTransitionIn()
 {
-	//transitionEase = ofxTween::easeIn;
-	transitionEase = ofxTween::easeOut;//are we sure we don't want easeInOut?
+	transitionEase = ofxTween::easeOut;
 	transitioning = true;
 	
 	cloudsCamera.setTransitionStartNode( &transitionInStart );
@@ -1012,8 +965,7 @@ void CloudsVisualSystemRGBD::startTransitionIn(RGBDTransitionType transitionType
 
 void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
 {
-	if(transitioning)
-	{
+	if(transitioning) {
 		float easedPercent = ofxTween::map(percentComplete, 0, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
 		cloudsCamera.setTransitionPercent( easedPercent );
 		
@@ -1052,27 +1004,6 @@ void CloudsVisualSystemRGBD::setOutOption( OutOption outOption )
 	}
 }
 
-
-
-void CloudsVisualSystemRGBD::updateTransition(){
-	
-//	if(transitioning){
-//		//get our mixing value by mapping currentTime to the transition start and end time
-//		float t = ofGetElapsedTimef();
-//		float x = ofxTween::map(t, transitionStartTime, transitionEndTime, 0, 1, true, transitionEase );
-//		
-//		if(t >= transitionEndTime ){
-//			cout << "CloudsVisualSystemRGBD: transition ended " << ofGetElapsedTimef() << endl << endl;
-//			transitioning = false;
-//			cloudsCamera.targetNode = NULL;
-//			cloudsCamera.startNode = NULL;
-//		}
-//		
-//		transitionVal = x;
-//		cloudsCamera.setTransitionPercent( transitionVal );
-//	}
-}
-
 void CloudsVisualSystemRGBD::lookThroughTransitionIn(){
 	
 	transitionCamTargetNode = &transitionInStart;
@@ -1082,10 +1013,7 @@ void CloudsVisualSystemRGBD::lookThroughTransitionIn(){
 	transitionCam.movedManually();
 	
 	//transitionCam.positionChanged = transitionCam.rotationChanged = true;
-	
 //	transitionCam.positionChanged = transitionCam.rotationChanged = true;
-	
-
 //	ofEventArgs args;
 //	transitionCam.update(args);
 }
@@ -1242,38 +1170,11 @@ void CloudsVisualSystemRGBD::generateMesh(){
 }
 
 void CloudsVisualSystemRGBD::speakerChanged(){
-	
-	rightPortal.question = "";
-	leftPortal.question = "";
-	
+
+    clearQuestions();
+    
     timeline->hide();
-    
-	//check speaker vars
-	//	this->speakerFirstName = speakerFirstName;
-	//	this->speakerLastName = speakerLastName;
-	//	this->quoteName = quoteName;
-    
-	// Add an appearance for this speaker.
-//    string key = speakerFirstName + " " + speakerLastName;
-//    
-//    if (appearances.find(key) == appearances.end()) {
-//        appearances[key] = 1;
-//    }
-//    else {
-//        appearances[key]++;
-//    }
-//    
-//    cout << "CloudsVisualSystemRGBD::speakerChanged " << speakerFirstName << " " << speakerLastName << ": " << quoteName << " (" << appearances[key] << ")" << endl;
-    
-//    if (appearances[key] == 1) {
-//        cloudsCaption.font = &captionFont;
-//        cloudsCaption.caption = key;
-//        cloudsCaption.isEnabled = true;
-//        cloudsCaption.begin();
-//    }
-//    else {
-//        cloudsCaption.isEnabled = false;
-//    }
+
 }
 
 void CloudsVisualSystemRGBD::selfDrawBackground(){
@@ -1282,26 +1183,6 @@ void CloudsVisualSystemRGBD::selfDrawBackground(){
 
 void CloudsVisualSystemRGBD::selfDrawDebug(){
 	ofSphere(translatedHeadPosition, 10);
-	
-	ofVec3f questionOriginMax = ofVec3f(questionXZ.x, questionYCenter+questionYRange, questionXZ.z);
-	ofVec3f questionOriginMin = ofVec3f(questionXZ.x, questionYCenter-questionYRange, questionXZ.z);
-	ofSphere(translatedHeadPosition+questionOriginMax, 10);
-	ofSphere(translatedHeadPosition+questionOriginMin, 10);
-	
-	ofPushStyle();
-	ofPushMatrix();
-	
-//	for(int i = 0; i < questions.size(); i++){
-//		ofBox( questions[i]->position, 3);
-//	}
-	
-	ofNoFill();
-	ofTranslate(questionXZ.x, questionYCenter, questionXZ.y);
-	ofRotate(90, 1, 0, 0);
-	ofCircle(0, 0, questionDriftRange);
-	
-	ofPopStyle();
-	ofPopMatrix();
 }
 
 void CloudsVisualSystemRGBD::selfSceneTransformation(){
@@ -1323,6 +1204,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		glEnable(GL_POINT_SMOOTH);
 		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 		glEnable(GL_LINE_SMOOTH);
+        
 		setupRGBDTransforms();
 			
 		if(drawMesh){
@@ -1331,13 +1213,21 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
 		
 			meshShader.setUniform1f("meshAlpha", meshAlpha);
-			meshShader.setUniform1f("triangleExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() * visualSystemFadeValue);
+			meshShader.setUniform1f("triangleExtend",
+                                    getRGBDVideoPlayer().getFadeIn() *
+                                    getRGBDVideoPlayer().getFadeOut() *
+                                    visualSystemFadeValue);
 			meshShader.setUniform1f("meshRetractionFalloff",meshRetractionFalloff);
 			meshShader.setUniform1f("headMinRadius", meshFaceMinRadius);
 			meshShader.setUniform1f("headFalloff", meshFaceFalloff);
 			meshShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
 			meshShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
 			meshShader.setUniform1f("forceGeoRectraction",meshForceGeoRectraction);
+			meshShader.setUniform3f("actuatorDirection",
+                                    meshActuator.x,
+                                    meshActuator.y,
+                                    meshActuator.z);
+            
 			mesh.draw();
 			
 			meshShader.end();
@@ -1349,19 +1239,29 @@ void CloudsVisualSystemRGBD::selfDraw(){
         ofEnableBlendMode(OF_BLENDMODE_SCREEN);
         
 		if(drawLines){
-			lineShader.begin();
 			ofSetLineWidth(lineThickness);
-			getRGBDVideoPlayer().flowPosition = lineFlowPosition * (linesFlowUp?-1:1);
+			lineShader.begin();
+			
+            getRGBDVideoPlayer().flowPosition = lineFlowPosition * (linesFlowUp?-1:1);
 			getRGBDVideoPlayer().setupProjectionUniforms(lineShader);
 			
-			lineShader.setUniform1f("lineExtend", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() * visualSystemFadeValue);
-			lineShader.setUniform1f("headMinRadius", meshFaceMinRadius);
+			lineShader.setUniform1f("lineExtend",
+                                    getRGBDVideoPlayer().getFadeIn() *
+                                    getRGBDVideoPlayer().getFadeOut() *
+                                    visualSystemFadeValue);
+            lineShader.setUniform1f("headMinRadius", meshFaceMinRadius);
 			lineShader.setUniform1f("headFalloff", meshFaceFalloff);
 			lineShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
 			lineShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
 			lineShader.setUniform1f("headOverlap",lineHeadOverlap);
 			lineShader.setUniform1f("alpha", lineAlpha);
-			
+            
+            
+			lineShader.setUniform3f("actuatorDirection",
+                                    lineActuator.x,
+                                    lineActuator.y,
+                                    lineActuator.z);
+            
 			lines.draw();
 			
 			lineShader.end();
@@ -1379,8 +1279,16 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			pointShader.setUniform1f("headOverlap", pointHeadOverlap);
 			pointShader.setUniform1f("pointSizeMin", pointSize.min);
 			pointShader.setUniform1f("pointSizeMax", pointSize.max);
-			pointShader.setUniform1f("alpha", pointAlpha * getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+			pointShader.setUniform1f("alpha", pointAlpha *
+                                     getRGBDVideoPlayer().getFadeIn() *
+                                     getRGBDVideoPlayer().getFadeOut() *
+                                     visualSystemFadeValue);
 			
+			pointShader.setUniform3f("actuatorDirection",
+                                    pointActuator.x,
+                                    pointActuator.y,
+                                    pointActuator.z);
+            
 			points.draw();
 			
 			pointShader.end();
@@ -1585,33 +1493,32 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 		rightPortal.draw();
 	}
 	CloudsPortal::shader.end();
-	
 	glEnable(GL_DEPTH_TEST);
 
-//	CloudsQuestion::startShader();
-//	CloudsQuestion::shader.setUniform1f("attenuateFade", 0.0);
-//	ofFloatColor baseColor  = ofFloatColor::fromHsb(questionBaseHSB.r, questionBaseHSB.g, questionBaseHSB.b);
-//	ofFloatColor hoverColor = ofFloatColor::fromHsb(questionHoverHSB.r, questionHoverHSB.g, questionHoverHSB.b);
-//	CloudsQuestion::shader.setUniform4f("color",baseColor.r,baseColor.g,baseColor.b,.7);
-//	CloudsQuestion::shader.setUniform4f("selectedColor",hoverColor.r,hoverColor.g,hoverColor.b,.7);
-//	for(int i = 0; i < questions.size(); i++){
-//		questions[i]->draw();
-//	}
-//	CloudsQuestion::endShader();
-//	glPointSize(1);
 }
 
 void CloudsVisualSystemRGBD::selfDrawOverlay() {
-//	ofPushStyle();	
-//	for(int i = 0; i < questions.size(); i++){
-//		questions[i]->drawOverlay();
-//	}
-	//This will be replaced with the HUD
-//    cloudsCaption.drawOverlay();
-	//test overlay
-//	ofSetColor(0,0,0,0);
-//	ofRect(20, 20, 300,300);
-//	ofPopStyle();
+    if(bPortalDebugOn){
+        for(int i = 0; i < portals.size(); i++){
+            ofPushStyle();
+            if(!portals[i]->onScreen){
+                continue;
+            }
+            if(portals[i] == caughtPortal){
+                ofFill();
+            }
+            else{
+                ofNoFill();
+            }
+            ofSetColor(ofColor::salmon, 200);
+            ofCircle(portals[i]->screenPosition.x, portals[i]->screenPosition.y, portalTugDistance.min);
+            ofNoFill();
+            ofSetColor(ofColor::steelBlue, 200);
+            ofCircle(portals[i]->screenPosition.x, portals[i]->screenPosition.y, portalTugDistance.max);
+        }
+        
+        ofPopStyle();
+    }
 }
 
 void CloudsVisualSystemRGBD::selfExit(){
@@ -1619,7 +1526,9 @@ void CloudsVisualSystemRGBD::selfExit(){
 }
 
 void CloudsVisualSystemRGBD::selfBegin(){
+    bPortalDebugOn = false;
 	cloudsCamera.jumpToPosition();
+    timeline->hide();
 }
 
 void CloudsVisualSystemRGBD::selfEnd(){
@@ -1648,7 +1557,7 @@ bool CloudsVisualSystemRGBD::isQuestionSelected(){
 }
 
 CloudsPortal* CloudsVisualSystemRGBD::getSelectedQuestion(){
- //   return selectedQuestion;
+   return selectedPortal;
 }
 
 void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
@@ -1660,6 +1569,10 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 //		CloudsQuestion::reloadShader();
 //		rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	}
+    
+    if(args.key == 'P'){
+        bPortalDebugOn = !bPortalDebugOn;
+    }
 }
 
 void CloudsVisualSystemRGBD::selfKeyReleased(ofKeyEventArgs & args){
