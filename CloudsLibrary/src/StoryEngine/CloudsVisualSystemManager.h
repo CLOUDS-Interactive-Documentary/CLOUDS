@@ -22,13 +22,14 @@ class CloudsVisualSystemManager {
 	void populateVisualSystems();
     void populateEnabledSystemIndeces();
 	CloudsVisualSystemPreset getRandomVisualSystem();
-	vector<CloudsVisualSystemPreset>& getPresetsForSystem(string systemName);
 	CloudsVisualSystemPreset& getPresetWithID(string presetID);
 	bool systemHasPreset(string systemName, string presetName);
+    bool hasPresetWithID(string ID);
+    bool hasPresetWithID(string ID, int& index);
 	CloudsVisualSystemPreset& getPresetForSystem(string systemName, string presetName);
 	
-	vector<int> getFilteredPresetIndeces(bool enabled, bool oculus, bool gradeA);
-	vector<int> getFilteredPresetIndecesForSystem(string systemName,bool enabled, bool oculus, bool gradeA);
+	vector<int> getFilteredPresetIndeces(bool enabled, bool oculus, bool gradeA, string systemName = "");
+//	vector<int> getFilteredPresetIndecesForSystem(,bool enabled, bool oculus, bool gradeA);
 	
 	ofPtr<CloudsVisualSystem> visualSystemWithName(string systemName);
 	vector<CloudsVisualSystemPreset>& getPresets();
@@ -41,6 +42,8 @@ class CloudsVisualSystemManager {
 	vector<CloudsVisualSystemPreset> getPresetsForKeywords(vector<string>& keywords, string clipName = "");
 	ofPtr<CloudsVisualSystem> getEmptySystem(string mainKeyword, vector<string> keywords);
 	
+    void pastePresetToIndex(CloudsVisualSystemPreset preset, int index);
+    
 	//resets all presets from file
 	void updatePresetsForSystem(ofPtr<CloudsVisualSystem> system);
 	void deletePreset(int i);
@@ -64,8 +67,6 @@ class CloudsVisualSystemManager {
 	void loadPresets();
 	void savePresets();
 	
-	
-	
 	set<string> getAllKeywords();	
     CloudsVisualSystemPreset getRandomEnabledPreset();
   	void exportStandalonePresets();
@@ -73,16 +74,19 @@ class CloudsVisualSystemManager {
   protected:
 
 	CloudsVisualSystemPreset dummyPreset;
-    
+//    vector<CloudsVisualSystemPreset> getPresetsForSystem(string systemName);
+    vector<int> getPresetIndicesForSystem(string systemName);
 	vector< ofPtr<CloudsVisualSystem> > systems;
 	map<string, ofPtr<CloudsVisualSystem> > nameToVisualSystem;
 	vector<CloudsVisualSystemPreset> presets;
     vector<int> enabledPresetsIndex;
 	
-	map<string, vector<CloudsVisualSystemPreset> > nameToPresets;
+    int indexForPreset(string presetID);
+    
 	//preset ID to list of clip link names
 	map<string, vector<string> > linkedClips;
     map<string, vector<string> > suppressedClips;
+	map<string, vector<string> > keywords;
 	
 	//computed after linkedClips is populated
 	void updateClipPresetLinks();
@@ -92,7 +96,6 @@ class CloudsVisualSystemManager {
 
 	void addDefaultPresetForSystem(string systemName);
 	
-	map<string,vector<string> > keywords;
 
 	bool allSystemsPopulated;
 	//this instantiates and registers all the visual systems, called once at setup

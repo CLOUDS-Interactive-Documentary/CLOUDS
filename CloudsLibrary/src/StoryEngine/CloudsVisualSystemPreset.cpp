@@ -12,13 +12,19 @@
 
 CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 	enabled = false;
-	indefinite = true;
+	indefinite = false;
 	
 	defaultedToFamily = false;
 	randomlySelected = false;
 	missingContent = false;
 	oculusCompatible = false;
-	hasSound = false;
+//	hasSound = false;
+    
+    soundAllowVO = false;
+    soundExcludeVO = false;
+    
+    interlude = false;
+    
 	duration = 60;
 	introDuration = 0;
 	outroDuration = 0;
@@ -28,6 +34,10 @@ CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 
 string CloudsVisualSystemPreset::getID(){
 	return systemName + "_" + presetName;
+}
+
+bool CloudsVisualSystemPreset::hasSound(){
+    return soundAllowVO || soundExcludeVO;
 }
 
 void CloudsVisualSystemPreset::loadTimeInfo(){
@@ -44,7 +54,7 @@ void CloudsVisualSystemPreset::loadTimeInfo(){
 	string path = directory + "/TimeInfo.xml";
 	if(timeInfo.loadFile(path) ){
 		timeInfo.pushTag("timeinfo");
-		indefinite = timeInfo.getValue("indefinite", true);
+		indefinite = timeInfo.getValue("indefinite", false);
 		duration = timeInfo.getValue("duration", 60);
 		introDuration = timeInfo.getValue("introDuration", 0);
 		outroDuration = timeInfo.getValue("outroDuration", 0);
@@ -59,7 +69,6 @@ void CloudsVisualSystemPreset::loadTimeInfo(){
 		timeInfo.addValue("outroDuration", outroDuration);
 		timeInfo.saveFile(path);
 	}
-
 }
 
 void CloudsVisualSystemPreset::checkHasFiles(){

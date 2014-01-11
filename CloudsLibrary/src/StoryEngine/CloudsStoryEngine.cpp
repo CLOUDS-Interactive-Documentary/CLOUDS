@@ -590,7 +590,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					//if we have sound schedule this at the end of the clip and add it immediately to ensure no VO comes in
 					//COMPUTE START TIME
 					//step back into the clip
-					if(state.preset.hasSound){
+                    //TODO: respect VO & SOUND
+					if(state.preset.hasSound()){
 						state.visualSystemStartTime = state.duration;
 					}
 					else{
@@ -605,8 +606,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 						state.visualSystemEndTime =
 							state.visualSystemStartTime + MIN(maxVisualSystemRunTime, state.preset.duration);
 					}
-					
-					if(state.preset.hasSound){
+					//TODO: RESPECT HAS SOUND
+					if(state.preset.hasSound()){
 						//commit the visual system
 						//setting the current duration here ensures the next clip starts after this one is over
 						state.act->addNote("Sound VS Start", state.duration);
@@ -758,7 +759,8 @@ CloudsVisualSystemPreset CloudsStoryEngine::selectVisualSystem(CloudsStoryState&
     float topScore = 0;
 	for(int i = 0; i < presets.size(); i++){
 		string presetLog;
-		if(presets[i].hasSound && !allowSound){
+        //TODO: RESPECT ALLOW VO
+		if(presets[i].hasSound() && !allowSound){
 			continue;
 		}
 		presets[i].currentScore = scoreForVisualSystem(state, presets[i]);

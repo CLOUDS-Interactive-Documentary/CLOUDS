@@ -366,7 +366,9 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 		bgSat2 = bgSat;
 		bgBri2 = bgBri;
 	}
-	
+    
+    durationLabel->setLabel(ofxTimecode::timecodeForSeconds(timeline->getInOutRange().span() * timeline->getDurationInSeconds()));
+    
 	bgColor = ofColor::fromHsb(MIN(bgHue,254.), bgSat, bgBri, 255);
 	bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
 	
@@ -1000,7 +1002,6 @@ void CloudsVisualSystem::setupLightingParams()
 
 void CloudsVisualSystem::setupMaterialParams()
 {
-//    mat = new ofMaterial();
 	mat = new ofxMaterial();
 }
 
@@ -1008,7 +1009,7 @@ void CloudsVisualSystem::setupTimeLineParams()
 {
 	timeline = NULL;
     bShowTimeline = false;
-	bTimelineIsIndefinite = true;
+	bTimelineIsIndefinite = false;
     bDeleteTimelineTrack = false;
     timelineDuration = 60;
     bEnableTimeline = true;
@@ -2112,12 +2113,14 @@ void CloudsVisualSystem::setupTimelineGui()
     tlGui->addWidgetToHeader(toggle);
     tlGui->addSpacer();
     
+    durationLabel = tlGui->addLabel("");
+    
     tlGui->addNumberDialer("DURATION", 0.0, 60*5, &timelineDuration, 0.0)->setDisplayLabel(true);
     tlGui->addToggle("INDEFINITE", &bTimelineIsIndefinite);
     
     tlGui->addToggle("ANIMATE", &bEnableTimelineTrackCreation);
     tlGui->addToggle("DELETE", &bDeleteTimelineTrack);
-
+    
     //tlGui->addToggle("SHOW/HIDE", &bShowTimeline);
     
     selfSetupTimelineGui();
@@ -2946,7 +2949,6 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 	
 	
 //	cout << "after save range " << timeline->getInOutRange() << endl;
-	
 	timeline->setName("Working");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 
@@ -2959,7 +2961,11 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 	timeInfo.addValue("outroDuration", getOutroDuration());
 	timeInfo.popTag();//timeinfo
 	timeInfo.saveFile(getVisualSystemDataPath()+"Presets/"+presetName+"/TimeInfo.xml");
-	
+    
+    //Add auto refresh file
+    ofBuffer refreshFlag;
+    refreshFlag.append("refreshme");
+    ofBufferToFile(getVisualSystemDataPath()+"Presets/Working/_refreshme.txt", refreshFlag);
 }
 
 void CloudsVisualSystem::deleteGUIS()
