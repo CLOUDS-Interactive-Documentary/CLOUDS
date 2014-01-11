@@ -17041,16 +17041,6 @@
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
-<system name="Swim_Detritus_2">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound>0</sound>
-</system>
 <system name="Swim_Detritus_3">
     <keywords>microscope|journey|exploration</keywords>
     <links></links>
@@ -17089,8 +17079,8 @@
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound>0</sound>
 </system>
