@@ -327,10 +327,10 @@ void CloudsVisualSystem::speakerEnded()
 	hasSpeaker = false;
 }
 
-#define REZANATOR_GUI_ALPHA_MULTIPLIER 4
-
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
+
+#ifndef VISUAL_SYSTEM_EDITOR
     // show/hide the mouse cursor
     currMousePos.set(ofGetMouseX(), ofGetMouseY());
     if (currMousePos != lastMousePos) {
@@ -341,7 +341,8 @@ void CloudsVisualSystem::update(ofEventArgs & args)
         ofHideCursor();
     }
     lastMousePos = currMousePos;
-	
+#endif
+    
     if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack)
     {
         updateTimelineUIParams();
