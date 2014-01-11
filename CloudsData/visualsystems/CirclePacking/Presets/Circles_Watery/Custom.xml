@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Custom</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -41,44 +41,62 @@
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>6</Kind>
-    <Name>small size</Name>
-    <HighValue>5.000000000</HighValue>
-    <LowValue>5.000000000</LowValue>
-</Widget>
-<Widget>
-    <Kind>6</Kind>
-    <Name>large size</Name>
-    <HighValue>18.571430206</HighValue>
-    <LowValue>5.000000000</LowValue>
+    <Kind>44</Kind>
+    <Name>initial Number of Circles</Name>
+    <Value>49</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>primary color H</Name>
-    <Value>0.270935953</Value>
+    <Name>small size 1</Name>
+    <Value>23.719211578</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>primary color S</Name>
-    <Value>0.290640384</Value>
+    <Name>small size 2</Name>
+    <Value>26.995073318</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>primary color V</Name>
-    <Value>0.325123161</Value>
+    <Name>large size 1</Name>
+    <Value>53.201972961</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>secondary color H</Name>
+    <Name>large size 2</Name>
+    <Value>63.029560089</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color H Primary</Name>
+    <Value>0.596059084</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color H Secondary</Name>
+    <Value>0.354679793</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color S Primary</Name>
+    <Value>0.339901477</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color S Secondary</Name>
+    <Value>0.413793117</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color V Primary</Name>
     <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>secondary color S</Name>
+    <Name>color V Secondary</Name>
     <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>secondary color V</Name>
+    <Name>alpha</Name>
     <Value>1.000000000</Value>
 </Widget>

@@ -138,7 +138,7 @@
         <clip>Jen - oversimplified circles 1</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -232,7 +232,7 @@
         <clip>Sophy - information overload</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -240,24 +240,158 @@
     <interlude>0</interlude>
 </system>
 <system name="2DVideo_D3_Radial">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
+    <keywords>data visualization|information</keywords>
+    <links>
+        <clip>Jen - oversimplified circles 1</clip>
+        <clip>Jen - oversimplified circles 2</clip>
+    </links>
+    <suppressions>
+        <clip>Andres - Computational lens</clip>
+        <clip>Andres - an overly complex model</clip>
+        <clip>Binx - making a map</clip>
+        <clip>Binx - maps</clip>
+        <clip>Binx - meaningful shape1</clip>
+        <clip>Bruce - Digital humanities technology</clip>
+        <clip>Fernanda - A social lens</clip>
+        <clip>Fernanda - Googe plus 2</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - History flow 2</clip>
+        <clip>Fernanda - Wind visualization 2</clip>
+        <clip>Fernanda - defense of complexity 1</clip>
+        <clip>Fernanda - defense of complexity 2</clip>
+        <clip>Fernanda - fleshmap2</clip>
+        <clip>Fernanda - fleshmap 3</clip>
+        <clip>Fernanda - non numerical visualization</clip>
+        <clip>Fernanda - seeing patterns 2</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Fernanda - visualized data doesn&apos;t seem complex</clip>
+        <clip>Fernanda - what do we mean by data</clip>
+        <clip>Fernanda - what is data</clip>
+        <clip>Golan - emotion</clip>
+        <clip>Golan - listening post</clip>
+        <clip>Golan - open data</clip>
+        <clip>Greg - the &quot;Like&quot; button cascade</clip>
+        <clip>Jen - Scaling data</clip>
+        <clip>Jen - a gravity to the work</clip>
+        <clip>Jen - browsing</clip>
+        <clip>Jen - data viz challenges</clip>
+        <clip>Jen - data viz noire</clip>
+        <clip>Jen - data viz too serious 1</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Jen - generalization 1</clip>
+        <clip>Jen - generalization 2</clip>
+        <clip>Jen - information cave</clip>
+        <clip>Jen - library</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jen - pull out the stories</clip>
+        <clip>Jen - stencil pie chart</clip>
+        <clip>Jen - truthiness</clip>
+        <clip>Jer - Pattern</clip>
+        <clip>Jer - data visualization</clip>
+        <clip>Jer - reading the complexity</clip>
+        <clip>Jer - take advantage of this thing we can do</clip>
+        <clip>Julian - Transparency</clip>
+        <clip>Julian - data viz critique</clip>
+        <clip>Julian - data viz endorsement</clip>
+        <clip>Karsten - changing behavior</clip>
+        <clip>Karsten - code is information</clip>
+        <clip>Karsten - data visualization</clip>
+        <clip>Karsten - database</clip>
+        <clip>Karsten - demo scene 3</clip>
+        <clip>Karsten - social collider</clip>
+        <clip>Kevin - algo trading 6</clip>
+        <clip>Lauren - Squib visualization</clip>
+        <clip>Maeda - people are best communicators</clip>
+        <clip>Martin - Inflation not that interesting</clip>
+        <clip>Martin - Seeing the whole 1</clip>
+        <clip>Martin - all the words</clip>
+        <clip>Martin - flickr flow</clip>
+        <clip>Martin - how to make us smarter</clip>
+        <clip>Martin - rapid dissemination of info</clip>
+        <clip>Martin - words and numbers</clip>
+        <clip>Patricio - Information 1</clip>
+        <clip>Patricio - Information 3</clip>
+        <clip>Sophy - information overload</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="2DVideo_D3_Timeline">
-    <keywords></keywords>
+    <keywords>data visualization</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - Computational lens</clip>
+        <clip>Andres - an overly complex model</clip>
+        <clip>Binx - frustrated about visualization</clip>
+        <clip>Binx - making a map</clip>
+        <clip>Binx - maps</clip>
+        <clip>Binx - meaningful shape1</clip>
+        <clip>Bruce - Digital humanities technology</clip>
+        <clip>Fernanda - A social lens</clip>
+        <clip>Fernanda - Data questions</clip>
+        <clip>Fernanda - Googe plus 2</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - Replaying the moment of discovery</clip>
+        <clip>Fernanda - Wind visualization 2</clip>
+        <clip>Fernanda - defense of complexity 1</clip>
+        <clip>Fernanda - defense of complexity 2</clip>
+        <clip>Fernanda - fleshmap2</clip>
+        <clip>Fernanda - fleshmap 3</clip>
+        <clip>Fernanda - non numerical visualization</clip>
+        <clip>Fernanda - seeing patterns 2</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Fernanda - visualized data doesn&apos;t seem complex</clip>
+        <clip>Fernanda - what is data</clip>
+        <clip>Fernanda - zooming in</clip>
+        <clip>Golan - emotion</clip>
+        <clip>Golan - listening post</clip>
+        <clip>Golan - open data</clip>
+        <clip>Greg - the &quot;Like&quot; button cascade</clip>
+        <clip>Jen - Scaling data</clip>
+        <clip>Jen - a gravity to the work</clip>
+        <clip>Jen - data viz noire</clip>
+        <clip>Jen - data viz too serious 1</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Jen - generalization 1</clip>
+        <clip>Jen - generalization 2</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jen - oversimplified circles 2</clip>
+        <clip>Jen - pull out the stories</clip>
+        <clip>Jen - rhetorical tool 1</clip>
+        <clip>Jen - rhetorical tool 2</clip>
+        <clip>Jen - stencil pie chart</clip>
+        <clip>Jen - truthiness</clip>
+        <clip>Jen - visual communication</clip>
+        <clip>Jer - Pattern</clip>
+        <clip>Jer - data visualization</clip>
+        <clip>Jer - failure to communicate</clip>
+        <clip>Jer - people don&apos;t read these things</clip>
+        <clip>Jer - reading the complexity</clip>
+        <clip>Jer - take advantage of this thing we can do</clip>
+        <clip>Julian - data viz critique</clip>
+        <clip>Julian - data viz endorsement</clip>
+        <clip>Karsten - data visualization</clip>
+        <clip>Karsten - database</clip>
+        <clip>Karsten - social collider</clip>
+        <clip>Kevin - algo trading 6</clip>
+        <clip>Lauren - Squib visualization</clip>
+        <clip>Maeda - people are best communicators</clip>
+        <clip>Martin - Inflation not that interesting</clip>
+        <clip>Martin - Seeing the whole 1</clip>
+        <clip>Martin - all the words</clip>
+        <clip>Martin - flickr flow</clip>
+        <clip>Martin - how to make us smarter</clip>
+        <clip>Martin - seeing the whole 2</clip>
+        <clip>Martin - words and numbers</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -292,24 +426,18 @@
         <clip>Golan - listening post</clip>
         <clip>Golan - open data</clip>
         <clip>Greg - the &quot;Like&quot; button cascade</clip>
-        <clip>Jen - a gravity to the work</clip>
-        <clip>Jen - data viz noire</clip>
         <clip>Jen - data viz too serious 2</clip>
         <clip>Jen - generalization 1</clip>
         <clip>Jen - generalization 2</clip>
         <clip>Jen - oversimplified circles 2</clip>
         <clip>Jen - pull out the stories</clip>
         <clip>Jen - stencil pie chart</clip>
-        <clip>Jen - truthiness</clip>
         <clip>Jer - Pattern</clip>
-        <clip>Jer - failure to communicate</clip>
         <clip>Jer - people don&apos;t read these things</clip>
         <clip>Jer - reading the complexity</clip>
         <clip>Jer - take advantage of this thing we can do</clip>
-        <clip>Julian - data viz critique</clip>
         <clip>Julian - data viz endorsement</clip>
         <clip>Karsten - data visualization</clip>
-        <clip>Karsten - database</clip>
         <clip>Karsten - social collider</clip>
         <clip>Lauren - Squib visualization</clip>
         <clip>Maeda - people are best communicators</clip>
@@ -324,6 +452,7 @@
         <clip>Fernanda - seeing patterns 1</clip>
         <clip>Fernanda - seeing patterns 2</clip>
         <clip>Fernanda - what is data</clip>
+        <clip>Ramsey - algorithms run wild</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
@@ -430,7 +559,11 @@
 </system>
 <system name="2DVideo_FaceDebug_JapaneseCouple">
     <keywords>face tracking|machine vision</keywords>
-    <links></links>
+    <links>
+        <clip>Julia - what is it doing to us</clip>
+        <clip>Julian - what&apos;s inside this thing</clip>
+        <clip>Greg - AI 2</clip>
+    </links>
     <suppressions>
         <clip>Bruce - future camera 5</clip>
         <clip>Greg - AI 1</clip>
@@ -453,20 +586,28 @@
 </system>
 <system name="2DVideo_FaceDebug_Teens">
     <keywords>new aesthetic</keywords>
-    <links></links>
+    <links>
+        <clip>Julian - change the way we see tech</clip>
+        <clip>Julian - what&apos;s inside this thing</clip>
+        <clip>Julian - Shapes the way we think</clip>
+        <clip>Julia - what is it doing to us</clip>
+        <clip>Greg - AI 2</clip>
+        <clip>Greg - Object Oriented Ontology 2</clip>
+    </links>
     <suppressions>
         <clip>Aaron - curiosity</clip>
         <clip>Bruce - camera technician vs explorer</clip>
         <clip>Bruce - digital status quo</clip>
-        <clip>Elliot_UK - aesthetic of error</clip>
         <clip>Elliot_UK - limitations 2</clip>
-        <clip>Greg - Object Oriented Ontology 2</clip>
         <clip>Greg - object oriented ontology 1</clip>
         <clip>Kyle_MC - Debug screen</clip>
         <clip>Marius - Aesthetic with no references,</clip>
         <clip>Marius - artificial creativity</clip>
         <clip>Philip - system in your head</clip>
         <clip>Theo - eyebeam R&amp;D</clip>
+        <clip>Damion - OOO</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Greg - AI 1</clip>
     </suppressions>
     <comments></comments>
     <grade>A</grade>
@@ -477,8 +618,10 @@
     <interlude>0</interlude>
 </system>
 <system name="2DVideo_FaceShift_noisy">
-    <keywords>face tracking</keywords>
-    <links></links>
+    <keywords>face tracking|new aesthetic</keywords>
+    <links>
+        <clip>Julian - what&apos;s inside this thing</clip>
+    </links>
     <suppressions>
         <clip>Kyle_MC - Face Tracking military</clip>
         <clip>Kyle_MC - box on your face</clip>
@@ -672,10 +815,1359 @@
         <clip>Kyle_MC - Face Tracking military</clip>
         <clip>Kyle_MC - box on your face</clip>
         <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - box on your face</clip>
+        <clip>Kyle_MC - face algos</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Bruce - camera technician vs explorer</clip>
+        <clip>Damion - OOO</clip>
+        <clip>Greg - AI 1</clip>
+        <clip>Greg - Object Oriented Ontology 2</clip>
     </suppressions>
     <comments></comments>
-    <grade>A</grade>
-    <enabled>1</enabled>
+    <grade></grade>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -683,7 +2175,11 @@
 </system>
 <system name="2DVideo_FaceSubstitution">
     <keywords>face tracking|new aesthetic|machine aesthetics</keywords>
-    <links></links>
+    <links>
+        <clip>Julian - change the way we see tech</clip>
+        <clip>Greg - Object Oriented Ontology 2</clip>
+        <clip>Greg - AI 2</clip>
+    </links>
     <suppressions>
         <clip>Aaron - curiosity</clip>
         <clip>Bruce - camera technician vs explorer</clip>
@@ -691,8 +2187,6 @@
         <clip>Elliot_UK - aesthetic of error</clip>
         <clip>Elliot_UK - limitations 2</clip>
         <clip>Greg - AI 1</clip>
-        <clip>Greg - AI 2</clip>
-        <clip>Greg - Object Oriented Ontology 2</clip>
         <clip>Greg - object oriented ontology 1</clip>
         <clip>Kyle_MC - Debug screen</clip>
         <clip>Kyle_MC - Face Tracking military</clip>
@@ -899,7 +2393,7 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -949,7 +2443,7 @@
         <clip>Zach - programming 2</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -1063,8 +2557,9 @@
         <clip>Zach - Open Frameworks 2</clip>
         <clip>Maeda - sharing for collective advancement</clip>
         <clip>LIA - Sandcastles</clip>
-        <clip>Kyle_MC - who I am 1</clip>
         <clip>JTNimoy - 100 artists versus One</clip>
+        <clip>Intro - Collaboration</clip>
+        <clip>Intro - Sharing</clip>
     </suppressions>
     <comments></comments>
     <grade>A</grade>
@@ -1102,7 +2597,6 @@
         <clip>Casey - group teaching</clip>
         <clip>Damion - CodingAndCommunication</clip>
         <clip>Diederick - hackathon2</clip>
-        <clip>Diederick - openFrameworks</clip>
         <clip>Diederick - worldwillbecomebetter</clip>
         <clip>Fernanda - History flow 1</clip>
         <clip>Fernanda - History flow 3</clip>
@@ -1124,8 +2618,6 @@
         <clip>Higa - not sharing its a backup</clip>
         <clip>Higa - thick wall</clip>
         <clip>Higa - tiny riot 1</clip>
-        <clip>Intro - Collaboration</clip>
-        <clip>Intro - Sharing</clip>
         <clip>JTNimoy - enough cooks</clip>
         <clip>JTNimoy - one of us</clip>
         <clip>JTNimoy - open source mensch</clip>
@@ -1252,15 +2744,13 @@
         <clip>Bruce - Trendier than thou</clip>
         <clip>Bruce - orange</clip>
         <clip>Elliot_UK - Ideaspace</clip>
-        <clip>Fernanda - Viral pattern 1</clip>
-        <clip>Fernanda - Viral pattern 2</clip>
         <clip>Fernanda - teens give birth to memes</clip>
         <clip>Karsten - physical feedback</clip>
-        <clip>Karsten - virus</clip>
         <clip>Kyle_CH - mainstreaming of fring visual culture</clip>
         <clip>Lindsay - collective creativity</clip>
         <clip>Martin - what the world is thinking</clip>
         <clip>Sophy - tumblr 2</clip>
+        <clip>Fernanda - Viral pattern 2</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
@@ -1274,19 +2764,14 @@
     <keywords>design by numbers|aesthetics and computation</keywords>
     <links></links>
     <suppressions>
-        <clip>Casey - Programming at 26</clip>
         <clip>Golan - ACG</clip>
         <clip>Golan - ACG3</clip>
         <clip>Golan - MIT</clip>
-        <clip>Golan - pedagogical impulse</clip>
         <clip>Golan - people at MIT</clip>
-        <clip>Maeda - ACU p 2</clip>
-        <clip>Maeda - ACU part 1</clip>
-        <clip>Maeda - Aesthetics and Computation group</clip>
-        <clip>Maeda - Artist coders coder artists</clip>
-        <clip>Nervous_Jessica - John Maeda</clip>
-        <clip>Nervous_Jessica - MIT beginning</clip>
         <clip>Zach - Open Frameworks 1</clip>
+        <clip>Maeda - Aesthetics and Computation group</clip>
+        <clip>Maeda - ACU part 1</clip>
+        <clip>Maeda - ACU p 2</clip>
     </suppressions>
     <comments></comments>
     <grade>A</grade>
@@ -1306,7 +2791,6 @@
         <clip>Higa - working all night</clip>
         <clip>Intro - Programming</clip>
         <clip>Javier - hacker critique</clip>
-        <clip>Javier - hackers 1</clip>
         <clip>Javier - hackers 2</clip>
         <clip>Julian - Transparency grenade</clip>
         <clip>Julian - city as operating system</clip>
@@ -1315,9 +2799,6 @@
         <clip>Karsten - demo scene 1</clip>
         <clip>Kevin - algo trading 1</clip>
         <clip>Kyle_MC - Anonymous</clip>
-        <clip>Kyle_MC - Dangerous to conflate</clip>
-        <clip>Kyle_MC - Hackers and artists</clip>
-        <clip>Kyle_MC - Julian Oliver</clip>
         <clip>Kyle_MC - We don&apos;t understand the thing</clip>
         <clip>Lindsay - hackers</clip>
         <clip>Paola - the tribe</clip>
@@ -1336,7 +2817,7 @@
     <interlude>0</interlude>
 </system>
 <system name="2DVideo_Logo1">
-    <keywords>code|instructions|learning</keywords>
+    <keywords>code|instructions|learning|aesthetics and computation|design by numbers</keywords>
     <links></links>
     <suppressions>
         <clip>Aaron - Mini-Artificial Intelligences</clip>
@@ -1354,7 +2835,6 @@
         <clip>Bruce - beauty of code 2</clip>
         <clip>Bruce - beauty of code 3</clip>
         <clip>Bruce - fanciful metaphors 1</clip>
-        <clip>Casey - Birth of processing</clip>
         <clip>Casey - Programming at 26</clip>
         <clip>Casey - Software is what i love the most</clip>
         <clip>Casey - teaching at UCLA</clip>
@@ -1366,7 +2846,6 @@
         <clip>Higa - sharing accidently 2</clip>
         <clip>Higa - thick wall</clip>
         <clip>Intro - Computers</clip>
-        <clip>Intro - Learning</clip>
         <clip>JTNimoy - evolution</clip>
         <clip>Jen - MathMajor 1</clip>
         <clip>Jen - hated computer science</clip>
@@ -1433,6 +2912,17 @@
         <clip>Zach - action script shorter</clip>
         <clip>Zach - hide the tech</clip>
         <clip>Zach - programming 2</clip>
+        <clip>Golan - ACG3</clip>
+        <clip>Golan - pedagogical impulse</clip>
+        <clip>Golan - people at MIT</clip>
+        <clip>Intro - Learning</clip>
+        <clip>Golan - ACG</clip>
+        <clip>Maeda - ACU p 2</clip>
+        <clip>Maeda - ACU part 1</clip>
+        <clip>Maeda - Aesthetics and Computation group</clip>
+        <clip>Martin - revelatory learning</clip>
+        <clip>Zach - Open Frameworks 1</clip>
+        <clip>Golan - MIT</clip>
     </suppressions>
     <comments></comments>
     <grade>B</grade>
@@ -1472,34 +2962,23 @@
         <clip>Higa - sharing accidently 1</clip>
         <clip>Higa - sharing accidently 2</clip>
         <clip>Higa - thick wall</clip>
-        <clip>Intro - Computers</clip>
         <clip>Intro - Learning</clip>
         <clip>JTNimoy - evolution</clip>
-        <clip>Jen - MathMajor 1</clip>
-        <clip>Jen - hated computer science</clip>
         <clip>Joel - Bicycles2</clip>
         <clip>Karsten - Paul Burke</clip>
         <clip>Karsten - code as way of knowing</clip>
-        <clip>Karsten - code has nothing to do with machines</clip>
         <clip>Karsten - code is information</clip>
-        <clip>Karsten - demo scene 3</clip>
         <clip>Karsten - programming is...</clip>
         <clip>Karsten - why don&apos;t we learn?</clip>
         <clip>Kevin - learning to code</clip>
-        <clip>Kevin - printing code</clip>
         <clip>Kyle_CH - blows my mind</clip>
         <clip>LIA - VisualizeAnIdea</clip>
-        <clip>Maeda - own the tool</clip>
         <clip>Maeda - playful systems</clip>
         <clip>Maeda - sharing for collective advancement</clip>
         <clip>Marcus - gurus</clip>
         <clip>Martin - deeper learning</clip>
         <clip>Martin - language and infinity</clip>
-        <clip>Martin - language is like code</clip>
-        <clip>Martin - revelatory learning</clip>
         <clip>Nervous_Jesse - Open source education</clip>
-        <clip>Nervous_Jessica - John Maeda</clip>
-        <clip>Nervous_Jessica - MIT beginning</clip>
         <clip>Paola - changes the way you think</clip>
         <clip>Paola - code changes your thinking</clip>
         <clip>Paola - code is a language</clip>
@@ -1514,11 +2993,8 @@
         <clip>Philip - understanding through physics</clip>
         <clip>Ramsey - a hundred million</clip>
         <clip>Ramsey - a piece of my mind</clip>
-        <clip>Ramsey - beauty of code</clip>
-        <clip>Ramsey - beauty of the score</clip>
         <clip>Ramsey - cloud 1</clip>
         <clip>Ramsey - cloud 2</clip>
-        <clip>Ramsey - code specifies behavior</clip>
         <clip>Ramsey - complacency 1</clip>
         <clip>Ramsey - complacency 2</clip>
         <clip>Ramsey - complicated C++</clip>
@@ -1532,12 +3008,10 @@
         <clip>Shiffman - Maybe I&apos;d like that</clip>
         <clip>Shiffman - Not a visual thinker</clip>
         <clip>Shiffman - advanced environment</clip>
-        <clip>Shiffman - sketching with code</clip>
         <clip>Zach - Open Frameworks 3</clip>
         <clip>Zach - action script</clip>
         <clip>Zach - action script shorter</clip>
         <clip>Zach - hide the tech</clip>
-        <clip>Ramsey - it&apos;s not painting 2</clip>
         <clip>Theo - learning</clip>
     </suppressions>
     <comments></comments>
@@ -1587,24 +3061,12 @@
     <interlude>0</interlude>
 </system>
 <system name="2DVideo_Reas_Process13">
-    <keywords></keywords>
+    <keywords>processing</keywords>
     <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="2DVideo_Reas_network1">
-    <keywords></keywords>
-    <links>
-        <clip>Casey - emergence</clip>
-    </links>
     <suppressions>
-        <clip>Binx - maps</clip>
+        <clip>Maeda - Batman superman</clip>
+        <clip>Nervous_Jessica - John Maeda</clip>
+        <clip>Shiffman - make it random</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
@@ -1614,8 +3076,42 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
+<system name="2DVideo_Reas_network1">
+    <keywords>processing</keywords>
+    <links>
+        <clip>Casey - emergence</clip>
+        <clip>LIA - PatternsIntheBrain</clip>
+        <clip>LIA - VisualizeAnIdea</clip>
+        <clip>LIA - IdeaToCode</clip>
+        <clip>LIA - HopePeopleCanEnjoyMyArt</clip>
+        <clip>Diederick - PaintingLikeCoding</clip>
+        <clip>Diederick - programmingWithFeeling</clip>
+    </links>
+    <suppressions>
+        <clip>Binx - maps</clip>
+        <clip>Casey - People would pop up</clip>
+        <clip>Casey - Processing addons</clip>
+        <clip>Maeda - Batman superman</clip>
+        <clip>Kyle_CH - history of computational art</clip>
+        <clip>Kyle_CH - fun accessible art</clip>
+        <clip>Fernanda - Googe plus 2</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - Wind visualization 1</clip>
+        <clip>Fernanda - Wind visualization 2</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Karolina - Ocean as metaphor</clip>
+        <clip>Kevin - cognition vs computation 1</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
 <system name="2DVideo_TweakMode">
-    <keywords>coding|emergence|NOC|nature of code</keywords>
+    <keywords>coding|emergence|NOC|nature of code|processing</keywords>
     <links></links>
     <suppressions>
         <clip>Andres - soft systems 1</clip>
@@ -1629,10 +3125,6 @@
         <clip>Higa - simplicity of self made tools</clip>
         <clip>Higa - thick wall</clip>
         <clip>Higa - working all night</clip>
-        <clip>Intro - CodingSketching</clip>
-        <clip>Intro - LogicOfPixels</clip>
-        <clip>Intro - Programming</clip>
-        <clip>JTNimoy - I addicted myself</clip>
         <clip>Jen - hated computer science</clip>
         <clip>Jen - necessity of code 1</clip>
         <clip>Jen - necessity of code 2</clip>
@@ -1642,19 +3134,11 @@
         <clip>Karsten - 256 bytes part 1</clip>
         <clip>Karsten - programming is...</clip>
         <clip>Kyle_CH - alter language 1</clip>
-        <clip>Kyle_CH - coding, magic</clip>
-        <clip>Kyle_CH - coding 2</clip>
-        <clip>Kyle_CH - coding is 1</clip>
-        <clip>Kyle_MC - code as a theme 2</clip>
-        <clip>LIA - IdeaToCode</clip>
         <clip>LIA - LTree</clip>
         <clip>LIA - NonVerbalWay</clip>
-        <clip>LIA - VisualizeAnIdea</clip>
         <clip>Maeda - not a big deal</clip>
-        <clip>Marcus - Sims</clip>
         <clip>Marcus - emergence</clip>
         <clip>Marcus - energy flow_riot</clip>
-        <clip>Marcus - lego bricks</clip>
         <clip>Marius - constraining randomness</clip>
         <clip>Marius - gardening</clip>
         <clip>Nervous_Jesse - organic process</clip>
@@ -1678,12 +3162,10 @@
         <clip>Shantell - Coding gesturally</clip>
         <clip>Shiffman - offers me a way to think</clip>
         <clip>Shiffman - programming the universe</clip>
-        <clip>Patricio - Imaginative technologies 2</clip>
         <clip>Patricio - Imaginative technologies 1</clip>
         <clip>Damion - CodingAndCommunication</clip>
         <clip>Diederick - hackathon1</clip>
-        <clip>Shiffman - NOC 2</clip>
-        <clip>Shiffman - NOC 3</clip>
+        <clip>Casey - People would pop up</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
@@ -2502,8 +3984,8 @@
         <clip>Zach - Time slows down</clip>
     </suppressions>
     <comments></comments>
-    <grade>A</grade>
-    <enabled>1</enabled>
+    <grade>B</grade>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -2907,9 +4389,19 @@
     <interlude>0</interlude>
 </system>
 <system name="Astrolabe_flat">
-    <keywords></keywords>
+    <keywords>time|clock|slow</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Damion - ShortCircuit</clip>
+        <clip>LIA - AntiInteractivity</clip>
+        <clip>LIA - TimeStamps1</clip>
+        <clip>LIA - TimeStamps2</clip>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Ramsey - thinking previously unthinkable thoughts</clip>
+        <clip>Sophy - avatar 1</clip>
+        <clip>Zach - Time slows down</clip>
+        <clip>Zach - drawn2</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
@@ -3098,7 +4590,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -3164,7 +4656,7 @@
         <clip>Vera - Energy Flow2</clip>
     </suppressions>
     <comments></comments>
-    <grade>B</grade>
+    <grade>C</grade>
     <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -3177,7 +4669,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -3562,14 +5054,10 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="CirclePacking_Circles_Black">
+<system name="CirclePacking_Circles_BW1">
     <keywords></keywords>
-    <links>
-        <clip>Jen - oversimplified circles 1</clip>
-    </links>
-    <suppressions>
-        <clip>Jen - oversimplified circles 2</clip>
-    </suppressions>
+    <links></links>
+    <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
@@ -3578,31 +5066,83 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="CirclePacking_Circles_Gradient">
-    <keywords>data visualization</keywords>
+<system name="CirclePacking_Circles_BW_unfilled">
+    <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="CirclePacking_Circles_Social">
+    <keywords>social dynamics|social</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Higa - tiny riot 2</clip>
+        <clip>Higa - tiny riot 3</clip>
+        <clip>Higa - tiny riot 4</clip>
+        <clip>Karsten - code has nothing to do with machines</clip>
+        <clip>Paola - mutant ants</clip>
+        <clip>Greg - the &quot;Like&quot; button cascade</clip>
+        <clip>JTNimoy - geek culture</clip>
+        <clip>Jer - everyday experience</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Kyle_MC - code as a theme 1</clip>
+        <clip>Kyle_MC - socially acceptable</clip>
+        <clip>Lauren - Fluxus App</clip>
+        <clip>Lauren - Hack my way out</clip>
+        <clip>Lauren - dream device</clip>
+        <clip>Lauren - social turkers</clip>
+        <clip>Patricio - Social skills</clip>
+        <clip>Vera - Energy Flow2</clip>
+        <clip>Higa - only meets pure geeks</clip>
+        <clip>Fernanda - social network hairballs</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="CirclePacking_Circles_Gradient_2">
-    <keywords></keywords>
+<system name="CirclePacking_Circles_Social2">
+    <keywords>social dynamics|social</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Higa - tiny riot 2</clip>
+        <clip>Higa - tiny riot 3</clip>
+        <clip>Higa - tiny riot 4</clip>
+        <clip>Karsten - code has nothing to do with machines</clip>
+        <clip>Paola - mutant ants</clip>
+        <clip>Greg - the &quot;Like&quot; button cascade</clip>
+        <clip>JTNimoy - geek culture</clip>
+        <clip>Jer - everyday experience</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Kyle_MC - code as a theme 1</clip>
+        <clip>Kyle_MC - socially acceptable</clip>
+        <clip>Lauren - Fluxus App</clip>
+        <clip>Lauren - Hack my way out</clip>
+        <clip>Lauren - dream device</clip>
+        <clip>Lauren - social turkers</clip>
+        <clip>Patricio - Social skills</clip>
+        <clip>Vera - Energy Flow2</clip>
+        <clip>Higa - only meets pure geeks</clip>
+        <clip>Fernanda - social network hairballs</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="CirclePacking_Circles_LitePurple">
+<system name="CirclePacking_Circles_Social3">
     <keywords>social dynamics|social</keywords>
     <links></links>
     <suppressions>
@@ -3634,7 +5174,31 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="CirclePacking_Circles_LitePurpleGreen">
+<system name="CirclePacking_Circles_Variegated">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="CirclePacking_Circles_VariegatedAutumnal">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="CirclePacking_Circles_VariegatedBiological">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -3752,12 +5316,65 @@
     <interlude>0</interlude>
 </system>
 <system name="CirclePacking_NASDAQ">
-    <keywords></keywords>
+    <keywords>stock market|data visualization</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - Computational lens</clip>
+        <clip>Andres - an overly complex model</clip>
+        <clip>Binx - frustrated about visualization</clip>
+        <clip>Binx - making a map</clip>
+        <clip>Binx - maps</clip>
+        <clip>Binx - meaningful shape1</clip>
+        <clip>Bruce - Digital humanities technology</clip>
+        <clip>Fernanda - A social lens</clip>
+        <clip>Fernanda - Googe plus 2</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - History flow 2</clip>
+        <clip>Fernanda - Wind visualization 2</clip>
+        <clip>Fernanda - defense of complexity 1</clip>
+        <clip>Fernanda - defense of complexity 2</clip>
+        <clip>Fernanda - fleshmap2</clip>
+        <clip>Fernanda - fleshmap 3</clip>
+        <clip>Fernanda - non numerical visualization</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Fernanda - visualized data doesn&apos;t seem complex</clip>
+        <clip>Fernanda - what do we mean by data</clip>
+        <clip>Fernanda - zooming in</clip>
+        <clip>Golan - emotion</clip>
+        <clip>Golan - listening post</clip>
+        <clip>Golan - open data</clip>
+        <clip>Greg - the &quot;Like&quot; button cascade</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Jen - generalization 1</clip>
+        <clip>Jen - generalization 2</clip>
+        <clip>Jen - oversimplified circles 2</clip>
+        <clip>Jen - pull out the stories</clip>
+        <clip>Jen - stencil pie chart</clip>
+        <clip>Jer - Pattern</clip>
+        <clip>Jer - people don&apos;t read these things</clip>
+        <clip>Jer - reading the complexity</clip>
+        <clip>Jer - take advantage of this thing we can do</clip>
+        <clip>Julian - data viz endorsement</clip>
+        <clip>Karsten - data visualization</clip>
+        <clip>Karsten - social collider</clip>
+        <clip>Lauren - Squib visualization</clip>
+        <clip>Maeda - people are best communicators</clip>
+        <clip>Marius - We&apos;ve embraced Dystopia</clip>
+        <clip>Martin - Seeing the whole 1</clip>
+        <clip>Martin - all the words</clip>
+        <clip>Martin - flickr flow</clip>
+        <clip>Martin - how to make us smarter</clip>
+        <clip>Martin - words and numbers</clip>
+        <clip>Shiffman - gambling 2</clip>
+        <clip>Fernanda - Replaying the moment of discovery</clip>
+        <clip>Fernanda - seeing patterns 1</clip>
+        <clip>Fernanda - seeing patterns 2</clip>
+        <clip>Fernanda - what is data</clip>
+        <clip>Ramsey - algorithms run wild</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
