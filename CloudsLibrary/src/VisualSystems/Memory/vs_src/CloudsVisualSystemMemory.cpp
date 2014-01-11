@@ -136,9 +136,9 @@ void CloudsVisualSystemMemory::generateFromMemory(){
     
     int xMargin = 0;
     int yMargin = 0;
-    
-    int width = ofGetWidth()-xMargin*2.0;
-    int height = ofGetHeight()-yMargin*2.0;
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    int width = getCanvasWidth()-xMargin*2.0;
+    int height = getCanvasHeight()-yMargin*2.0;
     
     float widthBlocks = blockWidth*blockScale;
     float heightBlocks = blockHeight*blockScale;
@@ -210,8 +210,9 @@ void CloudsVisualSystemMemory::generateFromTexture(ofTexture &_tex){
     int xMargin = 0;
     int yMargin = 0;
     
-    int width = ofGetWidth()-xMargin*2.0;
-    int height = ofGetHeight()-yMargin*2.0;
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    int width = getCanvasWidth()-xMargin*2.0;
+    int height = getCanvasHeight()-yMargin*2.0;
     
     ofRectangle block;
     block.width = blockWidth*blockScale;

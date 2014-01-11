@@ -338,8 +338,9 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDraw()
 //	glEnable(GL_DEPTH_TEST);
 	ofEnableAlphaBlending();
 
-    float rxp = ((GetCloudsInputX()-(ofGetWidth()/2))*0.3);
-	float ryp = ((ofGetMouseY()-(ofGetHeight()/2))*0.3);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    float rxp = ((GetCloudsInputX()-(getCanvasWidth()/2))*0.3);
+	float ryp = ((GetCloudsInputY()-(getCanvasHeight()/2))*0.3);
 	rx = (rx*0.9)+(rxp*0.1);
 	ry = (ry*0.9)+(ryp*0.1);
 	ofRotateY(rx);

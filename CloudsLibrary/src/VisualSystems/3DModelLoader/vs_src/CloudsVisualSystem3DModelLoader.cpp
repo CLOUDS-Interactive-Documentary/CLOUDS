@@ -535,8 +535,9 @@ void CloudsVisualSystem3DModelLoader::selfDraw()
 	//draw from single view
 	if( bFourView )
 	{
-		int hw = ofGetWidth()/2;
-		int hh = ofGetHeight()/2;
+        //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+		int hw = getCanvasWidth()/2;
+		int hh = getCanvasHeight()/2;
 		
 		drawSceneLeft( ofRectangle(0,0,hw,hh) );
 		
