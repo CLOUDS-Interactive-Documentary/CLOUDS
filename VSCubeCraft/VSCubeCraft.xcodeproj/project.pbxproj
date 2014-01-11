@@ -90,6 +90,8 @@
 		50C3AB801860A59D00627388 /* cubeCraftShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50C3AB7E1860A59D00627388 /* cubeCraftShader.frag */; };
 		50C3AB811860A59D00627388 /* cubeCraftShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50C3AB7F1860A59D00627388 /* cubeCraftShader.vert */; };
 		50E6EDE3186A20690080EF62 /* CloudsVisualSystemCubeCraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50E6EDE1186A20690080EF62 /* CloudsVisualSystemCubeCraft.cpp */; };
+		A6D587CE1881F3430014B5BD /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = A6D587CD1881F3430014B5BD /* ofxSystemTextbox.mm */; };
+		A6D587CF1881F3430014B5BD /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = A6D587CD1881F3430014B5BD /* ofxSystemTextbox.mm */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -762,6 +764,8 @@
 		50C3AB7F1860A59D00627388 /* cubeCraftShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cubeCraftShader.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		50E6EDE1186A20690080EF62 /* CloudsVisualSystemCubeCraft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCubeCraft.cpp; sourceTree = "<group>"; };
 		50E6EDE2186A20690080EF62 /* CloudsVisualSystemCubeCraft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCubeCraft.h; sourceTree = "<group>"; };
+		A6D587CC1881F3430014B5BD /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxSystemTextbox.h; path = src/VisualSystemsLibrary/ofxSystemTextbox.h; sourceTree = "<group>"; };
+		A6D587CD1881F3430014B5BD /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ofxSystemTextbox.mm; path = src/VisualSystemsLibrary/ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -2090,6 +2094,8 @@
 		E7DD71F017DBC08D00AFB2DD /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				A6D587CC1881F3430014B5BD /* ofxSystemTextbox.h */,
+				A6D587CD1881F3430014B5BD /* ofxSystemTextbox.mm */,
 				E7DD71F117DBC08D00AFB2DD /* src */,
 			);
 			name = CloudsLibrary;
@@ -2167,6 +2173,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "VSCubeCraft" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -2305,6 +2313,7 @@
 				3D5B9685175308D000F558AC /* ofxEasingLinear.cpp in Sources */,
 				3D5B9686175308D000F558AC /* ofxEasingQuad.cpp in Sources */,
 				3D5B9687175308D000F558AC /* ofxEasingQuart.cpp in Sources */,
+				A6D587CE1881F3430014B5BD /* ofxSystemTextbox.mm in Sources */,
 				3D5B9688175308D000F558AC /* ofxEasingQuint.cpp in Sources */,
 				3D5B9689175308D000F558AC /* ofxEasingSine.cpp in Sources */,
 				3D5B968A175308D000F558AC /* ofxTween.cpp in Sources */,
@@ -2347,6 +2356,7 @@
 				E738FF86183C86F50018AB96 /* ofxHomingBehavior.cpp in Sources */,
 				E738FF87183C86F50018AB96 /* ofxPerlinBehavior.cpp in Sources */,
 				E738FF88183C86F50018AB96 /* ofxRParticle.cpp in Sources */,
+				A6D587CF1881F3430014B5BD /* ofxSystemTextbox.mm in Sources */,
 				E738FF89183C86F50018AB96 /* ofxRParticleGlowieRenderer.cpp in Sources */,
 				E738FF8A183C86F50018AB96 /* ofxRParticleRenderer.cpp in Sources */,
 				E738FF8B183C86F50018AB96 /* ofxRParticleSystem.cpp in Sources */,
