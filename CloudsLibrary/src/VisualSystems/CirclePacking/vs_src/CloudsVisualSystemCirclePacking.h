@@ -113,5 +113,6 @@ class CloudsVisualSystemCirclePacking: public CloudsVisualSystem {
 	float heroPercent;
 	ofRange smallSizeRange;
 	ofRange largeSizeRange;
+    float alph;
 	
 };

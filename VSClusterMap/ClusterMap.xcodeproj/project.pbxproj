@@ -10,6 +10,10 @@
 		185CE9B1184A5FC800F43977 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 185CE996184A5FC800F43977 /* libftgl.a */; };
 		185CE9B5184A5FC800F43977 /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185CE99F184A5FC800F43977 /* ofxFTGLFont.cpp */; };
 		185CE9B6184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9A1184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp */; };
+		A6D587AD18811B9D0014B5BD /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5879818811B9D0014B5BD /* ofxSubtitles.cpp */; };
+		A6D587AE18811B9D0014B5BD /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5879818811B9D0014B5BD /* ofxSubtitles.cpp */; };
+		A6D587AF18811B9D0014B5BD /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5879A18811B9D0014B5BD /* ofxSubtitleUnit.cpp */; };
+		A6D587B018811B9D0014B5BD /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5879A18811B9D0014B5BD /* ofxSubtitleUnit.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -308,6 +312,10 @@
 		185CE9A0184A5FC800F43977 /* ofxFTGLFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLFont.h; sourceTree = "<group>"; };
 		185CE9A1184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFTGLSimpleLayout.cpp; sourceTree = "<group>"; };
 		185CE9A2184A5FC800F43977 /* ofxFTGLSimpleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLSimpleLayout.h; sourceTree = "<group>"; };
+		A6D5879818811B9D0014B5BD /* ofxSubtitles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitles.cpp; sourceTree = "<group>"; };
+		A6D5879918811B9D0014B5BD /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
+		A6D5879A18811B9D0014B5BD /* ofxSubtitleUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitleUnit.cpp; sourceTree = "<group>"; };
+		A6D5879B18811B9D0014B5BD /* ofxSubtitleUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitleUnit.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -765,9 +773,30 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		A6D5879118811B9D0014B5BD /* ofxSubtitles */ = {
+			isa = PBXGroup;
+			children = (
+				A6D5879718811B9D0014B5BD /* src */,
+			);
+			name = ofxSubtitles;
+			path = ../../../addons/ofxSubtitles;
+			sourceTree = "<group>";
+		};
+		A6D5879718811B9D0014B5BD /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A6D5879818811B9D0014B5BD /* ofxSubtitles.cpp */,
+				A6D5879918811B9D0014B5BD /* ofxSubtitles.h */,
+				A6D5879A18811B9D0014B5BD /* ofxSubtitleUnit.cpp */,
+				A6D5879B18811B9D0014B5BD /* ofxSubtitleUnit.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				A6D5879118811B9D0014B5BD /* ofxSubtitles */,
 				E700BB7218762C17003A8167 /* ofxOculusRift */,
 				185CE931184A5FC600F43977 /* ofxFTGL */,
 				E7B3C7D017EE29E400581ACD /* ofxMSACore */,
@@ -1513,6 +1542,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "ClusterMap" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1604,6 +1635,7 @@
 				E724461D16573A0800D70E01 /* ofxTLEmptyKeyframes.cpp in Sources */,
 				E724461E16573A0800D70E01 /* ofxTLEmptyTrack.cpp in Sources */,
 				E724461F16573A0800D70E01 /* ofxTLFlags.cpp in Sources */,
+				A6D587AD18811B9D0014B5BD /* ofxSubtitles.cpp in Sources */,
 				E724462016573A0800D70E01 /* ofxTLImageSequence.cpp in Sources */,
 				E724462116573A0800D70E01 /* ofxTLImageSequenceFrame.cpp in Sources */,
 				E724462216573A0800D70E01 /* ofxTLImageTrack.cpp in Sources */,
@@ -1617,6 +1649,7 @@
 				E724462A16573A0800D70E01 /* ofxTLTrack.cpp in Sources */,
 				E724462B16573A0800D70E01 /* ofxTLTrackHeader.cpp in Sources */,
 				E724462C16573A0800D70E01 /* ofxTLVideoThumb.cpp in Sources */,
+				A6D587AF18811B9D0014B5BD /* ofxSubtitleUnit.cpp in Sources */,
 				E724462D16573A0800D70E01 /* ofxTLVideoTrack.cpp in Sources */,
 				E724462E16573A0800D70E01 /* ofxTLZoomer.cpp in Sources */,
 				E72446CE16573AD000D70E01 /* ofxMSATimer.cpp in Sources */,
@@ -1727,6 +1760,7 @@
 				E700BA6118762768003A8167 /* ofxEasingCubic.cpp in Sources */,
 				E700BA6218762768003A8167 /* ofxEasingElastic.cpp in Sources */,
 				E700BA6318762768003A8167 /* ofxEasingExpo.cpp in Sources */,
+				A6D587B018811B9D0014B5BD /* ofxSubtitleUnit.cpp in Sources */,
 				E700BA6418762768003A8167 /* ofxEasingLinear.cpp in Sources */,
 				E700BA6518762768003A8167 /* ofxEasingQuad.cpp in Sources */,
 				E700BA6618762768003A8167 /* ofxEasingQuart.cpp in Sources */,
@@ -1756,6 +1790,7 @@
 				E700BA7E18762768003A8167 /* CloudsQuestion.cpp in Sources */,
 				E700BA7F18762768003A8167 /* CloudsClip.cpp in Sources */,
 				E700BA8018762768003A8167 /* CloudsDichotomy.cpp in Sources */,
+				A6D587AE18811B9D0014B5BD /* ofxSubtitles.cpp in Sources */,
 				E700BA8118762768003A8167 /* CloudsFCPParser.cpp in Sources */,
 				E700BA8218762768003A8167 /* CloudsLink.cpp in Sources */,
 				E700BA8318762768003A8167 /* CloudsRun.cpp in Sources */,
@@ -1823,6 +1858,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = macosx10.8;
 			};
 			name = Debug;
 		};
@@ -1857,6 +1893,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = macosx10.8;
 			};
 			name = Release;
 		};

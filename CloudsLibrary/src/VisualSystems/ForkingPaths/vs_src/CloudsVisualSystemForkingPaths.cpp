@@ -37,8 +37,8 @@ void CloudsVisualSystemForkingPaths::generateTracks(){
 	
 	tracks.clear();
 	usedTracks.clear();
-	
-	for(float i = 0.0f; i < ofGetHeight(); i+=trackDistance){
+    //MA: changed ofGetHeight() to getCanvasHeight()
+	for(float i = 0.0f; i < getCanvasHeight(); i+=trackDistance){
 		tracks.push_back(i);
 		usedTracks.push_back( false );
 	}
@@ -94,7 +94,8 @@ void CloudsVisualSystemForkingPaths::selfUpdate(){
 	
 	for(int i = paths.size()-1; i >= 0; i--){
 		ForkingPath& path = paths[i];
-		if(path.merged && path.track.getVertices()[path.track.getVertices().size()-1].x < path.backset - ofGetWidth()/2 ){
+        //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+		if(path.merged && path.track.getVertices()[path.track.getVertices().size()-1].x < path.backset - getCanvasWidth()/2 ){
 			//usedTracks[path.trackIndex] = false;
 			paths.erase(paths.begin() + i);
 		}
@@ -136,7 +137,8 @@ void CloudsVisualSystemForkingPaths::addPath(){
 	
 	path.trackIndex = tracks.size()/2;
 	path.targetTrackHeight = tracks[path.trackIndex];
-	path.forkPosition = path.currentPos = ofVec2f(ofGetWidth()/2, path.targetTrackHeight);
+    //MA: changed ofGetWidth() to getCanvasWidth()
+	path.forkPosition = path.currentPos = ofVec2f(getCanvasWidth()/2, path.targetTrackHeight);
 //	path.foundTrack = true;
 	
 	usedTracks[path.trackIndex] = true;
@@ -226,7 +228,8 @@ void CloudsVisualSystemForkingPaths::selfDrawBackground(){
 			ofSetColor(ofColor(200, 140, 10).getInverted(), 130);
 			
 		}
-		ofLine(0,tracks[i],ofGetWidth(),tracks[i]);
+        //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+		ofLine(0,tracks[i],getCanvasWidth(),tracks[i]);
 	}
 		   
 	ofPopStyle();

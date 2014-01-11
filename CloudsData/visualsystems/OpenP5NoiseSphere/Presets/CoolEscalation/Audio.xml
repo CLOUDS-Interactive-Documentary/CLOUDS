@@ -2,23 +2,38 @@
     <Kind>42</Kind>
     <Name>Audio</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>40.000000000</XPosition>
-    <YPosition>314.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>Weirdo.aif</Name>
+    <Name>Glitch2.aif</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ThingsInDark.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ThingsInDark2.aif</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ThingsInDark3.aif</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL</Name>
-    <Value>0.001477429</Value>
+    <Value>0.006606663</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL ADJUST</Name>
-    <Value>0.100000001</Value>
+    <Value>1.098914504</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,7 +53,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL DECAY RATE</Name>
-    <Value>0.566502452</Value>
+    <Value>0.862068951</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -59,4 +74,9 @@
     <Kind>4</Kind>
     <Name>LEVEL TO NOISE RATIO</Name>
     <Value>0.500000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Main Gain</Name>
+    <Value>0.350403935</Value>
 </Widget>

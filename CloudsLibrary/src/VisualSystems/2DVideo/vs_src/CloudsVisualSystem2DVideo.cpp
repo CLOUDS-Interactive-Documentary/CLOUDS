@@ -119,8 +119,9 @@ void CloudsVisualSystem2DVideo::guiRenderEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfSetup()
 {
-    screenRect = ofRectangle(0,0, ofGetWidth(), ofGetHeight());
-    videoRect = ofRectangle(0,0, ofGetWidth(), ofGetHeight());
+    //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+    screenRect = ofRectangle(0,0, getCanvasWidth(), getCanvasHeight());
+    videoRect = ofRectangle(0,0, getCanvasWidth(), getCanvasHeight());
     
     movieIndex = 0;
     

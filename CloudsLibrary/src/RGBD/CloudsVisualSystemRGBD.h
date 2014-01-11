@@ -60,11 +60,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     bool isQuestionSelectedAndClipDone();
 	bool isQuestionSelected();
     CloudsPortal* getSelectedQuestion();
+    string getQuestionText();
     
-//    ofxFTGLFont captionFont;
-//    void rebuildCaptionFont();
-//    int captionFontSize;
-	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     

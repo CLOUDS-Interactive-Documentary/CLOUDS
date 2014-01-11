@@ -356,7 +356,8 @@ void CloudsVisualSystemFireworks::selfSetup()
 	getCameraRef().setPosition(0, 0, 0);
 	camTarget.set( 0,0,spawnDistance);
 	
-	glowFbo0.allocate( ofGetWidth(), ofGetHeight(), GL_RGB );
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+	glowFbo0.allocate( getCanvasWidth(), getCanvasHeight(), GL_RGB );
 	glowFbo1.allocate( glowFbo0.getWidth()/2, glowFbo0.getHeight()/2, GL_RGB );;
 	glowFbo2.allocate( glowFbo1.getWidth()/2, glowFbo1.getHeight()/2, GL_RGB );;
 	glowFbo3.allocate( glowFbo2.getWidth()/2, glowFbo2.getHeight()/2, GL_RGB );;
@@ -428,8 +429,9 @@ void CloudsVisualSystemFireworks::selfUpdate()
 		float noiseValY = ofSignedNoise( ofGetElapsedTimef() * noiseTimeScl ) * noiseOffsetScl;
 		
 		//pan and tilt with mouse
-		float pan = ofMap(GetCloudsInputX() + noiseValX, 0, ofGetWidth(), cameraMotionScl, -cameraMotionScl);
-		float tilt = ofMap(GetCloudsInputY() + noiseValY, 0, ofGetHeight(), cameraMotionScl, -cameraMotionScl) * xDamp;
+        //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+		float pan = ofMap(GetCloudsInputX() + noiseValX, 0, getCanvasWidth(), cameraMotionScl, -cameraMotionScl);
+		float tilt = ofMap(GetCloudsInputY() + noiseValY, 0, getCanvasHeight(), cameraMotionScl, -cameraMotionScl) * xDamp;
 
 		if(abs(eul.x) < 90) getCameraRef().tilt( tilt );
 		getCameraRef().pan( pan );

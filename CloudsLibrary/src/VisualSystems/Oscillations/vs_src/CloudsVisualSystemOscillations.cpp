@@ -184,8 +184,9 @@ void CloudsVisualSystemOscillations::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemOscillations::selfUpdate(){
     
-    width = ofGetWidth();
-    height = ofGetHeight();
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    width = getCanvasWidth();
+    height = getCanvasHeight();
     offsetX += speed;
     
     if (renderLines){

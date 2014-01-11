@@ -10,6 +10,14 @@
             </Widget>
             <Track></Track>
         </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>LEVEL</WidgetName>
+                <WidgetID>13</WidgetID>
+                <WidgetCanvasParent>Audio</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
     </SliderCurves>
     <NumberDialerCurves></NumberDialerCurves>
 </Map>

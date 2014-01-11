@@ -11,8 +11,8 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ParamManager.h"
-#include "Maze.h"
+#include "ParamManager2.h"
+#include "Maze2.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemMazeGenerator2 : public CloudsVisualSystem {
@@ -98,8 +98,8 @@ class CloudsVisualSystemMazeGenerator2 : public CloudsVisualSystem {
 protected:
     void setLightOri(ofLight* light, ofVec3f rot);
     
-    Maze* maze[3];
-    MazeCamera* mazeCam;
+    Maze2* maze[3];
+    MazeCamera2* mazeCam;
     
     ofLight *light;
     ofVec3f lightAng;

@@ -122,6 +122,10 @@ string CloudsClip::getCombinedCalibrationXML(){
 	return getID() + ".xml";
 }
 
+string CloudsClip::getCombinedSRTFile() {
+    return getID() + ".srt";
+}
+
 bool CloudsClip::is30FPS(){
     return person == "Higa";
 }

@@ -3,12 +3,12 @@
     <Name>Audio</Name>
     <IsMinified>0</IsMinified>
     <XPosition>213.000000000</XPosition>
-    <YPosition>177.000000000</YPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>Glitch2.aif</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>ThingsInDark2.aif</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -28,17 +28,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL</Name>
-    <Value>0.234105602</Value>
+    <Value>0.365748048</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL ADJUST</Name>
-    <Value>2.375369310</Value>
+    <Value>6.192118168</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SCROLL SPEED</Name>
-    <Value>2.500000000</Value>
+    <Value>2.105911255</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -48,12 +48,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL SCALE</Name>
-    <Value>1.379310369</Value>
+    <Value>1.625615835</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL DECAY RATE</Name>
-    <Value>0.566502452</Value>
+    <Value>0.586206913</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -74,4 +74,9 @@
     <Kind>4</Kind>
     <Name>LEVEL TO NOISE RATIO</Name>
     <Value>0.500000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Main Gain</Name>
+    <Value>0.330719203</Value>
 </Widget>

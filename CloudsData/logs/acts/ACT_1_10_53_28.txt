@@ -1,0 +1,60 @@
+SEED TOPIC:  community
+SEED CLIP: Lauren - breaking down barriers
+ERROR: No preset found for intro clip Lauren - breaking down barriers
+0	CHOOSING NEW CLIP 
+0		Chose Clip "Jer - spoken word" for topic "community" (1/5)
+35.1651	VISUALS Not run in 35.1651 seconds
+35.1651		Chose new Preset Twitter_nameCloudsWithLinesFlickering time [18.2732 - 26.549] indefinite
+35.1651	CHOOSING NEW CLIP 
+35.1651		Chose Clip "Julia - toward greater generosity 1" for topic "community" (2/5)
+55.7666	VISUALS Currently running "Twitter_nameCloudsWithLinesFlickering" time [18.2732 - 26.549] indefinite
+55.7666		Passed predicted time 26.549 - moving end time to middle of Julia - toward greater generosity 1, time 48.2383
+55.7666	CHOOSING NEW CLIP 
+55.7666		Chose Clip "Fernanda - Policy and data" for topic "community" (3/5)
+55.7666			ERROR: We took a digression! Freeing topic
+111.786	VISUALS Not run in 63.5476 seconds
+111.786		Chose new Preset Cities_Archiving time [84.4669 - 92.7427] indefinite
+111.786	CHOOSING NEW TOPIC 2/3
+111.786		Selecting from 5 potential next topics on clip Fernanda - Policy and data
+111.786			Considering big data
+111.786				Score for shared topic	big data : 0
+111.786			Considering problem solving
+111.786				Score for shared topic	problem solving : 10.5263
+111.786			Considering data
+111.786				Score for shared topic	data : 0
+111.786			Considering society
+111.786				Score for shared topic	society : 32.7123
+111.786			Considering progress
+111.786				Score for shared topic	progress : 33.0911
+111.786		TOPIC progress won with score 33.0911
+111.786		Picked new topic: PROGRESS
+111.786	CHOOSING NEW CLIP 
+111.786		Chose Clip "Karsten - changing behavior" for topic "progress" (1/5)
+139.478	VISUALS Currently running "Cities_Archiving" time [84.4669 - 92.7427] indefinite
+139.478		Passed predicted time 92.7427 - moving end time to middle of Karsten - changing behavior, time 128.404
+139.478	CHOOSING NEW CLIP 
+139.478		Chose Clip "Martin - Math getting better" for topic "progress" (2/5)
+164.758	VISUALS Not run in 36.3538 seconds
+164.758		Chose new Preset Oscillations_Waerfront time [152.809 - 161.084] indefinite
+164.758	CHOOSING NEW CLIP 
+164.758		Chose Clip "LIA - MathAnotherLanguage" for topic "progress" (3/5)
+164.758			ERROR: We took a digression! Freeing topic
+208.8	VISUALS Currently running "Oscillations_Waerfront" time [152.809 - 161.084] indefinite
+208.8		Passed predicted time 161.084 - FREE TOPIC Extending VS end time to 229.356 past the end of LIA - MathAnotherLanguage
+229.356	CHOOSING NEW TOPIC 3/3
+229.356		going back to seed topic community
+229.356		Picked new topic: COMMUNITY
+229.356	CHOOSING NEW CLIP 
+229.356		Chose Clip "Jen - self and other" for topic "community" (1/5)
+264.021	VISUALS Not run in 34.6646 seconds
+264.021		ERROR Failed to find preset on current topic community with clip Jen - self and other
+264.021	CHOOSING NEW CLIP 
+264.021		Chose Clip "Elliot_UK - Ideaspace" for topic "community" (2/5)
+311.865	VISUALS Not run in 82.509 seconds
+311.865		Chose new Preset Twitter_TweetDeck_NameCloud_Lines time [288.634 - 296.91] indefinite
+311.865	CHOOSING NEW CLIP 
+311.865		Chose Clip "Lindsay - collective creativity" for topic "community" (3/5)
+311.865			ERROR: We took a digression! Freeing topic
+345.939	VISUALS Currently running "Twitter_TweetDeck_NameCloud_Lines" time [288.634 - 296.91] indefinite
+345.939		Passed predicted time 296.91 - FREE TOPIC Extending VS end time to 366.495 past the end of Lindsay - collective creativity
+366.495	ACT ENDED on clip Lindsay - collective creativity explored topics 3/3 with 3 clips on final topic "community"

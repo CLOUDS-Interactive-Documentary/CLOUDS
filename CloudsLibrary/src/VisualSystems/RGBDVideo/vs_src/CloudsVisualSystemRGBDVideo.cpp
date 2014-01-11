@@ -1,4 +1,5 @@
 
+
 #include "CloudsVisualSystemRGBDVideo.h"
 #include "CloudsGlobal.h"
 
@@ -6,12 +7,17 @@
 CloudsVisualSystemRGBDVideo::CloudsVisualSystemRGBDVideo(){
 	videoPathField = NULL;
 	movieLoaded = false;
-	pointoffset = 0;
 }
 
 //--------------------------------------------------------------
 string CloudsVisualSystemRGBDVideo::getSystemName(){
 	return "RGBDVideo";
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemRGBDVideo::selfSetDefaults(){
+    pointscale = .25;
+    pointShift = ofVec3f(0,0,0);
 }
 
 //--------------------------------------------------------------
@@ -48,8 +54,13 @@ void CloudsVisualSystemRGBDVideo::selfSetupGuis(){
 
     videoPathField = g->addTextInput("VideoPath", "");
 	g->addButton("Load Video", false);
-	g->addSlider("Point Offset", -2000, 0, &pointoffset);
-	
+    
+   	g->addSlider("Point Offset X", -400, 400, &pointShift.x);
+   	g->addSlider("Point Offset Y", -400, 400, &pointShift.y);
+	g->addSlider("Point Offset", -2000, 0, &pointShift.z);
+    
+//	g->addSlider("Point Scale", .1, 3.0, &pointscale);
+
     g->autoSizeToFitWidgets();
 
 	ofAddListener(g->newGUIEvent, this, &CloudsVisualSystemRGBDVideo::selfGuiEvent);
@@ -69,16 +80,14 @@ void CloudsVisualSystemRGBDVideo::selfUpdate(){
 		loadMoviePath = "";
 	}
 	
+    cloudsCamera.lookTarget = ofVec3f(0,0,0);
+    
 	if(movieLoaded){
 		player.update();
-//		cout << "time? " << player.getCurrentTime() << endl;
 	}
 }
 
 void CloudsVisualSystemRGBDVideo::selfDrawBackground(){
-//	if(movieLoaded && player.isLoaded()){
-//		player.draw(0, 0);
-//	}
 }
 
 void CloudsVisualSystemRGBDVideo::selfDrawDebug(){
@@ -93,10 +102,8 @@ void CloudsVisualSystemRGBDVideo::selfDraw(){
 	if(movieLoaded && player.isLoaded()){
 				
 		ofPushMatrix();
-		
-		setupRGBDTransforms();
-		
-		//ofTranslate(translatedHeadPosition);
+
+        setupRGBDTransforms();
 		
 		rgbdPixelToPixelShader.begin();
 		rgbdPixelToPixelShader.setUniformTexture("texture", player.getTextureReference(), 1);
@@ -105,7 +112,7 @@ void CloudsVisualSystemRGBDVideo::selfDraw(){
 		rgbdPixelToPixelShader.setUniform1f("minDepth", videoIntrinsics.depthRange.min);
 		rgbdPixelToPixelShader.setUniform1f("maxDepth", videoIntrinsics.depthRange.max);
 		
-		rgbdPixelToPixelShader.setUniform1f("pointoffset", pointoffset);
+		rgbdPixelToPixelShader.setUniform1f("pointoffset", pointShift.z);
 		
 		rgbdPixelToPixelShader.setUniform1f("scale", 1.0);
 		rgbdPixelToPixelShader.setUniform1f("offset", 0.0);
@@ -202,8 +209,6 @@ void CloudsVisualSystemRGBDVideo::selfSetupGui(){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBDVideo::selfGuiEvent(ofxUIEventArgs &e){
-	
-	cout << "widget " << e.widget->getName() << endl;
 	
 	if(e.widget->getName() == "Load Video"){
 		

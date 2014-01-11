@@ -81,6 +81,12 @@
 		640E8D0D187E64B6007BCBD7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E442A7185E89E200CD1953 /* QuartzCore.framework */; };
 		640E8D0E187E64B6007BCBD7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E442A5185E89DD00CD1953 /* CoreMedia.framework */; };
 		640E8D0F187E64B6007BCBD7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E442A3185E89D500CD1953 /* AVFoundation.framework */; };
+		A6D58780188113400014B5BD /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5876A1881133F0014B5BD /* ofxSubtitles.cpp */; };
+		A6D58781188113400014B5BD /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5876A1881133F0014B5BD /* ofxSubtitles.cpp */; };
+		A6D58782188113400014B5BD /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5876A1881133F0014B5BD /* ofxSubtitles.cpp */; };
+		A6D58783188113400014B5BD /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5876C1881133F0014B5BD /* ofxSubtitleUnit.cpp */; };
+		A6D58784188113400014B5BD /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5876C1881133F0014B5BD /* ofxSubtitleUnit.cpp */; };
+		A6D58785188113400014B5BD /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5876C1881133F0014B5BD /* ofxSubtitleUnit.cpp */; };
 		AE6FFE71187F403600677B60 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		AE6FFE72187F403600677B60 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */; };
 		AE6FFE73187F403600677B60 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
@@ -725,6 +731,10 @@
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
 		640E8D0A187E623A007BCBD7 /* CloudsInputOculus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputOculus.h; sourceTree = "<group>"; };
 		640E8D0B187E624A007BCBD7 /* CloudsInputOculus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputOculus.cpp; sourceTree = "<group>"; };
+		A6D5876A1881133F0014B5BD /* ofxSubtitles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitles.cpp; sourceTree = "<group>"; };
+		A6D5876B1881133F0014B5BD /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
+		A6D5876C1881133F0014B5BD /* ofxSubtitleUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitleUnit.cpp; sourceTree = "<group>"; };
+		A6D5876D1881133F0014B5BD /* ofxSubtitleUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitleUnit.h; sourceTree = "<group>"; };
 		AE6FFF05187F403600677B60 /* PointCloudPeopleKinect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PointCloudPeopleKinect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB14CFF187DB39B00C5284D /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
 		AEB14D00187DB39B00C5284D /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
@@ -1542,6 +1552,26 @@
 			path = ../../../addons/ofxCameraSaveLoad/src;
 			sourceTree = "<group>";
 		};
+		A6D587631881133F0014B5BD /* ofxSubtitles */ = {
+			isa = PBXGroup;
+			children = (
+				A6D587691881133F0014B5BD /* src */,
+			);
+			name = ofxSubtitles;
+			path = ../../../addons/ofxSubtitles;
+			sourceTree = "<group>";
+		};
+		A6D587691881133F0014B5BD /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A6D5876A1881133F0014B5BD /* ofxSubtitles.cpp */,
+				A6D5876B1881133F0014B5BD /* ofxSubtitles.h */,
+				A6D5876C1881133F0014B5BD /* ofxSubtitleUnit.cpp */,
+				A6D5876D1881133F0014B5BD /* ofxSubtitleUnit.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		AEB14D07187DB5D300C5284D /* ofxOsc */ = {
 			isa = PBXGroup;
 			children = (
@@ -1640,6 +1670,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				A6D587631881133F0014B5BD /* ofxSubtitles */,
 				AEB14D07187DB5D300C5284D /* ofxOsc */,
 				E703D200185E81ED00547738 /* ofxDelaunay */,
 				E703D1E0185E81D400547738 /* ofxGameCamera */,
@@ -2183,6 +2214,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "PointCloudPeople" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -2281,6 +2314,7 @@
 				AE6FFE7B187F403600677B60 /* ofxDamperBehavior.cpp in Sources */,
 				AE6FFE7C187F403600677B60 /* ofxDistorterBehavior.cpp in Sources */,
 				AE6FFE7D187F403600677B60 /* ofxElectroStaticBehavior.cpp in Sources */,
+				A6D58782188113400014B5BD /* ofxSubtitles.cpp in Sources */,
 				AE6FFE7E187F403600677B60 /* ofxField2D.cpp in Sources */,
 				AE6FFE7F187F403600677B60 /* ofxHomingBehavior.cpp in Sources */,
 				AE6FFE80187F403600677B60 /* ofxPerlinBehavior.cpp in Sources */,
@@ -2367,6 +2401,7 @@
 				AE6FFECF187F403600677B60 /* CloudsHUDHomeButton.cpp in Sources */,
 				AE6FFED0187F403600677B60 /* CloudsHUDLayer.cpp in Sources */,
 				AE6FFED1187F403600677B60 /* CloudsInput.cpp in Sources */,
+				A6D58785188113400014B5BD /* ofxSubtitleUnit.cpp in Sources */,
 				AE6FFED2187F403600677B60 /* CloudsInputMouse.cpp in Sources */,
 				AE6FFED3187F403600677B60 /* ofxAVFVideoPlayer.mm in Sources */,
 				AE6FFED4187F403600677B60 /* ofxAVFVideoRenderer.m in Sources */,
@@ -2429,6 +2464,7 @@
 				3D5B95DB175308AE00F558AC /* ofxTLColors.cpp in Sources */,
 				3D5B95DC175308AE00F558AC /* ofxTLColorTrack.cpp in Sources */,
 				3D5B95DD175308AE00F558AC /* ofxTLCurves.cpp in Sources */,
+				A6D58780188113400014B5BD /* ofxSubtitles.cpp in Sources */,
 				3D5B95DE175308AE00F558AC /* ofxTLEmptyKeyframes.cpp in Sources */,
 				3D5B95DF175308AE00F558AC /* ofxTLEmptyTrack.cpp in Sources */,
 				3D5B95E0175308AE00F558AC /* ofxTLFlags.cpp in Sources */,
@@ -2443,6 +2479,7 @@
 				3D5B95E9175308AE00F558AC /* ofxTLSwitches.cpp in Sources */,
 				3D5B95EA175308AE00F558AC /* ofxTLTicker.cpp in Sources */,
 				3D5B95EB175308AE00F558AC /* ofxTLTrack.cpp in Sources */,
+				A6D58783188113400014B5BD /* ofxSubtitleUnit.cpp in Sources */,
 				3D5B95EC175308AE00F558AC /* ofxTLTrackHeader.cpp in Sources */,
 				3D5B95ED175308AE00F558AC /* ofxTLVideoThumb.cpp in Sources */,
 				3D5B95EE175308AE00F558AC /* ofxTLVideoTrack.cpp in Sources */,
@@ -2524,6 +2561,7 @@
 				E738FF88183C86F50018AB96 /* ofxRParticle.cpp in Sources */,
 				E738FF89183C86F50018AB96 /* ofxRParticleGlowieRenderer.cpp in Sources */,
 				E738FF8A183C86F50018AB96 /* ofxRParticleRenderer.cpp in Sources */,
+				A6D58781188113400014B5BD /* ofxSubtitles.cpp in Sources */,
 				E738FF8B183C86F50018AB96 /* ofxRParticleSystem.cpp in Sources */,
 				E738FF8C183C86F50018AB96 /* ofxSolver.cpp in Sources */,
 				E738FF8D183C86F50018AB96 /* ofxSphericalAttractionBehavior.cpp in Sources */,
@@ -2608,6 +2646,7 @@
 				E703D0EC185E7F2600547738 /* ofxAVFVideoPlayer.mm in Sources */,
 				E703D0EE185E7F2600547738 /* ofxAVFVideoRenderer.m in Sources */,
 				AEB14D02187DB39B00C5284D /* ofxSystemTextbox.mm in Sources */,
+				A6D58784188113400014B5BD /* ofxSubtitleUnit.cpp in Sources */,
 				E703D18C185E809000547738 /* ofxFTGLFont.cpp in Sources */,
 				E703D18E185E809000547738 /* ofxFTGLSimpleLayout.cpp in Sources */,
 				E703D1C8185E812500547738 /* CloudsClip.cpp in Sources */,
@@ -2914,6 +2953,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = macosx10.8;
 			};
 			name = Debug;
 		};
@@ -2949,6 +2989,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = macosx10.8;
 			};
 			name = Release;
 		};
@@ -3063,7 +3104,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = PointCloudPeopleDebug;
-				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3178,7 +3218,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = PointCloudPeople;
-				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -1,0 +1,47 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Lines</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>210.000000000</XPosition>
+    <YPosition>558.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Alpha</Name>
+    <Value>0.640394092</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Thickness</Name>
+    <Value>1.078817725</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Spacing</Name>
+    <Value>1.812807918</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Face Overlap</Name>
+    <Value>0.660098493</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Granularity</Name>
+    <Value>7.251231194</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Flow</Name>
+    <Value>0.334975362</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Lines Flow Up</Name>
+    <Value>1</Value>
+</Widget>

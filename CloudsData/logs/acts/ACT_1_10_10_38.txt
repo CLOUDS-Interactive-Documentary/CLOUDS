@@ -1,0 +1,92 @@
+SEED TOPIC:  real and virtual
+SEED CLIP: Intro - VirtualReality
+	Playing seed
+First visual system preset is selected : OpenP5SpaceJunk_StarkCubes for topic : real and virtual and clip Intro - VirtualReality
+34.4501	CHOOSING NEW CLIP 
+34.4501		Chose Clip "Kyle_CH - coding, magic" for topic "real and virtual" (2/5)
+79.3676	VISUALS Currently running "OpenP5SpaceJunk_StarkCubes" time [0 - 8.27586] indefinite
+79.3676		Passed predicted time 8.27586 - moving end time to middle of Kyle_CH - coding, magic, time 59.6813
+79.3676	CHOOSING NEW CLIP 
+79.3676		Chose Clip "Ramsey - wizardry 1" for topic "real and virtual" (3/5)
+79.3676			ERROR: We took a digression! Freeing topic
+92.4273	VISUALS Not run in 32.746 seconds
+92.4273		Chose new Preset Flying_DenseForest_1 time [86.5881 - 94.864] indefinite
+92.4273	CHOOSING NEW TOPIC 2/4
+92.4273		Selecting from 2 potential next topics on clip Ramsey - wizardry 1
+92.4273			Considering magic
+92.4273				Score for shared topic	magic : 15.5063
+92.4273			Considering coding
+92.4273				Score for shared topic	coding : 12.173
+92.4273		TOPIC magic won with score 15.5063
+92.4273		Picked new topic: MAGIC
+92.4273	CHOOSING NEW CLIP 
+92.4273		Chose Clip "Kyle_CH - coding is 1" for topic "magic" (1/5)
+104.353	VISUALS Currently running "Flying_DenseForest_1" time [86.5881 - 94.864] indefinite
+104.353		Passed predicted time 94.864 - moving end time to middle of Kyle_CH - coding is 1, time 101.163
+104.353	CHOOSING NEW CLIP 
+104.353		Chose Clip "Binx - programming is a superpower" for topic "magic" (2/5)
+110.156	VISUALS Not run in 8.99306 seconds
+110.156		Chose new Preset 2DVideo_Flow3_Closeup time [107.945 - 116.221] definite
+110.156	CHOOSING NEW CLIP 
+110.156		Chose Clip "Karsten - programming is..." for topic "magic" (3/5)
+110.156			ERROR: We took a digression! Freeing topic
+135.762	VISUALS Currently running "2DVideo_Flow3_Closeup" time [107.945 - 116.221] definite
+135.762		Passed predicted time 116.221 - FREE TOPIC Extending VS end time to 121.945 past the end of Karsten - programming is...
+135.762	CHOOSING NEW TOPIC 3/4
+135.762		Selecting from 4 potential next topics on clip Karsten - programming is...
+135.762			Considering programming
+135.762				Score for shared topic	programming : 15.3079
+135.762			Considering coding
+135.762				Score for shared topic	coding : 21.7515
+135.762			Considering computer
+135.762				Score for shared topic	computer : 3.44828
+135.762			Considering learning
+135.762				Score for shared topic	learning : 1.75439
+135.762		TOPIC coding won with score 21.7515
+135.762		Picked new topic: CODING
+135.762	CHOOSING NEW CLIP 
+135.762		Chose Clip "JTNimoy - I addicted myself" for topic "coding" (1/5)
+162.252	VISUALS Not run in 40.3068 seconds
+162.252		Chose new Preset Code_Cryptic time [149.698 - 157.974] indefinite
+162.252	CHOOSING NEW CLIP 
+162.252		Chose Clip "Diederick - hackathon1" for topic "coding" (2/5)
+187.275	VISUALS Currently running "Code_Cryptic" time [149.698 - 157.974] indefinite
+187.275		Passed predicted time 157.974187.275- moving end time over top of VO Diederick - hackathon1
+187.275	CHOOSING NEW CLIP 
+187.275		Chose Clip "Shantell - Coding gesturally" for topic "coding" (3/5)
+211.262	VISUALS Not run in 23.9872 seconds
+211.262		Chose new Preset YellowTail_YellowTail time [199.959 - 208.235] indefinite
+211.262	CHOOSING NEW CLIP 
+211.262		Chose Clip "Golan - yellow tail" for topic "coding" (4/5)
+211.262			ERROR: We took a digression! Freeing topic
+260.475	VISUALS Currently running "YellowTail_YellowTail" time [199.959 - 208.235] indefinite
+260.475		Passed predicted time 208.235 - FREE TOPIC Extending VS end time to 281.032 past the end of Golan - yellow tail
+281.032	CHOOSING NEW TOPIC 4/4
+281.032		going back to seed topic real and virtual
+281.032		Picked new topic: REAL AND VIRTUAL
+281.032	CHOOSING NEW CLIP 
+281.032		ERROR: Hit dead end with current topic "real and virtual" out of 22 potential clips.  played 0 times.  Act topic 4/5
+281.032		ERROR: Failed to find a new clip, freeing topic
+281.032	TOPIC real and virtual Failed to find clips, streak 1
+281.032	CHOOSING NEW TOPIC 4/4
+281.032		going back to seed topic real and virtual
+281.032		Picked new topic: REAL AND VIRTUAL
+281.032	CHOOSING NEW CLIP 
+281.032		ERROR: Hit dead end with current topic "real and virtual" out of 22 potential clips.  played 0 times.  Act topic 4/5
+281.032		ERROR: Failed to find a new clip, freeing topic
+281.032	TOPIC real and virtual Failed to find clips, streak 2
+281.032	CHOOSING NEW TOPIC 4/4
+281.032		going back to seed topic real and virtual
+281.032		Picked new topic: REAL AND VIRTUAL
+281.032	CHOOSING NEW CLIP 
+281.032		ERROR: Hit dead end with current topic "real and virtual" out of 22 potential clips.  played 0 times.  Act topic 4/5
+281.032		ERROR: Failed to find a new clip, freeing topic
+281.032	TOPIC real and virtual Failed to find clips, streak 3
+281.032	CHOOSING NEW TOPIC 4/4
+281.032		going back to seed topic real and virtual
+281.032		Picked new topic: REAL AND VIRTUAL
+281.032	CHOOSING NEW CLIP 
+281.032		ERROR: Hit dead end with current topic "real and virtual" out of 22 potential clips.  played 0 times.  Act topic 4/5
+281.032		ERROR: Failed to find a new clip, freeing topic
+281.032	TOPIC real and virtual Failed to find clips, streak 4
+281.032	ACT ENDED on clip Golan - yellow tail explored topics 4/4 with 0 clips on final topic "real and virtual"

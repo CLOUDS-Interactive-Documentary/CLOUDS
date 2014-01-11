@@ -32,7 +32,8 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
 // geometry should be loaded here
 void CloudsVisualSystemFlying::selfSetup()
 {
-    post.init(ofGetWidth(), ofGetHeight(), true);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    post.init(getCanvasWidth(), getCanvasHeight(), true);
     //post.createPass<EdgePass>();
     post.createPass<FxaaPass>();
     post.createPass<BloomPass>();
@@ -165,7 +166,8 @@ void CloudsVisualSystemFlying::selfUpdate()
 {
     
     volumeControl.value(gain);
-    if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    if (post.getWidth() != getCanvasWidth() || post.getHeight() != getCanvasHeight()) post.init(getCanvasWidth(), getCanvasHeight(), true);
  
     if (regenerate)
     {
@@ -176,8 +178,9 @@ void CloudsVisualSystemFlying::selfUpdate()
     if (cameraControl)
     {
         ofVec2f targetLookAngle;
-        targetLookAngle.x = ofMap(GetCloudsInputY(), 0, ofGetHeight(), -20.f, -30.f, true);
-        targetLookAngle.y = ofMap(GetCloudsInputX(), 0, ofGetWidth(), 20.f, -20.f, true);
+        //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+        targetLookAngle.x = ofMap(GetCloudsInputY(), 0, getCanvasHeight(), -20.f, -30.f, true);
+        targetLookAngle.y = ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 20.f, -20.f, true);
         currentLookAngle.interpolate(targetLookAngle, .05);
         ofQuaternion rx, ry;
         rx.makeRotate(currentLookAngle.x, 1, 0, 0);
@@ -295,8 +298,10 @@ void CloudsVisualSystemFlying::selfPostDraw()
     glPushAttrib(GL_ENABLE_BIT);
     glDisable(GL_DEPTH_TEST);
     post.process(CloudsVisualSystem::getSharedRenderTarget(), false);
-    if (post.getNumProcessedPasses()) post.getProcessedTextureReference().draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
-    else CloudsVisualSystem::getSharedRenderTarget().draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    if (post.getNumProcessedPasses()) post.getProcessedTextureReference().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());
+    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+    else CloudsVisualSystem::getSharedRenderTarget().draw(0, getCanvasHeight(), getCanvasWidth(), -getCanvasHeight());
     glPopAttrib();
 }
 

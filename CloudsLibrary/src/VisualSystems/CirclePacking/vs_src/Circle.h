@@ -22,7 +22,7 @@ public:
     static ofxFTGLSimpleLayout  Font;
     
     Circle();
-    Circle(float _x, float _y, float _r, string _label);
+    Circle( float _x, float _y, float _r, string _label, ofFloatColor _p, ofFloatColor _s , float _a);
     void draw();
     void drawCompanies();
     void drawHashtags();
@@ -35,15 +35,17 @@ public:
     Boolean intersect(Circle _circle);
     
     float growth;
-    ofColor color1;
+    ofFloatColor color1;
     float hue;
-    float hue2; 
+    float hue2;
+    float sat;
     float brightness;
     
     float x;
     float y;
     float r;
     string label;
+    float alpha;
     
 };
 

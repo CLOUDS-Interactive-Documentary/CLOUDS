@@ -140,6 +140,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
 #else
 	bUseOculusRift = false;
 #endif 
+    
+    lastMouseMoveMillis = 0;
 	
 }
 
@@ -197,7 +199,7 @@ void CloudsVisualSystem::setup(){
 	if(bIsSetup){
 		return;
 	}
-	
+    
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 	
 	//ofAddListener(ofEvents().exit, this, &CloudsVisualSystem::exit);
@@ -332,10 +334,22 @@ void CloudsVisualSystem::speakerEnded()
 	hasSpeaker = false;
 }
 
-#define REZANATOR_GUI_ALPHA_MULTIPLIER 4
-
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
+
+#ifndef VISUAL_SYSTEM_EDITOR
+    // show/hide the mouse cursor
+    currMousePos.set(ofGetMouseX(), ofGetMouseY());
+    if (currMousePos != lastMousePos) {
+        lastMouseMoveMillis = ofGetElapsedTimeMillis();
+        ofShowCursor();
+    }
+    else if ((ofGetElapsedTimeMillis() - lastMouseMoveMillis) > 1000) {
+        ofHideCursor();
+    }
+    lastMousePos = currMousePos;
+#endif
+    
     if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack)
     {
         updateTimelineUIParams();
@@ -364,11 +378,14 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 		bgSat2 = bgSat;
 		bgBri2 = bgBri;
 	}
-	
+    
+    durationLabel->setLabel(ofxTimecode::timecodeForSeconds(timeline->getInOutRange().span() * timeline->getDurationInSeconds()));
+    
 	bgColor = ofColor::fromHsb(MIN(bgHue,254.), bgSat, bgBri, 255);
 	bgColor2 = ofColor::fromHsb(MIN(bgHue2,254.), bgSat2, bgBri2, 255);
 	
 	//Make this happen only when the timeline is modified by the user or when a new track is added.
+    
 	if(!ofGetMousePressed())
     {
 //		ofLogError("TIMELINE UPDATE FOR SYSTEM " + getSystemName());
@@ -807,8 +824,8 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
             }
         }
 		break;
-		
-		case 'T':
+            
+        case 'T':
 			cameraTrack->addKeyframe();
 			break;
 		case 'L':
@@ -901,7 +918,7 @@ void CloudsVisualSystem::interactionStarted(CloudsInteractionEventArgs& args){
 }
 
 void CloudsVisualSystem::interactionDragged(CloudsInteractionEventArgs& args){
-    if(args.primary){    
+    if(args.primary){
         ofMouseEventArgs fakeArgs;
         fakeArgs.x = args.position.x;
         fakeArgs.y = args.position.y;
@@ -1021,7 +1038,6 @@ void CloudsVisualSystem::setupLightingParams()
 
 void CloudsVisualSystem::setupMaterialParams()
 {
-//    mat = new ofMaterial();
 	mat = new ofxMaterial();
 }
 
@@ -1029,7 +1045,7 @@ void CloudsVisualSystem::setupTimeLineParams()
 {
 	timeline = NULL;
     bShowTimeline = false;
-	bTimelineIsIndefinite = true;
+	bTimelineIsIndefinite = false;
     bDeleteTimelineTrack = false;
     timelineDuration = 60;
     bEnableTimeline = true;
@@ -2144,12 +2160,14 @@ void CloudsVisualSystem::setupTimelineGui()
     tlGui->addWidgetToHeader(toggle);
     tlGui->addSpacer();
     
+    durationLabel = tlGui->addLabel("");
+    
     tlGui->addNumberDialer("DURATION", 0.0, 60*5, &timelineDuration, 0.0)->setDisplayLabel(true);
     tlGui->addToggle("INDEFINITE", &bTimelineIsIndefinite);
     
     tlGui->addToggle("ANIMATE", &bEnableTimelineTrackCreation);
     tlGui->addToggle("DELETE", &bDeleteTimelineTrack);
-
+    
     //tlGui->addToggle("SHOW/HIDE", &bShowTimeline);
     
     selfSetupTimelineGui();
@@ -2751,9 +2769,16 @@ void CloudsVisualSystem::setupKinectGui()
     ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
     
     kinectGui->addSpacer();
+    kinectGui->addToggle("DEBUG", &kinectInput->bDoDebug);
+    
+    kinectGui->addSpacer();
     kinectGui->addRangeSlider("BODY RANGE X", -1.0f, 1.0f, &kinectInput->boundsMin.x, &kinectInput->boundsMax.x);
     kinectGui->addRangeSlider("BODY RANGE Y", -1.0f, 1.0f, &kinectInput->boundsMin.y, &kinectInput->boundsMax.y);
     kinectGui->addRangeSlider("BODY RANGE Z",  0.5f, 4.5f, &kinectInput->boundsMin.z, &kinectInput->boundsMax.z);
+    
+    kinectGui->addSpacer();
+    kinectGui->addSlider("ACTIVE THRESHOLD Y", 0.0f, 1.0f, &kinectInput->activeThresholdY);
+    kinectGui->addSlider("ACTIVE THRESHOLD Z", 0.0f, 1.0f, &kinectInput->activeThresholdZ);
     
     kinectGui->addSpacer();
     kinectGui->addSlider("RESET LERP", 0, 1, &kinectInput->posResetLerpPct);
@@ -2825,6 +2850,12 @@ void CloudsVisualSystem::loadGUIS()
 
     for(int i = 0; i < guis.size(); i++)
     {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+#endif
         guis[i]->loadSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
 		guis[i]->setColorBack(ofColor(255*.2, 255*.9));
 //        setColors();
@@ -2836,12 +2867,24 @@ void CloudsVisualSystem::loadGUIS()
     loadTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/UITimelineMappings.xml");
     timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 
+#ifdef KINECT_INPUT
+    kinectGui->loadSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
+#endif
+#ifdef OCULUS_RIFT
+    oculusGui->loadSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+#endif
 }
 
 void CloudsVisualSystem::saveGUIS()
 {
     for(int i = 0; i < guis.size(); i++)
     {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+#endif
         guis[i]->saveSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
     }
     ofxSaveCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
@@ -2850,6 +2893,13 @@ void CloudsVisualSystem::saveGUIS()
     if(timeline != NULL){
 		timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 	}
+    
+#ifdef KINECT_INPUT
+    kinectGui->saveSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
+#endif
+#ifdef OCULUS_RIFT
+    oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+#endif
 }
 
 void CloudsVisualSystem::loadPresetGUISFromName(string presetName)
@@ -2866,6 +2916,12 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	selfSetDefaults();
 	
     for(int i = 0; i < guis.size(); i++) {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+#endif
 		string presetPathName = presetPath+"/"+guis[i]->getName()+".xml";
         guis[i]->loadSettings(presetPathName);
     }
@@ -2925,6 +2981,12 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
     
     for(int i = 0; i < guis.size(); i++)
     {
+#ifdef KINECT_INPUT
+        if (guis[i] == kinectGui) continue;
+#endif
+#ifdef OCULUS_RIFT
+        if (guis[i] == oculusGui) continue;
+#endif
         guis[i]->saveSettings(presetDirectory+guis[i]->getName()+".xml");
     }
     ofxSaveCamera(cam, getVisualSystemDataPath()+"Presets/"+presetName+"/ofEasyCamSettings");
@@ -2937,7 +2999,6 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 	
 	
 //	cout << "after save range " << timeline->getInOutRange() << endl;
-	
 	timeline->setName("Working");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 
@@ -2950,7 +3011,11 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 	timeInfo.addValue("outroDuration", getOutroDuration());
 	timeInfo.popTag();//timeinfo
 	timeInfo.saveFile(getVisualSystemDataPath()+"Presets/"+presetName+"/TimeInfo.xml");
-	
+    
+    //Add auto refresh file
+    ofBuffer refreshFlag;
+    refreshFlag.append("refreshme");
+    ofBufferToFile(getVisualSystemDataPath()+"Presets/Working/_refreshme.txt", refreshFlag);
 }
 
 void CloudsVisualSystem::deleteGUIS()
@@ -3266,6 +3331,20 @@ void CloudsVisualSystem::selfPostDraw(){
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
 #endif
+    
+#ifdef KINECT_INPUT
+    if (timeline->getIsShowing()) {
+        ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
+        if (kinectInput->bDoDebug) {
+            static const int kDebugMargin = 0;
+            static const int kDebugWidth  = 640;
+            static const int kDebugHeight = 480;
+            kinectInput->debug(CloudsVisualSystem::getSharedRenderTarget().getWidth()  - kDebugWidth  - kDebugMargin,
+                               kDebugMargin,
+                               kDebugWidth, kDebugHeight);
+        }
+    }
+#endif
 
 }
 
@@ -3278,7 +3357,12 @@ void CloudsVisualSystem::drawCursor()
                 continue;
             }
             
-            selfDrawCursor(it->second.position, it->second.actionType != 0);
+#ifdef KINECT_INPUT
+            selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle);
+#else
+            // EZ: This ofGetMousePressed() call is ghetto but will do for now
+            selfDrawCursor(it->second.position, ofGetMousePressed());
+#endif
         }
     }
 }

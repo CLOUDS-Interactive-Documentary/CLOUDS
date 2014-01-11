@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>391.000000000</XPosition>
-    <YPosition>287.000000000</YPosition>
+    <XPosition>1095.000000000</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -27,7 +27,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Deepsea3</Name>
+    <Name>Deepsea3_SND</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Deepsea_SND</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -44,9 +49,4 @@
     <Kind>2</Kind>
     <Name>whatevz</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Deepsea3_SND</Name>
-    <Value>1</Value>
 </Widget>

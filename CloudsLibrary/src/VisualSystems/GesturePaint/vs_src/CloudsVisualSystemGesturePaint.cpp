@@ -417,7 +417,8 @@ void CloudsVisualSystemGesturePaint::selfDrawBackground(){
 		ofPopStyle();
 	}
 	if(showWaterDebug){
-		watersrc.getTextureReference().draw(ofGetWidth()-watersrc.getWidth(),0);
+        //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+		watersrc.getTextureReference().draw(getCanvasWidth()-watersrc.getWidth(),0);
 	}
     
 }

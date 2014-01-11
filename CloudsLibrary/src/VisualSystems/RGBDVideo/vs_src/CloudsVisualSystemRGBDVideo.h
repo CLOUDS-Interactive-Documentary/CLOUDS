@@ -20,6 +20,8 @@ public:
     void selfSetup();
     void selfSetupGuis();
     
+    void selfSetDefaults();
+    
     void selfUpdate();
     void selfDrawBackground();
     void selfDrawDebug();
@@ -58,8 +60,9 @@ public:
 	Intrinsics videoIntrinsics;
 	ofVboMesh pointCloud;
 	
-	float pointoffset;
-	
+	float pointscale;
+    ofVec3f pointShift;
+    
 	void reloadShader();
 	
 	bool playMovie(string path);

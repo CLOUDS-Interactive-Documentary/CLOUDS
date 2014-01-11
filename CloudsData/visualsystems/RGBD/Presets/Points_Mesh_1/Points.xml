@@ -1,0 +1,43 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Points</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>228.000000000</XPosition>
+    <YPosition>263.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Alpha</Name>
+    <Value>0.295566499</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Num Points</Name>
+    <Value>100000</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Point Size</Name>
+    <HighValue>0.428571463</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Face Overlap</Name>
+    <Value>0.857142866</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Flow</Name>
+    <Value>0.354679793</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Points Flow Up</Name>
+    <Value>1</Value>
+</Widget>

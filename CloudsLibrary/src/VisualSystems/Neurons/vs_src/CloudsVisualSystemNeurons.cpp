@@ -161,6 +161,7 @@ void _C::reset(bool createRootNodes){
 
 void _C::guiCameraEvent(ofxUIEventArgs &e){
     CloudsVisualSystem::guiCameraEvent(e);
+    
     if(e.widget == generateCamPath && ofGetMousePressed() ) {
         generateFlythrough();
     }else if(e.widget == generateRandCam && ofGetMousePressed() ) {
