@@ -18,30 +18,30 @@
 <Widget>
     <Kind>4</Kind>
     <Name>HUE</Name>
-    <Value>175.488265991</Value>
+    <Value>164.276977539</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SAT</Name>
-    <Value>93.891525269</Value>
+    <Value>205.055053711</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BRI</Name>
-    <Value>59.360385895</Value>
+    <Value>75.320030212</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>HUE2</Name>
-    <Value>150.256942749</Value>
+    <Value>253.176391602</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SAT2</Name>
-    <Value>93.319290161</Value>
+    <Value>111.299957275</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BRI2</Name>
-    <Value>255.000000000</Value>
+    <Value>163.985656738</Value>
 </Widget>

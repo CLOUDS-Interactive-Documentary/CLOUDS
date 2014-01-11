@@ -8,7 +8,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>HAIR COUNT</Name>
-    <Value>10000</Value>
+    <Value>9236</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>NOISE SPEED</Name>
-    <Value>0.935960531</Value>
+    <Value>2.167487621</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -49,14 +49,14 @@
 <Widget>
     <Kind>6</Kind>
     <Name>HAIR LENGTH</Name>
-    <HighValue>1.000000000</HighValue>
-    <LowValue>1.000000000</LowValue>
+    <HighValue>1.009852171</HighValue>
+    <LowValue>1.009852171</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>HAIR LINE WIDTH</Name>
-    <HighValue>4.879310131</HighValue>
-    <LowValue>0.636453629</LowValue>
+    <HighValue>0.392610818</HighValue>
+    <LowValue>0.197536945</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -67,32 +67,32 @@
 <Widget>
     <Kind>6</Kind>
     <Name>BASE SAT</Name>
-    <HighValue>0.896551549</HighValue>
-    <LowValue>0.334975392</LowValue>
+    <HighValue>0.379310101</HighValue>
+    <LowValue>0.019704435</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BASE BRI</Name>
-    <HighValue>1.000000000</HighValue>
-    <LowValue>0.000000000</LowValue>
+    <HighValue>0.536945820</HighValue>
+    <LowValue>0.004926108</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BASE ALPHA</Name>
-    <HighValue>1.000000000</HighValue>
-    <LowValue>1.000000000</LowValue>
+    <HighValue>0.330049247</HighValue>
+    <LowValue>0.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>TIP HUE</Name>
-    <HighValue>0.901477814</HighValue>
-    <LowValue>0.034482758</LowValue>
+    <HighValue>0.798029542</HighValue>
+    <LowValue>0.295566529</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>TIP SAT</Name>
-    <HighValue>1.000000000</HighValue>
-    <LowValue>0.600985229</LowValue>
+    <HighValue>0.990147889</HighValue>
+    <LowValue>0.591133058</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
