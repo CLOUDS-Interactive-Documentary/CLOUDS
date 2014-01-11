@@ -60,7 +60,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
     NSLog(@"All clip table? %@", allClipTable);
     
     [clipTable setTarget:self];
-    [clipTable setDoubleAction:@selector(floadClipFromTable:)];
+    [clipTable setDoubleAction:@selector(loadClipFromTable:)];
     
     [allClipTable setTarget:self];
 	[allClipTable setDoubleAction:@selector(loadClipFromTable:)];
