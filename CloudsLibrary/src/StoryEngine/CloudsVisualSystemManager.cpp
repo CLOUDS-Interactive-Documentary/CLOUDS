@@ -233,6 +233,13 @@ bool preset_sort(CloudsVisualSystemPreset a, CloudsVisualSystemPreset b){
 }
 
 //--------------------------------------------------------------------
+void CloudsVisualSystemManager::freeSystemPointers(){
+    for(int i = 0; i < presets.size(); i++){
+        presets[i].system = ofPtr<CloudsVisualSystem>();
+    }
+}
+
+//--------------------------------------------------------------------
 CloudsVisualSystemManager::CloudsVisualSystemManager(){
 	backupTimeInterval = 60*2;
 	lastBackupTime = ofGetElapsedTimef() - backupTimeInterval;
