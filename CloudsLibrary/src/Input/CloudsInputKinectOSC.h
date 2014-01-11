@@ -182,6 +182,8 @@ public:
     ofVec3f boundsMax;
     float jointLerpPct;
     
+    bool bDoDebug;
+    
     // current position attributes
     float posResetLerpPct;
     float posSetLerpPct;
