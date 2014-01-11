@@ -77,6 +77,12 @@
 		4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AA17512E45003001E2 /* ofxSwarmBehavior.cpp */; };
 		4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
+		64789B8C1881F41700EAFCC7 /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64789B761881F41600EAFCC7 /* ofxSubtitles.cpp */; };
+		64789B8D1881F41700EAFCC7 /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64789B761881F41600EAFCC7 /* ofxSubtitles.cpp */; };
+		64789B8E1881F41700EAFCC7 /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64789B761881F41600EAFCC7 /* ofxSubtitles.cpp */; };
+		64789B8F1881F41700EAFCC7 /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64789B781881F41600EAFCC7 /* ofxSubtitleUnit.cpp */; };
+		64789B901881F41700EAFCC7 /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64789B781881F41600EAFCC7 /* ofxSubtitleUnit.cpp */; };
+		64789B911881F41700EAFCC7 /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64789B781881F41600EAFCC7 /* ofxSubtitleUnit.cpp */; };
 		6488FCA7187FC56700286B77 /* CloudsInputOculus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6488FCA5187FC56700286B77 /* CloudsInputOculus.cpp */; };
 		64C4B48C187A5E5E00169875 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C4B489187A5E5E00169875 /* CloudsPortal.cpp */; };
 		64C4B48D187A5E5E00169875 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C4B489187A5E5E00169875 /* CloudsPortal.cpp */; };
@@ -649,6 +655,10 @@
 		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		64789B761881F41600EAFCC7 /* ofxSubtitles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitles.cpp; sourceTree = "<group>"; };
+		64789B771881F41600EAFCC7 /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
+		64789B781881F41600EAFCC7 /* ofxSubtitleUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitleUnit.cpp; sourceTree = "<group>"; };
+		64789B791881F41600EAFCC7 /* ofxSubtitleUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitleUnit.h; sourceTree = "<group>"; };
 		6488FCA5187FC56700286B77 /* CloudsInputOculus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputOculus.cpp; sourceTree = "<group>"; };
 		6488FCA6187FC56700286B77 /* CloudsInputOculus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputOculus.h; sourceTree = "<group>"; };
 		64C4B488187A5E5E00169875 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsPortal.h; path = ../../RGBD/Portal/CloudsPortal.h; sourceTree = "<group>"; };
@@ -1415,6 +1425,26 @@
 			path = ../../../addons/ofxCameraSaveLoad/src;
 			sourceTree = "<group>";
 		};
+		64789B6F1881F41600EAFCC7 /* ofxSubtitles */ = {
+			isa = PBXGroup;
+			children = (
+				64789B751881F41600EAFCC7 /* src */,
+			);
+			name = ofxSubtitles;
+			path = ../../../addons/ofxSubtitles;
+			sourceTree = "<group>";
+		};
+		64789B751881F41600EAFCC7 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				64789B761881F41600EAFCC7 /* ofxSubtitles.cpp */,
+				64789B771881F41600EAFCC7 /* ofxSubtitles.h */,
+				64789B781881F41600EAFCC7 /* ofxSubtitleUnit.cpp */,
+				64789B791881F41600EAFCC7 /* ofxSubtitleUnit.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		AE6FFF8C1880648900677B60 /* ofxOsc */ = {
 			isa = PBXGroup;
 			children = (
@@ -1519,6 +1549,7 @@
 				3D5B9697175308FE00F558AC /* ofxTimecode */,
 				3D5B9605175308CF00F558AC /* ofxMSATimer */,
 				3D5B961C175308CF00F558AC /* ofxRange */,
+				64789B6F1881F41600EAFCC7 /* ofxSubtitles */,
 				3D5B9620175308CF00F558AC /* ofxTextInputField */,
 				3D5B963D175308CF00F558AC /* ofxTween */,
 				3D5B9444175308AC00F558AC /* ofxTimeline */,
@@ -2032,11 +2063,13 @@
 				AE6FFF25188063F100677B60 /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				AE6FFF26188063F100677B60 /* ofxSwarmBehavior.cpp in Sources */,
 				AE6FFF27188063F100677B60 /* ofxVerletSolver.cpp in Sources */,
+				64789B8E1881F41700EAFCC7 /* ofxSubtitles.cpp in Sources */,
 				AE6FFF28188063F100677B60 /* ofxCameraSaveLoad.cpp in Sources */,
 				AE6FFF29188063F100677B60 /* kiss_fft.c in Sources */,
 				AE6FFF2A188063F100677B60 /* kiss_fftr.c in Sources */,
 				AE6FFF2B188063F100677B60 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				AE6FFF2C188063F100677B60 /* ofxHotKeys_impl_linux.cpp in Sources */,
+				64789B911881F41700EAFCC7 /* ofxSubtitleUnit.cpp in Sources */,
 				AE6FFFB81880648900677B60 /* UdpSocket.cpp in Sources */,
 				AE6FFFB61880648900677B60 /* IpEndpointName.cpp in Sources */,
 				AE6FFF2D188063F100677B60 /* ofxHotKeys_impl_mac.mm in Sources */,
@@ -2116,6 +2149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				64789B8C1881F41700EAFCC7 /* ofxSubtitles.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */,
 				E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */,
@@ -2184,6 +2218,7 @@
 				3D5B9687175308D000F558AC /* ofxEasingQuart.cpp in Sources */,
 				3D5B9688175308D000F558AC /* ofxEasingQuint.cpp in Sources */,
 				3D5B9689175308D000F558AC /* ofxEasingSine.cpp in Sources */,
+				64789B8F1881F41700EAFCC7 /* ofxSubtitleUnit.cpp in Sources */,
 				3D5B968A175308D000F558AC /* ofxTween.cpp in Sources */,
 				3D5B96AA175308FE00F558AC /* ofxTimecode.cpp in Sources */,
 				E7DD854717DBC0A500AFB2DD /* CloudsRGBDCamera.cpp in Sources */,
@@ -2209,6 +2244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64789B8D1881F41700EAFCC7 /* ofxSubtitles.cpp in Sources */,
 				E738FF7A183C86F50018AB96 /* main.cpp in Sources */,
 				E738FF7B183C86F50018AB96 /* testApp.cpp in Sources */,
 				E738FF7C183C86F50018AB96 /* tinyxml.cpp in Sources */,
@@ -2252,6 +2288,7 @@
 				E738FFA2183C86F50018AB96 /* ofxTLImageSequence.cpp in Sources */,
 				E738FFA3183C86F50018AB96 /* ofxTLImageSequenceFrame.cpp in Sources */,
 				E738FFA4183C86F50018AB96 /* ofxTLImageTrack.cpp in Sources */,
+				64789B901881F41700EAFCC7 /* ofxSubtitleUnit.cpp in Sources */,
 				E738FFA5183C86F50018AB96 /* ofxTLInOut.cpp in Sources */,
 				E738FFA6183C86F50018AB96 /* ofxTLKeyframes.cpp in Sources */,
 				E738FFA7183C86F50018AB96 /* ofxTLLFO.cpp in Sources */,
