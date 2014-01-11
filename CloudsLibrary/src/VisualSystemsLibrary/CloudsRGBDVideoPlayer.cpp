@@ -48,7 +48,7 @@ CloudsRGBDVideoPlayer::~CloudsRGBDVideoPlayer(){
 
 //---------------------------------------------------------------
 //SURYA TODO: Add new end time
-bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, float offsetTime,float clipVolume ){
+bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, string subtitlesPath, float offsetTime,float clipVolume ){
 	
 	if(!bEventRegistered){
 		ofAddListener(ofEvents().update, this, &CloudsRGBDVideoPlayer::update);
@@ -65,6 +65,9 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, f
 	nextCalibrationXML = calibrationXMLPath;
 	cout << "prerolled clip " << videoPath << " to time " << offsetTime << endl;
 
+    /* Subtitles */
+    nextHaveSubtitles = loadSubtitles(subtitlesPath);
+    
 	clipPrerolled = true;
 	nextClipIsVO = false;
     nextClipVolumeAdjustment = clipVolume;
@@ -205,7 +208,9 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 //    cout<<"Current Max Vol: "<<currentMaxVolume<<endl;
 	swap(currentPlayer,nextPlayer);
 	swap(currentVoiceoverPlayer, nextVoiceoverPlayer);
-	
+    swap(currentSubtitles, nextSubtitles);
+	swap(currentHaveSubtitles, nextHaveSubtitles);
+    
 	if(nextClipIsVO){
 		currentVoiceoverPlayer->play();
 		currentVoiceoverPlayer->setLoop(false);
@@ -327,6 +332,11 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		if(position > duration - .04){
 			getPlayer().stop();
 		}
+        
+        /* Subtitles */
+        if (currentHaveSubtitles) {
+            currentSubtitles.setTimeInSeconds(getPlayer().getCurrentTime());
+        }
 	}
 }
 
@@ -336,4 +346,37 @@ bool CloudsRGBDVideoPlayer::isPlaying(){
 
 bool CloudsRGBDVideoPlayer::isDone(){
 	return playingVO ? !currentVoiceoverPlayer->getIsPlaying() : (getPlayer().isLoaded() && !getPlayer().isPlaying());
+}
+
+bool CloudsRGBDVideoPlayer::loadSubtitles(string path)
+{
+    if (path == "") {
+        return false;
+    }
+
+    if (!ofFile(path).exists()) {
+        return false;
+    }
+    
+    // need to know fps (all 24 except Higa (30))
+    int fps = 24;
+    if (strstr(path.data(), "Higa") != NULL) {
+        fps = 30;
+    }
+            
+    if (!nextSubtitles.setup(path, GetCloudsDataPath() + "/font/MateriaPro_Regular.ttf", 18, fps, TEXT_JUSTIFICATION_CENTER)) {
+        return false;
+    }
+
+    return true;
+}
+    
+bool CloudsRGBDVideoPlayer::haveSubtitles()
+{
+    return currentHaveSubtitles;
+}
+    
+ofxSubtitles& CloudsRGBDVideoPlayer::getSubtitles()
+{
+    return currentSubtitles;
 }

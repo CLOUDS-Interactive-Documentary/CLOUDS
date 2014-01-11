@@ -56,6 +56,7 @@ ${NEWPREFIX}ofxTonic
 ${NEWPREFIX}ofxPtf
 ${NEWPREFIX}ofxNearestNeighbour
 ${NEWPREFIX}ofxPostProcessing
+${NEWPREFIX}ofxSubtitles
 
 # git clone https://github.com/kylemcdonald/ofxCv
 ${NEWPREFIX}ofxCv
