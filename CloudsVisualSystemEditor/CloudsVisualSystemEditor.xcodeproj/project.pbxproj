@@ -671,6 +671,12 @@
 		85D98B1018381E6800D7065D /* VerticalTiltShifPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AC918381E6800D7065D /* VerticalTiltShifPass.cpp */; };
 		85D98B1118381E6800D7065D /* ZoomBlurPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98ACB18381E6800D7065D /* ZoomBlurPass.cpp */; };
 		85D98B1218381E6800D7065D /* ZoomBlurPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98ACB18381E6800D7065D /* ZoomBlurPass.cpp */; };
+		A600C11C1881032C0041787F /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C0FF1881032C0041787F /* ofxSubtitles.cpp */; };
+		A600C11D1881032C0041787F /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C0FF1881032C0041787F /* ofxSubtitles.cpp */; };
+		A600C11E1881032C0041787F /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C0FF1881032C0041787F /* ofxSubtitles.cpp */; };
+		A600C11F1881032C0041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C1011881032C0041787F /* ofxSubtitleUnit.cpp */; };
+		A600C1201881032C0041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C1011881032C0041787F /* ofxSubtitleUnit.cpp */; };
+		A600C1211881032C0041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C1011881032C0041787F /* ofxSubtitleUnit.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -1824,6 +1830,10 @@
 		85D98ACA18381E6800D7065D /* VerticalTiltShifPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalTiltShifPass.h; sourceTree = "<group>"; };
 		85D98ACB18381E6800D7065D /* ZoomBlurPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZoomBlurPass.cpp; sourceTree = "<group>"; };
 		85D98ACC18381E6800D7065D /* ZoomBlurPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomBlurPass.h; sourceTree = "<group>"; };
+		A600C0FF1881032C0041787F /* ofxSubtitles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitles.cpp; sourceTree = "<group>"; };
+		A600C1001881032C0041787F /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
+		A600C1011881032C0041787F /* ofxSubtitleUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitleUnit.cpp; sourceTree = "<group>"; };
+		A600C1021881032C0041787F /* ofxSubtitleUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitleUnit.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -3490,9 +3500,30 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		A600C0F81881032C0041787F /* ofxSubtitles */ = {
+			isa = PBXGroup;
+			children = (
+				A600C0FE1881032C0041787F /* src */,
+			);
+			name = ofxSubtitles;
+			path = ../../../addons/ofxSubtitles;
+			sourceTree = "<group>";
+		};
+		A600C0FE1881032C0041787F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A600C0FF1881032C0041787F /* ofxSubtitles.cpp */,
+				A600C1001881032C0041787F /* ofxSubtitles.h */,
+				A600C1011881032C0041787F /* ofxSubtitleUnit.cpp */,
+				A600C1021881032C0041787F /* ofxSubtitleUnit.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				A600C0F81881032C0041787F /* ofxSubtitles */,
 				E79EAD26187877A600B8B8F0 /* ofxGpuParticles */,
 				E7F050E618712C9700017521 /* ofxAnimationPrimitives */,
 				F37C7D77186EB28700FCDA79 /* ofxTonic */,
@@ -7753,6 +7784,7 @@
 				64CE97C01880DB8100491913 /* ofxTLImageSequence.cpp in Sources */,
 				64CE97C11880DB8100491913 /* ofxTLImageSequenceFrame.cpp in Sources */,
 				64CE97C21880DB8100491913 /* ofxTLImageTrack.cpp in Sources */,
+				A600C1211881032C0041787F /* ofxSubtitleUnit.cpp in Sources */,
 				64CE97C31880DB8100491913 /* ControlPulse.cpp in Sources */,
 				64CE97C41880DB8100491913 /* ofxTLInOut.cpp in Sources */,
 				64CE97C51880DB8100491913 /* ofxTLKeyframes.cpp in Sources */,
@@ -7918,6 +7950,7 @@
 				64CE98651880DB8100491913 /* SimpleVehicle.cpp in Sources */,
 				64CE98661880DB8100491913 /* ControlChangeNotifier.cpp in Sources */,
 				64CE98671880DB8100491913 /* TerrainRayTest.cpp in Sources */,
+				A600C11E1881032C0041787F /* ofxSubtitles.cpp in Sources */,
 				64CE98681880DB8100491913 /* Vec3.cpp in Sources */,
 				64CE98691880DB8100491913 /* Vec3Utilities.cpp in Sources */,
 				64CE986A1880DB8100491913 /* Arithmetic.cpp in Sources */,
@@ -8258,6 +8291,7 @@
 				E73774B31778DD2900892646 /* ofxTLImageSequence.cpp in Sources */,
 				E73774B41778DD2900892646 /* ofxTLImageSequenceFrame.cpp in Sources */,
 				E73774B51778DD2900892646 /* ofxTLImageTrack.cpp in Sources */,
+				A600C11F1881032C0041787F /* ofxSubtitleUnit.cpp in Sources */,
 				F37C7E87186EB28C00FCDA79 /* ControlPulse.cpp in Sources */,
 				E73774B61778DD2900892646 /* ofxTLInOut.cpp in Sources */,
 				E73774B71778DD2900892646 /* ofxTLKeyframes.cpp in Sources */,
@@ -8423,6 +8457,7 @@
 				E7C8B491182AE3F400AAD6E8 /* SimpleVehicle.cpp in Sources */,
 				F37C7E6D186EB28C00FCDA79 /* ControlChangeNotifier.cpp in Sources */,
 				E7C8B492182AE3F400AAD6E8 /* TerrainRayTest.cpp in Sources */,
+				A600C11C1881032C0041787F /* ofxSubtitles.cpp in Sources */,
 				E7C8B493182AE3F400AAD6E8 /* Vec3.cpp in Sources */,
 				E7C8B494182AE3F400AAD6E8 /* Vec3Utilities.cpp in Sources */,
 				F37C7E59186EB28C00FCDA79 /* Arithmetic.cpp in Sources */,
@@ -8949,6 +8984,7 @@
 				85D98AEA18381E6800D7065D /* ConvolutionPass.cpp in Sources */,
 				F37C7EA0186EB28C00FCDA79 /* Effect.cpp in Sources */,
 				85D98AEC18381E6800D7065D /* DofAltPass.cpp in Sources */,
+				A600C1201881032C0041787F /* ofxSubtitleUnit.cpp in Sources */,
 				85D98AEE18381E6800D7065D /* DofPass.cpp in Sources */,
 				85D98AF018381E6800D7065D /* EdgePass.cpp in Sources */,
 				85D98AF218381E6800D7065D /* FakeSSSPass.cpp in Sources */,
@@ -8990,6 +9026,7 @@
 				2A4F33F01863CDD00070C0ED /* CloudsAudioEvents.cpp in Sources */,
 				F37C7EBC186EB28C00FCDA79 /* SawtoothWave.cpp in Sources */,
 				2A4F33F41863CDD00070C0ED /* CloudsSound.cpp in Sources */,
+				A600C11D1881032C0041787F /* ofxSubtitles.cpp in Sources */,
 				28927CAF18591B9F00640B50 /* ofxOceanTile.cpp in Sources */,
 				28927CAD18591B9F00640B50 /* ofxOceanCamera.cpp in Sources */,
 				2A4F33FC1863CDD00070C0ED /* lukeFileFuncs.cpp in Sources */,
