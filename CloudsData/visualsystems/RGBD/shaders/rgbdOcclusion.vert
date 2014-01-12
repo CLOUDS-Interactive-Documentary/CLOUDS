@@ -47,7 +47,7 @@ uniform float headFalloff;
 uniform float edgeAttenuateBase;
 uniform float edgeAttenuateExponent;
 uniform float meshRetractionFalloff;
-uniform float forceGeoRectraction;
+//uniform float forceGeoRectraction;
 
 varying float positionValid;
 
@@ -118,13 +118,12 @@ void main(void){
 	//get the attenutation coefficient for this position
 	float headPositionAttenuation = map( distance(basePos.xyz,headPosition), headMinRadius+headFalloff, headMinRadius, .0, 1.0);
 	
-	float headRetraction = pow(map(headPositionAttenuation, 0.0, meshRetractionFalloff, 0.0, 1.0), 2.0) * (1.0-forceGeoRectraction);
+	float headRetraction = pow(map(headPositionAttenuation, 0.0, meshRetractionFalloff, 0.0, 1.0), 2.0);// * (1.0-forceGeoRectraction);
 	
 	vec2 normalPos = samplePos.xy + normalRect.xy;
 	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
     
     float accumulatedExtendAttenuation = triangleExtend * headRetraction;
-    accumulatedExtendAttenuation = 1.0;
 	vec2 samplePosExtended = samplePos + gl_Normal.xy * accumulatedExtendAttenuation;
 	
     vec2 depthPos = samplePosExtended + depthRect.xy;

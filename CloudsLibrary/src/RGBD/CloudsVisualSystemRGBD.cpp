@@ -35,7 +35,13 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	transitionTarget = &transitionOutLeft;
 	drawTransitionNodes = false;
 	
-//	captionFontSize = 12;
+    meshColorBoost = .0;
+    meshSkinBoost  = .0;
+    lineColorBoost = .0;
+    lineSkinBoost  = .0;
+
+    pointColorBoost = .0;
+    pointSkinBoost = .0;
     
 	actuatorSpinPosition = 0;
 	edgeAttenuate = 0.;
@@ -82,6 +88,8 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	bSaveTransition = false;
 	transitionCamTargetNode = NULL;
 	
+    drawOcclusionDebug = false;
+    
 	currentTransitionType = "FlyThrough";
 	
 	bMoveTransitionCameraUp = bMoveTransitionCameraDown = false;
@@ -276,7 +284,10 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	pointsGui->addWidgetToHeader(toggle);
 	
 	pointsGui->addSlider("Point Alpha", 0, 1.0, &pointAlpha);
-	pointsGui->addIntSlider("Num Points", 0, 100000, &numRandomPoints);
+	pointsGui->addSlider("Point Color Boost", 0, 1.0, &pointColorBoost);
+	pointsGui->addSlider("Point Skin Boost", 0, 1.0, &pointSkinBoost);
+    pointsGui->addSpacer();
+    pointsGui->addIntSlider("Num Points", 0, 100000, &numRandomPoints);
 	pointsGui->addRangeSlider("Point Size", 0.0, 3.0, &pointSize.min, &pointSize.max);
 	pointsGui->addSlider("Point Face Overlap",0., 1.0, &pointHeadOverlap);
 	pointsGui->addSlider("Point Flow", 0, 1.0, &pointFlowSpeed);
@@ -301,10 +312,13 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	linesGui->addWidgetToHeader(toggle);
 	
 	linesGui->addSlider("Line Alpha", 0, 1.0, &lineAlpha);
+	linesGui->addSlider("Line Color Boost", 0, 1.0, &lineColorBoost);
+	linesGui->addSlider("Line Skin Boost", 0, 1.0, &lineSkinBoost);
+    linesGui->addSpacer();
 	linesGui->addSlider("Line Thickness", 0, 3.0, &lineThickness);
-	linesGui->addSlider("Line Spacing", 1., 3., &lineSpacing);
+	linesGui->addSlider("Line Spacing", 1., 5., &lineSpacing);
 	linesGui->addSlider("Line Face Overlap", 0., 1.0, &lineHeadOverlap);
-	linesGui->addSlider("Line Granularity", 1., 2.0, &lineGranularity);
+	linesGui->addSlider("Line Granularity", 1., 10.0, &lineGranularity);
 	linesGui->addSlider("Line Flow", 0, 1.0, &lineFlowSpeed);
 	linesGui->addToggle("Lines Flow Up", &linesFlowUp);
     
@@ -327,6 +341,9 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	meshGui->addWidgetToHeader(toggle);
 
 	meshGui->addSlider("Mesh Alpha", 0., 1.0, &meshAlpha);
+	meshGui->addSlider("Mesh Color Boost", 0, 1.0, &meshColorBoost);
+	meshGui->addSlider("Mesh Skin Boost", 0, 1.0, &meshSkinBoost);
+    meshGui->addSpacer();
 	meshGui->addSlider("X Simplify", 1., 16., &xSimplify);
 	meshGui->addSlider("Y Simplify", 1., 16., &ySimplify);
 	meshGui->addSlider("Random Variance", 0, 10.0, &randomVariance);
@@ -334,35 +351,36 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	meshGui->addSlider("Face Falloff", 0, 600., &meshFaceFalloff);
 	meshGui->addSlider("Edge Geo Retraction", 0, 1.0, &meshRetractionFalloff);
 	meshGui->addSlider("Force Geo Retraction", 0, 1.0, &meshForceGeoRectraction);
-    meshGui->addSpacer();
-    meshGui->addToggle("Occlusion", &bDrawOcclusion);
-	meshGui->addSlider("Occl X Simplify", 1., 16., &occlusionXSimplify);
-	meshGui->addSlider("Occl Y Simplify", 1., 16., &occlusionYSimplify);
 
 	ofAddListener(meshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
 	guis.push_back(meshGui);
 	guimap[meshGui->getName()] = meshGui;
-	
+    //////////////////MESH
     
     ////////////////// OCCLUSION
-//    occlusionGui = new ofxUISuperCanvas("MESH", gui);
-//	occlusionGui->copyCanvasStyle(gui);
-//	occlusionGui->copyCanvasProperties(gui);
-//	occlusionGui->setName("Mesh");
-//	occlusionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	occlusionGui = new ofxUISuperCanvas("OCCLUSION", gui);
+	occlusionGui->copyCanvasStyle(gui);
+	occlusionGui->copyCanvasProperties(gui);
+	occlusionGui->setName("Occlusion");
+	occlusionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-//	toggle = occlusionGui->addToggle("ENABLE", &bDrawOcclusion);
-//	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
-//	occlusionGui->resetPlacer();
-//	occlusionGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
-//	occlusionGui->addWidgetToHeader(toggle);
-//
-//
-//    
-//    ofAddListener(occlusionGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
-//	guis.push_back(occlusionGui);
-//	guimap[occlusionGui->getName()] = occlusionGui;
-    //////////////////
+	toggle = occlusionGui->addToggle("ENABLE", &bDrawOcclusion);
+	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+	occlusionGui->resetPlacer();
+	occlusionGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+	occlusionGui->addWidgetToHeader(toggle);
+
+    occlusionGui->addToggle("OcclusionDebug", &drawOcclusionDebug);
+	occlusionGui->addSlider("Occl X Simplify", 1., 8., &occlusionXSimplify);
+	occlusionGui->addSlider("Occl Y Simplify", 1., 8., &occlusionYSimplify);
+	occlusionGui->addSlider("Face Min Radius", 0, 600., &occlusionMeshFaceMinRadius);
+	occlusionGui->addSlider("Face Falloff", 0, 600., &occlusionMeshFaceFalloff);
+    occlusionGui->addSlider("Edge Geo Retraction", 0, 1.0, &occlusionMeshRetractionFalloff);
+    
+	ofAddListener(occlusionGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
+	guis.push_back(occlusionGui);
+	guimap[occlusionGui->getName()] = occlusionGui;
+    ////////////////// OCCLUSION
     
     ////////////////// ACTUATORS
     actuatorGui = new ofxUISuperCanvas("ACTUATORS", gui);
@@ -1327,35 +1345,37 @@ void CloudsVisualSystemRGBD::selfDraw(){
         if(bDrawOcclusion){
             // z-prepass
             glPushMatrix();
-            ofTranslate(0, 0, 2);
-            glEnable(GL_DEPTH_TEST);  // We want depth test !
-            glDepthFunc(GL_LESS);     // We want to get the nearest pixels
-            glColorMask(0,0,0,0);     // Disable color, it's useless, we only want depth.
-            glDepthMask(GL_TRUE);     // Ask z writing
+            if(!drawOcclusionDebug){
+                ofTranslate(0, 0, 2);
+                glEnable(GL_DEPTH_TEST);  // We want depth test !
+                glDepthFunc(GL_LESS);     // We want to get the nearest pixels
+                glColorMask(0,0,0,0);     // Disable color, it's useless, we only want depth.
+                glDepthMask(GL_TRUE);     // Ask z writing
+            }
             
 			occlusionShader.begin();
             
 			getRGBDVideoPlayer().setupProjectionUniforms(occlusionShader);
             
-
 			occlusionShader.setUniform1f("triangleExtend",
                                     getRGBDVideoPlayer().getFadeIn()  *
                                     getRGBDVideoPlayer().getFadeOut() *
                                     visualSystemFadeValue);
-			occlusionShader.setUniform1f("meshRetractionFalloff",meshRetractionFalloff);
-			occlusionShader.setUniform1f("headMinRadius", meshFaceMinRadius);
-			occlusionShader.setUniform1f("headFalloff", meshFaceFalloff);
-			occlusionShader.setUniform1f("forceGeoRectraction",meshForceGeoRectraction);
+			occlusionShader.setUniform1f("meshRetractionFalloff",occlusionMeshRetractionFalloff);
+			occlusionShader.setUniform1f("headMinRadius", occlusionMeshFaceMinRadius);
+			occlusionShader.setUniform1f("headFalloff", occlusionMeshFaceFalloff);
 
             occlusion.draw(GL_TRIANGLES, 0, occlusionVertexCount);
 
             occlusionShader.end();
             
-            // real render
-            glEnable(GL_DEPTH_TEST);  // We still want depth test
-            glDepthFunc(GL_LEQUAL);   // EQUAL should work, too. (Only draw pixels if they are the closest ones)
-            glColorMask(1,1,1,1);     // We want color this time
-            glDepthMask(GL_FALSE);
+            if(!drawOcclusionDebug){
+                // real render
+                glEnable(GL_DEPTH_TEST);  // We still want depth test
+                glDepthFunc(GL_LEQUAL);   // EQUAL should work, too. (Only draw pixels if they are the closest ones)
+                glColorMask(1,1,1,1);     // We want color this time
+                glDepthMask(GL_FALSE);
+            }
             glPopMatrix();
         }
         
@@ -1380,7 +1400,9 @@ void CloudsVisualSystemRGBD::selfDraw(){
                                     meshActuator.y,
                                     meshActuator.z);
             
-			//mesh.draw();
+			meshShader.setUniform1f("colorBoost", meshColorBoost);
+			meshShader.setUniform1f("skinBoost", meshSkinBoost);
+
             mesh.draw(GL_TRIANGLES, 0, meshVertexCount);
 			
 			meshShader.end();
@@ -1390,6 +1412,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
         if(!bDrawOcclusion){
             glDisable(GL_DEPTH_TEST);
         }
+        
 		ofEnableBlendMode(OF_BLENDMODE_ADD);
 //        ofEnableBlendMode(OF_BLENDMODE_SCREEN);
         
@@ -1411,7 +1434,9 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			lineShader.setUniform1f("headOverlap",lineHeadOverlap);
 			lineShader.setUniform1f("alpha", lineAlpha);
             
-            
+            lineShader.setUniform1f("colorBoost", lineColorBoost);
+			lineShader.setUniform1f("skinBoost", lineSkinBoost);
+
 			lineShader.setUniform3f("actuatorDirection",
                                     lineActuator.x,
                                     lineActuator.y,
@@ -1422,8 +1447,10 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			
 			lineShader.end();
 		}
-			
+		
+        
 		if(drawPoints){
+            
 			pointShader.begin();
 			getRGBDVideoPlayer().flowPosition = pointFlowPosition * (pointsFlowUp?-1:1);
 			getRGBDVideoPlayer().setupProjectionUniforms(pointShader);
@@ -1444,6 +1471,9 @@ void CloudsVisualSystemRGBD::selfDraw(){
                                     pointActuator.x,
                                     pointActuator.y,
                                     pointActuator.z);
+            
+            pointShader.setUniform1f("colorBoost", pointColorBoost);
+			pointShader.setUniform1f("skinBoost", pointSkinBoost);
             
 			points.draw();
             //points.draw(GL_POINTS, 0, pointCount);
