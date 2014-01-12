@@ -253,6 +253,12 @@ void testApp::keyPressed(int key){
     if(key == 'a') {
         sound.exitTunnel();
     }
+    if(key == 'x') {
+        sound.enterClusterMap();
+    }
+    if(key == 'z') {
+        sound.exitClusterMap();
+    }
 }
 
 //--------------------------------------------------------------
