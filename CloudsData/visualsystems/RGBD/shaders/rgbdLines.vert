@@ -56,9 +56,8 @@ varying float positionValid;
 //LIGHT
 uniform vec3 actuatorDirection;
 
-varying vec3 eye;
 varying vec3 normal;
-
+varying float actuatorAttenuation;
 varying float headPositionAttenuation;
 varying float edgeAttenuate;
 
@@ -145,10 +144,10 @@ void main(void){
     normal = -normalize(gl_NormalMatrix * surfaceNormal);
   
 //    float actuatorExtendAttenuate = smoothstep(.3, .35, dot(normal,actuatorDirection) );
-    float actuatorExtendAttenuate = max(0.0, dot(normal,actuatorDirection));
+    actuatorAttenuation = max(0.0, dot(normal,actuatorDirection));
 
-	vec2 extendedSamplePos = samplePos + gl_Normal.xy*lineExtend*actuatorExtendAttenuate;
-	vec2 neighborSamplePos = samplePos - gl_Normal.xy*lineExtend*actuatorExtendAttenuate;
+	vec2 extendedSamplePos = samplePos + gl_Normal.xy*lineExtend*actuatorAttenuation;
+	vec2 neighborSamplePos = samplePos - gl_Normal.xy*lineExtend*actuatorAttenuation;
 	
 	//edgeAttenuate = 1.0;
     vec2 depthPos = extendedSamplePos + depthRect.xy;
