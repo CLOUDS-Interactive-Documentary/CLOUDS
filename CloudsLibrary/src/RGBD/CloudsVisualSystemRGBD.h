@@ -169,6 +169,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float pointFlowPosition;
 	float pointFlowSpeed;
 	bool pointsFlowUp;
+    float pointColorBoost;
+    float pointSkinBoost;
 	bool refreshPointcloud;
 	void generatePoints();
 	
@@ -187,6 +189,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float lineFlowSpeed;
 	float lineHeadOverlap;
 	bool linesFlowUp;
+    float lineColorBoost;
+    float lineSkinBoost;
 	bool refreshLines;
 	void generateLines();
 	
@@ -205,7 +209,26 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float meshFaceFalloff;
 	float meshRetractionFalloff;
 	float meshForceGeoRectraction;
-	
+    float meshColorBoost;
+    float meshSkinBoost;
+    bool refreshMesh;
+	void generateMesh();
+
+    ///OCCLUSION
+	ofxUISuperCanvas *occlusionGui;
+    bool bDrawOcclusion;
+    bool drawOcclusionDebug;
+    
+    ofShader occlusionShader;
+    ofVbo occlusion;
+    int occlusionVertexCount;
+   	float occlusionXSimplify;
+	float occlusionYSimplify;
+    float occlusionMeshFaceMinRadius;
+    float occlusionMeshFaceFalloff;
+	float occlusionMeshRetractionFalloff;
+    bool refreshOcclusion;
+    void generateOcclusion();
     
     ///ACTUATORS
     float actuatorSpinPosition;
@@ -218,8 +241,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     ofVec3f meshActuator;
     
     
-	bool refreshMesh;
-	void generateMesh();
 	
 	void loadShader();
 

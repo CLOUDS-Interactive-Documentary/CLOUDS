@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Mesh</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>886.000000000</XPosition>
-    <YPosition>184.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>316.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -17,18 +17,28 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>X Simplify</Name>
-    <Value>2.034482718</Value>
+    <Name>Mesh Color Boost</Name>
+    <Value>0.226600990</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Y Simplify</Name>
+    <Name>Mesh Skin Boost</Name>
+    <Value>0.310344815</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>X Simplify</Name>
     <Value>1.960591078</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>Y Simplify</Name>
+    <Value>1.738916159</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>Random Variance</Name>
-    <Value>0.492610812</Value>
+    <Value>0.394088656</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

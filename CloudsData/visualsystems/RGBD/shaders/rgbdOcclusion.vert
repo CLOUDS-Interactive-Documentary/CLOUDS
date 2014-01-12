@@ -47,24 +47,9 @@ uniform float headFalloff;
 uniform float edgeAttenuateBase;
 uniform float edgeAttenuateExponent;
 uniform float meshRetractionFalloff;
-uniform float forceGeoRectraction;
-
-//LIGHT
-//uniform vec3 lightPosition;
-uniform vec3 actuatorDirection;
-
-//varying vec3 eye;
-varying vec3 normal;
-//varying vec3 diffuseLightDirection;
+//uniform float forceGeoRectraction;
 
 varying float positionValid;
-
-varying float diffuseAttenuate;
-
-varying float headPositionAttenuation;
-varying float actuatorExtendAttenuate;
-varying float edgeAttenuate;
-varying float forceFade;
 
 const float epsilon = 1e-6;
 
@@ -119,7 +104,6 @@ float map(float value, float inputMin, float inputMax, float outputMin, float ou
 //ENCODING:
 //gl_Position (x,y)  -> texture coord (center)
 //gl_TexCoords (x,y) -> offset extend to base position
-//
 
 void main(void){
 	
@@ -131,24 +115,15 @@ void main(void){
 						(samplePos.y - depthPP.y) * baseDepth / depthFOV.y,
 						baseDepth, 1.0);
 
-	//darken near the bottom of the frame
-	edgeAttenuate = (1.0 - max( 0.0, pow( samplePos.y / depthRect.w, edgeAttenuateExponent) + edgeAttenuateBase ));
-	//but allow parts closer in z to get bright still
-	edgeAttenuate += (1.0 - edgeAttenuate) * pow(map(basePos.z,maxDepth,minDepth,0.0,1.0), 4.);
-
 	//get the attenutation coefficient for this position
-	headPositionAttenuation = map( distance(basePos.xyz,headPosition), headMinRadius+headFalloff, headMinRadius, .0, 1.0);
+	float headPositionAttenuation = map( distance(basePos.xyz,headPosition), headMinRadius+headFalloff, headMinRadius, .0, 1.0);
 	
-	//float headRetraction = mix(edgeAttenuate, 1.0, meshRetractionFalloff);
-	float headRetraction = pow(map(headPositionAttenuation, 0.0, meshRetractionFalloff, 0.0, 1.0), 2.0) * (1.0-forceGeoRectraction);
+	float headRetraction = pow(map(headPositionAttenuation, 0.0, meshRetractionFalloff, 0.0, 1.0), 2.0);// * (1.0-forceGeoRectraction);
 	
 	vec2 normalPos = samplePos.xy + normalRect.xy;
 	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
     
-	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
-    normal = -normalize(gl_NormalMatrix * surfaceNormal);
-    actuatorExtendAttenuate = max(0.2,dot(normal,actuatorDirection));
-    float accumulatedExtendAttenuation = triangleExtend * headRetraction * actuatorExtendAttenuate;
+    float accumulatedExtendAttenuation = triangleExtend * headRetraction;
 	vec2 samplePosExtended = samplePos + gl_Normal.xy * accumulatedExtendAttenuation;
 	
     vec2 depthPos = samplePosExtended + depthRect.xy;
@@ -158,7 +133,6 @@ void main(void){
     vec4 pos = vec4((samplePosExtended.x - depthPP.x) * depth / depthFOV.x,
                     (samplePosExtended.y - depthPP.y) * depth / depthFOV.y,
                     depth, 1.0);
-    
     
     float neighborA = depthValueFromSample( depthRect.xy + samplePos + gl_Color.xy * depthRect.zw * accumulatedExtendAttenuation );
     float neighborB = depthValueFromSample( depthRect.xy + samplePos + gl_Color.zw * depthRect.zw * accumulatedExtendAttenuation );
@@ -175,23 +149,6 @@ void main(void){
 					 abs(neighborB - depth) < edgeClip) ? 1.0 : 0.0;
 	
 	
-    // http://opencv.willowgarage.com/documentation/camera_calibration_and_3d_reconstruction.html
-    //
-    vec4 projection = extrinsics * pos;
-    if(projection.z != 0.0) {
-        vec2 xyp = projection.xy / projection.z;
-        float r2 = pow(xyp.x, 2.0) + pow(xyp.y, 2.0);
-        float r4 = r2*r2;
-        float r6 = r4*r2;
-        vec2 xypp = xyp;
-        xypp.x = xyp.x * (1.0 + dK.x*r2 + dK.y*r4 + dK.z*r6) + 2.0*dP.x * xyp.x * xyp.y + dP.y*(r2 + 2.0 * pow(xyp.x,2.0) );
-        xypp.y = xyp.y * (1.0 + dK.x*r2 + dK.y*r4 + dK.z*r6) + dP.x * (r2 + 2.0*pow(xyp.y, 2.0) ) + 2.0*dP.y*xyp.x*xyp.y;
-        vec2 uv = (colorFOV * xypp + colorPP) * colorScale;
-		
-		gl_TexCoord[0].xy = clamp(uv,vec2(0.0), colorRect.zw*colorScale);
-	}
 
-	
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
-    gl_FrontColor = gl_Color;
 }
