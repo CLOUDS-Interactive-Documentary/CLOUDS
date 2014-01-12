@@ -1573,6 +1573,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 #ifdef OCULUS_RIFT
     if (hud != NULL) {
         glDisable(GL_DEPTH_TEST);
+        glDisable(GL_LIGHTING);
         ofPushMatrix();
         
 //        ofVec3f hudPos(20, -20, 350);
@@ -1603,6 +1604,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 //        ofTranslate(hudLowerThirdOffset);
         
         ofPopMatrix();
+        glEnable(GL_LIGHTING);
         glEnable(GL_DEPTH_TEST);
     }
 #endif
