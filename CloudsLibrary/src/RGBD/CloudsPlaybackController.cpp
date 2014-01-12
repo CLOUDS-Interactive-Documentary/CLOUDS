@@ -505,9 +505,9 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 #endif
         
 #ifdef SHOW_SUBTITLES
-        if (CloudsVisualSystem::getRGBDVideoPlayer().haveSubtitles()) {
-            CloudsVisualSystem::getRGBDVideoPlayer().getSubtitles().draw(ofGetWidth()/2, ofGetHeight()-60);
-        }
+        CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles(
+            CloudsVisualSystem::getStaticRenderTarget().getWidth()/2,
+            (float)CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.8);
 #endif
         
 #ifdef OCULUS_RIFT
