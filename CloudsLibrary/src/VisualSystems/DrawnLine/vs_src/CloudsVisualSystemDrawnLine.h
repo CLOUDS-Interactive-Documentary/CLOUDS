@@ -11,6 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "drawnLineApp.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemDrawnLine : public CloudsVisualSystem {
@@ -95,6 +96,9 @@ protected:
     
     //  Your Stuff
     //
+    
+    drawnLineApp APP;
+    
 	
 	ofxUISuperCanvas* customGui;
 	bool customToggle;
