@@ -2,21 +2,21 @@
     <Kind>42</Kind>
     <Name>Post Effects</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>849.000122070</XPosition>
-    <YPosition>363.000000000</YPosition>
+    <XPosition>637.000000000</XPosition>
+    <YPosition>717.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>Enable</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Chroma_Distortion</Name>
-    <Value>0.128078222</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Grain_Distortion</Name>
-    <Value>0.034482159</Value>
+    <Value>0.000000000</Value>
 </Widget>

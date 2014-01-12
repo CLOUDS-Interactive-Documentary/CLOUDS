@@ -13,10 +13,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Chroma_Distortion</Name>
-    <Value>0.128078222</Value>
+    <Value>0.034482159</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Grain_Distortion</Name>
-    <Value>0.034482159</Value>
+    <Value>0.024629941</Value>
 </Widget>
