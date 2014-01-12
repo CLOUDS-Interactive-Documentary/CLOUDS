@@ -78,12 +78,11 @@ void CloudsSecondaryDisplayOSCSender::visualSystemEnded(CloudsVisualSystemEventA
 	
 }
 
-void CloudsSecondaryDisplayOSCSender::questionAsked(CloudsQuestionEventArgs& args){
-	
-}
+void CloudsSecondaryDisplayOSCSender::questionProposed(CloudsQuestionEventArgs& args){}
+void CloudsSecondaryDisplayOSCSender::questionSelected(CloudsQuestionEventArgs& args){}
 
 void CloudsSecondaryDisplayOSCSender::topicChanged(CloudsTopicEventArgs& newTopic){
-	
+	currentTopic = newTopic.topic;
 }
 
 void CloudsSecondaryDisplayOSCSender::preRollRequested(CloudsPreRollEventArgs& clip){

@@ -54,7 +54,7 @@ class CloudsAct{
 		ofAddListener(events.clipBegan, listener, &ListenerClass::clipBegan);
 		ofAddListener(events.visualSystemBegan, listener, &ListenerClass::visualSystemBegan);
 		ofAddListener(events.visualSystemEnded, listener, &ListenerClass::visualSystemEnded);
-        ofAddListener(events.questionAsked, listener, &ListenerClass::questionAsked);
+        ofAddListener(events.questionProposed, listener, &ListenerClass::questionProposed);
 		ofAddListener(events.topicChanged, listener, &ListenerClass::topicChanged);
         ofAddListener(events.preRollRequested, listener, &ListenerClass::preRollRequested);
 	}
@@ -66,7 +66,7 @@ class CloudsAct{
 		ofRemoveListener(events.clipBegan, listener, &ListenerClass::clipBegan);
 		ofRemoveListener(events.visualSystemBegan, listener, &ListenerClass::visualSystemBegan);
 		ofRemoveListener(events.visualSystemEnded, listener, &ListenerClass::visualSystemEnded);
-        ofRemoveListener(events.questionAsked, listener, &ListenerClass::questionAsked);
+        ofRemoveListener(events.questionProposed, listener, &ListenerClass::questionProposed);
 		ofRemoveListener(events.topicChanged, listener, &ListenerClass::topicChanged);
         ofRemoveListener(events.preRollRequested, listener, &ListenerClass::preRollRequested);
 	}
@@ -80,6 +80,8 @@ class CloudsAct{
 	
 	bool isClipEnergyShift(CloudsClip& clip);
 	
+    bool startsWithVisualSystem();
+    
     vector<CloudsClip>& getAllClips();
     vector<CloudsVisualSystemPreset>& getAllVisualSystemPresets();
 	vector< ofPtr<CloudsVisualSystem> > getAllVisualSystems();
@@ -98,13 +100,7 @@ class CloudsAct{
     float addVisualSystem(CloudsVisualSystemPreset& preset, float startTime, float endTime);
     void addQuestion(CloudsClip& clip, string topic, float startTime);
 	void addNote(string note, float time);
-	
-//    void updateClipStartTime(CloudsClip clip, float startTime, float handleLength,string topic);
-//    void addGapForCadence(CloudsVisualSystemPreset& preset,float startTime, float duration);
-//    void addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName);
-//    void removeActItem(ActTimeItem item);
-//    void updateVsEndTime(CloudsVisualSystemPreset& preset, float newEndTime);
-	
+		
     ActTimeItem& getItemForClip(CloudsClip& clip);
     ActTimeItem& getItemForVisualSystem(CloudsVisualSystemPreset& preset);
     float getClipStartTime(CloudsClip& clip);
