@@ -34,7 +34,8 @@ class CloudsSecondaryDisplayOSCSender
 	void sendClip(CloudsClip& clip);
 	string lastQuestionAsked;
 	string currentTopic;
-	
+
+	bool bSetup;
 	ofxOscSender sender;
 
 };
