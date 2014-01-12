@@ -52,7 +52,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         }
         
         whichdream = 0;
-		instGain = 5.0;
+		instGain = 7.5;
 		
         MASTERTEMPO = 120;
         AUTORUN = 0;
@@ -141,6 +141,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     totalduration+=pad; // pad the total
     
     if(LUKEDEBUG) cout << "TOTAL DURATION: " << totalduration << endl;
+    else cout << "SOUND: MUSIC STARTED." << endl;
 
     // launch music FX chain
     startMusicFX(0, totalduration);
@@ -270,6 +271,8 @@ void CloudsSound::enterClusterMap()
     
     if(LUKEDEBUG) cout << "sound: enterClusterMap()" << endl;
     
+    stopMusic(); // prophylactic
+    
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0, ampsym, PF_CLUSTERMAP_BUS);
     
@@ -300,8 +303,8 @@ void CloudsSound::clipBegan(CloudsClipEventArgs& args){
 }
 
 //--------------------------------------------------------------------
-void CloudsSound::questionAsked(CloudsQuestionEventArgs& args){
-	
+void CloudsSound::questionProposed(CloudsQuestionEventArgs& args){
+
 }
 
 //--------------------------------------------------------------------
@@ -311,6 +314,14 @@ void CloudsSound::topicChanged(CloudsTopicEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsSound::preRollRequested(CloudsPreRollEventArgs& args){
 	
+}
+//--------------------------------------------------------------------
+void CloudsSound::questionSelected(float fadeTime){
+    fadeMusic(fadeTime);
+}
+//--------------------------------------------------------------------
+void CloudsSound::questionSelected(CloudsQuestionEventArgs& args){
+    
 }
 
 //--------------------------------------------------------------------

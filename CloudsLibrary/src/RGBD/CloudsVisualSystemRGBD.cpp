@@ -884,14 +884,16 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic,
 
 	CloudsPortal* rportal = ofRandomuf() ? &leftPortal : &rightPortal;
 	
-	if(rportal->question != ""){
+	if(rportal->question != "" || rportal == caughtPortal){
 		//swap and override for certain so we keep the newest!
 		rportal = rportal == &leftPortal ? &rightPortal : &leftPortal;
 	}
-	
-	rportal->question = question;
-	rportal->topic = topic;
-	rportal->clip = questionClip;
+    
+	if(rportal != caughtPortal){
+        rportal->question = question;
+        rportal->topic = topic;
+        rportal->clip = questionClip;
+    }
 }
 
 //--------------------------------------------------------------
@@ -1339,7 +1341,7 @@ void CloudsVisualSystemRGBD::generateOcclusion(){
 }
 
 void CloudsVisualSystemRGBD::speakerChanged(){
-    clearQuestions();
+//    clearQuestions();
     timeline->hide();
 }
 

@@ -2,13 +2,18 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>259.000000000</XPosition>
-    <YPosition>239.000000000</YPosition>
+    <XPosition>637.000000000</XPosition>
+    <YPosition>355.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>DataCascade</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DataCascade_JG_Intro_Sweept</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -72,6 +77,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>DataCascade_JG_Intro_Sweept</Name>
+    <Name>UpwardStream</Name>
     <Value>1</Value>
 </Widget>

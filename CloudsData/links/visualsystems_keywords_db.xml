@@ -3791,7 +3791,9 @@
 </system>
 <system name="3DModelLoader_TransHuman_female">
     <keywords>dystopia|cyberpunk|artificial intelligence|cyborg</keywords>
-    <links></links>
+    <links>
+        <clip>Bruce - A sappy Singularity</clip>
+    </links>
     <suppressions>
         <clip>Bruce - military</clip>
         <clip>Bruce - 2060s (Lashup 5)</clip>
@@ -5413,6 +5415,90 @@
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Circuit_JM_LongSweep">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Circuit_JM_ZoomOut">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Circuit_JM_ZoomOutIn">
+    <keywords>computational power|computer|technological progress|technology</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Aaron - exchange of ideas drives progress</clip>
+        <clip>Aaron - curiosity</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Binx - technoutopian</clip>
+        <clip>Theo - newness</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Shantell - magic and tech</clip>
+        <clip>Sophy - computer dream</clip>
+        <clip>Sophy - distributed culture</clip>
+        <clip>Bruce - New media Wow</clip>
+        <clip>Bruce - aborted projects</clip>
+        <clip>Bruce - digital status quo</clip>
+        <clip>Bruce - hamster herding</clip>
+        <clip>Bruce - pinheaded geekdom</clip>
+        <clip>Golan - staring down the barrel</clip>
+        <clip>Greg - Sharpening spears</clip>
+        <clip>Greg - Trickle down</clip>
+        <clip>Greg - camera getting cheaper</clip>
+        <clip>Greg - camera scaling up</clip>
+        <clip>Greg - cameras scaling up</clip>
+        <clip>Greg - engage with research</clip>
+        <clip>Intro - Interfaces</clip>
+        <clip>Javier - Data ownership</clip>
+        <clip>Jer - storage</clip>
+        <clip>Joel - MythOfArtAndTech1</clip>
+        <clip>Joel - myth of art and technology</clip>
+        <clip>Julia - medium of our time</clip>
+        <clip>Julia - program or be programmed</clip>
+        <clip>Julia - what is it doing to us</clip>
+        <clip>Julian - change the way we see tech</clip>
+        <clip>Julian - science fiction</clip>
+        <clip>Julian - toolkit culture</clip>
+        <clip>Karsten - always improved</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - east german hardware 1</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Karsten - illusion of original thought</clip>
+        <clip>Karsten - literacy issues&apos;</clip>
+        <clip>Karsten - why don&apos;t we learn?</clip>
+        <clip>Kevin - Getting smarter together</clip>
+        <clip>Kevin - cognition vs computation 2</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>Kyle_MC - Transparent tech 2</clip>
+        <clip>LIA - TinyButtons1</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>Kyle_MC - shaping the direction</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
@@ -21906,7 +21992,7 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Ripples_Bloom1_">
+<system name="Ripples_Bloom1">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>

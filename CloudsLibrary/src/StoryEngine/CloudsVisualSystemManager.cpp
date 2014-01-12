@@ -693,6 +693,14 @@ vector<int> CloudsVisualSystemManager::getPresetIndicesForSystem(string systemNa
     return indices;
 }
 
+void CloudsVisualSystemManager::loadCachedDataForSystems(){
+    //making a local copy just to init and cache the data.
+#ifndef CLOUDS_NO_VS
+        CloudsVisualSystemTwitter::getOldTweeterData();
+        CloudsVisualSystemTwitter::getNewTweeterData();
+#endif
+    
+}
 //--------------------------------------------------------------------
 //vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForSystem(string systemName){
 //    vector<CloudsVisualSystemPreset> systemPresets;

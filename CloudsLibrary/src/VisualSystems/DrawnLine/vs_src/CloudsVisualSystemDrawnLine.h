@@ -11,6 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "drawnLineApp.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemDrawnLine : public CloudsVisualSystem {
@@ -35,6 +36,11 @@ class CloudsVisualSystemDrawnLine : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
+	//This is called whenever a new preset is loaded, before selfSetup()
+	//use it to ensure all your simple variables are initialized to an
+	//acceptable default state
+	void selfSetDefaults();
+	
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
@@ -84,16 +90,15 @@ class CloudsVisualSystemDrawnLine : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-    // if you use a custom camera to fly through the scene
-	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
-
+    ofFbo fbo;
+    void setupFbo();
 protected:
     
     //  Your Stuff
     //
+    
+    drawnLineApp APP;
+    
 	
 	ofxUISuperCanvas* customGui;
 	bool customToggle;
