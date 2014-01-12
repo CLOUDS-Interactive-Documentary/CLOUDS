@@ -175,8 +175,14 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     ofFloatColor spritePopColorHSV;
     stringstream ss;
     
-    ofVboMesh nodeMesh;
-    ofVboMesh edgeMesh;
+//    ofVboMesh nodeMesh;
+//    ofVboMesh edgeMesh;
+    ofVbo edgeMeshVbo;
+    ofVbo nodeMeshVbo; 
+    vector<ofVec3f> edgeMeshNormals;
+    vector<ofVec3f> nodeMeshNormals;
+    int edgeMeshNumVertices;
+    int nodeMeshNumVertices;
     ofVec3f min,max;
     
     int refreshRate;

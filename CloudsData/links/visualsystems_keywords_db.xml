@@ -7807,7 +7807,7 @@
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="DataCascade_DataCascadeClose">
     <keywords>computation</keywords>
@@ -8015,7 +8015,7 @@
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="DataCascade_DoubleTunnel">
     <keywords>computation|virtual</keywords>
@@ -8110,12 +8110,42 @@
     <interlude>0</interlude>
 </system>
 <system name="DataCascade_UpwardStream">
-    <keywords></keywords>
+    <keywords>number|math|computation|computational power|code</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - Mini-Artificial Intelligences</clip>
+        <clip>Andres - correct is beautiful</clip>
+        <clip>Binx - Background</clip>
+        <clip>Bruce - machines don&apos;t think 1</clip>
+        <clip>Bruce - machines don&apos;t think 2</clip>
+        <clip>Casey - randomness</clip>
+        <clip>Golan - formalism</clip>
+        <clip>Greg - makematics1</clip>
+        <clip>Kevin - computer perception</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kevin - math havoc 1</clip>
+        <clip>Kevin - math havoc 2</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Martin - language and infinity</clip>
+        <clip>Martin - seeing thought 1</clip>
+        <clip>Martin - words and numbers</clip>
+        <clip>Ramsey - algorithm comes from arabic</clip>
+        <clip>Ramsey - arab abstraction 1</clip>
+        <clip>Ramsey - arab abstraction 2</clip>
+        <clip>Ramsey - computation is interpretation of rules</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Ramsey - social computer</clip>
+        <clip>Andres - camera distorts reality</clip>
+        <clip>Bruce - beauty of code 2</clip>
+        <clip>Shiffman - Carl Sims</clip>
+        <clip>Zach - hide the tech</clip>
+        <clip>Zach - programming 2</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>

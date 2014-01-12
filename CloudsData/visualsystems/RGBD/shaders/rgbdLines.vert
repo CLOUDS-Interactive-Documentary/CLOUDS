@@ -55,6 +55,7 @@ varying float positionValid;
 
 //LIGHT
 uniform vec3 actuatorDirection;
+uniform float maxActuatorRetract;
 
 varying vec3 normal;
 varying float actuatorAttenuation;
@@ -144,8 +145,9 @@ void main(void){
     normal = -normalize(gl_NormalMatrix * surfaceNormal);
   
 //    float actuatorExtendAttenuate = smoothstep(.3, .35, dot(normal,actuatorDirection) );
-    actuatorAttenuation = max(0.0, dot(normal,actuatorDirection));
+    actuatorAttenuation = max(maxActuatorRetract, dot(normal,actuatorDirection));
 
+    
 	vec2 extendedSamplePos = samplePos + gl_Normal.xy*lineExtend*actuatorAttenuation;
 	vec2 neighborSamplePos = samplePos - gl_Normal.xy*lineExtend*actuatorAttenuation;
 	
@@ -195,5 +197,5 @@ void main(void){
 //	diffuseLightDirection = diffuseLightDirectionFull / d;
 		
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
-    gl_FrontColor = gl_Color;
+//    gl_FrontColor = gl_Color;
 }

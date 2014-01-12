@@ -334,12 +334,12 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 			getPlayer().stop();
 		}
         
+#ifdef SHOW_SUBTITLES
         /* Subtitles */
         if (currentHaveSubtitles) {
-#ifdef SHOW_SUBTITLES
             currentSubtitles.setTimeInSeconds(getPlayer().getCurrentTime());
-#endif
         }
+#endif
 	}
 }
 
@@ -368,23 +368,43 @@ bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
     if (strstr(path.data(), "Higa") != NULL) {
         fps = 30;
     }
-            
-    if(!nextSubtitles.setup(path, GetCloudsDataPath() + "/font/MateriaPro_Regular.ttf", 18, fps, TEXT_JUSTIFICATION_CENTER)) {
+    
+    int fontSize = 36;
+    if(!nextSubtitles.setup(path, GetCloudsDataPath() + "/font/Blender-BOOK.ttf", fontSize/2, fps, TEXT_JUSTIFICATION_CENTER)) {
         return false;
+    }
+    
+    // find font size based on 85% canvas width and a predefined maximum string
+    float requiredWidth = (float)CloudsVisualSystem::getStaticRenderTarget().getWidth()*0.85;
+    string maxStr = "If I'd have to choose from something interesting, something beautiful or something useful,";
+    ofRectangle bounds = nextSubtitles.font.getStringBoundingBox(maxStr, 0, 0);
+    // loop here until you find the right font size
+    while (bounds.width > requiredWidth) {
+        nextSubtitles.font.setSize(--fontSize);
+        bounds = nextSubtitles.font.getStringBoundingBox(maxStr, 0, 0);
     }
     
     return true;
 }
-    
-ofxSubtitles& CloudsRGBDVideoPlayer::getSubtitles()
-{
-    return currentSubtitles;
-}
 #else
 bool CloudsRGBDVideoPlayer::loadSubtitles(string path){
-    return true;
+    return false;
 }
 #endif
+
+void CloudsRGBDVideoPlayer::drawSubtitles(float x, float y)
+{
+#ifdef SHOW_SUBTITLES
+    if (haveSubtitles()) {
+        ofPushStyle();
+        ofSetColor(0, 200);
+        currentSubtitles.draw(x+3, y-2);
+        ofSetColor(255);
+        currentSubtitles.draw(x, y);
+        ofPopStyle();
+    }
+#endif
+}
     
 bool CloudsRGBDVideoPlayer::haveSubtitles()
 {

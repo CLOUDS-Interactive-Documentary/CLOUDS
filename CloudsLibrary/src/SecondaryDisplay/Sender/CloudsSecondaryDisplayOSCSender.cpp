@@ -9,7 +9,7 @@
 #include "CloudsSecondaryDisplayOSCSender.h"
 
 CloudsSecondaryDisplayOSCSender::CloudsSecondaryDisplayOSCSender(){
-
+    bSetup = false;
     
 }
 
@@ -17,7 +17,7 @@ void CloudsSecondaryDisplayOSCSender::setup(){
     ofxXmlSettings linksXML;
     
     if(!linksXML.loadFile(GetCloudsDataPath()+"secondaryDisplay/" + "OSC/OSCSettings.xml")){
-        ofSystemAlertDialog("UNABLE TO LOAD LINKS! do not proceed");
+        ofLogError("CloudsSecondaryDisplayOSCSender::setup") << "Secondary Display OSC settings not found";
 		return;
 	}
 	
@@ -38,7 +38,7 @@ void CloudsSecondaryDisplayOSCSender::setup(){
 
     cout<<"Setting up OSC Sender with IP: "<<hostname<<" and Port : "<<port<<endl;
     sender.setup(hostname, port);
-    
+    bSetup = true;
 }
 
 void CloudsSecondaryDisplayOSCSender::actCreated(CloudsActEventArgs& args){
@@ -46,6 +46,9 @@ void CloudsSecondaryDisplayOSCSender::actCreated(CloudsActEventArgs& args){
 }
 
 void CloudsSecondaryDisplayOSCSender::actBegan(CloudsActEventArgs& args){
+    
+    if(!bSetup) return;
+    
 	ofxOscMessage m;
 	m.setAddress("/actBegan");
 	m.addStringArg("began");
@@ -53,6 +56,9 @@ void CloudsSecondaryDisplayOSCSender::actBegan(CloudsActEventArgs& args){
 }
 
 void CloudsSecondaryDisplayOSCSender::actEnded(CloudsActEventArgs& args){
+    
+    if(!bSetup) return;
+    
 	ofxOscMessage m;
 	m.setAddress("/actEnded");
 	m.addStringArg("ended");
@@ -61,23 +67,7 @@ void CloudsSecondaryDisplayOSCSender::actEnded(CloudsActEventArgs& args){
 
 void CloudsSecondaryDisplayOSCSender::clipBegan(CloudsClipEventArgs& args){
 	sendClip(args.chosenClip);
-	
-//    ofxOscMessage m;
-//	m.setAddress("/clip");
-//    
-//	m.addStringArg(args.chosenClip.person);//final cut person id
-//	m.addStringArg(args.chosenClip.getID());//clip id
-//	m.addFloatArg(args.chosenClip.getDuration());//duraiton
-//	m.addStringArg(currentTopic); //topic
-//	m.addStringArg(args.chosenClip.projectExampleTitle); //example
-//	//m.addStringArg(lastQuestionAsked); //question
-//	if(args.chosenClip.hasQuestion()){
-//		m.addStringArg( args.chosenClip.getQuestionForTopic(args.chosenClip.getTopicsWithQuestions()[0]) );
-//	}
-//	else{
-//		m.addStringArg(lastQuestionAsked); //question
-//	}
-//	sender.sendMessage(m);
+
 }
 
 void CloudsSecondaryDisplayOSCSender::visualSystemBegan(CloudsVisualSystemEventArgs& args){
@@ -102,14 +92,17 @@ void CloudsSecondaryDisplayOSCSender::preRollRequested(CloudsPreRollEventArgs& c
 
 void CloudsSecondaryDisplayOSCSender::sendClip(CloudsClip& clip){
 	
+    if(!bSetup) return;
+    
 	ofxOscMessage m;
-	m.setAddress("/clip");
+	
+    m.setAddress("/clip");
 	m.addStringArg(clip.person);//final cut person id
 	m.addStringArg(clip.getID());//clip id
 	m.addFloatArg(clip.getDuration());//duraiton
 	m.addStringArg(currentTopic); //topic
 	m.addStringArg(clip.projectExampleTitle); //example
-	//m.addStringArg(lastQuestionAsked); //question
+    
 	if(clip.hasQuestion()){
 		m.addStringArg( clip.getQuestionForTopic(clip.getTopicsWithQuestions()[0]) );
 	}
