@@ -41,6 +41,8 @@ class CloudsHUDController {
 	void buildLayerSets();
     void calculateFontSizes();
     int getFontSizeForMesh( SVGMesh* textMesh );
+    
+    ofVec2f getSize();
 	
 	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void animateOff(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);

@@ -286,6 +286,10 @@ int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
     return fontSize;
 }
 
+ofVec2f CloudsHUDController::getSize(){
+    return ofVec2f(hudBounds.width*scaleAmt, hudBounds.height*scaleAmt);
+}
+
 void CloudsHUDController::update(){
 	for(int i = 0; i < allLayers.size(); i++){
 		allLayers[i]->update();
@@ -331,8 +335,7 @@ void CloudsHUDController::draw(){
 	ofPushMatrix();
 	ofEnableAlphaBlending();
 	
-    ofVec2f hudSize(hudBounds.width*scaleAmt, hudBounds.height*scaleAmt);
-    ofTranslate( (ofGetWindowSize() - hudSize ) * 0.5 );
+    ofTranslate( (ofGetWindowSize() - getSize() ) * 0.5 );
     ofScale( scaleAmt, scaleAmt );
     
     if( videoPlayer.isPlaying() ){
