@@ -581,7 +581,7 @@ void CloudsVisualSystemTwitter::updateMesh(){
 void CloudsVisualSystemTwitter::loadMesh(){
     
 //    edgeMesh.clear();
-    nodeMesh.clear();
+//    nodeMesh.clear();
 	edgeMeshVbo.clear();
     nodeMeshVbo.clear();
     nodeMeshNormals.clear();
