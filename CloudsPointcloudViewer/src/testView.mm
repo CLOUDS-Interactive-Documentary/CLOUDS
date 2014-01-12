@@ -37,6 +37,7 @@
 
 	rgbdVisualSystem.playSystem();
 #ifdef OCULUS_RIFT
+    rgbdVisualSystem.hud = &hud;
 	rgbdVisualSystem.loadPresetGUISFromName("RGBDOC");
 #else
 	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
@@ -65,7 +66,9 @@
 //        rgbdVisualSystem.getRGBDVideoPlayer().getSubtitles().draw(ofGetWindowWidth()/2, ofGetWindowHeight()-60);
     }
 	
+#ifndef OCULUS_RIFT
 	hud.draw();
+#endif
 }
 
 - (void) loadClipFromTable:(id)sender

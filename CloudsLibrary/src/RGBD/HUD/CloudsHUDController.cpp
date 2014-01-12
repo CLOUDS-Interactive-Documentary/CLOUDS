@@ -20,7 +20,6 @@ CloudsHUDController::CloudsHUDController(){
     bDrawHome = true;
 	
     scaleAmt = 1.0;
-    overlayScaleAmt = 0.5;
 }
 
 void CloudsHUDController::setup(){
@@ -290,6 +289,7 @@ int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
 ofVec2f CloudsHUDController::getSize(){
     return ofVec2f(hudBounds.width*scaleAmt, hudBounds.height*scaleAmt);
 }
+
 void CloudsHUDController::update(){
 	for(int i = 0; i < allLayers.size(); i++){
 		allLayers[i]->update();
@@ -335,13 +335,12 @@ void CloudsHUDController::draw(){
 	ofPushMatrix();
 	ofEnableAlphaBlending();
 	
-    //ofVec2f hudSize(hudBounds.width*scaleAmt, hudBounds.height*scaleAmt);
-    ofTranslate( (ofGetWindowSize() - hudSize ) * 0.5 );
+    ofTranslate( (ofGetWindowSize() - getSize() ) * 0.5 );
     ofScale( scaleAmt, scaleAmt );
     
     // EZ: Debug overlay rect dimensions
 //    ofSetColor(255, 0, 0, 127);
-//    ofRect(0, 0, getSize().x, getSize().y);
+//    ofRect(0, 0, hudBounds.width, hudBounds.height);
 //    ofSetColor(255);
     
     if( videoPlayer.isPlaying() ){
@@ -355,52 +354,6 @@ void CloudsHUDController::draw(){
 	drawLayer(CLOUDS_HUD_QUESTION);
 	
 //	cout << "drawing question: " << hudLabelMap["QuestionTextBox"]->getText() << endl;
-	
-	drawLayer(CLOUDS_HUD_LOWER_THIRD);
-	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
-	drawLayer(CLOUDS_HUD_MAP);
-    
-    for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
-        (it->second)->draw();
-    }
-    
-	if(bDrawHome){
-		home.draw();
-	}
-	
-	ofPopMatrix();
-	ofPopStyle();
-}
-
-void CloudsHUDController::drawOverlay(ofVec2f overlaySize){
-    
-    if( !bDrawHud )
-        return;
-    
-	ofPushStyle();
-	ofPushMatrix();
-	ofEnableAlphaBlending();
-	
-    ofTranslate( (overlaySize - ( getSize() * overlayScaleAmt ) ) * 0.5 );
-    ofScale( scaleAmt, scaleAmt );
-    ofScale( overlayScaleAmt, overlayScaleAmt );
-    
-    // EZ: Debug overlay rect dimensions
-//    ofSetColor(255, 0, 0, 127);
-//    ofRect(0, 0, hudSize.x, hudSize.y);
-//    ofSetColor(255);
-    
-    if( videoPlayer.isPlaying() ){
-        ofSetColor(255, 255, 255, 255*0.7);
-        if( !bSkipAVideoFrame ){
-            videoPlayer.draw( videoBounds.x, videoBounds.y, videoBounds.width, videoBounds.height );
-        }
-        ofSetColor(255, 255, 255, 255);
-    }
-    
-	drawLayer(CLOUDS_HUD_QUESTION);
-	
-    //	cout << "drawing question: " << hudLabelMap["QuestionTextBox"]->getText() << endl;
 	
 	drawLayer(CLOUDS_HUD_LOWER_THIRD);
 	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
