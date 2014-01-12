@@ -157,6 +157,7 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	//ofFbo& renderTarget = sharedRenderTarget != NULL ? *sharedRenderTarget : getStaticRenderTarget();
 	ofFbo& renderTarget = getStaticRenderTarget();
 	
+
 	bool reallocateTarget = !renderTarget.isAllocated();
 	reallocateTarget |= !screenResolutionForced &&
 						(renderTarget.getWidth() != ofGetWidth() ||
@@ -167,11 +168,9 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 
 	if(reallocateTarget){
 		if(screenResolutionForced){
-//			renderTarget.allocate(forcedScreenWidth, forcedScreenHeight, GL_RGB, numSamples);
 			renderTarget.allocate(forcedScreenWidth, forcedScreenHeight, GL_RGB, numSamples);
 		}
 		else{
-//			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
 			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
 		}
 		renderTarget.begin();
