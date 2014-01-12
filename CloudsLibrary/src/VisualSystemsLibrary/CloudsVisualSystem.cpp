@@ -166,11 +166,14 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	
 	//ofFbo& renderTarget = sharedRenderTarget != NULL ? *sharedRenderTarget : getStaticRenderTarget();
 	ofFbo& renderTarget = getStaticRenderTarget();
-	
+    
+    int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
+    int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
+
 	bool reallocateTarget = !renderTarget.isAllocated();
 	reallocateTarget |= !screenResolutionForced &&
-						(renderTarget.getWidth() != ofGetWidth() ||
-						 renderTarget.getHeight() != ofGetHeight());
+						(renderTarget.getWidth() != targetWidth ||
+						 renderTarget.getHeight() != targetHeight );
 	reallocateTarget |= screenResolutionForced &&
 						(renderTarget.getWidth() != forcedScreenWidth ||
 						 renderTarget.getHeight() != forcedScreenHeight);
@@ -182,7 +185,7 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 		}
 		else{
 //			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
-			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
+			renderTarget.allocate(targetWidth, targetHeight, GL_RGB, numSamples);
 		}
 		renderTarget.begin();
 		ofClear(0,0,0,1.0);
@@ -266,6 +269,8 @@ void CloudsVisualSystem::setup(){
 	interactiveCameraRot.set(0,0);
     postChromaDist = 0.f;
     postGrainDist = 0.f;
+    //POST PROCESSING BLEED AMNT
+    bleed  = 20;
 }
 
 bool CloudsVisualSystem::isSetup(){
@@ -3376,7 +3381,7 @@ void CloudsVisualSystem::selfPostDraw(){
         cloudsPostShader.setUniform1f("chromaDist", postChromaDist);
         cloudsPostShader.setUniform1f("grainDist", postGrainDist);
     }
-    CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
+    CloudsVisualSystem::getSharedRenderTarget().draw(-bleed,CloudsVisualSystem::getSharedRenderTarget().getHeight()-bleed,
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
     if(bEnablePostFX){
