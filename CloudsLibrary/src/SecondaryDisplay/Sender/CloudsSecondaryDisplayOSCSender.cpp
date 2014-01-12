@@ -83,7 +83,7 @@ void CloudsSecondaryDisplayOSCSender::questionAsked(CloudsQuestionEventArgs& arg
 }
 
 void CloudsSecondaryDisplayOSCSender::topicChanged(CloudsTopicEventArgs& newTopic){
-	
+	currentTopic = newTopic.topic;
 }
 
 void CloudsSecondaryDisplayOSCSender::preRollRequested(CloudsPreRollEventArgs& clip){
