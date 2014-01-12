@@ -554,8 +554,6 @@ void CloudsVisualSystem::drawScene(){
         
         interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX)*interactiveCameraDamping;
         interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY)*interactiveCameraDamping;
-        
-        previousinteractiveCameraRot = interactiveCameraRot;
   
         GLfloat model[16];
         glGetFloatv(GL_MODELVIEW_MATRIX, model);
@@ -1663,7 +1661,6 @@ void CloudsVisualSystem::guiCameraEvent(ofxUIEventArgs &e)
 	{
         interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX);
         interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY);
-        previousinteractiveCameraRot = interactiveCameraRot;
 	}
 	
 //	//TRANSITION OPTIONS

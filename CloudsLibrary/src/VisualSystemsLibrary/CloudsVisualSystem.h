@@ -455,5 +455,5 @@ class CloudsVisualSystem {
 	//INTERACTIVE CAMERA
 	bool bUseInteractiveCamera;
 	float interactiveCameraMinX, interactiveCameraMaxX, interactiveCameraMinY, interactiveCameraMaxY,interactiveCameraDamping;
-	ofVec2f interactiveCameraRot, previousinteractiveCameraRot;
+	ofVec2f interactiveCameraRot;
 };
