@@ -146,8 +146,8 @@ void main(void){
     
 	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
     normal = -normalize(gl_NormalMatrix * surfaceNormal);
-    float actuatorExtendAttenuate = dot(normal,actuatorDirection);
-    actuatorExtendAttenuate = 0.5;
+    float actuatorExtendAttenuate = max(0.0,dot(normal,actuatorDirection));
+//    actuatorExtendAttenuate = 0.5;
     
     //bring back for view dependent effects
 //	vec3 vert = vec3(gl_ModelViewMatrix * pos);

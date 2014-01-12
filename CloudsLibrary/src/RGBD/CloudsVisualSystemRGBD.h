@@ -155,6 +155,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxUISuperCanvas *pointsGui;
 	ofShader pointShader;
 	ofVboMesh points;
+    int pointCount;
 	bool drawPoints;
 	float pointAlpha;
 	int numRandomPoints;
@@ -169,7 +170,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	//LINES
 	ofxUISuperCanvas *linesGui;
 	ofShader lineShader;
-	ofVboMesh lines;
+	ofVbo lines;
+    int lineVertexCount;
 	bool drawLines;
 	float lineAlpha;
 	float lineThickness;
@@ -186,7 +188,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	//MESH
 	ofxUISuperCanvas *meshGui;
 	ofShader meshShader;
-	ofVboMesh mesh;
+//	ofVboMesh mesh;
+    ofVbo mesh;
+    int meshVertexCount;
 	bool drawMesh;
 	float meshAlpha;
 	float xSimplify;

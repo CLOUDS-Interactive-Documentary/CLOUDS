@@ -261,7 +261,7 @@ void CloudsVisualSystem::setup(){
 	bUseInteractiveCamera = false;
 	interactiveCameraDamping = 0;
 	interactiveCameraMinX = interactiveCameraMaxX = interactiveCameraMinY = interactiveCameraMaxY = 0;
-	interactiveCameraRot = previousinteractiveCameraRot = ofVec2f(0,0);
+	interactiveCameraRot = ofVec2f(0,0);
 	interactiveCameraDamping = 0;
 	interactiveCameraRot.set(0,0);
     postChromaDist = 0.f;
@@ -571,8 +571,6 @@ void CloudsVisualSystem::drawScene(){
         
         interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX)*interactiveCameraDamping;
         interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY)*interactiveCameraDamping;
-        
-        previousinteractiveCameraRot = interactiveCameraRot;
   
         GLfloat model[16];
         glGetFloatv(GL_MODELVIEW_MATRIX, model);
@@ -1698,6 +1696,12 @@ void CloudsVisualSystem::guiCameraEvent(ofxUIEventArgs &e)
     }
 	else if(name == "ADD KEYFRAME"){
 		cameraTrack->addKeyframe();
+	}
+	
+	else if(name == "bUseInteractiveCamera")
+	{
+        interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX);
+        interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY);
 	}
 	
 //	//TRANSITION OPTIONS
