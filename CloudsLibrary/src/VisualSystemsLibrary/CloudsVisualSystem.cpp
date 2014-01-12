@@ -18,8 +18,11 @@
 
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
+static ofImage cloudsPostDistortionMap;
 static CloudsRGBDVideoPlayer rgbdPlayer;
 static bool backgroundShaderLoaded = false;
+static ofShader cloudsPostShader;
+static bool postShaderLoaded = false;
 static ofShader backgroundShader;
 static ofImage backgroundGradientCircle;
 static ofImage backgroundGradientBar;
@@ -66,6 +69,13 @@ void CloudsVisualSystem::loadBackgroundShader(){
 	backgroundGradientCircle.loadImage(GetCloudsDataPath() + "backgrounds/circle.png");
 	backgroundShader.load(GetCloudsDataPath() + "shaders/background");
 	backgroundShaderLoaded = true;
+    
+}
+
+void CloudsVisualSystem::loadPostShader(){
+    cloudsPostShader.load("",GetCloudsDataPath() + "shaders/post.fs");
+    cloudsPostDistortionMap.loadImage( GetCloudsDataPath() + "images/7.jpg");
+    postShaderLoaded = true;
 }
 
 void CloudsVisualSystem::getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height){
@@ -208,6 +218,10 @@ void CloudsVisualSystem::setup(){
 	if(!backgroundShaderLoaded){
 		loadBackgroundShader();
 	}
+    
+    if(!postShaderLoaded){
+        loadPostShader();
+    }
 
 //	currentCamera = &cam;
 	
@@ -243,12 +257,15 @@ void CloudsVisualSystem::setup(){
 
 	bIsSetup = true;
 	
+    bEnablePostFX = false;
 	bUseInteractiveCamera = false;
 	interactiveCameraDamping = 0;
 	interactiveCameraMinX = interactiveCameraMaxX = interactiveCameraMinY = interactiveCameraMaxY = 0;
 	interactiveCameraRot = previousinteractiveCameraRot = ofVec2f(0,0);
 	interactiveCameraDamping = 0;
 	interactiveCameraRot.set(0,0);
+    postChromaDist = 0.f;
+    postGrainDist = 0.f;
 }
 
 bool CloudsVisualSystem::isSetup(){
@@ -1073,6 +1090,7 @@ void CloudsVisualSystem::setupCoreGuis()
     setupMaterial("MATERIAL 1", mat);
     setupPointLight("POINT LIGHT 1", light);
     setupPresetGui();
+    setupPostGui();
 #ifdef KINECT_INPUT
     setupKinectGui();
 #endif
@@ -1295,7 +1313,7 @@ void CloudsVisualSystem::setupBackgroundGui()
     bgGui->addWidgetToHeader(toggle);
 	bgGui->addToggle("BAR GRAD", &bBarGradient);
     bgGui->addSpacer();
-
+    
     bgGui->addSlider("HUE", 0.0, 255.0, &bgHue);
     bgGui->addSlider("SAT", 0.0, 255.0, &bgSat);
     bgGui->addSlider("BRI", 0.0, 255.0, &bgBri);
@@ -1318,14 +1336,14 @@ void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
     
     if(name == "BRI")
     {
-       // bgBri->setPosAndHome(bgBri->getPos());
+        // bgBri->setPosAndHome(bgBri->getPos());
         for(int i = 0; i < guis.size(); i++)
         {
             guis[i]->setColorBack(ofColor(255*.2, 255*.9));
 			
         }
     }
-
+    
     else if(name == "GRAD")
     {
         ofxUIToggle *t = (ofxUIToggle *) e.widget;
@@ -1370,6 +1388,29 @@ void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
 		bgGui->getWidget("SAT2")->setColorFill(backgrounfFillColor);
 		bgGui->getWidget("BRI2")->setColorFill(backgrounfFillColor);
 	}
+}
+
+void CloudsVisualSystem::setupPostGui()
+{
+    postGui = new ofxUISuperCanvas("POST EFFECTS", gui);
+    postGui->copyCanvasStyle(gui);
+    postGui->copyCanvasProperties(gui);
+    postGui->setPosition(guis[guis.size()-1]->getRect()->x+guis[guis.size()-1]->getRect()->getWidth()+1, 0);
+    postGui->setName("Post Effects");
+    postGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    postGui->addSpacer();
+    postGui->addToggle("Enable", &bEnablePostFX);
+    postGui->addSlider("Chroma_Distortion", 0.0, 1.0, &postChromaDist);
+    postGui->addSlider("Grain_Distortion", 0.0, 1.0, &postGrainDist);
+    postGui->autoSizeToFitWidgets();
+    ofAddListener(postGui->newGUIEvent, this, &CloudsVisualSystem::guiPostEvent);
+    guis.push_back(postGui);
+    guimap[bgGui->getName()] = postGui;
+}
+
+void CloudsVisualSystem::guiPostEvent(ofxUIEventArgs &e)
+{
+    string name = e.widget->getName();
 }
 
 void CloudsVisualSystem::setupLightingGui()
@@ -3323,9 +3364,20 @@ void CloudsVisualSystem::selfPostDraw(){
 #else
     //draws to viewport
     //use blabalh
+    if(bEnablePostFX){
+        cloudsPostShader.begin();
+        cloudsPostShader.setUniformTexture("distortionMap", cloudsPostDistortionMap, 1);
+        cloudsPostShader.setUniform2f("resolution", getCanvasWidth(), getCanvasHeight());
+        cloudsPostShader.setUniform2f("dMapResolution", cloudsPostDistortionMap.getWidth(), cloudsPostDistortionMap.getHeight());
+        cloudsPostShader.setUniform1f("chromaDist", postChromaDist);
+        cloudsPostShader.setUniform1f("grainDist", postGrainDist);
+    }
     CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+    if(bEnablePostFX){
+        cloudsPostShader.end();
+    }
     //end
 #endif
 }
