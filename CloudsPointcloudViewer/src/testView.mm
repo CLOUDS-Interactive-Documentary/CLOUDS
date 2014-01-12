@@ -1,6 +1,7 @@
 #import "testView.h"
 #include "CloudsGlobal.h"
 #include "CloudsSpeaker.h"
+#include "CloudsVisualSystem.h"
 
 @implementation testView
 @synthesize clipTable;
@@ -63,13 +64,13 @@
 {
 	rgbdVisualSystem.selfPostDraw();
 
-    if (rgbdVisualSystem.getRGBDVideoPlayer().haveSubtitles()) {
-//        rgbdVisualSystem.getRGBDVideoPlayer().getSubtitles().draw(ofGetWindowWidth()/2, ofGetWindowHeight()-60);
-    }
-	
 #ifndef OCULUS_RIFT
 	hud.draw();
 #endif
+    
+    rgbdVisualSystem.getRGBDVideoPlayer().drawSubtitles(
+        CloudsVisualSystem::getStaticRenderTarget().getWidth()/2,
+        (float)CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.8);
 }
 
 - (void) loadClipFromTable:(id)sender
@@ -100,7 +101,6 @@
 									   CloudsSpeaker::speakers[clip.person].lastName,
 									   clip.name );
 		currentClip = clip;
-		
 	}
 	else{
 		ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";
