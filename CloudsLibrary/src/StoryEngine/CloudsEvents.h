@@ -83,7 +83,9 @@ class CloudsStoryEvents {
 	ofEvent<CloudsVisualSystemEventArgs> visualSystemEnded;
 
 	ofEvent<CloudsPreRollEventArgs> preRollRequested;
-    ofEvent<CloudsQuestionEventArgs> questionAsked;
+    ofEvent<CloudsQuestionEventArgs> questionProposed;
+    ofEvent<CloudsQuestionEventArgs> questionSelected;
+
 	ofEvent<CloudsTopicEventArgs> topicChanged;
 
 };

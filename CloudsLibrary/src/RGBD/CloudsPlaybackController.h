@@ -55,7 +55,8 @@ class CloudsPlaybackController {
 	void clipBegan(CloudsClipEventArgs& args);
 	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
-	void questionAsked(CloudsQuestionEventArgs& args);
+	void questionProposed(CloudsQuestionEventArgs& args);
+	void questionSelected(CloudsQuestionEventArgs& args);
 	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
 	

@@ -284,7 +284,7 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
 		string question = questionClip.getQuestionForTopic(topic);
 		cout << "** story engine :: creating question " << question << " with topic " << topic << endl;
         CloudsQuestionEventArgs args(questionClip,question,topic);
-        ofNotifyEvent(events.questionAsked, args);
+        ofNotifyEvent(events.questionProposed, args);
     }
     else if(bang.track == clipPreRollTrack){
         vector<string> clipName = ofSplitString(bang.flag, "%");

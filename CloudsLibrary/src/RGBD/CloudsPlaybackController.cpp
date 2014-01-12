@@ -636,12 +636,14 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::questionAsked(CloudsQuestionEventArgs& args){
-		
+void CloudsPlaybackController::questionProposed(CloudsQuestionEventArgs& args){
 	//don't ask a topic that we've already seen
 	if(!ofContains(run.topicHistory, args.topic)) {
 		rgbdVisualSystem->addQuestion(args.questionClip, args.topic, args.question);
 	}
+}
+
+void CloudsPlaybackController::questionSelected(CloudsQuestionEventArgs& args){
 
 }
 

@@ -54,7 +54,7 @@ class CloudsAct{
 		ofAddListener(events.clipBegan, listener, &ListenerClass::clipBegan);
 		ofAddListener(events.visualSystemBegan, listener, &ListenerClass::visualSystemBegan);
 		ofAddListener(events.visualSystemEnded, listener, &ListenerClass::visualSystemEnded);
-        ofAddListener(events.questionAsked, listener, &ListenerClass::questionAsked);
+        ofAddListener(events.questionProposed, listener, &ListenerClass::questionProposed);
 		ofAddListener(events.topicChanged, listener, &ListenerClass::topicChanged);
         ofAddListener(events.preRollRequested, listener, &ListenerClass::preRollRequested);
 	}
@@ -66,7 +66,7 @@ class CloudsAct{
 		ofRemoveListener(events.clipBegan, listener, &ListenerClass::clipBegan);
 		ofRemoveListener(events.visualSystemBegan, listener, &ListenerClass::visualSystemBegan);
 		ofRemoveListener(events.visualSystemEnded, listener, &ListenerClass::visualSystemEnded);
-        ofRemoveListener(events.questionAsked, listener, &ListenerClass::questionAsked);
+        ofRemoveListener(events.questionProposed, listener, &ListenerClass::questionProposed);
 		ofRemoveListener(events.topicChanged, listener, &ListenerClass::topicChanged);
         ofRemoveListener(events.preRollRequested, listener, &ListenerClass::preRollRequested);
 	}

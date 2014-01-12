@@ -35,15 +35,6 @@ void CloudsRun::visualSystemBegan(CloudsVisualSystemEventArgs& args){
     
 }
 
-void CloudsRun::visualSystemEnded(CloudsVisualSystemEventArgs& args){
- //   cout<<"VS ended, current run isnt doing anything about it"<<endl;
-}
-
-void CloudsRun::questionAsked(CloudsQuestionEventArgs& args){
-//    cout<<"Question asked, current run isnt doing anything about it"<<endl;
-//    timesQuestionAsked[args.questionClip]
-}
-
 void CloudsRun::topicChanged(CloudsTopicEventArgs& args){
     
     if(!ofContains(topicHistory, args.topic)){
@@ -51,6 +42,8 @@ void CloudsRun::topicChanged(CloudsTopicEventArgs& args){
     }
 }
 
-void CloudsRun::preRollRequested(CloudsPreRollEventArgs& args){
-//    cout<<"preRoll Requested, current run doesnt care"<<endl;
-}
+void CloudsRun::visualSystemEnded(CloudsVisualSystemEventArgs& args){}
+void CloudsRun::questionProposed(CloudsQuestionEventArgs& args){}
+void CloudsRun::questionSelected(CloudsQuestionEventArgs& args){}
+void CloudsRun::preRollRequested(CloudsPreRollEventArgs& args){}
+

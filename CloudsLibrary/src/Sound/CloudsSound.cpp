@@ -302,7 +302,7 @@ void CloudsSound::clipBegan(CloudsClipEventArgs& args){
 }
 
 //--------------------------------------------------------------------
-void CloudsSound::questionAsked(CloudsQuestionEventArgs& args){
+void CloudsSound::questionProposed(CloudsQuestionEventArgs& args){
 
 }
 
