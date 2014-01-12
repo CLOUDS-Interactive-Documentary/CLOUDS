@@ -420,11 +420,13 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
             getOculusRift().endBackground();
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW BACKGROUND");
 
-			getOculusRift().beginOverlay(-230, 320,240);
-			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
-			selfDrawOverlay();
-			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
-			getOculusRift().endOverlay();
+            // EZ: Commenting this out for now, saving overlay for HUD
+            // The HUD is drawing in the overlay in CloudsPlaybackController::draw()
+//			getOculusRift().beginOverlay(-230, 320,240);
+//			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
+//			selfDrawOverlay();
+//			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
+//			getOculusRift().endOverlay();
 			
             if(bIs2D){
                 CloudsVisualSystem::getSharedRenderTarget().begin();

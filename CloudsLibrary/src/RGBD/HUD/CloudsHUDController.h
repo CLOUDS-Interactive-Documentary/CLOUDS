@@ -35,6 +35,7 @@ class CloudsHUDController {
 	void setup();
 	void update();
 	void draw();
+    void drawOverlay(ofVec2f overlaySize);
 
 	void setHomeEnabled(bool enable);
 	
@@ -107,6 +108,7 @@ class CloudsHUDController {
     map<string, CloudsHUDLabel*>    hudLabelMap;
     ofRectangle hudBounds;
     float scaleAmt;
+    float overlayScaleAmt;
 };
 
 
