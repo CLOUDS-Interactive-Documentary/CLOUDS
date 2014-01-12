@@ -1,0 +1,71 @@
+SEED TOPIC:  coding
+SEED CLIP: Intro - LogicOfPixels
+	Playing seed
+First visual system preset is selected : 2DVideo_TweakMode for topic : coding and clip Intro - LogicOfPixels
+15.3894	CHOOSING NEW CLIP 
+15.3894		Chose Clip "Patricio - Imaginative technologies 1" for topic "coding" (2/5)
+72.1521	VISUALS Currently running "2DVideo_TweakMode" time [0 - 44] definite
+72.1521		Passed predicted time 44 - moving end time to middle of Patricio - Imaginative technologies 1, time 46.5432
+72.1521	CHOOSING NEW CLIP 
+72.1521		Chose Clip "Casey - Ideally it goes beyond my imagination" for topic "coding" (3/5)
+72.1521			ERROR: We took a digression! Freeing topic
+79.7062	VISUALS Not run in 33.1631 seconds
+79.7062		Chose new Preset Fireworks_SlowMotion time [76.6198 - 84.8957] indefinite
+79.7062	CHOOSING NEW TOPIC 2/3
+79.7062		Selecting from 5 potential next topics on clip Casey - Ideally it goes beyond my imagination
+79.7062			Considering intuition
+79.7062				Score for shared topic	intuition : 0
+79.7062			Considering branching
+79.7062				Score for shared topic	branching : 0
+79.7062			Considering surprise
+79.7062				Score for shared topic	surprise : 0
+79.7062			Considering process
+79.7062				Score for shared topic	process : 4.65116
+79.7062			Considering creativity
+79.7062				Score for shared topic	creativity : 24.6566
+79.7062		TOPIC creativity won with score 24.6566
+79.7062		Picked new topic: CREATIVITY
+79.7062	CHOOSING NEW CLIP 
+79.7062		Chose Clip "LIA - IdeaToCode" for topic "creativity" (1/5)
+107.065	VISUALS Currently running "Fireworks_SlowMotion" time [76.6198 - 84.8957] indefinite
+107.065		Passed predicted time 84.8957107.065- moving end time over top of VO LIA - IdeaToCode
+107.065	CHOOSING NEW CLIP 
+107.065		Chose Clip "Marius - these things are in my head" for topic "creativity" (2/5)
+129.133	VISUALS Not run in 22.0686 seconds
+129.133		Chose new Preset Schlabberbox_jm_Metamorphosis time [118.789 - 127.065] indefinite
+129.133	CHOOSING NEW CLIP 
+129.133		Chose Clip "Joel - Bicycles1" for topic "creativity" (3/5)
+154.99	VISUALS Currently running "Schlabberbox_jm_Metamorphosis" time [118.789 - 127.065] indefinite
+154.99		Passed predicted time 127.065154.99- moving end time over top of VO Joel - Bicycles1
+154.99	CHOOSING NEW CLIP 
+154.99		Chose Clip "Binx - tools for storytelling2" for topic "creativity" (4/5)
+154.99			ERROR: We took a digression! Freeing topic
+176.099	VISUALS Not run in 21.1093 seconds
+176.099		ERROR Failed to find preset on current topic creativity with clip Binx - tools for storytelling2
+176.099	CHOOSING NEW TOPIC 3/3
+176.099		going back to seed topic coding
+176.099		Picked new topic: CODING
+176.099	CHOOSING NEW CLIP 
+176.099		Chose Clip "JTNimoy - I addicted myself" for topic "coding" (1/5)
+202.589	VISUALS Not run in 47.5991 seconds
+202.589		Chose new Preset Code_Cryptic time [190.035 - 198.311] indefinite
+202.589	CHOOSING NEW CLIP 
+202.589		Chose Clip "Diederick - hackathon1" for topic "coding" (2/5)
+227.612	VISUALS Currently running "Code_Cryptic" time [190.035 - 198.311] indefinite
+227.612		Passed predicted time 198.311227.612- moving end time over top of VO Diederick - hackathon1
+227.612	CHOOSING NEW CLIP 
+227.612		Chose Clip "Shantell - Coding: what does it feel like?" for topic "coding" (3/5)
+297.645	VISUALS Not run in 70.0333 seconds
+297.645		Chose new Preset Code_Code_Console_default time [263.319 - 271.595] indefinite
+297.645	CHOOSING NEW CLIP 
+297.645		Chose Clip "Kyle_CH - coding is 1" for topic "coding" (4/5)
+309.571	VISUALS Currently running "Code_Code_Console_default" time [263.319 - 271.595] indefinite
+309.571		Passed predicted time 271.595 - moving end time to middle of Kyle_CH - coding is 1, time 306.38
+309.571	CHOOSING NEW CLIP 
+309.571		Chose Clip "Theo - magic" for topic "coding" (5/5)
+309.571			ERROR: We took a digression! Freeing topic
+309.571			Last clip in topic! Freeing topic
+336.895	VISUALS Not run in 30.5146 seconds
+336.895		Chose new Preset Xstatic_fireflies time [323.924 - 332.2] indefinite
+336.895	ACT ENDED on clip Theo - magic explored topics 3/3 with 5 clips on final topic "coding"
+336.895 Commiting final preset Xstatic_fireflies at the end of the act 

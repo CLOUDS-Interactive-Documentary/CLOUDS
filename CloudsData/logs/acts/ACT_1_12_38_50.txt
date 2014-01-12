@@ -1,0 +1,60 @@
+SEED TOPIC:  programming
+SEED CLIP: Intro - Learning
+	Playing seed
+First visual system preset is selected : Xstatic_BouncingBalls_TumblingBox for topic : programming and clip Intro - Learning
+33.9913	CHOOSING NEW CLIP 
+33.9913		Chose Clip "Casey - Programming at 26" for topic "programming" (2/5)
+54.5095	VISUALS Currently running "Xstatic_BouncingBalls_TumblingBox" time [0 - 8.27586] indefinite
+54.5095		Passed predicted time 8.27586 - moving end time to middle of Casey - Programming at 26, time 47.0228
+54.5095	CHOOSING NEW CLIP 
+54.5095		Chose Clip "Maeda - Aesthetics and Computation group" for topic "programming" (3/5)
+54.5095			ERROR: We took a digression! Freeing topic
+91.5514	VISUALS Not run in 44.5286 seconds
+91.5514		ERROR Failed to find preset on current topic programming with clip Maeda - Aesthetics and Computation group
+91.5514	CHOOSING NEW TOPIC 2/3
+91.5514		Selecting from 6 potential next topics on clip Maeda - Aesthetics and Computation group
+91.5514			Considering newness
+91.5514				Score for shared topic	newness : 0
+91.5514			Considering education
+91.5514				Score for shared topic	education : 0
+91.5514			Considering media lab
+91.5514				Score for shared topic	media lab : 17.0936
+91.5514			Considering aesthetics and computation
+91.5514				Score for shared topic	aesthetics and computation : 16.2007
+91.5514			Considering discovery
+91.5514				Score for shared topic	discovery : 5.26316
+91.5514			Considering beginnings
+91.5514				Score for shared topic	beginnings : 26.6174
+91.5514		TOPIC beginnings won with score 26.6174
+91.5514		Picked new topic: BEGINNINGS
+91.5514	CHOOSING NEW CLIP 
+91.5514		Chose Clip "Casey - beginnings" for topic "beginnings" (1/5)
+125.632	VISUALS Not run in 78.6092 seconds
+125.632		ERROR Failed to find preset on current topic beginnings with clip Casey - beginnings
+125.632	CHOOSING NEW CLIP 
+125.632		Chose Clip "Regine - digital technology" for topic "beginnings" (2/5)
+141.403	VISUALS Not run in 94.3799 seconds
+141.403		ERROR Failed to find preset on current topic beginnings with clip Regine - digital technology
+141.403	CHOOSING NEW CLIP 
+141.403		Chose Clip "Julia - medium of our time" for topic "beginnings" (3/5)
+141.403			ERROR: We took a digression! Freeing topic
+189.08	VISUALS Not run in 142.057 seconds
+189.08		ERROR Failed to find preset on current topic beginnings with clip Julia - medium of our time
+189.08	CHOOSING NEW TOPIC 3/3
+189.08		going back to seed topic programming
+189.08		Picked new topic: PROGRAMMING
+189.08	CHOOSING NEW CLIP 
+189.08		Chose Clip "Binx - Programming is a superpower" for topic "programming" (1/5)
+235.673	VISUALS Not run in 188.651 seconds
+235.673		Chose new Preset Code_Code_Console_default time [213.068 - 221.343] indefinite
+235.673	CHOOSING NEW CLIP 
+235.673		Chose Clip "Philip - programming the river" for topic "programming" (2/5)
+259.528	VISUALS Currently running "Code_Code_Console_default" time [213.068 - 221.343] indefinite
+259.528		Passed predicted time 221.343 - moving end time to middle of Philip - programming the river, time 250.373
+259.528	CHOOSING NEW CLIP 
+259.528		Chose Clip "Casey - emergence" for topic "programming" (3/5)
+259.528			ERROR: We took a digression! Freeing topic
+316.382	VISUALS Not run in 66.0084 seconds
+316.382		Chose new Preset Terrain_M_ferroFluid time [288.646 - 296.921] indefinite
+316.382	ACT ENDED on clip Casey - emergence explored topics 3/3 with 3 clips on final topic "programming"
+316.382 Commiting final preset Terrain_M_ferroFluid at the end of the act 
