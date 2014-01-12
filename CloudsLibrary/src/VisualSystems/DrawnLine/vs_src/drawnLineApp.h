@@ -7,6 +7,7 @@
 //#include "ofxTimeMeasurements.h"
 #include "ofxShivaVGRenderer.h"
 #include "CloudsVisualSystem.h"
+#include "BrushedLine.h"
 
 
 class drawnLineApp {
@@ -52,8 +53,10 @@ class drawnLineApp {
         float scale;
     
          ofFbo fbo;
-    ofPtr<ofBaseRenderer> _defaultRenderer;
-    ofPtr<ofxShivaVGRenderer> _shivaVGRenderer;
+    // ofPtr<ofBaseRenderer> _defaultRenderer;
+    // ofPtr<ofxShivaVGRenderer> _shivaVGRenderer;
+    
+    BrushedLine BL;
     
     CloudsVisualSystem * SYS;
 };

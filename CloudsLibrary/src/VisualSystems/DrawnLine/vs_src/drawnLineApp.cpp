@@ -14,6 +14,8 @@
 //--------------------------------------------------------------
 void drawnLineApp::setup(){
 
+    
+    
     ofDirectory dir;
     
     dir.listDir( GetCloudsDataPath()  + "visualsystems/DrawnLine/other/" + "output");
@@ -61,6 +63,10 @@ void drawnLineApp::setup(){
     }
     
     
+    BL.img = new ofImage();
+    BL.img->loadImage(GetCloudsDataPath()  + "visualsystems/DrawnLine/other/" +"assets/spot.png");
+    
+    
     CL.setup();
     
     lastMatchTime = ofGetElapsedTimef();
@@ -77,19 +83,20 @@ void drawnLineApp::setup(){
     scale = 1;
     
     ofFbo::Settings settings;
-    settings.useStencil = true;
-    settings.height = SYS->getCanvasHeight();
-    settings.width = SYS->getCanvasWidth();
+    //settings.useStencil = true;
+    settings.height = 1080;
+    settings.width = 1920;
     settings.internalformat = GL_RGBA;
     settings.numSamples = 2;
     fbo.allocate(settings);
     
-    _defaultRenderer = ofGetCurrentRenderer();
-    _shivaVGRenderer = ofPtr<ofxShivaVGRenderer>(new ofxShivaVGRenderer);
-    ofSetCurrentRenderer(_shivaVGRenderer);
-    
-    _shivaVGRenderer->setLineJoinStyle(VG_JOIN_ROUND);
-    _shivaVGRenderer->setLineCapStyle(VG_CAP_ROUND);
+//    
+//    _defaultRenderer = ofGetCurrentRenderer();
+//    _shivaVGRenderer = ofPtr<ofxShivaVGRenderer>(new ofxShivaVGRenderer);
+//    ofSetCurrentRenderer(_shivaVGRenderer);
+//    
+//    _shivaVGRenderer->setLineJoinStyle(VG_JOIN_ROUND);
+//    _shivaVGRenderer->setLineCapStyle(VG_CAP_ROUND);
 
 }
 
@@ -135,7 +142,7 @@ void drawnLineApp::update(){
                 
                 float scaleTarget =  tranRect.width / origRect.width;
                     
-                    scaleTarget = 0.2 * scaleTarget + 0.8 * 1.0;
+                    scaleTarget = 0.17 * scaleTarget + 0.83 * 1.0;
                 
                 scale = 0.99 * scale + 0.01 * scaleTarget;
                 }
@@ -279,7 +286,7 @@ void drawnLineApp::draw(){
 
     //return;
     
-    ofSetCurrentRenderer(_shivaVGRenderer);
+    //ofSetCurrentRenderer(_shivaVGRenderer);
     
     //
     ofSetLineWidth(3.4f); //- ofMap(scale, 0,3, 0, 1, true));
@@ -328,34 +335,13 @@ void drawnLineApp::draw(){
     
     ofBackground(0);
     ofPushStyle();
-    //ofSetColor(ofColor::darkGrey);
     
-    //ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-    //ofScale( 0.2, 0.2 );
+    BL.size = 1.8;
+    BL.drawPolyline(&CL.nodeLine);
+
     
-    
-//    ofPolyline temp;
-//    temp =CL.nodeLine.getResampledBySpacing(8);
-//    
-//    for (int i = 0; i < temp.size(); i++){
-//        ofRect(temp[i].x, temp[i].y, 2,2);
-//    }
-    CL.nodeLine.draw();
-    //CL.nodeLineForMatch.draw();
-    
-    
-//    for (int i = 0; i < CL.nodeLine.size()-1; i++){
-//        
-//        if (i % 5 == 0){
-//         
-//            //ofPoint(CL.nodeLine[i]);
-//            ofPoint a(CL.nodeLine[i+1] - CL.nodeLine[i+1]);
-//            ofLine(CL.nodeLine[i], CL.nodeLine[i+1]);
-//        }
-//    }
-    
-    
-    ofSetLineWidth( 1.7);// - ofMap(scale, 0,3, 0, 0.4, true));
+ ofSetLineWidth( 2.0);
+  ///  ofSetLineWidth( 1.7);// - ofMap(scale, 0,3, 0, 0.4, true));
     for (int i = 0; i < matchStructs.size(); i++){
         
         //cout << matchStructs[i].offset << endl;
@@ -379,11 +365,6 @@ void drawnLineApp::draw(){
         //ofLine(matchStructs[i].matchA, matchStructs[i].matchB);
     }
     
-    ofPushMatrix();
-    
-
-    
-    ofPopMatrix();
     
     ofPopStyle();
     
@@ -394,7 +375,6 @@ void drawnLineApp::draw(){
     fbo.end();
     
     
-    ofSetCurrentRenderer(_defaultRenderer);
     
     ofSetColor(255,255,255);
     fbo.draw(0,0);
