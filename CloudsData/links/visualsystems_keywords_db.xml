@@ -5409,91 +5409,43 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Circuit_Circuit1">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Circuit_Circuit2">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Circuit_Circuit3">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Circuit_Circuit4">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Circuit_Circuit5">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Circuit_Circuit6">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Circuit_City">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="Circuit_JG_AggregiousSweep">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Circuit_JM_LongSweep">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Circuit_JM_ZoomOut">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Circuit_JM_ZoomOutIn">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>

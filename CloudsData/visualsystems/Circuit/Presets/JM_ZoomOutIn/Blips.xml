@@ -2,25 +2,25 @@
     <Kind>42</Kind>
     <Name>Blips</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>287.000000000</XPosition>
+    <YPosition>364.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>BLIP SPEED</Name>
-    <Value>3.000000000</Value>
+    <Value>3.596059084</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BLIP SIZE</Name>
-    <HighValue>1.073891640</HighValue>
+    <HighValue>0.492610842</HighValue>
     <LowValue>0.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BLIP DISTANCE</Name>
-    <HighValue>1200.000000000</HighValue>
-    <LowValue>0.000000000</LowValue>
+    <HighValue>1194.088745117</HighValue>
+    <LowValue>591.132995605</LowValue>
 </Widget>
 <Widget>
     <Kind>2</Kind>
