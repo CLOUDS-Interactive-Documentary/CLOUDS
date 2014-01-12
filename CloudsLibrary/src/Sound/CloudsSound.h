@@ -41,6 +41,7 @@ class CloudsSound {
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
 	void questionProposed(CloudsQuestionEventArgs& args);
 	void questionSelected(CloudsQuestionEventArgs& args);
+    void questionSelected(float fadeTime);
 	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
     

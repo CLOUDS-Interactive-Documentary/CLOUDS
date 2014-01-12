@@ -316,7 +316,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(!bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
             
             bQuestionAsked = true;
-            transitionController.transitionWithQuestion(1.0, 1.0);		
+            transitionController.transitionWithQuestion(2.0, 1.0);
+            sound.questionSelected(2.0);
         }
     }
     
@@ -689,7 +690,7 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 
 	numClipsPlayed++;
 	
-	rgbdVisualSystem->clearQuestions();
+//	rgbdVisualSystem->clearQuestions();
 	if(clip.getID() != prerolledClipID){
 		prerollClip(clip, 1);
 	}
