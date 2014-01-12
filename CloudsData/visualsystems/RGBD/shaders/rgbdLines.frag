@@ -101,9 +101,7 @@ void main() {
 
 	//TODO re-add attenuation
     vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
-//	float actuatorAttenuate = smoothstep(.3, .35, calculateLight()) ;
-//	gl_FragColor.rgb = col.rgb * mix( (1.0-headPositionAttenuation) * edgeAttenuate + colorBoost, 1.0 + skinBoost, isSkin() );// * alpha;// * smoothstep(actuatorAttenuation,0.2,.3);
 	gl_FragColor.rgb = col.rgb * mix( edgeAttenuate + colorBoost, 1.0 + skinBoost, isSkin() );// * alpha;// * smoothstep(actuatorAttenuation,0.2,.3);
-
+    gl_FragColor.a = 1.0;
 }
 

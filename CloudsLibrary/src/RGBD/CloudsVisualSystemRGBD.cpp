@@ -1421,6 +1421,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			lineShader.begin();
 			
             getRGBDVideoPlayer().flowPosition = lineFlowPosition * (linesFlowUp?-1:1);
+            
 			getRGBDVideoPlayer().setupProjectionUniforms(lineShader);
 			
 			lineShader.setUniform1f("lineExtend",
