@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000122070</XPosition>
+    <XPosition>637.000061035</XPosition>
     <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -27,12 +27,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>falling_cubes</Name>
+    <Name>FallingCubes</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>falling_cubesOC</Name>
+    <Name>FallingCubesOC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -47,7 +47,32 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>gx_work_01a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_02a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gx_work_03a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>InteractiveTest</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>jg_BlueSweep</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JG_Illumicube</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -57,7 +82,22 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>JM_Sweep_Enormous</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>jm_work_03a</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>larger_irregular_cubes</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LightPreset</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

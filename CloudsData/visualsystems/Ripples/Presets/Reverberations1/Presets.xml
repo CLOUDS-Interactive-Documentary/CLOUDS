@@ -37,16 +37,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>TyeDye</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Violet</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>Reverberations</Name>
     <Value>0</Value>
 </Widget>
@@ -54,4 +44,24 @@
     <Kind>2</Kind>
     <Name>Reverberations1</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Reverberations2_minor</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Reverberations3_major4</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>TyeDye</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Violet</Name>
+    <Value>0</Value>
 </Widget>
