@@ -63,7 +63,10 @@ void CloudsVisualSystemDrawnLine::selfSetDefaults(){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemDrawnLine::selfSetup(){
-	setupFbo();
+	
+    APP.SYS = this;
+    APP.setup();
+    //setupFbo();
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -88,18 +91,17 @@ void CloudsVisualSystemDrawnLine::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemDrawnLine::selfUpdate(){
-    if(fbo.getWidth() != getCanvasWidth() ||
-       fbo.getHeight() != getCanvasHeight())
-    {
-        setupFbo();
-    }
+//    if(fbo.getWidth() != getCanvasWidth() ||
+//       fbo.getHeight() != getCanvasHeight())
+//    {
+//        setupFbo();
+//    }
     
-    fbo.begin();
-    ofClear(0, 0, 0);
     
-    //ZACH: draw here :)
+    APP.update();
+
     
-    fbo.end();
+    
     
 }
 
@@ -116,7 +118,7 @@ void CloudsVisualSystemDrawnLine::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemDrawnLine::selfDrawBackground(){
 
-    fbo.draw(0, 0);
+    APP.draw();
 	
 }
 
