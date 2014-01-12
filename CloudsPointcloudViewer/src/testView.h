@@ -7,7 +7,6 @@
 #include "CloudsVisualSystemRGBD.h"
 #include "CloudsHUDController.h"
 
-
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
 	IBOutlet NSTableView* clipTable;
     IBOutlet NSTextField* interventionTextBox;
