@@ -20,7 +20,6 @@ CloudsHUDController::CloudsHUDController(){
     bDrawHome = true;
 	
     scaleAmt = 1.0;
-    overlayScaleAmt = 0.5;
 }
 
 void CloudsHUDController::setup(){
@@ -339,50 +338,9 @@ void CloudsHUDController::draw(){
     ofTranslate( (ofGetWindowSize() - getSize() ) * 0.5 );
     ofScale( scaleAmt, scaleAmt );
     
-    if( videoPlayer.isPlaying() ){
-        ofSetColor(255, 255, 255, 255*0.7);
-        if( !bSkipAVideoFrame ){
-            videoPlayer.draw( videoBounds.x, videoBounds.y, videoBounds.width, videoBounds.height );
-        }
-        ofSetColor(255, 255, 255, 255);
-    }
-    
-	drawLayer(CLOUDS_HUD_QUESTION);
-	
-//	cout << "drawing question: " << hudLabelMap["QuestionTextBox"]->getText() << endl;
-	
-	drawLayer(CLOUDS_HUD_LOWER_THIRD);
-	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
-	drawLayer(CLOUDS_HUD_MAP);
-    
-    for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
-        (it->second)->draw();
-    }
-    
-	if(bDrawHome){
-		home.draw();
-	}
-	
-	ofPopMatrix();
-	ofPopStyle();
-}
-
-void CloudsHUDController::drawOverlay(ofVec2f overlaySize){
-    
-    if( !bDrawHud )
-        return;
-    
-	ofPushStyle();
-	ofPushMatrix();
-	ofEnableAlphaBlending();
-	
-    ofTranslate( (overlaySize - ( getSize() * overlayScaleAmt ) ) * 0.5 );
-    ofScale( scaleAmt, scaleAmt );
-    ofScale( overlayScaleAmt, overlayScaleAmt );
-    
     // EZ: Debug overlay rect dimensions
 //    ofSetColor(255, 0, 0, 127);
-//    ofRect(0, 0, hudSize.x, hudSize.y);
+//    ofRect(0, 0, hudBounds.width, hudBounds.height);
 //    ofSetColor(255);
     
     if( videoPlayer.isPlaying() ){
@@ -395,7 +353,7 @@ void CloudsHUDController::drawOverlay(ofVec2f overlaySize){
     
 	drawLayer(CLOUDS_HUD_QUESTION);
 	
-    //	cout << "drawing question: " << hudLabelMap["QuestionTextBox"]->getText() << endl;
+//	cout << "drawing question: " << hudLabelMap["QuestionTextBox"]->getText() << endl;
 	
 	drawLayer(CLOUDS_HUD_LOWER_THIRD);
 	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);

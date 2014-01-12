@@ -35,12 +35,17 @@ class CloudsInput
     map<int, CloudsInteractionEventArgs>& getInputPoints();
 	
 	CloudsInputEvents& getEvents();
-	
+	void setBleedPixels(int bleed);
+    
   protected:
 
     ofVec3f currentPosition;
 	ofVec3f lastPosition;
+    ofVec2f bleedOffset;
+    
     bool dragging;
+    int bleed;
+    
     map<int, CloudsInteractionEventArgs> inputPoints;
 
 	bool enabled;
@@ -63,7 +68,9 @@ float GetCloudsPreviousInputY();
 float GetCloudsPreviousInputZ();
 ofVec3f GetCloudsPreviousInputPosition();
 
-//TODIZZLE
+void SetBleedPixels(int bleed);
+
+//TODIZZLE:
 //float GetCloudsPreviousInputX(int playerId = 0);
 //float GetCloudsPreviousInputY(int playerId = 0);
 //float GetCloudsPreviousInputZ(int playerId = 0);

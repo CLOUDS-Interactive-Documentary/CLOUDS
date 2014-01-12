@@ -108,11 +108,14 @@ class CloudsVisualSystemCirclePacking: public CloudsVisualSystem {
 	
 	ofFloatColor primaryColor;
 	ofFloatColor secondaryColor;
+    int initialNumberofCircles;
 	bool filled;
 	int numCircles;
 	float heroPercent;
-	ofRange smallSizeRange;
-	ofRange largeSizeRange;
+	float small1;
+    float small2;
+	float large1;
+    float large2;
     float alph;
 	
 };

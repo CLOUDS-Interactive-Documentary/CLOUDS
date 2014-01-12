@@ -462,7 +462,11 @@ class CloudsVisualSystem {
 	bool bUseInteractiveCamera;
 	float interactiveCameraMinX, interactiveCameraMaxX, interactiveCameraMinY, interactiveCameraMaxY,interactiveCameraDamping;
 	ofVec2f interactiveCameraRot, previousinteractiveCameraRot;
+    
+    //POST FX
     bool bEnablePostFX;
     float postChromaDist;
     float postGrainDist;
+    
+    int bleed;
 };

@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>MAZE BUILDER</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>23.000000000</XPosition>
-    <YPosition>-8.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -13,12 +13,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>CAM HEIGHT</Name>
-    <Value>812.807922363</Value>
+    <Value>1699.507446289</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>CAM ANGLE</Name>
-    <Value>46.108375549</Value>
+    <Value>51.428573608</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -28,17 +28,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>GCAM SPEED</Name>
-    <Value>0.162561581</Value>
+    <Value>0.078817733</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>GCAM LOOKAT</Name>
-    <Value>0.330049247</Value>
+    <Value>0.019704433</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SHOW AHEAD</Name>
-    <Value>88.620689392</Value>
+    <Value>82.413787842</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

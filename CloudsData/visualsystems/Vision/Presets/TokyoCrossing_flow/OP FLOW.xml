@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>OP FLOW</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -33,17 +33,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW WIDTH</Name>
-    <Value>0.171966091</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>WINDOW HEIGHT</Name>
-    <Value>0.987739503</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW LINE LENGTH</Name>
-    <Value>2.193575621</Value>
+    <Value>1.812500119</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

@@ -83,7 +83,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
     
     customGui->addSpacer();
     customGui->addLabel("ANIMATION PARAMS");
-    customGui->addIntSlider("TWEEN DURATION", 1, 1000, &tweenDuration);
+    customGui->addIntSlider("TWEEN DURATION", 1, 2000, &tweenDuration);
     customGui->addIntSlider("TWEEN DELAY", 0, 20, &tweenDelay);
     customGui->addToggle("PERPENDICULAR", &bDoPerpendicular);
     
