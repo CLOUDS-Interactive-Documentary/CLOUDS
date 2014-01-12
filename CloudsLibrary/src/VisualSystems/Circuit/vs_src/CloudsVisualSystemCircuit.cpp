@@ -91,7 +91,7 @@ ofCamera& CloudsVisualSystemCircuit::getCameraRef(){
 
 void CloudsVisualSystemCircuit::generateCircuit(){
 	
-	heightMap.loadImage(getVisualSystemDataPath() + "images/circuits.jpeg");
+	heightMap.loadImage(getVisualSystemDataPath(true) + "images/circuits.jpeg");
     heightMap.setImageType(OF_IMAGE_GRAYSCALE);
     int height = heightMap.getHeight();
     int width = heightMap.getWidth();

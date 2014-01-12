@@ -34,25 +34,25 @@ map<int, CloudsInteractionEventArgs>& CloudsInput::getInputPoints(){
 }
 
 void CloudsInput::interactionMoved(ofVec3f pos, bool primary, int actionType, int playerId){
-	CloudsInteractionEventArgs args(pos+bleed, primary, actionType, playerId);
+	CloudsInteractionEventArgs args(pos+bleedOffset, primary, actionType, playerId);
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionMoved, args, this);	
 }
 
 void CloudsInput::interactionStarted(ofVec3f pos, bool primary, int actionType, int playerId){
-	CloudsInteractionEventArgs args(pos+bleed, primary, actionType, playerId);
+	CloudsInteractionEventArgs args(pos+bleedOffset, primary, actionType, playerId);
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionStarted, args, this);
 }
 
 void CloudsInput::interactionDragged(ofVec3f pos, bool primary, int actionType, int playerId){
-	CloudsInteractionEventArgs args(pos+bleed, primary, actionType, playerId);
+	CloudsInteractionEventArgs args(pos+bleedOffset, primary, actionType, playerId);
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionDragged, args, this);
 }
 
 void CloudsInput::interactionEnded(ofVec3f pos, bool primary, int actionType, int playerId){	
-	CloudsInteractionEventArgs args(pos+bleed, primary, actionType, playerId);
+	CloudsInteractionEventArgs args(pos+bleedOffset, primary, actionType, playerId);
     inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionEnded, args, this);
 }

@@ -4,17 +4,17 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>pathPosition</WidgetName>
-                <WidgetID>4</WidgetID>
-                <WidgetCanvasParent>CameraPath</WidgetCanvasParent>
+                <WidgetName>ROT-X</WidgetName>
+                <WidgetID>9</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>ROT-X</WidgetName>
-                <WidgetID>9</WidgetID>
-                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+                <WidgetName>pathPosition</WidgetName>
+                <WidgetID>4</WidgetID>
+                <WidgetCanvasParent>CameraPath</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
