@@ -17,7 +17,7 @@ void CloudsSecondaryDisplayOSCSender::setup(){
     ofxXmlSettings linksXML;
     
     if(!linksXML.loadFile(GetCloudsDataPath()+"secondaryDisplay/" + "OSC/OSCSettings.xml")){
-        ofSystemAlertDialog("UNABLE TO LOAD LINKS! do not proceed");
+        ofLogError("CloudsSecondaryDisplayOSCSender::setup") << "Secondary Display OSC settings not found";
 		return;
 	}
 	
