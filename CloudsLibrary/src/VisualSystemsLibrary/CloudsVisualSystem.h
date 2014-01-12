@@ -63,6 +63,7 @@ class CloudsVisualSystem {
 	static void forceScreenResolution(int screenWidth, int screenHeight);
 	static void setNumSamples(int samples = 0);
 	static void loadBackgroundShader();
+    static void loadPostShader();
 	static CloudsRGBDVideoPlayer& getRGBDVideoPlayer();
 	static void getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height);
     static void get2dMesh(ofMesh& mesh, float width, float height);
@@ -212,6 +213,9 @@ class CloudsVisualSystem {
     void setupBackgroundGui();
     void guiBackgroundEvent(ofxUIEventArgs &e);
     
+    void setupPostGui();
+    void guiPostEvent(ofxUIEventArgs &e);
+    
     void setupLightingGui();
     void guiLightingEvent(ofxUIEventArgs &e);
     
@@ -303,6 +307,8 @@ class CloudsVisualSystem {
     ofxUISuperCanvas *camGui;
     ofxUISuperCanvas *presetGui;
     ofxUISuperCanvas *tlGui;
+    ofxUISuperCanvas *postGui;
+
 #ifdef KINECT_INPUT
     ofxUISuperCanvas *kinectGui;
 #endif
@@ -439,6 +445,7 @@ class CloudsVisualSystem {
 	string mainKeyword;
 	vector<string> keywords;
 	
+    void drawKinectDebug();
 
 	
 	static void checkOpenGLError(string function);
@@ -455,4 +462,7 @@ class CloudsVisualSystem {
 	bool bUseInteractiveCamera;
 	float interactiveCameraMinX, interactiveCameraMaxX, interactiveCameraMinY, interactiveCameraMaxY,interactiveCameraDamping;
 	ofVec2f interactiveCameraRot, previousinteractiveCameraRot;
+    bool bEnablePostFX;
+    float postChromaDist;
+    float postGrainDist;
 };

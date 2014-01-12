@@ -145,7 +145,7 @@ void main(void){
     normal = -normalize(gl_NormalMatrix * surfaceNormal);
   
 //    float actuatorExtendAttenuate = smoothstep(.3, .35, dot(normal,actuatorDirection) );
-    float actuatorExtendAttenuate = dot(normal,actuatorDirection);
+    float actuatorExtendAttenuate = max(0.0, dot(normal,actuatorDirection));
 
 	vec2 extendedSamplePos = samplePos + gl_Normal.xy*lineExtend*actuatorExtendAttenuate;
 	vec2 neighborSamplePos = samplePos - gl_Normal.xy*lineExtend*actuatorExtendAttenuate;
