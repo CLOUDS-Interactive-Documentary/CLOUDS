@@ -41,7 +41,15 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-
+#ifdef OCULUS_RIFT
+    // EZ: Override CloudsInputSystem just to get the thing started
+    // since we can't click with Oculus input.
+    ofMouseEventArgs args;
+    args.x = x;
+    args.y = y;
+    args.button = button;
+    player.mousePressed(args);
+#endif
 }
 
 //--------------------------------------------------------------

@@ -240,7 +240,13 @@ void CloudsPlaybackController::mouseMoved(ofMouseEventArgs & args){
 }
 
 void CloudsPlaybackController::mousePressed(ofMouseEventArgs & args){
-
+#ifdef OCULUS_RIFT
+    // EZ: Override CloudsInputSystem just to get the thing started
+    // since we can't click with Oculus input.
+    if (introSequence) {
+        introSequence->selfMousePressed(args);
+    }
+#endif
 }
 
 void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
