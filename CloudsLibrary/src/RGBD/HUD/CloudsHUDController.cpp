@@ -339,6 +339,11 @@ void CloudsHUDController::draw(){
     ofTranslate( (ofGetWindowSize() - getSize() ) * 0.5 );
     ofScale( scaleAmt, scaleAmt );
     
+    // EZ: Debug overlay rect dimensions
+//    ofSetColor(255, 0, 0, 127);
+//    ofRect(0, 0, getSize().x, getSize().y);
+//    ofSetColor(255);
+    
     if( videoPlayer.isPlaying() ){
         ofSetColor(255, 255, 255, 255*0.7);
         if( !bSkipAVideoFrame ){
@@ -382,7 +387,7 @@ void CloudsHUDController::drawOverlay(ofVec2f overlaySize){
     
     // EZ: Debug overlay rect dimensions
 //    ofSetColor(255, 0, 0, 127);
-//    ofRect(0, 0, hudSize.x, hudSize.y);
+//    ofRect(0, 0, getSize(), getSize());
 //    ofSetColor(255);
     
     if( videoPlayer.isPlaying() ){

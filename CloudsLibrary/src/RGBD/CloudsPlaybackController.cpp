@@ -126,6 +126,9 @@ void CloudsPlaybackController::setup(){
 	introSequence->setDrawToScreen(false);
 	
 	hud.setup();
+#ifdef OCULUS_RIFT
+    rgbdVisualSystem->hud = &hud;
+#endif
 	
 	//////////////SHOW INTRO
 	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
@@ -497,8 +500,8 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 		currentVisualSystem->selfPostDraw();
 
 #ifdef OCULUS_RIFT
-        ofVec2f overlaySize = hud.getSize();
-        CloudsVisualSystem::getOculusRift().beginOverlay(-230, overlaySize.x,overlaySize.y);
+//        ofVec2f overlaySize = hud.getSize();
+//        CloudsVisualSystem::getOculusRift().beginOverlay(-230, overlaySize.x,overlaySize.y);
 #endif
         
 #ifdef SHOW_SUBTITLES
@@ -508,13 +511,13 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 #endif
         
 #ifdef OCULUS_RIFT
-        hud.drawOverlay(overlaySize);
+//        hud.drawOverlay(overlaySize);
 #else
 		hud.draw();
 #endif
         
 #ifdef OCULUS_RIFT
-        CloudsVisualSystem::getOculusRift().endOverlay();
+//        CloudsVisualSystem::getOculusRift().endOverlay();
 #endif
 		
 		ofPopStyle();

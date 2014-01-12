@@ -141,6 +141,10 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	//IF we move this before setup(NOT selfSetup) we can have the option of whether or not to load it to the gui
 	loadTransitionOptions("Transitions");
+    
+#ifdef OCULUS_RIFT
+    hud = NULL;
+#endif
 }
 
 void CloudsVisualSystemRGBD::playTestVideo(){
@@ -1665,6 +1669,36 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	}
 	
 	drawQuestions();
+    
+#ifdef OCULUS_RIFT
+    if (hud != NULL) {
+        ofPushMatrix();
+        
+        ofVec3f objPos(hud->getSize() * 0.5);
+        objPos.z = pointcloudOffsetZ + 300;
+        
+        ofNode node;
+        node.setPosition(objPos);
+        node.lookAt(getCameraRef().getGlobalPosition());
+        
+        ofVec3f axis;
+        float angle;
+        node.getOrientationQuat().getRotate(angle, axis);
+        
+        // Translate the object to its position.
+        ofTranslate(objPos);
+        
+        // Perform the rotation.
+//        ofRotate(angle, axis.x, axis.y, axis.z);
+        
+        ofScale(-1, -1, 1);
+        
+        ofSetColor(255);
+        hud->draw();
+        
+        ofPopMatrix();
+    }
+#endif
 
 }
 

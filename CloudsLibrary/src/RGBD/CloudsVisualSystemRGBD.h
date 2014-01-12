@@ -4,6 +4,7 @@
 #include "CloudsVisualSystem.h"
 #include "CloudsPortal.h"
 #include "CloudsQuestion.h"
+#include "CloudsHUDController.h"
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
 #include "ofxFTGL.h"
@@ -129,6 +130,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     //////////TRANSITIONS
     
 	void playTestVideo();
+    
+#ifdef OCULUS_RIFT
+    CloudsHUDController* hud;
+#endif
 
   protected:
 	
