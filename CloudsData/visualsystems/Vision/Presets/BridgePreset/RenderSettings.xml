@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>6.000000000</XPosition>
-    <YPosition>155.000000000</YPosition>
+    <XPosition>453.000000000</XPosition>
+    <YPosition>185.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,27 +18,37 @@
 <Widget>
     <Kind>4</Kind>
     <Name>VIDEO TINT</Name>
-    <Value>110.541877747</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>THRESHOLD TINT</Name>
-    <Value>71.600990295</Value>
+    <Value>13.817734718</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>DIFF TINT</Name>
-    <Value>42.709358215</Value>
+    <Value>32.660099030</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLOW WINDOW TINT</Name>
-    <Value>170.837432861</Value>
+    <Value>48.990146637</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>DIFFERENCE HUE</Name>
     <Value>0.699999988</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DIFFERENCE SAT</Name>
+    <Value>0.443349749</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DIFFERENCE BRI</Name>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -73,11 +83,6 @@
 <Widget>
     <Kind>17</Kind>
     <Name>Soho3_short1.mov</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>Street_Slow1_BWCrop.mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>CameraPath</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>396.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>pathPosition</Name>
-    <Value>0.149106383</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -22,8 +22,23 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>GTunnelOrganix_MasterCAM.xml</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>GTunnelV2.xml</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GTunnelV3_MasterCAM.xml</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GTunnelV4_MasterCAM.xml</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
