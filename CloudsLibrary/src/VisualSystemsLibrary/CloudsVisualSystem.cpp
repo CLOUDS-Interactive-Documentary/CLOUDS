@@ -3379,7 +3379,7 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
     if (bDragged) {
         ofSetColor(213, 69, 62, 255);
 #ifdef OCULUS_RIFT
-        ofCircle(pos, 6);
+        ofCircle(pos, 3);
 #else
         ofCircle(pos.x, pos.y,
                  ofMap(pos.z, 2, -2, 3, 6, true));
@@ -3388,7 +3388,7 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
     else {
         ofSetColor(255, 255, 255, 175);
 #ifdef OCULUS_RIFT
-        ofCircle(pos, 10);
+        ofCircle(pos, 3);
 #else
         ofCircle(pos.x, pos.y,
                  ofMap(pos.z, 2, -2, 3, 10, true));
