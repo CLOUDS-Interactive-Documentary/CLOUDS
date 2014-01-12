@@ -68,6 +68,11 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	meshRetractionFalloff = 1.0;
 	meshForceGeoRectraction = .0;
 	
+    bDrawOcclusion = true;
+    occlusionVertexCount = 0;
+   	occlusionXSimplify = 4.;
+	occlusionYSimplify = 4.;
+    refreshOcclusion = true;
 	
 	caughtPortal = NULL;
 	selectedPortal = NULL;
@@ -146,7 +151,8 @@ void CloudsVisualSystemRGBD::loadShader(){
 	lineShader.load( getVisualSystemDataPath() + "shaders/rgbdLines");
 	cout << "loading mesh shader " << endl;
 	meshShader.load( getVisualSystemDataPath() + "shaders/rgbdMesh");
-//	CloudsQuestion::reloadShader();
+    cout << "loading occlusion shader " << endl;
+    occlusionShader.load( getVisualSystemDataPath() + "shaders/rgbdOcclusion");
 }
 
 //void CloudsVisualSystemRGBD::rebuildCaptionFont(){
@@ -296,9 +302,9 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 	linesGui->addSlider("Line Alpha", 0, 1.0, &lineAlpha);
 	linesGui->addSlider("Line Thickness", 0, 3.0, &lineThickness);
-	linesGui->addSlider("Line Spacing", 1., 16., &lineSpacing);
+	linesGui->addSlider("Line Spacing", 1., 3., &lineSpacing);
 	linesGui->addSlider("Line Face Overlap", 0., 1.0, &lineHeadOverlap);
-	linesGui->addSlider("Line Granularity", 1., 10.0, &lineGranularity);
+	linesGui->addSlider("Line Granularity", 1., 2.0, &lineGranularity);
 	linesGui->addSlider("Line Flow", 0, 1.0, &lineFlowSpeed);
 	linesGui->addToggle("Lines Flow Up", &linesFlowUp);
     
@@ -328,10 +334,35 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	meshGui->addSlider("Face Falloff", 0, 600., &meshFaceFalloff);
 	meshGui->addSlider("Edge Geo Retraction", 0, 1.0, &meshRetractionFalloff);
 	meshGui->addSlider("Force Geo Retraction", 0, 1.0, &meshForceGeoRectraction);
+    meshGui->addSpacer();
+    meshGui->addToggle("Occlusion", &bDrawOcclusion);
+	meshGui->addSlider("Occl X Simplify", 1., 16., &occlusionXSimplify);
+	meshGui->addSlider("Occl Y Simplify", 1., 16., &occlusionYSimplify);
+
 	ofAddListener(meshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
 	guis.push_back(meshGui);
 	guimap[meshGui->getName()] = meshGui;
 	
+    
+    ////////////////// OCCLUSION
+//    occlusionGui = new ofxUISuperCanvas("MESH", gui);
+//	occlusionGui->copyCanvasStyle(gui);
+//	occlusionGui->copyCanvasProperties(gui);
+//	occlusionGui->setName("Mesh");
+//	occlusionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+//	toggle = occlusionGui->addToggle("ENABLE", &bDrawOcclusion);
+//	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+//	occlusionGui->resetPlacer();
+//	occlusionGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+//	occlusionGui->addWidgetToHeader(toggle);
+//
+//
+//    
+//    ofAddListener(occlusionGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
+//	guis.push_back(occlusionGui);
+//	guimap[occlusionGui->getName()] = occlusionGui;
+    //////////////////
     
     ////////////////// ACTUATORS
     actuatorGui = new ofxUISuperCanvas("ACTUATORS", gui);
@@ -440,6 +471,10 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		generateMesh();
 	}
 
+    if(refreshOcclusion){
+        generateOcclusion();
+    }
+    
 	lineFlowPosition += powf(lineFlowSpeed,2.0);
 	pointFlowPosition += powf(pointFlowSpeed,2.0);
 	
@@ -1064,7 +1099,6 @@ void CloudsVisualSystemRGBD::generatePoints(){
 void CloudsVisualSystemRGBD::generateLines(){
 	
 	lines.clear();
-//	lines.setUsage(GL_STATIC_DRAW);
 
 	if(lineGranularity <= 0) lineGranularity = 1;
 	if(lineSpacing <= 0) lineSpacing = 1;
@@ -1101,7 +1135,7 @@ void CloudsVisualSystemRGBD::generateMesh(){
 	if(xSimplify <= 0) xSimplify = 1.0;
 	if(ySimplify <= 0) ySimplify = 1.0;
 
-    ofMesh m;
+
 	int x = 0;
 	int y = 0;
 
@@ -1110,7 +1144,7 @@ void CloudsVisualSystemRGBD::generateMesh(){
 	int h = 480.;
 	
 	vector<ofVec3f> vertices;
-	
+	vector<int> indeces;
 	for (float y = 0; y < 480; y += ySimplify){
 		for (float x = 0; x < 640; x += xSimplify){
 			vertices.push_back(ofVec3f(x + ofRandomf()*randomVariance,
@@ -1118,7 +1152,7 @@ void CloudsVisualSystemRGBD::generateMesh(){
 		}
 	}
 	
-	vector<int> indeces;
+
 	for (float ystep = 0; ystep < h-ySimplify; ystep += ySimplify){
 		for (float xstep = 0; xstep < w-xSimplify; xstep += xSimplify){
 			ofIndexType a,b,c;
@@ -1144,8 +1178,7 @@ void CloudsVisualSystemRGBD::generateMesh(){
 		x = 0;
 	}
 	
-//	mesh.clear();
-//    mesh.setMesh(mesh, GL_STATIC_DRAW);
+    ofMesh m;
 	for(int i = 0; i < indeces.size(); i+=3){
 		
 		ofVec3f& a = vertices[ indeces[i+0] ];
@@ -1176,12 +1209,87 @@ void CloudsVisualSystemRGBD::generateMesh(){
 	refreshMesh = false;
 }
 
-void CloudsVisualSystemRGBD::speakerChanged(){
 
-    clearQuestions();
+void CloudsVisualSystemRGBD::generateOcclusion(){
+	if(occlusionXSimplify <= 0) occlusionXSimplify = 1.0;
+	if(occlusionYSimplify <= 0) occlusionYSimplify = 1.0;
     
-    timeline->hide();
+    
+	int x = 0;
+	int y = 0;
+    
+	int gw = ceil(640. / occlusionXSimplify);
+	int w = gw*occlusionXSimplify;
+	int h = 480.;
+	
+	vector<ofVec3f> vertices;
+	vector<int> indeces;
 
+	for (float y = 0; y < 480; y += occlusionYSimplify){
+		for (float x = 0; x < 640; x += occlusionXSimplify){
+			vertices.push_back( ofVec3f(x,y,0) );
+		}
+	}
+	
+	for (float ystep = 0; ystep < h-occlusionYSimplify; ystep += occlusionYSimplify){
+		for (float xstep = 0; xstep < w-occlusionXSimplify; xstep += occlusionXSimplify){
+			ofIndexType a,b,c;
+			
+			a = x+y*gw;
+			b = (x+1)+y*gw;
+			c = x+(y+1)*gw;
+			indeces.push_back(a);
+			indeces.push_back(b);
+			indeces.push_back(c);
+			
+			a = (x+1)+(y+1)*gw;
+			b = x+(y+1)*gw;
+			c = (x+1)+(y)*gw;
+			indeces.push_back(a);
+			indeces.push_back(b);
+			indeces.push_back(c);
+			
+			x++;
+		}
+		
+		y++;
+		x = 0;
+	}
+	
+    ofMesh m;
+	for(int i = 0; i < indeces.size(); i+=3){
+		
+		ofVec3f& a = vertices[ indeces[i+0] ];
+		ofVec3f& b = vertices[ indeces[i+1] ];
+		ofVec3f& c = vertices[ indeces[i+2] ];
+		ofVec3f mid = (a+b+c)/3.;
+		
+		ofVec3f toA = a-mid;
+		ofVec3f toB = b-mid;
+		ofVec3f toC = c-mid;
+		
+		m.addNormal(toA);
+		m.addColor(ofFloatColor(toB.x/640.,toB.y/480.,toC.x/640.,toC.y/480.));
+		m.addVertex(mid);
+        
+		m.addNormal(toB);
+		m.addColor(ofFloatColor(toA.x/640.,toA.y/480.,toC.x/640.,toC.y/480.));
+		m.addVertex(mid);
+		
+		m.addNormal(toC);
+		m.addColor(ofFloatColor(toA.x/640.,toA.y/480.,toB.x/640.,toB.y/480.));
+		m.addVertex(mid);
+	}
+    
+    occlusionVertexCount = m.getNumVertices();
+    occlusion.setMesh(m, GL_STATIC_DRAW);
+    refreshOcclusion = false;
+    
+}
+
+void CloudsVisualSystemRGBD::speakerChanged(){
+    clearQuestions();
+    timeline->hide();
 }
 
 void CloudsVisualSystemRGBD::selfDrawBackground(){
@@ -1216,6 +1324,41 @@ void CloudsVisualSystemRGBD::selfDraw(){
         
 		setupRGBDTransforms();
 			
+        if(bDrawOcclusion){
+            // z-prepass
+            glPushMatrix();
+            ofTranslate(0, 0, 2);
+            glEnable(GL_DEPTH_TEST);  // We want depth test !
+            glDepthFunc(GL_LESS);     // We want to get the nearest pixels
+            glColorMask(0,0,0,0);     // Disable color, it's useless, we only want depth.
+            glDepthMask(GL_TRUE);     // Ask z writing
+            
+			occlusionShader.begin();
+            
+			getRGBDVideoPlayer().setupProjectionUniforms(occlusionShader);
+            
+
+			occlusionShader.setUniform1f("triangleExtend",
+                                    getRGBDVideoPlayer().getFadeIn()  *
+                                    getRGBDVideoPlayer().getFadeOut() *
+                                    visualSystemFadeValue);
+			occlusionShader.setUniform1f("meshRetractionFalloff",meshRetractionFalloff);
+			occlusionShader.setUniform1f("headMinRadius", meshFaceMinRadius);
+			occlusionShader.setUniform1f("headFalloff", meshFaceFalloff);
+			occlusionShader.setUniform1f("forceGeoRectraction",meshForceGeoRectraction);
+
+            occlusion.draw(GL_TRIANGLES, 0, occlusionVertexCount);
+
+            occlusionShader.end();
+            
+            // real render
+            glEnable(GL_DEPTH_TEST);  // We still want depth test
+            glDepthFunc(GL_LEQUAL);   // EQUAL should work, too. (Only draw pixels if they are the closest ones)
+            glColorMask(1,1,1,1);     // We want color this time
+            glDepthMask(GL_FALSE);
+            glPopMatrix();
+        }
+        
 		if(drawMesh){
 			
 			meshShader.begin();
@@ -1244,7 +1387,9 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			//glDisable(GL_CULL_FACE);
 		}
 		
-		glDisable(GL_DEPTH_TEST);
+        if(!bDrawOcclusion){
+            glDisable(GL_DEPTH_TEST);
+        }
 		ofEnableBlendMode(OF_BLENDMODE_ADD);
 //        ofEnableBlendMode(OF_BLENDMODE_SCREEN);
         
@@ -1618,6 +1763,7 @@ void CloudsVisualSystemRGBD::selfSetupGui(){
 void CloudsVisualSystemRGBD::selfPresetLoaded( string presetName ){
 	refreshLines = true;
 	refreshMesh  = true;
+    refreshOcclusion = true;
 }
 
 //--------------------------------------------------------------
@@ -1808,7 +1954,8 @@ void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e)
 	}
 	
 	
-	if(e.widget->getName() == "Line Spacing" || e.widget->getName() == "Line Granularity") {
+	if(e.widget->getName() == "Line Spacing" ||
+       e.widget->getName() == "Line Granularity") {
 		refreshLines = true;
 	}
 	else if(e.widget->getName() == "X Simplify" ||
@@ -1817,6 +1964,12 @@ void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e)
 	{
 		refreshMesh = true;
 	}
+    else if(e.widget->getName() == "Occl X Simplify" ||
+            e.widget->getName() == "Occl Y Simplify")
+    {
+        refreshOcclusion = true;
+    }
+    
 }
 
 //--------------------------------------------------------------

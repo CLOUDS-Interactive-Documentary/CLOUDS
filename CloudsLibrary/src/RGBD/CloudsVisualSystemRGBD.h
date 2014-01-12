@@ -200,7 +200,19 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float meshFaceFalloff;
 	float meshRetractionFalloff;
 	float meshForceGeoRectraction;
-	
+    bool refreshMesh;
+	void generateMesh();
+
+    ///OCCLUSION
+	ofxUISuperCanvas *occlusionGui;
+    bool bDrawOcclusion;
+    ofShader occlusionShader;
+    ofVbo occlusion;
+    int occlusionVertexCount;
+   	float occlusionXSimplify;
+	float occlusionYSimplify;
+    bool refreshOcclusion;
+    void generateOcclusion();
     
     ///ACTUATORS
     float actuatorSpinPosition;
@@ -213,8 +225,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     ofVec3f meshActuator;
     
     
-	bool refreshMesh;
-	void generateMesh();
 	
 	void loadShader();
 
