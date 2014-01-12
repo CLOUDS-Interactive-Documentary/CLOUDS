@@ -172,7 +172,7 @@ void drawnLineApp::update(){
     CL.update();
     
     
-    if (ofGetMousePressed()){
+    if (bShowDebug){
         
         
         ofPoint trans(ofPoint(-1, 0));
@@ -464,7 +464,7 @@ void drawnLineApp::drawLineSet(lineSet & set, matchStruct & match, ofPoint ptA, 
         
         ofEnableAlphaBlending() ;
         
-        if (i == 0)  ofGetMousePressed() == false ? ofSetColor(255,255,255,0) : ofSetColor(ofColor::cyan);
+        if (i == 0)  bShowDebug == false ? ofSetColor(255,255,255,0) : ofSetColor(ofColor::cyan);
         else ofSetColor(ofColor::white);
         
         ofPolyline line;

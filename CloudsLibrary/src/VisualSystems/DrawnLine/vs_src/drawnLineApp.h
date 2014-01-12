@@ -58,5 +58,7 @@ class drawnLineApp {
     
     BrushedLine BL;
     
+    bool bShowDebug;
+    
     CloudsVisualSystem * SYS;
 };

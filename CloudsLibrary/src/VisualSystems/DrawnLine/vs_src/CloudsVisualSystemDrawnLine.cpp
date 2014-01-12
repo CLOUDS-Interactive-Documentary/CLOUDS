@@ -13,11 +13,10 @@ void CloudsVisualSystemDrawnLine::selfSetupGui(){
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-	customGui->addButton("Custom Button", false);
-	customGui->addToggle("Custom Toggle", &customToggle);
+
+    bShowDebug = false;
+    customGui->addToggle("debugView_drawnLine", &bShowDebug);
+    
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemDrawnLine::selfGuiEvent);
 	guis.push_back(customGui);
@@ -97,7 +96,7 @@ void CloudsVisualSystemDrawnLine::selfUpdate(){
 //        setupFbo();
 //    }
     
-    
+    APP.bShowDebug = bShowDebug;
     APP.update();
 
     
