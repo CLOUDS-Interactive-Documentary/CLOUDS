@@ -3,12 +3,7 @@
 //
 
 #include "CloudsVisualSystemDrawnLine.h"
-//#include "CloudsRGBDVideoPlayer.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemDrawnLine::selfSetupGui(){
@@ -35,6 +30,11 @@ void CloudsVisualSystemDrawnLine::selfGuiEvent(ofxUIEventArgs &e){
 	}
 }
 
+void CloudsVisualSystemDrawnLine::setupFbo(){
+    //ZACH: instantiate your FBO here
+    fbo.allocate(getCanvasWidth(), getCanvasHeight(), GL_RGB);
+}
+
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemDrawnLine::selfSetupSystemGui(){
 	
@@ -52,14 +52,18 @@ void CloudsVisualSystemDrawnLine::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
+//This is called whenever a new preset is loaded, before selfSetup()
+//use it to ensure all your simple variables are initialized to an
+//acceptable default state
+void CloudsVisualSystemDrawnLine::selfSetDefaults(){
+
+}
+
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemDrawnLine::selfSetup(){
-
-	//make sure to include getVisualSystemDataPath() when accessing data
-//	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
-	
+	setupFbo();
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -84,13 +88,25 @@ void CloudsVisualSystemDrawnLine::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemDrawnLine::selfUpdate(){
-
+    if(fbo.getWidth() != getCanvasWidth() ||
+       fbo.getHeight() != getCanvasHeight())
+    {
+        setupFbo();
+    }
+    
+    fbo.begin();
+    ofClear(0, 0, 0);
+    
+    //ZACH: draw here :)
+    
+    fbo.end();
+    
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemDrawnLine::selfDraw(){
-		
+	
 }
 
 // draw any debug stuff here
@@ -100,14 +116,13 @@ void CloudsVisualSystemDrawnLine::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemDrawnLine::selfDrawBackground(){
 
-	//turn the background refresh off
-	//bClearBackground = false;
+    fbo.draw(0, 0);
 	
 }
+
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
-void CloudsVisualSystemDrawnLine::selfEnd(){
-	
+void CloudsVisualSystemDrawnLine::selfEnd(){	
 	
 }
 // this is called when you should clear all the memory and delet anything you made in setup
