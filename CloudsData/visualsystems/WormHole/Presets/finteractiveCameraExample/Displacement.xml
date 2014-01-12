@@ -1,0 +1,42 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Displacement</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>139</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>useNoiseDisplacement</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>displacement</Name>
+    <Value>9.31034</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseDirectionX</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseDirectionY</Name>
+    <Value>0.330049</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseDirectionZ</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseSpeed</Name>
+    <Value>0.369458</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseScale</Name>
+    <Value>3.94089</Value>
+</Widget>
