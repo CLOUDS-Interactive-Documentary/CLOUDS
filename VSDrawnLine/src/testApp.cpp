@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	ofSetVerticalSync(true);
+	ofSetVerticalSync(false);
   
 	drawnLine.setup();
 	drawnLine.playSystem();
@@ -13,7 +13,7 @@ void testApp::setup(){
 void testApp::update(){
 
     
-    cout << ofGetFrameRate() << endl;
+    //cout << ofGetFrameRate() << endl;
 }
 
 
