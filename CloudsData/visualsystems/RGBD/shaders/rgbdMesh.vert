@@ -62,6 +62,7 @@ varying float positionValid;
 varying float diffuseAttenuate;
 
 varying float headPositionAttenuation;
+varying float actuatorExtendAttenuate;
 varying float edgeAttenuate;
 varying float forceFade;
 
@@ -146,13 +147,7 @@ void main(void){
     
 	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
     normal = -normalize(gl_NormalMatrix * surfaceNormal);
-    float actuatorExtendAttenuate = max(0.0,dot(normal,actuatorDirection));
-//    actuatorExtendAttenuate = 0.5;
-    
-    //bring back for view dependent effects
-//	vec3 vert = vec3(gl_ModelViewMatrix * pos);
-//	eye = normalize(-vert);
-//	headRetraction = 1.0;
+    actuatorExtendAttenuate = max(0.2,dot(normal,actuatorDirection));
     float accumulatedExtendAttenuation = triangleExtend * headRetraction * actuatorExtendAttenuate;
 	vec2 samplePosExtended = samplePos + gl_Normal.xy * accumulatedExtendAttenuation;
 	
@@ -163,18 +158,6 @@ void main(void){
     vec4 pos = vec4((samplePosExtended.x - depthPP.x) * depth / depthFOV.x,
                     (samplePosExtended.y - depthPP.y) * depth / depthFOV.y,
                     depth, 1.0);
-    
-//	headPositionAttenuation = map( distance(pos,headPosition), headMinRadius+headFalloff, headMinRadius, .0, 1.0);
-	//extract the normal and pass it along to the fragment shader
-    //////OLD NORMAL
-//	vec2 normalPos = samplePosExtended.xy + normalRect.xy;
-//	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
-//
-//	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
-//    normal = -normalize(gl_NormalMatrix * surfaceNormal);
-//	vec3 vert = vec3(gl_ModelViewMatrix * pos);
-//	eye = normalize(-vert);
-	///OLD NORMAL
     
     
     float neighborA = depthValueFromSample( depthRect.xy + samplePos + gl_Color.xy * depthRect.zw * accumulatedExtendAttenuation );
@@ -207,15 +190,7 @@ void main(void){
 		
 		gl_TexCoord[0].xy = clamp(uv,vec2(0.0), colorRect.zw*colorScale);
 	}
-	
-	//DIFFUSE LIGHT
-//	vec3 diffuseLightDirectionFull = vec3(lightPosition.xyz - vert);
-//    float d = length(diffuseLightDirectionFull);
-//	diffuseAttenuate = 1.0 /(gl_LightSource[0].constantAttenuation  +
-//							 gl_LightSource[0].linearAttenuation	* d +
-//							 gl_LightSource[0].quadraticAttenuation * d * d);
-//	
-//	diffuseLightDirection = diffuseLightDirectionFull / d;
+
 	
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
     gl_FrontColor = gl_Color;

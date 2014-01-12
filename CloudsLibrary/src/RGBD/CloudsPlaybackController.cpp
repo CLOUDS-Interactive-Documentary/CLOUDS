@@ -126,6 +126,9 @@ void CloudsPlaybackController::setup(){
 	introSequence->setDrawToScreen(false);
 	
 	hud.setup();
+#ifdef OCULUS_RIFT
+    rgbdVisualSystem->hud = &hud;
+#endif
 	
 	//////////////SHOW INTRO
 	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
@@ -240,7 +243,13 @@ void CloudsPlaybackController::mouseMoved(ofMouseEventArgs & args){
 }
 
 void CloudsPlaybackController::mousePressed(ofMouseEventArgs & args){
-
+#ifdef OCULUS_RIFT
+    // EZ: Override CloudsInputSystem just to get the thing started
+    // since we can't click with Oculus input.
+    if (introSequence) {
+        introSequence->selfMousePressed(args);
+    }
+#endif
 }
 
 void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
@@ -489,13 +498,27 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 		ofSetColor(255, crossfadeValue*255 );
 		
 		currentVisualSystem->selfPostDraw();
+
+#ifdef OCULUS_RIFT
+  //      ofVec2f overlaySize = hud.getSize();
+  //      CloudsVisualSystem::getOculusRift().beginOverlay(-230, overlaySize.x,overlaySize.y);
+#endif
         
 #ifdef SHOW_SUBTITLES
         if (CloudsVisualSystem::getRGBDVideoPlayer().haveSubtitles()) {
             CloudsVisualSystem::getRGBDVideoPlayer().getSubtitles().draw(ofGetWidth()/2, ofGetHeight()-60);
         }
 #endif
+        
+#ifdef OCULUS_RIFT
+   //     hud.drawOverlay(overlaySize);
+#else
 		hud.draw();
+#endif
+        
+#ifdef OCULUS_RIFT
+ //       CloudsVisualSystem::getOculusRift().endOverlay();
+#endif
 		
 		ofPopStyle();
 	}
