@@ -40,12 +40,15 @@ class CloudsSound {
 	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
 	void questionAsked(CloudsQuestionEventArgs& args);	
+	void questionSelected(CloudsQuestionEventArgs& args);
 	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
     
     // new callbacks
     void enterTunnel();
     void exitTunnel();
+    void enterClusterMap();
+    void exitClusterMap();
 	
 	float maxSpeakerVolume; // set between 0. and 1.0 to modulate speaker volume
 	
@@ -54,6 +57,7 @@ class CloudsSound {
     void startMusicFX(float outskip, float musicdur);
     void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum, string ampenvelope);
     void stopMusic();
+    void fadeMusic();
     void reloadPresets();
     void doPrinting();
     int ACTBUS; // needs to be public for UDP shit in the scoredesigner
@@ -82,6 +86,7 @@ class CloudsSound {
     int framesize; // sigvs (512 seems ok)
 
     bool first_vec;
+    int whichdream;
 
     float MASTERTEMPO;
     int AUTORUN;
