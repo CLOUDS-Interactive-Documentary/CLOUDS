@@ -52,7 +52,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         }
         
         whichdream = 0;
-		instGain = 5.0;
+		instGain = 7.5;
 		
         MASTERTEMPO = 120;
         AUTORUN = 0;
