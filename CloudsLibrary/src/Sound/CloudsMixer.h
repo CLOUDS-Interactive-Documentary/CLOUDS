@@ -43,8 +43,7 @@ protected:
     
     float musicVol;
     float diageticVol;
-    float masterGain;
-    
+
     // compressor data
     float attack;
     float decay;

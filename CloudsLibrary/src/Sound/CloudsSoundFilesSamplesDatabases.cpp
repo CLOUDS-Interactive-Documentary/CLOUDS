@@ -18,6 +18,10 @@ void CloudsSound::loadRTcmixFiles()
         cout << "LOADING SOUND DATA" << endl;
         cout << "==================" << endl;
     }
+    else
+    {
+        cout << "SOUND: LOADING DATA... ";
+    }
     
     loadrhythms("rhythms.txt", rhythms);
     
@@ -33,6 +37,10 @@ void CloudsSound::loadRTcmixFiles()
             cout << endl;
         }
     }
+    else
+    {
+        cout << "rhythms... ";
+    }
     
     loadpitches("pitches.txt", pitches);
     if(LUKEDEBUG)
@@ -46,6 +54,10 @@ void CloudsSound::loadRTcmixFiles()
             }
             cout << endl;
         }
+    }
+    else
+    {
+        cout << "pitches... ";
     }
 
     loadsimplemelodies("simplemelodies.txt", simplemelodies);
@@ -61,10 +73,17 @@ void CloudsSound::loadRTcmixFiles()
             cout << endl;
         }
     }
+    else
+    {
+        cout << "melodies... ";
+    }
 
     //loadpresets("presets.txt", presets);
     loadpresets_xml("soundpresets.xml", presets);
-    
+    if(!LUKEDEBUG)
+    {
+        cout << "presets." << endl;
+    }
 }
 
 void CloudsSound::reloadPresets()
@@ -82,11 +101,16 @@ void CloudsSound::loadRTcmixSamples()
         cout << "LOADING SOUNDS" << endl;
         cout << "==============" << endl;
     }
+    else
+    {
+        cout << "SOUND: LOADING SAMPLES...";
+    }
     
     string spath = GetCloudsDataPath() + "sound/samps/";
     ofDirectory sdir(spath);
     
     // load individual base hits
+    
     LOADSOUND(sdir.getAbsolutePath() + "/" + "BD1.aif", "BD1");
     LOADSOUND(sdir.getAbsolutePath() + "/" + "BD2.aif", "BD2");
     LOADSOUND(sdir.getAbsolutePath() + "/" + "BD3.aif", "BD3");
@@ -115,7 +139,9 @@ void CloudsSound::loadRTcmixSamples()
         len = ofSplitString(len, ".")[0];
         foo.numbeats = ofToInt(len);
         looperSamples.push_back(foo);
+        if(!LUKEDEBUG) cout << ".";
     }
+    if(!LUKEDEBUG) cout << " done." << endl;
     
     //load pattern data
     ofDirectory ddir(spath);
