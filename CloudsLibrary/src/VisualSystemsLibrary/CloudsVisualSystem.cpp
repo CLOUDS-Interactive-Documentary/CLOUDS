@@ -1659,6 +1659,13 @@ void CloudsVisualSystem::guiCameraEvent(ofxUIEventArgs &e)
 		cameraTrack->addKeyframe();
 	}
 	
+	else if(name == "bUseInteractiveCamera")
+	{
+        interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX);
+        interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY);
+        previousinteractiveCameraRot = interactiveCameraRot;
+	}
+	
 //	//TRANSITION OPTIONS
 //	if(name == "2D")
 //	{
