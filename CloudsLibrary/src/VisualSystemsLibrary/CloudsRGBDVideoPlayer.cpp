@@ -203,7 +203,6 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 	currentVoiceoverPlayer->stop();
 	currentPlayer->stop();
 	currentClipVolumeAdjustment = nextClipVolumeAdjustment;
-    currentMaxVolume = maxVolume * currentClipVolumeAdjustment;
     
 //    cout<<"Current Max Vol: "<<currentMaxVolume<<endl;
 	swap(currentPlayer,nextPlayer);
@@ -304,7 +303,8 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	
 
 
-    float  audioVolume = currentMaxVolume;
+    float  audioVolume =  maxVolume * currentClipVolumeAdjustment;
+
 	if(playingVO){
 		currentVoiceoverPlayer->setVolume(audioVolume);
 	}

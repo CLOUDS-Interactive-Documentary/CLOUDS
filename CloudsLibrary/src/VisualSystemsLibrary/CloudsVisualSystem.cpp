@@ -18,8 +18,11 @@
 
 static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
+static ofImage cloudsPostDistortionMap;
 static CloudsRGBDVideoPlayer rgbdPlayer;
 static bool backgroundShaderLoaded = false;
+static ofShader cloudsPostShader;
+static bool postShaderLoaded = false;
 static ofShader backgroundShader;
 static ofImage backgroundGradientCircle;
 static ofImage backgroundGradientBar;
@@ -66,6 +69,13 @@ void CloudsVisualSystem::loadBackgroundShader(){
 	backgroundGradientCircle.loadImage(GetCloudsDataPath() + "backgrounds/circle.png");
 	backgroundShader.load(GetCloudsDataPath() + "shaders/background");
 	backgroundShaderLoaded = true;
+    
+}
+
+void CloudsVisualSystem::loadPostShader(){
+    cloudsPostShader.load("",GetCloudsDataPath() + "shaders/post.fs");
+    cloudsPostDistortionMap.loadImage( GetCloudsDataPath() + "images/7.jpg");
+    postShaderLoaded = true;
 }
 
 void CloudsVisualSystem::getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height){
@@ -208,6 +218,10 @@ void CloudsVisualSystem::setup(){
 	if(!backgroundShaderLoaded){
 		loadBackgroundShader();
 	}
+    
+    if(!postShaderLoaded){
+        loadPostShader();
+    }
 
 //	currentCamera = &cam;
 	
@@ -243,12 +257,15 @@ void CloudsVisualSystem::setup(){
 
 	bIsSetup = true;
 	
+    bEnablePostFX = false;
 	bUseInteractiveCamera = false;
 	interactiveCameraDamping = 0;
 	interactiveCameraMinX = interactiveCameraMaxX = interactiveCameraMinY = interactiveCameraMaxY = 0;
-	interactiveCameraRot = previousinteractiveCameraRot = ofVec2f(0,0);
+	interactiveCameraRot = ofVec2f(0,0);
 	interactiveCameraDamping = 0;
 	interactiveCameraRot.set(0,0);
+    postChromaDist = 0.f;
+    postGrainDist = 0.f;
 }
 
 bool CloudsVisualSystem::isSetup(){
@@ -459,9 +476,6 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		}
 		else {
 			
-			//update the interactive camera data
-			previousinteractiveCameraRot;
-			
 			CloudsVisualSystem::getSharedRenderTarget().begin();
 			if(bClearBackground){
 				ofClear(0, 0, 0, 1.0);
@@ -470,35 +484,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			
 			getCameraRef().begin();
 			
-			//transform for our interactive camera
-			if(bUseInteractiveCamera)
-			{
-				//need top replace the the dimension getters
-				
-				interactiveCameraRot *= 1. - interactiveCameraDamping;
-				
-				interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX)*interactiveCameraDamping;
-				interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY)*interactiveCameraDamping;
-				
-				previousinteractiveCameraRot = interactiveCameraRot;
-				
-				ofPushMatrix();
-				
-				ofTranslate( getCameraRef().getPosition());
-				
-				ofRotate( interactiveCameraRot.x, 0, 1, 0);
-				ofRotate( interactiveCameraRot.y, 1, 0, 0);
-				
-				ofTranslate( -getCameraRef().getPosition());
-			}
-			
 			drawScene();
-			
-			//end our interactive camera transform
-			if(bUseInteractiveCamera)
-			{
-				ofPopMatrix();
-			}
 			
 			getCameraRef().end();
 			
@@ -508,11 +494,12 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			ofScale(1,-1,1);
 			
 			selfDrawOverlay();
-			
+
 			ofPopMatrix();
 			ofPopStyle();
 	
 			CloudsVisualSystem::getSharedRenderTarget().end();
+            
 		}
 		
 		//draw the fbo to the screen as a full screen quad
@@ -524,6 +511,8 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 #ifndef OCULUS_RIFT
         drawCursor();
 #endif
+        drawKinectDebug();
+
 	}
     
 	if(timeline != NULL && timeline->getIsShowing())
@@ -535,6 +524,23 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 	}
 	
     ofPopStyle();
+}
+
+
+void CloudsVisualSystem::drawKinectDebug(){
+#ifdef KINECT_INPUT
+    if (timeline->getIsShowing()) {
+        ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
+        if (kinectInput->bDoDebug) {
+            static const int kDebugMargin = 0;
+            static const int kDebugWidth  = 640;
+            static const int kDebugHeight = 480;
+            kinectInput->debug(CloudsVisualSystem::getSharedRenderTarget().getWidth()  - kDebugWidth  - kDebugMargin,
+                               kDebugMargin,
+                               kDebugWidth, kDebugHeight);
+        }
+    }
+#endif
 }
 
 void CloudsVisualSystem::draw2dSystemPlane(){
@@ -553,16 +559,30 @@ void CloudsVisualSystem::draw2dSystemPlane(){
 
 void CloudsVisualSystem::drawScene(){
 	
-	
-//	//start our 3d scene
+	ofPushMatrix();
+    
+	//start our 3d scene
 	ofRotateX(xRot->getPos());
 	ofRotateY(yRot->getPos());
 	ofRotateZ(zRot->getPos());
-	
+    
 	selfSceneTransformation();
-	
-	//accumulated position offset
-//	ofTranslate( positionOffset );
+
+    if(bUseInteractiveCamera){
+        interactiveCameraRot *= 1. - interactiveCameraDamping;
+        
+        interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX)*interactiveCameraDamping;
+        interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY)*interactiveCameraDamping;
+  
+        GLfloat model[16];
+        glGetFloatv(GL_MODELVIEW_MATRIX, model);
+        ofMatrix4x4 curmv;
+        curmv.set(model);
+        ofMultMatrix(curmv.getInverse());
+        ofRotate( interactiveCameraRot.x, 0, 1, 0);
+        ofRotate( interactiveCameraRot.y, 1, 0, 0);
+        ofMultMatrix(curmv);
+    }
 	
 	glEnable(GL_DEPTH_TEST);
 	
@@ -582,7 +602,8 @@ void CloudsVisualSystem::drawScene(){
 	lightsEnd();
 	
 	glDisable(GL_DEPTH_TEST);
-	
+    
+    ofPopMatrix();
 
 #ifdef OCULUS_RIFT
     if(drawCursorMode > DRAW_CURSOR_NONE){
@@ -1069,6 +1090,7 @@ void CloudsVisualSystem::setupCoreGuis()
     setupMaterial("MATERIAL 1", mat);
     setupPointLight("POINT LIGHT 1", light);
     setupPresetGui();
+    setupPostGui();
 #ifdef KINECT_INPUT
     setupKinectGui();
 #endif
@@ -1291,7 +1313,7 @@ void CloudsVisualSystem::setupBackgroundGui()
     bgGui->addWidgetToHeader(toggle);
 	bgGui->addToggle("BAR GRAD", &bBarGradient);
     bgGui->addSpacer();
-
+    
     bgGui->addSlider("HUE", 0.0, 255.0, &bgHue);
     bgGui->addSlider("SAT", 0.0, 255.0, &bgSat);
     bgGui->addSlider("BRI", 0.0, 255.0, &bgBri);
@@ -1314,14 +1336,14 @@ void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
     
     if(name == "BRI")
     {
-       // bgBri->setPosAndHome(bgBri->getPos());
+        // bgBri->setPosAndHome(bgBri->getPos());
         for(int i = 0; i < guis.size(); i++)
         {
             guis[i]->setColorBack(ofColor(255*.2, 255*.9));
 			
         }
     }
-
+    
     else if(name == "GRAD")
     {
         ofxUIToggle *t = (ofxUIToggle *) e.widget;
@@ -1366,6 +1388,29 @@ void CloudsVisualSystem::guiBackgroundEvent(ofxUIEventArgs &e)
 		bgGui->getWidget("SAT2")->setColorFill(backgrounfFillColor);
 		bgGui->getWidget("BRI2")->setColorFill(backgrounfFillColor);
 	}
+}
+
+void CloudsVisualSystem::setupPostGui()
+{
+    postGui = new ofxUISuperCanvas("POST EFFECTS", gui);
+    postGui->copyCanvasStyle(gui);
+    postGui->copyCanvasProperties(gui);
+    postGui->setPosition(guis[guis.size()-1]->getRect()->x+guis[guis.size()-1]->getRect()->getWidth()+1, 0);
+    postGui->setName("Post Effects");
+    postGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    postGui->addSpacer();
+    postGui->addToggle("Enable", &bEnablePostFX);
+    postGui->addSlider("Chroma_Distortion", 0.0, 1.0, &postChromaDist);
+    postGui->addSlider("Grain_Distortion", 0.0, 1.0, &postGrainDist);
+    postGui->autoSizeToFitWidgets();
+    ofAddListener(postGui->newGUIEvent, this, &CloudsVisualSystem::guiPostEvent);
+    guis.push_back(postGui);
+    guimap[bgGui->getName()] = postGui;
+}
+
+void CloudsVisualSystem::guiPostEvent(ofxUIEventArgs &e)
+{
+    string name = e.widget->getName();
 }
 
 void CloudsVisualSystem::setupLightingGui()
@@ -1488,22 +1533,7 @@ void CloudsVisualSystem::setupCameraGui()
     guis.push_back(camGui);
     guimap[camGui->getName()] = camGui;
 	
-	
-//	//load transitions.xml into our transitionOptionMap
-//	loadTransitionOptions();
-//	transitionOptionGui = new ofxUISuperCanvas("TRANSITION_OPTIONS", gui);
-//    transitionOptionGui->copyCanvasStyle(gui);
-//    transitionOptionGui->copyCanvasProperties(gui);
-//    transitionOptionGui->setName("TransitionOpitons");
-//    transitionOptionGui->setPosition(guis[guis.size()-1]->getRect()->x+guis[guis.size()-1]->getRect()->getWidth()+1, 0);
-//    transitionOptionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-//	
-//	transitionOptionGui->autoSizeToFitWidgets();
-//    ofAddListener(transitionOptionGui->newGUIEvent,this,&CloudsVisualSystem::guiCameraEvent);
-//    guis.push_back(transitionOptionGui);
-//    guimap[transitionOptionGui->getName()] = transitionOptionGui;
-//	
-//	transitionOptionGui->setVisible(false);
+
 }
 
 ////load our Transitions.xml into a map of vectors used for saving transition option name
@@ -1668,6 +1698,12 @@ void CloudsVisualSystem::guiCameraEvent(ofxUIEventArgs &e)
     }
 	else if(name == "ADD KEYFRAME"){
 		cameraTrack->addKeyframe();
+	}
+	
+	else if(name == "bUseInteractiveCamera")
+	{
+        interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX);
+        interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY);
 	}
 	
 //	//TRANSITION OPTIONS
@@ -3333,25 +3369,23 @@ void CloudsVisualSystem::selfPostDraw(){
     oculusRift.draw();
 #else
     //draws to viewport
+    //use blabalh
+    if(bEnablePostFX){
+        cloudsPostShader.begin();
+        cloudsPostShader.setUniformTexture("distortionMap", cloudsPostDistortionMap, 1);
+        cloudsPostShader.setUniform2f("resolution", getCanvasWidth(), getCanvasHeight());
+        cloudsPostShader.setUniform2f("dMapResolution", cloudsPostDistortionMap.getWidth(), cloudsPostDistortionMap.getHeight());
+        cloudsPostShader.setUniform1f("chromaDist", postChromaDist);
+        cloudsPostShader.setUniform1f("grainDist", postGrainDist);
+    }
     CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
-#endif
-    
-#ifdef KINECT_INPUT
-    if (timeline->getIsShowing()) {
-        ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
-        if (kinectInput->bDoDebug) {
-            static const int kDebugMargin = 0;
-            static const int kDebugWidth  = 640;
-            static const int kDebugHeight = 480;
-            kinectInput->debug(CloudsVisualSystem::getSharedRenderTarget().getWidth()  - kDebugWidth  - kDebugMargin,
-                               kDebugMargin,
-                               kDebugWidth, kDebugHeight);
-        }
+    if(bEnablePostFX){
+        cloudsPostShader.end();
     }
+    //end
 #endif
-
 }
 
 void CloudsVisualSystem::drawCursor()

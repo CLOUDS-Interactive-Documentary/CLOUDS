@@ -52,7 +52,7 @@
     
     rgbdVisualSystem.getRGBDVideoPlayer().forceStop = false;
     rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setLoopState(OF_LOOP_NORMAL);
-    
+    rgbdVisualSystem.getRGBDVideoPlayer().maxVolume = 0.;    
 	hud.update();
 	
 }
@@ -60,7 +60,7 @@
 - (void)draw
 {
 	rgbdVisualSystem.selfPostDraw();
-    
+
     if (rgbdVisualSystem.getRGBDVideoPlayer().haveSubtitles()) {
 //        rgbdVisualSystem.getRGBDVideoPlayer().getSubtitles().draw(ofGetWindowWidth()/2, ofGetWindowHeight()-60);
     }

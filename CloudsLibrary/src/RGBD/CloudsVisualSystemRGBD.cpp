@@ -42,7 +42,6 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	skinBrightness = 0.;
 	
 	drawPoints = true;
-	refreshPointcloud = true;
 	numRandomPoints = 20000;
 	pointSize.min = 1.0;
 	pointSize.max = 3.0;
@@ -1043,7 +1042,7 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOutRight()
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::generatePoints(){
 	
-	lines.setUsage( GL_STATIC_DRAW);
+	points.setUsage( GL_STATIC_DRAW);
 	
 	if(numRandomPoints == 0){
 		points.clear();
@@ -1065,7 +1064,7 @@ void CloudsVisualSystemRGBD::generatePoints(){
 void CloudsVisualSystemRGBD::generateLines(){
 	
 	lines.clear();
-	lines.setUsage(GL_STATIC_DRAW);
+//	lines.setUsage(GL_STATIC_DRAW);
 
 	if(lineGranularity <= 0) lineGranularity = 1;
 	if(lineSpacing <= 0) lineSpacing = 1;
@@ -1073,6 +1072,7 @@ void CloudsVisualSystemRGBD::generateLines(){
 	int height = 480;
 	int width = 640;
 	
+    ofMesh m;
 	//HORIZONTAL
 	for (float ystep = 0; ystep <= height; ystep += lineSpacing){
 		for (float xstep = 0; xstep <= width - lineGranularity; xstep += lineGranularity){
@@ -1081,16 +1081,17 @@ void CloudsVisualSystemRGBD::generateLines(){
 			ofVec3f stepB = ofVec3f(xstep+lineGranularity, ystep, 0);
 			ofVec3f mid   = stepA.getInterpolated(stepB, .5);
 			
-			lines.addNormal( stepA-mid );
-			lines.addVertex( mid );
+			m.addNormal( stepA-mid );
+			m.addVertex( mid );
 			
-			lines.addNormal( stepB-mid );
-			lines.addVertex( mid );
+			m.addNormal( stepB-mid );
+			m.addVertex( mid );
 		}
 	}
 	
-	lines.setMode(OF_PRIMITIVE_LINES );
-	
+	lines.setMesh(m, GL_STATIC_DRAW);
+	lineVertexCount = m.getNumVertices();
+    
 	refreshLines = false;
 }
 
@@ -1100,6 +1101,7 @@ void CloudsVisualSystemRGBD::generateMesh(){
 	if(xSimplify <= 0) xSimplify = 1.0;
 	if(ySimplify <= 0) ySimplify = 1.0;
 
+    ofMesh m;
 	int x = 0;
 	int y = 0;
 
@@ -1142,9 +1144,8 @@ void CloudsVisualSystemRGBD::generateMesh(){
 		x = 0;
 	}
 	
-	mesh.clear();
-	mesh.setUsage(GL_STATIC_DRAW);
-
+//	mesh.clear();
+//    mesh.setMesh(mesh, GL_STATIC_DRAW);
 	for(int i = 0; i < indeces.size(); i+=3){
 		
 		ofVec3f& a = vertices[ indeces[i+0] ];
@@ -1156,20 +1157,22 @@ void CloudsVisualSystemRGBD::generateMesh(){
 		ofVec3f toB = b-mid;
 		ofVec3f toC = c-mid;
 		
-		mesh.addNormal(toA);
-		mesh.addColor(ofFloatColor(toB.x/640.,toB.y/480.,toC.x/640.,toC.y/480.));
-		mesh.addVertex(mid);
+		m.addNormal(toA);
+		m.addColor(ofFloatColor(toB.x/640.,toB.y/480.,toC.x/640.,toC.y/480.));
+		m.addVertex(mid);
 
-		mesh.addNormal(toB);
-		mesh.addColor(ofFloatColor(toA.x/640.,toA.y/480.,toC.x/640.,toC.y/480.));
-		mesh.addVertex(mid);
+		m.addNormal(toB);
+		m.addColor(ofFloatColor(toA.x/640.,toA.y/480.,toC.x/640.,toC.y/480.));
+		m.addVertex(mid);
 		
-		mesh.addNormal(toC);
-		mesh.addColor(ofFloatColor(toA.x/640.,toA.y/480.,toB.x/640.,toB.y/480.));
-		mesh.addVertex(mid);
+		m.addNormal(toC);
+		m.addColor(ofFloatColor(toA.x/640.,toA.y/480.,toB.x/640.,toB.y/480.));
+		m.addVertex(mid);
 	}
-	
-	mesh.setMode(OF_PRIMITIVE_TRIANGLES);
+    
+    meshVertexCount = m.getNumVertices();
+    mesh.setMesh(m, GL_STATIC_DRAW);
+	//m.setMode(OF_PRIMITIVE_TRIANGLES);
 	refreshMesh = false;
 }
 
@@ -1202,6 +1205,8 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	if(!getRGBDVideoPlayer().playingVO && getRGBDVideoPlayer().getPlayer().isLoaded() && drawRGBD){
 		
+        ofEnableAlphaBlending();
+        
 		//Enable smooth lines and screen blending
 		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
@@ -1218,7 +1223,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		
 			meshShader.setUniform1f("meshAlpha", meshAlpha);
 			meshShader.setUniform1f("triangleExtend",
-                                    getRGBDVideoPlayer().getFadeIn() *
+                                    getRGBDVideoPlayer().getFadeIn()  *
                                     getRGBDVideoPlayer().getFadeOut() *
                                     visualSystemFadeValue);
 			meshShader.setUniform1f("meshRetractionFalloff",meshRetractionFalloff);
@@ -1232,15 +1237,16 @@ void CloudsVisualSystemRGBD::selfDraw(){
                                     meshActuator.y,
                                     meshActuator.z);
             
-			mesh.draw();
+			//mesh.draw();
+            mesh.draw(GL_TRIANGLES, 0, meshVertexCount);
 			
 			meshShader.end();
 			//glDisable(GL_CULL_FACE);
 		}
 		
 		glDisable(GL_DEPTH_TEST);
-//		ofEnableBlendMode(OF_BLENDMODE_ADD);
-        ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+		ofEnableBlendMode(OF_BLENDMODE_ADD);
+//        ofEnableBlendMode(OF_BLENDMODE_SCREEN);
         
 		if(drawLines){
 			ofSetLineWidth(lineThickness);
@@ -1266,7 +1272,8 @@ void CloudsVisualSystemRGBD::selfDraw(){
                                     lineActuator.y,
                                     lineActuator.z);
             
-			lines.draw();
+			//lines.draw();
+            lines.draw( ofGetGLPrimitiveMode(OF_PRIMITIVE_LINES), 0, lineVertexCount);
 			
 			lineShader.end();
 		}
@@ -1294,6 +1301,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
                                     pointActuator.z);
             
 			points.draw();
+            //points.draw(GL_POINTS, 0, pointCount);
 			
 			pointShader.end();
 		}

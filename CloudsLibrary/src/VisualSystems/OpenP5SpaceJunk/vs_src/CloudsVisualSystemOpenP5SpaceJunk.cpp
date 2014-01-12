@@ -117,12 +117,6 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfBegin(){
 	shouldRegenerate = true;
 }
 
-//do things like ofRotate/ofTranslate here
-//any type of transformation that doesn't have to do with the camera
-void CloudsVisualSystemOpenP5SpaceJunk::selfSceneTransformation(){
-	
-}
-
 //normal update call
 void CloudsVisualSystemOpenP5SpaceJunk::selfUpdate(){
 	if(shouldRegenerate){
@@ -177,6 +171,13 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfUpdate(){
 
 }
 
+
+void CloudsVisualSystemOpenP5SpaceJunk::selfSceneTransformation(){
+	//Rotate breaks oculus overlay
+    ofRotateX(ofRadToDeg(ang));     //X rotation - converts radians to degrees
+    ofRotateY(ofRadToDeg(ang));     //Y rotation
+}
+
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemOpenP5SpaceJunk::selfDraw(){
@@ -187,10 +188,6 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfDraw(){
     
 	ofPushMatrix();
 	ofEnableAlphaBlending();
-	
-	//Rotate breaks oculus overlay
-    ofRotateX(ofRadToDeg(ang));     //X rotation - converts radians to degrees
-    ofRotateY(ofRadToDeg(ang));     //Y rotation
 	
     mat->begin();
 	mesh.draw();
