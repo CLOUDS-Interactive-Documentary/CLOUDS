@@ -31,6 +31,7 @@
     [interventionTextBox setTarget:self];   
 	[speakerVolTextBox setTarget:self];
     
+//    rgbdVisualSystem.setNumSamples(4);
 	rgbdVisualSystem.setup();
 	rgbdVisualSystem.setDrawToScreen(false);
 	hud.setup();

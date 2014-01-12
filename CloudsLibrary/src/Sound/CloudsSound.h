@@ -46,6 +46,8 @@ class CloudsSound {
     // new callbacks
     void enterTunnel();
     void exitTunnel();
+    void enterClusterMap();
+    void exitClusterMap();
 	
 	float maxSpeakerVolume; // set between 0. and 1.0 to modulate speaker volume
 	
@@ -82,6 +84,7 @@ class CloudsSound {
     int framesize; // sigvs (512 seems ok)
 
     bool first_vec;
+    int whichdream;
 
     float MASTERTEMPO;
     int AUTORUN;

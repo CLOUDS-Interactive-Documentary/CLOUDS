@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Points</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>762.000000000</XPosition>
-    <YPosition>344.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>266.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point Color Boost</Name>
-    <Value>0.379310340</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,13 +28,23 @@
 <Widget>
     <Kind>44</Kind>
     <Name>Num Points</Name>
-    <Value>84236</Value>
+    <Value>69950</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point X Simplify</Name>
+    <Value>2.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Y Simplify</Name>
+    <Value>2.000000000</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Point Size</Name>
-    <HighValue>0.428571403</HighValue>
-    <LowValue>0.014778323</LowValue>
+    <HighValue>1.093596101</HighValue>
+    <LowValue>0.266009837</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>

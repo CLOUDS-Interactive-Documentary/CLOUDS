@@ -1,0 +1,63 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Points</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>266.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Alpha</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Color Boost</Name>
+    <Value>0.275862068</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Skin Boost</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Num Points</Name>
+    <Value>69950</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point X Simplify</Name>
+    <Value>1.482758641</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Y Simplify</Name>
+    <Value>1.482758641</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Point Size</Name>
+    <HighValue>1.093596101</HighValue>
+    <LowValue>0.266009837</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Face Overlap</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Flow</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Points Flow Up</Name>
+    <Value>0</Value>
+</Widget>
