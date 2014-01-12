@@ -1,0 +1,117 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SHADERS</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>304</XPosition>
+    <YPosition>-12</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>depthTest</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>backface culling</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_ADD</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_ALPHA</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_DISABLED</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_MULTIPLY</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_SCREEN</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_SUBTRACT</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>use shader</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>draw points</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>WormholeShader</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>XRayShader</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>facingRatio</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>normalShader</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>facingRatioExpo</Name>
+    <Value>10.5941</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>shininess</Name>
+    <Value>42.1379</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c1Hue</Name>
+    <Value>103</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c1Saturation</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c1Brightness</Name>
+    <Value>255</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c2Hue</Name>
+    <Value>136</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c2Saturation</Name>
+    <Value>110</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c2Brightness</Name>
+    <Value>255</Value>
+</Widget>
