@@ -95,6 +95,7 @@ class CloudsPlaybackController {
 	CloudsTransitionController transitionController;
 	void updateTransition();
 
+    float actCreatedTime;
 	float crossfadeValue;
 	string combinedMoviesFolder;
 	void drawDebugOverlay();

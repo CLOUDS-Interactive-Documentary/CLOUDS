@@ -320,6 +320,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         }
     }
     
+    
 	if(!showingClusterMap){
 		hud.update();
 	}
@@ -337,6 +338,7 @@ void CloudsPlaybackController::updateTransition(){
 	
 	transitionController.update();
 	
+    //TODO: Stop snapping on crossfade value
 	crossfadeValue = transitionController.getFadeValue();
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 	
@@ -411,7 +413,6 @@ void CloudsPlaybackController::updateTransition(){
 				
 				hud.setHomeEnabled(false);
 				
-//               	bool destroyAct = currentAct != args.act;
                 clearAct(true);
 
                 clusterMap->traverse();
@@ -436,9 +437,7 @@ void CloudsPlaybackController::updateTransition(){
 					
 					q = introSequence->getSelectedQuestion();
                     clip = q->clip;
-					
-					run.questionTopicHistory.insert(q->topic);
-					
+										
                     showingVisualSystem = false;
                     introSequence->stopSystem();
 					
@@ -455,8 +454,6 @@ void CloudsPlaybackController::updateTransition(){
                     rgbdVisualSystem->clearQuestions();
                     
 					bQuestionAsked = false;
-                    
-					run.questionTopicHistory.insert(topic);
 					
 					storyEngine.buildAct(run, clip, topic);
 					
@@ -466,7 +463,8 @@ void CloudsPlaybackController::updateTransition(){
 					showingVisualSystem = false;
 					clusterMap->stopSystem();
 					
-					storyEngine.buildAct(run, currentClip, currentTopic, false);
+                    //build the next clip based on the history
+					storyEngine.buildAct(run);
 					
                     cout<<"IDLE POST TRANSITION CLUSTERMAP OUT"<<endl;
                 }
@@ -579,7 +577,9 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
-    
+//    if(!args.act->startsWithVisualSystem()){
+//        transitionController.transitionToFirstInterview(1.0);
+//    }
 }
 
 //--------------------------------------------------------------------

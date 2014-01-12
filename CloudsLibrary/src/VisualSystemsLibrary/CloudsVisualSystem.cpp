@@ -362,7 +362,7 @@ void CloudsVisualSystem::speakerEnded()
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
 
-#ifndef VISUAL_SYSTEM_EDITOR
+#ifdef CLOUDS_RELEASE
     // show/hide the mouse cursor
     currMousePos.set(ofGetMouseX(), ofGetMouseY());
     if (currMousePos != lastMousePos) {

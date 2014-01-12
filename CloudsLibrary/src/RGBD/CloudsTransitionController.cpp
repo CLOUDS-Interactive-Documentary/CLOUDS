@@ -63,6 +63,16 @@ void CloudsTransitionController::transitionToFirstVisualSystem(float duration){
 	startTransition();
 }
 
+void CloudsTransitionController::transitionToFirstInterview(float duration){
+
+	confirmEmpty();
+    
+	queueState(TRANSITION_INTERVIEW_IN, duration);
+    
+	startTransition();
+    
+}
+
 void CloudsTransitionController::transitionToVisualSystem(float outDuration, float inDuration){
 
 	confirmEmpty();

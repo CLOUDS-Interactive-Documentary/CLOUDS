@@ -18,13 +18,14 @@ class CloudsRun
 
 	int actCount;
     vector<CloudsClip> clipHistory;
-    map<string, int> timesClipPlayed;
+//    map<string, int> timesClipPlayed;
     vector<string> presetHistory;
 	vector<string> topicHistory;
-	set<string> questionTopicHistory;
-	
-    map<string, int> timesOnCurrentTopicHistory;
-    map<string, int> timesQuestionAsked;
+
+    //only for the last run
+	map<string, int> accumuluatedTopics;
+//    map<string, int> timesOnCurrentTopicHistory;
+//    map<string, int> timesQuestionAsked;
     
     void actBegan(CloudsActEventArgs& args);
 	void actEnded(CloudsActEventArgs& args);
