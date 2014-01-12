@@ -23,12 +23,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Regenerate</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>filled</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -43,42 +43,47 @@
 <Widget>
     <Kind>6</Kind>
     <Name>small size</Name>
-    <HighValue>24.655172348</HighValue>
+    <HighValue>5.000000000</HighValue>
     <LowValue>5.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>large size</Name>
-    <HighValue>49.458129883</HighValue>
+    <HighValue>18.571430206</HighValue>
     <LowValue>5.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>primary color H</Name>
-    <Value>0.655172408</Value>
+    <Name>color H Primary</Name>
+    <Value>0.463054180</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>primary color S</Name>
-    <Value>1.000000000</Value>
+    <Name>color H Secondary</Name>
+    <Value>0.783251226</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>primary color V</Name>
-    <Value>1.000000000</Value>
+    <Name>color S Primary</Name>
+    <Value>0.285714298</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>secondary color H</Name>
-    <Value>1.000000000</Value>
+    <Name>color S Secondary</Name>
+    <Value>0.487684727</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>secondary color S</Name>
-    <Value>1.000000000</Value>
+    <Name>color V Primary</Name>
+    <Value>0.694581270</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>secondary color V</Name>
+    <Name>color V Secondary</Name>
+    <Value>0.842364550</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>alpha</Name>
     <Value>1.000000000</Value>
 </Widget>

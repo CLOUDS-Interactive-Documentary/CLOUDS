@@ -6,6 +6,11 @@
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
+    <Kind>4</Kind>
+    <Name>Scale</Name>
+    <Value>1.010537267</Value>
+</Widget>
+<Widget>
     <Kind>44</Kind>
     <Name>DELAY B/W TWEENS</Name>
     <Value>1</Value>
@@ -13,12 +18,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>NUM COLS</Name>
-    <Value>109</Value>
+    <Value>172</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>NUM ROWS</Name>
-    <Value>111</Value>
+    <Value>160</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -43,7 +48,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>TWEEN DURATION</Name>
-    <Value>158</Value>
+    <Value>2000</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>

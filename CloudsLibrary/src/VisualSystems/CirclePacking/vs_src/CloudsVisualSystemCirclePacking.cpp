@@ -32,11 +32,17 @@ void CloudsVisualSystemCirclePacking::selfSetupGui(){
 	customGui->addToggle("filled", &filled);
 	customGui->addIntSlider("num circles", 20, 300, &numCircles);
 	customGui->addSlider("hero percent", 0, 1.0, &heroPercent);
-	customGui->addRangeSlider("small size",5, 100, &smallSizeRange.min, &smallSizeRange.max);
-	customGui->addRangeSlider("large size",5, 100, &largeSizeRange.min, &largeSizeRange.max);
-	customGui->addRangeSlider("color H", 0., 1.0, &primaryColor.r, &secondaryColor.r );
-	customGui->addRangeSlider("color S", 0., 1.0, &primaryColor.g, &secondaryColor.g );
-	customGui->addRangeSlider("color V", 0., 1.0, &primaryColor.b, &secondaryColor.b );
+    customGui->addIntSlider("initial Number of Circles", 0, 200, &initialNumberofCircles);
+	customGui->addSlider("small size 1",5, 100, &small1);
+    customGui->addSlider("small size 2",5, 100, &small2);
+	customGui->addSlider("large size 1",5, 100, &large1);
+    customGui->addSlider("large size 2",5, 100, &large2);
+	customGui->addSlider("color H Primary", 0., 1.0, &primaryColor.r);
+    customGui->addSlider("color H Secondary", 0., 1.0, &secondaryColor.r);
+	customGui->addSlider("color S Primary", 0., 1.0, &primaryColor.g);
+    customGui->addSlider("color S Secondary", 0., 1.0, &secondaryColor.g);
+	customGui->addSlider("color V Primary", 0., 1.0, &primaryColor.b);
+    customGui->addSlider("color V Secondary", 0., 1.0, &secondaryColor.b );
 	customGui->addSlider("alpha", 0, 1.0, &alph);
 
 //	customGui->addSlider("secondary color H", 0., 1.0, &secondaryColor.r);
@@ -226,21 +232,21 @@ void CloudsVisualSystemCirclePacking::selfDrawBackground(){
 
 void CloudsVisualSystemCirclePacking::initializeBlanks(){
     
-    for(int i = 0; i < 200; i++){
+    for(int i = 0; i < initialNumberofCircles; i++){
 		if(ofRandomuf() > .9){
             
             //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
 			pack.circles.push_back( Circle(ofRandom(getCanvasWidth()),
 										   ofRandom(getCanvasHeight()),
-										   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
-												 30, 60.), " ", primaryColor, secondaryColor, alph ));
+										   ofMap(powf(ofRandomuf(), 3.), 0, 1.0,
+												 large1, large2), " ", primaryColor, secondaryColor, alph ));
 		}
 		else{
             //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
 			pack.circles.push_back( Circle(ofRandom(getCanvasWidth()),
 										   ofRandom(getCanvasHeight()),
 										   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
-                                                 5, 10), " ", primaryColor, secondaryColor, alph  ));
+                                                 small1, small2), " ", primaryColor, secondaryColor, alph  ));
         }
     }
 }
@@ -306,11 +312,22 @@ void CloudsVisualSystemCirclePacking::selfMouseDragged(ofMouseEventArgs& data){
 void CloudsVisualSystemCirclePacking::selfMouseMoved(ofMouseEventArgs& data){
 	
     if (BLANKS){
-    pack.circles.push_back( Circle(data.x,
-                                   data.y,
-                                   ofMap(powf(ofRandomuf(), 5.), 0. ,1.0,
-                                         10, 80.), "blank", primaryColor, secondaryColor, alph) );
-    }
+            if(ofRandomuf() > .9){
+                
+                //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+                pack.circles.push_back( Circle(data.x,
+                                               data.y,
+                                               ofMap(powf(ofRandomuf(), 3.), 0, 1.0,
+                                                     large1, large2), " ", primaryColor, secondaryColor, alph ));
+            }
+            else{
+                //MA: changed ofGetWidth() to GetCanvasWidth() and ofGetHeight() to GetCanvasHeight()
+                pack.circles.push_back( Circle(data.x,
+                                               data.y,
+                                               ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
+                                                     small1, small2), " ", primaryColor, secondaryColor, alph  ));
+            }
+    }   
 }
 
 void CloudsVisualSystemCirclePacking::selfMousePressed(ofMouseEventArgs& data){

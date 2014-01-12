@@ -2,9 +2,34 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>660.000000000</XPosition>
-    <YPosition>-55.000000000</YPosition>
+    <XPosition>1921.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Adebug</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Aminos_1</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Aminos_2</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Aminos_2a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Aminos_3a</Name>
+    <Value>1</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>blueTunnel</Name>
@@ -122,12 +147,52 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>gTunnelv2_06_white</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv2_06_xrayGray</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>gTunnelv2_07</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>gTunnelv2_07_white</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv2_07_whte</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv2_08</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv2_08_blue</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv2_08_displaced</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv2_08_points</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv2_08_transparent_blue</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -197,11 +262,26 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>lightAndFog</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Protein_Tunnel</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Square_01</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>xray</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>xray2</Name>
     <Value>0</Value>
 </Widget>

@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1697.000000000</XPosition>
+    <XPosition>849.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -23,6 +23,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Atomic2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>AtomicOC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -52,6 +57,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>InteractiveCameraExample</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>jm_data1</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>LifeIsNetworks</Name>
     <Value>0</Value>
 </Widget>
@@ -62,12 +77,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Social_Network1</Name>
+    <Name>Social_Network2</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Social_Network2</Name>
+    <Name>Social_Network2OC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Social_NetworkOC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -77,6 +97,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>jm_data1</Name>
-    <Value>1</Value>
+    <Name>SpaceJunkOC</Name>
+    <Value>0</Value>
 </Widget>

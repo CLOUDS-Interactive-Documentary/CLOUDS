@@ -1,0 +1,42 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>w_h_light</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>858.000000000</XPosition>
+    <YPosition>193.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>pathOffset</Name>
+    <Value>0.002463054</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>constantAttenuation</Name>
+    <Value>0.285714298</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>linearAttenuation</Name>
+    <Value>0.073891625</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>quadraticAttenuation</Name>
+    <Value>0.010000000</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>lightHue</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>lightSaturation</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>lightBrightness</Name>
+    <Value>238</Value>
+</Widget>

@@ -45,3 +45,8 @@
     <Name>MOSS_zoom</Name>
     <Value>0</Value>
 </Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SlimeMold_zoomOut</Name>
+    <Value>1</Value>
+</Widget>

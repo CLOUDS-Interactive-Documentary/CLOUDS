@@ -1,0 +1,47 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>CameraPath</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1349.000000000</XPosition>
+    <YPosition>16.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>UseCameraPath</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>pathPosition</Name>
+    <Value>0.970228910</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>example.xml</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GTunnelOrganix_MasterCAM.xml</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GTunnelV2.xml</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GTunnelV3_MasterCAM.xml</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GTunnelV4_MasterCAM.xml</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>PolyFlower_02.xml</Name>
+    <Value>0</Value>
+</Widget>

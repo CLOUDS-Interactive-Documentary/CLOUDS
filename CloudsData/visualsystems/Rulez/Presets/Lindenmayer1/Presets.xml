@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>218.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -22,6 +22,21 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Ico_rotate</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LindemayerTree</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Lindenmayer1</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Tree</Name>
     <Value>0</Value>
 </Widget>
@@ -37,11 +52,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>LindemayerTree</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Lindenmayer1</Name>
+    <Name>X-Ray Plant_rotation</Name>
     <Value>1</Value>
 </Widget>

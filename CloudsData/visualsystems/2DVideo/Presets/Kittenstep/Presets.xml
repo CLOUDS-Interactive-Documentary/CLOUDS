@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>855.000061035</XPosition>
+    <XPosition>643.000061035</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -57,11 +57,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>FaceShift_noisy</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>FaceShift_noisy </Name>
     <Value>0</Value>
 </Widget>
@@ -73,7 +68,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Flow1_gesture</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -83,6 +78,16 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Flow3_Closeup</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GitHubMap</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Gource</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
