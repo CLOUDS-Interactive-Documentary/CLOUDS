@@ -712,9 +712,12 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
 #ifdef OCULUS_RIFT
 	rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
 #else
-//	rgbdVisualSystem->loadPresetGUISFromName("g_FIN_Style_01");
-//    rgbdVisualSystem->loadPresetGUISFromName("JG_Provisional_Thursday");
-    rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
+    if(run.actCount == 1){
+        rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
+    }
+    else{
+        rgbdVisualSystem->loadPresetGUISFromName("RGBDMain2");
+    }
 #endif
 	rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
 	rgbdVisualSystem->playSystem();

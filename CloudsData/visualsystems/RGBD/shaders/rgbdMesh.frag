@@ -8,10 +8,7 @@ varying vec4 faceFeatureSample;
 varying vec4 deltaChangeSample; 
 
 //LIGHTING
-//varying vec3 eye;
 varying vec3 normal;
-//varying float diffuseAttenuate;
-//varying vec3 diffuseLightDirection;
 
 uniform float eyeMultiplier;
 uniform float skinMultiplier;
@@ -21,7 +18,6 @@ uniform float fadeValue;
 uniform float headAttenuateMix;
 varying float headPositionAttenuation;
 varying float edgeAttenuate;
-varying float forceFade;
 
 varying float actuatorExtendAttenuate;
 
@@ -122,10 +118,8 @@ void main(){
     }
 
 	float attenuate = 1.0;
-	
     vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
-	gl_FragColor = col * mix( colorBoost + headPositionAttenuation * edgeAttenuate, 1. + skinBoost, isSkin()) * meshAlpha * smoothstep(0.2, .3, actuatorExtendAttenuate);
-	gl_FragColor.a = 1.0;
-    
+	//gl_FragColor = col * mix( colorBoost + headPositionAttenuation, 1. + skinBoost, isSkin())  * edgeAttenuate * meshAlpha * smoothstep(0.2, .3, actuatorExtendAttenuate);
+	gl_FragColor.rgb = col.rgb * meshAlpha * headPositionAttenuation * smoothstep(.2, .3, actuatorExtendAttenuate) * mix(headPositionAttenuation, 1.0, isSkin() );
+    gl_FragColor.a = 1.0;
 }
-

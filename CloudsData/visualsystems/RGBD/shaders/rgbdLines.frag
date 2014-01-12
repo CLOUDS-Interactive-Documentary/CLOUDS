@@ -22,6 +22,7 @@ varying float edgeAttenuate;
 varying float headPositionAttenuation;
 varying float actuatorAttenuation;
 
+
 const float epsilon = 1e-6;
 
 float calculateLight(){
@@ -101,7 +102,7 @@ void main() {
 
 	//TODO re-add attenuation
     vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
-	gl_FragColor.rgb = col.rgb * mix( edgeAttenuate + colorBoost, 1.0 + skinBoost, isSkin() );// * alpha;// * smoothstep(actuatorAttenuation,0.2,.3);
+	gl_FragColor.rgb = col.rgb * mix( colorBoost, 1.0 + skinBoost, isSkin() ) * alpha * edgeAttenuate;// * smoothstep(actuatorAttenuation,0.2,.3);
     gl_FragColor.a = 1.0;
 }
 

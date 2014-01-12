@@ -47,24 +47,18 @@ uniform float headFalloff;
 uniform float edgeAttenuateBase;
 uniform float edgeAttenuateExponent;
 uniform float meshRetractionFalloff;
-uniform float forceGeoRectraction;
+uniform float forceGeoRetraction;
 
-//LIGHT
-//uniform vec3 lightPosition;
 uniform vec3 actuatorDirection;
+uniform float maxActuatorRetract;
 
-//varying vec3 eye;
 varying vec3 normal;
-//varying vec3 diffuseLightDirection;
-
 varying float positionValid;
 
-varying float diffuseAttenuate;
 
 varying float headPositionAttenuation;
 varying float actuatorExtendAttenuate;
 varying float edgeAttenuate;
-varying float forceFade;
 
 const float epsilon = 1e-6;
 
@@ -140,14 +134,15 @@ void main(void){
 	headPositionAttenuation = map( distance(basePos.xyz,headPosition), headMinRadius+headFalloff, headMinRadius, .0, 1.0);
 	
 	//float headRetraction = mix(edgeAttenuate, 1.0, meshRetractionFalloff);
-	float headRetraction = pow(map(headPositionAttenuation, 0.0, meshRetractionFalloff, 0.0, 1.0), 2.0) * (1.0-forceGeoRectraction);
+	float headRetraction = pow(map(headPositionAttenuation, 0.0, meshRetractionFalloff, 0.0, 1.0), 2.0) * (1.0-forceGeoRetraction);
 	
 	vec2 normalPos = samplePos.xy + normalRect.xy;
 	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
-    
 	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
     normal = -normalize(gl_NormalMatrix * surfaceNormal);
-    actuatorExtendAttenuate = max(0.2,dot(normal,actuatorDirection));
+    
+    actuatorExtendAttenuate = max(maxActuatorRetract, dot(normal,actuatorDirection) );
+    
     float accumulatedExtendAttenuation = triangleExtend * headRetraction * actuatorExtendAttenuate;
 	vec2 samplePosExtended = samplePos + gl_Normal.xy * accumulatedExtendAttenuation;
 	
@@ -167,12 +162,12 @@ void main(void){
 					 neighborA < farClip &&
 					 neighborB < farClip &&
 
+                     abs(neighborA - depth) < edgeClip &&
+					 abs(neighborB - depth) < edgeClip &&
+                     
 					 depth > nearClip &&
 					 neighborA > nearClip &&
-					 neighborB > nearClip &&
-					 
-					 abs(neighborA - depth) < edgeClip &&
-					 abs(neighborB - depth) < edgeClip) ? 1.0 : 0.0;
+					 neighborB > nearClip ) ? 1.0 : 0.0;
 	
 	
     // http://opencv.willowgarage.com/documentation/camera_calibration_and_3d_reconstruction.html
@@ -193,5 +188,5 @@ void main(void){
 
 	
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
-    gl_FrontColor = gl_Color;
+//    gl_FrontColor = gl_Color;
 }
