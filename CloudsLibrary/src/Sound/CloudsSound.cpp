@@ -270,6 +270,8 @@ void CloudsSound::enterClusterMap()
     
     if(LUKEDEBUG) cout << "sound: enterClusterMap()" << endl;
     
+    stopMusic(); // prophylactic
+    
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0, ampsym, PF_CLUSTERMAP_BUS);
     
@@ -300,8 +302,8 @@ void CloudsSound::clipBegan(CloudsClipEventArgs& args){
 }
 
 //--------------------------------------------------------------------
-void CloudsSound::questionAsked(CloudsQuestionEventArgs& args){
-	
+void CloudsSound::questionProposed(CloudsQuestionEventArgs& args){
+
 }
 
 //--------------------------------------------------------------------
@@ -311,6 +313,11 @@ void CloudsSound::topicChanged(CloudsTopicEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsSound::preRollRequested(CloudsPreRollEventArgs& args){
 	
+}
+
+//--------------------------------------------------------------------
+void CloudsSound::questionSelected(CloudsQuestionEventArgs& args){
+    fadeMusic();
 }
 
 //--------------------------------------------------------------------

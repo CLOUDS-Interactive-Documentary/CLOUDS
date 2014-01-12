@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>CamSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>905.000000000</XPosition>
-    <YPosition>480.000000000</YPosition>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>387.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -32,8 +32,33 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>LOCK TO TRACK</Name>
-    <Value>0</Value>
+    <Name>InteractiveCamera</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>damping</Name>
+    <Value>0.128078818</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>minX</Name>
+    <Value>-12.857139587</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxX</Name>
+    <Value>21.724136353</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>minY</Name>
+    <Value>-21.724136353</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxY</Name>
+    <Value>19.064033508</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
