@@ -91,6 +91,8 @@
 									  clip.name );
 		
 		currentClip = clip;
+        // EZ: Temp to get HUD content
+        hud.respondToClip(clip);
 	}
 	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, clip.combinedSRTPath, 1,clip.speakerVolume) ){
 		cout<<"clip.speakerVolume : "<<clip.speakerVolume<<endl;
@@ -99,7 +101,8 @@
 									   CloudsSpeaker::speakers[clip.person].lastName,
 									   clip.name );
 		currentClip = clip;
-		
+        // EZ: Temp to get HUD content
+        hud.respondToClip(clip);
 	}
 	else{
 		ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";
