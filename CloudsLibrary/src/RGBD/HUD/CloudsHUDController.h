@@ -66,6 +66,8 @@ class CloudsHUDController {
 	void questionAsked(CloudsQuestionEventArgs& args);
 	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
+    
+    ofVec2f getSize();
 
   protected:
 	
