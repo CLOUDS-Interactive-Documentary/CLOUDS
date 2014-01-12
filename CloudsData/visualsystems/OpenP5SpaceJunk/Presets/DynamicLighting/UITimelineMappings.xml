@@ -4,16 +4,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>HUE2</WidgetName>
-                <WidgetID>16</WidgetID>
-                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>SV</WidgetName>
-                <WidgetID>34</WidgetID>
+                <WidgetName>X</WidgetName>
+                <WidgetID>6</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -28,8 +20,8 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>X</WidgetName>
-                <WidgetID>6</WidgetID>
+                <WidgetName>AV</WidgetName>
+                <WidgetID>18</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -44,8 +36,8 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>AV</WidgetName>
-                <WidgetID>18</WidgetID>
+                <WidgetName>SV</WidgetName>
+                <WidgetID>34</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>

@@ -1,0 +1,102 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1273.000000000</XPosition>
+    <YPosition>3.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BlankCircles</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Nasdaq</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Hashtags</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Regenerate</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>filled</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>num circles</Name>
+    <Value>50</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>hero percent</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>initial Number of Circles</Name>
+    <Value>49</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>small size 1</Name>
+    <Value>9.750062943</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>small size 2</Name>
+    <Value>14.500001907</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>large size 1</Name>
+    <Value>21.625001907</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>large size 2</Name>
+    <Value>19.183717728</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color H Primary</Name>
+    <Value>0.725000024</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color H Secondary</Name>
+    <Value>0.774999976</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color S Primary</Name>
+    <Value>0.324999988</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color S Secondary</Name>
+    <Value>0.225000024</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color V Primary</Name>
+    <Value>0.359299779</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color V Secondary</Name>
+    <Value>0.390536129</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>alpha</Name>
+    <Value>1.000000000</Value>
+</Widget>
