@@ -99,7 +99,7 @@ protected:
     
     drawnLineApp APP;
     
-	
+	bool bShowDebug;
 	ofxUISuperCanvas* customGui;
 	bool customToggle;
 	float customFloat1;
