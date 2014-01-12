@@ -168,7 +168,8 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	ofFbo& renderTarget = getStaticRenderTarget();
 	
    int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
-    int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();	
+    int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
+    
 bool reallocateTarget = !renderTarget.isAllocated();
 	reallocateTarget |= !screenResolutionForced &&
 						(renderTarget.getWidth() != targetWidth ||
@@ -269,6 +270,8 @@ void CloudsVisualSystem::setup(){
     postGrainDist = 0.f;
     //POST PROCESSING BLEED AMNT
     bleed  = 20;
+    if(bEnablePostFX) SetBleedPixels(bleed);
+    else SetBleedPixels(0);
 }
 
 bool CloudsVisualSystem::isSetup(){
@@ -552,7 +555,8 @@ void CloudsVisualSystem::draw2dSystemPlane(){
     ofTranslate(-ofGetWidth()/2, -ofGetHeight()/2, 0);
     
     ofMesh mesh;
-    get2dMesh(mesh, ofGetWidth(), ofGetHeight());
+    //MA: chaged to getCanvasWidth from ofGetWidth
+    get2dMesh(mesh, getCanvasWidth(), getCanvasHeight());
     getSharedRenderTarget().getTextureReference().bind();
     mesh.draw();
     getSharedRenderTarget().getTextureReference().unbind();
@@ -1414,6 +1418,16 @@ void CloudsVisualSystem::setupPostGui()
 void CloudsVisualSystem::guiPostEvent(ofxUIEventArgs &e)
 {
     string name = e.widget->getName();
+    
+    if(name == "Enable"){
+        ofxUIToggle *t = (ofxUIToggle *) e.widget;
+        if(t->getValue()){
+            SetBleedPixels(bleed);
+        }else{
+            SetBleedPixels(0);
+        }
+    }
+    
 }
 
 void CloudsVisualSystem::setupLightingGui()
@@ -3220,7 +3234,8 @@ void CloudsVisualSystem::drawBackground()
 	
 	ofPushStyle();
 	ofPushMatrix();
-	ofTranslate(0, ofGetHeight());
+    //MA:: changed ofGetHeight to getCanvasHeight to fix post processing bugs
+	ofTranslate(0, getCanvasHeight());
 	ofScale(1,-1,1);
 	selfDrawBackground();
 	checkOpenGLError(getSystemName() + ":: DRAW BACKGROUND");		
@@ -3373,6 +3388,7 @@ void CloudsVisualSystem::selfPostDraw(){
 #else
     //draws to viewport
     //use blabalh
+    int offset;
     if(bEnablePostFX){
         cloudsPostShader.begin();
         cloudsPostShader.setUniformTexture("distortionMap", cloudsPostDistortionMap, 1);
@@ -3380,8 +3396,11 @@ void CloudsVisualSystem::selfPostDraw(){
         cloudsPostShader.setUniform2f("dMapResolution", cloudsPostDistortionMap.getWidth(), cloudsPostDistortionMap.getHeight());
         cloudsPostShader.setUniform1f("chromaDist", postChromaDist);
         cloudsPostShader.setUniform1f("grainDist", postGrainDist);
+        offset = bleed;
+    }else{
+        offset = 0;
     }
-    CloudsVisualSystem::getSharedRenderTarget().draw(-bleed,CloudsVisualSystem::getSharedRenderTarget().getHeight()-bleed,
+    CloudsVisualSystem::getSharedRenderTarget().draw(-offset,CloudsVisualSystem::getSharedRenderTarget().getHeight()-offset,
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
     if(bEnablePostFX){
