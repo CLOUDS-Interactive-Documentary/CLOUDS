@@ -108,8 +108,8 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
     int gravCnt,gravCntGoal;
 
     ofVec3f camCenterOffs,mousePos;
-    ofVec3f modelRot,modelRotD;
-    float modelRotMax,modelTrans;
+    ofVec3f modelRot;
+    float modelRotD[3],modelRotMax,modelTrans;
 	bool camEnabled,colorLightEnabled;
 
 	ofFloatColor cWhite,cBlack,cGray;
@@ -118,7 +118,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	static const bool MWDEBUG=true;
 	static const int FREE=0,FIXEDSTATIC=2,FIXEDMOVING=1;
 	static const int GRIDRECT=1,GRIDCIRC=0,GRIDCYL=2;
-	static const int LIGHTS=3;
+	static const int LIGHTS=4;
 
 	bool lineMesh;
 
@@ -132,7 +132,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	int colorStrategy;
 
 	ofxUILabel* bbLabel[4];
-	ofVec3f bbMin,bbMax,bbC;
+	ofVec3f bbMin,bbMax,bbC,meshCentroid;
 	float bbDim,bbMult,bbMultTmp;
 
 	bool gridDoStitch;

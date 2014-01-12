@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Lines</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>509.000000000</XPosition>
-    <YPosition>331.000000000</YPosition>
+    <XPosition>283.000000000</XPosition>
+    <YPosition>329.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -17,13 +17,23 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>Line Color Boost</Name>
+    <Value>0.778325140</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Skin Boost</Name>
+    <Value>0.034482758</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>Line Thickness</Name>
-    <Value>1.000000000</Value>
+    <Value>0.945812821</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Line Spacing</Name>
-    <Value>2.108374357</Value>
+    <Value>1.945812821</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,15 +43,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Line Granularity</Name>
-    <Value>5.123152733</Value>
+    <Value>3.881773472</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Line Flow</Name>
-    <Value>0.000000000</Value>
+    <Value>0.113300495</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Lines Flow Up</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>

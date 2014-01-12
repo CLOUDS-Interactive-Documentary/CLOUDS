@@ -23,7 +23,11 @@ varying float headPositionAttenuation;
 varying float edgeAttenuate;
 varying float forceFade;
 
+varying float actuatorExtendAttenuate;
+
 uniform float meshAlpha;
+uniform float colorBoost;
+uniform float skinBoost;
 
 //SKIN DETECTION SAMPLES
 uniform vec3 skinSampleColor;
@@ -33,14 +37,6 @@ uniform vec2 skinThreshold;
 
 const float epsilon = 1e-6;
 
-////// START LIGHTS
-//float calculateLight(){
-//	vec3 N = normal;
-//	vec3 L = diffuseLightDirection;
-//	
-//	float lambertTerm = dot(N,L) * diffuseAttenuate;
-//	return lambertTerm;
-//}
 ////// END LIGHTS
 
 ////START SKIN STUFF
@@ -128,7 +124,7 @@ void main(){
 	float attenuate = 1.0;
 	
     vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
-	gl_FragColor = col * mix(headPositionAttenuation * edgeAttenuate,1.0,isSkin())*meshAlpha;
+	gl_FragColor = col * mix( colorBoost + headPositionAttenuation * edgeAttenuate, 1. + skinBoost, isSkin()) * meshAlpha * smoothstep(0.2, .3, actuatorExtendAttenuate);
 	gl_FragColor.a = 1.0;
     
 }

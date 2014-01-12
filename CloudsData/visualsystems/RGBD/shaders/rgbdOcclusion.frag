@@ -11,7 +11,7 @@ void main(){
         return;
     }
 
-	gl_FragColor.rgb = vec3(0.0);
-	gl_FragColor.a = 1.0;
+	gl_FragColor = vec4(1.0);
+//	gl_FragColor.a = 1.0;
 }
 

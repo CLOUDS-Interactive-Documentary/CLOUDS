@@ -1,3 +1,5 @@
+
+
 uniform sampler2DRect tex0;
 uniform sampler2DRect distortionMap;
 uniform vec2 resolution;
@@ -37,38 +39,33 @@ const int num_iter = 12;
 const float reci_num_iter_f = 1.0 / float(num_iter);
 
 void main(){
-	float offsetX = 0.0;
- 	float offsetY = 0.0;
- 	float zoom = 1.0;
+	float offsetX = 1.;
+ 	float offsetY = 1.;
+ 	float zoom = 2.0;
+        
+	vec2 uv = gl_TexCoord[0].st;
     
-	vec2 st = gl_FragCoord.xy/resolution.xy;// * vec2(1,-1);
-	vec2 uv = (st*zoom);
 	vec2 offset = vec2(offsetX,offsetY);
     
+    float mag = length(gl_TexCoord[0].st/resolution.xy - vec2(.5));
+    float power = pow(max(0.,1.-mag), 2.6);
+    
+    
     if (grainDist>0.0){
-		float disp = texture2DRect(distortionMap, st*dMapResolution ).r;
-		uv.x += disp*grainDist*0.1;
+		float disp = texture2DRect(distortionMap, (gl_TexCoord[0].st/resolution.xy)*dMapResolution ).r;
+		uv.x += disp*grainDist*(dMapResolution.x*.05)*pow(max(0.,mag), 2.);
 	}
     
 	vec3 sumcol = vec3(0.0);
 	vec3 sumw = vec3(0.0);
+    
+   
 	for ( int i=0; i<num_iter;++i ){
 		float t = float(i) * reci_num_iter_f;
 		vec3 w = spectrum_offset( t );
 		sumw += w;
-		sumcol += w * texture2DRect( tex0, (offset+barrelDistortion(uv, chromaDist*t))*resolution.xy ).rgb;
+		sumcol += (w) * texture2DRect( tex0, (offset*barrelDistortion(uv/resolution.xy, chromaDist*t*power))*resolution.xy ).rgb;
 	}
-	
-	//This helps us clamp the edges from gross artifacs
     
-	float pixelAttenuate = 20.0; //how many pixels to cut in
-	float inversPA = 1.0 / pixelAttenuate;
-	float powfall = .1; // an easier to feather off the harshness
-	//calculate one attenuation value from all sides
-	float edgeAttenuate = pow(clamp(inversPA * (gl_FragCoord.x - pixelAttenuate), 0.0, 1.0), powfall) *
-    pow(clamp(inversPA * (gl_FragCoord.y - pixelAttenuate), 0.0, 1.0), powfall) *
-    pow(clamp(inversPA * (resolution.x - gl_FragCoord.x - pixelAttenuate), 0., 1.0), powfall) *
-    pow(clamp(inversPA * (resolution.y - gl_FragCoord.y - pixelAttenuate), 0., 1.0), powfall);
-    
-	gl_FragColor = vec4(sumcol.rgb / sumw, 1.0) * gl_Color * edgeAttenuate;
+	gl_FragColor = vec4(sumcol.rgb / sumw, 1.0);
 }

@@ -62,6 +62,7 @@ varying float positionValid;
 varying float diffuseAttenuate;
 
 varying float headPositionAttenuation;
+varying float actuatorExtendAttenuate;
 varying float edgeAttenuate;
 varying float forceFade;
 
@@ -146,7 +147,7 @@ void main(void){
     
 	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
     normal = -normalize(gl_NormalMatrix * surfaceNormal);
-    float actuatorExtendAttenuate = max(0.0,dot(normal,actuatorDirection));
+    actuatorExtendAttenuate = max(0.2,dot(normal,actuatorDirection));
     float accumulatedExtendAttenuation = triangleExtend * headRetraction * actuatorExtendAttenuate;
 	vec2 samplePosExtended = samplePos + gl_Normal.xy * accumulatedExtendAttenuation;
 	

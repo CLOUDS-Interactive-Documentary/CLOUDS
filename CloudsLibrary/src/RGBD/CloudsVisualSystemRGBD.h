@@ -4,6 +4,7 @@
 #include "CloudsVisualSystem.h"
 #include "CloudsPortal.h"
 #include "CloudsQuestion.h"
+#include "CloudsHUDController.h"
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
 #include "ofxFTGL.h"
@@ -129,6 +130,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     //////////TRANSITIONS
     
 	void playTestVideo();
+    
+#ifdef OCULUS_RIFT
+    CloudsHUDController* hud;
+#endif
 
   protected:
 	
@@ -164,6 +169,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float pointFlowPosition;
 	float pointFlowSpeed;
 	bool pointsFlowUp;
+    float pointColorBoost;
+    float pointSkinBoost;
 	bool refreshPointcloud;
 	void generatePoints();
 	
@@ -182,6 +189,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float lineFlowSpeed;
 	float lineHeadOverlap;
 	bool linesFlowUp;
+    float lineColorBoost;
+    float lineSkinBoost;
 	bool refreshLines;
 	void generateLines();
 	
@@ -200,17 +209,24 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float meshFaceFalloff;
 	float meshRetractionFalloff;
 	float meshForceGeoRectraction;
+    float meshColorBoost;
+    float meshSkinBoost;
     bool refreshMesh;
 	void generateMesh();
 
     ///OCCLUSION
 	ofxUISuperCanvas *occlusionGui;
     bool bDrawOcclusion;
+    bool drawOcclusionDebug;
+    
     ofShader occlusionShader;
     ofVbo occlusion;
     int occlusionVertexCount;
    	float occlusionXSimplify;
 	float occlusionYSimplify;
+    float occlusionMeshFaceMinRadius;
+    float occlusionMeshFaceFalloff;
+	float occlusionMeshRetractionFalloff;
     bool refreshOcclusion;
     void generateOcclusion();
     

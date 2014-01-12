@@ -142,7 +142,7 @@ void main(void){
 	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
     normal = -normalize(gl_NormalMatrix * surfaceNormal);
     
-    actuatorAttenuation = dot(normal,actuatorDirection);
+    actuatorAttenuation = max(dot(normal,actuatorDirection), 0.0);
 
 	//EYE DIRECTION FOR LIGHTING
 //	vec3 vert = vec3(gl_ModelViewMatrix * pos);

@@ -418,7 +418,7 @@ void CloudsVisualSystemWormHole::selfSetup()
 	currentShader = NULL;
 	
 	//meshes
-	modelPath = getVisualSystemDataPath(true) + "models/";
+	modelPath = getVisualSystemDataPath(false) + "models/";
 	cameraPathPath = getVisualSystemDataPath() + "cameraPaths/";
 	
 	cout << modelPath << endl;
@@ -516,18 +516,29 @@ void CloudsVisualSystemWormHole::selfUpdate()
 void CloudsVisualSystemWormHole::selfDraw()
 {
 	
-    if (bCullBackface == true){
-    glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
-    }
+
 	
 	//alpha blending
 	if(currentBlendMode == OF_BLENDMODE_DISABLED)
 	{
 		ofDisableAlphaBlending();
-	}else{
+	}
+	else if( currentShader == shaderMap["XRayShader"])
+	{
+		bCullBackface = false;
+		bDepthTest = false;
+		currentBlendMode = OF_BLENDMODE_ADD;
+		ofBlendMode( currentBlendMode );
+	}
+	else{
 		ofEnableBlendMode(currentBlendMode);
 	}
+	
+	//cull
+	if (bCullBackface){
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+    }
 	
 	//depth testing
 	bDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
