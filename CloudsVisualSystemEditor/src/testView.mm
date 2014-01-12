@@ -36,6 +36,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	
 //	visualSystems.populateVisualSystems();
 	visualSystems.loadPresets();
+    visualSystems.loadCachedDataForSystems();
 	
 //	for (NSTableColumn *tableColumn in allKeywordTable.tableColumns) {
 //        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
