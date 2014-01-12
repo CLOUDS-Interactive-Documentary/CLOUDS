@@ -73,7 +73,7 @@ void CloudsVisualSystem::loadBackgroundShader(){
 }
 
 void CloudsVisualSystem::loadPostShader(){
-    cloudsPostShader.load("",GetCloudsDataPath() + "shaders/post.fs");
+    cloudsPostShader.load(GetCloudsDataPath() + "shaders/post.vs",GetCloudsDataPath() + "shaders/post.fs");
     cloudsPostDistortionMap.loadImage( GetCloudsDataPath() + "images/7.jpg");
     postShaderLoaded = true;
 }
@@ -152,6 +152,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 #else
 	bUseOculusRift = false;
 #endif 
+    bEnablePostFX = false;
     
     lastMouseMoveMillis = 0;
 	
@@ -166,10 +167,11 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	
 	//ofFbo& renderTarget = sharedRenderTarget != NULL ? *sharedRenderTarget : getStaticRenderTarget();
 	ofFbo& renderTarget = getStaticRenderTarget();
-	
-   int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
-    int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();	
-bool reallocateTarget = !renderTarget.isAllocated();
+    
+    int targetWidth = bEnablePostFX ? ofGetWidth() + bleed*2 : ofGetWidth();
+    int targetHeight = bEnablePostFX ? ofGetHeight() + bleed*2 : ofGetHeight();
+
+	bool reallocateTarget = !renderTarget.isAllocated();
 	reallocateTarget |= !screenResolutionForced &&
 						(renderTarget.getWidth() != targetWidth ||
 						 renderTarget.getHeight() != targetHeight );
@@ -185,6 +187,7 @@ bool reallocateTarget = !renderTarget.isAllocated();
 //			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
 			renderTarget.allocate(targetWidth, targetHeight, GL_RGB, numSamples);
 		}
+        cout << "screen size is " << ofGetWidth() << " while render target is " << renderTarget.getWidth() << endl;
 		renderTarget.begin();
 		ofClear(0,0,0,1.0);
 		renderTarget.end();
@@ -268,7 +271,9 @@ void CloudsVisualSystem::setup(){
     postChromaDist = 0.f;
     postGrainDist = 0.f;
     //POST PROCESSING BLEED AMNT
-    bleed  = 20;
+    bleed  = 15;
+    if(bEnablePostFX)SetBleedPixels(bleed);
+    else SetBleedPixels(0);
 }
 
 bool CloudsVisualSystem::isSetup(){
@@ -875,6 +880,9 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 			oculusRift.reset();
 			break;
 #endif
+        case 'R':
+            loadPostShader();
+            //intentionally fall through
         default:
             selfKeyPressed(args);
             break;
@@ -1414,6 +1422,14 @@ void CloudsVisualSystem::setupPostGui()
 void CloudsVisualSystem::guiPostEvent(ofxUIEventArgs &e)
 {
     string name = e.widget->getName();
+    if(name == "Enable"){
+        ofxUIToggle *t = (ofxUIToggle *) e.widget;
+        if(t->getValue()){
+            SetBleedPixels(bleed);
+        }else{
+            SetBleedPixels(0);
+        }
+    }
 }
 
 void CloudsVisualSystem::setupLightingGui()
@@ -3220,7 +3236,8 @@ void CloudsVisualSystem::drawBackground()
 	
 	ofPushStyle();
 	ofPushMatrix();
-	ofTranslate(0, ofGetHeight());
+    //MA: converted ofGetHeight() to getCanvasHeight() to fix post processing bug
+	ofTranslate(0, getCanvasHeight());
 	ofScale(1,-1,1);
 	selfDrawBackground();
 	checkOpenGLError(getSystemName() + ":: DRAW BACKGROUND");		
@@ -3373,17 +3390,26 @@ void CloudsVisualSystem::selfPostDraw(){
 #else
     //draws to viewport
     //use blabalh
+    int offset;
+    
     if(bEnablePostFX){
         cloudsPostShader.begin();
         cloudsPostShader.setUniformTexture("distortionMap", cloudsPostDistortionMap, 1);
         cloudsPostShader.setUniform2f("resolution", getCanvasWidth(), getCanvasHeight());
-        cloudsPostShader.setUniform2f("dMapResolution", cloudsPostDistortionMap.getWidth(), cloudsPostDistortionMap.getHeight());
+        cloudsPostShader.setUniform2f("dMapResolution",cloudsPostDistortionMap.getWidth(),
+                                      cloudsPostDistortionMap.getHeight());
         cloudsPostShader.setUniform1f("chromaDist", postChromaDist);
         cloudsPostShader.setUniform1f("grainDist", postGrainDist);
+        offset = bleed;
+    }else{
+        offset = 0;
     }
-    CloudsVisualSystem::getSharedRenderTarget().draw(-bleed,CloudsVisualSystem::getSharedRenderTarget().getHeight()-bleed,
-                                                       CloudsVisualSystem::getSharedRenderTarget().getWidth(),
-                                                      -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+    
+    CloudsVisualSystem::getSharedRenderTarget().draw(-offset,
+                                                     CloudsVisualSystem::getSharedRenderTarget().getHeight()-offset,
+                                                     CloudsVisualSystem::getSharedRenderTarget().getWidth(),
+                                                    -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+    
     if(bEnablePostFX){
         cloudsPostShader.end();
     }
