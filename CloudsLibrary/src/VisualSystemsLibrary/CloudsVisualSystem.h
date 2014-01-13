@@ -10,6 +10,9 @@
 #include "ofxLight.h"
 #include "ofxGenerative.h"
 //#include "ofxMaterial.h"
+#ifdef CLOUDS_RELEASE
+#include "CloudsPortal.h"
+#endif
 
 #ifdef OCULUS_RIFT
 #include "ofxOculusRift.h"
@@ -271,6 +274,10 @@ class CloudsVisualSystem {
     void toggleGUIS();
     void toggleGuiAndPosition(ofxUISuperCanvas *g);
     void deleteGUIS();
+    
+#ifdef CLOUDS_RELEASE
+    void setupPortals();
+#endif
 
 //	void setCurrentCamera( ofCamera& cam );
 //	void setCurrentCamera( ofCamera* swappedInCam );
@@ -469,4 +476,13 @@ class CloudsVisualSystem {
     float postGrainDist;
     
     int bleed;
+    
+#ifdef CLOUDS_RELEASE
+    
+    bool bShowPortals;
+    vector<CloudsPortal> portals;
+    CloudsPortal* selectedPortal;
+    
+#endif
+    
 };
