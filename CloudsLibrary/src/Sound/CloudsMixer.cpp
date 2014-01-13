@@ -50,6 +50,15 @@ void CloudsMixer::setup(int nChannels, int sampleRate, int bufferSize, int nBuff
     ofSoundStreamStart();
 }
 
+void CloudsMixer::fadeMusicDown()
+{
+    
+}
+
+void CloudsMixer::fadeMusicUp()
+{
+    
+}
 
 void CloudsMixer::setMusicVolume(float vol)
 {
