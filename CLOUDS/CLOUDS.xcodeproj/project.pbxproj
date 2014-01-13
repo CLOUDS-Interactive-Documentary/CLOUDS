@@ -41,6 +41,16 @@
 		A620E88318837DB300A02F5B /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E87718837DB300A02F5B /* lineMatchUtils.cpp */; };
 		A620E88418837DB300A02F5B /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E87718837DB300A02F5B /* lineMatchUtils.cpp */; };
 		A620E88518837DB300A02F5B /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E87718837DB300A02F5B /* lineMatchUtils.cpp */; };
+		A646DAB41883D98C00DBBF37 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E86218837B9C00A02F5B /* CloudsVisualSystemMazeGenerator2.cpp */; };
+		A646DAB51883D98D00DBBF37 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E86218837B9C00A02F5B /* CloudsVisualSystemMazeGenerator2.cpp */; };
+		A646DAB61883D99200DBBF37 /* Maze2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E86418837B9C00A02F5B /* Maze2.cpp */; };
+		A646DAB71883D99200DBBF37 /* MazeCamera2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E86618837B9C00A02F5B /* MazeCamera2.cpp */; };
+		A646DAB81883D99200DBBF37 /* MazeCell2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E86818837B9C00A02F5B /* MazeCell2.cpp */; };
+		A646DAB91883D99200DBBF37 /* ParamManager2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E86A18837B9C00A02F5B /* ParamManager2.cpp */; };
+		A646DABA1883D99200DBBF37 /* Maze2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E86418837B9C00A02F5B /* Maze2.cpp */; };
+		A646DABB1883D99200DBBF37 /* MazeCamera2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E86618837B9C00A02F5B /* MazeCamera2.cpp */; };
+		A646DABC1883D99200DBBF37 /* MazeCell2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E86818837B9C00A02F5B /* MazeCell2.cpp */; };
+		A646DABD1883D99200DBBF37 /* ParamManager2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E86A18837B9C00A02F5B /* ParamManager2.cpp */; };
 		AE6F00001880716900677B60 /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE52173D6082006357EF /* ofxTimecode.cpp */; };
 		AE6F00011880716900677B60 /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE69173D60A2006357EF /* ofxTextInputField.cpp */; };
 		AE6F00021880716900677B60 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
@@ -7978,6 +7988,7 @@
 				AE6FFFCA1880716900677B60 /* tinyxml.cpp in Sources */,
 				AE6FFFCB1880716900677B60 /* tinyxmlerror.cpp in Sources */,
 				AE6FFFCC1880716900677B60 /* tinyxmlparser.cpp in Sources */,
+				A646DABB1883D99200DBBF37 /* MazeCamera2.cpp in Sources */,
 				AE6FFFCD1880716900677B60 /* ofxXmlSettings.cpp in Sources */,
 				AE6FFFCE1880716900677B60 /* CloudsClip.cpp in Sources */,
 				AE6FFFCF1880716900677B60 /* CloudsFCPParser.cpp in Sources */,
@@ -7989,6 +8000,7 @@
 				AE6FFFD51880716900677B60 /* ofxHotKeys_impl_linux.cpp in Sources */,
 				AE6FFFD61880716900677B60 /* ofxHotKeys_impl_mac.mm in Sources */,
 				AE6FFFD71880716900677B60 /* ofxHotKeys_impl_win.cpp in Sources */,
+				A646DAB51883D98D00DBBF37 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
 				AE6FFFD81880716900677B60 /* ofxRemoveCocoaMenu.mm in Sources */,
 				AE6FFFD91880716900677B60 /* ofxTimeline.cpp in Sources */,
 				AE6FFFDA1880716900677B60 /* ofxTLAudioTrack.cpp in Sources */,
@@ -8046,6 +8058,7 @@
 				AE6F000D1880716900677B60 /* ofxRParticleRenderer.cpp in Sources */,
 				AE6F000E1880716900677B60 /* ofxRParticleSystem.cpp in Sources */,
 				AE6F000F1880716900677B60 /* ofxSolver.cpp in Sources */,
+				A646DABC1883D99200DBBF37 /* MazeCell2.cpp in Sources */,
 				AE6F00101880716900677B60 /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				AE6F00111880716900677B60 /* ofxSwarmBehavior.cpp in Sources */,
 				AE6F00121880716900677B60 /* ofxVerletSolver.cpp in Sources */,
@@ -8285,6 +8298,7 @@
 				AE6F00FA1880716900677B60 /* Maze.cpp in Sources */,
 				AE6F00FB1880716900677B60 /* MazeCamera.cpp in Sources */,
 				AE6F00FC1880716900677B60 /* MazeCell.cpp in Sources */,
+				A646DABA1883D99200DBBF37 /* Maze2.cpp in Sources */,
 				AE6F00FD1880716900677B60 /* MazeSettings.cpp in Sources */,
 				AE6F00FE1880716900677B60 /* MovingBall.cpp in Sources */,
 				AE6F00FF1880716900677B60 /* CloudsVisualSystemMemory.cpp in Sources */,
@@ -8462,6 +8476,7 @@
 				AE6F01A81880716900677B60 /* Globals.cpp in Sources */,
 				AE6F01A91880716900677B60 /* Module.cpp in Sources */,
 				AE6F01AA1880716900677B60 /* RandomMover.cpp in Sources */,
+				A646DABD1883D99200DBBF37 /* ParamManager2.cpp in Sources */,
 				AE6F01AB1880716900677B60 /* CloudsVisualSystemProcess11.cpp in Sources */,
 				AE6F01AC1880716900677B60 /* E2.cpp in Sources */,
 				AE6F01AD1880716900677B60 /* CloudsVisualSystemProcess18.cpp in Sources */,
@@ -9053,6 +9068,7 @@
 				E7FB24D61830D4C0009EBD0E /* CloudsClip.cpp in Sources */,
 				E7FB24D71830D4C0009EBD0E /* CloudsFCPParser.cpp in Sources */,
 				E7FB24D81830D4C0009EBD0E /* CloudsLink.cpp in Sources */,
+				A646DAB81883D99200DBBF37 /* MazeCell2.cpp in Sources */,
 				E7FB24D91830D4C0009EBD0E /* CloudsStoryEngine.cpp in Sources */,
 				E7FB24DB1830D4C0009EBD0E /* kiss_fft.c in Sources */,
 				E7FB24DC1830D4C0009EBD0E /* kiss_fftr.c in Sources */,
@@ -9103,6 +9119,7 @@
 				E7FB25091830D4C0009EBD0E /* ofxTimecode.cpp in Sources */,
 				E7FB250A1830D4C0009EBD0E /* ofxTextInputField.cpp in Sources */,
 				E7FB250B1830D4C0009EBD0E /* ofxGameCamera.cpp in Sources */,
+				A646DAB61883D99200DBBF37 /* Maze2.cpp in Sources */,
 				E7FB250C1830D4C0009EBD0E /* ofxBehavior.cpp in Sources */,
 				E7FB250D1830D4C0009EBD0E /* ofxBufferEffectorBehavior.cpp in Sources */,
 				E7FB250E1830D4C0009EBD0E /* ofxDamperBehavior.cpp in Sources */,
@@ -9189,6 +9206,7 @@
 				E7FB256A1830D4C0009EBD0E /* b2Joint.cpp in Sources */,
 				E7FB256B1830D4C0009EBD0E /* b2LineJoint.cpp in Sources */,
 				E7FB256C1830D4C0009EBD0E /* b2MouseJoint.cpp in Sources */,
+				A646DAB41883D98C00DBBF37 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
 				E7FB256D1830D4C0009EBD0E /* b2PrismaticJoint.cpp in Sources */,
 				E7FB256E1830D4C0009EBD0E /* b2PulleyJoint.cpp in Sources */,
 				E7FB256F1830D4C0009EBD0E /* b2RevoluteJoint.cpp in Sources */,
@@ -9273,6 +9291,7 @@
 				E780D15A1852CA150096AE8D /* ofxAssimpMeshHelper.cpp in Sources */,
 				E780D15C1852CA150096AE8D /* ofxAssimpModelLoader.cpp in Sources */,
 				E79E6F3E18551DE300406535 /* CloudsInput.cpp in Sources */,
+				A646DAB71883D99200DBBF37 /* MazeCamera2.cpp in Sources */,
 				E79E6F4218551DF000406535 /* CloudsInputMouse.cpp in Sources */,
 				E734A03918556E92002E615C /* IpEndpointName.cpp in Sources */,
 				E734A03B18556E92002E615C /* NetworkingUtils.cpp in Sources */,
@@ -9443,6 +9462,7 @@
 				E70CE37C18695CCD00955691 /* CloudsVisualSystemWebHistory.cpp in Sources */,
 				E70CE37E18695CCD00955691 /* HistoryNode.cpp in Sources */,
 				E70CE38018695CCD00955691 /* CloudsVisualSystemWorld.cpp in Sources */,
+				A646DAB91883D99200DBBF37 /* ParamManager2.cpp in Sources */,
 				E70CE38218695CCD00955691 /* wArc.cpp in Sources */,
 				E70CE38418695CCD00955691 /* wCity.cpp in Sources */,
 				E70CE38618695CCD00955691 /* wParticle.cpp in Sources */,
@@ -9615,6 +9635,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"AVF_PLAYER=1",
 					"KINECT_INPUT=1",
+					"SHOW_SUBTITLES=1",
 				);
 				INFOPLIST_FILE = CLOUDS_KINECT.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -9780,6 +9801,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"AVF_PLAYER=1",
 					"KINECT_INPUT=1",
+					"SHOW_SUBTITLES=1",
 				);
 				INFOPLIST_FILE = CLOUDS_KINECT.plist;
 				INSTALL_PATH = "$(HOME)/Applications";

@@ -22,20 +22,20 @@
         <ow>0.971536160</ow>
         <easein>0</easein>
         <easeout>0</easeout>
-        <time>00:00:23:514</time>
-        <value>1.000000000</value>
+        <time>00:00:24:854</time>
+        <value>0.800000012</value>
     </key>
     <key>
-        <px>0.000000000</px>
-        <py>0.000000000</py>
-        <pz>1041.522827148</pz>
-        <ox>0.000000000</ox>
-        <oy>0.000000000</oy>
-        <oz>0.000000000</oz>
-        <ow>1.000000000</ow>
+        <px>21.532442093</px>
+        <py>94.821678162</py>
+        <pz>170.193130493</pz>
+        <ox>-0.237226784</ox>
+        <oy>0.184939355</oy>
+        <oz>-0.047554512</oz>
+        <ow>0.952499986</ow>
         <easein>0</easein>
         <easeout>0</easeout>
-        <time>00:00:52:679</time>
+        <time>00:00:53:500</time>
         <value>0.000000000</value>
     </key>
 </keyframes>

@@ -4,9 +4,9 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>ROT-Y</WidgetName>
-                <WidgetID>11</WidgetID>
-                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+                <WidgetName>Halo_Sphere_Scale</WidgetName>
+                <WidgetID>14</WidgetID>
+                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
@@ -36,9 +36,9 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Halo_Sphere_Scale</WidgetName>
-                <WidgetID>14</WidgetID>
-                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+                <WidgetName>ROT-Y</WidgetName>
+                <WidgetID>11</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>

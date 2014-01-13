@@ -164,6 +164,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
+    string b = "foo";
 	//can't save guis because the virtual subclass members return the wrong data
 //    saveGUIS();
 }
@@ -561,9 +562,9 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
             if(bShowPortals){
             ofPushStyle();
             ofSetColor(255);
-                for(int i=0;i<portals.size();i++){
+            for(int i=0;i<portals.size();i++){
                 portals[i].draw();
-                }
+            }
             ofPopStyle();
             }
 #endif

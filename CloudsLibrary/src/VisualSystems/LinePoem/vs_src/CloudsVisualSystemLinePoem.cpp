@@ -32,7 +32,7 @@ void CloudsVisualSystemLinePoem::selfGuiEvent(ofxUIEventArgs &e){
 
 void CloudsVisualSystemLinePoem::setupFbo(){
     //ZACH: instantiate your FBO here
-    fbo.allocate(getCanvasWidth(), getCanvasHeight(), GL_RGB);
+    //fbo.allocate(getCanvasWidth(), getCanvasHeight(), GL_RGB);
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -64,9 +64,17 @@ void CloudsVisualSystemLinePoem::selfSetDefaults(){
 // geometry should be loaded here
 void CloudsVisualSystemLinePoem::selfSetup(){
 	
-//    APP.SYS = this;
-//    APP.setup();
+    
+        APP.SYS = this;
+        APP.setup();
+    
+    
+    
     //setupFbo();
+    
+    
+    
+    
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -98,7 +106,7 @@ void CloudsVisualSystemLinePoem::selfUpdate(){
 //    }
     
     
- //   APP.update();
+    APP.update();
 
     
     
@@ -118,7 +126,7 @@ void CloudsVisualSystemLinePoem::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemLinePoem::selfDrawBackground(){
 
-//    APP.draw();
+    APP.draw();
 	
 }
 

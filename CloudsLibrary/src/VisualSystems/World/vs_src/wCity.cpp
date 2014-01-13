@@ -52,7 +52,7 @@ void wCity::update(){
         if ( *noisePeaks > 0.0){
 			noise = powf( *noisePeaks ,ofNoise( sin(pos.x),pos.y,pos.z*0.1));
 			nNoise = ofMap(noise,0.001,*noisePeaks,0.0,1.0,true);
-			color.setHue( 20+nNoise*30 );
+			color.setHue( 9+nNoise*30 );
 			size = nNoise*5.0;
         }
     } else {

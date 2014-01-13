@@ -210,10 +210,6 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	
-	if(args.key == 'R'){
-		CloudsQuestion::reloadShader();
-	}
-    
 	if(args.key == 'Q'){
 		for(int i = 0; i < fakeQuestions.size(); i++){
 			rgbdVisualSystem->addQuestion(fakeQuestions[i],
@@ -297,6 +293,10 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		
 		//TODO add questions or something to the cluster map
 		//right now we can just have a canned animation and stop it when we are done
+        
+        //MIKE
+        //if(HUD->continue: go to next act
+        //else if hud reset: go to next intro
 		if(!clusterMap->getTimeline()->getIsPlaying()){
 			
 			transitionController.transitionFromClusterMap(1.0);
@@ -321,7 +321,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(!bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
             
             bQuestionAsked = true;
-            transitionController.transitionWithQuestion(2.0, 1.0);
+            //currently QUESTION_IN is very short, placeholder for wormhole
+            transitionController.transitionWithQuestion(2.0, 0.1);
             sound.questionSelected(2.0);
         }
     }
@@ -349,7 +350,7 @@ void CloudsPlaybackController::updateTransition(){
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 	
 	if(transitionController.getCurrentState() != TRANSITION_IDLE){
-		cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " CROSSFADE IS " << crossfadeValue << endl;
+//		cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " CROSSFADE IS " << crossfadeValue << endl;
 	}
 	
 	if(transitionController.transitioning){
@@ -359,7 +360,9 @@ void CloudsPlaybackController::updateTransition(){
 	CloudsPortal* q;
 	CloudsClip clip;
 	string topic;
-	
+	vector<string> topics;
+    vector<CloudsVisualSystemPreset> potentialPresets;
+    
 	if(transitionController.isStateNew()){
         
         switch (transitionController.getCurrentState()) {
@@ -407,8 +410,11 @@ void CloudsPlaybackController::updateTransition(){
                 
 				
                 break;
+
                 
-            case TRANSITION_CLUSTERMAP_IN:{
+            case TRANSITION_CLUSTERMAP_IN:
+                
+                sound.enterClusterMap();
                 
                 if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
                     rgbdVisualSystem->transtionFinished();
@@ -423,8 +429,8 @@ void CloudsPlaybackController::updateTransition(){
                 
                 clearAct(true);
                 
-                vector<string> topics = storyEngine.getValidTopicsForNextAct(run);
-                vector<CloudsVisualSystemPreset> potentialPresets = visualSystems.getPresetsForKeywords(topics,"",true);
+                topics = storyEngine.getValidTopicsForNextAct(run);
+                potentialPresets = visualSystems.getPresetsForKeywords(topics,"",true);
                 if(potentialPresets.size() == 0 ){
                     cout<<"Couldnt find any presets for the next interlude! Using Cluster Map instead"<<endl;
                     clusterMap->traverse();
@@ -456,10 +462,15 @@ void CloudsPlaybackController::updateTransition(){
                     }
                     
                 }
-            }break;
+                
+                break;
                 
 			case TRANSITION_QUESTION_IN:
 				
+                currentAct->getTimeline().stop();
+                
+                //clearAct(true);
+                
 				// show question transition over this period
 				rgbdVisualSystem->transtionFinished();
 				rgbdVisualSystem->stopSystem();
@@ -619,16 +630,27 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
-    //    if(!args.act->startsWithVisualSystem()){
-    //        transitionController.transitionToFirstInterview(1.0);
-    //    }
+
+    if(!args.act->startsWithVisualSystem()){
+        transitionController.transitionToFirstInterview(1.0);
+    }
+    else{
+        //we'll get a visual system triggered event;
+        bool b = false;
+    }
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 	
+    //make sure its' stopped
+    CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().stop();
+    
 	cout << "ACT ENDED TRIGGERED" << endl;
-	transitionController.transitionToClusterMap(1.0,1.0);
+    if(!bQuestionAsked){
+        cout << "Transitioning to cluster map" << endl;
+        transitionController.transitionToClusterMap(1.0,1.0);
+    }
 }
 
 //--------------------------------------------------------------------
@@ -643,11 +665,15 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 		ofLogError("CloudsPlaybackController::visualSystemBegan") << "Triggered visual system while still showing one";
 	}
 	
-	rgbdVisualSystem->clearQuestions();
-	
+    if(bQuestionAsked){
+        //Don't run the system
+        return;
+    }
+    
+	//rgbdVisualSystem->clearQuestions();
+
 	nextVisualSystemPreset = args.preset;
-	
-	
+		
 	//	cout << "CloudsPlaybackController::showVisualSystem SETTING NEXT SYSTEM TO " << nextVisualSystem.presetName << endl;
 	if(nextVisualSystemPreset.system == NULL){
 		ofLogError("CloudsPlaybackController::showVisualSystem") << "Incoming system is NULL";

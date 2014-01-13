@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>BgSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
-    <YPosition>215.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>141.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BRI</Name>
-    <Value>65.320198059</Value>
+    <Value>37.684730530</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,5 +43,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BRI2</Name>
-    <Value>21.354679108</Value>
+    <Value>7.536945820</Value>
 </Widget>

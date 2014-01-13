@@ -3,7 +3,7 @@
     <Name>Audio</Name>
     <IsMinified>0</IsMinified>
     <XPosition>213.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <YPosition>177.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL</Name>
-    <Value>0.365748048</Value>
+    <Value>0.053777028</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -53,7 +53,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL DECAY RATE</Name>
-    <Value>0.586206913</Value>
+    <Value>0.931034505</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

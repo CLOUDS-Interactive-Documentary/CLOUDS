@@ -411,7 +411,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     
     
     //////////////////CAMERA
-	cameraGui = new ofxUISuperCanvas("CAMERA", gui);
+	cameraGui =     new ofxUISuperCanvas("CAMERA", gui);
 	cameraGui->copyCanvasStyle(gui);
 	cameraGui->copyCanvasProperties(gui);
 	cameraGui->setName("Camera");
@@ -924,9 +924,10 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 		
 		portals[i]->update();
         
-        if(!portals[i]->onScreen){
+        if(!portals[i]->onScreen || portals[i]->question == ""){
             continue;
         }
+        
 		#ifdef OCULUS_RIFT
 		ofVec3f screenPos = getOculusRift().worldToScreen(portals[i]->hoverPosition, true);
         ofRectangle viewport = getOculusRift().getOculusViewport();
@@ -965,6 +966,11 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 void CloudsVisualSystemRGBD::clearQuestions(){
 	rightPortal.question = "";
 	leftPortal.question = "";
+    
+    leftPortal.clearSelection();
+    rightPortal.clearSelection();
+    selectedPortal = NULL;
+    caughtPortal = NULL;
 }
 
 //JG NEW TRANSITION STUBS<----- James, I love these! thank you, Lars
@@ -1045,7 +1051,7 @@ void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
 		float easedRotPercent = ofxTween::map(percentComplete, .6, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
 		cloudsCamera.setTransitionRotationPercent( easedRotPercent );
 		
-		cout <<"TRANSITIONING : easedValue = "<< easedPercent << endl;
+//		cout <<"TRANSITIONING : easedValue = "<< easedPercent << endl;
 	}
 }
 
@@ -1355,6 +1361,11 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 
 void CloudsVisualSystemRGBD::selfDraw(){
 	
+    #ifdef OCULUS_RIFT
+    if (hud != NULL) {
+        hud->draw3D(getOculusRift().baseCamera);
+    }
+    #endif
 	ofPushStyle();
 	ofPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -1568,11 +1579,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	drawQuestions();
     
-#ifdef OCULUS_RIFT
-    if (hud != NULL) {
-        hud->draw3D(getOculusRift().baseCamera);
-    }
-#endif
+
 }
 
 void CloudsVisualSystemRGBD::drawQuestions(){
@@ -1614,6 +1621,8 @@ void CloudsVisualSystemRGBD::selfDrawOverlay() {
         
         ofPopStyle();
     }
+    
+    
 }
 
 void CloudsVisualSystemRGBD::selfExit(){
@@ -1624,6 +1633,15 @@ void CloudsVisualSystemRGBD::selfBegin(){
     bPortalDebugOn = false;
 	cloudsCamera.jumpToPosition();
     timeline->hide();
+    
+    //clear any previously selected portals
+    caughtPortal = NULL;
+    selectedPortal = NULL;
+    
+    //make sure any portals are clear
+    leftPortal.clearSelection();
+    rightPortal.clearSelection();
+ 
 }
 
 void CloudsVisualSystemRGBD::selfEnd(){

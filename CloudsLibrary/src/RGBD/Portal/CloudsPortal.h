@@ -32,6 +32,8 @@ class CloudsPortal {
     
     void startHovering();
 	void stopHovering();
+    void clearSelection();
+    
     bool hovering;
 	float hoverStartTime;
 	
