@@ -9635,6 +9635,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"AVF_PLAYER=1",
 					"KINECT_INPUT=1",
+					"SHOW_SUBTITLES=1",
 				);
 				INFOPLIST_FILE = CLOUDS_KINECT.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -9800,6 +9801,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"AVF_PLAYER=1",
 					"KINECT_INPUT=1",
+					"SHOW_SUBTITLES=1",
 				);
 				INFOPLIST_FILE = CLOUDS_KINECT.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
