@@ -13,6 +13,7 @@
 #include "CloudsVisualSystem.h"
 #include "ParamManager2.h"
 #include "Maze2.h"
+//#include "MazeCamera2.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemMazeGenerator2 : public CloudsVisualSystem {

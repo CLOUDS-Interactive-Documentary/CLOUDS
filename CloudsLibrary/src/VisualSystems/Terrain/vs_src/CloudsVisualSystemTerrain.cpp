@@ -682,6 +682,53 @@ ofVec2f CloudsVisualSystemTerrain::hermiteInterpolate(ofVec2f y0, ofVec2f y1, of
 	return(a0*y1 + a1*m0+a2*m1+a3*y2);
 }
 
+void CloudsVisualSystemTerrain::selfInteractionDragged(CloudsInteractionEventArgs& args){
+    if(bDoDraw){
+        
+        mouse.x = args.position.x;
+        mouse.y = args.position.y;
+        
+        playerHistoryMap[args.playerId].push_back(ofVec2f(args.position.x,args.position.y));
+        
+        vector<ofVec2f> splineHandles;
+        //make a spline
+        if(playerHistoryMap[args.playerId].size() == 1){
+            return; //draw next time
+        }
+        if(playerHistoryMap[args.playerId].size() == 2){
+            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][1]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][1]);
+        }
+        else if(playerHistoryMap[args.playerId].size() == 3){
+            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][1]);
+            splineHandles.push_back(playerHistoryMap[args.playerId][2]);
+        }
+        else{
+            for(int i = playerHistoryMap[args.playerId].size()-4; i < playerHistoryMap[args.playerId].size(); i++){
+                splineHandles.push_back(playerHistoryMap[args.playerId][i]);
+            }
+        }
+        
+        float stepsize = ofMap(brushSize, 2, 200, .005, .1, true);
+        
+        for(float a = 0; a < 1.; a+=stepsize){
+            playerDepositPoints[args.playerId].push_back(hermiteInterpolate(splineHandles[0],
+																			splineHandles[1],
+																			splineHandles[2],
+																			splineHandles[3], a, 0, 0));
+        }
+        
+        if(playerHistoryMap[args.playerId].size() > 4){
+            playerHistoryMap[args.playerId].erase(playerHistoryMap[args.playerId].begin());
+        }
+        
+    }
+
+}
 
 void CloudsVisualSystemTerrain::selfInteractionMoved(CloudsInteractionEventArgs& args){
     if(bDoDraw){

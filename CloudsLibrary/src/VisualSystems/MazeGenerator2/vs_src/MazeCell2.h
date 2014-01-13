@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __MazeGenerator__MazeCell__
-#define __MazeGenerator__MazeCell__
+#ifndef __MazeGenerator2__MazeCell__
+#define __MazeGenerator2__MazeCell__
 
 #include <ofMain.h>
 #include "ParamManager2.h"

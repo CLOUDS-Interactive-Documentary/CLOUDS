@@ -597,6 +597,11 @@
 		8510F1B7187DEBF100E34E36 /* RandomNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8510F1B0187DEBF100E34E36 /* RandomNumber.cpp */; };
 		851A1054187A09E0004197C5 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 851A1053187A09E0004197C5 /* ofxSystemTextbox.mm */; };
 		851A1055187A09E0004197C5 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 851A1053187A09E0004197C5 /* ofxSystemTextbox.mm */; };
+		85384EDD188352100076AF5A /* CloudsVisualSystemMazeGenerator2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384ED3188352100076AF5A /* CloudsVisualSystemMazeGenerator2.cpp */; };
+		85384EDE188352100076AF5A /* Maze2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384ED5188352100076AF5A /* Maze2.cpp */; };
+		85384EDF188352100076AF5A /* MazeCamera2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384ED7188352100076AF5A /* MazeCamera2.cpp */; };
+		85384EE0188352100076AF5A /* MazeCell2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384ED9188352100076AF5A /* MazeCell2.cpp */; };
+		85384EE1188352100076AF5A /* ParamManager2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384EDB188352100076AF5A /* ParamManager2.cpp */; };
 		85891AD5187F5E1500325DD8 /* Bubbles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AB9187F5E1500325DD8 /* Bubbles.cpp */; };
 		85891AD6187F5E1500325DD8 /* Bubbles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AB9187F5E1500325DD8 /* Bubbles.cpp */; };
 		85891AD7187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ABB187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp */; };
@@ -1754,6 +1759,16 @@
 		8510F1B1187DEBF100E34E36 /* RandomNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomNumber.h; sourceTree = "<group>"; };
 		851A1052187A09E0004197C5 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
 		851A1053187A09E0004197C5 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
+		85384ED3188352100076AF5A /* CloudsVisualSystemMazeGenerator2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMazeGenerator2.cpp; sourceTree = "<group>"; };
+		85384ED4188352100076AF5A /* CloudsVisualSystemMazeGenerator2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMazeGenerator2.h; sourceTree = "<group>"; };
+		85384ED5188352100076AF5A /* Maze2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Maze2.cpp; sourceTree = "<group>"; };
+		85384ED6188352100076AF5A /* Maze2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Maze2.h; sourceTree = "<group>"; };
+		85384ED7188352100076AF5A /* MazeCamera2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MazeCamera2.cpp; sourceTree = "<group>"; };
+		85384ED8188352100076AF5A /* MazeCamera2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCamera2.h; sourceTree = "<group>"; };
+		85384ED9188352100076AF5A /* MazeCell2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MazeCell2.cpp; sourceTree = "<group>"; };
+		85384EDA188352100076AF5A /* MazeCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCell2.h; sourceTree = "<group>"; };
+		85384EDB188352100076AF5A /* ParamManager2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParamManager2.cpp; sourceTree = "<group>"; };
+		85384EDC188352100076AF5A /* ParamManager2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParamManager2.h; sourceTree = "<group>"; };
 		85891AB9187F5E1500325DD8 /* Bubbles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bubbles.cpp; sourceTree = "<group>"; };
 		85891ABA187F5E1500325DD8 /* Bubbles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bubbles.h; sourceTree = "<group>"; };
 		85891ABB187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemSwim.cpp; sourceTree = "<group>"; };
@@ -3353,6 +3368,31 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
+		85384ED1188352100076AF5A /* MazeGenerator2 */ = {
+			isa = PBXGroup;
+			children = (
+				85384ED2188352100076AF5A /* vs_src */,
+			);
+			path = MazeGenerator2;
+			sourceTree = "<group>";
+		};
+		85384ED2188352100076AF5A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				85384ED3188352100076AF5A /* CloudsVisualSystemMazeGenerator2.cpp */,
+				85384ED4188352100076AF5A /* CloudsVisualSystemMazeGenerator2.h */,
+				85384ED5188352100076AF5A /* Maze2.cpp */,
+				85384ED6188352100076AF5A /* Maze2.h */,
+				85384ED7188352100076AF5A /* MazeCamera2.cpp */,
+				85384ED8188352100076AF5A /* MazeCamera2.h */,
+				85384ED9188352100076AF5A /* MazeCell2.cpp */,
+				85384EDA188352100076AF5A /* MazeCell2.h */,
+				85384EDB188352100076AF5A /* ParamManager2.cpp */,
+				85384EDC188352100076AF5A /* ParamManager2.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
 		85891AB7187F5E1400325DD8 /* Swim */ = {
 			isa = PBXGroup;
 			children = (
@@ -3668,6 +3708,7 @@
 		E70CE3A21869648900955691 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				85384ED1188352100076AF5A /* MazeGenerator2 */,
 				85891AB7187F5E1400325DD8 /* Swim */,
 				8510F1AA187DEBF100E34E36 /* RandomDigits2 */,
 				850D80CD187BA67200BB3A84 /* Schlabberbox */,
@@ -7600,8 +7641,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsVisualSystemEditor" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -8763,6 +8802,11 @@
 				85891AE9187F5E1500325DD8 /* ofxCubeMap.cpp in Sources */,
 				85891AEB187F5E1500325DD8 /* SphericalGenerator.cpp in Sources */,
 				85891AED187F5E1500325DD8 /* SuperFormula.cpp in Sources */,
+				85384EDD188352100076AF5A /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
+				85384EDE188352100076AF5A /* Maze2.cpp in Sources */,
+				85384EDF188352100076AF5A /* MazeCamera2.cpp in Sources */,
+				85384EE0188352100076AF5A /* MazeCell2.cpp in Sources */,
+				85384EE1188352100076AF5A /* ParamManager2.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

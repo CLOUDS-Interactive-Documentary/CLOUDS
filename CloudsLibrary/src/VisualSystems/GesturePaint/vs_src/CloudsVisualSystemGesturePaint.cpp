@@ -508,6 +508,45 @@ void CloudsVisualSystemGesturePaint::selfInteractionMoved(CloudsInteractionEvent
 
 
 void CloudsVisualSystemGesturePaint:: selfInteractionStarted(CloudsInteractionEventArgs& args){}
-void CloudsVisualSystemGesturePaint::selfInteractionDragged(CloudsInteractionEventArgs& args){}
+void CloudsVisualSystemGesturePaint::selfInteractionDragged(CloudsInteractionEventArgs& args){
+    playerHistoryMap[args.playerId].push_back(ofVec2f(args.position.x,args.position.y));
+    
+	vector<ofVec2f> splineHandles;
+	//make a spline
+	if(playerHistoryMap[args.playerId].size() == 1){
+		return; //draw next time
+	}
+	if(playerHistoryMap[args.playerId].size() == 2){
+		splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+		splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+		splineHandles.push_back(playerHistoryMap[args.playerId][1]);
+		splineHandles.push_back(playerHistoryMap[args.playerId][1]);
+	}
+	else if(playerHistoryMap[args.playerId].size() == 3){
+		splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+		splineHandles.push_back(playerHistoryMap[args.playerId][0]);
+		splineHandles.push_back(playerHistoryMap[args.playerId][1]);
+		splineHandles.push_back(playerHistoryMap[args.playerId][2]);
+	}
+	else{
+		for(int i = playerHistoryMap[args.playerId].size()-4; i < playerHistoryMap[args.playerId].size(); i++){
+			splineHandles.push_back(playerHistoryMap[args.playerId][i]);
+		}
+	}
+	
+	float stepsize = ofMap(brushSize, 2, 200, .005, .1, true);
+	
+	for(float a = 0; a < 1.; a+=stepsize){
+		playerDepositPoints[args.playerId].push_back(ofHermiteInterpolate(splineHandles[0],
+                                                                          splineHandles[1],
+                                                                          splineHandles[2],
+                                                                          splineHandles[3], a, 0, 0));
+	}
+    
+	if(playerHistoryMap[args.playerId].size() > 4){
+		playerHistoryMap[args.playerId].erase(playerHistoryMap[args.playerId].begin());
+	}
+
+}
 void CloudsVisualSystemGesturePaint:: selfInteractionEnded(CloudsInteractionEventArgs& args){}
 
