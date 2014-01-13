@@ -58,14 +58,10 @@ void CloudsMixer::setup(int nChannels, int sampleRate, int bufferSize, int nBuff
 
 void CloudsMixer::fadeMusicDown()
 {
-    cout << "fading down" << endl;
-    fsig = -1;
 }
 
 void CloudsMixer::fadeMusicUp()
 {
-    cout << "fading up" << endl;
-    fsig = 1;
 }
 
 void CloudsMixer::setMusicVolume(float vol)
@@ -80,10 +76,14 @@ void CloudsMixer::setDiageticVolume(float vol)
 
 ///LUKE STUBBS
 void CloudsMixer::fadeDown(float& time){
+    cout << "fading down" << endl;
+    fsig = -1;
     
 }
 
 void CloudsMixer::fadeUp(float& time){
+    cout << "fading up" << endl;
+    fsig = 1;
     
 }
 //LUKE STUBBS
