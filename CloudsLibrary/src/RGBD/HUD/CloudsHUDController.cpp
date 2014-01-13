@@ -28,6 +28,9 @@ void CloudsHUDController::setup(){
     calculateFontSizes();
 	
 	home.setup();
+    
+    cout << "canvas width: " << ofGetWidth() << endl;
+    cout << "cancas height: " << ofGetHeight() << endl;
 }
 
 void CloudsHUDController::actBegan(CloudsActEventArgs& args){
@@ -78,7 +81,7 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
     //update lower third, but only if the speaker has changed
     if(speaker.fcpID != CloudsSpeaker::speakers[ clip.person ].fcpID){
         speaker = CloudsSpeaker::speakers[ clip.person ];
-        populateLowerThird(speaker.firstName, speaker.lastName, speaker.location2, speaker.title, speaker.byline1, true );
+        populateLowerThird(speaker.firstName, speaker.lastName, speaker.title, speaker.location2, speaker.byline1, true );
     }
     
 // PROJECT EXAMPLE
