@@ -22,6 +22,8 @@ public:
     
     void setMusicVolume(float vol);
     void setDiageticVolume(float vol);
+    void fadeMusicDown();
+    void fadeMusicUp();
 
     //legacy
     void fillBuffer(float *output, int bufferSize, int nChannels){
