@@ -324,6 +324,7 @@
 		502B00FA1883C40600CCC89A /* CloudsSpeaker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsSpeaker.cpp; path = src/StoryEngine/CloudsSpeaker.cpp; sourceTree = "<group>"; };
 		502B00FB1883C40600CCC89A /* CloudsSpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsSpeaker.h; path = src/StoryEngine/CloudsSpeaker.h; sourceTree = "<group>"; };
 		502B01DB1883C67A00CCC89A /* CloudsSpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsSpeaker.h; path = ../../CloudsLibrary/src/StoryEngine/CloudsSpeaker.h; sourceTree = "<group>"; };
+		502B01FA188460EA00CCC89A /* ofxAVFVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxAVFVideoPlayer.h; path = ../../../addons/ofxAVFVideoPlayer/src/ofxAVFVideoPlayer.h; sourceTree = "<group>"; };
 		5055DB99181B06DA00761DA0 /* ofxObjLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxObjLoader.cpp; sourceTree = "<group>"; };
 		5055DB9A181B06DA00761DA0 /* ofxObjLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxObjLoader.h; sourceTree = "<group>"; };
 		5055DBB7181B06EE00761DA0 /* ofxSimpleSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleSpline.cpp; sourceTree = "<group>"; };
@@ -872,6 +873,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				502B01FA188460EA00CCC89A /* ofxAVFVideoPlayer.h */,
 				502B00181883C15700CCC89A /* ofxFTGL */,
 				850EE81418307364004411A3 /* ofxOculusRift */,
 				5055DBA2181B06EE00761DA0 /* ofxSimpleSpline */,

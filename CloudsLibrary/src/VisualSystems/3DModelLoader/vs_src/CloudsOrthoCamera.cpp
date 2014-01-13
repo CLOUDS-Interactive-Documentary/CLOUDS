@@ -116,9 +116,8 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 //		float pitchScale = .005;
 		
 		//convert mouse coords in to somethin we can work with
-		//JG: REMOVE MOUSE CALLS
-		float mx = ofMap( ofGetMouseX(), viewport.getLeft(), viewport.getRight(), 1., -1., true );
-		float my = ofMap( ofGetMouseY(), viewport.getTop(), viewport.getBottom(), 1., -1., true );
+		float mx = ofMap( GetCloudsInputX(), viewport.getLeft(), viewport.getRight(), 1., -1., true );
+		float my = ofMap( GetCloudsInputY(), viewport.getTop(), viewport.getBottom(), 1., -1., true );
 		float dist = ofVec2f(mx, my).length();
 		
 		if(dist > deadZone)

@@ -256,7 +256,8 @@ void CloudsVisualSystem3DModelLoader::selfGuiEvent(ofxUIEventArgs &e)
 					if(objFiles[i] == name )
 					{
 						cout << "loading model: " << name << endl;
-						loadModel( "models/" + name, bSmoothModel );
+						//loadModel( "models/" + name, bSmoothModel );
+						loadModel( getVisualSystemDataPath() + "models/" + name, bSmoothModel );
 					}
 				}
 			}
@@ -270,8 +271,8 @@ void CloudsVisualSystem3DModelLoader::selfGuiEvent(ofxUIEventArgs &e)
 					if(cameraPaths[i] == name )
 					{
 						cout << "loading camera path: " << name << endl;
-//						loadModel( "models/" + name, bSmoothModel );
-						pathCamera.loadPathFromFile(getVisualSystemDataPath(true) + "cameraPaths/" + name );
+						pathCamera.loadPathFromFile(getVisualSystemDataPath(false) + "cameraPaths/" + name );
+//						pathCamera.loadPathFromFile(getVisualSystemDataPath(true) + "cameraPaths/" + name );
 					}
 				}
 			}
@@ -371,7 +372,8 @@ void CloudsVisualSystem3DModelLoader::selfSetup()
 {
 	
 	//get list of models from the model directory
-	string path = getVisualSystemDataPath(true) + "models/";
+	//string path = getVisualSystemDataPath(true) + "models/";
+	string path = getVisualSystemDataPath(false) + "models/";
 	cout << "model path: " << path << endl;
 	
 	ofDirectory dir;
@@ -864,6 +866,7 @@ void CloudsVisualSystem3DModelLoader::setupGridVbos()
 		gridVertices.push_back( ofVec3f(-halfGridDim, 0, i - halfGridDim) );
 		gridVertices.push_back( ofVec3f( halfGridDim, 0, i - halfGridDim) );
 	}
+	
 	gridMajor.setVertexData( &gridVertices[0], gridVertices.size(), GL_STATIC_DRAW );
 	numGridMajorVertices = gridVertices.size();
 	gridVertices.clear();
@@ -887,7 +890,8 @@ void CloudsVisualSystem3DModelLoader::loadModel( string fileName, bool bSmoothMe
 {
 //	perspCam.reset();
 	cout << "*** LOADING MODEL " << fileName << endl;
-	string filePath = getVisualSystemDataPath(true) + fileName;
+	//string filePath = getVisualSystemDataPath(true) + fileName;
+	string filePath = getVisualSystemDataPath(false) + fileName;
 	if(!ofFile(filePath).exists()){
 		ofLogError("CloudsVisualSystem3DModelLoader::loadModel") << filePath << " Doesn't exist";
 	}
@@ -1088,7 +1092,7 @@ void CloudsVisualSystem3DModelLoader::drawSceneGeometry( ofCamera* cam)
 		ofPushMatrix();
 		int gms = gridMajorScale;
 		//	ofTranslate( floor(camPos.x/(gridScale*gms))*gms*gridScale, 0, floor(camPos.z/(gridScale*gms))*gms*gridScale);
-		
+		ofTranslate( 0, ( getCameraRef().getPosition().y > 0)? gridLineWidth * .5 / gridScale: gridLineWidth * -.5 / gridScale,0);
 		ofScale( gridScale * gms,gridScale * gms, gridScale * gms );
 		
 		glLineWidth( majorGridLineWidth );
