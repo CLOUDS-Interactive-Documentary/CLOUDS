@@ -81,7 +81,7 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
     //update lower third, but only if the speaker has changed
     if(speaker.fcpID != CloudsSpeaker::speakers[ clip.person ].fcpID){
         speaker = CloudsSpeaker::speakers[ clip.person ];
-        populateLowerThird(speaker.firstName, speaker.lastName, speaker.title, speaker.location2, speaker.byline1, true );
+        populateLowerThird(speaker.firstName, speaker.lastName, speaker.location2, speaker.title, speaker.byline1, true );
     }
     
 // PROJECT EXAMPLE
@@ -154,8 +154,8 @@ void CloudsHUDController::populateLowerThird( string firstName, string lastName,
     locationLabel->bounds.x = rightEdge + margin;
     titleLabel->bounds.x = rightEdge + margin;
     
-    locationLabel->setText( title );
-    titleLabel->setText( location );
+    locationLabel->setText( location );
+    titleLabel->setText( title );
     
     //description
     ////reset to default
@@ -164,12 +164,13 @@ void CloudsHUDController::populateLowerThird( string firstName, string lastName,
     descLabel->layout->setLineLength(defaultBioBounds.width);
     int descLeftEdge = descLabel->bounds.getLeft();
     
-    if(locationLabel->getRightEdge() + margin >= descLeftEdge){
-        descLabel->bounds.x = locationLabel->getRightEdge()+margin;
-        descLabel->layout->setLineLength(defaultBioBounds.width - (descLabel->bounds.x - defaultBioBounds.x));
-    }
-    else if(titleLabel->getRightEdge() + margin >= descLeftEdge){
-        descLabel->bounds.x = titleLabel->getRightEdge()+margin;
+    if(locationLabel->getRightEdge() > titleLabel->getRightEdge())
+        rightEdge = locationLabel->getRightEdge();
+    else
+        rightEdge = titleLabel->getRightEdge();
+    
+    if(rightEdge + margin >= descLeftEdge){
+        descLabel->bounds.x = rightEdge+margin;
         descLabel->layout->setLineLength(defaultBioBounds.width - (descLabel->bounds.x - defaultBioBounds.x));
     }
     
