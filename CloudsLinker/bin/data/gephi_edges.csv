@@ -5945,6 +5945,7 @@ Kevin - algo culture 1,JTNimoy - be a robot
 Kevin - algo culture 1,Julian - Shapes the way we think
 Kevin - algo culture 1,Karsten - culture and evolution
 Kevin - algo culture 1,Kyle_CH - Modeling consciousness
+Kevin - algo culture 1,Kyle_MC - Debug screen
 Kevin - algo culture 1,Kyle_MC - Anonymous
 Kevin - algo culture 1,Maeda - recording appalachian music
 Kevin - algo culture 1,Martin - limits of computation
@@ -5962,6 +5963,7 @@ Kevin - algo culture 2,Julian - city as operating system
 Kevin - algo culture 2,Julian - Shapes the way we think
 Kevin - algo culture 2,Kyle_CH - new aesthetic 1
 Kevin - algo culture 2,Kyle_CH - new aesthetic 2
+Kevin - algo culture 2,Kyle_MC - Debug screen
 Kevin - algo culture 2,Kyle_MC - Anonymous
 Kevin - algo culture 2,Marius - Machines change the way we see
 Kevin - algo culture 2,Marius - new tools change perception
@@ -6119,6 +6121,7 @@ Kevin - autonomous machines crash,Casey - Computer as collaborator
 Kevin - autonomous machines crash,Greg - human augmentation
 Kevin - autonomous machines crash,Greg - AI 2
 Kevin - autonomous machines crash,JTNimoy - Unplugging
+Kevin - autonomous machines crash,Kyle_MC - Debug screen
 Kevin - autonomous machines crash,Martin - limits of computation
 Kevin - autonomous machines crash,Nervous_Jesse - breaking the system
 Kevin - autonomous machines crash,Nervous_Jesse - understanding to control 1
@@ -6132,6 +6135,7 @@ Kevin - autonomous machines crash,Ramsey - trapese 2
 Kevin - autonomous machines crash,Theo - struggle with technology
 Kevin - algo trading 4,Greg - AI 2
 Kevin - algo trading 4,JTNimoy - Unplugging
+Kevin - algo trading 4,Kyle_MC - Debug screen
 Kevin - algo trading 4,Martin - limits of computation
 Kevin - algo trading 4,Nervous_Jesse - breaking the system
 Kevin - algo trading 4,Nervous_Jesse - understanding to control 1
@@ -6411,6 +6415,7 @@ Kevin - algo stories 3,Jen - telling stories to engage
 Kevin - algo stories 3,Jen - data essay 1
 Kevin - algo stories 3,Jer - Thought it was boring
 Kevin - algo stories 3,Kyle_CH - Cloud atlas
+Kevin - algo stories 3,Kyle_MC - Debug screen
 Kevin - algo stories 3,Martin - limits of computation
 Kevin - cognition vs computation 1,Aaron - Mini-Artificial Intelligences
 Kevin - cognition vs computation 1,Aaron - Tailored Stories
@@ -6915,7 +6920,13 @@ Kyle_MC - Debug screen,Bruce - new aesthetic artists
 Kyle_MC - Debug screen,Bruce - future camera 5
 Kyle_MC - Debug screen,Greg - AI 1
 Kyle_MC - Debug screen,Greg - AI 2
+Kyle_MC - Debug screen,Kevin - algo culture 1
+Kyle_MC - Debug screen,Kevin - algo culture 2
+Kyle_MC - Debug screen,Kevin - autonomous machines crash
+Kyle_MC - Debug screen,Kevin - algo trading 4
+Kyle_MC - Debug screen,Kevin - algo stories 3
 Kyle_MC - Debug screen,Marius - artificial creativity
+Kyle_MC - Debug screen,Martin - limits of computation
 Kyle_MC - new aesthetic 1,Bruce - new aesthetic 1
 Kyle_MC - new aesthetic 1,Bruce - new aesthetic artists
 Kyle_MC - new aesthetic 1,Bruce - camera technician vs explorer
@@ -8506,6 +8517,7 @@ Martin - limits of computation,Kevin - algo stories 3
 Martin - limits of computation,Kevin - cognition vs computation 1
 Martin - limits of computation,Kevin - cognition vs computation 2
 Martin - limits of computation,Kevin - crash and burn
+Martin - limits of computation,Kyle_MC - Debug screen
 Martin - limits of computation,Lauren - sentiment anaylsis
 Martin - limits of computation,Nervous_Jesse - Time in the universe
 Martin - limits of computation,Joel - Bicycles1

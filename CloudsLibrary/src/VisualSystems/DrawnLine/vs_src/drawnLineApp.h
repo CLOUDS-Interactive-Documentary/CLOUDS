@@ -5,7 +5,7 @@
 #include "curvedLine.h"
 #include "lineMatchUtils.h"
 //#include "ofxTimeMeasurements.h"
-#include "ofxShivaVGRenderer.h"
+//#include "ofxShivaVGRenderer.h"
 #include "CloudsVisualSystem.h"
 #include "BrushedLine.h"
 
