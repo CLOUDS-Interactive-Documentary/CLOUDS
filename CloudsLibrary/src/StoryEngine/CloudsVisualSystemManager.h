@@ -41,11 +41,9 @@ class CloudsVisualSystemManager {
 	vector<string> keywordsForPreset(CloudsVisualSystemPreset& preset);
 	vector<string> keywordsForPreset(string systemName, string presetName);
 	vector<CloudsVisualSystemPreset> getPresetsForKeyword(string keyword);
-<<<<<<< HEAD
+
 	vector<CloudsVisualSystemPreset> getPresetsForKeywords(vector<string>& keywords, string clipName = "", bool isInterlude = false);
-=======
-	vector<CloudsVisualSystemPreset> getPresetsForKeywords(vector<string>& keywords, string clipName = ""); //add filter interludes...
->>>>>>> 0549df69ffa37460f3f06b23101eca8fdf775922
+
 	ofPtr<CloudsVisualSystem> getEmptySystem(string mainKeyword, vector<string> keywords);
 	
     void pastePresetToIndex(CloudsVisualSystemPreset preset, int index);
