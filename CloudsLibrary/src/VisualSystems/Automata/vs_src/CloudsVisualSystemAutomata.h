@@ -36,6 +36,8 @@ class CloudsVisualSystemAutomata : public CloudsVisualSystem
 	//use render gui for display settings, like changing colors
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
+    
+    void selfSetDefaults();
 
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
@@ -119,5 +121,6 @@ protected:
     float scale2D;
     
     float radius;
+    bool bFill;
     bool bRestart;
 };

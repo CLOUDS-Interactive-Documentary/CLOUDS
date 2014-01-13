@@ -68,6 +68,21 @@ CloudsOrthoCamera::~CloudsOrthoCamera(){
 	disableMouseInput();
 }
 
+void CloudsOrthoCamera::setToStartPosition(ofVec3f targetPos)
+{
+	
+	cout << "minTilt: "<< minTilt << endl;
+	cout << "maxTilt: "<< maxTilt << endl;
+	cout << "minOrbitDistance: "<< minOrbitDistance << endl;
+	cout << "maxOrbitDistance: "<< maxOrbitDistance << endl;
+	
+	setPosition( targetPos );
+	setOrientation(ofVec3f(0,0,1));
+	tilt(minTilt*.5 + maxTilt*.5);
+	dolly( -(minOrbitDistance*.5 + maxOrbitDistance*.5 ) );
+	lookAt(targetPos);
+}
+
 void CloudsOrthoCamera::addSlidersToGui( ofxUISuperCanvas* gui, string label )
 {
 	gui->addLabel( label );
@@ -103,22 +118,13 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 			updateTranslation();
 		}
 	}
-	
-	//JG: REMOVE MOUSE CALLS
-    //MA: replaced ofGetMousePressed() with GetCloudsMousePressed()
-    //MA: replaced ofGetMouseX() with GetCloudsInputX()
 
+	//EXPLORE MODE
 	if( bExploreMode && !GetCloudsInputPressed() && viewport.inside( GetCloudsInputX(), GetCloudsInputY() ) )
 	{
-//		float mouseScl = .5;
-//		float moveZone = .1;
-//		float cameraSpeed = 1.;
-//		float pitchScale = .005;
-		
 		//convert mouse coords in to somethin we can work with
-		//JG: REMOVE MOUSE CALLS
-		float mx = ofMap( ofGetMouseX(), viewport.getLeft(), viewport.getRight(), 1., -1., true );
-		float my = ofMap( ofGetMouseY(), viewport.getTop(), viewport.getBottom(), 1., -1., true );
+		float mx = ofMap( GetCloudsInputX(), viewport.getLeft(), viewport.getRight(), 1., -1., true );
+		float my = ofMap( GetCloudsInputY(), viewport.getTop(), viewport.getBottom(), 1., -1., true );
 		float dist = ofVec2f(mx, my).length();
 		
 		if(dist > deadZone)
@@ -148,8 +154,6 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 	{	
 		//convert mouse coords in to somethin we can work with
 		float mx = -1;
-		//JG: REMOVE MOUSE CALLS
-        //MA: replaced ofGetMouseX() with GetCloudsInputX()
 
 		if(viewport.getLeft() != viewport.getRight()){
 			mx = ofMap( GetCloudsInputX(), viewport.getLeft(), viewport.getRight(), -1., 1., true );
@@ -167,18 +171,6 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 		
 		float rollMix = ofMap( ourRoll, min(minTilt, maxTilt), max(minTilt, maxTilt), -1, 1, false );
 		
-//		if(ourRoll < min(minTilt, maxTilt))
-//		{
-//			tilt(min(minTilt, maxTilt) - (ourRoll + 1));
-//		}
-//		if(ourRoll > max(minTilt, maxTilt))
-//		{
-//			tilt( ourRoll - (min(minTilt, maxTilt) + 1) );
-//		}
-//		
-//		
-//		ourRoll = -getRoll();
-		
 		if( (my < 0 && rollMix > 0) || (my>0 && rollMix < 0))
 		{
 			//does this cause flipping when the max&minTilt difference is small?
@@ -188,12 +180,9 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 		
 		//orbit velocity attenuation
 		orbitVel *= orbitVelAttenuation;
-		float invAtt = 1. - orbitVelAttenuation;
+		float oneMinusAtt = 1. - orbitVelAttenuation;
 		
 		//mouse input
-		//JG: REMOVE MOUSE CALLS
-        //MA: replaced ofGetMouseX() with GetCloudsInputX()
-
 		if(dist > deadZone && viewport.inside( GetCloudsInputX(), GetCloudsInputY() ) )
 		{
 			//the deadzone is an area in the center of the screen where we don't rotate
@@ -203,8 +192,8 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 			weight *= weight;
 			
 			//so that we don't rotate past verticle we'll scale down our rotation as it approaches our tilt limits
-			orbitVel.x += invAtt * my * mouseScl * weight * xScl;
-			orbitVel.y += invAtt * mx * mouseScl * weight;
+			orbitVel.x += oneMinusAtt * my * mouseScl * weight * xScl;
+			orbitVel.y += oneMinusAtt * mx * mouseScl * weight;
 		}
 			
 		xRot = orbitVel.x * xScl;
