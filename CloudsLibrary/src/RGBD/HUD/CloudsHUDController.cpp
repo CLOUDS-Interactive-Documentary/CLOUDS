@@ -568,11 +568,17 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera& cam){
     // Translate to the layer center pos.
     ofVec3f layerPos = basePos + (getCenter(false) - layerBounds.getCenter());
     ofTranslate(layerPos);
-    
+
     if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_OCULUS) {
         // Billboard rotation using the Oculus orientation.
-        ofVec3f eulerAngles = (CloudsVisualSystem::getOculusRift().getOrientationQuat() * cam.getOrientationQuat()).getEuler();
-        ofRotate(-eulerAngles.z, 1, 0, 0);
+//        ofVec3f eulerAngles = (CloudsVisualSystem::getOculusRift().getOrientationQuat() * cam.getOrientationQuat()).getEuler();
+//        ofRotateY(layerRotation[layer]);
+//        ofRotate(-eulerAngles.z, 1, 0, 0);
+        float angle;
+        ofVec3f axis;
+        (CloudsVisualSystem::getOculusRift().getOrientationQuat() * cam.getOrientationQuat()).getRotate(angle, axis);
+        ofRotate(angle, axis.x, axis.y, axis.z);
+        ofScale(-1, 1, 1);
     }
     else if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_CAMERA) {
         // Billboard rotation using the camera.
@@ -583,6 +589,9 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera& cam){
         float angle;
         node.getOrientationQuat().getRotate(angle, axis);
         ofRotate(angle, axis.x, axis.y, axis.z);
+    }
+    else {
+        ofRotateY(layerRotation[layer]);
     }
     
     // Debug circle.
