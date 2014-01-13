@@ -279,8 +279,8 @@ void CloudsVisualSystem3DModelLoader::selfGuiEvent(ofxUIEventArgs &e)
 					if(cameraPaths[i] == name )
 					{
 						cout << "loading camera path: " << name << endl;
-						pathCamera.loadPathFromFile(getVisualSystemDataPath(false) + "cameraPaths/" + name );
-//						pathCamera.loadPathFromFile(getVisualSystemDataPath(true) + "cameraPaths/" + name );
+//						pathCamera.loadPathFromFile(getVisualSystemDataPath(false) + "cameraPaths/" + name );
+						pathCamera.loadPathFromFile(getVisualSystemDataPath(true) + "cameraPaths/" + name );
 					}
 				}
 			}
@@ -380,8 +380,8 @@ void CloudsVisualSystem3DModelLoader::selfSetup()
 {
 	
 	//get list of models from the model directory
-	//string path = getVisualSystemDataPath(true) + "models/";
-	string path = getVisualSystemDataPath(false) + "models/";
+	string path = getVisualSystemDataPath(true) + "models/";
+//	string path = getVisualSystemDataPath(false) + "models/";
 	cout << "model path: " << path << endl;
 	
 	ofDirectory dir;
@@ -893,8 +893,8 @@ void CloudsVisualSystem3DModelLoader::loadModel( string fileName, bool bSmoothMe
 {
 //	perspCam.reset();
 	cout << "*** LOADING MODEL " << fileName << endl;
-	//string filePath = getVisualSystemDataPath(true) + fileName;
-	string filePath = getVisualSystemDataPath(false) + fileName;
+	string filePath = getVisualSystemDataPath(true) + fileName;
+//	string filePath = getVisualSystemDataPath(false) + fileName;
 	if(!ofFile(filePath).exists()){
 		ofLogError("CloudsVisualSystem3DModelLoader::loadModel") << filePath << " Doesn't exist";
 	}
