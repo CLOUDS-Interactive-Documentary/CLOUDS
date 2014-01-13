@@ -631,7 +631,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					//if we have sound schedule this at the end of the clip and add it immediately to ensure no VO comes in
 					//COMPUTE START TIME
 					//step back into the clip
-                    //TODO: respect VO & SOUND
 					if(state.preset.soundExcludeVO){
 						state.visualSystemStartTime = state.duration + clipFadePad;
 					}
@@ -662,9 +661,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					}
 					//run it indefinitely with clips underneath
 					else {
-                        if(state.preset.soundAllowVO){
-                            //TODO: Cut the music!
-                        }
                         
 						state.visualSystemRunning = true;
 						
@@ -672,6 +668,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					}
 				}
 				else{
+                    //update the end time so when a VS is found it doesn't drag out
+                    state.visualSystemEndTime = state.duration - maxVisualSystemGapTime;
 					state.act->addNote("Failed VS", state.duration - state.clip.getDuration());
 					if(bLogVisualSystemDetails) state.log << state.duration << "\t\tERROR Failed to find preset on current topic " << state.topic << " with clip " << state.clip.getLinkName() << endl;
 				}
@@ -830,7 +828,7 @@ CloudsVisualSystemPreset CloudsStoryEngine::selectVisualSystem(CloudsStoryState&
 		preset.presetName = state.topic;
         preset.randomlySelected = true;
 		preset.missingContent = true;
-        log += ",ERROR,no presets found! " + state.topic + "\n";
+        if(bLogVisualSystemDetails) state.log << state.duration << "\t\t\ERROR no presets found! " << state.topic << endl;
     }
 	return preset;
 }
@@ -838,42 +836,46 @@ CloudsVisualSystemPreset CloudsStoryEngine::selectVisualSystem(CloudsStoryState&
 //TODO: Add to main logger
 float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVisualSystemPreset& potentialNextPreset)
 {
-    log += ",,"+potentialNextPreset.getID() + ",";
+    
+    if(bLogVisualSystemDetails) state.log << state.duration  << "\t\t\tConsidering" << potentialNextPreset.getID() << endl;;
 	
     if(!potentialNextPreset.enabled){
-        log += "rejected because it's disabled";
+        state.log << state.duration << "\t\t\t\tREJECTED because it's disabled" << endl;
         return 0;
     }
     
     if(visualSystems->isClipSuppressed(potentialNextPreset.getID(), state.clip.getLinkName())){
-        log += "rejected because the system is suppressed for this clip";
+        state.log << state.duration << "\t\t\t\tREJECTED  because the system is suppressed for this clip" << endl;
         return 0;
     }
     
     if(ofContains(state.presetHistory, potentialNextPreset.getID())){
-        log += "rejected because we've seen it before";
+        state.log << state.duration << "\t\t\t\tREJECTED because we've seen it before"<<endl;
         return 0;
     }
     
-    vector<string> keywords = visualSystems->keywordsForPreset(potentialNextPreset);
-//    if(keywords.size() == 0 ){
-//        log += "rejected because it has no keywords";
-//        return 0;
-//    }
-    
-
 #ifdef OCULUS_RIFT
 	if(!potentialNextPreset.oculusCompatible){
-        log += "rejected because it is not oculus compatible";
+        state.log << state.duration << "\t\t\t\tREJECTED because it is not oculus compatible"<<endl;
         return 0;
 	}
 #else
 	if(potentialNextPreset.oculusCompatible){
-        log += "rejected because it is for the oculus";
+        state.log << state.duration << "\t\t\t\tREJECTED because it is for the oculus"<<endl;
         return 0;
 	}
 #endif
-	
+    
+	//for definite presets covering VO clips, make sure they are long enough
+    if(!potentialNextPreset.indefinite && //we currently have a definite clip
+       state.clip.voiceOverAudio && //and are seeing a voice over
+       state.act->getClipEndTime(state.clip) > state.visualSystemStartTime + potentialNextPreset.duration )
+    {
+        state.log << state.duration << "\t\t\t\tREJECTED because it is too short for the current VO"<<endl;
+        return 0;
+    }
+    
+    vector<string> keywords = visualSystems->keywordsForPreset(potentialNextPreset);
     float mainTopicScore = 0;
     float secondaryTopicScore = 0;
 	float linkedClipScore = 0;

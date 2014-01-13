@@ -158,6 +158,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
+    string b = "foo";
 	//can't save guis because the virtual subclass members return the wrong data
 //    saveGUIS();
 }

@@ -19,7 +19,7 @@
 #include "CloudsVisualSystemCosmic.h"
 #include "CloudsVisualSystemCubeCraft.h"
 #include "CloudsVisualSystemDataCascade.h"
-#include "CloudsVisualSystemDrawnLine.h"
+//#include "CloudsVisualSystemDrawnLine.h"
 #include "CloudsVisualSystemEmpty.h"
 #include "CloudsVisualSystemExampleBox2D.h"
 #include "CloudsVisualSystemExampleMPMFluid.h"
@@ -122,7 +122,7 @@ struct Mapping {
 	{ "Cosmic", &fCreate<CloudsVisualSystemCosmic> },
 	{ "CubeCraft", &fCreate<CloudsVisualSystemCubeCraft> },
 	{ "DataCascade", &fCreate<CloudsVisualSystemDataCascade> },
-	{ "DrawnLine", &fCreate<CloudsVisualSystemDrawnLine> },
+//	{ "DrawnLine", &fCreate<CloudsVisualSystemDrawnLine> },
 	{ "Empty", &fCreate<CloudsVisualSystemEmpty> },
 	{ "ExampleBox2D", &fCreate<CloudsVisualSystemExampleBox2D> },
 	{ "ExampleMPMFluid", &fCreate<CloudsVisualSystemExampleMPMFluid> },

@@ -209,9 +209,6 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	
-	if(args.key == 'R'){
-		CloudsQuestion::reloadShader();
-	}
 		
 	if(args.key == 'Q'){
 		for(int i = 0; i < fakeQuestions.size(); i++){
@@ -348,7 +345,7 @@ void CloudsPlaybackController::updateTransition(){
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 	
 	if(transitionController.getCurrentState() != TRANSITION_IDLE){
-		cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " CROSSFADE IS " << crossfadeValue << endl;
+//		cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " CROSSFADE IS " << crossfadeValue << endl;
 	}
 	
 	if(transitionController.transitioning){
@@ -604,6 +601,7 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
     
 	cout << "ACT ENDED TRIGGERED" << endl;
     if(!bQuestionAsked){
+        cout << "Transitioning to cluster map" << endl;
         transitionController.transitionToClusterMap(1.0,1.0);
     }
 }

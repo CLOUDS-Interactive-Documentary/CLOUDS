@@ -366,7 +366,6 @@
 		64CE98DC1880DB8100491913 /* CloudsVisualSystemCosmic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE5EB1869648E00955691 /* CloudsVisualSystemCosmic.cpp */; };
 		64CE98DD1880DB8100491913 /* CloudsVisualSystemCubeCraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE5EF1869648E00955691 /* CloudsVisualSystemCubeCraft.cpp */; };
 		64CE98DE1880DB8100491913 /* CloudsVisualSystemDataCascade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE5F31869648E00955691 /* CloudsVisualSystemDataCascade.cpp */; };
-		64CE98DF1880DB8100491913 /* CloudsVisualSystemDrawnLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE5F71869648E00955691 /* CloudsVisualSystemDrawnLine.cpp */; };
 		64CE98E01880DB8100491913 /* CloudsVisualSystemEmpty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE5FB1869648E00955691 /* CloudsVisualSystemEmpty.cpp */; };
 		64CE98E11880DB8100491913 /* CloudsVisualSystemExampleBox2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE5FF1869648E00955691 /* CloudsVisualSystemExampleBox2D.cpp */; };
 		64CE98E21880DB8100491913 /* CloudsVisualSystemExampleMPMFluid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE6031869648E00955691 /* CloudsVisualSystemExampleMPMFluid.cpp */; };
@@ -757,8 +756,6 @@
 		E70CEB3C1869649200955691 /* CloudsVisualSystemCubeCraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE5EF1869648E00955691 /* CloudsVisualSystemCubeCraft.cpp */; };
 		E70CEB3D1869649200955691 /* CloudsVisualSystemDataCascade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE5F31869648E00955691 /* CloudsVisualSystemDataCascade.cpp */; };
 		E70CEB3E1869649200955691 /* CloudsVisualSystemDataCascade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE5F31869648E00955691 /* CloudsVisualSystemDataCascade.cpp */; };
-		E70CEB3F1869649200955691 /* CloudsVisualSystemDrawnLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE5F71869648E00955691 /* CloudsVisualSystemDrawnLine.cpp */; };
-		E70CEB401869649200955691 /* CloudsVisualSystemDrawnLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE5F71869648E00955691 /* CloudsVisualSystemDrawnLine.cpp */; };
 		E70CEB411869649200955691 /* CloudsVisualSystemEmpty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE5FB1869648E00955691 /* CloudsVisualSystemEmpty.cpp */; };
 		E70CEB421869649200955691 /* CloudsVisualSystemEmpty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE5FB1869648E00955691 /* CloudsVisualSystemEmpty.cpp */; };
 		E70CEB431869649200955691 /* CloudsVisualSystemExampleBox2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE5FF1869648E00955691 /* CloudsVisualSystemExampleBox2D.cpp */; };
@@ -1918,8 +1915,6 @@
 		E70CE5F01869648E00955691 /* CloudsVisualSystemCubeCraft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCubeCraft.h; sourceTree = "<group>"; };
 		E70CE5F31869648E00955691 /* CloudsVisualSystemDataCascade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemDataCascade.cpp; sourceTree = "<group>"; };
 		E70CE5F41869648E00955691 /* CloudsVisualSystemDataCascade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemDataCascade.h; sourceTree = "<group>"; };
-		E70CE5F71869648E00955691 /* CloudsVisualSystemDrawnLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemDrawnLine.cpp; sourceTree = "<group>"; };
-		E70CE5F81869648E00955691 /* CloudsVisualSystemDrawnLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemDrawnLine.h; sourceTree = "<group>"; };
 		E70CE5FB1869648E00955691 /* CloudsVisualSystemEmpty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemEmpty.cpp; sourceTree = "<group>"; };
 		E70CE5FC1869648E00955691 /* CloudsVisualSystemEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemEmpty.h; sourceTree = "<group>"; };
 		E70CE5FF1869648E00955691 /* CloudsVisualSystemExampleBox2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemExampleBox2D.cpp; sourceTree = "<group>"; };
@@ -4051,8 +4046,6 @@
 		E70CE5F61869648E00955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE5F71869648E00955691 /* CloudsVisualSystemDrawnLine.cpp */,
-				E70CE5F81869648E00955691 /* CloudsVisualSystemDrawnLine.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -8077,7 +8070,6 @@
 				64CE98DC1880DB8100491913 /* CloudsVisualSystemCosmic.cpp in Sources */,
 				64CE98DD1880DB8100491913 /* CloudsVisualSystemCubeCraft.cpp in Sources */,
 				64CE98DE1880DB8100491913 /* CloudsVisualSystemDataCascade.cpp in Sources */,
-				64CE98DF1880DB8100491913 /* CloudsVisualSystemDrawnLine.cpp in Sources */,
 				64CE98E01880DB8100491913 /* CloudsVisualSystemEmpty.cpp in Sources */,
 				64CE98E11880DB8100491913 /* CloudsVisualSystemExampleBox2D.cpp in Sources */,
 				64CE98E21880DB8100491913 /* CloudsVisualSystemExampleMPMFluid.cpp in Sources */,
@@ -8584,7 +8576,6 @@
 				E70CEB391869649200955691 /* CloudsVisualSystemCosmic.cpp in Sources */,
 				E70CEB3B1869649200955691 /* CloudsVisualSystemCubeCraft.cpp in Sources */,
 				E70CEB3D1869649200955691 /* CloudsVisualSystemDataCascade.cpp in Sources */,
-				E70CEB3F1869649200955691 /* CloudsVisualSystemDrawnLine.cpp in Sources */,
 				E70CEB411869649200955691 /* CloudsVisualSystemEmpty.cpp in Sources */,
 				E70CEB431869649200955691 /* CloudsVisualSystemExampleBox2D.cpp in Sources */,
 				E70CEB451869649200955691 /* CloudsVisualSystemExampleMPMFluid.cpp in Sources */,
@@ -9092,7 +9083,6 @@
 				E70CEB3A1869649200955691 /* CloudsVisualSystemCosmic.cpp in Sources */,
 				E70CEB3C1869649200955691 /* CloudsVisualSystemCubeCraft.cpp in Sources */,
 				E70CEB3E1869649200955691 /* CloudsVisualSystemDataCascade.cpp in Sources */,
-				E70CEB401869649200955691 /* CloudsVisualSystemDrawnLine.cpp in Sources */,
 				E70CEB421869649200955691 /* CloudsVisualSystemEmpty.cpp in Sources */,
 				E70CEB441869649200955691 /* CloudsVisualSystemExampleBox2D.cpp in Sources */,
 				F37C7E68186EB28C00FCDA79 /* CompressorLimiter.cpp in Sources */,

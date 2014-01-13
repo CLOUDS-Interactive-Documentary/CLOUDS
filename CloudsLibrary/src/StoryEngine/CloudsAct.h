@@ -105,7 +105,8 @@ class CloudsAct{
     ActTimeItem& getItemForClip(CloudsClip& clip);
     ActTimeItem& getItemForVisualSystem(CloudsVisualSystemPreset& preset);
     float getClipStartTime(CloudsClip& clip);
-	
+	float getClipEndTime(CloudsClip& clip);
+    
     void setTopicForClip(string topic, string clipName);
     string getTopicForClip(CloudsClip& clip);
 	

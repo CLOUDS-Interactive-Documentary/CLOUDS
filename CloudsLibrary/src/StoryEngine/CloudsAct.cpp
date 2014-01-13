@@ -377,6 +377,10 @@ float CloudsAct::getClipStartTime(CloudsClip& clip){
 	return getItemForClip(clip).startTime;
 }
 
+float CloudsAct::getClipEndTime(CloudsClip& clip){
+	return getItemForClip(clip).endTime;
+}
+
 ActTimeItem& CloudsAct::getItemForClip(CloudsClip& clip){
     if(clipMap.find(clip.getLinkName()) == clipMap.end()){
         ofLogError() << "Couldn't find Act Item for cilp " << clip.getLinkName();
@@ -448,8 +452,8 @@ float CloudsAct::addVisualSystem(CloudsVisualSystemPreset& preset, float startTi
     
 	float outroLeadTime = 1.0;
 	float introLeadTime = 1.0;
+
 	ActTimeItem item;
-	
     item.type = VS;
     item.key = preset.getID();
     item.startTime = startTime;
