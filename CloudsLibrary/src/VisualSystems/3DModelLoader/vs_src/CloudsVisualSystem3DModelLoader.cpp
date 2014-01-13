@@ -13,17 +13,12 @@ void CloudsVisualSystem3DModelLoader::selfSetupGui()
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-//	customGui->addFPS();
-	
-//	customGui->addSpacer();
-	
-//	customGui->addSpacer();
 	
 	customGui->addToggle("bounding box", &bDrawBoundingBox);
 	customGui->addToggle("draw arrows", &bDrawArrows);
 	customGui->addToggle("draw cameras", &bDrawCameras);
 	customGui->addToggle("draw gid", &bDrawGrid);
-//	customGui->addSpacer();
+
 	customGui->addToggle("smooth model", false );
 	customGui->addToggle("wireframe", &bWireframe );
 	customGui->addSlider("wireframeLinewidth", 0.5, 10, &wireframeLinewidth);
@@ -42,7 +37,6 @@ void CloudsVisualSystem3DModelLoader::selfSetupGui()
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
-	
 	
 	transformGui = new ofxUISuperCanvas("transform", gui);
 	transformGui->copyCanvasStyle(gui);
@@ -604,6 +598,13 @@ void CloudsVisualSystem3DModelLoader::selfEnd()
 void CloudsVisualSystem3DModelLoader::selfExit()
 {
 	
+	ofRemoveListener(customGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
+	ofRemoveListener(transformGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
+	ofRemoveListener(gridGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
+	ofRemoveListener(fogGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
+	ofRemoveListener(modelUIGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
+	ofRemoveListener(cameraViewsGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
+	ofRemoveListener(cameraPathsGui->newGUIEvent, this, &CloudsVisualSystem3DModelLoader::selfGuiEvent);
 }
 
 //events are called when the system is active
