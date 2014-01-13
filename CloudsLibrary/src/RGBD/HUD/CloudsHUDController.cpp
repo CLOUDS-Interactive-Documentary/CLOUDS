@@ -525,7 +525,8 @@ void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
 	}
 }
 
-void CloudsHUDController::draw3D(ofCamera& cam){
+#ifdef OCULUS_RIFT
+void CloudsHUDController::draw3D(ofCamera* cam){
     
     if( !bDrawHud )
         return;
@@ -548,14 +549,14 @@ void CloudsHUDController::draw3D(ofCamera& cam){
 	ofPopStyle();
 }
 
-void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera& cam){
+void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
     ofPushMatrix();
     
-    ofVec3f camPos = cam.getGlobalPosition();
+    ofVec3f camPos = cam->getGlobalPosition();
     
     // Calculate the base position.
     static ofVec3f upAxis = ofVec3f(0.0, 1.0, 0.0);
-    ofVec3f basePos = camPos + (cam.getLookAtDir().getScaled(layerDistance[layer]));
+    ofVec3f basePos = camPos + (cam->getLookAtDir().getScaled(layerDistance[layer]));
     basePos.rotate(layerRotation[layer], camPos, upAxis);
     
     // Get the total layer bounds.
@@ -576,7 +577,7 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera& cam){
 //        ofRotate(-eulerAngles.z, 1, 0, 0);
         float angle;
         ofVec3f axis;
-        (CloudsVisualSystem::getOculusRift().getOrientationQuat() * cam.getOrientationQuat()).getRotate(angle, axis);
+        (CloudsVisualSystem::getOculusRift().getOrientationQuat() * cam->getOrientationQuat()).getRotate(angle, axis);
         ofRotate(angle, axis.x, axis.y, axis.z);
         ofScale(-1, 1, 1);
     }
@@ -598,6 +599,10 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera& cam){
 //    ofSetColor(255);
 //    ofCircle(0, 0, 25);
     
+    // Transform for rendering the layer.
+    ofScale(-scaleAmt, -scaleAmt, 1);
+    ofTranslate(-layerBounds.getCenter());
+
     // Draw the video player if we're on the right layer.
     if (layer == CLOUDS_HUD_PROJECT_EXAMPLE && videoPlayer.isPlaying()) {
         ofSetColor(255, 255, 255, 255*0.7);
@@ -607,8 +612,6 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera& cam){
     }
     
     // Draw the layer.
-    ofScale(-scaleAmt, -scaleAmt, 1);
-    ofTranslate(-layerBounds.getCenter());
     ofSetColor(255);
     drawLayer(layer);
     
@@ -633,6 +636,7 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera& cam){
     
     ofPopMatrix();
 }
+#endif
 
 void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
     //bIsHudOpen = true;

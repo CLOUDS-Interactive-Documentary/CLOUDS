@@ -482,6 +482,9 @@ class CloudsVisualSystem {
     float postGrainDist;
     
     int bleed;
+    bool bDoBloom;
+    float bloomAmount;
+    int bloomSamples;
     
 #ifdef CLOUDS_RELEASE
     

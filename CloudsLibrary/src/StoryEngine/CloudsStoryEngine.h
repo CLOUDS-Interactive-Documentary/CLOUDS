@@ -61,7 +61,7 @@ class CloudsStoryEngine {
 	CloudsAct* buildAct(CloudsRun& run);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed, string topic, bool playSeed = true);
-	
+	vector<string> getValidTopicsForNextAct(CloudsRun& run);
     void initGui();
     void saveGuiSettings();
     void toggleGuis(bool actOnly = false);
