@@ -128,6 +128,7 @@ void CloudsPlaybackController::setup(){
 	hud.setup();
 #ifdef OCULUS_RIFT
     rgbdVisualSystem->hud = &hud;
+    rgbdVisualSystem->setupHUDGui();
 #endif
 	
 	//////////////SHOW INTRO
