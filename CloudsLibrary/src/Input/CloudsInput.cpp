@@ -77,7 +77,7 @@ ofVec3f CloudsInput::getPreviousPosition(){
 }
 
 void CloudsInput::setBleedPixels(int b){
-    bleedOffset = ofVec3f(b,b,0);
+    bleedOffset = ofVec3f(0,0,0);
     bleed = b;
 }
 

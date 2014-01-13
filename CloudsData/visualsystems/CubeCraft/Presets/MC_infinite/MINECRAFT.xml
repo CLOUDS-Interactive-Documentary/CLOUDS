@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>MINECRAFT</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1</XPosition>
-    <YPosition>70</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>44</Kind>
@@ -18,75 +18,75 @@
 <Widget>
     <Kind>4</Kind>
     <Name>groundDrama</Name>
-    <Value>0.625616</Value>
+    <Value>0.625616014</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudThreshold</Name>
-    <Value>0.522168</Value>
+    <Value>0.522167981</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudHeight</Name>
-    <Value>5.96059</Value>
+    <Value>5.960589409</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudThickness</Name>
-    <Value>20.4433</Value>
+    <Value>20.443300247</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudSpeed</Name>
-    <Value>0.00962986</Value>
+    <Value>0.009629861</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cloudShadow</Name>
-    <Value>0.566502</Value>
+    <Value>0.566501975</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>groundHue</Name>
-    <Value>104.261</Value>
+    <Value>104.261001587</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>groundSaturation</Name>
-    <Value>255</Value>
+    <Value>255.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>groundBrightness</Name>
-    <Value>213.547</Value>
+    <Value>213.546997070</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>undergroundHue</Name>
-    <Value>12.5616</Value>
+    <Value>12.561599731</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>undergroundSaturation</Name>
-    <Value>185.911</Value>
+    <Value>185.910995483</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>undergroundBrightness</Name>
-    <Value>82.9064</Value>
+    <Value>82.906402588</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>cloudShadowHue</Name>
-    <Value>130.64</Value>
+    <Value>130.639999390</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>cloudShadowSaturation</Name>
-    <Value>255</Value>
+    <Value>255.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>cloudShadowBrightness</Name>
-    <Value>21.3547</Value>
+    <Value>21.354700089</Value>
 </Widget>

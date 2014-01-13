@@ -77,6 +77,7 @@
 		4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AA17512E45003001E2 /* ofxSwarmBehavior.cpp */; };
 		4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
+		502BFDAA188394CB00CCC89A /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 502BFDA9188394CB00CCC89A /* ofxSystemTextbox.mm */; };
 		50618E731853A93C00DD8FD8 /* base.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50618E6D1853A93C00DD8FD8 /* base.frag */; };
 		50618E741853A93C00DD8FD8 /* base.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50618E6E1853A93C00DD8FD8 /* base.vert */; };
 		50618E751853A93C00DD8FD8 /* post.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50618E6F1853A93C00DD8FD8 /* post.frag */; };
@@ -490,6 +491,8 @@
 		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		502BFDA8188394CB00CCC89A /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		502BFDA9188394CB00CCC89A /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		50618D881853A93C00DD8FD8 /* dodecahedron.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dodecahedron.txt; sourceTree = "<group>"; };
 		50618D891853A93C00DD8FD8 /* icosahedron.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icosahedron.txt; sourceTree = "<group>"; };
 		50618D8A1853A93C00DD8FD8 /* octahedron.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = octahedron.txt; sourceTree = "<group>"; };
@@ -1400,6 +1403,8 @@
 		E7DD846117DBC0A500AFB2DD /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				502BFDA8188394CB00CCC89A /* ofxSystemTextbox.h */,
+				502BFDA9188394CB00CCC89A /* ofxSystemTextbox.mm */,
 				E7DD846317DBC0A500AFB2DD /* CloudsRGBDCamera.cpp */,
 				E7DD846417DBC0A500AFB2DD /* CloudsRGBDCamera.h */,
 				E7DD846517DBC0A500AFB2DD /* CloudsRGBDVideoPlayer.cpp */,
@@ -1610,6 +1615,7 @@
 				50618E761853A93C00DD8FD8 /* post.vert in Sources */,
 				E79E700B1855640B00406535 /* CloudsInput.cpp in Sources */,
 				E79E700F1855640B00406535 /* CloudsInputMouse.cpp in Sources */,
+				502BFDAA188394CB00CCC89A /* ofxSystemTextbox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

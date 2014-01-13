@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Custom</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>2D SCALE</Name>
-    <Value>3.684210300</Value>
+    <Value>3.715165854</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -63,7 +63,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FADE</Name>
-    <Value>0.000000000</Value>
+    <Value>0.104146428</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

@@ -2,9 +2,14 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>2333.000000000</XPosition>
+    <XPosition>1061.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BigBlueDial</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>BigDial</Name>
@@ -14,6 +19,11 @@
     <Kind>2</Kind>
     <Name>BigDial_Linear</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BigDial_Linear_ZoomIn</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -52,6 +62,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>DreamEggs1</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>flat</Name>
     <Value>0</Value>
 </Widget>
@@ -62,7 +77,32 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>GravityClock</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GravityClock_a</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GravityClock_b</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GravityClock_c</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>JG_Clock</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>MaggotClock</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

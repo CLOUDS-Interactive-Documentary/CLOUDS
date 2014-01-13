@@ -3,11 +3,20 @@
     <Name>Type</Name>
     <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <YPosition>90.000000000</YPosition>
 </Canvas>
 <Widget>
-    <Kind>6</Kind>
-    <Name>speed range</Name>
-    <HighValue>0.102660097</HighValue>
-    <LowValue>0.041477837</LowValue>
+    <Kind>44</Kind>
+    <Name>FONT SIZE</Name>
+    <Value>5</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TRACKING</Name>
+    <Value>1.965517282</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEFT MARGIN</Name>
+    <Value>5.000000000</Value>
 </Widget>

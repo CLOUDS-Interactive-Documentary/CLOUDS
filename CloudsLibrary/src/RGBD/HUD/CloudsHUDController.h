@@ -24,8 +24,18 @@ typedef enum {
 	CLOUDS_HUD_QUESTION,
 	CLOUDS_HUD_LOWER_THIRD,
 	CLOUDS_HUD_PROJECT_EXAMPLE,
-	CLOUDS_HUD_MAP
+	CLOUDS_HUD_MAP,
+    
+    CLOUDS_HUD_LAYER_COUNT
 } CloudsHUDLayerSet;
+
+#ifdef OCULUS_RIFT
+typedef enum {
+	CLOUDS_HUD_BILLBOARD_NONE = 0,
+	CLOUDS_HUD_BILLBOARD_CAMERA,
+	CLOUDS_HUD_BILLBOARD_OCULUS
+} CloudsHUDBillboard;
+#endif
 
 class CloudsClip;
 class CloudsHUDController {
@@ -36,6 +46,9 @@ class CloudsHUDController {
 	void setup();
 	void update();
 	void draw();
+#ifdef OCULUS_RIFT
+    void draw3D(ofCamera* cam);
+#endif
 
 	void setHomeEnabled(bool enable);
 	
@@ -69,7 +82,14 @@ class CloudsHUDController {
 	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
     
-    ofVec2f getSize();
+    ofVec2f getSize(bool bScaled = true);
+    ofVec2f getCenter(bool bScaled = true);
+    
+#ifdef OCULUS_RIFT
+    float layerDistance[CLOUDS_HUD_LAYER_COUNT];
+    float layerRotation[CLOUDS_HUD_LAYER_COUNT];
+    CloudsHUDBillboard layerBillboard[CLOUDS_HUD_LAYER_COUNT];
+#endif
 
   protected:
 	
@@ -89,6 +109,9 @@ class CloudsHUDController {
 	
 	
     void drawLayer(CloudsHUDLayerSet layer);
+#ifdef OCULUS_RIFT
+    void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam);
+#endif
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath );
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath, bool caps );
     ofxFTGLFont*            getFontForLayer( string layerName, string fontPath, int kerning );
