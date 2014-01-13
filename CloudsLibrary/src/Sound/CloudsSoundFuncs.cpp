@@ -1298,7 +1298,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     {
         SETUPMIX(outskip, musicdur, m_amp, 1.0, 0., 0., "STEREO", instnum, ampenvelope, ab[ACTBUS], abn[ACTBUS]);
         //PATCHFX("STEREO", "in 0", "out 0-1");
-        STREAMSOUND(outskip, arg_b, musicdur, 1.0*m_amp, ab[ACTBUS], abn[ACTBUS]); // set to masterGain
+        STREAMSOUND(outskip, arg_b, musicdur, 1.0*m_amp, ab[ACTBUS], abn[ACTBUS]);
     }
 
     //
@@ -1309,14 +1309,13 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     
 }
 
-void CloudsSound::fadeMusic()
+void CloudsSound::fadeMusic(float fadeTime)
 {
     
-    float fadedur = 5.;
-    
-    PFIELD_SCHED(0., fadedur, abn[ACTBUS], "ramp_10");
+    PFIELD_SCHED(0., fadeTime, abn[ACTBUS], "ramp_10");
     
     if(LUKEDEBUG) cout << "FADING MUSIC on " << ab[ACTBUS]<< endl;
+    else cout << "SOUND: MUSIC FADING." << endl;
     ACTBUS = (ACTBUS+1)%ab.size();
     
 }
@@ -1324,5 +1323,6 @@ void CloudsSound::fadeMusic()
 void CloudsSound::stopMusic()
 {
     if(LUKEDEBUG) cout << "FLUSHING SCHEDULER." << endl;
+    else cout << "SOUND: MUSIC STOPPED." << endl;
     flush_sched();
 }

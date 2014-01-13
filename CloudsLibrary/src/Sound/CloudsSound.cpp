@@ -52,7 +52,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         }
         
         whichdream = 0;
-		instGain = 5.0;
+		instGain = 7.5;
 		
         MASTERTEMPO = 120;
         AUTORUN = 0;
@@ -141,6 +141,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     totalduration+=pad; // pad the total
     
     if(LUKEDEBUG) cout << "TOTAL DURATION: " << totalduration << endl;
+    else cout << "SOUND: MUSIC STARTED." << endl;
 
     // launch music FX chain
     startMusicFX(0, totalduration);
@@ -316,7 +317,7 @@ void CloudsSound::preRollRequested(CloudsPreRollEventArgs& args){
 }
 //--------------------------------------------------------------------
 void CloudsSound::questionSelected(float fadeTime){
-    fadeMusic();
+    fadeMusic(fadeTime);
 }
 //--------------------------------------------------------------------
 void CloudsSound::questionSelected(CloudsQuestionEventArgs& args){

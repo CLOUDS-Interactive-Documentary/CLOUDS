@@ -21,6 +21,8 @@ class CloudsHUDLabel {
     
     void setText( string newText );
     string getText();
+    
+    int getRightEdge();
 	
     ofxFTGLSimpleLayout *layout;
     ofxFTGLFont *font;

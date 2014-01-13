@@ -1,0 +1,53 @@
+SEED TOPIC:  programming
+SEED CLIP: Intro - Programming
+	Playing seed
+First visual system preset is selected : 2DVideo_Flow1_gesture for topic : programming and clip Intro - Programming
+29.8205	CHOOSING NEW CLIP 
+29.8205		Chose Clip "JTNimoy - I addicted myself" for topic "programming" (2/5)
+60.4738	VISUALS Currently running "2DVideo_Flow1_gesture" time [0 - 81] definite
+60.4738	CHOOSING NEW CLIP 
+60.4738		Chose Clip "Ramsey - Ramsey Intro" for topic "programming" (3/5)
+60.4738			ERROR: We took a digression! Freeing topic
+74.9442	VISUALS Currently running "2DVideo_Flow1_gesture" time [0 - 81] definite
+74.9442	CHOOSING NEW TOPIC 2/3
+74.9442		Selecting from 4 potential next topics on clip Ramsey - Ramsey Intro
+74.9442			Considering beginnings
+74.9442				Score for shared topic	beginnings : 26.6174
+74.9442			Considering art and code
+74.9442				Score for shared topic	art and code : 11.1111
+74.9442			Considering coding
+74.9442				Score for shared topic	coding : 51.7022
+74.9442			Considering self expression
+74.9442				Score for shared topic	self expression : 0
+74.9442		TOPIC coding won with score 51.7022
+74.9442		Picked new topic: CODING
+74.9442	CHOOSING NEW CLIP 
+74.9442		Chose Clip "Kyle_MC - code as a theme 2" for topic "coding" (1/5)
+95.7543	VISUALS Currently running "2DVideo_Flow1_gesture" time [0 - 81] definite
+95.7543		Passed predicted time 81 - moving end time to middle of Kyle_MC - code as a theme 2, time 88.1216
+95.7543	CHOOSING NEW CLIP 
+95.7543		Chose Clip "Karsten - 256 bytes part 1" for topic "coding" (2/5)
+131.503	VISUALS Not run in 43.3816 seconds
+131.503		ERROR Failed to find preset on current topic coding with clip Karsten - 256 bytes part 1
+131.503	CHOOSING NEW CLIP 
+131.503		Chose Clip "Shantell - magic and tech" for topic "coding" (3/5)
+131.503			ERROR: We took a digression! Freeing topic
+167.169	VISUALS Not run in 79.0472 seconds
+167.169		Chose new Preset Xstatic_fireflies time [150.027 - 158.303] indefinite
+167.169	CHOOSING NEW TOPIC 3/3
+167.169		going back to seed topic programming
+167.169		Picked new topic: PROGRAMMING
+167.169	CHOOSING NEW CLIP 
+167.169		Chose Clip "Shiffman - mysterious box" for topic "programming" (1/5)
+204.412	VISUALS Currently running "Xstatic_fireflies" time [150.027 - 158.303] indefinite
+204.412		Passed predicted time 158.303 - moving end time to middle of Shiffman - mysterious box, time 188.563
+204.412	CHOOSING NEW CLIP 
+204.412		Chose Clip "Philip - system in your head" for topic "programming" (2/5)
+230.985	VISUALS Not run in 42.4223 seconds
+230.985		Chose new Preset Code_Code_Console_default time [218.389 - 226.665] indefinite
+230.985	CHOOSING NEW CLIP 
+230.985		Chose Clip "Karolina - Ocean as metaphor" for topic "programming" (3/5)
+230.985			ERROR: We took a digression! Freeing topic
+283.702	VISUALS Currently running "Code_Code_Console_default" time [218.389 - 226.665] indefinite
+283.702		Passed predicted time 226.665 - FREE TOPIC Extending VS end time to 304.259 past the end of Karolina - Ocean as metaphor
+304.259	ACT ENDED on clip Karolina - Ocean as metaphor explored topics 3/3 with 3 clips on final topic "programming"
