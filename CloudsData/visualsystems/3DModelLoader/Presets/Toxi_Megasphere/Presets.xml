@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>356.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>1279.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -57,6 +57,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Megasphere_purple</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Nest_1</Name>
     <Value>0</Value>
 </Widget>
@@ -107,7 +112,27 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Toxi_AllinOne</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toxi_AllinOne_Normals</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Toxi_Ellipsoid2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toxi_Megasphere</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toxi_Sphere1</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -144,14 +169,4 @@
     <Kind>2</Kind>
     <Name>Vroi</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Toxi_Sphere1</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Toxi_Megasphere</Name>
-    <Value>1</Value>
 </Widget>

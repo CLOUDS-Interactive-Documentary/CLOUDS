@@ -4823,7 +4823,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "&quot;sketching:How do you sketch with code?&quot;" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.692308" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -4871,7 +4871,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.076923" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5015,7 +5015,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.230769" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5207,7 +5207,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "&quot;cosmogeny:How do you create a digital universe?&quot;" />
-		<pattr name = "amp1" value = "0.76923" />
+		<pattr name = "amp1" value = "0.461538" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5255,7 +5255,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1.230769" />
+		<pattr name = "amp1" value = "1.307692" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5294,7 +5294,7 @@
 		<pattr name = "rhythm" value = "0" />
 		<pattr name = "tempo" value = "120" />
 		<pattr name = "pname" value = "Clouds11_125" />
-		<pattr name = "orch1" value = "simplesound" />
+		<pattr name = "orch1" value = "kissmysinefast" />
 		<pattr name = "orch2" value = "off" />
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
@@ -5303,12 +5303,12 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "&quot;programming:What does it feel like to program?&quot;" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.076923" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
+		<pattr name = "rev1" value = "0.307692" />
 		<pattr name = "rev2" value = "0.5" />
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
@@ -5323,7 +5323,7 @@
 		<pattr name = "arg_a4" value = "none" />
 		<pattr name = "arg_a5" value = "none" />
 		<pattr name = "arg_a1" value = "soundfile" />
-		<pattr name = "arg_b1" value = "clouds11_125.wav" />
+		<pattr name = "arg_b1" value = "none" />
 		<pattr name = "arg_b2" value = "none" />
 		<pattr name = "arg_b3" value = "none" />
 		<pattr name = "arg_b4" value = "none" />
@@ -5351,7 +5351,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.461539" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5399,7 +5399,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.384615" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5430,10 +5430,10 @@
 		<pattr name = "d2" value = "0 10" />
 		<pattr name = "d3" value = "0 5" />
 		<pattr name = "d4" value = "0 10" />
-		<pattr name = "d5" value = "0 10" />
+		<pattr name = "d5" value = "4 10" />
 		<pattr name = "d6" value = "0 10" />
 		<pattr name = "d7" value = "0 10" />
-		<pattr name = "d8" value = "0 4" />
+		<pattr name = "d8" value = "0 10" />
 		<pattr name = "harmony" value = "0" />
 		<pattr name = "rhythm" value = "0" />
 		<pattr name = "tempo" value = "120" />
@@ -5447,7 +5447,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.692308" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5475,17 +5475,17 @@
 	</slot>
 	<slot number = "314">
 		<pattr name = "d1" value = "0 10" />
-		<pattr name = "d2" value = "0 5" />
-		<pattr name = "d3" value = "0 5" />
-		<pattr name = "d4" value = "0 10" />
+		<pattr name = "d2" value = "0 10" />
+		<pattr name = "d3" value = "2 7" />
+		<pattr name = "d4" value = "0 6" />
 		<pattr name = "d5" value = "0 10" />
-		<pattr name = "d6" value = "0 10" />
-		<pattr name = "d7" value = "0 4" />
-		<pattr name = "d8" value = "4 10" />
+		<pattr name = "d6" value = "0 4" />
+		<pattr name = "d7" value = "0 10" />
+		<pattr name = "d8" value = "4 8" />
 		<pattr name = "harmony" value = "0" />
 		<pattr name = "rhythm" value = "0" />
 		<pattr name = "tempo" value = "120" />
-		<pattr name = "pname" value = "Clouds17_100" />
+		<pattr name = "pname" value = "Clouds18_125" />
 		<pattr name = "orch1" value = "simplesound" />
 		<pattr name = "orch2" value = "off" />
 		<pattr name = "orch3" value = "off" />
@@ -5494,8 +5494,8 @@
 		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "start_question" value = "&quot;thinking:Do computers make us smarter?&quot;" />
+		<pattr name = "amp1" value = "0.846154" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5543,7 +5543,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "&quot;thinking:Do computers make us smarter?&quot;" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.846154" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5571,12 +5571,12 @@
 	</slot>
 	<slot number = "316">
 		<pattr name = "d1" value = "0 10" />
-		<pattr name = "d2" value = "0 7" />
-		<pattr name = "d3" value = "0 5" />
+		<pattr name = "d2" value = "0 10" />
+		<pattr name = "d3" value = "1 7" />
 		<pattr name = "d4" value = "0 5" />
-		<pattr name = "d5" value = "5 10" />
+		<pattr name = "d5" value = "0 10" />
 		<pattr name = "d6" value = "0 10" />
-		<pattr name = "d7" value = "5 10" />
+		<pattr name = "d7" value = "0 10" />
 		<pattr name = "d8" value = "0 10" />
 		<pattr name = "harmony" value = "0" />
 		<pattr name = "rhythm" value = "0" />
@@ -5587,11 +5587,11 @@
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "0" />
+		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.461539" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5620,12 +5620,12 @@
 	<slot number = "317">
 		<pattr name = "d1" value = "0 10" />
 		<pattr name = "d2" value = "0 10" />
-		<pattr name = "d3" value = "1 7" />
+		<pattr name = "d3" value = "0 10" />
 		<pattr name = "d4" value = "0 6" />
 		<pattr name = "d5" value = "0 10" />
-		<pattr name = "d6" value = "0 10" />
-		<pattr name = "d7" value = "5 10" />
-		<pattr name = "d8" value = "0 4" />
+		<pattr name = "d6" value = "0 6" />
+		<pattr name = "d7" value = "0 10" />
+		<pattr name = "d8" value = "0 10" />
 		<pattr name = "harmony" value = "0" />
 		<pattr name = "rhythm" value = "0" />
 		<pattr name = "tempo" value = "120" />
@@ -5639,7 +5639,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.692308" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5687,7 +5687,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.692308" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5735,7 +5735,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.769231" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5764,9 +5764,9 @@
 	<slot number = "320">
 		<pattr name = "d1" value = "0 10" />
 		<pattr name = "d2" value = "0 7" />
-		<pattr name = "d3" value = "0 5" />
-		<pattr name = "d4" value = "0 5" />
-		<pattr name = "d5" value = "5 10" />
+		<pattr name = "d3" value = "0 10" />
+		<pattr name = "d4" value = "0 10" />
+		<pattr name = "d5" value = "0 10" />
 		<pattr name = "d6" value = "0 10" />
 		<pattr name = "d7" value = "5 10" />
 		<pattr name = "d8" value = "0 10" />
@@ -5783,7 +5783,7 @@
 		<pattr name = "disabled" value = "1" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.384615" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5831,7 +5831,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "&quot;real and virtual:Have we hacked reality?&quot;" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.307692" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5858,13 +5858,13 @@
 		<pattr name = "arg_b5" value = "none" />
 	</slot>
 	<slot number = "322">
-		<pattr name = "d1" value = "4 10" />
+		<pattr name = "d1" value = "0 10" />
 		<pattr name = "d2" value = "0 10" />
 		<pattr name = "d3" value = "4 10" />
-		<pattr name = "d4" value = "5 10" />
+		<pattr name = "d4" value = "0 10" />
 		<pattr name = "d5" value = "0 10" />
-		<pattr name = "d6" value = "0 4" />
-		<pattr name = "d7" value = "0 10" />
+		<pattr name = "d6" value = "0 10" />
+		<pattr name = "d7" value = "5 10" />
 		<pattr name = "d8" value = "0 10" />
 		<pattr name = "harmony" value = "0" />
 		<pattr name = "rhythm" value = "0" />
@@ -5879,7 +5879,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.615385" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -5909,9 +5909,9 @@
 		<pattr name = "d1" value = "4 10" />
 		<pattr name = "d2" value = "0 10" />
 		<pattr name = "d3" value = "4 10" />
-		<pattr name = "d4" value = "5 10" />
+		<pattr name = "d4" value = "4 10" />
 		<pattr name = "d5" value = "0 10" />
-		<pattr name = "d6" value = "0 5" />
+		<pattr name = "d6" value = "0 10" />
 		<pattr name = "d7" value = "0 10" />
 		<pattr name = "d8" value = "0 10" />
 		<pattr name = "harmony" value = "0" />
@@ -5958,9 +5958,9 @@
 		<pattr name = "d2" value = "0 10" />
 		<pattr name = "d3" value = "0 10" />
 		<pattr name = "d4" value = "0 10" />
-		<pattr name = "d5" value = "5 10" />
+		<pattr name = "d5" value = "0 10" />
 		<pattr name = "d6" value = "0 10" />
-		<pattr name = "d7" value = "4 8" />
+		<pattr name = "d7" value = "2 8" />
 		<pattr name = "d8" value = "0 10" />
 		<pattr name = "harmony" value = "0" />
 		<pattr name = "rhythm" value = "0" />
@@ -5975,7 +5975,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.384615" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -6006,9 +6006,9 @@
 		<pattr name = "d2" value = "0 10" />
 		<pattr name = "d3" value = "0 10" />
 		<pattr name = "d4" value = "0 10" />
-		<pattr name = "d5" value = "5 10" />
+		<pattr name = "d5" value = "0 10" />
 		<pattr name = "d6" value = "0 10" />
-		<pattr name = "d7" value = "4 8" />
+		<pattr name = "d7" value = "0 10" />
 		<pattr name = "d8" value = "0 10" />
 		<pattr name = "harmony" value = "0" />
 		<pattr name = "rhythm" value = "0" />
@@ -6019,11 +6019,11 @@
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "0" />
+		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&quot;Archiving, Future&quot;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.538462" />
+		<pattr name = "start_question" value = "&quot;interfaces:What's the ultimate interface?&quot;" />
+		<pattr name = "amp1" value = "0.461539" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -6119,7 +6119,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.692308" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -6167,7 +6167,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "&quot;sketching:How do you sketch with code?&quot;" />
-		<pattr name = "amp1" value = "0.923077" />
+		<pattr name = "amp1" value = "0.538462" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -6212,10 +6212,10 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "1" />
-		<pattr name = "disabled" value = "1" />
+		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "&quot;toolmakers:what's the link between invention and art?&quot;" />
-		<pattr name = "amp1" value = "0.461539" />
+		<pattr name = "amp1" value = "0.307693" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -6300,38 +6300,38 @@
 		<pattr name = "d8" value = "0 10" />
 		<pattr name = "harmony" value = "0" />
 		<pattr name = "rhythm" value = "0" />
-		<pattr name = "tempo" value = "100" />
-		<pattr name = "pname" value = "playfulbeat" />
+		<pattr name = "tempo" value = "120" />
+		<pattr name = "pname" value = "Clouds18" />
 		<pattr name = "orch1" value = "simplesound" />
-		<pattr name = "orch2" value = "avibeats" />
+		<pattr name = "orch2" value = "off" />
 		<pattr name = "orch3" value = "off" />
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
-		<pattr name = "energy" value = "1" />
+		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.384615" />
-		<pattr name = "amp2" value = "0.153846" />
+		<pattr name = "start_question" value = "&quot;data:What is data?&quot;" />
+		<pattr name = "amp1" value = "0.692308" />
+		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0." />
-		<pattr name = "rev2" value = "0." />
+		<pattr name = "rev1" value = "0.5" />
+		<pattr name = "rev2" value = "0.5" />
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
-		<pattr name = "env1" value = "e_CONSTANT" />
+		<pattr name = "env1" value = "e_FADEOUTFAST" />
 		<pattr name = "env2" value = "e_CONSTANT" />
 		<pattr name = "env3" value = "e_CONSTANT" />
-		<pattr name = "env4" value = "e_CONSTANT" />
+		<pattr name = "env4" value = "e_FADEINBY25" />
 		<pattr name = "env5" value = "e_CONSTANT" />
-		<pattr name = "arg_a2" value = "avi2b" />
-		<pattr name = "arg_a3" value = "markov" />
+		<pattr name = "arg_a2" value = "none" />
+		<pattr name = "arg_a3" value = "none" />
 		<pattr name = "arg_a4" value = "none" />
 		<pattr name = "arg_a5" value = "none" />
 		<pattr name = "arg_a1" value = "soundfile" />
-		<pattr name = "arg_b1" value = "clouds08_100.wav" />
+		<pattr name = "arg_b1" value = "clouds18_125.wav" />
 		<pattr name = "arg_b2" value = "none" />
 		<pattr name = "arg_b3" value = "none" />
 		<pattr name = "arg_b4" value = "none" />

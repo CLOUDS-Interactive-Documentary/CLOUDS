@@ -77,6 +77,15 @@ public:
 	
 	void setToStartPosition(ofVec3f targetPos = ofVec3f());
 	
+	float& getMinTilt()
+	{
+		return minTilt;
+	}
+	float& getMaxTilt()
+	{
+		return maxTilt;
+	}
+	
 private:
 	void setDistance(float distance, bool save);
 	

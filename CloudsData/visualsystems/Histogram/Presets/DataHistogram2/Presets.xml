@@ -3,7 +3,7 @@
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
     <XPosition>637.000061035</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,6 +13,21 @@
 <Widget>
     <Kind>2</Kind>
     <Name>DataHistogram</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DataHistogram2</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DataHistogram3</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DataHistogram4</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -49,9 +64,4 @@
     <Kind>2</Kind>
     <Name>Waveform3_GTNonStop</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>DataHistogram2</Name>
-    <Value>1</Value>
 </Widget>

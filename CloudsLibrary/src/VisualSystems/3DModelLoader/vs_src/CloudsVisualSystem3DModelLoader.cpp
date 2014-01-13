@@ -45,9 +45,9 @@ void CloudsVisualSystem3DModelLoader::selfSetupGui()
 	
 	transformGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	transformGui->addButton("reset transforms", false);
-	transformGui->addSlider("positionOffset.x", -1000, 1000, &positionOffset.x )->setIncrement(1);
-	transformGui->addSlider("positionOffset.y", -1000, 1000, &positionOffset.y )->setIncrement(1);
-	transformGui->addSlider("positionOffset.z", -1000, 1000, &positionOffset.z )->setIncrement(1);
+	transformGui->addSlider("positionOffset.x", -1000, 1000, &positionOffset.x )->setIncrement(.5);
+	transformGui->addSlider("positionOffset.y", -1000, 1000, &positionOffset.y )->setIncrement(.5);
+	transformGui->addSlider("positionOffset.z", -1000, 1000, &positionOffset.z )->setIncrement(.5);
 	
 	transformGui->addSlider("globalRotation.x", -180, 180, &globalRotation.x )->setIncrement(.01);
 	transformGui->addSlider("globalRotation.y", -180, 180, &globalRotation.y )->setIncrement(.01);
@@ -197,6 +197,14 @@ void CloudsVisualSystem3DModelLoader::selfGuiEvent(ofxUIEventArgs &e)
 			facetMesh( modelMesh, modelMesh );
 		}
 	}
+	else if(name =="minTilt" || name == "maxTilt")
+	{
+		if(perspCam.getMaxTilt() - perspCam.getMinTilt() < 10)
+		{
+			perspCam.getMinTilt() = perspCam.getMaxTilt() - 10;
+		}
+		perspCam.setToStartPosition( boundCenter );
+	}
 	
 	else if( name == "reset transforms")
 	{
@@ -257,7 +265,7 @@ void CloudsVisualSystem3DModelLoader::selfGuiEvent(ofxUIEventArgs &e)
 					{
 						cout << "loading model: " << name << endl;
 						//loadModel( "models/" + name, bSmoothModel );
-						loadModel( getVisualSystemDataPath() + "models/" + name, bSmoothModel );
+						loadModel( getVisualSystemDataPath(true) + "models/" + name, bSmoothModel );
 					}
 				}
 			}
@@ -485,13 +493,6 @@ void CloudsVisualSystem3DModelLoader::selfSetup()
 void CloudsVisualSystem3DModelLoader::selfPresetLoaded(string presetPath)
 {
 	setupGridVbos();
-	
-	//re-setup a grid vbos to avoid the scrambled grids... when a big model loads. a stop gap for now
-	setupGridVbos();
-	
-	//posoition the camera in front of the model between it's min and max vals
-	//hack to avoid flipping when out of min max on preset change
-	perspCam.setToStartPosition( boundCenter );
 }
 
 // selfBegin is called when the system is ready to be shown
