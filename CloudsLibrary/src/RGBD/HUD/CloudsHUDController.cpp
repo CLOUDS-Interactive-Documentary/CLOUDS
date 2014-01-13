@@ -21,6 +21,14 @@ CloudsHUDController::CloudsHUDController(){
     bDrawHome = true;
 	
     scaleAmt = 1.0;
+    
+#ifdef OCULUS_RIFT
+    for (int i = 0; i < CLOUDS_HUD_LAYER_COUNT; i++) {
+        layerDistance[i] = 300;
+        layerRotation[i] = 0;
+        layerBillboard[i] = CLOUDS_HUD_BILLBOARD_CAMERA;
+    }
+#endif
 }
 
 void CloudsHUDController::setup(){
@@ -398,25 +406,25 @@ void CloudsHUDController::draw3D(ofCamera& cam){
     glDisable(GL_LIGHTING);
     ofEnableAlphaBlending();
     
-    ofVec3f upAxis = ofVec3f(0.0, 1.0, 0.0);
-    ofVec3f camPos = cam.getGlobalPosition();
-    ofVec3f hudPos = camPos + (cam.getLookAtDir().getScaled(300));
-//    cout << "lookAt = " << getCameraRef().getLookAtDir() << endl;
-    
-    ofVec3f lowerThirdPos = hudPos.getRotated(30, camPos, upAxis);
-    
-    drawLayer3D(CLOUDS_HUD_QUESTION, hudPos, camPos);
-    drawLayer3D(CLOUDS_HUD_LOWER_THIRD, lowerThirdPos, camPos);
-	drawLayer3D(CLOUDS_HUD_PROJECT_EXAMPLE, hudPos, camPos);
-	drawLayer3D(CLOUDS_HUD_MAP, hudPos, camPos);
+    drawLayer3D(CLOUDS_HUD_QUESTION, cam);
+    drawLayer3D(CLOUDS_HUD_LOWER_THIRD, cam);
+	drawLayer3D(CLOUDS_HUD_PROJECT_EXAMPLE, cam);
+	drawLayer3D(CLOUDS_HUD_MAP, cam);
 	
     glPopAttrib();
 	ofPopMatrix();
 	ofPopStyle();
 }
 
-void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofVec3f& basePos, ofVec3f& camPos){
+void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera& cam){
     ofPushMatrix();
+    
+    ofVec3f camPos = cam.getGlobalPosition();
+    
+    // Calculate the base position.
+    static ofVec3f upAxis = ofVec3f(0.0, 1.0, 0.0);
+    ofVec3f basePos = camPos + (cam.getLookAtDir().getScaled(layerDistance[layer]));
+    basePos.rotate(layerRotation[layer], camPos, upAxis);
     
     // Get the total layer bounds.
     ofRectangle layerBounds;
@@ -429,22 +437,25 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofVec3f& basePos,
     ofVec3f layerPos = basePos + (getCenter(false) - layerBounds.getCenter());
     ofTranslate(layerPos);
     
-    // Billboard rotation using the Oculus orientation.
-//    ofVec3f eulerAngles = (CloudsVisualSystem::getOculusRift().getOrientationQuat() * cam.getOrientationQuat()).getEuler();
-//    ofRotate(-eulerAngles.z, 1, 0, 0);
-    
-    // Billboard rotation using the camera.
-    ofNode node;
-    node.setPosition(layerPos);
-    node.lookAt(camPos);
-    ofVec3f axis;
-    float angle;
-    node.getOrientationQuat().getRotate(angle, axis);
-    ofRotate(angle, axis.x, axis.y, axis.z);
+    if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_OCULUS) {
+        // Billboard rotation using the Oculus orientation.
+        ofVec3f eulerAngles = (CloudsVisualSystem::getOculusRift().getOrientationQuat() * cam.getOrientationQuat()).getEuler();
+        ofRotate(-eulerAngles.z, 1, 0, 0);
+    }
+    else if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_CAMERA) {
+        // Billboard rotation using the camera.
+        ofNode node;
+        node.setPosition(layerPos);
+        node.lookAt(camPos);
+        ofVec3f axis;
+        float angle;
+        node.getOrientationQuat().getRotate(angle, axis);
+        ofRotate(angle, axis.x, axis.y, axis.z);
+    }
     
     // Debug circle.
-    ofSetColor(255);
-    ofCircle(0, 0, 25);
+//    ofSetColor(255);
+//    ofCircle(0, 0, 25);
     
     // Draw the video player if we're on the right layer.
     if (layer == CLOUDS_HUD_PROJECT_EXAMPLE && videoPlayer.isPlaying()) {

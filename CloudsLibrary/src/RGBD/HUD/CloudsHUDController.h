@@ -23,8 +23,18 @@ typedef enum {
 	CLOUDS_HUD_QUESTION,
 	CLOUDS_HUD_LOWER_THIRD,
 	CLOUDS_HUD_PROJECT_EXAMPLE,
-	CLOUDS_HUD_MAP
+	CLOUDS_HUD_MAP,
+    
+    CLOUDS_HUD_LAYER_COUNT
 } CloudsHUDLayerSet;
+
+#ifdef OCULUS_RIFT
+typedef enum {
+	CLOUDS_HUD_BILLBOARD_NONE = 0,
+	CLOUDS_HUD_BILLBOARD_CAMERA,
+	CLOUDS_HUD_BILLBOARD_OCULUS
+} CloudsHUDBillboard;
+#endif
 
 class CloudsClip;
 class CloudsHUDController {
@@ -71,6 +81,12 @@ class CloudsHUDController {
     
     ofVec2f getSize(bool bScaled = true);
     ofVec2f getCenter(bool bScaled = true);
+    
+#ifdef OCULUS_RIFT
+    float layerDistance[CLOUDS_HUD_LAYER_COUNT];
+    float layerRotation[CLOUDS_HUD_LAYER_COUNT];
+    CloudsHUDBillboard layerBillboard[CLOUDS_HUD_LAYER_COUNT];
+#endif
 
   protected:
 	
@@ -90,7 +106,7 @@ class CloudsHUDController {
 	
 	
     void drawLayer(CloudsHUDLayerSet layer);
-    void drawLayer3D(CloudsHUDLayerSet layer, ofVec3f& basePos, ofVec3f& camPos);
+    void drawLayer3D(CloudsHUDLayerSet layer, ofCamera& cam);
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath );
     
     vector<ofxFTGLFont*>    tempFontList;
