@@ -271,8 +271,8 @@ void CloudsVisualSystem3DModelLoader::selfGuiEvent(ofxUIEventArgs &e)
 					if(cameraPaths[i] == name )
 					{
 						cout << "loading camera path: " << name << endl;
-						pathCamera.loadPathFromFile(getVisualSystemDataPath(false) + "cameraPaths/" + name );
-//						pathCamera.loadPathFromFile(getVisualSystemDataPath(true) + "cameraPaths/" + name );
+//						pathCamera.loadPathFromFile(getVisualSystemDataPath(false) + "cameraPaths/" + name );
+						pathCamera.loadPathFromFile(getVisualSystemDataPath(true) + "cameraPaths/" + name );
 					}
 				}
 			}
@@ -372,8 +372,8 @@ void CloudsVisualSystem3DModelLoader::selfSetup()
 {
 	
 	//get list of models from the model directory
-	//string path = getVisualSystemDataPath(true) + "models/";
-	string path = getVisualSystemDataPath(false) + "models/";
+	string path = getVisualSystemDataPath(true) + "models/";
+//	string path = getVisualSystemDataPath(false) + "models/";
 	cout << "model path: " << path << endl;
 	
 	ofDirectory dir;
@@ -464,20 +464,19 @@ void CloudsVisualSystem3DModelLoader::selfSetup()
 	resizeTheArrowMesh( arrowRadius, arrowHeight, arrowPointHeight );
 	
 	loadCameraLineModel( cameraLines, getVisualSystemDataPath() + "cameraVertices.txt" );
-
-	
-	//re-setup a grid vbos to avoid the scrambled grids... when a big model loads. a stop gap for now
-	setupGridVbos();
 	
 	//setup boundBox vbo
 	setupBoundingBoxVbo();
 	
+	//cameras
+	setupMultipleCameras( ofVec3f( 0, 100, 0) );
+	
+	//re-setup a grid vbos to avoid the scrambled grids... when a big model loads. a stop gap for now
+	setupGridVbos();
+	
 	//posoition the camera in front of the model between it's min and max vals
 	//hack to avoid flipping when out of min max on preset change
 	perspCam.setToStartPosition( boundCenter );
-	
-	//cameras
-	setupMultipleCameras( ofVec3f( 0, 100, 0) );
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -486,6 +485,13 @@ void CloudsVisualSystem3DModelLoader::selfSetup()
 void CloudsVisualSystem3DModelLoader::selfPresetLoaded(string presetPath)
 {
 	setupGridVbos();
+	
+	//re-setup a grid vbos to avoid the scrambled grids... when a big model loads. a stop gap for now
+	setupGridVbos();
+	
+	//posoition the camera in front of the model between it's min and max vals
+	//hack to avoid flipping when out of min max on preset change
+	perspCam.setToStartPosition( boundCenter );
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -886,8 +892,8 @@ void CloudsVisualSystem3DModelLoader::loadModel( string fileName, bool bSmoothMe
 {
 //	perspCam.reset();
 	cout << "*** LOADING MODEL " << fileName << endl;
-	//string filePath = getVisualSystemDataPath(true) + fileName;
-	string filePath = getVisualSystemDataPath(false) + fileName;
+	string filePath = getVisualSystemDataPath(true) + fileName;
+//	string filePath = getVisualSystemDataPath(false) + fileName;
 	if(!ofFile(filePath).exists()){
 		ofLogError("CloudsVisualSystem3DModelLoader::loadModel") << filePath << " Doesn't exist";
 	}

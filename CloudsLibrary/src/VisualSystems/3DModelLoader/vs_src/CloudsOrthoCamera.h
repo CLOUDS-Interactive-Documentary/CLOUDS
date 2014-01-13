@@ -132,7 +132,6 @@ private:
 	ofVec2f orbitVel;
 	float maxOrbitDistance, minOrbitDistance, orbitZoomFrequency;
 	
-	
 	ofxUISuperCanvas* gui;
 	float mouseScl, deadZone, cameraSpeed, pitchScale, tiltLimit, orbitVelAttenuation, minTilt, maxTilt;
 };
