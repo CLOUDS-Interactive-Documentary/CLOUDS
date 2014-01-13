@@ -489,6 +489,8 @@ void CloudsVisualSystem3DModelLoader::selfPresetLoaded(string presetPath)
 void CloudsVisualSystem3DModelLoader::selfBegin()
 {
 	accumulatedRotation.set( 0,0,0);
+	
+//	getCameraRef().setPosition(<#float px#>, <#float py#>, <#float pz#>)
 }
 
 //do things like ofRotate/ofTranslate here
@@ -1089,24 +1091,23 @@ void CloudsVisualSystem3DModelLoader::drawSceneGeometry( ofCamera* cam)
 		gridShader.setUniform1f("falloffScl", fogFalloffScale );
 		gridShader.setUniform1f("alphaScale", gridAlphaScale );
 		
-		ofPushMatrix();
-		int gms = gridMajorScale;
-		//	ofTranslate( floor(camPos.x/(gridScale*gms))*gms*gridScale, 0, floor(camPos.z/(gridScale*gms))*gms*gridScale);
-		ofTranslate( 0, ( getCameraRef().getPosition().y > 0)? gridLineWidth * .5 / gridScale: gridLineWidth * -.5 / gridScale,0);
-		ofScale( gridScale * gms,gridScale * gms, gridScale * gms );
 		
-		glLineWidth( majorGridLineWidth );
-		ofSetColor( gridMajorColor.r*gridMajorBrightness, gridMajorColor.g*gridMajorBrightness, gridMajorColor.b*gridMajorBrightness, gridMajorAlpha );
+		ofPushMatrix();
+		ofScale( gridScale, gridScale, gridScale );
+		
+		glLineWidth( gridLineWidth );
+		ofSetColor( gridColor.r*gridBrightness, gridColor.g*gridBrightness, gridColor.b*gridBrightness, gridAlpha );
 		grid.draw(GL_LINES, 0, numGridVertices );
 		
 		ofPopMatrix();
 		
 		ofPushMatrix();
-		//	ofTranslate( floor(camPos.x/gridScale) * gridScale, 0, floor(camPos.z/gridScale) * gridScale );
-		ofScale( gridScale, gridScale, gridScale );
+		int gms = gridMajorScale;
+		ofTranslate( getCameraRef().getLookAtDir() * -gridLineWidth / gridScale );
+		ofScale( gridScale * gms,gridScale * gms, gridScale * gms );
 		
-		glLineWidth( gridLineWidth );
-		ofSetColor( gridColor.r*gridBrightness, gridColor.g*gridBrightness, gridColor.b*gridBrightness, gridAlpha );
+		glLineWidth( majorGridLineWidth );
+		ofSetColor( gridMajorColor.r*gridMajorBrightness, gridMajorColor.g*gridMajorBrightness, gridMajorColor.b*gridMajorBrightness, gridMajorAlpha );
 		grid.draw(GL_LINES, 0, numGridVertices );
 		
 		ofPopMatrix();
