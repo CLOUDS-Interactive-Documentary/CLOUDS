@@ -73,8 +73,13 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
 //	cout << "speaker: " << speaker.firstName << " " << speaker.lastName << endl;
 	
 // LOWER THIRD
-	CloudsSpeaker speaker = CloudsSpeaker::speakers[ clip.person ];
-    populateLowerThird(speaker.firstName, speaker.lastName, speaker.location2, speaker.title, speaker.byline1, true );
+	
+    
+    //update lower third, but only if the speaker has changed
+    if(speaker.fcpID != CloudsSpeaker::speakers[ clip.person ].fcpID){
+        speaker = CloudsSpeaker::speakers[ clip.person ];
+        populateLowerThird(speaker.firstName, speaker.lastName, speaker.location2, speaker.title, speaker.byline1, true );
+    }
     
 // PROJECT EXAMPLE
 	if(clip.hasProjectExample && clip.projectExample.exampleVideos.size() ){
@@ -150,16 +155,19 @@ void CloudsHUDController::populateLowerThird( string firstName, string lastName,
     titleLabel->setText( location );
     
     //description
+    ////reset to default
     CloudsHUDLabel* descLabel = hudLabelMap["BylineBodyCopyTextBox"];
+    descLabel->bounds = defaultBioBounds;
+    descLabel->layout->setLineLength(defaultBioBounds.width);
+    int descLeftEdge = descLabel->bounds.getLeft();
     
-    if(locationLabel->getRightEdge()+margin >= descLabel->bounds.getLeft()){
-           cout << "location text is running into description text" << endl;
-        descLabel->bounds.x = locationLabel->getRightEdge()+margin*1.5;
+    if(locationLabel->getRightEdge() + margin >= descLeftEdge){
+        descLabel->bounds.x = locationLabel->getRightEdge()+margin;
         descLabel->layout->setLineLength(defaultBioBounds.width - (descLabel->bounds.x - defaultBioBounds.x));
     }
-    else{
-        descLabel->bounds = defaultBioBounds;
-        descLabel->layout->setLineLength(defaultBioBounds.width);
+    else if(titleLabel->getRightEdge() + margin >= descLeftEdge){
+        descLabel->bounds.x = titleLabel->getRightEdge()+margin;
+        descLabel->layout->setLineLength(defaultBioBounds.width - (descLabel->bounds.x - defaultBioBounds.x));
     }
     
     descLabel->setText( textbox );
@@ -355,6 +363,7 @@ ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName, s
 ofxFTGLFont* CloudsHUDController::getFontForLayer( string layerName, string fontPath, int kerning ) {
     for( int i=0; i<allLayers.size(); i++ ){
         SVGMesh* textMesh = allLayers[i]->svg.getMeshByID( layerName );
+        
         
         if( textMesh != NULL ){
             textMesh->visible = false;

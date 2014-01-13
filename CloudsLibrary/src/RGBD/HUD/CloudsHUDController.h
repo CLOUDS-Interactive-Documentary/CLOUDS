@@ -17,6 +17,7 @@
 #include "CloudsHUDHomeButton.h"
 #include "CloudsHUDLabel.h"
 #include "CloudsEvents.h"
+#include "CloudsSpeaker.h"
 
 typedef enum {
 	CLOUDS_HUD_FULL = 0,
@@ -117,6 +118,8 @@ class CloudsHUDController {
     int margin;
     
     ofRectangle             defaultBioBounds;
+    
+    CloudsSpeaker           speaker;
 };
 
 
