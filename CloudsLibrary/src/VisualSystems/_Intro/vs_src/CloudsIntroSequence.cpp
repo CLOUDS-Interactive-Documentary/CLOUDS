@@ -45,6 +45,7 @@ void CloudsIntroSequence::selfSetup(){
     rebuildQuestionFont();
 	perlinOffset = 0;
 	
+    warpCamera.setNearClip(.01);
 	
 	ofDisableArbTex();
 	sprite.loadImage(getVisualSystemDataPath() + "images/dot.png");

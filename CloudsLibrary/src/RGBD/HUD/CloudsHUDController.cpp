@@ -122,7 +122,8 @@ void CloudsHUDController::populateMap( string leftBox, string rightBox, bool for
 }
 
 void CloudsHUDController::populateQuestion( string question, bool forceOn ){
-	if(hudLabelMap["QuestionTextBox"]->getText() == question){
+//    cout << "setting text with current value " << question << " " << hudLabelMap["QuestionTextBox"]->getText() << endl;
+	if( ofToUpper(hudLabelMap["QuestionTextBox"]->getText()) == ofToUpper(question) ){
 		return;
 	}
 	else if(question == ""){
@@ -535,24 +536,53 @@ void CloudsHUDController::draw3D(ofCamera* cam){
 	ofPushMatrix();
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     
+//    GLfloat model[16];
+//    glGetFloatv(GL_MODELVIEW_MATRIX, model);
+//    ofMatrix4x4 curmv;
+//    curmv.set(model);
+//    ofMultMatrix(curmv.getInverse());
+ 
 	glDisable(GL_DEPTH_TEST);
     glDisable(GL_LIGHTING);
     ofEnableAlphaBlending();
     
-    drawLayer3D(CLOUDS_HUD_QUESTION, cam);
-    drawLayer3D(CLOUDS_HUD_LOWER_THIRD, cam);
-	drawLayer3D(CLOUDS_HUD_PROJECT_EXAMPLE, cam);
-	drawLayer3D(CLOUDS_HUD_MAP, cam);
+    drawLayer3DSimple(CLOUDS_HUD_QUESTION, cam);
+    drawLayer3DSimple(CLOUDS_HUD_LOWER_THIRD, cam);
+	drawLayer3DSimple(CLOUDS_HUD_PROJECT_EXAMPLE, cam);
+	drawLayer3DSimple(CLOUDS_HUD_MAP, cam);
 	
     glPopAttrib();
+//    ofMultMatrix(curmv);
+    
 	ofPopMatrix();
 	ofPopStyle();
+}
+
+void CloudsHUDController::drawLayer3DSimple(CloudsHUDLayerSet layer, ofCamera* cam){
+    ofPushMatrix();
+    
+    ofMatrix4x4 baseRotation;
+    ofTranslate(cam->getPosition());
+    baseRotation.makeRotationMatrix(cam->getOrientationQuat());
+    ofMultMatrix(baseRotation);
+    ofTranslate(0, 0, -ofGetMouseX());
+    
+
+    ofScale(-scaleAmt, -scaleAmt, 1);
+    ofTranslate(-hudBounds.getCenter());
+    drawLayer(layer);
+    
+    // Debug circle.
+    ofSetColor(255);
+    ofCircle(0, 0, 10);
+
+    ofPopMatrix();
 }
 
 void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
     ofPushMatrix();
     
-    ofVec3f camPos = cam->getGlobalPosition();
+    ofVec3f camPos = cam->getPosition();
     
     // Calculate the base position.
     static ofVec3f upAxis = ofVec3f(0.0, 1.0, 0.0);
@@ -596,8 +626,8 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
     }
     
     // Debug circle.
-//    ofSetColor(255);
-//    ofCircle(0, 0, 25);
+    ofSetColor(255);
+    ofCircle(0, 0, 25);
     
     // Transform for rendering the layer.
     ofScale(-scaleAmt, -scaleAmt, 1);

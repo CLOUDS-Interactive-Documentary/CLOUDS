@@ -270,6 +270,10 @@ string CloudsTransitionController::getStateDescription(CloudsTransitionState sta
             return "TransitionClusterIn";
         case TRANSITION_CLUSTERMAP_OUT:
             return "TransitionClusterOut";
+        case TRANSITION_QUESTION_IN:
+            return "TransitionQuestionIn";
+        case TRANSITION_QUESTION_OUT:
+            return "TransitionQuestionOut";
 		default:
 			return "UNKNOWN STATE " + ofToString(int(currentState));
 	}

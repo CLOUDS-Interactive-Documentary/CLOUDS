@@ -53,19 +53,23 @@ void CloudsHUDLabel::draw(){
     if( bIsAnimatingOut ){
         pct = ofMap( ofGetElapsedTimef(), beginTime, beginTime+fadeOutSpeed, 1., 0., true );
         textAlpha = floor( 255. * pct );
+        if(textAlpha <= 0.0){
+            text == "";
+            bIsAnimatingOut = false;
+        }
     }
     
     if(type == "LAYOUT"){
-    if( layout ){
-        ofPushStyle();{
-            ofSetColor(255, 255, 255, textAlpha);
-            string t = text.substr(0, playhead );
-            if(caps){
-                t = ofToUpper(t);
-            }
-            layout->drawString( t, bounds.x, bounds.y + layout->getStringBoundingBox("W", 0, 0).height );
-        }ofPopStyle();
-    }
+        if( layout ){
+            ofPushStyle();{
+                ofSetColor(255, 255, 255, textAlpha);
+                string t = text.substr(0, playhead );
+                if(caps){
+                    t = ofToUpper(t);
+                }
+                layout->drawString( t, bounds.x, bounds.y + layout->getStringBoundingBox("W", 0, 0).height );
+            }ofPopStyle();
+        }
     }
     else if (type == "FONT"){
         ofPushStyle();{

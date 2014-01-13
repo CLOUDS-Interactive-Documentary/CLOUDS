@@ -19,7 +19,7 @@
 #include "CloudsVisualSystemCosmic.h"
 #include "CloudsVisualSystemCubeCraft.h"
 #include "CloudsVisualSystemDataCascade.h"
-#include "CloudsVisualSystemDrawnLine.h"
+//#include "CloudsVisualSystemDrawnLine.h"
 #include "CloudsVisualSystemEmpty.h"
 #include "CloudsVisualSystemExampleBox2D.h"
 #include "CloudsVisualSystemExampleMPMFluid.h"
@@ -122,7 +122,7 @@ struct Mapping {
 	{ "Cosmic", &fCreate<CloudsVisualSystemCosmic> },
 	{ "CubeCraft", &fCreate<CloudsVisualSystemCubeCraft> },
 	{ "DataCascade", &fCreate<CloudsVisualSystemDataCascade> },
-	{ "DrawnLine", &fCreate<CloudsVisualSystemDrawnLine> },
+//	{ "DrawnLine", &fCreate<CloudsVisualSystemDrawnLine> },
 	{ "Empty", &fCreate<CloudsVisualSystemEmpty> },
 	{ "ExampleBox2D", &fCreate<CloudsVisualSystemExampleBox2D> },
 	{ "ExampleMPMFluid", &fCreate<CloudsVisualSystemExampleMPMFluid> },
@@ -659,25 +659,27 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeywords(vector<string>& keys, string clipName,bool isInterlude){
 	vector<CloudsVisualSystemPreset> presetsWithKeywords;
     vector<string> presetIds;
+    
+    //JG RIG
+//	for(int i = 0; i < presets.size(); i++){
+//        if(presets[i].systemName == "Twitter"){
+//            presetsWithKeywords.push_back(presets[i]);
+//        }
+//    }
+//
+//    return presetsWithKeywords;
+    
 	for(int i = 0; i < presets.size(); i++){
 		vector<string> presetKeywords = keywordsForPreset(i);
 		for(int k = 0; k < keys.size(); k++){
 			if( ofContains(presetKeywords, keys[k]) ){
                 
-                if(isInterlude){
-                    if(presets[i].interlude){
-                        presetsWithKeywords.push_back(presets[i]);
-                        presetIds.push_back(presets[i].getID());
-                        continue;
-                    }
-                }
-                else{
+                if(!isInterlude || (isInterlude && presets[i].interlude) ){
                     presetsWithKeywords.push_back(presets[i]);
                     presetIds.push_back(presets[i].getID());
                     continue;
                 }
                 
-
 			}
 		}
 	}
@@ -692,9 +694,6 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 			}
 		}
 	}
-//    if(isInterlude){
-//        for( int i =0; i )
-//    }
 	
 	return presetsWithKeywords;
 }
