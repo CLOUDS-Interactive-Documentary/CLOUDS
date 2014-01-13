@@ -70,12 +70,6 @@ CloudsOrthoCamera::~CloudsOrthoCamera(){
 
 void CloudsOrthoCamera::setToStartPosition(ofVec3f targetPos)
 {
-	
-	cout << "minTilt: "<< minTilt << endl;
-	cout << "maxTilt: "<< maxTilt << endl;
-	cout << "minOrbitDistance: "<< minOrbitDistance << endl;
-	cout << "maxOrbitDistance: "<< maxOrbitDistance << endl;
-	
 	setPosition( targetPos );
 	setOrientation(ofVec3f(0,0,1));
 	tilt(minTilt*.5 + maxTilt*.5);
@@ -140,7 +134,12 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 			
 			//rotate our camera accordingly
 			pan( panVal );
-			tilt( tiltVal );
+			
+			if(getPitch() + tiltVal < maxTilt && getPitch() + tiltVal > minTilt)
+			{
+				tilt( tiltVal );
+			}
+			
 			roll( getPitch() * -pitchScale );
 		}
 		
