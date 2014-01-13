@@ -103,32 +103,32 @@
 <Widget>
     <Kind>25</Kind>
     <Name>BODY_R</Name>
-    <Value>1.000000000</Value>
+    <Value>0.801047087</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>BODY_G</Name>
-    <Value>1.000000000</Value>
+    <Value>0.429319292</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>BODY_B</Name>
-    <Value>1.000000000</Value>
+    <Value>0.842931747</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>TRAIL_R</Name>
-    <Value>0.958115160</Value>
+    <Value>0.989528775</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>TRAIL_G</Name>
-    <Value>1.000000000</Value>
+    <Value>0.523560107</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>TRAIL_B</Name>
-    <Value>0.000000000</Value>
+    <Value>0.842931747</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -143,7 +143,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>TRAIL_2_B</Name>
-    <Value>1.000000000</Value>
+    <Value>0.890052199</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -158,7 +158,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>TICK_B</Name>
-    <Value>1.000000000</Value>
+    <Value>0.827224970</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

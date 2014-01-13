@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>BgSettings</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>118.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>215.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -33,15 +33,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>HUE2</Name>
-    <Value>125.615768433</Value>
+    <Value>144.458129883</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SAT2</Name>
-    <Value>115.566505432</Value>
+    <Value>69.088668823</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BRI2</Name>
-    <Value>70.344825745</Value>
+    <Value>81.650245667</Value>
 </Widget>

@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>867.000000000</XPosition>
+    <XPosition>1079.000122070</XPosition>
     <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -127,6 +127,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>stars_handles</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>tweetDeck</Name>
     <Value>0</Value>
 </Widget>
@@ -134,9 +139,4 @@
     <Kind>2</Kind>
     <Name>TweetDeck_NameCloud_Lines</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>stars_handles</Name>
-    <Value>1</Value>
 </Widget>

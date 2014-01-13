@@ -7,11 +7,6 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>DISPLAY</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>GAVITY CONTROL MODE</Name>
     <Value>1</Value>
 </Widget>
@@ -23,7 +18,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>RECTANGLES</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,37 +28,37 @@
 <Widget>
     <Kind>4</Kind>
     <Name>MAX CIRCLES</Name>
-    <Value>127.044334412</Value>
+    <Value>444.039398193</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>MAX RECTANGLES</Name>
-    <Value>112.413795471</Value>
+    <Value>10.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>CIRCLE MAX MEAN</Name>
-    <Value>16.527093887</Value>
+    <Value>18.300491333</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>CIRCLE SIZE DEVIATION</Name>
-    <Value>10.763546944</Value>
+    <Value>22.733989716</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RECT MAX MEAN</Name>
-    <Value>14.975369453</Value>
+    <Value>5.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RECT SIZE DEVIATION</Name>
-    <Value>12.758621216</Value>
+    <Value>5.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>FILL</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -78,12 +73,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>H1</Name>
-    <Value>100.000000000</Value>
+    <Value>132.172775269</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>S1</Name>
-    <Value>100.000000000</Value>
+    <Value>169.554946899</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -122,11 +117,6 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>MAX FREQ</Name>
-    <Value>50.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>MIN FREQ</Name>
-    <Value>16.256158829</Value>
+    <Name>Volume</Name>
+    <Value>0.162561581</Value>
 </Widget>

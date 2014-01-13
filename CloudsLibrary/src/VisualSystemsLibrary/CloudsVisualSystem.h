@@ -7,7 +7,7 @@
 #include "ofxTLCameraTrack.h"
 #include "CloudsRGBDCamera.h"
 #include "CloudsInputEvents.h"
-#include "CloudsHUDController.h"
+//#include "CloudsHUDController.h"
 #include "ofxLight.h"
 #include "ofxGenerative.h"
 //#include "ofxMaterial.h"

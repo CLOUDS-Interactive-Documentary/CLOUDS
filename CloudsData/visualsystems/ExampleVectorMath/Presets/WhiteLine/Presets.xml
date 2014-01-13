@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1485.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>355.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -17,8 +17,18 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>BlackLine</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>DrawYourOwnRainbow</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DrawYourOwnRainbowOC</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -32,11 +42,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>WhiteLine_</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>WhiteLine</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
