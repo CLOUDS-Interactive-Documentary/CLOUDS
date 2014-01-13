@@ -41,6 +41,7 @@ class CloudsSound {
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
 	void questionProposed(CloudsQuestionEventArgs& args);
 	void questionSelected(CloudsQuestionEventArgs& args);
+    void questionSelected(float fadeTime);
 	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
     
@@ -57,7 +58,7 @@ class CloudsSound {
     void startMusicFX(float outskip, float musicdur);
     void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, float m_amp, float m_rev, int instnum, string ampenvelope);
     void stopMusic();
-    void fadeMusic();
+    void fadeMusic(float fadeTime);
     void reloadPresets();
     void doPrinting();
     int ACTBUS; // needs to be public for UDP shit in the scoredesigner

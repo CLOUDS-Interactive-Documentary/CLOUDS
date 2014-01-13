@@ -109,7 +109,11 @@ void testApp::topicChanged(CloudsTopicEventArgs& newTopic){
 	
 }
 
-void testApp::questionAsked(CloudsQuestionEventArgs& args){
+void testApp::questionProposed(CloudsQuestionEventArgs& args){
+    
+}
+
+void testApp::questionSelected(CloudsQuestionEventArgs& args){
     
 }
 

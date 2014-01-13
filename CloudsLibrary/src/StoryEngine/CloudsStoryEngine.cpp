@@ -363,6 +363,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	//	allow VO to follow interstichal VS
 	//  if topic is last topic, revert to original topic -- promote conclusions + gold (last clip?)
 
+    run.accumuluatedTopics.clear();
+    
 	//clear variables
 	clearDichotomiesBalance();
 
@@ -499,9 +501,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 		
         ///////////////// QUESTIONS
         //adding all option clips with questions
-		if(state.topicNum > 1 && state.topicNum < maxTopicsPerAct){
+//		if(state.topicNum > 1 && state.topicNum < maxTopicsPerAct){
 			addQuestions(state, questionClips);
-        }
+  //      }
         /////////////////
 		
 		///////////////// DIOCHOTOMIES
