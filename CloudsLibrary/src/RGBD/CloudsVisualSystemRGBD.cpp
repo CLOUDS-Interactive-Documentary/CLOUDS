@@ -148,10 +148,6 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	//IF we move this before setup(NOT selfSetup) we can have the option of whether or not to load it to the gui
 	loadTransitionOptions("Transitions");
-    
-#ifdef OCULUS_RIFT
-    hud = NULL;
-#endif
 }
 
 void CloudsVisualSystemRGBD::playTestVideo(){

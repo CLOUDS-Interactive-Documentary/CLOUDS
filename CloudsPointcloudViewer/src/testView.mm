@@ -40,6 +40,7 @@
 	rgbdVisualSystem.playSystem();
 #ifdef OCULUS_RIFT
     rgbdVisualSystem.hud = &hud;
+    rgbdVisualSystem.setupHUDGui();
 	rgbdVisualSystem.loadPresetGUISFromName("RGBDOC");
 #else
 	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");

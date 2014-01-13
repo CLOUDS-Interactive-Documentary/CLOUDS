@@ -7,6 +7,7 @@
 #include "ofxTLCameraTrack.h"
 #include "CloudsRGBDCamera.h"
 #include "CloudsInputEvents.h"
+#include "CloudsHUDController.h"
 #include "ofxLight.h"
 #include "ofxGenerative.h"
 //#include "ofxMaterial.h"
@@ -252,6 +253,10 @@ class CloudsVisualSystem {
 #ifdef OCULUS_RIFT
     void setupOculusGui();
 	void guiOculusEvent(ofxUIEventArgs &e);
+    
+    CloudsHUDController* hud;
+    void setupHUDGui();
+	void guiHUDEvent(ofxUIEventArgs &e);
 #endif
     
     //Lighting Helpers
@@ -314,6 +319,7 @@ class CloudsVisualSystem {
 #endif
 #ifdef OCULUS_RIFT
     ofxUISuperCanvas *oculusGui;
+    ofxUISuperCanvas *hudGui;
 #endif
     
 	void stackGuiWindows();

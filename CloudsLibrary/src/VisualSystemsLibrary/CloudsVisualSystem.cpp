@@ -226,6 +226,11 @@ void CloudsVisualSystem::setup(){
     }
 
 //	currentCamera = &cam;
+    
+#ifdef OCULUS_RIFT
+    hud = NULL;
+    hudGui = NULL;
+#endif
 	
     ofDirectory dir;
     string directoryName = getVisualSystemDataPath()+"Presets/";
@@ -2877,6 +2882,33 @@ void CloudsVisualSystem::guiOculusEvent(ofxUIEventArgs &e)
 {
     
 }
+
+void CloudsVisualSystem::setupHUDGui()
+{
+    if (hud == NULL || hudGui != NULL) return;
+    
+    hudGui = new ofxUISuperCanvas("HUD", gui);
+    hudGui->copyCanvasStyle(gui);
+    hudGui->copyCanvasProperties(gui);
+    hudGui->setName("HUD");
+    hudGui->setPosition(guis[guis.size() - 1]->getRect()->x + guis[guis.size() - 1]->getRect()->getWidth() + 1, 0);
+    hudGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    hudGui->addSlider("SLIDER", 0, 1, 0.5);
+    
+    hudGui->autoSizeToFitWidgets();
+    ofAddListener(hudGui->newGUIEvent, this, &CloudsVisualSystem::guiHUDEvent);
+    guis.push_back(hudGui);
+    guimap[hudGui->getName()] = hudGui;
+    
+    // sync visibility with others
+    hudGui->setVisible(gui->isVisible());
+}
+
+void CloudsVisualSystem::guiHUDEvent(ofxUIEventArgs &e)
+{
+    
+}
 #endif
 
 void CloudsVisualSystem::lightsBegin()
@@ -2914,6 +2946,7 @@ void CloudsVisualSystem::loadGUIS()
 #endif
 #ifdef OCULUS_RIFT
         if (guis[i] == oculusGui) continue;
+        if (guis[i] == hudGui) continue;
 #endif
         guis[i]->loadSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
 		guis[i]->setColorBack(ofColor(255*.2, 255*.9));
@@ -2931,6 +2964,9 @@ void CloudsVisualSystem::loadGUIS()
 #endif
 #ifdef OCULUS_RIFT
     oculusGui->loadSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+    if (hudGui) {
+        hudGui->loadSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+    }
 #endif
 }
 
@@ -2943,6 +2979,7 @@ void CloudsVisualSystem::saveGUIS()
 #endif
 #ifdef OCULUS_RIFT
         if (guis[i] == oculusGui) continue;
+        if (guis[i] == hudGui) continue;
 #endif
         guis[i]->saveSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
     }
@@ -2958,6 +2995,9 @@ void CloudsVisualSystem::saveGUIS()
 #endif
 #ifdef OCULUS_RIFT
     oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+    if (hudGui) {
+        hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+    }
 #endif
 }
 
@@ -3095,6 +3135,9 @@ void CloudsVisualSystem::deleteGUIS()
 #endif
 #ifdef OCULUS_RIFT
     ofRemoveListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
+    if (hudGui != NULL) {
+        ofRemoveListener(hudGui->newGUIEvent, this, &CloudsVisualSystem::guiHUDEvent);
+    }
 #endif
 	
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
