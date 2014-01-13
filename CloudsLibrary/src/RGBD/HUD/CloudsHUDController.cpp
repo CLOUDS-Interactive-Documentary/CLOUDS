@@ -599,6 +599,10 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
 //    ofSetColor(255);
 //    ofCircle(0, 0, 25);
     
+    // Transform for rendering the layer.
+    ofScale(-scaleAmt, -scaleAmt, 1);
+    ofTranslate(-layerBounds.getCenter());
+
     // Draw the video player if we're on the right layer.
     if (layer == CLOUDS_HUD_PROJECT_EXAMPLE && videoPlayer.isPlaying()) {
         ofSetColor(255, 255, 255, 255*0.7);
@@ -608,8 +612,6 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
     }
     
     // Draw the layer.
-    ofScale(-scaleAmt, -scaleAmt, 1);
-    ofTranslate(-layerBounds.getCenter());
     ofSetColor(255);
     drawLayer(layer);
     
