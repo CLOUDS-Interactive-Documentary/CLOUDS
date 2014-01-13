@@ -411,7 +411,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     
     
     //////////////////CAMERA
-	cameraGui = new ofxUISuperCanvas("CAMERA", gui);
+	cameraGui =     new ofxUISuperCanvas("CAMERA", gui);
 	cameraGui->copyCanvasStyle(gui);
 	cameraGui->copyCanvasProperties(gui);
 	cameraGui->setName("Camera");
@@ -1361,6 +1361,11 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 
 void CloudsVisualSystemRGBD::selfDraw(){
 	
+    #ifdef OCULUS_RIFT
+    if (hud != NULL) {
+        hud->draw3D(getOculusRift().baseCamera);
+    }
+    #endif
 	ofPushStyle();
 	ofPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -1574,11 +1579,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	drawQuestions();
     
-#ifdef OCULUS_RIFT
-    if (hud != NULL) {
-        hud->draw3D(getOculusRift().baseCamera);
-    }
-#endif
+
 }
 
 void CloudsVisualSystemRGBD::drawQuestions(){
@@ -1620,6 +1621,8 @@ void CloudsVisualSystemRGBD::selfDrawOverlay() {
         
         ofPopStyle();
     }
+    
+    
 }
 
 void CloudsVisualSystemRGBD::selfExit(){
