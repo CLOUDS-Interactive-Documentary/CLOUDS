@@ -1,40 +1,10 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Custom</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
-<Widget>
-    <Kind>4</Kind>
-    <Name>globalRotation.x</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>globalRotation.y</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>globalRotation.z</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>globalRotationVel.x</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>globalRotationVel.y</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>globalRotationVel.z</Name>
-    <Value>0.000000000</Value>
-</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>bounding box</Name>
@@ -53,7 +23,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>draw gid</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -78,11 +48,11 @@
 <Widget>
     <Kind>28</Kind>
     <Name>c1</Name>
-    <XValue>0.437500000</XValue>
-    <YValue>0.414062500</YValue>
-    <RColor>6</RColor>
-    <GColor>7</GColor>
-    <BColor>107</BColor>
+    <XValue>0.476562500</XValue>
+    <YValue>0.492187500</YValue>
+    <RColor>1</RColor>
+    <GColor>19</GColor>
+    <BColor>28</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>
@@ -93,7 +63,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>specularScale</Name>
-    <Value>0.798029542</Value>
+    <Value>0.738916278</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -114,4 +84,9 @@
     <Kind>2</Kind>
     <Name>xRay</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>simple</Name>
+    <Value>0</Value>
 </Widget>
