@@ -364,7 +364,7 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip& clip){
 }
 
 void CloudsSecondaryDisplayController::onActBegan(){
-    
+    firstTopic = false;
 }
 
 void CloudsSecondaryDisplayController::onActEnded(){
