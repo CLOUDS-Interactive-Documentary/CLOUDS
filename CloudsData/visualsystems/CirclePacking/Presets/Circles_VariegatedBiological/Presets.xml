@@ -2,14 +2,9 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1288.000000000</XPosition>
-    <YPosition>242.000000000</YPosition>
+    <XPosition>637.000061035</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Basic</Name>
-    <Value>0</Value>
-</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Blank</Name>
@@ -42,6 +37,21 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Circles_Variegated</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Circles_VariegatedAutumnal</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Circles_VariegatedBiological</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Circles_Watery</Name>
     <Value>0</Value>
 </Widget>
@@ -49,14 +59,4 @@
     <Kind>2</Kind>
     <Name>NASDAQ</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Circles_Variegated</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Circles_VariegatedBiological</Name>
-    <Value>1</Value>
 </Widget>

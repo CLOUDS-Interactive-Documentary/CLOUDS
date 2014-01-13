@@ -5,7 +5,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>maskSize</WidgetName>
-                <WidgetID>20</WidgetID>
+                <WidgetID>22</WidgetID>
                 <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>

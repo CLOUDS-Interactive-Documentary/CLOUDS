@@ -32,6 +32,26 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>IntractiveCameraExample</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>j_05_blue</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>j_work_03a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>j_work_05a_bluegreen</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>lewitt</Name>
     <Value>0</Value>
 </Widget>
@@ -142,11 +162,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>j_work_03a</Name>
+    <Name>uppity</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>j_05_blue</Name>
-    <Value>1</Value>
 </Widget>
