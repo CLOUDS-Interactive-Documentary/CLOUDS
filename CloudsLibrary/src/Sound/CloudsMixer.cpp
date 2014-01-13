@@ -48,6 +48,9 @@ void CloudsMixer::setup(int nChannels, int sampleRate, int bufferSize, int nBuff
     // initialize OF audio streaming
     ofSoundStreamSetup(nChannels, 0, this, sampleRate, bufferSize, nBuffers);
     ofSoundStreamStart();
+    
+    ofAddListener(GetCloudsAudioEvents()->fadeAudioDown, this, &CloudsMixer::fadeDown);
+    ofAddListener(GetCloudsAudioEvents()->fadeAudioUp, this, &CloudsMixer::fadeUp);
 }
 
 
@@ -60,6 +63,16 @@ void CloudsMixer::setDiageticVolume(float vol)
 {
     diageticVol = vol;
 }
+
+///LUKE STUBBS
+void CloudsMixer::fadeDown(float& time){
+    
+}
+
+void CloudsMixer::fadeUp(float& time){
+    
+}
+//LUKE STUBBS
 
 //void CloudsMixer::fillBuffer(float *output, int bufferSize, int nChannels)
 void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )

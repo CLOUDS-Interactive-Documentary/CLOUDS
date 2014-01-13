@@ -18,6 +18,8 @@ class CloudsAudioEvents {
 public:
     ofEvent<ofAudioEventArgs>   musicAudioRequested;
     ofEvent<ofAudioEventArgs>   diageticAudioRequested;
+    ofEvent<float>   fadeAudioDown;
+    ofEvent<float>   fadeAudioUp;
 };
 
 ofPtr<CloudsAudioEvents> GetCloudsAudioEvents();

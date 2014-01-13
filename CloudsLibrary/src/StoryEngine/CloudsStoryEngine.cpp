@@ -502,9 +502,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 		
         ///////////////// QUESTIONS
         //adding all option clips with questions
-//		if(state.topicNum > 1 && state.topicNum < maxTopicsPerAct){
+		if(state.topicNum > 1){
 			addQuestions(state, questionClips);
-//      }
+        }
         /////////////////
 		
 		///////////////// DIOCHOTOMIES
@@ -548,7 +548,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
         
 		// BASED ON CURRENT CLIP, DECIDE VS
 		// consider if we are at the end of topic
-		
+		float clipFadePad = 2.0;
+        
 		//TODO: START A MANDATORY VS IF WE ARE IN FREE TOPIC
 		if(state.visualSystemRunning){
 			if(bLogVisualSystemDetails) state.log << state.duration << "\tVISUALS Currently running \"" << state.preset.getID() << "\" time [" << state.visualSystemStartTime << " - " << state.visualSystemEndTime << "] " << (state.preset.indefinite ? "indefinite" : "definite") << endl;
@@ -557,7 +558,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 			//	if so commit the preset during the clip
 			//	if not keep going
 			//the current duration is BEFORE the new clip has been committed
-			if(state.duration > state.visualSystemEndTime){
+
+			if(state.duration + clipFadePad > state.visualSystemEndTime){
 				if(bLogVisualSystemDetails) state.log << state.duration << "\t\tPassed predicted time " << state.visualSystemEndTime;
 								
 				//if this clip freed the topic extend our visuals out over the end of the clip a ways
@@ -574,9 +576,11 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					state.act->addNote("Extend VS Start", state.visualSystemStartTime);
 					state.act->addNote("Extend VS End", state.visualSystemEndTime);
 					
+                    cout << "Extending VS, current duration is " << state.duration << endl;
 					state.duration = state.act->addVisualSystem(state.preset,
                                                                 state.visualSystemStartTime,
                                                                 state.visualSystemEndTime);
+                    cout << "extended vs brought our duration to " << state.duration << endl;
 					state.presetHistory.push_back(state.preset.getID());
 					
 					if(bLogVisualSystemDetails) state.log << " - FREE TOPIC Extending VS end time to " << state.visualSystemEndTime << " past the end of " << state.clip.getLinkName() << endl;
@@ -587,19 +591,15 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					//VO should be entirely covered. This may cause a rare problem with definite clips that don't cover the whole VO
                     //Also the first clip of an act should be covered
 					if(state.clip.voiceOverAudio){
-						state.visualSystemEndTime = state.duration;
+						state.visualSystemEndTime = state.duration + clipFadePad;
 						if(bLogVisualSystemDetails) state.log << state.duration << "- moving end time over top of VO " << state.clip.getLinkName() << endl;
 					}
 					//end within the clip
 					else{
-						state.visualSystemEndTime = state.duration - state.clip.getDuration() / 2.;
+						state.visualSystemEndTime = state.duration - state.clip.getDuration() / 2. + clipFadePad;
 						if(bLogVisualSystemDetails) state.log << " - moving end time to middle of " << state.clip.getLinkName() << ", time " << state.visualSystemEndTime << endl;
 					}
 					
-                    if(state.visualSystemStartTime == 0){
-                        cout << "ADDED VS AT BEGINNING!" << endl;
-                    }
-
 					state.act->addVisualSystem(state.preset,
                                                state.visualSystemStartTime,
                                                state.visualSystemEndTime);
@@ -633,7 +633,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					//step back into the clip
                     //TODO: respect VO & SOUND
 					if(state.preset.soundExcludeVO){
-						state.visualSystemStartTime = state.duration;
+						state.visualSystemStartTime = state.duration + clipFadePad;
 					}
                     //don't move the start clip to the center
 					else if(state.visualSystemEndTime != 0){

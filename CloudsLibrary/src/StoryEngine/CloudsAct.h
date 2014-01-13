@@ -100,7 +100,8 @@ class CloudsAct{
     float addVisualSystem(CloudsVisualSystemPreset& preset, float startTime, float endTime);
     void addQuestion(CloudsClip& clip, string topic, float startTime);
 	void addNote(string note, float time);
-		
+    void addSilenceRange(ofRange range);
+    
     ActTimeItem& getItemForClip(CloudsClip& clip);
     ActTimeItem& getItemForVisualSystem(CloudsVisualSystemPreset& preset);
     float getClipStartTime(CloudsClip& clip);
@@ -126,11 +127,11 @@ class CloudsAct{
     ofxTLFlags* topicsTrack;
     ofxTLFlags* questionsTrack;
     ofxTLFlags* difficultyTrack;
-	
+    ofxTLFlags* silenceTrack;
     ofxTLFlags* notesTrack;
-//    ofxTLFlags* vsGapsTrack;
 	
     ActItemType itemType;
+    
 	
 	bool timelinePopulated;
     string currentTopic;
@@ -166,8 +167,10 @@ class CloudsAct{
 
 	vector< pair<string,float> > notes;
 	
+    float defaultAudioFade;
+    vector<ofRange> silenceCues;
 	vector<CloudsSoundCue> cues;
-
+    
     float duration;
     int currentPlayIndex;
     void loadNextClip();

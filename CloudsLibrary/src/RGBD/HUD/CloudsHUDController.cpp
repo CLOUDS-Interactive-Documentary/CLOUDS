@@ -105,7 +105,8 @@ void CloudsHUDController::populateMap( string leftBox, string rightBox, bool for
 }
 
 void CloudsHUDController::populateQuestion( string question, bool forceOn ){
-	if(hudLabelMap["QuestionTextBox"]->getText() == question){
+//    cout << "setting text with current value " << question << " " << hudLabelMap["QuestionTextBox"]->getText() << endl;
+	if( ofToUpper(hudLabelMap["QuestionTextBox"]->getText()) == ofToUpper(question) ){
 		return;
 	}
 	else if(question == ""){

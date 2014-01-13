@@ -53,8 +53,9 @@ void CloudsHUDLabel::draw(){
     if( bIsAnimatingOut ){
         pct = ofMap( ofGetElapsedTimef(), beginTime, beginTime+fadeOutSpeed, 1., 0., true );
         textAlpha = floor( 255. * pct );
-        if(textAlpha == 0.0){
-            pct == 0.0;
+        if(textAlpha <= 0.0){
+            text == "";
+            bIsAnimatingOut = false;
         }
     }
     
