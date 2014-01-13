@@ -146,6 +146,8 @@ protected:
     float triggerForce;
     
     int randomPlatformCounter;
+
+    bool soundsLoaded;
     
     ofFloatColor circleHSB;
     ofFloatColor circleLineHSB;

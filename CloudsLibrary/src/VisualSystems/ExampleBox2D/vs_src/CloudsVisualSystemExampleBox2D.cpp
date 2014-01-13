@@ -179,11 +179,12 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     // setup sound synth
     masterVolume = 1;
     lastSampleTime = 0;
+    soundsLoaded = true;
     for (int i=0; i<5; i++)
     {
         ostringstream fn;
         fn << GetCloudsDataPath() << "sound/triggers/drip" << i+1 << ".aif";
-        samplePlayer[i].loadSound(fn.str());
+        soundsLoaded &= samplePlayer[i].loadSound(fn.str());
         samplePlayer[i].setMultiPlay(true);
         samplePlayer[i].setSpeed(0.5);
     }
@@ -192,8 +193,12 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     {
         ostringstream fn;
         fn << GetCloudsDataPath() << "sound/triggers/cardboard" << i+1 << ".aif";
-        samplePlayer[i+7].loadSound(fn.str());
+        soundsLoaded &= samplePlayer[i+7].loadSound(fn.str());
         samplePlayer[i+7].setMultiPlay(true);
+    }
+    
+    if(!soundsLoaded){
+        ofLogError("CloudsVisualSystemExampleBox2D::selfSetup") << "Some clips failed to load. Disabling sound";
     }
 
 }
@@ -583,6 +588,12 @@ void CloudsVisualSystemExampleBox2D::reinitBounds()
 
 void CloudsVisualSystemExampleBox2D::contactStart(ofxBox2dContactArgs &e)
 {
+    
+    if(!soundsLoaded){
+        return;
+
+    }
+    
     float aVel = e.a->GetBody()->GetLinearVelocity().Length();
     float bVel = e.b->GetBody()->GetLinearVelocity().Length();
     

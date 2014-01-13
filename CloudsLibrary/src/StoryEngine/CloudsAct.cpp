@@ -469,7 +469,7 @@ float CloudsAct::addVisualSystem(CloudsVisualSystemPreset& preset, float startTi
     }
     else{
         addNote("DEFINITE DUR: " + ofToString(preset.duration,3) + " SCHED: " + ofToString(endTime - startTime, 3), startTime);
-        if( preset.duration < endTime-startTime){
+        if( preset.duration + .3 < endTime-startTime){
             ofLogError("CloudsAct::addVisualSystem") << "Scheduled definite visual system for too long";
         }
     }

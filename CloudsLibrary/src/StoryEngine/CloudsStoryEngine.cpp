@@ -660,11 +660,11 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
                     //don't move the start clip to the center
 					else if(state.visualSystemEndTime != 0){
                         //random choice between mid align and end align
-                        if( ){
+                        if(ofRandomuf()){
                             state.visualSystemStartTime = state.duration - state.clip.getDuration() / 2.0;
                         }
                         else{
-                            state.visualSystemStartTime = state.duration + clipFadePad;
+                            state.visualSystemStartTime = state.duration + 1.0;
                         }
 					}
 					
