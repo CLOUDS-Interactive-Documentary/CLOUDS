@@ -9,6 +9,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	showingClusterMap = false;
 	shouldPlayAct = false;
 	bQuestionAsked = false;
+    showingInterlude = false;
 }
 
 //--------------------------------------------------------------------
@@ -306,6 +307,21 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		}
 	}
     
+    if(showingInterlude){
+        if(GetSelectedInterludePortalContinue()){
+            cout<<"we selected continue"<<endl;
+            transitionController.transitionFromClusterMap(1.0);
+            ShowInterludePortals(false);
+            showingInterlude = false;
+        }
+        else if(GetSelectedInterludePortalResetClouds()){
+            cout<<"we selected reset clouds"<<endl;
+            //add transition back to intro for clouds
+            ShowInterludePortals(false);
+            showingInterlude = false;
+        }
+    }
+    
 	////////////////////
 	// RGBD SYSTEM
     //	if(rgbdVisualSystem->isQuestionSelectedAndClipDone()){
@@ -456,6 +472,8 @@ void CloudsPlaybackController::updateTransition(){
                         currentVisualSystem = currentVisualSystemPreset.system;
                         
                         showingVisualSystem = true;
+                        showingInterlude = true;
+                        ShowInterludePortals(true);
                     }
                     else{
                         ofLogError()<<"INTERLUDE VS IS NULL "<<endl;
