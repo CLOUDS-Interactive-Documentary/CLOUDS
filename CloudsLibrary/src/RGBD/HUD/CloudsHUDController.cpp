@@ -525,6 +525,7 @@ void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
 	}
 }
 
+#ifdef OCULUS_RIFT
 void CloudsHUDController::draw3D(ofCamera* cam){
     
     if( !bDrawHud )
@@ -633,6 +634,7 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
     
     ofPopMatrix();
 }
+#endif
 
 void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
     //bIsHudOpen = true;
