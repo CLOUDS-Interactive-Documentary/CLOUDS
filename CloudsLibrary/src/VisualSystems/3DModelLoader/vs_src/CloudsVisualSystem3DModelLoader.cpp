@@ -45,9 +45,9 @@ void CloudsVisualSystem3DModelLoader::selfSetupGui()
 	
 	transformGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	transformGui->addButton("reset transforms", false);
-	transformGui->addSlider("positionOffset.x", -1000, 1000, &positionOffset.x )->setIncrement(1);
-	transformGui->addSlider("positionOffset.y", -1000, 1000, &positionOffset.y )->setIncrement(1);
-	transformGui->addSlider("positionOffset.z", -1000, 1000, &positionOffset.z )->setIncrement(1);
+	transformGui->addSlider("positionOffset.x", -1000, 1000, &positionOffset.x )->setIncrement(.5);
+	transformGui->addSlider("positionOffset.y", -1000, 1000, &positionOffset.y )->setIncrement(.5);
+	transformGui->addSlider("positionOffset.z", -1000, 1000, &positionOffset.z )->setIncrement(.5);
 	
 	transformGui->addSlider("globalRotation.x", -180, 180, &globalRotation.x )->setIncrement(.01);
 	transformGui->addSlider("globalRotation.y", -180, 180, &globalRotation.y )->setIncrement(.01);
