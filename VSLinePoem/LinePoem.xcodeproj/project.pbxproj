@@ -91,6 +91,7 @@
 		92910AEC18834B3300DC318E /* ofxShivaVGRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92910AD718834B3300DC318E /* ofxShivaVGRenderer.cpp */; };
 		92910AED18834B3300DC318E /* simpleVGContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92910AD918834B3300DC318E /* simpleVGContext.cpp */; };
 		92910AEE18834B3300DC318E /* simpleVGPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92910ADB18834B3300DC318E /* simpleVGPath.cpp */; };
+		92910AFE188414C200DC318E /* linePoemApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92910AFC188414C200DC318E /* linePoemApp.cpp */; };
 		A646D9E7188340FA00DBBF37 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = A646D9E6188340FA00DBBF37 /* ofxSystemTextbox.mm */; };
 		A646D9E8188340FA00DBBF37 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = A646D9E6188340FA00DBBF37 /* ofxSystemTextbox.mm */; };
 		A646DAA218835F4E00DBBF37 /* CloudsVisualSystemLinePoem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646DAA018835F4E00DBBF37 /* CloudsVisualSystemLinePoem.cpp */; };
@@ -535,6 +536,11 @@
 		92910ADA18834B3300DC318E /* simpleVGContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simpleVGContext.h; sourceTree = "<group>"; };
 		92910ADB18834B3300DC318E /* simpleVGPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simpleVGPath.cpp; sourceTree = "<group>"; };
 		92910ADC18834B3300DC318E /* simpleVGPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simpleVGPath.h; sourceTree = "<group>"; };
+		92910AF9188414C200DC318E /* angleLengthLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = angleLengthLine.h; sourceTree = "<group>"; };
+		92910AFA188414C200DC318E /* angleLengthLineMorpher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = angleLengthLineMorpher.h; sourceTree = "<group>"; };
+		92910AFB188414C200DC318E /* anglePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = anglePoint.h; sourceTree = "<group>"; };
+		92910AFC188414C200DC318E /* linePoemApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = linePoemApp.cpp; sourceTree = "<group>"; };
+		92910AFD188414C200DC318E /* linePoemApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = linePoemApp.h; sourceTree = "<group>"; };
 		A646D9E5188340F900DBBF37 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
 		A646D9E6188340FA00DBBF37 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		A646DAA018835F4E00DBBF37 /* CloudsVisualSystemLinePoem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLinePoem.cpp; sourceTree = "<group>"; };
@@ -1284,6 +1290,11 @@
 		A646DA9F18835F4E00DBBF37 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
+				92910AF9188414C200DC318E /* angleLengthLine.h */,
+				92910AFA188414C200DC318E /* angleLengthLineMorpher.h */,
+				92910AFB188414C200DC318E /* anglePoint.h */,
+				92910AFC188414C200DC318E /* linePoemApp.cpp */,
+				92910AFD188414C200DC318E /* linePoemApp.h */,
 				A646DAA118835F4E00DBBF37 /* CloudsVisualSystemLinePoem.h */,
 				A646DAA018835F4E00DBBF37 /* CloudsVisualSystemLinePoem.cpp */,
 			);
@@ -1612,6 +1623,7 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */,
+				92910AFE188414C200DC318E /* linePoemApp.cpp in Sources */,
 				E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */,
 				E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */,
 				E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */,
