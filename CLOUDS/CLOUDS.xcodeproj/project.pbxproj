@@ -1839,9 +1839,9 @@
 		64323E85187A4DAE00316058 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortal.h; sourceTree = "<group>"; };
 		64323E86187A4DAE00316058 /* CloudsPortalRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPortalRing.cpp; sourceTree = "<group>"; };
 		64323E87187A4DAE00316058 /* CloudsPortalRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPortalRing.h; sourceTree = "<group>"; };
+		6474F94F18848540003FBE4E /* CLOUDS_KINECT.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CLOUDS_KINECT.plist; sourceTree = "<group>"; };
 		64CE99CC1881061800491913 /* CloudsInputOculus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputOculus.cpp; sourceTree = "<group>"; };
 		64CE99CD1881061800491913 /* CloudsInputOculus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputOculus.h; sourceTree = "<group>"; };
-		85891D23187FE34200325DD8 /* CLOUDS_OCULUS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CLOUDS_OCULUS copy-Info.plist"; path = "/Users/jonathanminard/Documents/Development/openFrameworks/apps/CLOUDS/CLOUDS/CLOUDS_OCULUS copy-Info.plist"; sourceTree = "<absolute>"; };
 		A600C143188105C10041787F /* ofxSubtitles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitles.cpp; sourceTree = "<group>"; };
 		A600C144188105C10041787F /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
 		A600C145188105C10041787F /* ofxSubtitleUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitleUnit.cpp; sourceTree = "<group>"; };
@@ -1866,7 +1866,6 @@
 		A620E87818837DB300A02F5B /* lineMatchUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lineMatchUtils.h; sourceTree = "<group>"; };
 		A620E87918837DB300A02F5B /* statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = statistics.h; sourceTree = "<group>"; };
 		AE6F01F11880716900677B60 /* CLOUDS_KINECTDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_KINECTDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE6F01F21880716A00677B60 /* CLOUDS_KINECT.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = CLOUDS_KINECT.plist; path = /Users/dpt/Workspace/CLOUDS/openFrameworks/apps/CLOUDS/CLOUDS/CLOUDS_KINECT.plist; sourceTree = "<absolute>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		C1644CBB186F92010024E091 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C1644D0B186F92020024E091 /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autolink.h; sourceTree = "<group>"; };
@@ -3780,7 +3779,7 @@
 			isa = PBXGroup;
 			children = (
 				E7FB284D1830D60E009EBD0E /* CLOUDS_OCULUS.plist */,
-				AE6F01F21880716A00677B60 /* CLOUDS_KINECT.plist */,
+				6474F94F18848540003FBE4E /* CLOUDS_KINECT.plist */,
 				E7FB284E1830D60E009EBD0E /* CLOUDS.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -3789,7 +3788,6 @@
 				E45BE5980E8CC70C009D7055 /* frameworks */,
 				E4B69B5B0A3A1756003C02F2 /* CLOUDSDebug.app */,
 				E7FB262A1830D4C0009EBD0E /* CLOUDS_OCULUSDebug.app */,
-				85891D23187FE34200325DD8 /* CLOUDS_OCULUS copy-Info.plist */,
 				AE6F01F11880716900677B60 /* CLOUDS_KINECTDebug.app */,
 			);
 			sourceTree = "<group>";
@@ -9636,6 +9634,7 @@
 					"AVF_PLAYER=1",
 					"KINECT_INPUT=1",
 					"SHOW_SUBTITLES=1",
+					"CLOUDS_APP=1",
 				);
 				INFOPLIST_FILE = CLOUDS_KINECT.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -9802,6 +9801,8 @@
 					"AVF_PLAYER=1",
 					"KINECT_INPUT=1",
 					"SHOW_SUBTITLES=1",
+					"CLOUDS_APP=1",
+					"CLOUDS_RELEASE=1",
 				);
 				INFOPLIST_FILE = CLOUDS_KINECT.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -10211,10 +10212,7 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"AVF_PLAYER=1",
-					"CLOUDS_APP=1",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "AVF_PLAYER=1","CLOUDS_APP=1","CLOUDS_RELEASE=1");
 				INFOPLIST_FILE = CLOUDS.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -10376,6 +10374,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"AVF_PLAYER=1",
 					"OCULUS_RIFT=1",
+					"CLOUDS_APP=1",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
@@ -10556,6 +10555,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"AVF_PLAYER=1",
 					"OCULUS_RIFT=1",
+					"CLOUDS_APP=1",
+					"CLOUDS_RELEASE=1",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",

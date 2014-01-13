@@ -45,9 +45,9 @@ void CloudsVisualSystem3DModelLoader::selfSetupGui()
 	
 	transformGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	transformGui->addButton("reset transforms", false);
-	transformGui->addSlider("positionOffset.x", -1000, 1000, &positionOffset.x )->setIncrement(1);
-	transformGui->addSlider("positionOffset.y", -1000, 1000, &positionOffset.y )->setIncrement(1);
-	transformGui->addSlider("positionOffset.z", -1000, 1000, &positionOffset.z )->setIncrement(1);
+	transformGui->addSlider("positionOffset.x", -1000, 1000, &positionOffset.x )->setIncrement(.5);
+	transformGui->addSlider("positionOffset.y", -1000, 1000, &positionOffset.y )->setIncrement(.5);
+	transformGui->addSlider("positionOffset.z", -1000, 1000, &positionOffset.z )->setIncrement(.5);
 	
 	transformGui->addSlider("globalRotation.x", -180, 180, &globalRotation.x )->setIncrement(.01);
 	transformGui->addSlider("globalRotation.y", -180, 180, &globalRotation.y )->setIncrement(.01);
@@ -197,6 +197,14 @@ void CloudsVisualSystem3DModelLoader::selfGuiEvent(ofxUIEventArgs &e)
 			facetMesh( modelMesh, modelMesh );
 		}
 	}
+	else if(name =="minTilt" || name == "maxTilt")
+	{
+		if(perspCam.getMaxTilt() - perspCam.getMinTilt() < 10)
+		{
+			perspCam.getMinTilt() = perspCam.getMaxTilt() - 10;
+		}
+		perspCam.setToStartPosition( boundCenter );
+	}
 	
 	else if( name == "reset transforms")
 	{
@@ -256,7 +264,8 @@ void CloudsVisualSystem3DModelLoader::selfGuiEvent(ofxUIEventArgs &e)
 					if(objFiles[i] == name )
 					{
 						cout << "loading model: " << name << endl;
-						loadModel( "models/" + name, bSmoothModel );
+						//loadModel( "models/" + name, bSmoothModel );
+						loadModel( getVisualSystemDataPath(true) + "models/" + name, bSmoothModel );
 					}
 				}
 			}
@@ -270,7 +279,7 @@ void CloudsVisualSystem3DModelLoader::selfGuiEvent(ofxUIEventArgs &e)
 					if(cameraPaths[i] == name )
 					{
 						cout << "loading camera path: " << name << endl;
-//						loadModel( "models/" + name, bSmoothModel );
+//						pathCamera.loadPathFromFile(getVisualSystemDataPath(false) + "cameraPaths/" + name );
 						pathCamera.loadPathFromFile(getVisualSystemDataPath(true) + "cameraPaths/" + name );
 					}
 				}
@@ -372,6 +381,7 @@ void CloudsVisualSystem3DModelLoader::selfSetup()
 	
 	//get list of models from the model directory
 	string path = getVisualSystemDataPath(true) + "models/";
+//	string path = getVisualSystemDataPath(false) + "models/";
 	cout << "model path: " << path << endl;
 	
 	ofDirectory dir;
@@ -462,16 +472,19 @@ void CloudsVisualSystem3DModelLoader::selfSetup()
 	resizeTheArrowMesh( arrowRadius, arrowHeight, arrowPointHeight );
 	
 	loadCameraLineModel( cameraLines, getVisualSystemDataPath() + "cameraVertices.txt" );
-
-	
-	//setup a grid vbos
-	setupGridVbos();
 	
 	//setup boundBox vbo
 	setupBoundingBoxVbo();
 	
-	
+	//cameras
 	setupMultipleCameras( ofVec3f( 0, 100, 0) );
+	
+	//re-setup a grid vbos to avoid the scrambled grids... when a big model loads. a stop gap for now
+	setupGridVbos();
+	
+	//posoition the camera in front of the model between it's min and max vals
+	//hack to avoid flipping when out of min max on preset change
+	perspCam.setToStartPosition( boundCenter );
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -479,6 +492,7 @@ void CloudsVisualSystem3DModelLoader::selfSetup()
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystem3DModelLoader::selfPresetLoaded(string presetPath)
 {
+	setupGridVbos();
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -487,6 +501,8 @@ void CloudsVisualSystem3DModelLoader::selfPresetLoaded(string presetPath)
 void CloudsVisualSystem3DModelLoader::selfBegin()
 {
 	accumulatedRotation.set( 0,0,0);
+	setupGridVbos();
+//	getCameraRef().setPosition(<#float px#>, <#float py#>, <#float pz#>)
 }
 
 //do things like ofRotate/ofTranslate here
@@ -844,6 +860,7 @@ void CloudsVisualSystem3DModelLoader::setupBoundingBoxVbo()
 
 void CloudsVisualSystem3DModelLoader::setupGridVbos()
 {
+	grid.clear();
 	float halfGridDim = gridDim / 2;
 	vector<ofVec3f> gridVertices(gridDim * 4);
 	for (int i=0; i<gridDim; i++)
@@ -855,17 +872,6 @@ void CloudsVisualSystem3DModelLoader::setupGridVbos()
 	}
 	grid.setVertexData( &gridVertices[0], gridVertices.size(), GL_STATIC_DRAW );
 	numGridVertices = gridVertices.size();
-	gridVertices.clear();
-	
-	for (int i=0; i<gridDim; i += 5)
-	{
-		gridVertices.push_back( ofVec3f(i - halfGridDim, 0,-halfGridDim) );
-		gridVertices.push_back( ofVec3f(i - halfGridDim, 0, halfGridDim) );
-		gridVertices.push_back( ofVec3f(-halfGridDim, 0, i - halfGridDim) );
-		gridVertices.push_back( ofVec3f( halfGridDim, 0, i - halfGridDim) );
-	}
-	gridMajor.setVertexData( &gridVertices[0], gridVertices.size(), GL_STATIC_DRAW );
-	numGridMajorVertices = gridVertices.size();
 	gridVertices.clear();
 }
 
@@ -888,6 +894,7 @@ void CloudsVisualSystem3DModelLoader::loadModel( string fileName, bool bSmoothMe
 //	perspCam.reset();
 	cout << "*** LOADING MODEL " << fileName << endl;
 	string filePath = getVisualSystemDataPath(true) + fileName;
+//	string filePath = getVisualSystemDataPath(false) + fileName;
 	if(!ofFile(filePath).exists()){
 		ofLogError("CloudsVisualSystem3DModelLoader::loadModel") << filePath << " Doesn't exist";
 	}
@@ -1085,24 +1092,24 @@ void CloudsVisualSystem3DModelLoader::drawSceneGeometry( ofCamera* cam)
 		gridShader.setUniform1f("falloffScl", fogFalloffScale );
 		gridShader.setUniform1f("alphaScale", gridAlphaScale );
 		
+		//draw  minor grid
 		ofPushMatrix();
-		int gms = gridMajorScale;
-		//	ofTranslate( floor(camPos.x/(gridScale*gms))*gms*gridScale, 0, floor(camPos.z/(gridScale*gms))*gms*gridScale);
-		
-		ofScale( gridScale * gms,gridScale * gms, gridScale * gms );
-		
-		glLineWidth( majorGridLineWidth );
-		ofSetColor( gridMajorColor.r*gridMajorBrightness, gridMajorColor.g*gridMajorBrightness, gridMajorColor.b*gridMajorBrightness, gridMajorAlpha );
-		grid.draw(GL_LINES, 0, numGridVertices );
-		
-		ofPopMatrix();
-		
-		ofPushMatrix();
-		//	ofTranslate( floor(camPos.x/gridScale) * gridScale, 0, floor(camPos.z/gridScale) * gridScale );
 		ofScale( gridScale, gridScale, gridScale );
 		
 		glLineWidth( gridLineWidth );
 		ofSetColor( gridColor.r*gridBrightness, gridColor.g*gridBrightness, gridColor.b*gridBrightness, gridAlpha );
+		grid.draw(GL_LINES, 0, numGridVertices );
+		
+		ofPopMatrix();
+		
+		//draw  major grid
+		ofPushMatrix();
+		int gms = gridMajorScale;
+		ofTranslate( getCameraRef().getLookAtDir() * -gridLineWidth / gridScale );
+		ofScale( gridScale * gms,gridScale * gms, gridScale * gms );
+		
+		glLineWidth( majorGridLineWidth );
+		ofSetColor( gridMajorColor.r*gridMajorBrightness, gridMajorColor.g*gridMajorBrightness, gridMajorColor.b*gridMajorBrightness, gridMajorAlpha );
 		grid.draw(GL_LINES, 0, numGridVertices );
 		
 		ofPopMatrix();

@@ -65,7 +65,7 @@ class CloudsPlaybackController {
 	vector<CloudsClip> fakeQuestions;
 
   protected:
-
+	vector<CloudsClip> startingNodes;
 	//*** CORE CLOUDS STUFF
 	CloudsFCPParser parser;
 	CloudsVisualSystemManager visualSystems;

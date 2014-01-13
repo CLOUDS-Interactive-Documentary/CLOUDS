@@ -133,7 +133,7 @@ void CloudsPlaybackController::setup(){
 #endif
 	
 	//////////////SHOW INTRO
-	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
+    startingNodes = parser.getClipsWithKeyword("#start");
 	//safe guard delete any starters that don't have questions
 	for(int i = startingNodes.size()-1; i >= 0; i--){
 		if(!startingNodes[i].hasQuestion() ) {
@@ -228,6 +228,9 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
     
     if(args.key == 'l'){
         transitionController.transitionFromClusterMap(1.0);
+    }
+    if(args.key == 'm'){
+        transitionController.transitionToIntro(1.0);
     }
 }
 
@@ -396,7 +399,14 @@ void CloudsPlaybackController::updateTransition(){
                 
                 showingIntro = false;
                 break;
-                
+
+			case TRANSITION_INTRO_IN:
+                introSequence = ofPtr<CloudsIntroSequence>( new CloudsIntroSequence() );
+                introSequence->setup();
+                introSequence->setDrawToScreen(false);
+                showIntro(startingNodes);
+                break;
+            
             case TRANSITION_VISUALSYSTEM_IN:
                 
                 if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
