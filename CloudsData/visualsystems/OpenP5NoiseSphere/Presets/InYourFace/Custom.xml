@@ -62,7 +62,7 @@
     <Kind>6</Kind>
     <Name>BASE HUE</Name>
     <HighValue>1.000000000</HighValue>
-    <LowValue>0.000000000</LowValue>
+    <LowValue>0.029556651</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -85,8 +85,8 @@
 <Widget>
     <Kind>6</Kind>
     <Name>TIP HUE</Name>
-    <HighValue>0.798029542</HighValue>
-    <LowValue>0.295566529</LowValue>
+    <HighValue>0.960591137</HighValue>
+    <LowValue>0.497536957</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>

@@ -611,6 +611,21 @@
 		85384F7F1884565A0076AF5A /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F701884565A0076AF5A /* lineMatchUtils.cpp */; };
 		85384F801884565A0076AF5A /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F701884565A0076AF5A /* lineMatchUtils.cpp */; };
 		85384F811884565A0076AF5A /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F701884565A0076AF5A /* lineMatchUtils.cpp */; };
+		85384FB718845B560076AF5A /* CloudsVisualSystemMazeGenerator2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384FAD18845B560076AF5A /* CloudsVisualSystemMazeGenerator2.cpp */; };
+		85384FB818845B560076AF5A /* CloudsVisualSystemMazeGenerator2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384FAD18845B560076AF5A /* CloudsVisualSystemMazeGenerator2.cpp */; };
+		85384FB918845B560076AF5A /* CloudsVisualSystemMazeGenerator2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384FAD18845B560076AF5A /* CloudsVisualSystemMazeGenerator2.cpp */; };
+		85384FBA18845B560076AF5A /* Maze2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384FAF18845B560076AF5A /* Maze2.cpp */; };
+		85384FBB18845B560076AF5A /* Maze2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384FAF18845B560076AF5A /* Maze2.cpp */; };
+		85384FBC18845B560076AF5A /* Maze2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384FAF18845B560076AF5A /* Maze2.cpp */; };
+		85384FBD18845B560076AF5A /* MazeCamera2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384FB118845B560076AF5A /* MazeCamera2.cpp */; };
+		85384FBE18845B560076AF5A /* MazeCamera2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384FB118845B560076AF5A /* MazeCamera2.cpp */; };
+		85384FBF18845B560076AF5A /* MazeCamera2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384FB118845B560076AF5A /* MazeCamera2.cpp */; };
+		85384FC018845B560076AF5A /* MazeCell2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384FB318845B560076AF5A /* MazeCell2.cpp */; };
+		85384FC118845B560076AF5A /* MazeCell2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384FB318845B560076AF5A /* MazeCell2.cpp */; };
+		85384FC218845B560076AF5A /* MazeCell2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384FB318845B560076AF5A /* MazeCell2.cpp */; };
+		85384FC318845B560076AF5A /* ParamManager2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384FB518845B560076AF5A /* ParamManager2.cpp */; };
+		85384FC418845B560076AF5A /* ParamManager2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384FB518845B560076AF5A /* ParamManager2.cpp */; };
+		85384FC518845B560076AF5A /* ParamManager2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384FB518845B560076AF5A /* ParamManager2.cpp */; };
 		85891AD5187F5E1500325DD8 /* Bubbles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AB9187F5E1500325DD8 /* Bubbles.cpp */; };
 		85891AD6187F5E1500325DD8 /* Bubbles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AB9187F5E1500325DD8 /* Bubbles.cpp */; };
 		85891AD7187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ABB187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp */; };
@@ -1777,6 +1792,16 @@
 		85384F701884565A0076AF5A /* lineMatchUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lineMatchUtils.cpp; sourceTree = "<group>"; };
 		85384F711884565A0076AF5A /* lineMatchUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lineMatchUtils.h; sourceTree = "<group>"; };
 		85384F721884565A0076AF5A /* statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = statistics.h; sourceTree = "<group>"; };
+		85384FAD18845B560076AF5A /* CloudsVisualSystemMazeGenerator2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMazeGenerator2.cpp; sourceTree = "<group>"; };
+		85384FAE18845B560076AF5A /* CloudsVisualSystemMazeGenerator2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMazeGenerator2.h; sourceTree = "<group>"; };
+		85384FAF18845B560076AF5A /* Maze2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Maze2.cpp; sourceTree = "<group>"; };
+		85384FB018845B560076AF5A /* Maze2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Maze2.h; sourceTree = "<group>"; };
+		85384FB118845B560076AF5A /* MazeCamera2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MazeCamera2.cpp; sourceTree = "<group>"; };
+		85384FB218845B560076AF5A /* MazeCamera2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCamera2.h; sourceTree = "<group>"; };
+		85384FB318845B560076AF5A /* MazeCell2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MazeCell2.cpp; sourceTree = "<group>"; };
+		85384FB418845B560076AF5A /* MazeCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCell2.h; sourceTree = "<group>"; };
+		85384FB518845B560076AF5A /* ParamManager2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParamManager2.cpp; sourceTree = "<group>"; };
+		85384FB618845B560076AF5A /* ParamManager2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParamManager2.h; sourceTree = "<group>"; };
 		85891AB9187F5E1500325DD8 /* Bubbles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bubbles.cpp; sourceTree = "<group>"; };
 		85891ABA187F5E1500325DD8 /* Bubbles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bubbles.h; sourceTree = "<group>"; };
 		85891ABB187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemSwim.cpp; sourceTree = "<group>"; };
@@ -3400,6 +3425,31 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
+		85384FAB18845B560076AF5A /* MazeGenerator2 */ = {
+			isa = PBXGroup;
+			children = (
+				85384FAC18845B560076AF5A /* vs_src */,
+			);
+			path = MazeGenerator2;
+			sourceTree = "<group>";
+		};
+		85384FAC18845B560076AF5A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				85384FAD18845B560076AF5A /* CloudsVisualSystemMazeGenerator2.cpp */,
+				85384FAE18845B560076AF5A /* CloudsVisualSystemMazeGenerator2.h */,
+				85384FAF18845B560076AF5A /* Maze2.cpp */,
+				85384FB018845B560076AF5A /* Maze2.h */,
+				85384FB118845B560076AF5A /* MazeCamera2.cpp */,
+				85384FB218845B560076AF5A /* MazeCamera2.h */,
+				85384FB318845B560076AF5A /* MazeCell2.cpp */,
+				85384FB418845B560076AF5A /* MazeCell2.h */,
+				85384FB518845B560076AF5A /* ParamManager2.cpp */,
+				85384FB618845B560076AF5A /* ParamManager2.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
 		85891AB7187F5E1400325DD8 /* Swim */ = {
 			isa = PBXGroup;
 			children = (
@@ -3715,6 +3765,7 @@
 		E70CE3A21869648900955691 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				85384FAB18845B560076AF5A /* MazeGenerator2 */,
 				85384F661884565A0076AF5A /* DrawnLine */,
 				85891AB7187F5E1400325DD8 /* Swim */,
 				8510F1AA187DEBF100E34E36 /* RandomDigits2 */,
@@ -8304,6 +8355,11 @@
 				85384F7B1884565A0076AF5A /* curvedLine.cpp in Sources */,
 				85384F7E1884565A0076AF5A /* drawnLineApp.cpp in Sources */,
 				85384F811884565A0076AF5A /* lineMatchUtils.cpp in Sources */,
+				85384FB918845B560076AF5A /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
+				85384FBC18845B560076AF5A /* Maze2.cpp in Sources */,
+				85384FBF18845B560076AF5A /* MazeCamera2.cpp in Sources */,
+				85384FC218845B560076AF5A /* MazeCell2.cpp in Sources */,
+				85384FC518845B560076AF5A /* ParamManager2.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8815,6 +8871,11 @@
 				85384F791884565A0076AF5A /* curvedLine.cpp in Sources */,
 				85384F7C1884565A0076AF5A /* drawnLineApp.cpp in Sources */,
 				85384F7F1884565A0076AF5A /* lineMatchUtils.cpp in Sources */,
+				85384FB718845B560076AF5A /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
+				85384FBA18845B560076AF5A /* Maze2.cpp in Sources */,
+				85384FBD18845B560076AF5A /* MazeCamera2.cpp in Sources */,
+				85384FC018845B560076AF5A /* MazeCell2.cpp in Sources */,
+				85384FC318845B560076AF5A /* ParamManager2.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9328,6 +9389,11 @@
 				85384F7A1884565A0076AF5A /* curvedLine.cpp in Sources */,
 				85384F7D1884565A0076AF5A /* drawnLineApp.cpp in Sources */,
 				85384F801884565A0076AF5A /* lineMatchUtils.cpp in Sources */,
+				85384FB818845B560076AF5A /* CloudsVisualSystemMazeGenerator2.cpp in Sources */,
+				85384FBB18845B560076AF5A /* Maze2.cpp in Sources */,
+				85384FBE18845B560076AF5A /* MazeCamera2.cpp in Sources */,
+				85384FC118845B560076AF5A /* MazeCell2.cpp in Sources */,
+				85384FC418845B560076AF5A /* ParamManager2.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
