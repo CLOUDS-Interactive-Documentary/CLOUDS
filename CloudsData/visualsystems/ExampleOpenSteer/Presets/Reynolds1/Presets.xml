@@ -17,11 +17,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>BasicOC</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>BronzeTrails</Name>
     <Value>0</Value>
 </Widget>
@@ -42,26 +37,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Streamers</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Streamers_OC</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Streamers_purple</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Streamers_purpleOnWhite</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>Reynolds1</Name>
     <Value>1</Value>
 </Widget>
@@ -78,5 +53,35 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Reynolds4</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Reynolds5</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Reynolds6</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Streamers</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Streamers_OC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Streamers_purple</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Streamers_purpleOnWhite</Name>
     <Value>0</Value>
 </Widget>

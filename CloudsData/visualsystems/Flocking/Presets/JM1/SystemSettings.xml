@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
+    <XPosition>213.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -90,7 +90,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>NOISE SCALE</Name>
-    <Value>0.000985222</Value>
+    <Value>0.009359606</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

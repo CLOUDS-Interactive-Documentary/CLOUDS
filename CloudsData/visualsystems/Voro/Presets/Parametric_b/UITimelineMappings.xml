@@ -4,8 +4,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>Atraction</WidgetName>
-                <WidgetID>18</WidgetID>
+                <WidgetName>Conteiner_Height</WidgetName>
+                <WidgetID>31</WidgetID>
                 <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -20,17 +20,25 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Conteiner_Height</WidgetName>
-                <WidgetID>31</WidgetID>
+                <WidgetName>ROT-Y</WidgetName>
+                <WidgetID>11</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Atraction</WidgetName>
+                <WidgetID>18</WidgetID>
                 <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Conteiner_Size</WidgetName>
-                <WidgetID>29</WidgetID>
-                <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
+                <WidgetName>ROT-Z</WidgetName>
+                <WidgetID>13</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
@@ -38,22 +46,6 @@
             <Widget>
                 <WidgetName>DIST</WidgetName>
                 <WidgetID>5</WidgetID>
-                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>Max_Size</WidgetName>
-                <WidgetID>10</WidgetID>
-                <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>ROT-Y</WidgetName>
-                <WidgetID>11</WidgetID>
                 <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -68,9 +60,17 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>ROT-Z</WidgetName>
-                <WidgetID>13</WidgetID>
-                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+                <WidgetName>Conteiner_Size</WidgetName>
+                <WidgetID>29</WidgetID>
+                <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Max_Size</WidgetName>
+                <WidgetID>10</WidgetID>
+                <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>

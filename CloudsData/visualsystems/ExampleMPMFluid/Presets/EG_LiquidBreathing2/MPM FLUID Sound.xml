@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Volume 0</Name>
-    <Value>2.615763664</Value>
+    <Value>3.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,10 +18,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Volume 2</Name>
-    <Value>0.679802954</Value>
+    <Value>1.773398995</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Volume 3</Name>
     <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Main Gain</Name>
+    <Value>1.000000000</Value>
 </Widget>

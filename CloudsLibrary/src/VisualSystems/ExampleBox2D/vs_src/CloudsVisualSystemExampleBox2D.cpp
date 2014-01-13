@@ -153,9 +153,9 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     // preset init
     bGravityMod = false;
     gravityForce = ofVec2f(0, 5);
-    minObjectCount = 50;
-    maxCircles = 100;
-    maxRects = 100;
+    minObjectCount = int(ofRandom(75,200));
+    maxCircles = 200;
+    maxRects = 150;
     triggerForce = 15;
     
     bCircles = true;
@@ -179,7 +179,7 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     // setup sound synth
     masterVolume = 1;
     lastSampleTime = 0;
-    for (int i=0; i<7; i++)
+    for (int i=0; i<5; i++)
     {
         ostringstream fn;
         fn << GetCloudsDataPath() << "sound/triggers/drip" << i+1 << ".aif";
@@ -188,7 +188,7 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
         samplePlayer[i].setSpeed(0.5);
     }
     
-    for (int i=0; i<8; i++)
+    for (int i=0; i<5; i++)
     {
         ostringstream fn;
         fn << GetCloudsDataPath() << "sound/triggers/cardboard" << i+1 << ".aif";
