@@ -62,10 +62,12 @@ void CloudsRGBDCamera::update(ofEventArgs& args){
 		setOrientation( ofQuaternion() );
 		setPosition( targetNode->getPosition()*transitionAmount + startNode->getPosition()*(1.-transitionAmount) );
 		setOrientation( rotQuat );
+        createMatrix(); 
 	}
 	else{
 		setPosition( mouseBasedNode.getPosition() );
 		setOrientation( mouseBasedNode.getOrientationQuat() );
+        createMatrix();
 	}
 }
 

@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Terrain</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>24.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>10.000000000</Value>
+    <Value>0.356856555</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

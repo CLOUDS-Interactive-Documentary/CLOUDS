@@ -35,6 +35,10 @@ public:
 
     CloudsAudioEvents& getEvents() { return events; };
     
+    //receive fade events from the act timelines
+    void fadeDown(float& time);
+    void fadeUp(float& time);
+    
     bool showCompressor;
     float followgain;
     float gain;

@@ -100,6 +100,7 @@ ofPtr<CloudsInput> GetCloudsInput(){
         SetCloudsInputKinect();
 #elif defined(OCULUS_RIFT)
         SetCloudsInputOculus();
+//        SetCloudsInputMouse();
 #else
         SetCloudsInputMouse();
 #endif
