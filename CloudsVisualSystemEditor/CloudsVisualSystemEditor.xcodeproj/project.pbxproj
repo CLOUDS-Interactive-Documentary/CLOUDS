@@ -596,6 +596,21 @@
 		8510F1B7187DEBF100E34E36 /* RandomNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8510F1B0187DEBF100E34E36 /* RandomNumber.cpp */; };
 		851A1054187A09E0004197C5 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 851A1053187A09E0004197C5 /* ofxSystemTextbox.mm */; };
 		851A1055187A09E0004197C5 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 851A1053187A09E0004197C5 /* ofxSystemTextbox.mm */; };
+		85384F731884565A0076AF5A /* brushedLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F681884565A0076AF5A /* brushedLine.cpp */; };
+		85384F741884565A0076AF5A /* brushedLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F681884565A0076AF5A /* brushedLine.cpp */; };
+		85384F751884565A0076AF5A /* brushedLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F681884565A0076AF5A /* brushedLine.cpp */; };
+		85384F761884565A0076AF5A /* CloudsVisualSystemDrawnLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F6A1884565A0076AF5A /* CloudsVisualSystemDrawnLine.cpp */; };
+		85384F771884565A0076AF5A /* CloudsVisualSystemDrawnLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F6A1884565A0076AF5A /* CloudsVisualSystemDrawnLine.cpp */; };
+		85384F781884565A0076AF5A /* CloudsVisualSystemDrawnLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F6A1884565A0076AF5A /* CloudsVisualSystemDrawnLine.cpp */; };
+		85384F791884565A0076AF5A /* curvedLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F6C1884565A0076AF5A /* curvedLine.cpp */; };
+		85384F7A1884565A0076AF5A /* curvedLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F6C1884565A0076AF5A /* curvedLine.cpp */; };
+		85384F7B1884565A0076AF5A /* curvedLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F6C1884565A0076AF5A /* curvedLine.cpp */; };
+		85384F7C1884565A0076AF5A /* drawnLineApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F6E1884565A0076AF5A /* drawnLineApp.cpp */; };
+		85384F7D1884565A0076AF5A /* drawnLineApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F6E1884565A0076AF5A /* drawnLineApp.cpp */; };
+		85384F7E1884565A0076AF5A /* drawnLineApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F6E1884565A0076AF5A /* drawnLineApp.cpp */; };
+		85384F7F1884565A0076AF5A /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F701884565A0076AF5A /* lineMatchUtils.cpp */; };
+		85384F801884565A0076AF5A /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F701884565A0076AF5A /* lineMatchUtils.cpp */; };
+		85384F811884565A0076AF5A /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F701884565A0076AF5A /* lineMatchUtils.cpp */; };
 		85891AD5187F5E1500325DD8 /* Bubbles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AB9187F5E1500325DD8 /* Bubbles.cpp */; };
 		85891AD6187F5E1500325DD8 /* Bubbles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AB9187F5E1500325DD8 /* Bubbles.cpp */; };
 		85891AD7187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ABB187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp */; };
@@ -1751,6 +1766,17 @@
 		8510F1B1187DEBF100E34E36 /* RandomNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomNumber.h; sourceTree = "<group>"; };
 		851A1052187A09E0004197C5 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
 		851A1053187A09E0004197C5 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
+		85384F681884565A0076AF5A /* brushedLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = brushedLine.cpp; sourceTree = "<group>"; };
+		85384F691884565A0076AF5A /* brushedLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brushedLine.h; sourceTree = "<group>"; };
+		85384F6A1884565A0076AF5A /* CloudsVisualSystemDrawnLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemDrawnLine.cpp; sourceTree = "<group>"; };
+		85384F6B1884565A0076AF5A /* CloudsVisualSystemDrawnLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemDrawnLine.h; sourceTree = "<group>"; };
+		85384F6C1884565A0076AF5A /* curvedLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = curvedLine.cpp; sourceTree = "<group>"; };
+		85384F6D1884565A0076AF5A /* curvedLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curvedLine.h; sourceTree = "<group>"; };
+		85384F6E1884565A0076AF5A /* drawnLineApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawnLineApp.cpp; sourceTree = "<group>"; };
+		85384F6F1884565A0076AF5A /* drawnLineApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = drawnLineApp.h; sourceTree = "<group>"; };
+		85384F701884565A0076AF5A /* lineMatchUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lineMatchUtils.cpp; sourceTree = "<group>"; };
+		85384F711884565A0076AF5A /* lineMatchUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lineMatchUtils.h; sourceTree = "<group>"; };
+		85384F721884565A0076AF5A /* statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = statistics.h; sourceTree = "<group>"; };
 		85891AB9187F5E1500325DD8 /* Bubbles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bubbles.cpp; sourceTree = "<group>"; };
 		85891ABA187F5E1500325DD8 /* Bubbles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bubbles.h; sourceTree = "<group>"; };
 		85891ABB187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemSwim.cpp; sourceTree = "<group>"; };
@@ -3348,6 +3374,32 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
+		85384F661884565A0076AF5A /* DrawnLine */ = {
+			isa = PBXGroup;
+			children = (
+				85384F671884565A0076AF5A /* vs_src */,
+			);
+			path = DrawnLine;
+			sourceTree = "<group>";
+		};
+		85384F671884565A0076AF5A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				85384F681884565A0076AF5A /* brushedLine.cpp */,
+				85384F691884565A0076AF5A /* brushedLine.h */,
+				85384F6A1884565A0076AF5A /* CloudsVisualSystemDrawnLine.cpp */,
+				85384F6B1884565A0076AF5A /* CloudsVisualSystemDrawnLine.h */,
+				85384F6C1884565A0076AF5A /* curvedLine.cpp */,
+				85384F6D1884565A0076AF5A /* curvedLine.h */,
+				85384F6E1884565A0076AF5A /* drawnLineApp.cpp */,
+				85384F6F1884565A0076AF5A /* drawnLineApp.h */,
+				85384F701884565A0076AF5A /* lineMatchUtils.cpp */,
+				85384F711884565A0076AF5A /* lineMatchUtils.h */,
+				85384F721884565A0076AF5A /* statistics.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
 		85891AB7187F5E1400325DD8 /* Swim */ = {
 			isa = PBXGroup;
 			children = (
@@ -3663,6 +3715,7 @@
 		E70CE3A21869648900955691 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				85384F661884565A0076AF5A /* DrawnLine */,
 				85891AB7187F5E1400325DD8 /* Swim */,
 				8510F1AA187DEBF100E34E36 /* RandomDigits2 */,
 				850D80CD187BA67200BB3A84 /* Schlabberbox */,
@@ -7593,8 +7646,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsVisualSystemEditor" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -8248,6 +8299,11 @@
 				64CE998F1880DB8100491913 /* ofxCubeMap.cpp in Sources */,
 				64CE99901880DB8100491913 /* SphericalGenerator.cpp in Sources */,
 				64CE99911880DB8100491913 /* SuperFormula.cpp in Sources */,
+				85384F751884565A0076AF5A /* brushedLine.cpp in Sources */,
+				85384F781884565A0076AF5A /* CloudsVisualSystemDrawnLine.cpp in Sources */,
+				85384F7B1884565A0076AF5A /* curvedLine.cpp in Sources */,
+				85384F7E1884565A0076AF5A /* drawnLineApp.cpp in Sources */,
+				85384F811884565A0076AF5A /* lineMatchUtils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8754,6 +8810,11 @@
 				85891AE9187F5E1500325DD8 /* ofxCubeMap.cpp in Sources */,
 				85891AEB187F5E1500325DD8 /* SphericalGenerator.cpp in Sources */,
 				85891AED187F5E1500325DD8 /* SuperFormula.cpp in Sources */,
+				85384F731884565A0076AF5A /* brushedLine.cpp in Sources */,
+				85384F761884565A0076AF5A /* CloudsVisualSystemDrawnLine.cpp in Sources */,
+				85384F791884565A0076AF5A /* curvedLine.cpp in Sources */,
+				85384F7C1884565A0076AF5A /* drawnLineApp.cpp in Sources */,
+				85384F7F1884565A0076AF5A /* lineMatchUtils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9262,6 +9323,11 @@
 				85891AEA187F5E1500325DD8 /* ofxCubeMap.cpp in Sources */,
 				85891AEC187F5E1500325DD8 /* SphericalGenerator.cpp in Sources */,
 				85891AEE187F5E1500325DD8 /* SuperFormula.cpp in Sources */,
+				85384F741884565A0076AF5A /* brushedLine.cpp in Sources */,
+				85384F771884565A0076AF5A /* CloudsVisualSystemDrawnLine.cpp in Sources */,
+				85384F7A1884565A0076AF5A /* curvedLine.cpp in Sources */,
+				85384F7D1884565A0076AF5A /* drawnLineApp.cpp in Sources */,
+				85384F801884565A0076AF5A /* lineMatchUtils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
