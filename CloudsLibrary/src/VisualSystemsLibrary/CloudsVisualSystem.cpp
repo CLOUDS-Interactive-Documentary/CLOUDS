@@ -2929,7 +2929,8 @@ void CloudsVisualSystem::setupKinectGui()
 
 void CloudsVisualSystem::guiKinectEvent(ofxUIEventArgs &e)
 {
-
+    // Save every time something changes.
+    kinectGui->saveSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
 }
 #endif
 
@@ -2951,7 +2952,8 @@ void CloudsVisualSystem::setupOculusGui()
 
 void CloudsVisualSystem::guiOculusEvent(ofxUIEventArgs &e)
 {
-    
+    // Save every time something changes.
+    oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
 }
 
 void CloudsVisualSystem::setupHUDGui()
@@ -3059,6 +3061,9 @@ void CloudsVisualSystem::guiHUDEvent(ofxUIEventArgs &e)
     else if (name == "BB M OCULUS") {
         hud->layerBillboard[CLOUDS_HUD_MAP] = CLOUDS_HUD_BILLBOARD_OCULUS;
     }
+    
+    // Save every time something changes.
+    hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
 }
 #endif
 
