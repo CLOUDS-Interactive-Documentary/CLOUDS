@@ -147,6 +147,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	bIs2D = false;
 	drawCursorMode = DRAW_CURSOR_NONE;
 	updateCyclced = false;
+    bDoBloom = false;
+    bloomAmount = 0.;
 #ifdef CLOUDS_RELEASE
     bShowPortals = true;
 #endif
@@ -1479,6 +1481,9 @@ void CloudsVisualSystem::setupPostGui()
     postGui->addToggle("Enable", &bEnablePostFX);
     postGui->addSlider("Chroma_Distortion", 0.0, 1.0, &postChromaDist);
     postGui->addSlider("Grain_Distortion", 0.0, 1.0, &postGrainDist);
+    postGui->addToggle("Do Bloom", &bDoBloom);
+    postGui->addSlider("Bloom Level", 0., 1., &bloomAmount);
+    postGui->addIntSlider("Bloom Size", 1, 20, &bloomSamples);
     postGui->autoSizeToFitWidgets();
     ofAddListener(postGui->newGUIEvent, this, &CloudsVisualSystem::guiPostEvent);
     guis.push_back(postGui);
@@ -3581,6 +3586,9 @@ void CloudsVisualSystem::selfPostDraw(){
         cloudsPostShader.setUniform2f("dMapResolution", cloudsPostDistortionMap.getWidth(), cloudsPostDistortionMap.getHeight());
         cloudsPostShader.setUniform1f("chromaDist", postChromaDist);
         cloudsPostShader.setUniform1f("grainDist", postGrainDist);
+        cloudsPostShader.setUniform1f("doBloom", bDoBloom?1.:0.);
+        cloudsPostShader.setUniform1f("bloomAmount", bloomAmount);
+        cloudsPostShader.setUniform1i("bloomSize", bloomSamples);
         offset = bleed;
     }else{
         offset = 0;
@@ -3662,7 +3670,6 @@ void CloudsVisualSystem::selfKeyPressed(ofKeyEventArgs & args)
 
 void CloudsVisualSystem::selfKeyReleased(ofKeyEventArgs & args)
 {
-    
 }
 
 void CloudsVisualSystem::selfMouseDragged(ofMouseEventArgs& data)
