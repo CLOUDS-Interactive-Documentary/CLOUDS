@@ -346,7 +346,7 @@ ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName, s
             newLayout->setLineLength( 999 );
             
             if( layerName == "BylineBodyCopyTextBox" ){         // this is the main body copy in the lower thirds
-                newLayout->loadFont( fontPath, floor(fontSize/6) );
+                newLayout->loadFont( fontPath, floor(fontSize/5.5) );
                 newLayout->setLineLength( textMesh->bounds.width );
             }
             
