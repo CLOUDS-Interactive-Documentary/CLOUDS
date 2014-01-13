@@ -47,7 +47,6 @@ uniform float headFalloff;
 uniform float edgeAttenuateBase;
 uniform float edgeAttenuateExponent;
 uniform float meshRetractionFalloff;
-//uniform float forceGeoRectraction;
 
 varying float positionValid;
 
@@ -120,8 +119,10 @@ void main(void){
 	
 	float headRetraction = pow(map(headPositionAttenuation, 0.0, meshRetractionFalloff, 0.0, 1.0), 2.0);// * (1.0-forceGeoRectraction);
 	
-	vec2 normalPos = samplePos.xy + normalRect.xy;
-	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
+//	vec2 normalPos = samplePos.xy + normalRect.xy;
+//	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
+//	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
+//  vec3 normal = -normalize(gl_NormalMatrix * surfaceNormal);
     
     float accumulatedExtendAttenuation = triangleExtend * headRetraction;
 	vec2 samplePosExtended = samplePos + gl_Normal.xy * accumulatedExtendAttenuation;
@@ -133,7 +134,8 @@ void main(void){
     vec4 pos = vec4((samplePosExtended.x - depthPP.x) * depth / depthFOV.x,
                     (samplePosExtended.y - depthPP.y) * depth / depthFOV.y,
                     depth, 1.0);
-    
+//    pos.xyz = normal*10.0;
+
     float neighborA = depthValueFromSample( depthRect.xy + samplePos + gl_Color.xy * depthRect.zw * accumulatedExtendAttenuation );
     float neighborB = depthValueFromSample( depthRect.xy + samplePos + gl_Color.zw * depthRect.zw * accumulatedExtendAttenuation );
 	
@@ -149,6 +151,6 @@ void main(void){
 					 abs(neighborB - depth) < edgeClip) ? 1.0 : 0.0;
 	
 	
-
-    gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
+    vec4 eyePos = gl_ModelViewMatrix * pos;
+    gl_Position = gl_ProjectionMatrix * eyePos;
 }

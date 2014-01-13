@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>581.000000000</XPosition>
-    <YPosition>23.000000000</YPosition>
+    <XPosition>453.000000000</XPosition>
+    <YPosition>185.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -41,6 +41,16 @@
     <Value>0.507389188</Value>
 </Widget>
 <Widget>
+    <Kind>4</Kind>
+    <Name>DIFFERENCE SAT</Name>
+    <Value>0.443349749</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DIFFERENCE BRI</Name>
+    <Value>0.467980295</Value>
+</Widget>
+<Widget>
     <Kind>17</Kind>
     <Name>AppleStore1_short.mov</Name>
     <Value>0</Value>
@@ -73,11 +83,6 @@
 <Widget>
     <Kind>17</Kind>
     <Name>Soho3_short1.mov</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>Street_Slow1_BWCrop.mov</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

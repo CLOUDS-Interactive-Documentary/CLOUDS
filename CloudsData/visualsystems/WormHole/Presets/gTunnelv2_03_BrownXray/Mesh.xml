@@ -2,22 +2,17 @@
     <Kind>42</Kind>
     <Name>Mesh</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>24.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>FacetMesh</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>SmoothMesh</Name>
+    <Name>example.obj</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>example.obj</Name>
+    <Name>folding-small-simplified.obj</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -93,11 +88,6 @@
 <Widget>
     <Kind>2</Kind>
     <Name>gTunnelv3_04.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>gTunnelv3_05.obj</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

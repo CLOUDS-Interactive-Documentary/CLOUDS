@@ -1,10 +1,35 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>1697.000000000</XPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1497.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Adebug</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Aminos_1</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Aminos_2</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Aminos_2a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Aminos_3a</Name>
+    <Value>1</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>blueTunnel</Name>
@@ -27,6 +52,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>gTunnelOrganix_10_xray</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>gTunnelv2_01_white</Name>
     <Value>0</Value>
 </Widget>
@@ -44,6 +74,11 @@
     <Kind>2</Kind>
     <Name>gTunnelv2_02_xrayblue</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv2_03_BrownXray</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -112,12 +147,52 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>gTunnelv2_06_white</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv2_06_xrayGray</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>gTunnelv2_07</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>gTunnelv2_07_white</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv2_07_whte</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv2_08</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv2_08_blue</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv2_08_displaced</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv2_08_points</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv2_08_transparent_blue</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -142,12 +217,57 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>gTunnelv3_015_xrayturqois</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>gTunnelv3_03</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>gTunnelv3_03_white</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>gTunnelv3_04_blueaspect</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv3_06_lighting</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv3_06_white</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv4_05_xrayGray</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv4_08_xrayGray</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gTunnelv4_09_XrayGray</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>lightAndFog</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Protein_Tunnel</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -162,6 +282,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>gTunnelv2_03_BrownXray</Name>
-    <Value>1</Value>
+    <Name>xray2</Name>
+    <Value>0</Value>
 </Widget>

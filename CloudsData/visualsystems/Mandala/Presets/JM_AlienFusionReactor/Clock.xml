@@ -7,7 +7,17 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>draw clock</Name>
+    <Name>draw cubes</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>draw tails</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>bDrawSpokes</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

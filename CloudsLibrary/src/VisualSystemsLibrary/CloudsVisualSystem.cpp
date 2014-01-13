@@ -147,6 +147,10 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	bIs2D = false;
 	drawCursorMode = DRAW_CURSOR_NONE;
 	updateCyclced = false;
+#ifdef CLOUDS_RELEASE
+    bShowPortals = true;
+#endif
+    
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
 #else
@@ -167,11 +171,13 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	//ofFbo& renderTarget = sharedRenderTarget != NULL ? *sharedRenderTarget : getStaticRenderTarget();
 	ofFbo& renderTarget = getStaticRenderTarget();
 	
-
-	bool reallocateTarget = !renderTarget.isAllocated();
+   int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
+    int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
+    
+bool reallocateTarget = !renderTarget.isAllocated();
 	reallocateTarget |= !screenResolutionForced &&
-						(renderTarget.getWidth() != ofGetWidth() ||
-						 renderTarget.getHeight() != ofGetHeight());
+						(renderTarget.getWidth() != targetWidth ||
+						 renderTarget.getHeight() != targetHeight );
 	reallocateTarget |= screenResolutionForced &&
 						(renderTarget.getWidth() != forcedScreenWidth ||
 						 renderTarget.getHeight() != forcedScreenHeight);
@@ -181,7 +187,8 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 			renderTarget.allocate(forcedScreenWidth, forcedScreenHeight, GL_RGB, numSamples);
 		}
 		else{
-			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
+//			renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, numSamples);
+			renderTarget.allocate(targetWidth, targetHeight, GL_RGB, numSamples);
 		}
 		renderTarget.begin();
 		ofClear(0,0,0,1.0);
@@ -204,12 +211,38 @@ string CloudsVisualSystem::getVisualSystemDataPath(bool ignoredFolder){
 ofxTimeline* CloudsVisualSystem::getTimeline(){
 	return timeline;
 }
+#ifdef CLOUDS_RELEASE
+void CloudsVisualSystem::setupPortals(){
+    
+ 
+    
+    CloudsPortal rp;
+    rp.hoverPosition = ofVec3f(75.f, getCanvasHeight()/4*3, 0);
+    rp.scale = .15;
+    rp.cam = &getCameraRef();
+    rp.question = "Return";
+    rp.setup();
+    portals.push_back(rp);
+    
+    CloudsPortal cp;
+    cp.hoverPosition = ofVec3f(getCanvasWidth()-75.f, getCanvasHeight()/4*3, 0);
+    cp.scale = .15;
+    cp.cam = &getCameraRef();
+    cp.question = "Continue";
+    cp.setup();
+    portals.push_back(cp);
+    
+}
+#endif
 
 void CloudsVisualSystem::setup(){
 	
-	if(bIsSetup){
+    if(bIsSetup){
 		return;
 	}
+#ifdef CLOUDS_RELEASE
+    setupPortals();
+#endif
     
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 	
@@ -265,6 +298,10 @@ void CloudsVisualSystem::setup(){
 	interactiveCameraRot.set(0,0);
     postChromaDist = 0.f;
     postGrainDist = 0.f;
+    //POST PROCESSING BLEED AMNT
+    bleed  = 20;
+    if(bEnablePostFX) SetBleedPixels(bleed);
+    else SetBleedPixels(0);
 }
 
 bool CloudsVisualSystem::isSetup(){
@@ -354,8 +391,34 @@ void CloudsVisualSystem::speakerEnded()
 
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
+    
+#ifdef CLOUDS_RELEASE
 
-#ifndef VISUAL_SYSTEM_EDITOR
+    if(bShowPortals){
+        ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
+        for(int i=0;i<portals.size();i++){
+            portals[i].hoverPosition.y += .2*sin(ofGetElapsedTimef());
+            portals[i].update();
+        
+            float distanceToPortal = portals[i].hoverPosition.distance(mouseNode);
+            cout<<distanceToPortal<<endl;
+            if(distanceToPortal<100.f){
+                cout<<"hovering over :"<<i<<endl;
+                selectedPortal = &portals[i];
+                selectedPortal->startHovering();
+            }else{
+                if(selectedPortal){
+                    selectedPortal->stopHovering();
+                    selectedPortal = NULL;
+                }
+            }
+            
+        }
+    }
+    
+#endif
+
+#ifdef CLOUDS_RELEASE
     // show/hide the mouse cursor
     currMousePos.set(ofGetMouseX(), ofGetMouseY());
     if (currMousePos != lastMousePos) {
@@ -486,7 +549,17 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			drawScene();
 			
 			getCameraRef().end();
-			
+            
+#ifdef CLOUDS_RELEASE
+            if(bShowPortals){
+            ofPushStyle();
+            ofSetColor(255);
+                for(int i=0;i<portals.size();i++){
+                portals[i].draw();
+                }
+            ofPopStyle();
+            }
+#endif
 			ofPushStyle();
 			ofPushMatrix();
 			ofTranslate(0, getCanvasHeight() );
@@ -548,7 +621,8 @@ void CloudsVisualSystem::draw2dSystemPlane(){
     ofTranslate(-ofGetWidth()/2, -ofGetHeight()/2, 0);
     
     ofMesh mesh;
-    get2dMesh(mesh, ofGetWidth(), ofGetHeight());
+    //MA: chaged to getCanvasWidth from ofGetWidth
+    get2dMesh(mesh, getCanvasWidth(), getCanvasHeight());
     getSharedRenderTarget().getTextureReference().bind();
     mesh.draw();
     getSharedRenderTarget().getTextureReference().unbind();
@@ -1265,8 +1339,7 @@ void CloudsVisualSystem::setupSystemGui()
     sysGui->resetPlacer();
     sysGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
     sysGui->addWidgetToHeader(toggle);
-    sysGui->addSpacer();
-    
+    sysGui->addSpacer();    
     selfSetupSystemGui();
     sysGui->autoSizeToFitWidgets();
     ofAddListener(sysGui->newGUIEvent,this,&CloudsVisualSystem::guiSystemEvent);
@@ -1410,6 +1483,16 @@ void CloudsVisualSystem::setupPostGui()
 void CloudsVisualSystem::guiPostEvent(ofxUIEventArgs &e)
 {
     string name = e.widget->getName();
+    
+    if(name == "Enable"){
+        ofxUIToggle *t = (ofxUIToggle *) e.widget;
+        if(t->getValue()){
+            SetBleedPixels(bleed);
+        }else{
+            SetBleedPixels(0);
+        }
+    }
+    
 }
 
 void CloudsVisualSystem::setupLightingGui()
@@ -3216,7 +3299,8 @@ void CloudsVisualSystem::drawBackground()
 	
 	ofPushStyle();
 	ofPushMatrix();
-	ofTranslate(0, ofGetHeight());
+    //MA:: changed ofGetHeight to getCanvasHeight to fix post processing bugs
+	ofTranslate(0, getCanvasHeight());
 	ofScale(1,-1,1);
 	selfDrawBackground();
 	checkOpenGLError(getSystemName() + ":: DRAW BACKGROUND");		
@@ -3357,7 +3441,7 @@ void CloudsVisualSystem::selfDraw()
 }
 
 void CloudsVisualSystem::selfDrawOverlay(){
-	
+
 }
 
 void CloudsVisualSystem::selfPostDraw(){
@@ -3369,6 +3453,7 @@ void CloudsVisualSystem::selfPostDraw(){
 #else
     //draws to viewport
     //use blabalh
+    int offset;
     if(bEnablePostFX){
         cloudsPostShader.begin();
         cloudsPostShader.setUniformTexture("distortionMap", cloudsPostDistortionMap, 1);
@@ -3376,8 +3461,11 @@ void CloudsVisualSystem::selfPostDraw(){
         cloudsPostShader.setUniform2f("dMapResolution", cloudsPostDistortionMap.getWidth(), cloudsPostDistortionMap.getHeight());
         cloudsPostShader.setUniform1f("chromaDist", postChromaDist);
         cloudsPostShader.setUniform1f("grainDist", postGrainDist);
+        offset = bleed;
+    }else{
+        offset = 0;
     }
-    CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
+    CloudsVisualSystem::getSharedRenderTarget().draw(-offset,CloudsVisualSystem::getSharedRenderTarget().getHeight()-offset,
                                                        CloudsVisualSystem::getSharedRenderTarget().getWidth(),
                                                       -CloudsVisualSystem::getSharedRenderTarget().getHeight());
     if(bEnablePostFX){

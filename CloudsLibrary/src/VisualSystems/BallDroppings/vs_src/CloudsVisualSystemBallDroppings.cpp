@@ -604,10 +604,9 @@ void CloudsVisualSystemBallDroppings::updateClosestPickingLine(){
 		closestLine = closeL;
 		closestLineVertex = closeLV;
 		closestLineDistance = closeDist;
-	} else {
-		//JG: REMOVE MOUSE INTERACTION
+	} else if(closestLine != NULL){
 		//set vertex to mouse position.
-		if(closestLineVertex==0){//which side of the line?
+		if(closestLineVertex == 0){//which side of the line?
             //MA: replaced ofGetMouseX() with GetCloudsInputX()
 			closestLine->set1(GetCloudsInputX(),GetCloudsInputY());
 		} else {

@@ -22,6 +22,8 @@ CloudsSecondaryDisplayController::CloudsSecondaryDisplayController(){
     animatingOut = false;
     animationSpeed = .5;
     margin = 60;
+    currentTopic = "";
+    firstTopic = false;
     
 }
 
@@ -42,7 +44,7 @@ void CloudsSecondaryDisplayController::setup(){
     archivePlayer.setLoopState(OF_LOOP_NORMAL);
 
     //setup OSC reciever
-	receiver.setup(123456);
+	receiver.setup(12346);
 	loadSVGs();
     
     //FONT SIZES ARE IN POINTS
@@ -227,6 +229,7 @@ void CloudsSecondaryDisplayController::update(){
    // stringCounter++;
     
 	while(receiver.hasWaitingMessages()){
+       // cout<<"has message"<<endl;
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
 		
@@ -240,12 +243,24 @@ void CloudsSecondaryDisplayController::update(){
         
 		if(m.getAddress() == "/clip"){
           //  stringCounter = 0;
-//			currentSpeaker = CloudsSpeaker::speakers[m.getArgAsString(0)];
+		//	currentSpeaker = CloudsSpeaker::speakers[m.getArgAsString(0)];
             
-			lastQuestion = m.getArgAsString(5);
+            cout<<currentTopic<<" : "<<m.getArgAsString(3)<<endl;
+        
+            
+            if(!firstTopic){
+                currentTopic = m.getArgAsString(3);
+                lastQuestion = m.getArgAsString(5);
+                firstTopic = true;
+            }
+            
+            if(currentTopic != m.getArgAsString(3) && firstTopic){
+                currentTopic = m.getArgAsString(3);
+                lastQuestion = "";
+            }
 			currentClip = parser.getClipWithID(m.getArgAsString(1));
-            
-            animateIn();
+            respondToClip(currentClip);
+         //   animateIn();
 		}
 		else if(m.getAddress() == "/actBegan"){
 			onActBegan();
@@ -253,7 +268,7 @@ void CloudsSecondaryDisplayController::update(){
 		}
 		else if(m.getAddress() == "/actEnded"){
 			onActEnded();
-            animateOut();
+           // animateOut();
 		}
 	}
 	
@@ -263,7 +278,7 @@ void CloudsSecondaryDisplayController::update(){
 	}
     
     if( animatingIn ){
-       // cout << "animatingIn" <<endl;
+        cout << "animatingIn" <<endl;
         playhead = ofMap( ofGetElapsedTimef(), beginTime, beginTime+animationSpeed, 0., 1. );
        // cout << "playhead: " << playhead << endl;
         if( playhead >= 1.0 ){
@@ -294,12 +309,12 @@ void CloudsSecondaryDisplayController::respondToClip(CloudsClip& clip){
 	
 
 	//TEMP HACK TO REVEAL ALL QUESTIONS!!
-	if(currentClip.hasQuestion()){
-		lastQuestion = currentClip.getQuestionForTopic(currentClip.getTopicsWithQuestions()[0]);
-	}
-	else{
-		lastQuestion = "";
-	}
+//	if(currentClip.hasQuestion()){
+//		lastQuestion = currentClip.getQuestionForTopic(currentClip.getTopicsWithQuestions()[0]);
+//	}
+//	else{
+//		lastQuestion = "";
+//	}
 	///JG END TEMP HACK
 
 	//	string exampleId = m.getArgAsString(4);
@@ -355,6 +370,7 @@ void CloudsSecondaryDisplayController::onActBegan(){
 void CloudsSecondaryDisplayController::onActEnded(){
     //hide the secondary display hud
     animateOut();
+    firstTopic = false;
 }
 
 void CloudsSecondaryDisplayController::animateIn(){
@@ -454,15 +470,12 @@ void CloudsSecondaryDisplayController::draw(){
             string title = ofToUpper(currentSpeaker.title);
             //reposition title to float left
             hudLabelMap[meshBioTitle->id]->bounds.x = titleX;
-            
             hudLabelMap[meshBioFirstName->id]->draw();
             hudLabelMap[meshBioLastName->id]->draw();
             hudLabelMap[meshBioTitle->id]->draw();
 
             
             ////location
-
-            
             string loc = ofToUpper(currentSpeaker.location2);
             //float left
             CloudsHUDLabel* locLabel = hudLabelMap[meshBioLocation->id];
@@ -474,7 +487,7 @@ void CloudsSecondaryDisplayController::draw(){
 
             //check if location is running into description
             if(locLabel->bounds.x+fontBioLocation->getStringBoundingBox(currentSpeaker.location2, 0, 0).width+margin >= meshBioDescription->bounds.getLeft()){
-                cout << "location text is running into description text" << endl;
+             //   cout << "location text is running into description text" << endl;
                 descLabel->bounds.x = locLabel->bounds.x+fontBioLocation->getStringBoundingBox(currentSpeaker.location2, 0, 0).width+margin*1.5;
                 descLabel->layout->setLineLength(defaultBioBounds.width - (descLabel->bounds.x - defaultBioBounds.x));
             }

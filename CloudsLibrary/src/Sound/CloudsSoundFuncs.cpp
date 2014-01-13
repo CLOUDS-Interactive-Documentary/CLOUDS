@@ -58,7 +58,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     int bcount = 0;
     beatoffset = tempo-fmod(t,tempo); // use for accurate ahead-of-time quantization for rhythmic triggering
 	
-    //flush_sched(); // kill previous music
+    //stopMusic(); // kill previous music
     
     outskip = outskip + beatoffset; // fix beat offset to get things in time
     
@@ -1269,12 +1269,12 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     if (mo=="avibeats")
     {
         SETUPMIX(outskip, musicdur, m_amp, 1.0-m_rev, m_rev, 0., "TRANS3", instnum, ampenvelope, ab[ACTBUS], abn[ACTBUS]);
-        cout << "Sample number: " << looperSamples.size() << endl;
+        if(LUKEDEBUG) cout << "Sample number: " << looperSamples.size() << endl;
         for(i = 0;i<looperSamples.size();i++)
         {
             if(looperSamples[i].bank==arg_a)
             {
-                cout << "playing: " << looperSamples[i].handle << endl;
+                if(LUKEDEBUG) cout << "playing: " << looperSamples[i].handle << endl;
                 int pptr = 0; // pattern pointer
                 for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*2.0)
                 {
@@ -1298,7 +1298,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     {
         SETUPMIX(outskip, musicdur, m_amp, 1.0, 0., 0., "STEREO", instnum, ampenvelope, ab[ACTBUS], abn[ACTBUS]);
         //PATCHFX("STEREO", "in 0", "out 0-1");
-        STREAMSOUND(outskip, arg_b, musicdur, 1.0*m_amp, ab[ACTBUS], abn[ACTBUS]); // set to masterGain
+        STREAMSOUND(outskip, arg_b, musicdur, 1.0*m_amp, ab[ACTBUS], abn[ACTBUS]);
     }
 
     //
@@ -1309,15 +1309,20 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     
 }
 
-void CloudsSound::stopMusic()
+void CloudsSound::fadeMusic(float fadeTime)
 {
-
-    float fadedur = 10.;
     
-    PFIELD_SCHED(0., fadedur, abn[ACTBUS], "ramp_10");
-
-    cout << "STOP MUSIC on " << ab[ACTBUS]<< endl;
+    PFIELD_SCHED(0., fadeTime, abn[ACTBUS], "ramp_10");
+    
+    if(LUKEDEBUG) cout << "FADING MUSIC on " << ab[ACTBUS]<< endl;
+    else cout << "SOUND: MUSIC FADING." << endl;
     ACTBUS = (ACTBUS+1)%ab.size();
     
+}
+
+void CloudsSound::stopMusic()
+{
+    if(LUKEDEBUG) cout << "FLUSHING SCHEDULER." << endl;
+    else cout << "SOUND: MUSIC STOPPED." << endl;
     flush_sched();
 }

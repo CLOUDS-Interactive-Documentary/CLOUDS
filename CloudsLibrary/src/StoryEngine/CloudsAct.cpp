@@ -246,6 +246,10 @@ void CloudsAct::populateTime(){
 	
 }
 
+bool CloudsAct::startsWithVisualSystem(){
+    return visualSystemItems.size() > 0 && visualSystemItems[0].startTime == 0;
+}
+
 bool CloudsAct::isClipEnergyShift(CloudsClip& clip){
 	return ofContains(energyShiftClipIDs, clip.getLinkName());
 }
@@ -280,7 +284,7 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
 		string question = questionClip.getQuestionForTopic(topic);
 		cout << "** story engine :: creating question " << question << " with topic " << topic << endl;
         CloudsQuestionEventArgs args(questionClip,question,topic);
-        ofNotifyEvent(events.questionAsked, args);
+        ofNotifyEvent(events.questionProposed, args);
     }
     else if(bang.track == clipPreRollTrack){
         vector<string> clipName = ofSplitString(bang.flag, "%");

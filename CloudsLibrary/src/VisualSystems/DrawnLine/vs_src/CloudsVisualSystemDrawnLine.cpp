@@ -3,12 +3,7 @@
 //
 
 #include "CloudsVisualSystemDrawnLine.h"
-//#include "CloudsRGBDVideoPlayer.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemDrawnLine::selfSetupGui(){
@@ -18,11 +13,10 @@ void CloudsVisualSystemDrawnLine::selfSetupGui(){
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-	customGui->addButton("Custom Button", false);
-	customGui->addToggle("Custom Toggle", &customToggle);
+
+    bShowDebug = false;
+    customGui->addToggle("debugView_drawnLine", &bShowDebug);
+    
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemDrawnLine::selfGuiEvent);
 	guis.push_back(customGui);
@@ -33,6 +27,11 @@ void CloudsVisualSystemDrawnLine::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "Custom Button"){
 		cout << "Button pressed!" << endl;
 	}
+}
+
+void CloudsVisualSystemDrawnLine::setupFbo(){
+    //ZACH: instantiate your FBO here
+    fbo.allocate(getCanvasWidth(), getCanvasHeight(), GL_RGB);
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -52,14 +51,21 @@ void CloudsVisualSystemDrawnLine::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
+//This is called whenever a new preset is loaded, before selfSetup()
+//use it to ensure all your simple variables are initialized to an
+//acceptable default state
+void CloudsVisualSystemDrawnLine::selfSetDefaults(){
+
+}
+
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemDrawnLine::selfSetup(){
-
-	//make sure to include getVisualSystemDataPath() when accessing data
-//	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
 	
+    APP.SYS = this;
+    APP.setup();
+    //setupFbo();
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -84,13 +90,24 @@ void CloudsVisualSystemDrawnLine::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemDrawnLine::selfUpdate(){
+//    if(fbo.getWidth() != getCanvasWidth() ||
+//       fbo.getHeight() != getCanvasHeight())
+//    {
+//        setupFbo();
+//    }
+    
+    APP.bShowDebug = bShowDebug;
+    APP.update();
 
+    
+    
+    
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemDrawnLine::selfDraw(){
-		
+	
 }
 
 // draw any debug stuff here
@@ -100,14 +117,13 @@ void CloudsVisualSystemDrawnLine::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemDrawnLine::selfDrawBackground(){
 
-	//turn the background refresh off
-	//bClearBackground = false;
+    APP.draw();
 	
 }
+
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
-void CloudsVisualSystemDrawnLine::selfEnd(){
-	
+void CloudsVisualSystemDrawnLine::selfEnd(){	
 	
 }
 // this is called when you should clear all the memory and delet anything you made in setup

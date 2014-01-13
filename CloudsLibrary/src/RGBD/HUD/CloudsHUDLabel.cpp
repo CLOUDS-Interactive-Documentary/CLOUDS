@@ -60,8 +60,9 @@ void CloudsHUDLabel::draw(){
         ofPushStyle();{
             ofSetColor(255, 255, 255, textAlpha);
             string t = text.substr(0, playhead );
-            if(caps)
+            if(caps){
                 t = ofToUpper(t);
+            }
             layout->drawString( t, bounds.x, bounds.y + layout->getStringBoundingBox("W", 0, 0).height );
         }ofPopStyle();
     }
@@ -80,6 +81,9 @@ void CloudsHUDLabel::draw(){
 void CloudsHUDLabel::setText( string newText ){
     cout << "CloudsHUDLabel::setText: " << newText;
     text = newText;
+    
+    if(caps)
+        text = ofToUpper(newText);
     playhead = 0;
     
     if( text != "" ){
@@ -87,6 +91,13 @@ void CloudsHUDLabel::setText( string newText ){
         animationSpeed = ofClamp(animationSpeed, animationClamp.min, animationClamp.max);
         animateIn();
     }
+}
+
+int CloudsHUDLabel::getRightEdge(){
+    if(type == "LAYOUT")
+        return layout->getStringBoundingBox(text, bounds.x, bounds.y).getRight();
+    else if (type == "FONT")
+        return font->getStringBoundingBox(text, bounds.x, bounds.y).getRight();
 }
 
 string CloudsHUDLabel::getText(){

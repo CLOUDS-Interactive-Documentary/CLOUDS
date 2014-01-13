@@ -17,6 +17,7 @@
 #include "CloudsHUDHomeButton.h"
 #include "CloudsHUDLabel.h"
 #include "CloudsEvents.h"
+#include "CloudsSpeaker.h"
 
 typedef enum {
 	CLOUDS_HUD_FULL = 0,
@@ -35,15 +36,12 @@ class CloudsHUDController {
 	void setup();
 	void update();
 	void draw();
-    void drawOverlay(ofVec2f overlaySize);
 
 	void setHomeEnabled(bool enable);
 	
 	void buildLayerSets();
     void calculateFontSizes();
     int getFontSizeForMesh( SVGMesh* textMesh );
-    
-    ofVec2f getSize();
 	
 	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void animateOff(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
@@ -66,9 +64,12 @@ class CloudsHUDController {
 	void clipBegan(CloudsClipEventArgs& args);
 	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
-	void questionAsked(CloudsQuestionEventArgs& args);
+	void questionProposed(CloudsQuestionEventArgs& args);
+	void questionSelected(CloudsQuestionEventArgs& args);    
 	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
+    
+    ofVec2f getSize();
 
   protected:
 	
@@ -89,13 +90,18 @@ class CloudsHUDController {
 	
     void drawLayer(CloudsHUDLayerSet layer);
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath );
+    ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath, bool caps );
+    ofxFTGLFont*            getFontForLayer( string layerName, string fontPath, int kerning );
+
     
     vector<ofxFTGLFont*>    tempFontList;
-    ofxFTGLSimpleLayout     *BylineBodyCopyTextBox,
-                            *BylineFirstNameTextBox,
+    
+    ofxFTGLFont             *BylineFirstNameTextBox,
                             *BylineLastNameTextBox,
                             *BylineTopicTextBoxBottom,
-                            *BylineTopicTextBoxTop,
+                            *BylineTopicTextBoxTop;
+    
+    ofxFTGLSimpleLayout     *BylineBodyCopyTextBox,
                             *ResetButtonTextBox,
                             *QuestionTextBox,
                             *TopicTextBoxLeft,
@@ -108,7 +114,12 @@ class CloudsHUDController {
     map<string, CloudsHUDLabel*>    hudLabelMap;
     ofRectangle hudBounds;
     float scaleAmt;
-    float overlayScaleAmt;
+    
+    int margin;
+    
+    ofRectangle             defaultBioBounds;
+    
+    CloudsSpeaker           speaker;
 };
 
 

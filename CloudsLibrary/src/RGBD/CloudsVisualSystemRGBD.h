@@ -4,6 +4,7 @@
 #include "CloudsVisualSystem.h"
 #include "CloudsPortal.h"
 #include "CloudsQuestion.h"
+#include "CloudsHUDController.h"
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
 #include "ofxFTGL.h"
@@ -129,6 +130,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     //////////TRANSITIONS
     
 	void playTestVideo();
+    
+#ifdef OCULUS_RIFT
+    CloudsHUDController* hud;
+#endif
 
   protected:
 	
@@ -155,6 +160,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxUISuperCanvas *pointsGui;
 	ofShader pointShader;
 	ofVboMesh points;
+    
+	float pointXSimplify;
+    float pointYSimplify;
+    
     int pointCount;
 	bool drawPoints;
 	float pointAlpha;
@@ -186,6 +195,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool linesFlowUp;
     float lineColorBoost;
     float lineSkinBoost;
+    float lineMaxActuatorRetract;
+    float lineRandomOffset;
 	bool refreshLines;
 	void generateLines();
 	
@@ -203,9 +214,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float meshFaceMinRadius;
 	float meshFaceFalloff;
 	float meshRetractionFalloff;
-	float meshForceGeoRectraction;
+	float meshForceGeoRetraction;
     float meshColorBoost;
     float meshSkinBoost;
+    float meshMaxActuatorRetract;
     bool refreshMesh;
 	void generateMesh();
 

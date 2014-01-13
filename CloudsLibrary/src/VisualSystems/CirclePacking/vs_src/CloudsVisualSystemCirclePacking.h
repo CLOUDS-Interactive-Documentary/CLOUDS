@@ -91,7 +91,10 @@ class CloudsVisualSystemCirclePacking: public CloudsVisualSystem {
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
-  
+    void selfInteractionDragged(CloudsInteractionEventArgs& args);
+    void selfInteractionMoved(CloudsInteractionEventArgs& args);
+    void packThemCircles(ofVec2f data);
+    
     CirclePacker pack; 
 
   protected:
@@ -108,11 +111,14 @@ class CloudsVisualSystemCirclePacking: public CloudsVisualSystem {
 	
 	ofFloatColor primaryColor;
 	ofFloatColor secondaryColor;
+    int initialNumberofCircles;
 	bool filled;
 	int numCircles;
 	float heroPercent;
-	ofRange smallSizeRange;
-	ofRange largeSizeRange;
+	float small1;
+    float small2;
+	float large1;
+    float large2;
     float alph;
 	
 };

@@ -27,14 +27,16 @@ class CloudsSecondaryDisplayOSCSender
 	void clipBegan(CloudsClipEventArgs& args);
 	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
-    void questionAsked(CloudsQuestionEventArgs& args);
+    void questionProposed(CloudsQuestionEventArgs& args);
+    void questionSelected(CloudsQuestionEventArgs& args);
 	void topicChanged(CloudsTopicEventArgs& newTopic);
     void preRollRequested(CloudsPreRollEventArgs& clip);
 	
 	void sendClip(CloudsClip& clip);
 	string lastQuestionAsked;
 	string currentTopic;
-	
+
+	bool bSetup;
 	ofxOscSender sender;
 
 };

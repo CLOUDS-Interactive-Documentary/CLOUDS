@@ -1,6 +1,7 @@
 #import "testView.h"
 #include "CloudsGlobal.h"
 #include "CloudsSpeaker.h"
+#include "CloudsVisualSystem.h"
 
 @implementation testView
 @synthesize clipTable;
@@ -31,12 +32,14 @@
     [interventionTextBox setTarget:self];   
 	[speakerVolTextBox setTarget:self];
     
+//    rgbdVisualSystem.setNumSamples(4);
 	rgbdVisualSystem.setup();
 	rgbdVisualSystem.setDrawToScreen(false);
 	hud.setup();
 
 	rgbdVisualSystem.playSystem();
 #ifdef OCULUS_RIFT
+    rgbdVisualSystem.hud = &hud;
 	rgbdVisualSystem.loadPresetGUISFromName("RGBDOC");
 #else
 	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
@@ -61,11 +64,13 @@
 {
 	rgbdVisualSystem.selfPostDraw();
 
-    if (rgbdVisualSystem.getRGBDVideoPlayer().haveSubtitles()) {
-//        rgbdVisualSystem.getRGBDVideoPlayer().getSubtitles().draw(ofGetWindowWidth()/2, ofGetWindowHeight()-60);
-    }
-	
+#ifndef OCULUS_RIFT
 	hud.draw();
+#endif
+    
+    rgbdVisualSystem.getRGBDVideoPlayer().drawSubtitles(
+        CloudsVisualSystem::getStaticRenderTarget().getWidth()/2,
+        (float)CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.8);
 }
 
 - (void) loadClipFromTable:(id)sender
@@ -88,6 +93,8 @@
 									  clip.name );
 		
 		currentClip = clip;
+        // EZ: Temp to get HUD content
+        hud.respondToClip(clip);
 	}
 	else if(clip.hasMediaAsset && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, clip.combinedSRTPath, 1,clip.speakerVolume) ){
 		cout<<"clip.speakerVolume : "<<clip.speakerVolume<<endl;
@@ -96,7 +103,8 @@
 									   CloudsSpeaker::speakers[clip.person].lastName,
 									   clip.name );
 		currentClip = clip;
-		
+        // EZ: Temp to get HUD content
+        hud.respondToClip(clip);
 	}
 	else{
 		ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";

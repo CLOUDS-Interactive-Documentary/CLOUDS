@@ -24,7 +24,7 @@ float camCenterOffsD=0;
 void CloudsVisualSystemVerletForm::mwPreset() {
 	clothWidth =600;
 	clothHeight=clothWidth*0.6666;
-	currentCamDistance = -1500;
+	currentCamDistance = 1500;
 
 	int type=(int)(ofRandom(GRIDCYL+1));
 	while(type==gridType) type=(int)(ofRandom(GRIDCYL+1));
@@ -55,6 +55,8 @@ void CloudsVisualSystemVerletForm::mwPreset() {
 	stickyNum=(stickyNum>50 ? 50 : stickyNum);
 
 	activityMod=ofRandom(0.5f,1);
+	if(gridType==GRIDRECT) activityMod=ofRandom(0.25f,0.4f);
+
 	vnormalMod=ofRandom(0.9f,1.5f);
 
 	lineMesh=false;
@@ -74,10 +76,7 @@ void CloudsVisualSystemVerletForm::mwPreset() {
 
 	modelRot=ofVec3f(ofRandom(360),ofRandom(360),ofRandom(360));
 
-	modelRotD=ofVec3f(0.5f,0,0);
-	modelRotD.rotate(ofRandom(360),axisY);
-	modelRotD.rotate(ofRandom(-90,90),axisX);
-	modelRotMax=0.1f;
+	for(int i=0; i<3; i++) modelRotD[i]=rndSigned(5,15)+90;
 
 
 	camCenterOffs=ofVec3f(ofRandom(0.05f,0.15f)*clothWidth,0,0);
@@ -199,8 +198,7 @@ ofVec3f CloudsVisualSystemVerletForm::mwNewMove(MWParticle& pt) {
 
 void CloudsVisualSystemVerletForm::mwLights() {
 	ofSetGlobalAmbientColor(ofColor(0,0,0));
-	ofSetSmoothLighting(false);
-
+	ofSetSmoothLighting(true);
 
 	for(int i = 0; i < LIGHTS; i++) {
 		AuxLight &a=auxLights[i];
@@ -217,37 +215,40 @@ void CloudsVisualSystemVerletForm::mwLights() {
 			}
 
 			if(i==0) {
-				a.light.setPosition(cam.getPosition());
-//				a.light.lookAt(camC,axisY);
-				a.light.setPointLight();
+				a.light.setPosition(meshCentroid+a.position);
+//				a.light.setPosition(bbC);//cam.getPosition());
 			}
 			else {
 				a.position.rotate(a.spinAxis.y/fpsMod,axisY);
 				a.position.rotate(a.spinAxis.z/fpsMod,axisZ);
-				ofVec3f pos=(bbC-a.position);
+				a.position.rotate(a.spinAxis.x/fpsMod,axisX);
+				ofVec3f pos=(meshCentroid+a.position);
 
-				a.light.setPosition(pos);
-	//			ofQuaternion q=a.light.getOrientationQuat();
-	//			q.makeRotate(a.position,pos);
-	//			a.light.setOrientation(q);
-				a.light.lookAt(camC,axisY);
+				a.light.setPosition(a.position);
+				a.light.lookAt(meshCentroid,axisY);
 			}
 		}
 
-		ofFloatColor cf=ofFloatColor(c);
-		float b=cf.getBrightness();
+		if(i>0) {
+			ofColor cf=ofColor(c);
+//			if(i==1) cf=ofColor(0,255,0,0);
+//			if(i==2) cf=ofColor(0,0,255);
+//			if(i==3) cf=ofColor(255,0,0);
 
-		ofFloatColor cfs=ofFloatColor(cf);
-//		cf.setBrightness(b*0.33f);
-		cfs.setBrightness(min(cfs.limit(),b+b*0.33f));
-//		cfs.setSaturation(cfs.getSaturation()*0.6f);
-		a.light.setDiffuseColor(cfs);
-//		a.light.setSpecularColor(cf);
-		a.light.setAmbientColor(ofFloatColor(0.05,0.05,0.05));
+			float b=cf.getBrightness();
+			ofColor cfs=ofColor(cf);
+			cfs.setBrightness(min(255.f,c.getBrightness()*1.5f));
+			cf.setBrightness(b*0.75f);
+
+			a.light.setDiffuseColor(cf);
+			a.light.setSpecularColor(cfs);
+			a.light.setAmbientColor(ofColor(5,5,5));
+		}
 
 		a.light.enable();
-//		ofSetColor(a.color);
-//		a.light.draw();
+		//ofSetColor(a.light.getSpecularColor());
+		//a.light.draw();
+
 	}
 
 } 
@@ -271,33 +272,39 @@ void CloudsVisualSystemVerletForm::mwUpdateCamera() {
 
 //	mousePos.set(0,0);
 
-	float m=ofMap(bbDim,clothWidth*0.25f,clothWidth*3, 0.05f,1,true);
-	bbMult+=(m-bbMult)*0.01f;
-
-	modelTrans+=((-800*bbMult)-modelTrans)*0.001f;
 //	bbC.z+=modelTrans;
 
 	float camDistance =
-			ofMap(mousePos.length(), 0, getCanvasWidth()*0.5f,
-					800, 0,true);
+			ofMap(mousePos.length(), 0, getCanvasWidth()*0.7f,
+					800, 100,true);
+
+	float m=ofMap(bbDim,clothWidth*0.5f,clothWidth*3, 0,1,true);
+	bbMult+=(m-bbMult)*0.1f;
+
+	modelTrans+=(ofMap(bbMult, 0,1, -400,400)-modelTrans)*0.1f;
 
 	if(colorLightEnabled) camDistance+=modelTrans+bbMultTmp;
 
 	currentCamDistance += (camDistance - currentCamDistance)*.01;
 
 	float camAngle = ofMap(mousePos.y, 0, getCanvasHeight(), 0, 360,true);
+//	float camRotMod=camDistance/800.f;
+//	camAngle=atan2(-(mousePos.y-getCanvasHeight()/2),mousePos.x-getCanvasWidth()/2);
+//	camAngle*=camRotMod;
+
 	currentRotAngle.x=wraplerp(currentRotAngle.x,camAngle,0.01f,360);
 
 	camAngle = ofMap(mousePos.x, 0, getCanvasWidth(), 0, 360,true);
+//	camAngle=-camAngle;
 	currentRotAngle.y=wraplerp(currentRotAngle.y,camAngle,0.01f,360);
 
 	ofVec3f camCurrentPosition = cam.getPosition();
 
-	ofVec3f camTargetPosition  = -bbC +
-			ofVec3f(0,0,currentCamDistance)
-			.getRotated(
-					currentRotAngle.x+modelRot.x,
-					currentRotAngle.y+modelRot.y,modelRot.z);
+	ofVec3f camTargetPosition  = bbC +
+			(ofVec3f(0.1f,0.1f,1)*currentCamDistance);
+			//.getRotated(
+			//		currentRotAngle.x+modelRot.x,
+			//		currentRotAngle.y+modelRot.y,modelRot.z);
 
 	cam.setPosition( camCurrentPosition +
 			(camTargetPosition - camCurrentPosition) * .025);
@@ -308,34 +315,23 @@ void CloudsVisualSystemVerletForm::mwUpdateCamera() {
 	float min=modelRotMax*0.005f;
 	float max=modelRotMax*0.015f;
 
+	for(int i=0; i<3; i++) {
+		int val=(int)(i==0 ? modelRot.x :
+				(i==1 ? modelRot.y : modelRot.z));
 
-	if(abs((int)modelRot.x%90)<5) {
-		modelRotD.x+=(modelRotD.x<0 ? -max*2 : max*2);
+		float sign=(modelRotD[i]<0 ? -1 : 1);
+
+		if(val<55) modelRotD[i]+=max;
+		else if(val<305) modelRotD[i]-=max;
+		else modelRotD[i]=ofClamp(
+				modelRotD[i]+rndSigned(min,max),
+				-modelRotMax,modelRotMax);
+
+//		modelRotD[i]=(modelRotD[i]>modelRotMax ? modelRotMax :
+//				(modelRotD[i]<-modelRotMax ? -modelRotMax : modelRotD[i]));
 	}
-	else do {
-		modelRotD.x=modelRotD.x+rndSigned(min,max);
-	} while(abs(modelRotD.x)<max);
 
-	if(abs((int)modelRot.z%90)<5) {
-		modelRotD.y+=(modelRotD.y<0 ? -max*2 : max*2);
-	}
-	else do {
-		modelRotD.y=modelRotD.y+rndSigned(min,max);
-	} while(abs(modelRotD.y)<max);
-
-	if(abs((int)modelRot.z%90)<5) {
-		modelRotD.z+=(modelRotD.z<0 ? -max*2 : max*2);
-	}
-	else do {
-		modelRotD.z=modelRotD.z+rndSigned(min,max);
-	} while(abs(modelRotD.z)<max);
-
-	modelRotD.x=(modelRotD.x>modelRotMax ? modelRotMax : (modelRotD.x<-modelRotMax ? -modelRotMax : modelRotD.x));
-	modelRotD.y=(modelRotD.y>modelRotMax ? modelRotMax : (modelRotD.y<-modelRotMax ? -modelRotMax : modelRotD.y));
-	modelRotD.z=(modelRotD.z>modelRotMax ? modelRotMax : (modelRotD.z<-modelRotMax ? -modelRotMax : modelRotD.z));
-	modelRot+=modelRotD;
-
-
+	modelRot+=ofVec3f(modelRotD[0],modelRotD[1],modelRotD[2]);
 }
 
 void CloudsVisualSystemVerletForm::mwMeshBB() {
@@ -383,16 +379,10 @@ void CloudsVisualSystemVerletForm::mwMeshBB() {
 
 		bbDim=(D.x+D.y+D.z)/3.f;
 		double len=D.length();
-		if(len>clothWidth) {
-			len=1.0/(clothWidth/len);
-			D*=len;
-//			bbMin+=D;
-//			bbMax-=D;
-		}
 
+		meshCentroid=mesh.getCentroid();
 //		bbC=bbC+(((bbMax+bbMin)*0.5f-bbC)*0.01f);
-		bbC=bbC+(mesh.getCentroid()-bbC)*0.01f;
-//		bbC.z=0;
+		bbC=bbC+(meshCentroid-bbC)*0.1f;
 	}
 
 	char buffer [50];
@@ -516,7 +506,7 @@ void CloudsVisualSystemVerletForm::mwUpdate() {
 						g);
 			}
 
-		activityCnt=ofRandom(20,80)*fpsMod;
+		activityCnt=ofRandom(20,50)*fpsMod*activityMod;
 	}
 
 	string s="";
@@ -767,32 +757,46 @@ void CloudsVisualSystemVerletForm::mwCreateLights() {
 	for(int i = 0; i < LIGHTS; i++){
 		AuxLight &a=auxLights[i];
 
-		a.position=ofVec3f(0,0,clothWidth*2.f);
+		a.position=ofVec3f(0,0,clothWidth*0.5f*(i!=0 ? -1.f : 1.f));
 		if(i==0) {
 			a.position.rotate(-ofRandom(15,30),axisX);
 			a.position.rotate(ofRandom(-30,30),axisY);
+			a.light.setDiffuseColor(ofColor(100,100,100));
+
+			int ch=(int)ofRandom(999)%3;
+			a.light.setSpecularColor(
+					ofColor(ch==0?200:255, ch==1?200:255, ch==2?200:255));
+			a.light.setAmbientColor(ofColor(0,0,0));
 		}
 		if(i==1) {
 			a.position.rotate(-60,axisX);
-			a.position.rotate(180,axisY);
+			a.position.rotate(0,axisY);
 		}
 		if(i==2) {
 			a.position.rotate(0,axisX);
-			a.position.rotate(60,axisY);
+			a.position.rotate(120,axisY);
 		}
 		if(i==3) {
 			a.position.rotate(60,axisX);
-			a.position.rotate(300,axisY);
+			a.position.rotate(240,axisY);
 		}
 
 		a.enabled=true;
 
+		if(i==2) a.color=ofColor(0,0,0);
+		else a.color=ofColor(255,255,255);
+
 		mwNewLightColor(a);
 		mwNewLightColor(a);
 
-		a.light.setDirectional();
-		a.light.setPosition(a.position);
-		a.light.lookAt(ofVec3f(0,0,0),axisY);
+		a.light.setPosition(bbC+a.position);
+		if(i>0) {
+			a.light.setDirectional();
+			a.light.lookAt(bbC,axisY);
+			//a.light.setAttenuation(0.1f,0,0);
+		}
+		else a.light.setPointLight();
+
 //	    ofQuaternion q;
 //	    ofVec3f rot=ofVec3f(0,90,0);
 //	    q.makeRotate(rot.x, xax, rot.y, yax, rot.z, zax);
@@ -800,12 +804,12 @@ void CloudsVisualSystemVerletForm::mwCreateLights() {
 //        a.light.setOrientation(q);
 
 		ofVec3f spinAxis=ofVec3f(
-				0,ofRandom(-1,1),ofRandom(-1,1)*0.2f);
+				ofRandom(-1,1),ofRandom(-1,1),ofRandom(-1,1)*0.2f);
 
 		a.spinSpeed=ofRandom(0.2f,1);
 		a.spinAxis=spinAxis.normalize()*a.spinSpeed;
 
-		if(i>0) a.spinAxis=auxLights[0].spinAxis;
+//		if(i>1) a.spinAxis=auxLights[1].spinAxis;
 	}
 
 
@@ -836,26 +840,28 @@ void CloudsVisualSystemVerletForm::mwNewGravity() {
 
 void CloudsVisualSystemVerletForm::mwNewLightColor(AuxLight &a) {
 
-	a.cnt=(int)(-ofRandom(150,300)*fpsMod);
-	a.cntGoal=(int)(ofRandom(150,300)*fpsMod);
+	float prev=a.color.getSaturation();
+
+	a.cnt=(int)(-ofRandom(150,350)*fpsMod);
+	a.cntGoal=(int)(ofRandom(60,120)*fpsMod);
 
 	ofColor cc=rndColor();
-	while(cc.getBrightness()<100) cc=rndColor();
-
-	int b=cc.getBrightness();
-//	cc.setBrightness(ofRandom(175,200)+(rndBool(50) ? 50 : 0));
-	cc.setBrightness(cc.limit()*ofRandom(0.4f,0.6f));
-
-//	cc.setBrightness(b>200 ? 200: (b<80 ? 80 : b));
-//	shiftHue(cc,rndSigned(60,120));
-
-//	sat=(sat<30 && ofRandom(100)>80 ?
-//			ofRandom(80,120) : ofRandom(30,60));
+	cc.setBrightness(200);
 
 	float sat=cc.getSaturation();
-	sat=sat*ofRandom(0.35f,1.2f);
-	sat=((int)ofRandom(3,15)+(rndBool(70) ? 6 : 0))*2;
-	cc.setSaturation(sat);
+
+	if(a.light.getIsDirectional() &&
+			(prev<150 && rndBool(30))) {
+		sat=ofRandom(200,255);
+		cc*=0.6f;
+		shiftHue(cc,rndBool(50) ? -80 : 80);
+		cc.setSaturation(sat);
+	}
+	else {
+		sat=ofRandom(25,60);
+		cc.set(sat,sat,sat);
+	}
+
 
 	a.color=a.colorGoal;
 	a.colorGoal=cc;
@@ -875,7 +881,7 @@ void CloudsVisualSystemVerletForm::mwGenerate() {
 	printf("========\nmwGenerate pp=%d / gridSize=%d / gridType=%d\n ",
 		pp.size(),gridSize,gridType);
 
-	activityCnt=ofRandom(20,80)*fpsMod*activityMod;
+	activityCnt=ofRandom(20,50)*fpsMod*activityMod;
 	fixCnt=0;
 
 	axisY.set(0,1,0);
@@ -887,7 +893,7 @@ void CloudsVisualSystemVerletForm::mwGenerate() {
 	float p1=0,p2=0,p3=0;
 
 	int type=0;
-	radMin=ofRandom(0.1f,0.3f);
+	radMin=ofRandom(0.1f,0.15f);
 
 	if(gridType==GRIDCIRC) {
 		hMod=ofRandom(0.5f,1);
@@ -898,8 +904,8 @@ void CloudsVisualSystemVerletForm::mwGenerate() {
 	for(int i=0; i<gridSize; i++) {
 		float deg=ofRandom(70,85);
 		for(int j=0; j<gridSize; j++) {
-			float tx=ofMap(i,0,gridSize-1, -0.5f,0.5f);
-			float ty=ofMap(j,0,gridSize-1, -0.5f,0.5f);
+			float tx=ofMap(i,0,gridSize-1, 0.5f,-0.5f);
+			float ty=ofMap(j,0,gridSize-1, 0.5f,-0.5f);
 			float tz=rndSigned(0.05f,0.35f);
 
 			ofVec3f v=ofVec3f(tx,ty,tz);
@@ -922,7 +928,7 @@ void CloudsVisualSystemVerletForm::mwGenerate() {
 					v.set(v.x*hMod,v.y,v.z*hMod);
 				}
 				else {
-					tx=p1*tx*(1-radMin)+radMin*3;
+					tx=p1*tx*(1-radMin)+radMin;
 					v.set(clothWidth*tx,0,0);
 					v.rotate(ty*360,axisZ);
 //					if(rndBool(30)) tz*=tx;
@@ -932,10 +938,10 @@ void CloudsVisualSystemVerletForm::mwGenerate() {
 
 			}
 			else if(gridType==GRIDCYL) {
-				a=ty*360;
-				tz=tz*2+radMin*3;
-				v.set(tz*clothWidth,tx*clothWidth*2.5f,0);
-				v.rotate(a,axisY);
+				a=abs(bezierPoint(terrain.h,ty)+0.5f)+radMin;
+				//tz=tz*3+radMin;
+				v.set(ty*clothWidth*2,a*clothWidth,0);
+				v.rotate(tx*360,axisX);
 			}
 			else {
 				a=bezierPoint(terrain.h,tx+0.5f);
@@ -1066,6 +1072,8 @@ void CloudsVisualSystemVerletForm::selfSetup(){
 	activityMod=1;
 	vnormalMod=1;
 
+	meshCentroid=ofVec3f(0,0,0);
+
 	cBlack=ofFloatColor(0,0,0);
 	cWhite=ofFloatColor(0.4f,0.4f,0.4f);
 	cGray=ofFloatColor(0.2f,0.2f,0.2f);
@@ -1094,7 +1102,7 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 	printf("initColors(%d,-1)\n",ci);
 	initColors(ci,-1);
 	printf("initColors(%d,-1) - %d\n",ci,colors.size());
-	initColors(ci+450,-1);
+	initColors(ci+ofRandom(200,450),-1);
 	printf("done - initColors(%d,-1) == %d colors\n",ci,colors.size());
 
 	int n=colors.size();
@@ -1447,12 +1455,13 @@ void CloudsVisualSystemVerletForm::selfDraw(){
 	mat->begin();
 	ofPushMatrix();
 
-//	ofRotateX(modelRot.x+currentRotAngle.x);
-//	ofRotateZ(modelRot.z);
-//	ofRotateY(modelRot.y+currentRotAngle.y);
-
 	if(camEnabled) mwUpdateCamera();
+	ofRotateX(modelRot.x+currentRotAngle.x);
+	ofRotateZ(modelRot.z);
+	ofRotateY(modelRot.y+currentRotAngle.y);
 	mwLights();
+
+
 
 	if(lineMesh) {
 		ofNoFill();

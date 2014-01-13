@@ -14,12 +14,6 @@ class CloudsActEventArgs : public ofEventArgs {
 		: act(act){}
 	
 	CloudsAct* act;
-//	CloudsClip startClip;
-//	vector<CloudsSoundCue> soundCues;	
-//	string startQuestion;
-//	string startTopic;
-//	string soundQuestionKey;
-	
 };
 
 class CloudsClipEventArgs : public ofEventArgs {
@@ -89,7 +83,9 @@ class CloudsStoryEvents {
 	ofEvent<CloudsVisualSystemEventArgs> visualSystemEnded;
 
 	ofEvent<CloudsPreRollEventArgs> preRollRequested;
-    ofEvent<CloudsQuestionEventArgs> questionAsked;
+    ofEvent<CloudsQuestionEventArgs> questionProposed;
+    ofEvent<CloudsQuestionEventArgs> questionSelected;
+
 	ofEvent<CloudsTopicEventArgs> topicChanged;
 
 };

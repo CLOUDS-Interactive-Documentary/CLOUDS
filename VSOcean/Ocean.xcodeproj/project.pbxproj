@@ -314,6 +314,8 @@
 		642CF54A18327E5D007394FF /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		642CF54E18327E5D007394FF /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		642CF61018327ED2007394FF /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642CF5DC18327ED2007394FF /* ofxOculusRift.cpp */; };
+		A646D9DB1883389600DBBF37 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = A646D9DA1883389600DBBF37 /* ofxSystemTextbox.mm */; };
+		A646D9DC1883389600DBBF37 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = A646D9DA1883389600DBBF37 /* ofxSystemTextbox.mm */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -719,6 +721,8 @@
 		642CF55218327E5D007394FF /* OceanOculusDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceanOculusDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		642CF5DC18327ED2007394FF /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		642CF5DD18327ED2007394FF /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
+		A646D9D91883389600DBBF37 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
+		A646D9DA1883389600DBBF37 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -2018,6 +2022,8 @@
 			isa = PBXGroup;
 			children = (
 				E7E5EC611817C01400CA4196 /* CloudsRGBDCamera.cpp */,
+				A646D9D91883389600DBBF37 /* ofxSystemTextbox.h */,
+				A646D9DA1883389600DBBF37 /* ofxSystemTextbox.mm */,
 				E7E5EC621817C01400CA4196 /* CloudsRGBDCamera.h */,
 				E7E5EC631817C01400CA4196 /* CloudsRGBDVideoPlayer.cpp */,
 				E7E5EC641817C01400CA4196 /* CloudsRGBDVideoPlayer.h */,
@@ -2191,6 +2197,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Ocean" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -2397,6 +2405,7 @@
 				2ACA6B7D18725AC40029603B /* AudioFileUtils.cpp in Sources */,
 				2ACA6C0818725B0D0029603B /* CloudsAudioEvents.cpp in Sources */,
 				2ACA6BCD18725AC40029603B /* Mixer.cpp in Sources */,
+				A646D9DC1883389600DBBF37 /* ofxSystemTextbox.mm in Sources */,
 				642CF51B18327E5D007394FF /* b2Contact.cpp in Sources */,
 				642CF51C18327E5D007394FF /* ofxEasing.cpp in Sources */,
 				642CF51D18327E5D007394FF /* ofxEasingBack.cpp in Sources */,
@@ -2607,6 +2616,7 @@
 				E7CF78CC1753FECA006B7D41 /* ofxEasingExpo.cpp in Sources */,
 				2AAEF594180F136F005F33D3 /* b2PolygonContact.cpp in Sources */,
 				2ACA6B7618725AC40029603B /* ofxTonicSynth.cpp in Sources */,
+				A646D9DB1883389600DBBF37 /* ofxSystemTextbox.mm in Sources */,
 				E7CF78CD1753FECA006B7D41 /* ofxEasingLinear.cpp in Sources */,
 				2ACA6BC018725AC40029603B /* Effect.cpp in Sources */,
 				2AAEF581180F136F005F33D3 /* b2Distance.cpp in Sources */,
@@ -3068,7 +3078,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = OceanDebug;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3167,7 +3177,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = Ocean;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

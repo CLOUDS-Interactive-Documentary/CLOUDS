@@ -51,7 +51,8 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
             precomputemarkov(pitches[i]);
         }
         
-		instGain = 5.0;
+        whichdream = 0;
+		instGain = 7.5;
 		
         MASTERTEMPO = 120;
         AUTORUN = 0;
@@ -140,6 +141,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
     totalduration+=pad; // pad the total
     
     if(LUKEDEBUG) cout << "TOTAL DURATION: " << totalduration << endl;
+    else cout << "SOUND: MUSIC STARTED." << endl;
 
     // launch music FX chain
     startMusicFX(0, totalduration);
@@ -258,6 +260,34 @@ void CloudsSound::exitTunnel()
     PFIELD_SCHED(0., fd, PF_TUNNEL_BUS, "ramp_10");
 }
 
+void CloudsSound::enterClusterMap()
+{
+    string soundfile;
+    if(whichdream==0) soundfile = "cloudsdream_mix1.aif";
+    if(whichdream==1) soundfile = "cloudsdream_mix2.aif";
+    if(whichdream==2) soundfile = "cloudsdream_mix3.aif";
+    string ampsym = "clusteramp"; // needs to be unique per RT instance
+    float volume = 1.0; // how load does this sound play?
+    
+    if(LUKEDEBUG) cout << "sound: enterClusterMap()" << endl;
+    
+    stopMusic(); // prophylactic
+    
+    PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
+    STREAMSOUND_DYNAMIC(0, soundfile, 1.0, ampsym, PF_CLUSTERMAP_BUS);
+    
+}
+
+void CloudsSound::exitClusterMap()
+{
+    float fd = 5.0; // change to adjust fade time
+    
+    if(LUKEDEBUG) cout << "sound: exitClusterMap()" << endl;
+    
+    PFIELD_SCHED(0., fd, PF_CLUSTERMAP_BUS, "ramp_10");
+    whichdream = (whichdream+1)%3;
+}
+
 
 void CloudsSound::visualSystemBegan(CloudsVisualSystemEventArgs& args){
 	
@@ -273,8 +303,8 @@ void CloudsSound::clipBegan(CloudsClipEventArgs& args){
 }
 
 //--------------------------------------------------------------------
-void CloudsSound::questionAsked(CloudsQuestionEventArgs& args){
-	
+void CloudsSound::questionProposed(CloudsQuestionEventArgs& args){
+
 }
 
 //--------------------------------------------------------------------
@@ -284,6 +314,14 @@ void CloudsSound::topicChanged(CloudsTopicEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsSound::preRollRequested(CloudsPreRollEventArgs& args){
 	
+}
+//--------------------------------------------------------------------
+void CloudsSound::questionSelected(float fadeTime){
+    fadeMusic(fadeTime);
+}
+//--------------------------------------------------------------------
+void CloudsSound::questionSelected(CloudsQuestionEventArgs& args){
+    
 }
 
 //--------------------------------------------------------------------

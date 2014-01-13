@@ -36,6 +36,7 @@ class CloudsTransitionController {
 	CloudsTransitionController();
 	
 	void transitionFromIntro(float transitionOutDuration);
+    void transitionToFirstInterview(float transitionDuration);
 	void transitionToFirstVisualSystem(float transitionOutDuration);
 	void transitionToVisualSystem(float transitionOutDuration, float transitionInDuration);
 	void transitionToInterview(float transitionOutDuration, float transitionInDuration);

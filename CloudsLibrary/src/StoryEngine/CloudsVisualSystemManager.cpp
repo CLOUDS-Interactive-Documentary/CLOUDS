@@ -38,7 +38,7 @@
 #include "CloudsVisualSystemMandala.h"
 #include "CloudsVisualSystemMarchingCubes.h"
 #include "CloudsVisualSystemMazeGenerator.h"
-//#include "CloudsVisualSystemMazeGenerator2.h"
+#include "CloudsVisualSystemMazeGenerator2.h"
 #include "CloudsVisualSystemMemory.h"
 #include "CloudsVisualSystemMetaballs.h"
 #include "CloudsVisualSystemNbody.h"
@@ -141,7 +141,7 @@ struct Mapping {
 	{ "Mandala", &fCreate<CloudsVisualSystemMandala> },
 	{ "MarchingCubes", &fCreate<CloudsVisualSystemMarchingCubes> },
 	{ "MazeGenerator", &fCreate<CloudsVisualSystemMazeGenerator> },
-//    { "MazeGenerator2", &fCreate<CloudsVisualSystemMazeGenerator2> },
+   { "MazeGenerator2", &fCreate<CloudsVisualSystemMazeGenerator2> },
 	{ "Memory", &fCreate<CloudsVisualSystemMemory> },
 //	{ "Metaballs", &fCreate<CloudsVisualSystemMetaballs> },
 //	{ "Nbody", &fCreate<CloudsVisualSystemNbody> },
@@ -693,6 +693,14 @@ vector<int> CloudsVisualSystemManager::getPresetIndicesForSystem(string systemNa
     return indices;
 }
 
+void CloudsVisualSystemManager::loadCachedDataForSystems(){
+    //making a local copy just to init and cache the data.
+#ifndef CLOUDS_NO_VS
+        CloudsVisualSystemTwitter::getOldTweeterData();
+        CloudsVisualSystemTwitter::getNewTweeterData();
+#endif
+    
+}
 //--------------------------------------------------------------------
 //vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForSystem(string systemName){
 //    vector<CloudsVisualSystemPreset> systemPresets;

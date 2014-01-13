@@ -13,6 +13,10 @@ bool logsort(pair<float,string> a, pair<float,string> b ){
     return a.first > b.first;
 }
 
+bool topic_score_sort(pair<string,int> a, pair<string,int>b ){
+    return a.second > b.second;
+}
+
 CloudsStoryEngine::CloudsStoryEngine(){
     parser = NULL;
     visualSystems = NULL;
@@ -61,7 +65,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
 	
 	bCreateLog = true;
 	bLogTopicDetails = true;
-	bLogClipDetails = false;
+	bLogClipDetails = true;
 	bLogVisualSystemDetails = true;
 
 }
@@ -223,7 +227,7 @@ void CloudsStoryEngine::guiEvent(ofxUIEventArgs &e)
                 cout << "SELECTED CLIP ** " << clip.getLinkName() << " WITH TOPIC " << topic << endl;
             
                 buildAct(runTest, clip, topic);
-                updateRunData();
+//                updateRunData();
             }
             else{
                 ofLogError("CloudsStoryEngine::guiEvent") << "Selected index  is " << b->getSelectedIndeces()[0] << " has no questions" << endl;
@@ -232,26 +236,26 @@ void CloudsStoryEngine::guiEvent(ofxUIEventArgs &e)
     }
 }
 
-void CloudsStoryEngine::updateRunData(){
-    
-    if(runTest.timesOnCurrentTopicHistory.size()>0){
-        runGui->removeWidgets();
-        
-        map<string, int>::iterator it;
-        runTopicCount.clear();
-        for(it =runTest.timesOnCurrentTopicHistory.begin(); it != runTest.timesOnCurrentTopicHistory.end(); it++){
-            string topicString = it->first + " : " + ofToString(it->second);
-            runTopicCount.push_back(topicString);
-        }
-        runGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-        ofxUIDropDownList* topicCount   = runGui->addDropDownList("RUN TOPIC COUNT", runTopicCount);
-        
-        topicCount->setAutoClose(true);
-        topicCount->setShowCurrentSelected(true);
-        topicCount->setAllowMultiple(false);
-
-    }
-}
+//void CloudsStoryEngine::updateRunData(){
+//    
+//    if(runTest.timesOnCurrentTopicHistory.size()>0){
+//        runGui->removeWidgets();
+//        
+//        map<string, int>::iterator it;
+//        runTopicCount.clear();
+//        for(it =runTest.timesOnCurrentTopicHistory.begin(); it != runTest.timesOnCurrentTopicHistory.end(); it++){
+//            string topicString = it->first + " : " + ofToString(it->second);
+//            runTopicCount.push_back(topicString);
+//        }
+//        runGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+//        ofxUIDropDownList* topicCount   = runGui->addDropDownList("RUN TOPIC COUNT", runTopicCount);
+//        
+//        topicCount->setAutoClose(true);
+//        topicCount->setShowCurrentSelected(true);
+//        topicCount->setAllowMultiple(false);
+//
+//    }
+//}
 
 void CloudsStoryEngine::saveGuiSettings(){
     gui->saveSettings(GetCloudsDataPath() +"storyEngineParameters/gui.xml");
@@ -278,11 +282,53 @@ void CloudsStoryEngine::setCustomAct(CloudsAct* act){
 }
 
 #pragma mark INIT ACT
+//if we are just given a run, build a topic from a new
+CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run){
+    if(run.accumuluatedTopics.size() == 0 || run.clipHistory.size() == 0){
+        ofLogError("CloudsStoryEngine::buildAct") << " building an act with no history!";
+        return NULL;
+    }
+    
+    cout << " CREATE NEW ACT. Previous act had " << run.accumuluatedTopics.size() << " topics" << endl;
+    
+    int maxTopic = 0;
+    string topic = "";
+    map<string, int>::iterator it;
+    vector< pair<string,int> > topicCountPairs;
+    for(it = run.accumuluatedTopics.begin(); it != run.accumuluatedTopics.end(); it++){
+        topicCountPairs.push_back( make_pair(it->first, it->second));
+    }
+    
+    sort(topicCountPairs.begin(), topicCountPairs.end(), topic_score_sort);
+    
+    string validTopic = "";
+    for(int i = 0; i < topicCountPairs.size(); i++){
+        if(!ofContains(run.topicHistory, topicCountPairs[i].first)){
+            validTopic = topicCountPairs[i].first;
+            break;
+        }
+    }
+    
+    cout << " found most preferable starting topic: " << validTopic << endl;
+    
+    if(validTopic == ""){
+        //TODO pick based on topic families!
+        ofLogError("CloudsStoryEngine::buildAct") << "no unvisted topics found in act. Need to select from families" << endl;
+        return NULL;
+    }
+    
+    //build a new act!
+    CloudsClip dummy;
+    return buildAct(run, run.clipHistory.back(), validTopic, false);
+}
+
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed){
+
 	if(seed.getKeywords().size() == 0){
 		ofLogError("CloudsStoryEngine::buildAct") << seed.getLinkName() << " contains no keywords!";
 		return NULL;
 	}
+    
     return buildAct(run, seed, seed.getKeywords()[ ofRandom(seed.getKeywords().size()) ]);
 }
 
@@ -296,15 +342,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 		return NULL;
 	}
 	
-    //the run now listens to act events and is updated through them.
-    //making a local copy of the current run to build the new act.
-//    vector<CloudsClip> localClipHistory = run.clipHistory;
-//    vector<string> localPresetHistory = run.presetHistory;
-//    vector<string> localTopicHistory = run.topicHistory;
-	///????
-//    map<string, int> localTimesOnCurrentTopicHistory = run.timesOnCurrentTopicHistory;
+    bLogClipDetails = true;
     
-	
 	//MIN VS WAIT TIME
 	//MIN/MAX VS TIME
 	//MIN/MAX INTERSTITCHAL TIME
@@ -312,8 +351,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	//MIN MAX CLIPS PER TOPIC
 	
 	//# TOPICS PER ACT
-
-	
+    
 	//begin laying down clips based on seed topic
 	
 	//when we encounter MIN VS WAIT TIME
@@ -325,6 +363,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	//	allow VO to follow interstichal VS
 	//  if topic is last topic, revert to original topic -- promote conclusions + gold (last clip?)
 
+    run.accumuluatedTopics.clear();
+    
 	//clear variables
 	clearDichotomiesBalance();
 
@@ -348,50 +388,45 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 //    state.run = 2; //RIGGED TO ACT TWO
 
 	state.log << "SEED TOPIC:  " << seedTopic << endl << "SEED CLIP: " << seed.getLinkName() << endl;
-	//PLAY FIRST CLIP
-	if(playSeed){
-		state.log << "\tPlaying seed" << endl;
-		
-		state.duration = state.act->addClip(state.clip,
-											 state.topic,
-											 state.duration,
-											 dichotomies);
-		
-		state.clipHistory.push_back(state.clip);
-		state.timesOnCurrentTopic++;
-	}
-	
 	state.topicHistory.push_back(seedTopic);
 	
-	//FIND MATCHING VISUAL SYSTEM
-  	state.preset = selectVisualSystem(state, false);
-	state.visualSystemStartTime = 0;
-	
-	if(!state.preset.randomlySelected){
-		state.log << "First visual system preset is selected : " <<
-					state.preset.getID() << " for topic : " <<
-					seedTopic << " and clip " <<
-					state.clip.getLinkName() << endl;
-		
-		state.presetHistory.push_back(state.preset.getID());
-		
-		if (!state.preset.indefinite) {
-			//definite time that this preset must end
-			//TODO: CONFIRM PRESET IS NOT TOO SHORT FOR VO CLIP!
-			if(state.preset.duration < state.clip.getDuration()){
-				state.log << "ERROR: Definite Preset " << state.preset.getID() << " too short for clip " << state.clip.getID() << endl;
-			}
-			state.visualSystemEndTime = state.preset.duration;
-		}
-		else{
-			state.visualSystemEndTime = maxVisualSystemRunTime;
-		}
-		state.visualSystemRunning = true;
-		
-	}
-	else {
-		state.log << "ERROR: No preset found for intro clip " << state.clip.getLinkName() << endl;
-		ofLogError("CloudsStoryEngine::buildAct") << "No preset found for intro clip " << state.clip.getLinkName();
+    //PLAY FIRST CLIP
+	if(playSeed){
+		state.log << "\tPlaying seed" << endl;
+		state.duration = state.act->addClip(state.clip, state.topic, 0, dichotomies);
+		state.clipHistory.push_back(state.clip);
+		state.timesOnCurrentTopic++;
+        
+        //FIND MATCHING VISUAL SYSTEM
+        state.preset = selectVisualSystem(state, false);
+        state.visualSystemStartTime = 0;
+        
+        if(!state.preset.randomlySelected){
+            state.log << "First visual system preset is selected : " <<
+            state.preset.getID() << " for topic : " <<
+            seedTopic << " and clip " <<
+            state.clip.getLinkName() << endl;
+            
+            state.presetHistory.push_back(state.preset.getID());
+            
+            if (!state.preset.indefinite) {
+                //definite time that this preset must end
+                //TODO: CONFIRM PRESET IS NOT TOO SHORT FOR VO CLIP!
+                if(state.preset.duration < state.clip.getDuration()){
+                    state.log << "ERROR: Definite Preset " << state.preset.getID() << " too short for clip " << state.clip.getID() << endl;
+                }
+                state.visualSystemEndTime = state.preset.duration;
+            }
+            else{
+                state.visualSystemEndTime = maxVisualSystemRunTime;
+            }
+            state.visualSystemRunning = true;
+            
+        }
+        else {
+            state.log << "ERROR: No preset found for intro clip " << state.clip.getLinkName() << endl;
+            ofLogError("CloudsStoryEngine::buildAct") << "No preset found for intro clip " << state.clip.getLinkName();
+        }
 	}
 	
     //The run now listens to act events and is updated via them
@@ -466,9 +501,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 		
         ///////////////// QUESTIONS
         //adding all option clips with questions
-		if(state.topicNum > 1 && state.topicNum < maxTopicsPerAct){
+//		if(state.topicNum > 1 && state.topicNum < maxTopicsPerAct){
 			addQuestions(state, questionClips);
-        }
+  //      }
         /////////////////
 		
 		///////////////// DIOCHOTOMIES
@@ -504,9 +539,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 		//BASED ON CURRENT VS, ETC DECIDE HOW TO PLACE IT IN TIME AFTER PREVIOUS CLIP
 		float clipStartTime = state.duration + (state.visualSystemRunning ? voClipGapTime : clipGapTime);
 		state.duration = state.act->addClip(state.clip,
-																 state.topic,
-																 clipStartTime,
-																 dichotomies);
+                                            state.topic,
+                                            clipStartTime,
+											dichotomies);
 		
 		state.clipHistory.push_back(state.clip);
 		
@@ -514,7 +549,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 		// consider if we are at the end of topic
 		
 		//TODO: START A MANDATORY VS IF WE ARE IN FREE TOPIC
-		
 		if(state.visualSystemRunning){
 			if(bLogVisualSystemDetails) state.log << state.duration << "\tVISUALS Currently running \"" << state.preset.getID() << "\" time [" << state.visualSystemStartTime << " - " << state.visualSystemEndTime << "] " << (state.preset.indefinite ? "indefinite" : "definite") << endl;
 
@@ -540,16 +574,17 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					state.act->addNote("Extend VS End", state.visualSystemEndTime);
 					
 					state.duration = state.act->addVisualSystem(state.preset,
-																					 state.visualSystemStartTime,
-																					 state.visualSystemEndTime);
+                                                                state.visualSystemStartTime,
+                                                                state.visualSystemEndTime);
 					state.presetHistory.push_back(state.preset.getID());
 					
-					if(bLogVisualSystemDetails)state.log << " - FREE TOPIC Extending VS end time to " << state.visualSystemEndTime << " past the end of " << state.clip.getLinkName() << endl;
+					if(bLogVisualSystemDetails) state.log << " - FREE TOPIC Extending VS end time to " << state.visualSystemEndTime << " past the end of " << state.clip.getLinkName() << endl;
 
 				}
 				//else correct the end time to fit with the clip we just added
 				else {
 					//VO should be entirely covered. This may cause a rare problem with definite clips that don't cover the whole VO
+                    //Also the first clip of an act should be covered
 					if(state.clip.voiceOverAudio){
 						state.visualSystemEndTime = state.duration;
 						if(bLogVisualSystemDetails) state.log << state.duration << "- moving end time over top of VO " << state.clip.getLinkName() << endl;
@@ -561,8 +596,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					}
 					
 					state.act->addVisualSystem(state.preset,
-													  state.visualSystemStartTime,
-													  state.visualSystemEndTime);
+                                               state.visualSystemStartTime,
+                                               state.visualSystemEndTime);
+                    
 					state.presetHistory.push_back( state.preset.getID() );
 				}
 				
@@ -572,6 +608,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 			//still going, extend the visual out for longer over the clip
 		}
 		else {
+            
 			if(bLogVisualSystemDetails) state.log << state.duration << "\tVISUALS Not run in " << state.duration - state.visualSystemEndTime << " seconds" << endl;
 
 			//Have we waited long enough to see a visual?
@@ -580,12 +617,11 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 			//	  if it has sound, cue the sound to end and start the visual at the end of the clip, push the duration forward
 			//    otherwise start it inside of our clip and keep going
 			
-			if(state.duration - state.visualSystemEndTime > maxVisualSystemGapTime){
+			if(state.duration - state.visualSystemEndTime > maxVisualSystemGapTime || state.visualSystemEndTime == 0){
 				CloudsVisualSystemPreset nextPreset = selectVisualSystem(state, true);
 				if(!nextPreset.randomlySelected){
 						
 					state.preset = nextPreset;
-					
 					
 					//if we have sound schedule this at the end of the clip and add it immediately to ensure no VO comes in
 					//COMPUTE START TIME
@@ -594,7 +630,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					if(state.preset.hasSound()){
 						state.visualSystemStartTime = state.duration;
 					}
-					else{
+                    //don't move the start clip to the center
+					else if(state.visualSystemEndTime != 0){
 						state.visualSystemStartTime = state.duration - state.clip.getDuration() / 2.0;
 					}
 					
@@ -637,8 +674,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	
 	if(state.visualSystemRunning){
 		state.duration = state.act->addVisualSystem(state.preset,
-																		 state.visualSystemStartTime,
-																		 state.visualSystemEndTime);
+                                                    state.visualSystemStartTime,
+													state.visualSystemEndTime);
 
 		if(bLogVisualSystemDetails) state.log << state.duration << " Commiting final preset " << state.preset.getID() << " at the end of the act " <<endl;
 	}
@@ -845,7 +882,7 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVis
 		
 		//if the clip and the preset are linked
 		if(visualSystems->isClipLinked(potentialNextPreset.getID(), state.clip.getID())){
-			linkedClipScore = 10;
+			linkedClipScore = 15;
 		}
     }
 	
@@ -1059,7 +1096,7 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip& poten
     if(!ofContains(potentialNextClip.getKeywords(), state.topic) &&
 	   state.timesOnCurrentTopic < minTimesOnTopic)
 	{
-        cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: this clip is a premature digression" << endl;
+        cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: this clip (topics " << ofJoinString(potentialNextClip.getKeywords(),", ") << " is a premature digression from topic " << state.topic << ". We are clip " << state.timesOnCurrentTopic << " of " << minTimesOnTopic << endl;
 		return 0;
 	}
 	

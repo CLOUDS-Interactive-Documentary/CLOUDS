@@ -68,7 +68,7 @@ void CloudsVisualSystemYellowTail::selfDrawBackground(){
 	ofPushStyle();
 	ofEnableAlphaBlending();
 	
-	glEnable(GL_SMOOTH);
+	//glEnable(GL_SMOOTH);
 	glEnable(GL_LINE_SMOOTH);
 	ofSetLineWidth(1.0f);
     for (vector<Gesture *>::iterator gesture = fadingGestures.begin(); gesture != fadingGestures.end(); gesture++) {
