@@ -1068,14 +1068,17 @@ ofFloatColor CloudsVisualSystemTwitter::getRGBfromHSV(ofFloatColor& hsv){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemTwitter::selfDraw()
 {
-    
     ofPushStyle();
     ofPushMatrix();
     
     ofSetBackgroundColor(0,0,0);
+    
     glDisable(GL_DEPTH_TEST);
+    glDisable(GL_LINE_SMOOTH);
+    
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofEnableSmoothing();
+    
 	ofFloatColor lineNodeBase = getRGBfromHSV(lineNodeBaseHSV);
 	ofFloatColor lineEdgeBase = getRGBfromHSV(lineEdgeBaseHSV);
 	ofFloatColor lineNodePop = getRGBfromHSV(lineNodePopHSV);
@@ -1088,6 +1091,7 @@ void CloudsVisualSystemTwitter::selfDraw()
     if(bRenderMesh){
         
 ////POINTS
+
 		pointsShader.begin();
 		
 		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
@@ -1112,12 +1116,15 @@ void CloudsVisualSystemTwitter::selfDraw()
         
         ofEnablePointSprites();
         ofDisableArbTex();
+        
+        
+        
         nodeMeshVbo.draw(ofGetGLPrimitiveMode(OF_PRIMITIVE_POINTS), 0, nodeMeshNumVertices);
         ofEnableArbTex();
         ofDisablePointSprites();
 		pointsShader.end();
-        
 /////END POINTS
+        
         
         
 		lineShader.begin();
@@ -1151,11 +1158,14 @@ void CloudsVisualSystemTwitter::selfDraw()
 								edgeInterpolateExponent);
 		lineShader.setUniformTexture("activityMap", activityMap, 1);
         lineShader.setUniform1f("synapseLevel",synapseLevel);
+
         edgeMeshVbo.draw(ofGetGLPrimitiveMode(OF_PRIMITIVE_LINES), 0, edgeMeshNumVertices);
 		lineShader.end();
+
     }
     
-    if(bRenderText){
+    if(bRenderText)
+    {
         for(int i = 0; i < activeTweeters.size(); i++){
 //            activeTweeters[i]->textDecayRate *= edgeDecayRate;
 //            string test  = " : " + ofToString(activeTweeters[i]->position);

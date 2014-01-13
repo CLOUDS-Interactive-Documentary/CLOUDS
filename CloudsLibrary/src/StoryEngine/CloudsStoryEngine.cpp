@@ -281,6 +281,35 @@ void CloudsStoryEngine::setCustomAct(CloudsAct* act){
 	customAct = act;
 }
 
+vector<string> CloudsStoryEngine::getValidTopicsForNextAct(CloudsRun& run){
+//    if(run.accumuluatedTopics.size() == 0 || run.clipHistory.size() == 0){
+//        ofLogError("CloudsStoryEngine::buildAct") << " building an act with no history!";
+//        return NULL;
+//    }
+    
+    int maxTopic = 0;
+    string topic = "";
+    map<string, int>::iterator it;
+    vector<string> topics;
+    vector< pair<string,int> > topicCountPairs;
+    for(it = run.accumuluatedTopics.begin(); it != run.accumuluatedTopics.end(); it++){
+        topicCountPairs.push_back( make_pair(it->first, it->second));
+        topics.push_back(it->first);
+    }
+    
+//    sort(topicCountPairs.begin(), topicCountPairs.end(), topic_score_sort);
+//    
+//    string validTopic = "";
+//    for(int i = 0; i < topicCountPairs.size(); i++){
+////        if(!ofContains(run.topicHistory, topicCountPairs[i].first)){
+////            validTopic = topicCountPairs[i].first;
+////            break;
+////        }
+//    }
+//    cout << " found most preferable starting topic: " << validTopic << endl;
+    return topics;
+}
+
 #pragma mark INIT ACT
 //if we are just given a run, build a topic from a new
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run){
@@ -808,6 +837,10 @@ CloudsVisualSystemPreset CloudsStoryEngine::selectVisualSystem(CloudsStoryState&
 
     vector<CloudsVisualSystemPreset> presets = visualSystems->getPresetsForKeywords(state.clip.getKeywords(),
 																					state.clip.getLinkName());
+    //JG RIG!!
+//    return presets[3];
+    
+    
     CloudsVisualSystemPreset preset;
     float topScore = 0;
 	for(int i = 0; i < presets.size(); i++){
