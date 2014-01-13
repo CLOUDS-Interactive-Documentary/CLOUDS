@@ -40,6 +40,7 @@
 	rgbdVisualSystem.playSystem();
 #ifdef OCULUS_RIFT
     rgbdVisualSystem.hud = &hud;
+    rgbdVisualSystem.setupHUDGui();
 	rgbdVisualSystem.loadPresetGUISFromName("RGBDOC");
 #else
 	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
@@ -113,6 +114,7 @@
 
 - (void)exit
 {
+    rgbdVisualSystem.exit();
     parser.saveSpeakersVolume(GetCloudsDataPath()+"sound/SpeakersVolume.txt");
 }
 
