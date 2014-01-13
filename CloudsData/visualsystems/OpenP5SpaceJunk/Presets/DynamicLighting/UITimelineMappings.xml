@@ -4,8 +4,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>X</WidgetName>
-                <WidgetID>6</WidgetID>
+                <WidgetName>DV</WidgetName>
+                <WidgetID>26</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -20,16 +20,16 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>AV</WidgetName>
-                <WidgetID>18</WidgetID>
+                <WidgetName>X</WidgetName>
+                <WidgetID>6</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>DV</WidgetName>
-                <WidgetID>26</WidgetID>
+                <WidgetName>AV</WidgetName>
+                <WidgetID>18</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>

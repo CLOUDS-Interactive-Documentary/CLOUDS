@@ -3,7 +3,7 @@
     <Name>BgSettings</Name>
     <IsMinified>0</IsMinified>
     <XPosition>425.000000000</XPosition>
-    <YPosition>215.000000000</YPosition>
+    <YPosition>31.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BRI</Name>
-    <Value>65.320198059</Value>
+    <Value>25.123151779</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,5 +43,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BRI2</Name>
-    <Value>21.354679108</Value>
+    <Value>15.073891640</Value>
 </Widget>
