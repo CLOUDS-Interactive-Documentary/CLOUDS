@@ -969,6 +969,7 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 void CloudsVisualSystemRGBD::clearQuestions(){
 	rightPortal.question = "";
 	leftPortal.question = "";
+    leftPortal.selected = false;
 }
 
 //JG NEW TRANSITION STUBS<----- James, I love these! thank you, Lars

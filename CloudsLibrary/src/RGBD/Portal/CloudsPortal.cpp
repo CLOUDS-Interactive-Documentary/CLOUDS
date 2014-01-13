@@ -104,6 +104,7 @@ void CloudsPortal::update(){
         }
         else if(selected){
             selected = false;
+            selectedPercentComplete = 0.0;
         }
 	}
 	

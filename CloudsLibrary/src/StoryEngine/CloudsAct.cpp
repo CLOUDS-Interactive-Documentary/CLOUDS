@@ -247,7 +247,7 @@ void CloudsAct::populateTime(){
 }
 
 bool CloudsAct::startsWithVisualSystem(){
-    return visualSystemItems.size() > 0 && visualSystemItems[0].startTime == 0;
+    return visualSystems.size() > 0 && visualSystemItems[visualSystems[0].getID() ].startTime == 0;
 }
 
 bool CloudsAct::isClipEnergyShift(CloudsClip& clip){

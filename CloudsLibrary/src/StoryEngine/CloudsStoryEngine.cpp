@@ -65,7 +65,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
 	
 	bCreateLog = true;
 	bLogTopicDetails = true;
-	bLogClipDetails = true;
+	bLogClipDetails = false;
 	bLogVisualSystemDetails = true;
 
 }
@@ -342,8 +342,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 		return NULL;
 	}
 	
-    bLogClipDetails = true;
-    
+//    bLogClipDetails = true;
+    bLogClipDetails = false;
 	//MIN VS WAIT TIME
 	//MIN/MAX VS TIME
 	//MIN/MAX INTERSTITCHAL TIME
@@ -380,6 +380,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	state.run = run.actCount;
 	state.topicNum = 1;
 	state.visualSystemRunning = false;
+    state.visualSystemStartTime = 0;
     state.visualSystemEndTime = 0;
 	state.duration = 0;
 	state.timesOnCurrentTopic = 0;
@@ -503,7 +504,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
         //adding all option clips with questions
 //		if(state.topicNum > 1 && state.topicNum < maxTopicsPerAct){
 			addQuestions(state, questionClips);
-  //      }
+//      }
         /////////////////
 		
 		///////////////// DIOCHOTOMIES
@@ -535,16 +536,16 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 			state.freeTopic = true;
 		}
 
-		///add the clip!
+		///ADD CLIP!!
 		//BASED ON CURRENT VS, ETC DECIDE HOW TO PLACE IT IN TIME AFTER PREVIOUS CLIP
 		float clipStartTime = state.duration + (state.visualSystemRunning ? voClipGapTime : clipGapTime);
 		state.duration = state.act->addClip(state.clip,
                                             state.topic,
                                             clipStartTime,
 											dichotomies);
-		
 		state.clipHistory.push_back(state.clip);
 		
+        
 		// BASED ON CURRENT CLIP, DECIDE VS
 		// consider if we are at the end of topic
 		
@@ -567,7 +568,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					}
 					else {
 						state.visualSystemEndTime = MIN(state.duration + visualSystemTopicEndExtend,
-															   state.visualSystemStartTime + state.preset.duration);
+                                                        state.visualSystemStartTime + state.preset.duration);
 					}
 					
 					state.act->addNote("Extend VS Start", state.visualSystemStartTime);
@@ -595,6 +596,10 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 						if(bLogVisualSystemDetails) state.log << " - moving end time to middle of " << state.clip.getLinkName() << ", time " << state.visualSystemEndTime << endl;
 					}
 					
+                    if(state.visualSystemStartTime == 0){
+                        cout << "ADDED VS AT BEGINNING!" << endl;
+                    }
+
 					state.act->addVisualSystem(state.preset,
                                                state.visualSystemStartTime,
                                                state.visualSystemEndTime);
@@ -627,7 +632,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					//COMPUTE START TIME
 					//step back into the clip
                     //TODO: respect VO & SOUND
-					if(state.preset.hasSound()){
+					if(state.preset.soundExcludeVO){
 						state.visualSystemStartTime = state.duration;
 					}
                     //don't move the start clip to the center
@@ -644,19 +649,23 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 							state.visualSystemStartTime + MIN(maxVisualSystemRunTime, state.preset.duration);
 					}
 					//TODO: RESPECT HAS SOUND
-					if(state.preset.hasSound()){
+					if(state.preset.soundExcludeVO){
 						//commit the visual system
 						//setting the current duration here ensures the next clip starts after this one is over
 						state.act->addNote("Sound VS Start", state.duration);
 						state.duration = state.act->addVisualSystem(state.preset,
-																						 state.visualSystemStartTime,
-																						 state.visualSystemEndTime);
+                                                                    state.visualSystemStartTime,
+                                                                    state.visualSystemEndTime);
 						state.act->addNote("Sound VS End", state.duration);
 						state.presetHistory.push_back(state.preset.getID());
 						state.log << state.duration << "\t\tChose new AUDIO Preset " << state.preset.getID() << "[" << state.visualSystemStartTime << " - " << state.visualSystemEndTime << "] - Pushing All clips forward" << endl;
 					}
 					//run it indefinitely with clips underneath
 					else {
+                        if(state.preset.soundAllowVO){
+                            //TODO: Cut the music!
+                        }
+                        
 						state.visualSystemRunning = true;
 						
 						if(bLogVisualSystemDetails)state.log << state.duration << "\t\tChose new Preset " << state.preset.getID() << " time [" << state.visualSystemStartTime << " - " << state.visualSystemEndTime << "] " << (state.preset.indefinite ? "indefinite" : "definite") << endl;
@@ -796,8 +805,8 @@ CloudsVisualSystemPreset CloudsStoryEngine::selectVisualSystem(CloudsStoryState&
     float topScore = 0;
 	for(int i = 0; i < presets.size(); i++){
 		string presetLog;
-        //TODO: RESPECT ALLOW VO
-		if(presets[i].hasSound() && !allowSound){
+        //if we don't allow sound presets and this preset excludes voice over, don't consider it
+		if(presets[i].soundExcludeVO && !allowSound){
 			continue;
 		}
 		presets[i].currentScore = scoreForVisualSystem(state, presets[i]);
