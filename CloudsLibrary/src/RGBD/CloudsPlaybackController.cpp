@@ -317,7 +317,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(!bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
             
             bQuestionAsked = true;
-            transitionController.transitionWithQuestion(2.0, 1.0);
+            //currently QUESTION_IN is very short, placeholder for wormhole
+            transitionController.transitionWithQuestion(2.0, 0.1);
             sound.questionSelected(2.0);
         }
     }
@@ -618,11 +619,15 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 		ofLogError("CloudsPlaybackController::visualSystemBegan") << "Triggered visual system while still showing one";
 	}
 	
-	rgbdVisualSystem->clearQuestions();
-	
+    if(bQuestionAsked){
+        //Don't run the system
+        return;
+    }
+    
+	//rgbdVisualSystem->clearQuestions();
+
 	nextVisualSystemPreset = args.preset;
-	
-	
+		
 	//	cout << "CloudsPlaybackController::showVisualSystem SETTING NEXT SYSTEM TO " << nextVisualSystem.presetName << endl;
 	if(nextVisualSystemPreset.system == NULL){
 		ofLogError("CloudsPlaybackController::showVisualSystem") << "Incoming system is NULL";

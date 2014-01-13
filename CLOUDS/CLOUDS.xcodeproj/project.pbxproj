@@ -24,6 +24,63 @@
 		A600C15D188105C20041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C145188105C10041787F /* ofxSubtitleUnit.cpp */; };
 		A600C15E188105C20041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C145188105C10041787F /* ofxSubtitleUnit.cpp */; };
 		A600C15F188105C20041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C145188105C10041787F /* ofxSubtitleUnit.cpp */; };
+		A646D9FA188351EA00DBBF37 /* brushedLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9EF188351EA00DBBF37 /* brushedLine.cpp */; };
+		A646D9FB188351EA00DBBF37 /* brushedLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9EF188351EA00DBBF37 /* brushedLine.cpp */; };
+		A646D9FC188351EA00DBBF37 /* brushedLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9EF188351EA00DBBF37 /* brushedLine.cpp */; };
+		A646D9FD188351EA00DBBF37 /* CloudsVisualSystemDrawnLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9F1188351EA00DBBF37 /* CloudsVisualSystemDrawnLine.cpp */; };
+		A646D9FE188351EA00DBBF37 /* CloudsVisualSystemDrawnLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9F1188351EA00DBBF37 /* CloudsVisualSystemDrawnLine.cpp */; };
+		A646D9FF188351EA00DBBF37 /* CloudsVisualSystemDrawnLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9F1188351EA00DBBF37 /* CloudsVisualSystemDrawnLine.cpp */; };
+		A646DA00188351EA00DBBF37 /* curvedLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9F3188351EA00DBBF37 /* curvedLine.cpp */; };
+		A646DA01188351EA00DBBF37 /* curvedLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9F3188351EA00DBBF37 /* curvedLine.cpp */; };
+		A646DA02188351EA00DBBF37 /* curvedLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9F3188351EA00DBBF37 /* curvedLine.cpp */; };
+		A646DA03188351EA00DBBF37 /* drawnLineApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9F5188351EA00DBBF37 /* drawnLineApp.cpp */; };
+		A646DA04188351EA00DBBF37 /* drawnLineApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9F5188351EA00DBBF37 /* drawnLineApp.cpp */; };
+		A646DA05188351EA00DBBF37 /* drawnLineApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9F5188351EA00DBBF37 /* drawnLineApp.cpp */; };
+		A646DA06188351EA00DBBF37 /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9F7188351EA00DBBF37 /* lineMatchUtils.cpp */; };
+		A646DA07188351EA00DBBF37 /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9F7188351EA00DBBF37 /* lineMatchUtils.cpp */; };
+		A646DA08188351EA00DBBF37 /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9F7188351EA00DBBF37 /* lineMatchUtils.cpp */; };
+		A646DA691883521700DBBF37 /* shArrays.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA3B1883521700DBBF37 /* shArrays.c */; };
+		A646DA6A1883521700DBBF37 /* shArrays.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA3B1883521700DBBF37 /* shArrays.c */; };
+		A646DA6B1883521700DBBF37 /* shArrays.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA3B1883521700DBBF37 /* shArrays.c */; };
+		A646DA6C1883521700DBBF37 /* shContext.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA3D1883521700DBBF37 /* shContext.c */; };
+		A646DA6D1883521700DBBF37 /* shContext.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA3D1883521700DBBF37 /* shContext.c */; };
+		A646DA6E1883521700DBBF37 /* shContext.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA3D1883521700DBBF37 /* shContext.c */; };
+		A646DA6F1883521700DBBF37 /* shExtensions.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA401883521700DBBF37 /* shExtensions.c */; };
+		A646DA701883521700DBBF37 /* shExtensions.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA401883521700DBBF37 /* shExtensions.c */; };
+		A646DA711883521700DBBF37 /* shExtensions.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA401883521700DBBF37 /* shExtensions.c */; };
+		A646DA721883521700DBBF37 /* shGeometry.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA421883521700DBBF37 /* shGeometry.c */; };
+		A646DA731883521700DBBF37 /* shGeometry.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA421883521700DBBF37 /* shGeometry.c */; };
+		A646DA741883521700DBBF37 /* shGeometry.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA421883521700DBBF37 /* shGeometry.c */; };
+		A646DA751883521700DBBF37 /* shImage.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA441883521700DBBF37 /* shImage.c */; };
+		A646DA761883521700DBBF37 /* shImage.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA441883521700DBBF37 /* shImage.c */; };
+		A646DA771883521700DBBF37 /* shImage.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA441883521700DBBF37 /* shImage.c */; };
+		A646DA781883521700DBBF37 /* shPaint.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA461883521700DBBF37 /* shPaint.c */; };
+		A646DA791883521700DBBF37 /* shPaint.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA461883521700DBBF37 /* shPaint.c */; };
+		A646DA7A1883521700DBBF37 /* shPaint.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA461883521700DBBF37 /* shPaint.c */; };
+		A646DA7B1883521700DBBF37 /* shParams.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA481883521700DBBF37 /* shParams.c */; };
+		A646DA7C1883521700DBBF37 /* shParams.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA481883521700DBBF37 /* shParams.c */; };
+		A646DA7D1883521700DBBF37 /* shParams.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA481883521700DBBF37 /* shParams.c */; };
+		A646DA7E1883521700DBBF37 /* shPath.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA491883521700DBBF37 /* shPath.c */; };
+		A646DA7F1883521700DBBF37 /* shPath.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA491883521700DBBF37 /* shPath.c */; };
+		A646DA801883521700DBBF37 /* shPath.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA491883521700DBBF37 /* shPath.c */; };
+		A646DA811883521700DBBF37 /* shPipeline.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA4B1883521700DBBF37 /* shPipeline.c */; };
+		A646DA821883521700DBBF37 /* shPipeline.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA4B1883521700DBBF37 /* shPipeline.c */; };
+		A646DA831883521700DBBF37 /* shPipeline.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA4B1883521700DBBF37 /* shPipeline.c */; };
+		A646DA841883521700DBBF37 /* shVectors.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA4C1883521700DBBF37 /* shVectors.c */; };
+		A646DA851883521700DBBF37 /* shVectors.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA4C1883521700DBBF37 /* shVectors.c */; };
+		A646DA861883521700DBBF37 /* shVectors.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA4C1883521700DBBF37 /* shVectors.c */; };
+		A646DA871883521700DBBF37 /* shVgu.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA4E1883521700DBBF37 /* shVgu.c */; };
+		A646DA881883521700DBBF37 /* shVgu.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA4E1883521700DBBF37 /* shVgu.c */; };
+		A646DA891883521700DBBF37 /* shVgu.c in Sources */ = {isa = PBXBuildFile; fileRef = A646DA4E1883521700DBBF37 /* shVgu.c */; };
+		A646DA8A1883521700DBBF37 /* ofxShivaVGRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646DA511883521700DBBF37 /* ofxShivaVGRenderer.cpp */; };
+		A646DA8B1883521700DBBF37 /* ofxShivaVGRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646DA511883521700DBBF37 /* ofxShivaVGRenderer.cpp */; };
+		A646DA8C1883521700DBBF37 /* ofxShivaVGRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646DA511883521700DBBF37 /* ofxShivaVGRenderer.cpp */; };
+		A646DA8D1883521700DBBF37 /* simpleVGContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646DA531883521700DBBF37 /* simpleVGContext.cpp */; };
+		A646DA8E1883521700DBBF37 /* simpleVGContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646DA531883521700DBBF37 /* simpleVGContext.cpp */; };
+		A646DA8F1883521700DBBF37 /* simpleVGContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646DA531883521700DBBF37 /* simpleVGContext.cpp */; };
+		A646DA901883521700DBBF37 /* simpleVGPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646DA551883521700DBBF37 /* simpleVGPath.cpp */; };
+		A646DA911883521700DBBF37 /* simpleVGPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646DA551883521700DBBF37 /* simpleVGPath.cpp */; };
+		A646DA921883521700DBBF37 /* simpleVGPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646DA551883521700DBBF37 /* simpleVGPath.cpp */; };
 		AE6F00001880716900677B60 /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE52173D6082006357EF /* ofxTimecode.cpp */; };
 		AE6F00011880716900677B60 /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE69173D60A2006357EF /* ofxTextInputField.cpp */; };
 		AE6F00021880716900677B60 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
@@ -49,7 +106,6 @@
 		AE6F00161880716900677B60 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */; };
 		AE6F00171880716900677B60 /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */; };
 		AE6F00181880716900677B60 /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */; };
-		AE6F00191880716900677B60 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */; };
 		AE6F001A1880716900677B60 /* kiss_fftnd.c in Sources */ = {isa = PBXBuildFile; fileRef = E7402E80178F44DC00FEABED /* kiss_fftnd.c */; };
 		AE6F001B1880716900677B60 /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E83178F44DC00FEABED /* ofxOcean.cpp */; };
 		AE6F001C1880716900677B60 /* ofxOceanRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E87178F44DC00FEABED /* ofxOceanRenderer.cpp */; };
@@ -250,7 +306,6 @@
 		AE6F00DF1880716900677B60 /* ParticleConnectorBin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE00F18695CCA00955691 /* ParticleConnectorBin.cpp */; };
 		AE6F00E01880716900677B60 /* CloudsVisualSystemCosmic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE01318695CCA00955691 /* CloudsVisualSystemCosmic.cpp */; };
 		AE6F00E11880716900677B60 /* CloudsVisualSystemDataCascade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE01B18695CCA00955691 /* CloudsVisualSystemDataCascade.cpp */; };
-		AE6F00E21880716900677B60 /* CloudsVisualSystemDrawnLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE01F18695CCA00955691 /* CloudsVisualSystemDrawnLine.cpp */; };
 		AE6F00E31880716900677B60 /* CloudsVisualSystemEmpty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE02318695CCA00955691 /* CloudsVisualSystemEmpty.cpp */; };
 		AE6F00E41880716900677B60 /* CloudsVisualSystemExampleBox2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE02718695CCA00955691 /* CloudsVisualSystemExampleBox2D.cpp */; };
 		AE6F00E51880716900677B60 /* CloudsVisualSystemExampleMPMFluid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE02B18695CCA00955691 /* CloudsVisualSystemExampleMPMFluid.cpp */; };
@@ -683,8 +738,6 @@
 		E70CE26E18695CCC00955691 /* CloudsVisualSystemCosmic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE01318695CCA00955691 /* CloudsVisualSystemCosmic.cpp */; };
 		E70CE27118695CCC00955691 /* CloudsVisualSystemDataCascade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE01B18695CCA00955691 /* CloudsVisualSystemDataCascade.cpp */; };
 		E70CE27218695CCC00955691 /* CloudsVisualSystemDataCascade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE01B18695CCA00955691 /* CloudsVisualSystemDataCascade.cpp */; };
-		E70CE27318695CCC00955691 /* CloudsVisualSystemDrawnLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE01F18695CCA00955691 /* CloudsVisualSystemDrawnLine.cpp */; };
-		E70CE27418695CCC00955691 /* CloudsVisualSystemDrawnLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE01F18695CCA00955691 /* CloudsVisualSystemDrawnLine.cpp */; };
 		E70CE27518695CCC00955691 /* CloudsVisualSystemEmpty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE02318695CCA00955691 /* CloudsVisualSystemEmpty.cpp */; };
 		E70CE27618695CCC00955691 /* CloudsVisualSystemEmpty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE02318695CCA00955691 /* CloudsVisualSystemEmpty.cpp */; };
 		E70CE27718695CCC00955691 /* CloudsVisualSystemExampleBox2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70CE02718695CCA00955691 /* CloudsVisualSystemExampleBox2D.cpp */; };
@@ -1423,7 +1476,6 @@
 		E7F777341772761A0096AEF7 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */; };
 		E7F7773A17734B0D0096AEF7 /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */; };
 		E7F77740177394CF0096AEF7 /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */; };
-		E7F77743177395920096AEF7 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */; };
 		E7FA0B801879FBF7002477DF /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0B7E1879FBF7002477DF /* ofxSystemTextbox.mm */; };
 		E7FA0B811879FBF7002477DF /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0B7E1879FBF7002477DF /* ofxSystemTextbox.mm */; };
 		E7FB24D01830D4C0009EBD0E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
@@ -1507,7 +1559,6 @@
 		E7FB25211830D4C0009EBD0E /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */; };
 		E7FB25221830D4C0009EBD0E /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */; };
 		E7FB25231830D4C0009EBD0E /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */; };
-		E7FB25241830D4C0009EBD0E /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */; };
 		E7FB25251830D4C0009EBD0E /* kiss_fftnd.c in Sources */ = {isa = PBXBuildFile; fileRef = E7402E80178F44DC00FEABED /* kiss_fftnd.c */; };
 		E7FB25261830D4C0009EBD0E /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E83178F44DC00FEABED /* ofxOcean.cpp */; };
 		E7FB25271830D4C0009EBD0E /* ofxOceanRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E87178F44DC00FEABED /* ofxOceanRenderer.cpp */; };
@@ -1819,6 +1870,51 @@
 		A600C144188105C10041787F /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
 		A600C145188105C10041787F /* ofxSubtitleUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitleUnit.cpp; sourceTree = "<group>"; };
 		A600C146188105C10041787F /* ofxSubtitleUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitleUnit.h; sourceTree = "<group>"; };
+		A646D9EF188351EA00DBBF37 /* brushedLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = brushedLine.cpp; sourceTree = "<group>"; };
+		A646D9F0188351EA00DBBF37 /* brushedLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brushedLine.h; sourceTree = "<group>"; };
+		A646D9F1188351EA00DBBF37 /* CloudsVisualSystemDrawnLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemDrawnLine.cpp; sourceTree = "<group>"; };
+		A646D9F2188351EA00DBBF37 /* CloudsVisualSystemDrawnLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemDrawnLine.h; sourceTree = "<group>"; };
+		A646D9F3188351EA00DBBF37 /* curvedLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = curvedLine.cpp; sourceTree = "<group>"; };
+		A646D9F4188351EA00DBBF37 /* curvedLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curvedLine.h; sourceTree = "<group>"; };
+		A646D9F5188351EA00DBBF37 /* drawnLineApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawnLineApp.cpp; sourceTree = "<group>"; };
+		A646D9F6188351EA00DBBF37 /* drawnLineApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = drawnLineApp.h; sourceTree = "<group>"; };
+		A646D9F7188351EA00DBBF37 /* lineMatchUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lineMatchUtils.cpp; sourceTree = "<group>"; };
+		A646D9F8188351EA00DBBF37 /* lineMatchUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lineMatchUtils.h; sourceTree = "<group>"; };
+		A646D9F9188351EA00DBBF37 /* statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = statistics.h; sourceTree = "<group>"; };
+		A646DA311883521700DBBF37 /* AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
+		A646DA321883521700DBBF37 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		A646DA351883521700DBBF37 /* openvg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openvg.h; sourceTree = "<group>"; };
+		A646DA361883521700DBBF37 /* vgu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vgu.h; sourceTree = "<group>"; };
+		A646DA371883521700DBBF37 /* NEWS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NEWS; sourceTree = "<group>"; };
+		A646DA381883521700DBBF37 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		A646DA3A1883521700DBBF37 /* shArrayBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shArrayBase.h; sourceTree = "<group>"; };
+		A646DA3B1883521700DBBF37 /* shArrays.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shArrays.c; sourceTree = "<group>"; };
+		A646DA3C1883521700DBBF37 /* shArrays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shArrays.h; sourceTree = "<group>"; };
+		A646DA3D1883521700DBBF37 /* shContext.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shContext.c; sourceTree = "<group>"; };
+		A646DA3E1883521700DBBF37 /* shContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shContext.h; sourceTree = "<group>"; };
+		A646DA3F1883521700DBBF37 /* shDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shDefs.h; sourceTree = "<group>"; };
+		A646DA401883521700DBBF37 /* shExtensions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shExtensions.c; sourceTree = "<group>"; };
+		A646DA411883521700DBBF37 /* shExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shExtensions.h; sourceTree = "<group>"; };
+		A646DA421883521700DBBF37 /* shGeometry.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shGeometry.c; sourceTree = "<group>"; };
+		A646DA431883521700DBBF37 /* shGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shGeometry.h; sourceTree = "<group>"; };
+		A646DA441883521700DBBF37 /* shImage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shImage.c; sourceTree = "<group>"; };
+		A646DA451883521700DBBF37 /* shImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shImage.h; sourceTree = "<group>"; };
+		A646DA461883521700DBBF37 /* shPaint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shPaint.c; sourceTree = "<group>"; };
+		A646DA471883521700DBBF37 /* shPaint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shPaint.h; sourceTree = "<group>"; };
+		A646DA481883521700DBBF37 /* shParams.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shParams.c; sourceTree = "<group>"; };
+		A646DA491883521700DBBF37 /* shPath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shPath.c; sourceTree = "<group>"; };
+		A646DA4A1883521700DBBF37 /* shPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shPath.h; sourceTree = "<group>"; };
+		A646DA4B1883521700DBBF37 /* shPipeline.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shPipeline.c; sourceTree = "<group>"; };
+		A646DA4C1883521700DBBF37 /* shVectors.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shVectors.c; sourceTree = "<group>"; };
+		A646DA4D1883521700DBBF37 /* shVectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shVectors.h; sourceTree = "<group>"; };
+		A646DA4E1883521700DBBF37 /* shVgu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shVgu.c; sourceTree = "<group>"; };
+		A646DA4F1883521700DBBF37 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
+		A646DA511883521700DBBF37 /* ofxShivaVGRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxShivaVGRenderer.cpp; sourceTree = "<group>"; };
+		A646DA521883521700DBBF37 /* ofxShivaVGRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxShivaVGRenderer.h; sourceTree = "<group>"; };
+		A646DA531883521700DBBF37 /* simpleVGContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simpleVGContext.cpp; sourceTree = "<group>"; };
+		A646DA541883521700DBBF37 /* simpleVGContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simpleVGContext.h; sourceTree = "<group>"; };
+		A646DA551883521700DBBF37 /* simpleVGPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simpleVGPath.cpp; sourceTree = "<group>"; };
+		A646DA561883521700DBBF37 /* simpleVGPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simpleVGPath.h; sourceTree = "<group>"; };
 		AE6F01F11880716900677B60 /* CLOUDS_KINECTDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_KINECTDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE6F01F21880716A00677B60 /* CLOUDS_KINECT.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = CLOUDS_KINECT.plist; path = /Users/dpt/Workspace/CLOUDS/openFrameworks/apps/CLOUDS/CLOUDS/CLOUDS_KINECT.plist; sourceTree = "<absolute>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -1952,8 +2048,6 @@
 		E70CE01418695CCA00955691 /* CloudsVisualSystemCosmic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCosmic.h; sourceTree = "<group>"; };
 		E70CE01B18695CCA00955691 /* CloudsVisualSystemDataCascade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemDataCascade.cpp; sourceTree = "<group>"; };
 		E70CE01C18695CCA00955691 /* CloudsVisualSystemDataCascade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemDataCascade.h; sourceTree = "<group>"; };
-		E70CE01F18695CCA00955691 /* CloudsVisualSystemDrawnLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemDrawnLine.cpp; sourceTree = "<group>"; };
-		E70CE02018695CCA00955691 /* CloudsVisualSystemDrawnLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemDrawnLine.h; sourceTree = "<group>"; };
 		E70CE02318695CCA00955691 /* CloudsVisualSystemEmpty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemEmpty.cpp; sourceTree = "<group>"; };
 		E70CE02418695CCA00955691 /* CloudsVisualSystemEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemEmpty.h; sourceTree = "<group>"; };
 		E70CE02718695CCA00955691 /* CloudsVisualSystemExampleBox2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemExampleBox2D.cpp; sourceTree = "<group>"; };
@@ -3106,8 +3200,6 @@
 		E7F7773917734B0B0096AEF7 /* CloudsVisualSystemPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPreset.h; sourceTree = "<group>"; };
 		E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRGBD.cpp; sourceTree = "<group>"; };
 		E7F7773F177394CD0096AEF7 /* CloudsVisualSystemRGBD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRGBD.h; sourceTree = "<group>"; };
-		E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsQuestion.cpp; sourceTree = "<group>"; };
-		E7F77742177395910096AEF7 /* CloudsQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsQuestion.h; sourceTree = "<group>"; };
 		E7FA0B7E1879FBF7002477DF /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		E7FA0B7F1879FBF7002477DF /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
 		E7FB262A1830D4C0009EBD0E /* CLOUDS_OCULUSDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_OCULUSDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3527,9 +3619,126 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		A646D9ED188351EA00DBBF37 /* DrawnLine */ = {
+			isa = PBXGroup;
+			children = (
+				A646D9EE188351EA00DBBF37 /* vs_src */,
+			);
+			path = DrawnLine;
+			sourceTree = "<group>";
+		};
+		A646D9EE188351EA00DBBF37 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				A646D9EF188351EA00DBBF37 /* brushedLine.cpp */,
+				A646D9F0188351EA00DBBF37 /* brushedLine.h */,
+				A646D9F1188351EA00DBBF37 /* CloudsVisualSystemDrawnLine.cpp */,
+				A646D9F2188351EA00DBBF37 /* CloudsVisualSystemDrawnLine.h */,
+				A646D9F3188351EA00DBBF37 /* curvedLine.cpp */,
+				A646D9F4188351EA00DBBF37 /* curvedLine.h */,
+				A646D9F5188351EA00DBBF37 /* drawnLineApp.cpp */,
+				A646D9F6188351EA00DBBF37 /* drawnLineApp.h */,
+				A646D9F7188351EA00DBBF37 /* lineMatchUtils.cpp */,
+				A646D9F8188351EA00DBBF37 /* lineMatchUtils.h */,
+				A646D9F9188351EA00DBBF37 /* statistics.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		A646DA091883521700DBBF37 /* ofxShivaVG */ = {
+			isa = PBXGroup;
+			children = (
+				A646DA2F1883521700DBBF37 /* libs */,
+				A646DA4F1883521700DBBF37 /* readme.md */,
+				A646DA501883521700DBBF37 /* src */,
+			);
+			name = ofxShivaVG;
+			path = ../../../addons/ofxShivaVG;
+			sourceTree = "<group>";
+		};
+		A646DA2F1883521700DBBF37 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				A646DA301883521700DBBF37 /* ShivaVG */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		A646DA301883521700DBBF37 /* ShivaVG */ = {
+			isa = PBXGroup;
+			children = (
+				A646DA311883521700DBBF37 /* AUTHORS */,
+				A646DA321883521700DBBF37 /* COPYING */,
+				A646DA331883521700DBBF37 /* include */,
+				A646DA371883521700DBBF37 /* NEWS */,
+				A646DA381883521700DBBF37 /* README */,
+				A646DA391883521700DBBF37 /* src */,
+			);
+			path = ShivaVG;
+			sourceTree = "<group>";
+		};
+		A646DA331883521700DBBF37 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				A646DA341883521700DBBF37 /* vg */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		A646DA341883521700DBBF37 /* vg */ = {
+			isa = PBXGroup;
+			children = (
+				A646DA351883521700DBBF37 /* openvg.h */,
+				A646DA361883521700DBBF37 /* vgu.h */,
+			);
+			path = vg;
+			sourceTree = "<group>";
+		};
+		A646DA391883521700DBBF37 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A646DA3A1883521700DBBF37 /* shArrayBase.h */,
+				A646DA3B1883521700DBBF37 /* shArrays.c */,
+				A646DA3C1883521700DBBF37 /* shArrays.h */,
+				A646DA3D1883521700DBBF37 /* shContext.c */,
+				A646DA3E1883521700DBBF37 /* shContext.h */,
+				A646DA3F1883521700DBBF37 /* shDefs.h */,
+				A646DA401883521700DBBF37 /* shExtensions.c */,
+				A646DA411883521700DBBF37 /* shExtensions.h */,
+				A646DA421883521700DBBF37 /* shGeometry.c */,
+				A646DA431883521700DBBF37 /* shGeometry.h */,
+				A646DA441883521700DBBF37 /* shImage.c */,
+				A646DA451883521700DBBF37 /* shImage.h */,
+				A646DA461883521700DBBF37 /* shPaint.c */,
+				A646DA471883521700DBBF37 /* shPaint.h */,
+				A646DA481883521700DBBF37 /* shParams.c */,
+				A646DA491883521700DBBF37 /* shPath.c */,
+				A646DA4A1883521700DBBF37 /* shPath.h */,
+				A646DA4B1883521700DBBF37 /* shPipeline.c */,
+				A646DA4C1883521700DBBF37 /* shVectors.c */,
+				A646DA4D1883521700DBBF37 /* shVectors.h */,
+				A646DA4E1883521700DBBF37 /* shVgu.c */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		A646DA501883521700DBBF37 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A646DA511883521700DBBF37 /* ofxShivaVGRenderer.cpp */,
+				A646DA521883521700DBBF37 /* ofxShivaVGRenderer.h */,
+				A646DA531883521700DBBF37 /* simpleVGContext.cpp */,
+				A646DA541883521700DBBF37 /* simpleVGContext.h */,
+				A646DA551883521700DBBF37 /* simpleVGPath.cpp */,
+				A646DA561883521700DBBF37 /* simpleVGPath.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				A646DA091883521700DBBF37 /* ofxShivaVG */,
 				A600C13C188105C10041787F /* ofxSubtitles */,
 				E79EACF91878772600B8B8F0 /* ofxGpuParticles */,
 				E7E17448186E630D007D1EDC /* ofxTonic */,
@@ -3858,6 +4067,7 @@
 		E70CDDCA18695CC800955691 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				A646D9ED188351EA00DBBF37 /* DrawnLine */,
 				E7302C98187F83F60079C5B8 /* Swim */,
 				E7302C51187E5A3C0079C5B8 /* Terrain */,
 				E7302BF4187DF33D0079C5B8 /* Schlabberbox */,
@@ -3879,7 +4089,6 @@
 				E70CE01118695CCA00955691 /* Cosmic */,
 				E70CE01518695CCA00955691 /* CubeCraft */,
 				E70CE01918695CCA00955691 /* DataCascade */,
-				E70CE01D18695CCA00955691 /* DrawnLine */,
 				E70CE02118695CCA00955691 /* Empty */,
 				E70CE02518695CCA00955691 /* ExampleBox2D */,
 				E70CE02918695CCA00955691 /* ExampleMPMFluid */,
@@ -4264,23 +4473,6 @@
 			children = (
 				E70CE01B18695CCA00955691 /* CloudsVisualSystemDataCascade.cpp */,
 				E70CE01C18695CCA00955691 /* CloudsVisualSystemDataCascade.h */,
-			);
-			path = vs_src;
-			sourceTree = "<group>";
-		};
-		E70CE01D18695CCA00955691 /* DrawnLine */ = {
-			isa = PBXGroup;
-			children = (
-				E70CE01E18695CCA00955691 /* vs_src */,
-			);
-			path = DrawnLine;
-			sourceTree = "<group>";
-		};
-		E70CE01E18695CCA00955691 /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				E70CE01F18695CCA00955691 /* CloudsVisualSystemDrawnLine.cpp */,
-				E70CE02018695CCA00955691 /* CloudsVisualSystemDrawnLine.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -6272,8 +6464,6 @@
 				E700BC3B18768EA6003A8167 /* CloudsTransitionController.cpp */,
 				E7F7773F177394CD0096AEF7 /* CloudsVisualSystemRGBD.h */,
 				E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */,
-				E7F77742177395910096AEF7 /* CloudsQuestion.h */,
-				E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */,
 			);
 			path = RGBD;
 			sourceTree = "<group>";
@@ -7921,11 +8111,13 @@
 				AE6FFFD81880716900677B60 /* ofxRemoveCocoaMenu.mm in Sources */,
 				AE6FFFD91880716900677B60 /* ofxTimeline.cpp in Sources */,
 				AE6FFFDA1880716900677B60 /* ofxTLAudioTrack.cpp in Sources */,
+				A646DA921883521700DBBF37 /* simpleVGPath.cpp in Sources */,
 				AE6FFFDB1880716900677B60 /* ofxTLBangs.cpp in Sources */,
 				AE6FFFDC1880716900677B60 /* ofxTLCameraTrack.cpp in Sources */,
 				AE6FFFDD1880716900677B60 /* ofxTLColors.cpp in Sources */,
 				AE6FFFDE1880716900677B60 /* ofxTLColorTrack.cpp in Sources */,
 				AE6FFFDF1880716900677B60 /* ofxTLCurves.cpp in Sources */,
+				A646DA02188351EA00DBBF37 /* curvedLine.cpp in Sources */,
 				AE6FFFE01880716900677B60 /* ofxTLEmptyKeyframes.cpp in Sources */,
 				AE6FFFE11880716900677B60 /* ofxTLEmptyTrack.cpp in Sources */,
 				AE6FFFE21880716900677B60 /* ofxTLFlags.cpp in Sources */,
@@ -7959,6 +8151,7 @@
 				AE6FFFFE1880716900677B60 /* ofxEasingSine.cpp in Sources */,
 				AE6FFFFF1880716900677B60 /* ofxTween.cpp in Sources */,
 				AE6F00001880716900677B60 /* ofxTimecode.cpp in Sources */,
+				A646DA711883521700DBBF37 /* shExtensions.c in Sources */,
 				AE6F00011880716900677B60 /* ofxTextInputField.cpp in Sources */,
 				AE6F00021880716900677B60 /* ofxGameCamera.cpp in Sources */,
 				AE6F00031880716900677B60 /* ofxBehavior.cpp in Sources */,
@@ -7973,6 +8166,7 @@
 				AE6F000C1880716900677B60 /* ofxRParticleGlowieRenderer.cpp in Sources */,
 				AE6F000D1880716900677B60 /* ofxRParticleRenderer.cpp in Sources */,
 				AE6F000E1880716900677B60 /* ofxRParticleSystem.cpp in Sources */,
+				A646DA7D1883521700DBBF37 /* shParams.c in Sources */,
 				AE6F000F1880716900677B60 /* ofxSolver.cpp in Sources */,
 				AE6F00101880716900677B60 /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				AE6F00111880716900677B60 /* ofxSwarmBehavior.cpp in Sources */,
@@ -7983,7 +8177,7 @@
 				AE6F00161880716900677B60 /* CloudsVisualSystemManager.cpp in Sources */,
 				AE6F00171880716900677B60 /* CloudsVisualSystemPreset.cpp in Sources */,
 				AE6F00181880716900677B60 /* CloudsVisualSystemRGBD.cpp in Sources */,
-				AE6F00191880716900677B60 /* CloudsQuestion.cpp in Sources */,
+				A646DA05188351EA00DBBF37 /* drawnLineApp.cpp in Sources */,
 				AE6F001A1880716900677B60 /* kiss_fftnd.c in Sources */,
 				AE6F001B1880716900677B60 /* ofxOcean.cpp in Sources */,
 				AE6F001C1880716900677B60 /* ofxOceanRenderer.cpp in Sources */,
@@ -7991,6 +8185,7 @@
 				AE6F001E1880716900677B60 /* CloudsAct.cpp in Sources */,
 				AE6F001F1880716900677B60 /* ofxAVFVideoPlayer.mm in Sources */,
 				AE6F00201880716900677B60 /* ofxAVFVideoRenderer.m in Sources */,
+				A646DA831883521700DBBF37 /* shPipeline.c in Sources */,
 				AE6F00211880716900677B60 /* CloudsVisualSystem.cpp in Sources */,
 				AE6F00221880716900677B60 /* CloudsDichotomy.cpp in Sources */,
 				AE6F00231880716900677B60 /* CloudsRGBDCamera.cpp in Sources */,
@@ -8029,6 +8224,7 @@
 				AE6F00441880716900677B60 /* b2Settings.cpp in Sources */,
 				AE6F00451880716900677B60 /* b2StackAllocator.cpp in Sources */,
 				AE6F00461880716900677B60 /* b2Body.cpp in Sources */,
+				A646DA861883521700DBBF37 /* shVectors.c in Sources */,
 				AE6F00471880716900677B60 /* b2ContactManager.cpp in Sources */,
 				AE6F00481880716900677B60 /* b2Fixture.cpp in Sources */,
 				AE6F00491880716900677B60 /* b2Island.cpp in Sources */,
@@ -8068,11 +8264,14 @@
 				AE6F006B1880716900677B60 /* OldPathway.cpp in Sources */,
 				AE6F006C1880716900677B60 /* OpenSteerDemo.cpp in Sources */,
 				AE6F006D1880716900677B60 /* Path.cpp in Sources */,
+				A646DA801883521700DBBF37 /* shPath.c in Sources */,
 				AE6F006E1880716900677B60 /* Pathway.cpp in Sources */,
 				AE6F006F1880716900677B60 /* PlugIn.cpp in Sources */,
 				AE6F00701880716900677B60 /* PolylineSegmentedPath.cpp in Sources */,
 				AE6F00711880716900677B60 /* PolylineSegmentedPathwaySegmentRadii.cpp in Sources */,
 				AE6F00721880716900677B60 /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */,
+				A646DA7A1883521700DBBF37 /* shPaint.c in Sources */,
+				A646DA6E1883521700DBBF37 /* shContext.c in Sources */,
 				AE6F00731880716900677B60 /* SegmentedPath.cpp in Sources */,
 				AE6F00741880716900677B60 /* SegmentedPathway.cpp in Sources */,
 				AE6F00751880716900677B60 /* SimpleVehicle.cpp in Sources */,
@@ -8080,6 +8279,7 @@
 				AE6F00771880716900677B60 /* Vec3.cpp in Sources */,
 				AE6F00781880716900677B60 /* Vec3Utilities.cpp in Sources */,
 				AE6F00791880716900677B60 /* ofxOpenSteerPlugin.cpp in Sources */,
+				A646DA6B1883521700DBBF37 /* shArrays.c in Sources */,
 				AE6F007A1880716900677B60 /* ofxOpenSteerVehicle.cpp in Sources */,
 				AE6F007B1880716900677B60 /* ofxFTGLFont.cpp in Sources */,
 				AE6F007C1880716900677B60 /* ofxFTGLSimpleLayout.cpp in Sources */,
@@ -8184,7 +8384,6 @@
 				AE6F00DF1880716900677B60 /* ParticleConnectorBin.cpp in Sources */,
 				AE6F00E01880716900677B60 /* CloudsVisualSystemCosmic.cpp in Sources */,
 				AE6F00E11880716900677B60 /* CloudsVisualSystemDataCascade.cpp in Sources */,
-				AE6F00E21880716900677B60 /* CloudsVisualSystemDrawnLine.cpp in Sources */,
 				AE6F00E31880716900677B60 /* CloudsVisualSystemEmpty.cpp in Sources */,
 				AE6F00E41880716900677B60 /* CloudsVisualSystemExampleBox2D.cpp in Sources */,
 				AE6F00E51880716900677B60 /* CloudsVisualSystemExampleMPMFluid.cpp in Sources */,
@@ -8286,10 +8485,12 @@
 				AE6F01441880716900677B60 /* cell.cpp in Sources */,
 				AE6F01451880716900677B60 /* common.cpp in Sources */,
 				AE6F01461880716900677B60 /* container.cpp in Sources */,
+				A646DA08188351EA00DBBF37 /* lineMatchUtils.cpp in Sources */,
 				AE6F01471880716900677B60 /* container_prd.cpp in Sources */,
 				AE6F01481880716900677B60 /* pre_container.cpp in Sources */,
 				AE6F01491880716900677B60 /* unitcell.cpp in Sources */,
 				AE6F014A1880716900677B60 /* v_base.cpp in Sources */,
+				A646DA891883521700DBBF37 /* shVgu.c in Sources */,
 				AE6F014B1880716900677B60 /* v_compute.cpp in Sources */,
 				AE6F014C1880716900677B60 /* wall.cpp in Sources */,
 				AE6F014D1880716900677B60 /* Voro.cpp in Sources */,
@@ -8337,6 +8538,7 @@
 				AE6F01771880716900677B60 /* ControlFloor.cpp in Sources */,
 				AE6F01781880716900677B60 /* ControlGenerator.cpp in Sources */,
 				AE6F01791880716900677B60 /* ControlMetro.cpp in Sources */,
+				A646DA771883521700DBBF37 /* shImage.c in Sources */,
 				AE6F017A1880716900677B60 /* ControlMetroDivider.cpp in Sources */,
 				AE6F017B1880716900677B60 /* ControlMidiToFreq.cpp in Sources */,
 				AE6F017C1880716900677B60 /* ControlParameter.cpp in Sources */,
@@ -8344,9 +8546,11 @@
 				AE6F017E1880716900677B60 /* ControlPulse.cpp in Sources */,
 				AE6F017F1880716900677B60 /* ControlRandom.cpp in Sources */,
 				AE6F01801880716900677B60 /* ControlRecorder.cpp in Sources */,
+				A646DA741883521700DBBF37 /* shGeometry.c in Sources */,
 				AE6F01811880716900677B60 /* ControlSnapToScale.cpp in Sources */,
 				AE6F01821880716900677B60 /* ControlStepper.cpp in Sources */,
 				AE6F01831880716900677B60 /* ControlSwitcher.cpp in Sources */,
+				A646D9FF188351EA00DBBF37 /* CloudsVisualSystemDrawnLine.cpp in Sources */,
 				AE6F01841880716900677B60 /* ControlTrigger.cpp in Sources */,
 				AE6F01851880716900677B60 /* ControlTriggerFilter.cpp in Sources */,
 				AE6F01861880716900677B60 /* ControlValue.cpp in Sources */,
@@ -8372,6 +8576,7 @@
 				AE6F019A1880716900677B60 /* StereoDelay.cpp in Sources */,
 				AE6F019B1880716900677B60 /* Synth.cpp in Sources */,
 				AE6F019C1880716900677B60 /* TableLookupOsc.cpp in Sources */,
+				A646D9FC188351EA00DBBF37 /* brushedLine.cpp in Sources */,
 				AE6F019D1880716900677B60 /* TonicFrames.cpp in Sources */,
 				AE6F019E1880716900677B60 /* json_reader.cpp in Sources */,
 				AE6F019F1880716900677B60 /* json_value.cpp in Sources */,
@@ -8388,6 +8593,7 @@
 				AE6F01A91880716900677B60 /* Module.cpp in Sources */,
 				AE6F01AA1880716900677B60 /* RandomMover.cpp in Sources */,
 				AE6F01AB1880716900677B60 /* CloudsVisualSystemProcess11.cpp in Sources */,
+				A646DA8F1883521700DBBF37 /* simpleVGContext.cpp in Sources */,
 				AE6F01AC1880716900677B60 /* E2.cpp in Sources */,
 				AE6F01AD1880716900677B60 /* CloudsVisualSystemProcess18.cpp in Sources */,
 				AE6F01AE1880716900677B60 /* E5.cpp in Sources */,
@@ -8397,6 +8603,7 @@
 				AE6F01B21880716900677B60 /* CloudsPlaybackController.cpp in Sources */,
 				AE6F01B31880716900677B60 /* CloudsVisualSystemRandomDigits2.cpp in Sources */,
 				AE6F01B41880716900677B60 /* RandomNumber.cpp in Sources */,
+				A646DA8C1883521700DBBF37 /* ofxShivaVGRenderer.cpp in Sources */,
 				AE6F01B51880716900677B60 /* CloudsVisualSystemSchlabberbox.cpp in Sources */,
 				AE6F01B61880716900677B60 /* GridFluid.cpp in Sources */,
 				AE6F01B71880716900677B60 /* CloudsHUDController.cpp in Sources */,
@@ -8450,11 +8657,13 @@
 				E779BDA3173D4EFE006357EF /* ofxRemoveCocoaMenu.mm in Sources */,
 				E779BDA4173D4EFE006357EF /* ofxTimeline.cpp in Sources */,
 				E779BDA5173D4EFE006357EF /* ofxTLAudioTrack.cpp in Sources */,
+				A646DA901883521700DBBF37 /* simpleVGPath.cpp in Sources */,
 				E779BDA6173D4EFE006357EF /* ofxTLBangs.cpp in Sources */,
 				E779BDA7173D4EFE006357EF /* ofxTLCameraTrack.cpp in Sources */,
 				E779BDA8173D4EFE006357EF /* ofxTLColors.cpp in Sources */,
 				E779BDA9173D4EFE006357EF /* ofxTLColorTrack.cpp in Sources */,
 				E779BDAA173D4EFE006357EF /* ofxTLCurves.cpp in Sources */,
+				A646DA00188351EA00DBBF37 /* curvedLine.cpp in Sources */,
 				E779BDAB173D4EFE006357EF /* ofxTLEmptyKeyframes.cpp in Sources */,
 				E779BDAC173D4EFE006357EF /* ofxTLEmptyTrack.cpp in Sources */,
 				E779BDAD173D4EFE006357EF /* ofxTLFlags.cpp in Sources */,
@@ -8488,6 +8697,7 @@
 				E779BE37173D5FCD006357EF /* ofxEasingSine.cpp in Sources */,
 				E779BE38173D5FCD006357EF /* ofxTween.cpp in Sources */,
 				E779BE56173D6082006357EF /* ofxTimecode.cpp in Sources */,
+				A646DA6F1883521700DBBF37 /* shExtensions.c in Sources */,
 				E779BE6D173D60A2006357EF /* ofxTextInputField.cpp in Sources */,
 				3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */,
 				E7D3306B1751D446006706ED /* ofxBehavior.cpp in Sources */,
@@ -8502,6 +8712,7 @@
 				E7D330741751D446006706ED /* ofxRParticleGlowieRenderer.cpp in Sources */,
 				E7D330751751D446006706ED /* ofxRParticleRenderer.cpp in Sources */,
 				E7D330761751D446006706ED /* ofxRParticleSystem.cpp in Sources */,
+				A646DA7B1883521700DBBF37 /* shParams.c in Sources */,
 				E7D330771751D446006706ED /* ofxSolver.cpp in Sources */,
 				E7D330781751D446006706ED /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				E7D330791751D446006706ED /* ofxSwarmBehavior.cpp in Sources */,
@@ -8512,7 +8723,7 @@
 				E7F777341772761A0096AEF7 /* CloudsVisualSystemManager.cpp in Sources */,
 				E7F7773A17734B0D0096AEF7 /* CloudsVisualSystemPreset.cpp in Sources */,
 				E7F77740177394CF0096AEF7 /* CloudsVisualSystemRGBD.cpp in Sources */,
-				E7F77743177395920096AEF7 /* CloudsQuestion.cpp in Sources */,
+				A646DA03188351EA00DBBF37 /* drawnLineApp.cpp in Sources */,
 				E7402E8D178F44DC00FEABED /* kiss_fftnd.c in Sources */,
 				E7402E8E178F44DC00FEABED /* ofxOcean.cpp in Sources */,
 				E7402E90178F44DC00FEABED /* ofxOceanRenderer.cpp in Sources */,
@@ -8520,6 +8731,7 @@
 				E7402EA8178F45AA00FEABED /* CloudsAct.cpp in Sources */,
 				E7920791179CB0FE00FAA959 /* ofxAVFVideoPlayer.mm in Sources */,
 				E7920792179CB0FE00FAA959 /* ofxAVFVideoRenderer.m in Sources */,
+				A646DA811883521700DBBF37 /* shPipeline.c in Sources */,
 				E7425013179F981B00B2F0A3 /* CloudsVisualSystem.cpp in Sources */,
 				E7BBB4E717A02BB5007D7EC1 /* CloudsDichotomy.cpp in Sources */,
 				E7D26E4E17A2C52D00652876 /* CloudsRGBDCamera.cpp in Sources */,
@@ -8558,6 +8770,7 @@
 				E7156F8718106F1B00410646 /* b2Settings.cpp in Sources */,
 				E7156F8818106F1B00410646 /* b2StackAllocator.cpp in Sources */,
 				E7156F8918106F1B00410646 /* b2Body.cpp in Sources */,
+				A646DA841883521700DBBF37 /* shVectors.c in Sources */,
 				E7156F8A18106F1B00410646 /* b2ContactManager.cpp in Sources */,
 				E7156F8B18106F1B00410646 /* b2Fixture.cpp in Sources */,
 				E7156F8C18106F1B00410646 /* b2Island.cpp in Sources */,
@@ -8597,11 +8810,14 @@
 				E7D9F75E182B060C00AD56C1 /* OldPathway.cpp in Sources */,
 				E7D9F75F182B060C00AD56C1 /* OpenSteerDemo.cpp in Sources */,
 				E7D9F760182B060C00AD56C1 /* Path.cpp in Sources */,
+				A646DA7E1883521700DBBF37 /* shPath.c in Sources */,
 				E7D9F761182B060C00AD56C1 /* Pathway.cpp in Sources */,
 				E7D9F762182B060C00AD56C1 /* PlugIn.cpp in Sources */,
 				E7D9F763182B060C00AD56C1 /* PolylineSegmentedPath.cpp in Sources */,
 				E7D9F764182B060C00AD56C1 /* PolylineSegmentedPathwaySegmentRadii.cpp in Sources */,
 				E7D9F765182B060C00AD56C1 /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */,
+				A646DA781883521700DBBF37 /* shPaint.c in Sources */,
+				A646DA6C1883521700DBBF37 /* shContext.c in Sources */,
 				E7D9F766182B060C00AD56C1 /* SegmentedPath.cpp in Sources */,
 				E7D9F767182B060C00AD56C1 /* SegmentedPathway.cpp in Sources */,
 				E7D9F768182B060C00AD56C1 /* SimpleVehicle.cpp in Sources */,
@@ -8609,6 +8825,7 @@
 				E7D9F76A182B060C00AD56C1 /* Vec3.cpp in Sources */,
 				E7D9F76B182B060C00AD56C1 /* Vec3Utilities.cpp in Sources */,
 				E7D9F76C182B060C00AD56C1 /* ofxOpenSteerPlugin.cpp in Sources */,
+				A646DA691883521700DBBF37 /* shArrays.c in Sources */,
 				E7D9F76D182B060C00AD56C1 /* ofxOpenSteerVehicle.cpp in Sources */,
 				E7D9F7E3182B061B00AD56C1 /* ofxFTGLFont.cpp in Sources */,
 				E7D9F7E4182B061B00AD56C1 /* ofxFTGLSimpleLayout.cpp in Sources */,
@@ -8713,7 +8930,6 @@
 				E70CE26B18695CCC00955691 /* ParticleConnectorBin.cpp in Sources */,
 				E70CE26D18695CCC00955691 /* CloudsVisualSystemCosmic.cpp in Sources */,
 				E70CE27118695CCC00955691 /* CloudsVisualSystemDataCascade.cpp in Sources */,
-				E70CE27318695CCC00955691 /* CloudsVisualSystemDrawnLine.cpp in Sources */,
 				E70CE27518695CCC00955691 /* CloudsVisualSystemEmpty.cpp in Sources */,
 				E70CE27718695CCC00955691 /* CloudsVisualSystemExampleBox2D.cpp in Sources */,
 				E70CE27918695CCC00955691 /* CloudsVisualSystemExampleMPMFluid.cpp in Sources */,
@@ -8815,10 +9031,12 @@
 				E70CE36318695CCD00955691 /* cell.cpp in Sources */,
 				E70CE36518695CCD00955691 /* common.cpp in Sources */,
 				E70CE36718695CCD00955691 /* container.cpp in Sources */,
+				A646DA06188351EA00DBBF37 /* lineMatchUtils.cpp in Sources */,
 				E70CE36918695CCD00955691 /* container_prd.cpp in Sources */,
 				E70CE36B18695CCD00955691 /* pre_container.cpp in Sources */,
 				E70CE36D18695CCD00955691 /* unitcell.cpp in Sources */,
 				E70CE36F18695CCD00955691 /* v_base.cpp in Sources */,
+				A646DA871883521700DBBF37 /* shVgu.c in Sources */,
 				E70CE37118695CCD00955691 /* v_compute.cpp in Sources */,
 				E70CE37318695CCD00955691 /* wall.cpp in Sources */,
 				E70CE37518695CCD00955691 /* Voro.cpp in Sources */,
@@ -8866,6 +9084,7 @@
 				E7E1752A186E630E007D1EDC /* ControlFloor.cpp in Sources */,
 				E7E1752C186E630E007D1EDC /* ControlGenerator.cpp in Sources */,
 				E7E1752E186E630E007D1EDC /* ControlMetro.cpp in Sources */,
+				A646DA751883521700DBBF37 /* shImage.c in Sources */,
 				E7E17530186E630E007D1EDC /* ControlMetroDivider.cpp in Sources */,
 				E7E17532186E630E007D1EDC /* ControlMidiToFreq.cpp in Sources */,
 				E7E17534186E630E007D1EDC /* ControlParameter.cpp in Sources */,
@@ -8873,9 +9092,11 @@
 				E7E17538186E630E007D1EDC /* ControlPulse.cpp in Sources */,
 				E7E1753A186E630E007D1EDC /* ControlRandom.cpp in Sources */,
 				E7E1753C186E630E007D1EDC /* ControlRecorder.cpp in Sources */,
+				A646DA721883521700DBBF37 /* shGeometry.c in Sources */,
 				E7E1753E186E630E007D1EDC /* ControlSnapToScale.cpp in Sources */,
 				E7E17540186E630E007D1EDC /* ControlStepper.cpp in Sources */,
 				E7E17542186E630E007D1EDC /* ControlSwitcher.cpp in Sources */,
+				A646D9FD188351EA00DBBF37 /* CloudsVisualSystemDrawnLine.cpp in Sources */,
 				E7E17544186E630E007D1EDC /* ControlTrigger.cpp in Sources */,
 				E7E17546186E630E007D1EDC /* ControlTriggerFilter.cpp in Sources */,
 				E7E17548186E630E007D1EDC /* ControlValue.cpp in Sources */,
@@ -8901,6 +9122,7 @@
 				E7E17570186E630F007D1EDC /* StereoDelay.cpp in Sources */,
 				E7E17572186E630F007D1EDC /* Synth.cpp in Sources */,
 				E7E17574186E630F007D1EDC /* TableLookupOsc.cpp in Sources */,
+				A646D9FA188351EA00DBBF37 /* brushedLine.cpp in Sources */,
 				E7E17576186E630F007D1EDC /* TonicFrames.cpp in Sources */,
 				C1644D3F186F92020024E091 /* json_reader.cpp in Sources */,
 				C1644D41186F92020024E091 /* json_value.cpp in Sources */,
@@ -8917,6 +9139,7 @@
 				E79EADB41878829E00B8B8F0 /* Module.cpp in Sources */,
 				E79EADB61878829E00B8B8F0 /* RandomMover.cpp in Sources */,
 				E79EADB81878829E00B8B8F0 /* CloudsVisualSystemProcess11.cpp in Sources */,
+				A646DA8D1883521700DBBF37 /* simpleVGContext.cpp in Sources */,
 				E79EADBA1878829E00B8B8F0 /* E2.cpp in Sources */,
 				E79EADBC1878829E00B8B8F0 /* CloudsVisualSystemProcess18.cpp in Sources */,
 				E79EADBE1878829E00B8B8F0 /* E5.cpp in Sources */,
@@ -8926,6 +9149,7 @@
 				E7167103187A7A700047B7DC /* CloudsPlaybackController.cpp in Sources */,
 				E7302BEE187DF2AB0079C5B8 /* CloudsVisualSystemRandomDigits2.cpp in Sources */,
 				E7302BF2187DF2AB0079C5B8 /* RandomNumber.cpp in Sources */,
+				A646DA8A1883521700DBBF37 /* ofxShivaVGRenderer.cpp in Sources */,
 				E7302BFA187DF33D0079C5B8 /* CloudsVisualSystemSchlabberbox.cpp in Sources */,
 				E7302BFC187DF33D0079C5B8 /* GridFluid.cpp in Sources */,
 				E7302C09187DF4270079C5B8 /* CloudsHUDController.cpp in Sources */,
@@ -9032,6 +9256,7 @@
 				E7FB25161830D4C0009EBD0E /* ofxRParticleRenderer.cpp in Sources */,
 				E7FB25171830D4C0009EBD0E /* ofxRParticleSystem.cpp in Sources */,
 				E7FB25181830D4C0009EBD0E /* ofxSolver.cpp in Sources */,
+				A646DA04188351EA00DBBF37 /* drawnLineApp.cpp in Sources */,
 				E7FB25191830D4C0009EBD0E /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				E7FB251A1830D4C0009EBD0E /* ofxSwarmBehavior.cpp in Sources */,
 				E7FB251B1830D4C0009EBD0E /* ofxVerletSolver.cpp in Sources */,
@@ -9041,9 +9266,9 @@
 				E7FB25211830D4C0009EBD0E /* CloudsVisualSystemManager.cpp in Sources */,
 				E7FB25221830D4C0009EBD0E /* CloudsVisualSystemPreset.cpp in Sources */,
 				E7FB25231830D4C0009EBD0E /* CloudsVisualSystemRGBD.cpp in Sources */,
-				E7FB25241830D4C0009EBD0E /* CloudsQuestion.cpp in Sources */,
 				E7FB25251830D4C0009EBD0E /* kiss_fftnd.c in Sources */,
 				E7FB25261830D4C0009EBD0E /* ofxOcean.cpp in Sources */,
+				A646DA7C1883521700DBBF37 /* shParams.c in Sources */,
 				E7FB25271830D4C0009EBD0E /* ofxOceanRenderer.cpp in Sources */,
 				E7FB25281830D4C0009EBD0E /* ofxOceanTile.cpp in Sources */,
 				E7FB252F1830D4C0009EBD0E /* CloudsAct.cpp in Sources */,
@@ -9161,6 +9386,7 @@
 				E7FB28481830D4FF009EBD0E /* ofxOculusRift.cpp in Sources */,
 				E780CE691852C7B50096AE8D /* BleachBypassPass.cpp in Sources */,
 				E780CE6B1852C7B50096AE8D /* BloomPass.cpp in Sources */,
+				A646D9FB188351EA00DBBF37 /* brushedLine.cpp in Sources */,
 				E780CE6D1852C7B50096AE8D /* ContrastPass.cpp in Sources */,
 				E780CE6F1852C7B50096AE8D /* ConvolutionPass.cpp in Sources */,
 				E780CE711852C7B50096AE8D /* DofAltPass.cpp in Sources */,
@@ -9171,15 +9397,18 @@
 				E780CE7B1852C7B50096AE8D /* GodRaysPass.cpp in Sources */,
 				E780CE7D1852C7B50096AE8D /* HorizontalTiltShifPass.cpp in Sources */,
 				E780CE7F1852C7B50096AE8D /* KaleidoscopePass.cpp in Sources */,
+				A646DA881883521700DBBF37 /* shVgu.c in Sources */,
 				E780CE811852C7B50096AE8D /* LimbDarkeningPass.cpp in Sources */,
 				E780CE831852C7B50096AE8D /* LUTPass.cpp in Sources */,
 				E780CE851852C7B50096AE8D /* NoiseWarpPass.cpp in Sources */,
 				E780CE871852C7B50096AE8D /* PixelatePass.cpp in Sources */,
+				A646DA8B1883521700DBBF37 /* ofxShivaVGRenderer.cpp in Sources */,
 				E780CE891852C7B50096AE8D /* PostProcessing.cpp in Sources */,
 				E780CE8B1852C7B50096AE8D /* RenderPass.cpp in Sources */,
 				E780CE8D1852C7B50096AE8D /* RGBShiftPass.cpp in Sources */,
 				E780CE8F1852C7B50096AE8D /* RimHighlightingPass.cpp in Sources */,
 				E780CE911852C7B50096AE8D /* SSAOPass.cpp in Sources */,
+				A646DA821883521700DBBF37 /* shPipeline.c in Sources */,
 				E780CE931852C7B50096AE8D /* ToonPass.cpp in Sources */,
 				E780CE951852C7B50096AE8D /* VerticalTiltShifPass.cpp in Sources */,
 				E780CE971852C7B50096AE8D /* ZoomBlurPass.cpp in Sources */,
@@ -9238,12 +9467,12 @@
 				E70CE26218695CCC00955691 /* gCell.cpp in Sources */,
 				E70CE26418695CCC00955691 /* CloudsVisualSystemConnectors.cpp in Sources */,
 				E70CE26618695CCC00955691 /* ParticleConnection.cpp in Sources */,
+				A646DA6D1883521700DBBF37 /* shContext.c in Sources */,
 				E70CE26818695CCC00955691 /* ParticleConnectionGenerator.cpp in Sources */,
 				E70CE26A18695CCC00955691 /* ParticleConnector.cpp in Sources */,
 				E70CE26C18695CCC00955691 /* ParticleConnectorBin.cpp in Sources */,
 				E70CE26E18695CCC00955691 /* CloudsVisualSystemCosmic.cpp in Sources */,
 				E70CE27218695CCC00955691 /* CloudsVisualSystemDataCascade.cpp in Sources */,
-				E70CE27418695CCC00955691 /* CloudsVisualSystemDrawnLine.cpp in Sources */,
 				E70CE27618695CCC00955691 /* CloudsVisualSystemEmpty.cpp in Sources */,
 				E70CE27818695CCC00955691 /* CloudsVisualSystemExampleBox2D.cpp in Sources */,
 				E70CE27A18695CCC00955691 /* CloudsVisualSystemExampleMPMFluid.cpp in Sources */,
@@ -9258,6 +9487,7 @@
 				E70CE28C18695CCC00955691 /* CloudsVisualSystemGPUParticles.cpp in Sources */,
 				E70CE28E18695CCC00955691 /* CloudsVisualSystemHistogram.cpp in Sources */,
 				E70CE29018695CCC00955691 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
+				A646DA701883521700DBBF37 /* shExtensions.c in Sources */,
 				E70CE29218695CCC00955691 /* ofVboByteColor.cpp in Sources */,
 				E70CE29E18695CCC00955691 /* CloudsVisualSystemLSystem.cpp in Sources */,
 				E70CE2A018695CCC00955691 /* LNode.cpp in Sources */,
@@ -9268,6 +9498,7 @@
 				E70CE2AA18695CCC00955691 /* CloudsVisualSystemMarchingCubes.cpp in Sources */,
 				E70CE2AC18695CCC00955691 /* CloudsVisualSystemMazeGenerator.cpp in Sources */,
 				E70CE2AE18695CCC00955691 /* Maze.cpp in Sources */,
+				A646DA6A1883521700DBBF37 /* shArrays.c in Sources */,
 				E70CE2B018695CCC00955691 /* MazeCamera.cpp in Sources */,
 				E70CE2B218695CCC00955691 /* MazeCell.cpp in Sources */,
 				E70CE2B418695CCC00955691 /* MazeSettings.cpp in Sources */,
@@ -9313,6 +9544,7 @@
 				E70CE30618695CCC00955691 /* CloudsVisualSystemRGBDVideo.cpp in Sources */,
 				E70CE30818695CCC00955691 /* CloudsVisualSystemRipples.cpp in Sources */,
 				E70CE30A18695CCC00955691 /* CloudsVisualSystemRulez.cpp in Sources */,
+				A646DA8E1883521700DBBF37 /* simpleVGContext.cpp in Sources */,
 				E70CE30C18695CCC00955691 /* Action.cpp in Sources */,
 				E70CE30E18695CCC00955691 /* ConeAction.cpp in Sources */,
 				E70CE31018695CCC00955691 /* CubeAction.cpp in Sources */,
@@ -9348,6 +9580,7 @@
 				E70CE36818695CCD00955691 /* container.cpp in Sources */,
 				E70CE36A18695CCD00955691 /* container_prd.cpp in Sources */,
 				E70CE36C18695CCD00955691 /* pre_container.cpp in Sources */,
+				A646DA791883521700DBBF37 /* shPaint.c in Sources */,
 				E70CE36E18695CCD00955691 /* unitcell.cpp in Sources */,
 				E70CE37018695CCD00955691 /* v_base.cpp in Sources */,
 				E70CE37218695CCD00955691 /* v_compute.cpp in Sources */,
@@ -9361,6 +9594,7 @@
 				E70CE38218695CCD00955691 /* wArc.cpp in Sources */,
 				E70CE38418695CCD00955691 /* wCity.cpp in Sources */,
 				E70CE38618695CCD00955691 /* wParticle.cpp in Sources */,
+				A646DA851883521700DBBF37 /* shVectors.c in Sources */,
 				E70CE38818695CCD00955691 /* wSatellite.cpp in Sources */,
 				E70CE38A18695CCD00955691 /* wStar.cpp in Sources */,
 				E70CE38C18695CCD00955691 /* CloudsPathCamera.cpp in Sources */,
@@ -9384,6 +9618,7 @@
 				E7E17511186E630E007D1EDC /* BLEPOscillator.cpp in Sources */,
 				E7E17513186E630E007D1EDC /* BufferFiller.cpp in Sources */,
 				E7E17515186E630E007D1EDC /* BufferPlayer.cpp in Sources */,
+				A646DA07188351EA00DBBF37 /* lineMatchUtils.cpp in Sources */,
 				E7E17517186E630E007D1EDC /* CombFilter.cpp in Sources */,
 				E7E17519186E630E007D1EDC /* CompressorLimiter.cpp in Sources */,
 				E7E1751B186E630E007D1EDC /* ControlArithmetic.cpp in Sources */,
@@ -9410,6 +9645,7 @@
 				E7E17545186E630E007D1EDC /* ControlTrigger.cpp in Sources */,
 				E7E17547186E630E007D1EDC /* ControlTriggerFilter.cpp in Sources */,
 				E7E17549186E630E007D1EDC /* ControlValue.cpp in Sources */,
+				A646DA01188351EA00DBBF37 /* curvedLine.cpp in Sources */,
 				E7E1754B186E630E007D1EDC /* ControlXYSpeed.cpp in Sources */,
 				E7E1754D186E630E007D1EDC /* DelayUtils.cpp in Sources */,
 				E7E1754F186E630E007D1EDC /* DSPUtils.cpp in Sources */,
@@ -9430,6 +9666,8 @@
 				E7E1756D186E630F007D1EDC /* SawtoothWave.cpp in Sources */,
 				E7E1756F186E630F007D1EDC /* SineWave.cpp in Sources */,
 				E7E17571186E630F007D1EDC /* StereoDelay.cpp in Sources */,
+				A646DA761883521700DBBF37 /* shImage.c in Sources */,
+				A646DA7F1883521700DBBF37 /* shPath.c in Sources */,
 				E7E17573186E630F007D1EDC /* Synth.cpp in Sources */,
 				E7E17575186E630F007D1EDC /* TableLookupOsc.cpp in Sources */,
 				E7E17577186E630F007D1EDC /* TonicFrames.cpp in Sources */,
@@ -9444,6 +9682,7 @@
 				E79EADB31878829E00B8B8F0 /* Globals.cpp in Sources */,
 				E79EADB51878829E00B8B8F0 /* Module.cpp in Sources */,
 				E79EADB71878829E00B8B8F0 /* RandomMover.cpp in Sources */,
+				A646DA911883521700DBBF37 /* simpleVGPath.cpp in Sources */,
 				E79EADB91878829E00B8B8F0 /* CloudsVisualSystemProcess11.cpp in Sources */,
 				E79EADBB1878829E00B8B8F0 /* E2.cpp in Sources */,
 				E79EADBD1878829E00B8B8F0 /* CloudsVisualSystemProcess18.cpp in Sources */,
@@ -9463,8 +9702,10 @@
 				E7302C12187DF4270079C5B8 /* CloudsSVGMesh.cpp in Sources */,
 				E7302C21187DF4C30079C5B8 /* Controller.cpp in Sources */,
 				E7302C23187DF4C30079C5B8 /* Force.cpp in Sources */,
+				A646D9FE188351EA00DBBF37 /* CloudsVisualSystemDrawnLine.cpp in Sources */,
 				E7302C25187DF4C30079C5B8 /* ForceSet.cpp in Sources */,
 				E7302C27187DF4C30079C5B8 /* Gravity.cpp in Sources */,
+				A646DA731883521700DBBF37 /* shGeometry.c in Sources */,
 				E7302C29187DF4C30079C5B8 /* Points.cpp in Sources */,
 				E7302C2B187DF4C30079C5B8 /* State.cpp in Sources */,
 				E7302C56187E5A3C0079C5B8 /* CloudsVisualSystemTerrain.cpp in Sources */,

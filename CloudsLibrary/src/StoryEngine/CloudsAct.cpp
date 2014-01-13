@@ -463,6 +463,14 @@ float CloudsAct::addVisualSystem(CloudsVisualSystemPreset& preset, float startTi
     
     duration = MAX(item.endTime, duration);
     
+    //debugging time respect
+    if(preset.indefinite){
+        addNote("INDEFINITE SCHED: " + ofToString(endTime - startTime, 3) , startTime);
+    }
+    else{
+        addNote("DEFINITE DUR: " + ofToString(preset.duration,3) + " SCHED: " + ofToString(endTime - startTime, 3), startTime);
+    }
+
     actItems.push_back(item);
     actItemsMap[item.key] = item;
     visualSystemItems[preset.getID()] = item;

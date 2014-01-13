@@ -596,8 +596,17 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					}
 					//end within the clip
 					else{
-						state.visualSystemEndTime = state.duration - state.clip.getDuration() / 2. + clipFadePad;
-						if(bLogVisualSystemDetails) state.log << " - moving end time to middle of " << state.clip.getLinkName() << ", time " << state.visualSystemEndTime << endl;
+                        float midAlignedEnd = state.duration - state.clip.getDuration() / 2. + clipFadePad;
+                        float startAlignedEnd  = state.duration - state.clip.getDuration() + clipFadePad;
+                        if( abs(midAlignedEnd - state.visualSystemEndTime) > abs(startAlignedEnd -  state.visualSystemEndTime) ){
+                            state.visualSystemEndTime = midAlignedEnd;
+                        }
+                        else {
+                            state.visualSystemEndTime = startAlignedEnd;
+                        }
+                        
+						if(bLogVisualSystemDetails)
+                            state.log << " - moving end time to middle of " << state.clip.getLinkName() << ", time " << state.visualSystemEndTime << endl;
 					}
 					
 					state.act->addVisualSystem(state.preset,
