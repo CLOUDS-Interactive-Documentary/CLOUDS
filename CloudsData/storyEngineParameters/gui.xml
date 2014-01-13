@@ -42,8 +42,13 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>MIN VS RUNTIME</Name>
+    <Value>10.049261093</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>MAX VS GAPTIME</Name>
-    <Value>2.955664873</Value>
+    <Value>8.275861740</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

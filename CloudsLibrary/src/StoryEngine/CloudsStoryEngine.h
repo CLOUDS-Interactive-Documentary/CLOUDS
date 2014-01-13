@@ -150,8 +150,11 @@ class CloudsStoryEngine {
 	
 	//max time to watch visuals
     float maxVisualSystemRunTime;
+    //min time to watch indefinites
+    float minVisualSystemRunTime;
 	//max time between visuals
     float maxVisualSystemGapTime;
+
 	//how long to extend visual systems over the end of topics
 	float visualSystemTopicEndExtend;
 

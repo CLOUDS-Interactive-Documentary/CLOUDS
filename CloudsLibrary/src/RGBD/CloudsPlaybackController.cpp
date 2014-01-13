@@ -551,8 +551,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 #endif
         
 #ifdef SHOW_SUBTITLES
-        CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles(
-                                                               CloudsVisualSystem::getStaticRenderTarget().getWidth()/2,
+        CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles(CloudsVisualSystem::getStaticRenderTarget().getWidth()/2,
                                                                (float)CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.8);
 #endif
         
@@ -569,7 +568,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 		ofPopStyle();
 	}
     else{
-        ofBackground(0, 0, 255)
+        ofBackground(0, 0, 255);
     }
 	
 	drawDebugOverlay();
