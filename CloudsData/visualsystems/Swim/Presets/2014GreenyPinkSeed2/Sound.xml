@@ -2,16 +2,21 @@
     <Kind>42</Kind>
     <Name>Sound</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>461.000000000</XPosition>
-    <YPosition>375.000000000</YPosition>
+    <XPosition>445.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>Underwater_stretch.aif</Name>
-    <Value>0</Value>
+    <Name>underwater_stretch.aif</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>underwater.aif</Name>
+    <Name>Underwater.aif</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Gain</Name>
+    <Value>0.339901477</Value>
 </Widget>

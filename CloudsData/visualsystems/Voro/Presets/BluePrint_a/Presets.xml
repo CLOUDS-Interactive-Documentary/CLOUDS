@@ -1,10 +1,20 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>195.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>849.000061035</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BluePrint_a</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BluePrint_b</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>cells</Name>
@@ -19,6 +29,11 @@
     <Kind>2</Kind>
     <Name>crystalLine</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Dream_Crystal1</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -84,9 +99,4 @@
     <Kind>2</Kind>
     <Name>SpaceBoulders_B</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BluePrint_a</Name>
-    <Value>1</Value>
 </Widget>

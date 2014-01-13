@@ -4,14 +4,6 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>DENSITY</WidgetName>
-                <WidgetID>6</WidgetID>
-                <WidgetCanvasParent>EXAMPLE MPM FLUID</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>ROT-Y</WidgetName>
                 <WidgetID>11</WidgetID>
                 <WidgetCanvasParent>CamSettings</WidgetCanvasParent>

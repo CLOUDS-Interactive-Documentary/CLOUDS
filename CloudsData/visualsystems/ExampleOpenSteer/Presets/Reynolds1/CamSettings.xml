@@ -33,32 +33,32 @@
 <Widget>
     <Kind>2</Kind>
     <Name>InteractiveCamera</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>damping</Name>
-    <Value>0.000000000</Value>
+    <Value>0.019704133</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>minX</Name>
-    <Value>0.000000000</Value>
+    <Value>-78.472961426</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxX</Name>
-    <Value>0.000000000</Value>
+    <Value>79.359542847</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>minY</Name>
-    <Value>0.000000000</Value>
+    <Value>-57.192173004</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxY</Name>
-    <Value>0.000000000</Value>
+    <Value>64.285659790</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

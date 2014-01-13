@@ -418,7 +418,7 @@ void CloudsVisualSystemWormHole::selfSetup()
 	currentShader = NULL;
 	
 	//meshes
-	modelPath = getVisualSystemDataPath(false) + "models/";
+	modelPath = getVisualSystemDataPath(true) + "models/";
 	cameraPathPath = getVisualSystemDataPath() + "cameraPaths/";
 	
 	cout << modelPath << endl;

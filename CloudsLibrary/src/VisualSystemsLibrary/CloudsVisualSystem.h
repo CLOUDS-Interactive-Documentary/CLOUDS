@@ -17,6 +17,7 @@
 
 #ifdef OCULUS_RIFT
 #include "ofxOculusRift.h"
+#include "CloudsHUDController.h"
 #endif
 
 /**
