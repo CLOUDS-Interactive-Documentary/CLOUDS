@@ -200,6 +200,7 @@ ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::InstantiateSystem(string sy
 	if(constructors.find(systemName) != constructors.end()){
 		return ofPtr<CloudsVisualSystem>( constructors[systemName]() );
 	}
+    cout << "CloudsVisualSystemManager::InstantiateSystems - SYSTEM NULL? " << endl;
 	return ofPtr<CloudsVisualSystem>();
 }
 
@@ -655,16 +656,28 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 }
 
 //--------------------------------------------------------------------
-vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeywords(vector<string>& keys, string clipName){
+vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeywords(vector<string>& keys, string clipName,bool isInterlude){
 	vector<CloudsVisualSystemPreset> presetsWithKeywords;
     vector<string> presetIds;
 	for(int i = 0; i < presets.size(); i++){
 		vector<string> presetKeywords = keywordsForPreset(i);
 		for(int k = 0; k < keys.size(); k++){
 			if( ofContains(presetKeywords, keys[k]) ){
-				presetsWithKeywords.push_back(presets[i]);
-				presetIds.push_back(presets[i].getID());
-				continue;
+                
+                if(isInterlude){
+                    if(presets[i].interlude){
+                        presetsWithKeywords.push_back(presets[i]);
+                        presetIds.push_back(presets[i].getID());
+                        continue;
+                    }
+                }
+                else{
+                    presetsWithKeywords.push_back(presets[i]);
+                    presetIds.push_back(presets[i].getID());
+                    continue;
+                }
+                
+
 			}
 		}
 	}
@@ -679,6 +692,9 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 			}
 		}
 	}
+//    if(isInterlude){
+//        for( int i =0; i )
+//    }
 	
 	return presetsWithKeywords;
 }

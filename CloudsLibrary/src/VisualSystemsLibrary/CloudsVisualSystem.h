@@ -7,7 +7,7 @@
 #include "ofxTLCameraTrack.h"
 #include "CloudsRGBDCamera.h"
 #include "CloudsInputEvents.h"
-#include "CloudsHUDController.h"
+//#include "CloudsHUDController.h"
 #include "ofxLight.h"
 #include "ofxGenerative.h"
 //#include "ofxMaterial.h"
@@ -482,6 +482,9 @@ class CloudsVisualSystem {
     float postGrainDist;
     
     int bleed;
+    bool bDoBloom;
+    float bloomAmount;
+    int bloomSamples;
     
 #ifdef CLOUDS_RELEASE
     
