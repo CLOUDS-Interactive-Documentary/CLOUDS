@@ -11,6 +11,8 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "linePoemApp.h"
+
 
 
 //TODO: rename this to your own visual system
@@ -92,6 +94,10 @@ class CloudsVisualSystemLinePoem : public CloudsVisualSystem {
 	
     ofFbo fbo;
     void setupFbo();
+    
+    linePoemApp APP;
+    
+    
 protected:
     
     //  Your Stuff
