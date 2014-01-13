@@ -3004,6 +3004,9 @@ void CloudsVisualSystem::setupHUDGui()
     guis.push_back(hudGui);
     guimap[hudGui->getName()] = hudGui;
     
+    // load initial settings
+    hudGui->loadSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+
     // sync visibility with others
     hudGui->setVisible(gui->isVisible());
 }

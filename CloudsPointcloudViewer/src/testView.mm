@@ -114,6 +114,7 @@
 
 - (void)exit
 {
+    rgbdVisualSystem.exit();
     parser.saveSpeakersVolume(GetCloudsDataPath()+"sound/SpeakersVolume.txt");
 }
 
