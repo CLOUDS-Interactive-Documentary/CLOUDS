@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FOV</Name>
-    <Value>5.320197105</Value>
+    <Value>58.522113800</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -29,6 +29,36 @@
     <Kind>4</Kind>
     <Name>ROT-Z</Name>
     <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>InteractiveCamera</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>damping</Name>
+    <Value>0.019704133</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>minX</Name>
+    <Value>-4.876899719</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxX</Name>
+    <Value>18.177284241</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>minY</Name>
+    <Value>-19.950790405</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxY</Name>
+    <Value>26.157577515</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

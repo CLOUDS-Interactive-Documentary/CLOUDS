@@ -19520,7 +19520,7 @@
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="OpenP5SpaceJunk_larger_irregular_cubes">
     <keywords></keywords>
@@ -19645,26 +19645,58 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="OpenP5Spaghetti_BlueScribblesOC">
-    <keywords></keywords>
+<system name="OpenP5Spaghetti_BlueScribbles">
+    <keywords>sketching|drawing</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - make an egg</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Joel - Watercolors</clip>
+        <clip>Kyle_MC - Eyewriter</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Shantell - live drawing</clip>
+        <clip>Shantell - meeting zach</clip>
+        <clip>Shantell - simple</clip>
+        <clip>Shantell - work with zach</clip>
+        <clip>Maeda - I can still draw</clip>
+        <clip>Maeda - early computer graphics</clip>
+        <clip>Maeda - last trick</clip>
+        <clip>Maeda - thinking about interfaces</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>1</oculus>
+    <grade>B</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="OpenP5Spaghetti_BlueSmoothScribblesOC">
-    <keywords></keywords>
+<system name="OpenP5Spaghetti_BlueSmoothScribbles">
+    <keywords>sketching|drawing</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - make an egg</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Joel - Watercolors</clip>
+        <clip>Kyle_MC - Eyewriter</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Shantell - live drawing</clip>
+        <clip>Shantell - meeting zach</clip>
+        <clip>Shantell - simple</clip>
+        <clip>Shantell - work with zach</clip>
+        <clip>Maeda - I can still draw</clip>
+        <clip>Maeda - early computer graphics</clip>
+        <clip>Maeda - last trick</clip>
+        <clip>Maeda - thinking about interfaces</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>1</oculus>
+    <grade>B</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -19718,13 +19750,16 @@
     <interlude>0</interlude>
 </system>
 <system name="OpenP5Spaghetti_Expanding_galaxy">
-    <keywords>cosmogeny</keywords>
+    <keywords>cosmogeny|universe</keywords>
     <links></links>
     <suppressions>
-        <clip>Diederick - allprogrammershavethat</clip>
         <clip>Ramsey - elegant system</clip>
         <clip>Ramsey - minecraft 1</clip>
         <clip>Ramsey - minecraft 2</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - New Kind of Science</clip>
     </suppressions>
     <comments></comments>
     <grade>B</grade>
@@ -19735,12 +19770,20 @@
     <interlude>0</interlude>
 </system>
 <system name="OpenP5Spaghetti_Fuzzy_galaxy">
-    <keywords></keywords>
+    <keywords>cosmogeny|universe</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Ramsey - elegant system</clip>
+        <clip>Ramsey - minecraft 1</clip>
+        <clip>Ramsey - minecraft 2</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -19771,13 +19814,21 @@
     <interlude>0</interlude>
 </system>
 <system name="OpenP5Spaghetti_Galaxy_HotColdOC">
-    <keywords></keywords>
+    <keywords>cosmogeny|universe</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Ramsey - elegant system</clip>
+        <clip>Ramsey - minecraft 1</clip>
+        <clip>Ramsey - minecraft 2</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>1</oculus>
+    <grade>B</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -19949,7 +20000,7 @@
         <clip>Sophy - made of photons</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -19969,9 +20020,25 @@
     <interlude>0</interlude>
 </system>
 <system name="OpenP5Spaghetti_Lightrainbow_scribblesOC">
-    <keywords></keywords>
+    <keywords>sketching|drawing</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Andres - make an egg</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Joel - Watercolors</clip>
+        <clip>Kyle_MC - Eyewriter</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Shantell - live drawing</clip>
+        <clip>Shantell - meeting zach</clip>
+        <clip>Shantell - simple</clip>
+        <clip>Shantell - work with zach</clip>
+        <clip>Maeda - I can still draw</clip>
+        <clip>Maeda - early computer graphics</clip>
+        <clip>Maeda - last trick</clip>
+        <clip>Maeda - thinking about interfaces</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
@@ -19993,25 +20060,29 @@
     <interlude>0</interlude>
 </system>
 <system name="OpenP5Spaghetti_PurpleYellow_worms">
-    <keywords></keywords>
+    <keywords>artificial life|surprise|feedback</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Casey - Craig Venter</clip>
+        <clip>Casey - branching off branching</clip>
+        <clip>Kyle_CH - Polygons</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Nervous_Jesse - breaking the system</clip>
+        <clip>Nervous_Jesse - understanding to control 1</clip>
+        <clip>Nervous_Jesse - understanding to control 4</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - conway</clip>
+        <clip>Vera - working for clients</clip>
+        <clip>Vera - commisions,</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="OpenP5Spaghetti_PurpleYellow_wormsOC">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -20053,58 +20124,27 @@
     <interlude>0</interlude>
 </system>
 <system name="OpenP5Spaghetti_RedEmber_worms">
-    <keywords>fun|processing|surprise</keywords>
+    <keywords>sketching|drawing</keywords>
     <links></links>
     <suppressions>
-        <clip>Andres - examples of the impossible</clip>
-        <clip>Binx - Programming is a superpower</clip>
-        <clip>Binx - actually interesting</clip>
-        <clip>Casey - Birth of processing</clip>
-        <clip>Casey - Design by numbers to processing</clip>
-        <clip>Casey - People would pop up</clip>
-        <clip>Casey - Processing, what is it?</clip>
-        <clip>Casey - Processing addons</clip>
-        <clip>Casey - Processing open</clip>
-        <clip>Casey - Style diffuses</clip>
-        <clip>Casey - group teaching</clip>
-        <clip>Casey - pushing software beyond</clip>
-        <clip>Golan - make a mark</clip>
-        <clip>Golan - project example</clip>
-        <clip>Golan - woah2</clip>
-        <clip>Golan - would be boring</clip>
-        <clip>Intro - CodingSketching</clip>
-        <clip>Karsten - processing</clip>
-        <clip>Kyle_CH - fun accessible art</clip>
-        <clip>Kyle_CH - history of computational art</clip>
-        <clip>LIA - CircleFormula1</clip>
-        <clip>LIA - MalleableMath</clip>
-        <clip>Maeda - Batman superman</clip>
-        <clip>Maeda - Processing</clip>
-        <clip>Marcus - Sims</clip>
-        <clip>Marcus - emergence</clip>
-        <clip>Marcus - lego bricks</clip>
-        <clip>Marius - algorithms as parameter space</clip>
-        <clip>Marius - keeping the door open</clip>
-        <clip>Marius - parameter space</clip>
-        <clip>Nervous_Jesse - breaking the system</clip>
-        <clip>Nervous_Jesse - understanding to control 1</clip>
-        <clip>Nervous_Jesse - understanding to control 4</clip>
-        <clip>Nervous_Jessica - John Maeda</clip>
-        <clip>Philip - if I had Processing in school</clip>
-        <clip>Ramsey - designing languages</clip>
-        <clip>Shantell - big kid</clip>
-        <clip>Shiffman - NOC 2</clip>
-        <clip>Shiffman - There&apos;s an element of surprise</clip>
-        <clip>Shiffman - advanced environment</clip>
-        <clip>Shiffman - make it random</clip>
-        <clip>Theo - magic</clip>
-        <clip>Vera - Playing with a system</clip>
-        <clip>Vera - commisions,</clip>
-        <clip>Vera - working for clients</clip>
-        <clip>Zach - processing, publishing</clip>
+        <clip>Andres - make an egg</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Joel - Watercolors</clip>
+        <clip>Kyle_MC - Eyewriter</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Shantell - live drawing</clip>
+        <clip>Shantell - meeting zach</clip>
+        <clip>Shantell - simple</clip>
+        <clip>Shantell - work with zach</clip>
+        <clip>Maeda - I can still draw</clip>
+        <clip>Maeda - early computer graphics</clip>
+        <clip>Maeda - last trick</clip>
+        <clip>Maeda - thinking about interfaces</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -20165,20 +20205,28 @@
         <clip>Zach - minecraft livecode</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>1</oculus>
+    <grade>B</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="OpenP5Spaghetti_VioletBlue_Nebula">
-    <keywords></keywords>
+    <keywords>cosmogeny|universe</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Ramsey - elegant system</clip>
+        <clip>Ramsey - minecraft 1</clip>
+        <clip>Ramsey - minecraft 2</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -20281,12 +20329,20 @@
     <interlude>0</interlude>
 </system>
 <system name="OpenP5Spaghetti_purple_gold_pointcloud">
-    <keywords></keywords>
+    <keywords>pointcloud</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Ramsey - elegant system</clip>
+        <clip>Ramsey - minecraft 1</clip>
+        <clip>Ramsey - minecraft 2</clip>
+        <clip>Ramsey - Conway 1</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -20342,7 +20398,7 @@
         <clip>Zach - drawn2</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
