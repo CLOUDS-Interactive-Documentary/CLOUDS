@@ -602,6 +602,9 @@
 		85384EDF188352100076AF5A /* MazeCamera2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384ED7188352100076AF5A /* MazeCamera2.cpp */; };
 		85384EE0188352100076AF5A /* MazeCell2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384ED9188352100076AF5A /* MazeCell2.cpp */; };
 		85384EE1188352100076AF5A /* ParamManager2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384EDB188352100076AF5A /* ParamManager2.cpp */; };
+		85384F3F188376300076AF5A /* ofxShivaVGRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F1F188376300076AF5A /* ofxShivaVGRenderer.cpp */; };
+		85384F40188376300076AF5A /* simpleVGContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F21188376300076AF5A /* simpleVGContext.cpp */; };
+		85384F41188376300076AF5A /* simpleVGPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85384F23188376300076AF5A /* simpleVGPath.cpp */; };
 		85891AD5187F5E1500325DD8 /* Bubbles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AB9187F5E1500325DD8 /* Bubbles.cpp */; };
 		85891AD6187F5E1500325DD8 /* Bubbles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891AB9187F5E1500325DD8 /* Bubbles.cpp */; };
 		85891AD7187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85891ABB187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp */; };
@@ -1769,6 +1772,12 @@
 		85384EDA188352100076AF5A /* MazeCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCell2.h; sourceTree = "<group>"; };
 		85384EDB188352100076AF5A /* ParamManager2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParamManager2.cpp; sourceTree = "<group>"; };
 		85384EDC188352100076AF5A /* ParamManager2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParamManager2.h; sourceTree = "<group>"; };
+		85384F1F188376300076AF5A /* ofxShivaVGRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxShivaVGRenderer.cpp; sourceTree = "<group>"; };
+		85384F20188376300076AF5A /* ofxShivaVGRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxShivaVGRenderer.h; sourceTree = "<group>"; };
+		85384F21188376300076AF5A /* simpleVGContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simpleVGContext.cpp; sourceTree = "<group>"; };
+		85384F22188376300076AF5A /* simpleVGContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simpleVGContext.h; sourceTree = "<group>"; };
+		85384F23188376300076AF5A /* simpleVGPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simpleVGPath.cpp; sourceTree = "<group>"; };
+		85384F24188376300076AF5A /* simpleVGPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simpleVGPath.h; sourceTree = "<group>"; };
 		85891AB9187F5E1500325DD8 /* Bubbles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bubbles.cpp; sourceTree = "<group>"; };
 		85891ABA187F5E1500325DD8 /* Bubbles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bubbles.h; sourceTree = "<group>"; };
 		85891ABB187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemSwim.cpp; sourceTree = "<group>"; };
@@ -3393,6 +3402,28 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
+		85384EE41883762F0076AF5A /* ofxShivaVG */ = {
+			isa = PBXGroup;
+			children = (
+				85384F1E188376300076AF5A /* src */,
+			);
+			name = ofxShivaVG;
+			path = ../../../addons/ofxShivaVG;
+			sourceTree = "<group>";
+		};
+		85384F1E188376300076AF5A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				85384F1F188376300076AF5A /* ofxShivaVGRenderer.cpp */,
+				85384F20188376300076AF5A /* ofxShivaVGRenderer.h */,
+				85384F21188376300076AF5A /* simpleVGContext.cpp */,
+				85384F22188376300076AF5A /* simpleVGContext.h */,
+				85384F23188376300076AF5A /* simpleVGPath.cpp */,
+				85384F24188376300076AF5A /* simpleVGPath.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		85891AB7187F5E1400325DD8 /* Swim */ = {
 			isa = PBXGroup;
 			children = (
@@ -3568,6 +3599,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				85384EE41883762F0076AF5A /* ofxShivaVG */,
 				A600C0F81881032C0041787F /* ofxSubtitles */,
 				E79EAD26187877A600B8B8F0 /* ofxGpuParticles */,
 				E7F050E618712C9700017521 /* ofxAnimationPrimitives */,
@@ -8807,6 +8839,9 @@
 				85384EDF188352100076AF5A /* MazeCamera2.cpp in Sources */,
 				85384EE0188352100076AF5A /* MazeCell2.cpp in Sources */,
 				85384EE1188352100076AF5A /* ParamManager2.cpp in Sources */,
+				85384F3F188376300076AF5A /* ofxShivaVGRenderer.cpp in Sources */,
+				85384F40188376300076AF5A /* simpleVGContext.cpp in Sources */,
+				85384F41188376300076AF5A /* simpleVGPath.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
