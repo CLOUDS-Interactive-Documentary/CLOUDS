@@ -4,16 +4,16 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>X</WidgetName>
-                <WidgetID>6</WidgetID>
+                <WidgetName>Y</WidgetName>
+                <WidgetID>8</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Y</WidgetName>
-                <WidgetID>8</WidgetID>
+                <WidgetName>X</WidgetName>
+                <WidgetID>6</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>

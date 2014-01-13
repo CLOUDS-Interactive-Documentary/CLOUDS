@@ -177,6 +177,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>ToxiAllInOne.obj</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>tube1.obj</Name>
     <Value>0</Value>
 </Widget>
