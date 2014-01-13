@@ -35,6 +35,7 @@ class CloudsHUDController {
 	void setup();
 	void update();
 	void draw();
+    void draw3D(ofCamera& cam);
 
 	void setHomeEnabled(bool enable);
 	
@@ -68,7 +69,8 @@ class CloudsHUDController {
 	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
     
-    ofVec2f getSize();
+    ofVec2f getSize(bool bScaled = true);
+    ofVec2f getCenter(bool bScaled = true);
 
   protected:
 	
@@ -88,6 +90,7 @@ class CloudsHUDController {
 	
 	
     void drawLayer(CloudsHUDLayerSet layer);
+    void drawLayer3D(CloudsHUDLayerSet layer, ofVec3f& basePos, ofVec3f& camPos);
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath );
     
     vector<ofxFTGLFont*>    tempFontList;

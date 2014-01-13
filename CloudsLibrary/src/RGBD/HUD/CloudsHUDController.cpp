@@ -11,6 +11,7 @@
 #include "CloudsInput.h"
 #include "CloudsClip.h"
 #include "CloudsSpeaker.h"
+#include "CloudsVisualSystem.h"
 
 CloudsHUDController::CloudsHUDController(){
 	hudGui = NULL;
@@ -289,8 +290,12 @@ int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
     return fontSize;
 }
 
-ofVec2f CloudsHUDController::getSize(){
-    return ofVec2f(hudBounds.width*scaleAmt, hudBounds.height*scaleAmt);
+ofVec2f CloudsHUDController::getSize(bool bScaled){
+    return ofVec2f(hudBounds.width, hudBounds.height) * (bScaled? scaleAmt : 1.0);
+}
+
+ofVec2f CloudsHUDController::getCenter(bool bScaled){
+    return ofVec2f(hudBounds.width * 0.5, hudBounds.height * 0.5) * (bScaled? scaleAmt : 1.0);
 }
 
 void CloudsHUDController::update(){
@@ -378,6 +383,103 @@ void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
 	for(int i = 0; i < layerSets[layer].size(); i++){
 		layerSets[layer][i]->draw();
 	}
+}
+
+void CloudsHUDController::draw3D(ofCamera& cam){
+    
+    if( !bDrawHud )
+        return;
+    
+	ofPushStyle();
+	ofPushMatrix();
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    
+	glDisable(GL_DEPTH_TEST);
+    glDisable(GL_LIGHTING);
+    ofEnableAlphaBlending();
+    
+    ofVec3f upAxis = ofVec3f(0.0, 1.0, 0.0);
+    ofVec3f camPos = cam.getGlobalPosition();
+    ofVec3f hudPos = camPos + (cam.getLookAtDir().getScaled(300));
+//    cout << "lookAt = " << getCameraRef().getLookAtDir() << endl;
+    
+    ofVec3f lowerThirdPos = hudPos.getRotated(30, camPos, upAxis);
+    
+    drawLayer3D(CLOUDS_HUD_QUESTION, hudPos, camPos);
+    drawLayer3D(CLOUDS_HUD_LOWER_THIRD, lowerThirdPos, camPos);
+	drawLayer3D(CLOUDS_HUD_PROJECT_EXAMPLE, hudPos, camPos);
+	drawLayer3D(CLOUDS_HUD_MAP, hudPos, camPos);
+	
+    glPopAttrib();
+	ofPopMatrix();
+	ofPopStyle();
+}
+
+void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofVec3f& basePos, ofVec3f& camPos){
+    ofPushMatrix();
+    
+    // Get the total layer bounds.
+    ofRectangle layerBounds;
+	for(int i = 0; i < layerSets[layer].size(); i++){
+        if (i == 0) layerBounds = layerSets[layer][i]->svg.getBounds();
+        else layerBounds.growToInclude(layerSets[layer][i]->svg.getBounds());
+	}
+    
+    // Translate to the layer center pos.
+    ofVec3f layerPos = basePos + (getCenter(false) - layerBounds.getCenter());
+    ofTranslate(layerPos);
+    
+    // Billboard rotation using the Oculus orientation.
+//    ofVec3f eulerAngles = (CloudsVisualSystem::getOculusRift().getOrientationQuat() * cam.getOrientationQuat()).getEuler();
+//    ofRotate(-eulerAngles.z, 1, 0, 0);
+    
+    // Billboard rotation using the camera.
+    ofNode node;
+    node.setPosition(layerPos);
+    node.lookAt(camPos);
+    ofVec3f axis;
+    float angle;
+    node.getOrientationQuat().getRotate(angle, axis);
+    ofRotate(angle, axis.x, axis.y, axis.z);
+    
+    // Debug circle.
+    ofSetColor(255);
+    ofCircle(0, 0, 25);
+    
+    // Draw the video player if we're on the right layer.
+    if (layer == CLOUDS_HUD_PROJECT_EXAMPLE && videoPlayer.isPlaying()) {
+        ofSetColor(255, 255, 255, 255*0.7);
+        if( !bSkipAVideoFrame ){
+            videoPlayer.draw( videoBounds.x, videoBounds.y, videoBounds.width, videoBounds.height );
+        }
+    }
+    
+    // Draw the layer.
+    ofScale(-scaleAmt, -scaleAmt, 1);
+    ofTranslate(-layerBounds.getCenter());
+    ofSetColor(255);
+    drawLayer(layer);
+    
+    // Draw the home button if we're on the right layer.
+    if (layer == CLOUDS_HUD_LOWER_THIRD && bDrawHome) {
+        home.draw();
+    }
+    
+    // Draw the associated text labels.
+    for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
+        bool bFound = false;
+        for(int i = 0; i < layerSets[layer].size(); i++){
+            if (layerSets[layer][i]->svg.getMeshByID(it->first) != NULL) {
+                bFound = true;
+                break;
+            }
+        }
+        if (bFound) {
+            (it->second)->draw();
+        }
+    }
+    
+    ofPopMatrix();
 }
 
 void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
