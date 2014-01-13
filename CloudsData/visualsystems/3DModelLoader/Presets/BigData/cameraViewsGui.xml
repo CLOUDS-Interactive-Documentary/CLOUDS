@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>cameraViewsGui</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>432.000000000</XPosition>
-    <YPosition>73.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>643.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -32,12 +32,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>path camera</Name>
+    <Name>four view</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>four view</Name>
+    <Name>path camera</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -48,17 +48,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>deadZone</Name>
-    <Value>0.050000001</Value>
+    <Value>0.143349767</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>cameraSpeed</Name>
-    <Value>4.000000000</Value>
+    <Value>4.679802895</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>pitchScale</Name>
-    <Value>0.010000000</Value>
+    <Value>0.014517242</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
