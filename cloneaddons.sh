@@ -107,7 +107,8 @@ git checkout -b develop --track origin/develop
 git pull origin develop
 cd ..
 
-${NEWPREFIX}ofxObjLoader		
+${NEWPREFIX}ofxObjLoader
+${NEWPREFIX}ofxShivaVG		
 
 # git clone https://github.com/satoruhiga/ofxCocoaGLView
 # git clone https://github.com/satoruhiga/ofxPCL
