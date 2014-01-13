@@ -275,11 +275,16 @@ public:
 	ofVec3f camAim, camVel;
 	
 	//particles
-	ofVec3f* positions;
-	ofVec3f* velocities;
-	ofVec3f* baseVelocities;
-	ofFloatColor* lifeData;
-	ofIndexType* indices;
+	//ofVec3f* positions;
+	//ofVec3f* velocities;
+	//ofVec3f* baseVelocities;
+	//ofFloatColor* lifeData
+	//ofIndexType* indices;
+	vector<ofVec3f> positions;
+	vector<ofVec3f> velocities;
+	vector<ofVec3f> baseVelocities;
+	vector<ofFloatColor> lifeData;
+	vector<ofIndexType> indices;
 	int indexCount, nextIndex;
 	float minExplosionTime, maxExplosionTime;
 	
@@ -332,7 +337,6 @@ public:
 	ofFbo glowFbo6;
 	ofShader glowShader;
 	
-	vector<FireworkRocket> rockets;
 	int rocketCount;
 	
 	ofVbo curvePoints;
