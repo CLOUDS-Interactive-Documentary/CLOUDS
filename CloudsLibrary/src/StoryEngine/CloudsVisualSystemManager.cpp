@@ -3,6 +3,10 @@
 #include "ofxXmlSettings.h"
 #include "CloudsGlobal.h"
 
+//ALL PRESETS
+static vector<CloudsVisualSystemPreset> presets;
+static vector<CloudsVisualSystem*> systems;
+
 #ifndef CLOUDS_NO_VS
 #include "CloudsVisualSystem2DVideo.h"
 #include "CloudsVisualSystem3DModelLoader.h"
@@ -196,33 +200,47 @@ struct Mapping {
 map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
 
 //--------------------------------------------------------------------
-ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::InstantiateSystem(string systemName){
+//ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::InstantiateSystem(string systemName){
+//	if(constructors.find(systemName) != constructors.end()){
+//		return ofPtr<CloudsVisualSystem>( constructors[systemName]() );
+//	}
+//    cout << "CloudsVisualSystemManager::InstantiateSystems - SYSTEM NULL? " << endl;
+//	return ofPtr<CloudsVisualSystem>();
+//}
+
+CloudsVisualSystem* CloudsVisualSystemManager::InstantiateSystem(string systemName){
 	if(constructors.find(systemName) != constructors.end()){
-		return ofPtr<CloudsVisualSystem>( constructors[systemName]() );
+        CloudsVisualSystem* system = constructors[systemName]();
+        systems.push_back( system );
+		return system;
 	}
     cout << "CloudsVisualSystemManager::InstantiateSystems - SYSTEM NULL? " << endl;
-	return ofPtr<CloudsVisualSystem>();
+	return NULL;
 }
 
 //--------------------------------------------------------------------
-vector< ofPtr<CloudsVisualSystem> > CloudsVisualSystemManager::InstantiateSystems(vector<CloudsVisualSystemPreset>& systemPresets){
+vector< CloudsVisualSystem* > CloudsVisualSystemManager::InstantiateSystems(vector<CloudsVisualSystemPreset>& systemPresets){
 	
-	vector< ofPtr<CloudsVisualSystem> > systems;
+	vector< CloudsVisualSystem* > newSystems;
 	for(int i = 0; i < systemPresets.size(); i++){
 		if(constructors.find(systemPresets[i].systemName) != constructors.end()){
 			cout << "INSTANTIATING SYSTEM " << systemPresets[i].systemName << " WITH PRESET " << systemPresets[i].presetName << endl;
+            if(systemPresets[i].system != NULL){
+                ofLogError("CloudsVisualSystemManager::InstantiateSystems") << "SYSTEM POINTER NOT NULL. LEAKING MEMORY";
+            }
 			systemPresets[i].system = InstantiateSystem( systemPresets[i].systemName );
 //			cout << "CloudsVisualSystemManager::InstantiateSystems - SYSTEM NULL? " << (systemPresets[i].system == NULL ? "YES" : "NO") << endl;
-			systems.push_back( systemPresets[i].system );
+			newSystems.push_back( systemPresets[i].system );
 		}
 		else{
 			ofLogError("CloudsVisualSystemManager::InstantiateSystems") << "Couldn't find system " << systemPresets[i].systemName;
 		}
 	}
-	return systems;
+	return newSystems;
 }
 
 #endif //end coupling guard
+
 
 
 bool preset_sort(CloudsVisualSystemPreset a, CloudsVisualSystemPreset b){
@@ -234,10 +252,21 @@ bool preset_sort(CloudsVisualSystemPreset a, CloudsVisualSystemPreset b){
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::freeSystemPointers(){
-    for(int i = 0; i < presets.size(); i++){
-        presets[i].system = ofPtr<CloudsVisualSystem>();
+void CloudsVisualSystemManager::FreeSystemPointers(){
+    for(int i = 0; i < systems.size(); i++){
+        delete systems[i];
+//        presets[i].system = ofPtr<CloudsVisualSystem>();
+//        if(presets[i].system != NULL){
+//            delete presets[i].system;
+//            presets[i].system = NULL;
+//        }
     }
+    systems.clear();
+}
+
+//--------------------------------------------------------------------
+bool CloudsVisualSystemManager::HasSystemRegistered(CloudsVisualSystem* system){
+    return ofContains(systems,system);
 }
 
 //--------------------------------------------------------------------
@@ -248,22 +277,21 @@ CloudsVisualSystemManager::CloudsVisualSystemManager(){
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::populateVisualSystems(){
-
-#ifndef CLOUDS_NO_VS
-	nameToVisualSystem.clear();
-	allSystemsPopulated = true;
-	
-	systems.clear();
-	presets.clear();
-    vector<string> systemNames;
-	for(map<string, tConstructor>::iterator it = constructors.begin(); it != constructors.end(); ++it) {
-		registerVisualSystem( InstantiateSystem(it->first) );
-	}
-
-    loadPresets();
-#endif
-}
+//void CloudsVisualSystemManager::populateVisualSystems(){
+//#ifndef CLOUDS_NO_VS
+//	nameToVisualSystem.clear();
+//	allSystemsPopulated = true;
+//	
+//	systems.clear();
+//	presets.clear();
+//    vector<string> systemNames;
+//	for(map<string, tConstructor>::iterator it = constructors.begin(); it != constructors.end(); ++it) {
+//		registerVisualSystem( InstantiateSystem(it->first) );
+//	}
+//
+//    loadPresets();
+//#endif
+//}
 
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::pastePresetToIndex(CloudsVisualSystemPreset preset, int index){
@@ -275,7 +303,7 @@ void CloudsVisualSystemManager::pastePresetToIndex(CloudsVisualSystemPreset pres
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem> system){
+void CloudsVisualSystemManager::updatePresetsForSystem(CloudsVisualSystem* system){
 	
 	if(system == NULL) return;
 
@@ -361,11 +389,11 @@ int CloudsVisualSystemManager::indexForPreset(string presetID){
 }
 
 //--------------------------------------------------------------------
-ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::getEmptySystem(string mainKeyword, vector<string> keywords){
+CloudsVisualSystem* CloudsVisualSystemManager::getEmptySystem(string mainKeyword, vector<string> keywords){
 	#ifdef CLOUDS_NO_VS
-	return ofPtr<CloudsVisualSystem>();
+	return NULL;
 	#else
-	ofPtr<CloudsVisualSystem> ptr(new CloudsVisualSystemEmpty() );
+	CloudsVisualSystem* ptr = new CloudsVisualSystemEmpty();
 	ptr->setKeywords(mainKeyword, keywords);
 	return ptr;
 	#endif
@@ -409,19 +437,19 @@ void CloudsVisualSystemManager::deletePreset(int i){
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::registerVisualSystem(ofPtr<CloudsVisualSystem> system){
-#ifndef CLOUDS_NO_VS
-	nameToVisualSystem[system->getSystemName()] = system;
-#endif
-	systems.push_back( system );
-}
+//void CloudsVisualSystemManager::registerVisualSystem(ofPtr<CloudsVisualSystem> system){
+//#ifndef CLOUDS_NO_VS
+//	nameToVisualSystem[system->getSystemName()] = system;
+//#endif
+//	systems.push_back( system );
+//}
 
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::loadPresets(){
 	cout << "Loading presets " << endl;
 	presets.clear();
 //	nameToPresets.clear();
-//    nameToPresetsIndex.clear();
+//  nameToPresetsIndex.clear();
 	keywords.clear();
 	suppressedClips.clear();
 	

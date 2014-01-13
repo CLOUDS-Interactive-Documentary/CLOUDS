@@ -34,7 +34,10 @@ void CloudsPlaybackController::clearAct(bool destroyAct){
 		}
 	}
 	
-    visualSystems.freeSystemPointers();
+    if( CloudsVisualSystemManager::HasSystemRegistered(currentVisualSystem) ){
+        currentVisualSystem = NULL;
+    }
+    visualSystems.FreeSystemPointers();
     
 	currentAct->unregisterEvents(this);
 	currentAct->unregisterEvents(&run);
@@ -110,18 +113,18 @@ void CloudsPlaybackController::setup(){
 		ofRegisterMouseEvents(this);
 	}
 	
-	rgbdVisualSystem = ofPtr<CloudsVisualSystemRGBD>( new CloudsVisualSystemRGBD() );
+	rgbdVisualSystem = new CloudsVisualSystemRGBD();
 	rgbdVisualSystem->setup();
 	rgbdVisualSystem->setDrawToScreen(false);
 	
 	
-	clusterMap = ofPtr<CloudsVisualSystemClusterMap>( new CloudsVisualSystemClusterMap() );
+	clusterMap = new CloudsVisualSystemClusterMap();
 	clusterMap->setRun(run);
 	clusterMap->setup();
 	clusterMap->buildEntireCluster(parser);
 	clusterMap->setDrawToScreen(false);
 	
-	introSequence = ofPtr<CloudsIntroSequence>( new CloudsIntroSequence() );
+	introSequence = new CloudsIntroSequence();
 	introSequence->setup();
 	introSequence->setDrawToScreen(false);
 	
@@ -188,7 +191,7 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
     
 	//TODO: show loading screen while we initialize all the visual systems
 	vector<CloudsVisualSystemPreset>& presets = currentAct->getAllVisualSystemPresets();
-	vector< ofPtr<CloudsVisualSystem> > systems = CloudsVisualSystemManager::InstantiateSystems(presets);
+	vector< CloudsVisualSystem* > systems = CloudsVisualSystemManager::InstantiateSystems(presets);
 	for(int i = 0; i < presets.size(); i++){
 		if(presets[i].system != NULL){
             //			cout << "CloudsPlaybackController::playAct -- Setting up:: " << presets[i].systemName << endl;
@@ -507,7 +510,7 @@ void CloudsPlaybackController::updateTransition(){
                     else if(currentVisualSystem->isPlaying()){
                         currentVisualSystem->stopSystem();
                         currentVisualSystem->exit();
-                        currentVisualSystem = ofPtr<CloudsVisualSystem>();
+                        currentVisualSystem = NULL;
                     }
                     
 					

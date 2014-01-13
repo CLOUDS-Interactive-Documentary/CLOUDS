@@ -84,14 +84,14 @@ class CloudsPlaybackController {
 	bool shouldPlayAct;
 	
 	//RGBD STUFF
-	ofPtr<CloudsVisualSystemRGBD> rgbdVisualSystem;
+	CloudsVisualSystemRGBD* rgbdVisualSystem;
 	//if there is a system playing this wil be non-null
-	ofPtr<CloudsIntroSequence> introSequence;
-	ofPtr<CloudsVisualSystemClusterMap> clusterMap;
+	CloudsIntroSequence* introSequence;
+	CloudsVisualSystemClusterMap* clusterMap;
 	
 	CloudsVisualSystemPreset nextVisualSystemPreset;	
 	CloudsVisualSystemPreset currentVisualSystemPreset;
-	ofPtr<CloudsVisualSystem> currentVisualSystem;
+	CloudsVisualSystem* currentVisualSystem;
 		
 	CloudsTransitionController transitionController;
 	void updateTransition();

@@ -335,15 +335,15 @@ vector<CloudsDichotomy>& CloudsAct::getDichotomiesForClip(string clipName){
     return dummyDichotomies;
 }
 
-vector< ofPtr<CloudsVisualSystem> > CloudsAct::getAllVisualSystems(){
-	vector< ofPtr<CloudsVisualSystem> > vs;
-	for(int i = 0; i < visualSystems.size(); i++){
-		if(!ofContains(vs, visualSystems[i].system)){
-			vs.push_back(visualSystems[i].system);
-		}
-	}
-	return vs;
-}
+//vector< ofPtr<CloudsVisualSystem> > CloudsAct::getAllVisualSystems(){
+//	vector< ofPtr<CloudsVisualSystem> > vs;
+//	for(int i = 0; i < visualSystems.size(); i++){
+//		if(!ofContains(vs, visualSystems[i].system)){
+//			vs.push_back(visualSystems[i].system);
+//		}
+//	}
+//	return vs;
+//}
 
 vector<CloudsVisualSystemPreset>& CloudsAct::getAllVisualSystemPresets(){
     return visualSystems;
@@ -358,7 +358,7 @@ CloudsClip& CloudsAct::getClip(int index){
     return clips[index];
 }
 
-CloudsClip& CloudsAct:: getClipAtTime(float time){
+CloudsClip& CloudsAct::getClipAtTime(float time){
     for(int i=0; i< clips.size(); i++){
         ActTimeItem item = getItemForClip(clips[i]);
         if(time >= item.startTime && time <= item.endTime){
