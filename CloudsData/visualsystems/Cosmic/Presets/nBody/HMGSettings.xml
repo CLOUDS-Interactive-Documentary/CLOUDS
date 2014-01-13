@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>HMGSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>515.000000000</XPosition>
-    <YPosition>467.000000000</YPosition>
+    <XPosition>849.000061035</XPosition>
+    <YPosition>174.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,5 +13,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>HMG LIMIT</Name>
-    <Value>0.000000685</Value>
+    <Value>0.000000069</Value>
 </Widget>

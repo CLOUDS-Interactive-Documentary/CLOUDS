@@ -7,9 +7,13 @@
 #include "ofxTLCameraTrack.h"
 #include "CloudsRGBDCamera.h"
 #include "CloudsInputEvents.h"
+#include "CloudsHUDController.h"
 #include "ofxLight.h"
 #include "ofxGenerative.h"
 //#include "ofxMaterial.h"
+#ifdef CLOUDS_RELEASE
+#include "CloudsPortal.h"
+#endif
 
 #ifdef OCULUS_RIFT
 #include "ofxOculusRift.h"
@@ -252,6 +256,10 @@ class CloudsVisualSystem {
 #ifdef OCULUS_RIFT
     void setupOculusGui();
 	void guiOculusEvent(ofxUIEventArgs &e);
+    
+    CloudsHUDController* hud;
+    void setupHUDGui();
+	void guiHUDEvent(ofxUIEventArgs &e);
 #endif
     
     //Lighting Helpers
@@ -271,6 +279,10 @@ class CloudsVisualSystem {
     void toggleGUIS();
     void toggleGuiAndPosition(ofxUISuperCanvas *g);
     void deleteGUIS();
+    
+#ifdef CLOUDS_RELEASE
+    void setupPortals();
+#endif
 
 //	void setCurrentCamera( ofCamera& cam );
 //	void setCurrentCamera( ofCamera* swappedInCam );
@@ -314,6 +326,7 @@ class CloudsVisualSystem {
 #endif
 #ifdef OCULUS_RIFT
     ofxUISuperCanvas *oculusGui;
+    ofxUISuperCanvas *hudGui;
 #endif
     
 	void stackGuiWindows();
@@ -469,4 +482,13 @@ class CloudsVisualSystem {
     float postGrainDist;
     
     int bleed;
+    
+#ifdef CLOUDS_RELEASE
+    
+    bool bShowPortals;
+    vector<CloudsPortal> portals;
+    CloudsPortal* selectedPortal;
+    
+#endif
+    
 };

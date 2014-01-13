@@ -39,7 +39,7 @@ public:
     void selfMouseReleased(ofMouseEventArgs& data);
     
     void selfInteractionMoved(CloudsInteractionEventArgs& args);
-    
+    void selfInteractionDragged(CloudsInteractionEventArgs& args);
     void selfSetupGui();
  
     void selfSetupSystemGui();

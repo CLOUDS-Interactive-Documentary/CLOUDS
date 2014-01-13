@@ -263,6 +263,12 @@ void testApp::keyPressed(int key){
     if(key == 'z') {
         sound.exitClusterMap();
     }
+    if(key == 'u') {
+        mixer.fadeMusicUp();
+    }
+    if(key == 'j') {
+        mixer.fadeMusicDown();
+    }
 }
 
 //--------------------------------------------------------------

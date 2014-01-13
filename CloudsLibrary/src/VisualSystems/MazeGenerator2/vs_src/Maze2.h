@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __MazeGenerator__Maze__
-#define __MazeGenerator__Maze__
+#ifndef __MazeGenerator2__Maze__
+#define __MazeGenerator2__Maze__
 
 #include <ofMain.h>
 #include "MazeCamera2.h"

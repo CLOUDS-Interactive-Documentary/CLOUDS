@@ -148,10 +148,6 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	//IF we move this before setup(NOT selfSetup) we can have the option of whether or not to load it to the gui
 	loadTransitionOptions("Transitions");
-    
-#ifdef OCULUS_RIFT
-    hud = NULL;
-#endif
 }
 
 void CloudsVisualSystemRGBD::playTestVideo(){
@@ -1580,41 +1576,9 @@ void CloudsVisualSystemRGBD::selfDraw(){
     
 #ifdef OCULUS_RIFT
     if (hud != NULL) {
-        glDisable(GL_DEPTH_TEST);
-        ofPushMatrix();
-        
-//        ofVec3f hudPos(20, -20, 350);
-        ofVec3f hudPos = getCameraRef().getGlobalPosition() + (getCameraRef().getLookAtDir().getScaled(300));
-
-        ofVec2f hudSize = hud->getSize();
-        ofVec3f hudLowerThirdOffset(hudSize.x * 0.5, hudSize.y * 0.85, 0);
-        
-        // Translate the HUD to its position.
-        ofTranslate(hudPos);
-        ofTranslate(hudSize * 0.5);
-        
-        // Perform the rotation.
-        ofVec3f eulerAngles = (getOculusRift().getOrientationQuat() * getCameraRef().getOrientationQuat()).getEuler();
-        ofTranslate(-hudLowerThirdOffset);
-        ofRotate(-eulerAngles.z, 1, 0, 0);
-        ofTranslate(hudLowerThirdOffset);
-        
-        ofScale(-1, -1, 1);
-        
-        ofSetColor(255);
-        hud->draw();
-        
-        // Debug billboard rotation axis.
-//        ofTranslate(hudLowerThirdOffset);
-//        ofSetColor(255);
-//        ofLine(-1000, 0, 1000, 0);
-//        ofTranslate(hudLowerThirdOffset);
-        
-        ofPopMatrix();
-        glEnable(GL_DEPTH_TEST);
+        hud->draw3D(getOculusRift().baseCamera);
     }
 #endif
-
 }
 
 void CloudsVisualSystemRGBD::drawQuestions(){
@@ -1659,7 +1623,7 @@ void CloudsVisualSystemRGBD::selfDrawOverlay() {
 }
 
 void CloudsVisualSystemRGBD::selfExit(){
-	
+
 }
 
 void CloudsVisualSystemRGBD::selfBegin(){

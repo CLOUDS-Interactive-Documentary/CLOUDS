@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>EXAMPLE BOX 2D</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>487.000000000</XPosition>
-    <YPosition>110.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -33,7 +33,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>MAX RECTANGLES</Name>
-    <Value>331.871917725</Value>
+    <Value>439.162567139</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -48,12 +48,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>RECT MAX MEAN</Name>
-    <Value>14.532019615</Value>
+    <Value>30.492610931</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RECT SIZE DEVIATION</Name>
-    <Value>9.211822510</Value>
+    <Value>16.527093887</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -88,12 +88,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>H2</Name>
-    <Value>112.146598816</Value>
+    <Value>255.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>S2</Name>
-    <Value>129.502593994</Value>
+    <Value>255.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -103,17 +103,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>H3</Name>
-    <Value>20.026178360</Value>
+    <Value>255.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>S3</Name>
-    <Value>69.424057007</Value>
+    <Value>255.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>B3</Name>
-    <Value>174.895233154</Value>
+    <Value>255.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

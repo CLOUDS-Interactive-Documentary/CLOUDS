@@ -11,6 +11,7 @@
 #include "CloudsInput.h"
 #include "CloudsClip.h"
 #include "CloudsSpeaker.h"
+#include "CloudsVisualSystem.h"
 
 CloudsHUDController::CloudsHUDController(){
 	hudGui = NULL;
@@ -21,6 +22,14 @@ CloudsHUDController::CloudsHUDController(){
 	
     scaleAmt = 1.0;
     margin = 40;
+    
+#ifdef OCULUS_RIFT
+    for (int i = 0; i < CLOUDS_HUD_LAYER_COUNT; i++) {
+        layerDistance[i] = 300;
+        layerRotation[i] = 0;
+        layerBillboard[i] = CLOUDS_HUD_BILLBOARD_CAMERA;
+    }
+#endif
 }
 
 void CloudsHUDController::setup(){
@@ -28,6 +37,9 @@ void CloudsHUDController::setup(){
     calculateFontSizes();
 	
 	home.setup();
+    
+    cout << "canvas width: " << ofGetWidth() << endl;
+    cout << "cancas height: " << ofGetHeight() << endl;
 }
 
 void CloudsHUDController::actBegan(CloudsActEventArgs& args){
@@ -73,8 +85,13 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
 //	cout << "speaker: " << speaker.firstName << " " << speaker.lastName << endl;
 	
 // LOWER THIRD
-	CloudsSpeaker speaker = CloudsSpeaker::speakers[ clip.person ];
-    populateLowerThird(speaker.firstName, speaker.lastName, speaker.location2, speaker.title, speaker.byline1, true );
+	
+    
+    //update lower third, but only if the speaker has changed
+    if(speaker.fcpID != CloudsSpeaker::speakers[ clip.person ].fcpID){
+        speaker = CloudsSpeaker::speakers[ clip.person ];
+        populateLowerThird(speaker.firstName, speaker.lastName, speaker.location2, speaker.title, speaker.byline1, true );
+    }
     
 // PROJECT EXAMPLE
 	if(clip.hasProjectExample && clip.projectExample.exampleVideos.size() ){
@@ -147,20 +164,24 @@ void CloudsHUDController::populateLowerThird( string firstName, string lastName,
     locationLabel->bounds.x = rightEdge + margin;
     titleLabel->bounds.x = rightEdge + margin;
     
-    locationLabel->setText( title );
-    titleLabel->setText( location );
+    locationLabel->setText( location );
+    titleLabel->setText( title );
     
     //description
+    ////reset to default
     CloudsHUDLabel* descLabel = hudLabelMap["BylineBodyCopyTextBox"];
+    descLabel->bounds = defaultBioBounds;
+    descLabel->layout->setLineLength(defaultBioBounds.width);
+    int descLeftEdge = descLabel->bounds.getLeft();
     
-    if(locationLabel->getRightEdge()+margin >= descLabel->bounds.getLeft()){
-           cout << "location text is running into description text" << endl;
-        descLabel->bounds.x = locationLabel->getRightEdge()+margin*1.5;
+    if(locationLabel->getRightEdge() > titleLabel->getRightEdge())
+        rightEdge = locationLabel->getRightEdge();
+    else
+        rightEdge = titleLabel->getRightEdge();
+    
+    if(rightEdge + margin >= descLeftEdge){
+        descLabel->bounds.x = rightEdge+margin;
         descLabel->layout->setLineLength(defaultBioBounds.width - (descLabel->bounds.x - defaultBioBounds.x));
-    }
-    else{
-        descLabel->bounds = defaultBioBounds;
-        descLabel->layout->setLineLength(defaultBioBounds.width);
     }
     
     descLabel->setText( textbox );
@@ -335,7 +356,7 @@ ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName, s
             newLayout->setLineLength( 999 );
             
             if( layerName == "BylineBodyCopyTextBox" ){         // this is the main body copy in the lower thirds
-                newLayout->loadFont( fontPath, floor(fontSize/6) );
+                newLayout->loadFont( fontPath, floor(fontSize/5) );
                 newLayout->setLineLength( textMesh->bounds.width );
             }
             
@@ -356,6 +377,7 @@ ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName, s
 ofxFTGLFont* CloudsHUDController::getFontForLayer( string layerName, string fontPath, int kerning ) {
     for( int i=0; i<allLayers.size(); i++ ){
         SVGMesh* textMesh = allLayers[i]->svg.getMeshByID( layerName );
+        
         
         if( textMesh != NULL ){
             textMesh->visible = false;
@@ -409,8 +431,12 @@ int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
     return fontSize;
 }
 
-ofVec2f CloudsHUDController::getSize(){
-    return ofVec2f(hudBounds.width*scaleAmt, hudBounds.height*scaleAmt);
+ofVec2f CloudsHUDController::getSize(bool bScaled){
+    return ofVec2f(hudBounds.width, hudBounds.height) * (bScaled? scaleAmt : 1.0);
+}
+
+ofVec2f CloudsHUDController::getCenter(bool bScaled){
+    return ofVec2f(hudBounds.width * 0.5, hudBounds.height * 0.5) * (bScaled? scaleAmt : 1.0);
 }
 
 void CloudsHUDController::update(){
@@ -499,6 +525,117 @@ void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
 		layerSets[layer][i]->draw();
 	}
 }
+
+#ifdef OCULUS_RIFT
+void CloudsHUDController::draw3D(ofCamera* cam){
+    
+    if( !bDrawHud )
+        return;
+    
+	ofPushStyle();
+	ofPushMatrix();
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    
+	glDisable(GL_DEPTH_TEST);
+    glDisable(GL_LIGHTING);
+    ofEnableAlphaBlending();
+    
+    drawLayer3D(CLOUDS_HUD_QUESTION, cam);
+    drawLayer3D(CLOUDS_HUD_LOWER_THIRD, cam);
+	drawLayer3D(CLOUDS_HUD_PROJECT_EXAMPLE, cam);
+	drawLayer3D(CLOUDS_HUD_MAP, cam);
+	
+    glPopAttrib();
+	ofPopMatrix();
+	ofPopStyle();
+}
+
+void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
+    ofPushMatrix();
+    
+    ofVec3f camPos = cam->getGlobalPosition();
+    
+    // Calculate the base position.
+    static ofVec3f upAxis = ofVec3f(0.0, 1.0, 0.0);
+    ofVec3f basePos = camPos + (cam->getLookAtDir().getScaled(layerDistance[layer]));
+    basePos.rotate(layerRotation[layer], camPos, upAxis);
+    
+    // Get the total layer bounds.
+    ofRectangle layerBounds;
+	for(int i = 0; i < layerSets[layer].size(); i++){
+        if (i == 0) layerBounds = layerSets[layer][i]->svg.getBounds();
+        else layerBounds.growToInclude(layerSets[layer][i]->svg.getBounds());
+	}
+    
+    // Translate to the layer center pos.
+    ofVec3f layerPos = basePos + (getCenter(false) - layerBounds.getCenter());
+    ofTranslate(layerPos);
+
+    if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_OCULUS) {
+        // Billboard rotation using the Oculus orientation.
+//        ofVec3f eulerAngles = (CloudsVisualSystem::getOculusRift().getOrientationQuat() * cam.getOrientationQuat()).getEuler();
+//        ofRotateY(layerRotation[layer]);
+//        ofRotate(-eulerAngles.z, 1, 0, 0);
+        float angle;
+        ofVec3f axis;
+        (CloudsVisualSystem::getOculusRift().getOrientationQuat() * cam->getOrientationQuat()).getRotate(angle, axis);
+        ofRotate(angle, axis.x, axis.y, axis.z);
+        ofScale(-1, 1, 1);
+    }
+    else if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_CAMERA) {
+        // Billboard rotation using the camera.
+        ofNode node;
+        node.setPosition(layerPos);
+        node.lookAt(camPos);
+        ofVec3f axis;
+        float angle;
+        node.getOrientationQuat().getRotate(angle, axis);
+        ofRotate(angle, axis.x, axis.y, axis.z);
+    }
+    else {
+        ofRotateY(layerRotation[layer]);
+    }
+    
+    // Debug circle.
+//    ofSetColor(255);
+//    ofCircle(0, 0, 25);
+    
+    // Draw the video player if we're on the right layer.
+    if (layer == CLOUDS_HUD_PROJECT_EXAMPLE && videoPlayer.isPlaying()) {
+        ofSetColor(255, 255, 255, 255*0.7);
+        if( !bSkipAVideoFrame ){
+            videoPlayer.draw( videoBounds.x, videoBounds.y, videoBounds.width, videoBounds.height );
+        }
+    }
+    
+    // Draw the layer.
+    ofScale(-scaleAmt, -scaleAmt, 1);
+    ofTranslate(-layerBounds.getCenter());
+    ofSetColor(255);
+    drawLayer(layer);
+    
+    // Draw the home button if we're on the right layer.
+    if (layer == CLOUDS_HUD_LOWER_THIRD && bDrawHome) {
+        home.draw();
+    }
+    
+    // Draw the associated text labels.
+    for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
+        bool bFound = false;
+        for(int i = 0; i < layerSets[layer].size(); i++){
+            if (layerSets[layer][i]->svg.getMeshByID(it->first) != NULL) {
+                bFound = true;
+                break;
+            }
+        }
+        if (bFound) {
+            (it->second)->draw();
+        }
+    }
+    
+    ofPopMatrix();
+}
+#endif
 
 void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
     //bIsHudOpen = true;
