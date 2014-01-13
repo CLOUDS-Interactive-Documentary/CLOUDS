@@ -446,20 +446,15 @@ void CloudsPlaybackController::updateTransition(){
                     interlude.system = CloudsVisualSystemManager::InstantiateSystem(interlude.systemName);
                     
                     currentVisualSystemPreset = interlude;
-                    if(currentVisualSystemPreset.system != NULL){
-                        currentVisualSystemPreset.system->setup();
-                        currentVisualSystemPreset.system->setDrawToScreen( false );
-                        currentVisualSystemPreset.system->loadPresetGUISFromName( currentVisualSystemPreset.presetName );
-                        currentVisualSystemPreset.system->playSystem();
-                        
-                        currentVisualSystemPreset = currentVisualSystemPreset;
-                        currentVisualSystem = currentVisualSystemPreset.system;
-                        
-                        showingVisualSystem = true;
-                    }
-                    else{
-                        ofLogError()<<"INTERLUDE VS IS NULL "<<endl;
-                    }
+                    currentVisualSystemPreset.system->setup();
+                    currentVisualSystemPreset.system->setDrawToScreen( false );
+                    currentVisualSystemPreset.system->loadPresetGUISFromName( currentVisualSystemPreset.presetName );
+                    currentVisualSystemPreset.system->playSystem();
+                    
+                    currentVisualSystemPreset = currentVisualSystemPreset;
+                    currentVisualSystem = currentVisualSystemPreset.system;
+                    
+                    showingVisualSystem = true;
                     
                 }
                 
@@ -573,6 +568,9 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 		
 		ofPopStyle();
 	}
+    else{
+        ofBackground(0, 0, 255)
+    }
 	
 	drawDebugOverlay();
 	
