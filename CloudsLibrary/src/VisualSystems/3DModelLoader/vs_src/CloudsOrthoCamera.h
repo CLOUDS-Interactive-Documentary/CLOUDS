@@ -75,6 +75,7 @@ public:
 	bool bOrbitMode;
 	bool bDisableEasyCamControls;
 	
+	void setToStartPosition(ofVec3f targetPos = ofVec3f());
 	
 private:
 	void setDistance(float distance, bool save);

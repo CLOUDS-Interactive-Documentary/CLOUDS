@@ -466,13 +466,17 @@ void CloudsVisualSystem3DModelLoader::selfSetup()
 	loadCameraLineModel( cameraLines, getVisualSystemDataPath() + "cameraVertices.txt" );
 
 	
-	//setup a grid vbos
+	//re-setup a grid vbos to avoid the scrambled grids... when a big model loads. a stop gap for now
 	setupGridVbos();
 	
 	//setup boundBox vbo
 	setupBoundingBoxVbo();
 	
+	//posoition the camera in front of the model between it's min and max vals
+	//hack to avoid flipping when out of min max on preset change
+	perspCam.setToStartPosition( boundCenter );
 	
+	//cameras
 	setupMultipleCameras( ofVec3f( 0, 100, 0) );
 }
 
@@ -481,6 +485,7 @@ void CloudsVisualSystem3DModelLoader::selfSetup()
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystem3DModelLoader::selfPresetLoaded(string presetPath)
 {
+	setupGridVbos();
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -489,7 +494,7 @@ void CloudsVisualSystem3DModelLoader::selfPresetLoaded(string presetPath)
 void CloudsVisualSystem3DModelLoader::selfBegin()
 {
 	accumulatedRotation.set( 0,0,0);
-	
+	setupGridVbos();
 //	getCameraRef().setPosition(<#float px#>, <#float py#>, <#float pz#>)
 }
 
@@ -848,6 +853,7 @@ void CloudsVisualSystem3DModelLoader::setupBoundingBoxVbo()
 
 void CloudsVisualSystem3DModelLoader::setupGridVbos()
 {
+	grid.clear();
 	float halfGridDim = gridDim / 2;
 	vector<ofVec3f> gridVertices(gridDim * 4);
 	for (int i=0; i<gridDim; i++)
@@ -859,18 +865,6 @@ void CloudsVisualSystem3DModelLoader::setupGridVbos()
 	}
 	grid.setVertexData( &gridVertices[0], gridVertices.size(), GL_STATIC_DRAW );
 	numGridVertices = gridVertices.size();
-	gridVertices.clear();
-	
-	for (int i=0; i<gridDim; i += 5)
-	{
-		gridVertices.push_back( ofVec3f(i - halfGridDim, 0,-halfGridDim) );
-		gridVertices.push_back( ofVec3f(i - halfGridDim, 0, halfGridDim) );
-		gridVertices.push_back( ofVec3f(-halfGridDim, 0, i - halfGridDim) );
-		gridVertices.push_back( ofVec3f( halfGridDim, 0, i - halfGridDim) );
-	}
-	
-	gridMajor.setVertexData( &gridVertices[0], gridVertices.size(), GL_STATIC_DRAW );
-	numGridMajorVertices = gridVertices.size();
 	gridVertices.clear();
 }
 
@@ -1091,7 +1085,7 @@ void CloudsVisualSystem3DModelLoader::drawSceneGeometry( ofCamera* cam)
 		gridShader.setUniform1f("falloffScl", fogFalloffScale );
 		gridShader.setUniform1f("alphaScale", gridAlphaScale );
 		
-		
+		//draw  minor grid
 		ofPushMatrix();
 		ofScale( gridScale, gridScale, gridScale );
 		
@@ -1101,6 +1095,7 @@ void CloudsVisualSystem3DModelLoader::drawSceneGeometry( ofCamera* cam)
 		
 		ofPopMatrix();
 		
+		//draw  major grid
 		ofPushMatrix();
 		int gms = gridMajorScale;
 		ofTranslate( getCameraRef().getLookAtDir() * -gridLineWidth / gridScale );
