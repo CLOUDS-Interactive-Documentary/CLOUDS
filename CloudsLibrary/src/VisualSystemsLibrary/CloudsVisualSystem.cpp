@@ -147,6 +147,10 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	bIs2D = false;
 	drawCursorMode = DRAW_CURSOR_NONE;
 	updateCyclced = false;
+#ifdef CLOUDS_RELEASE
+    bShowPortals = true;
+#endif
+    
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
 #else
@@ -207,12 +211,38 @@ string CloudsVisualSystem::getVisualSystemDataPath(bool ignoredFolder){
 ofxTimeline* CloudsVisualSystem::getTimeline(){
 	return timeline;
 }
+#ifdef CLOUDS_RELEASE
+void CloudsVisualSystem::setupPortals(){
+    
+ 
+    
+    CloudsPortal rp;
+    rp.hoverPosition = ofVec3f(75.f, getCanvasHeight()/4*3, 0);
+    rp.scale = .15;
+    rp.cam = &getCameraRef();
+    rp.question = "Return";
+    rp.setup();
+    portals.push_back(rp);
+    
+    CloudsPortal cp;
+    cp.hoverPosition = ofVec3f(getCanvasWidth()-75.f, getCanvasHeight()/4*3, 0);
+    cp.scale = .15;
+    cp.cam = &getCameraRef();
+    cp.question = "Continue";
+    cp.setup();
+    portals.push_back(cp);
+    
+}
+#endif
 
 void CloudsVisualSystem::setup(){
 	
-	if(bIsSetup){
+    if(bIsSetup){
 		return;
 	}
+#ifdef CLOUDS_RELEASE
+    setupPortals();
+#endif
     
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 	
@@ -366,6 +396,32 @@ void CloudsVisualSystem::speakerEnded()
 
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
+    
+#ifdef CLOUDS_RELEASE
+
+    if(bShowPortals){
+        ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
+        for(int i=0;i<portals.size();i++){
+            portals[i].hoverPosition.y += .2*sin(ofGetElapsedTimef());
+            portals[i].update();
+        
+            float distanceToPortal = portals[i].hoverPosition.distance(mouseNode);
+            cout<<distanceToPortal<<endl;
+            if(distanceToPortal<100.f){
+                cout<<"hovering over :"<<i<<endl;
+                selectedPortal = &portals[i];
+                selectedPortal->startHovering();
+            }else{
+                if(selectedPortal){
+                    selectedPortal->stopHovering();
+                    selectedPortal = NULL;
+                }
+            }
+            
+        }
+    }
+    
+#endif
 
 #ifdef CLOUDS_RELEASE
     // show/hide the mouse cursor
@@ -498,7 +554,17 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			drawScene();
 			
 			getCameraRef().end();
-			
+            
+#ifdef CLOUDS_RELEASE
+            if(bShowPortals){
+            ofPushStyle();
+            ofSetColor(255);
+                for(int i=0;i<portals.size();i++){
+                portals[i].draw();
+                }
+            ofPopStyle();
+            }
+#endif
 			ofPushStyle();
 			ofPushMatrix();
 			ofTranslate(0, getCanvasHeight() );
@@ -1278,8 +1344,7 @@ void CloudsVisualSystem::setupSystemGui()
     sysGui->resetPlacer();
     sysGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
     sysGui->addWidgetToHeader(toggle);
-    sysGui->addSpacer();
-    
+    sysGui->addSpacer();    
     selfSetupSystemGui();
     sysGui->autoSizeToFitWidgets();
     ofAddListener(sysGui->newGUIEvent,this,&CloudsVisualSystem::guiSystemEvent);
@@ -3496,7 +3561,7 @@ void CloudsVisualSystem::selfDraw()
 }
 
 void CloudsVisualSystem::selfDrawOverlay(){
-	
+
 }
 
 void CloudsVisualSystem::selfPostDraw(){

@@ -881,7 +881,7 @@
 		<rect x="114.656" y="68.926" display="inline" fill="none" stroke="#DD4B39" stroke-miterlimit="10" width="468.314" height="20.147"/>
 </g>
 <g id="BylineBacking">
-	<rect x="173.813" y="702.5" opacity="0.16" width="1180.677" height="108"/>
+	<rect x="173.813" y="702.5" opacity="0.36" fill="#101010" width="1180.677" height="108"/>
 </g>
 <g id="BylineInsideBorder" display="none">
 	

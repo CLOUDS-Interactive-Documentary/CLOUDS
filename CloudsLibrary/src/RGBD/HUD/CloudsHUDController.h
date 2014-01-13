@@ -17,6 +17,7 @@
 #include "CloudsHUDHomeButton.h"
 #include "CloudsHUDLabel.h"
 #include "CloudsEvents.h"
+#include "CloudsSpeaker.h"
 
 typedef enum {
 	CLOUDS_HUD_FULL = 0,
@@ -108,13 +109,18 @@ class CloudsHUDController {
     void drawLayer(CloudsHUDLayerSet layer);
     void drawLayer3D(CloudsHUDLayerSet layer, ofCamera& cam);
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath );
+    ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath, bool caps );
+    ofxFTGLFont*            getFontForLayer( string layerName, string fontPath, int kerning );
+
     
     vector<ofxFTGLFont*>    tempFontList;
-    ofxFTGLSimpleLayout     *BylineBodyCopyTextBox,
-                            *BylineFirstNameTextBox,
+    
+    ofxFTGLFont             *BylineFirstNameTextBox,
                             *BylineLastNameTextBox,
                             *BylineTopicTextBoxBottom,
-                            *BylineTopicTextBoxTop,
+                            *BylineTopicTextBoxTop;
+    
+    ofxFTGLSimpleLayout     *BylineBodyCopyTextBox,
                             *ResetButtonTextBox,
                             *QuestionTextBox,
                             *TopicTextBoxLeft,
@@ -127,6 +133,12 @@ class CloudsHUDController {
     map<string, CloudsHUDLabel*>    hudLabelMap;
     ofRectangle hudBounds;
     float scaleAmt;
+    
+    int margin;
+    
+    ofRectangle             defaultBioBounds;
+    
+    CloudsSpeaker           speaker;
 };
 
 
