@@ -165,6 +165,11 @@ void CloudsVisualSystemAutomata::selfSceneTransformation(){
 //--------------------------------------------------------------
 void CloudsVisualSystemAutomata::selfUpdate()
 {
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    ofPushStyle();
+    
+    glDisable(GL_LIGHTING);
+    
     fgColor1.setHsb(fgParams1[0], fgParams1[1], fgParams1[2]);
     fgColor2.setHsb(fgParams2[0], fgParams2[1], fgParams2[2]);
     
@@ -173,7 +178,6 @@ void CloudsVisualSystemAutomata::selfUpdate()
         bRestart = false;
     }
     
-    ofPushStyle();
     ofEnableAlphaBlending();
     {
         texFbo.begin();
@@ -190,6 +194,7 @@ void CloudsVisualSystemAutomata::selfUpdate()
                 float inputY = ofMap(GetCloudsInputY(), 0, getSharedRenderTarget().getHeight(),
                                      getSharedRenderTarget().getHeight() * (0.5f - 0.5f / scale2D), getSharedRenderTarget().getHeight() * (0.5f + 0.5f / scale2D));
                 ofSetColor(255);
+//                ofNoFill();
                 ofCircle(inputX, inputY, radius);
             }
         }
@@ -208,7 +213,9 @@ void CloudsVisualSystemAutomata::selfUpdate()
         conwayShader.end();
         outFbo.end();
     }
+    
     ofPopStyle();
+    glPopAttrib();
 }
 
 //--------------------------------------------------------------
@@ -241,6 +248,15 @@ void CloudsVisualSystemAutomata::selfDrawBackground()
         render();
         ofPopMatrix();
     }
+    
+    // Debug panels.
+//    ofSetColor(128);
+//    ofRect(0, 0, texFbo.getWidth() * 0.5, texFbo.getHeight() * 0.5);
+//    ofRect(texFbo.getWidth() * 0.5, 0, outFbo.getWidth() * 0.5, outFbo.getHeight() * 0.5);
+//    
+//    ofSetColor(255);
+//    texFbo.draw(0, 0, texFbo.getWidth() * 0.5, texFbo.getHeight() * 0.5);
+//    outFbo.draw(texFbo.getWidth() * 0.5, 0, outFbo.getWidth() * 0.5, outFbo.getHeight() * 0.5);
 }
 
 //--------------------------------------------------------------
