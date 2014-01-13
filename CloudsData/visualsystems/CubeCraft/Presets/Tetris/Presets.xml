@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>407.000000000</XPosition>
-    <YPosition>14.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>287.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -24,6 +24,31 @@
     <Kind>2</Kind>
     <Name>BigNoiseBW</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>g_work_02a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>IntractiveCameraExample</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>j_05_blue</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>j_work_03a</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>j_work_05a_bluegreen</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -107,11 +132,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Minecraft2</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>Minecraft3_wideangle</Name>
     <Value>0</Value>
 </Widget>
@@ -139,4 +159,9 @@
     <Kind>2</Kind>
     <Name>Tetris</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>uppity</Name>
+    <Value>0</Value>
 </Widget>

@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>697.000000000</XPosition>
-    <YPosition>132.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -14,6 +14,16 @@
     <Kind>2</Kind>
     <Name>Nasdaq</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Hashtags</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Regenerate</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -31,44 +41,62 @@
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>6</Kind>
-    <Name>small size</Name>
-    <HighValue>5.000000000</HighValue>
-    <LowValue>5.000000000</LowValue>
-</Widget>
-<Widget>
-    <Kind>6</Kind>
-    <Name>large size</Name>
-    <HighValue>5.000000000</HighValue>
-    <LowValue>5.000000000</LowValue>
+    <Kind>44</Kind>
+    <Name>initial Number of Circles</Name>
+    <Value>49</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>primary color H</Name>
+    <Name>small size 1</Name>
+    <Value>9.750062943</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>small size 2</Name>
+    <Value>14.500001907</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>large size 1</Name>
+    <Value>21.979085922</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>large size 2</Name>
+    <Value>18.117176056</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color H Primary</Name>
+    <Value>0.463054180</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color H Secondary</Name>
+    <Value>0.783251226</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color S Primary</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color S Secondary</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>color V Primary</Name>
     <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>primary color S</Name>
+    <Name>color V Secondary</Name>
     <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>primary color V</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>secondary color H</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>secondary color S</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>secondary color V</Name>
+    <Name>alpha</Name>
     <Value>1.000000000</Value>
 </Widget>

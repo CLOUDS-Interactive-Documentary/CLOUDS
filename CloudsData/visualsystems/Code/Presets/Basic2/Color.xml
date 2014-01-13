@@ -1,0 +1,97 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Color</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>220.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TEXT COLOR H</Name>
+    <Value>0.172241390</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TEXT COLOR S</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TEXT COLOR B</Name>
+    <Value>0.999000013</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR 1 H</Name>
+    <Value>0.649596095</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR 1 S</Name>
+    <Value>0.684044302</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR 1 B</Name>
+    <Value>0.516724110</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR 2 H</Name>
+    <Value>0.457669944</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR 2 S</Name>
+    <Value>0.388773412</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR 2 B</Name>
+    <Value>0.935024619</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR 3 H</Name>
+    <Value>0.541330040</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR 3 S</Name>
+    <Value>0.590541899</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR 3 B</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR 4 H</Name>
+    <Value>0.575778306</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR 4 S</Name>
+    <Value>0.452748775</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR 4 B</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR 5 H</Name>
+    <Value>0.595463037</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR 5 S</Name>
+    <Value>0.792310357</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>COLOR 5 B</Name>
+    <Value>0.920261085</Value>
+</Widget>

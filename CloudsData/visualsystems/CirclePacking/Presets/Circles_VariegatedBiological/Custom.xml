@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1273.000000000</XPosition>
-    <YPosition>3.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -48,22 +48,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>small size 1</Name>
-    <Value>9.750062943</Value>
+    <Value>14.065110207</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>small size 2</Name>
-    <Value>14.500001907</Value>
+    <Value>14.065149307</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>large size 1</Name>
-    <Value>21.625001907</Value>
+    <Value>18.763343811</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>large size 2</Name>
-    <Value>19.183717728</Value>
+    <Value>26.089527130</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -78,22 +78,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>color S Primary</Name>
-    <Value>0.324999988</Value>
+    <Value>0.447243601</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>color S Secondary</Name>
-    <Value>0.225000024</Value>
+    <Value>0.353965223</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>color V Primary</Name>
-    <Value>0.359299779</Value>
+    <Value>0.606720209</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>color V Secondary</Name>
-    <Value>0.390536129</Value>
+    <Value>0.810349762</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

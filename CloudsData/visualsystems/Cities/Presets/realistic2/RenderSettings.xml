@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>141.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -38,10 +38,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Chroma_Distortion</Name>
-    <Value>-0.162561595</Value>
+    <Value>-0.231527090</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Grain_Distortion</Name>
-    <Value>0.133004919</Value>
+    <Value>0.044334974</Value>
 </Widget>
