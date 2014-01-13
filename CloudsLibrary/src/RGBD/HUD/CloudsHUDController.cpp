@@ -20,6 +20,7 @@ CloudsHUDController::CloudsHUDController(){
     bDrawHome = true;
 	
     scaleAmt = 1.0;
+    margin = 40;
 }
 
 void CloudsHUDController::setup(){
@@ -27,6 +28,9 @@ void CloudsHUDController::setup(){
     calculateFontSizes();
 	
 	home.setup();
+    
+    cout << "canvas width: " << ofGetWidth() << endl;
+    cout << "cancas height: " << ofGetHeight() << endl;
 }
 
 void CloudsHUDController::actBegan(CloudsActEventArgs& args){
@@ -72,8 +76,13 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
 //	cout << "speaker: " << speaker.firstName << " " << speaker.lastName << endl;
 	
 // LOWER THIRD
-	CloudsSpeaker speaker = CloudsSpeaker::speakers[ clip.person ];
-    populateLowerThird(speaker.firstName, speaker.lastName, speaker.location2, speaker.title, speaker.byline1, true );
+	
+    
+    //update lower third, but only if the speaker has changed
+    if(speaker.fcpID != CloudsSpeaker::speakers[ clip.person ].fcpID){
+        speaker = CloudsSpeaker::speakers[ clip.person ];
+        populateLowerThird(speaker.firstName, speaker.lastName, speaker.location2, speaker.title, speaker.byline1, true );
+    }
     
 // PROJECT EXAMPLE
 	if(clip.hasProjectExample && clip.projectExample.exampleVideos.size() ){
@@ -119,12 +128,53 @@ void CloudsHUDController::populateQuestion( string question, bool forceOn ){
 	}
 }
 
+//BIO
 void CloudsHUDController::populateLowerThird( string firstName, string lastName, string title, string location, string textbox, bool forceOn ) {
-    hudLabelMap["BylineFirstNameTextBox_1_"]->setText( firstName );
-    hudLabelMap["BylineLastNameTextBox"]->setText( lastName );
-    hudLabelMap["BylineTopicTextBoxTop"]->setText( title );
-    hudLabelMap["BylineTopicTextBoxBottom"]->setText( location );
-    hudLabelMap["BylineBodyCopyTextBox"]->setText( textbox );
+    
+    CloudsHUDLabel* firstNameLabel  = hudLabelMap["BylineFirstNameTextBox_1_"];
+    CloudsHUDLabel* lastNameLabel  = hudLabelMap["BylineLastNameTextBox"];
+    
+    firstNameLabel->setText( firstName );
+    lastNameLabel->setText( lastName );
+    
+    int firstNameRight = firstNameLabel->getRightEdge();
+    int lastNameRight = lastNameLabel->getRightEdge();
+    int rightEdge = 0;
+    
+    if(firstNameRight > lastNameRight)
+        rightEdge = firstNameRight;
+    else
+        rightEdge = lastNameRight;
+
+    cout<< "right edge: " << rightEdge << endl;
+    
+    //move these over to float left of name
+    CloudsHUDLabel* locationLabel = hudLabelMap["BylineTopicTextBoxTop"];
+    CloudsHUDLabel* titleLabel = hudLabelMap["BylineTopicTextBoxBottom"];
+    locationLabel->bounds.x = rightEdge + margin;
+    titleLabel->bounds.x = rightEdge + margin;
+    
+    locationLabel->setText( location );
+    titleLabel->setText( title );
+    
+    //description
+    ////reset to default
+    CloudsHUDLabel* descLabel = hudLabelMap["BylineBodyCopyTextBox"];
+    descLabel->bounds = defaultBioBounds;
+    descLabel->layout->setLineLength(defaultBioBounds.width);
+    int descLeftEdge = descLabel->bounds.getLeft();
+    
+    if(locationLabel->getRightEdge() > titleLabel->getRightEdge())
+        rightEdge = locationLabel->getRightEdge();
+    else
+        rightEdge = titleLabel->getRightEdge();
+    
+    if(rightEdge + margin >= descLeftEdge){
+        descLabel->bounds.x = rightEdge+margin;
+        descLabel->layout->setLineLength(defaultBioBounds.width - (descLabel->bounds.x - defaultBioBounds.x));
+    }
+    
+    descLabel->setText( textbox );
     
     if( forceOn ){
         animateOn( CLOUDS_HUD_LOWER_THIRD );
@@ -215,12 +265,20 @@ void CloudsHUDController::calculateFontSizes(){
         tempFontList.push_back( tmp );
     }
 
+    //BIO
+    ////first name
     
-    BylineBodyCopyTextBox       = getLayoutForLayer("BylineBodyCopyTextBox", GetCloudsDataPath() + "font/Blender-THIN.ttf");
-    BylineFirstNameTextBox      = getLayoutForLayer("BylineFirstNameTextBox_1_", GetCloudsDataPath() + "font/Blender-THIN.ttf");
-    BylineLastNameTextBox       = getLayoutForLayer("BylineLastNameTextBox", GetCloudsDataPath() + "font/Blender-THIN.ttf");
-    BylineTopicTextBoxBottom    = getLayoutForLayer("BylineTopicTextBoxBottom", GetCloudsDataPath() + "font/Blender-THIN.ttf");
-    BylineTopicTextBoxTop       = getLayoutForLayer("BylineTopicTextBoxTop", GetCloudsDataPath() + "font/Blender-THIN.ttf");
+    BylineFirstNameTextBox      = getFontForLayer("BylineFirstNameTextBox_1_", GetCloudsDataPath() + "font/Blender-THIN.ttf", 50);
+    ////last name
+    BylineLastNameTextBox       = getFontForLayer("BylineLastNameTextBox", GetCloudsDataPath() + "font/Blender-THIN.ttf", 50);
+    ////title
+    BylineTopicTextBoxBottom    = getFontForLayer("BylineTopicTextBoxBottom", GetCloudsDataPath() + "font/Blender-THIN.ttf", 35);
+    ////location
+    BylineTopicTextBoxTop       = getFontForLayer("BylineTopicTextBoxTop", GetCloudsDataPath() + "font/Blender-THIN.ttf", 35);
+    ////description
+    BylineBodyCopyTextBox       = getLayoutForLayer("BylineBodyCopyTextBox", GetCloudsDataPath() + "font/Blender-THIN.ttf", false);
+    defaultBioBounds            = hudLabelMap["BylineBodyCopyTextBox"]->bounds;
+    
     ResetButtonTextBox          = getLayoutForLayer("ResetButtonTextBox", GetCloudsDataPath() + "font/Blender-THIN.ttf");
     QuestionTextBox             = getLayoutForLayer("QuestionTextBox", GetCloudsDataPath() + "font/Blender-THIN.ttf");
     TopicTextBoxLeft            = getLayoutForLayer("TopicTextBoxLeft", GetCloudsDataPath() + "font/Blender-THIN.ttf");
@@ -268,6 +326,80 @@ ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName, s
     }
     
     return NULL;
+}
+
+ofxFTGLSimpleLayout* CloudsHUDController::getLayoutForLayer( string layerName, string fontPath, bool caps ) {
+    for( int i=0; i<allLayers.size(); i++ ){
+        SVGMesh* textMesh = allLayers[i]->svg.getMeshByID( layerName );
+        
+        if( textMesh != NULL ){
+            textMesh->visible = false;
+            
+            float maxHeight = textMesh->bounds.height;
+            int fontSize = getFontSizeForMesh( textMesh );
+            
+            //            cout << "The correct font size is " << fontSize << " << endl;
+            
+            // make a layout
+            ofxFTGLSimpleLayout *newLayout = new ofxFTGLSimpleLayout();
+            newLayout->loadFont( fontPath, fontSize );
+            newLayout->setLineLength( 999 );
+            
+            if( layerName == "BylineBodyCopyTextBox" ){         // this is the main body copy in the lower thirds
+                newLayout->loadFont( fontPath, floor(fontSize/5) );
+                newLayout->setLineLength( textMesh->bounds.width );
+            }
+            
+            // make a label
+            CloudsHUDLabel *newLabel = new CloudsHUDLabel();
+            newLabel->setup( newLayout, textMesh->bounds );
+            newLabel->caps = caps;
+            hudLabelMap[layerName] = newLabel;
+            
+            return newLayout;
+        }
+    }
+    
+    return NULL;
+    
+}
+
+ofxFTGLFont* CloudsHUDController::getFontForLayer( string layerName, string fontPath, int kerning ) {
+    for( int i=0; i<allLayers.size(); i++ ){
+        SVGMesh* textMesh = allLayers[i]->svg.getMeshByID( layerName );
+        
+        
+        if( textMesh != NULL ){
+            textMesh->visible = false;
+            
+            float maxHeight = textMesh->bounds.height;
+            int fontSize = getFontSizeForMesh( textMesh );
+            
+            //            cout << "The correct font size is " << fontSize << " << endl;
+            
+            // make a layout
+            ofxFTGLFont *newFont = new ofxFTGLFont();
+            newFont->setTracking(kerning * .08);
+            newFont->loadFont( fontPath, fontSize );
+           // newLayout->setLineLength( 999 );
+            
+            if( layerName == "BylineBodyCopyTextBox" ){         // this is the main body copy in the lower thirds
+                newFont->loadFont( fontPath, floor(fontSize/4.5) );
+              //  newFont->setLineLength( textMesh->bounds.width );
+            }
+            
+            // make a label
+            CloudsHUDLabel *newLabel = new CloudsHUDLabel();
+            newLabel->setup( newFont, textMesh->bounds );
+            //newLabel->caps = caps;
+            hudLabelMap[layerName] = newLabel;
+            
+            return newFont;
+        }
+    }
+    
+    return NULL;
+    
 }
 
 int CloudsHUDController::getFontSizeForMesh( SVGMesh* textMesh ){
@@ -366,9 +498,9 @@ void CloudsHUDController::draw(){
         (it->second)->draw();
     }
     
-	if(bDrawHome){
+	if(bDrawHome)
 		home.draw();
-	}
+	
 	
 	ofPopMatrix();
 	ofPopStyle();

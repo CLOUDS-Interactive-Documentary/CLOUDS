@@ -470,15 +470,12 @@ void CloudsSecondaryDisplayController::draw(){
             string title = ofToUpper(currentSpeaker.title);
             //reposition title to float left
             hudLabelMap[meshBioTitle->id]->bounds.x = titleX;
-            
             hudLabelMap[meshBioFirstName->id]->draw();
             hudLabelMap[meshBioLastName->id]->draw();
             hudLabelMap[meshBioTitle->id]->draw();
 
             
             ////location
-
-            
             string loc = ofToUpper(currentSpeaker.location2);
             //float left
             CloudsHUDLabel* locLabel = hudLabelMap[meshBioLocation->id];
@@ -490,7 +487,7 @@ void CloudsSecondaryDisplayController::draw(){
 
             //check if location is running into description
             if(locLabel->bounds.x+fontBioLocation->getStringBoundingBox(currentSpeaker.location2, 0, 0).width+margin >= meshBioDescription->bounds.getLeft()){
-                cout << "location text is running into description text" << endl;
+             //   cout << "location text is running into description text" << endl;
                 descLabel->bounds.x = locLabel->bounds.x+fontBioLocation->getStringBoundingBox(currentSpeaker.location2, 0, 0).width+margin*1.5;
                 descLabel->layout->setLineLength(defaultBioBounds.width - (descLabel->bounds.x - defaultBioBounds.x));
             }

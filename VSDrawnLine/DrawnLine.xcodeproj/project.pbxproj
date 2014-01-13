@@ -77,6 +77,10 @@
 		4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AA17512E45003001E2 /* ofxSwarmBehavior.cpp */; };
 		4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
+		92910A98188347C900DC318E /* brushedLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92910A8F188347C900DC318E /* brushedLine.cpp */; };
+		92910A99188347C900DC318E /* curvedLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92910A91188347C900DC318E /* curvedLine.cpp */; };
+		92910A9A188347C900DC318E /* drawnLineApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92910A93188347C900DC318E /* drawnLineApp.cpp */; };
+		92910A9B188347C900DC318E /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92910A95188347C900DC318E /* lineMatchUtils.cpp */; };
 		A646D9E31883407C00DBBF37 /* CloudsVisualSystemDrawnLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9E11883407C00DBBF37 /* CloudsVisualSystemDrawnLine.cpp */; };
 		A646D9E41883407C00DBBF37 /* CloudsVisualSystemDrawnLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A646D9E11883407C00DBBF37 /* CloudsVisualSystemDrawnLine.cpp */; };
 		A646D9E7188340FA00DBBF37 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = A646D9E6188340FA00DBBF37 /* ofxSystemTextbox.mm */; };
@@ -488,6 +492,15 @@
 		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		92910A8F188347C900DC318E /* brushedLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = brushedLine.cpp; sourceTree = "<group>"; };
+		92910A90188347C900DC318E /* brushedLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brushedLine.h; sourceTree = "<group>"; };
+		92910A91188347C900DC318E /* curvedLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = curvedLine.cpp; sourceTree = "<group>"; };
+		92910A92188347C900DC318E /* curvedLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curvedLine.h; sourceTree = "<group>"; };
+		92910A93188347C900DC318E /* drawnLineApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawnLineApp.cpp; sourceTree = "<group>"; };
+		92910A94188347C900DC318E /* drawnLineApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = drawnLineApp.h; sourceTree = "<group>"; };
+		92910A95188347C900DC318E /* lineMatchUtils.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lineMatchUtils.cpp; sourceTree = "<group>"; };
+		92910A96188347C900DC318E /* lineMatchUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lineMatchUtils.h; sourceTree = "<group>"; };
+		92910A97188347C900DC318E /* statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = statistics.h; sourceTree = "<group>"; };
 		A646D9E11883407C00DBBF37 /* CloudsVisualSystemDrawnLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemDrawnLine.cpp; sourceTree = "<group>"; };
 		A646D9E21883407C00DBBF37 /* CloudsVisualSystemDrawnLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemDrawnLine.h; sourceTree = "<group>"; };
 		A646D9E5188340F900DBBF37 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
@@ -1148,6 +1161,15 @@
 		A646D9E01883407C00DBBF37 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
+				92910A8F188347C900DC318E /* brushedLine.cpp */,
+				92910A90188347C900DC318E /* brushedLine.h */,
+				92910A91188347C900DC318E /* curvedLine.cpp */,
+				92910A92188347C900DC318E /* curvedLine.h */,
+				92910A93188347C900DC318E /* drawnLineApp.cpp */,
+				92910A94188347C900DC318E /* drawnLineApp.h */,
+				92910A95188347C900DC318E /* lineMatchUtils.cpp */,
+				92910A96188347C900DC318E /* lineMatchUtils.h */,
+				92910A97188347C900DC318E /* statistics.h */,
 				A646D9E21883407C00DBBF37 /* CloudsVisualSystemDrawnLine.h */,
 				A646D9E11883407C00DBBF37 /* CloudsVisualSystemDrawnLine.cpp */,
 			);
@@ -1399,8 +1421,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "DrawnLine" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1476,6 +1496,7 @@
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */,
 				E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */,
+				92910A9A188347C900DC318E /* drawnLineApp.cpp in Sources */,
 				E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */,
 				E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */,
 				4695E2AF17512E45003001E2 /* ofxBehavior.cpp in Sources */,
@@ -1494,12 +1515,14 @@
 				4695E2BC17512E45003001E2 /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */,
 				4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */,
+				92910A9B188347C900DC318E /* lineMatchUtils.cpp in Sources */,
 				4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */,
 				A646D9E31883407C00DBBF37 /* CloudsVisualSystemDrawnLine.cpp in Sources */,
 				3D5B95CB175308AE00F558AC /* kiss_fft.c in Sources */,
 				3D5B95CC175308AE00F558AC /* kiss_fftr.c in Sources */,
 				3D5B95CD175308AE00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				3D5B95D3175308AE00F558AC /* ofxHotKeys_impl_linux.cpp in Sources */,
+				92910A98188347C900DC318E /* brushedLine.cpp in Sources */,
 				3D5B95D4175308AE00F558AC /* ofxHotKeys_impl_mac.mm in Sources */,
 				3D5B95D5175308AE00F558AC /* ofxHotKeys_impl_win.cpp in Sources */,
 				3D5B95D6175308AE00F558AC /* ofxRemoveCocoaMenu.mm in Sources */,
@@ -1519,6 +1542,7 @@
 				3D5B95E4175308AE00F558AC /* ofxTLInOut.cpp in Sources */,
 				3D5B95E5175308AE00F558AC /* ofxTLKeyframes.cpp in Sources */,
 				3D5B95E6175308AE00F558AC /* ofxTLLFO.cpp in Sources */,
+				92910A99188347C900DC318E /* curvedLine.cpp in Sources */,
 				3D5B95E7175308AE00F558AC /* ofxTLPage.cpp in Sources */,
 				3D5B95E8175308AE00F558AC /* ofxTLPageTabs.cpp in Sources */,
 				3D5B95E9175308AE00F558AC /* ofxTLSwitches.cpp in Sources */,

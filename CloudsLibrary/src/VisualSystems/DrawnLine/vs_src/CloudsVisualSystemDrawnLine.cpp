@@ -13,11 +13,10 @@ void CloudsVisualSystemDrawnLine::selfSetupGui(){
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-	customGui->addButton("Custom Button", false);
-	customGui->addToggle("Custom Toggle", &customToggle);
+
+    bShowDebug = false;
+    customGui->addToggle("debugView_drawnLine", &bShowDebug);
+    
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemDrawnLine::selfGuiEvent);
 	guis.push_back(customGui);
@@ -63,7 +62,10 @@ void CloudsVisualSystemDrawnLine::selfSetDefaults(){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemDrawnLine::selfSetup(){
-	setupFbo();
+	
+    APP.SYS = this;
+    APP.setup();
+    //setupFbo();
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -88,18 +90,17 @@ void CloudsVisualSystemDrawnLine::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemDrawnLine::selfUpdate(){
-    if(fbo.getWidth() != getCanvasWidth() ||
-       fbo.getHeight() != getCanvasHeight())
-    {
-        setupFbo();
-    }
+//    if(fbo.getWidth() != getCanvasWidth() ||
+//       fbo.getHeight() != getCanvasHeight())
+//    {
+//        setupFbo();
+//    }
     
-    fbo.begin();
-    ofClear(0, 0, 0);
+    APP.bShowDebug = bShowDebug;
+    APP.update();
+
     
-    //ZACH: draw here :)
     
-    fbo.end();
     
 }
 
@@ -116,7 +117,7 @@ void CloudsVisualSystemDrawnLine::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemDrawnLine::selfDrawBackground(){
 
-    fbo.draw(0, 0);
+    APP.draw();
 	
 }
 

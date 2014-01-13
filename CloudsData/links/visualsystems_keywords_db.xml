@@ -3791,7 +3791,9 @@
 </system>
 <system name="3DModelLoader_TransHuman_female">
     <keywords>dystopia|cyberpunk|artificial intelligence|cyborg</keywords>
-    <links></links>
+    <links>
+        <clip>Bruce - A sappy Singularity</clip>
+    </links>
     <suppressions>
         <clip>Bruce - military</clip>
         <clip>Bruce - 2060s (Lashup 5)</clip>
@@ -5410,48 +5412,480 @@
     <interlude>0</interlude>
 </system>
 <system name="Circuit_JG_AggregiousSweep">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
+    <keywords>computational power|computer|technological progress|technology|singularity|future</keywords>
+    <links>
+        <clip>Aaron - digital trace</clip>
+        <clip>Ramsey - a piece of my mind</clip>
+    </links>
+    <suppressions>
+        <clip>Aaron - exchange of ideas drives progress</clip>
+        <clip>Aaron - curiosity</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Binx - technoutopian</clip>
+        <clip>Theo - newness</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Shantell - magic and tech</clip>
+        <clip>Sophy - computer dream</clip>
+        <clip>Sophy - distributed culture</clip>
+        <clip>Bruce - New media Wow</clip>
+        <clip>Bruce - aborted projects</clip>
+        <clip>Bruce - digital status quo</clip>
+        <clip>Bruce - hamster herding</clip>
+        <clip>Bruce - pinheaded geekdom</clip>
+        <clip>Golan - staring down the barrel</clip>
+        <clip>Greg - Sharpening spears</clip>
+        <clip>Greg - Trickle down</clip>
+        <clip>Greg - camera getting cheaper</clip>
+        <clip>Greg - camera scaling up</clip>
+        <clip>Greg - cameras scaling up</clip>
+        <clip>Greg - engage with research</clip>
+        <clip>Intro - Interfaces</clip>
+        <clip>Javier - Data ownership</clip>
+        <clip>Jer - storage</clip>
+        <clip>Joel - MythOfArtAndTech1</clip>
+        <clip>Joel - myth of art and technology</clip>
+        <clip>Julia - medium of our time</clip>
+        <clip>Julia - program or be programmed</clip>
+        <clip>Julia - what is it doing to us</clip>
+        <clip>Julian - change the way we see tech</clip>
+        <clip>Julian - science fiction</clip>
+        <clip>Julian - toolkit culture</clip>
+        <clip>Karsten - always improved</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - east german hardware 1</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Karsten - illusion of original thought</clip>
+        <clip>Karsten - literacy issues&apos;</clip>
+        <clip>Karsten - why don&apos;t we learn?</clip>
+        <clip>Kevin - Getting smarter together</clip>
+        <clip>Kevin - cognition vs computation 2</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>Kyle_MC - Transparent tech 2</clip>
+        <clip>LIA - TinyButtons1</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>Kyle_MC - shaping the direction</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Julian - journey to the moon</clip>
+        <clip>Aaron - progress</clip>
+        <clip>Bruce - 2060s (Lashup 5)</clip>
+        <clip>Bruce - Augmented Ubiquity</clip>
+        <clip>Bruce - Future art</clip>
+        <clip>Bruce - Future camera 1</clip>
+        <clip>Bruce - cyberpunk dictum long</clip>
+        <clip>Bruce - future camera 3</clip>
+        <clip>Bruce - future city 2</clip>
+        <clip>Bruce - not one cyberpunk idea</clip>
+        <clip>Casey - futurist</clip>
+        <clip>Golan - Anxious about the future</clip>
+        <clip>Golan - WhenComputersSurpass</clip>
+        <clip>Golan - apocalypse3</clip>
+        <clip>Golan - kerrington</clip>
+        <clip>Golan - kessler</clip>
+        <clip>JTNimoy - Comes from the human mind</clip>
+        <clip>JTNimoy - be a robot</clip>
+        <clip>Joel - Bicycles for the Mind</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Kevin - collaboration with machines</clip>
+        <clip>Kyle_CH - Future life storage</clip>
+        <clip>Kyle_CH - old server farms</clip>
+        <clip>Kyle_MC - Grab them ASAP</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Lauren - connect or push apart</clip>
+        <clip>Lauren - Metaphors</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Maeda - technology is made by people</clip>
+        <clip>Maeda - Digital media evolving</clip>
+        <clip>Marius - color 3D printing</clip>
+        <clip>Martin - getting weirder</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marius - Living in a state of newness since age 10</clip>
+        <clip>Marius - Thoroughly enjoying it at the moment</clip>
+        <clip>Marius - Predicting the internet</clip>
+        <clip>Paola - Integrating with technology</clip>
+        <clip>Paola - designer of the future</clip>
+        <clip>Paola - teleportation</clip>
+        <clip>Patricio - CLOUDS 2</clip>
+        <clip>Philip - young medium</clip>
+        <clip>Ramsey - Google glass</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Ramsey - traditional engineering</clip>
+        <clip>Regine - commercial appropriation</clip>
+        <clip>Regine - elitist and their gadgets</clip>
+        <clip>Regine - imagining the future</clip>
+        <clip>Regine - looking forward to problems</clip>
+        <clip>Regine - teleportation</clip>
+        <clip>Regine - twitter, future</clip>
+        <clip>Sophy - nanobots</clip>
+        <clip>Theo - crazy researcher</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="Circuit_JM_LongSweep">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
+    <keywords>computational power|computer|technological progress|technology|singularity|future</keywords>
+    <links>
+        <clip>Aaron - digital trace</clip>
+        <clip>Ramsey - a piece of my mind</clip>
+    </links>
+    <suppressions>
+        <clip>Aaron - exchange of ideas drives progress</clip>
+        <clip>Aaron - curiosity</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Binx - technoutopian</clip>
+        <clip>Theo - newness</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Shantell - magic and tech</clip>
+        <clip>Sophy - computer dream</clip>
+        <clip>Sophy - distributed culture</clip>
+        <clip>Bruce - New media Wow</clip>
+        <clip>Bruce - aborted projects</clip>
+        <clip>Bruce - digital status quo</clip>
+        <clip>Bruce - hamster herding</clip>
+        <clip>Bruce - pinheaded geekdom</clip>
+        <clip>Golan - staring down the barrel</clip>
+        <clip>Greg - Sharpening spears</clip>
+        <clip>Greg - Trickle down</clip>
+        <clip>Greg - camera getting cheaper</clip>
+        <clip>Greg - camera scaling up</clip>
+        <clip>Greg - cameras scaling up</clip>
+        <clip>Greg - engage with research</clip>
+        <clip>Intro - Interfaces</clip>
+        <clip>Javier - Data ownership</clip>
+        <clip>Jer - storage</clip>
+        <clip>Joel - MythOfArtAndTech1</clip>
+        <clip>Joel - myth of art and technology</clip>
+        <clip>Julia - medium of our time</clip>
+        <clip>Julia - program or be programmed</clip>
+        <clip>Julia - what is it doing to us</clip>
+        <clip>Julian - change the way we see tech</clip>
+        <clip>Julian - science fiction</clip>
+        <clip>Julian - toolkit culture</clip>
+        <clip>Karsten - always improved</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - east german hardware 1</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Karsten - illusion of original thought</clip>
+        <clip>Karsten - literacy issues&apos;</clip>
+        <clip>Karsten - why don&apos;t we learn?</clip>
+        <clip>Kevin - Getting smarter together</clip>
+        <clip>Kevin - cognition vs computation 2</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>Kyle_MC - Transparent tech 2</clip>
+        <clip>LIA - TinyButtons1</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>Kyle_MC - shaping the direction</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Julian - journey to the moon</clip>
+        <clip>Aaron - progress</clip>
+        <clip>Bruce - 2060s (Lashup 5)</clip>
+        <clip>Bruce - Augmented Ubiquity</clip>
+        <clip>Bruce - Future art</clip>
+        <clip>Bruce - Future camera 1</clip>
+        <clip>Bruce - cyberpunk dictum long</clip>
+        <clip>Bruce - future camera 3</clip>
+        <clip>Bruce - future city 2</clip>
+        <clip>Bruce - not one cyberpunk idea</clip>
+        <clip>Casey - futurist</clip>
+        <clip>Golan - Anxious about the future</clip>
+        <clip>Golan - WhenComputersSurpass</clip>
+        <clip>Golan - apocalypse3</clip>
+        <clip>Golan - kerrington</clip>
+        <clip>Golan - kessler</clip>
+        <clip>JTNimoy - Comes from the human mind</clip>
+        <clip>JTNimoy - be a robot</clip>
+        <clip>Joel - Bicycles for the Mind</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Kevin - collaboration with machines</clip>
+        <clip>Kyle_CH - Future life storage</clip>
+        <clip>Kyle_CH - old server farms</clip>
+        <clip>Kyle_MC - Grab them ASAP</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Lauren - connect or push apart</clip>
+        <clip>Lauren - Metaphors</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Maeda - technology is made by people</clip>
+        <clip>Maeda - Digital media evolving</clip>
+        <clip>Marius - color 3D printing</clip>
+        <clip>Martin - getting weirder</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marius - Living in a state of newness since age 10</clip>
+        <clip>Marius - Thoroughly enjoying it at the moment</clip>
+        <clip>Marius - Predicting the internet</clip>
+        <clip>Paola - Integrating with technology</clip>
+        <clip>Paola - designer of the future</clip>
+        <clip>Paola - teleportation</clip>
+        <clip>Patricio - CLOUDS 2</clip>
+        <clip>Philip - young medium</clip>
+        <clip>Ramsey - Google glass</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Ramsey - traditional engineering</clip>
+        <clip>Regine - commercial appropriation</clip>
+        <clip>Regine - elitist and their gadgets</clip>
+        <clip>Regine - imagining the future</clip>
+        <clip>Regine - looking forward to problems</clip>
+        <clip>Regine - teleportation</clip>
+        <clip>Regine - twitter, future</clip>
+        <clip>Sophy - nanobots</clip>
+        <clip>Theo - crazy researcher</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="Circuit_JM_ZoomOut">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
+    <keywords>computational power|computer|technological progress|technology|singularity|future</keywords>
+    <links>
+        <clip>Aaron - digital trace</clip>
+        <clip>Ramsey - a piece of my mind</clip>
+    </links>
+    <suppressions>
+        <clip>Aaron - exchange of ideas drives progress</clip>
+        <clip>Aaron - curiosity</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Binx - technoutopian</clip>
+        <clip>Theo - newness</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Shantell - magic and tech</clip>
+        <clip>Sophy - computer dream</clip>
+        <clip>Sophy - distributed culture</clip>
+        <clip>Bruce - New media Wow</clip>
+        <clip>Bruce - aborted projects</clip>
+        <clip>Bruce - digital status quo</clip>
+        <clip>Bruce - hamster herding</clip>
+        <clip>Bruce - pinheaded geekdom</clip>
+        <clip>Golan - staring down the barrel</clip>
+        <clip>Greg - Sharpening spears</clip>
+        <clip>Greg - Trickle down</clip>
+        <clip>Greg - camera getting cheaper</clip>
+        <clip>Greg - camera scaling up</clip>
+        <clip>Greg - cameras scaling up</clip>
+        <clip>Greg - engage with research</clip>
+        <clip>Intro - Interfaces</clip>
+        <clip>Javier - Data ownership</clip>
+        <clip>Jer - storage</clip>
+        <clip>Joel - MythOfArtAndTech1</clip>
+        <clip>Joel - myth of art and technology</clip>
+        <clip>Julia - medium of our time</clip>
+        <clip>Julia - program or be programmed</clip>
+        <clip>Julia - what is it doing to us</clip>
+        <clip>Julian - change the way we see tech</clip>
+        <clip>Julian - science fiction</clip>
+        <clip>Julian - toolkit culture</clip>
+        <clip>Karsten - always improved</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - east german hardware 1</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Karsten - illusion of original thought</clip>
+        <clip>Karsten - literacy issues&apos;</clip>
+        <clip>Karsten - why don&apos;t we learn?</clip>
+        <clip>Kevin - Getting smarter together</clip>
+        <clip>Kevin - cognition vs computation 2</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>Kyle_MC - Transparent tech 2</clip>
+        <clip>LIA - TinyButtons1</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>Kyle_MC - shaping the direction</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Julian - journey to the moon</clip>
+        <clip>Aaron - progress</clip>
+        <clip>Bruce - 2060s (Lashup 5)</clip>
+        <clip>Bruce - Augmented Ubiquity</clip>
+        <clip>Bruce - Future art</clip>
+        <clip>Bruce - Future camera 1</clip>
+        <clip>Bruce - cyberpunk dictum long</clip>
+        <clip>Bruce - future camera 3</clip>
+        <clip>Bruce - future city 2</clip>
+        <clip>Bruce - not one cyberpunk idea</clip>
+        <clip>Casey - futurist</clip>
+        <clip>Golan - Anxious about the future</clip>
+        <clip>Golan - WhenComputersSurpass</clip>
+        <clip>Golan - apocalypse3</clip>
+        <clip>Golan - kerrington</clip>
+        <clip>Golan - kessler</clip>
+        <clip>JTNimoy - Comes from the human mind</clip>
+        <clip>JTNimoy - be a robot</clip>
+        <clip>Joel - Bicycles for the Mind</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Kevin - collaboration with machines</clip>
+        <clip>Kyle_CH - Future life storage</clip>
+        <clip>Kyle_CH - old server farms</clip>
+        <clip>Kyle_MC - Grab them ASAP</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Lauren - connect or push apart</clip>
+        <clip>Lauren - Metaphors</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Maeda - technology is made by people</clip>
+        <clip>Maeda - Digital media evolving</clip>
+        <clip>Marius - color 3D printing</clip>
+        <clip>Martin - getting weirder</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marius - Living in a state of newness since age 10</clip>
+        <clip>Marius - Thoroughly enjoying it at the moment</clip>
+        <clip>Marius - Predicting the internet</clip>
+        <clip>Paola - Integrating with technology</clip>
+        <clip>Paola - designer of the future</clip>
+        <clip>Paola - teleportation</clip>
+        <clip>Patricio - CLOUDS 2</clip>
+        <clip>Philip - young medium</clip>
+        <clip>Ramsey - Google glass</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Ramsey - traditional engineering</clip>
+        <clip>Regine - commercial appropriation</clip>
+        <clip>Regine - elitist and their gadgets</clip>
+        <clip>Regine - imagining the future</clip>
+        <clip>Regine - looking forward to problems</clip>
+        <clip>Regine - teleportation</clip>
+        <clip>Regine - twitter, future</clip>
+        <clip>Sophy - nanobots</clip>
+        <clip>Theo - crazy researcher</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="Circuit_JM_ZoomOutIn">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
+    <keywords>computational power|computer|technological progress|technology|singularity|future</keywords>
+    <links>
+        <clip>Aaron - digital trace</clip>
+        <clip>Ramsey - a piece of my mind</clip>
+    </links>
+    <suppressions>
+        <clip>Aaron - exchange of ideas drives progress</clip>
+        <clip>Aaron - curiosity</clip>
+        <clip>Binx - tech fracturing</clip>
+        <clip>Binx - technoutopian</clip>
+        <clip>Theo - newness</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Shantell - magic and tech</clip>
+        <clip>Sophy - computer dream</clip>
+        <clip>Sophy - distributed culture</clip>
+        <clip>Bruce - New media Wow</clip>
+        <clip>Bruce - aborted projects</clip>
+        <clip>Bruce - digital status quo</clip>
+        <clip>Bruce - hamster herding</clip>
+        <clip>Bruce - pinheaded geekdom</clip>
+        <clip>Golan - staring down the barrel</clip>
+        <clip>Greg - Sharpening spears</clip>
+        <clip>Greg - Trickle down</clip>
+        <clip>Greg - camera getting cheaper</clip>
+        <clip>Greg - camera scaling up</clip>
+        <clip>Greg - cameras scaling up</clip>
+        <clip>Greg - engage with research</clip>
+        <clip>Intro - Interfaces</clip>
+        <clip>Javier - Data ownership</clip>
+        <clip>Jer - storage</clip>
+        <clip>Joel - MythOfArtAndTech1</clip>
+        <clip>Joel - myth of art and technology</clip>
+        <clip>Julia - medium of our time</clip>
+        <clip>Julia - program or be programmed</clip>
+        <clip>Julia - what is it doing to us</clip>
+        <clip>Julian - change the way we see tech</clip>
+        <clip>Julian - science fiction</clip>
+        <clip>Julian - toolkit culture</clip>
+        <clip>Karsten - always improved</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - east german hardware 1</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Karsten - illusion of original thought</clip>
+        <clip>Karsten - literacy issues&apos;</clip>
+        <clip>Karsten - why don&apos;t we learn?</clip>
+        <clip>Kevin - Getting smarter together</clip>
+        <clip>Kevin - cognition vs computation 2</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>Kyle_MC - Transparent tech 2</clip>
+        <clip>LIA - TinyButtons1</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>Kyle_MC - shaping the direction</clip>
+        <clip>Shiffman - mysterious box</clip>
+        <clip>Julian - journey to the moon</clip>
+        <clip>Aaron - progress</clip>
+        <clip>Bruce - 2060s (Lashup 5)</clip>
+        <clip>Bruce - Augmented Ubiquity</clip>
+        <clip>Bruce - Future art</clip>
+        <clip>Bruce - Future camera 1</clip>
+        <clip>Bruce - cyberpunk dictum long</clip>
+        <clip>Bruce - future camera 3</clip>
+        <clip>Bruce - future city 2</clip>
+        <clip>Bruce - not one cyberpunk idea</clip>
+        <clip>Casey - futurist</clip>
+        <clip>Golan - Anxious about the future</clip>
+        <clip>Golan - WhenComputersSurpass</clip>
+        <clip>Golan - apocalypse3</clip>
+        <clip>Golan - kerrington</clip>
+        <clip>Golan - kessler</clip>
+        <clip>JTNimoy - Comes from the human mind</clip>
+        <clip>JTNimoy - be a robot</clip>
+        <clip>Joel - Bicycles for the Mind</clip>
+        <clip>Karsten - programming is...</clip>
+        <clip>Kevin - collaboration with machines</clip>
+        <clip>Kyle_CH - Future life storage</clip>
+        <clip>Kyle_CH - old server farms</clip>
+        <clip>Kyle_MC - Grab them ASAP</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Lauren - connect or push apart</clip>
+        <clip>Lauren - Metaphors</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Maeda - technology is made by people</clip>
+        <clip>Maeda - Digital media evolving</clip>
+        <clip>Marius - color 3D printing</clip>
+        <clip>Martin - getting weirder</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marius - Living in a state of newness since age 10</clip>
+        <clip>Marius - Thoroughly enjoying it at the moment</clip>
+        <clip>Marius - Predicting the internet</clip>
+        <clip>Paola - Integrating with technology</clip>
+        <clip>Paola - designer of the future</clip>
+        <clip>Paola - teleportation</clip>
+        <clip>Patricio - CLOUDS 2</clip>
+        <clip>Philip - young medium</clip>
+        <clip>Ramsey - Google glass</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Ramsey - traditional engineering</clip>
+        <clip>Regine - commercial appropriation</clip>
+        <clip>Regine - elitist and their gadgets</clip>
+        <clip>Regine - imagining the future</clip>
+        <clip>Regine - looking forward to problems</clip>
+        <clip>Regine - teleportation</clip>
+        <clip>Regine - twitter, future</clip>
+        <clip>Sophy - nanobots</clip>
+        <clip>Theo - crazy researcher</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -5501,6 +5935,7 @@
         <clip>Regine - future camera</clip>
         <clip>Regine - information should be free</clip>
         <clip>Sophy - avatar 2</clip>
+        <clip>Aaron - exciting time</clip>
     </suppressions>
     <comments></comments>
     <grade>A</grade>
