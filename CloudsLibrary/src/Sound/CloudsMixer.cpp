@@ -22,6 +22,9 @@ CloudsMixer::CloudsMixer()
     ratio = 3.; // set higher for more squish
 
     showCompressor = false;
+    
+    fsig = 0; // no fade
+    fval = 1.0; // normal gain
 }
 
 CloudsMixer::~CloudsMixer()
@@ -52,12 +55,14 @@ void CloudsMixer::setup(int nChannels, int sampleRate, int bufferSize, int nBuff
 
 void CloudsMixer::fadeMusicDown()
 {
-    
+    cout << "fading down" << endl;
+    fsig = -1;
 }
 
 void CloudsMixer::fadeMusicUp()
 {
-    
+    cout << "fading up" << endl;
+    fsig = 1;
 }
 
 void CloudsMixer::setMusicVolume(float vol)
@@ -111,7 +116,7 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
         }
         if(followgain>thresh) gain = 1.0-((followgain-thresh)*ratio); else gain = 1.0;
         
-        output[i]=output[i]*gain*MASTER_GAIN;
+        output[i]=output[i]*gain*fval*MASTER_GAIN;
         
         // clip
         if (output[i] > 1) {
@@ -121,6 +126,27 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
             output[i] = -1;
         }
     }
+    
+    // adjust fade
+    if(fsig==1) // fading up
+    {
+        fval+=0.0025;
+        if(fval>0.999)
+        {
+            fval = 1.0;
+            fsig = 0;
+        }
+    }
+    else if(fsig==-1) // fading down
+    {
+        fval-=0.0025;
+        if(fval<0.001)
+        {
+            fval = 0.;
+            fsig = 0;
+        }
+    }
+
     
     /*
     if(showCompressor) {

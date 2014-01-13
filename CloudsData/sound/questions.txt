@@ -1,8 +1,11 @@
+audiovisualization:What does music look like?
 coding:How can the logic of coding be creative?
 community:How does the network accelerate creativity?
 cosmogeny:How do you create a digital universe?
+data:What is data?
 interactivity:What makes a satisfying interaction?
 interfaces:What's the ultimate interface?
+new aesthetic:What is the new aesthetic?
 open source:What is open source all about?
 programming:Is programming a waste of time?
 programming:What does it feel like to program?

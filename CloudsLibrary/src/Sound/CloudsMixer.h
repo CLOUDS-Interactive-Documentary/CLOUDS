@@ -51,6 +51,8 @@ protected:
     float decay;
     float thresh;
     float ratio;
+    int fsig;
+    float fval;
     
     CloudsAudioEvents events;
 };
