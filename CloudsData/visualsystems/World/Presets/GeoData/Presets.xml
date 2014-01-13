@@ -3,7 +3,7 @@
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
     <XPosition>849.000061035</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -67,6 +67,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>GeoData</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>InteractiveCameraExample</Name>
     <Value>0</Value>
 </Widget>
@@ -109,9 +114,4 @@
     <Kind>2</Kind>
     <Name>SpaceJunkOC</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>GeoData</Name>
-    <Value>1</Value>
 </Widget>

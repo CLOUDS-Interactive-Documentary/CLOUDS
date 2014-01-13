@@ -15992,7 +15992,7 @@
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="Neurons_MezzyNeuronsOC">
     <keywords></keywords>
@@ -16002,6 +16002,18 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Neurons_MezzyNeurons_Q">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -16079,7 +16091,7 @@
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="Neurons_XmasDendrites">
     <keywords></keywords>
@@ -23960,95 +23972,38 @@
 <system name="Rulez_X-Ray_Plant_rotation">
     <keywords></keywords>
     <links></links>
-    <suppressions>
-        <clip>Andres - DNA computing 1</clip>
-        <clip>Andres - DNA computing 2</clip>
-        <clip>Andres - fuzzy systems</clip>
-        <clip>Andres - modeling the human being</clip>
-        <clip>Andres - protein folding 1</clip>
-        <clip>Andres - protein folding 2</clip>
-        <clip>Andres - seeing molecules</clip>
-        <clip>Andres - soft systems 2</clip>
-        <clip>Bruce - Age of the universe, really weird</clip>
-        <clip>Casey - Craig Venter</clip>
-        <clip>Casey - Developing a microworld</clip>
-        <clip>Casey - Massive parallel systems</clip>
-        <clip>Casey - emergence</clip>
-        <clip>Casey - synthetic biology</clip>
-        <clip>Elliot_UK - tree sculpture</clip>
-        <clip>Jen - Big data</clip>
-        <clip>Jen - Lidar 1</clip>
-        <clip>Jen - Lidar 2</clip>
-        <clip>Jer - fireflies</clip>
-        <clip>Joel - scale of universe</clip>
-        <clip>Joel - scaleofUniverse</clip>
-        <clip>Kevin - computation is unnatural</clip>
-        <clip>Kevin - computation was invented</clip>
-        <clip>LIA - Circle1</clip>
-        <clip>LIA - Circle2</clip>
-        <clip>LIA - MathAnotherLanguage</clip>
-        <clip>LIA - VisualizeAnIdea</clip>
-        <clip>Marcus - emergence</clip>
-        <clip>Marcus - simulation to stories</clip>
-        <clip>Martin - birds eye view</clip>
-        <clip>Martin - data revleation</clip>
-        <clip>Martin - starry night</clip>
-        <clip>Nervous_Jesse - Biology is messy</clip>
-        <clip>Nervous_Jesse - reaction lamp</clip>
-        <clip>Nervous_Jessica - Big 3D printers Long quote</clip>
-        <clip>Nervous_Jessica - Growing buildings</clip>
-        <clip>Nervous_Jessica - RNA and Viruses</clip>
-        <clip>Nervous_Jessica - Science papers</clip>
-        <clip>Nervous_Jessica - biocomputer</clip>
-        <clip>Paola - mutant ants</clip>
-        <clip>Patricio - Building Universes 2</clip>
-        <clip>Philip - couldn&apos;t do this with actual water</clip>
-        <clip>Philip - programming the river</clip>
-        <clip>Philip - toxi&apos;s physics</clip>
-        <clip>Ramsey - Alan Kay biocomputing</clip>
-        <clip>Ramsey - Conway 2</clip>
-        <clip>Ramsey - DNA and code</clip>
-        <clip>Ramsey - New Kind of Science</clip>
-        <clip>Ramsey - biology and the internet</clip>
-        <clip>Ramsey - does nature compute? 1</clip>
-        <clip>Ramsey - does nature compute? 2</clip>
-        <clip>Ramsey - emergence from simple rules</clip>
-        <clip>Ramsey - resilient internet</clip>
-        <clip>Shiffman - Constraints,</clip>
-        <clip>Shiffman - Magnets</clip>
-        <clip>Shiffman - NOC 1</clip>
-        <clip>Shiffman - NOC 2</clip>
-        <clip>Shiffman - NOC 3</clip>
-        <clip>Shiffman - how far could we get?</clip>
-        <clip>Shiffman - programming the universe</clip>
-        <clip>Sophy - Evolution</clip>
-        <clip>Theo - inspired by nature shorter</clip>
-        <clip>Theo - magic</clip>
-        <clip>Theo - relating to nature</clip>
-    </suppressions>
+    <suppressions></suppressions>
     <comments></comments>
-    <grade>A</grade>
-    <enabled>1</enabled>
+    <grade></grade>
+    <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="Satoruhiga_basic1">
-    <keywords></keywords>
-    <links></links>
+    <keywords>beautiful exhuberance|aesthetic experience</keywords>
+    <links>
+        <clip>Marius - Aesthetic with no references,</clip>
+        <clip>Marius - reach your visual cortex</clip>
+        <clip>Marius - Living in a state of newness since age 10</clip>
+    </links>
     <suppressions></suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="Satoruhiga_confettistorm">
     <keywords>digital culture|digital art|aesthetic experience|weird|playfulness|play</keywords>
-    <links></links>
+    <links>
+        <clip>Marius - aesthetic experience</clip>
+        <clip>Marius - culturally biased aesthetic</clip>
+        <clip>Marius - Aesthetic with no references,</clip>
+    </links>
     <suppressions>
         <clip>Kyle_MC - People staring at screens 2</clip>
         <clip>Marcus - call to action</clip>
@@ -24105,12 +24060,15 @@
     <interlude>0</interlude>
 </system>
 <system name="Satoruhiga_flamencodancers">
-    <keywords></keywords>
-    <links></links>
+    <keywords>beautiful exhuberance|aesthetic experience</keywords>
+    <links>
+        <clip>Marius - Aesthetic with no references,</clip>
+        <clip>Marius - reach your visual cortex</clip>
+    </links>
     <suppressions></suppressions>
     <comments></comments>
     <grade>C</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -24118,7 +24076,9 @@
 </system>
 <system name="Satoruhiga_plasticbeast">
     <keywords>fun|imagination|weird|dreams</keywords>
-    <links></links>
+    <links>
+        <clip>Marius - Aesthetic with no references,</clip>
+    </links>
     <suppressions></suppressions>
     <comments></comments>
     <grade>A</grade>
@@ -24164,7 +24124,7 @@
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="Schlabberbox_flies">
     <keywords></keywords>
@@ -26509,6 +26469,11 @@
         <clip>Ramsey - cloud 2</clip>
         <clip>Sophy - avatar 2</clip>
         <clip>Sophy - tumblr 1</clip>
+        <clip>Marius - Aesthetic with no references,</clip>
+        <clip>Marius - Machines change the way we see</clip>
+        <clip>Marius - Techno-rococo</clip>
+        <clip>Marius - aesthetic experience</clip>
+        <clip>Marius - culturally biased aesthetic</clip>
     </suppressions>
     <comments></comments>
     <grade>B</grade>
@@ -28929,7 +28894,7 @@
     <interlude>0</interlude>
 </system>
 <system name="World_Arcs">
-    <keywords>network security|communication|globalization</keywords>
+    <keywords>network security|communication|globalization|internet|network</keywords>
     <links></links>
     <suppressions>
         <clip>Fernanda - defense of complexity 1</clip>
@@ -28968,7 +28933,6 @@
         <clip>Ramsey - ALB 3</clip>
         <clip>Ramsey - ALB 4</clip>
         <clip>Ramsey - ALB 5</clip>
-        <clip>Regine - Internet doesn&apos;t change things</clip>
         <clip>Zach - Time slows down</clip>
         <clip>Aaron - code, story, communication</clip>
         <clip>Binx - frustrated about visualization</clip>

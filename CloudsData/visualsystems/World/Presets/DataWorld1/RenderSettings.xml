@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
+    <XPosition>213.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Solid_Sphere_Alpha</Name>
-    <Value>0.359605908</Value>
+    <Value>0.379310340</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,22 +33,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Halo_Sphere_Alpha</Name>
-    <Value>0.477832526</Value>
+    <Value>0.453201979</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Rivers</Name>
-    <Value>0.477832526</Value>
+    <Value>0.019704433</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Coast</Name>
-    <Value>0.300492615</Value>
+    <Value>0.118226603</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cities</Name>
-    <Value>0.655172408</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
