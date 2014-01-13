@@ -525,7 +525,7 @@ void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
 	}
 }
 
-void CloudsHUDController::draw3D(ofCamera& cam){
+void CloudsHUDController::draw3D(ofCamera* cam){
     
     if( !bDrawHud )
         return;
@@ -548,14 +548,14 @@ void CloudsHUDController::draw3D(ofCamera& cam){
 	ofPopStyle();
 }
 
-void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera& cam){
+void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
     ofPushMatrix();
     
-    ofVec3f camPos = cam.getGlobalPosition();
+    ofVec3f camPos = cam->getGlobalPosition();
     
     // Calculate the base position.
     static ofVec3f upAxis = ofVec3f(0.0, 1.0, 0.0);
-    ofVec3f basePos = camPos + (cam.getLookAtDir().getScaled(layerDistance[layer]));
+    ofVec3f basePos = camPos + (cam->getLookAtDir().getScaled(layerDistance[layer]));
     basePos.rotate(layerRotation[layer], camPos, upAxis);
     
     // Get the total layer bounds.
@@ -576,7 +576,7 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera& cam){
 //        ofRotate(-eulerAngles.z, 1, 0, 0);
         float angle;
         ofVec3f axis;
-        (CloudsVisualSystem::getOculusRift().getOrientationQuat() * cam.getOrientationQuat()).getRotate(angle, axis);
+        (CloudsVisualSystem::getOculusRift().getOrientationQuat() * cam->getOrientationQuat()).getRotate(angle, axis);
         ofRotate(angle, axis.x, axis.y, axis.z);
         ofScale(-1, 1, 1);
     }

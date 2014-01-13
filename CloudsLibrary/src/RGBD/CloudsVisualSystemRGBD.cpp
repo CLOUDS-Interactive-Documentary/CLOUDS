@@ -1570,7 +1570,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
     
 #ifdef OCULUS_RIFT
     if (hud != NULL) {
-        hud->draw3D(getCameraRef());
+        hud->draw3D(getOculusRift().baseCamera);
     }
 #endif
 }

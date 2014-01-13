@@ -46,7 +46,7 @@ class CloudsHUDController {
 	void setup();
 	void update();
 	void draw();
-    void draw3D(ofCamera& cam);
+    void draw3D(ofCamera* cam);
 
 	void setHomeEnabled(bool enable);
 	
@@ -107,7 +107,7 @@ class CloudsHUDController {
 	
 	
     void drawLayer(CloudsHUDLayerSet layer);
-    void drawLayer3D(CloudsHUDLayerSet layer, ofCamera& cam);
+    void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam);
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath );
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath, bool caps );
     ofxFTGLFont*            getFontForLayer( string layerName, string fontPath, int kerning );
