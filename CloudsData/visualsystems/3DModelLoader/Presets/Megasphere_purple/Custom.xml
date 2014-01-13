@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Custom</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>1164.000000000</XPosition>
+    <YPosition>325.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -43,16 +43,16 @@
 <Widget>
     <Kind>4</Kind>
     <Name>modelScale</Name>
-    <Value>0.246305406</Value>
+    <Value>0.295073897</Value>
 </Widget>
 <Widget>
     <Kind>28</Kind>
     <Name>c1</Name>
-    <XValue>0.484375000</XValue>
-    <YValue>0.335937500</YValue>
-    <RColor>75</RColor>
-    <GColor>0</GColor>
-    <BColor>163</BColor>
+    <XValue>0.375000000</XValue>
+    <YValue>0.507812500</YValue>
+    <RColor>7</RColor>
+    <GColor>124</GColor>
+    <BColor>120</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>

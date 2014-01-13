@@ -265,7 +265,7 @@ void CloudsVisualSystem3DModelLoader::selfGuiEvent(ofxUIEventArgs &e)
 					{
 						cout << "loading model: " << name << endl;
 						//loadModel( "models/" + name, bSmoothModel );
-						loadModel( getVisualSystemDataPath() + "models/" + name, bSmoothModel );
+						loadModel( getVisualSystemDataPath(true) + "models/" + name, bSmoothModel );
 					}
 				}
 			}
