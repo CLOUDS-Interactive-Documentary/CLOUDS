@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Histogram</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1027.000000000</XPosition>
-    <YPosition>-4.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -33,22 +33,22 @@
 <Widget>
     <Kind>2</Kind>
     <Name>SEPARATE FEEDS</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SAMPLE OFFSET</Name>
-    <Value>1.000000000</Value>
+    <Value>0.100000001</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>RANDOM</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>AUDIO</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -58,7 +58,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>GTHappen.aif</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -93,7 +93,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>RedNoise.aif</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -118,12 +118,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>MAIN GAIN</Name>
-    <Value>0.078909852</Value>
+    <Value>0.000100000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LEVEL ADJUST</Name>
-    <Value>8.768472672</Value>
+    <Value>3.990147591</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -139,7 +139,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SAT RANGE</Name>
-    <Value>30.147783279</Value>
+    <Value>167.068969727</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -149,12 +149,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BRI RANGE</Name>
-    <Value>91.699508667</Value>
+    <Value>231.133010864</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ALPHA</Name>
-    <Value>225.000000000</Value>
+    <Value>126.871925354</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -169,7 +169,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ROW SPACER</Name>
-    <Value>141.182266235</Value>
+    <Value>140.201980591</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

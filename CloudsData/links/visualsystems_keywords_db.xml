@@ -11921,6 +11921,113 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
+<system name="Histogram_DataHistogram3">
+    <keywords></keywords>
+    <links></links>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Histogram_DataHistogram4">
+    <keywords>data collection|data visualization|big data|information</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Aaron - digital trace</clip>
+        <clip>Andres - Computational lens</clip>
+        <clip>Andres - an overly complex model</clip>
+        <clip>Binx - geodata</clip>
+        <clip>Binx - making a map</clip>
+        <clip>Binx - maps</clip>
+        <clip>Binx - meaningful shape1</clip>
+        <clip>Bruce - Digital humanities technology</clip>
+        <clip>Fernanda - A social lens</clip>
+        <clip>Fernanda - Data questions</clip>
+        <clip>Fernanda - Googe plus 2</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - History flow 2</clip>
+        <clip>Fernanda - Replaying the moment of discovery</clip>
+        <clip>Fernanda - Wind visualization 2</clip>
+        <clip>Fernanda - defense of complexity 1</clip>
+        <clip>Fernanda - defense of complexity 2</clip>
+        <clip>Fernanda - fleshmap2</clip>
+        <clip>Fernanda - fleshmap 3</clip>
+        <clip>Fernanda - live data</clip>
+        <clip>Fernanda - mainstreaming of data viz</clip>
+        <clip>Fernanda - non numerical visualization</clip>
+        <clip>Fernanda - seeing patterns 1</clip>
+        <clip>Fernanda - seeing patterns 2</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Fernanda - visualized data doesn&apos;t seem complex</clip>
+        <clip>Fernanda - what do we mean by data</clip>
+        <clip>Fernanda - what is data</clip>
+        <clip>Fernanda - zooming in</clip>
+        <clip>Golan - emotion</clip>
+        <clip>Golan - listening post</clip>
+        <clip>Golan - open data</clip>
+        <clip>Javier - Julian Oliver</clip>
+        <clip>Jen - Lidar 1</clip>
+        <clip>Jen - Lidar 2</clip>
+        <clip>Jen - a gravity to the work</clip>
+        <clip>Jen - browsing</clip>
+        <clip>Jen - data crystal ball 1</clip>
+        <clip>Jen - data crystal ball 3</clip>
+        <clip>Jen - data viz challenges</clip>
+        <clip>Jen - data viz noire</clip>
+        <clip>Jen - data viz too serious 1</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Jen - generalization 1</clip>
+        <clip>Jen - generalization 2</clip>
+        <clip>Jen - information cave</clip>
+        <clip>Jen - library</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jen - oversimplified circles 2</clip>
+        <clip>Jen - pull out the stories</clip>
+        <clip>Jen - rhetorical tool 1</clip>
+        <clip>Jen - rhetorical tool 2</clip>
+        <clip>Jen - stencil pie chart</clip>
+        <clip>Jen - truthiness</clip>
+        <clip>Jen - visual communication</clip>
+        <clip>Jer - Big Data Security</clip>
+        <clip>Jer - Pattern</clip>
+        <clip>Jer - failure to communicate</clip>
+        <clip>Jer - people don&apos;t read these things</clip>
+        <clip>Jer - reading the complexity</clip>
+        <clip>Jer - take advantage of this thing we can do</clip>
+        <clip>Julian - Transparency</clip>
+        <clip>Julian - data viz endorsement</clip>
+        <clip>Karsten - changing behavior</clip>
+        <clip>Karsten - code is information</clip>
+        <clip>Karsten - database</clip>
+        <clip>Karsten - demo scene 3</clip>
+        <clip>Karsten - social collider</clip>
+        <clip>Kevin - algo trading 6</clip>
+        <clip>Kevin - computer perception</clip>
+        <clip>Kevin - reality in the eyes of data</clip>
+        <clip>Lauren - Squib visualization</clip>
+        <clip>Lauren - data ownership 1</clip>
+        <clip>Maeda - people are best communicators</clip>
+        <clip>Martin - Inflation not that interesting</clip>
+        <clip>Martin - Seeing the whole 1</clip>
+        <clip>Martin - all the words</clip>
+        <clip>Martin - flickr flow</clip>
+        <clip>Martin - how to make us smarter</clip>
+        <clip>Martin - rapid dissemination of info</clip>
+        <clip>Martin - seeing the whole 2</clip>
+        <clip>Martin - words and numbers</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
 <system name="Histogram_Test">
     <keywords></keywords>
     <links></links>

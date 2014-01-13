@@ -57,6 +57,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Megasphere_purple</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Nest_1</Name>
     <Value>0</Value>
 </Widget>
@@ -107,8 +112,28 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Toxi_AllinOne</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toxi_AllinOne_Normals</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Toxi_Ellipsoid2</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toxi_Megasphere</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toxi_Sphere1</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -144,9 +169,4 @@
     <Kind>2</Kind>
     <Name>Vroi</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Toxi_Sphere1</Name>
-    <Value>1</Value>
 </Widget>
