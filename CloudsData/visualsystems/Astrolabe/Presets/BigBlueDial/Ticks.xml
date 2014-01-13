@@ -83,12 +83,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>yTickSpeed</Name>
-    <Value>245</Value>
+    <Value>402</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>yTickDelay</Name>
-    <Value>0</Value>
+    <Value>68</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
