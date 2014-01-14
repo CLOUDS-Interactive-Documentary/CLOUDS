@@ -357,7 +357,12 @@ void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
 }
 
 void CloudsIntroSequence::selfDraw(){
-	
+#ifdef OCULUS_RIFT
+    if (hud != NULL) {
+        hud->draw3D(getOculusRift().baseCamera);
+    }
+#endif
+    
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glEnable(GL_LINE_SMOOTH);
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
@@ -455,21 +460,26 @@ void CloudsIntroSequence::drawCloudsType(){
 }
 
 void CloudsIntroSequence::selfDrawOverlay(){
-	if(bUseOculusRift){
-		ofPushStyle();
-		for(int i = 0; i < startQuestions.size(); i++){
-			startQuestions[i].drawOverlay(true);
-		}
-		ofPopStyle();
-	}
+//	if(bUseOculusRift){
+//		ofPushStyle();
+//		for(int i = 0; i < startQuestions.size(); i++){
+//			startQuestions[i].drawOverlay(true);
+//		}
+//		ofPopStyle();
+//	}
+#ifdef OCULUS_RIFT
+    if (hud != NULL) {
+        hud->draw();
+    }
+#endif
 }
 
 void CloudsIntroSequence::selfPostDraw(){
-	chroma.begin();
-	chroma.setUniform2f("resolution", ofGetWidth(),ofGetHeight());
-	chroma.setUniform1f("max_distort", maxChromaDistort);
+//	chroma.begin();
+//	chroma.setUniform2f("resolution", ofGetWidth(),ofGetHeight());
+//	chroma.setUniform1f("max_distort", maxChromaDistort);
 	CloudsVisualSystem::selfPostDraw();
-	chroma.end();
+//	chroma.end();
 	if(!bUseOculusRift){
 		//JG: MOVING TO HUD
 //		ofPushStyle();

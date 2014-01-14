@@ -26,7 +26,8 @@ CloudsHUDController::CloudsHUDController(){
 #ifdef OCULUS_RIFT
     for (int i = 0; i < CLOUDS_HUD_LAYER_COUNT; i++) {
         layerDistance[i] = 300;
-        layerRotation[i] = 0;
+        layerRotationH[i] = 0;
+        layerRotationV[i] = 0;
         layerBillboard[i] = CLOUDS_HUD_BILLBOARD_CAMERA;
     }
 #endif
@@ -563,10 +564,12 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
     ofVec3f camPos = ofVec3f();  //cam->getPosition();
     
     // Calculate the base position.
-    static ofVec3f upAxis = ofVec3f(0.0, 1.0, 0.0);
+    static ofVec3f yAxis = ofVec3f(0.0, 1.0, 0.0);
+    static ofVec3f xAxis = ofVec3f(1.0, 0.0, 0.0);
 //    ofVec3f basePos = camPos + (cam->getLookAtDir().getScaled(layerDistance[layer]));
     ofVec3f basePos(0, 0, -layerDistance[layer]);
-    basePos.rotate(layerRotation[layer], camPos, upAxis);
+    basePos.rotate(layerRotationH[layer], camPos, yAxis);
+    basePos.rotate(layerRotationV[layer], camPos, xAxis);
     
     // Get the total layer bounds.
     ofRectangle layerBounds;
@@ -598,7 +601,8 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
         ofRotate(angle, axis.x, axis.y, axis.z);
     }
     else {
-        ofRotateY(layerRotation[layer]);
+//        ofRotateY(layerRotationH[layer]);
+//        ofRotateX(layerRotationV[layer]);
         ofScale(-1, 1, 1);
     }
     
