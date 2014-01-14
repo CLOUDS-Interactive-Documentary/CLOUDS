@@ -27,6 +27,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Code_zoomout</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>desktop</Name>
     <Value>0</Value>
 </Widget>
@@ -74,6 +79,11 @@
     <Kind>2</Kind>
     <Name>LifeofNumbers_ZoomOut</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>QR_ZoomIn</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

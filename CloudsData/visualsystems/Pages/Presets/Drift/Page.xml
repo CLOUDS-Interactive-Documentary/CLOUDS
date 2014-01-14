@@ -33,22 +33,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>TWIRL</Name>
-    <Value>0.000000000</Value>
+    <Value>0.475324035</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>TILT</Name>
-    <Value>0.000000000</Value>
+    <Value>0.745715618</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLIP</Name>
-    <Value>0.000000000</Value>
+    <Value>0.045578323</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SWAY</Name>
-    <Value>0.000000000</Value>
+    <Value>0.453469396</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -78,12 +78,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>TORNADO</Name>
-    <Value>0.500000000</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SPEED</Name>
-    <Value>0.000000000</Value>
+    <Value>0.500000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
