@@ -3885,7 +3885,7 @@
     </suppressions>
     <comments></comments>
     <grade>C</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -3909,7 +3909,7 @@
     </suppressions>
     <comments></comments>
     <grade>C</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -3945,9 +3945,13 @@
     <interlude>0</interlude>
 </system>
 <system name="3DModelLoader_Vroi">
-    <keywords></keywords>
+    <keywords>parameter space|architecture</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Elliot_UK - lightscape</clip>
+        <clip>Jen - information cave</clip>
+        <clip>Jen - intuitive spelunking</clip>
+    </suppressions>
     <comments></comments>
     <grade>B</grade>
     <enabled>0</enabled>
@@ -3969,12 +3973,16 @@
     <interlude>0</interlude>
 </system>
 <system name="3DModelLoader_voronoi">
-    <keywords></keywords>
+    <keywords>architecture|parameter space|parameters</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Jen - information cave</clip>
+        <clip>Jen - intuitive spelunking</clip>
+        <clip>Elliot_UK - lightscape</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -11813,6 +11821,120 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
+<system name="GesturePaint_Hubble">
+    <keywords>playfulness|play|interactivity|painting|beauty</keywords>
+    <links>
+        <clip>Maeda - last trick</clip>
+        <clip>Maeda - self expression</clip>
+        <clip>Patricio - InteractiveTable 1</clip>
+        <clip>Diederick - PaintingLikeCoding</clip>
+        <clip>Diederick - programmingWithFeeling</clip>
+        <clip>Kyle_CH - fun accessible art</clip>
+    </links>
+    <suppressions>
+        <clip>Philip - what we do</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Maeda - reactive square</clip>
+        <clip>Maeda - lost interest in interactivity</clip>
+        <clip>Maeda - playful systems</clip>
+        <clip>JTNimoy - performance1</clip>
+        <clip>Jen - Scaling data</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Golan - piano and pencil,</clip>
+        <clip>Golan - instruments</clip>
+        <clip>Casey - branching off branching</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Kevin - no consequences 2</clip>
+        <clip>Kevin - Draft mode</clip>
+        <clip>Kyle_CH - interactivity</clip>
+        <clip>Kyle_CH - interactivity 2</clip>
+        <clip>Kyle_MC - kinect 2</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>LIA - Formulas</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>LIA - AntiInteractivity</clip>
+        <clip>Patricio - Building Universes 1</clip>
+        <clip>Regine - ambiguous categories</clip>
+        <clip>Jen - rafael&apos;s cardiogram</clip>
+        <clip>Jen - stasis 2</clip>
+        <clip>Fernanda - aesthetics as communication</clip>
+        <clip>Fernanda - beautiful evidence 1</clip>
+        <clip>Fernanda - beautiful evidence 2</clip>
+        <clip>Bruce - Don&apos;t care about design</clip>
+        <clip>Andres - Less beautiful than it could be</clip>
+        <clip>Andres - correct is beautiful</clip>
+        <clip>Martin - flickr flow</clip>
+        <clip>Marius - Techno-rococo</clip>
+        <clip>Paola - Paola&apos;s Republic</clip>
+        <clip>Paola - beauty in exile</clip>
+        <clip>Vera - What I like about this field</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="GesturePaint_Monet2">
+    <keywords>playfulness|play|interactivity|painting|beauty</keywords>
+    <links>
+        <clip>Maeda - last trick</clip>
+        <clip>Maeda - self expression</clip>
+        <clip>Patricio - InteractiveTable 1</clip>
+        <clip>Diederick - PaintingLikeCoding</clip>
+        <clip>Diederick - programmingWithFeeling</clip>
+        <clip>Kyle_CH - fun accessible art</clip>
+    </links>
+    <suppressions>
+        <clip>Philip - what we do</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Maeda - reactive square</clip>
+        <clip>Maeda - lost interest in interactivity</clip>
+        <clip>Maeda - playful systems</clip>
+        <clip>JTNimoy - performance1</clip>
+        <clip>Jen - Scaling data</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Golan - piano and pencil,</clip>
+        <clip>Golan - instruments</clip>
+        <clip>Casey - branching off branching</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Kevin - no consequences 2</clip>
+        <clip>Kevin - Draft mode</clip>
+        <clip>Kyle_CH - interactivity</clip>
+        <clip>Kyle_CH - interactivity 2</clip>
+        <clip>Kyle_MC - kinect 2</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>LIA - Formulas</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>LIA - AntiInteractivity</clip>
+        <clip>Patricio - Building Universes 1</clip>
+        <clip>Regine - ambiguous categories</clip>
+        <clip>Jen - rafael&apos;s cardiogram</clip>
+        <clip>Jen - stasis 2</clip>
+        <clip>Fernanda - aesthetics as communication</clip>
+        <clip>Fernanda - beautiful evidence 1</clip>
+        <clip>Fernanda - beautiful evidence 2</clip>
+        <clip>Bruce - Don&apos;t care about design</clip>
+        <clip>Andres - Less beautiful than it could be</clip>
+        <clip>Andres - correct is beautiful</clip>
+        <clip>Martin - flickr flow</clip>
+        <clip>Marius - Techno-rococo</clip>
+        <clip>Paola - Paola&apos;s Republic</clip>
+        <clip>Paola - beauty in exile</clip>
+        <clip>Vera - What I like about this field</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
 <system name="GesturePaint_Richter1">
     <keywords>painting|abstraction</keywords>
     <links></links>
@@ -11825,6 +11947,7 @@
         <clip>Ramsey - arab abstraction 1</clip>
         <clip>Ramsey - arab abstraction 2</clip>
         <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>LIA - MathAnotherLanguage</clip>
     </suppressions>
     <comments></comments>
     <grade>B</grade>
@@ -11839,7 +11962,178 @@
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="GesturePaint_Richter5">
+    <keywords>playfulness|play|interactivity|painting|beauty</keywords>
+    <links>
+        <clip>Maeda - last trick</clip>
+        <clip>Maeda - self expression</clip>
+        <clip>Patricio - InteractiveTable 1</clip>
+        <clip>Diederick - PaintingLikeCoding</clip>
+        <clip>Diederick - programmingWithFeeling</clip>
+        <clip>Kyle_CH - fun accessible art</clip>
+    </links>
+    <suppressions>
+        <clip>Philip - what we do</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Maeda - reactive square</clip>
+        <clip>Maeda - lost interest in interactivity</clip>
+        <clip>Maeda - playful systems</clip>
+        <clip>JTNimoy - performance1</clip>
+        <clip>Jen - Scaling data</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Golan - piano and pencil,</clip>
+        <clip>Golan - instruments</clip>
+        <clip>Casey - branching off branching</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Kevin - no consequences 2</clip>
+        <clip>Kevin - Draft mode</clip>
+        <clip>Kyle_CH - interactivity</clip>
+        <clip>Kyle_CH - interactivity 2</clip>
+        <clip>Kyle_MC - kinect 2</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>LIA - Formulas</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>LIA - AntiInteractivity</clip>
+        <clip>Patricio - Building Universes 1</clip>
+        <clip>Regine - ambiguous categories</clip>
+        <clip>Jen - rafael&apos;s cardiogram</clip>
+        <clip>Jen - stasis 2</clip>
+        <clip>Fernanda - aesthetics as communication</clip>
+        <clip>Fernanda - beautiful evidence 1</clip>
+        <clip>Fernanda - beautiful evidence 2</clip>
+        <clip>Bruce - Don&apos;t care about design</clip>
+        <clip>Andres - Less beautiful than it could be</clip>
+        <clip>Andres - correct is beautiful</clip>
+        <clip>Martin - flickr flow</clip>
+        <clip>Marius - Techno-rococo</clip>
+        <clip>Paola - Paola&apos;s Republic</clip>
+        <clip>Paola - beauty in exile</clip>
+        <clip>Vera - What I like about this field</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="GesturePaint_Rothko">
+    <keywords>playfulness|play|interactivity|painting|beauty</keywords>
+    <links>
+        <clip>Maeda - last trick</clip>
+        <clip>Maeda - self expression</clip>
+        <clip>Patricio - InteractiveTable 1</clip>
+        <clip>Diederick - PaintingLikeCoding</clip>
+        <clip>Diederick - programmingWithFeeling</clip>
+        <clip>Kyle_CH - fun accessible art</clip>
+    </links>
+    <suppressions>
+        <clip>Philip - what we do</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Maeda - reactive square</clip>
+        <clip>Maeda - lost interest in interactivity</clip>
+        <clip>Maeda - playful systems</clip>
+        <clip>JTNimoy - performance1</clip>
+        <clip>Jen - Scaling data</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Golan - piano and pencil,</clip>
+        <clip>Golan - instruments</clip>
+        <clip>Casey - branching off branching</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Kevin - no consequences 2</clip>
+        <clip>Kevin - Draft mode</clip>
+        <clip>Kyle_CH - interactivity</clip>
+        <clip>Kyle_CH - interactivity 2</clip>
+        <clip>Kyle_MC - kinect 2</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>LIA - Formulas</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>LIA - AntiInteractivity</clip>
+        <clip>Patricio - Building Universes 1</clip>
+        <clip>Regine - ambiguous categories</clip>
+        <clip>Jen - rafael&apos;s cardiogram</clip>
+        <clip>Jen - stasis 2</clip>
+        <clip>Fernanda - aesthetics as communication</clip>
+        <clip>Fernanda - beautiful evidence 1</clip>
+        <clip>Fernanda - beautiful evidence 2</clip>
+        <clip>Bruce - Don&apos;t care about design</clip>
+        <clip>Andres - Less beautiful than it could be</clip>
+        <clip>Andres - correct is beautiful</clip>
+        <clip>Martin - flickr flow</clip>
+        <clip>Marius - Techno-rococo</clip>
+        <clip>Paola - Paola&apos;s Republic</clip>
+        <clip>Paola - beauty in exile</clip>
+        <clip>Vera - What I like about this field</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="GesturePaint_RothkoSunset">
+    <keywords>playfulness|play|interactivity|painting|beauty</keywords>
+    <links>
+        <clip>Maeda - last trick</clip>
+        <clip>Maeda - self expression</clip>
+        <clip>Patricio - InteractiveTable 1</clip>
+        <clip>Diederick - PaintingLikeCoding</clip>
+        <clip>Diederick - programmingWithFeeling</clip>
+        <clip>Kyle_CH - fun accessible art</clip>
+    </links>
+    <suppressions>
+        <clip>Philip - what we do</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Maeda - reactive square</clip>
+        <clip>Maeda - lost interest in interactivity</clip>
+        <clip>Maeda - playful systems</clip>
+        <clip>JTNimoy - performance1</clip>
+        <clip>Jen - Scaling data</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Golan - piano and pencil,</clip>
+        <clip>Golan - instruments</clip>
+        <clip>Casey - branching off branching</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Kevin - no consequences 2</clip>
+        <clip>Kevin - Draft mode</clip>
+        <clip>Kyle_CH - interactivity</clip>
+        <clip>Kyle_CH - interactivity 2</clip>
+        <clip>Kyle_MC - kinect 2</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>LIA - Formulas</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>LIA - AntiInteractivity</clip>
+        <clip>Patricio - Building Universes 1</clip>
+        <clip>Regine - ambiguous categories</clip>
+        <clip>Jen - rafael&apos;s cardiogram</clip>
+        <clip>Jen - stasis 2</clip>
+        <clip>Fernanda - aesthetics as communication</clip>
+        <clip>Fernanda - beautiful evidence 1</clip>
+        <clip>Fernanda - beautiful evidence 2</clip>
+        <clip>Bruce - Don&apos;t care about design</clip>
+        <clip>Andres - Less beautiful than it could be</clip>
+        <clip>Andres - correct is beautiful</clip>
+        <clip>Martin - flickr flow</clip>
+        <clip>Marius - Techno-rococo</clip>
+        <clip>Paola - Paola&apos;s Republic</clip>
+        <clip>Paola - beauty in exile</clip>
+        <clip>Vera - What I like about this field</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>B</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -11847,16 +12141,61 @@
     <interlude>0</interlude>
 </system>
 <system name="GesturePaint_Turrell">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
+    <keywords>playfulness|play|interactivity|painting|beauty</keywords>
+    <links>
+        <clip>Maeda - last trick</clip>
+        <clip>Maeda - self expression</clip>
+        <clip>Patricio - InteractiveTable 1</clip>
+        <clip>Diederick - PaintingLikeCoding</clip>
+        <clip>Diederick - programmingWithFeeling</clip>
+        <clip>Kyle_CH - fun accessible art</clip>
+    </links>
+    <suppressions>
+        <clip>Philip - what we do</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Philip - system in your head</clip>
+        <clip>Maeda - reactive square</clip>
+        <clip>Maeda - lost interest in interactivity</clip>
+        <clip>Maeda - playful systems</clip>
+        <clip>JTNimoy - performance1</clip>
+        <clip>Jen - Scaling data</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Golan - piano and pencil,</clip>
+        <clip>Golan - instruments</clip>
+        <clip>Casey - branching off branching</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Kevin - no consequences 2</clip>
+        <clip>Kevin - Draft mode</clip>
+        <clip>Kyle_CH - interactivity</clip>
+        <clip>Kyle_CH - interactivity 2</clip>
+        <clip>Kyle_MC - kinect 2</clip>
+        <clip>LIA - CircleFormula1</clip>
+        <clip>LIA - Formulas</clip>
+        <clip>LIA - TinyButtons2</clip>
+        <clip>LIA - AntiInteractivity</clip>
+        <clip>Patricio - Building Universes 1</clip>
+        <clip>Regine - ambiguous categories</clip>
+        <clip>Jen - rafael&apos;s cardiogram</clip>
+        <clip>Jen - stasis 2</clip>
+        <clip>Fernanda - aesthetics as communication</clip>
+        <clip>Fernanda - beautiful evidence 1</clip>
+        <clip>Fernanda - beautiful evidence 2</clip>
+        <clip>Bruce - Don&apos;t care about design</clip>
+        <clip>Andres - Less beautiful than it could be</clip>
+        <clip>Andres - correct is beautiful</clip>
+        <clip>Martin - flickr flow</clip>
+        <clip>Marius - Techno-rococo</clip>
+        <clip>Paola - Paola&apos;s Republic</clip>
+        <clip>Paola - beauty in exile</clip>
+        <clip>Vera - What I like about this field</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="Histogram_AudioWaveform">
     <keywords></keywords>
@@ -11978,12 +12317,95 @@
     <interlude>0</interlude>
 </system>
 <system name="Histogram_DataHistogram3">
-    <keywords></keywords>
+    <keywords>data collection|data visualization|big data|information</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Aaron - digital trace</clip>
+        <clip>Andres - Computational lens</clip>
+        <clip>Andres - an overly complex model</clip>
+        <clip>Binx - geodata</clip>
+        <clip>Binx - making a map</clip>
+        <clip>Binx - maps</clip>
+        <clip>Binx - meaningful shape1</clip>
+        <clip>Bruce - Digital humanities technology</clip>
+        <clip>Fernanda - A social lens</clip>
+        <clip>Fernanda - Data questions</clip>
+        <clip>Fernanda - Googe plus 2</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - History flow 2</clip>
+        <clip>Fernanda - Replaying the moment of discovery</clip>
+        <clip>Fernanda - Wind visualization 2</clip>
+        <clip>Fernanda - defense of complexity 1</clip>
+        <clip>Fernanda - defense of complexity 2</clip>
+        <clip>Fernanda - fleshmap2</clip>
+        <clip>Fernanda - fleshmap 3</clip>
+        <clip>Fernanda - live data</clip>
+        <clip>Fernanda - mainstreaming of data viz</clip>
+        <clip>Fernanda - non numerical visualization</clip>
+        <clip>Fernanda - seeing patterns 1</clip>
+        <clip>Fernanda - seeing patterns 2</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Fernanda - visualized data doesn&apos;t seem complex</clip>
+        <clip>Fernanda - what do we mean by data</clip>
+        <clip>Fernanda - what is data</clip>
+        <clip>Fernanda - zooming in</clip>
+        <clip>Golan - emotion</clip>
+        <clip>Golan - listening post</clip>
+        <clip>Golan - open data</clip>
+        <clip>Javier - Julian Oliver</clip>
+        <clip>Jen - Lidar 1</clip>
+        <clip>Jen - Lidar 2</clip>
+        <clip>Jen - a gravity to the work</clip>
+        <clip>Jen - browsing</clip>
+        <clip>Jen - data crystal ball 1</clip>
+        <clip>Jen - data crystal ball 3</clip>
+        <clip>Jen - data viz challenges</clip>
+        <clip>Jen - data viz noire</clip>
+        <clip>Jen - data viz too serious 1</clip>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Jen - generalization 1</clip>
+        <clip>Jen - generalization 2</clip>
+        <clip>Jen - information cave</clip>
+        <clip>Jen - library</clip>
+        <clip>Jen - necessity of code 2</clip>
+        <clip>Jen - oversimplified circles 2</clip>
+        <clip>Jen - pull out the stories</clip>
+        <clip>Jen - rhetorical tool 1</clip>
+        <clip>Jen - rhetorical tool 2</clip>
+        <clip>Jen - stencil pie chart</clip>
+        <clip>Jen - truthiness</clip>
+        <clip>Jen - visual communication</clip>
+        <clip>Jer - Big Data Security</clip>
+        <clip>Jer - Pattern</clip>
+        <clip>Jer - failure to communicate</clip>
+        <clip>Jer - people don&apos;t read these things</clip>
+        <clip>Jer - reading the complexity</clip>
+        <clip>Jer - take advantage of this thing we can do</clip>
+        <clip>Julian - Transparency</clip>
+        <clip>Julian - data viz endorsement</clip>
+        <clip>Karsten - changing behavior</clip>
+        <clip>Karsten - code is information</clip>
+        <clip>Karsten - database</clip>
+        <clip>Karsten - demo scene 3</clip>
+        <clip>Karsten - social collider</clip>
+        <clip>Kevin - algo trading 6</clip>
+        <clip>Kevin - computer perception</clip>
+        <clip>Kevin - reality in the eyes of data</clip>
+        <clip>Lauren - Squib visualization</clip>
+        <clip>Lauren - data ownership 1</clip>
+        <clip>Maeda - people are best communicators</clip>
+        <clip>Martin - Inflation not that interesting</clip>
+        <clip>Martin - Seeing the whole 1</clip>
+        <clip>Martin - all the words</clip>
+        <clip>Martin - flickr flow</clip>
+        <clip>Martin - how to make us smarter</clip>
+        <clip>Martin - rapid dissemination of info</clip>
+        <clip>Martin - seeing the whole 2</clip>
+        <clip>Martin - words and numbers</clip>
+    </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -12077,8 +12499,8 @@
         <clip>Martin - words and numbers</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>A</grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -13805,8 +14227,8 @@
         <clip>Zach - more poetry, less demo</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -14044,7 +14466,7 @@
     <links></links>
     <suppressions></suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>0</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -14191,7 +14613,7 @@
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="MarchingCubes_MarchingTumors">
     <keywords>imagination|dreams|noise|abstraction|form</keywords>
@@ -14541,7 +14963,7 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="MazeGenerator_FlyOver2">
+<system name="MazeGenerator_FlyOver2_">
     <keywords>journey|narrative|process|math</keywords>
     <links>
         <clip>Bruce - Infinity in a grain of sand</clip>
@@ -14630,21 +15052,9 @@
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
-<system name="MazeGenerator_FlyOver2_OC">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>1</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="MazeGenerator_FlyOver_OC">
+<system name="MazeGenerator_Flyover3">
     <keywords>journey|narrative|process|math</keywords>
     <links>
         <clip>Bruce - Infinity in a grain of sand</clip>
@@ -14728,21 +15138,9 @@
         <clip>Ramsey - does nature compute? 2</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>1</interlude>
-</system>
-<system name="MazeGenerator_Gal_flyoverOC">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -14756,6 +15154,9 @@
         <clip>Aaron - infinity</clip>
         <clip>Bruce - past and future</clip>
         <clip>Bruce - beauty of code 2</clip>
+        <clip>Patricio - Information 1</clip>
+        <clip>Patricio - Library of Babel</clip>
+        <clip>Patricio - Discovering Mathematical Reality</clip>
     </links>
     <suppressions>
         <clip>Aaron - data experience</clip>
@@ -14832,20 +15233,8 @@
     </suppressions>
     <comments></comments>
     <grade>A</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="MazeGenerator_JM_flyoverOC">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade>A</grade>
-    <enabled>0</enabled>
-    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -14985,18 +15374,6 @@
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
-</system>
-<system name="MazeGenerator_JM_groundcamOC">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade>A</grade>
-    <enabled>0</enabled>
-    <oculus>1</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
 </system>
 <system name="MazeGenerator_MouseCam">
     <keywords></keywords>
@@ -15161,6 +15538,174 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
+<system name="MazeGenerator2_Generator1">
+    <keywords>randomness|algorithms|control</keywords>
+    <links>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - algorithm comes from arabic</clip>
+        <clip>Ramsey - arab abstraction 1</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - complicated C++</clip>
+        <clip>Ramsey - C++ built the modern world</clip>
+        <clip>Ramsey - algorithms run wild</clip>
+        <clip>Patricio - Library of Babel</clip>
+        <clip>Marcus - lego bricks</clip>
+    </links>
+    <suppressions>
+        <clip>Casey - You need noise</clip>
+        <clip>Golan - woah2</clip>
+        <clip>Marius - algorithms as parameter space</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Marius - parameter space</clip>
+        <clip>Shantell - Sharing creates luck</clip>
+        <clip>Shantell - luck</clip>
+        <clip>Shiffman - make it random</clip>
+        <clip>Shiffman - mutation</clip>
+        <clip>Shiffman - randomness can be not very thoughtful</clip>
+        <clip>Kevin - Tools of perception</clip>
+        <clip>Kevin - algo culture 1</clip>
+        <clip>Kevin - algo stories 3</clip>
+        <clip>Kevin - algo stories 4</clip>
+        <clip>Kevin - algo trading 2</clip>
+        <clip>Kevin - algo trading 5</clip>
+        <clip>Nervous_Jesse - understanding to control 1</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="MazeGenerator2_Generator2_wide">
+    <keywords>randomness|algorithms|control</keywords>
+    <links>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - algorithm comes from arabic</clip>
+        <clip>Ramsey - arab abstraction 1</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - complicated C++</clip>
+        <clip>Ramsey - C++ built the modern world</clip>
+        <clip>Ramsey - algorithms run wild</clip>
+        <clip>Patricio - Library of Babel</clip>
+        <clip>Marcus - lego bricks</clip>
+    </links>
+    <suppressions>
+        <clip>Casey - You need noise</clip>
+        <clip>Golan - woah2</clip>
+        <clip>Marius - algorithms as parameter space</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Marius - parameter space</clip>
+        <clip>Shantell - Sharing creates luck</clip>
+        <clip>Shantell - luck</clip>
+        <clip>Shiffman - make it random</clip>
+        <clip>Shiffman - mutation</clip>
+        <clip>Shiffman - randomness can be not very thoughtful</clip>
+        <clip>Kevin - Tools of perception</clip>
+        <clip>Kevin - algo culture 1</clip>
+        <clip>Kevin - algo stories 3</clip>
+        <clip>Kevin - algo stories 4</clip>
+        <clip>Kevin - algo trading 2</clip>
+        <clip>Kevin - algo trading 5</clip>
+        <clip>Nervous_Jesse - understanding to control 1</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="MazeGenerator2_Generator3_wide">
+    <keywords>randomness|algorithms|control</keywords>
+    <links>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - algorithm comes from arabic</clip>
+        <clip>Ramsey - arab abstraction 1</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - complicated C++</clip>
+        <clip>Ramsey - C++ built the modern world</clip>
+        <clip>Ramsey - algorithms run wild</clip>
+        <clip>Patricio - Library of Babel</clip>
+        <clip>Marcus - lego bricks</clip>
+    </links>
+    <suppressions>
+        <clip>Casey - You need noise</clip>
+        <clip>Golan - woah2</clip>
+        <clip>Marius - algorithms as parameter space</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Marius - parameter space</clip>
+        <clip>Shantell - Sharing creates luck</clip>
+        <clip>Shantell - luck</clip>
+        <clip>Shiffman - make it random</clip>
+        <clip>Shiffman - mutation</clip>
+        <clip>Shiffman - randomness can be not very thoughtful</clip>
+        <clip>Kevin - Tools of perception</clip>
+        <clip>Kevin - algo culture 1</clip>
+        <clip>Kevin - algo stories 3</clip>
+        <clip>Kevin - algo stories 4</clip>
+        <clip>Kevin - algo trading 2</clip>
+        <clip>Kevin - algo trading 5</clip>
+        <clip>Nervous_Jesse - understanding to control 1</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="MazeGenerator2_Generator4_wide">
+    <keywords>randomness|algorithms|control</keywords>
+    <links>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - algorithm comes from arabic</clip>
+        <clip>Ramsey - arab abstraction 1</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - complicated C++</clip>
+        <clip>Ramsey - C++ built the modern world</clip>
+        <clip>Ramsey - algorithms run wild</clip>
+        <clip>Patricio - Library of Babel</clip>
+        <clip>Marcus - lego bricks</clip>
+    </links>
+    <suppressions>
+        <clip>Casey - You need noise</clip>
+        <clip>Golan - woah2</clip>
+        <clip>Marius - algorithms as parameter space</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Marius - parameter space</clip>
+        <clip>Shantell - Sharing creates luck</clip>
+        <clip>Shantell - luck</clip>
+        <clip>Shiffman - make it random</clip>
+        <clip>Shiffman - mutation</clip>
+        <clip>Shiffman - randomness can be not very thoughtful</clip>
+        <clip>Kevin - Tools of perception</clip>
+        <clip>Kevin - algo culture 1</clip>
+        <clip>Kevin - algo stories 3</clip>
+        <clip>Kevin - algo stories 4</clip>
+        <clip>Kevin - algo trading 2</clip>
+        <clip>Kevin - algo trading 5</clip>
+        <clip>Nervous_Jesse - understanding to control 1</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
 <system name="Memory_DataOverload">
     <keywords>information overload|big data</keywords>
     <links></links>
@@ -15279,22 +15824,38 @@
     <interlude>0</interlude>
 </system>
 <system name="Memory_Glitch">
-    <keywords>algorithm</keywords>
-    <links></links>
-    <suppressions>
-        <clip>Casey - 10Print</clip>
-        <clip>Bruce - Volition</clip>
-        <clip>Casey - randomness</clip>
-        <clip>Greg - engage with research</clip>
-        <clip>Greg - makematics1</clip>
-        <clip>JTNimoy - Dream</clip>
-        <clip>Kyle_MC - face algos</clip>
-        <clip>Kyle_MC - Debug screen</clip>
-        <clip>Kyle_MC - Grab them ASAP</clip>
-        <clip>Marius - constraining randomness</clip>
-        <clip>Ramsey - arab abstraction 2</clip>
+    <keywords>randomness|algorithms|control</keywords>
+    <links>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Ramsey - independent of any human</clip>
         <clip>Ramsey - algorithm comes from arabic</clip>
-        <clip>Ramsey - fluxus</clip>
+        <clip>Ramsey - arab abstraction 1</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - complicated C++</clip>
+        <clip>Ramsey - C++ built the modern world</clip>
+        <clip>Ramsey - algorithms run wild</clip>
+        <clip>Patricio - Library of Babel</clip>
+        <clip>Marcus - lego bricks</clip>
+    </links>
+    <suppressions>
+        <clip>Casey - You need noise</clip>
+        <clip>Golan - woah2</clip>
+        <clip>Marius - algorithms as parameter space</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Marius - parameter space</clip>
+        <clip>Shantell - Sharing creates luck</clip>
+        <clip>Shantell - luck</clip>
+        <clip>Shiffman - make it random</clip>
+        <clip>Shiffman - mutation</clip>
+        <clip>Shiffman - randomness can be not very thoughtful</clip>
+        <clip>Kevin - Tools of perception</clip>
+        <clip>Kevin - algo culture 1</clip>
+        <clip>Kevin - algo stories 3</clip>
+        <clip>Kevin - algo stories 4</clip>
+        <clip>Kevin - algo trading 2</clip>
+        <clip>Kevin - algo trading 5</clip>
+        <clip>Nervous_Jesse - understanding to control 1</clip>
     </suppressions>
     <comments></comments>
     <grade>B</grade>
@@ -15473,40 +16034,41 @@
     <interlude>0</interlude>
 </system>
 <system name="Memory_ThinBlueRows_wide">
-    <keywords>computational power|memory|information|information overload|storage</keywords>
+    <keywords>randomness|algorithms|control</keywords>
     <links>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - algorithm comes from arabic</clip>
+        <clip>Ramsey - arab abstraction 1</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Ramsey - complicated C++</clip>
+        <clip>Ramsey - C++ built the modern world</clip>
+        <clip>Ramsey - algorithms run wild</clip>
+        <clip>Patricio - Library of Babel</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Aaron - infinity</clip>
+        <clip>Aaron - digital trace</clip>
         <clip>Greg - the &quot;Like&quot; button cascade</clip>
     </links>
     <suppressions>
-        <clip>Binx - meaningful shape1</clip>
-        <clip>Binx - trips</clip>
-        <clip>Bruce - Future camera 1</clip>
-        <clip>Fernanda - email storytelling</clip>
-        <clip>Jen - Personal archive 2</clip>
-        <clip>Jen - browsing</clip>
-        <clip>Jen - data autobiography</clip>
-        <clip>Jen - data truth</clip>
-        <clip>Jen - data viz challenges</clip>
-        <clip>Jen - information cave</clip>
-        <clip>Jen - library</clip>
-        <clip>Jen - life chapters</clip>
-        <clip>Jen - twitter friends</clip>
-        <clip>Jen - visual communication</clip>
-        <clip>Jer - Thought it was boring</clip>
-        <clip>Julian - Transparency</clip>
-        <clip>Karsten - archiving</clip>
-        <clip>Karsten - changing behavior</clip>
-        <clip>Karsten - data visualization</clip>
-        <clip>Karsten - demo scene 3</clip>
-        <clip>Karsten - preserving history</clip>
-        <clip>Kyle_CH - Future life storage</clip>
-        <clip>Kyle_CH - old server farms</clip>
-        <clip>Maeda - distraction and focus</clip>
-        <clip>Maeda - people are best communicators</clip>
-        <clip>Martin - rapid dissemination of info</clip>
-        <clip>Patricio - Information 3</clip>
-        <clip>Patricio - Library of Babel</clip>
-        <clip>Ramsey - cloud 2</clip>
+        <clip>Casey - You need noise</clip>
+        <clip>Golan - woah2</clip>
+        <clip>Marius - algorithms as parameter space</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Marius - parameter space</clip>
+        <clip>Shantell - Sharing creates luck</clip>
+        <clip>Shantell - luck</clip>
+        <clip>Shiffman - make it random</clip>
+        <clip>Shiffman - mutation</clip>
+        <clip>Shiffman - randomness can be not very thoughtful</clip>
+        <clip>Kevin - Tools of perception</clip>
+        <clip>Kevin - algo culture 1</clip>
+        <clip>Kevin - algo stories 3</clip>
+        <clip>Kevin - algo stories 4</clip>
+        <clip>Kevin - algo trading 2</clip>
+        <clip>Kevin - algo trading 5</clip>
+        <clip>Nervous_Jesse - understanding to control 1</clip>
     </suppressions>
     <comments></comments>
     <grade>A</grade>
@@ -15625,7 +16187,9 @@
 </system>
 <system name="Memory_WideLEDCells2">
     <keywords>computational power|computer|machine aesthetics|artificial intelligence</keywords>
-    <links></links>
+    <links>
+        <clip>Greg - the &quot;Like&quot; button cascade</clip>
+    </links>
     <suppressions>
         <clip>Aaron - Mini-Artificial Intelligences</clip>
         <clip>Aaron - Tailored Stories</clip>
@@ -15689,7 +16253,7 @@
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="Memory_conflictForces">
     <keywords></keywords>
@@ -17129,8 +17693,8 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>0</enabled>
-    <oculus>1</oculus>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
@@ -17200,7 +17764,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>1</oculus>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
@@ -17224,7 +17788,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
-    <oculus>1</oculus>
+    <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
@@ -20731,7 +21295,7 @@
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
+    <interlude>1</interlude>
 </system>
 <system name="OpenP5TextUniverse_Borges_randomOC">
     <keywords>language</keywords>
@@ -21619,27 +22183,11 @@
 </system>
 <system name="Oscillations_laser_blast">
     <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Oscillations_laser_blast_rotation">
-    <keywords></keywords>
     <links>
         <clip>LIA - MalleableMath</clip>
         <clip>LIA - NotInventingAnything1</clip>
         <clip>LIA - PatternsIntheBrain</clip>
         <clip>Damion - ShortCircuit</clip>
-        <clip>Philip - image is in your brain</clip>
-        <clip>Marius - reach your visual cortex</clip>
-        <clip>LIA - VisualizeAnIdea</clip>
-        <clip>Damion - loseSenseofTime</clip>
     </links>
     <suppressions>
         <clip>Kevin - math havoc 1</clip>
@@ -21653,7 +22201,46 @@
         <clip>Greg - makematics1</clip>
         <clip>Andres - camera distorts reality</clip>
         <clip>Jen - numbers and words</clip>
-        <clip>Martin - language and infinity</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="Oscillations_laser_blast_rotation">
+    <keywords></keywords>
+    <links>
+        <clip>LIA - MalleableMath</clip>
+        <clip>LIA - NotInventingAnything1</clip>
+        <clip>LIA - PatternsIntheBrain</clip>
+    </links>
+    <suppressions>
+        <clip>Kevin - math havoc 1</clip>
+        <clip>Kevin - math havoc 2</clip>
+        <clip>Martin - words and numbers</clip>
+        <clip>Philip - first time computation</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Casey - randomness</clip>
+        <clip>Greg - makematics1</clip>
+        <clip>Andres - camera distorts reality</clip>
+        <clip>Jen - numbers and words</clip>
+        <clip>Bruce - Fax machine</clip>
+        <clip>Bruce - lashup 3</clip>
+        <clip>Damion - ShortCircuit</clip>
+        <clip>Golan - raytraced spheres</clip>
+        <clip>JTNimoy - based on human mind</clip>
+        <clip>Karsten - atari emulation</clip>
+        <clip>Karsten - culture and evolution</clip>
+        <clip>Higa - not sharing its a backup</clip>
+        <clip>JTNimoy - Comes from the human mind</clip>
+        <clip>Kyle_CH - erase distinctions</clip>
+        <clip>LIA - ExplanatoryText1</clip>
+        <clip>Ramsey - fluxus</clip>
     </suppressions>
     <comments></comments>
     <grade>A</grade>

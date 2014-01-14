@@ -42,22 +42,17 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>discardThreshold</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
     <Name>modelScale</Name>
     <Value>1.806896567</Value>
 </Widget>
 <Widget>
     <Kind>28</Kind>
     <Name>c1</Name>
-    <XValue>0.578125000</XValue>
-    <YValue>0.382812500</YValue>
-    <RColor>138</RColor>
+    <XValue>0.648437500</XValue>
+    <YValue>0.429687500</YValue>
+    <RColor>165</RColor>
     <GColor>0</GColor>
-    <BColor>136</BColor>
+    <BColor>63</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>
@@ -88,5 +83,10 @@
 <Widget>
     <Kind>2</Kind>
     <Name>xRay</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>simple</Name>
     <Value>0</Value>
 </Widget>

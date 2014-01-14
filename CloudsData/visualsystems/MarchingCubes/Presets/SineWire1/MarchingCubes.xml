@@ -33,7 +33,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>THRESHOLD</Name>
-    <Value>0.399999976</Value>
+    <Value>0.504508615</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -53,12 +53,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FG HUE</Name>
-    <Value>204.000000000</Value>
+    <Value>170.880493164</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FG SAT</Name>
-    <Value>140.250000000</Value>
+    <Value>96.042671204</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

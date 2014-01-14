@@ -2,18 +2,18 @@
     <Kind>42</Kind>
     <Name>Brush</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>422.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>148.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Brush Size</Name>
-    <Value>128.000000000</Value>
+    <Value>212.034484863</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Palette Shift Speed</Name>
-    <Value>6.403941154</Value>
+    <Value>41.871921539</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -83,5 +83,5 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Show Palette</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>

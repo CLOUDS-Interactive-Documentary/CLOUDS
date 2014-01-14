@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>MarchingCubes</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -78,7 +78,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Use Grain</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
