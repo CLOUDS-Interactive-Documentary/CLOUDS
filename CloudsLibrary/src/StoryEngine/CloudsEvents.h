@@ -5,6 +5,7 @@
 #include "CloudsClip.h"
 #include "CloudsVisualSystemPreset.h"
 #include "CloudsDichotomy.h"
+#include "CloudsPortal.h"
 
 
 class CloudsAct;
@@ -48,6 +49,15 @@ class CloudsQuestionEventArgs : public ofEventArgs{
 	string topic;
 };
 
+class CloudsPortalEventArgs : public ofEventArgs{
+public:
+    CloudsPortalEventArgs(CloudsPortal& portal, string question)
+    : portal(portal), question(question){}
+	
+    CloudsPortal& portal;
+	string question;
+};
+
 class CloudsPreRollEventArgs : public ofEventArgs{
 public:
     CloudsPreRollEventArgs(CloudsClip& preRollClip, float clipStartTimeOffset)
@@ -85,9 +95,16 @@ class CloudsStoryEvents {
 	ofEvent<CloudsPreRollEventArgs> preRollRequested;
     ofEvent<CloudsQuestionEventArgs> questionProposed;
     ofEvent<CloudsQuestionEventArgs> questionSelected;
-
+    
 	ofEvent<CloudsTopicEventArgs> topicChanged;
-
+    
 };
+
+class CloudsVisualSystemEvents {
+  public:
+    ofEvent<CloudsPortalEventArgs> portalHoverBegan;
+    ofEvent<CloudsPortalEventArgs> portalHoverEnded;
+};
+
 
 
