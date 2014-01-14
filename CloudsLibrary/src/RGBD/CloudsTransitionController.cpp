@@ -26,6 +26,7 @@ CloudsTransitionController::CloudsTransitionController(){
 	fadeInStates.push_back(TRANSITION_INTERVIEW_IN);
     fadeInStates.push_back(TRANSITION_CLUSTERMAP_IN);
 	fadeInStates.push_back(TRANSITION_QUESTION_IN);
+	fadeInStates.push_back(TRANSITION_INTRO_IN);
 }
 
 void CloudsTransitionController::confirmEmpty(){
@@ -52,6 +53,14 @@ void CloudsTransitionController::transitionFromIntro(float outDuration){
 	
 	startTransition();
 
+}
+
+void CloudsTransitionController :: transitionToIntro(float inDuration){
+	confirmEmpty();
+    
+	queueState(TRANSITION_INTRO_IN, inDuration);
+	
+	startTransition();
 }
 
 void CloudsTransitionController::transitionToFirstVisualSystem(float duration){
@@ -274,6 +283,8 @@ string CloudsTransitionController::getStateDescription(CloudsTransitionState sta
             return "TransitionQuestionIn";
         case TRANSITION_QUESTION_OUT:
             return "TransitionQuestionOut";
+        case TRANSITION_INTRO_IN:
+            return "TransitionIntroIn";
 		default:
 			return "UNKNOWN STATE " + ofToString(int(currentState));
 	}

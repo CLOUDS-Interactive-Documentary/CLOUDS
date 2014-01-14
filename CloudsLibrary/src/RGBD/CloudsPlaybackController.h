@@ -65,7 +65,7 @@ class CloudsPlaybackController {
 	vector<CloudsClip> fakeQuestions;
 
   protected:
-
+	vector<CloudsClip> startingNodes;
 	//*** CORE CLOUDS STUFF
 	CloudsFCPParser parser;
 	CloudsVisualSystemManager visualSystems;
@@ -117,6 +117,7 @@ class CloudsPlaybackController {
 	bool showingVisualSystem;
 	bool showingClusterMap;
 	bool bQuestionAsked;
+    bool showingInterlude;
 	
 	void clearAct(bool destroy = true);
 			

@@ -535,58 +535,37 @@ void CloudsHUDController::draw3D(ofCamera* cam){
 	ofPushStyle();
 	ofPushMatrix();
     glPushAttrib(GL_ALL_ATTRIB_BITS);
-    
-//    GLfloat model[16];
-//    glGetFloatv(GL_MODELVIEW_MATRIX, model);
-//    ofMatrix4x4 curmv;
-//    curmv.set(model);
-//    ofMultMatrix(curmv.getInverse());
  
 	glDisable(GL_DEPTH_TEST);
     glDisable(GL_LIGHTING);
     ofEnableAlphaBlending();
     
-    drawLayer3DSimple(CLOUDS_HUD_QUESTION, cam);
-    drawLayer3DSimple(CLOUDS_HUD_LOWER_THIRD, cam);
-	drawLayer3DSimple(CLOUDS_HUD_PROJECT_EXAMPLE, cam);
-	drawLayer3DSimple(CLOUDS_HUD_MAP, cam);
+    drawLayer3D(CLOUDS_HUD_QUESTION, cam);
+    drawLayer3D(CLOUDS_HUD_LOWER_THIRD, cam);
+	drawLayer3D(CLOUDS_HUD_PROJECT_EXAMPLE, cam);
+	drawLayer3D(CLOUDS_HUD_MAP, cam);
 	
     glPopAttrib();
-//    ofMultMatrix(curmv);
     
 	ofPopMatrix();
 	ofPopStyle();
 }
 
-void CloudsHUDController::drawLayer3DSimple(CloudsHUDLayerSet layer, ofCamera* cam){
+void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
     ofPushMatrix();
     
+    // Hook up to the camera to keep the layer steady.
     ofMatrix4x4 baseRotation;
     ofTranslate(cam->getPosition());
     baseRotation.makeRotationMatrix(cam->getOrientationQuat());
     ofMultMatrix(baseRotation);
-    ofTranslate(0, 0, -ofGetMouseX());
     
-
-    ofScale(-scaleAmt, -scaleAmt, 1);
-    ofTranslate(-hudBounds.getCenter());
-    drawLayer(layer);
-    
-    // Debug circle.
-    ofSetColor(255);
-    ofCircle(0, 0, 10);
-
-    ofPopMatrix();
-}
-
-void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
-    ofPushMatrix();
-    
-    ofVec3f camPos = cam->getPosition();
+    ofVec3f camPos = ofVec3f();  //cam->getPosition();
     
     // Calculate the base position.
     static ofVec3f upAxis = ofVec3f(0.0, 1.0, 0.0);
-    ofVec3f basePos = camPos + (cam->getLookAtDir().getScaled(layerDistance[layer]));
+//    ofVec3f basePos = camPos + (cam->getLookAtDir().getScaled(layerDistance[layer]));
+    ofVec3f basePos(0, 0, -layerDistance[layer]);
     basePos.rotate(layerRotation[layer], camPos, upAxis);
     
     // Get the total layer bounds.
@@ -602,12 +581,9 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
 
     if (layerBillboard[layer] == CLOUDS_HUD_BILLBOARD_OCULUS) {
         // Billboard rotation using the Oculus orientation.
-//        ofVec3f eulerAngles = (CloudsVisualSystem::getOculusRift().getOrientationQuat() * cam.getOrientationQuat()).getEuler();
-//        ofRotateY(layerRotation[layer]);
-//        ofRotate(-eulerAngles.z, 1, 0, 0);
         float angle;
         ofVec3f axis;
-        (CloudsVisualSystem::getOculusRift().getOrientationQuat() * cam->getOrientationQuat()).getRotate(angle, axis);
+        CloudsVisualSystem::getOculusRift().getOrientationQuat().getRotate(angle, axis);
         ofRotate(angle, axis.x, axis.y, axis.z);
         ofScale(-1, 1, 1);
     }
@@ -623,11 +599,12 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
     }
     else {
         ofRotateY(layerRotation[layer]);
+        ofScale(-1, 1, 1);
     }
     
     // Debug circle.
-    ofSetColor(255);
-    ofCircle(0, 0, 25);
+//    ofSetColor(255);
+//    ofCircle(0, 0, 25);
     
     // Transform for rendering the layer.
     ofScale(-scaleAmt, -scaleAmt, 1);
