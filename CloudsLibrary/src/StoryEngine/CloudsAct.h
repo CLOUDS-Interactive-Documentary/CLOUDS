@@ -84,7 +84,7 @@ class CloudsAct{
     
     vector<CloudsClip>& getAllClips();
     vector<CloudsVisualSystemPreset>& getAllVisualSystemPresets();
-	vector< ofPtr<CloudsVisualSystem> > getAllVisualSystems();
+//	vector< ofPtr<CloudsVisualSystem> > getAllVisualSystems();
 	vector<CloudsDichotomy>& getDichotomiesForClip(CloudsClip& clip);
 	vector<CloudsDichotomy>& getDichotomiesForClip(string clipName);
 	vector<CloudsSoundCue>& getSoundCues();
