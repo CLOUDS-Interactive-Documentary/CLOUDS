@@ -193,11 +193,6 @@ void CloudsVisualSystemAutomata::selfUpdate()
             outFbo.draw(0, 0);
             
             if (bDoInput) {
-                // Map the coords to the 2D scale.
-                float inputX = ofMap(GetCloudsInputX(), 0, getSharedRenderTarget().getWidth(),
-                                     getSharedRenderTarget().getWidth() * (0.5f - 0.5f / scale2D), getSharedRenderTarget().getWidth() * (0.5f + 0.5f / scale2D));
-                float inputY = ofMap(GetCloudsInputY(), 0, getSharedRenderTarget().getHeight(),
-                                     getSharedRenderTarget().getHeight() * (0.5f - 0.5f / scale2D), getSharedRenderTarget().getHeight() * (0.5f + 0.5f / scale2D));
                 ofSetColor(255);
                 ofPushStyle();
                 if (bFill) {
@@ -210,7 +205,23 @@ void CloudsVisualSystemAutomata::selfUpdate()
                     ofSetLineWidth(2);
 #endif
                 }
-                ofCircle(inputX, inputY, radius);
+                
+                map<int, CloudsInteractionEventArgs> inputPoints = GetCloudsInputPoints();
+                for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
+                    // Map the coords to the 2D scale.
+                    float inputX = ofMap(GetCloudsInputX(), 0, getSharedRenderTarget().getWidth(),
+                                         getSharedRenderTarget().getWidth() * (0.5f - 0.5f / scale2D), getSharedRenderTarget().getWidth() * (0.5f + 0.5f / scale2D));
+#ifdef OCULUS_RIFT
+                    // Flipped...
+                    float inputY = ofMap(GetCloudsInputY(), getSharedRenderTarget().getHeight(), 0,
+                                         getSharedRenderTarget().getHeight() * (0.5f - 0.5f / scale2D), getSharedRenderTarget().getHeight() * (0.5f + 0.5f / scale2D));
+#else
+                    float inputY = ofMap(GetCloudsInputY(), 0, getSharedRenderTarget().getHeight(),
+                                         getSharedRenderTarget().getHeight() * (0.5f - 0.5f / scale2D), getSharedRenderTarget().getHeight() * (0.5f + 0.5f / scale2D));
+#endif
+                    
+                    ofCircle(inputX, inputY, radius);
+                }
                 ofPopStyle();
             }
         }
@@ -319,7 +330,7 @@ void CloudsVisualSystemAutomata::selfInteractionEnded(CloudsInteractionEventArgs
 }
 
 void CloudsVisualSystemAutomata::selfInteractionMoved(CloudsInteractionEventArgs& args){
-	currentInput = ofVec2f(args.position.x, args.position.y);
+
 }
 
 void CloudsVisualSystemAutomata::selfInteractionStarted(CloudsInteractionEventArgs& args){

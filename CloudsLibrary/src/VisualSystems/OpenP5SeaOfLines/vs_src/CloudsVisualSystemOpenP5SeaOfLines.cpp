@@ -201,8 +201,9 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDrawBackground()
     ofSetColor(bgColor, bgAlpha * 255);
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
     ofRect(0, 0, getCanvasWidth(), getCanvasHeight());
-    
+    glDisable(GL_LINE_SMOOTH);
     ofSetColor(255);
+    
     mesh.draw();
 }
 

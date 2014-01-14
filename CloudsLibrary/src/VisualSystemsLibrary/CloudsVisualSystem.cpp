@@ -414,14 +414,20 @@ void CloudsVisualSystem::update(ofEventArgs & args)
             float distanceToPortal = portals[i].hoverPosition.distance(mouseNode);
             if(distanceToPortal<100.f){
                 portals[i].startHovering();
-            }else{
+            }
+            else{
                 portals[i].stopHovering();
             }
-            
         }
         //cout<<GetSelectedInterludePortalContinue()<<endl;
         SetInterludePortalsRef(portals);
     }
+//    else{
+//        for(int i=0;i<portals.size();i++){
+//            portals[i].clearSelection();
+//            portals[i].stopHovering();
+//        }
+//    }
     
 #endif
 
@@ -506,7 +512,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
             getOculusRift().endBackground();
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW BACKGROUND");
 
-			getOculusRift().beginOverlay(-230, 320,240);
+			getOculusRift().beginOverlay(-230, 640,480);
 			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
 			selfDrawOverlay();
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
@@ -556,19 +562,21 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			getCameraRef().end();
             
 #ifdef CLOUDS_APP
+            
             if(bShowPortals){
-            ofPushStyle();
+                ofPushStyle();
                 ofEnableAlphaBlending();
-            ofSetColor(255);
-            for(int i=0;i<portals.size();i++){
-                glDisable(GL_DEPTH_TEST);
-                CloudsPortal::shader.begin();
-                CloudsPortal::shader.setUniform1i("doAttenuate", 0);
-                portals[i].draw();
-                CloudsPortal::shader.end();
-            }
+                    
+                ofSetColor(255);
+                for(int i = 0; i < portals.size(); i++){
+                    glDisable(GL_DEPTH_TEST);
+                    CloudsPortal::shader.begin();
+                    CloudsPortal::shader.setUniform1i("doAttenuate", 0);
+                    portals[i].draw();
+                    CloudsPortal::shader.end();
+                }
                 ofDisableAlphaBlending();
-            ofPopStyle();
+                ofPopStyle();
             }
 #endif
 			ofPushStyle();
@@ -2972,7 +2980,8 @@ void CloudsVisualSystem::setupHUDGui()
     
     hudGui->addSpacer();
     hudGui->addSlider("QUESTION DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_QUESTION]);
-    hudGui->addSlider("QUESTION ROT", -90, 90, &hud->layerRotation[CLOUDS_HUD_QUESTION]);
+    hudGui->addSlider("QUESTION ROT H", 90, -90, &hud->layerRotationH[CLOUDS_HUD_QUESTION]);
+    hudGui->addSlider("QUESTION ROT V", 90, -90, &hud->layerRotationV[CLOUDS_HUD_QUESTION]);
     hudGui->addLabel("BILLBOARD");
     vector<string> hudBillboardQ;
     hudBillboardQ.push_back("BB Q NONE");
@@ -2982,7 +2991,8 @@ void CloudsVisualSystem::setupHUDGui()
 
     hudGui->addSpacer();
     hudGui->addSlider("LOWER 3RD DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_LOWER_THIRD]);
-    hudGui->addSlider("LOWER 3RD ROT", 90, -90, &hud->layerRotation[CLOUDS_HUD_LOWER_THIRD]);
+    hudGui->addSlider("LOWER 3RD ROT H", 90, -90, &hud->layerRotationH[CLOUDS_HUD_LOWER_THIRD]);
+    hudGui->addSlider("LOWER 3RD ROT V", 90, -90, &hud->layerRotationV[CLOUDS_HUD_LOWER_THIRD]);
     hudGui->addLabel("BILLBOARD");
     vector<string> hudBillboardL3;
     hudBillboardL3.push_back("BB L3 NONE");
@@ -2992,7 +3002,8 @@ void CloudsVisualSystem::setupHUDGui()
 
     hudGui->addSpacer();
     hudGui->addSlider("PROJ EX DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_PROJECT_EXAMPLE]);
-    hudGui->addSlider("PROJ EX ROT", 90, -90, &hud->layerRotation[CLOUDS_HUD_PROJECT_EXAMPLE]);
+    hudGui->addSlider("PROJ EX ROT H", 90, -90, &hud->layerRotationH[CLOUDS_HUD_PROJECT_EXAMPLE]);
+    hudGui->addSlider("PROJ EX ROT V", 90, -90, &hud->layerRotationV[CLOUDS_HUD_PROJECT_EXAMPLE]);
     hudGui->addLabel("BILLBOARD");
     vector<string> hudBillboardPE;
     hudBillboardPE.push_back("BB PE NONE");
@@ -3002,7 +3013,8 @@ void CloudsVisualSystem::setupHUDGui()
 
     hudGui->addSpacer();
     hudGui->addSlider("MAP DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_MAP]);
-    hudGui->addSlider("MAP ROT", -90, 90, &hud->layerRotation[CLOUDS_HUD_MAP]);
+    hudGui->addSlider("MAP ROT H", 90, -90, &hud->layerRotationH[CLOUDS_HUD_MAP]);
+    hudGui->addSlider("MAP ROT V", 90, -90, &hud->layerRotationV[CLOUDS_HUD_MAP]);
     hudGui->addLabel("BILLBOARD");
     vector<string> hudBillboardM;
     hudBillboardM.push_back("BB M NONE");

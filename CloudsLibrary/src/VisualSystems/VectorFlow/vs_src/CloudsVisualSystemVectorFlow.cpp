@@ -49,6 +49,8 @@ void CloudsVisualSystemVectorFlow::initFlowField(){
 			lines.addColor( ofColor::white );
 		}
 	}
+    
+    lines.setUsage(GL_STREAM_DRAW);
 }
 
 //--------------------------------------------------------------
@@ -56,8 +58,8 @@ void CloudsVisualSystemVectorFlow::selfSetup(){
 	colorMap.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png" );
 	bIs2D = true;
     
-    shaderBlurX.load(GetCloudsDataPath()+"/visualsystems/VectorFlow/shaders/simpleBlurHorizontal");
-    shaderBlurY.load(GetCloudsDataPath()+"/visualsystems/VectorFlow/shaders/simpleBlurVertical");
+    shaderBlurX.load(getVisualSystemDataPath() + "shaders/simpleBlurHorizontal");
+    shaderBlurY.load(getVisualSystemDataPath() + "shaders/simpleBlurVertical");
     
     initBlurFilter();
     
@@ -73,13 +75,22 @@ void CloudsVisualSystemVectorFlow::selfSetupGuis(){
 
 void CloudsVisualSystemVectorFlow::selfUpdate(){
     
+    if(maxVertices != int(generateMaxVerts) ||
+       trailLength != int(generateTrailLength) )
+    {
+        regenerateFlow = true;
+    }
+
     //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
-	if(regenerateFlow || width != getCanvasWidth() || height != getCanvasHeight()){
+	if(regenerateFlow ||
+       width != getCanvasWidth() ||
+       height != getCanvasHeight())
+    {
 		regenerateFlow = false;
 		initFlowField();
+        initBlurFilter();
 	}
     
-
 	//UPDATE PARTICLES
 	for(int i = 0; i < particlesPerFrame; i++){
 		addParticle();
@@ -153,6 +164,35 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
     volume.value(ofMap(curMSpeed, 0, 20, 0, .7, true));
     prevInputX = GetCloudsInputX();
     prevInputY = GetCloudsInputY();
+    
+    // draw to first FBO
+    fboInitial.begin();
+    
+	ofPushStyle();
+	ofEnableAlphaBlending();
+	ofSetColor(255);
+	ofSetLineWidth(1);
+	glDisable(GL_LINE_SMOOTH);
+    
+	if(blendAdd){
+		ofEnableBlendMode(OF_BLENDMODE_ADD);
+	}
+	else{
+		ofEnableAlphaBlending();
+	}
+	
+	lines.draw();
+	particleMesh.draw();
+	
+	if(!bClearBackground){
+		ofEnableAlphaBlending();
+		ofSetColor(0,0,0, 5);
+        //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+		ofRect(0, 0, getCanvasWidth(), getCanvasHeight());
+	}
+	ofPopStyle();
+    
+    fboInitial.end();
 }
 
 void CloudsVisualSystemVectorFlow::addParticle(){
@@ -218,7 +258,6 @@ ofVec3f CloudsVisualSystemVectorFlow::getDirection(float x, float y){
 	return ofVec3f(0,1,0).getRotated( anglePercent  * 360,  ofVec3f(0,0,1) );
 }
 
-
 float CloudsVisualSystemVectorFlow::sampleField(float x, float y){
 	float chaossqr   = powf(chaos,2);
 	float oscillator = sin( oscFrequency*ofGetFrameNum() ) ;
@@ -249,36 +288,9 @@ void CloudsVisualSystemVectorFlow::getSincSourceAngle(int x, int y, float& angle
 }
 void CloudsVisualSystemVectorFlow::selfDrawBackground(){
     
-    // draw to first FBO
-    fboInitial.begin();
-    
-	ofPushStyle();
-	ofEnableAlphaBlending();
-	ofSetColor(255);
-	ofSetLineWidth(1);
-	
-	if(blendAdd){
-		ofEnableBlendMode(OF_BLENDMODE_ADD);
-	}
-	else{
-		ofEnableAlphaBlending();
-	}
-	
-	lines.draw();
-	particleMesh.draw();
-	
-	if(!bClearBackground){
-		ofEnableAlphaBlending();
-		ofSetColor(0,0,0, 5);
-        //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
-		ofRect(0, 0, getCanvasWidth(), getCanvasHeight());
-	}
-	ofPopStyle();
-
-    fboInitial.end();
-
     // BLUR fboInitial
     fboBlurX.begin();
+    ofClear(0,0,0);
     shaderBlurX.begin();
     shaderBlurX.setUniform1f("blurAmnt", blurAmount);
 
@@ -289,6 +301,7 @@ void CloudsVisualSystemVectorFlow::selfDrawBackground(){
     fboBlurX.end();
     
     fboFinal.begin();
+    ofClear(0,0,0);
     shaderBlurY.begin();
     shaderBlurY.setUniform1f("blurAmnt", blurAmount);
     fboBlurX.draw(0, 0);
@@ -432,6 +445,7 @@ void CloudsVisualSystemVectorFlow::initBlurFilter()
     fboBlurX.allocate(getCanvasWidth(), getCanvasHeight());
     fboFinal.allocate(getCanvasWidth(), getCanvasHeight());
     fboInitial.allocate(getCanvasWidth(), getCanvasHeight());
+    
     fboBlurX.begin();
     ofClear(0, 0, 0);
     fboBlurX.end();

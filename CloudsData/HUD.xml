@@ -2,28 +2,33 @@
     <Kind>42</Kind>
     <Name>HUD</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>3869.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1485.000000000</XPosition>
+    <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>QUESTION DIST</Name>
-    <Value>300.000000000</Value>
+    <Value>650.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>QUESTION ROT</Name>
-    <Value>0.000000000</Value>
+    <Name>QUESTION ROT H</Name>
+    <Value>28.817733765</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>QUESTION ROT V</Name>
+    <Value>-12.857147217</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>BB Q NONE</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>BB Q CAMERA</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -33,12 +38,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LOWER 3RD DIST</Name>
-    <Value>300.000000000</Value>
+    <Value>364.285736084</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>LOWER 3RD ROT</Name>
-    <Value>90.000000000</Value>
+    <Name>LOWER 3RD ROT H</Name>
+    <Value>3.103446960</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LOWER 3RD ROT V</Name>
+    <Value>2.216751099</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -62,7 +72,12 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>PROJ EX ROT</Name>
+    <Name>PROJ EX ROT H</Name>
+    <Value>90.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PROJ EX ROT V</Name>
     <Value>90.000000000</Value>
 </Widget>
 <Widget>
@@ -87,8 +102,13 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>MAP ROT</Name>
-    <Value>0.000000000</Value>
+    <Name>MAP ROT H</Name>
+    <Value>90.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAP ROT V</Name>
+    <Value>90.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
