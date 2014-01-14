@@ -9,6 +9,7 @@
 #include "CloudsIntroSequence.h"
 //#include "ofxObjLoader.h"
 #include "CloudsGlobal.h"
+#include "CloudsEvents.h"
 
 CloudsIntroSequence::CloudsIntroSequence(){
 	selectedQuestion = NULL;
@@ -134,7 +135,10 @@ void CloudsIntroSequence::selfUpdate(){
 															   0, cameraForwardSpeed);
 					if(distanceToQuestion < questionTugDistance.min){
 						caughtQuestion = &startQuestions[i];
-						caughtQuestion->startHovering();
+						if (caughtQuestion->startHovering()) {
+                            CloudsPortalEventArgs args(startQuestions[i], startQuestions[i].question);
+                            ofNotifyEvent(events.portalHoverBegan, args);
+                        }
 					}
 				}
 			}
@@ -148,6 +152,8 @@ void CloudsIntroSequence::selfUpdate(){
 				else if(distanceToQuestion > questionTugDistance.max){
 					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
+                    CloudsPortalEventArgs args(startQuestions[i], startQuestions[i].question);
+                    ofNotifyEvent(events.portalHoverEnded, args);
 				}
 			}
 		}

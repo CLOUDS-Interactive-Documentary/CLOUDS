@@ -69,6 +69,8 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 		ofRemoveListener(ofEvents().update, this, &CloudsPlaybackController::update);
 		ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
         
+        ofRemoveListener(introSequence->events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
+        ofRemoveListener(introSequence->events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
 	}
 	clearAct();
 }
@@ -104,19 +106,6 @@ void CloudsPlaybackController::setup(){
 	oscSender.setup();
 	//END THREADED
 	
-	if(!eventsRegistered){
-		
-		eventsRegistered = true;
-		
-        ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
-        
-		ofAddListener(ofEvents().update, this, &CloudsPlaybackController::update);
-		ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
-		
-		ofRegisterKeyEvents(this);
-		ofRegisterMouseEvents(this);
-	}
-	
 	rgbdVisualSystem = new CloudsVisualSystemRGBD();
 	rgbdVisualSystem->setup();
 	rgbdVisualSystem->setDrawToScreen(false);
@@ -139,6 +128,22 @@ void CloudsPlaybackController::setup(){
     introSequence->hud = &hud;
     introSequence->setupHUDGui();
 #endif
+    
+    if(!eventsRegistered){
+		
+		eventsRegistered = true;
+		
+        ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
+        
+		ofAddListener(ofEvents().update, this, &CloudsPlaybackController::update);
+		ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+        
+        ofAddListener(introSequence->events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
+        ofAddListener(introSequence->events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
+        
+		ofRegisterKeyEvents(this);
+		ofRegisterMouseEvents(this);
+	}
 	
 	//////////////SHOW INTRO
     startingNodes = parser.getClipsWithKeyword("#start");
@@ -299,13 +304,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	////////////////////
 	//INTRO
 	if(showingIntro){
-		string questionText = introSequence->getQuestionText();
-		if(questionText != ""){
-			hud.questionHoverOn(questionText);
-		}
-		else{
-			hud.questionHoverOff();
-		}
+//		string questionText = introSequence->getQuestionText();
+//		if(questionText != ""){
+//			hud.questionHoverOn(questionText);
+//		}
+//		else{
+//			hud.questionHoverOff();
+//		}
 		
 		if(introSequence->isStartQuestionSelected()){
 			
@@ -932,3 +937,16 @@ void CloudsPlaybackController::playNextVisualSystem()
 		ofLogError("CloudsPlaybackController::playNextVisualSystem") << "nextVisualSystemPreset == NULL";
 	}
 }
+
+#pragma mark - Visual System Event Callbacks
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::portalHoverBegan(CloudsPortalEventArgs &args){
+    hud.questionHoverOn(args.question);
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::portalHoverEnded(CloudsPortalEventArgs &args){
+	hud.questionHoverOff();
+}
+

@@ -124,10 +124,13 @@ void CloudsHUDController::populateMap( string leftBox, string rightBox, bool for
 
 void CloudsHUDController::populateQuestion( string question, bool forceOn ){
 //    cout << "setting text with current value " << question << " " << hudLabelMap["QuestionTextBox"]->getText() << endl;
-	if( ofToUpper(hudLabelMap["QuestionTextBox"]->getText()) == ofToUpper(question) ){
-		return;
-	}
-	else if(question == ""){
+    // EZ: Commented this out because populateQuestion should only be called when hover starts
+    // Otherwise it wouldn't work if hovering over the same question twice.
+//	if( ofToUpper(hudLabelMap["QuestionTextBox"]->getText()) == ofToUpper(question) ){
+//		return;
+//	}
+//	else
+    if(question == ""){
 		animateOff( CLOUDS_HUD_QUESTION );
 	}
 	else{

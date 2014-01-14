@@ -12,6 +12,7 @@
 #include "CloudsVisualSystem.h"
 //#include "ofxGameCamera.h"
 #include "CloudsClip.h"
+#include "CloudsEvents.h"
 #include "CloudsPortal.h"
 //#include "CloudsRun.h"
 #include "ofxFTGL.h"
@@ -73,7 +74,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	void autoSelectQuestion();
 	CloudsPortal* getSelectedQuestion();
-	
+    
+    CloudsVisualSystemEvents events;
+    
   protected:
 		
 	ofxUISuperCanvas* questionGui;
