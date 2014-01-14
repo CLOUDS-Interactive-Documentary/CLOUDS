@@ -467,11 +467,6 @@ void CloudsIntroSequence::selfDrawOverlay(){
 //		}
 //		ofPopStyle();
 //	}
-#ifdef OCULUS_RIFT
-    if (hud != NULL) {
-        hud->draw();
-    }
-#endif
 }
 
 void CloudsIntroSequence::selfPostDraw(){
