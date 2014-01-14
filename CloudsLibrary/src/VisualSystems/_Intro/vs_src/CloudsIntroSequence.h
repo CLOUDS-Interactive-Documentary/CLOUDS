@@ -75,7 +75,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void autoSelectQuestion();
 	CloudsPortal* getSelectedQuestion();
     
-    CloudsVisualSystemEvents events;
+    static CloudsVisualSystemEvents events;
     
   protected:
 		

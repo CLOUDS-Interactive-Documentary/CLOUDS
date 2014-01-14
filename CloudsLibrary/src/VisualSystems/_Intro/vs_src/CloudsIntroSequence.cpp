@@ -11,6 +11,8 @@
 #include "CloudsGlobal.h"
 #include "CloudsEvents.h"
 
+CloudsVisualSystemEvents CloudsIntroSequence::events;
+
 CloudsIntroSequence::CloudsIntroSequence(){
 	selectedQuestion = NULL;
 	showingQuestions = false;
@@ -136,7 +138,7 @@ void CloudsIntroSequence::selfUpdate(){
 					if(distanceToQuestion < questionTugDistance.min){
 						caughtQuestion = &startQuestions[i];
 						if (caughtQuestion->startHovering()) {
-                            CloudsPortalEventArgs args(startQuestions[i], startQuestions[i].question);
+                            CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
                             ofNotifyEvent(events.portalHoverBegan, args);
                         }
 					}
@@ -152,7 +154,7 @@ void CloudsIntroSequence::selfUpdate(){
 				else if(distanceToQuestion > questionTugDistance.max){
 					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
-                    CloudsPortalEventArgs args(startQuestions[i], startQuestions[i].question);
+                    CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
                     ofNotifyEvent(events.portalHoverEnded, args);
 				}
 			}

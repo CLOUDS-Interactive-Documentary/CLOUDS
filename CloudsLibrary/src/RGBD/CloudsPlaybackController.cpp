@@ -69,8 +69,11 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 		ofRemoveListener(ofEvents().update, this, &CloudsPlaybackController::update);
 		ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
         
-        ofRemoveListener(introSequence->events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
-        ofRemoveListener(introSequence->events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
+        ofRemoveListener(CloudsIntroSequence::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
+        ofRemoveListener(CloudsIntroSequence::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
+        
+        ofRemoveListener(CloudsVisualSystemRGBD::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
+        ofRemoveListener(CloudsVisualSystemRGBD::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
 	}
 	clearAct();
 }
@@ -138,8 +141,11 @@ void CloudsPlaybackController::setup(){
 		ofAddListener(ofEvents().update, this, &CloudsPlaybackController::update);
 		ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
         
-        ofAddListener(introSequence->events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
-        ofAddListener(introSequence->events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
+        ofAddListener(CloudsIntroSequence::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
+        ofAddListener(CloudsIntroSequence::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
+        
+        ofAddListener(CloudsVisualSystemRGBD::events.portalHoverBegan, this, &CloudsPlaybackController::portalHoverBegan);
+        ofAddListener(CloudsVisualSystemRGBD::events.portalHoverEnded, this, &CloudsPlaybackController::portalHoverEnded);
         
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
@@ -304,14 +310,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	////////////////////
 	//INTRO
 	if(showingIntro){
-//		string questionText = introSequence->getQuestionText();
-//		if(questionText != ""){
-//			hud.questionHoverOn(questionText);
-//		}
-//		else{
-//			hud.questionHoverOff();
-//		}
-		
 		if(introSequence->isStartQuestionSelected()){
 			
 			CloudsPortal* q = introSequence->getSelectedQuestion();
@@ -374,14 +372,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	// RGBD SYSTEM
     //	if(rgbdVisualSystem->isQuestionSelectedAndClipDone()){
     if(currentVisualSystem == rgbdVisualSystem){
-        string questionText = rgbdVisualSystem->getQuestionText();
-        if(questionText != ""){
-            hud.questionHoverOn(questionText);
-        }
-        else{
-            hud.questionHoverOff();
-        }
-        
         if(!bQuestionAsked && rgbdVisualSystem->isQuestionSelected()){
             
             bQuestionAsked = true;

@@ -7,6 +7,8 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
 
+CloudsVisualSystemEvents CloudsVisualSystemRGBD::events;
+
 //--------------------------------------------------------------
 string CloudsVisualSystemRGBD::getSystemName(){
 	return "RGBD";
@@ -942,7 +944,10 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 			if( distanceToQuestion < portalTugDistance.max) {
 				if(distanceToQuestion < portalTugDistance.min) {
 					caughtPortal = portals[i];
-					caughtPortal->startHovering();
+					if (caughtPortal->startHovering()) {
+                        CloudsPortalEventArgs args(*portals[i], getQuestionText());
+                        ofNotifyEvent(events.portalHoverBegan, args);
+                    }
 				}
 			}
 		}
@@ -956,6 +961,8 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 			else if(distanceToQuestion > portalTugDistance.max){
 				caughtPortal->stopHovering();
 				caughtPortal = NULL;
+                CloudsPortalEventArgs args(*portals[i], getQuestionText());
+                ofNotifyEvent(events.portalHoverEnded, args);
 			}
 		}
         minDistanceToQuestion = MIN(distanceToQuestion, minDistanceToQuestion);
