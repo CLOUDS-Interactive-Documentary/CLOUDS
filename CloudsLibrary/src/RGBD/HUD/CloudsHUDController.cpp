@@ -598,7 +598,8 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
         ofRotate(angle, axis.x, axis.y, axis.z);
     }
     else {
-        ofRotateY(layerRotation[layer]);
+//        ofRotateY(layerRotationH[layer]);
+//        ofRotateX(layerRotationV[layer]);
         ofScale(-1, 1, 1);
     }
     
