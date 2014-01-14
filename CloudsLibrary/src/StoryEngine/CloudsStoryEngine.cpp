@@ -279,9 +279,14 @@ vector<string> CloudsStoryEngine::getValidTopicsForNextAct(CloudsRun& run){
 #pragma mark INIT ACT
 //if we are just given a run, build a topic from a new
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run){
-    if(run.accumuluatedTopics.size() == 0 || run.clipHistory.size() == 0){
-        ofLogError("CloudsStoryEngine::buildAct") << " building an act with no history!";
+    if(run.clipHistory.size() == 0){
+        ofLogError("CloudsStoryEngine::buildAct") << " building an act with no clip history!";
         return NULL;
+    }
+    
+    if(run.accumuluatedTopics.size() == 0){
+        ofLogError("CloudsStoryEngine::buildAct") << " building an act with no history!";
+        return buildAct(run, run.clipHistory.back() );
     }
     
     cout << " CREATE NEW ACT. Previous act had " << run.accumuluatedTopics.size() << " topics" << endl;
@@ -1020,6 +1025,7 @@ string CloudsStoryEngine::selectTopic(CloudsStoryState& state){
 			if(bLogTopicDetails) state.log << state.duration << "\t\tERROR Even our family couldn't help us move on from topic " << state.topic << " on clip " <<  state.clip.getLinkName() << endl;
 			return state.topic;
 		}
+        topics = topicFamilies;
     }
     
     vector<string> winningTopics;

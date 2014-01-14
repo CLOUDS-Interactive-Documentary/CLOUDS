@@ -252,15 +252,20 @@ bool preset_sort(CloudsVisualSystemPreset a, CloudsVisualSystemPreset b){
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::FreeSystemPointers(){
+void CloudsVisualSystemManager::DeallocateSystems(){
     for(int i = 0; i < systems.size(); i++){
+        if( systems[i]->isPlaying() ) {
+            systems[i]->stopSystem();
+            ofLogError("CloudsVisualSystemManager::FreeSystemPointers") << "System " << systems[i]->getSystemName() << " Was still playing!";
+        }
+        
+        if(systems[i]->isSetup()){
+            systems[i]->exit();
+        }
+
         delete systems[i];
-//        presets[i].system = ofPtr<CloudsVisualSystem>();
-//        if(presets[i].system != NULL){
-//            delete presets[i].system;
-//            presets[i].system = NULL;
-//        }
     }
+
     systems.clear();
 }
 

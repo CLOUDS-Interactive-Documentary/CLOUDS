@@ -20,7 +20,7 @@ class CloudsVisualSystemManager {
     static bool HasSystemRegistered(CloudsVisualSystem* system);
 	static CloudsVisualSystem* InstantiateSystem(string systemName);
 	static vector< CloudsVisualSystem* > InstantiateSystems(vector<CloudsVisualSystemPreset>& systemPresets);
-    static void FreeSystemPointers();
+    static void DeallocateSystems();
     ///VSF
     
 	void populateVisualSystems();
