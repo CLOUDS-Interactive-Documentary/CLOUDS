@@ -19,6 +19,7 @@ CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 	missingContent = false;
 	oculusCompatible = false;
 //	hasSound = false;
+    system = NULL;
     
     soundAllowVO = false;
     soundExcludeVO = false;

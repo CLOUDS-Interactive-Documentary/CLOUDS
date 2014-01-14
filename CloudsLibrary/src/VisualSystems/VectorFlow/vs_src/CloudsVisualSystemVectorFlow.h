@@ -72,7 +72,6 @@ protected:
 	void addParticle();
 	
 	ofVec3f getDirection(float x, float y);
-//	float getMagnitude(float x, float y);
 	float sampleField(float x, float y);
 	
 	void initFlowField();

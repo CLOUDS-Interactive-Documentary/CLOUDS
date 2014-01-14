@@ -82,16 +82,18 @@ class CloudsPlaybackController {
 	int numClipsPlayed;
 	string currentTopic;
 	bool shouldPlayAct;
-	
+
+    CloudsVisualSystem* currentVisualSystem;
+
 	//RGBD STUFF
-	ofPtr<CloudsVisualSystemRGBD> rgbdVisualSystem;
+	CloudsVisualSystemRGBD* rgbdVisualSystem;
 	//if there is a system playing this wil be non-null
-	ofPtr<CloudsIntroSequence> introSequence;
-	ofPtr<CloudsVisualSystemClusterMap> clusterMap;
-	
+	CloudsIntroSequence* introSequence;
+	CloudsVisualSystemClusterMap* clusterMap;
+	CloudsVisualSystem* interludeSystem;
+    
 	CloudsVisualSystemPreset nextVisualSystemPreset;	
 	CloudsVisualSystemPreset currentVisualSystemPreset;
-	ofPtr<CloudsVisualSystem> currentVisualSystem;
 		
 	CloudsTransitionController transitionController;
 	void updateTransition();
@@ -116,8 +118,9 @@ class CloudsPlaybackController {
 	bool showingIntro;
 	bool showingVisualSystem;
 	bool showingClusterMap;
-	bool bQuestionAsked;
     bool showingInterlude;
+    bool exitedInterlude;
+	bool bQuestionAsked;
 	
 	void clearAct(bool destroy = true);
 			
@@ -125,5 +128,10 @@ class CloudsPlaybackController {
 	void hideVisualSystem();
 	void showRGBDVisualSystem();
 	void playNextVisualSystem();
-	
+    void showClusterMap();
+    void showInterlude();
+    void cleanupInterlude();
 };
+
+
+

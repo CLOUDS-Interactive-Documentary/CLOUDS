@@ -3583,8 +3583,8 @@
 		A620E86118837B9C00A02F5B /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				A620E86218837B9C00A02F5B /* CloudsVisualSystemMazeGenerator2.cpp */,
 				A620E86318837B9C00A02F5B /* CloudsVisualSystemMazeGenerator2.h */,
+				A620E86218837B9C00A02F5B /* CloudsVisualSystemMazeGenerator2.cpp */,
 				A620E86418837B9C00A02F5B /* Maze2.cpp */,
 				A620E86518837B9C00A02F5B /* Maze2.h */,
 				A620E86618837B9C00A02F5B /* MazeCamera2.cpp */,
@@ -5355,8 +5355,8 @@
 		E70CE17E18695CCB00955691 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E70CE17F18695CCB00955691 /* CloudsVisualSystemVectorFlow.cpp */,
 				E70CE18018695CCB00955691 /* CloudsVisualSystemVectorFlow.h */,
+				E70CE17F18695CCB00955691 /* CloudsVisualSystemVectorFlow.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";

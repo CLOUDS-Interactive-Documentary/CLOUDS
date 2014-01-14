@@ -414,14 +414,20 @@ void CloudsVisualSystem::update(ofEventArgs & args)
             float distanceToPortal = portals[i].hoverPosition.distance(mouseNode);
             if(distanceToPortal<100.f){
                 portals[i].startHovering();
-            }else{
+            }
+            else{
                 portals[i].stopHovering();
             }
-            
         }
         //cout<<GetSelectedInterludePortalContinue()<<endl;
         SetInterludePortalsRef(portals);
     }
+//    else{
+//        for(int i=0;i<portals.size();i++){
+//            portals[i].clearSelection();
+//            portals[i].stopHovering();
+//        }
+//    }
     
 #endif
 
@@ -506,7 +512,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
             getOculusRift().endBackground();
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW BACKGROUND");
 
-			getOculusRift().beginOverlay(-230, 320,240);
+			getOculusRift().beginOverlay(-230, 640,480);
 			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
 			selfDrawOverlay();
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
@@ -556,19 +562,21 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			getCameraRef().end();
             
 #ifdef CLOUDS_APP
+            
             if(bShowPortals){
-            ofPushStyle();
+                ofPushStyle();
                 ofEnableAlphaBlending();
-            ofSetColor(255);
-            for(int i=0;i<portals.size();i++){
-                glDisable(GL_DEPTH_TEST);
-                CloudsPortal::shader.begin();
-                CloudsPortal::shader.setUniform1i("doAttenuate", 0);
-                portals[i].draw();
-                CloudsPortal::shader.end();
-            }
+                    
+                ofSetColor(255);
+                for(int i = 0; i < portals.size(); i++){
+                    glDisable(GL_DEPTH_TEST);
+                    CloudsPortal::shader.begin();
+                    CloudsPortal::shader.setUniform1i("doAttenuate", 0);
+                    portals[i].draw();
+                    CloudsPortal::shader.end();
+                }
                 ofDisableAlphaBlending();
-            ofPopStyle();
+                ofPopStyle();
             }
 #endif
 			ofPushStyle();
