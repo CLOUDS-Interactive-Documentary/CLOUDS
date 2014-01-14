@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>POINT LIGHT 1Settings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
+    <XPosition>637.000061035</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -13,12 +13,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>X</Name>
-    <Value>-985.102416992</Value>
+    <Value>-39.098327637</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>Y</Name>
-    <Value>-77.942443848</Value>
+    <Value>-736.149902344</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>AV</Name>
-    <Value>0.064285703</Value>
+    <Value>0.244790256</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

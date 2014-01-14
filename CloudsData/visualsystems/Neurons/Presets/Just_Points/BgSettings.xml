@@ -3,11 +3,16 @@
     <Name>BgSettings</Name>
     <IsMinified>0</IsMinified>
     <XPosition>213.000000000</XPosition>
-    <YPosition>31.000000000</YPosition>
+    <YPosition>141.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>GRAD</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BAR GRAD</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -23,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BRI</Name>
-    <Value>16.330049515</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,7 +38,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SAT2</Name>
-    <Value>30.147783279</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

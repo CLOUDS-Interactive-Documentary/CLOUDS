@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>POINT LIGHT 1Settings</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>216.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>637.000061035</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>Y</Name>
-    <Value>80.424560547</Value>
+    <Value>816.823730469</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

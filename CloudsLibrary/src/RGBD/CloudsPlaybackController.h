@@ -119,6 +119,7 @@ class CloudsPlaybackController {
 	bool showingVisualSystem;
 	bool showingClusterMap;
     bool showingInterlude;
+    bool exitedInterlude;
 	bool bQuestionAsked;
 	
 	void clearAct(bool destroy = true);
@@ -129,7 +130,7 @@ class CloudsPlaybackController {
 	void playNextVisualSystem();
     void showClusterMap();
     void showInterlude();
-	
+    void cleanupInterlude();
 };
 
 

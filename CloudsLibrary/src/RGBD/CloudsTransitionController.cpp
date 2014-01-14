@@ -58,6 +58,8 @@ void CloudsTransitionController::transitionFromIntro(float outDuration){
 
 void CloudsTransitionController::transitionToIntro(float inDuration){
 	confirmEmpty();
+
+    queueState(TRANSITION_INTERLUDE_OUT, inDuration);
     
 	queueState(TRANSITION_INTRO_IN, inDuration);
 	

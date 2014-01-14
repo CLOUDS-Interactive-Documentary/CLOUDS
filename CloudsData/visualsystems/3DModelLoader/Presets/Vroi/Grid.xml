@@ -8,17 +8,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>gridLineWidth</Name>
-    <Value>0.500000000</Value>
+    <Value>1.716748714</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>majorGridLineWidth</Name>
-    <Value>1.108374357</Value>
+    <Value>1.623152733</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gridScale</Name>
-    <Value>7.827586174</Value>
+    <Value>20.019704819</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>gridAlpha</Name>
-    <Value>15.073891640</Value>
+    <Value>164.556640625</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -58,15 +58,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>gridMajorAlpha</Name>
-    <Value>28.891626358</Value>
+    <Value>36.428573608</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gridMajorBrightness</Name>
-    <Value>0.645320177</Value>
+    <Value>0.399014771</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gridAlphaScale</Name>
-    <Value>0.743842363</Value>
+    <Value>0.736453176</Value>
 </Widget>

@@ -239,6 +239,23 @@ vector< CloudsVisualSystem* > CloudsVisualSystemManager::InstantiateSystems(vect
 	return newSystems;
 }
 
+void CloudsVisualSystemManager::DeallocateSystems(){
+    for(int i = 0; i < systems.size(); i++){
+        if( systems[i]->isPlaying() ) {
+            systems[i]->stopSystem();
+            ofLogError("CloudsVisualSystemManager::FreeSystemPointers") << "System " << systems[i]->getSystemName() << " Was still playing!";
+        }
+        
+        if(systems[i]->isSetup()){
+            systems[i]->exit();
+        }
+        
+        delete systems[i];
+    }
+    
+    systems.clear();
+}
+
 #endif //end coupling guard
 
 
@@ -252,22 +269,6 @@ bool preset_sort(CloudsVisualSystemPreset a, CloudsVisualSystemPreset b){
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::DeallocateSystems(){
-    for(int i = 0; i < systems.size(); i++){
-        if( systems[i]->isPlaying() ) {
-            systems[i]->stopSystem();
-            ofLogError("CloudsVisualSystemManager::FreeSystemPointers") << "System " << systems[i]->getSystemName() << " Was still playing!";
-        }
-        
-        if(systems[i]->isSetup()){
-            systems[i]->exit();
-        }
-
-        delete systems[i];
-    }
-
-    systems.clear();
-}
 
 //--------------------------------------------------------------------
 bool CloudsVisualSystemManager::HasSystemRegistered(CloudsVisualSystem* system){

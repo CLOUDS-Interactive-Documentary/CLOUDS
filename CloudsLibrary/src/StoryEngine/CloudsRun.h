@@ -25,6 +25,8 @@ class CloudsRun
     //only for the last run
 	map<string, int> accumuluatedTopics;
     
+    void clear();
+    
     void actBegan(CloudsActEventArgs& args);
 	void actEnded(CloudsActEventArgs& args);
 	void clipBegan(CloudsClipEventArgs& args);

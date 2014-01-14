@@ -42,6 +42,15 @@ void CloudsRun::topicChanged(CloudsTopicEventArgs& args){
     }
 }
 
+void CloudsRun::clear(){
+    clipHistory.clear();
+    presetHistory.clear();
+    topicHistory.clear();
+    
+    //only for the last run
+    accumuluatedTopics.clear();
+}
+
 void CloudsRun::visualSystemEnded(CloudsVisualSystemEventArgs& args){}
 void CloudsRun::questionProposed(CloudsQuestionEventArgs& args){}
 void CloudsRun::questionSelected(CloudsQuestionEventArgs& args){}

@@ -109,7 +109,6 @@ class CloudsHUDController {
 	
     void drawLayer(CloudsHUDLayerSet layer);
 #ifdef OCULUS_RIFT
-	void drawLayer3DSimple(CloudsHUDLayerSet layer,ofCamera* cam);
     void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam);
 #endif
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath );
