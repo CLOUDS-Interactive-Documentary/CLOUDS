@@ -29,7 +29,17 @@ void _C::selfSetup(){
     reset();
     readFromFile( "brain1" );
     generateFlythrough();
-    
+    quatCam = false;
+    flythrough = false;
+    bounce = false;
+    camDuration = 0;
+}
+
+void _C::selfSetDefaults(){
+    quatCam = false;
+    bounce = false;
+    flythrough = false;
+    camDuration = 0.f;
 }
 
 void _C::selfSetupGuis(){
@@ -50,15 +60,27 @@ void _C::selfSetupGuis(){
 
     
     
-    generateCamPath = camGui->addButton( "Generate Flythrough",false, 32,32);
-    generateRandCam = camGui->addButton( "Generate Random Bounce",false, 32,32);
-    tumbleCam = camGui->addButton( "Quatumble",false, 32,32);
-    camDuration = camGui->addSlider("Cam Path Duration",0,120,60);
+   // generateCamPath = camGui->addButton( "Generate Flythrough",false, 32,32);
+   // generateRandCam = camGui->addButton( "Generate Random Bounce",false, 32,32);
+   // tumbleCam = camGui->addButton( "Quatumble",false, 32,32);
+   // camDuration = camGui->addSlider("Cam Path Duration",0,120,60);
 
     
     rdrGui->addToggle("Show Neurons", &renderNeurons);
     rdrGui->addSlider("Depth Coloring", 0.0, 1.0, &_C::colorMix);
     rdrGui->addToggle("Show Camera Path", &renderCamPath);
+    
+    
+    float length = (gui->getGlobalCanvasWidth()-gui->getWidgetSpacing()*5)/3.;
+    float dim = gui->getGlobalSliderHeight();
+    nCamGui = new ofxUISuperCanvas("Neural Camera", gui);
+    nCamGui->addToggle( "Generate Flythrough", &flythrough);
+    nCamGui->addToggle( "Generate Random Bounce",&bounce);
+    nCamGui->addToggle( "Quatumble",&quatCam);
+    nCamGui->addSlider("Cam Path Duration",0,120,&camDuration);
+    ofAddListener(nCamGui->newGUIEvent, this, &CloudsVisualSystemNeurons::selfGuiEvent);
+    guis.push_back(nCamGui);
+    guimap[nCamGui->getName()] = nCamGui;
 }
 
 
@@ -159,23 +181,26 @@ void _C::reset(bool createRootNodes){
     }
 }
 
-void _C::guiCameraEvent(ofxUIEventArgs &e){
-    CloudsVisualSystem::guiCameraEvent(e);
-    
-    if(e.widget == generateCamPath && ofGetMousePressed() ) {
-        generateFlythrough();
-    }else if(e.widget == generateRandCam && ofGetMousePressed() ) {
-        generateRandCamBounce();
-    }else if(e.widget == camDuration && ofGetMousePressed() ) {
-        cloudsPathCam.setDuration(camDuration->getScaledValue());
-    }else if(e.widget == tumbleCam && ofGetMousePressed() ) {
-        _N::clearPathFlags();
-        cloudsPathCam.clear();
-    }
-}
+//void _C::guiCameraEvent(ofxUIEventArgs &e){
+//    CloudsVisualSystem::guiCameraEvent(e);
+//    
+//    if(e.widget == generateCamPath && ofGetMousePressed() ) {
+//        generateFlythrough();
+//    }else if(e.widget == generateRandCam && ofGetMousePressed() ) {
+//        generateRandCamBounce();
+////    }else if(e.widget == camDuration && ofGetMousePressed() ) {
+// //       cloudsPathCam.setDuration(camDuration->getScaledValue());
+//    }else if(e.widget == tumbleCam && ofGetMousePressed() ) {
+//        _N::clearPathFlags();
+//        cloudsPathCam.clear();
+//    }
+//}
 
 
 void _C::selfGuiEvent(ofxUIEventArgs &e){
+    
+    string name = e.widget->getName();
+    
     if( e.widget->getName()=="Reset" && ofGetMousePressed() ){
         reset();
     }else if(e.widget == saveButton && ofGetMousePressed()){
@@ -185,6 +210,29 @@ void _C::selfGuiEvent(ofxUIEventArgs &e){
         readFromFile( "brain1" );
         cout << ofGetTimestampString() << endl;
     }
+    
+    
+    if(name == "Cam Path Duration" ){
+        cloudsPathCam.setDuration(camDuration);
+    }
+    
+    if(name == "Generate Flythrough" ){
+        if(flythrough){
+            generateFlythrough();
+        }
+    }
+    if(name == "Generate Random Bounce" ){
+        if(bounce){
+            generateRandCamBounce();
+        }
+    }
+    if(name == "Quatumble" ){
+        if(quatCam){
+            _N::clearPathFlags();
+            cloudsPathCam.clear();
+        }
+    }
+    
 }
 
 string _C::getSystemName(){

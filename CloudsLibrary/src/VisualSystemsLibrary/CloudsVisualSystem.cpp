@@ -506,7 +506,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
             getOculusRift().endBackground();
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW BACKGROUND");
 
-			getOculusRift().beginOverlay(-230, 320,240);
+			getOculusRift().beginOverlay(-230, 640,480);
 			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
 			selfDrawOverlay();
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
