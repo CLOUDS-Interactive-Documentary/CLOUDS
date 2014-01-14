@@ -112,7 +112,6 @@ protected:
     ofShader blenderShader;
     ofFbo texFbo, outFbo;
     ofVboMesh mesh;
-    ofVec2f currentInput;
     ofDirectory seedDir;
     int selectedSeedIdx;
     

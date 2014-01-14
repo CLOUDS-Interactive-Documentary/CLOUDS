@@ -87,7 +87,8 @@ class CloudsHUDController {
     
 #ifdef OCULUS_RIFT
     float layerDistance[CLOUDS_HUD_LAYER_COUNT];
-    float layerRotation[CLOUDS_HUD_LAYER_COUNT];
+    float layerRotationH[CLOUDS_HUD_LAYER_COUNT];
+    float layerRotationV[CLOUDS_HUD_LAYER_COUNT];
     CloudsHUDBillboard layerBillboard[CLOUDS_HUD_LAYER_COUNT];
 #endif
 

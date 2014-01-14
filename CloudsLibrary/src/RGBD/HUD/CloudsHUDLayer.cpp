@@ -110,11 +110,10 @@ void CloudsHUDLayer::draw(){
 	//invert and flip
 	float screenHeight = ofGetHeight();
 	glScissor(drawRect.x, screenHeight - drawRect.y - drawRect.height,
-			  drawRect.width, drawRect.height);
-	
+			  drawRect.width*2., drawRect.height);
 	svg.draw();
-	glDisable(GL_SCISSOR_TEST);
-		
+    glDisable(GL_SCISSOR_TEST);
+
 	ofPopStyle();
 
 }
