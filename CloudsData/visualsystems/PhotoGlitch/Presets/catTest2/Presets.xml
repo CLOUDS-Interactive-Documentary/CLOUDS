@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>849.000122070</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <XPosition>637.000061035</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -27,6 +27,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Code_zoomout</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>desktop</Name>
     <Value>0</Value>
 </Widget>
@@ -39,6 +44,11 @@
     <Kind>2</Kind>
     <Name>FinderWindows</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FinderWindows_ZoomOut</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -64,6 +74,16 @@
     <Kind>2</Kind>
     <Name>LifeofNumbers_gray</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LifeofNumbers_ZoomOut</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>QR_ZoomIn</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
