@@ -112,7 +112,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 				cout << "DELETING PRESET BATCH" << endl;
 				
                 testBatch.clear();
-                visualSystems.freeSystemPointers();
+                visualSystems.DeallocateSystems();//freeSystemPointers();
                 currentVisualSystem = NULL;
 //				currentVisualSystem = ofPtr<CloudsVisualSystem>( (CloudsVisualSystem*)(NULL) );
 				
@@ -164,7 +164,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		if(currentVisualSystem != NULL){
             currentVisualSystem->stopSystem();
 			currentVisualSystem->exit();
-            visualSystems.freeSystemPointers();
+            visualSystems.DeallocateSystems();
         }
 
 		cout << "loading system " << visualSystems.getPresets()[ self.selectedPresetIndex ].systemName << " preset " << visualSystems.getPresets()[self.selectedPresetIndex].presetName << endl;
@@ -276,7 +276,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	if(currentVisualSystem != NULL){
 		currentVisualSystem->stopSystem();
 		currentVisualSystem->exit();
-        visualSystems.freeSystemPointers();
+        visualSystems.DeallocateSystems();
 	}	
 }
 

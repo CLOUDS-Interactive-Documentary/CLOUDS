@@ -3452,6 +3452,32 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
+<system name="3DModelLoader_Laplacian">
+    <keywords>biology|biology and code|3d printing</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Paola - mutant ants</clip>
+        <clip>Ramsey - Alan Kay biocomputing</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - resilient internet</clip>
+        <clip>Casey - Craig Venter</clip>
+        <clip>Casey - Massive parallel systems</clip>
+        <clip>Casey - synthetic biology</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Kevin - Biological computation 1</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kyle_MC - beauty</clip>
+        <clip>LIA - 3DPrintingProcess</clip>
+        <clip>LIA - 3DTchotchkes</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
 <system name="3DModelLoader_LovelyTangle">
     <keywords>jewelry|design</keywords>
     <links></links>
@@ -3795,6 +3821,32 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
+<system name="3DModelLoader_Trachia">
+    <keywords>biology|biology and code|3d printing</keywords>
+    <links></links>
+    <suppressions>
+        <clip>Paola - mutant ants</clip>
+        <clip>Ramsey - Alan Kay biocomputing</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - resilient internet</clip>
+        <clip>Casey - Craig Venter</clip>
+        <clip>Casey - Massive parallel systems</clip>
+        <clip>Casey - synthetic biology</clip>
+        <clip>Jer - fireflies</clip>
+        <clip>Kevin - Biological computation 1</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kyle_MC - beauty</clip>
+        <clip>LIA - 3DPrintingProcess</clip>
+        <clip>LIA - 3DTchotchkes</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
@@ -7645,7 +7697,7 @@
         <clip>Golan - limits to sharing</clip>
         <clip>Golan - pedagogical impulse</clip>
         <clip>Golan - would be boring</clip>
-        <clip>Higa - </clip>
+        <clip>Higa -</clip>
         <clip>Higa - not sharing its a backup</clip>
         <clip>JTNimoy - enough cooks</clip>
         <clip>Jer - Making a tool</clip>
