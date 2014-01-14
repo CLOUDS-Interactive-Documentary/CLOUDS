@@ -149,7 +149,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	updateCyclced = false;
     bDoBloom = false;
     bloomAmount = 0.;
-#ifdef CLOUDS_RELEASE
+#ifdef CLOUDS_APP
     bShowPortals = true;
 #endif
     
@@ -173,7 +173,7 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	
 	//ofFbo& renderTarget = sharedRenderTarget != NULL ? *sharedRenderTarget : getStaticRenderTarget();
 	ofFbo& renderTarget = getStaticRenderTarget();
-	
+    
    int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
     int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
     
@@ -214,14 +214,14 @@ string CloudsVisualSystem::getVisualSystemDataPath(bool ignoredFolder){
 ofxTimeline* CloudsVisualSystem::getTimeline(){
 	return timeline;
 }
-#ifdef CLOUDS_RELEASE
+#ifdef CLOUDS_APP
 void CloudsVisualSystem::setupPortals(){
     
  
     
     CloudsPortal rp;
     rp.hoverPosition = ofVec3f(75.f, getCanvasHeight()/4*3, 0);
-    rp.scale = .15;
+    rp.scale = .3;
     rp.cam = &getCameraRef();
     rp.question = "Return";
     rp.setup();
@@ -229,11 +229,13 @@ void CloudsVisualSystem::setupPortals(){
     
     CloudsPortal cp;
     cp.hoverPosition = ofVec3f(getCanvasWidth()-75.f, getCanvasHeight()/4*3, 0);
-    cp.scale = .15;
+    cp.scale = .3;
     cp.cam = &getCameraRef();
     cp.question = "Continue";
     cp.setup();
     portals.push_back(cp);
+    
+    SetInterludePortalsRef(portals);
     
 }
 #endif
@@ -243,7 +245,7 @@ void CloudsVisualSystem::setup(){
     if(bIsSetup){
 		return;
 	}
-#ifdef CLOUDS_RELEASE
+#ifdef CLOUDS_APP
     setupPortals();
 #endif
     
@@ -400,28 +402,25 @@ void CloudsVisualSystem::speakerEnded()
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
     
-#ifdef CLOUDS_RELEASE
+#ifdef CLOUDS_APP
+    
+    bShowPortals = CanShowInterludePortals();
 
     if(bShowPortals){
-        ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
+        ofVec2f mouseNode(GetCloudsInputX(),getCanvasHeight()-GetCloudsInputY());
         for(int i=0;i<portals.size();i++){
             portals[i].hoverPosition.y += .2*sin(ofGetElapsedTimef());
             portals[i].update();
-        
             float distanceToPortal = portals[i].hoverPosition.distance(mouseNode);
-            cout<<distanceToPortal<<endl;
             if(distanceToPortal<100.f){
-                cout<<"hovering over :"<<i<<endl;
-                selectedPortal = &portals[i];
-                selectedPortal->startHovering();
+                portals[i].startHovering();
             }else{
-                if(selectedPortal){
-                    selectedPortal->stopHovering();
-                    selectedPortal = NULL;
-                }
+                portals[i].stopHovering();
             }
             
         }
+        //cout<<GetSelectedInterludePortalContinue()<<endl;
+        SetInterludePortalsRef(portals);
     }
     
 #endif
@@ -558,13 +557,19 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			
 			getCameraRef().end();
             
-#ifdef CLOUDS_RELEASE
+#ifdef CLOUDS_APP
             if(bShowPortals){
             ofPushStyle();
+                ofEnableAlphaBlending();
             ofSetColor(255);
             for(int i=0;i<portals.size();i++){
+                glDisable(GL_DEPTH_TEST);
+                CloudsPortal::shader.begin();
+                CloudsPortal::shader.setUniform1i("doAttenuate", 0);
                 portals[i].draw();
+                CloudsPortal::shader.end();
             }
+                ofDisableAlphaBlending();
             ofPopStyle();
             }
 #endif
@@ -3774,3 +3779,33 @@ void CloudsVisualSystem::checkOpenGLError(string function){
         ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " : " << gluErrorString(err) << " in " << function;
     }
 }
+
+#ifdef CLOUDS_APP
+
+void SetInterludePortalsRef(vector<CloudsPortal>& ref){
+    gPortals = ref;
+}
+
+vector<CloudsPortal>& InterludePortalsRef(){
+    return gPortals;
+}
+
+void ResetInterludePortals(){
+    for(int i=0;i<InterludePortalsRef().size();i++){
+        InterludePortalsRef()[i].clearSelection();
+    }
+}
+bool GetSelectedInterludePortalContinue(){
+    return InterludePortalsRef()[1].isSelected();
+}
+bool GetSelectedInterludePortalResetClouds(){
+    return InterludePortalsRef()[0].isSelected();
+}
+
+bool CanShowInterludePortals(){
+    return gShowInterludePortals;
+}
+void ShowInterludePortals( bool show ){
+    gShowInterludePortals = show;
+}
+#endif

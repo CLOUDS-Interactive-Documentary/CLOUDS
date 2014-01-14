@@ -10,7 +10,7 @@
 #include "ofxLight.h"
 #include "ofxGenerative.h"
 //#include "ofxMaterial.h"
-#ifdef CLOUDS_RELEASE
+#ifdef CLOUDS_APP
 #include "CloudsPortal.h"
 #endif
 
@@ -280,7 +280,7 @@ class CloudsVisualSystem {
     void toggleGuiAndPosition(ofxUISuperCanvas *g);
     void deleteGUIS();
     
-#ifdef CLOUDS_RELEASE
+#ifdef CLOUDS_APP
     void setupPortals();
 #endif
 
@@ -307,6 +307,11 @@ class CloudsVisualSystem {
 	bool getDrawToScreen();
 
 	float getCurrentAudioAmplitude();
+    
+#ifdef CLOUDS_APP
+    bool bShowPortals;
+    vector<CloudsPortal> portals;
+#endif
 	
   protected:
 		
@@ -486,12 +491,18 @@ class CloudsVisualSystem {
     float bloomAmount;
     int bloomSamples;
     
-#ifdef CLOUDS_RELEASE
-    
-    bool bShowPortals;
-    vector<CloudsPortal> portals;
-    CloudsPortal* selectedPortal;
-    
-#endif
+
     
 };
+
+#ifdef CLOUDS_APP
+static  vector<CloudsPortal> gPortals;
+static bool gShowInterludePortals;
+vector<CloudsPortal>& InterludePortalsRef();
+void SetInterludePortalsRef(vector<CloudsPortal>& ref);
+void ResetInterludePortals();
+bool GetSelectedInterludePortalContinue();
+bool GetSelectedInterludePortalResetClouds();
+void ShowInterludePortals(bool show);
+bool CanShowInterludePortals();
+#endif
