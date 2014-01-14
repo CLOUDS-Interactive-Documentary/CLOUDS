@@ -465,11 +465,11 @@ void CloudsIntroSequence::selfDrawOverlay(){
 }
 
 void CloudsIntroSequence::selfPostDraw(){
-	chroma.begin();
-	chroma.setUniform2f("resolution", ofGetWidth(),ofGetHeight());
-	chroma.setUniform1f("max_distort", maxChromaDistort);
+//	chroma.begin();
+//	chroma.setUniform2f("resolution", ofGetWidth(),ofGetHeight());
+//	chroma.setUniform1f("max_distort", maxChromaDistort);
 	CloudsVisualSystem::selfPostDraw();
-	chroma.end();
+//	chroma.end();
 	if(!bUseOculusRift){
 		//JG: MOVING TO HUD
 //		ofPushStyle();
