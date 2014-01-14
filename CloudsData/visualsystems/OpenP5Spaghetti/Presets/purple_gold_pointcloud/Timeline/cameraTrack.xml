@@ -10,7 +10,7 @@
         <easein>0</easein>
         <easeout>0</easeout>
         <time>00:00:01:086</time>
-        <value>nan</value>
+        <value>0.000000000</value>
     </key>
     <key>
         <px>260.936950684</px>
@@ -23,7 +23,7 @@
         <easein>0</easein>
         <easeout>0</easeout>
         <time>00:00:12:681</time>
-        <value>nan</value>
+        <value>0.000000000</value>
     </key>
     <key>
         <px>260.936950684</px>
@@ -36,6 +36,6 @@
         <easein>0</easein>
         <easeout>0</easeout>
         <time>00:00:21:304</time>
-        <value>nan</value>
+        <value>0.000000000</value>
     </key>
 </keyframes>

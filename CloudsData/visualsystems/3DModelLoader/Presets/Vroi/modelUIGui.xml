@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>modelUIGui</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000000000</XPosition>
+    <XPosition>425.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -37,6 +37,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Assasin_triangualated.obj</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>BigCube_ErrodedTriangulate.obj</Name>
     <Value>0</Value>
 </Widget>
@@ -57,6 +62,21 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>ellipsoid1.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ellipsoid2(2).obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ellipsoid2.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>eyeball__obj.obj</Name>
     <Value>0</Value>
 </Widget>
@@ -68,6 +88,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>FallingChairs_Triangulated.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>folding-small-simplified.obj</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -92,6 +117,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Hypersphere1.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Kelp.obj</Name>
     <Value>0</Value>
 </Widget>
@@ -112,7 +142,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>MegaSphere.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>NestedBrokenSphere.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>pathDebugModel.obj</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -128,6 +168,21 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Tangle_Triangulated.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toxi_Ellipsoid.obj</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ToxiAllInOne.obj</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>tube1.obj</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
