@@ -7,6 +7,26 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
+    <Name>bounding box</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>draw arrows</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>draw cameras</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>draw gid</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>smooth model</Name>
     <Value>0</Value>
 </Widget>
@@ -22,22 +42,17 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>discardThreshold</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
     <Name>modelScale</Name>
     <Value>1.806896567</Value>
 </Widget>
 <Widget>
     <Kind>28</Kind>
     <Name>c1</Name>
-    <XValue>0.578125000</XValue>
-    <YValue>0.382812500</YValue>
-    <RColor>138</RColor>
-    <GColor>0</GColor>
-    <BColor>136</BColor>
+    <XValue>0.039062500</XValue>
+    <YValue>0.242187500</YValue>
+    <RColor>255</RColor>
+    <GColor>255</GColor>
+    <BColor>255</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>
@@ -52,28 +67,8 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>elephant.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>house_wood.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Man_Bicycle.obj</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>voronoi.obj</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>normalShader</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -88,5 +83,10 @@
 <Widget>
     <Kind>2</Kind>
     <Name>xRay</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>simple</Name>
     <Value>0</Value>
 </Widget>

@@ -18,12 +18,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-X</Name>
-    <Value>85.123046875</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Y</Name>
-    <Value>84.115478516</Value>
+    <Value>351.414978027</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,32 +33,32 @@
 <Widget>
     <Kind>2</Kind>
     <Name>InteractiveCamera</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>damping</Name>
-    <Value>0.000000000</Value>
+    <Value>0.039408565</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>minX</Name>
-    <Value>0.000000000</Value>
+    <Value>-35.911384583</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxX</Name>
-    <Value>0.000000000</Value>
+    <Value>59.852157593</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>minY</Name>
-    <Value>0.000000000</Value>
+    <Value>-3.103500366</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>maxY</Name>
-    <Value>0.000000000</Value>
+    <Value>15.517189026</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

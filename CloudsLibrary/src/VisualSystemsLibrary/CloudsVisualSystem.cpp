@@ -2973,7 +2973,7 @@ void CloudsVisualSystem::setupHUDGui()
     hudGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
     hudGui->addSpacer();
-    hudGui->addSlider("QUESTION DIST", 50, 750, &hud->layerDistance[CLOUDS_HUD_QUESTION]);
+    hudGui->addSlider("QUESTION DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_QUESTION]);
     hudGui->addSlider("QUESTION ROT", -90, 90, &hud->layerRotation[CLOUDS_HUD_QUESTION]);
     hudGui->addLabel("BILLBOARD");
     vector<string> hudBillboardQ;
@@ -2983,7 +2983,7 @@ void CloudsVisualSystem::setupHUDGui()
     hudGui->addRadio("QUESTION BILLBOARD", hudBillboardQ)->activateToggle("BB Q CAMERA");
 
     hudGui->addSpacer();
-    hudGui->addSlider("LOWER 3RD DIST", 50, 750, &hud->layerDistance[CLOUDS_HUD_LOWER_THIRD]);
+    hudGui->addSlider("LOWER 3RD DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_LOWER_THIRD]);
     hudGui->addSlider("LOWER 3RD ROT", 90, -90, &hud->layerRotation[CLOUDS_HUD_LOWER_THIRD]);
     hudGui->addLabel("BILLBOARD");
     vector<string> hudBillboardL3;
@@ -2993,7 +2993,7 @@ void CloudsVisualSystem::setupHUDGui()
     hudGui->addRadio("LOWER 3RD BILLBOARD", hudBillboardL3)->activateToggle("BB L3 CAMERA");
 
     hudGui->addSpacer();
-    hudGui->addSlider("PROJ EX DIST", 50, 750, &hud->layerDistance[CLOUDS_HUD_PROJECT_EXAMPLE]);
+    hudGui->addSlider("PROJ EX DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_PROJECT_EXAMPLE]);
     hudGui->addSlider("PROJ EX ROT", 90, -90, &hud->layerRotation[CLOUDS_HUD_PROJECT_EXAMPLE]);
     hudGui->addLabel("BILLBOARD");
     vector<string> hudBillboardPE;
@@ -3003,7 +3003,7 @@ void CloudsVisualSystem::setupHUDGui()
     hudGui->addRadio("PROJ EX BILLBOARD", hudBillboardPE)->activateToggle("BB PE CAMERA");
 
     hudGui->addSpacer();
-    hudGui->addSlider("MAP DIST", 50, 750, &hud->layerDistance[CLOUDS_HUD_MAP]);
+    hudGui->addSlider("MAP DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_MAP]);
     hudGui->addSlider("MAP ROT", -90, 90, &hud->layerRotation[CLOUDS_HUD_MAP]);
     hudGui->addLabel("BILLBOARD");
     vector<string> hudBillboardM;

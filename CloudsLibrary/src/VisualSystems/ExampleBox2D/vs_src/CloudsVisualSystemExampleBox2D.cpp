@@ -192,8 +192,8 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     {
         ostringstream fn;
         fn << GetCloudsDataPath() << "sound/triggers/cardboard" << i+1 << ".aif";
-        samplePlayer[i+7].loadSound(fn.str());
-        samplePlayer[i+7].setMultiPlay(true);
+        samplePlayer[i+5].loadSound(fn.str());
+        samplePlayer[i+5].setMultiPlay(true);
     }
 
 }
@@ -599,7 +599,7 @@ void CloudsVisualSystemExampleBox2D::contactStart(ofxBox2dContactArgs &e)
     float maxVel = max(aVel, bVel);
     if (maxVel > 6)
     {
-        int index = sIndex*7 + (int)ofRandom(7);
+        int index = sIndex*5 + (int)ofRandom(5);
         float vol = maxVel / 200;
         vol = (vol<1) ? pow(vol, 2) : 1;
 

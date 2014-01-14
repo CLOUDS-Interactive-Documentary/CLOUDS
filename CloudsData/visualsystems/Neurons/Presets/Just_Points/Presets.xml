@@ -3,8 +3,13 @@
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
     <XPosition>637.000061035</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <YPosition>355.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Brain</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Cosmic</Name>
@@ -17,16 +22,46 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>MezzyNeurons</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>Just_Points</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Brain</Name>
+    <Name>MezzyNeurons</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>MezzyNeurons_Q</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>MezzyNeuronsOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Quatumble_default</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>showoff-nov7</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>showoff-nov7_wide</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>VeryNervousSystem</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>XmasDendrites</Name>
     <Value>0</Value>
 </Widget>

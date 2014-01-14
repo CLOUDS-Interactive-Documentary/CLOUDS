@@ -7,13 +7,13 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>FlyOver2_OC</Name>
-    <Value>0</Value>
+    <Name>FlyOver2</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>FlyOver_OC</Name>
-    <Value>0</Value>
+    <Name>FlyOver2_</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -74,9 +74,4 @@
     <Kind>2</Kind>
     <Name>MouseCam</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>FlyOver2_</Name>
-    <Value>1</Value>
 </Widget>
