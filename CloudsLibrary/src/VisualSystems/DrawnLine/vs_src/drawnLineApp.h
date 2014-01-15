@@ -10,9 +10,33 @@
 #include "BrushedLine.h"
 
 
+class threadedSeeker : public ofThread {
+    
+    
+    void threadedFunction();
+public:
+        ofPolyline line40;
+        ofPolyline nodeLineLast100;
+    
+        vector < polyPtr > polyPtrs;
+        vector < int > lastFound;
+        bool bFoundMatch;
+        matchStruct match;
+        float thresh;
+    
+    
+};
+
+
 class drawnLineApp {
 
 	public:
+    
+    
+    
+        ofMutex mutex;
+        threadedSeeker seeker;
+    
     
 
 		void setup();
@@ -30,20 +54,26 @@ class drawnLineApp {
 		void gotMessage(ofMessage msg);
     
         void drawLineSet(lineSet & set, matchStruct & match, ofPoint ptA, ofPoint ptB);
-        void lookForGoodMatch();
+    
+    
+        void lookForGoodMatchSetup();
+        void lookForGoodMatchWork();
+    
+    
         lineSet & linesetFromFile( string fileName );
 
         lineSet set;
         vector < lineSet > lineSets;
         curvedLine CL;
         vector < ofPolyline > rotatedLines;
+    
         ofPolyline nodeLineLast100;
         ofPolyline nodeLine40;
+    
         vector < distanceResult > distanceResults;
         vector < matchStruct > matchStructs;
         float lastMatchTime;
-        vector < polyPtr > polyPtrs;
-        vector < int > lastFound;
+    
     
         ofShader shader;
         float angleCatch;

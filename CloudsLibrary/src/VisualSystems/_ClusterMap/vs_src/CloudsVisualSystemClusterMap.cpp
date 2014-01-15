@@ -469,16 +469,6 @@ void CloudsVisualSystemClusterMap::traverse(){
 }
 
 void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
-    //	if(firstClip){
-    //		cout << "** TRAVERSE START JOURNEY AT " << clip.getID() << endl;
-    //	}
-    //	else{
-    //		cout << "** TRAVERSE FROM :	" << nodes[currentNodeIndex].clipId << " >>> " << nodes[ newNodeIndex ].clipId << endl;
-    //	}
-	
-    //	for(int i = 0; i < n.adjascentClipIds.size(); i++){
-    //		cout << "	** ADJASCENT CLIPS " << n.adjascentClipIds[i] << endl;
-    //	}
 	
 	if(clipIdToNodeIndex.find(clip.getID()) == clipIdToNodeIndex.end()){
 		ofLogError("CloudsVisualSystemClusterMap::traverseToClip") << "Isn't included in cluster map";
@@ -523,25 +513,29 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
                 vector<float> distsSq;
                 vector<NNIndex> indices;
                 //search for 100 nearby clips and take the first acceptable one
-                kdtree.findNClosestPoints(clip.networkPosition, 200, indices, distsSq);
+                kdtree.findNClosestPoints(clip.networkPosition, 1000, indices, distsSq);
                 float localMaxTraversedDistance = maxTraverseDistance*.001;
-                
+                float localMinTraverseDistance = minTraverseDistance*.001;
                 for(int i = 0; i < indices.size(); i++){
                     ofVec3f testPosition = nodeMesh.getVertex( indices[i] );
                     float testDistance = currentTraversalPosition.distance( testPosition );
                     float testAngle = (testPosition - currentTraversalPosition).angle(currentTraversalDirection);
                     int testOptions = nodes[ indices[i] ].connectionCurves.size();
                     
-//                    cout << "\tTest node stats" << endl << "\t\tDIST: " << testDistance << "/" << localMaxTraversedDistance << endl << "\t\tANGLE: " << testAngle << "/" << maxTraverseAngle << endl << "\t\tOPTIONS# " << testOptions << "/" << minTraverseNextOptions << endl;
+                    cout << "\tTest node stats" << endl
+                         << "\t\tDIST: " << testDistance*100 << " - max:" << maxTraverseDistance << " min " << minTraverseDistance << endl
+
+                         << "\t\tANGLE: " << testAngle << "/" << maxTraverseAngle << endl
+                         << "\t\tOPTIONS# " << testOptions << "/" << minTraverseNextOptions << endl;
                     
                     if(testDistance <= localMaxTraversedDistance &&
+                       testDistance >= localMinTraverseDistance &&
                        testAngle <= maxTraverseAngle &&
-                       testDistance <= minTraverseDistance &&
                        testOptions >= minTraverseNextOptions)
                     {
                         constrainedPositionIndex = indices[i];
                         cout << "FOUND A BETTER NODE AT INDEX " << i << " OF NEIGHBORS" << endl;
-                        cout << "\tANGLE " << testAngle << " DISTANCE " << testDistance << " NUM CONNECTION CURVES " << testOptions << endl;
+                        cout << "\tANGLE " << testAngle << " DISTANCE " << testDistance*100 << " NUM CONNECTION CURVES " << testOptions << endl;
                         break;
                     }
                 }

@@ -94,7 +94,11 @@ void main(){
     }
 
     vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
-	gl_FragColor.rgb = col.rgb * mix( colorBoost + headPositionAttenuation, 1.0 + skinBoost, isSkin()) * alpha * smoothstep(actuatorAttenuation,0.0,.2);
+	gl_FragColor.rgb = col.rgb *
+                       mix( colorBoost + headPositionAttenuation, 1.0 + skinBoost, isSkin()) *
+                       alpha * smoothstep(actuatorAttenuation,0.0,.2) *
+                       edgeAttenuate;
+    
 	gl_FragColor.a = 1.0;
 }
 

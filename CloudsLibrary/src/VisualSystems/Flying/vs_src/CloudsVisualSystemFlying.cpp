@@ -175,7 +175,7 @@ void CloudsVisualSystemFlying::selfUpdate()
         regenerate = false;
     }
     
-    if (cameraControl)
+    if (!bUseOculusRift && cameraControl)
     {
         ofVec2f targetLookAngle;
         //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()

@@ -266,12 +266,13 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
     
     if(run.accumuluatedTopics.size() == 0 || run.clipHistory.size() == 0){
         ofLogError("CloudsStoryEngine::buildAct") << " no topics for next act!";
+        return false;
     }
     
     map<string, int>::iterator it;
     vector<string> topics;
     for(it = run.accumuluatedTopics.begin(); it != run.accumuluatedTopics.end(); it++){
-            topics.push_back(it->first);
+        topics.push_back(it->first);
     }
 
     vector< pair<string,int> > potentialPresets;
@@ -282,6 +283,15 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
                 cout<<currentSelection[i].getID()<<" already in history so not selecting"<<endl;
                 continue;
             }
+#ifdef OCULUS_RIFT
+            if(!currentSelection[i].enabledOculus){
+                continue;
+            }
+#else
+            if(!currentSelection[i].enabledScreen){
+                continue;
+            }
+#endif
             
             vector<string> presetTopics = visualSystems->keywordsForPreset(currentSelection[i]);
             int presetScore = 0;
@@ -295,22 +305,10 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
             potentialPresets.push_back(make_pair(currentSelection[i].getID(), presetScore));
         }
         
-    
-//    map<string, int>::iterator it1;
-//    for (it1 = potentialPresetsMap.begin(); it1 != potentialPresetsMap.end(); it1++) {
-//        potentialPresets.push_back(make_pair(it1->first, it1->second));
-//    }
-    
-//    for (int i =0 ; i<potentialPresets.size(); i++) {
-//        cout<<potentialPresets[i].first<<" : "<<potentialPresets[i].second<<endl;
-//    }
 
     
     if (potentialPresets.size() > 0) {
         sort(potentialPresets.begin(), potentialPresets.end(),score_sort);
-//        for( int i =0; i< potentialPresets.size(); i++){
-//            cout<<"Potential preset : "<<potentialPresets[i].first<<" has score : "<<potentialPresets[i].second<<endl;
-//        }
         cout<<"Selected preset "<<potentialPresets[0].first<<" for interlude "<<endl;
         preset = visualSystems->getPresetWithID(potentialPresets[0].first);
         return  true;
@@ -394,6 +392,10 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
     hardIntros.push_back("new aesthetic");
     hardIntros.push_back("real and virtual");
     hardIntros.push_back("interfaces");
+    hardIntros.push_back("biology and code");
+    hardIntros.push_back("audiovisualization");
+    hardIntros.push_back("big data"); 
+    
     if(run.actCount == 0 && ofContains(hardIntros, seedTopic)){
         run.actCount = 1; //force
     }
@@ -922,10 +924,22 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVis
     
     if(bLogVisualSystemDetails) state.log << state.duration  << "\t\t\tConsidering" << potentialNextPreset.getID() << endl;;
 	
-    if(!potentialNextPreset.enabled){
+#ifdef OCULUS_RIFT
+	if(!potentialNextPreset.enabledOculus){
+        state.log << state.duration << "\t\t\t\tREJECTED because it is not oculus compatible"<<endl;
+        return 0;
+	}
+#else
+    if(!potentialNextPreset.enabledScreen){
         state.log << state.duration << "\t\t\t\tREJECTED because it's disabled" << endl;
         return 0;
     }
+    //	if(potentialNextPreset.oculusCompatible){
+    //        state.log << state.duration << "\t\t\t\tREJECTED because it is for the oculus"<<endl;
+    //        return 0;
+    //	}
+#endif
+    
     
     if(visualSystems->isClipSuppressed(potentialNextPreset.getID(), state.clip.getLinkName())){
         state.log << state.duration << "\t\t\t\tREJECTED  because the system is suppressed for this clip" << endl;
@@ -937,17 +951,6 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVis
         return 0;
     }
     
-#ifdef OCULUS_RIFT
-	if(!potentialNextPreset.oculusCompatible){
-        state.log << state.duration << "\t\t\t\tREJECTED because it is not oculus compatible"<<endl;
-        return 0;
-	}
-#else
-	if(potentialNextPreset.oculusCompatible){
-        state.log << state.duration << "\t\t\t\tREJECTED because it is for the oculus"<<endl;
-        return 0;
-	}
-#endif
     
 	//for definite presets covering VO clips, make sure they are long enough
     if(!potentialNextPreset.indefinite && //we currently have a definite clip
