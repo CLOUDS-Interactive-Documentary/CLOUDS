@@ -192,9 +192,9 @@ void CloudsVisualSystem3DModelLoader::selfGuiEvent(ofxUIEventArgs &e)
 	{
 		bSmoothModel = e.getToggle()->getValue();
 		if( bSmoothModel ){
-			smoothMesh( modelMesh, modelMesh );
+			//smoothMesh( modelMesh, modelMesh );
 		}else{
-			facetMesh( modelMesh, modelMesh );
+			//facetMesh( modelMesh, modelMesh );
 		}
 	}
 	else if(name =="minTilt" || name == "maxTilt")
@@ -492,7 +492,6 @@ void CloudsVisualSystem3DModelLoader::selfSetup()
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystem3DModelLoader::selfPresetLoaded(string presetPath)
 {
-	setupGridVbos();
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -909,12 +908,12 @@ void CloudsVisualSystem3DModelLoader::loadModel( string fileName, bool bSmoothMe
 	float mScl = maxDim / max( maxBound.x - minBound.x, max(maxBound.y-minBound.y, maxBound.z - minBound.z ));
 	modelScl.set( mScl, mScl, mScl );
 	
-	if(bSmoothMesh)
-	{
-		smoothMesh( modelMesh, modelMesh );
-	}else{
-		facetMesh( modelMesh, modelMesh );
-	}
+//	if(bSmoothMesh)
+//	{
+//		smoothMesh( modelMesh, modelMesh );
+//	}else{
+//		facetMesh( modelMesh, modelMesh );
+//	}
 	
 	updateModelTransform();
 	

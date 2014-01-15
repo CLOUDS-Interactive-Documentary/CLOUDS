@@ -1,14 +1,19 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>SHADERS</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>225</XPosition>
-    <YPosition>1</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>70</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>depthTest</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>backface culling</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -18,12 +23,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>OF_BLENDMODE_ALPHA</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>OF_BLENDMODE_DISABLED</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
