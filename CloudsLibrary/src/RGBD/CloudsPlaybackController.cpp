@@ -409,6 +409,7 @@ void CloudsPlaybackController::updateTransition(){
 	
 	if(transitionController.transitioning){
 		rgbdVisualSystem->updateTransition( transitionController.getInterviewTransitionPoint() );
+
 	}
 	
 	CloudsPortal* q;
@@ -825,31 +826,27 @@ void CloudsPlaybackController::showClusterMap(){
 void CloudsPlaybackController::showInterlude(){
     
     vector<string> topics;
-    vector<CloudsVisualSystemPreset> potentialPresets;
-
-    topics = storyEngine.getValidTopicsForNextAct(run);
-    potentialPresets = visualSystems.getPresetsForKeywords(topics,"",true);
-    if(potentialPresets.size() == 0){
+    CloudsVisualSystemPreset interludePreset;
+    
+    if(storyEngine.getPresetIDForInterlude(run, interludePreset)){
+        
+        interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
+        
+        interludeSystem->setDrawToScreen( false );
+        interludeSystem->setup();
+        interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
+        interludeSystem->playSystem();
+        
+        currentVisualSystem = interludeSystem;
+        
+        showingInterlude = true;
+        
+        ShowInterludePortals(true);
+    }
+    else{
         ofLogError("CloudsPlaybackController::showInterlude") << "Defaulting to cluster map because we found no topics from the last act";
         showClusterMap();
-        return;
     }
-
-    //TODO: SCORE to find the best one
-    CloudsVisualSystemPreset interludePreset = potentialPresets[ ofRandom(potentialPresets.size()) ];
-
-    interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
-    
-    interludeSystem->setDrawToScreen( false );
-    interludeSystem->setup();
-    interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
-    interludeSystem->playSystem();
-    
-    currentVisualSystem = interludeSystem;
-    
-    showingInterlude = true;
-    
-    ShowInterludePortals(true);
 }
 
 //--------------------------------------------------------------------
