@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>379.000000000</YPosition>
+    <XPosition>1</XPosition>
+    <YPosition>379</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -33,6 +33,16 @@
 <Widget>
     <Kind>2</Kind>
     <Name>blueTunnel</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>debug</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>finteractiveCameraExample</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -289,6 +299,11 @@
     <Kind>2</Kind>
     <Name>OrganicTunnel_2_slow</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OrganicTunnel_2_White</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
