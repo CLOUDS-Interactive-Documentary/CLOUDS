@@ -134,7 +134,7 @@ void drawnLineApp::setup(){
     
     lastMatchTime = ofGetElapsedTimef();
     
-    ofSetVerticalSync(true);
+    //ofSetVerticalSync(true);
     
 //    TIME_SAMPLE_SET_FRAMERATE( 60.0f );
     
