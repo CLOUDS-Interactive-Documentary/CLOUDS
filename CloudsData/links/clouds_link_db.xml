@@ -19582,7 +19582,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>thanks,#inspiring,#sincere,#rational,#hard,?teaching: How do open source coders earn a living?</additionalKeywords>
+    <additionalKeywords>thanks,#inspiring,#sincere,#rational,#hard,guru,toxi,?teaching: How do open source coders earn a living?</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - fireflies</name>
@@ -36911,6 +36911,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Learning through others</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Andres - examples of the impossible</target>
         <startFrame>-1</startFrame>
@@ -45945,6 +45950,26 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Ramsey - language as expression</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - beauty of code</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marcus - gurus</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jer - Toxi: gurus</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>i have no background to speak of and learned through other people&apos;s code and am very aware of that. helps me to think in different ways</revokedKeywords>
     <additionalKeywords>learning,sharing,#dud</additionalKeywords>
 </clip>
@@ -48117,6 +48142,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Learning through others</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Shiffman - Maybe I&apos;d like that</target>
         <startFrame>-1</startFrame>
@@ -48178,6 +48208,11 @@
     </link>
     <link>
         <target>Patricio - Cryptic code</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Learning through others</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
