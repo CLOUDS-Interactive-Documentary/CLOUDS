@@ -267,6 +267,9 @@ void drawnLineApp::update(){
         if (seeker.bFoundMatch == true){
             lastMatchTime = ofGetElapsedTimef();
             matchStructs.push_back(seeker.match);
+            //matchStructs.push_back(match);
+            if (matchStructs.size() > 8) matchStructs.erase(matchStructs.begin());
+            
             seeker.bFoundMatch = false;
         }
     }
