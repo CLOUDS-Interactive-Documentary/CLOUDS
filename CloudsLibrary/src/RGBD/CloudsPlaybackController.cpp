@@ -599,7 +599,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 #ifdef OCULUS_RIFT
         //     hud.drawOverlay(overlaySize);
 #else
-		hud.draw();
+	//	hud.draw();
 #endif
         
 #ifdef OCULUS_RIFT
