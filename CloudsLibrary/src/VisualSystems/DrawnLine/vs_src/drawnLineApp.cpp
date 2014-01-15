@@ -10,11 +10,74 @@
 #define NROT 120
 
 
+void threadedSeeker::threadedFunction(){
+    
+    bFoundMatch = false;
+    
+    //drawnLineApp * app = (drawnLineApp *) ofGetAppPtr() ;
+    
+    //ofPolyline line40 = app->nodeLine40;
+    
+    //cout << " here " << endl;
+    
+    for (int i = 0; i < polyPtrs.size(); i++){
+        distancePP(line40, polyPtrs[i], 2);
+    }
+    sort(polyPtrs.begin(), polyPtrs.end(),sortFuncPP);
+    
+    for (int i = 0; i < polyPtrs.size()/4; i++){
+        distancePP(line40, polyPtrs[i], 6);
+    }
+    sort(polyPtrs.begin(), polyPtrs.begin() + polyPtrs.size()/4,sortFuncPP);
+    
+    
+    for (int i = 0; i < polyPtrs.size()/20; i++){
+        distancePP(line40, polyPtrs[i], 20);
+    }
+    
+    for (int i = 0; i < lastFound.size(); i++){
+        for (int j = 0; j < polyPtrs.size()/20; j++){
+            if (polyPtrs[j].whichLine == lastFound[i]){
+                polyPtrs[j].distance = 100000000;
+            }
+        }
+    }
+
+    sort(polyPtrs.begin(), polyPtrs.begin() + polyPtrs.size()/20,sortFuncPP);
+    
+    if (sqrt(polyPtrs[0].distance) < thresh){
+        
+            bFoundMatch = true;
+        
+            match.matchA = nodeLineLast100.getVertices()[0];
+            match.matchB = nodeLineLast100.getVertices()[99];
+            match.idOfMatch = polyPtrs[0].whichLine;
+            ofPolyline new40 = nodeLineLast100.getResampledByCount(40);;
+            match.trans = normalizeLineSetGetTrans(new40);
+            match.offset.set(0,0,0);
+            match.startTime = ofGetElapsedTimef();
+            match.matchLine = line40;
+            match.bestAngle = polyPtrs[0].whichAngle;
+        
+            //matchStructs.push_back(match);
+            //if (matchStructs.size() > 8) matchStructs.erase(matchStructs.begin());
+            
+            lastFound.push_back(polyPtrs[0].whichLine);
+            if (lastFound.size() > 80) lastFound.erase(lastFound.begin());
+            
+            //lastMatchTime = ofGetElapsedTimef();
+        //}
+    }
+
+}
+
 
 //--------------------------------------------------------------
 void drawnLineApp::setup(){
 
     
+    seeker.bFoundMatch = false;
+    seeker.thresh = 7;
     
     ofDirectory dir;
     
@@ -58,7 +121,7 @@ void drawnLineApp::setup(){
             pp.whichAngle = j;
             pp.whichLine = i;
             
-            polyPtrs.push_back(pp);
+            seeker.polyPtrs.push_back(pp);
         }
     }
     
@@ -198,20 +261,30 @@ void drawnLineApp::update(){
         
     }
     
-    //ofGetElapsedTimef()- lastMatchTime > 3.0
-    if (CL.matchCount % 10 == 0 && CL.nodeLineForMatch.size() > 100){
-        
-        
-       // TIME_SAMPLE_START("match");
-        lookForGoodMatch();
-        //TIME_SAMPLE_STOP("match");
+    
+    
+    if (seeker.isThreadRunning() == false){
+        if (seeker.bFoundMatch == true){
+            lastMatchTime = ofGetElapsedTimef();
+            matchStructs.push_back(seeker.match);
+            seeker.bFoundMatch = false;
+        }
+    }
+    
+    if (ofGetElapsedTimef()- lastMatchTime > 3.0){
+        if (CL.matchCount % 10 == 0 && CL.nodeLineForMatch.size() > 100){
+            if (seeker.isThreadRunning() == false && seeker.bFoundMatch == false){
+                lookForGoodMatchSetup();
+                seeker.startThread(true, false);
+            }
+        }
     }
     
  //   TIME_SAMPLE_STOP("update");
 }
 
 //--------------------------------------------------------------
-void drawnLineApp::lookForGoodMatch(){
+void drawnLineApp::lookForGoodMatchSetup(){
     nodeLineLast100.clear();
     for (int i = CL.nodeLineForMatch.size()-100; i < CL.nodeLineForMatch.size(); i++){
         nodeLineLast100.addVertex(CL.nodeLineForMatch[i]);
@@ -220,63 +293,12 @@ void drawnLineApp::lookForGoodMatch(){
     }
     nodeLine40 = nodeLineLast100.getResampledByCount(40);
     nodeLine40 = returnNormalizedLine(nodeLine40);
-    
+    seeker.nodeLineLast100 = nodeLineLast100;
+    seeker.line40 = nodeLine40;
+}
 
-    for (int i = 0; i < polyPtrs.size(); i++){
-        distancePP(nodeLine40, polyPtrs[i], 2);
-    }
-    sort(polyPtrs.begin(), polyPtrs.end(),sortFuncPP);
-    
-    for (int i = 0; i < polyPtrs.size()/4; i++){
-        distancePP(nodeLine40, polyPtrs[i], 6);
-    }
-    sort(polyPtrs.begin(), polyPtrs.begin() + polyPtrs.size()/4,sortFuncPP);
-    
-    
-    for (int i = 0; i < polyPtrs.size()/20; i++){
-        distancePP(nodeLine40, polyPtrs[i], 20);
-    }
-    
-    for (int i = 0; i < lastFound.size(); i++){
-        for (int j = 0; j < polyPtrs.size()/20; j++){
-            if (polyPtrs[j].whichLine == lastFound[i]){
-                polyPtrs[j].distance = 100000000;
-            }
-        }
-    }
-    
-    sort(polyPtrs.begin(), polyPtrs.begin() + polyPtrs.size()/20,sortFuncPP);
-    
-    //ofSort(polyPtrs, sortFuncPP);
-    //ofSort(distanceResults, sortFunc);
-    
-    //cout << sqrt(polyPtrs[0].distance) << endl;
-    
-    if (sqrt(polyPtrs[0].distance) < 11){
-        
-        if (ofGetElapsedTimef()- lastMatchTime > 3.0){
-            matchStruct match;
-            match.matchA = nodeLineLast100.getVertices()[0];
-            match.matchB = nodeLineLast100.getVertices()[99];
-            match.idOfMatch = polyPtrs[0].whichLine;
-            ofPolyline new40 = nodeLineLast100.getResampledByCount(40);;
-            match.trans = normalizeLineSetGetTrans(new40);
-            match.offset.set(0,0,0);
-            match.startTime = ofGetElapsedTimef();
-            match.matchLine = nodeLine40;
-            match.bestAngle = polyPtrs[0].whichAngle;
-            matchStructs.push_back(match);
-            
-            if (matchStructs.size() > 8) matchStructs.erase(matchStructs.begin());
-            
-            lastFound.push_back(polyPtrs[0].whichLine);
-            if (lastFound.size() > 80) lastFound.erase(lastFound.begin());
-            
-            lastMatchTime = ofGetElapsedTimef();
-        }
-    }
-    //cout << distanceResults[0].id << endl;
-    //cout << lineSets[0].idMe << " " << lineSets[1].idMe << endl;
+void drawnLineApp::lookForGoodMatchWork(){
+
     
 }
 

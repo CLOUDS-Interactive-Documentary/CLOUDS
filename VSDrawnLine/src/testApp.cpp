@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	ofSetVerticalSync(false);
+	ofSetVerticalSync(true);
   
 	drawnLine.setup();
 	drawnLine.playSystem();
