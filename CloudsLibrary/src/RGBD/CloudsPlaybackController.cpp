@@ -223,7 +223,7 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
     currentAct->registerEvents(&run);
 	currentAct->registerEvents(&hud);
 	currentAct->registerEvents(&oscSender);
-        
+	
 	currentAct->play();
 }
 
@@ -404,7 +404,7 @@ void CloudsPlaybackController::updateTransition(){
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 	
 //if(transitionController.getCurrentState() != TRANSITION_IDLE){
-//    cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
+    cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
 //	}
 	
 	if(transitionController.transitioning){
@@ -499,12 +499,12 @@ void CloudsPlaybackController::updateTransition(){
                 
 
                 if(run.actCount == 1){
-                  showClusterMap();
+                    showClusterMap();
                 }
                 else {
-                  showInterlude();
+                    showInterlude();
                 }
-      
+                
                 break;
                 
 			case TRANSITION_QUESTION_IN:
@@ -550,7 +550,9 @@ void CloudsPlaybackController::updateTransition(){
 					topic = q->topic;
 					
                     rgbdVisualSystem->clearQuestions();
+                    
 					bQuestionAsked = false;
+					
 					storyEngine.buildAct(run, clip, topic);
 					
 				}
@@ -821,30 +823,33 @@ void CloudsPlaybackController::showClusterMap(){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showInterlude(){
-
-    CloudsVisualSystemPreset interludePreset;
-    if(storyEngine.getPresetIDForInterlude(run, interludePreset)){
-
-        interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
-        
-        interludeSystem->setDrawToScreen( false );
-        interludeSystem->setup();
-        interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
-        interludeSystem->playSystem();
-        
-        currentVisualSystem = interludeSystem;
-        
-        showingInterlude = true;
-        
-        ShowInterludePortals(true);
     
-    }
-    else{
+    vector<string> topics;
+    vector<CloudsVisualSystemPreset> potentialPresets;
+
+    topics = storyEngine.getValidTopicsForNextAct(run);
+    potentialPresets = visualSystems.getPresetsForKeywords(topics,"",true);
+    if(potentialPresets.size() == 0){
         ofLogError("CloudsPlaybackController::showInterlude") << "Defaulting to cluster map because we found no topics from the last act";
         showClusterMap();
-
+        return;
     }
+
+    //TODO: SCORE to find the best one
+    CloudsVisualSystemPreset interludePreset = potentialPresets[ ofRandom(potentialPresets.size()) ];
+
+    interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
     
+    interludeSystem->setDrawToScreen( false );
+    interludeSystem->setup();
+    interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
+    interludeSystem->playSystem();
+    
+    currentVisualSystem = interludeSystem;
+    
+    showingInterlude = true;
+    
+    ShowInterludePortals(true);
 }
 
 //--------------------------------------------------------------------
