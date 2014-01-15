@@ -34,7 +34,6 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
 	}
 	
-//	visualSystems.populateVisualSystems();
 	visualSystems.loadPresets();
     visualSystems.loadCachedDataForSystems();
 	
@@ -113,8 +112,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
 				cout << "DELETING PRESET BATCH" << endl;
 				
                 testBatch.clear();
-                visualSystems.freeSystemPointers();
-                
+                visualSystems.DeallocateSystems();//freeSystemPointers();
+                currentVisualSystem = NULL;
 //				currentVisualSystem = ofPtr<CloudsVisualSystem>( (CloudsVisualSystem*)(NULL) );
 				
 				int i = 0;
@@ -122,7 +121,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 					
 					CloudsVisualSystemPreset& preset = visualSystems.getPresets()[ testPresetIndeces[i] ];
 					cout << "******* 1) (" << i << "/" << testPresetIndeces.size() << ") INSTANTIATING " << preset.systemName << " : " << preset.presetName << endl;
-					ofPtr<CloudsVisualSystem> vs = CloudsVisualSystemManager::InstantiateSystem( preset.systemName );
+					CloudsVisualSystem* vs = CloudsVisualSystemManager::InstantiateSystem( preset.systemName );
 					cout << "******* 2) (" << i << "/" << testPresetIndeces.size() << ") SETTING UP " << preset.systemName << " : " << preset.presetName << endl;
 					if(vs == NULL){
 						cout << "******* 3) (" << i << "/" << testPresetIndeces.size() << ") PRESET NOT REGISTERED " << preset.systemName << " : " << preset.presetName << endl;
@@ -165,6 +164,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		if(currentVisualSystem != NULL){
             currentVisualSystem->stopSystem();
 			currentVisualSystem->exit();
+            visualSystems.DeallocateSystems();
         }
 
 		cout << "loading system " << visualSystems.getPresets()[ self.selectedPresetIndex ].systemName << " preset " << visualSystems.getPresets()[self.selectedPresetIndex].presetName << endl;
@@ -276,6 +276,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	if(currentVisualSystem != NULL){
 		currentVisualSystem->stopSystem();
 		currentVisualSystem->exit();
+        visualSystems.DeallocateSystems();
 	}	
 }
 
@@ -326,7 +327,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void) updatePresetsForSystem:(string) systemName
 {
-    ofPtr<CloudsVisualSystem> system = CloudsVisualSystemManager::InstantiateSystem( systemName );
+    CloudsVisualSystem* system = CloudsVisualSystemManager::InstantiateSystem( systemName );
     if(system != NULL){
         cout << "updating presets for " << system->getSystemName() << endl;
         visualSystems.updatePresetsForSystem( system );
@@ -335,7 +336,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
         if(ofFile::doesFileExist(refreshFlagPath)){
             ofFile::removeFile(refreshFlagPath);
         }
-        
+        delete system;
     }
     
     [clipTable reloadData];

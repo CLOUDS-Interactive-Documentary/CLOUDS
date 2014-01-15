@@ -58,6 +58,9 @@ int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVboByteColor &vbo, string path
 	vbo.setIndexData(indices,numTriangles*3, GL_STATIC_DRAW);
 	
 	//cout << "File " << path << " has " << numTriangles << " triangles " << endl;
+    
+    delete buffer;
+    
 	return numTriangles*3;
 }
 

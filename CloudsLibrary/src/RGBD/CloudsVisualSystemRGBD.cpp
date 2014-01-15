@@ -7,6 +7,8 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
 
+CloudsVisualSystemEvents CloudsVisualSystemRGBD::events;
+
 //--------------------------------------------------------------
 string CloudsVisualSystemRGBD::getSystemName(){
 	return "RGBD";
@@ -148,10 +150,6 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	//IF we move this before setup(NOT selfSetup) we can have the option of whether or not to load it to the gui
 	loadTransitionOptions("Transitions");
-    
-#ifdef OCULUS_RIFT
-    hud = NULL;
-#endif
 }
 
 void CloudsVisualSystemRGBD::playTestVideo(){
@@ -415,7 +413,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     
     
     //////////////////CAMERA
-	cameraGui = new ofxUISuperCanvas("CAMERA", gui);
+	cameraGui =     new ofxUISuperCanvas("CAMERA", gui);
 	cameraGui->copyCanvasStyle(gui);
 	cameraGui->copyCanvasProperties(gui);
 	cameraGui->setName("Camera");
@@ -928,9 +926,10 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 		
 		portals[i]->update();
         
-        if(!portals[i]->onScreen){
+        if(!portals[i]->onScreen || portals[i]->question == ""){
             continue;
         }
+        
 		#ifdef OCULUS_RIFT
 		ofVec3f screenPos = getOculusRift().worldToScreen(portals[i]->hoverPosition, true);
         ofRectangle viewport = getOculusRift().getOculusViewport();
@@ -945,7 +944,10 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 			if( distanceToQuestion < portalTugDistance.max) {
 				if(distanceToQuestion < portalTugDistance.min) {
 					caughtPortal = portals[i];
-					caughtPortal->startHovering();
+					if (caughtPortal->startHovering()) {
+                        CloudsPortalEventArgs args(*portals[i], getQuestionText());
+                        ofNotifyEvent(events.portalHoverBegan, args);
+                    }
 				}
 			}
 		}
@@ -959,6 +961,8 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 			else if(distanceToQuestion > portalTugDistance.max){
 				caughtPortal->stopHovering();
 				caughtPortal = NULL;
+                CloudsPortalEventArgs args(*portals[i], getQuestionText());
+                ofNotifyEvent(events.portalHoverEnded, args);
 			}
 		}
         minDistanceToQuestion = MIN(distanceToQuestion, minDistanceToQuestion);
@@ -969,6 +973,11 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 void CloudsVisualSystemRGBD::clearQuestions(){
 	rightPortal.question = "";
 	leftPortal.question = "";
+    
+    leftPortal.clearSelection();
+    rightPortal.clearSelection();
+    selectedPortal = NULL;
+    caughtPortal = NULL;
 }
 
 //JG NEW TRANSITION STUBS<----- James, I love these! thank you, Lars
@@ -1049,7 +1058,7 @@ void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
 		float easedRotPercent = ofxTween::map(percentComplete, .6, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
 		cloudsCamera.setTransitionRotationPercent( easedRotPercent );
 		
-		cout <<"TRANSITIONING : easedValue = "<< easedPercent << endl;
+//		cout <<"TRANSITIONING : easedValue = "<< easedPercent << endl;
 	}
 }
 
@@ -1359,6 +1368,11 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 
 void CloudsVisualSystemRGBD::selfDraw(){
 	
+    #ifdef OCULUS_RIFT
+    if (hud != NULL) {
+        hud->draw3D(getOculusRift().baseCamera);
+    }
+    #endif
 	ofPushStyle();
 	ofPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -1572,42 +1586,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	drawQuestions();
     
-#ifdef OCULUS_RIFT
-    if (hud != NULL) {
-        glDisable(GL_DEPTH_TEST);
-        ofPushMatrix();
-        
-//        ofVec3f hudPos(20, -20, 350);
-        ofVec3f hudPos = getCameraRef().getGlobalPosition() + (getCameraRef().getLookAtDir().getScaled(300));
-
-        ofVec2f hudSize = hud->getSize();
-        ofVec3f hudLowerThirdOffset(hudSize.x * 0.5, hudSize.y * 0.85, 0);
-        
-        // Translate the HUD to its position.
-        ofTranslate(hudPos);
-        ofTranslate(hudSize * 0.5);
-        
-        // Perform the rotation.
-        ofVec3f eulerAngles = (getOculusRift().getOrientationQuat() * getCameraRef().getOrientationQuat()).getEuler();
-        ofTranslate(-hudLowerThirdOffset);
-        ofRotate(-eulerAngles.z, 1, 0, 0);
-        ofTranslate(hudLowerThirdOffset);
-        
-        ofScale(-1, -1, 1);
-        
-        ofSetColor(255);
-        hud->draw();
-        
-        // Debug billboard rotation axis.
-//        ofTranslate(hudLowerThirdOffset);
-//        ofSetColor(255);
-//        ofLine(-1000, 0, 1000, 0);
-//        ofTranslate(hudLowerThirdOffset);
-        
-        ofPopMatrix();
-        glEnable(GL_DEPTH_TEST);
-    }
-#endif
 
 }
 
@@ -1650,16 +1628,27 @@ void CloudsVisualSystemRGBD::selfDrawOverlay() {
         
         ofPopStyle();
     }
+    
+    
 }
 
 void CloudsVisualSystemRGBD::selfExit(){
-	
+
 }
 
 void CloudsVisualSystemRGBD::selfBegin(){
     bPortalDebugOn = false;
 	cloudsCamera.jumpToPosition();
     timeline->hide();
+    
+    //clear any previously selected portals
+    caughtPortal = NULL;
+    selectedPortal = NULL;
+    
+    //make sure any portals are clear
+    leftPortal.clearSelection();
+    rightPortal.clearSelection();
+ 
 }
 
 void CloudsVisualSystemRGBD::selfEnd(){

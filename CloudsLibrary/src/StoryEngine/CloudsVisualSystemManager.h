@@ -16,10 +16,12 @@ class CloudsVisualSystemManager {
   public:
 	CloudsVisualSystemManager();
 	
-	static ofPtr<CloudsVisualSystem> InstantiateSystem(string systemName);
-	static vector< ofPtr<CloudsVisualSystem> > InstantiateSystems(vector<CloudsVisualSystemPreset>& systemPresets);
-	
-    void freeSystemPointers();
+    //Visual Systems Factory
+    static bool HasSystemRegistered(CloudsVisualSystem* system);
+	static CloudsVisualSystem* InstantiateSystem(string systemName);
+	static vector< CloudsVisualSystem* > InstantiateSystems(vector<CloudsVisualSystemPreset>& systemPresets);
+    static void DeallocateSystems();
+    ///VSF
     
 	void populateVisualSystems();
     void populateEnabledSystemIndeces();
@@ -32,8 +34,7 @@ class CloudsVisualSystemManager {
 	
 	vector<int> getFilteredPresetIndeces(bool enabled, bool oculus, bool gradeA, string systemName = "");
 //	vector<int> getFilteredPresetIndecesForSystem(,bool enabled, bool oculus, bool gradeA);
-	
-	ofPtr<CloudsVisualSystem> visualSystemWithName(string systemName);
+		
 	vector<CloudsVisualSystemPreset>& getPresets();
 	
 	bool presetHasKeywords(CloudsVisualSystemPreset& preset);
@@ -41,13 +42,15 @@ class CloudsVisualSystemManager {
 	vector<string> keywordsForPreset(CloudsVisualSystemPreset& preset);
 	vector<string> keywordsForPreset(string systemName, string presetName);
 	vector<CloudsVisualSystemPreset> getPresetsForKeyword(string keyword);
-	vector<CloudsVisualSystemPreset> getPresetsForKeywords(vector<string>& keywords, string clipName = ""); //add filter interludes...
-	ofPtr<CloudsVisualSystem> getEmptySystem(string mainKeyword, vector<string> keywords);
+
+	vector<CloudsVisualSystemPreset> getPresetsForKeywords(vector<string>& keywords, string clipName = "", bool isInterlude = false);
+
+	CloudsVisualSystem* getEmptySystem(string mainKeyword, vector<string> keywords);
 	
     void pastePresetToIndex(CloudsVisualSystemPreset preset, int index);
     
 	//resets all presets from file
-	void updatePresetsForSystem(ofPtr<CloudsVisualSystem> system);
+	void updatePresetsForSystem(CloudsVisualSystem* system);
 	void deletePreset(int i);
 	
 	void setKeywordsForPreset(CloudsVisualSystemPreset& preset, vector<string>& keywords );
@@ -79,9 +82,9 @@ class CloudsVisualSystemManager {
 	CloudsVisualSystemPreset dummyPreset;
 //    vector<CloudsVisualSystemPreset> getPresetsForSystem(string systemName);
     vector<int> getPresetIndicesForSystem(string systemName);
-	vector< ofPtr<CloudsVisualSystem> > systems;
-	map<string, ofPtr<CloudsVisualSystem> > nameToVisualSystem;
-	vector<CloudsVisualSystemPreset> presets;
+//	vector< ofPtr<CloudsVisualSystem> > systems;
+//	map<string, ofPtr<CloudsVisualSystem> > nameToVisualSystem;
+
     vector<int> enabledPresetsIndex;
 	
     int indexForPreset(string presetID);
@@ -102,7 +105,7 @@ class CloudsVisualSystemManager {
 
 	bool allSystemsPopulated;
 	//this instantiates and registers all the visual systems, called once at setup
-	void registerVisualSystem(ofPtr<CloudsVisualSystem> system);
+//	void registerVisualSystem(ofPtr<CloudsVisualSystem> system);
 	float lastBackupTime;
 	float backupTimeInterval;
 

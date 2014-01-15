@@ -32,6 +32,36 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>InteractiveCamera</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>damping</Name>
+    <Value>0.034482457</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>minX</Name>
+    <Value>-13.743896484</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxX</Name>
+    <Value>3.990097046</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>minY</Name>
+    <Value>-9.310394287</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxY</Name>
+    <Value>4.876792908</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>2D</Name>
     <Value>0</Value>
 </Widget>

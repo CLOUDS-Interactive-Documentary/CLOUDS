@@ -4,14 +4,6 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>noise_zoom</WidgetName>
-                <WidgetID>3</WidgetID>
-                <WidgetCanvasParent>Terrain</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>ROT-X</WidgetName>
                 <WidgetID>9</WidgetID>
                 <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
@@ -28,8 +20,8 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>t</WidgetName>
-                <WidgetID>22</WidgetID>
+                <WidgetName>noise_zoom</WidgetName>
+                <WidgetID>3</WidgetID>
                 <WidgetCanvasParent>Terrain</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -38,6 +30,14 @@
             <Widget>
                 <WidgetName>k</WidgetName>
                 <WidgetID>20</WidgetID>
+                <WidgetCanvasParent>Terrain</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>t</WidgetName>
+                <WidgetID>22</WidgetID>
                 <WidgetCanvasParent>Terrain</WidgetCanvasParent>
             </Widget>
             <Track></Track>

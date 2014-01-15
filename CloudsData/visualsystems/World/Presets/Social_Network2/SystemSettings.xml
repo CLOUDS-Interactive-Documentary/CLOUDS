@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>153.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -33,7 +33,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>density</Name>
-    <Value>0.788177371</Value>
+    <Value>0.770935953</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -63,17 +63,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Satelites_ammount</Name>
-    <Value>935.960571289</Value>
+    <Value>719.211791992</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Satelites_links_distance</Name>
-    <Value>104.999992371</Value>
+    <Value>107.438430786</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Satelites_links_alpha</Name>
-    <Value>0.199999988</Value>
+    <Value>0.195503831</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>2.764267445</Value>
+    <Value>2.134172678</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -19,6 +19,11 @@
     <Kind>2</Kind>
     <Name>Show Debug</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Height Scale</Name>
+    <Value>30.000001907</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,7 +48,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>k</Name>
-    <Value>0.034758467</Value>
+    <Value>0.023165694</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

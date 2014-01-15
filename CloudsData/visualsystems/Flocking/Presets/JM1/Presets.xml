@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1061.000000000</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <XPosition>849.000061035</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,10 +23,5 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Preset2</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>JM2OC</Name>
     <Value>0</Value>
 </Widget>

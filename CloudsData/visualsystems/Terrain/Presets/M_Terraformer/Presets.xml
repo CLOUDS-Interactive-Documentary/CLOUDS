@@ -2,12 +2,22 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>849.000122070</XPosition>
+    <XPosition>849.000061035</XPosition>
     <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>default</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_DrawGoo_rotation</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_Terraformer</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -33,6 +43,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>M_LiquidTerrain</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>M_LiquidTerrain_rotation</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

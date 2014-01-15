@@ -30,8 +30,10 @@ class CloudsPortal {
 	string topic;
     CloudsClip clip; //the clip must have a question associated
     
-    void startHovering();
+    bool startHovering();
 	void stopHovering();
+    void clearSelection();
+    
     bool hovering;
 	float hoverStartTime;
 	

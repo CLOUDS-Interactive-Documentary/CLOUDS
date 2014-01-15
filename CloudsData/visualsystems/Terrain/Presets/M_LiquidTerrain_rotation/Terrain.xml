@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>Terrain</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1184.000000000</XPosition>
-    <YPosition>-7.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>4.108433723</Value>
+    <Value>0.828310609</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

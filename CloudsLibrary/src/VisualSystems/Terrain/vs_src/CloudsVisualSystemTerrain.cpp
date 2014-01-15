@@ -563,7 +563,7 @@ void CloudsVisualSystemTerrain::selfDraw()
     
     ofPushMatrix();
     ofSetColor(255);
-    glEnable(GL_SMOOTH);
+    //glEnable(GL_SMOOTH);
     glShadeModel(GL_SMOOTH);
     
     colorShader.begin();

@@ -41,7 +41,7 @@
 	CloudsClip currentClip;
     
 	CloudsVisualSystemManager visualSystems;
-	ofPtr<CloudsVisualSystem> currentVisualSystem;
+	CloudsVisualSystem* currentVisualSystem;
 	CloudsVisualSystemPreset* selectedPreset;
 	vector<int> filteredPresetInds;
 	
@@ -62,7 +62,7 @@
 	int currentTestPresetIndex;
 	bool runningTest;
 	float lastSystemStartTime;
-	vector< ofPtr<CloudsVisualSystem> > testBatch;
+	vector< CloudsVisualSystem* > testBatch;
 	int testBatchIndex;
     
     bool hasPasteboardPreset;

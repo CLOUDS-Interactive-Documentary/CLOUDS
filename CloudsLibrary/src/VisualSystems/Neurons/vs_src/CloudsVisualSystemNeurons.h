@@ -118,7 +118,9 @@ class _C:public CloudsVisualSystem{
     void selfDraw();
 	void selfSetupGuis();
 	void selfPresetLoaded(string presetPath);
+    void selfSetDefaults();
     
+    ofxUISuperCanvas* nCamGui;
     
 	ofxUISlider *spinSlider;
 	ofxUISlider *dotSizeSlider;
@@ -137,12 +139,16 @@ class _C:public CloudsVisualSystem{
     
     ofxUIButton *generateCamPath;
     ofxUIButton *generateRandCam;
-    ofxUISlider *camDuration;
+   // ofxUISlider *camDuration;
     ofxUIButton *tumbleCam;
     
     static bool renderNeurons;
     
     
+    bool quatCam;
+    bool flythrough;
+    bool bounce;
+    float camDuration;
 	float rotation;
 	vector<jtn::TreeNode*> rootNodes;
 	static float dotSize;
@@ -160,7 +166,7 @@ class _C:public CloudsVisualSystem{
     static bool renderCamPath;
     
     void selfGuiEvent(ofxUIEventArgs &e);
-    void guiCameraEvent(ofxUIEventArgs &e);
+   // void guiCameraEvent(ofxUIEventArgs &e);
     
     void reset(bool createRootNodes = true);
     

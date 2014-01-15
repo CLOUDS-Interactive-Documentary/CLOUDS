@@ -153,9 +153,9 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     // preset init
     bGravityMod = false;
     gravityForce = ofVec2f(0, 5);
-    minObjectCount = 50;
-    maxCircles = 100;
-    maxRects = 100;
+    minObjectCount = int(ofRandom(75,200));
+    maxCircles = 200;
+    maxRects = 150;
     triggerForce = 15;
     
     bCircles = true;
@@ -179,21 +179,28 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     // setup sound synth
     masterVolume = 1;
     lastSampleTime = 0;
-    for (int i=0; i<7; i++)
+    soundsLoaded = true;
+    for (int i=0; i<5; i++)
     {
         ostringstream fn;
         fn << GetCloudsDataPath() << "sound/triggers/drip" << i+1 << ".aif";
-        samplePlayer[i].loadSound(fn.str());
+        soundsLoaded &= samplePlayer[i].loadSound(fn.str());
         samplePlayer[i].setMultiPlay(true);
         samplePlayer[i].setSpeed(0.5);
     }
     
-    for (int i=0; i<8; i++)
+    for (int i=0; i<5; i++)
     {
         ostringstream fn;
         fn << GetCloudsDataPath() << "sound/triggers/cardboard" << i+1 << ".aif";
-        samplePlayer[i+7].loadSound(fn.str());
-        samplePlayer[i+7].setMultiPlay(true);
+
+        soundsLoaded &= samplePlayer[i+5].loadSound(fn.str());
+        samplePlayer[i+5].setMultiPlay(true);
+
+    }
+    
+    if(!soundsLoaded){
+        ofLogError("CloudsVisualSystemExampleBox2D::selfSetup") << "Some clips failed to load. Disabling sound";
     }
 
 }
@@ -583,6 +590,12 @@ void CloudsVisualSystemExampleBox2D::reinitBounds()
 
 void CloudsVisualSystemExampleBox2D::contactStart(ofxBox2dContactArgs &e)
 {
+    
+    if(!soundsLoaded){
+        return;
+
+    }
+    
     float aVel = e.a->GetBody()->GetLinearVelocity().Length();
     float bVel = e.b->GetBody()->GetLinearVelocity().Length();
     
@@ -599,7 +612,7 @@ void CloudsVisualSystemExampleBox2D::contactStart(ofxBox2dContactArgs &e)
     float maxVel = max(aVel, bVel);
     if (maxVel > 6)
     {
-        int index = sIndex*7 + (int)ofRandom(7);
+        int index = sIndex*5 + (int)ofRandom(5);
         float vol = maxVel / 200;
         vol = (vol<1) ? pow(vol, 2) : 1;
 

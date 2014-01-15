@@ -147,7 +147,9 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	bIs2D = false;
 	drawCursorMode = DRAW_CURSOR_NONE;
 	updateCyclced = false;
-#ifdef CLOUDS_RELEASE
+    bDoBloom = false;
+    bloomAmount = 0.;
+#ifdef CLOUDS_APP
     bShowPortals = true;
 #endif
     
@@ -162,6 +164,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
+    string b = "foo";
 	//can't save guis because the virtual subclass members return the wrong data
 //    saveGUIS();
 }
@@ -170,7 +173,7 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 	
 	//ofFbo& renderTarget = sharedRenderTarget != NULL ? *sharedRenderTarget : getStaticRenderTarget();
 	ofFbo& renderTarget = getStaticRenderTarget();
-	
+    
    int targetWidth = bEnablePostFX ? ofGetWidth() + bleed : ofGetWidth();
     int targetHeight = bEnablePostFX ? ofGetHeight() + bleed : ofGetHeight();
     
@@ -211,14 +214,14 @@ string CloudsVisualSystem::getVisualSystemDataPath(bool ignoredFolder){
 ofxTimeline* CloudsVisualSystem::getTimeline(){
 	return timeline;
 }
-#ifdef CLOUDS_RELEASE
+#ifdef CLOUDS_APP
 void CloudsVisualSystem::setupPortals(){
     
  
     
     CloudsPortal rp;
     rp.hoverPosition = ofVec3f(75.f, getCanvasHeight()/4*3, 0);
-    rp.scale = .15;
+    rp.scale = .3;
     rp.cam = &getCameraRef();
     rp.question = "Return";
     rp.setup();
@@ -226,11 +229,13 @@ void CloudsVisualSystem::setupPortals(){
     
     CloudsPortal cp;
     cp.hoverPosition = ofVec3f(getCanvasWidth()-75.f, getCanvasHeight()/4*3, 0);
-    cp.scale = .15;
+    cp.scale = .3;
     cp.cam = &getCameraRef();
     cp.question = "Continue";
     cp.setup();
     portals.push_back(cp);
+    
+    SetInterludePortalsRef(portals);
     
 }
 #endif
@@ -240,7 +245,7 @@ void CloudsVisualSystem::setup(){
     if(bIsSetup){
 		return;
 	}
-#ifdef CLOUDS_RELEASE
+#ifdef CLOUDS_APP
     setupPortals();
 #endif
     
@@ -256,6 +261,11 @@ void CloudsVisualSystem::setup(){
     }
 
 //	currentCamera = &cam;
+    
+#ifdef OCULUS_RIFT
+    hud = NULL;
+    hudGui = NULL;
+#endif
 	
     ofDirectory dir;
     string directoryName = getVisualSystemDataPath()+"Presets/";
@@ -392,29 +402,32 @@ void CloudsVisualSystem::speakerEnded()
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
     
-#ifdef CLOUDS_RELEASE
+#ifdef CLOUDS_APP
+    
+    bShowPortals = CanShowInterludePortals();
 
     if(bShowPortals){
-        ofVec2f mouseNode(GetCloudsInputX(),GetCloudsInputY());
+        ofVec2f mouseNode(GetCloudsInputX(),getCanvasHeight()-GetCloudsInputY());
         for(int i=0;i<portals.size();i++){
             portals[i].hoverPosition.y += .2*sin(ofGetElapsedTimef());
             portals[i].update();
-        
             float distanceToPortal = portals[i].hoverPosition.distance(mouseNode);
-            cout<<distanceToPortal<<endl;
             if(distanceToPortal<100.f){
-                cout<<"hovering over :"<<i<<endl;
-                selectedPortal = &portals[i];
-                selectedPortal->startHovering();
-            }else{
-                if(selectedPortal){
-                    selectedPortal->stopHovering();
-                    selectedPortal = NULL;
-                }
+                portals[i].startHovering();
             }
-            
+            else{
+                portals[i].stopHovering();
+            }
         }
+        //cout<<GetSelectedInterludePortalContinue()<<endl;
+        SetInterludePortalsRef(portals);
     }
+//    else{
+//        for(int i=0;i<portals.size();i++){
+//            portals[i].clearSelection();
+//            portals[i].stopHovering();
+//        }
+//    }
     
 #endif
 
@@ -499,13 +512,11 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
             getOculusRift().endBackground();
 			checkOpenGLError(getSystemName() + ":: AFTER DRAW BACKGROUND");
 
-            // EZ: Commenting this out for now, saving overlay for HUD
-            // The HUD is drawing in the overlay in CloudsPlaybackController::draw()
-//			getOculusRift().beginOverlay(-230, 320,240);
-//			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
-//			selfDrawOverlay();
-//			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
-//			getOculusRift().endOverlay();
+			getOculusRift().beginOverlay(-230, 640,480);
+			checkOpenGLError(getSystemName() + ":: BEFORE DRAW OVERLAY");
+			selfDrawOverlay();
+			checkOpenGLError(getSystemName() + ":: AFTER DRAW OVERLAY");
+			getOculusRift().endOverlay();
 			
             if(bIs2D){
                 CloudsVisualSystem::getSharedRenderTarget().begin();
@@ -550,14 +561,22 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			
 			getCameraRef().end();
             
-#ifdef CLOUDS_RELEASE
+#ifdef CLOUDS_APP
+            
             if(bShowPortals){
-            ofPushStyle();
-            ofSetColor(255);
-                for(int i=0;i<portals.size();i++){
-                portals[i].draw();
+                ofPushStyle();
+                ofEnableAlphaBlending();
+                    
+                ofSetColor(255);
+                for(int i = 0; i < portals.size(); i++){
+                    glDisable(GL_DEPTH_TEST);
+                    CloudsPortal::shader.begin();
+                    CloudsPortal::shader.setUniform1i("doAttenuate", 0);
+                    portals[i].draw();
+                    CloudsPortal::shader.end();
                 }
-            ofPopStyle();
+                ofDisableAlphaBlending();
+                ofPopStyle();
             }
 #endif
 			ofPushStyle();
@@ -1474,6 +1493,9 @@ void CloudsVisualSystem::setupPostGui()
     postGui->addToggle("Enable", &bEnablePostFX);
     postGui->addSlider("Chroma_Distortion", 0.0, 1.0, &postChromaDist);
     postGui->addSlider("Grain_Distortion", 0.0, 1.0, &postGrainDist);
+    postGui->addToggle("Do Bloom", &bDoBloom);
+    postGui->addSlider("Bloom Level", 0., 1., &bloomAmount);
+    postGui->addIntSlider("Bloom Size", 1, 20, &bloomSamples);
     postGui->autoSizeToFitWidgets();
     ofAddListener(postGui->newGUIEvent, this, &CloudsVisualSystem::guiPostEvent);
     guis.push_back(postGui);
@@ -2918,7 +2940,8 @@ void CloudsVisualSystem::setupKinectGui()
 
 void CloudsVisualSystem::guiKinectEvent(ofxUIEventArgs &e)
 {
-
+    // Save every time something changes.
+    kinectGui->saveSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
 }
 #endif
 
@@ -2940,7 +2963,122 @@ void CloudsVisualSystem::setupOculusGui()
 
 void CloudsVisualSystem::guiOculusEvent(ofxUIEventArgs &e)
 {
+    // Save every time something changes.
+    oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+}
+
+void CloudsVisualSystem::setupHUDGui()
+{
+    if (hud == NULL || hudGui != NULL) return;
     
+    hudGui = new ofxUISuperCanvas("HUD", gui);
+    hudGui->copyCanvasStyle(gui);
+    hudGui->copyCanvasProperties(gui);
+    hudGui->setName("HUD");
+    hudGui->setPosition(guis[guis.size() - 1]->getRect()->x + guis[guis.size() - 1]->getRect()->getWidth() + 1, 0);
+    hudGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    hudGui->addSpacer();
+    hudGui->addSlider("QUESTION DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_QUESTION]);
+    hudGui->addSlider("QUESTION ROT H", 90, -90, &hud->layerRotationH[CLOUDS_HUD_QUESTION]);
+    hudGui->addSlider("QUESTION ROT V", 90, -90, &hud->layerRotationV[CLOUDS_HUD_QUESTION]);
+    hudGui->addLabel("BILLBOARD");
+    vector<string> hudBillboardQ;
+    hudBillboardQ.push_back("BB Q NONE");
+    hudBillboardQ.push_back("BB Q CAMERA");
+    hudBillboardQ.push_back("BB Q OCULUS");
+    hudGui->addRadio("QUESTION BILLBOARD", hudBillboardQ)->activateToggle("BB Q CAMERA");
+
+    hudGui->addSpacer();
+    hudGui->addSlider("LOWER 3RD DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_LOWER_THIRD]);
+    hudGui->addSlider("LOWER 3RD ROT H", 90, -90, &hud->layerRotationH[CLOUDS_HUD_LOWER_THIRD]);
+    hudGui->addSlider("LOWER 3RD ROT V", 90, -90, &hud->layerRotationV[CLOUDS_HUD_LOWER_THIRD]);
+    hudGui->addLabel("BILLBOARD");
+    vector<string> hudBillboardL3;
+    hudBillboardL3.push_back("BB L3 NONE");
+    hudBillboardL3.push_back("BB L3 CAMERA");
+    hudBillboardL3.push_back("BB L3 OCULUS");
+    hudGui->addRadio("LOWER 3RD BILLBOARD", hudBillboardL3)->activateToggle("BB L3 CAMERA");
+
+    hudGui->addSpacer();
+    hudGui->addSlider("PROJ EX DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_PROJECT_EXAMPLE]);
+    hudGui->addSlider("PROJ EX ROT H", 90, -90, &hud->layerRotationH[CLOUDS_HUD_PROJECT_EXAMPLE]);
+    hudGui->addSlider("PROJ EX ROT V", 90, -90, &hud->layerRotationV[CLOUDS_HUD_PROJECT_EXAMPLE]);
+    hudGui->addLabel("BILLBOARD");
+    vector<string> hudBillboardPE;
+    hudBillboardPE.push_back("BB PE NONE");
+    hudBillboardPE.push_back("BB PE CAMERA");
+    hudBillboardPE.push_back("BB PE OCULUS");
+    hudGui->addRadio("PROJ EX BILLBOARD", hudBillboardPE)->activateToggle("BB PE CAMERA");
+
+    hudGui->addSpacer();
+    hudGui->addSlider("MAP DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_MAP]);
+    hudGui->addSlider("MAP ROT H", 90, -90, &hud->layerRotationH[CLOUDS_HUD_MAP]);
+    hudGui->addSlider("MAP ROT V", 90, -90, &hud->layerRotationV[CLOUDS_HUD_MAP]);
+    hudGui->addLabel("BILLBOARD");
+    vector<string> hudBillboardM;
+    hudBillboardM.push_back("BB M NONE");
+    hudBillboardM.push_back("BB M CAMERA");
+    hudBillboardM.push_back("BB M OCULUS");
+    hudGui->addRadio("MAP BILLBOARD", hudBillboardM)->activateToggle("BB M CAMERA");
+
+    hudGui->autoSizeToFitWidgets();
+    ofAddListener(hudGui->newGUIEvent, this, &CloudsVisualSystem::guiHUDEvent);
+    guis.push_back(hudGui);
+    guimap[hudGui->getName()] = hudGui;
+    
+    // load initial settings
+    hudGui->loadSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+
+    // sync visibility with others
+    hudGui->setVisible(gui->isVisible());
+}
+
+void CloudsVisualSystem::guiHUDEvent(ofxUIEventArgs &e)
+{
+    string name = e.getName();
+    if (name == "BB Q NONE") {
+        hud->layerBillboard[CLOUDS_HUD_QUESTION] = CLOUDS_HUD_BILLBOARD_NONE;
+    }
+    else if (name == "BB Q CAMERA") {
+        hud->layerBillboard[CLOUDS_HUD_QUESTION] = CLOUDS_HUD_BILLBOARD_CAMERA;
+    }
+    else if (name == "BB Q OCULUS") {
+        hud->layerBillboard[CLOUDS_HUD_QUESTION] = CLOUDS_HUD_BILLBOARD_OCULUS;
+    }
+    
+    else if (name == "BB L3 NONE") {
+        hud->layerBillboard[CLOUDS_HUD_LOWER_THIRD] = CLOUDS_HUD_BILLBOARD_NONE;
+    }
+    else if (name == "BB L3 CAMERA") {
+        hud->layerBillboard[CLOUDS_HUD_LOWER_THIRD] = CLOUDS_HUD_BILLBOARD_CAMERA;
+    }
+    else if (name == "BB L3 OCULUS") {
+        hud->layerBillboard[CLOUDS_HUD_LOWER_THIRD] = CLOUDS_HUD_BILLBOARD_OCULUS;
+    }
+    
+    else if (name == "BB PE NONE") {
+        hud->layerBillboard[CLOUDS_HUD_PROJECT_EXAMPLE] = CLOUDS_HUD_BILLBOARD_NONE;
+    }
+    else if (name == "BB PE CAMERA") {
+        hud->layerBillboard[CLOUDS_HUD_PROJECT_EXAMPLE] = CLOUDS_HUD_BILLBOARD_CAMERA;
+    }
+    else if (name == "BB PE OCULUS") {
+        hud->layerBillboard[CLOUDS_HUD_PROJECT_EXAMPLE] = CLOUDS_HUD_BILLBOARD_OCULUS;
+    }
+    
+    else if (name == "BB M NONE") {
+        hud->layerBillboard[CLOUDS_HUD_MAP] = CLOUDS_HUD_BILLBOARD_NONE;
+    }
+    else if (name == "BB M CAMERA") {
+        hud->layerBillboard[CLOUDS_HUD_MAP] = CLOUDS_HUD_BILLBOARD_CAMERA;
+    }
+    else if (name == "BB M OCULUS") {
+        hud->layerBillboard[CLOUDS_HUD_MAP] = CLOUDS_HUD_BILLBOARD_OCULUS;
+    }
+    
+    // Save every time something changes.
+    hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
 }
 #endif
 
@@ -2979,6 +3117,7 @@ void CloudsVisualSystem::loadGUIS()
 #endif
 #ifdef OCULUS_RIFT
         if (guis[i] == oculusGui) continue;
+        if (guis[i] == hudGui) continue;
 #endif
         guis[i]->loadSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
 		guis[i]->setColorBack(ofColor(255*.2, 255*.9));
@@ -2996,6 +3135,9 @@ void CloudsVisualSystem::loadGUIS()
 #endif
 #ifdef OCULUS_RIFT
     oculusGui->loadSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+    if (hudGui) {
+        hudGui->loadSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+    }
 #endif
 }
 
@@ -3008,6 +3150,7 @@ void CloudsVisualSystem::saveGUIS()
 #endif
 #ifdef OCULUS_RIFT
         if (guis[i] == oculusGui) continue;
+        if (guis[i] == hudGui) continue;
 #endif
         guis[i]->saveSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
     }
@@ -3023,6 +3166,9 @@ void CloudsVisualSystem::saveGUIS()
 #endif
 #ifdef OCULUS_RIFT
     oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+    if (hudGui) {
+        hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+    }
 #endif
 }
 
@@ -3160,6 +3306,9 @@ void CloudsVisualSystem::deleteGUIS()
 #endif
 #ifdef OCULUS_RIFT
     ofRemoveListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
+    if (hudGui != NULL) {
+        ofRemoveListener(hudGui->newGUIEvent, this, &CloudsVisualSystem::guiHUDEvent);
+    }
 #endif
 	
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
@@ -3461,6 +3610,9 @@ void CloudsVisualSystem::selfPostDraw(){
         cloudsPostShader.setUniform2f("dMapResolution", cloudsPostDistortionMap.getWidth(), cloudsPostDistortionMap.getHeight());
         cloudsPostShader.setUniform1f("chromaDist", postChromaDist);
         cloudsPostShader.setUniform1f("grainDist", postGrainDist);
+        cloudsPostShader.setUniform1f("doBloom", bDoBloom?1.:0.);
+        cloudsPostShader.setUniform1f("bloomAmount", bloomAmount);
+        cloudsPostShader.setUniform1i("bloomSize", bloomSamples);
         offset = bleed;
     }else{
         offset = 0;
@@ -3542,7 +3694,6 @@ void CloudsVisualSystem::selfKeyPressed(ofKeyEventArgs & args)
 
 void CloudsVisualSystem::selfKeyReleased(ofKeyEventArgs & args)
 {
-    
 }
 
 void CloudsVisualSystem::selfMouseDragged(ofMouseEventArgs& data)
@@ -3638,3 +3789,33 @@ void CloudsVisualSystem::checkOpenGLError(string function){
         ofLogError( "CloudsVisualSystem::checkOpenGLErrors") << "OpenGL generated error " << ofToString(err) << " : " << gluErrorString(err) << " in " << function;
     }
 }
+
+#ifdef CLOUDS_APP
+
+void SetInterludePortalsRef(vector<CloudsPortal>& ref){
+    gPortals = ref;
+}
+
+vector<CloudsPortal>& InterludePortalsRef(){
+    return gPortals;
+}
+
+void ResetInterludePortals(){
+    for(int i=0;i<InterludePortalsRef().size();i++){
+        InterludePortalsRef()[i].clearSelection();
+    }
+}
+bool GetSelectedInterludePortalContinue(){
+    return InterludePortalsRef()[1].isSelected();
+}
+bool GetSelectedInterludePortalResetClouds(){
+    return InterludePortalsRef()[0].isSelected();
+}
+
+bool CanShowInterludePortals(){
+    return gShowInterludePortals;
+}
+void ShowInterludePortals( bool show ){
+    gShowInterludePortals = show;
+}
+#endif

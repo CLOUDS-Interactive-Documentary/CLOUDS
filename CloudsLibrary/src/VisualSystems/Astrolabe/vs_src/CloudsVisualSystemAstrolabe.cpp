@@ -347,6 +347,7 @@ void CloudsVisualSystemAstrolabe::selfSetup()
 	
 	bUseRings = true;
 	
+//	ofxObjLoader::load( getVisualSystemDataPath(false) + "models/sphere.obj", sphereMesh );
 	ofxObjLoader::load( getVisualSystemDataPath(true) + "models/egg90aSmall.obj", sphereMesh );
 }
 
@@ -634,6 +635,11 @@ void CloudsVisualSystemAstrolabe::selfExit()
 {
 	clearAstrolabes();
 	sphereMesh.clear();
+	
+	
+	ofRemoveListener(ringsGui->newGUIEvent, this, &CloudsVisualSystemAstrolabe::selfGuiEvent);
+	ofRemoveListener(ticksGui->newGUIEvent, this, &CloudsVisualSystemAstrolabe::selfGuiEvent);
+	ofRemoveListener(shaderGui->newGUIEvent, this, &CloudsVisualSystemAstrolabe::selfGuiEvent);
 }
 
 void CloudsVisualSystemAstrolabe::clearAstrolabes()

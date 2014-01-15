@@ -2,33 +2,33 @@
     <Kind>42</Kind>
     <Name>MATERIAL 1Settings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>425.000061035</XPosition>
+    <YPosition>518.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>25</Kind>
     <Name>EH</Name>
-    <Value>0.549738228</Value>
+    <Value>0.612565458</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>ES</Name>
-    <Value>0.335078210</Value>
+    <Value>0.445025861</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>EV</Name>
-    <Value>0.528795183</Value>
+    <Value>0.764397264</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SH</Name>
-    <Value>0.502617776</Value>
+    <Value>0.679998100</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SS</Name>
-    <Value>0.193716958</Value>
+    <Value>0.366491824</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -38,5 +38,5 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SHINY</Name>
-    <Value>93.320198059</Value>
+    <Value>29.004926682</Value>
 </Widget>

@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>cameraViewsGui</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>116.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>643.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -32,12 +32,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>path camera</Name>
+    <Name>four view</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>four view</Name>
+    <Name>path camera</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -53,12 +53,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>cameraSpeed</Name>
-    <Value>4.000000000</Value>
+    <Value>6.674876690</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>pitchScale</Name>
-    <Value>0.010000000</Value>
+    <Value>0.011379311</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -68,7 +68,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>maxTilt</Name>
-    <Value>-19.211822510</Value>
+    <Value>20</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

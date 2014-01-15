@@ -4,7 +4,7 @@
 #include "CloudsVisualSystem.h"
 #include "CloudsPortal.h"
 #include "CloudsQuestion.h"
-#include "CloudsHUDController.h"
+#include "CloudsEvents.h"
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
 #include "ofxFTGL.h"
@@ -131,10 +131,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     
 	void playTestVideo();
     
-#ifdef OCULUS_RIFT
-    CloudsHUDController* hud;
-#endif
-
+    static CloudsVisualSystemEvents events;
+    
   protected:
 	
 	//TRANSITIONS
@@ -301,5 +299,4 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 //	ofFloatColor questionBaseHSB;
 //	ofFloatColor questionHoverHSB;
-	
 };

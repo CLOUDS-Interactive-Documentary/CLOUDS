@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Text</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>726.000000000</XPosition>
+    <YPosition>114.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -93,6 +93,11 @@
 <Widget>
     <Kind>17</Kind>
     <Name>Bruce_TextualTechnologies</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>FavoriteWords</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

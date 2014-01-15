@@ -1,0 +1,39 @@
+<Map>
+    <Bangs></Bangs>
+    <Switches></Switches>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>Min Connection Distance</WidgetName>
+                <WidgetID>6</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Boundary Size</WidgetName>
+                <WidgetID>8</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Max Connections</WidgetName>
+                <WidgetID>10</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>ROT-Z</WidgetName>
+                <WidgetID>13</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>

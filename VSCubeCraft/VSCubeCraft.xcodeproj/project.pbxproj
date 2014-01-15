@@ -495,6 +495,14 @@
 		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		502B01E01883C77100CCC89A /* CloudsHUDController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsHUDController.h; path = src/RGBD/HUD/CloudsHUDController.h; sourceTree = "<group>"; };
+		502B01E11883C79100CCC89A /* ofxFTGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxFTGL.h; path = ../../../addons/ofxFTGL/src/ofxFTGL.h; sourceTree = "<group>"; };
+		502B01E21883C7A600CCC89A /* ftgl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftgl.h; path = ../../../addons/ofxFTGL/libs/FTGL/include/FTGL/ftgl.h; sourceTree = "<group>"; };
+		502B01E31883C84800CCC89A /* ofxAVFVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxAVFVideoPlayer.h; path = ../../../addons/ofxAVFVideoPlayer/src/ofxAVFVideoPlayer.h; sourceTree = "<group>"; };
+		502B01E41883C86700CCC89A /* ofxFTGLFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxFTGLFont.h; path = ../../../addons/ofxFTGL/src/ofxFTGLFont.h; sourceTree = "<group>"; };
+		502B01E51883C86700CCC89A /* ofxFTGLSimpleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxFTGLSimpleLayout.h; path = ../../../addons/ofxFTGL/src/ofxFTGLSimpleLayout.h; sourceTree = "<group>"; };
+		502B01E61883C8A300CCC89A /* CloudsEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsEvents.h; path = src/StoryEngine/CloudsEvents.h; sourceTree = "<group>"; };
+		502B01E71883C8A300CCC89A /* CloudsSpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsSpeaker.h; path = src/StoryEngine/CloudsSpeaker.h; sourceTree = "<group>"; };
 		504016D6185D8AE00039386C /* voxelShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = voxelShader.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		504016D7185D8AE00039386C /* voxelShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = voxelShader.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		504016DB185D8B090039386C /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
@@ -2094,6 +2102,14 @@
 		E7DD71F017DBC08D00AFB2DD /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				502B01E31883C84800CCC89A /* ofxAVFVideoPlayer.h */,
+				502B01E11883C79100CCC89A /* ofxFTGL.h */,
+				502B01E41883C86700CCC89A /* ofxFTGLFont.h */,
+				502B01E51883C86700CCC89A /* ofxFTGLSimpleLayout.h */,
+				502B01E21883C7A600CCC89A /* ftgl.h */,
+				502B01E61883C8A300CCC89A /* CloudsEvents.h */,
+				502B01E71883C8A300CCC89A /* CloudsSpeaker.h */,
+				502B01E01883C77100CCC89A /* CloudsHUDController.h */,
 				A6D587CC1881F3430014B5BD /* ofxSystemTextbox.h */,
 				A6D587CD1881F3430014B5BD /* ofxSystemTextbox.mm */,
 				E7DD71F117DBC08D00AFB2DD /* src */,
@@ -2173,8 +2189,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "VSCubeCraft" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -2518,6 +2532,12 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"../../../addons/ofxFTGL/libs/FTGL/include/\"";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -2628,6 +2648,12 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"../../../addons/ofxFTGL/libs/FTGL/include/\"";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (

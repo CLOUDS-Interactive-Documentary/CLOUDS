@@ -1,6 +1,15 @@
 <Map>
     <Bangs></Bangs>
     <Switches></Switches>
-    <SliderCurves></SliderCurves>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>Bloom Level</WidgetName>
+                <WidgetID>11</WidgetID>
+                <WidgetCanvasParent>Post Effects</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
     <NumberDialerCurves></NumberDialerCurves>
 </Map>

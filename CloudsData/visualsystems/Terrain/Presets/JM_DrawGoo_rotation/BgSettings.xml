@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>BgSettings</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>118.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>161.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>

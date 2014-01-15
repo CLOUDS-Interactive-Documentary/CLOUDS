@@ -9,6 +9,9 @@
 #include "CloudsIntroSequence.h"
 //#include "ofxObjLoader.h"
 #include "CloudsGlobal.h"
+#include "CloudsEvents.h"
+
+CloudsVisualSystemEvents CloudsIntroSequence::events;
 
 CloudsIntroSequence::CloudsIntroSequence(){
 	selectedQuestion = NULL;
@@ -45,6 +48,7 @@ void CloudsIntroSequence::selfSetup(){
     rebuildQuestionFont();
 	perlinOffset = 0;
 	
+    warpCamera.setNearClip(.01);
 	
 	ofDisableArbTex();
 	sprite.loadImage(getVisualSystemDataPath() + "images/dot.png");
@@ -133,7 +137,10 @@ void CloudsIntroSequence::selfUpdate(){
 															   0, cameraForwardSpeed);
 					if(distanceToQuestion < questionTugDistance.min){
 						caughtQuestion = &startQuestions[i];
-						caughtQuestion->startHovering();
+						if (caughtQuestion->startHovering()) {
+                            CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
+                            ofNotifyEvent(events.portalHoverBegan, args);
+                        }
 					}
 				}
 			}
@@ -147,6 +154,8 @@ void CloudsIntroSequence::selfUpdate(){
 				else if(distanceToQuestion > questionTugDistance.max){
 					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
+                    CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
+                    ofNotifyEvent(events.portalHoverEnded, args);
 				}
 			}
 		}
@@ -356,7 +365,12 @@ void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
 }
 
 void CloudsIntroSequence::selfDraw(){
-	
+#ifdef OCULUS_RIFT
+    if (hud != NULL) {
+        hud->draw3D(getOculusRift().baseCamera);
+    }
+#endif
+    
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glEnable(GL_LINE_SMOOTH);
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
@@ -454,21 +468,21 @@ void CloudsIntroSequence::drawCloudsType(){
 }
 
 void CloudsIntroSequence::selfDrawOverlay(){
-	if(bUseOculusRift){
-		ofPushStyle();
-		for(int i = 0; i < startQuestions.size(); i++){
-			startQuestions[i].drawOverlay(true);
-		}
-		ofPopStyle();
-	}
+//	if(bUseOculusRift){
+//		ofPushStyle();
+//		for(int i = 0; i < startQuestions.size(); i++){
+//			startQuestions[i].drawOverlay(true);
+//		}
+//		ofPopStyle();
+//	}
 }
 
 void CloudsIntroSequence::selfPostDraw(){
-	chroma.begin();
-	chroma.setUniform2f("resolution", ofGetWidth(),ofGetHeight());
-	chroma.setUniform1f("max_distort", maxChromaDistort);
+//	chroma.begin();
+//	chroma.setUniform2f("resolution", ofGetWidth(),ofGetHeight());
+//	chroma.setUniform1f("max_distort", maxChromaDistort);
 	CloudsVisualSystem::selfPostDraw();
-	chroma.end();
+//	chroma.end();
 	if(!bUseOculusRift){
 		//JG: MOVING TO HUD
 //		ofPushStyle();

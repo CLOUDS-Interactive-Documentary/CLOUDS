@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>497.000061035</XPosition>
-    <YPosition>232.000000000</YPosition>
+    <XPosition>424.999938965</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -12,13 +12,13 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>whirl</Name>
+    <Name>jm_BoxCollapse</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>jm_whirl</Name>
-    <Value>0</Value>
+    <Name>jm_BoxFlow1</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -32,11 +32,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>jm_BoxCollapse</Name>
+    <Name>jm_PolyFreakout</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>jm_whirl</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>jm_BoxFlow1</Name>
-    <Value>1</Value>
+    <Name>whirl</Name>
+    <Value>0</Value>
 </Widget>

@@ -69,7 +69,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNB ALPHA</Name>
-    <Value>0.373026669</Value>
+    <Value>0.207243621</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -84,12 +84,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LEB BRI</Name>
-    <Value>0.447871387</Value>
+    <Value>0.306966096</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LEB ALPHA</Name>
-    <Value>0.125711560</Value>
+    <Value>0.180828661</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -104,12 +104,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNP BRI</Name>
-    <Value>0.226473272</Value>
+    <Value>0.175000012</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LNP ALPHA</Name>
-    <Value>0.095538333</Value>
+    <Value>0.108463615</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -158,76 +158,76 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>BigSphere1_TwitterOneUser_old.net</Name>
+    <Name>BigSphere1_1_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>BigSphere_TwitterOneUser_old.net</Name>
+    <Name>BigSphere_1_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>Circular_Data4Men_new.net</Name>
+    <Name>Circular_0_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>NestedGalaxy2_TwitterMax_old.net</Name>
+    <Name>Circular_4_new.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>NestedGalaxy3_TwitterMax_old.net</Name>
+    <Name>Galaxy2_0_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>NestedGalaxy_TwitterMax_old.net</Name>
+    <Name>Galaxy3_0_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>NotSimple_Twitter4Men_new.net</Name>
+    <Name>Galaxy_0_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>PointyNetwork_4Men_new.net</Name>
+    <Name>NS_4_new.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>Simple_Twitter_old.net</Name>
+    <Name>Pointy_4_new.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>Spiky2_TwitterOneuser_old.net</Name>
+    <Name>Simple_0_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>Spiky_TwitterOneUser_old.net</Name>
+    <Name>Spiky2_1_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>twitterMax.net</Name>
+    <Name>Spiky_1_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>twitterOld.net</Name>
+    <Name>twitterOld_0_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>twitterOneUserMenCircular_old.net</Name>
+    <Name>twitter_0_old.net</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>twitterOneUserMen_old.net</Name>
+    <Name>twitter_1_old.net</Name>
     <Value>0</Value>
 </Widget>

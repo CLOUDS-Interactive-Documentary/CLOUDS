@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>512.000000000</XPosition>
+    <YPosition>23.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>modelScale</Name>
-    <Value>0.929064035</Value>
+    <Value>0.587684691</Value>
 </Widget>
 <Widget>
     <Kind>28</Kind>

@@ -2,26 +2,26 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>706.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>POINT SIZE</Name>
-    <Value>12.807882309</Value>
+    <Value>17.339900970</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RED</Name>
-    <Value>0.758620679</Value>
+    <Value>0.714285731</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>GREEN</Name>
-    <Value>0.019704433</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BLUE</Name>
-    <Value>0.556650221</Value>
+    <Value>0.650246322</Value>
 </Widget>

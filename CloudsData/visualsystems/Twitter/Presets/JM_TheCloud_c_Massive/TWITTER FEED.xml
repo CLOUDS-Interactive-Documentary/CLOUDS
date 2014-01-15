@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>TWITTER FEED</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>70.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>443.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>FEED X</Name>
-    <Value>0.000000060</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

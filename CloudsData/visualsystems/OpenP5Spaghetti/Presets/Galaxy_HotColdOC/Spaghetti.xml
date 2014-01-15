@@ -28,12 +28,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Particles per Walker</Name>
-    <Value>405.024627686</Value>
+    <Value>834.187194824</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SPIN SPEED</Name>
-    <Value>0.394088656</Value>
+    <Value>0.295566499</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -68,12 +68,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>Hue1</Name>
-    <Value>21.354679108</Value>
+    <Value>241.182266235</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>Saturation1</Name>
-    <Value>190.147781372</Value>
+    <Value>94.581283569</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -83,12 +83,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>Hue2</Name>
-    <Value>141.945800781</Value>
+    <Value>160.788177490</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>Saturation2</Name>
-    <Value>195.073883057</Value>
+    <Value>154.679794312</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

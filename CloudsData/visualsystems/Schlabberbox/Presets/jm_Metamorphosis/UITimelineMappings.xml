@@ -4,8 +4,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>Particle Speed</WidgetName>
-                <WidgetID>8</WidgetID>
+                <WidgetName>Force Amount</WidgetName>
+                <WidgetID>6</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -36,8 +36,8 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Force Amount</WidgetName>
-                <WidgetID>6</WidgetID>
+                <WidgetName>Particle Speed</WidgetName>
+                <WidgetID>8</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>

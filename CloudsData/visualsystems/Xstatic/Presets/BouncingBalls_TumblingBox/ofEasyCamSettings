@@ -7,9 +7,9 @@ transformMatrix
 fov
 60
 near
-6.65107
+1
 far
-6651.07
+100000
 lensOffset
 0, 0
 isOrtho

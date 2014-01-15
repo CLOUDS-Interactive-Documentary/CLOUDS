@@ -18,6 +18,7 @@ void CloudsVisualSystemAutomata::selfSetupGui()
     customGui->addToggle("2D", &bIs2D);
     customGui->addSlider("2D SCALE", 1, 18, &scale2D);
     customGui->addToggle("USE INPUT", &bDoInput);
+    customGui->addToggle("FILL", &bFill);
     customGui->addSlider("RADIUS", 1.0, 50.0, &radius);
     
     customGui->addSpacer();
@@ -78,6 +79,14 @@ void CloudsVisualSystemAutomata::guiRenderEvent(ofxUIEventArgs &e){
 }
 
 //--------------------------------------------------------------
+void CloudsVisualSystemAutomata::selfSetDefaults()
+{
+    radius = 5.0f;
+    bFill = true;
+    bDoInput = true;
+}
+
+//--------------------------------------------------------------
 void CloudsVisualSystemAutomata::selfSetup()
 {
     // Load the shaders.
@@ -85,10 +94,6 @@ void CloudsVisualSystemAutomata::selfSetup()
     blenderShader.load("", getVisualSystemDataPath() + "shaders/blender.frag");
     bIs2D = true;
 	
-    // Set defaults.
-    radius = 5.0f;
-    bDoInput = true;
-
     seedDir.listDir(getVisualSystemDataPath() + "seedImages");
     seedDir.sort();
     selectedSeedIdx = -1;
@@ -165,6 +170,11 @@ void CloudsVisualSystemAutomata::selfSceneTransformation(){
 //--------------------------------------------------------------
 void CloudsVisualSystemAutomata::selfUpdate()
 {
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    ofPushStyle();
+    
+    glDisable(GL_LIGHTING);
+    
     fgColor1.setHsb(fgParams1[0], fgParams1[1], fgParams1[2]);
     fgColor2.setHsb(fgParams2[0], fgParams2[1], fgParams2[2]);
     
@@ -173,7 +183,6 @@ void CloudsVisualSystemAutomata::selfUpdate()
         bRestart = false;
     }
     
-    ofPushStyle();
     ofEnableAlphaBlending();
     {
         texFbo.begin();
@@ -184,13 +193,36 @@ void CloudsVisualSystemAutomata::selfUpdate()
             outFbo.draw(0, 0);
             
             if (bDoInput) {
-                // Map the coords to the 2D scale.
-                float inputX = ofMap(GetCloudsInputX(), 0, getSharedRenderTarget().getWidth(),
-                                     getSharedRenderTarget().getWidth() * (0.5f - 0.5f / scale2D), getSharedRenderTarget().getWidth() * (0.5f + 0.5f / scale2D));
-                float inputY = ofMap(GetCloudsInputY(), 0, getSharedRenderTarget().getHeight(),
-                                     getSharedRenderTarget().getHeight() * (0.5f - 0.5f / scale2D), getSharedRenderTarget().getHeight() * (0.5f + 0.5f / scale2D));
                 ofSetColor(255);
-                ofCircle(inputX, inputY, radius);
+                ofPushStyle();
+                if (bFill) {
+                    ofFill();
+                }
+                else {
+                    ofNoFill();
+#ifdef CLOUDS_APP
+                    // EZ: Standalone looks bad with it, CLOUDS looks bad without it. Don't know why...
+                    ofSetLineWidth(2);
+#endif
+                }
+                
+                map<int, CloudsInteractionEventArgs> inputPoints = GetCloudsInputPoints();
+                for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
+                    // Map the coords to the 2D scale.
+                    float inputX = ofMap(GetCloudsInputX(), 0, getSharedRenderTarget().getWidth(),
+                                         getSharedRenderTarget().getWidth() * (0.5f - 0.5f / scale2D), getSharedRenderTarget().getWidth() * (0.5f + 0.5f / scale2D));
+#ifdef OCULUS_RIFT
+                    // Flipped...
+                    float inputY = ofMap(GetCloudsInputY(), getSharedRenderTarget().getHeight(), 0,
+                                         getSharedRenderTarget().getHeight() * (0.5f - 0.5f / scale2D), getSharedRenderTarget().getHeight() * (0.5f + 0.5f / scale2D));
+#else
+                    float inputY = ofMap(GetCloudsInputY(), 0, getSharedRenderTarget().getHeight(),
+                                         getSharedRenderTarget().getHeight() * (0.5f - 0.5f / scale2D), getSharedRenderTarget().getHeight() * (0.5f + 0.5f / scale2D));
+#endif
+                    
+                    ofCircle(inputX, inputY, radius);
+                }
+                ofPopStyle();
             }
         }
         texFbo.end();
@@ -208,7 +240,9 @@ void CloudsVisualSystemAutomata::selfUpdate()
         conwayShader.end();
         outFbo.end();
     }
+    
     ofPopStyle();
+    glPopAttrib();
 }
 
 //--------------------------------------------------------------
@@ -241,6 +275,15 @@ void CloudsVisualSystemAutomata::selfDrawBackground()
         render();
         ofPopMatrix();
     }
+    
+    // Debug panels.
+//    ofSetColor(128);
+//    ofRect(0, 0, texFbo.getWidth() * 0.5, texFbo.getHeight() * 0.5);
+//    ofRect(texFbo.getWidth() * 0.5, 0, outFbo.getWidth() * 0.5, outFbo.getHeight() * 0.5);
+//    
+//    ofSetColor(255);
+//    texFbo.draw(0, 0, texFbo.getWidth() * 0.5, texFbo.getHeight() * 0.5);
+//    outFbo.draw(texFbo.getWidth() * 0.5, 0, outFbo.getWidth() * 0.5, outFbo.getHeight() * 0.5);
 }
 
 //--------------------------------------------------------------
@@ -287,7 +330,7 @@ void CloudsVisualSystemAutomata::selfInteractionEnded(CloudsInteractionEventArgs
 }
 
 void CloudsVisualSystemAutomata::selfInteractionMoved(CloudsInteractionEventArgs& args){
-	currentInput = ofVec2f(args.position.x, args.position.y);
+
 }
 
 void CloudsVisualSystemAutomata::selfInteractionStarted(CloudsInteractionEventArgs& args){

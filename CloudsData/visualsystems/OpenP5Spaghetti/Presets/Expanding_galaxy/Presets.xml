@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1007.000000000</XPosition>
-    <YPosition>46.000000000</YPosition>
+    <XPosition>657.000061035</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -22,6 +22,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Blue_hairballOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>blue_purple</Name>
     <Value>0</Value>
 </Widget>
@@ -29,6 +34,26 @@
     <Kind>2</Kind>
     <Name>blue_yellow</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BlueGreen_dottedWorms</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BlueGreen_worms</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BlueScribbles</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BlueSmoothScribbles</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -42,7 +67,52 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Expanding_galaxy</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Fuzzy_galaxy</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>fuzzy_galaxy2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Fuzzy_galaxyOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>fuzzy_scribbles</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Galaxy_HotCold</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Galaxy_HotColdOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Green_Lidar</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Green_Lidar2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Green_Lidar2OC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -62,42 +132,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>PurpleYellow_worms</Name>
+    <Name>Lightrainbow_scribbles</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Rainbow_worms</Name>
+    <Name>Lightrainbow_scribblesOC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>red_green</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>scribbles</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>VioletBlue_Nebula</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>VioletBlue_worms</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BlueGreen_worms</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Slender_Green_worms</Name>
+    <Name>MilkyWay</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -107,17 +152,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Lightrainbow_scribbles</Name>
+    <Name>PurpleYellow_worms</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>BlueGreen_dottedWorms</Name>
+    <Name>PurpleYellow_wormsOC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>RedEmber_worms</Name>
+    <Name>Rainbow_worms</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -132,16 +177,46 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>MilkyWay</Name>
+    <Name>red_green</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Galaxy_HotCold</Name>
+    <Name>RedEmber_worms</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Expanding_galaxy</Name>
-    <Value>1</Value>
+    <Name>scribble</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>scribbles</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>scribblesOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Slender_Green_worms</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SmoothScribblesOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>VioletBlue_Nebula</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>VioletBlue_worms</Name>
+    <Value>0</Value>
 </Widget>

@@ -2,12 +2,17 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>558.000000000</XPosition>
-    <YPosition>124.000000000</YPosition>
+    <XPosition>1079.000122070</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>basicNameCloud</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>greenLantern</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -29,6 +34,31 @@
     <Kind>2</Kind>
     <Name>JM_TheCloud</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_TheCloud_a</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_TheCloud_b</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_TheCloud_c_Massive</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_TheCloud_d</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_TheCloud_e_Massive</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -82,11 +112,31 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>stars</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>stars2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>stars3</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>stars_handles</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>tweetDeck</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>JM_TheCloud_a</Name>
-    <Value>1</Value>
+    <Name>TweetDeck_NameCloud_Lines</Name>
+    <Value>0</Value>
 </Widget>

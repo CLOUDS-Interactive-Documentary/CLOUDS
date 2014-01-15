@@ -22,8 +22,8 @@
         <ow>0.995385468</ow>
         <easein>0</easein>
         <easeout>0</easeout>
-        <time>00:00:15:861</time>
-        <value>0.074999988</value>
+        <time>00:00:18:558</time>
+        <value>0.050000012</value>
     </key>
     <key>
         <px>312.338226318</px>
@@ -35,7 +35,20 @@
         <ow>0.674239159</ow>
         <easein>0</easein>
         <easeout>0</easeout>
-        <time>00:00:29:174</time>
+        <time>00:00:46:707</time>
+        <value>0.000000000</value>
+    </key>
+    <key>
+        <px>-309.569641113</px>
+        <py>-9.292838097</py>
+        <pz>61.715530396</pz>
+        <ox>0.028942062</ox>
+        <oy>-0.633601546</oy>
+        <oz>-0.012088689</oz>
+        <ow>0.773024917</ow>
+        <easein>0</easein>
+        <easeout>0</easeout>
+        <time>00:01:31:372</time>
         <value>0.000000000</value>
     </key>
 </keyframes>

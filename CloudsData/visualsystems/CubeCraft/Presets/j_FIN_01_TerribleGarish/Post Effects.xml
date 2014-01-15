@@ -1,0 +1,37 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Post Effects</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1485.000122070</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Enable</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Chroma_Distortion</Name>
+    <Value>0.418719202</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Grain_Distortion</Name>
+    <Value>0.014778325</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Do Bloom</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Bloom Level</Name>
+    <Value>0.472906411</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Bloom Size</Name>
+    <Value>4</Value>
+</Widget>

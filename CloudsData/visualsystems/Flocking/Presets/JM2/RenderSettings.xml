@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>118.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>POINT SIZE</Name>
-    <Value>12.216749191</Value>
+    <Value>18.128078461</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

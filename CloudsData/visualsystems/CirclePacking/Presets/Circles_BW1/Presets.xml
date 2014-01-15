@@ -7,17 +7,7 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>Basic</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>Blank</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Circles_Black</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -32,26 +22,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Circles_Gradient</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Circles_Gradient_2</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Circles_LitePurple</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Circles_LitePurpleGreen</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>Circles_Social</Name>
     <Value>0</Value>
 </Widget>
@@ -62,16 +32,31 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Circles_Social3</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Circles_Variegated</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Circles_VariegatedAutumnal</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Circles_VariegatedBiological</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Circles_Watery</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>NASDAQ</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Circles_Social3</Name>
     <Value>0</Value>
 </Widget>

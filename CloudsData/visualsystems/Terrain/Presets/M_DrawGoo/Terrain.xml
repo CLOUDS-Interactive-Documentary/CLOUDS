@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Terrain</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>213.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>0.006049620</Value>
+    <Value>0.197825640</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -19,6 +19,11 @@
     <Kind>2</Kind>
     <Name>Show Debug</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Height Scale</Name>
+    <Value>30.000001907</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

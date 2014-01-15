@@ -328,15 +328,8 @@ void CloudsVisualSystemCubeCraft::selfSetup()
 
 	colorMap.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png");
 	
-	cout << "Number of boxes == " << (dimX * dimY * dimZ) << endl;
-	
-	
+	//cout << "Number of boxes == " << (dimX * dimY * dimZ) << endl;
 	ofxObjLoader::load( getVisualSystemDataPath() + "models/box.obj", cubeMesh );
-	
-	cubeIndexCount = cubeMesh.getIndices().size();
-	cubeVbo.setVertexData( &cubeMesh.getVertices()[0], cubeMesh.getVertices().size(), GL_STATIC_DRAW );
-	cubeVbo.setNormalData( &cubeMesh.getNormals()[0], cubeMesh.getNormals().size(), GL_STATIC_DRAW );
-	cubeVbo.setIndexData( &cubeMesh.getIndices()[0], cubeMesh.getIndices().size(), GL_STATIC_DRAW );
 	
 	loadShaders();
 	
@@ -693,8 +686,6 @@ void CloudsVisualSystemCubeCraft::selfExit()
 	cubeMesh.clear();
 	
 	voxelVbo.clear();
-	
-	cubeVbo.clear();
 	
 	unloadShaders();
 }

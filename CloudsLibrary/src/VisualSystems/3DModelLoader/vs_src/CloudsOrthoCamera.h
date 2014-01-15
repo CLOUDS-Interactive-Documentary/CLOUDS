@@ -75,6 +75,16 @@ public:
 	bool bOrbitMode;
 	bool bDisableEasyCamControls;
 	
+	void setToStartPosition(ofVec3f targetPos = ofVec3f());
+	
+	float& getMinTilt()
+	{
+		return minTilt;
+	}
+	float& getMaxTilt()
+	{
+		return maxTilt;
+	}
 	
 private:
 	void setDistance(float distance, bool save);
@@ -130,7 +140,6 @@ private:
 	
 	ofVec2f orbitVel;
 	float maxOrbitDistance, minOrbitDistance, orbitZoomFrequency;
-	
 	
 	ofxUISuperCanvas* gui;
 	float mouseScl, deadZone, cameraSpeed, pitchScale, tiltLimit, orbitVelAttenuation, minTilt, maxTilt;

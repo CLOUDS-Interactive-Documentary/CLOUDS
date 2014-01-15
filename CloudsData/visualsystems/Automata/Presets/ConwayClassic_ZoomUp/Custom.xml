@@ -18,11 +18,16 @@
 <Widget>
     <Kind>4</Kind>
     <Name>2D SCALE</Name>
-    <Value>1.045241833</Value>
+    <Value>2.973725557</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>USE INPUT</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FILL</Name>
     <Value>1</Value>
 </Widget>
 <Widget>

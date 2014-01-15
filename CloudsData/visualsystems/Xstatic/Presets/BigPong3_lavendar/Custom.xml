@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1110.000000000</XPosition>
-    <YPosition>15.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -38,12 +38,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>circle.png</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>spark.png</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -93,17 +93,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>ROTATE ANGLE</Name>
-    <Value>97.105262756</Value>
+    <Value>78.917999268</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>ROTATE SPEED</Name>
-    <Value>4.390244007</Value>
+    <Value>7.049100876</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>PULL SPEED</Name>
-    <Value>28.500000000</Value>
+    <Value>15.359988213</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -113,7 +113,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>DRAG</Name>
-    <Value>0.593750000</Value>
+    <Value>0.540360510</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>

@@ -1,7 +1,22 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>425.000000000</XPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Show Neurons</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Depth Coloring</Name>
+    <Value>0.600985229</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Show Camera Path</Name>
+    <Value>0</Value>
+</Widget>

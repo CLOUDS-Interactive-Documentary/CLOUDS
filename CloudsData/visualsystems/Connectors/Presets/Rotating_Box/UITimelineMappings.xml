@@ -4,14 +4,6 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>Boundary Size</WidgetName>
-                <WidgetID>8</WidgetID>
-                <WidgetCanvasParent>Custom</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>Max Connections</WidgetName>
                 <WidgetID>10</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
@@ -22,6 +14,14 @@
             <Widget>
                 <WidgetName>Min Connection Distance</WidgetName>
                 <WidgetID>6</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Boundary Size</WidgetName>
+                <WidgetID>8</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>

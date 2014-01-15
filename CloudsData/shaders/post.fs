@@ -6,6 +6,10 @@ uniform vec2 resolution;
 uniform vec2 dMapResolution;
 uniform float chromaDist;
 uniform float grainDist;
+uniform float doBloom;
+uniform float bloomAmount;
+uniform int bloomSize;
+
 
 vec2 barrelDistortion(vec2 coord, float amt) {
 	vec2 cc = coord - 0.5;
@@ -58,8 +62,18 @@ void main(){
     
 	vec3 sumcol = vec3(0.0);
 	vec3 sumw = vec3(0.0);
+    vec4 sum = vec4(0);
+    if(doBloom == 1.){
+    for(int i= -bloomSize ;i < bloomSize; i++)
+    {
+        for (int j = -bloomSize; j < bloomSize; j++)
+        {
+            float m = pow(max(0.,1.-length(vec2(float(i)/float(bloomSize), float(j)/float(bloomSize)) - vec2(0.))),2.);
+            sum += texture2DRect(tex0, gl_TexCoord[0].st + vec2(float(j), float(i)) )*m;
+        }
+    }
+    }
     
-   
 	for ( int i=0; i<num_iter;++i ){
 		float t = float(i) * reci_num_iter_f;
 		vec3 w = spectrum_offset( t );
@@ -67,5 +81,7 @@ void main(){
 		sumcol += (w) * texture2DRect( tex0, (offset*barrelDistortion(uv/resolution.xy, chromaDist*t*power))*resolution.xy ).rgb;
 	}
     
-	gl_FragColor = vec4(sumcol.rgb / sumw, 1.0);
+    vec4 color = vec4((sumcol.rgb + mix(vec3(0.),vec3(sum),bloomAmount) )/ sumw, gl_Color.a);
+    
+	gl_FragColor =  color;
 }
