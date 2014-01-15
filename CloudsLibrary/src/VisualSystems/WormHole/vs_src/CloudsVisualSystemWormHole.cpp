@@ -486,9 +486,6 @@ void CloudsVisualSystemWormHole::selfUpdate()
 	{
 		pathCamera.update( cameraPathPosition );
 		
-		getCameraRef().setPosition(pathCamera.getPosition());
-		getCameraRef().lookAt(pathCamera.getLookAtDir() + pathCamera.getPosition());
-		
 		//light on path
 		lightPos = pathCamera.getPositionSpline().getPoint( ofClamp(pathCamera.u + lightPathOffset, 0, 1) );
 		
