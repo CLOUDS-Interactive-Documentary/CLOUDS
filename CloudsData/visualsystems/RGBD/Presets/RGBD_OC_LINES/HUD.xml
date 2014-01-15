@@ -1,0 +1,127 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>HUD</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>877.000000000</XPosition>
+    <YPosition>173.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>QUESTION DIST</Name>
+    <Value>650.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>QUESTION ROT H</Name>
+    <Value>28.817733765</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>QUESTION ROT V</Name>
+    <Value>-12.857147217</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BB Q NONE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BB Q CAMERA</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BB Q OCULUS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LOWER 3RD DIST</Name>
+    <Value>364.285736084</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LOWER 3RD ROT H</Name>
+    <Value>3.103446960</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LOWER 3RD ROT V</Name>
+    <Value>2.216751099</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BB L3 NONE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BB L3 CAMERA</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BB L3 OCULUS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PROJ EX DIST</Name>
+    <Value>300.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PROJ EX ROT H</Name>
+    <Value>90.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PROJ EX ROT V</Name>
+    <Value>90.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BB PE NONE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BB PE CAMERA</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BB PE OCULUS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAP DIST</Name>
+    <Value>300.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAP ROT H</Name>
+    <Value>90.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAP ROT V</Name>
+    <Value>90.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BB M NONE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BB M CAMERA</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BB M OCULUS</Name>
+    <Value>0</Value>
+</Widget>

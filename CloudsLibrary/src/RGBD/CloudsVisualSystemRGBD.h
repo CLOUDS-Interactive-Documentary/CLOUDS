@@ -226,7 +226,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     float fillAlpha;
 	float fillFaceFalloff;
 	float fillRetractionFalloff;
-    float filLFaceMinRadius;
+    float fillFaceMinRadius;
 //	float fillForceGeoRetraction;
 
     ///OCCLUSION

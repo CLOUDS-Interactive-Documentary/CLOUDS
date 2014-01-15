@@ -17,6 +17,10 @@ void CloudsVisualSystemDrawnLine::selfSetupGui(){
     bShowDebug = false;
     customGui->addToggle("debugView_drawnLine", &bShowDebug);
     
+    matchThreshold = 7;
+    customGui->addSlider("matchThreshold", 1, 20, &matchThreshold);
+    
+    
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemDrawnLine::selfGuiEvent);
 	guis.push_back(customGui);
@@ -97,6 +101,11 @@ void CloudsVisualSystemDrawnLine::selfUpdate(){
 //    }
     
     APP.bShowDebug = bShowDebug;
+    
+    if (APP.seeker.isThreadRunning() == false){
+        APP.seeker.thresh = matchThreshold;
+    }
+    
     APP.update();
 
     

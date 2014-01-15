@@ -62,6 +62,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>RGBDAct1</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>RGBDMain</Name>
     <Value>0</Value>
 </Widget>
@@ -87,11 +92,21 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>SimpleLines</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SimpleLines_Points</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>TriLines</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>RGBDAct1</Name>
-    <Value>1</Value>
+    <Name>FilledMesh50</Name>
+    <Value>0</Value>
 </Widget>
