@@ -13,9 +13,10 @@ bool logsort(pair<float,string> a, pair<float,string> b ){
     return a.first > b.first;
 }
 
-bool topic_score_sort(pair<string,int> a, pair<string,int>b ){
+bool score_sort(pair<string,int> a, pair<string,int>b ){
     return a.second > b.second;
 }
+
 
 CloudsStoryEngine::CloudsStoryEngine(){
     parser = NULL;
@@ -261,7 +262,7 @@ void CloudsStoryEngine::setCustomAct(CloudsAct* act){
 	customAct = act;
 }
 
-vector<string> CloudsStoryEngine::getValidTopicsForNextAct(CloudsRun& run){
+bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset){
     
     if(run.accumuluatedTopics.size() == 0 || run.clipHistory.size() == 0){
         ofLogError("CloudsStoryEngine::buildAct") << " no topics for next act!";
@@ -270,10 +271,46 @@ vector<string> CloudsStoryEngine::getValidTopicsForNextAct(CloudsRun& run){
     map<string, int>::iterator it;
     vector<string> topics;
     for(it = run.accumuluatedTopics.begin(); it != run.accumuluatedTopics.end(); it++){
-        topics.push_back(it->first);
+            topics.push_back(it->first);
     }
     
-    return topics;
+
+    map<string, int> potentialPresetsMap;
+    for (int i =0; i<topics.size(); i++) {
+          vector<CloudsVisualSystemPreset> current = visualSystems->getPresetsForKeyword(topics[i]);
+        
+        for (int j =0 ; j < current.size(); j++) {
+            if( ofContains(run.presetHistory, current[j].getID() )){
+                cout<<current[j].getID()<<" already in history so not selecting"<<endl;
+                continue;
+            }
+            potentialPresetsMap[current[j].getID()]++;
+        }
+        
+    }
+    
+    map<string, int>::iterator it1;
+    vector< pair<string,int> > potentialPresets;
+    for (it1 = potentialPresetsMap.begin(); it1 != potentialPresetsMap.end(); it1++) {
+        potentialPresets.push_back(make_pair(it1->first, it1->second));
+    }
+
+
+    
+    if (potentialPresets.size() > 0) {
+        sort(potentialPresets.begin(), potentialPresets.end(),score_sort);
+        for( int i =0; i< potentialPresets.size(); i++){
+            cout<<"Potential preset : "<<potentialPresets[i].first<<" has score : "<<potentialPresets[i].second<<endl;
+        }
+        cout<<"Selected preset "<<potentialPresets[0].first<<" for interlude "<<endl;
+        preset = visualSystems->getPresetWithID(potentialPresets[0].first);
+        return  true;
+    }
+    else{
+        ofLogError("CloudsStoryEngine::getPresetForInterlude") << "Defaulting to cluster map because we found no topics from the last act";
+        return false;
+    }
+
 }
 
 #pragma mark INIT ACT
@@ -299,7 +336,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run){
         topicCountPairs.push_back( make_pair(it->first, it->second));
     }
     
-    sort(topicCountPairs.begin(), topicCountPairs.end(), topic_score_sort);
+    sort(topicCountPairs.begin(), topicCountPairs.end(), score_sort);
     
     string validTopic = "";
     for(int i = 0; i < topicCountPairs.size(); i++){
