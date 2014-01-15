@@ -469,16 +469,6 @@ void CloudsVisualSystemClusterMap::traverse(){
 }
 
 void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
-    //	if(firstClip){
-    //		cout << "** TRAVERSE START JOURNEY AT " << clip.getID() << endl;
-    //	}
-    //	else{
-    //		cout << "** TRAVERSE FROM :	" << nodes[currentNodeIndex].clipId << " >>> " << nodes[ newNodeIndex ].clipId << endl;
-    //	}
-	
-    //	for(int i = 0; i < n.adjascentClipIds.size(); i++){
-    //		cout << "	** ADJASCENT CLIPS " << n.adjascentClipIds[i] << endl;
-    //	}
 	
 	if(clipIdToNodeIndex.find(clip.getID()) == clipIdToNodeIndex.end()){
 		ofLogError("CloudsVisualSystemClusterMap::traverseToClip") << "Isn't included in cluster map";
