@@ -15268,7 +15268,7 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="MazeGenerator_FlyOver2_">
+<system name="MazeGenerator_FlyOver2">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -17129,18 +17129,6 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
-<system name="Ocean_BackgroundTestDelete">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
 <system name="Ocean_ChoppyBlueOcean">
     <keywords>journey|narrative|storytelling</keywords>
     <links></links>
@@ -17199,25 +17187,13 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
 <system name="Ocean_Dark_Stormy">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="Ocean_DayNight">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
@@ -17351,7 +17327,7 @@
     </suppressions>
     <comments></comments>
     <grade>A</grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
@@ -17612,18 +17588,6 @@
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>1</sound_allow_vo>
     <interlude>1</interlude>
-</system>
-<system name="Ocean_GlumOC">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
 </system>
 <system name="Ocean_Gray_Stormy">
     <keywords></keywords>
