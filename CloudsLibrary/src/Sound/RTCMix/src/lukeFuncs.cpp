@@ -205,7 +205,7 @@ float LOADSOUND(string file, string handle)
     float duration = playa.getDuration();
     playa.close();
     
-    OF_buffer_load_set((char*)file.c_str(), (char*)handle.c_str(), 0., 30.);
+    OF_buffer_load_set((char*)file.c_str(), (char*)handle.c_str(), 0., duration);
     // you can now use the buffer name (bname) in rtinput("MMBUF", "buffername")
     
     if(LUKEDEBUG) printf("LOADED SOUND %s: file: %s  duration: %f\n", (char*)handle.c_str(),
