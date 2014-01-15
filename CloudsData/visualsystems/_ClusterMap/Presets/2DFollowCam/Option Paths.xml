@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Option Paths</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>213.000061035</XPosition>
-    <YPosition>453.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>99.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LINE WIDTH</Name>
-    <Value>1.866995096</Value>
+    <Value>2.211822510</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>OP_SAT</Name>
-    <Value>0.554974437</Value>
+    <Value>0.366491824</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -38,5 +38,5 @@
 <Widget>
     <Kind>25</Kind>
     <Name>OP_A</Name>
-    <Value>0.615763545</Value>
+    <Value>0.482758611</Value>
 </Widget>
