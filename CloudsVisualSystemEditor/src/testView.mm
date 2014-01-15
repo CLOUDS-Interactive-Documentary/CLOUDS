@@ -20,7 +20,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)setup
 {
-//	currentVisualSystem = NULL;
+	currentVisualSystem = NULL;
 	selectedPreset = NULL;
 	
     parser.loadFromFiles();
@@ -113,6 +113,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 				
                 testBatch.clear();
                 visualSystems.DeallocateSystems();//freeSystemPointers();
+
                 currentVisualSystem = NULL;
 //				currentVisualSystem = ofPtr<CloudsVisualSystem>( (CloudsVisualSystem*)(NULL) );
 				
@@ -164,11 +165,13 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		if(currentVisualSystem != NULL){
             currentVisualSystem->stopSystem();
 			currentVisualSystem->exit();
-            visualSystems.DeallocateSystems();
+            currentVisualSystem = NULL;
+
         }
 
 		cout << "loading system " << visualSystems.getPresets()[ self.selectedPresetIndex ].systemName << " preset " << visualSystems.getPresets()[self.selectedPresetIndex].presetName << endl;
-		
+        
+        visualSystems.DeallocateSystems();
         currentVisualSystem = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[ self.selectedPresetIndex ].systemName );
 		
 		if(currentVisualSystem != NULL){
@@ -336,14 +339,14 @@ bool clipsort(CloudsClip a, CloudsClip b){
         if(ofFile::doesFileExist(refreshFlagPath)){
             ofFile::removeFile(refreshFlagPath);
         }
-        delete system;
+        visualSystems.DeallocateSystems();
     }
     
     [clipTable reloadData];
     [suppressedClipTable reloadData];
     [presetTable reloadData];
-//    [allKeywordTable reloadData];
     [allClipTable reloadData];
+    
 }
 
 - (IBAction) deletePreset:(id)sender

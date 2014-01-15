@@ -16,9 +16,17 @@ void testApp::setup(){
 	storyEngine.combinedClipsOnly = false;
 	storyEngine.setup();
 	
-	srand(ofGetSeconds());
+    
 	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
-	CloudsAct* act = storyEngine.buildAct(run, startingNodes[ ofRandom(startingNodes.size()) ]);
+	srand(ofGetSeconds());
+    cout << "starting node size is " << startingNodes.size() << endl;
+    ofRandomuf();
+    ofRandomuf();
+    ofRandomuf();
+    
+    int startNode = ofRandomuf()*startingNodes.size();
+    cout << "START NODE index is " << startNode << endl;
+	CloudsAct* act = storyEngine.buildAct(run, startingNodes[ startNode ]);
 	
 	//act->triggerAllEvents();	
 	run.topicHistory = act->getAllTopics();
@@ -28,6 +36,7 @@ void testApp::setup(){
 		cout << "	** " << run.clipHistory[i].getID() << endl;
 	}
 	
+    clusterMap.setNumSamples(4);
 	clusterMap.setup();
 	clusterMap.setRun(run);
 	clusterMap.buildEntireCluster(parser);
