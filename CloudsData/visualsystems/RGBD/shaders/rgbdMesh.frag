@@ -131,7 +131,7 @@ void main(){
                        mix(headPositionAttenuation, 1.0, isSkin()) * // 
                        edgeAttenuate;
     
-    //gl_FragColor.rgb = vec3(edgeAttenuate);
+//    gl_FragColor.rgb = vec3(1.0);
     
     gl_FragColor.a = 1.0;
 }

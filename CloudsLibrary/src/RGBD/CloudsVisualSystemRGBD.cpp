@@ -81,6 +81,11 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	meshForceGeoRetraction = .0;
 	meshMaxActuatorRetract = 0.0;
     
+    bEnableFill = false;
+	fillFaceFalloff = 0.0;
+	fillRetractionFalloff = 0.0;
+    fillFaceMinRadius = 0.0;
+
     bDrawOcclusion = true;
     occlusionVertexCount = 0;
    	occlusionXSimplify = 4.;
@@ -103,6 +108,8 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	
 	bMoveTransitionCameraUp = bMoveTransitionCameraDown = false;
 	
+    drawParticulate = false;
+    
 	//IF we move this before setup(NOT selfSetup) we can have the option of whether or not to load it to the gui
 	loadTransitionOptions("Transitions");
     
@@ -129,9 +136,9 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	generatePoints();
 	generateMesh();
 		
-//	particulateController.setParticleCount(20000);
-//	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-//	particulateController.setup();
+	particulateController.setParticleCount(10000);
+	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+	particulateController.setup();
 	
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
@@ -372,6 +379,30 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guimap[meshGui->getName()] = meshGui;
     //////////////////MESH
     
+    
+    //////////////////FILL
+	fillGui = new ofxUISuperCanvas("FILL", gui);
+	fillGui->copyCanvasStyle(gui);
+	fillGui->copyCanvasProperties(gui);
+	fillGui->setName("Fill");
+	fillGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	toggle = fillGui->addToggle("ENABLE", &bEnableFill);
+	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+	fillGui->resetPlacer();
+	fillGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+	fillGui->addWidgetToHeader(toggle);
+    
+	fillGui->addSlider("Mesh Alpha", 0., 1.0, &fillAlpha);
+	fillGui->addSlider("Face Min Radius", 0, 600., &fillFaceMinRadius);
+	fillGui->addSlider("Face Falloff", 0, 600., &fillFaceFalloff);
+    fillGui->addSlider("Edge Geo Retraction", 0, 1.0, &fillRetractionFalloff);
+    
+	ofAddListener(fillGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
+	guis.push_back(fillGui);
+	guimap[fillGui->getName()] = fillGui;
+    //////////////////FILL
+    
     ////////////////// OCCLUSION
 	occlusionGui = new ofxUISuperCanvas("OCCLUSION", gui);
 	occlusionGui->copyCanvasStyle(gui);
@@ -413,7 +444,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     
     
     //////////////////CAMERA
-	cameraGui =     new ofxUISuperCanvas("CAMERA", gui);
+	cameraGui = new ofxUISuperCanvas("CAMERA", gui);
 	cameraGui->copyCanvasStyle(gui);
 	cameraGui->copyCanvasProperties(gui);
 	cameraGui->setName("Camera");
@@ -440,10 +471,16 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	particleGui->setName("Particle");
 	particleGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	particleGui->addToggle("DRAW PARTICLES", &drawParticulate);
+	toggle = particleGui->addToggle("ENABLE", &drawParticulate);
+	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+	particleGui->resetPlacer();
+	particleGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+	particleGui->addWidgetToHeader(toggle);
 	
 	particleGui->addSlider("BIRTH RATE", 0, .01, &particulateController.birthRate);
 	particleGui->addSlider("BIRTH SPREAD", 10, 10000, &particulateController.birthSpread);
+//    particleGui->addSlider("NUM PARTICLES", 10, 10000, &particulateController.birthSpread);
+    
 	particleGui->addSlider("POINT SIZE THRESHOLD", 0, .01, &particulateController.getPoints().sizeThreshold);
 	
 	particleGui->addSlider("POINT COLOR H", 0, 1.0, &pointColor.x);
@@ -514,14 +551,13 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	if(drawParticulate){
 		
-//		particulateController.birthPlace = translatedHeadPosition;
+		particulateController.birthPlace = translatedHeadPosition;
 		
 		glDisable(GL_LIGHTING);
 		glDisable(GL_DEPTH_TEST);
-//		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
-//		particulateController.getPoints().color.a = pointColor.w;
-//		
-//		particulateController.update();
+		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
+		particulateController.getPoints().color.a = pointColor.w;
+		particulateController.update();
 	}
     
 	updateActuators();
@@ -1170,7 +1206,7 @@ void CloudsVisualSystemRGBD::generateLines(){
 	
     ofMesh m;
 	//HORIZONTAL
-	for (float ystep = 0; ystep <= height; ystep += lineSpacing){
+	for (float ystep = 0; ystep < height; ystep += lineSpacing){
 		for (float xstep = 0; xstep <= width - lineGranularity; xstep += lineGranularity){
 			
 			ofVec3f stepA = ofVec3f(xstep, ystep, 0);
@@ -1391,6 +1427,43 @@ void CloudsVisualSystemRGBD::selfDraw(){
         
 		setupRGBDTransforms();
         
+        if(bEnableFill){
+            if(bDrawOcclusion){
+                drawOcclusionLayer();
+            }
+			
+			glEnable(GL_CULL_FACE);
+//            glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
+            glCullFace(GL_FRONT);
+			meshShader.begin();
+			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
+            
+			meshShader.setUniform1f("meshAlpha", fillAlpha);
+			meshShader.setUniform1f("triangleExtend",
+                                    getRGBDVideoPlayer().getFadeIn()  *
+                                    getRGBDVideoPlayer().getFadeOut() *
+                                    visualSystemFadeValue);
+            
+			meshShader.setUniform1f("meshRetractionFalloff",fillRetractionFalloff);
+			meshShader.setUniform1f("headMinRadius", fillFaceMinRadius);
+			meshShader.setUniform1f("headFalloff", fillFaceFalloff);
+			meshShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
+			meshShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
+			meshShader.setUniform1f("forceGeoRetraction",0.0);
+//			meshShader.setUniform3f("actuatorDirection",
+//                                    meshActuator.x,
+//                                    meshActuator.y,
+//                                    meshActuator.z);
+            
+			meshShader.setUniform1f("colorBoost", meshColorBoost);
+			meshShader.setUniform1f("skinBoost", meshSkinBoost);
+			meshShader.setUniform1f("maxActuatorRetract", 1.0);
+            
+            mesh.draw(GL_TRIANGLES, 0, meshVertexCount);
+			
+			meshShader.end();
+			glDisable(GL_CULL_FACE);
+        }
         
 		if(drawMesh){
             
@@ -1398,9 +1471,13 @@ void CloudsVisualSystemRGBD::selfDraw(){
                 drawOcclusionLayer();
             }
 			
+            if(bEnableFill){
+                ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+            }
+            
 			glEnable(GL_CULL_FACE);
-            glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
-
+//            glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
+            glCullFace(GL_FRONT);
             
 			meshShader.begin();
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
@@ -1518,7 +1595,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	if(drawParticulate){
 		glEnable(GL_DEPTH_TEST);
-//		particulateController.draw();
+		particulateController.draw();
 	}
 	
 	glPopAttrib();

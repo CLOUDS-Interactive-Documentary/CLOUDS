@@ -199,10 +199,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool refreshLines;
 	void generateLines();
 	
+    
 	//MESH
 	ofxUISuperCanvas *meshGui;
 	ofShader meshShader;
-//	ofVboMesh mesh;
     ofVbo mesh;
     int meshVertexCount;
 	bool drawMesh;
@@ -219,6 +219,15 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     float meshMaxActuatorRetract;
     bool refreshMesh;
 	void generateMesh();
+
+    //FILL
+	ofxUISuperCanvas *fillGui;
+    bool bEnableFill;
+    float fillAlpha;
+	float fillFaceFalloff;
+	float fillRetractionFalloff;
+    float fillFaceMinRadius;
+//	float fillForceGeoRetraction;
 
     ///OCCLUSION
 	ofxUISuperCanvas *occlusionGui;
@@ -246,8 +255,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     ofVec3f pointActuator;
     ofVec3f lineActuator;
     ofVec3f meshActuator;
-    
-    
 	
 	void loadShader();
 
@@ -256,14 +263,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxUISuperCanvas *questionGui;
     ofxUISuperCanvas *actuatorGui;
     
-	//TODO: move to hud
-	//ofxFTGLSimpleLayout displayFont;
 	bool drawParticulate;
 	float attenuatedCameraDrift;
 	GPUParticles::Controller particulateController;
     ofVec4f pointColor;
-
-
     
     ///PORTALS
 	float portalScale;
@@ -278,7 +281,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     CloudsPortal* selectedPortal;
 	void updateQuestions();
 	void drawQuestions();
-
 	
 	bool placingTransitionNodes;
 	bool drawTransitionNodes;
@@ -291,14 +293,4 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	RGBDTransitionType transitionType;
 	
 	float transitionVal;
-	
-//	ofVec3f questionXZ;
-//	float questionDriftRange;
-//	float questionYCenter;
-//	float questionYDriftRange;
-//	float questionYRange;
-//	float questionLifeSpan; //minutes
-	
-//	ofFloatColor questionBaseHSB;
-//	ofFloatColor questionHoverHSB;
 };
