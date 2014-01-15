@@ -344,6 +344,9 @@ class CloudsVisualSystem {
     //Background Props
     float bgAspectRatio;
 	bool bBarGradient;
+    bool bWashGradient;
+    float backgroundGradientExponent;
+    
     int gradientMode;
 	ofColor bgColor;
 	ofColor bgColor2;

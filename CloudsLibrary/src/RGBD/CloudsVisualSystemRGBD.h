@@ -255,8 +255,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     ofVec3f pointActuator;
     ofVec3f lineActuator;
     ofVec3f meshActuator;
-    
-    
 	
 	void loadShader();
 
@@ -265,14 +263,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxUISuperCanvas *questionGui;
     ofxUISuperCanvas *actuatorGui;
     
-	//TODO: move to hud
-	//ofxFTGLSimpleLayout displayFont;
 	bool drawParticulate;
 	float attenuatedCameraDrift;
 	GPUParticles::Controller particulateController;
     ofVec4f pointColor;
-
-
     
     ///PORTALS
 	float portalScale;
