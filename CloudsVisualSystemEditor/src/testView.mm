@@ -372,8 +372,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		//associatedClips = parser.getClipsWithKeyword(associatedKeywords);
 		[self updateAssociatedClips];
 		
-		selectedPreset->enabled = (enabledBox.state == NSOnState);
-		selectedPreset->oculusCompatible = (oculusBox.state == NSOnState);
+		selectedPreset->enabledScreen = (enabledBox.state == NSOnState);
+		selectedPreset->enabledOculus = (oculusBox.state == NSOnState);
 		selectedPreset->soundAllowVO   = (soundAllowVOBox.state == NSOnState);
         selectedPreset->soundExcludeVO = (soundExcludeVOBox.state == NSOnState);
         selectedPreset->interlude = (interludeBox.state == NSOnState);
@@ -489,7 +489,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 }
 
 - (IBAction) exportStandalone:(id)sender {
-	visualSystems.exportStandalonePresets();
+//	visualSystems.exportStandalonePresets();
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
@@ -534,9 +534,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		else if([@"grade" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String:
 					(string(visualSystems.getPresets()[presetIndex].hasFiles ? "" : "!!") +
-						   (visualSystems.getPresets()[presetIndex].enabled ? "+" : "-") +
+						   (visualSystems.getPresets()[presetIndex].enabledScreen ? "Sc" : "") +
 							visualSystems.getPresets()[presetIndex].grade +
-							(visualSystems.getPresets()[presetIndex].oculusCompatible ? "Oc" : "") +
+							(visualSystems.getPresets()[presetIndex].enabledOculus ? "Oc" : "") +
 							(visualSystems.getPresets()[presetIndex].hasSound() ? "Snd" : "")
 					 ).c_str()];
 		}
@@ -608,7 +608,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			int numPresets = 0;
 			for(int i = 0; i < presets.size(); i++){
 				if(!visualSystems.isClipSuppressed(presets[i].getID(), clip.getLinkName()) &&
-				   presets[i].enabled)
+				   presets[i].enabledScreen)
 				{
 					numPresets++;
 				}
@@ -688,8 +688,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			currentKeywords.stringValue = [NSString stringWithUTF8String: ofJoinString(associatedKeywords,",").c_str() ];
 //			notesText.stringValue = [NSString stringWithUTF8String: selectedPreset->comments.c_str() ];
 			grade.stringValue = [NSString stringWithUTF8String: selectedPreset->grade.c_str() ];
-			enabledBox.state = (selectedPreset->enabled ? NSOnState : NSOffState);
-			oculusBox.state = (selectedPreset->oculusCompatible ? NSOnState : NSOffState);
+			enabledBox.state = (selectedPreset->enabledScreen ? NSOnState : NSOffState);
+			oculusBox.state = (selectedPreset->enabledOculus ? NSOnState : NSOffState);
 //			soundBox.state = (selectedPreset->hasSound ? NSOnState : NSOffState);
             soundAllowVOBox.state = (selectedPreset->soundAllowVO ? NSOnState : NSOffState);
             soundExcludeVOBox.state = (selectedPreset->soundExcludeVO ? NSOnState : NSOffState);
@@ -722,7 +722,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	currentClipPresets.clear();
 	for(int i = 0; i < presets.size(); i++){
 		if(!visualSystems.isClipSuppressed(presets[i].getID(), clip.getLinkName()) &&
-		   presets[i].enabled)
+		   presets[i].enabled())
 		{
 			currentClipPresets.push_back( presets[i] );
 		}

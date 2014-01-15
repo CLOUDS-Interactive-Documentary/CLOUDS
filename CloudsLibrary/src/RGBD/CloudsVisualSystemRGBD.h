@@ -8,6 +8,7 @@
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
 #include "ofxFTGL.h"
+#include "CloudsPortalEvents.h"
 
 struct TransitionInfo{
 	ofVec3f inStartPos;

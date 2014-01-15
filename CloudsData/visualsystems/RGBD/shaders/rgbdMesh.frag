@@ -120,9 +120,9 @@ void main(){
     }
 
 	float attenuate = 1.0;
-    vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
+    //vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
     //vec4 col = normalcolor;
-    //vec4 col = depthcolor;
+    vec4 col = depthcolor;
 	//gl_FragColor = col * mix( colorBoost + headPositionAttenuation, 1. + skinBoost, isSkin())  * edgeAttenuate * meshAlpha * smoothstep(0.2, .3, actuatorExtendAttenuate);
 	gl_FragColor.rgb = col.rgb * meshAlpha * headPositionAttenuation * smoothstep(.2, .3, actuatorExtendAttenuate) * mix(headPositionAttenuation, 1.0, isSkin() );
     gl_FragColor.a = 1.0;

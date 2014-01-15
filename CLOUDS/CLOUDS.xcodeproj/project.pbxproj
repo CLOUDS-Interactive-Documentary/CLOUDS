@@ -1865,6 +1865,7 @@
 		A620E87718837DB300A02F5B /* lineMatchUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lineMatchUtils.cpp; sourceTree = "<group>"; };
 		A620E87818837DB300A02F5B /* lineMatchUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lineMatchUtils.h; sourceTree = "<group>"; };
 		A620E87918837DB300A02F5B /* statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = statistics.h; sourceTree = "<group>"; };
+		A633AB9118867E0A0088E767 /* CloudsPortalEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsPortalEvents.h; sourceTree = "<group>"; };
 		AE6F01F11880716900677B60 /* CLOUDS_KINECTDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_KINECTDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		C1644CBB186F92010024E091 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -3544,6 +3545,7 @@
 		64323E83187A4DAE00316058 /* Portal */ = {
 			isa = PBXGroup;
 			children = (
+				A633AB9118867E0A0088E767 /* CloudsPortalEvents.h */,
 				64323E85187A4DAE00316058 /* CloudsPortal.h */,
 				64323E84187A4DAE00316058 /* CloudsPortal.cpp */,
 				64323E87187A4DAE00316058 /* CloudsPortalRing.h */,

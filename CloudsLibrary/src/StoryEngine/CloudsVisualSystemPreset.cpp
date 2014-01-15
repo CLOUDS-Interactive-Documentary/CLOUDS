@@ -11,13 +11,15 @@
 #include "CloudsGlobal.h"
 
 CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
-	enabled = false;
+
+	enabledScreen = false;
+	enabledOculus = false;
 	indefinite = false;
 	
 	defaultedToFamily = false;
 	randomlySelected = false;
 	missingContent = false;
-	oculusCompatible = false;
+
 //	hasSound = false;
     system = NULL;
     
@@ -41,6 +43,9 @@ bool CloudsVisualSystemPreset::hasSound(){
     return soundAllowVO || soundExcludeVO;
 }
 
+bool CloudsVisualSystemPreset::enabled(){
+    return  enabledScreen || enabledOculus;
+}
 void CloudsVisualSystemPreset::loadTimeInfo(){
 	
 
