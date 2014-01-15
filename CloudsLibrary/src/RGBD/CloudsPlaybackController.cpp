@@ -489,7 +489,7 @@ void CloudsPlaybackController::updateTransition(){
 
             case TRANSITION_INTERLUDE_IN:
                 
-                sound.enterClusterMap();
+//                sound.enterClusterMap();
                 
                 if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
                     rgbdVisualSystem->transtionFinished();
@@ -864,7 +864,7 @@ void CloudsPlaybackController::cleanupInterlude(){
     
     if(currentVisualSystem == clusterMap) {
         clusterMap->stopSystem();
-        sound.exitClusterMap();
+//        sound.exitClusterMap();
 
     }
     else if(currentVisualSystem == interludeSystem){
