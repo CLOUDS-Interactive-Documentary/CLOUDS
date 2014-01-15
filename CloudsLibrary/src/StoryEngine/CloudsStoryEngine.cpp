@@ -274,45 +274,41 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
     for(it = run.accumuluatedTopics.begin(); it != run.accumuluatedTopics.end(); it++){
         topics.push_back(it->first);
     }
-    
 
-    map<string, int> potentialPresetsMap;
-    
-    for (int i =0; i < topics.size(); i++) {
-          vector<CloudsVisualSystemPreset> current = visualSystems->getPresetsForKeyword(topics[i]);
+    vector< pair<string,int> > potentialPresets;
+    vector<CloudsVisualSystemPreset> currentSelection = visualSystems->getPresetsForKeywords(topics,"",true);
         
-        for (int j = 0; j < current.size(); j++) {
+        for (int i =0 ; i < currentSelection.size(); i++) {
+            if( ofContains(run.presetHistory, currentSelection[i].getID() )){
+                cout<<currentSelection[i].getID()<<" already in history so not selecting"<<endl;
+                continue;
+            }
 #ifdef OCULUS_RIFT
-            if(!current[j].enabledOculus){
+            if(!currentSelection[i].enabledOculus){
                 continue;
             }
 #else
-            if(!current[j].enabledScreen){
+            if(!currentSelection[i].enabledScreen){
                 continue;
             }
 #endif
-            if( ofContains(run.presetHistory, current[j].getID() )){
-                cout<<current[j].getID()<<" already in history so not selecting"<<endl;
-                continue;
+            
+            vector<string> presetTopics = visualSystems->keywordsForPreset(currentSelection[i]);
+            int presetScore = 0;
+            
+            for (int k =0 ; k< presetTopics.size(); k++) {
+                if (ofContains(run.topicHistory, presetTopics[k])) {
+                    presetScore++;
+                }
             }
-            potentialPresetsMap[current[j].getID()]++;
+            cout<<currentSelection[i].getID()<<" , "<<presetScore<<","<<presetTopics.size()<<endl;
+            potentialPresets.push_back(make_pair(currentSelection[i].getID(), presetScore));
         }
         
-    }
-    
-    map<string, int>::iterator it1;
-    vector< pair<string,int> > potentialPresets;
-    for (it1 = potentialPresetsMap.begin(); it1 != potentialPresetsMap.end(); it1++) {
-        potentialPresets.push_back(make_pair(it1->first, it1->second));
-    }
-
 
     
     if (potentialPresets.size() > 0) {
         sort(potentialPresets.begin(), potentialPresets.end(),score_sort);
-        for( int i =0; i< potentialPresets.size(); i++){
-            cout<<"Potential preset : "<<potentialPresets[i].first<<" has score : "<<potentialPresets[i].second<<endl;
-        }
         cout<<"Selected preset "<<potentialPresets[0].first<<" for interlude "<<endl;
         preset = visualSystems->getPresetWithID(potentialPresets[0].first);
         return  true;
@@ -563,9 +559,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 		
         ///////////////// QUESTIONS
         //adding all option clips with questions
-		if(state.topicNum > 1){
+//		if(state.topicNum > 1){
 			addQuestions(state, questionClips);
-        }
+//        }
         /////////////////
 		
 		///////////////// DIOCHOTOMIES

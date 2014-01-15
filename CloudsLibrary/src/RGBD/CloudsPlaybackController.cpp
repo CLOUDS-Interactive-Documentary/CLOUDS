@@ -864,6 +864,8 @@ void CloudsPlaybackController::cleanupInterlude(){
     
     if(currentVisualSystem == clusterMap) {
         clusterMap->stopSystem();
+        sound.exitClusterMap();
+
     }
     else if(currentVisualSystem == interludeSystem){
         interludeSystem->stopSystem();
