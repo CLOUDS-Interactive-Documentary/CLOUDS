@@ -164,7 +164,7 @@ void CloudsPlaybackController::setup(){
 			startingNodes.erase(startingNodes.begin() + i);
 		}
 #ifdef OCULUS_RIFT
-        else if(!startingNodes[i].hasKeyword("#oculus")){
+        else if(!startingNodes[i].hasSpecialKeyword("#oculus")){
 			ofLogError() << "Clip " << startingNodes[i].getID() << " is not tagged for the oculus.";
 			startingNodes.erase(startingNodes.begin() + i);
         }
@@ -174,7 +174,7 @@ void CloudsPlaybackController::setup(){
 		}
 	}
 	//////////////SHOW INTRO
-	
+	cout << "Found " << startingNodes.size() << " questions" << endl;
 	showIntro( startingNodes );
 }
 
