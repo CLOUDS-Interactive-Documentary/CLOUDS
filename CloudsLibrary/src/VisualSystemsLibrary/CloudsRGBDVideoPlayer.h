@@ -16,7 +16,6 @@
 #include "ofRange.h"
 #include "CloudsGlobal.h"
 
-#define SHOW_SUBTITLES
 
 #ifdef SHOW_SUBTITLES
   #include "ofxSubtitles.h"

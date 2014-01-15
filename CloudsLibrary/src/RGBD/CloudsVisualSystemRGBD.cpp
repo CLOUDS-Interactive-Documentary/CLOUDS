@@ -1391,44 +1391,12 @@ void CloudsVisualSystemRGBD::selfDraw(){
         
 		setupRGBDTransforms();
         
-        if(bDrawOcclusion){
-            // z-prepass
-            glPushMatrix();
-            if(!drawOcclusionDebug){
-                ofTranslate(0, 0, 2);
-                glEnable(GL_DEPTH_TEST);  // We want depth test !
-                glDepthFunc(GL_LESS);     // We want to get the nearest pixels
-                glColorMask(0,0,0,0);     // Disable color, it's useless, we only want depth.
-                glDepthMask(GL_TRUE);     // Ask z writing
-            }
-            
-			occlusionShader.begin();
-            
-			getRGBDVideoPlayer().setupProjectionUniforms(occlusionShader);
-            
-			occlusionShader.setUniform1f("triangleExtend",
-                                    getRGBDVideoPlayer().getFadeIn()  *
-                                    getRGBDVideoPlayer().getFadeOut() *
-                                    visualSystemFadeValue);
-			occlusionShader.setUniform1f("meshRetractionFalloff",occlusionMeshRetractionFalloff);
-			occlusionShader.setUniform1f("headMinRadius", occlusionMeshFaceMinRadius);
-			occlusionShader.setUniform1f("headFalloff", occlusionMeshFaceFalloff);
-
-            occlusion.draw(GL_TRIANGLES, 0, occlusionVertexCount);
-
-            occlusionShader.end();
-            
-            if(!drawOcclusionDebug){
-                glEnable(GL_DEPTH_TEST);  // We still want depth test
-                glDepthFunc(GL_LEQUAL);   // EQUAL should work, too. (Only draw pixels if they are the closest ones)
-                glColorMask(1,1,1,1);     // We want color this time
-                glDepthMask(GL_FALSE);
-            }
-            
-            glPopMatrix();
-        }
         
 		if(drawMesh){
+            
+            if(bDrawOcclusion){
+                drawOcclusionLayer();
+            }
 			
 			glEnable(GL_CULL_FACE);
             glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
@@ -1472,6 +1440,12 @@ void CloudsVisualSystemRGBD::selfDraw(){
 //        ofEnableBlendMode(OF_BLENDMODE_SCREEN);
         
 		if(drawLines){
+            
+            if(bDrawOcclusion){
+                glClear(GL_DEPTH_BUFFER_BIT);
+                drawOcclusionLayer();
+            }
+
 			ofSetLineWidth(lineThickness);
 			lineShader.begin();
 			
@@ -1489,7 +1463,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			lineShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
 			lineShader.setUniform1f("headOverlap",lineHeadOverlap);
 			lineShader.setUniform1f("alpha", lineAlpha);
-            
             lineShader.setUniform1f("colorBoost", lineColorBoost);
 			lineShader.setUniform1f("skinBoost", lineSkinBoost);
 
@@ -1507,6 +1480,12 @@ void CloudsVisualSystemRGBD::selfDraw(){
         
 		if(drawPoints){
             
+            if(bDrawOcclusion){
+                glClearDepth(0);
+                glClear(GL_DEPTH_BUFFER_BIT);
+                drawOcclusionLayer();
+            }
+
 			pointShader.begin();
 			getRGBDVideoPlayer().flowPosition = pointFlowPosition * (pointsFlowUp?-1:1);
 			getRGBDVideoPlayer().setupProjectionUniforms(pointShader);
@@ -1585,8 +1564,47 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	}
 	
 	drawQuestions();
-    
+}
 
+void CloudsVisualSystemRGBD::drawOcclusionLayer(){
+    // z-prepass
+    glPushMatrix();
+    if(!drawOcclusionDebug){
+        
+        ofTranslate(0, 0, 5.44);
+        
+        //cout << ofGetMouseX()/100. << endl;
+        
+        glEnable(GL_DEPTH_TEST);  // We want depth test !
+        glDepthFunc(GL_LESS);     // We want to get the nearest pixels
+        glColorMask(0,0,0,0);     // Disable color, it's useless, we only want depth.
+        glDepthMask(GL_TRUE);     // Ask z writing
+    }
+    
+    occlusionShader.begin();
+    
+    getRGBDVideoPlayer().setupProjectionUniforms(occlusionShader);
+    
+    occlusionShader.setUniform1f("triangleExtend",
+                                 getRGBDVideoPlayer().getFadeIn()  *
+                                 getRGBDVideoPlayer().getFadeOut() *
+                                 visualSystemFadeValue);
+    occlusionShader.setUniform1f("meshRetractionFalloff",occlusionMeshRetractionFalloff);
+    occlusionShader.setUniform1f("headMinRadius", occlusionMeshFaceMinRadius);
+    occlusionShader.setUniform1f("headFalloff", occlusionMeshFaceFalloff);
+    
+    occlusion.draw(GL_TRIANGLES, 0, occlusionVertexCount);
+    
+    occlusionShader.end();
+    
+    if(!drawOcclusionDebug){
+        glEnable(GL_DEPTH_TEST);  // We still want depth test
+        glDepthFunc(GL_LEQUAL);   // EQUAL should work, too. (Only draw pixels if they are the closest ones)
+        glColorMask(1,1,1,1);     // We want color this time
+        glDepthMask(GL_FALSE);
+    }
+    
+    glPopMatrix();
 }
 
 void CloudsVisualSystemRGBD::drawQuestions(){

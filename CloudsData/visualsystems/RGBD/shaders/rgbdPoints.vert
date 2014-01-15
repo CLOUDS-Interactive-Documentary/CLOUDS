@@ -149,9 +149,11 @@ void main(void){
 //	eye = normalize(-vert);
 	
 	//soften near the bottom edge
-	edgeAttenuate = (1.0 - max( 0.0, pow( samplePos.y / depthRect.w, edgeAttenuateExponent) + edgeAttenuateBase ));
-	//but allow parts closer in z to get bright still
-	edgeAttenuate += (1.0 - edgeAttenuate) * pow(map(pos.z,maxDepth,minDepth,0.0,1.0), 4.);
+//	edgeAttenuate = (1.0 - max( 0.0, pow( samplePos.y / depthRect.w, edgeAttenuateExponent) + edgeAttenuateBase ));
+//	//but allow parts closer in z to get bright still
+//	edgeAttenuate += (1.0 - edgeAttenuate) * pow(map(pos.z,maxDepth,minDepth,0.0,1.0), 4.);
+    
+    edgeAttenuate = 1.0 - smoothstep(edgeAttenuateBase, 1.0, map(samplePos.y, 0.0, depthRect.w, 0.0, 1.0) );
 	
     // http://opencv.willowgarage.com/documentation/camera_calibration_and_3d_reconstruction.html
     //

@@ -224,7 +224,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxUISuperCanvas *occlusionGui;
     bool bDrawOcclusion;
     bool drawOcclusionDebug;
-    
+
     ofShader occlusionShader;
     ofVbo occlusion;
     int occlusionVertexCount;
@@ -235,6 +235,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float occlusionMeshRetractionFalloff;
     bool refreshOcclusion;
     void generateOcclusion();
+    void drawOcclusionLayer();
     
     ///ACTUATORS
     float actuatorSpinPosition;

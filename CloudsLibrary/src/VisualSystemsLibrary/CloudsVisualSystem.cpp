@@ -660,12 +660,13 @@ void CloudsVisualSystem::drawScene(){
     
 	selfSceneTransformation();
 
-    if(bUseInteractiveCamera){
+    if(bUseInteractiveCamera && !bUseOculusRift){
+        
         interactiveCameraRot *= 1. - interactiveCameraDamping;
         
         interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX)*interactiveCameraDamping;
         interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY)*interactiveCameraDamping;
-  
+
         GLfloat model[16];
         glGetFloatv(GL_MODELVIEW_MATRIX, model);
         ofMatrix4x4 curmv;
