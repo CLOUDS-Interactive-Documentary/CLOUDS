@@ -85,6 +85,9 @@ class CloudsHUDController {
     ofVec2f getSize(bool bScaled = true);
     ofVec2f getCenter(bool bScaled = true);
     
+    void setDrawHud(bool val);
+    bool getDrawHud();
+    
 #ifdef OCULUS_RIFT
     float layerDistance[CLOUDS_HUD_LAYER_COUNT];
     float layerRotationH[CLOUDS_HUD_LAYER_COUNT];
