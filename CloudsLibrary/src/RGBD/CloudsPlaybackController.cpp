@@ -410,7 +410,7 @@ void CloudsPlaybackController::updateTransition(){
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 	
 //if(transitionController.getCurrentState() != TRANSITION_IDLE){
-    cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
+//    cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
 //	}
 	
 	if(transitionController.transitioning){
@@ -886,10 +886,11 @@ void CloudsPlaybackController::hideVisualSystem() {
 
 void CloudsPlaybackController::showRGBDVisualSystem(){
 #ifdef OCULUS_RIFT
-	rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
+//	rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
+    rgbdVisualSystem->loadPresetGUISFromName("RGBAct1");
 #else
     if(run.actCount == 1){
-        rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
+        rgbdVisualSystem->loadPresetGUISFromName("RGBAct1");
     }
     else{
         rgbdVisualSystem->loadPresetGUISFromName("RGBDMain2");
