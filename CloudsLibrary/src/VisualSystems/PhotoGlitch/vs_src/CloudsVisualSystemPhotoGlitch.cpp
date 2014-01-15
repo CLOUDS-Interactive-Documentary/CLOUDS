@@ -1042,9 +1042,13 @@ void CloudsVisualSystemPhotoGlitch::selfExit()
     target2.clear();
     sourcePhoto.clear();
     bgVbo.clear();
-    delete currentTarget; currentTarget = NULL;
+    
+//    delete currentTarget;
+    currentTarget = NULL;
+    
     currentTargetParams->targetImageNames.clear();
-    delete currentTargetParams; currentTargetParams = NULL;
+//    delete currentTargetParams;
+    currentTargetParams = NULL;
     
 }
 
