@@ -81,6 +81,11 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	meshForceGeoRetraction = .0;
 	meshMaxActuatorRetract = 0.0;
     
+    bEnableFill = false;
+	fillFaceFalloff = 0.0;
+	fillRetractionFalloff = 0.0;
+    filLFaceMinRadius = 0.0;
+
     bDrawOcclusion = true;
     occlusionVertexCount = 0;
    	occlusionXSimplify = 4.;
@@ -371,6 +376,30 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guis.push_back(meshGui);
 	guimap[meshGui->getName()] = meshGui;
     //////////////////MESH
+    
+    
+    //////////////////FILL
+	fillGui = new ofxUISuperCanvas("FILL", gui);
+	fillGui->copyCanvasStyle(gui);
+	fillGui->copyCanvasProperties(gui);
+	fillGui->setName("Fill");
+	fillGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	toggle = fillGui->addToggle("ENABLE", &bEnableFill);
+	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+	fillGui->resetPlacer();
+	fillGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+	fillGui->addWidgetToHeader(toggle);
+    
+	fillGui->addSlider("Mesh Alpha", 0., 1.0, &fillAlpha);
+	fillGui->addSlider("Face Min Radius", 0, 600., &filLFaceMinRadius);
+	fillGui->addSlider("Face Falloff", 0, 600., &fillFaceFalloff);
+    fillGui->addSlider("Edge Geo Retraction", 0, 1.0, &fillRetractionFalloff);
+    
+	ofAddListener(fillGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
+	guis.push_back(fillGui);
+	guimap[fillGui->getName()] = fillGui;
+    //////////////////FILL
     
     ////////////////// OCCLUSION
 	occlusionGui = new ofxUISuperCanvas("OCCLUSION", gui);
@@ -1391,6 +1420,48 @@ void CloudsVisualSystemRGBD::selfDraw(){
         
 		setupRGBDTransforms();
         
+        if(bEnableFill){
+            if(bDrawOcclusion){
+                drawOcclusionLayer();
+            }
+			
+			glEnable(GL_CULL_FACE);
+            glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
+            
+//            fillGui->addSlider("Mesh Alpha", 0., 1.0, &fillAlpha);
+//            fillGui->addSlider("Face Min Radius", 0, 600., &filLFaceMinRadius);
+//            fillGui->addSlider("Face Falloff", 0, 600., &fillFaceFalloff);
+//            fillGui->addSlider("Edge Geo Retraction", 0, 1.0, &fillRetractionFalloff);
+
+			meshShader.begin();
+			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
+            
+			meshShader.setUniform1f("meshAlpha", fillAlpha);
+			meshShader.setUniform1f("triangleExtend",
+                                    getRGBDVideoPlayer().getFadeIn()  *
+                                    getRGBDVideoPlayer().getFadeOut() *
+                                    visualSystemFadeValue);
+            
+			meshShader.setUniform1f("meshRetractionFalloff",fillRetractionFalloff);
+			meshShader.setUniform1f("headMinRadius", filLFaceMinRadius);
+			meshShader.setUniform1f("headFalloff", fillFaceFalloff);
+			meshShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
+			meshShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
+			meshShader.setUniform1f("forceGeoRetraction",0.0);
+//			meshShader.setUniform3f("actuatorDirection",
+//                                    meshActuator.x,
+//                                    meshActuator.y,
+//                                    meshActuator.z);
+            
+			meshShader.setUniform1f("colorBoost", meshColorBoost);
+			meshShader.setUniform1f("skinBoost", meshSkinBoost);
+			meshShader.setUniform1f("maxActuatorRetract", 0.0);
+            
+            mesh.draw(GL_TRIANGLES, 0, meshVertexCount);
+			
+			meshShader.end();
+			glDisable(GL_CULL_FACE);
+        }
         
 		if(drawMesh){
             

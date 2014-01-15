@@ -199,10 +199,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool refreshLines;
 	void generateLines();
 	
+    
 	//MESH
 	ofxUISuperCanvas *meshGui;
 	ofShader meshShader;
-//	ofVboMesh mesh;
     ofVbo mesh;
     int meshVertexCount;
 	bool drawMesh;
@@ -219,6 +219,15 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     float meshMaxActuatorRetract;
     bool refreshMesh;
 	void generateMesh();
+
+    //FILL
+	ofxUISuperCanvas *fillGui;
+    bool bEnableFill;
+    float fillAlpha;
+	float fillFaceFalloff;
+	float fillRetractionFalloff;
+    float filLFaceMinRadius;
+//	float fillForceGeoRetraction;
 
     ///OCCLUSION
 	ofxUISuperCanvas *occlusionGui;
@@ -278,7 +287,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     CloudsPortal* selectedPortal;
 	void updateQuestions();
 	void drawQuestions();
-
 	
 	bool placingTransitionNodes;
 	bool drawTransitionNodes;
@@ -291,14 +299,4 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	RGBDTransitionType transitionType;
 	
 	float transitionVal;
-	
-//	ofVec3f questionXZ;
-//	float questionDriftRange;
-//	float questionYCenter;
-//	float questionYDriftRange;
-//	float questionYRange;
-//	float questionLifeSpan; //minutes
-	
-//	ofFloatColor questionBaseHSB;
-//	ofFloatColor questionHoverHSB;
 };

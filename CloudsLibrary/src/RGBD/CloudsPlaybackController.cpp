@@ -163,6 +163,12 @@ void CloudsPlaybackController::setup(){
 			ofLogError() << "Clip " << startingNodes[i].getID() << " has no media asset, removing.";
 			startingNodes.erase(startingNodes.begin() + i);
 		}
+#ifdef OCULUS_RIFT
+        else if(!startingNodes[i].hasKeyword("#oculus")){
+			ofLogError() << "Clip " << startingNodes[i].getID() << " is not tagged for the oculus.";
+			startingNodes.erase(startingNodes.begin() + i);
+        }
+#endif
 		else{
             //			cout << " Adding Clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
 		}
@@ -598,7 +604,8 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 #endif
         
 #ifdef OCULUS_RIFT
-             hud.drawOverlay(overlaySize);
+        //JG WAS MISSING::
+//        hud.drawOverlay(overlaySize);
 #else
 		hud.draw();
 #endif
