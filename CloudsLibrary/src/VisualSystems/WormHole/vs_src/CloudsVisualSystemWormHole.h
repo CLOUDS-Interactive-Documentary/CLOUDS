@@ -105,7 +105,7 @@ class CloudsVisualSystemWormHole : public CloudsVisualSystem {
 
 	//
 	ofCamera& getCameraRef(){
-		return CloudsVisualSystem::getCameraRef();
+		return pathCamera;
 	}
 	
 	void selfSetDefaults();

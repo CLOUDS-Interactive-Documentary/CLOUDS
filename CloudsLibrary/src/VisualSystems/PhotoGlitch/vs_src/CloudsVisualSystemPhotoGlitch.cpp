@@ -1033,14 +1033,26 @@ void CloudsVisualSystemPhotoGlitch::selfEnd(){
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemPhotoGlitch::selfExit()
 {
+ 
+    ofRemoveListener(customGui->newGUIEvent, this, &CloudsVisualSystemPhotoGlitch::selfGuiEvent);
+    ofRemoveListener(target1Gui->newGUIEvent, this, &CloudsVisualSystemPhotoGlitch::selfGuiEvent);
+    ofRemoveListener(target2Gui->newGUIEvent, this, &CloudsVisualSystemPhotoGlitch::selfGuiEvent);
     
     target1.clear();
     target2.clear();
     sourcePhoto.clear();
+    gp1.targetImageNames.clear();
+    gp2.targetImageNames.clear();
+    sourceParams.targetImageNames.clear();
+    
     bgVbo.clear();
-    delete currentTarget; currentTarget = NULL;
-    currentTargetParams->targetImageNames.clear();
-    delete currentTargetParams; currentTargetParams = NULL;
+    
+//    delete currentTarget;
+    currentTarget = NULL;
+    
+//    currentTargetParams->targetImageNames.clear();
+//    delete currentTargetParams;
+    currentTargetParams = NULL;
     
 }
 

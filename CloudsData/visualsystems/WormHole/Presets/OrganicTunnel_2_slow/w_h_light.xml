@@ -2,28 +2,28 @@
     <Kind>42</Kind>
     <Name>w_h_light</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>116.000000000</YPosition>
+    <XPosition>1</XPosition>
+    <YPosition>116</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>pathOffset</Name>
-    <Value>0.002463054</Value>
+    <Value>0.00246305</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>constantAttenuation</Name>
-    <Value>0.285714298</Value>
+    <Value>0.285714</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>linearAttenuation</Name>
-    <Value>0.073891625</Value>
+    <Value>0.0738916</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>quadraticAttenuation</Name>
-    <Value>0.010000000</Value>
+    <Value>0.01</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>

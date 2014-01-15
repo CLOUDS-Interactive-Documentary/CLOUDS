@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>CameraPath</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>1349.000000000</XPosition>
-    <YPosition>16.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>47</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>pathPosition</Name>
-    <Value>0.788995385</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

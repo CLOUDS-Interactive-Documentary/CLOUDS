@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>LightSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>861</XPosition>
-    <YPosition>1</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>281</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>

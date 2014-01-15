@@ -486,9 +486,6 @@ void CloudsVisualSystemWormHole::selfUpdate()
 	{
 		pathCamera.update( cameraPathPosition );
 		
-		getCameraRef().setPosition(pathCamera.getPosition());
-		getCameraRef().lookAt(pathCamera.getLookAtDir() + pathCamera.getPosition());
-		
 		//light on path
 		lightPos = pathCamera.getPositionSpline().getPoint( ofClamp(pathCamera.u + lightPathOffset, 0, 1) );
 		
@@ -631,6 +628,7 @@ void CloudsVisualSystemWormHole::selfEnd()
 {
     // sound
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemWormHole::audioRequested);
+
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemWormHole::selfExit()
@@ -647,6 +645,16 @@ void CloudsVisualSystemWormHole::selfExit()
 		delete shader;
 	}
 	shaderMap.clear();
+	
+	
+	//rendering guis
+	ofRemoveListener(customGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(meshGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(cameraGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(shaderGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(fogGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(wormholeLightGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(displacementGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 }
 
 //events are called when the system is active
