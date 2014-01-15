@@ -40,7 +40,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         first_vec = true; // we haven't had audio yet
         
         // load samples
-        loadRTcmixSamples();
+//        loadRTcmixSamples();
 
         // load data files
         loadRTcmixFiles();

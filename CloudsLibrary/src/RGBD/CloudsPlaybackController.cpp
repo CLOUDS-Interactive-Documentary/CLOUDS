@@ -503,12 +503,12 @@ void CloudsPlaybackController::updateTransition(){
                 clearAct(true);
                 
 
-//                if(run.actCount == 1){
-//                    showClusterMap();
-//                }
-//                else {
+                if(run.actCount == 1){
+                    showClusterMap();
+                }
+                else {
                     showInterlude();
-//                }
+                }
                 
                 break;
                 

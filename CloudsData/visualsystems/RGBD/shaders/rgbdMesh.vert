@@ -60,6 +60,9 @@ varying float headPositionAttenuation;
 varying float actuatorExtendAttenuate;
 varying float edgeAttenuate;
 
+varying vec4 normalcolor;
+varying vec4 depthcolor;
+
 const float epsilon = 1e-6;
 
 vec3 rgb2hsl( vec3 _input ){
@@ -95,12 +98,13 @@ vec3 rgb2hsl( vec3 _input ){
 	return vec3( h, s, l );
 }
 
+const vec2 halfvec = vec2(.5,.5);
 float depthValueFromSample( vec2 depthPos){
 
 	depthPos.x = clamp(depthPos.x,depthRect.x+1.,depthRect.x+depthRect.z-2.);
 	depthPos.y = clamp(depthPos.y,depthRect.y+1.,depthRect.y+depthRect.w-2.);
 	
-	vec2  halfvec = vec2(.5,.5);
+
 	
     float depth = rgb2hsl( texture2DRect(rgbdTexture, floor(depthPos) + halfvec ).xyz ).r;
     return depth * ( maxDepth - minDepth ) + minDepth;
@@ -137,8 +141,8 @@ void main(void){
 	float headRetraction = pow(map(headPositionAttenuation, 0.0, meshRetractionFalloff, 0.0, 1.0), 2.0) * (1.0-forceGeoRetraction);
 	
 	vec2 normalPos = samplePos.xy + normalRect.xy;
-	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
-	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
+	normalcolor = texture2DRect(rgbdTexture, floor(normalPos) + halfvec);
+	vec3 surfaceNormal = normalcolor.xyz * 2.0 - 1.0;
     normal = -normalize(gl_NormalMatrix * surfaceNormal);
     
     actuatorExtendAttenuate = max(maxActuatorRetract, dot(normal,actuatorDirection) );
@@ -148,7 +152,8 @@ void main(void){
 	
     vec2 depthPos = samplePosExtended + depthRect.xy;
     float depth = depthValueFromSample( depthPos );
-	
+    depthcolor  = texture2DRect(rgbdTexture, floor(depthPos) + halfvec);
+
 	// Reconstruct the 3D point position at the extended point
     vec4 pos = vec4((samplePosExtended.x - depthPP.x) * depth / depthFOV.x,
                     (samplePosExtended.y - depthPP.y) * depth / depthFOV.y,

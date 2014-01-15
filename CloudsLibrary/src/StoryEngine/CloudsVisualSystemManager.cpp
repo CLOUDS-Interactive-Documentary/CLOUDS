@@ -241,6 +241,9 @@ vector< CloudsVisualSystem* > CloudsVisualSystemManager::InstantiateSystems(vect
 
 void CloudsVisualSystemManager::DeallocateSystems(){
     for(int i = 0; i < systems.size(); i++){
+        
+        cout << "Deleting system " << systems[i]->getSystemName() << endl;
+        
         if( systems[i]->isPlaying() ) {
             systems[i]->stopSystem();
             ofLogError("CloudsVisualSystemManager::FreeSystemPointers") << "System " << systems[i]->getSystemName() << " Was still playing!";
@@ -249,7 +252,7 @@ void CloudsVisualSystemManager::DeallocateSystems(){
         if(systems[i]->isSetup()){
             systems[i]->exit();
         }
-        
+
         delete systems[i];
     }
     
