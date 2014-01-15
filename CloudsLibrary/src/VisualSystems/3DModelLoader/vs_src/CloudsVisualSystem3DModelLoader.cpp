@@ -19,7 +19,7 @@ void CloudsVisualSystem3DModelLoader::selfSetupGui()
 	customGui->addToggle("draw cameras", &bDrawCameras);
 	customGui->addToggle("draw gid", &bDrawGrid);
 
-	customGui->addToggle("smooth model", false );
+//	customGui->addToggle("smooth model", false );
 	customGui->addToggle("wireframe", &bWireframe );
 	customGui->addSlider("wireframeLinewidth", 0.5, 10, &wireframeLinewidth);
 	customGui->addSlider("modelScale", .1, 10., &modelScale)->setIncrement(.01);
@@ -188,16 +188,16 @@ void CloudsVisualSystem3DModelLoader::selfGuiEvent(ofxUIEventArgs &e)
 	string name = e.widget->getName();
 	int kind = e.widget->getKind();
 	
-	if( name == "smooth model" )
-	{
-		bSmoothModel = e.getToggle()->getValue();
-		if( bSmoothModel ){
-			//smoothMesh( modelMesh, modelMesh );
-		}else{
-			//facetMesh( modelMesh, modelMesh );
-		}
-	}
-	else if(name =="minTilt" || name == "maxTilt")
+//	if( name == "smooth model" )
+//	{
+//		bSmoothModel = e.getToggle()->getValue();
+//		if( bSmoothModel ){
+//			//smoothMesh( modelMesh, modelMesh );
+//		}else{
+//			//facetMesh( modelMesh, modelMesh );
+//		}
+//	}
+	if(name =="minTilt" || name == "maxTilt")
 	{
 		if(perspCam.getMaxTilt() - perspCam.getMinTilt() < 10)
 		{
@@ -900,7 +900,8 @@ void CloudsVisualSystem3DModelLoader::loadModel( string fileName, bool bSmoothMe
 	else{
 		cout << "Found path " << filePath << " to exist" << endl;
 	}
-	ofxObjLoader::load_oldway(filePath, modelMesh, true );
+	ofxObjLoader::load(filePath, modelMesh, true );
+//	ofxObjLoader::load_oldway(filePath, modelMesh, true );
 	cout << "*** FULL PATH " << filePath << " FOUND " << modelMesh.getNumVertices() << " verts " <<  endl;
 
 	calcBoundingBox();
