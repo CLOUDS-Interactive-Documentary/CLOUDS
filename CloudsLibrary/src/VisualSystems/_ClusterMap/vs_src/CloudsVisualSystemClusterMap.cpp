@@ -499,10 +499,14 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
         //check traversal parameters to potentiall fake a new clip
         if(bConstrainTraversal){
         
+            //locals are so we can use more human readaable scales
+            float localMaxTraversedDistance = maxTraverseDistance/100.0;
+            float localMinTraverseDistance = minTraverseDistance/100.0;
+
             int constrainedPositionIndex = -1;
             float traversalAngle = (clip.networkPosition - currentTraversalPosition).angle(currentTraversalDirection);
             int numOptions = n.connectionCurves.size();
-            if(currentDistance > maxTraverseDistance*.001 ||
+            if(currentDistance > localMaxTraversedDistance ||
                currentDistance < minTraverseDistance ||
                traversalAngle > maxTraverseAngle ||
                numOptions < minTraverseNextOptions)
@@ -514,8 +518,6 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
                 vector<NNIndex> indices;
                 //search for 100 nearby clips and take the first acceptable one
                 kdtree.findNClosestPoints(clip.networkPosition, 1000, indices, distsSq);
-                float localMaxTraversedDistance = maxTraverseDistance*.001;
-                float localMinTraverseDistance = minTraverseDistance*.001;
                 for(int i = 0; i < indices.size(); i++){
                     ofVec3f testPosition = nodeMesh.getVertex( indices[i] );
                     float testDistance = currentTraversalPosition.distance( testPosition );
@@ -542,13 +544,65 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
                 
                 //we found a better node
                 if(constrainedPositionIndex != -1){
+                    
                     newNodeIndex = constrainedPositionIndex;
                     clip = parser->getAllClips()[newNodeIndex];
                     //newNodeIndex = clipIdToNodeIndex[ clip.getID() ];
                     n = nodes[ newNodeIndex ];
                 }
                 else{
-                    ofLogError() <<"Couldn't find a better neighbor going with original clip";
+//                    ofLogError() <<"Couldn't find a better neighbor going with original clip";
+                    //now search for all our nearest neighbors and pick the one that is closets to the desired clip
+                    distsSq.clear();
+                    indices.clear();
+                    //search for 100 nearby clips and take the first acceptable one
+                    kdtree.findNClosestPoints(currentTraversalPosition, 1000, indices, distsSq);
+                    
+                    int closestIndex = -1;;
+                    float closestDistance = INT_MAX;
+                    for(int i = 0; i < indices.size(); i++){
+                        ofVec3f testPosition = nodeMesh.getVertex( indices[i] );
+                        float testDistance = currentTraversalPosition.distance( testPosition );
+                        float distanceFromRealTarget = n.networkPosition.distance( testPosition ); //this time look at the distance from the target too
+                        float testAngle = (testPosition - currentTraversalPosition).angle(currentTraversalDirection);
+                        int testOptions = nodes[ indices[i] ].connectionCurves.size();
+                        
+                        cout << "\tRECOVERY Test node stats" << endl
+                             << "\t\tDIST: " << testDistance*100 << " - max:" << maxTraverseDistance << " min " << minTraverseDistance << endl
+                             << "\t\tANGLE: " << testAngle << "/" << maxTraverseAngle << endl
+                             << "\t\tOPTIONS# " << testOptions << "/" << minTraverseNextOptions << endl;
+                        
+                        if(testDistance >= localMaxTraversedDistance){
+                            break;
+                        }
+                        
+                        if(testDistance <= localMaxTraversedDistance &&
+                           testDistance >= localMinTraverseDistance &&
+                           testAngle <= maxTraverseAngle &&
+                           testOptions >= minTraverseNextOptions)
+                        {
+                            //constrainedPositionIndex = indices[i];
+                            
+                            if(distanceFromRealTarget < closestDistance ){
+                                closestDistance = distanceFromRealTarget;
+                                closestIndex    = indices[i];
+                            }
+                            
+                            cout << "FOUND AN ACCEPTABLE NODE AT INDEX " << i << " OF NEIGHBORS" << endl;
+                            cout << "\tANGLE " << testAngle << " DISTANCE " << testDistance*100 << " NUM CONNECTION CURVES " << testOptions << endl;
+                            
+                        }
+                    }
+                    
+                    if(closestIndex == -1){
+                        ofLogError("Couldn't even find an acceptable node close to us, defaulting");
+                    }
+                    else{
+                        newNodeIndex = closestIndex;
+                        clip = parser->getAllClips()[newNodeIndex];
+                        //newNodeIndex = clipIdToNodeIndex[ clip.getID() ];
+                        n = nodes[ newNodeIndex ];
+                    }
                 }
             }
             
