@@ -1,6 +1,6 @@
 <Canvas>
     <Kind>42</Kind>
-    <Name>WHIP_PAN</Name>
+    <Name>TWO_DIMENSIONAL</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>552.000000000</YPosition>
@@ -42,7 +42,7 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>InFromAbove</Name>
+    <Name>InFromBelow</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -57,7 +57,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>PortalTest</Name>
+    <Name>InFromTop</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SidewaysOut</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

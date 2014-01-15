@@ -84,7 +84,7 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
     bEnableFill = false;
 	fillFaceFalloff = 0.0;
 	fillRetractionFalloff = 0.0;
-    filLFaceMinRadius = 0.0;
+    fillFaceMinRadius = 0.0;
 
     bDrawOcclusion = true;
     occlusionVertexCount = 0;
@@ -392,7 +392,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	fillGui->addWidgetToHeader(toggle);
     
 	fillGui->addSlider("Mesh Alpha", 0., 1.0, &fillAlpha);
-	fillGui->addSlider("Face Min Radius", 0, 600., &filLFaceMinRadius);
+	fillGui->addSlider("Face Min Radius", 0, 600., &fillFaceMinRadius);
 	fillGui->addSlider("Face Falloff", 0, 600., &fillFaceFalloff);
     fillGui->addSlider("Edge Geo Retraction", 0, 1.0, &fillRetractionFalloff);
     
@@ -1426,13 +1426,8 @@ void CloudsVisualSystemRGBD::selfDraw(){
             }
 			
 			glEnable(GL_CULL_FACE);
-            glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
-            
-//            fillGui->addSlider("Mesh Alpha", 0., 1.0, &fillAlpha);
-//            fillGui->addSlider("Face Min Radius", 0, 600., &filLFaceMinRadius);
-//            fillGui->addSlider("Face Falloff", 0, 600., &fillFaceFalloff);
-//            fillGui->addSlider("Edge Geo Retraction", 0, 1.0, &fillRetractionFalloff);
-
+//            glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
+            glCullFace(GL_FRONT);
 			meshShader.begin();
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
             
@@ -1443,7 +1438,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
                                     visualSystemFadeValue);
             
 			meshShader.setUniform1f("meshRetractionFalloff",fillRetractionFalloff);
-			meshShader.setUniform1f("headMinRadius", filLFaceMinRadius);
+			meshShader.setUniform1f("headMinRadius", fillFaceMinRadius);
 			meshShader.setUniform1f("headFalloff", fillFaceFalloff);
 			meshShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
 			meshShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
@@ -1455,7 +1450,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
             
 			meshShader.setUniform1f("colorBoost", meshColorBoost);
 			meshShader.setUniform1f("skinBoost", meshSkinBoost);
-			meshShader.setUniform1f("maxActuatorRetract", 0.0);
+			meshShader.setUniform1f("maxActuatorRetract", 1.0);
             
             mesh.draw(GL_TRIANGLES, 0, meshVertexCount);
 			
@@ -1469,9 +1464,13 @@ void CloudsVisualSystemRGBD::selfDraw(){
                 drawOcclusionLayer();
             }
 			
+            if(bEnableFill){
+                ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+            }
+            
 			glEnable(GL_CULL_FACE);
-            glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
-
+//            glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
+            glCullFace(GL_FRONT);
             
 			meshShader.begin();
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);

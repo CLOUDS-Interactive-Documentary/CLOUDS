@@ -12,6 +12,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>FilledMesh50</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>g_FIN_Style_01</Name>
     <Value>0</Value>
 </Widget>
@@ -63,7 +68,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>RGBDAct1</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -107,6 +112,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>FilledMesh50</Name>
-    <Value>0</Value>
+    <Name>RGBD_OC_LINES</Name>
+    <Value>1</Value>
 </Widget>
