@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>MESH_RENDER</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>395.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>edgeWidth</Name>
-    <Value>0.261083752</Value>
+    <Value>0.029556651</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

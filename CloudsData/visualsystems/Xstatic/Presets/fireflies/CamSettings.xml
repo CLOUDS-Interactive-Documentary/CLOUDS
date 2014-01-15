@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>CamSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>530.000000000</YPosition>
+    <XPosition>451.000061035</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -23,12 +23,42 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Y</Name>
-    <Value>288.122955322</Value>
+    <Value>241.717819214</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Z</Name>
     <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>InteractiveCamera</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>damping</Name>
+    <Value>0.024630241</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>minX</Name>
+    <Value>-19.064094543</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxX</Name>
+    <Value>40.344772339</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>minY</Name>
+    <Value>-27.931087494</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>maxY</Name>
+    <Value>8.423599243</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -89,4 +119,14 @@
     <Kind>17</Kind>
     <Name>DISABLE</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>near plane</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>far plane</Name>
+    <Value>100000.000000000</Value>
 </Widget>

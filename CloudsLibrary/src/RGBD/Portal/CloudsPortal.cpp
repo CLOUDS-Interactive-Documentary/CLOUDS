@@ -70,12 +70,15 @@ void CloudsPortal::setup(){
 	reloadShader();
 }
 
-void CloudsPortal::startHovering(){
+bool CloudsPortal::startHovering(){
+    bool res = !hovering;
     if(!hovering){
         hoverStartTime = ofGetElapsedTimef();
     }
     hovering = true;
     hoverPercentComplete = ofClamp((ofGetElapsedTimef() - hoverStartTime) / maxHoverTime, 0,1.0);
+    
+    return res;  // return true if we're starting to hover
 }
 
 void CloudsPortal::stopHovering(){

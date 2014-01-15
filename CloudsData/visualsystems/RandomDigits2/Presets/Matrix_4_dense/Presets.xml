@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1909.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>355.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,5 +28,20 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Matrix_4_dense</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Matrix_5</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Matrix_5_dense</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>NoiseField</Name>
     <Value>1</Value>
 </Widget>

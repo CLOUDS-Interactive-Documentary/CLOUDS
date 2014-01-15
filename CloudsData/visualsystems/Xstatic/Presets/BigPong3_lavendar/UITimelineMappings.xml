@@ -3,16 +3,16 @@
     <Switches>
         <Mapping>
             <Widget>
-                <WidgetName>REGENERATE</WidgetName>
-                <WidgetID>5</WidgetID>
+                <WidgetName>EXPLODE</WidgetName>
+                <WidgetID>31</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>EXPLODE</WidgetName>
-                <WidgetID>31</WidgetID>
+                <WidgetName>REGENERATE</WidgetName>
+                <WidgetID>5</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -21,16 +21,8 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>DRAG</WidgetName>
-                <WidgetID>50</WidgetID>
-                <WidgetCanvasParent>Custom</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>ROTATE ANGLE</WidgetName>
-                <WidgetID>42</WidgetID>
+                <WidgetID>41</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -38,7 +30,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>ROTATE SPEED</WidgetName>
-                <WidgetID>44</WidgetID>
+                <WidgetID>43</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -46,7 +38,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>PULL SPEED</WidgetName>
-                <WidgetID>46</WidgetID>
+                <WidgetID>45</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -54,7 +46,15 @@
         <Mapping>
             <Widget>
                 <WidgetName>WIND SPEED</WidgetName>
-                <WidgetID>48</WidgetID>
+                <WidgetID>47</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>DRAG</WidgetName>
+                <WidgetID>49</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>

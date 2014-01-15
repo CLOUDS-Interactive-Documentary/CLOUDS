@@ -4,16 +4,16 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>Dark Color</WidgetName>
-                <WidgetID>22</WidgetID>
+                <WidgetName>Light Color</WidgetName>
+                <WidgetID>24</WidgetID>
                 <WidgetCanvasParent>RANDOM DIGITS 2</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Light Color</WidgetName>
-                <WidgetID>24</WidgetID>
+                <WidgetName>Dark Color</WidgetName>
+                <WidgetID>22</WidgetID>
                 <WidgetCanvasParent>RANDOM DIGITS 2</WidgetCanvasParent>
             </Widget>
             <Track></Track>

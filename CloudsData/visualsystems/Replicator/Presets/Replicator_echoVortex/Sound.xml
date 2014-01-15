@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Sound</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -18,5 +18,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Gain</Name>
-    <Value>0.330049247</Value>
+    <Value>0.635468006</Value>
 </Widget>

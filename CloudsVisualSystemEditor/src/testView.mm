@@ -112,7 +112,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
 				cout << "DELETING PRESET BATCH" << endl;
 				
                 testBatch.clear();
-                visualSystems.DeallocateSystems();
+                visualSystems.DeallocateSystems();//freeSystemPointers();
+
                 currentVisualSystem = NULL;
 //				currentVisualSystem = ofPtr<CloudsVisualSystem>( (CloudsVisualSystem*)(NULL) );
 				

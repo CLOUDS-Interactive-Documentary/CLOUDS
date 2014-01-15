@@ -6,6 +6,11 @@
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
+    <Kind>4</Kind>
+    <Name>Scale</Name>
+    <Value>1.104970932</Value>
+</Widget>
+<Widget>
     <Kind>44</Kind>
     <Name>DELAY B/W TWEENS</Name>
     <Value>1</Value>

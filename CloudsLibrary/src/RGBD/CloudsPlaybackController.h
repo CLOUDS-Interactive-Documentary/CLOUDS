@@ -59,6 +59,9 @@ class CloudsPlaybackController {
 	void questionSelected(CloudsQuestionEventArgs& args);
 	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
+    
+    void portalHoverBegan(CloudsPortalEventArgs& args);
+    void portalHoverEnded(CloudsPortalEventArgs& args);
 	
 	void exit(ofEventArgs & args);
 	

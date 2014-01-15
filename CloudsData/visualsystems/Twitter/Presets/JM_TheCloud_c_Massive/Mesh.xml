@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Mesh</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>1.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
@@ -39,7 +39,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>EDGE DECAY</Name>
-    <Value>0.200000003</Value>
+    <Value>0.402839661</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -64,7 +64,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNB BRI</Name>
-    <Value>0.100000024</Value>
+    <Value>0.147047788</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -84,7 +84,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LEB BRI</Name>
-    <Value>0.000000000</Value>
+    <Value>0.113666594</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -104,12 +104,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LNP BRI</Name>
-    <Value>0.149999976</Value>
+    <Value>0.207546115</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>LNP ALPHA</Name>
-    <Value>0.100000024</Value>
+    <Value>0.067632206</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -129,7 +129,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>LEP ALPHA</Name>
-    <Value>0.100000024</Value>
+    <Value>0.170153633</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
