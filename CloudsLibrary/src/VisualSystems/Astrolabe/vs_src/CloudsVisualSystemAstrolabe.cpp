@@ -635,6 +635,11 @@ void CloudsVisualSystemAstrolabe::selfExit()
 {
 	clearAstrolabes();
 	sphereMesh.clear();
+	
+	
+	ofRemoveListener(ringsGui->newGUIEvent, this, &CloudsVisualSystemAstrolabe::selfGuiEvent);
+	ofRemoveListener(ticksGui->newGUIEvent, this, &CloudsVisualSystemAstrolabe::selfGuiEvent);
+	ofRemoveListener(shaderGui->newGUIEvent, this, &CloudsVisualSystemAstrolabe::selfGuiEvent);
 }
 
 void CloudsVisualSystemAstrolabe::clearAstrolabes()
