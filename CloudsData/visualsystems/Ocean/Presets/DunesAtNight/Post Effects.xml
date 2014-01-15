@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Post Effects</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>849.000122070</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>218.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,15 +23,15 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Do Bloom</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Bloom Level</Name>
-    <Value>0.000000000</Value>
+    <Value>0.344827592</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>Bloom Size</Name>
-    <Value>1</Value>
+    <Value>3</Value>
 </Widget>

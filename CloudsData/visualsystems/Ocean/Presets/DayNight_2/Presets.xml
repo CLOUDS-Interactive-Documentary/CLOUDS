@@ -17,11 +17,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>DayNight</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>DayNight2_SND</Name>
     <Value>1</Value>
 </Widget>
@@ -128,11 +123,6 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Glum</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>GlumOC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

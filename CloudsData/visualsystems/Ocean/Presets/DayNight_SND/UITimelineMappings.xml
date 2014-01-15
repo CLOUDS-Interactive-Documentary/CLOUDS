@@ -4,40 +4,16 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>SH</WidgetName>
-                <WidgetID>30</WidgetID>
-                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+                <WidgetName>HUE</WidgetName>
+                <WidgetID>11</WidgetID>
+                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>SS</WidgetName>
-                <WidgetID>32</WidgetID>
-                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>DH</WidgetName>
-                <WidgetID>22</WidgetID>
-                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>SV</WidgetName>
-                <WidgetID>34</WidgetID>
-                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>DV</WidgetName>
-                <WidgetID>26</WidgetID>
+                <WidgetName>AH</WidgetName>
+                <WidgetID>14</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -60,32 +36,48 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>HUE</WidgetName>
-                <WidgetID>7</WidgetID>
-                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>BRI2</WidgetName>
-                <WidgetID>20</WidgetID>
-                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>HUE2</WidgetName>
-                <WidgetID>16</WidgetID>
-                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>Z</WidgetName>
                 <WidgetID>10</WidgetID>
+                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SH</WidgetName>
+                <WidgetID>30</WidgetID>
+                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SS</WidgetName>
+                <WidgetID>32</WidgetID>
+                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SAT</WidgetName>
+                <WidgetID>13</WidgetID>
+                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>DH</WidgetName>
+                <WidgetID>22</WidgetID>
+                <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SV</WidgetName>
+                <WidgetID>34</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -100,9 +92,17 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>AH</WidgetName>
-                <WidgetID>14</WidgetID>
+                <WidgetName>AS</WidgetName>
+                <WidgetID>16</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>BRI2</WidgetName>
+                <WidgetID>24</WidgetID>
+                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
@@ -116,24 +116,16 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>AS</WidgetName>
-                <WidgetID>16</WidgetID>
+                <WidgetName>DV</WidgetName>
+                <WidgetID>26</WidgetID>
                 <WidgetCanvasParent>POINT LIGHT 1Settings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>BRI</WidgetName>
-                <WidgetID>11</WidgetID>
-                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>SAT</WidgetName>
-                <WidgetID>9</WidgetID>
+                <WidgetName>HUE2</WidgetName>
+                <WidgetID>20</WidgetID>
                 <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -141,7 +133,23 @@
         <Mapping>
             <Widget>
                 <WidgetName>SAT2</WidgetName>
-                <WidgetID>18</WidgetID>
+                <WidgetID>22</WidgetID>
+                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>EXPONENT</WidgetName>
+                <WidgetID>8</WidgetID>
+                <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>BRI</WidgetName>
+                <WidgetID>15</WidgetID>
                 <WidgetCanvasParent>BgSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>

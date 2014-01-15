@@ -28,17 +28,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>AH</Name>
-    <Value>0.574999988</Value>
+    <Value>0.750000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AS</Name>
-    <Value>0.125000000</Value>
+    <Value>0.250000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AV</Name>
-    <Value>0.141362756</Value>
+    <Value>0.131501377</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -48,7 +48,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>DS</Name>
-    <Value>0.149999976</Value>
+    <Value>0.300000012</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
