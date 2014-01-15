@@ -262,7 +262,7 @@ void CloudsStoryEngine::setCustomAct(CloudsAct* act){
 	customAct = act;
 }
 
-string CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run){
+bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset){
     
     if(run.accumuluatedTopics.size() == 0 || run.clipHistory.size() == 0){
         ofLogError("CloudsStoryEngine::buildAct") << " no topics for next act!";
@@ -274,42 +274,42 @@ string CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run){
             topics.push_back(it->first);
     }
     
-    vector<CloudsVisualSystemPreset> presetsForKeywords = visualSystems->getPresetsForKeywords(topics);
-    
-    vector< pair<string,int> > potentialPresets;
-    
-    bool validPresets = false;
-    for (int i =0 ; i<presetsForKeywords.size(); i++) {
-        
-        //Dont want presets that have been played before
-        if( ! ofContains(run.presetHistory, presetsForKeywords[i].getID() )){
 
-            //scoring presets based on commonality with topic history
-            int presetScore = 0;
-            vector<string> keywordsForPreset = presetsForKeywords[i].allKeywords;
-            for (int j =0;  j<keywordsForPreset.size(); j++) {
-                if( ofContains(run.topicHistory, keywordsForPreset[j])){
-                    presetScore++;
-                }
+    map<string, int> potentialPresetsMap;
+    for (int i =0; i<topics.size(); i++) {
+          vector<CloudsVisualSystemPreset> current = visualSystems->getPresetsForKeyword(topics[i]);
+        
+        for (int j =0 ; j < current.size(); j++) {
+            if( ofContains(run.presetHistory, current[j].getID() )){
+                cout<<current[j].getID()<<" already in history so not selecting"<<endl;
+                continue;
             }
-            
-            potentialPresets.push_back(make_pair(presetsForKeywords[i].getID(), presetScore));
-            validPresets = true;
+            potentialPresetsMap[current[j].getID()]++;
         }
+        
     }
     
-    //sort presets by score
-    if (validPresets) {
+    map<string, int>::iterator it1;
+    vector< pair<string,int> > potentialPresets;
+    for (it1 = potentialPresetsMap.begin(); it1 != potentialPresetsMap.end(); it1++) {
+        potentialPresets.push_back(make_pair(it1->first, it1->second));
+    }
+
+
+    
+    if (potentialPresets.size() > 0) {
         sort(potentialPresets.begin(), potentialPresets.end(),score_sort);
-        return potentialPresets[0].first ;
+        for( int i =0; i< potentialPresets.size(); i++){
+            cout<<"Potential preset : "<<potentialPresets[i].first<<" has score : "<<potentialPresets[i].second<<endl;
+        }
+        cout<<"Selected preset "<<potentialPresets[0].first<<" for interlude "<<endl;
+        preset = visualSystems->getPresetWithID(potentialPresets[0].first);
+        return  true;
     }
     else{
         ofLogError("CloudsStoryEngine::getPresetForInterlude") << "Defaulting to cluster map because we found no topics from the last act";
-        return " ";
+        return false;
     }
-    //not in the history
-    //whichever shares the most with the topics from before
-
 
 }
 
