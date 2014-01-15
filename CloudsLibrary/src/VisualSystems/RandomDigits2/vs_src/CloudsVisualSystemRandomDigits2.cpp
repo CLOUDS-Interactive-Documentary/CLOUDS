@@ -151,7 +151,7 @@ void CloudsVisualSystemRandomDigits2::selfDraw(){
     ofEnableAlphaBlending();
     
     ofPushStyle();
-    cam.begin();
+//    cam.begin();
     
     numbersImg.bind();
     ofSetColor(255, 255, 255);
@@ -161,7 +161,7 @@ void CloudsVisualSystemRandomDigits2::selfDraw(){
 
     numbersImg.unbind();
     
-    cam.end();
+//    cam.end();
     ofPopStyle();
     
 }
