@@ -12,6 +12,8 @@
 		185CE9B6184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9A1184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp */; };
 		A633AB321885EA590088E767 /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB301885EA410088E767 /* CloudsAudioEvents.cpp */; };
 		A633AB331885EA5A0088E767 /* CloudsAudioEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB301885EA410088E767 /* CloudsAudioEvents.cpp */; };
+		A633AB6718865DF70088E767 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB6518865DF70088E767 /* CloudsPortal.cpp */; };
+		A633AB6818865DF70088E767 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB6518865DF70088E767 /* CloudsPortal.cpp */; };
 		A6D587AD18811B9D0014B5BD /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5879818811B9D0014B5BD /* ofxSubtitles.cpp */; };
 		A6D587AE18811B9D0014B5BD /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5879818811B9D0014B5BD /* ofxSubtitles.cpp */; };
 		A6D587AF18811B9D0014B5BD /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5879A18811B9D0014B5BD /* ofxSubtitleUnit.cpp */; };
@@ -321,6 +323,8 @@
 		A633AB5A18860FE60088E767 /* NearestNeighbour.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NearestNeighbour.h; sourceTree = "<group>"; };
 		A633AB5B18860FE60088E767 /* ofxNearestNeighbour.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxNearestNeighbour.h; sourceTree = "<group>"; };
 		A633AB5C18860FE60088E767 /* PointCloud.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointCloud.h; sourceTree = "<group>"; };
+		A633AB6518865DF70088E767 /* CloudsPortal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsPortal.cpp; path = ../CloudsLibrary/src/RGBD/Portal/CloudsPortal.cpp; sourceTree = "<group>"; };
+		A633AB6618865DF70088E767 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsPortal.h; path = ../CloudsLibrary/src/RGBD/Portal/CloudsPortal.h; sourceTree = "<group>"; };
 		A6D5879818811B9D0014B5BD /* ofxSubtitles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitles.cpp; sourceTree = "<group>"; };
 		A6D5879918811B9D0014B5BD /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
 		A6D5879A18811B9D0014B5BD /* ofxSubtitleUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitleUnit.cpp; sourceTree = "<group>"; };
@@ -1209,6 +1213,8 @@
 		E7176E3717D3DAFE00C8DC38 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				A633AB6518865DF70088E767 /* CloudsPortal.cpp */,
+				A633AB6618865DF70088E767 /* CloudsPortal.h */,
 				E7F0512C18734EE000017521 /* background.frag */,
 				E7F0512D18734EE100017521 /* background.vert */,
 				E7D483681860C5D000BE9BF8 /* Input */,
@@ -1735,6 +1741,7 @@
 				E704D36D17B3BBA900F77528 /* ofxDamperBehavior.cpp in Sources */,
 				E704D36E17B3BBA900F77528 /* ofxDistorterBehavior.cpp in Sources */,
 				E704D36F17B3BBA900F77528 /* ofxElectroStaticBehavior.cpp in Sources */,
+				A633AB6718865DF70088E767 /* CloudsPortal.cpp in Sources */,
 				E704D37017B3BBA900F77528 /* ofxField2D.cpp in Sources */,
 				E704D37117B3BBA900F77528 /* ofxHomingBehavior.cpp in Sources */,
 				E704D37217B3BBA900F77528 /* ofxPerlinBehavior.cpp in Sources */,
@@ -1866,6 +1873,7 @@
 				E700BA8F18762768003A8167 /* CloudsInput.cpp in Sources */,
 				E700BA9018762768003A8167 /* CloudsInputMouse.cpp in Sources */,
 				E700BC2A18762C18003A8167 /* ofxOculusRift.cpp in Sources */,
+				A633AB6818865DF70088E767 /* CloudsPortal.cpp in Sources */,
 				A633AB321885EA590088E767 /* CloudsAudioEvents.cpp in Sources */,
 				E7302BA2187BABC40079C5B8 /* ofxSystemTextbox.mm in Sources */,
 			);

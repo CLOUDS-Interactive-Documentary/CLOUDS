@@ -524,6 +524,7 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
                 vector<NNIndex> indices;
                 //search for 100 nearby clips and take the first acceptable one
                 kdtree.findNClosestPoints(clip.networkPosition, 200, indices, distsSq);
+                float localMaxTraversedDistance = maxTraverseDistance*.001;
                 
                 for(int i = 0; i < indices.size(); i++){
                     ofVec3f testPosition = nodeMesh.getVertex( indices[i] );
@@ -531,11 +532,11 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
                     float testAngle = (testPosition - currentTraversalPosition).angle(currentTraversalDirection);
                     int testOptions = nodes[ indices[i] ].connectionCurves.size();
                     
-                    cout << "   Test node stats" << endl << "\t\tDIST: " << testDistance << endl << "\t\tANGLE: " << testAngle << "\t\tOPTIONS# " << testOptions << endl;
+//                    cout << "\tTest node stats" << endl << "\t\tDIST: " << testDistance << "/" << localMaxTraversedDistance << endl << "\t\tANGLE: " << testAngle << "/" << maxTraverseAngle << endl << "\t\tOPTIONS# " << testOptions << "/" << minTraverseNextOptions << endl;
                     
-                    if(testDistance <= maxTraverseDistance*.001 &&
+                    if(testDistance <= localMaxTraversedDistance &&
                        testAngle <= maxTraverseAngle &&
-                       testDistance >= minTraverseDistance &&
+                       testDistance <= minTraverseDistance &&
                        testOptions >= minTraverseNextOptions)
                     {
                         constrainedPositionIndex = indices[i];
@@ -553,7 +554,7 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
                     n = nodes[ newNodeIndex ];
                 }
                 else{
-                    cout << "COuldn't find a better neighbor going with original clip" << endl;
+                    ofLogError() <<"Couldn't find a better neighbor going with original clip";
                 }
             }
             

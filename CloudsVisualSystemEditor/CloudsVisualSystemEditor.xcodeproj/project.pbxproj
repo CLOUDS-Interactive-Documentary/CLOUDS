@@ -709,6 +709,9 @@
 		A600C11F1881032C0041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C1011881032C0041787F /* ofxSubtitleUnit.cpp */; };
 		A600C1201881032C0041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C1011881032C0041787F /* ofxSubtitleUnit.cpp */; };
 		A600C1211881032C0041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C1011881032C0041787F /* ofxSubtitleUnit.cpp */; };
+		A633AB6B188661270088E767 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB69188661270088E767 /* CloudsPortal.cpp */; };
+		A633AB6C188661270088E767 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB69188661270088E767 /* CloudsPortal.cpp */; };
+		A633AB6D188661270088E767 /* CloudsPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB69188661270088E767 /* CloudsPortal.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -1887,6 +1890,8 @@
 		A600C1001881032C0041787F /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
 		A600C1011881032C0041787F /* ofxSubtitleUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitleUnit.cpp; sourceTree = "<group>"; };
 		A600C1021881032C0041787F /* ofxSubtitleUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitleUnit.h; sourceTree = "<group>"; };
+		A633AB69188661270088E767 /* CloudsPortal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsPortal.cpp; path = src/RGBD/Portal/CloudsPortal.cpp; sourceTree = "<group>"; };
+		A633AB6A188661270088E767 /* CloudsPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsPortal.h; path = src/RGBD/Portal/CloudsPortal.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -5646,6 +5651,8 @@
 			isa = PBXGroup;
 			children = (
 				E7402DBF178F3FA400FEABED /* CloudsGlobal.h */,
+				A633AB69188661270088E767 /* CloudsPortal.cpp */,
+				A633AB6A188661270088E767 /* CloudsPortal.h */,
 				E737691C1778DC4500892646 /* src */,
 			);
 			name = CloudsLibrary;
@@ -7697,6 +7704,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsVisualSystemEditor" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -7854,6 +7863,7 @@
 				64CE97A01880DB8100491913 /* Filters.cpp in Sources */,
 				64CE97A11880DB8100491913 /* AppDelegate.m in Sources */,
 				64CE97A21880DB8100491913 /* main.m in Sources */,
+				A633AB6D188661270088E767 /* CloudsPortal.cpp in Sources */,
 				64CE97A31880DB8100491913 /* testView.mm in Sources */,
 				64CE97A41880DB8100491913 /* ofxCocoaGLView.mm in Sources */,
 				64CE97A51880DB8100491913 /* ofxOceanRenderer.cpp in Sources */,
@@ -8370,6 +8380,7 @@
 				F37C7EA1186EB28C00FCDA79 /* Filters.cpp in Sources */,
 				6091337D1652C9C900B523AD /* AppDelegate.m in Sources */,
 				6091337E1652C9C900B523AD /* main.m in Sources */,
+				A633AB6B188661270088E767 /* CloudsPortal.cpp in Sources */,
 				609133871652CB3E00B523AD /* testView.mm in Sources */,
 				608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */,
 				28927CA718591B9F00640B50 /* ofxOceanRenderer.cpp in Sources */,
@@ -9232,6 +9243,7 @@
 				F37C7E66186EB28C00FCDA79 /* CombFilter.cpp in Sources */,
 				E70CEB761869649200955691 /* CloudsVisualSystemMarchingCubes.cpp in Sources */,
 				E70CEB781869649200955691 /* CloudsVisualSystemMazeGenerator.cpp in Sources */,
+				A633AB6C188661270088E767 /* CloudsPortal.cpp in Sources */,
 				E70CEB7A1869649200955691 /* Maze.cpp in Sources */,
 				E70CEB7C1869649200955691 /* MazeCamera.cpp in Sources */,
 				E70CEB7E1869649200955691 /* MazeCell.cpp in Sources */,
