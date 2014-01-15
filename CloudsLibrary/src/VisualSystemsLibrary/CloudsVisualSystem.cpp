@@ -1489,6 +1489,7 @@ void CloudsVisualSystem::setupPostGui()
     postGui->setPosition(guis[guis.size()-1]->getRect()->x+guis[guis.size()-1]->getRect()->getWidth()+1, 0);
     postGui->setName("Post Effects");
     postGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
     postGui->addSpacer();
     postGui->addToggle("Enable", &bEnablePostFX);
     postGui->addSlider("Chroma_Distortion", 0.0, 1.0, &postChromaDist);
@@ -1497,9 +1498,10 @@ void CloudsVisualSystem::setupPostGui()
     postGui->addSlider("Bloom Level", 0., 1., &bloomAmount);
     postGui->addIntSlider("Bloom Size", 1, 20, &bloomSamples);
     postGui->autoSizeToFitWidgets();
+    
     ofAddListener(postGui->newGUIEvent, this, &CloudsVisualSystem::guiPostEvent);
     guis.push_back(postGui);
-    guimap[bgGui->getName()] = postGui;
+    guimap[postGui->getName()] = postGui;
 }
 
 void CloudsVisualSystem::guiPostEvent(ofxUIEventArgs &e)
@@ -2851,6 +2853,9 @@ void CloudsVisualSystem::loadTimelineUIMappings(string path)
                         string widgetname = XML->getValue("WidgetName", "NULL", 0);
                         int widgetID = XML->getValue("WidgetID", -1, 0);
                         string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
+
+                        cout << "Widget canvas parent is " << widgetCanvasParent << endl;
+                        
                         map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
                         if(it != guimap.end())
                         {
@@ -2859,6 +2864,16 @@ void CloudsVisualSystem::loadTimelineUIMappings(string path)
                             {
                                 bindWidgetToTimeline(w);
                             }
+                            else {
+#ifndef CLOUDS_RELEASE
+                                ofSystemAlertDialog("WARNING: " + widgetCanvasParent + " COULD NOT FIND WIDGET " + widgetname + " IN GUI MAP. MAY BE MISCONFIGURED IN GUI");
+#endif                                
+                            }
+                        }
+                        else{
+#ifndef CLOUDS_RELEASE
+                            ofSystemAlertDialog("WARNING: " + widgetCanvasParent + " NOT FOUND IN GUI MAP. MAY BE MISCONFIGURED IN GUI");
+#endif
                         }
                         XML->popTag();
                     }
@@ -3124,11 +3139,6 @@ void CloudsVisualSystem::loadGUIS()
 //        setColors();
 //        guis[i]->setTheme(OFX_UI_THEME_ZOOLANDER);
     }
-    cam.reset();
-    ofxLoadCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
-    resetTimeline();
-    loadTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/UITimelineMappings.xml");
-    timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 
 #ifdef KINECT_INPUT
     kinectGui->loadSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
@@ -3139,6 +3149,14 @@ void CloudsVisualSystem::loadGUIS()
         hudGui->loadSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
     }
 #endif
+    
+    cam.reset();
+    ofxLoadCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
+    resetTimeline();
+    
+    loadTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/UITimelineMappings.xml");
+    timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
+    
 }
 
 void CloudsVisualSystem::saveGUIS()
