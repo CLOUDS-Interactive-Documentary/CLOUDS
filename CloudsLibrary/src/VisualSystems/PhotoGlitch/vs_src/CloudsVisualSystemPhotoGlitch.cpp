@@ -1033,6 +1033,10 @@ void CloudsVisualSystemPhotoGlitch::selfEnd(){
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemPhotoGlitch::selfExit()
 {
+ 
+    ofRemoveListener(customGui->newGUIEvent, this, &CloudsVisualSystemPhotoGlitch::selfGuiEvent);
+    ofRemoveListener(target1Gui->newGUIEvent, this, &CloudsVisualSystemPhotoGlitch::selfGuiEvent);
+    ofRemoveListener(target2Gui->newGUIEvent, this, &CloudsVisualSystemPhotoGlitch::selfGuiEvent);
     
     target1.clear();
     target2.clear();
