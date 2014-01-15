@@ -163,12 +163,18 @@ void CloudsPlaybackController::setup(){
 			ofLogError() << "Clip " << startingNodes[i].getID() << " has no media asset, removing.";
 			startingNodes.erase(startingNodes.begin() + i);
 		}
+#ifdef OCULUS_RIFT
+        else if(!startingNodes[i].hasSpecialKeyword("#oculus")){
+			ofLogError() << "Clip " << startingNodes[i].getID() << " is not tagged for the oculus.";
+			startingNodes.erase(startingNodes.begin() + i);
+        }
+#endif
 		else{
             //			cout << " Adding Clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
 		}
 	}
 	//////////////SHOW INTRO
-	
+	cout << "Found " << startingNodes.size() << " questions" << endl;
 	showIntro( startingNodes );
 }
 
@@ -404,11 +410,12 @@ void CloudsPlaybackController::updateTransition(){
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 	
 //if(transitionController.getCurrentState() != TRANSITION_IDLE){
-    cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
+//    cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
 //	}
 	
 	if(transitionController.transitioning){
 		rgbdVisualSystem->updateTransition( transitionController.getInterviewTransitionPoint() );
+
 	}
 	
 	CloudsPortal* q;
@@ -597,7 +604,8 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 #endif
         
 #ifdef OCULUS_RIFT
-        //     hud.drawOverlay(overlaySize);
+        //JG WAS MISSING::
+//        hud.drawOverlay(overlaySize);
 #else
 		hud.draw();
 #endif
@@ -825,31 +833,27 @@ void CloudsPlaybackController::showClusterMap(){
 void CloudsPlaybackController::showInterlude(){
     
     vector<string> topics;
-    vector<CloudsVisualSystemPreset> potentialPresets;
-
-    topics = storyEngine.getValidTopicsForNextAct(run);
-    potentialPresets = visualSystems.getPresetsForKeywords(topics,"",true);
-    if(potentialPresets.size() == 0){
+    CloudsVisualSystemPreset interludePreset;
+    
+    if(storyEngine.getPresetIDForInterlude(run, interludePreset)){
+        
+        interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
+        
+        interludeSystem->setDrawToScreen( false );
+        interludeSystem->setup();
+        interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
+        interludeSystem->playSystem();
+        
+        currentVisualSystem = interludeSystem;
+        
+        showingInterlude = true;
+        
+        ShowInterludePortals(true);
+    }
+    else{
         ofLogError("CloudsPlaybackController::showInterlude") << "Defaulting to cluster map because we found no topics from the last act";
         showClusterMap();
-        return;
     }
-
-    //TODO: SCORE to find the best one
-    CloudsVisualSystemPreset interludePreset = potentialPresets[ ofRandom(potentialPresets.size()) ];
-
-    interludeSystem = CloudsVisualSystemManager::InstantiateSystem(interludePreset.systemName);
-    
-    interludeSystem->setDrawToScreen( false );
-    interludeSystem->setup();
-    interludeSystem->loadPresetGUISFromName( interludePreset.presetName );
-    interludeSystem->playSystem();
-    
-    currentVisualSystem = interludeSystem;
-    
-    showingInterlude = true;
-    
-    ShowInterludePortals(true);
 }
 
 //--------------------------------------------------------------------
@@ -860,6 +864,8 @@ void CloudsPlaybackController::cleanupInterlude(){
     
     if(currentVisualSystem == clusterMap) {
         clusterMap->stopSystem();
+        sound.exitClusterMap();
+
     }
     else if(currentVisualSystem == interludeSystem){
         interludeSystem->stopSystem();
@@ -882,10 +888,11 @@ void CloudsPlaybackController::hideVisualSystem() {
 
 void CloudsPlaybackController::showRGBDVisualSystem(){
 #ifdef OCULUS_RIFT
-	rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
+//	rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
+    rgbdVisualSystem->loadPresetGUISFromName("RGBAct1");
 #else
     if(run.actCount == 1){
-        rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
+        rgbdVisualSystem->loadPresetGUISFromName("RGBAct1");
     }
     else{
         rgbdVisualSystem->loadPresetGUISFromName("RGBDMain2");

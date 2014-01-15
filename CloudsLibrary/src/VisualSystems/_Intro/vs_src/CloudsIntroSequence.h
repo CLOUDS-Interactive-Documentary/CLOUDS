@@ -16,6 +16,7 @@
 #include "CloudsPortal.h"
 //#include "CloudsRun.h"
 #include "ofxFTGL.h"
+#include "CloudsPortalEvents.h"
 
 class CloudsIntroSequence : public CloudsVisualSystem {
   public:

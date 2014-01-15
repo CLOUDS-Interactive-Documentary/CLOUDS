@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>LightSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>425.000061035</XPosition>
-    <YPosition>288.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>245.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>ENABLE</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

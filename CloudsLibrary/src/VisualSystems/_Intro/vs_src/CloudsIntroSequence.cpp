@@ -7,10 +7,11 @@
 //
 
 #include "CloudsIntroSequence.h"
-//#include "ofxObjLoader.h"
 #include "CloudsGlobal.h"
 #include "CloudsEvents.h"
+#include "CloudsPortalEvents.h"
 
+//JG REMOVING THIS
 CloudsVisualSystemEvents CloudsIntroSequence::events;
 
 CloudsIntroSequence::CloudsIntroSequence(){

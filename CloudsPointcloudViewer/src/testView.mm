@@ -43,7 +43,8 @@
     rgbdVisualSystem.setupHUDGui();
 	rgbdVisualSystem.loadPresetGUISFromName("RGBDOC");
 #else
-	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
+//	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
+	rgbdVisualSystem.loadPresetGUISFromName("Working");    
 #endif
 	srand(ofGetSeconds());
 	
@@ -56,7 +57,7 @@
     
     rgbdVisualSystem.getRGBDVideoPlayer().forceStop = false;
     rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setLoopState(OF_LOOP_NORMAL);
-    rgbdVisualSystem.getRGBDVideoPlayer().maxVolume = 0.;    
+    rgbdVisualSystem.getRGBDVideoPlayer().maxVolume = 0.;
 	hud.update();
 	
 }
@@ -66,7 +67,7 @@
 	rgbdVisualSystem.selfPostDraw();
 
 #ifndef OCULUS_RIFT
-	hud.draw();
+	//hud.draw();
 #endif
     
     rgbdVisualSystem.getRGBDVideoPlayer().drawSubtitles(

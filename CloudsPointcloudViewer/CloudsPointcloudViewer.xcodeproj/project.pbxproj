@@ -772,10 +772,10 @@
 		85891D30187FEDFF00325DD8 /* Portal */ = {
 			isa = PBXGroup;
 			children = (
-				85891D31187FEDFF00325DD8 /* CloudsPortal.cpp */,
 				85891D32187FEDFF00325DD8 /* CloudsPortal.h */,
-				85891D33187FEDFF00325DD8 /* CloudsPortalRing.cpp */,
+				85891D31187FEDFF00325DD8 /* CloudsPortal.cpp */,
 				85891D34187FEDFF00325DD8 /* CloudsPortalRing.h */,
+				85891D33187FEDFF00325DD8 /* CloudsPortalRing.cpp */,
 			);
 			name = Portal;
 			path = RGBD/Portal;

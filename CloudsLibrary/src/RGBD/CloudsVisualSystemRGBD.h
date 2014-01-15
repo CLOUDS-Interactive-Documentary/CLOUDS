@@ -8,6 +8,7 @@
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
 #include "ofxFTGL.h"
+#include "CloudsPortalEvents.h"
 
 struct TransitionInfo{
 	ofVec3f inStartPos;
@@ -198,10 +199,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool refreshLines;
 	void generateLines();
 	
+    
 	//MESH
 	ofxUISuperCanvas *meshGui;
 	ofShader meshShader;
-//	ofVboMesh mesh;
     ofVbo mesh;
     int meshVertexCount;
 	bool drawMesh;
@@ -219,11 +220,20 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     bool refreshMesh;
 	void generateMesh();
 
+    //FILL
+	ofxUISuperCanvas *fillGui;
+    bool bEnableFill;
+    float fillAlpha;
+	float fillFaceFalloff;
+	float fillRetractionFalloff;
+    float filLFaceMinRadius;
+//	float fillForceGeoRetraction;
+
     ///OCCLUSION
 	ofxUISuperCanvas *occlusionGui;
     bool bDrawOcclusion;
     bool drawOcclusionDebug;
-    
+
     ofShader occlusionShader;
     ofVbo occlusion;
     int occlusionVertexCount;
@@ -234,6 +244,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float occlusionMeshRetractionFalloff;
     bool refreshOcclusion;
     void generateOcclusion();
+    void drawOcclusionLayer();
     
     ///ACTUATORS
     float actuatorSpinPosition;
@@ -276,7 +287,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     CloudsPortal* selectedPortal;
 	void updateQuestions();
 	void drawQuestions();
-
 	
 	bool placingTransitionNodes;
 	bool drawTransitionNodes;
@@ -289,14 +299,4 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	RGBDTransitionType transitionType;
 	
 	float transitionVal;
-	
-//	ofVec3f questionXZ;
-//	float questionDriftRange;
-//	float questionYCenter;
-//	float questionYDriftRange;
-//	float questionYRange;
-//	float questionLifeSpan; //minutes
-	
-//	ofFloatColor questionBaseHSB;
-//	ofFloatColor questionHoverHSB;
 };

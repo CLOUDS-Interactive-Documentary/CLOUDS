@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>TopicType</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>213.000061035</XPosition>
-    <YPosition>630.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>124.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>ENABLE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -18,15 +18,15 @@
 <Widget>
     <Kind>44</Kind>
     <Name>SIZE MAX</Name>
-    <Value>15</Value>
+    <Value>14</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>MIN CLIP NUM</Name>
-    <Value>19</Value>
+    <Value>20</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>MAX CLIP SCALE</Name>
-    <Value>41</Value>
+    <Value>40</Value>
 </Widget>

@@ -100,7 +100,7 @@ void CloudsVisualSystemOcean::selfSetupGuis(){
 	oceanCameraGui->addSlider("MAX LOOK DOWN ROT", 0, 90, &maxLookDownRot);
 	
     guis.push_back(oceanCameraGui);
-    guimap[oceanGui->getName()] = oceanCameraGui;
+    guimap[oceanCameraGui->getName()] = oceanCameraGui;
     
 	oceanCamera.ocean = &ocean;
 	

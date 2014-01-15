@@ -129,11 +129,17 @@ void main(void){
 						(samplePos.y - depthPP.y) * baseDepth / depthFOV.y,
 						baseDepth, 1.0);
 
-	//darken near the bottom of the frame
-	edgeAttenuate = (1.0 - max( 0.0, pow( samplePos.y / depthRect.w, edgeAttenuateExponent) + edgeAttenuateBase ));
-	//but allow parts closer in z to get bright still
-	edgeAttenuate += (1.0 - edgeAttenuate) * pow(map(basePos.z,maxDepth,minDepth,0.0,1.0), 4.);
+    
 
+	//darken near the bottom of the frame
+    //old edge way
+//	edgeAttenuate = (1.0 - max( 0.0, pow( samplePos.y / depthRect.w, edgeAttenuateExponent) + edgeAttenuateBase ));
+//	//but allow parts closer in z to get bright still
+//	edgeAttenuate += (1.0 - edgeAttenuate) * pow(map(basePos.z,maxDepth,minDepth,0.0,1.0), 4.);
+
+    //new edge way
+    edgeAttenuate = 1.0 - smoothstep(edgeAttenuateBase, 1.0, map(samplePos.y, 0.0, depthRect.w, 0.0, 1.0) );
+    
 	//get the attenutation coefficient for this position
 	headPositionAttenuation = map( distance(basePos.xyz,headPosition), headMinRadius+headFalloff, headMinRadius, .0, 1.0);
 	
