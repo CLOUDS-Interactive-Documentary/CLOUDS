@@ -31759,6 +31759,26 @@
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
 </system>
+<system name="WormHole_OrganicTunnel_2_White_Faster">
+    <keywords>dna|biology and code</keywords>
+    <links>
+        <clip>Nervous_Jessica - RNA and Viruses</clip>
+    </links>
+    <suppressions>
+        <clip>Shiffman - genetic algos 1</clip>
+        <clip>Shiffman - genetic algos 2</clip>
+        <clip>Shiffman - genetics short 2</clip>
+        <clip>Shiffman - Carl Sims</clip>
+        <clip>Ramsey - biology and the internet</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>B</grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+    <sound_exclude_vo>0</sound_exclude_vo>
+    <sound_allow_vo>0</sound_allow_vo>
+    <interlude>0</interlude>
+</system>
 <system name="WormHole_OrganicTunnel_2_fast">
     <keywords>real and virtual|reality|hallucination|dreams|journey</keywords>
     <links>
@@ -32049,9 +32069,22 @@
     <interlude>0</interlude>
 </system>
 <system name="WormHole_gTunnelOrganix_10_xray">
-    <keywords></keywords>
+    <keywords>hallucination|mind|future</keywords>
     <links></links>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Golan - kessler</clip>
+        <clip>Karsten - parallel processing</clip>
+        <clip>Kyle_CH - Future life storage</clip>
+        <clip>Kyle_CH - old server farms</clip>
+        <clip>Kyle_MC - Grab them ASAP</clip>
+        <clip>Kyle_MC - Transparent tech 2</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Kyle_MC - shaping the direction</clip>
+        <clip>Sophy - distributed culture</clip>
+        <clip>Sophy - nanobots</clip>
+        <clip>Theo - crazy researcher</clip>
+        <clip>Regine - twitter, future</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>

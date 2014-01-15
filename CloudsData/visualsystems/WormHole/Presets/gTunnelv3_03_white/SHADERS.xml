@@ -8,7 +8,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>depthTest</Name>
-    <Value>1</Value>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>backface culling</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -52,6 +57,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>WormholeShader</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>XRayShader</Name>
     <Value>1</Value>
 </Widget>
@@ -67,36 +77,41 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>facingRatioExpo</Name>
+    <Value>16.215763092</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>shininess</Name>
     <Value>16.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>28</Kind>
-    <Name>c1</Name>
-    <XValue>0.200000003</XValue>
-    <YValue>0.159999996</YValue>
-    <RColor>238</RColor>
-    <GColor>255</GColor>
-    <BColor>255</BColor>
-    <AColor>255</AColor>
+    <Kind>44</Kind>
+    <Name>c1Hue</Name>
+    <Value>126</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>c1_alpha</Name>
-    <Value>0.551724136</Value>
+    <Kind>44</Kind>
+    <Name>c1Saturation</Name>
+    <Value>64</Value>
 </Widget>
 <Widget>
-    <Kind>28</Kind>
-    <Name>c2</Name>
-    <XValue>0.230000004</XValue>
-    <YValue>0.209999993</YValue>
-    <RColor>178</RColor>
-    <GColor>232</GColor>
-    <BColor>255</BColor>
-    <AColor>255</AColor>
+    <Kind>44</Kind>
+    <Name>c1Brightness</Name>
+    <Value>238</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>c2_alpha</Name>
-    <Value>0.275862068</Value>
+    <Kind>44</Kind>
+    <Name>c2Hue</Name>
+    <Value>192</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c2Saturation</Name>
+    <Value>84</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>c2Brightness</Name>
+    <Value>169</Value>
 </Widget>

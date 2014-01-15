@@ -8,12 +8,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>fogDistance</Name>
-    <Value>114.187194824</Value>
+    <Value>281.507385254</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>fogExpo</Name>
-    <Value>0.600000024</Value>
+    <Value>5.309021473</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -28,5 +28,5 @@
 <Widget>
     <Kind>44</Kind>
     <Name>fogBrightness</Name>
-    <Value>218</Value>
+    <Value>180</Value>
 </Widget>

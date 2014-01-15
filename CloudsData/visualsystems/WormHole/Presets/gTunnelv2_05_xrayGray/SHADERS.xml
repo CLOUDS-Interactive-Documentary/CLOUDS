@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>SHADERS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>437.000000000</XPosition>
+    <XPosition>649.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>backface culling</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -98,7 +98,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c1Brightness</Name>
-    <Value>203</Value>
+    <Value>238</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
