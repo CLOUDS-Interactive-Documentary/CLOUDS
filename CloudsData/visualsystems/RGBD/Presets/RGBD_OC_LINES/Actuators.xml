@@ -1,17 +1,17 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Actuators</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>391.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>538.000000000</XPosition>
+    <YPosition>226.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>SPIN SPEED</Name>
-    <Value>1.108374357</Value>
+    <Value>1.798029542</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SHINE ANGLE</Name>
-    <Value>11.083747864</Value>
+    <Value>-2.216751099</Value>
 </Widget>

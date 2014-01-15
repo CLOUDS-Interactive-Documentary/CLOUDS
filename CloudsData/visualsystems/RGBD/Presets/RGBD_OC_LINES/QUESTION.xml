@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
-    <Name>WHIP_PAN</Name>
+    <Name>QUESTION</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>552.000000000</YPosition>
+    <YPosition>529.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -42,22 +42,7 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>InFromAbove</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>InFromLeft</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>InFromRight</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>PortalTest</Name>
+    <Name>LarsPortal</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
