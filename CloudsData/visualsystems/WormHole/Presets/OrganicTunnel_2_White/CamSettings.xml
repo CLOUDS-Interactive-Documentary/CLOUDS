@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>CamSettings</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>306.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>363.000000000</XPosition>
+    <YPosition>128.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>minX</Name>
-    <Value>-43.891624451</Value>
+    <Value>-49.211822510</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

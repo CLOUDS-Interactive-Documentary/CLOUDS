@@ -4,9 +4,9 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>pathPosition</WidgetName>
+                <WidgetName>fogExpo</WidgetName>
                 <WidgetID>4</WidgetID>
-                <WidgetCanvasParent>CameraPath</WidgetCanvasParent>
+                <WidgetCanvasParent>Fog</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
@@ -20,9 +20,9 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>fogExpo</WidgetName>
+                <WidgetName>pathPosition</WidgetName>
                 <WidgetID>4</WidgetID>
-                <WidgetCanvasParent>Fog</WidgetCanvasParent>
+                <WidgetCanvasParent>CameraPath</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>

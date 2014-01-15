@@ -31753,8 +31753,8 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -31773,8 +31773,8 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -31845,8 +31845,8 @@
     </suppressions>
     <comments></comments>
     <grade>A</grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
     <sound_exclude_vo>1</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>0</interlude>
@@ -31918,8 +31918,8 @@
     </suppressions>
     <comments></comments>
     <grade>A</grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
     <sound_exclude_vo>1</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
@@ -31990,8 +31990,8 @@
     </suppressions>
     <comments></comments>
     <grade>A</grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
     <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>1</sound_allow_vo>
     <interlude>1</interlude>
@@ -32021,18 +32021,6 @@
     <interlude>0</interlude>
 </system>
 <system name="WormHole_blueTunnel">
-    <keywords></keywords>
-    <links></links>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-    <sound_exclude_vo>0</sound_exclude_vo>
-    <sound_allow_vo>0</sound_allow_vo>
-    <interlude>0</interlude>
-</system>
-<system name="WormHole_debug">
     <keywords></keywords>
     <links></links>
     <suppressions></suppressions>
