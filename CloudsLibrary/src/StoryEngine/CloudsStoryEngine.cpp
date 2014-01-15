@@ -13,9 +13,10 @@ bool logsort(pair<float,string> a, pair<float,string> b ){
     return a.first > b.first;
 }
 
-bool topic_score_sort(pair<string,int> a, pair<string,int>b ){
+bool score_sort(pair<string,int> a, pair<string,int>b ){
     return a.second > b.second;
 }
+
 
 CloudsStoryEngine::CloudsStoryEngine(){
     parser = NULL;
@@ -261,7 +262,7 @@ void CloudsStoryEngine::setCustomAct(CloudsAct* act){
 	customAct = act;
 }
 
-vector<string> CloudsStoryEngine::getValidTopicsForNextAct(CloudsRun& run){
+string CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run){
     
     if(run.accumuluatedTopics.size() == 0 || run.clipHistory.size() == 0){
         ofLogError("CloudsStoryEngine::buildAct") << " no topics for next act!";
@@ -270,10 +271,46 @@ vector<string> CloudsStoryEngine::getValidTopicsForNextAct(CloudsRun& run){
     map<string, int>::iterator it;
     vector<string> topics;
     for(it = run.accumuluatedTopics.begin(); it != run.accumuluatedTopics.end(); it++){
-        topics.push_back(it->first);
+            topics.push_back(it->first);
     }
     
-    return topics;
+    vector<CloudsVisualSystemPreset> presetsForKeywords = visualSystems->getPresetsForKeywords(topics);
+    
+    vector< pair<string,int> > potentialPresets;
+    
+    bool validPresets = false;
+    for (int i =0 ; i<presetsForKeywords.size(); i++) {
+        
+        //Dont want presets that have been played before
+        if( ! ofContains(run.presetHistory, presetsForKeywords[i].getID() )){
+
+            //scoring presets based on commonality with topic history
+            int presetScore = 0;
+            vector<string> keywordsForPreset = presetsForKeywords[i].allKeywords;
+            for (int j =0;  j<keywordsForPreset.size(); j++) {
+                if( ofContains(run.topicHistory, keywordsForPreset[j])){
+                    presetScore++;
+                }
+            }
+            
+            potentialPresets.push_back(make_pair(presetsForKeywords[i].getID(), presetScore));
+            validPresets = true;
+        }
+    }
+    
+    //sort presets by score
+    if (validPresets) {
+        sort(potentialPresets.begin(), potentialPresets.end(),score_sort);
+        return potentialPresets[0].first ;
+    }
+    else{
+        ofLogError("CloudsStoryEngine::getPresetForInterlude") << "Defaulting to cluster map because we found no topics from the last act";
+        return " ";
+    }
+    //not in the history
+    //whichever shares the most with the topics from before
+
+
 }
 
 #pragma mark INIT ACT
@@ -299,7 +336,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run){
         topicCountPairs.push_back( make_pair(it->first, it->second));
     }
     
-    sort(topicCountPairs.begin(), topicCountPairs.end(), topic_score_sort);
+    sort(topicCountPairs.begin(), topicCountPairs.end(), score_sort);
     
     string validTopic = "";
     for(int i = 0; i < topicCountPairs.size(); i++){
