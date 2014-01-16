@@ -3,7 +3,7 @@
     <Name>HUD</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>650.000000000</YPosition>
+    <YPosition>652.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>QUESTION ROT V</Name>
-    <Value>-12.857147217</Value>
+    <Value>-2.216751099</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -38,17 +38,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LOWER 3RD DIST</Name>
-    <Value>364.285736084</Value>
+    <Value>628.571411133</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LOWER 3RD ROT H</Name>
-    <Value>3.103446960</Value>
+    <Value>4.876846313</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LOWER 3RD ROT V</Name>
-    <Value>2.216751099</Value>
+    <Value>-27.931030273</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

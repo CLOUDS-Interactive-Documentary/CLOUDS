@@ -3,12 +3,17 @@
     <Name>Questions</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>218.000000000</YPosition>
+    <YPosition>266.000000000</YPosition>
 </Canvas>
 <Widget>
+    <Kind>2</Kind>
+    <Name>Debug Tug</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
-    <Name>Size</Name>
-    <Value>3.522167444</Value>
+    <Name>Scale</Name>
+    <Value>0.014778325</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -17,51 +22,23 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>Question Min Z</Name>
+    <Value>55.665027618</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>Inner Radius</Name>
     <Value>7.054187298</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
-    <Name>Tug Min Distance</Name>
-    <Value>58.571426392</Value>
+    <Kind>6</Kind>
+    <Name>Tug Distance</Name>
+    <HighValue>74.285713196</HighValue>
+    <LowValue>45.714286804</LowValue>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
-    <Name>Tug Max Distance</Name>
-    <Value>127.142860413</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Tug Min Depth</Name>
-    <Value>58.669952393</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Question Tint H</Name>
-    <Value>0.541871607</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Question Tint S</Name>
-    <Value>0.344827294</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Question Tint B</Name>
-    <Value>0.522167206</Value>
-</Widget>
-<Widget>
-    <Kind>44</Kind>
-    <Name>Question Font Size</Name>
-    <Value>12</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Question Line Length</Name>
-    <Value>300.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Question Line Spacing</Name>
-    <Value>1.000000000</Value>
+    <Kind>6</Kind>
+    <Name>Attenuate Distance</Name>
+    <HighValue>144.285705566</HighValue>
+    <LowValue>21.428558350</LowValue>
 </Widget>
