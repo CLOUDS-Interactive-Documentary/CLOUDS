@@ -94,19 +94,23 @@ void CloudsPlaybackController::setup(){
 	
 	visualSystems.loadPresets();
     visualSystems.loadCachedDataForSystems();
+
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	storyEngine.printDecisions = false;
 	storyEngine.combinedClipsOnly = true;
 	storyEngine.setup();
 	
-	
 	///SOUND
 	mixer.setup();
 	sound.setup(storyEngine);
     
+
+#ifndef  OCULUS_RIFT
 	////COMMUNICATION
 	oscSender.setup();
+#endif
+    
 	//END THREADED
 	
 	rgbdVisualSystem = new CloudsVisualSystemRGBD();
@@ -127,7 +131,7 @@ void CloudsPlaybackController::setup(){
 #ifdef OCULUS_RIFT
     rgbdVisualSystem->hud = &hud;
     rgbdVisualSystem->setupHUDGui();
-
+//
     introSequence->hud = &hud;
     introSequence->setupHUDGui();
 #endif
@@ -164,10 +168,10 @@ void CloudsPlaybackController::setup(){
 			startingNodes.erase(startingNodes.begin() + i);
 		}
 #ifdef OCULUS_RIFT
-        else if(!startingNodes[i].hasSpecialKeyword("#oculus")){
-			ofLogError() << "Clip " << startingNodes[i].getID() << " is not tagged for the oculus.";
-			startingNodes.erase(startingNodes.begin() + i);
-        }
+//        else if(!startingNodes[i].hasSpecialKeyword("#oculus")){
+//			ofLogError() << "Clip " << startingNodes[i].getID() << " is not tagged for the oculus.";
+//			startingNodes.erase(startingNodes.begin() + i);
+//        }
 #endif
 		else{
             //			cout << " Adding Clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
@@ -549,7 +553,7 @@ void CloudsPlaybackController::updateTransition(){
                     
                     storyEngine.buildAct(run, clip, q->topic, true);
                     
-					sound.exitTunnel();
+//					sound.exitTunnel();
                 }
                 else if(transitionController.getPreviousState() == TRANSITION_INTERLUDE_OUT){
                     
@@ -657,13 +661,13 @@ void CloudsPlaybackController::drawDebugOverlay(){
 		ofTranslate(ofGetWidth()*.5, ofGetHeight()*.5);
 		ofScale(7,7);
 		ofSetColor(255);
-		string debugString =
-		currentVisualSystemPreset.presetName + " was associated with keyword " + currentVisualSystemPreset.conjureKeyword + "\n" +
-        "Preset's keywords " + ofJoinString(currentVisualSystemPreset.allKeywords, ", ") + "\n" +
-        "current clip's keywords " + ofJoinString(currentClip.getKeywords(), ", ") + "\n" +
-        "Had to default to keyword family? " + (currentVisualSystemPreset.defaultedToFamily ? "YES" : "NO") + "\n" +
-        "Had to pick a random preset? " + (currentVisualSystemPreset.randomlySelected ? "YES" : "NO") + "\n" +
-        "Act #? " + ofToString(run.actCount);
+		string debugString = "";
+//		currentVisualSystemPreset.presetName + " was associated with keyword " + currentVisualSystemPreset.conjureKeyword + "\n" +
+//        "Preset's keywords " + ofJoinString(currentVisualSystemPreset.allKeywords, ", ") + "\n" +
+//        "current clip's keywords " + ofJoinString(currentClip.getKeywords(), ", ") + "\n" +
+//        "Had to default to keyword family? " + (currentVisualSystemPreset.defaultedToFamily ? "YES" : "NO") + "\n" +
+//        "Had to pick a random preset? " + (currentVisualSystemPreset.randomlySelected ? "YES" : "NO") + "\n" +
+//        "Act #? " + ofToString(run.actCount);
 		
 		ofDrawBitmapString(debugString, 0,0);
 		
@@ -810,7 +814,7 @@ void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::playClip(CloudsClip& clip){
+void CloudsPlaybackController::playClip(CloudsClip clip){
     
 	numClipsPlayed++;
 	
@@ -823,7 +827,8 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 	
 	prerolledClipID = "";
 	currentClip = clip;
-	
+	currentClipName = clip.getID();
+    
 	rgbdVisualSystem->getRGBDVideoPlayer().swapAndPlay();
 }
 
