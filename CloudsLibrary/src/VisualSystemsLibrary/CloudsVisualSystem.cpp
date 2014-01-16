@@ -466,7 +466,8 @@ void CloudsVisualSystem::update(ofEventArgs & args)
         
 		
 		//update camera
-		translatedHeadPosition = getRGBDVideoPlayer().headPosition * pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ);
+        ofVec3f newHeadPosition = getRGBDVideoPlayer().headPosition * pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ);
+		translatedHeadPosition += (newHeadPosition - translatedHeadPosition) * .1;
 		cloudsCamera.lookTarget = translatedHeadPosition;
 		
         selfUpdate();
