@@ -131,7 +131,7 @@ void CloudsPlaybackController::setup(){
 #ifdef OCULUS_RIFT
     rgbdVisualSystem->hud = &hud;
     rgbdVisualSystem->setupHUDGui();
-//
+
     introSequence->hud = &hud;
     introSequence->setupHUDGui();
 #endif
@@ -173,6 +173,9 @@ void CloudsPlaybackController::setup(){
 			startingNodes.erase(startingNodes.begin() + i);
         }
 #endif
+//        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "what does music look like?"){
+//			startingNodes.erase(startingNodes.begin() + i);            
+//        }
 		else{
             //			cout << " Adding Clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
 		}
@@ -409,7 +412,6 @@ void CloudsPlaybackController::updateTransition(){
 	
 	transitionController.update();
 	
-    //TODO: Stop snapping on crossfade value
 	crossfadeValue = transitionController.getFadeValue();
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 	
@@ -419,7 +421,6 @@ void CloudsPlaybackController::updateTransition(){
 	
 	if(transitionController.transitioning){
 		rgbdVisualSystem->updateTransition( transitionController.getInterviewTransitionPoint() );
-
 	}
 	
 	CloudsPortal* q;
