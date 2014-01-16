@@ -308,7 +308,7 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
 	
 	lukePreset& interludePreset = sound.presets[ validInterludePresetIndices[ ofRandom(validInterludePresetIndices.size()) ] ];
 	cue.startTime = 0;
-	cue.duration = 2.5;
+	cue.duration = 60*2;
 	cue.mixLevel = 2;
 	
 	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel);
@@ -421,7 +421,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             showingInterlude = false;
         }
 #ifdef OCULUS_RIFT
-		else if(ofGetElapsedTimef() - interludeStartTime > 2.5){
+		else if(ofGetElapsedTimef() - interludeStartTime > 2*60){
             transitionController.transitionToIntro(1.0);
             
             //add transition back to intro for clouds
@@ -464,17 +464,11 @@ void CloudsPlaybackController::updateTransition(){
 	
 	transitionController.update();
 	
-	crossfadeValue = transitionController.getFadeValue();
-	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 	
 //if(transitionController.getCurrentState() != TRANSITION_IDLE){
 //    cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
 //	}
-	
-	if(transitionController.transitioning){
-		rgbdVisualSystem->updateTransition( transitionController.getInterviewTransitionPoint() );
-	}
-	
+		
 	CloudsPortal* q;
 	CloudsClip clip;
 	string topic;
@@ -649,6 +643,13 @@ void CloudsPlaybackController::updateTransition(){
                 break;
         }
 	}
+    
+    crossfadeValue = transitionController.getFadeValue();
+	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
+	if(transitionController.transitioning){
+		rgbdVisualSystem->updateTransition( transitionController.getInterviewTransitionPoint() );
+	}
+    
 }
 
 //This is where everything in clouds is drawn
