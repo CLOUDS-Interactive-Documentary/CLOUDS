@@ -118,7 +118,7 @@ void CloudsIntroSequence::selfUpdate(){
 
     // Trigger start manually
     if (!startedOnclick) {
-        bool cursorNearCenter = cursor.distance(ofVec3f(viewport.getCenter().x, viewport.getCenter().y * 0.5, cursor.z)) < 30;
+        bool cursorNearCenter = cursor.distance(ofVec3f(viewport.getCenter().x, viewport.getCenter().y, cursor.z)) < 30;
         if (cursorNearCenter) {
             if (bCursorInCenter) {
                 // already started, let's see if we've been there long enough
