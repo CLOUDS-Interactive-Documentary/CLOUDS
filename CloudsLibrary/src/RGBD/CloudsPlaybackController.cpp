@@ -889,13 +889,21 @@ void CloudsPlaybackController::hideVisualSystem() {
 void CloudsPlaybackController::showRGBDVisualSystem(){
 #ifdef OCULUS_RIFT
 //	rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
-    rgbdVisualSystem->loadPresetGUISFromName("RGBAct1");
+    if(run.actCount == 1){
+        rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_POINTS");
+    }
+    else{
+        rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_LINES");
+    }
 #else
     if(run.actCount == 1){
         rgbdVisualSystem->loadPresetGUISFromName("RGBAct1");
     }
-    else{
+    else if(run.actCount == 2){
         rgbdVisualSystem->loadPresetGUISFromName("RGBDMain2");
+    }
+    else{
+        rgbdVisualSystem->loadPresetGUISFromName("Act3_Screen_Normals");
     }
 #endif
     
