@@ -187,4 +187,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 
     ofVec3f cursor;
     
+#ifdef OCULUS_RIFT
+    bool bCursorInCenter;
+    float startTimeCursorInCenter;
+#endif
+    
 };
