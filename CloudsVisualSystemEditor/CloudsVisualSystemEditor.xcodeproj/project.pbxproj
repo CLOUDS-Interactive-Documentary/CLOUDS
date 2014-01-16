@@ -3650,8 +3650,8 @@
 		A633AB7118867B210088E767 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
-				A633AB7218867B210088E767 /* CloudsHUDController.cpp */,
 				A633AB7318867B210088E767 /* CloudsHUDController.h */,
+				A633AB7218867B210088E767 /* CloudsHUDController.cpp */,
 				A633AB7418867B210088E767 /* CloudsHUDHomeButton.cpp */,
 				A633AB7518867B210088E767 /* CloudsHUDHomeButton.h */,
 				A633AB7618867B210088E767 /* CloudsHUDLabel.cpp */,

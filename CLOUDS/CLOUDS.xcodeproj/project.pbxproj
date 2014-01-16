@@ -79,7 +79,6 @@
 		AE6F00161880716900677B60 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */; };
 		AE6F00171880716900677B60 /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */; };
 		AE6F00181880716900677B60 /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */; };
-		AE6F00191880716900677B60 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */; };
 		AE6F001A1880716900677B60 /* kiss_fftnd.c in Sources */ = {isa = PBXBuildFile; fileRef = E7402E80178F44DC00FEABED /* kiss_fftnd.c */; };
 		AE6F001B1880716900677B60 /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E83178F44DC00FEABED /* ofxOcean.cpp */; };
 		AE6F001C1880716900677B60 /* ofxOceanRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E87178F44DC00FEABED /* ofxOceanRenderer.cpp */; };
@@ -1453,7 +1452,6 @@
 		E7F777341772761A0096AEF7 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */; };
 		E7F7773A17734B0D0096AEF7 /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */; };
 		E7F77740177394CF0096AEF7 /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */; };
-		E7F77743177395920096AEF7 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */; };
 		E7FA0B801879FBF7002477DF /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0B7E1879FBF7002477DF /* ofxSystemTextbox.mm */; };
 		E7FA0B811879FBF7002477DF /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0B7E1879FBF7002477DF /* ofxSystemTextbox.mm */; };
 		E7FB24D01830D4C0009EBD0E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
@@ -1537,7 +1535,6 @@
 		E7FB25211830D4C0009EBD0E /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */; };
 		E7FB25221830D4C0009EBD0E /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */; };
 		E7FB25231830D4C0009EBD0E /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */; };
-		E7FB25241830D4C0009EBD0E /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */; };
 		E7FB25251830D4C0009EBD0E /* kiss_fftnd.c in Sources */ = {isa = PBXBuildFile; fileRef = E7402E80178F44DC00FEABED /* kiss_fftnd.c */; };
 		E7FB25261830D4C0009EBD0E /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E83178F44DC00FEABED /* ofxOcean.cpp */; };
 		E7FB25271830D4C0009EBD0E /* ofxOceanRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E87178F44DC00FEABED /* ofxOceanRenderer.cpp */; };
@@ -3157,8 +3154,6 @@
 		E7F7773917734B0B0096AEF7 /* CloudsVisualSystemPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPreset.h; sourceTree = "<group>"; };
 		E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRGBD.cpp; sourceTree = "<group>"; };
 		E7F7773F177394CD0096AEF7 /* CloudsVisualSystemRGBD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRGBD.h; sourceTree = "<group>"; };
-		E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsQuestion.cpp; sourceTree = "<group>"; };
-		E7F77742177395910096AEF7 /* CloudsQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsQuestion.h; sourceTree = "<group>"; };
 		E7FA0B7E1879FBF7002477DF /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		E7FA0B7F1879FBF7002477DF /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSystemTextbox.h; sourceTree = "<group>"; };
 		E7FB262A1830D4C0009EBD0E /* CLOUDS_OCULUSDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_OCULUSDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -6360,8 +6355,6 @@
 				E700BC3B18768EA6003A8167 /* CloudsTransitionController.cpp */,
 				E7F7773F177394CD0096AEF7 /* CloudsVisualSystemRGBD.h */,
 				E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */,
-				E7F77742177395910096AEF7 /* CloudsQuestion.h */,
-				E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */,
 			);
 			path = RGBD;
 			sourceTree = "<group>";
@@ -8076,7 +8069,6 @@
 				AE6F00171880716900677B60 /* CloudsVisualSystemPreset.cpp in Sources */,
 				AE6F00181880716900677B60 /* CloudsVisualSystemRGBD.cpp in Sources */,
 				A620E88218837DB300A02F5B /* drawnLineApp.cpp in Sources */,
-				AE6F00191880716900677B60 /* CloudsQuestion.cpp in Sources */,
 				AE6F001A1880716900677B60 /* kiss_fftnd.c in Sources */,
 				AE6F001B1880716900677B60 /* ofxOcean.cpp in Sources */,
 				AE6F001C1880716900677B60 /* ofxOceanRenderer.cpp in Sources */,
@@ -8616,7 +8608,6 @@
 				E7F777341772761A0096AEF7 /* CloudsVisualSystemManager.cpp in Sources */,
 				E7F7773A17734B0D0096AEF7 /* CloudsVisualSystemPreset.cpp in Sources */,
 				E7F77740177394CF0096AEF7 /* CloudsVisualSystemRGBD.cpp in Sources */,
-				E7F77743177395920096AEF7 /* CloudsQuestion.cpp in Sources */,
 				E7402E8D178F44DC00FEABED /* kiss_fftnd.c in Sources */,
 				E7402E8E178F44DC00FEABED /* ofxOcean.cpp in Sources */,
 				E7402E90178F44DC00FEABED /* ofxOceanRenderer.cpp in Sources */,
@@ -9152,7 +9143,6 @@
 				E7FB25211830D4C0009EBD0E /* CloudsVisualSystemManager.cpp in Sources */,
 				E7FB25221830D4C0009EBD0E /* CloudsVisualSystemPreset.cpp in Sources */,
 				E7FB25231830D4C0009EBD0E /* CloudsVisualSystemRGBD.cpp in Sources */,
-				E7FB25241830D4C0009EBD0E /* CloudsQuestion.cpp in Sources */,
 				E7FB25251830D4C0009EBD0E /* kiss_fftnd.c in Sources */,
 				E7FB25261830D4C0009EBD0E /* ofxOcean.cpp in Sources */,
 				E7FB25271830D4C0009EBD0E /* ofxOceanRenderer.cpp in Sources */,
