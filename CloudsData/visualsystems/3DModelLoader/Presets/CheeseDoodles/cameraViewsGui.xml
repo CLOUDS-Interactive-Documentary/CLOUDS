@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>cameraViewsGui</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>268.000000000</XPosition>
-    <YPosition>186.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>116.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -32,12 +32,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>path camera</Name>
+    <Name>four view</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>four view</Name>
+    <Name>path camera</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

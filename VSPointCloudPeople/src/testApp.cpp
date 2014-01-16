@@ -61,13 +61,13 @@ void testApp::keyReleased(int key){
 	}
 	
 	if(key == 'Q'){
-		ofDirectory qtestnodes( GetCloudsDataPath() + "HUD/QuestionNode_set05");
-		qtestnodes.allowExt("png");
-		qtestnodes.listDir();
-		vector<string> testpaths;
-		for(int i = 0; i < qtestnodes.numFiles(); i++)
-			testpaths.push_back(qtestnodes.getPath(i));
-		rgbd.addFakeQuestion(testpaths);
+//		ofDirectory qtestnodes( GetCloudsDataPath() + "HUD/QuestionNode_set05");
+//		qtestnodes.allowExt("png");
+//		qtestnodes.listDir();
+//		vector<string> testpaths;
+//		for(int i = 0; i < qtestnodes.numFiles(); i++)
+//			testpaths.push_back(qtestnodes.getPath(i));
+////		rgbd.addFakeQuestion(testpaths);
 	}
 	
 }
@@ -83,7 +83,9 @@ void testApp::updateTransitions(){
 	float crossfadeValue = transitionController.getFadeValue();
 	rgbd.visualSystemFadeValue = crossfadeValue;
 	
-	//cout << "visual system fade value is " << rgbd.visualSystemFadeValue << endl;
+	cout << "\tCUR STATE:" << transitionController.getCurrentStateDescription() << endl
+         << "\tPREVIOUS STATE: " << transitionController.getPreviousStateDescription() << endl
+         << "\tFADE VALUE " << rgbd.visualSystemFadeValue << endl;
 	
 	if(transitionController.transitioning){
 		ofLogNotice("testApp::updateTransitions") << transitionController.getCurrentStateDescription() << " TRANSITIONING: " << transitionController.getInterviewTransitionPoint();

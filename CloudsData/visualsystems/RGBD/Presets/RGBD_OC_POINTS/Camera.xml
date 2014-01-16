@@ -3,27 +3,27 @@
     <Name>Camera</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>462.000000000</YPosition>
+    <YPosition>464.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>FRONT DISTANCE</Name>
-    <Value>168.965515137</Value>
+    <Value>183.743850708</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SIDE DISTANCE</Name>
-    <Value>433.793090820</Value>
+    <Value>348.669952393</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SIDE PULLBACK</Name>
-    <Value>56.650207520</Value>
+    <Value>-165.024627686</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LIFT RANGE</Name>
-    <Value>68.472900391</Value>
+    <Value>57.635467529</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

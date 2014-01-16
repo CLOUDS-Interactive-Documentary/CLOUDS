@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18C070D71836BB2500B58246 /* CloudsIntervention.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C070D51836BB2400B58246 /* CloudsIntervention.cpp */; };
+		507E85DA1887AF9F00244675 /* CloudsTransitionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507E85D91887AF9F00244675 /* CloudsTransitionController.cpp */; };
 		608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */; };
 		6091337D1652C9C900B523AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -328,6 +329,8 @@
 /* Begin PBXFileReference section */
 		18C070D51836BB2400B58246 /* CloudsIntervention.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsIntervention.cpp; sourceTree = "<group>"; };
 		18C070D61836BB2500B58246 /* CloudsIntervention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsIntervention.h; sourceTree = "<group>"; };
+		507E85D81887AF1D00244675 /* CloudsTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsTransitionController.h; path = ../RGBD/CloudsTransitionController.h; sourceTree = "<group>"; };
+		507E85D91887AF9F00244675 /* CloudsTransitionController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsTransitionController.cpp; path = ../RGBD/CloudsTransitionController.cpp; sourceTree = "<group>"; };
 		608B6AAC16A78AAD00144EF4 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		608B6AAF16A78AB800144EF4 /* ofxCocoaGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCocoaGLView.h; sourceTree = "<group>"; };
 		608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaGLView.mm; sourceTree = "<group>"; };
@@ -1484,6 +1487,8 @@
 				E75DB6BC17CDC02A00CD99D9 /* CloudsRGBDVideoPlayer.cpp */,
 				E75DB6BF17CDC02A00CD99D9 /* CloudsVisualSystem.h */,
 				E75DB6BE17CDC02A00CD99D9 /* CloudsVisualSystem.cpp */,
+				507E85D81887AF1D00244675 /* CloudsTransitionController.h */,
+				507E85D91887AF9F00244675 /* CloudsTransitionController.cpp */,
 				E75DB6C017CDC02A00CD99D9 /* ofxLight.h */,
 				E75DB6C117CDC02A00CD99D9 /* README.md */,
 			);
@@ -1682,8 +1687,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsPointcloudViewer" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1889,6 +1892,7 @@
 				85891D2E187FEDD000325DD8 /* ofxSystemTextbox.mm in Sources */,
 				85891D35187FEDFF00325DD8 /* CloudsPortal.cpp in Sources */,
 				85891D37187FEDFF00325DD8 /* CloudsPortalRing.cpp in Sources */,
+				507E85DA1887AF9F00244675 /* CloudsTransitionController.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

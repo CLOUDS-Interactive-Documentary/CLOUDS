@@ -359,6 +359,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDraw()
 	}    
 	
 	if(drawLines){
+        glDisable(GL_LINE_SMOOTH);
 		shader.begin();
 		shader.setUniform1f("alphaDamp", lineAlpha);
 		ofSetLineWidth(ofMap(currLevel, 0, 1, minHairLineWidth, maxHairLineWidth));
@@ -418,8 +419,10 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfExit()
     if (leftBuffer  != NULL) delete [] leftBuffer;
     if (rightBuffer != NULL) delete [] rightBuffer;
     leftBuffer = rightBuffer = NULL;
-    
-    delete [] Hair::levelScaleLookUp;
+    if(Hair::levelScaleLookUp != NULL){
+        delete [] Hair::levelScaleLookUp;
+        Hair::levelScaleLookUp = NULL;
+    }
 }
 
 //events are called when the system is active

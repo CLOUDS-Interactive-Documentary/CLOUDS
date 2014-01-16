@@ -131,7 +131,7 @@ void CloudsPlaybackController::setup(){
 #ifdef OCULUS_RIFT
     rgbdVisualSystem->hud = &hud;
     rgbdVisualSystem->setupHUDGui();
-//
+
     introSequence->hud = &hud;
     introSequence->setupHUDGui();
 #endif
@@ -155,6 +155,8 @@ void CloudsPlaybackController::setup(){
 		ofRegisterMouseEvents(this);
 	}
 	
+    createInterludeSoundQueue();
+    
 	//////////////SHOW INTRO
     startingNodes = parser.getClipsWithKeyword("#start");
 	//safe guard delete any starters that don't have questions
@@ -173,6 +175,9 @@ void CloudsPlaybackController::setup(){
 			startingNodes.erase(startingNodes.begin() + i);
         }
 #endif
+//        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "have we hacked reality?"){
+//			startingNodes.erase(startingNodes.begin() + i);            
+//        }
 		else{
             //			cout << " Adding Clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
 		}
@@ -285,6 +290,27 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
     if(args.key == 'm'){
         transitionController.transitionToIntro(1.0);
     }
+}
+//--------------------------------------------------------------------
+void CloudsPlaybackController::createInterludeSoundQueue(){
+    CloudsSoundCue cue;
+ 	CloudsSoundCue introCue;
+	
+    //TODO Only intro cue on the first act...?
+//	CloudsClip& startClip = clips[0];
+//	if(startClip.hasStartingQuestion() && startClip.getTopicsWithQuestions().size() > 0){
+//		string startTopic    = startClip.getTopicsWithQuestions()[0];
+//		string startQuestion = startClip.getQuestionForTopic(startTopic);
+//		introCue.soundQuestionKey = startTopic + ":" + startQuestion;
+//	}
+    
+//	introCue.mixLevel = 2;
+//    
+//    for(int i = 0; i < sound.presets.size(); i++){
+//        //introCue.riggedPresetName =
+//        cout << i << "  " << sound.presets[i].name << endl;;
+//    }
+
 }
 
 //--------------------------------------------------------------------
@@ -409,7 +435,6 @@ void CloudsPlaybackController::updateTransition(){
 	
 	transitionController.update();
 	
-    //TODO: Stop snapping on crossfade value
 	crossfadeValue = transitionController.getFadeValue();
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 	
@@ -419,7 +444,6 @@ void CloudsPlaybackController::updateTransition(){
 	
 	if(transitionController.transitioning){
 		rgbdVisualSystem->updateTransition( transitionController.getInterviewTransitionPoint() );
-
 	}
 	
 	CloudsPortal* q;
@@ -480,7 +504,7 @@ void CloudsPlaybackController::updateTransition(){
                 
                 // no need to do anything special, the crossfade value will take care of this
 
-                hud.animateOff(CLOUDS_HUD_FULL);
+//                hud.animateOff(CLOUDS_HUD_FULL);
 
                 break;
                 
@@ -488,6 +512,10 @@ void CloudsPlaybackController::updateTransition(){
                 
                 hideVisualSystem();
                 showRGBDVisualSystem();
+                
+                if(transitionController.getPreviousState() == TRANSITION_VISUALSYSTEM_OUT){
+                    hud.playCued();
+                }
                 
                 break;
                 
@@ -904,17 +932,17 @@ void CloudsPlaybackController::hideVisualSystem() {
 void CloudsPlaybackController::showRGBDVisualSystem(){
 #ifdef OCULUS_RIFT
 //	rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
-    if(run.actCount == 1){
+//    if(run.actCount == 1){
         rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_POINTS");
-    }
-    else{
-        rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_LINES");
-    }
+//    }
+//    else{
+//        rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_LINES");
+//    }
 #else
-    if(run.actCount == 1){
+    if(run.actCount == 0){
         rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT1_POINTS");
     }
-    else if(run.actCount == 2){
+    else if(run.actCount == 1){
         rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT2_LINES");
     }
     else{

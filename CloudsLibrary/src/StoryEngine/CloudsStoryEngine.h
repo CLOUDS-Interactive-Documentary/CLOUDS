@@ -177,6 +177,8 @@ class CloudsStoryEngine {
 
 	float distantClipSuppressionFactor;
 
+    
+    
 	//Topic selection parameters
 	float topicRelevancyMultiplier;
 	float lastClipSharesTopicBoost;

@@ -24,8 +24,9 @@ class CloudsHUDLayer
 	vector<string> textBoxIds;
 	CloudsSVGMesh svg;
 	
-	void start();
-    void close();
+	void start(bool animate = true);
+    void close(bool animate = true);
+    
 	void update();
 	void draw();
 	

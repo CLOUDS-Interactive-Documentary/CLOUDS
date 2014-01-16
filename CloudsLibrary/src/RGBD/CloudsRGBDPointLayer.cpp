@@ -11,14 +11,16 @@
 #include "CloudsRGBDVideoPlayer.h"
 
 CloudsRGBDPointLayer::CloudsRGBDPointLayer(){
+    setDefaults();
+    
+    pointShader = NULL;
+    visualSystemFadeValue = NULL;
 
 }
 
-
-
 CloudsRGBDPointLayer::~CloudsRGBDPointLayer(){
     if(eventsRegistered){
-        ofAddListener(pointsGui->newGUIEvent, this, &CloudsRGBDPointLayer::selfGuiEvent);
+//        ofAddListener(pointsGui->newGUIEvent, this, &CloudsRGBDPointLayer::selfGuiEvent);
     }
 }
 
@@ -136,7 +138,7 @@ void CloudsRGBDPointLayer::draw(){
     if(!drawPoints){
         return;
     }
-    
+        
     if(pointShader == NULL){
         ofLogError("CloudsRGBDPointLayer::draw") << "Point shader not set";
         return;

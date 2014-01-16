@@ -79,16 +79,9 @@
 		507B711D188782AC00F9DBE6 /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B70F4188782AC00F9DBE6 /* ofxFTGLSimpleLayout.cpp */; };
 		507B7155188783E500F9DBE6 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 507B714B188783E500F9DBE6 /* libftgl.a */; };
 		507B7156188783E500F9DBE6 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 507B714B188783E500F9DBE6 /* libftgl.a */; };
-		507B71961887845500F9DBE6 /* ofxAVFVideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 507B71871887845500F9DBE6 /* ofxAVFVideoPlayer.mm */; };
-		507B71971887845500F9DBE6 /* ofxAVFVideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 507B71871887845500F9DBE6 /* ofxAVFVideoPlayer.mm */; };
-		507B71981887845500F9DBE6 /* ofxAVFVideoRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 507B71891887845500F9DBE6 /* ofxAVFVideoRenderer.m */; };
-		507B71991887845500F9DBE6 /* ofxAVFVideoRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 507B71891887845500F9DBE6 /* ofxAVFVideoRenderer.m */; };
 		507B71A1188784A000F9DBE6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507B71A0188784A000F9DBE6 /* AVFoundation.framework */; };
 		507B71A4188784CB00F9DBE6 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507B71A2188784CB00F9DBE6 /* CoreMedia.framework */; };
 		507B71A5188784CB00F9DBE6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507B71A3188784CB00F9DBE6 /* QuartzCore.framework */; };
-		507B71A81887852C00F9DBE6 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 507B71A71887852C00F9DBE6 /* ofxSystemTextbox.mm */; };
-		507B71A91887852C00F9DBE6 /* ofxSystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 507B71A71887852C00F9DBE6 /* ofxSystemTextbox.mm */; };
-		507B71BE1887857700F9DBE6 /* CloudsInputOculus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B71BC1887857700F9DBE6 /* CloudsInputOculus.cpp */; };
 		507B71BF1887857700F9DBE6 /* CloudsInputOculus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B71BC1887857700F9DBE6 /* CloudsInputOculus.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -514,14 +507,9 @@
 		507B714A188783E500F9DBE6 /* buildFTGL.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = buildFTGL.sh; sourceTree = "<group>"; };
 		507B714B188783E500F9DBE6 /* libftgl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libftgl.a; sourceTree = "<group>"; };
 		507B71861887845500F9DBE6 /* ofxAVFVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoPlayer.h; sourceTree = "<group>"; };
-		507B71871887845500F9DBE6 /* ofxAVFVideoPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxAVFVideoPlayer.mm; sourceTree = "<group>"; };
-		507B71881887845500F9DBE6 /* ofxAVFVideoRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoRenderer.h; sourceTree = "<group>"; };
-		507B71891887845500F9DBE6 /* ofxAVFVideoRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ofxAVFVideoRenderer.m; sourceTree = "<group>"; };
 		507B71A0188784A000F9DBE6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
 		507B71A2188784CB00F9DBE6 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
 		507B71A3188784CB00F9DBE6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
-		507B71A61887852C00F9DBE6 /* ofxSystemTextbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxSystemTextbox.h; path = ../CloudsLibrary/src/VisualSystemsLibrary/ofxSystemTextbox.h; sourceTree = "<group>"; };
-		507B71A71887852C00F9DBE6 /* ofxSystemTextbox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ofxSystemTextbox.mm; path = ../CloudsLibrary/src/VisualSystemsLibrary/ofxSystemTextbox.mm; sourceTree = "<group>"; };
 		507B71BC1887857700F9DBE6 /* CloudsInputOculus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputOculus.cpp; sourceTree = "<group>"; };
 		507B71BD1887857700F9DBE6 /* CloudsInputOculus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputOculus.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -1140,9 +1128,6 @@
 			isa = PBXGroup;
 			children = (
 				507B71861887845500F9DBE6 /* ofxAVFVideoPlayer.h */,
-				507B71871887845500F9DBE6 /* ofxAVFVideoPlayer.mm */,
-				507B71881887845500F9DBE6 /* ofxAVFVideoRenderer.h */,
-				507B71891887845500F9DBE6 /* ofxAVFVideoRenderer.m */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -1227,8 +1212,6 @@
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				50618D861853A93C00DD8FD8 /* data */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
-				507B71A61887852C00F9DBE6 /* ofxSystemTextbox.h */,
-				507B71A71887852C00F9DBE6 /* ofxSystemTextbox.mm */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
@@ -1574,10 +1557,6 @@
 				502BFDAA188394CB00CCC89A /* ofxSystemTextbox.mm in Sources */,
 				507B711A188782AC00F9DBE6 /* ofxFTGLFont.cpp in Sources */,
 				507B711C188782AC00F9DBE6 /* ofxFTGLSimpleLayout.cpp in Sources */,
-				507B71961887845500F9DBE6 /* ofxAVFVideoPlayer.mm in Sources */,
-				507B71981887845500F9DBE6 /* ofxAVFVideoRenderer.m in Sources */,
-				507B71A81887852C00F9DBE6 /* ofxSystemTextbox.mm in Sources */,
-				507B71BE1887857700F9DBE6 /* CloudsInputOculus.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1661,9 +1640,6 @@
 				E79E70101855640B00406535 /* CloudsInputMouse.cpp in Sources */,
 				507B711B188782AC00F9DBE6 /* ofxFTGLFont.cpp in Sources */,
 				507B711D188782AC00F9DBE6 /* ofxFTGLSimpleLayout.cpp in Sources */,
-				507B71971887845500F9DBE6 /* ofxAVFVideoPlayer.mm in Sources */,
-				507B71991887845500F9DBE6 /* ofxAVFVideoRenderer.m in Sources */,
-				507B71A91887852C00F9DBE6 /* ofxSystemTextbox.mm in Sources */,
 				507B71BF1887857700F9DBE6 /* CloudsInputOculus.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

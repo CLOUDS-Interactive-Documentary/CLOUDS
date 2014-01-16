@@ -47,7 +47,7 @@ class CloudsHUDController {
 	void update();
 	void draw();
 #ifdef OCULUS_RIFT
-    void draw3D(ofCamera* cam);
+    void draw3D(ofCamera* cam, ofVec2f offset = ofVec2f::zero());
 #endif
 
 	void setHomeEnabled(bool enable);
@@ -62,6 +62,7 @@ class CloudsHUDController {
 	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void animateOff(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void respondToClip(CloudsClip& clip);
+    void playCued();
 	
 	map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> > layerSets;
 	vector<CloudsHUDLayer*> allLayers;
@@ -89,10 +90,10 @@ class CloudsHUDController {
     ofVec2f getCenter(bool bScaled = true);
     
 #ifdef OCULUS_RIFT
-    float layerDistance[CLOUDS_HUD_LAYER_COUNT];
-    float layerRotationH[CLOUDS_HUD_LAYER_COUNT];
-    float layerRotationV[CLOUDS_HUD_LAYER_COUNT];
-    CloudsHUDBillboard layerBillboard[CLOUDS_HUD_LAYER_COUNT];
+    map<CloudsHUDLayerSet, float> layerDistance;
+    map<CloudsHUDLayerSet, float> layerRotationH;
+    map<CloudsHUDLayerSet, float> layerRotationV;
+    map<CloudsHUDLayerSet, CloudsHUDBillboard> layerBillboard;
 #endif
 
   protected:
@@ -110,10 +111,13 @@ class CloudsHUDController {
     bool    bDrawHud;
     bool    bSkipAVideoFrame;
     
+    bool    bLowerThirdCued;
+    bool    bVisualSystemDisplayed;
+    float   cuedClipEndTime;
 	
     void drawLayer(CloudsHUDLayerSet layer);
 #ifdef OCULUS_RIFT
-    void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam);
+    void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, ofVec2f& offset);
 #endif
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath );
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath, bool caps );

@@ -7,7 +7,7 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>basic</Name>
+    <Name>Act3_Screen_Normals</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -27,42 +27,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>GhostLines</Name>
+    <Name>RGBD_ACT1_POINTS</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>jg_golddust</Name>
+    <Name>RGBD_ACT2_LINES</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>JG_Provisional_Thursday</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>LarsPortal</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Lines_01</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Mesh_Lines_01</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Mesh_Lines_02</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Points_Mesh_1</Name>
+    <Name>RGBD_ACT3_MESH</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -102,11 +77,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Shards</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>SimpleLines</Name>
     <Value>0</Value>
 </Widget>
@@ -118,10 +88,5 @@
 <Widget>
     <Kind>2</Kind>
     <Name>SimplePointsTwoLayers</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>TriLines</Name>
     <Value>0</Value>
 </Widget>

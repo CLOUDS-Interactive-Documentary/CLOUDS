@@ -108,6 +108,7 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetup(){
 	
+    
 	portals.push_back(&leftPortal);
 	portals.push_back(&rightPortal);
 	
@@ -131,9 +132,9 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	//generatePoints();
 	generateMesh();
 		
-//	particulateController.setParticleCount(particleCount);
-//	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-//	particulateController.setup();
+	particulateController.setParticleCount(2000);
+	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+	particulateController.setup();
 	
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
@@ -144,7 +145,6 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	transitionCam.applyTranslation = true;
 	transitionCam.applyRotation = true;
 	
-    
 //    rebuildCaptionFont();
 	
 	bTransitionIn = bTransitionOut = false;
@@ -157,9 +157,10 @@ void CloudsVisualSystemRGBD::selfSetup(){
 
 void CloudsVisualSystemRGBD::playTestVideo(){
 
-	if(ofFile::doesFileExist("TestVideo/Maeda_ACU_p_2.mov")){
-		getRGBDVideoPlayer().setup("TestVideo/Maeda_ACU_p_2.mov",
-								   "TestVideo/Maeda_ACU_p_2.xml", 0, 0);
+	if(ofFile::doesFileExist("TestVideo/Lindsay_memes_2.mov")){
+        CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().loadMovie("TestVideo/Lindsay_memes_2.mov");
+//        CloudsVisualSystem::getRGBDVideoPlayer().setup("TestVideo/Lindsay_memes_2.mov",
+//								   "TestVideo/Lindsay_memes_2.xml", 0, 0);
 		getRGBDVideoPlayer().swapAndPlay();
 	}
 }
@@ -245,7 +246,7 @@ void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionTy
 			break;
 			
 		default:
-			setTransitionNodes("WHIP_PAN", "default");
+			setTransitionNodes("FLY_THROUGH", "default");
 			break;
 	}
 }
@@ -545,13 +546,13 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	if(drawParticulate){
 		
-        if(particulateController.getNumParticles() != particleCount){
-            particulateController.setParticleCount(particleCount);
-            particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-            particulateController.setup();
-        }
+//        if(particulateController.getNumParticles() != particleCount){
+//            particulateController.setParticleCount(particleCount);
+//            particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+//            particulateController.setup();
+//        }
+        
 		particulateController.birthPlace = translatedHeadPosition;
-		
 		glDisable(GL_LIGHTING);
 		glDisable(GL_DEPTH_TEST);
 		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
@@ -587,6 +588,24 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 			bResetLookThoughs = false;
 			transitionCamTargetNode = NULL;
 			resetTransitionNodes();
+		}
+		else if(bResetIn)
+		{
+			bResetIn = false;
+			transitionCamTargetNode = NULL;
+			resetInTransitionNode();
+		}
+		else if(bResetLeft)
+		{
+			bResetLeft = false;
+			transitionCamTargetNode = NULL;
+			resetLeftTransitionNode();
+		}
+		else if(bResetRight)
+		{
+			bResetRight = false;
+			transitionCamTargetNode = NULL;
+			resetRightTransitionNode();
 		}
 		
 		if(bMoveTransitionCameraUp)
@@ -639,6 +658,39 @@ void CloudsVisualSystemRGBD::resetTransitionNodes()
 	transitionOutLeft.setPosition(translatedHeadPosition + offset);
 	transitionOutRight.setPosition(translatedHeadPosition + offset);
 	
+}
+
+void CloudsVisualSystemRGBD::resetInTransitionNode()
+{
+	transitionInStart.resetTransform();
+	
+	ofVec3f offset(0,-50,-150);
+	
+	transitionInStart.rotate(180, 0, 1, 0);
+	
+	transitionInStart.setPosition(translatedHeadPosition + offset);
+}
+
+void CloudsVisualSystemRGBD::resetLeftTransitionNode()
+{
+	transitionOutLeft.resetTransform();
+	
+	ofVec3f offset(0,-50,-150);
+	
+	transitionOutLeft.rotate(180, 0, 1, 0);
+	
+	transitionOutLeft.setPosition(translatedHeadPosition + offset);
+}
+
+void CloudsVisualSystemRGBD::resetRightTransitionNode()
+{
+	transitionOutRight.resetTransform();
+	
+	ofVec3f offset(0,-50,-150);
+	
+	transitionOutRight.rotate(180, 0, 1, 0);
+	
+	transitionOutRight.setPosition(translatedHeadPosition + offset);
 }
 
 void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
@@ -876,6 +928,9 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 	t->addButton("DriveOutLeft", false )->setColorBack(ofColor(155,155,0));
 	t->addButton("DriveOutRight", false )->setColorBack(ofColor(155,0,155));
 	t->addButton("resetNodes", &bResetLookThoughs );
+	t->addButton("ResetIn", &bResetIn);
+	t->addButton("ResetLeft", &bResetLeft);
+	t->addButton("ResetRight", &bResetRight);
 	
 	t->addSpacer();
 	t->addToggle("moveUp", &bMoveTransitionCameraUp);
@@ -1388,7 +1443,7 @@ void CloudsVisualSystemRGBD::generateOcclusion(){
 
 void CloudsVisualSystemRGBD::speakerChanged(){
 //    clearQuestions();
-    timeline->hide();
+   if(timeline!=NULL) timeline->hide();
 }
 
 void CloudsVisualSystemRGBD::selfDrawBackground(){
@@ -1410,6 +1465,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
         hud->draw3D(getOculusRift().baseCamera);
     }
     #endif
+    
 	ofPushStyle();
 	ofPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -1623,6 +1679,11 @@ void CloudsVisualSystemRGBD::selfDraw(){
 
 void CloudsVisualSystemRGBD::drawOcclusionLayer(){
     // z-prepass
+    //BAIL FOR NOW
+    /////////////
+//    return;
+    /////////////
+    
     glPushMatrix();
     if(!drawOcclusionDebug){
         
@@ -1713,7 +1774,10 @@ void CloudsVisualSystemRGBD::selfExit(){
 void CloudsVisualSystemRGBD::selfBegin(){
     bPortalDebugOn = false;
 	cloudsCamera.jumpToPosition();
-    timeline->hide();
+	if(timeline!=NULL)
+	{
+		timeline->hide();
+	}
     
     //clear any previously selected portals
     caughtPortal = NULL;
