@@ -553,7 +553,7 @@ void CloudsPlaybackController::updateTransition(){
                     
                     storyEngine.buildAct(run, clip, q->topic, true);
                     
-//					sound.exitTunnel();
+					sound.exitTunnel();
                 }
                 else if(transitionController.getPreviousState() == TRANSITION_INTERLUDE_OUT){
                     

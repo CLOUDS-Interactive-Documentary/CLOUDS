@@ -61,13 +61,13 @@ void testApp::keyReleased(int key){
 	}
 	
 	if(key == 'Q'){
-		ofDirectory qtestnodes( GetCloudsDataPath() + "HUD/QuestionNode_set05");
-		qtestnodes.allowExt("png");
-		qtestnodes.listDir();
-		vector<string> testpaths;
-		for(int i = 0; i < qtestnodes.numFiles(); i++)
-			testpaths.push_back(qtestnodes.getPath(i));
-		rgbd.addFakeQuestion(testpaths);
+//		ofDirectory qtestnodes( GetCloudsDataPath() + "HUD/QuestionNode_set05");
+//		qtestnodes.allowExt("png");
+//		qtestnodes.listDir();
+//		vector<string> testpaths;
+//		for(int i = 0; i < qtestnodes.numFiles(); i++)
+//			testpaths.push_back(qtestnodes.getPath(i));
+////		rgbd.addFakeQuestion(testpaths);
 	}
 	
 }
