@@ -20,13 +20,13 @@
 #include "CloudsSpeaker.h"
 
 typedef enum {
-	CLOUDS_HUD_FULL = 0,
-	CLOUDS_HUD_QUESTION,
-	CLOUDS_HUD_LOWER_THIRD,
-	CLOUDS_HUD_PROJECT_EXAMPLE,
-	CLOUDS_HUD_MAP,
+	CLOUDS_HUD_QUESTION        = 0x0001,
+	CLOUDS_HUD_LOWER_THIRD     = 0x0010,
+	CLOUDS_HUD_PROJECT_EXAMPLE = 0x0100,
+	CLOUDS_HUD_MAP             = 0x1000,
     
-    CLOUDS_HUD_LAYER_COUNT
+	CLOUDS_HUD_FULL            = 0x1111,
+    CLOUDS_HUD_LAYER_COUNT     = 4
 } CloudsHUDLayerSet;
 
 #ifdef OCULUS_RIFT
@@ -51,6 +51,9 @@ class CloudsHUDController {
 #endif
 
 	void setHomeEnabled(bool enable);
+    bool isHomeEnabled();
+    void setHudEnabled(bool enable);
+    bool isHudEnabled();
 	
 	void buildLayerSets();
     void calculateFontSizes();
@@ -84,9 +87,6 @@ class CloudsHUDController {
     
     ofVec2f getSize(bool bScaled = true);
     ofVec2f getCenter(bool bScaled = true);
-    
-    void setDrawHud(bool val);
-    bool getDrawHud();
     
 #ifdef OCULUS_RIFT
     float layerDistance[CLOUDS_HUD_LAYER_COUNT];

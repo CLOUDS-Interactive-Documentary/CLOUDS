@@ -1269,6 +1269,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Jen - library</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Information 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Binx - actually interesting</target>
         <startFrame>-1</startFrame>
@@ -3816,6 +3826,11 @@
     </link>
     <link>
         <target>Martin - Big data</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - changing behavior</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -13917,6 +13932,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Information 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jen - facebook data</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Martin - Big data 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Maeda - How do you relate to people?</target>
         <startFrame>-1</startFrame>
@@ -15444,6 +15474,16 @@
     </link>
     <link>
         <target>Lauren - data ownership 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Information 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Greg - the &quot;Like&quot; button cascade</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -43156,7 +43196,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>life and code</revokedKeywords>
-    <additionalKeywords>biology and code,?biology and code: What&apos;s the code of life?,#mindblowing,#logical,#hard,#start</additionalKeywords>
+    <additionalKeywords>biology and code,#mindblowing,#logical,#hard,#start,?biology and code: What is the code of life?</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jessica - Design process</name>
