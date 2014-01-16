@@ -443,14 +443,6 @@ ofVec2f CloudsHUDController::getCenter(bool bScaled){
     return ofVec2f(hudBounds.width * 0.5, hudBounds.height * 0.5) * (bScaled? scaleAmt : 1.0);
 }
 
-void CloudsHUDController::setDrawHud(bool val){
-    bDrawHud = val;
-}
-
-bool CloudsHUDController::getDrawHud(){
-    return bDrawHud;
-}
-
 void CloudsHUDController::update(){
 	for(int i = 0; i < allLayers.size(); i++){
 		allLayers[i]->update();
@@ -485,6 +477,18 @@ void CloudsHUDController::update(){
 
 void CloudsHUDController::setHomeEnabled(bool enable){
 	bDrawHome = enable;
+}
+
+bool CloudsHUDController::isHomeEnabled(){
+    return bDrawHome;
+}
+
+void CloudsHUDController::setHudEnabled(bool enable){
+	bDrawHud = enable;
+}
+
+bool CloudsHUDController::isHudEnabled(){
+    return bDrawHud;
 }
 
 void CloudsHUDController::draw(){
@@ -663,52 +667,30 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
 void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
     //bIsHudOpen = true;
 	
-    if(hudOpenMap[layer]){
-		return;
-	}
-	
-    if( layer == CLOUDS_HUD_FULL ){
-        for( int i=0; i<layerSets.size(); i++ ){
-            for(int k = 0; k < layerSets[(CloudsHUDLayerSet)i].size(); i++){
-                layerSets[(CloudsHUDLayerSet)i][k]->start();
-				hudOpenMap[(CloudsHUDLayerSet)i] = true;
+    for (map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> >::iterator it = layerSets.begin(); it != layerSets.end(); ++it) {
+        for (int i = 0; i < it->second.size(); i++) {
+            if ((layer & it->first) != 0) {
+                it->second[i]->start();
+                hudOpenMap[it->first] = true;
             }
         }
     }
-    else {
-        for(int i = 0; i < layerSets[layer].size(); i++){
-            layerSets[layer][i]->start();
-			hudOpenMap[layer] = true;
-        }
-		hudOpenMap[layer] = true;	
-    }
-	
-	
 }
 
 void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
 	//bIsHudOpen = false;
-	if(!hudOpenMap[layer]){
-		return;
-	}
-
-    if( videoPlayer.isPlaying() ){
+    
+    if (videoPlayer.isPlaying()) {
         videoPlayer.stop();
         videoPlayer.close();
     }
     
-    if( layer == CLOUDS_HUD_FULL ){
-        for( int i=0; i<layerSets.size(); i++ ){
-            for(int k = 0; k < layerSets[(CloudsHUDLayerSet)i].size(); i++){
-                layerSets[(CloudsHUDLayerSet)i][k]->close();
-				hudOpenMap[(CloudsHUDLayerSet)i] = false;
+    for (map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> >::iterator it = layerSets.begin(); it != layerSets.end(); ++it) {
+        if ((layer & it->first) != 0) {
+            for (int i = 0; i < it->second.size(); i++) {
+                it->second[i]->close();
+                hudOpenMap[it->first] = false;
             }
-        }
-    }
-    else{
-        for(int i = 0; i < layerSets[layer].size(); i++){
-            layerSets[layer][i]->close();
-			hudOpenMap[layer] = false;
         }
     }
     
