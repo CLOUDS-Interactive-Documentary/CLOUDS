@@ -157,9 +157,10 @@ void CloudsVisualSystemRGBD::selfSetup(){
 
 void CloudsVisualSystemRGBD::playTestVideo(){
 
-	if(ofFile::doesFileExist("TestVideo/Maeda_ACU_p_2.mov")){
-		getRGBDVideoPlayer().setup("TestVideo/Maeda_ACU_p_2.mov",
-								   "TestVideo/Maeda_ACU_p_2.xml", 0, 0);
+	if(ofFile::doesFileExist("TestVideo/Lindsay_memes_2.mov")){
+        CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().loadMovie("TestVideo/Lindsay_memes_2.mov");
+//        CloudsVisualSystem::getRGBDVideoPlayer().setup("TestVideo/Lindsay_memes_2.mov",
+//								   "TestVideo/Lindsay_memes_2.xml", 0, 0);
 		getRGBDVideoPlayer().swapAndPlay();
 	}
 }
