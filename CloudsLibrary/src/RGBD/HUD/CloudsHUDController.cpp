@@ -668,10 +668,10 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
     //bIsHudOpen = true;
 	
     for (map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> >::iterator it = layerSets.begin(); it != layerSets.end(); ++it) {
-        for (int i = 0; i < it->second.size(); i++) {
-            if ((layer & it->first) != 0) {
+        if ((layer & it->first) != 0) {
+            hudOpenMap[it->first] = true;
+            for (int i = 0; i < it->second.size(); i++) {
                 it->second[i]->start();
-                hudOpenMap[it->first] = true;
             }
         }
     }
@@ -687,9 +687,9 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
     
     for (map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> >::iterator it = layerSets.begin(); it != layerSets.end(); ++it) {
         if ((layer & it->first) != 0) {
+            hudOpenMap[it->first] = false;
             for (int i = 0; i < it->second.size(); i++) {
                 it->second[i]->close();
-                hudOpenMap[it->first] = false;
             }
         }
     }
