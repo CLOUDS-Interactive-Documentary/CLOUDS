@@ -37,7 +37,8 @@
 	rgbdVisualSystem.setDrawToScreen(false);
 	hud.setup();
 
-	rgbdVisualSystem.playSystem();
+    rgbd.setup();
+
 #ifdef OCULUS_RIFT
     rgbdVisualSystem.hud = &hud;
     rgbdVisualSystem.setupHUDGui();
@@ -50,8 +51,6 @@
 	
 	[self loadClip: parser.getRandomClip(true, false)];
 	
-	rgbd.setup();
-
 	rgbd.playSystem();
 	
 	

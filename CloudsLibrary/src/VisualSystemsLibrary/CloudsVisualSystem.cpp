@@ -1685,9 +1685,13 @@ void CloudsVisualSystem::setupCameraGui()
 
 CloudsVisualSystem::RGBDTransitionType CloudsVisualSystem::getTransitionType()
 {
+    if(transitionRadio == NULL){
+        return;
+    }
+    
 	if(transitionRadio->getActive() == NULL)
 		return WHIP_PAN;
-	
+
 	string activeTransitionType = transitionRadio->getActive()->getName();
 	if(activeTransitionType == "2D"){
 		cout << "TWO_DIMENSIONAL" << endl;

@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Points 1</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>291.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>806.000000000</XPosition>
+    <YPosition>207.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -69,7 +69,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Speed</Name>
-    <Value>3.842364550</Value>
+    <Value>1.576354623</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
