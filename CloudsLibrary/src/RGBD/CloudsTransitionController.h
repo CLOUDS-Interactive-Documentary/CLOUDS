@@ -96,5 +96,7 @@ class CloudsTransitionController {
 	
 	bool newState;
 	CloudsTransitionState getNextState();
+    
+    int previousFadeVal;
 	
 };

@@ -138,6 +138,8 @@ class CloudsPlaybackController {
     void showClusterMap();
     void showInterlude();
     void cleanupInterlude();
+    
+    float prevCrossFadeValue;
 };
 
 

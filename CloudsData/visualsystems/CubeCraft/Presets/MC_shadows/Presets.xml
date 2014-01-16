@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>1061.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>287.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,11 +18,21 @@
 <Widget>
     <Kind>2</Kind>
     <Name>bigNoise2</Name>
-    <Value>1</Value>
+    <value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>BigNoiseBW</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>g_FIN_01</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>g_FIN_02</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -38,7 +48,17 @@
 <Widget>
     <Kind>2</Kind>
     <Name>j_05_blue</Name>
-    <Value>1</Value>
+    <value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>j_FIN_01</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>j_FIN_01_TerribleGarish</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -48,7 +68,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>j_work_05a_bluegreen</Name>
-    <Value>1</Value>
+    <value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -88,7 +108,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>MC_flyoverDesert</Name>
-    <Value>1</Value>
+    <value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -108,17 +128,22 @@
 <Widget>
     <Kind>2</Kind>
     <Name>MC_shadow</Name>
-    <Value>1</Value>
+    <value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>MC_shadows</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>MC_shadows2</Name>
-    <Value>1</Value>
+    <value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>MC_shadows_1</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
