@@ -155,6 +155,8 @@ void CloudsPlaybackController::setup(){
 		ofRegisterMouseEvents(this);
 	}
 	
+    createInterludeSoundQueue();
+    
 	//////////////SHOW INTRO
     startingNodes = parser.getClipsWithKeyword("#start");
 	//safe guard delete any starters that don't have questions
@@ -288,6 +290,27 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
     if(args.key == 'm'){
         transitionController.transitionToIntro(1.0);
     }
+}
+//--------------------------------------------------------------------
+void CloudsPlaybackController::createInterludeSoundQueue(){
+    CloudsSoundCue cue;
+ 	CloudsSoundCue introCue;
+	
+    //TODO Only intro cue on the first act...?
+//	CloudsClip& startClip = clips[0];
+//	if(startClip.hasStartingQuestion() && startClip.getTopicsWithQuestions().size() > 0){
+//		string startTopic    = startClip.getTopicsWithQuestions()[0];
+//		string startQuestion = startClip.getQuestionForTopic(startTopic);
+//		introCue.soundQuestionKey = startTopic + ":" + startQuestion;
+//	}
+    
+//	introCue.mixLevel = 2;
+//    
+//    for(int i = 0; i < sound.presets.size(); i++){
+//        //introCue.riggedPresetName =
+//        cout << i << "  " << sound.presets[i].name << endl;;
+//    }
+
 }
 
 //--------------------------------------------------------------------
