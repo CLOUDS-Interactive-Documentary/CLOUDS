@@ -590,7 +590,7 @@ void CloudsPlaybackController::updateTransition(){
 				
                 currentAct->getTimeline().stop();
                 
-                //clearAct(true);
+                clearAct(true);
                 
 				// show question transition over this period
 				rgbdVisualSystem->transtionFinished();
