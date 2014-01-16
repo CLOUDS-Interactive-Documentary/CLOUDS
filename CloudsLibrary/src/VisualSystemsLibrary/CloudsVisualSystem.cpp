@@ -3567,6 +3567,7 @@ void CloudsVisualSystem::drawBackgroundGradient(){
 		}
 		else{
 			ofSetSmoothLighting(false);
+			//TODO: fix this call
 			ofBackground(bgColor);
 		}
 	}

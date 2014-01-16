@@ -40,7 +40,8 @@ void CloudsPathCamera::loadPathFromFile( string path )
 	for (int i=0; i<numFrames; i++) {
 		xml.pushTag("frame", i);
 		
-		posLine.addVertex( ofVec3f(xml.getValue("x", 0.f), xml.getValue("y", 0.f), xml.getValue("z", 0.f) ) );
+		ofVec3f p(xml.getValue("x", 0.f), xml.getValue("y", 0.f), xml.getValue("z", 0.f) );
+		posLine.addVertex( p );
 		targetLine.addVertex(ofVec3f(xml.getValue("tx", 0.f), xml.getValue("ty", 0.f), xml.getValue("tz", 0.f)));
 		upLine.addVertex(ofVec3f(xml.getValue("upx", 0.f), xml.getValue("upy", 0.f), xml.getValue("upz", 0.f)));
 		
@@ -49,9 +50,6 @@ void CloudsPathCamera::loadPathFromFile( string path )
 	
 	clear();
 	
-	posLine.clear();
-	targetLine.clear();
-	upLine.clear();
 	xml.clear();
 	
 	//linearize the cv spacing for the control curve
@@ -60,6 +58,10 @@ void CloudsPathCamera::loadPathFromFile( string path )
 	addPositionControlVertices( posLine.getResampledBySpacing(spacing).getVertices() );
 	addTargetControlVertices( targetLine.getResampledBySpacing(spacing).getVertices() );
 	addUpControlVertices( upLine.getResampledBySpacing(spacing).getVertices() );
+	
+	posLine.clear();
+	targetLine.clear();
+	upLine.clear();
 	
 	startTime = ofGetElapsedTimef();
 }

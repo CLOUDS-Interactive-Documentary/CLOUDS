@@ -1,8 +1,12 @@
 audiovisualization:What does music look like?
+big data:What is powerful about Big Data?
+biology and code:What is the code of life?
 coding:How can the logic of coding be creative?
 community:How does the network accelerate creativity?
 cosmogeny:How do you create a digital universe?
 data:What is data?
+emergence:How does complexity emerge from simple rules?
+generative art:When is an artwork done?
 interactivity:What makes a satisfying interaction?
 interfaces:What's the ultimate interface?
 new aesthetic:What is the new aesthetic?
@@ -14,3 +18,4 @@ simulation:Is it possible to truly simulate reality?
 sketching:How do you sketch with code?
 thinking:Do computers make us smarter?
 toolmakers:what's the link between invention and art?
+videogames:How do videogames change the way we see?

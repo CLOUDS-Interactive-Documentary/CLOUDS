@@ -135,7 +135,8 @@ void main()
 	
 	vec3 boxCenter = gl_Color.xyz;
 	
-	camDelta = lengthSqr(cameraPos - boxCenter + cd);
+	//camDelta = lengthSqr(cameraPos - boxCenter + cd);
+	camDelta = lengthSqr((gl_ModelViewMatrix * vec4(boxCenter + cd, 1.)).xyz);
 	
 	if( camDelta < cameraCutoffDistance*cameraCutoffDistance)
 	{

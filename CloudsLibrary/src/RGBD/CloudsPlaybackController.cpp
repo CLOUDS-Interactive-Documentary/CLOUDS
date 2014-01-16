@@ -433,6 +433,9 @@ void CloudsPlaybackController::updateTransition(){
 				else{
 					rgbdVisualSystem->startTransitionOut( currentVisualSystem->getTransitionType() );
 				}
+                
+                hud.animateOff(CLOUDS_HUD_FULL);
+                
                 break;
                 
             case TRANSITION_INTRO_OUT:
@@ -453,6 +456,9 @@ void CloudsPlaybackController::updateTransition(){
                 introSequence = new CloudsIntroSequence();
                 introSequence->setup();
                 introSequence->setDrawToScreen(false);
+                
+                // TODO: Look into using Intro events for setting bDrawHud, so it works like everything else.
+                hud.setHudEnabled(true);
 
                 showIntro(startingNodes);
                 break;
@@ -469,7 +475,9 @@ void CloudsPlaybackController::updateTransition(){
             case TRANSITION_VISUALSYSTEM_OUT:
                 
                 // no need to do anything special, the crossfade value will take care of this
-                
+
+                hud.animateOff(CLOUDS_HUD_FULL);
+
                 break;
                 
             case TRANSITION_INTERVIEW_IN:
@@ -489,7 +497,9 @@ void CloudsPlaybackController::updateTransition(){
 
             case TRANSITION_INTERLUDE_IN:
                 
-                sound.enterClusterMap();
+//                sound.enterClusterMap();
+
+                CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().stop();
                 
                 if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
                     rgbdVisualSystem->transtionFinished();
@@ -864,7 +874,7 @@ void CloudsPlaybackController::cleanupInterlude(){
     
     if(currentVisualSystem == clusterMap) {
         clusterMap->stopSystem();
-        sound.exitClusterMap();
+//        sound.exitClusterMap();
 
     }
     else if(currentVisualSystem == interludeSystem){

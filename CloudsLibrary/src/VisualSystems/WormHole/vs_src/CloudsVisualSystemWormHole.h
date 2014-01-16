@@ -99,14 +99,8 @@ class CloudsVisualSystemWormHole : public CloudsVisualSystem {
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
-
-	//
 	ofCamera& getCameraRef(){
-//		return CloudsVisualSystem::getCameraRef();
-        return pathCamera;
+		return pathCamera;
 	}
 	
 	void selfSetDefaults();

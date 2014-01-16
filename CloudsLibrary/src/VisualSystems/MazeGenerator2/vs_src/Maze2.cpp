@@ -16,12 +16,13 @@ Maze2::Maze2(float cSize, float wThickness, float wHeight, ofVec3f p)
     wallThickness = wThickness;
     wallHeight = wHeight;
     pos = p;
-    
+//    cells = new Maze2[NUM_CELLS_X2] [NUM_CELLS_Y2];
+    cells.resize(NUM_CELLS_X2);
     for (int i=0; i<NUM_CELLS_X2; i++) {
+        cells[i].resize(NUM_CELLS_Y2);
         for (int j=0; j<NUM_CELLS_Y2; j++)
         {
-            cells[i][j] = new MazeCell2(i, j, cellSize,
-                wallThickness, wallHeight);
+            cells[i][j] = new MazeCell2(i, j, cellSize, wallThickness, wallHeight);
         }
     }
     
