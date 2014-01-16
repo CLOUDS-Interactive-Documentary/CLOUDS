@@ -27,12 +27,27 @@ CloudsHUDController::CloudsHUDController(){
     margin = 40;
     
 #ifdef OCULUS_RIFT
-    for (int i = 0; i < CLOUDS_HUD_LAYER_COUNT; i++) {
-        layerDistance[i] = 300;
-        layerRotationH[i] = 0;
-        layerRotationV[i] = 0;
-        layerBillboard[i] = CLOUDS_HUD_BILLBOARD_CAMERA;
-    }
+    // set defaults
+    // there might be a better way of doing this...
+    layerDistance[CLOUDS_HUD_QUESTION]         = 300;
+    layerDistance[CLOUDS_HUD_LOWER_THIRD]      = 300;
+    layerDistance[CLOUDS_HUD_PROJECT_EXAMPLE]  = 300;
+    layerDistance[CLOUDS_HUD_MAP]              = 300;
+    
+    layerRotationH[CLOUDS_HUD_QUESTION]        = 0;
+    layerRotationH[CLOUDS_HUD_LOWER_THIRD]     = 0;
+    layerRotationH[CLOUDS_HUD_PROJECT_EXAMPLE] = 0;
+    layerRotationH[CLOUDS_HUD_MAP]             = 0;
+    
+    layerRotationV[CLOUDS_HUD_QUESTION]        = 0;
+    layerRotationV[CLOUDS_HUD_LOWER_THIRD]     = 0;
+    layerRotationV[CLOUDS_HUD_PROJECT_EXAMPLE] = 0;
+    layerRotationV[CLOUDS_HUD_MAP]             = 0;
+    
+    layerBillboard[CLOUDS_HUD_QUESTION]        = CLOUDS_HUD_BILLBOARD_CAMERA;
+    layerBillboard[CLOUDS_HUD_LOWER_THIRD]     = CLOUDS_HUD_BILLBOARD_CAMERA;
+    layerBillboard[CLOUDS_HUD_PROJECT_EXAMPLE] = CLOUDS_HUD_BILLBOARD_CAMERA;
+    layerBillboard[CLOUDS_HUD_MAP]             = CLOUDS_HUD_BILLBOARD_CAMERA;
 #endif
 }
 
