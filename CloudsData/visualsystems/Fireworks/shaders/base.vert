@@ -118,7 +118,7 @@ void main(){
 	eye = -normalize( ecPosition3 );
 	
 	//point size
-	float camDelta = length( ecPosition );
+	float camDelta = length( ecPosition.xyz );
 	attenuation = pow(max(0., 1. -  camDelta / 500.), 2.);
 	pointSize = max( minPointSize, min( maxPointSize, particleSize * attenuation * (1. - age) ) );
 	gl_PointSize = pointSize;
@@ -127,7 +127,9 @@ void main(){
 	int colorIndex = int(gl_Color.a);
 	color = mix( fwColors[colorIndex], fwDeathColors[colorIndex], ma );
 	
-	color = mix( fogColor, color, pow( (1. - camDelta / fogDistance), fogExpo) * fogAttenuation );
+	float fogAmount = 1. - pow(1.25 * max(0., min(1., camDelta / fogDistance )), fogExpo) * fogAttenuation;
+	
+	color = mix( vec4(fogColor.xyz, 0.), color, fogAmount);// pow( (1. - camDelta / fogDistance), fogExpo) * fogAttenuation );
 	
 	//rotation
 	float angle = rotationRate * (birthTime + pos.x + pos.y + pos.z);
