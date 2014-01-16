@@ -207,7 +207,7 @@ void CloudsVisualSystemOscillations::selfDraw(){
     
 	ofPushStyle();
     glPushAttrib(GL_LINE_SMOOTH | GL_DEPTH_TEST | GL_POINT_SIZE);
-    glEnable( GL_LINE_SMOOTH );
+    glDisable( GL_LINE_SMOOTH );
     glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
     glDisable(GL_DEPTH_TEST);
 //    ofEnableBlendMode(OF_BLENDMODE_ADD);

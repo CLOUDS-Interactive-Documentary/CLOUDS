@@ -16,6 +16,7 @@ void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mi
     else if(mixlevel==1) a = 1.0;
     else if(mixlevel==2) a = 1.5;
     
+    dopull = true;
     INITMIX();
     for(int j = 0;j<p.instruments.size();j++)
     {
@@ -26,6 +27,7 @@ void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mi
 void CloudsSound::startMusicFX(float outskip, float musicdur)
 {
     // blow out routing table
+    dopull = true;
     INITMIX();
     // schedule BUS_ON
     //BUS_ON(ab[ACTBUS], abn[ACTBUS]);
@@ -1322,6 +1324,7 @@ void CloudsSound::fadeMusic(float fadeTime)
 
 void CloudsSound::stopMusic()
 {
+    dopull = false;
     if(LUKEDEBUG) cout << "FLUSHING SCHEDULER." << endl;
     else cout << "SOUND: MUSIC STOPPED." << endl;
     flush_sched();

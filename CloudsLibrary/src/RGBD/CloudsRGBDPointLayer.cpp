@@ -138,10 +138,7 @@ void CloudsRGBDPointLayer::draw(){
     if(!drawPoints){
         return;
     }
-    
-    cout << "bailing from point layer. Point shader? " << ((pointShader == NULL) ? "YES" : "NO") << endl;
-    return;
-    
+        
     if(pointShader == NULL){
         ofLogError("CloudsRGBDPointLayer::draw") << "Point shader not set";
         return;
