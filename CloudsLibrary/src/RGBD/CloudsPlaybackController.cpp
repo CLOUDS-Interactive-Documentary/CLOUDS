@@ -669,27 +669,15 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 		
 		currentVisualSystem->selfPostDraw();
         
-#ifdef OCULUS_RIFT
-        //      ofVec2f overlaySize = hud.getSize();
-        //      CloudsVisualSystem::getOculusRift().beginOverlay(-230, overlaySize.x,overlaySize.y);
-#endif
-        
 #ifdef SHOW_SUBTITLES
         CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles(CloudsVisualSystem::getStaticRenderTarget().getWidth()/2,
                                                                (float)CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.8);
 #endif
         
-#ifdef OCULUS_RIFT
-        //JG WAS MISSING::
-//        hud.drawOverlay(overlaySize);
-#else
+#ifndef OCULUS_RIFT
 		hud.draw();
 #endif
         
-#ifdef OCULUS_RIFT
-        //       CloudsVisualSystem::getOculusRift().endOverlay();
-#endif
-		
 		ofPopStyle();
 	}
     else{
