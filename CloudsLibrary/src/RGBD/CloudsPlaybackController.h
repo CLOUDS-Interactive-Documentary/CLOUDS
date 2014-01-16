@@ -94,7 +94,8 @@ class CloudsPlaybackController {
 	CloudsIntroSequence* introSequence;
 	CloudsVisualSystemClusterMap* clusterMap;
 	CloudsVisualSystem* interludeSystem;
-    
+    float interludeStartTime;
+	
 	CloudsVisualSystemPreset nextVisualSystemPreset;	
 	CloudsVisualSystemPreset currentVisualSystemPreset;
 		

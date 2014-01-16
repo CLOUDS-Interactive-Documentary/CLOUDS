@@ -310,6 +310,7 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
     if (potentialPresets.size() > 0) {
         sort(potentialPresets.begin(), potentialPresets.end(),score_sort);
         cout<<"Selected preset "<<potentialPresets[0].first<<" for interlude "<<endl;
+		run.presetHistory.push_back(potentialPresets[0].first);
         preset = visualSystems->getPresetWithID(potentialPresets[0].first);
         return  true;
     }
@@ -764,6 +765,14 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	state.log << state.duration << "\tACT ENDED on clip " << state.clip.getLinkName() << " explored topics " << state.topicNum << "/" << maxTopicsPerAct << " with " << state.timesOnCurrentTopic << " clips on final topic \"" << state.topic << "\"" << endl;
 	
 	if(state.visualSystemRunning){
+        if(state.preset.indefinite){
+            state.visualSystemEndTime = MAX(state.visualSystemEndTime, state.visualSystemStartTime + minVisualSystemRunTime);
+        }
+        //fix any definite preset spillage on definite systems
+        else {
+            state.visualSystemEndTime = MIN(state.visualSystemEndTime, state.visualSystemStartTime + state.preset.duration);
+        }
+        
 		state.duration = state.act->addVisualSystem(state.preset,
                                                     state.visualSystemStartTime,
 													state.visualSystemEndTime);

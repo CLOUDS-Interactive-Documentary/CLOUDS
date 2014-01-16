@@ -59,6 +59,11 @@ void CloudsIntroSequence::selfSetup(){
 	currentFontSize = -1;
 	
 	reloadShaders();
+    
+#ifdef OCULUS_RIFT
+    bCursorInCenter = false;
+    startTimeCursorInCenter = 0;
+#endif
 
 }
 
@@ -110,6 +115,28 @@ void CloudsIntroSequence::selfUpdate(){
     
 #ifdef OCULUS_RIFT
     ofRectangle viewport = getOculusRift().getOculusViewport();
+
+    // Trigger start manually
+    if (!startedOnclick) {
+        bool cursorNearCenter = cursor.distance(ofVec3f(viewport.getCenter().x, viewport.getCenter().y * 0.5, cursor.z)) < 30;
+        if (cursorNearCenter) {
+            if (bCursorInCenter) {
+                // already started, let's see if we've been there long enough
+                if (ofGetElapsedTimef() - startTimeCursorInCenter > 2) {
+                    ofMouseEventArgs args;
+                    selfMousePressed(args);
+                }
+            }
+            else {
+                bCursorInCenter = true;
+                startTimeCursorInCenter = ofGetElapsedTimef();
+            }
+        }
+        else {
+            bCursorInCenter = false;
+            startTimeCursorInCenter = 0;
+        }
+    }
 #endif
 	
 	for(int i = 0; i < startQuestions.size(); i++){
@@ -368,7 +395,15 @@ void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
 void CloudsIntroSequence::selfDraw(){
 #ifdef OCULUS_RIFT
     if (hud != NULL) {
-        hud->draw3D(getOculusRift().baseCamera);
+        if(selectedQuestion != NULL){
+            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -selectedQuestion->screenPosition.y/2));
+        }
+        else if(caughtQuestion != NULL){
+            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -caughtQuestion->screenPosition.y/2));
+        }
+        else{
+            hud->draw3D(getOculusRift().baseCamera);
+        }
     }
 #endif
     

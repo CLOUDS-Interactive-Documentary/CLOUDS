@@ -367,8 +367,8 @@ void CloudsVisualSystemColony::selfExit(){
     billboard.unload();
     levelSet.unload();
     //TODO: is this necessary?
-    delete guiLooks;
-    delete guiDynamics;
+//    delete guiLooks;
+//    delete guiDynamics;
 }
 
 void CloudsVisualSystemColony::selfPresetLoaded(string presetPath){

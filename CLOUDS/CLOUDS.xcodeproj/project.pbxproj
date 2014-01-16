@@ -6344,11 +6344,11 @@
 		E7637D5E1734DE8A008ADC62 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
-				A633ABA4188786050088E767 /* CloudsRGBDPointLayer.cpp */,
-				A633ABA5188786050088E767 /* CloudsRGBDPointLayer.h */,
 				E7302C13187DF4C20079C5B8 /* GPUParticles */,
 				E7302BFE187DF4270079C5B8 /* HUD */,
 				64323E83187A4DAE00316058 /* Portal */,
+				A633ABA5188786050088E767 /* CloudsRGBDPointLayer.h */,
+				A633ABA4188786050088E767 /* CloudsRGBDPointLayer.cpp */,
 				E7167102187A7A700047B7DC /* CloudsPlaybackController.h */,
 				E7167101187A7A700047B7DC /* CloudsPlaybackController.cpp */,
 				E700BC3C18768EA6003A8167 /* CloudsTransitionController.h */,

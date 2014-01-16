@@ -31,6 +31,9 @@ class CloudsHUDLabel {
     void animateIn(bool force = false);
     void animateOut(bool force = false);
     
+    void instantIn();
+    void instantOut();
+    
     bool isVisible();
     
     bool caps;

@@ -12,6 +12,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	bQuestionAsked = false;
     showingInterlude = false;
     exitedInterlude = false;
+	interludeStartTime = 0;
 }
 
 //--------------------------------------------------------------------
@@ -155,7 +156,6 @@ void CloudsPlaybackController::setup(){
 		ofRegisterMouseEvents(this);
 	}
 	
-    createInterludeSoundQueue();
     
 	//////////////SHOW INTRO
     startingNodes = parser.getClipsWithKeyword("#start");
@@ -175,7 +175,7 @@ void CloudsPlaybackController::setup(){
 			startingNodes.erase(startingNodes.begin() + i);
         }
 #endif
-//        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "what does music look like?"){
+//        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "have we hacked reality?"){
 //			startingNodes.erase(startingNodes.begin() + i);            
 //        }
 		else{
@@ -294,7 +294,26 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::createInterludeSoundQueue(){
     CloudsSoundCue cue;
- 	CloudsSoundCue introCue;
+	vector<int> validInterludePresetIndices;
+	ofRange validRange(56,65);
+	for(int i = 0; i < sound.presets.size(); i++){
+		if(validRange.contains( sound.presets[i].slotnumber) ){
+			validInterludePresetIndices.push_back(i);
+		}
+	}
+	if(validInterludePresetIndices.size() == 0){
+		ofLogError("CloudsPlaybackController::createInterludeSoundQueue") << "No Valid presets for interlude";
+		return;
+	}
+	
+	lukePreset& interludePreset = sound.presets[ validInterludePresetIndices[ ofRandom(validInterludePresetIndices.size()) ] ];
+	cue.startTime = 0;
+	cue.duration = 2.5;
+	cue.mixLevel = 2;
+	
+	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel);
+	
+	//get all the presets in the range of 56 - 65
 	
     //TODO Only intro cue on the first act...?
 //	CloudsClip& startClip = clips[0];
@@ -401,8 +420,18 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             
             showingInterlude = false;
         }
+#ifdef OCULUS_RIFT
+		else if(ofGetElapsedTimef() - interludeStartTime > 2.5){
+            transitionController.transitionToIntro(1.0);
+            
+            //add transition back to intro for clouds
+            ShowInterludePortals(false);
+            
+            showingInterlude = false;
+			
+		}
     }
-    
+#endif
 
 	////////////////////
 	// RGBD SYSTEM
@@ -530,7 +559,8 @@ void CloudsPlaybackController::updateTransition(){
             case TRANSITION_INTERLUDE_IN:
                 
 //                sound.enterClusterMap();
-
+				interludeStartTime = ofGetElapsedTimef();
+				
                 CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().stop();
                 
                 if(transitionController.getPreviousState() == TRANSITION_INTERVIEW_OUT){
@@ -546,7 +576,7 @@ void CloudsPlaybackController::updateTransition(){
                 
                 clearAct(true);
                 
-
+				
                 if(run.actCount == 1){
                     showClusterMap();
                 }
@@ -554,6 +584,8 @@ void CloudsPlaybackController::updateTransition(){
                     showInterlude();
                 }
                 
+				createInterludeSoundQueue();
+
                 break;
                 
 			case TRANSITION_QUESTION_IN:
@@ -932,17 +964,17 @@ void CloudsPlaybackController::hideVisualSystem() {
 void CloudsPlaybackController::showRGBDVisualSystem(){
 #ifdef OCULUS_RIFT
 //	rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
-    if(run.actCount == 1){
+//    if(run.actCount == 1){
         rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_POINTS");
-    }
-    else{
-        rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_LINES");
-    }
+//    }
+//    else{
+//        rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_LINES");
+//    }
 #else
-    if(run.actCount == 1){
+    if(run.actCount == 0){
         rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT1_POINTS");
     }
-    else if(run.actCount == 2){
+    else if(run.actCount == 1){
         rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT2_LINES");
     }
     else{

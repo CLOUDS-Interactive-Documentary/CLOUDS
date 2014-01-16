@@ -383,6 +383,10 @@ void CloudsVisualSystemExampleBox2D::selfEnd(){
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemExampleBox2D::selfExit(){
+	ofRemoveListener(box2d.contactStartEvents,
+                  this,
+                  &CloudsVisualSystemExampleBox2D::contactStart);
+
 }
 
 //events are called when the system is active

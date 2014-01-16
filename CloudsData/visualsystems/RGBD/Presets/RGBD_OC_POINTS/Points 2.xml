@@ -3,7 +3,7 @@
     <Name>Points 2</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>314.000000000</YPosition>
+    <YPosition>316.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -85,4 +85,14 @@
     <Kind>4</Kind>
     <Name>Actuator Max Affect</Name>
     <Value>0.650246322</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Normal Mix</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Normal Extend</Name>
+    <Value>0.000000000</Value>
 </Widget>

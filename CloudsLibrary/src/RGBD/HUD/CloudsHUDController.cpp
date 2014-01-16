@@ -583,7 +583,7 @@ void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
 }
 
 #ifdef OCULUS_RIFT
-void CloudsHUDController::draw3D(ofCamera* cam){
+void CloudsHUDController::draw3D(ofCamera* cam, ofVec2f offset){
     
     if( !bDrawHud )
         return;
@@ -596,10 +596,10 @@ void CloudsHUDController::draw3D(ofCamera* cam){
     glDisable(GL_LIGHTING);
     ofEnableAlphaBlending();
     
-    drawLayer3D(CLOUDS_HUD_QUESTION, cam);
-    drawLayer3D(CLOUDS_HUD_LOWER_THIRD, cam);
-	drawLayer3D(CLOUDS_HUD_PROJECT_EXAMPLE, cam);
-	drawLayer3D(CLOUDS_HUD_MAP, cam);
+    drawLayer3D(CLOUDS_HUD_QUESTION, cam, offset);
+    drawLayer3D(CLOUDS_HUD_LOWER_THIRD, cam, offset);
+	drawLayer3D(CLOUDS_HUD_PROJECT_EXAMPLE, cam, offset);
+	drawLayer3D(CLOUDS_HUD_MAP, cam, offset);
 	
     glPopAttrib();
     
@@ -607,7 +607,7 @@ void CloudsHUDController::draw3D(ofCamera* cam){
 	ofPopStyle();
 }
 
-void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
+void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, ofVec2f& offset){
     ofPushMatrix();
     
     // Hook up to the camera to keep the layer steady.
@@ -622,7 +622,8 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
     static ofVec3f yAxis = ofVec3f(0.0, 1.0, 0.0);
     static ofVec3f xAxis = ofVec3f(1.0, 0.0, 0.0);
 //    ofVec3f basePos = camPos + (cam->getLookAtDir().getScaled(layerDistance[layer]));
-    ofVec3f basePos(0, 0, -layerDistance[layer]);
+//    ofVec3f basePos(0, 0, -layerDistance[layer]);
+    ofVec3f basePos(offset.x, offset.y, -layerDistance[layer]);
     basePos.rotate(layerRotationH[layer], camPos, yAxis);
     basePos.rotate(layerRotationV[layer], camPos, xAxis);
     
@@ -708,7 +709,7 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
     //bIsHudOpen = true;
 	
     for (map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> >::iterator it = layerSets.begin(); it != layerSets.end(); ++it) {
-        if ((layer & it->first) != 0) {
+        if ((layer & it->first) != 0 && it->first != CLOUDS_HUD_QUESTION) {
             hudOpenMap[it->first] = true;
             for (int i = 0; i < it->second.size(); i++) {
                 it->second[i]->start();
@@ -750,39 +751,75 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
         videoPlayer.close();
     }
     
+    // EZ: CODE BELOW IS FOR INSTANT OUT (TEMP!!!)
     for (map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> >::iterator it = layerSets.begin(); it != layerSets.end(); ++it) {
         if ((layer & it->first) != 0) {
             hudOpenMap[it->first] = false;
             for (int i = 0; i < it->second.size(); i++) {
-                it->second[i]->close();
+                it->second[i]->close(false);
             }
         }
     }
     
-    // animate out text, this is sub-optimal
+    // instant out text, this is sub-optimal
     if( layer == CLOUDS_HUD_FULL ){
         for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
-            (it->second)->animateOut();
+            (it->second)->instantOut();
         }
     }
     else if( (layer & CLOUDS_HUD_LOWER_THIRD) != 0 ){
-        hudLabelMap["BylineFirstNameTextBox_1_"]->animateOut();
-        hudLabelMap["BylineLastNameTextBox"]->animateOut();
-        hudLabelMap["BylineTopicTextBoxTop"]->animateOut();
-        hudLabelMap["BylineTopicTextBoxBottom"]->animateOut();
-        hudLabelMap["BylineBodyCopyTextBox"]->animateOut();
+        hudLabelMap["BylineFirstNameTextBox_1_"]->instantOut();
+        hudLabelMap["BylineLastNameTextBox"]->instantOut();
+        hudLabelMap["BylineTopicTextBoxTop"]->instantOut();
+        hudLabelMap["BylineTopicTextBoxBottom"]->instantOut();
+        hudLabelMap["BylineBodyCopyTextBox"]->instantOut();
     }
     else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
-        hudLabelMap["ProjectExampleTextboxLeft"]->animateOut();
-        hudLabelMap["ProjectExampleTextboxRight"]->animateOut();
-        hudLabelMap["ProjectExampleTextBoxTop"]->animateOut();
+        hudLabelMap["ProjectExampleTextboxLeft"]->instantOut();
+        hudLabelMap["ProjectExampleTextboxRight"]->instantOut();
+        hudLabelMap["ProjectExampleTextBoxTop"]->instantOut();
     }
     else if( (layer & CLOUDS_HUD_MAP) != 0 ){
-        
+    
     }
     else if( (layer & CLOUDS_HUD_QUESTION) != 0 ){
-        hudLabelMap["QuestionTextBox"]->animateOut();
+        hudLabelMap["QuestionTextBox"]->instantOut();
     }
+    
+    // EZ: CODE BELOW IS FOR ANIMATING, LET'S JUST INSTANT OUT FOR NOW
+//    for (map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> >::iterator it = layerSets.begin(); it != layerSets.end(); ++it) {
+//        if ((layer & it->first) != 0) {
+//            hudOpenMap[it->first] = false;
+//            for (int i = 0; i < it->second.size(); i++) {
+//                it->second[i]->close();
+//            }
+//        }
+//    }
+//    
+//    // animate out text, this is sub-optimal
+//    if( layer == CLOUDS_HUD_FULL ){
+//        for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
+//            (it->second)->animateOut();
+//        }
+//    }
+//    else if( (layer & CLOUDS_HUD_LOWER_THIRD) != 0 ){
+//        hudLabelMap["BylineFirstNameTextBox_1_"]->animateOut();
+//        hudLabelMap["BylineLastNameTextBox"]->animateOut();
+//        hudLabelMap["BylineTopicTextBoxTop"]->animateOut();
+//        hudLabelMap["BylineTopicTextBoxBottom"]->animateOut();
+//        hudLabelMap["BylineBodyCopyTextBox"]->animateOut();
+//    }
+//    else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
+//        hudLabelMap["ProjectExampleTextboxLeft"]->animateOut();
+//        hudLabelMap["ProjectExampleTextboxRight"]->animateOut();
+//        hudLabelMap["ProjectExampleTextBoxTop"]->animateOut();
+//    }
+//    else if( (layer & CLOUDS_HUD_MAP) != 0 ){
+//        
+//    }
+//    else if( (layer & CLOUDS_HUD_QUESTION) != 0 ){
+//        hudLabelMap["QuestionTextBox"]->animateOut();
+//    }
 }
 
 void CloudsHUDController::saveGuiSettings(){

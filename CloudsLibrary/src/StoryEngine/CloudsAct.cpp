@@ -237,13 +237,13 @@ void CloudsAct::populateTime(){
 		CloudsSoundCue actCue;
 		actCue.mixLevel = 1;
 		actCue.startTime = clipItems[clips[1].getLinkName()].startTime;
-		actCue.duration = clipItems[ energyShiftClipIDs[0] ].startTime - actCue.startTime;
+		actCue.duration = clipItems[ energyShiftClipIDs[0] ].startTime - actCue.startTime - 3;
 		actCue.dichotomies = dichotomiesMap[ clips[1].getLinkName() ];
 		cues.push_back(actCue);
 		
 		CloudsSoundCue energyShift;
 		energyShift.mixLevel = 1;
-		energyShift.startTime = clipItems[ energyShiftClipIDs[0] ].startTime;
+		energyShift.startTime = clipItems[ energyShiftClipIDs[0] ].startTime - 3;
 		energyShift.duration = duration - energyShift.startTime;
 		energyShift.dichotomies = dichotomiesMap[startClip.getLinkName()];
 		cues.push_back(energyShift);

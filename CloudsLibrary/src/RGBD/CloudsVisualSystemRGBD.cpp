@@ -108,6 +108,7 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetup(){
 	
+    
 	portals.push_back(&leftPortal);
 	portals.push_back(&rightPortal);
 	
@@ -131,9 +132,9 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	//generatePoints();
 	generateMesh();
 		
-//	particulateController.setParticleCount(particleCount);
-//	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-//	particulateController.setup();
+	particulateController.setParticleCount(2000);
+	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+	particulateController.setup();
 	
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
@@ -144,7 +145,6 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	transitionCam.applyTranslation = true;
 	transitionCam.applyRotation = true;
 	
-    
 //    rebuildCaptionFont();
 	
 	bTransitionIn = bTransitionOut = false;
@@ -546,13 +546,13 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	if(drawParticulate){
 		
-        if(particulateController.getNumParticles() != particleCount){
-            particulateController.setParticleCount(particleCount);
-            particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-            particulateController.setup();
-        }
+//        if(particulateController.getNumParticles() != particleCount){
+//            particulateController.setParticleCount(particleCount);
+//            particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+//            particulateController.setup();
+//        }
+        
 		particulateController.birthPlace = translatedHeadPosition;
-		
 		glDisable(GL_LIGHTING);
 		glDisable(GL_DEPTH_TEST);
 		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
@@ -1443,7 +1443,7 @@ void CloudsVisualSystemRGBD::generateOcclusion(){
 
 void CloudsVisualSystemRGBD::speakerChanged(){
 //    clearQuestions();
-    timeline->hide();
+   if(timeline!=NULL) timeline->hide();
 }
 
 void CloudsVisualSystemRGBD::selfDrawBackground(){
@@ -1465,6 +1465,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
         hud->draw3D(getOculusRift().baseCamera);
     }
     #endif
+    
 	ofPushStyle();
 	ofPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -1678,6 +1679,11 @@ void CloudsVisualSystemRGBD::selfDraw(){
 
 void CloudsVisualSystemRGBD::drawOcclusionLayer(){
     // z-prepass
+    //BAIL FOR NOW
+    /////////////
+//    return;
+    /////////////
+    
     glPushMatrix();
     if(!drawOcclusionDebug){
         
