@@ -166,7 +166,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
-    string b = "foo";
+
 	//can't save guis because the virtual subclass members return the wrong data
 //    saveGUIS();
 }
@@ -745,11 +745,13 @@ void CloudsVisualSystem::exit()
 	if( !bIsSetup ){
 		return;
 	}
-	
-	
+    
     saveGUIS();
-	deleteGUIS();
 	
+    selfExit();
+    
+	deleteGUIS();
+    
     for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it)
     {
         ofx1DExtruder *e = (*it);
@@ -783,7 +785,7 @@ void CloudsVisualSystem::exit()
 		timeline = NULL;
 	}
 	bIsSetup = false;
- 
+    
 }
 
 void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
