@@ -3209,16 +3209,17 @@ void CloudsVisualSystem::saveGUIS()
     if(timeline != NULL){
 		timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 	}
-    
-#ifdef KINECT_INPUT
-    kinectGui->saveSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
-#endif
-#ifdef OCULUS_RIFT
-    oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
-    if (hudGui) {
-        hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
-    }
-#endif
+
+    // EZ: These are saved using the SAVE button for each GUI.
+//#ifdef KINECT_INPUT
+//    kinectGui->saveSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
+//#endif
+//#ifdef OCULUS_RIFT
+//    oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+//    if (hudGui) {
+//        hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+//    }
+//#endif
 }
 
 void CloudsVisualSystem::loadPresetGUISFromName(string presetName)
