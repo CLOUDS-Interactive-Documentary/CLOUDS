@@ -175,7 +175,7 @@ void CloudsPlaybackController::setup(){
 			startingNodes.erase(startingNodes.begin() + i);
         }
 #endif
-//        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "what does music look like?"){
+//        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "have we hacked reality?"){
 //			startingNodes.erase(startingNodes.begin() + i);            
 //        }
 		else{
