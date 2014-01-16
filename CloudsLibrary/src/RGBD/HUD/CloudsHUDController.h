@@ -47,7 +47,7 @@ class CloudsHUDController {
 	void update();
 	void draw();
 #ifdef OCULUS_RIFT
-    void draw3D(ofCamera* cam);
+    void draw3D(ofCamera* cam, ofVec2f offset = ofVec2f::zero());
 #endif
 
 	void setHomeEnabled(bool enable);
@@ -117,7 +117,7 @@ class CloudsHUDController {
 	
     void drawLayer(CloudsHUDLayerSet layer);
 #ifdef OCULUS_RIFT
-    void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam);
+    void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, ofVec2f& offset);
 #endif
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath );
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath, bool caps );

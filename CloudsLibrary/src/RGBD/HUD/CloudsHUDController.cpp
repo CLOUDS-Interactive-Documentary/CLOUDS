@@ -583,7 +583,7 @@ void CloudsHUDController::drawLayer(CloudsHUDLayerSet layer){
 }
 
 #ifdef OCULUS_RIFT
-void CloudsHUDController::draw3D(ofCamera* cam){
+void CloudsHUDController::draw3D(ofCamera* cam, ofVec2f offset){
     
     if( !bDrawHud )
         return;
@@ -596,10 +596,10 @@ void CloudsHUDController::draw3D(ofCamera* cam){
     glDisable(GL_LIGHTING);
     ofEnableAlphaBlending();
     
-    drawLayer3D(CLOUDS_HUD_QUESTION, cam);
-    drawLayer3D(CLOUDS_HUD_LOWER_THIRD, cam);
-	drawLayer3D(CLOUDS_HUD_PROJECT_EXAMPLE, cam);
-	drawLayer3D(CLOUDS_HUD_MAP, cam);
+    drawLayer3D(CLOUDS_HUD_QUESTION, cam, offset);
+    drawLayer3D(CLOUDS_HUD_LOWER_THIRD, cam, offset);
+	drawLayer3D(CLOUDS_HUD_PROJECT_EXAMPLE, cam, offset);
+	drawLayer3D(CLOUDS_HUD_MAP, cam, offset);
 	
     glPopAttrib();
     
@@ -607,7 +607,7 @@ void CloudsHUDController::draw3D(ofCamera* cam){
 	ofPopStyle();
 }
 
-void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
+void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, ofVec2f& offset){
     ofPushMatrix();
     
     // Hook up to the camera to keep the layer steady.
@@ -622,7 +622,8 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam){
     static ofVec3f yAxis = ofVec3f(0.0, 1.0, 0.0);
     static ofVec3f xAxis = ofVec3f(1.0, 0.0, 0.0);
 //    ofVec3f basePos = camPos + (cam->getLookAtDir().getScaled(layerDistance[layer]));
-    ofVec3f basePos(0, 0, -layerDistance[layer]);
+//    ofVec3f basePos(0, 0, -layerDistance[layer]);
+    ofVec3f basePos(offset.x, offset.y, -layerDistance[layer]);
     basePos.rotate(layerRotationH[layer], camPos, yAxis);
     basePos.rotate(layerRotationV[layer], camPos, xAxis);
     
