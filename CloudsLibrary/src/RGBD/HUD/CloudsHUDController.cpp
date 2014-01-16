@@ -568,9 +568,9 @@ void CloudsHUDController::draw(){
         (it->second)->draw();
     }
     
-	if(bDrawHome)
+	if (bDrawHome && hudOpenMap[CLOUDS_HUD_LOWER_THIRD]){
 		home.draw();
-	
+    }
 	
 	ofPopMatrix();
 	ofPopStyle();
@@ -683,7 +683,7 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, of
     drawLayer(layer);
     
     // Draw the home button if we're on the right layer.
-    if (layer == CLOUDS_HUD_LOWER_THIRD && bDrawHome) {
+    if (layer == CLOUDS_HUD_LOWER_THIRD && bDrawHome && hudOpenMap[CLOUDS_HUD_LOWER_THIRD]) {
         home.draw();
     }
     
