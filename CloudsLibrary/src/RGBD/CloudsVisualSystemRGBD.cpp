@@ -246,7 +246,7 @@ void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionTy
 			break;
 			
 		default:
-			setTransitionNodes("WHIP_PAN", "default");
+			setTransitionNodes("FLY_THROUGH", "default");
 			break;
 	}
 }
