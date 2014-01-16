@@ -1,0 +1,42 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Occlusion</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>366.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OcclusionDebug</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Occl X Simplify</Name>
+    <Value>4.137930870</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Occl Y Simplify</Name>
+    <Value>4.344827652</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Face Min Radius</Name>
+    <Value>251.231521606</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Face Falloff</Name>
+    <Value>192.118225098</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Edge Geo Retraction</Name>
+    <Value>0.837438405</Value>
+</Widget>

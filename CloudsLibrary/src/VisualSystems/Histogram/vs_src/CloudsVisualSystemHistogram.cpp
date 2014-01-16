@@ -354,7 +354,14 @@ void CloudsVisualSystemHistogram::selfEnd(){
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemHistogram::selfExit(){
-	
+    ofRemoveListener(customGui->newGUIEvent, this, &CloudsVisualSystemHistogram::selfGuiEvent);
+
+    stopSound();
+    envelope.clear();
+    dampened.clear();
+
+    dataPoints.clear();
+    histoMesh.clear();
 }
 
 //events are called when the system is active

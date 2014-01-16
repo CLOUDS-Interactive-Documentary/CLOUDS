@@ -41,22 +41,31 @@
 #ifdef OCULUS_RIFT
     rgbdVisualSystem.hud = &hud;
     rgbdVisualSystem.setupHUDGui();
-	rgbdVisualSystem.loadPresetGUISFromName("RGBDOC");
+	rgbdVisualSystem.loadPresetGUISFromName("RGBD_OC_POINTS");
 #else
-	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
+//	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
+	rgbdVisualSystem.loadPresetGUISFromName("Working");    
 #endif
 	srand(ofGetSeconds());
 	
 	[self loadClip: parser.getRandomClip(true, false)];
 	
+	rgbd.setup();
+
+	rgbd.playSystem();
+	
+	
+	type = CloudsVisualSystem::FLY_THROUGH;
 }
 
 - (void)update
 {
+	
+	[self updateTransitions ];
     
     rgbdVisualSystem.getRGBDVideoPlayer().forceStop = false;
     rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setLoopState(OF_LOOP_NORMAL);
-    rgbdVisualSystem.getRGBDVideoPlayer().maxVolume = 0.;    
+    rgbdVisualSystem.getRGBDVideoPlayer().maxVolume = 0.;
 	hud.update();
 	
 }
@@ -66,7 +75,7 @@
 	rgbdVisualSystem.selfPostDraw();
 
 #ifndef OCULUS_RIFT
-	hud.draw();
+	//hud.draw();
 #endif
     
     rgbdVisualSystem.getRGBDVideoPlayer().drawSubtitles(
@@ -149,13 +158,25 @@
 	
 	if(key == 'R'){
 //		renderer.reloadShader();
-	}	
+	}
 	
 }
 
 - (void)keyReleased:(int)key
 {
-
+	if(key == 'F')
+	{
+		ofToggleFullscreen();
+	}
+	
+	if(key == 'O'){
+		rgbd.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
+		transitionController.transitionToVisualSystem(1.0, 1.0);
+	}
+	if(key == 'I'){
+		rgbd.StopEditTransitionMode();//<-- used to revert the camera  to the rgbd camera. it only matters in "Edit" mode
+		transitionController.transitionToInterview(1.0, 1.0);
+	}
 }
 
 - (void)mouseMoved:(NSPoint)p
@@ -180,6 +201,60 @@
 {
 
 }
+
+
+- (void)updateTransitions
+{
+	transitionController.update();
+	
+	float crossfadeValue = transitionController.getFadeValue();
+	rgbd.visualSystemFadeValue = crossfadeValue;
+	
+	//cout << "visual system fade value is " << rgbd.visualSystemFadeValue << endl;
+	
+	if(transitionController.transitioning){
+		ofLogNotice("testApp::updateTransitions") << transitionController.getCurrentStateDescription() << " TRANSITIONING: " << transitionController.getInterviewTransitionPoint();
+	}
+	
+	rgbd.updateTransition( transitionController.getInterviewTransitionPoint() );
+	
+	if(transitionController.isStateNew()){
+		
+		if(transitionController.getCurrentState() == TRANSITION_INTERVIEW_OUT){
+			
+			ofLogNotice("testApp::updateTransitions") << "Going to INTERVIEW OUT";
+			
+			//rgbd.startTransitionOut( type );
+			rgbd.startCurrentTransitionOut();
+		}
+		else if(transitionController.getCurrentState() == TRANSITION_VISUALSYSTEM_IN){
+			
+			//ofLogNotice("testApp::updateTransitions") << "Going to VISUAL SYSTEM IN";
+			
+			rgbd.transtionFinished();
+			rgbd.stopSystem();
+		}
+		else if(transitionController.getCurrentState() == TRANSITION_VISUALSYSTEM_OUT){
+			// no need to do anything special, the crossfade value will take care of this
+			ofLogNotice("testApp::updateTransitions") << "Going to VISUAL SYSTEM OUT";
+		}
+		else if(transitionController.getCurrentState() == TRANSITION_INTERVIEW_IN){
+			
+			ofLogNotice("testApp::updateTransitions") << "Going to INTERVIEW IN";
+			
+			rgbd.playSystem();
+			//rgbd.startTransitionIn( type );
+			rgbd.startCurrentTransitionIn();
+		}
+		else if(transitionController.getCurrentState() == TRANSITION_IDLE){
+			
+			ofLogNotice("testApp::updateTransitions") << "Going to IDLE";
+			
+			rgbd.transtionFinished();
+		}
+	}
+}
+
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {

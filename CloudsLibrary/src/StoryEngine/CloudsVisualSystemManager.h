@@ -75,7 +75,7 @@ class CloudsVisualSystemManager {
     void loadCachedDataForSystems();
 	set<string> getAllKeywords();	
     CloudsVisualSystemPreset getRandomEnabledPreset();
-  	void exportStandalonePresets();
+//  	void exportStandalonePresets();
     
   protected:
 

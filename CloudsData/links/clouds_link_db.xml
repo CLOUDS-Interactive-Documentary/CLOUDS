@@ -1269,6 +1269,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Jen - library</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Information 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Binx - actually interesting</target>
         <startFrame>-1</startFrame>
@@ -3816,6 +3826,11 @@
     </link>
     <link>
         <target>Martin - Big data</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - changing behavior</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -7037,7 +7052,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>how do you build serendipity into your systems?&#x0D;emergence</revokedKeywords>
-    <additionalKeywords>emergence,#mindblowing,?systems: How can a simple set of rules have complex results?</additionalKeywords>
+    <additionalKeywords>emergence,#mindblowing,?emergence: How does complexity emerge from simple rules?,#start,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - emergence</name>
@@ -7087,7 +7102,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>what is emergence?</revokedKeywords>
-    <additionalKeywords>simulation,#mindblowing,#inspiring,#gold,#easy,?emergence: What is emergence?</additionalKeywords>
+    <additionalKeywords>simulation,?emergence: How does complexity emerge from simple rules?,#mindblowing,#inspiring,#gold,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - pseudo-science</name>
@@ -8000,7 +8015,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>visual storytelling</revokedKeywords>
-    <additionalKeywords>storytelling,#emotional,#mindblowing,#hard,future of cinema</additionalKeywords>
+    <additionalKeywords>storytelling,future of cinema,#hard,#mindblowing,#emotional,#example,#pe?Particle Dreams</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - New modes of expression</name>
@@ -8407,7 +8422,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>beginnngs</revokedKeywords>
-    <additionalKeywords>beginnings,#easy,#tech,#breakthrough,?programming: What motivated you to learn programming?</additionalKeywords>
+    <additionalKeywords>beginnings,?programming: What motivated you to learn programming?,#breakthrough,#tech,#easy,#example,#pe?Aesthetics and Computation Group</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Computer as collaborator</name>
@@ -11708,7 +11723,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#ironic,#obstacle,#hard,#example</additionalKeywords>
+    <additionalKeywords>#example,#hard,#obstacle,#ironic,#pe?Very Nervous System</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - what&apos;s an instrument?</name>
@@ -13917,6 +13932,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Information 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jen - facebook data</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Martin - Big data 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Maeda - How do you relate to people?</target>
         <startFrame>-1</startFrame>
@@ -14457,7 +14487,7 @@
 </clip>
 <clip>
     <name>Higa - sound and video</name>
-    <additionalKeywords>#start,?audiovisualization: What does music look like?</additionalKeywords>
+    <additionalKeywords>?audiovisualization: What does music look like?,#start,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>Higa - simplicity of self made tools</name>
@@ -14486,7 +14516,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>#project example</revokedKeywords>
-    <additionalKeywords>#example</additionalKeywords>
+    <additionalKeywords>#example,#pe?Tiny Riot</additionalKeywords>
 </clip>
 <clip>
     <name>Higa - tiny riot 2</name>
@@ -14496,7 +14526,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>#project example</revokedKeywords>
-    <additionalKeywords>#example</additionalKeywords>
+    <additionalKeywords>#example,#pe?Tiny Riot</additionalKeywords>
 </clip>
 <clip>
     <name>Higa - tiny riot 3</name>
@@ -14506,12 +14536,12 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>#project example</revokedKeywords>
-    <additionalKeywords>#example</additionalKeywords>
+    <additionalKeywords>#example,#pe?Tiny Riot</additionalKeywords>
 </clip>
 <clip>
     <name>Higa - tiny riot 4</name>
     <revokedKeywords>#project example</revokedKeywords>
-    <additionalKeywords>#example</additionalKeywords>
+    <additionalKeywords>#example,#pe?Tiny Riot</additionalKeywords>
 </clip>
 <clip>
     <name>Higa - sharing accidently 1</name>
@@ -15444,6 +15474,16 @@
     </link>
     <link>
         <target>Lauren - data ownership 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Information 3</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Greg - the &quot;Like&quot; button cascade</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -18537,7 +18577,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#sincere,#hard</additionalKeywords>
+    <additionalKeywords>#hard,#sincere,#example,#pe?Cascade</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - reading the complexity</name>
@@ -18571,7 +18611,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#hard,#obstacle</additionalKeywords>
+    <additionalKeywords>#obstacle,#hard,#example,#pe?Cascade</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - ambiguous narrative</name>
@@ -19582,7 +19622,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>thanks,#inspiring,#sincere,#rational,#hard,?teaching: How do open source coders earn a living?</additionalKeywords>
+    <additionalKeywords>thanks,#inspiring,#sincere,#rational,#hard,guru,toxi,?teaching: How do open source coders earn a living?</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - fireflies</name>
@@ -20505,7 +20545,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>perception,subliminal,visualization,link:jtnimoy - cortex2,link:marius - reach your visual cortex</revokedKeywords>
-    <additionalKeywords>#easy,#mindblowing,#tech</additionalKeywords>
+    <additionalKeywords>#oculus,#tech,#mindblowing,#easy,?videogames: How do videogames change the way we see?,#start</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - 100 artists versus One</name>
@@ -22417,7 +22457,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#hard,#serious,#logical,#tech</additionalKeywords>
+    <additionalKeywords>#tech,#logical,#serious,#hard,#example,#pe?Transparency Grenade</additionalKeywords>
 </clip>
 <clip>
     <name>Julian - ideology of seamlessness</name>
@@ -24241,7 +24281,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#hard,#tech,#sincere</additionalKeywords>
+    <additionalKeywords>#sincere,#tech,#hard,#example,#pe?ToxicLibs</additionalKeywords>
 </clip>
 <clip>
     <name>Karsten - parallel processing</name>
@@ -28161,7 +28201,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>aesthetics and computation,design by numbers</additionalKeywords>
+    <additionalKeywords>aesthetics and computation,design by numbers,#example,#pe?Design by Numbers</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_CH - open source</name>
@@ -34321,7 +34361,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>kids</revokedKeywords>
-    <additionalKeywords>#example,#art,#pe?Reactive Squares,children</additionalKeywords>
+    <additionalKeywords>children,#art,#example,#pe?Reactive Square</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - subversion</name>
@@ -34762,7 +34802,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>archiving,#emotional,#art,#easy</additionalKeywords>
+    <additionalKeywords>archiving,#easy,#art,#emotional,#example,#pe?Reactive Book</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - lost interest in interactivity</name>
@@ -35000,7 +35040,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>beginning</revokedKeywords>
-    <additionalKeywords>beginnings,#easy,#inspiring</additionalKeywords>
+    <additionalKeywords>beginnings,#inspiring,#easy,#example,#pe?Aesthetics and Computation Group</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - not a big deal</name>
@@ -35070,7 +35110,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>computational art</revokedKeywords>
-    <additionalKeywords>coding,aesthetics and computation,media lab,#inspiring,#fun,#art,#easy</additionalKeywords>
+    <additionalKeywords>coding,aesthetics and computation,media lab,#easy,#art,#fun,#inspiring,#example,#pe?Aesthetics and Computation Group</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - Design by Numbers</name>
@@ -35770,7 +35810,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>how do you think about time? &#x0D;time,accomplishment</revokedKeywords>
-    <additionalKeywords>time,?time: How do you think about time?,journey,#serious,#emotional</additionalKeywords>
+    <additionalKeywords>time,journey,#emotional,#serious,?time: How do you think about time?,#example,#pe?Calendars</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - I can still draw</name>
@@ -36389,7 +36429,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>interdisciplinarity</revokedKeywords>
-    <additionalKeywords>interdisciplinary,aesthetics and computation,#breakthrough,#inspiring,#easy</additionalKeywords>
+    <additionalKeywords>interdisciplinary,aesthetics and computation,#easy,#inspiring,#breakthrough,#example,#pe?Aesthetics and Computation Group</additionalKeywords>
 </clip>
 <clip>
     <name>Maeda - Constraints</name>
@@ -36834,7 +36874,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#sincere,#inspiring,#breakthrough</additionalKeywords>
+    <additionalKeywords>#breakthrough,#inspiring,#sincere,#pe?Syn_</additionalKeywords>
 </clip>
 <clip>
     <name>Marcus - community styles</name>
@@ -36908,6 +36948,11 @@
     </link>
     <link>
         <target>Patricio - Mentors</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Learning through others</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -41786,7 +41831,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#fun,#logical,?big data: What is powerful about Big Data?</additionalKeywords>
+    <additionalKeywords>?big data: What is powerful about Big Data?,#logical,#fun,#start,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>Martin - Big data</name>
@@ -42859,7 +42904,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#breakthrough,#art</additionalKeywords>
+    <additionalKeywords>#art,#breakthrough,#example,#pe?Nature</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jessica - RNA and Viruses</name>
@@ -43151,7 +43196,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>life and code</revokedKeywords>
-    <additionalKeywords>biology and code,?biology and code: What&apos;s the code of life?,#mindblowing,#logical,#hard,#start</additionalKeywords>
+    <additionalKeywords>biology and code,#mindblowing,#logical,#hard,#start,?biology and code: What is the code of life?</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jessica - Design process</name>
@@ -45945,6 +45990,26 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Ramsey - language as expression</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Ramsey - beauty of code</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marcus - gurus</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jer - Toxi: gurus</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>i have no background to speak of and learned through other people&apos;s code and am very aware of that. helps me to think in different ways</revokedKeywords>
     <additionalKeywords>learning,sharing,#dud</additionalKeywords>
 </clip>
@@ -48117,6 +48182,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Patricio - Learning through others</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Shiffman - Maybe I&apos;d like that</target>
         <startFrame>-1</startFrame>
@@ -48178,6 +48248,11 @@
     </link>
     <link>
         <target>Patricio - Cryptic code</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Patricio - Learning through others</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -48289,7 +48364,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#example,#obstacle,#logical,#hard</additionalKeywords>
+    <additionalKeywords>#hard,#logical,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Ramsey - ALB 2</name>
@@ -48298,7 +48373,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#obstacle,#logical,#example,#pe?قلب, (Alb)</additionalKeywords>
+    <additionalKeywords>#pe?قلب,#obstacle,#logical,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Ramsey - ALB 3</name>
@@ -54710,6 +54785,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#pe?openFrameworks,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Theo - development feedback,</name>
@@ -56146,7 +56222,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#fun</additionalKeywords>
+    <additionalKeywords>#fun,#pe?Laser Tag,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - minecraft livecode</name>
@@ -56525,7 +56601,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>aesthetics and computation,open source,teaching,acu,sharing,#tech,#breakthrough,?open frameworks: What&apos;s the origin of openFrameworks?</additionalKeywords>
+    <additionalKeywords>aesthetics and computation,open source,teaching,acu,sharing,?open frameworks: What&apos;s the origin of openFrameworks?,#breakthrough,#tech,#example,#pe?openFrameworks</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - Open Frameworks 3</name>
@@ -56622,7 +56698,7 @@
 </clip>
 <clip>
     <name>Zach - Open Frameworks 4</name>
-    <additionalKeywords>community,#sincere</additionalKeywords>
+    <additionalKeywords>community,#pe?openFrameworks,#sincere,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - action script shorter</name>
@@ -57526,7 +57602,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>open frameworks,open source,#vo,#easy</additionalKeywords>
+    <additionalKeywords>open frameworks,open source,#easy,#vo,#example,#pe?openFrameworks</additionalKeywords>
 </clip>
 <clip>
     <name>Diederick - programmingWithFeeling</name>
@@ -57725,7 +57801,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>cosmogeny,god mode,#start,?simulation: Is it possible to truly simulate reality?,simulation</additionalKeywords>
+    <additionalKeywords>cosmogeny,god mode,simulation,?simulation: Is it possible to truly simulate reality?,#start,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - BuildingWorlds</name>
@@ -58102,7 +58178,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>virtual,reality,real,?real and virtual: Have we hacked reality?,#start,real and virtual</additionalKeywords>
+    <additionalKeywords>virtual,reality,real,real and virtual,#start,?real and virtual: Have we hacked reality?,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - interactivity1</name>
@@ -59367,7 +59443,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>time,process,creativity,generative art,#mindblowing</additionalKeywords>
+    <additionalKeywords>time,process,creativity,generative art,#oculus,#start,?generative art: When is an artwork done?,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>LIA - TimeStamps2</name>

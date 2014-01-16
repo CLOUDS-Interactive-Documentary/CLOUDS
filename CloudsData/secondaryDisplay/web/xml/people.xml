@@ -538,9 +538,9 @@
 			<last>Gonzalez Vivo</last>
 			<title>Artist</title>
 			<twitter>@patriciogv</twitter>
-			<location1>b Buenos Aires AR</location1>
-			<location2>Buenos Aires - New York</location2>
-			<byline1>He brings a background of experimental psychology and focuses on bringing cutting-edge technologies to spaces where creativity and play can transform people.</byline1>
+			<location1></location1>
+			<location2>New York City</location2>
+			<byline1>Brings a background in experimental psychology to designing spaces where creativity and play offer tranformative experiences.</byline1>
 			<byline2></byline2>
 			<gender>male</gender>
 		</person>
@@ -552,7 +552,7 @@
 			<twitter>@satoruhiga</twitter>
 			<location1>Tokyo JP</location1>
 			<location2>Tokyo</location2>
-			<byline1>A creative coder who develops interactive art, games and apps. He has been an artist-in-residence at Yamaguchi Center for Arts and Media (YCAM), a collaborator with Daito Manabe.
+			<byline1>A creative coder who develops interactive art, games and apps. As an artist-in-residence at Yamaguchi Center for Arts and Media (YCAM), he collaborates with Daito Manabe.
 			</byline1>
 			<byline2>
 				Higasan has contributed numerous add-ons to open Frameworks, a c++ library for artists.

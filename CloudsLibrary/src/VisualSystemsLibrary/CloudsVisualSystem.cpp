@@ -26,6 +26,7 @@ static bool postShaderLoaded = false;
 static ofShader backgroundShader;
 static ofImage backgroundGradientCircle;
 static ofImage backgroundGradientBar;
+static ofImage backgroundGradientWash;
 static bool screenResolutionForced = false;
 static int forcedScreenWidth;
 static int forcedScreenHeight;
@@ -67,6 +68,7 @@ CloudsRGBDVideoPlayer& CloudsVisualSystem::getRGBDVideoPlayer(){
 void CloudsVisualSystem::loadBackgroundShader(){
 	backgroundGradientBar.loadImage(GetCloudsDataPath() + "backgrounds/bar.png");
 	backgroundGradientCircle.loadImage(GetCloudsDataPath() + "backgrounds/circle.png");
+    backgroundGradientWash.loadImage(GetCloudsDataPath() + "backgrounds/wash.png");
 	backgroundShader.load(GetCloudsDataPath() + "shaders/background");
 	backgroundShaderLoaded = true;
     
@@ -164,7 +166,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
-    string b = "foo";
+
 	//can't save guis because the virtual subclass members return the wrong data
 //    saveGUIS();
 }
@@ -248,6 +250,9 @@ void CloudsVisualSystem::setup(){
 #ifdef CLOUDS_APP
     setupPortals();
 #endif
+    
+    backgroundGradientExponent = 1.0;
+    bWashGradient = false;
     
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 	
@@ -660,12 +665,13 @@ void CloudsVisualSystem::drawScene(){
     
 	selfSceneTransformation();
 
-    if(bUseInteractiveCamera){
+    if(bUseInteractiveCamera && !bUseOculusRift){
+        
         interactiveCameraRot *= 1. - interactiveCameraDamping;
         
         interactiveCameraRot.x += ofMap(GetCloudsInputX(), 0, getCanvasWidth(), interactiveCameraMinX, interactiveCameraMaxX)*interactiveCameraDamping;
         interactiveCameraRot.y += ofMap(GetCloudsInputY(), 0, getCanvasHeight(), interactiveCameraMinY, interactiveCameraMaxY)*interactiveCameraDamping;
-  
+
         GLfloat model[16];
         glGetFloatv(GL_MODELVIEW_MATRIX, model);
         ofMatrix4x4 curmv;
@@ -739,11 +745,13 @@ void CloudsVisualSystem::exit()
 	if( !bIsSetup ){
 		return;
 	}
-	
-	
+    
     saveGUIS();
-	deleteGUIS();
 	
+    selfExit();
+    
+	deleteGUIS();
+    
     for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it)
     {
         ofx1DExtruder *e = (*it);
@@ -777,7 +785,7 @@ void CloudsVisualSystem::exit()
 		timeline = NULL;
 	}
 	bIsSetup = false;
- 
+    
 }
 
 void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
@@ -1403,6 +1411,8 @@ void CloudsVisualSystem::setupBackgroundGui()
     bgGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
     bgGui->addWidgetToHeader(toggle);
 	bgGui->addToggle("BAR GRAD", &bBarGradient);
+	bgGui->addToggle("WASH GRAD", &bWashGradient);
+    bgGui->addSlider("EXPONENT", 0, 5.0, &backgroundGradientExponent);
     bgGui->addSpacer();
     
     bgGui->addSlider("HUE", 0.0, 255.0, &bgHue);
@@ -1489,6 +1499,7 @@ void CloudsVisualSystem::setupPostGui()
     postGui->setPosition(guis[guis.size()-1]->getRect()->x+guis[guis.size()-1]->getRect()->getWidth()+1, 0);
     postGui->setName("Post Effects");
     postGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
     postGui->addSpacer();
     postGui->addToggle("Enable", &bEnablePostFX);
     postGui->addSlider("Chroma_Distortion", 0.0, 1.0, &postChromaDist);
@@ -1497,9 +1508,10 @@ void CloudsVisualSystem::setupPostGui()
     postGui->addSlider("Bloom Level", 0., 1., &bloomAmount);
     postGui->addIntSlider("Bloom Size", 1, 20, &bloomSamples);
     postGui->autoSizeToFitWidgets();
+    
     ofAddListener(postGui->newGUIEvent, this, &CloudsVisualSystem::guiPostEvent);
     guis.push_back(postGui);
-    guimap[bgGui->getName()] = postGui;
+    guimap[postGui->getName()] = postGui;
 }
 
 void CloudsVisualSystem::guiPostEvent(ofxUIEventArgs &e)
@@ -2851,6 +2863,9 @@ void CloudsVisualSystem::loadTimelineUIMappings(string path)
                         string widgetname = XML->getValue("WidgetName", "NULL", 0);
                         int widgetID = XML->getValue("WidgetID", -1, 0);
                         string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
+
+                        cout << "Widget canvas parent is " << widgetCanvasParent << endl;
+                        
                         map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
                         if(it != guimap.end())
                         {
@@ -2859,6 +2874,16 @@ void CloudsVisualSystem::loadTimelineUIMappings(string path)
                             {
                                 bindWidgetToTimeline(w);
                             }
+                            else {
+#ifndef CLOUDS_RELEASE
+                                ofSystemAlertDialog("WARNING: " + widgetCanvasParent + " COULD NOT FIND WIDGET " + widgetname + " IN GUI MAP. MAY BE MISCONFIGURED IN GUI");
+#endif                                
+                            }
+                        }
+                        else{
+#ifndef CLOUDS_RELEASE
+                            ofSystemAlertDialog("WARNING: " + widgetCanvasParent + " NOT FOUND IN GUI MAP. MAY BE MISCONFIGURED IN GUI");
+#endif
                         }
                         XML->popTag();
                     }
@@ -2914,6 +2939,12 @@ void CloudsVisualSystem::setupKinectGui()
     
     ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
     
+    ofxUIButton *button = kinectGui->addButton("SAVE", false);
+    button->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    kinectGui->resetPlacer();
+    kinectGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
+    kinectGui->addWidgetToHeader(button);
+    
     kinectGui->addSpacer();
     kinectGui->addToggle("DEBUG", &kinectInput->bDoDebug);
     
@@ -2940,8 +2971,9 @@ void CloudsVisualSystem::setupKinectGui()
 
 void CloudsVisualSystem::guiKinectEvent(ofxUIEventArgs &e)
 {
-    // Save every time something changes.
-    kinectGui->saveSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
+    if (e.getName() == "SAVE") {
+        kinectGui->saveSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
+    }
 }
 #endif
 
@@ -2955,6 +2987,12 @@ void CloudsVisualSystem::setupOculusGui()
     oculusGui->setPosition(guis[guis.size() - 1]->getRect()->x + guis[guis.size() - 1]->getRect()->getWidth() + 1, 0);
     oculusGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
+    ofxUIButton *button = oculusGui->addButton("SAVE", false);
+    button->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    oculusGui->resetPlacer();
+    oculusGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
+    oculusGui->addWidgetToHeader(button);
+    
     oculusGui->autoSizeToFitWidgets();
     ofAddListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
     guis.push_back(oculusGui);
@@ -2963,8 +3001,9 @@ void CloudsVisualSystem::setupOculusGui()
 
 void CloudsVisualSystem::guiOculusEvent(ofxUIEventArgs &e)
 {
-    // Save every time something changes.
-    oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+    if (e.getName() == "SAVE") {
+        oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+    }
 }
 
 void CloudsVisualSystem::setupHUDGui()
@@ -2977,6 +3016,12 @@ void CloudsVisualSystem::setupHUDGui()
     hudGui->setName("HUD");
     hudGui->setPosition(guis[guis.size() - 1]->getRect()->x + guis[guis.size() - 1]->getRect()->getWidth() + 1, 0);
     hudGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    ofxUIButton *button = hudGui->addButton("SAVE", false);
+    button->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    hudGui->resetPlacer();
+    hudGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
+    hudGui->addWidgetToHeader(button);
     
     hudGui->addSpacer();
     hudGui->addSlider("QUESTION DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_QUESTION]);
@@ -3037,7 +3082,11 @@ void CloudsVisualSystem::setupHUDGui()
 void CloudsVisualSystem::guiHUDEvent(ofxUIEventArgs &e)
 {
     string name = e.getName();
-    if (name == "BB Q NONE") {
+    if (name == "SAVE") {
+        hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+    }
+
+    else if (name == "BB Q NONE") {
         hud->layerBillboard[CLOUDS_HUD_QUESTION] = CLOUDS_HUD_BILLBOARD_NONE;
     }
     else if (name == "BB Q CAMERA") {
@@ -3076,9 +3125,6 @@ void CloudsVisualSystem::guiHUDEvent(ofxUIEventArgs &e)
     else if (name == "BB M OCULUS") {
         hud->layerBillboard[CLOUDS_HUD_MAP] = CLOUDS_HUD_BILLBOARD_OCULUS;
     }
-    
-    // Save every time something changes.
-    hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
 }
 #endif
 
@@ -3124,11 +3170,6 @@ void CloudsVisualSystem::loadGUIS()
 //        setColors();
 //        guis[i]->setTheme(OFX_UI_THEME_ZOOLANDER);
     }
-    cam.reset();
-    ofxLoadCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
-    resetTimeline();
-    loadTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/UITimelineMappings.xml");
-    timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 
 #ifdef KINECT_INPUT
     kinectGui->loadSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
@@ -3139,6 +3180,14 @@ void CloudsVisualSystem::loadGUIS()
         hudGui->loadSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
     }
 #endif
+    
+    cam.reset();
+    ofxLoadCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
+    resetTimeline();
+    
+    loadTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/UITimelineMappings.xml");
+    timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
+    
 }
 
 void CloudsVisualSystem::saveGUIS()
@@ -3160,16 +3209,17 @@ void CloudsVisualSystem::saveGUIS()
     if(timeline != NULL){
 		timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 	}
-    
-#ifdef KINECT_INPUT
-    kinectGui->saveSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
-#endif
-#ifdef OCULUS_RIFT
-    oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
-    if (hudGui) {
-        hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
-    }
-#endif
+
+    // EZ: These are saved using the SAVE button for each GUI.
+//#ifdef KINECT_INPUT
+//    kinectGui->saveSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
+//#endif
+//#ifdef OCULUS_RIFT
+//    oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+//    if (hudGui) {
+//        hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+//    }
+//#endif
 }
 
 void CloudsVisualSystem::loadPresetGUISFromName(string presetName)
@@ -3183,6 +3233,10 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
     
 	resetTimeline();
 	
+    bWashGradient = false;
+    bBarGradient = false;
+    backgroundGradientExponent = 1.0;
+    
 	selfSetDefaults();
 	
     for(int i = 0; i < guis.size(); i++) {
@@ -3470,43 +3524,74 @@ void CloudsVisualSystem::drawBackgroundGradient(){
 	{
 		
 		if(gradientMode != -1){
-			if(bBarGradient){
-				if(backgroundGradientBar.isAllocated()){
-					backgroundShader.begin();
-					backgroundShader.setUniformTexture("image", backgroundGradientBar, 1);
-					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
-					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
-					ofMesh mesh;
-                    getBackgroundMesh(mesh, backgroundGradientCircle, ofGetViewportWidth(), ofGetViewportHeight());
-					//getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
-					mesh.draw();
-					backgroundShader.end();
-				}
-				else{
-					ofSetSmoothLighting(true);
-					ofBackgroundGradient(bgColor, bgColor2, OF_GRADIENT_BAR);
-				}
-			}
-			else{
-				if(backgroundGradientCircle.isAllocated()){
-					backgroundShader.begin();
-					backgroundShader.setUniformTexture("image", backgroundGradientCircle, 1);
-					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
-					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
-					ofMesh mesh;
-                    getBackgroundMesh(mesh, backgroundGradientCircle, ofGetViewportWidth(), ofGetViewportHeight());
-					//getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
-					mesh.draw();
-					backgroundShader.end();
-				}
-				else{
-					ofSetSmoothLighting(true);
-					ofBackgroundGradient(bgColor, bgColor2, OF_GRADIENT_CIRCULAR);
-				}
-			}
+            
+            ofImage* gradientImage = NULL;
+            if(bBarGradient && backgroundGradientBar.isAllocated()){
+                gradientImage = &backgroundGradientBar;
+            }
+            else if(bWashGradient && backgroundGradientWash.isAllocated()){
+                gradientImage = &backgroundGradientWash;
+            }
+            else if(backgroundGradientCircle.isAllocated()){
+                gradientImage = &backgroundGradientCircle;
+            }
+            
+            if(gradientImage != NULL){
+                backgroundShader.begin();
+                backgroundShader.setUniformTexture("image", *gradientImage, 1);
+                backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
+                backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
+                backgroundShader.setUniform1f("gradientExponent", backgroundGradientExponent);
+                
+                ofMesh mesh;
+                getBackgroundMesh(mesh, *gradientImage, ofGetViewportWidth(), ofGetViewportHeight());
+                //getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
+                mesh.draw();
+                backgroundShader.end();
+            }
+            //images didn't load
+            else {
+                ofSetSmoothLighting(true);
+                ofBackgroundGradient(bgColor, bgColor2, OF_GRADIENT_BAR);
+            }
+//            if(bBarGradient){
+//				if(backgroundGradientBar.isAllocated()){
+//					backgroundShader.begin();
+//					backgroundShader.setUniformTexture("image", backgroundGradientBar, 1);
+//					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
+//					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
+//					ofMesh mesh;
+//                    getBackgroundMesh(mesh, backgroundGradientCircle, ofGetViewportWidth(), ofGetViewportHeight());
+//					//getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
+//					mesh.draw();
+//					backgroundShader.end();
+//				}
+//				else{
+//					ofSetSmoothLighting(true);
+//					ofBackgroundGradient(bgColor, bgColor2, OF_GRADIENT_BAR);
+//				}
+//			}
+//			else{
+//				if(backgroundGradientCircle.isAllocated()){
+//					backgroundShader.begin();
+//					backgroundShader.setUniformTexture("image", backgroundGradientCircle, 1);
+//					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
+//					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
+//					ofMesh mesh;
+//                    getBackgroundMesh(mesh, backgroundGradientCircle, ofGetViewportWidth(), ofGetViewportHeight());
+//					//getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
+//					mesh.draw();
+//					backgroundShader.end();
+//				}
+//				else{
+//					ofSetSmoothLighting(true);
+//					ofBackgroundGradient(bgColor, bgColor2, OF_GRADIENT_CIRCULAR);
+//				}
+//			}
 		}
 		else{
 			ofSetSmoothLighting(false);
+			//TODO: fix this call
 			ofBackground(bgColor);
 		}
 	}
@@ -3654,16 +3739,16 @@ void CloudsVisualSystem::selfDrawCursor(ofVec3f& pos, bool bDragged)
     if (bDragged) {
         ofSetColor(213, 69, 62, 255);
 #ifdef OCULUS_RIFT
-        ofCircle(pos, 3);
+        ofCircle(pos, 1);
 #else
         ofCircle(pos.x, pos.y,
                  ofMap(pos.z, 2, -2, 3, 6, true));
 #endif
     }
     else {
-        ofSetColor(255, 255, 255, 175);
+        ofSetColor(255, 255, 255, 64);
 #ifdef OCULUS_RIFT
-        ofCircle(pos, 3);
+        ofCircle(pos, 1);
 #else
         ofCircle(pos.x, pos.y,
                  ofMap(pos.z, 2, -2, 3, 10, true));

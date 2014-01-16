@@ -87,7 +87,7 @@ class CloudsPlaybackController {
 	bool shouldPlayAct;
 
     CloudsVisualSystem* currentVisualSystem;
-
+    void createInterludeSoundQueue();
 	//RGBD STUFF
 	CloudsVisualSystemRGBD* rgbdVisualSystem;
 	//if there is a system playing this wil be non-null
@@ -101,6 +101,7 @@ class CloudsPlaybackController {
 	CloudsTransitionController transitionController;
 	void updateTransition();
 
+    string currentClipName;
     float actCreatedTime;
 	float crossfadeValue;
 	string combinedMoviesFolder;
@@ -111,7 +112,7 @@ class CloudsPlaybackController {
 	
 	string prerolledClipID;
 	void prerollClip(CloudsClip& clip, float toTime);
-	void playClip(CloudsClip& clip);
+	void playClip(CloudsClip clip);
 
 	//VISUAL SYSTEMS
 	//

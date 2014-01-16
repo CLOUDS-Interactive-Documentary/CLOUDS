@@ -1,0 +1,38 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Questions</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>512.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG PORTALS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PORTAL SCALE</Name>
+    <Value>0.183793113</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>HOVER X</Name>
+    <Value>339.901489258</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>HOVER Y</Name>
+    <Value>-27.093597412</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>HOVER Z</Name>
+    <Value>-22.660095215</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>PORTAL SELECT DISTANCE</Name>
+    <HighValue>137.044342041</HighValue>
+    <LowValue>52.807880402</LowValue>
+</Widget>

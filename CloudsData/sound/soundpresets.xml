@@ -10,7 +10,7 @@
 		<pattr name = "d6" value = "0 10" />
 		<pattr name = "d7" value = "6 10" />
 		<pattr name = "d8" value = "0 10" />
-		<pattr name = "harmony" value = "14" />
+		<pattr name = "harmony" value = "2" />
 		<pattr name = "rhythm" value = "28" />
 		<pattr name = "tempo" value = "120" />
 		<pattr name = "pname" value = "general issue slowwaves" />
@@ -20,7 +20,7 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "0" />
-		<pattr name = "disabled" value = "" />
+		<pattr name = "disabled" value = "1" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
 		<pattr name = "amp1" value = "0.461538" />
@@ -2758,9 +2758,9 @@
 		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "&quot;cosmogeny:How do you create a digital universe?&quot;" />
+		<pattr name = "start_question" value = "&quot;emergence:How does complexity emerge from simple rules?&quot;" />
 		<pattr name = "amp1" value = "0." />
-		<pattr name = "amp2" value = "0.153846" />
+		<pattr name = "amp2" value = "0.307692" />
 		<pattr name = "amp3" value = "0.307693" />
 		<pattr name = "amp4" value = "0." />
 		<pattr name = "amp5" value = "0." />
@@ -2904,7 +2904,7 @@
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "&quot;cosmogeny:How do you create a digital universe?&quot;" />
 		<pattr name = "amp1" value = "0." />
-		<pattr name = "amp2" value = "0.153846" />
+		<pattr name = "amp2" value = "0.230769" />
 		<pattr name = "amp3" value = "0.307693" />
 		<pattr name = "amp4" value = "0." />
 		<pattr name = "amp5" value = "0." />
@@ -3142,9 +3142,9 @@
 		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
+		<pattr name = "start_question" value = "&quot;data:What is data?&quot;" />
 		<pattr name = "amp1" value = "1.076923" />
-		<pattr name = "amp2" value = "0.153846" />
+		<pattr name = "amp2" value = "0.230769" />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
@@ -3190,7 +3190,7 @@
 		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
+		<pattr name = "start_question" value = "&quot;data:What is data?&quot;" />
 		<pattr name = "amp1" value = "1." />
 		<pattr name = "amp2" value = "0.307692" />
 		<pattr name = "amp3" value = "1." />
@@ -3288,7 +3288,7 @@
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
 		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "0.230769" />
+		<pattr name = "amp2" value = "0.307692" />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
@@ -3334,9 +3334,9 @@
 		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
+		<pattr name = "start_question" value = "&quot;open source:What is open source all about?&quot;" />
 		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "0.153846" />
+		<pattr name = "amp2" value = "0.307692" />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
@@ -3355,7 +3355,7 @@
 		<pattr name = "arg_a4" value = "none" />
 		<pattr name = "arg_a5" value = "none" />
 		<pattr name = "arg_a1" value = "melody" />
-		<pattr name = "arg_b1" value = "filename" />
+		<pattr name = "arg_b1" value = "none" />
 		<pattr name = "arg_b2" value = "none" />
 		<pattr name = "arg_b3" value = "none" />
 		<pattr name = "arg_b4" value = "none" />
@@ -3382,15 +3382,15 @@
 		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
+		<pattr name = "start_question" value = "&quot;audiovisualization:What does music look like?&quot;" />
+		<pattr name = "amp1" value = "0." />
 		<pattr name = "amp2" value = "0.153846" />
-		<pattr name = "amp3" value = "0.230769" />
-		<pattr name = "amp4" value = "1." />
-		<pattr name = "amp5" value = "1." />
+		<pattr name = "amp3" value = "0.153846" />
+		<pattr name = "amp4" value = "0." />
+		<pattr name = "amp5" value = "0.076923" />
 		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.115385" />
-		<pattr name = "rev3" value = "0.5" />
+		<pattr name = "rev2" value = "0." />
+		<pattr name = "rev3" value = "0." />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
 		<pattr name = "env1" value = "e_CONSTANT" />
@@ -3430,15 +3430,15 @@
 		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
+		<pattr name = "start_question" value = "&quot;community:How does the network accelerate creativity?&quot;" />
 		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "0.153846" />
-		<pattr name = "amp3" value = "0.230769" />
+		<pattr name = "amp2" value = "0.384615" />
+		<pattr name = "amp3" value = "0.384615" />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.5" />
 		<pattr name = "rev2" value = "0.115385" />
-		<pattr name = "rev3" value = "0.5" />
+		<pattr name = "rev3" value = "0.115385" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
 		<pattr name = "env1" value = "e_CONSTANT" />
@@ -3480,12 +3480,12 @@
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
 		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "0.153846" />
+		<pattr name = "amp2" value = "0.384615" />
 		<pattr name = "amp3" value = "0.230769" />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.5" />
-		<pattr name = "rev2" value = "0.115385" />
+		<pattr name = "rev2" value = "0.423077" />
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
 		<pattr name = "rev5" value = "0.5" />
@@ -3526,10 +3526,10 @@
 		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "1." />
-		<pattr name = "amp2" value = "0.384615" />
-		<pattr name = "amp3" value = "0.230769" />
+		<pattr name = "start_question" value = "&quot;open source:What is open source all about?&quot;" />
+		<pattr name = "amp1" value = "0.230769" />
+		<pattr name = "amp2" value = "0.307692" />
+		<pattr name = "amp3" value = "0.153846" />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.5" />
@@ -3622,8 +3622,8 @@
 		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.230769" />
+		<pattr name = "start_question" value = "&quot;biology and code:What is the code of life?&quot;" />
+		<pattr name = "amp1" value = "0.307692" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -3676,7 +3676,7 @@
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
 		<pattr name = "amp5" value = "1." />
-		<pattr name = "rev1" value = "0.5" />
+		<pattr name = "rev1" value = "0.576923" />
 		<pattr name = "rev2" value = "0.5" />
 		<pattr name = "rev3" value = "0.5" />
 		<pattr name = "rev4" value = "0.5" />
@@ -3719,7 +3719,7 @@
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
 		<pattr name = "start_question" value = "none" />
-		<pattr name = "amp1" value = "0.153846" />
+		<pattr name = "amp1" value = "0.307692" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
 		<pattr name = "amp4" value = "1." />
@@ -3767,7 +3767,7 @@
 		<pattr name = "disabled" value = "" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
-		<pattr name = "amp1" value = "0.692308" />
+		<pattr name = "amp1" value = "0.307693" />
 		<pattr name = "amp2" value = "" />
 		<pattr name = "amp3" value = "" />
 		<pattr name = "amp4" value = "" />
@@ -4582,7 +4582,7 @@
 		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "&quot;coding:How can the logic of coding be creative?&quot;" />
+		<pattr name = "start_question" value = "&quot;videogames:How do videogames change the way we see?&quot;" />
 		<pattr name = "amp1" value = "0.384615" />
 		<pattr name = "amp2" value = "0.384615" />
 		<pattr name = "amp3" value = "1." />
@@ -4630,11 +4630,11 @@
 		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "&quot;interface:What's the ultimate interface?&quot;" />
-		<pattr name = "amp1" value = "0.461539" />
-		<pattr name = "amp2" value = "0.615385" />
-		<pattr name = "amp3" value = "0.384615" />
-		<pattr name = "amp4" value = "0.769231" />
+		<pattr name = "start_question" value = "&quot;interfaces:What's the ultimate interface?&quot;" />
+		<pattr name = "amp1" value = "0.076924" />
+		<pattr name = "amp2" value = "0.307693" />
+		<pattr name = "amp3" value = "0.076923" />
+		<pattr name = "amp4" value = "0.384616" />
 		<pattr name = "amp5" value = "1." />
 		<pattr name = "rev1" value = "0.538462" />
 		<pattr name = "rev2" value = "0.5" />
@@ -4651,7 +4651,7 @@
 		<pattr name = "arg_a4" value = "simple" />
 		<pattr name = "arg_a5" value = "none" />
 		<pattr name = "arg_a1" value = "melody" />
-		<pattr name = "arg_b1" value = "&quot;5&quot;" />
+		<pattr name = "arg_b1" value = "none" />
 		<pattr name = "arg_b2" value = "none" />
 		<pattr name = "arg_b3" value = "L1.txt" />
 		<pattr name = "arg_b4" value = "none" />
@@ -4676,9 +4676,9 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "0" />
-		<pattr name = "disabled" value = "0" />
+		<pattr name = "disabled" value = "1" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "&quot;cosmogeny:How do you create a digital universe?&quot;" />
+		<pattr name = "start_question" value = "none" />
 		<pattr name = "amp1" value = "0.923077" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />

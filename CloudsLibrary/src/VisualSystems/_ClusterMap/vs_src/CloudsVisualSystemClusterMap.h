@@ -7,6 +7,7 @@
 #include "CloudsQuestion.h"
 #include "CloudsRun.h"
 #include "ofxFTGLFont.h"
+#include "ofxNearestNeighbour.h"
 
 typedef struct{
 	ofIndexType startIndex;
@@ -36,7 +37,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	//will add the latest state of the run to the traversal
 	void traverse();
 	
-	void traverseToClip(CloudsClip& clip);
+	void traverseToClip(CloudsClip clip);
 	
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
@@ -176,6 +177,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float meshExpansion;
 	ofRange pointSize;
 
+    ofVec3f networkCentroid;
 	ofVec3f trailHead;
 
 	float nodePopLength;
@@ -195,7 +197,13 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	float traverseMinSolvedDistance;
 	float traverseLineWidth;
 	bool autoTraversePoints;
-	
+	bool bConstrainTraversal;
+    float maxTraverseAngle;
+    float maxTraverseDistance;
+    float minTraverseDistance;
+    int minTraverseNextOptions;
+    ofxNearestNeighbour3D kdtree;
+    
 	//colors~
 	bool matchLineColor;
 	ofFloatColor lineNodeColorHSV;
@@ -215,7 +223,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofFloatColor traverseTailColorHSV;
 	ofFloatColor traverseTailColorRGB;
 	float traverseFalloff;
-	
+	float traverseRevealVerts;
 	
 	ofFloatImage flickerNoise;
 	ofFloatPixels flickerNoiseTarget;

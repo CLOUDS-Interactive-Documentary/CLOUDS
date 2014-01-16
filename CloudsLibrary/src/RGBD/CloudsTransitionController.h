@@ -67,6 +67,7 @@ class CloudsTransitionController {
 	float getFadeValue();
 	
 	bool isStateNew();
+	CloudsTransitionState getPendingState();
 	CloudsTransitionState getCurrentState();
 	CloudsTransitionState getPreviousState();
 	string getCurrentStateDescription();

@@ -20,13 +20,13 @@
 #include "CloudsSpeaker.h"
 
 typedef enum {
-	CLOUDS_HUD_FULL = 0,
-	CLOUDS_HUD_QUESTION,
-	CLOUDS_HUD_LOWER_THIRD,
-	CLOUDS_HUD_PROJECT_EXAMPLE,
-	CLOUDS_HUD_MAP,
+	CLOUDS_HUD_QUESTION        = 0x0001,
+	CLOUDS_HUD_LOWER_THIRD     = 0x0010,
+	CLOUDS_HUD_PROJECT_EXAMPLE = 0x0100,
+	CLOUDS_HUD_MAP             = 0x1000,
     
-    CLOUDS_HUD_LAYER_COUNT
+	CLOUDS_HUD_FULL            = 0x1111,
+    CLOUDS_HUD_LAYER_COUNT     = 4
 } CloudsHUDLayerSet;
 
 #ifdef OCULUS_RIFT
@@ -47,10 +47,13 @@ class CloudsHUDController {
 	void update();
 	void draw();
 #ifdef OCULUS_RIFT
-    void draw3D(ofCamera* cam);
+    void draw3D(ofCamera* cam, ofVec2f offset = ofVec2f::zero());
 #endif
 
 	void setHomeEnabled(bool enable);
+    bool isHomeEnabled();
+    void setHudEnabled(bool enable);
+    bool isHudEnabled();
 	
 	void buildLayerSets();
     void calculateFontSizes();
@@ -59,6 +62,7 @@ class CloudsHUDController {
 	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void animateOff(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void respondToClip(CloudsClip& clip);
+    void playCued();
 	
 	map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> > layerSets;
 	vector<CloudsHUDLayer*> allLayers;
@@ -86,10 +90,10 @@ class CloudsHUDController {
     ofVec2f getCenter(bool bScaled = true);
     
 #ifdef OCULUS_RIFT
-    float layerDistance[CLOUDS_HUD_LAYER_COUNT];
-    float layerRotationH[CLOUDS_HUD_LAYER_COUNT];
-    float layerRotationV[CLOUDS_HUD_LAYER_COUNT];
-    CloudsHUDBillboard layerBillboard[CLOUDS_HUD_LAYER_COUNT];
+    map<CloudsHUDLayerSet, float> layerDistance;
+    map<CloudsHUDLayerSet, float> layerRotationH;
+    map<CloudsHUDLayerSet, float> layerRotationV;
+    map<CloudsHUDLayerSet, CloudsHUDBillboard> layerBillboard;
 #endif
 
   protected:
@@ -107,10 +111,13 @@ class CloudsHUDController {
     bool    bDrawHud;
     bool    bSkipAVideoFrame;
     
+    bool    bLowerThirdCued;
+    bool    bVisualSystemDisplayed;
+    float   cuedClipEndTime;
 	
     void drawLayer(CloudsHUDLayerSet layer);
 #ifdef OCULUS_RIFT
-    void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam);
+    void drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, ofVec2f& offset);
 #endif
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath );
     ofxFTGLSimpleLayout*    getLayoutForLayer( string layerName, string fontPath, bool caps );

@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>1921.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>379.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -33,6 +33,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>blueTunnel</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>finteractiveCameraExample</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -264,6 +269,41 @@
     <Kind>2</Kind>
     <Name>lightAndFog</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>lightAndFog_2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OrganicTunnel_1</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OrganicTunnel_2_fast</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OrganicTunnel_2_medium</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OrganicTunnel_2_slow</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OrganicTunnel_2_White</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OrganicTunnel_2_White_Faster</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

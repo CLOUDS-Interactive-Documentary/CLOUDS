@@ -16,6 +16,7 @@
     
     CloudsFCPParser parser;
 
+    bool playingRGBD;
 	ofVideoPlayer preview;
     
     vector<string> selectedKeywordsSource;

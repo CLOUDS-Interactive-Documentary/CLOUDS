@@ -61,7 +61,7 @@ class CloudsStoryEngine {
 	CloudsAct* buildAct(CloudsRun& run);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed);
 	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed, string topic, bool playSeed = true);
-	vector<string> getValidTopicsForNextAct(CloudsRun& run);
+	bool getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset);
     void initGui();
     void saveGuiSettings();
     void toggleGuis(bool actOnly = false);
@@ -177,6 +177,8 @@ class CloudsStoryEngine {
 
 	float distantClipSuppressionFactor;
 
+    
+    
 	//Topic selection parameters
 	float topicRelevancyMultiplier;
 	float lastClipSharesTopicBoost;

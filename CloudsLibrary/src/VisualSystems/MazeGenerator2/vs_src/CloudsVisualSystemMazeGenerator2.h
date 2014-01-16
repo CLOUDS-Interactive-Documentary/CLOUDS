@@ -19,8 +19,6 @@
 class CloudsVisualSystemMazeGenerator2 : public CloudsVisualSystem {
   public:
     
-    CloudsVisualSystemMazeGenerator2();
-    
 	//TODO: Change this to the name of your visual system
 	//This determines your d2ata path so name it at first!
 	//ie getVisualSystemDataPath() uses this
@@ -99,7 +97,7 @@ class CloudsVisualSystemMazeGenerator2 : public CloudsVisualSystem {
 protected:
     void setLightOri(ofLight* light, ofVec3f rot);
     
-    Maze2* maze[3];
+    Maze2* maze;
     MazeCamera2* mazeCam;
     
     ofLight *light;

@@ -13,9 +13,10 @@ bool logsort(pair<float,string> a, pair<float,string> b ){
     return a.first > b.first;
 }
 
-bool topic_score_sort(pair<string,int> a, pair<string,int>b ){
+bool score_sort(pair<string,int> a, pair<string,int>b ){
     return a.second > b.second;
 }
+
 
 CloudsStoryEngine::CloudsStoryEngine(){
     parser = NULL;
@@ -261,10 +262,11 @@ void CloudsStoryEngine::setCustomAct(CloudsAct* act){
 	customAct = act;
 }
 
-vector<string> CloudsStoryEngine::getValidTopicsForNextAct(CloudsRun& run){
+bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset){
     
     if(run.accumuluatedTopics.size() == 0 || run.clipHistory.size() == 0){
         ofLogError("CloudsStoryEngine::buildAct") << " no topics for next act!";
+        return false;
     }
     
     map<string, int>::iterator it;
@@ -272,8 +274,50 @@ vector<string> CloudsStoryEngine::getValidTopicsForNextAct(CloudsRun& run){
     for(it = run.accumuluatedTopics.begin(); it != run.accumuluatedTopics.end(); it++){
         topics.push_back(it->first);
     }
+
+    vector< pair<string,int> > potentialPresets;
+    vector<CloudsVisualSystemPreset> currentSelection = visualSystems->getPresetsForKeywords(topics,"",true);
+        
+        for (int i =0 ; i < currentSelection.size(); i++) {
+            if( ofContains(run.presetHistory, currentSelection[i].getID() )){
+                cout<<currentSelection[i].getID()<<" already in history so not selecting"<<endl;
+                continue;
+            }
+#ifdef OCULUS_RIFT
+            if(!currentSelection[i].enabledOculus){
+                continue;
+            }
+#else
+            if(!currentSelection[i].enabledScreen){
+                continue;
+            }
+#endif
+            
+            vector<string> presetTopics = visualSystems->keywordsForPreset(currentSelection[i]);
+            int presetScore = 0;
+            
+            for (int k =0 ; k< presetTopics.size(); k++) {
+                if (ofContains(run.topicHistory, presetTopics[k])) {
+                    presetScore++;
+                }
+            }
+            cout<<currentSelection[i].getID()<<" , "<<presetScore<<","<<presetTopics.size()<<endl;
+            potentialPresets.push_back(make_pair(currentSelection[i].getID(), presetScore));
+        }
+        
+
     
-    return topics;
+    if (potentialPresets.size() > 0) {
+        sort(potentialPresets.begin(), potentialPresets.end(),score_sort);
+        cout<<"Selected preset "<<potentialPresets[0].first<<" for interlude "<<endl;
+        preset = visualSystems->getPresetWithID(potentialPresets[0].first);
+        return  true;
+    }
+    else{
+        ofLogError("CloudsStoryEngine::getPresetForInterlude") << "Defaulting to cluster map because we found no topics from the last act";
+        return false;
+    }
+
 }
 
 #pragma mark INIT ACT
@@ -299,7 +343,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run){
         topicCountPairs.push_back( make_pair(it->first, it->second));
     }
     
-    sort(topicCountPairs.begin(), topicCountPairs.end(), topic_score_sort);
+    sort(topicCountPairs.begin(), topicCountPairs.end(), score_sort);
     
     string validTopic = "";
     for(int i = 0; i < topicCountPairs.size(); i++){
@@ -348,6 +392,10 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
     hardIntros.push_back("new aesthetic");
     hardIntros.push_back("real and virtual");
     hardIntros.push_back("interfaces");
+    hardIntros.push_back("biology and code");
+    hardIntros.push_back("audiovisualization");
+    hardIntros.push_back("big data"); 
+    
     if(run.actCount == 0 && ofContains(hardIntros, seedTopic)){
         run.actCount = 1; //force
     }
@@ -512,7 +560,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
         ///////////////// QUESTIONS
         //adding all option clips with questions
 		if(state.topicNum > 1){
+#ifndef OCULUS_RIFT
 			addQuestions(state, questionClips);
+#endif
         }
         /////////////////
 		
@@ -714,6 +764,14 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	state.log << state.duration << "\tACT ENDED on clip " << state.clip.getLinkName() << " explored topics " << state.topicNum << "/" << maxTopicsPerAct << " with " << state.timesOnCurrentTopic << " clips on final topic \"" << state.topic << "\"" << endl;
 	
 	if(state.visualSystemRunning){
+        if(state.preset.indefinite){
+            state.visualSystemEndTime = MAX(state.visualSystemEndTime, state.visualSystemStartTime + minVisualSystemRunTime);
+        }
+        //fix any definite preset spillage on definite systems
+        else {
+            state.visualSystemEndTime = MIN(state.visualSystemEndTime, state.visualSystemStartTime + state.preset.duration);
+        }
+        
 		state.duration = state.act->addVisualSystem(state.preset,
                                                     state.visualSystemStartTime,
 													state.visualSystemEndTime);
@@ -876,10 +934,22 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVis
     
     if(bLogVisualSystemDetails) state.log << state.duration  << "\t\t\tConsidering" << potentialNextPreset.getID() << endl;;
 	
-    if(!potentialNextPreset.enabled){
+#ifdef OCULUS_RIFT
+	if(!potentialNextPreset.enabledOculus){
+        state.log << state.duration << "\t\t\t\tREJECTED because it is not oculus compatible"<<endl;
+        return 0;
+	}
+#else
+    if(!potentialNextPreset.enabledScreen){
         state.log << state.duration << "\t\t\t\tREJECTED because it's disabled" << endl;
         return 0;
     }
+    //	if(potentialNextPreset.oculusCompatible){
+    //        state.log << state.duration << "\t\t\t\tREJECTED because it is for the oculus"<<endl;
+    //        return 0;
+    //	}
+#endif
+    
     
     if(visualSystems->isClipSuppressed(potentialNextPreset.getID(), state.clip.getLinkName())){
         state.log << state.duration << "\t\t\t\tREJECTED  because the system is suppressed for this clip" << endl;
@@ -891,17 +961,6 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVis
         return 0;
     }
     
-#ifdef OCULUS_RIFT
-	if(!potentialNextPreset.oculusCompatible){
-        state.log << state.duration << "\t\t\t\tREJECTED because it is not oculus compatible"<<endl;
-        return 0;
-	}
-#else
-	if(potentialNextPreset.oculusCompatible){
-        state.log << state.duration << "\t\t\t\tREJECTED because it is for the oculus"<<endl;
-        return 0;
-	}
-#endif
     
 	//for definite presets covering VO clips, make sure they are long enough
     if(!potentialNextPreset.indefinite && //we currently have a definite clip

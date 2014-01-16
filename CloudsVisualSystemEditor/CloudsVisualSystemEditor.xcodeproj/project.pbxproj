@@ -709,6 +709,21 @@
 		A600C11F1881032C0041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C1011881032C0041787F /* ofxSubtitleUnit.cpp */; };
 		A600C1201881032C0041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C1011881032C0041787F /* ofxSubtitleUnit.cpp */; };
 		A600C1211881032C0041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C1011881032C0041787F /* ofxSubtitleUnit.cpp */; };
+		A633AB7C18867B210088E767 /* CloudsHUDController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB7218867B210088E767 /* CloudsHUDController.cpp */; };
+		A633AB7D18867B210088E767 /* CloudsHUDController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB7218867B210088E767 /* CloudsHUDController.cpp */; };
+		A633AB7E18867B210088E767 /* CloudsHUDController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB7218867B210088E767 /* CloudsHUDController.cpp */; };
+		A633AB7F18867B210088E767 /* CloudsHUDHomeButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB7418867B210088E767 /* CloudsHUDHomeButton.cpp */; };
+		A633AB8018867B210088E767 /* CloudsHUDHomeButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB7418867B210088E767 /* CloudsHUDHomeButton.cpp */; };
+		A633AB8118867B210088E767 /* CloudsHUDHomeButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB7418867B210088E767 /* CloudsHUDHomeButton.cpp */; };
+		A633AB8218867B210088E767 /* CloudsHUDLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB7618867B210088E767 /* CloudsHUDLabel.cpp */; };
+		A633AB8318867B210088E767 /* CloudsHUDLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB7618867B210088E767 /* CloudsHUDLabel.cpp */; };
+		A633AB8418867B210088E767 /* CloudsHUDLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB7618867B210088E767 /* CloudsHUDLabel.cpp */; };
+		A633AB8518867B210088E767 /* CloudsHUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB7818867B210088E767 /* CloudsHUDLayer.cpp */; };
+		A633AB8618867B210088E767 /* CloudsHUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB7818867B210088E767 /* CloudsHUDLayer.cpp */; };
+		A633AB8718867B210088E767 /* CloudsHUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB7818867B210088E767 /* CloudsHUDLayer.cpp */; };
+		A633AB8818867B210088E767 /* CloudsSVGMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB7A18867B210088E767 /* CloudsSVGMesh.cpp */; };
+		A633AB8918867B210088E767 /* CloudsSVGMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB7A18867B210088E767 /* CloudsSVGMesh.cpp */; };
+		A633AB8A18867B210088E767 /* CloudsSVGMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB7A18867B210088E767 /* CloudsSVGMesh.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -1887,6 +1902,16 @@
 		A600C1001881032C0041787F /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
 		A600C1011881032C0041787F /* ofxSubtitleUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitleUnit.cpp; sourceTree = "<group>"; };
 		A600C1021881032C0041787F /* ofxSubtitleUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitleUnit.h; sourceTree = "<group>"; };
+		A633AB7218867B210088E767 /* CloudsHUDController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDController.cpp; sourceTree = "<group>"; };
+		A633AB7318867B210088E767 /* CloudsHUDController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDController.h; sourceTree = "<group>"; };
+		A633AB7418867B210088E767 /* CloudsHUDHomeButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDHomeButton.cpp; sourceTree = "<group>"; };
+		A633AB7518867B210088E767 /* CloudsHUDHomeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDHomeButton.h; sourceTree = "<group>"; };
+		A633AB7618867B210088E767 /* CloudsHUDLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDLabel.cpp; sourceTree = "<group>"; };
+		A633AB7718867B210088E767 /* CloudsHUDLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDLabel.h; sourceTree = "<group>"; };
+		A633AB7818867B210088E767 /* CloudsHUDLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDLayer.cpp; sourceTree = "<group>"; };
+		A633AB7918867B210088E767 /* CloudsHUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDLayer.h; sourceTree = "<group>"; };
+		A633AB7A18867B210088E767 /* CloudsSVGMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSVGMesh.cpp; sourceTree = "<group>"; };
+		A633AB7B18867B210088E767 /* CloudsSVGMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSVGMesh.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -3620,6 +3645,24 @@
 				A600C1021881032C0041787F /* ofxSubtitleUnit.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		A633AB7118867B210088E767 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				A633AB7318867B210088E767 /* CloudsHUDController.h */,
+				A633AB7218867B210088E767 /* CloudsHUDController.cpp */,
+				A633AB7418867B210088E767 /* CloudsHUDHomeButton.cpp */,
+				A633AB7518867B210088E767 /* CloudsHUDHomeButton.h */,
+				A633AB7618867B210088E767 /* CloudsHUDLabel.cpp */,
+				A633AB7718867B210088E767 /* CloudsHUDLabel.h */,
+				A633AB7818867B210088E767 /* CloudsHUDLayer.cpp */,
+				A633AB7918867B210088E767 /* CloudsHUDLayer.h */,
+				A633AB7A18867B210088E767 /* CloudsSVGMesh.cpp */,
+				A633AB7B18867B210088E767 /* CloudsSVGMesh.h */,
+			);
+			name = HUD;
+			path = RGBD/HUD;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
@@ -5655,6 +5698,7 @@
 		E737691C1778DC4500892646 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				A633AB7118867B210088E767 /* HUD */,
 				E79EAD601878812300B8B8F0 /* VisualSystemsPrivate */,
 				E70CE3A21869648900955691 /* VisualSystems */,
 				2A4F33DC1863CDD00070C0ED /* Sound */,
@@ -7697,6 +7741,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsVisualSystemEditor" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -8066,6 +8112,7 @@
 				64CE98721880DB8100491913 /* Calibration.cpp in Sources */,
 				64CE98731880DB8100491913 /* BLEPOscillator.cpp in Sources */,
 				64CE98741880DB8100491913 /* ContourFinder.cpp in Sources */,
+				A633AB8118867B210088E767 /* CloudsHUDHomeButton.cpp in Sources */,
 				64CE98751880DB8100491913 /* Distance.cpp in Sources */,
 				64CE98761880DB8100491913 /* Flow.cpp in Sources */,
 				64CE98771880DB8100491913 /* Helpers.cpp in Sources */,
@@ -8086,6 +8133,7 @@
 				64CE98861880DB8100491913 /* StereoDelay.cpp in Sources */,
 				64CE98871880DB8100491913 /* FxaaPass.cpp in Sources */,
 				64CE98881880DB8100491913 /* GodRaysPass.cpp in Sources */,
+				A633AB8A18867B210088E767 /* CloudsSVGMesh.cpp in Sources */,
 				64CE98891880DB8100491913 /* HorizontalTiltShifPass.cpp in Sources */,
 				64CE988A1880DB8100491913 /* KaleidoscopePass.cpp in Sources */,
 				64CE988B1880DB8100491913 /* LimbDarkeningPass.cpp in Sources */,
@@ -8148,6 +8196,7 @@
 				64CE98C41880DB8100491913 /* CloudsVisualSystemAstrolabe.cpp in Sources */,
 				64CE98C51880DB8100491913 /* CloudsVisualSystemAutomata.cpp in Sources */,
 				64CE98C61880DB8100491913 /* Ball.cpp in Sources */,
+				A633AB8718867B210088E767 /* CloudsHUDLayer.cpp in Sources */,
 				64CE98C71880DB8100491913 /* CloudsVisualSystemBallDroppings.cpp in Sources */,
 				64CE98C81880DB8100491913 /* EditLine.cpp in Sources */,
 				64CE98C91880DB8100491913 /* FileUtils.cpp in Sources */,
@@ -8260,6 +8309,7 @@
 				64CE99351880DB8100491913 /* SphereAction.cpp in Sources */,
 				64CE99361880DB8100491913 /* ControlCounter.cpp in Sources */,
 				64CE99371880DB8100491913 /* StopAction.cpp in Sources */,
+				A633AB7E18867B210088E767 /* CloudsHUDController.cpp in Sources */,
 				64CE99381880DB8100491913 /* TransformAction.cpp in Sources */,
 				64CE99391880DB8100491913 /* TubeAction.cpp in Sources */,
 				64CE993A1880DB8100491913 /* Branch.cpp in Sources */,
@@ -8340,6 +8390,7 @@
 				64CE99851880DB8100491913 /* Bubbles.cpp in Sources */,
 				64CE99861880DB8100491913 /* CloudsVisualSystemSwim.cpp in Sources */,
 				64CE99871880DB8100491913 /* Creature.cpp in Sources */,
+				A633AB8418867B210088E767 /* CloudsHUDLabel.cpp in Sources */,
 				64CE99881880DB8100491913 /* Creatures.cpp in Sources */,
 				64CE99891880DB8100491913 /* JellyCreature.cpp in Sources */,
 				64CE998A1880DB8100491913 /* MarineSnow.cpp in Sources */,
@@ -8582,6 +8633,7 @@
 				E7D9D40D182AECFE00AD56C1 /* Calibration.cpp in Sources */,
 				F37C7E5F186EB28C00FCDA79 /* BLEPOscillator.cpp in Sources */,
 				E7D9D40E182AECFE00AD56C1 /* ContourFinder.cpp in Sources */,
+				A633AB7F18867B210088E767 /* CloudsHUDHomeButton.cpp in Sources */,
 				E7D9D40F182AECFE00AD56C1 /* Distance.cpp in Sources */,
 				E7D9D410182AECFE00AD56C1 /* Flow.cpp in Sources */,
 				E7D9D411182AECFE00AD56C1 /* Helpers.cpp in Sources */,
@@ -8602,6 +8654,7 @@
 				F37C7EBF186EB28C00FCDA79 /* StereoDelay.cpp in Sources */,
 				85D98AF318381E6800D7065D /* FxaaPass.cpp in Sources */,
 				85D98AF518381E6800D7065D /* GodRaysPass.cpp in Sources */,
+				A633AB8818867B210088E767 /* CloudsSVGMesh.cpp in Sources */,
 				85D98AF718381E6800D7065D /* HorizontalTiltShifPass.cpp in Sources */,
 				85D98AF918381E6800D7065D /* KaleidoscopePass.cpp in Sources */,
 				85D98AFB18381E6800D7065D /* LimbDarkeningPass.cpp in Sources */,
@@ -8664,6 +8717,7 @@
 				E70CEB071869649200955691 /* CloudsVisualSystemAstrolabe.cpp in Sources */,
 				E70CEB091869649200955691 /* CloudsVisualSystemAutomata.cpp in Sources */,
 				E70CEB0B1869649200955691 /* Ball.cpp in Sources */,
+				A633AB8518867B210088E767 /* CloudsHUDLayer.cpp in Sources */,
 				E70CEB0D1869649200955691 /* CloudsVisualSystemBallDroppings.cpp in Sources */,
 				E70CEB0F1869649200955691 /* EditLine.cpp in Sources */,
 				E70CEB111869649200955691 /* FileUtils.cpp in Sources */,
@@ -8776,6 +8830,7 @@
 				E70CEBE51869649200955691 /* SphereAction.cpp in Sources */,
 				F37C7E73186EB28C00FCDA79 /* ControlCounter.cpp in Sources */,
 				E70CEBE71869649200955691 /* StopAction.cpp in Sources */,
+				A633AB7C18867B210088E767 /* CloudsHUDController.cpp in Sources */,
 				E70CEBE91869649200955691 /* TransformAction.cpp in Sources */,
 				E70CEBEB1869649200955691 /* TubeAction.cpp in Sources */,
 				E70CEBED1869649200955691 /* Branch.cpp in Sources */,
@@ -8856,6 +8911,7 @@
 				85891AD5187F5E1500325DD8 /* Bubbles.cpp in Sources */,
 				85891AD7187F5E1500325DD8 /* CloudsVisualSystemSwim.cpp in Sources */,
 				85891AD9187F5E1500325DD8 /* Creature.cpp in Sources */,
+				A633AB8218867B210088E767 /* CloudsHUDLabel.cpp in Sources */,
 				85891ADB187F5E1500325DD8 /* Creatures.cpp in Sources */,
 				85891ADD187F5E1500325DD8 /* JellyCreature.cpp in Sources */,
 				85891ADF187F5E1500325DD8 /* MarineSnow.cpp in Sources */,
@@ -8892,6 +8948,7 @@
 				28927CB218591B9F00640B50 /* kiss_fftnd.c in Sources */,
 				E7FB285C1830D9E2009EBD0E /* CloudsLink.cpp in Sources */,
 				E7FB285D1830D9E2009EBD0E /* CloudsStoryEngine.cpp in Sources */,
+				A633AB8918867B210088E767 /* CloudsSVGMesh.cpp in Sources */,
 				E7FB285E1830D9E2009EBD0E /* CloudsVisualSystemManager.cpp in Sources */,
 				E7FB285F1830D9E2009EBD0E /* CloudsVisualSystemPreset.cpp in Sources */,
 				E7FB28601830D9E2009EBD0E /* ofxGameCamera.cpp in Sources */,
@@ -9131,6 +9188,7 @@
 				E7FC551C185293B80017A3F2 /* ofxAssimpModelLoader.cpp in Sources */,
 				E79347131852A4E700335668 /* json_reader.cpp in Sources */,
 				E79347151852A4E700335668 /* json_value.cpp in Sources */,
+				A633AB8018867B210088E767 /* CloudsHUDHomeButton.cpp in Sources */,
 				E79347191852A4E700335668 /* json_writer.cpp in Sources */,
 				E793471F1852A4E700335668 /* ofxJSONElement.cpp in Sources */,
 				F37C7E6E186EB28C00FCDA79 /* ControlChangeNotifier.cpp in Sources */,
@@ -9164,6 +9222,7 @@
 				E79E6FBA1855529600406535 /* OscReceivedElements.cpp in Sources */,
 				F37C7EB4186EB28C00FCDA79 /* RectWave.cpp in Sources */,
 				E79E6FBC1855529600406535 /* OscTypes.cpp in Sources */,
+				A633AB8318867B210088E767 /* CloudsHUDLabel.cpp in Sources */,
 				E79E6FBE1855529600406535 /* ofxOscBundle.cpp in Sources */,
 				E79E6FC01855529600406535 /* ofxOscMessage.cpp in Sources */,
 				E79E6FC41855529600406535 /* ofxOscReceiver.cpp in Sources */,
@@ -9271,6 +9330,7 @@
 				F37C7EA8186EB28C00FCDA79 /* Generator.cpp in Sources */,
 				E70CEBBA1869649200955691 /* PathPoint.cpp in Sources */,
 				E70CEBBC1869649200955691 /* CloudsVisualSystemOscillations.cpp in Sources */,
+				A633AB7D18867B210088E767 /* CloudsHUDController.cpp in Sources */,
 				F37C7E64186EB28C00FCDA79 /* BufferPlayer.cpp in Sources */,
 				E70CEBBE1869649200955691 /* CloudsVisualSystemPages.cpp in Sources */,
 				F37C7E72186EB28C00FCDA79 /* ControlConditioner.cpp in Sources */,
@@ -9394,6 +9454,7 @@
 				85384FBE18845B560076AF5A /* MazeCamera2.cpp in Sources */,
 				85384FC118845B560076AF5A /* MazeCell2.cpp in Sources */,
 				85384FC418845B560076AF5A /* ParamManager2.cpp in Sources */,
+				A633AB8618867B210088E767 /* CloudsHUDLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

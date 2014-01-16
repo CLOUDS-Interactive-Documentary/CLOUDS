@@ -41,26 +41,11 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
     meshSkinBoost  = .0;
     lineColorBoost = .0;
     lineSkinBoost  = .0;
-
-    pointColorBoost = .0;
-    pointSkinBoost = .0;
     
 	actuatorSpinPosition = 0;
 	edgeAttenuate = 0.;
 	skinBrightness = 0.;
-	
-	drawPoints = true;
-	numRandomPoints = 20000;
-	pointSize.min = 1.0;
-	pointSize.max = 3.0;
-	pointAlpha = 1.0;
-	pointFlowPosition = 0.0;
-	pointFlowSpeed = 0.0;
-	pointsFlowUp = false;
-	
-    pointXSimplify = 2.0;
-    pointYSimplify = 2.0;
-    
+	   
 	drawLines = true;
 	lineAlpha = .5;
 	lineThickness	= 1.0;
@@ -80,6 +65,13 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	meshRetractionFalloff = 1.0;
 	meshForceGeoRetraction = .0;
 	meshMaxActuatorRetract = 0.0;
+    
+    bEnableFill = false;
+	fillFaceFalloff = 0.0;
+	fillRetractionFalloff = 0.0;
+    fillFaceMinRadius = 0.0;
+
+    particleCount = 3000;
     
     bDrawOcclusion = true;
     occlusionVertexCount = 0;
@@ -103,14 +95,20 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	
 	bMoveTransitionCameraUp = bMoveTransitionCameraDown = false;
 	
+    drawParticulate = false;
+    
 	//IF we move this before setup(NOT selfSetup) we can have the option of whether or not to load it to the gui
 	loadTransitionOptions("Transitions");
+    
+    pointLayer1.setDefaults();
+    pointLayer2.setDefaults();
     
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetup(){
 	
+    
 	portals.push_back(&leftPortal);
 	portals.push_back(&rightPortal);
 	
@@ -125,13 +123,18 @@ void CloudsVisualSystemRGBD::selfSetup(){
 
 	loadShader();
 	
+    pointLayer1.pointShader = &pointShader;
+    pointLayer2.pointShader = &pointShader;
+    pointLayer1.visualSystemFadeValue = &visualSystemFadeValue;
+    pointLayer2.visualSystemFadeValue = &visualSystemFadeValue;
+    
 	generateLines();
-	generatePoints();
+	//generatePoints();
 	generateMesh();
 		
-//	particulateController.setParticleCount(20000);
-//	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-//	particulateController.setup();
+	particulateController.setParticleCount(2000);
+	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+	particulateController.setup();
 	
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
@@ -154,9 +157,10 @@ void CloudsVisualSystemRGBD::selfSetup(){
 
 void CloudsVisualSystemRGBD::playTestVideo(){
 
-	if(ofFile::doesFileExist("TestVideo/Maeda_ACU_p_2.mov")){
-		getRGBDVideoPlayer().setup("TestVideo/Maeda_ACU_p_2.mov",
-								   "TestVideo/Maeda_ACU_p_2.xml", 0, 0);
+	if(ofFile::doesFileExist("TestVideo/Lindsay_memes_2.mov")){
+        CloudsVisualSystem::getRGBDVideoPlayer().getPlayer().loadMovie("TestVideo/Lindsay_memes_2.mov");
+//        CloudsVisualSystem::getRGBDVideoPlayer().setup("TestVideo/Lindsay_memes_2.mov",
+//								   "TestVideo/Lindsay_memes_2.xml", 0, 0);
 		getRGBDVideoPlayer().swapAndPlay();
 	}
 }
@@ -171,15 +175,6 @@ void CloudsVisualSystemRGBD::loadShader(){
     cout << "loading occlusion shader " << endl;
     occlusionShader.load( getVisualSystemDataPath() + "shaders/rgbdOcclusion");
 }
-
-//void CloudsVisualSystemRGBD::rebuildCaptionFont(){
-//    if(bUseOculusRift){
-//        captionFont.loadFont(GetCloudsDataPath() + "font/MateriaPro_Regular.ttf", captionFontSize);
-//    }
-//    else{
-//        captionFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", captionFontSize);
-//    }
-//}
 
 void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 {
@@ -251,7 +246,7 @@ void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionTy
 			break;
 			
 		default:
-			setTransitionNodes("WHIP_PAN", "default");
+			setTransitionNodes("FLY_THROUGH", "default");
 			break;
 	}
 }
@@ -280,34 +275,37 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guimap[globalMeshGui->getName()] = globalMeshGui;
 
     //////////////////POINTS
-	pointsGui = new ofxUISuperCanvas("POINTS", gui);
-	pointsGui->copyCanvasStyle(gui);
-    pointsGui->copyCanvasProperties(gui);
-    pointsGui->setName("Points");
-    pointsGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	toggle = pointsGui->addToggle("ENABLE", &drawPoints);
-	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
-	pointsGui->resetPlacer();
-	pointsGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
-	pointsGui->addWidgetToHeader(toggle);
-	
-	pointsGui->addSlider("Point Alpha", 0, 1.0, &pointAlpha);
-	pointsGui->addSlider("Point Color Boost", 0, 1.0, &pointColorBoost);
-	pointsGui->addSlider("Point Skin Boost", 0, 1.0, &pointSkinBoost);
-    pointsGui->addSpacer();
-    pointsGui->addIntSlider("Num Points", 0, 100000, &numRandomPoints);
+    ofxUISuperCanvas* pointsGui1 = pointLayer1.createGui(gui, "Points 1");
     
-    pointsGui->addSlider("Point X Simplify", 1.0, 8, &pointXSimplify);
-    pointsGui->addSlider("Point Y Simplify", 1.0, 8, &pointYSimplify);
-	pointsGui->addRangeSlider("Point Size", 0.0, 3.0, &pointSize.min, &pointSize.max);
-	pointsGui->addSlider("Point Face Overlap",0., 1.0, &pointHeadOverlap);
-	pointsGui->addSlider("Point Flow", 0, 1.0, &pointFlowSpeed);
-	pointsGui->addToggle("Points Flow Up", &pointsFlowUp);
+//	pointsGui = new ofxUISuperCanvas("POINTS", gui);
+//	pointsGui->copyCanvasStyle(gui);
+//    pointsGui->copyCanvasProperties(gui);
+//    pointsGui->setName("Points");
+//    pointsGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+//	toggle = pointsGui->addToggle("ENABLE", &drawPoints);
+//	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+//	pointsGui->resetPlacer();
+//	pointsGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+//	pointsGui->addWidgetToHeader(toggle);
+//	pointsGui->addSlider("Point Alpha", 0, 1.0, &pointAlpha);
+//	pointsGui->addSlider("Point Color Boost", 0, 1.0, &pointColorBoost);
+//	pointsGui->addSlider("Point Skin Boost", 0, 1.0, &pointSkinBoost);
+//    pointsGui->addSpacer();
+//    pointsGui->addSlider("Point X Simplify", 1.0, 8, &pointXSimplify);
+//    pointsGui->addSlider("Point Y Simplify", 1.0, 8, &pointYSimplify);
+//	pointsGui->addRangeSlider("Point Size", 0.0, 3.0, &pointSize.min, &pointSize.max);
+//	pointsGui->addSlider("Point Face Overlap",0., 1.0, &pointHeadOverlap);
+//	pointsGui->addSlider("Point Flow", 0, 1.0, &pointFlowSpeed);
+//	pointsGui->addToggle("Points Flow Up", &pointsFlowUp);
 	
-	ofAddListener(pointsGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
-	guis.push_back(pointsGui);
-	guimap[pointsGui->getName()] = pointsGui;
+
+	guis.push_back(pointsGui1);
+	guimap[pointsGui1->getName()] = pointsGui1;
+    
+    ofxUISuperCanvas* pointsGui2 = pointLayer2.createGui(gui, "Points 2");
+	guis.push_back(pointsGui2);
+	guimap[pointsGui2->getName()] = pointsGui2;
+
     //////////////////
     
     //////////////////LINES
@@ -372,6 +370,29 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guimap[meshGui->getName()] = meshGui;
     //////////////////MESH
     
+    //////////////////FILL
+	fillGui = new ofxUISuperCanvas("FILL", gui);
+	fillGui->copyCanvasStyle(gui);
+	fillGui->copyCanvasProperties(gui);
+	fillGui->setName("Fill");
+	fillGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	toggle = fillGui->addToggle("ENABLE", &bEnableFill);
+	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+	fillGui->resetPlacer();
+	fillGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+	fillGui->addWidgetToHeader(toggle);
+    
+	fillGui->addSlider("Mesh Alpha", 0., 1.0, &fillAlpha);
+	fillGui->addSlider("Face Min Radius", 0, 600., &fillFaceMinRadius);
+	fillGui->addSlider("Face Falloff", 0, 600., &fillFaceFalloff);
+    fillGui->addSlider("Edge Geo Retraction", 0, 1.0, &fillRetractionFalloff);
+    
+	ofAddListener(fillGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
+	guis.push_back(fillGui);
+	guimap[fillGui->getName()] = fillGui;
+    //////////////////FILL
+    
     ////////////////// OCCLUSION
 	occlusionGui = new ofxUISuperCanvas("OCCLUSION", gui);
 	occlusionGui->copyCanvasStyle(gui);
@@ -413,7 +434,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     
     
     //////////////////CAMERA
-	cameraGui =     new ofxUISuperCanvas("CAMERA", gui);
+	cameraGui = new ofxUISuperCanvas("CAMERA", gui);
 	cameraGui->copyCanvasStyle(gui);
 	cameraGui->copyCanvasProperties(gui);
 	cameraGui->setName("Camera");
@@ -421,8 +442,8 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 	cameraGui->addLabel("OFFSETS");
 	cameraGui->addSlider("FRONT DISTANCE", 50, 200, &cloudsCamera.frontDistance);
-	cameraGui->addSlider("SIDE DISTANCE", 20, 200, &cloudsCamera.sideDistance);
-	cameraGui->addSlider("SIDE PULLBACK", -200, 200, &cloudsCamera.sidePullback);
+	cameraGui->addSlider("SIDE DISTANCE", 20, 500, &cloudsCamera.sideDistance);
+	cameraGui->addSlider("SIDE PULLBACK", -500, 500, &cloudsCamera.sidePullback);
 	cameraGui->addSlider("LIFT RANGE", 0, 100, &cloudsCamera.liftRange);
 	cameraGui->addSlider("LIFT AMOUNT", 10, 200, &cloudsCamera.liftAmount);
 	cameraGui->addSlider("DROP AMOUNT", 0, 200, &cloudsCamera.dropAmount);
@@ -440,10 +461,17 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	particleGui->setName("Particle");
 	particleGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	particleGui->addToggle("DRAW PARTICLES", &drawParticulate);
+	toggle = particleGui->addToggle("ENABLE", &drawParticulate);
+	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+	particleGui->resetPlacer();
+	particleGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+	particleGui->addWidgetToHeader(toggle);
 	
+//    particleGui->addSlider("NUM PARTICLES", 10, 10000, &particleCount);
 	particleGui->addSlider("BIRTH RATE", 0, .01, &particulateController.birthRate);
 	particleGui->addSlider("BIRTH SPREAD", 10, 10000, &particulateController.birthSpread);
+
+    
 	particleGui->addSlider("POINT SIZE THRESHOLD", 0, .01, &particulateController.getPoints().sizeThreshold);
 	
 	particleGui->addSlider("POINT COLOR H", 0, 1.0, &pointColor.x);
@@ -491,11 +519,14 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 //    else {
 //        drawCursorMode =  DRAW_CURSOR_NONE;
 //    }
+  
+    pointLayer1.update();
+    pointLayer2.update();
     
 //	if(numRandomPoints != points.getNumVertices()){
-    if(refreshPointcloud){
-		generatePoints();
-	}
+//    if(refreshPointcloud){
+//    generatePoints();
+//	}
 	
 	if(refreshLines){
 		generateLines();
@@ -510,18 +541,23 @@ void CloudsVisualSystemRGBD::selfUpdate(){
     }
     
 	lineFlowPosition += powf(lineFlowSpeed,2.0);
-	pointFlowPosition += powf(pointFlowSpeed,2.0);
+    //TODO FLOW POINTS
+//	pointFlowPosition += powf(pointFlowSpeed,2.0);
 	
 	if(drawParticulate){
 		
-//		particulateController.birthPlace = translatedHeadPosition;
-		
+//        if(particulateController.getNumParticles() != particleCount){
+//            particulateController.setParticleCount(particleCount);
+//            particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+//            particulateController.setup();
+//        }
+        
+		particulateController.birthPlace = translatedHeadPosition;
 		glDisable(GL_LIGHTING);
 		glDisable(GL_DEPTH_TEST);
-//		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
-//		particulateController.getPoints().color.a = pointColor.w;
-//		
-//		particulateController.update();
+		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
+		particulateController.getPoints().color.a = pointColor.w;
+		particulateController.update();
 	}
     
 	updateActuators();
@@ -552,6 +588,24 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 			bResetLookThoughs = false;
 			transitionCamTargetNode = NULL;
 			resetTransitionNodes();
+		}
+		else if(bResetIn)
+		{
+			bResetIn = false;
+			transitionCamTargetNode = NULL;
+			resetInTransitionNode();
+		}
+		else if(bResetLeft)
+		{
+			bResetLeft = false;
+			transitionCamTargetNode = NULL;
+			resetLeftTransitionNode();
+		}
+		else if(bResetRight)
+		{
+			bResetRight = false;
+			transitionCamTargetNode = NULL;
+			resetRightTransitionNode();
 		}
 		
 		if(bMoveTransitionCameraUp)
@@ -604,6 +658,39 @@ void CloudsVisualSystemRGBD::resetTransitionNodes()
 	transitionOutLeft.setPosition(translatedHeadPosition + offset);
 	transitionOutRight.setPosition(translatedHeadPosition + offset);
 	
+}
+
+void CloudsVisualSystemRGBD::resetInTransitionNode()
+{
+	transitionInStart.resetTransform();
+	
+	ofVec3f offset(0,-50,-150);
+	
+	transitionInStart.rotate(180, 0, 1, 0);
+	
+	transitionInStart.setPosition(translatedHeadPosition + offset);
+}
+
+void CloudsVisualSystemRGBD::resetLeftTransitionNode()
+{
+	transitionOutLeft.resetTransform();
+	
+	ofVec3f offset(0,-50,-150);
+	
+	transitionOutLeft.rotate(180, 0, 1, 0);
+	
+	transitionOutLeft.setPosition(translatedHeadPosition + offset);
+}
+
+void CloudsVisualSystemRGBD::resetRightTransitionNode()
+{
+	transitionOutRight.resetTransform();
+	
+	ofVec3f offset(0,-50,-150);
+	
+	transitionOutRight.rotate(180, 0, 1, 0);
+	
+	transitionOutRight.setPosition(translatedHeadPosition + offset);
 }
 
 void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
@@ -841,6 +928,9 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 	t->addButton("DriveOutLeft", false )->setColorBack(ofColor(155,155,0));
 	t->addButton("DriveOutRight", false )->setColorBack(ofColor(155,0,155));
 	t->addButton("resetNodes", &bResetLookThoughs );
+	t->addButton("ResetIn", &bResetIn);
+	t->addButton("ResetLeft", &bResetLeft);
+	t->addButton("ResetRight", &bResetRight);
 	
 	t->addSpacer();
 	t->addToggle("moveUp", &bMoveTransitionCameraUp);
@@ -1055,7 +1145,7 @@ void CloudsVisualSystemRGBD::updateTransition(float percentComplete)
 		cloudsCamera.setTransitionPercent( easedPercent );
 		
 		
-		float easedRotPercent = ofxTween::map(percentComplete, .6, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
+		float easedRotPercent = easedPercent * easedPercent;//ofxTween::map(percentComplete, .6, 1, 0, 1, true, ofxEasingCubic(), transitionEase );//ofxEasingSine
 		cloudsCamera.setTransitionRotationPercent( easedRotPercent );
 		
 //		cout <<"TRANSITIONING : easedValue = "<< easedPercent << endl;
@@ -1122,40 +1212,42 @@ void CloudsVisualSystemRGBD::lookThroughTransitionOutRight()
 }
 
 //--------------------------------------------------------------
-void CloudsVisualSystemRGBD::generatePoints(){
-	
-	points.setUsage( GL_STATIC_DRAW );
-	
-    /*
-	if(numRandomPoints == 0){
-		points.clear();
-	}
-	else if(numRandomPoints < points.getNumVertices() ){
-		points.getVertices().erase(points.getVertices().begin(),
-								   points.getVertices().begin() + (points.getNumVertices() - numRandomPoints) );
-	}
-	
-	while(numRandomPoints > points.getNumVertices()){
-		points.addVertex( ofVec3f(ofRandom(640),ofRandom(480),0) );
-	}
-	*/
-    if(pointXSimplify <= 0.0) pointXSimplify = 1.0;
-    if(pointYSimplify <= 0.0) pointYSimplify = 1.0;
-    
-
-//    pointsGui->addSlider("X Simplify", 1.0, 8, &pointXSimplify);
-//    pointsGui->addSlider("Y Simplify", 1.0, 8, &pointYSimplify);
-    points.clear();
-    for (float y = 0; y < 480; y += pointYSimplify){
-        for (float x = 0; x < 640; x += pointXSimplify){
-            points.addVertex( ofVec3f(x,y,0) );
-        }
-    }
-
-	points.setMode(OF_PRIMITIVE_POINTS);
-    refreshPointcloud = false;
-    
-}
+//void CloudsVisualSystemRGBD::generatePoints(){
+//    
+//    pointLayer1.generatePoints();
+//    pointLayer2.generatePoints();
+//
+//	points.setUsage( GL_STATIC_DRAW );
+//	
+//    /*
+//	if(numRandomPoints == 0){
+//		points.clear();
+//	}
+//	else if(numRandomPoints < points.getNumVertices() ){
+//		points.getVertices().erase(points.getVertices().begin(),
+//								   points.getVertices().begin() + (points.getNumVertices() - numRandomPoints) );
+//	}
+//	
+//	while(numRandomPoints > points.getNumVertices()){
+//		points.addVertex( ofVec3f(ofRandom(640),ofRandom(480),0) );
+//	}
+//	*/
+//    if(pointXSimplify <= 0.0) pointXSimplify = 1.0;
+//    if(pointYSimplify <= 0.0) pointYSimplify = 1.0;
+//    
+//
+////    pointsGui->addSlider("X Simplify", 1.0, 8, &pointXSimplify);
+////    pointsGui->addSlider("Y Simplify", 1.0, 8, &pointYSimplify);
+//    points.clear();
+//    for (float y = 0; y < 480; y += pointYSimplify){
+//        for (float x = 0; x < 640; x += pointXSimplify){
+//            points.addVertex( ofVec3f(x,y,0) );
+//        }
+//    }
+//
+//	points.setMode(OF_PRIMITIVE_POINTS);
+//    refreshPointcloud = false;
+//}
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::generateLines(){
@@ -1170,7 +1262,7 @@ void CloudsVisualSystemRGBD::generateLines(){
 	
     ofMesh m;
 	//HORIZONTAL
-	for (float ystep = 0; ystep <= height; ystep += lineSpacing){
+	for (float ystep = 0; ystep < height; ystep += lineSpacing){
 		for (float xstep = 0; xstep <= width - lineGranularity; xstep += lineGranularity){
 			
 			ofVec3f stepA = ofVec3f(xstep, ystep, 0);
@@ -1351,7 +1443,7 @@ void CloudsVisualSystemRGBD::generateOcclusion(){
 
 void CloudsVisualSystemRGBD::speakerChanged(){
 //    clearQuestions();
-    timeline->hide();
+   if(timeline!=NULL) timeline->hide();
 }
 
 void CloudsVisualSystemRGBD::selfDrawBackground(){
@@ -1373,6 +1465,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
         hud->draw3D(getOculusRift().baseCamera);
     }
     #endif
+    
 	ofPushStyle();
 	ofPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -1391,48 +1484,58 @@ void CloudsVisualSystemRGBD::selfDraw(){
         
 		setupRGBDTransforms();
         
-        if(bDrawOcclusion){
-            // z-prepass
-            glPushMatrix();
-            if(!drawOcclusionDebug){
-                ofTranslate(0, 0, 2);
-                glEnable(GL_DEPTH_TEST);  // We want depth test !
-                glDepthFunc(GL_LESS);     // We want to get the nearest pixels
-                glColorMask(0,0,0,0);     // Disable color, it's useless, we only want depth.
-                glDepthMask(GL_TRUE);     // Ask z writing
+        if(bEnableFill){
+            if(bDrawOcclusion){
+                drawOcclusionLayer();
             }
+			
+			glEnable(GL_CULL_FACE);
+//            glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
+            glCullFace(GL_FRONT);
+			meshShader.begin();
+			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
             
-			occlusionShader.begin();
-            
-			getRGBDVideoPlayer().setupProjectionUniforms(occlusionShader);
-            
-			occlusionShader.setUniform1f("triangleExtend",
+			meshShader.setUniform1f("meshAlpha", fillAlpha);
+			meshShader.setUniform1f("triangleExtend",
                                     getRGBDVideoPlayer().getFadeIn()  *
                                     getRGBDVideoPlayer().getFadeOut() *
                                     visualSystemFadeValue);
-			occlusionShader.setUniform1f("meshRetractionFalloff",occlusionMeshRetractionFalloff);
-			occlusionShader.setUniform1f("headMinRadius", occlusionMeshFaceMinRadius);
-			occlusionShader.setUniform1f("headFalloff", occlusionMeshFaceFalloff);
-
-            occlusion.draw(GL_TRIANGLES, 0, occlusionVertexCount);
-
-            occlusionShader.end();
             
-            if(!drawOcclusionDebug){
-                glEnable(GL_DEPTH_TEST);  // We still want depth test
-                glDepthFunc(GL_LEQUAL);   // EQUAL should work, too. (Only draw pixels if they are the closest ones)
-                glColorMask(1,1,1,1);     // We want color this time
-                glDepthMask(GL_FALSE);
-            }
+			meshShader.setUniform1f("meshRetractionFalloff",fillRetractionFalloff);
+			meshShader.setUniform1f("headMinRadius", fillFaceMinRadius);
+			meshShader.setUniform1f("headFalloff", fillFaceFalloff);
+			meshShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
+			meshShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
+			meshShader.setUniform1f("forceGeoRetraction",0.0);
             
-            glPopMatrix();
+//			meshShader.setUniform3f("actuatorDirection",
+//                                    meshActuator.x,
+//                                    meshActuator.y,
+//                                    meshActuator.z);
+            
+			meshShader.setUniform1f("colorBoost", meshColorBoost);
+			meshShader.setUniform1f("skinBoost", meshSkinBoost);
+			meshShader.setUniform1f("maxActuatorRetract", 1.0);
+            
+            mesh.draw(GL_TRIANGLES, 0, meshVertexCount);
+			
+			meshShader.end();
+			glDisable(GL_CULL_FACE);
         }
         
 		if(drawMesh){
+            
+            if(bDrawOcclusion){
+                drawOcclusionLayer();
+            }
 			
+            if(bEnableFill){
+                ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+            }
+            
 			glEnable(GL_CULL_FACE);
-            glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
-
+//            glCullFace(bUseOculusRift ? GL_BACK : GL_FRONT);
+            glCullFace(GL_FRONT);
             
 			meshShader.begin();
 			getRGBDVideoPlayer().setupProjectionUniforms(meshShader);
@@ -1468,10 +1571,16 @@ void CloudsVisualSystemRGBD::selfDraw(){
             glDisable(GL_DEPTH_TEST);
         }
         
-		ofEnableBlendMode(OF_BLENDMODE_ADD);
-//        ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+//		ofEnableBlendMode(OF_BLENDMODE_ADD);
+        ofEnableBlendMode(OF_BLENDMODE_SCREEN);
         
 		if(drawLines){
+            
+            if(bDrawOcclusion){
+                glClear(GL_DEPTH_BUFFER_BIT);
+                drawOcclusionLayer();
+            }
+
 			ofSetLineWidth(lineThickness);
 			lineShader.begin();
 			
@@ -1489,7 +1598,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			lineShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
 			lineShader.setUniform1f("headOverlap",lineHeadOverlap);
 			lineShader.setUniform1f("alpha", lineAlpha);
-            
             lineShader.setUniform1f("colorBoost", lineColorBoost);
 			lineShader.setUniform1f("skinBoost", lineSkinBoost);
 
@@ -1505,41 +1613,23 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		}
 		
         
-		if(drawPoints){
+		if(pointLayer1.drawPoints || pointLayer2.drawPoints){
             
-			pointShader.begin();
-			getRGBDVideoPlayer().flowPosition = pointFlowPosition * (pointsFlowUp?-1:1);
-			getRGBDVideoPlayer().setupProjectionUniforms(pointShader);
-			
-			pointShader.setUniform1f("headMinRadius", meshFaceMinRadius);
-			pointShader.setUniform1f("headFalloff", meshFaceFalloff);
-			pointShader.setUniform1f("edgeAttenuateBase",powf(edgeAttenuate,2.0));
-			pointShader.setUniform1f("edgeAttenuateExponent",edgeAttenuateExponent);
-			pointShader.setUniform1f("headOverlap", pointHeadOverlap);
-			pointShader.setUniform1f("pointSizeMin", pointSize.min);
-			pointShader.setUniform1f("pointSizeMax", pointSize.max);
-			pointShader.setUniform1f("alpha", pointAlpha *
-                                     getRGBDVideoPlayer().getFadeIn() *
-                                     getRGBDVideoPlayer().getFadeOut() *
-                                     visualSystemFadeValue);
-			
-			pointShader.setUniform3f("actuatorDirection",
-                                    pointActuator.x,
-                                    pointActuator.y,
-                                    pointActuator.z);
+            if(bDrawOcclusion){
+//                glClearDepth(0);
+                glClear(GL_DEPTH_BUFFER_BIT);
+                drawOcclusionLayer();
+            }
             
-            pointShader.setUniform1f("colorBoost", pointColorBoost);
-			pointShader.setUniform1f("skinBoost", pointSkinBoost);
-            
-			points.draw();
+            pointLayer1.draw();
+            pointLayer2.draw();
 
-			pointShader.end();
 		}
 	}
 	
 	if(drawParticulate){
 		glEnable(GL_DEPTH_TEST);
-//		particulateController.draw();
+		particulateController.draw();
 	}
 	
 	glPopAttrib();
@@ -1585,8 +1675,53 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	}
 	
 	drawQuestions();
-    
+}
 
+void CloudsVisualSystemRGBD::drawOcclusionLayer(){
+    // z-prepass
+    //BAIL FOR NOW
+    /////////////
+//    return;
+    /////////////
+    
+    glPushMatrix();
+    if(!drawOcclusionDebug){
+        
+//        cout << ofGetMouseX()/100. << endl;
+//        ofTranslate(0, 0, ofGetMouseX()/100.);
+        ofTranslate(0, 0, 5.44);
+        
+        
+        glEnable(GL_DEPTH_TEST);  // We want depth test !
+        glDepthFunc(GL_LESS);     // We want to get the nearest pixels
+        glColorMask(0,0,0,0);     // Disable color, it's useless, we only want depth.
+        glDepthMask(GL_TRUE);     // Ask z writing
+    }
+    
+    occlusionShader.begin();
+    
+    getRGBDVideoPlayer().setupProjectionUniforms(occlusionShader);
+    
+    occlusionShader.setUniform1f("triangleExtend",
+                                 getRGBDVideoPlayer().getFadeIn()  *
+                                 getRGBDVideoPlayer().getFadeOut() *
+                                 visualSystemFadeValue);
+    occlusionShader.setUniform1f("meshRetractionFalloff",occlusionMeshRetractionFalloff);
+    occlusionShader.setUniform1f("headMinRadius", occlusionMeshFaceMinRadius);
+    occlusionShader.setUniform1f("headFalloff", occlusionMeshFaceFalloff);
+    
+    occlusion.draw(GL_TRIANGLES, 0, occlusionVertexCount);
+    
+    occlusionShader.end();
+    
+    if(!drawOcclusionDebug){
+        glEnable(GL_DEPTH_TEST);  // We still want depth test
+        glDepthFunc(GL_LEQUAL);   // EQUAL should work, too. (Only draw pixels if they are the closest ones)
+        glColorMask(1,1,1,1);     // We want color this time
+        glDepthMask(GL_FALSE);
+    }
+    
+    glPopMatrix();
 }
 
 void CloudsVisualSystemRGBD::drawQuestions(){
@@ -1639,7 +1774,10 @@ void CloudsVisualSystemRGBD::selfExit(){
 void CloudsVisualSystemRGBD::selfBegin(){
     bPortalDebugOn = false;
 	cloudsCamera.jumpToPosition();
-    timeline->hide();
+	if(timeline!=NULL)
+	{
+		timeline->hide();
+	}
     
     //clear any previously selected portals
     caughtPortal = NULL;
@@ -1933,11 +2071,6 @@ void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e)
             e.widget->getName() == "Occl Y Simplify")
     {
         refreshOcclusion = true;
-    }
-    else if(e.widget->getName() == "Point X Simplify" ||
-            e.widget->getName() == "Point Y Simplify")
-    {
-        refreshPointcloud = true;
     }
 }
 

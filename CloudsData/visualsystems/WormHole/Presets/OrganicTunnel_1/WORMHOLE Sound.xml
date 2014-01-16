@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>WORMHOLE Sound</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>581.000000000</XPosition>
-    <YPosition>129.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>162.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
