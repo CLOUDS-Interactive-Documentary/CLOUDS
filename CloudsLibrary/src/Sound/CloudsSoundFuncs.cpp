@@ -26,6 +26,9 @@ void CloudsSound::schedulePreset(lukePreset &p, float outskip, float dur, int mi
 
 void CloudsSound::startMusicFX(float outskip, float musicdur)
 {
+    if(dopull == true){
+        ofLogError("CloudsSound::startMusicFX") << "Sound already playing";
+    }
     // blow out routing table
     dopull = true;
     INITMIX();
@@ -1324,6 +1327,9 @@ void CloudsSound::fadeMusic(float fadeTime)
 
 void CloudsSound::stopMusic()
 {
+    if(!dopull){
+        ofLogError("CloudsSound::stopMusic") << "Sound is not playing!!";
+    }
     dopull = false;
     if(LUKEDEBUG) cout << "FLUSHING SCHEDULER." << endl;
     else cout << "SOUND: MUSIC STOPPED." << endl;
