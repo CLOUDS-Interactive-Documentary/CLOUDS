@@ -1443,7 +1443,7 @@ void CloudsVisualSystemRGBD::generateOcclusion(){
 
 void CloudsVisualSystemRGBD::speakerChanged(){
 //    clearQuestions();
-    timeline->hide();
+   if(timeline!=NULL) timeline->hide();
 }
 
 void CloudsVisualSystemRGBD::selfDrawBackground(){
