@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>FOG</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>47.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>570.000000000</XPosition>
+    <YPosition>8.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>fogDist</Name>
-    <Value>54.926109314</Value>
+    <Value>77.389160156</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

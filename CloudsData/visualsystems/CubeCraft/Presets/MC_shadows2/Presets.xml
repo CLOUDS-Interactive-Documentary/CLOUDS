@@ -18,7 +18,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>bigNoise2</Name>
-    <Value>1</Value>
+    <value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>j_05_blue</Name>
-    <Value>1</Value>
+    <value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -48,7 +48,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>j_work_05a_bluegreen</Name>
-    <Value>1</Value>
+    <value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
