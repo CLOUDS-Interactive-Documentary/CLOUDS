@@ -560,10 +560,7 @@ void CloudsHUDController::draw(){
     }
     
 	drawLayer(CLOUDS_HUD_QUESTION);
-	
-//	cout << "drawing question: " << hudLabelMap["QuestionTextBox"]->getText() << endl;
-	
-//	drawLayer(CLOUDS_HUD_LOWER_THIRD);
+    drawLayer(CLOUDS_HUD_LOWER_THIRD);
 	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
 	drawLayer(CLOUDS_HUD_MAP);
     
