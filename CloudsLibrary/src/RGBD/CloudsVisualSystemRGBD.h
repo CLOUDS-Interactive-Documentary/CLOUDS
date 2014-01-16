@@ -9,6 +9,7 @@
 #include "ofxGameCamera.h"
 #include "ofxFTGL.h"
 #include "CloudsPortalEvents.h"
+#include "CloudsRGBDPointLayer.h"
 
 struct TransitionInfo{
 	ofVec3f inStartPos;
@@ -23,6 +24,7 @@ struct TransitionInfo{
 	string optionName;
 	string transitionName;
 };
+
 
 class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   public:
@@ -78,7 +80,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     ////////QUESTIONS
 
 	float visualSystemFadeValue;
-	
+    
 	ofCamera& getCameraRef(){
 		if(placingTransitionNodes){
 			return transitionCam;
@@ -156,26 +158,12 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float skinBrightness;
 	
 	//POINTS
-	ofxUISuperCanvas *pointsGui;
+    
+	//ofxUISuperCanvas *pointsGui;
+    CloudsRGBDPointLayer pointLayer1;
+    CloudsRGBDPointLayer pointLayer2;
+    
 	ofShader pointShader;
-	ofVboMesh points;
-    
-	float pointXSimplify;
-    float pointYSimplify;
-    
-    int pointCount;
-	bool drawPoints;
-	float pointAlpha;
-	int numRandomPoints;
-	ofRange pointSize;
-	float pointHeadOverlap;
-	float pointFlowPosition;
-	float pointFlowSpeed;
-	bool pointsFlowUp;
-    float pointColorBoost;
-    float pointSkinBoost;
-	bool refreshPointcloud;
-	void generatePoints();
 	
 	//LINES
 	ofxUISuperCanvas *linesGui;
@@ -266,6 +254,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool drawParticulate;
 	float attenuatedCameraDrift;
 	GPUParticles::Controller particulateController;
+    float particleCount;
     ofVec4f pointColor;
     
     ///PORTALS

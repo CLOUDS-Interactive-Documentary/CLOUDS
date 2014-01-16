@@ -81,6 +81,9 @@
 		640E8D0D187E64B6007BCBD7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E442A7185E89E200CD1953 /* QuartzCore.framework */; };
 		640E8D0E187E64B6007BCBD7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E442A5185E89DD00CD1953 /* CoreMedia.framework */; };
 		640E8D0F187E64B6007BCBD7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E442A3185E89D500CD1953 /* AVFoundation.framework */; };
+		A6CB16771887A4C700C55907 /* CloudsRGBDPointLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6CB16751887A4C700C55907 /* CloudsRGBDPointLayer.cpp */; };
+		A6CB16781887A4C700C55907 /* CloudsRGBDPointLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6CB16751887A4C700C55907 /* CloudsRGBDPointLayer.cpp */; };
+		A6CB16791887A4C700C55907 /* CloudsRGBDPointLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6CB16751887A4C700C55907 /* CloudsRGBDPointLayer.cpp */; };
 		A6D58780188113400014B5BD /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5876A1881133F0014B5BD /* ofxSubtitles.cpp */; };
 		A6D58781188113400014B5BD /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5876A1881133F0014B5BD /* ofxSubtitles.cpp */; };
 		A6D58782188113400014B5BD /* ofxSubtitles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6D5876A1881133F0014B5BD /* ofxSubtitles.cpp */; };
@@ -731,6 +734,8 @@
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
 		640E8D0A187E623A007BCBD7 /* CloudsInputOculus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputOculus.h; sourceTree = "<group>"; };
 		640E8D0B187E624A007BCBD7 /* CloudsInputOculus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputOculus.cpp; sourceTree = "<group>"; };
+		A6CB16751887A4C700C55907 /* CloudsRGBDPointLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsRGBDPointLayer.cpp; path = RGBD/CloudsRGBDPointLayer.cpp; sourceTree = "<group>"; };
+		A6CB16761887A4C700C55907 /* CloudsRGBDPointLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsRGBDPointLayer.h; path = RGBD/CloudsRGBDPointLayer.h; sourceTree = "<group>"; };
 		A6D5876A1881133F0014B5BD /* ofxSubtitles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitles.cpp; sourceTree = "<group>"; };
 		A6D5876B1881133F0014B5BD /* ofxSubtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubtitles.h; sourceTree = "<group>"; };
 		A6D5876C1881133F0014B5BD /* ofxSubtitleUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSubtitleUnit.cpp; sourceTree = "<group>"; };
@@ -2122,6 +2127,8 @@
 		E7DD71F117DBC08D00AFB2DD /* src */ = {
 			isa = PBXGroup;
 			children = (
+				A6CB16751887A4C700C55907 /* CloudsRGBDPointLayer.cpp */,
+				A6CB16761887A4C700C55907 /* CloudsRGBDPointLayer.h */,
 				E703D0A6185E7EAE00547738 /* CloudsGlobal.h */,
 				E703D19B185E812400547738 /* StoryEngine */,
 				E703D0A7185E7EB400547738 /* Input */,
@@ -2334,6 +2341,7 @@
 				AE6FFE8D187F403600677B60 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				AE6FFE8E187F403600677B60 /* ofxHotKeys_impl_linux.cpp in Sources */,
 				AE6FFE8F187F403600677B60 /* ofxHotKeys_impl_mac.mm in Sources */,
+				A6CB16791887A4C700C55907 /* CloudsRGBDPointLayer.cpp in Sources */,
 				AE6FFE90187F403600677B60 /* ofxHotKeys_impl_win.cpp in Sources */,
 				AE6FFE91187F403600677B60 /* ofxRemoveCocoaMenu.mm in Sources */,
 				AE6FFE92187F403600677B60 /* CloudsInputKinectOSC.cpp in Sources */,
@@ -2436,6 +2444,7 @@
 				4695E2AF17512E45003001E2 /* ofxBehavior.cpp in Sources */,
 				4695E2B017512E45003001E2 /* ofxBufferEffectorBehavior.cpp in Sources */,
 				4695E2B117512E45003001E2 /* ofxDamperBehavior.cpp in Sources */,
+				A6CB16771887A4C700C55907 /* CloudsRGBDPointLayer.cpp in Sources */,
 				4695E2B217512E45003001E2 /* ofxDistorterBehavior.cpp in Sources */,
 				4695E2B317512E45003001E2 /* ofxElectroStaticBehavior.cpp in Sources */,
 				4695E2B417512E45003001E2 /* ofxField2D.cpp in Sources */,
@@ -2580,6 +2589,7 @@
 				640E8D0C187E624A007BCBD7 /* CloudsInputOculus.cpp in Sources */,
 				E738FF9A183C86F50018AB96 /* ofxTLBangs.cpp in Sources */,
 				E738FF9B183C86F50018AB96 /* ofxTLCameraTrack.cpp in Sources */,
+				A6CB16781887A4C700C55907 /* CloudsRGBDPointLayer.cpp in Sources */,
 				E738FF9C183C86F50018AB96 /* ofxTLColors.cpp in Sources */,
 				E738FF9D183C86F50018AB96 /* ofxTLColorTrack.cpp in Sources */,
 				E738FF9E183C86F50018AB96 /* ofxTLCurves.cpp in Sources */,

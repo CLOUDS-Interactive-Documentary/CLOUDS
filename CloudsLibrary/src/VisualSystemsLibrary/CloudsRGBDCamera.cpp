@@ -85,8 +85,8 @@ void CloudsRGBDCamera::setCanvasWidthHeight(float width, float height ){
 void CloudsRGBDCamera::setPositionFromMouse(){
 	
 	float percentOnCurve = ofMap(GetCloudsInputX(), canvasWidth*.2, canvasWidth*.8, 0, 1, true);
-	ofVec3f sidePositionLeft = lookTarget + ofVec3f(-sideDistance,0,sidePullback);
-	ofVec3f sidePositionRight = lookTarget + ofVec3f(sideDistance,0,sidePullback);
+	ofVec3f sidePositionLeft  = lookTarget + ofVec3f(-sideDistance,0,sidePullback);
+	ofVec3f sidePositionRight = lookTarget + ofVec3f( sideDistance,0,sidePullback);
 	ofVec3f frontPosition = lookTarget + ofVec3f(0,0,-frontDistance);
 	ofVec3f position;
 	if(percentOnCurve > .5){

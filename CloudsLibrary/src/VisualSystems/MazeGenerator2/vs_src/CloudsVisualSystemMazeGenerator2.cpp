@@ -12,10 +12,6 @@
 
 //These methods let us add custom GUI parameters and respond to their events
 
-CloudsVisualSystemMazeGenerator2::CloudsVisualSystemMazeGenerator2()
-{
-}
-
 void CloudsVisualSystemMazeGenerator2::selfSetupGui()
 {
     ParamManager2* pm = &ParamManager2::getInstance();

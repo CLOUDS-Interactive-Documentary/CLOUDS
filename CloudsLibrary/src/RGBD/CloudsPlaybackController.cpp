@@ -94,19 +94,23 @@ void CloudsPlaybackController::setup(){
 	
 	visualSystems.loadPresets();
     visualSystems.loadCachedDataForSystems();
+
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	storyEngine.printDecisions = false;
 	storyEngine.combinedClipsOnly = true;
 	storyEngine.setup();
 	
-	
 	///SOUND
 	mixer.setup();
 	sound.setup(storyEngine);
     
+
+#ifndef  OCULUS_RIFT
 	////COMMUNICATION
 	oscSender.setup();
+#endif
+    
 	//END THREADED
 	
 	rgbdVisualSystem = new CloudsVisualSystemRGBD();
@@ -127,7 +131,7 @@ void CloudsPlaybackController::setup(){
 #ifdef OCULUS_RIFT
     rgbdVisualSystem->hud = &hud;
     rgbdVisualSystem->setupHUDGui();
-
+//
     introSequence->hud = &hud;
     introSequence->setupHUDGui();
 #endif
@@ -661,13 +665,13 @@ void CloudsPlaybackController::drawDebugOverlay(){
 		ofTranslate(ofGetWidth()*.5, ofGetHeight()*.5);
 		ofScale(7,7);
 		ofSetColor(255);
-		string debugString =
-		currentVisualSystemPreset.presetName + " was associated with keyword " + currentVisualSystemPreset.conjureKeyword + "\n" +
-        "Preset's keywords " + ofJoinString(currentVisualSystemPreset.allKeywords, ", ") + "\n" +
-        "current clip's keywords " + ofJoinString(currentClip.getKeywords(), ", ") + "\n" +
-        "Had to default to keyword family? " + (currentVisualSystemPreset.defaultedToFamily ? "YES" : "NO") + "\n" +
-        "Had to pick a random preset? " + (currentVisualSystemPreset.randomlySelected ? "YES" : "NO") + "\n" +
-        "Act #? " + ofToString(run.actCount);
+		string debugString = "";
+//		currentVisualSystemPreset.presetName + " was associated with keyword " + currentVisualSystemPreset.conjureKeyword + "\n" +
+//        "Preset's keywords " + ofJoinString(currentVisualSystemPreset.allKeywords, ", ") + "\n" +
+//        "current clip's keywords " + ofJoinString(currentClip.getKeywords(), ", ") + "\n" +
+//        "Had to default to keyword family? " + (currentVisualSystemPreset.defaultedToFamily ? "YES" : "NO") + "\n" +
+//        "Had to pick a random preset? " + (currentVisualSystemPreset.randomlySelected ? "YES" : "NO") + "\n" +
+//        "Act #? " + ofToString(run.actCount);
 		
 		ofDrawBitmapString(debugString, 0,0);
 		
@@ -814,7 +818,7 @@ void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::playClip(CloudsClip& clip){
+void CloudsPlaybackController::playClip(CloudsClip clip){
     
 	numClipsPlayed++;
 	
@@ -827,7 +831,8 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 	
 	prerolledClipID = "";
 	currentClip = clip;
-	
+	currentClipName = clip.getID();
+    
 	rgbdVisualSystem->getRGBDVideoPlayer().swapAndPlay();
 }
 
@@ -903,13 +908,21 @@ void CloudsPlaybackController::hideVisualSystem() {
 void CloudsPlaybackController::showRGBDVisualSystem(){
 #ifdef OCULUS_RIFT
 //	rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
-    rgbdVisualSystem->loadPresetGUISFromName("RGBAct1");
-#else
     if(run.actCount == 1){
-        rgbdVisualSystem->loadPresetGUISFromName("RGBAct1");
+        rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_POINTS");
     }
     else{
-        rgbdVisualSystem->loadPresetGUISFromName("RGBDMain2");
+        rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_LINES");
+    }
+#else
+    if(run.actCount == 1){
+        rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT1_POINTS");
+    }
+    else if(run.actCount == 2){
+        rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT2_LINES");
+    }
+    else{
+        rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT3_MESH");
     }
 #endif
     

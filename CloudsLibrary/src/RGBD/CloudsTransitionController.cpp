@@ -157,6 +157,7 @@ void CloudsTransitionController::transitionWithQuestion(float outDuration, float
 void CloudsTransitionController::startTransition(){
 	transitioning = true;
 	getNextState();
+    update();
 }
 
 float CloudsTransitionController::getFadeValue(){
