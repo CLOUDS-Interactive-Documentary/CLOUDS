@@ -11,27 +11,27 @@
     <Value>1</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
+    <Kind>44</Kind>
     <Name>fogHue</Name>
-    <Value>133.152999878</Value>
+    <Value>133</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
+    <Kind>44</Kind>
     <Name>fogSaturation</Name>
-    <Value>102.000000000</Value>
+    <Value>102</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
+    <Kind>44</Kind>
     <Name>fogBrightness</Name>
-    <Value>255.000000000</Value>
+    <Value>255</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>fogDist</Name>
-    <Value>134.483001709</Value>
+    <Value>114.827583313</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>fogExpo</Name>
-    <Value>0.600000024</Value>
+    <Value>1.593103528</Value>
 </Widget>
