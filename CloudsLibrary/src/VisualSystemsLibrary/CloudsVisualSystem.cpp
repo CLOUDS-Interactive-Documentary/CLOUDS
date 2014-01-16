@@ -2939,6 +2939,12 @@ void CloudsVisualSystem::setupKinectGui()
     
     ofPtr<CloudsInputKinectOSC> kinectInput = dynamic_pointer_cast<CloudsInputKinectOSC>(GetCloudsInput());
     
+    ofxUIButton *button = kinectGui->addButton("SAVE", false);
+    button->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    kinectGui->resetPlacer();
+    kinectGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
+    kinectGui->addWidgetToHeader(button);
+    
     kinectGui->addSpacer();
     kinectGui->addToggle("DEBUG", &kinectInput->bDoDebug);
     
@@ -2965,8 +2971,9 @@ void CloudsVisualSystem::setupKinectGui()
 
 void CloudsVisualSystem::guiKinectEvent(ofxUIEventArgs &e)
 {
-    // Save every time something changes.
-    kinectGui->saveSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
+    if (e.getName() == "SAVE") {
+        kinectGui->saveSettings(GetCloudsDataPath()+kinectGui->getName()+".xml");
+    }
 }
 #endif
 
@@ -2980,6 +2987,12 @@ void CloudsVisualSystem::setupOculusGui()
     oculusGui->setPosition(guis[guis.size() - 1]->getRect()->x + guis[guis.size() - 1]->getRect()->getWidth() + 1, 0);
     oculusGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
+    ofxUIButton *button = oculusGui->addButton("SAVE", false);
+    button->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    oculusGui->resetPlacer();
+    oculusGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
+    oculusGui->addWidgetToHeader(button);
+    
     oculusGui->autoSizeToFitWidgets();
     ofAddListener(oculusGui->newGUIEvent, this, &CloudsVisualSystem::guiOculusEvent);
     guis.push_back(oculusGui);
@@ -2988,8 +3001,9 @@ void CloudsVisualSystem::setupOculusGui()
 
 void CloudsVisualSystem::guiOculusEvent(ofxUIEventArgs &e)
 {
-    // Save every time something changes.
-    oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+    if (e.getName() == "SAVE") {
+        oculusGui->saveSettings(GetCloudsDataPath()+oculusGui->getName()+".xml");
+    }
 }
 
 void CloudsVisualSystem::setupHUDGui()
@@ -3002,6 +3016,12 @@ void CloudsVisualSystem::setupHUDGui()
     hudGui->setName("HUD");
     hudGui->setPosition(guis[guis.size() - 1]->getRect()->x + guis[guis.size() - 1]->getRect()->getWidth() + 1, 0);
     hudGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    ofxUIButton *button = hudGui->addButton("SAVE", false);
+    button->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    hudGui->resetPlacer();
+    hudGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
+    hudGui->addWidgetToHeader(button);
     
     hudGui->addSpacer();
     hudGui->addSlider("QUESTION DIST", 50, 1500, &hud->layerDistance[CLOUDS_HUD_QUESTION]);
@@ -3062,7 +3082,11 @@ void CloudsVisualSystem::setupHUDGui()
 void CloudsVisualSystem::guiHUDEvent(ofxUIEventArgs &e)
 {
     string name = e.getName();
-    if (name == "BB Q NONE") {
+    if (name == "SAVE") {
+        hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
+    }
+
+    else if (name == "BB Q NONE") {
         hud->layerBillboard[CLOUDS_HUD_QUESTION] = CLOUDS_HUD_BILLBOARD_NONE;
     }
     else if (name == "BB Q CAMERA") {
@@ -3101,9 +3125,6 @@ void CloudsVisualSystem::guiHUDEvent(ofxUIEventArgs &e)
     else if (name == "BB M OCULUS") {
         hud->layerBillboard[CLOUDS_HUD_MAP] = CLOUDS_HUD_BILLBOARD_OCULUS;
     }
-    
-    // Save every time something changes.
-    hudGui->saveSettings(GetCloudsDataPath()+hudGui->getName()+".xml");
 }
 #endif
 
