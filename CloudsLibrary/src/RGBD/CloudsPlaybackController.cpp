@@ -384,7 +384,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 #else
             transitionController.transitionFromInterlude(1.0);
 #endif
-            
 			cout << "TRANSITIONING FROM CLUSTER MAP IN UPDATE" << endl;
 
 		}
@@ -570,12 +569,12 @@ void CloudsPlaybackController::updateTransition(){
 #ifdef OCULUS_RIFT
                 showInterlude();
 #else
-                if(run.actCount == 1){
-                    showClusterMap();
-                }
-                else {
+//                if(run.actCount == 1){
+//                    showClusterMap();
+//                }
+//                else {
                     showInterlude();
-                }
+//                }
 #endif
 				createInterludeSoundQueue();
 

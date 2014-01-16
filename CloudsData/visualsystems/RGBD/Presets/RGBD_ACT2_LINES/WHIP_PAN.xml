@@ -65,3 +65,13 @@
     <Name>default</Name>
     <Value>0</Value>
 </Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>inLeft</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>option name</Name>
+    <Value>0</Value>
+</Widget>
