@@ -15,6 +15,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	interludeStartTime = 0;
     numActsCreated = 0;
     crossfadeValue = 0;
+    prevCrossFadeValue = 0;
 }
 
 //--------------------------------------------------------------------
@@ -455,12 +456,14 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 void CloudsPlaybackController::updateTransition(){
 	
 	transitionController.update();
-	
-	
+
+
 //if(transitionController.getCurrentState() != TRANSITION_IDLE){
 //    cout << "CURRENT STATE IS " << transitionController.getCurrentStateDescription() << " PREVIOUS STATE IS " << transitionController.getPreviousStateDescription() <<  " CROSSFADE IS " << crossfadeValue << endl;
 //	}
-		
+    cout<<"Change in cross fade value : "<<abs(prevCrossFadeValue - crossfadeValue)<<endl;
+	prevCrossFadeValue = crossfadeValue;
+    
 	CloudsPortal* q;
 	CloudsClip clip;
 	string topic;
@@ -807,6 +810,7 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
        exitedInterlude)
 	{
 		transitionController.transitionToFirstVisualSystem(1.0);
+        exitedInterlude = false;
 	}
 	else if(currentVisualSystem == rgbdVisualSystem) {
 		transitionController.transitionToVisualSystem(1.0, 1.0);
@@ -943,7 +947,6 @@ void CloudsPlaybackController::cleanupInterlude(){
     if(currentVisualSystem == clusterMap) {
         clusterMap->stopSystem();
 //        sound.exitClusterMap();
-
     }
     else if(currentVisualSystem == interludeSystem){
         interludeSystem->stopSystem();
@@ -953,7 +956,7 @@ void CloudsPlaybackController::cleanupInterlude(){
     else {
         ofLogError("CloudsPlaybackController::updateTransition") << " Ended interulde while not showing ClusterMap or Interlude System";
     }
-    
+    currentVisualSystem = NULL;
 }
 
 //--------------------------------------------------------------------
@@ -989,7 +992,7 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
         rgbdVisualSystem->startTransitionIn( CloudsVisualSystemRGBD::FLY_THROUGH );
     }
     else{
-        rgbdVisualSystem->startTransitionIn( CloudsVisualSystemRGBD::FLY_THROUGH );
+        rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
     }
 	
 	rgbdVisualSystem->playSystem();
