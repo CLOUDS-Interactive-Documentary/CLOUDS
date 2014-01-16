@@ -83,7 +83,7 @@ void CloudsHUDLabel::draw(){
     }
 }
 
-void CloudsHUDLabel::setText( string newText ){
+void CloudsHUDLabel::setText(string newText, bool forceOn){
     cout << "CloudsHUDLabel::setText: " << newText;
     text = newText;
     
@@ -94,7 +94,9 @@ void CloudsHUDLabel::setText( string newText ){
     if( text != "" ){
         animationSpeed = baseAnimationSpeed * (text.length() / 300.);
         animationSpeed = ofClamp(animationSpeed, animationClamp.min, animationClamp.max);
-        animateIn();
+        if (forceOn) {
+            animateIn(true);
+        }
     }
 }
 
@@ -109,8 +111,8 @@ string CloudsHUDLabel::getText(){
 	return text;
 }
 
-void CloudsHUDLabel::animateIn() {
-    if (bIsVisible) return;
+void CloudsHUDLabel::animateIn(bool force) {
+    if (!force && bIsVisible) return;
     bIsVisible = true;
     
     beginTime = ofGetElapsedTimef();
@@ -119,8 +121,8 @@ void CloudsHUDLabel::animateIn() {
     textAlpha = 255;
 }
 
-void CloudsHUDLabel::animateOut() {
-    if (!bIsVisible) return;
+void CloudsHUDLabel::animateOut(bool force) {
+    if (!force && !bIsVisible) return;
     bIsVisible = false;
     
     beginTime = ofGetElapsedTimef();

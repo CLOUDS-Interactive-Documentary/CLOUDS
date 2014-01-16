@@ -19,7 +19,7 @@ class CloudsHUDLabel {
 
     void draw();
     
-    void setText( string newText );
+    void setText(string newText, bool forceOn);
     string getText();
     
     int getRightEdge();
@@ -28,8 +28,8 @@ class CloudsHUDLabel {
     ofxFTGLFont *font;
     ofRectangle bounds;
     
-    void animateIn();
-    void animateOut();
+    void animateIn(bool force = false);
+    void animateOut(bool force = false);
     
     bool isVisible();
     

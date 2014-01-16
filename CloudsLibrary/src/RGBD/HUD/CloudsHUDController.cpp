@@ -139,8 +139,8 @@ void CloudsHUDController::playCued(){
 }
 
 void CloudsHUDController::populateMap( string leftBox, string rightBox, bool forceOn){
-    hudLabelMap["TopicTextBoxLeft"]->setText( leftBox );
-    hudLabelMap["TopicTextBoxRight"]->setText( rightBox );
+    hudLabelMap["TopicTextBoxLeft"]->setText( leftBox, forceOn );
+    hudLabelMap["TopicTextBoxRight"]->setText( rightBox, forceOn );
     
     if( forceOn ){
         animateOn( CLOUDS_HUD_MAP );
@@ -159,7 +159,7 @@ void CloudsHUDController::populateQuestion( string question, bool forceOn ){
 		animateOff( CLOUDS_HUD_QUESTION );
 	}
 	else{
-		hudLabelMap["QuestionTextBox"]->setText( question );
+		hudLabelMap["QuestionTextBox"]->setText( question, forceOn );
 		
 		if( forceOn ){
 			animateOn( CLOUDS_HUD_QUESTION );
@@ -173,8 +173,8 @@ void CloudsHUDController::populateLowerThird( string firstName, string lastName,
     CloudsHUDLabel* firstNameLabel  = hudLabelMap["BylineFirstNameTextBox_1_"];
     CloudsHUDLabel* lastNameLabel  = hudLabelMap["BylineLastNameTextBox"];
     
-    firstNameLabel->setText( firstName );
-    lastNameLabel->setText( lastName );
+    firstNameLabel->setText( firstName, forceOn );
+    lastNameLabel->setText( lastName, forceOn );
     
     int firstNameRight = firstNameLabel->getRightEdge();
     int lastNameRight = lastNameLabel->getRightEdge();
@@ -193,8 +193,8 @@ void CloudsHUDController::populateLowerThird( string firstName, string lastName,
     locationLabel->bounds.x = rightEdge + margin;
     titleLabel->bounds.x = rightEdge + margin;
     
-    locationLabel->setText( location );
-    titleLabel->setText( title );
+    locationLabel->setText( location, forceOn );
+    titleLabel->setText( title, forceOn );
     
     //description
     ////reset to default
@@ -213,7 +213,7 @@ void CloudsHUDController::populateLowerThird( string firstName, string lastName,
         descLabel->layout->setLineLength(defaultBioBounds.width - (descLabel->bounds.x - defaultBioBounds.x));
     }
     
-    descLabel->setText( textbox );
+    descLabel->setText( textbox, forceOn );
     
     if( forceOn ){
         animateOn( CLOUDS_HUD_LOWER_THIRD );
@@ -231,9 +231,9 @@ void CloudsHUDController::populateProjectExample(string videoPath, string textLe
         
         bSkipAVideoFrame = true;
         
-        hudLabelMap["ProjectExampleTextboxLeft"]->setText( textLeft );
-        hudLabelMap["ProjectExampleTextboxRight"]->setText( textRight );
-        hudLabelMap["ProjectExampleTextBoxTop"]->setText( textTop );
+        hudLabelMap["ProjectExampleTextboxLeft"]->setText( textLeft, forceOn );
+        hudLabelMap["ProjectExampleTextboxRight"]->setText( textRight, forceOn );
+        hudLabelMap["ProjectExampleTextBoxTop"]->setText( textTop, forceOn );
         
         if( forceOn ){
             animateOn( CLOUDS_HUD_PROJECT_EXAMPLE );
@@ -700,6 +700,31 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
             }
         }
     }
+    
+    // animate in text, this is sub-optimal
+    if( layer == CLOUDS_HUD_FULL ){
+        for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
+            (it->second)->animateIn( true );
+        }
+    }
+    else if( (layer & CLOUDS_HUD_LOWER_THIRD) != 0 ){
+        hudLabelMap["BylineFirstNameTextBox_1_"]->animateIn( true );
+        hudLabelMap["BylineLastNameTextBox"]->animateIn( true );
+        hudLabelMap["BylineTopicTextBoxTop"]->animateIn( true );
+        hudLabelMap["BylineTopicTextBoxBottom"]->animateIn( true );
+        hudLabelMap["BylineBodyCopyTextBox"]->animateIn( true );
+    }
+    else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
+        hudLabelMap["ProjectExampleTextboxLeft"]->animateIn( true );
+        hudLabelMap["ProjectExampleTextboxRight"]->animateIn( true );
+        hudLabelMap["ProjectExampleTextBoxTop"]->animateIn( true );
+    }
+    else if( (layer & CLOUDS_HUD_MAP) != 0 ){
+        
+    }
+    else if( (layer & CLOUDS_HUD_QUESTION) != 0 ){
+        hudLabelMap["QuestionTextBox"]->animateIn( true );
+    }
 }
 
 void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
@@ -739,7 +764,8 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
     }
     else if( (layer & CLOUDS_HUD_MAP) != 0 ){
         
-    }else if( (layer & CLOUDS_HUD_QUESTION) != 0 ){
+    }
+    else if( (layer & CLOUDS_HUD_QUESTION) != 0 ){
         hudLabelMap["QuestionTextBox"]->animateOut();
     }
 }
