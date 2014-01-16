@@ -589,6 +589,24 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 			transitionCamTargetNode = NULL;
 			resetTransitionNodes();
 		}
+		else if(bResetIn)
+		{
+			bResetIn = false;
+			transitionCamTargetNode = NULL;
+			resetInTransitionNode();
+		}
+		else if(bResetLeft)
+		{
+			bResetLeft = false;
+			transitionCamTargetNode = NULL;
+			resetLeftTransitionNode();
+		}
+		else if(bResetRight)
+		{
+			bResetRight = false;
+			transitionCamTargetNode = NULL;
+			resetRightTransitionNode();
+		}
 		
 		if(bMoveTransitionCameraUp)
 		{
@@ -640,6 +658,39 @@ void CloudsVisualSystemRGBD::resetTransitionNodes()
 	transitionOutLeft.setPosition(translatedHeadPosition + offset);
 	transitionOutRight.setPosition(translatedHeadPosition + offset);
 	
+}
+
+void CloudsVisualSystemRGBD::resetInTransitionNode()
+{
+	transitionInStart.resetTransform();
+	
+	ofVec3f offset(0,-50,-150);
+	
+	transitionInStart.rotate(180, 0, 1, 0);
+	
+	transitionInStart.setPosition(translatedHeadPosition + offset);
+}
+
+void CloudsVisualSystemRGBD::resetLeftTransitionNode()
+{
+	transitionOutLeft.resetTransform();
+	
+	ofVec3f offset(0,-50,-150);
+	
+	transitionOutLeft.rotate(180, 0, 1, 0);
+	
+	transitionOutLeft.setPosition(translatedHeadPosition + offset);
+}
+
+void CloudsVisualSystemRGBD::resetRightTransitionNode()
+{
+	transitionOutRight.resetTransform();
+	
+	ofVec3f offset(0,-50,-150);
+	
+	transitionOutRight.rotate(180, 0, 1, 0);
+	
+	transitionOutRight.setPosition(translatedHeadPosition + offset);
 }
 
 void CloudsVisualSystemRGBD::loadTransitionOptions(string filename)
@@ -877,6 +928,9 @@ void CloudsVisualSystemRGBD::addTransitionGui(string guiName)
 	t->addButton("DriveOutLeft", false )->setColorBack(ofColor(155,155,0));
 	t->addButton("DriveOutRight", false )->setColorBack(ofColor(155,0,155));
 	t->addButton("resetNodes", &bResetLookThoughs );
+	t->addButton("ResetIn", &bResetIn);
+	t->addButton("ResetLeft", &bResetLeft);
+	t->addButton("ResetRight", &bResetRight);
 	
 	t->addSpacer();
 	t->addToggle("moveUp", &bMoveTransitionCameraUp);
@@ -1714,7 +1768,10 @@ void CloudsVisualSystemRGBD::selfExit(){
 void CloudsVisualSystemRGBD::selfBegin(){
     bPortalDebugOn = false;
 	cloudsCamera.jumpToPosition();
-    timeline->hide();
+	if(timeline!=NULL)
+	{
+		timeline->hide();
+	}
     
     //clear any previously selected portals
     caughtPortal = NULL;

@@ -5,37 +5,37 @@
         <INDEX>1</INDEX>
         <NAME>OverShoulder</NAME>
         <InStartPos>
-            <x>-26.000000000</x>
-            <y>-397.251007080</y>
-            <z>-1918.890014648</z>
+            <x>-174.126358032</x>
+            <y>-96.058670044</y>
+            <z>-156.947601318</z>
         </InStartPos>
         <OutRightPos>
-            <x>-375.226989746</x>
-            <y>-0.656849027</y>
-            <z>516.129028320</z>
+            <x>-140.039123535</x>
+            <y>7.281314850</y>
+            <z>220.872375488</z>
         </OutRightPos>
         <OutLeftPos>
-            <x>288.220001221</x>
-            <y>25.704799652</y>
-            <z>417.170989990</z>
+            <x>113.080627441</x>
+            <y>11.837360382</y>
+            <z>194.755615234</z>
         </OutLeftPos>
         <InStartQuat>
-            <x>0.000497661</x>
-            <y>-0.997051001</y>
-            <z>0.081123397</z>
-            <w>0.004850660</w>
+            <x>-0.025379429</x>
+            <y>-0.947375715</y>
+            <z>0.094311498</z>
+            <w>0.304861993</w>
         </InStartQuat>
         <OutLeftQuat>
-            <x>0.011011500</x>
-            <y>-0.973160028</y>
-            <z>0.050957199</z>
-            <w>0.224145994</w>
+            <x>0.012193340</x>
+            <y>-0.990949094</y>
+            <z>0.021073844</z>
+            <w>0.132009715</w>
         </OutLeftQuat>
         <OutRightQuat>
-            <x>0.011070500</x>
-            <y>0.943099976</y>
-            <z>0.008893000</z>
-            <w>0.332206994</w>
+            <x>0.007254239</x>
+            <y>0.982317984</y>
+            <z>0.052286465</z>
+            <w>0.179625079</w>
         </OutRightQuat>
     </OPTION>
     <OPTION>
@@ -79,37 +79,37 @@
         <INDEX>3</INDEX>
         <NAME>default</NAME>
         <InStartPos>
-            <x>-26.000000000</x>
-            <y>-397.251007080</y>
-            <z>-1918.890014648</z>
+            <x>-174.126358032</x>
+            <y>-96.058670044</y>
+            <z>-156.947601318</z>
         </InStartPos>
         <OutRightPos>
-            <x>-375.226989746</x>
-            <y>-0.656849027</y>
-            <z>516.129028320</z>
+            <x>-140.039123535</x>
+            <y>7.281314850</y>
+            <z>220.872375488</z>
         </OutRightPos>
         <OutLeftPos>
-            <x>288.220001221</x>
-            <y>25.704799652</y>
-            <z>417.170989990</z>
+            <x>113.080627441</x>
+            <y>11.837360382</y>
+            <z>194.755615234</z>
         </OutLeftPos>
         <InStartQuat>
-            <x>0.000497661</x>
-            <y>-0.997051001</y>
-            <z>0.081123397</z>
-            <w>0.004850660</w>
+            <x>-0.025379419</x>
+            <y>-0.947375476</y>
+            <z>0.094311468</z>
+            <w>0.304861963</w>
         </InStartQuat>
         <OutLeftQuat>
-            <x>0.011011500</x>
-            <y>-0.973160028</y>
-            <z>0.050957199</z>
-            <w>0.224145994</w>
+            <x>0.012193348</x>
+            <y>-0.990949154</y>
+            <z>0.021073839</z>
+            <w>0.132009774</w>
         </OutLeftQuat>
         <OutRightQuat>
-            <x>0.011070500</x>
-            <y>0.943099976</y>
-            <z>0.008893000</z>
-            <w>0.332206994</w>
+            <x>0.007254218</x>
+            <y>0.982317686</y>
+            <z>0.052286454</z>
+            <w>0.179625079</w>
         </OutRightQuat>
     </OPTION>
     <OPTION>
@@ -270,6 +270,43 @@
     <NAME>TWO_DIMENSIONAL</NAME>
     <OPTION>
         <INDEX>1</INDEX>
+        <NAME>2d</NAME>
+        <InStartPos>
+            <x>-9.000000000</x>
+            <y>30.022052765</y>
+            <z>-280.155792236</z>
+        </InStartPos>
+        <OutRightPos>
+            <x>-400.105102539</x>
+            <y>-49.982128143</y>
+            <z>-57.491455078</z>
+        </OutRightPos>
+        <OutLeftPos>
+            <x>278.727813721</x>
+            <y>-49.946712494</y>
+            <z>-95.900115967</z>
+        </OutLeftPos>
+        <InStartQuat>
+            <x>0.000156518</x>
+            <y>0.994082808</y>
+            <z>0.100532837</z>
+            <w>0.003927175</w>
+        </InStartQuat>
+        <OutLeftQuat>
+            <x>-0.000046226</x>
+            <y>-0.996806800</y>
+            <z>-0.003918609</z>
+            <w>0.079754710</w>
+        </OutLeftQuat>
+        <OutRightQuat>
+            <x>-0.000024047</x>
+            <y>0.999101341</y>
+            <z>-0.006544176</z>
+            <w>0.041846443</w>
+        </OutRightQuat>
+    </OPTION>
+    <OPTION>
+        <INDEX>2</INDEX>
         <NAME>InFromBelow</NAME>
         <InStartPos>
             <x>2.000000000</x>
@@ -306,7 +343,7 @@
         </OutRightQuat>
     </OPTION>
     <OPTION>
-        <INDEX>2</INDEX>
+        <INDEX>3</INDEX>
         <NAME>InFromLeft</NAME>
         <InStartPos>
             <x>250.000000000</x>
@@ -343,7 +380,7 @@
         </OutRightQuat>
     </OPTION>
     <OPTION>
-        <INDEX>3</INDEX>
+        <INDEX>4</INDEX>
         <NAME>InFromRight</NAME>
         <InStartPos>
             <x>-320.000000000</x>
@@ -380,7 +417,7 @@
         </OutRightQuat>
     </OPTION>
     <OPTION>
-        <INDEX>4</INDEX>
+        <INDEX>5</INDEX>
         <NAME>InFromTop</NAME>
         <InStartPos>
             <x>0.000000000</x>
@@ -417,7 +454,7 @@
         </OutRightQuat>
     </OPTION>
     <OPTION>
-        <INDEX>5</INDEX>
+        <INDEX>6</INDEX>
         <NAME>SidewaysOut</NAME>
         <InStartPos>
             <x>0.000000000</x>
@@ -454,44 +491,44 @@
         </OutRightQuat>
     </OPTION>
     <OPTION>
-        <INDEX>6</INDEX>
+        <INDEX>7</INDEX>
         <NAME>default</NAME>
         <InStartPos>
-            <x>159.000000000</x>
-            <y>-21.244400024</y>
-            <z>-191.750000000</z>
+            <x>-9.000000000</x>
+            <y>30.022052765</y>
+            <z>-280.155792236</z>
         </InStartPos>
         <OutRightPos>
-            <x>-257.088989258</x>
-            <y>-18.089300156</y>
-            <z>-81.215797424</z>
+            <x>-400.105102539</x>
+            <y>-49.982128143</y>
+            <z>-57.491455078</z>
         </OutRightPos>
         <OutLeftPos>
-            <x>163.376007080</x>
-            <y>-13.385399818</y>
-            <z>-197.046997070</z>
+            <x>278.727813721</x>
+            <y>-49.946712494</y>
+            <z>-95.900115967</z>
         </OutLeftPos>
         <InStartQuat>
-            <x>-0.012213500</x>
-            <y>-0.976585984</y>
-            <z>-0.002816870</z>
-            <w>0.214763001</w>
+            <x>0.000157466</x>
+            <y>0.995752811</y>
+            <z>0.100701720</z>
+            <w>0.003927175</w>
         </InStartQuat>
         <OutLeftQuat>
-            <x>0.005414230</x>
-            <y>-0.981108010</y>
-            <z>-0.078752197</z>
-            <w>0.176625997</w>
+            <x>-0.000046223</x>
+            <y>-0.996808112</y>
+            <z>-0.003918614</z>
+            <w>0.079754621</w>
         </OutLeftQuat>
         <OutRightQuat>
-            <x>-0.110974997</x>
-            <y>-0.992384017</y>
-            <z>0.042121701</z>
-            <w>0.033007100</w>
+            <x>-0.000024058</x>
+            <y>0.999104023</y>
+            <z>-0.006544194</z>
+            <w>0.041846443</w>
         </OutRightQuat>
     </OPTION>
     <OPTION>
-        <INDEX>7</INDEX>
+        <INDEX>8</INDEX>
         <NAME>inAboveOutBelow</NAME>
         <InStartPos>
             <x>0.000000000</x>
@@ -528,7 +565,7 @@
         </OutRightQuat>
     </OPTION>
     <OPTION>
-        <INDEX>8</INDEX>
+        <INDEX>9</INDEX>
         <NAME>inBelowOutAbove</NAME>
         <InStartPos>
             <x>0.000000000</x>
@@ -720,7 +757,7 @@
         <INDEX>5</INDEX>
         <NAME>default</NAME>
         <InStartPos>
-            <x>276.921417236</x>
+            <x>276.000000000</x>
             <y>-58.894390106</y>
             <z>-49.407836914</z>
         </InStartPos>
@@ -757,7 +794,7 @@
         <INDEX>6</INDEX>
         <NAME>inLeft</NAME>
         <InStartPos>
-            <x>276.921417236</x>
+            <x>276.000000000</x>
             <y>-58.894390106</y>
             <z>-49.407836914</z>
         </InStartPos>
@@ -794,7 +831,7 @@
         <INDEX>7</INDEX>
         <NAME>option name</NAME>
         <InStartPos>
-            <x>276.921417236</x>
+            <x>276.000000000</x>
             <y>-58.894390106</y>
             <z>-49.407836914</z>
         </InStartPos>

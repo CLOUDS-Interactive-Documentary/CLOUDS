@@ -62,6 +62,7 @@ class CloudsHUDController {
 	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void animateOff(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void respondToClip(CloudsClip& clip);
+    void playCued();
 	
 	map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> > layerSets;
 	vector<CloudsHUDLayer*> allLayers;
@@ -89,10 +90,10 @@ class CloudsHUDController {
     ofVec2f getCenter(bool bScaled = true);
     
 #ifdef OCULUS_RIFT
-    float layerDistance[CLOUDS_HUD_LAYER_COUNT];
-    float layerRotationH[CLOUDS_HUD_LAYER_COUNT];
-    float layerRotationV[CLOUDS_HUD_LAYER_COUNT];
-    CloudsHUDBillboard layerBillboard[CLOUDS_HUD_LAYER_COUNT];
+    map<CloudsHUDLayerSet, float> layerDistance;
+    map<CloudsHUDLayerSet, float> layerRotationH;
+    map<CloudsHUDLayerSet, float> layerRotationV;
+    map<CloudsHUDLayerSet, CloudsHUDBillboard> layerBillboard;
 #endif
 
   protected:
@@ -110,6 +111,9 @@ class CloudsHUDController {
     bool    bDrawHud;
     bool    bSkipAVideoFrame;
     
+    bool    bLowerThirdCued;
+    bool    bVisualSystemDisplayed;
+    float   cuedClipEndTime;
 	
     void drawLayer(CloudsHUDLayerSet layer);
 #ifdef OCULUS_RIFT
