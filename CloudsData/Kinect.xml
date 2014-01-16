@@ -2,31 +2,36 @@
     <Kind>42</Kind>
     <Name>Kinect</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1909.000000000</XPosition>
+    <XPosition>849.000061035</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
     <Kind>6</Kind>
     <Name>BODY RANGE X</Name>
-    <HighValue>0.756157637</HighValue>
-    <LowValue>-0.243842363</LowValue>
+    <HighValue>0.527093649</HighValue>
+    <LowValue>-0.487684727</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BODY RANGE Y</Name>
-    <HighValue>-0.199999988</HighValue>
-    <LowValue>-0.699999988</LowValue>
+    <HighValue>-0.251231551</HighValue>
+    <LowValue>-0.546797991</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>BODY RANGE Z</Name>
-    <HighValue>2.000000000</HighValue>
-    <LowValue>1.000000000</LowValue>
+    <HighValue>2.982757330</HighValue>
+    <LowValue>2.490146637</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ACTIVE THRESHOLD Y</Name>
-    <Value>0.800000012</Value>
+    <Value>0.699507117</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
