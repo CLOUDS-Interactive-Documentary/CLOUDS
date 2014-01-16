@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>WORMHOLE Sound</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>1</XPosition>
-    <YPosition>162</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>162.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,5 +28,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Main Gain</Name>
-    <Value>0</Value>
+    <Value>0.000000000</Value>
 </Widget>

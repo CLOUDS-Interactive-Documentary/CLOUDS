@@ -2,18 +2,18 @@
     <Kind>42</Kind>
     <Name>Fog</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>1</XPosition>
-    <YPosition>93</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>93.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>fogDistance</Name>
-    <Value>114.187</Value>
+    <Value>114.186996460</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>fogExpo</Name>
-    <Value>0.6</Value>
+    <Value>0.600000024</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>

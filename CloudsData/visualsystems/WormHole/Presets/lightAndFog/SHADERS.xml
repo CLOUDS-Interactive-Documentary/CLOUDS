@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>SHADERS</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>1</XPosition>
-    <YPosition>70</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>70.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -78,12 +78,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>facingRatioExpo</Name>
-    <Value>6.22167</Value>
+    <Value>6.221670151</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>shininess</Name>
-    <Value>64</Value>
+    <Value>19.026601791</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -98,7 +98,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c1Brightness</Name>
-    <Value>255</Value>
+    <Value>154</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -113,5 +113,5 @@
 <Widget>
     <Kind>44</Kind>
     <Name>c2Brightness</Name>
-    <Value>255</Value>
+    <Value>150</Value>
 </Widget>
