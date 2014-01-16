@@ -1459,9 +1459,6 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 
 void CloudsVisualSystemRGBD::selfDraw(){
 	
-    ///////
-//    return;
-    ///////
     
     
     #ifdef OCULUS_RIFT
