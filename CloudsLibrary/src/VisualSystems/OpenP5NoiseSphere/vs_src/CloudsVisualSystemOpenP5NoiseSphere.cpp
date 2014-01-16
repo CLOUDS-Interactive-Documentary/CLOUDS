@@ -359,6 +359,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDraw()
 	}    
 	
 	if(drawLines){
+        glDisable(GL_LINE_SMOOTH);
 		shader.begin();
 		shader.setUniform1f("alphaDamp", lineAlpha);
 		ofSetLineWidth(ofMap(currLevel, 0, 1, minHairLineWidth, maxHairLineWidth));

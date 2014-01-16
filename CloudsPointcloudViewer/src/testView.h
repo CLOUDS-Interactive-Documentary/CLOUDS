@@ -6,6 +6,7 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsVisualSystemRGBD.h"
 #include "CloudsHUDController.h"
+#include "CloudsTransitionController.h"
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
 	IBOutlet NSTableView* clipTable;
@@ -18,6 +19,10 @@
 	
 	CloudsClip currentClip;
 	int currentClipIndex;
+	
+	CloudsVisualSystemRGBD rgbd;
+	CloudsVisualSystem::RGBDTransitionType type;
+	CloudsTransitionController transitionController;
 
 }
 
@@ -29,6 +34,8 @@
 - (void)update;
 - (void)draw;
 - (void)exit;
+
+- (void)updateTransitions;
 
 - (void)keyPressed:(int)key;
 - (void)keyReleased:(int)key;

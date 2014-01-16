@@ -128,6 +128,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void setOutOption( OutOption outOption );
 	
 	void resetTransitionNodes();
+	void resetInTransitionNode();
+	void resetLeftTransitionNode();
+	void resetRightTransitionNode();
 	
 	void StopEditTransitionMode();
     //////////TRANSITIONS
@@ -275,7 +278,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool drawTransitionNodes;
 	
 	//transition
-	bool transitioning, transitioningIn, transitioningOut, bResetLookThoughs;
+	bool transitioning, transitioningIn, transitioningOut, bResetLookThoughs, bResetRight,bResetLeft,bResetIn;
 	float transitionStartTime, transitionEndTime, transitionStartVal, transitionTargetVal;
 	string activeTransition;
 	

@@ -12,8 +12,6 @@
 
 //#define FRAME_PADDING 24
 
-
-
 CloudsClip::CloudsClip(){
 	currentScore = 0;
 	startFrame = 0;
