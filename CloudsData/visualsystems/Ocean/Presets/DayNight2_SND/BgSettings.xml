@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>BgSettings</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>215.000000000</YPosition>
+    <YPosition>72.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,35 +13,45 @@
 <Widget>
     <Kind>2</Kind>
     <Name>BAR GRAD</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>WASH GRAD</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>EXPONENT</Name>
+    <Value>0.750110686</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>HUE</Name>
-    <Value>164.276977539</Value>
+    <Value>204.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SAT</Name>
-    <Value>205.055053711</Value>
+    <Value>89.250007629</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BRI</Name>
-    <Value>75.320030212</Value>
+    <Value>1.736849546</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>HUE2</Name>
-    <Value>253.176391602</Value>
+    <Value>169.187469482</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SAT2</Name>
-    <Value>111.299957275</Value>
+    <Value>89.250007629</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BRI2</Name>
-    <Value>163.985656738</Value>
+    <Value>0.000000000</Value>
 </Widget>

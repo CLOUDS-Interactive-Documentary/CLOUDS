@@ -297,6 +297,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>OrganicTunnel_2_White</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OrganicTunnel_2_White_Faster</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Protein_Tunnel</Name>
     <Value>0</Value>
 </Widget>
@@ -314,9 +324,4 @@
     <Kind>2</Kind>
     <Name>xray2</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>OrganicTunnel_2_White</Name>
-    <Value>1</Value>
 </Widget>
