@@ -21,7 +21,6 @@ class CloudsRGBDPointLayer
     void setDefaults();
     
     ofxUISuperCanvas* pointsGui;
-    
     ofxUISuperCanvas* createGui(ofxUISuperCanvas* gui, string name);
     void selfGuiEvent(ofxUIEventArgs &e);
  
