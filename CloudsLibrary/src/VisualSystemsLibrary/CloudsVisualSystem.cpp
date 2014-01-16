@@ -3722,7 +3722,10 @@ void CloudsVisualSystem::drawCursor()
             }
             
 #ifdef KINECT_INPUT
-            selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle);
+            // EZ: Only draw cursor on Intro for now.
+            if (getSystemName() == "_Intro") {
+                selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle);
+            }
 #else
             // EZ: This ofGetMousePressed() call is ghetto but will do for now
             selfDrawCursor(it->second.position, ofGetMousePressed());
