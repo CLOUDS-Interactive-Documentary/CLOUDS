@@ -105,9 +105,12 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
 //	cout << "Clip is " <<  clip.getLinkName() << endl;
 //	cout << "speaker: " << speaker.firstName << " " << speaker.lastName << endl;
 	
-// LOWER THIRD
-	
+#ifdef KINECT_INPUT
+    // EZ: No lower third in Kinect version
+    return;
+#endif
     
+// LOWER THIRD
     //update lower third, but only if the speaker has changed
     if(speaker.fcpID != CloudsSpeaker::speakers[ clip.person ].fcpID){
         speaker = CloudsSpeaker::speakers[ clip.person ];
