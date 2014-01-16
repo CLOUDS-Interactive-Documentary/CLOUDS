@@ -11,14 +11,12 @@
 #include "CloudsRGBDVideoPlayer.h"
 
 CloudsRGBDPointLayer::CloudsRGBDPointLayer(){
-
+    setDefaults();
 }
-
-
 
 CloudsRGBDPointLayer::~CloudsRGBDPointLayer(){
     if(eventsRegistered){
-        ofAddListener(pointsGui->newGUIEvent, this, &CloudsRGBDPointLayer::selfGuiEvent);
+//        ofAddListener(pointsGui->newGUIEvent, this, &CloudsRGBDPointLayer::selfGuiEvent);
     }
 }
 

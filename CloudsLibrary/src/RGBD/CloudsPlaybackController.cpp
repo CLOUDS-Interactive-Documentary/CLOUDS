@@ -131,7 +131,7 @@ void CloudsPlaybackController::setup(){
 #ifdef OCULUS_RIFT
     rgbdVisualSystem->hud = &hud;
     rgbdVisualSystem->setupHUDGui();
-//
+
     introSequence->hud = &hud;
     introSequence->setupHUDGui();
 #endif
@@ -480,7 +480,7 @@ void CloudsPlaybackController::updateTransition(){
                 
                 // no need to do anything special, the crossfade value will take care of this
 
-                hud.animateOff(CLOUDS_HUD_FULL);
+//                hud.animateOff(CLOUDS_HUD_FULL);
 
                 break;
                 
@@ -488,6 +488,10 @@ void CloudsPlaybackController::updateTransition(){
                 
                 hideVisualSystem();
                 showRGBDVisualSystem();
+                
+                if(transitionController.getPreviousState() == TRANSITION_VISUALSYSTEM_OUT){
+                    hud.playCued();
+                }
                 
                 break;
                 
