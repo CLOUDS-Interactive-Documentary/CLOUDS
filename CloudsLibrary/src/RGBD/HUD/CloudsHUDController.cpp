@@ -709,7 +709,7 @@ void CloudsHUDController::animateOn(CloudsHUDLayerSet layer){
     //bIsHudOpen = true;
 	
     for (map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> >::iterator it = layerSets.begin(); it != layerSets.end(); ++it) {
-        if ((layer & it->first) != 0) {
+        if ((layer & it->first) != 0 && it->first != CLOUDS_HUD_QUESTION) {
             hudOpenMap[it->first] = true;
             for (int i = 0; i < it->second.size(); i++) {
                 it->second[i]->start();
