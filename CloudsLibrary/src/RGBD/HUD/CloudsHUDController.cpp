@@ -699,19 +699,22 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
         for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
             (it->second)->animateOut();
         }
-    }else if( layer == CLOUDS_HUD_LOWER_THIRD ){
+    }
+    else if( (layer & CLOUDS_HUD_LOWER_THIRD) != 0 ){
         hudLabelMap["BylineFirstNameTextBox_1_"]->animateOut();
         hudLabelMap["BylineLastNameTextBox"]->animateOut();
         hudLabelMap["BylineTopicTextBoxTop"]->animateOut();
         hudLabelMap["BylineTopicTextBoxBottom"]->animateOut();
         hudLabelMap["BylineBodyCopyTextBox"]->animateOut();
-    }else if( layer == CLOUDS_HUD_PROJECT_EXAMPLE ){
+    }
+    else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
         hudLabelMap["ProjectExampleTextboxLeft"]->animateOut();
         hudLabelMap["ProjectExampleTextboxRight"]->animateOut();
         hudLabelMap["ProjectExampleTextBoxTop"]->animateOut();
-    }else if( layer == CLOUDS_HUD_MAP ){
+    }
+    else if( (layer & CLOUDS_HUD_MAP) != 0 ){
         
-    }else if( layer == CLOUDS_HUD_QUESTION ){
+    }else if( (layer & CLOUDS_HUD_QUESTION) != 0 ){
         hudLabelMap["QuestionTextBox"]->animateOut();
     }
 }
