@@ -396,6 +396,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
     hardIntros.push_back("biology and code");
     hardIntros.push_back("audiovisualization");
     hardIntros.push_back("big data"); 
+    hardIntros.push_back("videogames");
     
     if(run.actCount == 0 && ofContains(hardIntros, seedTopic)){
         run.actCount = 1; //force
@@ -1231,7 +1232,12 @@ float CloudsStoryEngine::scoreForClip(CloudsStoryState& state, CloudsClip& poten
         cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: hard clips come 3rd act" << endl;
 		return 0;
 	}
-
+#ifdef OCULUS_RIFT
+	if(ofToLower(potentialNextClip.person) == "higa" || ofToLower(potentialNextClip.person) == "patricio"){
+        cliplog << state.duration << "\t\t\t\t\tREJECTED Clip: hard clips come 3rd act" << endl;
+		return 0;
+	}
+#endif
     //Base score
     float totalScore = 0;
     float offTopicScore = 0; //negative if this is a link & off topic

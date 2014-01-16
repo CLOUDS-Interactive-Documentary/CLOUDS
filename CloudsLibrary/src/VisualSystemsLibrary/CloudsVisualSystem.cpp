@@ -466,7 +466,8 @@ void CloudsVisualSystem::update(ofEventArgs & args)
         
 		
 		//update camera
-		translatedHeadPosition = getRGBDVideoPlayer().headPosition * pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ);
+        ofVec3f newHeadPosition = getRGBDVideoPlayer().headPosition * pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ);
+		translatedHeadPosition += (newHeadPosition - translatedHeadPosition) * .1;
 		cloudsCamera.lookTarget = translatedHeadPosition;
 		
         selfUpdate();
@@ -1686,9 +1687,13 @@ void CloudsVisualSystem::setupCameraGui()
 
 CloudsVisualSystem::RGBDTransitionType CloudsVisualSystem::getTransitionType()
 {
+    if(transitionRadio == NULL){
+        return;
+    }
+    
 	if(transitionRadio->getActive() == NULL)
 		return WHIP_PAN;
-	
+
 	string activeTransitionType = transitionRadio->getActive()->getName();
 	if(activeTransitionType == "2D"){
 		cout << "TWO_DIMENSIONAL" << endl;

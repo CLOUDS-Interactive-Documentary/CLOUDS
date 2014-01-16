@@ -430,6 +430,7 @@ void CloudsVisualSystemWorld::selfDraw()
     
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_NORMALIZE);
+    glDisable(GL_LINE_SMOOTH);
     
     ofPushMatrix();
     ofPushStyle();
