@@ -310,6 +310,7 @@ bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSyst
     if (potentialPresets.size() > 0) {
         sort(potentialPresets.begin(), potentialPresets.end(),score_sort);
         cout<<"Selected preset "<<potentialPresets[0].first<<" for interlude "<<endl;
+		run.presetHistory.push_back(potentialPresets[0].first);
         preset = visualSystems->getPresetWithID(potentialPresets[0].first);
         return  true;
     }
