@@ -13,6 +13,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
     showingInterlude = false;
     exitedInterlude = false;
 	interludeStartTime = 0;
+    numActsCreated = 0;
 }
 
 //--------------------------------------------------------------------
@@ -53,6 +54,8 @@ void CloudsPlaybackController::clearAct(bool destroyAct){
 		delete currentAct;
 		currentAct = NULL;
 	}
+    
+    numActsCreated++;
     
 }
 
@@ -310,7 +313,7 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
 	cue.startTime = 0;
 	cue.duration = 60*2;
 	cue.mixLevel = 2;
-	
+	sound.startMusicFX(0, cue.duration);
 	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel);
 	
 	//get all the presets in the range of 56 - 65
@@ -349,9 +352,9 @@ void CloudsPlaybackController::mousePressed(ofMouseEventArgs & args){
 #ifdef OCULUS_RIFT
     // EZ: Override CloudsInputSystem just to get the thing started
     // since we can't click with Oculus input.
-    if (introSequence) {
-        introSequence->selfMousePressed(args);
-    }
+//    if (introSequence) {
+//        introSequence->selfMousePressed(args);
+//    }
 #endif
 }
 
@@ -967,16 +970,16 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
 #ifdef OCULUS_RIFT
 //	rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
 //    if(run.actCount == 1){
-        rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_POINTS");
+    rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_POINTS");
 //    }
 //    else{
 //        rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_LINES");
 //    }
 #else
-    if(run.actCount == 0){
+    if(numActsCreated == 0){
         rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT1_POINTS");
     }
-    else if(run.actCount == 1){
+    else if(numActsCreated == 1){
         rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT2_LINES");
     }
     else{

@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Questions</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>487.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>225.000000000</XPosition>
+    <YPosition>436.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>PORTAL SCALE</Name>
-    <Value>0.183793113</Value>
+    <Value>0.108965516</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
