@@ -430,8 +430,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             showingInterlude = false;
 			
 		}
+       #endif 
     }
-#endif
+
 
 	////////////////////
 	// RGBD SYSTEM
