@@ -13,6 +13,7 @@ CloudsHUDLabel::CloudsHUDLabel(){
     
     bIsAnimatingIn = false;
     bIsAnimatingOut = false;
+    bIsVisible = false;
     caps = true;
     
     animationClamp.min = 0.3;
@@ -109,6 +110,9 @@ string CloudsHUDLabel::getText(){
 }
 
 void CloudsHUDLabel::animateIn() {
+    if (bIsVisible) return;
+    bIsVisible = true;
+    
     beginTime = ofGetElapsedTimef();
     bIsAnimatingIn = true;
     bIsAnimatingOut = false;
@@ -116,7 +120,14 @@ void CloudsHUDLabel::animateIn() {
 }
 
 void CloudsHUDLabel::animateOut() {
+    if (!bIsVisible) return;
+    bIsVisible = false;
+    
     beginTime = ofGetElapsedTimef();
     bIsAnimatingIn = false;
     bIsAnimatingOut = true;
+}
+
+bool CloudsHUDLabel::isVisible() {
+    return bIsVisible;
 }

@@ -31,6 +31,8 @@ class CloudsHUDLabel {
     void animateIn();
     void animateOut();
     
+    bool isVisible();
+    
     bool caps;
     
   protected:
@@ -47,4 +49,5 @@ class CloudsHUDLabel {
     int playhead;
     
     bool bIsAnimatingIn, bIsAnimatingOut;
+    bool bIsVisible;
 };
