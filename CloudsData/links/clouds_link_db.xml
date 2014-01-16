@@ -14487,7 +14487,7 @@
 </clip>
 <clip>
     <name>Higa - sound and video</name>
-    <additionalKeywords>?audiovisualization: What does music look like?,#start,#oculus</additionalKeywords>
+    <additionalKeywords>#start,?audiovisualization: What does music look like?</additionalKeywords>
 </clip>
 <clip>
     <name>Higa - simplicity of self made tools</name>
@@ -57767,7 +57767,7 @@
 </clip>
 <clip>
     <name>Intro - AudioVisualization</name>
-    <additionalKeywords>music,audiovisualization,?audiovisualization: How does audiovisualization work?</additionalKeywords>
+    <additionalKeywords>music,audiovisualization,?audiovisualization:What does music look like?,#start,#oculus</additionalKeywords>
 </clip>
 <clip>
     <name>Intro - BuildingWorlds2</name>

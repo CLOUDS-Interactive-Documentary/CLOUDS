@@ -179,9 +179,9 @@ void CloudsPlaybackController::setup(){
 			startingNodes.erase(startingNodes.begin() + i);
         }
 #endif
-//        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "have we hacked reality?"){
-//			startingNodes.erase(startingNodes.begin() + i);            
-//        }
+        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "what does music look like?"){
+			startingNodes.erase(startingNodes.begin() + i);            
+        }
 		else{
             //			cout << " Adding Clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
 		}
@@ -516,6 +516,10 @@ void CloudsPlaybackController::updateTransition(){
                 
                 introSequence = new CloudsIntroSequence();
                 introSequence->setup();
+#ifdef OCULUS_RIFT
+                introSequence->hud = &hud;
+                introSequence->setupHUDGui();
+#endif
                 introSequence->setDrawToScreen(false);
                 
                 // TODO: Look into using Intro events for setting bDrawHud, so it works like everything else.
@@ -999,7 +1003,7 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
         rgbdVisualSystem->startTransitionIn( CloudsVisualSystemRGBD::FLY_THROUGH );
     }
     else{
-        rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
+        rgbdVisualSystem->startTransitionIn( CloudsVisualSystemRGBD::FLY_THROUGH );
     }
 	
 	rgbdVisualSystem->playSystem();
