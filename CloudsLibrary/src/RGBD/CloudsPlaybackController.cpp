@@ -897,13 +897,13 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
     }
 #else
     if(run.actCount == 1){
-        rgbdVisualSystem->loadPresetGUISFromName("RGBAct1");
+        rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT1_POINTS");
     }
     else if(run.actCount == 2){
-        rgbdVisualSystem->loadPresetGUISFromName("RGBDMain2");
+        rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT2_LINES");
     }
     else{
-        rgbdVisualSystem->loadPresetGUISFromName("Act3_Screen_Normals");
+        rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT3_MESH");
     }
 #endif
     

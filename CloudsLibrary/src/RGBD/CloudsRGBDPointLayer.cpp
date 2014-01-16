@@ -12,6 +12,18 @@
 
 CloudsRGBDPointLayer::CloudsRGBDPointLayer(){
 
+}
+
+
+
+CloudsRGBDPointLayer::~CloudsRGBDPointLayer(){
+    if(eventsRegistered){
+        ofAddListener(pointsGui->newGUIEvent, this, &CloudsRGBDPointLayer::selfGuiEvent);
+    }
+}
+
+void CloudsRGBDPointLayer::setDefaults(){
+    
 	drawPoints = true;
     pointColorBoost = .0;
     pointSkinBoost = .0;
@@ -26,16 +38,13 @@ CloudsRGBDPointLayer::CloudsRGBDPointLayer(){
     
     pointXSimplify = 2.0;
     pointYSimplify = 2.0;
-    pointShader = NULL;
     
     eventsRegistered = false;
     refreshPointcloud = true;
-}
-
-CloudsRGBDPointLayer::~CloudsRGBDPointLayer(){
-    if(eventsRegistered){
-        ofAddListener(pointsGui->newGUIEvent, this, &CloudsRGBDPointLayer::selfGuiEvent);
-    }
+    
+    normalMix = 0.0;
+    normalExtend = 0.0;
+    
 }
 
 ofxUISuperCanvas* CloudsRGBDPointLayer::createGui(ofxUISuperCanvas* gui, string name){

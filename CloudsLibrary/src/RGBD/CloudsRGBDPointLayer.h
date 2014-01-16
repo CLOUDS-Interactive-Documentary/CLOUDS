@@ -18,6 +18,8 @@ class CloudsRGBDPointLayer
     CloudsRGBDPointLayer();
     ~CloudsRGBDPointLayer();
     
+    void setDefaults();
+    
     ofxUISuperCanvas* pointsGui;
     
     ofxUISuperCanvas* createGui(ofxUISuperCanvas* gui, string name);
@@ -59,7 +61,6 @@ class CloudsRGBDPointLayer
     float actuatorAngle;
     float actuatorMaxAffect;
     ofVec3f actuator;
-    
     
     float normalMix;
     float normalExtend;

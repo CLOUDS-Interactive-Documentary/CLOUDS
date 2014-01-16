@@ -80,7 +80,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     ////////QUESTIONS
 
 	float visualSystemFadeValue;
-	
+    
 	ofCamera& getCameraRef(){
 		if(placingTransitionNodes){
 			return transitionCam;
@@ -254,6 +254,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool drawParticulate;
 	float attenuatedCameraDrift;
 	GPUParticles::Controller particulateController;
+    float particleCount;
     ofVec4f pointColor;
     
     ///PORTALS

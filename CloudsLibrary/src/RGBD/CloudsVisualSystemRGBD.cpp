@@ -71,6 +71,8 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
 	fillRetractionFalloff = 0.0;
     fillFaceMinRadius = 0.0;
 
+    particleCount = 3000;
+    
     bDrawOcclusion = true;
     occlusionVertexCount = 0;
    	occlusionXSimplify = 4.;
@@ -97,6 +99,9 @@ void CloudsVisualSystemRGBD::selfSetDefaults(){
     
 	//IF we move this before setup(NOT selfSetup) we can have the option of whether or not to load it to the gui
 	loadTransitionOptions("Transitions");
+    
+    pointLayer1.setDefaults();
+    pointLayer2.setDefaults();
     
 }
 
@@ -126,9 +131,9 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	//generatePoints();
 	generateMesh();
 		
-	particulateController.setParticleCount(5000);
-	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
-	particulateController.setup();
+//	particulateController.setParticleCount(particleCount);
+//	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+//	particulateController.setup();
 	
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
@@ -461,7 +466,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	particleGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
 	particleGui->addWidgetToHeader(toggle);
 	
-//    particleGui->addSlider("NUM PARTICLES", 10, 10000, &particulateController.nu);
+//    particleGui->addSlider("NUM PARTICLES", 10, 10000, &particleCount);
 	particleGui->addSlider("BIRTH RATE", 0, .01, &particulateController.birthRate);
 	particleGui->addSlider("BIRTH SPREAD", 10, 10000, &particulateController.birthSpread);
 
@@ -540,6 +545,11 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	if(drawParticulate){
 		
+        if(particulateController.getNumParticles() != particleCount){
+            particulateController.setParticleCount(particleCount);
+            particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
+            particulateController.setup();
+        }
 		particulateController.birthPlace = translatedHeadPosition;
 		
 		glDisable(GL_LIGHTING);
