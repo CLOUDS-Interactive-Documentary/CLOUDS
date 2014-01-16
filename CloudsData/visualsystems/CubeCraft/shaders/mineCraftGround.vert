@@ -18,12 +18,18 @@ uniform vec3 cameraOffset;
 
 uniform float maxHeight = 10.;
 
+
+uniform float fogDist;
+uniform float fogExpo;
+
 varying vec3 vertex;
 varying vec3 vNormal;
 varying vec3 norm;
 varying vec3 ePos;
 varying vec2 uv;
+
 varying float camDelta;
+varying float fogAmount;
 
 varying float doDiscard = .0;
 varying vec4 groundSample;
@@ -133,8 +139,6 @@ void main()
 	
 	vec3 boxCenter = gl_Color.xyz;
 	
-	camDelta = lengthSqr(cameraPos - boxCenter + cd);
-	
 	if( camDelta < cameraCutoffDistance*cameraCutoffDistance)
 	{
 		doDiscard = 1.;
@@ -153,11 +157,12 @@ void main()
 	upperBoundY = floor(xzNoise * maxHeight) + .5;
 	lowerBoundY = upperBoundY - 1.;
 	
-	if(v.y > 0.)
+	if(v.y > 0.1)
 	{
 		v.y += floor(xzNoise * maxHeight);
+		
+		//v.xz *= .9;
 	}
-	
 	vertex = v.xyz;
 	
 	v.xyz *= cubeScale;
@@ -170,5 +175,10 @@ void main()
 	vec4 ecPosition = gl_ModelViewMatrix * (v + vec4(boxCenter, 0.) );
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
 	gl_Position = gl_ProjectionMatrix * ecPosition;
+	
+//	camDelta = length(cameraPos - boxCenter + cd);
+	
+	camDelta = length( ecPosition.xyz );
+	fogAmount = min(1., max(0., 1.25 * pow( (camDelta / (fogDist*30.)), fogExpo) ) );
 }
 
