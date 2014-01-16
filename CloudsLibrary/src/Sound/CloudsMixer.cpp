@@ -116,7 +116,7 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
     // mix
     for (int i=0; i<bufferSize*nChannels; i++)
     {
-        output[i] = musicArgs.buffer[i]*musicVol + diageticArgs.buffer[i]*diageticVol;
+        output[i] = (musicArgs.buffer[i]*musicVol*fval) + diageticArgs.buffer[i]*diageticVol;
         
         // Luke's Compressor
         float current = abs(output[i]);
@@ -129,7 +129,7 @@ void CloudsMixer::audioOut(float * output, int bufferSize, int nChannels )
         }
         if(followgain>thresh) gain = 1.0-((followgain-thresh)*ratio); else gain = 1.0;
         
-        output[i]=output[i]*gain*fval*MASTER_GAIN;
+        output[i]=output[i]*gain*MASTER_GAIN;
         
         // clip
         if (output[i] > 1) {
