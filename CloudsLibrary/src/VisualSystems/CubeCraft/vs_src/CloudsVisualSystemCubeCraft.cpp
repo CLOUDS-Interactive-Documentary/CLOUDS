@@ -329,7 +329,7 @@ void CloudsVisualSystemCubeCraft::selfSetup()
 	colorMap.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png");
 	
 	//cout << "Number of boxes == " << (dimX * dimY * dimZ) << endl;
-	ofxObjLoader::load( getVisualSystemDataPath() + "models/cube_1.obj", cubeMesh );
+	ofxObjLoader::load( getVisualSystemDataPath() + "models/box.obj", cubeMesh );
 	
 	loadShaders();
 	

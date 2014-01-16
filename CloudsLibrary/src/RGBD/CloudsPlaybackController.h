@@ -88,13 +88,16 @@ class CloudsPlaybackController {
 
     CloudsVisualSystem* currentVisualSystem;
     void createInterludeSoundQueue();
+    int numActsCreated;
+    
 	//RGBD STUFF
 	CloudsVisualSystemRGBD* rgbdVisualSystem;
 	//if there is a system playing this wil be non-null
 	CloudsIntroSequence* introSequence;
 	CloudsVisualSystemClusterMap* clusterMap;
 	CloudsVisualSystem* interludeSystem;
-    
+    float interludeStartTime;
+	
 	CloudsVisualSystemPreset nextVisualSystemPreset;	
 	CloudsVisualSystemPreset currentVisualSystemPreset;
 		
@@ -135,6 +138,8 @@ class CloudsPlaybackController {
     void showClusterMap();
     void showInterlude();
     void cleanupInterlude();
+    
+    float prevCrossFadeValue;
 };
 
 

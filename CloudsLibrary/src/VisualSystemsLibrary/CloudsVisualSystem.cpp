@@ -466,7 +466,8 @@ void CloudsVisualSystem::update(ofEventArgs & args)
         
 		
 		//update camera
-		translatedHeadPosition = getRGBDVideoPlayer().headPosition * pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ);
+        ofVec3f newHeadPosition = getRGBDVideoPlayer().headPosition * pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ);
+		translatedHeadPosition += (newHeadPosition - translatedHeadPosition) * .1;
 		cloudsCamera.lookTarget = translatedHeadPosition;
 		
         selfUpdate();
@@ -704,7 +705,8 @@ void CloudsVisualSystem::drawScene(){
     ofPopMatrix();
 
 #ifdef OCULUS_RIFT
-    if(drawCursorMode > DRAW_CURSOR_NONE){
+    // EZ: Only draw cursor on _Intro for now
+    if(drawCursorMode > DRAW_CURSOR_NONE && getSystemName() == "_Intro"){
         ofPushStyle();
         ofPushMatrix();
         glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -1685,9 +1687,13 @@ void CloudsVisualSystem::setupCameraGui()
 
 CloudsVisualSystem::RGBDTransitionType CloudsVisualSystem::getTransitionType()
 {
+    if(transitionRadio == NULL){
+        return;
+    }
+    
 	if(transitionRadio->getActive() == NULL)
 		return WHIP_PAN;
-	
+
 	string activeTransitionType = transitionRadio->getActive()->getName();
 	if(activeTransitionType == "2D"){
 		cout << "TWO_DIMENSIONAL" << endl;

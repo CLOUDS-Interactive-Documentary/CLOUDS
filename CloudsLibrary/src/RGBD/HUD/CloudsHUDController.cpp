@@ -105,9 +105,12 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
 //	cout << "Clip is " <<  clip.getLinkName() << endl;
 //	cout << "speaker: " << speaker.firstName << " " << speaker.lastName << endl;
 	
-// LOWER THIRD
-	
+#ifdef KINECT_INPUT
+    // EZ: No lower third in Kinect version
+    return;
+#endif
     
+// LOWER THIRD
     //update lower third, but only if the speaker has changed
     if(speaker.fcpID != CloudsSpeaker::speakers[ clip.person ].fcpID){
         speaker = CloudsSpeaker::speakers[ clip.person ];
@@ -557,20 +560,17 @@ void CloudsHUDController::draw(){
     }
     
 	drawLayer(CLOUDS_HUD_QUESTION);
-	
-//	cout << "drawing question: " << hudLabelMap["QuestionTextBox"]->getText() << endl;
-	
-//	drawLayer(CLOUDS_HUD_LOWER_THIRD);
+    drawLayer(CLOUDS_HUD_LOWER_THIRD);
 	drawLayer(CLOUDS_HUD_PROJECT_EXAMPLE);
 	drawLayer(CLOUDS_HUD_MAP);
     
-    for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
+    for (map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it){
         (it->second)->draw();
     }
     
-	if(bDrawHome)
+	if (bDrawHome && hudOpenMap[CLOUDS_HUD_LOWER_THIRD]){
 		home.draw();
-	
+    }
 	
 	ofPopMatrix();
 	ofPopStyle();
@@ -683,7 +683,7 @@ void CloudsHUDController::drawLayer3D(CloudsHUDLayerSet layer, ofCamera* cam, of
     drawLayer(layer);
     
     // Draw the home button if we're on the right layer.
-    if (layer == CLOUDS_HUD_LOWER_THIRD && bDrawHome) {
+    if (layer == CLOUDS_HUD_LOWER_THIRD && bDrawHome && hudOpenMap[CLOUDS_HUD_LOWER_THIRD]) {
         home.draw();
     }
     

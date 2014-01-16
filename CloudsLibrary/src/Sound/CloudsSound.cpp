@@ -35,8 +35,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         rtcmixmain();
         maxmsp_rtsetparams(sr, nchans, framesize, NULL, NULL);
         
-        dopull = true;
-        in_tunnel = false;
+        dopull = false;
         // launch initial setup score
         RTcmixParseScoreFile("cmixinit.sco");
         first_vec = true; // we haven't had audio yet
@@ -248,12 +247,15 @@ void CloudsSound::enterTunnel()
     float volume = 1.0; // how load does this sound play?
 
     if(LUKEDEBUG) cout << "sound: enterTunnel()" << endl;
+    if(dopull){
+        ofLogError("CloudsSound::enterTunnel") << "Do pull already enabled";
+    }
 
+//    stopMusic(); //prophyl
+    
     dopull = true;
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0, ampsym, PF_TUNNEL_BUS);
-    in_tunnel = true;
-    SCHEDULEBANG(477.0); // schedule a bang at end of tunnel
 }
 
 void CloudsSound::exitTunnel()
@@ -263,7 +265,7 @@ void CloudsSound::exitTunnel()
     if(LUKEDEBUG) cout << "sound: exitTunnel()" << endl;
 
     PFIELD_SCHED(0., fd, PF_TUNNEL_BUS, "ramp_10");
-    in_tunnel = false;
+    dopull = false;
 }
 
 void CloudsSound::enterClusterMap()
@@ -277,7 +279,11 @@ void CloudsSound::enterClusterMap()
     
     if(LUKEDEBUG) cout << "sound: enterClusterMap()" << endl;
     
-    stopMusic(); // prophylactic
+    if(dopull){
+        ofLogError("CloudsSound::enterTunnel") << "Do pull already enabled";
+    }
+    
+    //stopMusic(); // prophylactic
 
     dopull = true;
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
@@ -293,6 +299,7 @@ void CloudsSound::exitClusterMap()
     
     PFIELD_SCHED(0., fd, PF_CLUSTERMAP_BUS, "ramp_10");
     whichdream = (whichdream+1)%3;
+    dopull = false;
 }
 
 
@@ -392,7 +399,6 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
         // not using right now
         if (check_bang() == 1) {
             if(LUKEDEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
-            if(in_tunnel) enterTunnel();
         }
 
         if(LUKEDEBUG)

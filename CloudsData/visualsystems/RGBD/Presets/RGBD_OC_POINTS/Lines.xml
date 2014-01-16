@@ -18,32 +18,32 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Line Color Boost</Name>
-    <Value>0.261083752</Value>
+    <Value>0.310344815</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Line Skin Boost</Name>
-    <Value>0.285714298</Value>
+    <Value>0.192118227</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Line Thickness</Name>
-    <Value>1.226601005</Value>
+    <Value>1.965517282</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Line Spacing</Name>
-    <Value>2.221674919</Value>
+    <Value>2.261083603</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Line Face Overlap</Name>
-    <Value>0.733990133</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Line Granularity</Name>
-    <Value>3.261083603</Value>
+    <Value>2.729063988</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -58,7 +58,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Max Actuator Retr</Name>
-    <Value>0.000000000</Value>
+    <Value>0.123152710</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
