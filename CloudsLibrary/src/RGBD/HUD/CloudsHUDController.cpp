@@ -443,14 +443,6 @@ ofVec2f CloudsHUDController::getCenter(bool bScaled){
     return ofVec2f(hudBounds.width * 0.5, hudBounds.height * 0.5) * (bScaled? scaleAmt : 1.0);
 }
 
-void CloudsHUDController::setDrawHud(bool val){
-    bDrawHud = val;
-}
-
-bool CloudsHUDController::getDrawHud(){
-    return bDrawHud;
-}
-
 void CloudsHUDController::update(){
 	for(int i = 0; i < allLayers.size(); i++){
 		allLayers[i]->update();
@@ -485,6 +477,18 @@ void CloudsHUDController::update(){
 
 void CloudsHUDController::setHomeEnabled(bool enable){
 	bDrawHome = enable;
+}
+
+bool CloudsHUDController::isHomeEnabled(){
+    return bDrawHome;
+}
+
+void CloudsHUDController::setHudEnabled(bool enable){
+	bDrawHud = enable;
+}
+
+bool CloudsHUDController::isHudEnabled(){
+    return bDrawHud;
 }
 
 void CloudsHUDController::draw(){

@@ -455,7 +455,7 @@ void CloudsPlaybackController::updateTransition(){
                 introSequence->setDrawToScreen(false);
                 
                 // TODO: Look into using Intro events for setting bDrawHud, so it works like everything else.
-                hud.setDrawHud(true);
+                hud.setHudEnabled(true);
 
                 showIntro(startingNodes);
                 break;
