@@ -131,7 +131,7 @@ void CloudsHUDController::questionHoverOff(){
 void CloudsHUDController::playCued(){
     if (bLowerThirdCued) {
         // display the lower third if the cued clip is still running
-        if (ofGetElapsedTimef() > cuedClipEndTime) {
+        if (ofGetElapsedTimef() < cuedClipEndTime) {
             animateOn(CLOUDS_HUD_LOWER_THIRD);
         }
         bLowerThirdCued = false;
