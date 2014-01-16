@@ -62,6 +62,7 @@ class CloudsHUDController {
 	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void animateOff(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
 	void respondToClip(CloudsClip& clip);
+    void playCued();
 	
 	map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> > layerSets;
 	vector<CloudsHUDLayer*> allLayers;
@@ -110,6 +111,9 @@ class CloudsHUDController {
     bool    bDrawHud;
     bool    bSkipAVideoFrame;
     
+    bool    bLowerThirdCued;
+    bool    bVisualSystemDisplayed;
+    float   cuedClipEndTime;
 	
     void drawLayer(CloudsHUDLayerSet layer);
 #ifdef OCULUS_RIFT

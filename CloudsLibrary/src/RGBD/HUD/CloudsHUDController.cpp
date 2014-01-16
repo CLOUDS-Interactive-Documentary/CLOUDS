@@ -19,6 +19,9 @@ CloudsHUDController::CloudsHUDController(){
     bSkipAVideoFrame = false;
     bDrawHud = true;
     bDrawHome = true;
+    
+    bVisualSystemDisplayed = false;
+    bLowerThirdCued = false;
 	
     scaleAmt = 1.0;
     margin = 40;
@@ -58,10 +61,12 @@ void CloudsHUDController::clipBegan(CloudsClipEventArgs& args){
 void CloudsHUDController::visualSystemBegan(CloudsVisualSystemEventArgs& args){
 	bDrawHud = false;
 //    animateOff();
+    bVisualSystemDisplayed = true;
 }
 
 void CloudsHUDController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 	bDrawHud = true;
+    bVisualSystemDisplayed = false;
 }
 
 void CloudsHUDController::questionProposed(CloudsQuestionEventArgs& args){
@@ -91,7 +96,17 @@ void CloudsHUDController::respondToClip(CloudsClip& clip){
     //update lower third, but only if the speaker has changed
     if(speaker.fcpID != CloudsSpeaker::speakers[ clip.person ].fcpID){
         speaker = CloudsSpeaker::speakers[ clip.person ];
-        populateLowerThird(speaker.firstName, speaker.lastName, speaker.location2, speaker.title, speaker.byline1, true );
+        populateLowerThird(speaker.firstName, speaker.lastName, speaker.location2, speaker.title, speaker.byline1, false );
+        
+        if (bVisualSystemDisplayed) {
+            // cue up the lower third until the visual system is done
+            bLowerThirdCued = true;
+            cuedClipEndTime = ofGetElapsedTimef() + clip.getDuration();
+        }
+        else {
+            // display the lower third right away
+            animateOn(CLOUDS_HUD_LOWER_THIRD);
+        }
     }
     
 // PROJECT EXAMPLE
@@ -111,6 +126,16 @@ void CloudsHUDController::questionHoverOn(string question){
 
 void CloudsHUDController::questionHoverOff(){
 	animateOff( CLOUDS_HUD_QUESTION );
+}
+
+void CloudsHUDController::playCued(){
+    if (bLowerThirdCued) {
+        // display the lower third if the cued clip is still running
+        if (ofGetElapsedTimef() > cuedClipEndTime) {
+            animateOn(CLOUDS_HUD_LOWER_THIRD);
+        }
+        bLowerThirdCued = false;
+    }
 }
 
 void CloudsHUDController::populateMap( string leftBox, string rightBox, bool forceOn){
