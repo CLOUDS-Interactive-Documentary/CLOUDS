@@ -29,14 +29,6 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Question Tint B</WidgetName>
-                <WidgetID>18</WidgetID>
-                <WidgetCanvasParent>Questions</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
                 <WidgetName>Max Distance</WidgetName>
                 <WidgetID>7</WidgetID>
                 <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>

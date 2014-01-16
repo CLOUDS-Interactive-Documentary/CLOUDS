@@ -1,0 +1,98 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Points 1</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>392.000000000</XPosition>
+    <YPosition>40.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Face Min Radius</Name>
+    <Value>336.945831299</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Face Falloff</Name>
+    <Value>546.798034668</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Alpha</Name>
+    <Value>0.798029542</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Color Boost</Name>
+    <Value>0.344827592</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Skin Boost</Name>
+    <Value>0.334975362</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point X Simplify</Name>
+    <Value>1.655172348</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Y Simplify</Name>
+    <Value>1.586206913</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Point Size</Name>
+    <HighValue>1.034482718</HighValue>
+    <LowValue>0.339901477</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Face Overlap</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Flow</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Points Flow Up</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Actuator Speed</Name>
+    <Value>2.857142925</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Actuator Phase</Name>
+    <Value>230.541870117</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Actuator Angle</Name>
+    <Value>70.049263000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Actuator Max Affect</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Normal Mix</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Normal Extend</Name>
+    <Value>0.000000000</Value>
+</Widget>

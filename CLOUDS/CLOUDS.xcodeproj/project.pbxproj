@@ -41,6 +41,9 @@
 		A620E88318837DB300A02F5B /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E87718837DB300A02F5B /* lineMatchUtils.cpp */; };
 		A620E88418837DB300A02F5B /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E87718837DB300A02F5B /* lineMatchUtils.cpp */; };
 		A620E88518837DB300A02F5B /* lineMatchUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E87718837DB300A02F5B /* lineMatchUtils.cpp */; };
+		A633ABA6188786050088E767 /* CloudsRGBDPointLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633ABA4188786050088E767 /* CloudsRGBDPointLayer.cpp */; };
+		A633ABA7188786050088E767 /* CloudsRGBDPointLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633ABA4188786050088E767 /* CloudsRGBDPointLayer.cpp */; };
+		A633ABA8188786050088E767 /* CloudsRGBDPointLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633ABA4188786050088E767 /* CloudsRGBDPointLayer.cpp */; };
 		A646DAB41883D98C00DBBF37 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E86218837B9C00A02F5B /* CloudsVisualSystemMazeGenerator2.cpp */; };
 		A646DAB51883D98D00DBBF37 /* CloudsVisualSystemMazeGenerator2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E86218837B9C00A02F5B /* CloudsVisualSystemMazeGenerator2.cpp */; };
 		A646DAB61883D99200DBBF37 /* Maze2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A620E86418837B9C00A02F5B /* Maze2.cpp */; };
@@ -1866,6 +1869,8 @@
 		A620E87818837DB300A02F5B /* lineMatchUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lineMatchUtils.h; sourceTree = "<group>"; };
 		A620E87918837DB300A02F5B /* statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = statistics.h; sourceTree = "<group>"; };
 		A633AB9118867E0A0088E767 /* CloudsPortalEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsPortalEvents.h; sourceTree = "<group>"; };
+		A633ABA4188786050088E767 /* CloudsRGBDPointLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDPointLayer.cpp; sourceTree = "<group>"; };
+		A633ABA5188786050088E767 /* CloudsRGBDPointLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDPointLayer.h; sourceTree = "<group>"; };
 		AE6F01F11880716900677B60 /* CLOUDS_KINECTDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_KINECTDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		C1644CBB186F92010024E091 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -6344,6 +6349,8 @@
 		E7637D5E1734DE8A008ADC62 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
+				A633ABA4188786050088E767 /* CloudsRGBDPointLayer.cpp */,
+				A633ABA5188786050088E767 /* CloudsRGBDPointLayer.h */,
 				E7302C13187DF4C20079C5B8 /* GPUParticles */,
 				E7302BFE187DF4270079C5B8 /* HUD */,
 				64323E83187A4DAE00316058 /* Portal */,
@@ -8460,6 +8467,7 @@
 				AE6F01991880716900677B60 /* SineWave.cpp in Sources */,
 				AE6F019A1880716900677B60 /* StereoDelay.cpp in Sources */,
 				AE6F019B1880716900677B60 /* Synth.cpp in Sources */,
+				A633ABA8188786050088E767 /* CloudsRGBDPointLayer.cpp in Sources */,
 				AE6F019C1880716900677B60 /* TableLookupOsc.cpp in Sources */,
 				AE6F019D1880716900677B60 /* TonicFrames.cpp in Sources */,
 				AE6F019E1880716900677B60 /* json_reader.cpp in Sources */,
@@ -8998,6 +9006,7 @@
 				E7E1756C186E630F007D1EDC /* SawtoothWave.cpp in Sources */,
 				E7E1756E186E630F007D1EDC /* SineWave.cpp in Sources */,
 				E7E17570186E630F007D1EDC /* StereoDelay.cpp in Sources */,
+				A633ABA6188786050088E767 /* CloudsRGBDPointLayer.cpp in Sources */,
 				E7E17572186E630F007D1EDC /* Synth.cpp in Sources */,
 				E7E17574186E630F007D1EDC /* TableLookupOsc.cpp in Sources */,
 				E7E17576186E630F007D1EDC /* TonicFrames.cpp in Sources */,
@@ -9386,6 +9395,7 @@
 				E70CE2C618695CCC00955691 /* CastManager.cpp in Sources */,
 				E70CE2C818695CCC00955691 /* CloudsVisualSystemOpenP5Caustics.cpp in Sources */,
 				E70CE2CA18695CCC00955691 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp in Sources */,
+				A633ABA7188786050088E767 /* CloudsRGBDPointLayer.cpp in Sources */,
 				E70CE2CC18695CCC00955691 /* CloudsVisualSystemOpenP5Fifteen.cpp in Sources */,
 				E70CE2CE18695CCC00955691 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */,
 				E70CE2D018695CCC00955691 /* CloudsVisualSystemOpenP5Machine.cpp in Sources */,
