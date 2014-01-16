@@ -551,12 +551,13 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 //            particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
 //            particulateController.setup();
 //        }
-//		particulateController.birthPlace = translatedHeadPosition;
-//		glDisable(GL_LIGHTING);
-//		glDisable(GL_DEPTH_TEST);
-//		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
-//		particulateController.getPoints().color.a = pointColor.w;
-//		particulateController.update();
+        
+		particulateController.birthPlace = translatedHeadPosition;
+		glDisable(GL_LIGHTING);
+		glDisable(GL_DEPTH_TEST);
+		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
+		particulateController.getPoints().color.a = pointColor.w;
+		particulateController.update();
 	}
     
 	updateActuators();
@@ -1459,13 +1460,12 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 
 void CloudsVisualSystemRGBD::selfDraw(){
 	
-    
-    
     #ifdef OCULUS_RIFT
     if (hud != NULL) {
         hud->draw3D(getOculusRift().baseCamera);
     }
     #endif
+    
 	ofPushStyle();
 	ofPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -1629,7 +1629,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	if(drawParticulate){
 		glEnable(GL_DEPTH_TEST);
-//		particulateController.draw();
+		particulateController.draw();
 	}
 	
 	glPopAttrib();

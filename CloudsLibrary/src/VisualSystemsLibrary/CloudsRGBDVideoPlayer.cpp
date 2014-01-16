@@ -300,8 +300,6 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	if(clipPrerolled && !nextClipIsVO){
 		nextPlayer->update();
 	}
-	
-
 
     float  audioVolume =  maxVolume * currentClipVolumeAdjustment;
 
