@@ -911,14 +911,14 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
     if(run.actCount == 1){
         rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_POINTS");
     }
-    else{
-        rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_LINES");
-    }
+//    else{
+//        rgbdVisualSystem->loadPresetGUISFromName("RGBD_OC_LINES");
+//    }
 #else
-    if(run.actCount == 1){
+    if(run.actCount == 0){
         rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT1_POINTS");
     }
-    else if(run.actCount == 2){
+    else if(run.actCount == 1){
         rgbdVisualSystem->loadPresetGUISFromName("RGBD_ACT2_LINES");
     }
     else{
