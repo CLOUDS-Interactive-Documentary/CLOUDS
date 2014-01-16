@@ -704,7 +704,8 @@ void CloudsVisualSystem::drawScene(){
     ofPopMatrix();
 
 #ifdef OCULUS_RIFT
-    if(drawCursorMode > DRAW_CURSOR_NONE){
+    // EZ: Only draw cursor on _Intro for now
+    if(drawCursorMode > DRAW_CURSOR_NONE && getSystemName() == "_Intro"){
         ofPushStyle();
         ofPushMatrix();
         glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -3722,10 +3723,7 @@ void CloudsVisualSystem::drawCursor()
             }
             
 #ifdef KINECT_INPUT
-            // EZ: Only draw cursor on Intro for now.
-            if (getSystemName() == "_Intro") {
-                selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle);
-            }
+            selfDrawCursor(it->second.position, it->second.actionType > k4w::ActionState_Idle);
 #else
             // EZ: This ofGetMousePressed() call is ghetto but will do for now
             selfDrawCursor(it->second.position, ofGetMousePressed());
