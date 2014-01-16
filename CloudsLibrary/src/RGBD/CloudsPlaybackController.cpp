@@ -179,7 +179,7 @@ void CloudsPlaybackController::setup(){
 			startingNodes.erase(startingNodes.begin() + i);
         }
 #endif
-//        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "have we hacked reality?"){
+//        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "what does music look like?"){
 //			startingNodes.erase(startingNodes.begin() + i);            
 //        }
 		else{
@@ -316,23 +316,6 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
 	cue.mixLevel = 2;
 	sound.startMusicFX(0, cue.duration);
 	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel);
-	
-	//get all the presets in the range of 56 - 65
-	
-    //TODO Only intro cue on the first act...?
-//	CloudsClip& startClip = clips[0];
-//	if(startClip.hasStartingQuestion() && startClip.getTopicsWithQuestions().size() > 0){
-//		string startTopic    = startClip.getTopicsWithQuestions()[0];
-//		string startQuestion = startClip.getQuestionForTopic(startTopic);
-//		introCue.soundQuestionKey = startTopic + ":" + startQuestion;
-//	}
-    
-//	introCue.mixLevel = 2;
-//    
-//    for(int i = 0; i < sound.presets.size(); i++){
-//        //introCue.riggedPresetName =
-//        cout << i << "  " << sound.presets[i].name << endl;;
-//    }
 
 }
 
@@ -401,7 +384,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 #else
             transitionController.transitionFromInterlude(1.0);
 #endif
-            
 			cout << "TRANSITIONING FROM CLUSTER MAP IN UPDATE" << endl;
 
 		}
@@ -516,6 +498,10 @@ void CloudsPlaybackController::updateTransition(){
                 
                 introSequence = new CloudsIntroSequence();
                 introSequence->setup();
+#ifdef OCULUS_RIFT
+                introSequence->hud = &hud;
+                introSequence->setupHUDGui();
+#endif
                 introSequence->setDrawToScreen(false);
                 
                 // TODO: Look into using Intro events for setting bDrawHud, so it works like everything else.
@@ -583,12 +569,12 @@ void CloudsPlaybackController::updateTransition(){
 #ifdef OCULUS_RIFT
                 showInterlude();
 #else
-                if(run.actCount == 1){
-                    showClusterMap();
-                }
-                else {
+//                if(run.actCount == 1){
+//                    showClusterMap();
+//                }
+//                else {
                     showInterlude();
-                }
+//                }
 #endif
 				createInterludeSoundQueue();
 
@@ -655,7 +641,11 @@ void CloudsPlaybackController::updateTransition(){
                 break;
         }
 	}
-    //crossfadeValue += (transitionController.getFadeValue() - crossfadeValue)*.1;
+    
+    if(abs(crossfadeValue - transitionController.getFadeValue()) > .5){
+        ofLogError("TRANSITION JUMP");
+    }
+    
     crossfadeValue = transitionController.getFadeValue();
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 	if(transitionController.transitioning){
@@ -680,27 +670,15 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 		
 		currentVisualSystem->selfPostDraw();
         
-#ifdef OCULUS_RIFT
-        //      ofVec2f overlaySize = hud.getSize();
-        //      CloudsVisualSystem::getOculusRift().beginOverlay(-230, overlaySize.x,overlaySize.y);
-#endif
-        
 #ifdef SHOW_SUBTITLES
         CloudsVisualSystem::getRGBDVideoPlayer().drawSubtitles(CloudsVisualSystem::getStaticRenderTarget().getWidth()/2,
                                                                (float)CloudsVisualSystem::getStaticRenderTarget().getHeight()*0.8);
 #endif
         
-#ifdef OCULUS_RIFT
-        //JG WAS MISSING::
-//        hud.drawOverlay(overlaySize);
-#else
+#ifndef OCULUS_RIFT
 		hud.draw();
 #endif
         
-#ifdef OCULUS_RIFT
-        //       CloudsVisualSystem::getOculusRift().endOverlay();
-#endif
-		
 		ofPopStyle();
 	}
     else{
@@ -999,7 +977,7 @@ void CloudsPlaybackController::showRGBDVisualSystem(){
         rgbdVisualSystem->startTransitionIn( CloudsVisualSystemRGBD::FLY_THROUGH );
     }
     else{
-        rgbdVisualSystem->startTransitionIn( currentVisualSystem->getTransitionType() );
+        rgbdVisualSystem->startTransitionIn( CloudsVisualSystemRGBD::FLY_THROUGH );
     }
 	
 	rgbdVisualSystem->playSystem();

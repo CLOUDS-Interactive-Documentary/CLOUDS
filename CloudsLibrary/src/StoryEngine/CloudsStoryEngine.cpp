@@ -396,6 +396,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
     hardIntros.push_back("biology and code");
     hardIntros.push_back("audiovisualization");
     hardIntros.push_back("big data"); 
+    hardIntros.push_back("videogames");
     
     if(run.actCount == 0 && ofContains(hardIntros, seedTopic)){
         run.actCount = 1; //force
