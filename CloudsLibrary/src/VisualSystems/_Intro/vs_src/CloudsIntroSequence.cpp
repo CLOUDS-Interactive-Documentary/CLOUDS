@@ -122,7 +122,7 @@ void CloudsIntroSequence::selfUpdate(){
         if (cursorNearCenter) {
             if (bCursorInCenter) {
                 // already started, let's see if we've been there long enough
-                if (ofGetElapsedTimef() - startTimeCursorInCenter > 2) {
+                if (ofGetElapsedTimef() - startTimeCursorInCenter > 1.25) {
                     ofMouseEventArgs args;
                     selfMousePressed(args);
                 }

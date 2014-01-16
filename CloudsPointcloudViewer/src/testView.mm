@@ -37,21 +37,20 @@
 	rgbdVisualSystem.setDrawToScreen(false);
 	hud.setup();
 
-	rgbdVisualSystem.playSystem();
+    rgbd.setup();
+
 #ifdef OCULUS_RIFT
     rgbdVisualSystem.hud = &hud;
     rgbdVisualSystem.setupHUDGui();
-	rgbdVisualSystem.loadPresetGUISFromName("RGBD_OC_POINTS");
+//	rgbdVisualSystem.loadPresetGUISFromName("RGBD_OC_POINTS");
 #else
 //	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
-	rgbdVisualSystem.loadPresetGUISFromName("Working");    
+//	rgbdVisualSystem.loadPresetGUISFromName("Working");
 #endif
 	srand(ofGetSeconds());
 	
 	[self loadClip: parser.getRandomClip(true, false)];
 	
-	rgbd.setup();
-
 	rgbd.playSystem();
 	
 	

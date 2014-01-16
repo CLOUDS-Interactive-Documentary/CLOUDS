@@ -19803,7 +19803,9 @@
 </system>
 <system name="OpenP5NoiseSphere_jm_02aSun_things1">
     <keywords>science fiction|synesthesia|dreams|audiovisualization</keywords>
-    <links></links>
+    <links>
+        <clip>Intro - AudioVisualization</clip>
+    </links>
     <suppressions>
         <clip>Aaron - dreaming together</clip>
         <clip>Aaron - lego creatures</clip>
@@ -19816,7 +19818,6 @@
         <clip>Golan - audiovisual concept</clip>
         <clip>Golan - playable image</clip>
         <clip>Higa - dreaming of problems</clip>
-        <clip>Intro - AudioVisualization</clip>
         <clip>JTNimoy - Dream</clip>
         <clip>JTNimoy - Dream1</clip>
         <clip>Julian - Ray Bradbury story</clip>
@@ -19903,12 +19904,13 @@
         <clip>Shantell - Live performance,</clip>
         <clip>Shantell - drawing with noise</clip>
         <clip>Sophy - made of photons</clip>
+        <clip>Intro - AudioVisualization</clip>
     </suppressions>
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-    <sound_exclude_vo>1</sound_exclude_vo>
+    <sound_exclude_vo>0</sound_exclude_vo>
     <sound_allow_vo>0</sound_allow_vo>
     <interlude>1</interlude>
 </system>

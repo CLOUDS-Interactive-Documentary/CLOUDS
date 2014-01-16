@@ -28,7 +28,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>RGBD_ACT1_POINTS</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>RGBD_ACT3_MESH</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -48,7 +48,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>RGBD_OC_POINTS</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

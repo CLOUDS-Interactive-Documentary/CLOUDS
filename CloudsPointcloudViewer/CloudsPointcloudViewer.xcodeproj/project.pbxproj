@@ -29,6 +29,7 @@
 		A600C0AD1880CD320041787F /* ofxSubtitleUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A600C0921880CD320041787F /* ofxSubtitleUnit.cpp */; };
 		A633AB9D188735E10088E767 /* CloudsRGBDPointLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB9B188735E10088E767 /* CloudsRGBDPointLayer.cpp */; };
 		A633AB9E188735E10088E767 /* CloudsRGBDPointLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A633AB9B188735E10088E767 /* CloudsRGBDPointLayer.cpp */; };
+		A6DEEAC31888454A00BBC92D /* CloudsTransitionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507E85D91887AF9F00244675 /* CloudsTransitionController.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -1687,6 +1688,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsPointcloudViewer" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1927,6 +1930,7 @@
 				E7A3F22718321B0600EADD94 /* ofxTLColorTrack.cpp in Sources */,
 				E7A3F22818321B0600EADD94 /* ofxTLCurves.cpp in Sources */,
 				E7A3F22918321B0600EADD94 /* ofxTLEmptyKeyframes.cpp in Sources */,
+				A6DEEAC31888454A00BBC92D /* CloudsTransitionController.cpp in Sources */,
 				E7A3F22A18321B0600EADD94 /* ofxTLEmptyTrack.cpp in Sources */,
 				E7A3F22B18321B0600EADD94 /* ofxTLFlags.cpp in Sources */,
 				E7A3F22C18321B0600EADD94 /* ofxTLImageSequence.cpp in Sources */,

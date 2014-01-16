@@ -88,6 +88,8 @@ class CloudsPlaybackController {
 
     CloudsVisualSystem* currentVisualSystem;
     void createInterludeSoundQueue();
+    int numActsCreated;
+    
 	//RGBD STUFF
 	CloudsVisualSystemRGBD* rgbdVisualSystem;
 	//if there is a system playing this wil be non-null

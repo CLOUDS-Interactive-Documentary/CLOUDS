@@ -55,3 +55,13 @@
     <Name>default</Name>
     <Value>0</Value>
 </Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>shoulders</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>shouldersLong</Name>
+    <Value>0</Value>
+</Widget>

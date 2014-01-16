@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Points 2</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>316.000000000</YPosition>
+    <XPosition>-68.000000000</XPosition>
+    <YPosition>308.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,42 +13,42 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Face Min Radius</Name>
-    <Value>286.699523926</Value>
+    <Value>493.596038818</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Face Falloff</Name>
-    <Value>280.788177490</Value>
+    <Value>224.630538940</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Alpha</Name>
-    <Value>0.379310340</Value>
+    <Value>0.330049247</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Color Boost</Name>
-    <Value>0.453201979</Value>
+    <Value>0.315270931</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Skin Boost</Name>
-    <Value>0.344827592</Value>
+    <Value>0.310344815</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point X Simplify</Name>
-    <Value>1.586206913</Value>
+    <Value>1.793103456</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Y Simplify</Name>
-    <Value>1.586206913</Value>
+    <Value>1.862068892</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Point Size</Name>
-    <HighValue>0.650246322</HighValue>
+    <HighValue>0.857142925</HighValue>
     <LowValue>0.157635555</LowValue>
 </Widget>
 <Widget>
@@ -59,7 +59,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Point Flow</Name>
-    <Value>0.000000000</Value>
+    <Value>0.142857149</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -69,7 +69,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Speed</Name>
-    <Value>1.280788183</Value>
+    <Value>2.463054180</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -79,12 +79,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Angle</Name>
-    <Value>0.000000000</Value>
+    <Value>72.709358215</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Actuator Max Affect</Name>
-    <Value>0.650246322</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
