@@ -10,7 +10,7 @@
 		<pattr name = "d6" value = "0 10" />
 		<pattr name = "d7" value = "6 10" />
 		<pattr name = "d8" value = "0 10" />
-		<pattr name = "harmony" value = "14" />
+		<pattr name = "harmony" value = "2" />
 		<pattr name = "rhythm" value = "28" />
 		<pattr name = "tempo" value = "120" />
 		<pattr name = "pname" value = "general issue slowwaves" />
@@ -20,7 +20,7 @@
 		<pattr name = "orch4" value = "off" />
 		<pattr name = "orch5" value = "off" />
 		<pattr name = "energy" value = "0" />
-		<pattr name = "disabled" value = "" />
+		<pattr name = "disabled" value = "1" />
 		<pattr name = "explicit_topics" value = "" />
 		<pattr name = "start_question" value = "" />
 		<pattr name = "amp1" value = "0.461538" />
@@ -3526,7 +3526,7 @@
 		<pattr name = "energy" value = "1" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
+		<pattr name = "start_question" value = "&quot;open source:What is open source all about?&quot;" />
 		<pattr name = "amp1" value = "1." />
 		<pattr name = "amp2" value = "0.384615" />
 		<pattr name = "amp3" value = "0.230769" />
@@ -3622,7 +3622,7 @@
 		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "none" />
+		<pattr name = "start_question" value = "&quot;biology and code:What is the code of life?&quot;" />
 		<pattr name = "amp1" value = "0.230769" />
 		<pattr name = "amp2" value = "1." />
 		<pattr name = "amp3" value = "1." />
@@ -4582,7 +4582,7 @@
 		<pattr name = "energy" value = "0" />
 		<pattr name = "disabled" value = "0" />
 		<pattr name = "explicit_topics" value = "&lt;empty&gt;" />
-		<pattr name = "start_question" value = "&quot;coding:How can the logic of coding be creative?&quot;" />
+		<pattr name = "start_question" value = "&quot;videogames:How do videogames change the way we see?&quot;" />
 		<pattr name = "amp1" value = "0.384615" />
 		<pattr name = "amp2" value = "0.384615" />
 		<pattr name = "amp3" value = "1." />
