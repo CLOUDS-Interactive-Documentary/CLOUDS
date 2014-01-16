@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Max Point Size</Name>
-    <Value>0.293999821</Value>
+    <Value>0.344474703</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Max Distance</Name>
-    <Value>130.167938232</Value>
+    <Value>185.396530151</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Perlin Amplitude</Name>
-    <Value>0.000000000</Value>
+    <Value>0.018661477</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,5 +43,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Wireframe Alpha</Name>
-    <Value>0.452200383</Value>
+    <Value>0.458755076</Value>
 </Widget>

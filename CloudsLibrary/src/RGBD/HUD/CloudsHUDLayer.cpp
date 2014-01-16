@@ -49,24 +49,35 @@ void CloudsHUDLayer::parseDirectory(string svgDirectoryPath){
 	}
 }
 
-void CloudsHUDLayer::start(){
+void CloudsHUDLayer::start(bool animate){
     if( bIsOpen ){
         return;
     }
     bIsOpen = true;
     
-	startTime = ofGetElapsedTimef();
-	animating = true;
+    if (animate) {
+        startTime = ofGetElapsedTimef();
+        animating = true;
+    }
+    else {
+        drawRect.set(startPoint.x, startPoint.y, 0, 0);
+        drawRect.growToInclude(endPoint);
+    }
 }
 
-void CloudsHUDLayer::close() {
+void CloudsHUDLayer::close(bool animate) {
     if( !bIsOpen ){
         return;
     }
     bIsOpen = false;
     
-    startTime = ofGetElapsedTimef();
-	animating = true;
+    if (animate) {
+        startTime = ofGetElapsedTimef();
+        animating = true;
+    }
+    else {
+        drawRect.set(startPoint.x, startPoint.y, 0, 0);
+    }
 }
 
 void CloudsHUDLayer::update(){

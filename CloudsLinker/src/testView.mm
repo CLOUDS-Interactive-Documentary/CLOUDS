@@ -40,6 +40,15 @@
 		cout << projectExamples[i].getSpeakerFirstName() << " " << projectExamples[i].getSpeakerLastName() << ": " << projectExamples[i].name << endl;
 	}
 	
+    
+	if(!ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
+		ofSystemAlertDialog("Could not find movie file path. \
+							Create a file called CloudsMovieDirectory.txt \
+							that contains one line, the path to your movies folder");
+	}
+	
+	parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
+    
 	CloudsExporter::saveGephiCSV(parser);
 	CloudsExporter::savePajekNetwork(parser);
 }
@@ -236,18 +245,32 @@
 		
 	preview.stop();
 	
-	string clipFilePath = relinkFilePath( clip.sourceVideoFilePath );
-	movieSuccessfullyLoaded = preview.loadMovie(clipFilePath) ;
-	if(!movieSuccessfullyLoaded){
-		ofLogError() << "Clip " << clipFilePath << " failed to load.";
-        return;
-	}
-	
-	preview.setFrame(clip.startFrame);
+    if(clip.hasMediaAsset){
+        
+        movieSuccessfullyLoaded = preview.loadMovie(clip.combinedVideoPath);
+        if(!movieSuccessfullyLoaded){
+            ofLogError() << "Clip " << clip.combinedVideoPath << " failed to load.";
+            return;
+        }
+        clipEndFrame = preview.getTotalNumFrames();
+        playingRGBD = true;
+    }
+    else{
+        string clipFilePath = relinkFilePath( clip.sourceVideoFilePath );
+        movieSuccessfullyLoaded = preview.loadMovie(clipFilePath) ;
+        if(!movieSuccessfullyLoaded){
+            ofLogError() << "Clip " << clipFilePath << " failed to load.";
+            return;
+        }
+        
+        preview.setFrame(clip.startFrame);
+        playingRGBD = false;
+        clipEndFrame = clip.endFrame;
+    }
+    
 	preview.play();
-	
+
 	currentPlayingClip = clip;
-	clipEndFrame = clip.endFrame;	
 }
 
 - (IBAction) autolinkByNumber:(id)sender

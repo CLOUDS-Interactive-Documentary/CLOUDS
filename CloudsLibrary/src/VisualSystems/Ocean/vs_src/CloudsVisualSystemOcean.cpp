@@ -84,7 +84,6 @@ void CloudsVisualSystemOcean::selfSetupGuis(){
 	oceanGui->addSlider("FOG DENSITY", 0, .3, &fogDensity);
 	
 	ofAddListener(oceanGui->newGUIEvent, this, &CloudsVisualSystemOcean::selfGuiEvent);
-	
     guis.push_back(oceanGui);
     guimap[oceanGui->getName()] = oceanGui;
 	
@@ -101,8 +100,8 @@ void CloudsVisualSystemOcean::selfSetupGuis(){
 	oceanCameraGui->addSlider("MAX LOOK DOWN ROT", 0, 90, &maxLookDownRot);
 	
     guis.push_back(oceanCameraGui);
-    guimap[oceanGui->getName()] = oceanCameraGui;
-
+    guimap[oceanCameraGui->getName()] = oceanCameraGui;
+    
 	oceanCamera.ocean = &ocean;
 	
 	blendMode = OF_BLENDMODE_ALPHA;
@@ -162,7 +161,7 @@ void CloudsVisualSystemOcean::selfUpdate(){
 	//now we can move the camera up and down based on mouse position
 	if(useOceanCam){
         //MA: changed ofGetHeight() to getCanvasHeight()
-		float mouseYPercent = 1.*GetCloudsInputY() / getCanvasHeight();
+		float mouseYPercent = 1. * GetCloudsInputY() / getCanvasHeight();
 		if(mouseYPercent > .6){
 			currentLookRot += (ofMap(mouseYPercent, .6, 1.0, 0, -maxLookUpRot, true) - currentLookRot) * .005;
 		}

@@ -12,9 +12,11 @@
 #include "CloudsVisualSystem.h"
 //#include "ofxGameCamera.h"
 #include "CloudsClip.h"
+#include "CloudsEvents.h"
 #include "CloudsPortal.h"
 //#include "CloudsRun.h"
 #include "ofxFTGL.h"
+#include "CloudsPortalEvents.h"
 
 class CloudsIntroSequence : public CloudsVisualSystem {
   public:
@@ -73,7 +75,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	void autoSelectQuestion();
 	CloudsPortal* getSelectedQuestion();
-	
+    
+    static CloudsVisualSystemEvents events;
+    
   protected:
 		
 	ofxUISuperCanvas* questionGui;
@@ -182,5 +186,10 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofImage sprite;
 
     ofVec3f cursor;
+    
+#ifdef OCULUS_RIFT
+    bool bCursorInCenter;
+    float startTimeCursorInCenter;
+#endif
     
 };

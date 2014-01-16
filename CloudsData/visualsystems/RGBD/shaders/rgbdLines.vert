@@ -133,19 +133,21 @@ void main(void){
 						baseDepth, 1.0);
 
 	//soften near the bottom edge
-	edgeAttenuate = (1.0 - max( 0.0, pow( samplePos.y / depthRect.w, edgeAttenuateExponent) + edgeAttenuateBase ));
-	//but allow parts closer in z to get bright still
-	edgeAttenuate += (1.0 - edgeAttenuate) * pow(map(basePos.z,maxDepth,minDepth,0.0,1.0), 4.);
-	
+//	edgeAttenuate = (1.0 - max( 0.0, pow( samplePos.y / depthRect.w, edgeAttenuateExponent) + edgeAttenuateBase ));
+//	//but allow parts closer in z to get bright still
+//	edgeAttenuate += (1.0 - edgeAttenuate) * pow(map(basePos.z,maxDepth,minDepth,0.0,1.0), 4.);
+//    edgeAttenuate = smoothstep();
+    
+    edgeAttenuate = 1.0 - smoothstep(edgeAttenuateBase, 1.0, map(samplePos.y, 0.0, depthRect.w, 0.0, 1.0) );
     
 	//extract the normal
 	vec2 normalPos   = samplePos + normalRect.xy;
 	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
   	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
-    normal = -normalize(gl_NormalMatrix * surfaceNormal);
+//    normal = -normalize(gl_NormalMatrix * surfaceNormal);
   
 //    float actuatorExtendAttenuate = smoothstep(.3, .35, dot(normal,actuatorDirection) );
-    actuatorAttenuation = max(maxActuatorRetract, dot(normal,actuatorDirection));
+    actuatorAttenuation = max(maxActuatorRetract, dot(surfaceNormal,actuatorDirection));
 
     
 	vec2 extendedSamplePos = samplePos + gl_Normal.xy*lineExtend*actuatorAttenuation;

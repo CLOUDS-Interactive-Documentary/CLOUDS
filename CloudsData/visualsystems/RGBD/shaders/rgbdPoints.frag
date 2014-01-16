@@ -14,9 +14,14 @@ uniform float skinBoost;
 
 varying float positionValid;
 
+uniform float normalMix;
+uniform float depthMix;
 //LIGHTING
 //varying vec3 eye;
 varying vec3 normal;
+varying vec4 normalColor;
+
+
 varying float actuatorAttenuation;
 
 varying float headPositionAttenuation;
@@ -94,7 +99,12 @@ void main(){
     }
 
     vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
-	gl_FragColor.rgb = col.rgb * mix( colorBoost + headPositionAttenuation, 1.0 + skinBoost, isSkin()) * alpha * smoothstep(actuatorAttenuation,0.0,.2);
+	gl_FragColor.rgb = mix(col.rgb, normalColor.rgb, normalMix) *
+                       mix( colorBoost + headPositionAttenuation, 1.0 + skinBoost, isSkin()) *
+                       alpha * smoothstep(actuatorAttenuation,0.0,.2) *
+                       edgeAttenuate;
+//    gl_FragColor.rgb = normalColor.rgb;
+    
 	gl_FragColor.a = 1.0;
 }
 

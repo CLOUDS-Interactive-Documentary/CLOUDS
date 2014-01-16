@@ -35,6 +35,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         rtcmixmain();
         maxmsp_rtsetparams(sr, nchans, framesize, NULL, NULL);
         
+        dopull = true;
         // launch initial setup score
         RTcmixParseScoreFile("cmixinit.sco");
         first_vec = true; // we haven't had audio yet
@@ -247,6 +248,7 @@ void CloudsSound::enterTunnel()
 
     if(LUKEDEBUG) cout << "sound: enterTunnel()" << endl;
 
+    dopull = true;
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0, ampsym, PF_TUNNEL_BUS);
 }
@@ -272,7 +274,8 @@ void CloudsSound::enterClusterMap()
     if(LUKEDEBUG) cout << "sound: enterClusterMap()" << endl;
     
     stopMusic(); // prophylactic
-    
+
+    dopull = true;
     PATCHFX("STEREO", "in 0", "out 0-1"); // bypass reverb
     STREAMSOUND_DYNAMIC(0, soundfile, 1.0, ampsym, PF_CLUSTERMAP_BUS);
     
@@ -372,33 +375,34 @@ void CloudsSound::doPrinting() {
 // =========================
 void CloudsSound::audioRequested(ofAudioEventArgs& args){
 
-    pullTraverse(NULL, s_audio_outbuf); // grab audio from RTcmix
+    if(dopull) {
+        pullTraverse(NULL, s_audio_outbuf); // grab audio from RTcmix
 
-    // fill up the audio buffer
-    for (int i = 0; i < args.bufferSize * args.nChannels; i++)
-    {
-        args.buffer[i] = (float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
-    }
-
-    
-    // not using right now
-    if (check_bang() == 1) {
-        if(LUKEDEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
-    }
-
-    if(LUKEDEBUG)
-    {
-        char *pbuf = get_print();
-        char *pbufptr = pbuf;
-        while (strlen(pbufptr) > 0) {
-            cout << pbufptr << endl;
-            pbufptr += (strlen(pbufptr) + 1);
+        // fill up the audio buffer
+        for (int i = 0; i < args.bufferSize * args.nChannels; i++)
+        {
+            args.buffer[i] = (float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
         }
+
         
-        reset_print();
+        // not using right now
+        if (check_bang() == 1) {
+            if(LUKEDEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
+        }
+
+        if(LUKEDEBUG)
+        {
+            char *pbuf = get_print();
+            char *pbufptr = pbuf;
+            while (strlen(pbufptr) > 0) {
+                cout << pbufptr << endl;
+                pbufptr += (strlen(pbufptr) + 1);
+            }
+            
+            reset_print();
+        }
+
     }
-
-
 }
 
 void CloudsSound::mouseReleased(ofMouseEventArgs & args){

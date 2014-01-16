@@ -1,19 +1,19 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>333.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>340.000000000</XPosition>
+    <YPosition>130.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>BigBlueCube</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>BigData</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -52,7 +52,17 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Laplacian</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>LovelyTangle</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Megasphere_purple</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -72,7 +82,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>pink elephant</Name>
+    <Name>pathDebug</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>PinkElephant</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -102,6 +117,36 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Toxi_AllinOne</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toxi_AllinOne_Normals</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toxi_Ellipsoid2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toxi_Megasphere</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Toxi_Sphere1</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Trachia</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>TransHuman1</Name>
     <Value>0</Value>
 </Widget>
@@ -127,21 +172,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>voronoi knight rider</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>Vortex</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Vroi</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>xray</Name>
     <Value>0</Value>
 </Widget>

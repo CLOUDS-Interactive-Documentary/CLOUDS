@@ -59,6 +59,9 @@ class CloudsPlaybackController {
 	void questionSelected(CloudsQuestionEventArgs& args);
 	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
+    
+    void portalHoverBegan(CloudsPortalEventArgs& args);
+    void portalHoverEnded(CloudsPortalEventArgs& args);
 	
 	void exit(ofEventArgs & args);
 	
@@ -82,20 +85,24 @@ class CloudsPlaybackController {
 	int numClipsPlayed;
 	string currentTopic;
 	bool shouldPlayAct;
-	
+
+    CloudsVisualSystem* currentVisualSystem;
+    void createInterludeSoundQueue();
 	//RGBD STUFF
-	ofPtr<CloudsVisualSystemRGBD> rgbdVisualSystem;
+	CloudsVisualSystemRGBD* rgbdVisualSystem;
 	//if there is a system playing this wil be non-null
-	ofPtr<CloudsIntroSequence> introSequence;
-	ofPtr<CloudsVisualSystemClusterMap> clusterMap;
+	CloudsIntroSequence* introSequence;
+	CloudsVisualSystemClusterMap* clusterMap;
+	CloudsVisualSystem* interludeSystem;
+    float interludeStartTime;
 	
 	CloudsVisualSystemPreset nextVisualSystemPreset;	
 	CloudsVisualSystemPreset currentVisualSystemPreset;
-	ofPtr<CloudsVisualSystem> currentVisualSystem;
 		
 	CloudsTransitionController transitionController;
 	void updateTransition();
 
+    string currentClipName;
     float actCreatedTime;
 	float crossfadeValue;
 	string combinedMoviesFolder;
@@ -106,7 +113,7 @@ class CloudsPlaybackController {
 	
 	string prerolledClipID;
 	void prerollClip(CloudsClip& clip, float toTime);
-	void playClip(CloudsClip& clip);
+	void playClip(CloudsClip clip);
 
 	//VISUAL SYSTEMS
 	//
@@ -116,8 +123,9 @@ class CloudsPlaybackController {
 	bool showingIntro;
 	bool showingVisualSystem;
 	bool showingClusterMap;
-	bool bQuestionAsked;
     bool showingInterlude;
+    bool exitedInterlude;
+	bool bQuestionAsked;
 	
 	void clearAct(bool destroy = true);
 			
@@ -125,5 +133,10 @@ class CloudsPlaybackController {
 	void hideVisualSystem();
 	void showRGBDVisualSystem();
 	void playNextVisualSystem();
-	
+    void showClusterMap();
+    void showInterlude();
+    void cleanupInterlude();
 };
+
+
+

@@ -43,12 +43,21 @@
 	</project>
 	<project title="Processing">
 			<creator_name>Casey Reas, Ben Fry</creator_name>
-			<description>An open-source language and environment for learning the fundamentals of electronic art and computer programming, developed at the MIT Media Lab's Aesthetics and Computation Group.</description>
+			<description>An open source language and environment for learning the fundamentals of electronic art and computer programming, developed at the MIT Media Lab's Aesthetics and Computation Group.</description>
 			<videos>
 				<file>Element1_480.mov</file>
 				<file>Element2_480.mov</file>
 			</videos>
 	</project>
+
+	<project title="openFrameworks">
+			<creator_name>Zach Lieberman, Theo Watson, Arturo Castro</creator_name>
+			<description>Open source libraries for creative coders developing in C++. It includes hundreds of addons for graphics, computer vision, and interactive applications.</description>
+			<videos>
+				<file>openFrameworks_720.mov</file>
+			</videos>
+	</project>
+
 	<project title="Tron (1982)">
 			<creator_name>CGI by Ken Perlin</creator_name>
 			<description> One of the earliest feature films to reflect the video-game craze of the 1980s. Stars Jeff Bridges as computer programmer Kevin Flynn, who becomes part of the very game that he's programming</description>
@@ -63,6 +72,16 @@
 				<file>Eyewriter2_720.mov</file>
 			</videos>
 	</project>
+
+	<project title="Laser Tag">
+			<creator_name>Theo Watson, Zach Lieberman</creator_name>
+			<description>Artists use laser pointers tracked by computer vision to project ephemeral graffiti on the sides of buildings.</description>
+
+			<videos>
+				<file>LaserTag_720.mov</file>
+			</videos>
+	</project>
+
 	<project title="Lumarca">
 			<creator_name>Albert Hwang, Matt Parker</creator_name>
 			<description>A projector throws its beam on an array of vertical wires. The result is a floating, glowing 3d object made entirely of light.</description>
@@ -211,7 +230,7 @@
 			</videos>
 	</project>
 
-	<project title="Reactive Squares">
+	<project title="Reactive Square">
 			<creator_name>John Maeda</creator_name>
 			<description>10 squares that respond to input from the microphone. This sketch was the first in a series, later published within Maeda's Reactive Book - 1995 </description>
 			<videos>
@@ -254,7 +273,7 @@
 
     <project title="Transfinite">
 			<creator_name>Ryoji Ikeda</creator_name>
-			<description>An audiovisual landscape exploring the concept of infinity and the beauty of data. Ikeda's first work in the united states, exhibited at NYC's Park Avenue Armory. -2011</description>
+			<description>An audiovisual landscape exploring the concept of infinity and the beauty of data. Ikeda's first work in the United States, exhibited at NYC's Park Avenue Armory. - 2011</description>
 			<videos>
 				<file>Transfinite_720.mov</file>
 			</videos>
@@ -279,28 +298,11 @@
 			</videos>
 	</project>
 
-	<project title="Hyphae">
-			<creator_name>N-E-R-V-O-U-S System</creator_name>
-			<description>Hyphae is a collection of 3D printed artifacts constructed of rhizome-like networks, inspired by the vein structures that carry fluids through organisms from the leaves of plants to our own circulatory systems.</description>
-			<videos>
-				<file></file>
-			</videos>
-	</project>
-	
-<!--	<project title="Portal">
-			<creator_name>Valve</creator_name>
-			<description>A first-person-puzzle videogame developed for Xbox. The player solves puzzles using a teleportation device called the "the Aperture Science Handheld Portal Device" </description>
-			<videos>
-				<file></file>
-			</videos>
-	</project>
--->
-
 	<project title="Funky Forest">
 			<creator_name>Emily Gobeille, Theo Watson</creator_name>
 			<description>An interactive ecosystem where children create trees with their body and  divert  water flowing from a waterfall keep the trees alive, contributing to the overall health of the forest.</description>
 			<videos>
-				<file></file>
+				<file>FunkyForest_480.mov</file>
 			</videos>
 	</project>
 	
@@ -332,7 +334,7 @@
 
     <project title="People Staring at Computers">
 			<creator_name>Kyle McDonald</creator_name>
-			<description>A simple application to takes a picture every minute, finds faces, and uploads them to a server. Kyle installed it in public places, such as the Apple Store, to secretly gather portraits of people staring at computers.</description>
+			<description>A simple application to takes a picture every minute, finds faces, and uploads them to a server. Kyle installed it in public places such as the Apple Store to secretly gather portraits of people staring at computers.</description>
 			<videos>
 				<file>PeopleStaring_720.mov</file>
 			</videos>
@@ -372,7 +374,7 @@
 
 
 	<project title="Aesthetics and Computation Group">
-			<creator_name>Directed by Prof. John Maeda</creator_name>
+			<creator_name>Directed by Professor John Maeda</creator_name>
 			<description>A lab at MIT that helped establish the field of computational art and design. Alumni include Golan Levin, Casey Reas, Ben Fry, Elise Co, Peter Cho, Jared Schiffman, Axel Kilian and Tom White.</description>
 			<videos>
 				<file>ACU_1_480.mov</file>
@@ -384,7 +386,7 @@
 			</videos>
 	</project>
 
-	<project title="قلب, (Alb)">
+	<project title="قلب">
 			<creator_name>Ramsey Nasser</creator_name>
 			<description>A fully-functional programming language based on Arabic script.</description>
 			<videos>
@@ -416,5 +418,39 @@
 				<file>Particle_Dreams_480.mov</file>
 			</videos>
 	</project>
+
+	<project title="Very Nervous System">
+			<creator_name>David Rokeby</creator_name>
+			<description>An interactive installations using video cameras, image processors, computers, synthesizers and a sound system to create a space in which the movements of one's body create sound and/or music. - 1988</description>
+			<videos>
+				<file>VeryNervous_480.mov</file>
+			</videos>
+	</project>
+
+	<project title="Tiny Riot">
+			<creator_name>Satoru Higa</creator_name>
+			<description>An iphone app that blasts rock music when shaken, inspiring users to thrash wildly in the spirit of Atari Teenage Riot.</description>
+			<videos>
+				<file>TinyRiot_480.mov</file>
+			</videos>
+	</project>
+
+	<!--
+	<project title="Hyphae">
+			<creator_name>N-E-R-V-O-U-S System</creator_name>
+			<description>Hyphae is a collection of 3D printed artifacts constructed of rhizome-like networks, inspired by the vein structures that carry fluids through organisms from the leaves of plants to our own circulatory systems.</description>
+			<videos>
+				<file></file>
+			</videos>
+	</project>
+	
+	<project title="Portal">
+			<creator_name>Valve</creator_name>
+			<description>A first-person-puzzle videogame developed for Xbox. The player solves puzzles using a teleportation device called the "the Aperture Science Handheld Portal Device" </description>
+			<videos>
+				<file></file>
+			</videos>
+	</project>
+-->
 	
 </clouds>

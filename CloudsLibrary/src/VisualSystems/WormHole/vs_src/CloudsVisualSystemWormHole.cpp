@@ -486,11 +486,11 @@ void CloudsVisualSystemWormHole::selfUpdate()
 	{
 		pathCamera.update( cameraPathPosition );
 		
-		getCameraRef().setPosition(pathCamera.getPosition());
-		getCameraRef().lookAt(pathCamera.getLookAtDir() + pathCamera.getPosition());
-		
 		//light on path
 		lightPos = pathCamera.getPositionSpline().getPoint( ofClamp(pathCamera.u + lightPathOffset, 0, 1) );
+		
+		
+		pathCamera.setFov( CloudsVisualSystem::getCameraRef().getFov() );
 		
 	}
 	else
@@ -515,8 +515,8 @@ void CloudsVisualSystemWormHole::selfUpdate()
 
 void CloudsVisualSystemWormHole::selfDraw()
 {
-	
-
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	ofPushStyle();
 	
 	//alpha blending
 	if(currentBlendMode == OF_BLENDMODE_DISABLED)
@@ -567,16 +567,11 @@ void CloudsVisualSystemWormHole::selfDraw()
 		ofFloatColor c2f = c2;
 		currentShader->setUniform4f("c1", c1f.r, c1f.g, c1f.b, c1f.a );
 		currentShader->setUniform4f("c2", c2f.r, c2f.g, c2f.b, c2f.a );
-
-//		currentShader->setUniform1i("useNoiseDisplacement", bUseNoiseDisplacement );
-//		currentShader->setUniform3f("noiseOffset", noiseDir.x * noiseTime, noiseDir.y * noiseTime, noiseDir.z * noiseTime);
-//		currentShader->setUniform1f("noiseScale", noiseScale );
-//		currentShader->setUniform1f("noiseDisplacement", noiseDisplacement );
 	}
 
 	//draw mesh
-	ofPushMatrix();
-	ofMultMatrix( meshNode.getGlobalTransformMatrix() );
+//	ofPushMatrix();
+//	ofMultMatrix( meshNode.getGlobalTransformMatrix() );
 
 	if(!bDoShader){
 		mat->begin();
@@ -596,17 +591,10 @@ void CloudsVisualSystemWormHole::selfDraw()
 	//unbind shade
 	if (bDoShader && currentShader != NULL)	currentShader->end();
 	
-	ofPopMatrix();
-	
-	
-	//disable depth testing
-	glDisable(GL_DEPTH_TEST);
-	
-	
-	glDisable(GL_CULL_FACE);
-
-	//disable alpha blending
-	ofDisableAlphaBlending();
+//	ofPopMatrix();
+		
+	ofPopStyle();
+	glPopAttrib();
 }
 
 void CloudsVisualSystemWormHole::selfPresetLoaded(string presetPath){
@@ -631,6 +619,7 @@ void CloudsVisualSystemWormHole::selfEnd()
 {
     // sound
     ofRemoveListener(GetCloudsAudioEvents()->diageticAudioRequested, this, &CloudsVisualSystemWormHole::audioRequested);
+
 }
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemWormHole::selfExit()
@@ -647,6 +636,16 @@ void CloudsVisualSystemWormHole::selfExit()
 		delete shader;
 	}
 	shaderMap.clear();
+	
+	
+	//rendering guis
+	ofRemoveListener(customGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(meshGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(cameraGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(shaderGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(fogGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(wormholeLightGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	ofRemoveListener(displacementGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 }
 
 //events are called when the system is active

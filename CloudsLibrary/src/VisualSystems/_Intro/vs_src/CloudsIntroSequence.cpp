@@ -7,8 +7,12 @@
 //
 
 #include "CloudsIntroSequence.h"
-//#include "ofxObjLoader.h"
 #include "CloudsGlobal.h"
+#include "CloudsEvents.h"
+#include "CloudsPortalEvents.h"
+
+//JG REMOVING THIS
+CloudsVisualSystemEvents CloudsIntroSequence::events;
 
 CloudsIntroSequence::CloudsIntroSequence(){
 	selectedQuestion = NULL;
@@ -55,6 +59,11 @@ void CloudsIntroSequence::selfSetup(){
 	currentFontSize = -1;
 	
 	reloadShaders();
+    
+#ifdef OCULUS_RIFT
+    bCursorInCenter = false;
+    startTimeCursorInCenter = 0;
+#endif
 
 }
 
@@ -106,6 +115,28 @@ void CloudsIntroSequence::selfUpdate(){
     
 #ifdef OCULUS_RIFT
     ofRectangle viewport = getOculusRift().getOculusViewport();
+
+    // Trigger start manually
+    if (!startedOnclick) {
+        bool cursorNearCenter = cursor.distance(ofVec3f(viewport.getCenter().x, viewport.getCenter().y, cursor.z)) < 30;
+        if (cursorNearCenter) {
+            if (bCursorInCenter) {
+                // already started, let's see if we've been there long enough
+                if (ofGetElapsedTimef() - startTimeCursorInCenter > 2) {
+                    ofMouseEventArgs args;
+                    selfMousePressed(args);
+                }
+            }
+            else {
+                bCursorInCenter = true;
+                startTimeCursorInCenter = ofGetElapsedTimef();
+            }
+        }
+        else {
+            bCursorInCenter = false;
+            startTimeCursorInCenter = 0;
+        }
+    }
 #endif
 	
 	for(int i = 0; i < startQuestions.size(); i++){
@@ -134,7 +165,10 @@ void CloudsIntroSequence::selfUpdate(){
 															   0, cameraForwardSpeed);
 					if(distanceToQuestion < questionTugDistance.min){
 						caughtQuestion = &startQuestions[i];
-						caughtQuestion->startHovering();
+						if (caughtQuestion->startHovering()) {
+                            CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
+                            ofNotifyEvent(events.portalHoverBegan, args);
+                        }
 					}
 				}
 			}
@@ -148,6 +182,8 @@ void CloudsIntroSequence::selfUpdate(){
 				else if(distanceToQuestion > questionTugDistance.max){
 					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
+                    CloudsPortalEventArgs args(startQuestions[i], getQuestionText());
+                    ofNotifyEvent(events.portalHoverEnded, args);
 				}
 			}
 		}
@@ -359,7 +395,15 @@ void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
 void CloudsIntroSequence::selfDraw(){
 #ifdef OCULUS_RIFT
     if (hud != NULL) {
-        hud->draw3D(getOculusRift().baseCamera);
+        if(selectedQuestion != NULL){
+            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -selectedQuestion->screenPosition.y/2));
+        }
+        else if(caughtQuestion != NULL){
+            hud->draw3D(getOculusRift().baseCamera, ofVec2f(0, -caughtQuestion->screenPosition.y/2));
+        }
+        else{
+            hud->draw3D(getOculusRift().baseCamera);
+        }
     }
 #endif
     
@@ -467,11 +511,6 @@ void CloudsIntroSequence::selfDrawOverlay(){
 //		}
 //		ofPopStyle();
 //	}
-#ifdef OCULUS_RIFT
-    if (hud != NULL) {
-        hud->draw();
-    }
-#endif
 }
 
 void CloudsIntroSequence::selfPostDraw(){

@@ -156,6 +156,7 @@ void STREAMSOUND(double outskip, string file, double dur, double amp, string amp
     bx = snprintf(thebuf, 256, "%s = makeconnection(\"pfbus\", %d, 1.0)", (char*)ampbus.c_str(), abn);
     parse_score(thebuf, bx);
     // start bus link
+    /*
     bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
     parse_score(thebuf, bx);
     if(dur<0)
@@ -165,6 +166,18 @@ void STREAMSOUND(double outskip, string file, double dur, double amp, string amp
     else
     {
         bx = snprintf(thebuf, 256, "STEREO(%f, 0., %f, %f*amp_declick*%s, 0, 1)", outskip, dur, amp, (char*)ampbus.c_str());
+    }
+    parse_score(thebuf, bx);
+     */
+    //bx = snprintf(thebuf, 256, "bus_link(%d)", abn);
+    //parse_score(thebuf, bx);
+    if(dur<0)
+    {
+        bx = snprintf(thebuf, 256, "STEREO(%f, 0., DUR(), %f*amp_declick, 0, 1)", outskip, amp);
+    }
+    else
+    {
+        bx = snprintf(thebuf, 256, "STEREO(%f, 0., %f, %f*amp_declick, 0, 1)", outskip, dur, amp);
     }
     parse_score(thebuf, bx);
 }
@@ -205,7 +218,7 @@ float LOADSOUND(string file, string handle)
     float duration = playa.getDuration();
     playa.close();
     
-    OF_buffer_load_set((char*)file.c_str(), (char*)handle.c_str(), 0., 30.);
+    OF_buffer_load_set((char*)file.c_str(), (char*)handle.c_str(), 0., duration);
     // you can now use the buffer name (bname) in rtinput("MMBUF", "buffername")
     
     if(LUKEDEBUG) printf("LOADED SOUND %s: file: %s  duration: %f\n", (char*)handle.c_str(),

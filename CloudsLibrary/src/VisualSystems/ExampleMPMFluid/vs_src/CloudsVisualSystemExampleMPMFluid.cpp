@@ -247,7 +247,7 @@ void CloudsVisualSystemExampleMPMFluid::selfDrawBackground()
 	// These improve the appearance of small lines and/or points.
 	glDisable(GL_LIGHTING);
     //	glDisable(GL_DEPTH_TEST);
-	glEnable (GL_LINE_SMOOTH);
+	glDisable (GL_LINE_SMOOTH);
 	glEnable (GL_POINT_SMOOTH); // in case you want it
     //	glEnable (GL_MULTISAMPLE);
     //	glEnable (GL_BLEND);

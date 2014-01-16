@@ -18,6 +18,14 @@
             </Widget>
             <Track></Track>
         </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>pathOffset</WidgetName>
+                <WidgetID>2</WidgetID>
+                <WidgetCanvasParent>w_h_light</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
     </SliderCurves>
     <NumberDialerCurves></NumberDialerCurves>
 </Map>

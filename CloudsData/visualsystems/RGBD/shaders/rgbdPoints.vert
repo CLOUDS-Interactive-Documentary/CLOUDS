@@ -51,14 +51,13 @@ uniform float edgeAttenuateExponent;
 varying float positionValid;
 
 //LIGHT
-//uniform vec3 lightPosition;
 uniform vec3 actuatorDirection;
+uniform float actuatorMaxAffect;
 varying float actuatorAttenuation;
 
-//varying vec3 eye;
+uniform float normalExtend;
+varying vec4 normalColor;
 varying vec3 normal;
-//varying vec3 diffuseLightDirection;
-//varying float diffuseAttenuate;
 
 varying float headPositionAttenuation;
 varying float edgeAttenuate;
@@ -125,33 +124,27 @@ void main(void){
     float depth = depthValueFromSample( depthPos );
 	
 	positionValid = depth <= nearClip || depth >= farClip ? 0.0 : 1.0;
+
+	//NORMAL
+	vec2 normalPos = samplePos.xy + normalRect.xy;
+	normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
+    
+	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
+    normal = -normalize(gl_NormalMatrix * surfaceNormal);
+    actuatorAttenuation = max(dot(surfaceNormal,actuatorDirection), actuatorMaxAffect);
+    
+    edgeAttenuate = 1.0 - smoothstep(edgeAttenuateBase, 1.0, map(samplePos.y, 0.0, depthRect.w, 0.0, 1.0) );
 	
 	// Reconstruct the 3D point position
     vec4 pos = vec4((samplePos.x - depthPP.x) * depth / depthFOV.x,
                     (samplePos.y - depthPP.y) * depth / depthFOV.y,
-                    depth, 1.0);
+                    depth, 1.0) + vec4(surfaceNormal, 0.0) * -normalExtend;
     
 	//HEAD POSITION
 	headPositionAttenuation = mix(0.0,
 								  map(distance(pos.xyz,headPosition), headMinRadius+headFalloff, headMinRadius, .0, 1.0),
 								  1.-headOverlap);
 	
-	//NORMAL
-	vec2 normalPos = samplePos.xy + normalRect.xy;
-	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
-	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
-    normal = -normalize(gl_NormalMatrix * surfaceNormal);
-    
-    actuatorAttenuation = max(dot(normal,actuatorDirection), 0.0);
-
-	//EYE DIRECTION FOR LIGHTING
-//	vec3 vert = vec3(gl_ModelViewMatrix * pos);
-//	eye = normalize(-vert);
-	
-	//soften near the bottom edge
-	edgeAttenuate = (1.0 - max( 0.0, pow( samplePos.y / depthRect.w, edgeAttenuateExponent) + edgeAttenuateBase ));
-	//but allow parts closer in z to get bright still
-	edgeAttenuate += (1.0 - edgeAttenuate) * pow(map(pos.z,maxDepth,minDepth,0.0,1.0), 4.);
 	
     // http://opencv.willowgarage.com/documentation/camera_calibration_and_3d_reconstruction.html
     //
@@ -168,14 +161,6 @@ void main(void){
 		gl_TexCoord[0].xy = clamp(uv,vec2(0.0,0.0), colorRect.zw*colorScale);
 	}
 	
-	//DIFFUSE LIGHT
-//	vec3 diffuseLightDirectionFull = vec3(lightPosition.xyz - vert);
-//    float d = length(diffuseLightDirectionFull);
-//	diffuseAttenuate = 1.0 /(gl_LightSource[0].constantAttenuation  +
-//							 gl_LightSource[0].linearAttenuation	* d +
-//							 gl_LightSource[0].quadraticAttenuation * d * d);
-//	diffuseLightDirection = diffuseLightDirectionFull / d;
-		
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
 	gl_PointSize = mix(pointSizeMin, pointSizeMax, 1.0- headPositionAttenuation + actuatorAttenuation);
 	

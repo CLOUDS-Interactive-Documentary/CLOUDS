@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Traversal</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000061035</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>589.000000000</XPosition>
+    <YPosition>34.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -11,19 +11,24 @@
     <Value>1</Value>
 </Widget>
 <Widget>
+    <Kind>2</Kind>
+    <Name>AUTO TRAVERSE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
     <Kind>25</Kind>
     <Name>TH_HUE</Name>
-    <Value>0.753926694</Value>
+    <Value>0.125654444</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>TH_SAT</Name>
-    <Value>0.633508503</Value>
+    <Value>0.712041557</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>TH_BRI</Name>
-    <Value>0.654449582</Value>
+    <Value>0.874344885</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -33,17 +38,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>TT_HUE</Name>
-    <Value>0.753926694</Value>
+    <Value>0.109947644</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>TT_SAT</Name>
-    <Value>0.633508503</Value>
+    <Value>0.272250980</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>TT_BRI</Name>
-    <Value>0.654449582</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -53,17 +58,22 @@
 <Widget>
     <Kind>25</Kind>
     <Name>FALLOFF</Name>
-    <Value>3.965517044</Value>
+    <Value>0.793103456</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TRAIL REVEAL</Name>
+    <Value>2000.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ANGLE DAMPEN</Name>
-    <Value>0.046206750</Value>
+    <Value>0.046206899</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>STEP SIZE</Name>
-    <Value>1.068965554</Value>
+    <Value>2.855172396</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -86,6 +96,31 @@
     <Value>0</Value>
 </Widget>
 <Widget>
+    <Kind>2</Kind>
+    <Name>CONSTRAIN</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX DISTANCE</Name>
+    <Value>20.394088745</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MIN DISTANCE</Name>
+    <Value>5.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX ANGLE</Name>
+    <Value>120.591133118</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>MIN NEXT OPTIONS</Name>
+    <Value>3</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>ANIMATE DURATION</Name>
     <Value>3.157635450</Value>
@@ -93,5 +128,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>LINE WIDTH</Name>
-    <Value>2.002463102</Value>
+    <Value>0.967980266</Value>
 </Widget>

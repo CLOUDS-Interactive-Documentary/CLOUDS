@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>SHADERS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1100.000000000</XPosition>
-    <YPosition>74.000000000</YPosition>
+    <XPosition>649.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -78,12 +78,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>facingRatioExpo</Name>
-    <Value>20.588178635</Value>
+    <Value>20.588199615</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>shininess</Name>
-    <Value>7.470936298</Value>
+    <Value>7.470940113</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>

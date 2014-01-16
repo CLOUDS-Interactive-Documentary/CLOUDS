@@ -40,7 +40,10 @@ protected:
     ofVec3f pos;
     ofVbo geometry;
     
-    MazeCell2* cells[NUM_CELLS_X2][NUM_CELLS_Y2];
+    vector< vector< MazeCell2*> > cells;
+    //MazeCell2* cells[NUM_CELLS_X2][NUM_CELLS_Y2];
+//    MazeCell2** cells;
+    
     std::stack<MazeCell2*> cellStack;
     int step;
     int currentYLimit;

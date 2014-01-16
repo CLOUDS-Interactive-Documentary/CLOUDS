@@ -3,9 +3,7 @@
 #extension GL_ARB_texture_rectangle : enable
 
 uniform vec4 fogColor;
-uniform float fogDist;
 uniform float useFog;
-uniform float fogExpo;
 
 uniform float groundDrama;
 uniform float maxHeight = 10.;
@@ -29,6 +27,8 @@ varying vec3 ePos;
 varying vec2 uv;
 
 varying float camDelta;
+varying float fogAmount;
+
 varying float doDiscard;
 
 varying vec4 groundSample;
@@ -66,7 +66,7 @@ void main(void)
 	//fog
 	if(useFog > .5)
 	{
-		gl_FragColor = mix( gl_FragColor, fogColor, min(1., pow( 1.25 * camDelta / (fogDist*fogDist), fogExpo) ) );
+		gl_FragColor = mix( gl_FragColor, fogColor, fogAmount );
 	}
 }
 

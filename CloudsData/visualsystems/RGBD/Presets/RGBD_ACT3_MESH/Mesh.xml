@@ -1,0 +1,67 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Mesh</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>341.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Mesh Alpha</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Mesh Color Boost</Name>
+    <Value>0.128078818</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Mesh Skin Boost</Name>
+    <Value>0.162561581</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>X Simplify</Name>
+    <Value>2.182265997</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Y Simplify</Name>
+    <Value>2.477832317</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Random Variance</Name>
+    <Value>0.147783250</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Face Min Radius</Name>
+    <Value>313.300506592</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Face Falloff</Name>
+    <Value>333.990142822</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Edge Geo Retraction</Name>
+    <Value>0.399014771</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Force Geo Retraction</Name>
+    <Value>0.088669948</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max Actuator Retr</Name>
+    <Value>0.423645318</Value>
+</Widget>

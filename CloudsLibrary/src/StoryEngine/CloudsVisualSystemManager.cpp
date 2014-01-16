@@ -3,6 +3,10 @@
 #include "ofxXmlSettings.h"
 #include "CloudsGlobal.h"
 
+//ALL PRESETS
+static vector<CloudsVisualSystemPreset> presets;
+static vector<CloudsVisualSystem*> systems;
+
 #ifndef CLOUDS_NO_VS
 #include "CloudsVisualSystem2DVideo.h"
 #include "CloudsVisualSystem3DModelLoader.h"
@@ -196,33 +200,67 @@ struct Mapping {
 map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
 
 //--------------------------------------------------------------------
-ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::InstantiateSystem(string systemName){
+//ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::InstantiateSystem(string systemName){
+//	if(constructors.find(systemName) != constructors.end()){
+//		return ofPtr<CloudsVisualSystem>( constructors[systemName]() );
+//	}
+//    cout << "CloudsVisualSystemManager::InstantiateSystems - SYSTEM NULL? " << endl;
+//	return ofPtr<CloudsVisualSystem>();
+//}
+
+CloudsVisualSystem* CloudsVisualSystemManager::InstantiateSystem(string systemName){
 	if(constructors.find(systemName) != constructors.end()){
-		return ofPtr<CloudsVisualSystem>( constructors[systemName]() );
+        CloudsVisualSystem* system = constructors[systemName]();
+        systems.push_back( system );
+		return system;
 	}
     cout << "CloudsVisualSystemManager::InstantiateSystems - SYSTEM NULL? " << endl;
-	return ofPtr<CloudsVisualSystem>();
+	return NULL;
 }
 
 //--------------------------------------------------------------------
-vector< ofPtr<CloudsVisualSystem> > CloudsVisualSystemManager::InstantiateSystems(vector<CloudsVisualSystemPreset>& systemPresets){
+vector< CloudsVisualSystem* > CloudsVisualSystemManager::InstantiateSystems(vector<CloudsVisualSystemPreset>& systemPresets){
 	
-	vector< ofPtr<CloudsVisualSystem> > systems;
+	vector< CloudsVisualSystem* > newSystems;
 	for(int i = 0; i < systemPresets.size(); i++){
 		if(constructors.find(systemPresets[i].systemName) != constructors.end()){
 			cout << "INSTANTIATING SYSTEM " << systemPresets[i].systemName << " WITH PRESET " << systemPresets[i].presetName << endl;
+            if(systemPresets[i].system != NULL){
+                ofLogError("CloudsVisualSystemManager::InstantiateSystems") << "SYSTEM POINTER NOT NULL. LEAKING MEMORY";
+            }
 			systemPresets[i].system = InstantiateSystem( systemPresets[i].systemName );
 //			cout << "CloudsVisualSystemManager::InstantiateSystems - SYSTEM NULL? " << (systemPresets[i].system == NULL ? "YES" : "NO") << endl;
-			systems.push_back( systemPresets[i].system );
+			newSystems.push_back( systemPresets[i].system );
 		}
 		else{
 			ofLogError("CloudsVisualSystemManager::InstantiateSystems") << "Couldn't find system " << systemPresets[i].systemName;
 		}
 	}
-	return systems;
+	return newSystems;
+}
+
+void CloudsVisualSystemManager::DeallocateSystems(){
+    for(int i = 0; i < systems.size(); i++){
+        
+        cout << "Deleting system " << systems[i]->getSystemName() << endl;
+        
+        if( systems[i]->isPlaying() ) {
+            systems[i]->stopSystem();
+            ofLogError("CloudsVisualSystemManager::FreeSystemPointers") << "System " << systems[i]->getSystemName() << " Was still playing!";
+        }
+        
+        if(systems[i]->isSetup()){
+            systems[i]->exit();
+        }
+
+        delete systems[i];
+    }
+    
+    systems.clear();
 }
 
 #endif //end coupling guard
+
 
 
 bool preset_sort(CloudsVisualSystemPreset a, CloudsVisualSystemPreset b){
@@ -234,10 +272,10 @@ bool preset_sort(CloudsVisualSystemPreset a, CloudsVisualSystemPreset b){
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::freeSystemPointers(){
-    for(int i = 0; i < presets.size(); i++){
-        presets[i].system = ofPtr<CloudsVisualSystem>();
-    }
+
+//--------------------------------------------------------------------
+bool CloudsVisualSystemManager::HasSystemRegistered(CloudsVisualSystem* system){
+    return ofContains(systems,system);
 }
 
 //--------------------------------------------------------------------
@@ -248,22 +286,21 @@ CloudsVisualSystemManager::CloudsVisualSystemManager(){
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::populateVisualSystems(){
-
-#ifndef CLOUDS_NO_VS
-	nameToVisualSystem.clear();
-	allSystemsPopulated = true;
-	
-	systems.clear();
-	presets.clear();
-    vector<string> systemNames;
-	for(map<string, tConstructor>::iterator it = constructors.begin(); it != constructors.end(); ++it) {
-		registerVisualSystem( InstantiateSystem(it->first) );
-	}
-
-    loadPresets();
-#endif
-}
+//void CloudsVisualSystemManager::populateVisualSystems(){
+//#ifndef CLOUDS_NO_VS
+//	nameToVisualSystem.clear();
+//	allSystemsPopulated = true;
+//	
+//	systems.clear();
+//	presets.clear();
+//    vector<string> systemNames;
+//	for(map<string, tConstructor>::iterator it = constructors.begin(); it != constructors.end(); ++it) {
+//		registerVisualSystem( InstantiateSystem(it->first) );
+//	}
+//
+//    loadPresets();
+//#endif
+//}
 
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::pastePresetToIndex(CloudsVisualSystemPreset preset, int index){
@@ -275,7 +312,7 @@ void CloudsVisualSystemManager::pastePresetToIndex(CloudsVisualSystemPreset pres
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem> system){
+void CloudsVisualSystemManager::updatePresetsForSystem(CloudsVisualSystem* system){
 	
 	if(system == NULL) return;
 
@@ -361,11 +398,11 @@ int CloudsVisualSystemManager::indexForPreset(string presetID){
 }
 
 //--------------------------------------------------------------------
-ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::getEmptySystem(string mainKeyword, vector<string> keywords){
+CloudsVisualSystem* CloudsVisualSystemManager::getEmptySystem(string mainKeyword, vector<string> keywords){
 	#ifdef CLOUDS_NO_VS
-	return ofPtr<CloudsVisualSystem>();
+	return NULL;
 	#else
-	ofPtr<CloudsVisualSystem> ptr(new CloudsVisualSystemEmpty() );
+	CloudsVisualSystem* ptr = new CloudsVisualSystemEmpty();
 	ptr->setKeywords(mainKeyword, keywords);
 	return ptr;
 	#endif
@@ -409,19 +446,19 @@ void CloudsVisualSystemManager::deletePreset(int i){
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::registerVisualSystem(ofPtr<CloudsVisualSystem> system){
-#ifndef CLOUDS_NO_VS
-	nameToVisualSystem[system->getSystemName()] = system;
-#endif
-	systems.push_back( system );
-}
+//void CloudsVisualSystemManager::registerVisualSystem(ofPtr<CloudsVisualSystem> system){
+//#ifndef CLOUDS_NO_VS
+//	nameToVisualSystem[system->getSystemName()] = system;
+//#endif
+//	systems.push_back( system );
+//}
 
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::loadPresets(){
 	cout << "Loading presets " << endl;
 	presets.clear();
 //	nameToPresets.clear();
-//    nameToPresetsIndex.clear();
+//  nameToPresetsIndex.clear();
 	keywords.clear();
 	suppressedClips.clear();
 	
@@ -482,8 +519,8 @@ void CloudsVisualSystemManager::loadPresets(){
 		
 		preset->comments = keywordXml.getValue("comments","");
 		preset->grade = keywordXml.getValue("grade", "");
-		preset->enabled = keywordXml.getValue("enabled", true );
-		preset->oculusCompatible = keywordXml.getValue("oculus", false );
+		preset->enabledScreen = keywordXml.getValue("enabled", true );
+		preset->enabledOculus = keywordXml.getValue("oculus", false );
         preset->soundAllowVO = keywordXml.getValue("sound_allow_vo", false );
         preset->soundExcludeVO = keywordXml.getValue("sound_exclude_vo", false );
         preset->interlude = keywordXml.getValue("interlude", false );
@@ -524,7 +561,8 @@ void CloudsVisualSystemManager::addDefaultPresetForSystem(string systemName){
 	CloudsVisualSystemPreset newPreset;
 	newPreset.systemName = systemName;
 	newPreset.presetName = "+New Preset";
-	newPreset.enabled = false;
+    newPreset.enabledScreen = false;
+	newPreset.enabledOculus = false;
 //	nameToPresets[newPreset.systemName].push_back(newPreset);
 //    nameToPresetsIndex[newPreset.systemName].push_back(presets.size());
 	presets.push_back(newPreset);
@@ -532,7 +570,8 @@ void CloudsVisualSystemManager::addDefaultPresetForSystem(string systemName){
 	CloudsVisualSystemPreset currentState;
 	currentState.systemName = systemName;
 	currentState.presetName = "+Current State";
-	currentState.enabled = false;
+    currentState.enabledScreen = false;
+	currentState.enabledOculus = false;
 //	nameToPresets[currentState.systemName].push_back(currentState);
 //    nameToPresetsIndex[currentState.systemName].push_back(presets.size());
 	presets.push_back(currentState);
@@ -545,11 +584,11 @@ void CloudsVisualSystemManager::populateEnabledSystemIndeces(){
     enabledPresetsIndex.clear();
     for(int i = 0; i < presets.size(); i++){
 #ifdef OCULUS_RIFT
-        if(presets[i].enabled && presets[i].oculusCompatible){
+        if(presets[i].enabledOculus){
             enabledPresetsIndex.push_back(i);
         }
 #else
-        if(presets[i].enabled && !presets[i].oculusCompatible){
+        if(presets[i].enabledScreen){
             enabledPresetsIndex.push_back(i);
         }
 #endif
@@ -624,8 +663,8 @@ void CloudsVisualSystemManager::savePresets(){
 		//COMMENT
 		keywordXml.addValue("comments", preset.comments);
 		keywordXml.addValue("grade", preset.grade);
-		keywordXml.addValue("enabled", preset.enabled);
-		keywordXml.addValue("oculus", preset.oculusCompatible);
+		keywordXml.addValue("enabled", preset.enabledScreen);
+		keywordXml.addValue("oculus", preset.enabledOculus);
 		keywordXml.addValue("sound_exclude_vo", preset.soundExcludeVO);
         keywordXml.addValue("sound_allow_vo", preset.soundAllowVO);
         keywordXml.addValue("interlude", preset.interlude);
@@ -785,11 +824,11 @@ set<string> CloudsVisualSystemManager::getAllKeywords(){
 }
 
 //--------------------------------------------------------------------
-vector<int> CloudsVisualSystemManager::getFilteredPresetIndeces(bool enabled, bool oculus, bool gradeA, string systemName){
+vector<int> CloudsVisualSystemManager::getFilteredPresetIndeces(bool enabledScreen, bool enabledOculus, bool gradeA, string systemName){
 	vector<int> filtered;
 	for(int i = 0; i < presets.size(); i++){
-		if((!enabled || (enabled && presets[i].enabled)) &&
-		   (!oculus  || (oculus  && presets[i].oculusCompatible)) &&
+		if((!enabledScreen || (enabledScreen && presets[i].enabledScreen)) &&
+		   (!enabledOculus || (enabledOculus  && presets[i].enabledOculus)) &&
 		   (!gradeA  || (gradeA  && presets[i].grade == "A")) &&
            (systemName == "" || (systemName == presets[i].systemName)))
 		{
@@ -975,39 +1014,39 @@ void CloudsVisualSystemManager::setKeywordsForPreset(CloudsVisualSystemPreset& p
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::exportStandalonePresets(){
-	string standaloneExportFolder = GetCloudsDataPath() + "standalonePresets/";
-	ofDirectory(standaloneExportFolder).create();
-	
-	cout << "COPYING PRESETS!" << endl;
-	set< string > systemsWithPresets;
-	for(int i = 0; i < presets.size(); i++){
-		if(presets[i].enabled){
-            
-			string presetSourceDirectory = GetCloudsVisualSystemDataPath( presets[i].systemName ) + "Presets/" + presets[i].presetName;
-			string presetTargetDirectory = standaloneExportFolder + "VisualSystems/" + presets[i].systemName + "/Presets/";
-            
-			cout << "COPYING " << presetSourceDirectory << " to " << presetTargetDirectory << endl;
-			
-			ofDirectory(presetTargetDirectory).create(true);
-			ofDirectory(presetSourceDirectory).copyTo(presetTargetDirectory, true);
-			
-			systemsWithPresets.insert(presets[i].systemName);
-		}
-	}
-    
-	cout << "COPYING SUPPORTING FILES" << endl;
-	set< string >::iterator it;
-	for(it = systemsWithPresets.begin(); it != systemsWithPresets.end(); it++){
-		string systemName = GetCloudsVisualSystemDataPath(*it);
-		ofDirectory otherFiles( systemName );
-		otherFiles.listDir();
-		for(int f = 0; f < otherFiles.size(); f++){
-			if(otherFiles.getName(f) != "Presets"){
-				cout << "copying file " << otherFiles.getName(f);
-				otherFiles.getFile(f).copyTo( standaloneExportFolder + "VisualSystems/" + *it );
-			}
-		}
-	}
-}
+//void CloudsVisualSystemManager::exportStandalonePresets(){
+//	string standaloneExportFolder = GetCloudsDataPath() + "standalonePresets/";
+//	ofDirectory(standaloneExportFolder).create();
+//	
+//	cout << "COPYING PRESETS!" << endl;
+//	set< string > systemsWithPresets;
+//	for(int i = 0; i < presets.size(); i++){
+//		if(presets[i].enabled){
+//            
+//			string presetSourceDirectory = GetCloudsVisualSystemDataPath( presets[i].systemName ) + "Presets/" + presets[i].presetName;
+//			string presetTargetDirectory = standaloneExportFolder + "VisualSystems/" + presets[i].systemName + "/Presets/";
+//            
+//			cout << "COPYING " << presetSourceDirectory << " to " << presetTargetDirectory << endl;
+//			
+//			ofDirectory(presetTargetDirectory).create(true);
+//			ofDirectory(presetSourceDirectory).copyTo(presetTargetDirectory, true);
+//			
+//			systemsWithPresets.insert(presets[i].systemName);
+//		}
+//	}
+//    
+//	cout << "COPYING SUPPORTING FILES" << endl;
+//	set< string >::iterator it;
+//	for(it = systemsWithPresets.begin(); it != systemsWithPresets.end(); it++){
+//		string systemName = GetCloudsVisualSystemDataPath(*it);
+//		ofDirectory otherFiles( systemName );
+//		otherFiles.listDir();
+//		for(int f = 0; f < otherFiles.size(); f++){
+//			if(otherFiles.getName(f) != "Presets"){
+//				cout << "copying file " << otherFiles.getName(f);
+//				otherFiles.getFile(f).copyTo( standaloneExportFolder + "VisualSystems/" + *it );
+//			}
+//		}
+//	}
+//}
 

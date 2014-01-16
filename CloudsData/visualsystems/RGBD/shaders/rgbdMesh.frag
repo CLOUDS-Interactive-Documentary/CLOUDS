@@ -30,6 +30,8 @@ uniform vec3 skinSampleColor;
 uniform vec3 skinWeights;
 uniform vec2 skinThreshold;
 
+varying vec4 normalcolor;
+varying vec4 depthcolor;
 
 const float epsilon = 1e-6;
 
@@ -119,7 +121,17 @@ void main(){
 
 	float attenuate = 1.0;
     vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
+    //vec4 col = normalcolor;
+    //vec4 col = depthcolor;
 	//gl_FragColor = col * mix( colorBoost + headPositionAttenuation, 1. + skinBoost, isSkin())  * edgeAttenuate * meshAlpha * smoothstep(0.2, .3, actuatorExtendAttenuate);
-	gl_FragColor.rgb = col.rgb * meshAlpha * headPositionAttenuation * smoothstep(.2, .3, actuatorExtendAttenuate) * mix(headPositionAttenuation, 1.0, isSkin() );
+	gl_FragColor.rgb = col.rgb *
+                       meshAlpha *
+                       headPositionAttenuation *
+                       smoothstep(.2, .3, actuatorExtendAttenuate) * // filter out the small points
+                       mix(headPositionAttenuation, 1.0, isSkin()) * // 
+                       edgeAttenuate;
+    
+//    gl_FragColor.rgb = vec3(1.0);
+    
     gl_FragColor.a = 1.0;
 }

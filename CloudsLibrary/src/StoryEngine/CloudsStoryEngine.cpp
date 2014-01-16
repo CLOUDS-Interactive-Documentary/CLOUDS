@@ -13,9 +13,10 @@ bool logsort(pair<float,string> a, pair<float,string> b ){
     return a.first > b.first;
 }
 
-bool topic_score_sort(pair<string,int> a, pair<string,int>b ){
+bool score_sort(pair<string,int> a, pair<string,int>b ){
     return a.second > b.second;
 }
+
 
 CloudsStoryEngine::CloudsStoryEngine(){
     parser = NULL;
@@ -151,6 +152,7 @@ void CloudsStoryEngine::initGui(){
     gui->addSlider("PREROLL FLAG TIME", 1, 10, &preRollDuration);
 	gui->addSpacer();
 	gui->addSlider("MAX VS RUNTIME", 0, 60, &maxVisualSystemRunTime);
+	gui->addSlider("MIN VS RUNTIME", 0, 60, &minVisualSystemRunTime);
     gui->addSlider("MAX VS GAPTIME", 0, 60, &maxVisualSystemGapTime);
 	gui->addSlider("TOPIC END VISUAL EXTEND", 3.0, 30., &visualSystemTopicEndExtend);
 	//    gui->addSlider("GAP LENGTH MULTIPLIER", 0.01, 0.1, &gapLengthMultiplier);
@@ -236,27 +238,6 @@ void CloudsStoryEngine::guiEvent(ofxUIEventArgs &e)
     }
 }
 
-//void CloudsStoryEngine::updateRunData(){
-//    
-//    if(runTest.timesOnCurrentTopicHistory.size()>0){
-//        runGui->removeWidgets();
-//        
-//        map<string, int>::iterator it;
-//        runTopicCount.clear();
-//        for(it =runTest.timesOnCurrentTopicHistory.begin(); it != runTest.timesOnCurrentTopicHistory.end(); it++){
-//            string topicString = it->first + " : " + ofToString(it->second);
-//            runTopicCount.push_back(topicString);
-//        }
-//        runGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-//        ofxUIDropDownList* topicCount   = runGui->addDropDownList("RUN TOPIC COUNT", runTopicCount);
-//        
-//        topicCount->setAutoClose(true);
-//        topicCount->setShowCurrentSelected(true);
-//        topicCount->setAllowMultiple(false);
-//
-//    }
-//}
-
 void CloudsStoryEngine::saveGuiSettings(){
     gui->saveSettings(GetCloudsDataPath() +"storyEngineParameters/gui.xml");
     clipGui->saveSettings(GetCloudsDataPath() +"storyEngineParameters/clipGui.xml");
@@ -281,41 +262,76 @@ void CloudsStoryEngine::setCustomAct(CloudsAct* act){
 	customAct = act;
 }
 
-vector<string> CloudsStoryEngine::getValidTopicsForNextAct(CloudsRun& run){
-//    if(run.accumuluatedTopics.size() == 0 || run.clipHistory.size() == 0){
-//        ofLogError("CloudsStoryEngine::buildAct") << " building an act with no history!";
-//        return NULL;
-//    }
+bool CloudsStoryEngine::getPresetIDForInterlude(CloudsRun& run, CloudsVisualSystemPreset& preset){
     
-    int maxTopic = 0;
-    string topic = "";
-    map<string, int>::iterator it;
-    vector<string> topics;
-    vector< pair<string,int> > topicCountPairs;
-    for(it = run.accumuluatedTopics.begin(); it != run.accumuluatedTopics.end(); it++){
-        topicCountPairs.push_back( make_pair(it->first, it->second));
-        topics.push_back(it->first);
+    if(run.accumuluatedTopics.size() == 0 || run.clipHistory.size() == 0){
+        ofLogError("CloudsStoryEngine::buildAct") << " no topics for next act!";
+        return false;
     }
     
-//    sort(topicCountPairs.begin(), topicCountPairs.end(), topic_score_sort);
-//    
-//    string validTopic = "";
-//    for(int i = 0; i < topicCountPairs.size(); i++){
-////        if(!ofContains(run.topicHistory, topicCountPairs[i].first)){
-////            validTopic = topicCountPairs[i].first;
-////            break;
-////        }
-//    }
-//    cout << " found most preferable starting topic: " << validTopic << endl;
-    return topics;
+    map<string, int>::iterator it;
+    vector<string> topics;
+    for(it = run.accumuluatedTopics.begin(); it != run.accumuluatedTopics.end(); it++){
+        topics.push_back(it->first);
+    }
+
+    vector< pair<string,int> > potentialPresets;
+    vector<CloudsVisualSystemPreset> currentSelection = visualSystems->getPresetsForKeywords(topics,"",true);
+        
+        for (int i =0 ; i < currentSelection.size(); i++) {
+            if( ofContains(run.presetHistory, currentSelection[i].getID() )){
+                cout<<currentSelection[i].getID()<<" already in history so not selecting"<<endl;
+                continue;
+            }
+#ifdef OCULUS_RIFT
+            if(!currentSelection[i].enabledOculus){
+                continue;
+            }
+#else
+            if(!currentSelection[i].enabledScreen){
+                continue;
+            }
+#endif
+            
+            vector<string> presetTopics = visualSystems->keywordsForPreset(currentSelection[i]);
+            int presetScore = 0;
+            
+            for (int k =0 ; k< presetTopics.size(); k++) {
+                if (ofContains(run.topicHistory, presetTopics[k])) {
+                    presetScore++;
+                }
+            }
+            cout<<currentSelection[i].getID()<<" , "<<presetScore<<","<<presetTopics.size()<<endl;
+            potentialPresets.push_back(make_pair(currentSelection[i].getID(), presetScore));
+        }
+        
+
+    
+    if (potentialPresets.size() > 0) {
+        sort(potentialPresets.begin(), potentialPresets.end(),score_sort);
+        cout<<"Selected preset "<<potentialPresets[0].first<<" for interlude "<<endl;
+		run.presetHistory.push_back(potentialPresets[0].first);
+        preset = visualSystems->getPresetWithID(potentialPresets[0].first);
+        return  true;
+    }
+    else{
+        ofLogError("CloudsStoryEngine::getPresetForInterlude") << "Defaulting to cluster map because we found no topics from the last act";
+        return false;
+    }
+
 }
 
 #pragma mark INIT ACT
 //if we are just given a run, build a topic from a new
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run){
-    if(run.accumuluatedTopics.size() == 0 || run.clipHistory.size() == 0){
-        ofLogError("CloudsStoryEngine::buildAct") << " building an act with no history!";
+    if(run.clipHistory.size() == 0){
+        ofLogError("CloudsStoryEngine::buildAct") << " building an act with no clip history!";
         return NULL;
+    }
+    
+    if(run.accumuluatedTopics.size() == 0){
+        ofLogError("CloudsStoryEngine::buildAct") << " building an act with no history!";
+        return buildAct(run, run.clipHistory.back() );
     }
     
     cout << " CREATE NEW ACT. Previous act had " << run.accumuluatedTopics.size() << " topics" << endl;
@@ -328,7 +344,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run){
         topicCountPairs.push_back( make_pair(it->first, it->second));
     }
     
-    sort(topicCountPairs.begin(), topicCountPairs.end(), topic_score_sort);
+    sort(topicCountPairs.begin(), topicCountPairs.end(), score_sort);
     
     string validTopic = "";
     for(int i = 0; i < topicCountPairs.size(); i++){
@@ -371,8 +387,20 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 		return NULL;
 	}
 	
-//    bLogClipDetails = true;
-    bLogClipDetails = false;
+    bLogClipDetails = true;
+    
+    vector<string> hardIntros;
+    hardIntros.push_back("new aesthetic");
+    hardIntros.push_back("real and virtual");
+    hardIntros.push_back("interfaces");
+    hardIntros.push_back("biology and code");
+    hardIntros.push_back("audiovisualization");
+    hardIntros.push_back("big data"); 
+    
+    if(run.actCount == 0 && ofContains(hardIntros, seedTopic)){
+        run.actCount = 1; //force
+    }
+//    bLogClipDetails = false;
 	//MIN VS WAIT TIME
 	//MIN/MAX VS TIME
 	//MIN/MAX INTERSTITCHAL TIME
@@ -422,17 +450,18 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	
     //PLAY FIRST CLIP
 	if(playSeed){
-		state.log << "\tPlaying seed" << endl;
+		state.log << state.duration << "\tPlaying seed" << endl;
 		state.duration = state.act->addClip(state.clip, state.topic, 0, dichotomies);
 		state.clipHistory.push_back(state.clip);
 		state.timesOnCurrentTopic++;
         
         //FIND MATCHING VISUAL SYSTEM
+        state.log << state.duration << "\tSELECTING VISUAL SYSTEM" << endl;
         state.preset = selectVisualSystem(state, false);
         state.visualSystemStartTime = 0;
         
         if(!state.preset.randomlySelected){
-            state.log << "First visual system preset is selected : " <<
+            state.log << state.duration << "\tFirst visual system preset is selected : " <<
             state.preset.getID() << " for topic : " <<
             seedTopic << " and clip " <<
             state.clip.getLinkName() << endl;
@@ -532,7 +561,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
         ///////////////// QUESTIONS
         //adding all option clips with questions
 		if(state.topicNum > 1){
+#ifndef OCULUS_RIFT
 			addQuestions(state, questionClips);
+#endif
         }
         /////////////////
 		
@@ -617,16 +648,17 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 				}
 				//else correct the end time to fit with the clip we just added
 				else {
-					//VO should be entirely covered. This may cause a rare problem with definite clips that don't cover the whole VO
-                    //Also the first clip of an act should be covered
+					//VO should be entirely covered. This may cause a rare problem with definite clips that don't cover the whole VO,
+                    //but not sure what to do otherwise
 					if(state.clip.voiceOverAudio){
 						state.visualSystemEndTime = state.duration + clipFadePad;
 						if(bLogVisualSystemDetails) state.log << state.duration << "- moving end time over top of VO " << state.clip.getLinkName() << endl;
 					}
 					//end within the clip
 					else{
-                        float midAlignedEnd = state.duration - state.clip.getDuration() / 2. + clipFadePad;
-                        float startAlignedEnd  = state.duration - state.clip.getDuration() + clipFadePad;
+                        //Also the first clip of an act should be covered
+                        float midAlignedEnd    = state.duration - state.clip.getDuration() / 2. + clipFadePad;
+                        float startAlignedEnd  = state.duration - state.clip.getDuration() - clipFadePad;
                         if( abs(midAlignedEnd - state.visualSystemEndTime) > abs(startAlignedEnd -  state.visualSystemEndTime) ){
                             state.visualSystemEndTime = midAlignedEnd;
                         }
@@ -634,10 +666,19 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
                             state.visualSystemEndTime = startAlignedEnd;
                         }
                         
+                        
 						if(bLogVisualSystemDetails)
                             state.log << " - moving end time to middle of " << state.clip.getLinkName() << ", time " << state.visualSystemEndTime << endl;
 					}
-					
+                    
+                    //make sure indefinite presets don't get cut too short
+                    if(state.preset.indefinite){
+                        state.visualSystemEndTime = MAX(state.visualSystemEndTime, state.visualSystemStartTime + minVisualSystemRunTime);
+                    }
+                    //fix any definite preset spillage on definite systems
+                    else {
+                        state.visualSystemEndTime = MIN(state.visualSystemEndTime, state.visualSystemStartTime + state.preset.duration);
+                    }
 					state.act->addVisualSystem(state.preset,
                                                state.visualSystemStartTime,
                                                state.visualSystemEndTime);
@@ -674,7 +715,13 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 					}
                     //don't move the start clip to the center
 					else if(state.visualSystemEndTime != 0){
-						state.visualSystemStartTime = state.duration - state.clip.getDuration() / 2.0;
+                        //random choice between mid align and end align
+                        if(ofRandomuf()){
+                            state.visualSystemStartTime = state.duration - state.clip.getDuration() / 2.0;
+                        }
+                        else{
+                            state.visualSystemStartTime = state.duration + 1.0;
+                        }
 					}
 					
 					//COMPUTE END TIME
@@ -718,6 +765,14 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	state.log << state.duration << "\tACT ENDED on clip " << state.clip.getLinkName() << " explored topics " << state.topicNum << "/" << maxTopicsPerAct << " with " << state.timesOnCurrentTopic << " clips on final topic \"" << state.topic << "\"" << endl;
 	
 	if(state.visualSystemRunning){
+        if(state.preset.indefinite){
+            state.visualSystemEndTime = MAX(state.visualSystemEndTime, state.visualSystemStartTime + minVisualSystemRunTime);
+        }
+        //fix any definite preset spillage on definite systems
+        else {
+            state.visualSystemEndTime = MIN(state.visualSystemEndTime, state.visualSystemStartTime + state.preset.duration);
+        }
+        
 		state.duration = state.act->addVisualSystem(state.preset,
                                                     state.visualSystemStartTime,
 													state.visualSystemEndTime);
@@ -840,7 +895,6 @@ CloudsVisualSystemPreset CloudsStoryEngine::selectVisualSystem(CloudsStoryState&
     //JG RIG!!
 //    return presets[3];
     
-    
     CloudsVisualSystemPreset preset;
     float topScore = 0;
 	for(int i = 0; i < presets.size(); i++){
@@ -881,10 +935,22 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVis
     
     if(bLogVisualSystemDetails) state.log << state.duration  << "\t\t\tConsidering" << potentialNextPreset.getID() << endl;;
 	
-    if(!potentialNextPreset.enabled){
+#ifdef OCULUS_RIFT
+	if(!potentialNextPreset.enabledOculus){
+        state.log << state.duration << "\t\t\t\tREJECTED because it is not oculus compatible"<<endl;
+        return 0;
+	}
+#else
+    if(!potentialNextPreset.enabledScreen){
         state.log << state.duration << "\t\t\t\tREJECTED because it's disabled" << endl;
         return 0;
     }
+    //	if(potentialNextPreset.oculusCompatible){
+    //        state.log << state.duration << "\t\t\t\tREJECTED because it is for the oculus"<<endl;
+    //        return 0;
+    //	}
+#endif
+    
     
     if(visualSystems->isClipSuppressed(potentialNextPreset.getID(), state.clip.getLinkName())){
         state.log << state.duration << "\t\t\t\tREJECTED  because the system is suppressed for this clip" << endl;
@@ -896,17 +962,6 @@ float CloudsStoryEngine::scoreForVisualSystem(CloudsStoryState& state, CloudsVis
         return 0;
     }
     
-#ifdef OCULUS_RIFT
-	if(!potentialNextPreset.oculusCompatible){
-        state.log << state.duration << "\t\t\t\tREJECTED because it is not oculus compatible"<<endl;
-        return 0;
-	}
-#else
-	if(potentialNextPreset.oculusCompatible){
-        state.log << state.duration << "\t\t\t\tREJECTED because it is for the oculus"<<endl;
-        return 0;
-	}
-#endif
     
 	//for definite presets covering VO clips, make sure they are long enough
     if(!potentialNextPreset.indefinite && //we currently have a definite clip
@@ -1030,6 +1085,7 @@ string CloudsStoryEngine::selectTopic(CloudsStoryState& state){
 			if(bLogTopicDetails) state.log << state.duration << "\t\tERROR Even our family couldn't help us move on from topic " << state.topic << " on clip " <<  state.clip.getLinkName() << endl;
 			return state.topic;
 		}
+        topics = topicFamilies;
     }
     
     vector<string> winningTopics;

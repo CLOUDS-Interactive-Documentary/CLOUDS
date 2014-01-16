@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>CLIP GAP</Name>
-    <Value>0.381280780</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,15 +38,20 @@
 <Widget>
     <Kind>4</Kind>
     <Name>MAX VS RUNTIME</Name>
-    <Value>8.275861740</Value>
+    <Value>24.532020569</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MIN VS RUNTIME</Name>
+    <Value>13.891625404</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>MAX VS GAPTIME</Name>
-    <Value>2.955664873</Value>
+    <Value>8.275861740</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>TOPIC END VISUAL EXTEND</Name>
-    <Value>20.556650162</Value>
+    <Value>30.000000000</Value>
 </Widget>

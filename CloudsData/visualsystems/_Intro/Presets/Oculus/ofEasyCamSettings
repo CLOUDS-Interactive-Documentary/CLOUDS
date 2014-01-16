@@ -20,7 +20,7 @@ target
 bEnableMouseMiddleButton
 1
 bMouseInputEnabled
-0
+1
 drag
 0.9
 doTranslationKey

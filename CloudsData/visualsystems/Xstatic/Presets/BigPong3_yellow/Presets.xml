@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000122070</XPosition>
+    <XPosition>663.000061035</XPosition>
     <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -58,11 +58,6 @@
 <Widget>
     <Kind>2</Kind>
     <Name>BouncingBalls_TumblingBox</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Circle</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

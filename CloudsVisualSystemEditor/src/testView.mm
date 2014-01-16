@@ -20,7 +20,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)setup
 {
-//	currentVisualSystem = NULL;
+	currentVisualSystem = NULL;
 	selectedPreset = NULL;
 	
     parser.loadFromFiles();
@@ -34,7 +34,6 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
 	}
 	
-//	visualSystems.populateVisualSystems();
 	visualSystems.loadPresets();
     visualSystems.loadCachedDataForSystems();
 	
@@ -113,8 +112,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 				cout << "DELETING PRESET BATCH" << endl;
 				
                 testBatch.clear();
-                visualSystems.freeSystemPointers();
-                
+                visualSystems.DeallocateSystems();//freeSystemPointers();
+
+                currentVisualSystem = NULL;
 //				currentVisualSystem = ofPtr<CloudsVisualSystem>( (CloudsVisualSystem*)(NULL) );
 				
 				int i = 0;
@@ -122,7 +122,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 					
 					CloudsVisualSystemPreset& preset = visualSystems.getPresets()[ testPresetIndeces[i] ];
 					cout << "******* 1) (" << i << "/" << testPresetIndeces.size() << ") INSTANTIATING " << preset.systemName << " : " << preset.presetName << endl;
-					ofPtr<CloudsVisualSystem> vs = CloudsVisualSystemManager::InstantiateSystem( preset.systemName );
+					CloudsVisualSystem* vs = CloudsVisualSystemManager::InstantiateSystem( preset.systemName );
 					cout << "******* 2) (" << i << "/" << testPresetIndeces.size() << ") SETTING UP " << preset.systemName << " : " << preset.presetName << endl;
 					if(vs == NULL){
 						cout << "******* 3) (" << i << "/" << testPresetIndeces.size() << ") PRESET NOT REGISTERED " << preset.systemName << " : " << preset.presetName << endl;
@@ -165,10 +165,13 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		if(currentVisualSystem != NULL){
             currentVisualSystem->stopSystem();
 			currentVisualSystem->exit();
+            currentVisualSystem = NULL;
+
         }
 
 		cout << "loading system " << visualSystems.getPresets()[ self.selectedPresetIndex ].systemName << " preset " << visualSystems.getPresets()[self.selectedPresetIndex].presetName << endl;
-		
+        
+        visualSystems.DeallocateSystems();
         currentVisualSystem = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[ self.selectedPresetIndex ].systemName );
 		
 		if(currentVisualSystem != NULL){
@@ -276,6 +279,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	if(currentVisualSystem != NULL){
 		currentVisualSystem->stopSystem();
 		currentVisualSystem->exit();
+        visualSystems.DeallocateSystems();
 	}	
 }
 
@@ -326,7 +330,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void) updatePresetsForSystem:(string) systemName
 {
-    ofPtr<CloudsVisualSystem> system = CloudsVisualSystemManager::InstantiateSystem( systemName );
+    CloudsVisualSystem* system = CloudsVisualSystemManager::InstantiateSystem( systemName );
     if(system != NULL){
         cout << "updating presets for " << system->getSystemName() << endl;
         visualSystems.updatePresetsForSystem( system );
@@ -335,14 +339,14 @@ bool clipsort(CloudsClip a, CloudsClip b){
         if(ofFile::doesFileExist(refreshFlagPath)){
             ofFile::removeFile(refreshFlagPath);
         }
-        
+        visualSystems.DeallocateSystems();
     }
     
     [clipTable reloadData];
     [suppressedClipTable reloadData];
     [presetTable reloadData];
-//    [allKeywordTable reloadData];
     [allClipTable reloadData];
+    
 }
 
 - (IBAction) deletePreset:(id)sender
@@ -368,8 +372,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		//associatedClips = parser.getClipsWithKeyword(associatedKeywords);
 		[self updateAssociatedClips];
 		
-		selectedPreset->enabled = (enabledBox.state == NSOnState);
-		selectedPreset->oculusCompatible = (oculusBox.state == NSOnState);
+		selectedPreset->enabledScreen = (enabledBox.state == NSOnState);
+		selectedPreset->enabledOculus = (oculusBox.state == NSOnState);
 		selectedPreset->soundAllowVO   = (soundAllowVOBox.state == NSOnState);
         selectedPreset->soundExcludeVO = (soundExcludeVOBox.state == NSOnState);
         selectedPreset->interlude = (interludeBox.state == NSOnState);
@@ -485,7 +489,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 }
 
 - (IBAction) exportStandalone:(id)sender {
-	visualSystems.exportStandalonePresets();
+//	visualSystems.exportStandalonePresets();
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
@@ -530,9 +534,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		else if([@"grade" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String:
 					(string(visualSystems.getPresets()[presetIndex].hasFiles ? "" : "!!") +
-						   (visualSystems.getPresets()[presetIndex].enabled ? "+" : "-") +
+						   (visualSystems.getPresets()[presetIndex].enabledScreen ? "Sc" : "") +
 							visualSystems.getPresets()[presetIndex].grade +
-							(visualSystems.getPresets()[presetIndex].oculusCompatible ? "Oc" : "") +
+							(visualSystems.getPresets()[presetIndex].enabledOculus ? "Oc" : "") +
 							(visualSystems.getPresets()[presetIndex].hasSound() ? "Snd" : "")
 					 ).c_str()];
 		}
@@ -604,7 +608,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			int numPresets = 0;
 			for(int i = 0; i < presets.size(); i++){
 				if(!visualSystems.isClipSuppressed(presets[i].getID(), clip.getLinkName()) &&
-				   presets[i].enabled)
+				   presets[i].enabledScreen)
 				{
 					numPresets++;
 				}
@@ -684,8 +688,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			currentKeywords.stringValue = [NSString stringWithUTF8String: ofJoinString(associatedKeywords,",").c_str() ];
 //			notesText.stringValue = [NSString stringWithUTF8String: selectedPreset->comments.c_str() ];
 			grade.stringValue = [NSString stringWithUTF8String: selectedPreset->grade.c_str() ];
-			enabledBox.state = (selectedPreset->enabled ? NSOnState : NSOffState);
-			oculusBox.state = (selectedPreset->oculusCompatible ? NSOnState : NSOffState);
+			enabledBox.state = (selectedPreset->enabledScreen ? NSOnState : NSOffState);
+			oculusBox.state = (selectedPreset->enabledOculus ? NSOnState : NSOffState);
 //			soundBox.state = (selectedPreset->hasSound ? NSOnState : NSOffState);
             soundAllowVOBox.state = (selectedPreset->soundAllowVO ? NSOnState : NSOffState);
             soundExcludeVOBox.state = (selectedPreset->soundExcludeVO ? NSOnState : NSOffState);
@@ -718,7 +722,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	currentClipPresets.clear();
 	for(int i = 0; i < presets.size(); i++){
 		if(!visualSystems.isClipSuppressed(presets[i].getID(), clip.getLinkName()) &&
-		   presets[i].enabled)
+		   presets[i].enabled())
 		{
 			currentClipPresets.push_back( presets[i] );
 		}

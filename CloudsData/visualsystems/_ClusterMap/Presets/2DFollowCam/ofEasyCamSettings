@@ -5,7 +5,7 @@ transformMatrix
        0,        0,        1,        0
        0,        0,      200,        1
 fov
-60
+23.9409
 near
 0
 far

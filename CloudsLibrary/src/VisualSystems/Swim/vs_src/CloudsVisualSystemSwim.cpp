@@ -104,19 +104,23 @@ void CloudsVisualSystemSwim::selfUpdate()
     }
     
     // cam
-    ofVec2f targetLookAngle;
-    //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
-    targetLookAngle.x = ofMap(GetCloudsInputY(), 0, getCanvasHeight(), 10.f, -10.f, true);
-    targetLookAngle.y = ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 20.f, -20.f, true);
-    currentLookAngle.interpolate(targetLookAngle, .05);
-    ofQuaternion rx, ry;
-    rx.makeRotate(currentLookAngle.x, 1, 0, 0);
-    ry.makeRotate(currentLookAngle.y, 0, 1, 0);
-    getCameraRef().setOrientation(rx * ry);
-    getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
-    //getCameraRef().move(0, 0, ofMap(GetCloudsInputY(), 0, ofGetHeight(), -50.f, 0.f));
-    //getCameraRef().setPosition(0, 0, 2000);
-    
+    if(!bUseOculusRift){
+        ofVec2f targetLookAngle;
+        //MA: changed ofGetWidth() to getCanvasWidth() and ofGetHeight() to getCanvasHeight()
+        targetLookAngle.x = ofMap(GetCloudsInputY(), 0, getCanvasHeight(), 10.f, -10.f, true);
+        targetLookAngle.y = ofMap(GetCloudsInputX(), 0, getCanvasWidth(), 20.f, -20.f, true);
+        currentLookAngle.interpolate(targetLookAngle, .05);
+        ofQuaternion rx, ry;
+        rx.makeRotate(currentLookAngle.x, 1, 0, 0);
+        ry.makeRotate(currentLookAngle.y, 0, 1, 0);
+        getCameraRef().setOrientation(rx * ry);
+        getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
+        //getCameraRef().move(0, 0, ofMap(GetCloudsInputY(), 0, ofGetHeight(), -50.f, 0.f));
+        //getCameraRef().setPosition(0, 0, 2000);
+    }
+    else{
+        getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());        
+    }
     //bubbles.update();
     creatures.update();
 }

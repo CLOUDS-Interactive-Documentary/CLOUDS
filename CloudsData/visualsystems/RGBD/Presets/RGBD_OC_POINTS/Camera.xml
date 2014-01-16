@@ -1,0 +1,52 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Camera</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>464.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FRONT DISTANCE</Name>
+    <Value>183.743850708</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SIDE DISTANCE</Name>
+    <Value>348.669952393</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SIDE PULLBACK</Name>
+    <Value>-165.024627686</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIFT RANGE</Name>
+    <Value>57.635467529</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIFT AMOUNT</Name>
+    <Value>21.231527328</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DROP AMOUNT</Name>
+    <Value>62.068962097</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DRIFT ANGLE</Name>
+    <Value>27.586206436</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DRIFT DENSITY</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DRIFT SPEED</Name>
+    <Value>0.001280788</Value>
+</Widget>

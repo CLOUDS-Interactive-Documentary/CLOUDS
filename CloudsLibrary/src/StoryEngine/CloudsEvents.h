@@ -48,6 +48,7 @@ class CloudsQuestionEventArgs : public ofEventArgs{
 	string topic;
 };
 
+
 class CloudsPreRollEventArgs : public ofEventArgs{
 public:
     CloudsPreRollEventArgs(CloudsClip& preRollClip, float clipStartTimeOffset)
@@ -85,9 +86,11 @@ class CloudsStoryEvents {
 	ofEvent<CloudsPreRollEventArgs> preRollRequested;
     ofEvent<CloudsQuestionEventArgs> questionProposed;
     ofEvent<CloudsQuestionEventArgs> questionSelected;
-
+    
 	ofEvent<CloudsTopicEventArgs> topicChanged;
-
+    
 };
+
+
 
 

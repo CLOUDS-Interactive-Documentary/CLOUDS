@@ -37,6 +37,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>finteractiveCameraExample</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>glTunnelv2_08_points</Name>
     <Value>0</Value>
 </Widget>
@@ -288,6 +293,16 @@
 <Widget>
     <Kind>2</Kind>
     <Name>OrganicTunnel_2_slow</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OrganicTunnel_2_White</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OrganicTunnel_2_White_Faster</Name>
     <Value>1</Value>
 </Widget>
 <Widget>

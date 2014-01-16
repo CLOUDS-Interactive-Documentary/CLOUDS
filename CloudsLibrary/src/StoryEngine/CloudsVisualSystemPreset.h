@@ -9,8 +9,8 @@ class CloudsVisualSystemPreset {
 	CloudsVisualSystemPreset();
 	string presetName;
 	string systemName;
-	ofPtr<CloudsVisualSystem> system;
-	
+	//ofPtr<CloudsVisualSystem> system;
+	CloudsVisualSystem* system;
 	float introDuration;
 	float outroDuration;
 	float duration;
@@ -27,9 +27,11 @@ class CloudsVisualSystemPreset {
 	string getID();
 	string comments;
 	string grade;
-	bool enabled;
-	bool oculusCompatible;
-
+    
+	bool enabledScreen;
+	bool enabledOculus;
+    bool enabled();
+    
     bool soundExcludeVO;
     bool soundAllowVO;
 	bool interlude;

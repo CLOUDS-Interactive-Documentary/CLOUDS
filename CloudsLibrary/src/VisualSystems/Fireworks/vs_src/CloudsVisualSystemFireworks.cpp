@@ -346,8 +346,9 @@ void CloudsVisualSystemFireworks::selfSetup()
 	
 	nextFireworkExplosionTime = ofGetElapsedTimef() + 1;
 	
-	ofDisableArbTex();
 	
+	
+	ofDisableArbTex();
 	
 	dotImage.loadImage(  getVisualSystemDataPath() + "images/sphereNormal.png" );
 	triangleImage.loadImage(  getVisualSystemDataPath() + "images/triangle-sprite.png" );
@@ -514,11 +515,11 @@ void CloudsVisualSystemFireworks::selfUpdate()
 
 void CloudsVisualSystemFireworks::selfDraw()
 {
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	ofPushStyle();
+	
 	glEnable(GL_DEPTH_TEST);
     glEnable(GL_NORMALIZE);
-	//    mat->begin();
-	
-	ofPushStyle();
 	
 	ofEnableAlphaBlending();
 	ofBlendMode( OF_BLENDMODE_ADD );
@@ -578,7 +579,8 @@ void CloudsVisualSystemFireworks::selfDraw()
 	
 	shader.end();
 	
-	ofDisablePointSprites();
+	glPopAttrib();
+	ofPopStyle();
 }
 
 

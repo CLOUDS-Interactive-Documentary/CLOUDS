@@ -36,6 +36,15 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	lineFlickerIntensity = 7.;
 	lineFlickerFrequency = 100;
 	lineFlickerDampening = .05;
+    
+    bConstrainTraversal = false;
+    maxTraverseDistance = 1000;
+    maxTraverseAngle = 180;
+    
+    minTraverseNextOptions = 3;
+    minTraverseDistance = 5;
+    
+
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -149,7 +158,9 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
     traversalGui->addMinimalSlider("TT_BRI", 0.0, 1.0, &traverseTailColorHSV.b, length, dim)->setShowValue(false);
     traversalGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
 	traversalGui->addMinimalSlider("TT_A", 0.0, 1.0, &traverseTailColorHSV.a);
-	traversalGui->addMinimalSlider("FALLOFF", 0, 7.0, &traverseFalloff);
+	traversalGui->addMinimalSlider("FALLOFF", 0, 1.0, &traverseFalloff);
+    traversalGui->addMinimalSlider("TRAIL REVEAL", 0, 2000, &traverseRevealVerts);
+    
 	traversalGui->addSpacer();
 	traversalGui->addSlider("ANGLE DAMPEN", 0.01, .5, &traverseAngleDampen);
 	traversalGui->addSlider("STEP SIZE", .2, 10, &traverseStepSize);
@@ -157,6 +168,13 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	traversalGui->addSlider("MIN SOLVE DISTANCE", .1, 5, &traverseMinSolvedDistance);
 	traversalGui->addToggle("DRAW POINTS", &drawTraversalPoints);
 	traversalGui->addToggle("DRAW DISTANCE DEBUG", &drawHomingDistanceDebug);
+    traversalGui->addSpacer();
+    traversalGui->addToggle("CONSTRAIN", &bConstrainTraversal);
+    traversalGui->addSlider("MAX DISTANCE", 0, 30, &maxTraverseDistance);
+    traversalGui->addSlider("MIN DISTANCE", 0, 5, minTraverseDistance);
+    traversalGui->addSlider("MAX ANGLE", 0, 180, &maxTraverseAngle);
+    traversalGui->addIntSlider("MIN NEXT OPTIONS", 0, 4, &minTraverseNextOptions);
+    
 	traversalGui->addLabel("ANIMATE");
 	traversalGui->addSlider("ANIMATE DURATION", 1, 4, &traverseAnimationDuration);
 	traversalGui->addSlider("LINE WIDTH", .5, 3, &traverseLineWidth);
@@ -246,7 +264,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	
 	currentTraversalIndex = 0;
 	
-	ofVec3f centroid(0,0,0);
+	networkCentroid = ofVec3f(0,0,0);
 	ofVec3f maxBounds(0,0,0);
 	ofVec3f minBounds(0,0,0);
 	
@@ -269,7 +287,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 			flickerCoord.x = 0;
 			flickerCoord.y++;
 		}
-		centroid += clip.networkPosition;
+		networkCentroid += clip.networkPosition;
 		maxBounds = ofVec3f(MAX(maxBounds.x,clip.networkPosition.x),
 							MAX(maxBounds.y,clip.networkPosition.y),
 							MAX(maxBounds.z,clip.networkPosition.z));
@@ -280,17 +298,17 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 		
 		nodes.push_back(n);
 	}
-	nodeMesh.setMode(OF_PRIMITIVE_POINTS);
+
 	
 	flickerNoise.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
 	flickerNoiseTarget.allocate(flickerWidth, flickerCoord.y+1, OF_IMAGE_GRAYSCALE);
 	flickerNoise.getPixelsRef().set(0);
 	flickerNoiseTarget.set(0);
 	
-	centroid /= nodes.size();
+	networkCentroid /= nodes.size();
 	float maxDistance = 0;
 	for(int i = 0; i < parser->getAllClips().size(); i++){
-		maxDistance = MAX(maxDistance, parser->getAllClips()[i].networkPosition.distance(centroid));
+		maxDistance = MAX(maxDistance, parser->getAllClips()[i].networkPosition.distance(networkCentroid));
 	}
 	
 	//add all connections to connection mesh
@@ -332,13 +350,13 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 					continue;
 				}
 				
-				if(clip.networkPosition.distance(centroid) > maxDistance * .6) {
-//					cout << "connecting outer ring clip " << meta[j].getLinkName() << endl;
+				if(clip.networkPosition.distance(networkCentroid) > maxDistance * .6) {
+//					cout << "filtering outer ring clip " << meta[j].getLinkName() << endl;
 					continue;
 				}
 				
-				if(meta[j].networkPosition.distance(centroid) > maxDistance * .6 ) {
-//					cout << "connecting outer ring clip " << meta[j].getLinkName() << endl;
+				if(meta[j].networkPosition.distance(networkCentroid) > maxDistance * .6 ) {
+//					cout << "filtering outer ring clip " << meta[j].getLinkName() << endl;
 					continue;
 				}
 				
@@ -346,8 +364,8 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 				//create curved connection mesh
 				//naive simple spherical interpolation over 10 steps
 				connectionEdge.startIndex = networkMesh.getNumVertices();
-				ofVec3f vecToStart = clip.networkPosition - centroid;
-				ofVec3f vecToDest  = meta[j].networkPosition - centroid;
+				ofVec3f vecToStart = clip.networkPosition - networkCentroid;
+				ofVec3f vecToDest  = meta[j].networkPosition - networkCentroid;
 				float radStart = vecToStart.length();
 				float radDest  = vecToDest.length();
 				ofVec3f dirToStart = vecToStart / radStart;
@@ -374,7 +392,7 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 					step.slerp(stepPercent, ofQuaternion(), arc);
 					ofVec3f arcDir = step * dirToStart;
 					float arcRad = ofLerp(radStart, radDest, stepPercent);
-					ofVec3f arcPoint = arcDir * arcRad + centroid;
+					ofVec3f arcPoint = arcDir * arcRad + networkCentroid;
 					networkMesh.addColor(flickermix);					
 					networkMesh.addNormal(ofVec3f(stepPercent, 0.0, 1.0));
 					networkMesh.addVertex(arcPoint);
@@ -393,12 +411,17 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 			}
 		}
 	}
-	
+    
+    nodeMesh.setMode(OF_PRIMITIVE_POINTS);
 	networkMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
 	traversalMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
 	optionsMeshNext.setMode(OF_PRIMITIVE_LINE_STRIP);
 	optionsMeshPrev.setMode(OF_PRIMITIVE_LINE_STRIP);
 	
+
+    kdtree.buildIndex( nodeMesh.getVertices() );
+
+    
 	populateTopicPoints();
 }
 
@@ -445,40 +468,147 @@ void CloudsVisualSystemClusterMap::traverse(){
 		
 }
 
-void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip& clip){
+void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
 	
 	if(clipIdToNodeIndex.find(clip.getID()) == clipIdToNodeIndex.end()){
 		ofLogError("CloudsVisualSystemClusterMap::traverseToClip") << "Isn't included in cluster map";
 		return;
 	}
 	
+
 	ofIndexType newNodeIndex = clipIdToNodeIndex[ clip.getID() ];
-	CloudsClusterNode& n = nodes[ newNodeIndex ];
-	if(firstClip){
-		cout << "** TRAVERSE START JOURNEY AT " << clip.getID() << endl;
-	}
-	else{
-		cout << "** TRAVERSE FROM :	" << nodes[currentNodeIndex].clipId << " >>> " << nodes[ newNodeIndex ].clipId << endl;
-	}
-	
-//	for(int i = 0; i < n.adjascentClipIds.size(); i++){
-//		cout << "	** ADJASCENT CLIPS " << n.adjascentClipIds[i] << endl;
-//	}
+	CloudsClusterNode n = nodes[ newNodeIndex ];
 
 	ofVec3f startDirection;
 	if(firstClip){
-		currentTraversalDirection = randomDirection();
+//		currentTraversalDirection = randomDirection();
+        currentTraversalDirection = clip.networkPosition - networkCentroid;
 		currentTraversalPosition = clip.networkPosition;
 	}
 	else{
+
 		//this is to correct the scales in the sliders to more friendly numbers...
 		float localMinSolve = traverseMinSolvedDistance * .001;
 		float localStepSize = traverseStepSize * .001;
 		float localMinHomingDist = traverseHomingMinDistance * .001;
 		TraversalSegment newSegment;
 		newSegment.startIndex = traversalMesh.getNumVertices();
-		int maxSteps = 5000;
+		int maxSteps = 1000;
 		float currentDistance = currentTraversalPosition.distance(clip.networkPosition);
+        
+        //check traversal parameters to potentiall fake a new clip
+        if(bConstrainTraversal){
+        
+            //locals are so we can use more human readaable scales
+            float localMaxTraversedDistance = maxTraverseDistance/100.0;
+            float localMinTraverseDistance = minTraverseDistance/100.0;
+
+            int constrainedPositionIndex = -1;
+            float traversalAngle = (clip.networkPosition - currentTraversalPosition).angle(currentTraversalDirection);
+            int numOptions = n.connectionCurves.size();
+            if(currentDistance > localMaxTraversedDistance ||
+               currentDistance < minTraverseDistance ||
+               traversalAngle > maxTraverseAngle ||
+               numOptions < minTraverseNextOptions)
+            {
+                cout << "CLIP FAILED TEST DISTANCE " << currentDistance*100 << " and angle " << traversalAngle << endl;
+                
+                //find a new options
+                vector<float> distsSq;
+                vector<NNIndex> indices;
+                //search for 100 nearby clips and take the first acceptable one
+                kdtree.findNClosestPoints(clip.networkPosition, 1000, indices, distsSq);
+                for(int i = 0; i < indices.size(); i++){
+                    ofVec3f testPosition = nodeMesh.getVertex( indices[i] );
+                    float testDistance = currentTraversalPosition.distance( testPosition );
+                    float testAngle = (testPosition - currentTraversalPosition).angle(currentTraversalDirection);
+                    int testOptions = nodes[ indices[i] ].connectionCurves.size();
+                    
+                    cout << "\tTest node stats" << endl
+                         << "\t\tDIST: " << testDistance*100 << " - max:" << maxTraverseDistance << " min " << minTraverseDistance << endl
+
+                         << "\t\tANGLE: " << testAngle << "/" << maxTraverseAngle << endl
+                         << "\t\tOPTIONS# " << testOptions << "/" << minTraverseNextOptions << endl;
+                    
+                    if(testDistance <= localMaxTraversedDistance &&
+                       testDistance >= localMinTraverseDistance &&
+                       testAngle <= maxTraverseAngle &&
+                       testOptions >= minTraverseNextOptions)
+                    {
+                        constrainedPositionIndex = indices[i];
+                        cout << "FOUND A BETTER NODE AT INDEX " << i << " OF NEIGHBORS" << endl;
+                        cout << "\tANGLE " << testAngle << " DISTANCE " << testDistance*100 << " NUM CONNECTION CURVES " << testOptions << endl;
+                        break;
+                    }
+                }
+                
+                //we found a better node
+                if(constrainedPositionIndex != -1){
+                    
+                    newNodeIndex = constrainedPositionIndex;
+                    clip = parser->getAllClips()[newNodeIndex];
+                    //newNodeIndex = clipIdToNodeIndex[ clip.getID() ];
+                    n = nodes[ newNodeIndex ];
+                }
+                else{
+//                    ofLogError() <<"Couldn't find a better neighbor going with original clip";
+                    //now search for all our nearest neighbors and pick the one that is closets to the desired clip
+                    distsSq.clear();
+                    indices.clear();
+                    //search for 100 nearby clips and take the first acceptable one
+                    kdtree.findNClosestPoints(currentTraversalPosition, 1000, indices, distsSq);
+                    
+                    int closestIndex = -1;;
+                    float closestDistance = INT_MAX;
+                    for(int i = 0; i < indices.size(); i++){
+                        ofVec3f testPosition = nodeMesh.getVertex( indices[i] );
+                        float testDistance = currentTraversalPosition.distance( testPosition );
+                        float distanceFromRealTarget = n.networkPosition.distance( testPosition ); //this time look at the distance from the target too
+                        float testAngle = (testPosition - currentTraversalPosition).angle(currentTraversalDirection);
+                        int testOptions = nodes[ indices[i] ].connectionCurves.size();
+                        
+                        cout << "\tRECOVERY Test node stats" << endl
+                             << "\t\tDIST: " << testDistance*100 << " - max:" << maxTraverseDistance << " min " << minTraverseDistance << endl
+                             << "\t\tANGLE: " << testAngle << "/" << maxTraverseAngle << endl
+                             << "\t\tOPTIONS# " << testOptions << "/" << minTraverseNextOptions << endl;
+                        
+                        if(testDistance >= localMaxTraversedDistance){
+                            break;
+                        }
+                        
+                        if(testDistance <= localMaxTraversedDistance &&
+                           testDistance >= localMinTraverseDistance &&
+                           testAngle <= maxTraverseAngle &&
+                           testOptions >= minTraverseNextOptions)
+                        {
+                            //constrainedPositionIndex = indices[i];
+                            
+                            if(distanceFromRealTarget < closestDistance ){
+                                closestDistance = distanceFromRealTarget;
+                                closestIndex    = indices[i];
+                            }
+                            
+                            cout << "FOUND AN ACCEPTABLE NODE AT INDEX " << i << " OF NEIGHBORS" << endl;
+                            cout << "\tANGLE " << testAngle << " DISTANCE " << testDistance*100 << " NUM CONNECTION CURVES " << testOptions << endl;
+                            
+                        }
+                    }
+                    
+                    if(closestIndex == -1){
+                        ofLogError("Couldn't even find an acceptable node close to us, defaulting");
+                    }
+                    else{
+                        newNodeIndex = closestIndex;
+                        clip = parser->getAllClips()[newNodeIndex];
+                        //newNodeIndex = clipIdToNodeIndex[ clip.getID() ];
+                        n = nodes[ newNodeIndex ];
+                    }
+                }
+            }
+            
+            cout << "TRAVERSED DISTANCE " <<  currentDistance*100 << " ANGLE " << traversalAngle << endl;
+        }
+        
 		while(localMinSolve < currentDistance && maxSteps-- > 0){
 			ofVec3f toNodeDirection  = (clip.networkPosition - currentTraversalPosition).normalized();
 			ofVec3f vectorToNode = clip.networkPosition - currentTraversalPosition;
@@ -673,10 +803,22 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	
 
 	if(traversalPath.size() > 0){
-		ofIndexType curIndex = ofMap(percentTraversed,
+		float curIndex = ofMap(percentTraversed,
 									 0, 1.0,
-									 traversalPath.back().startIndex, traversalPath.back().endIndex-1,true);
-		trailHead = traversalMesh.getVertex(curIndex);
+									 traversalPath.back().startIndex, traversalPath.back().endIndex-2,true);
+        
+        ofIndexType backInd  = floor(curIndex);
+        ofIndexType frontInd = ceil(curIndex);
+        ofVec3f frontVert = traversalMesh.getVertex(backInd);
+        ofVec3f backVert  = traversalMesh.getVertex(frontInd);
+        if(backInd == frontInd){
+            trailHead = frontVert;
+        }
+        else{
+            float alpha = ofMap(curIndex, backInd, frontInd, 0., 1.0);
+            trailHead = frontVert.getInterpolated(backVert, alpha);
+        }
+        
 		if(lockCameraAxis){
 			ofVec3f curPosition = axisCamera.getPosition();
 			ofVec3f curTarget = trailHead*meshExpansion + ofVec3f(0,0,traversCameraDistance);
@@ -830,7 +972,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 								   lineEdgeColorRGB.a);
 		networkShader.setUniformTexture("flickerTex", flickerNoise, 1);
 		networkShader.setUniform1f("flickerIntensity", lineFlickerIntensity);
-//		ofSetLineWidth(networkLineWidth);
+		ofSetLineWidth(networkLineWidth);
 		networkShader.setUniform1f("colorMixExponent", lineColorMixExponent);
 		networkMesh.draw();
 		networkShader.end();
@@ -857,10 +999,15 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 									 traverseTailColorRGB.g,
 									 traverseTailColorRGB.b,
 									 traverseTailColorRGB.a);
+
+        int numVertsInSegment = traversalPath.back().endIndex - traversalPath.back().startIndex;
+
 		traversalShader.setUniform1f("colorFalloff", traverseFalloff);
 		traversalShader.setUniform1f("trailVertCount", traversalMesh.getNumVertices());
-		traversalShader.setUniform1f("segemntVertCount", traversalPath.back().endIndex - traversalPath.back().startIndex);
-//		ofSetLineWidth(traverseLineWidth);
+		traversalShader.setUniform1f("segmentVertCount", numVertsInSegment);
+        traversalShader.setUniform1f("trailRevealCount", traverseRevealVerts);
+        
+		ofSetLineWidth(traverseLineWidth);
 		traversalMesh.draw();
 		traversalShader.end();
 	}
@@ -888,13 +1035,15 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 								   optionColorRGB.b,
 								   optionColorRGB.a);
 		
-		optionsShader.setUniform1f("percentOptionsRevealed", percentTraversed);
+		optionsShader.setUniform1f("percentOptionsRevealed",
+                                   percentTraversed);
 		optionsShader.setUniform1i("fadeIn", 0);
 		optionsMeshPrev.draw();
 		
-		optionsShader.setUniform1f("percentOptionsRevealed", percentOptionsRevealed);
+		optionsShader.setUniform1f("percentOptionsRevealed",
+                                   percentOptionsRevealed);
 		optionsShader.setUniform1i("fadeIn", 1);
-//		ofSetLineWidth(optionLineWidth);
+		ofSetLineWidth(optionLineWidth);
 		optionsMeshNext.draw();
 
 		optionsShader.end();

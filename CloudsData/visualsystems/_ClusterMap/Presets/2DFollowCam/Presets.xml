@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000061035</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>298.000000000</XPosition>
+    <YPosition>263.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -12,6 +12,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>3DFollowCam</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>3DFreeCam</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JG_SIMPLECAM</Name>
     <Value>1</Value>
 </Widget>

@@ -300,8 +300,6 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	if(clipPrerolled && !nextClipIsVO){
 		nextPlayer->update();
 	}
-	
-
 
     float  audioVolume =  maxVolume * currentClipVolumeAdjustment;
 
@@ -311,16 +309,20 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	else{
 		float position = getPlayer().getPosition()*getPlayer().getDuration();
 		float duration = getPlayer().getDuration();
-		float handleLength = 1.1;
+//		float handleLength = 1.1;
 		
 		//sometimes NAN comes back from position.
 		if(position != position){
 			return;
 		}
+        
 		//cout << "position is " << position << " " << duration << " duration " << endl;
 		
 		fadeInValue = MIN(position, 1.0);
 		fadeOutValue = ofMap(position, duration - 1.0, duration, 1.0, 0.0, true);
+        //remap to make it tigheter
+        fadeInValue  = powf(ofMap(fadeInValue,  .8, 1.0, 0.0, 1.0, true), 2.0);
+        fadeOutValue = powf(ofMap(fadeOutValue, .8, 1.0, 0.0, 1.0,true), 2.0);
 		if(position < 1.0){
 			audioVolume = ofMap(position, 1.0, 1.1, 0., maxVolume, true);
 		}

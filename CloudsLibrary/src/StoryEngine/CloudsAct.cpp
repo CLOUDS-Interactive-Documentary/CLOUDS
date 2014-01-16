@@ -144,10 +144,30 @@ void CloudsAct::populateTime(){
 		string startQuestion = startClip.getQuestionForTopic(startTopic);
 		introCue.soundQuestionKey = startTopic + ":" + startQuestion;
 	}
+    
 	introCue.mixLevel = 2;
-	introCue.startTime = clipItems[startClip.getLinkName()].startTime;
-	introCue.duration = clipItems[clips[1].getLinkName()].startTime - introCue.startTime;
 	introCue.dichotomies = dichotomiesMap[startClip.getLinkName()];
+    if(visualSystems.size() > 0 &&
+       visualSystems[0].hasSound() &&
+       visualSystemItems[visualSystems[0].getID()].startTime == 0)
+    {
+        introCue.startTime = visualSystemItems[ visualSystems[0].getID() ].endTime;
+        if(visualSystems.size() > 1){
+            cout << "systemend time is [" << visualSystemItems[visualSystems[0].getID()].startTime
+                  << " - " << visualSystemItems[visualSystems[0].getID()].endTime << endl;
+            introCue.duration  = visualSystemItems[ visualSystems[0].getID() ].startTime - introCue.startTime;
+        }
+        else {
+            introCue.duration  = duration - introCue.startTime;
+        }
+    }
+    else {
+        introCue.startTime = clipItems[startClip.getLinkName()].startTime;
+        introCue.duration  = clipItems[clips[1].getLinkName()].startTime - introCue.startTime;
+    }
+    
+    
+
 	cues.push_back(introCue);
 	
 	//calculate the 2 largest delta shifts;
@@ -217,23 +237,17 @@ void CloudsAct::populateTime(){
 		CloudsSoundCue actCue;
 		actCue.mixLevel = 1;
 		actCue.startTime = clipItems[clips[1].getLinkName()].startTime;
-		actCue.duration = clipItems[ energyShiftClipIDs[0] ].startTime - actCue.startTime;
+		actCue.duration = clipItems[ energyShiftClipIDs[0] ].startTime - actCue.startTime - 3;
 		actCue.dichotomies = dichotomiesMap[ clips[1].getLinkName() ];
 		cues.push_back(actCue);
 		
 		CloudsSoundCue energyShift;
 		energyShift.mixLevel = 1;
-		energyShift.startTime = clipItems[ energyShiftClipIDs[0] ].startTime;
+		energyShift.startTime = clipItems[ energyShiftClipIDs[0] ].startTime - 3;
 		energyShift.duration = duration - energyShift.startTime;
 		energyShift.dichotomies = dichotomiesMap[startClip.getLinkName()];
 		cues.push_back(energyShift);
         
-//        //adjust cues to fit with sound gaps
-//        for(int i = 0; i < silenceCues.size(); i++){
-//            if(silenceCues[i].contains( actCue.startTime) ){
-//                actCue.startTime = silenceCues[i].max;
-//            }
-//        }
 	}
 	else {
 		ofLogError("CloudsAct::populateTime") << "Not enough clips to create section markers";
@@ -335,15 +349,15 @@ vector<CloudsDichotomy>& CloudsAct::getDichotomiesForClip(string clipName){
     return dummyDichotomies;
 }
 
-vector< ofPtr<CloudsVisualSystem> > CloudsAct::getAllVisualSystems(){
-	vector< ofPtr<CloudsVisualSystem> > vs;
-	for(int i = 0; i < visualSystems.size(); i++){
-		if(!ofContains(vs, visualSystems[i].system)){
-			vs.push_back(visualSystems[i].system);
-		}
-	}
-	return vs;
-}
+//vector< ofPtr<CloudsVisualSystem> > CloudsAct::getAllVisualSystems(){
+//	vector< ofPtr<CloudsVisualSystem> > vs;
+//	for(int i = 0; i < visualSystems.size(); i++){
+//		if(!ofContains(vs, visualSystems[i].system)){
+//			vs.push_back(visualSystems[i].system);
+//		}
+//	}
+//	return vs;
+//}
 
 vector<CloudsVisualSystemPreset>& CloudsAct::getAllVisualSystemPresets(){
     return visualSystems;
@@ -358,7 +372,7 @@ CloudsClip& CloudsAct::getClip(int index){
     return clips[index];
 }
 
-CloudsClip& CloudsAct:: getClipAtTime(float time){
+CloudsClip& CloudsAct::getClipAtTime(float time){
     for(int i=0; i< clips.size(); i++){
         ActTimeItem item = getItemForClip(clips[i]);
         if(time >= item.startTime && time <= item.endTime){
@@ -469,6 +483,9 @@ float CloudsAct::addVisualSystem(CloudsVisualSystemPreset& preset, float startTi
     }
     else{
         addNote("DEFINITE DUR: " + ofToString(preset.duration,3) + " SCHED: " + ofToString(endTime - startTime, 3), startTime);
+        if( preset.duration + .3 < endTime-startTime){
+            ofLogError("CloudsAct::addVisualSystem") << "Scheduled definite visual system for too long";
+        }
     }
 
     actItems.push_back(item);

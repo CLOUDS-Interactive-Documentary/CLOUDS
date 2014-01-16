@@ -340,10 +340,12 @@ class CloudsVisualSystem {
     vector<ofxUISuperCanvas *> guis;
     map<string, ofxUICanvas *> guimap;
 	
-    
     //Background Props
     float bgAspectRatio;
 	bool bBarGradient;
+    bool bWashGradient;
+    float backgroundGradientExponent;
+    
     int gradientMode;
 	ofColor bgColor;
 	ofColor bgColor2;

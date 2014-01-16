@@ -4,9 +4,12 @@
 #include "CloudsVisualSystem.h"
 #include "CloudsPortal.h"
 #include "CloudsQuestion.h"
+#include "CloudsEvents.h"
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
 #include "ofxFTGL.h"
+#include "CloudsPortalEvents.h"
+#include "CloudsRGBDPointLayer.h"
 
 struct TransitionInfo{
 	ofVec3f inStartPos;
@@ -21,6 +24,7 @@ struct TransitionInfo{
 	string optionName;
 	string transitionName;
 };
+
 
 class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   public:
@@ -76,7 +80,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     ////////QUESTIONS
 
 	float visualSystemFadeValue;
-	
+    
 	ofCamera& getCameraRef(){
 		if(placingTransitionNodes){
 			return transitionCam;
@@ -124,11 +128,16 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void setOutOption( OutOption outOption );
 	
 	void resetTransitionNodes();
+	void resetInTransitionNode();
+	void resetLeftTransitionNode();
+	void resetRightTransitionNode();
 	
 	void StopEditTransitionMode();
     //////////TRANSITIONS
     
 	void playTestVideo();
+    
+    static CloudsVisualSystemEvents events;
     
   protected:
 	
@@ -152,26 +161,12 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float skinBrightness;
 	
 	//POINTS
-	ofxUISuperCanvas *pointsGui;
+    
+	//ofxUISuperCanvas *pointsGui;
+    CloudsRGBDPointLayer pointLayer1;
+    CloudsRGBDPointLayer pointLayer2;
+    
 	ofShader pointShader;
-	ofVboMesh points;
-    
-	float pointXSimplify;
-    float pointYSimplify;
-    
-    int pointCount;
-	bool drawPoints;
-	float pointAlpha;
-	int numRandomPoints;
-	ofRange pointSize;
-	float pointHeadOverlap;
-	float pointFlowPosition;
-	float pointFlowSpeed;
-	bool pointsFlowUp;
-    float pointColorBoost;
-    float pointSkinBoost;
-	bool refreshPointcloud;
-	void generatePoints();
 	
 	//LINES
 	ofxUISuperCanvas *linesGui;
@@ -195,10 +190,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool refreshLines;
 	void generateLines();
 	
+    
 	//MESH
 	ofxUISuperCanvas *meshGui;
 	ofShader meshShader;
-//	ofVboMesh mesh;
     ofVbo mesh;
     int meshVertexCount;
 	bool drawMesh;
@@ -216,11 +211,20 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     bool refreshMesh;
 	void generateMesh();
 
+    //FILL
+	ofxUISuperCanvas *fillGui;
+    bool bEnableFill;
+    float fillAlpha;
+	float fillFaceFalloff;
+	float fillRetractionFalloff;
+    float fillFaceMinRadius;
+//	float fillForceGeoRetraction;
+
     ///OCCLUSION
 	ofxUISuperCanvas *occlusionGui;
     bool bDrawOcclusion;
     bool drawOcclusionDebug;
-    
+
     ofShader occlusionShader;
     ofVbo occlusion;
     int occlusionVertexCount;
@@ -231,6 +235,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float occlusionMeshRetractionFalloff;
     bool refreshOcclusion;
     void generateOcclusion();
+    void drawOcclusionLayer();
     
     ///ACTUATORS
     float actuatorSpinPosition;
@@ -241,8 +246,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     ofVec3f pointActuator;
     ofVec3f lineActuator;
     ofVec3f meshActuator;
-    
-    
 	
 	void loadShader();
 
@@ -251,14 +254,11 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxUISuperCanvas *questionGui;
     ofxUISuperCanvas *actuatorGui;
     
-	//TODO: move to hud
-	//ofxFTGLSimpleLayout displayFont;
 	bool drawParticulate;
 	float attenuatedCameraDrift;
 	GPUParticles::Controller particulateController;
+    float particleCount;
     ofVec4f pointColor;
-
-
     
     ///PORTALS
 	float portalScale;
@@ -273,27 +273,16 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     CloudsPortal* selectedPortal;
 	void updateQuestions();
 	void drawQuestions();
-
 	
 	bool placingTransitionNodes;
 	bool drawTransitionNodes;
 	
 	//transition
-	bool transitioning, transitioningIn, transitioningOut, bResetLookThoughs;
+	bool transitioning, transitioningIn, transitioningOut, bResetLookThoughs, bResetRight,bResetLeft,bResetIn;
 	float transitionStartTime, transitionEndTime, transitionStartVal, transitionTargetVal;
 	string activeTransition;
 	
 	RGBDTransitionType transitionType;
 	
 	float transitionVal;
-	
-//	ofVec3f questionXZ;
-//	float questionDriftRange;
-//	float questionYCenter;
-//	float questionYDriftRange;
-//	float questionYRange;
-//	float questionLifeSpan; //minutes
-	
-//	ofFloatColor questionBaseHSB;
-//	ofFloatColor questionHoverHSB;
 };
