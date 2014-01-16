@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Particle</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>462.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>307.000000000</XPosition>
+    <YPosition>433.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BIRTH SPREAD</Name>
-    <Value>500.000000000</Value>
+    <Value>1437.142944336</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>POINT COLOR H</Name>
-    <Value>0.655172408</Value>
+    <Value>0.463054180</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
