@@ -196,6 +196,7 @@ void CloudsTransitionController::update() {
 		
 		//started next state
 		if(transitionPercent >= 1.0){
+            transitionPercent = 0.0;
 			getNextState();
 		}
 	}

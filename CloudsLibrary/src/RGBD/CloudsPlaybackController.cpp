@@ -179,9 +179,9 @@ void CloudsPlaybackController::setup(){
 			startingNodes.erase(startingNodes.begin() + i);
         }
 #endif
-        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "what does music look like?"){
-			startingNodes.erase(startingNodes.begin() + i);            
-        }
+//        else if(ofToLower( startingNodes[i].getQuestions()[0]) != "what does music look like?"){
+//			startingNodes.erase(startingNodes.begin() + i);            
+//        }
 		else{
             //			cout << " Adding Clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
 		}
@@ -316,23 +316,6 @@ void CloudsPlaybackController::createInterludeSoundQueue(){
 	cue.mixLevel = 2;
 	sound.startMusicFX(0, cue.duration);
 	sound.schedulePreset(interludePreset, cue.startTime, cue.duration, cue.mixLevel);
-	
-	//get all the presets in the range of 56 - 65
-	
-    //TODO Only intro cue on the first act...?
-//	CloudsClip& startClip = clips[0];
-//	if(startClip.hasStartingQuestion() && startClip.getTopicsWithQuestions().size() > 0){
-//		string startTopic    = startClip.getTopicsWithQuestions()[0];
-//		string startQuestion = startClip.getQuestionForTopic(startTopic);
-//		introCue.soundQuestionKey = startTopic + ":" + startQuestion;
-//	}
-    
-//	introCue.mixLevel = 2;
-//    
-//    for(int i = 0; i < sound.presets.size(); i++){
-//        //introCue.riggedPresetName =
-//        cout << i << "  " << sound.presets[i].name << endl;;
-//    }
 
 }
 
@@ -659,7 +642,11 @@ void CloudsPlaybackController::updateTransition(){
                 break;
         }
 	}
-    //crossfadeValue += (transitionController.getFadeValue() - crossfadeValue)*.1;
+    
+    if(abs(crossfadeValue - transitionController.getFadeValue()) > .5){
+        ofLogError("TRANSITION JUMP");
+    }
+    
     crossfadeValue = transitionController.getFadeValue();
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 	if(transitionController.transitioning){
