@@ -144,10 +144,10 @@ void main(void){
 	vec2 normalPos   = samplePos + normalRect.xy;
 	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
   	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
-    normal = -normalize(gl_NormalMatrix * surfaceNormal);
+//    normal = -normalize(gl_NormalMatrix * surfaceNormal);
   
 //    float actuatorExtendAttenuate = smoothstep(.3, .35, dot(normal,actuatorDirection) );
-    actuatorAttenuation = max(maxActuatorRetract, dot(normal,actuatorDirection));
+    actuatorAttenuation = max(maxActuatorRetract, dot(surfaceNormal,actuatorDirection));
 
     
 	vec2 extendedSamplePos = samplePos + gl_Normal.xy*lineExtend*actuatorAttenuation;

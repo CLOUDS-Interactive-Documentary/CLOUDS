@@ -1,0 +1,67 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Lines</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>316.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Alpha</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Color Boost</Name>
+    <Value>0.389162570</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Skin Boost</Name>
+    <Value>0.192118227</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Thickness</Name>
+    <Value>0.325123161</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Spacing</Name>
+    <Value>2.674876690</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Face Overlap</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Granularity</Name>
+    <Value>3.482758522</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Flow</Name>
+    <Value>0.206896558</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Lines Flow Up</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max Actuator Retr</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Random Offset</Name>
+    <Value>0.000000000</Value>
+</Widget>

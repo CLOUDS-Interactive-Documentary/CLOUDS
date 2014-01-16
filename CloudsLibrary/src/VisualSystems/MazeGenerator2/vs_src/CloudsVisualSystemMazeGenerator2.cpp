@@ -107,10 +107,11 @@ void CloudsVisualSystemMazeGenerator2::guiRenderEvent(ofxUIEventArgs &e)
 void CloudsVisualSystemMazeGenerator2::selfSetup()
 {
 //    maze = new Maze(30, 4, 30);
-    maze[0] = new Maze2(60, 8, 40);
-    maze[0]->generate();
+    maze = new Maze2(60, 8, 40);
+    maze->generate();
     
-    mazeCam = new MazeCamera2(maze[0]->getWidth()/2, ParamManager2::getInstance().cameraHeight, 100);
+    mazeCam = new MazeCamera2(maze->getWidth()/2,
+                              ParamManager2::getInstance().cameraHeight, 100);
     
     light = new ofLight();
     light->setDirectional();
@@ -142,7 +143,7 @@ void CloudsVisualSystemMazeGenerator2::selfUpdate()
 {
     mazeCam->update();
     
-    maze[0]->update(mazeCam);
+    maze->update(mazeCam);
 
     if (bLights) {
         setLightOri(light, lightAng);
@@ -160,7 +161,7 @@ void CloudsVisualSystemMazeGenerator2::selfDraw()
     
     mazeCam->begin();
 
-    maze[0]->draw(mazeCam);
+    maze->draw(mazeCam);
     
     mazeCam->end();
     
@@ -189,8 +190,8 @@ void CloudsVisualSystemMazeGenerator2::selfEnd()
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemMazeGenerator2::selfExit()
 {
-    delete maze[0];
-    
+    delete maze;
+    delete light;
     delete mazeCam;
 }
 

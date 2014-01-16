@@ -151,7 +151,8 @@ void main(void){
 	vec3 surfaceNormal = normalcolor.xyz * 2.0 - 1.0;
     normal = -normalize(gl_NormalMatrix * surfaceNormal);
     
-    actuatorExtendAttenuate = max(maxActuatorRetract, dot(normal,actuatorDirection) );
+    //actuatorExtendAttenuate = max(maxActuatorRetract, dot(normal,actuatorDirection) );
+    actuatorExtendAttenuate = max(maxActuatorRetract, dot(surfaceNormal,actuatorDirection) );
     
     float accumulatedExtendAttenuation = triangleExtend * headRetraction * actuatorExtendAttenuate;
 	vec2 samplePosExtended = samplePos + gl_Normal.xy * accumulatedExtendAttenuation;
