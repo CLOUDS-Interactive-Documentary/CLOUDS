@@ -647,7 +647,10 @@ void CloudsPlaybackController::updateTransition(){
                 break;
         }
 	}
-    
+    float newCrossfade = transitionController.getFadeValue();
+    if(abs(newCrossfade - crossfadeValue) < .5){
+        crossfadeValue = newCrossfade;
+    }
     crossfadeValue = transitionController.getFadeValue();
 	rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 	if(transitionController.transitioning){
