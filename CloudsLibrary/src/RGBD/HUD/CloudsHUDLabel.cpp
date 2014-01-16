@@ -130,6 +130,22 @@ void CloudsHUDLabel::animateOut(bool force) {
     bIsAnimatingOut = true;
 }
 
+void CloudsHUDLabel::instantIn() {
+    bIsVisible = true;
+    
+    pct = 1.0;
+    playhead = floor(text.length() * pct);
+    textAlpha = 255;
+}
+
+void CloudsHUDLabel::instantOut() {
+    bIsVisible = false;
+    
+    pct = 0.0;
+    textAlpha = floor( 255. * pct );
+    text == "";
+}
+
 bool CloudsHUDLabel::isVisible() {
     return bIsVisible;
 }

@@ -751,39 +751,75 @@ void CloudsHUDController::animateOff(CloudsHUDLayerSet layer){
         videoPlayer.close();
     }
     
+    // EZ: CODE BELOW IS FOR INSTANT OUT (TEMP!!!)
     for (map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> >::iterator it = layerSets.begin(); it != layerSets.end(); ++it) {
         if ((layer & it->first) != 0) {
             hudOpenMap[it->first] = false;
             for (int i = 0; i < it->second.size(); i++) {
-                it->second[i]->close();
+                it->second[i]->close(false);
             }
         }
     }
     
-    // animate out text, this is sub-optimal
+    // instant out text, this is sub-optimal
     if( layer == CLOUDS_HUD_FULL ){
         for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
-            (it->second)->animateOut();
+            (it->second)->instantOut();
         }
     }
     else if( (layer & CLOUDS_HUD_LOWER_THIRD) != 0 ){
-        hudLabelMap["BylineFirstNameTextBox_1_"]->animateOut();
-        hudLabelMap["BylineLastNameTextBox"]->animateOut();
-        hudLabelMap["BylineTopicTextBoxTop"]->animateOut();
-        hudLabelMap["BylineTopicTextBoxBottom"]->animateOut();
-        hudLabelMap["BylineBodyCopyTextBox"]->animateOut();
+        hudLabelMap["BylineFirstNameTextBox_1_"]->instantOut();
+        hudLabelMap["BylineLastNameTextBox"]->instantOut();
+        hudLabelMap["BylineTopicTextBoxTop"]->instantOut();
+        hudLabelMap["BylineTopicTextBoxBottom"]->instantOut();
+        hudLabelMap["BylineBodyCopyTextBox"]->instantOut();
     }
     else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
-        hudLabelMap["ProjectExampleTextboxLeft"]->animateOut();
-        hudLabelMap["ProjectExampleTextboxRight"]->animateOut();
-        hudLabelMap["ProjectExampleTextBoxTop"]->animateOut();
+        hudLabelMap["ProjectExampleTextboxLeft"]->instantOut();
+        hudLabelMap["ProjectExampleTextboxRight"]->instantOut();
+        hudLabelMap["ProjectExampleTextBoxTop"]->instantOut();
     }
     else if( (layer & CLOUDS_HUD_MAP) != 0 ){
-        
+    
     }
     else if( (layer & CLOUDS_HUD_QUESTION) != 0 ){
-        hudLabelMap["QuestionTextBox"]->animateOut();
+        hudLabelMap["QuestionTextBox"]->instantOut();
     }
+    
+    // EZ: CODE BELOW IS FOR ANIMATING, LET'S JUST INSTANT OUT FOR NOW
+//    for (map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> >::iterator it = layerSets.begin(); it != layerSets.end(); ++it) {
+//        if ((layer & it->first) != 0) {
+//            hudOpenMap[it->first] = false;
+//            for (int i = 0; i < it->second.size(); i++) {
+//                it->second[i]->close();
+//            }
+//        }
+//    }
+//    
+//    // animate out text, this is sub-optimal
+//    if( layer == CLOUDS_HUD_FULL ){
+//        for( map<string, CloudsHUDLabel*>::iterator it=hudLabelMap.begin(); it!= hudLabelMap.end(); ++it ){
+//            (it->second)->animateOut();
+//        }
+//    }
+//    else if( (layer & CLOUDS_HUD_LOWER_THIRD) != 0 ){
+//        hudLabelMap["BylineFirstNameTextBox_1_"]->animateOut();
+//        hudLabelMap["BylineLastNameTextBox"]->animateOut();
+//        hudLabelMap["BylineTopicTextBoxTop"]->animateOut();
+//        hudLabelMap["BylineTopicTextBoxBottom"]->animateOut();
+//        hudLabelMap["BylineBodyCopyTextBox"]->animateOut();
+//    }
+//    else if( (layer & CLOUDS_HUD_PROJECT_EXAMPLE) != 0 ){
+//        hudLabelMap["ProjectExampleTextboxLeft"]->animateOut();
+//        hudLabelMap["ProjectExampleTextboxRight"]->animateOut();
+//        hudLabelMap["ProjectExampleTextBoxTop"]->animateOut();
+//    }
+//    else if( (layer & CLOUDS_HUD_MAP) != 0 ){
+//        
+//    }
+//    else if( (layer & CLOUDS_HUD_QUESTION) != 0 ){
+//        hudLabelMap["QuestionTextBox"]->animateOut();
+//    }
 }
 
 void CloudsHUDController::saveGuiSettings(){
