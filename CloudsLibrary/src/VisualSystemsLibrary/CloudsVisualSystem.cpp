@@ -151,9 +151,9 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	updateCyclced = false;
     bDoBloom = false;
     bloomAmount = 0.;
-#ifdef CLOUDS_APP
-    bShowPortals = true;
-#endif
+//#ifdef CLOUDS_APP
+//    bShowPortals = true;
+//#endif
     
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
@@ -216,40 +216,40 @@ string CloudsVisualSystem::getVisualSystemDataPath(bool ignoredFolder){
 ofxTimeline* CloudsVisualSystem::getTimeline(){
 	return timeline;
 }
-#ifdef CLOUDS_APP
-void CloudsVisualSystem::setupPortals(){
-    
- 
-    
-    CloudsPortal rp;
-    rp.hoverPosition = ofVec3f(75.f, getCanvasHeight()/4*3, 0);
-    rp.scale = .3;
-    rp.cam = &getCameraRef();
-    rp.question = "Return";
-    rp.setup();
-    portals.push_back(rp);
-    
-    CloudsPortal cp;
-    cp.hoverPosition = ofVec3f(getCanvasWidth()-75.f, getCanvasHeight()/4*3, 0);
-    cp.scale = .3;
-    cp.cam = &getCameraRef();
-    cp.question = "Continue";
-    cp.setup();
-    portals.push_back(cp);
-    
-    SetInterludePortalsRef(portals);
-    
-}
-#endif
+//#ifdef CLOUDS_APP
+//void CloudsVisualSystem::setupPortals(){
+//    
+// 
+//    
+//    CloudsPortal rp;
+//    rp.hoverPosition = ofVec3f(75.f, getCanvasHeight()/4*3, 0);
+//    rp.scale = .3;
+//    rp.cam = &getCameraRef();
+//    rp.question = "Return";
+//    rp.setup();
+//    portals.push_back(rp);
+//    
+//    CloudsPortal cp;
+//    cp.hoverPosition = ofVec3f(getCanvasWidth()-75.f, getCanvasHeight()/4*3, 0);
+//    cp.scale = .3;
+//    cp.cam = &getCameraRef();
+//    cp.question = "Continue";
+//    cp.setup();
+//    portals.push_back(cp);
+//    
+//    SetInterludePortalsRef(portals);
+//    
+//}
+//#endif
 
 void CloudsVisualSystem::setup(){
 	
     if(bIsSetup){
 		return;
 	}
-#ifdef CLOUDS_APP
-    setupPortals();
-#endif
+//#ifdef CLOUDS_APP
+//    setupPortals();
+//#endif
     
     backgroundGradientExponent = 1.0;
     bWashGradient = false;
@@ -407,34 +407,34 @@ void CloudsVisualSystem::speakerEnded()
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
     
-#ifdef CLOUDS_APP
-    
-    bShowPortals = CanShowInterludePortals();
-
-    if(bShowPortals){
-        ofVec2f mouseNode(GetCloudsInputX(),getCanvasHeight()-GetCloudsInputY());
-        for(int i=0;i<portals.size();i++){
-            portals[i].hoverPosition.y += .2*sin(ofGetElapsedTimef());
-            portals[i].update();
-            float distanceToPortal = portals[i].hoverPosition.distance(mouseNode);
-            if(distanceToPortal<100.f){
-                portals[i].startHovering();
-            }
-            else{
-                portals[i].stopHovering();
-            }
-        }
-        //cout<<GetSelectedInterludePortalContinue()<<endl;
-        SetInterludePortalsRef(portals);
-    }
-//    else{
+//#ifdef CLOUDS_APP
+//    
+//    bShowPortals = CanShowInterludePortals();
+//
+//    if(bShowPortals){
+//        ofVec2f mouseNode(GetCloudsInputX(),getCanvasHeight()-GetCloudsInputY());
 //        for(int i=0;i<portals.size();i++){
-//            portals[i].clearSelection();
-//            portals[i].stopHovering();
+//            portals[i].hoverPosition.y += .2*sin(ofGetElapsedTimef());
+//            portals[i].update();
+//            float distanceToPortal = portals[i].hoverPosition.distance(mouseNode);
+//            if(distanceToPortal<100.f){
+//                portals[i].startHovering();
+//            }
+//            else{
+//                portals[i].stopHovering();
+//            }
 //        }
+//        //cout<<GetSelectedInterludePortalContinue()<<endl;
+//        SetInterludePortalsRef(portals);
 //    }
-    
-#endif
+////    else{
+////        for(int i=0;i<portals.size();i++){
+////            portals[i].clearSelection();
+////            portals[i].stopHovering();
+////        }
+////    }
+//    
+//#endif
 
 #ifdef CLOUDS_RELEASE
     // show/hide the mouse cursor
@@ -3700,24 +3700,24 @@ void CloudsVisualSystem::selfPostDraw(){
     //end
 #endif
     
-#ifdef CLOUDS_APP
-    
-    if(bShowPortals){
-        ofPushStyle();
-        ofEnableAlphaBlending();
-        
-        ofSetColor(255);
-        for(int i = 0; i < portals.size(); i++){
-            glDisable(GL_DEPTH_TEST);
-            CloudsPortal::shader.begin();
-            CloudsPortal::shader.setUniform1i("doAttenuate", 0);
-            portals[i].draw();
-            CloudsPortal::shader.end();
-        }
-        ofDisableAlphaBlending();
-        ofPopStyle();
-    }
-#endif
+//#ifdef CLOUDS_APP
+//    
+//    if(bShowPortals){
+//        ofPushStyle();
+//        ofEnableAlphaBlending();
+//        
+//        ofSetColor(255);
+//        for(int i = 0; i < portals.size(); i++){
+//            glDisable(GL_DEPTH_TEST);
+//            CloudsPortal::shader.begin();
+//            CloudsPortal::shader.setUniform1i("doAttenuate", 0);
+//            portals[i].draw();
+//            CloudsPortal::shader.end();
+//        }
+//        ofDisableAlphaBlending();
+//        ofPopStyle();
+//    }
+//#endif
     
     
 }
@@ -3885,32 +3885,32 @@ void CloudsVisualSystem::checkOpenGLError(string function){
     }
 }
 
-#ifdef CLOUDS_APP
-
-void SetInterludePortalsRef(vector<CloudsPortal>& ref){
-    gPortals = ref;
-}
-
-vector<CloudsPortal>& InterludePortalsRef(){
-    return gPortals;
-}
-
-void ResetInterludePortals(){
-    for(int i=0;i<InterludePortalsRef().size();i++){
-        InterludePortalsRef()[i].clearSelection();
-    }
-}
-bool GetSelectedInterludePortalContinue(){
-    return InterludePortalsRef()[1].isSelected();
-}
-bool GetSelectedInterludePortalResetClouds(){
-    return InterludePortalsRef()[0].isSelected();
-}
-
-bool CanShowInterludePortals(){
-    return gShowInterludePortals;
-}
-void ShowInterludePortals( bool show ){
-    gShowInterludePortals = show;
-}
-#endif
+//#ifdef CLOUDS_APP
+//
+//void SetInterludePortalsRef(vector<CloudsPortal>& ref){
+//    gPortals = ref;
+//}
+//
+//vector<CloudsPortal>& InterludePortalsRef(){
+//    return gPortals;
+//}
+//
+//void ResetInterludePortals(){
+//    for(int i=0;i<InterludePortalsRef().size();i++){
+//        InterludePortalsRef()[i].clearSelection();
+//    }
+//}
+//bool GetSelectedInterludePortalContinue(){
+//    return InterludePortalsRef()[1].isSelected();
+//}
+//bool GetSelectedInterludePortalResetClouds(){
+//    return InterludePortalsRef()[0].isSelected();
+//}
+//
+//bool CanShowInterludePortals(){
+//    return gShowInterludePortals;
+//}
+//void ShowInterludePortals( bool show ){
+//    gShowInterludePortals = show;
+//}
+//#endif

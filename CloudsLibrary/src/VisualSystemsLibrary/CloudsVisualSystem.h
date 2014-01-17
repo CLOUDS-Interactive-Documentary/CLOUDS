@@ -280,9 +280,9 @@ class CloudsVisualSystem {
     void toggleGuiAndPosition(ofxUISuperCanvas *g);
     void deleteGUIS();
     
-#ifdef CLOUDS_APP
-    void setupPortals();
-#endif
+//#ifdef CLOUDS_APP
+//    void setupPortals();
+//#endif
 
 //	void setCurrentCamera( ofCamera& cam );
 //	void setCurrentCamera( ofCamera* swappedInCam );
@@ -497,14 +497,14 @@ class CloudsVisualSystem {
     
 };
 
-#ifdef CLOUDS_APP
-static  vector<CloudsPortal> gPortals;
-static bool gShowInterludePortals;
-vector<CloudsPortal>& InterludePortalsRef();
-void SetInterludePortalsRef(vector<CloudsPortal>& ref);
-void ResetInterludePortals();
-bool GetSelectedInterludePortalContinue();
-bool GetSelectedInterludePortalResetClouds();
-void ShowInterludePortals(bool show);
-bool CanShowInterludePortals();
-#endif
+//#ifdef CLOUDS_APP
+//static  vector<CloudsPortal> gPortals;
+//static bool gShowInterludePortals;
+//vector<CloudsPortal>& InterludePortalsRef();
+//void SetInterludePortalsRef(vector<CloudsPortal>& ref);
+//void ResetInterludePortals();
+//bool GetSelectedInterludePortalContinue();
+//bool GetSelectedInterludePortalResetClouds();
+//void ShowInterludePortals(bool show);
+//bool CanShowInterludePortals();
+//#endif

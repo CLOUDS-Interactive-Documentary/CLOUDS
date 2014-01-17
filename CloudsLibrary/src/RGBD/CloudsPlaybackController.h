@@ -22,6 +22,9 @@
 
 #include "CloudsTransitionController.h"
 
+#include "CloudsPortal.h"
+
+
 /**
  * This class controls playback of RGBD sequences
  * and decides when to show Visual Systems
@@ -142,9 +145,28 @@ class CloudsPlaybackController {
     void showClusterMap();
     void showInterlude();
     void cleanupInterlude();
-    
+
+    //INTERLUDE PORTAL
+//#ifdef CLOUDS_APP
+    bool bShowPortals;
+    CloudsPortal continuePortal;
+    void setupPortals();
+    ofRectangle resetRect;
+//    vector<CloudsPortal> portals;
+//    vector<CloudsPortal> gPortals;
+//    bool gShowInterludePortals;
+//    vector<CloudsPortal>& InterludePortalsRef();
+//    void SetInterludePortalsRef(vector<CloudsPortal>& ref);
+//    void ResetInterludePortals();
+//    bool GetSelectedInterludePortalContinue();
+//    bool GetSelectedInterludePortalResetClouds();
+//    void ShowInterludePortals(bool show);
+//    bool CanShowInterludePortals();
+//#endif
 
 };
+
+
 
 
 
