@@ -425,8 +425,8 @@
 			<twitter>@underdoeg</twitter>
 			<location1>Basel CH</location1>
 			<location2>Basel</location2>
-			<byline1>Interaction designer and VJ, one half of the Undef collective with Martin Fuchs. He has contributed numerous oFX addons to openFrameworks, a C++ toolkit for artists.</byline1>
-			<byline2>He has contributed numerous oFX addons to Open Frameworks, a c++ toolkit for artists.</byline2>
+			<byline1>Interaction designer and VJ, one half of the Undef collective with Martin Fuchs. He has contributed numerous ofxAddons to openFrameworks, a C++ toolkit for artists.</byline1>
+			<byline2>He has contributed numerous ofxAddons to Open Frameworks, a c++ toolkit for artists.</byline2>
 			<gender>male</gender>
 		</person>
 	<person id="Ramsey">
@@ -493,7 +493,7 @@
 			<location1>London UK</location1>
 			<location2>London - Cambridge</location2>
 			<byline1>
-				Develops playful interactive systems and software tools. He is the the co-founder of openFrameworks, an open source library for writing creative code in C++.
+				Develops playful interactive systems and software tools. He is the co-founder of openFrameworks, an open source library for writing creative code in C++.
 			</byline1>
 			<byline2>
 				His company Design IO, with partner Emily Gobeille, creates immersive environments that engage full-body interaction.
