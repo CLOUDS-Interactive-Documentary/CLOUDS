@@ -433,19 +433,18 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 //    
 //#endif
 
-#ifdef CLOUDS_RELEASE
-    // show/hide the mouse cursor
-    currMousePos.set(ofGetMouseX(), ofGetMouseY());
-    if (currMousePos != lastMousePos) {
-        lastMouseMoveMillis = ofGetElapsedTimeMillis();
-        ofShowCursor();
-    }
-    else if ((ofGetElapsedTimeMillis() - lastMouseMoveMillis) > 1000) {
-        ofHideCursor();
-    }
-    lastMousePos = currMousePos;
-
-#endif
+//#ifdef CLOUDS_RELEASE
+//    // show/hide the mouse cursor
+//    currMousePos.set(ofGetMouseX(), ofGetMouseY());
+//    if (currMousePos != lastMousePos) {
+//        lastMouseMoveMillis = ofGetElapsedTimeMillis();
+//        ofShowCursor();
+//    }
+//    else if ((ofGetElapsedTimeMillis() - lastMouseMoveMillis) > 1000) {
+//        ofHideCursor();
+//    }
+//    lastMousePos = currMousePos;
+//#endif
     
     if(bEnableTimeline && !bEnableTimelineTrackCreation && !bDeleteTimelineTrack)
     {
@@ -476,7 +475,7 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 		bgSat2 = bgSat;
 		bgBri2 = bgBri;
 	}
-    
+
     durationLabel->setLabel(ofxTimecode::timecodeForSeconds(timeline->getInOutRange().span() * timeline->getDurationInSeconds()));
     
 	bgColor = ofColor::fromHsb(MIN(bgHue,254.), bgSat, bgBri, 255);
@@ -951,7 +950,9 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 		case 'O':
 			timeline->setOutPointAtPlayhead();
 			break;
+            
 #ifdef OCULUS_RIFT
+        case OF_KEY_BACKSPACE:
 		case '0':
 			oculusRift.reset();
 			break;
