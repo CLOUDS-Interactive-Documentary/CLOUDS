@@ -216,7 +216,8 @@ void CloudsPlaybackController::showIntro(){
 	currentVisualSystem = introSequence;
 	
 	sound.enterTunnel();
-	
+	numActsCreated = 0;
+    
 	showingVisualSystem = true;
 	showingIntro = true;
 	hud.setHomeEnabled(false);
