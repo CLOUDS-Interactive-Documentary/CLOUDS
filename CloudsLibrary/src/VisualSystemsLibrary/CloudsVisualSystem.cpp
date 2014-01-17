@@ -1670,7 +1670,7 @@ void CloudsVisualSystem::setupCameraGui()
 CloudsVisualSystem::RGBDTransitionType CloudsVisualSystem::getTransitionType()
 {
     if(transitionRadio == NULL){
-        return;
+        return WHIP_PAN;
     }
     
 	if(transitionRadio->getActive() == NULL)
