@@ -138,7 +138,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             // calculate the head to spine base length for mapping height
             float mappingWidth = MAX(bodies[idx]->spineShoulderJoint.inputPosition.distance(bodies[idx]->shoulderLeftJoint.inputPosition), 
                                      bodies[idx]->spineShoulderJoint.inputPosition.distance(bodies[idx]->shoulderRightJoint.inputPosition));
-            float mappingHeight = (bodies[idx]->neckJoint.inputPosition.distance(bodies[idx]->spineMidJoint.inputPosition)
+            float mappingHeight = (bodies[idx]->headJoint.inputPosition.distance(bodies[idx]->spineMidJoint.inputPosition)
                                    + bodies[idx]->spineMidJoint.inputPosition.distance(bodies[idx]->spineBaseJoint.inputPosition) * 0.5f) * 0.5f;
             float neckOverlapWidth = mappingWidth * 0.2f;
             
@@ -181,7 +181,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                                                                             m.getArgAsFloat(i++)), jointLerpPct);
                 
                 // set the custom origin and bounds
-                ofVec3f origin = bodies[idx]->neckJoint.inputPosition;
+                ofVec3f origin = bodies[idx]->headJoint.inputPosition;
                 if (hands[handIdx]->handJoint.type == k4w::JointType_HandLeft) {
                     origin.x -= mappingWidth - neckOverlapWidth;
                 }
