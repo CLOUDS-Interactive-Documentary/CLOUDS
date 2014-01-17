@@ -198,10 +198,13 @@ void CloudsVisualSystemRGBD::setTransitionNodes( string type, string option )
 		transitionInStart.setPosition( ti.inStartPos + translatedHeadPosition );
 		transitionInStart.setOrientation( q );
 		
-		transitionOutLeft.setPosition(rightPortal.hoverPosition);
+		ofVec3f leftExtraFlying = (leftPortal.hoverPosition - transitionInStart.getPosition()).normalized() * 100;
+		ofVec3f rightExtraFlying = (rightPortal.hoverPosition - transitionInStart.getPosition()).normalized() * 100;
+		
+		transitionOutLeft.setPosition(rightPortal.hoverPosition + rightExtraFlying);
 		transitionOutLeft.setOrientation( q );
 		
-		transitionOutRight.setPosition(leftPortal.hoverPosition);
+		transitionOutRight.setPosition(leftPortal.hoverPosition + leftExtraFlying);
 		transitionOutRight.setOrientation( q );
 	}
 	else if(transitionMap.find(type) != transitionMap.end())
