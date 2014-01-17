@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>FireworkColors</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>70.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>28</Kind>
@@ -23,11 +23,11 @@
 <Widget>
     <Kind>28</Kind>
     <Name>C1_birth_color</Name>
-    <XValue>0.270000011</XValue>
-    <YValue>0.479999989</YValue>
-    <RColor>14</RColor>
-    <GColor>211</GColor>
-    <BColor>227</BColor>
+    <XValue>0.330000013</XValue>
+    <YValue>0.250000000</YValue>
+    <RColor>75</RColor>
+    <GColor>63</GColor>
+    <BColor>255</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>

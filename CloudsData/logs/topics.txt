@@ -1,3 +1,20 @@
+487	#hard
+270	#tech
+251	#inspiring
+218	#logical
+214	#sincere
+212	#easy
+203	#mindblowing
+177	#emotional
+158	#obstacle
+151	#rational
+133	#serious
+125	#example
+114	#art
+105	#fun
+102	#gold
+100	#breakthrough
+83	#discouraging
 70	community
 70	open source
 68	sharing

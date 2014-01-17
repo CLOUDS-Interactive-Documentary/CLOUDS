@@ -23,6 +23,9 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
 	bSmoothLines = false;
 	autoTraversePoints = false;
 	
+//    axisRotation = 0;
+    numTraversed = 0;
+    
 	clipsShowTopic = ofIntRange(20, 40);
 	drawType = true;
 	baseFontSize = 12;
@@ -44,7 +47,10 @@ void CloudsVisualSystemClusterMap::selfSetDefaults(){
     minTraverseNextOptions = 3;
     minTraverseDistance = 5;
     
-
+    drawAssociation = false;
+    associationFontSize = -1;
+    currentAssociationFont = 8;
+    
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -222,10 +228,13 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	
 	typeGui->addIntSlider("SIZE MIN", 5, 20, &typeSizeRange.min);
 	typeGui->addIntSlider("SIZE MAX", 5, 20, &typeSizeRange.max);
-	//	typeGui->addRangeSlider("FADE RANGE", 0, 300, &typeDistanceRange.min, &typeDistanceRange.max);
 	typeGui->addIntSlider("MIN CLIP NUM", 1, 60, &clipsShowTopic.min);
 	typeGui->addIntSlider("MAX CLIP SCALE", 1, 60, &clipsShowTopic.max);
 	
+    typeGui->addSpacer();
+    typeGui->addToggle("DRAW ASSOCIATION", &drawAssociation);
+    typeGui->addIntSlider("ASSOCATION SIZE", 5, 30, &associationFontSize);
+    
 	ofAddListener(typeGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(typeGui);
 	guimap[typeGui->getName()] = typeGui;
@@ -418,17 +427,18 @@ void CloudsVisualSystemClusterMap::resetGeometry(){
 	optionsMeshNext.setMode(OF_PRIMITIVE_LINE_STRIP);
 	optionsMeshPrev.setMode(OF_PRIMITIVE_LINE_STRIP);
 	
-
     kdtree.buildIndex( nodeMesh.getVertices() );
 
     
 	populateTopicPoints();
+    populateAssociations();
+    
 }
 
 void CloudsVisualSystemClusterMap::populateTopicPoints(){
 	
-	topicPoints.clear();
-	
+    topicPoints.clear();
+    
 	vector<string>& keywords = parser->getContentKeywords();
 	int numClips = parser->getNumberOfClipsWithKeyword(keywords[0]);
 	clipCountRange = ofRange(numClips,numClips);
@@ -439,13 +449,45 @@ void CloudsVisualSystemClusterMap::populateTopicPoints(){
 		tp.numClips = parser->getNumberOfClipsWithKeyword(keywords[i]);
 		clipCountRange.growToInclude(tp.numClips);
 //		cout << "num clips " << tp.numClips << " current range " << clipCountRange << endl;
-		topicPoints.push_back(tp);
+		topicPoints.push_back( tp );
 	}
-//	cout << "clip size range is " << clipCountRange << endl;
+    
 	for(int i = 0; i < topicPoints.size(); i++){
 		topicPoints[i].normalizedTopicScale =  clipCountRange.getNormalized(topicPoints[i].numClips);
-//		cout << "Normal for num clips " << topicPoints[i].numClips << " " << topicPoints[i].normalizedTopicScale << endl;
 	}
+
+}
+
+void CloudsVisualSystemClusterMap::populateAssociations(){
+    associations.clear();
+    
+    ofBuffer topicAssociations = ofBufferFromFile(GetCloudsDataPath() + "logs/TopicAssociations.txt");
+    while(!topicAssociations.isLastLine()){
+        
+        string line = topicAssociations.getNextLine();
+        if(line.find(":") == string::npos){
+            cout << "Skipping line " << line << endl;
+            continue;
+        }
+        
+        vector<string> association = ofSplitString(line, ":", true, true);
+        if(association.size() != 2){
+            cout << "line " << line << " has more than one :"<<endl;
+            continue;
+        }
+        
+        vector<string> clipcount = ofSplitString(line, "\t",true,true);
+        if(clipcount.size() != 2){
+            cout << "line " << line << " has more than one tab"<<endl;
+            continue;
+        }
+        
+        string associatedKeyword = association[1];
+        string subtopic = ofSplitString(association[0],"\t",true,true)[1];
+        associations[subtopic] = associatedKeyword;
+        cout << "associated " << subtopic << " with " << associatedKeyword << endl;
+    }
+    bool b = false;
 }
 
 void CloudsVisualSystemClusterMap::traverse(){
@@ -457,6 +499,8 @@ void CloudsVisualSystemClusterMap::traverse(){
 		return;
 	}
 	
+    
+    
 	if(currentTraversalIndex < run->clipHistory.size()){
 		CloudsClip& clip = run->clipHistory[currentTraversalIndex];
 		traverseToClip( clip );
@@ -465,7 +509,7 @@ void CloudsVisualSystemClusterMap::traverse(){
 	else if(autoTraversePoints){
 		timeline->stop(); //finished!
 	}
-		
+
 }
 
 void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
@@ -475,7 +519,8 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
 		return;
 	}
 	
-
+    numTraversed++;
+    
 	ofIndexType newNodeIndex = clipIdToNodeIndex[ clip.getID() ];
 	CloudsClusterNode n = nodes[ newNodeIndex ];
 
@@ -511,7 +556,7 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
                traversalAngle > maxTraverseAngle ||
                numOptions < minTraverseNextOptions)
             {
-                cout << "CLIP FAILED TEST DISTANCE " << currentDistance*100 << " and angle " << traversalAngle << endl;
+//                cout << "CLIP FAILED TEST DISTANCE " << currentDistance*100 << " and angle " << traversalAngle << endl;
                 
                 //find a new options
                 vector<float> distsSq;
@@ -524,11 +569,11 @@ void CloudsVisualSystemClusterMap::traverseToClip(CloudsClip clip){
                     float testAngle = (testPosition - currentTraversalPosition).angle(currentTraversalDirection);
                     int testOptions = nodes[ indices[i] ].connectionCurves.size();
                     
-                    cout << "\tTest node stats" << endl
-                         << "\t\tDIST: " << testDistance*100 << " - max:" << maxTraverseDistance << " min " << minTraverseDistance << endl
-
-                         << "\t\tANGLE: " << testAngle << "/" << maxTraverseAngle << endl
-                         << "\t\tOPTIONS# " << testOptions << "/" << minTraverseNextOptions << endl;
+//                    cout << "\tTest node stats" << endl
+//                         << "\t\tDIST: " << testDistance*100 << " - max:" << maxTraverseDistance << " min " << minTraverseDistance << endl
+//
+//                         << "\t\tANGLE: " << testAngle << "/" << maxTraverseAngle << endl
+//                         << "\t\tOPTIONS# " << testOptions << "/" << minTraverseNextOptions << endl;
                     
                     if(testDistance <= localMaxTraversedDistance &&
                        testDistance >= localMinTraverseDistance &&
@@ -700,6 +745,10 @@ void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip>& questionClip
 	}
 }
 
+void CloudsVisualSystemClusterMap::setCurrentTopic(string topic){
+    currentTopic = topic;
+}
+
 CloudsQuestion* CloudsVisualSystemClusterMap::getSelectedQuestion(){
 	//TODO: interaction for selecting a question
 	
@@ -787,7 +836,10 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 								   traverseStartTime+traverseAnimationDuration,
 								   traverseStartTime+traverseAnimationDuration+optionsAnimationDuration,
 								   0.0, 1.0, true);
-	
+	if(percentTraversed >= 1.0){
+//        axisRotation += 90;
+    }
+    
 	if(autoTraversePoints && (firstClip || percentOptionsRevealed >= 1.0) ){
 		traverse();
 	}
@@ -821,7 +873,14 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
         
 		if(lockCameraAxis){
 			ofVec3f curPosition = axisCamera.getPosition();
-			ofVec3f curTarget = trailHead*meshExpansion + ofVec3f(0,0,traversCameraDistance);
+            ofQuaternion nextRot,lastRot,curRot;
+            nextRot.makeRotate(fmod((numTraversed+1)*90,360.0f), ofVec3f(0,1,0));
+            lastRot.makeRotate(fmod(numTraversed*90,360.0f), ofVec3f(0,1,0));
+            curRot.slerp(percentTraversed,lastRot,nextRot);
+            
+            //cout << "current rot " << numTraversed << "last rot is " << lastRot.getEuler() << " Next rot is " << nextRot.getEuler() << " cur rot is " << curRot.getEuler() << endl;
+            
+			ofVec3f curTarget = trailHead*meshExpansion + (curRot * ofVec3f(0,0,1) ) * traversCameraDistance;
 			ofVec3f newPos = curPosition + (curTarget - curPosition) * .06;
 			axisCamera.setPosition(newPos);
 			axisCamera.lookAt(trailHead*meshExpansion,ofVec3f(0,1,0));
@@ -910,7 +969,12 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 			}
 		}
 	}
-
+    
+    if(drawAssociation){
+        trailheadScreenPos = getCameraRef().worldToScreen(trailHead * meshExpansion,
+                                                          ofRectangle(0,0,getCanvasWidth(),getCanvasHeight()));        
+    }
+    
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -1090,6 +1154,31 @@ void CloudsVisualSystemClusterMap::selfDrawOverlay(){
 		glEnable(GL_LIGHTING);
 	}
 	
+    if(drawAssociation){
+        if(associationFontSize != currentAssociationFont){
+            associationFont.loadFont( GetCloudsDataPath() + "font/Blender-BOOK.ttf", associationFontSize);
+            currentAssociationFont = associationFontSize;
+        }
+        
+        float associationTypeOn = ofMap(percentOptionsRevealed*percentTraversed, 0, .2,0,1.0,true);
+        if(associations.find(currentTopic) != associations.end()){
+            string associatedTopic = associations[currentTopic];
+            int numChars = associatedTopic.size() * associationTypeOn;
+            if(numChars%2 == 1) numChars = MIN(numChars+1,associatedTopic.size());
+            string partialString = associatedTopic.substr(0, numChars);
+            associationFont.drawString(partialString, trailheadScreenPos.x+5,trailheadScreenPos.y-5);
+//            associationFont.drawString(currentTopic, trailheadScreenPos.x, trailheadScreenPos.y);
+        }
+        
+    }
+    
+//    ofPushStyle();
+//    ofSetColor(255, 255);
+//    ofCircle(trailheadScreenPos, 100);
+//    ofPopStyle();
+    
+//    cout << trailheadScreenPos << endl;
+    
 	if(drawLineFlickerDebug){
 		flickerNoise.draw(0,0,getCanvasWidth(),getCanvasHeight());
 	}

@@ -438,6 +438,9 @@
     <Filter Include="src\StoryEngine\Question">
       <UniqueIdentifier>{74608966-0e2a-49fa-a63b-a20db984c8cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="addons\ofxNearestNeighbor">
+      <UniqueIdentifier>{284a1e11-e448-48e7-bd09-eeb43e3ffb7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\testApp.h">
@@ -1114,6 +1117,18 @@
     </ClInclude>
     <ClInclude Include="..\CloudsLibrary\src\RGBD\HUD\CloudsHUDLabel.h">
       <Filter>src\StoryEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\libs\nanoflann\include\nanoflann.hpp">
+      <Filter>addons\ofxNearestNeighbor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\src\NearestNeighbour.h">
+      <Filter>addons\ofxNearestNeighbor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\src\ofxNearestNeighbour.h">
+      <Filter>addons\ofxNearestNeighbor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNearestNeighbour\src\PointCloud.h">
+      <Filter>addons\ofxNearestNeighbor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -154,8 +154,8 @@ void CloudsAct::populateTime(){
         introCue.startTime = visualSystemItems[ visualSystems[0].getID() ].endTime;
         if(visualSystems.size() > 1){
             cout << "systemend time is [" << visualSystemItems[visualSystems[0].getID()].startTime
-                  << " - " << visualSystemItems[visualSystems[0].getID()].endTime << endl;
-            introCue.duration  = visualSystemItems[ visualSystems[0].getID() ].startTime - introCue.startTime;
+                 << " - " << visualSystemItems[visualSystems[0].getID()].endTime << endl;
+                 introCue.duration  = visualSystemItems[ visualSystems[0].getID() ].startTime - introCue.startTime;
         }
         else {
             introCue.duration  = duration - introCue.startTime;

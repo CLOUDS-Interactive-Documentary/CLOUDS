@@ -200,7 +200,7 @@ struct Mapping {
 map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
 
 CloudsVisualSystem* CloudsVisualSystemManager::InstantiateSystem(string systemName){
-    //RIG
+    //RIG EMPTY ONLY
 //    CloudsVisualSystem* system = new CloudsVisualSystemEmpty();
 //    systems.push_back( system );
 //    return system;

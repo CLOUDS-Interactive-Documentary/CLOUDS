@@ -30,7 +30,7 @@
 			<twitter>@bruces</twitter>
 			<location1>b Austin TX</location1>
 			<location2>Austin - Turin</location2>
-			<byline1>A science fiction writer and design critic; internationally recognized as a cyberspace theorist who is also still based there. His writing can be found on 'Beyond the Beyond', published by Wired magazine.
+			<byline1>A science fiction writer and cyberspace theorist who is also still based there. His writing can be found on 'Beyond the Beyond', published by Wired magazine.
 </byline1>
 			<byline2>He blogs extensively on Beyond the Beyond, published by Wired Magazine and often features the work of hacker artists, programmers, inventors, critical engineers. 
 </byline2>
@@ -82,7 +82,7 @@
 			<twitter>@roxlu</twitter>
 			<location1>Amsterdam NL</location1>
 			<location2>Amsterdam</location2>
-			<byline1>He has a background in art, 3D, hardware, interaction design. Creates physics-based visualizations using code. He strongly believes in working with others and sharing knowledge and skills.</byline1>
+			<byline1>He has a background in art, 3D graphics and interaction design. Creates physics-based visualizations using code. He strongly believes in working with others and sharing knowledge and skills.</byline1>
 			<byline2>In Amsterdam, he organizes a creative coding meetup in Amsterdam and contributes to Open Frameworks, an open source toolkit for creative coding.
 </byline2>
 			<gender>male</gender>
@@ -105,7 +105,7 @@
 			<twitter>@elliotwoods</twitter>
 			<location1>Manchester UK</location1>
 			<location2>Manchester - Seoul</location2>
-			<byline1>Prototypes future interfaces between humans, cameras and projectors. Lives between Seoul, South Korea and Manchester.
+			<byline1>Prototypes future interfaces between humans, cameras and projectors and contributes to open source toolkits, VVVV and openFrameworks.
 </byline1>
 			<byline2>He is a curator of the ScreenLab Residency in Manchester, co-founder of design company Kimchi and Chips based in Korea, and contributor to OpenFrameworks and VVVV, open source toolkits for creative coding.  </byline2>
 			<gender>male</gender>
@@ -132,7 +132,7 @@
 			<twitter>@golan</twitter>
 			<location1>New York NY</location1>
 			<location2>New York - Pittsburgh</location2>
-			<byline1>Explores the expressive use of computation, and focuses on the design of systems for performaning simultaneous image and sound. He currently directs the STUDIO for Creative Inquiry, an arts research lab.
+			<byline1>Explores the expressive use of computation, and focuses on the design of systems for performing simultaneous image and sound. He currently directs the STUDIO for Creative Inquiry, an arts research lab.
 </byline1>
 			<byline2>His work explores the expressive use of computation, and focuses on the design of systems for the performance of simultaneous image and sound. Levin applies creative twists to digital technologies that highlight our relationship with machines, combining equal measures of the whimsical, the provocative, and the sublime. He now directs the STUDIO for Creative Inquiry, an anti-disciplinary arts research lab at Carnegie Mellon University.
 </byline2>
@@ -146,7 +146,7 @@
 			<twitter>@golan</twitter>
 			<location1>New York NY</location1>
 			<location2>New York - Pittsburgh</location2>
-			<byline1>Explores the expressive use of computation, and focuses on the design of systems for performaning simultaneous image and sound. He currently directs the STUDIO for Creative Inquiry, an arts research lab.</byline1>
+			<byline1>Explores the expressive use of computation, and focuses on the design of systems for performing simultaneous image and sound. He currently directs an arts research lab at Carnegie Mellon University.</byline1>
 			<byline2>Explores the expressive use of computation, and focuses on the design of systems for performaning simultaneous image and sound. He currently directs the STUDIO for Creative Inquiry, an arts research lab at Carnegie Mellon University.Levin applies creative twists to digital technologies that highlight our relationship with machines, combining equal measures of the whimsical, the provocative, and the sublime. </byline2>
 			<gender>male</gender>
 		</person>
@@ -170,7 +170,7 @@
 			<twitter>@jtnimoy</twitter>
 			<location1>San Francisco CA</location1>
 			<location2>San Francisco</location2>
-			<byline1>A Silicon Valley Unicorn, he is best known for developing generative computational aesthetics for Disney's TRON:Legacy. Independently, he creates addictive software and viral videogames.
+			<byline1>A Silicon Valley Unicorn, he is best known for developing generative computational aesthetics for Disney's TRON:Legacy. Independently he creates addictive software and viral videogames.
 </byline1>
 			<byline2>Josh Nimoy is a Silicon Valley Unicorn. His work ranges from traditional painting and print design to undefined technological experimentation. As a freelance commercial artist, Josh is best known for developing generative computational aesthetics for for Disney's TRON:Legacy. His own projects, developing addictive software and viral videogames, address the tension between the corporatization of creativity and individual expression. Josh is a member of OooShiny, an elite network of computer graphics virtuosos. </byline2>
 			<gender>male</gender>
@@ -182,7 +182,7 @@
 			<twitter>@inspired12</twitter>
 			<location1>Houston TX</location1>
 			<location2>Houston</location2>
-			<byline1>Javier balances the relationships between technology and human interaction. As a designer at Culture Pilot, he creates emotionally resonant experiences that drive user engagement.</byline1>
+			<byline1>Javier balances the relationship between technology and human interaction. As a designer at Culture Pilot, he creates emotionally resonant experiences that drive user engagement.</byline1>
 			<byline2>He works as a designer at Culture pilot, an interactive marketing company and is one of organizers of Visualized, a conference focussed on the communication of data.
 </byline2>
 			<gender>male</gender>
@@ -209,7 +209,7 @@
 			<twitter>@blrprnt</twitter>
 			<location1>b Vancouver BC</location1>
 			<location2>Vancouver - Brooklyn</location2>
-			<byline1>The former data artist in residence at The New York Times. His work focuses on adding narrative meaning to huge amounts of data. Co-founder of EYEO Festival, and co-director of Office for Creative Research.</byline1>
+			<byline1>The former data artist in residence at The New York Times. His work focuses on adding narrative meaning to huge amounts of data.</byline1>
 			<byline2>The former data artist in residence at The New York Times. His work focuses on adding narrative meaning to huge amounts of data. In other words, he makes data more human.Through cutting edge data visualization techniques, Jer helps people and corporations take control of the information that surrounds them, using technology and data as a new way to tell stories.
 </byline2>
 			<gender>male</gender>
@@ -221,7 +221,7 @@
 			<twitter>@joelgethinlewis</twitter>
 			<location1>London UK</location1>
 			<location2>London</location2>
-			<byline1>Creates experiences that take people into the moment. His company Hellicar Lewis develops interactive marketing experiences for major brands while advocating for an Open Source approach. </byline1>
+			<byline1>Creates experiences that take people into the moment. His company Hellicar-Lewis develops interactive marketing experiences for major brands while advocating for an open source approach. </byline1>
 <byline2>Joel creates experiences that take people into the moment. His company Hellicar Lewis creates interactive marketing experiences for major brands, while advocating for an Open Source approach throughout society. His projects bring together traditional media, interaction and digital networks to make feedback loops between people, technology and places.
 </byline2>
 			<gender>male</gender>
@@ -233,7 +233,7 @@
 			<twitter>@juliaxgulia</twitter>
 			<location1>Brooklyn NY</location1>
 			<location2>Kiev - Brooklyn</location2>
-			<byline1>Julia is editor at large for The Creators Project, and founded New York's #ArtsTech meetup, a monthly event series exploring the intersection of art and technology.
+			<byline1>Julia is editor at large for The Creators Project, and founded New York's ArtsTech meetup, a monthly event series exploring the intersection of art and technology.
 </byline1>
 			<byline2>Julia is passionate about technology's potential as an artistic medium as well as its ability to increase access to and engagement with the arts. 
 </byline2>
@@ -246,7 +246,7 @@
 			<twitter>@julian0liver</twitter>
 			<location1>Berlin DE</location1>
 			<location2>Aukland - Berlin</location2>
-			<byline1>As an artist and hacker, he promotes privacy and transparency in the network domain. He co-wrote The Critical Engineering Manifesto, defining a more proactive stance on technology.</byline1>
+			<byline1>As an artist and hacker, he promotes privacy and transparency in the network domain. He co-wrote the Critical Engineering Manifesto, defining a more proactive stance on technology.</byline1>
 			<byline2>Oliver's artistic practice reflects his hacker and gaming background, playing around and messing with routers, capturing data from open wireless networks, visualizing protocols and otherwise manipulating networks for artistic purposes. Julian has given numerous workshops and master classes in software art, creative hacking, data forensics, computer networking, object-oriented programming for artists, virtual architecture, and artistic game-development worldwide.He is an advocate of Free and Open Source Software in education and is a supporter of, and contributor to, initiatives that promote privacy in the network domain.
 </byline2>
 			<gender>male</gender>
@@ -258,7 +258,7 @@
 			<twitter>@ksobecka</twitter>
 			<location1>Warsaw PL</location1>
 			<location2>Warsaw - Brooklyn</location2>
-			<byline1>Karolina works with animation, design, interactivity, computer games and other media and formats. Her work often engages public space and explores the way we interact with the world we create.</byline1>
+			<byline1>Karolina works with animation, design, interactivity and computer games. Her work often engages public space and explores the way we engage with the worlds we create.</byline1>
 			<byline2> She has also studied and taught in the University of Washington's Digital Arts and Experimental Media PhD program. Her company, FlightPhase, creates large interactive installations in public spaces. </byline2>
 			<gender>female</gender>
 		</person>
@@ -282,7 +282,7 @@
 			<twitter>@slavin_fpo</twitter>
 			<location1>New York NY</location1>
 			<location2>New York - Cambridge</location2>
-			<byline1>As an entrepreneur he has successfully integrated digital media, game development, technology, and design. He co-founded Area/Code, where he developed real-world games using mobile, location-aware technologies.
+			<byline1>As an entrepreneur he has successfully integrated digital media, game development, technology, and design. He co-founded Area/Code, where he designed real-world games using location-aware technologies.
 </byline1>
 			<byline2>Slavin argues that we're living in a world designed for–and increasingly controlled by–algorithms. His very popular TED talk, “How Algorithms Shape Our World,” has received over 2 million views. He now leads the Playful Systems group at the MIT Media Lab. 
 </byline2>
@@ -381,7 +381,7 @@
 			<twitter>@wattenberg</twitter>
 			<location1>Cambridge MA</location1>
 			<location2>Cambridge</location2>
-			<byline1>His work explores cultural and natural phenomena through the lends of data. He and collaborator Fernanda Viegas lead Google's 'Big Picture' data visualization group.</byline1>
+			<byline1>His work explores cultural and natural phenomena through the lens of data. He and collaborator Fernanda Viegas lead Google's 'Big Picture' data visualization group.</byline1>
 			<byline2>Martin focuses on visual explorations of culturally significant data. He has a particular interest is using visual tools to foster collaboration and discovery. He and collaborator, Fernanda Viegas, lead Google's 'Big Picture' data visualization group in Cambridge, MA. Exploring topics such as social networks and collaboration.</byline2>
 			<gender>male</gender>
 		</person>
@@ -425,8 +425,8 @@
 			<twitter>@underdoeg</twitter>
 			<location1>Basel CH</location1>
 			<location2>Basel</location2>
-			<byline1>Interaction designer and VJ, one half of the Undef collective with Martin Fuchs. He has contributed numerous oFX addons to Open Frameworks, a C++ toolkit for artists.</byline1>
-			<byline2>He has contributed numerous oFX addons to Open Frameworks, a c++ toolkit for artists.</byline2>
+			<byline1>Interaction designer and VJ, one half of the Undef collective with Martin Fuchs. He has contributed numerous ofxAddons to openFrameworks, a C++ toolkit for artists.</byline1>
+			<byline2>He has contributed numerous ofxAddons to Open Frameworks, a c++ toolkit for artists.</byline2>
 			<gender>male</gender>
 		</person>
 	<person id="Ramsey">
@@ -458,7 +458,7 @@
 			<twitter>@shantell_martin</twitter>
 			<location1>London UK</location1>
 			<location2>London - Brooklyn</location2>
-			<byline1>Performs live drawings, projecting on surfaces, using drawing software to repeat patterns, zoom in and out on the canvas, and make the illustrations spin and dance.</byline1>
+			<byline1>Performs live drawings, projecting on surfaces, using drawing software to repeat patterns and make dynamic illustrations.</byline1>
 			<byline2>Martin uses live-painting and animation software to perform stream-of-consciousness, improvisatory drawings.She projects on surfaces, drawing to the beat of music, and uses drawing software to repeat patterns, zoom in and out on the canvas, and make the illustrations spin and "dance."  Collaborating with Zach Lieberman, founder of Open Frameworks, introduced her to coding as an art form.</byline2>
 			<gender>female</gender>
 		</person>
@@ -469,18 +469,18 @@
 			<twitter>@shiffman</twitter>
 				<location1>New York NY</location1>
 			<location2>New York</location2>
-			<byline1>Teaches programming to artists at NYU's Interactive Telecommunications Program. He is the author of The Nature of Code, a self published, open source book about simulating natural phenomena in software.</byline1>
+			<byline1>Teaches programming to artists at NYU's Interactive Telecommunications Program. He is the author of the Nature of Code, a self published, open source book about simulating natural phenomena in software.</byline1>
 			<byline2>His work applies mathematical principles underlying physics to create digital worlds, which he develops through tutorials, examples, and libraries for Processing, an open source programming language and environment.</byline2>
 			<gender>male</gender>
 		</person>
 		<person id="Sophy">
-			<first>Sophy</first>
+			<first>Sofy</first>
 			<last>Yuditskaya</last>
 			<title>Artist, Researcher</title>
 			<twitter>@horusVacui</twitter>
 			<location1>New York NY</location1>
 			<location2>Moscow - New York</location2>
-			<byline1>Sophy examines the nature of objects and human action in relationship to their fragmented digital representations. Her work connects the artifacts of technological culture to universal human symbols and iconography. </byline1>
+			<byline1>Sofy examines the nature of objects and human action in relationship to their fragmented digital representations. Her work connects the artifacts of technological culture to universal human symbols and iconography. </byline1>
 			<byline2>Her practice coils together a variety of performance types, including musical performance with electronic instruments, spoken word, dance, techno-futuristic rituals, and site specific social experiments.</byline2>
 			<gender>female</gender>
 		</person>
@@ -493,7 +493,7 @@
 			<location1>London UK</location1>
 			<location2>London - Cambridge</location2>
 			<byline1>
-				Develops playful interactive systems and software tools. He is the the co-founder of openFrameworks with Zach Lieberman and Arturo Castro, an open source library for writing creative code in C++.
+				Develops playful interactive systems and software tools. He is the co-founder of openFrameworks, an open source library for writing creative code in C++.
 			</byline1>
 			<byline2>
 				His company Design IO, with partner Emily Gobeille, creates immersive environments that engage full-body interaction.
@@ -524,10 +524,10 @@
 			<location1>Brooklyn NY</location1>
 			<location2>Brooklyn</location2>
 			<byline1>
-				Explores new modes of expression and play. Develops openFrameworks, a c++ library for creative coding, and co-founded the School for Poetic Computation in Brooklyn, NY.
+				Explores new modes of expression and play. Develops openFrameworks, a C++ library for creative coding, and co-founded the School for Poetic Computation in Brooklyn, NY.
 			</byline1>
 			<byline2>
-				He co-founded and develops open Frameworks, a c++ library for creative coding. He recently founded The School for Poetic Computation in Brooklyn, to bridge the gap between computer programming, engineering, design and art.
+				He co-founded and develops open Frameworks, a C++ library for creative coding. He recently founded The School for Poetic Computation in Brooklyn, to bridge the gap between computer programming, engineering, design and art.
 			</byline2>
 			<gender>male</gender>
 		</person>
@@ -552,10 +552,10 @@
 			<twitter>@satoruhiga</twitter>
 			<location1>Tokyo JP</location1>
 			<location2>Tokyo</location2>
-			<byline1>A creative coder who develops interactive art, games and apps. As an artist-in-residence at Yamaguchi Center for Arts and Media (YCAM), he collaborates with Daito Manabe.
+			<byline1>A creative coder who develops interactive art, games and apps. As an artist-in-residence at Yamaguchi Center for Arts and Media (YCAM), he has collaborated with artist Daito Manabe.
 			</byline1>
 			<byline2>
-				Higasan has contributed numerous add-ons to open Frameworks, a c++ library for artists.
+				Higasan has contributed numerous add-ons to open Frameworks, a C++ library for artists.
 			</byline2>
 			<gender>male</gender>
 		</person>

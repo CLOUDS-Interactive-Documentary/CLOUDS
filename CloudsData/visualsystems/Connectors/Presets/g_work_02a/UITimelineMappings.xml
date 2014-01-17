@@ -4,16 +4,16 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>Min Connection Distance</WidgetName>
-                <WidgetID>6</WidgetID>
+                <WidgetName>Num Particles</WidgetName>
+                <WidgetID>2</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Num Particles</WidgetName>
-                <WidgetID>2</WidgetID>
+                <WidgetName>Min Connection Distance</WidgetName>
+                <WidgetID>6</WidgetID>
                 <WidgetCanvasParent>Custom</WidgetCanvasParent>
             </Widget>
             <Track></Track>
