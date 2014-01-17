@@ -224,6 +224,14 @@ CloudsTransitionState CloudsTransitionController::getPreviousState(){
 	return previousState;
 }
 
+CloudsTransitionState CloudsTransitionController::getPendingState(){
+	return pendingState;
+}
+
+string CloudsTransitionController::getPendingStateDescription(){
+    return getStateDescription(pendingState);
+}
+
 string CloudsTransitionController::getCurrentStateDescription(){
 	return getStateDescription(currentState);
 }
@@ -257,11 +265,13 @@ CloudsTransitionState CloudsTransitionController::getNextState(){
 	if(stateQueue.empty()){
 		currentQueue.state = TRANSITION_IDLE;
 		currentState = TRANSITION_IDLE;
+        pendingState = TRANSITION_IDLE;
 		transitioning = false;
 	}
 	else{
 		currentQueue = stateQueue.front();
 		currentState = stateQueue.front().state;
+        pendingState = stateQueue.back().state;
 		stateQueue.pop_front();
 	}
 
