@@ -219,10 +219,13 @@ void CloudsPlaybackController::setup(){
 		}
 	}
     
+    
+    
 	//////////////SHOW INTRO
 	cout << "Found " << startingNodes.size() << " questions" << endl;
 	showIntro( startingNodes );
     
+    sound.enterTunnel();
 
     setupPortals();
 
@@ -250,7 +253,6 @@ void CloudsPlaybackController::showIntro(){
 	
 	currentVisualSystem = introSequence;
 	
-	sound.enterTunnel();
 	numActsCreated = 0;
     
 	showingVisualSystem = true;
@@ -698,7 +700,12 @@ void CloudsPlaybackController::updateTransition(){
     ////////IDLE CASES
     ///////////////////
             case TRANSITION_IDLE:
-                
+
+                if(transitionController.getPreviousState() == TRANSITION_INTRO_IN){
+                    
+                    sound.enterTunnel();
+                    
+                }
                 if(transitionController.getPreviousState() == TRANSITION_INTRO_OUT){
 					
 					q = introSequence->getSelectedQuestion();
