@@ -3,6 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	ofSetVerticalSync(true);
+    colony.setDrawToScreen(false);
 	colony.setup();
 	colony.playSystem();
     
@@ -17,7 +18,8 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	
+//    ofSetColor(255, 255, 255, ofMap(mouseX, 0, ofGetWidth(), 0, 255));
+    colony.selfPostDraw();
 }
 
 //--------------------------------------------------------------
