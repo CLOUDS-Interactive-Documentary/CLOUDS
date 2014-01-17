@@ -276,29 +276,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 
     //////////////////POINTS
     ofxUISuperCanvas* pointsGui1 = pointLayer1.createGui(gui, "Points 1");
-    
-//	pointsGui = new ofxUISuperCanvas("POINTS", gui);
-//	pointsGui->copyCanvasStyle(gui);
-//    pointsGui->copyCanvasProperties(gui);
-//    pointsGui->setName("Points");
-//    pointsGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-//	toggle = pointsGui->addToggle("ENABLE", &drawPoints);
-//	toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
-//	pointsGui->resetPlacer();
-//	pointsGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
-//	pointsGui->addWidgetToHeader(toggle);
-//	pointsGui->addSlider("Point Alpha", 0, 1.0, &pointAlpha);
-//	pointsGui->addSlider("Point Color Boost", 0, 1.0, &pointColorBoost);
-//	pointsGui->addSlider("Point Skin Boost", 0, 1.0, &pointSkinBoost);
-//    pointsGui->addSpacer();
-//    pointsGui->addSlider("Point X Simplify", 1.0, 8, &pointXSimplify);
-//    pointsGui->addSlider("Point Y Simplify", 1.0, 8, &pointYSimplify);
-//	pointsGui->addRangeSlider("Point Size", 0.0, 3.0, &pointSize.min, &pointSize.max);
-//	pointsGui->addSlider("Point Face Overlap",0., 1.0, &pointHeadOverlap);
-//	pointsGui->addSlider("Point Flow", 0, 1.0, &pointFlowSpeed);
-//	pointsGui->addToggle("Points Flow Up", &pointsFlowUp);
-	
-
 	guis.push_back(pointsGui1);
 	guimap[pointsGui1->getName()] = pointsGui1;
     
@@ -450,7 +427,8 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	cameraGui->addSlider("DRIFT ANGLE", 0, 200, &cloudsCamera.maxDriftAngle);
 	cameraGui->addSlider("DRIFT DENSITY", 0, 1.0, &cloudsCamera.driftNoiseDensity);
 	cameraGui->addSlider("DRIFT SPEED", 0, .01, &attenuatedCameraDrift);
-	
+    cameraGui->addSlider("DAMPING", .001, .1, &cloudsCamera.damp);
+
 	guis.push_back(cameraGui);
 	guimap[cameraGui->getName()] = cameraGui;
 	
