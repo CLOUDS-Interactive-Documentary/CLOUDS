@@ -1007,7 +1007,7 @@ void CloudsPlaybackController::cleanupInterlude(){
         clusterMap->stopSystem();
 
     }
-    else if(currentVisualSystem == interludeSystem){
+    else if(currentVisualSystem != NULL && currentVisualSystem == interludeSystem){
         interludeSystem->stopSystem();
         interludeSystem->exit();
         exitedInterlude = true;
